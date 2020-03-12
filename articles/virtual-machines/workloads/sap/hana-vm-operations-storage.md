@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/13/2020
+ms.date: 02/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4cc4db9ffcb700d4b65a7f5c21d258e9af52d164
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 155498aeaea30bf2da1d5aa0dbcb322aeb43bbdd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598529"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661296"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 仮想マシンのストレージ構成
 
@@ -35,6 +35,10 @@ Azure は、SAP HANA を実行する Azure VM に適した、異なる種類の�
 Azure では、Azure Standard と Premium Storage の 2 つの VHD 展開方法を提供します。 シナリオ全体で可能な場合は、[Azure マネージド ディスク](https://azure.microsoft.com/services/managed-disks/) デプロイを利用します。 
 
 ストレージの種類と、IOPS およびストレージ スループットの SLA の一覧については、[マネージド ディスクに関する Azure ドキュメント](https://azure.microsoft.com/pricing/details/managed-disks/)をご覧ください。
+
+> [!IMPORTANT]
+> 選択した Azure ストレージの種類に関係なく、そのストレージで使用されるファイル システムは、特定のオペレーティング システムと DBMS 向けに SAP でサポートされている必要があります。 [SAP サポート ノート #405827](https://launchpad.support.sap.com/#/notes/405827) には、SAP HANA を含むさまざまなオペレーティング システムとデータベースでサポートされるファイル システムの一覧が示されています。 これは、任意のタスクの読み取りと書き込みのために SAP HANA がアクセスする可能性があるすべてのボリュームに適用されます。 特に Azure for SAP HANA で NFS を使用する場合は、この記事で後述するように、NFS バージョンに関する追加の制限が適用されます 
+
 
 各種ストレージにおける SAP HANA 認定の最低条件は次のとおりです。 
 
@@ -278,7 +282,7 @@ Azure で SAP のインフラストラクチャを設計する際には、SAP �
 
 データとログの SAP 最小スループット要件を満たすため、および `/hana/shared` のガイドラインに従うと、推奨されるサイズは次のようになります。
 
-| ボリューム | Size<br /> Premium ストレージ層 | Size<br /> Ultra ストレージ層 | サポートされる NFS プロトコル |
+| ボリューム | サイズ<br /> Premium ストレージ層 | サイズ<br /> Ultra ストレージ層 | サポートされる NFS プロトコル |
 | --- | --- | --- |
 | /hana/log/ | 4 TiB | 2 TiB | v4.1 |
 | /hana/data | 6.3 TiB | 3.2 TiB | v4.1 |

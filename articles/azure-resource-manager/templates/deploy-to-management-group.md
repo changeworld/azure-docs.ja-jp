@@ -2,19 +2,17 @@
 title: 管理グループにリソースをデプロイする
 description: Azure Resource Manager テンプレートを使用して、管理グループのスコープでリソースをデプロイする方法について説明します。
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: 0419f3daca6845c6809c9f66e870fdf884a7193f
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.date: 03/02/2020
+ms.openlocfilehash: 3b2eeaf2c63a50cda1a32fee94c1e5b99822075d
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117042"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228103"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>管理グループ レベルでリソースを作成する
 
 通常、Azure リソースは Azure サブスクリプションのリソース グループにデプロイします。 ただし、管理グループ レベルでリソースを作成することもできます。 管理グループ レベルのデプロイを使用して、[ロールベースのアクセス制御](../../role-based-access-control/overview.md)の割り当てや[ポリシー](../../governance/policy/overview.md)の適用など、そのレベルで意味のあるアクションを実行します。
-
-現在のところ、管理グループ レベルでテンプレートをデプロイするには、REST API を使用する必要があります。
 
 ## <a name="supported-resources"></a>サポートされているリソース
 
@@ -46,6 +44,15 @@ https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeployment
 ## <a name="deployment-commands"></a>デプロイ コマンド
 
 管理グループのデプロイ用のコマンドは、リソース グループのデプロイ用のコマンドとは異なります。
+
+Azure PowerShell では、[New-AzManagementGroupDeployment](/powershell/module/az.resources/new-azmanagementgroupdeployment) を使用します。 
+
+```azurepowershell-interactive
+New-AzManagementGroupDeployment `
+  -ManagementGroupId "myMG" `
+  -Location "West US" `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/management-level-deployment/azuredeploy.json
+```
 
 REST API の場合は、[管理グループ スコープでの作成によるデプロイ](/rest/api/resources/deployments/createorupdateatmanagementgroupscope)に関するページを参照してください。
 
@@ -150,7 +157,7 @@ REST API の場合は、[管理グループ スコープでの作成によるデ
 
 ## <a name="template-sample"></a>テンプレートのサンプル
 
-* リソース グループ、ポリシー、およびポリシーの割り当てを作成します。  [こちら](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json)を参照してください。
+* [リソース グループ、ポリシー、およびポリシーの割り当てを作成します](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json)。
 
 ## <a name="next-steps"></a>次のステップ
 

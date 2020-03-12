@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 107233248e5d0a8d6b578d9395d4cdbade79a842
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: c4461856bd5eeb01eb84b0d39afef9507438f8d3
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772627"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920664"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Windows VM のスケジュールされたイベント
 
@@ -56,18 +56,19 @@ Azure Metadata Service では、VM 内部からアクセスできる REST エン
 ### <a name="endpoint-discovery"></a>エンドポイントの検出
 VNET が有効な VM の場合は、静的でルーティング不可能な IP アドレス `169.254.169.254` からメタデータ サービスを利用できます。 スケジュールされたイベントの最新バージョンのフル エンドポイントは次のとおりです。 
 
- > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01`
+ > `http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01`
 
 Virtual Machine が Virtual Network 内で作成されていない場合 (クラウド サービスと従来の VM の既定のケース)、使用する IP アドレスを検出する追加のロジックが必要となります。 [ホスト エンドポイントの検出](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm)方法については、こちらのサンプルをご覧ください。
 
 ### <a name="version-and-region-availability"></a>利用可能なバージョンとリージョン
-スケジュールされたイベントのサービスは、バージョンによって管理されています。 バージョンは必須で、現在のバージョンは `2017-11-01` です。
+スケジュールされたイベントのサービスは、バージョンによって管理されています。 バージョンは必須で、現在のバージョンは `2019-01-01` です。
 
 | Version | リリースの種類 | リージョン | リリース ノート | 
 | - | - | - | - |
+| 2019-01-01 | 一般公開 | All | <li> 仮想マシン スケール セットの EventType "Terminate" のサポートが追加されました |
 | 2017-11-01 | 一般公開 | All | <li> スポット VM 削除の EventType 「Preempt」のサポートを追加する<br> | 
 | 2017-08-01 | 一般公開 | All | <li> IaaS VM のリソース名から先頭のアンダースコアを削除<br><li>すべての要求にメタデータ ヘッダー要件を適用 | 
-| 2017-03-01 | プレビュー | All |<li>最初のリリース
+| 2017-03-01 | プレビュー | All |<li>最初のリリース |
 
 > [!NOTE] 
 > スケジュールされたイベントの前のプレビュー リリースでは、api-version として {latest} がサポートされていました。 この形式はサポートされなくなり、今後非推奨となる予定です。
@@ -90,9 +91,9 @@ Virtual Machine が Virtual Network 内で作成されていない場合 (クラ
 ### <a name="query-for-events"></a>イベントのクエリ
 次の呼び出しを行うだけで、スケジュールされたイベントのクエリを実行できます。
 
-#### <a name="powershell"></a>Powershell
+#### <a name="powershell"></a>PowerShell
 ```
-curl http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01 -H @{"Metadata"="true"}
+curl http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 -H @{"Metadata"="true"}
 ```
 
 応答には、スケジュールされたイベントの配列が含まれています。 空の配列は、現在スケジュールされているイベントがないことを意味します。
@@ -103,7 +104,7 @@ curl http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01 -H @
     "Events": [
         {
             "EventId": {eventID},
-            "EventType": "Reboot" | "Redeploy" | "Freeze" | "Preempt",
+            "EventType": "Reboot" | "Redeploy" | "Freeze" | "Preempt" | "Terminate",
             "ResourceType": "VirtualMachine",
             "Resources": [{resourceName}],
             "EventStatus": "Scheduled" | "Started",
@@ -118,7 +119,7 @@ DocumentIncarnation は ETag であり、前回のクエリ以降にイベント
 |プロパティ  |  説明 |
 | - | - |
 | EventId | このイベントのグローバル一意識別子。 <br><br> 例: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | このイベントによって発生する影響。 <br><br> 値: <br><ul><li> `Freeze`:仮想マシンは数秒間の一時停止がスケジュールされています。 CPU とネットワーク接続が中断する場合がありますが、メモリや開いているファイルへの影響はありません。 <li>`Reboot`:Virtual Machine は再起動がスケジュールされています (非永続メモリは失われます)。 <li>`Redeploy`:Virtual Machine は別のノードへの移動がスケジュールされています (一時ディスクは失われます)。 <li>`Preempt`:スポット仮想マシンが削除されています（一時ディスクは失われています）。|
+| EventType | このイベントによって発生する影響。 <br><br> 値: <br><ul><li> `Freeze`:仮想マシンは数秒間の一時停止がスケジュールされています。 CPU とネットワーク接続が中断する場合がありますが、メモリや開いているファイルへの影響はありません。 <li>`Reboot`:Virtual Machine は再起動がスケジュールされています (非永続メモリは失われます)。 <li>`Redeploy`:Virtual Machine は別のノードへの移動がスケジュールされています (一時ディスクは失われます)。 <li>`Preempt`:スポット仮想マシンが削除されています（一時ディスクは失われています）。 <li> `Terminate`:仮想マシンは削除がスケジュールされています。 |
 | ResourceType | このイベントが影響を与えるリソースの種類。 <br><br> 値: <ul><li>`VirtualMachine`|
 | リソース| このイベントが影響を与えるリソースの一覧。 これには最大 1 つの[更新ドメイン](manage-availability.md)のマシンが含まれることが保証されますが、更新ドメインの一部のマシンは含まれない場合があります。 <br><br> 例: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | このイベントの状態。 <br><br> 値: <ul><li>`Scheduled`:このイベントは、`NotBefore` プロパティに指定された時間が経過した後で開始するようにスケジュールされています。<li>`Started`:このイベントは開始されています。</ul> `Completed` や同様の状態にならないイベントは、イベントの完了時に返されません。
@@ -133,6 +134,7 @@ DocumentIncarnation は ETag であり、前回のクエリ以降にイベント
 | 再起動 | 約 15 分 |
 | Redeploy | 10 分 |
 | Preempt | 30 秒 |
+| Terminate | [ユーザーが構成可能](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications):5 から 15 分 |
 
 ### <a name="event-scope"></a>イベントの範囲     
 スケジュールされたイベントの配信先は次のとおりです。
@@ -158,9 +160,9 @@ DocumentIncarnation は ETag であり、前回のクエリ以降にイベント
 }
 ```
 
-#### <a name="powershell"></a>Powershell
+#### <a name="powershell"></a>PowerShell
 ```
-curl -H @{"Metadata"="true"} -Method POST -Body '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' -Uri http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01
+curl -H @{"Metadata"="true"} -Method POST -Body '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' -Uri http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01
 ```
 
 > [!NOTE] 
@@ -206,7 +208,7 @@ function Handle-ScheduledEvents($scheduledEvents)
 
 # Set up the scheduled events URI for a VNET-enabled VM
 $localHostIP = "169.254.169.254"
-$scheduledEventURI = 'http://{0}/metadata/scheduledevents?api-version=2017-11-01' -f $localHostIP 
+$scheduledEventURI = 'http://{0}/metadata/scheduledevents?api-version=2019-01-01' -f $localHostIP 
 
 # Get events
 $scheduledEvents = Get-ScheduledEvents $scheduledEventURI

@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor でログ クエリを最適化する
 description: Azure Monitor でログ クエリを最適化するためのベスト プラクティス。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/25/2019
-ms.openlocfilehash: 521fd84e79196439ea220bd7ffa7cc6d0750f045
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.date: 02/28/2019
+ms.openlocfilehash: e5c3da94cf2440b30dc59fe20bc51a34095f7d5f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77648837"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269057"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Azure Monitor でログ クエリを最適化する
 Azure Monitor ログでは、[Azure Data Explorer (ADX)](/azure/data-explorer/) を使用して、ログ データを格納し、そのデータを分析するためのクエリを実行します。 これにより、ADX クラスターが作成、管理、保持され、ログ分析ワークロードに合わせて最適化されます。 クエリを実行すると、クエリが最適化され、ワークスペース データを格納する適切な ADX クラスターにルーティングされます。 Azure Monitor ログと Azure Data Explorer のどちらにも、クエリの自動最適化メカニズムが多数使用されています。 自動最適化によって大幅に処理が促進される一方で、クエリのパフォーマンスを飛躍的に向上させることができるケースもいくつかあります。 この記事では、パフォーマンスに関する考慮事項とそれを調整するいくつかの手法について説明します。
@@ -64,7 +63,7 @@ Log Analytics でクエリを実行した後、クエリ結果の上にある下
 
 これらの関数では、処理対象の行数に比例して CPU が消費されます。 最も効率的な最適化では、CPU を集中的に使用する関数が実行される前にできるだけ多くのレコードを除外できる where 条件を、クエリ内の初期段階で追加します。
 
-たとえば、次のクエリではまったく同じ結果が得られますが、2 番目のクエリは、解析前の [where]() 条件によって多くのレコードが除外されるためはるかに効率的になります。
+たとえば、次のクエリではまったく同じ結果が得られますが、2 番目のクエリは、解析前の [where](/azure/kusto/query/whereoperator) 条件によって多くのレコードが除外されるためはるかに効率的になります。
 
 ```Kusto
 //less efficient
@@ -259,8 +258,41 @@ by Computer
 ) on Computer
 ```
 
+このエラーのもう 1 つの例は、複数のテーブルに対する [union](/azure/kusto/query/unionoperator?pivots=azuremonitor) の直後に時間範囲フィルターを実行する場合です。 union を実行する場合、各サブクエリの範囲を設定する必要があります。 [let](/azure/kusto/query/letstatement) ステートメントを使用して、範囲の一貫性を確保することができます。
+
+たとえば、次のクエリは *Heartbeat* テーブルと *Perf* テーブル内で、過去 1 日分だけでなくすべてのデータをスキャンします。
+
+```Kusto
+Heartbeat 
+| summarize arg_min(TimeGenerated,*) by Computer
+| union (
+    Perf 
+    | summarize arg_min(TimeGenerated,*) by Computer) 
+| where TimeGenerated > ago(1d)
+| summarize min(TimeGenerated) by Computer
+```
+
+このクエリは次のように修正する必要があります。
+
+```Kusto
+let MinTime = ago(1d);
+Heartbeat 
+| where TimeGenerated > MinTime
+| summarize arg_min(TimeGenerated,*) by Computer
+| union (
+    Perf 
+    | where TimeGenerated > MinTime
+    | summarize arg_min(TimeGenerated,*) by Computer) 
+| summarize min(TimeGenerated) by Computer
+```
+
+測定値は、指定された実際の時間よりも常に大きくなります。 たとえば、クエリのフィルターが 7 日の場合、システムでは 7.5 日分または 8.1 日分がスキャンされる可能性があります。 これは、システムがデータを可変サイズのチャンクにパーティション分割しているためです。 関連するすべてのレコードがスキャンされるようにするために、パーティションに保存されるレコードが数時間さらには 1 日分以上であっても、パーティション全体がスキャンされます。
+
+場合によっては、システムが正確な時間範囲の測定値を提供できないことがあります。 これはほとんどの場合、クエリの範囲が 1 日未満であるか、複数のワークスペース クエリに含まれている場合に発生します。
+
+
 > [!IMPORTANT]
-> この指標は、リージョンをまたぐクエリでは使用できません。
+> この指標は、直近のクラスターで処理されたデータのみを示します。 複数リージョンのクエリでは、リージョンのうち 1 つだけが表示されます。 マルチワークスペース クエリでは、一部のワークスペースが含まれない場合があります。
 
 ## <a name="age-of-processed-data"></a>処理されたデータの期間
 Azure Data Explorer では、インメモリ、ローカルの SSD ディスク、さらに処理速度の遅い Azure BLOB という複数のストレージ層が使用されています。 データが新しいほど、待ち時間が短い、より高性能な層に格納される確率が高くなり、クエリ期間と CPU が低減されます。 システムには、データ自体に加え、メタデータ用のキャッシュもあります。 データが古くなるほど、メタデータがキャッシュ内に存在する確率が低くなります。
@@ -285,7 +317,7 @@ Azure Data Explorer では、インメモリ、ローカルの SSD ディスク�
 これらのリージョンすべてをスキャンする理由がない場合は、対象のリージョンが絞り込まれるようにスコープを調整する必要があります。 リソースのスコープが最小化されても、多くのリージョンが使用されている場合は、構成の誤りが原因で生じる可能性があります。 たとえば、監査ログと診断設定が異なるリージョンにある別々のワークスペースに送信されたり、診断設定の構成が複数存在したりします。 
 
 > [!IMPORTANT]
-> この指標は、リージョンをまたぐクエリでは使用できません。
+> 1 つのクエリが複数のリージョンにわたって実行された場合、CPU とデータの測定値が正確ではなくなり、いずれか 1 つのリージョンの測定値のみが表示されます。
 
 ## <a name="number-of-workspaces"></a>ワークスペースの数
 ワークスペースは、ログ データを分離して管理するために使用される論理コンテナーです。 バックエンドで、選択したリージョン内の物理クラスターにおけるワークスペースの配置が最適化されます。
@@ -301,7 +333,7 @@ Azure Data Explorer では、インメモリ、ローカルの SSD ディスク�
 > マルチワークスペースのシナリオでは、CPU とデータの測定値が正確ではなくなり、ごく一部のワークスペースに測定値のみが表示されます。
 
 ## <a name="parallelism"></a>Parallelism
-Azure Monitor ログでは、Azure Data Explorer の大規模なクラスターを使用してクエリを実行しますが、これらのクラスターの規模は変動します。 このシステムでは、ワークスペースの配置ロジックと容量に応じて、クラスターが自動的にスケーリングされます。
+Azure Monitor ログでは、Azure Data Explorer の大規模なクラスターを使用してクエリを実行しますが、これらのクラスターの規模は変動し、数十個の計算ノードになる可能性もあります。 このシステムでは、ワークスペースの配置ロジックと容量に応じて、クラスターが自動的にスケーリングされます。
 
 クエリを効率的に実行するために、クエリは、その処理に必要なデータに基づいてパーティション分割され、計算ノードに分散されます。 システムでこれを効率的に実行できない状況もあります。 この結果、クエリの期間が長くなる可能性があります。 
 

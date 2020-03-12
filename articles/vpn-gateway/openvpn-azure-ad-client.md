@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 02/28/2020
 ms.author: alzam
-ms.openlocfilehash: 4b9678f72dd69db24b105d4b1d708928e29a09ba
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: fc48b0ae9cf4162b4b9abba14c6e909ca091fd23
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134513"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251614"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>P2S OpenVPN プロトコル接続用に VPN クライアントを構成する:Azure AD 認証
 
@@ -168,9 +168,26 @@ Always-on を使用して自動的に接続するように構成するには、�
 </azvpnprofile>
 ```
 
+### <a name="how-do-i-add-custom-dns-servers-to-the-vpn-client"></a>VPN クライアントにカスタム DNS サーバーを追加する方法
+
+ダウンロードしたプロファイル XML ファイルを変更して、 **\<dnsservers>\<dnsserver> \</dnsserver>\</dnsservers>** タグを追加できます
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <dnsservers>
+        <dnsserver>x.x.x.x</dnsserver>
+        <dnsserver>y.y.y.y</dnsserver>
+    </dnsservers>
+    
+</clientconfig>
+</azvpnprofile>
+```
+
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>VPN クライアントにカスタム ルートを追加する方法
 
-ダウンロードしたプロファイル XML ファイルを変更して、 **\<route>\<includeroutes>\<destination>\<mask> \</route>\</includeroutes>\</destination>\</mask>** タグを追加できます
+ダウンロードしたプロファイル XML ファイルを変更して、 **\<includeroutes>\<route>\<destination>\<mask> \</destination>\</mask>\</route>\</includeroutes>** タグを追加できます
 
 ```
 <azvpnprofile>
@@ -181,6 +198,24 @@ Always-on を使用して自動的に接続するように構成するには、�
             <destination>x.x.x.x</destination><mask>24</mask>
         </route>
     </includeroutes>
+    
+</clientconfig>
+</azvpnprofile>
+```
+
+### <a name="how-do-i-block-exclude-routes-from-the-vpn-client"></a>VPN クライアントからルートをブロック (除外) する方法
+
+ダウンロードしたプロファイル XML ファイルを変更して、 **\<excluderoutes>\<route>\<destination>\<mask> \</destination>\</mask>\</route>\</excluderoutes>** タグを追加できます
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <excluderoutes>
+        <route>
+            <destination>x.x.x.x</destination><mask>24</mask>
+        </route>
+    </excluderoutes>
     
 </clientconfig>
 </azvpnprofile>

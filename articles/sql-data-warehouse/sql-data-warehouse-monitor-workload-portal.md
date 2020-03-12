@@ -1,30 +1,30 @@
 ---
 title: ワークロードを監視する - Azure portal
-description: Azure portal を使用して Azure SQL Data Warehouse を監視する
+description: Azure portal を使用して SQL Analytics を監視する
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 03/22/2019
+ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 73d837c34dd5a480cae08a41c89939414899052a
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 7e93aee405d8a66d850a4e3f07f2e788f1004ef8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73645632"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197237"
 ---
 # <a name="monitor-workload---azure-portal"></a>ワークロードを監視する - Azure portal
 
-この記事では、Azure portal を使用してワークロードを監視する方法について説明します。 ここでは、[Azure SQL Data Warehouse](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/) のログ解析を使用して、クエリの実行とワークロードの傾向を調べるように Azure Monitor ログを設定します。
+この記事では、Azure portal を使用してワークロードを監視する方法について説明します。 これには、[SQL Analytics](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/) のログ分析を使用して、クエリの実行とワークロードの傾向を調べるように Azure Monitor ログを設定することが含まれます。
 
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
-- Azure SQL Data Warehouse: SQL Data Warehouse のログを収集します。 SQL Data Warehouse がプロビジョニングしていない場合は、[SQL Data Warehouse の作成](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-tutorial)に関する記事の手順を参照してください。
+- SQL プール:SQL プールのログを収集します。 SQL プールがプロビジョニングされていない場合は、[SQL プールの作成](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-tutorial)の手順を参照してください。
 
 ## <a name="create-a-log-analytics-workspace"></a>Log Analytics ワークスペースの作成
 
@@ -38,9 +38,9 @@ Log Analytics ワークスペースの参照ブレードに移動し、ワーク
 
 ワークスペースの詳細については、次の[ドキュメント](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace#create-a-workspace)を参照してください。
 
-## <a name="turn-on-diagnostic-logs"></a>診断ログを有効にする 
+## <a name="turn-on-diagnostic-logs"></a>診断ログを有効にする
 
-SQL Data Warehouse からログを生成する診断設定を構成します。 ログは、データ ウェアハウスのテレメトリ ビューで構成されています。これは、よく使用される SQL Data Warehouse でのパフォーマンス トラブルシューティングの DMV に相当します。 現在サポートされているビューは次のとおりです。
+SQL プールからログを出力するように診断設定を構成します。 ログは、テレメトリ ビューで構成されています。これは、よく使用されるパフォーマンス トラブルシューティングの DMV に相当します。 現在サポートされているビューは次のとおりです。
 
 - [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016-au7)
 - [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?view=aps-pdw-2016-au7)
@@ -97,6 +97,6 @@ AzureDiagnostics
 | where Type_s == "UserConcurrencyResourceType"
 | summarize totalQueuedQueries = dcount(RequestId_s)
 ```
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Monitor ログを設定し、構成したので、チームで共有できるように[Azure ダッシュボードをカスタマイズ](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards)します。

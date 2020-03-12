@@ -5,12 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 33dfc91381b23bf1ac33bef5274e1098df411f4a
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 0bca690fd585b288f15cbab21c1c951474390318
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75609844"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196981"
 ---
 # <a name="manage-applications-for-multiple-environments"></a>複数の環境向けのアプリケーションの管理
 
@@ -42,7 +42,7 @@ Service Fabric で名前付きアプリケーション インスタンスを作�
 
   - PowerShell では、[`New-ServiceFabricApplication`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) コマンドレットはハッシュテーブルとしてアプリケーション パラメーターを受け取ります。
   - sfctl では、[`sfctl application create`](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) コマンドは JSON 文字列としてパラメーターを受け取ります。 install.sh スクリプトは sfctl を使います。
-  - Visual Studio では、アプリケーション プロジェクトの Parameters フォルダーにパラメーター ファイルのセットが用意されています。 これらのパラメーター ファイルは、Azure DevOps Services または Team Foundation Server を使って、Visual Studio から発行するときに使われます。 Visual Studio では、パラメーター ファイルは Deploy-FabricApplication.ps1 スクリプトに渡されます。
+  - Visual Studio では、アプリケーション プロジェクトの Parameters フォルダーにパラメーター ファイルのセットが用意されています。 これらのパラメーター ファイルは、Azure DevOps Services または Azure DevOps Server を使って、Visual Studio から発行するときに使われます。 Visual Studio では、パラメーター ファイルは Deploy-FabricApplication.ps1 スクリプトに渡されます。
 
 ## <a name="next-steps"></a>次のステップ
 以下の記事では、ここで説明したいくつかの概念の使い方が説明されています。

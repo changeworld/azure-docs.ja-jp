@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 9cdfd0d029057e36e010203b7c35a5aafee4b574
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: a65f20e04603403a1d3a180e364626d5b4440661
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208286"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664513"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps でサポートされているマップ スタイル
 Azure Maps は、次に説明するように、いくつかの異なる組み込みマップ スタイルをサポートしています。
@@ -52,7 +52,7 @@ Azure Maps は、次に説明するように、いくつかの異なる組み込
 ## <a name="satellite_road_labels"></a>satellite_road_labels
 このマップ スタイルは、衛星画像と航空映像の上に道路とラベルが重ねて表示されたハイブリッドです。
 
-![satellite_road_labels マップ スタイル](./media/supported-map-styles/satellite_road_labels.png)
+![satellite_road_labels マップ スタイル](./media/supported-map-styles/satellite-road-labels.png)
 
 **該当する API:**
 * Web SDK マップ コントロール
@@ -61,7 +61,7 @@ Azure Maps は、次に説明するように、いくつかの異なる組み込
 ## <a name="grayscale_dark"></a>grayscale_dark
 **グレースケール ダーク**は、道路マップ スタイルの濃いバージョンです。
 
-![gray_scale マップ スタイル](./media/supported-map-styles/grayscale_dark.png)
+![gray_scale マップ スタイル](./media/supported-map-styles/grayscale-dark.png)
 
 **該当する API:**
 * [マップ画像](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
@@ -73,7 +73,7 @@ Azure Maps は、次に説明するように、いくつかの異なる組み込
 ## <a name="grayscale_light"></a>grayscale_light
 **グレースケール ライト**は、道路マップ スタイルの薄いバージョンです。
 
-![グレースケール ライト マップ スタイル](./media/supported-map-styles/grayscale_light.png)
+![グレースケール ライト マップ スタイル](./media/supported-map-styles/grayscale-light.png)
 
 **該当する API:**
 * Web SDK マップ コントロール
@@ -99,6 +99,14 @@ Azure Maps は、次に説明するように、いくつかの異なる組み込
 * Web SDK マップ コントロール
 * Android マップ コントロール
 
+## <a name="high_contrast_dark"></a>high_contrast_dark
+
+**high_contrast_dark** は、他のスタイルと比較してコントラストが強いダーク マップ スタイルです。
+
+![コントラストの強いダーク マップ スタイル](./media/supported-map-styles/high-contrast-dark.png)
+
+**該当する API:**
+* Web SDK マップ コントロール
 
 ## <a name="next-steps"></a>次のステップ
 

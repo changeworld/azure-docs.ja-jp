@@ -5,15 +5,15 @@ services: active-directory
 author: curtand
 ms.service: active-directory
 ms.topic: include
-ms.date: 01/22/2020
+ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 2e06a6c8dd7eb58769f504db9f96e0303c3e9f4c
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 5356252432b70654648a832f9ac27698f29b6327
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76748943"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78202513"
 ---
 ここでは、Azure Active Directory (Azure AD) サービスの使用上の制約およびその他のサービスの制限を説明します。
 
@@ -21,7 +21,7 @@ ms.locfileid: "76748943"
 | --- | --- |
 | ディレクトリ | 1 人のユーザーは、最大で 500 の Azure AD ディレクトリにゲストまたはメンバーとして属することができます。<br/>1 人のユーザーは、最大で 20 個のディレクトリを作成できます。 |
 | ドメイン | 追加できるマネージド ドメイン名は 900 個以下です。 オンプレミス Active Directory とのフェデレーションをすべてのドメインに設定する場合、各ディレクトリに追加できるドメイン名は 450 個以下です。 |
-|リソース |<ul><li>Azure Active Directory の Free エディションのユーザーは、既定で 1 つのディレクトリに最大 50,000 個の Azure AD リソースを作成できます。 検証済みドメインが少なくとも 1 つあれば、Azure AD でのディレクトリ サービスの既定のクォータは、300,000 個の Azure AD リソースに拡張されます。 </li><li>管理者以外のユーザーは、最大 250 個の Azure AD リソースを作成できます。 アクティブ リソースと復元可能な削除済みリソースの両方が、このクォータに加算されます。 30 日未満に削除された削除済み Azure AD リソースのみが復元可能です。 復元できなくなった削除済み Azure AD リソースは、30 日間、 4 分の 1 の値でこのクォータに加算されます。 通常の作業で、このクォータを繰り返し超過する可能性のある開発者がいる場合は、無制限の数のアプリ登録を作成できる権限を持った[カスタムロールを作成して割り当てる](../articles/active-directory/users-groups-roles/roles-quickstart-app-registration-limits.md)こともできます。</li></ul> |
+|リソース |<ul><li>Azure Active Directory の Free エディションのユーザーは、既定で 1 つのディレクトリに最大 50,000 個の Azure AD リソースを作成できます。 検証済みドメインが少なくとも 1 つある場合は、組織の既定の Azure AD サービス クォータは 300,000 個の Azure AD リソースに拡張されます。 このサービス制限は、Azure AD の価格ページに記載されている 500,000 リソースの価格レベル制限とは関係ありません。 既定のクォータを超えるためには、Microsoft サポートに連絡する必要があります。</li><li>管理者以外のユーザーは、最大 250 個の Azure AD リソースを作成できます。 アクティブ リソースと復元可能な削除済みリソースの両方が、このクォータに加算されます。 30 日未満に削除された削除済み Azure AD リソースのみが復元可能です。 復元できなくなった削除済み Azure AD リソースは、30 日間、 4 分の 1 の値でこのクォータに加算されます。 通常の作業で、このクォータを繰り返し超過する可能性のある開発者がいる場合は、無制限の数のアプリ登録を作成できる権限を持った[カスタムロールを作成して割り当てる](../articles/active-directory/users-groups-roles/roles-quickstart-app-registration-limits.md)こともできます。</li></ul> |
 | スキーマの拡張機能 |<ul><li>文字列型の拡張の最大文字数は 256 文字です。 </li><li>バイナリ型の拡張は 256 バイトに制限されます。</li><li>1 つの Azure AD リソースに対して書き込める拡張値は、(*すべて*の型と*すべて*のアプリケーションで合計) 100 個のみです。</li><li>文字列型またはバイナリ型の単一値の属性を使用して拡張できるのは、User、Group、TenantDetail、Device、Application、および ServicePrincipal エンティティのみです。</li><li>スキーマ拡張は、Graph API バージョン 1.21 プレビューでのみ使用できます。 拡張を登録するには、アプリケーションに書き込みアクセス権を付与する必要があります。</li></ul> |
 | [アプリケーション] |最大 100 人のユーザーが 1 つのアプリケーションの所有者になれます。 |
 |アプリケーション マニフェスト |アプリケーション マニフェストには、最大で 1200 のエントリを追加できます。 |

@@ -3,12 +3,12 @@ title: FAQ - Azure VM 上の SAP HANA データベースのバックアップ
 description: この記事では、Azure Backup サービスを使用した SAP HANA データベースのバックアップに関する一般的な質問への回答を示します。
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: e5684024668103ccbe13be4af3d7a9336651df77
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: d9d10e38885ba814045d8476b83671153feb7b8c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74287365"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919687"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>よく寄せられる質問 - Azure VM 上の SAP HANA データベースをバックアップする
 
@@ -22,7 +22,7 @@ ms.locfileid: "74287365"
 
 ### <a name="do-successful-backup-jobs-create-alerts"></a>成功したバックアップ ジョブでアラートが作成されますか?
 
-No. 成功したバックアップ ジョブではアラートは生成されません。 アラートは、失敗したバックアップ ジョブに対してのみ送信されます。 ポータル アラートの詳細な動作は[ここ](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor)に記載されています。 ただし、成功したジョブに対してもアラートを生成することに関心がある場合は、[Azure Monitor](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor) を使用できます。
+いいえ。 成功したバックアップ ジョブではアラートは生成されません。 アラートは、失敗したバックアップ ジョブに対してのみ送信されます。 ポータル アラートの詳細な動作は[ここ](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor)に記載されています。 ただし、成功したジョブに対してもアラートを生成することに関心がある場合は、[Azure Monitor](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor) を使用できます。
 
 ### <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>スケジュールされたバックアップ ジョブを [バックアップ ジョブ] メニューで確認できますか?
 
@@ -43,11 +43,11 @@ SAP HANA インスタンスからデータベースが削除された場合で�
 
 ### <a name="what-are-the-prerequisites-to-back-up-sap-hana-databases-on-an-azure-vm"></a>Azure VM 上の SAP HANA データベースをバックアップするための前提条件は何ですか?
 
-「[前提条件](tutorial-backup-sap-hana-db.md#prerequisites)」および「[アクセス許可の設定](tutorial-backup-sap-hana-db.md#setting-up-permissions)」のセクションを参照してください。
+「[前提条件](tutorial-backup-sap-hana-db.md#prerequisites)」セクションと[事前登録スクリプトの内容](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)に関するセクションを参照してください。
 
 ### <a name="what-permissions-should-be-set-for-azure-to-be-able-to-back-up-sap-hana-databases"></a>Azure で SAP HANA データベースをバックアップできるようにするには、どのようなアクセス許可を設定する必要がありますか?
 
-事前登録スクリプトを実行すると、Azure で SAP HANA データベースをバックアップできるようにするために必要なアクセス許可が設定されます。 アクセス許可について詳しくは、[こちら](tutorial-backup-sap-hana-db.md#setting-up-permissions)をご覧ください。
+事前登録スクリプトを実行すると、Azure で SAP HANA データベースをバックアップできるようにするために必要なアクセス許可が設定されます。 事前登録スクリプトで実行される処理の詳細については、[こちら](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)をご覧ください。
 
 ### <a name="will-backups-work-after-migrating-sap-hana-from-10-to-20"></a>SAP HANA を 1.0 から 2.0 に移行した後、バックアップは機能しますか?
 
@@ -67,6 +67,6 @@ SAP HANA インスタンスからデータベースが削除された場合で�
 
 SAP HANA ノート [1642148](https://launchpad.support.sap.com/#/notes/1642148) を参照し、現在サポートされている復元の種類を確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure VM で実行されている [SAP HANA データベースをバックアップする](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database)方法を学習します。

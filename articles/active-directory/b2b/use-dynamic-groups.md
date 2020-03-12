@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 12/14/2017
+ms.date: 02/28/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4e3f64cb6aefb35c3f85bafc2bb408f998626d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 41e8b81bc3594c6a378757636f70058510a38cc7
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112831"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226871"
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>動的グループと Azure Active Directory B2B コラボレーション
 
@@ -25,23 +25,53 @@ Azure Active Directory (Azure AD) のセキュリティ グループ メンバ�
 
 動的グループを作成および使用するには、適切な [Azure AD Premium P1 または P2 ライセンス](https://azure.microsoft.com/pricing/details/active-directory/)が必要です。 詳細については「[Azure Active Directory で動的グループ メンバーシップの属性ベースのルールを作成する](../users-groups-roles/groups-dynamic-membership.md)」の記事を参照してください。
 
-## <a name="what-are-the-built-in-dynamic-groups"></a>組み込みの動的グループとは
-**[すべてのユーザー]** 動的グループを使用すると、テナント管理者は、テナントのすべてのユーザーを含むグループをワンクリックで作成できます。 既定では、 **[すべてのユーザー]** グループには、メンバーとゲストを含む、ディレクトリ内のすべてのユーザーが含まれます。
-新しい Azure Active Directory 管理ポータルの [グループ設定] ビューで、 **[すべてのユーザー]** グループを有効にすることができます。
+## <a name="creating-an-all-users-dynamic-group"></a>"すべてのユーザー" の動的グループの作成
+メンバーシップ ルールを使用し、テナント内のすべてのユーザーを含むグループを作成できます。 将来、ユーザーがテナントに追加されたり、テナントから削除されたりしたとき、メンバーシップは自動的に調整されます。
 
-![[" すべてのユーザー" グループの有効化] を [はい] に設定](media/use-dynamic-groups/enable-all-users-group.png)
+1. テナントのグローバル管理者またはユーザー管理者ロールが割り当てられたアカウントで [Azure portal](https://portal.azure.com) にサインインします。
+1. **[Azure Active Directory]** を選択します。
+2. **[管理]** の下の **[グループ]** を選択し、 **[新しいグループ]** を選択します。
+1. **[新しいグループ]** ページで、 **[グループの種類]** の下の **[セキュリティ]** を選択します。 新しいグループの **[グループ名]** と **[グループの説明]** を入力します。 
+2. **[メンバーシップの種類]** で、 **[動的ユーザー]** 、 **[動的クエリの追加]** の順に選択します。 
+4. **[ルール構文]** テキスト ボックスの上の **[編集]** を選択します。 **[ルール構文の編集]** ページで、テキスト ボックスに次の式を入力します。
 
-## <a name="hardening-the-all-users-dynamic-group"></a>[すべてのユーザー] 動的グループの強化
-既定では、 **[すべてのユーザー]** グループには B2B コラボレーション (ゲスト) ユーザーも含まれます。 ゲスト ユーザーを削除するルールを使用して、 **[すべてのユーザー]** グループをさらに保護することができます。 次の図は、ゲストを除外するように変更された **[すべてのユーザー]** グループを示しています。
+   ```
+   user.objectId -ne null
+   ```
+1. **[OK]** を選択します。 [ルール構文] ボックスにルールが表示されます。
 
-![ユーザーの種類がゲストと等しくない場合のルール](media/use-dynamic-groups/exclude-guest-users.png)
+   ![すべてのユーザーの動的グループに対するルール構文](media/use-dynamic-groups/all-user-rule-syntax.png)
 
-ゲスト ユーザーにポリシー (Azure AD の条件付きアクセス ポリシーなど) を適用できるように、ゲスト ユーザーのみが含まれる新しい動的グループを作成すると便利な場合もあります。
-グループは次のようになります。
+1.  **[保存]** を選択します。 これで、新しい動的グループには、B2B ゲスト ユーザーとメンバー ユーザーが含まれるようになります。
 
-![ユーザーの種類がゲストと等しい場合のルール](media/use-dynamic-groups/only-guest-users.png)
 
-## <a name="next-steps"></a>次の手順
+1. **[新規グループ]** ページで **[作成]** をクリックして、グループを作成します。
+
+## <a name="creating-a-group-of-members-only"></a>メンバーのみのグループの作成
+
+グループでゲストユーザーを除外し、テナントのメンバーのみを含める場合は、前述のように動的グループを作成しますが、 **[ルール構文]** ボックスには次の式を入力します。
+
+```
+(user.objectId -ne null) and (user.userType -eq "Member")
+```
+
+次の図は、メンバーのみを含み、ゲストを除外するように変更された動的グループのルール構文を示しています。
+
+![ユーザーの種類がメンバーと等しい場合のルールを示す](media/use-dynamic-groups/all-member-user-rule-syntax.png)
+
+## <a name="creating-a-group-of-guests-only"></a>ゲストのみのグループの作成
+
+ゲスト ユーザーにポリシー (Azure AD の条件付きアクセス ポリシーなど) を適用できるように、ゲスト ユーザーのみが含まれる新しい動的グループを作成すると便利な場合もあります。 前述のように動的グループを作成しますが、 **[ルール構文]** ボックスには次の式を入力します。
+
+```
+(user.objectId -ne null) and (user.userType -eq "Guest")
+```
+
+次の図は、ゲストのみを含み、メンバー ユーザーを除外するように変更された動的グループのルール構文を示しています。
+
+![ユーザーの種類がゲストと等しい場合のルール](media/use-dynamic-groups/all-guest-user-rule-syntax.png)
+
+## <a name="next-steps"></a>次のステップ
 
 - [B2B コラボレーション ユーザーのプロパティ](user-properties.md)
 - [B2B コラボレーション ユーザーのロールへの追加](add-guest-to-role.md)

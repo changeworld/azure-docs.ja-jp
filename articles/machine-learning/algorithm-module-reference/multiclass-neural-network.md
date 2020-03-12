@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: f94427ddfbdc19836cd177fd642987aaaeedf1ee
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 653b12ddd54c5ec9e4e7dd23a323f34460daa962
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152093"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920418"
 ---
 # <a name="multiclass-neural-network-module"></a>Multiclass Neural Network (多クラス ニューラル ネットワーク) モジュール
 
@@ -46,7 +46,7 @@ ms.locfileid: "77152093"
 
     - **Single Parameter (単一パラメーター)** : モデルを構成する方法が既にわかっている場合は、このオプションを選択します。
 
-    
+    - **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターがわからず、パラメーター スイープを実行する場合は、このオプションを選択します。 反復する値の範囲を選択します。[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)では、指定した設定の可能なすべての組み合わせに対して反復処理を行い、最適な結果を生成するハイパーパラメーターを決定します。  
 
 3. **Hidden layer specification (非表示の層の仕様)** : 作成するネットワーク アーキテクチャの種類を選択します。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jonbeck
-ms.openlocfilehash: 755ea3ea3c246a1fa9fb7d514569c6fcecc0c04c
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 398575cc5c3dea96aa644533eb6ce8a262d1981c
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598716"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164493"
 ---
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシンのサイズ
 
@@ -27,12 +27,12 @@ ms.locfileid: "77598716"
 
 | Type | サイズ | 説明 |
 |------|-------|-------------|
-| [汎用](../sizes-general.md) | B、Dsv3、Dv3、Dasv4、Dav4、DSv2、Dv2、Av2、DC | バランスのとれた CPU 対メモリ比。 テストと開発、小～中規模のデータベース、および低～中程度のトラフィックの Web サーバーに最適です。 |
+| [汎用](../sizes-general.md) | B、Dsv3、Dv3、Dasv4、Dav4、DSv2、Dv2、Av2、DC、DCv2 | バランスのとれた CPU 対メモリ比。 テストと開発、小～中規模のデータベース、および低～中程度のトラフィックの Web サーバーに最適です。 |
 | [コンピューティングの最適化](../sizes-compute.md) | Fsv2 | 高い CPU 対メモリ比。 トラフィックが中程度の Web サーバー、ネットワーク アプライアンス、バッチ処理、アプリケーション サーバーに適しています。 |
 | [メモリの最適化](../sizes-memory.md) | Esv3、Ev3、Easv4、Eav4、Mv2、M、DSv2、Dv2 | 高いメモリ対 CPU 比。 リレーショナル データベース サーバー、中～大規模のキャッシュ、およびメモリ内分析に適しています。 |
 | [ストレージの最適化](../sizes-storage.md)  | Lsv2 | ビッグ データ、SQL、NoSQL データベース、データ ウェアハウス、および大規模なトランザクション データベースに最適な、高いディスク スループットと IO。  |
 | [GPU](../sizes-gpu.md) | NC、NCv2、NCv3、ND、NDv2 (プレビュー)、NV、NVv3、NVv4 | 負荷の高いグラフィックスのレンダリングやビデオ編集、ディープ ラーニングを使用したモデル トレーニングと推論 (ND) に特化した仮想マシン。 1 つまたは複数の GPU で利用できます。 |
-| [ハイ パフォーマンス コンピューティング](../sizes-hpc.md) | HB、HC、H | 高スループットのネットワーク インターフェイス (RDMA) のオプションを備えた、最も高速かつ強力な CPU 仮想マシン。 |
+| [ハイ パフォーマンス コンピューティング](../sizes-hpc.md) | HB、HBv2、HC、H | 高スループットのネットワーク インターフェイス (RDMA) のオプションを備えた、最も高速かつ強力な CPU 仮想マシン。 |
 
 - さまざまなサイズの価格について詳しくは、「 [Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)」を参照してください。
 - Azure VM の一般的な制限事項については、「 [Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-subscription-service-limits.md)」を参照してください。

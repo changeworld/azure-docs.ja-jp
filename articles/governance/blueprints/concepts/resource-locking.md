@@ -1,14 +1,14 @@
 ---
 title: リソース ロックについて
 description: ブループリントを割り当てるときにリソースを保護するための Azure Blueprints 内のロック オプションについて説明します。
-ms.date: 04/24/2019
+ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: e042a4d117e28a2fd2228ce36f1be98a1da31e91
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: b810e8d4ddd263f9e651704d1bf9b785ce0202db
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77057347"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199701"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Azure Blueprint でのリソース ロックについて
 
@@ -33,6 +33,59 @@ ms.locfileid: "77057347"
 通常、サブスクリプションに対する適切な[ロールベースのアクセス制御](../../../role-based-access-control/overview.md) (RBAC) を持つユーザー (所有者ロールのユーザーなど) が、リソースの変更や削除を許可されることはありえます。 ただし、デプロイされた割り当ての一部として Blueprint がロックを適用している場合には、このアクセスは許可されません。 **読み取り専用**オプションまたは**削除しない**オプションを使用して割り当てが設定されている場合、サブスクリプション所有者であっても、ブロックされたアクションを保護されたリソースに対して実行することはできません。
 
 このセキュリティ対策により、定義済みのブループリントの一貫性と作成目的で設計された環境が、偶発的またはプログラムによる削除や変更から保護されます。
+
+### <a name="assign-at-management-group"></a>管理グループに割り当てる
+
+サブスクリプションの所有者がブループリント割り当てを削除できないようにするための追加のオプションは、ブループリントを管理グループに割り当てることです。 このシナリオでは、管理グループの**所有者**だけが、ブループリント割り当てを削除するために必要なアクセス許可を持っています。
+
+サブスクリプションではなく管理グループにブループリントを割り当てる場合、REST API 呼び出しは、次のように変更されます。
+
+```http
+PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{assignmentMG}/providers/Microsoft.Blueprint/blueprintAssignments/{assignmentName}?api-version=2018-11-01-preview
+```
+
+`{assignmentMG}` によって定義される管理グループは、管理グループ階層内にあるか、ブループリント定義が保存されている管理グループと同じである必要があります。
+
+ブループリント割り当ての要求本文は、次のようになります。
+
+```json
+{
+    "identity": {
+        "type": "SystemAssigned"
+    },
+    "location": "eastus",
+    "properties": {
+        "description": "enforce pre-defined simpleBlueprint to this XXXXXXXX subscription.",
+        "blueprintId": "/providers/Microsoft.Management/managementGroups/{blueprintMG}/providers/Microsoft.Blueprint/blueprints/simpleBlueprint",
+        "scope": "/subscriptions/{targetSubscriptionId}",
+        "parameters": {
+            "storageAccountType": {
+                "value": "Standard_LRS"
+            },
+            "costCenter": {
+                "value": "Contoso/Online/Shopping/Production"
+            },
+            "owners": {
+                "value": [
+                    "johnDoe@contoso.com",
+                    "johnsteam@contoso.com"
+                ]
+            }
+        },
+        "resourceGroups": {
+            "storageRG": {
+                "name": "defaultRG",
+                "location": "eastus"
+            }
+        }
+    }
+}
+```
+
+この要求本文と、サブスクリプションに割り当てられるものの重要な違いは `properties.scope` プロパティです。 この必須プロパティは、ブループリント割り当てが適用されるサブスクリプションに設定される必要があります。 このサブスクリプションは、ブループリント割り当てが格納される管理グループ階層の直接の子である必要があります。
+
+> [!NOTE]
+> 管理グループの範囲に割り当てられたブループリントは、サブスクリプション レベルのブループリント割り当てとしても機能します。 唯一の違いは、サブスクリプションの所有者が割り当ておよび関連付けられているロックを削除できないようにするために、ブループリント割り当てが格納されることです。
 
 ## <a name="removing-locking-states"></a>ロック状態を削除する
 
@@ -61,7 +114,7 @@ ms.locfileid: "77057347"
 
 ## <a name="exclude-a-principal-from-a-deny-assignment"></a>拒否割り当てからプリンシパルを除外する
 
-一部のデザインまたはセキュリティ シナリオでは、ブルー プリント割り当てによって作成される[割り当て拒否](../../../role-based-access-control/deny-assignments.md)からのプリンシパルの除外が必要な場合があります。 これは、[割り当てを作成する](/rest/api/blueprints/assignments/createorupdate)ときに、REST API 内で **locks** プロパティの **excludedPrincipals** 配列に最大 5 つの値を追加することで実行されます。 これは、**excludedPrincipals** を含む要求本文の例です。
+一部のデザインまたはセキュリティ シナリオでは、ブルー プリント割り当てによって作成される[割り当て拒否](../../../role-based-access-control/deny-assignments.md)からのプリンシパルの除外が必要な場合があります。 この手順は、[割り当てを作成する](/rest/api/blueprints/assignments/createorupdate)ときに、REST API 内で **locks** プロパティの **excludedPrincipals** 配列に最大 5 つの値を追加することで実行されます。 次の割り当て定義は、**excludedPrincipals** を含む要求本文の例です。
 
 ```json
 {

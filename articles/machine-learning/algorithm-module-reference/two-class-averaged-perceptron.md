@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 352881d2fb4ddd8ce438f1bca713513b65f50f40
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 73e23dd7d350ea63e9fd8b933a525a9d8aad9e3e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153759"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920775"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>2 クラス平均化パーセプトロン モジュール
 
@@ -37,6 +37,8 @@ ms.locfileid: "77153759"
 2.  **[Create trainer mode]\(トレーナー モードの作成\)** オプションを設定して、モデルのトレーニング方法を指定します。  
   
     -   **Single Parameter (単一パラメーター)** : モデルの構成方法を決めている場合は、特定の値のセットを引数として渡します。
+
+    -   **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターがわからず、パラメーター スイープを実行する場合は、このオプションを選択します。 反復する値の範囲を選択します。[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)では、指定した設定の可能なすべての組み合わせに対して反復処理を行い、最適な結果を生成するハイパーパラメーターを決定します。  
   
 3.  **[Learning rate]\(学習速度\)** に*学習速度*の値を指定します。 学習速度の値は、モデルがテストされて修正される度に確率的勾配降下法で使用されるステップのサイズを制御します。
   

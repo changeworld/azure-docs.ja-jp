@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: a35239354d23f75361d5577d6b7efc8254943147
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e9e2fe92939088420f973c5ca112b5f59d07f212
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906599"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252680"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure Storage での静的 Web サイト ホスティング
 
@@ -91,6 +91,12 @@ ms.locfileid: "76906599"
 
 > [!TIP]
 > Azure でドメインをホストすることを検討してください。 詳しくは、「[Azure DNS でドメインをホストする](../../dns/dns-delegate-domain-azure-dns.md)」を参照してください。
+
+## <a name="adding-http-headers"></a>HTTP ヘッダーの追加
+
+静的 Web サイト機能の一部としてヘッダーを構成する方法はありません。 ただし、Azure CDN を使用してヘッダーを追加したり、ヘッダー値を追加 (または上書き) したりすることができます。 「[Azure CDN の Standard ルール エンジン リファレンス](https://docs.microsoft.com/azure/cdn/cdn-standard-rules-engine-reference)」を参照してください。
+
+ヘッダーを使用してキャッシュを制御する場合は、「[キャッシュ規則で Azure CDN キャッシュの動作を制御する](https://docs.microsoft.com/azure/cdn/cdn-caching-rules)」を参照してください。
 
 ## <a name="pricing"></a>価格
 

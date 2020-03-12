@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 12/09/2019
+ms.date: 02/26/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 256194d8b0b5e6b08210e9338d945774603ac328
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ffb2ff87eb78ed4088225f832b6df55726196493
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429805"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656624"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポート
 
@@ -31,7 +31,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 - **アクティビティ** 
     - **サインイン** – マネージド アプリケーションの使用状況とユーザー サインイン アクティビティに関する情報。
     - **監査ログ** - [監査ログ](concept-audit-logs.md)は、ユーザーとグループの管理や、マネージド アプリケーションとディレクトリのアクティビティに関するシステム アクティビティ情報を提供します。
-- **セキュリティ** 
+- **Security** 
     - **リスクの高いサインイン** - [リスクの高いサインイン](concept-risky-sign-ins.md)は、ユーザー アカウントの正当な所有者ではないユーザーによるサインイン試行の指標です。
     - **リスクのフラグ付きユーザー** - [リスクの高いユーザー](concept-user-at-risk.md)は、侵害された可能性があるユーザー アカウントの指標です。
 
@@ -105,55 +105,86 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 ![サインイン アクティビティ](./media/concept-sign-ins/04.png "サインイン アクティビティ")
 
-**[ユーザー]** フィルターでは、確認したいユーザーの名前またはそのユーザー プリンシパル名 (UPN) を指定できます。
+**要求 ID** - 確認したい要求の ID です。
 
-**[アプリケーション]** フィルターでは、確認したいアプリケーションの名前を指定できます。
+**ユーザー** - 確認したいユーザーの名前またはそのユーザー プリンシパル名 (UPN) です。
 
-**[サインイン状態]** フィルターでは、次のいずれかを選択できます。
+**アプリケーション** - ターゲット アプリケーションの名前です。
+ 
+**状態** - 確認したいサインインの状態です。
 
-- All
 - Success
+
 - 障害
 
-**条件付きアクセス** フィルターでは、次に示すサインインの CA ポリシーの状態を選択できます。
+- 中断
 
-- All
-- 未適用
+
+**IP アドレス** - テナントへの接続に使用されたデバイスの IP アドレスです。
+
+**場所** - 接続が開始された場所です。
+
+- City
+
+- 都道府県
+
+- 国/リージョン
+
+
+**リソース** - サインインに使用されたサービスの名前です。
+
+
+**リソース ID** - サインインに使用されたサービスの ID です。
+
+
+**クライアント アプリ** - テナントへの接続に使用されたクライアント アプリの種類です。
+
+![クライアント アプリ フィルター](./media/concept-sign-ins/client-app-filter.png)
+
+
+|名前|先進認証|説明|
+|---|:-:|---|
+|認証済み SMTP| |電子メール メッセージを送信するために POP および IMAP のクライアントで使用されます。|
+|自動検出| |Exchange Online でメールボックスを検索して接続するために Outlook および EAS のクライアントで使用されます。|
+|Exchange ActiveSync| |このフィルターは、EAS プロトコルが試行されたすべてのサインイン試行を表示します。|
+|Browser|![○](./media/concept-sign-ins/check.png)|Web ブラウザーを使用したユーザーのすべてのサインイン試行を表示します|
+|Exchange ActiveSync| | Exchange ActiceSync を使用して Exchange Online に接続するクライアント アプリでのユーザーのすべてのサインイン試行を表示します|
+|Exchange Online PowerShell| |リモート PowerShell を使用して Exchange Online に接続するために使用されます。 Exchange Online PowerShell の基本認証をブロックする場合は、Exchange Online PowerShell モジュールを使用して接続する必要があります。 手順については、「[多要素認証を使用して Exchange Online PowerShell に接続する](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)」を参照してください。|
+|Exchange Web サービス| |Outlook、Outlook for Mac、およびサードパーティ製アプリによって使用されるプログラミング インターフェイスです。|
+|IMAP4| |IMAP を使用して電子メールを取得する従来のメール クライアント。|
+|MAPI over HTTP| |Outlook 2010 以降で使用されます。|
+|モバイル アプリとデスクトップ クライアント|![○](./media/concept-sign-ins/check.png)|モバイル アプリとデスクトップ クライアントを使用したユーザーのすべてのサインイン試行を表示します。|
+|オフライン アドレス帳| |Outlook によってダウンロードおよび使用されるアドレス一覧コレクションのコピーです。|
+|Outlook Anywhere (RPC over HTTP)| |Outlook 2016 以降で使用されます。|
+|Outlook サービス| |Windows 10 用のメール/カレンダー アプリで使用されます。|
+|POP3| |POP3 を使用して電子メールを取得する従来のメール クライアント。|
+|レポート Web サービス| |Exchange Online でレポート データを取得するために使用されます。|
+|その他のクライアント| |クライアント アプリが含まれていない、または不明であるユーザーのサインインの試行をすべて表示します。|
+
+
+
+**オペレーティング システム** - テナントへのサインオンに使用されたデバイスで実行されているオペレーティング システムです。 
+
+
+**デバイス ブラウザー** - ブラウザーから接続が開始された場合、このフィールドを使用するとブラウザー名でフィルター処理できます。
+
+
+**関連付け ID** - アクティビティの関連付け ID です。
+
+
+**条件付きアクセス** - 適用されている条件付きアクセス規則の状態です
+
+- 適用されていません 
+
 - Success
+
 - 障害
 
-**[日付]** フィルターでは、返されるデータの期間を定義できます。  
-次のいずれかの値になります。
 
-- 1 か月
-- 7 日
-- 24 時間
-- カスタム期間
 
-カスタムの期間を選択すると、開始時刻と終了時刻を構成できます。
 
-サインイン ビューにフィールドを追加すると、これらのフィールドがフィルターの一覧に自動的に追加されます。 たとえば、 **[クライアント アプリ]** フィールドを一覧に追加した場合、次のフィルターを設定できるもう 1 つのフィルター オプションが表示されます。  
-![サインイン アクティビティ](./media/concept-sign-ins/12.png "サインイン アクティビティ")
 
-- **ブラウザー**  
-    このフィルターは、ブラウザー フローを使用してサインインが試行されたすべてのイベントを表示します。
-- **Exchange ActiveSync (サポート対象)**  
-    このフィルターは、iOS、Android、Windows Phone など、サポートされているプラットフォームから Exchange ActiveSync (EAS) プロトコルが試行されているすべてのサインイン試行を表示します。
-- **Exchange ActiveSync (サポート対象外)**  
-    このフィルターは、Linux ディストリビューションのようなサポートされないプラットフォームから EAS プロトコルが試行されているすべてのサインイン試行を表示します。
-- **モバイル アプリとデスクトップ クライアント**。このフィルターは、ブラウザー フローを使用していなかったすべてのサインイン試行を表示します。 たとえば、任意のプロトコルを使用する任意のプラットフォームからのモバイル アプリや、Windows または MacOS 上の Office のようなデスクトップ クライアント アプリなどです。
-  
-- **その他のクライアント**
-    - **IMAP**  
-        IMAP を使用して電子メールを取得する従来のメール クライアント。
-    - **MAPI**  
-        Office 2013。ADAL が有効になっており、MAPI が使用されています。
-    - **以前のバージョンの Office クライアント**  
-        ADAL が有効になっておらず、MAPI が使用されている既定の構成の Office 2013。あるいは、ADAL が無効になっている Office 2016。
-    - **POP**  
-        POP3 を使用して電子メールを取得する従来のメール クライアント。
-    - **SMTP**  
-        SMTP を使用して電子メールを送信する従来のメール クライアント。
+
 
 ## <a name="download-sign-in-activities"></a>サインイン アクティビティのダウンロード
 
@@ -197,7 +228,7 @@ Azure AD と Azure portal には両方とも、サインイン データへの�
 - アプリケーション ID
 - Application
 - Client
-- Location
+- 場所
 - IP アドレス
 - Date
 - MFA が必要

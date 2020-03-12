@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1547f0e600031f558dcc0157df2a35fdf3f9db2c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 07c8f84f2e37abd87953d8e4cb20b37258b25fda
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224685"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920498"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure における SAP HANA インフラストラクチャの構成と運用
 このドキュメントは、Azure インフラストラクチャの構成と Azure のネイティブ仮想マシン (VM) にデプロイされている SAP HANA システムの運用に関するガイダンスを提供します。 また、ドキュメントには、M128 の VM SKU 向けの SAP HANA スケールアウトの構成情報が含まれます。 このドキュメントは、以下の内容を含む標準の SAP ドキュメントを代替するものではありません。
@@ -34,7 +34,7 @@ ms.locfileid: "74224685"
 
 - [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
 - [Azure ネットワーキングおよび仮想ネットワーク](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
-- [Azure Storage](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks)
+- [Azure ストレージ](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks)
 
 Azure 上の SAP NetWeaver や他の SAP コンポーネントについて詳しくは、[Azure のドキュメント](https://docs.microsoft.com/azure/) に関するページの [Azure 上の SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) に関するセクションをご覧ください。
 
@@ -67,7 +67,7 @@ VPN または ExpressRoute 経由でのサイト対サイト接続は運用環�
 [SAP Cloud platform](https://cal.sap.com/) を使って Azure VM サービスに完全にインストールされた SAP HANA プラットフォームをデプロイすることもできます。 インストール プロセスについては、「[Azure に SAP S/4HANA または BW/4HANA をデプロイする](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h)」をご覧いただくか、[こちら](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)でリリースされている自動化スクリプトを参照してください。
 
 >[!IMPORTANT]
-> M208xx_v2 VM を使用するには、Azure VM イメージ ギャラリーから Linux イメージを選択するときに注意する必要があります。 詳細については、[メモリ最適化された仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series)に関する記事をお読みください。 
+> M208xx_v2 VM を使用するには、Azure VM イメージ ギャラリーから Linux イメージを選択するときに注意する必要があります。 詳細については、[メモリ最適化された仮想マシンのサイズ](../../mv2-series.md)に関する記事をお読みください。
 > 
 
 
@@ -112,115 +112,59 @@ SAP HANA を実行している VM では、割り当てられた静的 IP アド
 
 次の図は、ハブとスポークの VNet アーキテクチャに続く SAP HANA の大まかな展開スキーマの概要です。
 
-![SAP HANA の展開スキーマの概要](media/hana-vm-operations/hana-simple-networking.PNG)
+![SAP HANA の展開スキーマの概要](media/hana-vm-operations/hana-simple-networking-dmz.png)
 
 サイト対サイト接続を利用せずに Azure に SAP HANA をデプロイするために、パブリック インターネットから SAP HANA インスタンスをシールドして、転送プロキシの背後に隠しておきたい場合があります。 この基本のシナリオでは、デプロイは Azure の組み込み DNS サービスに依存して、ホスト名を解決します。 公開 IP アドレスが使用されるより複雑なデプロイの場合には、Azure 組み込み DNS サーバーが特に重要です。 Azure NSG と [Azure NVA](https://azure.microsoft.com/solutions/network-appliances/) を使用して、Azure でインターネットから Azure VNet アーキテクチャへのルーティングを監視します。 次の図は、SAP HANA をデプロイする場合の大まかなスキーマを示しています。ハブとスポークの VNet アーキテクチャに、サイト対サイト接続はありません。
   
-![サイト対サイト接続を使用しない SAP HANA のデプロイ スキーマの概要](media/hana-vm-operations/hana-simple-networking2.PNG)
+![サイト対サイト接続を使用しない SAP HANA のデプロイ スキーマの概要](media/hana-vm-operations/hana-simple-networking-dmz.png)
  
 
 「[高可用性のネットワーク仮想アプライアンスをデプロイする](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha)」の記事に、Azure NVA を使用して、ハブとスポークの VNet アーキテクチャを利用せずに、インターネットからのアクセスを制御および監視する方法に関する別の説明があります。
 
 
 ## <a name="configuring-azure-infrastructure-for-sap-hana-scale-out"></a>SAP HANA スケールアウト用に Azure インフラストラクチャを構成する
-Microsoft では、SAP HANA スケールアウト構成で認定されている M シリーズの VM SKU を 1 つ用意しています。 VM の種類である M128 は、最大 16 ノードのスケールアウトに対して認定を取得済みです。 Azure VM における SAP HANA スケールアウト認定の変更については、[認定 IaaS プラットフォームの一覧](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)に関するページを参照してください。
+OLAP スケールアウトまたは S/4HANA スケールアウトのいずれかで認定されている Azure VM の種類を調べるには、[SAP HANA ハードウェア ディレクトリ](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)を確認してください。 列 "Clustering" のチェックマークは、スケールアウトがサポートされていることを示します。 "Application Type" は、OLAP スケールアウトまたは S/4HANA スケールアウトがサポートされているかどうかを示します。 各 VM のスケールアウトに認定されているノードの詳細については、SAP HANA ハードウェア ディレクトリに一覧表示されている特定の VM SKU のエントリの詳細を確認してください。
 
-Azure VM でスケールアウト構成をデプロイするための最小の OS リリース要件は、次の通りです。
-
-- SUSE Linux 12 SP3
-- Red hat Linux 7.4
-
-16 ノードのスケールアウト認定の内訳は、次のとおりです。
-
-- 1 個のノードがマスター ノード
-- 最大 15 個のノードがワーカー ノード
+Azure VM にスケールアウト構成をデプロイするための最小 OS リリースは、SAP HANA ハードウェア ディレクトリに一覧表示されている特定の VM SKU のエントリの詳細を確認してください。 N ノードの OLAP スケールアウト構成では、1 つのノードがマスター ノードとして機能します。 その他のノード (最大数は証明書の上限まで) は、ワーカー ノードとして機能します。 追加のスタンバイ ノードは、認定されたノードの数にカウントされません
 
 >[!NOTE]
->Azure VM スケールアウトのデプロイで、スタンバイ ノードを使用することはありません。
+> スタンバイ ノードで SAP HANA の Azure VM スケールアウト デプロイができるのは、[Azure NetApp Files](https://azure.microsoft.com/services/netapp/) ストレージを使用した場合のみです。 他の SAP HANA 認定 Azure ストレージでは SAP HANA スタンバイ ノードの構成はできません
 >
 
-Azure には [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) によるネイティブな NFS サービスがあり、この NFS サービスは SAP アプリケーション層ではサポートされていますが、SAP HANA についてはまだ認定されていません。 結果として、NFS 共有はまだサードパーティの機能を利用して構成する必要があります。 
+また、/hana/shared にも [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) を使用することをお勧めします。 
 
+スケールアウト構成における単一ノードの一般的な基本設計は次のようになります。
 
-結果として、 **/hana/data** および **/hana/log** ボリュームは共有できません。 単一ノードのこれらのボリュームを共有しないので、スケールアウト構成で SAP HANA スタンバイ ノードは使用されません。
-
-結果として、スケールアウト構成では、単一ノードの基本設計は次のようになります。
-
-![単一ノードのスケールアウトの基本設計](media/hana-vm-operations/scale-out-basics.PNG)
+![単一ノードのスケールアウトの基本設計](media/hana-vm-operations/scale-out-basics-anf-shared.PNG)
 
 SAP HANA スケールアウトの VM ノードの基本構成は、次のようになります。
 
-- **/hana/shared** の場合、高可用性 NFS 共有を構築する必要があります。 現在、そのような高可用性共有を実現するには、さまざまな可能性があります。 これらについては、SAP NetWeaver と共に以下のドキュメントで説明されています。
-    - [SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)
-    - [Red Hat Enterprise Linux for SAP NetWeaver における Azure VM での GlusterFS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)
-    - [SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
-    - [SAP アプリケーション用の Azure NetApp Files を使用した Red Hat Enterprise Linux 上の SAP NetWeaver 用の Azure Virtual Machines の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
-- その他のディスク ボリュームはすべて、異なるノード間では共有**されず**、NFS に基づき**ません**。 非共有 **/hana/data** および **/hana/log** を使用したスケールアウト HANA インストールのインストール構成と手順については、このドキュメントで後述します。
-
->[!NOTE]
->図で示されている高可用性 NFS クラスターについては、「[SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)」で説明されています。 その他の可能性については、上記の一覧に記載されています。
-
-ノードのボリュームのサイズ調整は、 **/hana/shared** 以外ではスケールアップと同じです。 M128 の VM SKU の場合、推奨されるサイズと種類は次の通りです。
-
-| VM の SKU | RAM | 最大 VM I/O<br /> Throughput | /hana/data | hana/log | /root ボリューム | /usr/sap | hana/backup |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| M128s | 2000 GiB | 2000 MB/秒 |3 x P30 | 2 x P20 | 1 x P6 | 1 x P6 | 2 x P40 |
+- **/hana/shared** には、Azure NetApp Files を通じて提供されるネイティブ NFS サービスを使用します。 
+- その他のディスク ボリュームはすべて、異なるノード間では共有されず、NFS に基づきません。 非共有の **/hana/data** および **/hana/log** を使用したスケールアウト HANA インストールのインストール構成と手順については、このドキュメントで後述します。 使用できる HANA 認定ストレージについては、記事「[SAP HANA Azure 仮想マシンのストレージ構成](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)」を確認してください。
 
 
-推奨されるさまざまなボリュームのストレージ スループットが、実行するワークロードに対応できるかどうかを確認します。 ワークロードに **/hana/data** および **/hana/log** のより大きなボリュームが必要な場合は、Azure Premium Storage VHD の数を増やす必要があります。 記載されている数よりも多くの VHD でボリュームのサイズを設定すると、その Azure 仮想マシンの種類の制限内で IOPS と I/O スループットが向上します。 また、Azure の書き込みアクセラレータを、 **/hana/log** ボリュームを形成するディスクに適用します。
- 
-ドキュメント『[SAP HANA TDI Storage Requirements (SAP HANA TDI のストレージ要件)](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)』では、4 つのワーカー ノードごとに単一のワーカー ノードのメモリ サイズとして、スケールアウト用の **/hana/shared** ボリュームのサイズを定義する式に名前が付与されています。
+ボリュームまたはディスクのサイズを設定するときに、ワーカー ノードの数によって決まる必要なサイズについて、[SAP HANA TDI ストレージ要件](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)に関するドキュメントを確認する必要があります。 このドキュメントには、ボリュームの必要な容量を把握するために適用する必要がある数式が記載されています。
 
-約 2 TB メモリを備えた SAP HANA スケールアウトの認定 M128 Azure VM を利用していると仮定した場合、SAP の推奨事項は次のようにまとめることができます。
-
-- 1 個のマスター ノードと最大 4 個のワーカー ノード。 **/hana/shared** ボリュームのサイズは 2 TB にする必要があります。 
-- 1 個のマスター ノードと 5 ～ 8 個のワーカー ノード。 **/hana/shared** のサイズは、4 TB になります。 
-- 1 個のマスター ノードと 9 ～ 12 個のワーカー ノード。 **/hana/shared** には、6 TB のサイズが必要になります。 
-- 1 個のマスター ノードと、12 ～ 15 個のワーカー ノードの使用。 **/hana/shared** ボリュームには、8 TB のサイズを提供することが求められます。
-
-スケールアウト SAP HANA VM の単一ノード構成の図に示されているその他の重要な設計として、VNet またはそれ以上に優れたサブネット構成があります。 SAP では、HANA ノード間の通信から、クライアント/アプリケーションに向かうトラフィックを分離することを強く推奨しています。 図に示すように、2 つの異なる vNIC を VM にアタッチすることで、この目的が達成されます。 2 つの vNIC は別々のサブネットにあり、2 つの異なる IP アドレスを備えています。 NSG またはユーザー定義のルートを使用して規則をルーティングすることで、トラフィックの流れを制御します。
+スケールアウト SAP HANA VM の単一ノード構成の図に示されているその他の設計基準として、VNet またはそれ以上に優れたサブネット構成があります。 SAP では、HANA ノード間の通信から、クライアント/アプリケーションに向かうトラフィックを分離することを強く推奨しています。 図に示すように、2 つの異なる vNIC を VM にアタッチすることで、この目的が達成されます。 2 つの vNIC は別々のサブネットにあり、2 つの異なる IP アドレスを備えています。 NSG またはユーザー定義のルートを使用して規則をルーティングすることで、トラフィックの流れを制御します。
 
 特に Azure には、特定の vNIC にサービスおよびクオータの品質を適用する手段や方法がありません。 そのため、クライアント/アプリケーションへの流れとイントラ ノード通信を分離することで、1 つのトラフィック ストリームがもう 1 方よりも優先されることにはなりません。 代わりに、分離によってスケールアウト構成のイントラノード通信がシールドされる点で、依然としてセキュリティ対策にはなります。  
 
->[!IMPORTANT]
->このドキュメントで説明しているように、SAP では、クライアント/アプリケーション側へのトラフィックとイントラノードのトラフィックを分離することを強く推奨しています。 そのため、先ほどの図に示したアーキテクチャを導入することが、強く推奨されます。
+>[!NOTE]
+>このドキュメントで説明しているように、SAP では、クライアント/アプリケーション側へのネットワーク トラフィックとイントラノード トラフィックを分離することを推奨しています。 そのため、先ほどの図に示したアーキテクチャを導入することが推奨されます。 この推奨から逸脱する要件については、セキュリティとコンプライアンスのチームに問い合わせてください 
 >
 
 ネットワークの観点で最低限必要なネットワーク アーキテクチャは、次のようになります。
 
-![単一ノードのスケールアウトの基本設計](media/hana-vm-operations/scale-out-networking-overview.PNG)
-
-これまでサポートされてきた上限は、1 個のマスター ノードと、追加の 15 個のワーカー ノードです。
-
-ストレージの観点では、ストレージ アーキテクチャは次のようになります。
+![単一ノードのスケールアウトの基本設計](media/hana-vm-operations/overview-scale-out-networking.png)
 
 
-![単一ノードのスケールアウトの基本設計](media/hana-vm-operations/scale-out-storage-overview.PNG)
-
-**/hana/shared** ボリュームは、高可用性 NFS 共有の構成に配置されています。 それに対して、他のすべてのドライブは、個々の VM に 'ローカルに' マウントされます。 
-
-### <a name="highly-available-nfs-share"></a>高可用性 NFS 共有
-これまでの高可用性 NFS クラスターは、SUSE Linux だけと連動していました。 ドキュメント「[SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)」に、設定方法が示されています。 NFS クラスターを SAP HANA インスタンスを実行する Azure VNet 外のその他の HANA 構成と共有しない場合は、NFS クラスターを同じ VNet にインストールします。 NFS クラスターを固有のサブネットにインストールすることで、任意のトラフィックすべてがそのサブネットにアクセスできないようにします。 あるいは、そのサブネットへのトラフィックを、 **/hana/shared** ボリュームへのトラフィックを実行する VM の IP アドレスに制限することを検討してもかまいません。
-
-**/hana/shared** トラフィックをルーティングする必要がある HANA スケールアウト VM の vNIC に関連する推奨事項を次に示します。
-
-- **/hana/shared** へのトラフィック量は中程度なので、最低限の構成で、クライアント ネットワークに割り当てられている vNIC を経由してトラフィックをルーティングします。
-- 最終的に、 **/hana/shared** へのトラフィックでは、SAP HANA スケールアウト構成のデプロイ先となる VNet に第 3 のサブネットをデプロイして、そのサブネットにホストされる第 3 の vNIC を割り当てます。 NFS 共有へのトラフィックでは、その第 3 の vNIC と、関連付けられている IP アドレスを使用します。 これで、別個のアクセス規則とルーティング規則を適用できるようになります。
-
->[!IMPORTANT]
->スケールアウトの手法で SAP HANA がデプロイされている VM と高可用性 NFS 間のネットワーク トラフィックは、いかなる状況でも、[NVA](https://azure.microsoft.com/solutions/network-appliances/) または類似の仮想アプライアンス経由ではルーティングされない可能性があります。 一方、Azure NSG は、このようなデバイスではありません。 SAP HANA を実行している VM から高可用性 NFS 共有にアクセスする場合、NVA または類似の仮想アプライアンスは確実に迂回されるように、ルーティング規則を確認してください。
-> 
-
-SAP HANA 構成間で高可用性 NFS クラスターを共有したい場合は、これらすべての HANA 構成を同じ VNet に移動します。 
- 
 
 ### <a name="installing-sap-hana-scale-out-n-azure"></a>SAP HANA スケールアウトの Azure へのインストール
 スケールアウト SAP 構成をインストールするには、次のおおまかな手順を実行する必要があります。
 
 - 新しい Azure VNet インフラストラクチャをデプロイするか、または既存のものを適用する。
-- Azure マネージド Premium Storage ボリュームを使用して、新しい VM をデプロイする。
-- 高可用性 NFS クラスターを新しくデプロイするか、または既存のクラスターを適用する。
-- VM 間のイントラノード通信などが、確実に[NVA](https://azure.microsoft.com/solutions/network-appliances/) 経由でルーティングされないネットワーク ルーティングを適用する。 VM と高可用性 NFS クラスター間のトラフィックについても、同じことが言えます。
+- Azure マネージド Premium Storage ボリューム、Ultra ディスク ボリューム、ANF に基づく NFS ボリュームを使用して新しい VM をデプロイする。
+- - VM 間のイントラノード通信などが、確実に[NVA](https://azure.microsoft.com/solutions/network-appliances/) 経由でルーティングされないネットワーク ルーティングを適用する。 
 - SAP HANA マスター ノードをインストールする。
 - SAP HANA マスター ノードの構成パラメーターを適用する。
 - SAP HANA ワーカー ノードのインストールを続行する。
@@ -229,11 +173,11 @@ SAP HANA 構成間で高可用性 NFS クラスターを共有したい場合は
 Azure VM インフラストラクチャがデプロイされ、他のすべての準備が完了したら、次の手順に従って SAP HANA スケールアウト構成をインストールする必要があります。
 
 - SAP のドキュメントに従って SAP HANA マスター ノードをインストールする
-- **インストール後、global.ini ファイルを変更して、パラメーター 'basepath_shared = no' を global.ini に追加します**。 このパラメーターを使用すると、ノード間で共有される **/hana/data** および **/hana/log** ボリュームがなくてもスケールアウトで SAP HANA を実行できます。 詳細については、[SAP ノートの #2080991](https://launchpad.support.sap.com/#/notes/2080991) を参照してください。
-- global.ini のパラメーターを変更した後、SAP HANA インスタンスを再起動します。
+- /hana/data および /hana/log の非共有のディスクで Azure Premium Storage または Ultra Disk Storage を使用する場合は、global.ini ファイルを変更し、パラメーター "basepath_shared = no" を global.ini ファイルに追加する必要があります。 このパラメーターを使用すると、ノード間で共有される **/hana/data** および **/hana/log** ボリュームがなくてもスケールアウトで SAP HANA を実行できます。 詳細については、[SAP ノートの #2080991](https://launchpad.support.sap.com/#/notes/2080991) を参照してください。 ANF に基づく NFS ボリュームを /hana/data と /hana/log に使用している場合は、この変更を行う必要はありません
+- global.ini のパラメーターの最後の変更後、SAP HANA インスタンスを再起動します
 - その他のワーカー ノードを追加します。 <https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US/0d9fe701e2214e98ad4f8721f6558c34.html> も参照してください。 インストール中またはローカル hdblcm などの使用後に、SAP HANA インターノード通信の内部ネットワークを指定します。 詳細なドキュメントについては、[SAP ノートの #2183363](https://launchpad.support.sap.com/#/notes/2183363) も参照してください。 
 
-この設定ルーチン以降は、インストールしたスケールアウト構成では、 **/hana/data** および **/hana/log** の実行に非共有ディスクが使用されます。 一方、 **/hana/shared** ボリュームは、高可用性 NFS 共有に配置されます。
+SUSE Linux 上のスタンバイ ノードで SAP HANA スケールアウト システムを設定する方法の詳細については、「[SUSE Linux Enterprise Server 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)」に詳しく記載されています。 Red Hat 向けの同等のドキュメントについては、記事「[Red Hat Enterprise Linux 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)」を参照してください。 
 
 
 ## <a name="sap-hana-dynamic-tiering-20-for-azure-virtual-machines"></a>Azure Virtual Machines 用の SAP HANA Dynamic Tiering 2.0
@@ -256,7 +200,7 @@ SAP BW や S4HANA では、SAP HANA Dynamic Tiering 2.0 はサポートされて
 
 詳細については、以降のセクションで説明します。
 
-![SAP HANA DT 2.0 のアーキテクチャの概要](media/hana-vm-operations/hana-dt-20.PNG)
+![SAP HANA DT 2.0 のアーキテクチャの概要](media/hana-vm-operations/hana-data-tiering.png)
 
 
 
@@ -315,7 +259,7 @@ M64-32ms VM のメモリは多いため、IO 読み込みでは、特に読み�
 
 特に読み取り負荷の高いワークロードの場合、IO パフォーマンスを高め、データベース ソフトウェアのデータ ボリュームに関する推奨事項に従って、Azure ホスト キャッシュの "読み取り専用" を有効にすることができます。 一方、トランザクション ログの場合は、Azure ホスト ディスク キャッシュを "なし" にする必要があります。 
 
-ログ ボリュームのサイズについては、データ サイズの 15% のヒューリスティックを開始点とすることをお勧めします。 ログ ボリュームの作成は、コストとスループットの要件に応じて、さまざまな Azure ディスクの種類を使用して行うことができます。 ログ ボリュームに対しては、高 I/O スループットが必要です。  VM の種類として M64-32ms を使用している場合は、[書き込みアクセラレータ](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)を有効にすることを強くお勧めします。 Azure 書き込みアクセラレータにより、トランザクション ログに最適なディスク書き込み待ち時間が提供されます (M シリーズでのみ利用可能)。 VM の種類ごとのディスクの最大数など、考慮すべきいくつかの項目があります。 書き込みアクセラレータの詳細については、[こちら](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)を参照してください。
+ログ ボリュームのサイズについては、データ サイズの 15% のヒューリスティックを開始点とすることをお勧めします。 ログ ボリュームの作成は、コストとスループットの要件に応じて、さまざまな Azure ディスクの種類を使用して行うことができます。 ログ ボリュームの場合、高い I/O スループットが必要です。  VM の種類として M64-32ms を使用している場合は、[書き込みアクセラレータ](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)を有効にすることが必須です。 Azure 書き込みアクセラレータにより、トランザクション ログに最適なディスク書き込み待ち時間が提供されます (M シリーズでのみ利用可能)。 VM の種類ごとのディスクの最大数など、考慮すべきいくつかの項目があります。 書き込みアクセラレータの詳細については、[こちら](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)を参照してください。
 
 
 ログ ボリュームのサイズ変更に関するいくつかの例を次に示します。
@@ -363,11 +307,22 @@ Azure パブリック クラウドの特長は、コンピューティングを�
 
 インターネット経由で Azure に接続しているときに、SAP HANA を実行する VM 用の SAP ルーターがない場合は、このコンポーネントをインストールする必要があります。 管理サブネット内の別の VM に SAProuter をインストールします。 次の図は、SAP HANA をデプロイする場合の大まかなスキーマです。サイト対サイト接続はなく、SAProuter があります。
 
-![サイト対サイト接続と SAProuter を使用しない SAP HANA のデプロイ スキーマの概要](media/hana-vm-operations/hana-simple-networking3.PNG)
+![サイト対サイト接続と SAProuter を使用しない SAP HANA のデプロイ スキーマの概要](media/hana-vm-operations/hana-simple-networking-saprouter.png)
 
 SAProuter はジャンプボックス VM ではなく、個別の VM にインストールする必要があります。 個別の VM には静的 IP アドレスが必要です。 ご使用の SAProuter を SAP でホストされる SAProuter に接続するには、IP アドレスについて SAP にお問い合わせください。 (SAP でホストされる SAProuter は、VM にインストールした SAProuter インスタンスの相手側になります。)SAP に問い合わせた IP アドレスを使用して、ご使用の SAProuter インスタンスを構成します。 構成設定で必要なポートは TCP ポート 3299 のみです。
 
 SAPRouter 経由でリモート サポート接続をセットアップし維持する方法について詳しくは、[SAP ドキュメント](https://support.sap.com/en/tools/connectivity-tools/remote-support.html)をご覧ください。
 
 ### <a name="high-availability-with-sap-hana-on-azure-native-vms"></a>Azure のネイティブ VM での SAP HANA の高可用性
-SUSE Linux Enterprise Server for SAP Applications 12 SP1 以上を実行している場合は、STONITH デバイスを使用して Pacemaker クラスターを確立できます。 このデバイスを使用して、HANA システム レプリケーションによる同期レプリケーションと自動フェールオーバーを使用する SAP HANA 構成をセットアップできます。 セットアップ手順の詳細については、「[SAP HANA High Availability guide for Azure virtual machines (Azure 仮想マシンの SAP HANA 高可用性ガイド)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)」をご覧ください。
+SUSE Linux Enterprise Server または Red Hat を実行している場合は、STONITH デバイスを使用して Pacemaker クラスターを確立できます。 このデバイスを使用して、HANA システム レプリケーションによる同期レプリケーションと自動フェールオーバーを使用する SAP HANA 構成をセットアップできます。 詳細については、「次の手順」セクションに記載されています。
+
+## <a name="next-steps"></a>次の手順
+一覧表示されている記事について理解を深めます
+- [SAP HANA Azure 仮想マシンのストレージ構成](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
+- [SUSE Linux Enterprise Server 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
+- [Red Hat Enterprise Linux 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
+- [SUSE Linux Enterprise Server 上の Azure VM での SAP HANA の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability)
+- [Red Hat Enterprise Linux 上の Azure VM での SAP HANA の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel)
+
+ 
+

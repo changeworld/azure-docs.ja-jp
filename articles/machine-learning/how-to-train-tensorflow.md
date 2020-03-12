@@ -1,5 +1,5 @@
 ---
-title: TensorFlow でニューラル ネットワークをトレーニングする
+title: TensorFlow モデルのトレーニングとデプロイ
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning を使用して、大規模な TensorFlow トレーニング スクリプトを実行する方法について説明します。
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: a1c3e1948d53a168ce9a3e99cd932fa04e2fafc4
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: 2bbd81f3858aa78b9e0e2d610c0fdb0a67816c8e
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114371"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228316"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して大規模な TensorFlow ディープ ラーニング モデルを構築する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -305,11 +305,11 @@ cluster_spec = tf.train.ClusterSpec(cluster)
 
 ```
 
-## <a name="deployment"></a>デプロイ
+## <a name="deploy-a-tensorflow-model"></a>TensorFlow モデルをデプロイする
 
 今登録したモデルは、どのエスティメーターをトレーニングに使用したかには関係なく、Azure Machine Learning の他のすべての登録済みのモデルとまったく同じ方法でデプロイできます。 デプロイ方法にはモデルの登録に関するセクションが含まれていますが、登録済みのモデルが既にあるため、デプロイのために[コンピューティング先の作成](how-to-deploy-and-where.md#choose-a-compute-target)に直接スキップできます。
 
-### <a name="preview-no-code-model-deployment"></a>(プレビュー) コードなしのモデル デプロイ
+## <a name="preview-no-code-model-deployment"></a>(プレビュー) コードなしのモデル デプロイ
 
 従来のデプロイ ルートの代わりに、コードなしのデプロイ機能 (プレビュー) を Tensorflow に使用することもできます。 `model_framework`、`model_framework_version`、および `resource_configuration` パラメーターを使用して前に示したようにモデルを登録することにより、単純に `deploy()` 静的関数を使用してモデルをデプロイできます。
 

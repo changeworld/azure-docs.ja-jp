@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/25/2020
 ms.author: rajanaki
-ms.openlocfilehash: 68d975a1b8bb8d47011bb292d3cf897956b31712
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 208177d10e9002fafe2495710da229541a11a43e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623614"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661672"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>Azure Site Recovery を使用したカスタマー マネージド サイト間での (VMM による) ディザスター リカバリーの廃止
 
@@ -36,10 +36,8 @@ Site Recovery を使用する System Center Virtual Machine Manager (SCVMM) に�
 
 シナリオが非推奨になったときに DR 戦略に影響が出ないようにするためにお客様が選択可能な代替手段を次に示します。 
 
-- オプション 1 (推奨):[Hyper-V ホスト上の VM の DR ターゲットとして Azure の使用を開始する](hyper-v-azure-tutorial.md)ことを選択します。
+- オプション 1 (推奨):[DR ターゲットとして Azure の使用を開始する](hyper-v-vmm-azure-tutorial.md)ことを選択します。
 
-    > [!IMPORTANT]
-    > オンプレミス環境には引き続き SCVMMM を存在させることができますが、Hyper-V ホストのみを参照する ASR を構成する必要があることに注意してください。
 
 - オプション 2:サイト間レプリケーションを、基本的な [Hyper-Hyper-V レプリカ ソリューション](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica)を使用して続行することを選択します。ただし、Azure portal で Azure Site Recovery を使用して DR 構成を管理することはできません。 
 
@@ -50,15 +48,11 @@ Site Recovery を使用する System Center Virtual Machine Manager (SCVMM) に�
 
 1. [VMMs に関連付けられているすべての仮想マシンの保護を無効にします](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-secondary-vmm-server-using-the-system-center-vmm-to-vmm-scenario)。 **[レプリケーションの無効化]** を使用してオプションを削除するか、前述のスクリプトを実行して、レプリケーション設定のオンプレミスがクリーン アップされるようにします。 
 
-2. [すべての VMM サーバーを登録する](site-recovery-manage-registration-and-protection.md#unregister-a-vmm-server)
+2. サイト間レプリケーションの構成から[すべての VMM サーバーを登録解除](site-recovery-manage-registration-and-protection.md#unregister-a-vmm-server)します。
 
 3. VM のレプリケーションを有効にするために、[Azure リソースを準備](tutorial-prepare-azure-for-hyperv.md)します。
 4. [オンプレミスの Hyper-V を準備する](hyper-v-prepare-on-premises-tutorial.md)
-
-> [!IMPORTANT]
-> VMM を準備するための手順を実行する必要はないことに注意してください。
-
-5. [VM のレプリケーションを設定する](hyper-v-azure-tutorial.md)
+5. [VMM クラウド内の VM のレプリケーションを設定する](hyper-v-vmm-azure-tutorial.md)
 6. 省略可能ですが、実施することをお勧めします。[DR ドリルを実行する](tutorial-dr-drill-azure.md)
 
 Hyper-V レプリカを使用するオプション 2 を選択する場合は、次の手順を実行してください。

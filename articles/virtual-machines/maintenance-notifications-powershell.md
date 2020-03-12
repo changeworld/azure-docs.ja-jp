@@ -7,18 +7,18 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: c23a06c502bd43b52cb35220b711084c7c8c1c7a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: b23c210d7c8a9f1d42e6e1b46e0f7f81bda857b2
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121844"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916084"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>PowerShell を使用した計画メンテナンスの処理
 
 **この記事は、Linux と Windows の両方を実行する仮想マシンに適用されます。**
 
-Azure Powershell を使用して、VM の[メンテナンス](maintenance-notifications.md)の予定を確認できます。 計画メンテナンスに関する情報は、[Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) コマンドレットに `-status` パラメーターを指定することで取得できます。
+Azure PowerShell を使用して、VM の[メンテナンス](maintenance-notifications.md)の予定を確認できます。 計画メンテナンスに関する情報は、[Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) コマンドレットに `-status` パラメーターを指定することで取得できます。
   
 計画メンテナンスがある場合にのみ、メンテナンス情報が返されます。 VM に影響を及ぼすメンテナンスがスケジュールされていない場合、コマンドレットはメンテナンス情報を返しません。 
 
@@ -83,6 +83,8 @@ Restart-AzVM -PerformMaintenance -name $vm.Name -ResourceGroupName $rg.ResourceG
 ```
 
 ## <a name="classic-deployments"></a>クラシック デプロイ
+
+[!INCLUDE [classic-vm-deprecation](../../includes/classic-vm-deprecation.md)]
 
 クラシック デプロイ モデルを使用してデプロイされたレガシ VM がまだある場合は、PowerShell を使用して、VM を照会し、メンテナンスを開始できます。
 

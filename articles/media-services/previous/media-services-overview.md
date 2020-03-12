@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: juliako
-ms.openlocfilehash: 54c32a87b5afdf165be8187c7189a11c106bbd8f
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 1c2d6287a89c7816c30cf26978859c07dba0251d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562345"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197506"
 ---
 # <a name="azure-media-services-overview"></a>Azure Media Services の概要 
 
@@ -33,6 +33,15 @@ Microsoft Azure Media Services (AMS) は拡張可能なクラウド ベースの
 
 Media Services を使いこなして、エンド ツー エンドのワークフローを構築できます。 ワークフローの一部にサード パーティのコンポーネントを使用することもできます。 たとえば、サード パーティのエンコーダーを使用してエンコードしてから、 Media Services を使用してアップロード、保護、パッケージ化、配信などを行うことができます。 コンテンツをライブ ストリーム配信したり、オンデマンドで配信したりできます。 
 
+
+## <a name="compliance-privacy-and-security"></a>コンプライアンス、プライバシー、セキュリティ
+
+重要な注意事項として、Azure Media Services を使用する際は、適用されるすべての法律に従う必要があります。また、他者の権利を侵害したり、他者に害を及ぼしたりする可能性のある方法で Media Services またはその他の Azure サービスを使用することはできません。
+
+Media Services にビデオまたは画像をアップロードする前に、ビデオまたは画像を使用するための適切な権限をすべて取得している必要があります。これには、法律で義務づけられている場合において、ビデオまたは画像に含まれる人物から、Media Services および Azure でのデータの使用、処理、および保存について、必要なすべての同意を得ることが含まれます (このような人物が存在する場合)。 一部の法的管轄区域では、生体認証データなどの特定のカテゴリのデータの収集、オンライン処理、および保管に関して特別な法的要件が課せられる場合があります。 特別な法的要件の対象となるデータの処理と保管のために Media Services と Azure を使用する前に、適用される可能性のあるこのような法的要件に準拠していることを確認する必要があります。
+
+Media Services のコンプライアンス、プライバシー、セキュリティについては、Microsoft [セキュリティ センター](https://www.microsoft.com/trust-center/?rtc=1)にアクセスしてください。 Microsoft のプライバシー義務、データの取り扱いと保持の慣行 (データの削除方法など) については、Microsoft の[プライバシー ステートメント](https://privacy.microsoft.com/PrivacyStatement)、[オンライン サービス条項](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) ("OST")、および[データ処理の補遺](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA") に関するページをご確認ください。 Media Services を使用することによって、OST、DPA およびプライバシー ステートメントに従うことに同意したものと見なされます。
+ 
 ## <a name="prerequisites"></a>前提条件
 
 Azure Media Services を使用するには、次が必要です。

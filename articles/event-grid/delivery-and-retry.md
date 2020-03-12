@@ -5,14 +5,14 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/15/2019
+ms.date: 02/27/2020
 ms.author: spelluru
-ms.openlocfilehash: 483b8251bf17eaa5fe7aa7cbd86299575535725d
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: dda2fd98c4c0d330059156a5ec00baa97ffaf627
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74170046"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921064"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid によるメッセージの配信と再試行
 
@@ -26,12 +26,33 @@ Event Grid の既定では、サブスクライバーに各イベントが個別
 
 一括配信には、次の 2 つの設定があります。
 
-* **[バッチごとの最大イベント数]** は、Event Grid によってバッチごとに配信されるイベントの最大数です。 この数を超えることはありませんが、発行時に利用できるイベントが他にない場合は、これより少ない数のイベントが配信される可能性があります。 配信できるイベントの数が少ない場合でも、バッチを作成するために Event Grid でイベントが遅延されることはありません。 1 から 5,000 の間である必要があります。
-* **[優先バッチ サイズ (KB 単位)]** は、バッチ サイズの目標上限 (KB 単位) です。 最大イベント数と同様に、発行時に足りないイベントが増えると、バッチ サイズが小さくなることがあります。 1 つのイベントが推奨されるサイズより大きい "*場合*" は、バッチが優先バッチ サイズより大きくなることがあります。 たとえば、優先サイズが 4 KB で、10 KB のイベントが Event Grid にプッシュされた場合でも、10 KB のイベントは削除されるのではなく、独自のバッチで配信されます。
+* **[バッチごとの最大イベント数]** - Event Grid によってバッチごとに配信されるイベントの最大数。 この数を超えることはありませんが、発行時に利用できるイベントが他にない場合は、これより少ない数のイベントが配信される可能性があります。 配信できるイベントの数が少ない場合でも、バッチを作成するために Event Grid でイベントが遅延されることはありません。 1 から 5,000 の間である必要があります。
+* **[優先バッチ サイズ (KB 単位)]** - バッチ サイズの目標上限 (KB 単位)。 最大イベント数と同様に、発行時に足りないイベントが増えると、バッチ サイズが小さくなることがあります。 1 つのイベントが推奨されるサイズより大きい "*場合*" は、バッチが優先バッチ サイズより大きくなることがあります。 たとえば、優先サイズが 4 KB で、10 KB のイベントが Event Grid にプッシュされた場合でも、10 KB のイベントは削除されるのではなく、独自のバッチで配信されます。
 
 バッチ配信は、ポータル、CLI、PowerShell、または SDK を使用して、イベントごとのサブスクリプションで構成されます。
 
+### <a name="azure-portal"></a>Azure portal: 
 ![一括配信の設定](./media/delivery-and-retry/batch-settings.png)
+
+### <a name="azure-cli"></a>Azure CLI
+イベント サブスクリプションを作成するときは、次のパラメーターを使用します。 
+
+- **max-events-per-batch** - バッチ内のイベントの最大数。 1 から 5000 までの数値を指定する必要があります。
+- **preferred-batch-size-in-kilobytes** - 優先バッチ サイズ (KB 単位)。 1 から 1024 までの数値を指定する必要があります。
+
+```azurecli
+storageid=$(az storage account show --name <storage_account_name> --resource-group <resource_group_name> --query id --output tsv)
+endpoint=https://$sitename.azurewebsites.net/api/updates
+
+az eventgrid event-subscription create \
+  --resource-id $storageid \
+  --name <event_subscription_name> \
+  --endpoint $endpoint \
+  --max-events-per-batch 1000 \
+  --preferred-batch-size-in-kilobytes 512
+```
+
+Event Grid での Azure CLI の使用の詳細については、「[Azure CLI を使用してストレージ イベントを Web エンドポイントにルーティングする](../storage/blobs/storage-blob-event-quickstart.md)」を参照してください。
 
 ## <a name="retry-schedule-and-duration"></a>再試行のスケジュールと期間
 
@@ -104,7 +125,7 @@ Event Grid は、次の HTTP 応答コード**のみ**を正常な配信と見�
 | その他すべて | 10 秒以上後に再試行 |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * イベント配信のステータスを表示するには、[Event Grid によるメッセージの配信の監視](monitor-event-delivery.md) に関する記事をご覧ください。
 * イベント配信オプションをカスタマイズするには、「[配信不能と再試行に関する方針](manage-event-delivery.md)」を参照してください。

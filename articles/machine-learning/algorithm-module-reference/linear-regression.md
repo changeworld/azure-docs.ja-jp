@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: f3cb583a3594b14266249ef80f8c49633c1df1de
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: cd634c41a1d6e3d9846e8299dd281b52beb77130
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152195"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912791"
 ---
 # <a name="linear-regression-module"></a>Linear Regression (線形回帰) モジュール
 この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
@@ -51,17 +51,15 @@ Azure Machine Learning では、線形回帰に加えて、さまざまな回帰
 
 このモジュールでは、次の異なるオプションと共に、回帰モデルを調整するために 2 つのメソッドをサポートします。
 
-+ [オンライン勾配降下を使用して回帰モデルを作成する](#bkmk_GradientDescent)
++ [通常の最小二乗法を使用して回帰モデルを調整する](#create-a-regression-model-using-ordinary-least-squares)
+
+    小さなデータセットには、通常の最小二乗法を選択するのが最適です。 これによって、Excel に同様の結果が適用されます。
+    
++ [オンライン勾配降下を使用して回帰モデルを作成する](#create-a-regression-model-using-online-gradient-descent)
 
     勾配降下は、より複雑、または変数の数を指定されたトレーニング データが少なすぎるモデルに対して優れた損失関数です。
 
-
-
-+ [通常の最小二乗法を使用して回帰モデルを調整する](#bkmk_OrdinaryLeastSquares)
-
-    小さなデータセットには、通常の最小二乗法を選択するのが最適です。 これによって、Excel に同様の結果が適用されます。
-
-## <a name="bkmk_OrdinaryLeastSquares"></a>通常の最小二乗法を使用して回帰モデルを作成する
+### <a name="create-a-regression-model-using-ordinary-least-squares"></a>通常の最小二乗法を使用して回帰モデルを作成する
 
 1. インターフェイスから**Linear Regression Model (線形回帰モデル)** モジュールをパイプラインに追加します。
 
@@ -86,7 +84,7 @@ Azure Machine Learning では、線形回帰に加えて、さまざまな回帰
 
 8. パイプラインを実行します。
 
-## <a name="results-for-ordinary-least-squares-model"></a>通常の最小二乗法モデルの結果
+### <a name="results-for-ordinary-least-squares-model"></a>通常の最小二乗法モデルの結果
 
 トレーニングの完了後:
 
@@ -94,7 +92,7 @@ Azure Machine Learning では、線形回帰に加えて、さまざまな回帰
 + 予測するには、新しい値のデータセットと共に、トレーニング済みのモデルを [Score Model (モデルのスコア付け) ](./score-model.md)モジュールに接続します。 
 
 
-## <a name="bkmk_GradientDescent"></a>オンライン勾配降下を使用して回帰モデルを作成する
+### <a name="create-a-regression-model-using-online-gradient-descent"></a>オンライン勾配降下を使用して回帰モデルを作成する
 
 1. インターフェイスから**Linear Regression Model (線形回帰モデル)** モジュールをパイプラインに追加します。
 
@@ -105,6 +103,8 @@ Azure Machine Learning では、線形回帰に加えて、さまざまな回帰
 3. **[Create trainer mode]\(トレーナー モードの作成\)** では、定義済みのパラメーターのセットでモデルをトレーニングするかどうか、またはパラメーターの一括処理を使用することでモデルを最適化する必要があるかどうかを示します。
 
     + **Single Parameter (単一パラメーター)** : 線形回帰ネットワークの構成方法が既にわかっている場合は、特定の値のセットを引数として渡すことができます。
+    
+    + **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターがわかっておらず、パラメーター スイープを実行したい場合は、このオプションを選択します。 反復する値の範囲を選択します。[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)では、指定した設定の可能なすべての組み合わせに対して反復処理を行い、最適な結果を生成するハイパーパラメーターを決定します。  
 
    
 4. **[Learning rate]\(学習速度\)** では、確率勾配降下オプティマイザーに初期学習速度を指定します。
@@ -133,7 +133,7 @@ Azure Machine Learning では、線形回帰に加えて、さまざまな回帰
 
 13. パイプラインを実行します。
 
-## <a name="results-for-online-gradient-descent"></a>オンライン勾配降下の結果
+### <a name="results-for-online-gradient-descent"></a>オンライン勾配降下の結果
 
 トレーニングの完了後:
 

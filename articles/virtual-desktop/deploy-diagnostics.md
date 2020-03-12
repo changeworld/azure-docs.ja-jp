@@ -5,14 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 03/03/2020
 ms.author: helohr
-ms.openlocfilehash: 5eff53119362cd03c9a6497e3133984627e513c1
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+manager: lizross
+ms.openlocfilehash: 9392855f98dbee2badbe87bb4a0bf11bf2fc073e
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368857"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128015"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>診断ツールをデプロイする
 
@@ -128,10 +129,9 @@ PowerShell スクリプトを実行するには:
 アプリの登録に API アクセス許可があることを確認するには:
 
 1. ブラウザーを開き、管理者アカウントを使用して [Azure portal](https://portal.azure.com/) に接続します。
-2. **[アプリの登録]** に移動し、Azure AD アプリの登録を探します。
-
-      ![[API のアクセス許可] ページ。](media/api-permissions-page.png)
-
+2. **[Azure Active Directory]** に移動します。
+3. **[アプリの登録]** にアクセスし、 **[すべてのアプリケーション]** を選択します。
+4. 「[Azure Active Directory アプリの登録を作成する](deploy-diagnostics.md#create-an-azure-active-directory-app-registration)」の手順 5 で入力したものと同じアプリ名を使用して Azure AD アプリの登録を探します。
 
 ### <a name="review-your-log-analytics-workspace"></a>Log Analytics ワークスペースを確認する
 

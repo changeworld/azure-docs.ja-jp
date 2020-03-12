@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
+ms.date: 02/28/2020
 ms.author: spelluru
-ms.openlocfilehash: e6b470c55815255c50a42821b0bf52219d890206
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 3f18425408e6526904db85eae1c3a4db41d11a58
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170075"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198818"
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Azure DevTest Labs でデータ ディスクを仮想マシンにアタッチまたはデタッチする
 [Azure Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) は、仮想マシンのデータ ディスクに関連付けられているストレージ アカウントを管理します。 ユーザーが新しいデータ ディスクを VM にアタッチし、必要なディスクの種類とサイズを指定すると、Azure によってディスクが自動的に作成され、管理されます。 データ ディスクはその後 VM からデタッチできます。後で同じ VM に再アタッチすることも、同じユーザーが所有する別の VM にアタッチすることもできます。
@@ -40,8 +40,6 @@ Azure DevTest Labs で新しいマネージド データ ディスクを作成�
 1. ラボの一覧で目的のラボを選択します。 
 1. **[自分の仮想マシン]** の一覧で、実行中の VM を選択します。
 1. 左側のメニューで **[ディスク]** を選択します。
-
-    ![仮想マシンのデータ ディスクを選択する](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-data-disk.png)
 1. **[Attach new]\(新しいディスクのアタッチ\)** を選択し、新しいデータ ディスクを作成して VM にアタッチします。
 
     ![新しいデータ ディスクを仮想マシンにアタッチする](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-new.png)
@@ -59,7 +57,7 @@ Azure DevTest Labs で新しいマネージド データ ディスクを作成�
 1. 左側のメニューで **[ディスク]** を選択します。
 1. **[Attach existing]\(既存のディスクのアタッチ\)** を選択して、使用可能なデータ ディスクを VM にアタッチします。
 
-    ![既存のデータ ディスクを仮想マシンにアタッチする](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-existing2.png)
+    ![既存のデータ ディスクを仮想マシンにアタッチする](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-existing-button.png)
 
 1. **[Attach existing disk]\(既存のディスクのアタッチ\)** ウィンドウで、[OK] を選択します。
 
@@ -75,9 +73,9 @@ VM にアタッチされたデータ ディスクは、不要になった場合�
 ### <a name="detach-from-the-vms-management-pane"></a>VM の管理ウィンドウからのデタッチ
 1. 仮想マシンの一覧で、データ ディスクがアタッチされている VM を選択します。
 1. 左側のメニューで **[ディスク]** を選択します。
-
-    ![仮想マシンのデータ ディスクを選択する](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-data-disk.png) 
 1. **[データ ディスク]** の一覧で、デタッチしたいデータ ディスクを選択します。
+
+    ![仮想マシンのデータ ディスクを選択する](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-button.png) 
 1. ディスクの詳細ウィンドウの上部で **[Detach]\(デタッチ\)** を選択します。
 
     ![データ ディスクの切断](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-data-disk2.png)
@@ -86,9 +84,7 @@ VM にアタッチされたデータ ディスクは、不要になった場合�
 ディスクがデタッチされ、別の VM にアタッチできるようになります。 
 ### <a name="detach-from-the-labs-main-pane"></a>ラボのメイン ウィンドウからのデタッチ
 1. ラボのメイン ウィンドウで、 **[個人用データ ディスク]** を選択します。
-
-    ![ラボのデータ ディスクにアクセスする](./media/devtest-lab-attach-detach-data-disk/devtest-lab-my-data-disks.png)
-1. デタッチしたいデータ ディスクを右クリックするか、省略記号 (...) を選択し、 **[Detach]\(デタッチ\)** を選択します。
+1. デタッチしたいデータ ディスクを右クリックするか、省略記号 ( **...** ) を選択し、 **[Detach]\(デタッチ\)** を選択します。
 
     ![データ ディスクの切断](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-data-disk.png)
 1. **[はい]** を選択して、デタッチすることを確認します。
@@ -102,8 +98,6 @@ VM にアタッチされたデータ ディスクは、不要になった場合�
 アンマネージド データ ディスクが使用される既存の VM がある場合、マネージド ディスクが使用されるよう VM を簡単に変換できます。 このプロセスでは、OS ディスクと接続されたすべてのデータ ディスクの両方を変換します。
 
 非管理対象データ ディスクをアップグレードするには、この記事の手順に従って、非管理対象 VM から[データ ディスクをデタッチ](#detach-a-data-disk)します。 次に、データ ディスクが非管理対象から管理対象に自動的にアップグレードされるように、管理対象 VM に[ディスクを再アタッチ](#attach-an-existing-disk)します。
-
-[!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>次のステップ
 [要求可能な仮想マシン](devtest-lab-add-claimable-vm.md#unclaim-a-vm)のためにデータ ディスクを管理する方法について学習します。

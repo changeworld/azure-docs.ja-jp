@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor での Azure リレー メトリック (プレビュー) | Microsoft Docs
+title: Azure Monitor での Azure リレー メトリック | Microsoft Docs
 description: この記事では、Azure Monitor を使用して Azure Relay の状態を監視する方法について説明します。
 services: service-bus-relay
 documentationcenter: .NET
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 5c548186ec51cf86f34942cb15d8f984afa60268
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 159249e2c997e4c414127992b08a83b488281e46
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514937"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273126"
 ---
-# <a name="azure-relay-metrics-in-azure-monitor-preview"></a>Azure Monitor の Azure リレー メトリック (プレビュー)
+# <a name="azure-relay-metrics-in-azure-monitor"></a>Azure Monitor の Azure リレー メトリック 
 Azure リレー メトリックによって、Azure サブスクリプション内のリソースの状態が提供されます。 豊富な一連のメトリック データにより、名前空間レベルだけでなくエンティティ レベルでも、リレー リソースの全体的な正常性を評価できます。 これらの統計は Azure リレーの状態の監視に役立つため、重要になる場合があります。 メトリックはまた、Azure サポートに問い合わせることなく、根本的な問題をトラブルシューティングするのにも役立ちます。
 
 Azure Monitor には、さまざまな Azure サービスにわたって監視するための統合ユーザー インターフェイスが用意されています。 詳細については、「[Microsoft Azure での監視](../monitoring-and-diagnostics/monitoring-overview.md)」および GitHub 上の「[Retrieve Azure Monitor metrics with .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api)」(.NET を使用した Azure Monitor メトリックの取得) のサンプルを参照してください。
@@ -41,7 +41,7 @@ Azure Monitor では、複数の方法でメトリックにアクセスできま
 
 ![][1]
 
-また、名前空間経由でメトリックに直接アクセスすることもできます。 それを行うには、名前空間を選択してから、 **[Metrics (Peview)]\(メトリック (プレビュー))** をクリックします。 
+また、名前空間経由でメトリックに直接アクセスすることもできます。 それを行うには、名前空間を選択してから、[**Metrics **] (**メトリック **) をクリックします。 
 
 ディメンションをサポートするメトリックについては、目的のディメンション値でフィルター処理する必要があります。
 
@@ -60,24 +60,24 @@ Azure Monitor でのメトリックの使用は現在、プレビュー段階に
 
 | メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
-| ListenerConnections-Success (プレビュー) | 指定された期間に成功した Azure リレーに対するリスナーの接続数。 <br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|ListenerConnections-ClientError (プレビュー)|指定された期間にリスナー接続で発生したクライアント エラー数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|ListenerConnections-ServerError (プレビュー)|指定された期間にリスナー接続で発生したサーバー エラー数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|SenderConnections-Success (プレビュー)|指定された期間に成功した送信側の接続数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|SenderConnections-ClientError (プレビュー)|指定された期間に送信側の接続で発生したクライアント エラー数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|SenderConnections-ServerError (プレビュー)|指定された期間に送信側の接続で発生したサーバー エラー数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|ListenerConnections-TotalRequests (プレビュー)|指定された期間のリスナー接続数の合計。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|SenderConnections-TotalRequests (プレビュー)|指定された期間に送信側が行った接続要求数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|ActiveConnections (プレビュー)|指定された期間のアクティブな接続数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|ActiveListeners (プレビュー)|指定された期間のアクティブなリスナー数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|ListenerDisconnects (プレビュー)|指定された期間に切断されたリスナー数。<br/><br/> 単位:バイト <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|SenderDisconnects (プレビュー)|指定された期間に切断された送信側数。<br/><br/> 単位:バイト <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+| ListenerConnections-Success  | 指定された期間に成功した Azure リレーに対するリスナーの接続数。 <br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|ListenerConnections-ClientError |指定された期間にリスナー接続で発生したクライアント エラー数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|ListenerConnections-ServerError |指定された期間にリスナー接続で発生したサーバー エラー数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|SenderConnections-Success |指定された期間に成功した送信側の接続数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|SenderConnections-ClientError |指定された期間に送信側の接続で発生したクライアント エラー数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|SenderConnections-ServerError |指定された期間に送信側の接続で発生したサーバー エラー数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|ListenerConnections-TotalRequests |指定された期間のリスナー接続数の合計。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|SenderConnections-TotalRequests |指定された期間に送信側が行った接続要求数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|ActiveConnections |アクティブな接続の数。 この値は、特定の時点の値です。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|ActiveListeners |アクティブなリスナーの数。 この値は、特定の時点の値です。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|ListenerDisconnects |指定された期間に切断されたリスナー数。<br/><br/> 単位:バイト <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|SenderDisconnects |指定された期間に切断された送信側数。<br/><br/> 単位:バイト <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
 
 ## <a name="memory-usage-metrics"></a>メモリ使用状況のメトリック
 
 | メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
-|BytesTransferred (プレビュー)|指定された期間に転送されたバイト数。<br/><br/> 単位:バイト <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|BytesTransferred |指定された期間に転送されたバイト数。<br/><br/> 単位:バイト <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
 
 ## <a name="metrics-dimensions"></a>メトリックのディメンション
 

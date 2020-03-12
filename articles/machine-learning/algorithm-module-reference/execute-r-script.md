@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 4991fe9fb06d0a49da3e0404f0362c85f15571af
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: d39ac40e8e29c7ff90e2accc3a519449571c1d58
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152297"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917409"
 ---
 # <a name="execute-r-script"></a>R スクリプトの実行
 
@@ -130,6 +130,8 @@ azureml_main <- function(dataframe1, dataframe2){
 **R スクリプトの実行**モジュールは複数の出力を返すことができますが、それらは R データ フレームとして提供する必要があります。 データ フレームは、他のモジュールとの互換性のために、自動的にデザイナーのデータセットに変換されます。
 
 R からの標準メッセージとエラーはモジュールのログに返されます。
+
+R スクリプトで結果を出力する必要がある場合は、モジュールの右側のパネルにある **[Outputs+logs]\(出力とログ\)** タブの下にある **70_driver_log** で出力された結果を確認できます。
 
 ## <a name="sample-scripts"></a>サンプルのスクリプト
 

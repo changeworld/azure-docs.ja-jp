@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3de84e2d814acfca67bc722243a90fa41f6536e1
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: df27a77c202951a6c789703f12712e75bd8b5906
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161683"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656983"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure Spatial Anchors に対する認証と承認
 
@@ -264,7 +264,13 @@ configuration.AccessToken(LR"(MyAccessToken)");
 Azure Spatial Anchors を使用して初めてのアプリを作成します。
 
 > [!div class="nextstepaction"]
-> [Unity](../unity-overview.yml)
+> [Unity (HoloLens)](../quickstarts/get-started-unity-hololens.md)
+
+> [!div class="nextstepaction"]
+> [Unity (iOS)](../quickstarts/get-started-unity-ios.md)
+
+> [!div class="nextstepaction"]
+> [Unity (Android)](../quickstarts/get-started-unity-android.md)
 
 > [!div class="nextstepaction"]
 > [iOS](../quickstarts/get-started-ios.md)
@@ -274,3 +280,9 @@ Azure Spatial Anchors を使用して初めてのアプリを作成します。
 
 > [!div class="nextstepaction"]
 > [HoloLens](../quickstarts/get-started-hololens.md)
+
+> [!div class="nextstepaction"]
+> [Xamarin (Android)](../quickstarts/get-started-xamarin-android.md)
+
+> [!div class="nextstepaction"]
+> [Xamarin (iOS)](../quickstarts/get-started-xamarin-ios.md)

@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
-ms.openlocfilehash: 10e1081c7a91c65c21ffcb3da66930fb7c6e73bb
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: f8b4063d87fa9a89dccd42eddea644609bd6ff27
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603452"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921251"
 ---
 # <a name="azure-security-center-threat-intelligence-report"></a>Azure Security Center の脅威インテリジェンス レポート
 このドキュメントでは、セキュリティ アラートが生成される原因となった脅威に関して詳しい情報を確認するにあたり、Azure Security Center の脅威インテリジェンス レポートがどのような点で役に立つかを説明します。
 
 ## <a name="what-is-a-threat-intelligence-report"></a>脅威インテリジェンス レポートとは
-Security Center の脅威検出機能は、Azure のリソースやネットワーク、接続されているパートナー ソリューションから収集したセキュリティ情報を監視するという仕組みになています。 この情報を分析し、ときには複数の情報源から得た情報との関連性を探りながら、脅威を特定します。 詳細は、「[Azure Security Center での脅威の検出と対応方法](security-center-alerts-overview.md#detect-threats)」を参照してください。
+Security Center の脅威保護機能は、Azure のリソース、ネットワーク、接続されているパートナー ソリューションからのセキュリティ情報を監視することで機能します。 この情報を分析し、ときには複数の情報源から得た情報との関連性を探りながら、脅威を特定します。 詳細は、「[Azure Security Center での脅威の検出と対応方法](security-center-alerts-overview.md#detect-threats)」を参照してください。
 
 Security Center が脅威を発見すると、[セキュリティ アラート](security-center-managing-and-responding-alerts.md) がトリガーされます。このセキュリティ アラートでは、特定のイベントに関して推奨される修復方法などの詳しい情報を確認できます。 インシデント対応を担当するチームが脅威の調査とその修復を実施する際に役立つように、Security Center には脅威インテリジェンス レポートという機能が用意されており、検出された脅威に関して以下のような情報を確認できるようになっています。
 

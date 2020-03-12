@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60a7bf9690b4f50c771afc4745bbc2e5377adbba
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 736a543a6f28697dd4f1ddf85317e97a87b86e78
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848478"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227068"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Microsoft Authenticator アプリを使用したパスワードなしのサインインを有効にする (プレビュー)
 
@@ -82,7 +82,7 @@ Web にユーザー名を入力し、 **[次へ]** を選択すると、ユー�
 
 ### <a name="ad-fs-integration"></a>AD FS の統合
 
-ユーザーが Microsoft Authenticator のパスワードなしの資格情報を有効にすると、そのユーザーの認証は常に、既定で承認のための通知を送信します。 このロジックは、ハイブリッド テナントのユーザーが、[Use your password instead] (代わりにパスワードを使用する) をクリックする追加の手順を取ることなく、サインイン確認のために ADFS にリダイレクトされることを防ぎます。 このプロセスは、オンプレミスの条件付きアクセス ポリシーとパススルー認証フローもバイパスします。 
+ユーザーが Microsoft Authenticator のパスワードなしの資格情報を有効にすると、そのユーザーの認証は常に、既定で承認のための通知を送信します。 このロジックは、ハイブリッド テナントのユーザーが、[Use your password instead]\(代わりにパスワードを使用する) をクリックする追加の手順を取ることなく、サインイン確認のために ADFS にリダイレクトされることを防ぎます。 このプロセスは、オンプレミスの条件付きアクセス ポリシーとパススルー認証フローもバイパスします。 
 
 ユーザーがパスワードなしの電話によるサインインの確認に回答せずに保留していて、もう一度サインインを試行した場合は、代わりにパスワードを入力するようにユーザーに ADFS を表示することができます。  
 
@@ -94,10 +94,14 @@ Web にユーザー名を入力し、 **[次へ]** を選択すると、ユー�
 
 この新しい、強力な資格情報を作成するための前提条件の 1 つは、Microsoft Authenticator アプリのインストール先となるデバイスが、個々のユーザーに対し、Azure AD テナント内にも登録されていることです。 現在のデバイス登録の制限により、デバイスは、1 つのテナントにしか登録できません。 この制限は、電話によるサインインを有効にできるのは、Microsoft Authenticator アプリの職場または学校の 1 つのアカウントのみであることを意味します。
 
+### <a name="intune-mobile-application-management"></a>Intune モバイル アプリケーション管理 
+
+モバイル アプリケーション管理 (MAM) を必要とするポリシーが適用されるエンド ユーザーは、Microsoft Authenticator アプリにパスワードなし資格情報を登録できません。 
+
 > [!NOTE]
 > デバイスの登録は、デバイスの管理、つまり "MDM" と同じではありません。 この場合、Azure AD ディレクトリでデバイス ID とユーザー ID の両方が関連付けられるだけです。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [パスワードなしとは](concept-authentication-passwordless.md)
 

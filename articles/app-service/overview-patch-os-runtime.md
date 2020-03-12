@@ -4,12 +4,12 @@ description: Azure App Service が OS とランタイムを更新する方法、
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 02fa89305c19ee4ec5e151ad36f7f5fa3e130f63
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 597964914f4022899ab027b735ec6932105497b4
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846247"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273639"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure App Service での OS とランタイムのパッチ適用
 
@@ -51,7 +51,7 @@ Azure では、2 つのレベルで OS のパッチ適用が管理されます�
 
 ### <a name="new-patch-updates"></a>新しいパッチ更新プログラム
 
-.NET、PHP、Java SDK または Tomcat/Jetty バージョンに対するパッチ更新プログラムは、既存のインストールが新しいバージョンに上書きされることで、自動的に適用されます。 Node.js パッチ更新プログラムは、(次のセクションのメジャー バージョンとマイナー バージョンと同様に) 既存のバージョンとサイド バイ サイドでインストールされます。 新しい Python パッチ バージョンは、[サイト拡張機能](https://www.siteextensions.net/packages?q=Tags%3A%22python%22)を通じて手動でインストールできます。これは、組み込みの Python インストールとサイド バイ サイドでインストールされます。
+.NET、PHP、Java SDK または Tomcat/Jetty バージョンに対するパッチ更新プログラムは、既存のインストールが新しいバージョンに上書きされることで、自動的に適用されます。 Node.js パッチ更新プログラムは、(次のセクションのメジャー バージョンとマイナー バージョンと同様に) 既存のバージョンとサイド バイ サイドでインストールされます。 新しい Python パッチ バージョンは、[サイト拡張機能](https://azure.microsoft.com/blog/azure-web-sites-extensions/)を通じて手動でインストールできます。これは、組み込みの Python インストールとサイド バイ サイドでインストールされます。
 
 ### <a name="new-major-and-minor-versions"></a>新しいメジャー バージョンとマイナー バージョン
 

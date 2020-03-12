@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) でエグレス トラフィック�
 services: container-service
 ms.topic: article
 ms.date: 01/21/2020
-ms.openlocfilehash: a76f4eb8680d07193feb29450fdba7bb2a710a68
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: d69921ce23e961879fea6be68838f86bfcc703d0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595010"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191301"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でクラスター ノードに対するエグレス トラフィックを制御する
 
@@ -143,7 +143,7 @@ Azure Dev Spaces が有効になっている AKS クラスターの場合、次�
 | cloudflare.docker.com | HTTPS: 443 | このアドレスは、linux alpine やその他の Azure Dev Spaces イメージをプルするために使用されます。 |
 | gcr.io | HTTP:443 | このアドレスは、helm/tiller イメージをプルするために使用されます。 |
 | storage.googleapis.com | HTTP:443 | このアドレスは、helm/tiller イメージをプルするために使用されます。 |
-| azds-<guid>.<location>.azds.io | HTTPS: 443 | コントローラーのための Azure Dev Spaces のバックエンド サービスと通信します。 正確な FQDN は、%USERPROFILE%\.azds\settings.json の "dataplaneFqdn" にあります |
+| azds-\<guid\>.\<location\>.azds.io | HTTPS: 443 | コントローラーのための Azure Dev Spaces のバックエンド サービスと通信します。 正確な FQDN は、%USERPROFILE%\.azds\settings.json の "dataplaneFqdn" にあります |
 
 ## <a name="required-addresses-and-ports-for-aks-clusters-with-azure-policy-in-public-preview-enabled"></a>Azure Policy (パブリック プレビュー) が有効な AKS クラスターに必要なアドレスとポート
 
@@ -156,7 +156,7 @@ Azure Policy が有効になっている AKS クラスターの場合、次の F
 |-----------------------------------------|-----------|----------|
 | gov-prod-policy-data.trafficmanager.net | HTTPS: 443 | このアドレスは、Azure Policy の適切な操作のために使用されます。 (現在 AKS でプレビュー段階) |
 | raw.githubusercontent.com | HTTPS: 443 | このアドレスは、Azure Policy の正しい動作のために組み込みポリシーを GitHub から取得するために使用されます。 (現在 AKS でプレビュー段階) |
-| *.gk.<location>.azmk8s.io | HTTPS: 443 | マスター サーバーで実行されている Gatekeeper 監査エンドポイントと通信して、監査結果を取得する Azure Policy アドオン。 |
+| *.gk.\<location\>.azmk8s.io | HTTPS: 443   | マスター サーバーで実行されている Gatekeeper 監査エンドポイントと通信して、監査結果を取得する Azure Policy アドオン。 |
 | dc.services.visualstudio.com | HTTPS: 443 | テレメトリ データを Application Insights エンドポイントに送信するAzure Policy アドオン。 |
 
 ## <a name="required-by-windows-server-based-nodes-in-public-preview-enabled"></a>Windows Server ベースのノード (パブリック プレビュー) が有効な場合に必要

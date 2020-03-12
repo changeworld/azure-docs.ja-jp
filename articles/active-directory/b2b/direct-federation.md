@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 02/27/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 036c8361af3f6631b6151782fa18495542d2e3f6
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a6187fa9f274c6d00c1c9872a1b27268ac91295e
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888885"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161488"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>ゲスト ユーザーのための AD FS およびサード パーティ プロバイダーとの直接フェデレーション (プレビュー)
 |     |
@@ -64,6 +64,10 @@ ID プロバイダーの設定でメタデータ URL を指定した場合、署
 
 ### <a name="limit-on-federation-relationships"></a>フェデレーション リレーションシップの制限
 現在のところ、最大 1000 のフェデレーション リレーションシップがサポートされています。 この制限には、[内部フェデレーション](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)と直接フェデレーションの両方が含まれます。
+
+### <a name="limit-on-multiple-domains"></a>複数のドメインに対する制限
+現在、同じテナントからの複数のドメインとの直接フェデレーションはサポートされていません。
+
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 ### <a name="can-i-set-up-direct-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>アンマネージド (電子メールで検証) テナントが存在するドメインとの直接フェデレーションを設定することはできますか。 
 はい。 ドメインが検証されておらず、テナントで[管理者の引き継ぎ](../users-groups-roles/domains-admin-takeover.md)が実施されていない場合は、そのドメインとの直接フェデレーションを設定することができます。 アンマネージドまたは電子メールで検証済みのテナントは、ユーザーが B2B の招待を利用したとき、または現時点で存在しないドメインを使用して Azure AD のセルフサービス サインアップを実行したときに作成されます。 これらのドメインとの直接フェデレーションを設定することができます。 Azure portal 上で、または PowerShell を使用して、DNS で検証済みのドメインとの直接フェデレーションを設定しようとすると、エラーが表示されます。
@@ -90,7 +94,7 @@ Azure AD B2B は、以下に示す特定の要件に従って、SAML プロト�
 
 IdP からの SAML 2.0 応答に必須の属性:
 
-|Attribute  |値  |
+|属性  |Value  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
 |対象ユーザー     |`urn:federation:MicrosoftOnline`         |
@@ -99,7 +103,7 @@ IdP からの SAML 2.0 応答に必須の属性:
 
 IdP によって発行される SAML 2.0 トークンに必須の要求:
 
-|Attribute  |値  |
+|属性  |Value  |
 |---------|---------|
 |NameID の形式     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
@@ -116,7 +120,7 @@ Azure AD B2B は、以下に示すいくつかの特定の要件に従って、W
 
 IdP からの WS-Fed メッセージに必須の属性:
  
-|Attribute  |値  |
+|属性  |Value  |
 |---------|---------|
 |PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
 |対象ユーザー     |`urn:federation:MicrosoftOnline`         |
@@ -124,7 +128,7 @@ IdP からの WS-Fed メッセージに必須の属性:
 
 IdP によって発行される WS-Fed トークンに必須の要求:
 
-|Attribute  |値  |
+|属性  |Value  |
 |---------|---------|
 |ImmutableID     |`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |

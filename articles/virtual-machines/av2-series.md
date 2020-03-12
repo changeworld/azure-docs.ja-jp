@@ -2,17 +2,17 @@
 title: Av2 シリーズ - Azure Virtual Machines
 description: Av2 シリーズ VM の仕様。
 services: virtual-machines
-author: jonbeck7
+author: migerdes
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 1e14c633ed11bb628a68756e72e78073603643a1
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: fe27a1cc78d1f37d535f364c03803a5196090a3a
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492644"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163949"
 ---
 # <a name="av2-series"></a>Av2 シリーズ
 
@@ -24,7 +24,11 @@ Premium Storage: サポートされていません
 
 Premium Storage キャッシュ:サポートされていません
 
-| Size | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
+ライブ マイグレーション: サポートされています
+
+メモリ保持更新: サポートされています
+
+| サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 |---|---|---|---|---|---|---|
 | Standard_A1_v2  | 1 | 2  | 10 | 1000/20/10  | 2/2x500   | 2/250  |
 | Standard_A2_v2  | 2 | 4  | 20 | 2000/40/20  | 4/4x500   | 2/500  |

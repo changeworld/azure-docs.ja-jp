@@ -9,31 +9,24 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 02/24/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07859299805c5f7be869350adbdbfa675775888c
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 51b242a76e1daec7d401d797e8c9887821117246
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404799"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656944"
 ---
 # <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>Azure Active Directory で Office 365 グループに秘密度ラベルを割り当てる (プレビュー)
 
-Azure Active Directory (Azure AD) では、[Microsoft 365 コンプライアンス センター](https://sip.protection.office.com/homepage)によって公開されている秘密度ラベルを Office 365 グループに適用することがサポートされています。 秘密度ラベルは、Outlook、Microsoft Teams、SharePoint などのサービス全体で、グループに対して適用されます。 現在、この機能はパブリック プレビュー段階にあります。
+Azure Active Directory (Azure AD) では、[Microsoft 365 コンプライアンス センター](https://sip.protection.office.com/homepage)によって公開されている秘密度ラベルを Office 365 グループに適用することがサポートされています。 秘密度ラベルは、Outlook、Microsoft Teams、SharePoint などのサービス全体で、グループに対して適用されます。 現在、この機能はパブリック プレビュー段階にあります。 Office 365 アプリのサポートの詳細については、[Office 365 での秘密度ラベルのサポート](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-new-sensitivity-labels)に関する記事を参照してください。
 
 > [!IMPORTANT]
-> Office 365 グループに Azure AD 秘密度ラベルを使用するには、Azure Active Directory Premium P1 ライセンスが必要です。
-
-## <a name="group-settings-controlled-by-labels"></a>ラベルによって制御されるグループ設定
-
-ラベルには、次の 2 つの設定を関連付けることができます。
-
-- **プライバシー**:管理者は、プライバシー設定をラベルに関連付けて、グループがパブリックであるかプライベートであるかを制御できます。
-- **ゲスト アクセス**:管理者は、そのラベルが割り当てられているすべてのグループに対してゲスト ポリシーを適用できます。 このポリシーは、ゲストをメンバーとして追加できるかどうかを指定します。 ゲスト ポリシーがラベルに対して構成されている場合、そのラベルを割り当てるグループでは AllowToAddGuests 設定の変更が許可されません。
+> この機能を構成するには、Azure AD 組織にアクティブな Azure Active Directory Premium P1 ライセンスが少なくとも 1 つ必要です。
 
 ## <a name="enable-sensitivity-label-support-in-powershell"></a>PowerShell で秘密度ラベルのサポートを有効にする
 
@@ -87,11 +80,11 @@ Azure Active Directory (Azure AD) では、[Microsoft 365 コンプライアン�
 
 1. 変更を保存し、 **[作成]** を選択します。
 
-グループが作成され、選択したラベルに関連付けられているポリシーが自動的に適用されます。
+グループが作成され、選択したラベルに関連付けられているサイトおよびグループの設定が自動的に適用されます。
 
 ## <a name="assign-a-label-to-an-existing-group-in-azure-portal"></a>Azure portal で既存のグループにラベルを割り当てる
 
-1. グローバル管理者かグループ管理者のアカウントを使用するか、またはグループの所有者として [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+1. グループ管理者のアカウントを使用するか、またはグループの所有者として [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
 1. **[グループ]** を選びます。
 1. **[すべてのグループ]** ページから、ラベルを適用するグループを選択します。
 1. 選択したグループのページで **[プロパティ]** を選択し、一覧から秘密度ラベルを選択します。
@@ -109,22 +102,9 @@ Azure Active Directory (Azure AD) では、[Microsoft 365 コンプライアン�
 1. **[削除]** を選択します。
 1. **[保存]** を選択して変更を保存します。
 
-## <a name="office-365-app-support-for-sensitivity-labels"></a>Office 365 アプリでの秘密度ラベルのサポート
-
-次の Office 365 アプリとサービスは、このプレビューの秘密度ラベルをサポートしています。
-
-- Azure AD 管理センター
-- Microsoft 365 コンプライアンス センター
-- SharePoint
-- Outlook on the web
-- Teams
-- SharePoint 管理センター
-
-Office 365 アプリのサポートの詳細については、[Office 365 での秘密度ラベルのサポート](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-new-sensitivity-labels)に関する記事を参照してください。
-
 ## <a name="using-classic-azure-ad-classifications"></a>従来の Azure AD 分類を使用する
 
-この機能を有効にすると、新しいグループに対する "従来の" 分類は Office 365 でサポートされなくなります。 従来の分類とは、Azure AD PowerShell で `ClassificationList` 設定の値を定義することによって設定した以前の分類のことです。 この機能を有効にすると、それらの分類はグループに適用されなくなります。
+この機能を有効にすると、グループの "従来の" 分類が、既存のグループとサイトについてのみ表示され、秘密度ラベルをサポートしていないアプリでグループを作成する場合にのみ、これらを新しいグループに使用する必要があります。 管理者は必要に応じて、これらを後で秘密度ラベルに変換できます。 従来の分類とは、Azure AD PowerShell で `ClassificationList` 設定の値を定義することによって設定した以前の分類のことです。 この機能を有効にすると、それらの分類はグループに適用されなくなります。
 
 ## <a name="troubleshooting-issues"></a>問題のトラブルシューティング
 
@@ -136,9 +116,7 @@ Office 365 アプリのサポートの詳細については、[Office 365 での
 1. 機能が有効になっており、PowerShell で EnableMIPLabels が True に設定されている。
 1. そのグループが Office 365 グループである。
 1. そのテナントに、アクティブな Azure Active Directory Premium P1 ライセンスがある。
-1. 現在サインインしているユーザーが、公開されているラベルにアクセスできる。
 1. 現在サインインしているユーザーに、ラベルを割り当てるための十分な権限がある。 そのユーザーは、全体管理者、グループ管理者、またはグループの所有者のいずれかである必要があります。
-1. 現在サインインしているユーザーに、Office 365 ライセンスが割り当てられている。 ライセンス要件の詳細については、「[Office アプリの機密ラベル](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-office-apps)」を参照してください。
 
 ラベルをグループに割り当てるには、上記のすべての条件が満たされていることを確認してください。
 
@@ -149,7 +127,7 @@ Office 365 アプリのサポートの詳細については、[Office 365 での
 - そのラベルが、Microsoft 365 コンプライアンス センターで公開されていない。 これは、公開されなくなったラベルにも当てはまります。 詳細については、管理者にご確認ください。
 - ラベルは公開されているが、サインインしているユーザーにはそのラベルを使用できない。 ラベルにアクセスする方法の詳細については、管理者にご確認ください。
 
-### <a name="how-can-i-change-the-label-on-a-group"></a>グループに対するラベルを変更するにはどうすればよいですか?
+### <a name="how-to-change-the-label-on-a-group"></a>グループに対するラベルを変更する方法
 
 ラベルは、次に示すように、既存のグループに割り当てるのと同じ手順を使用することによりいつでも交換できます。
 
@@ -165,7 +143,7 @@ Office 365 アプリのサポートの詳細については、[Office 365 での
 
 変更が必要な場合は、[Azure AD PowerShell スクリプト](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1)を使用して、影響を受けるグループに更新を手動で適用します。 この方法を使用すると、既存のすべてのグループに新しい設定が適用されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Microsoft Teams、Office 365 グループ、SharePoint サイトで機密ラベルを使用する](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)
 - [Azure AD PowerShell スクリプトを使用して、ラベルのポリシーを手動で変更した後にグループを更新する](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1)

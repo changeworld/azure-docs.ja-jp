@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: b13e5e0000cdd8e33f459400cc4c24d107ccaba3
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: f9043ae1414b63f25583d52100774f3e87754a74
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604796"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661841"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>FAQ - Azure Security Center に関する一般的な質問
 
@@ -38,16 +38,17 @@ Azure Security Center は、次の Azure リソースを監視します。
 * 仮想マシン (VM) ( [Cloud Services](../cloud-services/cloud-services-choose-me.md)を含む)
 * 仮想マシン スケール セット
 * Azure 仮想ネットワーク
+* Containers
 * Azure SQL サービス
 * Azure ストレージ アカウント
 * ([App Service 環境](../app-service/environment/intro.md)にある) Azure Web アプリ
 * Azure サブスクリプションに統合済みのパートナー ソリューション (VM 上および App Service Environment 上の Web アプリケーション ファイアウォールなど)
 
-さらに、Azure 以外 (オンプレミスを含む) のコンピューターも、Azure Security Center で監視できます ([Windows コンピューター](./quick-onboard-windows-computer.md)と [Linux コンピューター](./quick-onboard-linux-computer.md)の両方がサポートされます)
+さらに、Azure 以外のマシン (オンプレミスのものを含む) も Azure Security Center で監視できます。 [Windows マシン](./quick-onboard-windows-computer.md)と [Linux マシン](./quick-onboard-linux-computer.md)の両方がサポートされています。
 
 
 ## <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>Azure リソースの現在のセキュリティ状態を確認する方法を教えてください。
-**[Security Center Overview]\(Security Center の概要\)** ページでは、お使いの環境の全体的なセキュリティ体制が [コンピューティング]、[ネットワーク]、[ストレージおよびデータ]、[アプリケーション] に分けて詳しく示されます。 リソースの種類にはそれぞれ、潜在的なセキュリティの脆弱性が確認されたかどうかを示すインジケーターがあります。 各タイルをクリックすると、Security Center によって特定されたセキュリティの問題の一覧が、サブスクリプション内のリソースのインベントリと共に表示されます。
+**[Security Center Overview]\(Security Center の概要\)** ページでは、お使いの環境の全体的なセキュリティ体制が [コンピューティング]、[ネットワーク]、[ストレージおよびデータ]、[アプリケーション] に分けて詳しく示されます。 リソースの種類にはそれぞれ、確認されたセキュリティの脆弱性を示すインジケーターがあります。 各タイルをクリックすると、Security Center によって特定されたセキュリティの問題の一覧が、サブスクリプション内のリソースのインベントリと共に表示されます。
 
 
 

@@ -1,18 +1,15 @@
 ---
 title: Grafana を使用して Azure のサービスとアプリケーションを監視する
 description: Grafana で表示できるように Azure Monitor および Application Insights データをルーティングします。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 11/06/2017
-ms.openlocfilehash: f5464710d5c7908eeec5dd917bfeff4756ff4e80
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 142e3e19c13710963d239a75bc237b63713c29cc
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552104"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672210"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Grafana での Azure サービスの監視
 [Azure Monitor データ ソース プラグイン](https://grafana.com/plugins/grafana-azure-monitor-datasource)を使用して [Grafana](https://grafana.com/) から Azure のサービスとアプリケーションを監視できるようになりました。 このプラグインを使用して、Azure Monitor によって収集されたアプリケーションのパフォーマンス データ (さまざまなログやメトリックなど) を一か所にまとめることができます。 その後、このデータを Grafana ダッシュボードで表示できます。
@@ -94,7 +91,7 @@ Grafana サーバーをローカルにセットアップするには、[Grafana 
 4. 構成した Azure Monitor データ ソースを選択します。
    * Azure Monitor のメトリックの収集 - [Service]\(サービス\) のドロップダウンから **[Azure Monitor]** を選択します。 セレクターの一覧が表示されます。この一覧から、このグラフで監視するリソースとメトリックを選択できます。 VM からメトリックを収集するには、**Microsoft.Compute/VirtualMachines** 名前空間を使用します。 VM とメトリックを選択したら、ダッシュボードでのそれらのデータの表示を開始できます。
      ![Grafana での Azure Monitor 用のグラフの構成](./media/grafana-plugin/grafana-graph-config-for-azure-monitor-dark.png)
-   * Azure Monitor ログ データの収集 - サービスのドロップダウンから **[Azure Log Analytics]** を選択します。 クエリを実行するワークスペースを選択し、クエリ テキストを設定します。 設定済みのログ クエリをここにコピーすることも、新しく作成することもできます。 クエリの入力中は、IntelliSense が起動し、オートコンプリートによる選択肢が表示されます。 視覚化の種類と**時系列** **テーブル**を選択し、クエリを実行します。
+   * Azure Monitor ログ データの収集 - サービスのドロップダウンから **[Azure Log Analytics]** を選択します。 クエリを実行するワークスペースを選択し、クエリ テキストを設定します。 設定済みのログ クエリをここにコピーすることも、新しく作成することもできます。 クエリの入力中は、IntelliSense が起動し、オートコンプリートによる選択肢が表示されます。 視覚化タイプ **[タイム シリーズ]** **[テーブル]** を選択し、クエリを実行します。
     
      > [!NOTE]
      >
@@ -153,13 +150,13 @@ Grafana の多くの有効な機能の 1 つに、ダッシュボード再生リ
 
 ![Grafana の再生リストの例](./media/grafana-plugin/grafana7.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Azure 上に Grafana 環境をセットアップした場合、VM を使用しているかどうかにかかわらず、VM が実行されたときに課金されます。 追加料金が発生しないようにするには、この記事で作成されたリソース グループをクリーンアップします。
 
 1. Azure Portal の左側のメニューから、 **[リソース グループ]** 、 **[Grafana]** の順にクリックします。
 2. リソース グループのページで、 **[削除]** をクリックし、テキスト ボックスに「**Grafana**」と入力してから **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure Monitor メトリックの概要](data-platform.md)
 

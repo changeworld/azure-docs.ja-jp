@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 02/05/2020
-ms.openlocfilehash: c67fb21783a926f813d165528520b9d088154412
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.date: 03/01/2020
+ms.openlocfilehash: 3e7e5919a3f862f5cad243654972683d1879c4ba
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162397"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251087"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Data Lake Storage Gen1 を使用する
 
@@ -31,7 +31,7 @@ HDInsight クラスターでデータを分析するには、[Azure Storage](../
 
 ## <a name="availability-for-hdinsight-clusters"></a>HDInsight クラスターの可用性
 
-Apache Hadoop は、既定のファイル システムの概念をサポートしています。 既定のファイル システムは、既定のスキームとオーソリティを意味します。 これは相対パスの解決に使用することもできます。 HDInsight クラスターの作成プロセス時に、Azure Storage 内の BLOB コンテナーを既定のファイル システムとして指定できます。また、HDInsight 3.5 以降のバージョンでは、Azure Storage と Azure Data Lake Storage Gen1 のいずれかを既定のファイル システムとして選択できます (いくつか例外があります)。
+Apache Hadoop は、既定のファイル システムの概念をサポートしています。 既定のファイル システムは、既定のスキームとオーソリティを意味します。 これは相対パスの解決に使用することもできます。 HDInsight クラスターの作成プロセス時に、Azure Storage 内の BLOB コンテナーを既定のファイル システムとして指定できます。また、HDInsight 3.5 以降のバージョンでは、Azure Storage と Azure Data Lake Storage Gen1 のいずれかを既定のファイル システムとして選択できます (いくつか例外があります)。 クラスターとストレージ アカウントは、同じリージョンに置く必要があことに注意してください。
 
 HDInsight クラスターでは、2 つの方法で Data Lake Storage Gen1 を使用できます。
 

@@ -1,19 +1,17 @@
 ---
 title: Azure Monitor を使用して Python アプリを監視する (プレビュー) | Microsoft Docs
 description: OpenCensus Python を Azure Monitor に接続する手順について説明します
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: b9d2bda1d3f01d2bf4bb152c0f62ade87bb61b4c
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: a2b66cdc7a0704cd3560c0776a0ca5302dc689d2
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368273"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250768"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Python アプリケーション用に Azure Monitor をセットアップする (プレビュー)
 
@@ -40,11 +38,11 @@ Azure Monitor は、[OpenCensus](https://opencensus.io) との統合により、
 
    | 設定        | Value           | 説明  |
    | ------------- |:-------------|:-----|
-   | **Name**      | グローバルに一意の値 | 監視しているアプリを識別する名前。 |
+   | **名前**      | グローバルに一意の値 | 監視しているアプリを識別する名前。 |
    | **リソース グループ**     | myResourceGroup      | Application Insights データをホストする新しいリソース グループの名前 |
    | **場所** | 米国東部 | お近くの場所か、アプリがホストされている場所の近く |
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 ## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>Azure Monitor 用の OpenCensus Python SDK を使用したインストルメント化
 
@@ -134,11 +132,20 @@ SDK では 3 つの Azure Monitor エクスポーターを使用して、さま�
         main()
     ```
 
-4. Python スクリプトを実行すると引き続き値を入力するように求められますが、値のみがシェルに出力されます。 作成された `SpanData` は Azure Monitor に送信されます。 送信されたスパン データは `dependencies` で確認できます。
+4. Python スクリプトを実行すると引き続き値を入力するように求められますが、値のみがシェルに出力されます。 作成された `SpanData` は Azure Monitor に送信されます。 送信されたスパン データは `dependencies` で確認できます。 送信要求の詳細については、OpenCensus Python の[依存関係](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-dependency)を参照してください。
+受信要求の詳細については、OpenCensus Python の[要求](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-request)を参照してください。
 
-5. OpenCensus のサンプリングの詳細については、[OpenCensus でのサンプリング](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications)に関するページを参照してください。
+#### <a name="sampling"></a>サンプリング
 
-6. トレース データにおけるテレメトリの相関付けの詳細については、「[OpenCensus Python におけるテレメトリの相関付け](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)」を参照してください。
+OpenCensus のサンプリングの詳細については、[OpenCensus でのサンプリング](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications)に関するページを参照してください。
+
+#### <a name="trace-correlation"></a>トレースの相関付け
+
+トレース データにおけるテレメトリの相関付けの詳細については、OpenCensus Python の[テレメトリの相関付け](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)を参照してください。
+
+#### <a name="modify-telemetry"></a>テレメトリの変更
+
+追跡されたテレメトリを Azure Monitor に送信する前に変更する方法の詳細については、OpenCensus Python の[テレメトリ プロセッサ](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)を参照してください。
 
 ### <a name="metrics"></a>メトリック
 
@@ -242,6 +249,32 @@ SDK では 3 つの Azure Monitor エクスポーターを使用して、さま�
     ```
 
 4. エクスポーターは、一定の間隔でメトリック データを Azure Monitor に送信します。 既定値は 15 秒ごとです。 1 つのメトリックを追跡しているので、このメトリック データは、それに含まれる値およびタイムスタンプに関係なく、間隔ごとに送信されます。 データは `customMetrics` で確認できます。
+
+#### <a name="standard-metrics"></a>標準メトリック
+
+既定では、メトリック エクスポーターは、一連の標準メトリックを Azure Monitor に送信します。 これを無効にするには、メトリックス エクスポーターのコンストラクターで `enable_standard_metrics` フラグを `False` に設定します。
+
+    ```python
+    ...
+    exporter = metrics_exporter.new_metrics_exporter(
+      enable_standard_metrics=False,
+      connection_string='InstrumentationKey=<your-instrumentation-key-here>')
+    ...
+    ```
+現在送信されている標準メトリックの一覧を次に示します。
+
+- Available Memory (bytes) (使用可能なメモリ (バイト))
+- CPU Processor Time (percentage) (CPU プロセッサ時間 (%))
+- Incoming Request Rate (per second) (受信要求率 (1 秒あたり))
+- Incoming Request Average Execution Time (milliseconds) (受信要求の平均実行時間 (ミリ秒))
+- Outgoing Request Rate (per second) (送信要求率 (1 秒あたり))
+- Process CPU Usage (percentage) (プロセスの CPU 使用率 (%))
+- Process Private Bytes (bytes) (プロセスのプライベート バイト (バイト))
+
+これらのメトリックは `performanceCounters` で確認できます。 受信要求率は `customMetrics` 未満になります。
+#### <a name="modify-telemetry"></a>テレメトリの変更
+
+追跡されたテレメトリを Azure Monitor に送信する前に変更する方法の詳細については、OpenCensus Python の[テレメトリ プロセッサ](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)を参照してください。
 
 ### <a name="logs"></a>ログ
 
@@ -362,8 +395,17 @@ SDK では 3 つの Azure Monitor エクスポーターを使用して、さま�
     except Exception:
     logger.exception('Captured an exception.', extra=properties)
     ```
+#### <a name="sampling"></a>サンプリング
 
-7. トレース コンテキスト データを使用してログを強化する方法の詳細については、OpenCensus Python [ログの統合](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation)に関するページを参照してください。
+OpenCensus のサンプリングの詳細については、[OpenCensus でのサンプリング](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications)に関するページを参照してください。
+
+#### <a name="log-correlation"></a>ログの関連付け
+
+トレース コンテキスト データを使用してログを強化する方法の詳細については、OpenCensus Python [ログの統合](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation)に関するページを参照してください。
+
+#### <a name="modify-telemetry"></a>テレメトリの変更
+
+追跡されたテレメトリを Azure Monitor に送信する前に変更する方法の詳細については、OpenCensus Python の[テレメトリ プロセッサ](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)を参照してください。
 
 ## <a name="view-your-data-with-queries"></a>クエリを使用してデータを表示する
 

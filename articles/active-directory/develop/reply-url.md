@@ -10,12 +10,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 1367bf32eea58b828c00ee23a59a32a2fec699ab
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8fdc64632be8b5fcb3dca8de2ee833fef25719fe
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983097"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656740"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>リダイレクト URI および応答 URL に関する制約と制限
 
@@ -54,7 +54,7 @@ Microsoft の個人用アカウント、職場用アカウント、学校用ア�
 > [!NOTE]
 > 新しい[アプリの登録](https://go.microsoft.com/fwlink/?linkid=2083908)エクスペリエンスでは、開発者は UI にワイルドカード URI を追加できません。 職場または学校アカウントにサインインするアプリに対してワイルドカード URI を追加することは、アプリ マニフェスト エディターでのみサポートされます。 今後、新しいアプリではリダイレクト URI でワイルドカードを使用できません。 ただし、リダイレクト URI にワイルドカードを含む以前のアプリは引き続き動作します。
 
-シナリオ上、許可される最大制限を超えるリダイレクト URI が必要な場合、ワイルドカード リダイレクト URI を追加する代わりに、次のいずれかの手法を検討してください。
+シナリオ上、許可される最大制限を超えるリダイレクト URI が必要な場合、ワイルドカード リダイレクト URI を追加する代わりに、次の手法を検討してください。
 
 ### <a name="use-a-state-parameter"></a>状態パラメーターを使用する
 
@@ -70,10 +70,6 @@ Microsoft の個人用アカウント、職場用アカウント、学校用ア�
 
 > [!NOTE]
 > この手法では、セキュリティを侵害されたクライアントが状態パラメーターで送信された追加パラメーターを変更し、ユーザーを別の URL にリダイレクトすることを許します。これは RFC 6819 に説明がある[オープン リダイレクターの脅威](https://tools.ietf.org/html/rfc6819#section-4.2.4)です。 そのため、クライアントは状態を暗号化し、他の手段で検証することでこれらのパラメーターを保護する必要があります。他の手段とは、たとえば、リダイレクト URI に含まれているドメイン名の妥当性をトークンに照らして検証します。
-
-### <a name="add-redirect-uris-to-service-principals"></a>リダイレクト URI をサービス プリンシパルに追加する
-
-もう 1 つ手法は、Azure AD テナントでアプリ登録を表す[サービス プリンシパル](app-objects-and-service-principals.md#application-and-service-principal-relationship)にリダイレクト URI を追加することです。 状態パラメーターを使用できないときや、シナリオ上、サポートする新しいテナントごとにアプリ登録に新しいリダイレクト URI を追加する必要があるとき、この手法を利用できます。 
 
 ## <a name="next-steps"></a>次のステップ
 

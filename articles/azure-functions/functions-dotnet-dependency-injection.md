@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: a17ff15e71251e781cd30c33a5616af85e4f4eb9
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 1aff2815144f776b351e92d8945b267d1451f9f6
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260085"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915709"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure Functions で依存関係の挿入を使用する
 
@@ -130,7 +130,7 @@ GitHub の[さまざまなサービスの有効期間のサンプル](https://ak
 
 > [!WARNING]
 > - サービス コレクションに `AddApplicationInsightsTelemetry()` を追加しないでください。環境によって提供されるサービスと競合するサービスが登録されます。
-> - 組み込みの Application Insights 機能を使用している場合、独自の `TelemetryConfiguration` または `TelemetryClient` を登録しないでください。
+> - 組み込みの Application Insights 機能を使用している場合、独自の `TelemetryConfiguration` または `TelemetryClient` を登録しないでください。 独自の `TelemetryClient` インスタンスを構成する必要がある場合は、「[Azure Functions を監視する](./functions-monitoring.md#version-2x-and-later-2)」に示されているように、挿入された `TelemetryConfiguration` を使用して作成します。
 
 ## <a name="function-app-provided-services"></a>関数アプリで提供されるサービス
 

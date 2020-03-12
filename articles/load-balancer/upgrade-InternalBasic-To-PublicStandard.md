@@ -7,21 +7,22 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: f5ff4ca94f9e9c6bd03cde6b948331e42cc6225a
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 346fc3d5a4e7b165caafd9847b9797abae0c9113
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617815"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659987"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Azure Internal Load Balancer のアップグレード - 送信接続が必要
 [Azure Standard Load Balancer](load-balancer-overview.md) では、豊富な機能とゾーンの冗長性による高可用性が提供されます。 Load Balancer SKU の詳細については、[比較表](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)を参照してください。 Standard Internal Load Balancer は送信接続を提供しないため、代わりに標準のPublic Load Balancer を作成するためのソリューションを提供します。
 
-アップグレードには、次の 3 つの段階があります。
+アップグレードには、次の 4 つの段階があります。
 
 1. 構成を Standard Public Load Balancer に移行する
 2. Standard Public Load Balancer のバックエンド プールに VM を追加する
-3. インターネットとの間でリフレインされる必要があるサブネット/VM の NSG ルールを設定する
+3. 送信接続用に Load Balancer でアウトバウンド規則を作成する
+4. インターネットとの間でリフレインされる必要があるサブネット/VM の NSG ルールを設定する
 
 この記事では、構成の移行について説明します。 バックエンド プールへの VM の追加は、お客様固有の環境によって異なる場合があります。 ただし、一般的な推奨事項を簡単に[説明しています](#add-vms-to-backend-pools-of-standard-load-balancer)。
 
@@ -83,7 +84,7 @@ Azure Az モジュールがインストールされていて、それらをア�
     **例**
 
    ```azurepowershell
-   ./AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
+   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
    ```
 
 ### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>Standard Load Balancer のバックエンド プールに VM を追加する
@@ -109,6 +110,12 @@ Azure Az モジュールがインストールされていて、それらをア�
 
 * **新しく作成された Standard Public Load Balancer のバックエンド プールに追加する新しい VM を作成する。**
     * VM を作成して Standard Load Balancer に関連付ける方法の詳細については、[こちら](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal#create-virtual-machines)参照してください。
+
+### <a name="create-an-outbound-rule-for-outbound-connection"></a>送信接続用のアウトバウンド規則を作成する
+
+[手順](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-portal#create-outbound-rule-configuration)に従ってアウトバウンド規則を作成します。それにより、次のことができます。
+* 送信 NAT をゼロから定義する。
+* 既存の送信 NAT の動作をスケーリングして調整する。
 
 ### <a name="create-nsg-rules-for-vms-which-to-refrain-communication-from-or-to-the-internet"></a>インターネットとの通信を避ける VM の NSG ルールを作成する
 インターネット トラフィックが VM に到達しないようにするには、VM のネットワーク インターフェイスに [NSG ルール](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) を作成します。

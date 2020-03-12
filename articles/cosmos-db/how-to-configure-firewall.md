@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: 8522a537301c1d35da2a2eb46b4374fa4daf6a27
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 1c24782285ac9b06d5499351eebe1693ade07297
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580679"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162946"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Azure Cosmos DB で IP ファイアウォールを構成する
 
@@ -40,23 +40,23 @@ IP アクセス制御ポリシーをプログラムで有効にする場合は�
 |------|----------|
 |ドイツ|51.4.229.218|
 |中国|139.217.8.252|
-|米国政府|52.244.48.71|
+|US Gov|52.244.48.71|
 |その他のすべてのリージョン|104.42.195.92、40.76.54.131、52.176.6.30、52.169.50.45、52.187.184.26|
 
-Azure portal へのアクセスを有効にするには、次のスクリーン ショットに示すように、 **[Azure portal からのアクセスを許可する]** を選択します。
+次のスクリーン ショットに示すように、 **[Azure portal からのアクセスを許可する]** を選択することで、Azure portal へのアクセス要求を有効にできます。
 
 ![Azure Portal へのアクセスを有効にする方法を示すスクリーンショット](./media/how-to-configure-firewall/enable-azure-portal.png)
 
 ### <a name="allow-requests-from-global-azure-datacenters-or-other-sources-within-azure"></a>世界中の Azure データ センターまたは Azure 内の他のソースからの要求を許可する
 
-Azure Stream Analytics や Azure Functions などの静的 IP を提供しないサービスから Azure Cosmos DB アカウントにアクセスする場合も、IP ファイアウォールを使用してアクセスを制限できます。 このようなサービスから Azure Cosmos DB アカウントにアクセスできるようにするには、許可された IP アドレスのリストに IP アドレス 0.0.0.0 を追加します。 0\.0.0.0 のアドレスにより、Azure データセンターの IP 範囲からご利用の Azure Cosmos DB アカウントへの要求が制限されます。 この設定では、その他の IP 範囲からご利用の Azure Cosmos DB アカウントへのアクセスは許可されません。
+Azure Stream Analytics や Azure Functions などの静的 IP を提供しないサービスから Azure Cosmos DB アカウントにアクセスする場合も、IP ファイアウォールを使用してアクセスを制限できます。 次のスクリーン ショットに示すように、 **[Accept connections from within Azure datacenters]\(Azure データセンター内からの接続を受け入れる\)** を選択することで、Azure 内の他のソースからのアクセスを有効にできます。
+
+![Azure Portal で [ファイアウォール] ページを開く方法を示すスクリーンショット](./media/how-to-configure-firewall/enable-azure-services.png)
+
+このオプションを有効にすると、IP アドレス `0.0.0.0` が、許可される IP アドレスの一覧に追加されます。 `0.0.0.0` の IP アドレスにより、Azure データセンターの IP 範囲からご利用の Azure Cosmos DB アカウントへの要求が制限されます。 この設定では、その他の IP 範囲からご利用の Azure Cosmos DB アカウントへのアクセスは許可されません。
 
 > [!NOTE]
 > このオプションでは、Azure にデプロイされた他のお客様のサブスクリプションからの要求を含む、Azure からのすべての要求を許可するようにファイアウォールが構成されます。 このオプションで許可される IP のリストは非常に範囲が広くなるので、ファイアウォール ポリシーの有効性が制限されます。 このオプションは、ご利用の要求が静的 IP または仮想ネットワーク内のサブネットから発生しない場合にのみ使用してください。 このオプションを選択すると Azure portal からのアクセスは自動的に許可されるようになります。これは、Azure portal が Azure にデプロイされているからです。
-
-Azure portal へのアクセスを有効にするには、次のスクリーン ショットに示すように、 **[パブリック Azure データセンター内からの接続を受け入れる]** を選択します。
-
-![Azure Portal で [ファイアウォール] ページを開く方法を示すスクリーンショット](./media/how-to-configure-firewall/enable-azure-services.png)
 
 ### <a name="requests-from-your-current-ip"></a>現在ご利用の IP からの要求
 
@@ -163,7 +163,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 次のオプションを使用して IP アクセス制御ポリシーに関する問題のトラブルシューティングを行うことができます。
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 ご利用の Azure Cosmos DB アカウントの IP アクセス制御ポリシーを有効にすることにより、IP アドレス範囲の許可リストに入っていないマシンからご利用のアカウントへの要求はすべてブロックされます。 コンテナーの参照やドキュメントのクエリなどのポータルのデータ プレーン操作を有効にするには、ポータルの **[ファイアウォール]** ウィンドウを使用して Azure portal へのアクセスを明示的に許可する必要があります。
 
@@ -179,7 +179,7 @@ Azure Cosmos DB アカウントで診断ログを有効にします。 これら
 
 Azure Cosmos DB 用のサービス エンドポイントが有効にされている仮想ネットワーク内のサブネットからの要求では、仮想ネットワークおよびサブネットの ID が Azure Cosmos DB アカウントに送信されます。 これらの要求にはソースのパブリック IP がないため、IP フィルターでは拒否されます。 仮想ネットワーク内の特定のサブネットからのアクセスを許可するには、[ご利用の Azure Cosmos DB アカウントへの仮想ネットワークおよびサブネット ベースのアクセスを構成する方法](how-to-configure-vnet-service-endpoint.md)に関するページに概説されているアクセス制御リストを追加します。 ファイアウォール規則が適用されるまで、最大で 15 分かかる場合があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ご利用の Azure Cosmos DB アカウントに対して仮想ネットワーク サービス エンドポイントを構成するには、次の記事を参照してください。
 

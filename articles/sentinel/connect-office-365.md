@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/12/2020
 ms.author: yelevin
-ms.openlocfilehash: b00f9c9e7de9568a29d2b7a7f4ef84c022ef5679
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 43eba727b1dc724aae6eea3ec77de1363c5db73f
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588163"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252513"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Office 365 ログからデータを接続する
 
@@ -33,9 +33,9 @@ ms.locfileid: "77588163"
 ## <a name="prerequisites"></a>前提条件
 
 - テナントのグローバル管理者またはセキュリティ管理者である必要があります。
-- テナントに Office 365 E3 または Office 365 E5 ライセンスがない場合は、次のいずれかのプロセスを使用して、テナントで統合監査を有効にする必要があります。
+- テナントで統合監査が有効になっている必要があります。 Office 365 E3 または E5 ライセンスを使用するテナントでは、統合監査が既定で有効になっています。 <br>テナントにこれらのライセンスのどちらもない場合は、次のいずれかの方法を使用して、テナントで統合監査を有効にする必要があります。
     - [Set-AdminAuditLogConfig コマンドレットを使用](https://docs.microsoft.com/powershell/module/exchange/policy-and-compliance-audit/set-adminauditlogconfig?view=exchange-ps)して、パラメーター "UnifiedAuditLogIngestionEnabled" を有効にします。
-    - [または、セキュリティ/コンプライアンス センターの UI を使用します](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#before-you-begin)。
+    - [セキュリティ/コンプライアンス センターの UI を使用します](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#before-you-begin)。
 
 ## <a name="connect-to-office-365"></a>Office 365 への接続
 

@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, klam, logicappspm
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 02/28/2020
 tags: connectors
-ms.openlocfilehash: 3370eea8909f30563babcf2a84f727ba51f67e29
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: e7a0791cc2bca672e7fde142650ad25e7e8ab58b
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77647639"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161876"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SSH と Azure Logic Apps を使用して SFTP ファイルの監視、作成、および管理を行う
 
@@ -31,7 +31,28 @@ SFTP-SSH コネクタと SFTP コネクタの違いについては、このト�
 
 ## <a name="limits"></a>制限
 
-* 既定では、SFTP-SSH アクションは、*1 GB 以下* (ただし一度に *15 MB* のチャンク内でのみ) のファイルも読み書きできます。 15 MB より大きいファイルを処理するために、SFTP-SSH アクションは、15 MB のファイルしか処理できないファイルのコピー アクション以外では[メッセージ チャンク](../logic-apps/logic-apps-handle-large-messages.md)をサポートしています。 **ファイルのコンテンツの取得**アクションでは、暗黙的にメッセージ チャンクが使用されます。
+* [チャンク](../logic-apps/logic-apps-handle-large-messages.md)をサポートする SFTP-SSH アクションでは 1 GB までのファイルを処理できますが、チャンクをサポートしない SFTP-SSH アクションでは 50 MB までのファイルを処理できます。 既定のチャンク サイズは 15 MB ですが、このサイズは、ネットワーク待機時間、サーバーの応答時間などの要因に応じて、5 MB から段階的に増やして最大 50 MB まで動的に変更できます。
+
+  > [!NOTE]
+  > [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリの場合、このコネクタの ISE のラベルが付いたバージョンでは、代わりに [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)が使用されます。
+
+  チャンク サイズは接続に関連付けられます。つまり、チャンクをサポートするアクションと、チャンクをサポートしないアクションに対して同じ接続を使用できます。 この場合、チャンクをサポートしないアクションのチャンク サイズは、5 MB から 50 MB の範囲です。 次の表に、チャンクをサポートする SFTP-SSH アクションを示します。
+
+  | アクション | チャンクのサポート |
+  |--------|------------------|
+  | **ファイルのコピー** | いいえ |
+  | **ファイルを作成する** | はい |
+  | **フォルダーの作成** | 適用なし |
+  | **ファイルの削除** | 適用なし |
+  | **アーカイブをフォルダーに抽出する** | 適用なし |
+  | **ファイルの内容を取得する** | はい |
+  | **パスを使用してファイルの内容を取得する** | はい |
+  | **ファイルのメタデータを取得する** | 適用なし |
+  | **パスを使用してファイルのメタデータを取得する** | 適用なし |
+  | **フォルダー内のファイルを一覧表示する** | 適用なし |
+  | **ファイル名の変更** | 適用なし |
+  | **ファイルを更新する** | いいえ |
+  |||
 
 * SFTP-SSH トリガーではチャンクはサポートされていません。 ファイルのコンテンツを要求する場合、トリガーは 15 MB 以下のファイルのみを選択します。 15 MB より大きいファイルを取得するには、代わりに次のパターンに従います。
 
@@ -46,10 +67,6 @@ SFTP-SSH コネクタと SFTP コネクタの違いについては、このト�
 以下に、SFTP-SSH コネクタと SFTP-SSH コネクタのその他の主な違いを、SFTP コネクタは以下の機能を備えているという形で示します。
 
 * .NET をサポートするオープン ソース Secure Shell (SSH) ライブラリである [SSH.NET ライブラリ](https://github.com/sshnet/SSH.NET)を使用します。
-
-* 既定では、SFTP-SSH アクションは、*1 GB 以下* (ただし一度に *15 MB* のチャンク内でのみ) のファイルも読み書きできます。
-
-  15 MB を超えるファイルを処理するためにはSFTP-SSH アクションでは[メッセージ チャンク](../logic-apps/logic-apps-handle-large-messages.md)を使用できます。 ただし、ファイルのコピー アクションはメッセージ チャンクをサポートしていないために、15 MB のファイルしかサポートしていません。 SFTP-SSH トリガーではチャンクはサポートされていません。 大きなファイルをアップロードするには、SFTP サーバー上のルート フォルダーに対する読み取りと書き込みの両方のアクセス許可が必要です。
 
 * SFTP サーバーの指定されたパスにフォルダーを作成する**フォルダーの作成**アクションを提供します。
 

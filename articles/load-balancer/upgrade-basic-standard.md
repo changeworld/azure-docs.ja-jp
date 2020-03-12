@@ -7,20 +7,21 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 83cac961eb3cd700451f16c684c64185b35e9bd3
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: a4c8b029b199915cce9a417430e67675a03d327f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616751"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659953"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Azure Public Load Balancer をアップグレードする
 [Azure Standard Load Balancer](load-balancer-overview.md) では、豊富な機能とゾーンの冗長性による高可用性が提供されます。 Load Balancer SKU の詳細については、[比較表](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)を参照してください。
 
-アップグレードには、次の 2 つの段階があります。
+アップグレードには、次の 3 つの段階があります。
 
 1. 構成の移行
 2. Standard Load Balancer のバックエンド プールに VM を追加する
+3. 送信接続用のアウトバウンド規則を Load Balancer で作成する
 
 この記事では、構成の移行について説明します。 バックエンド プールへの VM の追加は、お客様固有の環境によって異なる場合があります。 ただし、一般的な推奨事項を簡単に[説明しています](#add-vms-to-backend-pools-of-standard-load-balancer)。
 
@@ -72,7 +73,7 @@ Azure Az モジュールがインストールされていて、それらをア�
 
 1. 必要なパラメーターを確認します。
 
-   * **oldRgName: [文字列]:必須** – アップグレードする既存の Basic Load Balancer のリソース グループです。 この文字列値を検索するには、Azure portal に移動し、Basic Load Balancer のソースを選択し、ロード バランサーの **[概要]** をクリックします。 そのページにリソース グループがあります。
+   * **oldRgName: [文字列]:必須** – アップグレードする既存の Basic Load Balancer のリソース グループです。 この文字列値を検索するには、Azure portal に移動し、Basic Load Balancer ソースを選択して、ロードバランサーの **[概要]** をクリックします。 そのページにリソース グループがあります。
    * **oldLBName: [文字列]:必須** – アップグレードする既存の Basic Balancer の名前です。 
    * **newrgName: [文字列]:必須** – Standard Load Balancer が作成されるリソース グループです。 新しいリソース グループまたは既存のものを指定できます。 既存のリソース グループを選択する場合は、Load Balancer の名前がリソース グループ内で一意でなければならないことに注意してください。 
    * **newlocation: [文字列]:必須** – Standard Load Balancer が作成される場所です。 他の既存のリソースとの関連付けを強化するために、選択した Basic Load Balancer の同じ場所を Standard Load Balancer に継承することをお勧めします。
@@ -82,7 +83,7 @@ Azure Az モジュールがインストールされていて、それらをア�
     **例**
 
    ```azurepowershell
-   ./AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
+   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
    ```
 
 ### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>Standard Load Balancer のバックエンド プールに VM を追加する
@@ -108,6 +109,12 @@ Azure Az モジュールがインストールされていて、それらをア�
 
 * **新しく作成された Standard Public Load Balancer のバックエンド プールに追加する新しい VM を作成する。**
     * VM を作成して Standard Load Balancer に関連付ける方法の詳細については、[こちら](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal#create-virtual-machines)参照してください。
+
+### <a name="create-an-outbound-rule-for-outbound-connection"></a>送信接続用のアウトバウンド規則を作成する
+
+[手順](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-portal#create-outbound-rule-configuration)に従ってアウトバウンド規則を作成します。それにより、次のことができます。
+* 送信 NAT をゼロから定義する。
+* 既存の送信 NAT の動作をスケーリングして調整する。
 
 ## <a name="common-questions"></a>一般的な質問
 

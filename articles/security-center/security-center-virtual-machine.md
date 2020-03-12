@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/24/2017
 ms.author: yurid
-ms.openlocfilehash: ed2c1f874bd61e846cbdf1f68181a8f374c89524
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 69062e42a5d572cf7b73bec3932613d39be9b92f
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603365"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921506"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Azure Security Center と Azure 仮想マシン
 [Azure Security Center](https://azure.microsoft.com/services/security-center/) は、脅威の防御、検出、対応を可能にする機能です。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
@@ -33,7 +33,7 @@ Security Center は、仮想マシンのセキュリティ設定を可視化す�
 * エンドポイント保護の推奨事項
 * ディスク暗号化の検証
 * 脆弱性評価と修復
-* 脅威の検出
+* 脅威の防止機能からのセキュリティの警告
 
 Security Center の機能は、Azure VM を保護することだけではありません。Cloud Services、App Services、Virtual Network などのセキュリティを監視して管理することもできます。 
 

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: 81749b8fb8b9e3f1a10b65b758b532773bdebdac
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 39d1c0ddb4961800e889346ec110ca629ae73546
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833889"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251564"
 ---
 # <a name="azure-dedicated-hosts"></a>Azure 専用ホスト
 
@@ -29,3 +29,5 @@ Azure 専用ホストは、1 つの Azure サブスクリプションに対し�
 - [Azure PowerShell](dedicated-hosts-powershell.md)、[ポータル](dedicated-hosts-portal.md)、[Azure CLI](../linux/dedicated-hosts-cli.md) を使用して専用ホストをデプロイできます。
 
 - [こちら](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)には、リージョン内の回復性を最大にするためにゾーンと障害ドメインの両方を使用するサンプル テンプレートがあります。
+
+- また、[Azure Dedicated Host の予約インスタンス](../prepay-dedicated-hosts-reserved-instances.md)を使用してコストを節約することもできます。

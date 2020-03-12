@@ -1,21 +1,19 @@
 ---
-title: Azure Application Insights のアラートの設定 | Microsoft Docs
+title: Azure Application Insights のアラートの設定
 description: Web アプリにおける長い応答時間、例外、パフォーマンスまたは使用状況のその他の変化について通知します。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/23/2019
 ms.reviewer: lagayhar
-ms.openlocfilehash: a21e2676d1b03472c58e2f95095a1a59d00b16be
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.subservice: alerts
+ms.openlocfilehash: 80759c94d7cc5b60b6e38a34b85fb64c3c18fd2e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678405"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666719"
 ---
 # <a name="set-alerts-in-application-insights"></a>Application Insights のアラートの設定
+
 [Azure Application Insights][start] では、Web アプリのパフォーマンスまたは使用状況のメトリックの変化についてアラートを発行できます。 
 
 Application Insights では、[さまざまなプラットフォーム][platforms]上でライブ アプリを監視して、パフォーマンスの問題の診断と使用パターンの把握を支援します。
@@ -24,10 +22,11 @@ Application Insights では、[さまざまなプラットフォーム][platform
 
 * [**メトリック アラート**](../../azure-monitor/platform/alerts-metric-overview.md)は、一定の期間に、メトリックが応答時間、例外の数、CPU 使用率、ページ ビューなどのしきい値を超えたときに通知します。
 * [**ログ アラート**](../../azure-monitor/platform/alerts-unified-log.md)は、アラート シグナルがカスタムの Kusto クエリに基づくアラートを説明するために使用されます。
-* [**Web テスト**][availability]では、サイトがインターネット上で使用できなくなったとき、または応答速度が低下したときに通知を行います。 [詳細情報][availability]。
+* [**Web テスト**][availability]では、サイトがインターネット上で使用できなくなったとき、または応答速度が低下したときに通知を行います。 [詳細については、こちらを参照してください][availability]。
 * [**プロアクティブ診断**](../../azure-monitor/app/proactive-diagnostics.md)は、通常と異なるパフォーマンス パターンについて通知するよう自動的に構成されます。
 
 ## <a name="set-a-metric-alert"></a>メトリック アラートの設定
+
 [アラート ルール] タブを開き、追加ボタンを使用します。
 
 ![[アラート ルール] タブで、[アラートの追加] を選択します。 測定するリソースとしてアプリケーションを設定し、アラートの名前を指定して、メトリックを選択します。](./media/alerts/01-set-metric.png)

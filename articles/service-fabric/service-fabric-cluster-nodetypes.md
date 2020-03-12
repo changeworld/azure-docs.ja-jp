@@ -5,16 +5,18 @@ ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: e751b3dd9108d364c900bbd059dc89c1eb3770c4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 37d4c27d3033545c523cefc2f317073af531f095
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722341"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199718"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric のノードの種類と仮想マシン スケール セット
 
-[仮想マシン スケール セット](/azure/virtual-machine-scale-sets)は、Azure コンピューティング リソースです。 スケール セットを使用すると、仮想マシンのコレクションをセットとしてデプロイおよび管理できます。 Azure Service Fabric クラスターで定義するノードの種類ごとに別個のスケールが設定されます。 Service Fabric ランタイムは、*Microsoft.Azure.ServiceFabric* 仮想マシン拡張機能によって、スケール セット内の各仮想マシンにインストールされます。 各ノードの種類を個別にスケールアップまたはスケールダウンしたり、各クラスター ノードで実行されている OS SKU を変更したり、異なるポートのセットを開いたり、別の容量メトリックを使用したりできます。
+[仮想マシン スケール セット](/azure/virtual-machine-scale-sets)は、Azure コンピューティング リソースです。 スケール セットを使用すると、仮想マシンのコレクションをセットとしてデプロイおよび管理できます。 Azure Service Fabric クラスターで定義するノードの種類ごとに、正確に 1 つのスケール セットが設定されます。複数のノードの種類は同じスケール セットでサポートできず、1 つのノードの種類は (ほとんどの場合) 複数のスケール セットでサポートすることはできません。 これに対する例外は、レプリカが元のスケール セットからアップグレードされたスケール セットに移行されている間に、同じ `nodeTypeRef` 値を持つ 2 つのスケール セットが一時的に存在する場合に、ノードの種類を[垂直スケーリングする](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations)というまれな状況です。
+
+Service Fabric ランタイムは、*Microsoft.Azure.ServiceFabric* 仮想マシン拡張機能によって、スケール セット内の各仮想マシンにインストールされます。 各ノードの種類を個別にスケールアップまたはスケールダウンしたり、各クラスター ノードで実行されている OS SKU を変更したり、異なるポートのセットを開いたり、別の容量メトリックを使用したりできます。
 
 次の図は、*FrontEnd* と *BackEnd* という名前の 2 種類のノードがあるクラスターを示しています。 各ノードの種類には、5 つのノードがあります。
 
@@ -70,10 +72,10 @@ Service Fabric 仮想マシン拡張機能は、Service Fabric を　Azure 仮�
 
 プロパティの説明を次に示します。
 
-| **Name** | **使用できる値** | **ガイダンスまたは簡単な説明** |
+| **名前** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 | name | string | 拡張機能の一意の名前 |
-| 型 | "ServiceFabricLinuxNode" または "ServiceFabricWindowsNode" | OS の Service Fabric が次に対してブートストラップすることを識別します。 |
+| type | "ServiceFabricLinuxNode" または "ServiceFabricWindowsNode" | OS の Service Fabric が次に対してブートストラップすることを識別します。 |
 | autoUpgradeMinorVersion | true または false | SF ランタイムのマイナー バージョンの自動アップグレードを有効にします。 |
 | publisher | Microsoft.Azure.ServiceFabric | Service Fabric 拡張機能パブリッシャーの名前 |
 | clusterEndpont | string | 管理エンドポイントへに対する URI:PORT |

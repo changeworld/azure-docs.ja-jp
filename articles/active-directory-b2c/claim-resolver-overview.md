@@ -3,20 +3,20 @@ title: カスタム ポリシーでの要求リゾルバー
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C 内のカスタム ポリシーで要求リゾルバーを使用する方法について説明します。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/17/2020
-ms.author: marsma
+ms.date: 03/02/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4434c877f69391f5dc5926c6aed07049ba46b7b7
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 02277d2da2e431ac1cefdd9b018af4c25f7d5a9a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425648"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189839"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C カスタム ポリシーでの要求リゾルバーについて
 
@@ -75,6 +75,7 @@ Azure Active Directory B2C (Azure AD B2C) [カスタム ポリシー](custom-pol
 | {OIDC:Prompt} | `prompt` クエリ文字列パラメーター。 | ログイン (login) |
 | {OIDC:Resource} |`resource` クエリ文字列パラメーター。 | 該当なし |
 | {OIDC:scope} |`scope` クエリ文字列パラメーター。 | openid |
+| {OIDC:RedirectUri} |`redirect_uri` クエリ文字列パラメーター。 | https://jwt.ms |
 
 ### <a name="context"></a>Context
 
@@ -85,7 +86,7 @@ Azure Active Directory B2C (Azure AD B2C) [カスタム ポリシー](custom-pol
 | {Context:DateTimeInUtc} |UTC での日時。  | 10/10/2018 12:00:00 PM |
 | {Context:DeploymentMode} |ポリシーの展開モード。  | Production |
 | {Context:IPAddress} | ユーザーの IP アドレス。 | 11.111.111.11 |
-
+| {Context:KMSI} | [[サインインしたままにする]](custom-policy-keep-me-signed-in.md) チェックボックスがオンになっているかどうかを示します。 |  true |
 
 ### <a name="non-protocol-parameters"></a>プロトコル以外のパラメーター
 
@@ -116,9 +117,9 @@ OIDC 要求または OAuth2 要求の一部に含まれているすべてのパ�
 | {SAML:ForceAuthn} | SAML 要求の `AuthnRequest` 要素からの `ForceAuthN` 属性値。 | True |
 | {SAML:ProviderName} | SAML 要求の `AuthnRequest` 要素からの `ProviderName` 属性値。| Contoso.com |
 
-## <a name="using-claim-resolvers"></a>要求リゾルバーの使用 
+## <a name="using-claim-resolvers"></a>要求リゾルバーの使用
 
-次の要素を使用して、要求リゾルバーを使用できます。 
+次の要素を使用して、要求リゾルバーを使用できます。
 
 | Item | 要素 | 設定 |
 | ----- | ----------------------- | --------|
@@ -134,7 +135,7 @@ OIDC 要求または OAuth2 要求の一部に含まれているすべてのパ�
 |[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |
 |[RelyingParty](relyingparty.md#technicalprofile) の技術プロファイル| `OutputClaim`| 2 |
 
-以下のように設定します。 
+以下のように設定します。
 1. `IncludeClaimResolvingInClaimsHandling` メタデータを `true` に設定する必要があります。
 1. 入力要求または出力要求の属性 `AlwaysUseDefaultValue` は、`true`に設定する必要があります。
 
@@ -194,7 +195,7 @@ Azure AD B2C を使用すると、HTML コンテンツ定義エンドポイン�
 
 ### <a name="content-definition"></a>コンテンツ定義
 
-[ContentDefinition](contentdefinitions.md) `LoadUri`では、使用されるパラメーターに基づいて、さまざまな場所からコンテンツをプルする要求リゾルバーを送信できます。 
+[ContentDefinition](contentdefinitions.md) `LoadUri`では、使用されるパラメーターに基づいて、さまざまな場所からコンテンツをプルする要求リゾルバーを送信できます。
 
 ```XML
 <ContentDefinition Id="api.signuporsignin">
@@ -223,7 +224,7 @@ Azure Application Insights と要求リゾルバーを使用すると、ユー�
 
 ### <a name="relying-party-policy"></a>証明書利用者ポリシー
 
-[証明書利用者](relyingparty.md) ポリシー技術プロファイルでは、テナント ID または関連付け ID を JWT 内の証明書利用者アプリケーションに送信することができます。 
+[証明書利用者](relyingparty.md) ポリシー技術プロファイルでは、テナント ID または関連付け ID を JWT 内の証明書利用者アプリケーションに送信することができます。
 
 ```XML
 <RelyingParty>

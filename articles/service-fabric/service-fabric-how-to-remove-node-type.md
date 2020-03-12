@@ -1,29 +1,23 @@
 ---
-title: Azure Service Fabric でノード タイプを削除する
+title: Azure Service Fabric でのノード タイプの削除 | Microsoft Docs
 description: Azure で実行されている Service Fabric クラスターからノード タイプを削除する方法について説明します。
+author: inputoutputcode
+manager: sridmad
 ms.topic: conceptual
-ms.date: 02/14/2019
-ms.openlocfilehash: f3dc3210fdb436038174bb8d9347424f14d3faa3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/21/2020
+ms.author: chrpap
+ms.openlocfilehash: d8ee2327f65332d32038806f2d2416cac190875b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464495"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661978"
 ---
-# <a name="remove-a-service-fabric-node-type"></a>Service Fabric ノード タイプを削除する
+# <a name="how-to-remove-a-service-fabric-node-type"></a>Service Fabric ノード タイプを削除する方法
 この記事では、クラスターから既存のノード タイプを削除することで、Azure Service Fabric クラスターをスケーリングする方法について説明します。 Service Fabric クラスターは、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターに属しているコンピューターまたは VM を "ノード" と呼びます。 仮想マシン スケール セットは、セットとして仮想マシンのコレクションをデプロイおよび管理するために使用する Azure コンピューティング リソースです。 Azure クラスターで定義されているすべてのノードの種類は、[異なるスケール セットとしてセットアップされます](service-fabric-cluster-nodetypes.md)。 その後は、ノードの種類ごとに個別に管理できます。 Service Fabric クラスターを作成した後は、ノード タイプ (仮想マシン スケール セット) とそのノードすべてを削除することで、クラスターを水平方向にスケーリングできます。  クラスターは、クラスターでワークロードを実行中であっても、いつでもスケーリングできます。  クラスターをスケーリングすると、アプリケーションも自動的にスケーリングされます。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-[Remove-AzServiceFabricNodeType](https://docs.microsoft.com/powershell/module/az.servicefabric/remove-azservicefabricnodetype) を使用して Service Fabric ノード タイプを削除します。
-
-Remove-AzServiceFabricNodeType が呼び出されると、次の 3 つの操作が行われます。
-1.  ノード タイプの背後にある仮想マシン スケール セットが削除されます。
-2.  ノード タイプがクラスターから削除されます。
-3.  そのノード タイプに含まれる各ノードについて、そのノード全体の状態がシステムから削除されます。 そのノード上にサービスが存在する場合、それらのサービスは最初に別ノードに移動されます。 クラスター マネージャーで、レプリカ/サービス用のノードを見つけられない場合、操作は遅延またはブロックされます。
-
 > [!WARNING]
-> 運用環境のクラスターからノード タイプを削除するために Remove-AzServiceFabricNodeType を使用することは、頻繁に使用する方法としては推奨されません。 ノード タイプの背後にある仮想マシン スケール セット リソースが削除されるため、危険なコマンドです。 
+> 運用環境のクラスターからノード タイプを削除するためにこの方法を使用することは、頻繁に使用する場合は推奨されません。 ノード タイプの背後にある仮想マシン スケール セット リソースが削除されるため、危険なコマンドです。 
 
 ## <a name="durability-characteristics"></a>耐久性の特性
 Remove-AzServiceFabricNodeType の使用時には、速度よりも安全性が優先されます。 次に示す理由から、ノード タイプはシルバーまたはゴールドの[耐久性レベル](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)にする必要があります。
@@ -31,43 +25,154 @@ Remove-AzServiceFabricNodeType の使用時には、速度よりも安全性が�
 - シルバーとゴールドの耐久性では、スケール セットに対するすべての変更がトラップされます。
 - ゴールドでは、スケール セットの下にある Azure の更新に対する制御も与えられます。
 
-Service Fabric では、データが失われないように、基になっている変更や更新が "調整" されます。 ただし、ブロンズの耐久性を持つノードを削除すると、状態情報が失われる可能性があります。 プライマリ ノード タイプを削除しようとしていて、アプリケーションがステートレスである場合は、ブロンズで問題ありません。 運用環境でステートフル ワークロードを実行する場合は、最小構成をシルバーにする必要があります。 同様に、運用環境であれば、プライマリ ノード タイプは常にシルバーまたはゴールドにする必要があります。
+Service Fabric では、データが失われないように、基になっている変更や更新が "調整" されます。 ただし、ブロンズの持続性を持つノード タイプを削除すると、状態情報が失われる可能性があります。 プライマリ ノード タイプを削除しようとしていて、アプリケーションがステートレスである場合は、ブロンズで問題ありません。 運用環境でステートフル ワークロードを実行する場合は、最小構成をシルバーにする必要があります。 同様に、運用環境であれば、プライマリ ノード タイプは常にシルバーまたはゴールドにする必要があります。
 
 ### <a name="more-about-bronze-durability"></a>ブロンズの耐久性に関する詳細
 
 ブロンズであるノード タイプを削除すると、そのノード タイプに含まれるすべてのノードが直ちに停止します。 Service Fabric では、ブロンズ ノードのスケール セットの更新は一切トラップされないため、すべての VM が直ちに停止します。 それらのノードに何かステートフルなものがあった場合、データは失われます。 ステートレスであった場合でも、Service Fabric 内にあるノードはすべてリングに参加しているため、近隣全体が失われる可能性があり、そのために、クラスター自体が不安定になることがあります。
 
-## <a name="recommended-node-type-removal-process"></a>推奨されるノード タイプの削除プロセス
+## <a name="remove-a-non-primary-node-type"></a>非プライマリ ノード タイプの削除
 
-ノード タイプを削除するには、[Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) コマンドレットを実行します。  コマンドレットが完了するまでに、一定の時間がかかります。  すべての VM が削除されると ("ダウン" と示されます)、fabric:/System/InfrastructureService/[ノード タイプ名] でエラー状態が示されます。
+1. 処理を開始する前に、次の前提条件に対処してください。
 
-```powershell
-$groupname = "mynodetype"
-$nodetype = "nt2vm"
-$clustername = "mytestcluster"
+    - クラスターが正常である。
+    - ノード タイプが削除された後も依然として十分な容量 ( 必要なレプリカ数を配置するためのノードの数など) がある。
 
-Remove-AzServiceFabricNodeType -Name $clustername  -NodeType $nodetype -ResourceGroupName $groupname
+2. ノード タイプを使用するための配置制約があるすべてのサービスを、そのノード タイプから移動します。
 
-Connect-ServiceFabricCluster -ConnectionEndpoint mytestcluster.eastus.cloudapp.azure.com:19000 `
-          -KeepAliveIntervalInSec 10 `
-          -X509Credential -ServerCertThumbprint <thumbprint> `
-          -FindType FindByThumbprint -FindValue <thumbprint> `
-          -StoreLocation CurrentUser -StoreName My
-```
+    - ノード タイプを参照しなくなるようにアプリケーション/サービス マニフェストを変更します。
+    - 変更内容をデプロイします。
 
-その後、クラスター リソースを更新してノードの種類を削除できます。 ARM テンプレート デプロイを使用するか、[Azure Resource Manager](https://resources.azure.com) によってクラスター リソースを編集することができます。 これにより、クラスターのアップグレードが開始され、エラー状態の fabric:/System/InfrastructureService/[ノード タイプ名] サービスが削除されます。
+    その後、次のことを検証します。
+    - 上記で変更したすべてのサービスが、そのノード タイプに属しているノードで実行されなくなっている。
+    - すべてのサービスが正常である。
 
-Service Fabric Explorer でノードは "ダウン" と表示されます。 削除する各ノードで [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) を実行します。
+3. node-type を非プライマリとしてマークを解除します (非プライマリ ノード タイプの場合はスキップします)
 
+    - デプロイに使用する Azure Resource Manager テンプレートを見つけます。
+    - [Service Fabric] セクション内で、ノード タイプに関連するセクションを探します。
+    - IsPrimary プロパティを false に変更します。 ** このタスクにおいて、ノード タイプに関連するセクションを削除しないでください。
+    - 変更した Azure Resource Manager テンプレートをデプロイします。 ** クラスター構成によっては、この手順にしばらく時間がかかることがあります。
+    
+    その後、次のことを検証します。
+    - ポータルの [Service Fabric] セクションで、クラスターの準備ができていることが示されている。
+    - クラスターが正常である。
+    - ノード タイプに属しているどのノードもシード ノードとしてマークされていない。
 
-```powershell
-$nodes = Get-ServiceFabricNode | Where-Object {$_.NodeType -eq $nodetype} | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending
+4. ノード タイプのデータを無効にします。
 
-Foreach($node in $nodes)
-{
-    Remove-ServiceFabricNodeState -NodeName $node.NodeName -TimeoutSec 300 -Force 
-}
-```
+    PowerShell を使用してクラスターに接続し、次の手順を実行します。
+    
+    ```powershell
+    $nodeType = "" # specify the name of node type
+    $nodes = Get-ServiceFabricNode
+    
+    foreach($node in $nodes)
+    {
+      if ($node.NodeType -eq $nodeType)
+      {
+        $node.NodeName
+     
+        Disable-ServiceFabricNode -Intent RemoveNode -NodeName $node.NodeName -Force
+      }
+    }
+    ```
+
+    - ブロンズの持続性の場合は、すべてのノードが無効状態になるまで待ちます
+    - シルバーおよびゴールドの持続性の場合は、一部のノードが無効になり、残りは無効化中の状態になります。 無効化中の状態のノードの詳細タブを確認し、インフラストラクチャ サービス パーティションのクォーラムを確保しているときにそれらがすべて停止している場合は、続行しても安全です。
+
+5. ノード タイプのデータを停止します。
+
+    PowerShell を使用してクラスターに接続し、次の手順を実行します。
+    
+    ```powershell
+    foreach($node in $nodes)
+    {
+      if ($node.NodeType -eq $nodeType)
+      {
+        $node.NodeName
+     
+        Start-ServiceFabricNodeTransition -Stop -OperationId (New-Guid) -NodeInstanceId $node.NodeInstanceId -NodeName $node.NodeName -StopDurationInSeconds 10000
+      }
+    }
+    ```
+    
+    ノード タイプのすべてのノードが「ダウン」とマークされされるまで待ちます。
+    
+6. ノード タイプのデータを削除します。
+
+    PowerShell を使用してクラスターに接続し、次の手順を実行します。
+    
+    ```powershell
+    foreach($node in $nodes)
+    {
+      if ($node.NodeType -eq $nodeType)
+      {
+        $node.NodeName
+     
+        Remove-ServiceFabricNodeState -NodeName $node.NodeName -Force
+      }
+    }
+    ```
+
+    すべてのノードがクラスターから削除されるまで待ちます。 ノードは SFX に表示されません。
+
+7. [Service Fabric] セクションからノード タイプを削除します。
+
+    - デプロイに使用する Azure Resource Manager テンプレートを見つけます。
+    - [Service Fabric] セクション内で、ノード タイプに関連するセクションを探します。
+    - そのノード タイプに対応するセクションを削除します。
+    - シルバー以上の持続性クラスターの場合は、テンプレートのクラスター リソースを更新し、次に示すように `applicationDeltaHealthPolicies` を追加して、fabric:/System のアプリケーションの正常性を無視するように正常性ポリシーを構成します。 以下のポリシーでは既存のエラーが無視されますが、新しい正常性エラーは許可されません。 
+ 
+ 
+     ```json
+    "upgradeDescription":  
+    { 
+      "forceRestart": false, 
+      "upgradeReplicaSetCheckTimeout": "10675199.02:48:05.4775807", 
+      "healthCheckWaitDuration": "00:05:00", 
+      "healthCheckStableDuration": "00:05:00", 
+      "healthCheckRetryTimeout": "00:45:00", 
+      "upgradeTimeout": "12:00:00", 
+      "upgradeDomainTimeout": "02:00:00", 
+      "healthPolicy": { 
+        "maxPercentUnhealthyNodes": 100, 
+        "maxPercentUnhealthyApplications": 100 
+      }, 
+      "deltaHealthPolicy":  
+      { 
+        "maxPercentDeltaUnhealthyNodes": 0, 
+        "maxPercentUpgradeDomainDeltaUnhealthyNodes": 0, 
+        "maxPercentDeltaUnhealthyApplications": 0, 
+        "applicationDeltaHealthPolicies":  
+        { 
+            "fabric:/System":  
+            { 
+                "defaultServiceTypeDeltaHealthPolicy":  
+                { 
+                        "maxPercentDeltaUnhealthyServices": 0 
+                } 
+            } 
+        } 
+      } 
+    },
+    ```
+
+    変更した Azure Resource Manager テンプレートをデプロイします。 ** この手順にはしばらく時間がかかります (通常は最大 2 時間)。 このアップグレードでは、InfrastructureService に対する設定が変更されるため、ノードの再起動が必要になります。 この場合、`forceRestart` は無視されます。 
+    パラメーター `upgradeReplicaSetCheckTimeout` には、パーティションが (まだ安全な状態でない場合に) 安全な状態になるまで Service Fabric が待機する最大時間を指定します。 ノード上のすべてのパーティションが安全性チェックに合格すると、Service Fabric はそのノードでアップグレードを進めます。
+    パラメーター `upgradeTimeout` の値は 6 時間に短縮できますが、最大の安全確保のために 12 時間とする必要があります。
+
+    その後、次のことを検証します。
+    - ポータルで Service Fabric リソースが準備完了と表示される。
+
+8. ノード タイプに関連するリソースへのすべての参照を削除します。
+
+    - デプロイに使用する Azure Resource Manager テンプレートを見つけます。
+    - テンプレートから、ノード タイプに関連する仮想マシン スケール セットとその他のリソースを削除します。
+    - 変更内容をデプロイします。
+
+    その後、以下を実行します。
+    - デプロイが完了するまで待ちます。
 
 ## <a name="next-steps"></a>次のステップ
 - クラスターの[耐久性の特性](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)についてさらに学習します。

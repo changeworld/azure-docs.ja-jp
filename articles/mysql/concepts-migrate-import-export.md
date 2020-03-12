@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 8cf0b88ddc24bfc6bc293dd62416417f1eec3a06
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 2/27/2020
+ms.openlocfilehash: 83b0a69e063e9427c726216ef873f5a1c97f9582
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770953"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163728"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>インポートとエクスポートを使用した MySQL データベースの移行
 この記事では、MySQL Workbench を使用して、Azure Database for MySQL サーバーにデータをインポートおよびエクスポートする 2 つの一般的な方法について説明します。 
@@ -19,10 +19,10 @@ ms.locfileid: "74770953"
 ## <a name="before-you-begin"></a>開始する前に
 このハウツー ガイドの手順を実行するには、以下が必要です。
 - 「[Azure Portal を使用した Azure Database for MySQL サーバーの作成](quickstart-create-mysql-server-database-using-azure-portal.md)」の手順に従って作成された Azure Database for MySQL サーバー
-- MySQL Workbench ([ダウンロード](https://dev.mysql.com/downloads/workbench/))、または別の MySQL インポート/エクスポート ツール
+- インポート/エクスポートを実行する MySQL Workbench ([MySQL Workbench のダウンロード](https://dev.mysql.com/downloads/workbench/))、またはサードパーティ製の他の MySQL ツール。
 
 ## <a name="use-common-tools"></a>一般的なツールの使用
-MySQL Workbench、Toad、Navicat などの一般的なツールを使用して、Azure Database for MySQL にリモートで接続し、データをインポートまたはエクスポートします。 
+MySQL Workbench または mysqldump などの一般的なユーティリティとツールを使用して、Azure Database for MySQL にリモートで接続してデータをインポートまたはエクスポートします。 
 
 インターネットに接続されたクライアント コンピューターでこのようなツールを使用して、Azure Database for MySQL に接続します。 [Azure Database for MySQL での SSL 接続の構成](concepts-ssl-connection-security.md)に関する記事で説明するように、セキュリティのベスト プラクティスとして、SSL で暗号化された接続を使用します。
 
@@ -110,6 +110,6 @@ MySQL Workbench では、2 とおりの方法でデータをインポートお�
 1. プロジェクト フォルダーまたは自己完結型 SQL ファイルを選択するか、インポート先スキーマを選択するか、 **[新規]** を選択して新しいスキーマを定義します。 
 2. **[インポートの開始]** をクリックしてインポート処理を開始します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - 別の移行方法として、[Azure Database for MySQL でのダンプと復元を使用した MySQL データベースの移行](concepts-migrate-dump-restore.md)に関する記事を読みます。
 - Azure Database for MySQL へのデータベースの移行については、「[データベース移行ガイド](https://aka.ms/datamigration)」をご覧ください。 

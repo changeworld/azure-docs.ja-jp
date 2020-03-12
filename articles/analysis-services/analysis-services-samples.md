@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 743061c1e32d9ca86e90733dbfd66575d2085dbc
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2b5b95349b8a84cc8294dbcf9ab80eff8c7b86b9
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572300"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247838"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services のサンプル
 
@@ -26,6 +26,9 @@ GitHub の [Analysis Services](https://github.com/Microsoft/Analysis-Services) �
 
 GitHub の「[Adventure Works for Analysis Services](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks-analysis-services)」(Analysis Services 用 Adventure Works) は、最もよく使用されている表形式のサンプル モデル プロジェクトです。 VS プロジェクトまたは表形式の完全なサンプル モデル データベースをダウンロードすることができます。
 
+## <a name="sample-database-on-azure"></a>Azure 上のサンプル データベース
+
+Azure Synapse Analytics (SQL Data Warehouse) には、プロビジョニングされたリソースに含めることができるサンプルの AdventureWorksDW データベースが用意されています。 詳しくは、「[クイック スタート: Azure Synapse Analytics の SQL プールを作成し、クエリを実行する](/azure/sql-data-warehouse/create-data-warehouse-portal)」を参照してください。
 
 ## <a name="sample-databases-on-github"></a>GitHub 上のサンプル データベース
 
@@ -41,7 +44,7 @@ Azure Portal に Analysis Services サーバーがある場合、サンプル �
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Adventure Works チュートリアル](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)   
 [Azure のオンプレミスのデータゲートウェイ](analysis-services-gateway.md)  

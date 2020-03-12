@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 072809949badb08e5b1e7078566e289c5a5fecd9
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 3b2f6b2bb1dc5f9e16c537f78b5a456ee4984e80
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153674"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916729"
 ---
 # <a name="two-class-support-vector-machine-module"></a>2 クラス サポート ベクター マシン モジュール
 
@@ -43,6 +43,8 @@ ms.locfileid: "77153674"
 2.  **[Create trainer mode]\(トレーナー モードの作成\)** オプションを設定して、モデルのトレーニング方法を指定します。  
   
     -   **Single Parameter (単一パラメーター)** : モデルの構成方法がわかっている場合、特定の値のセットを引数として渡すことができます。  
+
+    -   **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターがわからない場合は、[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)モジュールを使用することにより、最適なパラメーターを見つけることができます。 ある値の範囲を指定すると、トレーナーが設定の複数の組み合わせに対して反復処理を行い、最適な結果を生み出す値の組み合わせを決定します。
 
 3.  モデルの構築時に使用されるイテレーションの回数を示す数値を **[Number of iterations]\(イテレーションの数\)** に入力します。  
   

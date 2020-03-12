@@ -1,6 +1,6 @@
 ---
 title: 主キー、外部キー、および一意キー
-description: Azure SQL Data Warehouse でのテーブル制約のサポート
+description: Azure Synapse Analytics の SQL Analytics でのテーブル制約のサポート
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,29 +10,29 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 8f3102425c6f984df0f50bc05eeb6f9a5e66d3dd
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 0379bed08c3ee6931e931a78a2d2c91664535250
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685480"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198135"
 ---
-# <a name="primary-key-foreign-key-and-unique-key-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の主キー、外部キー、および一意キー
+# <a name="primary-key-foreign-key-and-unique-key-in-sql-analytics"></a>SQL Analytics の主キー、外部キー、および一意キー
 
-主キー、外部キー、一意キーを含めて、Azure SQL Data Warehouse でのテーブル制約について説明します。
+主キー、外部キー、一意キーなど、SQL Analytics のテーブル制約について説明します。
 
 ## <a name="table-constraints"></a>テーブル制約 
-Azure SQL Data Warehouse では、これらのテーブル制約がサポートされます。 
+SQL Analytics では、次のテーブル制約がサポートされています。 
 - PRIMARY KEY は、NONCLUSTERED と NOT ENFORCED が両方とも使用されている場合にのみサポートされます。    
 - UNIQUE 制約は、NOT ENFORCED が使用されている場合にのみサポートされます。   
 
-FOREIGN KEY 制約は Azure SQL Data Warehouse ではサポートされません。  
+FOREIGN KEY 制約は SQL Analytics ではサポートされません。  
 
 ## <a name="remarks"></a>解説
-主キーまたは一意キー (あるいはその両方) を使用すると、データ ウェアハウス エンジンでクエリの最適な実行プランを生成できます。  主キー列または一意制約列のすべての値は、一意である必要があります。 
+主キーまたは一意キー (あるいはその両方) を使用すると、SQL Analytics エンジンでクエリの最適な実行プランを生成できます。  主キー列または一意制約列のすべての値は、一意である必要があります。 
 
-Azure データ ウェアハウスで主キーまたは一意制約を使用してテーブルを作成した後、ユーザーはそれらの列のすべての値が一意であることを確認する必要があります。  これに違反すると、クエリで不正確な結果が返される可能性があります。  この例では、主キーまたは一意制約の列に重複した値が含まれている場合に、クエリでどのように不正確な結果が返される可能性があるかを示します。  
+SQL Analytics で主キーまたは一意制約を使用してテーブルを作成した後、ユーザーはそれらの列のすべての値が一意であることを確認する必要があります。  これに違反すると、クエリで不正確な結果が返される可能性があります。  この例では、主キーまたは一意制約の列に重複した値が含まれている場合に、クエリでどのように不正確な結果が返される可能性があるかを示します。  
 
 ```sql
  -- Create table t1
@@ -158,17 +158,17 @@ a1          total
 ```
 
 ## <a name="examples"></a>例
-主キーを使用してデータ ウェアハウス テーブルを作成する 
+主キーを設定して SQL Analytics テーブルを作成する 
 
 ```sql 
 CREATE TABLE mytable (c1 INT PRIMARY KEY NONCLUSTERED NOT ENFORCED, c2 INT);
 ```
-一意制約を使用してデータ ウェアハウス テーブルを作成する
+一意制約を設定して SQL Analytics テーブルを作成する
 
 ```sql
 CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-データ ウェアハウスにテーブルを作成した後、次の手順はテーブルへのデータの読み込みです。 読み込みのチュートリアルについては、「[Azure SQL Data Warehouse へのデータの読み込み](load-data-wideworldimportersdw.md)」を参照してください。
+SQL Analytics データベースにテーブルを作成したら、次の手順はテーブルへのデータの読み込みです。 読み込みのチュートリアルについては、[SQL Analytics データベースへのデータの読み込み](load-data-wideworldimportersdw.md)に関するページを参照してください。

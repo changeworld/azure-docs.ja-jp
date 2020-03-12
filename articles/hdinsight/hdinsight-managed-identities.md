@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/20/2019
-ms.openlocfilehash: 236f79c9060a0d6fdcb0f558373d02f32eba7abb
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: daae9c16797ad9c1b85635f5aec7d0cf884e003f
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905603"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206012"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Azure HDInsight のマネージド ID
 
@@ -21,7 +21,7 @@ ms.locfileid: "76905603"
 
 Azure HDInsight では、必要に応じて、マネージド ID を使用して Azure AD ドメイン サービスにアクセスしたり、 Azure Data Lake Storage Gen2 のファイルにアクセスしたりします。
 
-マネージド ID には、ユーザー割り当てとシステム割り当ての 2 種類があります。 Azure HDInsight では、ユーザー割り当てマネージド ID が使用されます。 ユーザー割り当てマネージド ID は、スタンドアロン Azure リソースとして作成されます。その後、これを 1 つ以上の Azure サービス インスタンスに割り当てることができます。 これに対して、システム割り当てマネージド ID は Azure AD 内で作成され、自動的に特定の Azure サービス インスタンスで直接有効化されます。 システム割り当てマネージド ID の有効期間は、そのマネージド ID が有効になっているサービス インスタンスの有効期間に関連付けられます。
+マネージド ID には、ユーザー割り当てとシステム割り当ての 2 種類があります。 Azure HDInsight では、ユーザー割り当てマネージド ID のみがサポートされます。 HDInsight では、システム割り当てマネージド ID はサポートされません。 ユーザー割り当てマネージド ID は、スタンドアロン Azure リソースとして作成されます。その後、これを 1 つ以上の Azure サービス インスタンスに割り当てることができます。 これに対して、システム割り当てマネージド ID は Azure AD 内で作成され、自動的に特定の Azure サービス インスタンスで直接有効化されます。 システム割り当てマネージド ID の有効期間は、そのマネージド ID が有効になっているサービス インスタンスの有効期間に関連付けられます。
 
 ## <a name="hdinsight-managed-identity-implementation"></a>HDInsight のマネージド ID 実装
 
@@ -44,7 +44,7 @@ Azure HDInsight では、マネージド ID はクラスターのノードごと
 
 * [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity)
 * [Enterprise セキュリティ パッケージ](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
-* [Kafka Bring Your Own Key (BYOK)](kafka/apache-kafka-byok.md#get-started-with-byok)
+* [お客様が管理するキー ディスクの暗号化](disk-encryption.md)
 
 ## <a name="faq"></a>よく寄せられる質問
 ### <a name="what-happens-if-i-delete-the-managed-identity-after-the-cluster-creation"></a>クラスターの作成後にマネージド ID を削除するとどうなりますか?

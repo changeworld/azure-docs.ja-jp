@@ -5,15 +5,15 @@ author: msmbaldwin
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/22/2020
+ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4094ace5772b99c646a31d6a4722bbb080fbfff7
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 779b7d071b1161c53bdba08738539c4c682882d2
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589654"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273540"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Batch 用の Azure セキュリティ ベースライン
 
@@ -59,7 +59,7 @@ Azure Security Center によって提供されるネットワークのセキュ�
 
 https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
-**Azure Security Center の監視**: 現在は使用できません
+**Azure Security Center の監視**: はい
 
 **責任**: Customer
 
@@ -271,7 +271,7 @@ Azure Batch プール ノードにリモート接続する方法:
 
 https://docs.microsoft.com/azure/batch/batch-api-basics#error-handling
 
-**Azure Security Center の監視**: 現在は使用できません
+**Azure Security Center の監視**: はい
 
 **責任**: Customer
 
@@ -323,7 +323,7 @@ https://docs.microsoft.com/azure/batch/batch-diagnostics
 
 **ガイダンス**: Windows オペレーティング システムの場合は、個々の Batch ノードで Windows Defender を使用します。Linux を使用している場合は、独自のマルウェア対策ソリューションを指定します。
 
-**Azure Security Center の監視**: 現在は使用できません
+**Azure Security Center の監視**: はい
 
 **責任**: Customer
 
@@ -466,7 +466,7 @@ Azure Security Center でユーザーの ID とアクセス アクティビテ�
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Azure Security Center の監視**: 現在は使用できません
+**Azure Security Center の監視**: はい
 
 **責任**: Customer
 
@@ -511,7 +511,7 @@ Azure ID アクセス レビューの使用方法:
 
 https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
-**Azure Security Center の監視**: 現在は使用できません
+**Azure Security Center の監視**: はい
 
 **責任**: Customer
 
@@ -524,13 +524,13 @@ Azure Activity Logs を Azure Monitor に統合する方法:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-**Azure Security Center の監視**: 現在は使用できません
+**Azure Security Center の監視**: はい
 
 **責任**: Customer
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: アカウント ログイン動作の偏差に関するアラート
 
-**ガイダンス**: ユーザー ID に関連して検出された疑わしいアクションへの自動応答を構成するには、Azure Active Directory (AAD) リスク検出および Identity Protection 機能を使用します。 また、さらに調査するためにデータを Azure Sentinel に取り込むこともできます。
+**ガイダンス**: ユーザー ID に関連して検出された疑わしいアクションへの自動応答を構成するには、Azure Active Directory (AAD) リスク検出および Identity Protection 機能を使用します。 また、さらに詳しく調査するためにデータを Azure Sentinel に取り込むこともできます。
 
 
 AAD の危険なサインインを表示する方法:
@@ -551,7 +551,7 @@ https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **責任**: Customer
 
-### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13: サポート シナリオで関連する顧客データに Microsoft がアクセスできるようにする
+### <a name="313-divprovide-microsoft-with-access-to-relevant-customer-data-during-support-scenariosbrdiv"></a>3.13: <div>サポート シナリオで関連する顧客データに Microsoft がアクセスできるようにする<br></div>
 
 **ガイダンス**: 使用できません。Azure Batch ではまだカスタマー ロックボックスがサポートされていません。 カスタマー ロックボックスでサポートされているサービスの一覧: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
@@ -578,7 +578,7 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2:機密情報を格納または処理するシステムを分離する
 
-**ガイダンス**: 開発、テスト、および運用で別々のサブスクリプションまたは管理グループ、あるいはその両方を実装します。 Azure Batch プールは仮想ネットワーク/サブネットで分離し、適切にタグ付けして、ネットワーク セキュリティ グループ (NSG) を使用してセキュリティで保護する必要があります。 Azure Batch データは、セキュリティで保護された Azure Storage アカウント内に含まれている必要があります。
+**ガイダンス**:開発、テスト、および運用で別々のサブスクリプションまたは管理グループ、あるいはその両方を実装します。 Azure Batch プールは仮想ネットワーク/サブネットで分離し、適切にタグ付けして、ネットワーク セキュリティ グループ (NSG) を使用してセキュリティで保護する必要があります。 Azure Batch データは、セキュリティで保護された Azure Storage アカウント内に含まれている必要があります。
 
 
 仮想ネットワーク内に Azure Batch プールを作成する方法:
@@ -602,7 +602,7 @@ https://docs.microsoft.com/azure/storage/common/storage-security-guide
 Azure Storage またはコンピューティング リソースでは、データの識別、分類、損失防止機能はまだ使用できません。 コンプライアンスのために必要な場合は、サードパーティ ソリューションを実装します。
 
 
-Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護するためにあらゆる手段を尽くします。 Azure 内の顧客データが確実にセキュリティで保護された状態に維持されるように、Microsoft は一連の堅牢なデータ保護制御および機能を実装し、それを保持しています。
+Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護するためにあらゆる手段を尽くします。 Azure 内の顧客データが確実にセキュリティで保護されるように、Microsoft では一連の堅牢なデータ保護制御および機能を実装して管理しています。
 
 
 Azure での顧客データの保護の概要:
@@ -614,13 +614,13 @@ Azure Storage アカウントをセキュリティで保護する方法:
 
 https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
-**Azure Security Center の監視**: はい
+**Azure Security Center の監視**: 現在は使用できません
 
-**責任**: Customer
+**責任**: 共有
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4:転送中のすべての機密情報を暗号化する
 
-**ガイダンス**: 転送中のすべての機密情報を暗号化します。 Microsoft Azure リソースは、既定では TLS 1.2 をネゴシエートします。 Azure Batch プールまたはデータ ストア (Azure Storage アカウント) に接続しているすべてのクライアントが TLS 1.2 以降をネゴシエートできることを確認します。
+**ガイダンス**:転送中のすべての機密情報を暗号化します。 Microsoft Azure リソースは、既定では TLS 1.2 をネゴシエートします。 Azure Batch プールまたはデータ ストア (Azure Storage アカウント) に接続しているすべてのクライアントが TLS 1.2 以降をネゴシエートできることを確認します。
 
 
 Azure Batch データを含むストレージ アカウントにアクセスするには HTTPS が必要であることを確認します。
@@ -642,7 +642,7 @@ https://docs.microsoft.com/azure/storage/common/storage-security-guide#encryptio
 Azure Storage またはコンピューティング リソースでは、データの識別、分類、損失防止機能はまだ使用できません。 コンプライアンスのために必要な場合は、サードパーティ ソリューションを実装します。
 
 
-Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護するためにあらゆる手段を尽くします。 Azure 内の顧客データが確実にセキュリティで保護された状態に維持されるように、Microsoft は一連の堅牢なデータ保護制御および機能を実装し、それを保持しています。
+Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護するためにあらゆる手段を尽くします。 Azure 内の顧客データが確実にセキュリティで保護されるように、Microsoft では一連の堅牢なデータ保護制御および機能を実装して管理しています。
 
 
 Azure での顧客データの保護の概要:
@@ -654,7 +654,7 @@ Azure Storage アカウントをセキュリティで保護する方法:
 
 https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
-**Azure Security Center の監視**: はい
+**Azure Security Center の監視**: 現在は使用できません
 
 **責任**: 共有
 
@@ -682,7 +682,7 @@ https://docs.microsoft.com/azure/role-based-access-control/role-assignments-port
 
 
 
-Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護するためにあらゆる手段を尽くします。 Azure 内の顧客データが確実にセキュリティで保護された状態に維持されるように、Microsoft は一連の堅牢なデータ保護制御および機能を実装し、それを保持しています。
+Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護するためにあらゆる手段を尽くします。 Azure 内の顧客データが確実にセキュリティで保護されるように、Microsoft では一連の堅牢なデータ保護制御および機能を実装して管理しています。
 
 
 
@@ -690,7 +690,7 @@ Azure での顧客データの保護の概要:
 
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Azure Security Center の監視**: はい
+**Azure Security Center の監視**: 現在は使用できません
 
 **責任**: 共有
 
@@ -704,7 +704,7 @@ Azure Storage アカウントの暗号化キーを管理する方法:
 
 https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal
 
-**Azure Security Center の監視**: 現在は使用できません
+**Azure Security Center の監視**: はい
 
 **責任**: Customer
 
@@ -728,7 +728,7 @@ Azure Storage アカウントの追加のログ記録/監査を有効にする�
 
 https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 
-**Azure Security Center の監視**: 現在は使用できません
+**Azure Security Center の監視**: はい
 
 **責任**: Customer
 
@@ -751,7 +751,7 @@ https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 
 **ガイダンス**: Microsoft は、Azure Batch プール ノードの基本イメージを管理および更新します。 Azure Batch プール ノードのオペレーティング システムが、クラスターの有効期間にわたって確実に修正プログラムが適用された状態に維持されるようにします。これには、自動更新の有効化、ノードの監視、または定期的な再起動の実行が必要になることがあります。
 
-**Azure Security Center の監視**: 現在は使用できません
+**Azure Security Center の監視**: はい
 
 **責任**: 共有
 
@@ -773,7 +773,7 @@ https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5:リスク評価プロセスを使用して、検出された脆弱性の修復に優先順位を付ける。
 
-**ガイダンス**: 一般的なリスク スコアリング プログラム (Common Vulnerability Scoring System など)、またはサードパーティ スキャン ツールによって提供される既定のリスク評価を使用します。
+**ガイダンス**: 一般的なリスク スコアリング プログラム (Common Vulnerability Scoring System など)、またはサードパーティのスキャン ツールによって提供される既定のリスク評価を使用します。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -788,7 +788,7 @@ https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 **ガイダンス**: サブスクリプション内のすべてのリソース (コンピューティング、ストレージ、ネットワークなど) のクエリまたは検出を実行するには、Azure Resource Graph を使用します。 テナント内の適切な (読み取り) アクセス許可を持っており、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙できることを確認します。
 
 
-従来の Azure リソースは Resource Graph で検出できますが、今後は Azure Resource Manager リソースを作成して使用することを強くお勧めします。
+従来の Azure リソースは Resource Graph で検出できますが、今後は Azure Resource Manager (ARM) リソースを作成して使用することを強くお勧めします。
 
 
 Azure Graph を使用してクエリを作成する方法:
@@ -863,9 +863,12 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 - 許可されないリソースの種類
 - 許可されるリソースの種類
 
-サブスクリプション内のリソースのクエリまたは検出を実行するには、Azure Resource Graph を使用します。 環境に存在するすべての Azure リソースが承認されていることを確認します。
+
+サブスクリプション内のリソースのクエリまたは検出を行うには、Azure Resource Graph を使用します。 環境に存在するすべての Azure リソースが承認されていることを確認します。
+
 
 Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 Azure Graph を使用してクエリを作成する方法: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
@@ -901,16 +904,15 @@ Azure Graph を使用してクエリを作成する方法: https://docs.microsof
 
 **ガイダンス**: 次の組み込みのポリシー定義を使用して、顧客のサブスクリプション内に作成できるリソースの種類に制限を適用するには、Azure Policy を使用します。
 
+
 - 許可されないリソースの種類
 - 許可されるリソースの種類
 
-Azure Policy を構成して管理する方法:
 
-https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Policy を使用して特定のリソースの種類を拒否する方法:
 
-https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Azure Policy を使用して特定のリソースの種類を拒否する方法: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -924,14 +926,12 @@ https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-
 
 **責任**: Customer
 
-### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager-via-scripts"></a>6.11:スクリプトを使用して Azure Resource Manager を操作するユーザーの機能を制限する
+### <a name="611-divlimit-users-ability-to-interact-with-azure-resource-manager-via-scriptsdiv"></a>6.11: <div>スクリプトを使用して Azure Resource Manager を操作するユーザーの機能を制限する</div>
 
-**ガイダンス**: "Microsoft Azure Management" アプリに対して [アクセスのブロック] を構成することによって、Azure Resource Manager を操作するユーザーの機能を制限するには、Azure Conditional Access を使用します。
+**ガイダンス**: "Microsoft Azure Management" アプリに対して [アクセスのブロック] を構成することによって、Azure Resource Manager を操作するユーザーの機能を制限するには、Azure 条件付きアクセスを使用します。
 
 
-条件付きアクセスを構成して Azure Resource Manager へのアクセスをブロックする方法:
-
-https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+条件付きアクセスを構成して Azure Resource Manager へのアクセスをブロックする方法: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -949,9 +949,7 @@ Azure Batch プールのユーザー (管理者以外のユーザー) は、ジ�
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13:リスクの高いアプリケーションを物理的または論理的に分離する
 
-**ガイダンス**: 使用できません。
-
-ベンチマークは、Azure App Service または IaaS インスタンス上で実行されている Web アプリケーションを対象にしています。
+**ガイダンス**: 適用できません。ベンチマークは、Azure App Service または IaaS インスタンス上で実行されている Web アプリケーションを対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -966,10 +964,14 @@ Azure Batch プールのユーザー (管理者以外のユーザー) は、ジ�
 **ガイダンス**: Azure Batch アカウントおよびプールの構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.Batch" 名前空間で Azure Policy エイリアスを使用します。
 
 
-使用可能な Azure Policy エイリアスを表示する方法: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+使用可能な Azure Policy エイリアスを表示する方法:
+
+https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 
-Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy を構成して管理する方法:
+
+https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Azure Security Center の監視**: 適用なし
 
@@ -991,7 +993,9 @@ Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure
 - Microsoft.Storage
 - Microsoft.Network
 
+
 Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 Azure Policy の効果の概要: https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
@@ -1009,11 +1013,17 @@ Azure Policy の効果の概要: https://docs.microsoft.com/azure/governance/pol
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5:Azure リソースの構成を安全に格納する
 
-**ガイダンス**: Azure Batch アカウント、プール、または関連リソースにカスタム Azure Policy 定義を使用している場合は、Azure DevOps/Repos を使用してコードを安全に格納して管理します。
+**ガイダンス**: Azure Batch アカウント、プール、または関連リソースにカスタム Azure Policy 定義を使用している場合は、Azure Repos を使用してコードを安全に格納して管理します。
 
-Azure DevOps でコードを格納する方法: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
-Azure Repos のドキュメント: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+Azure DevOps にコードを格納する方法:
+
+https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+
+
+Azure Repos のドキュメント:
+
+https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1024,9 +1034,14 @@ Azure Repos のドキュメント: https://docs.microsoft.com/azure/devops/repos
 **ガイダンス**: Azure Batch プールにカスタム イメージを使用している場合は、ロールベースのアクセス制御 (RBAC) を使用して、承認されたユーザーのみがイメージにアクセスできるようにします。
 
 
-Azure での RBAC の概要: https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles
+Azure での RBAC を理解する:
 
-Azure で RBAC を構成する方法: https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal
+https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles
+
+
+Azure で RBAC を構成する方法:
+
+https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -1058,8 +1073,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **ガイダンス**: Azure Batch インスタンスの構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.Batch" 名前空間で Azure Policy エイリアスを使用します。 また、Azure Batch や Azure Batch によって使用されるリソース用に特別に作成された次のような組み込みのポリシーのいずれかを使用することもできます。
 
-- サブネットはネットワーク セキュリティ グループに関連付けられている必要がある
-- ストレージ アカウントは仮想ネットワーク サービス エンドポイントを使用する必要がある
+- サブネットはネットワーク セキュリティ グループに関連付けられている必要がある -ストレージ アカウントは仮想ネットワーク サービス エンドポイントを使用する必要がある
 - Batch アカウントで診断ログを有効にする必要がある
 
 使用可能な Azure Policy エイリアスを表示する方法: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
@@ -1098,7 +1112,7 @@ https://docs.microsoft.com/azure/key-vault/quick-create-portal
 
 https://docs.microsoft.com/azure/key-vault/managed-identity
 
-**Azure Security Center の監視**: 現在は使用できません
+**Azure Security Center の監視**: はい
 
 **責任**: Customer
 
@@ -1187,7 +1201,7 @@ Azure で Key Vault のキーをバックアップする方法:
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
 
-**Azure Security Center の監視**: 現在は使用できません
+**Azure Security Center の監視**: はい
 
 **責任**: Customer
 
@@ -1205,7 +1219,7 @@ PowerShell を使用してカスタマー マネージド キーを復元する�
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
 
-**Azure Security Center の監視**: 現在は使用できません
+**Azure Security Center の監視**: 適用なし
 
 **責任**: Customer
 
@@ -1218,7 +1232,7 @@ Azure Key Vault で論理的な削除を有効にする方法:
 
 https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell
 
-**Azure Security Center の監視**: 現在は使用できません
+**Azure Security Center の監視**: はい
 
 **責任**: Customer
 
@@ -1250,7 +1264,7 @@ https://docs.microsoft.com/azure/security-center/security-center-planning-and-op
 
 ### <a name="103-test-security-response-procedures"></a>10.3:セキュリティ対応手順のテスト
 
-**ガイダンス**: 定期的にシステムのインシデント対応機能をテストする演習を実施します。 弱点やギャップを特定し、必要に応じて計画を見直します。
+**ガイダンス**:定期的にシステムのインシデント対応機能をテストする演習を実施します。 弱点やギャップを特定し、必要に応じて計画を見直します。
 
 NIST の出版物を参照してください。IT の計画と機能に関するテスト、トレーニング、演習プログラムのガイド: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
@@ -1274,7 +1288,7 @@ https://docs.microsoft.com/azure/security-center/security-center-provide-securit
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5:インシデント対応システムにセキュリティ アラートを組み込む
 
-**ガイダンス**: 連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用してアラートを Azure Sentinel にストリーミングできます。
+**ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用してアラートを Azure Sentinel にストリーミングできます。
 
 
 連続エクスポートを構成する方法:
@@ -1292,7 +1306,7 @@ https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6:セキュリティ アラートへの対応を自動化する
 
-**ガイダンス**: セキュリティ アラートやセキュリティに関する推奨事項に対して "Logic Apps" 経由で応答を自動的にトリガーするには、Azure Security Center のワークフローの自動化機能を使用します。
+**ガイダンス**:セキュリティ アラートやセキュリティに関する推奨事項に対して "Logic Apps" 経由で応答を自動的にトリガーするには、Azure Security Center のワークフローの自動化機能を使用します。
 
 
 
@@ -1324,3 +1338,7 @@ https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **責任**: 共有
 
+## <a name="next-steps"></a>次のステップ
+
+- [Azure セキュリティ ベンチマーク](https://docs.microsoft.com/azure/security/benchmarks/overview)に関するページを参照する
+- [Azure セキュリティ ベースライン](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)の詳細について学習する

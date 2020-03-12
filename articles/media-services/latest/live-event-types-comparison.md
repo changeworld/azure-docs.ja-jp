@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services LiveEvent の種類 |Microsoft Docs
-description: Azure Media Services のライブ イベントには、ライブ エンコードとパススルーの 2 種類があります。 この記事では、LiveEvent の種類を比較する詳細な表を示します。
+description: Azure Media Services では、ライブ イベントは*パススルー*または*ライブ エンコード*のいずれかに設定できます。 この記事では、LiveEvent の種類を比較する詳細な表を示します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,16 +13,18 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 2dd3b3ffae39d43a3b865804af2e743bad87f8ea
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: a28d4d96f643c12eeb6aa542db2c6af06f4fd954
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543054"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78244637"
 ---
 # <a name="live-event-types-comparison"></a>ライブ イベントの種類の比較
 
-Azure Media Services の[ライブ イベント](https://docs.microsoft.com/rest/api/media/liveevents)には、ライブ エンコードとパススルーの 2 種類があります。 
+Azure Media Services では、[ライブ イベント](https://docs.microsoft.com/rest/api/media/liveevents)は、"*パススルー*" (オンプレミスのライブ エンコーダーによって複数のビットレート ストリームが送信される) または "*ライブ エンコード*" (オンプレミスのライブ エンコーダーによってシングル ビットレート ストリームが送信される) のいずれかに設定できます。 
+
+この記事では、ライブ イベントの種類の機能を比較します。
 
 ## <a name="types-comparison"></a>種類の比較 
 

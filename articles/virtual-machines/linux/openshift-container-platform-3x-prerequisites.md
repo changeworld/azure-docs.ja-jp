@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 069561c4bed55bf6021b594d693e076ef8d313bd
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 76e7a9aa9c0f17501885c8bd06c6997fdc8d2104
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035469"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255690"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Azure に OpenShift Container Platform 3.11 をデプロイする一般的な前提条件 | Microsoft Docs
 
@@ -57,9 +57,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ```azurecli 
 az login
 ```
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[az group create](/cli/azure/group) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 キー コンテナーをホストするには、専用のリソース グループを使用する必要があります。 このグループは、OpenShift クラスター リソースがデプロイするリソース グループとは別です。
+[az group create](/cli/azure/group) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 キー コンテナーをホストするには、専用のリソース グループを使用する必要があります。 このグループは、OpenShift クラスター リソースがデプロイするリソース グループとは別です。
 
 次の例では、*keyvaultrg* という名前のリソース グループを場所 *eastus* に作成します。
 
@@ -102,9 +102,9 @@ OpenShift は、ユーザー名とパスワード、またはサービス プリ
 
 [az ad sp create-for-rbac](/cli/azure/ad/sp) を使用してサービス プリンシパルを作成し、OpenShift が必要とする資格情報を出力します。
 
-次の例では、サービス プリンシパルを作成して、共同作成者のアクセス許可を openshiftrg という名前のリソース グループに割り当てます。
+次の例では、サービス プリンシパルを作成して、共同作成者のアクセス許可を *openshiftrg* という名前のリソース グループに割り当てます。
 
-まず、openshiftrg という名前のリソース グループを作成します。
+まず、*openshiftrg* という名前のリソース グループを作成します。
 
 ```azurecli
 az group create -l eastus -n openshiftrg
@@ -149,7 +149,7 @@ SSH 秘密キー (**sshPrivateKey**)、Azure AD クライアント シークレ�
 
 Key Vault のシークレットにこれらのファイルを格納する必要があります。  秘密キーに使用するのと同じ Key Vault を使用します。  シークレット名用の 6 つの入力を追加で要求する代わりに、各 SSL 証明書ファイル用のシークレット名を使用するようにテンプレートがハードコーディングされます。  次の表の情報を使用して、証明書データを格納してください。
 
-| シークレット名      | 証明書ファイル   |
+| [Secret Name]\(シークレット名\)      | 証明書ファイル   |
 |------------------|--------------------|
 | mastercafile     | マスター CA ファイル     |
 | mastercertfile   | マスター証明書ファイル   |
@@ -164,7 +164,7 @@ Azure CLI を使用して、シークレットを作成します。 次に例を
 az keyvault secret set --vault-name KeyVaultName -n mastercafile --file ~/certificates/masterca.pem
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、次のトピックについて説明しました。
 > [!div class="checklist"]

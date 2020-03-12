@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: acf0409459994adf5dde98fb3b1a8ab2e280df76
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: c9388da449e75dee00fd43af9a4e0407c46f597a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153708"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916712"
 ---
 # <a name="two-class-decision-forest-module"></a>2 クラス デシジョン フォレスト モジュール
 
@@ -66,6 +66,8 @@ ms.locfileid: "77153708"
 3.  **[Create trainer mode]\(トレーナー モードの作成\)** オプションを設定して、モデルのトレーニング方法を指定します。  
   
     -   **Single Parameter (単一パラメーター)** : モデルの構成方法がわかっている場合、特定の値のセットを引数として渡すことができます。
+
+    -   **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターがわからない場合は、[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)モジュールを使用することにより、最適なパラメーターを見つけることができます。 ある値の範囲を指定すると、トレーナーが設定の複数の組み合わせに対して反復処理を行い、最適な結果を生み出す値の組み合わせを決定します。
   
 4.  アンサンブルに作成できるデシジョン ツリーの最大数を **[Number of decision trees]\(デシジョン ツリーの数\)** に入力します。 作成するデシジョン ツリーを増やすと、カバレッジが向上する可能性はありますが、トレーニング時間が長くなります。  
   

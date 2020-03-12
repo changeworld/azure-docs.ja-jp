@@ -1,19 +1,17 @@
 ---
 title: Azure Application Insights を使用して可用性アラートを設定する | Microsoft Docs
 description: Application Insights で Web テストを設定します。 Web サイトが使用できなくなったり、応答速度が低下したりした場合に、アラートを受け取ります。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: a1637ac82c33c2a541bcec9f2848a248c29d56ca
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: e0c1a93ef663762bec199abc5aa7eabbc821168d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872674"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654955"
 ---
 # <a name="availability-alerts"></a>可用性のアラート
 
@@ -70,7 +68,7 @@ Azure Resource Manager テンプレートを使用してこのプロセスを自
 
 専用の[トラブルシューティングに関する記事](troubleshoot-availability.md)をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [複数ステップ Web テスト](availability-multistep.md)
 * [URL ping Web テスト](monitor-web-app-availability.md)

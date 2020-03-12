@@ -2,17 +2,17 @@
 title: M シリーズ - Azure Virtual Machines
 description: M シリーズ VM の仕様。
 services: virtual-machines
-author: jonbeck7
+author: ayshakeen
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/05/2019
 ms.author: lahugh
-ms.openlocfilehash: 49b12341e5ca119ee20c7e509d9bbef64d4d5b37
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: e8952218675493710cbdd1f92661e9a9c077f34c
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492588"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164051"
 ---
 # <a name="m-series"></a>M シリーズ
 
@@ -26,9 +26,13 @@ Premium Storage: サポートされています
 
 Premium Storage キャッシュ:サポートされています
 
+ライブ マイグレーション: サポートされていません
+
+メモリ保持更新: サポートされていません
+
 書き込みアクセラレータ:[サポートされています](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 
-| Size | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
+| サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 |---|---|---|---|---|---|---|---|
 | Standard_M8ms <sup>2</sup>       | 8   | 218.75 | 256   | 8  | 10000/100 (793)     | 5000/125   | 4/2000  |
 | Standard_M16ms <sup>2</sup>      | 16  | 437.5  | 512   | 16 | 20000/200 (1587)    | 10000/250  | 8/4000  |
