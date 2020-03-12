@@ -9,12 +9,12 @@ ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 44d1c6e5b119ae0639398c8be69ab7fb0d50fcf4
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 3d1b5ea9a9f78bc8a83159a34026d58d7a8cc89b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772195"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944273"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>チュートリアル:SQL Server データベースを使用したエッジでのデータの格納
 
@@ -48,7 +48,7 @@ Azure IoT Edge と SQL Server を使用し、エッジでデータを格納し�
 
 このチュートリアルでは、Azure Functions モジュールを使用して SQL Server にデータを送信します。 Azure Functions を使用して IoT Edge モジュールを開発するには、開発用マシンに次の追加の前提条件をインストールします。
 
-* [Visual Studio Code 用の C# (OmniSharp を使用) 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。
+* [Visual Studio Code 用の C# (OmniSharp を使用) 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
 
 ## <a name="create-a-function-project"></a>関数プロジェクトを作成する

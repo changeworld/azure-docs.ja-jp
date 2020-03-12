@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 779328f4c21afb4392663e6f8840749ea505c529
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: dac8e0f2e10906f2cc56ecf86e0cc70947cb7e85
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242424"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897777"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purecloud-by-genesys"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と PureCloud by Genesys の統合
 
@@ -125,7 +125,7 @@ Azure portal で Azure AD SSO を有効にするには、これらの手順を�
 
     | 名前 | ソース属性|
     | ---------------| --------------- |
-    | Email | user.userprinicipalname |
+    | Email | user.userprincipalname |
     | OrganizationName | `Your organization name` |
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
@@ -146,7 +146,7 @@ Azure portal で Azure AD SSO を有効にするには、これらの手順を�
    1. **[名前]** フィールドに「`B.Simon`」と入力します。  
    1. **[ユーザー名]** フィールドに、username@companydomain.extension という形式でユーザー名を入力します。 (例: `B.Simon@contoso.com`)。
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
-   1. **作成** を選択します。
+   1. **［作成］** を選択します
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -210,11 +210,11 @@ Azure AD ユーザーが PureCloud by Genesys にサインインできるよう�
 
     ![Configure single sign-on](./media/purecloud-by-genesys-tutorial/configure05.png)
 
-    a. **[Full Name] (フル ネーム)** ボックスに、ユーザーの名前を入力します。 例: **B.simon**。
+    a. **[Full Name] (フル ネーム)** ボックスに、ユーザーの名前を入力します。 次に例を示します。**B.simon**。
 
     b. **[Email] (メール)** ボックスに、ユーザーのメール アドレスを入力します。 例: **b.simon\@contoso.com**。
 
-    c. **作成** を選択します。
+    c. **［作成］** を選択します
 
 ## <a name="test-sso"></a>SSO のテスト
 

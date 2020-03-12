@@ -9,12 +9,12 @@ ms.date: 01/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.custom: seodec18
-ms.openlocfilehash: 9f1f60fd16aa830372bd0f5b19e22e7003de496b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 84a9d6aa6203b8a518b0e33bed0ec2707c4389a1
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770320"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082916"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Azure 仮想マシン用の拡張メトリックを追加する
 
@@ -34,7 +34,7 @@ Cloudyn では、Azure VM からの Azure メトリック データを使って�
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>拡張メトリックが有効になっているかどうかを確認する
 
-1. Azure Portal ( https://portal.azure.com ) にサインインします。
+1. Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 2. **[仮想マシン]** で VM を選んでから、 **[監視]** で **[メトリック]** を選びます。 使用可能なメトリックの一覧が表示されます。
 3. メトリックをいくつか選ぶと、グラフにそれらのデータが表示されます。  
     ![メトリックの例: ホストの CPU 使用率](./media/azure-vm-extended-metrics/metric01.png)

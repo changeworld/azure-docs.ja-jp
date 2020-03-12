@@ -9,6 +9,8 @@
       href: generate-soil-moisture-map-in-azure-farmbeats.md
     - name: 過去のテレメトリ データの取り込み
       href: ingest-historical-telemetry-data-in-azure-farmbeats.md
+    - name: 取り込まれたテレメトリ データのクエリ
+      href: query-telemetry-data-from-azure-farmbeats.md
 - name: 概念
   items:
     - name: 統合のパターン

@@ -120,6 +120,8 @@
           href: blob-output-managed-identity.md
         - name: マネージド ID による認証 - Power BI
           href: powerbi-output-managed-identity.md
+        - name: データを暗号化する
+          href: data-protection.md
     - name: ソリューションを構築する
       items:
         - name: Twitter センチメントの分析
@@ -167,6 +169,8 @@
           href: 'https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick'
         - name: IoT Edge ジョブへの API の使用
           href: stream-analytics-cicd-api.md
+        - name: Azure Resource Manager を使用したエクスポートおよびデプロイ
+          href: resource-manager-export.md
     - name: "Visual\_Studio"
       items:
         - name: ツールをインストールする

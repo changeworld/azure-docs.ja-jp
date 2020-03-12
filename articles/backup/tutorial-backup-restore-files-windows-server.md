@@ -4,12 +4,12 @@ description: このチュートリアルでは、Microsoft Azure Recovery Servic
 ms.topic: tutorial
 ms.date: 02/14/2018
 ms.custom: mvc
-ms.openlocfilehash: 5958f6574f8c559bae8f500b1cb555e96e007d0e
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: c9258b7f95337330e4f1de36e389f6b8f2276976
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171818"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672941"
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>Azure から Windows Server にファイルを回復する
 
@@ -21,7 +21,7 @@ Azure Backup では、Windows Server のバックアップから個々の項目�
 > * [回復ポイントの選択]
 > * 復旧ポイントから項目を復元する
 
-このチュートリアルでは、[Windows Server を Azure にバックアップする](backup-configure-vault.md)手順を既に実行し、Azure に Windows Server ファイルのバックアップが少なくとも 1 つあることを前提としています。
+このチュートリアルでは、[Windows Server を Azure にバックアップする](backup-windows-with-mars-agent.md)手順を既に実行し、Azure に Windows Server ファイルのバックアップが少なくとも 1 つあることを前提としています。
 
 ## <a name="initiate-recovery-of-individual-items"></a>個々の項目の回復を開始する
 
@@ -65,7 +65,7 @@ Microsoft Azure Backup という名前の便利なユーザー インターフ�
 
     スナップショットのマウントが解除されると、エージェント コンソールの **[ジョブ]** ウィンドウに **"ジョブが完了しました"** と表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、Windows Server のデータをバックアップして Azure に復元するチュートリアルは完了です。 Azure Backup の詳細については、暗号化された仮想マシンのバックアップに関する PowerShell サンプルをご覧ください。
 

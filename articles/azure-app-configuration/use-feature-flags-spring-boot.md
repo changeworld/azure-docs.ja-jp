@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2019
 ms.author: mametcal
 ms.custom: mvc
-ms.openlocfilehash: 090ede85301f9e7aff14394c8fb5c7d558d98dd4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: d519ac44d617f725aa9b3d3f11671122bd9477bc
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656026"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944321"
 ---
 # <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>チュートリアル:Spring Boot アプリ内で機能フラグを使用する
 
@@ -57,7 +57,7 @@ App Configuration に Spring Boot アプリケーションを接続する最も�
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-    <version>1.1.1</version>
+    <version>1.1.2</version>
 </dependency>
 ```
 
@@ -67,7 +67,7 @@ App Configuration に Spring Boot アプリケーションを接続する最も�
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-    <version>1.2.1</version>
+    <version>1.2.2</version>
 </dependency>
 ```
 
@@ -105,8 +105,7 @@ feature-management:
 ```java
 private FeatureManager featureManager;
 ...
-if (featureManager.isEnabledAsync("feature-a"))
-{
+if (featureManager.isEnabledAsync("feature-a").block()) {
     // Run the following code
 }
 ```
@@ -155,7 +154,7 @@ public class FeatureFlagFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
-        if(!featureManager.isEnabled("feature-a")) {
+        if(!featureManager.isEnabledAsync("feature-a").block()) {
             chain.doFilter(request, response);
             return;
         }

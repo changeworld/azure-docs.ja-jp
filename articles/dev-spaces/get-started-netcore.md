@@ -5,12 +5,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: このチュートリアルでは、Azure Dev Spaces と Visual Studio Code を使用して、Azure Kubernetes Service 上で .NET Core アプリケーションのデバッグと迅速な反復型開発を行う方法を示します
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: e23685d410b2d663efde8c530be01adaab637bf8
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 306e1c7a43ddd10faa0a537d567257fe95336c23
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252424"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942500"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-net-core-with-azure-dev-spaces"></a>Kubernetes 開発空間を作成する: Azure Dev Spaces での Visual Studio Code と .NET Core
 
@@ -81,7 +81,7 @@ az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-key
 VS Code を使用する .NET Core および Node.js の開発者は、Kubernetes デバッグなどのリッチな機能を利用できます。
 
 1. [VS Code](https://code.visualstudio.com/Download) をインストールしていない場合は、インストールします。
-1. [VS Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) と [C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) の拡張機能をダウンロードしてインストールします。 拡張機能ごとに、その Marketplace ページで [インストール] をクリックし、VS Code でもう一度クリックします。
+1. [VS Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) と [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) の拡張機能をダウンロードしてインストールします。 拡張機能ごとに、その Marketplace ページで [インストール] をクリックし、VS Code でもう一度クリックします。
 
 ## <a name="create-a-web-app-running-in-a-container"></a>コンテナーで実行される Web アプリを作成する
 

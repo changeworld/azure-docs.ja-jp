@@ -9,14 +9,14 @@ ms.topic: sample
 author: sdgilley
 ms.author: sgilley
 ms.reviewer: sgilley
-ms.date: 11/04/2019
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1f155d153ef7af8a83fb86a37cd1b9fa826ad2ff
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 7242b82ee5c43878a33731bd1f02b685020f22b0
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532435"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673607"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Jupyter ノートブックを使用して Azure Machine Learning を探索する
 
