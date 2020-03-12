@@ -1,24 +1,17 @@
 ---
 title: Azure の Linux VM で cloud-init を使用する
 description: Azure CLI による作成時に Linux VM で cloud-init を使用してパッケージを更新およびインストールする方法
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: cynthn
-ms.openlocfilehash: 7bb48ec11ec042f021203c1716968daa9ab45047
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7b7a03572a001fc6d5114635b33510f1a4b1bc70
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973137"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969157"
 ---
 # <a name="use-cloud-init-to-update-and-install-packages-in-a-linux-vm-in-azure"></a>Azure の Linux VM で cloud-init を使用してパッケージを更新およびインストールする
 この記事では、Azure でのプロビジョニング時に、[cloud-init](https://cloudinit.readthedocs.io) を使用して、Linux 仮想マシン (VM) または仮想マシン スケール セットでパッケージを更新する方法を示します。 これらの cloud-init スクリプトは、Azure によってリソースがプロビジョニングされた後の最初の起動時に実行されます。 cloud-init が Azure およびサポートされている Linux ディストリビューションでネイティブに動作する方法の詳細については、[cloud-init の概要](using-cloud-init.md)に関するページをご覧ください
@@ -75,7 +68,7 @@ ID     | Command line             | Date and time    | Action(s)      | Altered
      1 |                          | 2017-12-12 20:32 | Install        |  522
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 構成変更の cloud-init の他の例については、以下をご覧ください。
  
 - [VM に他の Linux ユーザーを追加する](cloudinit-add-user.md)

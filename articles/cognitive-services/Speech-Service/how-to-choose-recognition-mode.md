@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/13/2020
+ms.date: 03/10/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 51bf005bdad4197120fed96894ac1cdd150738ee
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: d997cb592d9d648998f2b44d9f61f465f05faeb0
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75935216"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079822"
 ---
 # <a name="choose-a-speech-recognition-mode"></a>音声認識モードを選択する
 
@@ -33,7 +33,7 @@ ms.locfileid: "75935216"
 `RecognizeOnceAsync` 関数の詳しい使用方法については、[.NET Speech SDK のドキュメント](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognizeonceasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechRecognizer_RecognizeOnceAsync)を参照してください。
 
 ```csharp
-var result = await recognizer.RecognizeOnceAsync().ConfigureAwait(false);
+var result = await recognizer.RecognizeOnceAsync();
 ```
 
 ::: zone-end
@@ -72,7 +72,7 @@ result = speech_recognizer.recognize_once()
 
 ## <a name="continuous"></a>継続的
 
-長時間にわたる認識を必要とする場合、開始関数とそれに対応する停止関数を使用して継続的認識を行います。 開始関数は、すべての発話の処理を開始し、その後、停止関数が呼び出されるか、無音状態で所定の時間が経過するまで、処理を継続します。 継続モードを使用する際は、発生時に作動する各種イベントに登録してください。 たとえば "recognized" イベントは、音声認識が行われたときに作動します。 認識を処理するには、イベント ハンドラーを設定する必要があります。 セッションあたりの合計音声認識時間の上限である 10 分が音声サービスにより強制的に適用されます。
+長時間にわたる認識を必要とする場合、開始関数とそれに対応する停止関数を使用して継続的認識を行います。 開始関数は、すべての発話の処理を開始し、その後、停止関数が呼び出されるか、無音状態で所定の時間が経過するまで、処理を継続します。 継続モードを使用する際は、発生時に作動する各種イベントに登録してください。 たとえば "recognized" イベントは、音声認識が行われたときに作動します。 認識を処理するには、イベント ハンドラーを設定する必要があります。
 
 ::: zone pivot="programming-language-csharp"
 
@@ -88,10 +88,10 @@ recognizer.Recognized += (s, e) =>
 };
 
 // Start continuous speech recognition
-await recognizer.StartContinuousRecognitionAsync().ConfigureAwait(false);
+await recognizer.StartContinuousRecognitionAsync();
 
 // Stop continuous speech recognition
-await recognizer.StopContinuousRecognitionAsync().ConfigureAwait(false);
+await recognizer.StopContinuousRecognitionAsync();
 ```
 
 ::: zone-end

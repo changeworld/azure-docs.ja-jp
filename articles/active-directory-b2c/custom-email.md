@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/05/2020
+ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 32747e0e7bb1f979203fa886647712e0fd69faee
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 6cc0508a63f26b955ac5e0ebf3ef58a184a35997
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189533"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671646"
 ---
 # <a name="custom-email-verification-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム メール確認
 
@@ -299,10 +299,6 @@ JSON オブジェクトの構造は、InputClaims の InputParameters と Transf
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
         <Item Key="Operation">VerifyCode</Item>
-        <Item Key="UserMessage.VerificationHasExpired">You have exceed the maximum time allowed.</Item>
-        <Item Key="UserMessage.MaxRetryAttemped">You have exceed the number of retries allowed.</Item>
-        <Item Key="UserMessage.InvalidCode">You have entered the wrong code.</Item>
-        <Item Key="UserMessage.ServerError">Cannot verify the code, please try again later.</Item>
       </Metadata>
       <InputClaims>
         <InputClaim ClaimTypeReferenceId="email" PartnerClaimType="identifier" />
@@ -363,6 +359,12 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
         <Item Key="IpAddressClaimReferenceId">IpAddress</Item>
         <Item Key="ContentDefinitionReferenceId">api.localaccountsignup</Item>
         <Item Key="language.button_continue">Create</Item>
+        
+        <!--OTP validation error messages-->
+        <Item Key="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</Item>
+        <Item Key="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</Item>
+        <Item Key="UserMessageIfInvalidCode">You have entered the wrong code.</Item>
+        <Item Key="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</Item>
       </Metadata>
       <InputClaims>
         <InputClaim ClaimTypeReferenceId="email" />

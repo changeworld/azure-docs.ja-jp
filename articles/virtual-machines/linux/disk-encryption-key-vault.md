@@ -1,18 +1,18 @@
 ---
 title: Azure Disk Encryption 用のキー コンテナーの作成と構成
 description: この記事では、Azure Disk Encryption で使用するためのキー コンテナーを作成および構成する手順について説明します
-ms.service: virtual-machines
+ms.service: virtual-machines-linux
 ms.topic: article
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 90306c55d976670f432d146d94764c4d90b8667d
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a818d9fe9707d1789fbe8e77489fc380fd2c92dd
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71829964"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970625"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Azure Disk Encryption 用のキー コンテナーの作成と構成
 
@@ -35,7 +35,7 @@ Azure Disk Encryption で使用するためのキー コンテナーの作成と
 また、必要に応じて、キー暗号化キー (KEK) を生成またはインポートすることもできます。
 
 > [!Note]
-> この記事の手順は、[Azure Disk Encryption の前提条件となる CLI スクリプト](https://github.com/ejarvi/ade-cli-getting-started)と [Azure Disk Encryption の前提条件となる PowerShell スクリプト](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)で自動化されます。
+> この記事の手順は、[Azure Disk Encryption の前提条件となる CLI スクリプト](https://github.com/ejarvi/ade-cli-getting-started)および [Azure Disk Encryption の前提条件となる PowerShell スクリプト](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)に関するページで自動化されています。
 
 ## <a name="install-tools-and-connect-to-azure"></a>ツールをインストールし、Azure に接続する
 
@@ -55,7 +55,7 @@ az login
 Connect-AzAccount
 ```
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 *リソース グループが既にある場合は、「[キー コンテナーを作成する](#create-a-key-vault)」に進むことができます。*
 
@@ -155,12 +155,12 @@ Azure プラットフォームには、Key Vault 内の暗号化キーまたは�
      Set-AzKeyVaultAccessPolicy -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "MyResourceGroup" -EnabledForTemplateDeployment
      ```
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 1. キー コンテナーを選択し、 **[アクセス ポリシー]** に移動し、 **[クリックして高度なアクセス ポリシーを表示する]** を選択します。
 2. **[ボリューム暗号化に対して Azure Disk Encryption へのアクセスを有効にする]** というボックスをオンにします。
 3. 必要に応じて、 **[展開に対して Azure Virtual Machines へのアクセスを有効にする]** と **[テンプレートの展開に対して Azure Resource Manager へのアクセスを有効にする]** の一方または両方をオンにします。 
-4. **[Save]** をクリックします。
+4. **[保存]** をクリックします。
 
     ![Azure Key Vault の高度なアクセス ポリシー](./media/disk-encryption/keyvault-portal-fig4.png)
 
@@ -218,7 +218,7 @@ $KEK = Get-AzKeyVaultKey -VaultName "<your-unique-keyvault-name>" -Name "myKEK"
 Set-AzVMDiskEncryptionExtension -ResourceGroupName MyResourceGroup -VMName "MyVM" -DiskEncryptionKeyVaultUrl $KeyVault.VaultUri -DiskEncryptionKeyVaultId $KeyVault.ResourceId -KeyEncryptionKeyVaultId $KeyVault.ResourceId -KeyEncryptionKeyUrl $KEK.Id -SkipVmBackup -VolumeType All
  ```
  
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Disk Encryption の前提条件の CLI スクリプト](https://github.com/ejarvi/ade-cli-getting-started)
 - [Azure Disk Encryption の前提条件の PowerShell スクリプト](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)

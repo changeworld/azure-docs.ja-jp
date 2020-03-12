@@ -1,25 +1,26 @@
 ---
-title: プランと課金 - Azure Scheduler
+title: プランと課金
 description: Azure Scheduler のプランと課金について説明します
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 13a2be8c-dc14-46cc-ab7d-5075bfd4d724
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 4b63367ab9686eee66bf3f00dddc2e2efe4cb941
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e821036ff4ddb5a9786bc4f4537bb81539ab2c87
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300864"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898467"
 ---
 # <a name="plans-and-billing-for-azure-scheduler"></a>Azure Scheduler のプランと課金
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、[廃止される予定](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)の Azure Scheduler の後継です。 Scheduler で設定したジョブを使用し続けるには、できるだけ早く [Azure Logic Apps に移行](../scheduler/migrate-from-scheduler-to-logic-apps.md)してください。
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、[廃止される予定](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)の Azure Scheduler の後継です。 Scheduler で設定したジョブを使用し続けるには、できるだけ早く [Azure Logic Apps に移行](../scheduler/migrate-from-scheduler-to-logic-apps.md)してください。 
+>
+> Scheduler は Azure portal で利用できなくなりましたが、現時点では [REST API](/rest/api/scheduler) と [Azure Scheduler PowerShell コマンドレット](scheduler-powershell-reference.md)がまだ使用できるので、お客様はジョブとジョブ コレクションを管理することができます。
 
 ## <a name="job-collection-plans"></a>ジョブ コレクション プラン
 
@@ -80,8 +81,7 @@ P20 Premium ジョブ コレクションで提供される機能は P10 Premium 
 
   Scheduler サービスでは、Standard または Premium どちらかのアクティブなジョブ コレクションの数に基づいて課金されます。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
-* [Azure Scheduler とは](scheduler-intro.md)
 * [Azure Scheduler の概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
 * [Azure Scheduler の制限、既定値、エラー コード](scheduler-limits-defaults-errors.md)

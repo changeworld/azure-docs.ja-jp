@@ -1,25 +1,17 @@
 ---
 title: Azure から Linux VHD をダウンロードする
 description: Azure CLI と Azure Portal を使用して Linux VHD をダウンロードします。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
+ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: cynthn
-ms.openlocfilehash: 257f3f723fc8a971b8253699f4beb002cf46ce52
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 02c3ee483e6a31960fd5123070a49f568ac4c690
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036288"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968793"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Azure から Linux VHD をダウンロードする
 
@@ -56,7 +48,7 @@ VHD をイメージとして使用して他の VM を作成するには、次の
 
 VHD を既存の VM の新しいインスタンス用のディスクまたはデータ ディスクとして使用するには、次の手順を実行します。
 
-1.  [Azure Portal](https://portal.azure.com/) にサインインします。
+1.  [Azure portal](https://portal.azure.com/) にサインインします。
 2.  左側のメニューで **[Virtual Machines]** を選択します。
 3.  一覧から VM を選択します。
 4.  VM のページで、 **[停止]** を選択します。
@@ -83,7 +75,7 @@ VHD ファイルをダウンロードするには、[Shared Access Signature (SA
 
     ![ブラウザーの [保存] の選択](./media/download-vhd/export-save.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure CLI を使用してカスタム ディスクをアップロードし、Linux VM を作成する](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)方法を学習します。 
 - [Azure CLI を使用した Azure ディスクの管理](tutorial-manage-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。

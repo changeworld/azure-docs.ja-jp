@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 600cd3f3ad8826b52648b51beb8c66a382766b80
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 60bfc964ffc394b3f79c9d279158003f383b7331
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367881"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943435"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>ホーム領域検出ポリシーを使用して、アプリケーションの Azure Active Directory サインイン動作を構成する
 
@@ -258,7 +258,7 @@ Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 #### <a name="step-2-remove-the-policy-assignment-from-the-application-service-principal"></a>手順 2:アプリケーション サービス プリンシパルからポリシーの割り当てを削除する  
 
 ``` powershell
-Remove-AzureADApplicationPolicy -id <ObjectId of the Service Principal>  -PolicyId <ObjectId of the policy>
+Remove-AzureADServicePrincipalPolicy -id <ObjectId of the Service Principal>  -PolicyId <ObjectId of the policy>
 ```
 
 #### <a name="step-3-check-removal-by-listing-the-service-principals-to-which-the-policy-is-assigned"></a>手順 3:ポリシーが割り当てられているサービス プリンシパルを一覧表示して、削除を確認する 

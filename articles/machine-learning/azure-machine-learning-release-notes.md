@@ -10,18 +10,56 @@ ms.author: jmartens
 author: j-martens
 ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 11b8ade765a2b1c1ee25421073983b96c34e5d15
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 6f244fc057638bc94a94c150d9333435c0197a74
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462175"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249741"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
 この記事では、Azure Machine Learning の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の[**メインの SDK for Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) のリファレンス ページを参照してください。
 
 バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
+
+## <a name="2020-03-02"></a>2020 年 03 月 02 日
+
+### <a name="azure-machine-learning-sdk-for-python-v112rc0"></a>Azure Machine Learning SDK for Python v1.1.2rc0
+
++ **バグの修正と機能強化**
+  + **azureml-automl-core**
+    + automl ONNX モデルのバッチモード推論（複数行を 1 回取得）が有効です
+    + データ セットの周波数の検出、データの不足、または不規則なデータ ポイントの検出の改善
+    + 主要な周波数に準拠していないデータ ポイントを削除する機能が追加されました。
+  + **azureml-automl-runtime**
+    + トレーニング セットに存在しないグレインがテスト セットに含まれていた場合にスローされるエラーの問題を修正しました
+    + 予測サービスでのスコアリング中に y_query 要件が削除されました
+  + **azureml-contrib-mir**
+    + アクセス トークンを取得する機能を MirWebservice クラスに追加
+  + **azureml-core**
+    + デプロイされた AzureML Webservices は、既定値で `INFO`ログになります。 これは、デプロイされたサービスで `AZUREML_LOG_LEVEL` 環境変数を設定することによってコントロールできます。
+    + ワークスペースに登録されているすべてのデータ セットを返すために `Dataset.get_all` の繰り返しを修正しました。
+    + データセット作成 API の `path` 引数に無効な型が渡されると、エラー メッセージが改善されます。
+    + Python sdk は、検出サービスを使用して「パイプライン」の代わりに 「api」エンドポイントを使用します。
+    + すべての SDK 呼び出しの新しいルートにスワップする
+    + ModelManagementService への呼び出しのルート指定を新しい統合構造体に変更します。
+      + ワークスペースの更新メソッドを公開しました。
+      + ユーザーがイメージ ビルドの計算を更新できるように、ワークスペース更新メソッドに image_build_compute パラメーターを追加
+    +  古いプロファイル ワークフローに非推奨のメッセージを追加しました。 プロファイルの cpu とメモリの制限を修正
+  + **azureml-interpret**
+    + azureml-interpret から interpret-community 0.6 に更新されました。*
+  + **azureml-mlflow**
+    + ソブリン クラウドのサポートを azureml.mlflow に追加
+  + **azureml-pipeline-steps**
+    + `AutoMLStep` を `azureml-pipeline-steps package`に移動しました。 `azureml-train-automl-runtime` 内の `AutoMLStep` は非推奨になりました。
+  + **azureml-train-automl-client**
+    + リモート実行で特定のパッケージが正しくないバージョンでインストールされる可能性がある問題を修正しました。
+  + **azureml-train-automl-runtime**
+    + リモート実行での周波数の検出に関する問題を修正
+    + `AutoMLStep` を `azureml-pipeline-steps package`に移動しました。 `azureml-train-automl-runtime` 内の `AutoMLStep` は非推奨になりました。
+  + **azureml-train-core**
+    + `AutoMLStep` を `azureml-pipeline-steps package`に移動しました。 `azureml-train-automl-runtime` 内の `AutoMLStep` は非推奨になりました。
 
 ## <a name="2020-02-18"></a>2020-02-18
 

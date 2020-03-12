@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: robinsh
-ms.openlocfilehash: d16954760d1f2bf11ec5575f912ee32810696590
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: c812e00699cd8f8cfbaf32feea1b43866ffb0990
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77108207"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674367"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>チュートリアル:Azure IoT Hub のメッセージ エンリッチメントを使用する
 
@@ -76,7 +76,7 @@ IoT ハブ名やストレージ アカウント名など、グローバルに一
 
 次に示したのは、このスクリプトによって作成されるリソースです。 *Enriched* と表示されているリソースは、エンリッチメントが適用されたメッセージ用であることを意味します。 *Original* と表示されているリソースは、エンリッチメントが適用されていないメッセージ用であることを意味します。
 
-| Name | Value |
+| 名前 | Value |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | container name | original  |
@@ -102,7 +102,7 @@ randomValue=$RANDOM
 # This command installs the IOT Extension for Azure CLI.
 # You only need to install this the first time.
 # You need it to create the device identity.
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 
 # Set the values for the resource names that
 #   don't have to be globally unique.
@@ -296,7 +296,7 @@ Resource Manager テンプレートを使用して、リソース、メッセー
 
    次に示すのは、テンプレートを読み込むことによって作成されるリソースです。 **Enriched** と表示されているリソースは、エンリッチメントが適用されたメッセージ用であることを意味します。 **Original** と表示されているリソースは、エンリッチメントが適用されていないメッセージ用であることを意味します。 これらは、Azure CLI スクリプトで使用される値と同じです。
 
-   | Name | Value |
+   | 名前 | Value |
    |-----|-----|
    | resourceGroup | ContosoResourcesMsgEn |
    | container name | original  |

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 6ff12122d541a9dbb160a424e0d11cf03fdcb9fe
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 51fa6d4859eb4b7f059b499ba73d84d9fc65e6f6
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970229"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78398990"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>チュートリアル:写真内にある Azure サービスのロゴを認識する
 
@@ -107,7 +107,7 @@ Computer Vision サービスに登録して、キーとエンドポイント URL
 
 サービス プリンシパルは、ここで示すように、Azure Cloud Shell または Azure CLI を使用して作成できます。 開始するには、サインインして、使用するサブスクリプションを選択します。
 
-```console
+```azurecli
 az login
 az account list
 az account set --subscription "<subscription name or subscription id>"
@@ -115,7 +115,7 @@ az account set --subscription "<subscription name or subscription id>"
 
 次に、サービス プリンシパルを作成します (このプロセスは、完了するまでにしばらく時間がかかる場合があります)。
 
-```console
+```azurecli
 az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongPassword>
 ```
 
@@ -135,7 +135,7 @@ az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongP
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_serviceprincipal)]
 
-## <a name="run-the-app"></a>アプリの実行
+## <a name="run-the-app"></a>アプリを実行する
 
 これで、以下に対するアクセス権がアプリに付与されました。
 
@@ -171,13 +171,13 @@ az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongP
 
     ![デプロイ リージョンとリソース グループのフィールドが表示されているアプリの画面](media/azure-logo-tutorial/app-deployment-options.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このシナリオのすべての手順を実行し、アプリを使用して Azure サービスを自分のアカウントにデプロイした場合は、[Azure portal](https://ms.portal.azure.com/) に移動します。 そこで、使用しないサービスを取り消します。
 
 今後 Custom Vision を使用して独自のオブジェクト検出プロジェクトを作成する予定がある場合、このチュートリアルで作成したロゴ検出プロジェクトを削除したくなることがあるかもしれません。 Custom Vision の無料試用版では、利用できるプロジェクトは 2 つだけです。 ロゴ検出プロジェクトを削除するには、[Custom Vision Web サイト](https://customvision.ai)で **[Projects]\(プロジェクト\)** を開き、 **[My New Project]\(自分用の新しいプロジェクト\)** のごみ箱アイコンを選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Custom Vision サービスを使用してモバイル カメラの画像内のロゴを検出する、フル機能の Xamarin.Forms アプリを設定し、詳しく調べました。 次に、自分のアプリ用に作成する Custom Vision モデルを強力かつ正確なモデルにできるように、Custom Vision モデルを構築するためのベスト プラクティスを学習してください。
 

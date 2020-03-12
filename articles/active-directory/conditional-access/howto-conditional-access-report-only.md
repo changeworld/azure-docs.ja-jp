@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d63aaa0103715a928cdd5332de738a473b329f2e
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: da44e8482e335c209f45db478797efa5461bbfe1
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186085"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671851"
 ---
 # <a name="configure-a-conditional-access-policy-in-report-only-mode-preview"></a>レポートのみモードで条件付きアクセス ポリシーを構成する (プレビュー)
 
@@ -48,8 +48,8 @@ ms.locfileid: "77186085"
 
 分析情報への条件付きアクセスの新しいブックを使用して、条件付きアクセスの総計上での影響を閲覧するには、Azure Monitor と Azure AD を統合してサインイン ログをエクスポートする必要があります。 2 つの手順を実行して、この統合を設定します。 
 
-1. [Azure Monitor サブスクリプションにサインアップして、ワークスペースを作成する](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)。
-1. [Azure AD から Azure Monitor へサインイン ログをエクスポートします](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)。
+1. [Azure Monitor サブスクリプションにサインアップして、ワークスペースを作成する](/azure/azure-monitor/learn/quick-create-workspace)。
+1. [Azure AD から Azure Monitor へサインイン ログをエクスポートします](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)。
 
 Azure Monitor の価格に関する詳細については、[Azure Monitor の価格に関するページ](https://azure.microsoft.com/pricing/details/monitor/)上で確認できます。 コストの見積もり、日次上限の設定、データ保有期間のカスタマイズに関する資料については、「[Azure Monitor ログで使用量とコストを管理する](../../azure-monitor/platform/manage-cost-storage.md#estimating-the-costs-to-manage-your-environment)」の記事を参照してください。
 

@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: 032062dd200781b6d1f5abeb2391ae75c4c43e6a
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+manager: lizross
+ms.openlocfilehash: dac17da4aa3d3d73ccbbc101cba4326a17fec9b1
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367296"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127774"
 ---
 # <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して管理ツールをデプロイする
 

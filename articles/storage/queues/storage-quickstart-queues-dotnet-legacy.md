@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: cbrooks
-ms.openlocfilehash: f51038b1e79a699c15ad2fd969d75c09a2530f6f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5d5e8250a75cc26d4b9843875f71325e163ef23b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457605"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943556"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>クイック スタート:.NET 用 Azure Storage SDK v11 を使用してキューを管理する
 
@@ -35,7 +35,7 @@ ms.locfileid: "75457605"
 ### <a name="linux"></a>Linux
 
 - [Linux 用 .NET Core](https://www.microsoft.com/net/download/linux) をインストールする
-- オプションで、[Visual Studio Code](https://www.visualstudio.com/) および [C# 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp&dotnetid=963890049.1518206068)をインストールする
+- オプションで、[Visual Studio Code](https://www.visualstudio.com/) および [C# 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)をインストールする
 
 ### <a name="macos"></a>macOS
 

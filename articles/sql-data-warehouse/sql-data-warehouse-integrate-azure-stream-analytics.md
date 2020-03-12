@@ -1,69 +1,126 @@
 ---
 title: Azure Stream Analytics の使用
-description: ソリューション開発のための、Azure SQL Data Warehouse での Azure Stream Analytics の使用に関するヒント。
+description: リアルタイム ソリューション開発のための、Azure Synapse での Azure Stream Analytics のデータ ウェアハウスとの使用に関するヒント。
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: integration
-ms.date: 03/22/2019
+ms.date: 2/5/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: a655ada93cd9db9db95295d445c0b4f27d772148
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.custom: azure-synapse
+ms.openlocfilehash: 3aa881d5fc7689b20824792ee43ce369546c87e2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721202"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197940"
 ---
 # <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>Azure Synapse Analytics での Azure Stream Analytics の使用
+
 Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド内のデータのストリーミング データに対する拡張性の高い複雑なイベント処理を実現する、フル マネージドのサービスです。 基本事項については、「 [Azure Stream Analytics の概要](../stream-analytics/stream-analytics-introduction.md)」をお読みください。 その後で、「 [Azure Stream Analytics の使用](../stream-analytics/stream-analytics-real-time-fraud-detection.md) 」チュートリアルに従って、Stream Analytics を使用してエンド ツー エンド ソリューションを作成する方法を知ることができます。
 
-この記事では、データ ウェアハウス データベースを Stream Analytics ジョブの出力シンクとして使用する方法について説明します。
+このアーティクルでは、データ ウェアハウス データベースを Azure Stream Analytics ジョブの出力シンクとして使用する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
-最初に、「 [Azure Stream Analytics の使用](../stream-analytics/stream-analytics-real-time-fraud-detection.md) 」チュートリアルの次の手順を通読します。  
 
-1. Event Hub 入力の作成
-2. イベント ジェネレーター アプリケーションの構成と起動
-3. Stream Analytics のジョブの準備
-4. ジョブの入力とクエリの指定
+* Azure Stream Analytics ジョブ - Azure Stream Analytics ジョブを作成するには、「 [Azure Stream Analytics の使用](../stream-analytics/stream-analytics-real-time-fraud-detection.md) 」チュートリアルの手順に従ってください。  
 
-次に、Azure SQL Data Warehouse データベースを作成します
+    1. Event Hub 入力の作成
+    2. イベント ジェネレーター アプリケーションの構成と起動
+    3. Stream Analytics のジョブの準備
+    4. ジョブの入力とクエリの指定
+* Azure Synapse SQL プール データ ウェアハウス - 新しいデータ ウェアハウスを作成するには、「 [新しいデータ ウェアハウス作成クイックスタート](https://docs.microsoft.com/azure/sql-data-warehouse/create-data-warehouse-portal)」の手順に従ってください。
 
-## <a name="specify-job-output-azure-sql-data-warehouse-database"></a>ジョブの出力の指定:Azure SQL Data Warehouse データベース
+## <a name="specify-streaming-output-to-point-to-your-data-warehouse"></a>データ ウェアハウスを指すストリーミング出力の指定
+
 ### <a name="step-1"></a>手順 1
-Stream Analytics ジョブで、ページ上部の **[出力]** をクリックし、 **[追加]** をクリックします。
+
+Azure portal から Stream Analytics ジョブにアクセスし、**ジョブ トポロジ** メニューの **出力** をクリックします。
 
 ### <a name="step-2"></a>手順 2.
-SQL Database を選択します。
+
+**追加** ボタンをクリックし、ドロップ ダウンメニューから **SQL Database** を選択します。
+
+![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaoutput.png)
 
 ### <a name="step-3"></a>手順 3.
-次の値を次のページに入力します。
+
+次の値を入力します。
 
 * *[出力のエイリアス]* :このジョブの出力のフレンドリ名を入力します。
 * *サブスクリプション*:
-  * SQL Data Warehouse データベースが Stream Analytics ジョブと同じサブスクリプション内に存在する場合は、[現在のサブスクリプションの SQL データベースを使用] を選択します。
-  * データベースが別のサブスクリプション内にある場合は、[別のサブスクリプションの SQL データベースを使用] を選択します。
-* *データベース*:宛先データベースの名前を指定します。
-* *[サーバー名]* : 指定したデータベース用のサーバー名を指定します。 これは、Azure Portal を使って見つけることができます。
-
-![](./media/sql-data-warehouse-integrate-azure-stream-analytics/dw-server-name.png)
-
+  * データ ウェアハウスが Stream Analytics ジョブと同じサブスクリプション内にある場合は、 ***サブスクリプションから SQL Database を選択***をクリックします。
+  * データベースが別のサブスクリプションにある場合は、[SQL Database 設定を手動で行う] をクリックします。
+* *データベース*:次に、ドロップ ダウン リストから同期先にデータベースを選択します。
 * *User Name*:データベースの書き込みアクセス許可を持つアカウントのユーザー名を指定します。
 * *パスワード*:指定したユーザー アカウントのパスワードを入力します。
 * *テーブル*:データベース内の対象テーブルの名前を指定します。
+* **保存** ボタンをクリックします。
 
-![](./media/sql-data-warehouse-integrate-azure-stream-analytics/add-database.png)
+![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaoutputdbsettings.png)
 
 ### <a name="step-4"></a>手順 4.
-チェック ボタンをクリックして、このジョブ出力を追加し、Stream Analytics がデータベースに適切に接続できることを確認します。
 
-データベースへの接続が成功すると、ポータルに通知が表示されます。 [テスト] をクリックすると、データベースへの接続をテストできます。
+テストを実行する前に、データ ウェアハウスに表を作成する必要があります。  SQL Server Management Studio (SSMS) または任意のクエリ ツールを使用して、次の表作成スクリプトを実行します。
+
+```sql
+CREATE TABLE SensorLog
+(
+    RecordType VARCHAR(2)
+    , SystemIdentity VARCHAR(2)
+    , FileNum INT
+    , SwitchNum VARCHAR(50)
+    , CallingNum VARCHAR(25)
+    , CallingIMSI VARCHAR(25)
+    , CalledNum VARCHAR(25)
+    , CalledIMSI VARCHAR(25)
+    , DateS VARCHAR(25)
+    , TimeS VARCHAR(25)
+    , TimeType INT
+    , CallPeriod INT
+    , CallingCellID VARCHAR(25)
+    , CalledCellID VARCHAR(25)
+    , ServiceType VARCHAR(25)
+    , [Transfer] INT
+    , IncomingTrunk VARCHAR(25)
+    , OutgoingTrunk VARCHAR(25)
+    , MSRN VARCHAR(25)
+    , CalledNum2 VARCHAR(25)
+    , FCIFlag VARCHAR(25)
+    , callrecTime VARCHAR(50)
+    , EventProcessedUtcTime VARCHAR(50)
+    , PartitionId int
+    , EventEnqueuedUtcTime VARCHAR(50)
+    )
+WITH (DISTRIBUTION = ROUND_ROBIN)
+```
+
+### <a name="step-5"></a>手順 5.
+
+Azure Portal の Stream Analytics ジョブで、ジョブ名をクリックします。  ***出力の詳細*** ペインで ***テスト*** ボタンをクリックします。
+
+![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png) データベースへの接続が成功すると、ポータルに通知が表示されます。
+
+### <a name="step-6"></a>手順 6.
+
+***ジョブ トポロジ*** の下にある ***クエリ*** メニューをクリックし、クエリを変更して、作成したストリーム出力にデータを挿入します。  クエリをテストするには ***選択したクエリのテスト*** をクリックします。  クエリ テストが成功した場合は ***クエリの保存*** ボタンをクリックします。
+
+![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaquery.png)
+
+### <a name="step-7"></a>手順 7.
+
+Azure Stream Analytics ジョブを開始します。  ***概要*** メニューの ***開始*** ボタンをクリックします。
+
+![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastart.png)
+
+[ジョブの開始] ペインの ***開始*** ボタンをクリックします。
+
+![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastartconfirm.png)
 
 ## <a name="next-steps"></a>次のステップ
+
 統合の概要については、[その他のサービスの統合](sql-data-warehouse-overview-integrate.md)に関する記事を参照してください。
 開発に関するその他のヒントについては、[データ ウェアハウスの設計上の決定とコーディング技法](sql-data-warehouse-overview-develop.md)に関する記事を参照してください。
-

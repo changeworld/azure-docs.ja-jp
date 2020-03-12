@@ -6,90 +6,97 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/06/2019
-ms.openlocfilehash: b452cb986e6f662aeb33c2a475f18695ebc75745
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/20/2020
+ms.openlocfilehash: c22ee0ef0393c0dae64674d18bae5a2e92969b4c
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846081"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206064"
 ---
 # <a name="customer-managed-key-disk-encryption"></a>お客様が管理するキー ディスクの暗号化
 
-Azure HDInsight では、HDInsight クラスター VM に接続されたマネージド ディスクとリソース ディスク上のデータに対するカスタマー マネージド キー (Bring Your Own Key (BYOK) とも呼ばれる) の暗号化をサポートしています。 この機能を使用すると、Azure Key Vault を使用して、HDInsight クラスター上の保存データをセキュリティで保護する暗号化キーを管理できます。 クラスターには 1 つ以上の Azure Storage アカウントが接続されている場合があり、暗号化キーは Microsoft が管理することもお客様が管理することもできますが、暗号化サービスは異なります。
-
-このドキュメントでは、Azure Storage アカウントに格納されているデータは扱いません。 ASE の詳細については、「[保存データに対する Azure Storage 暗号化](../storage/common/storage-service-encryption.md)」を参照してください。
+Azure HDInsight では、HDInsight クラスター仮想マシンに接続されたマネージド ディスクとリソース ディスク上のデータに対するカスタマー マネージド キーの暗号化をサポートしています。 この機能を使用すると、Azure Key Vault を使用して、HDInsight クラスター上の保存データをセキュリティで保護する暗号化キーを管理できます。 
 
 HDInsight のマネージド ディスクはすべて、Azure Storage Service Encryption (SSE) で保護されます。 既定では、これらのディスク上のデータは、Microsoft が管理するキーを使用して暗号化されます。 HDInsight でカスタマー マネージド キーを有効にする場合は、Azure Key Vault を使用してそれらのキーを使用および管理するための HDInsight の暗号化キーを指定します。
+
+このドキュメントでは、Azure Storage アカウントに格納されているデータは扱いません。 Azure Storage の暗号化の詳細については、「[保存データに対する Azure Storage 暗号化](../storage/common/storage-service-encryption.md)」をご参照ください。 クラスターには 1 つ以上の Azure Storage アカウントが接続されている場合があり、暗号化キーは Microsoft が管理することもお客様が管理することもできますが、暗号化サービスは異なります。
+
+## <a name="introduction"></a>はじめに
 
 カスタマー マネージド キーの暗号化は、追加コストなしでクラスターの作成中に処理される 1 つのステップからなるプロセスです。 必要な作業は、HDInsight をマネージド ID として Azure Key Vault に登録し、クラスターの作成時に暗号化キーを追加することだけです。
 
 クラスターの各ノードのリソース ディスクとマネージド ディスクは両方とも、対称データ暗号化キー (DEK) を使用して暗号化されます。 DEK は、キー コンテナーからの KEK (キー暗号化キー) を使用して保護されます。 暗号化と復号のプロセスはすべて、Azure HDInsight によって処理されます。
 
-Azure portal または Azure CLI を使用し、キー コンテナーのキーを安全にローテーションすることができます。 キーをローテーションすると、HDInsight クラスターは数分以内に新しいキーの使用を開始します。 ランサムウェア シナリオと誤削除の対策として、[論理的な削除] キー保護機能を有効にします。 この保護機能のないキー コンテナーはサポートされていません。
+ディスク暗号化キーが格納されているキー コンテナーでキー コンテナー ファイアウォールが有効になっている場合、クラスターをデプロイするリージョンの HDInsight リージョン リソース プロバイダーの IP アドレスを、キー コンテナーのファイアウォール構成に追加する必要があります。 これは、HDInsight が信頼された Azure キー コンテナー サービスではないために必要です。
+
+Azure portal または Azure CLI を使用し、キー コンテナーのキーを安全にローテーションすることができます。 キーをローテーションすると、HDInsight クラスターは数分以内に新しいキーの使用を開始します。 ランサムウェア シナリオと誤削除の対策として、 [論理的な削除](../key-vault/key-vault-ovw-soft-delete.md) キー保護機能を有効にします。 この保護機能のないキー コンテナーはサポートされていません。
+
+|クラスターの種類 |OS Disk（マネージド ディスク） |データ ディスク（マネージド ディスク） |一時データ ディスク (ローカル SSD) |
+|---|---|---|---|
+|Kafka、高速書き込みが可能な HBase|SSE 暗号化|SSE 暗号化 + オプションの CMK 暗号化|オプションの CMK 暗号化|
+|その他すべてのクラスター (高速書き込みのない Spark、Interactive、Hadoop、HBase)|SSE 暗号化|該当なし|オプションの CMK 暗号化|
 
 ## <a name="get-started-with-customer-managed-keys"></a>ユーザーが管理するキーを使用する
 
 カスタマー マネージド キーが有効になった HDInsight クラスターを作成するには、次の手順を実行します。
 
 1. Azure リソースのマネージド ID を作成する
-2. Azure Key Vault とキーを設定する
-3. カスタマー マネージド キーを有効にして HDInsight クラスターを作成する
-4. 暗号化キーを入れ替える
+1. Azure Key Vault を作成する
+1. キーを作成する
+1. アクセス ポリシーの作成
+1. カスタマー マネージド キーを有効にして HDInsight クラスターを作成する
+1. 暗号化キーを入れ替える
 
 ## <a name="create-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID を作成する
 
-キー コンテナーに認証するには、[Azure portal](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)、[Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)、[Azure Resource Manager](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md)、[Azure CLI](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) を使用し、ユーザー割り当てマネージド ID を作成します。 Azure HDInsight でマネージド ID がどのように機能するかに関する詳細は、「[Azure HDInsight のマネージド ID](hdinsight-managed-identities.md)」を参照してください。 キー コンテナー アクセス ポリシーに追加するときのために、マネージド ID のリソース ID を保存してください。
+Key Vault に対して認証するユーザー割り当てのマネージド ID を作成します。
 
-## <a name="set-up-the-key-vault-and-keys"></a>Key Vault とキーを設定する
+具体的な手順については、 「[ユーザー割り当てマネージド ID の作成](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) 」をご参照ください。 Azure HDInsight でマネージド ID がどのように機能するかに関する詳細は、「[Azure HDInsight のマネージド ID](hdinsight-managed-identities.md)」を参照してください。 キー コンテナー アクセス ポリシーに追加するときのために、マネージド ID のリソース ID を保存してください。
 
-HDInsight では、Azure Key Vault にのみ対応しています。 自分のキー コンテナーをお持ちの場合、Azure Key Vault に自分のキーをインポートできます。 キーでは [論理的な削除] を有効にする必要があります。 [論理的な削除] 機能は、REST、.NET/C#、PowerShell、Azure CLI の各インターフェイスで使用できます。
+## <a name="create-azure-key-vault"></a>Azure Key Vault を作成する
 
-1. 新しいキー コンテナーを作成するには、[Azure Key Vault](../key-vault/key-vault-overview.md) クイック スタートに従ってください。 既存のキーをインポートする方法については、「[キー、シークレット、証明書について](../key-vault/about-keys-secrets-and-certificates.md)」をご覧ください。
+Key Vault を作成します。 具体的な手順については、「[ Azure Key Vault の作成](../key-vault/quick-create-portal.md) 」をご参照ください。
 
-1. [az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) CLI コマンドを使用して、キー コンテナーで "論理的な削除" を有効にします。
+HDInsight では、Azure Key Vault にのみ対応しています。 自分のキー コンテナーをお持ちの場合、Azure Key Vault に自分のキーをインポートできます。 キー コンテナーでは、 **論理的な削除** を有効にする必要があります。 既存のキーをインポートする方法については、「[キー、シークレット、証明書について](../key-vault/about-keys-secrets-and-certificates.md)」をご覧ください。
 
-    ```azurecli
-    az keyvault update --name <Key Vault Name> --enable-soft-delete
-    ```
+## <a name="create-key"></a>キーを作成する
 
-1. キーを作成します。
-
-    a. 新しいキーを作成するには、 **[設定]** の下にある **[キー]** メニューから **[生成/インポート]** を選択します。
+1. 新しいキー コンテナーから、 **設定** > **キー** >  **+ 生成/インポート**に移動します。
 
     ![Azure Key Vault で新しいキーを生成する](./media/disk-encryption/create-new-key.png "Azure Key Vault で新しいキーを生成する")
 
-    b. **[オプション]** を **[生成]** に設定し、キーの名前を付けます。
+1. 名前を入力し、 **作成**を選択します。 **RSA**のデフォルトの **キー タイプ** を維持します。
 
     ![キー名を生成する](./media/disk-encryption/create-key.png "キー名の生成")
 
-    c. キーの一覧から作成したキーを選択します。
+1. **キー** ページに戻り、作成したキーを選択します。
 
     ![キー コンテナーのキーの一覧](./media/disk-encryption/key-vault-key-list.png)
 
-    d. HDInsight クラスターの暗号化に独自のキーを使用する場合は、キーの URI を指定する必要があります。 **キー識別子**をコピーし、クラスターを作成する準備ができるまでどこかに保存します。
+1. バージョンを選択すると、 **キー バージョン** ページが開きます。 HDInsight クラスターの暗号化に独自のキーを使用する場合は、キーの URI を指定する必要があります。 **キー識別子**をコピーし、クラスターを作成する準備ができるまでどこかに保存します。
 
     ![キー識別子を取得する](./media/disk-encryption/get-key-identifier.png)
 
-1. キー コンテナーのアクセス ポリシーにマネージド ID を追加します。
+## <a name="create-access-policy"></a>アクセス ポリシーの作成
 
-    a. 新しい Azure Key Vault アクセス ポリシーを作成します。
+1. 新しいキー コンテナーから、 **設定** > **アクセス ポリシー** >  **+ アクセス ポリシーの追加**に移動します。
 
-    ![新しい Azure Key Vault アクセス ポリシーを作成する](./media/disk-encryption/add-key-vault-access-policy.png)
+    ![新しい Azure Key Vault アクセス ポリシーを作成する](./media/disk-encryption/key-vault-access-policy.png)
 
-    b. **[プリンシパルの選択]** の下で、作成したユーザー割り当てマネージド ID を選択します。
+1. **アクセス ポリシーの追加** ページで、次の情報を指定します。
+
+    |プロパティ |説明|
+    |---|---|
+    |キーのアクセス許可|**取得** を選択し、 **キーのラップを解除**してから、 **キーををラップ**します。|
+    |シークレットのアクセス許可|**取得**、 **設定**、 **削除**を選択します。|
+    |プリンシパルの選択|以前に作成したユーザー割り当てマネージド ID を選択します。|
 
     ![Azure Key Vault アクセス ポリシーの [プリンシパルの選択] を設定する](./media/disk-encryption/azure-portal-add-access-policy.png)
 
-    c. **[キーのアクセス許可]** を **[取得]** 、 **[キーの折り返しを解除]** 、 **[キーを折り返す]** に設定します。
+1. **[追加]** を選択します。
 
-    ![Azure Key Vault アクセス ポリシーにキーのアクセス許可を設定する 1](./media/disk-encryption/add-key-vault-access-policy-keys.png "Azure Key Vault アクセス ポリシーにキーのアクセス許可を設定する 1")
-
-    d. **[シークレットのアクセス許可]** を **[取得]** 、 **[設定]** 、 **[削除]** に設定します。
-
-    ![Azure Key Vault アクセス ポリシーにキーのアクセス許可を設定する 2](./media/disk-encryption/add-key-vault-access-policy-secrets.png "Azure Key Vault アクセス ポリシーにキーのアクセス許可を設定する 2")
-
-    e. **[保存]** を選択します。
+1. **[保存]** を選択します。
 
     ![Azure Key Vault アクセス ポリシーを保存する](./media/disk-encryption/add-key-vault-access-policy-save.png)
 
@@ -99,13 +106,13 @@ HDInsight では、Azure Key Vault にのみ対応しています。 自分の�
 
 ### <a name="using-the-azure-portal"></a>Azure ポータルの使用
 
-クラスター作成時、キーのバージョンも含む、完全キー URL を指定します。 たとえば、「 `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4` 」のように入力します。 また、クラスターにマネージド ID を割り当て、キー URI を指定する必要があります。
+クラスター作成時、キーのバージョンも含む、完全 **キー識別子**を指定します。 たとえば、「 `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4` 」のように入力します。 また、クラスターにマネージド ID を割り当て、キー URI を指定する必要があります。
 
 ![新しいクラスターを作成する](./media/disk-encryption/create-cluster-portal.png)
 
 ### <a name="using-azure-cli"></a>Azure CLI の使用
 
-次の例では、Azure CLI を使用して、ディスク暗号化が有効になった新しい Apache Spark クラスターを作成する方法を示します。 詳細については、[Azure CLI az hdinsight create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) のドキュメントを参照してください。
+次の例では、Azure CLI を使用して、ディスク暗号化が有効になった新しい Apache Spark クラスターを作成する方法を示します。 詳細については、「 [Azure CLI az hdinsight の作成](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)」をご参照ください。
 
 ```azurecli
 az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
@@ -123,13 +130,13 @@ HDInsight クラスターで使用される暗号化キーを、作成後に変�
 
 ### <a name="using-the-azure-portal"></a>Azure ポータルの使用
 
-キーを交換するには、新しいキーの完全な URL が必要です (「[Key Vault とキーを設定する](#set-up-the-key-vault-and-keys)」の手順 3 を参照してください)。 これが完了したら、ポータルで HDInsight クラスターのプロパティ セクションに移動し、 **[ディスクの暗号化キーの URL]** で **[キーの変更]** をクリックします。 新しいキーの URL を入力し、キーの交換を実行します。
+キーを回転させるには、ベース キー コンテナー URI が必要です。 これが完了したら、ポータルで HDInsight クラスターのプロパティ セクションに移動し、 **[ディスクの暗号化キーの URL]** で **[キーの変更]** をクリックします。 新しいキーの URL を入力し、キーの交換を実行します。
 
 ![ディスク暗号化キーのローテーション](./media/disk-encryption/change-key.png)
 
 ### <a name="using-azure-cli"></a>Azure CLI の使用
 
-次の例では、既存の HDInsight クラスターでディスク暗号化キーをローテーションする方法を示します。 詳細については、[Azure CLI az hdinsight rotate-disk-encryption-key](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-rotate-disk-encryption-key) に関する記事を参照してください。
+次の例では、既存の HDInsight クラスターでディスク暗号化キーをローテーションする方法を示します。 詳細については、「 [Azure CLI az hdinsight rotate-disk-encryption-key](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-rotate-disk-encryption-key)」をご参照ください。
 
 ```azurecli
 az hdinsight rotate-disk-encryption-key \
@@ -162,7 +169,7 @@ Hdinsight は、HDInsight クラスターに関連するマネージド ID を�
 
 **キーを削除した場合、どのようにしてクラスターを復元しますか?**
 
-"論理的な削除" 対応のキーのみがサポートされているため、キーがキー コンテナー内で回復された場合、クラスターはキーへ再びアクセスできるようになります。 Azure Key Vault キーを回復するには、「[Undo-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval)」または「[az-keyvault-key-recover](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-recover)」に関するページを参照してください。
+「論理的な削除」対応のキーのみがサポートされているため、キーがキー コンテナー内で回復された場合、クラスターはキーへ再びアクセスできるようになります。 Azure Key Vault キーを回復するには、「[Undo-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval)」または「[az-keyvault-key-recover](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-recover)」に関するページを参照してください。
 
 **どのディスクの種類が暗号化されますか。OS ディスク/リソース ディスクも暗号化されますか?**
 
@@ -178,4 +185,5 @@ HDInsight のカスタマー マネージド キーは、すべてのパブリ�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure HDInsight のエンタープライズ セキュリティの概要](./domain-joined/hdinsight-security-overview.md)
+* Azure Key Vault の詳細については、「[Azure Key Vault とは](../key-vault/key-vault-overview.md)」をご覧ください。
+* [Azure HDInsight のエンタープライズ セキュリティの概要](./domain-joined/hdinsight-security-overview.md)。

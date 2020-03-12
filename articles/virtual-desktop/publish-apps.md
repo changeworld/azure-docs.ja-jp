@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: e8e8512fa9f6a64fb0db688b7badcb699f6ccaa5
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+manager: lizross
+ms.openlocfilehash: a697c9a62e52e82a550969e1852abd1489ed59b9
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484623"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127744"
 ---
 # <a name="publish-built-in-apps-in-windows-virtual-desktop"></a>Windows Virtual Desktop で組み込みアプリを発行する
 

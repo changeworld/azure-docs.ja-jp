@@ -13,12 +13,12 @@ ms.date: 03/21/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2f0956b44d6df64fb73e5eee7844574237d8755
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4626e0149028a140d143fb8d0969a03b732201fa
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067633"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79036972"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Azure AD Connect の既定の規則に加えた変更の修正
 
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) Connect では、同期のために既定の�
 
 エディターでは、変更されている既定の規則は名前の前の警告アイコンで示されます。
 
-![警告のアイコン](media/how-to-connect-fix-default-rules/default2.png)
+![警告アイコン](media/how-to-connect-fix-default-rules/default2.png)
 
  その隣には、無効になっている同じ名前の規則も表示されます (これは標準の既定の規則です)。
 
@@ -73,7 +73,7 @@ Azure Active Directory (Azure AD) Connect では、同期のために既定の�
 #### <a name="add-an-inbound-sync-rule"></a>受信同期規則を追加する
 受信同期規則は、属性のソースがコネクタ スペースであり、ターゲットがメタバースであることを意味します。 たとえば、オンプレミスの Active Directory から Azure Active Directory への新しい属性フローを追加するには、新しい受信同期規則を作成します。 **同期規則エディター**を起動し、方向として **[Inbound]\(受信\)** を選択して、 **[Add new rule]\(新しい規則の追加\)** を選択します。 
 
- !同期規則エディター](media/how-to-connect-fix-default-rules/default3a.png)
+ ![同期規則エディター](media/how-to-connect-fix-default-rules/default3a.png)
 
 独自の名前付け規則に従って規則の名前を指定します。 ここでは、「**Custom In from AD - User**」にします。 これは、規則がカスタム規則であり、Active Directory コネクタ スペースからメタバースへの受信規則であることを意味します。   
 
@@ -190,7 +190,7 @@ Azure AD Connect によって構成された既定の結合条件を使用しま
  
 規則を修正して既定の設定に戻すには、変更された規則を削除し、既定の規則を有効にします。 実現しようとしているカスタマイズが失われないように確認します。 準備ができたら、**完全同期**を実行します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [ハードウェアおよび前提条件](how-to-connect-install-prerequisites.md) 
 - [簡単設定](how-to-connect-install-express.md)
 - [カスタマイズした設定](how-to-connect-install-custom.md)

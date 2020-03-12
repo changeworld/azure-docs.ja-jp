@@ -4,12 +4,12 @@ description: Azure Backup サービスを使用して Microsoft Azure Recovery S
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 26ed6fefdf95281429a8c91057195785db4f5589
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: c11d73edd32c197aac2cec58eeb1cc20e5c6a339
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617599"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673261"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Azure Backup サービスを使用して Microsoft Azure Recovery Services (MARS) エージェントのバックアップを管理する
 
@@ -172,4 +172,4 @@ ms.locfileid: "77617599"
 ## <a name="next-steps"></a>次のステップ
 
 - サポートされるシナリオと制限事項については、[MARS エージェントのサポート マトリックス](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)に関するページを参照してください。
-- [オンデマンド バックアップ ポリシーの保持動作](backup-configure-vault.md#set-up-on-demand-backup-policy-retention-behavior)の詳細を確認します。
+- [オンデマンド バックアップ ポリシーの保持動作](backup-windows-with-mars-agent.md#set-up-on-demand-backup-policy-retention-behavior)の詳細を確認します。

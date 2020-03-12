@@ -1,32 +1,33 @@
 ---
-title: 概念、用語、エンティティ - Azure Scheduler | Microsoft Docs
+title: 概念、用語、およびエンティティ
 description: Azure Scheduler の概念、用語、およびエンティティ階層 (ジョブやジョブ コレクションなど) について説明します
 services: scheduler
 ms.service: scheduler
 ms.suite: infrastructure-services
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
+ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 7e31f891cfd758b888e4045566ad2cd2d9ab6fb8
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 0a744c2de320ddad2e7959cae7b62d7990879953
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300948"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898572"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Azure Scheduler の概念、用語集、エンティティ
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、[廃止される予定](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)の Azure Scheduler の後継です。 Scheduler で設定したジョブを使用し続けるには、できるだけ早く [Azure Logic Apps に移行](../scheduler/migrate-from-scheduler-to-logic-apps.md)してください。
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、[廃止される予定](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)の Azure Scheduler の後継です。 Scheduler で設定したジョブを使用し続けるには、できるだけ早く [Azure Logic Apps に移行](../scheduler/migrate-from-scheduler-to-logic-apps.md)してください。 
+>
+> Scheduler は Azure portal で利用できなくなりましたが、現時点では [REST API](/rest/api/scheduler) と [Azure Scheduler PowerShell コマンドレット](scheduler-powershell-reference.md)がまだ使用できるので、お客様はジョブとジョブ コレクションを管理することができます。
 
 ## <a name="entity-hierarchy"></a>エンティティ階層
 
 Azure Scheduler REST API では、以下の主要なエンティティつまりリソースが公開および使用されます。
 
-| エンティティ | 説明 |
+| Entity | 説明 |
 |--------|-------------|
 | **ジョブ** | 単純または複雑な実行方法による単一の反復的な操作を定義します。 操作には、HTTP、ストレージ キュー、Service Bus キュー、Service Bus トピックの要求が含まれます。 | 
 | **ジョブ コレクション** | ジョブのグループを含み、コレクション内のジョブで共有される設定、クォータ、調整を保持します。 Azure サブスクリプションの所有者は、ジョブ コレクションを作成し、使用状況やアプリケーションの境界に基づいてジョブをグループ化することができます。 ジョブ コレクションには次の属性があります。 <p>- 1 つのリージョンに制限されます。 <br>- クォータを適用して、コレクション内のすべてのジョブの使用量を制限できます。 <br>- クォータには、MaxJobs と MaxRecurrence が含まれます。 | 
@@ -149,7 +150,7 @@ Azure Scheduler では、複数のジョブの種類がサポートされてい�
 
 ## <a name="action"></a>action
 
-Scheduler ジョブは、指定されたスケジュールに基づいてプライマリ **アクション**を実行します。 Scheduler は、HTTP、Storage キュー、Service Bus キュー、Service Bus トピックのアクションをサポートしています。 プライマリ **アクション**が失敗した場合、Scheduler はエラーを処理するセカンダリ [ **errorAction** ](#erroraction) を実行できます。 **アクション** オブジェクトでは次の要素が記述されています。
+Scheduler ジョブは、指定されたスケジュールに基づいてプライマリ **アクション**を実行します。 Scheduler は、HTTP、Storage キュー、Service Bus キュー、Service Bus トピックのアクションをサポートしています。 プライマリ **アクション**が失敗した場合、Scheduler はエラーを処理するセカンダリ [**errorAction**](#erroraction) を実行できます。 **アクション** オブジェクトでは次の要素が記述されています。
 
 * アクションのサービスの種類
 * アクションの詳細
@@ -245,15 +246,15 @@ Shared Access Signature (SAS) トークンについて詳しくは、[Shared Acc
 },
 ```
 
-| プロパティ | 必須 | 値 | 説明 | 
+| プロパティ | 必須 | Value | 説明 | 
 |----------|----------|-------|-------------| 
 | **frequency** | はい。**recurrence** が使用されているとき | "Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" | 発生の間隔の時間単位 | 
 | **interval** | いいえ | 1 ～ 1000 | **frequency** に基づいて実行間の時間単位の数を決定する正の整数 | 
-| **schedule** | いいえ | 多様 | 複雑で高度なスケジュールの詳細。 **hours**、**minutes**、**weekDays**、**months**、**monthDays** を参照してください | 
+| **schedule** | いいえ | 場合により異なる | 複雑で高度なスケジュールの詳細。 **hours**、**minutes**、**weekDays**、**months**、**monthDays** を参照してください | 
 | **hours** | いいえ | 1 ～ 24 | ジョブ実行日時に対する時マークを含む配列 | 
 | **分** | いいえ | 0 ～ 59 | ジョブ実行日時に対する分マークを含む配列 | 
 | **months** | いいえ | 1 ～ 12 | ジョブ実行日時に対する月の配列 | 
-| **monthDays** | いいえ | 多様 | ジョブ実行日時に対する日の配列 | 
+| **monthDays** | いいえ | 場合により異なる | ジョブ実行日時に対する日の配列 | 
 | **weekDays** | いいえ | "Monday"、"Tuesday"、"Wednesday"、"Thursday"、"Friday"、"Saturday"、"Sunday" | ジョブ実行日時に対する曜日の配列 | 
 | **count** | いいえ | <*none*> | 繰り返しの数。 既定では、無限に繰り返します。 **count** と **endTime** の両方を使用することはできません。この場合、最初に完了する規則が適用されます。 | 
 | **endTime** | いいえ | <*none*> | 繰り返しを停止する日付と時刻。 既定では、無限に繰り返します。 **count** と **endTime** の両方を使用することはできません。この場合、最初に完了する規則が適用されます。 | 
@@ -275,7 +276,7 @@ Scheduler ジョブが失敗したときのために、再試行ポリシーを�
 },
 ```
 
-| プロパティ | 必須 | 値 | 説明 | 
+| プロパティ | 必須 | Value | 説明 | 
 |----------|----------|-------|-------------| 
 | **retryType** | はい | **Fixed**、**None** | 再試行ポリシーを指定するか (**fixed**) しないか (**none**) を決定します。 | 
 | **retryInterval** | いいえ | PT30S | 再試行の間隔と頻度を [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)で指定します。 最小値は 15 秒、最大値は 18 か月です。 | 
@@ -307,7 +308,7 @@ Scheduler ジョブが失敗したときのために、再試行ポリシーを�
 * 失敗の数 (ある場合)
 * エラーの数 (ある場合)
 
-例:
+次に例を示します。
 
 ```json
 "status": {
@@ -319,11 +320,9 @@ Scheduler ジョブが失敗したときのために、再試行ポリシーを�
 }
 ```
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
-* [Azure Scheduler とは](scheduler-intro.md)
-* [概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
 * [複雑なスケジュールと高度な繰り返しを作成する](scheduler-advanced-complexity.md)
-* [制限、クォータ、既定値、エラー コード](scheduler-limits-defaults-errors.md)
 * [Azure Scheduler REST API リファレンス](/rest/api/scheduler)
 * [Azure Scheduler PowerShell コマンドレット リファレンス](scheduler-powershell-reference.md)
+* [制限、クォータ、既定値、エラー コード](scheduler-limits-defaults-errors.md)

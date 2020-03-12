@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 08/05/2019
 ms.author: juliako
-ms.openlocfilehash: dc844392d64178cb9000db15af39f923521efc19
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 1f40f16ddbe5231dd754ad97b54e414c6ce9b9e7
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838376"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328831"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Azure に接続された Video Indexer アカウントを作成する
 
@@ -57,7 +57,7 @@ Azure portal を使用して EventGrid リソース プロバイダーを登録�
 
 ![EventGrid](./media/create-account/event-grid.png)
 
-## <a name="connect-to-azure"></a>Azure への接続
+## <a name="connect-to-azure"></a>Azure に接続する
 
 > [!NOTE]
 > Azure サブスクリプションが証明書ベースの多要素認証を使用する場合、必要な証明書がインストールされているデバイスで次の手順を実行することが重要です。
@@ -124,8 +124,8 @@ Azure への接続に失敗する場合は、手動で接続して問題の解�
 4. Video Indexer が Media Services API を使用して認証するには、AD アプリケーションを作成する必要があります。 次に、「[Azure ポータルで Azure AD 認証を開始する](../previous/media-services-portal-get-started-with-aad.md)」で説明されている Azure AD 認証プロセスについて、手順を追って説明します。
 
     1. 新しい Media Services アカウントで **[API アクセス]** をクリックします。
-    2. [サービス プリンシパルの認証方法](../previous/media-services-portal-get-started-with-aad.md#service-principal-authentication)を選択します。
-    3. 「[クライアント ID とクライアント シークレットを取得する](../previous/media-services-portal-get-started-with-aad.md#get-the-client-id-and-client-secret)」セクションの説明に従って、クライアント ID とクライアント シークレットを取得します。
+    2. [サービス プリンシパルの認証方法](../previous/media-services-portal-get-started-with-aad.md)を選択します。
+    3. クライアント ID とクライアント シークレットを取得する
 
         **[設定]** -> **[キー]** を選択してから **[説明]** を追加し、 **[保存]** を押すと、キー値が設定されます。
 
@@ -140,7 +140,7 @@ Azure への接続に失敗する場合は、手動で接続して問題の解�
 
 このダイアログに次の情報を入力します。
 
-|Setting|説明|
+|設定|説明|
 |---|---|
 |Video Indexer アカウントのリージョン|Video Indexer アカウントのリージョンの名前。 パフォーマンスの向上とコストの削減を実現するために、Azure Media Services リソースと Azure ストレージ アカウントがあるリージョンの名前を指定するよう強くお勧めします。 |
 |Azure Active Directory (AAD) テナント|Azure AD テナントの名前 (例: "contoso.onmicrosoft.com")。 テナント情報は Azure Portal から取得できます。 右上隅のサインインしているユーザーの名前にカーソルを合わせます。 **[ドメイン]** の右側に名前が表示されます。|
@@ -171,7 +171,7 @@ Azure Media Services に関する次の考慮事項が適用されます。
 
 * 既存の Media Services アカウントに接続した場合、Video Indexer で既定のストリーミング エンドポイントの構成は変更されません。 実行中の**ストリーミング エンドポイント**がない場合、この Media Services アカウントから、または Video Indexer でビデオを視聴できません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 試用アカウント、Azure に接続されている Video Indexer アカウント、またその両方とプログラムでやり取りするには、[API の使用](video-indexer-use-apis.md)に関するページの手順を参照してください。
 

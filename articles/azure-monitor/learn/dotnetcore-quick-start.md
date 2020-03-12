@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: fa1651e88226080cca970cc756f2c0522b39f1be
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: ef46b86186d1f5e26360de891b3a090ab0ece66b
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670629"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894824"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>ASP.NET Core Web アプリケーションの監視を開始する
 
@@ -24,10 +24,10 @@ Azure Application Insights を使うと、Web アプリケーションの可用�
 
 このクイック スタートを完了するには、以下が必要です。
 
-- 次のワークロードを使って、[Visual Studio 2019 をインストール](https://www.visualstudio.com/downloads/)します。
+- 次のワークロードを使って、[Visual Studio 2019 をインストール](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)します。
   - ASP.NET および Web の開発
   - Azure の開発
-- [.NET Core 2.0 SDK のインストール](https://www.microsoft.com/net/core)
+- [.NET Core 2.0 SDK のインストール](https://dotnet.microsoft.com/download)
 - Azure サブスクリプションと既存の .NET Core Web アプリケーションが必要です。
 
 ASP.NET Core Web アプリケーションがない場合は、ステップ バイ ステップ ガイドを使用して [ASP.NET Core アプリを作成し、Application Insights を追加](../../azure-monitor/app/asp-net-core.md)してください。

@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/01/2019
+ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: f34c5d5069a158579864320d0fbf965de8936d9c
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: e3997fc215637175165402a926bffc6ac8d02771
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896121"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914860"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Azure Data Lake Storage のマルチプロトコル アクセス
 
@@ -26,7 +26,11 @@ Data Lake Storage のマルチプロトコル アクセスでは、ツール、�
 階層型名前空間があるアカウントで、[診断ログ](../common/storage-analytics-logging.md)、[アクセス レベル](storage-blob-storage-tiers.md)、[BLOB ストレージ ライフサイクル管理ポリシー](storage-lifecycle-management-concepts.md)などの BLOB ストレージの機能が動作するようになりました。 そのため、これらの重要な機能へのアクセスを失うことなく、BLOB ストレージ アカウントで階層型名前空間を有効にできます。 
 
 > [!NOTE]
-> Data Lake Storage のマルチプロトコル アクセスは一般提供されており、すべてのリージョンで利用できます。 マルチプロトコル アクセスによって有効にされている一部の Azure サービスまたは BLOB ストレージ機能は、引き続きプレビュー段階です。 詳細については、この記事の最後のセクションにある表を参照してください。 
+> Data Lake Storage のマルチプロトコル アクセスは一般提供されており、すべてのリージョンで利用できます。 マルチプロトコル アクセスによって有効にされている一部の Azure サービスまたは BLOB ストレージ機能は、引き続きプレビュー段階です。  これらのアーティクルでは、BLOB ストレージの機能と Azure サービスの統合の現在のサポートについてまとめています。 
+>
+> [Azure Data Lake Storage Gen2 で使用できる Blob Storage 機能](data-lake-storage-supported-blob-storage-features.md)
+>
+>[Azure Data Lake Storage Gen2 がサポートされている Azure のサービス](data-lake-storage-supported-azure-services.md)
 
 ## <a name="how-multi-protocol-access-on-data-lake-storage-works"></a>Azure Data Lake Storage のマルチプロトコル アクセスの実行方法
 
@@ -36,62 +40,12 @@ Data Lake Storage のマルチプロトコル アクセスでは、ツール、�
 
 BLOB API を使用している既存のツールとアプリケーションでは、これらのメリットが自動的に活用されます。 開発者は、それらを変更する必要はありません。 Data Lake Storage Gen2 では、データにアクセスするためにツールとアプリケーションで使用されるプロトコルに関係なく、ディレクトリとファイルレベルの ACL が一貫して適用されます。 
 
-## <a name="blob-storage-feature-support"></a>Blob ストレージ機能のサポート
+## <a name="see-also"></a>関連項目
 
-Data Lake Storage でマルチプロトコル アクセスを使用すると、Data Lake Storage でより多くの BLOB ストレージ機能を使用できます。 次の表に、Data Lake Storage のマルチプロトコル アクセスによって有効になる機能の一覧を示します。 
-
-この表に示されている項目は、BLOB ストレージ機能のサポートが引き続き拡張されるため、時間の経過と共に変化します。 
-
-> [!NOTE]
-> Data Lake Storage のマルチプロトコル アクセスは一般提供されていますが、一部の機能のサポートは引き続きプレビュー段階です。 
-
-|Blob ストレージ機能 | サポート レベル |
-|---|---|
-|[クール アクセス層](storage-blob-storage-tiers.md)|一般公開|
-|BLOB REST API|一般公開|
-|BLOB SDK |一般公開|
-|[PowerShell (BLOB)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-powershell) |一般公開|
-|[CLI (BLOB)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-cli) |一般公開|
-|[Azure Event Grid 経由の通知](data-lake-storage-events.md)|一般公開|
-|BLOB SDK とファイル システム セマンティクス ([.NET](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-dotnet) &vert; [Python](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-python) &vert; [Java](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-java))|プレビュー|
-|[PowerShell とファイル システム セマンティクス](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-powershell)|プレビュー|
-|[CLI とファイル システム セマンティクス](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-cli)|プレビュー|
-|[診断ログ](../common/storage-analytics-logging.md)| プレビュー|
-|[ライフサイクル管理ポリシー](storage-lifecycle-management-concepts.md)| プレビュー|
-|[アーカイブ アクセス層](storage-blob-storage-tiers.md)| プレビュー|
-|[Blobfuse](storage-how-to-mount-container-linux.md)|まだサポートされていません|
-|[不変ストレージ](storage-blob-immutable-storage.md)|まだサポートされていません|
-|[スナップショット](storage-blob-snapshots.md)|まだサポートされていません|
-|[論理的な削除](storage-blob-soft-delete.md)|まだサポートされていません|
-|[静的な Web サイト](storage-blob-static-website.md)|まだサポートされていません|
-
-Azure Data Lake Storage Gen2 の既知の問題と制限事項については、「[既知の問題](data-lake-storage-known-issues.md)」を参照してください。
-
-## <a name="azure-ecosystem-support"></a>Azure のエコシステムのサポート
-
-Data Lake Storage でマルチプロトコル アクセスを使用すると、Data Lake Storage でより多くの Azure サービスに接続することもできます。 次の表に、Data Lake Storage のマルチプロトコル アクセスによって有効になるサービスの一覧を示します。 
-
-サポートされている BLOB ストレージ機能の一覧と同様に、この表に示されている項目は、Azure サービスのサポートが引き続き拡張されるため、時間の経過と共に変化します。 
-
-> [!NOTE]
-> Data Lake Storage のマルチプロトコル アクセスは一般提供されていますが、一部のサービスのサポートは引き続きプレビュー段階です。 
-
-|Azure サービス | サポート レベル |
-|---|---|
-|[Azure Data Box](data-lake-storage-migrate-on-premises-hdfs-cluster.md)|一般公開|
-|[Azure Event Hubs のキャプチャ](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)|一般公開|
-|[Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal)|一般公開|
-|[IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)|一般公開|
-|[Logic Apps](https://azure.microsoft.com/services/logic-apps/)|一般公開|
-|[Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-howto-index-azure-data-lake-storage)|プレビュー|
-
-Data Lake Storage Gen2 の Azure エコシステムのサポートの完全な一覧については、「[Azure Data Lake Storage と Azure のサービスを統合する](data-lake-storage-integrate-with-azure-services.md)」を参照してください。
-
-Azure Data Lake Storage Gen2 の既知の問題と制限事項については、「[既知の問題](data-lake-storage-known-issues.md)」を参照してください。
-
-## <a name="next-steps"></a>次のステップ
-
-[既知の問題](data-lake-storage-known-issues.md)を参照してください。
+- [Azure Data Lake Storage Gen2 で使用できる Blob Storage 機能](data-lake-storage-supported-blob-storage-features.md)
+- [Azure Data Lake Storage Gen2 がサポートされている Azure のサービス](data-lake-storage-supported-azure-services.md)
+- [Data Lake Storage Gen2 がサポートされているオープン ソース プラットフォーム](data-lake-storage-supported-open-source-platforms.md)
+- [Azure Data Lake Storage Gen2 に関する既知の問題](data-lake-storage-known-issues.md)
 
 
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: e76193a635ee723e13ea4a8a23f668b6e3d1cbb0
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 06263f85f7d6ad6cc80724baab01124833498739
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840878"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129642"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>PowerShell を使用して Azure Network Watcher でパケット キャプチャを管理する
 
@@ -128,7 +128,7 @@ ForceUpdateTag          :
 次の手順では、Network Watcher インスタンスを取得します。 この変数は、手順 4 で `New-AzNetworkWatcherPacketCapture` コマンドレットに渡されます。
 
 ```powershell
-$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
+$networkWatcher = Get-AzResource -ResourceType "Microsoft.Network/networkWatchers" | Where {$_.Location -eq "WestCentralUS" }
 ```
 
 ### <a name="step-2"></a>手順 2.

@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: 1e30da0844efa48f64a5e2501c79d2167ca4be92
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 48d05dad45a5ff4c561f492e424b53c918998c7c
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77431259"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945452"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Java Spring アプリケーションを起動する
 
@@ -74,7 +74,7 @@ az extension add --name spring-cloud
 4. Azure CLI ウィンドウを開き、次のコマンドを実行して、Azure Spring Cloud のインスタンスをプロビジョニングします。
 
     ```azurecli
-        az spring-cloud create -n <service name> -g <resource group name>
+        az spring-cloud create -n <service instance name> -g <resource group name>
     ```
 
     サービス インスタンスのデプロイには約 5 分かかります。
@@ -82,7 +82,7 @@ az extension add --name spring-cloud
 5. 次のコマンドを使用して、既定のリソース グループ名とクラスター名を設定します。
 
     ```azurecli
-        az configure --defaults group=<service group name>
+        az configure --defaults group=<resource group name>
         az configure --defaults spring-cloud=<service instance name>
     ```
 
@@ -93,8 +93,8 @@ az extension add --name spring-cloud
 
 次のように、プロジェクトの git リポジトリの場所で、構成サーバーを更新します。
 
-```git
-az spring-cloud config-server git set -n <your-service-name> --uri https://github.com/Azure-Samples/piggymetrics-config
+```azurecli
+az spring-cloud config-server git set -n <service instance name> --uri https://github.com/Azure-Samples/piggymetrics-config
 ```
 
 > [!div class="nextstepaction"]
@@ -158,7 +158,7 @@ az spring-cloud app show --name gateway | grep url
 ```
 Windows:
 ```azurecli
-az spring-cloud app show --name gateway | findstr url
+az spring-cloud app show -s <service name> -g <resource group> -n gateway -o table
 ```
 3. 前のコマンドによって提供された URL に移動し、PiggyMetrics アプリケーションを実行します。
     ![PiggyMetrics が実行中のスクリーンショット](media/spring-cloud-quickstart-launch-app-cli/launch-app.png)

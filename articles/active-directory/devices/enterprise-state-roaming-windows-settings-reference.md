@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54a75b662fabcce8ffa64f1b705e86a1c1dde625
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 3a7abc402f1fc2e449e7aac5effdb01b6b941100
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194332"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672622"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 ローミング設定リファレンス
 
@@ -52,7 +52,7 @@ Windows 10 でローミングまたはバックアップされる設定の一覧
 ![設定の同期](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
 > [!NOTE]
-> この記事は、2015 年 7 月に Windows 10 で提供が開始された Microsoft Edge レガシ HTML ベースのブラウザーに適用されます。 この記事は、2020 年 1 月 15 日にリリースされた新しい Microsoft Edge Chromium ベースのブラウザーには適用されません。 新しい Microsoft Edge の同期動作の詳細については、「[Microsoft Edge の同期](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync)」を参照してください。
+> この記事は、2015 年 7 月に Windows 10 で提供が開始された Microsoft Edge レガシ HTML ベースのブラウザーに適用されます。 この記事は、2020 年 1 月 15 日にリリースされた新しい Microsoft Edge Chromium ベースのブラウザーには適用されません。 新しい Microsoft Edge の同期動作の詳細については、「[Microsoft Edge の同期](/deployedge/microsoft-edge-enterprise-sync)」を参照してください。
 
 Microsoft Edge ブラウザーの設定グループ (お気に入り、リーディング リスト) の同期は、Microsoft Edge ブラウザーの [設定] メニュー オプションを通じてエンド ユーザーが有効/無効にできます。
 
@@ -78,7 +78,7 @@ Windows 10 バージョン 1803 またはそれ以降では、Internet Explorer 
 | **アプリの一覧**: インストールされているアプリの一覧 |X |バックアップ (backup) |その他 |
 | **Bluetooth**: Bluetooth のすべての設定 |X |X | |
 | **コマンド プロンプト**: コマンド プロンプトの "既定" 設定 |sync |X |内部 |
-| **資格情報**:資格情報保管ボックス |sync |sync |パスワード |
+| **資格情報**:資格情報保管ボックス |sync |sync |password |
 | **日付、時刻、地域**: 時刻の自動同期 (インターネット時刻同期) |sync |sync |language |
 | **日付、時刻、地域**: 24 時間形式 |sync |X |language |
 | **日付、時刻、地域**: 日付と時刻 |sync |X |language |

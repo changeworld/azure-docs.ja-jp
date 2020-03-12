@@ -10,12 +10,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: gwallace
-ms.openlocfilehash: 5ce96796cbfdcefbaf5568ff199cba6a87f65e05
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 4b49a9b391eeca2d2e249b171d99f231bda6fdff
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359875"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329121"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>Azure サービス管理証明書のアップロード
 管理証明書を使用することにより、Azure のクラシック デプロイ モデルを使用して認証できます。 多くのプログラムとツール (Visual Studio や Azure SDK など) でこれらの証明書が使用され、さまざまな Azure サービスの構成とデプロイメントが自動化されます。 
@@ -51,5 +51,5 @@ Azure の証明書の詳細 (自己署名証明書の作成など) について�
 
     ![設定](./media/azure-api-management-certs/certificate_details.png)
 
-## <a name="next-steps"></a>次の手順
-サブスクリプションへの管理証明書の関連付けはこれで完了です。これで、(対になる証明書をローカルにインストールした後) プログラムから[クラシック デプロイ モデル REST API](/azure/#pivot=sdkstools) に接続して、同じサブスクリプションに関連付けられているさまざまな Azure リソースを自動化できます。
+## <a name="next-steps"></a>次のステップ
+サブスクリプションへの管理証明書の関連付けはこれで完了です。これで、(対になる証明書をローカルにインストールした後) プログラムから[クラシック デプロイ モデル REST API](/azure/?pivot=sdkstools) に接続して、同じサブスクリプションに関連付けられているさまざまな Azure リソースを自動化できます。

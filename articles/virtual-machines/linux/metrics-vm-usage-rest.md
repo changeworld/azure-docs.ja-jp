@@ -1,21 +1,19 @@
 ---
 title: REST API を使用して Azure 仮想マシンの使用状況データを取得する
 description: Azure REST API を使用して、仮想マシンの使用率メトリックを収集します。
-services: virtual-machines
 author: rloutlaw
-ms.reviewer: routlaw
-manager: gwallace
-ms.service: load-balancer
+ms.service: virtual-machines
+ms.subservice: monitoring
 ms.custom: REST
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: routlaw
-ms.openlocfilehash: 523b81e53f2b0622b237993dbd88fb9492079c86
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 07e91f3d9fd32f01db91415bfd90746cd1aef403
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035807"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944746"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>REST API を使用して仮想マシンの使用状況のメトリックを取得する
 
@@ -38,7 +36,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 |要求ヘッダー|説明|  
 |--------------------|-----------------|  
 |*Content-Type:*|必須。 `application/json` を設定します。|  
-|*Authorization:*|必須。 有効な `Bearer` [ アクセス トークン](/rest/api/azure/#authorization-code-grant-interactive-clients)を設定します｡ |  
+|*Authorization:*|必須。 有効な `Bearer` [アクセス トークン](/rest/api/azure/#authorization-code-grant-interactive-clients)を設定します。 |  
 
 ### <a name="uri-parameters"></a>URI パラメーター
 

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: bb8b23513738a6696d65bf7f06a741be2ada7a93
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 8babacfede6e13fde629492e1cd9f80af7f0e53f
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250251"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943070"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>新しいシミュレートされたデバイスの作成とテスト
 
@@ -82,7 +82,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 * Visual Studio Code。 [Mac、Linux、および Windows 用の Visual Studio Code をダウンロード](https://code.visualstudio.com/download)できます。
 * .NET Core。 [Mac、Linux、および Windows 用の .NET Core をダウンロード](https://www.microsoft.com/net/download)できます。
-* [C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+* [C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 * Postman。 [Mac、Windows、または Linux 用の Postman をダウンロード](https://www.getpostman.com/apps)できます。
 * [Azure サブスクリプションにデプロイされた IoT ハブ](../../articles/iot-hub/iot-hub-create-through-portal.md)。 このガイドの手順を完了するには、IoT ハブの接続文字列が必要です。 この接続文字列は、Azure portal から取得できます。
 * [強力な一貫性](../../articles/cosmos-db/how-to-manage-database-account.md)を確保するよう構成された、SQL API を使用する Cosmos DB データベース。 このガイドの手順を完了するには、Cosmos DB データベースの接続文字列が必要です。 この接続文字列は、Azure portal から取得できます。

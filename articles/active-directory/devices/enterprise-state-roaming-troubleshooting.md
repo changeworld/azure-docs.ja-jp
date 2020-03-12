@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e81039328aa9382a19412c961e28bc3275c08ec8
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: ae8ce24aeb665a7f99326e83dbe18d020e1b6196
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194468"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672342"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Azure Active Directory の Enterprise State Roaming の設定のトラブルシューティング
 
@@ -25,7 +25,7 @@ ms.locfileid: "77194468"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!NOTE]
-> この記事は、2015年7月に Windows 10 で起動された Microsoft Edge レガシ HTML ベースのブラウザーに適用されます。 この記事は、2020年1月15日にリリースされた新しい Microsoft Edge Chromium ベースのブラウザーには適用されません。 新しい Microsoft Edge の同期動作の詳細については、「[Microsoft Edge Sync](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync)」を参照してください。
+> この記事は、2015年7月に Windows 10 で起動された Microsoft Edge レガシ HTML ベースのブラウザーに適用されます。 この記事は、2020 年 1 月 15 日にリリースされた新しい Microsoft Edge Chromium ベースのブラウザーには適用されません。 新しい Microsoft Edge の同期動作の詳細については、「[Microsoft Edge Sync](/deployedge/microsoft-edge-enterprise-sync)」を参照してください。
 
 ## <a name="preliminary-steps-for-troubleshooting"></a>トラブルシューティングのための準備作業 
 

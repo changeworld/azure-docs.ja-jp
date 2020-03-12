@@ -5,15 +5,14 @@ author: roygara
 ms.author: rogarana
 ms.date: 09/25/2019
 ms.topic: article
-ms.service: virtual-machines-linux
-ms.tgt_pltfrm: linux
+ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 6c260eccbfa681712b218123666a53ca582d55c8
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 525a427bf10d3a9076abda278b74a54db4b0a4f0
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013774"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970323"
 ---
 # <a name="use-azure-storage-explorer-to-manage-azure-managed-disks"></a>Azure Storage Explorer を使用して Azure マネージド ディスクを管理する
 [!INCLUDE [disks-upload-vhd-to-managed-disk-storage-explorer](../../../includes/disks-upload-vhd-to-managed-disk-storage-explorer.md)]

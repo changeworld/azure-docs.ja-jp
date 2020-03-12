@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11a18715385eca85c199b17f6a675be1a7e60153
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: bdffbc3a140bd13dcd6d352db8c192803d39b03e
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194315"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672366"
 ---
 # <a name="group-policy-and-mdm-settings"></a>グループ ポリシーと MDM の設定
 
@@ -26,7 +26,7 @@ ms.locfileid: "77194315"
 利用可能なポリシー設定を以下の表で説明します。
 
 > [!NOTE]
-> この記事は、2015 年 7 月に Windows 10 で提供が開始された Microsoft Edge レガシ HTML ベースのブラウザーに適用されます。 この記事は、2020 年 1 月 15 日にリリースされた新しい Microsoft Edge Chromium ベースのブラウザーには適用されません。 新しい Microsoft Edge の同期動作の詳細については、「[Microsoft Edge の同期](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync)」を参照してください。
+> この記事は、2015 年 7 月に Windows 10 で提供が開始された Microsoft Edge レガシ HTML ベースのブラウザーに適用されます。 この記事は、2020 年 1 月 15 日にリリースされた新しい Microsoft Edge Chromium ベースのブラウザーには適用されません。 新しい Microsoft Edge の同期動作の詳細については、「[Microsoft Edge の同期](/deployedge/microsoft-edge-enterprise-sync)」を参照してください。
 
 ## <a name="mdm-settings"></a>MDM の設定
 

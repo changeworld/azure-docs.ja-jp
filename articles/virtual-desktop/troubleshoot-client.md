@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: helohr
-ms.openlocfilehash: bcf22ec1eaf05f5dda6396cca017fa21fd6ddbf5
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+manager: lizross
+ms.openlocfilehash: e3a240901ffca2c126e2b61eaee0cf287cc31d6e
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75968191"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127512"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>リモート デスクトップ クライアントのトラブルシューティング
 

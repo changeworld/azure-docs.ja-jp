@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: pim
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/09/2019
+ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0ba7846b60ca6649b4342d5096e92dfd8c96601
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 733743f4680f3197a1754d87b4672641b2321907
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756310"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399330"
 ---
 # <a name="start-using-privileged-identity-management"></a>Privileged Identity Management の使用開始
 
@@ -62,7 +62,7 @@ Privileged Identity Management を使用するには、次のライセンスの�
 
     ![本人確認のためにアカウント ウィンドウを選択する](./media/pim-getting-started/pick-account.png)
 
-1. 確認のためにさらに情報が必要な場合は、そのプロセスが示されます。 詳細については、「[2 段階認証のサポートを受ける](https://go.microsoft.com/fwlink/p/?LinkId=708614)」を参照してください。
+1. 確認のためにさらに情報が必要な場合は、そのプロセスが示されます。 詳細については、「[2 段階認証のサポートを受ける](../user-help/multi-factor-authentication-end-user-troubleshoot.md)」を参照してください。
 
     ![組織が詳細情報を必要とする場合の [詳細情報が必要] ウィンドウ](./media/pim-getting-started/more-information-required.png)
 
@@ -115,7 +115,7 @@ Privileged Identity Management が設定されたら、ID 管理タスクを開�
 
 Privileged Identity Management を簡単に開けるようにするには、Azure portal ダッシュボードに [Privileged Identity Management] タイルを追加する必要があります。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. **[すべてのサービス]** をクリックし、**Azure AD Privileged Identity Management** サービスを探します。
 
@@ -131,7 +131,7 @@ Privileged Identity Management を簡単に開けるようにするには、Azur
 
     ![ダッシュボード上の [Privileged Identity Management Quickstart] (Privileged Identity Management のクイックスタート) タイル](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Privileged Identity Management で Azure AD ロールを割り当てる](pim-how-to-add-role-to-user.md)
 - [Privileged Identity Management で管理する Azure リソースを検出する](pim-resource-roles-discover-resources.md)

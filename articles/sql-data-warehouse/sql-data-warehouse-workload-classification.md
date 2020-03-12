@@ -1,26 +1,26 @@
 ---
 title: ワークロード分類
-description: Azure SQL Data Warehouse で分類を使用してクエリのコンカレンシー、重要度、コンピューティング リソースを管理するためのガイダンスです。
+description: Azure Synapse Analytics で分類を使用してクエリのコンカレンシー、重要度、コンピューティング リソースを管理するためのガイダンスです。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/27/2020
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: ab7c8ba64057b4f27e00a2928a65de8eadc78c4b
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.custom: azure-synapse
+ms.openlocfilehash: f350885c2d25860c7dc83310534ca9d8c9d72555
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768841"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191766"
 ---
-# <a name="azure-sql-data-warehouse-workload-classification"></a>Azure SQL Data Warehouse のワークロード分類
+# <a name="azure-synapse-analytics-workload-classification"></a>Azure Synapse Analytics ワークロードの分類
 
-この記事では、受信要求にリソース クラスと重要度を割り当てる SQL Data Warehouse のワークロード分類プロセスについて説明します。
+このアーティクルでは、Azure Synapse の SQL Analytics を使用して、ワークロード グループと重要度を受信要求に割り当てるワークロードの分類プロセスについて説明します。
 
 ## <a name="classification"></a>分類
 
@@ -36,7 +36,7 @@ ms.locfileid: "76768841"
 
 ## <a name="classification-process"></a>分類プロセス
 
-現在、SQL Data Warehouse での分類は、[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) を使用して、対応するリソース クラスが割り当てられたロールにユーザーを割り当てることで実現されます。 1 つのリソース クラスへのログインを超えて要求を特徴付けることは、この機能によって制限されます。 より高度な分類方法として、[CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql) 構文を利用できるようになりました。  SQL Data Warehouse ユーザーは、この構文で `workload_group` パラメーターを使用して、要求に重要度を割り当て、割り当てるシステム リソース量を指定できます。 
+現在、Azure Synapse　の SQL Analytics での分類は、[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) を使用して、対応するリソース クラスが割り当てられたロールにユーザーを割り当てることで実現されます。 1 つのリソース クラスへのログインを超えて要求を特徴付けることは、この機能によって制限されます。 より高度な分類方法として、[CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql) 構文を利用できるようになりました。  SQL Analytics ユーザーは、この構文で `workload_group` パラメーターを使用して、要求に重要度を割り当て、割り当てるシステム リソース量を指定できます。 
 
 > [!NOTE]
 > 分類は要求単位で評価されます。 1 つのセッション内の複数の要求を別々に分類できます。

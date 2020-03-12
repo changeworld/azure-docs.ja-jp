@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/03/2019
-ms.openlocfilehash: 5cc54c95759ba1490f498305f05cc49a4411686d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 02/26/2020
+ms.openlocfilehash: 2216e1bf058eef486dbfefba24d52bdc6bdb232f
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930329"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164680"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory のマッピング データ フローの参照変換
 
@@ -36,9 +36,22 @@ ms.locfileid: "74930329"
 
 ## <a name="first-or-last-value"></a>最初または最後の値
 
-参照から複数の一致が見つかった場合は、最初または最後の一致どちらかを選択して、一致する複数の行を減らすことができます。 参照後に、集計変換を使用してこれを行うことができます。
+参照変換は、左外部結合として実装されます。 参照から複数の一致が見つかった場合は、最初に一致した行、、最後の一致、またはランダムな行を選択して、一致する複数の行を減らすことができます。
 
-この場合、```PickFirst``` という集計変換を使用して、参照の一致から最初の値を選択します。
+### <a name="option-1"></a>方法 1
+
+![単一行参照](media/data-flow/singlerowlookup.png "単一行参照")
+
+* 複数の行の一致:単一行の一致を返すには、空白のままにします
+* 一致日:最初、最後、または任意の一致を選択します
+* 並べ替え条件:最初または最後を選択した場合、 ADF では、最初と最後の背後にロジックがあるようにデータを順序付ける必要があります
+
+> [!NOTE]
+> 参照から返される値をコントロールする必要がある場合は、単一行セレクターで最初または最後のオプションのみを使用してください。 「任意」または複数行の参照を使用すると、より高速に実行できます。
+
+### <a name="option-2"></a>方法 2
+
+また、参照後に、集計変換を使用してこれを行うことができます。 この場合、```PickFirst``` という集計変換を使用して、参照の一致から最初の値を選択します。
 
 ![参照の集計](media/data-flow/lookup333.png "参照の集計")
 
@@ -58,7 +71,7 @@ Data Factory では、データ フローがスケールアウト Spark 環境�
 
 参照変換の [最適化] タブの [Set Partitioning]\(パーティションの設定\) を選択し、データのパーティション分割を指定することで、ワーカーごとにメモリに収めることができるデータのまとまりを作成することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [結合](data-flow-join.md)変換と[存在](data-flow-exists.md)変換は、ADF マッピング データ フローで同様のタスクを実行します。 引き続き、これらの変換について見ていきましょう。
 * ```isMatch()``` と共に[条件分割](data-flow-conditional-split.md)を使用して、一致する値と一致しない値に行を分割します

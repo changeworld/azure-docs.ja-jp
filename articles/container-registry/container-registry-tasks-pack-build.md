@@ -3,12 +3,12 @@ title: Cloud Native Buildpack でイメージをビルドする
 description: az acr pack build コマンドを使用して、アプリからコンテナー イメージをビルドし、Dockerfile を使用せずに Azure Container Registry にプッシュします。
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 9cd1ae464213027cba3012c93c0ca3894c804750
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: c42bde6bbab5973094302a2d41f004d7600bdf9e
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456122"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087081"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Cloud Native Buildpacks を使用して、アプリからイメージをビルドしてプッシュする
 
@@ -30,7 +30,7 @@ Cloud Native Buildpacks を使用してコンテナー イメージをビルド�
 * ローカル ディレクトリ、GitHub リポジトリ、リモートの tarball など、ACR タスクで[サポートされるコンテキストの場所](container-registry-tasks-overview.md#context-locations)のいずれか。
 * 実際のアプリケーションに適した Buildpack ビルダー イメージの名前。 Azure Container Registry では、ビルドを高速化するために、`cloudfoundry/cnb:0.0.34-cflinuxfs3` などのビルダー イメージがキャッシュされます。  
 
-`az acr pack build` では、[Run 変数](container-registry-tasks-reference-yaml.md#run-variables)や、ストリーミングされ、後で取得できるように保存される[タスク実行ログ](container-registry-tasks-overview.md#view-task-logs)など、ACR タスク コマンドの他の機能もサポートしています。
+`az acr pack build` では、[Run 変数](container-registry-tasks-reference-yaml.md#run-variables)や、ストリーミングされ、後で取得できるように保存される[タスク実行ログ](container-registry-tasks-logs.md)など、ACR タスク コマンドの他の機能もサポートしています。
 
 ## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>例:Cloud Foundry ビルダーを使用して Node.js イメージをビルドする
 
@@ -93,7 +93,7 @@ docker run --rm -p 8080:8080 myregistry.azurecr.io/java-app:runid
 任意のブラウザーで `localhost:8080` を参照し、サンプル Web アプリを確認します。 `[Ctrl]+[C]` キーを押して、コンテナーを停止します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 `az acr pack build` を使用してコンテナー イメージをビルドし、プッシュした後は、任意のイメージを任意のターゲットにデプロイできます。 Azure のデプロイ オプションには、[App Service](../app-service/containers/tutorial-custom-docker-image.md) や [Azure Kubernetes Service](../aks/tutorial-kubernetes-deploy-cluster.md) などでの実行が含まれます。
 

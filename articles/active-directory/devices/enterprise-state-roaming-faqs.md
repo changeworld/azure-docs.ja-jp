@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87a9c9b808e737f8e72da803085bfebd8263319a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 4ad76835b0c72b691e1ef8810f2c58dedb8f597d
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194349"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672388"
 ---
 # <a name="settings-and-data-roaming-faq"></a>設定とデータのローミングに関する FAQ
 
@@ -35,7 +35,7 @@ ms.locfileid: "77194349"
 * *その他の Windows 設定*: マウス設定など。
 
 > [!NOTE]
-> この記事は、2015年7月に Windows 10 で起動された Microsoft Edge レガシ HTML ベースのブラウザーに適用されます。 この記事は、2020年1月15日にリリースされた新しい Microsoft Edge Chromium ベースのブラウザーには適用されません。 新しい Microsoft Edge の同期動作の詳細については、「[Microsoft Edge Sync](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync)」を参照してください。
+> この記事は、2015年7月に Windows 10 で起動された Microsoft Edge レガシ HTML ベースのブラウザーに適用されます。 この記事は、2020 年 1 月 15 日にリリースされた新しい Microsoft Edge Chromium ベースのブラウザーには適用されません。 新しい Microsoft Edge の同期動作の詳細については、「[Microsoft Edge Sync](/deployedge/microsoft-edge-enterprise-sync)」を参照してください。
 
 **アプリケーション データ**: ユニバーサル Windows アプリは、設定データを Roaming フォルダーに書き込むことができます。このフォルダーに書き込まれたデータはすべて自動的に同期されます。 この機能を利用するようにアプリを設計するかどうかは、アプリ開発者ごとの判断となります。 ローミングを使用するユニバーサル Windows アプリを開発する方法の詳細については、[アプリ データ ストレージ API](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) と[アプリ データのローミングに関する Windows 8 アプリ開発者ブログ](https://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx)を参照してください。
 

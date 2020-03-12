@@ -1,25 +1,17 @@
 ---
 title: Azure 上に IBM DB2 pureScale をデプロイする
 description: 最近、z/OS 上で実行される IBM DB2 環境から Azure 上の IBM DB2 pureScale に企業が移行する際に、あるアーキテクチャの例が使用されています。ここでは、そのアーキテクチャの例をデプロイする方法について説明します。
-services: virtual-machines-linux
-documentationcenter: ''
 author: njray
-manager: edprice
-editor: edprice
-tags: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: c4db27b938934aafa350866991ff174cbdbed0ac
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 98e912894a4d93a057a2f6a2153d0690deaed250
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291551"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968890"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Azure 上に IBM DB2 pureScale をデプロイする
 
@@ -79,7 +71,7 @@ GitHub リポジトリには、DB2server.rsp という応答 (.rsp) ファイル
 > [!NOTE]
 > サンプル応答ファイル DB2server.rsp は、GitHub 上の [DB2onAzure](https://aka.ms/db2onazure) リポジトリにあります。 このファイルを使用する場合、お使いの環境で機能するように、事前にファイルを編集しておく必要があります。
 
-| 画面の名前               | フィールド                                        | 値                                                                                                 |
+| 画面の名前               | フィールド                                        | Value                                                                                                 |
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | ようこそ                   |                                              | 新規インストール                                                                                           |
 | プロジェクトの選択          |                                              | DB2 バージョン 11.1.3.3。 DB2 pureScale を搭載した各サーバー エディション                                              |

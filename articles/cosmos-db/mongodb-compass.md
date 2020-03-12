@@ -3,16 +3,16 @@ title: Compass を使用して Azure Cosmos DB に接続する
 description: MongoDB Compass を使用して Azure Cosmos DB のデータを格納および管理する方法について説明します。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 06/24/2019
 author: LuisBosquez
 ms.author: lbosq
-ms.openlocfilehash: 5c01bd02b1fef7c7b27a3119465cad53155b9bbf
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 0924476a81027e2979616036cd828593e320a3fe
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940961"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898161"
 ---
 # <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB Compass を使用して Azure Cosmos DB の MongoDB 用 API に接続する 
 

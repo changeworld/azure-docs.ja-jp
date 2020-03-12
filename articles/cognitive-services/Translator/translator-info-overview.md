@@ -11,18 +11,18 @@ ms.topic: overview
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 8f27e8e8693fc5d1d3e432b78f2877d71274f146
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f6b55163440b25bf69c76e9b1217c439b0884d5d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978477"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331044"
 ---
 # <a name="what-is-the-translator-text-api"></a>Translator Text API とは
 
 Translator Text API は、皆さんのアプリケーションや Web サイト、ツール、ソリューションに簡単に統合することができます。 [60 か国語](languages.md)を超える多言語のユーザー エクスペリエンスを追加し、使用しているハードウェア プラットフォームやオペレーティング システムにかかわらず、テキストからテキストへの言語翻訳を実行できます。
 
-Translator Text API は、機械学習と AI のアルゴリズムをクラウドで提供する Azure の [Cognitive Services API](https://docs.microsoft.com/azure/#pivot=products&panel=ai) コレクションの一部です。この API は、開発プロジェクトですぐに利用できます。
+Translator Text API は、機械学習と AI のアルゴリズムをクラウドで提供する Azure の [Cognitive Services API](https://docs.microsoft.com/azure/?pivot=products&panel=ai) コレクションの一部です。この API は、開発プロジェクトですぐに利用できます。
 
 ## <a name="about-microsoft-translator"></a>Microsoft Translator について
 
@@ -52,7 +52,7 @@ Custom Translator を使用すると、独自のビジネスや業界で使用�
 
 [言語カスタマイズ](customization.md)の詳細
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [サインアップ](translator-text-how-to-signup.md)してアクセス キーを入手します。
 - [API リファレンス](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)には、API に関する技術文書があります。

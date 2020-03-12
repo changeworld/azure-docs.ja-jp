@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 03/09/2020
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: 484596b4eb4908ca84d018267d605acc41a8ccea
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: b6455733e4955bd1fb5b27e3551e41e5f711df21
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749475"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943543"
 ---
 # <a name="scalability-and-performance-targets-for-table-storage"></a>Table Storage のスケーラビリティおよびパフォーマンスのターゲット
 
@@ -24,7 +24,7 @@ ms.locfileid: "75749475"
 
 [!INCLUDE [storage-table-scale-targets](../../../includes/storage-tables-scale-targets.md)]
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - [Table Storage のパフォーマンスとスケーラビリティのチェックリスト](storage-performance-checklist.md)
 - [Standard Storage アカウントのスケーラビリティ ターゲット](../common/scalability-targets-standard-account.md)

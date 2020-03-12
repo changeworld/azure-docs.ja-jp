@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: jordane
 author: jpe316
-ms.date: 10/25/2019
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: fd77c77abc8fe60eb18febde6fcc5bdffe6d7871
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: b036dd9c440e01bf32b35ee01c1d39d4ce6e129b
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75534575"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402700"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>フィールド プログラマブル ゲート アレイ (FPGA) の説明とデプロイ方法
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -62,7 +62,7 @@ Azure の FPGA のサポート:
   - SSD-VGG
 
 FPGA は、次の Azure リージョンで使用できます。
-  - East US
+  - 米国東部
   - 東南アジア
   - 西ヨーロッパ
   - 米国西部 2
@@ -325,7 +325,7 @@ for i in Image.list(workspace=ws):
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
 
-# Specify the Standard_PB6s Azure VM and location. Values for location may be "eastus", "southeastasia", "westeurope", or "westus2”. If no value is specified, the default is "eastus".
+# Specify the Standard_PB6s Azure VM and location. Values for location may be "eastus", "southeastasia", "westeurope", or "westus2". If no value is specified, the default is "eastus".
 prov_config = AksCompute.provisioning_configuration(vm_size = "Standard_PB6s",
                                                     agent_count = 1,
                                                     location = "eastus")

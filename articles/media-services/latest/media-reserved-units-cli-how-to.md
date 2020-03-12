@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/26/2019
+ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 13fa733417558ab8be9ff1e5a9f1e484fb40f445
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9f0a7425fc09d391828a748832f662f02c6022cf
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102945"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970778"
 ---
 # <a name="scaling-media-processing"></a>メディア処理のスケーリング
 
@@ -46,8 +46,6 @@ Azure Media Services を使用してメディア占有ユニット (MRU) を管�
 
 > [!NOTE]
 > Media Services v3 または Video Indexer によってトリガーされる音声分析と動画分析ジョブでは、お使いのアカウントを 10 個の S3 の MRU でプロビジョニングすることを強くお勧めします。 10 個を超える S3 の MRU が必要な場合は、[Azure portal](https://portal.azure.com/) を使用してサポート チケットを開いてください。
->
-> 現在、Azure Portal を使用して他の v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされている [SDK](media-services-apis-overview.md#sdks) のいずれかを使用してください。
 
 ## <a name="prerequisites"></a>前提条件 
 

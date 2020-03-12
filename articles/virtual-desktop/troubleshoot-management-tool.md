@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 11/09/2019
 ms.author: helohr
-ms.openlocfilehash: dd9fd135536fc2cb222b908f3d61c1d1430e65b0
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+manager: lizross
+ms.openlocfilehash: 9d07ba42e83d9eec071ab047e9e1e92bac1f1411
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905200"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127491"
 ---
 # <a name="troubleshoot-the-windows-virtual-desktop-management-tool"></a>Windows Virtual Desktop 管理ツールのトラブルシューティング
 
@@ -54,7 +55,7 @@ ms.locfileid: "73905200"
 
 この問題を解決するには、別のリージョンに管理ツールをデプロイします。 別のリージョンにツールを再デプロイしても、ユーザー エクスペリエンスには影響しません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - エスカレーション トラックの詳細については、「[トラブルシューティングの概要、フィードバック、サポート](troubleshoot-set-up-overview.md)」を参照してください。
 - Windows Virtual Desktop ツールの問題の報告方法については、「[Remote Desktop Services 用の ARM テンプレート](https://github.com/Azure/RDS-Templates/blob/master/README.md)」を参照してください。

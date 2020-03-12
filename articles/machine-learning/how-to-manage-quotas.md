@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
-ms.date: 11/04/2019
-ms.openlocfilehash: 443fcad17e5832a014dc463f0dd8a44d90667b75
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 03/05/2020
+ms.openlocfilehash: 17a4652604c0faa804d24530869aac0848c972b3
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646457"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399156"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Azure リソースのクォータの管理と要求
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -38,7 +38,7 @@ ms.locfileid: "75646457"
 
 ここでは、Azure サブスクリプション内のさまざまなリソースの種類ごとのクォータ制限の内訳を示します。
 
-> [!Important]
+> [!IMPORTANT]
 > 制限は変更されることがあります。 最新の制限は、すべての Azure のサービス レベルのクォータ [ドキュメント](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits/)で見つかります。
 
 ### <a name="virtual-machines"></a>仮想マシン

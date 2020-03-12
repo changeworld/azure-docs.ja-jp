@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24ec4373bceb3cc3c9e5be2c7a0dab1f62197b3c
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 40f89fbe19b93601f9e0525f0387e402bd175fe4
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512200"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672684"
 ---
 # <a name="azure-ad-joined-devices"></a>Azure AD 参加済みデバイス
 
@@ -24,7 +24,7 @@ Azure AD 参加は、クラウド優先またはクラウド専用であるこ�
 
 |   | Azure AD Join |
 | --- | --- |
-| **[定義]** | デバイスにサインインするための組織アカウントを必要とする Azure AD にのみ参加します |
+| **定義** | デバイスにサインインするための組織アカウントを必要とする Azure AD にのみ参加します |
 | **主な対象** | クラウド専用およびハイブリッド組織の両方に適しています。 |
 |   | 組織内のすべてのユーザーに適用できます |
 | **デバイスの所有権** | Organization |
@@ -45,9 +45,9 @@ Azure AD 参加は、クラウド優先またはクラウド専用であるこ�
 
 Azure AD 参加済みデバイスには、組織の Azure AD アカウントを使用してサインインします。 組織内のリソースへのアクセスは、その Azure AD アカウントと、デバイス ID に適用される[条件付きアクセス ポリシー](../conditional-access/overview.md)に基づいてさらに制限することができます。
 
-管理者は、Microsoft Intune などの Mobile Device Management (MDM) ツールを使用するか、Microsoft Endpoint Configuration Manager を使用する共同管理シナリオで、Azure AD 登録済みデバイスをセキュリティで保護し、さらに制御することができます。 これらのツールでは、ストレージの暗号化、パスワードの複雑さ、ソフトウェアのインストール、およびソフトウェアの更新を必要とするなど、組織に必要な構成を適用する手段が提供されます。 管理者は、Configuration Manager を利用して Azure AD 参加済みデバイスで組織のアプリケーションを利用できるようにし、[ビジネス向けおよび教育機関向けの Microsoft Store からのアプリを管理する](https://docs.microsoft.com/configmgr/apps/deploy-use/manage-apps-from-the-windows-store-for-business)ことができます。
+管理者は、Microsoft Intune などの Mobile Device Management (MDM) ツールを使用するか、Microsoft Endpoint Configuration Manager を使用する共同管理シナリオで、Azure AD 登録済みデバイスをセキュリティで保護し、さらに制御することができます。 これらのツールでは、ストレージの暗号化、パスワードの複雑さ、ソフトウェアのインストール、およびソフトウェアの更新を必要とするなど、組織に必要な構成を適用する手段が提供されます。 管理者は、Configuration Manager を利用して Azure AD 参加済みデバイスで組織のアプリケーションを利用できるようにし、[ビジネス向けおよび教育機関向けの Microsoft Store からのアプリを管理する](/configmgr/apps/deploy-use/manage-apps-from-the-windows-store-for-business)ことができます。
 
-Azure AD 参加は、Out of Box Experience (OOBE)、一括登録、または [Windows Autopilot](https://docs.microsoft.com/intune/enrollment-autopilot) などのセルフサービス オプションを使用して実行できます。
+Azure AD 参加は、Out of Box Experience (OOBE)、一括登録、または [Windows Autopilot](/intune/enrollment-autopilot) などのセルフサービス オプションを使用して実行できます。
 
 Azure AD 参加済みデバイスでは、オンプレミス リソースが組織のネットワーク上にある場合、引き続きそれらへのシングル サインオン アクセスを維持できます。 Azure AD 参加済みであるデバイスは引き続き、ファイル、印刷、およびその他のアプリケーションなどのオンプレミス サーバーに対して認証することができます。
 
@@ -74,8 +74,8 @@ Azure AD 参加済みデバイスの目的は、次の操作を単純化する�
 
 Azure AD Join は、次の方法のいずれかを使用して展開できます：
 
-- [Windows Auto pilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot)
-- [Bulk の展開](https://docs.microsoft.com/intune/windows-bulk-enroll)
+- [Windows Auto pilot](/windows/deployment/windows-autopilot/windows-10-autopilot)
+- [Bulk の展開](/intune/windows-bulk-enroll)
 - [セルフ サービス エクスペリエンス](azuread-joined-devices-frx.md)
 
 ## <a name="next-steps"></a>次のステップ

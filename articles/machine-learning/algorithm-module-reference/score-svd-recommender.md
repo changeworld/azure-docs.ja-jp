@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 0b321f3548910a2bc79e4473609de30eda8c8622
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.date: 02/10/2020
+ms.openlocfilehash: a3eafc28dc6d0f44a1f1019cb3393259aa2a698a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314353"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920350"
 ---
 # <a name="score-svd-recommender"></a>Score SVD Recommender
 
-この記事では、Azure Machine Learning デザイナーで SVD レコメンダーのスコアリング モジュールを使用する方法について説明します。 このモジュールを使用すると、単一値分解 (SVD) アルゴリズムに基づくトレーニング済みのレコメンデーション モデルを使用して、予測を作成できます。
+この記事では、Azure Machine Learning デザイナー (プレビュー) で SVD レコメンダーのスコアリング モジュールを使用する方法について説明します。 このモジュールを使用すると、単一値分解 (SVD) アルゴリズムに基づくトレーニング済みのレコメンデーション モデルを使用して、予測を作成できます。
 
 SVD レコメンダーでは、次の 2 種類の予測を生成できます。
 
@@ -91,7 +91,7 @@ SVD レコメンダー アルゴリズムの詳細については、リサーチ
 
 5. **[Maximum number of items to recommend to a user]\(ユーザーに推奨される項目の最大数\)** :各ユーザーについて返される項目の数を入力します。 モジュールが既定で提示する項目の数は 5 つです。
 
-6. **[Minimum size of the recommendation pool per user]\(ユーザーごとのレコメンデーション プールの最小サイズ\)** :過去に何回推奨されている必要があるかを示す値を入力します。 既定では、このパラメーターが **2** に設定されています。これは、その項目が少なくとも他の 2 人のユーザーによって推奨されている必要があることを意味します。
+6. **[Minimum size of the recommendation pool per user]\(ユーザーごとのレコメンデーション プールの最小サイズ\)** :過去に何回推奨されている必要があるかを示す値を入力します。 既定では、このパラメーターが 2 に設定されています。これは、その項目が少なくとも他の 2 人のユーザーによって推奨されている必要があることを意味します。
 
    このオプションは、評価モードでスコアリングする場合にのみ使用してください。 **[From All Items]\(すべての項目から\)** または **[From Unrated Items (to suggest new items to users)]\(評価されていない項目から (ユーザーに新しい項目を提案する)\)** を選択した場合、このオプションは使用できません。
 

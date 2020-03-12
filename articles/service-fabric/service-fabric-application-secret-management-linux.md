@@ -5,12 +5,12 @@ author: shsha
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: shsha
-ms.openlocfilehash: 350718e4ce890fcbfaa7f2b10cc4c47dfac4da90
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: b8e0a19e3f654fc561e7c7e26c6a2da463e24d5f
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614708"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969034"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-linux-clusters"></a>Linux クラスターでの暗号化証明書の設定とシークレットの暗号化
 この記事では、Linux クラスターでの暗号化証明書の設定と、これを使用してシークレットの暗号化を行う方法について説明します。 Windows クラスターについては、「[Windows クラスターでの暗号化証明書の設定とシークレットの暗号化][secret-management-windows-specific-link]」を参照してください。
@@ -36,7 +36,7 @@ ms.locfileid: "75614708"
 
 ```console
 user@linux:$ echo "Hello World!" > plaintext.txt
-user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt -o plaintext_UTF-16.txt
+user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt | tr -d '\n' > plaintext_UTF-16.txt
 user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform der TestCert.pem | base64 > encrypted.txt
 ```
 encrypted.txt に出力される生成された Base-64 エンコード文字列は、シークレットの暗号化テキストと、暗号化に使用された証明書に関する情報が含まれています。 その有効性は、OpenSSL で暗号化を解除することによって確認できます。

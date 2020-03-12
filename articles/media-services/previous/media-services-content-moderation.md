@@ -14,17 +14,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: a8560df6120dd773e13dbfc7427d9a16e6f6c83b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 83fe7867a3128ac82597c028452863a1ad681ace
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895996"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914332"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Azure Media Content Moderator を使用して、成人向けやわいせつな可能性のあるコンテンツを検出する 
 
+> [!NOTE]
+> **Azure Media Content Moderator** メディア プロセッサは廃止予定です。 提供終了日については、[レガシ コンポーネント](legacy-components.md)に関するトピックをご参照ください。
+
 ## <a name="overview"></a>概要
-**Azure Media Content Moderator** メディア プロセッサ (MP) を使用すると、マシンによるモデレートをビデオに使用できます。 たとえば、成人向けやわいせつな可能性のあるビデオ コンテンツを検出し、フラグが設定されたコンテンツを人間のモデレート チームがレビューすることができます。
+**Azure Media Content Moderator** メディア プロセッサ (MP) を使用すると、マシンによるモデレートをビデオに使用できます。 たとえば、ビデオに含まれる成人向けやわいせつな可能性のあるコンテンツを検出し、フラグが設定されたコンテンツを人間のモデレート チームがレビューすることができます。
 
 **Azure Media Content Moderator** MP は現在プレビュー段階です。
 
@@ -71,7 +74,7 @@ JSON 形式のモデレート済み出力には、自動検出されたショッ
 | reviewRecommended | **adultScore** または **racyScore** が内部しきい値を超えているかどうかに応じて `true` または `false` です。 |
 | adultScore | 成人向けの可能性のあるコンテンツの信頼度スコアです。0.00 から 0.99 の間の値です。 |
 | racyScore | わいせつな可能性のあるコンテンツの信頼度ストアです。0.00 から 0.99 の間の値です。 |
-| index | フレームのインデックスです。最初のフレーム インデックスから最後のフレーム インデックスの間の値です。 |
+| インデックス (index) | フレームのインデックスです。最初のフレーム インデックスから最後のフレーム インデックスの間の値です。 |
 | timestamp | フレームの位置です ("ティック数")。 |
 | shotIndex | 親ショットのインデックスです。 |
 
@@ -228,7 +231,7 @@ The following example of a Content Moderator JSON output was truncated.
 
 [Azure Media Analytics デモ](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Content Moderator の[ビデオのモデレートとレビュー ソリューション](../../cognitive-services/Content-Moderator/video-moderation-human-review.md)について学ぶ。
 

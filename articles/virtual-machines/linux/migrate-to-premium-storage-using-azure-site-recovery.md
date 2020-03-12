@@ -1,21 +1,18 @@
 ---
 title: Azure Site Recovery で Linux VM を Azure Premium Storage に移行する
 description: Site Recovery を使用して既存の仮想マシンを Azure Premium Storage に移行します。 Premium Storage は、Azure Virtual Machines で実行される高負荷の I/O ワークロードのための、高パフォーマンスで待ち時間の少ないディスク サポートを提供します。
-services: virtual-machines-linux,storage
-cloud: Azure
 author: luywang
 ms.service: virtual-machines-linux
-ms.tgt_pltfrm: linux
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: b8c299869da003d8dc4e9ac111ba8c5e8bb27345
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 0d03c2df720a4e3ccf57fe0be00c2af4fcf72eb0
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035820"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944831"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Azure Site Recovery を使用した Premium Storage への移行
 
@@ -174,7 +171,7 @@ VM が 1 つの可用性セットに存在する場合には、すべての VM �
  
 フェールオーバー後のデプロイメント モデルは、ニーズに合わせて選択できます。 フェールオーバー後のデプロイ モデルとして Azure Resource Manager を選択する場合、VM (Resource Manager) を VM (Resource Manager) にフェールオーバーするか、VM (クラシック) を VM (Resource Manager) にフェールオーバーすることができます。
 
-### <a name="step-8-run-a-test-failover"></a>ステップ 8:テスト フェールオーバーの実行
+### <a name="step-8-run-a-test-failover"></a>手順 8:テスト フェールオーバーの実行
 
 レプリケーションが完了したかどうかを確認するには、[Site Recovery] インスタンスを選択し、 **[設定]**  >  **[レプリケートされたアイテム]** を選択します。 レプリケーション プロセスの状態と進捗状況が表示されます。 
 
@@ -208,7 +205,7 @@ Site Recovery では、Premium Storage 対応の VM と同じか類似の種類�
 * [仮想マシンおよび物理サーバーの保護の監視とトラブルシューティング](../../site-recovery/site-recovery-monitoring-and-troubleshooting.md)
 * [Microsoft Azure Site Recovery フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 仮想マシンの移行に関する具体的なシナリオについては、次のリソースを参照してください。
 
@@ -218,7 +215,7 @@ Site Recovery では、Premium Storage 対応の VM と同じか類似の種類�
 
 また、Azure Storage と Azure Virtual Machines の詳細については、次のリソースもご覧ください。
 
-* [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
+* [Azure ストレージ](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
 * [IaaS VM 用のディスクの種類の選択](disks-types.md)
 

@@ -1,24 +1,18 @@
 ---
 title: SMB を使用して Linux VM に Azure File Storage をマウントする
 description: Azure CLI で SMB を使用して Linux VM に Azure File Storage をマウントする方法
-services: virtual-machines-linux
-documentationcenter: virtual-machines-linux
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 0918cfda81be93982c1ca6eccce0c116ac65ca28
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7b9b536def2aa7da25fef9f3baa5efdd8b0ed6f7
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035653"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944610"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>SMB を使用して Linux VM に Azure File Storage をマウントする
 
@@ -31,7 +25,7 @@ File Storage でホストされている SMB マウントに VM からファイ�
 このガイドでは、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、**az --version** を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 
 
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 *myResourceGroup* という名前のリソース グループを "*米国東部*" に作成します。
 
@@ -111,7 +105,7 @@ Linux VM を再起動すると、マウントされた SMB 共有はシャット
 ```
 実稼働環境のセキュリティを向上させるために、fstab の外部に資格情報を保存する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [cloud-init を利用し、作成時に Linux VM をカスタマイズする](using-cloud-init.md)
 - [Linux VM へのディスクの追加](add-disk.md)

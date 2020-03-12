@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 9e1a7f7cd2643aae61e60d77ad74f4a08266a977
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: b646ee9b727d5adf4ec1c8b5c769b3d8f5c0fc1c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863599"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252044"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Azure Data Box Edge の技術仕様
 
@@ -23,7 +23,7 @@ Microsoft Azure Data Box Edge デバイスのハードウェア コンポーネ�
 
 Data Box Edge デバイスには、コンピューティングとメモリについて次のような仕様があります。
 
-| 仕様           | 値                  |
+| 仕様           | Value                  |
 |-------------------------|----------------------------|
 | CPU    | 2 X 10 コア CPU                     |
 | メモリ              | 128 GB RAM                  |
@@ -33,7 +33,7 @@ Data Box Edge デバイスには、コンピューティングとメモリにつ
 
 Machine Learning (ML) のシナリオが可能なすべての Data Box Edge デバイスには、Field Programmable Gate Array (FPGA) が含まれています。 
 
-| 仕様           | 値                  |
+| 仕様           | Value                  |
 |-------------------------|----------------------------|
 | FPGA   | Intel Arria 10 <br> 利用可能なディープ ニューラル ネットワーク (DNN) モデルは、[クラウド FPGA インスタンスでサポートされる](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure)ものと同じです。| 
 
@@ -53,11 +53,19 @@ Data Box Edge デバイスは 100-240 V の電源装置 (PSU) 2 つと高性能�
 
 The following table lists the typical power consumption data (actual values may vary from the published) for the Data Box Edge device.-->
 
+## <a name="network-interface-specifications"></a>ネットワーク インターフェイスの仕様
+
+Data Box Edge デバイスには、PORT1-PORT6 という 6 つのネットワーク インターフェイスがあります。
+
+| 仕様           | 説明                 |
+|-------------------------|----------------------------|
+|  ネットワーク インターフェイス    | 1 GbE インターフェイス x 2 - 1 つは管理用で、ユーザー構成不可であり、初期セットアップに使用されます。 他のインターフェイスはユーザー構成可能であり、データ転送に使用でき、既定で DHCP です。 <br>25 GbE インターフェイス x 2 – これらは 10 GbE インターフェイスとしても動作可能です。 これらのデータ インターフェイスは、DHCP (既定) または静的 としてユーザーが構成できます。 <br> 25 GbE インターフェイス x 2 – これらのデータ インターフェイスは、DHCP (既定) または静的 としてユーザーが構成できます。                  |
+
 ## <a name="storage-specifications"></a>Storage の仕様
 
 Data Box Edge デバイスは 2.5 インチ NVMe SSD を 9 個備えており、各 SSD の容量は 1.6 TB です。 この SSD のうち、1 つがオペレーティング システム ディスクで、残りの 8 つがデータ ディスクです。 デバイスで利用できる容量の合計は約 12.5 TB となります。 次の表は、デバイスのストレージ容量の詳細です。
 
-|     仕様                          |     値             |
+|     仕様                          |     Value             |
 |--------------------------------------------|-----------------------|
 |    ソリッド ステート ドライブ (SSD) の数     |    8                  |
 |    単一の SSD 容量                     |    1.6 TB             |

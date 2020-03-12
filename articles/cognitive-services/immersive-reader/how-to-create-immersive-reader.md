@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 53de4608616cb8f3b85bb88f1dbc5a4a79f4c02b
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 41efe4592c65ae3cdd85ce1b212554e50691905a
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188859"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330721"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>イマーシブ リーダー リソースを作成して Azure Active Directory 認証を構成する
 
@@ -47,6 +47,11 @@ ms.locfileid: "77188859"
         [Parameter(Mandatory=$true)] [String] $AADAppClientSecret
     )
     {
+        $unused = ''
+        if (-not [System.Uri]::TryCreate($AADAppIdentifierUri, [System.UriKind]::Absolute, [ref] $unused)) {
+            throw "Error: AADAppIdentifierUri must be a valid URI"
+        }
+
         Write-Host "Setting the active subscription to '$SubscriptionName'"
         $subscriptionExists = Get-AzSubscription -SubscriptionName $SubscriptionName
         if (-not $subscriptionExists) {

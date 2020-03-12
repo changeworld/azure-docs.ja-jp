@@ -3,12 +3,12 @@ title: Helm グラフの保存
 description: Azure Container Registry のリポジトリを使用して Kubernetes アプリケーションの Helm グラフを保存する方法について説明します
 ms.topic: article
 ms.date: 01/28/2020
-ms.openlocfilehash: 26588bb4dc3cf50656103b50d5d0559908a1ccb7
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 7969efe37558fffb26b983131c56ae11f3ef9368
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524633"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78398973"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Azure コンテナー レジストリに対する Helm グラフのプッシュおよびプル
 
@@ -118,7 +118,7 @@ helm chart push mycontainerregistry.azurecr.io/helm/wordpress:latest
 
 プッシュが成功すると、出力は次のようになります。
 
-```console
+```output
 The push refers to repository [mycontainerregistry.azurecr.io/helm/wordpress]
 ref:     mycontainerregistry.azurecr.io/helm/wordpress:latest
 digest:  5899db028dcf96aeaabdadfa5899db025899db025899db025899db025899db02
@@ -141,7 +141,7 @@ az acr repository show \
 
 出力は次のようになります。
 
-```console
+```output
 {
   "changeableAttributes": {
     "deleteEnabled": true,
@@ -168,7 +168,7 @@ az acr repository show-manifests \
 
 出力 (この例では省略されています) には、`application/vnd.cncf.helm.config.v1+json` の `configMediaType` が表示されます。
 
-```console
+```output
 [
   {
     [...]
@@ -216,7 +216,7 @@ helm inspect chart wordpress
 
 バージョン番号を指定しない場合、*最新*バージョンが使用されます。 次の縮約された出力が示すように、グラフに関する詳細情報が Helm によって返されます。
 
-```
+```output
 apiVersion: v1
 appVersion: 5.3.2
 dependencies:
@@ -256,7 +256,7 @@ helm install wordpress --generate-name
 
 インストールが進んだら、コマンド出力の指示に従って WorPress の URL と資格情報を確認します。 また、`kubectl get pods` コマンドを実行して、Helm グラフを介してデプロイされた Kubernetes リソースを確認することもできます。
 
-```console
+```output
 NAME                                    READY   STATUS    RESTARTS   AGE
 wordpress-1598530621-67c77b6d86-7ldv4   1/1     Running   0          2m48s
 wordpress-1598530621-mariadb-0          1/1     Running   0          2m48s
@@ -311,7 +311,7 @@ helm fetch stable/wordpress
 
 「`ls`」と入力してダウンロードしたグラフを一覧表示し、ファイル名に含まれている Wordpress バージョンを確認します。 `helm fetch stable/wordpress` コマンドでは特定のバージョンを指定しなかったため、*最新*バージョンがフェッチされました。 次の出力例では、Wordpress グラフのバージョンは *8.1.0* です。
 
-```
+```output
 wordpress-8.1.0.tgz
 ```
 
@@ -323,7 +323,7 @@ az acr helm push --name mycontainerregistry wordpress-8.1.0.tgz
 
 しばらくすると、次の出力例に示すように Azure CLI によって、グラフが保存されていることが報告されます。
 
-```
+```output
 {
   "saved": true
 }
@@ -345,7 +345,7 @@ helm search mycontainerregistry
 
 次の出力例に示すように、前の手順でプッシュした Wordpress グラフが一覧されます。
 
-```
+```output
 NAME                CHART VERSION   APP VERSION DESCRIPTION
 helmdocs/wordpress  8.1.0           5.3.2       Web publishing platform for building blogs and websites.
 ```
@@ -366,7 +366,7 @@ helm inspect mycontainerregistry/wordpress
 
 バージョン番号を指定しない場合、*最新*バージョンが使用されます。 次の縮約された出力例が示すように、グラフに関する詳細情報が Helm によって返されます。
 
-```
+```output
 apiVersion: v1
 appVersion: 5.3.2
 description: Web publishing platform for building blogs and websites.
@@ -416,7 +416,7 @@ helm install mycontainerregistry/wordpress
 
 インストールが進んだら、コマンド出力の指示に従って WorPress の URL と資格情報を確認します。 また、`kubectl get pods` コマンドを実行して、Helm グラフを介してデプロイされた Kubernetes リソースを確認することもできます。
 
-```
+```output
 NAME                                    READY   STATUS    RESTARTS   AGE
 wordpress-1598530621-67c77b6d86-7ldv4   1/1     Running   0          2m48s
 wordpress-1598530621-mariadb-0          1/1     Running   0          2m48s

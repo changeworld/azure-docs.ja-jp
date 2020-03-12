@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
-ms.openlocfilehash: 9b8f1065660ea8331853f8804e709134fe682ba7
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 0e3246f9da202b54cc0d1285795c25cfafb678d8
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566116"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207032"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-preview"></a>HSM で保護されたキーを Key Vault にインポートする (プレビュー)
 
@@ -90,6 +90,9 @@ KEK には次の条件があります。
 - ターゲット キーをインポートするのと同じキー コンテナーで生成されていること
 - `import` に設定されている、許可されたキー操作で作成されていること
 
+> [!NOTE]
+> KEK には、許可されている唯一のキー操作として「インポート」が必要です。 「インポート」は、他のすべてのキー操作と同時には使用できません。
+
 キー操作が `import` に設定されている KEK を作成するには、[az keyvault key create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) コマンドを使用します。 次のコマンドから返されるキー識別子 (`kid`) を記録しておきます。 (この `kid` 値は[手順 3](#step-3-generate-and-prepare-your-key-for-transfer) で使用します。)
 
 ```azurecli
@@ -115,7 +118,7 @@ BYOK ツールをダウンロードしてインストールする方法につい
 > [!NOTE] 
 > 1,024 ビットの RSA キーのインポートはサポートされていません。 現時点では、楕円曲線 (EC) キーのインポートはサポートされていません。
 > 
-> **既知の問題**:SafeNet Luna HSM から 4K の RSA ターゲット キーをインポートすると失敗します。 問題が解決されると、この記事は更新されます。
+> **既知の問題**:SafeNet Luna Hsm からの RSA 4K ターゲット キーのインポートは、ファームウェア v7.4.0 以降でのみサポートされています。
 
 ### <a name="step-4-transfer-your-key-to-azure-key-vault"></a>手順 4:キーを Azure Key Vault に転送する
 

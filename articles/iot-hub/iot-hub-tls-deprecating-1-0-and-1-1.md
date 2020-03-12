@@ -7,21 +7,16 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: 8e2f8fd7f99c359949b02959cc442f2f3d3ebfff
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: d61ca8fe7c6f5e7cc400714d7c31a0a7e50b8a88
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912156"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402794"
 ---
 # <a name="deprecation-of-tls-10-and-11-in-iot-hub-and-device-provisioning-service"></a>IoT Hub および Device Provisioning Service での TLS 1.0 および 1.1 の非推奨
 
-クラス最高レベルの暗号化を提供するために、IoT Hub と Device Provisioning Service (DPS) は、IoT デバイスとサービス用に選択された暗号化メカニズムとして Transport Layer Security (TLS) 1.2 に移行します。 そのため、**2020 年 7 月 1 日**には TLS 1.0 と TLS 1.1 の従来のサポートに加えて、いくつかの非推奨のレガシ暗号が非推奨とされます。
-
-
-## <a name="impact"></a>影響
-お客様固有の状況と構成に基づいて、TLS 1.0 と 1.1 の非推奨と、推奨されていない従来の暗号は、IoT Hub または DPS と通信する IoT デバイスとサービスにとって影響が大きい変更になる可能性があります。 場合によっては、これらの変更と互換性のないデバイスおよびサービスが、上記のカットオフ日以降 IoT Hub または DPS に接続できないことがあります。
-
+クラス最高レベルの暗号化を提供するために、IoT Hub と Device Provisioning Service (DPS) は、IoT デバイスとサービス用に選択された暗号化メカニズムとして Transport Layer Security (TLS) 1.2 に移行します。 
 
 ## <a name="supported-ciphers"></a>サポートされる暗号
 

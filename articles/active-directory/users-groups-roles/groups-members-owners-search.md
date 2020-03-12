@@ -9,19 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 02/28/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d11f5a9f2de8683365d663e85c275c3729ebf8a
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: a815446b79b3e5ec0a75e5d179953956643b16c9
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901315"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206114"
 ---
-# <a name="search-groups--and-members-preview-in-azure-active-directory"></a>Azure Active Directory でグループとメンバーを検索する (プレビュー)
+# <a name="search-groups-and-members-preview-in-azure-active-directory"></a>Azure Active Directory でグループとメンバーを検索する (プレビュー)
 
 この記事では、グループのメンバーと所有者を検索する方法と、Azure Active Directory (Azure AD) ポータルでグループの向上のプレビューの一部として検索フィルターを使用する方法について説明します。 メンバーと所有者を含むグループをすばやく簡単に管理するのに役立つ、グループ エクスペリエンスが大幅に向上しています。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
@@ -45,7 +45,7 @@ ms.locfileid: "70901315"
 
 ## <a name="group-search-and-sorting"></a>グループの検索と並べ替え
 
-グループ リスト検索の機能が強化されたため、検索文字列を入力できる場合は、グループ名のリストに対して `startswith` と部分文字列検索が自動的に実行されます。 部分文字列検索は単語全体でのみ実行され、特殊文字は含まれません。
+グループ リスト検索の機能が強化されたため、検索文字列を入力できる場合は、グループ名のリストに対して `startswith` と部分文字列検索が自動的に実行されます。 部分文字列検索は単語全体でのみ実行され、特殊文字は含まれません。 Substring 検索では大文字と小文字が区別されます。
 
 ![[すべてのグループ] ページでの新しい部分文字列検索](./media/groups-members-owners-search/groups-search-preview.png)
 
@@ -78,7 +78,7 @@ ms.locfileid: "70901315"
 
 ![グループ メンバーシップ数の精度の向上](./media/groups-members-owners-search/member-numbers.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これらの記事では、Azure AD でのグループの操作に関する追加情報が提供されます。
 
@@ -86,7 +86,7 @@ ms.locfileid: "70901315"
 - [グループ メンバーシップを管理する](../fundamentals/active-directory-groups-membership-azure-portal.md)
 - [グループ内のユーザーの動的ルールの管理](groups-create-rule.md)
 - [グループの設定を編集する](../fundamentals/active-directory-groups-settings-azure-portal.md)
-- [グループを使用してリソースへのアクセスを管理する](../fundamentals/active-directory-manage-groups.md)
+- [グループを使用したリソースへのアクセス管理](../fundamentals/active-directory-manage-groups.md)
 - [グループを使用して SaaS アプリへのアクセスを管理する](groups-saasapps.md)
 - [PowerShell コマンドを使用してグループを管理する](groups-settings-v2-cmdlets.md)
 - [Azure サブスクリプションを Azure Active Directory に追加する](../fundamentals/active-directory-how-subscriptions-associated-directory.md)

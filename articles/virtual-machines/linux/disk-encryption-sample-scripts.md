@@ -2,21 +2,22 @@
 title: Azure Disk Encryption のサンプル スクリプト
 description: この記事は、Linux VM 用の Microsoft Azure Disk Encryption に関する付録です。
 author: msmbaldwin
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ad0e3bbba729436c3a07f44d989a40f5349dfb3e
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: c98da4b41da183f56d80fad1e8c01706d1cfcf23
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326364"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970507"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Encryption のサンプル スクリプト 
 
-この記事では、事前に暗号化された VHD およびその他のタスクを準備するためのサンプル スクリプトを提供します。
+この記事では、事前に暗号化された VHD の準備およびその他のタスクのためのサンプル スクリプトを提供します。
 
  
 
@@ -404,7 +405,7 @@ DM-Crypt 暗号化を有効にした後、ローカル環境で暗号化され�
 ```powershell
     Add-AzVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo> [[-NumberOfUploaderThreads] <Int32> ] [[-BaseImageUriToPatch] <Uri> ] [[-OverWrite]] [ <CommonParameters>]
 ```
-## <a name="upload-the-secret-for-the-pre-encrypted-vm-to-your-key-vault"></a>事前に暗号化された VM 用のシークレットを自分のキー コンテナーにアップロードする
+## <a name="upload-the-secret-for-the-pre-encrypted-vm-to-your-key-vault"></a>事前に暗号化された VM 用のシークレットをご自分のキー コンテナーにアップロードする
 Azure AD アプリ (以前のリリース) を使用して暗号化する場合、前に取得したディスク暗号化シークレットを、キー コンテナーにシークレットとしてアップロードする必要があります。 Key Vault では、ディスク暗号化だけではなく、Azure AD クライアントに対するアクセス許可も有効になっている必要があります。
 
 ```powershell 

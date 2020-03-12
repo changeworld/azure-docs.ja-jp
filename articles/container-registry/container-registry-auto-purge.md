@@ -3,12 +3,12 @@ title: タグとマニフェストを消去する
 description: 消去コマンドを使用すると、経過時間とタグ フィルターに基づいて Azure コンテナー レジストリから複数のタグとマニフェストを削除できるほか、必要に応じて消去操作をスケジュールすることができます。
 ms.topic: article
 ms.date: 08/14/2019
-ms.openlocfilehash: 0ec1f5f6f5c3c572b8558c971b58e46cce36e3fd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f9d86b628bdd0ce0db3067b02a47517d8aadcba3
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923105"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087325"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Azure コンテナー レジストリからイメージを自動的に消去する
 
@@ -47,7 +47,7 @@ Azure CLI コマンドを使用して 1 つのイメージ タグまたはマニ
 
 その他のパラメーターについては、`acr purge --help` を実行してください。 
 
-`acr purge` では、[Run 変数](container-registry-tasks-reference-yaml.md#run-variables)や、ストリーミングされ、後で取得できるように保存される[タスク実行ログ](container-registry-tasks-overview.md#view-task-logs)など、ACR タスク コマンドの他の機能もサポートしています。
+`acr purge` では、[Run 変数](container-registry-tasks-reference-yaml.md#run-variables)や、ストリーミングされ、後で取得できるように保存される[タスク実行ログ](container-registry-tasks-logs.md)など、ACR タスク コマンドの他の機能もサポートしています。
 
 ### <a name="run-in-an-on-demand-task"></a>オンデマンド タスクで実行する
 
@@ -165,7 +165,7 @@ az acr task create --name weeklyPurgeTask \
 
 タイマー トリガーが構成されていることを確認するには、[az acr task show][az-acr-task-show] コマンドを実行します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Container Registry で[イメージ データを削除](container-registry-delete.md)するその他のオプションについて説明します。
 

@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: helohr
-ms.openlocfilehash: 8065be841b18fa0f8706a3bea3739ee2cb013323
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+manager: lizross
+ms.openlocfilehash: 41b24a94d36b21fe5d5f539e056abb535bda433a
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367591"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128289"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>個人用デスクトップ ホスト プールの割り当ての種類を構成する
 

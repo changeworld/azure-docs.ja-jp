@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 02/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 82866d452289a29dcdcacc12db8048acb7a351ba
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 6671b9c83ab71b4a92fe36d647e5a4e4d781154e
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250860"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096189"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps:Azure Machine Learning を使用したモデル管理、デプロイ、および監視
 
@@ -70,11 +70,6 @@ Azure Machine Learning の環境を使用して、プロジェクトのソフト
 
 アクティブなデプロイで使用されている登録済みモデルは削除できません。
 詳細については、[モデルのデプロイ](how-to-deploy-and-where.md#registermodel)に関するページの、モデルの登録のセクションを参照してください。
-
-### <a name="profile-models"></a>モデルのプロファイル
-
-Azure Machine Learning は、モデルのデプロイ時に作成されるサービスの CPU とメモリの要件を把握するのに役立ちます。 モデルを実行して CPU 使用率、メモリ使用率、応答の待機時間などの情報を返す、サービスのプロファイル テストを行います。 また、リソースの使用状況に基づいて CPU とメモリに関する推奨事項が提示されます。
-詳細については、[モデルのデプロイ](how-to-deploy-and-where.md#profilemodel)に関するページの、プロファイルのセクションを参照してください。
 
 ### <a name="package-and-debug-models"></a>モデルをパッケージ化しデバッグする
 

@@ -3,15 +3,16 @@ title: Azure portal を使用して Linux VM を作成、暗号化する
 description: このクイックスタートでは、Azure portal を使用して Linux 仮想マシンを作成、暗号化する方法について説明します
 author: msmbaldwin
 ms.author: mbaldwin
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 20802cf9f9934a85e00bce41b6bbe21a6ff95579
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9f09f28dc63e7f061946a66beb59bd4c62be70aa
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772297"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970553"
 ---
 # <a name="quickstart-create-and-encrypt-a-virtual-machine-with-the-azure-portal"></a>クイック スタート:Azure portal を使用して仮想マシンを作成、暗号化する
 
@@ -21,7 +22,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure portal](https://portal.azure.com) にサインインする
+[Azure portal](https://portal.azure.com) にサインインします。
 
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成
 

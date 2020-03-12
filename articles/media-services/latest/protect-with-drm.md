@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/25/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: bd5c026da27c68e249532b70629ba01afea655fe
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 14ba5f270138db22a76fd697b264046e22577427
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513067"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086736"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>チュートリアル:DRM 動的暗号化とライセンス配信サービスの使用
 
@@ -45,6 +45,8 @@ Media Services にも、PlayReady、Widevine、FairPlay の DRM ライセンス�
 > * コンテンツ キー ポリシーで要件を設定します。
 > * 指定したストリーミング ポリシーで StreamingLocator を作成します。
 > * お使いのファイルの再生に使用する URL を作成します。
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 

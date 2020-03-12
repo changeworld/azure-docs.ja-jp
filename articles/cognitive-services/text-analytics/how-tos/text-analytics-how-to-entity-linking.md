@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: aahi
 ms.openlocfilehash: 0622aca5579c64c6d840761abb151665af559eea
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367643"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117484"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Text Analytics で名前付きエンティティの認識を使用する方法
 
@@ -84,10 +84,10 @@ NER
 | Type  | SubType | 例 |
 |:-----------   |:------------- |:---------|
 | Person        | 該当なし\*         | "Jeff", "Bill Gates"     |
-| Location      | 該当なし\*         | "Redmond, Washington", "Paris"  |
+| 場所      | 該当なし\*         | "Redmond, Washington", "Paris"  |
 | Organization  | 該当なし\*         | "Microsoft"   |
 | Quantity      | Number        | "6", "six"     |
-| Quantity      | [パーセント]    | "50%"､"fifty percent"|
+| Quantity      | パーセント    | "50%"､"fifty percent"|
 | Quantity      | Ordinal       | "2nd"､"second"     |
 | Quantity      | Age           | "90 day old"､"30 years old"    |
 | Quantity      | Currency      | "$10.99"     |

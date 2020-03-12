@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b135b14fb18904901ad78a1f5d9dc66c8a2bc67
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 46be728216ed4b9c9e84c1c7f68c5ddf2051f42b
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538799"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672298"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>方法:Azure AD で古いデバイスを管理する
 
@@ -57,7 +57,7 @@ Azure AD 内の古いデバイスは、組織内のデバイスの一般的な�
 
     ![アクティビティ タイムスタンプ](./media/manage-stale-devices/01.png)
 
-- [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) コマンドレット
+- [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) コマンドレット
 
     ![アクティビティ タイムスタンプ](./media/manage-stale-devices/02.png)
 
@@ -129,11 +129,11 @@ Azure portal で古いデバイスをクリーンアップすることはでき�
 
 一般的なルーチンは次の手順で構成されます。
 
-1. [Connect-MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) コマンドレットを使用して Azure Active Directory に接続する
+1. [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) コマンドレットを使用して Azure Active Directory に接続する
 1. デバイスの一覧を取得する
-1. [Disable-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) コマンドレットを使用してデバイスを無効にします。 
+1. [Disable-MsolDevice](/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) コマンドレットを使用してデバイスを無効にします。 
 1. デバイスが削除されるまでの猶予期間として設けた日数が経過するのを待ちます。
-1. [Remove-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0) コマンドレットを使用してデバイスを削除します。
+1. [Remove-MsolDevice](/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0) コマンドレットを使用してデバイスを削除します。
 
 ### <a name="get-the-list-of-devices"></a>デバイスの一覧を取得する
 
@@ -180,6 +180,6 @@ Azure AD への認証にデバイスが使用されているすべての認証�
 - **Azure AD 参加済みデバイス** - ユーザーはデバイスを使用してサインインできません。 
 - **モバイル デバイス** - ユーザーは Office 365 などの Azure AD リソースにアクセスできません。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Portal でデバイスを管理する方法の概要については、[Azure Portal によるデバイスの管理](device-management-azure-portal.md)に関するページを参照してください

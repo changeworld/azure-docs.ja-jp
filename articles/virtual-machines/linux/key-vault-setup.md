@@ -1,26 +1,19 @@
 ---
 title: Linux VM のために Azure Key Vault を設定する
 description: Azure CLI を使用して Azure Resource Manager 仮想マシン用に Key Vault を設定する方法。
-services: virtual-machines-linux
-documentationcenter: ''
 author: singhkays
 manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: bccdd5ab-5ccf-4760-9039-92c6eafb15bd
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/24/2017
 ms.author: kasing
-ms.openlocfilehash: 25ef1d43af9d37cebde4a28479010776cc148b6d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: c9659c38e349bd62f22ed0d0839d97651b1b3b66
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035954"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944819"
 ---
 # <a name="how-to-set-up-key-vault-for-virtual-machines-with-the-azure-cli"></a>Azure CLI を使用して仮想マシン用に Key Vault を設定する方法
 
@@ -59,5 +52,5 @@ az keyvault update -n myKeyVault -g myResourceGroup --set properties.enabledForD
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 テンプレートを使用して、Key Vault の作成時に構成できるその他のオプションについては、「[Key Vault の作成](https://azure.microsoft.com/documentation/templates/101-key-vault-create/)」を参照してください。

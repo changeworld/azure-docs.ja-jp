@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9d2780e09c099d76aa2ef4ec2638a410793481d
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 69bdd2d6825427597e9030a03aae7d219361ba25
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186372"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671944"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>条件付きアクセス:クラウド アプリまたはアクション
 
@@ -39,7 +39,7 @@ ms.locfileid: "77186372"
 - [Azure SQL Database と Data Warehouse](../../sql-database/sql-database-conditional-access.md)
 - Dynamics CRM Online
 - Microsoft Application Insights Analytics
-- [Microsoft Azure Information Protection](https://docs.microsoft.com/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
+- [Microsoft Azure Information Protection](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
 - [Microsoft Azure Management](#microsoft-azure-management)
 - Microsoft Azure Subscription Management
 - Microsoft Cloud App Security
@@ -48,7 +48,7 @@ ms.locfileid: "77186372"
 - Microsoft Flow
 - Microsoft フォーム
 - Microsoft Intune
-- [Microsoft Intune Enrollment](https://docs.microsoft.com/intune/enrollment/multi-factor-authentication)
+- [Microsoft Intune Enrollment](/intune/enrollment/multi-factor-authentication)
 - Microsoft Planner
 - Microsoft PowerApps
 - Microsoft Search in Bing

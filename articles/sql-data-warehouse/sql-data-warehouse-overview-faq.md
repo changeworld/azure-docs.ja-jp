@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 1a4fbfa87756914f169bb20387702cac69d8736d
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: f7cac849caf478850707eb0a71b2369dcfa49520
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759484"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197183"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics (旧称 SQL DW) のよく寄せられる質問
 
@@ -73,7 +73,7 @@ A. [サポート チケット](sql-data-warehouse-get-started-create-support-tic
 
 ## <a name="sql-languagefeature-support"></a>SQL 言語/機能のサポート 
 
-Q. サポートされているデータ型は何ですか
+Q. サポートされているデータ型は何ですか。
 
 A. [データの種類](sql-data-warehouse-tables-data-types.md)に関する記事を参照してください。
 
@@ -108,7 +108,7 @@ A:いいえ、PolyBase は記憶域コンポーネントのみを操作します
 
 Q:HDI に接続できますか。
 
-A:HDI は、HDFS レイヤーとして ADLS または WASB を使うことができます。 HDFS レイヤーとしていずれかがある場合は、SQL DW にそのデータを読み込むことができます。 ただし、HDI インスタンスに対するプッシュダウン計算を生成することはできません。 
+A:HDI は、HDFS レイヤーとして ADLS または WASB を使うことができます。 HDFS レイヤーとしていずれかがある場合は、SQL Analytics データ ウェアハウスにそのデータを読み込むことができます。 ただし、HDI インスタンスに対するプッシュダウン計算を生成することはできません。 
 
 ## <a name="next-steps"></a>次のステップ
 Azure Synapse の詳細については、「[概要](sql-data-warehouse-overview-faq.md)」ページをご覧ください。

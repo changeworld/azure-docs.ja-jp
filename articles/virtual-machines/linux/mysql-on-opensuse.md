@@ -2,24 +2,20 @@
 title: MySQL を Azure の OpenSUSE VM にインストールする
 description: Azure 上の OpenSUSE Linux 仮想マシンに MySQL をインストールする方法について説明します。
 services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 1594e10e-c314-455a-9efb-a89441de364b
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: d5f2ef2d82cbcced6202ad2c09f23dd734d373b3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 0d3f0a61da3654c31c99cfac43c86b081876f700
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035597"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944570"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>Azure 上で OpenSUSE Linux を実行する仮想マシンへの MySQL のインストール
 
@@ -159,7 +155,7 @@ quit
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 MySQL について詳しくは、[MySQL のドキュメント](https://dev.mysql.com/doc)をご覧ください。
 
 

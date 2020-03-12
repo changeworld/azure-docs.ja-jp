@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: a697c1e43ccd486f8c98399ea9065902bd247f7d
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 40193a2547959b44c5753cfcc6ccad9344ab9486
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152144"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920435"
 ---
 # <a name="multiclass-logistic-regression-module"></a>多クラスのロジスティック回帰モジュール
 
@@ -40,7 +40,7 @@ Azure Machine Learning には、[2 クラスのロジスティック回帰](./tw
 
     + **Single Parameter (単一パラメーター)** : モデルの構成方法がわかっている場合はこのオプションを使用し、特定の値のセットを引数として渡します。
 
-    + **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターがわかっておらず、パラメーター スイープを使用したい場合は、このオプションを使用します。
+    + **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターがわかっておらず、パラメーター スイープを実行したい場合は、このオプションを選択します。 反復する値の範囲を選択します。[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)では、指定した設定の可能なすべての組み合わせに対して反復処理を行い、最適な結果を生成するハイパーパラメーターを決定します。  
 
 3. オプティマイザーの収束に使用するしきい値を **[Optimization tolerance]\(最適化の許容範囲\)** に指定します。 イテレーション間の改善がしきい値を下回った場合に、アルゴリズムが終了して現在のモデルが返されます。
 

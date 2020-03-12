@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 699ee2c2c3b1a90231f24663619cc590aae9889d
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: c0d51c9c31e4e6859eaedce371efeafaa5fd4f46
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252078"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78403214"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry に関するよく寄せられる質問
 
@@ -241,7 +241,7 @@ ACR は、さまざまなレベルのアクセス許可を提供する[カスタ
 
 * イメージをプルするには:
 
-  ```console
+  ```bash
   docker pull myregistry.azurecr.io/hello-world
   ```
 
@@ -297,28 +297,25 @@ grep OPTIONS /etc/sysconfig/docker
 
 たとえば、Fedora 28 Server には次の docker デーモン オプションがあります。
 
-```
-OPTIONS='--selinux-enabled --log-driver=journald --live-restore'
-```
+`OPTIONS='--selinux-enabled --log-driver=journald --live-restore'`
 
 `--signature-verification=false` がないと、`docker pull` は次のようなエラーで失敗します。
 
-```bash
+```output
 Trying to pull repository myregistry.azurecr.io/myimage ...
 unauthorized: authentication required
 ```
 
 このエラーを解決するには:
 1. Docker デーモンの構成ファイル `/etc/sysconfig/docker` にオプション `--signature-verification=false` を追加します。 次に例を示します。
-
-  ```
-  OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'
-  ```
+   
+   `OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'`
+   
 2. 次のコマンドを実行して、Docker デーモン サービスを再起動します。
-
-  ```bash
-  sudo systemctl restart docker.service
-  ```
+   
+   ```bash
+   sudo systemctl restart docker.service
+   ```
 
 `--signature-verification` の詳細は、`man dockerd` を実行して確認できます。
 
@@ -458,7 +455,7 @@ Docker VM 仮想スイッチの IP を見つけます。
 
 Docker プロキシを前のコマンドの出力とポート 8888 に構成します (たとえば、10.0.75.1:8888)。
 
-## <a name="tasks"></a>処理手順
+## <a name="tasks"></a>タスク
 
 - [実行を一括で取り消すにはどうすればよいですか?](#how-do-i-batch-cancel-runs)
 - [az acr build コマンドに .git フォルダーを含めるにはどうすればよいですか?](#how-do-i-include-the-git-folder-in-az-acr-build-command)
@@ -478,9 +475,7 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 
 `az acr build` コマンドにローカルのソース フォルダーを渡した場合、既定では、`.git` フォルダーはアップロードされるパッケージから除外されます。 次の設定を使用して、`.dockerignore` ファイルを作成できます。 これは、コマンドに、アップロードされるパッケージ内の `.git` の下にあるすべてのファイルを復元するよう指示します。 
 
-```sh
-!.git/**
-```
+`!.git/**`
 
 この設定は、`az acr run` コマンドにも適用されます。
 

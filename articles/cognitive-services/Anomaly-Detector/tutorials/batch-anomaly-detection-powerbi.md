@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 12/19/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 1d1f71ed56138f2c799c7410508c0bc4899e7887
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1b486aaf0ce33e31433c2c3d0f7a1ff2c7089132
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448849"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402651"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>チュートリアル:バッチ検出と Power BI を使用して異常を視覚化する
 
@@ -29,13 +29,13 @@ ms.locfileid: "75448849"
 > * 予期された値と確認された値を含み、データ内で見つかった異常と、異常検出の境界を視覚化します。
 
 ## <a name="prerequisites"></a>前提条件
-
+* [Azure サブスクリプション](https://azure.microsoft.com/free/)
 * [Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/) (無料で利用可能)。
 * 時系列データ ポイントを含む Excel ファイル (.xlsx)。 このクイック スタートのサンプル データは、[GitHub](https://go.microsoft.com/fwlink/?linkid=2090962) にあります
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Text Analytics リソースを作成"  target="_blank">Text Analytics リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 
+    * アプリケーションを Text Analytics API に接続するには、作成するリソースのキーとエンドポイントが必要です。 この作業は、このクイックスタートの中で後から行います。
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
-
-[!INCLUDE [cognitive-services-anomaly-detector-signup-requirements](../../../../includes/cognitive-services-anomaly-detector-signup-requirements.md)]
 
 ## <a name="load-and-format-the-time-series-data"></a>時系列データを読み込んで書式を設定する
 
@@ -131,7 +131,7 @@ Power Query エディターで **[変換]** リボンをクリックします。
 
 ![アクセス資格情報を指定する要求が表示されているイメージ](../media/tutorials/edit-credentials-message.png)
 
-これを解決するには、メッセージ内の **[資格情報を編集]** をクリックします。 ダイアログ ボックスが表示されたら、 **[匿名]** を選択して API に匿名で接続します。 次いで **[接続]** をクリックします。 
+これを解決するには、メッセージ内の **[資格情報を編集]** をクリックします。 ダイアログ ボックスが表示されたら、 **[匿名]** を選択して API に匿名で接続します。 次いで **[Connect]** をクリックします。 
 
 その後、 **[ホーム]** リボンの **[閉じて適用]** をクリックして変更内容を適用します。
 
@@ -143,7 +143,7 @@ Power BI のメイン画面で、上で作成したクエリの使用を開始�
 
 次に、 **[呼び出された関数]** の以下のフィールドを、グラフの **[値]** フィールドに追加します。 下のスクリーンショットを使用すると、グラフの作成に役立ちます。
 
-    * 値
+    * Value
     * UpperMargins
     * LowerMargins
     * ExpectedValues

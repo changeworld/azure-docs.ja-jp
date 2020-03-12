@@ -2,17 +2,17 @@
 title: Azure マネージド ディスクに対して共有ディスクを有効にする
 description: 複数の VM 間で共有できるように、共有ディスク (プレビュー) を使用して Azure マネージド ディスクを構成する
 author: roygara
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 4562567aea667dd7efadbcfb033e782ec9418e3f
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 0e925abf151abc1a229b57bb035775430fa5332f
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472062"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970379"
 ---
 # <a name="enable-shared-disk"></a>共有ディスクを有効にする
 

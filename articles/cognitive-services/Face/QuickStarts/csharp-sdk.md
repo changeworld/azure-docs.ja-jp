@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: a9fb77ea30aa101653d50e7833876dbec6362093
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: e51937dfe2afa0e92ce98b4c305555b53896e5f1
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76930144"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78401758"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>クイック スタート:.NET 用 Face クライアント ライブラリ
 
@@ -64,7 +64,7 @@ dotnet build
 
 ビルドの出力に警告やエラーが含まれないようにする必要があります。 
 
-```console
+```output
 ...
 Build succeeded.
  0 Warning(s)
@@ -94,7 +94,7 @@ Visual Studio IDE を使用している場合、クライアント ライブラ�
 
 以下のクラスとインターフェイスにより、Face .NET SDK の主要な機能の一部が処理されます。
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) | このクラスは、Face サービスを使用するための承認を表し、すべての Face 機能に必要です。 サブスクリプション情報を使用してこれをインスタンス化し、他のクラスのインスタンスを生成するために使用します。 |
 |[FaceOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperations?view=azure-dotnet)|このクラスは、人間の顔に対して実行できる基本的な検出と認識のタスクを処理します。 |

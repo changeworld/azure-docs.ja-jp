@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd8087e9eaa11ced5da9b445af9d33377b4391c0
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 613c5e9f153f2e3f02ab35d3be16ef3b29d15634
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379656"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672720"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Azure AD 参加済みデバイスのローカル管理者グループの管理方法
 
@@ -24,7 +24,7 @@ Windows デバイスを管理するには、ローカル管理者グループの
 
 この記事では、Azure AD 参加中のメンバーシップの更新のしくみと、そのカスタマイズ方法について説明します。 この記事の内容は、**ハイブリッド** Azure AD 参加には適用されません。
 
-## <a name="how-it-works"></a>動作のしくみ
+## <a name="how-it-works"></a>しくみ
 
 Azure AD 参加を使用して Windows デバイスを Azure AD に接続すると、Azure AD によって、デバイスのローカル管理者グループに次のセキュリティ原則が追加されます。
 
@@ -68,8 +68,8 @@ Azure AD 参加を使用して Windows デバイスを Azure AD に接続する�
 
 既定では、Azure AD 参加を実行するユーザーはデバイスの管理者グループに追加されます。 通常のユーザーがローカル管理者になることを防ぐ必要がある場合は、次のオプションで対応できます。
 
-- [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) - Windows Autopilot には、参加を実行するプライマリ ユーザーがローカル管理者になるのを防ぐオプションがあります。 これは、[Autopilot プロファイルを作成する](https://docs.microsoft.com/intune/enrollment-autopilot#create-an-autopilot-deployment-profile)ことで達成できます。
-- [一括登録](https://docs.microsoft.com/intune/windows-bulk-enroll) - 一括登録のコンテキストで実行される Azure AD 参加は、自動作成されたユーザーのコンテキストで発生します。 デバイスの参加後にサインインしたユーザーは、管理者グループには追加されません。   
+- [Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot) - Windows Autopilot には、参加を実行するプライマリ ユーザーがローカル管理者になるのを防ぐオプションがあります。 これは、[Autopilot プロファイルを作成する](/intune/enrollment-autopilot#create-an-autopilot-deployment-profile)ことで達成できます。
+- [一括登録](/intune/windows-bulk-enroll) - 一括登録のコンテキストで実行される Azure AD 参加は、自動作成されたユーザーのコンテキストで発生します。 デバイスの参加後にサインインしたユーザーは、管理者グループには追加されません。   
 
 ## <a name="manually-elevate-a-user-on-a-device"></a>デバイスのユーザーを手動で昇格させる 
 
@@ -90,7 +90,7 @@ Azure AD の参加プロセスを使用するのではなく、通常のユー�
 
 デバイス管理者ロールからユーザーを削除しても、ユーザーがデバイスにサインインしている間は、ローカル管理者特権が維持されます。 特権は、次回サインインするときか、4 時間が経過して新しいプライマリ更新トークンが発行されるときに失効します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure Portal でデバイスを管理する方法の概要については、[Azure Portal によるデバイスの管理](device-management-azure-portal.md)に関するページを参照してください
 - デバイス ベースの条件付きアクセスの詳細については、[Azure Active Directory デバイスベースの条件付きアクセス ポリシーの構成](../conditional-access/require-managed-devices.md)に関するページを参照してください。

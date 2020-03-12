@@ -3,12 +3,12 @@ title: チュートリアル - ACR タスクをスケジュールする
 description: このチュートリアルでは、1 つ以上のタイマー トリガーを設定して、定義したスケジュールに基づき、Azure Container Registry タスクを実行する方法を説明します。
 ms.topic: article
 ms.date: 06/27/2019
-ms.openlocfilehash: 4c0962a38cca73e4a03a7417baaa595cf0d97009
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 3202b5d8c426165d81129f1affa69b3a3d515ce9
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617456"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402869"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>定義したスケジュールで ACR タスクを実行する
 
@@ -56,8 +56,11 @@ az acr task create \
 
 タイマー トリガーが構成されていることを確認するには、[az acr task show][az-acr-task-show] コマンドを実行します。 既定では、基本イメージ更新トリガーも有効になります。
 
-```console
-$ az acr task show --name mytask --registry registry --output table
+```azurecli
+az acr task show --name mytask --registry registry --output table
+```
+
+```output
 NAME      PLATFORM    STATUS    SOURCE REPOSITORY       TRIGGERS
 --------  ----------  --------  -------------------     -----------------
 mytask    linux       Enabled                           BASE_IMAGE, TIMER
@@ -71,7 +74,7 @@ az acr task run --name mytask --registry myregistry
 
 コンテナーが正常に実行された場合、出力は次のようになります。
 
-```console
+```output
 Queued a run with ID: cf2a
 Waiting for an agent...
 2019/06/28 21:03:36 Using acb_vol_2ca23c46-a9ac-4224-b0c6-9fde44eb42d2 as the home volume
@@ -92,7 +95,7 @@ az acr task list-runs --name mytask --registry myregistry --output table
 
 タイマーが成功している場合、次のような出力が表示されます。
 
-```console
+```output
 RUN ID    TASK     PLATFORM    STATUS     TRIGGER    STARTED               DURATION
 --------  -------- ----------  ---------  ---------  --------------------  ----------
 [...]
@@ -201,7 +204,7 @@ Cron 式で使われるタイム ゾーンは、協定世界時 (UTC) です。 
 
 このチュートリアル シリーズで作成したすべてのリソース (コンテナー レジストリ、コンテナー インスタンス、キー コンテナー、サービス プリンシパルなど) を削除するには、次のコマンドを実行します。
 
-```azurecli-interactive
+```azurecli
 az group delete --resource-group $RES_GROUP
 az ad sp delete --id http://$ACR_NAME-pull
 ```

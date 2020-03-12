@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 03/03/2020
 ms.author: b-juche
-ms.openlocfilehash: 01387d0c219c86f33762b9c3fbf9f81cf04b4455
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48055a774808aea86452e8410b7e717f5019d172
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61086851"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267901"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Azure NetApp Files を使用して、スナップショットを管理する
 
-Azure NetApp Files を使用すると、ボリュームのオンデマンド スナップショットを作成したり、スナップショットから新しいボリュームを復元したりできます。
+Azure NetApp Files を使用すると、ボリュームのオンデマンド スナップショットを手動で作成したり、スナップショットから新しいボリュームを復元したりできます。 Azure NetApp Files サービスでは、ボリューム スナップショットは自動的に作成されません。  
 
 ## <a name="create-an-on-demand-snapshot-for-a-volume"></a>ボリュームのオンデマンド スナップショットを作成する
 
@@ -41,7 +41,7 @@ Azure NetApp Files を使用すると、ボリュームのオンデマンド ス
 
     ![新しいスナップショット](../media/azure-netapp-files/azure-netapp-files-new-snapshot.png)
 
-4. Click **OK**. 
+4. **[OK]** をクリックします。 
 
 ## <a name="restore-a-snapshot-to-a-new-volume"></a>スナップショットから新しいボリュームを復元する
 
@@ -81,9 +81,9 @@ Azure NetApp Files を使用すると、ボリュームのオンデマンド ス
     ![Restored new volume](../media/azure-netapp-files/azure-netapp-files-snapshot-new-volume.png) 
    -->
 
-5. Click **OK**.   
+5. **[OK]** をクリックします。   
     スナップショットから復元された新しいボリュームが [ボリューム] ブレードに表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure NetApp Files のストレージ階層を理解する](azure-netapp-files-understand-storage-hierarchy.md)

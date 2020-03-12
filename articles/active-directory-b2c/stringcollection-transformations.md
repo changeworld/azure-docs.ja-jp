@@ -3,20 +3,20 @@ title: カスタム ポリシーの StringCollection 要求変換の例
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C の Identity Experience Framework (IEF) スキーマの StringCollection 要求変換の例。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/03/2020
-ms.author: marsma
+ms.date: 02/27/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8f91db91eff3320691a5979d9453bf515ccd59a2
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 6aea537ebff4ae61e00861e6cafe742a7feb165e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982298"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186779"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection 要求変換
 
@@ -26,13 +26,13 @@ ms.locfileid: "76982298"
 
 ## <a name="additemtostringcollection"></a>AddItemToStringCollection
 
-新しい stringCollection 要求に文字列要求を追加します。
+新しい一意の値 「stringCollection」の要求に文字列要求を追加します。
 
 | Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | item | string | 出力要求に追加される ClaimType。 |
 | InputClaim | collection | stringCollection | （省略可能）これを指定すると、要求変換によってこのコレクションから項目がコピーされ、出力コレクション要求の最後に項目が追加されます。 |
-| OutputClaim | collection | stringCollection | この ClaimsTransformation が呼び出された後に生成される ClaimTypes。 |
+| OutputClaim | collection | stringCollection | この ClaimType は、要求変換が呼び出された後に生成され、入力パラメータに指定された値で呼び出されます。 |
 
 この要求変換を使用して、新しい stringCollection または既存の stringCollection に文字列を追加します。 通常、これは **AAD-UserWriteUsingAlternativeSecurityId** 技術プロファイルで使用されます。 新しいソーシャル アカウントが作成される前に、**CreateOtherMailsFromEmail** 要求変換によって ClaimType が読み取られ、**otherMails** ClaimType に値が追加されます。
 
@@ -60,13 +60,13 @@ ms.locfileid: "76982298"
 
 ## <a name="addparametertostringcollection"></a>AddParameterToStringCollection
 
-新しい stringCollection 要求に文字列パラメーターを追加します。
+新しい一意の値「stringCollection claim」に文字列パラメータを追加します。
 
 | Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | collection | stringCollection | （省略可能）これを指定すると、要求変換によってこのコレクションから項目がコピーされ、出力コレクション要求の最後に項目が追加されます。 |
 | InputParameter | item | string | 出力要求に追加される値。 |
-| OutputClaim | collection | stringCollection | この ClaimsTransformation が呼び出された後に生成される ClaimTypes。 |
+| OutputClaim | collection | stringCollection | この要求変換が呼び出された後に生成される ClaimType は、入力パラメーターに指定された値で呼び出されています。 |
 
 この要求変換を使用して、新しい stringCollection または既存の stringCollection に文字列値を追加します。 次の例では、定数の電子メール アドレス (admin@contoso.com) を **otherMails** 要求に追加します。
 
@@ -147,7 +147,7 @@ StringCollection 要求の種類に要素が含まれているかどうかをチ
   </InputParameters>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="isAdmin" TransformationClaimType="outputClaim"/>
-  </OutputClaims>         
+  </OutputClaims>
 </ClaimsTransformation>
 ```
 

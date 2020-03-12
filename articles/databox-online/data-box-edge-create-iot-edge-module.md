@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: f57a0431bbdafee2d38038d0039b47a34e5454c7
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 3aa1190fb713c2fbdedcb1ce84a65d4263693827
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315830"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942551"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Data Box Edge 上のファイルを移動する C# IoT Edge モジュールを開発する
 
@@ -53,7 +53,7 @@ Data Box Edge デバイスでは、IoT Edge モジュールを展開して実行
 - 次の開発リソース。
 
     - [Visual Studio Code](https://code.visualstudio.com/)。
-    - [Visual Studio Code 用の C# (OmniSharp を使用) 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+    - [Visual Studio Code 用の C# (OmniSharp を使用) 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
     - [Visual Studio Code 用の Azure IoT Edge 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)
     - [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
     - [Docker CE](https://store.docker.com/editions/community/docker-ce-desktop-windows)。 ソフトウェアをダウンロードしてインストールするには、アカウントの作成が必要になる場合があります。
@@ -62,7 +62,7 @@ Data Box Edge デバイスでは、IoT Edge モジュールを展開して実行
 
 Azure Container Registry は、プライベート Docker コンテナー イメージを保存および管理する Azure のプライベート Docker レジストリです。 クラウドで使用できる 2 つの一般的な Docker レジストリ サービスは、Azure Container Registry と Docker Hub です。 この記事では、Container Registry を使用します。
 
-1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+1. Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 2. **[Create a resource] (リソースの作成) > [コンテナー] > [Container Registry]** を選択します。 **Create** をクリックしてください。
 3. 次を指定します。
 
@@ -75,7 +75,7 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
 
       ![コンテナー レジストリを作成する](./media/data-box-edge-create-iot-edge-module/create-container-registry-1.png)
  
-4. **作成** を選択します。
+4. **［作成］** を選択します
 5. コンテナー レジストリが作成されたら、その場所を参照し、 **[アクセス キー]** を選択します。
 
     ![アクセス キーを取得する](./media/data-box-edge-create-iot-edge-module/get-access-keys-1.png)
@@ -93,7 +93,7 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
 
 1. Visual Studio Code で、 **[表示] > [コマンド パレット]** を選択して、VS Code コマンド パレットを開きます。
 2. コマンド パレットで、**Azure: Sign in** コマンドを入力して実行し、手順に従って Azure アカウントにサインインします。 既にサインインしている場合、この手順は省略できます。
-3. コマンド パレットで、**Azure IoT Edge: New IoT Edge solution** コマンドを入力して実行します。 コマンド パレットで、次の情報を指定してソリューションを作成します。
+3. コマンド パレットで、**Azure IoT Edge:New IoT Edge solution** コマンドを入力して実行します。 コマンド パレットで、次の情報を指定してソリューションを作成します。
 
     1. ソリューションの作成先フォルダーを選択します。
     2. ソリューションの名前を指定するか、既定の **EdgeSolution** をそのまま使用します。
@@ -274,6 +274,6 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
 
 4. タグを含む完全なコンテナー イメージ アドレスは、VS Code 統合ターミナルで確認できます。 イメージ アドレスは、`<repository>:<version>-<platform>` の形式で、module.json ファイルの情報から作成されます。 この記事では、`mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64` のようになります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Data Box Edge でこのモジュールをデプロイして実行するには、「[モジュールを追加する](data-box-edge-deploy-configure-compute.md#add-a-module)」の手順を参照してください。

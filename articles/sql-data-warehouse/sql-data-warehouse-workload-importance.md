@@ -1,26 +1,26 @@
 ---
 title: ワークロードの重要度
-description: Azure SQL Data Warehouse でクエリの重要度を設定するためのガイダンスです。
+description: Azure Synapse Analytics の SQL Analytics クエリの重要度を設定するためのガイダンスです。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 05/01/2019
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 76a77c1833ae1827f2a6a9b577b3cca51b35a344
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: azure-synapse
+ms.openlocfilehash: de7bb28770bc356514c392c3478fd0e33658f878
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351426"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191773"
 ---
-# <a name="azure-sql-data-warehouse-workload-importance"></a>Azure SQL Data Warehouse のワークロードの重要度
+# <a name="azure-synapse-analytics-workload-importance"></a>Azure Synapse Analytics ワークロードの重要度
 
-この記事では、ワークロードの重要度が、SQL Data Warehouse の要求の実行順序にどのような影響を与えるかについて説明します。
+このアーティクルでは、ワークロードの重要度が Azure Synapse の SQL Analytics の要求の実行順序に与える影響について説明します。
 
 ## <a name="importance"></a>重要度
 
@@ -38,7 +38,7 @@ ms.locfileid: "75351426"
 
 ### <a name="locking"></a>ロック
 
-読み取りおよび書き込みアクティビティ用のロックへのアクセスは、自然な競合の 1 つの領域です。 [パーティションの切り替え](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition)や[オブジェクトの名前変更](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest)などのアクティビティには、管理者特権でのロックが必要です。  ワークロードの重要度が設定されていなくても、SQL Data Warehouse ではスループットの最適化が行われます。 スループットの最適化とは、実行中の要求とキューに置かれた要求が同じロック ニーズを持ち、リソースが利用可能な場合、キューに置かれた要求は、要求キューに先に到達した、より高いロック ニーズを持つ要求をバイパスする可能性があることを意味しています。 より高いロック ニーズを持つ要求にワークロードの重要度が適用されると、 重要度の高い方の要求が、重要度の低い方の要求よりも先に実行されます。
+読み取りおよび書き込みアクティビティ用のロックへのアクセスは、自然な競合の 1 つの領域です。 [パーティションの切り替え](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition)や[オブジェクトの名前変更](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest)などのアクティビティには、管理者特権でのロックが必要です。  ワークロードの重要度が設定されていなくても、Azure Synapse の SQL Analytics はスループットを最適化します。 スループットの最適化とは、実行中の要求とキューに置かれた要求が同じロック ニーズを持ち、リソースが利用可能な場合、キューに置かれた要求は、要求キューに先に到達した、より高いロック ニーズを持つ要求をバイパスする可能性があることを意味しています。 より高いロック ニーズを持つ要求にワークロードの重要度が適用されると、 重要度の高い方の要求が、重要度の低い方の要求よりも先に実行されます。
 
 次の例を確認してください。
 
@@ -50,7 +50,7 @@ Q2 と Q3 が同じ重要度を持ち、Q1 がまだ実行中である場合、Q
 
 ### <a name="non-uniform-requests"></a>均一でない要求
 
-クエリ要求を満たすのに重要度を役立てることができるというもう 1 つのシナリオは、リソース クラスが異なる要求を送信する場合に適用されます。  既に述べたように、同じ重要度の下では、SQL Data Warehouse のスループットが最適化されます。 混在したサイズ要求 (Smallrc または mediumrc など) がキューに置かれると、使用可能なリソース内で収まる最も早く到着した要求が SQL Data Warehouse によって選択されます。 ワークロードの重要度が適用されると、重要度の最も高い要求が次にスケジュールされます。
+クエリ要求を満たすのに重要度を役立てることができるというもう 1 つのシナリオは、リソース クラスが異なる要求を送信する場合に適用されます。  既に述べたように、同じ重要度の下では、Azure Synapse の SQL Analytics のスループットが最適化されます。 混在したサイズ要求 (Smallrc または mediumrc など) がキューに置かれると、使用可能なリソース内で収まる最も早く到着した要求が SQL Analytics によって選択されます。 ワークロードの重要度が適用されると、重要度の最も高い要求が次にスケジュールされます。
   
 DW500c に対する次の例について考えてみてください。
 
@@ -63,7 +63,7 @@ Q5 は mediumrc であるために、2 つの同時実行スロットが必要�
 ## <a name="next-steps"></a>次のステップ
 
 - 分類子の作成の詳細については、「[CREATE WORKLOAD CLASSIFIER (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql)」を参照してください。  
-- SQL Data Warehouse のワークロード分類の詳細については、[ワークロードの分類](sql-data-warehouse-workload-classification.md)に関する記事を参照してください。  
+- ワークロードの分類の詳細については、[ワークロードの分類](sql-data-warehouse-workload-classification.md)に関するページを参照してください。  
 - ワークロード分類子の作成方法については、[ワークロード分類子の作成](quickstart-create-a-workload-classifier-tsql.md)に関するクイック スタートを参照してください。 
 - [ワークロードの重要度の構成](sql-data-warehouse-how-to-configure-workload-importance.md)と [Workload Management の管理と監視](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)に関するハウツー記事を参照してください。
 - クエリと割り当てられている重要度を確認するには、「[sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest)」を参照してください。

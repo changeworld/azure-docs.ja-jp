@@ -2,17 +2,18 @@
 title: Azure Disk Encryption と Azure AD アプリの前提条件 (以前のリリース)
 description: この記事では、IaaS VM 用に Microsoft Azure Disk Encryption を使用する場合の前提条件について説明します。
 author: msmbaldwin
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: e1b9df750886af050163a85e2c6a3539bd63c733
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: f38fd7c8e14f58052912f68a277f194fd3866f2e
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457186"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970573"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Azure AD での Azure Disk Encryption (以前のリリース)
 
@@ -57,7 +58,7 @@ Azure Disk Encryption では、ディスク暗号化キーとシークレット�
 
 詳細については、「[Azure AD を使用した Azure Disk Encryption 用のキー コンテナーの作成と構成 (以前のリリース)](disk-encryption-key-vault-aad.md)」を参照してください。
  
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure AD を使用した Azure Disk Encryption 用のキー コンテナーの作成と構成 (以前のリリース)](disk-encryption-key-vault-aad.md)
 - [Linux VM で Azure AD を使用して Azure Disk Encryption を有効にする (以前のリリース)](disk-encryption-linux-aad.md)

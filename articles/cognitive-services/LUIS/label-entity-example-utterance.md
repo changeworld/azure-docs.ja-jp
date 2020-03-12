@@ -7,15 +7,15 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: f7d6e98205afad2ed2c4aea30e635254f79acaa1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5499e8362e1107a18b997a6a485e11343c328d0d
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448083"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898369"
 ---
 # <a name="label-machine-learned-entity-in-an-example-utterance"></a>発話例内の機械学習エンティティにラベルを付ける
 
@@ -86,7 +86,7 @@ ms.locfileid: "75448083"
 1. [Intent detail]\(意図の詳細\) ページのコンテキスト ツール バーから **[Entity palette]\(エンティティ パレット\)** を選択します。
 1. エンティティ パレットが開いたら、エンティティの一覧からエンティティを選択します。
 1. **エンティティ インスペクター**に移動し、既存のロールを選択するか、または新しくロールを作成します。
-1. 発話の例のテキストに、エンティティのロールをラベル付けします。 
+1. 発話の例のテキストに、エンティティのロールをラベル付けします。
 
 ## <a name="unlabel-entities"></a>エンティティのラベルの解除
 

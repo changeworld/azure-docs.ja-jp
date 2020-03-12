@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 11/06/2019
-ms.openlocfilehash: bbc62aa153e6ecb5d9ae65c37392c2697b9beaa2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 03/06/2020
+ms.openlocfilehash: 958794cda60d0ce1b0d223b9b5a6c03283022a6c
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979719"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927557"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Azure Machine Learning 監視データのリファレンス
 
@@ -185,7 +185,7 @@ ms.locfileid: "75979719"
 
 RunType ディメンションの有効な値は次のとおりです。
 
-| 値 | 説明 |
+| Value | 説明 |
 | ----- | ----- |
 | 実験 | パイプライン以外の実行。 |
 | PipelineRun | StepRun の親であるパイプラインの実行。 |

@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 2/1/2020
-ms.openlocfilehash: aaff56ba1de69485d1c3b93bc7ed95ce1a3cbd88
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.date: 3/9/2020
+ms.openlocfilehash: 3e99263f6bf472c256e1747b8567249bbd62a445
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983551"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969633"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure Stream Analytics のプレビュー機能
 
@@ -33,13 +33,6 @@ ms.locfileid: "76983551"
 
 クラウドまたは IoT Edge に Stream Analytics モジュールを作成する開発者は、カスタム C# 関数を作成または再利用し、[ユーザー定義関数](stream-analytics-edge-csharp-udf-methods.md)を通じて、クエリの中でそれらを直接呼び出すことができます。
 
-### <a name="managed-identity-authentication-with-power-bi"></a>Power BI に対するマネージド ID 認証
-
-Azure Stream Analytics は、Power BI に対するマネージド ID ベースの認証をフル サポートし、動的なダッシュボード エクスペリエンスを実現します。
-
-### <a name="anomaly-detection"></a>異常検出
-
-Azure Stream Analytics の機械学習モデルは、双方向、ゆっくりした増加、ゆっくりした減少の傾向の検出に加え、"*スパイク*" と "*ディップ*" の検出をサポートします。 詳細については、「[Azure Stream Analytics での異常検出](stream-analytics-machine-learning-anomaly-detection.md)」を参照してください。
 
 ### <a name="debug-query-steps-in-visual-studio"></a>Visual Studio でのクエリ ステップのデバッグ
 

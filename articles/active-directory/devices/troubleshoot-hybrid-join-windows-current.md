@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd53b95472c72d70721612d8684779c206aad74e
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f3ce27c59ead4e126cb143d1831ece0e93e119ef
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888794"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672288"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>ハイブリッド Azure Active Directory 参加済みデバイスのトラブルシューティング 
 
@@ -356,7 +356,7 @@ WamDefaultAuthority: organizations
    - 解決策:このエラーが発生したデバイスで TPM を無効にします。 Windows 1809 では、TPM エラーが自動的に検知され、TPM を使用することなくハイブリッド Azure AD への参加が完了します。
 - **NTE_AUTHENTICATION_IGNORED** (0x80090031/-2146893775)
    - 理由:TPM がロックアウトされました。
-   - 解決策:一時的なエラーです。 クールダウン時間が終わるまで待ちます。 しばらくしてから参加を試みると成功します。 詳細については、[TPM の基礎](https://docs.microsoft.com/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering)に関する記事を参照してください。
+   - 解決策:一時的なエラーです。 クールダウン時間が終わるまで待ちます。 しばらくしてから参加を試みると成功します。 詳細については、[TPM の基礎](/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering)に関する記事を参照してください。
 
 ##### <a name="network-errors"></a>ネットワーク エラー
 
@@ -372,13 +372,13 @@ WamDefaultAuthority: organizations
 
 ##### <a name="federated-join-server-errors"></a>サーバーのフェデレーション参加エラー
 
-| サーバー エラー コード | サーバー エラー メッセージ | 考えられる原因 | 解決策 |
+| サーバー エラー コード | サーバー エラー メッセージ | 考えられる原因 | 解像度 |
 | --- | --- | --- | --- |
 | DirectoryError | Your request is throttled temporarily.\(要求は一時的に調整されました。\) Please try after 300 seconds.\(300 秒後にもう一度お試しください。\) | 予期されるエラーです。 複数の登録要求が立て続けに行われたことが原因と考えられます。 | クールダウン時間が終わったら参加を再試行してください。 |
 
 ##### <a name="sync-join-server-errors"></a>サーバーの同期参加エラー
 
-| サーバー エラー コード | サーバー エラー メッセージ | 考えられる原因 | 解決策 |
+| サーバー エラー コード | サーバー エラー メッセージ | 考えられる原因 | 解像度 |
 | --- | --- | --- | --- |
 | DirectoryError | AADSTS90002:Tenant <UUID> not found.\(テナントが見つかりません\)。 This error may happen if there are no active subscriptions for the tenant.\(このエラーは、テナントにアクティブなサブスクリプションがない場合に発生することがあります。\) Check with your subscription administrator.\(サブスクリプション管理者にご確認ください。\) | SCP オブジェクト内のテナント ID が正しくありません。 | SCP オブジェクトが正しい Azure AD テナント ID で構成されていることと、アクティブなサブスクリプションがテナントに存在することを確認します。 |
 | DirectoryError | The device object by the given ID is not found.\(指定された ID のデバイス オブジェクトが見つかりませんでした。\) | 同期参加で予期されるエラーです。 デバイス オブジェクトが AD から Azure AD に同期されていません。 | Azure AD Connect の同期が完了するのを待ち、同期完了後に次の参加を試みると問題が解決します。 |

@@ -2,17 +2,18 @@
 title: Azure AD を使用した Azure Disk Encryption 用のキー コンテナーの作成と構成 (以前のリリース)
 description: この記事では、IaaS VM 用に Microsoft Azure Disk Encryption を使用する場合の前提条件について説明します。
 author: msmbaldwin
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: be709fcbb45c95f092b24b53fd0c506187fcd8b3
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 1fa9f4e790b49e83ed4c46e92242ff182d9a47b5
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71829968"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970641"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>Azure AD を使用した Azure Disk Encryption 用のキー コンテナーの作成と構成 (以前のリリース)
 
@@ -32,7 +33,7 @@ Azure AD (以前のリリース) を使用して Azure Disk Encryption で使用
 [ツールをインストールして Azure に接続する](disk-encryption-key-vault.md#install-tools-and-connect-to-azure)手順については、メイン記事「[Azure Disk Encryption 用のキー コンテナーの作成と構成](disk-encryption-key-vault.md)」を参照してください。
 
 > [!Note]
-> この記事の手順は、[Azure Disk Encryption の前提条件となる CLI スクリプト](https://github.com/ejarvi/ade-cli-getting-started)と [Azure Disk Encryption の前提条件となる PowerShell スクリプト](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)で自動化されます。
+> この記事の手順は、[Azure Disk Encryption の前提条件となる CLI スクリプト](https://github.com/ejarvi/ade-cli-getting-started)および [Azure Disk Encryption の前提条件となる PowerShell スクリプト](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)に関するページで自動化されています。
 
 
 ## <a name="create-a-key-vault"></a>Key Vault を作成します 
@@ -40,7 +41,7 @@ Azure Disk Encryption は [Azure Key Vault](https://azure.microsoft.com/document
 
 
 >[!WARNING]
->暗号化シークレットがリージョンの境界を越えないようにするため、Azure Disk Encryption では Key Vault と VM を同じリージョンに併置する必要があります。 暗号化する VM と同じリージョン内に Key Vault を作成し、使用します。 
+>暗号化シークレットがリージョンの境界を超えないようにするため、Azure Disk Encryption では Key Vault と VM を同じリージョンに併置する必要があります。 暗号化する VM と同じリージョン内に Key Vault を作成し、使用します。 
 
 
 ### <a name="bkmk_KVPSH"></a> PowerShell を使用してキー コンテナーを作成する
@@ -219,7 +220,7 @@ Azure プラットフォームには、Key Vault 内の暗号化キーまたは�
 1. キー コンテナーを選択し、 **[アクセス ポリシー]** に移動し、 **[クリックして高度なアクセス ポリシーを表示する]** を選択します。
 2. **[ボリューム暗号化に対して Azure Disk Encryption へのアクセスを有効にする]** というボックスをオンにします。
 3. 必要に応じて、 **[展開に対して Azure Virtual Machines へのアクセスを有効にする]** と **[テンプレートの展開に対して Azure Resource Manager へのアクセスを有効にする]** の一方または両方をオンにします。 
-4. **[Save]** をクリックします。
+4. **[保存]** をクリックします。
 
 ![Azure Key Vault の高度なアクセス ポリシー](./media/disk-encryption/keyvault-portal-fig4.png)
 
@@ -459,6 +460,6 @@ PowerShell スクリプトを使用する前に、Azure Disk Encryption の前�
 ```
 
  
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Linux VM で Azure AD を使用して Azure Disk Encryption を有効にする (以前のリリース)](disk-encryption-linux-aad.md)

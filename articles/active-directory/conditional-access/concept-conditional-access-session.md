@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84c794e6fe751bc1c12b90353ef7b285f31a2331
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: e99b9b87f939d614679fdecf24c9d36d99bf2938
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192052"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671909"
 ---
 # <a name="conditional-access-session"></a>条件付きアクセス:Session
 
@@ -30,12 +30,12 @@ ms.locfileid: "77192052"
 
 アプリによって適用される制限の使用と構成の詳細については、以下の記事を参照してください。
 
-- [SharePoint Online での制限付きアクセスの有効化](https://docs.microsoft.com/sharepoint/control-access-from-unmanaged-devices)
+- [SharePoint Online での制限付きアクセスの有効化](/sharepoint/control-access-from-unmanaged-devices)
 - [Exchange Online での制限付きアクセスの有効化](https://aka.ms/owalimitedaccess)
 
 ## <a name="conditional-access-application-control"></a>アプリケーションの条件付きアクセス制御
 
-アプリの条件付きアクセス制御は、リバース プロキシ アーキテクチャを使用して Azure AD 条件付きアクセスと一意に統合されます。 Azure AD 条件付きアクセスによって、組織のアプリに対するアクセス制御を一定の条件に基づいて適用できます。 この条件では、条件付きアクセス ポリシーの適用先が、誰であるか (ユーザーまたはユーザーのグループ)、何であるか (どのクラウド アプリか)、どこであるか (どの場所およびネットワークか) が定義されます。 条件を決定したら、アクセス制御とセッション コントロールの適用によるアプリの条件付きアクセス制御を使用してデータを保護できる [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) にユーザーをルーティングできます。
+アプリの条件付きアクセス制御は、リバース プロキシ アーキテクチャを使用して Azure AD 条件付きアクセスと一意に統合されます。 Azure AD 条件付きアクセスによって、組織のアプリに対するアクセス制御を一定の条件に基づいて適用できます。 この条件では、条件付きアクセス ポリシーの適用先が、誰であるか (ユーザーまたはユーザーのグループ)、何であるか (どのクラウド アプリか)、どこであるか (どの場所およびネットワークか) が定義されます。 条件を決定したら、アクセス制御とセッション コントロールの適用によるアプリの条件付きアクセス制御を使用してデータを保護できる [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) にユーザーをルーティングできます。
 
 アプリの条件付きアクセス制御を使用すると、アクセス ポリシーとセッション ポリシーに基づいて、ユーザー アプリのアクセスとセッションをリアルタイムで監視および制御できるようになります。 アクセス ポリシーとセッション ポリシーは、フィルターをさらに調整し、ユーザーに対して実行されるアクションを設定するため、 Cloud App Security ポータル内で使用されます。 アクセス ポリシーとセッション ポリシーにより、以下のことが可能です。
 
@@ -46,7 +46,7 @@ ms.locfileid: "77192052"
 - アクセスをブロックする:いくつかのリスク要因に応じて、特定のアプリやユーザーのアクセスをきめ細かくブロックできます。 たとえば、それらがクライアント証明書をデバイス管理方式として使用している場合にブロックできます。
 - カスタム アクティビティをブロックする:アプリによっては、リスクを伴う固有のシナリオがあります。Microsoft Teams や Slack のようなアプリで、機密性の高いコンテンツを含むメッセージを送信するなどです。 これらの種類のシナリオでは、機密性の高いコンテンツがないかメッセージをスキャンし、リアルタイムでメッセージをブロックできます。
 
-詳細については、「[おすすめアプリのためにアプリの条件付きアクセス制御をデプロイする](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)」を参照してください。
+詳細については、「[おすすめアプリのためにアプリの条件付きアクセス制御をデプロイする](/cloud-app-security/proxy-deployment-aad)」を参照してください。
 
 ## <a name="sign-in-frequency-preview"></a>サインインの頻度 (プレビュー)
 

@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/19/2019
 ms.author: memildin
-ms.openlocfilehash: 7601a5f8abefd88de0f9a3682341c5366eec3fb0
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 069ce6ca1e76a9bd954031708702c973387abbaa
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77431063"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205995"
 ---
-# <a name="azure-container-registry-integration-with-security-center-preview"></a>Azure Container Registry と Security Center の統合 (プレビュー)
+# <a name="azure-container-registry-integration-with-security-center"></a>Azure Container Registry と Security Center の統合
 
 Azure Container Registry (ACR) は、Azure デプロイ用のコンテナー イメージを中央のレジストリに格納して管理する、プライベートなマネージド Docker レジストリ サービスです。 これは、オープンソースの Docker Registry 2.0 を基にしています。
 

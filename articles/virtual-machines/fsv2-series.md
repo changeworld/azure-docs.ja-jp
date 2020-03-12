@@ -2,17 +2,17 @@
 title: Fsv2 シリーズ - Azure Virtual Machines
 description: Fsv2 シリーズ VM の仕様。
 services: virtual-machines
-author: jonbeck7
+author: brbell
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 47ddd4733e4778493ad5e3671ae9c914176de33f
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: f28c6b61aee3c8cbc078db1c2cfb48ed1fba4554
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492408"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164850"
 ---
 # <a name="fsv2-series"></a>Fsv2 シリーズ
 
@@ -26,7 +26,11 @@ Premium Storage: サポートされています
 
 Premium Storage キャッシュ:サポートされています
 
-| Size | vCPU の数 | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
+ライブ移行:サポートされています
+
+メモリ保持更新:サポートされています
+
+| サイズ | vCPU の数 | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 |---|---|---|---|---|---|---|---|
 | Standard_F2s_v2  | 2  | 4   | 16  | 4  | 4000/31 (32)       | 3200/47    | 2/875   |
 | Standard_F4s_v2  | 4  | 8   | 32  | 8  | 8000/63 (64)       | 6400/95    | 2/1750  |

@@ -1,25 +1,18 @@
 ---
 title: cloud-init を使用して Linux VM 上のスワップ パーティションを構成する
 description: Azure CLI による作成時に cloud-init を使用して Linux VM のスワップ パーティションを構成する方法
-services: virtual-machines-linux
-documentationcenter: ''
 author: rickstercdn
 manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: fad73a7dbed9351d684ef2464cf2fa6fa3489290
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1247652e536042ee249054d86aed3c3f8e7aa7bf
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036770"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969204"
 ---
 # <a name="use-cloud-init-to-configure-a-swap-partition-on-a-linux-vm"></a>cloud-init を使用して Linux VM 上のスワップ パーティションを構成する
 この記事では、[cloud-init](https://cloudinit.readthedocs.io) を使用してさまざまな Linux ディストリビューションのスワップ パーティションを構成する方法を示します。 従来、スワップ パーティションはそれを必要とするディストリビューションに基づいて Linux エージェント (WALA) によって構成されました。  このドキュメントでは、cloud-init を使用したプロビジョニング時にスワップ パーティションをオンデマンドで構築するプロセスを概説します。  cloud-init が Azure およびサポートされている Linux ディストリビューションでネイティブに動作する方法の詳細については、[cloud-init の概要](using-cloud-init.md)に関するページをご覧ください
@@ -88,7 +81,7 @@ Filename                Type        Size    Used    Priority
 > [!NOTE] 
 > スワップ パーティションが構成された既存の Azure イメージがあり、新しいイメージのスワップ パーティション構成を変更する場合は、既存のスワップ パーティションを削除する必要があります。 詳しくは、cloud-init でプロビジョニングするためのイメージのカスタマイズに関するドキュメントをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 構成変更の cloud-init の他の例については、以下をご覧ください。
  
 - [VM に他の Linux ユーザーを追加する](cloudinit-add-user.md)

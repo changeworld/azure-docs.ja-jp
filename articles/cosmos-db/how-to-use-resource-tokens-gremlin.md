@@ -5,14 +5,14 @@ author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 443b6ea2583c7c8a1c633cf1825e83cc02bd168c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 42f3c7f3351bddab429489dccf28587549d76e18
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756066"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897846"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Gremlin SDK で Azure Cosmos DB リソース トークンを使用する
 
@@ -27,7 +27,7 @@ Apache TinkerPop Gremlin SDK には、リソース トークンを作成する�
 - **Azure Cosmos DB アカウント** - DNS が関連付けられている最上位のエンティティ (たとえば、`contoso.gremlin.cosmos.azure.com`)。
   - **Azure Cosmos DB データベース**
     - **User**
-      - **アクセス許可**
+      - **権限**
         - **トークン** - 許可または拒否するアクションを示すアクセス許可オブジェクト プロパティです。
 
 リソース トークンに使用する形式は `"type=resource&ver=1&sig=<base64 string>;<base64 string>;"` です。 この文字列はクライアントに対して非透過的であり、変更または解釈を行わずにそのまま使用する必要があります。
@@ -97,10 +97,10 @@ builder.authProperties(authenticationProperties);
 
 1 つの Gremlin アカウントで発行できるトークンの数は無制限です。 ただし、1 時間以内に同時に使用できるトークンは最大 100 個のみです。 アプリケーションが 1 時間あたりのトークン制限を超えた場合、認証要求は拒否され、次のエラー メッセージが表示されます。"Exceeded allowed resource token limit of 100 that can be used concurrently." (同時に使用できるリソース トークン制限である 100 の許容値を超えました。) 新しいトークン用にスロットを解放するために、特定のトークンを使用しているアクティブな接続を閉じることは効果的ではありません。 Azure Cosmos DB Gremlin データベース エンジンによって、認証要求の直前の 1 時間にわたって、一意のトークンが追跡されます。
 
-## <a name="permission"></a>アクセス許可
+## <a name="permission"></a>権限
 
 アプリケーションでリソース トークン使用中に発生する一般的なエラーは、"Insufficient permissions provided in the authorization header for the corresponding request. Please retry with another authorization header." (対応する要求の認証ヘッダーに与えられているアクセス許可が不十分です。別の認証ヘッダーを使用して再試行してください。) です。 Gremlin トラバーサルでエッジまたは頂点の書き込みが試みられたが、リソース トークンからは*読み取り*アクセス許可しか付与されていない場合、このエラーが返されます。 次のステップのいずれかが含まれているかどうかを確認するために、ご利用のトラバーサルを調べてください: *.addV()* 、 *.addE()* 、 *.drop()* 、 *.property()* 。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Azure Cosmos DB の[ロールベースのアクセス制御](role-based-access-control.md)
 * Azure Cosmos DB の[データへのアクセスをセキュリティで保護する方法](secure-access-to-data.md)

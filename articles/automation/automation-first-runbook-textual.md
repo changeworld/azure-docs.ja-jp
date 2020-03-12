@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/24/2018
 ms.topic: conceptual
-ms.openlocfilehash: b96860afd649f33936ee8dd2954e6873f908a369
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 16b6a0cf3e43b172667f55b1ac95e8a278769f9d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605059"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246397"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>最初の PowerShell Workflow Runbook
 
@@ -36,15 +36,15 @@ ms.locfileid: "77605059"
 
 ## <a name="step-1---create-new-runbook"></a>手順 1 - 新しい Runbook を作成する
 
-最初に、"Hello World" というテキストを出力する簡単な Runbook を作成します。
+最初に、"**Hello World**" というテキストを出力する簡単な Runbook を作成します。
 
 1. Azure ポータルで、Automation アカウントを開きます。
 
    Automation アカウント ページでは、そのアカウントのリソースを簡単に確認できます。 既に資産がいくつかあります。 これらの資産のほとんどは、新しい Automation アカウントに自動的に含まれるモジュールです。 また、サブスクリプションに関連付けられている資格情報資産も持っている必要があります。
  
 1. **[プロセス オートメーション]** の **[Runbook]** を選択し、Runbook の一覧を開きます。
-1. **[+ Runbook の作成]** を選択して、新しい Runbook を作成します。
-1. Runbook に "MyFirstRunbook-Workflow" という名前を付けます。
+1. **[Runbook の作成]** を選択して、新しい Runbook を作成します。
+1. Runbook に **MyFirstRunbook-Workflow**という名前を付けます。
 1. ここでは、[PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) を作成します。 そのため、 **[Runbook の種類]** で、 **[PowerShell ワークフロー]** を選びます。
 1. **[作成]** をクリックして Runbook を作成し、テキスト エディターを開きます。
 
@@ -77,11 +77,11 @@ Runbook を発行して運用環境で使用できるようにする前に、テ
 
 1. **[テスト] ウィンドウ**を選択して、[テスト] ウィンドウを開きます。
 1. **[開始]** をクリックしてテストを開始し、有効になっているオプションのみをテストします。
-1. [Runbook ジョブ](automation-runbook-execution.md)が作成され、その状態がウィンドウに表示されます。
+1. [Runbook ジョブ](automation-runbook-execution.md)が作成され、その状態がペインに表示されることに注意してください。
 
-   最初のジョブの状態は "キューに設定" であり、このジョブがクラウドの runbook worker が使用できるようになるのを待っていることを示します。 worker がジョブを要求すると状況は [開始中] になります。 最後に、Runbook が実際に実行を開始すると [実行中] になります。
+   ジョブの最初の状態は **キュー済み**であり、クラウドで runbook worker が使用可能になるのをジョブが待機していることを示します。 worker がジョブを要求すると、状態は **開始中** になります。 最後に、Runbook の実行が実際に開始されると、状態は **実行中** になります。
 
-1. Runbook ジョブが完了すると、[テスト] ウィンドウにその出力が表示されます。 この場合は、"Hello World" です。
+1. Runbook ジョブが完了すると、[テスト] ウィンドウにその出力が表示されます。 この場合は、"**Hello World**" です。
 
    ![Hello World](media/automation-first-runbook-textual/test-output-hello-world.png)
 
@@ -92,8 +92,8 @@ Runbook を発行して運用環境で使用できるようにする前に、テ
 作成した Runbook は、まだドラフト モードです。 運用環境で実行できるようにするには、発行する必要があります。 Runbook を発行するときは、既存の発行済みバージョンをドラフト バージョンで上書きします。 この例では、Runbook を作成したばかりなので、発行済みバージョンはまだありません。
 
 1. **[発行]** をクリックして Runbook を発行し、確認を要求されたら **[はい]** をクリックします。
-1. 左へスクロールして Runbook を **[Runbook]** ウィンドウで表示すると、 **[編集状態]** の値が [発行済み] になっています。
-1. 右にスクロールして戻り、MyFirstRunbook-Workflow のウィンドウを表示します。
+1. **Runbook** ページで左にスクロールして Runbook を表示し、 **[編集状態]** の値が **発行済み**に設定されていることを確認します。
+1. 右にスクロールして戻り、 **MyFirstRunbook-Workflow**のウィンドウを表示します。
 
    上部のオプションを使用すると、Runbook の即時開始、将来の開始スケジュールの設定、または Runbook を HTTP 呼び出しで開始できるようにする [Webhook](automation-webhooks.md) の作成を行うことができます。
 
@@ -107,17 +107,17 @@ Runbook を発行して運用環境で使用できるようにする前に、テ
 
    ![ジョブの概要](media/automation-first-runbook-textual/job-pane-status-blade-jobsummary.png)
 
-1. Runbook の状態が [完了]になったら、 **[出力]** をクリックします。 [出力] ページが開き、"Hello World" メッセージが表示されます。
+1. Runbook の状態が **[完了]** になったら、 **[出力]** をクリックします。 [出力] ページが開き、 **Hello World** メッセージが表示されます。
 
    ![ジョブの概要](media/automation-first-runbook-textual/job-pane-status-blade-outputtile.png)
 
 1. [出力] ページを閉じます。
 
-1. **[すべてのログ]** をクリックして、Runbook ジョブのストリーム ウィンドウを開きます。 出力ストリームには "Hello World" のみが表示されます。 Runbook が詳細やエラー ストリームなどに書き込んでいる場合は、[ストリーム] ウィンドウに Runbook ジョブの他のストリームも表示できます。
+1. **[すべてのログ]** をクリックして、Runbook ジョブのストリーム ウィンドウを開きます。 出力ストリームには **Hello World** のみが表示されます。 Runbook で詳細ストリームやエラー ストリームに書き込まれている場合は、[ストリーム] ペインで Runbook ジョブの他のストリームも表示できることに注意してください。
 
    ![ジョブの概要](media/automation-first-runbook-textual/job-pane-status-blade-alllogstile.png)
 
-1. [ストリーム] ウィンドウと [ジョブ] ウィンドウを閉じ、MyFirstRunbook ページに戻ります。
+1. [ストリーム] ウィンドウと [ジョブ] ウィンドウを閉じ、 **MyFirstRunbook** ページに戻ります。
 1. **[リソース]** の下の **[ジョブ]** をクリックして、この Runbook の [ジョブ] ページを開きます。 このページには、お使いの Runbook によって作成されたすべてのジョブの一覧が表示されます。 ジョブを 1 回実行しただけであるため、一覧に表示されるジョブは 1 つだけです。
 
    ![ジョブ](media/automation-first-runbook-textual/runbook-control-job-tile.png)
@@ -131,8 +131,8 @@ Runbook をテストして発行しましたが、これまでのところ役に
 >[!NOTE]
 >PowerShell Runbook の場合、**Add-AzAccount** と **Add-AzureRMAccount** は **Connect-AzAccount** の別名です。 これらのコマンドレットを使用するか、Automation アカウントの[モジュール最新バージョンに更新](automation-update-azure-modules.md)することができます。 Automation アカウントを作成したばかりのときでも、モジュールを更新する必要がある場合があります。
 
-1. [MyFirstRunbook-Workflow] ページに移動し、 **[編集]** をクリックして、テキスト エディターを開きます。
-2. **Write-Output** の行を削除します。
+1. **MyFirstRunbook-Workflow** ページに移動し、 **編集**をクリックして、テキスト エディターを開きます。
+2. `Write-Output` 行を削除します。
 3. 中かっこ内の空白行にカーソルを置きます。
 4. Automation の実行アカウントを使用して認証を処理する次のコードを入力またはコピーして貼り付けます。
 
@@ -179,7 +179,7 @@ Runbook をテストして発行しましたが、これまでのところ役に
 
 ## <a name="step-7---add-an-input-parameter-to-the-runbook"></a>手順 7 - Runbook に入力パラメーターを追加する
 
-Runbook では現在、Runbook にハードコードされている VM を起動しています。 Runbook の開始時に VM を指定できるとより便利です。 その機能を備えるために、Runbook に入力パラメーターを追加します。
+Runbook では現在、Runbook にハードコードされている VM を起動しています。 Runbook の開始時に VM を指定できるとより便利です。 その機能を提供するための入力パラメーターを Runbook に追加してみましょう。
 
 1. *VMName* と *ResourceGroupName* の値を Runbook に追加し、次の例に示すように、**Start-AzVM** コマンドレットで関連する変数を使用します。
 

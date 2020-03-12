@@ -1,5 +1,5 @@
 ---
-title: Contoso Retail データを読み込む
+title: Contoso Retail データを SQL Analytics データ ウェアハウスに読み込む
 description: PolyBase コマンドと T-SQL コマンドを使用して、Contoso Retail データの 2 つのテーブルを Azure SQL Analytics に読み込みます。
 services: sql-data-warehouse
 author: kevinvngo
@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: af505d7614b527d6dc7e1ce54136578d67824cf9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 4da4ea54de5517864567583cc6853df40b4370a9
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721168"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197302"
 ---
 # <a name="load-contoso-retail-data-to-a-sql-analytics-data-warehouse"></a>Contoso Retail データを SQL Analytics データ ウェアハウスに読み込む
 
@@ -29,12 +29,15 @@ ms.locfileid: "76721168"
 3. 読み込みの完了後、最適化を実行する。
 
 ## <a name="before-you-begin"></a>開始する前に
+
 このチュートリアルを実行するには、SQL Analytics データ ウェアハウスを既に持つ Azure アカウントが必要です。 データ ウェアハウスがプロビジョニングされていない場合は、[データ ウェアハウスの作成とサーバーレベルのファイアウォール規則の設定](create-data-warehouse-portal.md)に関する記事を参照してください。
 
-## <a name="1-configure-the-data-source"></a>1.データ ソースの構成
+## <a name="configure-the-data-source"></a>データ ソースの構成
+
 PolyBase では T-SQL 外部オブジェクトを使用して、外部データの場所と属性を定義します。 外部オブジェクトの定義は、SQL Analytics データ ウェアハウスに格納されます。 データは外部に保存されます。
 
-### <a name="11-create-a-credential"></a>1.1. 資格情報の作成
+## <a name="create-a-credential"></a>資格情報の作成
+
 Contoso のパブリック データを読み込もうとしている場合は、**この手順をスキップ**してください。 パブリック データにはだれでもアクセスできるため、セキュリティで保護されたアクセスは必要ありません。
 
 独自のデータを読み込むためにこのチュートリアルをテンプレートとして使用している場合は、**この手順をスキップしないでください**。 資格情報を使用してデータにアクセスするには、次のスクリプトを使用してデータベース スコープの資格情報を作成します。 その後、データ ソースの場所を定義するときにそれを使用します。
@@ -72,7 +75,8 @@ WITH (
 );
 ```
 
-### <a name="12-create-the-external-data-source"></a>1.2. 外部データ ソースを作成する
+## <a name="create-the-external-data-source"></a>外部データ ソースを作成する
+
 この [CREATE EXTERNAL DATA SOURCE](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql?view=sql-server-ver15) コマンドを使って、データの場所とデータ型を格納します。 
 
 ```sql
@@ -87,9 +91,9 @@ WITH
 > [!IMPORTANT]
 > Azure Blob Storage コンテナーをパブリックにすると、データがデータ センターから発信されるときに、データ所有者としてデータ送信料金が課金されることに注意してください。 
 > 
-> 
 
-## <a name="2-configure-data-format"></a>2.データ形式の構成
+## <a name="configure-the-data-format"></a>データ形式の構成
+
 データは Azure Blob Storage 内のテキスト ファイルに格納され、各フィールドは区切り記号で区切られます。 SSMS で、次の CREATE EXTERNAL FILE FORMAT コマンドを実行して、テキスト ファイル内のデータ形式を指定します。 Contoso データは圧縮されず、パイプで区切られます。
 
 ```sql
@@ -104,10 +108,10 @@ WITH
 );
 ``` 
 
-## <a name="3-create-the-external-tables"></a>3.外部テーブルの作成
+## <a name="create-the-external-tables"></a>外部テーブルの作成
 データ ソースとファイル形式を指定したので、外部テーブルを作成する準備ができました。 
 
-### <a name="31-create-a-schema-for-the-data"></a>3.1. データのスキーマを作成する
+## <a name="create-a-schema-for-the-data"></a>データのスキーマの作成
 データベースの Contoso データを格納する場所を作成するには、スキーマを作成します。
 
 ```sql
@@ -115,7 +119,8 @@ CREATE SCHEMA [asb]
 GO
 ```
 
-### <a name="32-create-the-external-tables"></a>3.2. 外部テーブルを作成する
+## <a name="create-the-external-tables"></a>外部テーブルの作成
+
 次のスクリプトを実行して、DimProduct と FactOnlineSales 外部テーブルを作成します。 ここでは、列名とデータ型を定義し、それらを Azure Blob Storage ファイルの場所と形式にバインドするだけです。 定義は SQL Analytics データ ウェアハウスに格納されますが、データはまだ Azure Storage Blob にあります。
 
 **LOCATION** パラメーターは、Azure Storage BLOB のルート フォルダーの下にあるフォルダーです。 各テーブルは、別のフォルダーにあります。
@@ -202,10 +207,11 @@ WITH
 ;
 ```
 
-## <a name="4-load-the-data"></a>4.データを読み込む
+## <a name="load-the-data"></a>データを読み込む
 外部データにはさまざまな方法でアクセスできます。  外部テーブルから直接データをクエリできます。また、そのデータをデータ ウェアハウスの新しいテーブルに読み込んだり、外部データを既存のデータ ウェアハウス テーブルに追加したりできます。  
 
-### <a name="41-create-a-new-schema"></a>4.1. 新しいスキーマを作成する
+###  <a name="create-a-new-schema"></a>新しいスキーマを作成する
+
 CTAS により、データを含む新しいテーブルが作成されます。  最初に、contoso データのスキーマを作成します。
 
 ```sql
@@ -213,7 +219,8 @@ CREATE SCHEMA [cso]
 GO
 ```
 
-### <a name="42-load-the-data-into-new-tables"></a>4.2. データを新しいテーブルに読み込む
+### <a name="load-the-data-into-new-tables"></a>データを新しいテーブルに読み込む
+
 Azure Blob Storage からデータ ウェアハウス テーブルにデータを読み込むには、[CREATE TABLE AS SELECT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=aps-pdw-2016-au7) ステートメントを使用します。 [CTAS](sql-data-warehouse-develop-ctas.md) による読み込みでは、自分で作成した厳密に型指定された外部テーブルを使用します。 新しいテーブルにデータを読み込む場合は、テーブルごとに 1 つの CTAS ステートメントを使用してください。 
  
 CTAS により新しいテーブルが作成され、select ステートメントの結果が設定されます。 CTAS では、select ステートメントの結果と同じ列とデータ型が保持されるように、新しいテーブルが定義されます。 外部テーブルからすべての列を選択すると、新しいテーブルは、外部テーブルの列とデータ型のレプリカになります。
@@ -228,7 +235,8 @@ CREATE TABLE [cso].[DimProduct]            WITH (DISTRIBUTION = HASH([ProductKey
 CREATE TABLE [cso].[FactOnlineSales]       WITH (DISTRIBUTION = HASH([ProductKey]  ) ) AS SELECT * FROM [asb].[FactOnlineSales]        OPTION (LABEL = 'CTAS : Load [cso].[FactOnlineSales]        ');
 ```
 
-### <a name="43-track-the-load-progress"></a>4.3 読み込みの進行状況を追跡する
+### <a name="track-the-load-progress"></a>読み込みの進行状況の追跡
+
 読み込みの進捗状況を追跡するには、動的管理ビュー (DMV) を使用します。 
 
 ```sql
@@ -264,7 +272,8 @@ ORDER BY
     gb_processed desc;
 ```
 
-## <a name="5-optimize-columnstore-compression"></a>5.列ストア圧縮の最適化
+## <a name="optimize-columnstore-compression"></a>列ストア圧縮の最適化
+
 既定では、SQL Analytics データ ウェアハウスには、テーブルがクラスター化列ストア インデックスとして格納されます。 読み込みの完了時、一部のデータ行が、列ストアに圧縮されない可能性があります。  これが発生する理由はさまざまです。 詳しくは、[列ストア インデックスの管理](sql-data-warehouse-tables-index.md)に関するページをご覧ください。
 
 読み込み後のクエリのパフォーマンスと列ストア圧縮を最適化するには、列ストア インデックスですべての行が強制的に圧縮されるようにテーブルを再構築します。 
@@ -279,7 +288,8 @@ ALTER INDEX ALL ON [cso].[FactOnlineSales]          REBUILD;
 
 列ストア インデックスの保守の詳細については、 [列ストア インデックスの管理](sql-data-warehouse-tables-index.md) に関する記事をご覧ください。
 
-## <a name="6-optimize-statistics"></a>6.統計の最適化
+## <a name="optimize-statistics"></a>統計の最適化
+
 読み込みの直後に単一列の統計を作成することをお勧めします。 クエリ述語に含まれない列があることがわかっている場合は、その列に対する統計の作成はスキップできます。 すべての列に対して単一列の統計を作成する場合は、すべての統計の再構築に時間がかかる場合があります。 
 
 すべてのテーブルのすべての列で単一列の統計を作成する場合は、[統計に関する記事](sql-data-warehouse-tables-statistics.md)のストアド プロシージャのコード サンプル `prc_sqldw_create_stats` を使うことができます。
@@ -329,7 +339,7 @@ CREATE STATISTICS [stat_cso_FactOnlineSales_StoreKey] ON [cso].[FactOnlineSales]
 ```
 
 ## <a name="achievement-unlocked"></a>結果
-パブリック データが SQL Analytics データ ウェアハウスに正常に読み込まれました。 すばらしい結果です。
+パブリック データがデータ ウェアハウスに正常に読み込まれました。 すばらしい結果です。
 
 これで、テーブルのクエリを開始して、データを探索することができます。 ブランドごとの売上合計を調べるには、次のクエリを実行します。
 
@@ -342,5 +352,5 @@ GROUP BY p.[BrandName]
 ```
 
 ## <a name="next-steps"></a>次のステップ
-完全なデータ セットを読み込むには、Microsoft SQL Server のサンプル リポジトリから[完全な Contoso Retail Data Warehouse を読み込む](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md)例を実行します。
+完全なデータ セットを読み込むには、Microsoft SQL Server のサンプル リポジトリから[完全な Contoso Retail データ ウェアハウスを読み込む](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md)例を実行します。
 開発に関するその他のヒントについては、[データ ウェアハウスの設計上の決定とコーディング技法](sql-data-warehouse-overview-develop.md)に関する記事を参照してください。

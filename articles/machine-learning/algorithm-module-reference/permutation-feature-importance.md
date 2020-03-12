@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 9ef859cce68e13f5207d77d8396bc69ddbbce339
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.date: 02/24/2020
+ms.openlocfilehash: 8611abd4e504e0378b744b12d0adb5fa22f5476b
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314948"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920367"
 ---
 # <a name="permutation-feature-importance"></a>順列の特徴量の重要度
 
-この記事では、Azure Machine Learning デザイナーで順列の特徴量の重要度モジュールを使用して、実際のデータセットに対する一連の特徴量の重要度スコアを計算する方法について説明します。 これらのスコアは、モデルで使用する最適な特徴を決定するために使用します。
+この記事では、Azure Machine Learning デザイナー (プレビュー) で Permutation Feature Importance (順列の特徴量の重要度) モジュールを使用して、実際のデータセットに対する一連の特徴量の重要度スコアを計算する方法について説明します。 これらのスコアは、モデルで使用する最適な特徴を決定するために使用します。
 
 このモジュールでは、特徴の値は一度に 1 列ずつランダムにシャッフルされます。 その前後のモデルのパフォーマンスが測定されます。 標準メトリックの 1 つを選択してパフォーマンスを測定できます。
 
@@ -46,7 +46,7 @@ ms.locfileid: "76314948"
 
     -   **分類**
 
-        精度、正確度、リコール、平均ログ損失  
+        正確性、精度、リコール  
 
     -   **Regression** (回帰)
 

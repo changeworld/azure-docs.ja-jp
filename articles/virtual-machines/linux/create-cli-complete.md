@@ -1,26 +1,17 @@
 ---
 title: Azure CLI を使用して Linux 環境を作成する
 description: Azure CLI を使用して、ストレージ、Linux VM、仮想ネットワークとサブネット、ロード バランサー、NIC、パブリック IP、ネットワーク セキュリティ グループすべてを新しく作成します。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 4ba4060b-ce95-4747-a735-1d7c68597a1a
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 56b476c431ed8b41f04b1a1c11c730e5260ade8d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7ee4674f5e7c04709256459c3417a1379a65aedc
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036541"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969560"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Azure CLI を使用した完全な Linux 仮想マシンの作成
 必要なサポート リソースすべてを既定値で作成する単一の Azure CLI コマンドを使用すると、Azure で仮想マシン (VM) を短時間で作成することができます。 仮想ネットワーク、パブリック IP アドレス、ネットワーク セキュリティ グループの規則などのリソースが自動的に作成されます。 実稼働用に環境をより細かく制御する場合は、こうしたリソースを先に作成してから、作成したリソースに VM を追加します。 この記事では、VM の作成方法、および各サポート リソースを 1 つずつ作成する方法を説明します。
@@ -577,5 +568,5 @@ az group deployment create \
 
 [テンプレートからデプロイする方法に関する詳細](../../resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をご確認ください。 段階的な環境の更新、パラメーター ファイルの使用、単一の保存場所からテンプレートにアクセスする方法を確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 これで、複数のネットワーク コンポーネントと VM の操作を開始する準備が整いました。 ここで紹介した主要なコンポーネントを使用して、アプリケーションを構築するためにこのサンプル環境を使用できます。

@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: helohr
-ms.openlocfilehash: ee641a694371ffd3fbc691a05edac707e37e959d
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+manager: lizross
+ms.openlocfilehash: a2ff3f6fa9896e45ecd6ab40d40d46a046edf1cb
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607340"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127389"
 ---
 # <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop"></a>Windows Virtual Desktop で Windows 7 仮想マシンのトラブルシューティングを行う
 
@@ -39,7 +40,7 @@ Windows Virtual Desktop でリモート デスクトップ ユーザー グル�
 
 このエラーを解決するには、リモート デスクトップ ユーザー グループにユーザーを追加します。
 
-1. Azure Portal を開きます。
+1. Azure portal を開きます。
 2. エラー メッセージが表示された仮想マシンを選択します。
 3. **[コマンドの実行]** を選択します。
 4. `<username>` を、追加するユーザーの名前に置き換えて、次のコマンドを実行します。

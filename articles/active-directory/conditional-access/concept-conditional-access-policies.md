@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87224c9e3e697b86aab51d1e922af8ab2130ac40
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 2d2ebcc885b4018f4d9c3ff1b525ffc19b1abdda
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186229"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671925"
 ---
 # <a name="building-a-conditional-access-policy"></a>条件付きアクセス ポリシーの構築
 
@@ -131,6 +131,6 @@ ms.locfileid: "77186229"
 
 [クラウド ベースの Azure Multi-Factor Authentication のデプロイの計画](../authentication/howto-mfa-getstarted.md)
 
-[Intune でのデバイス コンプライアンスの管理](https://docs.microsoft.com/intune/device-compliance-get-started)
+[Intune でのデバイス コンプライアンスの管理](/intune/device-compliance-get-started)
 
-[Microsoft Cloud App Security と条件付きアクセス](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+[Microsoft Cloud App Security と条件付きアクセス](/cloud-app-security/proxy-intro-aad)

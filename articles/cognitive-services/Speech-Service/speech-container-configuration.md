@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/07/2019
+ms.date: 03/09/2020
 ms.author: dapine
-ms.openlocfilehash: 34b4664ec13f7ba1871433e37d86170b2207a17a
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: dd5a531e4a979cba9c2a766c7774762a0427ad02
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816562"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037322"
 ---
 # <a name="configure-speech-service-containers"></a>Speech Service コンテナーを構成する
 
@@ -52,7 +52,7 @@ Speech コンテナーでは、堅牢なクラウド機能とエッジの局所�
 
 | 必須 | 名前 | データ型 | 説明 |
 | -------- | ---- | --------- | ----------- |
-| はい | `Billing` | string | 課金エンドポイント URI。 課金 URI の取得の詳細については、「[必須パラメーターの収集](speech-container-howto.md#gathering-required-parameters)」を参照してください。 リージョンのエンドポイントの詳細および全一覧については、「[Cognitive Services のカスタム サブドメイン名](../cognitive-services-custom-subdomains.md)」を参照してください。 |
+| はい | `Billing` | String | 課金エンドポイント URI。 課金 URI の取得の詳細については、「[必須パラメーターの収集](speech-container-howto.md#gathering-required-parameters)」を参照してください。 リージョンのエンドポイントの詳細および全一覧については、「[Cognitive Services のカスタム サブドメイン名](../cognitive-services-custom-subdomains.md)」を参照してください。 |
 
 ## <a name="eula-setting"></a>Eula 設定
 
@@ -80,8 +80,8 @@ Speech コンテナーでは、堅牢なクラウド機能とエッジの局所�
 
 | 省略可能 | 名前 | データ型 | 説明 |
 | -------- | ---- | --------- | ----------- |
-| 禁止 | `Input` | string | 標準的な音声コンテナーでは、これは使用されません。 カスタム音声コンテナーでは、[ボリュームのマウント](#volume-mount-settings)が使用されます。                                                                                    |
-| 省略可能 | `Output` | string | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output` |
+| 禁止 | `Input` | String | 標準的な音声コンテナーでは、これは使用されません。 カスタム音声コンテナーでは、[ボリュームのマウント](#volume-mount-settings)が使用されます。                                                                                    |
+| 省略可能 | `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output` |
 
 ## <a name="volume-mount-settings"></a>ボリュームのマウントの設定
 
@@ -115,7 +115,7 @@ Speech コンテナーでは、堅牢なクラウド機能とエッジの局所�
 
 { _<引数名>_ } はお客様独自の値に置き換えてください。
 
-| プレースホルダー | 値 | 形式または例 |
+| プレースホルダー | Value | 形式または例 |
 | ----------- | ----- | ----------------- |
 | **{API_KEY}** | Azure `Speech` の [キー] ページの `Speech` リソースのエンドポイント キー。   | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`                                                                                  |
 | **{ENDPOINT_URI}** | 課金エンドポイントの値は、Azure `Speech` の [概要] ページで確認できます。 | 明示的な例が必要であれば、[必須パラメーターの収集](speech-container-howto.md#gathering-required-parameters)に関するページを参照してください。 |
@@ -130,7 +130,7 @@ Speech コンテナーでは、堅牢なクラウド機能とエッジの局所�
 
 次の Docker の例は、音声コンテナーに関するものです。
 
-## <a name="speech-to-texttabstt"></a>[音声テキスト変換](#tab/stt)
+## <a name="speech-to-text"></a>[音声テキスト変換](#tab/stt)
 
 ### <a name="basic-example-for-speech-to-text"></a>音声テキスト変換の基本的な例
 
@@ -153,7 +153,7 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="custom-speech-to-texttabcstt"></a>[カスタム音声テキスト変換](#tab/cstt)
+## <a name="custom-speech-to-text"></a>[カスタム音声変換](#tab/cstt)
 
 ### <a name="basic-example-for-custom-speech-to-text"></a>カスタム音声テキスト変換の基本的な例
 
@@ -180,7 +180,7 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="text-to-speechtabtss"></a>[テキスト読み上げ](#tab/tss)
+## <a name="text-to-speech"></a>[テキスト読み上げ](#tab/tss)
 
 ### <a name="basic-example-for-text-to-speech"></a>テキスト読み上げの基本的な例
 
@@ -203,7 +203,7 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="custom-text-to-speechtabctts"></a>[カスタム テキスト読み上げ](#tab/ctts)
+## <a name="custom-text-to-speech"></a>[カスタム テキスト読み上げ](#tab/ctts)
 
 ### <a name="basic-example-for-custom-text-to-speech"></a>カスタム テキスト読み上げの基本的な例
 
@@ -232,6 +232,6 @@ Logging:Console:LogLevel:Default=Information
 
 ---
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [コンテナーのインストール方法と実行方法](speech-container-howto.md)を確認する。

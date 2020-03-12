@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: 69c32370b1f7f7cabb642ab140d69dcec57fb4aa
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 58ae39e8dfdf918ae14ca9bb8dac28405828999e
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551983"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330959"
 ---
 # <a name="verifying-expressroute-connectivity"></a>ExpressRoute 接続の検証
 この記事は、ExpressRoute 接続の検証とトラブルシューティングに役立ちます。 ExpressRoute は、接続プロバイダーが一般的に提供するプライベート接続を介して、オンプレミス ネットワークを Microsoft クラウドへと拡張します。 ExpressRoute 接続には従来、次の 3 つの異なるネットワーク ゾーンが含まれます。
@@ -275,7 +275,7 @@ ExpressRoute ピアリングの ARP テーブルの表示方法、およびこ�
 ## <a name="confirm-the-traffic-flow"></a>トラフィック フローを確認する
 ピアリング コンテキストのプライマリ パスとセカンダリ パスを組み合わせたトラフィックの統計情報 (入出力バイト数) を取得するには、次のコマンドを使用します。
 
-    Get-AzureDedicatedCircuitStats -ServiceKey 97f85950-01dd-4d30-a73c-bf683b3a6e5c -AccessType Private
+    Get-AzExpressRouteCircuitStats -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -PeeringType 'AzurePrivatePeering'
 
 コマンドの出力例は次のとおりです。
 

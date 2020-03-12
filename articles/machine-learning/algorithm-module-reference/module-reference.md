@@ -9,12 +9,12 @@ ms.topic: reference
 author: peterclu
 ms.author: peterlu
 ms.date: 02/22/2020
-ms.openlocfilehash: ece4b7a85ff5738900b8f999cc2f14ba35ecab0d
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 334cf69db70e8a1e0c2994c492f15ff44505af0d
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920095"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673373"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナーのアルゴリズムとモジュールのリファレンス (プレビュー)
 
@@ -57,7 +57,7 @@ ms.locfileid: "77920095"
 | R 言語 | コードを記述し、それをモジュール内に埋め込んで、R をパイプラインと統合します。 | [R スクリプトの実行](execute-r-script.md) |
 | Text Analytics | 構造化テキストと非構造化テキストの両方を操作するための特別な計算ツールを提供します。 | [テキストからの N Gram 特徴抽出](extract-n-gram-features-from-text.md) <br/> [特徴ハッシュ](feature-hashing.md) <br/> [テキストの前処理](preprocess-text.md) |
 | 推奨 | 推奨モデルを構築します。 | [レコメンダーの評価](evaluate-recommender.md) <br/> [SVD レコメンダーのスコア付け](score-svd-recommender.md) <br/> [SVD レコメンダーのトレーニング](train-SVD-recommender.md) |
-| 異常検出 | 異常検出モデルを構築します。 | [PCA ベースの異常検出](pca-based-anomaly-detection.md) <br/> [異常検出モデルのトレーニング](train-anomaly-detection-model.md) |
+
 
 ## <a name="error-messages"></a>エラー メッセージ
 

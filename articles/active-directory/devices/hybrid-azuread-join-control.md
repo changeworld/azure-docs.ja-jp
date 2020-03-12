@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2c1a088e4c200dcc4a2ff35db942e3eb8480674
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c6bb57a60b2ed3b39bf83154d3afea88071efbac
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512093"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672420"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加の検証を制御する
 
@@ -82,13 +82,13 @@ AD で SCP オブジェクトを変更するには、Active Directory サービ�
 AD FS を使用している場合は、まず、上記の手順を使用して、GPO を AD FS サーバーにリンクすることで、クライアント側の SCP を構成する必要があります。 SCP オブジェクトで、デバイス オブジェクトの権限のソースを定義します。 オンプレミスまたは Azure AD を指定できます。 クライアント側 SCP が AD FS 用に構成されている場合、デバイス オブジェクトのソースは Azure AD として確立されます。
 
 > [!NOTE]
-> AD FS サーバー上でクライアント側の SCP を構成できなかった場合、デバイス ID のソースはオンプレミスと見なされます。 ADFS は、ADFS デバイスの登録の属性 "MaximumInactiveDays" で定義された期間が経過した後、オンプレミスのディレクトリからデバイス オブジェクトの削除を開始します。 ADFS デバイスの登録オブジェクトは、[Get-AdfsDeviceRegistration コマンドレット](https://docs.microsoft.com/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps)を使用して見つけることができます。
+> AD FS サーバー上でクライアント側の SCP を構成できなかった場合、デバイス ID のソースはオンプレミスと見なされます。 ADFS は、ADFS デバイスの登録の属性 "MaximumInactiveDays" で定義された期間が経過した後、オンプレミスのディレクトリからデバイス オブジェクトの削除を開始します。 ADFS デバイスの登録オブジェクトは、[Get-AdfsDeviceRegistration コマンドレット](/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps)を使用して見つけることができます。
 
 ## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>ダウンレベルの Windows デバイスでハイブリッド Azure AD 参加の制御された検証
 
 ダウンレベルの Windows デバイスを登録するには、組織で Microsoft ダウンロード センターから入手可能な [Microsoft Workplace Join for non-Windows 10 computers](https://www.microsoft.com/download/details.aspx?id=53554) をインストールする必要があります。
 
- [Microsoft Endpoint Configuration Manager](https://docs.microsoft.com/configmgr/) などのソフトウェア ディストリビューション システムを使用して、このパッケージをデプロイできます。 パッケージは、quiet パラメーターを使用する、標準のサイレント インストール オプションをサポートしています。 Configuration Manager の Current Branch には、完了した登録を追跡する機能など、以前のバージョンにはない利点が追加されています。
+ [Microsoft Endpoint Configuration Manager](/configmgr/) などのソフトウェア ディストリビューション システムを使用して、このパッケージをデプロイできます。 パッケージは、quiet パラメーターを使用する、標準のサイレント インストール オプションをサポートしています。 Configuration Manager の Current Branch には、完了した登録を追跡する機能など、以前のバージョンにはない利点が追加されています。
 
 インストーラーによって、ユーザー コンテキストで実行されるシステムにスケジュール済みタスクが作成されます。 このタスクは、ユーザーが Windows にサインインするとトリガーされます。 Azure AD によって認証が行われた後、ユーザーの資格情報を使ってサイレントにデバイスが Azure AD に登録されます。
 

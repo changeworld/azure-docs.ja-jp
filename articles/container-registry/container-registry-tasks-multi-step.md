@@ -3,12 +3,12 @@ title: イメージのビルド、テスト、修正プログラムの適用を�
 description: Azure Container Registry の ACR タスクの機能である、複数ステップのタスクの概要。これは、クラウドでコンテナー イメージのビルド、テスト、修正プログラムの適用を行うためのタスク ベースのワークフローを提供するものです。
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: cf5f90263c75aeb96220967142d28995209f2d86
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 0dcd38559d3f50715f982de4c9c80bfe9c6c8433
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945666"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399702"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>ACR タスクでビルド、テスト、および修正プログラムの適用を行うマルチ ステップ タスクを実行する
 
@@ -95,8 +95,11 @@ az acr run --registry <acrName> -f build-push-hello-world.yaml https://github.co
 
 タスクを実行すると、出力には、YAML ファイルで定義されている各ステップの進行状況が表示されるはずです。 次の出力では、ステップは `acb_step_0` および `acb_step_1` として表示されています。
 
-```console
-$ az acr run --registry myregistry -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
+```azurecli
+az acr run --registry myregistry -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
+```
+
+```output
 Sending context to registry: myregistry...
 Queued a run with ID: yd14
 Waiting for an agent...

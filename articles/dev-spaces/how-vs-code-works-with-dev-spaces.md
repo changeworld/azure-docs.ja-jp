@@ -5,12 +5,12 @@ ms.date: 07/08/2019
 ms.topic: conceptual
 description: Visual Studio Code と Azure Dev Spaces による、Kubernetes アプリケーションのデバッグと迅速な反復処理の支援について説明します。
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: f7fbcdd36e9c0db74a71a50cb7cde44484e6c555
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b6ab1330399ab2eb7afc9be61a7767a22ca82320
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438378"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942483"
 ---
 # <a name="how-visual-studio-code-works-with-azure-dev-spaces"></a>Visual Studio Code と Azure Dev Spaces が連動するしくみ
 
@@ -54,7 +54,7 @@ Visual Studio Code と Azure Dev Spaces 拡張機能の Azure Dev Spaces との�
 
 [azds-extension]: https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds
 [azds-yaml]: how-dev-spaces-works.md#prepare-your-code
-[csharp-extension]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp
+[csharp-extension]: https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp
 [java-extension]: https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debugger-azds
 [maven]: https://maven.apache.org
 [quickstart-java]: quickstart-java.md

@@ -13,18 +13,14 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 9db359d8331859e3eebf345d91fe5dc6e66c0d4c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: c2e24e9dea2c8463294c85f04c9e4d7d2da17261
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774588"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330653"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-nodejs-and-the-azureservice-bus-package"></a>クイック スタート:Node.js および azure/service-bus パッケージで Service Bus キューを 使用する方法
-> [!div class="op_multi_selector" title1="プログラミング言語" title2="Node.js パッケージ"]
-> - [(Node.js | azure-sb)](service-bus-nodejs-how-to-use-queues.md)
-> - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-queues-new-package.md)
-
 このチュートリアルでは、新しい [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) パッケージを使用して Service Bus キューとの間でメッセージを送受信する Node.js プログラムの記述方法を学習します。 このパッケージではより高速な [AMQP 1.0 プロトコル](service-bus-amqp-overview.md)が使用されます。一方、以前の [azure-sb](https://www.npmjs.com/package/azure-sb) パッケージでは [Service Bus REST ランタイム API](/rest/api/servicebus/service-bus-runtime-rest) が使用されていました。 サンプルは JavaScript で記述されています。
 
 ## <a name="prerequisites"></a>前提条件

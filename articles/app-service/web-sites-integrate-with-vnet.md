@@ -7,43 +7,19 @@ ms.topic: article
 ms.date: 02/27/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 76139716fe11536faa0ff792185ba1643801c641
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 89aa78e0d26598eacf436ca88cc6c5549f91d2fc
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649032"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673220"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>アプリを Azure 仮想ネットワークに統合する
 このドキュメントでは、Azure App Service の仮想ネットワーク統合機能と、それを [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) のアプリで設定する方法について説明します。 [Azure Virtual Network][VNETOverview] (VNet) を使用すると、多くの Azure リソースをインターネットでルーティングできないネットワークに配置できます。  
 
-Azure App Service には、次の 2 つのバリエーションがあります。 
+Azure App Service には、次の 2 つのバリエーションがあります。
 
-1. Isolated を除くすべての価格プランをサポートするマルチテナント システム
-2. VNet にデプロイされ、Isolated 価格プランのアプリをサポートする App Service Environment (ASE)
-
-このドキュメントでは、マルチ テナント App Service での使用に向けた VNet 統合機能について説明します。 アプリが [App Service Environment][ASEintro] 内にある場合、そのアプリは既に VNet 内に存在するため、同じ VNet 内のリソースに到達するために VNet 統合機能を使用する必要はありません。 App Service のすべてのネットワーク機能の詳細については、[App Service のネットワーク機能](networking-features.md)に関するページを参照してください。
-
-VNet 統合により、Web アプリから仮想ネットワーク内のリソースにアクセスできるようになりますが、VNet からその Web アプリへのインバウンド プライベート アクセスは付与されません。 プライベート サイト アクセスとは、Azure 仮想ネットワークなどプライベート ネットワークのみからアプリにアクセスできるようにすることです。 Vnet 統合は、アプリから VNet への送信呼び出しを行うためにのみ存在します。 VNet 統合機能は、同じリージョンの VNet と使用する場合と、他のリージョンの VNet で使用する場合で動作が異なります。 VNet 統合機能には 2 つのバリエーションがあります。
-
-1. リージョン VNet 統合 - 同じリージョンで Resource Manager VNet に接続する場合は、統合先の VNet に専用のサブネットが必要です。 
-2. ゲートウェイが必要な VNet 統合 - 他のリージョンの VNet または同じリージョンのクラシック VNet に接続する場合、ターゲット VNet にプロビジョニングされた Virtual Network ゲートウェイが必要です。
-
-以下は、VNet 統合機能の特徴です。
-
-* Standard、Premium、PremiumV2、または Elastic Premium の価格プランが必要 
-* TCP と UDP をサポート
-* App Service アプリや関数アプリで動作可能
-
-以下に、VNet 統合でサポートされていないことの例を示します。
-
-* ドライブのマウント
-* AD 統合 
-* NetBIOS
-
-ゲートウェイが必要な VNet 統合では、ターゲット VNet 内、またはピアリングまたは VPN を使用してターゲット VNet に接続されているネットワーク内のリソースのみにアクセスできます。 ゲートウェイが必要な VNet 統合では、ExpressRoute 接続全体で利用可能なリソースへのアクセスを有効にしたり、サービス エンドポイントと連携したりできません。 
-
-使用されているバージョンには関係なく、Vnet 統合は Web アプリに仮想ネットワーク内のリソースへのアクセス権を付与しますが、仮想ネットワークから Web アプリへの受信プライベート アクセス権は付与しません。 プライベート サイト アクセスとは、Azure 仮想ネットワークなどプライベート ネットワークのみからアプリにアクセスできるようにすることです。 Vnet 統合は、アプリから VNet への送信呼び出しを行うためにのみ存在します。 
+[!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-types.md)]
 
 ## <a name="enable-vnet-integration"></a>VNET 統合を有効にする 
 
@@ -71,69 +47,7 @@ VNet に統合されたアプリは、VNet が構成されているのと同じ 
 
 ## <a name="regional-vnet-integration"></a>リージョン VNet 統合
 
-リージョン VNet 統合を使用すると、アプリは次のものにアクセスできるようになります。
-
-* 統合するのと同じリージョン内の VNet 内のリソース 
-* 同じリージョンにある VNet とピアリングされた VNet 内のリソース
-* サービス エンドポイントでセキュリティ保護されたサービス
-* ExpressRoute 接続にまたがるリソース
-* 接続されている VNet 内のリソース
-* ExpressRoute 接続を含むピアリングされた接続にまたがるリソース
-* プライベート エンドポイント 
-
-同じリージョンの VNet との VNet 統合を使用する場合は、次の Azure ネットワーク機能を使用できます。
-
-* ネットワーク セキュリティ グループ (NSG) - 統合サブネットに配置されているネットワーク セキュリティ グループを使用して送信トラフィックをブロックできます。 VNet 統合を使用して Web アプリへの受信アクセスを提供できないため、受信規則は適用されません。
-* ルート テーブル (UDR) - 統合サブネットにルート テーブルを配置し、必要な場所に送信トラフィックを送信できます。 
-
-既定では、アプリは RFC1918 トラフィックのみを VNet にルーティングします。 すべての送信トラフィックを VNet にルーティングする場合は、アプリの設定 WEBSITE_VNET_ROUTE_ALL をアプリに適用します。 アプリ設定を構成するには、次のようにします。
-
-1. アプリ ポータルの [構成] UI にアクセスします。 **[新しいアプリケーション設定]** を選択します
-1. [名前] フィールドに「**WEBSITE_VNET_ROUTE_ALL**」、[値] フィールドに「**1**」と入力します。
-
-   ![アプリケーション設定を指定する][4]
-
-1. **[OK]** を選択します。
-1. **[保存]** を選びます。
-
-すべての送信トラフィックを VNet にルーティングする場合は、統合サブネットに適用される NSG と UDR の対象となります。 すべての送信トラフィックを VNet にルーティングすると、トラフィックを他の場所に送信するためのルートを指定しない限り、送信アドレスはアプリのプロパティに一覧表示される送信アドレスになります。 
-
-同じリージョンの VNet との VNet 統合を使用する場合、いくつかの制限があります。
-
-* グローバル ピアリング接続にまたがるリソースには到達できません。
-* この機能は、PremiumV2 の App Service プランをサポートする新しい App Service スケール ユニットからのみ使用できます。
-* 統合サブネットは、1 つの App Service プランでしか使用できません。
-* この機能は、App Service Environment にある Isolated プランのアプリでは使用できません。
-* この機能では、Resource Manager VNet 内に 32 個以上のアドレスを含む /27 である未使用のサブネットが必要です。
-* アプリと VNet は同じリージョンに存在する必要があります。
-* 統合アプリで VNet を削除することはできません。 VNet を削除する前に統合を削除してください。 
-* Web アプリと同じサブスクリプション内 VNet とのみ統合できます
-* App Service プランごとに 1 リージョンの VNet 統合のみを持つことができます。 同じ App Service プラン内の複数のアプリが同じ VNet を使用できます。 
-* リージョン VNet 統合を使用しているアプリがあるときに、アプリまたは App Service プランのサブスクリプションを変更することはできません
-
-App Service プランのインスタンスごとに 1 つのアドレスが使用されます。 アプリを 5 つのインスタンスにスケールする場合は、5 つのアドレスが使用されます。 割り当てた後はサブネット サイズを変更できないため、アプリが到達する可能性のあるスケールに対応できるだけの十分な大きさを持つサブネットを使用する必要があります。 推奨されるサイズは、64 のアドレスを持つ /26 です。 64 のアドレスを持つ /26 は、Premium App Service プランの 30 インスタンスに対応します。 App Service プランをスケールアップまたはスケールダウンする場合は、短時間に 2 倍の数のアドレスが必要になります。 
-
-別の App Service プランのアプリで、別の App Service プランのアプリから既に接続されている VNet に到達するようにしたい場合は、既存の VNet 統合によって使用されているものとは異なるサブネットを選択する必要があります。  
-
-この機能は、Linux ではプレビュー段階にあります。 Linux 形式の機能では、RFC 1918 アドレス (10.0.0.0/8、172.16.0.0/12、192.168.0.0/16) への呼び出しのみがサポートされます。
-
-### <a name="web-app-for-containers"></a>Web App for Containers
-
-Linux 上の App Service を組み込みイメージで使用する場合、リージョン VNet 統合は追加の変更なしで機能します。 Web App for Containers を使用している場合は、VNet 統合を使用するために docker イメージを変更する必要があります。 docker イメージで、ハードコーディングされたポート番号を使用するのではなく、メイン Web サーバーのリスニング ポートとして PORT 環境変数を使用します。 PORT 環境変数は、コンテナーの起動時に App Service プラットフォームによって自動的に設定されます。 SSH を使用している場合は、リージョン VNet 統合を使用するときに SSH_PORT 環境変数で指定されたポート番号でリッスンするように SSH デーモンを構成する必要があります。  Linux では、ゲートウェイが必要な VNet 統合はサポートされていません。 
-
-### <a name="service-endpoints"></a>サービス エンドポイント
-
-リージョン VNet 統合では、サービス エンドポイントを使用できます。  アプリでサービス エンドポイントを使用するには、リージョン VNet 統合を使用し、選択した VNet に接続してから、統合に使用したサブネット上のサービス エンドポイントを構成します。 
-
-### <a name="network-security-groups"></a>ネットワーク セキュリティ グループ
-
-ネットワーク セキュリティ グループを使用すると、VNet 内のリソースへの受信および送信トラフィックをブロックできます。 リージョン VNet 統合を使用する Web アプリでは、[ネットワーク セキュリティ グループ][VNETnsg]を使用して、VNet またはインターネット内のリソースへの送信トラフィックをブロックできます。 パブリック アドレスへのトラフィックをブロックするには、WEBSITE_VNET_ROUTE_ALL アプリケーション設定を 1 に設定する必要があります。 NSG の受信規則はアプリに適用されません。これは、VNet 統合がアプリからの送信トラフィックにのみ影響するためです。 Web アプリへの受信トラフィックを制御するには、アクセス制限機能を使用します。 統合サブネットに適用される NSG は、統合サブネットに適用されているルートに関係なく有効になります。 WEBSITE_VNET_ROUTE_ALL が 1 に設定されていて、統合サブネットでパブリック アドレス トラフィックに影響を与えるルートがない場合、すべての送信トラフィックは、統合サブネットに割り当てられた NSG の対象となります。 WEBSITE_VNET_ROUTE_ALL が設定されていない場合、NSG は RFC1918 トラフィックにのみ適用されます。
-
-### <a name="routes"></a>ルート
-
-ルート テーブルを使用すると、アプリからの送信トラフィックを任意の場所にルーティングすることができます。 既定では、ルート テーブルは、RFC1918 の送信先トラフィックにのみ影響します。  WEBSITE_VNET_ROUTE_ALL を 1 に設定すると、すべての送信呼び出しが影響を受けます。 統合サブネットで設定されているルートは、受信アプリ要求への応答には影響しません。 一般的な宛先には、ファイアウォール デバイスまたはゲートウェイを含めることができます。 オンプレミスのすべての送信トラフィックをルーティングする場合は、ルート テーブルを使用して、すべての送信トラフィックを ExpressRoute ゲートウェイに送信できます。 ゲートウェイにトラフィックをルーティングする場合は、外部ネットワークのルートを設定して、応答を返信するようにしてください。
-
-Border Gateway Protocol (BGP) ルートもアプリのトラフィックに影響を与えます。 ExpressRoute ゲートウェイのようなものから BGP ルートを使用している場合は、アプリの送信トラフィックが影響を受けます。 既定では、BGP ルートは、RFC1918 の送信先トラフィックにのみ影響します。 WEBSITE_VNET_ROUTE_ALL が 1 に設定されている場合、すべての送信トラフィックは、BGP ルートの影響を受ける可能性があります。 
+[!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-regional.md)]
 
 ### <a name="how-regional-vnet-integration-works"></a>リージョン VNET 統合のしくみ
 
@@ -230,72 +144,8 @@ ASP VNet 統合 UI には、ASP でアプリが使用しているすべての VN
 * VPN Gateway のコスト - ポイント対サイト VPN に必要な VNet ゲートウェイに対してコストが発生します。 これらの詳細は、「[VPN Gateway の価格][VNETPricing]」のページに記載されています。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
-この機能は簡単にセットアップできるものの、問題が発生しないわけではありません。 目的のエンドポイントへのアクセスに関して問題が発生した場合は、アプリのコンソールからの接続テストに、いくつかのユーティリティを利用できます。 利用できるコンソールが 2 つあります。 1 つは Kudu コンソールで、もう 1 つは Azure portal 内のコンソールです。 アプリから Kudu コンソールにアクセスするには、[ツール]、[Kudu] の順に移動します。 [サイト名].scm.azurewebsites.net で Kudo コンソールにアクセスすることもできます。 Web サイトが読み込まれたら、[デバッグ コンソール] タブに移動します。Azure ポータルにホストされたコンソールにアクセスするには、アプリで [ツール]、[コンソール] の順に移動します。 
 
-#### <a name="tools"></a>ツール
-**ping**、**nslookup**、**tracert** の各ツールは、セキュリティの制約により、コンソールから使用することはできません。 それを補うために、2 つの独立したツールが追加されています。 DNS 機能のテスト用に、nameresolver.exe という名前のツールを追加しました。 の構文は次のとおりです。
-
-    nameresolver.exe hostname [optional: DNS Server]
-
-**nameresolver** を使用すると、アプリが依存しているホスト名を確認できます。 この方法で、DNS の構成に誤りがあるかどうかや、DNS サーバーへのアクセス権がないかどうかをテストできます。 環境変数 WEBSITE_DNS_SERVER と WEBSITE_DNS_ALT_SERVER を調べることによって、アプリが使用する DNS サーバーをコンソールで確認できます。
-
-次のツールでは、ホストとポートを組み合わせたものへの TCP 接続をテストすることができます。 このツールは **tcpping** という名前で、構文は次のとおりです。
-
-    tcpping.exe hostname [optional: port]
-
-**tcpping** ユーティリティを使用すると、特定のホストとポートにアクセスできるかどうかがわかります。 成功として示されるのは、ホストとポートの組み合わせでリッスンしているアプリケーションがあり、アプリから指定のホストとポートへのネットワーク アクセスがある場合のみです。
-
-#### <a name="debugging-access-to-vnet-hosted-resources"></a>VNet にホストされたリソースへのアクセスのデバッグ
-アプリから特定のホストとポートへのアクセスは、さまざまな要因によって妨げられる可能性があります。 ほとんどの場合、次の 3 つのうちのいずれかです。
-
-* **ファイアウォールがルートを塞いでいる。** ルートを塞いでいるファイアウォールがあると、TCP のタイムアウトに達します。 この場合の TCP タイムアウトは 21 秒です。 **tcpping** ツールを使用して接続をテストします。 TCP タイムアウトの原因は、ファイアウォール以外にさまざまなことが考えられますが、まずここから始めます。 
-* **DNS にアクセスできない。** DNS タイムアウトは、DNS サーバーごとに 3 秒です。 2 つの DNS サーバーがある場合、タイムアウトは 6 秒です。 nameresolver を使用して、DNS が機能しているかどうかを確認します。 nslookup は使用できないことに注意してください。これは、nslookup が VNet の構成に使用されている DNS を使用しないためです。 アクセスできない場合は、ファイアウォールが存在するか、NSG が DNS へのアクセスをブロックしているか、または DNS が停止している可能性があります。
-
-これらの項目が問題の回答になっていない場合は、まず次のような点を確認してください。 
-
-**リージョン Vnet 統合**
-* 宛先は RFC1918 以外のアドレスであり、WEBSITE_VNET_ROUTE_ALL が 1 に設定されていないこと。
-* 統合サブネットからのエグレスをブロックしている NSG は存在するか。
-* ExpressRoute または VPN をまたがって移動する場合は、オンプレミスのゲートウェイがトラフィック バックアップを Azure にルーティングするように構成されているか。 VNet 内のエンドポイントには到達できるが、オンプレミスに到達できない場合は、ルートを確認します。
-* 統合サブネットに委任を設定するための十分なアクセス許可があるか。 リージョン VNet 統合が構成されている間、統合サブネットは Microsoft.Web に委任されます。 VNet 統合 UI では、Microsoft Web に対するサブネットが自動的に委任されます。 アカウントに委任を設定するための十分なネットワークのアクセス許可がない場合は、サブネットを委任するために、統合サブネットに属性を設定できるユーザーが必要になります。 統合サブネットを手動で委任するには、Azure Virtual Network サブネット UI にアクセスして、Microsoft.Web の委任を設定します。 
-
-**ゲートウェイが必要な Vnet 統合**
-* ポイント対サイトのアドレス範囲が RFC 1918 の範囲 (10.0.0.0-10.255.255.255/172.16.0.0-172.31.255.255/192.168.0.0-192.168.255.255) にあるか。
-* ゲートウェイはポータルに稼働中と表示されているか。 ゲートウェイがダウンしている場合は、再起動してください。
-* 証明書は同期していると表示されているか。または、ネットワーク構成が変更されたことが疑われるか。  証明書が同期していないか、または ASP と同期していない VNet 構成への変更が行われたことが疑われる場合は、[ネットワークの同期] をクリックします。
-* VPN をまたがって移動する場合は、オンプレミスのゲートウェイがトラフィック バックアップを Azure にルーティングするように構成されているか。 VNet 内のエンドポイントには到達できるが、オンプレミスに到達できない場合は、ルートを確認します。
-* ポイント対サイトと ExpressRoute の両方をサポートする共存ゲートウェイを使用しようとしているか。 VNet 統合では、共存ゲートウェイはサポートされていません 
-
-ホストとポートの特定の組み合わせへのアクセスを何がブロックしているかを確認できないため、ネットワークに関する問題のデバッグは課題です。 以下に原因の例を示します。
-
-* ホスト上で稼働しているファイアウォールが、ポイント対サイト IP の範囲からアプリケーション ポートへのアクセスを妨げている。 サブネットの境界を越えるには、多くの場合パブリック アクセスが必要になります。
-* ターゲット ホストがダウンしている
-* アプリケーションがダウンしている
-* IP またはホスト名が誤っている
-* アプリケーションが予期しないポートでリッスンしている。 エンドポイント ホストで "netstat-aon" を使用することで、プロセス ID と、リッスンしているポートを一致させることができます。 
-* ネットワーク セキュリティ グループが、ポイント対サイト IP の範囲からアプリケーション ホストとポートへのアクセスをブロックするように構成されている
-
-アプリが実際にどのようなアドレスを使用するかは認識できないことに注意してください。 統合サブネットまたはポイント対サイトのアドレス範囲内の任意のアドレスである可能性があるため、アドレス範囲全体からのアクセスを許可する必要があります。 
-
-追加のデバッグ手順は次のとおりです。
-
-* VNet 内の VM に接続し、そこからリソースのホスト:ポートへのアクセスを試します。 TCP アクセスのテストには、PowerShell コマンド **test-netconnection** を使用します。 の構文は次のとおりです。
-
-      test-netconnection hostname [optional: -Port]
-
-* VM 上でアプリケーションを起動し、**tcpping** を使用して、アプリのコンソールからそのホストとポートへのアクセスをテストします。
-
-#### <a name="on-premises-resources"></a>オンプレミスのリソース ####
-
-アプリがオンプレミスのリソースにアクセスできない場合は、VNet からリソースにアクセスできるかどうかを確認します。 TCP アクセスを確認するには、PowerShell コマンド **test-netconnection** を使用します。 VM がオンプレミス リソースに到達できない場合は、VPN または ExpressRoute 接続が正しく構成されていない可能性があります。
-
-VNet でホストされている VM はオンプレミス システムにアクセスでき、アプリはアクセスできない場合、以下の理由のいずれかが原因と考えられます。
-
-* オンプレミスのゲートウェイで、ルートがサブネットまたはポイント対サイトのアドレス範囲で構成されていない。
-* ネットワーク セキュリティ グループが、ポイント対サイト IP 範囲へのアクセスをブロックしている。
-* オンプレミスのファイアウォールが、ポイント対サイト IP 範囲からのトラフィックをブロックしている。
-* リージョン Vnet 統合機能を使用して、RFC 1918 以外のアドレスに到達しようとしている。
-
+[!INCLUDE [app-service-web-vnet-troubleshooting](../../includes/app-service-web-vnet-troubleshooting.md)]
 
 ## <a name="automation"></a>Automation
 
@@ -328,7 +178,6 @@ VNet でホストされている VM はオンプレミス システムにアク�
 [1]: ./media/web-sites-integrate-with-vnet/vnetint-app.png
 [2]: ./media/web-sites-integrate-with-vnet/vnetint-addvnet.png
 [3]: ./media/web-sites-integrate-with-vnet/vnetint-classic.png
-[4]: ./media/web-sites-integrate-with-vnet/vnetint-appsetting.png
 [5]: ./media/web-sites-integrate-with-vnet/vnetint-regionalworks.png
 [6]: ./media/web-sites-integrate-with-vnet/vnetint-gwworks.png
 
@@ -340,7 +189,6 @@ VNet でホストされている VM はオンプレミス システムにアク�
 [VNETPricing]: https://azure.microsoft.com/pricing/details/vpn-gateway/
 [DataPricing]: https://azure.microsoft.com/pricing/details/data-transfers/
 [V2VNETP2S]: https://azure.microsoft.com/documentation/articles/vpn-gateway-howto-point-to-site-rm-ps/
-[ASEintro]: environment/intro.md
 [ILBASE]: environment/create-ilb-ase.md
 [V2VNETPortal]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md
 [VPNERCoex]: ../expressroute/expressroute-howto-coexist-resource-manager.md
@@ -348,6 +196,5 @@ VNet でホストされている VM はオンプレミス システムにアク�
 [creategatewaysubnet]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#creategw
 [creategateway]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#creategw
 [setp2saddresses]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#addresspool
-[VNETnsg]: https://docs.microsoft.com/azure/virtual-network/security-overview/
 [VNETRouteTables]: https://docs.microsoft.com/azure/virtual-network/manage-route-table/
 [installCLI]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest/

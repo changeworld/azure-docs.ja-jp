@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 006e1fb3fcef1ebcd0e09dffb79149e75eec622a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: f099546ced64bd911916164879cd533329761c66
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76713175"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914672"
 ---
-# <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Azure Analysis Services に接続するためのクライアント ライブラリ
+# <a name="client-libraries-for-connecting-to-analysis-services"></a>Analysis Services に接続するためのクライアント ライブラリ
 
 クライアント アプリケーションとツールが Analysis Services サーバーに接続するためには、クライアント ライブラリが必要です。 Power BI Desktop、Excel、SQL Server Management Studio (SSMS)、Visual Studio 向けの Analysis Services プロジェクト拡張機能などの Microsoft クライアント アプリケーションは、3 つのすべてのクライアント ライブラリをインストールし、それらを通常のアプリケーションの更新と共に更新します。 場合によっては、新しいバージョンのクライアント ライブラリをインストールする必要があります。 カスタム クライアント アプリケーションでも、クライアント ライブラリがインストールされている必要があります。
 

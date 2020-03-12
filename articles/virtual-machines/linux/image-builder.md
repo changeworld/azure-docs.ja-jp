@@ -6,15 +6,15 @@ ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-manager: gwallace
-ms.openlocfilehash: 1bac04bbb67c7472de92c6da322121bafc20a560
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.subservice: imaging
+ms.openlocfilehash: 15a3b39b1466ffec87971b8f054ca916567d89d7
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695431"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944952"
 ---
-# <a name="preview-create-a-linux-vm-with-azure-image-builder"></a>更新:Azure Image Builder で Linux VM を作成する
+# <a name="preview-create-a-linux-vm-with-azure-image-builder"></a>プレビュー:Azure Image Builder で Linux VM を作成する
 
 この記事では、Azure Image Builder と Azure CLI を使用して、カスタマイズされた Linux イメージを作成する方法について説明します。 この記事の例では、イメージのカスタマイズに 3 つの異なる[カスタマイザー](image-builder-json.md#properties-customize)を使用します。
 
@@ -235,6 +235,6 @@ az group delete -n $imageResourceGroup
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事で使用されている .json ファイルのコンポーネントの詳細については、[Image Builder テンプレートのリファレンス](image-builder-json.md)に関するページを参照してください。

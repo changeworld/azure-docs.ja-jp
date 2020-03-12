@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: abc2e2371368f01c96eb0b4d2f0a777952ebacf4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fdb35edc35e07ed4ee718281942565a8f1d061d4
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448912"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402688"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-net"></a>クイック スタート:.NET 用 Anomaly Detector クライアント ライブラリ
 
@@ -56,7 +56,7 @@ dotnet build
 
 ビルドの出力に警告やエラーが含まれないようにする必要があります。 
 
-```console
+```output
 ...
 Build succeeded.
  0 Warning(s)

@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 23bf9be8e3e5f1c52546faa9ed5171c140eba59a
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+manager: lizross
+ms.openlocfilehash: 33d058f028b7032f296ffcf82f0e5fe2c993e6fb
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676622"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127908"
 ---
 # <a name="windows-virtual-desktop-environment"></a>Windows Virtual Desktop の環境
 
@@ -55,7 +56,7 @@ Windows Virtual Desktop では、Windows Virtual Desktop テナントはほと�
 
 アプリ グループにユーザーを割り当てた後、いずれかの Windows Virtual Desktop クライアントを使用して Windows Virtual Desktop 展開に接続できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 委任されたアクセスとユーザーにロールを割り当てる方法について詳しくは、「[Delegated Access in Windows Virtual Desktop Preview (Windows Virtual Desktop での委任されたアクセス)](delegated-access-virtual-desktop.md)」をご覧ください。
 

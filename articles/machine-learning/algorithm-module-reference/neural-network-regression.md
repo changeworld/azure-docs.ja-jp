@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 97095e4802373a1dd3f7b795c2fe567b778d2d5e
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: d1e93c18b13e7171274eda2a7e8d07eefbefb592
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153827"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920384"
 ---
 # <a name="neural-network-regression-module"></a>ニューラル ネットワーク回帰モジュール
 
@@ -56,7 +56,9 @@ ms.locfileid: "77153827"
   
 2. **[Create trainer mode]\(トレーナー モードの作成\)** オプションを設定して、モデルのトレーニング方法を指定します。  
   
-    -   **Single Parameter (単一パラメーター)** : モデルを構成する方法が既にわかっている場合は、このオプションを選択します。  
+    -   **Single Parameter (単一パラメーター)** : モデルを構成する方法が既にわかっている場合は、このオプションを選択します。
+
+    -   **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターがわかっておらず、パラメーター スイープを実行したい場合は、このオプションを選択します。 反復する値の範囲を選択します。[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)では、指定した設定の可能なすべての組み合わせに対して反復処理を行い、最適な結果を生成するハイパーパラメーターを決定します。   
 
 3.  **[Hidden layer specification]\(隠れ層の仕様\)** で **[Fully connected case]\(全結合ケース\)** を選択します。 このオプションでは、既定のニューラル ネットワーク アーキテクチャを使用してモデルが作成されます。これは、ニューラル ネットワーク回帰モデルに関して、次の属性を備えます。  
   
@@ -72,7 +74,6 @@ ms.locfileid: "77153827"
 
 6.  **[Number of learning iterations]\(学習イテレーション数\)** に、トレーニング ケースをアルゴリズムで処理する最大回数を指定します。
 
-7.  **[The initial learning weights diameter]\(初期学習重み倍率\) に、学習プロセスの開始時におけるノードの重みを決定する値を入力します。
 
 8.  学習中に前のイテレーションからノードへの重みとして適用する値を **[The momentum]\(慣性項\)** に入力します。
 

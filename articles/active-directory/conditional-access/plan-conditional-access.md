@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c8c5e3c2552101437bfed17906f94861e676568
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: e1c75d5022432a9a57b30aabec4dd2c4f76f2f29
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468439"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671832"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>方法:Azure Active Directory の条件付きアクセスの展開を計画する
 
@@ -163,13 +163,13 @@ Azure AD では、レガシ認証を含め、最も広く使用されている�
 
 |ポリシー |シナリオ |予測される結果 | 結果 |
 |---|---|---|---|
-|[社外ネットワークからの利用は MFA を要求する](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|承認済みユーザーが信頼できる場所または社内にいるときに "*アプリ*" にサインインする|ユーザーに MFA は求められません| |
-|[社外ネットワークからの利用は MFA を要求する](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|承認済みユーザーが信頼できる場所または社内にいないときに "*アプリ*" にサインインする|ユーザーには MFA が求められ、正常にサインインできます| |
-|[(管理者に) MFA を要求する](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-baseline-protect-administrators)|全体管理者が "*アプリ*" にサインインする|管理者に MFA が求められます| |
-|[リスクの高いサインイン](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|ユーザーが [Tor ブラウザー](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-playbook)を使用して "*アプリ*" にサインインする|管理者に MFA が求められます| |
-|[デバイス管理](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|承認済みユーザーが承認済みデバイスからサインインしようとする|アクセスが許可されます| |
-|[デバイス管理](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|承認済みユーザーが承認されていないデバイスからサインインしようとする|アクセスはブロックされます| |
-|[危険なユーザーのパスワード変更](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)|承認済みユーザーが侵害された資格情報を使用してサインインしようとする (高リスクのサインイン)|ユーザーはパスワードを変更するよう求められるか、ポリシーに基づいてアクセスがブロックされます| |
+|[社外ネットワークからの利用は MFA を要求する](/azure/active-directory/conditional-access/untrusted-networks)|承認済みユーザーが信頼できる場所または社内にいるときに "*アプリ*" にサインインする|ユーザーに MFA は求められません| |
+|[社外ネットワークからの利用は MFA を要求する](/azure/active-directory/conditional-access/untrusted-networks)|承認済みユーザーが信頼できる場所または社内にいないときに "*アプリ*" にサインインする|ユーザーには MFA が求められ、正常にサインインできます| |
+|[(管理者に) MFA を要求する](/azure/active-directory/conditional-access/howto-baseline-protect-administrators)|全体管理者が "*アプリ*" にサインインする|管理者に MFA が求められます| |
+|[リスクの高いサインイン](/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|ユーザーが [Tor ブラウザー](/azure/active-directory/active-directory-identityprotection-playbook)を使用して "*アプリ*" にサインインする|管理者に MFA が求められます| |
+|[デバイス管理](/azure/active-directory/conditional-access/require-managed-devices)|承認済みユーザーが承認済みデバイスからサインインしようとする|アクセスが許可されます| |
+|[デバイス管理](/azure/active-directory/conditional-access/require-managed-devices)|承認済みユーザーが承認されていないデバイスからサインインしようとする|アクセスはブロックされます| |
+|[危険なユーザーのパスワード変更](/azure/active-directory/identity-protection/howto-user-risk-policy)|承認済みユーザーが侵害された資格情報を使用してサインインしようとする (高リスクのサインイン)|ユーザーはパスワードを変更するよう求められるか、ポリシーに基づいてアクセスがブロックされます| |
 
 ### <a name="configure-the-policy"></a>ポリシーの構成
 

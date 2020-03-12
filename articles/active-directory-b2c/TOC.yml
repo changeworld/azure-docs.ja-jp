@@ -182,9 +182,13 @@
             - name: UI のカスタマイズ
               href: custom-policy-ui-customization.md
               displayName: 'ux, input, cors, html, css'
+            - name: 言語をカスタマイズする
+              href: custom-policy-localization.md
             - name: カスタム メール
               href: custom-email.md
               displayName: verification
+            - name: メールの確認を無効にする
+              href: custom-policy-disable-email-verification.md
             - name: JavaScript を有効にする
               href: javascript-samples.md
             - name: パスワードの複雑さ

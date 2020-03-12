@@ -1,25 +1,19 @@
 ---
 title: FreeBSD のパケット フィルターを使用して Azure 内にファイアウォールを作成する
 description: FreeBSD の PF を使用して NAT ファイアウォールを Azure にデプロイする方法について説明します。
-services: virtual-machines-linux
-documentationcenter: ''
 author: KylieLiang
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
-ms.openlocfilehash: 5daceeb2c8f2497288c7891dbe3fb3e0771b2ed5
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9b78c0d93b57a3e3f4963088d0b93f121f57483c
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036097"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945107"
 ---
 # <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>FreeBSD のパケット フィルターを使用してAzure 内にセキュア ファイアウォールを作成する方法
 この記事では、一般的な Web サーバー シナリオで、Azure Resource Manager テンプレートを通して FreeBSD の パケット フィルターを使用することで、NAT ファイアウォールをデプロイする方法について説明します。
@@ -27,7 +21,7 @@ ms.locfileid: "74036097"
 ## <a name="what-is-pf"></a>PF とは何か
 PF (パケット フィルター、pf とも表記します) は、BSD ライセンスのステートフルなパケット フィルターであり、ファイアウォール ソフトウェアの中心部です。 PF は急速に進化し、現在は、利用可能なその他のファイアウォールを上回る多様な利点を備えています。 ネットワーク アドレス変換 (NAT) は、最初から PF に含まれており、その後、パケット スケジューラとアクティブ キュー管理が PF に統合され、ALTQ の統合によって PF の構成を通じて構成できるようになっています。 フェールオーバーと冗長性のための pfsync と CARP、セッション認証のための authpf、複雑な FTP プロトコルのファイアウォール処理を容易にするための ftp-proxy などの機能も PF を拡張しています。 要するに、PF は、強力かつ機能豊富なファイアウォールです。 
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 Web サーバー用のクラウドにセキュア ファイアウォールを設定することに関心があるのであれば、今すぐ始めましょう。 Azure Resource Manager テンプレートで使用されているスクリプトを適用して、ネットワーク トポロジを設定することもできます。
 Azure Resource Manager テンプレートは、PF を使用して NAT/リダイレクトを実行する 1 台の FreeBSD 仮想マシンと、Nginx Web サーバーがインストールされ構成されている 2 台の FreeBSD 仮想マシンをセットアップします。 NAT/リダイレクト仮想マシンは、2 台の Web サーバーのエグレス トラフィックに対する NAT の実行に加え、HTTP 要求をインターセプトして、ラウンド ロビン方式で 2 つの Web サーバーにリダイレクトします。 VNet はプライベートなルーティング不能 IP アドレス空間 10.0.0.2/24 を使用します。テンプレートのパラメーターは変更することができます。 Azure Resource Manager テンプレートは、VNet 全体のルート テーブルを定義することもできます。これは、宛先 IP アドレスに基づいて Azure の既定のルートをオーバーライドするために使用される個別のルートのコレクションです。 
 
@@ -54,7 +48,7 @@ az group deployment create --resource-group myResourceGroup --name myDeploymentN
 az network public-ip list --resource-group myResourceGroup
 ```
     
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure 内に独自の NAT を設定することを望んでいますか? 無料だが強力なオープン ソースを使用したいですか? パブリック フォルダーの使用をお勧めします。 [pf-freebsd-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup) テンプレートを使用することで、一般的な Web サーバー シナリオで FreeBSD の PF を使用してラウンド ロビン方式で負荷分散する NAT ファイアウォールを Azure 内にほんの 5 分で設定できます。 
 
 Azure に提供されている FreeBSD の詳細については、「[Azure の FreeBSD の概要](freebsd-intro-on-azure.md)」を参照してください。

@@ -4,12 +4,12 @@ description: この記事では、オンプレミスの Windows Server のシス
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: f311de435d813cb0e6f8a2c3d932e05d695603f3
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 28647b72334d592692c5fe1b031735330d1a0509
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583301"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969573"
 ---
 # <a name="troubleshoot-system-state-backup"></a>システム状態のバックアップをトラブルシューティングする
 
@@ -129,19 +129,19 @@ Windows Server バックアップの状態を検証するには、以下の手�
 
 ### <a name="vss-writer-timeout-error"></a>VSS ライターのタイムアウト エラー
 
-| 症状 | 原因 | 解決策
+| 症状 | 原因 | 解像度
 | -- | -- | --
 | - MARS エージェントが次のエラー メッセージで失敗する:"VSS エラーで WSB ジョブが失敗しました。 エラーを解決するには、VSS イベント ログを確認してください"<br/><br/> - VSS アプリケーション イベント ログに次のエラー ログが存在する:"A VSS writer has rejected an event with error 0x800423f2, the writer's timeout expired between the Freeze and Thaw events" (VSS ライターでイベントがエラー 0x800423f2 で拒否されています。ライターのタイムアウトは Freeze イベントと Thaw イベントの間に発生しました)| コンピューターで CPU とメモリ リソースが不足しているため、VSS ライターを時間内に完了できません <br/><br/> 別のバックアップ ソフトウェアが既に VSS ライターを使用しています。その結果、このバックアップに対するスナップショット操作を完了できませんでした | システムの CPU/メモリが解放されるまで待つか、メモリ/CPU の使用量が多すぎるプロセスを中止して操作をやり直します。 <br/><br/>  進行中のバックアップが完了するまで待つか、コンピューター上で後でバックアップが実行されていないときに操作をやり直します。
 
 ### <a name="insufficient-disk-space-to-grow-shadow-copies"></a>シャドウ コピーを拡大するためのディスク領域が不足している
 
-| 症状 | 解決策
+| 症状 | 解像度
 | -- | --
-| - MARS エージェントが次のエラー メッセージで失敗する:システム ファイルが格納されているボリュームのディスク領域の不足により、シャドウ コピーのボリュームを拡大できなかったため、バックアップに失敗しました <br/><br/> - volsnap システム イベント ログに次のエラー/警告ログが存在する:"There was insufficient disk space on volume C: to grow the shadow copy storage for shadow copies of C: due to this failure all shadow copies of volume C: are at risk of being deleted" (C: のシャドウ コピー用のシャドウ コピー ストレージを拡大するための十分なディスク領域がボリューム C: 上に存在しません。このエラーのせいで、ボリューム C: のすべてのシャドウコピーが削除される恐れがあります) | - 強調表示されているボリュームの領域を解放して、バックアップの進行中にシャドウ コピー コピーを拡大するための十分な領域が存在するようにします <br/><br/> - シャドウ コピーの領域の構成中に、シャドウ コピー用に使用される領域の量を制限できます。 詳細については、こちらの[記事](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc788050(v=ws.11)#syntax)を参照してください
+| - MARS エージェントが次のエラー メッセージで失敗する:システム ファイルが格納されているボリュームのディスク領域の不足により、シャドウ コピーのボリュームを拡大できなかったため、バックアップに失敗しました <br/><br/> - volsnap システム イベント ログに次のエラー/警告ログが存在する:"There was insufficient disk space on volume C: to grow the shadow copy storage for shadow copies of C: due to this failure all shadow copies of volume C: are at risk of being deleted" (C: のシャドウ コピー用のシャドウ コピー ストレージを拡大するための十分なディスク領域がボリューム C: 上に存在しません。このエラーのせいで、ボリューム C: のすべてのシャドウコピーが削除される恐れがあります) | - 強調表示されているボリュームの領域を解放して、バックアップの進行中にシャドウ コピー コピーを拡大するための十分な領域が存在するようにします <br/><br/> - シャドウ コピーの領域の構成中に、シャドウ コピー用に使用される領域の量を制限できます。 詳細については、こちらの[記事](https://docs.microsoft.com/windows-server/administration/windows-commands/vssadmin-resize-shadowstorage)を参照してください
 
 ### <a name="efi-partition-locked"></a>EFI パーティションがロックされている
 
-| 症状 | 解決策
+| 症状 | 解像度
 | -- | --
 | MARS エージェントが次のエラー メッセージで失敗する:"System state backup failed as the EFI system partition is locked. This can be due to system partition access by a third-party security or back up software" (EFI システム パーティションがロックされているため、システム状態のバックアップが失敗しました。これは、サードパーティのセキュリティまたはバックアップ ソフトウェアによるシステム パーティションへのアクセスが原因である可能性があります) | - 問題の原因がサードパーティのセキュリティ ソフトウェアの場合は、MARS エージェントを許可できるようにウイルス対策ベンダーに連絡する必要があります <br/><br/> - サードパーティのバックアップ ソフトウェアが実行されている場合は、それが終了するまで待機した後、バックアップを再試行します
 

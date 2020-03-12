@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: b90b6f8eabbda229fbed4dcef6a5d863ea721faf
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 001dfbc78c0027249143e933684523d47af383d1
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77659137"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096783"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>ストレージ アカウントにアーカイブされている Azure Monitor プラットフォーム ログの形式変更のための準備
 
 > [!WARNING]
-> [Azure リソース ログまたはメトリックを診断設定を使用してストレージ アカウントに](resource-logs-collect-storage.md)、または[アクティビティ ログをログ プロファイルを使用してストレージ アカウントに](activity-log-export.md)送信する場合、ストレージ アカウントのデータの形式は、2018 年 11 月 1 日付より JSON Lines に変更されました。 以下の手順では、この変更による影響と、新しい形式に対応するためのツールの更新方法について説明します。
+> [Azure リソース ログまたはメトリックを診断設定を使用してストレージ アカウントに](resource-logs-collect-storage.md)、または[アクティビティ ログをログ プロファイルを使用してストレージ アカウントに](resource-logs-collect-storage.md)送信する場合、ストレージ アカウントのデータの形式は、2018 年 11 月 1 日付より JSON Lines に変更されました。 以下の手順では、この変更による影響と、新しい形式に対応するためのツールの更新方法について説明します。
 >
 
 ## <a name="what-changed"></a>変更箇所

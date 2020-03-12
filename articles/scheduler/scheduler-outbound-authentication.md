@@ -1,25 +1,26 @@
 ---
-title: 送信認証 - Azure Scheduler
+title: 送信認証
 description: Azure Scheduler の送信認証を設定または削除する方法について説明します
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 6707f82b-7e32-401b-a960-02aae7bb59cc
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/15/2016
-ms.openlocfilehash: 2ea09330fb8d3d97da5fbc197dba9668f1a4f685
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: bcd14e618323aec1c7ce47fcebb25099fa96be81
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300845"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898507"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Azure Scheduler の送信認証
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、[廃止される予定](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)の Azure Scheduler の後継です。 Scheduler で設定したジョブを使用し続けるには、できるだけ早く [Azure Logic Apps に移行](../scheduler/migrate-from-scheduler-to-logic-apps.md)してください。
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、[廃止される予定](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)の Azure Scheduler の後継です。 Scheduler で設定したジョブを使用し続けるには、できるだけ早く [Azure Logic Apps に移行](../scheduler/migrate-from-scheduler-to-logic-apps.md)してください。 
+>
+> Scheduler は Azure portal で利用できなくなりましたが、現時点では [REST API](/rest/api/scheduler) と [Azure Scheduler PowerShell コマンドレット](scheduler-powershell-reference.md)がまだ使用できるので、お客様はジョブとジョブ コレクションを管理することができます。
 
 Azure Scheduler ジョブは、他の Azure サービス、Salesforce.com、Facebook、セキュリティで保護されたカスタム Web サイトなど、認証が必要なサービスを呼び出す必要があります。 呼び出されたサービスは、Scheduler ジョブが必要なリソースにアクセスできるかどうかを確認できます。 
 
@@ -403,10 +404,9 @@ Date: Wed, 16 Mar 2016 19:10:02 GMT
 }
 ```
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
-* [Azure Scheduler とは](scheduler-intro.md)
 * [Azure Scheduler の概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
 * [Azure Scheduler の制限、既定値、エラー コード](scheduler-limits-defaults-errors.md)
-* [Azure Scheduler REST API](https://msdn.microsoft.com/library/mt629143)
+* [Azure Scheduler REST API リファレンス](/rest/api/scheduler)
 * [Azure Scheduler PowerShell コマンドレット リファレンス](scheduler-powershell-reference.md)

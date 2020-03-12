@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: cynthn
-ms.openlocfilehash: c88b060104a4c17e3edad2e23cfb23a54661b969
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6d99c5ae91b80b9b6b9af08001b3a7c57bc7ca8f
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033813"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944523"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>C# と Resource Manager テンプレートを使用した Azure の仮想マシンのデプロイ
 
@@ -198,7 +198,7 @@ NuGet パッケージを使用すると、手順を完了するために必要�
     managementURI=https://management.core.windows.net/
     baseURL=https://management.azure.com/
     authURL=https://login.windows.net/
-    graphURL=https://graph.windows.net/
+    graphURL=https://graph.microsoft.com/
     ```
 
     **&lt;subscription-id&gt;** をサブスクリプション ID に、 **&lt;application-id&gt;** を Active Directory アプリケーション ID に、 **&lt;authentication-key&gt;** をアプリケーション キーに、 **&lt;tenant-id&gt;** をテナント識別子に置き換えます。
@@ -239,7 +239,7 @@ NuGet パッケージを使用すると、手順を完了するために必要�
         .WithDefaultSubscription();
     ```
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 アプリケーションの値を指定するには、Main メソッドにコードを追加します。
 
@@ -315,7 +315,7 @@ Console.ReadLine();
 
 Azure で使用されるリソースに対して課金されるため、不要になったリソースは削除することを常にお勧めします。 リソース グループから各リソースを個別に削除する必要はありません。 リソース グループを削除すると、そのすべてのリソースが自動的に削除されます。 
 
-リソース グループを削除するには、次のメソッドを Main メソッドに追加します。
+リソース グループを削除するには、次のコードを Main メソッドに追加します。
 
 ```csharp
 azure.ResourceGroups.DeleteByName(groupName);
@@ -329,7 +329,7 @@ azure.ResourceGroups.DeleteByName(groupName);
 
 2. **Enter** キーを押してリソースの削除を開始する前に、Azure Portal でリソースの作成状況を確認することもできます。 デプロイに関する情報を参照するには、デプロイ状態をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * デプロイに問題がある場合は、次の手順として、「[Troubleshoot common Azure deployment errors with Azure Resource Manager](../../resource-manager-common-deployment-errors.md)」(Azure Resource Manager を使用した Azure のデプロイで発生する一般的なエラーのトラブルシューティング) を参照してください。
 * 「[C# を使用した Azure 仮想マシンのデプロイ](csharp.md)」で、仮想マシンとそれをサポートするリソースのデプロイ方法を確認します。

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c26197a14e78b1cf1a1e078ba0145eca207206bf
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 05a3a8cf14a591dd3037175e4eed5b5bd8d3096c
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561976"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672656"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>セキュリティで保護された Azure マネージド ワークステーションを理解する
 
@@ -81,18 +81,18 @@ ms.locfileid: "74561976"
 
 セキュリティで保護されたワークステーションに不可欠なのは、"信頼のルート" と呼ばれる信頼されたワークステーションを使用するサプライ チェーン ソリューションです。 信頼のルートのハードウェアの選択で検討する必要があるテクノロジとして、最新のラップトップに搭載されている次のテクノロジが含まれます。 
 
-* [トラステッド プラットフォーム モジュール (TPM) 2.0](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-tpm)
-* [BitLocker ドライブ暗号化](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-bitlocker)
-* [UEFI セキュア ブート](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-secure-boot)
-* [Windows Update 経由で配布されたドライバーとファームウェア](https://docs.microsoft.com/windows-hardware/drivers/dashboard/understanding-windows-update-automatic-and-optional-rules-for-driver-distribution)
-* [仮想化および HVCI 対応](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-vbs)
-* [ドライバーとアプリの HVCI 対応](https://docs.microsoft.com/windows-hardware/test/hlk/testref/driver-compatibility-with-device-guard)
-* [Windows Hello](https://docs.microsoft.com/windows-hardware/design/device-experiences/windows-hello-biometric-requirements)
-* [DMA I/O 保護](https://docs.microsoft.com/windows/security/information-protection/kernel-dma-protection-for-thunderbolt)
-* [System Guard](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-system-guard/system-guard-how-hardware-based-root-of-trust-helps-protect-windows)
-* [モダン スタンバイ](https://docs.microsoft.com/windows-hardware/design/device-experiences/modern-standby)
+* [トラステッド プラットフォーム モジュール (TPM) 2.0](/windows-hardware/design/device-experiences/oem-tpm)
+* [BitLocker ドライブ暗号化](/windows-hardware/design/device-experiences/oem-bitlocker)
+* [UEFI セキュア ブート](/windows-hardware/design/device-experiences/oem-secure-boot)
+* [Windows Update 経由で配布されたドライバーとファームウェア](/windows-hardware/drivers/dashboard/understanding-windows-update-automatic-and-optional-rules-for-driver-distribution)
+* [仮想化および HVCI 対応](/windows-hardware/design/device-experiences/oem-vbs)
+* [ドライバーとアプリの HVCI 対応](/windows-hardware/test/hlk/testref/driver-compatibility-with-device-guard)
+* [Windows Hello](/windows-hardware/design/device-experiences/windows-hello-biometric-requirements)
+* [DMA I/O 保護](/windows/security/information-protection/kernel-dma-protection-for-thunderbolt)
+* [System Guard](/windows/security/threat-protection/windows-defender-system-guard/system-guard-how-hardware-based-root-of-trust-helps-protect-windows)
+* [モダン スタンバイ](/windows-hardware/design/device-experiences/modern-standby)
 
-このソリューションでは、[Microsoft Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-autopilot) テクノロジと最新の技術要件を満たすハードウェアを使用して、信頼のルートをデプロイします。 ワークステーションをセキュリティで保護するため、Autopilot では Microsoft OEM 用に最適化された Windows 10 デバイスが利用できます。 これらのデバイスは、製造元から既知の正常な状態で提供されます。 Autopilot では、セキュリティで保護されていない可能性があるデバイスを再イメージ化する代わりに、Windows デバイスを “ビジネスに即応する” 状態に変換できます。 設定とポリシーを適用し、アプリをインストールし、Windows 10 のエディションも変更します。 たとえば、Autopilot では、高度な機能が使用できるように、デバイスの Windows インストールを Windows 10 Pro から Windows 10 Enterprise に変更することができます。
+このソリューションでは、[Microsoft Autopilot](/windows/deployment/windows-autopilot/windows-autopilot) テクノロジと最新の技術要件を満たすハードウェアを使用して、信頼のルートをデプロイします。 ワークステーションをセキュリティで保護するため、Autopilot では Microsoft OEM 用に最適化された Windows 10 デバイスが利用できます。 これらのデバイスは、製造元から既知の正常な状態で提供されます。 Autopilot では、セキュリティで保護されていない可能性があるデバイスを再イメージ化する代わりに、Windows デバイスを “ビジネスに即応する” 状態に変換できます。 設定とポリシーを適用し、アプリをインストールし、Windows 10 のエディションも変更します。 たとえば、Autopilot では、高度な機能が使用できるように、デバイスの Windows インストールを Windows 10 Pro から Windows 10 Enterprise に変更することができます。
 
 ![セキュリティで保護されたワークステーションのレベル](./media/concept-azure-managed-workstation/supplychain.png)
 
@@ -105,7 +105,7 @@ ms.locfileid: "74561976"
 
 * **強化されたセキュリティ** – このエントリ レベルの保護されたソリューションは、ホーム ユーザー、小規模企業のユーザー、および一般的な開発者に適しています。
 
-   強化されたワークステーションは、低セキュリティのプロファイルのセキュリティを強化するポリシー ベースの方法です。 これにより、メールや Web の閲覧などの生産性向上ツールも使用しつつ、顧客データを使用する安全な手段が提供されます。 監査ポリシーと Intune を使用して、ユーザーの動作やプロファイルの使用について強化されたワークステーションを監視することができます。 Windows 10 (1809) スクリプトを使用して、強化されたワークステーションのプロファイルをデプロイします。これは [Advanced Threat Protection (ATP)](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) を使用した高度なマルウェア保護を活用します。
+   強化されたワークステーションは、低セキュリティのプロファイルのセキュリティを強化するポリシー ベースの方法です。 これにより、メールや Web の閲覧などの生産性向上ツールも使用しつつ、顧客データを使用する安全な手段が提供されます。 監査ポリシーと Intune を使用して、ユーザーの動作やプロファイルの使用について強化されたワークステーションを監視することができます。 Windows 10 (1809) スクリプトを使用して、強化されたワークステーションのプロファイルをデプロイします。これは [Advanced Threat Protection (ATP)](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) を使用した高度なマルウェア保護を活用します。
 
 * **高セキュリティ** – ワークステーションの攻撃対象領域を減らすための最も効果的な手段は、ワークステーションの自己管理機能を削除することです。 ローカル管理者権限を削除することは、セキュリティを向上する 1 つの手段ですが、正しく実装されていない場合は生産性に影響を与える可能性があります。 高セキュリティのプロファイルは、強化されたセキュリティのプロファイルを基盤として、ローカル管理の削除という 1 つの重要な変更を加えています。このプロファイルは、ハイ プロファイル ユーザー (役員、給与支払いと機密データ ユーザー、サービスとプロセスの承認者) 向けに設計されています。
 
@@ -121,9 +121,9 @@ ms.locfileid: "74561976"
 
 * **分離** – このカスタムのオフライン シナリオは、最も極端なものを表しています。 このケースのインストール スクリプトは提供されていません。 サポートされていない、またはパッチが適用されていないレガシ オペレーティング システムを必要とする、ビジネスに不可欠な機能を管理する必要がある場合があります。 たとえば、高価値の生産ラインや生命維持装置などです。 セキュリティは非常に重要であり、クラウド サービスは利用できないため、これらのコンピューターを手動で、または Enhanced Security Admin Environment (ESAE) などの分離された Active Directory フォレスト アーキテクチャを使用して管理および更新できます。 このような状況では、基本の Intune 以外のすべてのアクセス権の削除と ATP 正常性チェックを考慮してください。
 
-   * [Intune ネットワーク通信の要件](https://docs.microsoft.com/intune/network-bandwidth-use)
-   * [ATP ネットワーク通信の要件](https://docs.microsoft.com/azure-advanced-threat-protection/configure-proxy)
+   * [Intune ネットワーク通信の要件](/intune/network-bandwidth-use)
+   * [ATP ネットワーク通信の要件](/azure-advanced-threat-protection/configure-proxy)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [セキュリティで保護された Azure マネージド ワークステーションをデプロイする](howto-azure-managed-workstation.md)。

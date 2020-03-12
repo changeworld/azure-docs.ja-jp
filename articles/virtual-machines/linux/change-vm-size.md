@@ -1,27 +1,17 @@
 ---
 title: Azure CLI を使用して Linux VM のサイズを変更する方法
 description: スケールアップまたは VM のサイズを変更することで Linux 仮想マシンをスケールアップまたはスケールダウンする方法。
-services: virtual-machines-linux
-documentationcenter: na
 author: mikewasson
-manager: gwallace
-editor: ''
-tags: ''
-ms.assetid: e163f878-b919-45c5-9f5a-75a64f3b14a0
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 02/10/2017
 ms.author: mwasson
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b6f3f0a937b33b1c5dd1a68d86f80f870a7311d0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 20e7db80b55347c4a4a76b7c95d4d8bec368abda
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036876"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969274"
 ---
 # <a name="resize-a-linux-virtual-machine-using-azure-cli"></a>Azure CLI を使用して Linux 仮想マシンのサイズを変更する 
 
@@ -55,7 +45,7 @@ VM のサイズを変更するには、[Azure CLI ](/cli/azure/install-az-cli2) 
    > [!WARNING]
    > VM の割り当てを解除すると、VM に割り当てられているすべての動的 IP アドレスも解放されます。 OS とデータ ディスクには影響しません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 スケーラビリティを高めるには、複数の VM インスタンスを実行してスケール アウトします。詳細については、「[仮想マシン スケール セットでの Linux マシンの自動スケール][scale-set]」をご覧ください。 
 
 <!-- links -->

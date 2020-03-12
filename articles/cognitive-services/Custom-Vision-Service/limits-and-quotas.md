@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: anroth
-ms.openlocfilehash: e4fc3555d7d880dcbd4f76d8f507300e98c237db
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 5f481ebf219eea8ae31e9802144bbf771a24e8b8
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718352"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081779"
 ---
 # <a name="limits-and-quotas"></a>制限とクォータ
 
@@ -42,8 +42,8 @@ Custom Vision Service にはキーの層が 2 つあります。 Azure portal �
 |画像の高さ/幅 (ピクセル単位) の最大値|無制限|無制限|
 |最大画像サイズ (トレーニング画像アップロード) |6 MB|6 MB|
 |最大画像サイズ (予測)|4 MB|4 MB|
-|物体検出のトレーニング画像あたりの最大領域|200|200|
-|分類画像あたりの最大タグ数|30|30|
+|物体検出のトレーニング画像あたりの最大領域|該当なし|該当なし|
+|分類画像あたりの最大タグ数|100|100|
 
 > [!NOTE]
 > 256 ピクセルより小さい画像は受け入れられますが、アップスケールされます。

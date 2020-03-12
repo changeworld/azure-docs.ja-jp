@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: 6ba7bca0756b4e2f6fdcb89208fe15e3517a9513
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 3775070320b8c6e96dd06031bd87ea53f37046c5
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661705"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894851"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>ASP.NET Web アプリケーションの監視を開始する
 
@@ -23,7 +23,7 @@ Azure Application Insights を使うと、Web アプリケーションの可用�
 ## <a name="prerequisites"></a>前提条件
 このクイック スタートを完了するには、以下が必要です。
 
-- 次のワークロードを使って、[Visual Studio 2019](https://www.visualstudio.com/downloads/) をインストールします。
+- 次のワークロードを使って、[Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) をインストールします。
     - ASP.NET および Web の開発
     - Azure の開発
 

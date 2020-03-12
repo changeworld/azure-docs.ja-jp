@@ -4,12 +4,12 @@ description: Azure Blockchain Workbench Preview のデプロイ方法
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: brendal
-ms.openlocfilehash: fab61b5850815e480b4a380fdccd6c1df5b449cd
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 141bb8825e47eb2309f9f551990a2976e8f4e209
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189246"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943201"
 ---
 # <a name="deploy-azure-blockchain-workbench-preview"></a>Azure Blockchain Workbench Preview のデプロイ
 
@@ -69,7 +69,7 @@ Azure Blockchain Workbench では、Azure AD 構成とアプリケーション�
     | Deployment region (展開するリージョン) | Blockchain Workbench リソースを展開する場所を指定します。 最善の可用性を得るには、 **[場所]** 設定と一致させる必要があります。 |
     | サブスクリプション | 展開に使う Azure サブスクリプションを指定します。 |
     | リソース グループ | **[新規作成]** を選び、一意のリソース グループ名を指定して、新しいリソース グループを作成します。 |
-    | Location | フレームワークを展開するリージョンを指定します。 |
+    | 場所 | フレームワークを展開するリージョンを指定します。 |
 
 1. **[OK]** を選んで、基本設定の構成セクションを完了します。
 
@@ -135,7 +135,7 @@ Blockchain Workbench の展開が完了すると、新しいリソース グル�
 
     ![App Service の基礎](media/deploy/app-service.png)
 
-カスタム ドメイン名を Blockchain Workbench に関連付けるには、「[Traffic Manager を使用して Azure App Service Web アプリのカスタム ドメイン名を構成する](../../app-service/web-sites-traffic-manager-custom-domain-name.md)」を参照してください。
+カスタム ドメイン名を Blockchain Workbench に関連付けるには、「[Traffic Manager を使用して Azure App Service Web アプリのカスタム ドメイン名を構成する](../../app-service/configure-domain-traffic-manager.md)」を参照してください。
 
 ## <a name="azure-ad-configuration-script"></a>Azure AD 構成スクリプト
 

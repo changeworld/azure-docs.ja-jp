@@ -4,12 +4,12 @@ description: kured を使用して Azure Kubernetes Service (AKS) の Linux ノ�
 services: container-service
 ms.topic: article
 ms.date: 02/28/2019
-ms.openlocfilehash: b0bb7a3309cf1b56a5779b54b34310aa01f3e719
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 74b12c1bc6e2a88582cc357c8091b5590e6bf3cb
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77594942"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191284"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の Linux ノードにセキュリティとカーネルの更新を適用します
 
@@ -51,13 +51,23 @@ AKS には別途、クラスターを "*アップグレード*" するための�
 
 ## <a name="deploy-kured-in-an-aks-cluster"></a>AKS クラスターに kured をデプロイする
 
-`kured` DaemonSet をデプロイするには、その GitHub プロジェクト ページから次のサンプル YAML マニフェストを適用します。 このマニフェストによって、ロールおよびクラスター ロール、バインディング、サービス アカウントが作成された後、AKS クラスター 1.9 以降をサポートする `kured` バージョン 1.1.0 を使用して、DaemonSet がデプロイされます。
+`kured` DaemonSet をデプロイするには、次の公式 Kured Helm グラフをインストールします。 これによって、ロールおよびクラスター ロール、バインディング、サービス アカウントが作成された後、 `kured` を使用して、DaemonSet がデプロイされます。
 
 ```console
-kubectl apply -f https://github.com/weaveworks/kured/releases/download/1.2.0/kured-1.2.0-dockerhub.yaml
+# Add the stable Helm repository
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+
+# Update your local Helm chart repository cache
+helm repo update
+
+# Create a dedicated namespace where you would like to deploy kured into
+kubectl create namespace kured
+
+# Install kured in that namespace with Helm 3 (only on Linux nodes, kured is not working on Windows nodes)
+helm install kured stable/kured --namespace kured --set nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-`kured` には、Prometheus や Slack との統合など、追加のパラメーターを構成することもできます。 追加の構成パラメーターの詳細については、[kured のインストール ドキュメント][kured-install]を参照してください。
+`kured` には、Prometheus や Slack との統合など、追加のパラメーターを構成することもできます。 追加の構成パラメーターの詳細については、[kured Helm グラフ][kured-install]をご参照ください。
 
 ## <a name="update-cluster-nodes"></a>クラスター ノードを更新する
 
@@ -96,7 +106,7 @@ Windows Server ノードを使用する AKS クラスターについては、「
 
 <!-- LINKS - external -->
 [kured]: https://github.com/weaveworks/kured
-[kured-install]: https://github.com/weaveworks/kured#installation
+[kured-install]: https://hub.helm.sh/charts/stable/kured
 [kubectl-get-nodes]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 
 <!-- LINKS - internal -->

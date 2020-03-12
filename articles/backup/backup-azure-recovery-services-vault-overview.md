@@ -3,12 +3,12 @@ title: Recovery Services コンテナーの概要
 description: Recovery Services コンテナーの概要と Azure Backup コンテナーとの比較。
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 886c63856d3be78c241289caf5abbe73ebeda63f
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 94a3e5a0865bcc8c0a9ecb866ca013f20a558e1a
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172844"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673234"
 ---
 # <a name="recovery-services-vaults-overview"></a>Recovery Services コンテナーの概要
 
@@ -30,7 +30,7 @@ Recovery Services コンテナーが Azure の Azure Resource Manager モデル�
 
 - **Azure Virtual Machines のあらゆる構成の保護**:Recovery Services コンテナーは、Resource Manager ベースの VM (Premium ディスク、マネージド ディスク、暗号化された VM など) を保護します。 Backup コンテナーを Recovery Services コンテナーにアップグレードすると、Service Manager ベースの VM を Resource Manager ベースの VM にアップグレードできます。 コンテナーをアップグレードするときに、Service Manager ベースの VM の復旧ポイントを維持し、アップグレードされた (Resource Manager が有効な) VM の保護を構成できます。 [詳細情報](https://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
 
-- **IaaS VM のインスタント リストア**:Recovery Services コンテナーを使用すると、VM 全体を復元せずに IaaS VM からファイルとフォルダーを復元できるため、復元時間を短縮できます。 IaaS VM のインスタント リストアは、Windows VM と Linux VM の両方で利用できます。 [詳細情報](https://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
+- **IaaS VM のインスタント リストア**:Recovery Services コンテナーを使用すると、VM 全体を復元せずに IaaS VM からファイルとフォルダーを復元できるため、復元時間を短縮できます。 IaaS VM のインスタント リストアは、Windows VM と Linux VM の両方で利用できます。 [詳細情報](backup-instant-restore-capability.md)
 
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>ポータルでの Recovery Services コンテナーの管理
 
@@ -72,9 +72,9 @@ VM にバックアップが構成されていない場合、バックアップ�
 
 - [Recovery Services コンテナー内のクラウド バックアップ データのセキュリティ保護](backup-azure-security-feature.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の記事を参照してください。</br>
 [IaaS VM のバックアップ](backup-azure-arm-vms-prepare.md)</br>
 [Azure Backup Server のバックアップ](backup-azure-microsoft-azure-backup.md)</br>
-[Windows Server のバックアップ](backup-configure-vault.md)
+[Windows Server のバックアップ](backup-windows-with-mars-agent.md)

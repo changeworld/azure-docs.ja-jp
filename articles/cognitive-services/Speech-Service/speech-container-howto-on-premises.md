@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 03/09/2020
 ms.author: dapine
-ms.openlocfilehash: 7874a6b274939c233dd1c4e6d146df2a9a409e65
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: cd4ff97902b1ce3d1d5a0ea066608fd33e6bf697
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833986"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037093"
 ---
 # <a name="use-speech-service-containers-with-kubernetes-and-helm"></a>Kubernetes および Helm と共に Speech サービス コンテナーを使用する
 

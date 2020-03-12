@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: tutorial
-ms.date: 12/18/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: decfeb9c46c32c6388228de6597db0c840354c19
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9227417d28eb09a322dd4757033ee62fee97d91c
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448584"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943901"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>チュートリアル:Bing Image Search API を使用して単一ページのアプリを作成する
 
@@ -407,6 +407,6 @@ CORS プロキシをインストールして、チュートリアル アプリ�
 > [!div class="nextstepaction"]
 > [Bing Image Search API を使用して画像の詳細情報を抽出する](tutorial-image-post.md)
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 * [Bing Image Search API リファレンス](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

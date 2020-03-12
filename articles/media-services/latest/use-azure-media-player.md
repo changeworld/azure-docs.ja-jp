@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: juliako
-ms.openlocfilehash: a0b0a4e89242103811f20071b7235c825c9d8bd2
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d9e42e809443a2dd6cdeb989f692b96d63269f79
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74967526"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673574"
 ---
 # <a name="azure-media-player-overview"></a>Azure Media Player の概要
 
@@ -26,8 +26,6 @@ Microsoft Azure Media Services では、HLS、DASH、スムーズ ストリー�
 
 > [!NOTE]
 > Widevine 暗号化コンテンツには HTTPS の再生が必要です。
-
-[無料試用版の利用を開始](https://azure.microsoft.com/pricing/free-trial/)
 
 ## <a name="use-azure-media-player-demo-page"></a>Azure Media Player のデモページを使用する
 
@@ -53,9 +51,9 @@ Azure Media Player は簡単にセットアップできます。 Media Services 
 
 ## <a name="additional-notes"></a>その他のメモ
 
-* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. のサービス使用条件とプライバシー ポリシーが適用されます。
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Media Player のドキュメント](https://aka.ms/ampdocs)
 - [Azure Media Player のサンプル](https://aka.ms/ampsamples)

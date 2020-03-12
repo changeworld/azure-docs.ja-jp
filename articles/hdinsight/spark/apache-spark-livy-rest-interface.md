@@ -5,42 +5,40 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: da654beec730d0bfc04548402c1158ebaaf80c6f
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 02/28/2020
+ms.openlocfilehash: ac3904284ebf20fa1d5e75f9249732be3963f677
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748355"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206284"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Apache Spark REST API を使用してリモート ジョブを HDInsight Spark クラスターに送信する
 
-[Apache Spark](https://spark.apache.org/) REST API の [Apache Livy](https://livy.incubator.apache.org/) を使用する方法について説明します。これを使用して、リモート ジョブを Azure HDInsight Spark クラスターに送信します。 詳細なドキュメントについては、 [https://livy.incubator.apache.org/](https://livy.incubator.apache.org/) に関するページを参照してください。
+Apache Spark REST API の [Apache Livy](https://livy.incubator.apache.org/) を使用する方法について説明します。これを使用して、リモート ジョブを Azure HDInsight Spark クラスターに送信します。 詳細なドキュメントについては、[Apache Livy](https://livy.incubator.apache.org/docs/latest/rest-api.html) に関するページを参照してください。
 
 Livy を使用すると、対話型の Spark シェルを実行したり、Spark で実行されるバッチ ジョブを送信したりすることができます。 この記事では、Livy を使用してバッチ ジョブを送信する方法について説明します。 この記事のスニペットでは、cURL を使用して、Livy Spark エンドポイントへの REST API 呼び出しを行います。
 
 ## <a name="prerequisites"></a>前提条件
 
-* HDInsight での Apache Spark クラスター。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。
-
-* [cURL](https://curl.haxx.se/)。 この記事では、cURL を使用して、HDInsight Spark クラスターに対して REST API 呼び出しを行う方法を説明します。
+HDInsight での Apache Spark クラスター。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。
 
 ## <a name="submit-an-apache-livy-spark-batch-job"></a>Apache Livy Spark バッチ ジョブの送信
 
 バッチ ジョブを送信する前に、クラスターに関連付けられているクラスター ストレージにアプリケーション jar をアップロードする必要があります。 コピーには、[AzCopy](../../storage/common/storage-use-azcopy.md) コマンドライン ユーティリティを使用できます。 データのアップロードに使用できるクライアントは、他にも多数あります。 詳細については、[HDInsight での Apache Hadoop ジョブ用データのアップロード](../hdinsight-upload-data.md)に関するページを参照してください。
 
 ```cmd
-curl -k --user "<hdinsight user>:<user password>" -v -H "Content-Type: application/json" -X POST -d '{ "file":"<path to application jar>", "className":"<classname in jar>" }' 'https://<spark_cluster_name>.azurehdinsight.net/livy/batches' -H "X-Requested-By: admin"
+curl -k --user "admin:password" -v -H "Content-Type: application/json" -X POST -d '{ "file":"<path to application jar>", "className":"<classname in jar>" }' 'https://<spark_cluster_name>.azurehdinsight.net/livy/batches' -H "X-Requested-By: admin"
 ```
 
 ### <a name="examples"></a>例
 
-* Jar ファイルがクラスター ストレージ (WASB) にある場合
+* Jar ファイルがクラスター ストレージ (WASBS) にある場合
 
     ```cmd  
-    curl -k --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST -d '{ "file":"wasb://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
+    curl -k --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
     ```
 
 * 入力ファイル (この例では input.txt) の一部として、jar ファイル名とクラス名を渡す場合
@@ -54,7 +52,7 @@ curl -k --user "<hdinsight user>:<user password>" -v -H "Content-Type: applicati
 構文:
 
 ```cmd
-curl -k --user "<hdinsight user>:<user password>" -v -X GET "https://<spark_cluster_name>.azurehdinsight.net/livy/batches"
+curl -k --user "admin:password" -v -X GET "https://<spark_cluster_name>.azurehdinsight.net/livy/batches"
 ```
 
 ### <a name="examples"></a>例
@@ -62,7 +60,7 @@ curl -k --user "<hdinsight user>:<user password>" -v -X GET "https://<spark_clus
 * クラスターで実行されているすべての Livy Spark バッチを取得する場合
 
     ```cmd
-    curl -k --user "admin:mypassword1!" -v -X GET "https://mysparkcluster.azurehdinsight.net/livy/batches" 
+    curl -k --user "admin:mypassword1!" -v -X GET "https://mysparkcluster.azurehdinsight.net/livy/batches"
     ```
 
 * バッチ ID を指定して特定のバッチを取得する場合
@@ -74,7 +72,7 @@ curl -k --user "<hdinsight user>:<user password>" -v -X GET "https://<spark_clus
 ## <a name="delete-a-livy-spark-batch-job"></a>Livy Spark バッチ ジョブの削除
 
 ```cmd
-curl -k --user "<hdinsight user>:<user password>" -v -X DELETE "https://<spark_cluster_name>.azurehdinsight.net/livy/batches/{batchId}"
+curl -k --user "admin:mypassword1!" -v -X DELETE "https://<spark_cluster_name>.azurehdinsight.net/livy/batches/{batchId}"
 ```
 
 ### <a name="example"></a>例
@@ -90,7 +88,7 @@ curl -k --user "admin:mypassword1!" -v -X DELETE "https://mysparkcluster.azurehd
 Livy は、クラスター上で実行される Spark ジョブに対する高可用性を提供します。 いくつかの例を次に示します。
 
 * リモートから Spark クラスターにジョブを送信した後で Livy サービスがダウンした場合、そのジョブはバックグラウンドで引き続き実行されます。 Livy が再度稼働状態に戻ると、ジョブの状態を復元してその旨を報告します。
-* HDInsight の Jupyter Notebook は、バックエンドで Livy が機能しています。 ノートブックで Spark ジョブを実行中に Livy サービスが再起動された場合、コード セルは引き続き実行されます。 
+* HDInsight の Jupyter Notebook は、バックエンドで Livy が機能しています。 ノートブックで Spark ジョブを実行中に Livy サービスが再起動された場合、コード セルは引き続き実行されます。
 
 ## <a name="show-me-an-example"></a>実際の例
 
@@ -101,10 +99,17 @@ Livy は、クラスター上で実行される Spark ジョブに対する高�
 
 次の手順に従います。
 
-1. まず、クラスターで Livy Spark が実行されていることを確認します。 そのためには、実行中のバッチの一覧を取得します。 Livy を使用するジョブを初めて実行する場合、出力は 0 を返します。
+1. 使いやすさのために環境変数を開始します。 この例は、Windows 環境に基づいています。必要に応じて、お使いの環境に合わせて変数を変更してください。 `CLUSTERNAME` と `PASSWORD` を適切な値に置き換えます。
 
     ```cmd
-    curl -k --user "admin:mypassword1!" -v -X GET "https://mysparkcluster.azurehdinsight.net/livy/batches"
+    set clustername=CLUSTERNAME
+    set password=PASSWORD
+    ```
+
+1. クラスターで Livy Spark が実行されていることを確認します。 そのためには、実行中のバッチの一覧を取得します。 Livy を使用するジョブを初めて実行する場合、出力は 0 を返します。
+
+    ```cmd
+    curl -k --user "admin:%password%" -v -X GET "https://%clustername%.azurehdinsight.net/livy/batches"
     ```
 
     次のスニペットのような出力が表示されます。
@@ -123,16 +128,16 @@ Livy は、クラスター上で実行される Spark ジョブに対する高�
 
     出力の最後の行に **total:0** とある点に注意してください。これは、実行中のバッチがないことを示しています。
 
-2. それでは、バッチ ジョブを送信してみましょう。 次のスニペットは、入力ファイル (input.txt) を使用して、jar 名とクラス名をパラメーターとして渡します。 この手順を Windows コンピューターから実行している場合は、入力ファイルを使用することをお勧めします。
+1. それでは、バッチ ジョブを送信してみましょう。 次のスニペットは、入力ファイル (input.txt) を使用して、jar 名とクラス名をパラメーターとして渡します。 この手順を Windows コンピューターから実行している場合は、入力ファイルを使用することをお勧めします。
 
     ```cmd
-    curl -k --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\input.txt "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
+    curl -k --user "admin:%password%" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\input.txt "https://%clustername%.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
     ```
 
     **input.txt** ファイル内のパラメーターは、次のように定義されています。
 
     ```text
-    { "file":"wasb:///example/jars/SparkSimpleApp.jar", "className":"com.microsoft.spark.example.WasbIOTest" }
+    { "file":"wasbs:///example/jars/SparkSimpleApp.jar", "className":"com.microsoft.spark.example.WasbIOTest" }
     ```
 
     次のスニペットのような出力が表示されます。
@@ -152,10 +157,10 @@ Livy は、クラスター上で実行される Spark ジョブに対する高�
 
     出力の最後の行に **state:starting**とある点に注意してください。 また、 **id:0**とも表示されています。 ここで、**0** はバッチ ID です。
 
-3. これで、バッチ ID を使用して、この特定のバッチの状態を取得できるようになりました。
+1. これで、バッチ ID を使用して、この特定のバッチの状態を取得できるようになりました。
 
     ```cmd
-    curl -k --user "admin:mypassword1!" -v -X GET "https://mysparkcluster.azurehdinsight.net/livy/batches/0"
+    curl -k --user "admin:%password%" -v -X GET "https://%clustername%.azurehdinsight.net/livy/batches/0"
     ```
 
     次のスニペットのような出力が表示されます。
@@ -169,15 +174,15 @@ Livy は、クラスター上で実行される Spark ジョブに対する高�
     < Date: Fri, 20 Nov 2015 23:54:42 GMT
     < Content-Length: 509
     <
-    {"id":0,"state":"success","log":["\t diagnostics: N/A","\t ApplicationMaster host: 10.0.0.4","\t ApplicationMaster RPC port: 0","\t queue: default","\t start time: 1448063505350","\t final status: SUCCEEDED","\t tracking URL: http://myspar.lpel1gnnvxne3gwzqkfq5u5uzh.jx.internal.cloudapp.net:8088/proxy/application_1447984474852_0002/","\t user: root","15/11/20 23:52:47 INFO Utils: Shutdown hook called","15/11/20 23:52:47 INFO Utils: Deleting directory /tmp/spark-b72cd2bf-280b-4c57-8ceb-9e3e69ac7d0c"]}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
+    {"id":0,"state":"success","log":["\t diagnostics: N/A","\t ApplicationMaster host: 10.0.0.4","\t ApplicationMaster RPC port: 0","\t queue: default","\t start time: 1448063505350","\t final status: SUCCEEDED","\t tracking URL: http://myspar.lpel.jx.internal.cloudapp.net:8088/proxy/application_1447984474852_0002/","\t user: root","15/11/20 23:52:47 INFO Utils: Shutdown hook called","15/11/20 23:52:47 INFO Utils: Deleting directory /tmp/spark-b72cd2bf-280b-4c57-8ceb-9e3e69ac7d0c"]}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
     ```
 
     今度は出力に **state:success** と表示されます。これは、ジョブが正常に完了したことを意味しています。
 
-4. 必要であれば、バッチを削除することができます。
+1. 必要であれば、バッチを削除することができます。
 
     ```cmd
-    curl -k --user "admin:mypassword1!" -v -X DELETE "https://mysparkcluster.azurehdinsight.net/livy/batches/0"
+    curl -k --user "admin:%password%" -v -X DELETE "https://%clustername%.azurehdinsight.net/livy/batches/0"
     ```
 
     次のスニペットのような出力が表示されます。
@@ -198,7 +203,7 @@ Livy は、クラスター上で実行される Spark ジョブに対する高�
 
 ## <a name="updates-to-livy-configuration-starting-with-hdinsight-35-version"></a>HDInsight 3.5 バージョン以降の Livy 構成の更新
 
-HDInsight 3.5 以上のクラスターでは、サンプル データ ファイルまたは jar にアクセスするためのローカル ファイル パスの使用が既定で無効になっています。 そのため、クラスターから jar ファイルやサンプル データ ファイルにアクセスするのではなく、`wasb://` のパスを使用することをお勧めします。
+HDInsight 3.5 以上のクラスターでは、サンプル データ ファイルまたは jar にアクセスするためのローカル ファイル パスの使用が既定で無効になっています。 そのため、クラスターから jar ファイルやサンプル データ ファイルにアクセスするのではなく、`wasbs://` のパスを使用することをお勧めします。
 
 ## <a name="submitting-livy-jobs-for-a-cluster-within-an-azure-virtual-network"></a>Azure 仮想ネットワーク内でクラスターの Livy ジョブを送信する
 

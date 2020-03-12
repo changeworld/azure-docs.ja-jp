@@ -3,12 +3,12 @@ title: Azure Marketplace にマネージド サービス オファーを発行�
 description: Azure の委任されたリソース管理に顧客をオンボードするマネージド サービス オファーを発行する方法について説明します。
 ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 841cb52791709be5649d66b72f5c18ef35b740ef
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 6ae93759073be6b05d118ccf46f6b6367fff5fc6
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155249"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328944"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Azure Marketplace にマネージド サービス オファーを発行する
 
@@ -40,7 +40,7 @@ ms.locfileid: "76155249"
 |---------|---------|
 |**プラン ID**     | (お客様の発行元プロファイル内の) 実際のオファーの一意識別子。 この ID には、最長 50 文字で、小文字の英数字、ダッシュ、アンダースコアのみを含めることができます。 オファー ID は、製品 URL や請求レポートなどの場所で顧客に表示されることがあります。 オファーの発行後は、この値を変更することはできません。        |
 |**発行元 ID**     | オファーに関連付けられる発行元 ID。 複数の発行元 ID がある場合は、このオファーに使用するものを選択できます。       |
-|**Name**     | Azure Marketplace と Azure portal 内で顧客に表示される実際のオファーの名前 (最長 50 文字)。 顧客が理解できる認識可能なブランド名を使用します。お客様自身の Web サイトを通じてこのオファーを宣伝している場合は、ここでまったく同じ名前を必ず使用してください。        |
+|**名前**     | Azure Marketplace と Azure portal 内で顧客に表示される実際のオファーの名前 (最長 50 文字)。 顧客が理解できる認識可能なブランド名を使用します。お客様自身の Web サイトを通じてこのオファーを宣伝している場合は、ここでまったく同じ名前を必ず使用してください。        |
 
 完了したら、 **[保存]** を選択します。 これで、 **[プラン]** セクションに進む準備ができました。
 
@@ -155,9 +155,6 @@ ms.locfileid: "76155249"
 > 委任は、ゲスト以外のアカウントが、オンボード対象のサブスクリプションで[所有者の組み込みコール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)を持っている (またはオンボード対象のリソース グループを含む) 顧客のテナントで実行する必要があります。 サブスクリプションを委任できるすべてのユーザーを表示するには、顧客のテナントのユーザーが Azure portal でサブスクリプションを選択し、 **[アクセス制御 (IAM)]** を開くと、[所有者ロールを持つすべてのユーザーを表示](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)することができます。
 
 顧客がサブスクリプション (またはサブスクリプション内の 1 つまたは複数のリソース グループ) を委任すると、そのサブスクリプションに **Microsoft. ManagedServices** リソースプロバイダーが登録され、テナント内のユーザーは、オファー内の承認に従って、委任されたリソースにアクセスできるようになります。
-
-> [!NOTE]
-> 現在のところ、サブスクリプションで Azure Databricks が使用されている場合、そのサブスクリプション (またはサブスクリプション内のリソース グループ) は委任できません。 同様に、サブスクリプション (またはサブスクリプション内のリソース グループ) が既に委任されている場合、現在のところ、そのサブスクリプションで Databricks ワークスペースを作成することはできません。
 
 ## <a name="next-steps"></a>次のステップ
 

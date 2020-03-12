@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
-ms.date: 11/05/2019
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: fe9cee44970da94c346caffc0d5fe76ffebf4a0b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 471b26ebc4bd4aecb814ec43c7eba56e3d764fa0
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845162"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402495"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning"></a>Azure Machine Learning 用の CLI 拡張機能を使用する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -311,7 +311,7 @@ az extension remove -n azure-cli-ml
 
 次の表は、JSON ファイルの各最上位レベルのフィールド、その種類、説明の詳細を示しています。 オブジェクトの種類が Python SDK のクラスにリンクされている場合、各 JSON フィールドと、Python クラスのパブリック変数名の間には緩い 1 対 1 の一致が存在します。 場合によっては、フィールドがクラス変数ではなく、コンストラクター引数にマップされることがあります。 たとえば、`environmentVariables` フィールドは [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) クラスの `environment_variables` 変数にマップされます。
 
-| JSON フィールド | 種類 | 説明 |
+| JSON フィールド | Type | 説明 |
 |---|---|---|
 | `name` | `string` | 環境の名前。 名前を **Microsoft** や **AzureML** で開始しないでください。 |
 | `version` | `string` | 環境のバージョン。 |

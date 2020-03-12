@@ -4,13 +4,13 @@ description: Azure Kubernetes Service (AKS) と Azure Container Registry (ACR) �
 services: container-service
 manager: gwallace
 ms.topic: article
-ms.date: 09/17/2018
-ms.openlocfilehash: b1f4449728589eca4f64035d7e70d01dbc187bc4
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.date: 02/25/2020
+ms.openlocfilehash: 5d8b45137ff82db6b23b5bf31eb3e8063de343bb
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596200"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191335"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Azure Kubernetes Service から Azure Container Registry の認証を受ける
 
@@ -25,9 +25,12 @@ Azure CLI を使用して、いくつかの単純なコマンドで AKS から A
 * **Azure サブスクリプション**上の**所有者**または **Azure アカウント管理者**ロール。
 * Azure CLI バージョン 2.0.73 以降
 
+**所有者** または **Azure アカウント管理者** の役割を必要としないようにするには、サービス プリンシパルを手動で構成するか、既存のサービス プリンシパルを使用して AKS から ACR を認証します。 詳細については、[サービス プリンシパルによる ACR 認証](../container-registry/container-registry-auth-service-principal.md)または[プル シークレットを使用した Kubernetes からの認証](../container-registry/container-registry-auth-kubernetes.md)に関するページをご参照ください。
+
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>ACR 統合を使用して新しい AKS クラスターを作成する
 
-AKS クラスターの初期作成中に AKS と ACR の統合を設定できます。  AKS クラスターが ACR と対話できるようにするために、Azure Active Directory の**サービス プリンシパル**が使用されます。 次の CLI コマンドを使用すると、サブスクリプション内の既存の ACR を承認し、サービス プリンシパル用の適切な **ACRPull** ロールを構成することができます。 下のパラメーターの有効な値を指定してください。 
+AKS クラスターの初期作成中に AKS と ACR の統合を設定できます。  AKS クラスターが ACR と対話できるようにするために、Azure Active Directory の**サービス プリンシパル**が使用されます。 次の CLI コマンドを使用すると、サブスクリプション内の既存の ACR を承認し、サービス プリンシパル用の適切な **ACRPull** ロールを構成することができます。 下のパラメーターの有効な値を指定してください。
+
 ```azurecli
 # set this to the name of your Azure Container Registry.  It must be globally unique
 MYACR=myContainerRegistry
@@ -37,12 +40,11 @@ az acr create -n $MYACR -g myContainerRegistryResourceGroup --sku basic
 
 # Create an AKS cluster with ACR integration
 az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-acr $MYACR
-
 ```
 または、ACR リソース ID を使用して ACR の名前を指定することもできます。その形式は次のようになります。
 
-/subscriptions/\<subscription-id\>/resourceGroups/\<resource-group-name\>/providers/Microsoft.ContainerRegistry/registries/\<name\> 
- 
+`/subscriptions/\<subscription-id\>/resourceGroups/\<resource-group-name\>/providers/Microsoft.ContainerRegistry/registries/\<name\>` 
+
 ```azurecli
 az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-acr /subscriptions/<subscription-id>/resourceGroups/myContainerRegistryResourceGroup/providers/Microsoft.ContainerRegistry/registries/myContainerRegistry
 ```

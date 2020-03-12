@@ -4,14 +4,14 @@ description: このクイック スタートでは、ご自身のコンテナー
 ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1ff9572cf8614e3eb5d015a602ca3f878875a0a4
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: dbeba56820a520e3435eeb0c5c8dbc5aae981241
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455349"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78403234"
 ---
-# <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>クイック スタート: プライベート コンテナー レジストリから Event Grid にイベントを送信する
+# <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>クイック スタート:プライベート コンテナー レジストリから Event Grid にイベントを送信する
 
 Azure Event Grid は、パブリッシュ/サブスクライブ モデルを使用した画一的なイベント使用を提供する、完全に管理されたイベント ルーティング サービスです。 このクイック スタートでは、Azure CLI を使用してコンテナー レジストリを作成し、レジストリ イベントをサブスクライブして、イベントを受信するサンプル Web アプリケーションをデプロイします。 最後に、コンテナー イメージの `push` イベントおよび `delete` イベントをトリガーし、サンプル アプリケーションでイベント ペイロードを表示します。
 
@@ -25,7 +25,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事の Azure CLI コマンドは、**Bash** シェル用にフォーマットされています。 PowerShell、コマンド プロンプトなど、別のシェルを使用している場合は、必要に応じて、行連結文字または変数代入行を適切に調整する必要があります。 この記事では変数を使用して、必要なコマンド編集を最小限に抑えています。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の [az group create][az-group-create] コマンドでは、*myResourceGroup* という名前のリソース グループが *eastus* リージョンに作成されます。 ご自身のリソース グループに別の名前を使用する場合は、`RESOURCE_GROUP_NAME` を別の値に設定してください。
 
@@ -110,7 +110,7 @@ az eventgrid event-subscription create \
 
 サブスクリプションが完了すると、次のような出力が表示されます。
 
-```JSON
+```json
 {
   "destination": {
     "endpointBaseUrl": "https://eventgridviewer.azurewebsites.net/api/updates",
@@ -149,8 +149,7 @@ az acr build --registry $ACR_NAME --image myimage:v1 -f Dockerfile https://githu
 
 ご自身のイメージが ACR タスクによって作成およびプッシュされている間は、次のような出力が表示されます。 簡潔にするため、次のサンプル出力は省略されています。
 
-```console
-$ az acr build -r $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
+```output
 Sending build context to ACR...
 Queued a build with build ID: aa2
 Waiting for build agent...
@@ -172,8 +171,7 @@ az acr repository show-tags --name $ACR_NAME --repository myimage
 
 作成したイメージの "v1" タグは、出力では次のように表示されます。
 
-```console
-$ az acr repository show-tags --name $ACR_NAME --repository myimage
+```output
 [
   "v1"
 ]
@@ -189,10 +187,9 @@ az acr repository delete --name $ACR_NAME --image myimage:v1
 
 次のような出力が表示され、マニフェストおよび関連付けられているイメージを削除してもよいか確認を求められます。
 
-```console
-$ az acr repository delete --name $ACR_NAME --image myimage:v1
+```output
 This operation will delete the manifest 'sha256:f15fa9d0a69081ba93eee308b0e475a54fac9c682196721e294b2bc20ab23a1b' and all the following images: 'myimage:v1'.
-Are you sure you want to continue? (y/n): y
+Are you sure you want to continue? (y/n): 
 ```
 
 ## <a name="view-registry-events"></a>レジストリ イベントの表示
@@ -205,7 +202,7 @@ Are you sure you want to continue? (y/n): y
 
 お疲れさまでした。 `ImagePushed` イベントと `ImageDeleted` イベントが表示されている場合は、ご自身のレジストリによってイベントが Event Grid に送信され、そのイベントは、Event Grid によってご自身の Web アプリ エンドポイントに転送されています。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このクイック スタートで作成したリソースの処理が完了したら、次の Azure CLI コマンドを使用してすべてのリソースを削除できます。 リソース グループを削除すると、そこに含まれているリソースはすべて、完全に削除されます。
 
@@ -221,7 +218,7 @@ Azure Container Registry イベント メッセージのスキーマ リファ�
 
 [Container Registry 用の Azure Event Grid イベント スキーマ](../event-grid/event-schema-container-registry.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、コンテナー レジストリをデプロイし、ACR タスクでイメージを作成した後、それを削除しました。また、サンプル アプリケーションで Event Grid からご自身のレジストリのイベントを使用しました。 次は、ACR タスクのチュートリアルを進め、基本イメージの更新での自動作成など、クラウドでのコンテナー イメージ作成の詳細について確認します。
 

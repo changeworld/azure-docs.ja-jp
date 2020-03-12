@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67c42de09c75b7dd6737b80071f1f6eba094b132
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: a6bbecf0e365ba7a8424da775245181fa64c21f6
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512421"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672693"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>方法:Azure AD Join の実装を計画する
 
@@ -59,7 +59,7 @@ Azure AD 参加は、マネージド環境とフェデレーション環境の�
 
 ### <a name="managed-environment"></a>マネージド環境
 
-マネージド環境は、[パスワード ハッシュ同期](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization)または[パススルー認証](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start)のいずれかとシームレス シングル サインオンを使用してデプロイできます。
+マネージド環境は、[パスワード ハッシュ同期](/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization)または[パススルー認証](/azure/active-directory/hybrid/how-to-connect-pta-quick-start)のいずれかとシームレス シングル サインオンを使用してデプロイできます。
 
 これらのシナリオでは、フェデレーション サーバーを認証用に構成する必要はありません。
 
@@ -78,7 +78,7 @@ AD FS を使用している場合は、次の WS-Trust エンドポイントを�
 ID プロバイダーによってこれらのプロトコルがサポートされていない場合、Azure AD 参加はネイティブには機能しません。 
 
 >[!NOTE]
-> 現時点で、Azure AD 参加は[プライマリ認証方法として外部認証プロバイダーで構成されている AD FS 2019](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary) では機能しません。 Azure AD 参加ではプライマリ メソッドの既定値として、パスワード認証が設定されます。これにより、このシナリオで認証エラーが発生します
+> 現時点で、Azure AD 参加は[プライマリ認証方法として外部認証プロバイダーで構成されている AD FS 2019](/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary) では機能しません。 Azure AD 参加ではプライマリ メソッドの既定値として、パスワード認証が設定されます。これにより、このシナリオで認証エラーが発生します
 
 
 ### <a name="smartcards-and-certificate-based-authentication"></a>スマートカードと証明書ベースの認証
@@ -91,7 +91,7 @@ ID プロバイダーによってこれらのプロトコルがサポートさ�
 
 ユーザーを以下の場所に作成する場合:
 
-- **オンプレミスの Active Directory**: [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis) を使用して Azure AD と同期する必要があります。 
+- **オンプレミスの Active Directory**: [Azure AD Connect](/azure/active-directory/hybrid/how-to-connect-sync-whatis) を使用して Azure AD と同期する必要があります。 
 - **Azure AD**: 追加のセットアップは不要です。
 
 Azure AD の UPN とは異なるオンプレミスの UPN は、Azure AD 参加済みデバイスでサポートされていません。 お客様のユーザーがオンプレミスの UPN を使用している場合は、Azure AD 内でプライマリ UPN を使用するように切り替えることを計画してください。
@@ -127,9 +127,9 @@ Azure AD 参加済みデバイスの管理には 2 つのアプローチがあ�
 - Azure AD 参加済デバイスまたはユーザーにサポート対象外のポリシーが必要か?
 - サポート対象外のポリシーはクラウド主導のデプロイに適用できるか?
 
-MDM ソリューションを Azure AD アプリ ギャラリーから入手できない場合は、「[Azure Active Directory integration with MDM](https://docs.microsoft.com/windows/client-management/mdm/azure-active-directory-integration-with-mdm)」(Azure Active Directory と MDM の統合) に概説されているプロセスに従って追加できます。 
+MDM ソリューションを Azure AD アプリ ギャラリーから入手できない場合は、「[Azure Active Directory integration with MDM](/windows/client-management/mdm/azure-active-directory-integration-with-mdm)」(Azure Active Directory と MDM の統合) に概説されているプロセスに従って追加できます。 
 
-共同管理では、SCCM を使用してデバイスの特定の側面を管理しながら、MDM プラットフォームを通じてポリシーを配信できます。 Microsoft Intune では、SCCM との共同管理を行うことができます。 Windows 10 デバイスの共同管理については、「[共同管理とは](https://docs.microsoft.com/configmgr/core/clients/manage/co-management-overview)」を参照してください。 Intune 以外の MDM 製品を使用する場合は、適用可能な共同管理のシナリオについて MDM のプロバイダーにお問い合わせください。
+共同管理では、SCCM を使用してデバイスの特定の側面を管理しながら、MDM プラットフォームを通じてポリシーを配信できます。 Microsoft Intune では、SCCM との共同管理を行うことができます。 Windows 10 デバイスの共同管理については、「[共同管理とは](/configmgr/core/clients/manage/co-management-overview)」を参照してください。 Intune 以外の MDM 製品を使用する場合は、適用可能な共同管理のシナリオについて MDM のプロバイダーにお問い合わせください。
 
 **推奨事項:** Azure AD 参加済みデバイスについては MDM のみの管理をご検討ください。
 
@@ -155,7 +155,7 @@ Azure AD アプリ ギャラリーにアプリケーションが追加されて�
 - Windows 統合認証を動作させる 
 - プロンプトなしの SSO エクスペリエンスをユーザーに提供する。 
 
-AD FS を使用する場合は、「[AD FS によるシングル サインオンを確認および管理する](https://docs.microsoft.com/previous-versions/azure/azure-services/jj151809(v%3dazure.100))」をご覧ください。 
+AD FS を使用する場合は、「[AD FS によるシングル サインオンを確認および管理する](/previous-versions/azure/azure-services/jj151809(v%3dazure.100))」をご覧ください。 
 
 **推奨事項:** エクスペリエンスを向上させるために、クラウド (たとえば、Azure) にホストし、Azure AD と統合することをご検討ください。
 
@@ -163,7 +163,7 @@ AD FS を使用する場合は、「[AD FS によるシングル サインオン
 
 デバイスがドメイン コントローラーへのアクセス権を持つ場合、ユーザーは Azure AD 参加済みデバイスから SSO を取得します。 
 
-**推奨事項:** [Azure AD アプリのプロキシ](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy)をデプロイして、これらのアプリケーションへのアクセスをセキュリティで保護できるようにします。
+**推奨事項:** [Azure AD アプリのプロキシ](/azure/active-directory/manage-apps/application-proxy)をデプロイして、これらのアプリケーションへのアクセスをセキュリティで保護できるようにします。
 
 ### <a name="on-premises-network-shares"></a>オンプレミスのネットワーク共有
 
@@ -171,7 +171,7 @@ AD FS を使用する場合は、「[AD FS によるシングル サインオン
 
 ### <a name="printers"></a>プリンター
 
-プリンターの場合は、Azure AD 参加済みデバイス上でプリンターを検出するために[ハイブリッド クラウド印刷](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)をデプロイする必要があります。 
+プリンターの場合は、Azure AD 参加済みデバイス上でプリンターを検出するために[ハイブリッド クラウド印刷](/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)をデプロイする必要があります。 
 
 プリンターは、クラウドのみの環境内では自動的に検出できませんが、ユーザーはプリンターの UNC パスを使用してそれらを直接追加することもできます。 
 
@@ -183,15 +183,15 @@ Azure AD 参加済みデバイスでは、マシンの認証に依存するオ�
 
 ### <a name="remote-desktop-services"></a>リモート デスクトップ サービス
 
-Azure AD 参加済みデバイスにリモート デスクトップ接続を行うには、ホスト マシンが Azure AD 参加済みまたは Hybrid Azure AD 参加済みである必要があります。 参加していないデバイスまたは Windows 以外のデバイスからのリモート デスクトップはサポートされていません。 詳しくは、[Azure AD に参加しているリモート PC への接続](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc)に関する記事をご覧ください
+Azure AD 参加済みデバイスにリモート デスクトップ接続を行うには、ホスト マシンが Azure AD 参加済みまたは Hybrid Azure AD 参加済みである必要があります。 参加していないデバイスまたは Windows 以外のデバイスからのリモート デスクトップはサポートされていません。 詳しくは、[Azure AD に参加しているリモート PC への接続](/windows/client-management/connect-to-remote-aadj-pc)に関する記事をご覧ください
 
 ## <a name="understand-your-provisioning-options"></a>プロビジョニングのオプションを把握する
 
 次のアプローチを使用して Azure AD 参加をプロビジョニングできます。
 
-- **OOBE/設定内でのセルフサービス** - セルフサービス モードでは、ユーザーは Windows Out of Box Experience (OOBE) の実行中に、または Windows 設定から、Azure AD 参加のプロセスを実行します。 詳しくは、「[職場のデバイスを組織のネットワークに参加させる](https://docs.microsoft.com/azure/active-directory/user-help/user-help-join-device-on-network)」をご覧ください。 
-- **Windows Autopilot** - Windows Autopilot により、Azure AD 参加を実行する OOBE のエクスペリエンスを円滑にするためにデバイスの事前構成を行うことができます。 詳しくは、「[Windows Autopilot の概要](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot)」をご覧ください。 
-- **一括登録** - 一括登録により、一括プロビジョニング ツールを使用してデバイスを構成することで、管理者主導の Azure AD 参加が可能になります。 詳しくは、「[Windows デバイスの一括登録](https://docs.microsoft.com/intune/windows-bulk-enroll)」をご覧ください。
+- **OOBE/設定内でのセルフサービス** - セルフサービス モードでは、ユーザーは Windows Out of Box Experience (OOBE) の実行中に、または Windows 設定から、Azure AD 参加のプロセスを実行します。 詳しくは、「[職場のデバイスを組織のネットワークに参加させる](/azure/active-directory/user-help/user-help-join-device-on-network)」をご覧ください。 
+- **Windows Autopilot** - Windows Autopilot により、Azure AD 参加を実行する OOBE のエクスペリエンスを円滑にするためにデバイスの事前構成を行うことができます。 詳しくは、「[Windows Autopilot の概要](/windows/deployment/windows-autopilot/windows-10-autopilot)」をご覧ください。 
+- **一括登録** - 一括登録により、一括プロビジョニング ツールを使用してデバイスを構成することで、管理者主導の Azure AD 参加が可能になります。 詳しくは、「[Windows デバイスの一括登録](/intune/windows-bulk-enroll)」をご覧ください。
  
 この 3 つのアプローチの比較を次に示します 
  
@@ -296,7 +296,7 @@ Azure AD 参加済みデバイスに対して MDM プロバイダーが構成さ
 
 > [!div class="nextstepaction"]
 > [最初の実行中に新しい Windows 10 デバイスを Azure AD に参加させる](azuread-joined-devices-frx.md)
-> [職場のデバイスを組織のネットワークに参加させる](https://docs.microsoft.com/azure/active-directory/user-help/user-help-join-device-on-network)
+> [職場のデバイスを組織のネットワークに参加させる](/azure/active-directory/user-help/user-help-join-device-on-network)
 
 <!--Image references-->
 [1]: ./media/azureadjoin-plan/12.png

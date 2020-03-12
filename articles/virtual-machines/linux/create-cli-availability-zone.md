@@ -1,26 +1,17 @@
 ---
 title: Azure CLI を使用してゾーン Linux VM を作成する
 description: Azure CLI を使用して可用性ゾーン内に Linux VM を作成する
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 04/05/2018
 ms.author: cynthn
-ms.custom: ''
-ms.openlocfilehash: 1cb8222b5e7bf2efee36673f9b80738500345754
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 3f15b59be1182a65da7acb54d0748caf69fc0af3
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036554"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970202"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Azure CLI を使用して可用性ゾーン内に Linux 仮想マシンを作成する
 
@@ -61,7 +52,7 @@ virtualMachines   eastus2    Standard_E4_v3              Standard   E4_v3    1,2
 
 ## <a name="create-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group) コマンドでリソース グループを作成します。  
+[az group create](/cli/azure/group) コマンドを使用して、リソース グループを作成します。  
 
 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 仮想マシンの前にリソース グループを作成する必要があります。 この例では、*myResourceGroupVM* という名前のリソース グループが *eastus2* リージョンに作成されます。 米国東部 2 は、可用性ゾーンをサポートする Azure リージョンの 1 つです。
 
@@ -195,7 +186,7 @@ az network public-ip show --resource-group myResourceGroupVM --name $ipaddressna
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、可用性ゾーン内に VM を作成する方法を説明しました。 Azure VM の[可用性](availability.md)の詳細を確認してください。
 

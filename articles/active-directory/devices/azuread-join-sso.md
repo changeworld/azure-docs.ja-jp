@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 083433d31f088eae1e138dd9cbd5ac05bbe8a304
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: f9d8c0cd803424e117bd4dc7a3382b7b32df2d05
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773307"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672715"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Azure AD 参加済みデバイス上でオンプレミス リソースへの SSO が機能するしくみ
 
@@ -42,11 +42,11 @@ Azure AD とオンプレミス AD の両方を使用している環境は、ハ�
 ユーザーのオンプレミス環境で Kerberos を要求しているリソースへのアクセスが試行されると、デバイスは次のようになります。
 
 1. ユーザーを認証するために、見つかった DC にオンプレミス ドメインの情報とユーザーの資格情報を送信します。
-1. AD 参加済みリソースへのアクセスに使用する Kerberos の[チケット保証チケット (TGT)](https://docs.microsoft.com/windows/desktop/secauthn/ticket-granting-tickets) を受け取ります。 AAD Connect ドメインの TGT の取得に失敗すると (関連する DCLocator タイムアウトにより遅延が発生する可能性があります)、資格情報マネージャー エントリが試行されるか、ターゲット リソースの資格情報を要求する認証ポップアップをユーザーが受け取る場合があります。
+1. AD 参加済みリソースへのアクセスに使用する Kerberos の[チケット保証チケット (TGT)](/windows/desktop/secauthn/ticket-granting-tickets) を受け取ります。 AAD Connect ドメインの TGT の取得に失敗すると (関連する DCLocator タイムアウトにより遅延が発生する可能性があります)、資格情報マネージャー エントリが試行されるか、ターゲット リソースの資格情報を要求する認証ポップアップをユーザーが受け取る場合があります。
 
 **Windows 統合認証**の対象として構成されているすべてのアプリでは、ユーザーからのアクセスが試みられたときに、SSO がシームレスに適用されます。
 
-Windows Hello for Business では、Azure AD 参加済みデバイスからのオンプレミスの SSO を有効にするために、追加の構成が必要です。 詳細については、「[Configure Azure AD joined devices for On-premises Single-Sign On using Windows Hello for Business](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base)」 (Windows Hello for Business を使用してオンプレミス シングル サインオン用に Azure AD 参加済みデバイスを構成する) を参照してください。 
+Windows Hello for Business では、Azure AD 参加済みデバイスからのオンプレミスの SSO を有効にするために、追加の構成が必要です。 詳細については、「[Configure Azure AD joined devices for On-premises Single-Sign On using Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base)」 (Windows Hello for Business を使用してオンプレミス シングル サインオン用に Azure AD 参加済みデバイスを構成する) を参照してください。 
 
 ## <a name="what-you-get"></a>取得内容
 

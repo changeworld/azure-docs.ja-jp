@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 72b15d77baedae318d4503f2d481b08202730459
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 316c3ef3c5bd16b52291029924d04fc159375bc8
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928003"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943656"
 ---
 # <a name="azure-database-security-best-practices"></a>Azure のデータベース セキュリティに関するベスト プラクティス
 この記事では、データベース セキュリティに関するベスト プラクティスについて説明します。
@@ -72,7 +72,7 @@ SQL Server 認証を使用する場合は、次のことを行う必要があり
 
 - 強力な資格情報を自分で管理します。
 - 接続文字列で資格情報を保護します。
-- (場合により) Web サーバーからデータベースにネットワーク経由で渡される資格情報を保護します。 詳細については、[方法:ASP.NET 2.0 で SQL 認証を使用して SQL Server へ接続する方法](/previous-versions/msp-n-p/ff648340(v=pandp.10))をご覧ください。
+- (場合により) Web サーバーからデータベースにネットワーク経由で渡される資格情報を保護します。 詳細については、「[ASP.NET 2.0 で SQL 認証を使用して SQL Server へ接続する方法](/previous-versions/msp-n-p/ff648340(v=pandp.10))をご覧ください。
 
 ### <a name="azure-active-directory-ad-authentication"></a>*Azure Active Directory (AD) 認証*
 Azure AD 認証は、Azure AD の ID を使用して Azure SQL Database と [SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に接続するメカニズムです。 Azure AD 認証を使用すると、データベース ユーザーの ID や他の Microsoft サービスを一元管理できます。 ID の一元管理では、1 か所でデータベース ユーザーを管理できるようになるため、アクセス許可の管理が容易になります。
@@ -128,7 +128,7 @@ Transparent Data Encryption を使用してデータベースを暗号化する�
 SQL Database の Transparent Data Encryption の詳細については、「[Azure SQL Database での Transparent Data Encryption](https://msdn.microsoft.com/library/0bf7e8ff-1416-4923-9c4c-49341e208c62.aspx)」を参照してください。
 
 ## <a name="enable-database-auditing"></a>データベース監査を有効にする
-SQL Server データベース エンジンまたは個々のデータベースのインスタンスを監査するには、イベントを追跡し、ログに記録します。 SQL Server では、サーバー レベルのイベントの仕様とデータベース レベルのイベントの仕様が含まれている監査を作成できます。 監査されるイベントは、イベント ログまたは監査ファイルに書き込むことができます。
+SQL Server データベース エンジンまたは個々のデータベースのインスタンスを監査するには、イベントを追跡し、ログに記録します。 SQL Server では、サーバー レベルのイベントの仕様とデータベース レベルのイベントの仕様が含まれている監査を作成できます。 監査イベントは、イベント ログまたは監査ファイルへ書き込むことができます。
 
 インストールに対する政府や標準の要件に応じて、SQL Server には複数のレベルの監査があります。 SQL Server 監査では、さまざまなサーバーおよびデータベース オブジェクトで監査を有効化、格納、表示するためのツールとプロセスが提供されます。
 
@@ -167,11 +167,7 @@ SQL Server データベース エンジンまたは個々のデータベース�
 
 さらに、脅威の検出は、アラートを、すべての Azure リソースのセキュリティ状態の一元的に表示するための Azure Security Center と統合します。
 
-## <a name="enable-feature-restrictions"></a>機能の制限を有効にする
-
-データベースに含まれているデータは、データベース エラーやクエリの実行時間を悪用する攻撃ベクトルを利用して攻撃者にさらされる可能性があります。 Azure SQL Database では、データベースを保護するために、さまざまな機能の制限のメカニズムが提供されます。 詳細については、[SQL Database 機能の制限](/azure/sql-database/sql-database-feature-restrictions)に関するページを参照してください。
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure を使用してクラウド ソリューションを設計、デプロイ、管理するときに使用するセキュリティのベスト プラクティスの詳細については、「[Azure セキュリティのベスト プラクティスとパターン](best-practices-and-patterns.md)」を参照してください。
 
 Azure のセキュリティとそれに関連する Microsoft サービスの一般情報については、以下のリソースを参照してください。

@@ -15,22 +15,20 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: fee7ff6ffbd18cf514ce1bfda81aca727ed362c3
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 7ee3939c1a1b450f2458267ab0b70e3924a4869b
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773503"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330602"
 ---
 # <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>クイック スタート:Azure の Service Bus キューを Node.js および azure-sb パッケージで使用する
-
-> [!div class="op_multi_selector" title1="プログラミング言語" title2="Node.js パッケージ"]
-> - [(Node.js | azure-sb)](service-bus-nodejs-how-to-use-queues.md)
-> - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-queues-new-package.md)
-
 このチュートリアルでは、[azure-sb](https://www.npmjs.com/package/azure-sb) パッケージを使用して、Node.js アプリケーションを作成して、Azure Service Bus キューとの間でメッセージを送受信する方法を学習します。 サンプルは JavaScript で記述されます。このサンプルでは、azure-sb パッケージを内部で使用する Node.js [Azure モジュール](https://www.npmjs.com/package/azure)が使用されます。
 
-[azure-sb](https://www.npmjs.com/package/azure-sb) パッケージでは [Service Bus REST ランタイム API](/rest/api/servicebus/service-bus-runtime-rest) が使用されています。 より高速な [AMQP 1.0 プロトコル](service-bus-amqp-overview.md)が使用される新しい [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) を使用すると、高速なエクスペリエンスが得られます。 新しいパッケージの詳細を知るには、[Service Bus キューを Node.js と @azure/service-bus パッケージで使用する方法](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package)に関する記事を参照してください。または、[azure](https://www.npmjs.com/package/azure) パッケージの使用方法についてさらに読み進めてください。
+> [!IMPORTANT]
+> [azure-sb](https://www.npmjs.com/package/azure-sb) パッケージでは [Service Bus REST ランタイム API](/rest/api/servicebus/service-bus-runtime-rest) が使用されています。 より高速な [AMQP 1.0 プロトコル](service-bus-amqp-overview.md)が使用される新しい [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) を使用すると、高速なエクスペリエンスが得られます。 
+> 
+> 新しいパッケージの詳細を知るには、[Service Bus キューを Node.js と @azure/service-bus パッケージで使用する方法](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package)に関する記事を参照してください。または、[azure](https://www.npmjs.com/package/azure) パッケージの使用方法についてさらに読み進めてください。
 
 ## <a name="prerequisites"></a>前提条件
 - Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。

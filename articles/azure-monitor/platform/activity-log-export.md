@@ -8,11 +8,11 @@ ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: edaa585ffb3448a80b021aa924a9d654ac829931
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668963"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096134"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure アクティビティ ログをストレージまたは Azure Event Hubs にエクスポートする
 

@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.reviewer: cgronlun
-ms.date: 01/21/2020
-ms.openlocfilehash: 65f43bf87e704c85d83220f4ffbc50581aafb549
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.date: 03/05/2020
+ms.openlocfilehash: e0482bac9569a834adf3e1cdef2b3f702980eac0
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76315142"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328665"
 ---
 # <a name="how-to-select-algorithms-for-azure-machine-learning"></a>Azure Machine Learning のアルゴリズムの選択方法
 
