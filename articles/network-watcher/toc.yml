@@ -118,6 +118,8 @@
                   href: traffic-analytics-faq.md
                 - name: スキーマとデータ収集
                   href: traffic-analytics-schema.md
+                - name: スキーマ更新 (2019 年 8 月)
+                  href: traffic-analytics-schema-update.md
             - name: Power BI を使用する
               href: network-watcher-visualize-nsg-flow-logs-power-bi.md
             - name: Elastic Stack を使用する

@@ -79,6 +79,8 @@
       href: sample-designer-datasets.md
     - name: エンドツーエンドの MLOps の例
       href: 'https://github.com/microsoft/MLOps'
+    - name: デザイナー パイプライン
+      href: samples-designer.md
 - name: 概念
   items:
     - name: ワークスペース
@@ -216,30 +218,6 @@
           href: how-to-cicd-data-ingestion.md
     - name: モデルをトレーニングする
       items:
-        - name: デザイナーを使用する
-          displayName: sample designer experiments
-          items:
-            - name: 価格を予測する
-              displayName: 'regression, studio'
-              href: how-to-designer-sample-regression-automobile-price-basic.md
-            - name: 価格を予測する (詳細設定)
-              displayName: 'regression, studio'
-              href: how-to-designer-sample-regression-automobile-price-compare-algorithms.md
-            - name: 所得を予測する
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-predict-income.md
-            - name: 信用リスクを予測する (詳細設定)
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-credit-risk-cost-sensitive.md
-            - name: 顧客離れを予測する
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-churn.md
-            - name: フライトの遅延を予測する
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-flight-delay.md
-            - name: テキスト分類
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-text-classification.md
         - name: ML に Estimator を使用する
           items:
             - name: トレーニングでの推定器の作成
@@ -279,7 +257,7 @@
           displayName: SDK automl
           href: how-to-configure-auto-train.md
         - name: 自動 ML を使用する (インターフェイス)
-          href: how-to-create-portal-experiments.md
+          href: how-to-use-automated-ml-for-ml-models.md
         - name: リモート コンピューティング ターゲットを使用する
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md

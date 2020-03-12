@@ -33,6 +33,12 @@
           href: howto-create-tenant.md
         - name: Azure AD アプリ オブジェクトとユーザーの作成
           href: howto-aad-app-configuration.md
+    - name: Azure Red Hat OpenShift 4.3 (プレビュー)
+      items:
+        - name: Azure Red Hat OpenShift 4.3 クラスターの作成
+          href: howto-using-azure-redhat-openshift.md
+        - name: Azure Red Hat OpenShift 4.3 向けの Azure Monitor の設定
+          href: howto-azure-monitor-v4.md
     - name: Azure Red Hat OpenShift クラスターでスタンドアロンの Prometheus をデプロイする
       href: howto-deploy-prometheus.md
     - name: プライベートの Azure Red Hat OpenShift クラスターの作成
