@@ -206,11 +206,15 @@
   items:
     - name: はじめに
       items:
+        - name: アカウントの作成 - ポータル
+          href: create-account-portal.md
         - name: アカウントの作成 - CLI
           href: create-account-cli-how-to.md
           displayName: storage
         - name: アカウント資格情報のリセット - CLI
           href: cli-reset-account-credentials.md
+        - name: API へのアクセス - ポータル
+          href: access-api-portal.md
         - name: API へのアクセス - CLI
           href: access-api-cli-how-to.md
         - name: メディア占有ユニットのスケーリング - CLI
