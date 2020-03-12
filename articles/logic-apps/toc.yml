@@ -105,8 +105,10 @@
           href: logic-apps-diagnosing-failures.md
     - name: Azure 仮想ネットワークにアクセスする
       items:
-        - name: 統合サービス環境を使用して仮想ネットワークに接続する
+        - name: 統合サービス環境の作成 - Azure portal
           href: connect-virtual-network-vnet-isolated-environment.md
+        - name: 統合サービス環境の作成 - REST API
+          href: create-integration-service-environment-rest-api.md
         - name: 複数の統合サービス環境のアクセスを設定する
           href: connect-virtual-network-vnet-set-up-single-ip-address.md
         - name: 統合サービス環境にリソースを追加する

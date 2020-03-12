@@ -80,6 +80,8 @@
           items:
             - name: 仮想ネットワークでのアクセスの制限 (プレビュー)
               href: container-registry-vnet.md
+            - name: Azure Private Link との統合 (プレビュー)
+              href: container-registry-private-link.md
             - name: ファイアウォールの内側にアクセスする
               href: container-registry-firewall-access-rules.md
             - name: 認証
@@ -102,8 +104,10 @@
               href: container-registry-repository-scoped-permissions.md
             - name: コンテンツの信頼
               href: container-registry-content-trust.md
-            - name: Security Center を使用したイメージのスキャン (プレビュー)
+            - name: Security Center を使用したイメージのスキャン
               href: ../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
+            - name: レジストリ データの暗号化 (プレビュー)
+              href: container-registry-customer-managed-keys.md
         - name: レジストリと他の Azure サービス
           expanded: false
           items:

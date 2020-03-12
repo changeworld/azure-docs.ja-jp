@@ -216,7 +216,7 @@
           href: api-server-authorized-ip-ranges.md
         - name: Azure Policy を使用したデプロイの制御 (プレビュー)
           href: ../governance/policy/concepts/rego-for-aks.md?toc=/azure/aks/toc.json
-        - name: クラスターのサービス プリンシパルの資格情報の更新
+        - name: クラスターの資格情報を更新する
           href: update-credentials.md
         - name: クラスターのエグレス トラフィックの制限および制御
           href: limit-egress-traffic.md

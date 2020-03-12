@@ -10,6 +10,8 @@
   items:
     - name: STONITH を使用した Azure RHEL VM 可用性グループの設定
       href: sql-server-linux-rhel-ha-stonith-tutorial.md
+    - name: Azure の RHEL 仮想マシンで SQL Server の可用性グループ リスナーを構成する
+      href: sql-server-linux-rhel-ha-listener-tutorial.md
 - name: リファレンス
   items:
     - name: Azure CLI

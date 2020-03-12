@@ -392,14 +392,22 @@
       items:
         - name: コピー アクティビティを使用したデータのコピー
           href: copy-activity-overview.md
+        - name: コピー アクティビティの監視
+          href: copy-activity-monitoring.md
         - name: 削除アクティビティを使用したファイルの削除
           href: delete-activity.md
         - name: データのコピー ツール
           href: copy-data-tool.md
         - name: フォーマットと圧縮のサポート
           href: supported-file-formats-and-compression-codecs.md
-        - name: パフォーマンスとチューニング
-          href: copy-activity-performance.md
+        - name: コピー アクティビティのパフォーマンス
+          items:
+            - name: パフォーマンスとスケーラビリティのガイド
+              href: copy-activity-performance.md
+            - name: パフォーマンスのトラブルシューティング
+              href: copy-activity-performance-troubleshooting.md
+            - name: パフォーマンス機能
+              href: copy-activity-performance-features.md
         - name: メタデータと ACL を保持する
           href: copy-activity-preserve-metadata.md
         - name: スキーマと型マッピング
@@ -689,6 +697,8 @@
       href: frequently-asked-questions.md
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=data-factory'
+    - name: ブログ
+      href: 'https://techcommunity.microsoft.com/t5/azure-data-factory/bg-p/AzureDataFactoryBlog#'
     - name: 質問をする - MSDN フォーラム
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataFactory&filter=alltypes&sort=lastpostdesc'
     - name: 質問をする - Stack Overflow
