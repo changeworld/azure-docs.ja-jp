@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 12/12/2019
-ms.openlocfilehash: 39217a883863fd663b02cafea699dcbc4e070dfb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/25/2020
+ms.openlocfilehash: 13c51f0db468c1591ca29de17f1744752589a1c8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435739"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663747"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Apache Hive で Apache Beeline クライアントを使用する
 
@@ -61,6 +61,8 @@ beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD
 
 パブリック エンドポイントまたはプライベート エンドポイントを使用してクラスターに接続する場合は、クラスター ログイン アカウント名 (既定値 `admin`) とパスワードを指定する必要があります。 たとえば、Beeline を使用してクライアント システムから `clustername.azurehdinsight.net` のアドレスに接続する場合です。 この接続は、ポート `443` を経由し、SSL を使用して暗号化されます。
 
+`clustername` を、使用する HDInsight クラスターの名前に置き換えます。 `admin` をクラスターのクラスター ログイン アカウントに置き換えます。 ESP クラスターには、完全な UPN (例: user@domain.com) を使用します。 `password` をクラスター ログイン アカウントのパスワードに置き換えます。
+
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p 'password'
 ```
@@ -71,19 +73,17 @@ beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportM
 beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p 'password'
 ```
 
-`clustername` を、使用する HDInsight クラスターの名前に置き換えます。 `admin` をクラスターのクラスター ログイン アカウントに置き換えます。 ESP クラスターには、完全な UPN (例: user@domain.com) を使用します。 `password` をクラスター ログイン アカウントのパスワードに置き換えます。
-
 プライベート エンドポイントは、同じリージョンでピアリングされた VNET からのみアクセスできる基本のロード バランサーを指します。 詳細については、[グローバル VNet ピアリングとロード バランサーの制約](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)に関する記事を参照してください。 `-v` オプションを指定して `curl` コマンドを使用すると、パブリック エンドポイントまたはプライベート エンドポイントに関する接続の問題をトラブルシューティングしてから、Beeline を使用できます。
 
 ---
 
-### <a id="sparksql"></a>Apache Spark での Beeline の使用
+### <a name="use-beeline-with-apache-spark"></a>Apache Spark での Beeline の使用
 
 Apache Spark は独自の HiveServer2 実装を提供します。これは Spark Thrift サーバーとも呼ばれます。 このサービスでは、Spark SQL を使用して Hive の代わりにクエリを解決します。クエリによってはパフォーマンスが向上します。
 
 #### <a name="through-public-or-private-endpoints"></a>パブリック エンドポイントまたはプライベート エンドポイント経由
 
-使用される接続文字列は少し異なります。 `httpPath=/hive2` の代わりに `httpPath/sparkhive2` が含まれます。
+使用される接続文字列は少し異なります。 `httpPath=/hive2` の代わりに `httpPath/sparkhive2` が含まれます。 `clustername` を、使用する HDInsight クラスターの名前に置き換えます。 `admin` をクラスターのクラスター ログイン アカウントに置き換えます。 ESP クラスターには、完全な UPN (例: user@domain.com) を使用します。 `password` をクラスター ログイン アカウントのパスワードに置き換えます。
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
@@ -94,8 +94,6 @@ beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportM
 ```bash
 beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
 ```
-
-`clustername` を、使用する HDInsight クラスターの名前に置き換えます。 `admin` をクラスターのクラスター ログイン アカウントに置き換えます。 ESP クラスターには、完全な UPN (例: user@domain.com) を使用します。 `password` をクラスター ログイン アカウントのパスワードに置き換えます。
 
 プライベート エンドポイントは、同じリージョンでピアリングされた VNET からのみアクセスできる基本のロード バランサーを指します。 詳細については、[グローバル VNet ピアリングとロード バランサーの制約](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)に関する記事を参照してください。 `-v` オプションを指定して `curl` コマンドを使用すると、パブリック エンドポイントまたはプライベート エンドポイントに関する接続の問題をトラブルシューティングしてから、Beeline を使用できます。
 
@@ -111,7 +109,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 ---
 
-## <a id="prereq"></a>前提条件
+## <a name="prerequisites-for-examples"></a>例の前提条件
 
 * HDInsight 上の Hadoop クラスター。 [Linux での HDInsight の概要](./apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 
@@ -121,7 +119,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 * オプション 2:ローカルの Beeline クライアント。
 
-## <a id="beeline"></a>Hive クエリを実行する
+## <a name="run-a-hive-query"></a>Hive クエリを実行する
 
 この例は、SSH 接続からの Beeline クライアントの使用に基づいています。
 
@@ -188,24 +186,21 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
         t7 string)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
     STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';
-    SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs 
-        WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' 
+    SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
+        WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log'
         GROUP BY t4;
     ```
 
     これらのステートメントによって次のアクションが実行されます。
 
-    * `DROP TABLE`: テーブルが既に存在する場合は削除されます。
-
-    * `CREATE EXTERNAL TABLE`: Hive に**外部**テーブルを作成します。 外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に残されます。
-
-    * `ROW FORMAT` - データがどのように書式設定されるか。 ここでは、各ログのフィールドは、スペースで区切られています。
-
-    * `STORED AS TEXTFILE LOCATION`: データの格納場所とファイル形式。
-
-    * `SELECT` - **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。 この値を含む行が 3 行あるため、このクエリでは値 **3** が返されます。
-
-    * `INPUT__FILE__NAME LIKE '%.log'` - Hive は、ディレクトリ内のすべてのファイルにスキーマの適用を試みます。 このケースでは、ディレクトリにスキーマに一致しないファイルが含まれています。 結果にガベージ データが含まれないように、このステートメントを使用して、.log で終わるファイルのデータのみを返す必要があることを Hive に指示します。
+    |ステートメント |説明 |
+    |---|---|
+    |DROP TABLE|テーブルが存在する場合は削除されます。|
+    |CREATE EXTERNAL TABLE|Hive に**外部**テーブルを作成します。 外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に残されます。|
+    |ROW FORMAT|データがどのように書式設定されるか。 ここでは、各ログのフィールドは、スペースで区切られています。|
+    |STORED AS TEXTFILE LOCATION|データの格納場所とファイル形式。|
+    |SELECT|**t4** 列の値が **[ERROR]** であるすべての行の数を指定します。 この値を含む行が 3 行あるため、このクエリでは値 **3** が返されます。|
+    |INPUT__FILE__NAME LIKE '%.log'|Hive によって、ディレクトリ内のすべてのファイルにスキーマの適用が試みられます。 このケースでは、ディレクトリにスキーマに一致しないファイルが含まれています。 結果にガベージ データが含まれないように、このステートメントを使用して、.log で終わるファイルのデータのみを返す必要があることを Hive に指示します。|
 
    > [!NOTE]  
    > 基になるデータが外部ソースによって更新されると考えられる場合は、外部テーブルを使用する必要があります。 たとえば、データの自動アップロード処理や MapReduce 操作の場合です。
@@ -236,7 +231,11 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
         +----------+--------+--+
         1 row selected (47.351 seconds)
 
-6. Beeline を終了するには、 `!exit`を使用します。
+6. Beeline を終了します。
+
+    ```bash
+    !exit
+    ```
 
 ## <a name="run-a-hiveql-file"></a>HiveQL ファイルを実行する
 
@@ -248,7 +247,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
     nano query.hql
     ```
 
-2. ファイルの内容として、次のテキストを使用します。 このクエリは、**errorLogs** という名前の新しい '内部' テーブルを作成します。
+1. ファイルの内容として、次のテキストを使用します。 このクエリは、**errorLogs** という名前の新しい '内部' テーブルを作成します。
 
     ```hiveql
     CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
@@ -257,16 +256,18 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
     これらのステートメントによって次のアクションが実行されます。
 
-   * **CREATE TABLE IF NOT EXISTS**: テーブルが存在しない場合は作成されます。 **EXTERNAL** キーワードが使用されていないため、このステートメントは内部テーブルを作成します。 内部テーブルは Hive データ ウェアハウスに格納され、完全に Hive によって管理されます。
-   * **STORED AS ORC** - Optimized Row Columnar (ORC) 形式でデータを格納します。 ORC 形式は、Hive データを格納するための高度に最適化された効率的な形式です。
-   * **INSERT OVERWRITE ...SELECT** - **[ERROR]** を含む **log4jLogs** テーブルの列を選択し、**errorLogs** テーブルにデータを挿入します。
+    |ステートメント |説明 |
+    |---|---|
+    |CREATE TABLE IF NOT EXISTS|テーブルが存在しない場合は作成されます。 **EXTERNAL** キーワードが使用されていないため、このステートメントは内部テーブルを作成します。 内部テーブルは Hive データ ウェアハウスに格納され、完全に Hive によって管理されます。|
+    |STORED AS ORC|Optimized Row Columnar (ORC) 形式でデータを格納します。 ORC 形式は、Hive データを格納するための高度に最適化された効率的な形式です。|
+    |INSERT OVERWRITE ...SELECT|**[ERROR]** を含む **log4jLogs** テーブルの列を選択し、**errorLogs** テーブルにデータを挿入します。|
 
     > [!NOTE]  
     > 外部テーブルとは異なり、内部テーブルを削除すると基盤となるデータも削除されます。
 
-3. ファイルを保存するには、**Ctrl**+**X** キーを押し、**Y** キー、**Enter** キーの順に押します。
+1. ファイルを保存するには、**Ctrl**+**X** キーを押し、**Y** キー、**Enter** キーの順に押します。
 
-4. 次を使用し、Beeline でファイルを実行します。
+1. 次を使用し、Beeline でファイルを実行します。
 
     ```bash
     beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -i query.hql
@@ -275,7 +276,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
     > [!NOTE]  
     > `-i` パラメーターは Beeline を開始し、`query.hql` ファイル内のステートメントを実行します。 クエリが完了すると、`jdbc:hive2://headnodehost:10001/>` プロンプトが表示されます。 ファイルは、`-f` パラメーターを使用して実行することもできます。この場合、クBeeline はクエリの完了後に終了します。
 
-5. **errorLogs** テーブルが作成されたことを確認するには、**errorLogs** からすべての行を返す次のステートメントを使用します。
+1. **errorLogs** テーブルが作成されたことを確認するには、**errorLogs** からすべての行を返す次のステートメントを使用します。
 
     ```hiveql
     SELECT * from errorLogs;
@@ -310,7 +311,9 @@ Beeline はご利用の HDInsight クラスターのヘッド ノードに含ま
         sudo apt install openjdk-11-jre-headless
         ```
 
-    1. bashrc ファイルを修正します (通常は ~/.bashrc にあります)。 `nano ~/.bashrc` を使用してファイルを開いてから、ファイルの末尾に次の行を追加します。
+    1. bashrc ファイルを開きます (通常は ~/.bashrc にあります): `nano ~/.bashrc`。
+
+    1. bashrc ファイルを修正します。 ファイルの末尾に次の行を追加します。
 
         ```bash
         export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
@@ -335,11 +338,12 @@ Beeline はご利用の HDInsight クラスターのヘッド ノードに含ま
 1. bashrc ファイルをさらに修正します。 アーカイブがアンパックされた場所へのパスを識別する必要があります。 [Linux 用 Windows サブシステム](https://docs.microsoft.com/windows/wsl/install-win10) を使用し、手順に正確に従った場合、パスは `/mnt/c/Users/user/` になります。ここで、`user` はユーザー名です。
 
     1. ファイルを開きます: `nano ~/.bashrc`
+
     1. 次のコマンドを適切なパスで変更して、bashrc ファイルの末尾にそれらを入力します。
 
         ```bash
-        export HADOOP_HOME=/$(path_where_the_archives_were_unpacked)/hadoop-2.7.3
-        export HIVE_HOME=/$(path_where_the_archives_were_unpacked)/apache-hive-1.2.1-bin
+        export HADOOP_HOME=/path_where_the_archives_were_unpacked/hadoop-2.7.3
+        export HIVE_HOME=/path_where_the_archives_were_unpacked/apache-hive-1.2.1-bin
         PATH=$PATH:$HIVE_HOME/bin
         ```
 

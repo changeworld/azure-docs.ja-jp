@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/01/2019
-ms.openlocfilehash: 55cddf5317938dea353517cde7260a1aa531d1df
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/28/2020
+ms.openlocfilehash: f496f6c06d36f817b0a933bdc68d5c53f308e3f2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77061260"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192627"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Storage を使用する
 
@@ -38,7 +38,7 @@ Apache Hadoop は、既定のファイル システムの概念をサポート�
 > [!NOTE]  
 > アーカイブ アクセス層はオフライン層であり、取得の際に数時間の待ち時間があるので、HDInsight での使用は推奨されません。 詳しくは、「[アーカイブ アクセス層](../storage/blobs/storage-blob-storage-tiers.md#archive-access-tier)」をご覧ください。
 
-## <a name="access-files-from-the-cluster"></a>クラスターからファイルにアクセスする
+## <a name="access-files-from-within-cluster"></a>クラスター内からファイルにアクセスする
 
 複数の方法で、HDInsight クラスターから Data Lake Storage のファイルにアクセスできます。 この URI スキームは、暗号化なしのアクセス (*wasb*: プレフィックス) と SSL で暗号化されたアクセス (*wasbs*) に対応しています。 同じ Azure リージョン内のデータにアクセスする場合でも、できる限り *wasbs* を使用することをお勧めします。
 
@@ -122,15 +122,28 @@ LOCATION 'wasbs:///example/data/';
 LOCATION '/example/data/';
 ```
 
+## <a name="access-files-from-outside-cluster"></a>クラスターの外側からファイルにアクセスする
+
+Microsoft では、Azure Storage を操作する次のツールを提供しています。
+
+| ツール | Linux | OS X | Windows |
+| --- |:---:|:---:|:---:|
+| [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
+| [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
+| [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
+| [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
+
 ## <a name="identify-storage-path-from-ambari"></a>Ambari からストレージ パスを特定する
 
 * 構成済みの既定ストアへの完全パスを特定するには、
 
-    **[HDFS]** 、 **[構成]** の順に移動し、フィルター入力ボックスに「`fs.defaultFS`」と入力します。
+    **[HDFS]**  >  **[構成]** の順に移動し、フィルター入力ボックスに「`fs.defaultFS`」と入力します。
 
 * Wasb ストアがセカンダリ ストレージとして構成されているかどうかを確認するには、
 
-    **[HDFS]** 、 **[構成]** の順に移動し、フィルター入力ボックスに「`blob.core.windows.net`」と入力します。
+    **[HDFS]**  >  **[構成]** の順に移動し、フィルター入力ボックスに「`blob.core.windows.net`」と入力します。
+
+Ambari REST API を使用してパスを取得する方法については、「 [既定値のストレージの取得](./hdinsight-hadoop-manage-ambari-rest-api.md#get-the-default-storage)」をご参照ください。
 
 ## <a name="blob-containers"></a>BLOB コンテナー
 
@@ -141,17 +154,6 @@ BLOB を使用するには、まず、[Azure ストレージ アカウント](..
 既定の BLOB コンテナーには、ジョブ履歴やログなどのクラスター固有の情報が格納されます。 既定の BLOB コンテナーと複数の HDInsight クラスターを共有しないでください。 ジョブ履歴が破損する場合があります。 各クラスターで別のコンテナーを使用し、既定のストレージ アカウントではなく、関連するすべてのクラスターのデプロイで指定された、リンクされているストレージ アカウントに共有データを格納することをお勧めします。 リンクされているストレージ アカウントの構成の詳細については、[HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。 ただし、元の HDInsight クラスターを削除した後でも既定のストレージ コンテナーを再利用できます。 HBase クラスターでは、削除された HBase クラスターで使用される既定の BLOB コンテナーを使用して、新しい HBase クラスターを作成することで、HBase テーブルのスキーマとデータを実際に保持できます。
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
-
-## <a name="interacting-with-azure-storage"></a>Azure マシンとの対話
-
-Microsoft では、Azure Storage を操作する次のツールを提供しています。
-
-| ツール | Linux | OS X | Windows |
-| --- |:---:|:---:|:---:|
-| [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
-| [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
-| [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
-| [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
 
 ## <a name="use-additional-storage-accounts"></a>追加ストレージ アカウントの使用
 
