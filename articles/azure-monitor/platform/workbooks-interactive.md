@@ -4,18 +4,17 @@ description: 作成済みのブックやパラメーター化されたカスタ�
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
-ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 19fd8c108e8075d30ca494ca75d52952849c284a
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 4d9f6e48722f01970a90a3a1d8d8b58b5d939774
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872844"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658270"
 ---
 # <a name="interactive-workbooks"></a>対話型ブック
 
@@ -46,7 +45,7 @@ ms.locfileid: "74872844"
 7. [項目が選択されている場合、パラメーターをエクスポートします] という設定をオンにします
     1. [エクスポートするフィールド]\: [要求]
     2. Parameter name: `SelectedRequest` (パラメーター名: {2})
-    3. [既定値]\: [すべての要求]
+    3. 既定値:`All requests`
     
     ![フィールドをパラメーターとしてエクスポートするための設定を備えた詳細エディターを示す画像](./media/workbooks-interactive/advanced-settings.png)
 
@@ -119,16 +118,16 @@ ms.locfileid: "74872844"
 ### <a name="setting-up-interactivity-using-conditional-visibility"></a>条件付きの可視性を使用した対話機能の設定
 1. 「グリッド行をクリックしたときの対話機能の設定」の手順に従って、2 つの対話型コントロールを設定します。
 2. 新しいパラメーターを先頭に追加します。
-    1. [Name] \(名前): `ShowDetails`
-    2. [パラメーターの種類]\: [ドロップ ダウン]
-    3. [必須ですか?]\: オン
-    4. [データの取得元]\: [`JSON`]
+    1. 名前: `ShowDetails`
+    2. [パラメーターの種類]\: [`Drop down`ドロップ ダウン]
+    3. [必須ですか?]\: `checked`オン
+    4. [データの取得元]\: [クエリ]
     5. [JSON 入力]\: `["Yes", "No"]`
     6. 保存して変更をコミットします。
 3. パラメーター値を [`Yes`] に設定します
 4. 面グラフが含まれているクエリ コントロールで、 _[詳細設定]_ アイコン (歯車アイコン) をクリックします
 5. [この項目を条件付きで表示する] という設定をオンにします
-    1. この項目は、`ShowDetails` パラメーター値が [`Yes`] の場合に表示されます
+    1. この項目は、`ShowDetails` パラメーター値が `equals` `Yes` の場合に表示されます
 6. _[編集完了]_ をクリックして変更をコミットします。
 7. ブックのツール バーの _[編集完了]_ をクリックして読み取りモードに移行します。
 8. [`ShowDetails`] パラメーターの値を [`No`] に切り替えます。 下のグラフが表示されなくなることに注目してください。
@@ -141,7 +140,7 @@ ms.locfileid: "74872844"
 
 ![グラフが表示されない条件付きの可視性を示す画像](./media/workbooks-interactive/conditional-invisible.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 
 * ブックの豊富な視覚化オプションの学習を[開始](workbooks-visualizations.md)します。

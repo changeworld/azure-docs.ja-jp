@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 38ffd4931f318b15f1ac06fcfd742bde8e5c6838
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 4a127c8c77f97708729cf91d6ced214e98924fb6
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772966"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943010"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>チュートリアル:Linux のデバイス用の IoT Edge モジュールを開発する
 
@@ -65,7 +65,7 @@ IoT Edge モジュールを開発する場合は、開発マシンと、モジ�
   * 開発用マシンで、入れ子になった仮想化がサポートされていることを確認します。 この機能は、次のセクションでインストールするコンテナー エンジンを実行するために必要です。
 * コンテナー エンジンを実行できるほとんどのオペレーティング システムを使用して、Linux デバイス用の IoT Edge モジュールを開発することができます。 このチュートリアルでは、Windows コンピューターを使用しますが、MacOS または Linux での既知の相違点を指摘します。
 * このチュートリアルの後半でモジュール テンプレート パッケージをプルするために、[Git](https://git-scm.com/) をインストールします。  
-* [Visual Studio Code 用の C# (OmniSharp を使用) 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+* [Visual Studio Code 用の C# (OmniSharp を使用) 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
 
 Linux 上の Azure IoT Edge デバイス:
@@ -144,7 +144,7 @@ Visual Studio Code のコマンド パレットで、次を検索して選択し
 * **.env** ファイルは、コンテナー レジストリへの資格情報を保持しています。 これらの資格情報は IoT Edge デバイスと共有されており、コンテナー イメージをプルするためにアクセスすることができます。
 * **deployment.debug.template.json** ファイルと **deployment.template.json** ファイルは、配置マニフェストの作成に役立つテンプレートです。 *配置マニフェスト*は、どのモジュールをデバイスにデプロイするか、それらをどのように構成するか、そしてそれらが互いに、およびクラウドとどのように通信するかを正確に定義するファイルです。 テンプレート ファイルは、一部の値にポインターを使用します。 テンプレートを真の配置マニフェストに変換するときに、ポインターは他のソリューション ファイルから取得した値に置き換えられます。 デプロイ テンプレートで 2 つの共通プレース ホルダーを見つけます。
 
-  * レジストリ資格情報セクションで、アドレスは、ソリューションを作成したときに指定した情報から自動的に入力されています。 ただし、ユーザー名とパスワードは、.env ファイルに格納されている変数を参照します。 この構成はセキュリティのためです。.env ファイルは git では無視されますが、デプロイ テンプレートはそうではないからです。
+  * レジストリ資格情報セクションで、アドレスは、ソリューションを作成したときに指定した情報から自動的に入力されています。 ただし、ユーザー名とパスワードは、.env ファイルに格納されている変数を参照します。 この構成はセキュリティのためです.env ファイルは git では無視されますが、デプロイ テンプレートはそうではないからです。
   * ソリューションを作成したときにイメージ リポジトリを指定しましたが、SampleModule セクションでコンテナー イメージは入力されていません。 このプレースホルダーは、SampleModule フォルダー内の **module.json** ファイルを指しています。 そのファイルに移動すると、イメージ フィールドにはリポジトリが含まれているだけでなく、バージョンとコンテナーのプラットフォームで構成されるタグ値も含まれていることが分かります。 バージョンは、開発サイクルの一部として手動で反復することができ、コンテナー プラットフォームは、このセクションの後半で紹介するスイッチャーを使用して選択します。
 
 ### <a name="provide-your-registry-credentials-to-the-iot-edge-agent"></a>レジストリの資格情報を IoT Edge エージェントに提供する
@@ -256,7 +256,7 @@ Visual Studio Code がコンテナー レジストリにアクセスできるよ
 
 <!--Alternative steps: Use VS Code Docker tools to view ACR images with tags-->
 
-### <a name="troubleshoot"></a>[トラブルシューティング]
+### <a name="troubleshoot"></a>トラブルシューティング
 
 モジュール イメージをビルドおよびプッシュしているときにエラーが発生する場合は、開発マシン上の Docker 構成に関連していることがよくあります。 次のチェックを使用して構成を確認してください。
 

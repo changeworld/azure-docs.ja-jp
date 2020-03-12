@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 09/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 69959418c52eb7324efe19ca41481e426b822ab4
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 717336e0ddfe99c96afda4861f4de1239ee949bf
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842361"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913210"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-ad-login"></a>Azure AD ログインを使用するように App Service アプリを構成する
 
@@ -25,6 +25,9 @@ ms.locfileid: "76842361"
 - デプロイ スロットごとに個別のアプリ登録を使用することで、環境間でアクセス許可を共有することを回避します。 新しいコードをテストするとき、このプラクティスは、問題が運用アプリに影響を与えることを回避する上で役立つことがあります。
 
 ## <a name="express"> </a>簡単設定を構成する
+
+> [!NOTE]
+> **[Express]\(簡易\)** オプションは、政府機関向けクラウドでは使用できません。 
 
 1. [Azure portal] で、 **[App Services]** を探して選択してから、アプリを選択します。
 2. 左側のナビゲーションから、 **[認証/承認]**  >  **[On]\(オン\)** を選択します。
@@ -67,7 +70,7 @@ App Service アプリを構成するとき、次の情報が必要になりま�
 1. **[Azure Active Directory]**  >  **[アプリの登録]**  >  **[新規登録]** の順に選択します。
 1. **[アプリケーションの登録]** ページで、アプリの登録の **[名前]** を入力します。
 1. **[リダイレクト URI]** で、 **[Web]** を選択し、「`<app-url>/.auth/login/aad/callback`」と入力します。 たとえば、「 `https://contoso.azurewebsites.net/.auth/login/aad/callback` 」のように入力します。 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 1. アプリの登録が作成されたら、後のために **[アプリケーション (クライアント) ID]** と **[ディレクトリ (テナント) ID]** をコピーします。
 1. **[ブランド]** を選択します。 **[ホーム ページ URL]** に App Service アプリの URL を入力し、 **[保存]** を選択します。
 1. **[API の公開]**  >  **[設定]** を選択します。 App Service アプリの URL を貼り付けて、 **[保存]** を選択します。
@@ -111,7 +114,7 @@ App Service アプリを構成するとき、次の情報が必要になりま�
 
     > [!NOTE]
     > Windows アプリケーションの場合は、代わりに[パッケージ SID](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) を URI として使用します。
-1. **作成** を選択します。
+1. **［作成］** を選択します
 1. アプリの登録が作成されたら、 **[アプリケーション (クライアント) ID]** の値をコピーします。
 1. **[API のアクセス許可]** 、 **[アクセス許可の追加]** 、 **[自分の API]** の順に選択します。
 1. App Service アプリ用に以前に作成したアプリの登録を選択します。 アプリの登録が表示されない場合は、「[App Service アプリに対するアプリ登録を Azure AD で作成する](#register)」で **user_impersonation** スコープを追加したことを確認します。

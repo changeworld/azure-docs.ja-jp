@@ -1,20 +1,17 @@
 ---
 title: 仮想マシン用 Azure 専用ホストの概要
 description: Azure 専用ホストを使用して仮想マシンをデプロイする方法の詳細について説明します。
-services: virtual-machines-linux
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: ddd08f87fb7847a81b28b18c1dedc1c4f0a7a169
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: c19b3410e106aaf5fed53aba45d06eac6dd9d601
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246208"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970727"
 ---
 # <a name="azure-dedicated-hosts"></a>Azure 専用ホスト
 
@@ -33,4 +30,4 @@ Azure 専用ホストは、1 つの Azure サブスクリプションに対し�
 
 - [こちら](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)には、リージョン内の回復性を最大にするためにゾーンと障害ドメインの両方を使用するサンプル テンプレートがあります。
 
-- また、Azure Dedicated Host](../prepay-dedicated-hosts-reserved-instances.md)の [予約インスタンスを使用してコストを節約することもできます。
+- また、Azure Dedicated Host の [予約インスタンスを使用してコストを節約することもできます](../prepay-dedicated-hosts-reserved-instances.md)。
