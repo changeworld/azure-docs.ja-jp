@@ -162,7 +162,7 @@ AD FS が Azure AD フェデレーションにのみ使用される場合、攻�
 
 オンプレミスのハイブリッド コンポーネントでは、オンプレミスのドメインと同じ方法でコンピューターへのアクセスをロックダウンする必要があります。 たとえば、バックアップ オペレーターまたは Hyper-V の管理者は、Azure AD Connect サーバーにログインしてルールを変更することはできません。
 
-Active Directry 管理階層モデルは、環境のフル コントロール (階層 0) と攻撃者が頻繁に侵害するリスクが高いワークステーション資産の間で、一連のバッファー ゾーンを使用して ID システムを保護するよう設計されています。 ![階層モデルの 3 つの階層を示す図](./media/active-directory-ops-guide/active-directory-ops-img18.png)
+Active Directory 管理階層モデルは、環境のフル コントロール (階層 0) と攻撃者が頻繁に侵害するリスクが高いワークステーション資産の間で、一連のバッファー ゾーンを使用して ID システムを保護するよう設計されています。 ![階層モデルの 3 つの階層を示す図](./media/active-directory-ops-guide/active-directory-ops-img18.png)
 
 [階層モデル](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)は 3 つのレベルで構成され、管理者アカウントのみが含まれ、標準ユーザー アカウントは含まれません。
 
