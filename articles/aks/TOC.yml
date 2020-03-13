@@ -117,18 +117,12 @@
   items:
     - name: クラスターの操作
       items:
-        - name: AKS クラスターを作成する
-          href: '/cli/azure/aks#az-aks-create'
-          maintainContext: true
         - name: AKS クラスターのスケーリング
           href: scale-cluster.md
         - name: AKS クラスターのアップグレード
           href: upgrade-cluster.md
         - name: ノードの OS の更新プログラムの処理
           href: node-updates-kured.md
-        - name: AKS クラスターの削除
-          href: '/cli/azure/aks#az-aks-delete'
-          maintainContext: true
         - name: ACR と AKS クラスターの統合
           href: cluster-container-registry-integration.md
         - name: 仮想ノードの作成

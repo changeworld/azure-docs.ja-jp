@@ -94,7 +94,7 @@
         - name: アクセス制御
           items:
             - name: 概要
-              href: ../sql-database/sql-database-control-access.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+              href: ../sql-database/sql-database-manage-logins.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
             - name: 列レベルのセキュリティ
               href: column-level-security.md
             - name: 行レベルのセキュリティ

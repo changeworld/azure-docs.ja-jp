@@ -1,14 +1,14 @@
 ---
 title: サポートされている Resource Manager のリソースの種類
 description: Azure Resource Graph でサポートされている Resource Manager のリソースの種類と変更履歴の一覧を示します。
-ms.date: 03/02/2020
+ms.date: 03/09/2020
 ms.topic: reference
-ms.openlocfilehash: 3d6ba89cbf5c35c2a06a214029971341c4184b41
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 9844b2fe7f1cbaf069789a4083229b4a6f37f38f
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227345"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943978"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph のテーブルとリソースの種類のリファレンス
 
@@ -122,6 +122,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.compute/virtualmachinescalesets
 - microsoft.containerinstance/containergroups
 - microsoft.containerregistry/registries
+- microsoft.containerregistry/registries/agentpools
 - microsoft.containerregistry/registries/buildtasks
 - microsoft.containerregistry/registries/replications
 - microsoft.containerregistry/registries/taskruns
@@ -152,6 +153,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.dbforpostgresql/servergroups
 - microsoft.dbforpostgresql/servers
 - microsoft.dbforpostgresql/serversv2
+- microsoft.dbforpostgresql/singleservers
 - microsoft.deploymentmanager/artifactsources
 - microsoft.deploymentmanager/rollouts
 - microsoft.deploymentmanager/servicetopologies
@@ -348,6 +350,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.search/searchservices
 - microsoft.security/automations
 - microsoft.security/iotsecuritysolutions
+- microsoft.securitydetonation/chambers
 - microsoft.servicebus/namespaces
 - microsoft.servicefabric/clusters
 - microsoft.servicefabric/containergroupsets
@@ -412,6 +415,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.web/connections
 - microsoft.web/customapis
 - microsoft.web/hostingenvironments
+- microsoft.web/kubeenvironments
 - microsoft.web/serverfarms
 - microsoft.web/sites
 - microsoft.web/sites/premieraddons

@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/05/2019
-ms.openlocfilehash: 24ecf90c2ffc88415afbf84f54af3efa7d5f4a39
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/10/2020
+ms.openlocfilehash: a72753d5553e79a8ed28c3afcc7e54af6c2d230c
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435405"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117240"
 ---
 # <a name="network-security-group-nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight で使用されるネットワーク セキュリティ グループ (NSG) サービス タグ
 
@@ -40,7 +40,7 @@ HDInsight クラスターでサービス タグを使い始める最も簡単な
 
 1. **[発信元サービス タグ]** ドロップダウン リストから、 **[HDInsight]** を選択します。
 
-    ![Azure portal のサービス タグの追加](./media/hdinisght-service-tags/azure-portal-add-service-tag.png)
+    ![Azure portal のサービス タグの追加](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
 
 このタグを使うと、HDInsight が使用可能なすべてのリージョンの正常性および管理サービスの IP アドレスが組み込まれ、クラスターが作成された場所に関係なく、必要な正常性および管理サービスと通信できることが保証されます。
 
@@ -76,6 +76,7 @@ HDInsight クラスターでサービス タグを使い始める最も簡単な
 | Azure Government | USDoD 中部   | HDInsight.USDoDCentral |
 | &nbsp; | USGov テキサス | HDInsight.USGovTexas |
 | &nbsp; | USDoD 東部 | HDInsight.USDoDEast |
+| &nbsp; | USGov アリゾナ | HDInsight.USGovArizona |
 
 ### <a name="use-multiple-regional-service-tags"></a>複数のリージョン サービス タグを使用する
 
@@ -99,7 +100,7 @@ HDInsight クラスターでサービス タグを使い始める最も簡単な
 | &nbsp; | 米国中部 | HDInsight.CentralUS |
 | &nbsp; | 米国中北部 | HDInsight. NorthCentralUS |
 | &nbsp; | 米国中南部 | HDInsight.SouthCentralUS |
-| &nbsp; | East US | HDInsight.EastUS |
+| &nbsp; | 米国東部 | HDInsight.EastUS |
 | &nbsp; | 米国西部 | HDInsight.WestUS |
 | 日本 | 東日本 | HDInsight.JapanEast |
 | ヨーロッパ | 北ヨーロッパ | HDInsight.NorthEurope |
