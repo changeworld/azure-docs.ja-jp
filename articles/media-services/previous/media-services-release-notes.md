@@ -41,7 +41,7 @@ ms.locfileid: "78183297"
 | パブリック REST バージョン 2 では、クエリ結果が 1000 件に制限されているため、エンティティにクエリを実行すると、上限の 1000 個のエンティティが一度に返される。 |[こちらの .NET の例](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities)と[こちらの REST API の例](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)に示すように、Skip および Take (.NET)/top (REST) を使用してください。 |
 | 一部のクライアントは、スムーズ ストリーミング マニフェストで繰り返しタグに遭遇することがあります。 |詳細については、[こちらのセクション](media-services-deliver-content-overview.md#known-issues)をご覧ください。 |
 | Media Services .NET SDK オブジェクトをシリアル化できないため、Azure Cache for Redis と連携しない。 |SDK AssetCollection オブジェクトをシリアル化して、Azure Cache for Redis に追加しようとすると、例外がスローされます。 |
-|資産またはアカウント レベルのフィルターを取得しようとすると、REST API からの応答として、"The filter cannot be accessed by this version of REST Api (このバージョンの REST Api ではフィルターにアクセスできません)" というエラー メッセージが表示されます。|フィルターを取得するために使用されている API バージョンよりも新しいバージョンを使用してフィルターが作成または変更されました。 この状態は、ユーザーに利用されているコードまたはツールによって 2 つの API バージョンが使用されている場合に発生する可能性があります。  この場合の最適な解決策は、コードまたはツールをアップグレードして、2 つの API バージョンのうちの新しい方の API バージョンを使用することです。|
+|資産またはアカウント レベルのフィルターを取得しようとすると、REST API からの応答として、"The filter cannot be accessed by this version of REST Api (このバージョンの REST API ではフィルターにアクセスできません)" というエラー メッセージが表示されます。|フィルターを取得するために使用されている API バージョンよりも新しいバージョンを使用してフィルターが作成または変更されました。 この状態は、ユーザーに利用されているコードまたはツールによって 2 つの API バージョンが使用されている場合に発生する可能性があります。  この場合の最適な解決策は、コードまたはツールをアップグレードして、2 つの API バージョンのうちの新しい方の API バージョンを使用することです。|
 
 ## <a name="a-idrest_version_historyrest-api-version-history"></a><a id="rest_version_history"/>REST API バージョン履歴
 Media Services REST API バージョン履歴の詳細については、[Azure Media Services REST API リファレンス]をご覧ください。
