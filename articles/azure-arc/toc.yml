@@ -12,6 +12,8 @@
       href: ./servers/onboard-portal.md
     - name: サービス プリンシパルを使用したマシンの大規模な接続
       href: ./servers/onboard-service-principal.md
+    - name: PowerShell DSC を使用してマシンを Azure Arc に接続する
+      href: ./servers/onboard-dsc.md
 - name: リファレンス
   items:
     - name: Azure Connected Machine Agent CLI インターフェイス

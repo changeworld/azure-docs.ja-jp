@@ -1,82 +1,56 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure SignalR サービスのドキュメント
+### YamlMime:Landing
+title: Azure SignalR Service のドキュメント
+summary: Azure SignalR サービスは、リアルタイムの機能で開発者が Web アプリケーションを構築しやすくする Azure 管理のサービスです。
 metadata:
-  title: ドキュメント - Azure SignalR Service
+  title: Azure SignalR Service のドキュメント
   description: サーバーレスまたはサーバー モードで、リアルタイム Web アプリを簡単に構築してスケーリングできます。 さまざまな言語やフレームワークをサポートする WebSocket に基づいています。
-  services: azure-signalr
-  author: v-chmccl
-  manager: wesmc
   ms.service: signalr
-  ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 09/12/2018
+  author: v-chmccl
   ms.author: wesmc
-abstract:
-  description: Azure SignalR サービスは、リアルタイムの機能で開発者が Web アプリケーションを構築しやすくする Azure 管理のサービスです。
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: Azure SignalR サービスを使用してリアルタイム通信のための最初の Web アプリケーションを開発する方法について説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_NETcore.svg'
-            text: ASP.NET Core
-            href: /azure/azure-signalr/signalr-quickstart-dotnet-core
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_NET.svg'
-            text: ASP.NET
-            href: /azure/azure-signalr/signalr-quickstart-dotnet
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_js.svg'
-            text: JavaScript
-            href: /azure/azure-signalr/signalr-quickstart-azure-functions-javascript
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_Csharp.svg'
-            text: 'C#'
-            href: /azure/azure-signalr/signalr-quickstart-azure-functions-csharp
-          - image:
-              src: 'https://docs.microsoft.com/azure/media/index/logo_java.svg'
-            text: Java
-            href: /azure/azure-signalr/signalr-quickstart-azure-functions-java
-          - image:
-              src: 'https://docs.microsoft.com/azure/media/index/logo_python.svg'
-            text: Python
-            href: /azure/azure-signalr/signalr-quickstart-azure-functions-python
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_REST.svg'
-            text: REST API
-            href: /azure/azure-signalr/signalr-quickstart-rest-api
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: Azure SignalR サービスのアプリケーションの構築方法について説明します
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/azure-signalr/signalr-authenticate-oauth">Azure SignalR Service を ASP.NET Core ID と統合する</a>
-          - html: <a href="/azure/azure-signalr/signalr-tutorial-authenticate-azure-functions">認証を使用してサーバーレスのリアルタイム アプリを構築する</a>
-  - title: サンプル
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '<a href="https://github.com/aspnet/AzureSignalR-samples">Azure SignalR のコード サンプル</a>'
-          - html: <a href="/azure/azure-signalr/signalr-cli-samples">Azure CLI</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: コマンド ライン
-            html: <p><a href="signalr-reference-cli.md">Azure CLI</a></p>
-          - title: Languages
-            html: |
-              <p><a href="https://docs.microsoft.com/aspnet/core">ASP.NET Core サーバー SDK</a></p> <p><a href="/azure/azure-functions/functions-bindings-signalr-service">Azure Functions のバインド</a></p> <p><a href="https://docs.microsoft.com/aspnet/core/signalr/javascript-client">JavaScript クライアント</a></p> <p><a href="https://docs.microsoft.com/aspnet/core/signalr/dotnet-client">.NET Standard クライアント</a></p> <p><a href="https://github.com/aspnet/SignalR/tree/release/2.2/clients/java/signalr">Java クライアント</a></p>
-          - title: REST
-            html: '<p><a href="https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md">REST API</a></p>'
+  ms.date: 03/11/2020
+  ms.openlocfilehash: db405e7405fc96779aebc9074fa19302f3b4ba1b
+  ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/12/2020
+  ms.locfileid: "79137939"
+landingContent:
+- title: Azure SignalR サービスについて
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure SignalR サービスとは
+      url: signalr-overview.md
+- title: はじめに
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: ASP.NET Core - C#
+      url: signalr-quickstart-dotnet-core.md
+    - text: ASP.NET - C#
+      url: signalr-quickstart-dotnet.md
+    - text: Azure Functions - JavaScript
+      url: signalr-quickstart-azure-functions-javascript.md
+    - text: Azure Functions - C#
+      url: signalr-quickstart-azure-functions-csharp.md
+    - text: Azure Functions - Java
+      url: signalr-quickstart-azure-functions-java.md
+    - text: Azure Functions - Python
+      url: signalr-quickstart-azure-functions-python.md
+    - text: REST API
+      url: signalr-quickstart-rest-api.md
+- title: Azure SignalR Service のアプリをビルドする
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Azure SignalR Service を ASP.NET Core ID と統合する
+      url: signalr-concept-authenticate-oauth.md
+    - text: 認証を使用してサーバーレスのリアルタイム アプリをビルドする
+      url: signalr-tutorial-authenticate-azure-functions.md
+  - linkListType: sample
+    links:
+    - text: Azure SignalR のコード サンプル
+      url: https://github.com/aspnet/AzureSignalR-samples
+    - text: Azure CLI
+      url: signalr-reference-cli.md

@@ -161,6 +161,9 @@
         - name: Gallery データ
           displayName: export
           href: ai-gallery-control-personal-data-dsr.md
+        - name: ノートブックのダウンロード
+          displayName: export
+          href: download-notebooks-data.md
 - name: リファレンス
   items:
     - name: アルゴリズムとモジュールのリファレンス

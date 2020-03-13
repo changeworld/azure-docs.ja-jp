@@ -26,14 +26,8 @@
           href: quickstarts/ruby.md
     - name: SDK
       items:
-        - name: 'C# の使用'
-          href: quickstarts/entity-sdk-csharp-quickstart.md
-        - name: Node.js の使用
-          href: quickstarts/entity-sdk-node-quickstart.md
-        - name: Python の使用
-          href: quickstarts/entity-sdk-python-quickstart.md
-        - name: Java の使用
-          href: quickstarts/entity-sdk-java-quickstart.md
+        - name: Bing Entity Search クライアント ライブラリ
+          href: ./quickstarts/client-libraries.md
 - name: チュートリアル
   items:
     - name: シングルページ Web アプリの作成
@@ -42,7 +36,7 @@
   items:
     - name: コード サンプル
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Entity+Search'
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: サムネイルのサイズ変更とトリミング
       maintainContext: true

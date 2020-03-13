@@ -4,11 +4,15 @@
   items:
     - name: Azure Bastion について
       href: bastion-overview.md
-- name: ハウツー ガイド
+- name: クイックスタート
+  items:
+    - name: VM 設定から要塞ホストを作成する
+      href: quickstart-host-portal.md
+- name: 操作方法ガイド
   items:
     - name: Bastionホストの作成
       items:
-        - name: Azure ポータル
+        - name: Azure portal
           href: bastion-create-host-portal.md
         - name: Azure PowerShell
           href: bastion-create-host-powershell.md

@@ -31,43 +31,8 @@
   items:
     - name: 作業の開始
       items:
-        - name: データの概要
-          href: /azure/databricks/getting-started/data
-          maintainContext: true
         - name: Azure Databricks の概念
           href: /azure/databricks/getting-started/concepts
-          maintainContext: true
-        - name: Azure Databricks のデータセット
-          href: /azure/databricks/getting-started/databricks-datasets
-          maintainContext: true
-        - name: Apache Spark
-          items:
-            - name: Apache Spark の概要
-              href: /azure/databricks/getting-started/spark/index
-              maintainContext: true
-            - name: Apache Spark を使ってみる
-              href: /azure/databricks/getting-started/spark/quick-start
-              maintainContext: true
-            - name: DataFrames
-              href: /azure/databricks/getting-started/spark/dataframes
-              maintainContext: true
-            - name: データセット
-              href: /azure/databricks/getting-started/spark/datasets
-              maintainContext: true
-            - name: 機械学習
-              href: /azure/databricks/getting-started/spark/machine-learning
-              maintainContext: true
-            - name: 構造化ストリーミング
-              href: /azure/databricks/getting-started/spark/streaming
-              maintainContext: true
-            - name: 参照トピック
-              href: /azure/databricks/getting-started/spark/next
-              maintainContext: true
-        - name: トレーニングと FAQ
-          href: /azure/databricks/getting-started/training-faq
-          maintainContext: true
-        - name: サポートされているブラウザー
-          href: /azure/databricks/getting-started/supported-browsers
           maintainContext: true
     - name: Databricks ランタイム
       items:
@@ -220,6 +185,9 @@
       maintainContext: true
     - name: Data
       items:
+        - name: データの概要
+          href: /azure/databricks/getting-started/data
+          maintainContext: true
         - name: データベースとテーブル
           href: /azure/databricks/data/tables
           maintainContext: true
@@ -310,6 +278,9 @@
               maintainContext: true
         - name: Databricks ファイル システム (DBFS)
           href: /azure/databricks/data/databricks-file-system
+          maintainContext: true
+        - name: Azure Databricks のデータセット
+          href: /azure/databricks/getting-started/databricks-datasets
           maintainContext: true
         - name: FileStore
           href: /azure/databricks/data/filestore
@@ -731,6 +702,9 @@
           maintainContext: true
         - name: Azure Databricks の RStudio
           href: /azure/databricks/spark/latest/sparkr/rstudio
+          maintainContext: true
+        - name: Azure Databricks の Shiny
+          href: /azure/databricks/spark/latest/sparkr/shiny
           maintainContext: true
     - name: 機械学習
       items:
@@ -1385,6 +1359,9 @@
             - name: べき等性を保証する
               href: /azure/databricks/kb/jobs/jobs-idempotency
               maintainContext: true
+            - name: 長いジョブが資格情報のパススルーで失敗する
+              href: /azure/databricks/kb/jobs/azure-long-job-failed-auth
+              maintainContext: true
         - name: ライブラリ
           items:
             - name: UI からライブラリをアンインストールできない
@@ -1494,6 +1471,12 @@
               maintainContext: true
             - name: SQL クエリを実行する
               href: /azure/databricks/kb/python/sql-in-python
+              maintainContext: true
+            - name: HDFS API を使用して Python でファイルを読み取る
+              href: /azure/databricks/kb/python/hdfs-to-read-files
+              maintainContext: true
+            - name: Python 2 の終了ステータス
+              href: /azure/databricks/kb/python/python-2-eol
               maintainContext: true
         - name: Spark を使用した R
           items:
@@ -1650,6 +1633,35 @@
       href: /azure/templates/microsoft.databricks/workspaces
 - name: リソース
   items:
+    - name: Apache Spark
+      items:
+        - name: Apache Spark の概要
+          href: /azure/databricks/getting-started/spark/index
+          maintainContext: true
+        - name: Apache Spark を使ってみる
+          href: /azure/databricks/getting-started/spark/quick-start
+          maintainContext: true
+        - name: DataFrames
+          href: /azure/databricks/getting-started/spark/dataframes
+          maintainContext: true
+        - name: データセット
+          href: /azure/databricks/getting-started/spark/datasets
+          maintainContext: true
+        - name: 機械学習
+          href: /azure/databricks/getting-started/spark/machine-learning
+          maintainContext: true
+        - name: 構造化ストリーミング
+          href: /azure/databricks/getting-started/spark/streaming
+          maintainContext: true
+        - name: 参照トピック
+          href: /azure/databricks/getting-started/spark/next
+          maintainContext: true
+    - name: トレーニングと FAQ
+      href: /azure/databricks/getting-started/training-faq
+      maintainContext: true
+    - name: サポートされているブラウザー
+      href: /azure/databricks/getting-started/supported-browsers
+      maintainContext: true
     - name: リリース ノート
       items:
         - name: プラットフォーム
