@@ -30,7 +30,7 @@ Azure Kubernetes Service (AKS) で実行されるアプリケーションで、�
 
 データを格納して取得するための従来のボリュームは、Azure Storage を基盤とする Kubernetes リソースとして作成されます。 これらのデータ ボリュームを手動で作成してポッドに直接割り当てることも、Kubernetes で自動的に作成することもできます。 これらのデータ ボリュームには、Azure ディスクまたは Azure Files を使用できます。
 
-- "*Azure ディスク*" は、Kubernetes *DataDisk* リソースを作成するために使用できます。 ディスクは、高パフォーマンス SSD に支えられた Azure Premium ストレージ、または標準 HHD に支えられた Azure Standard ストレージを使用できます。 ほとんどの運用ワークロードと開発ワークロードでは Premium ストレージを使用してください。 Azure ディスクは *ReadWriteOnce* としてマウントされるため、1 つのポッドでしか使用できません。 複数のポッドから同時にアクセスできるストレージ ボリュームについては、Azure Files を使用します。
+- "*Azure ディスク*" は、Kubernetes *DataDisk* リソースを作成するために使用できます。 ディスクは、高パフォーマンス SSD に支えられた Azure Premium ストレージ、または標準 HDD に支えられた Azure Standard ストレージを使用できます。 ほとんどの運用ワークロードと開発ワークロードでは Premium ストレージを使用してください。 Azure ディスクは *ReadWriteOnce* としてマウントされるため、1 つのポッドでしか使用できません。 複数のポッドから同時にアクセスできるストレージ ボリュームについては、Azure Files を使用します。
 - *Azure Files* は、Azure Storage アカウントによって支えられる SMB 3.0 共有をポッドにマウントするために使用できます。 Files では、複数のノードとポッドにまたがってデータを共有できます。 ファイルは、標準 HDD に支えられた Azure Standard ストレージ、または高パフォーマンス SSD に支えられた Azure Premium ストレージを使用できます。
 > [!NOTE] 
 > Azure Files では、Kubernetes 1.13 以降が実行される AKS クラスターでの Premium Storage がサポートされています。
