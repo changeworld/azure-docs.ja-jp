@@ -90,7 +90,7 @@ Visual Studio IDE を使用している場合、クライアント ライブラ�
 
 Form Recognizer SDK の主な機能は、次のクラスによって処理されます。
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |[FormRecognizerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.formrecognizerclient?view=azure-dotnet-preview)|このクラスは、すべての Form Recognizer 機能に必要です。 サブスクリプション情報を使用してこれをインスタンス化し、他のクラスのインスタンスを生成するために使用します。|
 |[TrainRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.trainrequest?view=azure-dotnet-preview)| このクラスは、独自のトレーニング入力データを使用してカスタム Form Recognizer モデルをトレーニングするために使用します。 |
