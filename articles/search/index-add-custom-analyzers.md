@@ -242,7 +242,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 |Type|サポートされている文字フィルターの一覧に含まれる文字フィルターの種類です。 下記の[文字フィルター](#char-filters-reference)の表の **char_filter_type** 列をご覧ください。|  
 |Options|指定した[文字フィルター](#char-filters-reference)の種類で有効なオプションを使用する必要があります。|  
 
-### <a name="tokenizers"></a>トークナイザー
+### <a name="tokenizers"></a>Tokenizer
 
  トークナイザーでは、連続するテキストがトークンのシーケンスに分割されます (文を単語に分割する場合など)。  
 
