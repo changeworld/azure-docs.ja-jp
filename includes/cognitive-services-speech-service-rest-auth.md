@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: 020055c1629a66ec1aa82beb050501803b2a0f18
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: dc5e251fee00ee22edb2261c1abd8404714834ba
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168301"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668304"
 ---
 ## <a name="authentication"></a>認証
 
@@ -22,7 +22,7 @@ ms.locfileid: "77168301"
 
 `Ocp-Apim-Subscription-Key` ヘッダーを使用する場合、指定する必要があるのはサブスクリプション キーだけです。 次に例を示します。
 
-```
+```http
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
 ```
 
@@ -34,7 +34,7 @@ ms.locfileid: "77168301"
 
 `issueToken` エンドポイントの形式は次のとおりです。
 
-```
+```http
 https://<REGION_IDENTIFIER>.api.cognitive.microsoft.com/sts/v1.0/issueToken
 ```
 
@@ -62,7 +62,7 @@ Content-Length: 0
 
 この例は、アクセス トークンを取得するための単純な PowerShell スクリプトです。 `YOUR_SUBSCRIPTION_KEY` は、お使いの Speech Service のサブスクリプション キーに置き換えてください。 必ず、実際のサブスクリプションに合ったリージョンの正しいエンドポイントを使用してください。 この例では現在、米国西部に設定されています。
 
-```Powershell
+```powershell
 $FetchTokenHeader = @{
   'Content-type'='application/x-www-form-urlencoded';
   'Content-Length'= '0';
@@ -81,7 +81,7 @@ $OAuthToken
 
 cURL は Linux (および Windows Subsystem for Linux) で使用できるコマンドライン ツールです。 この cURL コマンドは、アクセス トークンを取得する方法を示しています。 `YOUR_SUBSCRIPTION_KEY` は、お使いの Speech Service のサブスクリプション キーに置き換えてください。 必ず、実際のサブスクリプションに合ったリージョンの正しいエンドポイントを使用してください。 この例では現在、米国西部に設定されています。
 
-```cli
+```console
 curl -v -X POST
  "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken" \
  -H "Content-type: application/x-www-form-urlencoded" \
@@ -93,7 +93,7 @@ curl -v -X POST
 
 この C# クラスは、アクセス トークンを取得する方法を示しています。 クラスをインスタンス化するときに、お使いの Speech Service のサブスクリプション キーを渡す必要があります。 お使いのサブスクリプションが米国西部リージョンにない場合は、実際のサブスクリプションのリージョンに合わせて `FetchTokenUri` の値を変更してください。
 
-```cs
+```csharp
 public class Authentication
 {
     public static readonly string FetchTokenUri =

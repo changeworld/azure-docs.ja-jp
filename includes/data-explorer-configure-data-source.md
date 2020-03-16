@@ -4,12 +4,12 @@ ms.service: data-explorer
 ms.topic: include
 ms.date: 11/03/2019
 ms.author: orspodek
-ms.openlocfilehash: f8b3e541dfd55bbd613af2791329a08402cf8670
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 3cd9d017429b629acad39f5b902e842886c3c818
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581984"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78305046"
 ---
 ## <a name="configure-the-data-source"></a>データ ソースの構成
 
@@ -25,11 +25,11 @@ Azure Data Explorer をダッシュボード ツールのデータ ソースと�
 
 サービス プリンシパルは、[Azure portal](#azure-portal) または [Azure CLI](#azure-cli) コマンド ライン エクスペリエンスを使用して作成できます。 どちらの方法を使用しても、作成後に、後の手順で使用する 4 つの接続プロパティの値を取得します。
 
-#### <a name="azure-portal"></a>Azure ポータル
+#### <a name="azure-portal"></a>Azure portal
 
 1. サービス プリンシパルを作成するには、[Azure portal のドキュメント](/azure/active-directory/develop/howto-create-service-principal-portal)の指示に従います。
 
-    1. 「[アプリケーションをロールに割り当てる](/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)」で、Azure Data Explorer クラスターに**閲覧者**ロールを割り当てます。
+    1. 「[アプリケーションをロールに割り当てる](/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)」で、Azure Data Explorer クラスターに**閲覧者**ロールを割り当てます。
 
     1. 「[サインインするための値を取得する](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)」で、後の手順で使用する 3 つのプロパティ値 (**ディレクトリ ID** (テナント ID)、**アプリケーション ID**、**パスワード**) をコピーします。
 
@@ -85,7 +85,7 @@ Azure Data Explorer をダッシュボード ツールのデータ ソースと�
 
 1. **[アクセス許可]** を選択し、 **[追加]** を選択します。
 
-    ![データベースのアクセス許可](media/data-explorer-configure-data-source/database-permissions.png)
+    ![データベース権限](media/data-explorer-configure-data-source/database-permissions.png)
 
 1. **[Add database permissions]\(データベース アクセス許可の追加\)** で、 **[閲覧者]** ロールを選択し、 **[Select principals]\(プリンシパルの選択\)** を選択します。
 
