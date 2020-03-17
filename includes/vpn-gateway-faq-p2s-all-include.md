@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: be858e9200191de7e0bda0ae227519666d80fb7a
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: ec684e5e6fa2ef8e9ed30be49f59e8aa7ef3a28b
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500586"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117104"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>ポイント対サイト構成で保持できる VPN クライアント エンドポイントの最大数を教えてください。
 
@@ -58,9 +58,13 @@ Azure では、次の 3 種類のポイント対サイト VPN オプションを
 
 はい。 Resource Manager デプロイ モデルの場合には、ゲートウェイにルートベースの VPN が必要になります。 クラシック デプロイ モデルの場合は、動的ゲートウェイが必要です。 静的ルーティング VPN ゲートウェイと、ポリシーベースの VPN ゲートウェイでは、ポイント対サイト接続はサポートされません。
 
+### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-network-gateways-at-the-same-time"></a>ポイント対サイト接続のクライアントを同時に複数の仮想ネットワーク ゲートウェイに接続するように構成することはできますか。
+
+使用される VPN クライアント ソフトウェアによっては、接続先の仮想ネットワークにおいて、それらの間で、または接続元のクライアントのネットワークとの間で、競合するアドレス空間がない場合、複数の Virtual Network ゲートウェイに接続できることがあります。  Azure VPN クライアントでは多くの VPN 接続がサポートされていますが、一度に接続できる接続は 1 つだけです。
+
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>ポイント対サイト接続のクライアントを同時に複数の仮想ネットワークに接続するように構成することはできますか。
 
-いいえ。 ポイント対サイト接続のクライアントは、仮想ネットワーク ゲートウェイが存在する VNet にあるリソースに接続できるにとどまります。
+はい。他の VNet とピアリングされている VNet にデプロイされている Virtual Network ゲートウェイへのポイント対サイト接続は、ピアリングされた他の VNet にアクセスできる可能性があります。  ピアリングされた VNet が UseRemoteGateway/AllowGatewayTransit 機能を使用している場合、ポイント対サイトクライアントは、ピアリングされた VNet に接続できます。  詳しくは、[こちら](../articles/vpn-gateway/vpn-gateway-about-point-to-site-routing.md)の記事を参照してください。
 
 ### <a name="how-much-throughput-can-i-expect-through-site-to-site-or-point-to-site-connections"></a>サイト間接続またはポイント対サイト接続ではどの程度のスループットが得られますか。
 
