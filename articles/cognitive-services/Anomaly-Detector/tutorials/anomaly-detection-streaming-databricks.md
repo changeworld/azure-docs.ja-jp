@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 12/19/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 93ee5df4327aa396573665cd0c2cbd8222015cce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e0df0773daf8f9be21ac70d8390013adfd93483a
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448899"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402675"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>チュートリアル:Azure Databricks を使用した、ストリーミング データの異常検出
 
@@ -40,12 +40,10 @@ ms.locfileid: "75448899"
 > * ツイートの異常検出を実行する
 
 > [!Note]
-> このチュートリアルでは、Anomaly Detector API について推奨される[ソリューション アーキテクチャ](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/)を実装するための方法を紹介します。
+> * このチュートリアルでは、Anomaly Detector API について推奨される[ソリューション アーキテクチャ](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/)を実装するための方法を紹介します。
+> * このチュートリアルは、Anomaly Detector API または Azure Databricks の無料試用版では完了できません。 
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
-
-> [!Note]
-> このチュートリアルは、Anomaly Detector API の無料試用版のキーで実行できません。 無料アカウントを使用して Azure Databricks クラスターを作成するには、クラスターを作成する前に、プロファイルにアクセスし、サブスクリプションを**従量課金制**に変更します。 詳細については、[Azure 無料アカウント](https://azure.microsoft.com/free/)に関するページをご覧ください。
+まだお持ちでない場合は、[Azure サブスクリプション](https://azure.microsoft.com/free/)を作成します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -53,7 +51,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 - Event Hubs 名前空間にアクセスするための[接続文字列](../../../event-hubs/event-hubs-get-connection-string.md)。 接続文字列は次のような形式になります。
 
-    [https://login.microsoftonline.com/consumers/](`Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>`) 
+    `Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>` 
 
 - Event Hubs の共有アクセス ポリシー名とポリシー キー。
 
@@ -75,10 +73,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |**ワークスペース名**     | Databricks ワークスペースの名前を指定します        |
     |**サブスクリプション**     | ドロップダウンから Azure サブスクリプションを選択します。        |
     |**リソース グループ**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../../../azure-resource-manager/management/overview.md)に関するページをご覧ください。 |
-    |**Location**     | **米国東部 2**またはその他の利用可能なリージョンのいずれかを選択します。 使用可能なリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。        |
-    |**Pricing Tier**     |  **Standard** と **Premium** のいずれかを選択します。 **[Trial]\(試用版\)** を選択しないでください。 これらのレベルの詳細については、[Databricks の価格に関するページ](https://azure.microsoft.com/pricing/details/databricks/)を参照してください。       |
+    |**場所**     | **米国東部 2**またはその他の利用可能なリージョンのいずれかを選択します。 使用可能なリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。        |
+    |**価格レベル**     |  **Standard** と **Premium** のいずれかを選択します。 **[Trial]\(試用版\)** を選択しないでください。 これらのレベルの詳細については、[Databricks の価格に関するページ](https://azure.microsoft.com/pricing/details/databricks/)を参照してください。       |
 
-    **作成** を選択します。
+    **［作成］** を選択します
 
 4. ワークスペースの作成には数分かかります。 
 
@@ -136,7 +134,7 @@ Twitter アプリケーションについて取得した値を保存します。
 
      ![Maven 座標を入力する](../media/tutorials/databricks-eventhub-specify-maven-coordinate.png "Maven 座標を入力する")
 
-3. **作成** を選択します。
+3. **［作成］** を選択します
 
 4. ライブラリを追加したフォルダーを選択し、ライブラリ名を選択します。
 
@@ -153,7 +151,7 @@ Twitter アプリケーションについて取得した値を保存します。
 
 このチュートリアルでは、[Azure Cognitive Services Anomaly Detector API](../overview.md) を使用して、ツイートのストリームに対して、ほぼリアルタイムで異常検出を実行します。 API を使用する前に、Azure で Anomaly Detector リソースを作成し、Anomaly Detector API を使用してアクセス キーを取得する必要があります。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 2. **[+ リソースの作成]** を選択します。
 
@@ -163,16 +161,16 @@ Twitter アプリケーションについて取得した値を保存します。
 
 4. **[作成]** ダイアログ ボックスで、次の値を入力します。
 
-    |値 |説明  |
+    |Value |説明  |
     |---------|---------|
-    |Name     | Anomaly Detector リソースの名前。        |
+    |名前     | Anomaly Detector リソースの名前。        |
     |サブスクリプション     | リソースが関連付けられる Azure サブスクリプション。        |
-    |Location     | Azure の場所。        |
+    |場所     | Azure の場所。        |
     |Pricing tier     | サービスの価格レベル。 Anomaly Detector の価格の詳細については、[料金ページ](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/)を参照してください。        |
     |Resource group     | 新しいリソース グループを作成するか、既存のリソース グループを選択するかを指定します。        |
 
 
-     **作成** を選択します。
+     **［作成］** を選択します
 
 5. リソースを作成した後、スクリーン ショットに示すように、 **[概要]** タブで、 **[エンドポイント]** URL をコピーして保存します。 次に、 **[アクセス キーを表示]** を選択します。
 
@@ -197,7 +195,7 @@ Twitter アプリケーションについて取得した値を保存します。
 
     ![Databricks でノートブックを作成する](../media/tutorials/databricks-notebook-details.png "Databricks でノートブックを作成する")
 
-    **作成** を選択します。
+    **［作成］** を選択します
 
 3. 手順を繰り返して **AnalyzeTweetsFromEventHub** ノートブックを作成します。
 

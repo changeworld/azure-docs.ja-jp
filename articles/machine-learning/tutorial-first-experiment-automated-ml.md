@@ -1,7 +1,7 @@
 ---
-title: 最初の自動 ML 実験を作成する
+title: 自動 ML 分類モデルを作成する
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning Studio で自動機械学習を使用して分類モデルをトレーニングおよびデプロイする方法について説明します。
+description: Azure Machine Learning の自動機械学習 (自動 ML) インターフェイスを使用して分類モデルをトレーニングおよびデプロイする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 02/04/2020
-ms.openlocfilehash: 70fcdb1c22664a0bd3091fea88c8e23e3d1b81e5
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 96af942ab68d4ae738df56bf94d8410ee5d8cc34
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048286"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129671"
 ---
-# <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>チュートリアル:自動化された機械学習を使用して最初の分類モデルを作成する
+# <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>チュートリアル:Azure Machine Learning の自動 ML で分類モデルを作成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-このチュートリアルでは、コードを 1 行も記述せずに Azure Machine Learning Studio で初めての自動機械学習実験を作成する方法について説明します。 この例では、クライアントが金融機関に定期預金を申し込むかどうかを予測する分類モデルを作成します。
+このチュートリアルでは、Azure Machine Learning の自動機械学習インターフェイスを使用して、1 行のコードも記述せずに基本的な分類モデルを作成する方法について説明します。 この分類モデルは、クライアントが金融機関に定期預金を申し込むかどうかを予測します。
 
 自動機械学習を使用することで、時間がかかるタスクを自動化することができます。 自動機械学習では、アルゴリズムとハイパーパラメーターのさまざまな組み合わせをすばやく反復し、選択された成功のメトリックに基づいて最適なモデルを効率的に発見します。
 
@@ -42,7 +42,7 @@ ms.locfileid: "77048286"
 
 Azure Machine Learning ワークスペースは、機械学習モデルを実験、トレーニング、およびデプロイするために使用する、クラウドでの基本的なリソースです。 ワークスペースは、Azure サブスクリプションとリソース グループを、サービス内の簡単に使用できるオブジェクトに結び付けます。 
 
-ワークスペースを作成するには、Azure リソースを管理するための Web ベースのコンソールである Azure Machine Learning Studio を使用します。
+ワークスペースを作成するには、Azure リソースを管理するための Web ベースのコンソールである Azure portal を使用します。
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
 
@@ -51,9 +51,9 @@ Azure Machine Learning ワークスペースは、機械学習モデルを実験
 
 ## <a name="create-and-run-the-experiment"></a>実験を作成して実行する
 
-Azure Machine Learning Studio で、次の実験の設定を完了し、ステップを実行します。Azure Machine Learning Studio は、あらゆるスキル レベルのデータ サイエンス実務者がデータ サイエンス シナリオを実行するための機械学習ツールを含む統合インターフェイスです。 Internet Explorer ブラウザーでは、Studio はサポートされません。
+https://ml.azure.com の Azure Machine Learning Studio で、次の実験の設定を完了し、ステップを実行します。Azure Machine Learning Studio は、あらゆるスキル レベルのデータ サイエンス実務者がデータ サイエンス シナリオを実行するための機械学習ツールを含む統合 Web インターフェイスです。 このインターフェイスは、Internet Explorer ブラウザーではサポートされていません。
 
-1. [Azure Machine Learning Studio](https://ml.azure.com) にサインインします。
+1. https://ml.azure.com で Azure Machine Learning にサインインします。
 
 1. お使いのサブスクリプションと、作成したワークスペースを選択します。
 
@@ -63,15 +63,15 @@ Azure Machine Learning Studio で、次の実験の設定を完了し、ステ�
 
    これは初めての自動 ML 実験であるため、空のリストとドキュメントへのリンクが表示されます。
 
-   ![Azure Machine Learning Studio](./media/tutorial-first-experiment-automated-ml/get-started.png)
+   ![開始ページ](./media/tutorial-first-experiment-automated-ml/get-started.png)
 
 1. **[New automated ML run]\(新しい自動 ML の実行\)** を選択します。 
 
 1. 新しいデータセットを作成するには、 **[+ データセットの作成]** ドロップダウンで **[From local files]\(ローカル ファイルから\)** を選択します。 
 
-    1. **[基本情報]** フォームでデータセットに名前を付け、必要に応じて説明を入力します。 現在、Azure Machine Learning Studio の自動 ML でサポートされるデータセットは表形式のみであるため、データセットの種類は既定で "表形式" に設定されます。
+    1. **[基本情報]** フォームでデータセットに名前を付け、必要に応じて説明を入力します。 自動 ML インターフェイスでは、現在、TabularDatasets だけがサポートされています。そのため、データセットの種類は既定で "*表形式*" に設定されます。
 
-    1. 左下の **[次へ]** を選択します。
+    1. 左下の **[次へ]** を選択します
 
     1. **[データストアとファイルの選択]** フォームで、ワークスペースの作成時に自動的に設定された既定のデータストア、**workspaceblobstore (Azure Blob Storage)** を選択します。 データ ファイルは、ここにアップロードすることで、ワークスペースから利用できるようになります。
 
@@ -136,7 +136,7 @@ Azure Machine Learning Studio で、次の実験の設定を完了し、ステ�
         追加の構成&nbsp;|説明|チュートリアル用の値&nbsp;&nbsp;
         ------|---------|---
         主要メトリック| 機械学習アルゴリズムを測定される評価メトリック。|AUC_weighted
-        自動特徴付け| 前処理が有効になります。 これには、合成的特徴を生成するための自動データ クレンジング、準備、変換が含まれます。| [有効化]
+        自動特徴付け| 前処理が有効になります。 これには、合成的特徴を生成するための自動データ クレンジング、準備、変換が含まれます。| 有効化
         ブロックされたアルゴリズム | トレーニング ジョブから除外するアルゴリズム| なし
         終了条件| 条件が満たされると、トレーニング ジョブが停止します。 |トレーニング&nbsp;ジョブ時間 (時間):&nbsp;1 <br> メトリック&nbsp;スコアしきい値:&nbsp;なし
         検証 | クロス検証タイプとテストの回数を選択します。|検証タイプ:<br>&nbsp;k 分割交差検証&nbsp; <br> <br> 検証の数: 2
@@ -163,9 +163,9 @@ Azure Machine Learning Studio で、次の実験の設定を完了し、ステ�
 
 ![イテレーションの実行の詳細](./media/tutorial-first-experiment-automated-ml/run-detail.gif)
 
-## <a name="deploy-the-model"></a>モデルをデプロイする
+## <a name="deploy-the-best-model"></a>最適なモデルをデプロイする
 
-Azure Machine Learning Studio で自動機械学習を使用すると、わずかなステップで最良のモデルを Web サービスとしてデプロイすることができます。 デプロイとは、新しいデータを予測したり、潜在的な機会領域を特定したりできるようにモデルを統合することです。 
+自動機械学習インターフェイスを使用すると、わずかな手順で最良のモデルを Web サービスとしてデプロイすることができます。 デプロイとは、新しいデータを予測したり、潜在的な機会領域を特定したりできるようにモデルを統合することです。 
 
 この実験における Web サービスへのデプロイは、定期預金の潜在顧客を特定するためのスケーラブルな反復 Web ソリューションを金融機関が持つことを意味します。 
 
@@ -201,9 +201,9 @@ Azure Machine Learning Studio で自動機械学習を使用すると、わず�
 
 ### <a name="delete-the-deployment-instance"></a>デプロイ インスタンスの削除
 
-他のチュートリアルや探索用にリソース グループとワークスペースを維持する場合は、Azure Machine Learning Studio からデプロイ インスタンスだけを削除します。 
+他のチュートリアルや探索用にリソース グループとワークスペースを維持する場合は、 https://ml.azure.com/ で Azure Machine Learning からデプロイ インスタンスだけを削除します。 
 
-1. [Azure Machine Learning Studio](https://ml.azure.com/) に移動します。 お使いのワークスペースに移動し、左側の **[アセット]** ウィンドウの下の **[エンドポイント]** を選択します。 
+1. https://ml.azure.com/ の Azure Machine Learning に移動します。 お使いのワークスペースに移動し、左側の **[アセット]** ウィンドウの下の **[エンドポイント]** を選択します。 
 
 1. 削除するデプロイを選択し、 **[削除]** を選択します。 
 
@@ -215,15 +215,15 @@ Azure Machine Learning Studio で自動機械学習を使用すると、わず�
 
 ## <a name="next-steps"></a>次のステップ
 
-この自動機械学習チュートリアルでは、Azure Machine Learning Studio を使用して分類モデルの作成とデプロイを行いました。 詳細と次の手順については、次の記事を参照してください。
+この自動機械学習チュートリアルでは、Azure Machine Learning の自動 ML インターフェイスを使用して分類モデルの作成とデプロイを行いました。 詳細と次の手順については、次の記事を参照してください。
 
 > [!div class="nextstepaction"]
 > [Web サービスを使用する](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
-+ [特徴付け](how-to-create-portal-experiments.md#featurization)についてさらに理解を深める。
-+ [データ プロファイル](how-to-create-portal-experiments.md#profile)についてさらに理解を深める。
 + [自動機械学習](concept-automated-ml.md)についてさらに理解を深める。
-+ 分類メトリックとグラフの詳細については、「[自動化機械学習の結果の概要](how-to-understand-automated-ml.md#classification)」の記事を参照してください。
++ 分類メトリックとグラフの詳細については、「[自動化機械学習の結果の概要](how-to-understand-automated-ml.md#classification)」の記事を参照してください。さらに、[特徴付け](how-to-use-automated-ml-for-ml-models.md#featurization)の詳細も参照してください。
++ [データ プロファイル](how-to-use-automated-ml-for-ml-models.md#profile)についてさらに理解を深める。
+
 
 >[!NOTE]
 > この Bank Marketing データセットは、[クリエイティブ コモンズ (CCO:パブリック ドメイン) ライセンス](https://creativecommons.org/publicdomain/zero/1.0/)により利用できます。 データベースの個々のコンテンツに含まれる権限は、[データベース コンテンツ ライセンス](https://creativecommons.org/publicdomain/zero/1.0/)によりライセンス供与され、[Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset) で入手できます。 このデータセットのオリジナルは、[UCI Machine Learning データベース](https://archive.ics.uci.edu/ml/datasets/bank+marketing)から入手できます。<br><br>

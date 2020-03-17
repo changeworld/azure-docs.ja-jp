@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 68b144a838f0c6e65f3e399f610644315d109fde
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 05a155584f0cb69191883cb82b3db0af435ccc12
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903466"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970094"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>BLOB ストレージの不変ポリシーを設定および管理する
 
@@ -23,7 +23,7 @@ Azure Blob Storage の不変ストレージを使用すると、ユーザーは�
 
 ## <a name="set-retention-policies-and-legal-holds"></a>保持ポリシーと訴訟ホールドを設定する
 
-### <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 1. 新しいコンテナーを作成するか、既存のコンテナーを選択して、不変状態に維持する必要がある BLOB を格納します。 コンテナーは、汎用 v2 ストレージ アカウントまたは BLOB ストレージ アカウントに存在する必要があります。
 
@@ -59,11 +59,11 @@ Azure Blob Storage の不変ストレージを使用すると、ユーザーは�
 
 9. 訴訟ホールドをクリアするには、適用された訴訟ホールド ID タグを削除します。
 
-### <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 この機能は、`az storage container immutability-policy` および `az storage container legal-hold` コマンド グループに含まれています。 これらに対して `-h` を実行すると、コマンドが表示されます。
 
-### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -116,10 +116,10 @@ Remove-AzRmStorageContainerLegalHold -ResourceGroupName $resourceGroup `
     -StorageAccountName $storageAccount -Name $container -Tag <tag3>
 ```
 
-不変ポリシーを作成または更新します。
+時間ベースの不変ポリシーを作成または更新します。
 
 ```powershell
-# Create an immutablity policy
+# Create a time-based immutablity policy
 Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
     -StorageAccountName $storageAccount -ContainerName $container -ImmutabilityPeriod 10
 ```
@@ -168,17 +168,23 @@ Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 
 ## <a name="enabling-allow-protected-append-blobs-writes"></a>保護された追加 BLOB の書き込みを有効にする
 
-この時点では、この特定の[ポータル リンク](https://aka.ms/immutableappendblobs)からは、時間ベースの保持ポリシーに対する `allowProtectedAppendWrites` の設定にのみアクセスできます。 
-
-> [!IMPORTANT] 
->  時間ベースの保持における保護された追加 BLOB の書き込みの許可の設定は、現時点では次のリージョンでのみ使用および表示できます。
-> - East US
-> - 米国中南部
-> - 米国西部 2
->
-> 詳細については、「[保護された追加 BLOB の書き込みを許可する](storage-blob-immutable-storage.md#allow-protected-append-blobs-writes)」を参照してください。
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 ![さらに追加の書き込みを許可する](media/storage-blob-immutability-policies-manage/immutable-allow-additional-append-writes.png)
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+この機能は、`az storage container immutability-policy` および `az storage container legal-hold` コマンド グループに含まれています。 これらに対して `-h` を実行すると、コマンドが表示されます。
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```powershell
+# Create an immutablity policy with appends allowed
+Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
+    -StorageAccountName $storageAccount -ContainerName $container -ImmutabilityPeriod 10 -AllowProtectedAppendWrite $true
+```
+
+---
 
 ## <a name="next-steps"></a>次のステップ
 

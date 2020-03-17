@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: このクイックスタートでは、Azure Dev Spaces と Visual Studio Code を使用し、Azure Kubernetes Service 上で .NET Core アプリケーションのデバッグと迅速な反復型開発を行う方法について説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: f3e91ec11e054e0a069eb97a3700b051476be0a1
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 6593cc3d5926fae05b2afd1e926552a2996ae885
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251979"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943715"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>クイック スタート:Kubernetes 上でデバッグと反復処理を行う: Visual Studio Code と .NET Core - Azure Dev Spaces
 
@@ -30,7 +30,7 @@ Azure Dev Spaces では、次のものを使用してデバッグと反復処理
 
 - Azure サブスクリプション。 アカウントがない場合は、[無料アカウントを作成する](https://azure.microsoft.com/free)ことができます。
 - [Visual Studio Code がインストールされていること](https://code.visualstudio.com/download)。
-- Visual Studio Code 用の [Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) 拡張機能と [C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) 拡張機能がインストールされていること。
+- Visual Studio Code 用の [Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) 拡張機能と [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) 拡張機能がインストールされていること。
 - [Azure CLI がインストールされていること](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成する
@@ -110,6 +110,9 @@ Visual Studio Code でコマンド パレットを開くには、 *[表示]* 、
 > "*コマンド パレット*" に Azure Dev Spaces コマンドが表示されない場合は、[Azure Dev Spaces 用 Visual Studio Code 拡張機能](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)がインストールされていることを確認してください。 また、Visual Studio Code で *dev-spaces/samples/dotnetcore/getting-started/webfrontend* ディレクトリを開いたことを確認してください。
 
 パブリック URL を開くと、実行中のサービスを確認できます。
+
+> [!Note]
+> 最初、パブリック URL で "*ゲートウェイが不適切です*" というエラーが表示される場合があります。 通常、数秒待ってから Web ページを最新の情報に更新すると、サービスが実行されていることを確認できます。
 
 *[デバッグ]* 、 *[デバッグの停止]* の順にクリックして、デバッガーを停止します。
 

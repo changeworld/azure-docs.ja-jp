@@ -7,18 +7,18 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 1c9b3bfdbe7aff203efa6b36f0e40cb65aba1175
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 4212277dbdf29705152832f3830692b43b8d1297
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278349"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402813"
 ---
 # <a name="deprecated-azure-container-service-tutorial---manage-dcos"></a>(非推奨) Azure Container Service チュートリアル - DC/OS の管理
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-DC/OS は、最新のコンテナー化されたアプリケーションを実行するための分散プラットフォームを提供します。 Azure Container Service を使用すると、運用開始準備の整った DC/OS クラスターのプロビジョニングを簡単かつ迅速に行うことができます。 このクイック スタートでは、DC/OS クラスターをデプロイして基本的なワークロードを実行するのに必要な基本的な手順を詳しく説明します。
+DC/OS は、最新のコンテナー化されたアプリケーションを実行するための分散プラットフォームを提供します。 Azure Container Service を使用すると、運用開始準備の整った DC/OS クラスターのプロビジョニングを簡単かつ迅速に行うことができます。 このクイックスタートでは、DC/OS クラスターをデプロイして基本的なワークロードを実行するのに必要な基本的な手順を詳しく説明します。
 
 > [!div class="checklist"]
 > * ACS DC/OS クラスターの作成
@@ -66,7 +66,7 @@ ip=$(az network public-ip list --resource-group myResourceGroup --query "[?conta
 
 SSH トンネルを作成するには、次のコマンドを実行し、画面に表示される指示に従います。 ポート 80 が既に使用されている場合、コマンドは失敗します。 トンネリングするポートを未使用のポートに更新します (`85:localhost:80` など)。 
 
-```azurecli
+```console
 sudo ssh -i ~/.ssh/id_rsa -fNL 80:localhost:80 -p 2200 azureuser@$ip
 ```
 
@@ -80,7 +80,7 @@ az acs dcos install-cli
 
 CLI をクラスターで使用するには、事前に SSH トンネルを使用するように構成しておく必要があります。 そのためには、次のコマンドを実行し、必要に応じてポートを調整します。
 
-```azurecli
+```console
 dcos config set core.dcos_url http://localhost
 ```
 
@@ -116,19 +116,19 @@ ACS DC/OS クラスターの既定のスケジュール設定メカニズムは 
 
 次のコマンドを実行することで、DC/OS クラスターで実行するアプリケーションのスケジュールを設定します。
 
-```azurecli
+```console
 dcos marathon app add marathon-app.json
 ```
 
 アプリケーションのデプロイの状態を表示するには、次のコマンドを実行します。
 
-```azurecli
+```console
 dcos marathon app list
 ```
 
 **TASKS** 列の値が *0/1* から *1/1* に変化すると、アプリケーションのデプロイが完了したことになります。
 
-```azurecli
+```output
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
 /test   32   1     0/1    ---       ---      False      DOCKER   None
 ```
@@ -165,19 +165,19 @@ ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD
 
 `dcos marathon app update` コマンドを使用してアプリケーションを更新します。
 
-```azurecli
+```console
 dcos marathon app update demo-app-private < marathon-app.json
 ```
 
 アプリケーションのデプロイの状態を表示するには、次のコマンドを実行します。
 
-```azurecli
+```console
 dcos marathon app list
 ```
 
 **TASKS** 列の値が *1/3* から *3/1* に変化すると、アプリケーションのデプロイが完了したことになります。
 
-```azurecli
+```output
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
 /test   32   1     1/3    ---       ---      False      DOCKER   None
 ```
@@ -222,13 +222,13 @@ ACS DC/OS クラスターは、2 つのノード セットから成ります。1
 
 次のコマンドを実行することで、DC/OS クラスターで実行するアプリケーションのスケジュールを設定します。
 
-```azurecli 
+```console
 dcos marathon app add nginx-public.json
 ```
 
 DC/OS パブリック クラスター エージェントのパブリック IP アドレスを取得します。
 
-```azurecli 
+```azurecli
 az network public-ip list --resource-group myResourceGroup --query "[?contains(name,'dcos-agent')].[ipAddress]" -o tsv
 ```
 
@@ -256,7 +256,7 @@ az acs scale --resource-group myResourceGroup --name myDCOSCluster --new-agent-c
 
 必要がなくなったら、[az group delete](/cli/azure/group#az-group-delete) コマンドを使用して、リソース グループ、DC/OS クラスター、およびすべての関連リソースを削除できます。
 
-```azurecli 
+```azurecli
 az group delete --name myResourceGroup --no-wait
 ```
 

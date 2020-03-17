@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 02/17/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 564e8dd8e6d7c4c0e3747469875e030be30b1a9b
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: a875cee7e6796a2c865bde4a62f2f0463eb12130
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046715"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78967726"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Salesforce の統合
 
@@ -180,7 +180,7 @@ Salesforce で Azure AD SSO を構成してテストするには、次の構成�
 
     ![Configure single sign-on](./media/salesforce-tutorial/xmlchoose.png)
 
-1. **[SAML シングル サインオンの設定]** ページでは、フィールドは自動的に入力されます。[保存] をクリックします。
+1. **[SAML シングル サインオンの設定]** ページでは、フィールドは自動的に入力されます。 **[User Provisioning Enabled]\(ユーザー プロビジョニングは有効です\)** を選択し、 **[Save]\(保存\)** をクリックしてください。
 
     ![Configure single sign-on](./media/salesforce-tutorial/salesforcexml.png)
 

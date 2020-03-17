@@ -1,14 +1,15 @@
 ---
 title: チュートリアル - Terraform 用に Azure Cloud Shell を構成する
-description: Terraform と Azure Cloud Shell を使用すると、認証とテンプレートの構成が簡単になります。
+description: このチュートリアルでは、Terraform と Azure Cloud Shell を使用して、認証とテンプレートの構成を省力化します。
+keywords: Azure DevOps Terraform Cloud Shell
 ms.topic: tutorial
-ms.date: 10/26/2019
-ms.openlocfilehash: db9edfadbe01edc1ee9df09c284e3895ee11f3d3
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.date: 03/09/2020
+ms.openlocfilehash: 3a9db1143ba07b549a271d53d610e0a4853467c6
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159129"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945329"
 ---
 # <a name="tutorial-configure-azure-cloud-shell-for-terraform"></a>チュートリアル:Terraform 用に Azure Cloud Shell を構成する
 
@@ -31,6 +32,10 @@ Azure Terraform モジュールには、Azure リソースにアクセスして�
 ```hcl
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
+    # The "feature" block is required for AzureRM provider 2.x. 
+    # If you are using version 1.x, the "features" block is not allowed.
+    version = "~>2.0"
+    features {}
 }
 ```
 
@@ -43,7 +48,7 @@ provider "azurerm" {
 Azure CLI は Cloud Shell で使用でき、`terraform apply` または `terraform destroy` が完了した後の構成のテストと作業のチェックに適したツールです。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [モジュール レジストリを使用した小規模な VM クラスターの作成](terraform-create-vm-cluster-module.md)

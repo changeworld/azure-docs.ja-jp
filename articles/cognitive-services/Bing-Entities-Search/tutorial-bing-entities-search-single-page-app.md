@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: tutorial
-ms.date: 12/11/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 875a83501b00f0b23aa13317493ab6d341e4e283
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d45b9a153b770dd10da9dd61e8a7b3d138345b8a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448603"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943133"
 ---
 # <a name="tutorial-single-page-web-app"></a>チュートリアル:単一ページの Web アプリ
 
@@ -23,8 +23,8 @@ Bing Entity Search API を使用すると、Web で*エンティティ*と*場�
 
 |||
 |-|-|
-|[エンティティ]|名前で検索する有名な人物、場所、もの|
-|場所|名前*または*種類 (イタリアン レストランなど) で検索するレストラン、ホテル、その他の地元企業|
+|エンティティ|名前で検索する有名な人物、場所、もの|
+|Places|名前*または*種類 (イタリアン レストランなど) で検索するレストラン、ホテル、その他の地元企業|
 
 このチュートリアルでは、Bing Entity Search API を使用する単一ページの Web アプリケーションをビルドして、検索結果をページ内に表示できるようにします。 このアプリケーションには、HTML、CSS、JavaScript のコンポーネントが含まれます。
 
@@ -55,6 +55,10 @@ API を使用すると、場所によって結果を優先順位付けするこ�
 
 > [!NOTE]
 > このチュートリアルは、[単一ページの Bing Web Search アプリのチュートリアル](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md)と実質的に同じものですが、エンティティの検索結果についてのみ説明しています。
+
+## <a name="prerequisites"></a>前提条件
+
+チュートリアルを進めるには、Bing Maps API および Bing Search API のサブスクリプション キーが必要です。 所有していない場合は、[試用キー](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)および[基本の Bing Maps キー](https://www.microsoft.com/maps/create-a-bing-maps-key)を使用できます。
 
 ## <a name="app-components"></a>アプリのコンポーネント
 

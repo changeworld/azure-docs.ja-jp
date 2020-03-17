@@ -7,18 +7,18 @@ ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9efedd5b619a2a3bd592019fea3ca48b7244ca10
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 6274e24bae2e2a6eade0122fe244652eb29cacf9
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278494"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399222"
 ---
 # <a name="deprecated-deploy-a-dcos-cluster"></a>(非推奨) Docker DC/OS クラスターのデプロイ
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-DC/OS は、最新のコンテナー化されたアプリケーションを実行するための分散プラットフォームを提供します。 Azure Container Service を使用すると、運用開始準備の整った DC/OS クラスターのプロビジョニングを簡単かつ迅速に行うことができます。 このクイック スタートでは、DC/OS クラスターをデプロイして基本的なワークロードを実行するのに必要な基本的な手順を詳しく説明します。
+DC/OS は、最新のコンテナー化されたアプリケーションを実行するための分散プラットフォームを提供します。 Azure Container Service を使用すると、運用開始準備の整った DC/OS クラスターのプロビジョニングを簡単かつ迅速に行うことができます。 このクイックスタートでは、DC/OS クラスターをデプロイして基本的なワークロードを実行するのに必要な基本的な手順を詳しく説明します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -128,19 +128,19 @@ ACS DC/OS クラスターの既定のスケジュール設定メカニズムは 
 
 次のコマンドを実行することで、DC/OS クラスターで実行するアプリケーションのスケジュールを設定します。
 
-```azurecli
+```console
 dcos marathon app add marathon-app.json
 ```
 
 アプリケーションのデプロイの状態を表示するには、次のコマンドを実行します。
 
-```azurecli
+```console
 dcos marathon app list
 ```
 
 **WAITING** 列の値が *True* から *False* に変化すると、アプリケーションのデプロイが完了したことになります。
 
-```azurecli
+```output
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
 /test   32   1     1/1    ---       ---      False      DOCKER   None
 ```
@@ -165,7 +165,7 @@ az group delete --name myResourceGroup --no-wait
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、DC/OS クラスターをデプロイし、このクラスター上で単純な Docker コンテナーを実行しました。 Azure Container Service をより深く学習するには、ACS チュートリアルに進んでください。
+このクイックスタートでは、DC/OS クラスターをデプロイし、このクラスター上で単純な Docker コンテナーを実行しました。 Azure Container Service をより深く学習するには、ACS チュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [ACS DC/OS クラスターを管理する](container-service-dcos-manage-tutorial.md)

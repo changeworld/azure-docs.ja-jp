@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: alkohli
-ms.openlocfilehash: d930b1db48e3a5c4bda96f0b7d80a9c9f24d53d9
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 623ec5e082a8ed889329936d020bf28434a56fbf
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400652"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942534"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>チュートリアル:Azure Data Box Gateway を使用してデータを転送する
 
@@ -61,7 +61,7 @@ ms.locfileid: "58400652"
    
     5. この手順は、SMB 共有と NFS 共有のどちらを作成するかに応じて変わります。
      
-    - **SMB 共有** - **[All privilege local user]\(すべての権限を持つローカル ユーザー\)** で、**[新規作成]** または **[既存のものを使用]** を選択します。 新しいローカル ユーザーを作成する場合は、**ユーザー名**と**パスワード**を入力し、**パスワードを確認入力**します。 この操作を行うと、ローカル ユーザーにアクセス許可が割り当てられます。 ここで割り当てたアクセス許可は、エクスプローラーを使用して変更できます。
+    - **SMB 共有** - **[All privilege local user]\(すべての権限を持つローカル ユーザー\)** で、 **[新規作成]** または **[既存のものを使用]** を選択します。 新しいローカル ユーザーを作成する場合は、**ユーザー名**と**パスワード**を入力し、**パスワードを確認入力**します。 この操作を行うと、ローカル ユーザーにアクセス許可が割り当てられます。 共有レベルのアクセス許可の変更は現在サポートされていません。
     
         ![SMB 共有を追加する](./media/data-box-gateway-deploy-add-shares/add-share-smb-1.png)
         
@@ -73,7 +73,7 @@ ms.locfileid: "58400652"
    
 9. **[作成]** を選択して共有を作成します。
     
-    共有の作成が進行中であることが通知されます。 指定した設定で共有を作成すると、**[共有]** タイルは更新され、新しい共有が反映されます。
+    共有の作成が進行中であることが通知されます。 指定した設定で共有を作成すると、 **[共有]** タイルは更新され、新しい共有が反映されます。
     
     ![更新された [共有] タイル](./media/data-box-gateway-deploy-add-shares/updated-list-of-shares.png) 
 
@@ -105,7 +105,7 @@ ms.locfileid: "58400652"
 
 
 2. キーボードの Windows キーを押しながら R キーを押します。 
-3. **実行**ウィンドウで、`\\<device IP address>` を指定し、**[OK]** を選択します。 エクスプローラーが開きます。 これで、お客様が作成した共有をフォルダーとして確認できます。 エクスプローラーで共有 (フォルダー) をダブルクリックすると、内容が表示されます。
+3. **実行**ウィンドウで、`\\<device IP address>` を指定し、 **[OK]** を選択します。 エクスプローラーが開きます。 これで、お客様が作成した共有をフォルダーとして確認できます。 エクスプローラーで共有 (フォルダー) をダブルクリックすると、内容が表示されます。
  
     ![SMB 共有に接続する](./media/data-box-gateway-deploy-add-shares/connect-to-share2.png)-->
 
@@ -137,7 +137,7 @@ ms.locfileid: "58400652"
 > - 共有からファイルを削除しても、ストレージ アカウントのエントリは削除されません。
 > - データのコピーに `rsync` を使用している場合、`rsync -a` オプションはサポートされません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Data Box Gateway に関する次のようなトピックについて説明しました。
 

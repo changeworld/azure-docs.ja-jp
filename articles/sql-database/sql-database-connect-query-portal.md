@@ -12,12 +12,12 @@ author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 10/24/2019
-ms.openlocfilehash: 3990d7ec63c312d38168fe76269e1a920f1a6817
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b3ccc2a5343cf02127990dca80a1300959fa06a3
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827111"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087186"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>クイック スタート:Azure portal の SQL クエリ エディターを使用した接続とデータの照会
 
@@ -42,7 +42,7 @@ SQL クエリ エディターは、お使いの Azure SQL Database または Azu
 
 ## <a name="sign-in-the-azure-portal"></a>Azure portal へのサインイン
 
-[Azure Portal](https://portal.azure.com/) にサインインします。
+[Azure portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="connect-using-sql-authentication"></a>SQL 認証を使用して接続する
 
@@ -103,7 +103,7 @@ Azure Active Directory (Azure AD) 管理者を構成すると、単一の ID を
 
    ![クエリ エディターの結果](./media/sql-database-connect-query-portal/query-editor-results.png)
 
-## <a name="insert-data"></a>データを挿入する
+## <a name="insert-data"></a>データの挿入
 
 次の [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL ステートメントを実行して、`SalesLT.Product` テーブルに新しい製品を追加します。
 
@@ -167,6 +167,8 @@ Azure Active Directory (Azure AD) 管理者を構成すると、単一の ID を
 
 * クエリ エディターでは、通信にポート 443 と 1443 が使用されます。  これらのポートで送信 HTTPS トラフィックを有効にしていることを確認してください。 また、お使いのデータベースとデータ ウェアハウスにアクセスできるようにするには、サーバーの許可されたファイアウォール規則に、送信 IP アドレスを追加する必要があります。
 
+* クエリ エディターは、SQL Database ファイアウォールにクライアント IP アドレスを追加しなくても、Private Link と連携します
+
 * F5 キーを押してクエリ エディターのページを更新すると、操作中のクエリは失われます。
 
 * クエリ エディターは、`master` データベースへの接続をサポートしません。
@@ -178,6 +180,8 @@ Azure Active Directory (Azure AD) 管理者を構成すると、単一の ID を
 * データベース テーブルおよびビューでは、IntelliSense はサポートされていません。 ただし、エディターでは、既に入力されている名前のオートコンプリートをサポートしています。
 
 
-## <a name="next-steps"></a>次の手順
+
+
+## <a name="next-steps"></a>次のステップ
 
 Azure SQL データベースでサポートされる Transact-SQL の詳細については、「[SQL Database への移行時に Transact-SQL の相違点を解決する](sql-database-transact-sql-information.md)」を参照してください。

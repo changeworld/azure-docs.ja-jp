@@ -1,27 +1,17 @@
 ---
-title: Azure リソースを作成するために Terraform をインストールして構成する
-description: Azure リソースを作成するための Terraform のインストールと構成
-services: virtual-machines-linux
-documentationcenter: virtual-machines
-author: tomarchermsft
-manager: gwallace
-editor: na
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
-ms.date: 09/20/2019
-ms.author: tarcher
-ms.openlocfilehash: 74728fb05e900c534580f1c8eaf14dd0e48fc42c
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+title: クイックスタート - Azure リソースをプロビジョニングするための Terraform をインストールして構成する
+description: このクイックスタートでは、Azure リソースを作成するための Terraform のインストールと構成を行います
+keywords: Azure DevOps Terraform インストール構成
+ms.topic: quickstart
+ms.date: 03/09/2020
+ms.openlocfilehash: 82635f59ec8165add2046a230a040b06f89d9898
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77473355"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943503"
 ---
-# <a name="install-and-configure-terraform-to-provision-azure-resources"></a>Azure リソースを作成するために Terraform をインストールして構成する
+# <a name="quickstart-install-and-configure-terraform-to-provision-azure-resources"></a>クイック スタート:Azure リソースを作成するために Terraform をインストールして構成する
  
 Terraform は、[シンプルなテンプレート言語](https://www.terraform.io/docs/configuration/syntax.html)を使ってクラウド インフラストラクチャを簡単に定義、プレビュー、およびデプロイできるツールです。 この記事では、Terraform を使用して Azure にリソースをプロビジョニングするために必要な手順について説明します。
 
@@ -29,9 +19,9 @@ Azure で Terraform を使用する方法の詳細については、[Terraform �
 > [!NOTE]
 > Terraform 固有のサポートについては、コミュニティ チャネルのいずれかを使用して Terraform に直接問い合わせてください。
 >
->   • コミュニティ ポータルの [Terraform セクション](https://discuss.hashicorp.com/c/terraform-core)には、質問、ユース ケース、および役立つパターンが含まれています。
+>    * コミュニティ ポータルの [Terraform セクション](https://discuss.hashicorp.com/c/terraform-core)には、質問、ユース ケース、および役立つパターンが含まれています。
 >
->   • プロバイダー関連の質問については、コミュニティ ポータルの [Terraform プロバイダー](https://discuss.hashicorp.com/c/terraform-providers) セクションにアクセスしてください。
+>    * プロバイダー関連の質問については、コミュニティ ポータルの [Terraform プロバイダー](https://discuss.hashicorp.com/c/terraform-providers) セクションにアクセスしてください。
 
 
 
@@ -104,6 +94,10 @@ export ARM_ENVIRONMENT=public
 
 ```hcl
 provider "azurerm" {
+  # The "feature" block is required for AzureRM provider 2.x. 
+  # If you are using version 1.x, the "features" block is not allowed.
+  version = "~>2.0"
+  features {}
 }
 resource "azurerm_resource_group" "rg" {
         name = "testResourceGroup"

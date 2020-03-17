@@ -9,12 +9,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: 948dfd25881a6a90dd441ad640091d88812cc298
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 711e15986265324bbb353fb2b4404cbfeb48dc84
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931831"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851438"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>クイック スタート:デバイスから IoT ハブに利用統計情報を送信して Azure CLI で監視する
 
@@ -35,6 +35,7 @@ CLI をローカルで実行するか Cloud Shell で実行するかにかかわ
 このセクションでは、Azure Cloud Shell のインスタンスを起動します。 CLI をローカルで使用する場合は、「[2 つの CLI セッションを準備する](#prepare-two-cli-sessions)」のセクションに進んでください。
 
 Cloud Shell を起動するには以下を行います。
+
 1. Azure portal の右上にあるメニュー バーの **[Cloud Shell]** ボタンを選択します。 
 
     ![Azure portal の [Cloud Shell] ボタン](media/quickstart-send-telemetry-cli/cloud-shell-button.png)
@@ -42,25 +43,30 @@ Cloud Shell を起動するには以下を行います。
     > [!NOTE]
     > Cloud Shell を初めて使用する場合は、Cloud Shell を使用するために必要なストレージを作成するように求められます。  ストレージ アカウントと Microsoft Azure ファイル共有を作成するためのサブスクリプションを選択します。 
 
-1. **[環境の選択]** ドロップダウンで、優先する CLI 環境を選択します。 このクイックスタートでは、**Bash** 環境を使用します。 次の CLI コマンドはすべて、Powershell 環境でも動作します。 
+2. **[環境の選択]** ドロップダウンで、優先する CLI 環境を選択します。 このクイックスタートでは、**Bash** 環境を使用します。 次の CLI コマンドはすべて、Powershell 環境でも動作します。 
 
     ![CLI 環境を選択する](media/quickstart-send-telemetry-cli/cloud-shell-environment.png)
 
 ## <a name="prepare-two-cli-sessions"></a>2 つの CLI セッションを準備する
+
 このセクションでは、2 つの Azure CLI セッションを準備します。 Cloud Shell を使用している場合は、2 つのセッションを別々のブラウザータブで実行します。 ローカル CLI クライアントを使用している場合は、2 つの異なる CLI インスタンスを実行します。 最初のセッションをシミュレートされたデバイスとして使用し、2 番目のセッションでメッセージの監視と送信を行います。 コマンドを実行するには、 **[コピー]** を選択してこのクイックスタートのコード ブロックをコピーし、シェル セッションに貼り付けて実行します。
 
 Azure CLI を使用するには、Azure アカウントにログインする必要があります。 Azure CLI シェル セッションと IoT hub の間のすべての通信は認証および暗号化されます。 そのため、このクイックスタートでは、接続文字列などの実際のデバイスで使用する追加の認証は必要ありません。
 
-1. [az extension add](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add) コマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を CLI シェルに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
+*  [az extension add](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add) コマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を CLI シェルに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
 
    ```azurecli
-   az extension add --name azure-cli-iot-ext
+   az extension add --name azure-iot
    ```
-    Azure IOT 拡張機能をインストールした後は、Cloud Shell セッションで再度インストールする必要はありません。 
+   
+   Azure IOT 拡張機能をインストールした後は、Cloud Shell セッションで再度インストールする必要はありません。 
 
-1. 2 つ目の CLI セッションを開きます。  Cloud Shell を使用している場合は、 **[新しいセッションを開く]** を選択します。 CLI をローカルで使用している場合は、2 つ目のインスタンスを開きます。 
+   [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-    ![新しい Cloud Shell セッションを開く](media/quickstart-send-telemetry-cli/cloud-shell-new-session.png)
+*  2 つ目の CLI セッションを開きます。  Cloud Shell を使用している場合は、 **[新しいセッションを開く]** を選択します。 CLI をローカルで使用している場合は、2 つ目のインスタンスを開きます。 
+
+    >[!div class="mx-imgBorder"]
+    >![新しい Cloud Shell セッションを開く](media/quickstart-send-telemetry-cli/cloud-shell-new-session.png)
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 このセクションでは、Azure CLI を使用してリソース グループと IoT ハブを作成します。  Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 IoT Hub は、IoT アプリケーションとデバイスの間の双方向通信に対する中央メッセージ ハブとして機能します。 
@@ -167,7 +173,7 @@ Azure portal でメッセージング メトリックを視覚化するには以
 
 5. 必要に応じて、 **[メトリック]** ドロップダウンを使用して、シミュレートされたデバイスの他のメトリックを表示します。 たとえば、[*C2d message deliveries completed*] (完了した C2d メッセージ配信) または [*デバイスの合計数 (プレビュー)* ]。 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 このクイックスタートで作成した Azure リソースが不要になった場合は、Azure CLI を使用して削除できます。
 
 次の推奨記事に進む場合は、既に作成したリソースを維持して、再利用することができます。 
@@ -187,10 +193,10 @@ Azure portal でメッセージング メトリックを視覚化するには以
     az group list
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このクイックスタートでは、Azure CLI を使用して、IoT ハブとシミュレートされたデバイスを作成、テレメトリを送信、cloud-to-device メッセージを送信、リソースのクリーン アップしました。 Azure portal を使用して、デバイス上のメッセージング メトリックを視覚化しました。
 
 デバイス開発者の場合、C 用 Azure IoT Device SDK を使用するテレメトリのクイックスタートを参照することをお勧めします。必要に応じて、Azure IoT Hub テレメトリのクイックスタートに関する利用可能な記事のいずれかをお好みの言語または SDK で参照してください。
 
 > [!div class="nextstepaction"]
-> [クイック スタート:デバイスから IoT ハブへの利用統計情報の送信 (C)](quickstart-send-telemetry-c.md)
+> [クイック スタート: デバイスから IoT ハブへの利用統計情報の送信 (C)](quickstart-send-telemetry-c.md)

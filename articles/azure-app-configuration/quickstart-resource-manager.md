@@ -6,19 +6,23 @@ ms.author: lcozzens
 ms.date: 03/05/2020
 ms.topic: quickstart
 ms.service: azure-app-configuration
-ms.custom: mvc
-ms.openlocfilehash: 7c6f4b2ea9494c004067a8b19df2c2f098ac2b7f
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.custom:
+- mvc
+- subject-armqs
+ms.openlocfilehash: c45f6855c33dff2790ced306fd7f049b98dd1387
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78274511"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126383"
 ---
-# <a name="quickstart-automated-vm-deployment-with-app-configuration"></a>クイック スタート:App Configuration を使用した VM の自動デプロイ
+# <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template"></a>クイック スタート:App Configuration と Resource Manager テンプレートを使用した VM の自動デプロイ
 
 Azure PowerShell モジュールは、PowerShell コマンドレットまたはスクリプトを使用して Azure リソースを作成および管理するために使用します。 このクイックスタートでは、Azure PowerShell と Azure Resource Manager テンプレートを使用して Azure App Configuration ストアをデプロイする方法を示します。 次に、ストア内のキー値を使用して VM をデプロイする方法を学習します。
 
 前提条件テンプレートを使用して App Configuration ストアを作成し、Azure portal または Azure CLI を使用してキー値をストアに追加します。 プライマリ テンプレートは、既存の構成ストアの既存のキーと値の構成を参照します。 取得された値は、この例の VM のように、テンプレートによって作成されたリソースのプロパティを設定するために使用されます。
+
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -85,7 +89,7 @@ New-AzResourceGroup `
       },
       "skuName": {
         "type": "string",
-        "defaultValue": "free",
+        "defaultValue": "standard",
         "metadata": {
           "description": "Specifies the SKU of the app configuration store."
         }
@@ -332,7 +336,7 @@ App Configuration ストアは Azure Resource Manager テンプレートを使�
                     "imageReference": {
                         "publisher": "MicrosoftWindowsServer",
                         "offer": "WindowsServer",
-                        "sku": "[listKeyValue(variables('appConfigRef'), '2019-02-01-preview', variables('windowsOSVersionParameters')).value]",
+                        "sku": "[listKeyValue(variables('appConfigRef'), '2019-10-01', variables('windowsOSVersionParameters')).value]",
                         "version": "latest"
                     },
                     "osDisk": {
@@ -340,7 +344,7 @@ App Configuration ストアは Azure Resource Manager テンプレートを使�
                     },
                     "dataDisks": [
                         {
-                            "diskSizeGB": "[listKeyValue(variables('appConfigRef'), '2019-02-01-preview', variables('diskSizeGBParameters')).value]",
+                            "diskSizeGB": "[listKeyValue(variables('appConfigRef'), '2019-10-01', variables('diskSizeGBParameters')).value]",
                             "lun": 0,
                             "createOption": "Empty"
                         }

@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート:コンピューティングの一時停止と再開 - Azure portal '
+title: Azure portal を使用して Synapse SQL プールのコンピューティングを一時停止、再開する
 description: Azure portal を使用して、SQL プールのコンピューティングを一時停止してコストを節約します。 データ ウェアハウスを使用する準備ができたら、コンピューティングを再開します。
 services: sql-data-warehouse
 author: kevinvngo
@@ -11,18 +11,16 @@ ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 49684e6844c2d9f58e9b750b12991428218e4426
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 3a131c1ebbf2a69f1c738cbc3421635406500d3c
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78200630"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130365"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-azure-synapse-analytics-sql-pool-in-the-azure-portal"></a>クイック スタート:Azure Synapse Analytics の SQL プールのコンピューティングを Azure portal で一時停止、再開する
+# <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-via-the-azure-portal"></a>クイック スタート:Azure portal を使用して Synapse SQL プールのコンピューティングを一時停止、再開する
 
-Azure portal を使用して、SQL プールのコンピューティングを一時停止してコストを節約します。 データ ウェアハウスを使用する準備ができたら、[コンピューティングを再開](sql-data-warehouse-manage-compute-overview.md)します。
-
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
+Azure portal を使用して、Synapse SQL プール (データ ウェアハウス) コンピューティング リソースを一時停止および再開できます。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -34,7 +32,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="pause-compute"></a>コンピューティングの一時停止
 
-コストを節約するために、オンデマンドでコンピューティング リソースを一時停止および再開できます。 たとえば、夜間と週末にデータベースを使用しない場合、その期間にデータベースを一時停止して、日中に再開することができます。 データベースが一時停止されている間、コンピューティング リソースへの課金は行われません。 ただし、ストレージに対する課金は引き続き行われます。 
+コストを減らすために、オンデマンドでコンピューティング リソースを一時停止および再開できます。 たとえば、夜間と週末にデータベースを使用しない場合、その期間にデータベースを一時停止して、日中に再開することができます。 
+>[!NOTE]
+>データベースが一時停止されている間、コンピューティング リソースへの課金は行われません。 ただし、ストレージに対する課金は引き続き行われます。 
 
 SQL プールを一時停止するには、次の手順を実行します。
 
@@ -80,7 +80,7 @@ SQL プールを再開するには、次の手順を実行します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-データ ウェアハウス ユニットとデータ ウェアハウスに格納されているデータに対して課金されます。 これらのコンピューティングとストレージのリソースは別々に請求されます。 
+データ ウェアハウス ユニットと SQL プールに格納されているデータに対して課金されます。 これらのコンピューティングとストレージのリソースは別々に請求されます。 
 
 - データをストレージ内に保持する場合は、コンピューティングを一時停止します。
 - それ以上課金されないようにする場合は、SQL プールを削除できます。 
@@ -95,14 +95,15 @@ SQL プールを再開するには、次の手順を実行します。
 
 2. コンピューティング リソースやストレージに課金されないように SQL プールを削除するには、 **[削除]** をクリックします。
 
-3. 作成した SQL Server を削除するには、**sqlpoolservername.database.windows.net** をクリックした後、 **[削除]** をクリックします。  サーバーを削除すると、サーバーに割り当てられているすべてのデータベースが削除されるので、削除には注意してください。
+3. 作成した SQL Server を削除するには、**sqlpoolservername.database.windows.net** をクリックした後、 **[削除]** をクリックします。  
 
-4. リソース グループを削除するには、**myResourceGroup** をクリックして、 **[リソース グループの削除]** をクリックします。
+   > [!CAUTION]
+   > サーバーを削除すると、サーバーに割り当てられているすべてのデータベースが削除されるので、削除には注意してください。
+
+5. リソース グループを削除するには、**myResourceGroup** をクリックして、 **[リソース グループの削除]** をクリックします。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-SQL プールに対するコンピューティングの一時停止と再開を行いました。 次のステップとして、データの読み込みに関するチュートリアルに進んでください。
+SQL プールに対するコンピューティングの一時停止と再開を行いました。 [SQL プールへのデータの読み込み](load-data-from-azure-blob-storage-using-polybase.md)の方法の詳細については、次の記事に進んでください。 コンピューティング機能の管理の詳細については、[コンピューティングの管理の概要](sql-data-warehouse-manage-compute-overview.md)に関する記事を参照してください。 
 
-> [!div class="nextstepaction"]
-> [SQL プールにデータを読み込む](load-data-from-azure-blob-storage-using-polybase.md)

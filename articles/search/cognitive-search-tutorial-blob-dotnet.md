@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/27/2020
-ms.openlocfilehash: 0b9e7732e5274fd71c773a19d17e09ecdaa2ceb0
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 169a33d12e98235dcb4e4f317dbb8d91eb7446a4
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78270015"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851140"
 ---
 # <a name="tutorial-use-c-and-ai-to-generate-searchable-content-from-azure-blobs"></a>チュートリアル:C# と AI を使用して Azure Blob から検索可能なコンテンツを生成する
 
@@ -186,7 +186,7 @@ namespace EnrichwithAI
 
 ### <a name="create-a-client"></a>クライアントの作成
 
-Main で `SearchServiceClient` クラスのインスタンスを作成します。
+`Main` で `SearchServiceClient` クラスのインスタンスを作成します。
 
 ```csharp
 public static void Main(string[] args)
@@ -213,6 +213,22 @@ private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot 
 > [!NOTE]
 > `SearchServiceClient` クラスは検索サービスへの接続を管理します。 開いている接続の数が多くなりすぎないよう、可能であれば、アプリケーションで `SearchServiceClient` の単一のインスタンスを共有する必要があります。 SearchServiceClient のメソッドはスレッド セーフなので、このような共有が可能です。
 > 
+
+### <a name="add-function-to-exit-the-program-during-failure"></a>障害時にプログラムを終了するための関数を追加する
+
+このチュートリアルは、インデックス作成パイプラインの各ステップを読者にわかりやすく伝えることを意図しています。 データ ソース、スキルセット、インデックス、またはインデクサーの作成に支障が生じるような重大な問題が発生した場合、プログラムは問題を伝え、対応を促すために、エラー メッセージを出力して終了します。
+
+プログラムの終了を余儀なくされるようなシナリオには、`ExitProgram` を `Main` に追加することで対応します。
+
+```csharp
+private static void ExitProgram(string message)
+{
+    Console.WriteLine("{0}", message);
+    Console.WriteLine("Press any key to exit the program...");
+    Console.ReadKey();
+    Environment.Exit(0);
+}
+```
 
 ## <a name="3---create-the-pipeline"></a>3 - パイプラインを作成する
 
@@ -251,7 +267,7 @@ private static DataSource CreateOrUpdateDataSource(SearchServiceClient serviceCl
 
 要求が成功すると、作成されたデータ ソースがメソッドから返されます。 無効なパラメーターなど、要求に問題がある場合、メソッドは例外をスローします。
 
-先ほど追加した `CreateOrUpdateDataSource` 関数を呼び出す行を Main に追加します。
+先ほど追加した `CreateOrUpdateDataSource` 関数を呼び出す行を `Main` に追加します。
 
 ```csharp
 public static void Main(string[] args)
@@ -537,7 +553,7 @@ private static Skillset CreateOrUpdateDemoSkillSet(SearchServiceClient serviceCl
 }
 ```
 
-次の行を Main に追加します。
+次の行を `Main` に追加します。
 
 ```csharp
     // Create the skills
@@ -675,7 +691,7 @@ private static Index CreateDemoIndex(SearchServiceClient serviceClient)
 
 テスト中に、インデックスを複数回作成しようとする場合があります。 このため、作成を試行する前に、作成しようとするインデックスが既に存在していないかを確認してください。
 
-次の行を Main に追加します。
+次の行を `Main` に追加します。
 
 ```csharp
     // Create the index
@@ -779,7 +795,7 @@ private static Indexer CreateDemoIndexer(SearchServiceClient serviceClient, Data
     return indexer;
 }
 ```
-次の行を Main に追加します。
+次の行を `Main` に追加します。
 
 ```csharp
     // Create the indexer, map fields, and execute transformations
@@ -840,7 +856,7 @@ private static void CheckIndexerOverallStatus(SearchServiceClient serviceClient,
 
 警告は、一部のソース ファイルとスキルの組み合わせではよく見られ、必ずしも問題を示すわけではありません。 このチュートリアルでは、警告は無害です (たとえば、JPEG ファイルからのテキスト入力がない)。
 
-次の行を Main に追加します。
+次の行を `Main` に追加します。
 
 ```csharp
     // Check indexer overall status
@@ -854,7 +870,7 @@ private static void CheckIndexerOverallStatus(SearchServiceClient serviceClient,
 
 検証手順として、すべてのフィールドのインデックスのクエリを実行します。
 
-次の行を Main に追加します。
+次の行を `Main` に追加します。
 
 ```csharp
 DocumentSearchResult<DemoIndex> results;
@@ -890,7 +906,7 @@ private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot conf
 }
 ```
 
-Main に次のコードを追加します。 最初の try-catch では、インデックスの定義が、各フィールドの名前、型、属性と共に返されます。 2 つ目はパラメーター化クエリです。結果に含めるフィールドが `Select` によって指定されます (例: `organizations`)。 `"*"` という検索文字列により、1 つのフィールドの内容がすべて返されます。
+次のコードを `Main` に追加します。 最初の try-catch では、インデックスの定義が、各フィールドの名前、型、属性と共に返されます。 2 つ目はパラメーター化クエリです。結果に含めるフィールドが `Select` によって指定されます (例: `organizations`)。 `"*"` という検索文字列により、1 つのフィールドの内容がすべて返されます。
 
 ```csharp
 //Verify content is returned after indexing is finished

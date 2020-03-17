@@ -10,18 +10,20 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: trbye
 ms.date: 10/25/2019
-ms.openlocfilehash: 4ab3bc43cf8ef479cb91d187a4c177db03415b86
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: b2c7825b10feab45df9cb89dbe2b82da1c143866
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77525585"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129754"
 ---
 # <a name="model-interpretability-in-automated-machine-learning"></a>自動機械学習におけるモデルの解釈可能性
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-この記事では、Azure Machine Learning を使用して、自動機械学習 (ML) で解釈可能性機能を有効にする方法について説明します。 自動 ML は、生の特徴量の重要度とエンジニアリングされた特徴量の重要度の両方を理解するのに役立ちます。 モデルの解釈可能性を使用するには、`AutoMLConfig` オブジェクトで `model_explainability=True` を設定します。  
+この記事では、Azure Machine Learning を使用して、自動機械学習 (ML) で解釈可能性機能を有効にする方法について説明します。 自動 ML は、エンジニアリングされた特徴量の重要度を理解するのに役立ちます。 
+
+1\.0.85 より後のすべての SDK バージョンは、既定で `model_explainability=True` となります。 SDK バージョン 1.0.85 以前のバージョンでは、モデルの解釈可能性を使用するために、ユーザーは `AutoMLConfig` オブジェクトに `model_explainability=True` を設定する必要があります。 
 
 この記事では、次のことについて説明します。
 
@@ -36,14 +38,14 @@ ms.locfileid: "77525585"
 
 ## <a name="interpretability-during-training-for-the-best-model"></a>最良のモデルのトレーニング中の解釈可能性
 
-`best_run` から説明を取得します。これには、エンジニアリングされた特徴と生の特徴の説明が含まれます。
+`best_run` から説明を取得します。これには、エンジニアリングされた特徴の説明が含まれます。
 
 ### <a name="download-engineered-feature-importance-from-artifact-store"></a>成果物ストアからエンジニアリングされた特徴量の重要度をダウンロードする
 
-`ExplanationClient` を使用して、`best_run` の成果物ストアからエンジニアリングされた特徴の説明をダウンロードできます。 生の特徴セットの説明を取得するには、`raw=True` を設定します。
+`ExplanationClient` を使用して、`best_run` の成果物ストアからエンジニアリングされた特徴の説明をダウンロードできます。 
 
 ```python
-from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
+from azureml.explain.model._internal.explanation_client import ExplanationClient
 
 client = ExplanationClient.from_run(best_run)
 engineered_explanations = client.download_model_explanation(raw=False)
@@ -52,26 +54,26 @@ print(engineered_explanations.get_feature_importance_dict())
 
 ## <a name="interpretability-during-training-for-any-model"></a>任意のモデルのトレーニング中の解釈可能性 
 
-モデルの説明を計算して視覚化する場合、自動 ML モデルの既存のモデルの説明には限定されません。 また、さまざまなテスト データを使用して、モデルの説明を取得することもできます。 このセクションの手順では、テスト データに基づいて、エンジニアリングされた特徴量の重要度と生の特徴量の重要度を計算し、視覚化する方法を示します。
+モデルの説明を計算して視覚化する場合、自動 ML モデルの既存のモデルの説明には限定されません。 また、さまざまなテスト データを使用して、モデルの説明を取得することもできます。 このセクションの手順では、テスト データに基づいて、エンジニアリングされた特徴量の重要度を計算し、視覚化する方法を示します。
 
 ### <a name="retrieve-any-other-automl-model-from-training"></a>トレーニングから他の AutoML モデルを取得する
 
 ```python
-automl_run, fitted_model = local_run.get_output(metric='r2_score')
+automl_run, fitted_model = local_run.get_output(metric='accuracy')
 ```
 
 ### <a name="set-up-the-model-explanations"></a>モデル説明を設定する
 
-エンジニアリングされた特徴説明と生の特徴説明を取得するには、`automl_setup_model_explanations` を使います。 `fitted_model` では、次の項目を生成できます。
+エンジニアリングされた特徴説明を取得するには、`automl_setup_model_explanations` を使います。 `fitted_model` では、次の項目を生成できます。
 
 - トレーニングされたサンプルまたはテスト サンプルからの特徴付けされたデータ
-- エンジニアリングされた特徴名リストと生の特徴名リスト
+- エンジニアリングされた特徴の名前リスト
 - 分類シナリオでのラベル付けされた列の検索可能なクラス
 
 `automl_explainer_setup_obj` には、上記の一覧にあるすべての構造が含まれます。
 
 ```python
-from azureml.train.automl.runtime.automl_explain_utilities import AutoMLExplainerSetupClass, automl_setup_model_explanations
+from azureml.train.automl.runtime.automl_explain_utilities import automl_setup_model_explanations
 
 automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_train, 
                                                              X_test=X_test, y=y_train, 
@@ -86,16 +88,16 @@ AutoML モデルの説明を生成するには、`MimicWrapper` クラスを使�
 - ワークスペース
 - `fitted_model` 自動 ML モデルの代理として機能する LightGBM モデル
 
-また、MimicWrapper は、生の説明とエンジニアリングされた説明のアップロード先となる `automl_run` オブジェクトを受け取ります。
+また、MimicWrapper は、エンジニアリングされた説明のアップロード先となる `automl_run` オブジェクトを受け取ります。
 
 ```python
 from azureml.explain.model.mimic.models.lightgbm_model import LGBMExplainableModel
 from azureml.explain.model.mimic_wrapper import MimicWrapper
 
 # Initialize the Mimic Explainer
-explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator, LGBMExplainableModel,
+explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator, LGBMExplainableModel, 
                          init_dataset=automl_explainer_setup_obj.X_transform, run=automl_run,
-                         features=automl_explainer_setup_obj.engineered_feature_names,
+                         features=automl_explainer_setup_obj.engineered_feature_names, 
                          feature_maps=[automl_explainer_setup_obj.feature_map],
                          classes=automl_explainer_setup_obj.classes)
 ```
@@ -105,27 +107,8 @@ explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator, LGBMEx
 変換されたテスト サンプルを使用して、MimicWrapper の `explain()` メソッドを呼び出し、生成済みのエンジニアリングされた特徴の特徴量の重要度を取得できます。 また、`ExplanationDashboard` を使用して、自動 ML フィーチャライザーによって生成された、エンジニアリングされた特徴の特徴量の重要度の値をダッシュボードに視覚化して表示することもできます。
 
 ```python
-from azureml.contrib.interpret.visualize import ExplanationDashboard
-engineered_explanations = explainer.explain(['local', 'global'],              
-                                            eval_dataset=automl_explainer_setup_obj.X_test_transform)
-
+engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
 print(engineered_explanations.get_feature_importance_dict())
-ExplanationDashboard(engineered_explanations, automl_explainer_setup_obj.automl_estimator, automl_explainer_setup_obj.X_test_transform)
-```
-
-### <a name="use-mimic-explainer-for-computing-and-visualizing-raw-feature-importance"></a>Mimic Explainer を使用して生の特徴量の重要度を計算および視覚化する
-
-変換されたテスト サンプルを使用し、`get_raw=True` を設定して、MimicWrapper の `explain()` メソッドをもう一度呼び出すことにより、生の特徴の特徴量の重要度を取得できます。 また、`ExplanationDashboard` を使用して、生の特徴の特徴量の重要度の値をダッシュボードに視覚化して表示することもできます。
-
-```python
-from azureml.contrib.interpret.visualize import ExplanationDashboard
-
-raw_explanations = explainer.explain(['local', 'global'], get_raw=True, 
-                                     raw_feature_names=automl_explainer_setup_obj.raw_feature_names,
-                                     eval_dataset=automl_explainer_setup_obj.X_test_transform)
-
-print(raw_explanations.get_feature_importance_dict())
-ExplanationDashboard(raw_explanations, automl_explainer_setup_obj.automl_pipeline, automl_explainer_setup_obj.X_test_raw)
 ```
 
 ### <a name="interpretability-during-inference"></a>推論中の解釈可能性
@@ -134,7 +117,7 @@ ExplanationDashboard(raw_explanations, automl_explainer_setup_obj.automl_pipelin
 
 ### <a name="register-the-model-and-the-scoring-explainer"></a>モデルとスコアリング Explainer を登録する
 
-推論時に生の特徴量の重要度とエンジニアリングされた特徴量の重要度の値が計算されるスコアリング Explainer を作成するには、`TreeScoringExplainer` を使います。 以前に計算された `feature_map` を使用して、スコアリング Explainer を初期化します。 スコアリング Explainer では、`feature_map` を使用して、生の特徴量の重要度が返されます。
+推論時にエンジニアリングされた特徴量の重要度の値が計算されるスコアリング Explainer を作成するには、`TreeScoringExplainer` を使います。 以前に計算された `feature_map` を使用して、スコアリング Explainer を初期化します。 
 
 スコアリング Explainer を保存し、モデルとスコアリング Explainer をモデル管理サービスに登録します。 次のコードを実行します。
 
@@ -208,21 +191,19 @@ service.wait_for_deployment(show_output=True)
 
 ### <a name="inference-with-test-data"></a>テスト データでの推論
 
-自動 ML モデルからの予測値を確認するための、テスト データを使用した推論。 予測値に対するエンジニアリングされた特徴量の重要度と生の特徴量の重要度が表示されます。
+自動 ML モデルからの予測値を確認するための、テスト データを使用した推論。 予測値について、エンジニアリングされた特徴量の重要度を表示します。
 
 ```python
 if service.state == 'Healthy':
     # Serialize the first row of the test data into json
     X_test_json = X_test[:1].to_json(orient='records')
     print(X_test_json)
-    # Call the service to get the predictions and the engineered and raw explanations
+    # Call the service to get the predictions and the engineered explanations
     output = service.run(X_test_json)
     # Print the predicted value
     print(output['predictions'])
     # Print the engineered feature importances for the predicted value
     print(output['engineered_local_importance_values'])
-    # Print the raw feature importances for the predicted value
-    print(output['raw_local_importance_values'])
 ```
 
 ### <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>トレーニング時にデータのパターンと説明を発見するために視覚化する

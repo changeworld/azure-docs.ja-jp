@@ -10,20 +10,37 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/12/2020
+ms.date: 03/06/2020
 ms.author: jaserano
-ms.openlocfilehash: 199d32efef256fe3b56dbcf0a5d3ac6351f2d0b3
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: cd9d17eb365937035919b7e712a4b5824f747bda
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200916"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942585"
 ---
 # <a name="troubleshoot-azure-payment-issues"></a>Azure の支払いに関する問題のトラブルシューティング
 
 Microsoft Azure portal または Azure アカウント センターで、支払い情報アカウントを更新しようとしたときに、問題またはエラーが発生する場合があります。
 
 この問題を解決するには、以下のトピックの中から、発生しているエラーに最も近いものを選択してください。
+
+## <a name="my-credit-card-was-declined-when-i-tried-to-sign-up-for-azure"></a>Azure にサインアップしようとするとクレジット カードが拒否される
+
+カードが拒否される問題をトラブルシューティングするには、「[Azure へのサインアップ時にカードが拒否される問題のトラブルシューティング](troubleshoot-declined-card.md)」を参照してください。
+
+## <a name="unable-to-see-subscriptions-under-my-account-to-update-the-payment-method"></a>支払い方法を更新するサブスクリプションがマイ アカウントに表示されない
+
+対象のサブスクリプション用とは違うメール ID が使用されている可能性があります。
+
+この問題をトラブルシューティングするには、[Azure portal または Azure アカウント センターにおける "サブスクリプションが見つかりません" のサインイン エラー](no-subscriptions-found.md)に関するページを参照してください。
+
+## <a name="unable-to-use-a-virtual-or-prepaid-credit-or-debit-card-as-a-payment-method"></a>バーチャルまたはプリペイド式のクレジット カードやデビット カードを支払い方法として使用することはできません。
+
+*   バーチャルまたはプリペイド式のクレジット カードは、Azure サブスクリプションの支払い方法として認められていません。
+*   デビット カードは、Azure サブスクリプションの支払い方法として認められていません。
+
+詳細については、「[Azure へのサインアップ時にカードが拒否される問題のトラブルシューティング](troubleshoot-declined-card.md)」を参照してください。
 
 ## <a name="unable-to-remove-a-credit-card-from-a-saved-billing-payment-method"></a>保存された請求支払い方法からクレジット カードを削除できない
 
@@ -33,19 +50,11 @@ Microsoft Azure portal または Azure アカウント センターで、支払�
 
 ## <a name="unable-to-delete-an-old-payment-method-after-adding-a-new-payment-method"></a>新しい支払い方法の追加後、以前の支払い方法を削除できない
 
-新しい支払い方法がサブスクリプションに関連付けられていない可能性があります。 支払い方法をサブスクリプションに関連付ける方法については、[Azure 用にクレジット カードまたはデビット カードを追加、更新、または削除する方法](change-credit-card.md)に関するページを参照してください。
-
-カードが拒否される問題をトラブルシューティングするには、[Azure のサインアップ時に拒否されたカードをトラブルシューティングする方法](troubleshoot-declined-card.md)に関するページを参照してください。
+新しい支払い方法がサブスクリプションに関連付けられていない可能性があります。 支払い方法をサブスクリプションに関連付ける方法については、「[Azure 用にクレジット カードを追加、更新、または削除する](change-credit-card.md)」を参照してください。
 
 ## <a name="unable-to-delete-a-payment-method-because-of-cannot-delete-payment-method-error"></a>"*支払い方法を削除できない*" というエラーが発生して支払い方法を削除できない
 
 これは、未払い残高が原因で発生します。 支払い方法を削除する前に、未払い残高をすべて清算してください。
-
-## <a name="unable-to-see-subscriptions-under-my-account-to-update-the-payment-method"></a>支払い方法を更新するサブスクリプションがマイ アカウントに表示されない
-
-対象のサブスクリプション用とは違うメール ID が使用されている可能性があります。
-
-この問題をトラブルシューティングするには、[Azure portal または Azure アカウント センターにおける "サブスクリプションが見つかりません" のサインイン エラー](no-subscriptions-found.md)に関するページを参照してください。
 
 ## <a name="unable-to-make-payment-for-a-subscription"></a>サブスクリプションに対する支払いができない
 

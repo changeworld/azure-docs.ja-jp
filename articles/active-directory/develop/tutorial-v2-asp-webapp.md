@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 50eb88373b05d979d7f4b67b317e98c2a944459b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: e33f52d5c1f9c06a5acbae5c66b051ca82ef14c0
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701332"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126633"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>ASP.NET Web アプリに Microsoft へのサインインを追加する
 
@@ -30,6 +30,9 @@ ms.locfileid: "76701332"
 このガイドを完了すると、ご自分のアプリケーションが outlook.com や live.com などの個人用アカウントのサインインを受け入れることができるようになります。 また、Microsoft ID プラットフォームと統合されている会社や組織の職場または学校アカウントでも、アプリにサインインできるようになります。
 
 > このガイドでは、Microsoft Visual Studio 2019 が必要です。  お持ちでない場合は、  [Visual Studio 2019 を無料でダウンロードできます](https://www.visualstudio.com/downloads/)。
+
+>[!NOTE]
+> Microsoft ID プラットフォームを初めて使用する場合は、「[ASP.NET Web アプリに Microsoft ID プラットフォーム サインインを追加する](quickstart-v2-aspnet-webapp.md)」から始めることをお勧めします。
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>このガイドで生成されたサンプル アプリの動作
 
@@ -427,7 +430,7 @@ Visual Studio でアプリケーションをテストするには、F5 キーを
 
 |プロパティ |Value |説明 |
 |---|---|---|
-|**Name** |ユーザーのフルネーム | ユーザーの姓と名
+|**名前** |ユーザーのフルネーム | ユーザーの姓と名
 |**ユーザー名** |user<span>@domain.com</span> | ユーザーの識別に使用されるユーザー名|
 |**件名** |サブジェクト |Web 全体でユーザーを一意に識別する文字列|
 |**テナント ID** |Guid | ユーザーの Azure AD 組織を一意に表す **guid**|

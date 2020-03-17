@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d79c953f22bfe587f740bc29050796834309186a
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 700f2ca4d46b3483531fa0784cb78699befb20ca
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103358"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897750"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>チュートリアル:SAP NetWeaver と Azure Active Directory のシングル サインオン (SSO) 統合
 
@@ -29,7 +29,7 @@ ms.locfileid: "71103358"
 
 * SAP NetWeaver にアクセスできるユーザーを Azure AD で制御します。
 * ユーザーが自分の Azure AD アカウントを使用して SAP NetWeaver に自動的にサインインできるようにします。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -177,9 +177,9 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
     b. **[変換]** の一覧で、**ExtractMailPrefix()** を選択します。
 
-    c. **[パラメーター 1]** の一覧で、**user.userprinicipalname** を選択します。
+    c. **[パラメーター 1]** の一覧で、**user.userprincipalname** を選択します。
 
-    d. **[Save]** をクリックします。
+    d. **[保存]** をクリックします。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードしてコンピューターに保存します。
 
@@ -273,7 +273,7 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
 14. **[user ID Source]\(ユーザー ID ソース\)** と **[user ID mapping mode]\(ユーザー ID マッピング モード\)** の値によって、SAP ユーザーと Azure AD 要求の間のリンクが決まることに注意してください。  
 
-    #### <a name="scenario-sap-user-to-azure-ad-user-mapping"></a>シナリオ: SAP ユーザーから Azure AD ユーザーへのマッピング。
+    #### <a name="scenario-sap-user-to-azure-ad-user-mapping"></a>シナリオ:SAP ユーザーから Azure AD ユーザーへのマッピング。
 
     a. SAP の NameID 詳細スクリーンショット。
 
@@ -283,7 +283,7 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
     ![Configure single sign-on](./media/sapnetweaver-tutorial/claimsaad1.png)
 
-    #### <a name="scenario-select-sap-user-id-based-on-configured-email-address-in-su01-in-this-case-email-id-should-be-configured-in-su01-for-each-user-who-requires-sso"></a>シナリオ: SU01 で構成済みのメール アドレスに基づいて SAP ユーザー ID を選択する。 このケースでは、SSO を必要とする各ユーザーの su01 でメール ID を構成する必要があります。
+    #### <a name="scenario-select-sap-user-id-based-on-configured-email-address-in-su01-in-this-case-email-id-should-be-configured-in-su01-for-each-user-who-requires-sso"></a>シナリオ:SU01 で構成済みのメール アドレスに基づいて SAP ユーザー ID を選択する。 このケースでは、SSO を必要とする各ユーザーの su01 でメール ID を構成する必要があります。
 
     a.  SAP の NameID 詳細スクリーンショット。
 
@@ -362,7 +362,7 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
 1. 新しい **OAuth 2.0 クライアント**を登録するために、トランザクション **SOAUTH2** を開始します。 このトランザクションは、既に登録されている OAuth 2.0 クライアントについての概要を表示します。 この例では CLIENT1 という名前の新しい OAuth クライアントのために、 **[Create]\(作成\)** を選択してウィザードを開始します。
 
-2. T-Code: **SOAUTH2** に移動して説明を入力し、 **[next]\(次へ\)** をクリックします。
+2. T-Code:**SOAUTH2** に移動して説明を入力し、 **[next]\(次へ\)** をクリックします。
 
     ![Configure single sign-on](./media/sapnetweaver-tutorial/oauth04.png)
 

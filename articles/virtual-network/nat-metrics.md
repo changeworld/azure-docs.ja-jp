@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 268f5f5b7bf1bed27a01085974bea72af6a84f3b
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 51713db8532eb33f102de9320dea9eaeb98c4019
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304057"
+ms.locfileid: "78359079"
 ---
 # <a name="azure-virtual-network-nat-metrics"></a>Azure Virtual Network NAT のメトリック
 
@@ -57,8 +57,10 @@ Resource Health はサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Virtual Network NAT](nat-overview.md) について学習する。
-- [NAT ゲートウェイ リソース](nat-gateway-resource.md)について学習する
-- [Azure Monitor](../azure-monitor/overview.md) について学習する
-- [NAT ゲートウェイ リソースのトラブルシューティング](troubleshoot-nat.md)について学習する。
+* [Virtual Network NAT](nat-overview.md) について学習する。
+* [NAT ゲートウェイ リソース](nat-gateway-resource.md)について学習する
+* [Azure Monitor](../azure-monitor/overview.md) について学習する
+* [NAT ゲートウェイ リソースのトラブルシューティング](troubleshoot-nat.md)について学習する。
+* [UserVoice で Virtual Network NAT の新機能の構築を提案する](https://aka.ms/natuservoice)。
+
 

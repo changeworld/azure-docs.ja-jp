@@ -8,16 +8,16 @@ ms.date: 01/24/2020
 ms.topic: overview
 ms.service: cost-management-billing
 ms.custom: ''
-ms.openlocfilehash: 1c6f03663a7487e814272c6296f6e7862c65c806
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c2d039dbf2ac7cfaeaad7ad038eb669337243cce
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769883"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970116"
 ---
 # <a name="what-is-azure-cost-management-and-billing"></a>Azure Cost Management と Billing の概要
 
-Azure の製品とサービスでは、使用した分に応じて料金が発生します。 Azure リソースを作成して使用すると、そのリソースに対して課金されます。 Azure Cost Management と Billing の機能を使用して、請求管理タスクを実施し、コストへの請求アクセスを管理します。 また、Azure の支出を監視および管理し、Azure のリソースの使用を最適化する機能もあります。
+Azure の製品とサービスでは、使用した分に応じて料金が発生します。 Azure リソースを作成して使用すると、そのリソースに対して課金されます。 Azure Cost Management と Billing の機能を使用して、請求管理タスクを実施し、コストへの請求アクセスを管理します。 また、Azure の支出を監視および管理し、Azure のリソースの使用を最適化する機能も使用できます。
 
 ## <a name="understand-azure-billing"></a>Azure Billing の概念
 
@@ -57,7 +57,7 @@ Azure を使用するためにサインアップすると、課金アカウン�
 
 #### <a name="microsoft-customer-agreement"></a>Microsoft 顧客契約
 
-|Scope  |処理手順  |
+|Scope  |タスク  |
 |---------|---------|
 |請求先アカウント     |   複数の Microsoft 製品およびサービスの顧客契約を表します。 課金アカウントは、課金プロファイルと請求書セクションを使用して構成されます。   |
 |請求プロファイル     |  請求書とその支払い方法を表します。 請求書はこのスコープで生成されます。 課金プロファイルには、複数の請求書セクションを含めることができます。      |

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: c96caf7a90f35913bcba04a00553ad1df2689999
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: dbf3531f84d218543b0ab1fb2199a66bdbde2926
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514427"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117258"
 ---
 ::: zone target = "docs"
 
@@ -100,7 +100,7 @@ ms.locfileid: "76514427"
 
 デバイスのいずれかのノードで、次の手順に従ってネットワークにケーブル接続します。
 
-1. CAT 6 RJ-45 ネットワーク ケーブル (図の青いケーブル) を使用して、ホスト コンピューターを 1 Gbps の管理ポートに接続します。
+1. CAT 6 RJ-45 ネットワーク ケーブル (図の右上の、MGMT というラベルの付いたプラグに接続されたケーブル) を使用して、ホスト コンピューターを 1 Gbps の管理ポートに接続します。
 2. QSFP+ ケーブル (ファイバーまたは銅線) を使用して、40 Gbps 以上 (1 Gbps よりも望ましい) のデータ用ネットワーク インターフェイスを少なくとも 1 つ接続します。 10 Gbps スイッチを使用する場合は、SFP+ ケーブルと、QSFP+ から SFP+ へのアダプター (QSA アダプター) を使用して、データ用の 40 Gbps ネットワーク インターフェイスに接続します。
 
     ![ケーブル接続した Data Box Heavy のポート](media/data-box-heavy-deploy-set-up/data-box-heavy-ports-cabled.png)

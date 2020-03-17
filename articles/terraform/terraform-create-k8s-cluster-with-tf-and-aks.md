@@ -1,14 +1,15 @@
 ---
 title: チュートリアル - Terraform を使用して Azure Kubernetes Service (AKS) で Kubernetes クラスターを作成する
-description: Azure Kubernetes Service と Terraform を使用して Kubernetes クラスターを作成する方法を示すチュートリアル
+description: このチュートリアルでは、Azure Kubernetes Service および Terraform を使用して Kubernetes クラスターを作成します
+keywords: Azure DevOps Terraform AKS Kubernetes
 ms.topic: tutorial
-ms.date: 11/07/2019
-ms.openlocfilehash: eb8619418cf6d42f600499bb5a12322adce6f44b
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.date: 03/09/2020
+ms.openlocfilehash: 0a193c8da6441a04f742894797521fe92f26b2e1
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472249"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945308"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>チュートリアル:Terraform を使用して Azure Kubernetes Service で Kubernetes クラスターを作成する
 
@@ -71,7 +72,10 @@ Azure プロバイダーを宣言する Terraform 構成ファイルを作成し
 
     ```hcl
     provider "azurerm" {
-        version = "~>1.5"
+        # The "feature" block is required for AzureRM provider 2.x. 
+        # If you are using version 1.x, the "features" block is not allowed.
+        version = "~>2.0"
+        features {}
     }
 
     terraform {

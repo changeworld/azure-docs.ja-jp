@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
-ms.date: 11/22/2019
-ms.openlocfilehash: 29c91cf14413a11804de82eeaf08d628b125d76a
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.date: 03/06/2020
+ms.openlocfilehash: d03a3d482d147d3bc69354ee09dfe0b187610a09
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471943"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927441"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Azure Functions に機械学習モデルをデプロイする (プレビュー)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -148,10 +148,10 @@ print(blob.location)
 
     ```azurecli-interactive
     az group create --name myresourcegroup --location "West Europe"
-    az appservice plan create --name myplanname --resource-group myresourcegroup --sku EP1 --is-linux
+    az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
     ```
 
-    この例では、_Linux Premium_ 価格レベル (`--sku EP1`) が使用されます。
+    この例では、_Linux Basic_ 価格レベル (`--sku B1`) が使用されます。
 
     > [!IMPORTANT]
     > Azure Machine Learning によって作成されたイメージでは Linux が使用されるため、`--is-linux` パラメーターを使用する必要があります。
@@ -159,7 +159,7 @@ print(blob.location)
 1. Web ジョブ ストレージに使用するストレージ アカウントを作成し、その接続文字列を取得します。 `<webjobStorage>` を使用する名前に置き換えます。
 
     ```azurecli-interactive
-    az storage account create --name triggerStorage --location westeurope --resource-group myresourcegroup --sku Standard_LRS
+    az storage account create --name <webjobStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
     ```
     ```azurecli-interactive
     az storage account show-connection-string --resource-group myresourcegroup --name <webJobStorage> --query connectionString --output tsv
@@ -179,7 +179,7 @@ print(blob.location)
     ```azurecli-interactive
     az storage account create --name <triggerStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
     ```
-    ```azurecli-interactive
+    ```azurecli-interactiv
     az storage account show-connection-string --resource-group myresourcegroup --name <triggerStorage> --query connectionString --output tsv
     ```
     関数アプリに提供するため、この接続文字列を記録しておきます。 これは後で `<triggerConnectionString>` に使用します。
@@ -205,7 +205,7 @@ print(blob.location)
     ```
     返された値を保存します。これは次の手順で `imagetag` として使用します。
 
-1. コンテナー レジストリにアクセスするために必要な資格情報を関数アプリに指定するには、次のコマンドを使用します。 `<app-name>` を使用する名前に置き換えます。 `<acrinstance>` と `<imagetag>` を、前の手順の AZ CLI 呼び出しの値に置き換えます。 `<username>` と `<password>` を、前の手順で取得した ACR ログイン情報に置き換えます。
+1. コンテナー レジストリにアクセスするために必要な資格情報を関数アプリに指定するには、次のコマンドを使用します。 `<app-name>` は、関数アプリの名前で置き換えます。 `<acrinstance>` と `<imagetag>` を、前の手順の AZ CLI 呼び出しの値に置き換えます。 `<username>` と `<password>` を、前の手順で取得した ACR ログイン情報に置き換えます。
 
     ```azurecli-interactive
     az functionapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package:<imagetag> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
@@ -246,6 +246,52 @@ print(blob.location)
 
 > [!IMPORTANT]
 > イメージが読み込まれるまで数分かかる場合があります。 Azure Portal を使って進行状況を監視できます。
+
+## <a name="test-the-deployment"></a>展開をテスト
+
+イメージが読み込まれ、アプリを使用できるようになったら、次の手順を使用してアプリをトリガーします。
+
+1. score.py ファイルで想定されるデータを含む、テキスト ファイルを作成します。 次の例では、10 個の数値配列が想定される score.py を使用することにします。
+
+    ```json
+    {"data": [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]]}
+    ```
+
+    > [!IMPORTANT]
+    > データの形式は、お使いの score.py とモデルで想定される内容によって異なります。
+
+2. 次のコマンドを使用して、以前に作成したトリガー ストレージ BLOB の入力コンテナーにこのファイルをアップロードします。 `<file>` をこのデータを含むファイル名に置き換えます。 `<triggerConnectionString>` は、先ほど返された接続文字列で置き換えます。 この例では、`input` は以前に作成した入力コンテナーの名前です。 別の名前を使用した場合は、この値を置き換えます。
+
+    ```azurecli-interactive
+    az storage blob upload --container-name input --file <file> --name <file> --connection-string <triggerConnectionString>
+    ```
+
+    このコマンドの出力は、次の JSON のようになります。
+
+    ```json
+    {
+    "etag": "\"0x8D7C21528E08844\"",
+    "lastModified": "2020-03-06T21:27:23+00:00"
+    }
+    ```
+
+3. 関数で生成された出力を表示するには、次のコマンドを使用して、生成された出力ファイルをリストします。 `<triggerConnectionString>` は、先ほど返された接続文字列で置き換えます。 この例では、`output` は、以前に作成した出力コンテナーの名前です。 別の名前を使用した場合は、この値を置き換えます。
+
+    ```azurecli-interactive
+    az storage blob list --container-name output --connection-string <triggerConnectionString> --query '[].name' --output tsv
+    ```
+
+    このコマンドの出力は、`sample_input_out.json` のようになります。
+
+4. ファイルをダウンロードしてコンテンツを検査するには、次のコマンドを使用します。 `<file>` は、前のコマンドで返されたファイル名で置き換えます。 `<triggerConnectionString>` は、先ほど返された接続文字列で置き換えます。 
+
+    ```azurecli-interactive
+    az storage blob download --container-name output --file <file> --name <file> --connection-string <triggerConnectionString>
+    ```
+
+    コマンドが完了したら、そのファイルを開きます。 それには、モデルによって返されたデータが含まれています。
+
+Blob トリガーの使用に関する詳細については、[Azure Blob storage によってトリガーされる関数の作成](/azure/azure-functions/functions-create-storage-blob-triggered-function) に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

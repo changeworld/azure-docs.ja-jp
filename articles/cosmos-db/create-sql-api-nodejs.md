@@ -8,22 +8,22 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: dech
-ms.openlocfilehash: c36f31ef30b6386677c517b1d7e643f9eacea093
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 729fd776321a90257289dcf92f13079a8206d9d9
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303292"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927411"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>クイック スタート:Node.js を使用して Azure Cosmos DB の SQL API アカウントに接続してデータを照会する
 
 > [!div class="op_single_selector"]
-> * [.NET V3](create-sql-api-dotnet.md)
-> * [.NET V4](create-sql-api-dotnet-V4.md)
-> * [Java](create-sql-api-java.md)
-> * [Node.js](create-sql-api-nodejs.md)
-> * [Python](create-sql-api-python.md)
-> * [Xamarin](create-sql-api-xamarin-dotnet.md)
+> - [.NET V3](create-sql-api-dotnet.md)
+> - [.NET V4](create-sql-api-dotnet-V4.md)
+> - [Java](create-sql-api-java.md)
+> - [Node.js](create-sql-api-nodejs.md)
+> - [Python](create-sql-api-python.md)
+> - [Xamarin](create-sql-api-xamarin-dotnet.md)
 
 このクイックスタートでは、Azure portal から Azure Cosmos DB のSQL API アカウントを作成して管理し、また GitHub から複製された Node.js アプリを使用します。 Azure Cosmos DB は、マルチモデル データベース サービスです。グローバルな分散と水平方向のスケーリング機能により、ドキュメント データベースやテーブル データベース、キーと値のデータベース、グラフ データベースをすばやく作成し、クエリを実行することができます。
 
@@ -33,32 +33,40 @@ ms.locfileid: "78303292"
 - [Node.js 6.0.0+](https://nodejs.org/)。
 - [Git](https://www.git-scm.com/downloads).
 
-## <a name="create-a-database"></a>データベースを作成する
+## <a name="create-an-azure-cosmos-account"></a>Azure Cosmos アカウントを作成する
 
-[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
+このクイックスタートの用途であれば、[[Azure Cosmos DB を無料で試す]](https://azure.microsoft.com/try/cosmosdb/) オプションを使用して Azure Cosmos アカウントを作成することができます。
+
+1. 「[Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)」ページに移動します。
+
+1. **SQL** API アカウントを選択し、 **[作成]** を選択します。 Microsoft アカウントを使用してサインインしてください。
+
+1. サインインに成功すれば、Azure Cosmos アカウントの準備は完了です。 **[Open in the Azure portal]\(Azure portal で開く\)** を選択して、新しく作成したアカウントを開きます。
+
+[Azure Cosmos DB を無料で試す] オプションには、Azure サブスクリプションは不要です。30 日の期間限定で Azure Cosmos アカウントが提供されます。 もっと長い期間 Azure Cosmos アカウントを使用する場合は、ご利用の Azure サブスクリプション内から[アカウントを作成](create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account)する必要があります。
 
 ## <a name="add-a-container"></a>コンテナーの追加
 
-Azure portal でデータ エクスプローラー ツールを使用してデータベースとコンテナーを作成できるようになりました。 
+Azure portal でデータ エクスプローラー ツールを使用してデータベースとコンテナーを作成できるようになりました。
 
-1. **[データ エクスプローラー]**  >  **[新しいコンテナー]** の順に選択します。 
-    
-    **[コンテナーの追加]** 領域が右端に表示されます。表示するには、右へスクロールする必要がある場合があります。
+1. **[データ エクスプローラー]**  >  **[新しいコンテナー]** の順に選択します。
 
-    ![Azure portal の [データ エクスプローラー] の [コンテナーの追加] ウィンドウ](./media/create-sql-api-nodejs/azure-cosmosdb-data-explorer.png)
+   **[コンテナーの追加]** 領域が右端に表示されます。表示するには、右へスクロールする必要がある場合があります。
+
+   ![Azure portal の [データ エクスプローラー] の [コンテナーの追加] ウィンドウ](./media/create-sql-api-nodejs/azure-cosmosdb-data-explorer.png)
 
 2. **[コンテナーの追加]** ページで、新しいコンテナーの設定を入力します。
 
-    |設定|推奨値|説明
-    |---|---|---|
-    |**[データベース ID]**|処理手順|新しいデータベースの名前として*タスク*を入力します。 データベース名は 1 文字以上 255 文字以内にする必要があります。`/, \\, #, ?` は使えず、末尾にスペースを入れることもできません。 **[Provision database throughput]\(データベース スループットをプロビジョニングする\)** オプションをオンにすると、データベースにプロビジョニングされたスループットをデータベース内のすべてのコンテナーにわたって共有できます。 このオプションは、コストの削減にも役立ちます。 |
-    |**スループット**|400|スループットを 400 要求ユニット/秒 (RU/秒) のままにします。 待ち時間を短縮する場合、後でスループットをスケールアップできます。| 
-    |**コンテナー ID**|アイテム|新しいコンテナーの名前として「*アイテム*」と入力します。 コンテナー ID には、データベース名と同じ文字要件があります。|
-    |**パーティション キー**| /category| この記事で説明するサンプルでは、 */category* をパーティション キーとして使用します。|
-    
-    上記の設定に加え、必要に応じて、このコンテナー用に**一意なキー**を追加できます。 この例では、このフィールドを空のままにしましょう。 一意なキーを使用すると、開発者はデータベースにデータ整合性のレイヤーを追加できます。 コンテナーの作成中に一意キー ポリシーを作成すると、パーティション キーごとに 1 つ以上の値の一意性が保証されます。 詳細については、記事「[Azure Cosmos DB における一意なキー](unique-keys.md)」を参照してください。
-    
-    **[OK]** を選択します。 新しいデータベースとコンテナーがデータ エクスプローラーに表示されます。
+   | 設定           | 推奨値 | 説明                                                                                                                                                                                                                                                                                                                                                                           |
+   | ----------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **データベース ID**   | タスク           | 新しいデータベースの名前として_タスク_を入力します。 データベース名は 1 文字以上 255 文字以内にする必要があります。`/, \\, #, ?` は使えず、末尾にスペースを入れることもできません。 **[Provision database throughput]\(データベース スループットをプロビジョニングする\)** オプションをオンにすると、データベースにプロビジョニングされたスループットをデータベース内のすべてのコンテナーにわたって共有できます。 このオプションは、コストの削減にも役立ちます。 |
+   | **スループット**    | 400             | スループットを 400 要求ユニット/秒 (RU/秒) のままにします。 待ち時間を短縮する場合、後でスループットをスケールアップできます。                                                                                                                                                                                                                                                    |
+   | **コンテナー ID**  | アイテム           | 新しいコンテナーの名前として「_項目_」と入力します。 コンテナー ID には、データベース名と同じ文字要件があります。                                                                                                                                                                                                                                                               |
+   | **パーティション キー** | /category       | この記事で説明するサンプルでは、 _/category_ をパーティション キーとして使用します。                                                                                                                                                                                                                                                                                                           |
+
+   上記の設定に加え、必要に応じて、このコンテナー用に**一意なキー**を追加できます。 この例では、このフィールドを空のままにしましょう。 一意なキーを使用すると、開発者はデータベースにデータ整合性のレイヤーを追加できます。 コンテナーの作成中に一意キー ポリシーを作成すると、パーティション キーごとに 1 つ以上の値の一意性が保証されます。 詳細については、記事「[Azure Cosmos DB における一意なキー](unique-keys.md)」を参照してください。
+
+   **[OK]** を選択します。 新しいデータベースとコンテナーがデータ エクスプローラーに表示されます。
 
 ## <a name="add-sample-data"></a>サンプル データの追加
 
@@ -84,9 +92,21 @@ Azure portal でデータ エクスプローラー ツールを使用してデ�
 
 以前のバージョンの SQL JavaScript SDK に慣れている方は、"_コレクション_" や "_ドキュメント_" といった用語をよく目にしたかと思います。 Azure Cosmos DB は[複数の API モデル](introduction.md)をサポートしているため、[バージョン 2.0 以上の JavaScript SDK](https://www.npmjs.com/package/@azure/cosmos) では、コレクション、グラフ、テーブルを表す用語として "_コンテナー_" が、またコンテナーの内容を表す用語として "_項目_" が一般的に使用されます。
 
+Cosmos DB JavaScript SDK は "@azure/cosmos" と呼ばれ、npm からインストールできます。
+
+```bash
+npm install @azure/cosmos
+```
+
 次のスニペットはすべて _app.js_ ファイルからのものです。
 
-- `CosmosClient` オブジェクトが初期化されます。
+- `CosmosClient` は `@azure/cosmos` npm パッケージからインポートされます。
+
+  ```javascript
+  const CosmosClient = require("@azure/cosmos").CosmosClient;
+  ```
+
+- 新しい `CosmosClient` オブジェクトが初期化されます。
 
   ```javascript
   const client = new CosmosClient({ endpoint, key });
@@ -115,8 +135,6 @@ Azure portal でデータ エクスプローラー ツールを使用してデ�
   const { resources: results } = await container.items
     .query(querySpec)
     .fetchAll();
-
-  return results;
   ```
 
 - 新しい項目を作成します
@@ -134,8 +152,6 @@ Azure portal でデータ エクスプローラー ツールを使用してデ�
   const { resource: itemToUpdate } = await container
     .item(id, category)
     .replace(itemToUpdate);
-
-  return result;
   ```
 
 - 項目を削除する
@@ -167,19 +183,17 @@ Azure portal でデータ エクスプローラー ツールを使用してデ�
 
 ## <a name="run-the-app"></a>アプリを実行する
 
-1. ターミナルで `npm install` を実行し、必要な npm モジュールをインストールします。
+1. ターミナルで `npm install` を実行して、"@azure/cosmos" npm パッケージをインストールします。
 
 2. ターミナルで `node app.js` を実行し、node アプリケーションを起動します。
 
-これで、データ エクスプローラーに戻って、この新しいデータに変更を加えたり操作したりすることができます。
+3. 先ほどこのクイックスタートで作成した 2 つの項目が列挙されます。新しい項目が作成されます。 その項目の "isComplete" フラグが "true" に更新された後、最終的にその項目は削除されます。
+
+このサンプル アプリケーションの実験を続けるか、Data Explorer に戻ってデータに変更を加えたりデータを操作したりすることができます。
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
-
-## <a name="clean-up-resources"></a>リソースをクリーンアップする
-
-[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

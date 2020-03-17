@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 28dc5131366c54db30e9233ea1061cc9bc7a54ce
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 3ad011529f8b4be90fc0c108a2049c30d1c69302
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500070"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897326"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>チュートリアル:Azure App Service での ASP.NET Core および SQL Database アプリの作成
 
@@ -39,7 +39,7 @@ ms.locfileid: "77500070"
 このチュートリアルを完了するには、以下が必要です。
 
 * [Git をインストールする](https://git-scm.com/)
-* [.NET Core をインストールする](https://www.microsoft.com/net/core/)
+* [.NET Core SDK をインストールする](https://dotnet.microsoft.com/download)
 
 ## <a name="create-local-net-core-app"></a>ローカル .NET Core アプリを作成する
 

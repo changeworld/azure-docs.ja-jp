@@ -3,86 +3,119 @@ title: サービス リソースをリージョン間で移動する方法
 titleSuffix: Azure Cognitive Search
 description: この記事では、Azure クラウドで Azure Cognitive Search リソースをあるリージョンから別のリージョンに移動する方法について説明します。
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
-ms.date: 02/18/2020
-ms.openlocfilehash: 392c86d8ea24e59d388926d4df581305ea2b531d
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.date: 03/06/2020
+ms.openlocfilehash: 183a937a232dbd28962bb7d6ef42b0d78b8a81fd
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599636"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850688"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>Azure Cognitive Search サービスを別の Azure リージョンに移動する
 
-Azure Cognitive Service アカウントをあるリージョンから別のリージョンに移動するには、エクスポート テンプレートを作成してサブスクリプションを移動します。 サブスクリプションを移動したら、データを移動してサービスを再作成する必要があります。
+場合によっては、既存の検索サービスを別のリージョンに移動することについてお客様が問い合わせることがあります。 現時点では、このタスクを支援する組み込みのメカニズムやツールはありません。 この記事で後述する手動のプロセスがあります。
 
-この記事では、次の方法について学習します。
+> [!NOTE]
+> Azure portal では、すべてのサービスに **Export template** コマンドがあります。 Azure Cognitive Search の場合、このコマンドを実行すると、サービスの基本定義 (名前、場所、レベル、レプリカ、およびパーティション数) が生成されますが、サービスのコンテンツは認識されず、キー、ロール、またはログにも引き継がれません。 コマンドは存在しますが、検索サービスの移動には使用しないことをお勧めします。
+
+## <a name="steps-for-moving-a-service"></a>サービスを移動する手順
+
+検索サービスを別のリージョンに移動する必要がある場合、アプローチは次の手順のようになります。
+
+1. サービスを再配置した場合の影響を理解するために、関連するサービスを特定します。 ログ、ナレッジ ストア、または外部データソースとして Azure Storage を使用している可能性があります。 AI エンリッチメントに Cognitive Services を使用している可能性があります。 他のリージョンのサービスへのアクセスは一般的に行われていることですが、追加の帯域幅料金も伴います。 AI エンリッチメントを使用している場合は、Cognitive Services と Azure Cognitive Search を同じリージョンに配置する必要があります。
+
+1. サービスのオブジェクトの完全な一覧を表示するには、既存のサービスをインベントリします。 ログを有効にした場合は、履歴レコードに必要な可能性のあるレポートを作成してアーカイブします。
+
+1. 新しいリージョンの価格と可用性を確認して、Azure Cognitive Search の可用性と、同じリージョンに作成する関連サービスを確認します。 機能パリティをチェックします。 一部のプレビュー機能では、可用性が制限されています。
+
+1. 新しいリージョンにサービスを作成し、既存のインデックス、インデクサー、データ ソース、スキルセット、ナレッジ ストア、およびシノニム マップをソース コードから再発行します。 サービス名は一意である必要があるため、既存の名前を再利用することはできません。
+
+1. 該当する場合は、インデックスとナレッジ ストアを再度読み込みます。 アプリケーション コードを使用して JSON データをインデックスにプッシュするか、インデクサーを再度実行して外部ソースからドキュメントをプルします。 
+
+1. ログ記録を有効にし、それらを使用している場合はセキュリティ ロールを再度作成します。
+
+1. クライアント アプリケーションとテスト スイートを更新し、新しいサービス名と API キーを使用してから、すべてのアプリケーションをテストします。
+
+1. 新しいサービスが完全にテストされ、運用可能になったら、古いサービスを削除します。
+
+## <a name="next-steps"></a>次のステップ
+
++ [レベルの選択](search-sku-tier.md)
++ [Search Service の作成](search-create-service-portal.md)
++ [検索ドキュメントの読み込み](search-what-is-data-import.md)
++ [ログ記録を有効化する](search-monitor-logs.md)
+
+
+<!-- To move your Azure Cognitive Service account from one region to another, you will create an export template to move your subscription(s). After moving your subscription, you will need to move your data and recreate your service.
+
+In this article, you'll learn how to:
 
 > [!div class="checklist"]
-> * テンプレートをエクスポートします。
-> * ターゲット リージョン、検索名、ストレージ アカウント名を追加して、テンプレートを変更します。
-> * テンプレートをデプロイして、新しい検索とストレージ アカウントを作成します。
-> * 新しいリージョンでサービスの状態を確認する
-> * ソース リージョンにあるリソースをクリーンアップします。
+> * Export a template.
+> * Modify the template: adding the target region, search and storage account names.
+> * Deploy the template to create the new search and storage accounts.
+> * Verify your service status in the new region
+> * Clean up resources in the source region.
 
-## <a name="prerequisites"></a>前提条件
+## Prerequisites
 
-- お使いのアカウントで使用されるサービスと機能が、ターゲット リージョンでサポートされていることを確認してください。
+- Ensure that the services and features that your account uses are supported in the target region.
 
-- プレビュー機能については、お使いのサブスクリプションがターゲット リージョンのホワイトリストに登録されていることを確認してください。 プレビュー機能の詳細については、[ナレッジ ストア](https://docs.microsoft.com/azure/search/knowledge-store-concept-intro)、[インクリメンタル エンリッチメント](https://docs.microsoft.com/azure/search/cognitive-search-incremental-indexing-conceptual)、[プライベート エンドポイント](https://docs.microsoft.com/azure/search/service-create-private-endpoint)に関する記事を参照してください。
+- For preview features, ensure that your subscription is whitelisted for the target region. For more information about preview features, see [knowledge stores](https://docs.microsoft.com/azure/search/knowledge-store-concept-intro), [incremental enrichment](https://docs.microsoft.com/azure/search/cognitive-search-incremental-indexing-conceptual), and [private endpoint](https://docs.microsoft.com/azure/search/service-create-private-endpoint).
 
-## <a name="assessment-and-planning"></a>評価と計画
+## Assessment and planning
 
-検索サービスを新しいリージョンに移動する場合は、[データを新しいストレージ サービスに移動](https://docs.microsoft.com/azure/storage/common/storage-account-move?tabs=azure-portal#configure-the-new-storage-account)し、インデックス、スキルセット、およびナレッジ ストアを再構築する必要があります。 サービスを簡単かつ迅速に再構築できるように、現在の設定を記録し、json ファイルをコピーする必要があります。
+When you move your search service to the new region, you will need to [move your data to the new storage service](https://docs.microsoft.com/azure/storage/common/storage-account-move?tabs=azure-portal#configure-the-new-storage-account) and then rebuild your indexes, skillsets and knowledge stores. You should record current settings and copy json files to make the rebuilding of your service easier and faster.
 
-## <a name="moving-your-search-services-resources"></a>検索サービスのリソースの移動
+## Moving your search service's resources
 
-開始するには、Resource Manager テンプレートをエクスポートして変更します。
+To start you will export and then modify a Resource Manager template.
 
-### <a name="export-a-template"></a>テンプレートをエクスポートする
+### Export a template
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. Sign in to the [Azure portal](https://portal.azure.com).
 
-2. 自分のリソース グループのページに移動します。
+2. Go to your Resource Group page.
 
 > [!div class="mx-imgBorder"]
-> ![リソース グループのページの例](./media/search-move-resource/export-template-sample.png)
+> ![Resource Group page example](./media/search-move-resource/export-template-sample.png)
 
-3. **[すべてのリソース]** を選択します。
+3. Select **All resources**.
 
-3. 左側のナビゲーション メニューで、 **[テンプレートのエクスポート]** を選択します。
+3. In the left hand navigation menu select **Export template**.
 
-4. **[テンプレートのエクスポート]** ページで **[ダウンロード]** を選択します。
+4. Choose **Download** in the **Export template** page.
 
-5. ポータルからダウンロードした .zip ファイルを見つけて、選択したフォルダーにそのファイルを解凍します。
+5. Locate the .zip file that you downloaded from the portal, and unzip that file to a folder of your choice.
 
-zip ファイルには、テンプレートとテンプレートをデプロイするためのスクリプトから構成される .json ファイルが含まれています。
+The zip file contains the .json files that comprise the template and scripts to deploy the template.
 
-### <a name="modify-the-template"></a>テンプレートの変更
+### Modify the template
 
-検索名とストレージ アカウント名、リージョンを変更して、テンプレートを変更します。 名前は、各サービスとリージョンの名前付け規則に従う必要があります。 
+You will modify the template by changing the search and storage account names and regions. The names must follow the rules for each service and region naming conventions. 
 
-リージョンの場所コードを取得するには、「[Azure の場所](https://azure.microsoft.com/global-infrastructure/locations/)」を参照してください。  リージョンのコードは、スペースを含まないリージョン名です (**Central US** = **centralus**)。
+To obtain region location codes, see [Azure Locations](https://azure.microsoft.com/global-infrastructure/locations/).  The code for a region is the region name with no spaces, **Central US** = **centralus**.
 
-1. Azure Portal で、 **[リソースの作成]** を選択します。
+1. In the Azure portal, select **Create a resource**.
 
-2. **[Marketplace を検索]** で「**template deployment**」と入力し、**Enter** キーを押します。
+2. In **Search the Marketplace**, type **template deployment**, and then press **ENTER**.
 
-3. **[テンプレートのデプロイ]** を選択します。
+3. Select **Template deployment**.
 
-4. **作成** を選択します。
+4. Select **Create**.
 
-5. **[Build your own template in the editor] \(エディターで独自のテンプレートをビルド\)** を選択します。
+5. Select **Build your own template in the editor**.
 
-6. **[ファイルの読み込み]** を選択し、手順に従って、前のセクションでダウンロードして解凍した **template.json** ファイルを読み込みます。
+6. Select **Load file**, and then follow the instructions to load the **template.json** file that you downloaded and unzipped in the previous section.
 
-7. **template.json** ファイル内で、検索名とストレージ アカウント名の既定値を設定して、ターゲットの検索とストレージ アカウントに名前を付けます。 
+7. In the **template.json** file, name the target search and storage accounts by setting the default value of the search and storage account names. 
 
-8. **template.json** ファイル内の **location** プロパティを編集して、検索とストレージ サービスの両方のターゲット リージョンを指定します。 この例では、ターゲット リージョンを `centralus` に設定します。
+8. Edit the **location** property in the **template.json** file to the target region for both your search and storage services. This example sets the target region to `centralus`.
 
 ```json
 },
@@ -113,35 +146,34 @@ zip ファイルには、テンプレートとテンプレートをデプロイ�
             },
 ```
 
-### <a name="deploy-the-template"></a>テンプレートのデプロイ
+### Deploy the template
 
-1. **template.json** ファイルを保存します。
+1. Save the **template.json** file.
 
-2. プロパティ値を入力または選択します。
+2. Enter or select the property values:
 
-- **サブスクリプション**:Azure サブスクリプションを選択します。
+- **Subscription**: Select an Azure subscription.
 
-- **[リソース グループ]** : **[新規作成]** を選択して、リソース グループに名前を付けます。
+- **Resource group**: Select **Create new** and give the resource group a name.
 
-- **[場所]** :Azure の場所を選択します。
+- **Location**: Select an Azure location.
 
-3. **[上記の使用条件に同意する]** チェック ボックスをオンにして、 **[Select Purchase]\(購入の選択\)** ボタンをクリックします。
+3. Click the **I agree to the terms and conditions stated above** checkbox, and then click the **Select Purchase** button.
 
-## <a name="verifying-your-services-status-in-new-region"></a>新しいリージョンでのサービスの状態の確認
+## Verifying your services' status in new region
 
-移動を確認するために、新しいリソース グループを開くと、サービスが新しいリージョンで一覧表示されます。
+To verify the move, open the new resource group and your services will be listed with the new region.
 
-ソース リージョンからターゲット リージョンにデータを移動するには、この記事のガイドラインで[新しいストレージ アカウントへのデータの移動](https://docs.microsoft.com/azure/storage/common/storage-account-move?tabs=azure-portal#move-data-to-the-new-storage-account)について参照してください。
+To move your data from your source region to the target region, please see this article's guidelines for [moving your data to the new storage account](https://docs.microsoft.com/azure/storage/common/storage-account-move?tabs=azure-portal#move-data-to-the-new-storage-account).
 
-## <a name="clean-up-resources-in-your-original-region"></a>元のリージョンのリソースをクリーンアップする
+## Clean up resources in your original region
 
-変更をコミットしてサービス アカウントの移動を完了するには、元のサービス アカウントを削除します。
+To commit the changes and complete the move of your service account, delete the source service account.
 
-## <a name="next-steps"></a>次のステップ
+## Next steps
 
-[インデックスを作成する](https://docs.microsoft.com/azure/search/search-get-started-portal)
+[Create an index](https://docs.microsoft.com/azure/search/search-get-started-portal)
 
-[スキルセットを作成する](https://docs.microsoft.com/azure/search/cognitive-search-quickstart-blob)
+[Create a skillset](https://docs.microsoft.com/azure/search/cognitive-search-quickstart-blob)
 
-[ナレッジ ストアを作成する](https://docs.microsoft.com/azure/search/knowledge-store-create-portal)
-
+[Create a knowledge store](https://docs.microsoft.com/azure/search/knowledge-store-create-portal) -->

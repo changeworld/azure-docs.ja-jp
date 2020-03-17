@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 03/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16b23ef246561d052935642c323c2d830e21cbe7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f019d818fb5a017d184bda8d773eb0aaf0f3645a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "73570254"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944416"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-druva"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Druva の統合
 
@@ -29,7 +28,7 @@ ms.locfileid: "73570254"
 
 * Druva にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Druva に自動的にサインインするように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -44,7 +43,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Druva では、**SP と IDP** によって開始される SSO がサポートされます
+* Druva では、**IDP** Initiated SSO がサポートされます
+* Druva SSO を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -81,13 +81,15 @@ Druva に対する Azure AD SSO を構成してテストするには、次の構
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
-1. **IDP** 開始モードでアプリケーションを構成する場合は、Azure と既に統合されているため、 **[基本的な SAML 構成]** セクションで実行する必要がある手順はありません。
+   ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
+1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    **[サインオン URL]** テキスト ボックスに URL として「`https://login.druva.com/api/commonlogin/samlconsume`」と入力します。
+    a. **[識別子 (エンティティ ID)]** ボックスに、「`DCP-login`」という文字列値を入力します。
+    
+    b. **[応答 URL (Assertion Consumer Service URL)]** ボックスに、URL として「`https://cloud.druva.com/wrsaml/consume`」を入力します。
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 1. Druva アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
@@ -98,7 +100,7 @@ Druva に対する Azure AD SSO を構成してテストするには、次の構
     | 名前 | ソース属性|
     | ------------------- | -------------------- |
     | emailAddress | user.email |
-    | druva_auth_token | DCP 管理コンソールから生成された SSO トークン (引用符を除く)。  例: X-XXXXX-XXXX-S-A-M-P-L-E+TXOXKXEXNX=. Azure によって、認証トークンの周りに引用符が自動的に追加されます。 |
+    | druva_auth_token | DCP 管理コンソールから生成された SSO トークン (引用符を除く)。  次に例を示します。X-XXXXX-XXXX-S-A-M-P-L-E+TXOXKXEXNX=. Azure によって、認証トークンの周りに引用符が自動的に追加されます。 |
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -144,7 +146,7 @@ Druva に対する Azure AD SSO を構成してテストするには、次の構
 
 1. 左上にある Druva ロゴをクリックし、 **[Druva Cloud Settings]\(Druva Cloud の設定\)** をクリックします。
 
-    ![設定](./media/druva-tutorial/ic795091.png "設定")
+    ![[設定]](./media/druva-tutorial/ic795091.png "設定")
 
 1. **[Single Sign-On]\(シングル サインオン\)** タブの **[Edit]\(編集\)** をクリックします。
 
@@ -161,7 +163,7 @@ Druva に対する Azure AD SSO を構成してテストするには、次の構
        > [!NOTE]
        > 管理者に対してシングル サインオンを有効にするには、 **[Administrators log into Druva Cloud through SSO provider]\(管理者は SSO プロバイダーを介して Druva Cloud にログインする\)** および **[Allow failsafe access to Druva Cloud administrators(recommended)]\(Druva Cloud 管理者へのフェールセーフ アクセスを許可する\)** チェック ボックスをオンにします。 IdP で障害が発生した場合に DCP コンソールにアクセスする必要があるため、Druva では、 **[Failsafe for Administrators]\(管理者のフェールセーフ\)** を有効にすることを推奨しています。 また、管理者は SSO と DCP の両方のパスワードを使用して、DCP コンソールにアクセスすることもできます。
 
-    1. **[Save]** をクリックします。 これにより、SSO を使用して Druva Cloud Platform にアクセスできるようになります。
+    1. **[保存]** をクリックします。 これにより、SSO を使用して Druva Cloud Platform にアクセスできるようになります。
 
 ### <a name="create-druva-test-user"></a>Druva のテスト ユーザーの作成
 
@@ -182,3 +184,5 @@ Druva に対する Azure AD SSO を構成してテストするには、次の構
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD で Druva を試す](https://aad.portal.azure.com/)
+
+- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

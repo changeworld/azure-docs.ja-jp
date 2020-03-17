@@ -2,14 +2,14 @@
 author: vhorne
 ms.service: application-gateway
 ms.topic: include
-ms.date: 6/5/2019
+ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: 6ab6c4c2051ccd2fbb22c383b9ca0af53ceb13d3
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 48f4c7497583e872c89e4d8cd92dab52ab4f9239
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77054916"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304999"
 ---
 | リソース | 既定/上限 | Note |
 | --- | --- | --- |
@@ -18,7 +18,7 @@ ms.locfileid: "77054916"
 | フロントエンド ポート |100<sup>1</sup> | |
 | バックエンド アドレス プール |100<sup>1</sup> | |
 | プールあたりのバックエンド サーバーの数 |1,200 | |
-| HTTP リスナー |100<sup>1</sup> | |
+| HTTP リスナー |200<sup>1</sup> |トラフィックをルーティングするアクティブなリスナーは 100 個に制限されます。 アクティブリスナー数は、リスナーの総数から非アクティブなリスナー数を差し引いた数です。<br>ルーティング規則内の既定の構成がトラフィックをルーティングするように設定されている (たとえば、リスナー、バックエンド プール、HTTP 設定がある) 場合は、それがリスナーとしてカウントされます。|
 | HTTP の負荷分散規則 |100<sup>1</sup> | |
 | バックエンドの HTTP 設定 |100<sup>1</sup> | |
 | ゲートウェイあたりのインスタンスの数 |V1 SKU - 32<br>V2 SKU - 125 | |

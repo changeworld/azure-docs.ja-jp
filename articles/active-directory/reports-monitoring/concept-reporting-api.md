@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c841195cacd8c8d7698f69435572587bf04c3d67
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 56f240a5191dd483f89889f3ffe13b1819ca1e53
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008358"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399323"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory レポート API の概要
 
@@ -40,7 +40,7 @@ Azure AD レポートに Microsoft Graph API を使用すると、一連の REST
 
 1. ロールを割り当てる (セキュリティ閲覧者、セキュリティ管理者、全体管理者)
 2. アプリケーションを登録する
-3. アクセス許可を付与する
+3. [アクセス許可の付与]
 4. 構成設定を収集する
 
 詳しい説明については、[Azure Active Directory レポート API にアクセスするための前提条件](howto-configure-prerequisites-for-reporting-api.md)に関するページをご覧ください。 
@@ -50,13 +50,10 @@ Azure AD レポートに Microsoft Graph API を使用すると、一連の REST
 監査ログ用の Microsoft Graph API エンドポイントは `https://graph.microsoft.com/beta/auditLogs/directoryAudits` であり、サインイン用の Microsoft Graph API エンドポイントは `https://graph.microsoft.com/beta/auditLogs/signIns` です。 詳細については、[監査 API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit)と[サインイン API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn)のページを参照してください。
 
 また、[Identity Protection リスク検出 API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) を使用すると、Microsoft Graph を使ってプログラムからセキュリティの検出にアクセスすることもできます。 詳細については、「[Azure Active Directory Identity Protection と Microsoft Graph の基本](../identity-protection/graph-get-started.md)」を参照してください。 
-
-> [!NOTE]
->  **https:\/\/graph.windows.net\/\<tenant-name\>\/reports\/** エンドポイントは非推奨です。 上記で説明した新しい API エンドポイントを使用して、プログラムからアクティビティおよびセキュリティ レポートにアクセスします。
   
-## <a name="apis-with-graph-explorer"></a>Graph Explorer での API
+## <a name="apis-with-microsoft-graph-explorer"></a>Microsoft Graph Explorer を使用する API
 
-[MSGraph エクスプローラー](https://developer.microsoft.com/graph/graph-explorer)を使用してサインインを確認し、API データを監査できます。 Graph エクスプローラーの UI で、両方のサインイン ボタンを使用してアカウントにサインインし、次に示すようにテナントの **AuditLog.Read.All** および **Directory.ReadAll** のアクセス許可を設定します。   
+[Microsoft Graph エクスプローラー](https://developer.microsoft.com/graph/graph-explorer)を使用してサインインを確認し、API データを監査できます。 Graph エクスプローラーの UI で、両方のサインイン ボタンを使用してアカウントにサインインし、次に示すようにテナントの **AuditLog.Read.All** および **Directory.ReadAll** のアクセス許可を設定します。   
 
 ![Graph エクスプローラー](./media/concept-reporting-api/graph-explorer.png)
 
@@ -68,7 +65,7 @@ Azure AD レポートに Microsoft Graph API を使用すると、一連の REST
 
 詳しくは、「[Azure Active Directory Reporting API と証明書を使用したデータの取得](tutorial-access-api-with-certificates.md)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
  * [Reporting API にアクセスするための前提条件](howto-configure-prerequisites-for-reporting-api.md) 
  * [Azure AD Reporting API と証明書を使ってデータを取得する](tutorial-access-api-with-certificates.md)

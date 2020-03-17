@@ -7,12 +7,12 @@ ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: df2d4eb1b28ac9f13511692ca7588414ea4fdff0
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 9fbc2ffcf1158f436c060817f8f25152f839c3e0
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78272397"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037267"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure エンタープライズ加入契約の請求書
 
@@ -30,8 +30,8 @@ Azure エンタープライズ ポータルでは、エンタープライズ管�
 1. 日付範囲ドロップダウン メニューから **[請求書期間]** を選択します。
 
    請求書通知を受け取ってから、請求書に対する支払いを行うまでの 7 日間に PO 番号を編集することができます。
-1.  **[発注番号]**  フィールドに新しい PO 番号を入力します。
-1.  **[保存]**  を選択して、変更を送信します。
+1. **[発注番号]** フィールドに新しい発注番号を入力します。
+1. **[保存]** を選択して変更を送信します。
 
 ### <a name="to-update-the-azure-marketplace-purchase-order-number"></a>Azure Marketplace の発注番号を更新するには、次のようにします。
 
@@ -41,8 +41,8 @@ Azure エンタープライズ ポータルでは、エンタープライズ管�
 1. 日付範囲ドロップダウン メニューから **[請求書期間]** を選択します。
 
    請求書通知を受け取ってから、請求書に対する支払いを行うまでの 7 日間に PO 番号を編集することができます。
-1.  **[発注番号]**  フィールドに新しい PO 番号を入力します。
-1.  **[保存]**  を選択して、変更を送信します。
+1. **[発注番号]** フィールドに新しい発注番号を入力します。
+1. **[保存]** を選択して変更を送信します。
 
 ## <a name="cadence-of-azure-enterprise-billing"></a>Azure エンタープライズ請求の頻度
 

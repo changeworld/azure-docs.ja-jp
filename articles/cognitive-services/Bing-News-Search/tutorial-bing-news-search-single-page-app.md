@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 12/12/2019
+ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: e128daa82eca8142a636df0958ddca574e398713
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 801bfcf02174c5dd98d4c7231c674299ef411aff
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75383117"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943116"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>チュートリアル:単一ページの Web アプリの作成
 
@@ -39,6 +39,12 @@ Bing News Search API を使うと、Web を検索して、検索クエリに関�
 > * 発生する可能性のあるエラーを処理する
 
 このチュートリアルのページでは、すべてが自己完結しています。外部のフレームワーク、スタイル シート、画像ファイルを使用することはありません。 広くサポートされている JavaScript 言語機能のみを使用し、現在のバージョンの主要な Web ブラウザーすべてで動作します。
+
+
+## <a name="prerequisites"></a>前提条件
+
+チュートリアルを進めるには、Bing Search API のサブスクリプション キーが必要です。 所有していない場合は、[試用キー](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)および[基本の Bing Maps キー](https://www.microsoft.com/maps/create-a-bing-maps-key)を使用できます。
+
 
 ## <a name="app-components"></a>アプリのコンポーネント
 他の単一ページ Web アプリと同様に、このチュートリアルのアプリケーションには 3 つのパーツが含まれています。

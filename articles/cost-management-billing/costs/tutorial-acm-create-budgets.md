@@ -4,17 +4,17 @@ description: このチュートリアルでは、使用する Azure サービス
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 03/11/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: f5943e37267a79ad342fbd9afe0256a4ca7182e6
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: b81236fd63d9289f797056cf7aaceb7d826511af
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251278"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128355"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>チュートリアル:Azure の予算を作成して管理する
 
@@ -54,7 +54,7 @@ Cost Management データに対するアクセス許可の割り当てについ�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-- Azure Portal ( https://portal.azure.com ) にサインインします。
+- Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>Azure portal で予算を作成する
 
@@ -164,7 +164,7 @@ New-AzureRmConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -Star
 ```
 ## <a name="create-a-budget-with-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して予算を作成する
 
-Azure Resource Manager テンプレートを使用して予算を作成できます。 テンプレートを使用すると、リソース グループごとに予算を作成できます。 このテンプレートでは、マイクロソフト エンタープライズ契約のお客様のみがサポートされます。
+Azure Resource Manager テンプレートを使用して予算を作成できます。 テンプレートを使用すると、リソース グループごとに予算を作成できます。 
 
 次のイメージを選択して、Azure portal にサインインし、テンプレートを開きます。
 

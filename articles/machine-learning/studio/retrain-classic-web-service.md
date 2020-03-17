@@ -10,12 +10,12 @@ author: peterclu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: eac7674ae4a88621a803c70bd55a88e65b2cb7e9
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: caf2437b4a4853bc29f094d082a4ea15d2f7a3c9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838687"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388471"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>従来の Studio (クラシック) Web サービスの再トレーニングとデプロイ
 
@@ -53,19 +53,6 @@ ms.locfileid: "73838687"
 
 ### <a name="retrieve-patch-url"></a>PATCH URL を取得する
 
-### <a name="option-1-programmatically"></a>オプション 1:プログラムを使用する
-
-適切な PATCH URL をプログラムで取得するには、次の手順に従います。
-
-1. [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) サンプル コードを実行します。
-1. AddEndpoint の出力から、 *HelpLocation* 値を見つけ、URL をコピーします。
-
-   ![addEndpoint サンプルの出力での HelpLocation](./media/retrain-classic/addEndpoint-output.png)
-1. ブラウザーにこの URL を貼り付けて、Web サービスのヘルプ リンクを提供するページに移動します。
-1. **[Update Resource (リソースの更新)]** リンクをクリックしてパッチ適用のヘルプ ページを開きます。
-
-### <a name="option-2-use-the-azure-machine-learning-web-services-portal"></a>オプション 2:Azure Machine Learning Web サービス ポータルを使用する
-
 適切な PATCH URL を Web ポータルを使用して取得するには、次の手順に従います。
 
 1. [Azure Machine Learning Web サービス ポータル](https://services.azureml.net/)にサインインします。
@@ -101,8 +88,8 @@ PATCH ヘルプ ページには、使用する必要のある PATCH URL が含�
                     Location = new AzureBlobDataReference()
                     {
                         BaseLocation = "https://esintussouthsus.blob.core.windows.net/",
-                        RelativeLocation = "your endpoint relative location", //from the output, for example: “experimentoutput/8946abfd-79d6-4438-89a9-3e5d109183/8946abfd-79d6-4438-89a9-3e5d109183.ilearner”
-                        SasBlobToken = "your endpoint SAS blob token" //from the output, for example: “?sv=2013-08-15&sr=c&sig=37lTTfngRwxCcf94%3D&st=2015-01-30T22%3A53%3A06Z&se=2015-01-31T22%3A58%3A06Z&sp=rl”
+                        RelativeLocation = "your endpoint relative location", //from the output, for example: "experimentoutput/8946abfd-79d6-4438-89a9-3e5d109183/8946abfd-79d6-4438-89a9-3e5d109183.ilearner"
+                        SasBlobToken = "your endpoint SAS blob token" //from the output, for example: "?sv=2013-08-15&sr=c&sig=37lTTfngRwxCcf94%3D&st=2015-01-30T22%3A53%3A06Z&se=2015-01-31T22%3A58%3A06Z&sp=rl"
                     }
                 }
             }
@@ -131,7 +118,7 @@ PATCH ヘルプ ページには、使用する必要のある PATCH URL が含�
 
 *Resources* の *Name* パラメーターは、予測実験で保存したトレーニング済みモデルのリソース名と一致する必要があります。 リソース名を取得するには:
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左側のメニューで **[Machine Learning]** をクリックします。
 1. [名前] でワークスペースをクリックし、 **[Web サービス]** をクリックします。
 1. [名前] で **[Census Model [predictive exp.]]** をクリックします。
@@ -143,7 +130,7 @@ PATCH ヘルプ ページには、使用する必要のある PATCH URL が含�
 
 コードが正常に実行すると、新しいエンドポイントは、約 30 秒後に再トレーニング済みモデルを使用し始めます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Web サービスの管理または複数の実験の実行の追跡を行う方法については、次の記事を参照してください。
 

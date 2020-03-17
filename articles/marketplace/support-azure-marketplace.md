@@ -7,14 +7,14 @@ manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 7/25/2019
+ms.date: 3/11/2020
 ms.author: evansma
-ms.openlocfilehash: 40d466bd4e5959453f8c3042c4b14f6c3ef605bf
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 80911ce7858308302b1736328b6c7954c0e05a86
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933456"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79095528"
 ---
 # <a name="support-for-the-marketplace"></a>サポート (Marketplace)  
 Marketplace のサポート オプションの一覧です。  
@@ -23,13 +23,13 @@ Marketplace のサポート オプションの一覧です。
 
 ## <a name="onboarding"></a>オンボード
 
-オンボーディングおよび開始方法に関する問題については、Microsoft の[マーケットプレース発行元サポート](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820)でチケットを開いてください。Microsoft パートナー ネットワークについて質問がある場合は、Microsoft [パートナー サポート](https://partner.microsoft.com/support)でチケットを開いてください。
+オンボードおよび作業の開始に関する問題を解決するには、Microsoft の [Marketplace 発行者のサポート](https://aka.ms/marketplacepublishersupport)のチケットを開きます。
 
 ## <a name="partner-center-or-cloud-partner-portal"></a>パートナー センターまたは Cloud パートナー ポータル  
 
 | サポート窓口 | 説明 | 可用性 |  
 |:--- |:--- |:--- |  
-| 詳細については、[Marketplace のサポート](https://go.microsoft.com/fwlink/?linkid=844975) にある [インシデントの作成] ページを参照してください</li> </ul> | パートナー センターまたは Cloud パートナー ポータルのサポート | サポートは午前 6 時から午後 6 時 (太平洋標準時) の間に提供されます。 |  
+| 詳細については、[Marketplace のサポート](https://aka.ms/marketplacepublishersupport) にある [インシデントの作成] ページを参照してください</li> </ul> | パートナー センターまたは Cloud パートナー ポータルのサポート | 24x5 がサポートされています。 |  
 
 ## <a name="technical"></a>技術  
 

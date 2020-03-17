@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/24/2020
+ms.date: 03/05/2020
 ms.author: allensu
-ms.openlocfilehash: 0e19271b5c69610dd9f44c3121e195b80732279c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 205826a6ad952383582f5a8086cbd8b85dbc3794
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669541"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359254"
 ---
 # <a name="what-is-virtual-network-nat-public-preview"></a>Virtual Network NAT (パブリック プレビュー) とは
 
@@ -192,13 +192,13 @@ NAT のサポートは、通常のサポート チャンネルを通じて提供
 
 ## <a name="limitations"></a>制限事項
 
-- NAT は、Standard SKU のパブリック IP、パブリック IP プレフィックス、ロード バランサーの各リソースと共に利用することができます。   Basic リソース (Basic Load Balancer など) やそれらから派生した製品を NAT と共存させることはできません。  Basic リソースは、NAT が構成されていないサブネットに配置する必要があります。
-- サポートされるアドレス ファミリーは IPv4 です。  IPv6 アドレス ファミリーを NAT で扱うことはできません。
-- NAT を使用している場合、NSG フロー ログはサポートされません。
-- NAT を複数の仮想ネットワークにまたがって使用することはできません。
+* NAT は、Standard SKU のパブリック IP、パブリック IP プレフィックス、ロード バランサーの各リソースと共に利用することができます。   Basic リソース (Basic Load Balancer など) やそれらから派生した製品を NAT と共存させることはできません。  Basic リソースは、NAT が構成されていないサブネットに配置する必要があります。
+* サポートされるアドレス ファミリーは IPv4 です。  IPv6 アドレス ファミリーを NAT で扱うことはできません。  IPv6 プレフィックスを持つサブネットに NAT をデプロイすることはできません。
+* NAT を使用している場合、NSG フロー ログはサポートされません。
+* NAT を複数の仮想ネットワークにまたがって使用することはできません。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [NAT ゲートウェイ リソース](./nat-gateway-resource.md)について学習する。
-- [UserVoice で新機能を提案する](https://aka.ms/natuservoice)。
-- [パブリック プレビューに関するフィードバックを送る](https://aka.ms/natfeedback)。
+* [NAT ゲートウェイ リソース](./nat-gateway-resource.md)について学習する。
+* [UserVoice で Virtual Network NAT の新機能の構築を提案する](https://aka.ms/natuservoice)。
+* [パブリック プレビューに関するフィードバックを送る](https://aka.ms/natfeedback)。

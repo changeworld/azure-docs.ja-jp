@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: 593f80583067d28292701353c8a6a62d81282614
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.date: 03/10/2020
+ms.openlocfilehash: 98d71434ac9e3f712be0cbd8c505b7d5a537e7cc
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650828"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79095552"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで使用するストレージ オプションを比較する
 
@@ -28,7 +28,7 @@ HDInsight クラスターを作成する際、次のいくつかの異なる Azu
 
 | ストレージ サービス | アカウントの種類 | 名前空間の種類 | サポートされているサービス | サポートされているパフォーマンス レベル | サポートされているアクセス層 | HDInsight のバージョン | クラスターの種類 |
 |---|---|---|---|---|---|---|---|
-|Azure Data Lake Storage Gen2| 汎用 v2 | 階層構造 (ファイルシステム) | BLOB | Standard | ホット、クール、アーカイブ | 3.6 以降 | Spark 2.1 を除くすべて |
+|Azure Data Lake Storage Gen2| 汎用 v2 | 階層構造 (ファイルシステム) | BLOB | Standard | ホット、クール、アーカイブ | 3.6 以降 | Spark 2.1 および 2.2 を除くすべて|
 |Azure Storage| 汎用 v2 | Object | BLOB | Standard | ホット、クール、アーカイブ | 3.6 以降 | All |
 |Azure Storage| 汎用 v1 | Object | BLOB | Standard | 該当なし | All | All |
 |Azure Storage| Blob Storage** | Object | ブロック BLOB | Standard | ホット、クール、アーカイブ | All | All |
@@ -46,7 +46,6 @@ Azure Storage アクセス層の詳細については、「[Azure Blob Storage:P
 |---|---|---|---|
 | 3.6 と 4.0 | General Purpose V1、General Purpose V2 | General Purpose V1、General Purpose V2、 BlobStorage (ブロック Blob) | はい |
 | 3.6 と 4.0 | General Purpose V1、General Purpose V2 | Data Lake Storage Gen2 | いいえ |
-| 3.6 と 4.0 | General Purpose V1、General Purpose V2 | Data Lake Storage Gen1 | はい |
 | 3.6 と 4.0 | Data Lake Storage Gen2* | Data Lake Storage Gen2 | はい |
 | 3.6 と 4.0 | Data Lake Storage Gen2* | General Purpose V1、General Purpose V2、 BlobStorage (ブロック Blob) | はい |
 | 3.6 と 4.0 | Data Lake Storage Gen2 | Data Lake Storage Gen1 | いいえ |
@@ -54,11 +53,12 @@ Azure Storage アクセス層の詳細については、「[Azure Blob Storage:P
 | 3.6 | Data Lake Storage Gen1 | General Purpose V1、General Purpose V2、 BlobStorage (ブロック Blob) | はい |
 | 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | いいえ |
 | 4.0 | Data Lake Storage Gen1 | Any | いいえ |
+| 4.0 | General Purpose V1、General Purpose V2 | Data Lake Storage Gen1 | いいえ |
 
 *=すべてがクラスター アクセスに同じマネージド ID を使用するように構成されている限り、これは 1 つ以上の Data Lake Storage Gen2 アカウントの可能性があります。
 
 > [!Note] 
-> Data Lake Storage Gen2 プライマリ ストレージは、Spark 2.1 クラスターではサポートされていません。 
+> Data Lake Storage Gen2 プライマリ ストレージは、Spark 2.1 または 2.2 クラスターではサポートされていません。 
 
 ## <a name="use-azure-data-lake-storage-gen2-with-apache-hadoop-in-azure-hdinsight"></a>Azure HDInsight で Azure Data Lake Storage Gen2 と Apache Hadoop を使用する
 

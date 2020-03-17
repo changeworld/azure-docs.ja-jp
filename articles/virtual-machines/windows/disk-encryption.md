@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: bc15ee42fd7ef8e41b332104b28af808c336789f
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: f3ce439f3e8c2290539e088402c2636974d37821
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77430410"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898849"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure Managed Disks のサーバー側暗号化
 
@@ -71,7 +71,8 @@ Azure マネージド ディスクの基になっている暗号化モジュー�
 - サーバー側の暗号化とカスタマー マネージド キーを使用して暗号化されたカスタム イメージは、共有イメージ ギャラリーでは使用できません。
 - お使いのカスタマー マネージド キー (Azure Key Vault、ディスク暗号化セット、VM、ディスク、およびスナップショット) に関連するすべてのリソースは、同じサブスクリプションとリージョンに存在する必要があります。
 - カスタマー マネージド キーで暗号化されたディスク、スナップショット、およびイメージは、別のサブスクリプションに移動できません。
-- Azure portal を使用してディスク暗号化セットを作成する場合、現時点ではスナップショットを使用できません。
+- Azure portal を使用してご自分のディスク暗号化セットを作成する場合、現時点ではスナップショットを使用できません。
+- お客様が管理するキーを使用して暗号化された管理ディスクを Azure Disk Encryption で暗号化することもできません。
 
 ### <a name="powershell"></a>PowerShell
 

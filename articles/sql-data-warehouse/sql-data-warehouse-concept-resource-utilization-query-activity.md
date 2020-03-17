@@ -7,19 +7,19 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 02/04/2020
+ms.date: 03/11/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 47f142a19ac470fb29e9542941cd94a6b29ce240
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 82bf6f9a78a46659cc2e0955895c6e1a6e6eb3aa
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78195925"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096631"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Azure Synapse Analytics でのリソース使用状況とクエリ アクティビティの監視
-Azure portal 内にある Azure Synapse Analytics のリッチな監視エクスペリエンスでは、データ ウェアハウスのワークロードに関する分析情報が表示されます。 データ ウェアハウスを監視するときの推奨されるツールである Azure portal では、構成可能なリテンション期間、アラート、推奨事項、およびメトリックとログのカスタマイズ可能なグラフとダッシュボードが提供されます。 ポータルでは、Operations Management Suite (OMS) や Azure Monitor (ログ) などの他の Azure 監視サービスと統合して、お使いのデータ ウェアハウスだけでなく、統合された監視エクスペリエンスに対する Azure 分析プラットフォーム全体も含む、総合的な監視エクスペリエンスを提供することもできます。 このドキュメントでは、SQL Analytics で分析プラットフォームの最適化と管理に使用できる監視機能について説明します。 
+Azure portal 内にある Azure Synapse Analytics のリッチな監視エクスペリエンスでは、データ ウェアハウスのワークロードに関する分析情報が表示されます。 データ ウェアハウスを監視するときの推奨されるツールである Azure portal では、構成可能なリテンション期間、アラート、推奨事項、およびメトリックとログのカスタマイズ可能なグラフとダッシュボードが提供されます。 ポータルでは、ログ分析を使用して Azure Monitor (ログ) などの他の Azure 監視サービスと統合して、お使いのデータ ウェアハウスだけでなく、統合された監視エクスペリエンスに対する Azure 分析プラットフォーム全体も含む、総合的な監視エクスペリエンスを提供することもできます。 このドキュメントでは、SQL Analytics で分析プラットフォームの最適化と管理に使用できる監視機能について説明します。 
 
 ## <a name="resource-utilization"></a>リソース使用率 
 Azure portal では、SQL Analytics に対して以下のメトリックを使用できます。 これらのメトリックは、[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics) を通じて表示できます。
@@ -41,9 +41,13 @@ Azure portal では、SQL Analytics に対して以下のメトリックを使�
 | キャッシュ ヒットの割合    | (キャッシュ ヒット数/キャッシュ ミス数) * 100: キャッシュ ヒット数はローカル SSD キャッシュでのすべての列ストア セグメント ヒット数の合計、キャッシュ ミス数はローカル SSD キャッシュでの列ストア セグメント ミス数を全ノードについて合計した値 | 平均、最小、最大    |
 | 使用されたキャッシュの割合   | (使用されたキャッシュ/キャッシュ容量) * 100: 使用されたキャッシュは全ノードのローカル SSD キャッシュでの全バイト数の合計、キャッシュ容量は全ノードのローカル SSD キャッシュのストレージ容量の合計 | 平均、最小、最大    |
 | ローカル tempdb の割合 | すべてのコンピューティング ノードでの、ローカル tempdb の使用率 - 値は 5 分ごとに出力されます | 平均、最小、最大    |
+| データ ストレージ サイズ | データベースに読み込まれるデータの合計サイズです。 これには、CCI テーブルおよび非 CCI テーブルに存在するデータが含まれます。非 CCI テーブルのサイズは、データベース ファイルの合計サイズによって測定されます。 | SUM |
+| ディザスター リカバリー サイズ | 24 時間ごとに実行される geo バックアップの合計サイズ | SUM |
+| スナップショット ストレージ サイズ | データベースの復元ポイントを提供するために取得されるスナップショットの合計サイズです。 これには、自動およびユーザー定義のスナップショットが含まれます。 | SUM |
 
 メトリックを表示してアラートを設定するときに考慮が必要な事項は次のとおりです。
 
+- 使用される DWU は、SQL プール全体の**使用に関する高レベル表現**のみを表しており、使用率を包括的に示すものではありません。 スケールアップまたはスケールダウンするかどうかを判断するには、コンカレンシー、メモリ、tempdb、アダプティブ キャッシュ容量など、DWU の影響を受ける可能性があるすべての要素を考慮してください。 [さまざまな DWU 設定でワークロードを実行して](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-compute-overview#finding-the-right-size-of-data-warehouse-units)、ビジネス目標を達成するために最適な動作を判断することをお勧めします。
 - 接続の失敗と成功がレポートされるのは、特定のデータ ウェアハウスについてです。論理サーバーについてはレポートされません
 - データ ウェアハウスがアイドル状態であっても、メモリの割合には使用率が反映されます。アクティブなワークロードのメモリ消費は反映されません。 追加のキャッシュ容量のスケーリングによってワークロードのパフォーマンスが要件を満たすように向上するかどうかに関する総合的な意思決定を行うために、このメトリックとその他 (tempdb、gen2 キャッシュ) を使用して追跡します。
 

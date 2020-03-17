@@ -8,12 +8,12 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 75bd27f0945c66b9757055c0777b43a050ba67d7
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 2f920e29fafdc55478e0e2c16d683bd1c3bc81d8
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920996"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942929"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 の概要
 
@@ -25,15 +25,15 @@ Data Lake Storage Gen2 によって、Azure Storage は、Azure 上にエンタ�
 
 Data Lake Storage Gen2 の基礎部分は、BLOB ストレージに[階層型名前空間](data-lake-storage-namespace.md)を追加したものです。 階層型名前空間には、効率的なデータ アクセスのためにオブジェクトやファイルがディレクトリ階層に編成されています。 共通のオブジェクト ストアの名前規則では、名前にスラッシュを使用して階層型ディレクトリ構造を模倣しています。 この構造は、Data Lake Storage Gen2 を使って、実際のものになります。 ディレクトリの名前変更や削除などの操作は、ディレクトリ名のプレフィックスを共有するすべてのオブジェクトを列挙して処理するのではなく、ディレクトリ上の単一のアトミック メタデータの操作になります。
 
-以前は、パフォーマンス、管理、およびセキュリティの領域では、クラウドベース分析は妥協する必要がありました。 Data Lake Storage Gen2 では、次の方法で各側面に対応しています。
+Data Lake Storage Gen2 は Blob Storage をベースに構築され、パフォーマンス、管理、セキュリティが次のように強化されています。
 
--   **パフォーマンス**。分析の前提条件としてデータをコピーまたは変換する必要がないため、最適化されます。 階層型名前空間によってディレクトリ管理操作のパフォーマンスは大幅に向上し、その結果、全体的なジョブ パフォーマンスも向上します。
+-   **パフォーマンス**。分析の前提条件としてデータをコピーまたは変換する必要がないため、最適化されます。 Blob Storage のフラット型名前空間と比べ、階層型名前空間ではディレクトリ管理操作のパフォーマンスが大幅に向上し、その結果、全体的なジョブ パフォーマンスも向上します。
 
 -   **管理**。ディレクトリおよびサブディレクトリを利用してファイルを編成および操作できるため、簡単になりました。
 
 -   **セキュリティ**。ディレクトリや個別のファイルに対して POSIX アクセス許可を定義できるので、セキュリティを確保できます。
 
--   **コスト効率**。Data Lake Storage Gen2 が低コストの [Azure Blob ストレージ](storage-blobs-introduction.md)の上位にビルドされていることで、実現されました。 さらに、追加の機能により、Azure 上でビッグ データ分析を実行するための総保有コストが低下しました。
+Data Lake Storage Gen2 は、低コストの [Azure Blob Storage](storage-blobs-introduction.md) をベースに構築されているため、きわめて高いコスト効果が得られます。 さらに、追加の機能により、Azure 上でビッグ データ分析を実行するための総保有コストが低下しました。
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Data Lake Storage Gen2 の主な機能
 

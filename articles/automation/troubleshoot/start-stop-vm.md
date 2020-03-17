@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 44de5878dcc39e09adf24f69b883a29370f00b48
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 97ea98fc38fc8d06dc1bc65ee057241da6f15488
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505728"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851388"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Start/Stop VMs during off-hours ソリューションのトラブルシューティング
 
@@ -62,7 +62,7 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
 4. Log Analytics ワークスペースがロックされている。
 5. 古いバージョンの AzureRM モジュールまたは起動/停止ソリューションを使用しています。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 問題の考えられる解決策または参照する場所については、次の一覧を確認してください。
 
@@ -92,7 +92,7 @@ VM の起動/停止ソリューションを構成したが、構成されてい�
 3. Runbook でエラーが発生した
 4. VM が除外されている
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 問題の考えられる解決策または参照する場所については、次の一覧を確認してください。
 
@@ -133,7 +133,7 @@ VM の起動/停止ソリューションを構成したが、構成されてい�
 3. VM に対する十分なアクセス許可が実行アカウントにない
 4. VM の起動または停止を妨げる問題が発生した
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 問題の考えられる解決策または参照する場所については、次の一覧を確認してください。
 
@@ -165,7 +165,7 @@ VM の起動/停止ソリューションを構成したが、構成されてい�
 
 このエラーには多くの原因が考えられます。 Azure portal で Automation アカウントに移動し、 **[プロセス オートメーション]** の下で **[ジョブ]** を選択します。 **[ジョブ]** ページで、Runbook のジョブを検索してジョブのエラーを表示します。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 [Start/Stop VMs during off-hours ソリューション](../automation-solution-vm-management.md)を使用して Azure Automation で VM を起動および停止することをお勧めします。 このソリューションは Microsoft が作成したものです。 カスタム Runbook は Microsoft ではサポートされていません。 [Runbook のトラブルシューティング](runbooks.md)の記事を参照すると、カスタム Runbook に関する解決策が見つかる場合があります。 この記事では、すべての種類の Runbook に関する一般的なガイダンスとトラブルシューティングを示します。 [ジョブ ストリーム](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)を確認してエラーを探します。 ポータルで Automation アカウントに移動し、 **[プロセス オートメーション]** の下で **[ジョブ]** を選択します。
 
@@ -179,7 +179,7 @@ VM の起動/停止ソリューションを構成したが、構成されてい�
 
 これは、VM 上でタグ付けが正しく行われていないために発生します。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 次の手順を実行して、ソリューションが正しく構成されていることを確認してください。
 
@@ -199,11 +199,11 @@ Start/Stop VMs during off-hours ソリューションの Runbook に対する `4
 
 この問題は、実行アカウントが正しく構成されていない、または期限切れのために発生する可能性があります。 また、VM リソースに対する適切なアクセス許可が Automation アカウントの実行アカウントにないために発生する可能性もあります。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 実行アカウントが適切に構成されていることを確認するには、Azure portal で Automation アカウントに移動し、 **[アカウント設定]** の下で **[実行アカウント]** を選択します。 ここでは、実行アカウントが適切に構成されていない場合や、実行アカウントの期限が切れている場合に、その状態が表示されます。
 
-実行アカウントの[構成が誤っている](../manage-runas-account.md#misconfiguration)場合は、実行アカウントを削除して再作成する必要があります。
+実行アカウントの構成が誤っている場合は、お使いの実行アカウントを削除して再作成する必要があります。 「[Azure Automation の実行アカウントを管理する](../manage-runas-account.md)」を参照してください。
 
 実行アカウントの証明書の期限が切れている場合は、「[自己署名証明書の書き換え](../manage-runas-account.md#cert-renewal)」の手順に従って証明書を書き換えてください。
 
@@ -222,7 +222,7 @@ Start/Stop VMs during off-hours ソリューションの使用時に、このペ
 > [!NOTE]
 > Start/Stop VMs during off-hours ソリューションは、このソリューションのデプロイ時にご使用の Automation アカウントにインポートされた Azure モジュールを使用してテストされています。 このソリューションは現在、Azure モジュールの新しいバージョンでは動作しません。 これは、Start/Stop VMs during off-hours ソリューションの実行に使用する Automation アカウントのみに影響します。 「[Azure Automation の Azure PowerShell モジュールを更新する方法](../automation-update-azure-modules.md)」で説明しているように、ご使用の他の Automation アカウントでは引き続き Azure モジュールの新しいバージョンを使用できます。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 何度も発生するエラーを解決するには、ソリューションを削除および更新することをお勧めします。 ソリューションを更新する方法については、[Start/Stop VMs during off-hours ソリューションの更新](../automation-solution-vm-management.md#update-the-solution)に関するページを参照してください。 さらに、[ジョブ ストリーム](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)を確認してエラーを探すことができます。 ポータルで Automation アカウントに移動し、 **[プロセス オートメーション]** の下で **[ジョブ]** を選択します。
 

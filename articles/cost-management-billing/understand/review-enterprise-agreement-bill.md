@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: tutorial
-ms.date: 03/03/2020
+ms.date: 03/06/2020
 ms.author: banders
-ms.openlocfilehash: ca1064ce3414f4a796110c022125b68c0674e0d6
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 5de6baf81f67ef6bee43b54e7aa0d62088c15be9
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78270180"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898650"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Azure Enterprise Agreement 請求書を理解する
 
@@ -118,7 +118,7 @@ Enterprise Portal の **[レポート]**  >  **[使用状況の要約]** に表�
 
 このセクションは、オーストラリア、日本、またはシンガポールのお客様のみに適用されます。
 
-**レポート** > **使用状況の要約**内の Enterprise portal から取得できるAzure Marketplace 合計を、お客様が受け取った marketplace 請求書と比較してください。 Marketplace 請求書は、Azure Marketplace での購入および使用に限定されます。 **使用状況の要約**に記載されている金額は税を含みません。
+**レポート** > **使用状況の要約**内の Enterprise portal から取得できるAzure Marketplace 合計を、お客様が受け取った marketplace 請求書と比較してください。 Marketplace 請求書は、Azure Marketplace での購入および使用に限定されます。 **[使用状況の概要]** に記載される金額には、あらかじめ発行元によって算出された税が含まれます。
 
 [Enterprise portal](https://ea.azure.com) にサインインし、 **[レポート]** を選択します。 タブの右上隅で、**M** から **C** へビューを変更し、請求書の期間と一致させます。  
 

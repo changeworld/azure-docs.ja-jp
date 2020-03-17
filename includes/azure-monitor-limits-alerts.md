@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 44dbe6d036000aaff403e212052f8fdb21647a80
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b31698f166866f8ee7f89f13120f31ecbe3d4913
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71210263"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356390"
 ---
 | リソース | 既定の制限 | 上限 |
 | --- | --- | --- |
 | メトリック アラート (クラシック) |サブスクリプションごとに 100 個のアクティブなアラート ルール。 | サポートに問い合わせます。 |
-| メトリック アラート |Azure パブリック クラウド、Azure China 21Vianet クラウド、および Azure Government クラウド内でサブスクリプションごとに 1000 個のアクティブなアラート ルール。 | サポートに問い合わせます。 |
+| メトリック アラート |Azure パブリック、Azure China 21Vianet、および Azure Government クラウド内でサブスクリプションごとに 2,000 個のアクティブなアラート ルール。 | サポートに問い合わせます。 |
 | アクティビティ ログ アラート | サブスクリプションごとに 100 個のアクティブなアラート ルール。 | 既定値と同じ。 |
 | ログ アラート | 512 | サポートに問い合わせます。 |
 | アクション グループ |サブスクリプションごとに 2,000 のアクション グループ。 | サポートに問い合わせます。 |

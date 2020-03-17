@@ -7,15 +7,15 @@ titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
-ms.date: 09/17/2019
-ms.openlocfilehash: 427ba0e46f8f4090ce8c2080b1d6780b165e864c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 03/09/2020
+ms.openlocfilehash: ab9c5c5c1134d2e09a790a788a3b7e55f807dd9b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121082"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945371"
 ---
-# <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Azure SQL Database と Data Warehouse の Private Link (プレビュー)
+# <a name="private-link-for-azure-sql-database-and-data-warehouse"></a>Azure SQL Database と Data Warehouse の Private Link
 
 Private Link を使用すると、**プライベート エンドポイント**を経由して Azure 内のさまざまな PaaS サービスに接続できます。 Private Link 機能をサポートしている PaaS サービスの一覧については、「[Private Link のドキュメント](../private-link/index.yml)」ページを参照してください。 プライベート エンドポイントは、特定の [VNet](../virtual-network/virtual-networks-overview.md) およびサブネット内のプライベート IP アドレスです。 
 
@@ -145,7 +145,7 @@ Nmap done: 256 IP addresses (1 host up) scanned in 207.00 seconds
 
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) を使用して接続を確認する
 > [!NOTE]
->クライアントの接続文字列で、**サーバーの完全修飾ドメイン名 (FQDN)** を使用します。 IP アドレスに対して直接行われたログイン試行は、設計上すべて失敗します。
+> クライアントの接続文字列で、サーバーの**完全修飾ドメイン名 (FQDN)** を使用します。 IP アドレスに対して直接行われたログイン試行は、すべて失敗します。 これは意図的な動作です。トラフィックは、プライベート エンドポイントによってリージョン内の SQL Gateway にルーティングされ、ログインに成功するためには FQDN を指定する必要があるためです。
 
 ここに示す手順に従い、[SSMS を使用して SQL データベースに接続します](sql-database-connect-query-ssms.md)。 SSMS を使用して SQL Database に接続したら、次のクエリを実行して、Azure VM のプライベート IP アドレスから接続していることを確認します。
 
@@ -153,8 +153,9 @@ Nmap done: 256 IP addresses (1 host up) scanned in 207.00 seconds
 select client_net_address from sys.dm_exec_connections 
 where session_id=@@SPID
 ````
-> [!NOTE]
-> プレビューでは、プライベート エンドポイントへの接続では、**プロキシ**のみが[接続ポリシー](sql-database-connectivity-architecture.md#connection-policy)としてサポートされます。
+
+## <a name="limitations"></a>制限事項 
+プライベート エンドポイントへの接続では、**プロキシ**のみが[接続ポリシー](sql-database-connectivity-architecture.md#connection-policy)としてサポートされます。
 
 
 ## <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>ピアリングされた Virtual Network (VNet) での Azure VM からの接続 

@@ -1,20 +1,15 @@
 ---
 title: クイックスタート - コンテナー インスタンスに Docker コンテナーをデプロイする - ポータル
 description: このクイック スタートでは、Azure portal を使用して、分離された Azure コンテナー インスタンスで実行されているコンテナー化された Web アプリをすばやくデプロイします
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: quickstart
-ms.date: 04/17/2019
-ms.author: danlep
+ms.date: 03/09/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: e0c5ba57c7664a64c1b11bed215f419f31630d39
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 7a872e955db46b76d3b12f8ffc38d4a8e497ea63
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533523"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087963"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>クイック スタート:Azure portal を使用してコンテナー インスタンスを Azure 内にデプロイする
 
@@ -40,15 +35,16 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * リソース グループ: **新規作成** > `myresourcegroup`
 * コンテナー 名: `mycontainer`
-* [Container image] \(コンテナー イメージ): `mcr.microsoft.com/azuredocs/aci-helloworld`
+* イメージのソース: **クイックスタートのイメージ**
+* コンテナー イメージ: `mcr.microsoft.com/azuredocs/aci-helloworld` (Linux)
 
 ![Azure ポータルで新しいコンテナー インスタンスの基本設定を構成][aci-portal-03]
 
-このクイック スタートでは、 **[イメージの種類]** の設定に既定値の **[パブリック]** を使用して、パブリックの Microsoft `aci-helloworld` イメージをデプロイします。 この Linux イメージには、静的な HTML ページを返す、Node.js で作成された小さな Web アプリがパッケージ化されています。
+このクイックスタートでは、既定の設定を使用して、パブリックの Microsoft `aci-helloworld` イメージをデプロイします。 このサンプル Linux イメージには、静的な HTML ページを返す、Node.js で作成された小さな Web アプリがパッケージ化されています。 また、Azure Container Registry、Docker Hub、または他のレジストリに格納されている独自のコンテナー イメージを使用することもできます。
 
 **[Networking]\(ネットワーク\)** ページで、コンテナーの **DNS 名ラベル**を指定します。 この名前は、コンテナー インスタンスを作成する Azure リージョン内で一意である必要があります。 コンテナーには、`<dns-name-label>.<region>.azurecontainer.io` でパブリックに到達できます。 エラー メッセージ "DNS 名ラベルは利用できません" が表示された場合は、別の DNS 名ラベルを試してください。
 
-![Azure ポータルでの新しいコンテナー インスタンスの構成][aci-portal-04]
+![Azure portal で新しいコンテナー インスタンスのネットワーク設定を構成する][aci-portal-04]
 
 他の設定は既定値のままにして、 **[確認と作成]** を選択します。
 
@@ -76,7 +72,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![Azure portal のコンテナー ログ][aci-portal-11]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 コンテナーを使い終えたら、*mycontainer* コンテナー インスタンスの **[概要]** を選択し、 **[削除]** を選択します。
 
@@ -86,7 +82,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![Azure Portal でのコンテナー インスタンスの削除の確認][aci-portal-10]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、パブリック Microsoft イメージから Azure コンテナー インスタンスを作成しました。 コンテナー イメージをビルドし、プライベート Azure コンテナー レジストリからデプロイする場合は、Azure Container Instances のチュートリアルに進んでください。
 

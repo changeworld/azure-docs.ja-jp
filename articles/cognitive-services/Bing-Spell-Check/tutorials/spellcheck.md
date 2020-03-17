@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: tutorial
-ms.date: 12/20/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 038716f43c18432b1b8e7c86c3ffbcab46f1db8f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fa10ab5a4b1c69b359936edf91da767da08d2f98
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75382798"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943106"
 ---
 # <a name="tutorial-build-a-web-page-spell-check-client"></a>チュートリアル:Web ページのスペル チェック クライアントを構築する
 
@@ -29,7 +29,7 @@ ms.locfileid: "75382798"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを進めるには、 Bing Spell Check API のサブスクリプション キーが必要です。 ない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)にサインアップしてください。
+このチュートリアルを進めるには、 Bing Spell Check API のサブスクリプション キーが必要です。 所有していない場合は、Azure portal で [Bing Spell Check リソースを作成](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7)してください。 [試用キー](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)を使用することもできます。
 
 ## <a name="create-a-new-web-page"></a>新しい Web ページを作成する
 

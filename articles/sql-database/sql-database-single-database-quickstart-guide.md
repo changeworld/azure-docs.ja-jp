@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 07/29/2019
-ms.openlocfilehash: 4332d57c8d5587a34ba3a593deb9bd635132b03d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6070b53e5f906bc378402d98275b8f798f57b505
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820964"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674429"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Azure SQL Database の単一データベースの概要
 
@@ -34,10 +34,8 @@ ms.locfileid: "73820964"
 
 データベースの作成、構成、およびスケーリングには、PowerShell または Azure CLI を使用できます。
 
-- [PowerShell を使用して単一データベースを作成および構成する](scripts/sql-database-create-and-configure-database-powershell.md)
-- [Azure CLI を使用して単一データベースを作成および構成する](scripts/sql-database-create-and-configure-database-cli.md)
-- [PowerShell を使用して単一データベースを更新し、リソースをスケーリングする](scripts/sql-database-monitor-and-scale-database-powershell.md)
-- [Azure CLI を使用して単一データベースを更新し、リソースをスケーリングする](scripts/sql-database-monitor-and-scale-database-cli.md)
+- [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) または [Azure CLI](scripts/sql-database-create-and-configure-database-cli.md) を使用して単一データベースを作成および構成する
+- [PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md) または [Azure CLI](scripts/sql-database-monitor-and-scale-database-cli.md) を使用して単一データベースを更新し、リソースをスケーリングする
 
 ## <a name="migrating-to-a-single-database-with-minimal-downtime"></a>最小限のダウンタイムで単一データベースに移行する
 
@@ -51,7 +49,7 @@ ms.locfileid: "73820964"
 - [Azure SQL データベースのクエリを実行する ASP.NET アプリケーションを開発して構成する](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
 - [Azure SQL Database のセキュリティ保護](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure SQL Database でサポートされている機能の概要の一覧](sql-database-features.md)を確認します。
 - [データベースの安全性を高める](sql-database-security-tutorial.md)方法を学びます。

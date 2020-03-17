@@ -1,18 +1,19 @@
 ---
-title: トラブルシューティング - Linux VM の Azure Disk Encryption
+title: Linux VM の Azure Disk Encryption のトラブルシューティング
 description: この記事では、Linux VM の Microsoft Azure Disk Encryption のトラブルシューティングのヒントについて説明します。
 author: msmbaldwin
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd21b6520dc68a6f7faa5500054b2865556e3dfb
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: eeacea9e3305865881747801100dc17770b7df63
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78205910"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970465"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure Disk Encryption トラブルシューティング ガイド
 

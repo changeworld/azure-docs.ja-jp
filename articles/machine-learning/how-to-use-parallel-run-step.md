@@ -11,12 +11,12 @@ ms.author: vaidyas
 author: vaidya-s
 ms.date: 01/15/2020
 ms.custom: Ignite2019
-ms.openlocfilehash: ff366468c994d8ba151dd476a5bcccc52bb7309f
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 313ba2c02fd65a967ab1969b6f99893de9a3bdb4
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122835"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037356"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Azure Machine Learning を使用して大規模なデータでバッチ推論を実行する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -85,7 +85,7 @@ def_data_store = ws.get_default_datastore()
 - ラベルを含むディレクトリ。
 - 出力用のディレクトリ。
 
-`Dataset` は Azure Machine Learning でデータを探索、変換、および管理するためのクラスです。 このクラスには `TabularDataset` と `FileDataset` の 2 つの型があります。 この例では、`FileDataset` を、バッチ推論パイプラインのステップへの入力として使用します。 
+[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) は Azure Machine Learning でデータを探索、変換、および管理するためのクラスです。 このクラスには [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) と [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py) の 2 つの型があります。 この例では、`FileDataset` を、バッチ推論パイプラインのステップへの入力として使用します。 
 
 > [!NOTE] 
 > 現在、バッチ推論の `FileDataset` サポートは、Azure Blob Storage に制限されています。 
@@ -94,7 +94,7 @@ def_data_store = ws.get_default_datastore()
 
 Azure Machine Learning データセットの詳細については、[データセットの作成とアクセス (プレビュー)](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) に関するページをご覧ください。
 
-パイプラインのステップ間での中間データの転送には、`PipelineData` オブジェクトが使用されます。 この例では、これを推論の出力に使用します。
+パイプラインのステップ間での中間データの転送には、[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) オブジェクトが使用されます。 この例では、これを推論の出力に使用します。
 
 ```python
 from azureml.core.dataset import Dataset
@@ -190,7 +190,7 @@ model = Model.register(model_path="models/",
 - `init()`:この関数は、後で推論するためのコストのかかる準備、または一般的な準備を行うときに使用します。 たとえば、これを使って、モデルをグローバル オブジェクトに読み込みます。 この関数は、プロセスの開始時に 1 回だけ呼び出されます。
 -  `run(mini_batch)`:この関数は、`mini_batch` インスタンスごとに実行されます。
     -  `mini_batch`:並列実行ステップは run メソッドを呼び出して、そのメソッドに、リストまたは Pandas データフレームのいずれかを引数として渡します。 min_batch のエントリはそれぞれ、ファイル パス (入力が FileDataset の場合) または Pandas データフレーム (入力が TabularDataset の場合) になります。
-    -  `response`: run() メソッドは、Pandas データフレームまたは配列を返します。 append_row output_action の場合、これらの返される要素は、共通の出力ファイルに追加されます。 summary_only の場合、要素のコンテンツは無視されます。 すべての出力アクションについて、返される出力要素はそれぞれ、入力ミニバッチ内で成功した 1 つの入力要素の実行を示します。 ユーザーは、入力を実行結果にマップするのに十分なデータが、実行結果に含まれていることを確認する必要があります。 実行の出力は出力ファイルに書き込まれますが、必ずしも順序どおりであるとは限りません。ユーザーは、出力でいずれかのキーを使って、それを入力にマップする必要があります。
+    -  `response`: run() メソッドは、Pandas データフレームまたは配列を返します。 append_row output_action の場合、これらの返される要素は、共通の出力ファイルに追加されます。 summary_only の場合、要素のコンテンツは無視されます。 すべての出力アクションについて、返される出力要素はそれぞれ、入力ミニバッチ内で成功した 1 つの入力要素の実行を示します。 入力を実行結果にマップできるだけの十分なデータが、実行結果に含まれていることを確認する必要があります。 実行の出力は出力ファイルに書き込まれますが、順序どおりの書き込みは保証されません。出力でいずれかのキーを使って、入力にマップする必要があります。
 
 ```python
 # Snippets from a sample script.
@@ -331,7 +331,7 @@ parallelrun_step = ParallelRunStep(
 
 ### <a name="run-the-pipeline"></a>パイプラインを実行する
 
-次に、パイプラインを実行します。 まず、ご自身のワークスペース参照、および作成したパイプラインのステップを使用して、`Pipeline` オブジェクトを作成します。 `steps` パラメーターは、ステップの配列です。 この場合、バッチ スコアリング用のステップは 1 つだけです。 複数のステップが含まれたパイプラインを作成する場合は、この配列内にステップを順に配置します。
+次に、パイプラインを実行します。 まず、ご自身のワークスペース参照、および作成したパイプラインのステップを使用して、[`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) オブジェクトを作成します。 `steps` パラメーターは、ステップの配列です。 この場合、バッチ スコアリング用のステップは 1 つだけです。 複数のステップが含まれたパイプラインを作成する場合は、この配列内にステップを順に配置します。
 
 次に、`Experiment.submit()` 関数を使用して、実行するパイプラインを送信します。
 

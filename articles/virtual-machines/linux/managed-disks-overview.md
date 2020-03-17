@@ -1,18 +1,18 @@
 ---
-title: Linux VM 向け Azure Disk Storage の概要
-description: Linux VM を使用するときにストレージ アカウントを管理する Azure マネージド ディスクの概要
+title: Disk Storage の概要
+description: VM を使用するときにストレージ アカウントを管理する Azure マネージド ディスクの概要
 author: roygara
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: overview
 ms.date: 12/02/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 2b25da174399b092fe821a46b235d7a2bd14572b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: edcde9c5192791e88da57d158bab3e79b171bfc8
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355908"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944760"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Azure マネージド ディスクの概要
 

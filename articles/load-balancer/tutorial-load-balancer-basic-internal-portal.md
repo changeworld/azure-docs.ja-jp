@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: d167a157935c6d51c025d2fbb11586343a2ef3f2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6f62771d707d1aebccbfaf809dee7d0dedf5fefa
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453524"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096118"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>チュートリアル:Azure portal の Basic ロードバランサーを使用して内部トラフィックの負荷を分散する
 
@@ -46,7 +46,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    - **ResourceGroup**: **[新規作成]** を選択してから「*MyResourceGroupLB*」と入力し、 **[OK]** を選択します。 
    - **[サブネット]**  >  **[名前]** : 「*MyBackendSubnet*」と入力します。
    
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
    ![仮想ネットワークの作成](./media/tutorial-load-balancer-basic-internal-portal/2-load-balancer-virtual-network.png)
 
@@ -89,13 +89,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    
 2. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[確認と作成]** を選択します。
 
-    | 設定                 | 値                                              |
+    | 設定                 | Value                                              |
     | ---                     | ---                                                |
     | サブスクリプション               | サブスクリプションを選択します。    |    
     | Resource group         | **[新規作成]** を選択して、テキスト ボックスに「*MyResourceGroupLB*」と入力します。|
-    | Name                   | *myLoadBalancer*                                   |
+    | 名前                   | *myLoadBalancer*                                   |
     | リージョン         | **[米国東部 2]** を選択します。                                        |
-    | 種類          | **[内部]** を選択します。                                        |
+    | Type          | **[内部]** を選択します。                                        |
     | SKU           | **[Basic]** を選択します。                          |
     | 仮想ネットワーク           | *[MyVNet]* を選択します。                          |    
     | IP アドレスの割り当て              | **[静的]** を選択します。   |
@@ -121,10 +121,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[バックエンド プールの追加]** ページで、以下の値を入力または選択します。
    
    - **Name**:「*MyBackendPool*」と入力します。
-   - **[関連付け先]** : ドロップダウン メニューから **[可用性セット]** を選択します。
-   - **可用性セット**: **[MyAvailabilitySet]** を選択します。
+   - **[関連付け先]** : ドロップダウンから **[仮想マシン]** を選択します。
    
-1. **[ターゲット ネットワーク IP 構成の追加]** を選択します。 
+   
+1. **仮想マシン**を選択します。 
    1. **[MyVM1]** と **[MyVM2]** をバックエンド プールに追加します。
    2. 各マシンを追加したら、ドロップダウンメニューから **[ネットワーク IP 構成]** を選択します。 
    

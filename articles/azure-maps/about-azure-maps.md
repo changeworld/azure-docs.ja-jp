@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b375ea8fdebd876bdc7ecf157a4cebd5e614dfd0
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 411ffb9c05b0f6b4d8b7d37a11d0838c8734ec5e
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443725"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079798"
 ---
 # <a name="what-is-azure-maps"></a>Azure Maps とは
 
@@ -170,6 +170,8 @@ Azure Maps は、モビリティ向けに構築されており、クロスプラ
 [Azure portal](https://portal.azure.com) に移動して Azure Maps アカウントを作成すると、Azure Maps サービスにアクセスできます。
 
 Azure Maps では、キーベースの認証スキームが使用されます。 ご自分のアカウントには 2 つのキーがあらかじめ生成されているため、いずれかのキーを使用します。 アプリケーションへのこれらの場所機能の統合を開始し、Azure Maps サービスへの要求を行ってください。
+
+注: Azure Maps では、顧客が入力したアドレスおよび場所のクエリ ("クエリ") を、マップ機能の向上のためにサードパーティの TomTom と共有します。 クエリが TomTom と共有される際、クエリはどの顧客やエンドユーザーにもリンクさないため、個人を識別するために使用されることはありません。 Microsoft は現在、オンライン サービスの下請業者の一覧に TomTom を追加するプロセスを実行中です。 Moovit および AccuWeather との統合を含むモビリティおよび気象サービスは、現在[プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)の段階です。
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 

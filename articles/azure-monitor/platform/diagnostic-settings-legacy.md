@@ -1,17 +1,17 @@
 ---
-title: 診断設定を使用して Azure アクティビティ ログを収集する (プレビュー) - Azure Monitor | Microsoft Docs
+title: 診断設定を使用して Azure アクティビティ ログを収集する - Azure Monitor | Microsoft Docs
 description: 診断設定を使用して、Azure アクティビティ ログを Azure Monitor ログ、Azure Storage、または Azure Event Hubs に転送します。
 author: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: fcf7eef269c9fa8b62217fb64ed792aece1fce4e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 6d4c724c7cfb4c1779f0fc6592a7e61e060755b9
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670340"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096895"
 ---
 # <a name="update-to-azure-activity-log-collection-and-export"></a>Azure のアクティビティ ログの収集とエクスポートの更新
 [Azure アクティビティ ログ](platform-logs-overview.md)は、Azure で発生したサブスクリプションレベルのイベントの分析情報を提供する[プラットフォーム ログ](platform-logs-overview.md)です。 アクティビティ ログ エントリを[イベント ハブまたはストレージ アカウント](activity-log-export.md)、または [Log Analytics ワークスペース](activity-log-collect.md)に送信するメソッドは、[診断設定](diagnostic-settings.md)を使用するように変更されました。 この記事では、これらの方法の相違点、および診断設定に変更するための準備として、従来の設定をクリアする方法について説明します。

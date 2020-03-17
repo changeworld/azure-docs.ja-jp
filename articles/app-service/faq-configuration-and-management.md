@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: afa3b0f3ed345ccc7f4c627ec485351838ab2bee
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 300294f37c809b01fe8fba7e627d6bc5bdc9903a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649280"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942949"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure の Web Apps の構成と管理に関する FAQ
 
@@ -141,7 +141,7 @@ Web ジョブのログを確認するには、次の手順を実行します。
 Exception: System.Data.Entity.Core.EntityException: The underlying provider failed on Open. —> System.OverflowException: Arithmetic operation resulted in an overflow. or (64 bit Web app) System.OverflowException: Array dimensions exceeded supported range, at System.Data.SqlClient.TdsParser.ConsumePreLoginHandshake
 ```
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 修正されたハイブリッド接続マネージャーの問題によって、例外が発生しました。 この問題を解決するために [ハイブリッド接続マネージャーを更新](https://go.microsoft.com/fwlink/?LinkID=841308)してください。
 
@@ -212,7 +212,7 @@ Azure ExpressRoute に接続されている仮想ネットワークに Azure Web
 App Service Environment の作成はときどき失敗します。 この場合は、アクティビティ ログに次のエラーが表示されます。
 ```
 ResourceID: /subscriptions/{SubscriptionID}/resourceGroups/Default-Networking/providers/Microsoft.Web/hostingEnvironments/{ASEname}
-Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provision operation did not complete within the allowed timeout period.”}}
+Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provision operation did not complete within the allowed timeout period."}}
 ```
 
 これを解決するには、次の条件が当てはまるかどうかを確認します。
@@ -248,7 +248,7 @@ Web ジョブのスケジュールの詳細については、「[Create a schedu
 
 ## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>Traffic Manager を使用する App Service Web アプリのカスタム ドメイン名を構成するにはどうすればいいですか?
 
-ロード バランシングを行うために Azure Traffic Manager を使用する App Service アプリでカスタム ドメイン名を使用する方法については、「[Configure a custom domain name for an Azure web app with Traffic Manager](web-sites-traffic-manager-custom-domain-name.md)」(Traffic Manager を使用する App Service Web アプリのカスタム ドメイン名を構成する方法) を参照してください。
+ロード バランシングを行うために Azure Traffic Manager を使用する App Service アプリでカスタム ドメイン名を使用する方法については、「[Configure a custom domain name for an Azure web app with Traffic Manager](configure-domain-traffic-manager.md)」(Traffic Manager を使用する App Service Web アプリのカスタム ドメイン名を構成する方法) を参照してください。
 
 ## <a name="my-app-service-certificate-is-flagged-for-fraud-how-do-i-resolve-this"></a>App Service 証明書に詐欺のフラグが付いています。 解決するにはどうすればよいですか?
 
@@ -256,7 +256,7 @@ Web ジョブのスケジュールの詳細については、「[Create a schedu
 
 App Service 証明書購入のドメインの確認中に、次のメッセージが表示されることがあります。
 
-“Your certificate has been flagged for possible fraud. The request is currently under review. If the certificate does not become usable within 24 hours, please contact Azure Support.”(証明書に詐欺の可能性のフラグが付けられました。要求を確認中です。24 時間以内に証明書が使用可能にならない場合、Azure サポートに問い合わせてください)。
+"Your certificate has been flagged for possible fraud. The request is currently under review. If the certificate does not become usable within 24 hours, please contact Azure Support."(証明書に詐欺の可能性のフラグが付けられました。要求を確認中です。24 時間以内に証明書が使用可能にならない場合、Azure サポートに問い合わせてください)。
 
 メッセージで示されているように、この詐欺の確認プロセスには最大 24 時間がかかる場合があります。 この間このメッセージは表示されたままになります。
 

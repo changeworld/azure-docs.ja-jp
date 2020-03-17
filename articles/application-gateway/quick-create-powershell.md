@@ -6,50 +6,53 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 11/14/2019
+ms.date: 03/05/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 9c3fac7aecaf37b5822ad6e8c655867f6f2c683c
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: abb38dfc342c8ff692ed1a3a05376b5dcefe8a3d
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872708"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399562"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用した Azure Application Gateway による Web トラフィックの転送
 
-このクイック スタートでは、Azure PowerShell を使用して、アプリケーション ゲートウェイをすばやく作成する方法を示します。  アプリケーション ゲートウェイを作成してから、それをテストして正しく動作していることを確認します。 Azure Application Gateway では、ポートにリスナーを割り当て、ルールを作成し、バックエンド プールにリソースを追加することによって、お客様のアプリケーション Web トラフィックを特定のリソースに転送します。 わかりやすくするために、この記事では、パブリック フロントエンド IP、このアプリケーション ゲートウェイで単一サイトをホストするための基本リスナー、バックエンド プールに使用される 2 つの仮想マシン、および基本要求ルーティング規則を使用する簡単な設定を使用します。
+このクイックスタートでは、Azure PowerShell を使用してアプリケーション ゲートウェイを作成します。 さらに、それをテストし、正しく動作することを確認します。 
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+アプリケーション ゲートウェイは、アプリケーション Web トラフィックをバックエンド プール内の特定のリソースに転送します。 リスナーをポートに割り当て、ルールを作成し、リソースをバックエンド プールに追加します。 わかりやすくするために、この記事では、パブリック フロントエンド IP、アプリケーション ゲートウェイで単一サイトをホストするための基本リスナー、基本要求ルーティング規則、およびバックエンド プール内の 2 つの仮想マシンを使用する簡単な設定を使用します。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+また、[Azure CLI](quick-create-cli.md) または [Azure portal](quick-create-portal.md) を使用してこのクイックスタートを完了することもできます。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
-### <a name="azure-powershell-module"></a>Azure PowerShell モジュール
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- [Azure PowerShell バージョン 1.0.0 以降](/powershell/azure/install-az-ps) (Azure PowerShell をローカルで実行する場合)。
 
-Azure PowerShell をローカルにインストールして使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 1.0.0 以降が必要になります。
+## <a name="connect-to-azure"></a>Azure に接続する
 
-1. バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 
-2. Azure との接続を作成するには、`Login-AzAccount` を実行します。
+Azure に接続するには、`Connect-AzAccount` を実行します。
 
-### <a name="resource-group"></a>Resource group
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-Azure で、関連するリソースをリソース グループに割り当てます。 既存のリソース グループを使用することも、新しいリソース グループを作成することもできます。 この例では、次のように [New-AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup) コマンドレットを使用して新しいリソース グループを作成します。 
+Azure で、関連するリソースをリソース グループに割り当てます。 既存のリソース グループを使用することも、新しいリソース グループを作成することもできます。
+
+新しいリソース グループを作成するには、`New-AzResourceGroup` コマンドレットを使用します。 
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 ```
-
-### <a name="required-network-resources"></a>必要なネットワーク リソース
+## <a name="create-network-resources"></a>ネットワーク リソースを作成する
 
 お客様が作成するリソースの間で Azure による通信が行われるには、仮想ネットワークが必要です。  アプリケーション ゲートウェイ サブネットには、アプリケーション ゲートウェイのみを含めることができます。 その他のリソースは許可されません。  Application Gateway 用に新しいサブネットを作成するか、既存のサブネットを使用することができます。 2 つのサブネットを作成します。1 つはアプリケーション ゲートウェイ用で、もう 1 つはバックエンド サーバー用です。 ユース ケースに従って、Application Gateway のフロントエンド IP を [パブリック] または [プライベート] に設定できます。 この例では、パブリック フロントエンド IP を選択します。
 
-1. [New-AzVirtualNetworkSubnetConfig](/powershell/module/Az.network/new-Azvirtualnetworksubnetconfig) を呼び出してサブネット構成を作成します。
-2. [New-AzVirtualNetwork](/powershell/module/Az.network/new-Azvirtualnetwork) を呼び出して、サブネット構成と共に仮想ネットワークを作成します。 
-3. [New-AzPublicIpAddress](/powershell/module/Az.network/new-Azpublicipaddress) を呼び出して、パブリック IP アドレスを作成します。 
+1. `New-AzVirtualNetworkSubnetConfig` を使用して、サブネット構成を作成します。
+2. `New-AzVirtualNetwork` を使用して、サブネット構成を使用して仮想ネットワークを作成します。 
+3. `New-AzPublicIpAddress` を使用して、パブリック IP アドレスを作成します。 
 
 ```azurepowershell-interactive
 $agSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -75,9 +78,9 @@ New-AzPublicIpAddress `
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>IP 構成とフロントエンド ポートの作成
 
-1. [New-AzApplicationGatewayIPConfiguration](/powershell/module/Az.network/new-Azapplicationgatewayipconfiguration) を使用して、お客様が作成したサブネットをアプリケーション ゲートウェイに関連付けるための構成を作成します。 
-2. [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/Az.network/new-Azapplicationgatewayfrontendipconfig) を使用して、お客様が先ほど作成したパブリック IP アドレスをアプリケーション ゲートウェイに割り当てるための構成を作成します。 
-3. [New-AzApplicationGatewayFrontendPort](/powershell/module/Az.network/new-Azapplicationgatewayfrontendport) を使用して、アプリケーション ゲートウェイにアクセスするためのポート 80 を割り当てます。
+1. `New-AzApplicationGatewayIPConfiguration` を使用して、お客様が作成したサブネットをアプリケーション ゲートウェイに関連付けるための構成を作成します。 
+2. `New-AzApplicationGatewayFrontendIPConfig` を使用して、お客様が先ほど作成したパブリック IP アドレスをアプリケーション ゲートウェイに割り当てるための構成を作成します。 
+3. `New-AzApplicationGatewayFrontendPort` を使用して、アプリケーション ゲートウェイにアクセスするためのポート 80 を割り当てます。
 
 ```azurepowershell-interactive
 $vnet   = Get-AzVirtualNetwork -ResourceGroupName myResourceGroupAG -Name myVNet
@@ -96,8 +99,8 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-backend-pool"></a>バックエンド プールの作成
 
-1. [New-AzApplicationGatewayBackendAddressPool](/powershell/module/Az.network/new-Azapplicationgatewaybackendaddresspool) を使用して、アプリケーション ゲートウェイのバックエンド プールを作成します。 差し当たってバックエンド プールは空になります。次のセクションでバックエンド サーバーの NIC を作成するときに、それらをバックエンド プールに追加することになります。
-2. [New-AzApplicationGatewayBackendHttpSetting](/powershell/module/Az.network/new-Azapplicationgatewaybackendhttpsetting) を使用して、バックエンド プールの設定を構成します。
+1. `New-AzApplicationGatewayBackendAddressPool` を使用して、アプリケーション ゲートウェイのバックエンド プールを作成します。 差し当たってバックエンド プールは空になります。次のセクションでバックエンド サーバーの NIC を作成するときに、それらをバックエンド プールに追加することになります。
+2. `New-AzApplicationGatewayBackendHttpSetting` を使用して、バックエンド プールの設定を構成します。
 
 ```azurepowershell-interactive
 $address1 = Get-AzNetworkInterface -ResourceGroupName myResourceGroupAG -Name myNic1
@@ -116,8 +119,8 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSetting `
 
 Azure では、アプリケーション ゲートウェイを有効にしてトラフィックをバックエンド プールに適切にルーティングするためにリスナーが必要です。 また、受信トラフィックに使用するバックエンド プールをリスナーが判断するには、ルールが必要です。 
 
-1. 先ほど作成したフロントエンド構成とフロントエンド ポートを指定して [New-AzApplicationGatewayHttpListener](/powershell/module/Az.network/new-Azapplicationgatewayhttplistener) を使用し、リスナーを作成します。 
-2. [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/Az.network/new-Azapplicationgatewayrequestroutingrule) を使用して、*rule1* という名前のルールを作成します。 
+1. 先ほど作成したフロントエンド構成とフロントエンド ポートを指定して、`New-AzApplicationGatewayHttpListener` を使用して、リスナーを作成します。 
+2. `New-AzApplicationGatewayRequestRoutingRule` を使用して、*rule1* という名前のルールを作成します。 
 
 ```azurepowershell-interactive
 $defaultlistener = New-AzApplicationGatewayHttpListener `
@@ -137,8 +140,8 @@ $frontendRule = New-AzApplicationGatewayRequestRoutingRule `
 
 必要な関連リソースを作成したところで、アプリケーション ゲートウェイを作成します。
 
-1. [New-AzApplicationGatewaySku](/powershell/module/Az.network/new-Azapplicationgatewaysku) を使用して、アプリケーション ゲートウェイのパラメーターを指定します。
-2. [New-AzApplicationGateway](/powershell/module/Az.network/new-Azapplicationgateway) を使用して、アプリケーション ゲートウェイを作成します。
+1. `New-AzApplicationGatewaySku` を使用して、アプリケーション ゲートウェイのパラメーターを指定します。
+2. `New-AzApplicationGateway` を使用して、アプリケーション ゲートウェイを作成します。
 
 ```azurepowershell-interactive
 $sku = New-AzApplicationGatewaySku `
@@ -165,12 +168,12 @@ Application Gateway を作成したら、Web サイトのホストとなるバ�
 
 #### <a name="create-two-virtual-machines"></a>2 つの仮想マシンの作成
 
-1. 先ほど作成した Application Gateway バックエンド プールの構成を [Get-AzApplicationGatewayBackendAddressPool](/powershell/module/Az.network/get-Azapplicationgatewaybackendaddresspool) を使用して取得します。
-2. [New-AzNetworkInterface](/powershell/module/Az.network/new-Aznetworkinterface) を使用してネットワーク インターフェイスを作成します。 
-3. [New-AzVMConfig](/powershell/module/Az.compute/new-Azvmconfig) を使用して仮想マシンの構成を作成します。
-4. [New-AzVM](/powershell/module/Az.compute/new-Azvm) を使用して、仮想マシンを作成します。
+1. 先ほど作成した Application Gateway バックエンド プールの構成を `Get-AzApplicationGatewayBackendAddressPool` を使用して取得します。
+2. `New-AzNetworkInterface` を使用して、ネットワーク インターフェイスを作成します。
+3. `New-AzVMConfig` を使用して、仮想マシンの構成を作成します。
+4. `New-AzVM` を使用して、仮想マシンを作成します。
 
-次のコード サンプルを実行して仮想マシンを作成するときに、Azure から資格情報の入力を求められます。 ユーザー名として「*azureuser*」を、パスワードとして「*Azure123456!* 」を 入力します。
+次のコード サンプルを実行して仮想マシンを作成するときに、Azure から資格情報の入力を求められます。 ユーザー名として「*azureuser*」を入力し、パスワードを入力します。
     
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway -ResourceGroupName myResourceGroupAG -Name myAppGateway
@@ -223,7 +226,7 @@ for ($i=1; $i -le 2; $i++)
 
 IIS はアプリケーション ゲートウェイを作成するのに必要ではありませんが、このクイック スタートでは、Azure によってアプリケーション ゲートウェイが正常に作成されたかどうかを確認するためにインストールしました。 IIS を使用してアプリケーション ゲートウェイをテストします。
 
-1. アプリケーション ゲートウェイのパブリック IP アドレスは、[Get-AzPublicIPAddress](/powershell/module/Az.network/get-Azpublicipaddress) を実行して取得します。 
+1. `Get-AzPublicIPAddress` を実行して、アプリケーション ゲートウェイのパブリック IP アドレスを取得します。 
 2. そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 ブラウザーを更新したら、仮想マシンの名前が表示されるはずです。 応答が有効であれば、アプリケーション ゲートウェイが正常に作成され、バックエンドと正常に接続できることが保証されます。
 
 ```azurepowershell-interactive
@@ -233,17 +236,17 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 ![アプリケーション ゲートウェイのテスト](./media/quick-create-powershell/application-gateway-iistest.png)
 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-アプリケーション ゲートウェイと共に作成したリソースが不要になったら、リソース グループを削除します。 リソース グループを削除することで、アプリケーション ゲートウェイとそのすべての関連リソースも削除します。 
+アプリケーション ゲートウェイと共に作成したリソースが不要になったら、リソース グループを削除します。 リソース グループを削除すると、アプリケーション ゲートウェイとそのすべての関連リソースも削除されます。 
 
-リソース グループを削除するには、次のように [Remove-AzResourceGroup](/powershell/module/Az.resources/remove-Azresourcegroup) コマンドレットを呼び出します。
+リソース グループを削除するには、`Remove-AzResourceGroup` コマンドレットを呼び出します。
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure PowerShell を使用して、アプリケーション ゲートウェイで Web トラフィックを管理する](./tutorial-manage-web-traffic-powershell.md)

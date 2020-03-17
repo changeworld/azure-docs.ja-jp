@@ -5,13 +5,13 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 02/16/2020
-ms.openlocfilehash: 1d0264a0b7ac4e97d9a2811ba61ab64fcedd6fb9
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 03/04/2020
+ms.openlocfilehash: bb996b0abc16a3d6171c8f7ab2ac0e64dd0c1075
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587551"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096795"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>マッピング データ フローのビデオ チュートリアル
 
@@ -72,6 +72,8 @@ ms.locfileid: "77587551"
 [Exists Transformation (存在変換)](http://youtu.be/GS8JVgNBMfs?hd=1)
 
 [動的な結合と動的ルックアップ](https://youtu.be/CMOPPie9bXM)
+
+[フラット化変換](https://youtu.be/VY2tFQJoAXE)
 
 ## <a name="source-and-sink"></a>ソースとシンク
 
@@ -144,3 +146,5 @@ ms.locfileid: "77587551"
 [日付と時刻の式](https://www.youtube.com/watch?v=uboyCZ25r_E&feature=youtu.be&hd=1)
 
 [配列の分割と Case ステートメント](https://www.youtube.com/watch?v=DHNH8ZO7YjI)
+
+[文字列補間とパラメーターを楽しむ](https://youtu.be/hb3-cn2CMgM)

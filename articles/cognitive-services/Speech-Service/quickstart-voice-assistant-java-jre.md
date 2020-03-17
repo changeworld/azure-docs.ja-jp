@@ -10,24 +10,24 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 02/10/2020
 ms.author: dapine
-ms.openlocfilehash: 45719eebb9cd74b0a5c4278e87b90978dcc3790f
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 6baa98d50c50146e93b4832053f63f3bead90a6d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119669"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330833"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-java-preview"></a>クイック スタート:Speech SDK と Java を使用して音声アシスタントを作成する (プレビュー)
 
 [音声テキスト変換](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=jre)、[テキスト読み上げ](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=jre)、[音声翻訳](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-java&tabs=jre)のクイックスタートも利用できます。
 
-この記事では、[Azure Cognitive Services Speech SDK](speech-sdk.md) を使用して、Java コンソール アプリケーションを作成します。 アプリケーションは、Direct Line Speech チャネルを使用するように構成されている作成済みのボットに接続し、音声要求を送信し、音声応答アクティビティ (構成されている場合) を返します。 アプリケーションは、Speech SDK Maven パッケージと、Windows、Ubuntu Linux、または macOS 上の Eclipse Java IDE を使用して構築されます。 これは、64 ビットの Java 8 のランタイム環境 (JRE) で実行されます。
+この記事では、[Azure Cognitive Services Speech SDK](speech-sdk.md) を使用して、Java コンソール アプリケーションを作成します。 アプリケーションは、Direct Line Speech チャネルを使用するように構成されている作成済みのボットに接続し、音声要求を送信し、音声応答アクティビティ (構成されている場合) を返します。 アプリケーションは、Speech SDK Maven パッケージと、Windows、Linux、または macOS 上の Eclipse Java IDE を使用して構築されます。 これは、64 ビットの Java 8 のランタイム環境 (JRE) で実行されます。
 
 ## <a name="prerequisites"></a>前提条件
 
 このクイック スタートでは以下が必要です。
 
-- オペレーティング システム:Windows (64 ビット)、Ubuntu Linux 16.04 または 18.04 (64 ビット)、または macOS 10.13 以降。
+- オペレーティング システム:Windows (64 ビット)、Ubuntu Linux 16.04 または 18.04 (64 ビット)、RHEL または CentOS 8 (x64)、または macOS 10.13 以降。
 - [Eclipse Java IDE](https://www.eclipse.org/downloads/)。
 - [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) または [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)。
 - Speech サービス用の Azure サブスクリプション キー。 [無料で入手する](get-started.md)か、[Azure portal](https://portal.azure.com) で作成します。
@@ -42,6 +42,17 @@ Ubuntu 16.04 または 18.04 を実行している場合は、Eclipse を起動�
 sudo apt-get update
 sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 ```
+
+RHEL または CentOS 8 の場合:
+
+```sh
+sudo yum update
+sudo yum groupinstall "Development tools"
+sudo yum install alsa-lib java-1.8.0-openjdk-devel openssl wget
+```
+
+> [!NOTE]
+> RHEL または CentOS 8 の場合、「[Linux の OpenSSL を構成する方法](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)」の手順に従います。
 
 Windows (64 ビット版) を実行している場合は、お使いのプラットフォーム用の Microsoft Visual C++ 再頒布可能パッケージがインストールされていることを確認してください。
 
@@ -474,7 +485,7 @@ F11 キーを押すか、 **[Run]\(実行\)**  >  **[Debug]\(デバッグ\)** �
 > [!div class="nextstepaction"]
 > [基本ボットの作成とデプロイ](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - [音声アシスタントについて](voice-assistants.md)
 - [Speech サービスのサブスクリプション キーを無料で取得する](get-started.md)

@@ -8,20 +8,20 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 98ea00eb4d45ad045e1da3c4c5680f44e6705432
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: f463e8883efd5e2dfc4d7fff80912c193665b850
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78300980"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399808"
 ---
-# <a name="what-is-azure-stack-edge"></a>Azure Stack Edge とは 
+# <a name="what-is-azure-stack-edge"></a>Azure Stack Edge とは
 
 [!INCLUDE [data-box-edge-gateway-rename-note](../../includes/data-box-edge-gateway-rename-note.md)]
 
-Azure Stack Edge は、ネットワーク データ転送機能を備えた AI 対応のエッジ コンピューティング デバイスです。 この記事では、Azure Stack Edge ソリューションの概要、利点、主な機能、このデバイスを配置できるシナリオについて説明します。 
+Azure Stack Edge は、ネットワーク データ転送機能を備えた AI 対応のエッジ コンピューティング デバイスです。 この記事では、Azure Stack Edge ソリューションの概要、利点、主な機能、このデバイスを配置できるシナリオについて説明します。
 
-Azure Stack Edge は、サービスとしてのハードウェア ソリューションです。 Microsoft は、高速な AI 推論を実現し、ネットワーク ストレージ ゲートウェイのすべての機能を備える、Field Programmable Gate Array (FPGA) が組み込まれたクラウドマネージド デバイスを提供しています。 
+Azure Stack Edge は、サービスとしてのハードウェア ソリューションです。 Microsoft は、高速な AI 推論を実現し、ネットワーク ストレージ ゲートウェイのすべての機能を備える、Field Programmable Gate Array (FPGA) が組み込まれたクラウドマネージド デバイスを提供しています。
 
 ## <a name="use-cases"></a>ユース ケース
 
@@ -38,7 +38,6 @@ Azure Stack Edge は、サービスとしてのハードウェア ソリュー�
 
 - **ネットワーク経由でデータを Azure に転送する** - 計算や分析をさらに可能にするか、アーカイブ目的のために、Azure Stack Edge を使用して、Azure にデータを簡単かつ迅速に転送します。 
 
-
 ## <a name="key-capabilities"></a>主な機能
 
 Azure Stack Edge には、次の機能があります。
@@ -51,17 +50,17 @@ Azure Stack Edge には、次の機能があります。
 |データ アクセス     | クラウドでデータをさらに処理するために、クラウド API を使用して、Azure Storage Blob と Azure ファイルからデータを直接アクセスします。 デバイス上のローカル キャッシュは、最近使用されたファイルの高速アクセスに使用されます。|
 |クラウドでの管理     |デバイスとサービスは Azure portal を介して管理されます。  |
 |オフライン アップロード     | 切断モードでは、オフライン アップロードのシナリオに対応します。|
-|サポートされるプロトコル     | データ インジェストのために、標準の SMB プロトコルと NFS プロトコルをサポートします。 <br> サポート対象のバージョンについては、「[Azure Stack Edge のシステム要件](data-box-edge-system-requirements.md)」を参照してください。|
+|サポートされるプロトコル     | データ インジェストのために、標準の SMB プロトコルと NFS プロトコルをサポートします。 <br> サポート対象のバージョンについては、[Azure Stack Edge のシステム要件](data-box-edge-system-requirements.md)に関するページを参照してください。|
 |データ更新     | ローカル ファイルをクラウドから最新の情報に更新する機能。|
 |暗号化    | ローカルでデータを暗号化し、クラウドへのデータ転送を *https* 経由で保護する BitLocker のサポート。|
 |帯域幅調整| ピーク時の帯域幅の使用量を制限するように調整します。|
-
+|ExpressRoute | ExpressRoute によってセキュリティが強化されました。 ローカル デバイスからクラウド ストレージ エンドポイントへのトラフィックが ExpressRoute 経由で転送されるピアリング構成を使用します。 詳細については、「[ExpressRoute の概要](../expressroute/expressroute-introduction.md)」を参照してください。
 
 ## <a name="components"></a>Components
 
 Azure Stack Edge ソリューションは、Azure Stack Edge リソース、Azure Stack Edge 物理デバイス、およびローカル Web UI で構成されています。
 
-* **Azure Stack Edge 物理デバイス** - Azure にデータを送信するように構成可能な Microsoft 製の 1U ラックマウント型サーバー。 
+* **Azure Stack Edge 物理デバイス** - Azure にデータを送信するように構成可能な Microsoft 製の 1U ラックマウント型サーバー。
     
 * **Azure Stack Edge リソース** - さまざまな地理的な場所からアクセスできる Web インターフェイスから、Azure Stack Edge デバイスを管理できる、Azure portal でのリソース。 Azure Stack Edge リソースを使用して、リソースの作成と管理、デバイスとアラートの表示と管理、および共有の管理を行います。  
 
@@ -75,22 +74,16 @@ Azure Stack Edge ソリューションは、Azure Stack Edge リソース、Azur
 
     Web ベース UI の使用については、「[Web ベース UI を使用した Azure Stack Edge の管理](data-box-edge-manage-access-power-connectivity-mode.md)」を参照してください。
 
-
 ## <a name="region-availability"></a>利用可能なリージョン
 
 Azure Stack Edge 物理デバイス、Azure リソース、データ転送先のターゲット ストレージ アカウントは、すべて同じ地域にある必要はありません。
 
 - **リソースの使用可能性** - Azure Stack Edge リソースを使用できるすべてのリージョンの一覧については、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)を参照してください。 Azure Stack Edge は、Azure Government クラウドにデプロイすることもできます。 詳細については、「[What is Azure Government? (Azure Government とは)](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)」を参照してください。
     
-- **転送先ストレージ アカウント** - データを格納するストレージ アカウントは、すべての Azure 地域で利用できます。 パフォーマンスを最適にするには、ストレージ アカウントによって Azure Stack Edge のデータが格納されるリージョンと、デバイスが配置されている場所を、近くにする必要があります。 デバイスから離れた場所にあるストレージ アカウントは、待ち時間が長くなり、パフォーマンスが低下します。 
-
+- **転送先ストレージ アカウント** - データを格納するストレージ アカウントは、すべての Azure 地域で利用できます。 パフォーマンスを最適にするには、ストレージ アカウントによって Azure Stack Edge のデータが格納されるリージョンと、デバイスが配置されている場所を、近くにする必要があります。 デバイスから離れた場所にあるストレージ アカウントは、待ち時間が長くなり、パフォーマンスが低下します。
 
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Stack Edge のシステム要件](data-box-edge-system-requirements.md)を確認します。
 - [Azure Stack Edge の制限](data-box-edge-limits.md)を理解します。
 - Azure portal で [Azure Stack Edge](data-box-edge-deploy-prep.md) をデプロイします。
-
-
-
-

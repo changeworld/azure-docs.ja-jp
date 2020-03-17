@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 0f426e7a87204acd4be6529f7dd11a954f23491a
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: ac38adba4ca0d978dd48a546bed1b1faf4fe40fe
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159473"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79036969"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>MVC プロジェクト (Visual Studio Azure Active Directory 接続済みサービス) の変更点
 
@@ -24,13 +24,13 @@ ms.locfileid: "77159473"
 > - [作業の開始](vs-active-directory-dotnet-getting-started.md)
 > - [変更内容](vs-active-directory-dotnet-what-happened.md)
 
-この記事では、[Visual Studio を使用して Azure Active Directory 接続サービスを](vs-active-directory-add-connected-service.md)追加したときに、ASP.NET MVC プロジェクトに対して行われる正確な変更内容を説明します。
+この記事では、[Visual Studio を使用して Azure Active Directory 接続サービス](vs-active-directory-add-connected-service.md)を追加したときに、ASP.NET MVC プロジェクトに対して行われる正確な変更内容を説明します。
 
 接続済みサービスを使用する方法については、[使用開始](vs-active-directory-dotnet-getting-started.md)に関する記事をご覧ください。
 
 ## <a name="added-references"></a>追加された参照
 
-プロジェクト ファイル (*.NET 参照) と `packages.config` (NuGet 参照) に影響します。
+プロジェクト ファイル (.NET 参照) と `packages.config` (NuGet 参照) に影響します。
 
 | Type | リファレンス |
 | --- | --- |

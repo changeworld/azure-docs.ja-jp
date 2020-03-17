@@ -2,17 +2,16 @@
 title: チュートリアル - Azure Monitor でのメトリック グラフの作成
 description: Azure メトリックス エクスプローラーを使用して、ご自分の最初のメトリック グラフを作成する方法について説明します。
 author: bwren
-services: azure-monitor
+ms.author: bwren
 ms.subservice: metrics
 ms.topic: tutorial
-ms.date: 12/16/2019
-ms.author: bwren
-ms.openlocfilehash: be4f026ba20ce1582f5626ec7483740831c25c1a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/09/2020
+ms.openlocfilehash: d8f72471dd3109bf584d18f032ec2f4d949a4993
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661466"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082814"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>チュートリアル:Azure Monitor でのメトリック グラフの作成
 メトリックス エクスプローラーは、Azure portal 内の Azure Monitor の 1 機能であり、メトリック値からグラフを作成したり、傾向を視覚的に関連付けたり、メトリック値の急上昇または急降下を調査したりすることができます。 メトリックス エクスプローラーを使用して、ご利用の Azure リソースの正常性と使用率を調べ、カスタム メトリックに基づいてグラフをプロットします。 
@@ -23,6 +22,10 @@ ms.locfileid: "77661466"
 > * グラフをプロットするメトリックを選択する
 > * メトリック値のさまざまな集計を実行する
 > * グラフの時間の範囲と粒度を変更する
+
+次のビデオでは、この記事で概説している手順よりも詳細なシナリオが示されています。 メトリックを初めて使用する場合は、まずこの記事を読んでから、ビデオを見て詳細を確認することをお勧めします。 
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4qO59]
 
 ## <a name="prerequisites"></a>前提条件
 

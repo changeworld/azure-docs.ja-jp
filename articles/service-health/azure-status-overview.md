@@ -3,12 +3,12 @@ title: Azure の状態の概要 | Microsoft Docs
 description: Azure サービスの正常性をグローバルに確認できるビュー
 ms.topic: overview
 ms.date: 06/11/2019
-ms.openlocfilehash: 4f4a0bf09c9256362e71466b9545389f4341ef38
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 766e9795b01c4a09916a025cba77744dea235faf
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654156"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898340"
 ---
 # <a name="azure-status-overview"></a>Azure の状態の概要
 
@@ -26,7 +26,7 @@ Azure の状態のページは、Azure サービスの正常性が変化する�
 
 Azure の状態のページには常に最新の正常性情報が表示されますが、[Azure の状態の履歴ページ](https://status.azure.com/status/history/)を使用して古いイベントを表示できます。
 
-そこでは、Azure についての予備的な根本原因、軽減策、次の手順を含め、最大で過去 90 日間のイベントを表示できます。
+2019 年 11 月に発行されたイベントからは、状態の履歴ページに、Azure についての予備的な根本原因、軽減策、次の手順を含め、最大で過去 365 日間のイベントを表示できます。
 
 ## <a name="rss-feed"></a>RSS フィード
 

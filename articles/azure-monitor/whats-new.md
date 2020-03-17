@@ -5,16 +5,70 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 02/05/2020
-ms.openlocfilehash: ecee13850e735f827a5465e0f49039f514afe233
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/05/2020
+ms.openlocfilehash: b42acdf64612da6837bc67752f7a22169ddef7e2
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77657743"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673316"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor のドキュメントの最新情報
 この記事では、Azure Monitor に関して新たに執筆された記事または大幅に更新された記事を一覧で紹介しています。 毎月第 1 週目に更新され、前月から更新された記事が掲載されます。
+
+## <a name="march-2020"></a>2020 年 3 月
+
+### <a name="agents"></a>エージェント
+診断拡張機能のコンテンツの書き直しの一環としての複数の更新。
+
+- [Azure Monitor エージェントの概要](platform/agents-overview.md) - 各エージェントの固有の機能をより明確にするために表を再構築しました。
+- [Azure Diagnostics 拡張機能の概要](platform/diagnostics-extension-overview.md) - 完全な書き直し。
+- [Azure Monitor で IIS 用に Blob Storage を使用し、イベント用にテーブル ストレージを使用する](platform/diagnostics-extension-logs.md) - 更新と明確化のための全体的な書き直し。
+- [Windows Azure Diagnostics 拡張機能 (WAD) のインストールと構成](platform/diagnostics-extension-windows-install.md) - 新しい記事。 
+- [Windows Diagnostics 拡張機能のスキーマ](platform/diagnostics-extension-schema-windows.md) - 再構成。
+- [Windows Azure Diagnostics 拡張機能から Azure Event Hubs にデータを送信する](platform/diagnostics-extension-stream-event-hubs.md) - 完全な書き直しおよび更新。
+- [Azure Storage への診断データの保存と表示](platform/diagnostics-extension-to-storage.md) - 完全な書き直しおよび更新。
+- [Windows 用の仮想マシン拡張機能](../virtual-machines/extensions/oms-windows.md) - Log Analytics エージェントとの関係をより明確にします。
+- [Linux 用の Azure Monitor 仮想マシン拡張機能](../virtual-machines/extensions/oms-linux.md) - Log Analytics エージェントとの関係をより明確にします。
+
+
+
+
+### <a name="application-insights"></a>Application Insights
+- [Azure Application Insights の接続文字列](app/sdk-connection-string.md) - 新しい記事。
+
+### <a name="insights-and-solutions"></a>分析情報とソリューション
+
+#### <a name="azure-monitor-for-containers"></a>Azure Monitor for Containers
+- [Azure Active Directory と Azure Kubernetes Service を統合する](../aks/azure-ad-integration.md) - コンテナーの Azure Monitor をサポートするために RBAC 対応クラスターをサポートするクライアント アプリケーションを作成するためのメモを追加しました。
+
+#### <a name="azure-monitor-for-vms"></a>VM に対する Azure Monitor
+- [Azure Monitor for VMs (GA) についてよく寄せられる質問](insights/vminsights-ga-release-faq.md) - パフォーマンス データの保存方法の変更。
+
+#### <a name="office-365"></a>Office 365
+- [Azure の Office 365 管理ソリューション](insights/solution-office-365.md) - 非推奨となる日が更新されました。
+
+
+### <a name="logs"></a>ログ
+- [Azure Monitor でログ クエリを最適化する](log-query/query-optimization.md) - 新しい記事。
+- [Azure Monitor ログの使用量とコストを管理する](platform/manage-cost-storage.md) - 使用量を理解するのに役立つサンプル クエリを改良しました。
+
+### <a name="metrics"></a>メトリック
+- [診断設定を使用してエクスポート可能な Azure Monitor プラットフォーム メトリック](platform/metrics-supported-export-diagnostic-settings.md) - null 値およびゼロ値に対する動作の変更に関するセクションを追加しました。
+
+
+### <a name="visualizations"></a>視覚化
+ビュー デザイナーからブックへの変換ガイドに関する複数の新しい記事。
+
+- [Azure Monitor ビュー デザイナーからブックへの移行ガイド](platform/view-designer-conversion-overview.md) - 新しい記事。
+- [Azure Monitor ビュー デザイナーからブックへの変換オプション](platform/view-designer-conversion-options.md) - 新しい記事。
+- [Azure Monitor ビュー デザイナーからブック タイルへの変換](platform/view-designer-conversion-tiles.md) - 新しい記事。
+- [Azure Monitor ビュー デザイナーからブックへの変換の概要とアクセス](platform/view-designer-conversion-access.md) - 新しい記事。
+- [Azure Monitor ビュー デザイナーからブックへの変換の一般的なタスク](platform/view-designer-conversion-tasks.md) - 新しい記事。
+- [Azure Monitor ビュー デザイナーからブックへの変換の例](platform/view-designer-conversion-examples.md) - 新しい記事。
+
+
+
 
 ## <a name="january-2020"></a>2020 年 1 月
 
@@ -43,14 +97,14 @@ ms.locfileid: "77657743"
 ### <a name="insights-and-solutions"></a>分析情報とソリューション
 
 #### <a name="azure-monitor-for-containers"></a>Azure Monitor for Containers
-- [Azure Monitor for containers エージェントのデータ収集を構成する](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-agent-config) - Azure Red Hat OpenShift におけるエージェントのアップグレードに関する詳しい情報を追加しました。また、エージェントのアップグレード方法を識別するための補足情報を追加しました。
-- [Azure Monitor for containers におけるパフォーマンス アラートを作成する](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-alerts) - ワークスペースコンテキストのアラートを使用して、ワークスペースに格納されているパフォーマンス データに関するアラートを作成する方法についての情報を修正し、手順を更新しました。
-- [Azure Monitor for containers での Kubernetes の監視](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-analyze) - Windows Kubernetes クラスターのサポートに関する概要記事と分析記事の両方を更新しました。
-- [Azure Red Hat OpenShift クラスターに Azure Monitor for containers を構成する](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-azure-redhat-setup) - Azure Red Hat OpenShift におけるエージェントのアップグレードに関する詳しい情報を追加しました。また、エージェントのアップグレード方法を識別するための補足情報を追加しました。
-- [ハイブリッド Kubernetes クラスターに Azure Monitor for containers を構成する](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-hybrid-setup) - Kubelet の cAdvisor を使用した secure port:10250 のサポート追加を反映するために更新しました。
-- [Azure Monitor for containers エージェントを管理する方法](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-manage-agent) - Azure Red Hat OpenShift と他の種類の Kubernetes クラスターとを比較して、メトリック スクレーピングの動作と構成に関する詳細情報を更新しました。
-- [Azure Monitor for containers の Prometheus 統合を構成する](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-prometheus-integration) - Azure Red Hat OpenShift と他の種類の Kubernetes クラスターとを比較して、メトリック スクレーピングの動作と構成に関する詳細情報を更新しました。
-- [メトリックのための Azure Monitor for containers の更新方法](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-update-metrics) - Azure Red Hat OpenShift と他の種類の Kubernetes クラスターとを比較して、メトリック スクレーピングの動作と構成に関する詳細情報を更新しました。
+- [Azure Monitor for containers エージェントのデータ収集を構成する](insights/container-insights-agent-config.md) - Azure Red Hat OpenShift におけるエージェントのアップグレードに関する詳しい情報を追加しました。また、エージェントのアップグレード方法を識別するための補足情報を追加しました。
+- [Azure Monitor for containers におけるパフォーマンス アラートを作成する](insights/container-insights-alerts.md) - ワークスペースコンテキストのアラートを使用して、ワークスペースに格納されているパフォーマンス データに関するアラートを作成する方法についての情報を修正し、手順を更新しました。
+- [Azure Monitor for containers での Kubernetes の監視](insights/container-insights-analyze.md) - Windows Kubernetes クラスターのサポートに関する概要記事と分析記事の両方を更新しました。
+- [Azure Red Hat OpenShift クラスターに Azure Monitor for containers を構成する](insights/container-insights-azure-redhat-setup.md) - Azure Red Hat OpenShift におけるエージェントのアップグレードに関する詳しい情報を追加しました。また、エージェントのアップグレード方法を識別するための補足情報を追加しました。
+- [ハイブリッド Kubernetes クラスターに Azure Monitor for containers を構成する](insights/container-insights-hybrid-setup.md) - Kubelet の cAdvisor を使用した secure port:10250 のサポート追加を反映するために更新しました。
+- [Azure Monitor for containers エージェントを管理する方法](insights/container-insights-manage-agent.md) - Azure Red Hat OpenShift と他の種類の Kubernetes クラスターとを比較して、メトリック スクレーピングの動作と構成に関する詳細情報を更新しました。
+- [Azure Monitor for containers の Prometheus 統合を構成する](insights/container-insights-prometheus-integration.md) - Azure Red Hat OpenShift と他の種類の Kubernetes クラスターとを比較して、メトリック スクレーピングの動作と構成に関する詳細情報を更新しました。
+- [メトリックのための Azure Monitor for containers の更新方法](insights/container-insights-update-metrics.md) - Azure Red Hat OpenShift と他の種類の Kubernetes クラスターとを比較して、メトリック スクレーピングの動作と構成に関する詳細情報を更新しました。
 
 
 #### <a name="azure-monitor-for-vms"></a>VM に対する Azure Monitor

@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 060399952545c903fec8ecf08d99e438883c9fd1
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 91b9c71e7c735fca08f71ca37ed28734c8d634a1
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902533"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079869"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>インポートされたデータを使用してサーバーを評価する
 
@@ -109,7 +109,7 @@ CSV テンプレートをダウンロードし、サーバー情報を追加し�
 **IP アドレス (IP address)** | いいえ | サーバー アドレス。
 **コア** | はい | サーバーに割り当てられているプロセッサ コアの数。
 **[メモリ]** | はい | サーバーに割り当てられている合計 RAM (MB 単位)。
-**OS 名** | はい | サーバーのオペレーティング システム。
+**OS 名** | はい | サーバーのオペレーティング システム。 <br/> この[一覧](#supported-operating-system-names)内の名前と一致するか、この名前を含むオペレーティング システム名は、評価によって認識されます。
 **OS バージョン** | いいえ | サーバーのオペレーティング システムのバージョン。
 **ディスクの数** | いいえ | 個々のディスクの詳細が指定されている場合は必要ありません。
 **Disk 1 size (ディスク 1 のサイズ)**  | いいえ | ディスクの最大サイズ (GB 単位)。<br/>テンプレートに[列を追加](#add-multiple-disks)することで、さらにディスクの詳細を追加できます。 最大 8 つのディスクを追加できます。
@@ -141,7 +141,7 @@ CSV テンプレートをダウンロードし、サーバー情報を追加し�
 **部署** | いいえ | サーバーが属している部署。
 **Business owner (ビジネス オーナー)** | いいえ | 部署の所有者。
 **Business application name (ビジネス アプリケーション名)** | いいえ | アプリが属しているアプリケーションの名前。
-**Location** | いいえ | サーバーが配置されているデータセンター。
+**場所** | いいえ | サーバーが配置されているデータセンター。
 **Server decommission date (サーバーの使用停止日)** | いいえ | 物理サーバー、または仮想サーバーの基となる物理サーバーの使用停止日。
 
 ### <a name="add-operating-systems"></a>オペレーティング システムを追加する

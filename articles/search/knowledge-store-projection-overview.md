@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: d8302b69f1e868536eb954a650a62f41e4006b82
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: d264768bf27967d1a778400ae4e9e6f2e054d746
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754526"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942970"
 ---
 # <a name="projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Azure Cognitive Search のナレッジ ストアでのプロジェクション
 
@@ -211,3 +211,8 @@ Azure Cognitive Search では、インデックス作成の一環として組み
 
 > [!div class="nextstepaction"]
 > [REST でナレッジ ストアを作成する](knowledge-store-create-rest.md)
+
+スライス、インラインの整形、リレーションシップなどの高度なプロジェクションの概念について説明するチュートリアルについては、「[ナレッジ ストアでプロジェクションを定義する ](knowledge-store-projections-examples.md)」を開始してください。
+
+> [!div class="nextstepaction"]
+> [ナレッジ ストアでのプロジェクションを定義する](knowledge-store-projections-examples.md)

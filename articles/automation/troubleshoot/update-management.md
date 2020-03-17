@@ -8,12 +8,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 1b0047cda3664759f4f1b6499c8a54ee22f98ab3
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 359f78cabbe0372e6892695c092ae49b62df7bfa
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227452"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944193"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Update Management の問題をトラブルシューティングする
 
@@ -219,14 +219,17 @@ Failed to start the runbook. Check the parameters passed. RunbookName Patch-Micr
 
 該当する場合は、更新プログラムの展開に[動的グループ](../automation-update-management-groups.md)を使用します。 追加として:
 
-* マシンがまだ存在し、到達可能であることを確認します。 存在しない場合は、展開を編集してそのマシンを削除します。
+* マシンがまだ存在し、到達可能であることを確認します。 
+* そのマシンが存在しない場合は、展開を編集してそのマシンを削除します。
 * Update Management に必要なポートとアドレスの一覧については、「[ネットワークの計画](../automation-update-management.md#ports)」セクションを参照し、ご使用のマシンがこれらの要件を満たしていることを確認します。
-* Log Analytics で次のクエリを実行して、環境内で `SourceComputerId` が変更されているマシンを見つけます。 `Computer` 値は同じで `SourceComputerId` 値が異なるコンピューターを探します。 
+* Hybrid Runbook Worker エージェントのトラブルシューティングツールを使用して、Hybrid Runbook Worker への接続を確認します。 このトラブルシューティング ツールの詳細については、[更新エージェントの問題のトラブルシューティング](update-agent-issues.md)に関する記事を参照してください。
+* Log Analytics で次のクエリを実行して、お使いの環境内で `SourceComputerId` が変更されているマシンを見つけます。 `Computer` 値は同じで `SourceComputerId` 値が異なるコンピューターを探します。
 
    ```loganalytics
    Heartbeat | where TimeGenerated > ago(30d) | distinct SourceComputerId, Computer, ComputerIP
    ```
-   影響を受けるマシンを見つけたら、それらのマシンをターゲットとする更新プログラムの展開を編集し、その後、`SourceComputerId` が正しい値を反映するようにそれらのマシンの削除と再追加を行います。
+
+* 影響を受けるマシンを見つけたら、それらのマシンをターゲットとする更新プログラムの展開を編集し、その後、`SourceComputerId` が正しい値を反映するようにそれらのマシンの削除と再追加を行います。
 
 ## <a name="updates-nodeployment"></a>シナリオ:展開なしで更新プログラムがインストールされる
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 45cb07de9ddc7854e6da8b8739acfaa95dd0ed01
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: d920bde856521f1e662536c1187881e143612039
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304125"
+ms.locfileid: "78359107"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>NAT ゲートウェイ リソースを使用した仮想ネットワークの設計 (パブリック プレビュー)
 
@@ -335,7 +335,7 @@ SNAT ポートは、同じ送信先 IP アドレスおよび同じ送信先ポ�
 ## <a name="limitations"></a>制限事項
 
 - NAT は、Standard SKU のパブリック IP、パブリック IP プレフィックス、ロード バランサーの各リソースと共に利用することができます。   Basic リソース (Basic Load Balancer など) やそれらから派生した製品を NAT と共存させることはできません。  Basic リソースは、NAT が構成されていないサブネットに配置する必要があります。
-- サポートされるアドレス ファミリーは IPv4 です。  IPv6 アドレス ファミリーを NAT で扱うことはできません。
+- サポートされるアドレス ファミリーは IPv4 です。  IPv6 アドレス ファミリーを NAT で扱うことはできません。  IPv6 プレフィックスを持つサブネットに NAT をデプロイすることはできません。
 - NAT を使用している場合、NSG フロー ログはサポートされません。
 - NAT を複数の仮想ネットワークにまたがって使用することはできません。
 
@@ -352,7 +352,7 @@ SNAT ポートは、同じ送信先 IP アドレスおよび同じ送信先ポ�
 * [仮想ネットワーク NAT](nat-overview.md) について学習する。
 * [NAT ゲートウェイ リソースのメトリックとアラート](nat-metrics.md)について学習する。
 * [NAT ゲートウェイ リソースのトラブルシューティング](troubleshoot-nat.md)について学習する。
-* [UserVoice で新機能を提案する](https://aka.ms/natuservoice)。
+* [UserVoice で Virtual Network NAT の新機能の構築を提案する](https://aka.ms/natuservoice)。
 * [パブリック プレビューに関するフィードバックを送る](https://aka.ms/natfeedback)。
 * NAT ゲートウェイを検証するためのチュートリアル
   - [Azure CLI](tutorial-create-validate-nat-gateway-cli.md)

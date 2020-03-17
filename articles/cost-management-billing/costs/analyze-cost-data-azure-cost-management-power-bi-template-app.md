@@ -4,16 +4,16 @@ description: この記事では、Azure Cost Management Power BI アプリをイ
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 03/05/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
-ms.openlocfilehash: 4a50ce5c386f1b928e9f767891840c84534938a9
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: bc676910a05dbec97ae05578399029f85f71e1ef
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169708"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399633"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Enterprise Agreement (EA) 用の Azure Cost Management Power BI アプリを使用してコストを分析する
 
@@ -43,7 +43,7 @@ Azure Cost Management Power BI アプリは現在、[Enterprise Agreement](https
   ![新しいアプリを開始する - 接続](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-data2.png)
 9. 表示されるダイアログで、**BillingProfileIdOrEnrollmentNumber** の EA 登録番号を入力します。 取得するデータの月数を指定します。 既定の **[範囲]** 値である **[Enrollment Number]\(登録番号\)** のままにして、 **[次へ]** を選択します。  
   ![EA 登録情報を入力する](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
-10. 次のダイアログでは、Azure に接続し、予約インスタンスの推奨事項に必要なデータを取得します。 構成された既定値のままにして、 **[サインイン]** を選択します。  
+10. 次のダイアログでは、Azure に接続し、予約インスタンスの推奨事項に必要なデータを取得します。 "*構成された既定値のままにして*"、 **[サインイン]** を選択します。  
   ![Azure への接続](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
 11. 最後のインストール手順では、EA 登録に接続し、[エンタープライズ管理者](../manage/understand-ea-roles.md)アカウントが必要です。 **[サインイン]** を選択して、お客様の EA 登録で認証します。 この手順では、Power BI でデータ更新操作も開始します。  
   ![EA 登録に接続する](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png)  
@@ -124,6 +124,50 @@ _[Normalized Size]\(正規化されたサイズ\)_ と _[Recommended Quantity No
 **[RI purchases]\(RI の購入\)** - このレポートには、指定した期間における RI の購入が表示されます。
 
 **[Price sheet]\(価格シート\)** - このレポートには、課金アカウントまたは EA 登録に固有の価格の詳細な一覧が表示されます。
+
+## <a name="troubleshoot-problems"></a>問題のトラブルシューティング
+
+Power BI アプリに問題がある場合は、次のトラブルシューティング情報が役立つ場合があります。
+
+### <a name="budgetamount-error"></a>BudgetAmount エラー
+
+次のエラーが表示される場合があります。
+
+```
+Something went wrong
+There was an error when processing the data in the dataset.
+Please try again later or contact support. If you contact support, please provide these details.
+Data source error: The 'budgetAmount' column does not exist in the rowset. Table: Budgets.
+```
+
+#### <a name="cause"></a>原因
+
+このエラーは、基になるメタデータのバグが原因で発生します。 この問題が発生するのは、Azure portal 内の **[コスト管理] > [予算]** で使用できる予算がないためです。 バグ修正プログラムは、Power BI Desktop と Power BI サービスにデプロイするプロセスにあります。 
+
+#### <a name="solution"></a>解決策
+
+- バグが修正されるまでは、Azure portal 内で課金アカウントまたは EA 登録レベルでテスト予算を追加することで、この問題を回避できます。 テスト予算により、Power BI との接続がブロック解除されます。 予算の作成方法の詳細については、「[チュートリアル: Azure の予算を作成して管理する](tutorial-acm-create-budgets.md)」を参照してください。
+
+
+### <a name="invalid-credentials-for-azureblob-error"></a>AzureBlob の無効な資格情報エラー
+
+次のエラーが表示される場合があります。
+
+```
+Failed to update data source credentials: The credentials provided for the AzureBlobs source are invalid.
+```
+
+#### <a name="cause"></a>原因
+
+このエラーは、AutoFitComboMeter BLOB 接続の認証方法を変更した場合に発生します。
+
+#### <a name="solution"></a>解決策
+
+1. 対象のデータに接続します。
+1. EA 登録と月数を入力した後、認証方法に既定値の **[匿名]** をそのまま使用し、プライバシー レベルの設定に **[なし]** を使用します。  
+  ![Azure への接続](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png)  
+1. 次のページで、認証方法に **[OAuth2]** を設定し、プライバシー レベルに **[なし]** を設定します。 次に、サインインしてお客様の登録で認証します。 この手順により、Power BI データの更新操作も開始されます。
+
 
 ## <a name="data-reference"></a>データ参照
 
