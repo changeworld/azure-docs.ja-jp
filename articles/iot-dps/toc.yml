@@ -97,6 +97,8 @@
       href: concepts-security.md
     - name: サービス
       href: concepts-service.md
+    - name: DPS IP アドレスについて
+      href: iot-dps-understand-ip-address.md
     - name: TPM の構成証明
       href: concepts-tpm-attestation.md
     - name: 対称キーの構成証明
@@ -127,6 +129,8 @@
           href: how-to-manage-dps-with-cli.md
         - name: Provisioning Service API へのアクセスの制御
           href: how-to-control-access.md
+        - name: IP フィルター処理を構成する
+          href: iot-dps-ip-filtering.md
     - name: IoT Edge デバイスのプロビジョニング
       items:
         - name: Linux

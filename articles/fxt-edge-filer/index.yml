@@ -1,42 +1,60 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure FXT Edge Filer のドキュメント
+summary: Azure FXT Edge Filer ハイブリッド ストレージ キャッシュは、ファイルベースの読み取り集中型ハイ パフォーマンス コンピューティング (HPC) ワークフローにおけるデータ アクセスを高速化する、ハードウェアおよびソフトウェア ハイブリッド システムです。
 metadata:
   title: Azure FXT Edge Filer のドキュメント
-  description: 読み取り集中型のハイ パフォーマンス コンピューティング (HPC) タスクのキャッシュ レイヤーとして Azure FXT Edge Filer を使用します
-  author: ekpgh
+  description: 読み取り集中型のハイ パフォーマンス コンピューティング (HPC) タスクのキャッシュ レイヤーとして Azure FXT Edge Filer を使用します。
   ms.service: fxt-edge-filer
   ms.topic: landing-page
-  ms.date: 07/10/2019
+  author: ronhogue
   ms.author: rohogue
-abstract:
-  description: Azure FXT Edge Filer ハイブリッド ストレージ キャッシュは、ファイルベースの読み取り集中型ハイ パフォーマンス コンピューティング (HPC) ワークフローにおけるデータ アクセスを高速化する、ハードウェアおよびソフトウェア ハイブリッド システムです。 3 つ以上の Azure FXT Edge Filer デバイスからなるクラスターでは、オンプレミス NAS システム (NetApp または Dell EMC Isilon)、クラウド ストレージ、または複合型のソリューションのストレージ パフォーマンスを加速させることができます。
-sections:
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="fxt-install">Azure FXT Edge Filer ハードウェアをインストールする</a>
-          - html: <a href="fxt-network-power">Azure FXT Edge Filer のネットワーク接続を作成する</a>
-          - html: <a href="fxt-node-password">ハードウェア ノードでルート パスワードを設定する</a>
-          - html: <a href="fxt-cluster-create">ハイブリッド ストレージ キャッシュ クラスターを作成する</a>
-          - html: <a href="fxt-add-nodes">クラスター ノードを追加する</a>
-          - html: <a href="fxt-add-storage">バックエンド ストレージを追加して仮想名前空間を構成する</a>
-          - html: <a href="fxt-configure-network">クラスターのネットワーク設定を構成する</a>
-  - title: ハウツー ガイド
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="fxt-mount-clients">Azure FXT Edge Filer クラスターにクライアントを接続する</a>
-          - html: <a href="fxt-monitor">Azure FXT Edge Filer を監視する</a>
-          - html: <a href="fxt-power-off">ハードウェア ノードの電源を安全にオフにする</a>
-  - title: リソース
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="fxt-specs">ハードウェア仕様</a>
-          - html: <a href="fxt-additional-doc">その他のドキュメント</a>
-          - html: <a href="fxt-support-ticket">サポート チケットを開く</a>
+  ms.date: 03/11/2020
+  ms.openlocfilehash: bf1ab34e0ac7477133933886bb07d16f4574c788
+  ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/13/2020
+  ms.locfileid: "79298854"
+landingContent:
+- title: Azure FXT Edge Filer について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure FXT Edge Filer とは
+      url: fxt-overview.md
+- title: はじめに
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 1 - ハードウェアをインストールする
+      url: fxt-install.md
+    - text: 2 - ケーブルを接続する
+      url: fxt-network-power.md
+    - text: 3 - ハードウェア パスワードを設定する
+      url: fxt-node-password.md
+    - text: 4 - クラスターを作成する
+      url: fxt-cluster-create.md
+    - text: 5 - クラスター ノードを追加する
+      url: fxt-add-nodes.md
+    - text: 6 - バックエンド ストレージを追加して仮想名前空間を構成する
+      url: fxt-add-storage.md
+    - text: 7 - クラスターのネットワーク設定を構成する
+      url: fxt-configure-network.md
+- title: 管理する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: クラスターにクライアントをマウントする
+      url: fxt-mount-clients.md
+    - text: ハードウェアの状態を監視する
+      url: fxt-monitor.md
+    - text: ハードウェアの電源を安全にオフにする
+      url: fxt-power-off.md
+- title: リソース
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: ハードウェア仕様
+      url: fxt-specs.md
+    - text: その他のドキュメント
+      url: fxt-additional-doc.md

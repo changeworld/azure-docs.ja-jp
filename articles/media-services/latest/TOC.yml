@@ -8,12 +8,12 @@
       displayName: release notes
       href: release-notes.md
 - name: クイックスタート
+  expanded: true
   items:
     - name: ポータルと Wirecast を使用したライブ イベント
       displayName: 'live, event, portal, wirecast'
       href: live-events-wirecast-quickstart.md
 - name: チュートリアル
-  expanded: true
   items:
     - name: リモート ファイルのエンコードとビデオのストリーム配信
       items:
@@ -42,7 +42,7 @@
       href: protect-with-drm.md
 - name: サンプル
   items:
-    - name: Media Services のサンプル
+    - name: Media Services v3 のサンプル
       displayName: '.NET, Java'
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-media-services'
     - name: Media Services v3 の REST サンプル
@@ -71,8 +71,6 @@
         - name: Transform と Job
           href: transforms-jobs-concept.md
           displayName: 'preset, schema'
-        - name: エラー コード
-          href: job-error-codes.md
     - name: コンテンツのエンコード
       items:
         - name: 概要
@@ -92,8 +90,6 @@
           displayName: 'analyzing, presets, jobs'
         - name: Transform と Job
           href: transforms-jobs-concept.md
-        - name: ジョブ エラー コード
-          href: job-error-codes.md
     - name: ライブ ストリーミング
       items:
         - name: 概要
@@ -101,7 +97,7 @@
         - name: ライブ イベントとライブ出力
           href: live-events-outputs-concept.md
           displayName: 'vanity, ingest'
-        - name: おすすめのライブ エンコーダー
+        - name: テスト済みのオンプレミス ライブ エンコーダー
           href: recommended-on-premises-live-encoders.md
         - name: タイムシフトとライブツー VOD
           displayName: 'archive, dvr'
@@ -114,10 +110,6 @@
           href: live-event-states-billing.md
         - name: Latency
           href: live-event-latency.md
-        - name: オンプレミス エンコーダー パートナーになる
-          href: become-on-premises-encoder-partner.md
-        - name: ライブ イベントのエラー コード
-          href: live-event-error-codes.md
     - name: パッケージと配信
       items:
         - name: 動的パッケージ
@@ -138,8 +130,6 @@
           href: streaming-locators-concept.md
         - name: ストリーミング ポリシー
           href: streaming-policy-concept.md
-        - name: ストリーミング エンドポイントのエラー コード
-          href: streaming-endpoint-error-codes.md
     - name: コンテンツの保護
       items:
         - name: 動的暗号化とキー配信
@@ -211,20 +201,24 @@
   items:
     - name: はじめに
       items:
-        - name: アカウントの作成 - ポータル
-          href: create-account-portal.md
-        - name: アカウントの作成 - CLI
-          href: create-account-cli-how-to.md
-          displayName: storage
-        - name: アカウント資格情報のリセット - CLI
+        - name: アカウントを作成する
+          items:
+            - name: ポータルを使用する
+              href: create-account-portal.md
+            - name: CLI の場合
+              href: create-account-cli-how-to.md
+              displayName: storage
+        - name: アカウント資格情報のリセット
           href: cli-reset-account-credentials.md
-        - name: API へのアクセス - ポータル
-          href: access-api-portal.md
-        - name: API へのアクセス - CLI
-          href: access-api-cli-how-to.md
-        - name: メディア占有ユニットのスケーリング - CLI
+        - name: API にアクセスする
+          items:
+            - name: ポータルを使用する
+              href: access-api-portal.md
+            - name: CLI の場合
+              href: access-api-cli-how-to.md
+        - name: メディア占有ユニットをスケーリングする
           href: media-reserved-units-cli-how-to.md
-        - name: 資産の作成 - CLI
+        - name: アセットを作成する
           href: cli-create-asset.md
     - name: 開発者ガイド
       items:
@@ -244,31 +238,33 @@
               href: configure-connect-python-howto.md
     - name: コンテンツをアップロードする
       items:
-        - name: HTTPS から - .NET
+        - name: HTTPS から
           displayName: upload
           href: job-input-from-http-how-to.md
-        - name: ローカル ファイルから - .NET
-          displayName: upload
-          href: job-input-from-local-file-how-to.md
-        - name: ローカル ファイルから - REST
-          displayName: upload
-          href: upload-files-rest-how-to.md
-        - name: ローカル ファイルから - CLI
-          href: cli-upload-file-asset.md
+        - name: ローカル ファイルから
+          items:
+            - name: .NET の場合
+              displayName: upload
+              href: job-input-from-local-file-how-to.md
+            - name: REST の場合
+              displayName: upload
+              href: upload-files-rest-how-to.md
+            - name: CLI の場合
+              href: cli-upload-file-asset.md
     - name: 変換とジョブの作成
       items:
-        - name: 変換の作成 - CLI
+        - name: 変換を作成する
           href: cli-create-transform.md
-        - name: ジョブの作成 - CLI
+        - name: ジョブを作成する
           href: cli-create-jobs.md
         - name: 複数の変換出力を含むジョブ
           href: job-multiple-transform-outputs.md
     - name: コンテンツのエンコード
       items:
-        - name: ジョブ入力としての HTTPS - .NET
+        - name: ジョブ入力としての HTTPS
           displayName: 'encode, encoding'
           href: job-input-from-http-how-to.md
-        - name: ジョブ入力としてのローカル ファイル - .NET
+        - name: ジョブ入力としてのローカル ファイル
           displayName: 'encode, encoding'
           href: job-input-from-local-file-how-to.md
         - name: カスタム変換を使用してエンコードする
@@ -290,6 +286,16 @@
             - name: REST の場合
               href: subclip-video-rest-howto.md
               displayName: 'subclipping, clip, edit, trim, clipping'
+        - name: ジョブ エラー コード
+          href: job-error-codes.md
+    - name: ライブ ストリーム配信
+      items:
+        - name: ポータルと Wirecast を使用したライブ イベント
+          href: live-events-wirecast-quickstart.md
+        - name: オンプレミス エンコーダーの確認
+          href: become-on-premises-encoder-partner.md
+        - name: ライブ イベントのエラー コード
+          href: live-event-error-codes.md
     - name: Event Grid の使用
       items:
         - name: イベントの監視 - ポータル
@@ -304,7 +310,7 @@
           href: media-services-diagnostic-logs-howto.md
     - name: コンテンツの保護
       items:
-        - name: コンテンツ キー ポリシーの取得 - .NET
+        - name: コンテンツ キー ポリシーの取得
           href: get-content-key-policy-dotnet-howto.md
         - name: iOS 用のオフラインの FairPlay
           href: offline-fairplay-for-ios.md
@@ -325,7 +331,9 @@
           displayName: filters
     - name: コンテンツを配信する
       items:
-        - name: 資産の公開 - CLI
+        - name: ストリーミング エンドポイントを管理する
+          href: manage-streaming-endpoints-howto.md
+        - name: 資産を公開する
           href: cli-publish-asset.md
         - name: ストリーミング ロケーターの作成と URL の構築
           href: create-streaming-locator-build-url.md

@@ -50,6 +50,8 @@
       href: named-entity-types.md
     - name: 言語とリージョンのサポート
       href: language-support.md
+    - name: テキスト オフセット
+      href: concepts/text-offsets.md
 - name: 操作方法ガイド
   items:
     - name: Text Analytics API を呼び出す

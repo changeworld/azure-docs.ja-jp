@@ -71,13 +71,9 @@
           displayName: 'compliance, fedramp, soc, fact, fisc, hitrust, pci, iso'
         - name: セキュリティの運用方法
           href: sql-database-security-best-practice.md
-        - name: アクセス管理
-          items:
-            - name: アクセス制御
-              href: sql-database-control-access.md
-            - name: ログインとユーザー
-              href: sql-database-manage-logins.md
-        - name: 認証
+        - name: ログイン、ユーザー アカウント、ロール、およびアクセス許可
+          href: sql-database-manage-logins.md
+        - name: Azure AD Authentication
           href: sql-database-aad-authentication.md
           items:
             - name: Azure AD 認証の構成
@@ -86,6 +82,8 @@
               href: sql-database-ssms-mfa-authentication.md
             - name: 多要素認証の構成
               href: sql-database-ssms-mfa-authentication-configure.md
+            - name: 条件付きアクセス
+              href: sql-database-conditional-access.md
         - name: データ保護
           items:
             - name: Transparent Data Encryption (TDE)
@@ -108,12 +106,12 @@
                   href: sql-database-always-encrypted.md
                 - name: Azure キー コンテナーの使用
                   href: sql-database-always-encrypted-azure-key-vault.md
-        - name: 監視、ログ、監査
+        - name: 監査
           items:
-            - name: 監査
-              items:
-                - name: SQL Database 監査の概要
-                  href: sql-database-auditing.md
+            - name: SQL Database 監査の概要
+              href: sql-database-auditing.md
+            - name: 監査ログの形式
+              href: sql-database-audit-log-format.md
         - name: セキュリティ管理
           items:
             - name: Advanced Data Security
@@ -140,18 +138,12 @@
                   href: sql-database-vnet-service-endpoint-rule-powershell.md
             - name: Private Link
               href: sql-database-private-endpoint-overview.md
-            - name: 監査ログの形式
-              href: sql-database-audit-log-format.md
-            - name: 条件付きアクセス
-              href: sql-database-conditional-access.md
         - name: Managed Instance のセキュリティ
           items:
             - name: パブリック エンドポイントのセキュリティ保護
               href: sql-database-managed-instance-public-endpoint-securely.md
             - name: マネージド インスタンスの監査
               href: sql-database-managed-instance-auditing.md
-        - name: セキュリティ ベースライン
-          href: security-baseline.md
     - name: 接続とクエリ
       href: sql-database-connect-query.md
       items:
@@ -240,36 +232,40 @@
           href: sql-database-monitoring-tuning-index.yml
         - name: 監視とパフォーマンスの概要
           href: sql-database-monitor-tune-overview.md
-        - name: パフォーマンスの監視
+        - name: データベース アドバイザーと Query Performance Insight
           items:
-            - name: Azure SQL Analytics の監視
-              href: 'https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql'
-            - name: 診断テレメトリのログ記録
-              href: sql-database-metrics-diag-logging.md
-        - name: インテリジェントなパフォーマンス
-          items:
-            - name: 自動チューニング
-              href: sql-database-automatic-tuning.md
-            - name: Intelligent Insights によるパフォーマンスの分析
-              href: sql-database-intelligent-insights.md
-            - name: チューニング操作と推奨事項
-              href: sql-database-performance.md
             - name: データベース アドバイザーのパフォーマンスに関する推奨事項
               href: sql-database-advisor.md
-        - name: データベースを監視して調整する
+            - name: Query Performance Insights
+              href: sql-database-query-performance.md
+        - name: 自動チューニング
+          href: sql-database-automatic-tuning.md
+        - name: Intelligent Insights と SQL Analytics
           items:
-            - name: 手動チューニング
+            - name: Intelligent Insights によるパフォーマンスの分析
+              href: sql-database-intelligent-insights.md
+            - name: 診断テレメトリのログ記録
+              href: sql-database-metrics-diag-logging.md
+            - name: Intelligent Insights 診断ログの使用
+              href: sql-database-intelligent-insights-use-diagnostics-log.md
+            - name: Intelligent Insights を使用したパフォーマンスのトラブルシューティング
+              href: sql-database-intelligent-insights-troubleshoot-performance.md
+            - name: SQL Analytics
+              href: 'https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql'
+        - name: 手動による監視とチューニング
+          items:
+            - name: クエリ パフォーマンスの問題の特定
+              href: sql-database-identify-query-performance-issues.md
+            - name: アプリケーションとデータベースのチューニングに関するガイダンス
               href: sql-database-performance-guidance.md
             - name: DMV を使用したパフォーマンスの監視
               href: sql-database-monitoring-with-dmvs.md
-            - name: クエリ ストアを使用したパフォーマンスの監視
-              href: sql-database-operate-query-store.md
-            - name: Intelligent Insights を使用したパフォーマンスのトラブルシューティング
-              href: sql-database-intelligent-insights-troubleshoot-performance.md
-            - name: Intelligent Insights 診断ログの使用
-              href: sql-database-intelligent-insights-use-diagnostics-log.md
             - name: インメモリ OLTP スペースの監視
               href: sql-database-in-memory-oltp-monitoring.md
+            - name: Hyperscale パフォーマンス診断
+              href: sql-database-hyperscale-performance-diagnostics.md
+            - name: 高密度エラスティック プールでのリソース管理
+              href: sql-database-elastic-pool-resource-management.md
             - name: 拡張イベント
               items:
                 - name: 拡張イベント
@@ -278,10 +274,6 @@
                   href: sql-database-xevent-code-event-file.md
                 - name: 拡張イベント - リング バッファー
                   href: sql-database-xevent-code-ring-buffer.md
-        - name: Hyperscale パフォーマンス診断
-          href: sql-database-hyperscale-performance-diagnostics.md
-        - name: 高密度エラスティック プールでのリソース管理
-          href: sql-database-elastic-pool-resource-management.md
     - name: スケーラビリティ
       items:
         - name: スケーラビリティのドキュメント
@@ -538,8 +530,6 @@
               href: sql-database-resource-limits-database-server.md
             - name: 接続のアーキテクチャ
               href: sql-database-connectivity-architecture.md
-            - name: 接続の設定
-              href: sql-database-connectivity-settings.md
         - name: データ同期
           items:
             - name: データ同期エージェント
@@ -552,10 +542,6 @@
               href: sql-database-best-practices-data-sync.md
             - name: データ同期のトラブルシューティング
               href: sql-database-troubleshoot-data-sync.md
-        - name: パフォーマンスの監視
-          items:
-            - name: Query Performance Insight
-              href: sql-database-query-performance.md
         - name: T-SQL の相違点
           href: sql-database-transact-sql-information.md
         - name: 機能

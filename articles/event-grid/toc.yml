@@ -8,6 +8,8 @@
       href: overview.md
     - name: メッセージング サービスの比較
       href: compare-messaging-services.md
+    - name: Premium と Basic サービス レベル
+      href: premium-basic-tiers.md
 - name: クイックスタート
   expanded: true
   items:
@@ -102,6 +104,8 @@
           href: security-authentication.md
         - name: 承認
           href: security-authorization.md
+        - name: ネットワークのセキュリティ
+          href: network-security.md
     - name: 配信と再試行
       href: delivery-and-retry.md
     - name: イベント フィルター
@@ -118,6 +122,12 @@
       href: geo-disaster-recovery.md
 - name: 操作方法ガイド
   items:
+    - name: プライベート エンドポイントの構成 (プレビュー)
+      href: configure-private-endpoints.md
+    - name: IP ファイアウォールの構成 (プレビュー)
+      href: configure-firewall.md
+    - name: 価格レベルの更新
+      href: update-tier.md
     - name: カスタム トピックへの投稿
       href: post-to-custom-topic.md
     - name: HTTP エンドポイントでのイベントの受信

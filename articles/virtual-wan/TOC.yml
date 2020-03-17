@@ -28,6 +28,8 @@
           href: virtual-wan-configure-automation-providers.md
     - name: IPsec ポリシー
       href: virtual-wan-ipsec.md
+    - name: ポイント対サイト VPN の概要
+      href: ../vpn-gateway/point-to-site-about.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
 - name: 操作方法ガイド
   items:
     - name: 仮想ネットワーク ゲートウェイを Virtual WAN に接続する
@@ -56,6 +58,10 @@
           href: certificates-point-to-site.md
         - name: ユーザー VPN 用に Azure AD テナントを構成する
           href: openvpn-azure-ad-tenant.md
+        - name: Always-On VPN ユーザー トンネルを構成する
+          href: ../vpn-gateway/vpn-gateway-howto-always-on-user-tunnel.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
+        - name: Always-On VPN デバイス トンネルを構成する
+          href: ../vpn-gateway/vpn-gateway-howto-always-on-device-tunnel.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
         - name: ユーザー VPN の Multi-Factor Authentication (MFA) を有効にする
           href: openvpn-azure-ad-mfa.md
         - name: ユーザー VPN 用に Azure AD 認証を構成する
@@ -91,7 +97,7 @@
     - name: ブログ
       href: 'https://azure.microsoft.com/blog/topics/networking'
     - name: サブスクリプションとサービスの制限
-      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/virtual-wan'
     - name: 料金計算ツール

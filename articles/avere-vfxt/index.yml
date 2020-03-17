@@ -1,24 +1,64 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Avere vFXT for Azure のドキュメント
+summary: Avere vFXT for Azure では、データ集約型のハイ パフォーマンス コンピューティング (HPC) タスク向けのクラウドベースのキャッシュ レイヤーを提供します。
 metadata:
   title: Avere vFXT for Azure のドキュメント
-  description: 読み取り集中型のハイ パフォーマンス コンピューティング (HPC) タスクのキャッシュ レイヤーとして Avere vFXT を使用します
-  services: avere-vfxt
-  author: ekpgh
+  description: 読み取り集中型のハイ パフォーマンス コンピューティング (HPC) タスクのキャッシュ レイヤーとして Avere vFXT を使用します。
   ms.service: avere-vfxt
   ms.topic: landing-page
-  ms.date: 12/19/2019
+  author: ronhogue
   ms.author: rohogue
-abstract:
-  description: 'Avere vFXT for Azure では、データ集約型のハイ パフォーマンス コンピューティング (HPC) タスク向けのクラウドベースのキャッシュ レイヤーを提供します。 コンピューティング ノードの近くにファイルをキャッシュすることによって、Avere vFXT では読み取り時間が短縮されるため、負荷のピーク時でも作業をよりスムーズに行うことができます。 Avere vFXT は、搭載するクライアント コアが 1,000 から 40,000 までのシステムで最適に動作します。 <p>Avere vFXT は、既存のデータ ストレージと連携して Azure ベースのコンピューティング リソースの近くにファイルを配置します。 アクティブなファイルは、データ センターに長期間保存されます。'
-sections:
-  - title: Avere vFXT for Azure を使ってみる
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="avere-vfxt-deploy-plan">Avere vFXT for Azure システムを計画する</a>
-          - html: <a href="avere-vfxt-deploy-overview">Avere vFXT デプロイについて学習する</a>
-          - html: <a href="avere-vfxt-prereqs">前提条件を満たす</a>
-          - html: <a href="avere-vfxt-deploy">Avere vFXT クラスターをデプロイする</a>
+  ms.date: 03/11/2020
+  ms.openlocfilehash: 9b80c5dae1b9b08a5fc71c321813a28b576e0de4
+  ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/13/2020
+  ms.locfileid: "79297783"
+landingContent:
+- title: Avere vFXT for Azure について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Avere vFXT for Azure とは
+      url: avere-vfxt-overview.md
+  - linkListType: concept
+    links:
+    - text: よく寄せられる質問
+      url: avere-vfxt-faq.md
+- title: 計画と準備
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Avere vFXT システムの計画
+      url: avere-vfxt-deploy-plan.md
+  - linkListType: how-to-guide
+    links:
+    - text: Avere vFXT の作成を準備する
+      url: avere-vfxt-prereqs.md
+- title: Create and deploy
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: デプロイの概要
+      url: avere-vfxt-deploy-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: vFXT クラスターのデプロイ
+      url: avere-vfxt-deploy.md
+- title: 接続と管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: vFXT クラスターへのアクセス
+      url: avere-vfxt-cluster-gui.md
+    - text: サポートのアップロードを有効にする
+      url: avere-vfxt-enable-support.md
+    - text: 記憶域を構成する
+      url: avere-vfxt-add-storage.md
+    - text: Avere vFXT クラスターをマウントする
+      url: avere-vfxt-mount-clients.md
+    - text: vFXT クラスターへのデータの移動
+      url: avere-vfxt-data-ingest.md
+    - text: Avere vFXT クラスターの管理
+      url: avere-vfxt-manage-cluster.md

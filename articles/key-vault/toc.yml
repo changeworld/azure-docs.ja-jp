@@ -125,6 +125,8 @@
       href: event-grid-tutorial.md
     - name: Event Grid と Logic Apps を使用した通知の受信
       href: event-grid-logicapps.md
+    - name: シングルユーザー リソースのシークレットのローテーション
+      href: tutorial-rotation.md
     - name: Azure Policy との統合
       href: azure-policy.md
     - name: Azure Private Link サービスとの統合 (プレビュー)

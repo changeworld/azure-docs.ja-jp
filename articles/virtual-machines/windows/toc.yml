@@ -639,8 +639,10 @@
           href: snapshot-copy-managed-disk.md
         - name: Disk Storage の予約
           href: disks-reserved-capacity.md
-        - name: 増分スナップショットの作成
+        - name: 増分スナップショットの作成 - PowerShell
           href: disks-incremental-snapshots.md
+        - name: 増分スナップショットの作成 - ポータル
+          href: disks-incremental-snapshots-portal.md
         - name: 非管理対象ディスクのバックアップ
           href: incremental-snapshots.md
         - name: 移行と変換

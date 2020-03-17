@@ -154,6 +154,8 @@
           href: sisense.md
         - name: Redash
           href: redash.md
+        - name: Kibana (K2Bridge コネクタ)
+          href: k2bridge.md
     - name: セキュリティで保護
       items:
         - name: クラスターのセキュリティを管理する
