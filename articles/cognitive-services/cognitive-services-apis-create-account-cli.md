@@ -110,7 +110,7 @@ az group create \
 | サービス            | 種類                 |
 |--------------------|----------------------|
 | Speech Services    | `SpeechServices`     |
-| 音声認識 | `SpeakerRecognition` |
+| Speech Recognition | `SpeakerRecognition` |
 
 ### <a name="language"></a>Language
 
