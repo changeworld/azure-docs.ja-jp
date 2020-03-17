@@ -11,24 +11,20 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/22/2019
+ms.date: 03/05/2020
 ms.author: apimpm
-ms.openlocfilehash: a206ef6eb529fc396ec4ecb82d468c19f9e54b8a
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 311ce34a4b5cfbb9a54a285094dac34c7dd5a225
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77108242"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126535"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API Management 開発者ポータルの概要
 
 開発者ポータルは、自動的に生成され、完全にカスタマイズ可能な、API のドキュメントが含まれる Web サイトです。 API コンシューマーはここで API を見つけ、使用方法を確認し、アクセスを要求し、試すことができます。
 
 この記事では、API Management の開発者ポータルのセルフホステッド バージョンとマネージド バージョンの違いについて説明します。 また、アーキテクチャについて説明し、よく寄せられる質問とその回答を紹介します。
-
-> [!WARNING]
->
-> 開発者ポータルの[プレビュー バージョンから一般公開バージョンへの移行方法について確認](#preview-to-ga)してください。
 
 ![API Management 開発者ポータル](media/api-management-howto-developer-portal/cover.png)
 
@@ -39,7 +35,7 @@ ms.locfileid: "77108242"
 開発者ポータルは 2 つの方法で構築できます。
 
 - **マネージド バージョン** - API Management インスタンスに組み込まれたポータルを編集およびカスタマイズします。URL `<your-api-management-instance-name>.developer.azure-api.net` からアクセスできます。 マネージド ポータルにアクセスしてカスタマイズする方法については、[こちらのドキュメント記事](api-management-howto-developer-portal-customize.md)を参照してください。
-- **セルフホステッド バージョン** - API Management インスタンスの外部にポータルをデプロイし、自らホスティングします。 このアプローチを使用すると、ポータルのコードベースを編集したり、提供されているコア機能を拡張したりできます。 また、自分でポータルを最新バージョンにアップグレードする必要もあります。 詳細および手順については、[ポータルのソース コードを含む GitHub リポジトリ][1]と[ウィジェットの実装に関するチュートリアル][3]を参照してください。 [マネージド バージョンのチュートリアル](api-management-howto-developer-portal-customize.md)では、ポータルの管理パネルについて説明します。これは、セルフホステッド バージョンでも取り上げられています。
+- **セルフホステッド バージョン** - API Management インスタンスの外部にポータルをデプロイし、自らホスティングします。 このアプローチでは、ポータルのコードベースを編集し、提供されているコア機能を拡張することができます。たとえば、サードパーティ システムと統合するためのカスタムウィジェットを実装します。 このシナリオでは、あなたがポータルの管理者であり、ポータルを最新バージョンにアップグレードする責任があります。 詳細および手順については、[ポータルのソース コードを含む GitHub リポジトリ][1]と[ウィジェットの実装に関するチュートリアル][3]を参照してください。 [マネージド バージョンのチュートリアル](api-management-howto-developer-portal-customize.md)では、ポータルの管理パネルについて説明します。これは、セルフホステッド バージョンでも共通となります。
 
 ## <a name="portal-architectural-concepts"></a>ポータルのアーキテクチャの概念
 
@@ -70,7 +66,7 @@ ms.locfileid: "77108242"
 
 ## <a name="faq"></a>よく寄せられる質問
 
-このセクションでは、新しい開発者ポータルに関してよく寄せられる一般的な質問に回答します。 セルフホステッド バージョンに関する質問については、[GitHub リポジトリの wiki セクション](https://github.com/Azure/api-management-developer-portal/wiki)を参照してください。
+このセクションでは、この開発者ポータルに関してよく寄せられる一般的な質問に回答します。 セルフホステッド バージョンに関する質問については、[GitHub リポジトリの wiki セクション](https://github.com/Azure/api-management-developer-portal/wiki)を参照してください。
 
 ### <a name="a-idpreview-to-ga-how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"/> ポータルのプレビューバージョンから移行するにはどうすればよいですか。
 
@@ -86,13 +82,13 @@ ms.locfileid: "77108242"
 
 一般公開の発表後にポータルをプロビジョニングした場合は、新しい既定のコンテンツが既に取り入れられているはずです。 ユーザー側の操作は必要ありません。
 
-### <a name="how-can-i-migrate-from-the-old-developer-portal-to-the-new-developer-portal"></a>以前の開発者ポータルから新しい開発者ポータルに移行するにはどうすればよいですか。
+### <a name="how-can-i-migrate-from-the-old-developer-portal-to-the-developer-portal"></a>以前の開発者ポータルからこの開発者ポータルに移行するにはどうすればよいですか。
 
 ポータルには互換性がないため、手動でコンテンツを移行する必要があります。
 
-### <a name="does-the-new-portal-have-all-the-features-of-the-old-portal"></a>新しいポータルには古いポータルのすべての機能がありますか。
+### <a name="does-the-portal-have-all-the-features-of-the-old-portal"></a>このポータルには古いポータルのすべての機能がありますか。
 
-新しい開発者ポータルでは、"*アプリケーション*" と "*問題*" はサポートされていません。 以前のポータルで "*問題*" を使用していて、新しいポータルでも必要な場合は、[専用の GitHub の問題](https://github.com/Azure/api-management-developer-portal/issues/122)にコメントを投稿してください。
+この開発者ポータルでは、*アプリケーション* と *問題* はサポートされなくなりました。
 
 対話型の開発者コンソールでの OAuth による認証は、まだサポートされていません。 問題の進展状況は [GitHub](https://github.com/Azure/api-management-developer-portal/issues/208) で追跡できます。
 
@@ -104,23 +100,25 @@ ms.locfileid: "77108242"
 
 ### <a name="functionality-i-need-isnt-supported-in-the-portal"></a>必要な機能がポータルでサポートされていない
 
-セルフホステッド バージョンを使用し、[独自のウィジェットを実装します][3]。
+[機能要求](https://aka.ms/apimwish) を開いたり、[不足している機能を自分で実装][3] したりすることができます。 機能を自分で実装する場合は、開発者ポータルをセルフホストするか、GitHub で PR を開いて、変更内容をマネージバージョンに含めることができます。
 
 ### <a name="how-can-i-automate-portal-deployments"></a>ポータルのデプロイを自動化するにはどうすればよいですか。
 
 マネージド バージョンとセルフホステッド バージョンのどちらを使用している場合でも、REST API を通じて開発者ポータルのコンテンツにプログラムでアクセスし、管理することができます。
 
-API については、[GitHub リポジトリの wiki セクション][2]に記載されています。 また、たとえばテスト環境から運用環境など、環境間でのポータル コンテンツの移行を自動化するために使用することもできます。 このプロセスの詳細については、GitHub にある[このドキュメント記事](https://aka.ms/apimdocs/migrateportal)を参照してください。
+API については、[GitHub リポジトリの wiki セクション][2]に記載されています。 たとえばテスト環境から運用環境など、環境間でのポータル コンテンツの移行を自動化するために使用できます。 このプロセスの詳細については、GitHub にある[このドキュメント記事](https://aka.ms/apimdocs/migrateportal)を参照してください。
 
 ### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>ポータルは、Azure Resource Manager テンプレートをサポートしていますか。また、API Management DevOps リソース キットと互換性がありますか。
 
 いいえ。
 
-### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-new-managed-portal-dependencies"></a>新しいマネージド ポータルの依存関係に対して追加の VNet 接続を有効にする必要がありますか。
+### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-managed-portal-dependencies"></a>マネージド ポータルの依存関係に対して追加の VNET 接続を有効にする必要がありますか。
 
 ほとんどの場合、必要ありません。
 
 API Management サービスが内部の VNet にある場合、開発者ポータルにはネットワーク内からしかアクセスできません。 管理エンドポイントのホスト名は、ポータルの管理インターフェイスにアクセスするために使用するコンピューターから、サービスの内部 VIP に解決される必要があります。 管理エンドポイントが DNS に登録されていることを確認してください。 設定に誤りがある場合は、次のエラーが表示されます: `Unable to start the portal. See if settings are specified correctly in the configuration (...)`
+
+API Management サービスが内部 VNet にあり、インターネットから Application Gateway 経由でアクセスする場合は、開発者ポータルと API Management の管理エンドポイントへの接続を有効にしてください。
 
 ### <a name="i-have-assigned-a-custom-api-management-domain-and-the-published-portal-doesnt-work"></a>カスタムの API Management ドメインを割り当てていますが、発行済みのポータルが正しく動作しません
 
@@ -138,24 +136,17 @@ API Management サービスが内部の VNet にある場合、開発者ポー�
 
 (VNet、サインイン、製品条項などの) ほとんどの構成変更には[ポータルの再発行](api-management-howto-developer-portal-customize.md#publish)が必要です。
 
-### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a>対話型コンソールを使用すると、CORS エラーが発生します
+### <a name="cors"></a> 対話型コンソールを使用すると、CORS エラーが発生します
 
 対話型コンソールは、ブラウザーからクライアント側の API 要求を行います。 API に [CORS ポリシー](api-management-cross-domain-policies.md#CORS)を追加して、CORS の問題を解決することができます。 すべてのパラメーターを手動で指定するか、ワイルドカード `*` の値を使用することができます。 次に例を示します。
 
 ```XML
-<cors>
+<cors allow-credentials="true">
     <allowed-origins>
-        <origin>*</origin>
+        <origin>https://contoso.com</origin>
     </allowed-origins>
-    <allowed-methods>
-        <method>GET</method>
-        <method>POST</method>
-        <method>PUT</method>
-        <method>DELETE</method>
-        <method>HEAD</method>
-        <method>OPTIONS</method>
-        <method>PATCH</method>
-        <method>TRACE</method>
+    <allowed-methods preflight-result-max-age="300">
+        <method>*</method>
     </allowed-methods>
     <allowed-headers>
         <header>*</header>
