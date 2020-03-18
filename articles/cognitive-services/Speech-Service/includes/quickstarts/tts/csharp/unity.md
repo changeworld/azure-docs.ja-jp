@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 9/19/2019
 ms.author: yinhew
-ms.openlocfilehash: f3b3d68e0154913e3eb6d101965ad33530502954
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 73a4477547c562a9960fe72b352e906676eadae5
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74818124"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78926009"
 ---
 > [!NOTE]
 > Unity では、Windows デスクトップ (x86 および x64) またはユニバーサル Windows プラットフォーム (x86、x64、ARM、ARM64)、Android (x86、ARM32、ARM64)、および iOS (x64 シミュレーター、ARM32 および ARM64) がサポートされています。
@@ -26,8 +26,7 @@ ms.locfileid: "74818124"
 
 > [!div class="checklist"]
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
-> * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md?tabs=unity)
-> * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md?tabs=unity)
+> * [開発環境を設定し、空のプロジェクトを作成する](../../../../quickstarts/setup-platform.md?tabs=unity)
 
 ## <a name="add-a-ui"></a>UI を追加する
 
@@ -94,11 +93,11 @@ ms.locfileid: "74818124"
 このアプリケーションは、Windows のスタンドアロン アプリまたは UWP アプリケーションとして Android にもデプロイできます。
 これらの追加のターゲットの構成について説明している、quickstart/csharp-unity フォルダー内の[サンプル リポジトリ](https://aka.ms/csspeech/samples)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [footer](./footer.md)]
 
 ## <a name="see-also"></a>関連項目
 
-- [カスタム音声を作成する](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
+- [Custom Voice を作成する](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
 - [カスタム音声サンプルを録音する](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

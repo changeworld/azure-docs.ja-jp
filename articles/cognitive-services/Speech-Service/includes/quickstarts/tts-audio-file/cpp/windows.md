@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 08/19/2019
 ms.author: wolfma
-ms.openlocfilehash: e1bbcd01d37620cce2707313abc59799c3f460b5
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 55bf7a1753b08212eab2026471662de5c1c36452
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77446459"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925141"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -23,8 +23,7 @@ ms.locfileid: "77446459"
 
 > [!div class="checklist"]
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
-> * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md?tabs=windows)
-> * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md?tabs=windows)
+> * [開発環境を設定し、空のプロジェクトを作成する](../../../../quickstarts/setup-platform.md?tabs=windows)
 
 ## <a name="add-sample-code"></a>サンプル コードを追加する
 
@@ -95,5 +94,5 @@ ms.locfileid: "77446459"
 
 ## <a name="see-also"></a>関連項目
 
-- [カスタム音声を作成する](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
+- [Custom Voice を作成する](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
 - [カスタム音声サンプルを録音する](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

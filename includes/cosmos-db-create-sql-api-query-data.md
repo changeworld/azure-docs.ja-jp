@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/05/2019
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 9971b16da42cdf1de0464857291c74a947535735
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 64c900e01496dad0d5f6a96d8d790ae0c2a8c95a
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181720"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927366"
 ---
 データ エクスプローラーでクエリを使用して、データを取得しフィルター処理できます。
 
-1. データ エクスプローラーの **[ドキュメント]** タブの上部で、既定のクエリ `SELECT * FROM c` を確認します。 このクエリでは、コレクション内のすべてのドキュメントを取得し、ID 順に表示します。 
+1. データ エクスプローラーの **[Items]\(項目\)** タブの上部で、既定のクエリ `SELECT * FROM c` を確認します。 このクエリでは、コレクション内のすべてのドキュメントを取得し、ID 順に表示します。 
    
    ![データ エクスプローラーの既定のクエリは `SELECT * FROM c`](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-query.png)
    

@@ -4,20 +4,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/13/2020
 ms.author: dapine
-ms.openlocfilehash: bfecfa1918d2e9199971b2f9738530dc1b4e3c4c
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 646cce25efcbebab6229389f63912346e3712cdd
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942788"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925394"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 開始する前に、必ず次のことを行ってください。
 
 > [!div class="checklist"]
-> * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md)
-> * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md)
+> * [開発環境を設定し、空のプロジェクトを作成する](../../../../quickstarts/setup-platform.md)
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
 > * [ソース ファイルを Azure BLOB にアップロードする](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
@@ -27,7 +26,7 @@ ms.locfileid: "75942788"
 
 次のインストール手順に従います。
 
-1. [https://tsiclientsample.azurewebsites.net/windFarmGen.html](https://editor.swagger.io ) にアクセスします。
+1. https://editor.swagger.io にアクセスします。
 1. **[ファイル]** 、 **[URL のインポート]** の順にクリックします。
 1. ご利用の Speech サービス サブスクリプションのリージョンを含む Swagger URL (`https://<your-region>.cris.ai/docs/v2.0/swagger`) を入力します。
 1. **[クライアントの生成]** をクリックし、 **[Python]** を選択します。

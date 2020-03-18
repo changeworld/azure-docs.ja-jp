@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: wolfma
-ms.openlocfilehash: 82b6647a87fad12243b1034f7d5c624f73d5aeb8
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 1ba1f2a61a293880e81dde0ce1f93460a555fa62
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77446612"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925330"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -22,8 +22,7 @@ ms.locfileid: "77446612"
 
 > [!div class="checklist"]
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
-> * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md?tabs=linux)
-> * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md?tabs=linux)
+> * [開発環境を設定し、空のプロジェクトを作成する](../../../../quickstarts/setup-platform.md?tabs=linux)
 > * オーディオ キャプチャ用のマイクにアクセスできることを確認する
 
 ## <a name="add-sample-code"></a>サンプル コードを追加する

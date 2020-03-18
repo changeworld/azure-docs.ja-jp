@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: eb131f3f53e04809ca21efda7367f03a79081bbc
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 95e8a30eaa59762ad7cf5b388326c9d3c9723d8e
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77446003"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925641"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -17,8 +17,7 @@ ms.locfileid: "77446003"
 
 > [!div class="checklist"]
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
-> * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md?tabs=jre)
-> * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md?tabs=jre)
+> * [開発環境を設定し、空のプロジェクトを作成する](../../../../quickstarts/setup-platform.md?tabs=jre)
 > * オーディオ キャプチャ用のマイクにアクセスできることを確認する
 
 ## <a name="add-sample-code"></a>サンプル コードを追加する

@@ -10,21 +10,21 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 4af31b281f4b2e7cdd7ed217753df55ce8009fa9
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: df2c3fc2ab6f6c742f56273119923a7e02cf8e43
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77446074"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383994"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 * Speech サービス用の Azure サブスクリプション キー。 [無料で 1 つ取得します](~/articles/cognitive-services/Speech-Service/get-started.md)。
-* [Python 3.5 以降](https://www.python.org/downloads/)。
+* [Python 3.5 から 3.8](https://www.python.org/downloads/)。
 * 以下のオペレーティング システム用の Python Speech SDK パッケージを入手できます。
     * Windows: x64 および x86。
     * Mac: macOS X バージョン 10.12 以降。
-    * Linux: x64 上の Ubuntu 16.04、Ubuntu 18.04、Debian 9。
+    * Linux: x64 上の Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8。
 * Linux では、以下のコマンドを実行して、必要なパッケージをインストールします。
 
   * Ubuntu の場合:
@@ -40,6 +40,16 @@ ms.locfileid: "77446074"
     sudo apt-get update
     sudo apt-get install build-essential libssl1.0.2 libasound2
     ```
+
+  * RHEL または CentOS 8 の場合:
+
+    ```sh
+    sudo yum update
+    sudo yum install alsa-lib openssl python3
+    ```
+
+> [!NOTE]
+> RHEL または CentOS 8 の場合、[Linux 用 OpenSSL の構成方法](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)に関するページの手順に従います。
 
 * Windows では、お使いのプラットフォームに対応した [Microsoft Visual Studio 2019 の Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)が必要です。
 
@@ -110,7 +120,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 ### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>Speech SDK と Visual Studio Code をインストールして使用する
 
-1. [Python](https://www.python.org/downloads/) の 64 ビット バージョン (3.5 以降) をお使いのコンピューターにダウンロードして、インストールします。
+1. お使いのコンピューターに 64 ビット バージョンの [Python](https://www.python.org/downloads/) 3.5 から 3.8 をダウンロードしてインストールします。
 1. [Visual Studio Code](https://code.visualstudio.com/Download) をダウンロードして、インストールします。
 1. Visual Studio Code を開いて、Python 拡張機能をインストールします。 メニューで **[ファイル]**  >  **[基本設定]**  >  **[拡張機能]** の順に選択します。 **Python** を検索します。
 
@@ -147,5 +157,5 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 ## <a name="see-also"></a>関連項目
 
-- [カスタム音声を作成する](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
+- [Custom Voice を作成する](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
 - [カスタム音声サンプルを録音する](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

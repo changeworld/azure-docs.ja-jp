@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 218d0dca43d126c1318c273603a4980697c465af
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 458a6940ce214ef1931a2cc9ee95f2cb5ca16779
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75752401"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925528"
 ---
-このガイドでは、Python 用 [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します。
+このガイドでは、Python 用 [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します。 このパッケージ名の使用を自分で開始する場合は、`pip install azure-cognitiveservices-speech` を実行します。
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
@@ -26,7 +26,7 @@ ms.locfileid: "75752401"
 - 以下のオペレーティング システム用の Python Speech SDK パッケージを入手できます。
   - Windows: x64 および x86
   - Mac: macOS X バージョン 10.12 以降
-  - Linux: x64 上の Ubuntu 16.04、Ubuntu 18.04、Debian 9
+  - Linux: x64 上の Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,27 +46,22 @@ ms.locfileid: "75752401"
         sudo apt-get install build-essential libssl1.0.2 libasound2
         ```
 
+  - RHEL または CentOS 8 では、以下のコマンドを実行して、必要なパッケージをインストールします。
+
+        ```sh
+        sudo yum update
+        sudo yum install alsa-lib openssl python3
+        ```
+
+> [!NOTE]
+> RHEL または CentOS 8 の場合、[Linux 用 OpenSSL の構成方法](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)に関するページの手順に従います。
+
 - Windows では、お使いのプラットフォームに対応した [Microsoft Visual Studio 2019 の Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)が必要です。 パッケージを初めてインストールする場合、このガイドを続行する前に Windows の再起動が必要になる場合があることに注意してください。
-- 最後に、[Python 3.5、3.6、または 3.7](https://www.python.org/downloads/) が必要になります。 インストールを確認するには、コマンド プロンプトを開き、コマンド `python --version` を入力して、結果を確認します。 適切にインストールされた場合、「Python 3.5.1」、または同様の応答が返されます。
+- 最後に、[Python 3.5 から 3.8](https://www.python.org/downloads/) が必要になります。 インストールを確認するには、コマンド プロンプトを開き、コマンド `python --version` を入力して、結果を確認します。 適切にインストールされた場合、「Python 3.5.1」、または同様の応答が返されます。
 
-## <a name="install-the-speech-sdk-using-visual-studio-code"></a>Visual Studio Code を使用して Speech SDK をインストールする
+## <a name="install-the-speech-sdk-from-pypi"></a>PyPI から Speech SDK をインストールする
 
-1. 3\.5 以降の、サポートされている最新バージョンの [Python](https://www.python.org/downloads/) をお使いのプラットフォームにダウンロードしてインストールします。
-   - Windows ユーザーは、インストールプロセス中に [Add Python to your PATH]\(Python をパスに追加する\) を選択していることを確認してください。
-1. [Visual Studio Code](https://code.visualstudio.com/Download) をダウンロードして、インストールします。
-1. Visual Studio Code を開いて、Python 拡張機能をインストールします。 メニューで **[ファイル]**  >  **[基本設定]**  >  **[拡張機能]** の順に選択します。 **Python** を検索して、 **[インストール]** をクリックします。
-
-   ![Python 拡張機能のインストール](~/articles/cognitive-services/speech-service/media/sdk/qs-python-vscode-python-extension.png)
-
-1. または、Visual Studio Code 内から、統合コマンド ラインで Speech SDK Python パッケージをインストールします。
-   1. ターミナル (ドロップダウン メニューから、 **[ターミナル]**  >  **[新しいターミナル]** ) を開きます
-   1. ターミナルが開いたら、コマンド `python -m pip install azure-cognitiveservices-speech` を入力します
-
-これで、Python で Speech SDK へのコーディングを開始する準備ができました。下記の「[次の手順](#next-steps)」に進むことができます。 Visual Studio Code を初めて使用する場合は、詳細な [Visual Studio Code のドキュメント](https://code.visualstudio.com/docs) を参照してください。 Visual Studio Code および Python の詳細については、[Visual Studio Code Python のチュートリアル](https://code.visualstudio.com/docs/python/python-tutorial)に関するページをご覧ください。
-
-## <a name="install-the-speech-sdk-using-the-command-line"></a>コマンド ラインを使用して Speech SDK をインストールする
-
-Visual Studio Code を使用していない場合は、次のコマンドで Speech SDK の [PyPI](https://pypi.org/) から Python パッケージをインストールします。 Visual Studio Code のユーザーの場合は、次のサブセクションにスキップします。
+独自の環境またはビルド ツールを使用している場合は、次のコマンドを実行して [PyPI](https://pypi.org/) から Speech SDK をインストールします。 Visual Studio Code のユーザーの場合は、ガイド付きのインストールに関する次のサブセクションにスキップしてください。
 
 ```sh
 pip install azure-cognitiveservices-speech
@@ -78,13 +73,26 @@ macOS を使用している場合は、次のコマンドを実行して、上�
 python3 -m pip install --upgrade pip
 ```
 
-`pip` を正常に使用して `azure-cognitiveservices-speech` をインストールしたら、その名前空間を Python プロジェクトにインポートすることで、Speech SDK を使用できます。 次に例を示します。
+`pip` を正常に使用して `azure-cognitiveservices-speech` をインストールしたら、その名前空間を Python プロジェクトにインポートすることで、Speech SDK を使用できます。
 
 ```py
 import azure.cognitiveservices.speech as speechsdk
 ```
 
-これは、下記の「[次の手順](#next-steps)」に一覧表示されているコード例内に詳細に示されています。
+## <a name="install-the-speech-sdk-using-visual-studio-code"></a>Visual Studio Code を使用して Speech SDK をインストールする
+
+1. お使いのプラットフォームでサポートされている最新バージョンの [Python](https://www.python.org/downloads/) (3.5 から 3.8) をダウンロードしてインストールします。
+   - Windows ユーザーは、インストールプロセス中に [Add Python to your PATH]\(Python をパスに追加する\) を選択していることを確認してください。
+1. [Visual Studio Code](https://code.visualstudio.com/Download) をダウンロードして、インストールします。
+1. Visual Studio Code を開いて、Python 拡張機能をインストールします。 メニューで **[ファイル]**  >  **[基本設定]**  >  **[拡張機能]** の順に選択します。 **Python** を検索して、 **[インストール]** をクリックします。
+
+   ![Python 拡張機能のインストール](~/articles/cognitive-services/speech-service/media/sdk/qs-python-vscode-python-extension.png)
+
+1. または、Visual Studio Code 内から、統合コマンド ラインで Speech SDK Python パッケージをインストールします。
+   1. ターミナル (ドロップダウン メニューから、 **[ターミナル]**  >  **[新しいターミナル]** ) を開きます
+   1. ターミナルが開いたら、コマンド `python -m pip install azure-cognitiveservices-speech` を入力します
+
+Visual Studio Code を初めて使用する場合は、詳細な [Visual Studio Code のドキュメント](https://code.visualstudio.com/docs) を参照してください。 Visual Studio Code および Python の詳細については、[Visual Studio Code Python のチュートリアル](https://code.visualstudio.com/docs/python/python-tutorial)に関するページをご覧ください。
 
 ## <a name="support-and-updates"></a>サポートと更新プログラム
 

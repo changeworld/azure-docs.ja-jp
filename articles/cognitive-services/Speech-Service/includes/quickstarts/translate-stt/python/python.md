@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/09/2019
 ms.author: chlandsi
-ms.openlocfilehash: f86796cf8da4ba9eec1fa64c7024330ad5547c7f
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: e869a6581ac29ac234c075d258b59dbd45045ee2
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77446859"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78926047"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -22,8 +22,7 @@ ms.locfileid: "77446859"
 
 > [!div class="checklist"]
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
-> * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md?tabs=python)
-> * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md?tabs=python)
+> * [開発環境を設定し、空のプロジェクトを作成する](../../../../quickstarts/setup-platform.md?tabs=python)
 
 ## <a name="add-sample-code"></a>サンプル コードを追加する
 

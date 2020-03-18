@@ -4,20 +4,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/13/2020
 ms.author: dapine
-ms.openlocfilehash: 1225a1e528b32401f350374fb9393c52225c49e8
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 02e0e1494a897b31cb6ef28083677fa48f854c91
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942635"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78924904"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 開始する前に、必ず次のことを行ってください。
 
 > [!div class="checklist"]
-> * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programmming-language-java)
-> * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md?pivots=programmming-language-java)
+> * [開発環境を設定し、空のプロジェクトを作成する](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programmming-language-java)
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
 > * [ソース ファイルを Azure BLOB にアップロードする](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
@@ -32,7 +31,9 @@ ms.locfileid: "75942635"
 ## <a name="add-a-reference-to-gson"></a>参照を Gson に追加する
 このクイックスタートでは、外部の JSON シリアライザー/デシリアライザーを使用します。 Java の場合、[Gson](https://github.com/google/gson) を選択しました。
 
-pom.xml を開き、次の参照 [!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/pom.xml?range=19-25)] を追加します。
+pom.xml を開き、次の参照を追加します。
+
+[!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/pom.xml?range=19-25)]
 
 ## <a name="start-with-some-boilerplate-code"></a>定型コードを使用して開始する
 

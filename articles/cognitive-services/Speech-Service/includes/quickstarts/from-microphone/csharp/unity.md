@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: 531e9dbec55c5a6a305b321df7a11067c0ade92a
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: be8497cb07bd3c761c59bfc55e773b5dcc937c50
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77445920"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925415"
 ---
 > [!NOTE]
 > Unity 用 Speech SDK では、Windows デスクトップ (x86 および x64) またはユニバーサル Windows プラットフォーム (x86、x64、ARM、ARM64)、Android (x86、ARM32、ARM64)、および iOS (x64 シミュレーター、ARM32 および ARM64) がサポートされています
@@ -25,8 +25,7 @@ ms.locfileid: "77445920"
 
 > [!div class="checklist"]
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
-> * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md?tabs=unity)
-> * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md?tabs=unity)
+> * [開発環境を設定し、空のプロジェクトを作成する](../../../../quickstarts/setup-platform.md?tabs=unity)
 > * オーディオ キャプチャ用のマイクにアクセスできることを確認する
 
 既にこれを行っている場合は、これで完了です。 このまま続けましょう。
@@ -42,7 +41,7 @@ ms.locfileid: "77445920"
 1. **[Project Name]\(プロジェクト名\)** に「**csharp-unity**」と入力します。
 1. **[Templates]\(テンプレート\)** で **[3D]** がまだ選択されていない場合は、それを選択します。
 1. **[Location]\(場所\)** で、プロジェクトを保存するフォルダーを選択するか作成します。
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 少し時間が経つと、Unity エディターのウィンドウが表示されます。
 
