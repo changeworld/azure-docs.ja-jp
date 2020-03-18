@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: dech
-ms.openlocfilehash: 04cfdd1f96f83898710b6f292116f0afddc8df96
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57ba647ade45928f03cd7fb2b037642d5e4d52cc
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237231"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096820"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>Azure Cosmos Explorer を使ってデータを操作する 
 
@@ -47,7 +47,9 @@ Azure Cosmos DB エクスプローラーは、スタンドアロンの Web ベ�
 
 現在、一時的な読み取り/書き込みまたは読み取りアクセスの共有を可能にする **[全画面表示で開く]** エクスペリエンスは、Azure Cosmos DB Gremlin と Table API アカウントではまだサポートされていません。 ただし、Azure Cosmos DB エクスプローラーに接続文字列を渡すことによって、Gremlin と Table API アカウントを表示することができます。 
 
-## <a name="next-steps"></a>次の手順
+現在、UUID を含むドキュメントの表示はデータ エクスプローラーではサポートされていません。 これは、コレクションの読み込みには影響せず、個々のドキュメントまたはこれらのドキュメントを含むクエリの表示にのみ影響します。 これらのドキュメントを表示および管理するには、これらのドキュメントを作成するために最初に使用したツールを引き続き使用する必要があります。
+
+## <a name="next-steps"></a>次のステップ
 Azure Cosmos DB エクスプローラーでのデータの管理方法を学んだので、次の段階に進みましょう。
 
 * SQL 構文を使用して[クエリ](sql-api-query-reference.md)の定義を開始し、ストアド プロシージャ、UDF、トリガーを使用して[サーバー側プログラミング](stored-procedures-triggers-udfs.md)を実行します。 

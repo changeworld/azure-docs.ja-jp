@@ -5,19 +5,19 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 03/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: c0681024b60827cf589906041c264d912ab209bb
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 0807b535adc45093b439dba5ab8a0ea26b2a0721
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612362"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402937"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>NVA 用の Virtual WAN ハブ ルート テーブルを作成する:Azure portal
 
-この記事では、Virtual WAN ハブに接続されているブランチ (オンプレミス サイト) から、ネットワーク仮想アプライアンス (NVA) を介してスポーク VNet にトラフィックを誘導する方法について説明します。
+この記事では、Virtual WAN ハブに接続されているブランチ (オンプレミス サイト) から、ネットワーク仮想アプライアンス (NVA) を介してスポーク仮想ネットワーク (VNet) にトラフィックを誘導する方法について説明します。
 
 ![Virtual WAN のダイアグラム](./media/virtual-wan-route-table/vwanroute.png)
 
@@ -29,15 +29,16 @@ ms.locfileid: "75612362"
 
     * プライベート IP アドレスが NVA ネットワーク インターフェイスに割り当てられています。
 
-    * NVA が仮想ハブにデプロイされていません。 独立した VNet 内にデプロイする必要があります。
+    * NVA が仮想ハブにデプロイされていません。 独立した仮想ネットワーク内にデプロイする必要があります。
 
-    *  NVA VNet に、1 つまたは多数の仮想ネットワークが接続されています。 この記事では、NVA VNet を '間接スポーク VNet' と呼びます。 これらの VNet は、VNet ピアリングを使用して NVA VNet に接続できます。 VNet ピアリング リンクは、上の図の Vnet 1、Vnet 2 と、NVA Vnet との間の黒い矢印によって示されています。
-*  2 つ VNet を作成しています。 これらは、スポーク VNet として使用されます。
+    *  NVA 仮想ネットワークに、1 つまたは多数の仮想ネットワークが接続されています。 この記事では、NVA 仮想ネットワークを '間接スポーク VNet' と呼びます。 これらの仮想ネットワークは、VNet ピアリングを使用して NVA VNet に接続できます。 VNet ピアリング リンクは、上の図の VNet 1、VNet 2 と、NVA VNet との間の黒い矢印によって示されています。
+*  2 つの仮想ネットワークを作成しました。 これらは、スポーク VNet として使用されます。
 
-    * この演習では、VNet スポークのアドレス空間は次のとおりです。VNet1:10.0.2.0/24 と VNet2:10.0.3.0/24。 VNet の作成方法に関する情報が必要な場合は、[仮想ネットワークの作成](../virtual-network/quick-create-portal.md)に関するページを参照してください。
+    * VNet スポーク アドレス空間は次のとおりです。VNet1:10.0.2.0/24 と VNet2:10.0.3.0/24。 仮想ネットワークの作成方法に関する情報が必要な場合は、「[仮想ネットワークの作成](../virtual-network/quick-create-portal.md)」を参照してください。
 
     * すべての VNet 内に仮想ネットワーク ゲートウェイが存在しないようにします。
-    * この構成では、これらの VNet にゲートウェイ サブネットは必要ありません。
+
+    * VNet では、ゲートウェイ サブネットは必要ありません。
 
 ## <a name="signin"></a>1.サインイン
 
@@ -45,7 +46,7 @@ ms.locfileid: "75612362"
 
 ## <a name="vwan"></a>2.仮想 WAN を作成する
 
-仮想 WAN を作成します。 この演習のために、次の値を使用できます。
+仮想 WAN を作成します。 次に示す値の例を使用してください。
 
 * **Virtual WAN 名:** myVirtualWAN
 * **リソース グループ:** testRG
@@ -55,7 +56,7 @@ ms.locfileid: "75612362"
 
 ## <a name="hub"></a>3.ハブを作成する
 
-ハブを作成します。 この演習のために、次の値を使用できます。
+ハブを作成します。 次に示す値の例を使用してください。
 
 * **[場所]:** 米国西部
 * **名前:** westushub
@@ -65,7 +66,7 @@ ms.locfileid: "75612362"
 
 ## <a name="route"></a>4.ハブのルート テーブルの作成および適用
 
-ハブ ルート テーブルを使用して、ハブを更新します。 この演習のために、次の値を使用できます。
+ハブ ルート テーブルを使用して、ハブを更新します。 次に示す値の例を使用してください。
 
 * **スポーク VNet アドレス空間:** (VNet1 と VNet2) 10.0.2.0/24 と 10.0.3.0/24
 * **DMZ NVA ネットワーク インターフェイスのプライベート IP アドレス:** 10.0.4.5
@@ -79,17 +80,17 @@ ms.locfileid: "75612362"
 
 ## <a name="connections"></a>5.VNet 接続を作成する
 
-それぞれの間接スポーク VNet (VNet1 と VNet2) からハブに VNet 接続を作成します。 これらの VNet 接続は、上の図の青い矢印で示されています。 次に、NVA VNet からハブへの VNet 接続 (図の黒い矢印) を作成します。 
+それぞれの間接スポーク VNet (VNet1 と VNet2) からハブに仮想ネットワーク接続を作成します。 これらの仮想ネットワーク接続は、上の図の青い矢印で示されています。 次に、NVA VNet からハブへの VNet 接続 (図の黒い矢印) を作成します。
 
  この手順では、次の値を使用します。
 
-| VNet の名前| [接続名]|
+| 仮想ネットワーク名| [接続名]|
 | --- | --- |
 | VNet1 | testconnection1 |
 | VNet2 | testconnection2 |
 | NVAVNet | testconnection3 |
 
-接続する VNet ごとに次の手順を繰り返します。
+接続する仮想ネットワークごとに次の手順を繰り返します。
 
 1. 仮想 WAN のページで、 **[仮想ネットワーク接続]** をクリックします。
 2. 仮想ネットワーク接続のページで、 **[+ 接続の追加]** をクリックします。

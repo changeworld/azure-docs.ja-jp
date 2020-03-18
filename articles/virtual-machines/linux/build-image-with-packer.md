@@ -1,26 +1,18 @@
 ---
-title: Packer を使用して Linux Azure VM のイメージを作成する方法
+title: Packer を使用して Linux Azure VM のイメージを作成する
 description: Packer を使用して Azure に Linux 仮想マシンのイメージを作成する方法について説明します。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/07/2019
 ms.author: cynthn
-ms.openlocfilehash: a9f0750908123c236596683ec2ad6de505c46213
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 338541661b335e3d96a267f01590173f8ce8ee89
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036942"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969284"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Packer を使用して Azure に Linux 仮想マシンのイメージを作成する方法
 Azure の各仮想マシン (VM) は、Linux ディストリビューションと OS のバージョンを定義するイメージから作成されます。 イメージには、プリインストールされているアプリケーションと構成を含めることができます。 Azure Marketplace には、ほとんどのディストリビューションおよびアプリケーション環境用の自社製およびサード パーティ製のイメージが数多く用意されています。また、ニーズに合わせて独自のイメージを作成することもできます。 この記事では、オープン ソース ツール [Packer](https://www.packer.io/) を使用して Azure に独自のイメージを定義およびビルドする方法について、詳しく説明します。
@@ -40,7 +32,7 @@ az group create -n myResourceGroup -l eastus
 
 
 ## <a name="create-azure-credentials"></a>Azure 資格情報の作成
-Packer はサービス プリンシパルを使用して Azure で認証されます。 Azure のサービス プリンシパルは、アプリケーション、サービス、および Packer などのオートメーション ツールで使用できるセキュリティ ID です。 Azure で実行できる操作やサービス プリンシパルを設定するアクセス許可をコントロールおよび定義します。
+Packer はサービス プリンシパルを使用して Azure で認証されます。 Azure のサービス プリンシパルは、アプリケーション、サービス、および Packer などのオートメーション ツールで使用できるセキュリティ ID です。 Azure でサービス プリンシパルが実行できる操作を設定するアクセス許可の制御と定義を行います。
 
 [az ad sp create-for-rbac](/cli/azure/ad/sp) でサービス プリンシパルを作成し、Packer が必要とする資格情報を出力します。
 
@@ -48,7 +40,7 @@ Packer はサービス プリンシパルを使用して Azure で認証され�
 az ad sp create-for-rbac --query "{ client_id: appId, client_secret: password, tenant_id: tenant }"
 ```
 
-上記のコマンドの出力例は次のとおりです。
+上記のコマンドの出力例は、次のとおりです。
 
 ```azurecli
 {
@@ -64,7 +56,7 @@ Azure に対して認証するには、[az account show](/cli/azure/account) で
 az account show --query "{ subscription_id: id }"
 ```
 
-次の手順でこれら 2 つのコマンドからの出力を使用します。
+次の手順で、これら 2 つのコマンドからの出力を使用します。
 
 
 ## <a name="define-packer-template"></a>Packer テンプレートを定義する
@@ -234,5 +226,5 @@ Web ブラウザーを開き、アドレス バーに「`http://publicIpAddress`
 ![NGINX の既定のサイト](./media/build-image-with-packer/nginx.png) 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure Image Builder](image-builder.md) では既存の Packer プロビジョナー スクリプトを使うこともできます。

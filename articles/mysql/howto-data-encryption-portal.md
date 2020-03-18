@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 42b7ceb86e360f192c55fc1090f291f5b7fe7ac5
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 55c155dc4396672c02322c6c5727dac57d0ac8ef
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252027"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898730"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>Azure portal を使用した Azure Database for MySQL のデータ暗号化
 
@@ -93,6 +93,132 @@ Key Vault に格納されている顧客のマネージド キーで Azure Datab
 4. サービス プリンシパルを登録した後、キーを再検証します。これにより、サーバーは通常の機能を再開します。
 
    ![復元された機能を示している Azure Database for MySQL のスクリーンショット](media/concepts-data-access-and-security-data-encryption/restore-successful.png)
+
+
+## <a name="using-an-azure-resource-manager-template-to-enable-data-encryption"></a>Azure Resource Manager テンプレートを使用したデータ暗号化の有効化
+
+Azure portal とは別に、新規および既存のサーバー用の Azure Resource Manager テンプレートを使用して、Azure Database for MySQL サーバー上でデータ暗号化を有効にすることもできます。
+
+### <a name="for-a-new-server"></a>新しいサーバーの場合
+
+事前に作成したいずれかの Azure Resource Manager テンプレートを使用して、データ暗号化を有効にしてサーバーをプロビジョニングします。[データの暗号化を使用した例](https://github.com/Azure/azure-mysql/tree/master/arm-templates/ExampleWithDataEncryption)
+
+この Azure Resource Manager テンプレートでは、Azure Database for MySQL サーバーを作成し、パラメーターとして渡された **KeyVault** および **Key** を使用して、サーバーのデータ暗号化を有効にします。
+
+### <a name="for-an-existing-server"></a>既存のサーバーの場合
+また、Azure Resource Manager テンプレートを使用して、既存の Azure Database for MySQL サーバー上でデータ暗号化を有効にすることもできます。
+
+* プロパティ オブジェクトの `keyVaultKeyUri` プロパティで以前コピーした Azure Key Vault キーの URI を渡します。
+
+* *2020-01-01-preview* を API バージョンとして使用します。
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string"
+    },
+    "serverName": {
+      "type": "string"
+    },
+    "keyVaultName": {
+      "type": "string",
+      "metadata": {
+        "description": "Key vault name where the key to use is stored"
+      }
+    },
+    "keyVaultResourceGroupName": {
+      "type": "string",
+      "metadata": {
+        "description": "Key vault resource group name where it is stored"
+      }
+    },
+    "keyName": {
+      "type": "string",
+      "metadata": {
+        "description": "Key name in the key vault to use as encryption protector"
+      }
+    },
+    "keyVersion": {
+      "type": "string",
+      "metadata": {
+        "description": "Version of the key in the key vault to use as encryption protector"
+      }
+    }
+  },
+  "variables": {
+    "serverKeyName": "[concat(parameters('keyVaultName'), '_', parameters('keyName'), '_', parameters('keyVersion'))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.DBforMySQL/servers",
+      "apiVersion": "2017-12-01",
+      "kind": "",
+      "location": "[parameters('location')]",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "name": "[parameters('serverName')]",
+      "properties": {
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-05-01",
+      "name": "addAccessPolicy",
+      "resourceGroup": "[parameters('keyVaultResourceGroupName')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.DBforMySQL/servers', parameters('serverName'))]"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "resources": [
+            {
+              "type": "Microsoft.KeyVault/vaults/accessPolicies",
+              "name": "[concat(parameters('keyVaultName'), '/add')]",
+              "apiVersion": "2018-02-14-preview",
+              "properties": {
+                "accessPolicies": [
+                  {
+                    "tenantId": "[subscription().tenantId]",
+                    "objectId": "[reference(resourceId('Microsoft.DBforMySQL/servers/', parameters('serverName')), '2017-12-01', 'Full').identity.principalId]",
+                    "permissions": {
+                      "keys": [
+                        "get",
+                        "wrapKey",
+                        "unwrapKey"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "[concat(parameters('serverName'), '/', variables('serverKeyName'))]",
+      "type": "Microsoft.DBforMySQL/servers/keys",
+      "apiVersion": "2020-01-01-preview",
+      "dependsOn": [
+        "addAccessPolicy",
+        "[resourceId('Microsoft.DBforMySQL/servers', parameters('serverName'))]"
+      ],
+      "properties": {
+        "serverKeyType": "AzureKeyVault",
+        "uri": "[concat(reference(resourceId(parameters('keyVaultResourceGroupName'), 'Microsoft.KeyVault/vaults/', parameters('keyVaultName')), '2018-02-14-preview', 'Full').properties.vaultUri, 'keys/', parameters('keyName'), '/', parameters('keyVersion'))]"
+      }
+    }
+  ]
+}
+
+```
 
 ## <a name="next-steps"></a>次のステップ
 

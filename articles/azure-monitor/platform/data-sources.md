@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/19/2019
-ms.openlocfilehash: b2ec9fd70d1eb64c5968de0312941bfbc98d3033
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 2a5d1178bd6dbd6f7cfdd2ec2af17b78836a38d7
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670527"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096732"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Azure Monitor で使用する監視データのソース
 Azure Monitor は、[ログ](data-platform-logs.md)と[メトリック](data-platform-metrics.md)を含む[一般的な監視データ プラットフォーム](data-platform.md)をベースにしています。 このプラットフォームにデータを収集すれば、Azure Monitor にある共通のツール一式を使用して、複数のリソースからのデータをまとめて分析することができます。 特定のシナリオに対応するために監視データは他の場所に送信されることがあるほか、一部のリソースについては、他の場所に書き込まれた後で、ログやメトリックに収集されることもあります。
@@ -72,8 +72,8 @@ Azure サブスクリプションの正常性と運用に関連したテレメ�
 |:---|:---|
 | アクティビティ ログ | アクティビティ ログは、その独自のデータ ストアに収集されます。それを Azure Monitor のメニューから表示したり、それを使ってアクティビティ ログ アラートを作成したりできます。 | [Azure portal でアクティビティ ログに対してクエリを実行する](activity-log-view.md#azure-portal) |
 | Azure Monitor ログ | アクティビティ ログを収集して他の監視データと共に分析するように Azure Monitor ログを構成します。 | [Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する](activity-log-collect.md) |
-| Azure Storage | アーカイブのためにアクティビティ ログを Azure Storage にエクスポートします。 | [アクティビティ ログをアーカイブする](activity-log-export.md#archive-activity-log)  |
-| Event Hubs | Event Hubs を使用してアクティビティ ログを他の場所にストリーム配信します。 | [アクティビティ ログをイベント ハブにストリーム配信する](activity-log-export.md#stream-activity-log-to-event-hub)。 |
+| Azure Storage | アーカイブのためにアクティビティ ログを Azure Storage にエクスポートします。 | [アクティビティ ログをアーカイブする](resource-logs-collect-storage.md)  |
+| Event Hubs | Event Hubs を使用してアクティビティ ログを他の場所にストリーム配信します。 | [アクティビティ ログをイベント ハブにストリーム配信する](resource-logs-stream-event-hubs.md)。 |
 
 ### <a name="azure-service-health"></a>Azure Service Health
 [Azure Service Health](../../service-health/service-health-overview.md) は、アプリケーションとリソースが依存するサブスクリプション内の Azure サービスの正常性に関する情報を提供します。

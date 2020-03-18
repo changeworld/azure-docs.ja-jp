@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/27/2019
+ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9a9fb1d64fb27507e4ee42c39be9ea80fbe5f168
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: e73eae4d66f4ff94a48dfa27e258f8ba8ef87633
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184453"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126761"
 ---
 # <a name="localization"></a>ローカリゼーション
 
@@ -146,7 +146,7 @@ ms.locfileid: "78184453"
 
 | 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
-| ElementType | はい | ポリシー内の要求の種類要素またはユーザー インターフェイス要素への参照。 指定できる値: `ClaimType`、`UxElement`、`ErrorMessage`、`Predicate`。 `ClaimType` 値は、StringId で指定された、要求属性のいずれかをローカライズするために使用されます。 `UxElement` 値は、StringId で指定されたユーザー インターフェイス要素のいずれかをローカライズするために使用されます。 `ErrorMessage` 値は、StringId で指定されたシステム エラー メッセージのいずれかをローカライズするために使用されます。 `Predicate` 値は、StringId で指定された、[Predicate](predicates.md) エラー メッセージのいずれかをローカライズするために使用されます。 `InputValidation` 値は、StringId で指定された [PredicateValidation](predicates.md) グループ エラー メッセージのいずれかをローカライズするために使用されます。 |
+| ElementType | はい | ポリシー内の要求の種類要素またはユーザー インターフェイス要素への参照。 指定できる値: `ClaimType`、`UxElement`、`ErrorMessage`、`Predicate`、または `GetLocalizedStringsTransformationClaimType`。 `ClaimType` 値は、StringId で指定された、要求属性のいずれかをローカライズするために使用されます。 `UxElement` 値は、StringId で指定されたユーザー インターフェイス要素のいずれかをローカライズするために使用されます。 `ErrorMessage` 値は、StringId で指定されたシステム エラー メッセージのいずれかをローカライズするために使用されます。 `Predicate` 値は、StringId で指定された、[Predicate](predicates.md) エラー メッセージのいずれかをローカライズするために使用されます。 `InputValidation` 値は、StringId で指定された [PredicateValidation](predicates.md) グループ エラー メッセージのいずれかをローカライズするために使用されます。 `GetLocalizedStringsTransformationClaimType` 値は、ローカライズされた文字列を要求にコピーするために使用されます。 詳細については、[GetLocalizedStringsTransformation 要求変換](string-transformations.md#getlocalizedstringstransformation)に関する記事を参照してください。  | 
 | ElementId | はい | **ElementType** が `ClaimType`、`Predicate`、または `InputValidation` に設定されている場合、この要素には ClaimsSchema セクションで定義済みの要求の種類への参照が含まれます。 |
 | StringId | はい | **ElementType** が `ClaimType` に設定されている場合、この要素には要求の種類の属性への参照が含まれます。 指定できる値: `DisplayName`、`AdminHelpText`、または `PatternHelpText`。 `DisplayName` 値は、要求の表示名を設定するために使用されます。 `AdminHelpText` 値は、要求ユーザーのヘルプ テキスト名を設定するために使用されます。 `PatternHelpText` 値は、要求パターンのヘルプ テキストを設定するために使用されます。 **ElementType** が `UxElement` に設定されている場合、この要素にはユーザー インターフェイス要素の属性への参照が含まれます。 **ElementType** が `ErrorMessage` に設定されている場合、この要素はエラー メッセージの識別子を指定します。 `UxElement` 識別子の完全な一覧については、「[ローカライズ文字列 ID](localization-string-ids.md)」を参照してください。|
 
@@ -207,160 +207,9 @@ ms.locfileid: "78184453"
 </Localization>
 ```
 
-### <a name="provide-language-specific-strings-and-collections"></a>言語固有の文字列とコレクションを指定する
+## <a name="next-steps"></a>次のステップ
 
-**SupportedLanguages** 要素を閉じた後に、**Localization** 要素内に **LocalizedResources** 要素を追加します。 各ページ (コンテンツ定義) とサポートする言語の **LocalizedResources** 要素を追加します。 英語、スペイン語、およびフランス語の統合されたサインアップまたはサインイン ページ、サインアップおよび多要素認証 (MFA) ページをカスタマイズするには、次の **LocalizedResources**  要素を追加します。
+ローカライズの例については、次の記事を参照してください。
 
-- 統合されたサインアップまたはサインイン ページ、英語 `<LocalizedResources Id="api.signuporsignin.en">`
-- 統合されたサインアップまたはサインイン ページ、スペイン語 `<LocalizedResources Id="api.signuporsignin.es">`
-- 統合されたサインアップまたはサインイン ページ、フランス語 `<LocalizedResources Id="api.signuporsignin.fr">`
-- サインアップ、英語 `<LocalizedResources Id="api.localaccountsignup.en">`
-- サインアップ、スペイン語 `<LocalizedResources Id="api.localaccountsignup.es">`
-- サインアップ、フランス語 `<LocalizedResources Id="api.localaccountsignup.fr">`
-- MFA、英語 `<LocalizedResources Id="api.phonefactor.en">`
-- MFA、スペイン語 `<LocalizedResources Id="api.phonefactor.es">`
-- MFA、フランス語 `<LocalizedResources Id="api.phonefactor.fr">`
-
-各 **LocalizedResources** 要素には、複数の **LocalizedString** 要素を持つすべての必要な **LocalizedStrings** 要素と、複数の **LocalizedCollection** 要素を持つ **LocalizedCollections** 要素が含まれています。  次の例では、サインアップ ページの英語のローカライズ追加します。
-
-注:この例では、`Gender` と `City` の要求の種類を参照しています。 この例を使用するには、これらの要求を定義してください。 詳細については、[ClaimsSchema](claimsschema.md)を参照してください。
-
-```XML
-<LocalizedResources Id="api.localaccountsignup.en">
-
- <LocalizedCollections>
-   <LocalizedCollection ElementType="ClaimType" ElementId="Gender" TargetCollection="Restriction">
-      <Item Text="Female" Value="F" />
-      <Item Text="Male" Value="M" />
-    </LocalizedCollection>
-   <LocalizedCollection ElementType="ClaimType" ElementId="City" TargetCollection="Restriction">
-      <Item Text="New York" Value="NY" />
-      <Item Text="Paris" Value="Paris" />
-      <Item Text="London" Value="London" />
-    </LocalizedCollection>
-  </LocalizedCollections>
-
-  <LocalizedStrings>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email</LocalizedString>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Please enter your email</LocalizedString>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Please enter a valid email address</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="button_continue">Create new account</LocalizedString>
-   <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">The account you are trying to create already exists, please sign-in.</LocalizedString>
-  </LocalizedStrings>
-</LocalizedResources>
-```
-
-スペイン語のサインアップ ページのローカライズ。
-
-```XML
-<LocalizedResources Id="api.localaccountsignup.es">
-
- <LocalizedCollections>
-   <LocalizedCollection ElementType="ClaimType" ElementId="Gender" TargetCollection="Restriction">
-      <Item Text="Femenino" Value="F" />
-      <Item Text="Masculino" Value="M" />
-    </LocalizedCollection>
-   <LocalizedCollection ElementType="ClaimType" ElementId="City" TargetCollection="Restriction">
-      <Item Text="Nueva York" Value="NY" />
-      <Item Text="París" Value="Paris" />
-      <Item Text="Londres" Value="London" />
-    </LocalizedCollection>
-  </LocalizedCollections>
-
-  <LocalizedStrings>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Dirección de correo electrónico</LocalizedString>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Dirección de correo electrónico que puede usarse para ponerse en contacto con usted.</LocalizedString>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Introduzca una dirección de correo electrónico.</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="button_continue">Crear</LocalizedString>
-   <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">Ya existe un usuario con el id. especificado. Elija otro diferente.</LocalizedString>
-  </LocalizedStrings>
-</LocalizedResources>
-```
-
-### <a name="edit-the-contentdefinition-for-the-page"></a>ページの ContentDefinition を編集する
-
-ローカライズするページごとに、**ContentDefinitio** で検索する言語コードを指定します。
-
-次の例では、英語 (en) とスペイン語 (es) のカスタム文字列がサインアップ ページに追加されています。 各 **LocalizedResourcesReference** の **LocalizedResourcesReferenceId** は、それらのロケールと同じですが、識別子として任意の文字列を使用できます。 言語とページの組み合わせごとに、以前に作成した対応する **LocalizedResources** をポイントします。
-
-```XML
-<ContentDefinition Id="api.localaccountsignup">
-...
-  <LocalizedResourcesReferences MergeBehavior="Prepend">
-    <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.localaccountsignup.en" />
-    <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.localaccountsignup.es" />
-  </LocalizedResourcesReferences>
-</ContentDefinition>
-```
-
-次の例は、最終的な XML を示しています。
-
-```XML
-<BuildingBlocks>
-  <ContentDefinitions>
-    <ContentDefinition Id="api.localaccountsignup">
-      <!-- Other content definitions elements... -->
-      <LocalizedResourcesReferences MergeBehavior="Prepend">
-         <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.localaccountsignup.en" />
-         <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.localaccountsignup.es" />
-      </LocalizedResourcesReferences>
-    </ContentDefinition>
-    <!-- More content definitions... -->
-  </ContentDefinitions>
-
-  <Localization Enabled="true">
-
-    <SupportedLanguages DefaultLanguage="en" MergeBehavior="ReplaceAll">
-      <SupportedLanguage>en</SupportedLanguage>
-      <SupportedLanguage>es</SupportedLanguage>
-      <!-- More supported language... -->
-    </SupportedLanguages>
-
-    <LocalizedResources Id="api.localaccountsignup.en">
-      <LocalizedCollections>
-        <LocalizedCollection ElementType="ClaimType" ElementId="Gender" TargetCollection="Restriction">
-          <Item Text="Female" Value="F" />
-          <Item Text="Male" Value="M" />
-          <!-- More items... -->
-        </LocalizedCollection>
-        <LocalizedCollection ElementType="ClaimType" ElementId="City" TargetCollection="Restriction">
-          <Item Text="New York" Value="NY" />
-          <Item Text="Paris" Value="Paris" />
-          <Item Text="London" Value="London" />
-        </LocalizedCollection>
-        <!-- More localized collections... -->
-      </LocalizedCollections>
-      <LocalizedStrings>
-        <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email</LocalizedString>
-      <LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Please enter your email</LocalizedString>
-        <LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Please enter a valid email address</LocalizedString>
-        <LocalizedString ElementType="UxElement" StringId="button_continue">Create new account</LocalizedString>
-       <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">The account you are trying to create already exists, please sign-in.</LocalizedString>
-        <!-- More localized strings... -->
-      </LocalizedStrings>
-    </LocalizedResources>
-
-    <LocalizedResources Id="api.localaccountsignup.es">
-      <LocalizedCollections>
-       <LocalizedCollection ElementType="ClaimType" ElementId="Gender" TargetCollection="Restriction">
-          <Item Text="Femenino" Value="F" />
-          <Item Text="Masculino" Value="M" />
-        </LocalizedCollection>
-        <LocalizedCollection ElementType="ClaimType" ElementId="City" TargetCollection="Restriction">
-          <Item Text="Nueva York" Value="NY" />
-          <Item Text="París" Value="Paris" />
-          <Item Text="Londres" Value="London" />
-        </LocalizedCollection>
-      </LocalizedCollections>
-      <LocalizedStrings>
-        <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Dirección de correo electrónico</LocalizedString>
-        <LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Dirección de correo electrónico que puede usarse para ponerse en contacto con usted.</LocalizedString>
-        <LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Introduzca una dirección de correo electrónico.</LocalizedString>
-        <LocalizedString ElementType="UxElement" StringId="button_continue">Crear</LocalizedString>
-      <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">Ya existe un usuario con el id. especificado. Elija otro diferente.</LocalizedString>
-      </LocalizedStrings>
-    </LocalizedResources>
-    <!-- More localized resources... -->
-  </Localization>
-</BuildingBlocks>
-```
+- [Azure Active Directory B2C でのカスタム ポリシーによる言語のカスタマイズ](custom-policy-localization.md)
+- [Azure Active Directory B2C でのユーザー フローによる言語のカスタマイズ](user-flow-language-customization.md)

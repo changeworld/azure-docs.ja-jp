@@ -1,6 +1,6 @@
 ---
-title: パスワード保護の監視とログ記録 - Azure Active Directory
-description: Azure AD パスワード保護の監視とログ記録について
+title: オンプレミスの Azure AD パスワード保護を監視する
+description: オンプレミスの Active Directory Domain Services 環境で Azure AD のパスワード保護を監視してログを確認する方法について説明します
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c74ea99d3a0e39729bb4d89f012d7b790bf0568b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: fbb533d5565009fb22d686e4082c9b4bfaae6dc1
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847713"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671652"
 ---
-# <a name="azure-ad-password-protection-monitoring-and-logging"></a>Azure AD パスワード保護の監視とログ記録
+# <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>オンプレミスの Azure AD パスワード保護環境を監視してログを確認する
 
 Azure AD パスワード保護のデプロイ後、監視とレポートは重要なタスクです。 この記事では、各サービスが情報をログに記録する場所や、Azure AD パスワード保護の使用について報告する方法など、さまざまな監視手法を理解できるように詳しく説明します。
 
@@ -382,7 +382,7 @@ Current version: 1.2.116.0
 
 自動アップグレードを有効にしてプロキシ エージェントを構成した場合でも、このイベントは生成されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure AD パスワード保護のトラブルシューティング](howto-password-ban-bad-on-premises-troubleshoot.md)
 

@@ -7,18 +7,18 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 279130fa310b107bd1a016c717c48af3d905251b
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 1857c1154af5e3de72803f297e8a3151b0dd7aeb
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78270158"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330976"
 ---
 # <a name="streaming-ingestion-preview"></a>ストリーミング インジェスト (プレビュー)
 
-ストリーミング インジェストは、多様なボリューム データでインジェスト時間が 10 秒未満の低待機時間を必要とするシナリオを対象とします。 各テーブルへのデータ ストリームが比較的小さい (1 秒あたりのレコード数が少ない) 1 つまたは複数のデータベースで、数多くのテーブルの操作処理を最適化するために使用されますが、データ インジェスト ボリューム全体が高くなります (1 秒あたり数千レコード)。
+ストリーミング インジェストは、多様なボリューム データでインジェスト時間が 10 秒未満の短い待機時間を必要とするときに使用します。 各テーブルへのデータ ストリームが比較的小さい (1 秒あたりのレコード数が少ない) 1 つまたは複数のデータベースで、数多くのテーブルの操作処理を最適化するために使用されますが、データ インジェスト ボリューム全体が高くなります (1 秒あたり数千レコード)。 
 
-データ量がテーブルごとに 1 MB/秒を超える場合は、ストリーミング インジェストではなく、従来の (一括) インジェストを使用します。 さまざまなインジェスト方法の詳細については、「[Azure データ エクスプローラーでのデータ インジェスト](/azure/data-explorer/ingest-data-overview)」を参照してください。
+データ量がテーブルごとに 1 MB/秒を超える場合は、ストリーミング インジェストではなく一括インジェストを使用します。 さまざまなインジェスト方法の詳細については、「[Azure データ エクスプローラーでのデータ インジェスト](/azure/data-explorer/ingest-data-overview)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -72,15 +72,12 @@ ms.locfileid: "78270158"
 
 ## <a name="limitations"></a>制限事項
 
+* ストリーミング インジェストでは、[データベース カーソル](/azure/kusto/management/databasecursor)および[データ マッピング](/azure/kusto/management/mappings)はサポートされません。 [事前に作成された](/azure/kusto/management/tables#create-ingestion-mapping)データ マッピングのみがサポートされています。 
 * ストリーミング インジェストのパフォーマンスと容量は、VM とクラスターのサイズを増やして拡張されます。 同時インジェストは、コアあたり 6 つのインジェストに制限されます。 たとえば、D14 や L16 などの 16 コアの SKU の場合、サポートされる最大負荷は 96 の同時インジェストです。 D11 などの 2 コアの SKU の場合、サポートされる最大負荷は 12 の同時インジェストです。
 * インジェスト要求ごとのデータ サイズの制限は 4 MB です。
 * テーブルとインジェスト マッピングの作成や変更など、スキーマの更新には、ストリーミング インジェスト サービスに最大 5 分かかることがあります。
 * クラスターでストリーミング インジェストを有効にすると、データがストリーミング経由で取り込まれていない場合でも、インジェスト データをストリーミングするためにクラスター マシンのローカル SSD ディスクの一部を使用して、ホット キャッシュに使用できるストレージを減らします。
 * [extent タグ](/azure/kusto/management/extents-overview#extent-tagging)は、ストリーミング インジェスト データには設定できません。
-
-ストリーミング インジェストでは、次の機能はサポートされていません。
-* [データベース カーソル](/azure/kusto/management/databasecursor)。
-* [データ マッピング](/azure/kusto/management/mappings)。 [事前に作成された](/azure/kusto/management/create-ingestion-mapping-command)データ マッピングのみがサポートされています。 
 
 ## <a name="next-steps"></a>次のステップ
 

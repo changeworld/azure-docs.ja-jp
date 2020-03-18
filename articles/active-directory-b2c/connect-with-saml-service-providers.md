@@ -12,12 +12,12 @@ ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1c362cd2924de73b2e40e634fe554ff1526e09d8
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 4cf572b09f1e44faca002528fd00fe5be0b51bc5
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189652"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933027"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML アプリケーションを Azure AD B2C に登録する
 
@@ -113,7 +113,7 @@ SAML サービス プロバイダーと関連のメタデータ エンドポイ�
 
 ### <a name="21-create-the-saml-token-issuer"></a>2.1 SAML トークン発行者を作成する
 
-次に、テナントの機能を追加して、SAML トークンを発行します。
+次に、[SAML トークン発行者](saml-issuer-technical-profile.md)と [SAML セッション プロバイダー](custom-policy-reference-sso.md#samlssosessionprovider)技術プロファイルを使用して、SAML トークンを発行するためのテナントの機能を追加します。
 
 カスタム ポリシー スターター パックの `SocialAndLocalAccounts\` **`TrustFrameworkExtensions.xml`** を開きます。
 

@@ -1,25 +1,17 @@
 ---
-title: Azure REST API を使用して Linux 仮想マシンを作成する
+title: REST API を使用して Linux VM を作成する
 description: マネージド ディスクと SSH 認証を使用する Linux 仮想マシンを Azure REST API を使用して Azure 内に作成する方法を説明します。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: c1010bf4bde01920449e9252de563d79bfc61997
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1594c030839cccdd48c4b032c6ad92f746f78e26
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036447"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970273"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>SSH 認証を使用する Linux 仮想マシンを REST API で作成する
 
@@ -54,7 +46,7 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 | 要求ヘッダー   | 説明 |
 |------------------|-----------------|
 | *Content-Type:*  | 必須。 `application/json` を設定します。 |
-| *Authorization:* | 必須。 有効な `Bearer` [ アクセス トークン](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)を設定します｡ |
+| *Authorization:* | 必須。 有効な `Bearer` [アクセス トークン](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)を設定します。 |
 
 REST API 要求の操作の概要については、「[Components of a REST API request/response](/rest/api/azure/#components-of-a-rest-api-requestresponse)」(REST API 要求/応答のコンポーネント) を参照してください。
 
@@ -62,10 +54,10 @@ REST API 要求の操作の概要については、「[Components of a REST API 
 
 要求本文を作成するには、以下の一般的な定義が使用されます。
 
-| 名前                       | 必須 | 種類                                                                                | 説明  |
+| 名前                       | 必須 | Type                                                                                | 説明  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True     | string                                                                              | リソースの場所。 |
-| 名前                       |          | string                                                                              | 仮想マシンの名前。 |
+| name                       |          | string                                                                              | 仮想マシンの名前。 |
 | properties.hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | 仮想マシンのハードウェア設定を指定します。 |
 | properties.storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | 仮想マシンのストレージ設定を指定します。 |
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | 仮想マシンのオペレーティング システム設定を指定します。 |
@@ -138,8 +130,8 @@ REST API 要求の操作の概要については、「[Components of a REST API 
 
 | 名前        | Type                                                                              | 説明 |
 |-------------|-----------------------------------------------------------------------------------|-------------|
-| 200 OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
-| 201 Created | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | 作成されました     |
+| 200 OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | [OK]          |
+| 201 Created | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | 作成済み     |
 
 MV を作成する要求本文の例の圧縮された *201 Created* 応答は、*vmId* が割り当てられ、*provisioningState* が *Creating* であることを示します。
 
@@ -152,7 +144,7 @@ MV を作成する要求本文の例の圧縮された *201 Created* 応答は�
 
 REST API の応答の詳細については、「[Process the response message](/rest/api/azure/#process-the-response-message)」(応答メッセージを処理する) を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure REST API や他の管理ツール (Azure CLI や Azure PowerShell など) の詳細については、以下を参照してください。
 

@@ -1,36 +1,26 @@
 ---
-title: Azure の Linux VM を移動する
-description: Resource Manager デプロイ モデルで Linux VM を他の Azure サブスクリプションまたはリソース グループに移動します。
-services: virtual-machines-linux
-documentationcenter: ''
+title: Azure CLI を使用して VM を移動する
+description: Azure CLI を使用して、VM を別の Azure サブスクリプションまたはリソース グループに移動します。
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: d635f0a5-4458-4b95-a5f8-eed4f41eb4d4
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 2ba8a8cdc324f46e25f9665cfce0aa07fc948e88
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ebcd5f166fd1876f67121787c23d23860c9fa4b6
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979039"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944603"
 ---
-# <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>他のサブスクリプションまたはリソース グループへの Linux VM の移動
-この記事では、リソース グループまたはサブスクリプション間で Linux の仮想マシン (VM) を移動する方法について説明します。 サブスクリプション間での VM の移動は、個人のサブスクリプションで作成した VM を、会社のサブスクリプションに移動する場合に便利です。
+# <a name="move-a-vm-to-another-subscription-or-resource-group"></a>他のサブスクリプションまたはリソース グループへ VM を移動する
+この記事では、リソース グループまたはサブスクリプション間で仮想マシン (VM) を移動する方法について説明します。 サブスクリプション間での VM の移動は、個人のサブスクリプションで作成した VM を、会社のサブスクリプションに移動する場合に便利です。
 
 > [!IMPORTANT]
->現時点では Azure Managed Disks を移動することはできません。
->
 >移動の一環として新しいリソース ID が作成されます。 VM を移動したら、この新しいリソース ID を使用するために、ご使用のツールやスクリプトを更新する必要があります。
 >
->
+
 
 ## <a name="use-the-azure-cli-to-move-a-vm"></a>Azure CLI を使用して VM を移動する
 

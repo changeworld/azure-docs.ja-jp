@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: c2cb7a90f0fe57efcd8f4d75aff3b5ee375abd07
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8d7aab43641c6c594ff60368ccb3810e0c060dd7
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971493"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671577"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Azure Databricks についてよく寄せられる質問
 
@@ -40,11 +40,11 @@ ms.locfileid: "75971493"
 
 ここでは、Databricks で発生する可能性がある問題について説明します。
 
-### <a name="issue-this-subscription-is-not-registered-to-use-the-namespace-microsoftdatabricks"></a>問題点:このサブスクリプションは名前空間 "Microsoft.Databricks" を使うように登録されない
+### <a name="issue-this-subscription-is-not-registered-to-use-the-namespace-microsoftdatabricks"></a>問題点:このサブスクリプションが名前空間 'Microsoft.Databricks' を使用するように登録されていない
 
 #### <a name="error-message"></a>エラー メッセージ
 
-"このサブスクリプションは名前空間 ‘Microsoft.Databricks’ を使用するように登録されていません。 サブスクリプションの登録方法については、 https://aka.ms/rps-not-found を参照してください。 (コード:MissingSubscriptionRegistration)"
+"このサブスクリプションは名前空間 'Microsoft.Databricks' を使用するように登録されていません。 サブスクリプションの登録方法については、 https://aka.ms/rps-not-found を参照してください。 (コード:MissingSubscriptionRegistration)"
 
 #### <a name="solution"></a>解決策
 
@@ -88,11 +88,20 @@ ms.locfileid: "75971493"
 
 #### <a name="error-message"></a>エラー メッセージ
 
-"Cloud Provider Launch Failure:A cloud provider error was encountered while setting up the cluster. 詳細については、Databricks ガイドを参照してください。 Azure error code:PublicIPCountLimitReached. Azure のエラー メッセージ:このリージョンのこのサブスクリプションに 60 個を超えるパブリック IP アドレスを作成することはできません。"
+"Cloud Provider Launch Failure:A cloud provider error was encountered while setting up the cluster. 詳細については、Databricks ガイドを参照してください。 Azure error code:PublicIPCountLimitReached. Azure のエラー メッセージ:このリージョンのこのサブスクリプションに 10 個を超えるパブリック IP アドレスを作成することはできません。"
+
+#### <a name="background"></a>バックグラウンド
+
+Databricks クラスターは、ノードごと (ドライバー ノードを含む) に 1 つのパブリック IP アドレスを使用します。 Azure サブスクリプションには、リージョンごとに[パブリック IP アドレスの制限](/azure/azure-resource-manager/management/azure-subscription-service-limits#publicip-address)が設けられています。 そのため、そのリージョンのサブスクリプションに割り当てられたパブリック IP アドレスの数が制限を超えると、クラスターの作成とスケールアップ操作が失敗する可能性があります。 この制限には、ユーザー定義のカスタム VM など、Databricks の使用以外で割り当てられたパブリック IP アドレスも含まれます。
+
+通常、パブリック IP アドレスはクラスターがアクティブなときにのみ使用されます。 ただし、`PublicIPCountLimitReached` のエラーは、他のクラスターが終了した後も短時間、引き続き発生する可能性があります。 これは、クラスターが終了すると、Databricks によって Azure リソースが一時的にキャッシュされるためです。 リソースのキャッシュ作成は仕様です。これにより、多くの一般的なシナリオでクラスターの起動と自動スケールの待機時間が大幅に短縮されます。
 
 #### <a name="solution"></a>解決策
 
-Databricks クラスターは、ノードごとに 1 つのパブリック IP アドレスを使用します。 サブスクリプションがすべてのパブリック IP を既に使用している場合は、[クォータを増やすよう要求](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)する必要があります。 **[問題の種類]** として **[クォータ]** を選択し、 **[クォータの種類]** として **[ネットワーク: ARM]** を選択します。 **[詳細]** で、パブリック IP アドレスのクォータの増量を要求します。 たとえば現在の上限が 60 で、100 個のノード クラスターを作成する場合は、上限を 160 に増やすよう要求します。
+特定のリージョンに対するサブスクリプションが既にパブリック IP アドレスの制限に達している場合は、次のいずれかの操作を行う必要があります。
+
+- 別の Databricks ワークスペースに新しいクラスターを作成します。 他のワークスペースは、サブスクリプションのパブリック IP アドレスの制限に達していないリージョンに配置する必要があります。
+- [パブリック IP アドレスの制限の引き上げを要求します](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)。 **[問題の種類]** として **[クォータ]** を選択し、 **[クォータの種類]** として **[ネットワーク: ARM]** を選択します。 **[詳細]** で、パブリック IP アドレスのクォータの増量を要求します。 たとえば現在の上限が 60 で、100 個のノード クラスターを作成する場合は、上限を 160 に増やすよう要求します。
 
 ### <a name="issue-a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster-missingsubscriptionregistration"></a>問題点:クラスターのセットアップ中に 2 番目の種類のクラウド プロバイダー起動エラーが発生する (MissingSubscriptionRegistration)
 
@@ -121,6 +130,5 @@ Azure Databricks は、Azure Active Directory に統合されています。 Azu
 
 ## <a name="next-steps"></a>次のステップ
 
-- [クイック スタート:Azure Databricks の概要](quickstart-create-databricks-workspace-portal.md)
+- [クイック スタート: Azure Databricks の概要](quickstart-create-databricks-workspace-portal.md)
 - [Azure Databricks とは](what-is-azure-databricks.md)
-

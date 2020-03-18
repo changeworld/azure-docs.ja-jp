@@ -6,12 +6,12 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
-ms.openlocfilehash: a44aa5b355bea675f5d99761d97b8876a9b2a7d7
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 78bc629598c0635b7760285d0507b7a85a4ab551
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572335"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126870"
 ---
 # <a name="refresh-with-logic-apps"></a>Logic Apps を使用した更新
 
@@ -26,7 +26,7 @@ Azure Analysis Services での REST API の使用に関する詳細について�
 ## <a name="design-the-logic-app"></a>ロジック アプリを設計する
 
 > [!IMPORTANT]
-> 次の例では、Azure Analysis Services ファイアウォールが無効になっていることを前提としています。  ファイアウォールが有効になっている場合は、要求イニシエーターのパブリック IP アドレスが、Azure Analysis Services ファイアウォールでホワイトリストに登録されている必要があります。 リージョンごとのロジック アプリの IP 範囲の詳細については、「[Azure Logic Apps の制限と構成情報](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses)」を参照してください。
+> 次の例では、Azure Analysis Services ファイアウォールが無効になっていることを前提としています。 ファイアウォールが有効になっている場合は、要求イニシエーターのパブリック IP アドレスが、Azure Analysis Services ファイアウォールでホワイトリストに登録されている必要があります。 リージョンごとの Azure Logic Apps の IP 範囲の詳細については、「[Azure Logic Apps の制限と構成情報](../logic-apps/logic-apps-limits-and-config.md#configuration)」を参照してください。
 
 ### <a name="prerequisites"></a>前提条件
 
@@ -62,11 +62,11 @@ Azure Analysis Services での REST API の使用に関する詳細について�
 
 次のように、HTTP アクティビティを構成します。
 
-|プロパティ  |値  |
+|プロパティ  |Value  |
 |---------|---------|
-|**メソッド**     |POST         |
+|**方法**     |POST         |
 |**URI**     | https://*サーバーのリージョン*/servers/*aas サーバー名*/models/*データベース名*/refreshes <br /> <br /> 例:  https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes|
-|**ヘッダー**     |   Content-Type, application/json <br /> <br />  ![headers](./media/analysis-services-async-refresh-logic-app/6.png)    |
+|**ヘッダー**     |   Content-Type, application/json <br /> <br />  ![ヘッダー](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**本文**     |   要求本体の形成の詳細については、[POST/refreshes - REST API を使用した非同期更新](analysis-services-async-refresh.md#post-refreshes)に関するセクションを参照してください。 |
 |**認証**     |Active Directory OAuth         |
 |**テナント**     |ご使用の Azure Active Directory のテナント ID を入力します         |
@@ -113,7 +113,7 @@ Data Factory などのオーケストレーション ツールを使用してモ
 
 ロジック アプリを保存します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [サンプル](analysis-services-samples.md)  
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)

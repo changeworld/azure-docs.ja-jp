@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 91480b3ba0a2bbd3e8c31adb931f5baabe1b07ce
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.date: 03/10/2020
+ms.openlocfilehash: 52eb3bdb463389d075421661610b5ee94d14d77d
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605597"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037074"
 ---
 # <a name="execute-python-script-module"></a>Python スクリプトの実行モジュール
 
@@ -75,7 +75,48 @@ import os
 os.system(f"pip install scikit-misc")
 ```
 
-## <a name="how-to-use"></a>使用方法
+## <a name="upload-files"></a>ファイルをアップロードする
+**Execute Python Script** では、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-) を使用したファイルのアップロードがサポートされています。
+
+次の例は、**Execute Python Script** モジュールでイメージ ファイルをアップロードする方法を示しています。
+
+```Python
+
+# The script MUST contain a function named azureml_main
+# which is the entry point for this module.
+
+# imports up here can be used to
+import pandas as pd
+
+# The entry point function can contain up to two input arguments:
+#   Param<dataframe1>: a pandas.DataFrame
+#   Param<dataframe2>: a pandas.DataFrame
+def azureml_main(dataframe1 = None, dataframe2 = None):
+
+    # Execution logic goes here
+    print(f'Input pandas.DataFrame #1: {dataframe1}')
+
+    from matplotlib import pyplot as plt
+    plt.plot([1, 2, 3, 4])
+    plt.ylabel('some numbers')
+    img_file = "line.png"
+    plt.savefig(img_file)
+
+    from azureml.core import Run
+    run = Run.get_context(allow_offline=True)
+    run.upload_file(f"graphics/{img_file}", img_file)
+
+    # Return value must be of a sequence of pandas.DataFrame
+    # E.g.
+    #   -  Single return value: return dataframe1,
+    #   -  Two return values: return dataframe1, dataframe2
+    return dataframe1,
+}
+```
+
+パイプラインが正常に送信されると、モジュールの右側のパネルでイメージをプレビューできます ![アップロードされたイメージ](media/module/upload-image-in-python-script.png)
+
+## <a name="how-to-configure-execute-python-script"></a>Execute Python Script を構成する方法
 
 **Python スクリプトの実行**モジュールには、出発点として利用できるサンプル Python コードが含まれています。 **Python スクリプトの実行**モジュールを構成するには、実行する Python コードと一連の入力を **[Python スクリプト]** ボックスに指定します。
 
@@ -111,7 +152,7 @@ os.system(f"pip install scikit-misc")
 
     すべてのデータおよびコードが仮想マシンに読み込まれ、指定した Python 環境を使用して実行されます。
 
-## <a name="results"></a>[結果]
+## <a name="results"></a>結果
 
 埋め込み Python コードによって実行された計算の結果は pandas.DataFrame として返す必要があります。そうすることで自動的に Azure Machine Learning データセット形式に変換され、その結果をパイプライン内の他のモジュールで使用できるようになります。
 

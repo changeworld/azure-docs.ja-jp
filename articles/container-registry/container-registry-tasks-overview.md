@@ -3,12 +3,12 @@ title: ACR タスクの概要
 description: クラウド内でのコンテナー イメージの安全で自動化されたビルド、管理、修正プログラム適用を提供する、Azure Container Registry の機能スイートである ACR タスクの概要。
 ms.topic: article
 ms.date: 01/22/2020
-ms.openlocfilehash: cb5f0a71c31c26d679efd8a17b360dab2ad0862b
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 4fda57c1d7c866f2e6f72b04d75e53f91e995baf
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615951"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087284"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>ACR タスクでコンテナー イメージのビルドとメンテナンスを自動化する
 
@@ -124,15 +124,11 @@ ACR タスクはこの自動検出とリビルドによって、更新された�
 | Linux | amd64<br/>arm<br/>arm64<br/>386 |
 | Windows | amd64 |
 
-## <a name="view-task-logs"></a>タスク ログを表示する
+## <a name="view-task-output"></a>タスク出力の表示
 
-それぞれのタスク実行で、タスク ステップが正常に実行されたかどうかを判別するために検査できるログ出力が生成されます。 [az acr build](/cli/azure/acr#az-acr-build)、[az acr run](/cli/azure/acr#az-acr-run)、または [az acr task run](/cli/azure/acr/task#az-acr-task-run) コマンドを実行してタスクをトリガーすると、そのタスク実行のログ出力がコンソールにストリーミングされ、さらに、後で取得するために格納されます。 ソース コードのコミットや基本イメージの更新などによってタスクが自動的にトリガーされる場合、タスク ログは格納されるだけです。 タスク実行のログは Azure portal で表示するか、[az acr task logs](/cli/azure/acr/task#az-acr-task-logs) コマンドを使用します。
+それぞれのタスク実行で、タスク ステップが正常に実行されたかどうかを判別するために検査できるログ出力が生成されます。 タスクを手動でトリガーすると、タスク実行のログ出力がコンソールにストリーミングされ、さらに、後で取得できるように格納されます。 ソース コードのコミットや基本イメージの更新などによってタスクが自動的にトリガーされる場合、タスク ログは格納されるだけです。 実行ログは Azure portal で表示するか、[az acr task logs](/cli/azure/acr/task#az-acr-task-logs) コマンドを使用します。
 
-既定では、レジストリ内のタスク実行のデータとログは、30 日間保持された後、自動的に消去されます。 タスク実行のデータをアーカイブする場合は、[az acr task update-run](/cli/azure/acr/task#az-acr-task-update-run) コマンドを使用してアーカイブを有効にしてください。 次の例は、レジストリ *myregistry* 内のタスク実行 *cf11* のアーカイブを有効にします。
-
-```azurecli
-az acr task update-run --registry myregistry --run-id cf11 --no-archive false
-```
+[タスク ログの表示と管理](container-registry-tasks-logs.md)の詳細を確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 

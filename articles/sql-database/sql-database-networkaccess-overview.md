@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
-ms.date: 08/05/2019
-ms.openlocfilehash: 16ba90aab52c00f77af590f854217cd989df53b3
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.date: 03/09/2020
+ms.openlocfilehash: 822fab5c00501d415c3c184587141e869523e417
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251908"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945395"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL Database および Data Warehouse のネットワーク アクセスの制御
 
@@ -27,19 +27,28 @@ ms.locfileid: "77251908"
 > [!IMPORTANT]
 > この記事は、**Azure SQL Database Managed Instance** には "*適用されません*"。 ネットワーク構成の詳細については、[マネージド インスタンスへの接続](sql-database-managed-instance-connect-app.md)に関するページを参照してください。
 
-[Azure portal から](sql-database-single-database-get-started.md)新しい Azure SQL Server を作成すると、結果は *yourservername.database.windows.net* という形式のパブリック エンドポイントになります。 設計上、パブリック エンドポイントへのアクセスはすべて拒否されます。 その後、次のネットワーク アクセスの制御を使用して、パブリック エンドポイントを介した SQL Database へのアクセスを選択的に許可できます
-- Azure サービスを許可する: - オンに設定すると、Azure 境界内の他のリソース (たとえば、Azure Virtual Machine) が SQL Database にアクセスできます
+[Azure portal](sql-database-single-database-get-started.md) から新しい Azure SQL Server を作成すると、結果は *yourservername.database.windows.net* という形式のパブリック エンドポイントになります。
 
-- IP ファイアウォール規則: - この機能を使用すると、特定の IP アドレスからの (たとえば、オンプレミスのマシンからの) 接続を明示的に許可できます。
+次のネットワーク アクセスの制御を使用して、パブリック エンドポイントを介した SQl Database へのアクセスを選択的に許可できます。
+- Azure サービスを許可する:オンに設定すると、Azure 境界内の他のリソース (たとえば、Azure Virtual Machine) が SQL Database にアクセスできるようになります
 
-- 仮想ネットワーク ファイアウォール規則: - この機能を使用すると、Azure 境界内の特定の仮想ネットワークからのトラフィックを許可できます。
+- IP ファイアウォール規則:この機能を使用すると、特定の IP アドレスからの (たとえば、オンプレミスのマシンからの) 接続を明示的に許可できます
 
+また、次の方法で [Virtual Network](../virtual-network/virtual-networks-overview.md) から SQL Database へのプライベート アクセスを許可することもできます。
+- Virtual Network ファイアウォール規則:この機能を使用して、Azure 境界内の特定の Virtual Network からのトラフィックを許可します
+
+- Private Link:この機能を使用して、特定の Virtual Network 内に Azure SQL Server のプライベート エンドポイントを作成します
+
+
+
+これらのアクセス制御とその機能の概要については、以下のビデオを参照してください。
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--SQL-Database-Connectivity-Explained/player?WT.mc_id=dataexposed-c9-niner]
+
 
 ## <a name="allow-azure-services"></a>Azure サービスを許可する 
 [Azure portal で](sql-database-single-database-get-started.md)新しい Azure SQL Server を作成するときは、この設定をオフのままにします。
 
- ![新しいサーバーの作成のスクリーンショット][1]
+
 
 この設定は、次のように、Azure SQL Server を作成した後にファイアウォール ウィンドウで変更することもできます。
   
@@ -129,6 +138,9 @@ Azure SQL Server のファイアウォールでは、SQL Database への通信�
 > [!NOTE]
 > サブネット上に SQL Database を保持することは、まだできません。 Azure SQL Database サーバーが仮想ネットワーク内のサブネット上のノードになった場合、仮想ネットワークはお使いの SQL Database と通信できます。 この場合、仮想ネットワーク規則や IP ルールがなくても、VM は SQL Database と通信できます。
 
+## <a name="private-link"></a>Private Link 
+プライベート リンクを使用すると、**プライベート エンドポイント**経由で Azure SQL Server に接続できます。 プライベート エンドポイントは、特定の [Virtual Network](../virtual-network/virtual-networks-overview.md) およびサブネット内のプライベート IP アドレスです。
+
 ## <a name="next-steps"></a>次のステップ
 
 - サーバーレベルの IP ファイアウォール規則の作成に関するクイックスタートについては、[Azure SQL データベースの作成](sql-database-single-database-get-started.md)に関するページを参照してください。
@@ -146,3 +158,4 @@ Azure SQL Server のファイアウォールでは、SQL Database への通信�
 <!--Image references-->
 [1]: ./media/sql-database-get-started-portal/new-server2.png
 [2]: ./media/sql-database-get-started-portal/manage-server-firewall.png
+

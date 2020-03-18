@@ -6,16 +6,18 @@ author: yunjchoi
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: yunjchoi
-ms.openlocfilehash: 11b469425a80d588462e0332c973260cc3b56992
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 03bb7b786280dfcbb64190adac51b8d001d59c18
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596183"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126607"
 ---
-# <a name="azure-kubernetes-service-aks-diagnostics-overview"></a>Azure Kubernetes Service (AKS) 診断の概要
+# <a name="azure-kubernetes-service-diagnostics-preview-overview"></a>Azure Kubernetes Service 診断 (プレビュー) の概要
 
 Azure Kubernetes Service (AKS) クラスターの問題のトラブルシューティングは、クラスターのメンテナンスの重要な部分であり、クラスターでミッションクリティカルなワークロードが実行されている場合は特に重要です。 AKS 診断はインテリジェントな自己診断エクスペリエンスであり、クラスターの問題を特定して解決するために役立ちます。 AKS 診断はクラウドネイティブであり、追加の構成や請求コストなしで使用できます。
+
+この機能は現在パブリック プレビュー段階にあります。
 
 ## <a name="open-aks-diagnostics"></a>AKS 診断を開く
 

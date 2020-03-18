@@ -1,7 +1,7 @@
 ---
-title: SSL を使用して Web サービスをセキュリティで保護する
+title: TLS を使用して Web サービスをセキュリティで保護する
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning でデプロイされた Web サービスをセキュリティで保護するために HTTPS を有効にする方法について説明します。
+description: Azure Machine Learning でデプロイされた Web サービスをセキュリティで保護するために HTTPS を有効にする方法について説明します。 Azure Machine Learning は、TLS バージョン 1.2 を使用して、Web サービスとしてデプロイされたモデルをセキュリティで保護します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
-ms.date: 08/12/2019
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 34c6071a127d0fc0c967991582f629c6ae713783
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 1f4b699476902fa24fa285754f13b1c61ddca8f0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905207"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355522"
 ---
-# <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>SSL を使用して Azure Machine Learning による Web サービスをセキュリティで保護する
+# <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 この記事では、Azure Machine Learning でデプロイされた Web サービスをセキュリティで保護する方法について説明します。

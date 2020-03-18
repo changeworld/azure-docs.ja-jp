@@ -6,20 +6,20 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: 85d32e96335a9fffa874f1f370f72883ff420df0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: de2b99666dbed4eaec3db3e56800e9a7352e10e7
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369866"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898384"
 ---
-# <a name="test-an-azure-stream-analytics-job-with-sample-data"></a>サンプル データを利用した Azure Stream Analytics ジョブのテスト
+# <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>ポータルで Azure Stream Analytics ジョブをテストする
 
-Azure Stream Analytics では、ジョブを開始または停止せずに、クエリをテストできます。 入力シンクから受信したデータ、または Azure portal でローカル ファイルからアップロードしたサンプル データに対するクエリをテストできます。 [Visual Studio](stream-analytics-live-data-local-testing.md) と [Visual Studio Code](visual-studio-code-local-run-live-input.md) でローカル サンプル データまたはライブ データからクエリをローカルでテストすることもできます。
+Azure Stream Analytics では、ジョブを開始または停止せずに、クエリをテストできます。 ストリーミング ソースからの受信データ、または Azure portal でローカル ファイルからアップロードしたサンプル データに対するクエリをテストできます。 [Visual Studio](stream-analytics-live-data-local-testing.md) と [Visual Studio Code](visual-studio-code-local-run-live-input.md) でローカル サンプル データまたはライブ データからクエリをローカルでテストすることもできます。
 
-## <a name="sample-incoming-data-from-input"></a>入力からの受信データのサンプル
+## <a name="automatically-sample-incoming-data-from-input"></a>入力から受信データを自動的にサンプリングする
 
 Azure Stream Analytics では、ストリーミング入力からイベントを自動的にフェッチします。 既定のサンプルに対してクエリを実行したり、サンプルの特定の期間を設定したりすることができます。
 
@@ -98,6 +98,7 @@ Azure Stream Analytics では、ストリーミング入力からイベントを
 10. ブラウザに示された結果を確認したら、ジョブを**開始**できます。
 
 ## <a name="next-steps"></a>次のステップ
+* [Stream Analytics を使って IoT ソリューションを構築する](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-build-an-iot-solution-using-stream-analytics): このチュートリアルでは、料金所での交通情報をシミュレートするデータ ジェネレーターを使用してエンドツーエンドのソリューションを構築する方法について説明します。
 
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 

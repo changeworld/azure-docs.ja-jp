@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: helohr
-ms.openlocfilehash: 7ef35bdf6c7470d425826d7a30755cc216e69158
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+manager: lizross
+ms.openlocfilehash: a4210947d771768943775a3e62c2558fa2883bd5
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164069"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128181"
 ---
 # <a name="determine-user-connection-latency-in-windows-virtual-desktop"></a>Windows Virtual Desktop でのユーザー接続の待機時間の決定
 
@@ -24,7 +25,7 @@ Windows Virtual Desktop はグローバルに使用できます。 管理者は�
 
 Windows Virtual Desktop では Azure Traffic Manager が使用されます。これにより、ユーザーの DNS サーバーの場所が確認され、最も近い Windows Virtual Desktop サービス インスタンスが見つかります。 管理者は、VM の場所を選択する前に、ユーザーの DNS サーバーの場所を確認することをお勧めします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 最適な待機時間のための最適な場所を確認するには、「[Windows Virtual Desktop エクスペリエンス見積もりツール](https://azure.microsoft.com/services/virtual-desktop/assessment/)」を参照してください。
 - 価格プランの詳細については、「[Windows Virtual Desktop の価格](https://azure.microsoft.com/pricing/details/virtual-desktop/)」を参照してください。

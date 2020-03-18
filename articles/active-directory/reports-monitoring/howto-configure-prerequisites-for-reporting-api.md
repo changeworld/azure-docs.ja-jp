@@ -17,16 +17,16 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f25f13c60a60e1a397e4c63443ee786a9acdf6d1
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 12abfc0d345c937ae886f9bfacfb8ce30227cc45
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273794"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399303"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Azure Active Directory レポート API にアクセスするための前提条件
 
-[Azure Active Directory (Azure AD) レポート API](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) は、一連の REST ベースの API を使用してデータへのプログラムによるアクセスを提供します。 これらの API は、プログラミング言語やツールから呼び出すことができます。
+[Azure Active Directory (Azure AD) レポート API](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-reporting-api) は、一連の REST ベースの API を使用してデータへのプログラムによるアクセスを提供します。 これらの API は、プログラミング言語やツールから呼び出すことができます。
 
 Reporting API は、 [OAuth](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad) を使用して Web API へのアクセスを承認します。
 
@@ -191,7 +191,6 @@ Reporting API への呼び出しを構成するときに、これらの値が必
 
 このセクションでは、Microsoft Graph API を使用してアクティビティ レポートにアクセスする際に生じる可能性のある一般的なエラー メッセージと、その解決手順を示します。
 
-
 ### <a name="error-failed-to-get-user-roles-from-microsoft-graph"></a>エラー:Microsoft Graph からユーザー ロールを取得できませんでした
 
  Graph エクスプローラーを使用してサインインするときにエラーが発生しないようにするには、Graph エクスプローラーの UI の両方のサインイン ボタンを使用してアカウントにサインインします。 
@@ -204,7 +203,6 @@ Graph エクスプローラーを使用してサインインにアクセスし�
 
 ![アクセス許可の変更 UI](./media/troubleshoot-graph-api/modify-permissions.png)
 
-
 ### <a name="error-tenant-is-not-b2c-or-tenant-doesnt-have-premium-license"></a>エラー:テナントが B2C ではないか、またはテナントに Premium ライセンスがありません
 
 サインイン レポートへのアクセスには、Azure Active Directory Premium 1 (P1) ライセンスが必要です。 サインインへのアクセス中にこのようなエラー メッセージが表示された場合は、テナントに Azure AD P1 ライセンスがあることを確認してください。
@@ -215,7 +213,7 @@ Graph エクスプローラーを使用してサインインにアクセスし�
 
 ### <a name="error-application-missing-aad-read-directory-data-permission"></a>エラー:アプリケーションに AAD の 'ディレクトリ データの読み取り' アクセス許可がありません 
 
-### <a name="error-application-missing-microsoft-api-read-all-audit-log-data-permission"></a>エラー:アプリケーションに Microsoft API の 'すべての監査ログ データの読み取り' アクセス許可がありません
+### <a name="error-application-missing-microsoft-graph-api-read-all-audit-log-data-permission"></a>エラー:アプリケーションに Microsoft Graph API の 'すべての監査ログ データの読み取り' アクセス許可がありません
 
 「[Azure Active Directory レポート API にアクセスするための前提条件](howto-configure-prerequisites-for-reporting-api.md)」の手順に従って、アプリケーションが適切なアクセス許可のセットを使用して実行されていることを確認してください。 
 

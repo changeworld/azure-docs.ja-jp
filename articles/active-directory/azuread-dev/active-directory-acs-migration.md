@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: 7b009a6e2f540dc076340a6803679a541e60adc7
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 63ace9af31dd284c61fae188744b24361f33c170
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163768"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377909"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>方法:Azure Access Control Service からの移行
 
@@ -68,13 +68,13 @@ Access Control の詳細については、「[Access Control Service 2.0](https:
 ### <a name="download-and-install-acs-powershell"></a>ACS PowerShell をダウンロードしてインストールする
 
 1. PowerShell ギャラリーに移動し、[Acs.Namespaces](https://www.powershellgallery.com/packages/Acs.Namespaces/1.0.2) をダウンロードします。
-1. 次を実行してモジュールをインストールします
+2. 次を実行してモジュールをインストールします
 
     ```powershell
     Install-Module -Name Acs.Namespaces
     ```
 
-1. 次を実行して、使用できるすべてのコマンドの一覧を取得します
+3. 次を実行して、使用できるすべてのコマンドの一覧を取得します
 
     ```powershell
     Get-Command -Module Acs.Namespaces
@@ -94,8 +94,8 @@ Access Control の詳細については、「[Access Control Service 2.0](https:
   
     コマンドを実行する前に `Set-ExecutionPolicy -ExecutionPolicy Bypass` を実行し、コマンドを実行するためにそれらのサブスクリプションの管理者になっておくことが必要な場合があります。
 
-1. **Get-AcsSubscription** コマンドレットを使用して、使用可能な Azure サブスクリプションを一覧表示します。
-1. **Get-AcsNamespace** コマンドレットを使用して、ACS 名前空間を一覧表示します。
+2. **Get-AcsSubscription** コマンドレットを使用して、使用可能な Azure サブスクリプションを一覧表示します。
+3. **Get-AcsNamespace** コマンドレットを使用して、ACS 名前空間を一覧表示します。
 
 ### <a name="check-which-applications-will-be-impacted"></a>どのアプリケーションが影響を受けるかを確認する
 
@@ -103,8 +103,8 @@ Access Control の詳細については、「[Access Control Service 2.0](https:
 
     たとえば、名前空間の 1 つが contoso-test である場合は、`https://contoso-test.accesscontrol.windows.net` に移動します
 
-1. **[信頼関係]** で、 **[証明書利用者アプリケーション]** を選択し、ACS の提供終了の影響を受けるアプリケーションの一覧を表示します。
-1. その他に ACS 名前空間があれば、それらについて手順 1 ～ 2 を繰り返します。
+2. **[信頼関係]** で、 **[証明書利用者アプリケーション]** を選択し、ACS の提供終了の影響を受けるアプリケーションの一覧を表示します。
+3. その他に ACS 名前空間があれば、それらについて手順 1 ～ 2 を繰り返します。
 
 ## <a name="retirement-schedule"></a>提供終了のスケジュール
 
@@ -210,7 +210,7 @@ Azure AD テナントは、AD FS を通じて、1 つ以上のオンプレミス
 | カスタムのトークン署名証明書をアップロード | サポートされています | サポートされています |
 | トークンの要求をカスタマイズ |- ID プロバイダーからの入力要求をパススルー<br />- ID プロバイダーからアクセス トークンを要求として取得<br />- 入力要求の値に基づいて出力要求を発行<br />- 定数値を持つ出力要求を発行 |- フェデレーション ID プロバイダーからの要求をパススルーすることはできません<br />- ID プロバイダーからアクセス トークンを要求として取得できません<br />- 入力要求の値に基づいて出力要求を発行できません<br />- 定数値を持つ出力要求を発行できます<br />- Azure AD に同期されたユーザーのプロパティに基づいて出力要求を発行できます |
 | **Automation** | | |
-| 構成および管理タスクを自動化 | サポート対象 (Access Control 管理サービスを使用) | サポート対象 (Microsoft Graph と Azure AD Graph API を使用) |
+| 構成および管理タスクを自動化 | サポート対象 (Access Control 管理サービスを使用) | Microsoft Graph API を使用することでサポートされます |
 
 Azure AD がアプリケーションとサービスの最善の移行経路であると判断した場合は、アプリを Azure AD と統合する 2 つの方法を認識する必要があります。
 
@@ -261,7 +261,7 @@ Azure AD B2C の最も魅力的な機能の 1 つは、Access Control と同様�
 | カスタムのトークン署名証明書をアップロード | サポートされています | 証明書ではなくカスタム署名キーがサポート対象です (カスタム ポリシーを使用) |
 | トークンの要求をカスタマイズ |- ID プロバイダーからの入力要求をパススルー<br />- ID プロバイダーからアクセス トークンを要求として取得<br />- 入力要求の値に基づいて出力要求を発行<br />- 定数値を持つ出力要求を発行 |- ID プロバイダーからの要求をパススルーできます。 一部の要求にはカスタム ポリシーが必要です<br />- ID プロバイダーからアクセス トークンを要求として取得できません<br />- カスタム ポリシーを使用して入力要求の値に基づいて出力要求を発行できます<br />- カスタム ポリシーを使用して定数値を持つ出力要求を発行できます |
 | **Automation** | | |
-| 構成および管理タスクを自動化 | サポート対象 (Access Control 管理サービスを使用) |- Azure AD Graph API を使用してユーザーを作成できます<br />- B2C テナント、アプリケーション、またはポリシーをプログラムで作成することはできません |
+| 構成および管理タスクを自動化 | サポート対象 (Access Control 管理サービスを使用) |- Microsoft Graph API を使用して許可されたユーザーの作成<br />- B2C テナント、アプリケーション、またはポリシーをプログラムで作成することはできません |
 
 Azure AD B2C がアプリケーションとサービスの最善の移行経路であると判断した場合は、次のリソースで開始してください。
 
@@ -325,7 +325,7 @@ OAuth クライアント資格情報の付与の Azure AD 実装を使用して�
 | クライアント認証方法 |- シンプルなパスワード<br />- 署名付き SWT<br />- フェデレーション ID プロバイダーからの SAML トークン |- シンプルなパスワード<br />- 署名付き JWT |
 | トークン形式 |- JWT<br />- SAML 1.1<br />- SAML 2.0<br />- SWT<br /> | JWT のみ |
 | トークン変換 |- カスタム要求の追加<br />- シンプルな if-then 要求発行ロジック | カスタム要求の追加 | 
-| 構成および管理タスクを自動化 | サポート対象 (Access Control 管理サービスを使用) | サポート対象 (Microsoft Graph と Azure AD Graph API を使用) |
+| 構成および管理タスクを自動化 | サポート対象 (Access Control 管理サービスを使用) | Microsoft Graph API を使用することでサポートされます |
 
 サーバー対サーバーのシナリオの実装のガイダンスについては、次のリソースをご覧ください。
 

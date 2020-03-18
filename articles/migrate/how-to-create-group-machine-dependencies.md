@@ -1,25 +1,25 @@
 ---
 title: Azure Migrate で依存関係の視覚化を設定する
-description: Azure Migrate Server Assessment で依存関係の視覚化を設定することについて説明します。
+description: この記事では、Azure Migrate Server Assessment で依存関係の視覚化を設定する方法について説明します。
 ms.topic: article
 ms.date: 2/24/2020
-ms.openlocfilehash: 054e2301160a885909630c2968863e5f9e25af69
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 2b75a38a376558946841d08ab7a9dbf730232e51
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916287"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78941047"
 ---
 # <a name="set-up-dependency-visualization"></a>依存関係の視覚化を設定する
 
-この記事では、Azure Migrate:Server Assessment で依存関係の視覚化を設定する方法について説明します。 [依存関係の視覚化](concepts-dependency-visualization.md#what-is-dependency-visualization)は、評価や Azure への移行を行うマシン間の依存関係を特定し、理解するのに役立ちます。
+この記事では、Azure Migrate Server Assessment で依存関係の視覚化を設定する方法について説明します。Server Assessment を使用して作成する方法について説明します。 [依存関係の視覚化](concepts-dependency-visualization.md#what-is-dependency-visualization)は、評価や Azure への移行を行うマシン間の依存関係を特定し、理解するために役立ちます。
 
 ## <a name="before-you-start"></a>開始する前に
 
 - 依存関係の視覚化に関連する要件とコストを[確認](concepts-dependency-visualization.md)します。
 - Azure Migrate プロジェクトを[作成](how-to-add-tool-first-time.md)していることを確認します。
-- プロジェクトを既に作成している場合は、Azure Migrate Server:Assessment ツールを[追加](how-to-assess.md)済みであることを確認します。
-- オンプレミスのマシンを検出するための [Azure Migrate アプライアンス](migrate-appliance.md)を設定済みであることを確認します。 [VMware](how-to-set-up-appliance-vmware.md) または [Hyper-V](how-to-set-up-appliance-hyper-v.md) 用のアプライアンスの設定方法を確認してください。 このアプライアンスでオンプレミス マシンを検出し、Azure Migrate:Server Assessment にメタデータとパフォーマンス データを送信します。
+- プロジェクトを既に作成してある場合は、次のツールを[追加済み](how-to-assess.md)であることを確認します。Azure Migrate: Server Assessment ツールを追加済みであることを確認してください。
+- オンプレミスのマシンを検出するための [Azure Migrate アプライアンス](migrate-appliance.md)を設定済みであることを確認します。 [VMware](how-to-set-up-appliance-vmware.md) または [Hyper-V](how-to-set-up-appliance-hyper-v.md) 用のアプライアンスの設定方法を確認してください。 アプライアンスでオンプレミスのマシンが検出されて、メタデータとパフォーマンス データが Azure Migrate: Server Assessment を使用して作成する方法について説明します。
 - 依存関係の視覚化を利用するには、[Log Analytics ワークスペース](../azure-monitor/platform/manage-access.md)を Azure Migrate プロジェクトに関連付けます。
     - ワークスペースが、Azure Migrate プロジェクトを含むサブスクリプション内にあることを確認します。
     - ワークスペースは、米国東部リージョン、東南アジア リージョン、または西ヨーロッパ リージョンに存在する必要があります。 他のリージョンにあるワークスペースをプロジェクトに関連付けることはできません。
@@ -32,8 +32,8 @@ ms.locfileid: "77916287"
 
 ## <a name="associate-a-workspace"></a>ワークスペースを関連付ける
 
-1. 評価対象のマシンを検出したら、 **[サーバー]**  >  **[Azure Migrate:Server Assessment] (Azure Migrate:Server Assessment)** で、 **[概要]** をクリックします。  
-2. **[Azure Migrate:Server Assessment] (Azure Migrate:Server Assessment)** で、 **[要点]** をクリックします。
+1. 評価対象のマシンを検出したら、 **[サーバー]**  > **Azure Migrate:Server Assessment** で、 **[概要]** をクリックします。  
+2. **Azure Migrate:Server Assessment** で、 **[Essentials]** をクリックします。
 3. **[OMS ワークスペース]** で、 **[構成が必要]** をクリックします。
 
      ![Log Analytics ワークスペースを構成する](./media/how-to-create-group-machine-dependencies/oms-workspace-select.png)   

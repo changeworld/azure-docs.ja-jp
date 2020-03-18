@@ -8,14 +8,13 @@ ms.subservice: core
 ms.topic: reference
 ms.author: jmartens
 author: j-martens
-ms.date: 01/21/2020
-ms.custom: seodec18
-ms.openlocfilehash: 6f244fc057638bc94a94c150d9333435c0197a74
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.date: 03/10/2020
+ms.openlocfilehash: c12a6efd608625b93b1a084de3ceb790a8773eee
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249741"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129807"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
@@ -23,9 +22,99 @@ ms.locfileid: "78249741"
 
 バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
 
+## <a name="2020-03-11"></a>2020-03-11
+
+### <a name="azure-machine-learning-sdk-for-python-v115"></a>Azure Machine Learning SDK for Python v1.1.5
+
++ **機能の非推奨**
+  + **Python 2.7**
+    + Python 2.7 をサポートする最後のバージョンです
+
++ **重大な変更**
+  + **セマンティック バージョニング 2.0.0**
+    + バージョン 1.1 以降、Azure ML Python SDK では、セマンティック バージョニング 2.0.0 が採用されています。 詳細については、[こちら](https://semver.org/)を参照してください。 以降のすべてのバージョンは、新しい番号付けスキームとセマンティック バージョニング コントラクトに従います。 
+
++ **バグの修正と機能強化**
+  + **azure-cli-ml**
+    + 一貫性を保つために、エンドポイントの CLI コマンド名を 'az ml endpoint aks' から 'az ml endpoint realtime' に変更します。
+    + 安定した実験用ブランチ CLI の CLI インストール手順を更新します
+    + 単一インスタンスのプロファイリングが、レコメンデーションを生成するために修正され、コアの SDK で使用できるようになりました。
+  + **azureml-automl-core**
+    + automl ONNX モデルのバッチモード推論（複数行を 1 回取得）が有効です
+    + データ セットの周波数の検出、データの不足、または不規則なデータ ポイントの検出の改善
+    + 主要な周波数に準拠していないデータ ポイントを削除する機能が追加されました。
+    + 対応する列の補完オプションを適用するためのオプション一覧を取得するように、コンストラクターの入力を変更しました。
+    + エラーのログ記録が改善されました。
+  + **azureml-automl-runtime**
+    + トレーニング セットに存在しないグレインがテスト セットに含まれていた場合にスローされるエラーの問題を修正しました
+    + 予測サービスでのスコアリング中に y_query 要件が削除されました
+    + データセットに長い時間差の短いグレインが含まれている場合の予測に関する問題を修正しました。
+    + 自動最大期間が有効になっていて、日付列に文字列形式の日付が含まれている場合の問題を修正しました。 日付への変換ができない場合の、適切な変換およびエラーのメッセージを追加しました
+    + FileCacheStore の中間データのシリアル化と逆シリアル化にネイティブの NumPy と SciPy を使用します (ローカル AutoML の実行に使用)
+    + 失敗した子の実行が実行状態のままになるバグを修正しました。
+    + 特性付けの速度が向上しました。
+    + スコアリング中の頻度チェックを修正しました。予測タスクでは、トレーニングとテスト セット間で頻度が厳密に同一である必要はなくなりました。
+    + 対応する列の補完オプションを適用するためのオプション一覧を取得するように、コンストラクターの入力を変更しました。
+    + ラグの種類の選択に関連するエラーを修正しました。
+    + データ セットで発生した未分類エラーを修正し、粒度を単一行にしました
+    + 周波数検出のパフォーマンスが低下する問題を修正しました。
+    + トレーニング エラーの実際の原因が AttributeError に置き換えられる、AutoML 例外処理のバグを修正します。
+  + **azureml-cli-common**
+    + 単一インスタンスのプロファイリングが、レコメンデーションを生成するために修正され、コアの SDK で使用できるようになりました。
+  + **azureml-contrib-mir**
+    + アクセス トークンを取得する機能を MirWebservice クラスに追加
+    + MirWebservice.run() の呼び出し中、MirWebservice に対して既定ではトークン認証を使用し、呼び出しが失敗した場合のみ更新します
+    + Mir webservice のデプロイでは、[Ds2v2、A2v2、および F16] ではなく、それぞれ適切な SKU である [Standard_DS2_v2、Standard_F16、Standard_A2_v2] が必要になりました。
+  + **azureml-contrib-pipeline-steps**
+    + 省略可能なパラメーター side_inputs が ParallelRunStep に追加されました。 このパラメーターを使用して、コンテナーにフォルダーをマウントできます。 現在サポートされている型は、DataReference と PipelineData です。
+    + ParallelRunConfig で渡されたパラメーターが、パイプライン パラメーターを渡すことによって上書きできるようになりました。 サポートされる新しいパイプライン パラメーターは、aml_mini_batch_size、aml_error_threshold、aml_logging_level、aml_run_invocation_timeout (aml_node_count と aml_process_count_per_node は以前のリリースに既に含まれています) です。
+  + **azureml-core**
+    + デプロイされた AzureML Webservices は、既定値で `INFO`ログになります。 これは、デプロイされたサービスで `AZUREML_LOG_LEVEL` 環境変数を設定することによってコントロールできます。
+    + Python sdk は、検出サービスを使用して「パイプライン」の代わりに 「api」エンドポイントを使用します。
+    + すべての SDK 呼び出しの新しいルートにスワップする
+    + ModelManagementService への呼び出しのルート指定を新しい統合構造体に変更します。
+      + ワークスペースの更新メソッドを公開しました。
+      + ユーザーがイメージ ビルドの計算を更新できるように、ワークスペース更新メソッドに image_build_compute パラメーターを追加
+    +  古いプロファイル ワークフローに非推奨のメッセージを追加しました。 プロファイルの cpu とメモリの制限を修正
+    + R ジョブを実行する環境の一部として RSection を追加しました
+    +  データセットのソースにアクセスできない場合、またはデータが含まれていない場合にエラーを発生させるために、`Dataset.mount` に検証を追加しました。
+    + Azure BLOB コンテナーを登録するためのデータストア CLI の追加パラメーターとして `--grant-workspace-msi-access` を追加しました。これにより、VNet の背後にある BLOB コンテナーを登録できるようになります
+    + 単一インスタンスのプロファイリングが、レコメンデーションを生成するために修正され、コアの SDK で使用できるようになりました。
+    + aks.py _deploy の問題を修正しました
+    + サイレント ストレージ障害を回避するために、アップロードされるモデルの整合性が検証されます。
+    + ユーザーは、Web サービス用のキーを再生成するときに、認証キーの値を指定できるようになりました。
+    + データセットの入力名として大文字を使用できないバグを修正しました
+  + **azureml-defaults**
+    + `azureml-dataprep` は `azureml-defaults` の一部としてインストールされるようになりました。 データセットをマウントするために、コンピューティング ターゲットに dataprep[fuse] を手動でインストールする必要はなくなりました。
+  + **azureml-interpret**
+    + azureml-interpret を interpret-community 0.6 へと更新しました。*
+    + azureml-interpret が interpret-community 0.5.0 に依存するように更新されました
+    + azureml-interpret に azureml-style 例外を追加しました
+    + keras モデルの DeepScoringExplainer シリアル化を修正しました
+  + **azureml-mlflow**
+    + ソブリン クラウドのサポートを azureml.mlflow に追加
+  + **azureml-pipeline-core**
+    + パイプライン バッチ スコアリング ノートブックで ParallelRunStep が使用されるようになりました
+    + 引数リストを変更しても PythonScriptStep の結果が誤って再利用される可能性のあるバグを修正しました
+    + `PipelineOutputFileDataset` で parse_* メソッドを呼び出すときに、列の型を設定する機能を追加しました
+  + **azureml-pipeline-steps**
+    + `AutoMLStep` を `azureml-pipeline-steps` パッケージに移動しました。 `azureml-train-automl-runtime` 内の `AutoMLStep` は非推奨になりました。
+    + PythonScriptStep 入力としてのデータセットのドキュメント例を追加しました
+  + **azureml-tensorboard**
+    + azureml-tensorboard を更新して、tensorflow 2.0 をサポートしました
+    + コンピューティング インスタンスでカスタムの Tensorboard ポートを使用するときに、正しいポート番号を表示します
+  + **azureml-train-automl-client**
+    + リモート実行で特定のパッケージが正しくないバージョンでインストールされる可能性がある問題を修正しました。
+    + カスタムの特性付け構成をフィルター処理する FeaturizationConfig のオーバーライドの問題を修正しました。
+  + **azureml-train-automl-runtime**
+    + リモート実行での周波数の検出に関する問題を修正
+    + `azureml-pipeline-steps` パッケージ内の `AutoMLStep` を移動しました。 `azureml-train-automl-runtime` 内の `AutoMLStep` は非推奨になりました。
+  + **azureml-train-core**
+    + PyTorch Estimator での PyTorch バージョン 1.4 のサポート
+  
 ## <a name="2020-03-02"></a>2020 年 03 月 02 日
 
-### <a name="azure-machine-learning-sdk-for-python-v112rc0"></a>Azure Machine Learning SDK for Python v1.1.2rc0
+### <a name="azure-machine-learning-sdk-for-python-v112rc0-pre-release"></a>Azure Machine Learning SDK for Python v1.1.2rc0 (プレリリース)
 
 + **バグの修正と機能強化**
   + **azureml-automl-core**
@@ -63,7 +152,7 @@ ms.locfileid: "78249741"
 
 ## <a name="2020-02-18"></a>2020-02-18
 
-### <a name="azure-machine-learning-sdk-for-python-v111rc0"></a>Azure Machine Learning SDK for Python v1.1.1rc0
+### <a name="azure-machine-learning-sdk-for-python-v111rc0-pre-release"></a>Azure Machine Learning SDK for Python v1.1.1rc0 (プレリリース)
 
 + **バグの修正と機能強化**
   + **azure-cli-ml**
@@ -102,7 +191,7 @@ ms.locfileid: "78249741"
   
 ## <a name="2020-02-04"></a>2020-02-04
 
-### <a name="azure-machine-learning-sdk-for-python-v110rc0"></a>Azure Machine Learning SDK for Python v1.1.0rc0
+### <a name="azure-machine-learning-sdk-for-python-v110rc0-pre-release"></a>Azure Machine Learning SDK for Python v1.1.0rc0 (プレリリース)
 
 + **重大な変更**
   + **セマンティック バージョニング 2.0.0**

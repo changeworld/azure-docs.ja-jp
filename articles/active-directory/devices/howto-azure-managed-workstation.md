@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d713dd968956f5bcc93e7b53ed2d7801e5d7bec2
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 5d02b0299b6267fdd9d880d5bc0fe8c93d0edadc
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561935"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672602"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>セキュリティで保護された Azure マネージド ワークステーションのデプロイ
 
@@ -57,21 +57,21 @@ ms.locfileid: "74561935"
 
 Azure Active Directory (Azure AD) では、管理者ワークステーションのユーザー、グループ、デバイスを管理します。 [管理者アカウント](../users-groups-roles/directory-assign-admin-roles.md)で ID サービスおよび機能を有効にします。
 
-セキュリティで保護されたワークステーションの管理者アカウントを作成するときに、現在のワークステーションにアカウントを公開します。 この初期構成とすべてのグローバル構成を行うときに、既知の安全なデバイスを使用する必要があります。 初めて構成する際に攻撃にさらされるリスクを軽減するために、[マルウェア感染を防ぐためのガイダンス](https://docs.microsoft.com/windows/security/threat-protection/intelligence/prevent-malware-infection)に従うことを検討してください。
+セキュリティで保護されたワークステーションの管理者アカウントを作成するときに、現在のワークステーションにアカウントを公開します。 この初期構成とすべてのグローバル構成を行うときに、既知の安全なデバイスを使用する必要があります。 初めて構成する際に攻撃にさらされるリスクを軽減するために、[マルウェア感染を防ぐためのガイダンス](/windows/security/threat-protection/intelligence/prevent-malware-infection)に従うことを検討してください。
 
 少なくとも管理者には多要素認証を要求する必要があります。 実装のガイダンスについては、[クラウドベースの MFA のデプロイ](../authentication/howto-mfa-getstarted.md)に関するページを参照してください。
 
 ### <a name="azure-ad-users-and-groups"></a>Azure AD のユーザーとグループ
 
 1. Azure portal から、 **[Azure Active Directory]**  >  **[ユーザー]**  >  **[新しいユーザー]** の順に移動します。
-1. [ユーザーの作成に関するチュートリアル](https://docs.microsoft.com/Intune/quickstart-create-user)の手順に従って、デバイス管理者を作成します。
+1. [ユーザーの作成に関するチュートリアル](/Intune/quickstart-create-user)の手順に従って、デバイス管理者を作成します。
 1. 次のように入力します。
 
    * **名前** - セキュリティで保護されたワークステーションの管理者
    * **ユーザー名** - `secure-ws-admin@identityitpro.com`
    * **ディレクトリ ロール** - **制限付き管理者**。**Intune 管理者**ロールを選択します。
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 次に、ワークステーション ユーザーとワークステーション デバイスの 2 つのグループを作成します。
 
@@ -86,14 +86,14 @@ Azure portal から、 **[Azure Active Directory]**  >  **[グループ]**  >  *
 
 1. セキュリティで保護されたワークステーションの管理者ユーザー (`secure-ws-admin@identityitpro.com`) を追加します。
 1. セキュリティで保護されたワークステーションを管理する他のすべてのユーザーを追加できます。
-1. **作成** を選択します。
+1. **［作成］** を選択します
 1. ワークステーション デバイス グループでは、次のように入力します。
 
    * **グループの種類** - セキュリティ
    * **グループ名** - セキュリティで保護されたワークステーション
    * **メンバーシップの種類**: 割り当て済み
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 ### <a name="azure-ad-device-configuration"></a>Azure AD デバイスの構成
 
@@ -127,7 +127,7 @@ Azure ポータルで次の手順を実行します。
 1. **[MDM ユーザー スコープ]** 設定を **[すべて]** に変更します。
 1. **[保存]** を選択します。
 
-これらの手順により、Intune でデバイスを管理できるようになります。 詳細については、「[クイック スタート: Windows 10 デバイスの自動登録を設定する](https://docs.microsoft.com/Intune/quickstart-setup-auto-enrollment)」を参照してください。 Intune の構成とコンプライアンス ポリシーは以降の手順で作成します。
+これらの手順により、Intune でデバイスを管理できるようになります。 詳細については、「[クイック スタート: Windows 10 デバイスの自動登録を設定する](/Intune/quickstart-setup-auto-enrollment)」を参照してください。 Intune の構成とコンプライアンス ポリシーは以降の手順で作成します。
 
 #### <a name="azure-ad-conditional-access"></a>Azure AD の条件付きアクセス
 
@@ -137,7 +137,7 @@ Azure AD の条件付きアクセスを使用すると、特権管理タスク�
 
 ### <a name="configure-enrollment-status"></a>登録ステータスを構成する
 
-セキュリティで保護されたワークステーションが信頼できるクリーンなデバイスであることを確認することが重要です。 新しいデバイスの購入時に、出荷時の設定を [S モードの Windows 10 Pro](https://docs.microsoft.com/Windows/deployment/Windows-10-pro-in-s-mode) にするよう要求できます。これにより、サプライ チェーンの管理時に脆弱性にさらされるリスクを抑えることができます。 デバイスをサプライヤーから受け取った後に、Autopilot を使用して S モードから変更できます。 以下のガイダンスでは、変換プロセスの適用に関する詳細を提供します。
+セキュリティで保護されたワークステーションが信頼できるクリーンなデバイスであることを確認することが重要です。 新しいデバイスの購入時に、出荷時の設定を [S モードの Windows 10 Pro](/Windows/deployment/Windows-10-pro-in-s-mode) にするよう要求できます。これにより、サプライ チェーンの管理時に脆弱性にさらされるリスクを抑えることができます。 デバイスをサプライヤーから受け取った後に、Autopilot を使用して S モードから変更できます。 以下のガイダンスでは、変換プロセスの適用に関する詳細を提供します。
 
 使用する前に、デバイスが完全に構成されていることを確認するために、Intune には、**すべてのアプリとプロファイルがインストールされるまでデバイスの使用をブロックする**手段が用意されています。
 
@@ -162,7 +162,7 @@ Azure portal の Intune で次の手順を実行します。
 
 1. **[次へ]** を選択します。
 
-   * **[配置モード]** で **[自己展開 (プレビュー)]** を選択します。 このプロファイルが割り当てられたデバイスは、デバイスを登録するユーザーに関連付けられます。 デバイスを登録するには、ユーザーの資格情報が必要です。 **自己展開**モードでデバイスを展開することで、ノート PC を共有モデルで展開できることに注意する必要があります。 デバイスのユーザーへの最初の割り当てが行われるまで、ユーザーの割り当ては行われません。 その結果、ユーザー割り当てが完了するまで、BitLocker など、いずれのユーザー ポリシーも有効になりません。 セキュリティで保護されたデバイスにログオンする方法の詳細については、[選択されたプロファイル](https://docs.microsoft.com/intune/device-profile-assign)に関する記事を参照してください。
+   * **[配置モード]** で **[自己展開 (プレビュー)]** を選択します。 このプロファイルが割り当てられたデバイスは、デバイスを登録するユーザーに関連付けられます。 デバイスを登録するには、ユーザーの資格情報が必要です。 **自己展開**モードでデバイスを展開することで、ノート PC を共有モデルで展開できることに注意する必要があります。 デバイスのユーザーへの最初の割り当てが行われるまで、ユーザーの割り当ては行われません。 その結果、ユーザー割り当てが完了するまで、BitLocker など、いずれのユーザー ポリシーも有効になりません。 セキュリティで保護されたデバイスにログオンする方法の詳細については、[選択されたプロファイル](/intune/device-profile-assign)に関する記事を参照してください。
    * **[Azure AD への参加の種類]** ボックスに **[Azure AD 参加済み]** と表示され、淡色表示されている必要があります。
    * 言語 (リージョン) を選択し、ユーザー アカウントの種類として **[Standard]** を選択します。 
 
@@ -175,7 +175,7 @@ Azure portal の Intune で次の手順を実行します。
 1. **[次へ]** を選択します。
 1. **[作成]** を選択してプロファイルを作成します。 これで、Autopilot デプロイ プロファイルをデバイスに割り当てられるようになりました。
 
-Autopilot でのデバイス登録では、デバイスの種類と役割に基づいてさまざまなユーザー エクスペリエンスが提供されます。 このデプロイ例で示すモデルでは、セキュリティで保護されたデバイスを一括展開して共有できる一方、デバイスは初めて使用するときにユーザーに割り当てられます。 詳細については、[Intune Autopilot デバイス登録](https://docs.microsoft.com/intune/device-enrollment)に関する記事を参照してください。
+Autopilot でのデバイス登録では、デバイスの種類と役割に基づいてさまざまなユーザー エクスペリエンスが提供されます。 このデプロイ例で示すモデルでは、セキュリティで保護されたデバイスを一括展開して共有できる一方、デバイスは初めて使用するときにユーザーに割り当てられます。 詳細については、[Intune Autopilot デバイス登録](/intune/device-enrollment)に関する記事を参照してください。
 
 ### <a name="configure-windows-update"></a>Windows Update を構成する
 
@@ -200,10 +200,10 @@ Azure Portal で次の操作を行います。
    * 再起動猶予期間リマインダーの一時停止 (日数) - **3**
    * 保留中の再起動の期限を設定する (日数) - **3**
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 1. **[割り当て]** タブで、**セキュリティで保護されたワークステーション** グループを追加します。
 
-Windows Update のポリシーに関する詳細については、「[Policy CSP - Update (ポリシー CSP - 更新プログラム)](https://docs.microsoft.com/windows/client-management/mdm/policy-csp-update)」をご覧ください。
+Windows Update のポリシーに関する詳細については、「[Policy CSP - Update (ポリシー CSP - 更新プログラム)](/windows/client-management/mdm/policy-csp-update)」をご覧ください。
 
 ### <a name="windows-defender-atp-intune-integration"></a>Windows Defender ATP Intune 統合
 
@@ -223,7 +223,7 @@ Windows Defender ATP と Intune の統合を構成するには、Azure portal �
 1. **[Connect Windows devices version 10.0.15063 and above to Windows Defender ATP]\(バージョン 10.0.15063 以上の Windows デバイスを Windows Defender ATP に接続します\)** を **[オン]** に設定します。
 1. **[保存]** を選択します。
 
-詳細については、[Windows Defender Advanced Threat Protection](https://docs.microsoft.com/Windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection) に関する記事をご覧ください。
+詳細については、[Windows Defender Advanced Threat Protection](/Windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection) に関する記事をご覧ください。
 
 ### <a name="finish-workstation-profile-hardening"></a>ワークステーション プロファイルのセキュリティ強化を完了する
 
@@ -245,13 +245,13 @@ Windows Defender ATP と Intune の統合を構成するには、Azure portal �
 * スクリプトによって作成された Intune デバイス構成プロファイルは、**Azure portal** >  **[Microsoft Intune]**  >  **[デバイスの構成]**  >  **[プロファイル]** で確認できます。
 * スクリプトによって作成された Intune デバイス コンプライアンス ポリシーは、**Azure portal** >  **[Microsoft Intune]**  >  **[デバイスのポリシー準拠]**  >  **[ポリシー]** で確認できます。
 
-スクリプトによって行われた変更を確認するために、プロファイルをエクスポートできます。 これにより、[SECCON のドキュメント](https://docs.microsoft.com/windows/security/threat-protection/windows-security-configuration-framework/windows-security-configuration-framework)で概説されているように、必要になる可能性のある追加のセキュリティ強化を確認できます。
+スクリプトによって行われた変更を確認するために、プロファイルをエクスポートできます。 これにより、[SECCON のドキュメント](/windows/security/threat-protection/windows-security-configuration-framework/windows-security-configuration-framework)で概説されているように、必要になる可能性のある追加のセキュリティ強化を確認できます。
 
 [DeviceConfiguration GiuHub リポジトリ](https://github.com/microsoftgraph/powershell-intune-samples/tree/master/DeviceConfiguration)の Intune データ エクスポート スクリプト `DeviceConfiguration_Export.ps1` を実行して、現在のすべての Intune プロファイルをエクスポートします。
 
 ## <a name="additional-configurations-and-hardening-to-consider"></a>考慮すべき追加の構成とセキュリティ強化
 
-ここでのガイダンスに従って、セキュリティで保護されたワークステーションをデプロイしました。 ただし、追加の制御も検討する必要があります。 例:
+ここでのガイダンスに従って、セキュリティで保護されたワークステーションをデプロイしました。 ただし、追加の制御も検討する必要があります。 次に例を示します。
 
 * 代替ブラウザーへのアクセスの制限
 * 送信 HTTP の許可
@@ -260,7 +260,7 @@ Windows Defender ATP と Intune の統合を構成するには、Azure portal �
 
 ### <a name="set-rules-in-the-firewall-configuration-service-provider-csp"></a>ファイアウォールの構成サービス プロバイダー (CSP) で規則を設定する
 
-許可されたエンドポイントとブロックされたエンドポイントでの必要に応じて、インバウンド規則とアウトバウンド規則の管理に変更を加えることができます。 セキュリティで保護されたワークステーションのセキュリティ強化を続けていく中で、受信トラフィックと送信トラフィックをすべて拒否する制限を緩和できます。 送信が許可されたサイトを追加して、共通の信頼できる Web サイトを含めます。 詳細については、[ファイアウォールの構成サービス](https://docs.microsoft.com/Windows/client-management/mdm/firewall-csp)に関する記事をご覧ください。
+許可されたエンドポイントとブロックされたエンドポイントでの必要に応じて、インバウンド規則とアウトバウンド規則の管理に変更を加えることができます。 セキュリティで保護されたワークステーションのセキュリティ強化を続けていく中で、受信トラフィックと送信トラフィックをすべて拒否する制限を緩和できます。 送信が許可されたサイトを追加して、共通の信頼できる Web サイトを含めます。 詳細については、[ファイアウォールの構成サービス](/Windows/client-management/mdm/firewall-csp)に関する記事をご覧ください。
 
 制限の厳しい URL トラフィック管理には次のものが含まれます。
 
@@ -302,7 +302,7 @@ Chrome の設定の構成の詳細については、「[Microsoft Intune で Chr
 
 セキュリティで保護されたモードでは、アプリケーションのインストールが Intune ポータル サイトに制限されます。 しかし、ポータルをインストールするには、Microsoft Store へのアクセスが必要です。 セキュリティで保護されたソリューションでは、オフライン モードを使用して、すべてのデバイスでポータル サイトを利用できるようにすることが可能です。
 
-[ポータル サイト](https://docs.microsoft.com/Intune/store-apps-company-portal-app)の Intune で管理されているコピーを使用すると、セキュリティで保護されたワークステーションのユーザーにプッシュ ダウンできる追加のツールにオンデマンドでアクセスできます。
+[ポータル サイト](/Intune/store-apps-company-portal-app)の Intune で管理されているコピーを使用すると、セキュリティで保護されたワークステーションのユーザーにプッシュ ダウンできる追加のツールにオンデマンドでアクセスできます。
 
 デプロイに特別な準備を必要とする Windows 32 ビット アプリや他のアプリをインストールすることが必要な場合があります。 このような場合、[Microsoft win32 コンテンツ準備ツール](https://github.com/Microsoft/Microsoft-Win32-Content-Prep-Tool)で、インストールにすぐに使用できる `.intunewin` 形式のファイルを提供できます。
 
@@ -342,7 +342,7 @@ Microsoft スクリプト センターの [SetDesktopBackground.ps1](https://gal
 1. **[構成]** をクリックします。
    1. **[このスクリプトをログオンしたユーザーの資格情報を使用して実行する]** を **[はい]** に設定します。
    1. **[OK]** を選択します。
-1. **作成** を選択します。
+1. **［作成］** を選択します
 1. **[割り当て]**  >  **[グループの選択]** を選択します。
    1. **セキュリティで保護されたワークステーション** セキュリティ グループを追加します。
    1. **[保存]** を選択します。
@@ -371,11 +371,11 @@ Microsoft スクリプト センターの [SetDesktopBackground.ps1](https://gal
 
 ## <a name="assign-devices"></a>デバイスの割り当て
 
-デバイスとユーザーを割り当てるには、[選択されたプロファイル](https://docs.microsoft.com/intune/device-profile-assign)をセキュリティ グループにマップする必要があります。 サービスに対するアクセス許可を必要とするすべての新しいユーザーもセキュリティ グループに追加する必要があります。
+デバイスとユーザーを割り当てるには、[選択されたプロファイル](/intune/device-profile-assign)をセキュリティ グループにマップする必要があります。 サービスに対するアクセス許可を必要とするすべての新しいユーザーもセキュリティ グループに追加する必要があります。
 
 ## <a name="using-sentinel-and-windows-defender-atp-to-monitor-and-respond-to-security-incidents"></a>Sentinel と Windows Defender ATP を使用したセキュリティ インシデントの監視と対応
 
-セキュリティで保護されたワークステーションのデプロイの監視は、[Sentinel] を有効にし、[[脅威と脆弱性の管理]](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/next-gen-threat-and-vuln-mgt) を利用することで実行できます。このガイダンスでは、包括的な脅威ハンティングは提供しませんが、潜在的なセキュリティ インシデントを監視して対応するための一般的な対策を提供します。
+セキュリティで保護されたワークステーションのデプロイの監視は、[Sentinel] を有効にし、[[脅威と脆弱性の管理]](/windows/security/threat-protection/microsoft-defender-atp/next-gen-threat-and-vuln-mgt) を利用することで実行できます。このガイダンスでは、包括的な脅威ハンティングは提供しませんが、潜在的なセキュリティ インシデントを監視して対応するための一般的な対策を提供します。
 
 **Azure Sentinel** を使用して、次のことを実行します。 
 
@@ -393,7 +393,7 @@ Sentinel 監視を行うには、データ ソースへのコネクタ (Azure AD
    * **[リソース グループ]** -** [新規作成]** > [Secure Workstation RG]\(セキュリティで保護されたワークステーションのリソース グループ\) > **[OK]** の順に選択します
    * **[場所]** - デプロイに最も適した地理的な場所を選択します
    * **[価格レベル]** - **[1 GB あたり (2018)]** を選択します
-1. **[OK]** を選びます。
+1. **[OK]** を選択します。
 
 次に、使用可能なセキュリティで保護されたワークステーションのデータ ソースを監視に接続します。
 
@@ -412,7 +412,7 @@ Sentinel 監視を行うには、データ ソースへのコネクタ (Azure AD
 * ダッシュボードを使用して、調査中にマシンレベルの脆弱性を特定する
 * 修復を Intune にプッシュする
 
-[Defender ATP ダッシュボード](https://securitycenter.windows.com/machines)を構成してください。 [脅威および脆弱性の管理ダッシュボードの概要](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/tvm-dashboard-insights)に関するページのガイダンスを使用してください。
+[Defender ATP ダッシュボード](https://securitycenter.windows.com/machines)を構成してください。 [脅威および脆弱性の管理ダッシュボードの概要](/windows/security/threat-protection/microsoft-defender-atp/tvm-dashboard-insights)に関するページのガイダンスを使用してください。
 
 ## <a name="monitoring-application-activity-using-microsoft-monitoring-agent-mma"></a>Microsoft Monitoring Agent を使用したアプリケーション アクティビティの監視 (MMA)
 ワークステーション上のアプリケーション アクティビティを監視するための App Locker は、最初に専用ワークステーションで有効になります。 監視を Log Analytics ワークスペースに統合するには、MMA エージェントと構成に従う必要があります。 
@@ -429,7 +429,7 @@ Intune PowerShell スクリプトを使用して MMA エージェントをデプ
 1. **[構成]** をクリックします。
    1. **[このスクリプトをログオンしたユーザーの資格情報を使用して実行する]** を **[はい]** に設定します。
    1. **[OK]** を選択します。
-1. **作成** を選択します。
+1. **［作成］** を選択します
 1. **[割り当て]**  >  **[グループの選択]** を選択します。
    1. **セキュリティで保護されたワークステーション** セキュリティ グループを追加します。
    1. **[保存]** を選択します。
@@ -449,18 +449,18 @@ Intune PowerShell スクリプトを使用して MMA エージェントをデプ
 
 ## <a name="monitoring"></a>監視
 
-* [Azure Sentinel を使用して脅威を検出する](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats)方法を確認します
-* [Azure Sentinel でインシデントを調査します](https://docs.microsoft.com/azure/sentinel/tutorial-investigate-cases)
-* [Azure Sentinel で脅威への自動対応を設定します](https://docs.microsoft.com/azure/sentinel/tutorial-respond-threats-playbook)
-* [露出スコア](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/tvm-exposure-score)を確認する方法を理解します
-* [セキュリティの推奨事項](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/tvm-security-recommendation)を確認します
-* セキュリティの[推奨事項](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/tvm-remediation)を管理します
-* [エンドポイントの保護と対応](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)を管理します
-* [Intune のプロファイル監視機能](https://docs.microsoft.com/intune/device-profile-monitor)を使用してプロファイルを監視します。
+* [Azure Sentinel を使用して脅威を検出する](/azure/sentinel/tutorial-detect-threats)方法を確認します
+* [Azure Sentinel でインシデントを調査します](/azure/sentinel/tutorial-investigate-cases)
+* [Azure Sentinel で脅威への自動対応を設定します](/azure/sentinel/tutorial-respond-threats-playbook)
+* [露出スコア](/windows/security/threat-protection/microsoft-defender-atp/tvm-exposure-score)を確認する方法を理解します
+* [セキュリティの推奨事項](/windows/security/threat-protection/microsoft-defender-atp/tvm-security-recommendation)を確認します
+* セキュリティの[推奨事項](/windows/security/threat-protection/microsoft-defender-atp/tvm-remediation)を管理します
+* [エンドポイントの保護と対応](/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)を管理します
+* [Intune のプロファイル監視機能](/intune/device-profile-monitor)を使用してプロファイルを監視します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [Microsoft Intune](https://docs.microsoft.com/intune/index) の詳細を確認します。
+* [Microsoft Intune](/intune/index) の詳細を確認します。
 * [Azure AD](../index.yml) について理解します。
-* [Microsoft Defender Advanced Threat Protection](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) を操作します
-* [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/) について知ります
+* [Microsoft Defender Advanced Threat Protection](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) を操作します
+* [Azure Sentinel](/azure/sentinel/) について知ります

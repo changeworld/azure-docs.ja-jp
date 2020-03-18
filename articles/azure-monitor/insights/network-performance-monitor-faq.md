@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 0ef50dfd4d9c6eb0066e54b76167b9934fbb9cf0
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 443e4b44633e949dd9bd55df1ec7d18ca93d6e04
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654435"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096217"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor ソリューションの FAQ
 
@@ -183,7 +183,7 @@ NPM は、traceroute の修正バージョンを使用して、ソース エー�
 * ネットワーク デバイスが ICMP_TTL_EXCEEDED トラフィックを許可していない。
 * ネットワーク デバイスからの ICMP_TTL_EXCEEDED 応答がファイアウォールによってブロックされている。
 
-どちらかのエンドポイントが Azure に存在する場合、Azure ndrastructure で ID が traceroute に公開されないため、traceroute で識別不能ホップが示されます。 
+どちらかのエンドポイントが Azure に存在する場合、Azure インフラストラクチャで ID が traceroute に公開されないため、traceroute で識別不能ホップが示されます。 
 
 ### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy"></a>異常なテストに関するアラートが表示されますが、NPM の損失と待機時間のグラフに高い値が表示されません。 何が異常であるかを確認するにはどうすればよいですか。
 NPM は、ソースと宛先の間のエンド ツー エンドの待機時間が、それらの間のいずれかのパスのしきい値を超えた場合にアラートを生成します。 一部のネットワークには、同じソースと宛先を接続している複数のパスがあります。 いずれかのパスに異常があると、NPM はアラートを生成します。 グラフに表示される損失と待機時間は、すべてのパスの平均値であるため、1 つのパスの正確な値を示すとは限りません。 しきい値を超えた場所を把握するには、アラートの "サブタイプ" 列を確認します。 この問題がパスによって発生している場合、サブタイプ値は NetworkPath (パフォーマンス モニター テストの場合)、EndpointPath (サービス接続モニター テストの場合)、および ExpressRoutePath (ExpressRoute モニター テストの場合) になります。 

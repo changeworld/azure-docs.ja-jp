@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 11d631f6977f760c8253fbaa0dc66af05def42a2
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 8e8a56fdfd57b44677cf5459eb1a4e6e46e6bdae
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184011"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399077"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OpenID Connect 技術プロファイルを定義する
 
@@ -77,9 +77,11 @@ Azure Active Directory B2C (Azure AD B2C) では、[OpenID Connect](https://open
 | 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | client_id | はい | ID プロバイダーのアプリケーション識別子。 |
-| IdTokenAudience | いいえ | id_token の対象ユーザー。 指定される場合、Azure AD B2C は、トークンが ID プロバイダーにより返された要求内にあり、そして指定されたものと等しいかどうかをチェックします。 |
-| METADATA | はい | OpenID Connect Discovery 仕様に従ってフォーマットされた JSON 構成ドキュメントをポイントする URL。既知の openid 構成エンドポイントとも呼ばれます。 |
-| ProviderName | いいえ | ID プロバイダーの名前。 |
+| IdTokenAudience | いいえ | id_token の対象ユーザー。 指定される場合、Azure AD B2C により、ID プロバイダーによって返されたトークンの `aud` クレームが IdTokenAudience メタデータで指定されているものと等しいかどうかを確認します。  |
+| METADATA | はい | OpenID の既知の構成エンドポイントとも呼ばれる OpenID Connect ID プロバイダー構成ドキュメントを指す URL。 URL には、テナント名に置き換えられる `{tenant}` 式を含めることができます。  |
+| authorization_endpoint | いいえ | OpenID Connect ID プロバイダー構成の承認エンドポイントを指す URL。 authorization_endpoint メタデータの値は、OpenID の既知の構成エンドポイントで指定された `authorization_endpoint` よりも優先されます。 URL には、テナント名に置き換えられる `{tenant}` 式を含めることができます。 |
+| 発行者 | いいえ | OpenID Connect ID プロバイダーの一意識別子。 issuer メタデータの値は、OpenID の既知の構成エンドポイントで指定された `issuer` よりも優先されます。  指定される場合、Azure AD B2C により、ID プロバイダーによって返されたトークンの `iss` クレームが issuer メタデータで指定されているものと等しいかどうかを確認します。 |
+| ProviderName | いいえ | ID プロバイダーの名前。  |
 | response_types | いいえ | OpenID Connect Core 1.0 仕様に準拠した応答の種類。 指定できる値: `id_token`、`code`、または `token`。 |
 | response_mode | いいえ | Azure AD B2C に結果を返信するために、ID プロバイダーが使用するメソッド。 指定できる値: `query`、`form_post` (既定)、または `fragment`。 |
 | scope | いいえ | OpenID Connect Core 1.0 の仕様に従って定義される、要求の範囲。 たとえば、`openid`、`profile`、`email` などです。 |

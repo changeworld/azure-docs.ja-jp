@@ -1,5 +1,5 @@
 ---
-title: Azure の Linux VM の仮想ハード ディスクを拡張する
+title: Linux VM の仮想ハード ディスクを拡張する
 description: Azure CLI を使用して、Linux VM の仮想ハード ディスクを拡張する方法について説明します。
 author: roygara
 ms.service: virtual-machines-linux
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 3bd85048cf12760d5918544ed6aac803e9fe120a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1295c5276f0f342323acf8d86eaaf9f785af3e9f
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036202"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945184"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Azure CLI を使用して Linux VM の仮想ハード ディスクを拡張する
 
@@ -140,6 +140,6 @@ ms.locfileid: "74036202"
     /dev/sdc1        197G   60M   187G   1% /datadrive
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * 追加の記憶域が必要な場合は、[Linux VM にデータ ディスクを追加する](add-disk.md)こともできます。 
 * ディスクの暗号化について詳しくは、「[Linux VM に対する Azure Disk Encryption](disk-encryption-overview.md)」を参照してください。

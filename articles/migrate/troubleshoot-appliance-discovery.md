@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 37da62a4eb0f934133d6486872ba319138299614
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 3e25f55d82ba146f9076e38faf1e399c5228d947
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048702"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080389"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure Migrate アプライアンスと検出のトラブルシューティング
 
@@ -150,6 +150,7 @@ Azure Migrate は、Azure Migrate を使用してアプリケーション、ロ�
 10004: "Unable to discover installed applications for <Windows/Linux> machines." (<Windows/Linux> マシンにインストールされているアプリケーションを検出できません。) |  <Windows/Linux> マシンにアクセスするための資格情報がアプライアンスで提供されていません。| <Windows/Linux> マシンにアクセスできる資格情報をアプライアンスに追加してください。
 10005: "Unable to access the on-premises server". (オンプレミスのサーバーにアクセスできません。) | アクセス資格情報が間違っている可能性があります。 | アプライアンスの資格情報を更新し、それを使用して関連するマシンにアクセスできることを確認してください。 
 10006: "Unable to access the on-premises server". (オンプレミスのサーバーにアクセスできません。) | これは、マシンのオペレーティング システムが Windows でも Linux でもない場合に発生する可能性があります。|  アプリ検出は、Windows/Linux にのみ使用してください。
+10007:"Unable to process the metadata retrieved" (取得されたメタデータを処理できません) | この内部エラーは、JSON を逆シリアル化しようとしている間に発生しました | Microsoft サポートに解決方法をお問い合わせください
 9000/9001/9002: "Unable to discover the applications installed on the server".(サーバーにインストールされているアプリケーションを検出できません。) | VMware ツールがインストールされていないか、破損している可能性があります。 | 関連するマシンに VMware ツールをインストール/再インストールし、実行されていることを確認します。
 9003: "Unable to discover the applications installed on the server".サーバーにインストールされているアプリケーションを検出できません。 | これは、マシンのオペレーティング システムが Windows でも Linux でもない場合に発生する可能性があります。 | アプリ検出は、Windows/Linux にのみ使用してください。
 9004: "Unable to discover the applications installed on the server".(サーバーにインストールされているアプリケーションを検出できません。) | これは、VM の電源がオフになっている場合に発生する可能性があります。 | 検出を行うには、VM がオンになっていることを確認します。
@@ -158,9 +159,21 @@ Azure Migrate は、Azure Migrate を使用してアプリケーション、ロ�
 9008: "Unable to retrieve the applications installed the server". (サーバーにインストールされているアプリケーションを取得できません。) | 内部エラーの可能性があります。  | 24 時間以内に問題が自動的に解決しない場合は、サポートにお問い合わせください。
 9009: "Unable to retrieve the applications installed the server". (サーバーにインストールされているアプリケーションを取得できません。) | サーバーの Windows ユーザー アカウント制御 (UAC) の設定の制限により、インストールされているアプリケーションの検出が妨げられている場合に発生します。 | サーバーで [ユーザーアカウント制御] の設定を探し、サーバーの UAC のレベル設定が下位の 2 つのいずれかになるように構成します。
 9010: "Unable to retrieve the applications installed the server". (サーバーにインストールされているアプリケーションを取得できません。) | 内部エラーの可能性があります。  | 24 時間以内に問題が自動的に解決しない場合は、サポートにお問い合わせください。
+9011:"File to download from guest is not found on the guest VM" (ゲストからダウンロードするファイルがゲスト VM に見つかりません) | この問題は、内部エラーのために発生します。 | この問題は、24 時間以内に自動的に解決されます。 問題が解決しない場合は、Microsoft サポートにお問い合わせください。
+9012:"Result file contents are empty." (結果ファイルの内容が空です。) | この問題は、内部エラーのために発生します。 | この問題は、24 時間以内に自動的に解決されます。 問題が解決しない場合は、Microsoft サポートにお問い合わせください。
+9013:"A new temporary profile is created for every login to the VMware VM" (VMware VM へのログインごとに新しい一時プロファイルが作成されます) | VM へのログインごとに新しい一時プロファイルが作成されます | ゲスト VM の資格情報で指定されたユーザー名が UPN 形式であることを確認してください。
+9015:"Unable to connect to VMware VMs due to insufficient privileges on vCenter" (vCenter の特権が不足しているため VMware VM に接続できません) | vCenter ユーザー アカウントでゲスト操作ロールが有効になっていません | vCenter ユーザー アカウントでゲスト操作ロールが有効になっていることを確認してください。
+9016:"Unable to connect to VMware VMs as the guest operations agent is out of data" (ゲスト操作エージェントのデータが不足しているため VMware VM に接続できません) | VMware ツールが正しくインストールされていないか、最新の状態ではありません。 | VMware ツールが正しくインストールされ、最新の状態になっていることを確認してください。
+9017:"File with discovered metadata is not found on the VM." (検出されたメタデータを含むファイルが VM 上に見つかりません。) | この問題は、内部エラーのために発生します。 | Microsoft サポートに解決方法をお問い合わせください。
+9018:"PowerShell is not installed in the Guest VMs." (PowerShell がゲスト VM にインストールされていません。) | PowerShell がゲスト VM で利用できません。 | ゲスト VM に PowerShell をインストールしてください。
+9019:"Unable to discover due to guest VM operation failures" (ゲスト VM 操作エラーのため、検出できませんでした) | VM で VMware ゲスト操作が失敗しました。 | VM の資格情報が有効であること、およびゲスト VM の資格情報で指定されたユーザー名が UPN 形式であることを確認してください。
+9020:"File creation permission is denied." (ファイル作成のアクセス許可が拒否されました。) | ユーザーまたはグループ ポリシーに関連付けられているロールにより、ユーザーがフォルダー内にファイルを作成することが制限されています | 指定されたゲスト ユーザーが、フォルダー内のファイルの作成アクセス許可を持っているかどうかを確認してください。 フォルダーの名前については、Server Assessment の **[Notifications]\(通知\)** を参照してください。
+9021:"File create permission is denied in folder System Temp Path." (System Temp Path フォルダーのファイル作成アクセス許可が拒否されました。) | VM 上の VMware ツール バージョンがサポートされていません | VMware ツール バージョンを 10.2.0 より上にアップグレードしてください。
+9022:"Get WMI object access is denied." (WMI オブジェクトの取得アクセスが拒否されました。) | ユーザーまたはグループ ポリシーに関連付けられているロールにより、ユーザーが WMI オブジェクトにアクセスすることが制限されています。 | Microsoft サポートにお問い合わせください。
+9023:"SystemRoot environment variable value is empty." (SystemRoot 環境変数の値が空です。) | 不明 | Microsoft サポートにお問い合わせください。
+9024:"TEMP environment variable value is empty." (TEMP 環境変数の値が空です。) | 不明 | Microsoft サポートにお問い合わせください。
+9025:"PowerShell is corrupt in the Guest VMs." (PowerShell がゲスト VM で破損しています。) | 不明 | PowerShell をゲスト VM に再インストールし、ゲスト VM で PowerShell を実行できるかどうかを確認してください。
 8084: "Unable to discover applications due to VMware error: <Exception from VMware>" (次の VMware エラーのため、アプリケーションを検出できません:) | Azure Migrate アプライアンスは、アプリケーションの検出に VMware API を使用しています。 この問題は、アプリケーションを検出しようとしている時に vCenter Server から例外がスローされた場合に発生することがあります。 VMware からのエラー メッセージは、ポータルに表示されるエラー メッセージに表示されます。 | [VMware ドキュメント](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html)でメッセージを検索し、修正手順に従ってください。 修正できない場合は、Microsoft サポートにお問い合わせください。
-9012:"Unable to discover the applications installed on the server" (サーバーにインストールされているアプリケーションを検出できません) | この問題は、内部エラーのために発生します。  | 24 時間以内に問題が自動的に解決しない場合は、サポートにお問い合わせください。
-9013:"Unable to discover the applications installed on the server" (サーバーにインストールされているアプリケーションを検出できません) | VM にログインするたびに、新しい一時プロファイルが作成されます。  | 指定されたゲスト ユーザーに対して一時プロファイルが作成されていないことを確認してください。
 
 
 

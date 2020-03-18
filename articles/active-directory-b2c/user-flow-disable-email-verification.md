@@ -8,21 +8,19 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c598664ef721103740716ad6215ddaea53bc635f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 369b4e13baa344a71a51b358ef810d1a66b4b6ae
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78183076"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126716"
 ---
 # <a name="disable-email-verification-during-customer-sign-up-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で顧客のサインアップ時のメール検証を無効にする
 
-既定で、Azure Active Directory B2C (Azure AD B2C) では、顧客のローカル アカウント (メール アドレスまたはユーザー名を使用してサインアップしたユーザーのアカウント) のメール アドレスが検証されます。 Azure AD B2C では、メール アドレスが有効であることを確認するために、サインアップ時に顧客が検証することを必須にしています。 また、悪意のあるアクターが自動化されたプロセスを使用してアプリケーションに不正なアカウントを生成することを防ぐことができます。
-
-アプリケーション開発者によっては、サインアップ プロセス時にはメールの検証をスキップし、代わりに後で顧客にメール アドレスを検証させることを好みます。 それをサポートするために、電子メールの検証を無効にするように Azure AD B2C を構成することができます。 そうすることで、サインアップ プロセスがよりスムーズになり、開発者はメール アドレスを検証した顧客と検証していない顧客を柔軟に区別することができます。
+[!INCLUDE [disable email verification intro](../../includes/active-directory-b2c-disable-email-verification.md)]
 
 次の手順に従って、メールの検証を無効にします。
 
@@ -37,5 +35,7 @@ ms.locfileid: "78183076"
 1. **[確認が必要]** ドロップダウンで **[いいえ]** を選択します。
 1. **[保存]** を選択します。 このユーザー フローでは、メールの検証が無効になりました。
 
-> [!WARNING]
-> サインアップ プロセスでの電子メールの検証を無効にすると、スパムにつながる場合があります。 既定の Azure AD B2C で提供されるメールの検証を無効にする場合は、代替の検証システムを実装することをお勧めします。
+## <a name="next-steps"></a>次のステップ
+
+- [Azure Active Directory B2C 内のユーザー インターフェイスをカスタマイズする](customize-ui-overview.md)方法を学習する
+

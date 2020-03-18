@@ -6,20 +6,22 @@ ms.service: scheduler
 ms.suite: infrastructure-services
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, estfan
 ms.topic: article
-ms.date: 09/23/2019
-ms.openlocfilehash: c5de7b7bf30726dbfbf165799280ad892eca628a
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.date: 02/29/2020
+ms.openlocfilehash: 90c3cc2e096b9b58465987bc53f718c5d06c6203
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911991"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78899081"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure Scheduler ジョブを Azure Logic Apps に移行する
 
 > [!IMPORTANT]
 > [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、[廃止される予定](#retire-date)の Azure Scheduler の後継です。 Scheduler で設定したジョブを使用し続けるには、この記事に従って、できるだけ早く Azure Logic Apps に移行してください。 
+>
+> Scheduler は Azure portal で利用できなくなりましたが、現時点では [REST API](/rest/api/scheduler) と [Azure Scheduler PowerShell コマンドレット](scheduler-powershell-reference.md)がまだ使用できるので、お客様はジョブとジョブ コレクションを管理することができます。
 
 この記事では、Azure Scheduler ではなく Azure Logic Apps を使用して自動化されたワークフローを作成することで、1 回限りのジョブと定期的なジョブをスケジュール設定する方法を示します。 Logic Apps を使用してスケジュールされたジョブを作成すると、次のメリットが得られます。
 
@@ -45,19 +47,19 @@ Scheduler ジョブはそれぞれ固有であるため、Azure Logic Apps へ�
 
 ## <a name="schedule-one-time-jobs"></a>1 回限りのジョブをスケジュール設定する
 
-ロジック アプリを 1 つだけ作成して、複数の 1 回限りのジョブを実行できます。 
+ロジック アプリを 1 つだけ作成して、複数の 1 回限りのジョブを実行できます。
 
-1. [Azure portal](https://portal.azure.com) のロジック アプリ デザイナーで空のロジック アプリを作成します。 
+1. [Azure portal](https://portal.azure.com) のロジック アプリ デザイナーで空のロジック アプリを作成します。
 
    基本的な手順については、[クイック スタート: 初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
 
-1. 検索ボックスに、フィルターとして「HTTP 要求の」と入力します。 トリガーの一覧から、**HTTP 要求の受信時** 
+1. 検索ボックスに「`when a http request`」と入力して、要求トリガーを検索します。 トリガーの一覧から、**HTTP 要求の受信時**
 
    !["要求" トリガーの追加](./media/migrate-from-scheduler-to-logic-apps/request-trigger.png)
 
-1. 要求トリガーに対して、必要に応じて JSON スキーマを指定できます。これは、ロジック アプリ デザイナーが、受信要求からの入力の構造を理解するのに役立ち、出力をこの後のワークフローで選択しやすくします。
+1. 要求トリガーに対して、必要に応じて JSON スキーマを指定できます。これは、ロジック アプリ デザイナーが、要求トリガーへの受信呼び出しに含まれる入力の構造を理解するのに役立ち、出力をこの後のワークフローで選択しやすくします。
 
-   スキーマを指定するには、 **[要求本文の JSON スキーマ]** ボックスにスキーマを入力します。その例を次に示します。 
+   **[要求本文の JSON スキーマ]** ボックスにスキーマを入力します。次に例を示します。
 
    ![要求スキーマ](./media/migrate-from-scheduler-to-logic-apps/request-schema.png)
 
@@ -69,23 +71,30 @@ Scheduler ジョブはそれぞれ固有であるため、Azure Logic Apps へ�
 
       ![サンプル ペイロード](./media/migrate-from-scheduler-to-logic-apps/sample-payload.png)
 
-1. トリガーで、 **[次のステップ]** を選択します。 
+      ```json
+      {
+         "runat": "2012-08-04T00:00Z",
+         "endpoint": "https://www.bing.com"
+      }
+      ```
 
-1. 検索ボックスに、フィルターとして「延期期限」と入力します。 アクションの一覧で、アクション **[延期期限]**
+1. トリガーで、 **[次のステップ]** を選択します。
+
+1. 検索ボックスに、フィルターとして「`delay until`」と入力します。 アクションの一覧で、アクション **[延期期限]**
 
    このアクションは、指定した日時までロジック アプリ ワークフローを一時停止します。
 
    ![「延期期限」アクションの追加](./media/migrate-from-scheduler-to-logic-apps/delay-until.png)
 
-1. ロジック アプリのワークフローを開始するタイムスタンプを入力します。 
+1. ロジック アプリのワークフローを開始するタイムスタンプを入力します。
 
-   **[タイムスタンプ]** ボックス内をクリックすると、動的コンテンツ リストが表示され、必要に応じてトリガーから出力を選択できます。
+   **[タイムスタンプ]** ボックス内をクリックすると、動的コンテンツ リストが表示され、必要に応じてトリガーから出力を選択できるようになります。
 
    ![「延期期限」の詳細を指定](./media/migrate-from-scheduler-to-logic-apps/delay-until-details.png)
 
-1. [数百単位のすぐに使えるコネクタ](../connectors/apis-list.md)から選択して、実行するその他のアクションを追加できます。 
+1. [数百単位のすぐに使えるコネクタ](../connectors/apis-list.md)から選択して、実行するその他のアクションを追加できます。
 
-   たとえば、URL に要求を送信する HTTP アクションや、Storage キュー、Service Bus キューまたは Service Bus トピックを使用するアクションを含めることができます。 
+   たとえば、URL に要求を送信する HTTP アクションや、Storage キュー、Service Bus キューまたは Service Bus トピックを使用するアクションを含めることができます。
 
    ![HTTP アクション](./media/migrate-from-scheduler-to-logic-apps/request-http-action.png)
 
@@ -93,16 +102,15 @@ Scheduler ジョブはそれぞれ固有であるため、Azure Logic Apps へ�
 
    ![ロジック アプリを保存する](./media/migrate-from-scheduler-to-logic-apps/save-logic-app.png)
 
-   初めてロジック アプリを保存するときに、そのロジック アプリの要求トリガーの URL エンドポイントが **[HTTP POST の URL]** ボックスに表示されます。 
-   ロジック アプリを呼び出して入力を処理するためにロジック アプリに送信する場合に、呼び出し先としてこの URL を使用します。
+   初めてロジック アプリを保存するときに、そのロジック アプリの要求トリガーの URL エンドポイントが **[HTTP POST の URL]** ボックスに表示されます。 ロジック アプリを呼び出して入力を処理するためにロジック アプリに送信する場合に、呼び出し先としてこの URL を使用します。
 
    ![要求トリガーのエンドポイント URL を保存する](./media/migrate-from-scheduler-to-logic-apps/request-endpoint-url.png)
 
-1. 後で手動でロジック アプリをトリガーする要求を送信できるように、このエンドポイント URL をコピーして保存します。 
+1. 後で手動でロジック アプリをトリガーする要求を送信できるように、このエンドポイント URL をコピーして保存します。
 
 ## <a name="start-a-one-time-job"></a>1 回限りのジョブを開始する
 
-1 回限りのジョブを手動で実行またはトリガーするには、ロジック アプリの要求トリガーのエンドポイント URL への呼び出しを送信します。 この呼び出しでは、送信する入力またはペイロードを指定します。これはスキーマを指定することで既に記述している可能性があります。 
+1 回限りのジョブを手動で実行またはトリガーするには、ロジック アプリの要求トリガーのエンドポイント URL への呼び出しを送信します。 この呼び出しでは、送信する入力またはペイロードを指定します。これはスキーマを指定することで既に記述している可能性があります。
 
 たとえば、Postman アプリを使用して、このサンプルと同じような設定で POST 要求を作成し、 **[送信]** を選択して要求を行うことができます。
 
@@ -129,11 +137,11 @@ Logic Apps では、1 回限りのジョブはそれぞれ 1 つのロジック 
 
 ## <a name="schedule-recurring-jobs"></a>定期的なジョブをスケジュール設定する
 
-1. [Azure portal](https://portal.azure.com) のロジック アプリ デザイナーで空のロジック アプリを作成します。 
+1. [Azure portal](https://portal.azure.com) のロジック アプリ デザイナーで空のロジック アプリを作成します。
 
    基本的な手順については、[クイック スタート: 初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
 
-1. 検索ボックスに、フィルターとして「recurrence」と入力します。 トリガーの一覧から、**定期的なアイテム** 
+1. 検索ボックスに、フィルターとして「recurrence」と入力します。 トリガーの一覧から、**定期的なアイテム**
 
    !["繰り返し" トリガーの追加](./media/migrate-from-scheduler-to-logic-apps/recurrence-trigger.png)
 
@@ -145,7 +153,7 @@ Logic Apps では、1 回限りのジョブはそれぞれ 1 つのロジック 
 
 1. [数百単位のすぐに使えるコネクタ](../connectors/apis-list.md)から選択し、実行するその他のアクションを追加できます。 トリガーで、 **[次のステップ]** を選択します。 目的のアクションを探して選択します。
 
-   たとえば、URL に要求を送信する HTTP アクションや、Storage キュー、Service Bus キューまたは Service Bus トピックを使用するアクションを含めることができます。 
+   たとえば、URL に要求を送信する HTTP アクションや、Storage キュー、Service Bus キューまたは Service Bus トピックを使用するアクションを含めることができます。
 
    ![HTTP アクション](./media/migrate-from-scheduler-to-logic-apps/recurrence-http-action.png)
 
@@ -173,7 +181,7 @@ Logic Apps では、1 回限りのジョブはそれぞれ 1 つのロジック 
 
 Azure Sheduler では、既定のアクションが実行に失敗した場合、エラー状態に対処する代替アクションを実行できます。 Azure Logic Apps でも、同じタスクを実行することができます。
 
-1. ロジック アプリ デザイナーでは、処理したいアクションの上で、ポインターを手順の間の矢印の上に移動し、 **[並列分岐の追加]** を選択します。 
+1. ロジック アプリ デザイナーでは、処理したいアクションの上で、ポインターを手順の間の矢印の上に移動し、 **[並列分岐の追加]** を選択します。
 
    ![並列分岐を追加する](./media/migrate-from-scheduler-to-logic-apps/add-parallel-branch.png)
 
@@ -204,13 +212,13 @@ Azure Sheduler では、既定のアクションが実行に失敗した場合�
 **A**: Scheduler のすべてのジョブ コレクションとジョブが実行を停止され、システムから削除されます。
 
 **Q**: Scheduler ジョブを Logic Apps に移行する前に、バックアップまたはその他のタスクを実行する必要がありますか。 <br>
-**A**: ベスト プラクティスとして、作業は常にバックアップしてください。 Scheduler ジョブを削除または無効にする前に、作成したロジック アプリが期待どおりに実行されていることを確認します。 
+**A**: ベスト プラクティスとして、作業は常にバックアップしてください。 Scheduler ジョブを削除または無効にする前に、作成したロジック アプリが期待どおりに実行されていることを確認します。
 
 **Q**: ジョブを Scheduler から Logic Apps に移行するために役立つツールはありますか。 <br>
 **A**: 各 Scheduler ジョブは独特であるため、すべてに対応できるツールは存在しません。 ただし、ニーズに基づき、[このスクリプトを編集して Azure Scheduler ジョブを Azure Logic Apps に移行する](https://github.com/Azure/logicapps/tree/master/scripts/scheduler-migration)ことができます。
 
 **Q**: Scheduler ジョブを移行するためのサポートはどこで受けられますか。 <br>
-**A**: サポートを受けるためのいくつかの方法を次に示します。 
+**A**: サポートを受けるためのいくつかの方法を次に示します。
 
 **Azure Portal**
 
@@ -220,7 +228,7 @@ Azure サブスクリプションに有料サポート プランがある場合�
 
 1. **[サポート]** メニューの **[新しいサポート リクエスト]** を選択します。 リクエストに関して次の情報を入力します。
 
-   | プロパティ | 値 |
+   | プロパティ | Value |
    |---------|-------|
    | **問題の種類** | **テクニカル** |
    | **サブスクリプション** | <*ご使用の Azure サブスクリプション*> |
@@ -237,4 +245,3 @@ Azure サブスクリプションに有料サポート プランがある場合�
 ## <a name="next-steps"></a>次のステップ
 
 * [定期的に実行されるタスクとワークフローを Azure Logic Apps で作成する](../connectors/connectors-native-recurrence.md)
-* [チュートリアル:スケジュールに基づいたロジック アプリでトラフィックをチェックする](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)

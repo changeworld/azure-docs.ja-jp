@@ -1,29 +1,30 @@
 ---
-title: PowerShell コマンドレット リファレンス - Azure Scheduler
+title: PowerShell コマンドレット リファレンス
 description: Azure Scheduler の PowerShell コマンドレットについて
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 9a26c457-d7a1-4e4a-bc79-f26592155218
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 1ad1d6b9f59fa51b9e27fe5b70ce4e2a5d36f3ad
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 577e2128cf7e4e9f914ec5504917053acb3c19d5
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300891"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898499"
 ---
 # <a name="powershell-cmdlets-reference-for-azure-scheduler"></a>Azure Scheduler の PowerShell コマンドレット リファレンス
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、[廃止される予定](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)の Azure Scheduler の後継です。 Scheduler で設定したジョブを使用し続けるには、できるだけ早く [Azure Logic Apps に移行](../scheduler/migrate-from-scheduler-to-logic-apps.md)してください。
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、[廃止される予定](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)の Azure Scheduler の後継です。 Scheduler で設定したジョブを使用し続けるには、できるだけ早く [Azure Logic Apps に移行](../scheduler/migrate-from-scheduler-to-logic-apps.md)してください。 
+>
+> Scheduler は Azure portal で利用できなくなりましたが、現時点では [REST API](/rest/api/scheduler) と [Azure Scheduler PowerShell コマンドレット](scheduler-powershell-reference.md)がまだ使用できるので、お客様はジョブとジョブ コレクションを管理することができます。
 
 Scheduler ジョブとジョブ コレクションを作成および管理するためのスクリプトを作成するために、PowerShell コマンドレットを使用できます。 この記事では、Azure Scheduler 用の主要な PowerShell コマンドレットと、その参考記事へのリンクを列挙します。 お使いの Azure サブスクリプションの Azure PowerShell をインストールするには、[Azure PowerShell をインストールして構成する方法](/powershell/azure/overview)を参照してください。 [Azure Resource Manager コマンドレット](/powershell/azure/overview)の詳細については、「[Azure Resource Manager での Azure PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 | コマンドレット | 説明 |
 |--------|-------------|
@@ -48,15 +49,14 @@ Scheduler ジョブとジョブ コレクションを作成および管理する
 
 詳細については、これらのコマンドレットのいずれかを実行してください。 
 
-```
+```text
 Get-Help <cmdlet name> -Detailed
 Get-Help <cmdlet name> -Examples
 Get-Help <cmdlet name> -Full
 ```
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
-* [Azure Scheduler とは](scheduler-intro.md)
-* [概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
-* [最初のジョブの作成とスケジュール設定 - Azure ポータル](scheduler-get-started-portal.md)
-* [Azure Scheduler REST API リファレンス](https://msdn.microsoft.com/library/mt629143)
+* [Azure Scheduler の概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
+* [Azure Scheduler の制限、既定値、エラー コード](scheduler-limits-defaults-errors.md)
+* [Azure Scheduler REST API リファレンス](/rest/api/scheduler)

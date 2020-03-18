@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 06/21/2019
+ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: c9da29ad288811bbed225fd906f2a7eb1fd9edf7
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a2619293bf3641cdca370ff528a87ae879460a3b
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977728"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086786"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 のよく寄せられる質問
 
@@ -28,6 +28,10 @@ ms.locfileid: "74977728"
 
 「[Media Services アカウント用のロールベースのアクセス制御 (RBAC)](rbac-overview.md)」を参照してください。
 
+### <a name="how-do-you-stream-to-apple-ios-devices"></a>Apple iOS デバイスにはどのようにストリーミングしますか。
+
+パスの終わり (URL の "/manifest" 部分の後) に "(format=m3u8-aapl)" が指定されていることを確認します。これは、Apple iOS ネイティブ デバイスで使用するために HLS コンテンツを返すように、ストリーミング元のサーバーに指示します (詳細については、[コンテンツの配信](dynamic-packaging-overview.md)に関する記事をご覧ください)。
+
 ### <a name="how-do-i-configure-media-reserved-units"></a>メディア占有ユニットの構成方法を教えてください。
 
 Media Services v3 または Video Indexer によってトリガーされる音声分析と動画分析ジョブでは、お使いのアカウントを 10 個の S3 の MRU でプロビジョニングすることを強くお勧めします。 10 個を超える S3 の MRU が必要な場合は、[Azure portal](https://portal.azure.com/) を使用してサポート チケットを開いてください。
@@ -38,13 +42,17 @@ Media Services v3 または Video Indexer によってトリガーされる音�
 
 [Transform](https://docs.microsoft.com/rest/api/media/transforms) を使用して、ビデオのエンコードや分析を行うための一般的なタスクを構成できます。 各 **Transform** は、ビデオまたはオーディオ ファイルを処理するためのレシピ､すなわちタスクのワークフローの記述です｡ [ジョブ](https://docs.microsoft.com/rest/api/media/jobs)は、特定の入力ビデオまたはオーディオ コンテンツに **Transform** を適用する、Media Services への実際の要求です。 Transform を作成すると､Media Services API または公開されている任意の SDK を使用してジョブを送信できます｡ 詳しくは、「[Transform と Job](transforms-jobs-concept.md)」をご覧ください。
 
+### <a name="i-uploaded-encoded-and-published-a-video-what-would-be-the-reason-the-video-does-not-play-when-i-try-to-stream-it"></a>ビデオをアップロード、エンコード、および公開しました。 ビデオをストリームしようとしても再生できない場合、どんな原因が考えられますか。
+
+最も一般的な原因の 1 つは、再生しようとしているストリーミング エンドポイントが実行中の状態になっていないことです。
+
 ### <a name="how-does-pagination-work"></a>改ページはどのように機能しますか?
 
 改ページを使用している場合は、常に次のリンクを使用してコレクションを列挙し、特定のページ サイズには依存しないようにする必要があります。 詳細および例については、[フィルター処理、順序付け、ページング](entities-overview.md)に関するページを参照してください。
 
 ### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Azure Media Services v3 では、どのような機能がまだ利用可能になっていますか。
 
-詳細については、「[v2 API に関する機能のギャップ](migrate-from-v2-to-v3.md#feature-gaps-with-respect-to-v2-apis)」を参照してください。
+詳細については、「[v2 API に関する機能のギャップ](media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis)」を参照してください。
 
 ### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>サブスクリプション間での Media Services アカウントの移動のプロセスはどのようなものですか?  
 
@@ -58,7 +66,7 @@ Media Services v3 のライブ エンコードでは、ライブ ストリーミ
 
 [ライブ オンプレミス エンコーダー](recommended-on-premises-live-encoders.md)を使用すると、ソースの動画を切り替えることができます。 多くのアプリには、Telestream Wirecast、Switcher Studio (iOS 上)、OBS Studio (無料アプリ) など、ソースを切り替える機能が用意されています。
 
-## <a name="content-protection"></a>コンテンツ保護
+## <a name="content-protection"></a>コンテンツの保護
 
 ### <a name="should-i-use-an-aes-128-clear-key-encryption-or-a-drm-system"></a>AES-128 クリア キー暗号化と DRM システムのどちらを使用すべきでしょぅか。
 
@@ -120,24 +128,30 @@ ASP.NET のプレーヤー アプリケーションはベスト プラクティ�
 * Media Services でライセンス配信サービスを構成する必要はもうありません。 必要なのは、ContentKeyPolicies を構成するときに、ライセンス取得 URL を (PlayReady、Widevine、FairPlay に) 提供することです。
 
 > [!NOTE]
-> Widevine は Google Inc. によって提供されるサービスであり、Google Inc. のサービス使用条件とプライバシー ポリシーが適用されます。
+> Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
 ## <a name="media-services-v2-vs-v3"></a>Media Services v2 対 v3 
 
 ### <a name="can-i-use-the-azure-portal-to-manage-v3-resources"></a>Azure portal を使用して v3 リソースを管理することはできますか?
 
-現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされている [SDK](media-services-apis-overview.md#sdks) のいずれかを使用してください。
+現時点では、[Azure portal](https://portal.azure.com/) を使って次のことを実行できます。
+
+* Media Services v3 の[ライブ イベント](live-events-outputs-concept.md)を管理する 
+* v3 の[資産](assets-concept.md)を (管理ではなく) 表示する 
+* [API のアクセスに関する情報を取得する](access-api-portal.md) 
+
+他のすべての管理タスク ([変換とジョブ](transforms-jobs-concept.md)や[コンテンツ保護](content-protection-overview.md)など) については、[REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>v3 には AssetFile の概念はありますか?
 
 Storage SDK の依存関係から Media Services を切り離すために、AssetFile は AMS API から削除されました。 現在、Media Services ではなく、Storage でそれに属する情報が保持されます。 
 
-詳細については、「[Media Services v3 に移行する](migrate-from-v2-to-v3.md)」を参照してください。
+詳細については、「[Media Services v3 に移行する](media-services-v2-vs-v3.md)」を参照してください。
 
 ### <a name="where-did-client-side-storage-encryption-go"></a>クライアント側でのストレージ暗号化は利用できなくなったのですか?
 
 現在、サーバー側のストレージ暗号化 (既定でオンになる) の使用が推奨されるようになりました。 詳細については、「[保存データ向け Azure Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Media Services v3 の概要](media-services-overview.md)

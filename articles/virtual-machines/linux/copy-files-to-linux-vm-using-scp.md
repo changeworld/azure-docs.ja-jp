@@ -1,26 +1,19 @@
 ---
 title: SCP を使用して Azure Linux VM とファイルをやり取りする
 description: SCP と SSH キー ペアを使用して Azure の Linux VM とファイルを安全にやり取りする方法について説明します。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: d78a8e59a55718048df2022cec75c7a2b56f1a6b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a0837790b70de42073338bf085ee0f3976b866f6
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036598"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969614"
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>SCP を使用して Linux VM とファイルをやり取りする
 
@@ -72,8 +65,8 @@ scp ~/.azure/config azureuser@myserver.eastus.cloudapp.com:/home/azureuser/confi
 scp -r azureuser@myserver.eastus.cloudapp.com:/home/azureuser/logs/. /tmp/
 ```
 
-`-r` cli フラグを使用すると、コマンド内にリスト化されたディレクトリのポイントからファイルやディレクトリを再帰的にコピーするように SCP に指示できます。  また、コマンドラインの構文は `cp` コピー コマンドの構文に似ています。
+`-r` フラグを使用すると、コマンド内に列挙されたディレクトリのポイントから、ファイルやディレクトリを再帰的にコピーするように SCP に指示できます。  また、コマンドラインの構文は `cp` コピー コマンドの構文に似ています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [VMAccess 拡張機能を使用して、Azure Linux VM 上のユーザー、SSH を管理し、ディスクをチェックまたは修復する](using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

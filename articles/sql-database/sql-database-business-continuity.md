@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 5a6a96f478c4402a830cc522657f56cfd11fa56f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4f30bf112175742566c2957d78154e5a7abd1733
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821821"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096869"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Azure SQL Database によるビジネス継続性の概要
 
@@ -65,7 +65,7 @@ SQL Database では、データ損失からビジネスを守るために、デ�
 |:---------------------------------------------| :-------------- | :----------------|
 | 自動フェールオーバー                           |     いいえ          |      はい         |
 | 複数のデータベースを同時にフェールオーバーする  |     いいえ          |      はい         |
-| フェールオーバー後に接続文字列を更新する      |     はい         |      いいえ          |
+| ユーザーがフェールオーバー後に接続文字列を更新する必要がある      |     はい         |      いいえ          |
 | Managed Instance のサポート                   |     いいえ          |      はい         |
 | プライマリと同じリージョンに存在できる             |     はい         |      いいえ          |
 | 複数のレプリカ                            |     はい         |      いいえ          |
@@ -152,6 +152,6 @@ geo 冗長ストレージ (既定で有効) で自動バックアップを使用
 
 アプリケーションのアップグレードなど、計画されたメンテナンスのために、アプリケーションをオフラインにしなければならないことがあります。 [アプリケーション アップグレードの管理](sql-database-manage-application-rolling-upgrade.md) に関するページでは、アクティブ geo レプリケーションを使用してクラウド アプリケーションのローリング アップグレードを有効化し、アップグレード中のダウンタイムを最小限に抑え、問題が発生した場合の復旧パスを提供する方法について説明します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 スタンドアロン データベースおよびエラスティック プール用アプリケーション設計に関する考慮事項については、[クラウド ディザスター リカバリー用のアプリケーション設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)に関するページと [Elastic Pool のディザスター リカバリー戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページをご覧ください。

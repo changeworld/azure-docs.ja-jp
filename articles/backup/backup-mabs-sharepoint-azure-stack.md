@@ -3,12 +3,12 @@ title: Azure Stack 上の SharePoint ファームのバックアップ
 description: Azure Backup Server を使用して、Azure Stack 上の SharePoint データをバックアップおよび復元します。 この記事では、目的のデータを Azure に保存できるように SharePoint ファームを構成するための情報を提供します。 ディスクまたは Azure から保護対象の SharePoint データを復元できます。
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: c503ac7a76872e71d1920765656610dd462d4db3
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: d080605022cadf121fa6be99c9758fe9c0d878ef
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583216"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673030"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>Azure Stack 上の SharePoint ファームのバックアップ
 
@@ -123,7 +123,7 @@ MABS を使用して SharePoint を保護する前に、**ConfigureSharePoint.ex
     ![Online_backup_schedule](./media/backup-azure-backup-sharepoint/specify-online-backup-schedule.png)
 
     > [!NOTE]
-    > MABS によって、使用可能な最新のディスク バックアップ ポイントから最大で 2 つの日次バックアップが Azure に提供されます。 Azure Backup では、 [Azure Backup ネットワーク調整](https://azure.microsoft.com/documentation/articles/backup-configure-vault/#enable-network-throttling)を使用することで、ピーク時間帯とピーク外の時間帯のバックアップに使用できる WAN 帯域幅の量を制御することもできます。
+    > MABS によって、使用可能な最新のディスク バックアップ ポイントから最大で 2 つの日次バックアップが Azure に提供されます。 Azure Backup では、 [Azure Backup ネットワーク調整](backup-windows-with-mars-agent.md#enable-network-throttling)を使用することで、ピーク時間帯とピーク外の時間帯のバックアップに使用できる WAN 帯域幅の量を制御することもできます。
     >
     >
 11. 選択したバックアップ スケジュールに応じて、 **[オンライン保持ポリシーの指定]** ページで、日、週、月、年単位のバックアップ ポイントの保持ポリシーを選択します。

@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: helohr
-ms.openlocfilehash: 1637cb7621d6071bbce2af66f3a106770139ad4e
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+manager: lizross
+ms.openlocfilehash: b93f26a6799a50868feb1f3350a3dc4a73a0b2e4
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368820"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127838"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>マスター VHD イメージに Office をインストールする
 
@@ -37,7 +38,7 @@ Office 展開ツールには、構成 XML ファイルが必要です。 次の�
 
 マイクロソフトが提供しているこのサンプル構成 XML では、次の操作を行います。
 
-- 月次チャネルから Office をインストールし、実行時に月次チャネルから更新プログラムを配信します。
+- 月次チャネルから Office をインストールし、その実行時に月次チャネルから更新プログラムを配信します。
 - x64 アーキテクチャを使用します。
 - 自動更新を無効にします。
 - Office の既存のインストールを削除し、その設定を移行します。

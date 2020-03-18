@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 04/26/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6cad3b3b01a98462e37a4b4b96ba02a1b61a5f62
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 30301832381bdc7b5f001eec2c449c571f9fd671
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025930"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086230"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch アプリケーション パッケージを使用したコンピューティング ノードへのアプリケーションのデプロイ
 
@@ -42,7 +42,7 @@ Azure Batch では、" *アプリケーション* " という用語は、プー�
 
 ![High-level diagram of applications and application packages][1]
 
-### <a name="applications"></a>[アプリケーション]
+### <a name="applications"></a>アプリケーション
 Batch 内のアプリケーションは、1 つ以上のアプリケーション パッケージを含んでおり、アプリケーションの構成オプションを指定します。 たとえば、アプリケーションは、コンピューティング ノードにインストールする既定のアプリケーション パッケージのバージョンや、そのパッケージを更新または削除できるかどうかを指定します。
 
 ### <a name="application-packages"></a>アプリケーション パッケージ
@@ -90,13 +90,11 @@ Batch サービスは関連付けられたストレージ アカウントを使�
 
 Batch アカウントで使うストレージ アカウントは "*専用*" のものを作成することをお勧めします。ここでは、そのようにします。 ストレージ アカウントを作成したら、 **[ストレージ アカウント]** ウィンドウを使用して Batch アカウントにリンクすることができます。
 
-> [!NOTE] 
-> 現時点では、[ファイアウォール規則](../storage/common/storage-network-security.md)で構成されている Azure Storage アカウントでアプリケーション パッケージを使用することはできません。
-> 
+> [!IMPORTANT] 
+> - 現時点では、[ファイアウォール規則](../storage/common/storage-network-security.md)で構成されている Azure Storage アカウントでアプリケーション パッケージを使用することはできません。
+> - **[階層型名前空間]** が **[有効]** に設定されている Azure Storage アカウントは、アプリケーション パッケージには使用できません。
 
 Batch サービスは、Azure Storage を使ってアプリケーション パッケージをブロック BLOB として格納します。 ブロック BLOB データの[通常料金を課金][storage_pricing]され、各パッケージのサイズは最大ブロック BLOB サイズを超えることはできません。 詳しくは、「[Azure Storage のスケーラビリティおよびストレージ アカウントのパフォーマンスのターゲット](../storage/blobs/scalability-targets.md)」を参照してください。 アプリケーション パッケージのサイズと数に気を配り、非推奨のパッケージを定期的に削除して、コストを最小限に抑えてください。
-> 
-> 
 
 ### <a name="view-current-applications"></a>現在のアプリケーションの表示
 Batch アカウントに含まれているアプリケーションを表示するには、 **[Batch アカウント]** の表示中に、左側のメニューにある **[アプリケーション]** メニュー項目をクリックします。

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 06c9e79a68540cb10557b0951b743bf841963057
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: a621165210702e075f15fb61bd615e157f997fe1
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190264"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79078861"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで Azure Active Directory 検証技術プロファイルを定義します。
 
@@ -28,8 +28,8 @@ Azure Active Directory B2C (Azure AD B2C) は、Azure Active Directory ユーザ
 
 **Protocol** 要素の **Name** 属性は `Proprietary` に設定する必要があります。 **handler** 属性には、プロトコル ハンドラー アセンブリ `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null` の完全修飾名が含まれている必要があります。
 
-すべての Azure AD 技術プロファイルには、**AAD-Common** 技術プロファイルが含まれています。 以下の技術プロファイルではプロトコルが指定されていません。これは、プロトコルが **AAD-Common** 技術プロファイルで構成されているためです。
-
+次の [カスタム ポリシー スターター パック](custom-policy-get-started.md#custom-policy-starter-pack) Azure AD 技術プロファイルには、**AAD-Common** 技術プロファイルが含まれています。 Azure AD 技術プロファイルではプロトコルが指定されていません。これは、プロトコルが **AAD-Common** 技術プロファイルで構成されているためです。
+ 
 - **AAD-UserReadUsingAlternativeSecurityId** および **AAD-UserReadUsingAlternativeSecurityId-NoError** - ディレクトリ内のソーシャル アカウントを検索します。
 - **AAD-UserWriteUsingAlternativeSecurityId** - 新しいソーシャル アカウントを作成します。
 - **AAD-UserReadUsingEmailAddress** - ディレクトリ内のローカル アカウントを検索します。
@@ -56,21 +56,21 @@ Azure Active Directory B2C (Azure AD B2C) は、Azure Active Directory ユーザ
 </TechnicalProfile>
 ```
 
-## <a name="input-claims"></a>入力クレーム
+## <a name="inputclaims"></a>InputClaims
 
-以下の技術プロファイルには、ソーシャル アカウントとローカル アカウントの **InputClaims** が含まれています。
+InputClaims 要素には、ディレクトリ内のアカウントを検索したり、新しいものを作成したりするために使用される要求が含まれています。 すべての Azure AD 技術プロファイルには、InputClaim 要素が入力要求コレクションに 1 つだけ存在する必要があります。 ポリシーに定義されている要求の名前を、Azure Active Directory で定義されている名前にマップすることが必要になる場合があります。
 
-- ソーシャル アカウント技術プロファイル **AAD-UserReadUsingAlternativeSecurityId** および **AAD-UserWriteUsingAlternativeSecurityId** には、**AlternativeSecurityId** 要求が含まれています。 この要求には、ソーシャル アカウント ユーザー識別子が含まれています。
-- ローカル アカウント技術プロファイル **AAD-UserReadUsingEmailAddress** および **AAD-UserWriteUsingLogonEmail** には、**email** 要求が含まれています。 この要求には、ローカル アカウントのサインイン名が含まれています。
-- 統合された (ローカルおよびソーシャル) 技術プロファイル **AAD-UserReadUsingObjectId**、**AAD-UserWritePasswordUsingObjectId**、**AAD-UserWriteProfileUsingObjectId**、および **AAD-UserWritePhoneNumberUsingObjectId** には、**objectId** 要求が含まれています。 アカウントの一意識別子。
+既存のユーザー アカウントの読み取り、更新、または削除を行う場合、入力要求は Azure AD ディレクトリ内のアカウントを一意に識別するキーです。 たとえば、**objectId**、**userPrincipalName**、**signInNames.emailAddress**、**signInNames.userName**、**alternativeSecurityId** などです。 
 
-**InputClaimsTransformations** 要素には、入力要求を変更したり新しい要求を生成するために使用される、**InputClaimsTransformation** 要素のコレクションが含まれている場合があります。
+新しいユーザー アカウントを作成する場合、入力要求はローカルまたはフェデレーション アカウントを一意に識別するキーです。 たとえば、ローカル アカウントの場合、**signInNames.emailAddress** や **signInNames.userName** です。 フェデレーション アカウントの場合は、**alternativeSecurityId** です。
 
-## <a name="output-claims"></a>出力クレーム
+[InputClaimsTransformations](technicalprofiles.md#inputclaimstransformations) 要素には、入力要求を変更したり新しいものを生成するために使用される、入力要求変換の要素のコレクションを含めることができます。
+
+## <a name="outputclaims"></a>OutputClaims
 
 **OutputClaims** 要素には、Azure AD 技術プロファイルによって返された要求の一覧が含まれています。 ポリシーに定義されている要求の名前を、Azure Active Directory で定義されている名前にマップすることが必要になる場合があります。 また、`DefaultValue` 属性を設定している限り、Azure Active Directory によって返されない要求を含めることもできます。
 
-**OutputClaimsTransformations** 要素には、出力要求を修正したり新しい要求を生成するために使用される、**OutputClaimsTransformation** 要素のコレクションが含まれている場合があります。
+[OutputClaimsTransformations](technicalprofiles.md#outputclaimstransformations) 要素には、出力要求を修正したり新しい要求を生成するために使用される、**OutputClaimsTransformation** 要素のコレクションが含まれている場合があります。
 
 たとえば、**AAD-UserWriteUsingLogonEmail**  技術プロファイルはローカル アカウントを作成し、以下の要求を返します。
 
@@ -92,7 +92,7 @@ Azure Active Directory B2C (Azure AD B2C) は、Azure Active Directory ユーザ
 
 ## <a name="persistedclaims"></a>PersistedClaims
 
-**PersistedClaims** 要素には、ポリシー内の ClaimsSchema セクションに既に定義されている要求の種類と Azure AD 属性名の間の使用可能なマッピング情報を使用して、Azure AD によって保持される必要があるすべての値が含まれています。
+**PersistedClaims** 要素には、ポリシー内の [ClaimsSchema](claimsschema.md) セクションに既に定義されている要求の種類と Azure AD 属性名の間の可能なマッピング情報と共に、Azure AD によって保持される必要があるすべての値が含まれています。
 
 新しいローカル アカウントを作成する **AAD-UserWriteUsingLogonEmail** 技術プロファイルは、以下の要求を保持します。
 
@@ -123,9 +123,7 @@ Azure Active Directory B2C (Azure AD B2C) は、Azure Active Directory ユーザ
 
 ### <a name="read"></a>Read
 
-**読み取り**操作は、単一のユーザー アカウントに関するデータを読み取ります。 ユーザー データを読み取るには、**objectId**、**userPrincipalName**、**signInNames**(任意の型、ユーザー名および電子メールベースのアカウント) または**alternativeSecurityId** などの入力要求としてキーを指定する必要があります。
-
-以下の技術プロファイルは、ユーザーの objectId を使用してユーザー アカウントに関するデータを読み取ります。
+**読み取り**操作は、単一のユーザー アカウントに関するデータを読み取ります。 以下の技術プロファイルは、ユーザーの objectId を使用してユーザー アカウントに関するデータを読み取ります。
 
 ```XML
 <TechnicalProfile Id="AAD-UserReadUsingObjectId">
@@ -155,9 +153,7 @@ Azure Active Directory B2C (Azure AD B2C) は、Azure Active Directory ユーザ
 
 ### <a name="write"></a>Write
 
-**書き込み**操作は、単一のユーザー アカウントを作成または更新します。 ユーザー アカウントを書き込むには、**objectId**、**userPrincipalName**、**signInNames.emailAddress**、または **alternativeSecurityId** などの入力要求としてキーを指定する必要があります。
-
-以下の技術プロファイルは、新しいソーシャル アカウントを作成します。
+**書き込み**操作は、単一のユーザー アカウントを作成または更新します。 以下の技術プロファイルは、新しいソーシャル アカウントを作成します。
 
 ```XML
 <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
@@ -197,9 +193,7 @@ Azure Active Directory B2C (Azure AD B2C) は、Azure Active Directory ユーザ
 
 ### <a name="deleteclaims"></a>DeleteClaims
 
-**DeleteClaims** 操作は、提供された要求の一覧から情報を消去します。 要求から情報を削除するには、**objectId**、**userPrincipalName**、**signInNames.emailAddress** または **alternativeSecurityId**などの入力要求としてキーを指定する必要があります。
-
-以下の技術プロファイルは、要求を削除します。
+**DeleteClaims** 操作は、提供された要求の一覧から情報を消去します。 以下の技術プロファイルは、要求を削除します。
 
 ```XML
 <TechnicalProfile Id="AAD-DeleteClaimsUsingObjectId">
@@ -220,9 +214,7 @@ Azure Active Directory B2C (Azure AD B2C) は、Azure Active Directory ユーザ
 
 ### <a name="deleteclaimsprincipal"></a>DeleteClaimsPrincipal
 
-**DeleteClaimsPrincipal** 操作は、ディレクトリから単一のユーザー アカウントを削除します。 ユーザー アカウントを削除するには、**objectId**、**userPrincipalName**、**signInNames.emailAddress** または **alternativeSecurityId** などの入力要求としてキーを指定する必要があります。
-
-以下の技術プロファイルは、ユーザー プリンシパル名を使用してディレクトリからユーザー アカウントを削除します。
+**DeleteClaimsPrincipal** 操作は、ディレクトリから単一のユーザー アカウントを削除します。 以下の技術プロファイルは、ユーザー プリンシパル名を使用してディレクトリからユーザー アカウントを削除します。
 
 ```XML
 <TechnicalProfile Id="AAD-DeleteUserUsingObjectId">
@@ -257,12 +249,26 @@ Azure Active Directory B2C (Azure AD B2C) は、Azure Active Directory ユーザ
 | --------- | -------- | ----------- |
 | Operation | はい | 実行する操作。 指定できる値: `Read`、`Write`、`DeleteClaims`、または `DeleteClaimsPrincipal`。 |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | いいえ | ユーザー オブジェクトがディレクトリに存在しない場合、エラーを発生させます。 指定できる値: `true` または `false`。 |
-| UserMessageIfClaimsPrincipalDoesNotExist | いいえ | エラーが発生する場合 (RaiseErrorIfClaimsPrincipalDoesNotExist 属性の説明を参照)、ユーザー オブジェクトが存在しない場合にユーザーに表示するメッセージを指定します。 値を[ローカライズ](localization.md)することができます。|
 | RaiseErrorIfClaimsPrincipalAlreadyExists | いいえ | ユーザー オブジェクトが既に存在する場合、エラーを発生させます。 指定できる値: `true` または `false`。|
-| UserMessageIfClaimsPrincipalAlreadyExists | いいえ | エラーが発生する場合 (RaiseErrorIfClaimsPrincipalAlreadyExists 属性の説明を参照)、ユーザー オブジェクトが既に存在する場合にユーザーに表示するメッセージを指定します。 値を[ローカライズ](localization.md)することができます。|
 | ApplicationObjectId | いいえ | 拡張属性のアプリケーション オブジェクト識別子。 値:アプリケーションの ObjectId。 詳細については、「[カスタム プロファイル編集ポリシーのカスタム属性を使用](custom-policy-custom-attributes.md)」を参照してください。 |
 | ClientId | いいえ | サード パーティとしてテナントにアクセスするためのクライアント識別子。 詳細については、「[カスタム プロファイル編集ポリシーのカスタム属性を使用](custom-policy-custom-attributes.md)」を参照してください。 |
 | IncludeClaimResolvingInClaimsHandling  | いいえ | 入力と出力の要求について、[要求の解決](claim-resolver-overview.md)を技術プロファイルに含めるかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
+
+### <a name="error-messages"></a>エラー メッセージ
+ 
+次の設定を使用して、失敗したときに表示されるエラー メッセージを構成できます。 メタデータは、[セルフアサート](self-asserted-technical-profile.md)技術プロファイルで構成する必要があります。 エラー メッセージは、[ローカライズ](localization.md)できます。
+
+| 属性 | Required | 説明 |
+| --------- | -------- | ----------- |
+| UserMessageIfClaimsPrincipalAlreadyExists | いいえ | エラーが発生する場合 (RaiseErrorIfClaimsPrincipalAlreadyExists 属性の説明を参照)、ユーザー オブジェクトが既に存在する場合にユーザーに表示するメッセージを指定します。 |
+| UserMessageIfClaimsPrincipalDoesNotExist | いいえ | エラーが発生する場合 (RaiseErrorIfClaimsPrincipalDoesNotExist 属性の説明を参照)、ユーザー オブジェクトが存在しない場合にユーザーに表示するメッセージを指定します。 |
+
+
+## <a name="next-steps"></a>次のステップ
+
+Azure AD 技術プロファイルの使用例については、次の記事を参照してください。
+
+- [Azure Active Directory B2C のカスタム ポリシーを使用した要求の追加とユーザー入力のカスタマイズ](custom-policy-configure-user-input.md)
 
 
 

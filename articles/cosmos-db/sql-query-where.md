@@ -4,14 +4,14 @@ description: Azure Cosmos DB の SQL WHERE 句について説明します
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 03/06/2020
 ms.author: tisande
-ms.openlocfilehash: 31653b598f0f3a79bf7f9c09231b1d111f167a16
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 483a0533eafc81ef8698d260a753062ae074f6d4
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982231"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898779"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>Azure Cosmos DB での WHERE 句
 
@@ -35,10 +35,11 @@ WHERE <filter_condition>
   
    計算する値を表す式。 詳細については、[スカラー式](sql-query-scalar-expressions.md)に関するページを参照してください。  
   
-
 ## <a name="remarks"></a>解説
   
-  ドキュメントが返されるには、フィルター条件として指定された式が true に評価される必要があります。 ブール値 true のみがその条件を満たし、他の値 (undefined、null、false、数字、配列、またはオブジェクト) は条件を満たしません。 
+  ドキュメントが返されるには、フィルター条件として指定された式が true に評価される必要があります。 ブール値 `true` のみがその条件を満たし、他の値 (undefined、null、false、数字、配列、またはオブジェクト) は条件を満たしません。
+
+  `WHERE` 句に等値フィルターの一部としてパーティション キーを含めると、クエリは関連するパーティションのみに自動的にフィルターを適用します。
 
 ## <a name="examples"></a>例
 

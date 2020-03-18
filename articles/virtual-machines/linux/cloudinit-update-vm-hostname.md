@@ -1,25 +1,17 @@
 ---
-title: cloud-init を使用して Azure の Linux VM のホスト名を設定する
+title: cloud-init を使用して Linux VM のホスト名を設定する
 description: Azure CLI による作成時に cloud-init を使用して Linux VM をカスタマイズする方法
-services: virtual-machines-linux
-documentationcenter: ''
 author: rickstercdn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: adac9dc41aaba7ce6bfd9f01917d647174b41282
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 631b8ef83d5fbf10ec401df7432b23238f2ae2e6
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036709"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969166"
 ---
 # <a name="use-cloud-init-to-set-hostname-for-a-linux-vm-in-azure"></a>cloud-init を使用して Azure の Linux VM のホスト名を設定する
 この記事では、Azure でのプロビジョニング時に [cloud-init](https://cloudinit.readthedocs.io) を使用して、仮想マシン (VM) または仮想マシン スケール セット (VMSS) で特定のホスト名を構成する方法を示します。 これらの cloud-init スクリプトは、Azure によってリソースがプロビジョニングされた後の最初の起動時に実行されます。 cloud-init が Azure およびサポートされている Linux ディストリビューションでネイティブに動作する方法の詳細については、[cloud-init の概要](using-cloud-init.md)に関するページをご覧ください
@@ -69,7 +61,7 @@ VM は、次の出力の例で示すように、cloud-init ファイルで設定
 myhostname
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 構成変更の cloud-init の他の例については、以下をご覧ください。
  
 - [VM に他の Linux ユーザーを追加する](cloudinit-add-user.md)

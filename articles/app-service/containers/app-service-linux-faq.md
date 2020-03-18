@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c590a27f61c1a555ae30828332e4140a6116f95f
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 2413601db629fda62976b75e349b0340749dc6fa
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443858"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944084"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service on Linux の FAQ
 
@@ -180,6 +180,10 @@ image: <server-name>.azurecr.io/<image-name>:<tag>
 アプリの実行時間に対して、通常の Azure App Service の料金が課金されます。
 
 ## <a name="other-questions"></a>その他の質問
+
+**「要求された機能はリソース グループで利用できません」とはどういう意味ですか。**
+
+このメッセージは Azure Resource Manager (ARM) を使用して Web アプリを作成するときに表示されることがあります。 現在の制限に基づいて、同じリソース グループの場合、Windows アプリと Linux アプリを同じリージョン内に混在させることはできません。
 
 **アプリケーションの設定名でサポートされる文字は何ですか。**
 

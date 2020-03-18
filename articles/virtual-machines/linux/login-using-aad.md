@@ -1,25 +1,18 @@
 ---
 title: Azure Active Directory の資格情報を使用して Linux VM にログインする
 description: Azure Active Directory 認証を使用してサインインするために、Linux VM を作成して構成する方法について説明します。
-services: virtual-machines-linux
-documentationcenter: ''
 author: iainfoulds
-manager: gwallace
-editor: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: 9980ad7af4a9e5db1d93ffb389ef7b04209b8c43
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: eb303ecb5657e9312445093841cfa6c501efda18
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544618"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944794"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>プレビュー:Azure Active Directory 認証を使用して Azure の Linux 仮想マシンにログインする
 
@@ -113,7 +106,7 @@ az vm extension set \
     --vm-name myVM
 ```
 
-VM に拡張機能が正常にインストールされると、*provisioningState* に *Succeeded* が表示されます。
+VM に拡張機能が正常にインストールされると、*provisioningState* に *Succeeded* が表示されます。 拡張機能をインストールするには、VM には実行中の VM エージェントが必要です。 詳細については、[VM エージェントの概要](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)に関する記事をご覧ください。
 
 ## <a name="configure-role-assignments-for-the-vm"></a>仮想マシン ロールの割り当てを構成する
 

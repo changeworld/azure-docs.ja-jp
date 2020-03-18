@@ -3,12 +3,12 @@ title: Service Health の概要 | Microsoft Docs
 description: お使いの Azure アプリが現在および将来の Azure サービスの問題やメンテナンスの影響をどのように受けるかに関するカスタマイズした情報。
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: db9d74e2883e755c3e5c3dbbe9d6570f1e78c4a6
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: a1c6a10ab48125c030c9a35864f829438404ad97
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654020"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898435"
 ---
 # <a name="service-health-overview"></a>Service Health の概要
 
@@ -16,11 +16,12 @@ Service Health は、ユーザーが使用しているリージョン内の Azur
 
 ## <a name="service-health-events"></a>Service Health のイベント
 
-Service Health はお使いのリソースに及ぼす可能性のある次の 3 つの種類の正常性に関するイベントを追跡します。
+Service Health はお使いのリソースに影響を及ぼす可能性のある次の 4 つの種類の正常性に関するイベントを追跡します。
 
 1. **サービスの問題** - ユーザーに今すぐ影響を及ぼす Azure サービスの問題。 
 2. **定期的なメンテナンス** - お使いのサービスの可用性に将来影響を及ぼす可能性のある今後のメンテナンス。  
 3. **正常性に関する勧告** - ユーザーが注目する必要のある Azure サービスの変化。 Azure の機能が非推奨となるタイミングや、使用量のクォータを超えた場合に関する例も含まれます。
+4. **セキュリティに関する勧告 (プレビュー)** - Azure サービスの可用性に影響する可能性があるセキュリティ関連の通知。
 
 > [!NOTE]
 > Service Health イベントを表示するには、サブスクリプション上でユーザーに[閲覧者ロールが付与](../role-based-access-control/role-assignments-portal.md)されている必要があります。
@@ -43,7 +44,7 @@ Service Health ダッシュボードを起動するには、ポータルのダ�
 
 ## <a name="get-links-and-downloadable-explanations"></a>リンクやダウンロード可能な説明を取得する 
 
-問題のリンクを取得して、問題管理システムで使用できます。 PDF や CSV ファイル (ある場合) をダウンロードして、Azure Portal にアクセスできないユーザーと共有できます。   
+問題のリンクを取得して、問題管理システムで使用できます。 PDF や CSV ファイル (ある場合) をダウンロードして、Azure portal にアクセスできないユーザーと共有できます。   
 
 ![サービスの問題を管理する - 問題管理](./media/service-health-overview/azure-service-health-overview-3.png)
 

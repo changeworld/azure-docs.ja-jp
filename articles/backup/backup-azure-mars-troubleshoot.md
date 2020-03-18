@@ -4,12 +4,12 @@ description: この記事では、Azure Backup エージェントのインスト
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: fdaad7e12a5f473a368b9249928591daddd68519
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 24169356600c25e664221af397051bb0fec3e459
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583811"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673095"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントをトラブルシューティングする
 
@@ -41,7 +41,7 @@ Microsoft Azure Recovery Services (MARS) のトラブルシューティングを
 
 | 原因 | 推奨アクション |
 | ---     | ---    |
-| **コンテナーの資格情報が有効ではありません** <br/> <br/> コンテナー資格情報ファイルが壊れているか、期限が切れている可能性があります。 (たとえば、登録の時刻より 48 時間以上前にダウンロードされている可能性があります。)| Azure portal で Recovery Services コンテナーから新しい資格情報をダウンロードします。 (「[MARS エージェントのダウンロード](https://docs.microsoft.com/azure/backup/backup-configure-vault#download-the-mars-agent)」セクションの手順 6 を参照してください。)その後、必要に応じて次の手順に従います。 <ul><li> MARS が既にインストールされ登録されている場合は、Microsoft Azure Backup エージェントの MMC コンソールを開き、 **[アクション]** ウィンドウで **[サーバーの登録]** を選択して、新しい資格情報で登録を完了します。 <br/> <li> 新規インストールに失敗した場合は、新しい資格情報で再度インストールしてみてください。</ul> **注**:複数のコンテナー資格情報ファイルがダウンロードされている場合、次の 48 時間の間は最新のファイルのみが有効になります。 新しいコンテナー資格情報ファイルをダウンロードすることをお勧めします。
+| **コンテナーの資格情報が有効ではありません** <br/> <br/> コンテナー資格情報ファイルが壊れているか、期限が切れている可能性があります。 (たとえば、登録の時刻より 48 時間以上前にダウンロードされている可能性があります。)| Azure portal で Recovery Services コンテナーから新しい資格情報をダウンロードします。 (「[MARS エージェントのダウンロード](https://docs.microsoft.com/azure/backup/install-mars-agent#download-the-mars-agent)」セクションの手順 6 を参照してください。)その後、必要に応じて次の手順に従います。 <ul><li> MARS が既にインストールされ登録されている場合は、Microsoft Azure Backup エージェントの MMC コンソールを開き、 **[アクション]** ウィンドウで **[サーバーの登録]** を選択して、新しい資格情報で登録を完了します。 <br/> <li> 新規インストールに失敗した場合は、新しい資格情報で再度インストールしてみてください。</ul> **注**:複数のコンテナー資格情報ファイルがダウンロードされている場合、次の 48 時間の間は最新のファイルのみが有効になります。 新しいコンテナー資格情報ファイルをダウンロードすることをお勧めします。
 | **プロキシ サーバー/ファイアウォールによって登録がブロックされています** <br/>or <br/>**インターネットに接続されていません** <br/><br/> マシンまたはプロキシ サーバーでインターネット接続が制限されていて、必要な URL へのアクセスが許可されていない場合、登録は失敗します。| 次の手順を実行します。<br/> <ul><li> IT チームと連携して、システムでインターネットに接続できることを確認します。<li> プロキシ サーバーがない場合は、エージェントを登録するときにプロキシのオプションが選択されていないことを確認します。 [プロキシ設定を確認します](#verifying-proxy-settings-for-windows)。<li> ファイアウォール/プロキシ サーバーがある場合は、ネットワーク チームと連携して、以下の URL と IP アドレスにアクセスできることを確認します。<br/> <br> **URL**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP アドレス**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>上記のトラブルシューティングの手順が完了したら、もう一度登録してみてください。<br></br> Azure ExpressRoute 経由で接続している場合は、「[Azure ExpressRoute のサポート](backup-support-matrix-mars-agent.md#azure-expressroute-support)」の説明に従って設定が構成されていることをご確認ください。
 | **ウイルス対策ソフトウェアによって登録をブロックされています** | サーバーにウイルス対策ソフトウェアがインストールされている場合は、以下のファイルとフォルダーのウイルス対策スキャンに必要な除外ルールを追加します。 <br/><ul> <li> CBengine.exe <li> CSC.exe<li> スクラッチ フォルダー。 この既定の場所は C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch です。 <li> C:\Program Files\Microsoft Azure Recovery Services Agent\Bin にある bin フォルダー。
 
@@ -49,7 +49,7 @@ Microsoft Azure Recovery Services (MARS) のトラブルシューティングを
 
 - C:/Windows/Temp に移動し、拡張子が .tmp のファイルが 60,000 または 65,000 個より多くあるかどうかを確認します。 ある場合は、それらのファイルを削除します。
 - マシンの日付と時刻がローカルのタイム ゾーンに一致していることを確認します。
-- [これらのサイト](backup-configure-vault.md#verify-internet-access)が Internet Explorer の信頼済みサイトに追加されていることを確認します。
+- [これらのサイト](install-mars-agent.md#verify-internet-access)が Internet Explorer の信頼済みサイトに追加されていることを確認します。
 
 ### <a name="verifying-proxy-settings-for-windows"></a>Windows のプロキシ設定を確認する
 
@@ -73,7 +73,7 @@ Microsoft Azure Recovery Services (MARS) のトラブルシューティングを
 
 | エラー  | 考えられる原因 | 推奨アクション |
 | ---     | ---     | ---    |
-| <br /><ul><li>Microsoft Azure Recovery Services エージェントは Microsoft Azure Backup に接続できませんでした。 (ID: 100050) ネットワーク設定を調べて、インターネットに接続できることを確認してください。<li>(407) プロキシの認証が必要です。 |プロキシによって接続がブロックされています。 |  <ul><li>Internet Explorer で、 **[ツール]**  >  **[インターネット オプション]**  >  **[セキュリティ]**  >  **[インターネット]** の順に移動します。 次に、 **[レベルのカスタマイズ]** を選択し、 **[ファイルのダウンロード]** セクションまで下にスクロールします。 **[有効化]** を選択します。<p>また、Internet Explorer で信頼済みサイトに [URL と IP アドレス](backup-configure-vault.md#verify-internet-access)を追加する必要がある場合もあります。<li>プロキシ サーバーを使用するように設定を変更します。 その後、プロキシ サーバーの詳細を指定します。<li> マシンのインターネットへのアクセスが制限されている場合は、マシンまたはプロキシのファイアウォール設定によって次の [URL と IP アドレス](backup-configure-vault.md#verify-internet-access)が許可されることを確認します。 <li>サーバーにウイルス対策ソフトウェアがインストールされている場合は、これらのファイルをウイルス対策スキャンから除外します。 <ul><li>CBEngine.exe (dpmra.exe ではありません)。<li>CSC.exe (.NET Framework に関連するもの)。 CSC.exe は、サーバーにインストールされているすべての .NET Framework のバージョンに対して存在します。 影響を受けるサーバー上のすべてのバージョンの .NET Framework 用の CSC.exe ファイルを除外してください。 <li>スクラッチ フォルダーまたはキャッシュの場所。 <br>スクラッチ フォルダーまたはキャッシュのパスの既定の場所は、C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch です。<li>C:\Program Files\Microsoft Azure Recovery Services Agent\Bin にある bin フォルダー。
+| <br /><ul><li>Microsoft Azure Recovery Services エージェントは Microsoft Azure Backup に接続できませんでした。 (ID: 100050) ネットワーク設定を調べて、インターネットに接続できることを確認してください。<li>(407) プロキシの認証が必要です。 |プロキシによって接続がブロックされています。 |  <ul><li>Internet Explorer で、 **[ツール]**  >  **[インターネット オプション]**  >  **[セキュリティ]**  >  **[インターネット]** の順に移動します。 次に、 **[レベルのカスタマイズ]** を選択し、 **[ファイルのダウンロード]** セクションまで下にスクロールします。 **[有効化]** を選択します。<p>また、Internet Explorer で信頼済みサイトに [URL と IP アドレス](install-mars-agent.md#verify-internet-access)を追加する必要がある場合もあります。<li>プロキシ サーバーを使用するように設定を変更します。 その後、プロキシ サーバーの詳細を指定します。<li> マシンのインターネットへのアクセスが制限されている場合は、マシンまたはプロキシのファイアウォール設定によって次の [URL と IP アドレス](install-mars-agent.md#verify-internet-access)が許可されることを確認します。 <li>サーバーにウイルス対策ソフトウェアがインストールされている場合は、これらのファイルをウイルス対策スキャンから除外します。 <ul><li>CBEngine.exe (dpmra.exe ではありません)。<li>CSC.exe (.NET Framework に関連するもの)。 CSC.exe は、サーバーにインストールされているすべての .NET Framework のバージョンに対して存在します。 影響を受けるサーバー上のすべてのバージョンの .NET Framework 用の CSC.exe ファイルを除外してください。 <li>スクラッチ フォルダーまたはキャッシュの場所。 <br>スクラッチ フォルダーまたはキャッシュのパスの既定の場所は、C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch です。<li>C:\Program Files\Microsoft Azure Recovery Services Agent\Bin にある bin フォルダー。
 
 ## <a name="failed-to-set-the-encryption-key-for-secure-backups"></a>セキュリティで保護されたバックアップ用に暗号化キーを設定できませんでした
 

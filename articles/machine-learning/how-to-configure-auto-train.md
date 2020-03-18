@@ -9,14 +9,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1b52d9b7eb60483da91f87435ace1994d91b1039
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 6f49529b0599f36ae4a26939bbbe171a45a1a53a
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77665843"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127185"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,7 +35,7 @@ ms.locfileid: "77665843"
 * モデル メトリックを探索する
 * モデルを登録して展開する
 
-コードを使用しないエクスペリエンスを希望する場合は、[Azure Machine Learning Studio で自動化された機械学習の実験を作成する](how-to-create-portal-experiments.md)こともできます。
+コードを使用しないエクスペリエンスを希望する場合は、[Azure Machine Learning Studio で自動化された機械学習の実験を作成する](how-to-use-automated-ml-for-ml-models.md)こともできます。
 
 ## <a name="select-your-experiment-type"></a>実験の種類を選択する
 
@@ -130,8 +130,8 @@ automl_config = AutoMLConfig(task = "classification")
 ## <a name="compute-to-run-experiment"></a>実験を実行するために計算する
 
 次に、モデルをトレーニングする場所を決定します。 自動機械学習のトレーニング実験は、次のコンピューティング オプションで実行できます。
-*   ローカル デスクトップやラップトップなどのローカル コンピューター – 一般に、データセットが小さく、まだ探索ステージにいる場合。
-*   クラウド上のリモート マシン – [Azure Machine Learning Managed Compute](concept-compute-target.md#amlcompute) は、Azure 仮想マシンのクラスター上で機械学習モデルをトレーニングできるようにするマネージド サービスです。
+*    ローカル デスクトップやラップトップなどのローカル コンピューター – 一般に、データセットが小さく、まだ探索ステージにいる場合。
+*    クラウド上のリモート マシン – [Azure Machine Learning Managed Compute](concept-compute-target.md#amlcompute) は、Azure 仮想マシンのクラスター上で機械学習モデルをトレーニングできるようにするマネージド サービスです。
 
     ローカルとリモートのコンピューティング先を使用したノートブックの例については、こちらの [GitHub サイト](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)をご覧ください。
 
@@ -147,25 +147,25 @@ automl_config = AutoMLConfig(task = "classification")
 
 次に例をいくつか示します。
 
-1.  プライマリ メトリックとして重み付けされた AUC を使用する分類の実験。実験のタイムアウトの分数は 30 分間、クロス検証フォールドは 2 つに設定されます。
+1.    プライマリ メトリックとして重み付けされた AUC を使用する分類の実験。実験のタイムアウトの分数は 30 分間、クロス検証フォールドは 2 つに設定されます。
 
     ```python
     automl_classifier=AutoMLConfig(
         task='classification',
         primary_metric='AUC_weighted',
         experiment_timeout_minutes=30,
-        blacklist_models='XGBoostClassifier',
+        blacklist_models=['XGBoostClassifier'],
         training_data=train_data,
         label_column_name=label,
         n_cross_validations=2)
     ```
-2.  次の例は、60 分後、クロス検証フォールドが 5 つで終了するように設定された回帰実験です。
+2.    次の例は、60 分後、クロス検証フォールドが 5 つで終了するように設定された回帰実験です。
 
     ```python
     automl_regressor = AutoMLConfig(
         task='regression',
         experiment_timeout_minutes=60,
-        whitelist_models='kNN regressor'
+        whitelist_models=['kNN regressor'],
         primary_metric='r2_score',
         training_data=train_data,
         label_column_name=label,
@@ -191,7 +191,7 @@ automl_config = AutoMLConfig(task = "classification")
 
 ### <a name="data-featurization"></a>データの特徴付け
 
-すべての自動機械学習実験では、さまざまなスケールの特徴を検知できる*特定の*アルゴリズムをサポートできるように、データが[自動的にスケーリングおよび正規化](concept-automated-ml.md#preprocess)されます。  ただし、不足値の代入、エンコード、変換などの特徴付けも追加で有効にできます。 含まれる特徴付けに関する詳細は[こちら](how-to-create-portal-experiments.md#featurization)から参照してください。
+すべての自動機械学習実験では、さまざまなスケールの特徴を検知できる*特定の*アルゴリズムをサポートできるように、データが[自動的にスケーリングおよび正規化](concept-automated-ml.md#preprocess)されます。  ただし、不足値の代入、エンコード、変換などの特徴付けも追加で有効にできます。 含まれる特徴付けに関する詳細は[こちら](how-to-use-automated-ml-for-ml-models.md#featurization)から参照してください。
 
 実験を構成するときに、詳細設定の `featurization` を有効にすることができます。 次の表は、[`AutoMLConfig` クラス](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)の特徴付けで許可されている設定です。
 
@@ -199,7 +199,7 @@ automl_config = AutoMLConfig(task = "classification")
 | ------------- | ------------- |
 |`"featurization":`&nbsp;`'FeaturizationConfig'`| カスタマイズされた特徴付け手順を使用する必要があることを示します。 [特徴付けをカスタマイズする方法の詳細](how-to-configure-auto-train.md#customize-feature-engineering)。|
 |`"featurization": 'off'`| 特徴付け手順が自動的に実行されないことを示します。|
-|`"featurization": 'auto'`| 前処理の一環として、[データ ガードレールと特徴付けの手順](how-to-create-portal-experiments.md#advanced-featurization-options)が自動的に実行されることを示します。|
+|`"featurization": 'auto'`| 前処理の一環として、[データ ガードレールと特徴付けの手順](how-to-use-automated-ml-for-ml-models.md#advanced-featurization-options)が自動的に実行されることを示します。|
 
 > [!NOTE]
 > 自動化された機械学習の特徴付け手順 (機能の正規化、欠損データの処理、テキストから数値への変換など) は、基になるモデルの一部になります。 このモデルを予測に使用する場合、トレーニング中に適用されたのと同じ特徴付けの手順がご自分の入力データに自動的に適用されます。

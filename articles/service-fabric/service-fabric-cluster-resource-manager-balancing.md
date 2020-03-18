@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 8e170c27923d2bb091c4121e350809b85e4c48a5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f56717c086f005b1155988e2041ff2e717e047f2
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452102"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081694"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Service Fabric クラスターの均衡をとる
 Service Fabric クラスター リソース マネージャーは、動的な負荷の変更、ノードやサービスの追加や削除への応答をサポートしています。 また、制約違反を自動的に修正し、必要に応じてクラスターを再調整することもできます。 このような操作はどのくらいの頻度で実行されるでしょうか。また、何によってトリガーされるでしょうか。
@@ -205,6 +205,7 @@ ClusterManifest.xml
 * メトリックは、Service Fabric クラスター リソース マネージャーが管理するクラスターの利用量と容量を表します。 メトリックの詳細とその構成方法については、[この記事](service-fabric-cluster-resource-manager-metrics.md)を参照してください。
 * 移動コストは、特定のサービスが他のサービスよりも高額になっていることをクラスター リソース マネージャーに警告する信号の 1 つです。 移動コストについて詳しくは、[この記事](service-fabric-cluster-resource-manager-movement-cost.md)をご覧ください。
 * クラスター リソース マネージャーにはスロットルがいくつかあります。クラスターのチャーン (激しい動き) を落ち着かせるようにスロットルを構成できます。 通常は必要ありませんが、必要であれば、[ここ](service-fabric-cluster-resource-manager-advanced-throttling.md)で詳細を確認できます。
+* Cluster Resource Manager は、サブクラスター化 (配置の制約と分散を使用する場合に発生する可能性のある状況) を認識して処理できます。 サブクラスター化が負荷分散とその処理方法に与える影響については、[こちら](service-fabric-cluster-resource-manager-subclustering.md)を参照してください
 
 [Image1]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resrouce-manager-balancing-thresholds.png
 [Image2]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-threshold-triggered-results.png

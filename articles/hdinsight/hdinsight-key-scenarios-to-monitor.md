@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 11/27/2019
-ms.openlocfilehash: 72006f907a1c1641308c8ee43e7a405765410789
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.date: 03/09/2020
+ms.openlocfilehash: 75ac5a7fc352f877573d79a004d8da761c6f1cef
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770885"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082882"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Azure HDInsight でクラスター パフォーマンスを監視する
 
@@ -33,7 +33,7 @@ Hadoop クラスターでは、クラスターの負荷がすべてのノード�
 | オレンジ | ホスト上の少なくとも 1 つのセカンダリ コンポーネントがダウンしています。 カーソルを移動すると、ツールヒントに影響を受けるコンポーネントの一覧が表示されます。 |
 | 黄 | Ambari サーバーが、ホストから 3 分以上ハートビートを受信していません。 |
 | [緑] | 通常の実行状態です。 |
- 
+
 各ホストのコア数と RAM 合計の列と、ディスク使用量と負荷の平均の列も表示されます。
 
 ![Apache Ambari の [ホスト] タブの概要](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
@@ -81,6 +81,46 @@ Azure Storage を使用している場合、ストレージに関連する問題
 * [HDInsight の Apache Hive と Azure Data Lake Storage のパフォーマンス チューニング ガイダンス](../data-lake-store/data-lake-store-performance-tuning-hive.md)
 * [HDInsight の MapReduce と Azure Data Lake Storage のパフォーマンス チューニング ガイダンス](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
 * [HDInsight の Apache Storm と Azure Data Lake Storage のパフォーマンス チューニング ガイダンス](../data-lake-store/data-lake-store-performance-tuning-storm.md)
+
+## <a name="troubleshoot-sluggish-node-performance"></a>ノードの動作が遅い場合のトラブルシューティング
+
+場合によっては、クラスターのディスク領域不足が原因で動作が遅くなる可能性があります。 次の手順で調査します。
+
+1. 各ノードに接続するには [ssh コマンド](./hdinsight-hadoop-linux-use-ssh-unix.md)を使用します。
+
+1. 次のいずれかのコマンドを実行して、ディスク使用量を確認します。
+
+    ```bash
+    df -h
+    du -h --max-depth=1 / | sort -h
+    ```
+
+1. 出力を確認し、`mnt` フォルダーまたはその他のフォルダーに大きなファイルがあるかどうかを確認します。 通常、`usercache`、および `appcache` (mnt/resource/hadoop/yarn/local/usercache/hive/appcache/) フォルダーには大きなファイルが含まれています。
+
+1. 大きなファイルがある場合、現在のジョブによってファイルの拡張が発生しているか、失敗した前のジョブがこの問題の一因になっている可能性があります。 この動作が現在のジョブによって発生しているかどうかを確認するには、次のコマンドを実行します。
+
+    ```bash
+    sudo du -h --max-depth=1 /mnt/resource/hadoop/yarn/local/usercache/hive/appcache/
+    ```
+
+1. このコマンドで特定のジョブが示される場合は、次のようなコマンドを使用してジョブを終了できます。
+
+    ```bash
+    yarn application -kill -applicationId <application_id>
+    ```
+
+    `application_id` をアプリケーション ID で置き換えます。 特定のジョブが示されない場合は、次の手順に進んでください。
+
+1. 上記のコマンドが完了した後、または特定のジョブが指定されていない場合は、次のようなコマンドを実行して、特定したサイズの大きなファイルを削除します。
+
+    ```bash
+    rm -rf filecache usercache
+    ```
+
+ディスク領域の問題の詳細については、「[ディスク領域の不足](./hadoop/hdinsight-troubleshoot-out-disk-space.md)」を参照してください。
+
+> [!NOTE]  
+> 保持したい大きなファイルがあるが、それがディスク領域不足の問題の一因になっている場合は、HDInsight クラスターをスケールアップしてサービスを再起動する必要があります。 この手順を完了して数分待つと、ストレージが解放され、ノードの通常のパフォーマンスに戻ることがわかります。
 
 ## <a name="next-steps"></a>次のステップ
 

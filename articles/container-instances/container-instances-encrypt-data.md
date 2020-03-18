@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: 41c7fc7380ca2b58326c4a35a3b5fdab1c64c4a3
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.openlocfilehash: ad232c5d9df9f6bfae3a79dbd72e2c68143be949
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544319"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080362"
 ---
 # <a name="encrypt-deployment-data"></a>デプロイ データの暗号化
 
@@ -41,6 +41,10 @@ Microsoft のマネージド キーを利用してコンテナー データを�
 
 最初のステップでは、[Azure テナント](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)に、Azure Container Instances サービスへのアクセス許可を付与するためのサービス プリンシパルが割り当てられていることを確認します。 
 
+> [!IMPORTANT]
+> 次のコマンドを実行してサービス プリンシパルを正常に作成するには、お使いのテナントでサービス プリンシパルを作成するためのアクセス許可があることを確認します。
+>
+
 次の CLI コマンドを実行すると、Azure 環境に ACI の SP がセットアップされます。
 
 ```azurecli-interactive
@@ -48,6 +52,10 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 ```
 
 このコマンドを実行すると、"displayName": "Azure Container Instance Service" で設定されたサービス プリンシパルが表示されます。
+
+サービス プリンシパルを正常に作成できない場合は、次のようにします。
+* テナントでこれを行うためのアクセス許可があることを確認します
+* ACI にデプロイするためのサービス プリンシパルがテナントに既に存在するかどうかを確認します。 そのためには、`az ad sp show --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9` を実行し、代わりにそのサービス プリンシパルを使用します
 
 ### <a name="create-a-key-vault-resource"></a>Key Vault リソースを作成する
 

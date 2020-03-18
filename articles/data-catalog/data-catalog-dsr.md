@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 8f148bfe08d5f7933857eb46cf0d13d4582da108
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: ec716924d3cebf8e78b0505b95837b91c568813a
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950269"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898146"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でサポートされるデータ ソース
 
@@ -124,7 +124,7 @@ ms.locfileid: "68950269"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td></td>
+      <td>Oracle 10 以降のバージョン。</td>
     </tr>
     <tr>
       <td>Oracle Database ビュー</td>
@@ -132,7 +132,7 @@ ms.locfileid: "68950269"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td></td>
+      <td>Oracle 10 以降のバージョン。</td>
     </tr>
     <tr>
       <td>その他 (汎用アセット)</td>
@@ -195,7 +195,7 @@ ms.locfileid: "68950269"
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>[ブラウザー] ボタンを</td>
+      <td>Browser</td>
       <td>ネイティブ モードのサーバーのみ。 SharePoint モードはサポートされていません。 SQL Server 2008 以降のバージョンのみ</td>
     </tr>
     <tr>

@@ -1,26 +1,27 @@
 ---
-title: 高度なジョブ スケジュールと繰り返しを構築する - Azure Scheduler
+title: 高度なジョブ スケジュールと繰り返しを構築する
 description: Azure Scheduler でジョブの高度なスケジュールと繰り返しを作成する方法について説明します
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
+ms.reviewer: klam, estfan
 ms.suite: infrastructure-services
-ms.assetid: 5c124986-9f29-4cbc-ad5a-c667b37fbe5a
 ms.topic: article
 ms.date: 11/14/2018
-ms.openlocfilehash: 386284543cd8fb00cc49fea9a29d9eaee4ca4963
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: b85932bf0d4fd080afadef2bc28d6a218b2d627a
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300961"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898601"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Azure Scheduler でジョブの高度なスケジュールと繰り返しを構築する
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、[廃止される予定](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)の Azure Scheduler の後継です。 Scheduler で設定したジョブを使用し続けるには、できるだけ早く [Azure Logic Apps に移行](../scheduler/migrate-from-scheduler-to-logic-apps.md)してください。
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、[廃止される予定](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)の Azure Scheduler の後継です。 Scheduler で設定したジョブを使用し続けるには、できるだけ早く [Azure Logic Apps に移行](../scheduler/migrate-from-scheduler-to-logic-apps.md)してください。 
+>
+> Scheduler は Azure portal で利用できなくなりましたが、現時点では [REST API](/rest/api/scheduler) と [Azure Scheduler PowerShell コマンドレット](scheduler-powershell-reference.md)がまだ使用できるので、お客様はジョブとジョブ コレクションを管理することができます。
 
 [Azure Scheduler](../scheduler/scheduler-intro.md) ジョブでは、スケジュールが核となって、Scheduler サービスでジョブを実行するタイミングと方法が決定されます。 Scheduler を使うと、1 回限りのスケジュールと定期的なスケジュールをジョブに対して複数設定することができます。 1 回限りのスケジュールは、指定された時刻に 1 回だけ実行されます。基本的には、これらは 1 回だけ実行される定期的なスケジュールです。 定期的なスケジュールは、指定された頻度で実行されます。 この柔軟性を活かし、さまざまなビジネス シナリオで Scheduler を使用することができます。その例を次に示します。
 
@@ -167,7 +168,7 @@ schedule の要素を次の表に詳しく示します。
 | **monthlyOccurrences** |ジョブを実行する月の日にちを指定します。 月単位の頻度だけを指定できます。 |**monthlyOccurrences** オブジェクトの配列:<br /> `{ "day": day, "occurrence": occurrence}`<br /><br /> **day** は、ジョブを実行する曜日です。 たとえば、 *{Sunday}* は、月の毎週日曜日という意味です。 必須。<br /><br />**occurrence** は、月の第何週目に実行するかを表します。 たとえば、 *{Sunday, -1}* は月の最終日曜日という意味です。 省略可能。 |
 | **monthDays** |ジョブが実行される月の日にち。 月単位の頻度だけを指定できます。 |次の値の配列。<br />- -1 以下かつ -31 以上の任意の値<br />- 1 以上かつ 31 以下の任意の値|
 
-## <a name="examples-recurrence-schedules"></a>次に例を示します。繰り返しのスケジュール
+## <a name="examples-recurrence-schedules"></a>例 :繰り返しのスケジュール
 
 次の例に、さまざまな繰り返しのスケジュールを示します。 この例では、schedule オブジェクトとそのサブ要素に注目します。
 
@@ -207,8 +208,9 @@ schedule の要素を次の表に詳しく示します。
 | `{"minutes":[0,15,30,45], "monthlyOccurrences":[{"day":"friday", "occurrence":-1}]}` |月の最後の金曜日に 15 分ごとに実行されます。 |
 | `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` |毎月第 3 水曜日の午前 5 時 15 分、午前 5 時 45 分、午後 5 時 15 分、午後 5 時 45 分に実行されます。 |
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
-* [Azure Scheduler とは](scheduler-intro.md)
 * [Azure Scheduler の概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
+* [Azure Scheduler REST API リファレンス](/rest/api/scheduler)
+* [Azure Scheduler PowerShell コマンドレット リファレンス](scheduler-powershell-reference.md)
 * [Azure Scheduler の制限、既定値、エラー コード](scheduler-limits-defaults-errors.md)

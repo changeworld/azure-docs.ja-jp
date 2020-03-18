@@ -1,33 +1,25 @@
 ---
 title: Azure Blockchain Workbench REST API の使用
 description: Azure Blockchain Workbench プレビューのREST API を使用する方法を示すシナリオ
-ms.date: 10/14/2019
+ms.date: 03/05/2020
 ms.topic: article
 ms.reviewer: brendal
-ms.openlocfilehash: 188bbb9a9f6d289a7950ff74596352dff36e79f2
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 3084fcf343bc42fe01bf352b6791916d62f63540
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74324197"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672745"
 ---
 # <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>Azure Blockchain Workbench プレビューの REST API を使用する
 
-Azure Blockchain Workbench プレビューの REST API は、開発者やインフォメーション ワーカーが ブロックチェーン アプリケーションに豊富な統合をビルドする方法を提供します。 このドキュメントでは、Workbench REST API のいくつかの主要なメソッドについて説明します。 たとえば、開発者がカスタム ブロックチェーン クライアントを作成したいとします。 このブロックチェーン クライアントでは、サインインしたユーザーが割り当てられたブロックチェーン アプリケーションを表示および操作できます。 ユーザーは、クライアントでコントラクトのインスタンスを表示し、スマート コントラクトでアクションを実行することができます。 クライアントはサインインしたユーザーのコンテキストで Workbench REST API を使用して、次の操作を実行します。
-
-* List applications
-* アプリケーションのワークフローを一覧表示する
-* ワークフローのスマート コントラクトのインスタンスを一覧表示する
-* コントラクトで使用可能なアクションを一覧表示する
-* コントラクトのアクションを実行する
-
-このシナリオで使用されているブロックチェーン アプリケーションのサンプルは [GitHub からダウンロード](https://github.com/Azure-Samples/blockchain)できます。
+Azure Blockchain Workbench プレビューの REST API は、開発者やインフォメーション ワーカーが ブロックチェーン アプリケーションに豊富な統合をビルドする方法を提供します。 この記事では、Workbench REST API を使用する方法のいくつかのシナリオについて説明します。 たとえば、サインインした ユーザーが、割り当てられたブロックチェーン アプリケーションを表示して操作できるようなカスタム ブロックチェーン クライアントを作成したいとします。 クライアントは、Blockchain Workbench API を使用して、コントラクトのインスタンスを表示し、スマート コントラクトでアクションを実行することができます。
 
 ## <a name="blockchain-workbench-api-endpoint"></a>Blockchain Workbench API エンドポイント
 
 Blockchain Workbench API は、デプロイのためのエンドポイント経由でアクセスされます。 デプロイのための API エンドポイント URL を取得するには:
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左側のナビゲーション ウィンドウで、 **[リソース グループ]** を選択します。
 1. デプロイされた Blockchain Workbench のリソース グループ名を選択します。
 1. **[種類]** 列見出しを選択して、種類のアルファベット順に一覧を並べ替えます。
@@ -36,21 +28,125 @@ Blockchain Workbench API は、デプロイのためのエンドポイント経�
 
     ![アプリ サービスの API エンドポイント URL](media/use-api/app-service-api.png)
 
+## <a name="authentication"></a>認証
+
+Blockchain Workbench REST API に対する要求は、Azure Active Directory (Azure AD) で保護されます。
+
+REST API に対して認証された要求を行うには、クライアント コードで有効な資格情報を使用して認証を行ってから API を呼び出す必要があります。 Azure AD はさまざまなアクターを連携させて認証を行い、認証の証拠としてクライアントに[アクセス トークン](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#access-token)を提供します。 その後、REST API 要求の HTTP Authorization ヘッダーでトークンが送信されます。 Azure AD 認証に関する詳細については、「[開発者のための Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)」を参照してください。
+
+認証方法の例については、[REST API のサンプル](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/rest-api-samples)に関するページを参照してください。
+
+## <a name="using-postman"></a>Postman の使用
+
+Workbench API をテストまたは試す場合は、[Postman](https://www.postman.com) を使用して、デプロイへ API 呼び出しを行うことができます。 GitHub から [Workbench API 要求のサンプル Postman コレクションをダウンロード](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/rest-api-samples/postman)します。 サンプル API 要求の認証と使用の詳細については、README ファイルを参照してください。
+
+## <a name="create-an-application"></a>アプリケーションの作成
+
+2 つの API 呼び出しを使用して、Blockchain Workbench アプリケーションを作成します。 この方法は、Workbench 管理者であるユーザーのみが実行できます。
+
+[Application POST API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationspost) を使用して、アプリケーションの JSON ファイルをアップロードし、アプリケーション ID を取得します。
+
+### <a name="applications-post-request"></a>Applications POST 要求
+
+**appFile** パラメーターを使用して、構成ファイルを要求本文の一部として送信します。
+
+``` http
+POST /api/v1/applications
+Content-Type: multipart/form-data;
+Authorization : Bearer {access token}
+Content-Disposition: form-data; name="appFile"; filename="/C:/smart-contract-samples/HelloWorld.json"
+Content-Type: application/json
+```
+
+### <a name="applications-post-response"></a>Applications POST 応答
+
+作成されたアプリケーション ID が応答で返されます。 次の API を呼び出すときに構成ファイルをコード ファイルに関連付けるには、アプリケーション ID が必要です。
+
+``` http
+HTTP/1.1 200 OK
+Content-Type: "application/json"
+1
+```
+
+### <a name="contract-code-post-request"></a>Contract code POST 要求
+
+アプリケーション ID を渡してアプリケーションの Solidity コード ファイルをアップロードし、[Applications Contract Code POST API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/contractcodepost) を使用します。 ペイロードには、1 つの Solidity ファイル、または Solidity ファイルを含む zip ファイルを指定できます。
+
+次の値を置き換えます。
+
+| パラメーター | Value |
+|-----------|-------|
+| {applicationId} | Applications POST API からの戻り値。 |
+| {ledgerId} | 台帳のインデックス。 この値は、通常は 1 です。 値は、[台帳テーブル](data-sql-management-studio.md)で確認することもできます。 |
+
+``` http
+POST /api/v1/applications/{applicationId}/contractCode?ledgerId={ledgerId}
+Content-Type: multipart/form-data;
+Authorization : Bearer {access token}
+Content-Disposition: form-data; name="contractFile"; filename="/C:/smart-contract-samples/HelloWorld.sol"
+```
+
+### <a name="contract-code-post-response"></a>Contract code POST 応答
+
+成功した場合、応答には [ContractCode テーブル](data-sql-management-studio.md)から作成されたコントラクト コード ID が含まれます。
+
+``` http
+HTTP/1.1 200 OK
+Content-Type: "application/json"
+2
+```
+
+## <a name="assign-roles-to-users"></a>ユーザーにロールを割り当てる
+
+アプリケーション ID、ユーザー ID、およびアプリケーション ロール ID を渡して、指定されたブロックチェーン アプリケーションでユーザーからロールへのマッピングを作成し、[Applications Role Assignments POST API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/roleassignmentspost) を使用します。 この方法は、Workbench 管理者であるユーザーのみが実行できます。
+
+### <a name="role-assignments-post-request"></a>Role assignments POST 要求
+
+次の値を置き換えます。
+
+| パラメーター | Value |
+|-----------|-------|
+| {applicationId} | Applications POST API からの戻り値。 |
+| {userId} | [User テーブル](data-sql-management-studio.md)のユーザー ID 値。 |
+| {applicationRoleId} | [ApplicationRole テーブル](data-sql-management-studio.md)のアプリケーション ID に関連付けられているアプリケーション ロール ID 値です。 |
+
+``` http
+POST /api/v1/applications/{applicationId}/roleAssignments
+Content-Type: application/json;
+Authorization : Bearer {access token}
+
+{
+  "userId": {userId},
+  "applicationRoleId": {applicationRoleId}
+}
+```
+
+### <a name="role-assignments-post-response"></a>Role assignments POST 応答
+
+成功した場合、応答には [RoleAssignment テーブル](data-sql-management-studio.md)から作成されたロールの割り当て ID が含まれます。
+
+``` http
+HTTP/1.1 200
+1
+```
+
 ## <a name="list-applications"></a>List applications
 
-ブロックチェーン クライアントにユーザーがサインインしたら、最初のタスクは、そのユーザーのすべての Blockchain Workbench アプリケーションを取得することです。 このシナリオでは、ユーザーは、次の 2 つのアプリケーションへのアクセスがあります。
+[Applications GET API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationsget) を使用して、ユーザーのすべての Blockchain Workbench アプリケーションを取得します。 この例では、サインインしているユーザーは、次の 2 つのアプリケーションにアクセスできます。
 
-1. [Asset Transfer](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md)
-2. [Refrigerated Transportation](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md)
+- [Asset Transfer](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md)
+- [Refrigerated Transportation](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md)
 
-[Applications GET API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationsget) を使用します。
+### <a name="applications-get-request"></a>Applications GET 要求
 
 ``` http
 GET /api/v1/applications
 Authorization : Bearer {access token}
 ```
 
-応答には、ユーザーが Blockchain Workbench でアクセス権を持っているすべてのブロックチェーン アプリケーションが一覧表示されます。 Blockchain Workbench 管理者は、すべてのブロックチェーン アプリケーションを取得します。 Workbench の非管理者は、少なくとも 1 つの関連付けられたアプリケーション ロールを持つ、または関連付けられたスマート コントラクトのインスタンス ロールを持つブロックチェーンをすべて取得します。
+### <a name="applications-get-response"></a>Applications GET 応答
+
+応答には、ユーザーが Blockchain Workbench でアクセス権を持っているすべてのブロックチェーン アプリケーションが一覧表示されます。 Blockchain Workbench 管理者は、すべてのブロックチェーン アプリケーションを取得します。 Workbench の非管理者は、少なくとも 1 つの関連付けられたアプリケーション ロールを持つ、または関連付けられたスマート コントラクトのインスタンス ロールを持つブロックチェーン アプリケーションをすべて取得します。
 
 ``` http
 HTTP/1.1 200 OK
@@ -84,16 +180,18 @@ Content-type: application/json
 
 ## <a name="list-workflows-for-an-application"></a>アプリケーションのワークフローを一覧表示する
 
-ユーザーが利用可能なブロックチェーン アプリケーションを選択すると (**Asset Transfer** など)、ブロックチェーン クライアントは指定されたブロックチェーン アプリケーションのすべてのワークフローを取得します。 その後ユーザーは、ワークフローのすべてのスマート コントラクトのインスタンスが表示される前に、該当するワークフローを選択できます。 各ブロックチェーン アプリケーションには 1 つ以上のワークフローがあり、各ワークフローにはゼロまたはスマート コントラクトのインスタンスがあります。 ワークフローが 1 つしかないブロックチェーン クライアント アプリケーションの場合、ユーザーが適切なワークフローを選択できるユーザー エクスペリエンス フローをスキップすることをお勧めします。 この場合では、**Asset Transfer** には **Asset Transfer** と呼ばれる 1 つのみのワークフローがあります。
+[Applications Workflows GET API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/workflowsget) を使用して、Blockchain Workbench でユーザーがアクセスできる、指定されたブロックチェーン アプリケーションのすべてのワークフローを一覧表示します。 各ブロックチェーン アプリケーションには 1 つ以上のワークフローがあり、各ワークフローにはゼロまたはスマート コントラクトのインスタンスがあります。 ワークフローが 1 つしかないブロックチェーン クライアント アプリケーションの場合、ユーザーが適切なワークフローを選択できるユーザー エクスペリエンス フローをスキップすることをお勧めします。
 
-[Applications Workflows GET API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/workflowsget) を使用します。
+### <a name="application-workflows-request"></a>Application workflows 要求
 
 ``` http
 GET /api/v1/applications/{applicationId}/workflows
 Authorization: Bearer {access token}
 ```
 
-応答には、ユーザーが Blockchain Workbench でアクセス権を持っている指定されたブロックチェーン アプリケーションのすべてのワークフローが一覧表示されます。 Blockchain Workbench 管理者はすべてのブロックチェーン ワークフローを取得します。 Workbench の非管理者は、少なくとも 1 つの関連付けられたアプリケーション ロールを持つ、または関連付けられたスマート コントラクトのインスタンス ロールを持つワークフローをすべて取得します。
+### <a name="application-workflows-response"></a>Application workflows 応答
+
+Blockchain Workbench 管理者はすべてのブロックチェーン ワークフローを取得します。 Workbench の非管理者は、少なくとも 1 つの関連付けられたアプリケーション ロールを持つ、または関連付けられたスマート コントラクトのインスタンス ロールを持つワークフローをすべて取得します。
 
 ``` http
 HTTP/1.1 200 OK
@@ -114,18 +212,72 @@ Content-type: application/json
 }
 ```
 
+## <a name="create-a-contract-instance"></a>コントラクト インスタンスを作成する
+
+ワークフローの新しいスマート コントラクト インスタンスを作成するには、[Contracts V2 POST API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/contractsv2/contractpost) を使用します。 ユーザーは、ユーザーがアプリケーション ロールに関連付けられている場合にのみ、新しいスマート コントラクト インスタンスを作成できます。これにより、ワークフローのスマート コントラクト インスタンスを開始できます。
+
+> [!NOTE]
+> この例では、バージョン 2 の API が使用されています。 バージョン 2 の Contract API は、関連付けられている ProvisioningStatus フィールドの粒度を向上します。
+
+### <a name="contracts-post-request"></a>Contracts POST 要求
+
+次の値を置き換えます。
+
+| パラメーター | Value |
+|-----------|-------|
+| {workflowId} | ワークフロー ID 値は、[Workflow テーブル](data-sql-management-studio.md)のコントラクトの ConstructorID です。 |
+| {contractCodeId} | [ContractCode テーブル](data-sql-management-studio.md)のコントラクト コード ID 値です。 作成するコントラクト インスタンスのアプリケーション ID と Ledger ID を関連付けます。 |
+| {connectionId} | [Connection テーブル](data-sql-management-studio.md)の接続 ID 値です。 |
+
+要求本文には、次の情報を使用して値を設定します。
+
+| パラメーター | Value |
+|-----------|-------|
+| workflowFunctionID | [WorkflowFunction テーブル](data-sql-management-studio.md)からの ID です。 |
+| workflowActionParameters | コンストラクターに渡されるパラメーターの名前と値のペア。 各パラメーターには、[WorkflowFunctionParameter](data-sql-management-studio.md) テーブルの workflowFunctionParameterID 値を使用します。 |
+
+``` http
+POST /api/v2/contracts?workflowId={workflowId}&contractCodeId={contractCodeId}&connectionId={connectionId}
+Content-Type: application/json;
+Authorization : Bearer {access token}
+
+{
+  "workflowFunctionID": 2,
+  "workflowActionParameters": [
+    {
+      "name": "message",
+      "value": "Hello, world!",
+      "workflowFunctionParameterId": 3
+    }
+  ]
+}
+```
+
+### <a name="contracts-post-response"></a>Contracts POST 応答
+
+成功した場合、Role Assignments API は、[ContractActionParameter テーブル](data-sql-management-studio.md)から ContractActionID を返します。
+
+``` http
+HTTP/1.1 200 OK
+4
+```
+
 ## <a name="list-smart-contract-instances-for-a-workflow"></a>ワークフローのスマート コントラクトのインスタンスを一覧表示する
 
-ユーザーが該当するワークフローを選択すると (この場合は **Asset Transfer**)、ブロックチェーン クライアントは指定されたワークフローのすべてのスマート コントラクトのインスタンスを取得します。 この情報を使用すると、ワークフローのすべてのスマート コントラクトのインスタンスを表示できます。 または、表示されたスマート コントラクトのインスタンスのいずれかの詳細をユーザーが確認するできるようにします。 この例では、ユーザーがスマート コントラクトのインスタンスの 1 つにアクションを実行させるように対話することを検討します。
+ワークフローのすべてのスマート コントラクト インスタンスを表示するには、[Contracts GET API](/rest/api/azure-blockchain-workbench/contractsv2/contractsget) を使用します。 または、表示されたスマート コントラクトのインスタンスのいずれかの詳細をユーザーが確認するできるようにします。
 
-[Contracts GET API](/rest/api/azure-blockchain-workbench/contractsv2/contractsget) を使用します。
+### <a name="contracts-request"></a>Contracts 要求
+
+この例では、ユーザーがスマート コントラクトのインスタンスの 1 つにアクションを実行させるように対話することを検討します。
 
 ``` http
 GET api/v1/contracts?workflowId={workflowId}
 Authorization: Bearer {access token}
 ```
 
-応答には、指定したワークフローのすべてのスマート コントラクトのインスタンスが一覧表示されます。 Workbench 管理者は、すべてのスマート コントラクトのインスタンスを取得します。 Workbench の非管理者は、少なくとも 1 つの関連付けられたアプリケーション ロールを持つ、または関連付けられたスマート コントラクトのインスタンス ロールを持つすべてのスマート コントラクトのインスタンスを取得します。
+### <a name="contracts-response"></a>Contracts 応答
+
+この応答には、指定したワークフローのすべてのスマート コントラクトのインスタンスが一覧表示されます。 Workbench 管理者は、すべてのスマート コントラクトのインスタンスを取得します。 Workbench の非管理者は、少なくとも 1 つの関連付けられたアプリケーション ロールを持つ、または関連付けられたスマート コントラクトのインスタンス ロールを持つすべてのスマート コントラクトのインスタンスを取得します。
 
 ``` http
 HTTP/1.1 200 OK
@@ -215,19 +367,25 @@ Content-type: application/json
 
 ## <a name="list-available-actions-for-a-contract"></a>コントラクトで使用可能なアクションを一覧表示する
 
-ユーザーがコントラクトの詳細を確認することを決めると、ブロックチェーン クライアントでは、コントラクトの状態を考慮して使用できるユーザー アクションを表示できます。 この例では、ユーザーが作成した新しいスマート コントラクトに利用可能なすべてのアクションが示されています。
+コントラクトの状態に対して使用可能なユーザー アクションを表示するには、[Contract Action GET API](/rest/api/azure-blockchain-workbench/contractsv2/contractactionget) を使用します。 
 
-* Modify: ユーザーはアセットの価格と説明を変更することができます。
-* Terminate: ユーザーはアセットのコントラクトを終了することができます。
+### <a name="contract-action-request"></a>Contract Action 要求
 
-[Contract Action GET API](/rest/api/azure-blockchain-workbench/contractsv2/contractactionget) を使用します。
+この例では、ユーザーが作成した新しいスマート コントラクトに利用可能なすべてのアクションが示されています。
 
 ``` http
 GET /api/v1/contracts/{contractId}/actions
 Authorization: Bearer {access token}
 ```
 
-応答には、指定されたスマート コントラクトのインスタンスの現在の状態に基づいて、ユーザーが実行できるすべてのアクションが一覧表示されます。 ユーザーは、ユーザーが関連付けられたアプリケーション ロールを持つ、またはスマート コントラクトのインスタンス ロールに関連付けられている場合、指定されたスマート コントラクトのインスタンスの現在の状態に該当するすべてのアクションを取得します。
+### <a name="contract-action-response"></a>Contract Action 応答
+
+応答には、指定されたスマート コントラクトのインスタンスの現在の状態に基づいて、ユーザーが実行できるすべてのアクションが一覧表示されます。
+
+* Modify: ユーザーはアセットの価格と説明を変更することができます。
+* Terminate: ユーザーはアセットのコントラクトを終了することができます。
+
+ユーザーは、ユーザーが関連付けられたアプリケーション ロールを持つ、またはスマート コントラクトのインスタンス ロールに関連付けられている場合、指定されたスマート コントラクトのインスタンスの現在の状態に該当するすべてのアクションを取得します。
 
 ``` http
 HTTP/1.1 200 OK
@@ -282,12 +440,11 @@ Content-type: application/json
 
 ## <a name="execute-an-action-for-a-contract"></a>コントラクトのアクションを実行する
 
-その後、ユーザーは指定されたスマート コントラクトのインスタンスにアクションを実行することができます。 ここでは、ユーザーがアセットの説明と価格を次の操作に変更するシナリオを示します。
+指定されたスマート コントラクト インスタンスに対してアクションを実行するには、[Contract Action POST API](/rest/api/azure-blockchain-workbench/contractsv2/contractactionpost) を使用します。
 
-* 説明:"My updated car"
-* 価格: 54321
+### <a name="contract-action-post-request"></a>Contract action POST 要求
 
-[Contract Action POST API](/rest/api/azure-blockchain-workbench/contractsv2/contractactionpost) を使用します。
+ここでは、ユーザーがアセットの説明と価格を変更するシナリオを示します。
 
 ``` http
 POST /api/v1/contracts/{contractId}/actions
@@ -307,14 +464,17 @@ actionInformation: {
 }
 ```
 
-ユーザーは、指定されたスマート コントラクトのインスタンスの状態とユーザーが関連付けられたアプリケーション ロールまたはスマート コントラクトのインスタンス ロールに基づいてのみアクションを実行することができます。 投稿が成功すると、応答本文なしで HTTP 200 OK の応答が返されます。
+ユーザーは、指定されたスマート コントラクトのインスタンスの状態とユーザーが関連付けられたアプリケーション ロールまたはスマート コントラクトのインスタンス ロールに基づいてのみアクションを実行することができます。
+
+### <a name="contract-action-post-response"></a>Contract action POST 応答
+
+投稿が成功すると、応答本文なしで HTTP 200 OK の応答が返されます。
 
 ``` http
 HTTP/1.1 200 OK
 Content-type: application/json
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [Azure Blockchain Workbench REST API リファレンス](https://docs.microsoft.com/rest/api/azure-blockchain-workbench)
+Blockchain Workbench API に関するリファレンス情報については、「[Azure Blockchain Workbench REST API リファレンス](https://docs.microsoft.com/rest/api/azure-blockchain-workbench)」を参照してください。

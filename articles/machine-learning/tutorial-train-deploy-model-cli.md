@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 761011cba71c3907994616904cc854003abda7ee
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 70fa17e3e6f91bf393865cc979a8e47e4bf8687b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245131"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393336"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>チュートリアル:CLI からのモデルのトレーニングとデプロイ
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -375,7 +375,7 @@ az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.yml --dc aci
 ```
 
 > [!NOTE]
-> "LocalWebservice の存在を確認できませんでした" という警告が表示される場合があります。 ローカル Web サービスをデプロイしていないので、この問題は無視してかまいません。
+> 「LocalWebservice の存在を確認できませんでした」または「Docker クライアントの作成に失敗しました」という警告が表示される場合があります。 ローカル Web サービスをデプロイしていないので、この問題は無視してかまいません。
 
 このコマンドでは、以前に登録したモデルのバージョン 1 を使用して、`myservice` という名前の新しいサービスをデプロイします。
 

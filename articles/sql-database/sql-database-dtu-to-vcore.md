@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 10/08/2019
-ms.openlocfilehash: f34439b7750ca1858e71d4a36121eb65001fff50
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 03/09/2020
+ms.openlocfilehash: 693065046f92e0e9eade14c43e9942772440937d
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811267"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945396"
 ---
 # <a name="migrate-from-the-dtu-based-model-to-the-vcore-based-model"></a>DTU ベースのモデルから仮想コア ベースのモデルに移行する
 
@@ -35,7 +35,7 @@ DTU ベースのモデルから仮想コアベースの購入モデルへの移�
 
 |現在のサービス レベル|移行先のサービス レベル|移行の種類|ユーザー操作|
 |---|---|---|---|
-|標準|汎用|ラテラル|任意の順序で移行できますが、適切な仮想コア サイズを確保する必要があります*|
+|Standard|汎用|ラテラル|任意の順序で移行できますが、適切な仮想コア サイズを確保する必要があります*|
 |Premium|Business Critical|ラテラル|任意の順序で移行できますが、適切な仮想コア サイズを確保する必要があります*|
 |Standard|Business Critical|アップグレード|セカンダリを最初に移行する必要があります|
 |Business Critical|Standard|ダウングレード|プライマリを最初に移行する必要があります|
@@ -45,7 +45,7 @@ DTU ベースのモデルから仮想コアベースの購入モデルへの移�
 |汎用|Business Critical|アップグレード|セカンダリを最初に移行する必要があります|
 ||||
 
-\* Standard レベルでは 100 DTU ごとに少なくとも 1 つの仮想コアが必要であり、Premium レベルでは 125 DTU ごとに少なくとも 1 つの仮想コアが必要です。
+\* 原則として、Standard レベルでは 100 DTU ごとに少なくとも 1 つの仮想コアが必要であり、Premium レベルでは 125 DTU ごとに少なくとも 1 つの仮想コアが必要です。 詳細については、「[仮想コアベースの購入モデル](https://docs.microsoft.com/azure/sql-database/sql-database-purchase-models#vcore-based-purchasing-model)」をご覧ください。
 
 ## <a name="migrate-failover-groups"></a>フェールオーバー グループを移行する
 
@@ -61,7 +61,7 @@ geo セカンダリを単一プライマリ データベースのエラスティ
 
 DTU ベース コンピューティング サイズのデータベースを、仮想コアベース コンピューティング サイズのデータベースにコピーする場合、コピー先のコンピューティング サイズが、コピー元データベースの最大データベース サイズをサポートしている限り、制限や特別なシーケンス処理は伴いません。 データベースのコピーでは、コピー操作が開始された時点のデータのスナップショットが作成され、ソースとターゲットの間でデータは同期されません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 単一データベースに対して使用できる特定のコンピューティング サイズとストレージ サイズの選択については、[単一データベースに対する SQL Database の仮想コア ベースのリソース制限](sql-database-vcore-resource-limits-single-databases.md)に関するページを参照してください。
 - エラスティック プールに対して使用できる特定のコンピューティング サイズとストレージ サイズの選択については、[エラスティック プールに対する SQL Database の仮想コア ベースのリソース制限](sql-database-vcore-resource-limits-elastic-pools.md)に関するページを参照してください。

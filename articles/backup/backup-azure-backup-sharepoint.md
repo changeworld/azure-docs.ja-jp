@@ -4,12 +4,12 @@ description: この記事では、Azure への SharePoint ファームの DPM/Az
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: b766c0401dde10fdc257044e004de3dbf8a7b84c
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 6640690f725c84899babef6825f817bad447b40f
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586480"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673264"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>DPM を使用した SharePoint ファームの Azure へのバックアップ
 
@@ -133,7 +133,7 @@ DPM を使用して SharePoint を保護する前に、 **ConfigureSharePoint.ex
     ![Online_backup_schedule](./media/backup-azure-backup-sharepoint/specify-online-backup-schedule.png)
 
     > [!NOTE]
-    > DPM では、一日当たり最大で 2 回、それぞれ異なる時刻に Azure へのバックアップを行うことができます。 Azure Backup では、 [Azure Backup ネットワーク調整](https://azure.microsoft.com/documentation/articles/backup-configure-vault/#enable-network-throttling)を使用することで、ピーク時間帯とピーク外の時間帯のバックアップに使用できる WAN 帯域幅の量を制御することもできます。
+    > DPM では、一日当たり最大で 2 回、それぞれ異なる時刻に Azure へのバックアップを行うことができます。 Azure Backup では、[Azure Backup ネットワーク調整](backup-windows-with-mars-agent.md#enable-network-throttling)を使用することで、ピーク時間帯とピーク外の時間帯のバックアップに使用できる WAN 帯域幅の量を制御することもできます。
     >
     >
 11. 選択したバックアップ スケジュールに応じて、 **[オンライン保持ポリシーの指定]** ページで、日、週、月、年単位のバックアップ ポイントの保持ポリシーを選択します。

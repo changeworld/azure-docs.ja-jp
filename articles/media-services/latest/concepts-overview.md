@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 5bb480181c244ee03b6ec9c2a2f5f7783c72f394
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: bdc0af39e3f3a06da6c06ddc384efe44dd678ea3
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251404"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087924"
 ---
 # <a name="media-services-concepts"></a>Media Services の概念
 
@@ -26,7 +26,9 @@ ms.locfileid: "78251404"
 開発を始める前に、これらのトピックで説明されている基本的な概念を確認する必要があります。
 
 > [!NOTE]
-> 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされている [SDK](media-services-apis-overview.md#sdks) のいずれかを使用してください。
+> 現時点では、[Azure portal](https://portal.azure.com/) を使用して、Media Services v3 の[ライブ イベント](live-events-outputs-concept.md)の管理、v3 の[資産](assets-concept.md)の表示 (管理ではない)、[API へのアクセスに関する情報の取得](access-api-portal.md)を行うことができます。 他のすべての管理タスク ([変換とジョブ](transforms-jobs-concept.md)や[コンテンツ保護](content-protection-overview.md)) については、[REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="media-services-v3-terminology"></a>Media Services v3 の用語
 

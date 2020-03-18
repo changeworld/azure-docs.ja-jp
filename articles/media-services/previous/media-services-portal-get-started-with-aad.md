@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 4428187c985c1004c88f2ac20b0e5811803cce2a
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: ee04fa7120f5510d703d72e662036f4fe952cd66
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162771"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330670"
 ---
 # <a name="get-started-with-azure-ad-authentication-by-using-the-azure-portal"></a>Azure ポータルで Azure AD 認証を開始する
 
@@ -31,86 +31,41 @@ Azure ポータルを使用して Azure Active Directory (Azure AD) 認証にア
 
 - Azure アカウント。 アカウントをお持ちでない場合は、[Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/)で作業を開始してください。 
 - Media Services アカウント。 詳細については、「[Azure ポータルを使用した Azure Media Services アカウントの作成](media-services-portal-create-account.md)」を参照してください。
-- [Azure AD 認証による Azure Media Services API へのアクセスの概要](media-services-use-aad-auth-to-access-ams-api.md)に関するトピックを見直していること。 
 
 Azure Media Services で Azure AD 認証を使用する場合、次の 2 つの認証オプションがあります。
 
-- **ユーザー認証**。 Media Services リソースを操作するアプリを使用しているユーザーが認証を受けます。 ユーザーは最初にその操作アプリケーションから資格情報の入力を求められます。 例として、承認済みユーザーがエンコード ジョブまたはライブ ストリーミングを監視するために使用する管理コンソール アプリがあります。 
 - **サービス プリンシパル認証**。 サービスが認証を受けます。 この認証方法がよく使用されるアプリケーションは、デーモン サービス、中間層サービス、またはスケジュールされたジョブを実行するアプリ (Web アプリ、関数アプリ、ロジック アプリ、API、マイクロサービス) です。
+- **ユーザー認証**。 Media Services リソースを操作するアプリを使用しているユーザーが認証を受けます。 ユーザーは最初にその操作アプリケーションから資格情報の入力を求められます。 例として、承認済みユーザーがエンコード ジョブまたはライブ ストリーミングを監視するために使用する管理コンソール アプリがあります。 
 
-> [!IMPORTANT]
-> 現在 Media Services では、Azure Access Control Service 認証モデルがサポートされています。 ただし、Access Control 承認は 2018 年 6 月 1 日に非推奨となる予定です。 できるだけ早く Azure AD 認証モデルに移行することをお勧めします。
+## <a name="access-the-media-services-api"></a>Media Services API にアクセスする
 
-## <a name="select-the-authentication-method"></a>認証方法を選択する
+このページでは、API への接続に使用する認証方法を選択できます。 このページには、API に接続するために必要な値も表示されます。
 
 1. [Azure ポータル](https://portal.azure.com/) で Media Services アカウントを選択します。
 2. Media Services API に接続する方法を選択します。
+3. **[Media Services API に接続する]** で、接続する Media Services API のバージョンを選択します。
 
-    ![接続方法選択ページ](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started01.png)
+## <a name="service-principal-authentication--recommended"></a>サービス プリンシパル認証 (推奨)
+
+Azure Active Directory (Azure AD) アプリとシークレットを使用してサービスを認証します。 これは、Media Services API を呼び出す中間層サービスに対して推奨されます。 たとえば、Web アプリ、関数、Logic Apps、API、マイクロサービスなどです。 これは、推奨されている認証方法です。
+
+### <a name="manage-your-azure-ad-app-and-secret"></a>Azure AD アプリとシークレットの管理
+
+**[AAD アプリとシークレットの管理]** セクションでは、新しい Azure AD アプリを選択または作成し、シークレットを生成できます。 セキュリティ上の理由により、ブレードを閉じた後にシークレットを表示することはできません。 アプリケーションでは、認証にアプリケーション ID とシークレットを使用して、メディア サービスの有効なトークンを取得します。
+
+Azure AD テナントにアプリケーションを登録し、アプリケーションを Azure サブスクリプションのロールに割り当てるための十分なアクセス許可があることを確認してください。 詳細については、[「必要なアクセス許可」](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)を参照してください。
+
+### <a name="connect-to-media-services-api"></a>Media Services API に接続する
+
+**[Media Services API に接続する]** では、サービス プリンシパル アプリケーションへの接続に使用する値が提供されます。 テキスト値を取得したり、JSON または XML ブロックをコピーしたりできます。
 
 ## <a name="user-authentication"></a>ユーザー認証
 
-ユーザー認証オプションを指定して Media Services API に接続するには、クライアント アプリから、以下のパラメーターを使用して、Azure AD トークンを要求する必要があります。  
+このオプションは、アプリを使用して Media Services リソースを操作している Azure Active Directory の従業員またはメンバーを認証するために使用できます。 ユーザーは最初に、対話型アプリケーションからユーザー資格情報の入力を求められます。 この認証方法は、管理アプリケーションに対してのみ使用してください。
 
-* Azure AD テナント エンドポイント
-* Media Services リソース URI
-* Media Services (ネイティブ) アプリケーション クライアント ID 
-* Media Services (ネイティブ) アプリケーション リダイレクト URI 
-* REST Media Services のリソース URI
+### <a name="connect-to-media-services-api"></a>Media Services API に接続する
 
-これらのパラメーターの値は、 **[ユーザー認証を使って Media Services API に接続する]** ページで取得することができます。 
-
-![[ユーザー認証を使って Media Services API に接続する] ページ](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started02.png)
-
-Media Services Microsoft .NET SDK を使用して Media Services API に接続する場合、必要な値は SDK の一部として入手できます。 詳細については、「[.NET で Azure AD 認証を使用して Azure Media Services API にアクセスする](media-services-dotnet-get-started-with-aad.md)」を参照してください。
-
-Media Services .NET クライアント SDK を使用しない場合は、前述のパラメーターを使用して、Azure AD トークン要求を手動で作成する必要があります。 詳細については、[Azure AD Authentication Library を使用して Azure AD トークンを取得する方法](../../active-directory/azuread-dev/active-directory-authentication-libraries.md)に関するページを参照してください。
-
-## <a name="service-principal-authentication"></a>サービス プリンシパルの認証
-
-サービス プリンシパル オプションを指定して Media Services API に接続するには、中間層アプリ (Web API または Web アプリケーション) から、以下のパラメーターを使用して Azure AD トークンを要求する必要があります。  
-
-* Azure AD テナント エンドポイント
-* Media Services リソース URI 
-* REST Media Services のリソース URI
-* Azure AD アプリケーションの値: **クライアント ID** と**クライアント シークレット**
-
-これらのパラメーターの値は、 **[サービス プリンシパルを使って Media Services API に接続する]** ページで取得することができます。 このページを使用して、新しい Azure AD アプリケーションを作成するか、既存の Azure AD アプリケーションを選択します。 Azure AD アプリを選択すると、クライアント ID (アプリケーション ID) を取得し、クライアント シークレット (キー) の値を生成できます。 
-
-![[サービス プリンシパルを使って Media Services API に接続する] ページ](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started04.png)
-
-次の条件を満たす最初の Azure AD アプリケーションが選択された状態で、 **[サービス プリンシパル]** ブレードが開きます。
-
-- 登録済みの Azure AD アプリケーションであること。
-- アカウントに共同作成者または所有者ロールベースのアクセス制御許可があること。
-
-Azure AD アプリを作成または選択した後、クライアント シークレット (キー) とクライアント ID (アプリケーション ID) を作成してコピーできます。 このシナリオでは、アクセス トークンを取得するためにクライアント ID とクライアント シークレットが必要です。
-
-ドメイン内に Azure AD アプリを作成するアクセス許可を持っていない場合、ブレードの Azure AD アプリ コントロールは表示されず、警告メッセージが表示されます。
-
-Media Services .NET SDK を使用して Media Services API に接続する場合は、「[.NET で Azure AD 認証を使用して Azure Media Services API にアクセスする](media-services-dotnet-get-started-with-aad.md)」を参照してください。
-
-Media Services .NET クライアント SDK を使用しない場合は、前述のパラメーターを使用して、Azure AD トークン要求を手動で作成する必要があります。 詳細については、[Azure AD Authentication Library を使用して Azure AD トークンを取得する方法](../../active-directory/azuread-dev/active-directory-authentication-libraries.md)に関するページを参照してください。
-
-### <a name="get-the-client-id-and-client-secret"></a>クライアント ID とクライアント シークレットを取得する
-
-既存の Azure AD アプリを選択するか新規に作成するオプションを選択すると、次のボタンが表示されます。
-
-![[アクセス許可の管理] ボタンと [アプリケーションの管理] ボタン](./media/media-services-portal-get-started-with-aad/media-services-portal-manage.png)
-
-[Azure AD アプリケーション] ブレードを開くには、 **[アプリケーションの管理]** をクリックします。 **[アプリケーションの管理]** ブレードで、アプリのクライアント ID (アプリケーション ID) を取得できます。 クライアント シークレット (キー) を生成するには、 **[キー]** を選択します。
-
-![[アプリケーションの管理] ブレードの [キー] オプション](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started06.png) 
-
-### <a name="manage-permissions-and-the-application"></a>アクセス許可とアプリケーションを管理する
-
-Azure AD アプリケーションを選択して、アプリケーションとアクセス許可を管理できます。 その他のアプリケーションにアクセスできるように Azure AD アプリケーションをセットアップするには、 **[アクセス許可の管理]** をクリックします。 キーと応答 URL の変更やアプリケーションのマニフェストの編集などの管理タスクを行うには、 **[アプリケーションの管理]** をクリックします。
-
-### <a name="edit-the-apps-settings-or-manifest"></a>アプリの設定またはマニフェストを編集する
-
-アプリの設定またはマニフェストを編集するには、 **[アプリケーションの管理]** をクリックします。
-
-![[アプリケーションの管理] ページ](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started05.png)
+**[Media Services API に接続する]** セクションから、ユーザー アプリケーションに接続するための資格情報をコピーします。 テキスト値を取得したり、JSON または XML ブロックをコピーしたりできます。
 
 ## <a name="next-steps"></a>次のステップ
 

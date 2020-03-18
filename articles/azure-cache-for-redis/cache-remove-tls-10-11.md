@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 77f526470204204ef2a801575bb4e8d7e364ffed
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 6130c934f9a718baab840dae714222e4153bfcf6
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260158"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126345"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Azure Cache for Redis での使用から TLS 1.0 と 1.1 を削除する
 
@@ -19,7 +19,7 @@ ms.locfileid: "76260158"
 
 この作業の一環として、Azure Cache for Redis に対して次の変更が行われます。
 
-* **フェーズ 1:** 新しく作成されるキャッシュ インスタンスには、既定の最小 TLS バージョンとして 1.2 が構成されます。  この時点で既定のキャッシュ インスタンスが更新されることはありません。  必要に応じて、下位互換性を保つために、1.0 または 1.1 に[最小 TLS バージョンを戻す](cache-configure.md#access-ports)ことができます。  この変更は、Azure portal またはその他の管理 API を使用して実行できます。
+* **フェーズ 1:** 新しく作成されるキャッシュ インスタンスには、既定の最小 TLS バージョンとして 1.2 が構成されます。 (これは以前は TLS 1.0 でした。)この時点で既定のキャッシュ インスタンスが更新されることはありません。 必要に応じて、下位互換性を保つために、1.0 または 1.1 に[最小 TLS バージョンを戻す](cache-configure.md#access-ports)ことができます。 この変更は、Azure portal またはその他の管理 API を使用して実行できます。
 * **フェーズ 2:** TLS のバージョン 1.0 と 1.1 のサポートは停止されます。 この変更以降、お使いのアプリケーションでは、TLS 1.2 以降を使用してキャッシュと通信する必要があります。
 
 さらに、この変更の一環として、セキュリティで保護されていない古い暗号スイートのサポートが廃止されます。  キャッシュが最小 TLS バージョンである 1.2 に構成されている場合、サポートされる暗号スイートは以下に制限されます。
@@ -87,21 +87,27 @@ Node Redis と IORedis は、既定で TLS 1.2 を使用します。
 
 ### <a name="php"></a>PHP
 
-PHP 7 では TLS 1.0 のみがサポートされるため、PHP 7 の Predis は動作しません。 PHP 7.2.1 以前では、Predis は既定で TLS 1.0 または 1.1 を使用します。 クライアント インスタンスを作成するときに、TLS 1.2 を指定できます。
+#### <a name="predis"></a>Predis
+ 
+* PHP 7 より前のバージョン:Predis では TLS 1.0 のみがサポートされます。 これらのバージョンでは TLS 1.2 がサポートされていません。TLS 1.2 を使用するには、アップグレードする必要があります。
+ 
+* Php 7.0 から PHP 7.2.1:Predis は、規定では TLS 1.0 または1.1 のみを使用します。 TLS 1.2 を使用するには、次の回避策を使用できます。 クライアント インスタンスを作成するときに、TLS 1.2 を指定します。
 
-``` PHP
-$redis=newPredis\Client([
-    'scheme'=>'tls',
-    'host'=>'host',
-    'port'=>6380,
-    'password'=>'password',
-    'ssl'=>[
-        'crypto_type'=>STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT,
-    ],
-]);
-```
+  ``` PHP
+  $redis=newPredis\Client([
+      'scheme'=>'tls',
+      'host'=>'host',
+      'port'=>6380,
+      'password'=>'password',
+      'ssl'=>[
+          'crypto_type'=>STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT,
+      ],
+  ]);
+  ```
 
-PHP 7.3 以降では、Predis は最新の TLS バージョンを使用します。
+* PHP 7.3 および以降のバージョン:Predis は最新の TLS バージョンを使用します。
+
+#### <a name="phpredis"></a>PhpRedis
 
 PhpRedis は、どの PHP バージョンでも TLS をサポートしていません。
 

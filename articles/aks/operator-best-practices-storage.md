@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) のストレージ、データの暗
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: a58a42f65472a9c4b495e0cb964eefa40bf82041
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: b1336d10b091be4f3eb2a711401cafd3f58221fe
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649621"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399485"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) のストレージとバックアップに関するベスト プラクティス
 
@@ -75,7 +75,7 @@ AKS ノードは Azure VM として実行されます。 さまざまな種類�
 
 ![Azure Kubernetes Services (AKS) クラスターでの永続ボリューム要求](media/concepts-storage/persistent-volume-claims.png)
 
-永続ボリューム要求 (PVC) を使用すれば、必要に応じて、ストレージを動的に作成することができます。 ポッドで要求されたときに、基になる Azure ディスクが生成されます。 ポッド定義で、ボリュームを作成し、設計されたマウント パスに接続するよう要求します
+永続ボリューム要求 (PVC) を使用すれば、必要に応じて、ストレージを動的に作成することができます。 ポッドで要求されたときに、基になる Azure ディスクが生成されます。 ポッド定義で、ボリュームを作成し、指定されたマウント パスに接続するよう要求します。
 
 ボリュームを動的に作成して使用する方法の概念については、「[永続ボリューム要求][aks-concepts-storage-pvcs]」を参照してください。
 

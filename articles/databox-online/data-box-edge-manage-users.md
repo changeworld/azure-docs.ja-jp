@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 68f8ad903f967812c4a416c732b35fa1712404cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 443ed983a0eec5dfd8f7a917fbc1440cd66c3db3
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60756658"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946141"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-edge"></a>Azure portal を使用して Azure Data Box Edge のユーザーを管理する
 
-この記事では、Data Box Edge のユーザーを管理する方法について説明します。 Azure Data Box Edge の管理は、Azure portal またはローカル Web UI を通じて行えます。 Azure portal を使用してユーザーを追加、変更、または削除します。
+この記事では、Azure Data Box Edge のユーザーを管理する方法について説明します。 Azure Data Box Edge の管理は、Azure portal またはローカル Web UI を通じて行えます。 Azure portal を使用してユーザーを追加、変更、または削除します。
 
 この記事では、次のことについて説明します。
 
@@ -33,8 +33,7 @@ ms.locfileid: "60756658"
  - **すべての特権を持つユーザー** - フル アクセス権を持つローカル ユーザー。
  - **読み取り専用ユーザー** - 読み取り専用アクセス権を持つローカル ユーザー。 これらのユーザーは、読み取り専用の操作を許可する共有に関連付けられます。
 
-ユーザーのアクセス許可は、まず、共有の作成中にユーザーを作成するときに定義します。 ユーザーに関連付けられるアクセス許可を定義した後、これらのアクセス許可は、エクスプローラーを使用して変更することができます。 
-
+ユーザーのアクセス許可は、まず、共有の作成中にユーザーを作成するときに定義します。 共有レベルのアクセス許可の変更は現在サポートされていません。
 
 ## <a name="add-a-user"></a>ユーザーの追加
 
@@ -83,6 +82,6 @@ ms.locfileid: "60756658"
 ![更新されたユーザーの一覧](media/data-box-edge-manage-users/delete-user-4.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [帯域幅を管理する](data-box-edge-manage-bandwidth-schedules.md)方法について学習します。

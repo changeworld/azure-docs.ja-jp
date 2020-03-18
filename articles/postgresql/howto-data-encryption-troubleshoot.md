@@ -1,58 +1,62 @@
 ---
-title: Azure Database for PostgreSQL - 単一サーバーのデータ暗号化のトラブルシューティング
-description: Azure Database for PostgreSQL - 単一サーバーのデータ暗号化のトラブルシューティングを行う方法を学習する
+title: Azure Database for PostgreSQL (単一サーバー) でのデータ暗号化のトラブルシューティング
+description: Azure Database for PostgreSQL (単一サーバー) でデータ暗号化のトラブルシューティングを行う方法を学習する
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 6d2e027c47bef3186f95c2183b316b5c15511070
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: bd3303117bae307bb562390cec1fdfb62c01b7c6
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371473"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851079"
 ---
-# <a name="troubleshooting-data-encryption-with-customer-managed-keys-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 単一サーバーでのカスタマー マネージド キーを使用するデータ暗号化のトラブルシューティング
-この記事では、カスタマー マネージド キーを使用するデータ暗号化が構成されている Azure Database for PostgreSQL - 単一サーバーで発生する一般的な問題やエラーを特定し、解決する方法について説明します。
+# <a name="troubleshoot-data-encryption-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) でのデータ暗号化のトラブルシューティング
+
+この記事では、カスタマー マネージド キーを使用してデータの暗号化を構成した場合に、Azure Database for PostgreSQL の単一サーバー展開で発生する可能性のある一般的な問題を特定し、解決する方法について説明します。
 
 ## <a name="introduction"></a>はじめに
-Azure Key Vault でカスタマー マネージド キーを使用するようにデータ暗号化が構成されている場合、サーバーを使用可能な状態に保つには、このキーへの継続的なアクセスが必要です。 サーバーでは、Azure Key Vault のカスタマー マネージド キーにアクセスできなくなった場合、該当するエラー メッセージが表示されてすべての接続の拒否が始まり、Azure portal でその状態が "***アクセス不可***" に変わります。
 
-アクセスできない Azure Database for PostgreSQL - 単一サーバーが不要になった場合は、すぐに削除してコストを抑えることができます。 Azure Key Vault へのアクセスが復元され、サーバーが再び使用できるようになるまで、サーバーに対する他のすべての操作は許可されません。 サーバーがカスタマー マネージドで暗号化されている間は、アクセスできないサーバーでデータの暗号化オプションを [はい] (カスタマー マネージド) から [いいえ] (サービス マネージド) に変更することもできません。 サーバーを再び使用できるようにするには、キーを手動で再検証する必要があります。 これは、カスタマー マネージド キーへのアクセス許可が取り消されているときに、データを不正アクセスから保護するために必要です。
+Azure Key Vault でカスタマー マネージド キーを使用するようにデータ暗号化を構成する場合、サーバーにはキーへの継続的なアクセスが必要となります。 サーバーが Azure Key Vault のカスタマー マネージド キーにアクセスできなくなると、すべての接続が拒否され、該当するエラー メッセージが表示され、Azure portal でその状態が ***[アクセス不可]*** に変わります。
+
+アクセスできない Azure Database for PostgreSQL サーバーが不要になった場合は、それを削除してコストを発生させないようにすることができます。 キー コンテナーへのアクセスが復元され、サーバーが使用できるようになるまで、サーバーに対する他のすべての操作は許可されません。 また、アクセスできないサーバーがカスタマー マネージド キーで暗号化されている場合は、そのサーバーで `Yes` (カスタマー マネージド) から `No` (サービス マネージド) にデータ暗号化オプションを変更することもできません。 サーバーに再度アクセスできるようにするには、キーを手動で再検証する必要があります。 このアクションは、カスタマー マネージド キーへのアクセス許可が取り消されている間、データを不正アクセスから保護するために必要です。
 
 ## <a name="common-errors-causing-server-to-become-inaccessible"></a>サーバーにアクセスできなくなる原因となる一般的なエラー
 
-Azure Key Vault によるデータ暗号化を使用しているときに発生する問題のほとんどは、次の構成ミスのいずれかが原因です。
+Azure Key Vault キーを使用するデータ暗号化に関するほとんどの問題は、次のような構成ミスにより発生します。
 
-キー コンテナーが使用できない、または存在しない
+- キー コンテナーが使用できない、または存在しない。
+  - キー コンテナーが誤って削除された。
+  - 間欠的なネットワーク エラーのために、キー コンテナーを使用できない。
 
-* キー コンテナーが誤って削除された。
-* 間欠的なネットワーク エラーのために、キー コンテナーを使用できない。
-
-キー コンテナーへのアクセス許可がない、またはキーが存在しない
-
-* キーが誤って削除された、無効にされた、またはキーの有効期限が切れた。
-* Azure Database for PostgreSQL - 単一サーバーのインスタンス マネージド ID が誤って削除された。
-* キー用の Azure Database for PostgreSQL マネージド ID に付与されているアクセス許可が十分ではない (取得、ラップ、ラップ解除が含まれていない)。
-* Azure Database for PostgreSQL 単一サーバーのインスタンス マネージド ID のアクセス許可が取り消されたか、削除された。
+- キー コンテナーへのアクセス許可がない、またはキーが存在しない。
+  - キーの有効期限が切れたか、誤って削除または無効化された。
+- Azure Database for PostgreSQL インスタンスのマネージド ID が誤って削除された。
+  - Azure Database for PostgreSQL インスタンスのマネージド ID の、キーのアクセス許可が不十分である。 たとえば、アクセス許可に取得、ラップ、ラップ解除が含まれていない。
+  - Azure Database for PostgreSQL インスタンスに対するマネージド ID のアクセス許可が取り消されたか、削除された。
 
 ## <a name="identify-and-resolve-common-errors"></a>一般的なエラーの識別と解決
+
 ### <a name="errors-on-the-key-vault"></a>Key Vault でのエラー
 
 #### <a name="disabled-key-vault"></a>無効な Key Vault
-* AzureKeyVaultKeyDisabledMessage
-* **説明**:Azure Key Vault キーが無効になっているため、サーバーで操作を完了できませんでした。
+
+- `AzureKeyVaultKeyDisabledMessage`
+- **説明**:Azure Key Vault キーが無効になっているため、サーバーで操作を完了できませんでした。
 
 #### <a name="missing-key-vault-permissions"></a>Key Vault アクセス許可がない
-* AzureKeyVaultMissingPermissionsMessage
-* サーバーに、Azure Key Vault アクセス許可に対して必要な取得、ラップ、およびラップ解除のアクセス許可がありません。 ID でサービス プリンシパルに欠落しているアクセス許可を付与します。
+
+- `AzureKeyVaultMissingPermissionsMessage`
+- **説明**:サーバーに、Azure Key Vault に対して必要な取得、ラップ、およびラップ解除のアクセス許可がありません。 ID でサービス プリンシパルに欠落しているアクセス許可を付与します。
 
 ### <a name="mitigation"></a>対応策
-* カスタマー マネージド キーが Key Vault に存在することを確認します。
-* キー コンテナーを識別した後、Azure portal でそのキー コンテナーに移動します。
-* キー URI によって識別されたキーが存在することを確認します。
 
+- カスタマー マネージド キーが、キー コンテナーに存在することを確認します。
+- キー コンテナーを識別した後、Azure portal でそのキー コンテナーに移動します。
+- キー URI により、存在するキーが特定されていることを確認します。
 
 ## <a name="next-steps"></a>次のステップ
-[Azure portal を使用して、Azure Database for PostgreSQL のカスタマー マネージド キーによるデータ暗号化を設定します](howto-data-encryption-portal.md)。
+
+[Azure portal を使用して、Azure Database for PostgreSQL でカスタマー マネージド キーによるデータ暗号化を設定します](howto-data-encryption-portal.md)

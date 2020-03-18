@@ -5,14 +5,14 @@ services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
-ms.date: 08/02/2018
+ms.date: 03/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: d181b9b2495ebd106bb068b78131fa90c2f6d62c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f3b2e641ab187514a7900b2ab7cc75068df00252
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449660"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672008"
 ---
 # <a name="using-azure-batch-rendering"></a>Azure Batch レンダリングを使用する
 
@@ -48,7 +48,7 @@ Windows、OSX および Linux 用の Batch Explorer の[ダウンロードが用
 
 VM イメージをレンダリングする Marketplace 上に存在するすべてのアプリケーションの要求に応じたテンプレートが用意されています。  各アプリケーションには CPU プールや GPU プール、Windows や Linux のプールの要求に応じたプールのテンプレートを含む、複数のテンプレートが存在します。ジョブ テンプレートにはフル フレームまたはタイル Blender レンダリングおよび V-Ray 分散レンダリングが含まれています。 提供されるテンプレートは時間の経過と共に、プールの自動スケーリングなど、他の Batch 機能の要求に応じるように展開されます。
 
-また、一から作成または提供されたテンプレートを編集することで、カスタムテンプレートを生成することもできます。 カスタム テンプレートは、Batch Explorer の [ギャラリー] セクションで [ローカル テンプレート] アイテムを選択することで使用できます。
+また、一から作成または提供されたテンプレートを編集することで、カスタムテンプレートを生成することもできます。 カスタム テンプレートは、Batch Explorer の [ギャラリー] セクションの [ローカル テンプレート] の項目を選択することで使用できます。
 
 ### <a name="file-system-and-data-movement"></a>ファイル システムとデータ移動
 
@@ -58,7 +58,8 @@ Batch Explorer の [データ] セクションでは、ローカル ファイル
 
 一部のクライアント アプリケーションにはプラグインが用意されています。  プラグインを使用すると、アプリケーションから直接プールやジョブを作成または Batch Explorer を呼び出すことができます。
 
-* [Blender](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
+* [Blender 2.79](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
+* [Blender 2.8 以降](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender28)
 * [Autodesk 3ds Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
 * [Autodesk Maya](https://github.com/Azure/azure-batch-maya)
 
