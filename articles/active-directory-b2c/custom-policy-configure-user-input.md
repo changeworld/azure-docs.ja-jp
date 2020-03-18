@@ -8,83 +8,52 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 03/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2d279a2a368e606e036b24172eb94b667b3255db
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 56a3478f1c0dbc05eba07a5109f5bb6ba89b79d0
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78267949"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079878"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ポリシーを使用した要求の追加とユーザー入力のカスタマイズ - | Microsoft Docs
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-この記事では、新しいユーザー指定のエントリ (要求) を Azure Active Directory B2C (Azure AD B2C) のサインアップ ユーザー体験に追加します。  このエントリをドロップダウン リストとして構成し、これが必須かどうかを定義します。
+この記事では、Azure Active Directory B2C (Azure AD B2C) でのサインアップ体験時に新しい属性を収集します。 ユーザーの city (市区町村) を取得し、それをドロップダウンとして構成し、それを指定することが必須かどうかを定義します。
+
+ユーザーからの初期データは、サインアップまたはサインインのユーザー体験を使用して収集できます。 追加の要求は、後でプロファイル編集のユーザー体験を使用して収集できます。 Azure AD B2C が対話形式でユーザーから直接情報を収集するときはいつでも、Identity Experience Framework は[セルフアサート技術プロファイル](self-asserted-technical-profile.md)を使用します。 このサンプルでは、以下を実行します。
+
+1. "city" 要求を定義します。
+1. ユーザーに city を尋ねます。
+1. Azure AD B2C ディレクトリのユーザー プロファイルに city を保持します。
+1. サインインのたびに、Azure AD B2C ディレクトリから city 要求を読み取ります。
+1. サインインまたはサインアップ後に、証明書利用者アプリケーションに city を返します。  
 
 ## <a name="prerequisites"></a>前提条件
 
-[カスタム ポリシーの概要](custom-policy-get-started.md)に関する記事の手順を完了します。 先に進む前に、ローカル アカウントの新規登録のためのサインアップまたはサインイン ユーザー体験をテストします。
+[カスタム ポリシーの概要](custom-policy-get-started.md)に関するページの手順を完了します。 ソーシャルとローカルのアカウントを使用したサインアップとサインイン用の実際に機能するカスタム ポリシーが必要です。
 
-## <a name="add-claims"></a>要求の追加
+## <a name="define-a-claim"></a>要求を定義する
 
-ユーザーからの初期データの収集は、サインアップまたはサインイン ユーザー体験を使用して実現されます。 追加の要求は、後でプロファイル編集のユーザー体験を使用して収集できます。 Azure AD B2C は、いつでもユーザーから情報を対話的に直接収集します。Identity Experience Framework は、そのセルフアサート プロバイダーを使用します。
-
-
-### <a name="define-the-claim"></a>要求の定義
-
-ユーザーに市区町村の入力を求めることにしましょう。 TrustFrameworkBase ポリシー ファイル内の **ClaimsSchema** 要素に次の要素を追加します。
-
-```xml
-<ClaimType Id="city">
-  <DisplayName>city</DisplayName>
-  <DataType>string</DataType>
-  <UserHelpText>Your city</UserHelpText>
-  <UserInputType>TextBox</UserInputType>
-</ClaimType>
-```
-
-要求の定義には次の要素が使用されます。
+要求は、Azure AD B2C ポリシーの実行中に、データの一時的なストレージを提供します。 [要求スキーマ](claimsschema.md)は、要求を宣言する場所です。 要求の定義には次の要素が使用されます。
 
 - **DisplayName** - ユーザーに表示される "ラベル" を定義する文字列です。
+- [DataType](claimsschema.md#datatype) - 要求の種類です。
 - **UserHelpText** - 必要なものをユーザーが理解するために役立ちます。
-- **UserInputType** - テキスト ボックス、ラジオ選択、ドロップダウン リスト、または複数選択を使用できます。
+- [UserInputType](claimsschema.md#userinputtype) - テキスト ボックス、ラジオ選択、ドロップダウン リスト、または複数選択などの入力コントロールの種類。
 
-#### <a name="textbox"></a>TextBox
+ポリシーの拡張ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>です。
 
-```xml
-<ClaimType Id="city">
-  <DisplayName>city where you work</DisplayName>
-  <DataType>string</DataType>
-  <UserHelpText>Your city</UserHelpText>
-  <UserInputType>TextBox</UserInputType>
-</ClaimType>
-```
-
-#### <a name="radiosingleselect"></a>RadioSingleSelect
+1. [BuildingBlocks](buildingblocks.md) 要素を検索します。 要素が存在しない場合は追加します。
+1. [ClaimsSchema](claimsschema.md) 要素を見つけます。 要素が存在しない場合は追加します。
+1. **ClaimsSchema** 要素に city 要求を追加します。  
 
 ```xml
 <ClaimType Id="city">
-  <DisplayName>city where you work</DisplayName>
-  <DataType>string</DataType>
-  <UserInputType>RadioSingleSelect</UserInputType>
-  <Restriction>
-    <Enumeration Text="Bellevue" Value="bellevue" SelectByDefault="false" />
-    <Enumeration Text="Redmond" Value="redmond" SelectByDefault="false" />
-    <Enumeration Text="Kirkland" Value="kirkland" SelectByDefault="false" />
-  </Restriction>
-</ClaimType>
-```
-
-#### <a name="dropdownsingleselect"></a>DropdownSingleSelect
-
-![複数のオプションを表示する単一選択のドロップダウン コントロール](./media/custom-policy-configure-user-input/dropdown-menu-example.png)
-
-```xml
-<ClaimType Id="city">
-  <DisplayName>city where you work</DisplayName>
+  <DisplayName>City where you work</DisplayName>
   <DataType>string</DataType>
   <UserInputType>DropdownSingleSelect</UserInputType>
   <Restriction>
@@ -95,169 +64,133 @@ ms.locfileid: "78267949"
 </ClaimType>
 ```
 
-#### <a name="checkboxmultiselect"></a>CheckboxMultiSelect
+## <a name="add-a-claim-to-the-user-interface"></a>ユーザー インターフェイスに要求を追加する
 
-![複数のオプションを表示する複数選択のチェックボックス コントロール](./media/custom-policy-configure-user-input/multiselect-menu-example.png)
+次の技術プロファイルは、ユーザーが入力を提供すると予期されているときに呼び出される、[セルフアサート](self-asserted-technical-profile.md)です。
+
+- **LocalAccountSignUpWithLogonEmail** - ローカル アカウントのサインアップ フロー。
+- **SelfAsserted-Social** - フェデレーション アカウントの初回ユーザー サインイン。
+- **SelfAsserted-ProfileUpdate** - プロファイルの編集フロー。
+
+サインアップ時に city 要求を収集するには、それを出力要求として `LocalAccountSignUpWithLogonEmail` 技術プロファイルに追加する必要があります。 拡張ファイル内のこの技術プロファイルをオーバーライドします。 要求が画面に表示される順序を制御するには、出力要求の一覧全体を指定します。 **ClaimsProviders** 要素を見つけます。 新しい ClaimsProvider を次のように追加します。
 
 ```xml
-<ClaimType Id="city">
-  <DisplayName>Receive updates from which cities?</DisplayName>
-  <DataType>string</DataType>
-  <UserInputType>CheckboxMultiSelect</UserInputType>
-  <Restriction>
-    <Enumeration Text="Bellevue" Value="bellevue" SelectByDefault="false" />
-    <Enumeration Text="Redmond" Value="redmond" SelectByDefault="false" />
-    <Enumeration Text="Kirkland" Value="kirkland" SelectByDefault="false" />
-  </Restriction>
-</ClaimType>
+<ClaimsProvider>
+  <DisplayName>Local Account</DisplayName>
+  <TechnicalProfiles>
+    <!--Local account sign-up page-->
+    <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
+      <OutputClaims>
+       <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
+       <OutputClaim ClaimTypeReferenceId="newPassword" Required="true" />
+       <OutputClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
+       <OutputClaim ClaimTypeReferenceId="displayName" />
+       <OutputClaim ClaimTypeReferenceId="givenName" />
+       <OutputClaim ClaimTypeReferenceId="surName" />
+       <OutputClaim ClaimTypeReferenceId="city"/>
+     </OutputClaims>
+   </TechnicalProfile>
+  </TechnicalProfiles>
+</ClaimsProvider>
+<ClaimsProvider>
 ```
 
-### <a name="add-the-claim-to-the-user-journey"></a>ユーザー体験に要求を追加する
+フェデレーション アカウントを使用して初めてサインインした後に city 要求を収集するには、それを出力要求として `SelfAsserted-Social` 技術プロファイルに追加する必要があります。 ローカルとフェデレーション アカウントのユーザーが後でプロファイル データを編集できるようにするには、`SelfAsserted-ProfileUpdate` 技術プロファイルに出力要求を追加します。 拡張ファイル内のこれらの技術プロファイルをオーバーライドします。 要求が画面に表示される順序を制御するには、出力要求の一覧全体を指定します。 **ClaimsProviders** 要素を見つけます。 新しい ClaimsProvider を次のように追加します。
 
-1. 要求を、TrustFrameworkBase ポリシー ファイル内にある技術プロファイル `LocalAccountSignUpWithLogonEmail` に `<OutputClaim ClaimTypeReferenceId="city"/>` として追加します。 この技術プロファイルでは SelfAssertedAttributeProvider を使用されます。
-
-    ```xml
-    <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
-      <DisplayName>Email signup</DisplayName>
-      <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-      <Metadata>
-        <Item Key="IpAddressClaimReferenceId">IpAddress</Item>
-        <Item Key="ContentDefinitionReferenceId">api.localaccountsignup</Item>
-        <Item Key="language.button_continue">Create</Item>
-      </Metadata>
-      <CryptographicKeys>
-        <Key Id="issuer_secret" StorageReferenceId="TokenSigningKeyContainer" />
-      </CryptographicKeys>
-      <InputClaims>
-        <InputClaim ClaimTypeReferenceId="email" />
-      </InputClaims>
+```xml
+  <DisplayName>Self Asserted</DisplayName>
+  <TechnicalProfiles>
+    <!--Federated account first-time sign-in page-->
+    <TechnicalProfile Id="SelfAsserted-Social">
       <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="objectId" />
-        <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
-        <OutputClaim ClaimTypeReferenceId="newPassword" Required="true" />
-        <OutputClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
-        <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
-        <OutputClaim ClaimTypeReferenceId="authenticationSource" />
-        <OutputClaim ClaimTypeReferenceId="newUser" />
-        <!-- Optional claims, to be collected from the user -->
-        <OutputClaim ClaimTypeReferenceId="givenName" />
-        <OutputClaim ClaimTypeReferenceId="surName" />
+        <OutputClaim ClaimTypeReferenceId="displayName"/>
+        <OutputClaim ClaimTypeReferenceId="givenName"/>
+        <OutputClaim ClaimTypeReferenceId="surname"/>
         <OutputClaim ClaimTypeReferenceId="city"/>
       </OutputClaims>
-      <ValidationTechnicalProfiles>
-        <ValidationTechnicalProfile ReferenceId="AAD-UserWriteUsingLogonEmail" />
-      </ValidationTechnicalProfiles>
-      <UseTechnicalProfileForSessionManagement ReferenceId="SM-AAD" />
     </TechnicalProfile>
-    ```
-
-2. 要求を技術プロファイル AAD-UserWriteUsingLogonEmail に `<PersistedClaim ClaimTypeReferenceId="city" />` として追加し、要求をユーザーから収集した後で、それを AAD ディレクトリに書き込みます。 後で使用するために要求をディレクトリ内に永続的に保存することをしない場合は、この手順を省略できます。
-
-    ```xml
-    <!-- Technical profiles for local accounts -->
-    <TechnicalProfile Id="AAD-UserWriteUsingLogonEmail">
-      <Metadata>
-        <Item Key="Operation">Write</Item>
-        <Item Key="RaiseErrorIfClaimsPrincipalAlreadyExists">true</Item>
-      </Metadata>
-      <IncludeInSso>false</IncludeInSso>
-      <InputClaims>
-        <InputClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames.emailAddress" Required="true" />
-      </InputClaims>
-      <PersistedClaims>
-        <!-- Required claims -->
-        <PersistedClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames.emailAddress" />
-        <PersistedClaim ClaimTypeReferenceId="newPassword" PartnerClaimType="password" />
-        <PersistedClaim ClaimTypeReferenceId="displayName" DefaultValue="unknown" />
-        <PersistedClaim ClaimTypeReferenceId="passwordPolicies" DefaultValue="DisablePasswordExpiration" />
-        <!-- Optional claims. -->
-        <PersistedClaim ClaimTypeReferenceId="givenName" />
-        <PersistedClaim ClaimTypeReferenceId="surname" />
-        <PersistedClaim ClaimTypeReferenceId="city" />
-      </PersistedClaims>
+    <!--Edit profile page-->
+    <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
       <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="objectId" />
-        <OutputClaim ClaimTypeReferenceId="newUser" PartnerClaimType="newClaimsPrincipalCreated" />
-        <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="localAccountAuthentication" />
-        <OutputClaim ClaimTypeReferenceId="userPrincipalName" />
-        <OutputClaim ClaimTypeReferenceId="signInNames.emailAddress" />
-      </OutputClaims>
-      <IncludeTechnicalProfile ReferenceId="AAD-Common" />
-      <UseTechnicalProfileForSessionManagement ReferenceId="SM-AAD" />
-    </TechnicalProfile>
-    ```
-
-3. ユーザーがサインインするときにディレクトリから読み取られる技術プロファイルに、`<OutputClaim ClaimTypeReferenceId="city" />` 要求を追加します。
-
-    ```xml
-    <TechnicalProfile Id="AAD-UserReadUsingEmailAddress">
-      <Metadata>
-        <Item Key="Operation">Read</Item>
-        <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
-        <Item Key="UserMessageIfClaimsPrincipalDoesNotExist">An account could not be found for the provided user ID.</Item>
-      </Metadata>
-      <IncludeInSso>false</IncludeInSso>
-      <InputClaims>
-        <InputClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames" Required="true" />
-      </InputClaims>
-      <OutputClaims>
-        <!-- Required claims -->
-        <OutputClaim ClaimTypeReferenceId="objectId" />
-        <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="localAccountAuthentication" />
-        <!-- Optional claims -->
-        <OutputClaim ClaimTypeReferenceId="userPrincipalName" />
-        <OutputClaim ClaimTypeReferenceId="displayName" />
-        <OutputClaim ClaimTypeReferenceId="otherMails" />
-        <OutputClaim ClaimTypeReferenceId="signInNames.emailAddress" />
-        <OutputClaim ClaimTypeReferenceId="city" />
-      </OutputClaims>
-      <IncludeTechnicalProfile ReferenceId="AAD-Common" />
-    </TechnicalProfile>
-    ```
-
-    ```xml
-    <TechnicalProfile Id="AAD-UserReadUsingObjectId">
-      <Metadata>
-        <Item Key="Operation">Read</Item>
-        <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
-      </Metadata>
-      <IncludeInSso>false</IncludeInSso>
-      <InputClaims>
-        <InputClaim ClaimTypeReferenceId="objectId" Required="true" />
-      </InputClaims>
-      <OutputClaims>
-        <!-- Optional claims -->
-        <OutputClaim ClaimTypeReferenceId="signInNames.emailAddress" />
-        <OutputClaim ClaimTypeReferenceId="displayName" />
-        <OutputClaim ClaimTypeReferenceId="otherMails" />
+        <OutputClaim ClaimTypeReferenceId="displayName"/>
         <OutputClaim ClaimTypeReferenceId="givenName" />
+        <OutputClaim ClaimTypeReferenceId="surname" />
+        <OutputClaim ClaimTypeReferenceId="city"/>
+      </OutputClaims>
+    </TechnicalProfile>
+  </TechnicalProfiles>
+</ClaimsProvider>
+```
+
+## <a name="read-and-write-a-claim"></a>要求の読み取りと書き込み
+
+次の技術プロファイルは、Azure Active Directory へのデータの読み取りと書き込みを行う [Active Directory 技術プロファイル](active-directory-technical-profile.md)です。  
+該当する Active Directory 技術プロファイル内のユーザー プロファイルにデータを書き込むには `PersistedClaims` を使用し、ユーザー プロファイルからデータを読み取るには `OutputClaims` を使用します。
+
+拡張ファイル内のこれらの技術プロファイルをオーバーライドします。 **ClaimsProviders** 要素を見つけます。  新しい ClaimsProvider を次のように追加します。
+
+```xml
+<ClaimsProvider>
+  <DisplayName>Azure Active Directory</DisplayName>
+  <TechnicalProfiles>
+    <!-- Write data during a local account sign-up flow. -->
+    <TechnicalProfile Id="AAD-UserWriteUsingLogonEmail">
+      <PersistedClaims>
+        <PersistedClaim ClaimTypeReferenceId="city"/>
+      </PersistedClaims>
+    </TechnicalProfile>
+    <!-- Write data during a federated account first-time sign-in flow. -->
+    <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
+      <PersistedClaims>
+        <PersistedClaim ClaimTypeReferenceId="city"/>
+      </PersistedClaims>
+    </TechnicalProfile>
+    <!-- Write data during edit profile flow. -->
+    <TechnicalProfile Id="AAD-UserWriteProfileUsingObjectId">
+      <PersistedClaims>
+        <PersistedClaim ClaimTypeReferenceId="city"/>
+      </PersistedClaims>
+    </TechnicalProfile>
+    <!-- Read data after user authenticates with a local account. -->
+    <TechnicalProfile Id="AAD-UserReadUsingEmailAddress">
+      <OutputClaims>  
         <OutputClaim ClaimTypeReferenceId="city" />
       </OutputClaims>
-      <IncludeTechnicalProfile ReferenceId="AAD-Common" />
     </TechnicalProfile>
-    ```
+    <!-- Read data after user authenticates with a federated account. -->
+    <TechnicalProfile Id="AAD-UserReadUsingObjectId">
+      <OutputClaims>  
+        <OutputClaim ClaimTypeReferenceId="city" />
+      </OutputClaims>
+    </TechnicalProfile>
+  </TechnicalProfiles>
+</ClaimsProvider>
+```
 
-4. ユーザー体験が成功した後、要求がトークンに含められてアプリケーションに送信されるように、`<OutputClaim ClaimTypeReferenceId="city" />` 要求を SignUporSignIn.xml ファイルに追加します。
+## <a name="include-a-claim-in-the-token"></a>トークンに要求を含める 
 
-    ```xml
-    <RelyingParty>
-      <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
-      <TechnicalProfile Id="PolicyProfile">
-        <DisplayName>PolicyProfile</DisplayName>
-        <Protocol Name="OpenIdConnect" />
-        <OutputClaims>
-          <OutputClaim ClaimTypeReferenceId="displayName" />
-          <OutputClaim ClaimTypeReferenceId="givenName" />
-          <OutputClaim ClaimTypeReferenceId="surname" />
-          <OutputClaim ClaimTypeReferenceId="email" />
-          <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
-          <OutputClaim ClaimTypeReferenceId="identityProvider" />
-          <OutputClaim ClaimTypeReferenceId="city" />
-        </OutputClaims>
-        <SubjectNamingInfo ClaimType="sub" />
-      </TechnicalProfile>
-    </RelyingParty>
-    ```
+city 要求を証明書利用者アプリケーションに返すには、出力要求を <em>`SocialAndLocalAccounts/` **`SignUpOrSignIn.xml`** </em> ファイルに追加します。 ユーザー体験が成功した後、出力要求がトークンに追加され、アプリケーションに送信されます。 証明書利用者セクション内の技術プロファイル要素を変更して、city を出力要求として追加します。
+ 
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="OpenIdConnect" />
+    <OutputClaims>
+      <OutputClaim ClaimTypeReferenceId="displayName" />
+      <OutputClaim ClaimTypeReferenceId="givenName" />
+      <OutputClaim ClaimTypeReferenceId="surname" />
+      <OutputClaim ClaimTypeReferenceId="email" />
+      <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+      <OutputClaim ClaimTypeReferenceId="identityProvider" />
+      <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+      <OutputClaim ClaimTypeReferenceId="city" DefaultValue="" />
+    </OutputClaims>
+    <SubjectNamingInfo ClaimType="sub" />
+  </TechnicalProfile>
+</RelyingParty>
+```
 
 ## <a name="test-the-custom-policy"></a>カスタム ポリシーをテストする
 
@@ -269,7 +202,7 @@ ms.locfileid: "78267949"
 2. アップロードしたサインアップまたはサインイン ポリシーを選択し、 **[今すぐ実行]** ボタンをクリックします。
 3. メール アドレスを使用してサインアップできることを確認します。
 
-サインアップ画面は、次のようになります。
+サインアップ画面は次のスクリーンショットのようになります。
 
 ![変更されたサインアップ オプションのスクリーンショット](./media/custom-policy-configure-user-input/signup-with-city-claim-dropdown-example.png)
 
@@ -277,34 +210,29 @@ ms.locfileid: "78267949"
 
 ```json
 {
-  "exp": 1493596822,
-  "nbf": 1493593222,
+  "typ": "JWT",
+  "alg": "RS256",
+  "kid": "X5eXk4xyojNFum1kl2Ytv8dlNP4-c57dO6QGTVBwaNk"
+}.{
+  "exp": 1583500140,
+  "nbf": 1583496540,
   "ver": "1.0",
   "iss": "https://contoso.b2clogin.com/f06c2fe8-709f-4030-85dc-38a4bfd9e82d/v2.0/",
-  "sub": "9c2a3a9e-ac65-4e46-a12d-9557b63033a9",
-  "aud": "4e87c1dd-e5f5-4ac8-8368-bc6a98751b8b",
-  "acr": "b2c_1a_trustf_signup_signin",
+  "aud": "e1d2612f-c2bc-4599-8e7b-d874eaca1ee1",
+  "acr": "b2c_1a_signup_signin",
   "nonce": "defaultNonce",
-  "iat": 1493593222,
-  "auth_time": 1493593222,
+  "iat": 1583496540,
+  "auth_time": 1583496540,
+  "name": "Emily Smith",
   "email": "joe@outlook.com",
-  "given_name": "Joe",
-  "family_name": "Ras",
-  "city": "Bellevue",
-  "name": "unknown"
+  "given_name": "Emily",
+  "family_name": "Smith",
+  "city": "Bellevue"
+  ...
 }
-```
-
-## <a name="optional-remove-email-verification"></a>省略可能:メールの確認を削除する
-
-電子メールによる確認を省略するために、`PartnerClaimType="Verified.Email"` を削除することができます。 その場合、"Required" = true が削除されていない限り、メール アドレスは必須ですが、確認はされません。  自分のユース ケースでこのオプションが適切かどうかを慎重に検討してください。
-
-TrustFrameworkBase ポリシー ファイルの `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` で、電子メールの確認は既定で有効になっています。
-
-```xml
-<OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
 ```
 
 ## <a name="next-steps"></a>次のステップ
 
-[カスタム プロファイル編集ポリシーでカスタム属性を使用する](custom-policy-custom-attributes.md)方法について確認する。
+- IEF リファレンスで [ClaimsSchema](claimsschema.md) 要素についてさらに詳しく学習する。
+- [カスタム プロファイル編集ポリシーでカスタム属性を使用する](custom-policy-custom-attributes.md)方法について確認する。
