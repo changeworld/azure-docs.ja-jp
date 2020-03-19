@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: clauren42
 ms.author: clauren
 ms.reviewer: jmartens
-ms.date: 10/25/2019
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1645d2848c6d4b852a81042c4db8a0f6e90fd8fd
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: fab46f7d7ae74ad643ce3f122b27b0dc767f5a78
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945812"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399683"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Azure Machine Learning の Azure Kubernetes Service および Azure Container Instances デプロイのトラブルシューティング
 
@@ -169,7 +169,7 @@ service.update([different_model], inference_config, deployment_config)
 
 サービスを削除するには、[delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#delete--) を使用します。
 
-### <a id="dockerlog"></a> Docker ログの確認
+### <a name="inspect-the-docker-log"></a><a id="dockerlog"></a> Docker ログの確認
 
 サービス オブジェクトから詳細な Docker エンジン ログ メッセージを出力できます。 ACI、AKS、およびローカル デプロイのログを表示できます。 次の例は、ログを出力する方法を示しています。
 
@@ -221,6 +221,10 @@ def run(input_data):
 
 **注**:`run(input_data)` 呼び出しからエラー メッセージを返すことは、デバッグ目的のみで行ってください。 セキュリティ上の理由から、運用環境ではこの方法でエラー メッセージを返さないでください。
 
+## <a name="http-status-code-502"></a>HTTP 状態コード 502
+
+502 状態コードは、サービスが例外をスローしたか、score.py ファイルの `run()` メソッドでクラッシュしたことを示します。 この記事の情報を使用して、ファイルをデバッグします。
+
 ## <a name="http-status-code-503"></a>HTTP 状態コード 503
 
 Azure Kubernetes Service のデプロイでは、自動スケールがサポートされているため、レプリカを加えて、追加の負荷に対応することができます。 しかし、自動スケールは、**段階的な**負荷の変化に対処するように設計されています。 1 秒あたりに受信する要求の量が急増した場合、クライアントは HTTP 状態コード 503 を受信する可能性があります。
@@ -261,6 +265,12 @@ Azure Kubernetes Service のデプロイでは、自動スケールがサポー�
     > 受信する要求の量が、新しい最小レプリカ数で対処できるレベルを超えて急増した場合、再び 503 が発生する可能性があります。 たとえば、ご利用のサービスへのトラフィックが増えた場合、レプリカの最小個数を増やすことが必要な場合があります。
 
 `autoscale_target_utilization`、`autoscale_max_replicas`、`autoscale_min_replicas` の設定方法の詳細については、[AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) モジュール リファレンスを参照してください。
+
+## <a name="http-status-code-504"></a>HTTP 状態コード 504
+
+504 状態コードは、要求がタイムアウトしたことを示します。既定のタイムアウトは 1 分です。
+
+タイムアウト値を増やすか、score.py を変更して不要な呼び出しを削除することで、サービスの高速化を試みることができます。 これらのアクションで問題が解決しない場合は、この記事の情報を使用して score.py ファイルをデバッグします。 コードがハング状態または無限ループになっている可能性があります。
 
 ## <a name="advanced-debugging"></a>高度なデバッグ
 

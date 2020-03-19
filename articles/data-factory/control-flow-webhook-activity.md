@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 70c67a99274eaedc5592c7b90b1ef80a3a17acf8
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 8c52bb21276071581a83fb3ee6a3a4a31ba0bb4a
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110007"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78400005"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Azure Data Factory の Webhook アクティビティ
 Webhook アクティビティを使用すると、カスタム コードでパイプラインの実行を制御できます。 Webhook アクティビティを使用すると、顧客は、エンドポイントを呼び出し、コールバック URL を渡ことができます。 パイプラインの実行は、コールバックが呼び出されるのを待ってから、次のアクティビティに進みます。
@@ -53,7 +53,7 @@ Webhook アクティビティを使用すると、カスタム コードでパ�
 
 
 
-プロパティ | 説明 | 使用できる値 | Required
+プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
 name | Webhook アクティビティの名前 | String | はい |
 type | **WebHook** に設定する必要があります。 | String | はい |
@@ -116,6 +116,10 @@ PFX ファイルの Base64 でエンコードされたコンテンツとパス�
 Azure Data Factory では、本文中にある追加のプロパティ "callBackUri" を url エンドポイントに渡されます。また、この uri が指定されたタイムアウト値の前に呼び出されることが期待されます。 この uri が呼び出されない場合、アクティビティは状態 'TimedOut' で失敗します。
 
 Webhook アクティビティ自体が失敗するのは、カスタム エンドポイントへの呼び出しが失敗した場合です。 すべてのエラー メッセージをコールバックの本文に追加して、後続のアクティビティで使用することができます。
+
+さらに、REST API の呼び出しごとに、エンドポイントが 1 分以内に応答しなかった場合、クライアントはタイムアウトになります。これが標準の HTTP ベスト プラクティスです。 この問題を解決するには、202 パターンを実装する必要があります。この場合、エンドポイントは 202 (Accepted) を返し、クライアントはポーリングを行います。
+
+要求時の 1 分間のタイムアウトは、アクティビティ タイムアウトとは関係ありません。 これは callbackUri を待機するために使用されます。
 
 コールバック URI に戻される本文は、有効な JSON である必要があります。 Content-Type ヘッダーを `application/json` に設定する必要があります。
 

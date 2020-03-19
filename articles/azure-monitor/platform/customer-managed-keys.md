@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 02/24/2020
-ms.openlocfilehash: b3e110766b2e131330f3108b7938e9e5e01e48a4
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: d14b4a3f4c3fdddac64596760fdbbfefce49036a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78208561"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364396"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Monitor のカスタマー マネージド キーの構成 
 
@@ -158,7 +158,7 @@ Content-type: application/json
 この ID は、作成時に "*クラスター*" リソースに割り当てられます。
 "clusterType" の値は、Application Insights CMK の "ApplicationInsights" です。
 
-**応答**
+**Response**
 
 202 受理されました。 これは、非同期操作に対する標準の Resource Manager 応答です。
 
@@ -178,7 +178,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 Authorization: Bearer <token>
 ```
 
-**応答**
+**Response**
 ```json
 {
   "identity": {
@@ -250,7 +250,7 @@ Content-type: application/json
 ```
 "KeyVaultProperties" には Key Vault キー識別子の詳細が含まれています。
 
-**応答**
+**Response**
 
 ```json
 {
@@ -283,6 +283,11 @@ Content-type: application/json
 
 Application Insights CMK の構成の場合、この手順については付録の内容に従ってください。
 
+この操作を実行するには、ワークスペースと "*クラスター*" リソースの両方において、以下のアクションが含まれる "書き込み" アクセス許可を保持している必要があります。
+
+- ワークスペースの場合:Microsoft.OperationalInsights/workspaces/write
+- "*クラスター*" リソースの場合:Microsoft.OperationalInsights/clusters/write
+
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2019-08-01-preview 
 Authorization: Bearer <token>
@@ -290,18 +295,17 @@ Content-type: application/json
 
 {
   "properties": {
-    "WriteAccessResourceId": "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
+    "WriteAccessResourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
     }
 }
 ```
-*clusterDefinitionId* は、前の手順の応答で指定された *clusterId* 値です。
 
-**応答**
+**Response**
 
 ```json
 {
   "properties": {
-    "WriteAccessResourceId": "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
+    "WriteAccessResourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
     },
   "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.operationalinsights/workspaces/workspace-name/linkedservices/cluster",
   "name": "workspace-name/cluster",
@@ -318,7 +322,7 @@ Content-type: application/json
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview
 ```
 
-**応答**
+**Response**
 
 ```json
 {
@@ -409,7 +413,7 @@ Key Vault でキーを更新し、*クラスター* リソース* の新しい*�
   Authorization: Bearer <token>
   ```
     
-  **応答**
+  **Response**
   
   ```json
   {
@@ -446,7 +450,7 @@ Key Vault でキーを更新し、*クラスター* リソース* の新しい*�
   Authorization: Bearer <token>
   ```
     
-  **応答**
+  **Response**
     
   'リソース グループの*クラスター* リソース' について、ただしサブスクリプション スコープ内のリソースと同じ応答です。
     
@@ -458,7 +462,7 @@ Key Vault でキーを更新し、*クラスター* リソース* の新しい*�
   Authorization: Bearer <token>
   ```
 
-  **応答**
+  **Response**
 
   200 OK
 
@@ -478,7 +482,6 @@ Log Analytics と Application Insights は、同じデータストア プラッ�
 Application Insights CMK の構成は、次の手順を除き、制約とトラブルシューティングを含み、この記事で説明されているプロセスと同じです。
 
 - *クラスター* リソースを作成する
-
 - コンポーネントを*クラスター* リソースに関連付ける
 
 CMK を Application Insights 用に構成する場合は、上記の手順ではなく、次の手順を使用します。
@@ -505,7 +508,7 @@ Content-type: application/json
 }
 ```
 
-**応答**
+**Response**
 
 ID は、作成時に*クラスター* リソースに割り当てられます。
 
@@ -535,6 +538,11 @@ ID は、作成時に*クラスター* リソースに割り当てられます�
 
 ### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>[コンポーネント - 作成または更新](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate) API を使用してコンポーネントを*クラスター* リソースに関連付ける
 
+この操作を実行するには、コンポーネントと "*クラスター*" リソースの両方において、以下のアクションが含まれる "書き込み" アクセス許可を保持している必要があります。
+
+- コンポーネントの場合:Microsoft.Insights/component/write
+- "*クラスター*" リソースの場合:Microsoft.OperationalInsights/clusters/write
+
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Insights/components/<component-name>?api-version=2015-05-01
 Authorization: Bearer <token>
@@ -551,7 +559,7 @@ Content-type: application/json
 "clusterDefinitionId" は、前の手順からの応答で指定された "clusterId" 値です。
 "kind" の例は "web" です。
 
-**応答**
+**Response**
 
 ```json
 {

@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: b891c8a7bbb33e3a3f18adbbc723d4bc9aa99a3a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 6a967f328a4fbe17f2c451d35f413bd7fdcbc24a
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246460"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331470"
 ---
 # <a name="my-first-graphical-runbook"></a>初めてのグラフィカルな Runbook
 
@@ -22,7 +22,7 @@ ms.locfileid: "78246460"
 > * [Python](automation-first-runbook-textual-python2.md)
 > 
 
-このチュートリアルでは、Azure Automation で [グラフィカルな Runbook](automation-runbook-types.md#graphical-runbooks) を作成する手順を説明します。 最初に、簡単な Runbook を作成、テスト、発行しながら、Runbook ジョブの状態を追跡する方法を学習します。 その後、実際に Azure リソースを管理するように Runbook を変更し、ここでは Azure 仮想マシンを開始します。 チュートリアルの最後で、Runbook のパラメーターおよび条件付きリンクを追加することによって、Runbook をいっそう堅牢にします。
+このチュートリアルでは、Azure Automation で [グラフィカルな Runbook](automation-runbook-types.md#graphical-runbooks) を作成する手順を説明します。 Runbook ジョブの状態を追跡する方法を学習しながら、テストして発行できる簡単な Runbook から開始します。 その後、実際に Azure リソースを管理するように Runbook を変更し、ここでは Azure 仮想マシンを開始します。 チュートリアルの最後で、Runbook のパラメーターおよび条件付きリンクを追加することによって、Runbook をいっそう堅牢にします。
 
 >[!NOTE]
 >この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
@@ -37,7 +37,7 @@ ms.locfileid: "78246460"
 
 ## <a name="step-1---create-runbook"></a>手順 1 - Runbook を作成する
 
-最初に、"Hello World" というテキストを出力する簡単な Runbook を作成します。
+最初に、"**Hello World**" というテキストを出力する簡単な Runbook を作成します。
 
 1. Azure ポータルで、Automation アカウントを開きます。 
 
@@ -76,9 +76,9 @@ Runbook を発行して運用環境で使用できるようにする前に、テ
 1. **[開始]** をクリックしてテストを開始します。 有効なオプションはこれだけです。
 1. [Runbook ジョブ](automation-runbook-execution.md)が作成され、その状態がペインに表示されることに注意してください。
 
-   ジョブの最初の状態は **[キュー済み]** であり、クラウドで runbook worker が使用可能になるのをジョブが待機していることを示しています。 worker がジョブを要求すると、状態は **[開始中]** になります。 最後に、Runbook の実行が実際に開始されると、状態は **[実行中]** になります。
+   ジョブの最初の状態は **[キュー済み]** であり、クラウドで runbook worker が使用可能になるのをジョブが待機していることを示しています。 worker がジョブを要求すると、状態は **[開始中]** になります。 最後に、Runbook の実行が実際に開始されると、状態は **実行中** になります。
 
-1. Runbook ジョブが完了すると、[テスト] ページにその出力が表示されます。 この場合は、"**Hello World**" です。<br> ![Hello World](media/automation-first-runbook-graphical/runbook-test-results.png)
+1. Runbook ジョブが完了すると、[テスト] ウィンドウにその出力が表示されます。 この場合は、"**Hello World**" です。<br> ![Hello World](media/automation-first-runbook-graphical/runbook-test-results.png)
 1. テスト ウィンドウを閉じてキャンバスに戻ります。
 
 ## <a name="step-4---publish-and-start-the-runbook"></a>手順 4 - Runbook を発行して開始する

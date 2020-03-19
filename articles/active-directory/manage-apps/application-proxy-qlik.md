@@ -14,12 +14,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45bf71274d8eb1039254cafe48a34587199be724
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 2edf63da0fd09f829f936b54eb088c34dfe029a1
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263508"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79036992"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>アプリケーション プロキシと Qlik Sense 
 Azure Active Directory アプリケーション プロキシと Qlik Sense は一緒に連携動作し、アプリケーション プロキシを使用して Qlik Sense 配置用のリモート アクセスを容易に提供できるようにします。  
@@ -52,8 +52,8 @@ QlikSense を発行するには、Azure で 2 つのアプリケーションを�
 ### <a name="application-2"></a>アプリケーション 2: 
 次の例外を除き、アプリケーション 1 の場合と同じ手順に従います。 
 
-**手順 5**:内部 URL は、アプリケーションによって使用される認証ポートを持つ QlikSense URL になっているはずです。 2018 年 4 月以前の QlikSense リリースの既定値は、HTTPS の場合は **4244**、HTTP の場合は **4248** です。 2018 年 4 月以降の QlikSense リリースの既定値は、HTTPS の場合は **443**、HTTP の場合は **80** です。  例 **https&#58;//demo.qlik.com:4244**</br></br> 
-**ステップ 10:** SSO を設定しないしのままに、**シングル サインオンが無効になっています**
+**手順 5**:内部 URL は、アプリケーションによって使用される認証ポートを持つ QlikSense URL になっているはずです。 2018 年 4 月以前の QlikSense リリースの既定値は、HTTPS の場合は **4244**、HTTP の場合は **4248** です。 2018 年 4 月以降の QlikSense リリースの既定値は、HTTPS の場合は **443**、HTTP の場合は **80** です。  例 **https&#58;//demo.qlik.com:4244**</br></br>
+**手順 10:** SSO を設定しないしのままに、** シングル サインオンが無効になっています**
  
  
 ## <a name="testing"></a>テスト 
