@@ -12,7 +12,7 @@ ms.locfileid: "78941047"
 ---
 # <a name="set-up-dependency-visualization"></a>依存関係の視覚化を設定する
 
-この記事では、Azure Migrate Server Assessment で依存関係の視覚化を設定する方法について説明します。Server Assessment を使用して作成する方法について説明します。 [依存関係の視覚化](concepts-dependency-visualization.md#what-is-dependency-visualization)は、評価や Azure への移行を行うマシン間の依存関係を特定し、理解するために役立ちます。
+この記事では、Azure Migrate: Server Assessment で依存関係の視覚化を設定する方法について説明します。 [依存関係の視覚化](concepts-dependency-visualization.md#what-is-dependency-visualization)は、評価や Azure への移行を行うマシン間の依存関係を特定し、理解するために役立ちます。
 
 ## <a name="before-you-start"></a>開始する前に
 
