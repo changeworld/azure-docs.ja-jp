@@ -1,22 +1,14 @@
 ---
 title: ナレッジ ベースをテストする方法 - QnA Maker
-titleSuffix: Azure Cognitive Services
 description: QnA Maker のナレッジ ベースをテストすることは、回答の正確性を高めるという反復的なプロセスの重要な要素です。 ナレッジ ベースのテストは、編集機能も備えた強化された会話インターフェイスを通じて行うことができます。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: c139d3a740067e3cecaff90d3171d7b0cb3d52c7
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.date: 03/05/2020
+ms.openlocfilehash: da4988ced0b077952ce64e6227d16e58d40ae329
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091748"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927271"
 ---
 # <a name="test-your-knowledge-base-in-qna-maker"></a>QnA Maker のナレッジ ベースをテストする
 
@@ -45,7 +37,7 @@ QnA Maker のナレッジ ベースをテストすることは、回答の正確
 
     ![回答の検査](../media/qnamaker-how-to-test-kb/inspect.png)
 
-2.  [検査] パネルが表示されます。 このパネルには、最もスコアの高い意図のほか、識別されたエンティティが含まれています。 このパネルには、選択された発話の結果が表示されます。
+2.  [検査] パネルが表示されます。 このパネルには、最もスコアの高い意図のほか、特定されたエンティティが含まれています。 パネルには、選択された発話の結果が表示されます。
 
 ### <a name="correct-the-top-scoring-answer"></a>上位スコアの回答を修正する
 
@@ -61,11 +53,11 @@ QnA Maker のナレッジ ベースをテストすることは、回答の正確
 
 ### <a name="add-a-new-answer"></a>新しい回答の追加
 
-一致した既存の回答に誤りがあった場合や、ナレッジ ベースに回答が存在しない (適切な一致が KB に見つからない) 場合は、新しい回答を追加することができます。 
+一致した既存の回答に誤りがあった場合や、ナレッジ ベースに回答が存在しない (適切な一致が KB に見つからない) 場合は、新しい回答を追加することができます。
 
-回答一覧の一番下で、テキスト ボックスに新しい回答を入力し、Enter を押すと追加できます。 
+回答一覧の一番下で、テキスト ボックスに新しい回答を入力し、Enter を押すと追加できます。
 
-その回答を保持するには、 **[Save and Train]\(保存してトレーニング\)** を選択してください。 これでナレッジ ベースには、質問とその回答のペアが新たに追加されたことになります。 
+その回答を保持するには、 **[Save and Train]\(保存してトレーニング\)** を選択してください。 これでナレッジ ベースには、質問とその回答のペアが新たに追加されたことになります。
 
 > [!NOTE]
 > ナレッジ ベースに対するすべての編集は、 **[Save and Train]\(保存してトレーニング\)** ボタンを押したときにのみ保存されます。
@@ -83,14 +75,16 @@ QnA Maker のナレッジ ベースをテストすることは、回答の正確
 * 一連の質問に対する上位の回答とスコアを判定する
 * 一連の質問に対する予測される回答を検証する
 
-バッチ テストには、バッチ テスト ツールが用意されています。 このツールは、ダウンロード用の [zip ファイル化された実行可能ファイル](https://aka.ms/qnamakerbatchtestingtool)、または [C# ソース コード](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting)として入手できます。 
+詳細な手順については、バッチ テストの[チュートリアル](../Quickstarts/batch-testing.md)を参照してください。
+
+バッチ テストには、バッチ テスト ツールが用意されています。 このツールは、ダウンロード用の [zip ファイル化された実行可能ファイル](https://aka.ms/qnamakerbatchtestingtool)、または [C# ソース コード](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting)として入手できます。
 
 [このツールに関するリファレンス ドキュメント](../reference-tsv-format-batch-testing.md)には、次のものがあります。
 
 * ツールのコマンド ラインの例
-* TSV 入力および出力ファイルの形式 
+* TSV 入力および出力ファイルの形式
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [ナレッジ ベースの公開](./publish-knowledge-base.md)

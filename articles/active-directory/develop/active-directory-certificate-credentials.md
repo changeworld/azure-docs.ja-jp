@@ -14,12 +14,12 @@ ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7b42676fa387914bc4825e2850b3d2f032827a79
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 26030c12d98d796ceb1f66f198aede6e40eebd94
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962120"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399027"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft ID プラットフォーム アプリケーションの認証証明書資格情報
 
@@ -55,7 +55,7 @@ Microsoft ID プラットフォームでは、アサーションを計算する�
 
 ## <a name="example-of-a-decoded-jwt-assertion"></a>デコードされた JWT アサーションの例
 
-```
+```JSON
 {
   "alg": "RS256",
   "typ": "JWT",
@@ -67,12 +67,11 @@ Microsoft ID プラットフォームでは、アサーションを計算する�
   "exp": 1484593341,
   "iss": "97e0a5b7-d745-40b6-94fe-5f77d35c6e05",
   "jti": "22b3bb26-e046-42df-9c96-65dbd72c1c81",
-  "nbf": 1484592741,  
+  "nbf": 1484592741,
   "sub": "97e0a5b7-d745-40b6-94fe-5f77d35c6e05"
 }
 .
 "Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
-
 ```
 
 ## <a name="example-of-an-encoded-jwt-assertion"></a>エンコードされた JWT アサーションの例
@@ -94,10 +93,10 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ### <a name="uploading-the-certificate-file"></a>証明書ファイルのアップロード
 
 クライアント アプリケーションの Azure アプリ登録で、以下を実行します。
-1. **[証明書とシークレット]** を選択します。 
+1. **[証明書とシークレット]** を選択します。
 2. **[証明書のアップロード]** をクリックし、アップロードする証明書ファイルを選択します。
 3. **[追加]** をクリックします。
-  証明書がアップロードされると、サムプリント、開始日、有効期限の値が表示されます。 
+  証明書がアップロードされると、サムプリント、開始日、有効期限の値が表示されます。
 
 ### <a name="updating-the-application-manifest"></a>アプリケーション マニフェストの更新
 
@@ -112,7 +111,7 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 1. **[マニフェスト]** を選択して、アプリケーション マニフェストを開きます。
 2. 次のスキーマを使用して、*keyCredentials* プロパティを新しい証明書情報に置き換えます。
 
-   ```
+   ```JSON
    "keyCredentials": [
        {
            "customKeyIdentifier": "$base64Thumbprint",
@@ -123,13 +122,13 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
        }
    ]
    ```
-3. 編集内容をアプリケーション マニフェストに保存した後、そのマニフェストを Microsoft ID プラットフォームにアップロードします。 
+3. 編集内容をアプリケーション マニフェストに保存した後、そのマニフェストを Microsoft ID プラットフォームにアップロードします。
 
    `keyCredentials` プロパティは複数値であるため、複数の証明書をアップロードして、高度なキー管理を行うこともできます。
-   
+
 ## <a name="code-sample"></a>コード サンプル
 
 > [!NOTE]
-> X5T ヘッダーを計算するには、証明書のハッシュを使用してベース 64 文字列に変換する必要があります。 これを C# で実行する場合のコードは `System.Convert.ToBase64String(cert.GetCertHash());` です
+> X5T ヘッダーを計算するには、証明書のハッシュを使用してベース 64 文字列に変換する必要があります。 これを C# で実行する場合のコードは、`System.Convert.ToBase64String(cert.GetCertHash());` です。
 
-[証明書を使用したデーモン アプリでの Microsoft ID プラットフォームの認証](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)に関する記事のコード サンプルに、アプリケーションが独自の資格情報を認証でどのように使用するかが示されています。 それは、`New-SelfSignedCertificate` Powershell コマンドを使用した[自己証明書の作成](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate)方法も示しています。 [アプリ作成スクリプト](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md)を利用して、証明書の作成やサムプリントの計算などを実行することもできます。
+「[Microsoft ID プラットフォームを使用した .NET Core デーモン コンソール アプリケーション](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)」のコード サンプルには、独自の資格情報がアプリケーションによって認証に使用される方法が示されています。 それは、`New-SelfSignedCertificate` Powershell コマンドを使用した[自己証明書の作成](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script)方法も示しています。 [アプリ作成スクリプト](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md)を利用して、証明書の作成やサムプリントの計算などを実行することもできます。

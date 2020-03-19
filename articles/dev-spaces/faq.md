@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Azure Dev Spaces についての一般的ないくつかの質問にお答えします
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: 285fdb7892d2da40dd50e025cb1dd7644ec17ae0
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 7439af9c5f936d309df655ca6fa301c39fa3f9ec
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255721"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117806"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Azure Dev Spaces についてよく寄せられる質問
 
@@ -19,6 +19,10 @@ Azure Dev Spaces についてよく寄せられる質問に回答します。
 ## <a name="which-azure-regions-currently-provide-azure-dev-spaces"></a>現在はどの Azure リージョンで Azure Dev Spaces が提供されていますか。
 
 利用可能なリージョンの完全な一覧については、[サポートされているリージョン][supported-regions]を参照してください。
+
+## <a name="can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region"></a>Azure Dev Spaces が含まれる AKS クラスターを別のリージョンに移行できますか。
+
+はい。Azure Dev Spaces が含まれる AKS クラスターを、別の[サポートされているリージョン][supported-regions]に移動する場合は、他のリージョンに新しいクラスターを作成してから、Azure Dev Spaces をインストールして構成し、リソースとアプリケーションを新しいクラスターにデプロイすることをお勧めします。 AKS の移行について詳しくは、「[Azure Kubernetes Service (AKS) に移行する][aks-migration]」をご覧ください。
 
 ## <a name="can-i-use-azure-dev-spaces-with-existing-dockerfiles-or-helm-charts"></a>既存の Dockerfiles または Helm Ｃhart で Azure Dev Spaces を使用できますか。
 
@@ -73,10 +77,17 @@ Azure Dev Spaces についてよく寄せられる質問に回答します。
 
 Visual Studio を使用してプロジェクトを準備する場合は、サービスのイングレスを有効にすることを選択できます。 イングレスを有効にすると、AKS クラスター上で実行されるときにサービスにアクセスするためのパブリック エンドポイントが作成されます。これは、オプションです。 イングレスを有効にしなかった場合は、AKS クラスター内からのみサービスにアクセスできます。
 
+## <a name="can-i-use-pod-managed-identities-with-azure-dev-spaces"></a>Azure Dev Spaces でポッドのマネージド ID を使用できますか。
+
+現在、Azure Dev Spaces では、Azure Dev Spaces が有効になっている AKS クラスターで[ポッドのマネージド ID][aks-pod-managed-id] を使用することはサポートされていません。 ポッドのマネージド ID がインストールされていて、それをアンインストールしたい場合は、[アンインストールに関する注意事項][aks-pod-managed-id-uninstall]のページで詳細を確認できます。
+
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled
 [aks-auth-range-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
 [aks-auth-range-update]: ../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges
+[aks-migration]: ../aks/aks-migration.md
+[aks-pod-managed-id]: ../aks/developer-best-practices-pod-security.md#use-pod-managed-identities
+[aks-pod-managed-id-uninstall]: https://github.com/Azure/aad-pod-identity#uninstall-notes
 [aks-restrict-egress-traffic]: ../aks/limit-egress-traffic.md
 [dev-spaces-prep]: how-dev-spaces-works.md#prepare-your-code
 [dev-spaces-routing]: how-dev-spaces-works.md#how-routing-works

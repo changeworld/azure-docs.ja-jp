@@ -8,13 +8,13 @@ author: Blackmist
 ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 09/18/2019
-ms.openlocfilehash: f46dd2b30ca84a7e6a1b0fc34ef0fa5bafffaef5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 03/05/2020
+ms.openlocfilehash: 68ad9cc47d68f7bc3ae952f7e458781cdc1c4ab2
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721117"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129774"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをトレーニングする
 
@@ -28,6 +28,8 @@ Azure Machine Learning には、SDK を使用したコード ファースト ソ
     | [自動機械学習](#automated-machine-learning) | 自動機械学習を使用すると、**データ サイエンスやプログラミングに関する豊富な知識がなくてもモデルをトレーニング**することができます。 データ サイエンスとプログラミングの経験がある人に対しては、アルゴリズムの選択とハイパーパラメーターのチューニングを自動化することによって時間とリソースを節約する手段が提供されます。 自動機械学習を使用する場合、実行構成の定義について心配する必要はありません。 |
     | [Estimator](#estimators) | Estimator クラスを使用すると、**広く使われている機械学習フレームワークに基づいてモデルのトレーニングを簡単に行う**ことができます。 **Scikit-learn**、**PyTorch**、**TensorFlow**、**Chainer** 用の Estimator クラスがあります。 また、専用の Estimator クラスがまだないフレームワークで使用できる汎用 Estimator もあります。 Estimator を使用する場合、実行構成の定義について心配する必要はありません。 |
     | [機械学習パイプライン](#machine-learning-pipeline) | パイプラインは別のトレーニング方法ではなく、**モジュール型の再利用可能な手順を使用してワークフローを定義する方法**であり、トレーニングをワークフローの一部として含めることができます。 機械学習パイプラインでは、自動機械学習、Estimator、および実行構成を使用したモデルのトレーニングがサポートされています。 パイプラインはトレーニングに明示的に重点を置いていないため、パイプラインを使用する理由は、他のトレーニング方法と大きく異なります。 一般に、以下の場合にパイプラインを使用できます。<br>* 実行時間の長いトレーニング ジョブやデータ準備など、**無人プロセスをスケジュール設定する**。<br>* 異種コンピューティング リソースとストレージの場所全体で調整された**複数の手順**を使用する。<br>* 再トレーニングやバッチ スコアリングなどの特定のシナリオ向けにパイプラインを**再利用可能なテンプレート**として使用する。<br>* ワークフローの**データソース、入力、出力を追跡してバージョン管理する**。<br>* ワークフローが、**特定の手順で個別に作業するさまざまなチームによって実装される**。 その後、手順をパイプラインに結合して、ワークフローを実装できます。 |
+
++ [Azure Machine Learning SDK for Python](#r-sdk):SDK では、reticulate パッケージを使用して Azure Machine Learning の Python SDK にバインドします。 これにより、R 環境から Python SDK で実装されているコア オブジェクトとメソッドにアクセスできます。
 
 + **デザイナー**: Azure Machine Learning デザイナー (プレビュー) では、概念実証を構築するため、またはコーディングの経験がほとんどないないユーザーのための簡単なエントリポイントが機械学習に提供されます。 これにより、ドラッグ アンド ドロップ Web ベース UI を使用してモデルをトレーニングできます。 Python コードを設計の一部として使用したり、コードを記述せずにモデルをトレーニングしたりすることができます。
 
@@ -67,7 +69,7 @@ Azure Machine Learning の汎用トレーニング ジョブは、[RunConfigurat
 * [例:自動機械学習の場合の Jupyter Notebook の例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)
 * [方法: Python で自動 ML の実験を構成する](how-to-configure-auto-train.md)
 * [方法: 時系列予測モデルを自動トレーニングする](how-to-auto-train-forecast.md)
-* 方法: [Azure Machine Learning Studio](how-to-create-portal-experiments.md) で自動化された機械学習の実験を作成、調査、およびデプロイする
+* [方法: Azure Machine Learning Studio で自動機械学習の実験を作成、調査、およびデプロイする](how-to-use-automated-ml-for-ml-models.md)
 
 ### <a name="estimators"></a>Estimator
 
@@ -88,6 +90,15 @@ Estimator を使用すると、広く使われている ML フレームワーク
 * [例:機械学習パイプラインの場合の Jupyter Notebook の例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 * [例:自動機械学習を使用したパイプライン](https://aka.ms/pl-automl)
 * [例:Estimator を使用したパイプライン](https://aka.ms/pl-estimator)
+
+## <a name="r-sdk"></a>R SDK
+
+R SDK を使用すると、Azure Machine Learning で R 言語を使用できます。 SDK では、reticulate パッケージを使用して Azure Machine Learning の Python SDK にバインドします。 これにより、R 環境から Python SDK で実装されているコア オブジェクトとメソッドにアクセスできます。
+
+詳細については、次の記事を参照してください。
+
+* [チュートリアル:ロジスティック回帰モデルを作成する](tutorial-1st-r-experiment.md)
+* [Azure Machine Learning SDK for R リファレンス](https://azure.github.io/azureml-sdk-for-r/index.html)
 
 ## <a name="azure-machine-learning-designer"></a>Azure Machine Learning デザイナー
 

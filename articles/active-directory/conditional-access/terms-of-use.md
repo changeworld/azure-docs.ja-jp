@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d92c3e51aae70c66dcf9b7ca6dfd631650ace574
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 1dbd1d96cda88d500e16fff885dae03ebfa230f0
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561750"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079903"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory Terms of Use
 
@@ -277,7 +277,11 @@ Azure AD 監査ログを使い始める手順は次のとおりです。
 
 Chrome を使用している場合、[Windows 10 アカウント拡張機能](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)のインストールを求められます。
 
-### <a name="join-an-android-device"></a>Android デバイスに参加する
+### <a name="register-an-ios-device"></a>iOS デバイスを登録する
+
+ユーザーが iOS デバイスを使用している場合、[Microsoft Authenticator アプリ](https://apps.apple.com/us/app/microsoft-authenticator/id983156458)をインストールするように求められます。
+
+### <a name="register-an-android-device"></a>Android デバイスを登録する
 
 ユーザーが Android デバイスを使用している場合、[Microsoft Authenticator アプリ](https://play.google.com/store/apps/details?id=com.azure.authenticator)をインストールするように求められます。
 

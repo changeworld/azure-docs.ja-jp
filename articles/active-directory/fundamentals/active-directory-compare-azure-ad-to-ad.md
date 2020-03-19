@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 02/26/2020
 ms.author: martinco
-ms.openlocfilehash: e9b81551a52566be0df35f3b6aedfe5812f2b3b2
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 5075ae57df6a7306f0c860690931c846e52c2a89
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226745"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78926901"
 ---
 # <a name="compare-active-directory-to-azure-active-directory"></a>Active Directory と Azure Active Directory の比較
 
@@ -32,7 +32,7 @@ Azure AD では、クラウドとオンプレミス全体のすべてのアプ�
 |プロビジョニング: ユーザー | 組織では、手動で内部ユーザーを作成するか、Microsoft Identity Manager などの社内または自動のプロビジョニング システムを使用して、HR システムと統合します。|既存の AD 組織では [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis) を使用して、ID をクラウドに同期します。</br> Azure AD では、[クラウド HR システム](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-tutorial)からユーザーを自動的に作成するためのサポートを追加します。 </br>Azure AD では、[SCIM が有効化された](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups) SaaS アプリ内で ID をプロビジョニングして、ユーザーにアクセスを許可するために必要な詳細情報を自動的にアプリに提供します。 |
 |プロビジョニング: 外部 ID| 組織では、専用の外部 AD フォレスト内に外部ユーザーを通常のユーザーとして手動で作成します。これにより、外部 ID (ゲスト ユーザー) のライフサイクルを管理するための管理オーバーヘッドが生じます。| Azure AD では、外部 ID をサポートするための特殊な ID クラスを提供しています。 [Azure AD B2B](https://docs.microsoft.com/azure/active-directory/b2b/) では、外部ユーザーが確実に有効になるように、彼らの ID へのリンクが管理されます。 |
 | エンタイトルメントの管理とグループ| 管理者は、ユーザーをグループのメンバーにすることができます。 アプリとリソースの所有者は、アプリまたはリソースへのアクセス権をグループに付与します。| また、[グループ](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal)は Azure AD でも使用でき、管理者はグループを使用してリソースへのアクセス許可を付与することも可能です。 Azure AD では、管理者はグループにメンバーシップを手動で割り当てるか、またはクエリを使用してユーザーをグループに動的に含めることができます。 </br> 管理者は Azure AD にある[エンタイトルメント管理](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview)を使用し、ワークフローと (必要な場合は) 時間ベースの条件を使って、アプリとリソースのコレクションへのアクセス権をユーザーに付与できます。 |
-| 管理者の管理|組織では、AD 内のドメイン、組織単位、およびグループの組み合わせを使用して管理者権限を委任し、管理対象のディレクトリとリソースを管理します。| Azure AD では、[組み込みのロール](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)にロールベースのアクセス制御 (RBAC) システムと[カスタム ロールを作成する](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-custom-overview)機能を提供し、ID システムと管理対象のアプリとリソースに対する特権アクセスを委任します。 </br>Just-In-Time、時間制限付き、またはワークフローベースのアクセスを特権ロールに付与するために、ロールの管理は [Privileged Identity Management (PIM)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) を使用して拡張できます。 |
+| 管理者の管理|組織では、AD 内のドメイン、組織単位、およびグループの組み合わせを使用して管理者権限を委任し、管理対象のディレクトリとリソースを管理します。| Azure AD には、ロールベースのアクセス制御 (RBAC) システムを備えた[組み込みのロール](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)が用意されていますが、その制御する ID システム、アプリ、およびリソースへの特権アクセスを委任するための[カスタム ロールの作成](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-custom-overview)のサポートは限定されています。</br>Just-In-Time、時間制限付き、またはワークフローベースのアクセスを特権ロールに付与するために、ロールの管理は [Privileged Identity Management (PIM)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) を使用して拡張できます。 |
 | 資格情報の管理| Active Directory での資格情報は、パスワード、証明書の認証、およびスマートカード認証に基づいています。 パスワードは、パスワードの長さ、有効期限、および複雑さに基づくパスワード ポリシーを使用して、管理されます。|Azure AD では、クラウドとオンプレミスに対してインテリジェントな[パスワード保護](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)を使用します。 保護には、スマート ロックアウトに加えて、共通およびカスタムのパスワード フレーズと代替のブロック機能が含まれます。 </br>Azure AD では、[多要素認証](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)と FIDO2 のような[パスワードレス](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless)の技術を使用して、セキュリティを大幅に向上させています。 </br>Azure AD では、ユーザーに[セルフサービス パスワード リセット](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks)のシステムを提供することで、サポートのコストを削減しています。 |
 | **Apps (アプリ)**|||
 | インフラストラクチャ アプリ|Active Directory では、DNS、DHCP、IPSec、WiFi、NPS、VPN アクセスなど、多くのインフラストラクチャのオンプレミス コンポーネントの基礎を形成します|新しいクラウド環境では、Azure AD は、アプリにアクセスするためと、ネットワーク コントロールに依存するための新しいコントロール プレーンです。 ユーザーが認証を行うときに、[条件付きアクセス (CA)](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)では、必要な条件下でどのユーザーがどのアプリへのアクセス権を持つかを制御します。|

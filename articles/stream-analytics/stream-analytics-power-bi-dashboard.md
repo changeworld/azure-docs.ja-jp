@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: 76f5c1f0cd3186244e9a262358c9c9a652a73fdb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/05/2019
+ms.openlocfilehash: 8466fbcb4325dc244551a3b84fc20581366b7071
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431627"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851154"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics と Power BI:ストリーミング データのリアルタイム分析ダッシュボード
 
@@ -28,7 +28,7 @@ Azure Stream Analytics では、主要なビジネス インテリジェンス �
 始める前に、以下のものを用意してください。
 
 * Azure アカウント。
-* Power BI 用のアカウント。 職場アカウントまたは学校アカウントを使うことができます。
+* Power BI Pro 用のアカウント。 職場アカウントまたは学校アカウントを使うことができます。
 * 「[リアルタイムでの不正検出](stream-analytics-real-time-fraud-detection.md)」チュートリアルの完成バージョン。 このチュートリアルには、架空の通話メタデータを生成するアプリが含まれています。 このチュートリアルでは、Event Hub を作成し、ストリーミング通話データを Event Hub に送信します。 不正な呼び出し (別の場所で同時に同じ番号からの呼び出し) を検出するクエリを記述します。 
 
 

@@ -15,12 +15,12 @@ ms.date: 03/28/2019
 ms.author: mimart
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64f73dd8dbef3f08cd4ea5841e4ec21bac2f55bf
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 70cdb4b42e835a9bfa03f4551ba25088ef8c5226
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276500"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942848"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する
 
@@ -32,7 +32,7 @@ ms.locfileid: "74276500"
 
 この記事では Office 365 のテナント制限に重点を置いていますが、この機能は、Azure AD でのシングル サインオンに先進認証プロトコルを使用するすべての SaaS クラウド アプリで動作します。 Office 365 で使用する Azure AD テナントとは異なる テナントで SaaS アプリを使用する場合は、必要なすべてのテナントが許可されていることを確認してください。 SaaS クラウド アプリの詳細については、[Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/) をご覧ください。
 
-## <a name="how-it-works"></a>動作のしくみ
+## <a name="how-it-works"></a>しくみ
 
 全体的なソリューションは、次のコンポーネントで構成されます。
 
@@ -105,20 +105,23 @@ login.microsoftonline.com、login.microsoft.com、login.windows.net へのすべ
 
 Restricted-Access-Context テナントとして指定されたテナントの管理者は、このレポートを使用して、テナント制限ポリシーのためにブロックされたサインイン (使用された ID やターゲット ディレクトリ ID を含む) を確認できます。 制限を設定するテナントがサインインのユーザー テナントまたはリソース テナントのいずれかである場合は、サインインが含まれます。
 
+> [!NOTE]
+> Restricted-Access-Context テナント以外のテナントに属するユーザーがサインインする場合、ターゲット ディレクトリ ID などの限られた情報がレポートに含まれる可能性があります。 この場合、名前やユーザー プリンシパル名などのユーザー識別情報はマスクされ、他のテナントのユーザー データは保護されます。
+
 Azure Portal の他のレポートと同様に、フィルターを使用してレポートの範囲を指定できます。 特定の時間間隔、ユーザー、アプリケーション、クライアント、または状態についてフィルター処理できます。 **[列]** ボタンを選択すると、次のフィールドの任意の組み合わせでデータを表示することを選択できます。
 
 - **User**
 - **Application**
 - **状態**
-- **日付**
+- **Date**
 - **日付 (UTC)** (UTC は 協定世界時)
 - **MFA 認証方法** (多要素認証方法)
 - **MFA 認証の詳細** (多要素認証の詳細)
 - **MFA の結果**
 - **IP アドレス**
-- **クライアント**
+- **Client**
 - **ユーザー名**
-- **Location**
+- **場所**
 - **ターゲット テナント ID**
 
 ## <a name="office-365-support"></a>Office 365 サポート
@@ -166,7 +169,7 @@ Fiddler は無料の Web デバッグ プロキシです。Fiddler を使用し�
       }
       ```
 
-      複数のテナントを許可する必要がある場合は、テナント名をコンマで区切ります。 例:
+      複数のテナントを許可する必要がある場合は、テナント名をコンマで区切ります。 次に例を示します。
 
       `oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";`
 
@@ -183,7 +186,7 @@ Fiddler を構成したら、 **[File]** メニューに移動し、 **[Capture 
 
 具体的な詳細については、ご使用のプロキシ サーバーのドキュメントを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Office 365 の最新の認証の更新](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)について確認する
 - [Office 365 URL および IP アドレス範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)を確認する

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f1df037b66c72177a96f77231cee70782d04992
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 3fff08690eb2807fbbd50f297761c57d3fef88fe
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620709"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671844"
 ---
 # <a name="custom-controls-preview"></a>カスタム コントロール (プレビュー)
 
@@ -45,7 +45,7 @@ ms.locfileid: "77620709"
 
 カスタム コントロールは、多要素認証を必要とする Identity Protection の自動化に使用できず、 Privileged Identity Manager (PIM) でのロールの昇格に使用できません。
 
-その JSON データをコピーし、それを関連するテキスト ボックスに貼り付けます。 行おうとしている変更を明示的に理解していない限り、JSON を変更しないでください。 少しでも変更すると、プロバイダーと Microsoft の間の接続が中断され、アカウントからロック アウトされる可能性があります。
+その JSON データをコピーし、それを関連するテキスト ボックスに貼り付けます。 自分が行う変更を明示的に理解していない限り、JSON を変更しないでください。 少しでも変更すると、プロバイダーと Microsoft の間の接続が中断され、アカウントからロック アウトされる可能性があります。
 
 カスタム コントロールを作成するオプションは、 **[条件付きアクセス]** ページの **[管理]** セクションにあります。
 
@@ -57,7 +57,7 @@ ms.locfileid: "77620709"
 
 ## <a name="deleting-custom-controls"></a>カスタム コントロールの削除
 
-カスタム コントロールを削除するには、まずそれがどの条件付きアクセス ポリシーでも使用されていないことを確認する必要があります。 完了したら、次のことを行います。
+カスタム コントロールを削除するには、まず、それがどの条件付きアクセス ポリシーでも使用されていないことを確認する必要があります。 完了したら、次のことを行います。
 
 1. [Custom controls] \(カスタム コントロール) 一覧に移動します。
 1. […] をクリックします。  
@@ -67,22 +67,10 @@ ms.locfileid: "77620709"
 
 カスタム コントロールを編集するには、現在のコントロールを削除し、更新された情報で新しいコントロールを作成する必要があります。
 
-## <a name="session-controls"></a>セッション コントロール
-
-セッション コントロールでは、クラウド アプリ内のエクスペリエンスを制限できます。 セッション コントロールは、クラウド アプリによって適用され、Azure AD がアプリに提供するセッションに関する追加情報に依存します。
-
-![コントロール](./media/controls/31.png)
-
-### <a name="use-app-enforced-restrictions"></a>アプリによって適用される制限を使用する
-
-このコントロールを使用して、選択されたクラウド アプリにデバイス情報を渡すように Azure AD に要求できます。 クラウド アプリは、デバイス情報によって、接続が準拠またはドメイン参加済みデバイスから開始されているかどうかを認識できます。 このコントロールでは、選択されたクラウド アプリとして SharePoint Online と Exchange Online のみがサポートされます。 選択されたクラウド アプリは、デバイス情報を使用して、デバイスの状態に応じて制限付きまたは完全なエクスペリエンスをユーザーに提供します。
-
-詳細については、次を参照してください。
-
-- [SharePoint Online での制限付きアクセスの有効化](https://aka.ms/spolimitedaccessdocs)
-- [Exchange Online での制限付きアクセスの有効化](https://aka.ms/owalimitedaccess)
-
 ## <a name="next-steps"></a>次のステップ
 
-- 条件付きアクセス ポリシーの構成方法を把握するには、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](app-based-mfa.md)」を参照してください。
-- 環境に適用する条件付きアクセス ポリシーを構成する準備ができたら、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](best-practices.md)」を参照してください。
+- [Conditional Access common policies](concept-conditional-access-policy-common.md) (条件付きアクセスの一般的なポリシー)
+
+- [レポート専用モード](concept-conditional-access-report-only.md)
+
+- [Simulate sign in behavior using the Conditional Access What If tool](troubleshoot-conditional-access-what-if.md) (条件付きアクセスの What If ツールを使用したサインイン動作のシミュレート)

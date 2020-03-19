@@ -1,20 +1,17 @@
 ---
-title: CLI を使用して Azure 専用ホストをデプロイする
+title: CLI を使用して専用ホストに Linux VM をデプロイする
 description: Azure CLI を使用して専用ホストに VM をデプロイします。
-services: virtual-machines-linux
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: ab9d7128748e99b75b7e1a7187a7958e18300759
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: ba40e610e31a1215ac90baf63a04b435b636d68a
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77483484"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127701"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Azure CLI を使用して専用ホストに VM をデプロイする
  
@@ -27,7 +24,7 @@ Azure CLI バージョン2.0.70 以降がインストールされていること
 ## <a name="limitations"></a>制限事項
 
 - 仮想マシン スケール セットは、現在、専用ホストではサポートされていません。
-- 初期リリースでは、次の VM シリーズがサポートされています。DSv3、ESv3、FSv2、LSv2、および MSv2。 
+- 専用ホストで使用できるサイズとハードウェアの種類は、リージョンによって異なります。 詳しくは、ホストの[価格のページ](https://aka.ms/ADHPricing) を参照してください。
  
 
 ## <a name="create-resource-group"></a>リソース グループの作成 
@@ -80,7 +77,7 @@ az vm host group create \
  
 ## <a name="create-a-host"></a>ホストを作成する 
 
-次に、ホスト グループに専用ホストを作成してみましょう。 ホストの名前に加えて、ホストの SKU を指定する必要があります。 ホスト SKU では、専用ホストに対してサポートされている VM シリーズとハードウェアの世代がキャプチャされます。  次の SKU 値がサポートされています。DSv3_Type1 と ESv3_Type1。
+次に、ホスト グループに専用ホストを作成してみましょう。 ホストの名前に加えて、ホストの SKU を指定する必要があります。 ホスト SKU では、専用ホストに対してサポートされている VM シリーズとハードウェアの世代がキャプチャされます。  
 
 ホスト SKU の詳細と価格については、「[Azure 専用ホストの価格](https://aka.ms/ADHPricing)」を参照してください。
 

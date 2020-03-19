@@ -8,22 +8,22 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: chrisgre
-ms.openlocfilehash: 9a7e2d9874f049000dadcb3e46cccb2202b53698
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 381f550f6d64dee3c7649a040c1e24b7c9d42f2c
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429284"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669422"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>Azure CLI を使用した IoT デバイス/モジュールの自動管理
 
 [!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
-Azure IoT Hub の自動デバイス管理では、多数のデバイスを管理するという反復的で複雑なタスクの多くを自動化できます。 自動デバイス管理では、対象となる一連のデバイスをプロパティに基づいて設定し、必要な構成を定義しておくと、デバイスがスコープに適合したときに、IoT Hub によってデバイスが更新されます。 この更新は、"_自動デバイス構成_" または "_自動モジュール構成_" を使用して実行されます。これにより、操作やコンプライアンスの概況を把握し、マージや競合に対処し、構成を段階的なアプローチで展開することができます。
+Azure IoT Hub の自動デバイス管理では、多数のデバイスを管理するという反復的で複雑なタスクの多くを自動化できます。 自動デバイス管理では、対象となる一連のデバイスをプロパティに基づいて設定し、必要な構成を定義しておくと、デバイスがスコープに適合したときに、IoT Hub によってデバイスが更新されます。 この更新は、_自動デバイス構成_ または _自動モジュール構成_ を使用して行われます。これにより、完了やコンプライアンスの概況を把握し、マージや競合に対処し、構成を段階的なアプローチで展開することができます。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-自動デバイス管理では、一連のデバイス ツインまたはモジュール ツインが目的のプロパティで更新され、ツインで報告されたプロパティに基づくサマリーが報告されます。  この機能では、*構成*という新しいクラスと JSON ドキュメントが導入されています。構成には、次の 3 つの要素が含まれています。
+自動デバイス管理では、一連のデバイス ツインまたはモジュール ツインが必要なプロパティで更新され、ツインで報告されたプロパティに基づくサマリーが報告されます。  この機能では、*構成*という新しいクラスと JSON ドキュメントが導入されています。構成には、次の 3 つの要素が含まれています。
 
 * **ターゲットの条件**: 更新されるデバイス ツインまたはモジュール ツインのスコープ (範囲) を定義します。 ターゲットの条件は、デバイス ツインのタグや報告されたプロパティに関するクエリとして指定されます。
 
@@ -36,14 +36,18 @@ Azure IoT Hub の自動デバイス管理では、多数のデバイスを管理
 ## <a name="cli-prerequisites"></a>CLI の前提条件
 
 * Azure サブスクリプション内の [IoT ハブ](../iot-hub/iot-hub-create-using-cli.md)。 
-* ご使用の環境内の [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI のバージョンは、少なくとも 2.0.24 以降である必要があります。 検証するには、`az –-version` を使用します。 このバージョンでは、az 拡張機能のコマンドがサポートされ、Knack コマンド フレームワークが導入されています。 
-* [Azure CLI 向け IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)。
+
+* ご使用の環境内の [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI のバージョンは、少なくとも 2.0.70 以降である必要があります。 検証するには、`az –-version` を使用します。 このバージョンでは、az 拡張機能のコマンドがサポートされ、Knack コマンド フレームワークが導入されています。 
+
+* [Azure CLI 向け IoT 拡張機能](https://github.com/Azure/azure-cli)。
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="implement-twins"></a>ツインを実装する
 
 自動デバイス構成では、クラウドとデバイスとの間で状態を同期するために、デバイス ツインを使う必要があります。  詳細については、「[IoT Hub のデバイス ツインの理解と使用](iot-hub-devguide-device-twins.md)」を参照してください。
 
-自動モジュール構成では、クラウドとモジュールとの間で状態を同期するために、モジュール ツインを使う必要があります。 詳細については、「[IoT Hub のモジュール ツインの理解と使用](iot-hub-devguide-module-twins.md)」を参照してください。
+自動モジュール構成では、クラウドとモジュール間で状態を同期するために、モジュール ツインを使う必要があります。 詳細については、「[IoT Hub のモジュール ツインの理解と使用](iot-hub-devguide-module-twins.md)」を参照してください。
 
 ## <a name="use-tags-to-target-twins"></a>タグを使用してツインをターゲットにする
 
@@ -181,7 +185,7 @@ az iot hub configuration show-metric --config-id [configuration id] \
 
 対象の条件を更新すると、次の更新が実行されます。
 
-* 古いターゲット条件を満たしていなかったツインが、新しいターゲット条件を満たしていて、かつその構成の優先度がそのツインに対して最も高い場合には、その構成が適用されます。 
+* 古いターゲット条件を満たしていなかったツインが、新しいターゲット条件を満たしていて、かつその構成の優先度がそのツインに対して最も高い場合、その構成が適用されます。 
 
 * その構成を現在実行しているツインがターゲット条件を満たさなくなった場合は、構成から設定が削除され、次に高い優先度の構成でツインが変更されます。 
 

@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a493179e6e657a1d99d7cdb808629bae7332567
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: faecb0bc8cbb5ca84e9fc8bfc3cb99e2ccef1f11
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918969"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894562"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect (同期): Office 365 リソースの優先されるデータの場所の構成
 このトピックの目的は、Azure Active Directory (Azure AD) Connect 同期で、優先されるデータの場所の属性を構成する方法について説明することです。Office 365 で Multi-Geo 機能を使用するときに、この属性を使用して、ユーザーの Office 365 データの地理的な場所を指定します。 ("*リージョン*" と *geo* という用語は、同じ意味で使用されています。)
@@ -44,7 +44,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 | --- | --- |
 | アジア太平洋 | APC |
 | オーストラリア | AUS |
-| カナダ | CAN |
+| Canada | CAN |
 | 欧州連合 | EUR |
 | フランス | FRA |
 | インド | IND |
@@ -53,15 +53,15 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 | 南アフリカ | ZAF |
 | アラブ首長国連邦 | ARE |
 | イギリス | GBR |
-| 米国 | NAM |
+| United States | NAM |
 
-* この表に掲載されていない geo (南米など) は、Multi-Geo には使用できません。
+* この表に掲載されていない geo (南アメリカなど) は、Multi-Geo には使用できません。
 
 * すべての Office 365 ワークロードでユーザーの geo 設定が使用できるわけではありません。
 
 ### <a name="azure-ad-connect-support-for-synchronization"></a>Azure AD Connect の同期のサポート
 
-バージョン 1.1.524.0 以降の Azure AD Connect には、**ユーザー** オブジェクトの **PreferredDataLocation** 属性を同期する機能が備わっています。 具体的には次の処理が行われます。
+バージョン 1.1.524.0 以降の Azure AD Connect には、**ユーザー** オブジェクトの **PreferredDataLocation** 属性を同期する機能が備わっています。 具体的な内容は次のとおりです。
 
 * Azure AD コネクタで、**ユーザー** オブジェクト タイプのスキーマが拡張され、**preferredDataLocation** 属性が追加されました。 属性の型は単一値の文字列です。
 * メタバースで、**Person** オブジェクト タイプのスキーマが拡張され、**preferredDataLocation** 属性が追加されました。 属性の型は単一値の文字列です。
@@ -139,7 +139,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 3. 受信方向の規則を新規作成するには、 **[新しいルールの追加]** を選択します。
 4. **[説明]** タブで次の構成を指定します。
 
-    | Attribute | 値 | 詳細 |
+    | 属性 | Value | 詳細 |
     | --- | --- | --- |
     | 名前 | *名前を入力します* | 例: "In from AD – User preferredDataLocation" |
     | 説明 | "*ユーザー設定の説明を入力します*" |  |
@@ -168,7 +168,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 3. **[新しいルールの追加]** を選択します。
 4. **[説明]** タブで次の構成を指定します。
 
-    | Attribute | 値 | 詳細 |
+    | 属性 | Value | 詳細 |
     | ----- | ------ | --- |
     | 名前 | *名前を入力します* | 例: "Out to Azure AD – User preferredDataLocation" |
     | 説明 | *説明を入力します* ||
@@ -180,18 +180,18 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 
 5. **[スコープ フィルター]** タブに移動し、次の 2 つの句を使用して単一のスコープ フィルター グループを追加します。
 
-    | Attribute | 演算子 | 値 |
+    | 属性 | 演算子 | Value |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | User |
     | cloudMastered | NOTEQUAL | True |
 
-    この送信方向の同期規則がどの Azure AD オブジェクトに適用されるかは、スコープ フィルターによって決まります。 この例で使用しているスコープ フィルターは、"Out to Azure AD - User Identity" OOB (out-of-box) 同期規則と同じものです。 こうすることで、オンプレミスの Active Directory から同期されていない**ユーザー** オブジェクトに、この同期規則が適用されるのを回避します。 スコープ フィルターは、実際の Azure AD Connect のデプロイに応じて調整が必要となる場合があります。
+    この送信方向の同期規則がどの Azure AD オブジェクトに適用されるかは、スコープ フィルターによって決まります。 この例で使用しているスコープ フィルターは、"Out to Azure AD - User Identity" OOB (out-of-box) 同期規則と同じものです。 そうすることで、オンプレミスの Active Directory から同期されていない**ユーザー** オブジェクトに、同期規則が適用されることを回避します。 スコープ フィルターは、実際の Azure AD Connect のデプロイに応じて調整が必要となる場合があります。
 
 6. **[変換]** タブに移動し、次の変換規則を実装します。
 
     | フローの種類 | ターゲット属性 | source | 1 度だけ適用する | マージの種類 |
     | --- | --- | --- | --- | --- |
-    | 直接 | preferredDataLocation | preferredDataLocation | オフ | プライマリの |
+    | 直接 | preferredDataLocation | preferredDataLocation | オフ | 更新 |
 
 7. **[追加]** をクリックして送信方向の規則を作成します。
 
@@ -245,7 +245,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 > [!NOTE]
 > この手順には、Azure AD コネクタでの完全同期の手順、または Active Directory コネクタでのエクスポートの手順が含まれていません。 これらの手順は必要ありません。なぜなら、属性値の流れが、オンプレミスの Active Directory から Azure AD への一方向であるためです。
 
-## <a name="step-8-re-enable-sync-scheduler"></a>ステップ 8:同期スケジューラを再度有効にする
+## <a name="step-8-re-enable-sync-scheduler"></a>手順 8:同期スケジューラを再度有効にする
 次の手順で組み込みの同期スケジューラを再度有効にします。
 
 1. PowerShell セッションを開始します。
@@ -260,9 +260,8 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 3. Exchange Online PowerShell を使用して、メールボックスのリージョンが適切に設定されていることを確認します。  
 ![Exchange Online PowerShell のスクリーンショット](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-mailboxregion.png)  
 テナントがこの機能を使用できるように設定されていることを前提として、メールボックスが適切な geo に移動されます。 これは、メールボックスが配置されているサーバー名を調べることで確認できます。
-4. この設定が多数のメールボックスで有効であることを検証するには、[TechNet ギャラリー](https://gallery.technet.microsoft.com/office/PowerShell-Script-to-a6bbfc2e)のスクリプトを使用します。 このスクリプトには、すべての Office 365 データセンターのサーバーのプレフィックスと、サーバーが配置されている geo の一覧も含まれます。 前の手順のメールボックスの場所を確認するためのリファレンスとして、それを使用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Office 365 での Multi-Geo の詳細
 

@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: helohr
-ms.openlocfilehash: 5a634f3449d88e2c1885f4a32ae2662c93811c63
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+manager: lizross
+ms.openlocfilehash: 5f48586f38c310c77c61f470d3e2fbc819c33f71
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349941"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128044"
 ---
 # <a name="data-locations-for-windows-virtual-desktop"></a>Windows Virtual Desktop のデータの場所
 

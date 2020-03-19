@@ -5,17 +5,17 @@ author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 07/12/2019
-ms.openlocfilehash: 1854a99cac3ead386f38c1c7fe27a56b672f365c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.date: 03/11/2020
+ms.openlocfilehash: 13f48a9e0bc3ed8f8c4d5f1b7da4b6c03f54cdf8
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664331"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129978"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output-preview"></a>マネージド ID を使用して、Azure Blob Storage 出力に対して Azure Stream Analytics ジョブを認証する (プレビュー)
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>マネージド ID を使用して、Azure Blob Storage 出力に対して Azure Stream Analytics ジョブを認証する
 
-Azure Blob Storage への出力に対する[マネージド ID 認証](../active-directory/managed-identities-azure-resources/overview.md)は、Azure Stream Analytics でプレビューとして使用できます。 これにより、Stream Analytics ジョブで、接続文字列を使用せずに、ストレージ アカウントに直接アクセスできます。 この機能により、セキュリティが向上し、さらに Azure 内の仮想ネットワーク (VNET) のストレージ アカウントにデータを書き込むことができます。
+Azure Blob Storage への出力に対して [マネージド ID 認証](../active-directory/managed-identities-azure-resources/overview.md)を使用すると、Stream Analytics ジョブで、接続文字列を使用せずに、ストレージ アカウントに直接アクセスできます。 この機能により、セキュリティが向上し、さらに Azure 内の仮想ネットワーク (VNET) のストレージ アカウントにデータを書き込むことができます。
 
 この記事では、Azure portal を通じて、および Azure Resource Manager デプロイを通じて、Stream Analytics ジョブの Blob 出力に対してマネージド ID を有効にする方法を示します。
 
@@ -235,7 +235,7 @@ Stream Analytics ジョブには、次の 2 つのレベルのアクセス権の
 
 4. [ユーザー割り当て ID](../active-directory/managed-identities-azure-resources/overview.md) はサポートされていません。 つまりユーザーは、Stream Analytics ジョブで使用される、独自のサービス プリンシパルを入力することはできません。 サービス プリンシパルは、Azure Stream Analytics で生成する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Stream Analytics からの出力を理解する](./stream-analytics-define-outputs.md)
 * [Azure Stream Analytics でのカスタム BLOB 出力のパーティション分割](./stream-analytics-custom-path-patterns-blob-storage-output.md)

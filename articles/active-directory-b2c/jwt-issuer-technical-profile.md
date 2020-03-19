@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/30/2018
+ms.date: 03/06/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fa6da347289a12867a2416dea16631ba4758832f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: c23648d70192607b2a5b977dcdd445931e995154
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78187476"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671806"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで JWT トークン発行者用の技術プロファイルを定義する
 
@@ -56,6 +56,7 @@ Azure Active Directory B2C (Azure AD B2C) は、各認証フローを処理す�
 | allow_infinite_rolling_refresh_token | いいえ | `true` に設定される場合、更新トークンのスライディング ウィンドウの有効期間はありません。 |
 | IssuanceClaimPattern | いいえ | 発行者 (iss) 要求を制御します。 次のいずれかの値です。<ul><li>AuthorityAndTenantGuid - iss 要求には、`login.microsoftonline` や `tenant-name.b2clogin.com` のようなドメイン名、テナント識別子 https:\//login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/ などがあります。</li><li>AuthorityWithTfp - iss 要求には、`login.microsoftonline` や `tenant-name.b2clogin.com` のようなドメイン名、テナント識別子、証明書利用者のポリシー名などがあります。 https:\//login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/</li></ul> 既定値:AuthorityAndTenantGuid |
 | AuthenticationContextReferenceClaimPattern | いいえ | `acr` の要求値 を制御します。<ul><li>None - Azure AD B2C は acr 要求を発行しない</li><li>PolicyId - `acr` 要求にポリシー名を含める</li></ul>この値を設定する場合のオプションは、TFP (trust framework policy) および ACR (authentication context reference) です。 この値を TFP に設定することをお勧めします。値を設定するには、`<Item>` が `Key="AuthenticationContextReferenceClaimPattern"` と共に存在し、その値が `None` であることを確認してください。 証明書利用者ポリシーで、`<OutputClaims>` 項目を追加し、この要素 `<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />` を追加します。 ポリシーには、クレームの種類 `<ClaimType Id="trustFrameworkPolicy">   <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` が存在することも確認してください。 |
+|RefreshTokenUserJourneyId| いいえ | `/token`エンドポイントに対する[アクセス トークンの更新](authorization-code-flow.md#4-refresh-the-token)の POST 要求時に実行される必要がある、ユーザー体験の識別子。 |
 
 ## <a name="cryptographic-keys"></a>暗号化キー
 

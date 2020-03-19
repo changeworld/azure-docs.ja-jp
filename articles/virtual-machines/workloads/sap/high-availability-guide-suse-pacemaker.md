@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/16/2018
+ms.date: 03/06/2020
 ms.author: radeltch
-ms.openlocfilehash: 06c92797f2cab96a9e0c423b0f0f754e57b99b14
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: fb73bf6af46ce8303e1be80d1bfc7303f95cda06
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598444"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927340"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする
 
@@ -328,6 +328,16 @@ o- / ...........................................................................
    <pre><code>sudo zypper in socat
    </code></pre>
 
+1. **[A]** クラスター リソースに必要な azure-lb コンポーネントをインストールします
+
+   <pre><code>sudo zypper in resource-agents
+   </code></pre>
+
+   > [!NOTE]
+   > パッケージ resource-agents のバージョンを確認し、最小バージョン要件が満たされていることを確認します。  
+   > - SLES 12 SP4/SP5 の場合、バージョンは resource-agents-4.3.018.a7fb5035-3.30.1 以上である必要があります。  
+   > - SLES 15/15 SP1 の場合、バージョンは resource-agents-4.3.0184.6ee15eb2-4.13.1 以上である必要があります。  
+
 1. **[A]** オペレーティング システムを構成します
 
    場合によっては、Pacemaker によって多数のプロセスが作成され、その結果、プロセスの許容数に達することがあります。 その場合、クラスター ノード間のハートビートが失敗し、リソースのフェールオーバーが発生する可能性があります。 次のパラメーターを設定して、許可されるプロセスの最大数を増やすことをお勧めします。
@@ -607,9 +617,9 @@ sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
 
 Azure では、[スケジュール化されたイベント](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events)が提供されています。 スケジュール化されたイベントは、メタデータ サービスを介して提供され、VM のシャットダウンや VM の再デプロイなどのイベントに対して準備する時間をアプリケーションに与えます。リソース エージェント **[azure-events](https://github.com/ClusterLabs/resource-agents/pull/1161)** では、スケジュール化された Azure イベントが監視されます。 イベントが検出された場合、エージェントは影響を受ける VM 上のすべてのリソースを停止してクラスター内の別のノードに移動しようとします。 これを実現するには、追加の Pacemaker リソースを構成する必要があります。 
 
-1. **[A]** **azure-events** エージェントをインストールします。 
+1. **[A]** **azure-events** エージェントのパッケージが既にインストールされ、最新であることを確認します。 
 
-<pre><code>sudo zypper install resource-agents
+<pre><code>sudo zypper info resource-agents
 </code></pre>
 
 2. **[1]** Pacemaker 内でリソースを構成します。 

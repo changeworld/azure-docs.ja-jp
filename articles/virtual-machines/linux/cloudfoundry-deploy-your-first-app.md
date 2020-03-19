@@ -1,26 +1,18 @@
 ---
 title: Microsoft Azure の Cloud Foundry に最初のアプリをデプロイする
 description: Azure の Cloud Foundry にアプリケーションをデプロイします。
-services: virtual-machines-linux
-documentationcenter: ''
 author: seanmck
-manager: gwallace
-editor: ''
-tags: ''
-keywords: ''
-ms.assetid: 8fa04a58-56ad-4e6c-bef4-d02c80d4b60f
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: b1f9ab5289a41aacb5514e954f1ca01f6ad66152
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 45ae8979a2617d4f380e417e3f0910182ebe145e
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036827"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970073"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Microsoft Azure の Cloud Foundry に最初のアプリをデプロイする
 
@@ -39,7 +31,7 @@ Azure に Cloud Foundry 環境を作成する方法はいくつかあります�
 
 ## <a name="connect-to-the-cloud-controller"></a>Cloud Controller に接続する
 
-Cloud Controller はアプリケーションをデプロイおよび管理するための Cloud Foundry 環境のプライマリ エントリ ポイントです。 Cloud Controller のコア API (CCAPI) は REST API ですが、さまざまなツールを使用してアクセスできます。 ここでは、[Cloud Foundry CLI][cf-cli] を使用してやり取りします。 この CLI は Linux、MacOS、または Windows にインストールできますが、インストールしなくても [Azure Cloud Shell][cloudshell-docs] にプリインストールされています。
+Cloud Controller はアプリケーションをデプロイおよび管理するための Cloud Foundry 環境のプライマリ エントリ ポイントです。 Cloud Controller のコア API (CCAPI) は REST API ですが、さまざまなツールを使用してアクセスできます。 ここでは、[Cloud Foundry CLI][cf-cli] を使用してやり取りします。 この CLI は Linux、macOS、または Windows にインストールできますが、インストールしなくても [Azure Cloud Shell][cloudshell-docs] にプリインストールされています。
 
 ログインするには、マーケットプレースのデプロイから取得した SYSTEMDOMAINURL に `api` を付加します。 既定のデプロイでは自己署名証明書が使用されるため、それも `skip-ssl-validation` スイッチに含めてください。
 
@@ -141,7 +133,7 @@ cf scale -i 2 hello-spring-cloud
 アプリケーションで `cf app` コマンドを実行することは、Cloud Foundry がアプリケーションの別のインスタンスを作成していることを示します。 アプリケーションが起動すると、Cloud Foundry が自動的にトラフィックの負荷分散を開始します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Cloud Foundry のドキュメントを読む][cloudfoundry-docs]
 - [Cloud Foundry 用の Azure DevOps Services プラグインをセットアップする][vsts-plugin]

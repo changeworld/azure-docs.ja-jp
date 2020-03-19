@@ -14,12 +14,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5400ede4f3afd9f94d7380c6dfd55d8aa45d08ca
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 3a911db36fd03ebcb5e0fc53d4d7f36d68648249
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76834248"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399081"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>方法:アプリケーションにアプリ ロールを追加してトークンで受け取る
 
@@ -44,10 +44,10 @@ RBAC をアプリケーション ロールおよびロール要求と一緒に�
 1. `appRoles` 設定を見つけたら、すべてのアプリケーション ロールを追加して、アプリケーション マニフェストを編集します。
 
      > [!NOTE]
-     > このマニフェストの各アプリ ロール定義には、`id` プロパティに対するマニフェストのコンテキスト内に有効な異なる GUID が含まれている必要があります。    
-     > 
+     > このマニフェストの各アプリ ロール定義には、`id` プロパティに対するマニフェストのコンテキスト内に有効な異なる GUID が含まれている必要があります。
+     >
      > 各アプリ ロール定義の `value` プロパティは、アプリケーションのコードで使用されている文字列と正確に一致する必要があります。 `value` プロパティにスペースを含めることはできません。 スペースが含まれていると、マニフェストの保存時にエラーが発生します。
-     
+
 1. マニフェストを保存します。
 
 ### <a name="examples"></a>例
@@ -108,7 +108,7 @@ RBAC をアプリケーション ロールおよびロール要求と一緒に�
      必要なアプリケーションが表示されていない場合は、 **[すべてのアプリケーション]** リストの一番上にあるさまざまなフィルターを使用して表示内容を制限するか、一覧表示の下までスクロールしてアプリケーションを探します。
 
 1. ユーザーまたはグループをロールに割り当てるアプリケーションを選択します。
-1. アプリケーションの左側のナビゲーション メニューで、 **[ユーザーとグループ]** ウィンドウを選択します。
+1. アプリケーションの左側のナビゲーション メニューで、 **[ユーザーとグループ]** ペインを選択します。
 1. **[ユーザーとグループ]** 一覧の上部にある **[ユーザーの追加]** ボタンをクリックして、 **[割り当ての追加]** ウィンドウを開きます。
 1. **[割り当ての追加]** ウィンドウから **[ユーザーとグループ]** セレクターを選択します。
 
@@ -122,7 +122,7 @@ RBAC をアプリケーション ロールおよびロール要求と一緒に�
 
 ## <a name="more-information"></a>詳細情報
 
-- [Azure AD アプリケーション ロールとロール要求を使用した Web アプリでの承認 (サンプル)](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims)
+- [アプリ ロールおよびロール要求を使用して ASP.NET Core Web アプリに承認を追加する](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
 - [アプリでのセキュリティ グループとアプリケーション ロールの使用 (ビデオ)](https://www.youtube.com/watch?v=V8VUPixLSiM)
 - [グループ要求とアプリケーション ロールが追加された Azure Active Directory](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
 - [Azure Active Directory のアプリ マニフェスト](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)

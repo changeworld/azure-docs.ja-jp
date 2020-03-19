@@ -1,32 +1,34 @@
 ---
 title: Azure Kubernetes Service (AKS) クラスターの資格情報のリセット
-description: Azure Kubernetes Service (AKS) のクラスターのサービス プリンシパル資格情報を更新またはリセットする方法について説明します
+description: Azure Kubernetes Service (AKS) クラスター用のサービス プリンシパル資格情報または AAD アプリケーション資格情報を更新またはリセットする方法について説明します
 services: container-service
 ms.topic: article
-ms.date: 05/31/2019
-ms.openlocfilehash: 46665e78450538cdc473de32e6c2e9a418660af1
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.date: 03/11/2019
+ms.openlocfilehash: 5dab9a778653d2ec6e32ddb3833ddcf6a95cae13
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593072"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096111"
 ---
-# <a name="update-or-rotate-the-credentials-for-a-service-principal-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のサービス プリンシパル資格情報の更新またはローテーション
+# <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 用の資格情報を更新またはローテーションする
 
 既定では、有効期限が 1 年のサービス プリンシパルと共に AKS クラスターが作成されます。 期限が近づいたら、資格情報をリセットしてサービス プリンシパルの期限を延長することができます。 また、定義済みのセキュリティ ポリシーの一環として、資格情報を更新またはローテーションすることもできます。 この記事では、AKS クラスターのこれらの資格情報の更新方法について説明します。
+
+また、[AKS クラスターと Azure Active Directory を統合][aad-integration]してあり、クラスターの認証プロバイダーとしてそれを使用する場合もあります。 その場合は、クラスター、AAD サーバー アプリ、AAD クライアント アプリ用にさらに 2 つの ID が作成されていて、それらの資格情報もリセットできます。 
 
 ## <a name="before-you-begin"></a>開始する前に
 
 Azure CLI バージョン 2.0.65 以降がインストールされて構成されている必要があります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
-## <a name="choose-to-update-or-create-a-service-principal"></a>サービス プリンシパルの更新または作成の選択
+## <a name="update-or-create-a-new-service-principal-for-your-aks-cluster"></a>AKS クラスター用の新しいサービス プリンシパルを更新または作成する
 
 AKS クラスターの資格情報を更新する場合、以下の方法から選択できます。
 
 * クラスターで使用されている既存のサービス プリンシパルの資格情報を更新する。または、
 * サービス プリンシパルを作成し、それらの新しい資格情報を使用するようにクラスターを更新する。
 
-### <a name="update-existing-service-principal-expiration"></a>既存のサービス プリンシパルの有効期限を更新する
+### <a name="reset-existing-service-principal-credential"></a>既存のサービス プリンシパルの資格情報をリセットする
 
 既存のサービス プリンシパル資格情報を更新するには、[az aks show][az-aks-show] コマンドを使用して、クラスターのサービス プリンシパル ID を取得します。 以下の例は、*myResourceGroup* リソース グループにある *myAKSCluster* という名前のクラスターの ID を取得します。 サービス プリンシパル ID は、追加コマンドで使用するための *SP_ID* という名前の変数として設定されます。
 
@@ -41,11 +43,11 @@ SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
 SP_SECRET=$(az ad sp credential reset --name $SP_ID --query password -o tsv)
 ```
 
-次に、「[新しい資格情報で AKS クラスターを更新](#update-aks-cluster-with-new-credentials)」に進みます。 このステップは、サービス プリンシパルの変更を AKS クラスターに反映させるために必要です。
+次に、[新しいサービス プリンシパル資格情報での AKS クラスターの更新](#update-aks-cluster-with-new-service-principal-credentials)に進みます。 このステップは、サービス プリンシパルの変更を AKS クラスターに反映させるために必要です。
 
 ### <a name="create-a-new-service-principal"></a>新しいサービス プリンシパルを作成する
 
-前のセクションで既存のサービス プリンシパル資格情報の更新を選択した場合は、このステップをスキップしてください。 「[新しい資格情報で AKS クラスターを更新](#update-aks-cluster-with-new-credentials)」に進みます。
+前のセクションで既存のサービス プリンシパル資格情報の更新を選択した場合は、このステップをスキップしてください。 続いて、[新しいサービス プリンシパル資格情報で AKS クラスターを更新](#update-aks-cluster-with-new-service-principal-credentials)します。
 
 サービス プリンシパルを作成してから、それらの新しい資格情報を使用するように AKS クラスターを更新するには、[az ad sp create-for-rbac][az-ad-sp-create] コマンドを使用します。 次の例では、`--skip-assignment` パラメーターによって、追加の既定の割り当てが行われないようにしています。
 
@@ -71,9 +73,9 @@ SP_ID=7d837646-b1f3-443d-874c-fd83c7c739c5
 SP_SECRET=a5ce83c9-9186-426d-9183-614597c7f2f7
 ```
 
-次に、「[新しい資格情報で AKS クラスターを更新](#update-aks-cluster-with-new-credentials)」に進みます。 このステップは、サービス プリンシパルの変更を AKS クラスターに反映させるために必要です。
+次に、[新しいサービス プリンシパル資格情報での AKS クラスターの更新](#update-aks-cluster-with-new-service-principal-credentials)に進みます。 このステップは、サービス プリンシパルの変更を AKS クラスターに反映させるために必要です。
 
-## <a name="update-aks-cluster-with-new-credentials"></a>新しい資格情報で AKS クラスターを更新
+## <a name="update-aks-cluster-with-new-service-principal-credentials"></a>新しいサービス プリンシパル資格情報で AKS クラスターを更新する
 
 既存のサービス プリンシパル資格情報の更新を選択したか、サービス プリンシパルの作成を選択したかに関係なく、ここで [az aks update-credentials][az-aks-update-credentials] コマンドを使用して、新しい資格情報で AKS クラスターを更新します。 *--service-principal* と *--client-secret* の変数が使用されます。
 
@@ -88,14 +90,31 @@ az aks update-credentials \
 
 サービス プリンシパル資格情報が AKS で更新されるまでに少し時間がかかります。
 
+## <a name="update-aks-cluster-with-new-aad-application-credentials"></a>新しい AAD アプリケーション資格情報で AKS クラスターを更新する
+
+[AAD 統合手順][create-aad-app]に従って、新しい AAD サーバー アプリケーションとクライアント アプリケーションを作成できます。 または、[サービス プリンシパルのリセットの場合と同じ方法](#reset-existing-service-principal-credential)に従って、既存の AAD アプリケーションをリセットします。 その後は、同じ [az aks update-credentials][az-aks-update-credentials] コマンドを使用し、ただし *--reset-aad* 変数を使用して、クラスター AAD アプリケーションの資格情報を更新することだけが必要です。
+
+```azurecli-interactive
+az aks update-credentials \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --reset-aad \
+    --aad-server-app-id <SERVER APPLICATION ID> \
+    --aad-server-app-secret <SERVER APPLICATION SECRET> \
+    --aad-client-app-id <CLIENT APPLICATION ID>
+```
+
+
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、AKS クラスター自体のサービス プリンシパルが更新されました。 クラスター内のワークロードの ID を管理する方法について詳しくは、「[AKS の認証と認可のベスト プラクティス][best-practices-identity]」を参照してください。
+この記事では、AKS クラスター自体と AAD 統合アプリケーション用のサービス プリンシパルを更新しました。 クラスター内のワークロードの ID を管理する方法について詳しくは、「[AKS の認証と認可のベスト プラクティス][best-practices-identity]」を参照してください。
 
 <!-- LINKS - internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli
 [az-aks-show]: /cli/azure/aks#az-aks-show
 [az-aks-update-credentials]: /cli/azure/aks#az-aks-update-credentials
 [best-practices-identity]: operator-best-practices-identity.md
+[aad-integration]: azure-ad-integration.md
+[create-aad-app]: azure-ad-integration.md#create-the-server-application
 [az-ad-sp-create]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
 [az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset

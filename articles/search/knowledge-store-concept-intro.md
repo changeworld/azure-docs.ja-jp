@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: b330b6176ba9cadc85fad81876caf2583021d503
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 0ad780c04954c09ddfd432b3c7de3dc65f0841bf
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988636"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942990"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Azure Cognitive Search のナレッジ ストアの概要
 
@@ -147,3 +147,13 @@ REST API バージョン `2019-05-06-Preview` では、スキルセットの追�
 
 > [!div class="nextstepaction"]
 > [Postman と REST を使用してナレッジ ストアを作成する](knowledge-store-create-rest.md)
+
+プロジェクション、機能、および[スキルセットでそれらを定義する方法](knowledge-store-projection-overview.md)の詳細を確認します
+
+> [!div class="nextstepaction"]
+> [ナレッジ ストアでのプロジェクション](knowledge-store-projection-overview.md)
+
+スライス、インラインの整形、リレーションシップなどの高度なプロジェクションの概念について説明するチュートリアルについては、「[ナレッジ ストアでプロジェクションを定義する](knowledge-store-projections-examples.md)」を開始してください。
+
+> [!div class="nextstepaction"]
+> [ナレッジ ストアでのプロジェクションを定義する](knowledge-store-projections-examples.md)

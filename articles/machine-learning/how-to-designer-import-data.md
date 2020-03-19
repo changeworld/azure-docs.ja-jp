@@ -9,12 +9,12 @@ ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
-ms.openlocfilehash: d41b0499df1a62440e8c1991e29f7963224a50d6
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 8cd49f9714746578ec701e22f9e6b0ccce772c6b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77138164"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942292"
 ---
 # <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナー (プレビュー) へデータをインポートする
 
@@ -56,6 +56,8 @@ Microsoft では、[データセット](concept-data.md#datasets) 使用して�
 
 [データのインポート] モジュールの詳しい使用方法については、[データのインポートの参照ページ](algorithm-module-reference/import-data.md)を参照してください。
 
+[!NOTE]
+> データの列数が多い場合、データのインポート モジュールで "Validation failed due to size limitation" (サイズの制限により検証に失敗しました) が発生する場合があります。 これは、エンコード後にその列で maxmium モジュール パラメーターの長さが除外されるためです。 この場合、[Datasets UI でデータセットを登録する](how-to-create-register-datasets.md#use-the-ui)ことをお勧めします。これでエラーを回避できます。  
 
 ## <a name="supported-sources"></a>サポートされているソース
 

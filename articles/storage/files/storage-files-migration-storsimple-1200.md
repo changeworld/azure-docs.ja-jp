@@ -4,26 +4,31 @@ description: StorSimple 1200 シリーズ仮想アプライアンスを Azure Fi
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/02/2020
+ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 184101db34edbf5391b37c43770e8393316fe2fc
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 6863e7f8ef8e2f263cda824fd13186dc7b035454
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252671"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943607"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200 の Azure File Sync への移行
 
-StorSimple 1200 シリーズは、オンプレミスのデータ センターで実行される仮想アプライアンスです。 このアプライアンスから Azure File Sync 環境にデータを移行することができます。 この記事では、Azure File Sync への移行を成功させるために必要な背景知識と移行手順について説明します。
+StorSimple 1200 シリーズは、オンプレミスのデータ センターで実行される仮想アプライアンスです。 このアプライアンスから Azure File Sync 環境にデータを移行することができます。 Azure File Sync は、StorSimple アプライアンスの移行先となる、既定の戦略的な長期 Azure サービスです。
+
+StorSimple 1200 シリーズは 2022 年 12 月に[サポート終了](https://support.microsoft.com/en-us/lifecycle/search?alpha=StorSimple%201200%20Series)となります。  できるだけ早く移行の計画を開始することが重要です。 この記事では、Azure File Sync への移行を成功させるために必要な背景知識と移行手順について説明します。 
 
 ## <a name="azure-file-sync"></a>Azure File Sync
+
+> [!IMPORTANT]
+> Microsoft はお客様の移行を支援できるよう取り組んでいます。 カスタマイズした移行計画について、および移行中のサポートについては、AzureFilesMigration@microsoft .com にメールをお送りください。
 
 Azure File Sync は、次の 2 つの主要なコンポーネントに基づく Microsoft のクラウド サービスです。
 
 * ファイルの同期とクラウドを使った階層化。
-* Azure のネイティブ ストレージとしてのファイル共有。SMB や file REST などの複数のプロトコルを介してアクセスできます。 Azure ファイル共有は、ネットワーク ドライブとしてネイティブにマウントできる Windows Server 上のファイル共有に相当します。 属性、アクセス許可、タイムスタンプなどの重要なファイルの忠実性がサポートされています。 StorSimple とは異なり、クラウドに格納されているファイルとフォルダーを解釈するためにアプリケーションやサービスは必要ありません。 汎用のファイル サーバー データや一部のアプリケーション データをクラウドに格納するための、理想的で最も柔軟な方法です。
+* Azure のネイティブ ストレージとしてのファイル共有。SMB や file REST などの複数のプロトコルを介してアクセスできます。 Azure ファイル共有は、ネットワーク ドライブとしてネイティブにマウントできる Windows サーバー上のファイル共有に相当します。 属性、アクセス許可、タイムスタンプなどの重要なファイルの忠実性がサポートされています。 StorSimple とは異なり、クラウドに格納されているファイルとフォルダーを解釈するためにアプリケーションやサービスは必要ありません。 汎用のファイル サーバー データや一部のアプリケーション データをクラウドに格納するための、理想的で最も柔軟な方法です。
 
 この記事では、移行手順を中心に説明します。 移行前に Azure File Sync について詳しく知りたい場合は、次の記事をお勧めします。
 
@@ -36,7 +41,7 @@ Azure File Sync は、次の 2 つの主要なコンポーネントに基づく 
 
 ## <a name="storsimple-1200-migration-path-to-azure-file-sync"></a>StorSimple 1200 の Azure File Sync への移行パス
 
-Azure File Sync エージェントを実行するには、ローカル Windows Server が必要です。 Windows Server は、2012R2 サーバー以降であれば使用できますが、理想的なのは Windows Server 2019 です。
+Azure File Sync エージェントを実行するには、ローカル Windows Server が必要です。 Windows サーバーは、2012R2 サーバー以降であれば使用できますが、理想的なのは Windows Server 2019 です。
 
 代替の移行パスは多数あり、そのすべてを説明し、この記事でベスト プラクティスとして推奨されているルートと比較してそれらのリスクや欠点が大きい理由を説明しようとすると、記事があまりに長くなります。
 

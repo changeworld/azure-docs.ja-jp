@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8d67d1d318bf823145a57d2e55774695d151996
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f4f086b7c2f24cfe5d3fe74c25f6f5690b090800
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425316"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086395"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の NPS 拡張機能からのエラー メッセージを解決する
 
@@ -98,7 +98,7 @@ Azure Multi-Factor Authentication の NPS 拡張機能でエラーが発生し�
 
 ### <a name="health-check-script"></a>正常性チェック スクリプト
 
-[Azure MFA NPS 拡張機能の正常性チェック スクリプト](https://gallery.technet.microsoft.com/Azure-MFA-NPS-Extension-648de6bb)は、NPS 拡張機能のトラブルシューティングを行うときに、基本的な正常性チェックを実行するために、TechNet ギャラリーから入手できます。 スクリプトを実行し、オプション 3 を選択します。
+[Azure MFA NPS 拡張機能の正常性チェック スクリプト](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)では、NPS 拡張機能のトラブルシューティングを行うときに、基本的な正常性チェックが実行されます。 スクリプトを実行し、オプション 3 を選択します。
 
 ### <a name="contact-microsoft-support"></a>Microsoft サポートに問い合わせる
 

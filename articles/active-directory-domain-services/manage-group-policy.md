@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 03/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 74d9aa8228e841b17313fb3c15efe459ccd7339a
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: bce71355eef19ec3cc85525033274f57b1a3e0b9
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613590"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946422"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインでグループ ポリシーを管理する
 
@@ -42,7 +42,11 @@ Azure Active Directory Domain Services (Azure AD DS) のユーザー オブジ�
 * Azure AD テナントの *Azure AD DC administrators* グループのメンバーであるユーザー アカウント。
 
 > [!NOTE]
-> [Azure AD DS 内のドメイン コントローラーへのアクセス権がない](faqs.md#can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop)ため、マネージド ドメイン内にグループ ポリシー管理テンプレート用の中央ストアを作成して使用することはできません。 [Sysvol はオンプレミスの Azure AD Connect 同期に含まれていない](synchronization.md#what-isnt-synchronized-to-azure-ad-ds)ため、オンプレミスの中央ストアを作成して、これを Azure AD 経由で Azure AD DS に同期することもできません。
+> グループ ポリシー管理用テンプレートを使用するには、新しいテンプレートを管理ワークステーションにコピーします。 *.admx* ファイルを `%SYSTEMROOT%\PolicyDefinitions` にコピーし、ロケール固有の *.adml* ファイルを `%SYSTEMROOT%\PolicyDefinitions\[Language-CountryRegion]` にコピーします。この `Language-CountryRegion` は *.adml* の言語とリージョンに一致します。
+>
+> たとえば、英国、米国バージョンの *.adml* ファイルを `\en-us` フォルダーにコピーします。
+>
+> また、Azure AD DS マネージド ドメインの一部であるドメイン コントローラーに、グループ ポリシー管理用テンプレートを一元的に格納することもできます。 詳細については、「[Windows でグループ ポリシー管理用テンプレート用のセントラル ストアを作成および管理する方法](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra)」を参照してください。
 
 ## <a name="install-group-policy-management-tools"></a>グループ ポリシーの管理ツールをインストールする
 

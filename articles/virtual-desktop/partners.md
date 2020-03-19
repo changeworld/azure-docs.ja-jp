@@ -5,14 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/10/2020
 ms.author: helohr
-ms.openlocfilehash: f75e404e37ff45eb7d9f540cf6acba71fa83349f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+manager: lizross
+ms.openlocfilehash: e10908a3ce0ad372ab7d05fda9a15481d0efc5a8
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201783"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127573"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows Virtual Desktop のパートナー統合
 
@@ -159,7 +160,7 @@ Liquit は、認定された統合パートナーとして、完全な置き換�
 
 Login VSI は、Windows Virtual Desktop 環境でアプリケーション パフォーマンス テスト用のソフトウェアを提供する Windows Virtual Desktop 付加価値サービスプロバイダーで、Microsoft パートナーでもあります。 Login VSI Enterprise Edition は、お客様がオンプレミスのビジネス サービスを Windows Virtual Desktop に移行するときに、ビジネス クリティカルなアプリケーションに対応する Windows 10 Enterprise マルチセッション、Windows 10 Enterprise、および Windows 7 のパフォーマンス、スケーラビリティ、および可用性を評価し、最適な維持する目的で使用します。
 
-- [パートナーの Web サイトにアクセスする。](https://www.loginvsi.com)
+- [パートナーの Web サイトにアクセスする。](https://www.loginvsi.com/use-cases-initiatives/windows-virtual-desktop)
 
 ## <a name="nerdio"></a>Nerdio
 
@@ -253,6 +254,16 @@ Tricerat は、Windows Virtual Desktop などのデスクトップ プラット�
 Tricerat を使用すると、Windows Virtual Desktop よりもさらに印刷がシームレスになります。 Tricerat ソフトウェアを使用すると、管理者は、オンプレミスのプリンターをクラウドに簡単に接続できるため、従来の環境から新しい最新のワークスペースにエンタープライズの印刷管理を拡張することができます。
 
 - [パートナーの Web サイトにアクセスする。](https://www.tricerat.com/microsoft-printing)
+
+## <a name="vast-limits"></a>vast limits
+
+![vast limits ロゴ](./media/partners/vast-limits.png)
+
+uberAgent を開発した vast limits 社は、Windows Virtual Desktop のデプロイを目で見ることができるようにします。 vast limits 社は、IT プロフェッショナルがどのように考え、どのようなツールを必要としているかを理解しており、エンタープライズ IT 向けのソフトウェアを作成しています。 その製品では、IT プロフェッショナルが作業を行うために必要としている正にそのとおりのものが (過剰でも過少でもなく) 提供されるので、IT プロフェッショナルの作業効率が向上します。
+
+uberAgent は、エンド ユーザー コンピューティング向けに設計された監視および分析製品であり、データを収集するだけでなく、重要な情報を顧客に提供します。 uberAgent には独自のメトリックがあり、ユーザー エクスペリエンス、アプリケーションのパフォーマンス、エンドポイントのセキュリティの主要な側面がカバーされており、システムのユーザー密度に影響を与えることなく、Windows Virtual Desktop VM について知る必要があるすべてのことを教えてくれます。 uberAgent を使用すると、トラブルシューティングが簡単になり、サイズ変更に役立ち、情報セキュリティに不可欠な豊富な情報が提供されます。
+
+- [パートナーの Web サイトにアクセスする](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop)
 
 ## <a name="workspot"></a>Workspot
 

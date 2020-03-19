@@ -11,92 +11,55 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2019
+ms.date: 03/06/2020
 ms.author: memildin
-ms.openlocfilehash: 6b262baddd10c9d0dff4b196b733972b97d99872
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 183b81134b2fe72a539cc6460a05d828342aafbb
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552986"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086498"
 ---
-# <a name="monitor-identity-and-access-preview"></a>ID とアクセスを監視する (プレビュー)
+# <a name="monitor-identity-and-access"></a>ID とアクセスを監視する
+
+> [!TIP]
+> 2020 年 3 月以降、Azure Security Center の IDとアクセスの推奨事項は、Free 価格レベルのすべてのサブスクリプションに含まれています。 Free レベルのサブスクリプションをお持ちの場合は、これまで ID およびアクセス セキュリティについて評価されていなかったため、セキュリティ スコアが影響を受けます。 
+
 Security Center によって潜在的なセキュリティの脆弱性が識別されると、リソースを堅牢化および保護するために必要な管理を構成するプロセスを説明する推奨事項が作成されます。
 
-この記事では、Azure Security Center のリソース セキュリティ セクションの **[ID およびアクセス]** ページについて説明します。
+セキュリティ境界は、ネットワーク境界から ID 境界へと発展してきました。 セキュリティにおいては、ネットワークの保護よりもデータの保護、アプリとユーザーのセキュリティ管理が重要になってきています。 最近では、クラウドに移行するデータやアプリが増加しているため、ID が新たな境界線となっています。
 
-このページに記載されている推奨事項の完全な一覧については、「[ID とアクセスの推奨事項](recommendations-reference.md#recs-identity)」を参照してください。
+ID アクティビティを監視することにより、インシデントが発生する前に事前対応型のアクションを実行するか、攻撃が試みられた場合にそれを阻止する事後対応型のアクションを実行することができます。 Azure Security Center の **[Id とアクセス]** リソース セキュリティ セクションに表示される推奨事項の例を次に示します。
 
-> [!NOTE]
-> ID とアクセスの監視はプレビュー段階であり、Security Center の Standard レベルでのみ利用できます。 Security Center の価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。
->
+- サブスクリプションで所有者アクセス許可を持つアカウントに対して MFA を有効にする必要がある
+- 最大 3 人の所有者をサブスクリプションに対して指定する必要がある
+- 非推奨のアカウントをサブスクリプションから削除する必要がある
+- 読み取りアクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある
 
-ID は企業のコントロール プレーンであり、ID の保護は最優先事項です。 セキュリティ境界は、ネットワーク境界から ID 境界へと発展してきました。 セキュリティにおいては、ネットワークの保護よりもデータの保護、アプリとユーザーのセキュリティ管理が重要になってきています。 最近では、クラウドに移行するデータやアプリが増加しているため、ID が新たな境界線となっています。
-
-ID アクティビティを監視することにより、インシデントが発生する前に事前対応型のアクションを実行するか、攻撃が試みられた場合にそれを阻止する事後対応型のアクションを実行することができます。 [Identity & Access]\(ID およびアクセス\) ダッシュボードには、次のような推奨事項が表示されます。
-
-- サブスクリプションで特権アカウントの MFA を有効にする
-- 書き込みアクセス許可を持つ外部アカウントをサブスクリプションから削除する
-- 外部の特権アカウントをサブスクリプションから削除する
+ここに記載されている推奨事項の完全な一覧については、「[ID とアクセスの推奨事項](recommendations-reference.md#recs-identity)」を参照してください。
 
 > [!NOTE]
 > サブスクリプションのアカウント数が 600 を超える場合、Security Center はサブスクリプションに対して ID の推奨事項を実行できません。 実行されない推奨事項については、後述する「利用できない評価」を参照してください。
 Security Center は、クラウド ソリューション プロバイダー (CSP) パートナーの管理者エージェントに対して ID の推奨事項を実行できません。
 >
 
-## <a name="monitor-identity-and-access"></a>ID とアクセスを監視する
 
-ID とアクセスに関する特定された問題の一覧を開くには、Security Center サイドバー ( **[リソース]** の下)、または [概要] ページで **[Identity & Access]\(ID およびアクセス\)** を選択します。 
+すべての ID とアクセスの推奨事項は、 **[推奨事項]** ページの 2 つのセキュリティ コントロール内で利用できます。
 
-**[Identity & Access]\(ID およびアクセス\)** には 2 つのタブがあります。
+- アクセスおよびアクセス許可の管理 
+- MFA の有効化
 
-- **概要**: Security Center によって特定された推奨事項。
-- **サブスクリプション**: サブスクリプションと各サブスクリプションの現在のセキュリティ状態の一覧。
+![ID とアクセスに関連する推奨事項がある 2 つのセキュリティ コントロール](media/security-center-identity-access/two-security-controls-for-identity-and-access.png)
 
-[![[Identity & Access]\(ID およびアクセス\)](./media/security-center-identity-access/identity-dashboard.png)](./media/security-center-identity-access/identity-dashboard.png#lightbox)
 
-### <a name="overview-section"></a>[概要] セクション
-**[概要]** には、推奨事項の一覧が表示されます。 最初の列には、推奨事項が一覧表示されます。 2 列目には、その推奨事項の影響を受けるサブスクリプションの合計数が表示されます。 3 列目には、問題の重大度が表示されます。
+## <a name="enable-multi-factor-authentication-mfa"></a>多要素認証 (MFA) を有効にする
 
-1. 推奨事項を選択します。 推奨事項のウィンドウが開き、次の内容が表示されます。
+MFA を有効にするには、[Azure Active Directory (AD) テナントのアクセス許可](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)が必要です。 
 
-   - 推奨事項の説明
-   - 異常な状態と正常な状態のサブスクリプションの一覧
-   - 評価に失敗したためにスキャンされなかったリソース、またはリソースが Free レベルで実行されているサブスクリプションのリソースで評価対象ではないリソースの一覧
+- AD の Premium Edition を使用している場合は、[条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)を使用して MFA を有効にします。
 
-    [![推奨事項ウィンドウ](./media/security-center-identity-access/select-subscription.png)](./media/security-center-identity-access/select-subscription.png#lightbox)
+- AD Free Edition のユーザーは、[AD のドキュメント](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)に記載されているように、Azure Active Directory 内で**セキュリティの既定値群**を有効にできますが、MFA を有効にするための Security Center 推奨事項は引き続き表示されます。
 
-1. さらに詳細を確認するには、一覧のサブスクリプションを選択します。
-
-### <a name="subscriptions-section"></a>[サブスクリプション] セクション
-**[サブスクリプション]** には、サブスクリプションの一覧が表示されます。 最初の列には、サブスクリプションが一覧表示されます。 2 列目には、各サブスクリプションの推奨事項の合計数が表示されます。 3 列目には、問題の重大度が表示されます。
-
-[![[サブスクリプション] タブ](./media/security-center-identity-access/subscriptions.png)](./media/security-center-identity-access/subscriptions.png#lightbox)
-
-1. サブスクリプションを選択します。 3 つのタブがある概要ビューが開きます。
-
-   - **推奨事項**: Security Center によって実行され、失敗した評価に基づいて表示されます。
-   - **評価に合格しました**: Security Center によって実行され、合格した評価の一覧。
-   - **利用できない評価**: エラーのため、またはアカウント数が 600 を超えるサブスクリプションのため、実行に失敗した評価の一覧。
-
-   **[推奨事項]** には、選択したサブスクリプションの推奨事項と各推奨事項の重大度の一覧が表示されます。
-
-   [![選択したサブスクリプションの推奨事項](./media/security-center-identity-access/recommendations.png)](./media/security-center-identity-access/recommendations.png#lightbox)
-
-1. 推奨事項を選択すると、推奨事項の説明、異常な状態と正常な状態のサブスクリプションの一覧、スキャンされていないリソースの一覧が表示されます。
-
-   [![推奨事項の説明](./media/security-center-identity-access/designate.png)](./media/security-center-identity-access/designate.png#lightbox)
-
-   **[評価に合格しました]** には、合格した評価の一覧が表示されます。  これらの評価の重大度は常に緑色です。
-
-   [![評価に合格しました](./media/security-center-identity-access/passed-assessments.png)](./media/security-center-identity-access/passed-assessments.png#lightbox)
-
-1. 一覧から合格した評価を選択すると、評価の説明と正常な状態のサブスクリプションの一覧が表示されます。 異常な状態のサブスクリプションのタブがあり、失敗したすべてのサブスクリプションの一覧が表示されます。
-
-   [![評価に合格しました](./media/security-center-identity-access/remove.png)](./media/security-center-identity-access/remove.png#lightbox)
-
-> [!NOTE]
-> MFA を必要とするが、除外が設定された条件付きアクセス ポリシーを作成している場合、そのポリシーは一部のユーザーを MFA なしで Azure にサインインできるようにするため、Security Center MFA の推奨事項の評価では非準拠と見なされます。
 
 ## <a name="next-steps"></a>次のステップ
 その他の Azure リソースの種類に適用される推奨事項の詳細については、次の記事をご覧ください。

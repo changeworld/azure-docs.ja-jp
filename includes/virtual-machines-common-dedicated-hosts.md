@@ -5,20 +5,19 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/26/2019
+ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 3369dc7cde7082659df556e008adb5e45b4c011c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 2daaf9bbdf90029f0aad4333ab94e2d1d1d3d7ff
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246204"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129557"
 ---
 ## <a name="limitations"></a>制限事項
 
 - 仮想マシン スケール セットは、現在、専用ホストではサポートされていません。
-- 次の VM シリーズがサポートされています。DSv3、ESv3、Fsv2。 
 
 ## <a name="benefits"></a>メリット 
 
@@ -99,19 +98,17 @@ Azure で VM を作成するときに、VM に使用する専用ホストを選�
 
 詳しくは、「[Azure 専用ホストの価格](https://aka.ms/ADHPricing)」をご覧ください。
 
-また、Azure Dedicated Host](../articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md)の[予約インスタンスを使用してコストを節約することもできます。
+また、Azure Dedicated Host の [予約インスタンスを使用してコストを節約することもできます](../articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md)。
  
-## <a name="vm-families-and-hardware-generations"></a>VM ファミリとハードウェアの世代
+## <a name="sizes-and-hardware-generations"></a>サイズとハードウェアの世代
 
-SKU はホストに対して定義され、VM サイズ シリーズとタイプを表します。 同じサイズ シリーズであれば、1 つのホスト内に異なるサイズの複数の VM を混在させることができます。 タイプは、現在リージョンで利用可能なハードウェアの世代です。
+SKU はホストに対して定義され、VM サイズ シリーズとタイプを表します。 同じサイズ シリーズであれば、1 つのホスト内に異なるサイズの複数の VM を混在させることができます。 
 
-同じ VM シリーズの異なる `types` では、CPU ベンダーが異なり、CPU の世代とコアの数が異なります。
+"*種類*" はハードウェアの世代です。 同じ VM シリーズの異なるハードウェアの種類では、CPU ベンダーが異なり、CPU の世代とコアの数が異なります。 
 
-詳しくは、ホストの[価格のページ](https://aka.ms/ADHPricing) を参照してください。
+サイズとハードウェアの種類はリージョンによって異なります。 詳しくは、ホストの[価格のページ](https://aka.ms/ADHPricing) を参照してください。
 
-Dedicated Host は、次のホスト SKU\types をサポートします: DSv3_Type1 と ESv3_Type1
 
- 
 ## <a name="host-life-cycle"></a>ホストのライフ サイクル
 
 

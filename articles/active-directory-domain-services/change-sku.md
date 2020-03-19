@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 18395f2b839aef88491f71aeed660eb2ce011e2c
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: b65310569e95173b88dd0aa0dfe1dbacd86cc8fc
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77614234"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126709"
 ---
 # <a name="change-the-sku-for-an-existing-azure-ad-domain-services-managed-domain"></a>既存の Azure AD Domain Services マネージド ドメインの SKU を変更する
 
-Azure Active Directory Domain Services (Azure AD DS) で使用できるパフォーマンスと機能は、SKU の種類によって変わります。 このような機能の違いには、バックアップの頻度や、一方向の送信フォレストの信頼の最大数 (現在はプレビュー段階) などがあります。 マネージド ドメインを作成するときに SKU を選択する必要があり、マネージド ドメインのデプロイ後にビジネス ニーズが変わったときに SKU を切り替えることができます。 ビジネス要件の変更には、バックアップ頻度を増やしたり、追加のフォレストの信頼を作成したりするニーズなどがあります。 さまざまな SKU の制限と価格の詳細については、[Azure AD DS SKU の概念][concepts-sku]と [Azure AD DS の価格][pricing]に関するページを参照してください。
+Azure Active Directory Domain Services (Azure AD DS) で使用できるパフォーマンスと機能は、SKU の種類によって変わります。 このような機能の違いには、バックアップの頻度や、一方向の送信フォレストの信頼の最大数 (現在はプレビュー段階) などがあります。 マネージド ドメインを作成するときに SKU を選択する必要があり、マネージド ドメインのデプロイ後にビジネス ニーズが変わったときに SKU を上や下に切り替えることができます。 ビジネス要件の変更には、バックアップ頻度を増やしたり、追加のフォレストの信頼を作成したりするニーズなどがあります。 さまざまな SKU の制限と価格の詳細については、[Azure AD DS SKU の概念][concepts-sku]と [Azure AD DS の価格][pricing]に関するページを参照してください。
 
 この記事では、Azure portal を使用して、既存の Azure AD DS マネージド ドメインの SKU を変更する方法について説明します。
 
@@ -36,9 +36,12 @@ Azure Active Directory Domain Services (Azure AD DS) で使用できるパフォ
 
 ## <a name="sku-change-limitations"></a>SKU の変更の制限
 
-リソース フォレスト (現在プレビュー段階) を使用し、Azure AD DS からオンプレミスの AD DS 環境への一方向の送信フォレストの信頼を作成する場合、SKU の変更操作にはいくつかの制限があります。 *Premium* および *Enterprise* SKU には、作成できる信頼の数に関する制限が定義されています。 現在構成されている上限よりも低い上限の SKU に変更することはできません。
+Azure AD DS マネージド ドメインをデプロイした後で、SKU を上や下に変更できます。 ただし、リソース フォレスト (現在プレビュー段階) を使用し、Azure AD DS からオンプレミスの AD DS 環境への一方向の送信フォレストの信頼を作成する場合、SKU の変更操作にはいくつかの制限があります。 *Premium* および *Enterprise* SKU には、作成できる信頼の数に関する制限が定義されています。 現在構成されている上限よりも低い上限の SKU に変更することはできません。
 
-たとえば、*Premium* SKU に 2 つのフォレストの信頼を作成した場合、*Standard* SKU に変更することはできません。 *Standard* SKU は、フォレストの信頼をサポートしていません。 また、*Premium* SKU に 7 つの信頼を作成した場合、*Enterprise* SKU に変更することはできません。 *Enterprise SKU* は、最大 5 つの信頼をサポートしています。
+次に例を示します。
+
+* *Premium* SKU に 2 つのフォレストの信頼を作成した場合、*Standard* SKU に変更することはできません。 *Standard* SKU は、フォレストの信頼をサポートしていません。
+* また、*Premium* SKU に 7 つの信頼を作成した場合、*Enterprise* SKU に変更することはできません。 *Enterprise SKU* は、最大 5 つの信頼をサポートしています。
 
 これらの制限の詳細については、[Azure AD DS SKU の機能と制限][concepts-sku]に関する記事を参照してください。
 

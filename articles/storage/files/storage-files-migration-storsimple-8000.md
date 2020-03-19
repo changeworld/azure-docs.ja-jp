@@ -4,21 +4,26 @@ description: StorSimple 8100 または 8600 アプライアンスを Azure File 
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/02/2020
+ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 78100a5dd38b211f6b0241d5a0bac10cf86b09f6
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: d937852ace8d9bf39495f1fdd92e6edfc4452a0a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250942"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943587"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 および 8600 から Azure File Sync への移行
 
-StorSimple 8000 シリーズは 2 つの異なる SKU を表し、これらの SKU のいずれかから Azure File Sync 環境にデータを移行することができます。 この記事では、両方のアプライアンスの Azure File Sync への移行について説明します。また、Azure File Sync への移行を成功させるために必要な背景知識と移行手順について説明します。
+StorSimple 8000 シリーズは、8100 または 8600 の物理オンプレミス アプライアンス、およびそれらのクラウド サービス コンポーネントによって表されます。 これらのアプライアンスのいずれかから Azure File Sync 環境にデータを移行することができます。 Azure File Sync は、StorSimple アプライアンスの移行先となる、既定の戦略的な長期 Azure サービスです。
+
+StorSimple 8000 シリーズは 2022 年 12 月に[提供終了](https://support.microsoft.com/en-us/lifecycle/search?alpha=StorSimple%208000%20Series)となります。 できるだけ早く移行の計画を開始することが重要です。 この記事では、Azure File Sync への移行を成功させるために必要な背景知識と移行手順について説明します。 
 
 ## <a name="azure-file-sync"></a>Azure File Sync
+
+> [!IMPORTANT]
+> Microsoft はお客様の移行を支援できるよう取り組んでいます。 カスタマイズした移行計画について、および移行中のサポートについては、AzureFilesMigration@microsoft .com にメールをお送りください。
 
 Azure File Sync は、次の 2 つの主要なコンポーネントに基づく Microsoft のクラウド サービスです。
 
@@ -238,10 +243,10 @@ Azure File Sync は、マウントされた iSCSI StorSimple ボリュームか�
 > [!IMPORTANT]
 > これが機能するには、Azure File Sync を構成する前に、サーバーにレジストリ キーを設定する必要があります。
 
-1. VM のシステム ドライブに新しいディレクトリを作成します。 Azure File Sync 情報は、マウントされたボリューム クローンではなく、ここに保持する必要があります。 例: `“C:\syncmetadata”`
+1. VM のシステム ドライブに新しいディレクトリを作成します。 Azure File Sync 情報は、マウントされたボリューム クローンではなく、ここに保持する必要があります。 例: `"C:\syncmetadata"`
 2. regedit を開き、`HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync` のレジストリ ハイブを見つけます。
 3. 次の名前の文字列型の新しいキーを作成します。***MetadataRootPath***
-4. システム ボリュームに作成したディレクトリへの完全なパスを設定します。例: `C:\syncmetadata”`
+4. システム ボリュームに作成したディレクトリへの完全なパスを設定します。例: `C:\syncmetadata"`
 
 ### <a name="configure-azure-file-sync-on-the-azure-vm"></a>Azure VM 上で Azure File Sync を構成する
 

@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 08/22/2019
-ms.openlocfilehash: 05a466d52d89fa021235c10e7187900c350b5e50
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.date: 03/05/2020
+ms.openlocfilehash: 24ca37f5610589ae675a47a1dd966871b3004800
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086936"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851261"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>カスタム Docker ベース イメージを使用してモデルをデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -48,7 +48,7 @@ Azure Machine Learning には既定の Docker ベース イメージが用意さ
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * [Azure Machine Learning 用 CLI 拡張機能](reference-azure-machine-learning-cli.md)。
 * インターネット上でアクセスできる [Azure Container Registry](/azure/container-registry) またはその他の Docker レジストリ。
-* このドキュメントの手順は、モデルのデプロイの一部として __推論構成__ オブジェクトの作成と使用に慣れていることを前提としています。 詳細については、[デプロイ先と方法](how-to-deploy-and-where.md#prepare-deployment-artifacts)に関するページの「デプロイを準備する」セクションを参照してください。
+* このドキュメントの手順は、モデルのデプロイの一部として __推論構成__ オブジェクトの作成と使用に慣れていることを前提としています。 詳細については、[デプロイ先と方法](how-to-deploy-and-where.md#prepare-to-deploy)に関するページの「デプロイを準備する」セクションを参照してください。
 
 ## <a name="create-a-custom-base-image"></a>カスタム ベース イメージを作成する
 
@@ -155,6 +155,9 @@ Azure Machine Learning を使用してモデルのトレーニングまたはデ
     az acr build --image myimage:v1 --registry <registry_name> --file Dockerfile .
     ```
 
+    > [!TIP]
+    > この例では、`:v1` のタグがイメージに適用されます。 タグが指定されない場合は、`:latest` のタグが適用されます。
+
     ビルド プロセス中に、情報はコマンド ラインに戻るようにストリーミングされます。 ビルドが成功すると、次のようなテキストのメッセージが表示されます。
 
     ```text
@@ -170,6 +173,10 @@ Azure Container Registry に既存のイメージをアップロードする詳�
 カスタム イメージを使用するには、次の情報が必要です。
 
 * __イメージ名__。 たとえば、`mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` は Microsoft が提供する基本的な Docker イメージへのパスです。
+
+    > [!IMPORTANT]
+    > 作成したカスタム イメージに対しては、必ず、イメージに使用したタグを含めてください。 たとえば、`:v1`などの特定のタグを使ってイメージを作成した場合などです。 イメージの作成時に特定のタグを使用しなかった場合は、`:latest` のタグが適用済みになっています。
+
 * イメージが __プライベート リポジトリ__ 内にある場合は、次の情報が必要です。
 
     * レジストリの __アドレス__。 たとえば、「 `myregistry.azureecr.io` 」のように入力します。

@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83b86b9bc5c09cc9f97a320e3019ddea68434309
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 3a0a5d39a7cb2162186291ea534a623ef45c40d4
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616467"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78675623"
 ---
 # <a name="operating-system-upgrade"></a>オペレーティング システムのアップグレード
 このドキュメントでは､HANA ラージ インスタンスでのオペレーティング システムについての詳細を説明します｡
@@ -58,11 +58,11 @@ HLI ユニットのプロビジョニング中に、Microsoft の運用チーム
   適切なネットワークパフォーマンスとシステムの安定性を確保するために、次の互換性表に示すように、OS 固有の適切なバージョンの eNIC および fNIC ドライバーがインストールされていることを確認することをお勧めします。 サーバーは、互換性のあるバージョンの顧客に配信されます。 OS/カーネルの修正プログラムの適用中に、ドライバーが既定のドライバー バージョンにロールバックされる場合があります。 OS/カーネルの修正プログラム適用操作の実行中に、適切なドライバーのバージョンが実行されていることを確認します。
        
       
-  |  OS ベンダー    |  OS パッケージ バージョン     |  eNIC ドライバー  |  fNIC ドライバー |
-  |---------------|-------------------------|---------------|--------------|
-  |   SuSE        |  SLES 12 SP2            |   2.3.0.40    |   1.6.0.34   |
-  |   SuSE        |  SLES 12 SP3            |   2.3.0.44    |   1.6.0.36   |
-  |   Red Hat     |  RHEL 7.2               |   2.3.0.39    |   1.6.0.34   |
+  |  OS ベンダー    |  OS パッケージ バージョン     |  Firmware Version  |  eNIC ドライバー |  fNIC ドライバー | 
+  |---------------|-------------------------|--------------------|--------------|--------------|
+  |   SuSE        |  SLES 12 SP2            |   3.1.3h           |  2.3.0.40    |   1.6.0.34   |
+  |   SuSE        |  SLES 12 SP3            |   3.1.3h           |  2.3.0.44    |   1.6.0.36   |
+  |   Red Hat     |  RHEL 7.2               |   3.1.3h           |  2.3.0.39    |   1.6.0.34   |
  
 
 ### <a name="commands-for-driver-upgrade-and-to-clean-old-rpm-packages"></a>ドライバーのアップグレードおよび古い rpm パッケージをクリーニングするためのコマンド

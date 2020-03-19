@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 03/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5386cace7191be60534f0d2fbf4a85b592d1ecdd
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 762f62fa0901672c447da42f416e5b003e7419b2
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151631"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127300"
 ---
 # <a name="about-p2s-vpn-client-profiles"></a>P2S VPN クライアント プロファイルについて
 
@@ -60,12 +60,12 @@ zip ファイルを解凍します。 このファイルには、次のフォル
 
 ## <a name="folder-contents"></a>フォルダーの内容
 
-* **OpenVPN フォルダー**には、*ovpn* プロファイルが含まれています。このプロファイルは、キーと証明書を含めるために変更する必要があります。 詳細については、「[Azure VPN Gateway 用に OpenVPN クライアントを構成する](vpn-gateway-howto-openvpn-clients.md#windows)」をご覧ください。
+* **OpenVPN フォルダー**には、*ovpn* プロファイルが含まれています。このプロファイルは、キーと証明書を含めるために変更する必要があります。 詳細については、「[Azure VPN Gateway 用に OpenVPN クライアントを構成する](vpn-gateway-howto-openvpn-clients.md#windows)」をご覧ください。 VPN ゲートウェイで Azure AD 認証が選択されている場合、このフォルダーは zip ファイルに存在しません。 代わりに、azurevpnconfig.xml は AzureVPN フォルダーにあります。
 
 * **generic フォルダー**には、パブリック サーバー証明書とVpnSettings.xml ファイルが含まれています。 VpnSettings.xml ファイルには、汎用クライアントの構成に必要な情報が含まれています。
 
 * ダウンロードした ZIP ファイルには、**WindowsAmd64** および **WindowsX86** フォルダーも含まれている場合があります。 これらのフォルダーには、Windows クライアント用の SSTP および IKEv2 のインストーラーが含まれています。 それらをインストールするには、クライアントの管理者権限が必要です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ポイント対サイトの詳細については、[ポイント対サイト](point-to-site-about.md)に関する記事をご覧ください。

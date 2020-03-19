@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: f496f6c06d36f817b0a933bdc68d5c53f308e3f2
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: e62f6f8df51c6acf4e2ad8e28e431d264c2c99e8
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78192627"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037238"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Storage を使用する
 
@@ -25,11 +25,11 @@ Apache Hadoop は、既定のファイル システムの概念をサポート�
 > [!IMPORTANT]  
 > ストレージ アカウントの種類 **BlobStorage** は、HDInsight クラスターのセカンダリ ストレージとしてのみ使用できます。
 
-| Storage アカウントの種類 | サポートされているサービス | サポートされているパフォーマンス レベル | サポートされているアクセス層 |
-|----------------------|--------------------|-----------------------------|------------------------|
-| StorageV2 (汎用 v2)  | BLOB     | Standard                    | ホット、クール、アーカイブ\*   |
-| Storage (汎用 V1)   | BLOB     | Standard                    | 該当なし                    |
-| BlobStorage                    | BLOB     | Standard                    | ホット、クール、アーカイブ\*   |
+| Storage アカウントの種類 | サポートされているサービス | サポートされているパフォーマンス レベル |サポートされていないパフォーマンス レベル| サポートされているアクセス層 |
+|----------------------|--------------------|-----------------------------|---|------------------------|
+| StorageV2 (汎用 v2)  | BLOB     | Standard                    |Premium| ホット、クール、アーカイブ\*   |
+| Storage (汎用 V1)   | BLOB     | Standard                    |Premium| 該当なし                    |
+| BlobStorage                    | BLOB     | Standard                    |Premium| ホット、クール、アーカイブ\*   |
 
 ビジネス データを格納するために既定の BLOB コンテナーを使用することはお勧めできません。 ストレージ コストを削減するために、既定の BLOB コンテナーの使用後、コンテナーを毎回削除することをお勧めします。 既定のコンテナーには、アプリケーション ログとシステム ログが格納されます。 コンテナーを削除する前に、ログを取り出してください。
 

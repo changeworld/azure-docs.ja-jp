@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: 14b04f7d6068863c79c7060d29b58232be1f40cb
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 03/10/2020
+ms.openlocfilehash: 8f22b1ff97826dc318794aca58973b1276e74209
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201800"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087867"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブの互換性レベル
 
@@ -25,11 +25,9 @@ ms.locfileid: "77201800"
 
 Azure Stream Analytics では現在、次の 3 つの互換性レベルがサポートされています。
 
-* 1.0 - 以前の動作
-* 1.1 - 既定の動作
+* 1.0 - 元の互換性レベル。数年前の Azure Stream Analytics の一般提供時に導入されました。
+* 1.1 - 以前の動作
 * 1.2 - 最近の改善による最新の動作
-
-元の互換性レベル 1.0 は、数年前の Azure Stream Analytics の一般公開時に導入されました。
 
 新しい Stream Analytics ジョブを作成する場合は、最新の互換性レベルを使用して作成することをお勧めします。 その後に追加される変更や複雑さを避けるために、最新の動作に基づいてジョブの設計を開始ししてください。
 

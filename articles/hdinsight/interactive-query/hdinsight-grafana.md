@@ -7,24 +7,24 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/27/2019
-ms.openlocfilehash: 6027978b50ca72de5d18ff474b36814e22a94e85
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: cd515bfd1dc57e78a041ed96686e1ba692bf6d3f
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552221"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082865"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Azure HDInsight で Grafana にアクセスする
 
 [Grafana](https://grafana.com/) は、人気のあるオープン ソースのグラフとダッシュボードのビルダーです。 Grafana は豊富な機能を備えています。カスタマイズ可能で共有可能なダッシュボードを作成できるだけでなく、テンプレート化/スクリプト化されたダッシュボード、LDAP の統合、複数のデータ ソースなどの機能があります。
 
-現在、Azure HDInsight では、Grafana は HBase、Kafka、および Interactive Query のクラスターの種類でサポートされています。 Enterprise Security Pack が有効なクラスターではサポートされていません。
+現在、Azure HDInsight では、Grafana は Spark、HBase、Kafka、および Interactive Query のクラスターの種類でサポートされています。 Enterprise Security Pack が有効なクラスターではサポートされていません。
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
 ## <a name="create-an-apache-hadoop-cluster"></a>Apache Hadoop クラスターを作成する
 
-[Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照してください。 **[クラスターの種類]** は、 **[Kafka]** 、 **[HBase]** 、または **[Interactive Query]** を選択します。
+[Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照してください。 **[クラスターの種類]** では、 **[Spark]** 、 **[Kafka]** 、 **[HBase]** 、または **[Interactive Query]** を選択します。
 
 ## <a name="access-the-grafana-dashboard"></a>Grafana ダッシュボードにアクセスする
 
@@ -40,7 +40,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 このアプリケーションを引き続き使用しない場合は、次の手順で作成したクラスターを削除します。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. 上部の**検索**ボックスに「**HDInsight**」と入力します。
 

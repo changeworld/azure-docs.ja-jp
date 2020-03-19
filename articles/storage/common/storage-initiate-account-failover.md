@@ -9,12 +9,12 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7529cfbd0ab75d0113e5cea666bc04aa1b15d30b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 76e34736238273f2af3fccae0ac2b5ed0ff491f0
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157712"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128331"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>ストレージ アカウントのフェールオーバー (プレビュー) を開始する
 
@@ -31,7 +31,6 @@ ms.locfileid: "77157712"
 
 ストレージ アカウントでアカウントのフェールオーバーを実行するには、事前に次の手順を完了しておく必要があります。
 
-- アカウントのフェールオーバー プレビューに登録します。 登録方法については、「[プレビューについて](storage-disaster-recovery-guidance.md#about-the-preview)」をご覧ください。
 - お使いのストレージ アカウントが、geo 冗長ストレージ (GRS) または読み取りアクセス geo 冗長ストレージ (RA-GRS) を使用するように構成されていることを確認します。 geo 冗長ストレージの詳細については、「[Azure Storage の冗長性](storage-redundancy.md)」をご覧ください。
 
 ## <a name="important-implications-of-account-failover"></a>アカウントのフェールオーバーの重要な影響

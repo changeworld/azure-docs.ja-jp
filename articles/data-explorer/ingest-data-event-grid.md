@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: a07a5a5956d8ea295d269d81ed264177bc8805f2
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 47870410741cf96e289014fab5a9c2eab26759b1
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424985"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096419"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Event Grid の通知をサブスクライブすることで Azure Data Explorer に BLOB を取り込む
 
@@ -118,7 +118,7 @@ Azure Data Explorer で、Event Hubs のデータの送信先となるテーブ�
      **設定** | **推奨値** | **フィールドの説明**
     |---|---|---|
     | テーブル | *TestTable* | **TestDatabase** に作成したテーブル。 |
-    | データ形式 | *JSON* | サポートされている形式は、Avro、CSV、JSON、MULTILINE JSON、PSV、SOH、SCSV、TSV、および TXT です。 サポートされている圧縮オプションは、Zip と GZip です。 |
+    | データ形式 | *JSON* | サポートされている形式は、Avro、CSV、JSON、MULTILINE JSON、PSV、SOH、SCSV、TSV、RAW、TXT です。 サポートされている圧縮オプションは、Zip と GZip です。 |
     | 列マッピング | *TestMapping* | **TestDatabase** に作成したマッピング。受信 JSON データを **TestTable** の列名とデータ型にマッピングします。|
     | | |
     
@@ -150,13 +150,32 @@ Azure Storage リソースを操作するいくつかの基本的な Azure CLI �
     az storage container create --name $container_name
 
     echo "Uploading the file..."
-    az storage blob upload --container-name $container_name --file $file_to_upload --name $blob_name
+    az storage blob upload --container-name $container_name --file $file_to_upload --name $blob_name --metadata "rawSizeBytes=1024"
 
     echo "Listing the blobs..."
     az storage blob list --container-name $container_name --output table
 
     echo "Done"
 ```
+
+> [!NOTE]
+> インジェストのパフォーマンスを最高にするには、インジェストのために送信される圧縮された BLOB の "*圧縮されていない状態*" でのサイズを伝える必要があります。 Event Grid の通知には基本情報しか含まれていないため、サイズ情報は明示的に伝達する必要があります。 圧縮されていないサイズの情報は、BLOB メタデータの `rawSizeBytes` プロパティに "*圧縮されていない*" データ サイズ (バイト単位) を設定することで提供できます。
+
+### <a name="ingestion-properties"></a>インジェストのプロパティ
+
+BLOB メタデータを使用して、BLOB インジェストの[インジェストのプロパティ](https://docs.microsoft.com/azure/kusto/management/data-ingestion/#ingestion-properties)を指定できます。
+
+次のプロパティを設定できます。
+
+|**プロパティ** | **プロパティの説明**|
+|---|---|
+| `rawSizeBytes` | 未加工の (圧縮されていない) データのサイズ。 Avro/ORC/Parquet の場合、これは形式固有の圧縮が適用される前のサイズです。|
+| `kustoTable` |  既存のターゲット テーブルの名前。 [`Data Connection`] ブレードでの [`Table`] の設定をオーバーライドします。 |
+| `kustoDataFormat` |  データ形式。 [`Data Connection`] ブレードでの [`Data format`] の設定をオーバーライドします。 |
+| `kustoIngestionMappingReference` |  使用する既存のインジェスト マッピングの名前。 [`Data Connection`] ブレードでの [`Column mapping`] の設定をオーバーライドします。|
+| `kustoIgnoreFirstRecord` | `true` に設定した場合、Kusto で BLOB の最初の行が無視されます。 表形式のデータ (CSV、TSV など) でヘッダーを無視するために使用します。 |
+| `kustoExtentTags` | 結果のエクステントに添付される[タグ](/azure/kusto/management/extents-overview#extent-tagging)を表す文字列。 |
+| `kustoCreationTime` |  ISO 8601 の文字列として書式設定されている、BLOB の [$IngestionTime](/azure/kusto/query/ingestiontimefunction?pivots=azuredataexplorer) をオーバーライドします。 バックフィルに使用します。 |
 
 > [!NOTE]
 > Azure Data Explorer では、BLOB 投稿の取り込みは削除されません。

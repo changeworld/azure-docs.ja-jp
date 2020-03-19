@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
-ms.openlocfilehash: d7f9527aa5aa3353dc9087f4bcc5f3a5fb241637
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 048e5072c592cf2de32e533014c99034572a1c47
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184555"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082899"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>HSM で保護されたキーを Key Vault にインポートする
 
@@ -31,10 +31,19 @@ Azure Key Vault の使用時にさらに安心感を高める場合、ハード�
 
 HSM で保護されたキーの Key Vault への転送は、使用する HSM に応じて 2 つの異なる方法でサポートされます。 以下の表を使用して、HSM で、独自の HSM で保護されたキーを生成してから、Azure Key Vault で使用するためにそれらを転送する場合に使用する必要がある方法を判別します。 
 
-|HSM のベンダー名|サポートされている HSM モデル|サポートされている HSM キーの転送方法|
-|---|---|---|
-|Thales|<ul><li>ファームウェアのバージョンが 7.3 以降の SafeNet Luna HSM 7 ファミリ</li></ul>| [新しい BYOK の方法を使用する (プレビュー)](hsm-protected-keys-vendor-agnostic-byok.md)|
-|nCipher|<ul><li>HSM の nShield ファミリ</li></ul>|[従来の BYOK の方法を使用する](hsm-protected-keys-legacy.md)|
+|ベンダー名|ベンダーの種類|サポートされている HSM モデル|サポートされている HSM キーの転送方法|
+|---|---|---|---|
+|nCipher|Manufacturer|<ul><li>HSM の nShield ファミリ</li></ul>|[従来の BYOK の方法を使用する](hsm-protected-keys-legacy.md)|
+|Thales|Manufacturer|<ul><li>ファームウェアのバージョンが 7.3 以降の SafeNet Luna HSM 7 ファミリ</li></ul>| [新しい BYOK の方法を使用する (プレビュー)](hsm-protected-keys-vendor-agnostic-byok.md)|
+|Fortanix|サービスとしての HSM|<ul><li>Self-Defending Key Management Service (SDKMS)</li></ul>|[新しい BYOK の方法を使用する (プレビュー)](hsm-protected-keys-vendor-agnostic-byok.md)|
+
+
+
+
+
+
+
+
 
 
 ## <a name="next-steps"></a>次のステップ

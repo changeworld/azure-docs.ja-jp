@@ -9,12 +9,12 @@ ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 950580048f0496fd8436901938a5b6768c61bab6
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: e27135d09da7060f2a948e37f6026fe66fbef5b3
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132089"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096615"
 ---
 # <a name="set-directory-level-inactivity-timeout"></a>ディレクトリ レベルの非アクティブ タイムアウトの設定
 
@@ -43,7 +43,7 @@ ms.locfileid: "77132089"
 この設定は、新しいセッションに対して有効になります。 既にサインインしているユーザーには、すぐには適用されません。
 
 > [!NOTE]
-> 管理者がディレクトリ レベルのタイムアウト設定を構成している場合、ユーザーはポリシーをオーバーライドして、独自の非アクティブ サインアウト期間を設定できます。 ただし、ユーザーは、ディレクトリ レベルで設定されている時間よりも短い時間間隔を選択する必要があります。
+> グローバル管理者がディレクトリ レベルのタイムアウト設定を構成している場合、ユーザーはポリシーをオーバーライドして、独自の非アクティブ サインアウト期間を設定できます。 ただし、ユーザーは、グローバル管理者によってディレクトリ レベルで設定されている時間より短い時間間隔を選択する必要があります。
 >
 
 ## <a name="next-steps"></a>次のステップ

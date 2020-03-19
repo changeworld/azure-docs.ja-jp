@@ -2,13 +2,13 @@
 title: テンプレートでのユーザー定義関数
 description: Azure Resource Manager テンプレートでユーザー定義関数を定義して使用する方法について説明します。
 ms.topic: conceptual
-ms.date: 09/05/2019
-ms.openlocfilehash: 58b9ba7b162736329cf775e2be5a47bfcae0a4ca
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 03/09/2020
+ms.openlocfilehash: 2c09572a460aa028b23987033d2b77e2aad8a0cd
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122476"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943221"
 ---
 # <a name="user-defined-functions-in-azure-resource-manager-template"></a>Azure Resource Manager テンプレートのユーザー定義関数
 
@@ -18,7 +18,7 @@ ms.locfileid: "76122476"
 
 ## <a name="define-the-function"></a>関数を定義する
 
-テンプレート関数との名前の競合を回避するために、お使いの関数には名前空間の値が必要です。 次の例は、ストレージ アカウント名を返す関数を示しています。
+テンプレート関数との名前の競合を回避するために、お使いの関数には名前空間の値が必要です。 次の例は、一意の名前を返す関数を示しています。
 
 ```json
 "functions": [
@@ -44,23 +44,53 @@ ms.locfileid: "76122476"
 
 ## <a name="use-the-function"></a>関数を使用する
 
-次の例は、自分で定義した関数を呼び出す方法を示しています。
+次の例は、ユーザー定義関数を含むテンプレートを示しています。 この関数を使用して、ストレージ アカウントの一意の名前を取得します。 このテンプレートには、関数にパラメーターとして渡す **storageNamePrefix** という名前のパラメーターがあります。
 
 ```json
-"resources": [
+{
+ "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+ "contentVersion": "1.0.0.0",
+ "parameters": {
+   "storageNamePrefix": {
+     "type": "string",
+     "maxLength": 11
+   }
+ },
+ "functions": [
   {
-    "name": "[contoso.uniqueName(parameters('storageNamePrefix'))]",
-    "apiVersion": "2016-01-01",
-    "type": "Microsoft.Storage/storageAccounts",
-    "location": "South Central US",
-    "tags": {},
-    "sku": {
-      "name": "Standard_LRS"
-    },
-    "kind": "Storage",
-    "properties": {}
+    "namespace": "contoso",
+    "members": {
+      "uniqueName": {
+        "parameters": [
+          {
+            "name": "namePrefix",
+            "type": "string"
+          }
+        ],
+        "output": {
+          "type": "string",
+          "value": "[concat(toLower(parameters('namePrefix')), uniqueString(resourceGroup().id))]"
+        }
+      }
+    }
   }
-]
+],
+ "resources": [
+   {
+     "type": "Microsoft.Storage/storageAccounts",
+     "apiVersion": "2019-04-01",
+     "name": "[contoso.uniqueName(parameters('storageNamePrefix'))]",
+     "location": "South Central US",
+     "sku": {
+       "name": "Standard_LRS"
+     },
+     "kind": "StorageV2",
+     "properties": {
+       "supportsHttpsTrafficOnly": true
+     }
+   }
+ ]
+}
 ```
 
 ## <a name="limitations"></a>制限事項

@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: helohr
-ms.openlocfilehash: f38fc45411c89351eb9a50a48f22d22905ee34e6
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+manager: lizross
+ms.openlocfilehash: 2078869aef5964b30723d8b6854c4b15f0423205
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367256"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127545"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Azure Automation を使用してセッション ホストをスケーリングする
 
@@ -37,7 +38,7 @@ ms.locfileid: "77367256"
 >[!NOTE]
 >*SessionThresholdPerCPU* では、VM 上のセッション数は制限されません。 このパラメーターは、接続を負荷分散するために、どのタイミングで新しい VM を起動する必要があるかを決めるだけのものです。 セッションの数を制限するには、「[Set-RdsHostPool](/powershell/module/windowsvirtualdesktop/set-rdshostpool/)」の手順に従って、*MaxSessionLimit* パラメーターを適切に構成する必要があります。
 
-ピーク時以外の使用時間帯は、*MinimumNumberOfRDSH* パラメーターに基づいて、シャットダウンすべきセッション ホスト VM がジョブによって特定されます。 新しいセッションがホストに接続できないよう、セッション ホスト VM はドレイン モードに設定されます。 *LimitSecondsToForceLogOffUser* パラメーターを 0 以外の正の値に設定した場合は、スクリプトによって、現在サインインしているユーザーは作業内容を保存するよう通知され、構成された時間待機した後、強制的にサインアウトされます。セッション ホスト VM 上のすべてのユーザー セッションがサインアウトされると、スクリプトによって VM がシャットダウンされます。
+ピーク時以外の使用時間帯は、*MinimumNumberOfRDSH* パラメーターに基づいて、シャットダウンすべきセッション ホスト VM がジョブによって特定されます。 新しいセッションがホストに接続できないよう、セッション ホスト VM はドレイン モードに設定されます。 *LimitSecondsToForceLogOffUser* パラメーターを 0 以外の正の値に設定した場合は、ジョブによって、現在サインインしているユーザーは作業内容を保存するよう通知され、構成された時間待機した後、強制的にサインアウトされます。セッション ホスト VM 上のすべてのユーザー セッションがサインアウトされると、ジョブによって VM がシャットダウンされます。
 
 *LimitSecondsToForceLogOffUser* パラメーターを 0 に設定した場合は、指定されたグループ ポリシー内のセッション構成設定で、ユーザー セッションのサインオフを処理できるようになります。 これらのグループ ポリシーを確認するには、 **[コンピューターの構成]**  >  **[ポリシー]**  >  **[管理用テンプレート]**  >  **[Windows コンポーネント]**  >  **[ターミナル サービス]**  >  **[ターミナル サーバー]**  >  **[セッションの時間制限]** にアクセスしてください。 セッション ホスト VM にアクティブなセッションが存在する場合は、ジョブによってセッション ホスト VM は実行状態のままとなります。 アクティブなセッションが存在しない場合は、ジョブによってセッション ホスト VM はシャットダウンされます。
 
@@ -83,7 +84,9 @@ ms.locfileid: "77367256"
 3. 次のコマンドレットを実行して、Azure Automation アカウントを作成するためのスクリプトをダウンロードします。
 
      ```powershell
-     Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/wvd-scaling-script/createazureautomationaccount.ps1" -OutFile "your local machine path\ createazureautomationaccount.ps1"
+     Set-Location -Path "c:\temp"
+     $uri = "https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/wvd-scaling-script/createazureautomationaccount.ps1"
+     Invoke-WebRequest -Uri $uri -OutFile ".\createazureautomationaccount.ps1"
      ```
 
 4. 次のコマンドレットを実行して、スクリプトを実行し、Azure Automation アカウントを作成します。
@@ -175,9 +178,9 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId <appl
 
      $tenantName = Read-Host -Prompt "Enter the name of your WVD tenant"
 
-     $hostPoolName = Read-Host -Prompt "Enter the name of the host pool you’d like to scale"
+     $hostPoolName = Read-Host -Prompt "Enter the name of the host pool you'd like to scale"
 
-     $recurrenceInterval = Read-Host -Prompt "Enter how often you’d like the job to run in minutes, e.g. ‘15’"
+     $recurrenceInterval = Read-Host -Prompt "Enter how often you'd like the job to run in minutes, e.g. '15'"
 
      $beginPeakTime = Read-Host -Prompt "Enter the start time for peak hours in local time, e.g. 9:00"
 
@@ -203,7 +206,7 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId <appl
 
      $automationAccountName = Read-Host -Prompt "Enter the name of the Azure Automation Account"
 
-     $maintenanceTagName = Read-Host -Prompt "Enter the name of the Tag associated with VMs you don’t want to be managed by this scaling tool"
+     $maintenanceTagName = Read-Host -Prompt "Enter the name of the Tag associated with VMs you don't want to be managed by this scaling tool"
 
      .\createazurelogicapp.ps1 -ResourceGroupName $resourceGroupName `
        -AADTenantID $aadTenantId `

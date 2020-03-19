@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 106f83e4c8fdf33ac8752e5942dbb22a2df78693
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f2703994d3fe8765662e6a0205d63cef9327e17a
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840504"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080190"
 ---
 # <a name="image-analysis-cognitive-skill"></a>画像分析の認知スキル
 
@@ -35,7 +35,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 | パラメーター名     | 説明 |
 |--------------------|-------------|
 | defaultLanguageCode   |  結果を返す言語を示す文字列｡ サービスは､指定された言語で認識結果を返します｡ このプロパティが指定されていない場合の既定値は "en" です。 <br/><br/>サポートされている言語は以下の通りです｡ <br/>*en* - 英語 (既定) <br/> *es* - スペイン語 <br/> *ja* - 日本語 <br/> *pt* - ポルトガル語 <br/> *zh* - 簡体中国語|
-| visualFeatures |  結果として返すビジュアル フィーチャー型を示す文字列の並び｡ 有効なビジュアル フィーチャー型には以下があります｡  <ul><li>*adult* - 画像が事実上のポルノ (裸や性行為を表している)、または不快 (極端な暴力や流血を表している) かどうかを検出します｡ 性的な暗示を含むコンテンツ (わいせつコンテンツ) も検出されます。</li><li>*brands* - おおよその場所など、画像内のさまざまなブランドを検出します。 *brands* ビジュアル フィーチャーは、英語でのみ使用可能です。</li><li> *categories* - Cognitive Services の[Computer Vision のドキュメント](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)に定義されている分類に従ったイメージ コンテンツの分類です。 </li><li> *color* - アクセント カラー、主要カラー､および画像が白黒かどうかを判定します｡</li><li>*description* - サポートされる言語の完全な文章を使用して画像のコンテンツを説明します。</li><li>*faces* - 顔の有無を検出します｡ 存在する場合は､座標、性別､および年齢を生成します｡</li><li>  *imageType* - 画像がクリップ アートか線画かを検出します｡</li><li>  *objects* - おおよその場所など、画像内のさまざまなオブジェクトを検出します。 *objects* ビジュアル フィーチャーは、英語でのみ使用可能です。</li><li> *tags* - イメージのコンテンツに関係する単語の詳細な一覧のタグです｡</li></ul> ビジュアル フィーチャー名は大文字と小文字が区別されます｡|
+| visualFeatures |  結果として返すビジュアル フィーチャー型を示す文字列の並び｡ 有効なビジュアル フィーチャー型には以下があります｡  <ul><li>*adult* - 画像が事実上のポルノ (裸や性行為を表している)、または不快 (極端な暴力や流血を表している) かどうかを検出します｡ 性的な暗示を含むコンテンツ (わいせつコンテンツ) も検出されます。</li><li>*brands* - おおよその場所など、画像内のさまざまなブランドを検出します。 *brands* ビジュアル フィーチャーは、英語でのみ使用可能です。</li><li> *categories* - Cognitive Services の[Computer Vision のドキュメント](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)に定義されている分類に従ったイメージ コンテンツの分類です。 </li><li>*description* - サポートされる言語の完全な文章を使用して画像のコンテンツを説明します。</li><li>*faces* - 顔の有無を検出します｡ 存在する場合は､座標、性別､および年齢を生成します｡</li><li> *objects* - おおよその場所など、画像内のさまざまなオブジェクトを検出します。 *objects* ビジュアル フィーチャーは、英語でのみ使用可能です。</li><li> *tags* - イメージのコンテンツに関係する単語の詳細な一覧のタグです｡</li></ul> ビジュアル フィーチャー名は大文字と小文字が区別されます｡ *color* と *imageType* のビジュアル機能は非推奨になりましたが、この機能には[カスタム スキル](https://go.microsoft.com/fwlink/?linkid=2121117)を使用してアクセスできます。|
 | details   | 結果として返すドメイン固有の詳細を示す文字列の並び. 有効なビジュアル フィーチャー型には以下があります｡ <ul><li>*celebrities* - イメージ内でセレブリティが検出された場合に、そのセレブリティを特定します｡</li><li>*landmarks* - イメージ内でランドマークが検出された場合に、そのランドマークを特定します｡ </li></ul> |
 
 ## <a name="skill-inputs"></a>スキルの入力
@@ -470,20 +470,6 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
             ]
           }
         ],
-        "color": {
-          "dominantColorForeground": "Brown",
-          "dominantColorBackground": "Brown",
-          "dominantColors": [
-            "Brown",
-            "Black"
-          ],
-          "accentColor": "873B59",
-          "isBwImg": false
-        },
-        "imageType": {
-          "clipArtType": 0,
-          "lineDrawingType": 0
-        },
         "objects": [
           {
             "rectangle": {
@@ -543,7 +529,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
             ]
 ```
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 + [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)

@@ -1,17 +1,17 @@
 ---
 title: Azure Application Insights | Microsoft Docs
-description: ''
+description: Application Insights のデータを、データ エンリッチメントまたは参照テーブル、Application Insights 以外のデータ ソース、カスタム データなどの他のデータセットに関連付けます。
 ms.topic: conceptual
 author: eternovsky
 ms.author: evternov
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 75c5bd5bd6a7ded8679c30446a45809a1ea4406a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 121e4699bd6a72f6865d3a6ffdef58c1b3806047
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672006"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082763"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>Application Insights のデータをカスタム データ ソースと関連付ける
 
@@ -25,7 +25,7 @@ Application Insights は、例外、トレース、ページ ビューなど、�
 
 ## <a name="how-to-correlate-custom-data-with-application-insights-data"></a>カスタム データを Application Insights のデータと関連付ける方法 
 
-Application Insights は Azure Monitor の強力なログ プラットフォームによって支えられているため、データの取り込みには、Azure Monitor の機能をフル活用することができます。 さらに、Azure Monitor ログからアクセスできるデータとカスタム データとを関連付ける "join" 演算子を使ってクエリを記述することになります。 
+Application Insights は Azure Monitor の強力なログ プラットフォームによって支えられているため、データの取り込みには、Azure Monitor の機能をフル活用することができます。 さらに、このカスタム データを Azure Monitor ログからアクセスできるデータと関連付ける "join" 演算子を使ってクエリを記述することになります。 
 
 ## <a name="ingesting-data"></a>データの取り込み
 
@@ -45,7 +45,7 @@ Azure Monitor へのログ データの送信を開始するには、 いくつ�
 
 Application Insights は、Azure Monitor のログ プラットフォームを基盤としています。 そのため、[リソースをまたいだ結合操作](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search)を使用して、Azure Monitor に取り込んだあらゆるデータを Application Insights のデータに関連付けることができます。
 
-たとえば、"myLA" という Log Analytics ワークスペースの "LabLocations_CL" というテーブルに、ラボのインベントリや場所を取り込むことができます。 その後、"myAI" という Application Insights アプリで追跡した要求を調査し、その要求を処理したマシン名と、前述したカスタム テーブルに格納されている対応するマシンの場所を関連付けたい場合は、Application Insights または Azure Monitor のコンテキストから次のクエリを実行します。
+たとえば、"myLA" という Log Analytics ワークスペース内の "LabLocations_CL" というテーブルに、ラボのインベントリや場所を取り込むことができます。 その後、"myAI" という Application Insights アプリで追跡した要求を調査し、その要求を処理したマシン名と、前述したカスタム テーブルに格納されている対応するマシンの場所を関連付けたい場合は、Application Insights または Azure Monitor のコンテキストから次のクエリを実行します。
 
 ```
 app('myAI').requests

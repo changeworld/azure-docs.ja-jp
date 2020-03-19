@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 4f75adba27c8173f918fa1afbd44f307d50eb995
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9507428e63b337b3d8419a833d03d081d494c522
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76902011"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330806"
 ---
 # <a name="ship-an-application"></a>アプリケーションの出荷
 
@@ -39,7 +39,7 @@ Cognitive Services Speech SDK には、[Visual Studio 2019 の Microsoft Visual 
 
 必要な Speech SDK ファイルは、お使いのアプリケーションと同じディレクトリに展開できます。 この方法で、お使いのアプリケーションはライブラリに直接アクセスできます。 必ず、お使いのアプリケーションと一致する正しいバージョン (Win32/x64) を選択してください。
 
-| Name | Function |
+| 名前 | Function |
 | :--- | :------- |
 | `Microsoft.CognitiveServices.Speech.core.dll`   | Core SDK。ネイティブおよびマネージド展開に必要 |
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | マネージド展開に必要                      |
@@ -52,7 +52,7 @@ Cognitive Services Speech SDK には、[Visual Studio 2019 の Microsoft Visual 
 
 ## <a name="linux"></a>Linux
 
-現在、Speech SDK では、Ubuntu 16.04、Ubuntu 18.04、および Debian 9 のディストリビューションがサポートされています。
+Speech SDK では現在、Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、および CentOS 8 ディストリビューションがサポートされています。
 ネイティブ アプリケーションについては、Speech SDK ライブラリ `libMicrosoft.CognitiveServices.Speech.core.so` を配布する必要があります。
 必ず、お使いのアプリケーションと一致するバージョン (x86、x64) を選択してください。 Linux バージョンによっては、次の依存関係を追加しなければならない場合もあります。
 
@@ -73,6 +73,16 @@ Debian9 では、次のパッケージをインストールします。
 sudo apt-get update
 sudo apt-get install libssl1.0.2 libasound2
 ```
+
+RHEL/CentOS 8 の場合:
+
+```sh
+sudo yum update
+sudo yum install alsa-lib openssl
+```
+
+> [!NOTE]
+> RHEL または CentOS 8 の場合、「[Linux 用 OpenSSL の構成](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)」の手順に従います。
 
 ## <a name="next-steps"></a>次のステップ
 

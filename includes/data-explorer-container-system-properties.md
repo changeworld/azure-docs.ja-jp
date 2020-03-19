@@ -2,41 +2,57 @@
 author: orspod
 ms.service: data-explorer
 ms.topic: include
-ms.date: 01/08/2020
+ms.date: 02/27/2020
 ms.author: orspodek
-ms.openlocfilehash: f9788e4623ce60ad55d79558d1d77a17eb2a9f26
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: a2297301a0b9c0540c73c0f50483cccfc3181a0f
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779954"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128753"
 ---
 ### <a name="event-system-properties-mapping"></a>イベント システム プロパティのマッピング
 
-上の表の「**データ ソース**」セクションで **[イベント システムのプロパティ]** を選択した場合は、[Web UI](https://dataexplorer.azure.com/) に移動して、マッピングを適切に作成するための該当する KQL コマンドを実行します。
+> [!Note]
+> * システム プロパティは、単一レコードのイベントに対してサポートされています。
+> * `csv` マッピングの場合、レコードの先頭にプロパティが追加されます。 `json` マッピングの場合、ドロップダウン リストに表示される名前に従ってプロパティが追加されます。
 
-   **CSV マッピングの場合:**
+テーブルの **[データ ソース]** セクションで **[イベント システムのプロパティ]** を選択した場合は、テーブルのスキーマとマッピングに次のプロパティを含める必要があります。
 
-    ```kusto
-    .create table MyTable ingestion csv mapping "CsvMapping1"
+**テーブル スキーマの例**
+
+データに 3 つの列 (`Timespan`、`Metric`、および `Value`) が含まれており、含めるプロパティが `x-opt-enqueued-time` および `x-opt-offset` の場合は、次のコマンドを使用してテーブル スキーマを作成または変更します。
+
+```kusto
+    .create-merge table TestTable (TimeStamp: datetime, Metric: string, Value: int, EventHubEnqueuedTime:datetime, EventHubOffset:string)
+```
+
+**CSV マッピングの例**
+
+次のコマンドを実行して、レコードの先頭にデータを追加します。 序数値に注意してください。
+
+```kusto
+    .create table TestTable ingestion csv mapping "CsvMapping1"
     '['
-    '   { "column" : "messageid", "DataType":"string", "Properties":{"Ordinal":"0"}},'
-    '   { "column" : "userid", "DataType":"string", "Properties":{"Ordinal":"1"}},'
-    '   { "column" : "other", "DataType":"int", "Properties":{"Ordinal":"2"}}'
+    '   { "column" : "Timespan", "Properties":{"Ordinal":"2"}},'
+    '   { "column" : "Metric", "Properties":{"Ordinal":"3"}},'
+    '   { "column" : "Value", "Properties":{"Ordinal":"4"}},'
+    '   { "column" : "EventHubEnqueuedTime", "Properties":{"Ordinal":"0"}},'
+    '   { "column" : "EventHubOffset", "Properties":{"Ordinal":"1"}}'
     ']'
-    ```
+```
  
-   **JSON マッピングの場合:**
+**JSON マッピングの例**
 
-    ```kusto
-    .create table MyTable ingestion json mapping "JsonMapping1"
+データは、システム プロパティ名が **[データ接続]** ブレードの **[イベント システムのプロパティ]** 一覧に表示されるときに、システム プロパティを使用して追加されます。 次の各コマンドを実行します。
+
+```kusto
+    .create table TestTable ingestion json mapping "JsonMapping1"
     '['
-    '    { "column" : "messageid", "datatype" : "string", "Properties":{"Path":"$.message-id"}},'
-    '    { "column" : "userid", "Properties":{"Path":"$.user-id"}},'
-    '    { "column" : "other", "Properties":{"Path":"$.other"}}'
+    '    { "column" : "Timespan", "Properties":{"Path":"$.timestamp"}},'
+    '    { "column" : "Metric", "Properties":{"Path":"$.metric"}},'
+    '    { "column" : "Value", "Properties":{"Path":"$.metric_value"}},'
+    '    { "column" : "EventHubEnqueuedTime", "Properties":{"Path":"$.x-opt-enqueued-time"}},'
+    '    { "column" : "EventHubOffset", "Properties":{"Path":"$.x-opt-offset"}}'
     ']'
-    ```
-
-   > [!TIP]
-   > * マッピングには、選択したプロパティをすべて含める必要があります。 
-   > * CSV マッピングではプロパティの順序が重要となります。 システム プロパティは、他のどのプロパティよりも前に指定してください。また、 **[イベント システムのプロパティ]** ドロップダウンでの表示順と同じ順序で指定する必要があります。
+```

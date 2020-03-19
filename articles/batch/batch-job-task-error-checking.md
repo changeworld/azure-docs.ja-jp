@@ -5,14 +5,14 @@ services: batch
 author: mscurrell
 ms.service: batch
 ms.topic: article
-ms.date: 12/01/2019
+ms.date: 03/10/2019
 ms.author: markscu
-ms.openlocfilehash: c4e36d76bf85b9715a817dbeb7c690aa77f8d978
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4ace0de6d252680eb64990277b9478adf752f54d
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851933"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087008"
 ---
 # <a name="job-and-task-error-checking"></a>ジョブとタスクのエラーの確認
 
@@ -20,7 +20,7 @@ ms.locfileid: "74851933"
 
 この記事では、ジョブとタスクが送信された後に発生する可能性のあるエラーについて取り上げます。 チェックして処理すべきエラーとその説明が記載されています。
 
-## <a name="jobs"></a>[ジョブ]
+## <a name="jobs"></a>ジョブ
 
 ジョブは 1 つ以上のタスクをグループ化したもので、実行されるコマンド ラインは、実際にはタスクによって指定されています。
 
@@ -73,6 +73,17 @@ ms.locfileid: "74851933"
 - 依存関係の場合、失敗したタスクに依存しているタスクがブロックされるか実行されるかは、[DependencyAction](https://docs.microsoft.com/rest/api/batchservice/task/add#dependencyaction) によって制御されます。
 - ジョブの場合、失敗したタスクが原因でジョブが無効になるか、強制終了されるか、未変更のまま据え置かれるかは、[JobAction](https://docs.microsoft.com/rest/api/batchservice/task/add#jobaction) によって制御されます。
 
-## <a name="next-steps"></a>次の手順
+### <a name="task-command-line-failures"></a>タスクのコマンド ラインのエラー
+
+タスクのコマンド ラインが実行されると、出力は `stderr.txt` と `stdout.txt` に書き込まれます。 さらに、アプリケーションではアプリケーション固有のログ ファイルに書き込むことができます。
+
+タスクが実行されたプール ノードがまだ存在する場合は、ログ ファイルを取得して表示できます。 たとえば、Azure portal では、タスクまたはプール ノードのログ ファイルの一覧を取得して表示できます。 [タスクからの取得](https://docs.microsoft.com/rest/api/batchservice/file/getfromtask)など、複数の API では、タスク ファイルを一覧表示して取得することもできます。
+
+多くの場合、プールとプール ノードは一時的であるため、継続的に追加および削除されるノードでは、ログ ファイルを永続化することをお勧めします。 [タスク出力ファイル](https://docs.microsoft.com/azure/batch/batch-task-output-files)は、ログ ファイルを Azure Storage に保存するための便利な方法です。
+
+### <a name="output-file-failures"></a>出力ファイルのエラー
+各ファイルのアップロードのたびに、Batch は、`fileuploadout.txt` と `fileuploaderr.txt` の 2 つのログ ファイルをコンピューティング ノードに書き出します。 特定のエラーの詳細について、これらのログ ファイルを確認することができます。 タスクそのものを実行できなかった場合など、ファイルのアップロードがまったく試行されなかった場合には、これらのログ ファイルは存在しません。  
+
+## <a name="next-steps"></a>次のステップ
 
 アプリケーションに包括的なエラー チェックが実装されていることを確認してください。これは、問題を迅速に検出して診断するためにきわめて重要となる場合があります。

@@ -1,26 +1,26 @@
 ---
 title: SSPR と MFA のための統合された登録 - Azure Active Directory
-description: Azure AD Multi-Factor Authentication とセルフサービスのパスワード リセットの登録 (プレビュー)
+description: Azure AD Multi-Factor Authentication とセルフサービス パスワード リセットの登録 (プレビュー)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 03/06/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c882d286a73900f58ef06e7c51b05c7237e39a7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4cb5aca128679b21072a2a3daa503dc43a8e2885
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425342"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942889"
 ---
 # <a name="combined-security-information-registration-preview"></a>統合されたセキュリティ情報の登録 (プレビュー)
 
-統合された登録の前、ユーザーは Azure Multi-Factor Authentication (MFA) とセルフサービスのパスワード リセット (SSPR) の認証方法を別々に登録しました。 ユーザーは Multi-Factor Authentication と SSPR に同様の方法が使用されることに困惑しましたが、どちらの機能も登録する必要がありました。 現在では、統合された登録を使用することで、ユーザーは 1 回登録して Multi-Factor Authentication と SSPR の両方の利点を得ることができます。
+統合された登録の前、ユーザーは Azure Multi-Factor Authentication (MFA) とセルフサービス パスワード リセット (SSPR) の認証方法を別々に登録しました。 ユーザーは Multi-Factor Authentication と SSPR に同様の方法が使用されることに困惑しましたが、どちらの機能も登録する必要がありました。 現在では、統合された登録を使用することで、ユーザーは 1 回登録して Multi-Factor Authentication と SSPR の両方の利点を得ることができます。
 
 ![ユーザーの登録済みのセキュリティ情報を示しているマイ プロファイル](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
@@ -30,7 +30,7 @@ Azure AD の結合されたセキュリティ情報の登録は、Azure US Gover
 
 |     |
 | --- |
-| Multi-Factor Authentication と Azure Active Directory (Azure AD) パスワード リセットのセルフサービスのための結合されたセキュリティ情報の登録は、Azure AD のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
+| Multi-Factor Authentication と Azure Active Directory (Azure AD) セルフサービス パスワード リセット のための結合されたセキュリティ情報の登録は、Azure AD のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
 |     |
 
 > [!IMPORTANT]
@@ -58,6 +58,7 @@ Azure AD の結合されたセキュリティ情報の登録は、Azure US Gover
 | Email | はい | はい | はい |
 | セキュリティの質問 | はい | いいえ | はい |
 | アプリ パスワード | はい | いいえ | はい |
+| FIDO2 セキュリティ キー<br />*[[セキュリティ情報]](https://mysignins.microsoft.com/security-info) ページからの管理モードのみ*| はい | はい | はい |
 
 > [!NOTE]
 > アプリ パスワードは、Multi-Factor Authentication が適用されているユーザーのみが使用できます。 条件付きアクセス ポリシーによって Multi-Factor Authentication が有効になっているユーザーはアプリ パスワードを使用できません。
@@ -146,6 +147,6 @@ Multi-Factor Authentication に使用できる少なくとも 1 つの方法を�
 
 [Multi-Factor Authentication と SSPR で使用可能な方法](concept-authentication-methods.md)
 
-[セルフサービスのパスワード リセットを構成する](howto-sspr-deployment.md)
+[セルフサービス パスワード リセットを構成する](howto-sspr-deployment.md)
 
 [Azure Multi-Factor Authentication を構成する](howto-mfa-getstarted.md)

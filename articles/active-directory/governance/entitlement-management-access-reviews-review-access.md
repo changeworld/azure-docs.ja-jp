@@ -16,12 +16,12 @@ ms.date: 11/01/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a78a69301ab2ae637531f8643d9d57a8b44b563f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 99de022b7259b33baab3aa825673a8f85e932bff
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608399"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968743"
 ---
 # <a name="review-access-of-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でのアクセス パッケージのアクセスのレビュー
 
@@ -47,7 +47,7 @@ ms.locfileid: "73608399"
 
 1. **[Review user access]** \(ユーザー アクセスのレビュー) リンクをクリックして、アクセス レビューを開きます。 
 
-1. メールが届いていない場合は、 https://myaccess.microsoft.com に直接移動して、保留中のアクセス レビューを見つけることができます。
+1. メールが届いていない場合は、 https://myaccess.microsoft.com に直接移動して、保留中のアクセス レビューを見つけることができます。  (米国政府の場合は、代わりに `https://myaccess.microsoft.us` を使用します)。
 
 1. 左側のナビゲーション バーの **[アクセス レビュー]** をクリックして、割り当てられている保留中のアクセス レビューの一覧を表示します。
     
@@ -101,6 +101,6 @@ ms.locfileid: "73608399"
 
 1.  **[送信]** をクリックして、推奨事項を承認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [アクセス パッケージのセルフレビュー](entitlement-management-access-reviews-self-review.md)

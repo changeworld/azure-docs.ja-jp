@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 03/09/2020
 ms.author: iainfou
-ms.openlocfilehash: a25337cad39674bc6016f67bdc46a804518d0b03
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: a57826c79babded6e616548879a5ec0c223307d0
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509021"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946435"
 ---
 # <a name="frequently-asked-questions-faqs"></a>よく寄せられる質問 (FAQ)
 
@@ -36,18 +36,21 @@ ms.locfileid: "76509021"
 * [Azure AD Domain Services のマネージド ドメインにドメイン コントローラーを追加することはできますか。](#can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain)
 * [自分のディレクトリに招待したゲスト ユーザーは Azure AD Domain Services を使用できますか。](#can-guest-users-invited-to-my-directory-use-azure-ad-domain-services)
 * [既存の Azure AD Domain Services マネージド ドメインを別のサブスクリプション、リソース グループ、リージョン、または仮想ネットワークに移動できますか。](#can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network)
+* [Azure AD Domain Services には高可用性オプションが含まれていますか。](#does-azure-ad-domain-services-include-high-availability-options)
 
 ### <a name="can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory"></a>1 つの Azure AD ディレクトリに対して複数のマネージド ドメインを作成することはできますか。
 いいえ。 1 つの Azure AD ディレクトリに対して Azure AD Domain Services によって対応されるマネージド ドメインは 1 つだけ作成できます。
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-a-classic-virtual-network"></a>クラシック仮想ネットワークで Azure AD Domain Services を有効にすることができますか。
-新しいデプロイでは、クラシック仮想ネットワークはサポートされません。 クラシック仮想ネットワークにデプロイされている既存のマネージド ドメインは、引き続きサポートされます。 また、[クラシック仮想ネットワーク モデルから Resource Manager に Azure AD Domain Services を移行する (プレビュー)](migrate-from-classic-vnet.md) こともできます。
+新しいデプロイでは、クラシック仮想ネットワークはサポートされません。 クラシック仮想ネットワークにデプロイされている既存のマネージド ドメインは、2023 年 3 月 1 日に廃止されるまで引き続きサポートされます。 既存のデプロイの場合、[クラシック仮想ネットワーク モデルから Resource Manager に Azure AD Domain Services を移行する](migrate-from-classic-vnet.md)ことができます。
+
+詳細については、[公式の非推奨に関する通知](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/)を参照してください。
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-resource-manager-virtual-network"></a>Azure Resource Manager 仮想ネットワークで Azure AD Domain Services を有効にすることはできますか。
 はい。 Azure AD Domain Services は Azure Resource Manager 仮想ネットワークで有効にすることができます。 マネージド ドメインを作成するときに、クラシック Azure 仮想ネットワークは使用できなくなりました。
 
 ### <a name="can-i-migrate-my-existing-managed-domain-from-a-classic-virtual-network-to-a-resource-manager-virtual-network"></a>既存のマネージド ドメインをクラシック仮想ネットワークから Resource Manager 仮想ネットワークに移行することはできますか。
-はい。この機能はプレビュー段階です。 詳細については、[クラシック仮想ネットワーク モデルから Resource Manager への Azure AD Domain Services の移行 (プレビュー)](migrate-from-classic-vnet.md) に関するページを参照してください。
+はい。 詳細については、「[クラシック仮想ネットワーク モデルから Resource Manager への Azure AD Domain Services の移行](migrate-from-classic-vnet.md)」を参照してください。
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-csp-cloud-solution-provider-subscription"></a>Azure AD Domain Services を Azure CSP (Cloud Solution Provider) サブスクリプション内で有効にできますか。
 はい。 詳細については、「[Azure Cloud Solution Provider (CSP) 用 Azure Active Directory (AD) Domain Services](csp.md)」を参照してください。
@@ -73,6 +76,10 @@ ms.locfileid: "76509021"
 ### <a name="can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network"></a>既存の Azure AD Domain Services マネージド ドメインを別のサブスクリプション、リソース グループ、リージョン、または仮想ネットワークに移動できますか。
 いいえ。 Azure AD Domain Services マネージド ドメインを作成した後は、そのインスタンスを別のリソース グループ、仮想ネットワーク、サブスクリプションなどに移動することはできません。Azure AD DS インスタンスをデプロイするときに、最適なサブスクリプション、リソース グループ、リージョン、および仮想ネットワークを慎重に選択してください。
 
+### <a name="does-azure-ad-domain-services-include-high-availability-options"></a>Azure AD Domain Services には高可用性オプションが含まれていますか。
+
+はい。 各 Azure AD Domain Services のマネージド ドメインには、2 つのドメイン コントローラーが含まれています。 これらのドメイン コントローラーについては、お客様が管理または接続することはありません。これらはマネージド サービスの一部です。 Azure AD Domain Services を Availability Zones をサポートするリージョンにデプロイすると、ドメイン コントローラーはゾーン間に分散されます。 Availability Zones をサポートしていないリージョンの場合、ドメイン コントローラーは可用性セット間に分散されます。 この分散に対する構成オプションや管理制御はありません。 詳細については、「[Azure の仮想マシンの可用性オプション](../virtual-machines/windows/availability.md)」を参照してください。
+
 ## <a name="administration-and-operations"></a>管理と操作
 
 * [リモート デスクトップを使用してマネージド ドメインのドメイン コントローラーに接続できますか。](#can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop)
@@ -89,13 +96,13 @@ ms.locfileid: "76509021"
 いいえ。 リモート デスクトップを使用してマネージド ドメインのドメイン コントローラーに接続する権限はありません。 "*AAD DC 管理者*" グループのメンバーは、Active Directory 管理センター (ADAC) や AD PowerShell などの AD 管理ツールを使用して、マネージド ドメインを管理できます。 これらのツールは、"*リモート サーバー管理ツール*" 機能を使用して、マネージド ドメインに参加している Windows サーバーにインストールされます。 詳細については、「[チュートリアル:Azure Active Directory Domain Services のマネージド ドメインを構成および管理するための管理 VM を作成する](tutorial-create-management-vm.md)」を参照してください。
 
 ### <a name="ive-enabled-azure-ad-domain-services-what-user-account-do-i-use-to-domain-join-machines-to-this-domain"></a>Azure AD Domain Services を有効にしています。 このドメインに参加しているドメイン コンピューターでは、どのユーザー アカウントを使用できますか。
-管理グループの "*AAD DC 管理者*" のメンバーが、コンピューターをドメインに参加させることができます。 さらに、このグループのメンバーには、ドメインに参加しているコンピューターへのリモート デスクトップ アクセス権が付与されます。
+Azure AD DS のマネージド ドメインの一部であるすべてのユーザー アカウントを VM に参加させることができます。 "*AAD DC 管理者*" グループのメンバーには、マネージド ドメインに参加しているマシンへのリモート デスクトップ アクセス権が付与されます。
 
 ### <a name="do-i-have-domain-administrator-privileges-for-the-managed-domain-provided-by-azure-ad-domain-services"></a>Azure AD Domain Services によって提供されるマネージド ドメインにドメイン管理者特権はありますか。
 いいえ。 マネージド ドメインの管理特権は付与されません。 "*ドメイン管理者*" 特権と "*エンタープライズ管理者*" 特権は、ドメイン内では使用できません。 また、オンプレミスの Active Directory 内のドメイン管理者グループまたはエンタープライズ管理者グループのメンバーにも、マネージド ドメインのドメイン/エンタープライズ管理者特権は付与されません。
 
 ### <a name="can-i-modify-group-memberships-using-ldap-or-other-ad-administrative-tools-on-managed-domains"></a>マネージド ドメインで LDAP または他の AD 管理ツールを使用してグループ メンバーシップを変更できますか。
-いいえ。 Azure AD Domain Services によって提供されるドメインでは、グループ メンバーシップを変更できません。 ユーザー属性に対しても同様です。 グループ メンバーシップまたはユーザー属性は、Azure AD またはオンプレミス ドメインで変更できます。 変更は、Azure AD Domain Services に自動的に同期されます。
+Azure Active Directory から Azure AD Domain Services に同期されるユーザーとグループは、元のソースが Azure Active Directory であるため変更できません。 マネージド ドメインがソースのユーザーまたはグループは変更できます。
 
 ### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>Azure AD ディレクトリに対して行った変更がマネージド ドメインに反映されるまで、どのくらいの時間がかかりますか。
 Azure AD UI または PowerShell を使用して Azure AD ディレクトリに対して行った変更は、マネージド ドメインに自動的に同期されます。 この同期プロセスはバック グラウンドで実行されます。 この同期ですべてのオブジェクトの変更を完了するための期間は定義されていません。

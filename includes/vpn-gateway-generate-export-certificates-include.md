@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 89fa06dda418f328b3bc07aada49aa347e35220a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1e18223736964b0327a4c8f6ddb73ddb4f58889a
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73182242"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78305017"
 ---
 ## <a name="rootcert"></a>自己署名ルート証明書の作成
 
@@ -28,6 +28,7 @@ New-SelfSignedCertificate コマンドレットを使用して、自己署名ル
    -HashAlgorithm sha256 -KeyLength 2048 `
    -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign
    ```
+ 3. このルート証明書を作成した直後にクライアント証明書を作成する場合は、PowerShell コンソールを開いたままにしておきます。
 
 ## <a name="clientcert"></a>クライアント証明書の生成
 
@@ -37,7 +38,7 @@ New-SelfSignedCertificate コマンドレットを使用して、自己署名ル
 
 例では、New-SelfSignedCertificate コマンドレットを使用して、1 年で期限切れになるクライアント証明書を生成しています。 クライアント証明書の別の有効期限値を設定するなど、追加のパラメーター情報については、「[New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate)」を参照してください。
 
-### <a name="example-1"></a>例 1
+### <a name="example-1---powershell-console-session-still-open"></a>例 1 - PowerShell コンソール セッションがまだ開いたまま
 
 自己署名ルート証明書を作成した後で PowerShell コンソールを閉じていない場合は、この例を使用します。 この例では、前のセクションから継続して、宣言した "$cert" 変数を使用します。 自己署名ルート証明書の作成後に PowerShell コンソールを閉じた場合または新しい PowerShell コンソール セッションで追加のクライアント証明書を作成している場合は、[例 2](#ex2) の手順を使用してください。
 
@@ -51,7 +52,7 @@ New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature 
 -Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
 ```
 
-### <a name="ex2"></a>例 2
+### <a name="ex2"></a>例 2 - 新しい PowerShell コンソール セッション
 
 追加のクライアント証明書を作成している場合、または自己署名ルート証明書の作成に使用したのと同じ PowerShell セッションを使用していない場合は、次の手順を使用してください。
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: a9c045162e650b4468fb53676e367d2c658bf7cc
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 57469bef7014010164234638f3d059ac96b125cf
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912574"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384009"
 ---
 ## <a name="what-is-the-time-required-for-migration"></a>移行にはどれくらいの時間が必要ですか?
 
@@ -22,6 +22,14 @@ ms.locfileid: "77912574"
 ## <a name="what-is-the-definition-of-a-new-customer-on-iaas-vms-classic"></a>IaaS VM (クラシック) での新しい顧客の定義は何ですか?
 
 2020 年 2 月 (廃止開始の前月) の時点でお使いのサブスクリプションに IaaS VM (クラシック) が含まれていなったお客様は、新しいお客様とみなされます。 
+
+## <a name="what-is-the-definition-of-an-existing-customer-on-iaas-virtual-machines-classic"></a>IaaS 仮想マシン (クラシック) での既存の顧客の定義は何ですか?
+
+IaaS VM (クラシック) がアクティブであるか、またはこれを停止したが、2020 年 2 月のサブスクリプションでこれを割り当てたお客様は、既存の顧客と見なされます。 これらのお客様のみが 2023 年 3 月 1 日までに、Azure Service Manager から Azure Resource Manager に VM を移行することができます。 
+
+## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>"NewClassicVMCreationNotAllowedForSubscription" というエラーが発生するのはなぜですか?
+
+提供終了プロセスの一環として、新しいお客様は IaaS VM (クラシック) を利用できなくなりました。 お客様は新しい顧客として特定されたため、お客様の操作は承認されませんでした。 [ARM を使った Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell) を使用することを強くお勧めします。 ARM を使用して Azure VM を使用できない場合は、サブスクリプションのホワイトリスト登録についてサポートにお問い合わせください。
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>この移行計画は Azure 仮想マシン上で実行されている既存のサービスやアプリケーションに影響しますか? 
 

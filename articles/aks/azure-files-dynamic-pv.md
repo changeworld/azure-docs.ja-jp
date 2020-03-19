@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) で複数の同時実行ポッドで
 services: container-service
 ms.topic: article
 ms.date: 09/12/2019
-ms.openlocfilehash: a6e46433354be0d9d958ec69da4529e94a4edd75
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: ef9ef10a5523bd91b346e16e105c5ff5cd9cb669
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596422"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897710"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Azure Files を含む永続ボリュームを動的に作成して使用する
 
@@ -29,11 +29,13 @@ Kubernetes ボリュームの詳細については、[AKS でのアプリケー�
 
 * *Standard_LRS* - 標準のローカル冗長ストレージ (LRS)
 * *Standard_GRS* - 標準の geo 冗長ストレージ (GRS)
+* *Standard_ZRS* - 標準のゾーン冗長ストレージ (ZRS)
 * *Standard_RAGRS* - 標準の読み取りアクセス geo 冗長ストレージ (RA-GRS)
 * *Premium_LRS* - Premium ローカル冗長ストレージ (LRS)
+* *Premium_ZRS* - プレミアム ゾーン冗長ストレージ (ZRS)
 
 > [!NOTE]
-> Azure Files では、Kubernetes 1.13 以降が実行される AKS クラスターでの Premium Storage がサポートされています。
+> Azure Files では、Kubernetes 1.13 以降が実行される AKS クラスターでの Premium Storage がサポートされています。Premium ファイル共有の下限は 100GB です
 
 Azure Files 用の Kubernetes ストレージ クラスの詳細については、[Kubernetes ストレージ クラス][kubernetes-storage-classes]に関するページを参照してください。
 
@@ -48,11 +50,10 @@ provisioner: kubernetes.io/azure-file
 mountOptions:
   - dir_mode=0777
   - file_mode=0777
-  - uid=1000
-  - gid=1000
+  - uid=0
+  - gid=0
   - mfsymlinks
-  - nobrl
-  - cache=none
+  - cache=strict
 parameters:
   skuName: Standard_LRS
 ```
@@ -163,7 +164,7 @@ Volumes:
 
 ## <a name="mount-options"></a>マウント オプション
 
-Kubernetes バージョン 1.9.1 以降の場合、*fileMode* と *dirMode* の既定値は *0755* です。 Kuberetes バージョン 1.8.5 以降のクラスターを使い、ストレージ クラスを使用して永続ボリュームを動的に作成している場合は、ストレージ クラスのオブジェクトに対してマウント オプションを指定できます。 次の例では、*0777* が設定されます。
+Kubernetes バージョン 1.13.0 以降の場合、*fileMode* と *dirMode* の既定値は *0777* です。 ストレージ クラスを使って永続ボリュームを動的に作成している場合は、ストレージ クラスのオブジェクトに対してマウント オプションを指定できます。 次の例では、*0777* が設定されます。
 
 ```yaml
 kind: StorageClass
@@ -174,16 +175,13 @@ provisioner: kubernetes.io/azure-file
 mountOptions:
   - dir_mode=0777
   - file_mode=0777
-  - uid=1000
-  - gid=1000
+  - uid=0
+  - gid=0
   - mfsymlinks
-  - nobrl
-  - cache=none
+  - cache=strict
 parameters:
   skuName: Standard_LRS
 ```
-
-バージョン 1.8.0 - 1.8.4 のクラスターを使用している場合は、*runAsUser* の値を *0* に設定してセキュリティ コンテキストを指定できます。 ポッドのセキュリティ コンテキストについて詳しくは、[セキュリティ コンテキストの構成][kubernetes-security-context]に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

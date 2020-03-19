@@ -14,12 +14,12 @@ ms.workload: multiple
 ms.date: 10/24/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 46be210ead3816356b63293b910e1c0e7ffc087b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: f3edbc4fc48abd9c7df92aedcdea50dd77a0fd4b
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200097"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086264"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch プール内のコンピューティング ノードをスケーリングするための自動式を作成する
 
@@ -89,7 +89,7 @@ $NodeDeallocationOption = taskcompletion;
 
 この例では、25 個の優先順位の低いノードから始まるプールを作成します。 優先順位の低いノードが割り込まれるたびに、専用のノードに置き換えられます。 最初の例と同様に、`maxNumberofVMs` 変数は、プールが 25 台の VM を超過することを防ぎます。 この例は、優先順位の低い VM を活用する場合に役立ちます。また、プールの有効期間中、割り込みが一定数に留まるようにします。
 
-## <a name="variables"></a>変数:
+## <a name="variables"></a>変数
 
 自動スケールの数式には、**サービス定義**の変数と**ユーザー定義**の変数の両方を使用できます。 サービス定義の変数は Batch サービスに組み込まれています。 サービス定義の変数には、読み取り/書き込み可能な変数と読み取り専用の変数があります。 ユーザー定義の変数は、ユーザーが定義する変数です。 前のセクションで示した例の数式では、`$TargetDedicatedNodes` と`$PendingTasks` がサービス定義の変数です。 `startingNumberOfVMs` と `maxNumberofVMs` がユーザー定義の変数です。
 
@@ -128,13 +128,13 @@ $NodeDeallocationOption = taskcompletion;
 | $NetworkInBytes |受信バイト数。 |
 | $NetworkOutBytes |送信バイト数。 |
 | $SampleNodeCount |計算ノードの数。 |
-| $ActiveTasks |実行する準備はできているがまだ実行されていないタスクの数。 $ActiveTasks の数には、アクティブ状態にあり、依存関係が満たされているすべてのタスクが含まれます。 アクティブ状態にあるものの、依存関係が満たされていないタスクはすべて $ActiveTasks の数から除外されます。|
+| $ActiveTasks |実行する準備はできているがまだ実行されていないタスクの数。 $ActiveTasks の数には、アクティブ状態にあり、依存関係が満たされているすべてのタスクが含まれます。 アクティブ状態にあるものの、依存関係が満たされていないタスクはすべて $ActiveTasks の数から除外されます。 マルチインスタンス タスクの場合、$ActiveTasks にはタスクに設定されているインスタンスの数が含まれます。|
 | $RunningTasks |実行状態のタスクの数。 |
 | $PendingTasks |$ActiveTasks と $RunningTasks の合計。 |
 | $SucceededTasks |正常に完了したタスクの数。 |
 | $FailedTasks |失敗したタスクの数。 |
 | $CurrentDedicatedNodes |専用コンピューティング ノードの現在の数。 |
-| $CurrentLowPriorityNodes |優先順位の低い計算ノードの現在の数。割り込まれているノードも含まれます。 |
+| $CurrentLowPriorityNodes |優先順位の低い計算ノードの現在の数。割り込まれたノードも含まれます。 |
 | $PreemptedNodeCount | 割り込み状態にあるプール内のノードの数。 |
 
 > [!TIP]

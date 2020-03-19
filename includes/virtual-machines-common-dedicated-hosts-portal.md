@@ -5,20 +5,20 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 01/09/2020
+ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 0e7a814c1607b15e3af0e76a5ae6dfad1594a3b3
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 427117fe47294a1db1fa8d3fa1e46ee1efb91b4d
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77474227"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129559"
 ---
 ## <a name="limitations"></a>制限事項
 
 - 仮想マシン スケール セットは、現在、専用ホストではサポートされていません。
-- 初期リリースでは、次の VM シリーズがサポートされています。DSv3、ESv3、FSv2、LSv2、MSv2。 
+- 専用ホストで使用できるサイズとハードウェアの種類は、リージョンによって異なります。 詳しくは、ホストの[価格のページ](https://aka.ms/ADHPricing) を参照してください。
 
 ## <a name="create-a-host-group"></a>ホスト グループを作成する
 
@@ -36,8 +36,6 @@ ms.locfileid: "77474227"
 1. Azure [portal](https://portal.azure.com) を開きます。
 1. 左上隅にある **[リソースの作成]** を選択します。
 1. **[ホストグループ]** を検索し、結果から **[ホスト グループ]** を選択します。
-
-    ![ホスト グループの検索結果。](./media/virtual-machines-common-dedicated-hosts-portal/host-group.png)
 1. **[ホスト グループ]** ページで、 **[作成]** を選択します。
 1. 使用するサブスクリプションを選択し、 **[新規作成]** を選択して新しいリソース グループを作成します。
 1. **[名前]** として「*myDedicatedHostsRG*」と入力し、 **[OK]** を選択します。
@@ -46,8 +44,6 @@ ms.locfileid: "77474227"
 1. **[可用性ゾーン]** で、 **[1]** を選択します。
 1. **[Fault domain count]\(障害ドメインの数\)** で、 **[2]** を選択します。
 1. **[確認および作成]** を選択して、検証が行われるのを待ちます。
-
-    ![ホスト グループの設定](./media/virtual-machines-common-dedicated-hosts-portal/host-group-settings.png)
 1. "**検証に成功しました**" というメッセージが表示されたら、 **[作成]** を選択してホスト グループを作成します。
 
 ホスト グループの作成には少しだけ時間がかかります。
@@ -62,16 +58,12 @@ ms.locfileid: "77474227"
 
 1. 左上隅にある **[リソースの作成]** を選択します。
 1. "**専用ホスト**" を検索し、結果から **[Dedicated hosts]\(専用ホスト\)** を選択します。
-
-    ![ホスト グループの検索結果。](./media/virtual-machines-common-dedicated-hosts-portal/host.png)
 1. **[Dedicated hosts]\(専用ホスト\)** ページで、 **[作成]** を選択します。
 1. 使用するサブスクリプションを選択します。
 1. *[リソース グループ]* として **myDedicatedHostsRG** を選択します。
 1. **[インスタンスの詳細]** で、 **[名前]** に「*myHost*」と入力し、場所として *[米国東部]* を選択します。
-1. **[ハードウェア プロファイル]** で、 **[Size family]\(サイズ ファミリ\)** として *[Standard Es3 family - Type 1]\(Standard Es3 ファミリ - Type 1\)* を選択し、 **[ホスト グループ]** として *myHostGrup* を選択し、 **[障害ドメイン]** として *[1]* を選択します。 他のフィールドについては既定値を使用します。
+1. **[ハードウェア プロファイル]** で、 **[サイズ ファミリ]** として *[Standard Es3 family - Type 1]\(Standard Es3 ファミリ - Type 1\)* を選択し、 **[ホスト グループ]** として *myHostGrup* を選択し、 **[障害ドメイン]** として *[1]* を選択します。 他のフィールドについては既定値を使用します。
 1. 終わったら、 **[確認および作成]** を選択して、検証が行われるのを待ちます。
-
-    ![ホストの設定](./media/virtual-machines-common-dedicated-hosts-portal/host-settings.png)
 1. "**検証に成功しました**" というメッセージが表示されたら、 **[作成]** を選択してホストを作成します。
 
 

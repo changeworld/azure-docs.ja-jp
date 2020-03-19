@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/01/2020
+ms.date: 03/07/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2fda5d1bdd00a601df363bd930e5f2f6d610c7f
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: 42fc10c1e7e88e36e4d2174671702e043fb96538
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78208714"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78926838"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD) を利用し、SCIM エンドポイントを構築し、ユーザー プロビジョニングを構成する
 
@@ -33,7 +33,7 @@ SCIM は、/Users エンドポイントと /Groups エンドポイントとい�
 
 SCIM 2.0 (RFC [7642](https://tools.ietf.org/html/rfc7642)、[7643](https://tools.ietf.org/html/rfc7643)、[7644](https://tools.ietf.org/html/rfc7644)) で定義されている管理用の標準ユーザー オブジェクト スキーマと REST API を使用すると、ID プロバイダーとアプリをより簡単に相互に統合できます。 SCIM エンドポイントを構築するアプリケーション開発者は、カスタム作業を行わなくても、SCIM 準拠の任意のクライアントと統合できます。
 
-アプリケーションへのプロビジョニングを自動化するには、SCIM エンドポイントを構築し、Azure AD SCIM に準拠するように統合する必要があります。 アプリケーションへのユーザーとグループのプロビジョニングを開始するには、次の手順を実行します。 
+アプリケーションへのプロビジョニングを自動化するには、SCIM エンドポイントを構築し、Azure AD SCIM クライアントと統合する必要があります。 アプリケーションへのユーザーとグループのプロビジョニングを開始するには、次の手順を実行します。 
     
   * **[手順 1:ユーザーとグループのスキーマを設計する。](#step-1-design-your-user-and-group-schema)** アプリケーションに必要なオブジェクトと属性を特定し、それらが Azure AD SCIM 実装でサポートされているユーザーとグループのスキーマにどのようにマップするかを見極めます。
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 03/09/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee0dd0cd83ab27dd728a7572b6fcd69c40bb1b00
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 5a82c69575e82a7cf397955f08c3f114e449ba6b
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848750"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968769"
 ---
 # <a name="what-are-authentication-methods"></a>認証方法とは
 
@@ -28,7 +28,7 @@ Microsoft では、認証方法を利用できない場合に備えて、ユー�
 
 |認証方法|使用法|
 | --- | --- |
-| パスワード | MFA と SSPR |
+| Password | MFA と SSPR |
 | セキュリティの質問 | SSPR のみ |
 | 電子メール アドレス | SSPR のみ |
 | Microsoft Authenticator アプリ | MFA と SSPR |
@@ -44,15 +44,15 @@ Microsoft では、認証方法を利用できない場合に備えて、ユー�
 | MFA と SSPR の OATH ハードウェア トークンは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
 |     |
 
-## <a name="password"></a>パスワード
+## <a name="password"></a>Password
 
-Azure AD のパスワードは、認証方法と見なされます。 これは、**無効にできない** 1 つの方法です。
+Azure AD のパスワードは、認証方法と見なされます。 これは、**無効にできない**方法の 1 つです。
 
 ## <a name="security-questions"></a>セキュリティの質問
 
 セキュリティの質問は、管理者以外のアカウントに対する **Azure AD のセルフサービス パスワード リセットでのみ**使用できます。
 
-セキュリティの質問を使用する場合、別の方法と併用することをお勧めします。 セキュリティの質問は、一部の人が別のユーザーの質問に対する回答を知っている可能性があるため、他の方法に比べて安全性が低い可能性があります。
+セキュリティの質問を使用する場合、別の方法と併用することをお勧めします。 セキュリティの質問は、一部の人が別のユーザーの質問に対する回答を知っている可能性があるため、他の方法に比べて安全性が低い恐れがあります。
 
 > [!NOTE]
 > セキュリティの質問は、ディレクトリ内のユーザー オブジェクトに非公開かつ安全に保存され、登録時にユーザーだけが回答できます。 管理者がユーザーの質問や回答を読み取ったり変更したりすることはありません。
@@ -152,13 +152,13 @@ Microsoft Authenticator アプリまたは他のサードパーティ アプリ�
 > セルフサービス パスワード リセット の場合、リセットに必要な方法が 1 つのみのときは、**最高レベルのセキュリティを確保するため**、ユーザーが使用できるオプションは確認コードのみです。
 >
 
-ユーザーは、最大 5 つの OATH ハードウェア トークンまたはいつでも使用されるように構成された Microsoft Authenticator アプリなどの認証アプリケーションを組み合わせている場合があります。
+ユーザーは、最大 5 つの OATH ハードウェア トークンまたはいつでも使用されるように構成された Microsoft Authenticator アプリなどの認証アプリケーションを組み合わせることもできます。
 
 ## <a name="oath-hardware-tokens-public-preview"></a>OATH ハードウェア トークン (パブリック プレビュー)
 
-OATH は、1 回限りのパスワード (OTP) のコードの生成方法を指定するオープン標準です。 Azure AD では、30 秒または 60 秒の OATH-TOTP SHA-1 トークンの使用がサポートされます。 顧客は、選択したベンダーからこれらのトークンを調達できます。 秘密鍵は 128 文字に制限されていて、すべてのトークンと互換性があるとは限りません。 秘密鍵は Base32 でエンコードする必要があります。
+OATH は、1 回限りのパスワード (OTP) のコードの生成方法を指定するオープン標準です。 Azure AD では、30 秒または 60 秒の OATH-TOTP SHA-1 トークンの使用がサポートされます。 顧客は、選択したベンダーからこれらのトークンを調達できます。 秘密鍵は 128 文字に制限されていて、すべてのトークンと互換性があるとは限りません。 秘密キーに含めることができるのは、文字 *a-z* または *A-Z* と数字 *1-7* のみです。また、Base32 でエンコードする必要があります。
 
-![OATH トークンの MFA サーバー OATH トークン ブレードへのアップロード](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
+![OATH トークンの MFA OATH トークン ブレードへのアップロード](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 
 OATH ハードウェア トークンはパブリック プレビュー段階でサポートされています。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
@@ -166,19 +166,19 @@ OATH ハードウェア トークンはパブリック プレビュー段階で�
 
 ```csv
 upn,serial number,secret key,time interval,manufacturer,model
-Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKey
+Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
 ```
 
 > [!NOTE]
-> CSV ファイルには上記のようにヘッダー行を含めてください。
+> CSV ファイルにヘッダー行が含まれていることを確認します。
 
-CSV ファイルとして適切な形式が整ったら、管理者は Azure portal にサインインして、 **[Azure Active Directory]** 、 **[MFA Server]\(FMA サーバー\)** 、 **[OATH トークン]** の順にナビゲートして、作成した CSV ファイルをアップロードできます。
+CSV ファイルとして適切な形式が整ったら、管理者は Azure portal にサインインして、 **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[MFA]**  >  **[OATH トークン]** の順に移動し、作成した CSV ファイルをアップロードできます。
 
-CSV ファイルのサイズによって異なりますが、この処理には数分間かかることがあります。 **[最新の情報に更新]** ボタンをクリックして、現在の状態を取得します。 ファイルにエラーがある場合、修正するために、エラーが含まれる CSV ファイルをダウンロードできます。
+CSV ファイルのサイズによって異なりますが、この処理には数分間かかることがあります。 **[最新の情報に更新]** ボタンをクリックして、現在の状態を取得します。 ファイルにエラーがある場合、修正するために、エラーが含まれる CSV ファイルをダウンロードできます。 ダウンロードした CSV ファイル内のフィールド名は、アップロードされたバージョンとは異なります。
 
 すべてのエラーが修正されたら、管理者は各キーをアクティブにすることができます。アクティブにするトークンの **[アクティブ化]** をクリックし、トークンに表示されている OTP を入力します。
 
-ユーザーは、最大 5 つの OATH ハードウェア トークンまたはいつでも使用されるように構成された Microsoft Authenticator アプリなどの認証アプリケーションを組み合わせている場合があります。
+ユーザーは、最大 5 つの OATH ハードウェア トークンまたはいつでも使用されるように構成された Microsoft Authenticator アプリなどの認証アプリケーションを組み合わせることもできます。
 
 ## <a name="phone-options"></a>電話のオプション
 
@@ -206,7 +206,7 @@ Microsoft では、SMS または音声ベース Multi-Factor Authentication の�
 ユーザーが設定した電話番号に自動音声通話を行います。 呼び出しに応答し、電話のキーパッドの # を押して認証を行います。
 
 > [!IMPORTANT]
-> 2019 年 3 月以降、無料/試用版の Azure AD テナントの MFA および SSPR ユーザーは、音声通話オプションを利用できなくなります。 この変更は、SMS メッセージには影響しません。 有料の Azure AD テナントのユーザーは、引き続き音声通話を利用できます。 この変更は、無料/試用版の Azure AD テナントのみに影響します。
+> 2019 年 3 月以降、無料/試用版の Azure AD テナントの MFA および SSPR ユーザーは、音声通話オプションを利用できなくなります。 この変更は、SMS メッセージには影響しません。 有料の Azure AD テナントのユーザーは、引き続き音声通話を利用できます。 この変更は、無料/試用版の Azure AD テナントにのみ影響します。
 
 ### <a name="office-phone"></a>会社電話
 
@@ -217,7 +217,7 @@ Microsoft では、SMS または音声ベース Multi-Factor Authentication の�
 会社電話の属性は、管理者によって管理されます。
 
 > [!IMPORTANT]
-> 2019 年 3 月以降、無料/試用版の Azure AD テナントの MFA および SSPR ユーザーは、音声通話オプションを利用できなくなります。 この変更は、SMS メッセージには影響しません。 有料の Azure AD テナントのユーザーは、引き続き音声通話を利用できます。 この変更は、無料/試用版の Azure AD テナントのみに影響します。
+> 2019 年 3 月以降、無料/試用版の Azure AD テナントの MFA および SSPR ユーザーは、音声通話オプションを利用できなくなります。 この変更は、SMS メッセージには影響しません。 有料の Azure AD テナントのユーザーは、引き続き音声通話を利用できます。 この変更は、無料/試用版の Azure AD テナントにのみ影響します。
 
 > [!NOTE]
 > 国番号と電話番号の間にスペースを入れる必要があります。
@@ -257,7 +257,7 @@ Microsoft では、SMS または音声ベース Multi-Factor Authentication の�
 * ある種の高度なアーキテクチャ設計では、2 段階認証をクライアントで使用するときに、認証場所によっては、組織のユーザー名とパスワードをアプリ パスワードと組み合わせて使用する必要があります。 オンプレミスのインフラストラクチャに対して認証するクライアントの場合は、組織のユーザー名とパスワードを使用します。 Azure AD に対して認証するクライアントはアプリケーション パスワードを使用します。
 * 既定では、ユーザーはアプリ パスワードを作成できません。 ユーザーにアプリ パスワードの作成を許可する必要がある場合は、サービス設定の下で **[ブラウザーではないアプリケーションへのサインイン用にアプリケーション パスワードの作成を許可する]** オプションを選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [セルフサービスによるパスワードのリセットを組織で使用できるようにする](quickstart-sspr.md)
 

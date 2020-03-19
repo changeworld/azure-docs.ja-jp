@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2018
+ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: 74b0fa4643907493904e77ce333d1ec1dba01f49
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: ad6d3992f03802174eb03aa30b57b8d3dac1d6c4
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727099"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942963"
 ---
 # <a name="azure-sql-database-security-features"></a>Azure SQL Database のセキュリティ機能    
 Azure SQL Database は、Azure でリレーショナル データベース サービスを提供しています。 顧客データを保護し、お客様がリレーショナル データベース サービスに期待する強力なセキュリティ機能を提供するために、SQL Database には独自のセキュリティ機能があります。 これらの機能は、Azure から継承されたコントロールに基づいて構築されています。
@@ -75,7 +75,7 @@ Azure の運用環境ネットワークは、論理的に 3 つのプライマ�
 ### <a name="types-of-rules-on-firewalls"></a>ファイアウォールに対するルールの種類
 ルールは次のように定義されます。
 
-{Security Response Center (Src) IP, Src Port, Destination IP, Destination Port, Destination Protocol, In/Out, Stateful/Stateless, Stateful Flow Timeout}.
+{Src IP, Src Port, Destination IP, Destination Port, Destination Protocol, In/Out, Stateful/Stateless, Stateful Flow Timeout}.
 
 同期アイドル文字 (SYN) パケットは、ルールのいずれかが許可されている場合にのみ、許可または禁止されます。 TCP の場合、Azure はステートレス ルールを使用します。このルールの原則では、SYN 以外のすべてのパケットのみが VM に出入りすることを許可されます。 このセキュリティの前提は、すべてのホスト スタックは、SYN パケットを以前に見たことがない場合、非 SYN の無視から回復できることです。 TCP プロトコル自体はステートフルであり、ステートレスな SYN ベースのルールと組み合わせて、ステートフル実装の全体的な動作を実現します。
 
@@ -92,17 +92,15 @@ Azure に対するすべての構成変更は、ステージング環境で開�
 
 同様に、ハードウェアとネットワークの変更によって、ビルド要件への準拠性を評価する検証手順が確立されています。 これらのリリースは、スタック全体の各グループの連携された変更諮問委員会 (CAB) を介してレビューおよび承認されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Microsoft が提供する Azure アーキテクチャの保護の詳細については、以下を参照してください。
 
-- [Azure ファシリティ、プレミス、および物理的なセキュリティ](physical-security.md)
+- [Azure の施設、建物、および物理上のセキュリティ](physical-security.md)
 - [Azure インフラストラクチャの可用性](infrastructure-availability.md)
 - [Azure 情報システムのコンポーネントと境界](infrastructure-components.md)
 - [Azure ネットワーク アーキテクチャ](infrastructure-network.md)
-- [Azure 運用環境ネットワーク](production-network.md)
+- [Azure 実稼働環境のネットワーク](production-network.md)
 - [Azure の実稼働環境の運用と管理](infrastructure-operations.md)
 - [Azure インフラストラクチャの監視](infrastructure-monitoring.md)
 - [Azure インフラストラクチャの整合性](infrastructure-integrity.md)
 - [Azure での顧客データの保護](protection-customer-data.md)
-
-

@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 03/10/2020
 ms.author: dapine
-ms.openlocfilehash: 54a2aac3db47d60f02a45adae9aaa6077d675a43
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: bfbaa03469ee04ff900a215aadd8c814efcba761
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716899"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037532"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>Docker Compose を使用して複数のコンテナーをデプロイする
 
@@ -23,7 +23,7 @@ ms.locfileid: "76716899"
 
 > [Docker Compose](https://docs.docker.com/compose/) は、マルチコンテナー Docker アプリケーションを定義して実行するためのツールです。 Compose では、YAML ファイルを使用してアプリケーションのサービスを構成します。 次に、1 つのコマンドを実行することによって、構成からすべてのサービスを作成して開始します。
 
-1 台のホスト コンピューター上で複数のコンテナー イメージをオーケストレーションすると便利な場合があります。 この記事では、テキスト認識コンテナーと Form Recognizer コンテナーの両方を取り上げます。
+1 台のホスト コンピューター上で複数のコンテナー イメージをオーケストレーションすると便利な場合があります。 この記事では、読み取りおよび Form Recognizer コンテナーをまとめます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -70,11 +70,11 @@ services:
       - "5010:5000"
 
   ocr:
-    image: "containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text"
+    image: "containerpreview.azurecr.io/microsoft/cognitive-services-read"
     environment:
       eula: accept
-      apikey: # < Your recognize text API key >
-      billing: # < Your recognize text billing URL >
+      apikey: # < Your computer vision API key >
+      billing: # < Your computer vision billing URL >
     ports:
       - "5021:5000"
 ```
@@ -87,9 +87,9 @@ services:
 Docker Compose ファイルを使用すると、定義されたサービスのライフ サイクルのすべての段階 (サービスの開始、停止、再構築、サービス状態の表示、ログのストリーミング) を管理できます。 プロジェクト ディレクトリ (docker-compose.yaml ファイルがある場所) からコマンドライン インターフェイスを開きます。
 
 > [!NOTE]
-> エラーを避けるために、ホスト マシンと Docker エンジンがドライブを適切に共有していることを確認します。 たとえば、E:\publicpreview が docker-compose.yaml ファイルのディレクトリとして使用されている場合、ドライブ E を Docker と共有します。
+> エラーを避けるために、ホスト マシンと Docker エンジンがドライブを適切に共有していることを確認します。 たとえば、*E:\publicpreview* が *docker-compose.yaml* ファイルのディレクトリとして使用されている場合、ドライブ **E** を Docker と共有します。
 
-コマンドライン インターフェイスから次のコマンドを実行して、docker-compose.yaml ファイルに定義されているすべてのサービスを開始 (または再開) します。
+コマンドライン インターフェイスから次のコマンドを実行して、*docker-compose.yaml* ファイルに定義されているすべてのサービスを開始 (または再開) します。
 
 ```console
 docker-compose up
@@ -113,8 +113,8 @@ fd93b5f95865: Pull complete
 ef41dcbc5857: Pull complete
 4d05c86a4178: Pull complete
 34e811d37201: Pull complete
-Pulling ocr (containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:)...
-latest: Pulling from microsoft/cognitive-services-recognize-text
+Pulling ocr (containerpreview.azurecr.io/microsoft/cognitive-services-read:)...
+latest: Pulling from microsoft/cognitive-services-read
 f476d66f5408: Already exists
 8882c27f669e: Already exists
 d9af21273955: Already exists
@@ -167,18 +167,12 @@ ocr_1    | Application started. Press Ctrl+C to shut down.
 ```
 IMAGE ID            REPOSITORY                                                                 TAG
 2ce533f88e80        containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer   latest
-4be104c126c5        containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text    latest
+4be104c126c5        containerpreview.azurecr.io/microsoft/cognitive-services-read              latest
 ```
 
-### <a name="test-the-recognize-text-container"></a>テキスト認識コンテナーをテストする
+### <a name="test-containers"></a>テスト コンテナー
 
-ホスト コンピューター上でブラウザーを開き、 http://localhost:5021/swagger/index.html のように、docker-compose.yaml ファイルで指定されたポートを使用して **localhost** にアクセスします。 API の "テスト" 機能を使用して、テキスト認識エンドポイントをテストできます。
-
-![テキスト認識コンテナー](media/recognize-text-swagger-page.png)
-
-### <a name="test-the-form-recognizer-container"></a>Form Recognizer コンテナーをテストする
-
-ホスト コンピューター上でブラウザーを開き、 http://localhost:5010/swagger/index.html のように、docker-compose.yaml ファイルで指定されたポートを使用して **localhost** にアクセスします。 API の "テスト" 機能を使用して、Form Recognizer エンドポイントをテストできます。
+ホスト コンピューター上でブラウザーを開き、 http://localhost:5021/swagger/index.html のように、*docker-compose.yaml* ファイルで指定されたポートを使用して **localhost** にアクセスします。 たとえば、API の **[使ってみる]** 機能を使用して、Form Recognizer エンドポイントをテストできます。 両方のコンテナーの swagger ページを使用およびテストできます。
 
 ![Form Recognizer コンテナー](media/form-recognizer-swagger-page.png)
 

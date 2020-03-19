@@ -3,12 +3,12 @@ title: Azure Functions をパッケージから実行する
 description: 関数アプリのプロジェクト ファイルが含まれたデプロイ パッケージ ファイルをマウントすることで、Azure Functions ランタイムで関数を実行します。
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: a3e11a7c4f3fd91df2fd9dd7a44f3922c4922585
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 3ae287939f22469b03f0e10f184f067274464905
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921115"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087031"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Azure Functions をパッケージ ファイルから実行する
 
@@ -80,7 +80,7 @@ Azure Blob torage でホストされている .zip ファイルから実行す�
     az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.net/secrets/external-url/<secret-version>"
     ```
 
-詳細については、次の記事を参照してください。
+詳細については、次に関する記事を参照してください。
 
 - [App Service の Key Vault 参照](../app-service/app-service-key-vault-references.md)
 - [保存データに対する Azure Storage 暗号化](../storage/common/storage-service-encryption.md)
@@ -91,6 +91,7 @@ Azure Blob torage でホストされている .zip ファイルから実行す�
 - tar および gzip 形式はサポートされていません。
 - この機能はローカル キャッシュでは構成されません。
 - コールドスタートのパフォーマンスを向上するには、ローカルの Zip オプション (`WEBSITE_RUN_FROM_PACKAGE` = 1) を使用します。
+- パッケージからの実行は、デプロイ カスタマイズ オプション (`SCM_DO_BUILD_DURING_DEPLOYMENT=true`) と互換性がありません。ビルド ステップは、デプロイの間に無視されます。
 
 ## <a name="next-steps"></a>次のステップ
 

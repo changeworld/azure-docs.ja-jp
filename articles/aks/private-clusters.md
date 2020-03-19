@@ -4,12 +4,12 @@ description: プライベート Azure Kubernetes Service (AKS) クラスター�
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: 4b4ba130d9ff63291abdd46617b0692e844a60bf
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 0a05bd15fff97d4f0020f6ce82ee90a2fe995edf
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649509"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944199"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>プライベート Azure Kubernetes Service クラスターを作成する (プレビュー)
 
@@ -100,6 +100,14 @@ az provider register --namespace Microsoft.Network
 ```
 ## <a name="create-a-private-aks-cluster"></a>プライベート AKS クラスターを作成する
 
+### <a name="create-a-resource-group"></a>リソース グループを作成する
+
+リソース グループを作成するか、AKS クラスターの既存のリソース グループを使用します。
+
+```azurecli-interactive
+az group create -l westus -n MyResourceGroup
+```
+
 ### <a name="default-basic-networking"></a>既定の基本ネットワーク 
 
 ```azurecli-interactive
@@ -126,35 +134,29 @@ az aks create \
 > [!NOTE]
 > Docker ブリッジ アドレス CIDR (172.17.0.1/16) がサブネット CIDR と競合する場合は、Docker ブリッジ アドレスを適切に変更します。
 
-## <a name="connect-to-the-private-cluster"></a>プライベート クラスターに接続する
+## <a name="options-for-connecting-to-the-private-cluster"></a>プライベート クラスターに接続するための選択肢
 
-API サーバー エンドポイントには、パブリック IP アドレスがありません。 そのため、仮想ネットワーク内に Azure 仮想マシン (VM) を作成し、API サーバーに接続する必要があります。 そのためには、次の手順を実行します。
+API サーバー エンドポイントには、パブリック IP アドレスがありません。 API サーバーを管理するには、AKS クラスターの Azure Virtual Network (VNet) にアクセスできる VM を使用する必要があります。 プライベート クラスターへのネットワーク接続を確立するには、いくつかの選択肢があります。
 
-1. クラスターに接続するための資格情報を取得します。
+* AKS クラスターと同じ Azure Virtual Network (VNet) に VM を作成します。
+* 別のネットワーク内の VM を使用し、[仮想ネットワーク ピアリング][virtual-network-peering]を設定します。  このオプションの詳細については、以下のセクションを参照してください。
+* [Express Route または VPN][express-route-or-VPN] 接続を使用します。
 
-   ```azurecli-interactive
-   az aks get-credentials --name MyManagedCluster --resource-group MyResourceGroup
-   ```
+AKS クラスターと同じ VNET に VM を作成するのが最も簡単な方法です。  Express Route と VPN にはコストがかかり、ネットワークがさらに複雑になります。  仮想ネットワーク ピアリングを利用する場合、重複する範囲がないようにネットワーク CIDR 範囲を計画する必要があります。
 
-1. 以下のいずれかを実行します。
-   * AKS クラスターと同じ仮想ネットワーク内に VM を作成します。  
-   * 別の仮想ネットワーク内に VM を作成し、この仮想ネットワークを AKS クラスター仮想ネットワークとピアリングします。
+## <a name="virtual-network-peering"></a>仮想ネットワーク ピアリング
 
-     別の仮想ネットワーク内に VM を作成する場合には、この仮想ネットワークとプライベート DNS ゾーンの間にリンクを設定します。 そのためには次を行います。
+前述のように、VNet ピアリングはプライベート クラスターにアクセスする方法の 1 つです。 VNet ピアリングを使用するには、仮想ネットワークとプライベート DNS ゾーンの間にリンクを設定する必要があります。
     
-     a. Azure portal の MC_ * リソース グループに移動します。  
-     b. プライベート DNS ゾーンを選択します。   
-     c. 左側のウィンドウで、 **[仮想ネットワーク]** リンクを選択します。  
-     d. 新しいリンクを作成して、VM の仮想ネットワークをプライベート DNS ゾーンに追加します。 DNS ゾーンリンクが利用可能になるまで数分かかります。  
-     e. Azure portal の MC_ * リソースグループに戻ります。  
-     f. 右側のウィンドウで、仮想ネットワークを選択します。 仮想ネットワーク名は *aks-vnet-\** のフォームになっています。  
-     g. 左側のウィンドウで、 **[ピアリング]** を選択します。  
-     h. **[追加]** を選択して VM の仮想ネットワークを追加し、次にピアリングを作成します。  
-     i. VM のある仮想ネットワークに移動して **[ピアリング]** を選択、AKS 仮想ネットワークを選択し、次にピアリングを作成します。 AKS 仮想ネットワークのアドレス範囲と VM の仮想ネットワークが競合している場合、ピアリングは失敗します。 詳細については、「[仮想ネットワーク ピアリング][virtual-network-peering]」を参照してください。
-
-1. Secure Shell (SSH) 経由で VM にアクセスします。
-1. Kubectl ツールをインストールし、Kubectl コマンドを実行します。
-
+1. Azure portal の MC_ * リソース グループに移動します。  
+2. プライベート DNS ゾーンを選択します。   
+3. 左側のウィンドウで、 **[仮想ネットワーク]** リンクを選択します。  
+4. 新しいリンクを作成して、VM の仮想ネットワークをプライベート DNS ゾーンに追加します。 DNS ゾーンリンクが利用可能になるまで数分かかります。  
+5. Azure portal の MC_ * リソースグループに戻ります。  
+6. 右側のウィンドウで、仮想ネットワークを選択します。 仮想ネットワーク名は *aks-vnet-\** のフォームになっています。  
+7. 左側のウィンドウで、 **[ピアリング]** を選択します。  
+8. **[追加]** を選択して VM の仮想ネットワークを追加し、次にピアリングを作成します。  
+9. VM のある仮想ネットワークに移動して **[ピアリング]** を選択、AKS 仮想ネットワークを選択し、次にピアリングを作成します。 AKS 仮想ネットワークのアドレス範囲と VM の仮想ネットワークが競合している場合、ピアリングは失敗します。 詳細については、「[仮想ネットワーク ピアリング][virtual-network-peering]」を参照してください。
 
 ## <a name="dependencies"></a>依存関係  
 * Private Link サービスは、Standard Azure Load Balancer でのみサポートされています。 Basic Azure Load Balancer はサポートされていません。  
@@ -179,6 +181,8 @@ API サーバー エンドポイントには、パブリック IP アドレス�
 [az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[private-link-service]: https://docs.microsoft.com/azure/private-link/private-link-service-overview
+[private-link-service]: /private-link/private-link-service-overview
 [virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
+[azure-bastion]: ../bastion/bastion-create-host-portal.md
+[express-route-or-vpn]: ../expressroute/expressroute-about-virtual-network-gateways.md
 
