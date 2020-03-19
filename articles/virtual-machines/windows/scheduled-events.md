@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: c4461856bd5eeb01eb84b0d39afef9507438f8d3
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 2b3aa5d50822863e3aa46fcf9970e0b3e67a6f69
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920664"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944460"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Windows VM のスケジュールされたイベント
 
@@ -45,7 +45,7 @@ Linux のスケジュールされたイベントの詳細については、[Linu
 
 スケジュールされたイベントは、次のユース ケースでイベントを提供します。
 - [プラットフォームで開始されるメンテナンス](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates) (例: VM の再起動、ライブ マイグレーション、ホストの更新を保持するメモリ)
-- ハードウェアの機能低下
+- 仮想マシンは、じきに故障することが予測されている[劣化したホスト ハードウェア](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events)で実行されています。
 - ユーザーが開始するメンテナンス (例: ユーザーによる再起動や VM の再デプロイ)
 - [スポット VM](spot-vms.md) および[スポット スケール セット](../../virtual-machine-scale-sets/use-spot.md) インスタンスの削除
 
@@ -135,6 +135,9 @@ DocumentIncarnation は ETag であり、前回のクエリ以降にイベント
 | Redeploy | 10 分 |
 | Preempt | 30 秒 |
 | Terminate | [ユーザーが構成可能](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications):5 から 15 分 |
+
+> [!NOTE] 
+> Azure では、劣化したハードウェアに起因するホストの故障を予測が可能になり、移行をスケジュールすることでサービスの中断を軽減しようとすることがあります。 影響を受ける仮想マシンには、スケジュールされているイベントと `NotBefore` が届きます。これは通常、2、3 日先になります。 実際の時間は、予測された故障のリスク評価によって異なります。 Azure では、可能であれば、7 日前に通知を行いますが、実際の時間はさまざまであり、ハードウェアが今にも故障する可能性が高い場合、7 日より短くなることがあります。 サービスのリスクを最小限に抑え、システムによって開始される移行の前にハードウェアで障害が発生した場合に備えて、できるだけ早く仮想マシンをご自身で再デプロイすることをお勧めします。
 
 ### <a name="event-scope"></a>イベントの範囲     
 スケジュールされたイベントの配信先は次のとおりです。

@@ -3,12 +3,12 @@ title: PowerShell を使用して Windows Server を Azure にバックアップ
 description: この記事では、PowerShell を使用して Windows Server または Windows クライアント上に Azure Backup を設定したり、バックアップと回復を管理したりする方法について説明します。
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 85006a318864aed537b70a97fb38f89746d2878c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: efe0b93fe1e37990422ffbd2256e38c12401dca5
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622802"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673187"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>PowerShell を使用して Windows Server/Windows Client に Microsoft Azure Backup をデプロイおよび管理する手順
 
@@ -595,7 +595,7 @@ ServerName : myserver.microsoft.com
 
 ### <a name="choosing-a-backup-point-from-which-to-restore"></a>復元元のバックアップ ポイントの選択
 
-バックアップ ポイントの一覧は、[Get-OBRecoverableItem](https://docs.microsoft.com/powershell/module/msonlinebackup/get-obrecoverableitem?view=winserver2012-ps) コマンドレットと適切なパラメーターを実行して取得できます。 この例では、ソース ボリューム *Ｃ:* の最新のバックアップ ポイントを選択し、これを使用して特定のファイルを復旧します。
+バックアップ ポイントの一覧は、[Get-OBRecoverableItem](https://docs.microsoft.com/powershell/module/msonlinebackup/get-obrecoverableitem?view=winserver2012-ps) コマンドレットと適切なパラメーターを実行して取得できます。 この例では、ソース ボリューム *C:* の最新のバックアップ ポイントを選択し、これを使用して特定のファイルを復旧します。
 
 ```powershell
 $Rps = Get-OBRecoverableItem $Source[0]
@@ -740,4 +740,4 @@ Invoke-Command -Session $Session -Script { param($D, $A) Start-Process -FilePath
 Windows Server/Windows クライアント用の Azure Backup の詳細については、次を参照してください。
 
 * [Azure Backup の概要](backup-introduction-to-azure-backup.md)
-* [Windows Server のバックアップ](backup-configure-vault.md)
+* [Windows Server のバックアップ](backup-windows-with-mars-agent.md)

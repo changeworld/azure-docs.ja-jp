@@ -1,25 +1,19 @@
 ---
-title: Azure で Linux VM を監視する
-description: Azure での Linux 仮想マシンの監視オプションについて説明します。
-services: virtual-machines-linux
-documentationcenter: ''
+title: Azure で VM を監視する
+description: Azure での仮想マシンの監視オプションについて説明します。
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: monitoring
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.date: 08/14/2017
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: a23a6f88a5194e42d543e35e783db206e768a919
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 15ab009a7db1898c58507ee6867f404c4d13d450
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035674"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944629"
 ---
 # <a name="how-to-monitor-virtual-machines-in-azure"></a>Azure で仮想マシンを監視する方法
 

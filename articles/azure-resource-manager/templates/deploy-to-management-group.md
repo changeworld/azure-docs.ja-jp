@@ -2,23 +2,23 @@
 title: 管理グループにリソースをデプロイする
 description: Azure Resource Manager テンプレートを使用して、管理グループのスコープでリソースをデプロイする方法について説明します。
 ms.topic: conceptual
-ms.date: 03/02/2020
-ms.openlocfilehash: 3b2eeaf2c63a50cda1a32fee94c1e5b99822075d
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.date: 03/09/2020
+ms.openlocfilehash: dc46762755718c798b4a7eed6f2dc6b8afce9b98
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228103"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942762"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>管理グループ レベルでリソースを作成する
 
-通常、Azure リソースは Azure サブスクリプションのリソース グループにデプロイします。 ただし、管理グループ レベルでリソースを作成することもできます。 管理グループ レベルのデプロイを使用して、[ロールベースのアクセス制御](../../role-based-access-control/overview.md)の割り当てや[ポリシー](../../governance/policy/overview.md)の適用など、そのレベルで意味のあるアクションを実行します。
+組織が成熟してきたら、場合によっては、管理グループの[ポリシー](../../governance/policy/overview.md)や[ロールベースのアクセス制御](../../role-based-access-control/overview.md)を定義し、割り当てる必要があります。 管理グループ レベルのテンプレートがあれば、宣言という方法を用いて管理グループ レベルでポリシーを適用し、ロールを割り当てることができます。
 
 ## <a name="supported-resources"></a>サポートされているリソース
 
 管理グループ レベルでは、次のリソースの種類をデプロイできます。
 
-* [deployments](/azure/templates/microsoft.resources/deployments)
+* [デプロイ](/azure/templates/microsoft.resources/deployments) - サブスクリプションまたはリソース グループにデプロイする入れ子になったテンプレートの場合。
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
@@ -35,10 +35,10 @@ ms.locfileid: "78228103"
 https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#
 ```
 
-パラメーター ファイルの場合は、次を使用します。
+パラメーター ファイルのスキーマはすべてのデプロイ範囲で同じです。 パラメーター ファイルの場合は、次を使用します。
 
 ```json
-https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentParameters.json#
+https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
 
 ## <a name="deployment-commands"></a>デプロイ コマンド
@@ -163,5 +163,4 @@ REST API の場合は、[管理グループ スコープでの作成によるデ
 
 * ロールの割り当てについては、「[RBAC と Azure Resource Manager テンプレートを使用して Azure リソースへのアクセスを管理する](../../role-based-access-control/role-assignments-template.md)」をご覧ください。
 * Azure Security Center のワークスペースの設定をデプロイする例については、[deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json) のページを参照してください。
-* Azure リソース マネージャーのテンプレートの作成の詳細については、 [テンプレートの作成](template-syntax.md)に関するページを参照してください。
-* テンプレートで使用可能な関数の一覧については、 [テンプレートの関数](template-functions.md)に関するページを参照してください。
+* [サブスクリプション レベル](deploy-to-subscription.md)と[テナント レベル](deploy-to-tenant.md)でテンプレートをデプロイすることもできます。

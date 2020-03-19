@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 0af2b5f7d756060d463d2b4f3ef71bdd135710ee
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 0ff464936025a20cb6925adc7ef6eb44c2fe1f0e
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591525"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933815"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>仮想マシン プールを設定および管理する 
 この記事では、次のタスクの手順について説明します。
@@ -102,6 +102,13 @@ ms.locfileid: "77591525"
 
 > [!NOTE]
 > 教授が VM を起動して接続すると、学生のクォータは影響を受けません。 
+
+## <a name="export-list-of-virtual-machines-to-a-csv-file"></a>CSV ファイルに仮想マシンのリストをエクスポートする
+
+1. **[Virtual machine pool]\(仮想マシン プール\)** タブに切り替えます。
+2. ツール バーの **[...] (省略記号)** を選択してから、 **[CSV のエクスポート]** を選択します。 
+
+    ![仮想マシンのエクスポート一覧](../media/how-to-export-users-virtual-machines-csv/virtual-machines-export-csv.png)
 
 ## <a name="next-steps"></a>次のステップ
 (ラボ所有者として) 構成できる他の学生の使用オプションの詳細については、次の記事を参照してください。[学生の使用の構成](how-to-configure-student-usage.md)

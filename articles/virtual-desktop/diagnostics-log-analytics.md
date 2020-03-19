@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: f50e5144080ffb1c91e834c757082bb57eeaffcb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+manager: lizross
+ms.openlocfilehash: 355acb081afef8c78cdf971c7a82acdb91ab5593
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474753"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127930"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>診断機能に Log Analytics を使用する
 

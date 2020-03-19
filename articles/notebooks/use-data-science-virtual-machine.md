@@ -6,12 +6,12 @@ manager: andneil
 ms.author: getroyer
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 7a47be46818c633c016c791d0c52eb9393029973
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: b4da63b7b2a6da4316215b85a09ca7420745251c
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646996"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898400"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Azure Data Science Virtual Machine を使用する
 
@@ -38,6 +38,9 @@ DSVM を作成したら、Azure Notebook プロジェクト ダッシュ ボー�
 
 DSVM インスタンスを選択すると、Azure Notebooks によって、VM を作成したときに使用した特定のマシン資格情報が求められることがあります。
 
+> [!Important]
+> JupyterHub で使用するには、ユーザー名を小文字にする必要があります。
+
 条件のいずれかを満たしていない場合でも、DSVM に接続することができます。 ドロップダウン リストで **[Direct Compute]\(直接コンピューティング\)** オプションを選択すると、名前 (一覧に表示する名前)、VM の IP アドレスとポート (通常は、JupyterHub がリッスンする既定のポートである 8000)、および VM 資格情報の入力を求められます。
 
 ![[Direct Compute]\(直接コンピューティング\) オプションのサーバー情報を収集するプロンプト](media/project-compute-tier-direct.png)
@@ -60,7 +63,7 @@ VM でプロジェクトが実行されると、ファイルは Jupyter サー�
 
 1. [Azure portal](https://portal.azure.com) で仮想マシンに移動します。
 1. 左側の余白の **[サポート + トラブルシューティング]** で、 **[パスワードのリセット]** を選択します。
-1. 新しいユーザー名とパスワードを入力し、 **[更新]** を選択します。 (既存のユーザー名には影響ありません。)
+1. 新しい**ユーザー名**を入力します。 JupyterHub で使用するには、ユーザー名を小文字にする必要があります。 パスワードを入力します。 次に、 **[更新]** を選択します。 (既存のユーザー名には影響ありません。)
 1. 他のユーザーに対し、前の手順を繰り返します。
 
 ## <a name="next-steps"></a>次のステップ

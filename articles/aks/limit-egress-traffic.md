@@ -3,13 +3,13 @@ title: Azure Kubernetes Service (AKS) でエグレス トラフィックを制�
 description: Azure Kubernetes Service (AKS) でエグレス トラフィックを制御するために必要なポートとアドレスについて説明します。
 services: container-service
 ms.topic: article
-ms.date: 01/21/2020
-ms.openlocfilehash: d69921ce23e961879fea6be68838f86bfcc703d0
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.date: 03/10/2020
+ms.openlocfilehash: 2cd7aeea272d22615d3ba3d3db6acc2c84d22cca
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191301"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080180"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でクラスター ノードに対するエグレス トラフィックを制御する
 
@@ -34,7 +34,7 @@ AKS クラスターのセキュリティを強化するために、エグレス 
 
 > [!IMPORTANT]
 > Azure Firewall を使用してエグレス トラフィックを制限し、すべてのエグレス トラフィックを強制するユーザー定義ルート (UDR) を作成するときは、イグレス トラフィックを正しく許可するために、ファイアウォールで適切な DNAT 規則を作成する必要があります。 UDR で Azure Firewall を使用すると、非対称ルーティングによってイングレス設定が機能しなくなります (AKS サブネットにファイアウォールのプライベート IP アドレスに送信される既定のルートがあるのに、種類が LoadBalancer であるイングレスまたは Kubernetes サービスのパブリック ロード バランサーを使用している場合、この問題が発生します)。 この場合、ロード バランサーの受信トラフィックはパブリック IP アドレス経由で受信されますが、復路のパスはファイアウォールのプライベート IP アドレスを通過します。 ファイアウォールはステートフルであり、確立済みのセッションを認識しないため、返されるパケットは破棄されます。 Azure Firewall をイングレスまたはサービスのロード バランサーと統合する方法については、「[Azure Firewall と Azure Standard Load Balancer を統合する](https://docs.microsoft.com/azure/firewall/integrate-lb)」を参照してください。
-> エグレス ワーカー ノード IP と API サーバーの IP の間のネットワーク規則を使用して、TCP ポート9000 と TCP ポート 22 のトラフィックをロックダウンすることができます。
+> エグレス ワーカー ノード IP と API サーバーの IP の間のネットワーク規則を使用して、TCP ポート 9000、TCP ポート 22、UDP ポート 1194 のトラフィックをロックダウンすることができます。
 
 AKS には、2 組のポートとアドレスがあります。
 
@@ -50,7 +50,7 @@ AKS クラスターには、次の送信ポート/ネットワーク規則が必
 
 * TCP ポート *443*
 * API サーバーと通信する必要があるアプリがある場合は、TCP [IPAddrOfYourAPIServer]:443 が必要です。  この変更は、クラスターの作成後に設定できます。
-* トンネル フロント ポッドが API サーバー上のトンネルの終端と通信するための TCP ポート *9000* と TCP ポート *22*。
+* トンネル フロント ポッドが API サーバー上のトンネルの終端と通信するための TCP ポート *9000*、TCP ポート *22*、UDP ポート *1194*。
     * より具体的な情報を得るには、次の表の * *.hcp.\<location\>.azmk8s.io* アドレスと * *.tun.\<location\>.azmk8s.io* アドレスを参照してください。
 * UDP ポート *123* ネットワーク タイム プロトコル (NTP) の時刻同期 (Linux ノード) 用です。
 * API サーバーに直接アクセスするポッドがある場合は、DNS に対する UDP ポート *53* も必要です。
@@ -60,29 +60,34 @@ AKS クラスターには、次の送信ポート/ネットワーク規則が必
 > [!IMPORTANT]
 > * **.blob.core.windows.net と aksrepos.azurecr.io** は、エグレス ロックダウンで必要な FQDN 規則ではなくなりました。  既存のクラスターでこれらの規則を削除するには、`az aks upgrade` コマンドを使用して[クラスターのアップグレード操作を実行][aks-upgrade]します。
 
+> [!IMPORTANT]
+> *.cdn.mscr.io は、Azure パブリック クラウド リージョンの *.data.mcr.microsoft.com に置き換えられました。 変更を適用するには、既存のファイアウォール規則をアップグレードしてください。
+
 - Azure Global
 
 | FQDN                       | Port      | 用途      |
 |----------------------------|-----------|----------|
-| *.hcp.\<location\>.azmk8s.io | HTTPS: 443、TCP: 22、TCP: 9000 | このアドレスは API サーバー エンドポイントです。 *\<location\>* は、AKS クラスターがデプロイされているリージョンに置き換えてください。 |
-| *.tun.\<location\>.azmk8s.io | HTTPS: 443、TCP: 22、TCP: 9000 | このアドレスは API サーバー エンドポイントです。 *\<location\>* は、AKS クラスターがデプロイされているリージョンに置き換えてください。 |
+| *.hcp.\<location\>.azmk8s.io | HTTPS:443、TCP:22、TCP:9000、UDP:1194 | このアドレスはノードと API サーバーの間の通信に必要です。 *\<location\>* は、AKS クラスターがデプロイされているリージョンに置き換えてください。 |
+| *.tun.\<location\>.azmk8s.io | HTTPS:443、TCP:22、TCP:9000、UDP:1194 | このアドレスはノードと API サーバーの間の通信に必要です。 *\<location\>* は、AKS クラスターがデプロイされているリージョンに置き換えてください。 |
+| *.cdn.mscr.io       | HTTPS: 443 | このアドレスは、Azure Content Delivery Network (CDN) によってサポートされる MCR ストレージに必要です。 |
 | mcr.microsoft.com          | HTTPS: 443 | このアドレスは、Microsoft Container Registry (MCR) のイメージにアクセスするために必要です。 このレジストリには、クラスターのアップグレード時およびスケール時にクラスターの機能に必要なファーストパーティのイメージ/グラフ (moby など) が含まれています。 |
-| *.cdn.mscr.io              | HTTPS: 443 | このアドレスは、Azure Content Delivery Network (CDN) によってサポートされる MCR ストレージに必要です。 |
+| *.data.mcr.microsoft.com             | HTTPS: 443 | このアドレスは、Azure Content Delivery Network (CDN) によってサポートされる MCR ストレージに必要です。 |
 | management.azure.com       | HTTPS: 443 | このアドレスは、Kubernetes の GET/PUT 操作に必要です。 |
 | login.microsoftonline.com  | HTTPS: 443 | このアドレスは Azure Active Directory 認証に必要です。 |
 | ntp.ubuntu.com             | UDP: 123   | このアドレスは、Linux ノード上での NTP 時刻同期に必要です。 |
 | packages.microsoft.com     | HTTPS: 443 | このアドレスは、キャッシュされた *apt-get* 操作に使用される Microsoft パッケージ リポジトリです。  パッケージの例としては、Moby、PowerShell、Azure CLI などがあります。 |
-| acs-mirror.azureedge.net   | HTTPS: 443 | このアドレスは、kubernet や Azure CNI などの必要なバイナリをインストールするために必要なリポジトリ用です。 |
+| acs-mirror.azureedge.net      | HTTPS: 443 | このアドレスは、kubernet や Azure CNI などの必要なバイナリをインストールするために必要なリポジトリ用です。 |
 
 - Azure China 21Vianet
 
 | FQDN                       | Port      | 用途      |
 |----------------------------|-----------|----------|
-| *.hcp.\<location\>.cx.prod.service.azk8s.cn | HTTPS: 443、TCP: 22、TCP: 9000 | このアドレスは API サーバー エンドポイントです。 *\<location\>* は、AKS クラスターがデプロイされているリージョンに置き換えてください。 |
-| *.tun.\<location\>.cx.prod.service.azk8s.cn | HTTPS: 443、TCP: 22、TCP: 9000 | このアドレスは API サーバー エンドポイントです。 *\<location\>* は、AKS クラスターがデプロイされているリージョンに置き換えてください。 |
+| *.hcp.\<location\>.cx.prod.service.azk8s.cn | HTTPS:443、TCP:22、TCP:9000、UDP:1194 | このアドレスはノードと API サーバーの間の通信に必要です。 *\<location\>* は、AKS クラスターがデプロイされているリージョンに置き換えてください。 |
+| *.tun.\<location\>.cx.prod.service.azk8s.cn | HTTPS:443、TCP:22、TCP:9000、UDP:1194 | このアドレスはノードと API サーバーの間の通信に必要です。 *\<location\>* は、AKS クラスターがデプロイされているリージョンに置き換えてください。 |
 | *.azk8s.cn        | HTTPS: 443 | このアドレスは、必要なバイナリと画像をダウンロードするために必要です|
 | mcr.microsoft.com          | HTTPS: 443 | このアドレスは、Microsoft Container Registry (MCR) のイメージにアクセスするために必要です。 このレジストリには、クラスターのアップグレード時およびスケール時にクラスターの機能に必要なファーストパーティのイメージ/グラフ (moby など) が含まれています。 |
-| *.cdn.mscr.io              | HTTPS: 443 | このアドレスは、Azure Content Delivery Network (CDN) によってサポートされる MCR ストレージに必要です。 |
+| *.cdn.mscr.io       | HTTPS: 443 | このアドレスは、Azure Content Delivery Network (CDN) によってサポートされる MCR ストレージに必要です。 |
+| *.data.mcr.microsoft.com             | HTTPS: 443 | このアドレスは、Azure Content Delivery Network (CDN) によってサポートされる MCR ストレージに必要です。 |
 | management.chinacloudapi.cn       | HTTPS: 443 | このアドレスは、Kubernetes の GET/PUT 操作に必要です。 |
 | login.chinacloudapi.cn  | HTTPS: 443 | このアドレスは Azure Active Directory 認証に必要です。 |
 | ntp.ubuntu.com             | UDP: 123   | このアドレスは、Linux ノード上での NTP 時刻同期に必要です。 |
@@ -92,15 +97,16 @@ AKS クラスターには、次の送信ポート/ネットワーク規則が必
 
 | FQDN                       | Port      | 用途      |
 |----------------------------|-----------|----------|
-| *.hcp.\<location\>.cx.aks.containerservice.azure.us | HTTPS: 443、TCP: 22、TCP: 9000 | このアドレスは API サーバー エンドポイントです。 *\<location\>* は、AKS クラスターがデプロイされているリージョンに置き換えてください。 |
-| *.tun.\<location\>.cx.aks.containerservice.azure.us | HTTPS: 443、TCP: 22、TCP: 9000 | このアドレスは API サーバー エンドポイントです。 *\<location\>* は、AKS クラスターがデプロイされているリージョンに置き換えてください。 |
+| *.hcp.\<location\>.cx.aks.containerservice.azure.us | HTTPS:443、TCP:22、TCP:9000、UDP:1194 | このアドレスはノードと API サーバーの間の通信に必要です。 *\<location\>* は、AKS クラスターがデプロイされているリージョンに置き換えてください。 |
+| *.tun.\<location\>.cx.aks.containerservice.azure.us | HTTPS:443、TCP:22、TCP:9000、UDP:1194 | このアドレスはノードと API サーバーの間の通信に必要です。 *\<location\>* は、AKS クラスターがデプロイされているリージョンに置き換えてください。 |
 | mcr.microsoft.com          | HTTPS: 443 | このアドレスは、Microsoft Container Registry (MCR) のイメージにアクセスするために必要です。 このレジストリには、クラスターのアップグレード時およびスケール時にクラスターの機能に必要なファーストパーティのイメージ/グラフ (moby など) が含まれています。 |
-| *.cdn.mscr.io              | HTTPS: 443 | このアドレスは、Azure Content Delivery Network (CDN) によってサポートされる MCR ストレージに必要です。 |
+|*.cdn.mscr.io              | HTTPS: 443 | このアドレスは、Azure Content Delivery Network (CDN) によってサポートされる MCR ストレージに必要です。 |
+| *.data.mcr.microsoft.com             | HTTPS: 443 | このアドレスは、Azure Content Delivery Network (CDN) によってサポートされる MCR ストレージに必要です。 |
 | management.usgovcloudapi.net       | HTTPS: 443 | このアドレスは、Kubernetes の GET/PUT 操作に必要です。 |
 | login.microsoftonline.us  | HTTPS: 443 | このアドレスは Azure Active Directory 認証に必要です。 |
 | ntp.ubuntu.com             | UDP: 123   | このアドレスは、Linux ノード上での NTP 時刻同期に必要です。 |
 | packages.microsoft.com     | HTTPS: 443 | このアドレスは、キャッシュされた *apt-get* 操作に使用される Microsoft パッケージ リポジトリです。  パッケージの例としては、Moby、PowerShell、Azure CLI などがあります。 |
-| acs-mirror.azureedge.net   | HTTPS: 443 | このアドレスは、kubernet や Azure CNI などの必要なバイナリをインストールするために必要なリポジトリ用です。 |
+| acs-mirror.azureedge.net      | HTTPS: 443 | このアドレスは、kubernet や Azure CNI などの必要なバイナリをインストールするために必要なリポジトリ用です。 |
 
 ## <a name="optional-recommended-addresses-and-ports-for-aks-clusters"></a>AKS クラスターの省略可能な推奨されるアドレスとポート
 
@@ -128,8 +134,8 @@ Azure Monitor for containers 有効になっている AKS クラスターの場�
 
 | FQDN                                    | Port      | 用途      |
 |-----------------------------------------|-----------|----------|
-| dc.services.visualstudio.com | HTTPS: 443  | これは、Azure Monitor を使用する適切なメトリックと監視テレメトリ用です。 |
-| *.ods.opinsights.azure.com    | HTTPS: 443 | これは、ログ分析データを取り込むために Azure Monitor によって使用されます。 |
+| dc.services.visualstudio.com | HTTPS: 443    | これは、Azure Monitor を使用する適切なメトリックと監視テレメトリ用です。 |
+| *.ods.opinsights.azure.com    | HTTPS: 443    | これは、ログ分析データを取り込むために Azure Monitor によって使用されます。 |
 | *.oms.opinsights.azure.com | HTTPS: 443 | このアドレスは、ログ分析サービスの認証に使用される omsagent によって使用されます。 |
 |*.microsoftonline.com | HTTPS: 443 | これは、Azure Monitor に対する認証とメトリックの送信に使用されます。 |
 |*.monitoring.azure.com | HTTPS: 443 | これは、メトリック データを Azure Monitor に送信するために使用されます。 |
@@ -156,7 +162,7 @@ Azure Policy が有効になっている AKS クラスターの場合、次の F
 |-----------------------------------------|-----------|----------|
 | gov-prod-policy-data.trafficmanager.net | HTTPS: 443 | このアドレスは、Azure Policy の適切な操作のために使用されます。 (現在 AKS でプレビュー段階) |
 | raw.githubusercontent.com | HTTPS: 443 | このアドレスは、Azure Policy の正しい動作のために組み込みポリシーを GitHub から取得するために使用されます。 (現在 AKS でプレビュー段階) |
-| *.gk.\<location\>.azmk8s.io | HTTPS: 443   | マスター サーバーで実行されている Gatekeeper 監査エンドポイントと通信して、監査結果を取得する Azure Policy アドオン。 |
+| *.gk.\<location\>.azmk8s.io | HTTPS: 443    | マスター サーバーで実行されている Gatekeeper 監査エンドポイントと通信して、監査結果を取得する Azure Policy アドオン。 |
 | dc.services.visualstudio.com | HTTPS: 443 | テレメトリ データを Application Insights エンドポイントに送信するAzure Policy アドオン。 |
 
 ## <a name="required-by-windows-server-based-nodes-in-public-preview-enabled"></a>Windows Server ベースのノード (パブリック プレビュー) が有効な場合に必要

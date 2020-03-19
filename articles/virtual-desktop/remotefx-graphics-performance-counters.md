@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: helohr
-ms.openlocfilehash: eee8fdf515861b43b58d5af111930e2224c9a60a
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+manager: lizross
+ms.openlocfilehash: 84cee86dbddff77f6142925eec01889cf793a466
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367239"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127557"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>リモート デスクトップでグラフィックスのパフォーマンスの問題を診断する
 
@@ -71,7 +72,7 @@ ms.locfileid: "77367239"
 
 アプリ関連の問題の診断の詳細については、[[User Input Delay]\(ユーザー入力の遅延\) パフォーマンス カウンター](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/)に関する記事を参照してください。
 
-RDP は 33 ミリ秒の [Average Encoding Time]\(平均エンコード時間\) をサポートしているので、最大 30 フレーム/秒の入力フレーム レートをサポートします。 33 ミリ秒がサポートされる最大フレーム レートであることに注意してください。 多くの場合、ソースから RDP にフレームが提供される頻度に応じて、ユーザーが経験するフレーム レートは低くなります。 たとえば、ビデオの視聴などのタスクには 30 フレーム/秒の完全な入力フレーム レートが必要ですが、低い頻度でのドキュメントの編集などの計算負荷の低いタスクでは、[Input Frames/Second] (入力フレーム/秒) の値がはるかに低くてもユーザーのエクスペリエンス品質は低下しません。
+RDP は 33 ミリ秒の [Average Encoding Time]\(平均エンコード時間\) をサポートしているので、最大 30 フレーム/秒の入力フレーム レートをサポートします。 33 ミリ秒がサポートされる最大フレーム レートであることに注意してください。 多くの場合、ソースから RDP にフレームが提供される頻度に応じて、ユーザーが経験するフレーム レートは低くなります。 たとえば、ビデオの視聴などのタスクには 30 フレーム/秒の完全な入力フレーム レートが必要ですが、低い頻度でのドキュメントの編集などの計算負荷の低いタスクでは、[Input Frames/Second]\(入力フレーム/秒\) の値がはるかに低くてもユーザーのエクスペリエンス品質は低下しません。
 
 ### <a name="addressing-poor-frame-quality"></a>低フレーム品質への対処
 

@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/12/2019
-ms.openlocfilehash: a255d89aa4850d1249f1af9bdd0cb43b0826914f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 03/08/2020
+ms.openlocfilehash: 2d04de420f743e4fef4cff4bd2912559dae0886a
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930244"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934179"
 ---
 # <a name="mapping-data-flow-select-transformation"></a>マッピング データ フローの選択変換
 
@@ -30,7 +30,7 @@ ms.locfileid: "74930244"
 
 ![選択変換](media/data-flow/newselect1.png "エイリアスの選択")
 
-## <a name="options"></a>オプション
+## <a name="options"></a>Options
 * "選択" 変換の既定の設定は、受信するすべての列を処理し、それらの元の名前を保持することです。 選択変換の名前を設定することで、ストリームをエイリアス化できます。
 * 個々の列をエイリアス化する場合は、[すべて選択] をオフにし、下部にある列マッピングを使用します。
 * 入力または出力メタデータから重複している列を排除するには、[Skip Duplicates]\(重複をスキップ\) を選択します。
@@ -56,5 +56,10 @@ ms.locfileid: "74930244"
 
 パターン マッチングの詳細については、[列パターンに関するドキュメント](concepts-data-flow-column-pattern.md)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+### <a name="use-rule-based-mapping-to-parameterize-the-select-transformation"></a>ルールベースのマッピングを使用し、選択変換をパラメーター化する
+ルールベースのマッピングを利用し、選択変換のフィールド マッピングをパラメーター化できます。 キーワード ```name``` を使用し、入ってくる列名とパラメーターを照合できます。 たとえば、```mycolumn``` という名前のデータ フロー パラメーターがある場合、```mycolumn``` を設定したあらゆる列名をフィールド名に常にマッピングする選択変換ルールを 1 つ作成できます。
+
+```name == $mycolumn```
+
+## <a name="next-steps"></a>次のステップ
 * 選択を使用して列の名前変更、並べ替え、およびエイリアス化を実行した後、[シンク変換](data-flow-sink.md)を使用してデータをデータストアに格納します。

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 736a543a6f28697dd4f1ddf85317e97a87b86e78
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 7c684d6f1fbd8128ae020b6fd29da928b286aa18
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227068"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126690"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Microsoft Authenticator アプリを使用したパスワードなしのサインインを有効にする (プレビュー)
 
@@ -62,7 +62,7 @@ Microsoft Authenticator アプリを使用すると、パスワードを使用�
 1. **Microsoft Authenticator** で、アカウントのドロップダウン メニューから **[電話によるサインインを有効にする]** を選択します。
 1. アプリの指示に従って、パスワードなしの電話によるサインインの登録を完了します。 
 
-組織は、Microsoft Authenticator アプリでの設定と電話によるサインインの有効化をさらに支援するために、[パスワードではなく電話でサインインする方法](../user-help/microsoft-authenticator-app-phone-signin-faq.md)に関する記事をユーザーに紹介することができます。
+組織は、Microsoft Authenticator アプリでの設定と電話によるサインインの有効化をさらに支援するために、[パスワードではなく電話でサインインする方法](../user-help/microsoft-authenticator-app-phone-signin-faq.md)に関する記事をユーザーに紹介することができます。 これらの設定を適用するには、ログアウトしてからテナントに再度ログインする必要がある場合があります。 
 
 ## <a name="sign-in-with-passwordless-credential"></a>パスワードなしの資格情報でサインインする
 

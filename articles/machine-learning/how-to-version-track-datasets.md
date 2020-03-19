@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: sihhu
 author: sihhu
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
+ms.date: 03/09/2020
 ms.custom: ''
-ms.openlocfilehash: 4c8f3e7e47f9c8f924faf513d984d5474c105038
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 7b124c0f35b5cfda4380555385971e4968d4c45c
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834790"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78939255"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>実験でデータセットをバージョン管理して追跡する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -60,6 +60,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
                                  description = 'titanic training data',
                                  create_new_version = True)
 ```
+データセットの新しいバージョンを登録することもできます。 
 
 ### <a name="retrieve-a-dataset-by-name"></a>名前でデータセットを取得する
 
@@ -120,7 +121,7 @@ dataset2.register(workspace = workspace,
 
 データセットは、Machine Learning の各パイプライン ステップの入力および出力として使用できます。 パイプラインを再実行すると、各パイプライン ステップの出力は新しいデータセット バージョンとして登録されます。
 
-パイプラインを再実行するたびに、Machine Learning パイプラインによって、各ステップの出力が新しいフォルダーに格納されるので、バージョン管理された出力データセットは再現可能となります。
+パイプラインを再実行するたびに、Machine Learning パイプラインによって、各ステップの出力が新しいフォルダーに格納されるので、バージョン管理された出力データセットは再現可能となります。 パイプラインのデータセットについては[こちら](how-to-create-your-first-pipeline.md#steps)をご覧ください。
 
 ```Python
 from azureml.core import Dataset
@@ -169,7 +170,7 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-また、[Azure Machine Learning Studio](https://ml.azure.com/) を使用して、実験から `input_datasets` を見つけることもできます。 
+また、 https://ml.azure.com/ を使用して、実験から `input_datasets` を見つけることもできます。 
 
 次の図は、Azure Machine Learning Studio で実験の入力データセットを探す場所を示しています。 この例では、 **[実験]** ペインに移動し、実験 `keras-mnist` の特定の実行について **[プロパティ]** タブを開きます。
 
@@ -183,7 +184,9 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-登録後は、Python または [Azure Machine Learning Studio](https://ml.azure.com/) を使用して、データセットに登録されたモデルのリストを表示できます。 次のビューは、 **[資産]** の下の **[データセット]** ペインからのものです。 データセットを選択して、 **[モデル]** タブを選択し、そのデータセットで登録されたモデルのリストを表示します。 
+登録後は、Python を使用してデータセットに登録されたモデルのリストを表示できます。 https://ml.azure.com/ に進む方法もあります。
+
+次のビューは、 **[資産]** の下の **[データセット]** ペインからのものです。 データセットを選択して、 **[モデル]** タブを選択し、そのデータセットで登録されたモデルのリストを表示します。 
 
 ![入力データセットのモデル](./media/how-to-version-track-datasets/dataset-models.png)
 

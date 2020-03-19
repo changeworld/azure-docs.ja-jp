@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: b9ac15e6909498c38f618a24be6b010dc2774b07
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 431372b930269c3dfa6bdc6e8b2fe4d291a8162e
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905504"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933788"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -167,11 +167,11 @@ SAS トークンを使用して、すべての BLOB コンテナー、ディレ�
 
 - azcopy cp "https://s3.amazonaws.com/ [bucket*name]/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive=true
 
-## <a name="options"></a>オプション
+## <a name="options"></a>Options
 
 **--blob-type** string                     コピー先の BLOB の種類を定義します。 これは、BLOB をアップロードする場合と、アカウント間でコピーする場合に使用されます (既定値は "Detect")。 有効な値としては、"Detect"、"BlockBlob"、"PageBlob"、および "AppendBlob" があります。 アカウント間でコピーする場合、値 "Detect" を使用すると、AzCopy はソース BLOB の種類を使用して、コピー先 BLOB の種類を判断します。 ファイルをアップロードするとき、"Detect" は、ファイル拡張子に基づいて、ファイルが VHD ファイルまたは VHDX ファイルであるかを判断します。 ファイルが VHD ファイルまたは VHDX ファイルの場合、AzCopy はそのファイルをページ BLOB として扱います。 (既定値は "Detect")
 
-**--block-blob-tier** string              この BLOB 層を使用してブロック BLOB を Azure Storage にアップロードします。 (既定値は "None")
+**--block-blob-tier** 文字列               選択した[アクセス レベル](../blobs/storage-blob-storage-tiers.md)に直接、ブロック BLOB をアップロードします。 (既定値は "None")。 有効な値は "None"、"Hot"、"Cool"、"Archive" です。 "None" が渡されたか、レベルが渡されなかった場合、BLOB でストレージ アカウントのレベルが継承されます。
 
 **--block-size-mb** float                  Azure Storage にアップロードするとき、および Azure Storage からダウンロードするときに、このブロック サイズ (MiB で指定) を使用します。 既定値は、ファイル サイズに基づいて自動的に計算されます。 小数を使用できます (例:0.25)。
 
@@ -241,6 +241,6 @@ SAS トークンを使用して、すべての BLOB コンテナー、ディレ�
 
 **--output-type** string   コマンドの出力形式。 選択肢には、text、json などがあります。 既定値は "text" です。 (既定値は "text")
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - [azcopy](storage-ref-azcopy.md)

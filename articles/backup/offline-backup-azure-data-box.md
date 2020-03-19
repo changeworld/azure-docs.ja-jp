@@ -3,12 +3,12 @@ title: Azure Data Box を使用したオフライン バックアップ
 description: Azure Data Box を使用して、MARS エージェントから Recovery Services コンテナーに、大規模な初期バックアップ データをオフラインでシード処理する方法について説明します。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 9a8288939adba8ec1b0cbe38d2243b1bdd84fa2e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: a031a8cac357e7d212f8f6a3a5dbec749fbccc21
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196475"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672966"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure Data Box を使用した Azure Backup のオフライン バックアップ
 
@@ -124,7 +124,7 @@ MARS と Azure Data Box を使用したオフライン バックアップ プロ
 
 1. 以前にインストールした MARS エージェントをすべてアンインストールします。
 1. [この Web サイト](https://aka.ms/azurebackup_agent)から最新の MARS エージェントをダウンロードします。
-1. *MARSAgentInstaller.exe* を実行し、[エージェントをインストールしてバックアップの格納先の Recovery Services コンテナーに登録する](https://docs.microsoft.com/azure/backup/backup-configure-vault#install-and-register-the-agent)手順 "*のみ*" を実行します。
+1. *MARSAgentInstaller.exe* を実行し、[エージェントをインストールしてバックアップの格納先の Recovery Services コンテナーに登録する](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent)手順 "*のみ*" を実行します。
 
    > [!NOTE]
    > Recovery Services コンテナーは、Azure Data Box ジョブと同じサブスクリプションに含まれている必要があります。
@@ -307,7 +307,7 @@ Microsoft Azure Backup (MAB) エージェントによって、テナントに Az
     >[!NOTE]
     > Azure ユーザー ID を取得するには、次のいずれかの操作を実行します。
     >
-    >* Azure に接続された PowerShell から、`Get-AzureRmADUser -UserPrincipalName “Account Holder’s email as defined in the portal”` コマンドを実行します。
+    >* Azure に接続された PowerShell から、`Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"` コマンドを実行します。
     > * *Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup* の *CurrentUserId* という名前のレジストリ パスに移動します。
 
 6. 前の手順で追加した文字列を右クリックして、 **[変更]** を選択します。 値として、手順 2 でエクスポートした証明書の拇印を入力します。 **[OK]** を選択します。

@@ -2,17 +2,18 @@
 title: 分離されたネットワークでの Azure Disk Encryption
 description: この記事では、Linux VM の Microsoft Azure Disk Encryption のトラブルシューティングのヒントについて説明します。
 author: msmbaldwin
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: e91f4f1d1a16bec9d2da0365b185319aac8892be
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: aa0dc204a017e2d40eb3952a9ede0755127f8de2
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78207673"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970656"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>分離されたネットワークでの Azure Disk Encryption
 
@@ -36,7 +37,7 @@ Red Hat では、プロキシが必要な場合は、サブスクリプション
 パッケージを手動でインストールする場合は、新しいバージョンがリリースされたときも手動でアップグレードする必要があります。
 
 ## <a name="network-security-groups"></a>ネットワーク セキュリティ グループ
-適用されるあらゆるネットワーク セキュリティ グループ設定において、エンドポイントがディスクの暗号化のために規定されているネットワーク構成の前提条件を引き続き満たせるようにする必要があります。  [Azure Disk Encryption に関する記事の「ネットワーク要件」](disk-encryption-overview.md#networking-requirements)を参照してください。
+適用されるあらゆるネットワーク セキュリティ グループ設定において、エンドポイントがディスクの暗号化のために規定されているネットワーク構成の前提条件を引き続き満たせるようにする必要があります。  [Azure Disk Encryption:ネットワーク要件](disk-encryption-overview.md#networking-requirements)に関する記事を参照してください。
 
 ## <a name="azure-disk-encryption-with-azure-ad-previous-version"></a>Azure AD を使用した Azure Disk Encryption (以前のバージョン)
 

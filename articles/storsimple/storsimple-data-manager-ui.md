@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: d485a2655b569b3def6162934857b02dbe4f75ea
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 85be49ad88ac62d90235c3da6b89b0da6a11487c
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76273978"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933754"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Azure Portal で StorSimple Data Manager サービスを管理する
 
@@ -102,7 +102,7 @@ StorSimple データ マネージャー サービス内に、データ変換ジ�
 
    3. **[フィルター]** サブセクションで、対象データを含むルート ディレクトリを、 _\MyRootDirectory\Data_ の形式で入力します。 _\C:\Data_ などのドライブ文字はサポートされていません。 任意のファイル フィルターをここで追加することもできます。
 
-   4. データ変換サービスは、スナップショットを使用して Azure にプッシュされたデータで機能します。 このジョブを実行するとき、ジョブを実行するたびに (最新のデータで機能する) バックアップを作成するように選択できます。また、クラウド内の既存のバックアップを使うこともできます (アーカイブされたデータで作業している場合)。
+   4. データ変換サービスは、Azure にプッシュされたデータの最新スナップショットでのみ機能します。
 
    5. **[OK]** をクリックします。
 
@@ -150,6 +150,11 @@ StorSimple のデータを、ジョブ定義で指定したストレージ ア�
 4. このジョブを監視するには、StorSimple Data Manager で **[ジョブ]** に移動します。 **[ジョブ]** ブレードでは監視だけでなく、StorSimple からストレージ アカウントにファイルが移動するたびにメッセージが追加されるストレージ キューをリッスンすることもできます。
 
     ![ジョブの実行を開始する 4](./media/storsimple-data-manager-ui/start-job-run4.png)
+
+### <a name="view-logs-after-job-completion"></a>ジョブの完了後にログを表示する
+
+ジョブの完了後、ジョブの状態を表示できます。 ジョブの状態には**成功**、**一部成功**、**失敗**があります。 正常にコピーされたファイルとコピーできなかったファイルを一覧表示できます。 このような一覧は、ターゲット ストレージ アカウント内で **"storsimple-data-manager-joblogs"** という名称のコンテナーで見つかります。 このコンテナー内では、ジョブ定義と同じ名前のフォルダーを探してください。 このコンテナーでは、ジョブが実行されるたびにフォルダーが作成され、その中に一覧が入ります。 このフォルダーの名前はジョブの GUID になりますが、これはジョブの詳細ページで確認できます。 あるいは、ほとんどの場合、ジョブ ページ自体の中にコピー ログのリンクがあります。
+このフォルダーには csv ファイルが 2 セットあります。 **copiedfilelist...** で始まるファイルにはすべて、正常にコピーされたファイルの一覧が含まれます。 **failedfilelist...** で始まるファイルにはすべて、コピーできなかったファイルとエラー メッセージが含まれます。
 
 
 ## <a name="next-steps"></a>次のステップ

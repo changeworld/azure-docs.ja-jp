@@ -8,12 +8,12 @@ ms.date: 10/22/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: f218c64d3ffe4955877516551a29376372144598
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: fbdb447905ae43fe92693dfe45c1add710f76355
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526724"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933584"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>AzCopy と Blob Storage でデータを転送する
 
@@ -73,7 +73,8 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 ファイル パスまたはファイル名の任意の場所で、ワイルドカード記号 (*) を使用してファイルをアップロードすることもできます。 例: `'C:\myDirectory\*.txt'`、または `C:\my*\*.txt`。
 
 > [!NOTE]
-> 既定では、AzCopy はデータをブロック BLOB にアップロードします。 追加 BLOB またはページ BLOB としてファイルをアップロードするには、`--blob-type=[BlockBlob|PageBlob|AppendBlob]` フラグを使用します。
+> 既定では、AzCopy はデータをブロック BLOB としてアップロードします。 追加 BLOB またはページ BLOB としてファイルをアップロードするには、`--blob-type=[BlockBlob|PageBlob|AppendBlob]` フラグを使用します。
+> 既定では、AzCopy はデータをアップロードし、アカウント アクセス レベルを継承します。 ファイルを特定の[アクセス レベル](../blobs/storage-blob-storage-tiers.md)にアップロードするには、フラグ `--block-blob-tier=[Hot|Cool|Archive]` を使用します。
 
 ### <a name="upload-a-directory"></a>ディレクトリをアップロードする
 

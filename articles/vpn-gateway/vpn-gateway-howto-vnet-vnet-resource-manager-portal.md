@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 03/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 18ef9d89a2366e6d4db3c3154bae0bd83e0386f1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 3d91203253c08acdaa159fc70f7a34fa7fca20c8
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654764"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674156"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Azure ポータルを使用して VNet 間 VPN ゲートウェイ接続を構成する
 
@@ -75,16 +75,16 @@ VNet 間接続を使用する仮想ネットワークの接続が望ましいの
 
 - **仮想ネットワークの設定**
     - **Name**:VNet1
-    - **[アドレス空間]** : 10.11.0.0/16
+    - **[アドレス空間]** : 10.1.0.0/16
     - **サブスクリプション**:使用するサブスクリプションを選択します。
     - **[リソース グループ]** :TestRG1
     - **[場所]** :米国東部
     - **サブネット**
         - **Name**:FrontEnd
-        - **アドレス範囲**:10.11.0.0/24
+        - **アドレス範囲**:10.1.0.0/24
     - **ゲートウェイ サブネット**:
         - **Name**:*GatewaySubnet* が自動入力されます
-        - **アドレス範囲**:10.11.255.0/27
+        - **アドレス範囲**:10.1.255.0/27
 
 - **仮想ネットワーク ゲートウェイの設定**
     - **Name**:VNet1GW
@@ -92,7 +92,7 @@ VNet 間接続を使用する仮想ネットワークの接続が望ましいの
     - **VPN の種類**: **[ルート ベース]** を選択します。
     - **SKU**:使用するゲートウェイの SKU を選択します。
     - **パブリック IP アドレス名**:VNet1GWpip
-    - **Connection**
+    - **接続**
        - **Name**:VNet1toVNet4
        - **共有キー**:独自の共有キーを作成できます。 VNet 間の接続を作成する際に、値が一致する必要があります。 この演習では、abc123 を使用します。
 
@@ -117,7 +117,7 @@ VNet 間接続を使用する仮想ネットワークの接続が望ましいの
     - **VPN の種類**: **[ルート ベース]** を選択します。
     - **SKU**:使用するゲートウェイの SKU を選択します。
     - **パブリック IP アドレス名**:VNet4GWpip
-    - **Connection** 
+    - **接続** 
        - **Name**:VNet4toVNet1
        - **共有キー**:独自の共有キーを作成できます。 VNet 間の接続を作成する際に、値が一致する必要があります。 この演習では、abc123 を使用します。
 
@@ -127,12 +127,7 @@ VNet 間接続を使用する仮想ネットワークの接続が望ましいの
 ### <a name="to-create-a-virtual-network"></a>仮想ネットワークを作成するには
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
-## <a name="add-additional-address-space-and-create-subnets"></a>アドレス空間の追加とサブネットの作成
-VNet が作成されたら、アドレス空間をさらに追加してサブネットを作成することができます。
-
-[!INCLUDE [vpn-gateway-additional-address-space](../../includes/vpn-gateway-additional-address-space-include.md)]
-
-## <a name="create-a-virtual-network-gateway"></a>仮想ネットワーク ゲートウェイの作成
+## <a name="create-the-vnet1-gateway"></a>VNet1 ゲートウェイを作成する
 この手順では、VNet の仮想ネットワーク ゲートウェイを作成します。 選択したゲートウェイ SKU によっては、ゲートウェイの作成に 45 分以上かかる場合も少なくありません。 演習としてこの構成を作成する場合は、「[設定例](#example-settings)」を参照してください。
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
@@ -143,7 +138,7 @@ VNet が作成されたら、アドレス空間をさらに追加してサブネ
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ## <a name="create-and-configure-vnet4"></a>VNet4 を作成して構成する
-VNet1 を構成した後、前の手順を繰り返し、値を VNet4 の値に置き換えて、VNet4 を作成します。 VNet4 を構成する前に、VNet1 用の仮想ネットワーク ゲートウェイの作成が完了するまで待つ必要はありません。 独自の値を使用する場合は、接続先とするどの VNet ともアドレス空間が重複しないようにしてください。
+VNet1 を構成した後、前の手順を繰り返し、値を VNet4 の値に置き換えて、VNet4 と VNet4 ゲートウェイを作成します。 VNet4 を構成する前に、VNet1 用の仮想ネットワーク ゲートウェイの作成が完了するまで待つ必要はありません。 独自の値を使用する場合は、接続先とするどの VNet ともアドレス空間が重複しないようにしてください。
 
 ## <a name="configure-the-vnet1-gateway-connection"></a>VNet1 ゲートウェイ接続を構成する
 VNet1 と VNet4 の仮想ネットワーク ゲートウェイの作成が両方とも完了したら、仮想ネットワーク ゲートウェイの接続を作成できます。 このセクションでは、VNet1 から VNet4 への接続を作成します。 これらの手順は、同じサブスクリプションに存在する VNet でのみ使用できます。 VNet が異なるサブスクリプションにある場合は、[PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) を使用して接続する必要があります。 しかし、VNet が同じサブスクリプション内の異なるリソース グループにある場合は、ポータルを使用して接続できます。
@@ -153,7 +148,7 @@ VNet1 と VNet4 の仮想ネットワーク ゲートウェイの作成が両方
    ![[接続] ページ](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections.png "[接続] ページ")
 2. **[+追加]** を選択して **[接続の追加]** ページを開きます。
 
-   ![[接続の追加]](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-to-vnet4.png "接続を追加する")
+   ![[接続の追加]](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-vnet4-connection.png "接続を追加する")
 3. **[接続の追加]** ページで、接続の値を入力します。
 
    - **Name**:接続の名前を入力します。 たとえば、「*VNet1toVNet4*」と入力します。

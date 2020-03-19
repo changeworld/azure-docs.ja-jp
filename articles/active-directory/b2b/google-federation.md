@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 11/1/2019
+ms.date: 03/05/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6da9aed857524e9b71aad4dfc99f1d2e54306dc9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 72c18e48c27942c7bea47931ec79a31af941064e
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74272874"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126657"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google を B2B ゲスト ユーザーの ID プロバイダーとして追加する
 
@@ -55,25 +55,24 @@ Teams では、すべてのデバイスで Google ゲスト ユーザーを完�
    
    ![Google の [New project] ページを示すスクリーンショット](media/google-federation/google-new-project.png)
 
-3. 新しいプロジェクトがプロジェクト メニューで選択されていることを確認します。 次に、左上隅にあるメニューを開いて、 **[API とサービス]**  >  **[認証情報]** の順に選択します。
+3. 新しいプロジェクトがプロジェクト メニューで選択されていることを確認します。 次に、 **[APIs & Services]\(API とサービス\)** で、 **[OAuth consent screen]\(OAuth 同意画面\)** を選択します。
 
-   ![Google の [API credentials] オプションを示すスクリーンショット](media/google-federation/google-api.png)
- 
-4. **[OAuth consent screen]\(OAuth 同意画面\)** タブを選択して、 **[Application name]\(アプリケーション名\)** を入力します。 (他の設定はそのままにします)。
+4. **[External]\(外部\)** を選択し、 **[Create]\(作成\)** を選択します。 
+5. **[OAuth consent screen]\(OAuth 同意画面\)** で、 **[Application name]\(アプリケーション名\)** を入力します。 (他の設定はそのままにします)。
 
    ![Google の [OAuth consent] 画面を示すスクリーンショット](media/google-federation/google-oauth-consent-screen.png)
 
-5. **[Authorized domains]\(承認済みドメイン\)** セクションまでスクロールし、「microsoftonline.com」と入力します。
+6. **[Authorized domains]\(承認済みドメイン\)** セクションまでスクロールし、「microsoftonline.com」と入力します。
 
    ![[Authorized domains] セクションを示すスクリーンショット](media/google-federation/google-oauth-authorized-domains.png)
 
-6. **[保存]** を選択します。
+7. **[保存]** を選択します。
 
-7. **[認証情報]** タブを選択します。 **[認証情報を作成]** メニューで、 **[OAuth クライアント ID]** を選択します。
+8. **[Credentials]\(資格情報\)** を選択します。 **[認証情報を作成]** メニューで、 **[OAuth クライアント ID]** を選択します。
 
    ![Google の [APIs create credentials] オプションを示すスクリーンショット](media/google-federation/google-api-credentials.png)
 
-8. **[アプリケーションの種類]** で **[Web アプリケーション]** を選択し、 **[承認済みのリダイレクト URI]** で次の URI を入力します。
+9. **[アプリケーションの種類]** で **[Web アプリケーション]** を選択し、 **[承認済みのリダイレクト URI]** で次の URI を入力します。
    - `https://login.microsoftonline.com` 
    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(`<directory id>` は自分のディレクトリ ID に置き換えます)
    
@@ -82,7 +81,7 @@ Teams では、すべてのデバイスで Google ゲスト ユーザーを完�
 
    ![[Authorized redirect URIs] セクションを示すスクリーンショット](media/google-federation/google-create-oauth-client-id.png)
 
-9. **作成** を選択します。 クライアント ID とクライアント シークレットをコピーします。これらは、Azure AD ポータルで ID プロバイダーを追加する際に使用します。
+10. **［作成］** を選択します クライアント ID とクライアント シークレットをコピーします。これらは、Azure AD ポータルで ID プロバイダーを追加する際に使用します。
 
    ![OAuth クライアント ID とクライアント シークレットを示すスクリーンショット](media/google-federation/google-auth-client-id-secret.png)
 
@@ -99,7 +98,7 @@ Teams では、すべてのデバイスで Google ゲスト ユーザーを完�
 
 #### <a name="to-configure-google-federation-by-using-powershell"></a>PowerShell を使用して Google フェデレーションを構成するには
 1. 最新バージョンの Azure AD PowerShell for Graph モジュールをインストールします ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview))。
-2. `Connect-AzureAD` というコマンドを実行します。
+2. コマンド `Connect-AzureAD` を実行します。
 3. サインイン プロンプトで、マネージド グローバル管理者アカウントを使用してサインインします。  
 4. 次のコマンドを実行します。 
    
