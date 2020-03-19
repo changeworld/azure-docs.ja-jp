@@ -239,7 +239,7 @@ Invoices API で請求書を取得するには:
 
 ## <a name="price-sheet-apis"></a>Price Sheet API
 
-このセクションでは、既存の Price Sheet API について説明し、Microsoft 顧客契約用の Price Sheet API への移行に関する推奨事項を示します。 また、Microsoft 顧客契約用の Price Sheet API について説明し、価格シートのフィールドについて説明します。 [Enterprise Get price sheet](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) API および [Enterprise Get billing periods](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) API は、Api は、Microsoft 顧客契約用の Price Sheet API に置き換えられます (Microsoft.Billing/billingAccounts/billingProfiles/pricesheet)。 新しい API は、非同期の REST 形式での JSON と CSV の両方の形式をサポートしています。 すべての Consumption API は、認証と承認に Azure AD を使用するネイティブ Azure API に置き換えられます。 呼び出し元の Azure REST API の詳細については、[REST の作業開始](/rest/api/azure/#create-the-request)に関するページを参照してください。
+このセクションでは、既存の Price Sheet API について説明し、Microsoft 顧客契約用の Price Sheet API への移行に関する推奨事項を示します。 また、Microsoft 顧客契約用の Price Sheet API について説明し、価格シートのフィールドについて説明します。 [Enterprise Get price sheet](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) API および [Enterprise Get billing periods](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) API は、API は、Microsoft 顧客契約用の Price Sheet API に置き換えられます (Microsoft.Billing/billingAccounts/billingProfiles/pricesheet)。 新しい API は、非同期の REST 形式での JSON と CSV の両方の形式をサポートしています。 すべての Consumption API は、認証と承認に Azure AD を使用するネイティブ Azure API に置き換えられます。 呼び出し元の Azure REST API の詳細については、[REST の作業開始](/rest/api/azure/#create-the-request)に関するページを参照してください。
 
 ### <a name="billing-enterprise-apis"></a>Billing Enterprise API
 
