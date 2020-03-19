@@ -165,7 +165,7 @@ HDInsight で Azure Virtual Network を使用すると、次のシナリオが�
 
 - オンプレミス ネットワークから HDInsight へ直接接続する。
 - HDInsight を Azure Virtual Network 内のデータ ストアに接続する。
-- インターネット公開されていない Hadoop サービスに直接アクセスする。 たとえば、Kafka Api や HBase Java API にアクセスできます。
+- インターネット公開されていない Hadoop サービスに直接アクセスする。 たとえば、Kafka API や HBase Java API にアクセスできます。
 
 HDInsight は、新規または既存の Azure Virtual Network に追加できます。 HDInsight を既存の仮想ネットワークに追加する場合は、既存のネットワーク セキュリティ グループとユーザー定義のルートを更新して、Azure データ センター内の[いくつかの IP アドレス](../hdinsight-management-ip-addresses.md)に無制限にアクセスできるようにする必要があります。 また、HDInsight サービスによって使用中の[ポート](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ports)へのトラフィックをブロックしないようにしてください。
 
