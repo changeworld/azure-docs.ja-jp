@@ -61,7 +61,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="define-api-keys-and-endpoints"></a>API キーとエンドポイントの定義
 
-このチュートリアルでは 3 つのコグニティブ サービスを使用します。これには、対応する 3 つのキーと API エンドポイントが必要です。 **Program** クラスの次のフィールドを見てください。
+このチュートリアルでは 3 つの Cognitive Services を使用します。これには、対応する 3 つのキーと API エンドポイントが必要です。 **Program** クラスの次のフィールドを見てください。
 
 [!code-csharp[define API keys and endpoint URIs](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=21-29)]
 
