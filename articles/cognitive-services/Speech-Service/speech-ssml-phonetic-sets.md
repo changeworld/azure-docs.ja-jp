@@ -336,11 +336,11 @@ Speech サービス音声セットでは、強制音節の母音の後に強勢�
 | x      | `x`        | **j**ota   | a**j**o        | relo**j**      |
 
 > [!TIP]
-> `es-ES` Speech サービス電話設定は、次のスペイン語 IPA、`β`、`ð`、および `ɣ` をサポートしていません。 必要に応じて、IPA を直接使用することを検討してください。
+> `es-ES` Speech サービス音声セットは、次のスペイン語 IPA、`β`、`ð`、および `ɣ` をサポートしていません。 必要に応じて、IPA を直接使用することを検討してください。
 
 # <a name="zh-cn"></a>[zh-CN](#tab/zh-CN)
 
-`zh-CN` 用に設定されている Speech サービス電話は、ネイティブ電話 <a href="https://en.wikipedia.org/wiki/Pinyin" target="_blank">Pinyin <span class="docon docon-navigate-external x-hidden-focus"></span></a> 設定に基づいています。
+`zh-CN` 用の Speech サービス音声セットは、ネイティブ音声 <a href="https://en.wikipedia.org/wiki/Pinyin" target="_blank">Pinyin <span class="docon docon-navigate-external x-hidden-focus"></span></a> セットに基づいています。
 
 ### <a name="tone"></a>声調
 
@@ -362,7 +362,7 @@ Speech サービス音声セットでは、強制音節の母音の後に強勢�
 
 # <a name="zh-tw"></a>[zh-TW](#tab/zh-TW)
 
-`zh-TW` 用に設定されている Speech サービス電話は、ネイティブ電話 <a href="https://en.wikipedia.org/wiki/Bopomofo" target="_blank">Bopomofo <span class="docon docon-navigate-external x-hidden-focus"></span></a> 設定に基づいています。
+`zh-TW` 用の Speech サービス音声セットは、ネイティブ音声 <a href="https://en.wikipedia.org/wiki/Bopomofo" target="_blank">Bopomofo <span class="docon docon-navigate-external x-hidden-focus"></span></a> セットに基づいています。
 
 ### <a name="tone"></a>声調
 
@@ -384,7 +384,7 @@ Speech サービス音声セットでは、強制音節の母音の後に強勢�
 
 # <a name="ja-jp"></a>[en-US](#tab/ja-JP)
 
-`ja-JP` 用に設定されている Speech サービスの電話は、ネイティブ電話 <a href="https://en.wikipedia.org/wiki/Kana" target="_blank">かな <span class="docon docon-navigate-external x-hidden-focus"></span></a> 設定に基づいています。
+`ja-JP` 用の Speech サービスの音声セットは、ネイティブ音声 <a href="https://en.wikipedia.org/wiki/Kana" target="_blank">かな <span class="docon docon-navigate-external x-hidden-focus"></span></a> セットに基づいています。
 
 ### <a name="stress"></a>強勢
 
