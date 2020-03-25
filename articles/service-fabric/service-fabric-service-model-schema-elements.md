@@ -20,9 +20,9 @@ ms.locfileid: "75466239"
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、3 個の属性|
-|定義済み|[ScalingPolicyMechanismGroup グループ](service-fabric-service-model-schema-element-groups.md#scalingpolicymechanismgroup-group)内でローカルに|
+|defined|[ScalingPolicyMechanismGroup グループ](service-fabric-service-model-schema-element-groups.md#scalingpolicymechanismgroup-group)内でローカルに|
 |name|AddRemoveIncrementalNamedPartitionScalingMechanism|
 |minOccurs|0|
 |maxOccurs|1|
@@ -62,7 +62,7 @@ ms.locfileid: "75466239"
 |Attribute|値|
 |---|---|
 |name|MinPartitionCount|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="maxpartitioncount"></a>MaxPartitionCount
@@ -71,7 +71,7 @@ ms.locfileid: "75466239"
 |Attribute|値|
 |---|---|
 |name|MaxPartitionCount|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="scaleincrement"></a>ScaleIncrement
@@ -80,7 +80,7 @@ ms.locfileid: "75466239"
 |Attribute|値|
 |---|---|
 |name|ScaleIncrement|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 
@@ -90,9 +90,9 @@ ms.locfileid: "75466239"
 
 |Attribute|値|
 |---|---|
-|型|[AppInstanceDefinitionType](service-fabric-service-model-schema-complex-types.md#appinstancedefinitiontype-complextype)|
+|type|[AppInstanceDefinitionType](service-fabric-service-model-schema-complex-types.md#appinstancedefinitiontype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|Application|
 
 ### <a name="xml-source"></a>XML ソース
@@ -111,9 +111,9 @@ ms.locfileid: "75466239"
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、2 個の属性|
-|定義済み|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
+|defined|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
 |name|ApplicationEndpoints|
 |minOccurs|0|
 
@@ -135,7 +135,7 @@ ms.locfileid: "75466239"
 |Attribute|値|
 |---|---|
 |name|StartPort|
-|型|xs:int|
+|type|xs:int|
 |use|required|
 
 #### <a name="endport"></a>EndPort
@@ -143,7 +143,7 @@ ms.locfileid: "75466239"
 |Attribute|値|
 |---|---|
 |name|EndPort|
-|型|xs:int|
+|type|xs:int|
 |use|required|
 
 
@@ -153,9 +153,9 @@ Microsoft Azure Service Fabric アプリケーションのインスタンスに�
 
 |Attribute|値|
 |---|---|
-|型|[ApplicationInstanceType](service-fabric-service-model-schema-complex-types.md#applicationinstancetype-complextype)|
+|type|[ApplicationInstanceType](service-fabric-service-model-schema-complex-types.md#applicationinstancetype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ApplicationInstance|
 
 ### <a name="xml-source"></a>XML ソース
@@ -175,9 +175,9 @@ Microsoft Azure Service Fabric アプリケーションのインスタンスに�
 
 |Attribute|値|
 |---|---|
-|型|[ApplicationManifestType](service-fabric-service-model-schema-complex-types.md#applicationmanifesttype-complextype)|
+|type|[ApplicationManifestType](service-fabric-service-model-schema-complex-types.md#applicationmanifesttype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ApplicationManifest|
 
 ### <a name="xml-source"></a>XML ソース
@@ -193,9 +193,9 @@ ApplicationPackage は、ノードに必要なバージョン管理されたア�
 
 |Attribute|値|
 |---|---|
-|型|[ApplicationPackageType](service-fabric-service-model-schema-complex-types.md#applicationpackagetype-complextype)|
+|type|[ApplicationPackageType](service-fabric-service-model-schema-complex-types.md#applicationpackagetype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ApplicationPackage|
 
 ### <a name="xml-source"></a>XML ソース
@@ -214,9 +214,9 @@ ApplicationPackage は、ノードに必要なバージョン管理されたア�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ApplicationInstanceType complexType](service-fabric-service-model-schema-complex-types.md#applicationinstancetype-complextype) 内でローカルに|
+|defined|[ApplicationInstanceType complexType](service-fabric-service-model-schema-complex-types.md#applicationinstancetype-complextype) 内でローカルに|
 |name|ApplicationPackageRef|
 
 ### <a name="xml-source"></a>XML ソース
@@ -235,9 +235,9 @@ ApplicationPackage は、ノードに必要なバージョン管理されたア�
 
 |Attribute|値|
 |---|---|
-|型|xs:string|
+|type|xs:string|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ExeHostEntryPointType complexType](service-fabric-service-model-schema-complex-types.md#exehostentrypointtype-complextype) 内でローカルに|
+|defined|[ExeHostEntryPointType complexType](service-fabric-service-model-schema-complex-types.md#exehostentrypointtype-complextype) 内でローカルに|
 |name|引数|
 |minOccurs|0|
 
@@ -254,9 +254,9 @@ ApplicationPackage は、ノードに必要なバージョン管理されたア�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、4 個の属性|
-|定義済み|[ScalingPolicyTriggerGroup グループ](service-fabric-service-model-schema-element-groups.md#scalingpolicytriggergroup-group)内でローカルに|
+|defined|[ScalingPolicyTriggerGroup グループ](service-fabric-service-model-schema-element-groups.md#scalingpolicytriggergroup-group)内でローカルに|
 |name|AveragePartitionLoadScalingTrigger|
 |minOccurs|0|
 |maxOccurs|1|
@@ -301,7 +301,7 @@ ApplicationPackage は、ノードに必要なバージョン管理されたア�
 |Attribute|値|
 |---|---|
 |name|MetricName|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="lowerloadthreshold"></a>LowerLoadThreshold
@@ -310,7 +310,7 @@ ApplicationPackage は、ノードに必要なバージョン管理されたア�
 |Attribute|値|
 |---|---|
 |name|LowerLoadThreshold|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="upperloadthreshold"></a>UpperLoadThreshold
@@ -319,7 +319,7 @@ ApplicationPackage は、ノードに必要なバージョン管理されたア�
 |Attribute|値|
 |---|---|
 |name|UpperLoadThreshold|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="scaleintervalinseconds"></a>ScaleIntervalInSeconds
@@ -328,7 +328,7 @@ ApplicationPackage は、ノードに必要なバージョン管理されたア�
 |Attribute|値|
 |---|---|
 |name|ScaleIntervalInSeconds|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 
@@ -338,9 +338,9 @@ ApplicationPackage は、ノードに必要なバージョン管理されたア�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、5 個の属性|
-|定義済み|[ScalingPolicyTriggerGroup グループ](service-fabric-service-model-schema-element-groups.md#scalingpolicytriggergroup-group)内でローカルに|
+|defined|[ScalingPolicyTriggerGroup グループ](service-fabric-service-model-schema-element-groups.md#scalingpolicytriggergroup-group)内でローカルに|
 |name|AverageServiceLoadScalingTrigger|
 |minOccurs|0|
 |maxOccurs|1|
@@ -390,7 +390,7 @@ ApplicationPackage は、ノードに必要なバージョン管理されたア�
 |Attribute|値|
 |---|---|
 |name|MetricName|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="lowerloadthreshold"></a>LowerLoadThreshold
@@ -399,7 +399,7 @@ ApplicationPackage は、ノードに必要なバージョン管理されたア�
 |Attribute|値|
 |---|---|
 |name|LowerLoadThreshold|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="upperloadthreshold"></a>UpperLoadThreshold
@@ -408,7 +408,7 @@ ApplicationPackage は、ノードに必要なバージョン管理されたア�
 |Attribute|値|
 |---|---|
 |name|UpperLoadThreshold|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="scaleintervalinseconds"></a>ScaleIntervalInSeconds
@@ -417,7 +417,7 @@ ApplicationPackage は、ノードに必要なバージョン管理されたア�
 |Attribute|値|
 |---|---|
 |name|ScaleIntervalInSeconds|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="useonlyprimaryload"></a>UseOnlyPrimaryLoad
@@ -426,7 +426,7 @@ ApplicationPackage は、ノードに必要なバージョン管理されたア�
 |Attribute|値|
 |---|---|
 |name|UseOnlyPrimaryLoad|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 
@@ -436,9 +436,9 @@ ETW イベントの Azure BLOB 格納先について説明します。 Azure 環
 
 |Attribute|値|
 |---|---|
-|型|[AzureBlobETWType](service-fabric-service-model-schema-complex-types.md#azureblobetwtype-complextype)|
+|type|[AzureBlobETWType](service-fabric-service-model-schema-complex-types.md#azureblobetwtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|Destinations 要素内でローカルに|
+|defined|Destinations 要素内でローカルに|
 |name|AzureBlob|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -456,9 +456,9 @@ ETW イベントの Azure BLOB 格納先について説明します。 Azure 環
 
 |Attribute|値|
 |---|---|
-|型|[AzureBlobType](service-fabric-service-model-schema-complex-types.md#azureblobtype-complextype)|
+|type|[AzureBlobType](service-fabric-service-model-schema-complex-types.md#azureblobtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|Destinations 要素、Destinations 要素内でローカルに|
+|defined|Destinations 要素、Destinations 要素内でローカルに|
 |name|AzureBlob|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -475,9 +475,9 @@ ETW イベントの Azure BLOB 格納先について説明します。 Azure 環
 
 |Attribute|値|
 |---|---|
-|型|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
+|type|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
+|defined|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
 |name|BackupRestoreServiceReplicatorEndpoint|
 |minOccurs|0|
 
@@ -493,9 +493,9 @@ ETW イベントの Azure BLOB 格納先について説明します。 Azure 環
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|Infrastructure 要素内でローカルに|
+|defined|Infrastructure 要素内でローカルに|
 |name|Blackbird|
 
 ### <a name="xml-source"></a>XML ソース
@@ -530,9 +530,9 @@ ETW イベントの Azure BLOB 格納先について説明します。 Azure 環
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|NodeType 要素内でローカルに|
+|defined|NodeType 要素内でローカルに|
 |name|Capacities|
 |minOccurs|0|
 
@@ -558,7 +558,7 @@ ETW イベントの Azure BLOB 格納先について説明します。 Azure 環
 |Attribute|値|
 |---|---|
 |name|容量|
-|型|[KeyValuePairType](service-fabric-service-model-schema-complex-types.md#keyvaluepairtype-complextype)|
+|type|[KeyValuePairType](service-fabric-service-model-schema-complex-types.md#keyvaluepairtype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -567,9 +567,9 @@ ETW イベントの Azure BLOB 格納先について説明します。 Azure 環
 
 |Attribute|値|
 |---|---|
-|型|[KeyValuePairType](service-fabric-service-model-schema-complex-types.md#keyvaluepairtype-complextype)|
+|type|[KeyValuePairType](service-fabric-service-model-schema-complex-types.md#keyvaluepairtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|Capacities 要素内でローカルに|
+|defined|Capacities 要素内でローカルに|
 |name|容量|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -586,9 +586,9 @@ ETW イベントの Azure BLOB 格納先について説明します。 Azure 環
 
 |Attribute|値|
 |---|---|
-|型|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
+|type|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
+|defined|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
 |name|CentralSecretServiceReplicatorEndpoint|
 |minOccurs|0|
 
@@ -605,9 +605,9 @@ ETW イベントの Azure BLOB 格納先について説明します。 Azure 環
 
 |Attribute|値|
 |---|---|
-|型|[ContainerCertificateType](service-fabric-service-model-schema-complex-types.md#containercertificatetype-complextype)|
+|type|[ContainerCertificateType](service-fabric-service-model-schema-complex-types.md#containercertificatetype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ContainerHostPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#containerhostpoliciestype-complextype) 内でローカルに|
+|defined|[ContainerHostPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#containerhostpoliciestype-complextype) 内でローカルに|
 |name|CertificateRef|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -629,9 +629,9 @@ ETW イベントの Azure BLOB 格納先について説明します。 Azure 環
 
 |Attribute|値|
 |---|---|
-|型|[CertificatesType](service-fabric-service-model-schema-complex-types.md#certificatestype-complextype)|
+|type|[CertificatesType](service-fabric-service-model-schema-complex-types.md#certificatestype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|NodeType 要素、[InfrastructureNodeType complexType](service-fabric-service-model-schema-complex-types.md#infrastructurenodetype-complextype) 内でローカルに|
+|defined|NodeType 要素、[InfrastructureNodeType complexType](service-fabric-service-model-schema-complex-types.md#infrastructurenodetype-complextype) 内でローカルに|
 |name|証明書|
 |minOccurs|0|
 
@@ -652,9 +652,9 @@ ETW イベントの Azure BLOB 格納先について説明します。 Azure 環
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|2 個の要素、0 個の属性|
-|定義済み|[ApplicationManifestType complexType](service-fabric-service-model-schema-complex-types.md#applicationmanifesttype-complextype) 内でローカルに|
+|defined|[ApplicationManifestType complexType](service-fabric-service-model-schema-complex-types.md#applicationmanifesttype-complextype) 内でローカルに|
 |name|証明書|
 |minOccurs|0|
 
@@ -686,7 +686,7 @@ ETW イベントの Azure BLOB 格納先について説明します。 Azure 環
 |Attribute|値|
 |---|---|
 |name|SecretsCertificate|
-|型|[FabricCertificateType](service-fabric-service-model-schema-complex-types.md#fabriccertificatetype-complextype)|
+|type|[FabricCertificateType](service-fabric-service-model-schema-complex-types.md#fabriccertificatetype-complextype)|
 |minOccurs|0|
 
 #### <a name="endpointcertificate"></a>EndpointCertificate
@@ -694,7 +694,7 @@ ETW イベントの Azure BLOB 格納先について説明します。 Azure 環
 |Attribute|値|
 |---|---|
 |name|EndpointCertificate|
-|型|[EndpointCertificateType](service-fabric-service-model-schema-complex-types.md#endpointcertificatetype-complextype)|
+|type|[EndpointCertificateType](service-fabric-service-model-schema-complex-types.md#endpointcertificatetype-complextype)|
 |minOccurs|0|
 
 <a id="CertificatesElementanonymouscomplexTypeComplexTypeDefinedInClusterManifestTypecomplexType"></a>
@@ -702,9 +702,9 @@ ETW イベントの Azure BLOB 格納先について説明します。 Azure 環
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|[ClusterManifestType complexType](service-fabric-service-model-schema-complex-types.md#clustermanifesttype-complextype) 内でローカルに|
+|defined|[ClusterManifestType complexType](service-fabric-service-model-schema-complex-types.md#clustermanifesttype-complextype) 内でローカルに|
 |name|証明書|
 |minOccurs|0|
 
@@ -727,7 +727,7 @@ ETW イベントの Azure BLOB 格納先について説明します。 Azure 環
 |Attribute|値|
 |---|---|
 |name|SecretsCertificate|
-|型|[FabricCertificateType](service-fabric-service-model-schema-complex-types.md#fabriccertificatetype-complextype)|
+|type|[FabricCertificateType](service-fabric-service-model-schema-complex-types.md#fabriccertificatetype-complextype)|
 |minOccurs|0|
 
 <a id="ClientCertificateElementFabricCertificateTypeComplexTypeDefinedInCertificatesTypecomplexType"></a>
@@ -736,9 +736,9 @@ ETW イベントの Azure BLOB 格納先について説明します。 Azure 環
 
 |Attribute|値|
 |---|---|
-|型|[FabricCertificateType](service-fabric-service-model-schema-complex-types.md#fabriccertificatetype-complextype)|
+|type|[FabricCertificateType](service-fabric-service-model-schema-complex-types.md#fabriccertificatetype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[CertificatesType complexType](service-fabric-service-model-schema-complex-types.md#certificatestype-complextype) 内でローカルに|
+|defined|[CertificatesType complexType](service-fabric-service-model-schema-complex-types.md#certificatestype-complextype) 内でローカルに|
 |name|ClientCertificate|
 |minOccurs|0|
 
@@ -758,9 +758,9 @@ ETW イベントの Azure BLOB 格納先について説明します。 Azure 環
 
 |Attribute|値|
 |---|---|
-|型|[InputEndpointType](service-fabric-service-model-schema-complex-types.md#inputendpointtype-complextype)|
+|type|[InputEndpointType](service-fabric-service-model-schema-complex-types.md#inputendpointtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
+|defined|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
 |name|ClientConnectionEndpoint|
 
 ### <a name="xml-source"></a>XML ソース
@@ -776,9 +776,9 @@ ETW イベントの Azure BLOB 格納先について説明します。 Azure 環
 
 |Attribute|値|
 |---|---|
-|型|[FabricCertificateType](service-fabric-service-model-schema-complex-types.md#fabriccertificatetype-complextype)|
+|type|[FabricCertificateType](service-fabric-service-model-schema-complex-types.md#fabriccertificatetype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[CertificatesType complexType](service-fabric-service-model-schema-complex-types.md#certificatestype-complextype) 内でローカルに|
+|defined|[CertificatesType complexType](service-fabric-service-model-schema-complex-types.md#certificatestype-complextype) 内でローカルに|
 |name|ClusterCertificate|
 |minOccurs|0|
 
@@ -798,9 +798,9 @@ ETW イベントの Azure BLOB 格納先について説明します。 Azure 環
 
 |Attribute|値|
 |---|---|
-|型|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
+|type|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
+|defined|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
 |name|ClusterConnectionEndpoint 要素|
 
 ### <a name="xml-source"></a>XML ソース
@@ -815,9 +815,9 @@ ETW イベントの Azure BLOB 格納先について説明します。 Azure 環
 
 |Attribute|値|
 |---|---|
-|型|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
+|type|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
+|defined|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
 |name|ClusterManagerReplicatorEndpoint|
 |minOccurs|0|
 
@@ -834,9 +834,9 @@ Microsoft Azure Service Fabric クラスターについて説明します。
 
 |Attribute|値|
 |---|---|
-|型|[ClusterManifestType](service-fabric-service-model-schema-complex-types.md#clustermanifesttype-complextype)|
+|type|[ClusterManifestType](service-fabric-service-model-schema-complex-types.md#clustermanifesttype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ClusterManifest|
 
 ### <a name="xml-source"></a>XML ソース
@@ -856,9 +856,9 @@ Microsoft Azure Service Fabric クラスターについて説明します。
 
 |Attribute|値|
 |---|---|
-|型|[CodePackageType](service-fabric-service-model-schema-complex-types.md#codepackagetype-complextype)|
+|type|[CodePackageType](service-fabric-service-model-schema-complex-types.md#codepackagetype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ServiceManifestType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifesttype-complextype)、DigestedCodePackage 要素内でローカルに|
+|defined|[ServiceManifestType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifesttype-complextype)、DigestedCodePackage 要素内でローカルに|
 |name|CodePackage|
 |maxOccurs|unbounded|
 
@@ -875,9 +875,9 @@ Microsoft Azure Service Fabric クラスターについて説明します。
 
 |Attribute|値|
 |---|---|
-|型|xs:string|
+|type|xs:string|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ContainerHostEntryPointType complexType](service-fabric-service-model-schema-complex-types.md#containerhostentrypointtype-complextype) 内でローカルに|
+|defined|[ContainerHostEntryPointType complexType](service-fabric-service-model-schema-complex-types.md#containerhostentrypointtype-complextype) 内でローカルに|
 |name|コマンド|
 |minOccurs|0|
 |maxOccurs|1|
@@ -899,9 +899,9 @@ Microsoft Azure Service Fabric クラスターについて説明します。
 
 |Attribute|値|
 |---|---|
-|型|[ConfigOverrideType](service-fabric-service-model-schema-complex-types.md#configoverridetype-complextype)|
+|type|[ConfigOverrideType](service-fabric-service-model-schema-complex-types.md#configoverridetype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|ConfigOverrides 要素、DigestedConfigPackage 要素でローカルに|
+|defined|ConfigOverrides 要素、DigestedConfigPackage 要素でローカルに|
 |name|ConfigOverride|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -919,9 +919,9 @@ Microsoft Azure Service Fabric クラスターについて説明します。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|ServiceManifestImport 要素内でローカルに|
+|defined|ServiceManifestImport 要素内でローカルに|
 |name|ConfigOverrides|
 |minOccurs|0|
 
@@ -947,7 +947,7 @@ Microsoft Azure Service Fabric クラスターについて説明します。
 |Attribute|値|
 |---|---|
 |name|ConfigOverride|
-|型|[ConfigOverrideType](service-fabric-service-model-schema-complex-types.md#configoverridetype-complextype)|
+|type|[ConfigOverrideType](service-fabric-service-model-schema-complex-types.md#configoverridetype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -957,9 +957,9 @@ Settings.xml ファイルを含む Name 属性を使用して名前が付けら�
 
 |Attribute|値|
 |---|---|
-|型|[ConfigPackageDescriptionType](service-fabric-service-model-schema-complex-types.md#configpackagedescriptiontype-complextype)|
+|type|[ConfigPackageDescriptionType](service-fabric-service-model-schema-complex-types.md#configpackagedescriptiontype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ConfigPackagePoliciesType complexType](service-fabric-service-model-schema-complex-types.md#configpackagepoliciestype-complextype) 内でローカルに|
+|defined|[ConfigPackagePoliciesType complexType](service-fabric-service-model-schema-complex-types.md#configpackagepoliciestype-complextype) 内でローカルに|
 |name|ConfigPackage|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -977,9 +977,9 @@ Settings.xml ファイルを含む PackageRoot の下で、Name 属性を使用�
 
 |Attribute|値|
 |---|---|
-|型|[ConfigPackageType](service-fabric-service-model-schema-complex-types.md#configpackagetype-complextype)|
+|type|[ConfigPackageType](service-fabric-service-model-schema-complex-types.md#configpackagetype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ServiceManifestType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifesttype-complextype)、DigestedConfigPackage 要素内でローカルに|
+|defined|[ServiceManifestType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifesttype-complextype)、DigestedConfigPackage 要素内でローカルに|
 |name|ConfigPackage|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -997,9 +997,9 @@ Settings.xml ファイルを含む PackageRoot の下で、Name 属性を使用�
 
 |Attribute|値|
 |---|---|
-|型|[ConfigPackagePoliciesType](service-fabric-service-model-schema-complex-types.md#configpackagepoliciestype-complextype)|
+|type|[ConfigPackagePoliciesType](service-fabric-service-model-schema-complex-types.md#configpackagepoliciestype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ServiceManifestImportPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifestimportpoliciestype-complextype)、DigestedCodePackage 要素内でローカルに|
+|defined|[ServiceManifestImportPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifestimportpoliciestype-complextype)、DigestedCodePackage 要素内でローカルに|
 |name|ConfigPackagePolicies|
 |minOccurs|0|
 
@@ -1020,9 +1020,9 @@ Settings.xml ファイルを含む PackageRoot の下で、Name 属性を使用�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、2 個の属性|
-|定義済み|[ExeHostEntryPointType complexType](service-fabric-service-model-schema-complex-types.md#exehostentrypointtype-complextype) 内でローカルに|
+|defined|[ExeHostEntryPointType complexType](service-fabric-service-model-schema-complex-types.md#exehostentrypointtype-complextype) 内でローカルに|
 |name|ConsoleRedirection|
 |minOccurs|0|
 
@@ -1066,7 +1066,7 @@ Settings.xml ファイルを含む PackageRoot の下で、Name 属性を使用�
 |Attribute|値|
 |---|---|
 |name|FileRetentionCount|
-|既定値 (default)|2|
+|default|2|
 
 #### <a name="filemaxsizeinkb"></a>FileMaxSizeInKb
 コンソール リダイレクション出力ファイルの最大サイズを設定します。  128 KB より大きい正の整数である必要があり、既定値は "20480" です。
@@ -1074,7 +1074,7 @@ Settings.xml ファイルを含む PackageRoot の下で、Name 属性を使用�
 |Attribute|値|
 |---|---|
 |name|FileMaxSizeInKb|
-|既定値 (default)|20480|
+|default|20480|
 
 
 <a id="ContainerEntryPointElementxs:stringComplexTypeDefinedInDebugParametersTypecomplexType"></a>
@@ -1083,9 +1083,9 @@ Settings.xml ファイルを含む PackageRoot の下で、Name 属性を使用�
 
 |Attribute|値|
 |---|---|
-|型|xs:string|
+|type|xs:string|
 |content|0 個の要素、0 個の属性|
-|定義済み|[DebugParametersType complexType](service-fabric-service-model-schema-complex-types.md#debugparameterstype-complextype) 内でローカルに|
+|defined|[DebugParametersType complexType](service-fabric-service-model-schema-complex-types.md#debugparameterstype-complextype) 内でローカルに|
 |name|ContainerEntryPoint|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -1107,9 +1107,9 @@ Settings.xml ファイルを含む PackageRoot の下で、Name 属性を使用�
 
 |Attribute|値|
 |---|---|
-|型|xs:string|
+|type|xs:string|
 |content|0 個の要素、0 個の属性|
-|定義済み|[DebugParametersType complexType](service-fabric-service-model-schema-complex-types.md#debugparameterstype-complextype) 内でローカルに|
+|defined|[DebugParametersType complexType](service-fabric-service-model-schema-complex-types.md#debugparameterstype-complextype) 内でローカルに|
 |name|ContainerEnvironmentBlock|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -1130,9 +1130,9 @@ Settings.xml ファイルを含む PackageRoot の下で、Name 属性を使用�
 
 |Attribute|値|
 |---|---|
-|型|[ContainerHostEntryPointType](service-fabric-service-model-schema-complex-types.md#containerhostentrypointtype-complextype)|
+|type|[ContainerHostEntryPointType](service-fabric-service-model-schema-complex-types.md#containerhostentrypointtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[EntryPointDescriptionType complexType](service-fabric-service-model-schema-complex-types.md#entrypointdescriptiontype-complextype) 内でローカルに|
+|defined|[EntryPointDescriptionType complexType](service-fabric-service-model-schema-complex-types.md#entrypointdescriptiontype-complextype) 内でローカルに|
 |name|ContainerHost|
 
 ### <a name="xml-source"></a>XML ソース
@@ -1148,9 +1148,9 @@ Settings.xml ファイルを含む PackageRoot の下で、Name 属性を使用�
 
 |Attribute|値|
 |---|---|
-|型|[ContainerHostPoliciesType](service-fabric-service-model-schema-complex-types.md#containerhostpoliciestype-complextype)|
+|type|[ContainerHostPoliciesType](service-fabric-service-model-schema-complex-types.md#containerhostpoliciestype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ServiceManifestImportPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifestimportpoliciestype-complextype)、DigestedCodePackage 要素内でローカルに|
+|defined|[ServiceManifestImportPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifestimportpoliciestype-complextype)、DigestedCodePackage 要素内でローカルに|
 |name|ContainerHostPolicies|
 |minOccurs|0|
 
@@ -1171,9 +1171,9 @@ key=value 形式のコンテナーのラベル。
 
 |Attribute|値|
 |---|---|
-|型|xs:string|
+|type|xs:string|
 |content|0 個の要素、0 個の属性|
-|定義済み|[DebugParametersType complexType](service-fabric-service-model-schema-complex-types.md#debugparameterstype-complextype) 内でローカルに|
+|defined|[DebugParametersType complexType](service-fabric-service-model-schema-complex-types.md#debugparameterstype-complextype) 内でローカルに|
 |name|ContainerLabel|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -1195,9 +1195,9 @@ key=value 形式のコンテナーのラベル。
 
 |Attribute|値|
 |---|---|
-|型|xs:string|
+|type|xs:string|
 |content|0 個の要素、0 個の属性|
-|定義済み|[DebugParametersType complexType](service-fabric-service-model-schema-complex-types.md#debugparameterstype-complextype) 内でローカルに|
+|defined|[DebugParametersType complexType](service-fabric-service-model-schema-complex-types.md#debugparameterstype-complextype) 内でローカルに|
 |name|ContainerMountedVolume|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -1219,9 +1219,9 @@ key=value 形式のコンテナーのラベル。
 
 |Attribute|値|
 |---|---|
-|型|[ContainerNetworkPolicyType](service-fabric-service-model-schema-complex-types.md#containernetworkpolicytype-complextype)|
+|type|[ContainerNetworkPolicyType](service-fabric-service-model-schema-complex-types.md#containernetworkpolicytype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[NetworkPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#networkpoliciestype-complextype) 内でローカルに|
+|defined|[NetworkPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#networkpoliciestype-complextype) 内でローカルに|
 |name|ContainerNetworkPolicy|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -1243,9 +1243,9 @@ key=value 形式のコンテナーのラベル。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|2 個の要素、1 個の属性|
-|定義済み|[DiagnosticsType complexType](service-fabric-service-model-schema-complex-types.md#diagnosticstype-complextype) 内でローカルに|
+|defined|[DiagnosticsType complexType](service-fabric-service-model-schema-complex-types.md#diagnosticstype-complextype) 内でローカルに|
 |name|CrashDumpSource|
 |minOccurs|0|
 
@@ -1289,7 +1289,7 @@ key=value 形式のコンテナーのラベル。
 |Attribute|値|
 |---|---|
 |name|IsEnabled|
-|型|xs:string|
+|type|xs:string|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
 
@@ -1314,9 +1314,9 @@ key=value 形式のコンテナーのラベル。
 
 |Attribute|値|
 |---|---|
-|型|[WindowsFabricDeploymentInformation](service-fabric-service-model-schema-complex-types.md#windowsfabricdeploymentinformation-complextype)|
+|type|[WindowsFabricDeploymentInformation](service-fabric-service-model-schema-complex-types.md#windowsfabricdeploymentinformation-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[TargetInformationType complexType](service-fabric-service-model-schema-complex-types.md#targetinformationtype-complextype) 内でローカルに|
+|defined|[TargetInformationType complexType](service-fabric-service-model-schema-complex-types.md#targetinformationtype-complextype) 内でローカルに|
 |name|CurrentInstallation|
 |minOccurs|0|
 
@@ -1333,9 +1333,9 @@ key=value 形式のコンテナーのラベル。
 
 |Attribute|値|
 |---|---|
-|型|[DataPackageType](service-fabric-service-model-schema-complex-types.md#datapackagetype-complextype)|
+|type|[DataPackageType](service-fabric-service-model-schema-complex-types.md#datapackagetype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ServiceManifestType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifesttype-complextype)、DigestedDataPackage 要素内でローカルに|
+|defined|[ServiceManifestType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifesttype-complextype)、DigestedDataPackage 要素内でローカルに|
 |name|DataPackage|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -1353,9 +1353,9 @@ key=value 形式のコンテナーのラベル。
 
 |Attribute|値|
 |---|---|
-|型|[DebugParametersType](service-fabric-service-model-schema-complex-types.md#debugparameterstype-complextype)|
+|type|[DebugParametersType](service-fabric-service-model-schema-complex-types.md#debugparameterstype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|DigestedCodePackage 要素、DigestedConfigPackage 要素、DigestedDataPackage 要素内でローカルに|
+|defined|DigestedCodePackage 要素、DigestedConfigPackage 要素、DigestedDataPackage 要素内でローカルに|
 |name|DebugParameters|
 |minOccurs|0|
 |maxOccurs|1|
@@ -1372,9 +1372,9 @@ key=value 形式のコンテナーのラベル。
 
 |Attribute|値|
 |---|---|
-|型|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
+|type|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
+|defined|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
 |name|DefaultReplicatorEndpoint|
 |minOccurs|0|
 
@@ -1391,9 +1391,9 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、1 個の属性|
-|定義済み|[ApplicationPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#applicationpoliciestype-complextype) 内でローカルに|
+|defined|[ApplicationPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#applicationpoliciestype-complextype) 内でローカルに|
 |name|DefaultRunAsPolicy|
 |minOccurs|0|
 
@@ -1422,7 +1422,7 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|UserRef|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 
@@ -1432,9 +1432,9 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 
 |Attribute|値|
 |---|---|
-|型|[ServiceTypeHealthPolicyType](service-fabric-service-model-schema-complex-types.md#servicetypehealthpolicytype-complextype)|
+|type|[ServiceTypeHealthPolicyType](service-fabric-service-model-schema-complex-types.md#servicetypehealthpolicytype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ApplicationHealthPolicyType complexType](service-fabric-service-model-schema-complex-types.md#applicationhealthpolicytype-complextype) 内でローカルに|
+|defined|[ApplicationHealthPolicyType complexType](service-fabric-service-model-schema-complex-types.md#applicationhealthpolicytype-complextype) 内でローカルに|
 |name|DefaultServiceTypeHealthPolicy|
 |minOccurs|0|
 
@@ -1455,9 +1455,9 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 
 |Attribute|値|
 |---|---|
-|型|[DefaultServicesType](service-fabric-service-model-schema-complex-types.md#defaultservicestype-complextype)|
+|type|[DefaultServicesType](service-fabric-service-model-schema-complex-types.md#defaultservicestype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ApplicationManifestType complexType](service-fabric-service-model-schema-complex-types.md#applicationmanifesttype-complextype)、[ApplicationInstanceType complexType](service-fabric-service-model-schema-complex-types.md#applicationinstancetype-complextype) 内でローカルに|
+|defined|[ApplicationManifestType complexType](service-fabric-service-model-schema-complex-types.md#applicationmanifesttype-complextype)、[ApplicationInstanceType complexType](service-fabric-service-model-schema-complex-types.md#applicationinstancetype-complextype) 内でローカルに|
 |name|DefaultServices|
 |minOccurs|0|
 
@@ -1476,9 +1476,9 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 
 |Attribute|値|
 |---|---|
-|型|xs:string|
+|type|xs:string|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ApplicationManifestType complexType](service-fabric-service-model-schema-complex-types.md#applicationmanifesttype-complextype)、[ServiceManifestType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifesttype-complextype)、[ServicePackageType complexType](service-fabric-service-model-schema-complex-types.md#servicepackagetype-complextype) 内でローカルに|
+|defined|[ApplicationManifestType complexType](service-fabric-service-model-schema-complex-types.md#applicationmanifesttype-complextype)、[ServiceManifestType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifesttype-complextype)、[ServicePackageType complexType](service-fabric-service-model-schema-complex-types.md#servicepackagetype-complextype) 内でローカルに|
 |name|説明|
 |minOccurs|0|
 
@@ -1499,9 +1499,9 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|3 個の要素、0 個の属性|
-|定義済み|CrashDumpSource 要素内でローカルに|
+|defined|CrashDumpSource 要素内でローカルに|
 |name|変換先|
 |minOccurs|0|
 
@@ -1529,7 +1529,7 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|LocalStore|
-|型|[LocalStoreType](service-fabric-service-model-schema-complex-types.md#localstoretype-complextype)|
+|type|[LocalStoreType](service-fabric-service-model-schema-complex-types.md#localstoretype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -1538,7 +1538,7 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|FileStore|
-|型|[FileStoreType](service-fabric-service-model-schema-complex-types.md#filestoretype-complextype)|
+|type|[FileStoreType](service-fabric-service-model-schema-complex-types.md#filestoretype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -1547,7 +1547,7 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|AzureBlob|
-|型|[AzureBlobType](service-fabric-service-model-schema-complex-types.md#azureblobtype-complextype)|
+|type|[AzureBlobType](service-fabric-service-model-schema-complex-types.md#azureblobtype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -1557,9 +1557,9 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|3 個の要素、0 個の属性|
-|定義済み|ETWSource 要素内でローカルに|
+|defined|ETWSource 要素内でローカルに|
 |name|変換先|
 |minOccurs|0|
 
@@ -1587,7 +1587,7 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|LocalStore|
-|型|[LocalStoreETWType](service-fabric-service-model-schema-complex-types.md#localstoreetwtype-complextype)|
+|type|[LocalStoreETWType](service-fabric-service-model-schema-complex-types.md#localstoreetwtype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -1596,7 +1596,7 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|FileStore|
-|型|[FileStoreETWType](service-fabric-service-model-schema-complex-types.md#filestoreetwtype-complextype)|
+|type|[FileStoreETWType](service-fabric-service-model-schema-complex-types.md#filestoreetwtype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -1605,7 +1605,7 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|AzureBlob|
-|型|[AzureBlobETWType](service-fabric-service-model-schema-complex-types.md#azureblobetwtype-complextype)|
+|type|[AzureBlobETWType](service-fabric-service-model-schema-complex-types.md#azureblobetwtype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -1615,9 +1615,9 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|3 個の要素、0 個の属性|
-|定義済み|FolderSource 要素内でローカルに|
+|defined|FolderSource 要素内でローカルに|
 |name|変換先|
 |minOccurs|0|
 
@@ -1645,7 +1645,7 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|LocalStore|
-|型|[LocalStoreType](service-fabric-service-model-schema-complex-types.md#localstoretype-complextype)|
+|type|[LocalStoreType](service-fabric-service-model-schema-complex-types.md#localstoretype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -1654,7 +1654,7 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|FileStore|
-|型|[FileStoreType](service-fabric-service-model-schema-complex-types.md#filestoretype-complextype)|
+|type|[FileStoreType](service-fabric-service-model-schema-complex-types.md#filestoretype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -1663,7 +1663,7 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|AzureBlob|
-|型|[AzureBlobType](service-fabric-service-model-schema-complex-types.md#azureblobtype-complextype)|
+|type|[AzureBlobType](service-fabric-service-model-schema-complex-types.md#azureblobtype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -1673,9 +1673,9 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 
 |Attribute|値|
 |---|---|
-|型|[DiagnosticsType](service-fabric-service-model-schema-complex-types.md#diagnosticstype-complextype)|
+|type|[DiagnosticsType](service-fabric-service-model-schema-complex-types.md#diagnosticstype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ApplicationManifestType complexType](service-fabric-service-model-schema-complex-types.md#applicationmanifesttype-complextype)、[EnvironmentType complexType](service-fabric-service-model-schema-complex-types.md#environmenttype-complextype) 内でローカルに|
+|defined|[ApplicationManifestType complexType](service-fabric-service-model-schema-complex-types.md#applicationmanifesttype-complextype)、[EnvironmentType complexType](service-fabric-service-model-schema-complex-types.md#environmenttype-complextype) 内でローカルに|
 |name|診断|
 |minOccurs|0|
 
@@ -1692,9 +1692,9 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 
 |Attribute|値|
 |---|---|
-|型|[ServiceDiagnosticsType](service-fabric-service-model-schema-complex-types.md#servicediagnosticstype-complextype)|
+|type|[ServiceDiagnosticsType](service-fabric-service-model-schema-complex-types.md#servicediagnosticstype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ServiceManifestType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifesttype-complextype)、[ServicePackageType complexType](service-fabric-service-model-schema-complex-types.md#servicepackagetype-complextype) 内でローカルに|
+|defined|[ServiceManifestType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifesttype-complextype)、[ServicePackageType complexType](service-fabric-service-model-schema-complex-types.md#servicepackagetype-complextype) 内でローカルに|
 |name|診断|
 |minOccurs|0|
 
@@ -1710,9 +1710,9 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|2 個の要素、0 個の属性|
-|定義済み|[ApplicationPackageType complexType](service-fabric-service-model-schema-complex-types.md#applicationpackagetype-complextype) 内でローカルに|
+|defined|[ApplicationPackageType complexType](service-fabric-service-model-schema-complex-types.md#applicationpackagetype-complextype) 内でローカルに|
 |name|DigestedCertificates|
 
 ### <a name="xml-source"></a>XML ソース
@@ -1736,7 +1736,7 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|SecretsCertificate|
-|型|[FabricCertificateType](service-fabric-service-model-schema-complex-types.md#fabriccertificatetype-complextype)|
+|type|[FabricCertificateType](service-fabric-service-model-schema-complex-types.md#fabriccertificatetype-complextype)|
 |minOccurs|0|
 
 #### <a name="endpointcertificate"></a>EndpointCertificate
@@ -1744,7 +1744,7 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|EndpointCertificate|
-|型|[EndpointCertificateType](service-fabric-service-model-schema-complex-types.md#endpointcertificatetype-complextype)|
+|type|[EndpointCertificateType](service-fabric-service-model-schema-complex-types.md#endpointcertificatetype-complextype)|
 |minOccurs|0|
 
 <a id="DigestedCertificatesElementanonymouscomplexTypeComplexTypeDefinedInDigestedResourceselement"></a>
@@ -1752,9 +1752,9 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|DigestedResources 要素内でローカルに|
+|defined|DigestedResources 要素内でローカルに|
 |name|DigestedCertificates|
 |minOccurs|0|
 |maxOccurs|1|
@@ -1778,7 +1778,7 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|EndpointCertificate|
-|型|[EndpointCertificateType](service-fabric-service-model-schema-complex-types.md#endpointcertificatetype-complextype)|
+|type|[EndpointCertificateType](service-fabric-service-model-schema-complex-types.md#endpointcertificatetype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -1787,9 +1787,9 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|6 個の要素、2 個の属性|
-|定義済み|[ServicePackageType complexType](service-fabric-service-model-schema-complex-types.md#servicepackagetype-complextype) 内でローカルに|
+|defined|[ServicePackageType complexType](service-fabric-service-model-schema-complex-types.md#servicepackagetype-complextype) 内でローカルに|
 |name|DigestedCodePackage|
 |maxOccurs|unbounded|
 
@@ -1832,14 +1832,14 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|ContentChecksum|
-|型|xs:string|
+|type|xs:string|
 
 #### <a name="isshared"></a>IsShared
 
 |Attribute|値|
 |---|---|
 |name|IsShared|
-|型|xs:boolean|
+|type|xs:boolean|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
 
@@ -1848,14 +1848,14 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|CodePackage|
-|型|[CodePackageType](service-fabric-service-model-schema-complex-types.md#codepackagetype-complextype)|
+|type|[CodePackageType](service-fabric-service-model-schema-complex-types.md#codepackagetype-complextype)|
 
 #### <a name="runaspolicy"></a>RunAsPolicy
 
 |Attribute|値|
 |---|---|
 |name|RunAsPolicy|
-|型|[RunAsPolicyType](service-fabric-service-model-schema-complex-types.md#runaspolicytype-complextype)|
+|type|[RunAsPolicyType](service-fabric-service-model-schema-complex-types.md#runaspolicytype-complextype)|
 |minOccurs|0|
 |maxOccurs|2|
 
@@ -1864,7 +1864,7 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|DebugParameters|
-|型|[DebugParametersType](service-fabric-service-model-schema-complex-types.md#debugparameterstype-complextype)|
+|type|[DebugParametersType](service-fabric-service-model-schema-complex-types.md#debugparameterstype-complextype)|
 |minOccurs|0|
 |maxOccurs|1|
 
@@ -1874,7 +1874,7 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|ContainerHostPolicies|
-|型|[ContainerHostPoliciesType](service-fabric-service-model-schema-complex-types.md#containerhostpoliciestype-complextype)|
+|type|[ContainerHostPoliciesType](service-fabric-service-model-schema-complex-types.md#containerhostpoliciestype-complextype)|
 |minOccurs|0|
 
 #### <a name="resourcegovernancepolicy"></a>ResourceGovernancePolicy
@@ -1883,7 +1883,7 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|ResourceGovernancePolicy|
-|型|[ResourceGovernancePolicyType](service-fabric-service-model-schema-complex-types.md#resourcegovernancepolicytype-complextype)|
+|type|[ResourceGovernancePolicyType](service-fabric-service-model-schema-complex-types.md#resourcegovernancepolicytype-complextype)|
 |minOccurs|0|
 
 #### <a name="configpackagepolicies"></a>ConfigPackagePolicies
@@ -1892,7 +1892,7 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|ConfigPackagePolicies|
-|型|[ConfigPackagePoliciesType](service-fabric-service-model-schema-complex-types.md#configpackagepoliciestype-complextype)|
+|type|[ConfigPackagePoliciesType](service-fabric-service-model-schema-complex-types.md#configpackagepoliciestype-complextype)|
 |minOccurs|0|
 
 <a id="DigestedConfigPackageElementanonymouscomplexTypeComplexTypeDefinedInServicePackageTypecomplexType"></a>
@@ -1900,9 +1900,9 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|3 個の要素、2 個の属性|
-|定義済み|[ServicePackageType complexType](service-fabric-service-model-schema-complex-types.md#servicepackagetype-complextype) 内でローカルに|
+|defined|[ServicePackageType complexType](service-fabric-service-model-schema-complex-types.md#servicepackagetype-complextype) 内でローカルに|
 |name|DigestedConfigPackage|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -1931,14 +1931,14 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|ContentChecksum|
-|型|xs:string|
+|type|xs:string|
 
 #### <a name="isshared"></a>IsShared
 
 |Attribute|値|
 |---|---|
 |name|IsShared|
-|型|xs:boolean|
+|type|xs:boolean|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
 
@@ -1947,14 +1947,14 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|ConfigPackage|
-|型|[ConfigPackageType](service-fabric-service-model-schema-complex-types.md#configpackagetype-complextype)|
+|type|[ConfigPackageType](service-fabric-service-model-schema-complex-types.md#configpackagetype-complextype)|
 
 #### <a name="configoverride"></a>ConfigOverride
 
 |Attribute|値|
 |---|---|
 |name|ConfigOverride|
-|型|[ConfigOverrideType](service-fabric-service-model-schema-complex-types.md#configoverridetype-complextype)|
+|type|[ConfigOverrideType](service-fabric-service-model-schema-complex-types.md#configoverridetype-complextype)|
 |minOccurs|0|
 
 #### <a name="debugparameters"></a>DebugParameters
@@ -1962,7 +1962,7 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|DebugParameters|
-|型|[DebugParametersType](service-fabric-service-model-schema-complex-types.md#debugparameterstype-complextype)|
+|type|[DebugParametersType](service-fabric-service-model-schema-complex-types.md#debugparameterstype-complextype)|
 |minOccurs|0|
 |maxOccurs|1|
 
@@ -1971,9 +1971,9 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|2 個の要素、2 個の属性|
-|定義済み|[ServicePackageType complexType](service-fabric-service-model-schema-complex-types.md#servicepackagetype-complextype) 内でローカルに|
+|defined|[ServicePackageType complexType](service-fabric-service-model-schema-complex-types.md#servicepackagetype-complextype) 内でローカルに|
 |name|DigestedDataPackage|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -2001,14 +2001,14 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|ContentChecksum|
-|型|xs:string|
+|type|xs:string|
 
 #### <a name="isshared"></a>IsShared
 
 |Attribute|値|
 |---|---|
 |name|IsShared|
-|型|xs:boolean|
+|type|xs:boolean|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
 
@@ -2017,14 +2017,14 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|DataPackage|
-|型|[DataPackageType](service-fabric-service-model-schema-complex-types.md#datapackagetype-complextype)|
+|type|[DataPackageType](service-fabric-service-model-schema-complex-types.md#datapackagetype-complextype)|
 
 #### <a name="debugparameters"></a>DebugParameters
 
 |Attribute|値|
 |---|---|
 |name|DebugParameters|
-|型|[DebugParametersType](service-fabric-service-model-schema-complex-types.md#debugparameterstype-complextype)|
+|type|[DebugParametersType](service-fabric-service-model-schema-complex-types.md#debugparameterstype-complextype)|
 |minOccurs|0|
 |maxOccurs|1|
 
@@ -2033,9 +2033,9 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|4 個の要素、0 個の属性|
-|定義済み|DigestedEndpoints 要素内でローカルに|
+|defined|DigestedEndpoints 要素内でローカルに|
 |name|DigestedEndpoint|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -2062,14 +2062,14 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|エンドポイント|
-|型|[EndpointType](service-fabric-service-model-schema-complex-types.md#endpointtype-complextype)|
+|type|[EndpointType](service-fabric-service-model-schema-complex-types.md#endpointtype-complextype)|
 
 #### <a name="securityaccesspolicy"></a>SecurityAccessPolicy
 
 |Attribute|値|
 |---|---|
 |name|SecurityAccessPolicy|
-|型|[SecurityAccessPolicyType](service-fabric-service-model-schema-complex-types.md#securityaccesspolicytype-complextype)|
+|type|[SecurityAccessPolicyType](service-fabric-service-model-schema-complex-types.md#securityaccesspolicytype-complextype)|
 |minOccurs|0|
 
 #### <a name="endpointbindingpolicy"></a>EndpointBindingPolicy
@@ -2077,7 +2077,7 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|EndpointBindingPolicy|
-|型|[EndpointBindingPolicyType](service-fabric-service-model-schema-complex-types.md#endpointbindingpolicytype-complextype)|
+|type|[EndpointBindingPolicyType](service-fabric-service-model-schema-complex-types.md#endpointbindingpolicytype-complextype)|
 |minOccurs|0|
 
 #### <a name="resourcegovernancepolicy"></a>ResourceGovernancePolicy
@@ -2085,7 +2085,7 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|ResourceGovernancePolicy|
-|型|[ResourceGovernancePolicyType](service-fabric-service-model-schema-complex-types.md#resourcegovernancepolicytype-complextype)|
+|type|[ResourceGovernancePolicyType](service-fabric-service-model-schema-complex-types.md#resourcegovernancepolicytype-complextype)|
 |minOccurs|0|
 |maxOccurs|1|
 
@@ -2094,9 +2094,9 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|DigestedResources 要素内でローカルに|
+|defined|DigestedResources 要素内でローカルに|
 |name|DigestedEndpoints|
 |minOccurs|0|
 
@@ -2136,9 +2136,9 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 
 |Attribute|値|
 |---|---|
-|型|[EnvironmentType](service-fabric-service-model-schema-complex-types.md#environmenttype-complextype)|
+|type|[EnvironmentType](service-fabric-service-model-schema-complex-types.md#environmenttype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ApplicationPackageType complexType](service-fabric-service-model-schema-complex-types.md#applicationpackagetype-complextype) 内でローカルに|
+|defined|[ApplicationPackageType complexType](service-fabric-service-model-schema-complex-types.md#applicationpackagetype-complextype) 内でローカルに|
 |name|DigestedEnvironment|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2153,9 +2153,9 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|2 個の要素、0 個の属性|
-|定義済み|[ServicePackageType complexType](service-fabric-service-model-schema-complex-types.md#servicepackagetype-complextype) 内でローカルに|
+|defined|[ServicePackageType complexType](service-fabric-service-model-schema-complex-types.md#servicepackagetype-complextype) 内でローカルに|
 |name|DigestedResources|
 |minOccurs|1|
 
@@ -2216,9 +2216,9 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|[ServicePackageType complexType](service-fabric-service-model-schema-complex-types.md#servicepackagetype-complextype) 内でローカルに|
+|defined|[ServicePackageType complexType](service-fabric-service-model-schema-complex-types.md#servicepackagetype-complextype) 内でローカルに|
 |name|DigestedServiceTypes|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2241,7 +2241,7 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|ServiceTypes|
-|型|[ServiceTypesType](service-fabric-service-model-schema-complex-types.md#servicetypestype-complextype)|
+|type|[ServiceTypesType](service-fabric-service-model-schema-complex-types.md#servicetypestype-complextype)|
 
 <a id="DllHostElementDllHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType"></a>
 ## <a name="dllhost-element"></a>DllHost 要素
@@ -2249,9 +2249,9 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 
 |Attribute|値|
 |---|---|
-|型|[DllHostEntryPointType](service-fabric-service-model-schema-complex-types.md#dllhostentrypointtype-complextype)|
+|type|[DllHostEntryPointType](service-fabric-service-model-schema-complex-types.md#dllhostentrypointtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[EntryPointDescriptionType complexType](service-fabric-service-model-schema-complex-types.md#entrypointdescriptiontype-complextype) 内でローカルに|
+|defined|[EntryPointDescriptionType complexType](service-fabric-service-model-schema-complex-types.md#entrypointdescriptiontype-complextype) 内でローカルに|
 |name|DllHost|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2266,9 +2266,9 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、1 個の属性|
-|定義済み|Membership 要素内でローカルに|
+|defined|Membership 要素内でローカルに|
 |name|DomainGroup|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -2290,7 +2290,7 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|Name|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 
@@ -2299,9 +2299,9 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、1 個の属性|
-|定義済み|Membership 要素内でローカルに|
+|defined|Membership 要素内でローカルに|
 |name|DomainUser|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -2323,7 +2323,7 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|Name|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 
@@ -2333,9 +2333,9 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 
 |Attribute|値|
 |---|---|
-|型|[DriverOptionType](service-fabric-service-model-schema-complex-types.md#driveroptiontype-complextype)|
+|type|[DriverOptionType](service-fabric-service-model-schema-complex-types.md#driveroptiontype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ContainerLoggingDriverType complexType](service-fabric-service-model-schema-complex-types.md#containerloggingdrivertype-complextype)、[ContainerVolumeType complexType](service-fabric-service-model-schema-complex-types.md#containervolumetype-complextype) 内でローカルに|
+|defined|[ContainerLoggingDriverType complexType](service-fabric-service-model-schema-complex-types.md#containerloggingdrivertype-complextype)、[ContainerVolumeType complexType](service-fabric-service-model-schema-complex-types.md#containervolumetype-complextype) 内でローカルに|
 |name|DriverOption|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -2357,9 +2357,9 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|2 個の要素、0 個の属性|
-|定義済み|[ServiceDiagnosticsType complexType](service-fabric-service-model-schema-complex-types.md#servicediagnosticstype-complextype) 内でローカルに|
+|defined|[ServiceDiagnosticsType complexType](service-fabric-service-model-schema-complex-types.md#servicediagnosticstype-complextype) 内でローカルに|
 |name|ETW|
 |minOccurs|0|
 
@@ -2431,9 +2431,9 @@ ETW トレースの収集を指定します。 ETW トレースは、アプリ�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|2 個の要素、1 個の属性|
-|定義済み|[DiagnosticsType complexType](service-fabric-service-model-schema-complex-types.md#diagnosticstype-complextype) 内でローカルに|
+|defined|[DiagnosticsType complexType](service-fabric-service-model-schema-complex-types.md#diagnosticstype-complextype) 内でローカルに|
 |name|ETWSource|
 |minOccurs|0|
 
@@ -2477,7 +2477,7 @@ ETW トレースの収集が有効になっているかどうか。 既定では
 |Attribute|値|
 |---|---|
 |name|IsEnabled|
-|型|xs:string|
+|type|xs:string|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
 
@@ -2503,9 +2503,9 @@ ETW トレースの収集が有効になっているかどうか。 既定では
 
 |Attribute|値|
 |---|---|
-|型|[EndpointOverrideType](service-fabric-service-model-schema-complex-types.md#endpointoverridetype-complextype)|
+|type|[EndpointOverrideType](service-fabric-service-model-schema-complex-types.md#endpointoverridetype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|Endpoints 要素内でローカルに|
+|defined|Endpoints 要素内でローカルに|
 |name|エンドポイント|
 |maxOccurs|unbounded|
 
@@ -2526,9 +2526,9 @@ ETW トレースの収集が有効になっているかどうか。 既定では
 
 |Attribute|値|
 |---|---|
-|型|[EndpointType](service-fabric-service-model-schema-complex-types.md#endpointtype-complextype)|
+|type|[EndpointType](service-fabric-service-model-schema-complex-types.md#endpointtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|Endpoints 要素、DigestedEndpoint 要素内でローカルに|
+|defined|Endpoints 要素、DigestedEndpoint 要素内でローカルに|
 |name|エンドポイント|
 |maxOccurs|unbounded|
 
@@ -2545,9 +2545,9 @@ ETW トレースの収集が有効になっているかどうか。 既定では
 
 |Attribute|値|
 |---|---|
-|型|[ContainerNetworkPolicyEndpointBindingType](service-fabric-service-model-schema-complex-types.md#containernetworkpolicyendpointbindingtype-complextype)|
+|type|[ContainerNetworkPolicyEndpointBindingType](service-fabric-service-model-schema-complex-types.md#containernetworkpolicyendpointbindingtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ContainerNetworkPolicyType complexType](service-fabric-service-model-schema-complex-types.md#containernetworkpolicytype-complextype) 内でローカルに|
+|defined|[ContainerNetworkPolicyType complexType](service-fabric-service-model-schema-complex-types.md#containernetworkpolicytype-complextype) 内でローカルに|
 |name|EndpointBinding|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -2569,9 +2569,9 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 
 |Attribute|値|
 |---|---|
-|型|[EndpointBindingPolicyType](service-fabric-service-model-schema-complex-types.md#endpointbindingpolicytype-complextype)|
+|type|[EndpointBindingPolicyType](service-fabric-service-model-schema-complex-types.md#endpointbindingpolicytype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ServiceManifestImportPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifestimportpoliciestype-complextype)、DigestedEndpoint 要素内でローカルに|
+|defined|[ServiceManifestImportPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifestimportpoliciestype-complextype)、DigestedEndpoint 要素内でローカルに|
 |name|EndpointBindingPolicy|
 |minOccurs|0|
 
@@ -2592,9 +2592,9 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 
 |Attribute|値|
 |---|---|
-|型|[EndpointCertificateType](service-fabric-service-model-schema-complex-types.md#endpointcertificatetype-complextype)|
+|type|[EndpointCertificateType](service-fabric-service-model-schema-complex-types.md#endpointcertificatetype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|Certificates 要素、DigestedCertificates 要素、DigestedCertificates 要素内でローカルに|
+|defined|Certificates 要素、DigestedCertificates 要素、DigestedCertificates 要素内でローカルに|
 |name|EndpointCertificate|
 |minOccurs|0|
 
@@ -2611,9 +2611,9 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 
 |Attribute|値|
 |---|---|
-|型|[FabricEndpointsType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype)|
+|type|[FabricEndpointsType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|NodeType 要素、[InfrastructureNodeType complexType](service-fabric-service-model-schema-complex-types.md#infrastructurenodetype-complextype) 内でローカルに|
+|defined|NodeType 要素、[InfrastructureNodeType complexType](service-fabric-service-model-schema-complex-types.md#infrastructurenodetype-complextype) 内でローカルに|
 |name|エンドポイント|
 |minOccurs|0|
 
@@ -2634,9 +2634,9 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|[ResourceOverridesType complexType](service-fabric-service-model-schema-complex-types.md#resourceoverridestype-complextype) 内でローカルに|
+|defined|[ResourceOverridesType complexType](service-fabric-service-model-schema-complex-types.md#resourceoverridestype-complextype) 内でローカルに|
 |name|エンドポイント|
 |minOccurs|0|
 
@@ -2667,7 +2667,7 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 |Attribute|値|
 |---|---|
 |name|エンドポイント|
-|型|[EndpointOverrideType](service-fabric-service-model-schema-complex-types.md#endpointoverridetype-complextype)|
+|type|[EndpointOverrideType](service-fabric-service-model-schema-complex-types.md#endpointoverridetype-complextype)|
 |maxOccurs|unbounded|
 
 <a id="EndpointsElementanonymouscomplexTypeComplexTypeDefinedInResourcesTypecomplexType"></a>
@@ -2676,9 +2676,9 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|[ResourcesType complexType](service-fabric-service-model-schema-complex-types.md#resourcestype-complextype) 内でローカルに|
+|defined|[ResourcesType complexType](service-fabric-service-model-schema-complex-types.md#resourcestype-complextype) 内でローカルに|
 |name|エンドポイント|
 |minOccurs|0|
 
@@ -2704,7 +2704,7 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 |Attribute|値|
 |---|---|
 |name|エンドポイント|
-|型|[EndpointType](service-fabric-service-model-schema-complex-types.md#endpointtype-complextype)|
+|type|[EndpointType](service-fabric-service-model-schema-complex-types.md#endpointtype-complextype)|
 |maxOccurs|unbounded|
 
 <a id="EntryPointElementEntryPointDescriptionTypeComplexTypeDefinedInCodePackageTypecomplexType"></a>
@@ -2713,9 +2713,9 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 
 |Attribute|値|
 |---|---|
-|型|[EntryPointDescriptionType](service-fabric-service-model-schema-complex-types.md#entrypointdescriptiontype-complextype)|
+|type|[EntryPointDescriptionType](service-fabric-service-model-schema-complex-types.md#entrypointdescriptiontype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[CodePackageType complexType](service-fabric-service-model-schema-complex-types.md#codepackagetype-complextype) 内でローカルに|
+|defined|[CodePackageType complexType](service-fabric-service-model-schema-complex-types.md#codepackagetype-complextype) 内でローカルに|
 |name|EntryPoint|
 |minOccurs|1|
 
@@ -2731,9 +2731,9 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 
 |Attribute|値|
 |---|---|
-|型|xs:string|
+|type|xs:string|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ContainerHostEntryPointType complexType](service-fabric-service-model-schema-complex-types.md#containerhostentrypointtype-complextype) 内でローカルに|
+|defined|[ContainerHostEntryPointType complexType](service-fabric-service-model-schema-complex-types.md#containerhostentrypointtype-complextype) 内でローカルに|
 |name|EntryPoint|
 |minOccurs|0|
 |maxOccurs|1|
@@ -2750,9 +2750,9 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 
 |Attribute|値|
 |---|---|
-|型|[EnvironmentOverridesType](service-fabric-service-model-schema-complex-types.md#environmentoverridestype-complextype)|
+|type|[EnvironmentOverridesType](service-fabric-service-model-schema-complex-types.md#environmentoverridestype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|ServiceManifestImport 要素内でローカルに|
+|defined|ServiceManifestImport 要素内でローカルに|
 |name|EnvironmentOverrides|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -2770,9 +2770,9 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 
 |Attribute|値|
 |---|---|
-|型|[EnvironmentVariableOverrideType](service-fabric-service-model-schema-complex-types.md#environmentvariableoverridetype-complextype)|
+|type|[EnvironmentVariableOverrideType](service-fabric-service-model-schema-complex-types.md#environmentvariableoverridetype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[EnvironmentOverridesType complexType](service-fabric-service-model-schema-complex-types.md#environmentoverridestype-complextype) 内でローカルに|
+|defined|[EnvironmentOverridesType complexType](service-fabric-service-model-schema-complex-types.md#environmentoverridestype-complextype) 内でローカルに|
 |name|EnvironmentVariable|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -2794,9 +2794,9 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 
 |Attribute|値|
 |---|---|
-|型|[EnvironmentVariableType](service-fabric-service-model-schema-complex-types.md#environmentvariabletype-complextype)|
+|type|[EnvironmentVariableType](service-fabric-service-model-schema-complex-types.md#environmentvariabletype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[EnvironmentVariablesType complexType](service-fabric-service-model-schema-complex-types.md#environmentvariablestype-complextype) 内でローカルに|
+|defined|[EnvironmentVariablesType complexType](service-fabric-service-model-schema-complex-types.md#environmentvariablestype-complextype) 内でローカルに|
 |name|EnvironmentVariable|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -2818,9 +2818,9 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 
 |Attribute|値|
 |---|---|
-|型|[EnvironmentVariablesType](service-fabric-service-model-schema-complex-types.md#environmentvariablestype-complextype)|
+|type|[EnvironmentVariablesType](service-fabric-service-model-schema-complex-types.md#environmentvariablestype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[CodePackageType complexType](service-fabric-service-model-schema-complex-types.md#codepackagetype-complextype) 内でローカルに|
+|defined|[CodePackageType complexType](service-fabric-service-model-schema-complex-types.md#codepackagetype-complextype) 内でローカルに|
 |name|EnvironmentVariables|
 |minOccurs|0|
 |maxOccurs|1|
@@ -2837,9 +2837,9 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、2 個の属性|
-|定義済み|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
+|defined|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
 |name|EphemeralEndpoints|
 |minOccurs|0|
 
@@ -2861,7 +2861,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |Attribute|値|
 |---|---|
 |name|StartPort|
-|型|xs:int|
+|type|xs:int|
 |use|required|
 
 #### <a name="endport"></a>EndPort
@@ -2869,7 +2869,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |Attribute|値|
 |---|---|
 |name|EndPort|
-|型|xs:int|
+|type|xs:int|
 |use|required|
 
 
@@ -2878,9 +2878,9 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 
 |Attribute|値|
 |---|---|
-|型|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
+|type|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
+|defined|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
 |name|EventStoreServiceReplicatorEndpoint|
 |minOccurs|0|
 
@@ -2897,9 +2897,9 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、2 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|EvictionPolicy|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2926,7 +2926,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |Attribute|値|
 |---|---|
 |name|Name|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="provider"></a>プロバイダー
@@ -2934,7 +2934,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |Attribute|値|
 |---|---|
 |name|プロバイダー|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
@@ -2944,7 +2944,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |Attribute|値|
 |---|---|
 |name|Properties|
-|型|[ServiceTypeExtensionPolicyPropertiesType](service-fabric-service-model-schema-complex-types.md#servicetypeextensionpolicypropertiestype-complextype)|
+|type|[ServiceTypeExtensionPolicyPropertiesType](service-fabric-service-model-schema-complex-types.md#servicetypeextensionpolicypropertiestype-complextype)|
 |minOccurs|0|
 
 <a id="ExeHostElementExeHostEntryPointTypeComplexTypeDefinedInSetupEntryPointelement"></a>
@@ -2952,9 +2952,9 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 
 |Attribute|値|
 |---|---|
-|型|[ExeHostEntryPointType](service-fabric-service-model-schema-complex-types.md#exehostentrypointtype-complextype)|
+|type|[ExeHostEntryPointType](service-fabric-service-model-schema-complex-types.md#exehostentrypointtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|SetupEntryPoint 要素内でローカルに|
+|defined|SetupEntryPoint 要素内でローカルに|
 |name|ExeHost|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2969,9 +2969,9 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、0 個の属性|
-|定義済み|[EntryPointDescriptionType complexType](service-fabric-service-model-schema-complex-types.md#entrypointdescriptiontype-complextype) 内でローカルに|
+|defined|[EntryPointDescriptionType complexType](service-fabric-service-model-schema-complex-types.md#entrypointdescriptiontype-complextype) 内でローカルに|
 |name|ExeHost|
 
 ### <a name="xml-source"></a>XML ソース
@@ -3007,9 +3007,9 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、2 個の属性|
-|定義済み|[ExtensionsType complexType](service-fabric-service-model-schema-complex-types.md#extensionstype-complextype) 内でローカルに|
+|defined|[ExtensionsType complexType](service-fabric-service-model-schema-complex-types.md#extensionstype-complextype) 内でローカルに|
 |name|拡張機能|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -3048,7 +3048,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |Attribute|値|
 |---|---|
 |name|GeneratedId|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 
@@ -3058,9 +3058,9 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 
 |Attribute|値|
 |---|---|
-|型|[ExtensionsType](service-fabric-service-model-schema-complex-types.md#extensionstype-complextype)|
+|type|[ExtensionsType](service-fabric-service-model-schema-complex-types.md#extensionstype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|拡張機能|
 
 ### <a name="xml-source"></a>XML ソース
@@ -3076,9 +3076,9 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 
 |Attribute|値|
 |---|---|
-|型|[SettingsOverridesType](service-fabric-service-model-schema-complex-types.md#settingsoverridestype-complextype)|
+|type|[SettingsOverridesType](service-fabric-service-model-schema-complex-types.md#settingsoverridestype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ClusterManifestType complexType](service-fabric-service-model-schema-complex-types.md#clustermanifesttype-complextype) 内でローカルに|
+|defined|[ClusterManifestType complexType](service-fabric-service-model-schema-complex-types.md#clustermanifesttype-complextype) 内でローカルに|
 |name|FabricSettings|
 |minOccurs|0|
 
@@ -3094,9 +3094,9 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 
 |Attribute|値|
 |---|---|
-|型|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
+|type|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
+|defined|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
 |name|FailoverManagerReplicatorEndpoint|
 |minOccurs|0|
 
@@ -3112,9 +3112,9 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 
 |Attribute|値|
 |---|---|
-|型|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
+|type|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
+|defined|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
 |name|FaultAnalysisServiceReplicatorEndpoint|
 |minOccurs|0|
 
@@ -3131,9 +3131,9 @@ ETW イベントのファイル格納先について説明します。 オンプ
 
 |Attribute|値|
 |---|---|
-|型|[FileStoreETWType](service-fabric-service-model-schema-complex-types.md#filestoreetwtype-complextype)|
+|type|[FileStoreETWType](service-fabric-service-model-schema-complex-types.md#filestoreetwtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|Destinations 要素内でローカルに|
+|defined|Destinations 要素内でローカルに|
 |name|FileStore|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -3151,9 +3151,9 @@ ETW イベントのファイル格納先について説明します。 オンプ
 
 |Attribute|値|
 |---|---|
-|型|[FileStoreType](service-fabric-service-model-schema-complex-types.md#filestoretype-complextype)|
+|type|[FileStoreType](service-fabric-service-model-schema-complex-types.md#filestoretype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|Destinations 要素、Destinations 要素内でローカルに|
+|defined|Destinations 要素、Destinations 要素内でローカルに|
 |name|FileStore|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -3171,9 +3171,9 @@ ETW イベントのファイル格納先について説明します。 オンプ
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|2 個の要素、1 個の属性|
-|定義済み|[DiagnosticsType complexType](service-fabric-service-model-schema-complex-types.md#diagnosticstype-complextype) 内でローカルに|
+|defined|[DiagnosticsType complexType](service-fabric-service-model-schema-complex-types.md#diagnosticstype-complextype) 内でローカルに|
 |name|FolderSource|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -3220,7 +3220,7 @@ ETW イベントのファイル格納先について説明します。 オンプ
 |Attribute|値|
 |---|---|
 |name|IsEnabled|
-|型|xs:string|
+|type|xs:string|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
 
@@ -3245,9 +3245,9 @@ ETW イベントのファイル格納先について説明します。 オンプ
 
 |Attribute|値|
 |---|---|
-|型|xs:string|
+|type|xs:string|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ContainerHostEntryPointType complexType](service-fabric-service-model-schema-complex-types.md#containerhostentrypointtype-complextype) 内でローカルに|
+|defined|[ContainerHostEntryPointType complexType](service-fabric-service-model-schema-complex-types.md#containerhostentrypointtype-complextype) 内でローカルに|
 |name|FromSource|
 |minOccurs|0|
 |maxOccurs|1|
@@ -3264,9 +3264,9 @@ ETW イベントのファイル格納先について説明します。 オンプ
 
 |Attribute|値|
 |---|---|
-|型|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
+|type|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
+|defined|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
 |name|GatewayResourceManagerReplicatorEndpoint|
 |minOccurs|0|
 
@@ -3283,9 +3283,9 @@ ETW イベントのファイル格納先について説明します。 オンプ
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|2 個の要素、1 個の属性|
-|定義済み|Groups 要素内でローカルに|
+|defined|Groups 要素内でローカルに|
 |name|Group|
 |maxOccurs|unbounded|
 
@@ -3342,7 +3342,7 @@ ETW イベントのファイル格納先について説明します。 オンプ
 |Attribute|値|
 |---|---|
 |name|Name|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
@@ -3367,9 +3367,9 @@ ETW イベントのファイル格納先について説明します。 オンプ
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、1 個の属性|
-|定義済み|MemberOf 要素内でローカルに|
+|defined|MemberOf 要素内でローカルに|
 |name|Group|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -3399,7 +3399,7 @@ ETW イベントのファイル格納先について説明します。 オンプ
 |Attribute|値|
 |---|---|
 |name|NameRef|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 
@@ -3409,9 +3409,9 @@ ETW イベントのファイル格納先について説明します。 オンプ
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|[SecurityPrincipalsType complexType](service-fabric-service-model-schema-complex-types.md#securityprincipalstype-complextype) 内でローカルに|
+|defined|[SecurityPrincipalsType complexType](service-fabric-service-model-schema-complex-types.md#securityprincipalstype-complextype) 内でローカルに|
 |name|グループ|
 |minOccurs|0|
 
@@ -3485,9 +3485,9 @@ ETW イベントのファイル格納先について説明します。 オンプ
 
 |Attribute|値|
 |---|---|
-|型|[ContainerHealthConfigType](service-fabric-service-model-schema-complex-types.md#containerhealthconfigtype-complextype)|
+|type|[ContainerHealthConfigType](service-fabric-service-model-schema-complex-types.md#containerhealthconfigtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ContainerHostPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#containerhostpoliciestype-complextype) 内でローカルに|
+|defined|[ContainerHostPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#containerhostpoliciestype-complextype) 内でローカルに|
 |name|HealthConfig|
 |minOccurs|0|
 |maxOccurs|1|
@@ -3509,9 +3509,9 @@ ETW イベントのファイル格納先について説明します。 オンプ
 
 |Attribute|値|
 |---|---|
-|型|[ApplicationHealthPolicyType](service-fabric-service-model-schema-complex-types.md#applicationhealthpolicytype-complextype)|
+|type|[ApplicationHealthPolicyType](service-fabric-service-model-schema-complex-types.md#applicationhealthpolicytype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ApplicationPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#applicationpoliciestype-complextype) 内でローカルに|
+|defined|[ApplicationPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#applicationpoliciestype-complextype) 内でローカルに|
 |name|HealthPolicy|
 |minOccurs|0|
 
@@ -3527,9 +3527,9 @@ ETW イベントのファイル格納先について説明します。 オンプ
 
 |Attribute|値|
 |---|---|
-|型|[InputEndpointType](service-fabric-service-model-schema-complex-types.md#inputendpointtype-complextype)|
+|type|[InputEndpointType](service-fabric-service-model-schema-complex-types.md#inputendpointtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
+|defined|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
 |name|HttpApplicationGatewayEndpoint|
 |minOccurs|0|
 
@@ -3545,9 +3545,9 @@ ETW イベントのファイル格納先について説明します。 オンプ
 
 |Attribute|値|
 |---|---|
-|型|[InputEndpointType](service-fabric-service-model-schema-complex-types.md#inputendpointtype-complextype)|
+|type|[InputEndpointType](service-fabric-service-model-schema-complex-types.md#inputendpointtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
+|defined|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
 |name|HttpGatewayEndpoint|
 |minOccurs|0|
 
@@ -3564,9 +3564,9 @@ ETW イベントのファイル格納先について説明します。 オンプ
 
 |Attribute|値|
 |---|---|
-|型|[imageType](service-fabric-service-model-schema-complex-types.md#imagetype-complextype)|
+|type|[imageType](service-fabric-service-model-schema-complex-types.md#imagetype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ImageOverridesType complexType](service-fabric-service-model-schema-complex-types.md#imageoverridestype-complextype) 内でローカルに|
+|defined|[ImageOverridesType complexType](service-fabric-service-model-schema-complex-types.md#imageoverridestype-complextype) 内でローカルに|
 |name|Image|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -3589,9 +3589,9 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 
 |Attribute|値|
 |---|---|
-|型|xs:string|
+|type|xs:string|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ContainerHostEntryPointType complexType](service-fabric-service-model-schema-complex-types.md#containerhostentrypointtype-complextype) 内でローカルに|
+|defined|[ContainerHostEntryPointType complexType](service-fabric-service-model-schema-complex-types.md#containerhostentrypointtype-complextype) 内でローカルに|
 |name|ImageName|
 
 ### <a name="xml-source"></a>XML ソース
@@ -3611,9 +3611,9 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 
 |Attribute|値|
 |---|---|
-|型|[ImageOverridesType](service-fabric-service-model-schema-complex-types.md#imageoverridestype-complextype)|
+|type|[ImageOverridesType](service-fabric-service-model-schema-complex-types.md#imageoverridestype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ContainerHostPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#containerhostpoliciestype-complextype) 内でローカルに|
+|defined|[ContainerHostPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#containerhostpoliciestype-complextype) 内でローカルに|
 |name|ImageOverrides|
 |minOccurs|0|
 |maxOccurs|1|
@@ -3634,9 +3634,9 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 
 |Attribute|値|
 |---|---|
-|型|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
+|type|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
+|defined|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
 |name|ImageStoreServiceReplicatorEndpoint|
 |minOccurs|0|
 
@@ -3652,9 +3652,9 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|6 個の要素、0 個の属性|
-|定義済み|[ClusterManifestType complexType](service-fabric-service-model-schema-complex-types.md#clustermanifesttype-complextype) 内でローカルに|
+|defined|[ClusterManifestType complexType](service-fabric-service-model-schema-complex-types.md#clustermanifesttype-complextype) 内でローカルに|
 |name|インフラストラクチャ|
 
 ### <a name="xml-source"></a>XML ソース
@@ -3783,9 +3783,9 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 
 |Attribute|値|
 |---|---|
-|型|[InfrastructureInformationType](service-fabric-service-model-schema-complex-types.md#infrastructureinformationtype-complextype)|
+|type|[InfrastructureInformationType](service-fabric-service-model-schema-complex-types.md#infrastructureinformationtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|InfrastructureInformation|
 
 ### <a name="xml-source"></a>XML ソース
@@ -3805,9 +3805,9 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、3 個の属性|
-|定義済み|[ScalingPolicyMechanismGroup グループ](service-fabric-service-model-schema-element-groups.md#scalingpolicymechanismgroup-group)内でローカルに|
+|defined|[ScalingPolicyMechanismGroup グループ](service-fabric-service-model-schema-element-groups.md#scalingpolicymechanismgroup-group)内でローカルに|
 |name|InstanceCountScalingMechanism|
 |minOccurs|0|
 |maxOccurs|1|
@@ -3847,7 +3847,7 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 |Attribute|値|
 |---|---|
 |name|MinInstanceCount|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="maxinstancecount"></a>MaxInstanceCount
@@ -3856,7 +3856,7 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 |Attribute|値|
 |---|---|
 |name|MaxInstanceCount|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="scaleincrement"></a>ScaleIncrement
@@ -3865,7 +3865,7 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 |Attribute|値|
 |---|---|
 |name|ScaleIncrement|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 
@@ -3875,9 +3875,9 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 
 |Attribute|値|
 |---|---|
-|型|[FabricKtlLoggerSettingsType](service-fabric-service-model-schema-complex-types.md#fabricktlloggersettingstype-complextype)|
+|type|[FabricKtlLoggerSettingsType](service-fabric-service-model-schema-complex-types.md#fabricktlloggersettingstype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|NodeType 要素内でローカルに|
+|defined|NodeType 要素内でローカルに|
 |name|KtlLoggerSettings|
 |minOccurs|0|
 
@@ -3898,9 +3898,9 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 
 |Attribute|値|
 |---|---|
-|型|[ContainerLabelType](service-fabric-service-model-schema-complex-types.md#containerlabeltype-complextype)|
+|type|[ContainerLabelType](service-fabric-service-model-schema-complex-types.md#containerlabeltype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ContainerHostPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#containerhostpoliciestype-complextype) 内でローカルに|
+|defined|[ContainerHostPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#containerhostpoliciestype-complextype) 内でローカルに|
 |name|Label|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -3921,9 +3921,9 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 
 |Attribute|値|
 |---|---|
-|型|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
+|type|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
+|defined|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
 |name|LeaseDriverEndpoint|
 
 ### <a name="xml-source"></a>XML ソース
@@ -3938,9 +3938,9 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、0 個の属性|
-|定義済み|Infrastructure 要素内でローカルに|
+|defined|Infrastructure 要素内でローカルに|
 |name|Linux|
 
 ### <a name="xml-source"></a>XML ソース
@@ -3964,9 +3964,9 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 
 |Attribute|値|
 |---|---|
-|型|[LoadMetricType](service-fabric-service-model-schema-complex-types.md#loadmetrictype-complextype)|
+|type|[LoadMetricType](service-fabric-service-model-schema-complex-types.md#loadmetrictype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|LoadMetrics 要素、LoadMetrics 要素、LoadMetrics 要素、LoadMetrics 要素、LoadMetrics 要素内でローカルに|
+|defined|LoadMetrics 要素、LoadMetrics 要素、LoadMetrics 要素、LoadMetrics 要素、LoadMetrics 要素内でローカルに|
 |name|LoadMetric|
 |maxOccurs|unbounded|
 
@@ -3983,9 +3983,9 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|[ServiceGroupMemberType complexType](service-fabric-service-model-schema-complex-types.md#servicegroupmembertype-complextype) 内でローカルに|
+|defined|[ServiceGroupMemberType complexType](service-fabric-service-model-schema-complex-types.md#servicegroupmembertype-complextype) 内でローカルに|
 |name|LoadMetrics|
 |minOccurs|0|
 
@@ -4011,7 +4011,7 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 |Attribute|値|
 |---|---|
 |name|LoadMetric|
-|型|[LoadMetricType](service-fabric-service-model-schema-complex-types.md#loadmetrictype-complextype)|
+|type|[LoadMetricType](service-fabric-service-model-schema-complex-types.md#loadmetrictype-complextype)|
 |maxOccurs|unbounded|
 
 <a id="LoadMetricsElementanonymouscomplexTypeComplexTypeDefinedInServiceGroupTypeMemberelement"></a>
@@ -4020,9 +4020,9 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|ServiceGroupTypeMember 要素内でローカルに|
+|defined|ServiceGroupTypeMember 要素内でローカルに|
 |name|LoadMetrics|
 |minOccurs|0|
 
@@ -4048,7 +4048,7 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 |Attribute|値|
 |---|---|
 |name|LoadMetric|
-|型|[LoadMetricType](service-fabric-service-model-schema-complex-types.md#loadmetrictype-complextype)|
+|type|[LoadMetricType](service-fabric-service-model-schema-complex-types.md#loadmetrictype-complextype)|
 |maxOccurs|unbounded|
 
 <a id="LoadMetricsElementanonymouscomplexTypeComplexTypeDefinedInServiceGroupTypeTypecomplexType"></a>
@@ -4057,9 +4057,9 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|[ServiceGroupTypeType complexType](service-fabric-service-model-schema-complex-types.md#servicegrouptypetype-complextype) 内でローカルに|
+|defined|[ServiceGroupTypeType complexType](service-fabric-service-model-schema-complex-types.md#servicegrouptypetype-complextype) 内でローカルに|
 |name|LoadMetrics|
 |minOccurs|0|
 
@@ -4085,7 +4085,7 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 |Attribute|値|
 |---|---|
 |name|LoadMetric|
-|型|[LoadMetricType](service-fabric-service-model-schema-complex-types.md#loadmetrictype-complextype)|
+|type|[LoadMetricType](service-fabric-service-model-schema-complex-types.md#loadmetrictype-complextype)|
 |maxOccurs|unbounded|
 
 <a id="LoadMetricsElementanonymouscomplexTypeComplexTypeDefinedInServiceTypeTypecomplexType"></a>
@@ -4094,9 +4094,9 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|[ServiceTypeType complexType](service-fabric-service-model-schema-complex-types.md#servicetypetype-complextype) 内でローカルに|
+|defined|[ServiceTypeType complexType](service-fabric-service-model-schema-complex-types.md#servicetypetype-complextype) 内でローカルに|
 |name|LoadMetrics|
 |minOccurs|0|
 
@@ -4122,7 +4122,7 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 |Attribute|値|
 |---|---|
 |name|LoadMetric|
-|型|[LoadMetricType](service-fabric-service-model-schema-complex-types.md#loadmetrictype-complextype)|
+|type|[LoadMetricType](service-fabric-service-model-schema-complex-types.md#loadmetrictype-complextype)|
 |maxOccurs|unbounded|
 
 <a id="LoadMetricsElementanonymouscomplexTypeComplexTypeDefinedInServiceTypecomplexType"></a>
@@ -4131,9 +4131,9 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|[ServiceType complexType](service-fabric-service-model-schema-complex-types.md#servicetype-complextype) 内でローカルに|
+|defined|[ServiceType complexType](service-fabric-service-model-schema-complex-types.md#servicetype-complextype) 内でローカルに|
 |name|LoadMetrics|
 |minOccurs|0|
 
@@ -4159,7 +4159,7 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 |Attribute|値|
 |---|---|
 |name|LoadMetric|
-|型|[LoadMetricType](service-fabric-service-model-schema-complex-types.md#loadmetrictype-complextype)|
+|type|[LoadMetricType](service-fabric-service-model-schema-complex-types.md#loadmetrictype-complextype)|
 |maxOccurs|unbounded|
 
 <a id="LocalStoreElementLocalStoreETWTypeComplexTypeDefinedInDestinationselement"></a>
@@ -4168,9 +4168,9 @@ ETW イベントのノード内の格納先について説明します。
 
 |Attribute|値|
 |---|---|
-|型|[LocalStoreETWType](service-fabric-service-model-schema-complex-types.md#localstoreetwtype-complextype)|
+|type|[LocalStoreETWType](service-fabric-service-model-schema-complex-types.md#localstoreetwtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|Destinations 要素内でローカルに|
+|defined|Destinations 要素内でローカルに|
 |name|LocalStore|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -4188,9 +4188,9 @@ ETW イベントのノード内の格納先について説明します。
 
 |Attribute|値|
 |---|---|
-|型|[LocalStoreType](service-fabric-service-model-schema-complex-types.md#localstoretype-complextype)|
+|type|[LocalStoreType](service-fabric-service-model-schema-complex-types.md#localstoretype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|Destinations 要素、Destinations 要素内でローカルに|
+|defined|Destinations 要素、Destinations 要素内でローカルに|
 |name|LocalStore|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -4208,9 +4208,9 @@ ETW イベントのノード内の格納先について説明します。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|[ApplicationPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#applicationpoliciestype-complextype) 内でローカルに|
+|defined|[ApplicationPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#applicationpoliciestype-complextype) 内でローカルに|
 |name|LogCollectionPolicies|
 |minOccurs|0|
 
@@ -4246,9 +4246,9 @@ ETW イベントのノード内の格納先について説明します。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、1 個の属性|
-|定義済み|LogCollectionPolicies 要素内でローカルに|
+|defined|LogCollectionPolicies 要素内でローカルに|
 |name|LogCollectionPolicy|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4268,7 +4268,7 @@ ETW イベントのノード内の格納先について説明します。
 |Attribute|値|
 |---|---|
 |name|Path|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 
@@ -4278,9 +4278,9 @@ ETW イベントのノード内の格納先について説明します。
 
 |Attribute|値|
 |---|---|
-|型|[ContainerLoggingDriverType](service-fabric-service-model-schema-complex-types.md#containerloggingdrivertype-complextype)|
+|type|[ContainerLoggingDriverType](service-fabric-service-model-schema-complex-types.md#containerloggingdrivertype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ContainerHostPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#containerhostpoliciestype-complextype) 内でローカルに|
+|defined|[ContainerHostPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#containerhostpoliciestype-complextype) 内でローカルに|
 |name|LogConfig|
 |minOccurs|0|
 |maxOccurs|1|
@@ -4302,9 +4302,9 @@ ETW イベントのノード内の格納先について説明します。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|NodeType 要素内でローカルに|
+|defined|NodeType 要素内でローカルに|
 |name|LogicalDirectories|
 |minOccurs|0|
 
@@ -4330,7 +4330,7 @@ ETW イベントのノード内の格納先について説明します。
 |Attribute|値|
 |---|---|
 |name|LogicalDirectory|
-|型|[LogicalDirectoryType](service-fabric-service-model-schema-complex-types.md#logicaldirectorytype-complextype)|
+|type|[LogicalDirectoryType](service-fabric-service-model-schema-complex-types.md#logicaldirectorytype-complextype)|
 |maxOccurs|unbounded|
 
 <a id="LogicalDirectoryElementLogicalDirectoryTypeComplexTypeDefinedInLogicalDirectorieselement"></a>
@@ -4339,9 +4339,9 @@ LogicalDirectoryType について説明します。
 
 |Attribute|値|
 |---|---|
-|型|[LogicalDirectoryType](service-fabric-service-model-schema-complex-types.md#logicaldirectorytype-complextype)|
+|type|[LogicalDirectoryType](service-fabric-service-model-schema-complex-types.md#logicaldirectorytype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|LogicalDirectories 要素内でローカルに|
+|defined|LogicalDirectories 要素内でローカルに|
 |name|LogicalDirectory|
 |maxOccurs|unbounded|
 
@@ -4358,9 +4358,9 @@ LogicalDirectoryType について説明します。
 
 |Attribute|値|
 |---|---|
-|型|[ManagedAssemblyType](service-fabric-service-model-schema-complex-types.md#managedassemblytype-complextype)|
+|type|[ManagedAssemblyType](service-fabric-service-model-schema-complex-types.md#managedassemblytype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[DllHostEntryPointType complexType](service-fabric-service-model-schema-complex-types.md#dllhostentrypointtype-complextype) 内でローカルに|
+|defined|[DllHostEntryPointType complexType](service-fabric-service-model-schema-complex-types.md#dllhostentrypointtype-complextype) 内でローカルに|
 |name|ManagedAssembly|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4376,9 +4376,9 @@ LogicalDirectoryType について説明します。
 
 |Attribute|値|
 |---|---|
-|型|[DataPackageType](service-fabric-service-model-schema-complex-types.md#datapackagetype-complextype)|
+|type|[DataPackageType](service-fabric-service-model-schema-complex-types.md#datapackagetype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|ManifestDataPackages 要素内でローカルに|
+|defined|ManifestDataPackages 要素内でローカルに|
 |name|ManifestDataPackage|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -4396,9 +4396,9 @@ LogicalDirectoryType について説明します。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|ETW 要素内でローカルに|
+|defined|ETW 要素内でローカルに|
 |name|ManifestDataPackages|
 |minOccurs|0|
 
@@ -4424,7 +4424,7 @@ LogicalDirectoryType について説明します。
 |Attribute|値|
 |---|---|
 |name|ManifestDataPackage|
-|型|[DataPackageType](service-fabric-service-model-schema-complex-types.md#datapackagetype-complextype)|
+|type|[DataPackageType](service-fabric-service-model-schema-complex-types.md#datapackagetype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -4433,9 +4433,9 @@ LogicalDirectoryType について説明します。
 
 |Attribute|値|
 |---|---|
-|型|[ServiceGroupMemberType](service-fabric-service-model-schema-complex-types.md#servicegroupmembertype-complextype)|
+|type|[ServiceGroupMemberType](service-fabric-service-model-schema-complex-types.md#servicegroupmembertype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|Members 要素、Members 要素内でローカルに|
+|defined|Members 要素、Members 要素内でローカルに|
 |name|メンバー|
 |minOccurs|1|
 |maxOccurs|unbounded|
@@ -4453,9 +4453,9 @@ LogicalDirectoryType について説明します。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|2 個の要素、0 個の属性|
-|定義済み|User 要素内でローカルに|
+|defined|User 要素内でローカルに|
 |name|MemberOf|
 |minOccurs|0|
 
@@ -4523,9 +4523,9 @@ LogicalDirectoryType について説明します。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|[StatefulServiceGroupType complexType](service-fabric-service-model-schema-complex-types.md#statefulservicegrouptype-complextype) 内でローカルに|
+|defined|[StatefulServiceGroupType complexType](service-fabric-service-model-schema-complex-types.md#statefulservicegrouptype-complextype) 内でローカルに|
 |name|メンバー|
 |minOccurs|1|
 |maxOccurs|1|
@@ -4552,7 +4552,7 @@ LogicalDirectoryType について説明します。
 |Attribute|値|
 |---|---|
 |name|メンバー|
-|型|[ServiceGroupMemberType](service-fabric-service-model-schema-complex-types.md#servicegroupmembertype-complextype)|
+|type|[ServiceGroupMemberType](service-fabric-service-model-schema-complex-types.md#servicegroupmembertype-complextype)|
 |minOccurs|1|
 |maxOccurs|unbounded|
 
@@ -4562,9 +4562,9 @@ LogicalDirectoryType について説明します。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|[StatelessServiceGroupType complexType](service-fabric-service-model-schema-complex-types.md#statelessservicegrouptype-complextype) 内でローカルに|
+|defined|[StatelessServiceGroupType complexType](service-fabric-service-model-schema-complex-types.md#statelessservicegrouptype-complextype) 内でローカルに|
 |name|メンバー|
 |minOccurs|1|
 |maxOccurs|1|
@@ -4591,7 +4591,7 @@ LogicalDirectoryType について説明します。
 |Attribute|値|
 |---|---|
 |name|メンバー|
-|型|[ServiceGroupMemberType](service-fabric-service-model-schema-complex-types.md#servicegroupmembertype-complextype)|
+|type|[ServiceGroupMemberType](service-fabric-service-model-schema-complex-types.md#servicegroupmembertype-complextype)|
 |minOccurs|1|
 |maxOccurs|unbounded|
 
@@ -4600,9 +4600,9 @@ LogicalDirectoryType について説明します。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|3 個の要素、0 個の属性|
-|定義済み|Group 要素内でローカルに|
+|defined|Group 要素内でローカルに|
 |name|Membership|
 |minOccurs|0|
 
@@ -4663,9 +4663,9 @@ LogicalDirectoryType について説明します。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、1 個の属性|
-|定義済み|Group 要素内でローカルに|
+|defined|Group 要素内でローカルに|
 |name|NTLMAuthenticationPolicy|
 |minOccurs|0|
 
@@ -4686,9 +4686,9 @@ LogicalDirectoryType について説明します。
 |Attribute|値|
 |---|---|
 |name|IsEnabled|
-|型|xs:boolean|
+|type|xs:boolean|
 |use|省略可能|
-|既定値 (default)|true|
+|default|true|
 
 
 <a id="NTLMAuthenticationPolicyElementanonymouscomplexTypeComplexTypeDefinedInUserelement"></a>
@@ -4696,9 +4696,9 @@ LogicalDirectoryType について説明します。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、6 個の属性|
-|定義済み|User 要素内でローカルに|
+|defined|User 要素内でローカルに|
 |name|NTLMAuthenticationPolicy|
 |minOccurs|0|
 
@@ -4735,16 +4735,16 @@ LogicalDirectoryType について説明します。
 |Attribute|値|
 |---|---|
 |name|IsEnabled|
-|型|xs:boolean|
+|type|xs:boolean|
 |use|省略可能|
-|既定値 (default)|true|
+|default|true|
 
 #### <a name="passwordsecret"></a>PasswordSecret
 
 |Attribute|値|
 |---|---|
 |name|PasswordSecret|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="passwordsecretencrypted"></a>PasswordSecretEncrypted
@@ -4752,9 +4752,9 @@ LogicalDirectoryType について説明します。
 |Attribute|値|
 |---|---|
 |name|PasswordSecretEncrypted|
-|型|xs:boolean|
+|type|xs:boolean|
 |use|省略可能|
-|既定値 (default)|false|
+|default|false|
 
 #### <a name="x509storelocation"></a>X509StoreLocation
 
@@ -4762,21 +4762,21 @@ LogicalDirectoryType について説明します。
 |---|---|
 |name|X509StoreLocation|
 |use|省略可能|
-|既定値 (default)|LocalMachine|
+|default|LocalMachine|
 
 #### <a name="x509storename"></a>X509StoreName
 
 |Attribute|値|
 |---|---|
 |name|X509StoreName|
-|既定値 (default)|My|
+|default|My|
 
 #### <a name="x509thumbprint"></a>X509Thumbprint
 
 |Attribute|値|
 |---|---|
 |name|X509Thumbprint|
-|型|xs:string|
+|type|xs:string|
 
 
 <a id="NamedPartitionElementanonymouscomplexTypeComplexTypeDefinedInPartitionDescriptionGroupgroup"></a>
@@ -4785,9 +4785,9 @@ LogicalDirectoryType について説明します。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|[PartitionDescriptionGroup グループ](service-fabric-service-model-schema-element-groups.md#partitiondescriptiongroup-group)内でローカルに|
+|defined|[PartitionDescriptionGroup グループ](service-fabric-service-model-schema-element-groups.md#partitiondescriptiongroup-group)内でローカルに|
 |name|NamedPartition|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4835,9 +4835,9 @@ LogicalDirectoryType について説明します。
 
 |Attribute|値|
 |---|---|
-|型|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
+|type|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
+|defined|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
 |name|NamingReplicatorEndpoint|
 |minOccurs|0|
 
@@ -4854,9 +4854,9 @@ LogicalDirectoryType について説明します。
 
 |Attribute|値|
 |---|---|
-|型|[ContainerNetworkConfigType](service-fabric-service-model-schema-complex-types.md#containernetworkconfigtype-complextype)|
+|type|[ContainerNetworkConfigType](service-fabric-service-model-schema-complex-types.md#containernetworkconfigtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ContainerHostPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#containerhostpoliciestype-complextype) 内でローカルに|
+|defined|[ContainerHostPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#containerhostpoliciestype-complextype) 内でローカルに|
 |name|NetworkConfig|
 |minOccurs|0|
 |maxOccurs|1|
@@ -4878,9 +4878,9 @@ LogicalDirectoryType について説明します。
 
 |Attribute|値|
 |---|---|
-|型|[NetworkPoliciesType](service-fabric-service-model-schema-complex-types.md#networkpoliciestype-complextype)|
+|type|[NetworkPoliciesType](service-fabric-service-model-schema-complex-types.md#networkpoliciestype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ServiceManifestImportPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifestimportpoliciestype-complextype)、[ServicePackageType complexType](service-fabric-service-model-schema-complex-types.md#servicepackagetype-complextype) 内でローカルに|
+|defined|[ServiceManifestImportPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifestimportpoliciestype-complextype)、[ServicePackageType complexType](service-fabric-service-model-schema-complex-types.md#servicepackagetype-complextype) 内でローカルに|
 |name|NetworkPolicies|
 |minOccurs|0|
 |maxOccurs|1|
@@ -4902,9 +4902,9 @@ Microsoft Azure Service Fabric ノードについて説明します。
 
 |Attribute|値|
 |---|---|
-|型|[FabricNodeType](service-fabric-service-model-schema-complex-types.md#fabricnodetype-complextype)|
+|type|[FabricNodeType](service-fabric-service-model-schema-complex-types.md#fabricnodetype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|NodeList 要素、NodeList 要素内でローカルに|
+|defined|NodeList 要素、NodeList 要素内でローカルに|
 |name|Node|
 |maxOccurs|unbounded|
 
@@ -4921,9 +4921,9 @@ Microsoft Azure Service Fabric ノードについて説明します。
 
 |Attribute|値|
 |---|---|
-|型|[InfrastructureNodeType](service-fabric-service-model-schema-complex-types.md#infrastructurenodetype-complextype)|
+|type|[InfrastructureNodeType](service-fabric-service-model-schema-complex-types.md#infrastructurenodetype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|NodeList 要素内でローカルに|
+|defined|NodeList 要素内でローカルに|
 |name|Node|
 |maxOccurs|unbounded|
 
@@ -4939,9 +4939,9 @@ Microsoft Azure Service Fabric ノードについて説明します。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|[InfrastructureInformationType complexType](service-fabric-service-model-schema-complex-types.md#infrastructureinformationtype-complextype) 内でローカルに|
+|defined|[InfrastructureInformationType complexType](service-fabric-service-model-schema-complex-types.md#infrastructureinformationtype-complextype) 内でローカルに|
 |name|NodeList|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4963,7 +4963,7 @@ Microsoft Azure Service Fabric ノードについて説明します。
 |Attribute|値|
 |---|---|
 |name|Node|
-|型|[InfrastructureNodeType](service-fabric-service-model-schema-complex-types.md#infrastructurenodetype-complextype)|
+|type|[InfrastructureNodeType](service-fabric-service-model-schema-complex-types.md#infrastructurenodetype-complextype)|
 |maxOccurs|unbounded|
 
 <a id="NodeListElementanonymouscomplexTypeComplexTypeDefinedInLinuxInfrastructureTypecomplexType"></a>
@@ -4971,9 +4971,9 @@ Microsoft Azure Service Fabric ノードについて説明します。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|[LinuxInfrastructureType complexType](service-fabric-service-model-schema-complex-types.md#linuxinfrastructuretype-complextype) 内でローカルに|
+|defined|[LinuxInfrastructureType complexType](service-fabric-service-model-schema-complex-types.md#linuxinfrastructuretype-complextype) 内でローカルに|
 |name|NodeList|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4995,7 +4995,7 @@ Microsoft Azure Service Fabric ノードについて説明します。
 |Attribute|値|
 |---|---|
 |name|Node|
-|型|[FabricNodeType](service-fabric-service-model-schema-complex-types.md#fabricnodetype-complextype)|
+|type|[FabricNodeType](service-fabric-service-model-schema-complex-types.md#fabricnodetype-complextype)|
 |maxOccurs|unbounded|
 
 <a id="NodeListElementanonymouscomplexTypeComplexTypeDefinedInWindowsInfrastructureTypecomplexType"></a>
@@ -5003,9 +5003,9 @@ Microsoft Azure Service Fabric ノードについて説明します。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|[WindowsInfrastructureType complexType](service-fabric-service-model-schema-complex-types.md#windowsinfrastructuretype-complextype) 内でローカルに|
+|defined|[WindowsInfrastructureType complexType](service-fabric-service-model-schema-complex-types.md#windowsinfrastructuretype-complextype) 内でローカルに|
 |name|NodeList|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5027,7 +5027,7 @@ Microsoft Azure Service Fabric ノードについて説明します。
 |Attribute|値|
 |---|---|
 |name|Node|
-|型|[FabricNodeType](service-fabric-service-model-schema-complex-types.md#fabricnodetype-complextype)|
+|type|[FabricNodeType](service-fabric-service-model-schema-complex-types.md#fabricnodetype-complextype)|
 |maxOccurs|unbounded|
 
 <a id="NodeTypeElementanonymouscomplexTypeComplexTypeDefinedInNodeTypeselement"></a>
@@ -5036,9 +5036,9 @@ Microsoft Azure Service Fabric ノードについて説明します。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|7 個の要素、1 個の属性|
-|定義済み|NodeTypes 要素内でローカルに|
+|defined|NodeTypes 要素内でローカルに|
 |name|NodeType|
 |maxOccurs|unbounded|
 
@@ -5124,7 +5124,7 @@ NodeType の名前
 |Attribute|値|
 |---|---|
 |name|Name|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
@@ -5135,7 +5135,7 @@ NodeType の名前
 |Attribute|値|
 |---|---|
 |name|エンドポイント|
-|型|[FabricEndpointsType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype)|
+|type|[FabricEndpointsType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype)|
 |minOccurs|0|
 
 #### <a name="ktlloggersettings"></a>KtlLoggerSettings
@@ -5144,7 +5144,7 @@ NodeType の名前
 |Attribute|値|
 |---|---|
 |name|KtlLoggerSettings|
-|型|[FabricKtlLoggerSettingsType](service-fabric-service-model-schema-complex-types.md#fabricktlloggersettingstype-complextype)|
+|type|[FabricKtlLoggerSettingsType](service-fabric-service-model-schema-complex-types.md#fabricktlloggersettingstype-complextype)|
 |minOccurs|0|
 
 #### <a name="logicaldirectories"></a>LogicalDirectories
@@ -5161,7 +5161,7 @@ NodeType の名前
 |Attribute|値|
 |---|---|
 |name|証明書|
-|型|[CertificatesType](service-fabric-service-model-schema-complex-types.md#certificatestype-complextype)|
+|type|[CertificatesType](service-fabric-service-model-schema-complex-types.md#certificatestype-complextype)|
 |minOccurs|0|
 
 #### <a name="placementproperties"></a>PlacementProperties
@@ -5193,9 +5193,9 @@ NodeType の名前
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|[ClusterManifestType complexType](service-fabric-service-model-schema-complex-types.md#clustermanifesttype-complextype) 内でローカルに|
+|defined|[ClusterManifestType complexType](service-fabric-service-model-schema-complex-types.md#clustermanifesttype-complextype) 内でローカルに|
 |name|NodeTypes|
 |minOccurs|1|
 
@@ -5294,9 +5294,9 @@ NodeType の名前
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|2 個の要素、0 個の属性|
-|定義済み|Infrastructure 要素内でローカルに|
+|defined|Infrastructure 要素内でローカルに|
 |name|PaaS|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5344,9 +5344,9 @@ NodeType の名前
 
 |Attribute|値|
 |---|---|
-|型|[PackageSharingPolicyType](service-fabric-service-model-schema-complex-types.md#packagesharingpolicytype-complextype)|
+|type|[PackageSharingPolicyType](service-fabric-service-model-schema-complex-types.md#packagesharingpolicytype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ServiceManifestImportPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifestimportpoliciestype-complextype) 内でローカルに|
+|defined|[ServiceManifestImportPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifestimportpoliciestype-complextype) 内でローカルに|
 |name|PackageSharingPolicy|
 |minOccurs|0|
 
@@ -5362,9 +5362,9 @@ NodeType の名前
 
 |Attribute|値|
 |---|---|
-|型|[ParameterType](service-fabric-service-model-schema-complex-types.md#parametertype-complextype)|
+|type|[ParameterType](service-fabric-service-model-schema-complex-types.md#parametertype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ParametersType complexType](service-fabric-service-model-schema-complex-types.md#parameterstype-complextype) 内でローカルに|
+|defined|[ParametersType complexType](service-fabric-service-model-schema-complex-types.md#parameterstype-complextype) 内でローカルに|
 |name|パラメーター|
 |minOccurs|1|
 |maxOccurs|unbounded|
@@ -5382,9 +5382,9 @@ NodeType の名前
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、2 個の属性|
-|定義済み|Parameters 要素内でローカルに|
+|defined|Parameters 要素内でローカルに|
 |name|パラメーター|
 |block||
 |minOccurs|0|
@@ -5433,7 +5433,7 @@ NodeType の名前
 |Attribute|値|
 |---|---|
 |name|DefaultValue|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 
@@ -5442,9 +5442,9 @@ NodeType の名前
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、0 個の属性|
-|定義済み|Parameters 要素内でローカルに|
+|defined|Parameters 要素内でローカルに|
 |name|パラメーター|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -5466,9 +5466,9 @@ NodeType の名前
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、2 個の属性|
-|定義済み|Section 要素内でローカルに|
+|defined|Section 要素内でローカルに|
 |name|パラメーター|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -5512,8 +5512,8 @@ NodeType の名前
 |Attribute|値|
 |---|---|
 |name|IsEncrypted|
-|型|xs:boolean|
-|既定値 (default)|false|
+|type|xs:boolean|
+|default|false|
 
 #### <a name="type"></a>種類
 
@@ -5525,7 +5525,7 @@ NodeType の名前
 |Attribute|値|
 |---|---|
 |name|種類|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 
@@ -5534,9 +5534,9 @@ NodeType の名前
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、5 個の属性|
-|定義済み|Section 要素内でローカルに|
+|defined|Section 要素内でローカルに|
 |name|パラメーター|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -5570,7 +5570,7 @@ NodeType の名前
 |Attribute|値|
 |---|---|
 |name|Name|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="value"></a>値
@@ -5578,7 +5578,7 @@ NodeType の名前
 |Attribute|値|
 |---|---|
 |name|値|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="mustoverride"></a>MustOverride
@@ -5587,8 +5587,8 @@ true の場合、このパラメーターの値を上位レベルの構成によ
 |Attribute|値|
 |---|---|
 |name|MustOverride|
-|型|xs:boolean|
-|既定値 (default)|false|
+|type|xs:boolean|
+|default|false|
 
 #### <a name="isencrypted"></a>IsEncrypted
 true の場合、このパラメーターの値は暗号化されます。
@@ -5596,15 +5596,15 @@ true の場合、このパラメーターの値は暗号化されます。
 |Attribute|値|
 |---|---|
 |name|IsEncrypted|
-|型|xs:boolean|
-|既定値 (default)|false|
+|type|xs:boolean|
+|default|false|
 
 #### <a name="type"></a>種類
 
 |Attribute|値|
 |---|---|
 |name|種類|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 
@@ -5614,9 +5614,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|[ParametersType](service-fabric-service-model-schema-complex-types.md#parameterstype-complextype)|
+|type|[ParametersType](service-fabric-service-model-schema-complex-types.md#parameterstype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|パラメーター|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5636,9 +5636,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|[AppInstanceDefinitionType complexType](service-fabric-service-model-schema-complex-types.md#appinstancedefinitiontype-complextype) 内でローカルに|
+|defined|[AppInstanceDefinitionType complexType](service-fabric-service-model-schema-complex-types.md#appinstancedefinitiontype-complextype) 内でローカルに|
 |name|パラメーター|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5676,9 +5676,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|[ApplicationManifestType complexType](service-fabric-service-model-schema-complex-types.md#applicationmanifesttype-complextype) 内でローカルに|
+|defined|[ApplicationManifestType complexType](service-fabric-service-model-schema-complex-types.md#applicationmanifesttype-complextype) 内でローカルに|
 |name|パラメーター|
 |minOccurs|0|
 
@@ -5736,9 +5736,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、1 個の属性|
-|定義済み|NamedPartition 要素内でローカルに|
+|defined|NamedPartition 要素内でローカルに|
 |name|Partition|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5780,9 +5780,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、4 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|PersistencePolicy|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5818,7 +5818,7 @@ true の場合、このパラメーターの値は暗号化されます。
 |Attribute|値|
 |---|---|
 |name|Name|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="mode"></a>モード
@@ -5833,7 +5833,7 @@ true の場合、このパラメーターの値は暗号化されます。
 |Attribute|値|
 |---|---|
 |name|WriteBehind|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="provider"></a>プロバイダー
@@ -5841,7 +5841,7 @@ true の場合、このパラメーターの値は暗号化されます。
 |Attribute|値|
 |---|---|
 |name|プロバイダー|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
@@ -5851,7 +5851,7 @@ true の場合、このパラメーターの値は暗号化されます。
 |Attribute|値|
 |---|---|
 |name|Properties|
-|型|[ServiceTypeExtensionPolicyPropertiesType](service-fabric-service-model-schema-complex-types.md#servicetypeextensionpolicypropertiestype-complextype)|
+|type|[ServiceTypeExtensionPolicyPropertiesType](service-fabric-service-model-schema-complex-types.md#servicetypeextensionpolicypropertiestype-complextype)|
 |minOccurs|0|
 
 <a id="PlacementConstraintsElementxs:stringComplexTypeDefinedInServiceTypecomplexTypeDefinedInServiceTypeTypecomplexTypeDefinedInServiceGroupTypeTypecomplexType"></a>
@@ -5860,9 +5860,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|xs:string|
+|type|xs:string|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ServiceType complexType](service-fabric-service-model-schema-complex-types.md#servicetype-complextype)、[ServiceTypeType complexType](service-fabric-service-model-schema-complex-types.md#servicetypetype-complextype)、[ServiceGroupTypeType complexType](service-fabric-service-model-schema-complex-types.md#servicegrouptypetype-complextype) 内でローカルに|
+|defined|[ServiceType complexType](service-fabric-service-model-schema-complex-types.md#servicetype-complextype)、[ServiceTypeType complexType](service-fabric-service-model-schema-complex-types.md#servicetypetype-complextype)、[ServiceGroupTypeType complexType](service-fabric-service-model-schema-complex-types.md#servicegrouptypetype-complextype) 内でローカルに|
 |name|PlacementConstraints|
 |minOccurs|0|
 
@@ -5883,9 +5883,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|NodeType 要素内でローカルに|
+|defined|NodeType 要素内でローカルに|
 |name|PlacementProperties|
 |minOccurs|0|
 
@@ -5911,7 +5911,7 @@ true の場合、このパラメーターの値は暗号化されます。
 |Attribute|値|
 |---|---|
 |name|プロパティ|
-|型|[KeyValuePairType](service-fabric-service-model-schema-complex-types.md#keyvaluepairtype-complextype)|
+|type|[KeyValuePairType](service-fabric-service-model-schema-complex-types.md#keyvaluepairtype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -5921,9 +5921,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|[ApplicationPoliciesType](service-fabric-service-model-schema-complex-types.md#applicationpoliciestype-complextype)|
+|type|[ApplicationPoliciesType](service-fabric-service-model-schema-complex-types.md#applicationpoliciestype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ApplicationManifestType complexType](service-fabric-service-model-schema-complex-types.md#applicationmanifesttype-complextype)、[EnvironmentType complexType](service-fabric-service-model-schema-complex-types.md#environmenttype-complextype) 内でローカルに|
+|defined|[ApplicationManifestType complexType](service-fabric-service-model-schema-complex-types.md#applicationmanifesttype-complextype)、[EnvironmentType complexType](service-fabric-service-model-schema-complex-types.md#environmenttype-complextype) 内でローカルに|
 |name|ポリシー|
 |minOccurs|0|
 
@@ -5940,9 +5940,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|[ServiceManifestImportPoliciesType](service-fabric-service-model-schema-complex-types.md#servicemanifestimportpoliciestype-complextype)|
+|type|[ServiceManifestImportPoliciesType](service-fabric-service-model-schema-complex-types.md#servicemanifestimportpoliciestype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|ServiceManifestImport 要素内でローカルに|
+|defined|ServiceManifestImport 要素内でローカルに|
 |name|ポリシー|
 |minOccurs|0|
 
@@ -5959,9 +5959,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|[PortBindingType](service-fabric-service-model-schema-complex-types.md#portbindingtype-complextype)|
+|type|[PortBindingType](service-fabric-service-model-schema-complex-types.md#portbindingtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ServicePackageContainerPolicyType complexType](service-fabric-service-model-schema-complex-types.md#servicepackagecontainerpolicytype-complextype)、[ContainerHostPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#containerhostpoliciestype-complextype) 内でローカルに|
+|defined|[ServicePackageContainerPolicyType complexType](service-fabric-service-model-schema-complex-types.md#servicepackagecontainerpolicytype-complextype)、[ContainerHostPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#containerhostpoliciestype-complextype) 内でローカルに|
 |name|PortBinding|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -5983,9 +5983,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|[SecurityPrincipalsType](service-fabric-service-model-schema-complex-types.md#securityprincipalstype-complextype)|
+|type|[SecurityPrincipalsType](service-fabric-service-model-schema-complex-types.md#securityprincipalstype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ApplicationManifestType complexType](service-fabric-service-model-schema-complex-types.md#applicationmanifesttype-complextype)、[EnvironmentType complexType](service-fabric-service-model-schema-complex-types.md#environmenttype-complextype) 内でローカルに|
+|defined|[ApplicationManifestType complexType](service-fabric-service-model-schema-complex-types.md#applicationmanifesttype-complextype)、[EnvironmentType complexType](service-fabric-service-model-schema-complex-types.md#environmenttype-complextype) 内でローカルに|
 |name|プリンシパル|
 |minOccurs|0|
 
@@ -6002,9 +6002,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|xs:string|
+|type|xs:string|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ExeHostEntryPointType complexType](service-fabric-service-model-schema-complex-types.md#exehostentrypointtype-complextype) 内でローカルに|
+|defined|[ExeHostEntryPointType complexType](service-fabric-service-model-schema-complex-types.md#exehostentrypointtype-complextype) 内でローカルに|
 |name|プログラム|
 
 ### <a name="xml-source"></a>XML ソース
@@ -6023,9 +6023,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|[ServiceTypeExtensionPolicyPropertiesType](service-fabric-service-model-schema-complex-types.md#servicetypeextensionpolicypropertiestype-complextype)|
+|type|[ServiceTypeExtensionPolicyPropertiesType](service-fabric-service-model-schema-complex-types.md#servicetypeextensionpolicypropertiestype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|PersistencePolicy 要素、EvictionPolicy 要素内でローカルに|
+|defined|PersistencePolicy 要素、EvictionPolicy 要素内でローカルに|
 |name|Properties|
 |minOccurs|0|
 
@@ -6041,9 +6041,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|[KeyValuePairType](service-fabric-service-model-schema-complex-types.md#keyvaluepairtype-complextype)|
+|type|[KeyValuePairType](service-fabric-service-model-schema-complex-types.md#keyvaluepairtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|PlacementProperties 要素内でローカルに|
+|defined|PlacementProperties 要素内でローカルに|
 |name|プロパティ|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -6060,9 +6060,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、2 個の属性|
-|定義済み|[ServiceTypeExtensionPolicyPropertiesType complexType](service-fabric-service-model-schema-complex-types.md#servicetypeextensionpolicypropertiestype-complextype) 内でローカルに|
+|defined|[ServiceTypeExtensionPolicyPropertiesType complexType](service-fabric-service-model-schema-complex-types.md#servicetypeextensionpolicypropertiestype-complextype) 内でローカルに|
 |name|プロパティ|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -6085,7 +6085,7 @@ true の場合、このパラメーターの値は暗号化されます。
 |Attribute|値|
 |---|---|
 |name|Name|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="value"></a>値
@@ -6093,7 +6093,7 @@ true の場合、このパラメーターの値は暗号化されます。
 |Attribute|値|
 |---|---|
 |name|値|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 
@@ -6102,9 +6102,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、1 個の属性|
-|定義済み|ProviderGuids 要素内でローカルに|
+|defined|ProviderGuids 要素内でローカルに|
 |name|ProviderGuid|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -6141,9 +6141,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|ETW 要素内でローカルに|
+|defined|ETW 要素内でローカルに|
 |name|ProviderGuids|
 |minOccurs|0|
 
@@ -6187,9 +6187,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
+|type|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
+|defined|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
 |name|RepairManagerReplicatorEndpoint|
 |minOccurs|0|
 
@@ -6206,9 +6206,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|[RepositoryCredentialsType](service-fabric-service-model-schema-complex-types.md#repositorycredentialstype-complextype)|
+|type|[RepositoryCredentialsType](service-fabric-service-model-schema-complex-types.md#repositorycredentialstype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ContainerHostPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#containerhostpoliciestype-complextype) 内でローカルに|
+|defined|[ContainerHostPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#containerhostpoliciestype-complextype) 内でローカルに|
 |name|RepositoryCredentials|
 |minOccurs|0|
 |maxOccurs|1|
@@ -6230,9 +6230,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|[ResourceGovernancePolicyType](service-fabric-service-model-schema-complex-types.md#resourcegovernancepolicytype-complextype)|
+|type|[ResourceGovernancePolicyType](service-fabric-service-model-schema-complex-types.md#resourcegovernancepolicytype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ServiceManifestImportPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifestimportpoliciestype-complextype)、DigestedCodePackage、DigestedEndpoint 要素内でローカルに|
+|defined|[ServiceManifestImportPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifestimportpoliciestype-complextype)、DigestedCodePackage、DigestedEndpoint 要素内でローカルに|
 |name|ResourceGovernancePolicy|
 |minOccurs|0|
 
@@ -6253,9 +6253,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|[ResourceOverridesType](service-fabric-service-model-schema-complex-types.md#resourceoverridestype-complextype)|
+|type|[ResourceOverridesType](service-fabric-service-model-schema-complex-types.md#resourceoverridestype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|ServiceManifestImport 要素内でローカルに|
+|defined|ServiceManifestImport 要素内でローカルに|
 |name|ResourceOverrides|
 |minOccurs|0|
 
@@ -6272,9 +6272,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|[ResourcesType](service-fabric-service-model-schema-complex-types.md#resourcestype-complextype)|
+|type|[ResourcesType](service-fabric-service-model-schema-complex-types.md#resourcestype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ServiceManifestType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifesttype-complextype) 内でローカルに|
+|defined|[ServiceManifestType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifesttype-complextype) 内でローカルに|
 |name|リソース|
 |minOccurs|0|
 
@@ -6290,9 +6290,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|[AzureRoleType](service-fabric-service-model-schema-complex-types.md#azureroletype-complextype)|
+|type|[AzureRoleType](service-fabric-service-model-schema-complex-types.md#azureroletype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|Roles 要素内でローカルに|
+|defined|Roles 要素内でローカルに|
 |name|Role|
 |maxOccurs|unbounded|
 
@@ -6308,9 +6308,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|[BlackbirdRoleType](service-fabric-service-model-schema-complex-types.md#blackbirdroletype-complextype)|
+|type|[BlackbirdRoleType](service-fabric-service-model-schema-complex-types.md#blackbirdroletype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|Roles 要素内でローカルに|
+|defined|Roles 要素内でローカルに|
 |name|Role|
 |minOccurs|1|
 |maxOccurs|unbounded|
@@ -6327,9 +6327,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|[PaaSRoleType](service-fabric-service-model-schema-complex-types.md#paasroletype-complextype)|
+|type|[PaaSRoleType](service-fabric-service-model-schema-complex-types.md#paasroletype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|Roles 要素内でローカルに|
+|defined|Roles 要素内でローカルに|
 |name|Role|
 |maxOccurs|unbounded|
 
@@ -6345,9 +6345,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|Blackbird 要素内でローカルに|
+|defined|Blackbird 要素内でローカルに|
 |name|ロール|
 
 ### <a name="xml-source"></a>XML ソース
@@ -6369,7 +6369,7 @@ true の場合、このパラメーターの値は暗号化されます。
 |Attribute|値|
 |---|---|
 |name|Role|
-|型|[BlackbirdRoleType](service-fabric-service-model-schema-complex-types.md#blackbirdroletype-complextype)|
+|type|[BlackbirdRoleType](service-fabric-service-model-schema-complex-types.md#blackbirdroletype-complextype)|
 |minOccurs|1|
 |maxOccurs|unbounded|
 
@@ -6378,9 +6378,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|PaaS 要素内でローカルに|
+|defined|PaaS 要素内でローカルに|
 |name|ロール|
 
 ### <a name="xml-source"></a>XML ソース
@@ -6402,7 +6402,7 @@ true の場合、このパラメーターの値は暗号化されます。
 |Attribute|値|
 |---|---|
 |name|Role|
-|型|[PaaSRoleType](service-fabric-service-model-schema-complex-types.md#paasroletype-complextype)|
+|type|[PaaSRoleType](service-fabric-service-model-schema-complex-types.md#paasroletype-complextype)|
 |maxOccurs|unbounded|
 
 <a id="RolesElementanonymouscomplexTypeComplexTypeDefinedInWindowsAzureelement"></a>
@@ -6410,9 +6410,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|WindowsAzure 要素内でローカルに|
+|defined|WindowsAzure 要素内でローカルに|
 |name|ロール|
 
 ### <a name="xml-source"></a>XML ソース
@@ -6434,7 +6434,7 @@ true の場合、このパラメーターの値は暗号化されます。
 |Attribute|値|
 |---|---|
 |name|Role|
-|型|[AzureRoleType](service-fabric-service-model-schema-complex-types.md#azureroletype-complextype)|
+|type|[AzureRoleType](service-fabric-service-model-schema-complex-types.md#azureroletype-complextype)|
 |maxOccurs|unbounded|
 
 <a id="RunAsPolicyElementRunAsPolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInDigestedCodePackageelement"></a>
@@ -6443,9 +6443,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|[RunAsPolicyType](service-fabric-service-model-schema-complex-types.md#runaspolicytype-complextype)|
+|type|[RunAsPolicyType](service-fabric-service-model-schema-complex-types.md#runaspolicytype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ServiceManifestImportPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifestimportpoliciestype-complextype)、DigestedCodePackage 要素内でローカルに|
+|defined|[ServiceManifestImportPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifestimportpoliciestype-complextype)、DigestedCodePackage 要素内でローカルに|
 |name|RunAsPolicy|
 |minOccurs|0|
 
@@ -6461,9 +6461,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、1 個の属性|
-|定義済み|ExeHost 要素内でローカルに|
+|defined|ExeHost 要素内でローカルに|
 |name|RunFrequency|
 |minOccurs|0|
 
@@ -6500,9 +6500,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|[ScalingPolicyType](service-fabric-service-model-schema-complex-types.md#scalingpolicytype-complextype)|
+|type|[ScalingPolicyType](service-fabric-service-model-schema-complex-types.md#scalingpolicytype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|ServiceScalingPolicies 要素内でローカルに|
+|defined|ServiceScalingPolicies 要素内でローカルに|
 |name|ScalingPolicy|
 |maxOccurs|unbounded|
 
@@ -6519,9 +6519,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|[FabricCertificateType](service-fabric-service-model-schema-complex-types.md#fabriccertificatetype-complextype)|
+|type|[FabricCertificateType](service-fabric-service-model-schema-complex-types.md#fabriccertificatetype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|Certificates 要素、Certificates 要素、DigestedCertificates 要素内でローカルに|
+|defined|Certificates 要素、Certificates 要素、DigestedCertificates 要素内でローカルに|
 |name|SecretsCertificate|
 |minOccurs|0|
 
@@ -6538,9 +6538,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、1 個の属性|
-|定義済み|[SettingsOverridesType complexType](service-fabric-service-model-schema-complex-types.md#settingsoverridestype-complextype) 内でローカルに|
+|defined|[SettingsOverridesType complexType](service-fabric-service-model-schema-complex-types.md#settingsoverridestype-complextype) 内でローカルに|
 |name|Section|
 |maxOccurs|unbounded|
 
@@ -6619,9 +6619,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、1 個の属性|
-|定義済み|[SettingsType complexType](service-fabric-service-model-schema-complex-types.md#settingstype-complextype) 内でローカルに|
+|defined|[SettingsType complexType](service-fabric-service-model-schema-complex-types.md#settingstype-complextype) 内でローカルに|
 |name|Section|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -6665,7 +6665,7 @@ true の場合、このパラメーターの値は暗号化されます。
 |Attribute|値|
 |---|---|
 |name|Name|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
@@ -6684,9 +6684,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|[ApplicationPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#applicationpoliciestype-complextype) 内でローカルに|
+|defined|[ApplicationPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#applicationpoliciestype-complextype) 内でローカルに|
 |name|SecurityAccessPolicies|
 |minOccurs|0|
 
@@ -6712,7 +6712,7 @@ true の場合、このパラメーターの値は暗号化されます。
 |Attribute|値|
 |---|---|
 |name|SecurityAccessPolicy|
-|型|[SecurityAccessPolicyType](service-fabric-service-model-schema-complex-types.md#securityaccesspolicytype-complextype)|
+|type|[SecurityAccessPolicyType](service-fabric-service-model-schema-complex-types.md#securityaccesspolicytype-complextype)|
 
 <a id="SecurityAccessPolicyElementSecurityAccessPolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInSecurityAccessPolicieselementDefinedInDigestedEndpointelement"></a>
 ## <a name="securityaccesspolicy-element"></a>SecurityAccessPolicy 要素
@@ -6720,9 +6720,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|[SecurityAccessPolicyType](service-fabric-service-model-schema-complex-types.md#securityaccesspolicytype-complextype)|
+|type|[SecurityAccessPolicyType](service-fabric-service-model-schema-complex-types.md#securityaccesspolicytype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ServiceManifestImportPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifestimportpoliciestype-complextype)、SecurityAccessPolicies、DigestedEndpoint 要素内でローカルに|
+|defined|[ServiceManifestImportPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifestimportpoliciestype-complextype)、SecurityAccessPolicies、DigestedEndpoint 要素内でローカルに|
 |name|SecurityAccessPolicy|
 |minOccurs|0|
 
@@ -6739,9 +6739,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|[SecurityOptionsType](service-fabric-service-model-schema-complex-types.md#securityoptionstype-complextype)|
+|type|[SecurityOptionsType](service-fabric-service-model-schema-complex-types.md#securityoptionstype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ContainerHostPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#containerhostpoliciestype-complextype) 内でローカルに|
+|defined|[ContainerHostPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#containerhostpoliciestype-complextype) 内でローカルに|
 |name|SecurityOption|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -6763,9 +6763,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|[FabricCertificateType](service-fabric-service-model-schema-complex-types.md#fabriccertificatetype-complextype)|
+|type|[FabricCertificateType](service-fabric-service-model-schema-complex-types.md#fabriccertificatetype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[CertificatesType complexType](service-fabric-service-model-schema-complex-types.md#certificatestype-complextype) 内でローカルに|
+|defined|[CertificatesType complexType](service-fabric-service-model-schema-complex-types.md#certificatestype-complextype) 内でローカルに|
 |name|ServerCertificate|
 |minOccurs|0|
 
@@ -6786,9 +6786,9 @@ true の場合、このパラメーターの値は暗号化されます。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|2 個の要素、4 個の属性|
-|定義済み|[DefaultServicesType complexType](service-fabric-service-model-schema-complex-types.md#defaultservicestype-complextype) 内でローカルに|
+|defined|[DefaultServicesType complexType](service-fabric-service-model-schema-complex-types.md#defaultservicestype-complextype) 内でローカルに|
 |name|サービス|
 
 ### <a name="xml-source"></a>XML ソース
@@ -6835,7 +6835,7 @@ true の場合、このパラメーターの値は暗号化されます。
 |Attribute|値|
 |---|---|
 |name|Name|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="generatedidref"></a>GeneratedIdRef
@@ -6844,7 +6844,7 @@ Visual Studio ツールで使用される自動生成 ID への参照。
 |Attribute|値|
 |---|---|
 |name|GeneratedIdRef|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 #### <a name="servicednsname"></a>ServiceDnsName
@@ -6853,7 +6853,7 @@ Visual Studio ツールで使用される自動生成 ID への参照。
 |Attribute|値|
 |---|---|
 |name|ServiceDnsName|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 #### <a name="servicepackageactivationmode"></a>ServicePackageActivationMode
@@ -6862,9 +6862,9 @@ Visual Studio ツールで使用される自動生成 ID への参照。
 |Attribute|値|
 |---|---|
 |name|ServicePackageActivationMode|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
-|既定値 (default)|SharedProcess|
+|default|SharedProcess|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
 
@@ -6873,23 +6873,23 @@ Visual Studio ツールで使用される自動生成 ID への参照。
 |Attribute|値|
 |---|---|
 |name|StatelessService|
-|型|[StatelessServiceType](service-fabric-service-model-schema-complex-types.md#statelessservicetype-complextype)|
+|type|[StatelessServiceType](service-fabric-service-model-schema-complex-types.md#statelessservicetype-complextype)|
 
 #### <a name="statefulservice"></a>StatefulService
 
 |Attribute|値|
 |---|---|
 |name|StatefulService|
-|型|[StatefulServiceType](service-fabric-service-model-schema-complex-types.md#statefulservicetype-complextype)|
+|type|[StatefulServiceType](service-fabric-service-model-schema-complex-types.md#statefulservicetype-complextype)|
 
 <a id="ServiceConnectionEndpointElementInternalEndpointTypeComplexTypeDefinedInFabricEndpointsTypecomplexType"></a>
 ## <a name="serviceconnectionendpoint-element"></a>ServiceConnectionEndpoint 要素
 
 |Attribute|値|
 |---|---|
-|型|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
+|type|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
+|defined|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
 |name|ServiceConnectionEndpoint|
 |minOccurs|0|
 
@@ -6906,9 +6906,9 @@ Visual Studio ツールで使用される自動生成 ID への参照。
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、2 個の属性|
-|定義済み|ServiceCorrelations 要素内でローカルに|
+|defined|ServiceCorrelations 要素内でローカルに|
 |name|ServiceCorrelation|
 |maxOccurs|unbounded|
 
@@ -6971,9 +6971,9 @@ NonAlignedAffinity では、異なるサービスのレプリカまたはイン�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|[ServiceType complexType](service-fabric-service-model-schema-complex-types.md#servicetype-complextype) 内でローカルに|
+|defined|[ServiceType complexType](service-fabric-service-model-schema-complex-types.md#servicetype-complextype) 内でローカルに|
 |name|ServiceCorrelations|
 |minOccurs|0|
 
@@ -7036,9 +7036,9 @@ NonAlignedAffinity では、異なるサービスのレプリカまたはイン�
 
 |Attribute|値|
 |---|---|
-|型|[ServiceFabricRuntimeAccessPolicyType](service-fabric-service-model-schema-complex-types.md#servicefabricruntimeaccesspolicytype-complextype)|
+|type|[ServiceFabricRuntimeAccessPolicyType](service-fabric-service-model-schema-complex-types.md#servicefabricruntimeaccesspolicytype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ServiceManifestImportPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifestimportpoliciestype-complextype)、[ServicePackageType complexType](service-fabric-service-model-schema-complex-types.md#servicepackagetype-complextype) 内でローカルに|
+|defined|[ServiceManifestImportPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifestimportpoliciestype-complextype)、[ServicePackageType complexType](service-fabric-service-model-schema-complex-types.md#servicepackagetype-complextype) 内でローカルに|
 |name|ServiceFabricRuntimeAccessPolicy|
 |minOccurs|0|
 |maxOccurs|1|
@@ -7060,9 +7060,9 @@ NonAlignedAffinity では、異なるサービスのレプリカまたはイン�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|2 個の要素、2 個の属性|
-|定義済み|[DefaultServicesType complexType](service-fabric-service-model-schema-complex-types.md#defaultservicestype-complextype) 内でローカルに|
+|defined|[DefaultServicesType complexType](service-fabric-service-model-schema-complex-types.md#defaultservicestype-complextype) 内でローカルに|
 |name|ServiceGroup|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7099,7 +7099,7 @@ NonAlignedAffinity では、異なるサービスのレプリカまたはイン�
 |Attribute|値|
 |---|---|
 |name|Name|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="servicepackageactivationmode"></a>ServicePackageActivationMode
@@ -7108,9 +7108,9 @@ NonAlignedAffinity では、異なるサービスのレプリカまたはイン�
 |Attribute|値|
 |---|---|
 |name|ServicePackageActivationMode|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
-|既定値 (default)|SharedProcess|
+|default|SharedProcess|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
 
@@ -7119,14 +7119,14 @@ NonAlignedAffinity では、異なるサービスのレプリカまたはイン�
 |Attribute|値|
 |---|---|
 |name|StatelessServiceGroup|
-|型|[StatelessServiceGroupType](service-fabric-service-model-schema-complex-types.md#statelessservicegrouptype-complextype)|
+|type|[StatelessServiceGroupType](service-fabric-service-model-schema-complex-types.md#statelessservicegrouptype-complextype)|
 
 #### <a name="statefulservicegroup"></a>StatefulServiceGroup
 
 |Attribute|値|
 |---|---|
 |name|StatefulServiceGroup|
-|型|[StatefulServiceGroupType](service-fabric-service-model-schema-complex-types.md#statefulservicegrouptype-complextype)|
+|type|[StatefulServiceGroupType](service-fabric-service-model-schema-complex-types.md#statefulservicegrouptype-complextype)|
 
 <a id="ServiceGroupMembersElementanonymouscomplexTypeComplexTypeDefinedInServiceGroupTypeTypecomplexType"></a>
 ## <a name="servicegroupmembers-element"></a>ServiceGroupMembers 要素
@@ -7134,9 +7134,9 @@ NonAlignedAffinity では、異なるサービスのレプリカまたはイン�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|[ServiceGroupTypeType complexType](service-fabric-service-model-schema-complex-types.md#servicegrouptypetype-complextype) 内でローカルに|
+|defined|[ServiceGroupTypeType complexType](service-fabric-service-model-schema-complex-types.md#servicegrouptypetype-complextype) 内でローカルに|
 |name|ServiceGroupMembers|
 |minOccurs|0|
 |maxOccurs|1|
@@ -7172,9 +7172,9 @@ NonAlignedAffinity では、異なるサービスのレプリカまたはイン�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、1 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ServiceGroupTypeMember|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7237,9 +7237,9 @@ Microsoft Azure Service Fabric ServiceGroup メンバーのユーザー定義の
 
 |Attribute|値|
 |---|---|
-|型|[ServiceManifestType](service-fabric-service-model-schema-complex-types.md#servicemanifesttype-complextype)|
+|type|[ServiceManifestType](service-fabric-service-model-schema-complex-types.md#servicemanifesttype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ServiceManifest|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7255,9 +7255,9 @@ Microsoft Azure Service Fabric ServiceGroup メンバーのユーザー定義の
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|5 個の要素、0 個の属性|
-|定義済み|[ApplicationManifestType complexType](service-fabric-service-model-schema-complex-types.md#applicationmanifesttype-complextype) 内でローカルに|
+|defined|[ApplicationManifestType complexType](service-fabric-service-model-schema-complex-types.md#applicationmanifesttype-complextype) 内でローカルに|
 |name|ServiceManifestImport|
 |maxOccurs|unbounded|
 
@@ -7296,7 +7296,7 @@ Microsoft Azure Service Fabric ServiceGroup メンバーのユーザー定義の
 |Attribute|値|
 |---|---|
 |name|ServiceManifestRef|
-|型|[ServiceManifestRefType](service-fabric-service-model-schema-complex-types.md#servicemanifestreftype-complextype)|
+|type|[ServiceManifestRefType](service-fabric-service-model-schema-complex-types.md#servicemanifestreftype-complextype)|
 
 #### <a name="configoverrides"></a>ConfigOverrides
 インポートされたサービス マニフェストの構成のオーバーライドについて説明します。 構成のオーバーライドによって、特定のアプリケーションの種類で使用される場合にのみ、サービス マニフェストの構成をオーバーライドすることで、複数のアプリケーションの種類で同じサービス マニフェストを柔軟に再利用することができます。 ConfigPackage フォルダーの Settings.xml を使用して既定の構成が定義されている限り、構成のオーバーライドで、サービス マニフェストに含まれる任意の既定の構成を変更できます。 
@@ -7311,7 +7311,7 @@ Microsoft Azure Service Fabric ServiceGroup メンバーのユーザー定義の
 |Attribute|値|
 |---|---|
 |name|ResourceOverrides|
-|型|[ResourceOverridesType](service-fabric-service-model-schema-complex-types.md#resourceoverridestype-complextype)|
+|type|[ResourceOverridesType](service-fabric-service-model-schema-complex-types.md#resourceoverridestype-complextype)|
 |minOccurs|0|
 
 #### <a name="environmentoverrides"></a>EnvironmentOverrides
@@ -7319,7 +7319,7 @@ Microsoft Azure Service Fabric ServiceGroup メンバーのユーザー定義の
 |Attribute|値|
 |---|---|
 |name|EnvironmentOverrides|
-|型|[EnvironmentOverridesType](service-fabric-service-model-schema-complex-types.md#environmentoverridestype-complextype)|
+|type|[EnvironmentOverridesType](service-fabric-service-model-schema-complex-types.md#environmentoverridestype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -7328,7 +7328,7 @@ Microsoft Azure Service Fabric ServiceGroup メンバーのユーザー定義の
 |Attribute|値|
 |---|---|
 |name|ポリシー|
-|型|[ServiceManifestImportPoliciesType](service-fabric-service-model-schema-complex-types.md#servicemanifestimportpoliciestype-complextype)|
+|type|[ServiceManifestImportPoliciesType](service-fabric-service-model-schema-complex-types.md#servicemanifestimportpoliciestype-complextype)|
 |minOccurs|0|
 
 <a id="ServiceManifestRefElementServiceManifestRefTypeComplexTypeDefinedInServiceManifestImportelement"></a>
@@ -7337,9 +7337,9 @@ Microsoft Azure Service Fabric ServiceGroup メンバーのユーザー定義の
 
 |Attribute|値|
 |---|---|
-|型|[ServiceManifestRefType](service-fabric-service-model-schema-complex-types.md#servicemanifestreftype-complextype)|
+|type|[ServiceManifestRefType](service-fabric-service-model-schema-complex-types.md#servicemanifestreftype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|ServiceManifestImport 要素内でローカルに|
+|defined|ServiceManifestImport 要素内でローカルに|
 |name|ServiceManifestRef|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7355,9 +7355,9 @@ ServicePackage は、配置とアクティブ化のバージョン付き単位�
 
 |Attribute|値|
 |---|---|
-|型|[ServicePackageType](service-fabric-service-model-schema-complex-types.md#servicepackagetype-complextype)|
+|type|[ServicePackageType](service-fabric-service-model-schema-complex-types.md#servicepackagetype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ServicePackage|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7376,9 +7376,9 @@ ServicePackage は、配置とアクティブ化のバージョン付き単位�
 
 |Attribute|値|
 |---|---|
-|型|[ServicePackageContainerPolicyType](service-fabric-service-model-schema-complex-types.md#servicepackagecontainerpolicytype-complextype)|
+|type|[ServicePackageContainerPolicyType](service-fabric-service-model-schema-complex-types.md#servicepackagecontainerpolicytype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ServiceManifestImportPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifestimportpoliciestype-complextype)、[ServicePackageType complexType](service-fabric-service-model-schema-complex-types.md#servicepackagetype-complextype) 内でローカルに|
+|defined|[ServiceManifestImportPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifestimportpoliciestype-complextype)、[ServicePackageType complexType](service-fabric-service-model-schema-complex-types.md#servicepackagetype-complextype) 内でローカルに|
 |name|ServicePackageContainerPolicy|
 |minOccurs|0|
 |maxOccurs|1|
@@ -7395,9 +7395,9 @@ ServicePackage は、配置とアクティブ化のバージョン付き単位�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、1 個の属性|
-|定義済み|[ApplicationInstanceType complexType](service-fabric-service-model-schema-complex-types.md#applicationinstancetype-complextype) 内でローカルに|
+|defined|[ApplicationInstanceType complexType](service-fabric-service-model-schema-complex-types.md#applicationinstancetype-complextype) 内でローカルに|
 |name|ServicePackageRef|
 |maxOccurs|unbounded|
 
@@ -7428,9 +7428,9 @@ ServicePackage は、配置とアクティブ化のバージョン付き単位�
 
 |Attribute|値|
 |---|---|
-|型|[ServicePackageResourceGovernancePolicyType](service-fabric-service-model-schema-complex-types.md#servicepackageresourcegovernancepolicytype-complextype)|
+|type|[ServicePackageResourceGovernancePolicyType](service-fabric-service-model-schema-complex-types.md#servicepackageresourcegovernancepolicytype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ServiceManifestImportPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifestimportpoliciestype-complextype)、[ServicePackageType complexType](service-fabric-service-model-schema-complex-types.md#servicepackagetype-complextype) 内でローカルに|
+|defined|[ServiceManifestImportPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifestimportpoliciestype-complextype)、[ServicePackageType complexType](service-fabric-service-model-schema-complex-types.md#servicepackagetype-complextype) 内でローカルに|
 |name|ServicePackageResourceGovernancePolicy|
 |minOccurs|0|
 |maxOccurs|1|
@@ -7452,9 +7452,9 @@ ServicePackage は、配置とアクティブ化のバージョン付き単位�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|[ServiceTypeType complexType](service-fabric-service-model-schema-complex-types.md#servicetypetype-complextype) 内でローカルに|
+|defined|[ServiceTypeType complexType](service-fabric-service-model-schema-complex-types.md#servicetypetype-complextype) 内でローカルに|
 |name|ServicePlacementPolicies|
 |minOccurs|0|
 
@@ -7519,9 +7519,9 @@ ServicePackage は、配置とアクティブ化のバージョン付き単位�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|[ServiceType complexType](service-fabric-service-model-schema-complex-types.md#servicetype-complextype) 内でローカルに|
+|defined|[ServiceType complexType](service-fabric-service-model-schema-complex-types.md#servicetype-complextype) 内でローカルに|
 |name|ServicePlacementPolicies|
 |minOccurs|0|
 
@@ -7586,9 +7586,9 @@ ServicePackage は、配置とアクティブ化のバージョン付き単位�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、2 個の属性|
-|定義済み|ServicePlacementPolicies 要素内でローカルに|
+|defined|ServicePlacementPolicies 要素内でローカルに|
 |name|ServicePlacementPolicy|
 |maxOccurs|unbounded|
 
@@ -7652,9 +7652,9 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、2 個の属性|
-|定義済み|ServicePlacementPolicies 要素内でローカルに|
+|defined|ServicePlacementPolicies 要素内でローカルに|
 |name|ServicePlacementPolicy|
 |maxOccurs|unbounded|
 
@@ -7718,9 +7718,9 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|[ServiceType complexType](service-fabric-service-model-schema-complex-types.md#servicetype-complextype) 内でローカルに|
+|defined|[ServiceType complexType](service-fabric-service-model-schema-complex-types.md#servicetype-complextype) 内でローカルに|
 |name|ServiceScalingPolicies|
 |minOccurs|0|
 
@@ -7746,7 +7746,7 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 |Attribute|値|
 |---|---|
 |name|ScalingPolicy|
-|型|[ScalingPolicyType](service-fabric-service-model-schema-complex-types.md#scalingpolicytype-complextype)|
+|type|[ScalingPolicyType](service-fabric-service-model-schema-complex-types.md#scalingpolicytype-complextype)|
 |maxOccurs|unbounded|
 
 <a id="ServiceTemplatesElementServiceTemplatesTypeComplexTypeDefinedInApplicationManifestTypecomplexTypeDefinedInApplicationInstanceTypecomplexType"></a>
@@ -7755,9 +7755,9 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 
 |Attribute|値|
 |---|---|
-|型|[ServiceTemplatesType](service-fabric-service-model-schema-complex-types.md#servicetemplatestype-complextype)|
+|type|[ServiceTemplatesType](service-fabric-service-model-schema-complex-types.md#servicetemplatestype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ApplicationManifestType complexType](service-fabric-service-model-schema-complex-types.md#applicationmanifesttype-complextype)、[ApplicationInstanceType complexType](service-fabric-service-model-schema-complex-types.md#applicationinstancetype-complextype) 内でローカルに|
+|defined|[ApplicationManifestType complexType](service-fabric-service-model-schema-complex-types.md#applicationmanifesttype-complextype)、[ApplicationInstanceType complexType](service-fabric-service-model-schema-complex-types.md#applicationinstancetype-complextype) 内でローカルに|
 |name|ServiceTemplates|
 |minOccurs|0|
 
@@ -7778,9 +7778,9 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ApplicationHealthPolicyType complexType](service-fabric-service-model-schema-complex-types.md#applicationhealthpolicytype-complextype) 内でローカルに|
+|defined|[ApplicationHealthPolicyType complexType](service-fabric-service-model-schema-complex-types.md#applicationhealthpolicytype-complextype) 内でローカルに|
 |name|ServiceTypeHealthPolicy|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -7813,9 +7813,9 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 
 |Attribute|値|
 |---|---|
-|型|[ServiceAndServiceGroupTypesType](service-fabric-service-model-schema-complex-types.md#serviceandservicegrouptypestype-complextype)|
+|type|[ServiceAndServiceGroupTypesType](service-fabric-service-model-schema-complex-types.md#serviceandservicegrouptypestype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ServiceManifestType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifesttype-complextype) 内でローカルに|
+|defined|[ServiceManifestType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifesttype-complextype) 内でローカルに|
 |name|ServiceTypes|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7834,9 +7834,9 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 
 |Attribute|値|
 |---|---|
-|型|[ServiceTypesType](service-fabric-service-model-schema-complex-types.md#servicetypestype-complextype)|
+|type|[ServiceTypesType](service-fabric-service-model-schema-complex-types.md#servicetypestype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|DigestedServiceTypes 要素内でローカルに|
+|defined|DigestedServiceTypes 要素内でローカルに|
 |name|ServiceTypes|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7852,9 +7852,9 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 
 |Attribute|値|
 |---|---|
-|型|[SettingsOverridesType](service-fabric-service-model-schema-complex-types.md#settingsoverridestype-complextype)|
+|type|[SettingsOverridesType](service-fabric-service-model-schema-complex-types.md#settingsoverridestype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ConfigOverrideType complexType](service-fabric-service-model-schema-complex-types.md#configoverridetype-complextype) 内でローカルに|
+|defined|[ConfigOverrideType complexType](service-fabric-service-model-schema-complex-types.md#configoverridetype-complextype) 内でローカルに|
 |name|設定|
 |minOccurs|0|
 
@@ -7871,9 +7871,9 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 
 |Attribute|値|
 |---|---|
-|型|[SettingsType](service-fabric-service-model-schema-complex-types.md#settingstype-complextype)|
+|type|[SettingsType](service-fabric-service-model-schema-complex-types.md#settingstype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|設定|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7893,9 +7893,9 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|[CodePackageType complexType](service-fabric-service-model-schema-complex-types.md#codepackagetype-complextype) 内でローカルに|
+|defined|[CodePackageType complexType](service-fabric-service-model-schema-complex-types.md#codepackagetype-complextype) 内でローカルに|
 |name|SetupEntryPoint|
 |minOccurs|0|
 
@@ -7921,7 +7921,7 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 |Attribute|値|
 |---|---|
 |name|ExeHost|
-|型|[ExeHostEntryPointType](service-fabric-service-model-schema-complex-types.md#exehostentrypointtype-complextype)|
+|type|[ExeHostEntryPointType](service-fabric-service-model-schema-complex-types.md#exehostentrypointtype-complextype)|
 
 <a id="SfssRgPoliciesElementanonymouscomplexTypeComplexTypeDefinedInNodeTypeelement"></a>
 ## <a name="sfssrgpolicies-element"></a>SfssRgPolicies 要素
@@ -7929,9 +7929,9 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|NodeType 要素内でローカルに|
+|defined|NodeType 要素内でローカルに|
 |name|SfssRgPolicies|
 |minOccurs|0|
 
@@ -7957,7 +7957,7 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 |Attribute|値|
 |---|---|
 |name|SfssRgPolicy|
-|型|[KeyValuePairType](service-fabric-service-model-schema-complex-types.md#keyvaluepairtype-complextype)|
+|type|[KeyValuePairType](service-fabric-service-model-schema-complex-types.md#keyvaluepairtype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -7966,9 +7966,9 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 
 |Attribute|値|
 |---|---|
-|型|[KeyValuePairType](service-fabric-service-model-schema-complex-types.md#keyvaluepairtype-complextype)|
+|type|[KeyValuePairType](service-fabric-service-model-schema-complex-types.md#keyvaluepairtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|SfssRgPolicies 要素内でローカルに|
+|defined|SfssRgPolicies 要素内でローカルに|
 |name|SfssRgPolicy|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -7986,9 +7986,9 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、1 個の属性|
-|定義済み|[FabricKtlLoggerSettingsType complexType](service-fabric-service-model-schema-complex-types.md#fabricktlloggersettingstype-complextype) 内でローカルに|
+|defined|[FabricKtlLoggerSettingsType complexType](service-fabric-service-model-schema-complex-types.md#fabricktlloggersettingstype-complextype) 内でローカルに|
 |name|SharedLogFileId|
 |minOccurs|0|
 
@@ -8028,9 +8028,9 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、1 個の属性|
-|定義済み|[FabricKtlLoggerSettingsType complexType](service-fabric-service-model-schema-complex-types.md#fabricktlloggersettingstype-complextype) 内でローカルに|
+|defined|[FabricKtlLoggerSettingsType complexType](service-fabric-service-model-schema-complex-types.md#fabricktlloggersettingstype-complextype) 内でローカルに|
 |name|SharedLogFilePath|
 |minOccurs|0|
 
@@ -8055,7 +8055,7 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 |Attribute|値|
 |---|---|
 |name|値|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 
@@ -8065,9 +8065,9 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、1 個の属性|
-|定義済み|[FabricKtlLoggerSettingsType complexType](service-fabric-service-model-schema-complex-types.md#fabricktlloggersettingstype-complextype) 内でローカルに|
+|defined|[FabricKtlLoggerSettingsType complexType](service-fabric-service-model-schema-complex-types.md#fabricktlloggersettingstype-complextype) 内でローカルに|
 |name|SharedLogFileSizeInMB|
 |minOccurs|0|
 
@@ -8107,9 +8107,9 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、0 個の属性|
-|定義済み|[PartitionDescriptionGroup グループ](service-fabric-service-model-schema-element-groups.md#partitiondescriptiongroup-group)内でローカルに|
+|defined|[PartitionDescriptionGroup グループ](service-fabric-service-model-schema-element-groups.md#partitiondescriptiongroup-group)内でローカルに|
 |name|SingletonPartition|
 
 ### <a name="xml-source"></a>XML ソース
@@ -8130,9 +8130,9 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 
 |Attribute|値|
 |---|---|
-|型|[StatefulServiceType](service-fabric-service-model-schema-complex-types.md#statefulservicetype-complextype)|
+|type|[StatefulServiceType](service-fabric-service-model-schema-complex-types.md#statefulservicetype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ServiceTemplatesType complexType](service-fabric-service-model-schema-complex-types.md#servicetemplatestype-complextype)、Service 要素内でローカルに|
+|defined|[ServiceTemplatesType complexType](service-fabric-service-model-schema-complex-types.md#servicetemplatestype-complextype)、Service 要素内でローカルに|
 |name|StatefulService|
 
 ### <a name="xml-source"></a>XML ソース
@@ -8148,9 +8148,9 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 
 |Attribute|値|
 |---|---|
-|型|[StatefulServiceGroupType](service-fabric-service-model-schema-complex-types.md#statefulservicegrouptype-complextype)|
+|type|[StatefulServiceGroupType](service-fabric-service-model-schema-complex-types.md#statefulservicegrouptype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ServiceTemplatesType complexType](service-fabric-service-model-schema-complex-types.md#servicetemplatestype-complextype)、ServiceGroup 要素内でローカルに|
+|defined|[ServiceTemplatesType complexType](service-fabric-service-model-schema-complex-types.md#servicetemplatestype-complextype)、ServiceGroup 要素内でローカルに|
 |name|StatefulServiceGroup|
 
 ### <a name="xml-source"></a>XML ソース
@@ -8166,9 +8166,9 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 
 |Attribute|値|
 |---|---|
-|型|[StatefulServiceGroupTypeType](service-fabric-service-model-schema-complex-types.md#statefulservicegrouptypetype-complextype)|
+|type|[StatefulServiceGroupTypeType](service-fabric-service-model-schema-complex-types.md#statefulservicegrouptypetype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ServiceAndServiceGroupTypesType complexType](service-fabric-service-model-schema-complex-types.md#serviceandservicegrouptypestype-complextype) 内でローカルに|
+|defined|[ServiceAndServiceGroupTypesType complexType](service-fabric-service-model-schema-complex-types.md#serviceandservicegrouptypestype-complextype) 内でローカルに|
 |name|StatefulServiceGroupType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -8184,9 +8184,9 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 
 |Attribute|値|
 |---|---|
-|型|[StatefulServiceTypeType](service-fabric-service-model-schema-complex-types.md#statefulservicetypetype-complextype)|
+|type|[StatefulServiceTypeType](service-fabric-service-model-schema-complex-types.md#statefulservicetypetype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ServiceAndServiceGroupTypesType complexType](service-fabric-service-model-schema-complex-types.md#serviceandservicegrouptypestype-complextype)、[ServiceTypesType complexType](service-fabric-service-model-schema-complex-types.md#servicetypestype-complextype) 内でローカルに|
+|defined|[ServiceAndServiceGroupTypesType complexType](service-fabric-service-model-schema-complex-types.md#serviceandservicegrouptypestype-complextype)、[ServiceTypesType complexType](service-fabric-service-model-schema-complex-types.md#servicetypestype-complextype) 内でローカルに|
 |name|StatefulServiceType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -8202,9 +8202,9 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 
 |Attribute|値|
 |---|---|
-|型|[StatelessServiceType](service-fabric-service-model-schema-complex-types.md#statelessservicetype-complextype)|
+|type|[StatelessServiceType](service-fabric-service-model-schema-complex-types.md#statelessservicetype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ServiceTemplatesType complexType](service-fabric-service-model-schema-complex-types.md#servicetemplatestype-complextype)、Service 要素内でローカルに|
+|defined|[ServiceTemplatesType complexType](service-fabric-service-model-schema-complex-types.md#servicetemplatestype-complextype)、Service 要素内でローカルに|
 |name|StatelessService|
 
 ### <a name="xml-source"></a>XML ソース
@@ -8220,9 +8220,9 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 
 |Attribute|値|
 |---|---|
-|型|[StatelessServiceGroupType](service-fabric-service-model-schema-complex-types.md#statelessservicegrouptype-complextype)|
+|type|[StatelessServiceGroupType](service-fabric-service-model-schema-complex-types.md#statelessservicegrouptype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ServiceTemplatesType complexType](service-fabric-service-model-schema-complex-types.md#servicetemplatestype-complextype)、ServiceGroup 要素内でローカルに|
+|defined|[ServiceTemplatesType complexType](service-fabric-service-model-schema-complex-types.md#servicetemplatestype-complextype)、ServiceGroup 要素内でローカルに|
 |name|StatelessServiceGroup|
 
 ### <a name="xml-source"></a>XML ソース
@@ -8238,9 +8238,9 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 
 |Attribute|値|
 |---|---|
-|型|[StatelessServiceGroupTypeType](service-fabric-service-model-schema-complex-types.md#statelessservicegrouptypetype-complextype)|
+|type|[StatelessServiceGroupTypeType](service-fabric-service-model-schema-complex-types.md#statelessservicegrouptypetype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ServiceAndServiceGroupTypesType complexType](service-fabric-service-model-schema-complex-types.md#serviceandservicegrouptypestype-complextype) 内でローカルに|
+|defined|[ServiceAndServiceGroupTypesType complexType](service-fabric-service-model-schema-complex-types.md#serviceandservicegrouptypestype-complextype) 内でローカルに|
 |name|StatelessServiceGroupType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -8256,9 +8256,9 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 
 |Attribute|値|
 |---|---|
-|型|[StatelessServiceTypeType](service-fabric-service-model-schema-complex-types.md#statelessservicetypetype-complextype)|
+|type|[StatelessServiceTypeType](service-fabric-service-model-schema-complex-types.md#statelessservicetypetype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ServiceAndServiceGroupTypesType complexType](service-fabric-service-model-schema-complex-types.md#serviceandservicegrouptypestype-complextype)、[ServiceTypesType complexType](service-fabric-service-model-schema-complex-types.md#servicetypestype-complextype) 内でローカルに|
+|defined|[ServiceAndServiceGroupTypesType complexType](service-fabric-service-model-schema-complex-types.md#serviceandservicegrouptypestype-complextype)、[ServiceTypesType complexType](service-fabric-service-model-schema-complex-types.md#servicetypestype-complextype) 内でローカルに|
 |name|StatelessServiceType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -8274,9 +8274,9 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、1 個の属性|
-|定義済み|MemberOf 要素内でローカルに|
+|defined|MemberOf 要素内でローカルに|
 |name|SystemGroup|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -8306,7 +8306,7 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 |Attribute|値|
 |---|---|
 |name|Name|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 
@@ -8315,9 +8315,9 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、1 個の属性|
-|定義済み|Membership 要素内でローカルに|
+|defined|Membership 要素内でローカルに|
 |name|SystemGroup|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -8339,7 +8339,7 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 |Attribute|値|
 |---|---|
 |name|Name|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 
@@ -8349,9 +8349,9 @@ FabricDeployer が配置する必要のあるターゲットについて説明�
 
 |Attribute|値|
 |---|---|
-|型|[TargetInformationType](service-fabric-service-model-schema-complex-types.md#targetinformationtype-complextype)|
+|type|[TargetInformationType](service-fabric-service-model-schema-complex-types.md#targetinformationtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|TargetInformation|
 
 ### <a name="xml-source"></a>XML ソース
@@ -8370,9 +8370,9 @@ FabricDeployer が配置する必要のあるターゲットについて説明�
 
 |Attribute|値|
 |---|---|
-|型|[WindowsFabricDeploymentInformation](service-fabric-service-model-schema-complex-types.md#windowsfabricdeploymentinformation-complextype)|
+|type|[WindowsFabricDeploymentInformation](service-fabric-service-model-schema-complex-types.md#windowsfabricdeploymentinformation-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[TargetInformationType complexType](service-fabric-service-model-schema-complex-types.md#targetinformationtype-complextype) 内でローカルに|
+|defined|[TargetInformationType complexType](service-fabric-service-model-schema-complex-types.md#targetinformationtype-complextype) 内でローカルに|
 |name|TargetInstallation|
 |minOccurs|1|
 
@@ -8389,9 +8389,9 @@ Int64 キーに基づく統一されたパーティション構成について�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、3 個の属性|
-|定義済み|[PartitionDescriptionGroup グループ](service-fabric-service-model-schema-element-groups.md#partitiondescriptiongroup-group)内でローカルに|
+|defined|[PartitionDescriptionGroup グループ](service-fabric-service-model-schema-element-groups.md#partitiondescriptiongroup-group)内でローカルに|
 |name|UniformInt64Partition|
 
 ### <a name="xml-source"></a>XML ソース
@@ -8429,7 +8429,7 @@ Int64 キーに基づく統一されたパーティション構成について�
 |Attribute|値|
 |---|---|
 |name|PartitionCount|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="lowkey"></a>LowKey
@@ -8438,7 +8438,7 @@ Int64 キーに基づく統一されたパーティション構成について�
 |Attribute|値|
 |---|---|
 |name|LowKey|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="highkey"></a>HighKey
@@ -8447,7 +8447,7 @@ Int64 キーに基づく統一されたパーティション構成について�
 |Attribute|値|
 |---|---|
 |name|HighKey|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 
@@ -8457,9 +8457,9 @@ Int64 キーに基づく統一されたパーティション構成について�
 
 |Attribute|値|
 |---|---|
-|型|[UnmanagedDllType](service-fabric-service-model-schema-complex-types.md#unmanageddlltype-complextype)|
+|type|[UnmanagedDllType](service-fabric-service-model-schema-complex-types.md#unmanageddlltype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[DllHostEntryPointType complexType](service-fabric-service-model-schema-complex-types.md#dllhostentrypointtype-complextype) 内でローカルに|
+|defined|[DllHostEntryPointType complexType](service-fabric-service-model-schema-complex-types.md#dllhostentrypointtype-complextype) 内でローカルに|
 |name|UnmanagedDll|
 
 ### <a name="xml-source"></a>XML ソース
@@ -8474,9 +8474,9 @@ Int64 キーに基づく統一されたパーティション構成について�
 
 |Attribute|値|
 |---|---|
-|型|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
+|type|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
+|defined|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
 |name|UpgradeOrchestrationServiceReplicatorEndpoint|
 |minOccurs|0|
 
@@ -8492,9 +8492,9 @@ Int64 キーに基づく統一されたパーティション構成について�
 
 |Attribute|値|
 |---|---|
-|型|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
+|type|[InternalEndpointType](service-fabric-service-model-schema-complex-types.md#internalendpointtype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
+|defined|[FabricEndpointsType complexType](service-fabric-service-model-schema-complex-types.md#fabricendpointstype-complextype) 内でローカルに|
 |name|UpgradeServiceReplicatorEndpoint|
 |minOccurs|0|
 
@@ -8511,9 +8511,9 @@ Int64 キーに基づく統一されたパーティション構成について�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|2 個の要素、5 個の属性|
-|定義済み|Users 要素内でローカルに|
+|defined|Users 要素内でローカルに|
 |name|User|
 |maxOccurs|unbounded|
 
@@ -8621,7 +8621,7 @@ Int64 キーに基づく統一されたパーティション構成について�
 |Attribute|値|
 |---|---|
 |name|Name|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="accounttype"></a>AccountType
@@ -8631,25 +8631,25 @@ Int64 キーに基づく統一されたパーティション構成について�
 |---|---|
 |name|AccountType|
 |use|省略可能|
-|既定値 (default)|LocalUser|
+|default|LocalUser|
 
 #### <a name="loaduserprofile"></a>LoadUserProfile
 
 |Attribute|値|
 |---|---|
 |name|LoadUserProfile|
-|型|xs:boolean|
+|type|xs:boolean|
 |use|省略可能|
-|既定値 (default)|false|
+|default|false|
 
 #### <a name="performinteractivelogon"></a>PerformInteractiveLogon
 
 |Attribute|値|
 |---|---|
 |name|PerformInteractiveLogon|
-|型|xs:boolean|
+|type|xs:boolean|
 |use|省略可能|
-|既定値 (default)|false|
+|default|false|
 
 #### <a name="passwordencrypted"></a>PasswordEncrypted
 パスワードが暗号化される場合は true、テキスト形式の場合は false。
@@ -8657,7 +8657,7 @@ Int64 キーに基づく統一されたパーティション構成について�
 |Attribute|値|
 |---|---|
 |name|PasswordEncrypted|
-|型|xs:boolean|
+|type|xs:boolean|
 |use|省略可能|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
@@ -8683,9 +8683,9 @@ Int64 キーに基づく統一されたパーティション構成について�
 
 |Attribute|値|
 |---|---|
-|型|[FabricCertificateType](service-fabric-service-model-schema-complex-types.md#fabriccertificatetype-complextype)|
+|type|[FabricCertificateType](service-fabric-service-model-schema-complex-types.md#fabriccertificatetype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[CertificatesType complexType](service-fabric-service-model-schema-complex-types.md#certificatestype-complextype) 内でローカルに|
+|defined|[CertificatesType complexType](service-fabric-service-model-schema-complex-types.md#certificatestype-complextype) 内でローカルに|
 |name|UserRoleClientCertificate|
 |minOccurs|0|
 
@@ -8706,9 +8706,9 @@ Int64 キーに基づく統一されたパーティション構成について�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|[SecurityPrincipalsType complexType](service-fabric-service-model-schema-complex-types.md#securityprincipalstype-complextype) 内でローカルに|
+|defined|[SecurityPrincipalsType complexType](service-fabric-service-model-schema-complex-types.md#securityprincipalstype-complextype) 内でローカルに|
 |name|ユーザー|
 |minOccurs|0|
 
@@ -8833,9 +8833,9 @@ Int64 キーに基づく統一されたパーティション構成について�
 
 |Attribute|値|
 |---|---|
-|型|[ContainerVolumeType](service-fabric-service-model-schema-complex-types.md#containervolumetype-complextype)|
+|type|[ContainerVolumeType](service-fabric-service-model-schema-complex-types.md#containervolumetype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ContainerHostPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#containerhostpoliciestype-complextype) 内でローカルに|
+|defined|[ContainerHostPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#containerhostpoliciestype-complextype) 内でローカルに|
 |name|ボリューム|
 |minOccurs|0|
 |maxOccurs|unbounded|
@@ -8856,9 +8856,9 @@ Int64 キーに基づく統一されたパーティション構成について�
 
 |Attribute|値|
 |---|---|
-|型|[PaaSVoteType](service-fabric-service-model-schema-complex-types.md#paasvotetype-complextype)|
+|type|[PaaSVoteType](service-fabric-service-model-schema-complex-types.md#paasvotetype-complextype)|
 |content|0 個の要素、0 個の属性|
-|定義済み|Votes 要素内でローカルに|
+|defined|Votes 要素内でローカルに|
 |name|Vote|
 |maxOccurs|unbounded|
 
@@ -8874,9 +8874,9 @@ Int64 キーに基づく統一されたパーティション構成について�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|PaaS 要素内でローカルに|
+|defined|PaaS 要素内でローカルに|
 |name|Votes|
 
 ### <a name="xml-source"></a>XML ソース
@@ -8898,7 +8898,7 @@ Int64 キーに基づく統一されたパーティション構成について�
 |Attribute|値|
 |---|---|
 |name|Vote|
-|型|[PaaSVoteType](service-fabric-service-model-schema-complex-types.md#paasvotetype-complextype)|
+|type|[PaaSVoteType](service-fabric-service-model-schema-complex-types.md#paasvotetype-complextype)|
 |maxOccurs|unbounded|
 
 <a id="WindowsAzureElementanonymouscomplexTypeComplexTypeDefinedInInfrastructureelement"></a>
@@ -8906,9 +8906,9 @@ Int64 キーに基づく統一されたパーティション構成について�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|1 個の要素、0 個の属性|
-|定義済み|Infrastructure 要素内でローカルに|
+|defined|Infrastructure 要素内でローカルに|
 |name|WindowsAzure|
 
 ### <a name="xml-source"></a>XML ソース
@@ -8942,9 +8942,9 @@ Int64 キーに基づく統一されたパーティション構成について�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、0 個の属性|
-|定義済み|Infrastructure 要素内でローカルに|
+|defined|Infrastructure 要素内でローカルに|
 |name|WindowsAzureStaticTopology|
 
 ### <a name="xml-source"></a>XML ソース
@@ -8965,9 +8965,9 @@ Int64 キーに基づく統一されたパーティション構成について�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、0 個の属性|
-|定義済み|Infrastructure 要素内でローカルに|
+|defined|Infrastructure 要素内でローカルに|
 |name|WindowsServer|
 
 ### <a name="xml-source"></a>XML ソース
@@ -8990,11 +8990,11 @@ Int64 キーに基づく統一されたパーティション構成について�
 
 |Attribute|値|
 |---|---|
-|型|anonymous complexType|
+|type|anonymous complexType|
 |content|0 個の要素、0 個の属性|
-|定義済み|[ExeHostEntryPointType complexType](service-fabric-service-model-schema-complex-types.md#exehostentrypointtype-complextype) 内でローカルに|
+|defined|[ExeHostEntryPointType complexType](service-fabric-service-model-schema-complex-types.md#exehostentrypointtype-complextype) 内でローカルに|
 |name|WorkingFolder|
-|既定値 (default)|Work|
+|default|Work|
 |minOccurs|0|
 
 ### <a name="xml-source"></a>XML ソース
