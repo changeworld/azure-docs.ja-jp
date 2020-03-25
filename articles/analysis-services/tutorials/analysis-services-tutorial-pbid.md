@@ -8,13 +8,13 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: 4d8c753f06e58fd1cce1c55eca213637cb70e436
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73572326"
 ---
-# <a name="tutorial-connect-with-power-bi-desktop"></a>チュートリアル:Power BI Desktop を使用して接続する
+# <a name="tutorial-connect-with-power-bi-desktop"></a>チュートリアル: Power BI Desktop を使用して接続する
 
 このチュートリアルでは、Power BI Desktop を使用して、サーバー上の adventureworks サンプル モデル データベースに接続します。 作成したタスクで、モデルへの一般的なユーザー接続とモデル データからの基本的なレポートの作成をシミュレートします。
 
@@ -65,9 +65,9 @@ Power BI Desktop からサーバーに接続するには、まずサーバー名
 
     数分間かけてさまざまな視覚化を作成し、データとメトリックをスライスして、adventureworks サンプル モデルを調べてください。 レポートに満足したら、忘れずに保存します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 不要になった場合は、レポートを保存しないでおきます。保存済みの場合は、ファイルを削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Power BI Desktop を使用してサーバー上のデータ モデルに接続し、基本的なレポートを作成する方法について説明しました。 データ モデルの作成方法に慣れていない場合は、SQL Server Analysis Services のドキュメントで [Adventure Works Internet Sales 表形式データ モデリング チュートリアル](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)に関するページを参照してください。

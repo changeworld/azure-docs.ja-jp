@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と FreshDesk の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と FreshDesk の統合 | Microsoft Docs'
 description: Azure Active Directory と FreshDesk の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 12/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e75a45bc4ccd2614520fda39e09996c2286bdbd0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74227610"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>チュートリアル:Azure Active Directory と FreshDesk の統合
+# <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>チュートリアル: Azure Active Directory と FreshDesk の統合
 
 このチュートリアルでは、FreshDesk と Azure Active Directory (Azure AD) を統合する方法について説明します。
 FreshDesk と Azure AD の統合には、次の利点があります。
@@ -139,7 +139,7 @@ FreshDesk で Azure AD シングル サインオンを構成するには、次�
 
     f. **[OK]** をクリックします。
 
-    g. **[Save]** をクリックします。
+    g. **[保存]** をクリックします。
 
 7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -182,7 +182,7 @@ FreshDesk で Azure AD シングル サインオンを構成するには、次�
 
     e. **[セキュリティ証明書フィンガープリント]** テキストボックスに、先ほど得た **Cert ハッシュ (sha256)** の値を貼り付けます。
   
-    f. **[Save]** をクリックします。
+    f. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -250,7 +250,7 @@ FreshDesk の場合、プロビジョニングは手動で行います。
 
 3. **[全般設定]** タブで **[エージェント]** をクリックします。
   
-    ![エージェント](./media/freshdesk-tutorial/IC776773.png "エージェント")
+    ![[エージェント]](./media/freshdesk-tutorial/IC776773.png "[エージェント]")
 
 4. **[新しいエージェント]** をクリックします。
 
@@ -266,7 +266,7 @@ FreshDesk の場合、プロビジョニングは手動で行います。
 
     c. **[タイトル]** ボックスに、プロビジョニングする Azure AD アカウントのタイトルを入力します。
 
-    d. **[Save]** をクリックします。
+    d. **[保存]** をクリックします。
 
     >[!NOTE]
     >Azure AD のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。

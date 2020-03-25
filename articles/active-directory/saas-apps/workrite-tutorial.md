@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Workrite の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Workrite の統合 | Microsoft Docs'
 description: Azure Active Directory と Workrite の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 026ad76fa82a28ca3e7f29de2e656994b9cad634
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67086772"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workrite"></a>チュートリアル:Azure Active Directory と Workrite の統合
+# <a name="tutorial-azure-active-directory-integration-with-workrite"></a>チュートリアル: Azure Active Directory と Workrite の統合
 
 このチュートリアルでは、Workrite と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Workrite と Azure AD の統合には、次の利点があります。
@@ -206,7 +206,7 @@ Workrite で Azure AD シングル サインオンを構成するには、次の
     
     d. **[ロールの選択]** で **[クライアント管理者]** を選択します。
     
-    e. **[Save]** をクリックします。
+    e. **[保存]** をクリックします。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

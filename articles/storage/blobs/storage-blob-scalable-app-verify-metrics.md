@@ -8,10 +8,10 @@ ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
 ms.openlocfilehash: dc0f8171e18598e4f805a03a4bc6d17de220fbe1
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68698986"
 ---
 # <a name="verify-throughput-and-latency-metrics-for-a-storage-account"></a>ストレージ アカウントのスループットと待機時間のメトリックの確認
@@ -58,11 +58,11 @@ ms.locfileid: "68698986"
 
 ![ストレージ アカウントのメトリック - トランザクション数](./media/storage-blob-scalable-app-verify-metrics/transactions.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要がなくなったら、リソース グループ、仮想マシン、すべての関連リソースを削除します。 そのためには、VM のリソース グループを選択し、[削除] をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 シリーズの第 4 部では、サンプル ソリューションのメトリックを確認する方法について学びました。
 

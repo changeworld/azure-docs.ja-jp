@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Learningpool Act の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Learningpool Act の統合 | Microsoft Docs'
 description: Azure Active Directory と Learningpool Act の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5bc0b395fcc874190b67bd99262c3a1c9294c0ac
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74229286"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>チュートリアル:Azure Active Directory と Learningpool Act の統合
+# <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>チュートリアル: Azure Active Directory と Learningpool Act の統合
 
 このチュートリアルでは、Learningpool Act と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Learningpool Act と Azure AD の統合には、次の利点があります。
@@ -149,7 +149,7 @@ Learningpool Act で Azure AD シングル サインオンを構成するには�
 
     f. **[OK]** をクリックします。
 
-    g. **[Save]** をクリックします。
+    g. **[保存]** をクリックします。
 
 7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 

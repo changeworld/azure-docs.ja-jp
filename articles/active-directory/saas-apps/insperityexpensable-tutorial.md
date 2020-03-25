@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Insperity ExpensAble の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Insperity ExpensAble の統合 | Microsoft Docs'
 description: Azure Active Directory と Insperity ExpensAble の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 43b24bec557d1cc879be9568bea451f1a8b0b310
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67625310"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-insperity-expensable"></a>チュートリアル:Azure Active Directory と Insperity ExpensAble の統合
+# <a name="tutorial-azure-active-directory-integration-with-insperity-expensable"></a>チュートリアル: Azure Active Directory と Insperity ExpensAble の統合
 
 このチュートリアルでは、Insperity ExpensAble と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Insperity ExpensAble と Azure AD の統合には、次の利点があります。

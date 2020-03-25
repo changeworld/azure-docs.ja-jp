@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: apimpm
 ms.openlocfilehash: cec1d3e07800dd3093ca79a87cafcf5fceafbf2f
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77209190"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Azure API Management で Azure Function App を API としてインポートする
@@ -42,7 +42,7 @@ Azure API Management は、Azure Function App の新しい API としてのイ�
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="add-new-api-from-azure-function-app"></a>Azure Function App を新しい API としてインポートする
+## <a name="import-an-azure-function-app-as-a-new-api"></a><a name="add-new-api-from-azure-function-app"></a>Azure Function App を新しい API としてインポートする
 
 以下の手順に従って、Azure Function App から新しい API を作成します。
 
@@ -77,7 +77,7 @@ Azure API Management は、Azure Function App の新しい API としてのイ�
 
 8. **Create** をクリックしてください。
 
-## <a name="append-azure-function-app-to-api"></a> Azure Function App を既存の API に追加する
+## <a name="append-azure-function-app-to-an-existing-api"></a><a name="append-azure-function-app-to-api"></a> Azure Function App を既存の API に追加する
 
 以下の手順に従って、Azure Function App を既存の API に追加します。
 
@@ -111,14 +111,14 @@ Azure API Management は、Azure Function App の新しい API としてのイ�
 
     ![Function App から追加する](./media/import-function-app-as-api/append-04.png)
 
-## <a name="authorization"></a>承認
+## <a name="authorization"></a><a name="authorization"></a>承認
 
 Azure Function App のインポートによって、次が自動的に生成されます。
 
 * apim-{<*お使いの Azure API Management サービス インスタンス名*>} という名前の、Function App 内のホスト キー。
 * {<*お使いの Azure Function App のインスタンス名*>}-key という名前の、Azure API Management インスタンス内の名前付きの値。作成されたホスト キーが含まれます。
 
-2019 年 4 月 4 日より後に作成された API では、ホスト キーが HTTP 要求のヘッダーで API Management から Function App に渡されます。 以前の API では、ホスト キーが[クエリ パラメーター](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization)として渡されます。 関数アプリに関連付けられている *Backend* エンティティの `PATCH Backend` [REST API 呼び出し](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract)では、この動作が変わる可能性があります。
+2019 年 4 月 4 日より後に作成された API では、ホスト キーが HTTP 要求のヘッダーで API Management から Function App に渡されます。 以前の API では、ホスト キーが[クエリ パラメーター](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization)として渡されます。 関数アプリに関連付けられている `PATCH Backend`Backend[ エンティティの ](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract) *REST API 呼び出し*では、この動作が変わる可能性があります。
 
 > [!WARNING]
 > Azure Function App のホスト キーまたは Azure API Management の名前付きの値のいずれかの値を削除または変更すると、サービス間の通信が失われます。 値は自動的に同期されません。
@@ -143,7 +143,7 @@ Azure Function App のインポートによって、次が自動的に生成さ�
 
 ![Function App から追加する](./media/import-function-app-as-api/keys-01.png)
 
-## <a name="test-in-azure-portal"></a> Azure portal での新しい API のテスト
+## <a name="test-the-new-api-in-the-azure-portal"></a><a name="test-in-azure-portal"></a> Azure portal での新しい API のテスト
 
 操作は Azure portal から直接呼び出すことができます。 Azure portal は API の操作を表示およびテストするのに便利です。  
 

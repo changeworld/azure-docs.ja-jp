@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
 ms.openlocfilehash: dd16753a9b057e441884b0a6a019701766aaa321
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73821395"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database"></a>Azure SQL Database 用の Azure PowerShell サンプル
@@ -27,7 +27,7 @@ Azure SQL Database では、Azure PowerShell を使用してデータベース�
 
 PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは AZ PowerShell 1.4.0 以降が必要になります。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 
-## <a name="single-database-and-elastic-poolstabsingle-database"></a>[単一データベースとエラスティック プール](#tab/single-database)
+## <a name="single-database-and-elastic-pools"></a>[単一データベースとエラスティック プール](#tab/single-database)
 
 次の表には、Azure SQL Database の Azure PowerShell スクリプトのサンプルへのリンクが含まれています。
 
@@ -59,7 +59,7 @@ PowerShell をインストールしてローカルで使用する場合、この
 
 [単一データベースの Azure PowerShell API](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases) に関するセクションを参照してください。
 
-## <a name="managed-instancetabmanaged-instance"></a>[Managed Instance](#tab/managed-instance)
+## <a name="managed-instance"></a>[Managed Instance](#tab/managed-instance)
 
 次の表には、Azure SQL Database Managed Instance の Azure PowerShell スクリプトのサンプルへのリンクが含まれています。
 

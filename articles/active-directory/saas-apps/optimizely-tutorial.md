@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Optimizely の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Optimizely の統合 | Microsoft Docs'
 description: Azure Active Directory と Optimizely の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 2e25c615e040dd4359e278b95045fbc71ca60ef1
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68943954"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>チュートリアル:Azure Active Directory と Optimizely の統合
+# <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>チュートリアル: Azure Active Directory と Optimizely の統合
 
 このチュートリアルでは、Optimizely と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Optimizely と Azure AD の統合には、次の利点があります。
@@ -107,7 +107,7 @@ Optimizely で Azure AD シングル サインオンを構成するには、次�
 
     a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://app.optimizely.net/<instance name>`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、`urn:auth0:optimizely:contoso` という形式で URL を入力します。
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`urn:auth0:optimizely:contoso`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子に値を置き換えます。実際の値については後で説明します。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -138,7 +138,7 @@ Optimizely で Azure AD シングル サインオンを構成するには、次�
 
     f. **[OK]** をクリックします。
 
-    g. **[Save]** をクリックします。
+    g. **[保存]** をクリックします。
 
 4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 

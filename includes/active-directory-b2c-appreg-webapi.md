@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
 ms.openlocfilehash: 9367719b1a1050ce8abf36804b3d0d0d58c7484b
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78183383"
 ---
 アクセス トークンを提示するクライアント アプリケーションによる保護されたリソース要求を Web API リソースで受け取って処理できるためには、Web API リソースをテナントに登録しておく必要があります。
@@ -18,7 +18,7 @@ ms.locfileid: "78183383"
 
 #### <a name="applications"></a>[アプリケーション](#tab/applications/)
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 1. **[アプリケーション]** を選択し、 **[追加]** を選択します。
@@ -26,13 +26,13 @@ ms.locfileid: "78183383"
 1. **[Web アプリ/Web API]** には、 **[はい]** を選択します。
 1. **[暗黙的フローを許可する]** には、 **[はい]** を選択します。
 1. **[応答 URL]** には、ご使用のアプリケーションが要求したすべてのトークンを Azure AD B2C が返すエンドポイントを入力します。 このチュートリアルでは、サンプルはローカル環境で実行され、`https://localhost:5000` でリッスンします。
-1. **[アプリケーション ID/URI]** には、表示されている URI に対する API エンドポイント識別子を追加します。 このチュートリアルでは、完全な URI が `https://contosob2c.onmicrosoft.com/api` のような形になるように、「`api`」と入力します。
-1. **［作成］** を選択します
+1. **[アプリケーション ID/URI]** には、表示されている URI に対する API エンドポイント識別子を追加します。 このチュートリアルでは、完全な URI が `api` のような形になるように、「`https://contosob2c.onmicrosoft.com/api`」と入力します。
+1. **作成** を選択します。
 1. 後の手順で使用するために、**アプリケーション ID** を記録しておきます。
 
 #### <a name="app-registrations-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 1. **[アプリの登録 (プレビュー)]** 、 **[新規登録]** の順に選択します。

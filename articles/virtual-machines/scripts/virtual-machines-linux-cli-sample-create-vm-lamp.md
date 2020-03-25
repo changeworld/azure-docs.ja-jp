@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.custom: mvc
 ms.date: 04/05/2017
 ms.openlocfilehash: 00aa744f09b7bcbbbc258b92a8fd5ab750e447c7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74039116"
 ---
 # <a name="deploy-the-lamp-stack-in-a-load-balanced-virtual-machine-scale-set"></a>負荷分散された仮想マシン スケール セットでの LAMP スタックのデプロイ
@@ -30,7 +30,7 @@ ms.locfileid: "74039116"
 
 [!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-scaleset-php-ansible/build-stack.sh "Create virtual machine scale set with LAMP stack")]
 
-## <a name="connect"></a>接続
+## <a name="connect"></a>接続する
 
 このコードを使用して、VM とスケール セットに接続する方法を表示します。
 
@@ -59,7 +59,7 @@ az group delete -n myResourceGroup
 | [az network public-ip list](https://docs.microsoft.com/cli/azure/network/public-ip) | サンプルで作成された VM の IP アドレスを取得します。 |
 | [az network lb show](https://docs.microsoft.com/cli/azure/network/lb) | ロード バランサーで使用されるフロントエンド ポートおよびバックエンド ポートを取得します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

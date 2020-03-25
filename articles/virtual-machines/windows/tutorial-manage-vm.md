@@ -16,13 +16,13 @@ ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: c48d5e514d854568043d001a22411b6a67f79e6a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74067805"
 ---
-# <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Windows VM を作成および管理する
+# <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用して Windows VM を作成および管理する
 
 Azure 仮想マシンは、完全に構成可能で柔軟なコンピューティング環境を提供します。 このチュートリアルでは、VM サイズや VM イメージの選択、VM のデプロイなどの、Azure 仮想マシンの基本的なデプロイ タスクについて説明します。 学習内容は次のとおりです。
 
@@ -303,7 +303,7 @@ Remove-AzResourceGroup `
    -Force
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、次のような基本的な VM の作成と管理を実行する方法について説明しました。
 

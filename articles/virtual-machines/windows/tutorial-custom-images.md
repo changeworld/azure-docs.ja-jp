@@ -13,13 +13,13 @@ ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 7360798f2f95184145a856babf501e3080cbaaf4
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76274201"
 ---
-# <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Azure VM のカスタム イメージを作成する
+# <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用して Azure VM のカスタム イメージを作成する
 
 カスタム イメージは Marketplace のイメージに似ていますが、カスタム イメージは自分で作成します。 カスタム イメージを使用してデプロイのブートストラップを実行し、複数の VM で一貫性を確保することができます。 このチュートリアルでは、PowerShell を使用して Azure 仮想マシンの独自のカスタム イメージを作成します。 学習内容は次のとおりです。
 
@@ -50,7 +50,7 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 ### <a name="generalize-the-windows-vm-using-sysprep"></a>Sysprep を使用して Windows VM を一般化する
 
-特に重要な点は、Sysprep がすべての個人アカウント情報を削除して、マシンをイメージとして使用できるように準備することです。 Sysprep の詳細については、「[How to Use Sysprep: An Introduction (Sysprep の使用方法: 紹介)](https://technet.microsoft.com/library/bb457073.aspx)」を参照してください。
+特に重要な点は、Sysprep がすべての個人アカウント情報を削除して、マシンをイメージとして使用できるように準備することです。 Sysprep の詳細については、「 [Sysprep の使用方法: 紹介](https://technet.microsoft.com/library/bb457073.aspx)」を参照してください。
 
 
 1. 仮想マシンへの接続
@@ -71,7 +71,7 @@ Stop-AzVM `
    -Name myVM -Force
 ```
 
-[Set-AzVm](https://docs.microsoft.com/powershell/module/az.compute/set-azvm) を使用して、仮想マシンの状態を `-Generalized` に設定します。 
+`-Generalized`Set-AzVm[ を使用して、仮想マシンの状態を ](https://docs.microsoft.com/powershell/module/az.compute/set-azvm) に設定します。 
    
 ```azurepowershell-interactive
 Set-AzVM `

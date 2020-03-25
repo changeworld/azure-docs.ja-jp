@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Mimecast Admin Console の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Mimecast Admin Console の統合 | Microsoft Docs'
 description: Azure Active Directory と Mimecast Admin Console の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9edadd6462052f82f92c05c1678f845ece856cfb
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160655"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mimecast-admin-console"></a>チュートリアル:Azure Active Directory と Mimecast Admin Console の統合
+# <a name="tutorial-azure-active-directory-integration-with-mimecast-admin-console"></a>チュートリアル: Azure Active Directory と Mimecast Admin Console の統合
 
 このチュートリアルでは、Mimecast Admin Console と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Mimecast Admin Console と Azure AD の統合には、次のメリットがあります。
@@ -169,7 +169,7 @@ Mimecast Admin Console で Azure AD シングル サインオンを構成する�
     
     h. **[シングル サインオンの許可]** を選択します。
     
-    i. **[Save]** をクリックします。
+    i. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -246,11 +246,11 @@ Azure AD ユーザーが Mimecast Admin Console にログインできるよう�
 
 5. 新しいアドレスのダイアログで、次の手順に従います。
    
-    ![[[Save]]](./media/mimecast-admin-console-tutorial/ic795006.png "保存")
+    ![および](./media/mimecast-admin-console-tutorial/ic795006.png "保存")
    
     a. 該当するテキストボックスに、プロビジョニングする有効な Azure AD アカウントの **[メール アドレス]** 、 **[グローバル名]** 、 **[パスワード]** 、 **[パスワードの確認]** 属性を入力します。
 
-    b. **[Save]** をクリックします。
+    b. **[保存]** をクリックします。
 
 >[!NOTE]
 >Mimecast Admin Console から提供されている他の Mimecast Admin Console ユーザー アカウント作成ツールや API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。 

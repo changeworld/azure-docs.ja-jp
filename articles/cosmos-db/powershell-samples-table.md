@@ -7,10 +7,10 @@ ms.topic: sample
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.openlocfilehash: 56d8eaa0c89f5ad8edf1a44ebae682c99c94f194
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74873558"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---table-api"></a>Azure Cosmos DB 用 Azure PowerShell サンプル - Table API

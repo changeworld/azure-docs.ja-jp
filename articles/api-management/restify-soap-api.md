@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
 ms.openlocfilehash: a2bec6401ae3ac53f46e92e9be38abf57a92163d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74108106"
 ---
 # <a name="import-a-soap-api-and-convert-to-rest"></a>SOAP API のインポートと REST への変換
@@ -32,13 +32,13 @@ ms.locfileid: "74108106"
 
 ## <a name="prerequisites"></a>前提条件
 
-次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)
+[Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイックスタートを完了します
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"> </a>バックエンド API のインポートと公開
+## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>バックエンド API のインポートと公開
 
-1. **[API MANAGEMENT]** で **[API]** を選択します。
+1. **[API Management]** で **[API]** を選びます。
 2. **[Add a new API]\(新しい API の追加\)** の一覧から **[WSDL]** を選択します。
 
     ![SOAP API](./media/restify-soap-api/wsdl-api.png)
@@ -49,11 +49,11 @@ ms.locfileid: "74108106"
 
 5. Tab キーを押します。
 
-    SOAP API からの情報が次のフィールドに入力されます: [表示名]、[名前]、説明。
+    [表示名]、[名前]、[説明] の各フィールドに、SOAP API の情報が入力されます。
 6. API URL サフィックスを追加します。 サフィックスは、この APIM インスタンスでこの特定の API を識別する名前です。 この APIM インスタンス内で一意である必要があります。
 9. API を成果物に関連付けることで API を公開します。 この場合、"*無制限*" の成果物が使用されます。  API を公開して開発者が利用できるようにするには、その API を成果物に追加します。 API の作成時に行うことも、後で設定することもできます。
 
-    製品には、1 つまたは複数の API が関連付けられています。 複数の API を組み込み、開発者ポータルを通じてそれらを開発者に提供できます。 開発者は、まず成果物をサブスクライブして API へのアクセス権を取得する必要があります。 サブスクライブすると、その製品の API に適したサブスクリプション キーを受け取ります。 APIM インスタンスを作成した場合は、既に管理者になっているため、既定ですべての製品をサブスクライブしています。
+    製品には、1 つまたは複数の API が関連付けられています。 複数の API を組み込み、開発者ポータルを通じてそれらを開発者に提供できます。 開発者は、まず製品をサブスクライブして API へのアクセス権を取得する必要があります。 サブスクライブすると、その製品の API に適したサブスクリプション キーを受け取ります。 APIM インスタンスを作成した場合は、既に管理者になっているため、既定ですべての製品をサブスクライブしています。
 
     すべての API Management インスタンスは、2 つのサンプル成果物を既定で備えています。
 
@@ -78,7 +78,7 @@ Azure Portal には、API の操作を表示およびテストするための便
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [公開された API の変換と保護](transform-api.md)

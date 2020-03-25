@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Zoho の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Zoho の統合 | Microsoft Docs'
 description: Azure Active Directory と Zoho の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 12/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3b5d0e52e927a44d5bce5314e724c1c753809ce0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74231941"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zoho"></a>チュートリアル:Azure Active Directory と Zoho の統合
+# <a name="tutorial-azure-active-directory-integration-with-zoho"></a>チュートリアル: Azure Active Directory と Zoho の統合
 
 このチュートリアルでは、Zoho と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Zoho と Azure AD の統合には、次の利点があります。
@@ -135,7 +135,7 @@ Zoho で Azure AD シングル サインオンを構成するには、次の手�
 
 3. **[SAML 認証]** タブをクリックします。
    
-    ![SAML 認証](./media/zoho-mail-tutorial/ic789608.png "SAML 認証")
+    ![SAML 認証](./media/zoho-mail-tutorial/ic789608.png "[SAML 認証]")
 
 4. **[SAML 認証の詳細]** セクションで、次の手順に従います。
    
@@ -151,7 +151,7 @@ Zoho で Azure AD シングル サインオンを構成するには、次の手�
    
     e. **[アルゴリズム]** として **[RSA]** を選択します。
    
-    f. Click **OK**.
+    f. **[OK]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -233,7 +233,7 @@ Azure AD ユーザーが Zoho Mail にログインできるようにするには
 
     d. **[Password]\(パスワード\)** ボックスに、ユーザーのパスワードを入力します。
    
-    e. Click **OK**.  
+    e. **[OK]** をクリックします。  
       
     > [!NOTE]
     > Azure Active Directory のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。

@@ -8,11 +8,11 @@ ms.date: 10/23/2019
 ms.author: mjbrown
 ms.custom: seodec18
 ms.openlocfilehash: 978f37d08275de704dd01c0251dde42665fca552
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882107"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222099"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>PowerShell を使用して Azure Cosmos DB SQL API リソースを管理する
 
@@ -22,7 +22,7 @@ Azure Cosmos DB のクロスプラットフォーム管理には、[Azure CLI](m
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="getting-started"></a>Getting Started (概要)
+## <a name="getting-started"></a>作業の開始
 
 [Azure PowerShell のインストールおよび構成方法][powershell-install-configure]に関する記事の指示に従ってインストールし、PowerShell で Azure アカウントにサインインします。
 
@@ -45,7 +45,7 @@ Azure Cosmos DB のクロスプラットフォーム管理には、[Azure CLI](m
 * [Azure Cosmos アカウントのフェールオーバーの優先順位を変更する](#modify-failover-priority)
 * [Azure Cosmos アカウントの手動フェールオーバーをトリガーする](#trigger-manual-failover)
 
-### <a id="create-account"></a> Azure Cosmos アカウントを作成する
+### <a name="create-an-azure-cosmos-account"></a><a id="create-account"></a> Azure Cosmos アカウントを作成する
 
 このコマンドでは、[複数リージョン][distribute-data-globally]および有界整合性制約の[一貫性ポリシー](consistency-levels.md)を使って、Azure Cosmos データベース アカウントが作成されます。
 
@@ -86,7 +86,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 Azure Cosmos アカウントは、IP ファイアウォールと仮想ネットワーク サービス エンドポイントで構成できます。 Azure Cosmos DB 用に IP ファイアウォールを構成する方法については、[IP ファイアウォールの構成](how-to-configure-firewall.md)に関する記事を参照してください。  Azure Cosmos DB のサービス エンドポイントを有効にする方法について詳しくは、「[仮想ネットワークからのアクセスの構成](how-to-configure-vnet-service-endpoint.md)」をご覧ください。
 
-### <a id="list-accounts"></a> サブスクリプション内のすべての Azure Cosmos アカウントの一覧を取得する
+### <a name="list-all-azure-cosmos-accounts-in-a-subscription"></a><a id="list-accounts"></a> サブスクリプション内のすべての Azure Cosmos アカウントの一覧を取得する
 
 このコマンドでは、サブスクリプション内のすべての Azure Cosmos アカウントの一覧を取得できます。
 
@@ -96,7 +96,7 @@ Azure Cosmos アカウントは、IP ファイアウォールと仮想ネット�
 Get-AzResource -ResourceType Microsoft.DocumentDb/databaseAccounts | ft
 ```
 
-### <a id="get-account"></a> Azure Cosmos アカウントのプロパティを取得する
+### <a name="get-the-properties-of-an-azure-cosmos-account"></a><a id="get-account"></a> Azure Cosmos アカウントのプロパティを取得する
 
 このコマンドを使用すると、既存の Azure Cosmos アカウントのプロパティを取得できます。
 
@@ -111,7 +111,7 @@ Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Name $accountName | Select-Object Properties
 ```
 
-### <a id="update-account"></a> Azure Cosmos アカウントを更新する
+### <a name="update-an-azure-cosmos-account"></a><a id="update-account"></a> Azure Cosmos アカウントを更新する
 
 このコマンドでは、Azure Cosmos データベース アカウントのプロパティを更新できます。 更新できるプロパティは次のとおりです。
 
@@ -184,7 +184,7 @@ Set-AzResource -ResourceType $resourceType `
     -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
     -Name $accountName -PropertyObject $CosmosDBProperties
 ```
-### <a id="multi-master"></a>Azure Cosmos アカウントの複数の書き込みリージョンを有効にする
+### <a name="enable-multiple-write-regions-for-an-azure-cosmos-account"></a><a id="multi-master"></a>Azure Cosmos アカウントの複数の書き込みリージョンを有効にする
 
 ```azurepowershell-interactive
 # Update an Azure Cosmos account from single to multi-master
@@ -204,7 +204,7 @@ Set-AzResource -ResourceType $resourceType `
     -Name $accountName -PropertyObject $CosmosDBProperties
 ```
 
-### <a id="delete-account"></a> Azure Cosmos アカウントを削除する
+### <a name="delete-an-azure-cosmos-account"></a><a id="delete-account"></a> Azure Cosmos アカウントを削除する
 
 このコマンドを使用すると、既存の Azure Cosmos アカウントを削除できます。
 
@@ -218,7 +218,7 @@ Remove-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Name $accountName
 ```
 
-### <a id="update-tags"></a> Azure Cosmos アカウントのタグを更新する
+### <a name="update-tags-of-an-azure-cosmos-account"></a><a id="update-tags"></a> Azure Cosmos アカウントのタグを更新する
 
 次の例では、Azure Cosmos アカウントに [Azure リソース タグ][azure-resource-tags]を設定する方法について説明します。
 
@@ -241,7 +241,7 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Name $accountName -Tags $tags
 ```
 
-### <a id="list-keys"></a> アカウント キーの一覧表示
+### <a name="list-account-keys"></a><a id="list-keys"></a> アカウント キーの一覧表示
 
 Azure Cosmos DB アカウントを作成すると、2 つのマスター アクセス キーが生成されます。これらのアクセス キーは、Azure Cosmos DB アカウントにアクセスする際の認証に使用できます。 2 つのアクセス キーが提供されるので、Azure Cosmos DB アカウントを中断することなくキーを再生成できます。 読み取り専用操作を認証するための読み取り専用キーも使用できます。 2 つの読み取り/書き込みキー (プライマリおよびセカンダリ) と、2 つの読み取り専用キー (プライマリおよびセカンダリ) が存在します。
 
@@ -259,7 +259,7 @@ Write-Host "PrimaryKey =" $keys.primaryMasterKey
 Write-Host "SecondaryKey =" $keys.secondaryMasterKey
 ```
 
-### <a id="list-connection-strings"></a> 接続文字列の一覧表示
+### <a name="list-connection-strings"></a><a id="list-connection-strings"></a> 接続文字列の一覧表示
 
 MongoDB アカウントの場合、MongoDB アプリをデータベース アカウントに接続する接続文字列は、次のコマンドで取得できます。
 
@@ -276,7 +276,7 @@ $keys = Invoke-AzResourceAction -Action listConnectionStrings `
 Select-Object $keys
 ```
 
-### <a id="regenerate-keys"></a> アカウント キーを再生成する
+### <a name="regenerate-account-keys"></a><a id="regenerate-keys"></a> アカウント キーを再生成する
 
 Azure Cosmos アカウントへのアクセス キーは、接続をより安全に保つために定期的に再生成する必要があります。 アカウントにはプライマリ アクセス キーとセカンダリ アクセス キーが割り当てられます。 これにより、クライアントは他の再生成中もアクセスを維持できます。 Azure Cosmos アカウントには、4 種類のキー (Primary、Secondary、PrimaryReadonly、および SecondaryReadonly) があります。
 
@@ -295,7 +295,7 @@ $keys = Invoke-AzResourceAction -Action regenerateKey `
 Select-Object $keys
 ```
 
-### <a id="enable-automatic-failover"></a>自動フェールオーバーを有効にする
+### <a name="enable-automatic-failover"></a><a id="enable-automatic-failover"></a>自動フェールオーバーを有効にする
 
 プライマリ リージョンが使用できなくなった場合に Cosmos アカウントをセカンダリ リージョンにフェールオーバーできるようにします。
 
@@ -316,14 +316,14 @@ Set-AzResource -ResourceType $resourceType `
     -Name $accountName -PropertyObject $CosmosDBProperties
 ```
 
-### <a id="modify-failover-priority"></a> フェールオーバー優先度を変更する
+### <a name="modify-failover-priority"></a><a id="modify-failover-priority"></a> フェールオーバー優先度を変更する
 
 自動フェールオーバーを使用して構成されたアカウントでは、プライマリが利用不可になった場合に、Cosmos がどのような順序でセカンダリ レプリカをプライマリに昇格するかを変更することができます。
 
 以下の例では、現在のフェールオーバー優先度が `West US 2 = 0`、`East US 2 = 1`、`South Central US = 2` であることを想定しています。
 
 > [!CAUTION]
-> `failoverPriority=0` に対する `locationName` を変更すると、Azure Cosmos アカウントの手動フェールオーバーがトリガーされます。 他の優先度を変更しても、フェールオーバーはトリガーされません。
+> `locationName` に対する `failoverPriority=0` を変更すると、Azure Cosmos アカウントの手動フェールオーバーがトリガーされます。 他の優先度を変更しても、フェールオーバーはトリガーされません。
 
 ```azurepowershell-interactive
 # Change the failover priority for an Azure Cosmos Account
@@ -347,14 +347,14 @@ Invoke-AzResourceAction -Action failoverPriorityChange `
     -ResourceGroupName $resourceGroupName -Name $accountName -Parameters $failoverPolicies
 ```
 
-### <a id="trigger-manual-failover"></a> 手動フェールオーバーをトリガーする
+### <a name="trigger-manual-failover"></a><a id="trigger-manual-failover"></a> 手動フェールオーバーをトリガーする
 
 手動フェールオーバーを使用して構成されたアカウントでは、`failoverPriority=0` に変更することでフェールオーバーを実行し、任意のセカンダリ レプリカをプライマリに昇格することができます。 この操作は、ディザスター リカバリーの訓練を開始し、ディザスター リカバリー計画をテストする際に使用できます。
 
 以下の例では、アカウントの現在のフェールオーバー優先度が `West US 2 = 0` および `East US 2 = 1` であるものとして、リージョンを反転させます。
 
 > [!CAUTION]
-> `failoverPriority=0` に対する `locationName` を変更すると、Azure Cosmos アカウントの手動フェールオーバーがトリガーされます。 他の優先度を変更しても、フェールオーバーはトリガーされません。
+> `locationName` に対する `failoverPriority=0` を変更すると、Azure Cosmos アカウントの手動フェールオーバーがトリガーされます。 他の優先度を変更しても、フェールオーバーはトリガーされません。
 
 ```azurepowershell-interactive
 # Change the failover priority for an Azure Cosmos Account
@@ -389,7 +389,7 @@ Invoke-AzResourceAction -Action failoverPriorityChange `
 * [単一の Azure Cosmos データベースを取得する](#get-db)
 * [Azure Cosmos データベースを削除する](#delete-db)
 
-### <a id="create-db"></a>Azure Cosmos データベースを作成する
+### <a name="create-an-azure-cosmos-database"></a><a id="create-db"></a>Azure Cosmos データベースを作成する
 
 ```azurepowershell-interactive
 # Create an Azure Cosmos database
@@ -407,7 +407,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName -PropertyObject $DataBaseProperties
 ```
 
-### <a id="create-db-ru"></a>共有スループットで Azure Cosmos データベースを作成する
+### <a name="create-an-azure-cosmos-database-with-shared-throughput"></a><a id="create-db-ru"></a>共有スループットで Azure Cosmos データベースを作成する
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -425,7 +425,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName -PropertyObject $DataBaseProperties
 ```
 
-### <a id="get-db-ru"></a>Azure Cosmos データベースのスループットを取得する
+### <a name="get-the-throughput-of-an-azure-cosmos-database"></a><a id="get-db-ru"></a>Azure Cosmos データベースのスループットを取得する
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -440,7 +440,7 @@ Get-AzResource -ResourceType $databaseThroughputResourceType `
     -Name $databaseThroughputResourceName  | Select-Object Properties
 ```
 
-### <a id="list-db"></a>アカウント内のすべての Azure Cosmos データベースを取得する
+### <a name="get-all-azure-cosmos-databases-in-an-account"></a><a id="list-db"></a>アカウント内のすべての Azure Cosmos データベースを取得する
 
 ```azurepowershell-interactive
 # Get all databases in an Azure Cosmos account
@@ -453,7 +453,7 @@ Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName  | Select-Object Properties
 ```
 
-### <a id="get-db"></a>単一の Azure Cosmos データベースを取得する
+### <a name="get-a-single-azure-cosmos-database"></a><a id="get-db"></a>単一の Azure Cosmos データベースを取得する
 
 ```azurepowershell-interactive
 # Get a single database in an Azure Cosmos account
@@ -467,7 +467,7 @@ Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName | Select-Object Properties
 ```
 
-### <a id="delete-db"></a>Azure Cosmos データベースを削除する
+### <a name="delete-an-azure-cosmos-database"></a><a id="delete-db"></a>Azure Cosmos データベースを削除する
 
 ```azurepowershell-interactive
 # Delete a database in an Azure Cosmos account
@@ -495,7 +495,7 @@ Remove-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/data
 * [データベース内の 1 つの Azure Cosmos コンテナーを取得する](#get-container)
 * [Azure Cosmos コンテナーを削除する](#delete-container)
 
-### <a id="create-container"></a>Azure Cosmos コンテナーを作成する
+### <a name="create-an-azure-cosmos-container"></a><a id="create-container"></a>Azure Cosmos コンテナーを作成する
 
 ```azurepowershell-interactive
 # Create an Azure Cosmos container with default indexes and throughput at 400 RU
@@ -521,7 +521,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName -PropertyObject $ContainerProperties
 ```
 
-### <a id="create-container-big-pk"></a>大きいパーティション キー サイズで Azure Cosmos コンテナーを作成する
+### <a name="create-an-azure-cosmos-container-with-a-large-partition-key-size"></a><a id="create-container-big-pk"></a>大きいパーティション キー サイズで Azure Cosmos コンテナーを作成する
 
 ```azurepowershell-interactive
 # Create an Azure Cosmos container with a large partition key value (version = 2)
@@ -548,7 +548,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName -PropertyObject $ContainerProperties
 ```
 
-### <a id="get-container-ru"></a>Azure Cosmos コンテナーのスループットを取得する
+### <a name="get-the-throughput-of-an-azure-cosmos-container"></a><a id="get-container-ru"></a>Azure Cosmos コンテナーのスループットを取得する
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -563,7 +563,7 @@ Get-AzResource -ResourceType $containerThroughputResourceType `
     -Name $containerThroughputResourceName  | Select-Object Properties
 ```
 
-### <a id="create-container-ru"></a>共有スループットを使用して Azure Cosmos コンテナーを作成する
+### <a name="create-an-azure-cosmos-container-with-shared-throughput"></a><a id="create-container-ru"></a>共有スループットを使用して Azure Cosmos コンテナーを作成する
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -588,7 +588,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName -PropertyObject $ContainerProperties 
 ```
 
-### <a id="create-container-custom-index"></a>カスタム インデックス ポリシーを使用して Azure Cosmos コンテナーを作成する
+### <a name="create-an-azure-cosmos-container-with-custom-index-policy"></a><a id="create-container-custom-index"></a>カスタム インデックス ポリシーを使用して Azure Cosmos コンテナーを作成する
 
 ```azurepowershell-interactive
 # Create a container with a custom indexing policy
@@ -624,7 +624,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName -PropertyObject $ContainerProperties
 ```
 
-### <a id="create-container-no-index"></a>インデックス作成を無効にして Azure Cosmos コンテナーを作成する
+### <a name="create-an-azure-cosmos-container-with-indexing-turned-off"></a><a id="create-container-no-index"></a>インデックス作成を無効にして Azure Cosmos コンテナーを作成する
 
 ```azurepowershell-interactive
 # Create an Azure Cosmos container with no indexing
@@ -653,7 +653,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName -PropertyObject $ContainerProperties
 ```
 
-### <a id="create-container-unique-key-ttl"></a>一意のキー ポリシーと TTL を使用して Azure Cosmos コンテナーを作成する
+### <a name="create-an-azure-cosmos-container-with-unique-key-policy-and-ttl"></a><a id="create-container-unique-key-ttl"></a>一意のキー ポリシーと TTL を使用して Azure Cosmos コンテナーを作成する
 
 ```azurepowershell-interactive
 # Create a container with a unique key policy and TTL of one day
@@ -696,7 +696,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName -PropertyObject $ContainerProperties
 ```
 
-### <a id="create-container-lww"></a>競合解決を使用して Azure Cosmos コンテナーを作成する
+### <a name="create-an-azure-cosmos-container-with-conflict-resolution"></a><a id="create-container-lww"></a>競合解決を使用して Azure Cosmos コンテナーを作成する
 
 ストアド プロシージャを使用する競合解決ポリシーを作成するには、`"mode"="custom"` を設定し、ストアド プロシージャの名前として解決パスを設定します (`"conflictResolutionPath"="myResolverStoredProcedure"`)。 すべての競合を ConflictsFeed に書き込み、別々に処理するには、`"mode"="custom"` と `"conflictResolutionPath"=""` を設定します。
 
@@ -728,7 +728,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName -PropertyObject $ContainerProperties
 ```
 
-### <a id="list-containers"></a>データベース内のすべての Azure Cosmos コンテナーを一覧表示する
+### <a name="list-all-azure-cosmos-containers-in-a-database"></a><a id="list-containers"></a>データベース内のすべての Azure Cosmos コンテナーを一覧表示する
 
 ```azurepowershell-interactive
 # List all Azure Cosmos containers in a database
@@ -742,7 +742,7 @@ Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName | Select-Object Properties
 ```
 
-### <a id="get-container"></a>データベース内の 1 つの Azure Cosmos コンテナーを取得する
+### <a name="get-a-single-azure-cosmos-container-in-a-database"></a><a id="get-container"></a>データベース内の 1 つの Azure Cosmos コンテナーを取得する
 
 ```azurepowershell-interactive
 # Get a single Azure Cosmos container in a database
@@ -757,7 +757,7 @@ Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName | Select-Object Properties
 ```
 
-### <a id="delete-container"></a>Azure Cosmos コンテナーを削除する
+### <a name="delete-an-azure-cosmos-container"></a><a id="delete-container"></a>Azure Cosmos コンテナーを削除する
 
 ```azurepowershell-interactive
 # Delete an Azure Cosmos container
@@ -771,7 +771,7 @@ Remove-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/data
     -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName -Name $resourceName
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [すべての PowerShell サンプル](powershell-samples.md)
 * [Azure Cosmos アカウントの管理方法](how-to-manage-database-account.md)

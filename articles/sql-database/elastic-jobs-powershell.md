@@ -12,10 +12,10 @@ ms.author: joke
 ms.reviwer: sstein
 ms.date: 03/13/2019
 ms.openlocfilehash: 74a72df9d8c0bc8a578fea57ab81fb496f8e6add
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74420358"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>PowerShell を使用したエラスティック ジョブ エージェントの作成
@@ -29,7 +29,7 @@ ms.locfileid: "74420358"
 > * ジョブによってターゲット上でスクリプトを実行できるようにジョブ認証情報を作成する
 > * ジョブを実行するターゲット (サーバー、エラスティック プール、データベース、シャード マップ) を定義する
 > * エージェントが接続してジョブを実行できるように、ターゲット データベースにデータベース スコープ資格情報を作成する
-> * ジョブを作成する
+> * ジョブの作成
 > * ジョブにジョブ ステップを追加する
 > * ジョブの実行を開始する
 > * ジョブを監視する
@@ -236,7 +236,7 @@ $job | Add-AzSqlElasticJobStep -Name "step1" -TargetGroupName $serverGroup.Targe
 $job | Add-AzSqlElasticJobStep -Name "step2" -TargetGroupName $serverGroupExcludingDb2.TargetGroupName -CredentialName $jobCred.CredentialName -CommandText $sqlText2
 ```
 
-### <a name="run-the-job"></a>ジョブを実行する
+### <a name="run-the-job"></a>ジョブの実行
 
 ジョブをすぐに開始するには、次のコマンドを実行します。
 
@@ -287,7 +287,7 @@ $jobExecution | Get-AzSqlElasticJobTargetExecution -Count 2
 |**Skipped** | 同じジョブ手順の別の実行が同じターゲットに対して既に実行されていたため、ジョブの実行はスキップされました。|
 |**WaitingForChildJobExecutions** | ジョブの実行は、その子の実行が完了するまで待機しています。|
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソース グループを削除して、このチュートリアルで作成した Azure リソースを削除します。
 
@@ -298,7 +298,7 @@ $jobExecution | Get-AzSqlElasticJobTargetExecution -Count 2
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、データベースのセットに対して Transact-SQL スクリプトを実行しました。 次のタスクを実行する方法を学習しました。
 
@@ -307,7 +307,7 @@ Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 > * ジョブによってターゲット上でスクリプトを実行できるようにジョブ認証情報を作成する
 > * ジョブを実行するターゲット (サーバー、エラスティック プール、データベース、シャード マップ) を定義する
 > * エージェントが接続してジョブを実行できるように、ターゲット データベースにデータベース スコープ資格情報を作成する
-> * ジョブを作成する
+> * ジョブの作成
 > * ジョブにジョブ ステップを追加する
 > * ジョブの実行を開始する
 > * ジョブの監視

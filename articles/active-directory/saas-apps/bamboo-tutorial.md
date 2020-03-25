@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と SAML SSO for Bamboo by resolution GmbH の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と SAML SSO for Bamboo by resolution GmbH の統合 | Microsoft Docs'
 description: Azure Active Directory と SAML SSO for Bamboo by resolution GmbH の間のシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 044a2f9a9ecd0ccceb99ce7999af7e2c8578950d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67106533"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bamboo-by-resolution-gmbh"></a>チュートリアル:Azure Active Directory と SAML SSO for Bamboo by resolution GmbH の統合
+# <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bamboo-by-resolution-gmbh"></a>チュートリアル: Azure Active Directory と SAML SSO for Bamboo by resolution GmbH の統合
 
 このチュートリアルでは、SAML SSO for Bamboo by resolution GmbH と Azure Active Directory (Azure AD) を統合する方法について説明します。
 SAML SSO for Bamboo by resolution GmbH と Azure AD の統合には、次の利点があります。
@@ -144,7 +144,7 @@ SAML SSO for Bamboo by resolution GmbH で Azure AD シングル サインオン
 
 1. [SECURITY]\(セキュリティ\) セクションに移動し、メニュー バーの **[SAML SingleSignOn]** をクリックします。
 
-    ![SAML Single](./media/bamboo-tutorial/tutorial_bamboo_samlsingle.png)
+    ![Samlsingle](./media/bamboo-tutorial/tutorial_bamboo_samlsingle.png)
 
 1. **[SAML SingleSignOn Plugin Configuration]\(SAML SingleSignOn プラグインの構成\)** ページで、 **[Add idp]\(IDP の追加\)** をクリックします。
 

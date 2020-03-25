@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 01/07/2020
 ms.custom: include file
 ms.openlocfilehash: 9ccdc7a438d1dade534d39dc97a39a3bdae37dc4
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75895431"
 ---
 1. [Azure portal](https://portal.azure.com) にサインインする
@@ -33,10 +33,10 @@ ms.locfileid: "75895431"
    [![リソースのデプロイを作成して確認する](./media/create-digital-twins-portal/azure-create-and-confirm-resource.png)](./media/create-digital-twins-portal/azure-create-and-confirm-resource.png#lightbox)
 
 1. **[Digital Twins]** ウィンドウで、次の情報を入力します。
-   * **[リソース名]** :Digital Twins インスタンスの一意の名前を作成します。
-   * **サブスクリプション**:この Digital Twins インスタンスを作成するために使用するサブスクリプションを選択します。 
-   * **[リソース グループ]** :Digital Twins インスタンスの[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)を選択または作成します。
-   * **[場所]** :使用しているデバイスに最も近い場所を選択します。
+   * **[リソース名]** : Digital Twins インスタンスの一意の名前を作成します。
+   * **[サブスクリプション]** : この Digital Twins インスタンスを作成するために使用するサブスクリプションを選択します。 
+   * **[リソース グループ]** : Digital Twins インスタンスの[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)を選択または作成します。
+   * **[場所]** : 使用しているデバイスに最も近い場所を選択します。
 
      [![情報が入力されている [Digital Twins] ウィンドウ](./media/create-digital-twins-portal/create-digital-twins-param.png)](./media/create-digital-twins-portal/create-digital-twins-param.png#lightbox)
 

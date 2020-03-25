@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Wrike の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Wrike の統合 | Microsoft Docs'
 description: Azure Active Directory と Wrike の間にシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 47af0a43e4d081f50fedf685d46347f0f36233fd
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68825628"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-wrike"></a>チュートリアル:Azure Active Directory と Wrike の統合
+# <a name="tutorial-azure-active-directory-integration-with-wrike"></a>チュートリアル: Azure Active Directory と Wrike の統合
 
 このチュートリアルでは、Wrike と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Wrike と Azure AD の統合には、次の利点があります。

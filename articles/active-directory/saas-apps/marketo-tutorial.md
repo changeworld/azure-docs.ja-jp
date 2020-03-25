@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Marketo の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Marketo の統合 | Microsoft Docs'
 description: Azure Active Directory と Marketo の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 0488fd1e9bc10d61d6660745acfc8c39becf3a89
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73159463"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-marketo"></a>チュートリアル:Marketo と Azure Active Directory の統合
+# <a name="tutorial-azure-active-directory-integration-with-marketo"></a>チュートリアル: Marketo と Azure Active Directory の統合
 
 このチュートリアルでは、Marketo と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Marketo と Azure AD の統合には、次の利点があります。
@@ -280,7 +280,7 @@ Marketo で Azure AD シングル サインオンを構成するには、次の�
    
     c. テキスト ボックスに **[姓]** を入力します。
    
-    d. **[次へ]** をクリックします
+    d. **[次へ]** をクリックします。
 
 6. **[アクセス許可]** タブで **[userRoles]** を選択して **[次へ]** をクリックします。
    

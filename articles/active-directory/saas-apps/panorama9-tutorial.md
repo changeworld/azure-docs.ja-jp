@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Panorama9 の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Panorama9 の統合 | Microsoft Docs'
 description: Azure Active Directory と Panorama9 の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: c88088b804f90769512d33a5e96fdedc5ce6fba8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67094925"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>チュートリアル:Azure Active Directory と Panorama9 の統合
+# <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>チュートリアル: Azure Active Directory と Panorama9 の統合
 
 このチュートリアルでは、Panorama9 と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Panorama9 と Azure AD の統合には、次の利点があります。
@@ -140,17 +140,17 @@ Panorama9 で Azure AD シングル サインオンを構成するには、次�
 
 3. **[拡張機能]** ダイアログで、 **[シングル サインオン]** をクリックします。
    
-    ![シングル サインオン](./media/panorama9-tutorial/ic790024.png "Single Sign-On")
+    ![シングル サインオン](./media/panorama9-tutorial/ic790024.png "[Single Sign-On]")
 
 4. **[設定]** セクションで、次の手順に従います。
    
-    ![設定](./media/panorama9-tutorial/ic790025.png "Settings")
+    ![[設定]](./media/panorama9-tutorial/ic790025.png "設定")
    
     a. **[Identity provider URL]\(ID プロバイダー URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
    
     b. **[Certificate Fingerprint]\(証明書のフィンガープリント\)** テキスト ボックスに、Azure Portal からコピーした証明書の **[拇印]** 値を貼り付けます。    
          
-5. **[Save]** をクリックします。
+5. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -214,11 +214,11 @@ Panorama9 の場合、プロビジョニングは手動で行います。
 
 2. 上部のメニューで、 **[管理]** 、 **[ユーザー]** の順にクリックします。
    
-    ![ユーザー](./media/panorama9-tutorial/ic790027.png "Users")
+    ![ユーザー](./media/panorama9-tutorial/ic790027.png "ユーザー")
 
 3. [ユーザー] セクションの **+** をクリックして新しいユーザーを追加します。
 
-    ![ユーザー](./media/panorama9-tutorial/ic790028.png "Users")
+    ![ユーザー](./media/panorama9-tutorial/ic790028.png "ユーザー")
 
 4. [ユーザー データ] セクションに移動し、 **[電子メール]** テキストボックスにプロビジョニングする有効な Azure Active Directory ユーザーの電子メール アドレスを入力します。
 
