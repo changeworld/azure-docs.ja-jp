@@ -6,7 +6,7 @@
       items:
         - name: Translator Text API とは
           href: translator-info-overview.md
-    - name: クイック スタート
+    - name: クイックスタート
       items:
         - name: テキストを翻訳する
           href: quickstart-translate.md
@@ -32,7 +32,7 @@
           href: customization.md
         - name: API が文字数をカウントする方法
           href: character-counts.md
-    - name: ハウツー ガイド
+    - name: 操作方法ガイド
       items:
         - name: Translator Text API にサインアップする
           href: translator-text-how-to-signup.md
@@ -46,12 +46,6 @@
           href: prevent-translation.md
         - name: 動的ディクショナリ機能を使用する
           href: dynamic-dictionary.md
-        - name: コンテナーの使用
-          items:
-            - name: コンテナーのインストールと実行
-              href: how-to-install-containers.md
-            - name: コンテナーを構成する
-              href: translator-text-container-config.md
         - name: ファイアウォールの内側で翻訳する
           href: firewalls.md
     - name: サンプル
@@ -102,7 +96,7 @@
       items:
         - name: コード サンプル (GitHub)
           href: 'https://aka.ms/TranslatorGitHub'
-        - name: FAQ
+        - name: よく寄せられる質問
           href: 'https://www.microsoft.com/translator/faq.aspx'
         - name: 言語とリージョンのサポート
           href: language-support.md
@@ -122,7 +116,7 @@
       items:
         - name: Custom Translator とは
           href: custom-translator/overview.md
-    - name: クイック スタート
+    - name: クイックスタート
       items:
         - name: カスタム モデルの構築
           href: custom-translator/quickstart-build-deploy-custom-model.md
@@ -144,7 +138,7 @@
           href: custom-translator/training-and-model.md
         - name: BLEU スコア
           href: custom-translator/what-is-bleu-score.md
-    - name: ハウツー ガイド
+    - name: 操作方法ガイド
       items:
         - name: プロジェクトの作成
           href: custom-translator/how-to-create-project.md
@@ -164,19 +158,21 @@
           href: custom-translator/how-to-manage-settings.md
         - name: Hub からの移行
           href: custom-translator/how-to-migrate.md
-        - name: サポートされていない言語のデプロイ
+        - name: サポートされていない言語の展開
           href: custom-translator/unsupported-language-deployments.md
     - name: リソース
       items:
-        - name: 言語のサポート
+        - name: 言語サポート
           href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
         - name: 用語集
           href: custom-translator/glossary.md
-        - name: FAQ
+        - name: よく寄せられる質問
           href: custom-translator/faq.md
         - name: 価格
           href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
         - name: コンプライアンス
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+        - name: 暗号化
+          href: translator-encryption-of-data-at-rest.md
         - name: スタック オーバーフロー
           href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'

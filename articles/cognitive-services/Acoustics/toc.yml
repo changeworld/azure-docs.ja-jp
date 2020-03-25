@@ -3,7 +3,7 @@
   items:
     - name: Project Acoustics とは
       href: what-is-acoustics.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: Unity でのクイック スタート
       href: unity-quickstart.md

@@ -7,7 +7,7 @@
           items:
             - name: Data Box とは
               href: data-box-overview.md
-        - name: クイック スタート
+        - name: クイックスタート
           expanded: true
           items:
             - name: 設定 - Azure portal
@@ -48,7 +48,7 @@
               href: data-box-limits.md
             - name: セキュリティを確認する
               href: data-box-security.md
-            - name: FAQ
+            - name: よく寄せられる質問
               href: data-box-faq.md
         - name: 方法
           items:
@@ -70,7 +70,7 @@
                   href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
                 - name: HDFS ストアから
                   href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
-            - name: トラブルシューティング
+            - name: '[トラブルシューティング]'
               items:
                 - name: Data Box の問題
                   href: data-box-troubleshoot.md
@@ -82,7 +82,7 @@
           items:
             - name: Data Box ディスクとは
               href: data-box-disk-overview.md
-        - name: クイック スタート
+        - name: クイックスタート
           expanded: true
           items:
             - name: 設定 - Azure portal
@@ -107,13 +107,13 @@
               href: data-box-disk-limits.md
             - name: セキュリティを確認する
               href: data-box-disk-security.md
-            - name: FAQ
+            - name: よく寄せられる質問
               href: data-box-disk-faq.md
         - name: 方法
           items:
             - name: Azure Portal で管理する
               href: data-box-portal-ui-admin.md
-            - name: トラブルシューティング
+            - name: '[トラブルシューティング]'
               items:
                 - name: ロック解除の問題
                   href: data-box-disk-troubleshoot-unlock.md
@@ -131,7 +131,7 @@
           items:
             - name: Data Box Heavy とは
               href: data-box-heavy-overview.md
-        - name: クイック スタート
+        - name: クイックスタート
           items:
             - name: 設定 - Azure portal
               href: data-box-heavy-quickstart-portal.md

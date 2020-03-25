@@ -121,7 +121,7 @@
           href: move-across-regions-internal-load-balancer-portal.md
         - name: 内部ロード バランサー - PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       items:
         - name: Azure Load Balancer のトラブルシューティング
           href: load-balancer-troubleshoot.md

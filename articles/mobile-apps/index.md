@@ -1,18 +1,18 @@
 ---
 title: Visual Studio App Center と Azure サービスを使用してモバイル アプリケーションを構築する
 description: Visual Studio App Center などのサービスと他の Azure サービスを使用して、実際のモバイル アプリケーションを構築する方法について説明します。
-author: elamalani
+author: codemillmatt
 ms.assetid: 98899889-9b3c-4faf-8588-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: 6e60aa223b3c4f362ed13411c54212e9d1fa2c87
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: 19d317ca564f925562994a5f90cd3892d0ee1d08
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454417"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80240849"
 ---
 # <a name="mobile-application-development-in-microsoft"></a>Microsoft におけるモバイル アプリケーション開発
 意思決定者、開発チーム、および IT 部門は、次のような堅固なモバイル アプリケーション開発戦略を構築する必要があります。

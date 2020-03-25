@@ -1,5 +1,5 @@
 ---
-title: Azure portal での請求先アカウントの表示 | Microsoft Docs
+title: Azure portal での請求先アカウントの表示
 description: Azure portal で請求先アカウントを表示する方法について説明します。
 author: amberbhargava
 tags: billing
@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: banders
-ms.openlocfilehash: 0117496642c17db97535eca74aad334f1517a665
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 4dab11afb2ddd910a4d6619d088031279ebf3172
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199468"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238008"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Azure portal での課金アカウントとスコープ
 
@@ -56,7 +56,7 @@ Azure portal では、次の種類の課金アカウントがサポートされ�
 
 ![MCA の階層を示すスクリーンショット](./media/view-all-accounts/mca-hierarchy.png)
 
-|Scope  |処理手順  |
+|Scope  |タスク  |
 |---------|---------|
 |請求先アカウント     |   Microsoft の製品およびサービスを使用するために顧客が承諾する契約を表します。 1 つまたは複数の課金プロファイルが含まれます。 |
 |請求プロファイル     |   請求書とそれに関連する課金情報 (支払い方法、請求先住所など) を表します。 1 つまたは複数の請求書セクションが含まれます。 |
@@ -66,7 +66,7 @@ Azure portal では、次の種類の課金アカウントがサポートされ�
 
 ![MPA の階層を示すスクリーンショット](./media/view-all-accounts/mpa-hierarchy.png)
 
-|Scope  |処理手順  |
+|Scope  |タスク  |
 |---------|---------|
 |請求先アカウント     |   新しいコマース エクスペリエンスで顧客の Microsoft 製品およびサービスを管理するためのパートナー契約を表します。 1 つまたは複数の課金プロファイルおよび顧客が含まれます。   |
 |請求プロファイル     |   通貨の請求書を表します。     |

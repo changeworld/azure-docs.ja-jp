@@ -1,20 +1,20 @@
 ---
 title: Azure で Cloudyn の予算を管理する
 description: この記事では、Cloudyn で予算を短時間で作成し、管理を始める方法について説明します。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: vitavor
 ms.custom: seodec18
-ms.openlocfilehash: 1436c9b3b612a231760b6cdb04b5166fb45d7962
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ROBOTS: NOINDEX
+ms.openlocfilehash: f2f8fdbf2b470e9f1eb0d82c4c6de230c2a9e78f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201137"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79464157"
 ---
 # <a name="manage-azure-budgets-with-cloudyn"></a>Cloudyn で Azure の予算を管理する
 
@@ -27,6 +27,8 @@ ms.locfileid: "77201137"
 予算レポートには、割り当てられた予算が表示されます。 ユーザーは、消費予定に対する支出の未達、到達、超過を時系列で確認できます。 予算レポートの上部にある **[フィールドの表示/非表示]** を選択すると、コスト、予算、累積コスト、合計予算を表示できます。
 
 Azure Cost Management には Cloudyn と同様の機能があります。 Azure Cost Management は、Azure のネイティブのコスト管理ソリューションです。 このソリューションにより、コストの分析、予算の作成と管理、データのエクスポート、最適化のための推奨事項の検討と対処を行うことで、費用を節約することができます。 Cost Management での予算の詳細については、[予算の作成と管理](../costs/tutorial-acm-create-budgets.md)に関するページを参照してください。
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="create-budgets"></a>予算を作成する
 

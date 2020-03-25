@@ -13,10 +13,10 @@ metadata:
   ms.author: alkohli
   ms.date: 11/04/2019
   ms.openlocfilehash: 61cda4ccab69396c13581598f399104b0a4fb181
-  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/04/2019
+  ms.lasthandoff: 03/25/2020
   ms.locfileid: "73570113"
 landingContent:
 - title: Azure Stack Edge と Data Box Gateway について
@@ -49,7 +49,7 @@ landingContent:
       url: data-box-gateway-limits.md
     - text: Azure Stack Edge の制限
       url: data-box-edge-limits.md
-- title: デプロイ
+- title: 配置
   linkLists:
   - linkListType: tutorial
     links:
@@ -67,7 +67,7 @@ landingContent:
     links:
     - text: サンプル - Azure Stack Edge 向けの C#
       url: https://docs.microsoft.com/samples/azure-samples/data-box-edge-csharp-modules/data-box-edge-csharp-modules/
-- title: 管理
+- title: 管理する
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -79,7 +79,7 @@ landingContent:
       url: data-box-edge-manage-compute.md
     - text: Edge コンピューティングのネットワーク
       url: data-box-edge-extend-compute-access-modules.md
-- title: トラブルシューティング
+- title: '[トラブルシューティング]'
   linkLists:
   - linkListType: how-to-guide
     links:

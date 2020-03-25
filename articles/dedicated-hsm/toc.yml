@@ -22,7 +22,7 @@
       href: physical-security.md
     - name: サポート
       href: supportability.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: デプロイ アーキテクチャの決定
       href: deployment-architecture.md

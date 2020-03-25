@@ -5,15 +5,14 @@ author: bandersmsft
 tags: billing
 ms.service: cost-management-billing
 ms.topic: reference
-ms.workload: billing
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 68d838bf6d2df72299df2796f3cc47c463ba95be
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: f2d7398be1db6760ebe532d3d726373d8c78e0c7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200899"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79202949"
 ---
 # <a name="azure-consumption-api-overview"></a>Azure Consumption API の概要
 
@@ -102,7 +101,7 @@ Enterprise のお客様は、この API を使用して、リソース、リソ�
 
 -   **Azure ロールベースのアクセス制御** - [Azure portal](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)、または [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/overview)を使用して、アクセス ポリシーを構成し、サブスクリプションの使用状況データにアクセスできるユーザーやアプリケーションを指定できます。 呼び出し元は、認証に Azure Active Directory トークンを使用する必要があります。 また、呼び出し元が特定の Azure サブスクリプションの使用状況データにアクセスするには、請求閲覧者、閲覧者、所有者、共同作成者のいずれかのロールに呼び出し元を追加します。
 -   **フィルタリング** - 次のフィルターを使用して、推奨の結果を調整します。
-    - Scope
+    - スコープ
     - ルックバック期間
 -   **別の種類のオファーの予約情報** - 予約情報は、現在、Enterprise および Web Direct のお客様が利用できます。
 

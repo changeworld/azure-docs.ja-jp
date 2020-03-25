@@ -13,13 +13,13 @@ metadata:
   ms.author: spelluru
   ms.date: 09/26/2019
   ms.openlocfilehash: 1cfb86a37068d4cd928081446e6bf9ad381bbd86
-  ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/23/2019
+  ms.lasthandoff: 03/25/2020
   ms.locfileid: "72790962"
 landingContent:
-- title: 作業開始
+- title: はじめに
   linkLists:
   - linkListType: overview
     links:
@@ -79,7 +79,7 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: カスタム イメージと数式
+    - text: カスタム イメージと[数式]
       url: devtest-lab-comparing-vm-base-image-types.md
   - linkListType: how-to-guide
     links:

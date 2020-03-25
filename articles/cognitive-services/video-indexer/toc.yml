@@ -5,16 +5,16 @@
       href: ../../media-services/video-indexer/video-indexer-overview.md
     - name: 概念
       href: ../../media-services/video-indexer/video-indexer-concepts.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
-    - name: 作業開始
+    - name: はじめに
       href: ../../media-services/video-indexer/video-indexer-get-started.md
 - name: ハウツー ガイド
   items:
     - name: v1 から v2 への移行
       href: ../../media-services/video-indexer/migrate-from-v1-to-v2.md
-    - name: Azure への接続
+    - name: Azure に接続する
       href: ../../media-services/video-indexer/connect-to-azure.md
     - name: Azure に接続されたアカウントの管理
       href: ../../media-services/video-indexer/manage-account-connected-to-azure.md
