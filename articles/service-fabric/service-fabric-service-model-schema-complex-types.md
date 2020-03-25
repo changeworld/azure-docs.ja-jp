@@ -19,7 +19,7 @@ ms.locfileid: "75457709"
 |Attribute|値|
 |---|---|
 |content|1 個の要素、1 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|AppInstanceDefinitionType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -58,7 +58,7 @@ ms.locfileid: "75457709"
 |Attribute|値|
 |---|---|
 |name|Name|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
@@ -76,7 +76,7 @@ ms.locfileid: "75457709"
 |Attribute|値|
 |---|---|
 |content|2 個の要素、2 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ApplicationHealthPolicyType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -130,9 +130,9 @@ ms.locfileid: "75457709"
 |Attribute|値|
 |---|---|
 |name|ConsiderWarningAsError|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
-|既定値 (default)|false|
+|default|false|
 
 #### <a name="maxpercentunhealthydeployedapplications"></a>MaxPercentUnhealthyDeployedApplications
 異常な可能性のあるデプロイされたアプリケーションの最大許容パーセンテージを指定します。この値を超えるとアプリケーションはエラーの状態と見なされます。 これは、デプロイされた異常なアプリケーションの数を、クラスター内でそのアプリケーションが現在デプロイされているノードの数で除算して計算されます。 切り上げ計算が実行され、少数のノードに対する 1 つのエラーは許容されます。 既定のパーセンテージ:0。
@@ -140,9 +140,9 @@ ms.locfileid: "75457709"
 |Attribute|値|
 |---|---|
 |name|MaxPercentUnhealthyDeployedApplications|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
-|既定値 (default)|0|
+|default|0|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
 
@@ -152,7 +152,7 @@ ms.locfileid: "75457709"
 |Attribute|値|
 |---|---|
 |name|DefaultServiceTypeHealthPolicy|
-|型|[ServiceTypeHealthPolicyType](#servicetypehealthpolicytype-complextype)|
+|type|[ServiceTypeHealthPolicyType](#servicetypehealthpolicytype-complextype)|
 |minOccurs|0|
 
 #### <a name="servicetypehealthpolicy"></a>ServiceTypeHealthPolicy
@@ -170,7 +170,7 @@ Microsoft Azure Service Fabric アプリケーションのインスタンスに�
 |Attribute|値|
 |---|---|
 |content|4 個の要素、1 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ApplicationInstanceType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -213,7 +213,7 @@ ApplicationInstance ドキュメントのバージョン。
 |Attribute|値|
 |---|---|
 |name|Version|
-|型|xs:int|
+|type|xs:int|
 |use|required|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
@@ -236,14 +236,14 @@ ApplicationInstance ドキュメントのバージョン。
 |Attribute|値|
 |---|---|
 |name|ServiceTemplates|
-|型|[ServiceTemplatesType](#servicetemplatestype-complextype)|
+|type|[ServiceTemplatesType](#servicetemplatestype-complextype)|
 
 #### <a name="defaultservices"></a>DefaultServices
 
 |Attribute|値|
 |---|---|
 |name|DefaultServices|
-|型|[DefaultServicesType](#defaultservicestype-complextype)|
+|type|[DefaultServicesType](#defaultservicestype-complextype)|
 
 ## <a name="applicationmanifesttype-complextype"></a>ApplicationManifestType complexType
 宣言によって、アプリケーションの種類とバージョンについて説明します。 構成要素のサービスの 1 つまたは複数のサービス マニフェストを参照して、アプリケーションの種類を構成します。 構成要素のサービスの構成設定は、パラメーター化されたアプリケーション設定を使用してオーバーライドできます。 既定のサービス、サービス テンプレート、プリンシパル、ポリシー、診断のセットアップ、および証明書もアプリケーション レベルで宣言できます。
@@ -251,7 +251,7 @@ ApplicationInstance ドキュメントのバージョン。
 |Attribute|値|
 |---|---|
 |content|9 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ApplicationManifestType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -361,7 +361,7 @@ ApplicationInstance ドキュメントのバージョン。
 |Attribute|値|
 |---|---|
 |name|説明|
-|型|xs:string|
+|type|xs:string|
 |minOccurs|0|
 
 #### <a name="parameters"></a>パラメーター
@@ -386,7 +386,7 @@ ApplicationInstance ドキュメントのバージョン。
 |Attribute|値|
 |---|---|
 |name|ServiceTemplates|
-|型|[ServiceTemplatesType](#servicetemplatestype-complextype)|
+|type|[ServiceTemplatesType](#servicetemplatestype-complextype)|
 |minOccurs|0|
 
 #### <a name="defaultservices"></a>DefaultServices
@@ -394,7 +394,7 @@ ApplicationInstance ドキュメントのバージョン。
 |Attribute|値|
 |---|---|
 |name|DefaultServices|
-|型|[DefaultServicesType](#defaultservicestype-complextype)|
+|type|[DefaultServicesType](#defaultservicestype-complextype)|
 |minOccurs|0|
 
 #### <a name="principals"></a>プリンシパル
@@ -402,7 +402,7 @@ ApplicationInstance ドキュメントのバージョン。
 |Attribute|値|
 |---|---|
 |name|プリンシパル|
-|型|[SecurityPrincipalsType](#securityprincipalstype-complextype)|
+|type|[SecurityPrincipalsType](#securityprincipalstype-complextype)|
 |minOccurs|0|
 
 #### <a name="policies"></a>ポリシー
@@ -410,7 +410,7 @@ ApplicationInstance ドキュメントのバージョン。
 |Attribute|値|
 |---|---|
 |name|ポリシー|
-|型|[ApplicationPoliciesType](#applicationpoliciestype-complextype)|
+|type|[ApplicationPoliciesType](#applicationpoliciestype-complextype)|
 |minOccurs|0|
 
 #### <a name="diagnostics"></a>診断
@@ -418,7 +418,7 @@ ApplicationInstance ドキュメントのバージョン。
 |Attribute|値|
 |---|---|
 |name|診断|
-|型|[DiagnosticsType](#diagnosticstype-complextype)|
+|type|[DiagnosticsType](#diagnosticstype-complextype)|
 |minOccurs|0|
 
 #### <a name="certificates"></a>証明書
@@ -435,7 +435,7 @@ ApplicationPackage は、ノードに必要なバージョン管理されたア�
 |Attribute|値|
 |---|---|
 |content|2 個の要素、2 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ApplicationPackageType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -480,7 +480,7 @@ ApplicationPackage は、ノードに必要なバージョン管理されたア�
 |Attribute|値|
 |---|---|
 |name|ApplicationTypeName|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="contentchecksum"></a>ContentChecksum
@@ -489,7 +489,7 @@ ApplicationPackage は、ノードに必要なバージョン管理されたア�
 |Attribute|値|
 |---|---|
 |name|ContentChecksum|
-|型|xs:string|
+|type|xs:string|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
 
@@ -498,7 +498,7 @@ ApplicationPackage は、ノードに必要なバージョン管理されたア�
 |Attribute|値|
 |---|---|
 |name|DigestedEnvironment|
-|型|[EnvironmentType](#environmenttype-complextype)|
+|type|[EnvironmentType](#environmenttype-complextype)|
 
 #### <a name="digestedcertificates"></a>DigestedCertificates
 
@@ -512,7 +512,7 @@ ApplicationPackage は、ノードに必要なバージョン管理されたア�
 |Attribute|値|
 |---|---|
 |content|4 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ApplicationPoliciesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -587,7 +587,7 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |Attribute|値|
 |---|---|
 |name|HealthPolicy|
-|型|[ApplicationHealthPolicyType](#applicationhealthpolicytype-complextype)|
+|type|[ApplicationHealthPolicyType](#applicationhealthpolicytype-complextype)|
 |minOccurs|0|
 
 #### <a name="securityaccesspolicies"></a>SecurityAccessPolicies
@@ -604,7 +604,7 @@ ETW イベントの Azure BLOB 格納先について説明します。 Azure 環
 |Attribute|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|AzureBlobETWType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -628,7 +628,7 @@ ETW イベントの Azure BLOB 格納先について説明します。 Azure 環
 |Attribute|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|AzureBlobType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -651,7 +651,7 @@ ETW イベントの Azure BLOB 格納先について説明します。 Azure 環
 |Attribute|値|
 |---|---|
 |content|0 個の要素、3 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|AzureRoleType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -671,7 +671,7 @@ ETW イベントの Azure BLOB 格納先について説明します。 Azure 環
 |Attribute|値|
 |---|---|
 |name|RoleName|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="nodetyperef"></a>NodeTypeRef
@@ -679,7 +679,7 @@ ETW イベントの Azure BLOB 格納先について説明します。 Azure 環
 |Attribute|値|
 |---|---|
 |name|NodeTypeRef|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="seednodecount"></a>SeedNodeCount
@@ -687,9 +687,9 @@ ETW イベントの Azure BLOB 格納先について説明します。 Azure 環
 |Attribute|値|
 |---|---|
 |name|SeedNodeCount|
-|型|xs:int|
+|type|xs:int|
 |use|省略可能|
-|既定値 (default)|0|
+|default|0|
 
 ## <a name="azurestorebasetype-complextype"></a>AzureStoreBaseType complexType
 Azure ストレージ アカウント内の診断ストアについて説明します。
@@ -697,7 +697,7 @@ Azure ストレージ アカウント内の診断ストアについて説明し�
 |Attribute|値|
 |---|---|
 |content|1 個の要素、1 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|AzureStoreBaseType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -725,7 +725,7 @@ Azure ストレージ アカウント内の診断ストアについて説明し�
 |Attribute|値|
 |---|---|
 |name|ConnectionStringIsEncrypted|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
@@ -742,7 +742,7 @@ Azure ストレージ アカウント内の診断ストアについて説明し�
 |Attribute|値|
 |---|---|
 |content|0 個の要素、4 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|BlackbirdRoleType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -763,7 +763,7 @@ Azure ストレージ アカウント内の診断ストアについて説明し�
 |Attribute|値|
 |---|---|
 |name|EnvironmentName|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="rolename"></a>RoleName
@@ -771,7 +771,7 @@ Azure ストレージ アカウント内の診断ストアについて説明し�
 |Attribute|値|
 |---|---|
 |name|RoleName|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="nodetyperef"></a>NodeTypeRef
@@ -779,7 +779,7 @@ Azure ストレージ アカウント内の診断ストアについて説明し�
 |Attribute|値|
 |---|---|
 |name|NodeTypeRef|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="isseednode"></a>IsSeedNode
@@ -787,16 +787,16 @@ Azure ストレージ アカウント内の診断ストアについて説明し�
 |Attribute|値|
 |---|---|
 |name|IsSeedNode|
-|型|xs:boolean|
+|type|xs:boolean|
 |use|省略可能|
-|既定値 (default)|0|
+|default|0|
 
 ## <a name="certificatestype-complextype"></a>CertificatesType complexType
 
 |Attribute|値|
 |---|---|
 |content|4 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|CertificatesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -836,7 +836,7 @@ Azure ストレージ アカウント内の診断ストアについて説明し�
 |Attribute|値|
 |---|---|
 |name|ClusterCertificate|
-|型|[FabricCertificateType](#fabriccertificatetype-complextype)|
+|type|[FabricCertificateType](#fabriccertificatetype-complextype)|
 |minOccurs|0|
 
 #### <a name="servercertificate"></a>ServerCertificate
@@ -845,7 +845,7 @@ Azure ストレージ アカウント内の診断ストアについて説明し�
 |Attribute|値|
 |---|---|
 |name|ServerCertificate|
-|型|[FabricCertificateType](#fabriccertificatetype-complextype)|
+|type|[FabricCertificateType](#fabriccertificatetype-complextype)|
 |minOccurs|0|
 
 #### <a name="clientcertificate"></a>ClientCertificate
@@ -854,7 +854,7 @@ Azure ストレージ アカウント内の診断ストアについて説明し�
 |Attribute|値|
 |---|---|
 |name|ClientCertificate|
-|型|[FabricCertificateType](#fabriccertificatetype-complextype)|
+|type|[FabricCertificateType](#fabriccertificatetype-complextype)|
 |minOccurs|0|
 
 #### <a name="userroleclientcertificate"></a>UserRoleClientCertificate
@@ -863,7 +863,7 @@ Azure ストレージ アカウント内の診断ストアについて説明し�
 |Attribute|値|
 |---|---|
 |name|UserRoleClientCertificate|
-|型|[FabricCertificateType](#fabriccertificatetype-complextype)|
+|type|[FabricCertificateType](#fabriccertificatetype-complextype)|
 |minOccurs|0|
 
 ## <a name="clustermanifesttype-complextype"></a>ClusterManifestType complexType
@@ -872,7 +872,7 @@ Microsoft Azure Service Fabric クラスターについて説明します。
 |Attribute|値|
 |---|---|
 |content|4 個の要素、3 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ClusterManifestType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -1107,7 +1107,7 @@ Microsoft Azure Service Fabric クラスターについて説明します。
 |Attribute|値|
 |---|---|
 |name|FabricSettings|
-|型|[SettingsOverridesType](#settingsoverridestype-complextype)|
+|type|[SettingsOverridesType](#settingsoverridestype-complextype)|
 |minOccurs|0|
 
 #### <a name="certificates"></a>証明書
@@ -1123,7 +1123,7 @@ Microsoft Azure Service Fabric クラスターについて説明します。
 |Attribute|値|
 |---|---|
 |content|3 個の要素、2 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|CodePackageType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -1169,7 +1169,7 @@ Microsoft Azure Service Fabric クラスターについて説明します。
 |Attribute|値|
 |---|---|
 |name|IsShared|
-|型|xs:boolean|
+|type|xs:boolean|
 |既定値 (default)|false|
 
 #### <a name="isactivator"></a>IsActivator
@@ -1178,7 +1178,7 @@ Microsoft Azure Service Fabric クラスターについて説明します。
 |Attribute|値|
 |---|---|
 |name|IsActivator|
-|型|xs:boolean|
+|type|xs:boolean|
 |既定値 (default)|false|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
@@ -1196,7 +1196,7 @@ Microsoft Azure Service Fabric クラスターについて説明します。
 |Attribute|値|
 |---|---|
 |name|EntryPoint|
-|型|[EntryPointDescriptionType](#entrypointdescriptiontype-complextype)|
+|type|[EntryPointDescriptionType](#entrypointdescriptiontype-complextype)|
 |minOccurs|1|
 
 #### <a name="environmentvariables"></a>EnvironmentVariables
@@ -1204,7 +1204,7 @@ Microsoft Azure Service Fabric クラスターについて説明します。
 |Attribute|値|
 |---|---|
 |name|EnvironmentVariables|
-|型|[EnvironmentVariablesType](#environmentvariablestype-complextype)|
+|type|[EnvironmentVariablesType](#environmentvariablestype-complextype)|
 |minOccurs|0|
 |maxOccurs|1|
 
@@ -1214,7 +1214,7 @@ Microsoft Azure Service Fabric クラスターについて説明します。
 |Attribute|値|
 |---|---|
 |content|1 個の要素、1 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ConfigOverrideType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -1257,7 +1257,7 @@ Microsoft Azure Service Fabric クラスターについて説明します。
 |Attribute|値|
 |---|---|
 |name|設定|
-|型|[SettingsOverridesType](#settingsoverridestype-complextype)|
+|type|[SettingsOverridesType](#settingsoverridestype-complextype)|
 |minOccurs|0|
 
 ## <a name="configpackagedescriptiontype-complextype"></a>ConfigPackageDescriptionType complexType
@@ -1266,7 +1266,7 @@ Settings.xml ファイルを含む Name 属性を使用して名前が付けら�
 |Attribute|値|
 |---|---|
 |content|0 個の要素、4 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ConfigPackageDescriptionType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -1324,7 +1324,7 @@ ConfigPackage Settings.xml のセクション名。
 |Attribute|値|
 |---|---|
 |name|MountPoint|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 |既定値 (default)||
 
@@ -1333,7 +1333,7 @@ ConfigPackage Settings.xml のセクション名。
 |Attribute|値|
 |---|---|
 |name|EnvironmentVariableName|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 |既定値 (default)||
 
@@ -1342,7 +1342,7 @@ ConfigPackage Settings.xml のセクション名。
 |Attribute|値|
 |---|---|
 |content|1 個の要素、1 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ConfigPackagePoliciesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -1378,7 +1378,7 @@ ConfigPackage Settings.xml のセクション名。
 |Attribute|値|
 |---|---|
 |name|ConfigPackage|
-|型|[ConfigPackageDescriptionType](#configpackagedescriptiontype-complextype)|
+|type|[ConfigPackageDescriptionType](#configpackagedescriptiontype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -1388,7 +1388,7 @@ Settings.xml ファイルを含む PackageRoot の下で、Name 属性を使用�
 |Attribute|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ConfigPackageType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -1410,7 +1410,7 @@ PFX ファイルとパスワードには、コンテナーで Certificates_Servi
 |Attribute|値|
 |---|---|
 |content|0 個の要素、8 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ContainerCertificateType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -1475,7 +1475,7 @@ X509 証明書のストア名。
 |Attribute|値|
 |---|---|
 |name|X509StoreName|
-|型|xs:string|
+|type|xs:string|
 |既定値 (default)|My|
 
 #### <a name="x509findvalue"></a>X509FindValue
@@ -1484,7 +1484,7 @@ X509 証明書の拇印。
 |Attribute|値|
 |---|---|
 |name|X509FindValue|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 #### <a name="datapackageref"></a>DataPackageRef
@@ -1493,7 +1493,7 @@ X509 証明書の拇印。
 |Attribute|値|
 |---|---|
 |name|DataPackageRef|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 #### <a name="datapackageversion"></a>DataPackageVersion
@@ -1502,7 +1502,7 @@ X509 証明書の拇印。
 |Attribute|値|
 |---|---|
 |name|DataPackageVersion|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 #### <a name="relativepath"></a>RelativePath
@@ -1511,7 +1511,7 @@ X509 証明書の拇印。
 |Attribute|値|
 |---|---|
 |name|RelativePath|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 #### <a name="password"></a>Password
@@ -1520,7 +1520,7 @@ X509 証明書の拇印。
 |Attribute|値|
 |---|---|
 |name|Password|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 #### <a name="ispasswordencrypted"></a>IsPasswordEncrypted
@@ -1529,7 +1529,7 @@ true の場合、パスワードの値は暗号化されます。
 |Attribute|値|
 |---|---|
 |name|IsPasswordEncrypted|
-|型|xs:boolean|
+|type|xs:boolean|
 |既定値 (default)|false|
 
 #### <a name="name"></a>Name
@@ -1538,7 +1538,7 @@ true の場合、パスワードの値は暗号化されます。
 |Attribute|値|
 |---|---|
 |name|Name|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 ## <a name="containerhealthconfigtype-complextype"></a>ContainerHealthConfigType complexType
@@ -1547,7 +1547,7 @@ true の場合、パスワードの値は暗号化されます。
 |Attribute|値|
 |---|---|
 |content|0 個の要素、2 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ContainerHealthConfigType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -1582,7 +1582,7 @@ true の場合、パスワードの値は暗号化されます。
 |Attribute|値|
 |---|---|
 |name|IncludeDockerHealthStatusInSystemHealthReport|
-|型|xs:boolean|
+|type|xs:boolean|
 |use|省略可能|
 |既定値 (default)|true|
 
@@ -1593,7 +1593,7 @@ true の場合、パスワードの値は暗号化されます。
 |Attribute|値|
 |---|---|
 |name|RestartContainerOnUnhealthyDockerHealthStatus|
-|型|xs:boolean|
+|type|xs:boolean|
 |use|省略可能|
 |既定値 (default)|false|
 
@@ -1602,7 +1602,7 @@ true の場合、パスワードの値は暗号化されます。
 |Attribute|値|
 |---|---|
 |content|4 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ContainerHostEntryPointType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -1636,7 +1636,7 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 |Attribute|値|
 |---|---|
 |name|ImageName|
-|型|xs:string|
+|type|xs:string|
 
 #### <a name="commands"></a>コマンド
 コマンドのコンマ区切りリストをコンテナーに渡します。
@@ -1644,7 +1644,7 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 |Attribute|値|
 |---|---|
 |name|コマンド|
-|型|xs:string|
+|type|xs:string|
 |minOccurs|0|
 |maxOccurs|1|
 
@@ -1653,7 +1653,7 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 |Attribute|値|
 |---|---|
 |name|EntryPoint|
-|型|xs:string|
+|type|xs:string|
 |minOccurs|0|
 |maxOccurs|1|
 
@@ -1662,7 +1662,7 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 |Attribute|値|
 |---|---|
 |name|FromSource|
-|型|xs:string|
+|type|xs:string|
 |minOccurs|0|
 |maxOccurs|1|
 
@@ -1671,7 +1671,7 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 |Attribute|値|
 |---|---|
 |content|10 個の要素、8 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ContainerHostPoliciesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -1794,7 +1794,7 @@ ApplicationManifest.xml 内で "RepositoryCredentials" タグで指定された�
 |Attribute|値|
 |---|---|
 |name|UseDefaultRepositoryCredentials|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 |既定値 (default)|false|
 
@@ -1805,7 +1805,7 @@ ApplicationManifest.xml 内で "RepositoryCredentials" タグで指定された�
 |Attribute|値|
 |---|---|
 |name|UseTokenAuthenticationCredentials|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 |既定値 (default)|false|
 
@@ -1816,7 +1816,7 @@ ApplicationManifest.xml 内で "RepositoryCredentials" タグで指定された�
 |---|---|
 |name|分離:|
 |use|省略可能|
-|型|xs:string|
+|type|xs:string|
 
 #### <a name="hostname"></a>hostname
 コンテナーのホスト名を指定します。
@@ -1825,7 +1825,7 @@ ApplicationManifest.xml 内で "RepositoryCredentials" タグで指定された�
 |---|---|
 |name|hostname|
 |use|省略可能|
-|型|xs:string|
+|type|xs:string|
 
 #### <a name="containersretentioncount"></a>ContainersRetentionCount
 コンテナーが繰り返し停止した場合に残されるコンテナーの数。 既定では、これは 0 に設定されるため、コンテナーは残されません。
@@ -1834,7 +1834,7 @@ ApplicationManifest.xml 内で "RepositoryCredentials" タグで指定された�
 |---|---|
 |name|ContainersRetentionCount|
 |use|省略可能|
-|型|xs:string|
+|type|xs:string|
 |既定値 (default)|0|
 
 #### <a name="autoremove"></a>AutoRemove
@@ -1844,7 +1844,7 @@ ApplicationManifest.xml 内で "RepositoryCredentials" タグで指定された�
 |---|---|
 |name|AutoRemove|
 |use|省略可能|
-|型|xs:string|
+|type|xs:string|
 
 #### <a name="runinteractive"></a>RunInteractive
 対話型フラグが有効なコンテナーを実行します。 有効な値は true または false です。 既定では false です。
@@ -1853,7 +1853,7 @@ ApplicationManifest.xml 内で "RepositoryCredentials" タグで指定された�
 |---|---|
 |name|RunInteractive|
 |use|省略可能|
-|型|xs:string|
+|type|xs:string|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
 
@@ -1863,7 +1863,7 @@ ApplicationManifest.xml 内で "RepositoryCredentials" タグで指定された�
 |Attribute|値|
 |---|---|
 |name|RepositoryCredentials|
-|型|[RepositoryCredentialsType](#repositorycredentialstype-complextype)|
+|type|[RepositoryCredentialsType](#repositorycredentialstype-complextype)|
 |minOccurs|0|
 |maxOccurs|1|
 
@@ -1873,7 +1873,7 @@ ApplicationManifest.xml 内で "RepositoryCredentials" タグで指定された�
 |Attribute|値|
 |---|---|
 |name|HealthConfig|
-|型|[ContainerHealthConfigType](#containerhealthconfigtype-complextype)|
+|type|[ContainerHealthConfigType](#containerhealthconfigtype-complextype)|
 |minOccurs|0|
 |maxOccurs|1|
 
@@ -1883,7 +1883,7 @@ ApplicationManifest.xml 内で "RepositoryCredentials" タグで指定された�
 |Attribute|値|
 |---|---|
 |name|PortBinding|
-|型|[PortBindingType](#portbindingtype-complextype)|
+|type|[PortBindingType](#portbindingtype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -1893,7 +1893,7 @@ ApplicationManifest.xml 内で "RepositoryCredentials" タグで指定された�
 |Attribute|値|
 |---|---|
 |name|CertificateRef|
-|型|[ContainerCertificateType](#containercertificatetype-complextype)|
+|type|[ContainerCertificateType](#containercertificatetype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -1903,7 +1903,7 @@ ApplicationManifest.xml 内で "RepositoryCredentials" タグで指定された�
 |Attribute|値|
 |---|---|
 |name|LogConfig|
-|型|[ContainerLoggingDriverType](#containerloggingdrivertype-complextype)|
+|type|[ContainerLoggingDriverType](#containerloggingdrivertype-complextype)|
 |minOccurs|0|
 |maxOccurs|1|
 
@@ -1913,7 +1913,7 @@ ApplicationManifest.xml 内で "RepositoryCredentials" タグで指定された�
 |Attribute|値|
 |---|---|
 |name|NetworkConfig|
-|型|[ContainerNetworkConfigType](#containernetworkconfigtype-complextype)|
+|type|[ContainerNetworkConfigType](#containernetworkconfigtype-complextype)|
 |minOccurs|0|
 |maxOccurs|1|
 
@@ -1923,7 +1923,7 @@ ApplicationManifest.xml 内で "RepositoryCredentials" タグで指定された�
 |Attribute|値|
 |---|---|
 |name|ボリューム|
-|型|[ContainerVolumeType](#containervolumetype-complextype)|
+|type|[ContainerVolumeType](#containervolumetype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -1933,7 +1933,7 @@ ApplicationManifest.xml 内で "RepositoryCredentials" タグで指定された�
 |Attribute|値|
 |---|---|
 |name|SecurityOption|
-|型|[SecurityOptionsType](#securityoptionstype-complextype)|
+|type|[SecurityOptionsType](#securityoptionstype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -1943,7 +1943,7 @@ ApplicationManifest.xml 内で "RepositoryCredentials" タグで指定された�
 |Attribute|値|
 |---|---|
 |name|ImageOverrides|
-|型|[ImageOverridesType](#imageoverridestype-complextype)|
+|type|[ImageOverridesType](#imageoverridestype-complextype)|
 |minOccurs|0|
 |maxOccurs|1|
 
@@ -1953,7 +1953,7 @@ ApplicationManifest.xml 内で "RepositoryCredentials" タグで指定された�
 |Attribute|値|
 |---|---|
 |name|Label|
-|型|[ContainerLabelType](#containerlabeltype-complextype)|
+|type|[ContainerLabelType](#containerlabeltype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -1962,7 +1962,7 @@ ApplicationManifest.xml 内で "RepositoryCredentials" タグで指定された�
 |Attribute|値|
 |---|---|
 |content|0 個の要素、2 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ContainerLabelType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -1981,7 +1981,7 @@ ApplicationManifest.xml 内で "RepositoryCredentials" タグで指定された�
 |Attribute|値|
 |---|---|
 |name|Name|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="value"></a>値
@@ -1989,7 +1989,7 @@ ApplicationManifest.xml 内で "RepositoryCredentials" タグで指定された�
 |Attribute|値|
 |---|---|
 |name|値|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 ## <a name="containerloggingdrivertype-complextype"></a>ContainerLoggingDriverType complexType
@@ -1997,7 +1997,7 @@ ApplicationManifest.xml 内で "RepositoryCredentials" タグで指定された�
 |Attribute|値|
 |---|---|
 |content|1 個の要素、1 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ContainerLoggingDriverType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2038,7 +2038,7 @@ ApplicationManifest.xml 内で "RepositoryCredentials" タグで指定された�
 |Attribute|値|
 |---|---|
 |name|DriverOption|
-|型|[DriverOptionType](#driveroptiontype-complextype)|
+|type|[DriverOptionType](#driveroptiontype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -2047,7 +2047,7 @@ ApplicationManifest.xml 内で "RepositoryCredentials" タグで指定された�
 |Attribute|値|
 |---|---|
 |content|0 個の要素、1 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ContainerNetworkConfigType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2071,14 +2071,14 @@ NetworkType。 現在サポートされている種類は "Open" と "Isolated" 
 |---|---|
 |name|NetworkType|
 |use|required|
-|型|xs:string|
+|type|xs:string|
 
 ## <a name="containernetworkpolicyendpointbindingtype-complextype"></a>ContainerNetworkPolicyEndpointBindingType complexType
 
 |Attribute|値|
 |---|---|
 |content|0 個の要素、1 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ContainerNetworkPolicyEndpointBindingType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2113,7 +2113,7 @@ NetworkType。 現在サポートされている種類は "Open" と "Isolated" 
 |Attribute|値|
 |---|---|
 |content|1 個の要素、1 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ContainerNetworkPolicyType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2161,7 +2161,7 @@ NetworkType。 現在サポートされている種類は "Open" と "Isolated" 
 |Attribute|値|
 |---|---|
 |name|EndpointBinding|
-|型|[ContainerNetworkPolicyEndpointBindingType](#containernetworkpolicyendpointbindingtype-complextype)|
+|type|[ContainerNetworkPolicyEndpointBindingType](#containernetworkpolicyendpointbindingtype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -2170,7 +2170,7 @@ NetworkType。 現在サポートされている種類は "Open" と "Isolated" 
 |Attribute|値|
 |---|---|
 |content|1 個の要素、4 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ContainerVolumeType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2248,7 +2248,7 @@ Azure Files ボリューム プラグインのドライバー名は "sfazurefile
 |Attribute|値|
 |---|---|
 |name|IsReadOnly|
-|型|xs:boolean|
+|type|xs:boolean|
 |既定値 (default)|false|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
@@ -2259,7 +2259,7 @@ Azure Files ボリューム プラグインのドライバー名は "sfazurefile
 |Attribute|値|
 |---|---|
 |name|DriverOption|
-|型|[DriverOptionType](#driveroptiontype-complextype)|
+|type|[DriverOptionType](#driveroptiontype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -2269,7 +2269,7 @@ Azure Files ボリューム プラグインのドライバー名は "sfazurefile
 |Attribute|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|DataPackageType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2289,7 +2289,7 @@ Azure Files ボリューム プラグインのドライバー名は "sfazurefile
 |Attribute|値|
 |---|---|
 |content|4 個の要素、10 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|DebugParametersType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2468,7 +2468,7 @@ Azure Files ボリューム プラグインのドライバー名は "sfazurefile
 |Attribute|値|
 |---|---|
 |name|ContainerEntryPoint|
-|型|xs:string|
+|type|xs:string|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -2478,7 +2478,7 @@ Azure Files ボリューム プラグインのドライバー名は "sfazurefile
 |Attribute|値|
 |---|---|
 |name|ContainerMountedVolume|
-|型|xs:string|
+|type|xs:string|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -2488,7 +2488,7 @@ Azure Files ボリューム プラグインのドライバー名は "sfazurefile
 |Attribute|値|
 |---|---|
 |name|ContainerEnvironmentBlock|
-|型|xs:string|
+|type|xs:string|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -2498,7 +2498,7 @@ key=value 形式のコンテナーのラベル。
 |Attribute|値|
 |---|---|
 |name|ContainerLabel|
-|型|xs:string|
+|type|xs:string|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -2508,7 +2508,7 @@ key=value 形式のコンテナーのラベル。
 |Attribute|値|
 |---|---|
 |content|2 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|DefaultServicesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2599,7 +2599,7 @@ key=value 形式のコンテナーのラベル。
 |Attribute|値|
 |---|---|
 |content|3 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|DiagnosticsType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2730,7 +2730,7 @@ ETW トレースの収集を指定します。 ETW トレースは、アプリ�
 |Attribute|値|
 |---|---|
 |content|2 個の要素、1 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|DllHostEntryPointType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2779,14 +2779,14 @@ ETW トレースの収集を指定します。 ETW トレースは、アプリ�
 |Attribute|値|
 |---|---|
 |name|UnmanagedDll|
-|型|[UnmanagedDllType](#unmanageddlltype-complextype)|
+|type|[UnmanagedDllType](#unmanageddlltype-complextype)|
 
 #### <a name="managedassembly"></a>ManagedAssembly
 
 |Attribute|値|
 |---|---|
 |name|ManagedAssembly|
-|型|[ManagedAssemblyType](#managedassemblytype-complextype)|
+|type|[ManagedAssemblyType](#managedassemblytype-complextype)|
 
 ## <a name="driveroptiontype-complextype"></a>DriverOptionType complexType
 ドライバーに渡されるドライバーのオプション。 Azure Files ボリューム プラグインでは、ドライバーのオプションとして shareName (コンテナーにボリュームを提供する Azure Files ファイル共有)、storageAccountName (Azure Files ファイル共有を含む Azure ストレージ アカウント)、storageAccountKey (Azure Files ファイル共有を含む Azure ストレージ アカウントのアクセス キー) をサポートしています。
@@ -2795,7 +2795,7 @@ ETW トレースの収集を指定します。 ETW トレースは、アプリ�
 |Attribute|値|
 |---|---|
 |content|0 個の要素、4 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|DriverOptionType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2840,7 +2840,7 @@ ETW トレースの収集を指定します。 ETW トレースは、アプリ�
 |Attribute|値|
 |---|---|
 |name|Name|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="value"></a>値
@@ -2849,7 +2849,7 @@ ETW トレースの収集を指定します。 ETW トレースは、アプリ�
 |Attribute|値|
 |---|---|
 |name|値|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="isencrypted"></a>IsEncrypted
@@ -2857,7 +2857,7 @@ ETW トレースの収集を指定します。 ETW トレースは、アプリ�
 |Attribute|値|
 |---|---|
 |name|IsEncrypted|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 |既定値 (default)|false|
 
@@ -2871,7 +2871,7 @@ ETW トレースの収集を指定します。 ETW トレースは、アプリ�
 |Attribute|値|
 |---|---|
 |name|種類|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 |既定値 (default)|PlainText|
 
@@ -2880,7 +2880,7 @@ ETW トレースの収集を指定します。 ETW トレースは、アプリ�
 |Attribute|値|
 |---|---|
 |content|0 個の要素、2 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|EndpointBindingPolicyType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2935,7 +2935,7 @@ ETW トレースの収集を指定します。 ETW トレースは、アプリ�
 |Attribute|値|
 |---|---|
 |content|0 個の要素、3 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|EndpointCertificateType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2967,7 +2967,7 @@ X509 証明書のストア名。
 |Attribute|値|
 |---|---|
 |name|X509StoreName|
-|型|xs:string|
+|type|xs:string|
 |既定値 (default)|My|
 
 #### <a name="x509findvalue"></a>X509FindValue
@@ -2983,7 +2983,7 @@ X509 証明書の拇印。
 |Attribute|値|
 |---|---|
 |name|Name|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 ## <a name="endpointoverridetype-complextype"></a>EndpointOverrideType complexType
@@ -2991,7 +2991,7 @@ X509 証明書の拇印。
 |Attribute|値|
 |---|---|
 |content|0 個の要素、6 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|EndpointOverrideType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -3052,7 +3052,7 @@ X509 証明書の拇印。
 |Attribute|値|
 |---|---|
 |name|Port|
-|型|xs:string|
+|type|xs:string|
 
 #### <a name="protocol"></a>Protocol
 エンドポイントのプロトコル。 サービス マニフェストの値をオーバーライドします。 HTTPS エンドポイントには、アプリケーション マニフェストで宣言されている EndpointBindingPolicy と EndpointCertificate も必要です。 後でアプリケーションのアップグレード時にプロトコルを変更することはできません。 
@@ -3060,7 +3060,7 @@ X509 証明書の拇印。
 |Attribute|値|
 |---|---|
 |name|Protocol|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 #### <a name="type"></a>種類
@@ -3069,7 +3069,7 @@ X509 証明書の拇印。
 |Attribute|値|
 |---|---|
 |name|種類|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 #### <a name="urischeme"></a>UriScheme
@@ -3094,7 +3094,7 @@ URI スキーム。 サービス マニフェストの値をオーバーライ�
 |Attribute|値|
 |---|---|
 |content|0 個の要素、8 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|EndpointType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -3247,7 +3247,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |Attribute|値|
 |---|---|
 |content|3 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|EntryPointDescriptionType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -3301,21 +3301,21 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |Attribute|値|
 |---|---|
 |name|DllHost|
-|型|[DllHostEntryPointType](#dllhostentrypointtype-complextype)|
+|type|[DllHostEntryPointType](#dllhostentrypointtype-complextype)|
 
 #### <a name="containerhost"></a>ContainerHost
 
 |Attribute|値|
 |---|---|
 |name|ContainerHost|
-|型|[ContainerHostEntryPointType](#containerhostentrypointtype-complextype)|
+|type|[ContainerHostEntryPointType](#containerhostentrypointtype-complextype)|
 
 ## <a name="environmentoverridestype-complextype"></a>EnvironmentOverridesType complexType
 
 |Attribute|値|
 |---|---|
 |content|1 個の要素、1 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|EnvironmentOverridesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -3357,7 +3357,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |Attribute|値|
 |---|---|
 |name|EnvironmentVariable|
-|型|[EnvironmentVariableOverrideType](#environmentvariableoverridetype-complextype)|
+|type|[EnvironmentVariableOverrideType](#environmentvariableoverridetype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -3366,7 +3366,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |Attribute|値|
 |---|---|
 |content|3 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|EnvironmentType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -3389,28 +3389,28 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |Attribute|値|
 |---|---|
 |name|プリンシパル|
-|型|[SecurityPrincipalsType](#securityprincipalstype-complextype)|
+|type|[SecurityPrincipalsType](#securityprincipalstype-complextype)|
 
 #### <a name="policies"></a>ポリシー
 
 |Attribute|値|
 |---|---|
 |name|ポリシー|
-|型|[ApplicationPoliciesType](#applicationpoliciestype-complextype)|
+|type|[ApplicationPoliciesType](#applicationpoliciestype-complextype)|
 
 #### <a name="diagnostics"></a>診断
 
 |Attribute|値|
 |---|---|
 |name|診断|
-|型|[DiagnosticsType](#diagnosticstype-complextype)|
+|type|[DiagnosticsType](#diagnosticstype-complextype)|
 
 ## <a name="environmentvariableoverridetype-complextype"></a>EnvironmentVariableOverrideType complexType
 
 |Attribute|値|
 |---|---|
 |content|0 個の要素、3 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|EnvironmentVariableOverrideType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -3441,7 +3441,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |Attribute|値|
 |---|---|
 |name|Name|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="value"></a>値
@@ -3455,7 +3455,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |Attribute|値|
 |---|---|
 |name|種類|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 ## <a name="environmentvariabletype-complextype"></a>EnvironmentVariableType complexType
@@ -3463,7 +3463,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |Attribute|値|
 |---|---|
 |content|0 個の要素、3 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|EnvironmentVariableType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -3509,7 +3509,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |Attribute|値|
 |---|---|
 |name|Name|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="value"></a>値
@@ -3537,7 +3537,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |Attribute|値|
 |---|---|
 |content|1 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|EnvironmentVariablesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -3565,7 +3565,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |Attribute|値|
 |---|---|
 |name|EnvironmentVariable|
-|型|[EnvironmentVariableType](#environmentvariabletype-complextype)|
+|type|[EnvironmentVariableType](#environmentvariabletype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -3574,7 +3574,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |Attribute|値|
 |---|---|
 |content|4 個の要素、1 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ExeHostEntryPointType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -3641,7 +3641,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |Attribute|値|
 |---|---|
 |name|IsExternalExecutable|
-|型|xs:boolean|
+|type|xs:boolean|
 |既定値 (default)|false|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
@@ -3652,14 +3652,14 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |Attribute|値|
 |---|---|
 |name|プログラム|
-|型|xs:string|
+|type|xs:string|
 
 #### <a name="arguments"></a>引数
 
 |Attribute|値|
 |---|---|
 |name|引数|
-|型|xs:string|
+|type|xs:string|
 |minOccurs|0|
 
 #### <a name="workingfolder"></a>WorkingFolder
@@ -3684,7 +3684,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |Attribute|値|
 |---|---|
 |content|1 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ExtensionsType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -3730,7 +3730,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |Attribute|値|
 |---|---|
 |content|0 個の要素、5 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|FabricCertificateType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -3779,7 +3779,7 @@ X509 証明書のストア名。
 |Attribute|値|
 |---|---|
 |name|X509StoreName|
-|型|xs:string|
+|type|xs:string|
 |既定値 (default)|My|
 
 #### <a name="x509findtype"></a>X509FindType
@@ -3812,7 +3812,7 @@ X509 証明書のストア名。
 |Attribute|値|
 |---|---|
 |name|Name|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 ## <a name="fabricendpointstype-complextype"></a>FabricEndpointsType complexType
@@ -3820,7 +3820,7 @@ X509 証明書のストア名。
 |Attribute|値|
 |---|---|
 |content|21 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|FabricEndpointsType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -3871,28 +3871,28 @@ X509 証明書のストア名。
 |Attribute|値|
 |---|---|
 |name|ClientConnectionEndpoint|
-|型|[InputEndpointType](#inputendpointtype-complextype)|
+|type|[InputEndpointType](#inputendpointtype-complextype)|
 
 #### <a name="leasedriverendpoint"></a>LeaseDriverEndpoint
 
 |Attribute|値|
 |---|---|
 |name|LeaseDriverEndpoint|
-|型|[InternalEndpointType](#internalendpointtype-complextype)|
+|type|[InternalEndpointType](#internalendpointtype-complextype)|
 
 #### <a name="clusterconnectionendpoint"></a>ClusterConnectionEndpoint 要素
 
 |Attribute|値|
 |---|---|
 |name|ClusterConnectionEndpoint 要素|
-|型|[InternalEndpointType](#internalendpointtype-complextype)|
+|type|[InternalEndpointType](#internalendpointtype-complextype)|
 
 #### <a name="httpgatewayendpoint"></a>HttpGatewayEndpoint
 
 |Attribute|値|
 |---|---|
 |name|HttpGatewayEndpoint|
-|型|[InputEndpointType](#inputendpointtype-complextype)|
+|type|[InputEndpointType](#inputendpointtype-complextype)|
 |minOccurs|0|
 
 #### <a name="httpapplicationgatewayendpoint"></a>HttpApplicationGatewayEndpoint
@@ -3900,7 +3900,7 @@ X509 証明書のストア名。
 |Attribute|値|
 |---|---|
 |name|HttpApplicationGatewayEndpoint|
-|型|[InputEndpointType](#inputendpointtype-complextype)|
+|type|[InputEndpointType](#inputendpointtype-complextype)|
 |minOccurs|0|
 
 #### <a name="serviceconnectionendpoint"></a>ServiceConnectionEndpoint
@@ -3908,7 +3908,7 @@ X509 証明書のストア名。
 |Attribute|値|
 |---|---|
 |name|ServiceConnectionEndpoint|
-|型|[InternalEndpointType](#internalendpointtype-complextype)|
+|type|[InternalEndpointType](#internalendpointtype-complextype)|
 |minOccurs|0|
 
 #### <a name="clustermanagerreplicatorendpoint"></a>ClusterManagerReplicatorEndpoint
@@ -3916,7 +3916,7 @@ X509 証明書のストア名。
 |Attribute|値|
 |---|---|
 |name|ClusterManagerReplicatorEndpoint|
-|型|[InternalEndpointType](#internalendpointtype-complextype)|
+|type|[InternalEndpointType](#internalendpointtype-complextype)|
 |minOccurs|0|
 
 #### <a name="repairmanagerreplicatorendpoint"></a>RepairManagerReplicatorEndpoint
@@ -3924,7 +3924,7 @@ X509 証明書のストア名。
 |Attribute|値|
 |---|---|
 |name|RepairManagerReplicatorEndpoint|
-|型|[InternalEndpointType](#internalendpointtype-complextype)|
+|type|[InternalEndpointType](#internalendpointtype-complextype)|
 |minOccurs|0|
 
 #### <a name="namingreplicatorendpoint"></a>NamingReplicatorEndpoint
@@ -3932,7 +3932,7 @@ X509 証明書のストア名。
 |Attribute|値|
 |---|---|
 |name|NamingReplicatorEndpoint|
-|型|[InternalEndpointType](#internalendpointtype-complextype)|
+|type|[InternalEndpointType](#internalendpointtype-complextype)|
 |minOccurs|0|
 
 #### <a name="failovermanagerreplicatorendpoint"></a>FailoverManagerReplicatorEndpoint
@@ -3940,7 +3940,7 @@ X509 証明書のストア名。
 |Attribute|値|
 |---|---|
 |name|FailoverManagerReplicatorEndpoint|
-|型|[InternalEndpointType](#internalendpointtype-complextype)|
+|type|[InternalEndpointType](#internalendpointtype-complextype)|
 |minOccurs|0|
 
 #### <a name="imagestoreservicereplicatorendpoint"></a>ImageStoreServiceReplicatorEndpoint
@@ -3948,7 +3948,7 @@ X509 証明書のストア名。
 |Attribute|値|
 |---|---|
 |name|ImageStoreServiceReplicatorEndpoint|
-|型|[InternalEndpointType](#internalendpointtype-complextype)|
+|type|[InternalEndpointType](#internalendpointtype-complextype)|
 |minOccurs|0|
 
 #### <a name="upgradeservicereplicatorendpoint"></a>UpgradeServiceReplicatorEndpoint
@@ -3956,7 +3956,7 @@ X509 証明書のストア名。
 |Attribute|値|
 |---|---|
 |name|UpgradeServiceReplicatorEndpoint|
-|型|[InternalEndpointType](#internalendpointtype-complextype)|
+|type|[InternalEndpointType](#internalendpointtype-complextype)|
 |minOccurs|0|
 
 #### <a name="faultanalysisservicereplicatorendpoint"></a>FaultAnalysisServiceReplicatorEndpoint
@@ -3964,7 +3964,7 @@ X509 証明書のストア名。
 |Attribute|値|
 |---|---|
 |name|FaultAnalysisServiceReplicatorEndpoint|
-|型|[InternalEndpointType](#internalendpointtype-complextype)|
+|type|[InternalEndpointType](#internalendpointtype-complextype)|
 |minOccurs|0|
 
 #### <a name="backuprestoreservicereplicatorendpoint"></a>BackupRestoreServiceReplicatorEndpoint
@@ -3972,7 +3972,7 @@ X509 証明書のストア名。
 |Attribute|値|
 |---|---|
 |name|BackupRestoreServiceReplicatorEndpoint|
-|型|[InternalEndpointType](#internalendpointtype-complextype)|
+|type|[InternalEndpointType](#internalendpointtype-complextype)|
 |minOccurs|0|
 
 #### <a name="upgradeorchestrationservicereplicatorendpoint"></a>UpgradeOrchestrationServiceReplicatorEndpoint
@@ -3980,7 +3980,7 @@ X509 証明書のストア名。
 |Attribute|値|
 |---|---|
 |name|UpgradeOrchestrationServiceReplicatorEndpoint|
-|型|[InternalEndpointType](#internalendpointtype-complextype)|
+|type|[InternalEndpointType](#internalendpointtype-complextype)|
 |minOccurs|0|
 
 #### <a name="centralsecretservicereplicatorendpoint"></a>CentralSecretServiceReplicatorEndpoint
@@ -3988,7 +3988,7 @@ X509 証明書のストア名。
 |Attribute|値|
 |---|---|
 |name|CentralSecretServiceReplicatorEndpoint|
-|型|[InternalEndpointType](#internalendpointtype-complextype)|
+|type|[InternalEndpointType](#internalendpointtype-complextype)|
 |minOccurs|0|
 
 #### <a name="eventstoreservicereplicatorendpoint"></a>EventStoreServiceReplicatorEndpoint
@@ -3996,7 +3996,7 @@ X509 証明書のストア名。
 |Attribute|値|
 |---|---|
 |name|EventStoreServiceReplicatorEndpoint|
-|型|[InternalEndpointType](#internalendpointtype-complextype)|
+|type|[InternalEndpointType](#internalendpointtype-complextype)|
 |minOccurs|0|
 
 #### <a name="gatewayresourcemanagerreplicatorendpoint"></a>GatewayResourceManagerReplicatorEndpoint
@@ -4004,7 +4004,7 @@ X509 証明書のストア名。
 |Attribute|値|
 |---|---|
 |name|GatewayResourceManagerReplicatorEndpoint|
-|型|[InternalEndpointType](#internalendpointtype-complextype)|
+|type|[InternalEndpointType](#internalendpointtype-complextype)|
 |minOccurs|0|
 
 #### <a name="defaultreplicatorendpoint"></a>DefaultReplicatorEndpoint
@@ -4012,7 +4012,7 @@ X509 証明書のストア名。
 |Attribute|値|
 |---|---|
 |name|DefaultReplicatorEndpoint|
-|型|[InternalEndpointType](#internalendpointtype-complextype)|
+|type|[InternalEndpointType](#internalendpointtype-complextype)|
 |minOccurs|0|
 
 #### <a name="applicationendpoints"></a>ApplicationEndpoints
@@ -4034,7 +4034,7 @@ X509 証明書のストア名。
 |Attribute|値|
 |---|---|
 |content|3 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|FabricKtlLoggerSettingsType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4118,7 +4118,7 @@ Microsoft Azure Service Fabric ノードについて説明します。
 |Attribute|値|
 |---|---|
 |content|0 個の要素、6 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|FabricNodeType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4169,7 +4169,7 @@ Microsoft Azure Service Fabric ノードについて説明します。
 |Attribute|値|
 |---|---|
 |name|NodeName|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="ipaddressorfqdn"></a>IPAddressOrFQDN
@@ -4178,7 +4178,7 @@ Microsoft Azure Service Fabric ノードについて説明します。
 |Attribute|値|
 |---|---|
 |name|IPAddressOrFQDN|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="isseednode"></a>IsSeedNode
@@ -4187,7 +4187,7 @@ Microsoft Azure Service Fabric ノードについて説明します。
 |Attribute|値|
 |---|---|
 |name|IsSeedNode|
-|型|xs:boolean|
+|type|xs:boolean|
 |既定値 (default)|false|
 
 #### <a name="nodetyperef"></a>NodeTypeRef
@@ -4196,7 +4196,7 @@ NodeTypes セクションで定義されたノード型の名前。
 |Attribute|値|
 |---|---|
 |name|NodeTypeRef|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="faultdomain"></a>FaultDomain
@@ -4205,7 +4205,7 @@ NodeTypes セクションで定義されたノード型の名前。
 |Attribute|値|
 |---|---|
 |name|FaultDomain|
-|型|xs:anyURI|
+|type|xs:anyURI|
 |use|省略可能|
 
 #### <a name="upgradedomain"></a>UpgradeDomain
@@ -4214,7 +4214,7 @@ NodeTypes セクションで定義されたノード型の名前。
 |Attribute|値|
 |---|---|
 |name|UpgradeDomain|
-|型|xs:anyURI|
+|type|xs:anyURI|
 |use|省略可能|
 
 ## <a name="filestoreetwtype-complextype"></a>FileStoreETWType complexType
@@ -4223,7 +4223,7 @@ ETW イベントのファイル格納先について説明します。 オンプ
 |Attribute|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|FileStoreETWType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4247,7 +4247,7 @@ ETW イベントのファイル格納先について説明します。 オンプ
 |Attribute|値|
 |---|---|
 |content|1 個の要素、2 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|FileStoreType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4286,7 +4286,7 @@ ETW イベントのファイル格納先について説明します。 オンプ
 |Attribute|値|
 |---|---|
 |name|AccountType|
-|型|xs:string|
+|type|xs:string|
 
 #### <a name="passwordencrypted"></a>PasswordEncrypted
 パスワードが暗号化されているか、テキスト形式かを指定します。
@@ -4294,7 +4294,7 @@ ETW イベントのファイル格納先について説明します。 オンプ
 |Attribute|値|
 |---|---|
 |name|PasswordEncrypted|
-|型|xs:string|
+|type|xs:string|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
 
@@ -4311,7 +4311,7 @@ Windows Server コンテナーは、OS の異なるバージョン間では互�
 |Attribute|値|
 |---|---|
 |content|1 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ImageOverridesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4343,7 +4343,7 @@ Windows Server コンテナーは、OS の異なるバージョン間では互�
 |Attribute|値|
 |---|---|
 |name|Image|
-|型|[imageType](#imagetype-complextype)|
+|type|[imageType](#imagetype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -4352,7 +4352,7 @@ Windows Server コンテナーは、OS の異なるバージョン間では互�
 |Attribute|値|
 |---|---|
 |content|0 個の要素、2 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ImageType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4380,7 +4380,7 @@ Windows Server コンテナーは、OS の異なるバージョン間では互�
 |Attribute|値|
 |---|---|
 |name|Name|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="os"></a>Os
@@ -4389,7 +4389,7 @@ OS のビルド バージョン。 たとえば、Windows Server バージョン
 |Attribute|値|
 |---|---|
 |name|Os|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 ## <a name="infrastructureinformationtype-complextype"></a>InfrastructureInformationType complexType
@@ -4398,7 +4398,7 @@ OS のビルド バージョン。 たとえば、Windows Server バージョン
 |Attribute|値|
 |---|---|
 |content|1 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|InfrastructureInformationType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4434,7 +4434,7 @@ OS のビルド バージョン。 たとえば、Windows Server バージョン
 |Attribute|値|
 |---|---|
 |content|2 個の要素、7 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|InfrastructureNodeType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4502,7 +4502,7 @@ OS のビルド バージョン。 たとえば、Windows Server バージョン
 |Attribute|値|
 |---|---|
 |name|NodeName|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="ipaddressorfqdn"></a>IPAddressOrFQDN
@@ -4511,7 +4511,7 @@ OS のビルド バージョン。 たとえば、Windows Server バージョン
 |Attribute|値|
 |---|---|
 |name|IPAddressOrFQDN|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="roleortiername"></a>RoleOrTierName
@@ -4520,7 +4520,7 @@ NodeTypes セクションで定義されているノード型参照にリンク�
 |Attribute|値|
 |---|---|
 |name|RoleOrTierName|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="nodetyperef"></a>NodeTypeRef
@@ -4529,7 +4529,7 @@ NodeTypes セクションで定義されているノード型の名前。
 |Attribute|値|
 |---|---|
 |name|NodeTypeRef|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="isseednode"></a>IsSeedNode
@@ -4538,7 +4538,7 @@ NodeTypes セクションで定義されているノード型の名前。
 |Attribute|値|
 |---|---|
 |name|IsSeedNode|
-|型|xs:boolean|
+|type|xs:boolean|
 |use|省略可能|
 |既定値 (default)|false|
 
@@ -4548,7 +4548,7 @@ NodeTypes セクションで定義されているノード型の名前。
 |Attribute|値|
 |---|---|
 |name|FaultDomain|
-|型|xs:anyURI|
+|type|xs:anyURI|
 |use|省略可能|
 
 #### <a name="upgradedomain"></a>UpgradeDomain
@@ -4557,7 +4557,7 @@ NodeTypes セクションで定義されているノード型の名前。
 |Attribute|値|
 |---|---|
 |name|UpgradeDomain|
-|型|xs:anyURI|
+|type|xs:anyURI|
 |use|省略可能|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
@@ -4568,7 +4568,7 @@ NodeTypes セクションで定義されているノード型の名前。
 |Attribute|値|
 |---|---|
 |name|エンドポイント|
-|型|[FabricEndpointsType](#fabricendpointstype-complextype)|
+|type|[FabricEndpointsType](#fabricendpointstype-complextype)|
 |minOccurs|0|
 
 #### <a name="certificates"></a>証明書
@@ -4577,7 +4577,7 @@ NodeTypes セクションで定義されているノード型の名前。
 |Attribute|値|
 |---|---|
 |name|証明書|
-|型|[CertificatesType](#certificatestype-complextype)|
+|type|[CertificatesType](#certificatestype-complextype)|
 |minOccurs|0|
 
 ## <a name="inputendpointtype-complextype"></a>InputEndpointType complexType
@@ -4585,7 +4585,7 @@ NodeTypes セクションで定義されているノード型の名前。
 |Attribute|値|
 |---|---|
 |content|0 個の要素、2 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|InputEndpointType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4612,7 +4612,7 @@ NodeTypes セクションで定義されているノード型の名前。
 |Attribute|値|
 |---|---|
 |name|Port|
-|型|xs:positiveInteger|
+|type|xs:positiveInteger|
 |use|required|
 
 #### <a name="protocol"></a>Protocol
@@ -4628,7 +4628,7 @@ NodeTypes セクションで定義されているノード型の名前。
 |Attribute|値|
 |---|---|
 |content|0 個の要素、2 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|InternalEndpointType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4655,7 +4655,7 @@ NodeTypes セクションで定義されているノード型の名前。
 |Attribute|値|
 |---|---|
 |name|Port|
-|型|xs:positiveInteger|
+|type|xs:positiveInteger|
 |use|required|
 
 #### <a name="protocol"></a>Protocol
@@ -4671,7 +4671,7 @@ NodeTypes セクションで定義されているノード型の名前。
 |Attribute|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|KeyValuePairType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4687,7 +4687,7 @@ NodeTypes セクションで定義されているノード型の名前。
 |Attribute|値|
 |---|---|
 |content|1 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|LinuxInfrastructureType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4720,7 +4720,7 @@ NodeTypes セクションで定義されているノード型の名前。
 |Attribute|値|
 |---|---|
 |content|0 個の要素、5 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|LoadMetricType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4787,7 +4787,7 @@ NodeTypes セクションで定義されているノード型の名前。
 |Attribute|値|
 |---|---|
 |name|DefaultLoad|
-|型|xs:long|
+|type|xs:long|
 |use|省略可能|
 |既定値 (default)|0|
 
@@ -4797,7 +4797,7 @@ NodeTypes セクションで定義されているノード型の名前。
 |Attribute|値|
 |---|---|
 |name|PrimaryDefaultLoad|
-|型|xs:long|
+|type|xs:long|
 |use|省略可能|
 |既定値 (default)|0|
 
@@ -4807,7 +4807,7 @@ NodeTypes セクションで定義されているノード型の名前。
 |Attribute|値|
 |---|---|
 |name|SecondaryDefaultLoad|
-|型|xs:long|
+|type|xs:long|
 |use|省略可能|
 |既定値 (default)|0|
 
@@ -4824,7 +4824,7 @@ ETW イベントのノード内の格納先について説明します。
 |Attribute|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|LocalStoreETWType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4848,7 +4848,7 @@ ETW イベントのノード内の格納先について説明します。
 |Attribute|値|
 |---|---|
 |content|1 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|LocalStoreType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4882,7 +4882,7 @@ LogicalDirectoryType について説明します。
 |Attribute|値|
 |---|---|
 |content|0 個の要素、3 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|LogicalDirectoryType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4921,7 +4921,7 @@ LogicalDirectory の名前。
 |Attribute|値|
 |---|---|
 |name|LogicalDirectoryName|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="mappedto"></a>MappedTo
@@ -4930,7 +4930,7 @@ LogicalDirectory のパス。
 |Attribute|値|
 |---|---|
 |name|MappedTo|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="context"></a>Context
@@ -4947,7 +4947,7 @@ LogicalDirectory のパス。
 |Attribute|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ManagedAssemblyType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4969,7 +4969,7 @@ LogicalDirectory のパス。
 |Attribute|値|
 |---|---|
 |content|1 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|NetworkPoliciesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4997,7 +4997,7 @@ LogicalDirectory のパス。
 |Attribute|値|
 |---|---|
 |name|ContainerNetworkPolicy|
-|型|[ContainerNetworkPolicyType](#containernetworkpolicytype-complextype)|
+|type|[ContainerNetworkPolicyType](#containernetworkpolicytype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -5006,7 +5006,7 @@ LogicalDirectory のパス。
 |Attribute|値|
 |---|---|
 |content|0 個の要素、3 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|PaaSRoleType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5026,7 +5026,7 @@ LogicalDirectory のパス。
 |Attribute|値|
 |---|---|
 |name|RoleName|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="nodetyperef"></a>NodeTypeRef
@@ -5034,7 +5034,7 @@ LogicalDirectory のパス。
 |Attribute|値|
 |---|---|
 |name|NodeTypeRef|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="rolenodecount"></a>RoleNodeCount
@@ -5042,7 +5042,7 @@ LogicalDirectory のパス。
 |Attribute|値|
 |---|---|
 |name|RoleNodeCount|
-|型|xs:int|
+|type|xs:int|
 |use|required|
 
 ## <a name="paasvotetype-complextype"></a>PaaSVoteType complexType
@@ -5050,7 +5050,7 @@ LogicalDirectory のパス。
 |Attribute|値|
 |---|---|
 |content|0 個の要素、3 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|PaaSVoteType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5084,7 +5084,7 @@ LogicalDirectory のパス。
 |Attribute|値|
 |---|---|
 |name|Port|
-|型|xs:int|
+|type|xs:int|
 |use|required|
 
 ## <a name="packagesharingpolicytype-complextype"></a>PackageSharingPolicyType complexType
@@ -5093,7 +5093,7 @@ LogicalDirectory のパス。
 |Attribute|値|
 |---|---|
 |content|0 個の要素、2 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|PackageSharingPolicyType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5148,7 +5148,7 @@ LogicalDirectory のパス。
 |Attribute|値|
 |---|---|
 |content|0 個の要素、1 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ParameterType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5172,14 +5172,14 @@ true の場合、このパラメーターの値は暗号化されます
 |Attribute|値|
 |---|---|
 |name|IsEncrypted|
-|型|xs:string|
+|type|xs:string|
 
 ## <a name="parameterstype-complextype"></a>ParametersType complexType
 
 |Attribute|値|
 |---|---|
 |content|1 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ParametersType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5199,7 +5199,7 @@ true の場合、このパラメーターの値は暗号化されます
 |Attribute|値|
 |---|---|
 |name|パラメーター|
-|型|[ParameterType](#parametertype-complextype)|
+|type|[ParameterType](#parametertype-complextype)|
 |minOccurs|1|
 |maxOccurs|unbounded|
 
@@ -5208,7 +5208,7 @@ true の場合、このパラメーターの値は暗号化されます
 |Attribute|値|
 |---|---|
 |content|0 個の要素、2 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|PortBindingType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5238,7 +5238,7 @@ true の場合、このパラメーターの値は暗号化されます
 |Attribute|値|
 |---|---|
 |name|ContainerPort|
-|型|xs:int|
+|type|xs:int|
 |use|required|
 
 #### <a name="endpointref"></a>EndpointRef
@@ -5252,7 +5252,7 @@ true の場合、このパラメーターの値は暗号化されます
 |Attribute|値|
 |---|---|
 |content|0 個の要素、3 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|RepositoryCredentialsType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5292,7 +5292,7 @@ true の場合、このパラメーターの値は暗号化されます
 |Attribute|値|
 |---|---|
 |name|PasswordEncrypted|
-|型|xs:boolean|
+|type|xs:boolean|
 |use|省略可能|
 
 #### <a name="email"></a>Email
@@ -5311,7 +5311,7 @@ true の場合、このパラメーターの値は暗号化されます
 |Attribute|値|
 |---|---|
 |name|種類|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 ## <a name="resourcegovernancepolicytype-complextype"></a>ResourceGovernancePolicyType complexType
@@ -5320,7 +5320,7 @@ true の場合、このパラメーターの値は暗号化されます
 |Attribute|値|
 |---|---|
 |content|0 個の要素、12 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ResourceGovernancePolicyType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5410,7 +5410,7 @@ MB 単位のメモリ制限。 正の整数にする必要があります。 コ
 |Attribute|値|
 |---|---|
 |name|MemoryInMB|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 |既定値 (default)|0|
 
@@ -5420,7 +5420,7 @@ MB 内にある、使用可能なスワップ メモリの総量。 正の整数
 |Attribute|値|
 |---|---|
 |name|MemorySwapInMB|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 |既定値 (default)|0|
 
@@ -5430,7 +5430,7 @@ MB 内にある、使用可能なスワップ メモリの総量。 正の整数
 |Attribute|値|
 |---|---|
 |name|MemoryReservationInMB|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 |既定値 (default)|0|
 
@@ -5440,7 +5440,7 @@ CPU の相対的な重み。 正の整数にする必要があります。
 |Attribute|値|
 |---|---|
 |name|CpuShares|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 |既定値 (default)|0|
 
@@ -5450,7 +5450,7 @@ CPU の相対的な重み。 正の整数にする必要があります。
 |Attribute|値|
 |---|---|
 |name|CpuPercent|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 |既定値 (default)|0|
 
@@ -5460,7 +5460,7 @@ CPU の相対的な重み。 正の整数にする必要があります。
 |Attribute|値|
 |---|---|
 |name|MaximumIOps|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 |既定値 (default)|0|
 
@@ -5470,7 +5470,7 @@ CPU の相対的な重み。 正の整数にする必要があります。
 |Attribute|値|
 |---|---|
 |name|MaximumIOBandwidth|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 |既定値 (default)|0|
 
@@ -5480,7 +5480,7 @@ CPU の相対的な重み。 正の整数にする必要があります。
 |Attribute|値|
 |---|---|
 |name|BlockIOWeight|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 |既定値 (default)|0|
 
@@ -5490,7 +5490,7 @@ CPU の相対的な重み。 正の整数にする必要があります。
 |Attribute|値|
 |---|---|
 |name|DiskQuotaInMB|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 |既定値 (default)|0|
 
@@ -5500,7 +5500,7 @@ CPU の相対的な重み。 正の整数にする必要があります。
 |Attribute|値|
 |---|---|
 |name|KernelMemoryInMB|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 |既定値 (default)|0|
 
@@ -5510,7 +5510,7 @@ CPU の相対的な重み。 正の整数にする必要があります。
 |Attribute|値|
 |---|---|
 |name|ShmSizeInMB|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 |既定値 (default)|0|
 
@@ -5520,7 +5520,7 @@ CPU の相対的な重み。 正の整数にする必要があります。
 |Attribute|値|
 |---|---|
 |content|1 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ResourceOverridesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5565,7 +5565,7 @@ CPU の相対的な重み。 正の整数にする必要があります。
 |Attribute|値|
 |---|---|
 |content|1 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ResourcesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5606,7 +5606,7 @@ CPU の相対的な重み。 正の整数にする必要があります。
 |Attribute|値|
 |---|---|
 |content|0 個の要素、3 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|RunAsPolicyType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5684,7 +5684,7 @@ Setup は、他のエントリ ポイントの前に実行される特権を持�
 |Attribute|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ScalingPolicyType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5707,7 +5707,7 @@ Setup は、他のエントリ ポイントの前に実行される特権を持�
 |Attribute|値|
 |---|---|
 |content|0 個の要素、4 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|SecurityAccessPolicyType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5803,7 +5803,7 @@ Setup は、他のエントリ ポイントの前に実行される特権を持�
 |Attribute|値|
 |---|---|
 |content|0 個の要素、1 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|SecurityOptionsType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5835,7 +5835,7 @@ Setup は、他のエントリ ポイントの前に実行される特権を持�
 |Attribute|値|
 |---|---|
 |content|2 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|SecurityPrincipalsType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -6022,7 +6022,7 @@ Setup は、他のエントリ ポイントの前に実行される特権を持�
 |Attribute|値|
 |---|---|
 |content|4 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ServiceAndServiceGroupTypesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -6045,28 +6045,28 @@ Setup は、他のエントリ ポイントの前に実行される特権を持�
 |Attribute|値|
 |---|---|
 |name|StatefulServiceType|
-|型|[StatefulServiceTypeType](#statefulservicetypetype-complextype)|
+|type|[StatefulServiceTypeType](#statefulservicetypetype-complextype)|
 
 #### <a name="statelessservicetype"></a>StatelessServiceType
 
 |Attribute|値|
 |---|---|
 |name|StatelessServiceType|
-|型|[StatelessServiceTypeType](#statelessservicetypetype-complextype)|
+|type|[StatelessServiceTypeType](#statelessservicetypetype-complextype)|
 
 #### <a name="statefulservicegrouptype"></a>StatefulServiceGroupType
 
 |Attribute|値|
 |---|---|
 |name|StatefulServiceGroupType|
-|型|[StatefulServiceGroupTypeType](#statefulservicegrouptypetype-complextype)|
+|type|[StatefulServiceGroupTypeType](#statefulservicegrouptypetype-complextype)|
 
 #### <a name="statelessservicegrouptype"></a>StatelessServiceGroupType
 
 |Attribute|値|
 |---|---|
 |name|StatelessServiceGroupType|
-|型|[StatelessServiceGroupTypeType](#statelessservicegrouptypetype-complextype)|
+|type|[StatelessServiceGroupTypeType](#statelessservicegrouptypetype-complextype)|
 
 ## <a name="servicediagnosticstype-complextype"></a>ServiceDiagnosticsType complexType
 このサービス マニフェストのコンポーネントに対する診断設定について説明します。
@@ -6074,7 +6074,7 @@ Setup は、他のエントリ ポイントの前に実行される特権を持�
 |Attribute|値|
 |---|---|
 |content|1 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ServiceDiagnosticsType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -6143,7 +6143,7 @@ Setup は、他のエントリ ポイントの前に実行される特権を持�
 |Attribute|値|
 |---|---|
 |content|0 個の要素、2 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ServiceFabricRuntimeAccessPolicyType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -6171,7 +6171,7 @@ Fabric Runtime 固有の情報を、Service パッケージ内の Code パッケ
 |Attribute|値|
 |---|---|
 |name|RemoveServiceFabricRuntimeAccess|
-|型|xs:boolean|
+|type|xs:boolean|
 |既定値 (default)|false|
 
 #### <a name="useservicefabricreplicatedstore"></a>UseServiceFabricReplicatedStore
@@ -6180,7 +6180,7 @@ Service Fabric でレプリケートされたブロックストアを、サー�
 |Attribute|値|
 |---|---|
 |name|UseServiceFabricReplicatedStore|
-|型|xs:boolean|
+|type|xs:boolean|
 |既定値 (default)|false|
 
 ## <a name="servicegroupmembertype-complextype"></a>ServiceGroupMemberType complexType
@@ -6188,7 +6188,7 @@ Service Fabric でレプリケートされたブロックストアを、サー�
 |Attribute|値|
 |---|---|
 |content|1 個の要素、2 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ServiceGroupMemberType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -6264,7 +6264,7 @@ Service Fabric でレプリケートされたブロックストアを、サー�
 |Attribute|値|
 |---|---|
 |content|4 個の要素、2 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ServiceGroupTypeType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -6336,7 +6336,7 @@ Service Fabric でレプリケートされたブロックストアを、サー�
 |Attribute|値|
 |---|---|
 |name|UseImplicitFactory|
-|型|xs:boolean|
+|type|xs:boolean|
 |use|省略可能|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
@@ -6355,7 +6355,7 @@ Service Fabric でレプリケートされたブロックストアを、サー�
 |Attribute|値|
 |---|---|
 |name|PlacementConstraints|
-|型|xs:string|
+|type|xs:string|
 |minOccurs|0|
 
 #### <a name="servicegroupmembers"></a>ServiceGroupMembers
@@ -6380,7 +6380,7 @@ Service Fabric でレプリケートされたブロックストアを、サー�
 |Attribute|値|
 |---|---|
 |content|11 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ServiceManifestImportPoliciesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -6441,7 +6441,7 @@ Service Fabric でレプリケートされたブロックストアを、サー�
 |Attribute|値|
 |---|---|
 |name|RunAsPolicy|
-|型|[RunAsPolicyType](#runaspolicytype-complextype)|
+|type|[RunAsPolicyType](#runaspolicytype-complextype)|
 |minOccurs|0|
 
 #### <a name="securityaccesspolicy"></a>SecurityAccessPolicy
@@ -6449,7 +6449,7 @@ Service Fabric でレプリケートされたブロックストアを、サー�
 |Attribute|値|
 |---|---|
 |name|SecurityAccessPolicy|
-|型|[SecurityAccessPolicyType](#securityaccesspolicytype-complextype)|
+|type|[SecurityAccessPolicyType](#securityaccesspolicytype-complextype)|
 |minOccurs|0|
 
 #### <a name="packagesharingpolicy"></a>PackageSharingPolicy
@@ -6457,7 +6457,7 @@ Service Fabric でレプリケートされたブロックストアを、サー�
 |Attribute|値|
 |---|---|
 |name|PackageSharingPolicy|
-|型|[PackageSharingPolicyType](#packagesharingpolicytype-complextype)|
+|type|[PackageSharingPolicyType](#packagesharingpolicytype-complextype)|
 |minOccurs|0|
 
 #### <a name="endpointbindingpolicy"></a>EndpointBindingPolicy
@@ -6466,7 +6466,7 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 |Attribute|値|
 |---|---|
 |name|EndpointBindingPolicy|
-|型|[EndpointBindingPolicyType](#endpointbindingpolicytype-complextype)|
+|type|[EndpointBindingPolicyType](#endpointbindingpolicytype-complextype)|
 |minOccurs|0|
 
 #### <a name="servicefabricruntimeaccesspolicy"></a>ServiceFabricRuntimeAccessPolicy
@@ -6475,7 +6475,7 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 |Attribute|値|
 |---|---|
 |name|ServiceFabricRuntimeAccessPolicy|
-|型|[ServiceFabricRuntimeAccessPolicyType](#servicefabricruntimeaccesspolicytype-complextype)|
+|type|[ServiceFabricRuntimeAccessPolicyType](#servicefabricruntimeaccesspolicytype-complextype)|
 |minOccurs|0|
 |maxOccurs|1|
 
@@ -6485,7 +6485,7 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 |Attribute|値|
 |---|---|
 |name|ServicePackageResourceGovernancePolicy|
-|型|[ServicePackageResourceGovernancePolicyType](#servicepackageresourcegovernancepolicytype-complextype)|
+|type|[ServicePackageResourceGovernancePolicyType](#servicepackageresourcegovernancepolicytype-complextype)|
 |minOccurs|0|
 |maxOccurs|1|
 
@@ -6495,7 +6495,7 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 |Attribute|値|
 |---|---|
 |name|ResourceGovernancePolicy|
-|型|[ResourceGovernancePolicyType](#resourcegovernancepolicytype-complextype)|
+|type|[ResourceGovernancePolicyType](#resourcegovernancepolicytype-complextype)|
 |minOccurs|0|
 
 #### <a name="servicepackagecontainerpolicy"></a>ServicePackageContainerPolicy
@@ -6503,7 +6503,7 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 |Attribute|値|
 |---|---|
 |name|ServicePackageContainerPolicy|
-|型|[ServicePackageContainerPolicyType](#servicepackagecontainerpolicytype-complextype)|
+|type|[ServicePackageContainerPolicyType](#servicepackagecontainerpolicytype-complextype)|
 |minOccurs|0|
 |maxOccurs|1|
 
@@ -6513,7 +6513,7 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 |Attribute|値|
 |---|---|
 |name|ContainerHostPolicies|
-|型|[ContainerHostPoliciesType](#containerhostpoliciestype-complextype)|
+|type|[ContainerHostPoliciesType](#containerhostpoliciestype-complextype)|
 |minOccurs|0|
 
 #### <a name="configpackagepolicies"></a>ConfigPackagePolicies
@@ -6522,7 +6522,7 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 |Attribute|値|
 |---|---|
 |name|ConfigPackagePolicies|
-|型|[ConfigPackagePoliciesType](#configpackagepoliciestype-complextype)|
+|type|[ConfigPackagePoliciesType](#configpackagepoliciestype-complextype)|
 |minOccurs|0|
 
 #### <a name="networkpolicies"></a>NetworkPolicies
@@ -6531,7 +6531,7 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 |Attribute|値|
 |---|---|
 |name|NetworkPolicies|
-|型|[NetworkPoliciesType](#networkpoliciestype-complextype)|
+|type|[NetworkPoliciesType](#networkpoliciestype-complextype)|
 |minOccurs|0|
 |maxOccurs|1|
 
@@ -6541,7 +6541,7 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 |Attribute|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ServiceManifestRefType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -6561,7 +6561,7 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 |Attribute|値|
 |---|---|
 |content|7 個の要素、1 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ServiceManifestType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -6608,7 +6608,7 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 |name|ManifestId|
 |use|省略可能|
 |既定値 (default)||
-|型|xs:string|
+|type|xs:string|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
 
@@ -6618,7 +6618,7 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 |Attribute|値|
 |---|---|
 |name|説明|
-|型|xs:string|
+|type|xs:string|
 |minOccurs|0|
 
 #### <a name="servicetypes"></a>ServiceTypes
@@ -6627,14 +6627,14 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 |Attribute|値|
 |---|---|
 |name|ServiceTypes|
-|型|[ServiceAndServiceGroupTypesType](#serviceandservicegrouptypestype-complextype)|
+|type|[ServiceAndServiceGroupTypesType](#serviceandservicegrouptypestype-complextype)|
 
 #### <a name="codepackage"></a>CodePackage
 
 |Attribute|値|
 |---|---|
 |name|CodePackage|
-|型|[CodePackageType](#codepackagetype-complextype)|
+|type|[CodePackageType](#codepackagetype-complextype)|
 |maxOccurs|unbounded|
 
 #### <a name="configpackage"></a>ConfigPackage
@@ -6642,7 +6642,7 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 |Attribute|値|
 |---|---|
 |name|ConfigPackage|
-|型|[ConfigPackageType](#configpackagetype-complextype)|
+|type|[ConfigPackageType](#configpackagetype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -6651,7 +6651,7 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 |Attribute|値|
 |---|---|
 |name|DataPackage|
-|型|[DataPackageType](#datapackagetype-complextype)|
+|type|[DataPackageType](#datapackagetype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -6660,7 +6660,7 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 |Attribute|値|
 |---|---|
 |name|リソース|
-|型|[ResourcesType](#resourcestype-complextype)|
+|type|[ResourcesType](#resourcestype-complextype)|
 |minOccurs|0|
 
 #### <a name="diagnostics"></a>診断
@@ -6668,7 +6668,7 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 |Attribute|値|
 |---|---|
 |name|診断|
-|型|[ServiceDiagnosticsType](#servicediagnosticstype-complextype)|
+|type|[ServiceDiagnosticsType](#servicediagnosticstype-complextype)|
 |minOccurs|0|
 
 ## <a name="servicepackagecontainerpolicytype-complextype"></a>ServicePackageContainerPolicyType complexType
@@ -6676,7 +6676,7 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 |Attribute|値|
 |---|---|
 |content|1 個の要素、2 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ServicePackageContainerPolicyType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -6712,7 +6712,7 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 |---|---|
 |name|hostname|
 |use|省略可能|
-|型|xs:string|
+|type|xs:string|
 
 #### <a name="isolation"></a>分離:
 コンテナーの分離モード。 有効な値は "default"、"process"、または "hyperv" です。
@@ -6721,7 +6721,7 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 |---|---|
 |name|分離:|
 |use|省略可能|
-|型|xs:string|
+|type|xs:string|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
 
@@ -6731,7 +6731,7 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 |Attribute|値|
 |---|---|
 |name|PortBinding|
-|型|[PortBindingType](#portbindingtype-complextype)|
+|type|[PortBindingType](#portbindingtype-complextype)|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -6740,7 +6740,7 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 |Attribute|値|
 |---|---|
 |content|0 個の要素、2 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ServicePackageResourceGovernancePolicyType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -6768,7 +6768,7 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 |Attribute|値|
 |---|---|
 |name|CpuCores|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 |既定値 (default)|0|
 
@@ -6778,7 +6778,7 @@ MB 単位のメモリ制限。 正の整数にする必要があります。
 |Attribute|値|
 |---|---|
 |name|MemoryInMB|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 |既定値 (default)|0|
 
@@ -6788,7 +6788,7 @@ ServicePackage は、配置とアクティブ化のバージョン付き単位�
 |Attribute|値|
 |---|---|
 |content|11 個の要素、4 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ServicePackageType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -6917,7 +6917,7 @@ ServicePackage は、配置とアクティブ化のバージョン付き単位�
 |Attribute|値|
 |---|---|
 |name|Name|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="manifestversion"></a>ManifestVersion
@@ -6925,7 +6925,7 @@ ServicePackage は、配置とアクティブ化のバージョン付き単位�
 |Attribute|値|
 |---|---|
 |name|ManifestVersion|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 #### <a name="manifestchecksum"></a>ManifestChecksum
@@ -6934,7 +6934,7 @@ ServiceManifest ファイルのチェックサム値。
 |Attribute|値|
 |---|---|
 |name|ManifestChecksum|
-|型|xs:string|
+|type|xs:string|
 
 #### <a name="contentchecksum"></a>ContentChecksum
 この ServicePackage の内容のチェックサム値。
@@ -6942,7 +6942,7 @@ ServiceManifest ファイルのチェックサム値。
 |Attribute|値|
 |---|---|
 |name|ContentChecksum|
-|型|xs:string|
+|type|xs:string|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
 
@@ -6951,7 +6951,7 @@ ServiceManifest ファイルのチェックサム値。
 |Attribute|値|
 |---|---|
 |name|説明|
-|型|xs:string|
+|type|xs:string|
 |minOccurs|0|
 
 #### <a name="servicepackageresourcegovernancepolicy"></a>ServicePackageResourceGovernancePolicy
@@ -6959,7 +6959,7 @@ ServiceManifest ファイルのチェックサム値。
 |Attribute|値|
 |---|---|
 |name|ServicePackageResourceGovernancePolicy|
-|型|[ServicePackageResourceGovernancePolicyType](#servicepackageresourcegovernancepolicytype-complextype)|
+|type|[ServicePackageResourceGovernancePolicyType](#servicepackageresourcegovernancepolicytype-complextype)|
 |minOccurs|0|
 |maxOccurs|1|
 
@@ -6968,7 +6968,7 @@ ServiceManifest ファイルのチェックサム値。
 |Attribute|値|
 |---|---|
 |name|ServicePackageContainerPolicy|
-|型|[ServicePackageContainerPolicyType](#servicepackagecontainerpolicytype-complextype)|
+|type|[ServicePackageContainerPolicyType](#servicepackagecontainerpolicytype-complextype)|
 |minOccurs|0|
 |maxOccurs|1|
 
@@ -6977,7 +6977,7 @@ ServiceManifest ファイルのチェックサム値。
 |Attribute|値|
 |---|---|
 |name|ServiceFabricRuntimeAccessPolicy|
-|型|[ServiceFabricRuntimeAccessPolicyType](#servicefabricruntimeaccesspolicytype-complextype)|
+|type|[ServiceFabricRuntimeAccessPolicyType](#servicefabricruntimeaccesspolicytype-complextype)|
 |minOccurs|0|
 |maxOccurs|1|
 
@@ -7022,7 +7022,7 @@ ServiceManifest ファイルのチェックサム値。
 |Attribute|値|
 |---|---|
 |name|NetworkPolicies|
-|型|[NetworkPoliciesType](#networkpoliciestype-complextype)|
+|type|[NetworkPoliciesType](#networkpoliciestype-complextype)|
 |minOccurs|0|
 |maxOccurs|1|
 
@@ -7031,14 +7031,14 @@ ServiceManifest ファイルのチェックサム値。
 |Attribute|値|
 |---|---|
 |name|診断|
-|型|[ServiceDiagnosticsType](#servicediagnosticstype-complextype)|
+|type|[ServiceDiagnosticsType](#servicediagnosticstype-complextype)|
 
 ## <a name="servicetemplatestype-complextype"></a>ServiceTemplatesType complexType
 
 |Attribute|値|
 |---|---|
 |content|4 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ServiceTemplatesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7061,28 +7061,28 @@ ServiceManifest ファイルのチェックサム値。
 |Attribute|値|
 |---|---|
 |name|StatelessService|
-|型|[StatelessServiceType](#statelessservicetype-complextype)|
+|type|[StatelessServiceType](#statelessservicetype-complextype)|
 
 #### <a name="statefulservice"></a>StatefulService
 
 |Attribute|値|
 |---|---|
 |name|StatefulService|
-|型|[StatefulServiceType](#statefulservicetype-complextype)|
+|type|[StatefulServiceType](#statefulservicetype-complextype)|
 
 #### <a name="statelessservicegroup"></a>StatelessServiceGroup
 
 |Attribute|値|
 |---|---|
 |name|StatelessServiceGroup|
-|型|[StatelessServiceGroupType](#statelessservicegrouptype-complextype)|
+|type|[StatelessServiceGroupType](#statelessservicegrouptype-complextype)|
 
 #### <a name="statefulservicegroup"></a>StatefulServiceGroup
 
 |Attribute|値|
 |---|---|
 |name|StatefulServiceGroup|
-|型|[StatefulServiceGroupType](#statefulservicegrouptype-complextype)|
+|type|[StatefulServiceGroupType](#statefulservicegrouptype-complextype)|
 
 ## <a name="servicetype-complextype"></a>ServiceType complexType
 Microsoft Azure Service Fabric サービスを定義する基本データ型。
@@ -7090,7 +7090,7 @@ Microsoft Azure Service Fabric サービスを定義する基本データ型。
 |Attribute|値|
 |---|---|
 |content|5 個の要素、2 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ServiceType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7265,7 +7265,7 @@ Microsoft Azure Service Fabric サービスを定義する基本データ型。
 |Attribute|値|
 |---|---|
 |name|PlacementConstraints|
-|型|xs:string|
+|type|xs:string|
 |minOccurs|0|
 
 #### <a name="servicecorrelations"></a>ServiceCorrelations
@@ -7298,7 +7298,7 @@ Microsoft Azure Service Fabric サービスを定義する基本データ型。
 |Attribute|値|
 |---|---|
 |content|1 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ServiceTypeExtensionPolicyPropertiesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7334,7 +7334,7 @@ Microsoft Azure Service Fabric サービスを定義する基本データ型。
 |Attribute|値|
 |---|---|
 |content|0 個の要素、3 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ServiceTypeHealthPolicyType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7367,7 +7367,7 @@ Microsoft Azure Service Fabric サービスを定義する基本データ型。
 |Attribute|値|
 |---|---|
 |name|MaxPercentUnhealthyServices|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 |既定値 (default)|0|
 
@@ -7377,7 +7377,7 @@ Microsoft Azure Service Fabric サービスを定義する基本データ型。
 |Attribute|値|
 |---|---|
 |name|MaxPercentUnhealthyPartitionsPerService|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 |既定値 (default)|0|
 
@@ -7387,7 +7387,7 @@ Microsoft Azure Service Fabric サービスを定義する基本データ型。
 |Attribute|値|
 |---|---|
 |name|MaxPercentUnhealthyReplicasPerPartition|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 |既定値 (default)|0|
 
@@ -7397,7 +7397,7 @@ Microsoft Azure Service Fabric サービスを定義する基本データ型。
 |Attribute|値|
 |---|---|
 |content|4 個の要素、1 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ServiceTypeType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7504,7 +7504,7 @@ Microsoft Azure Service Fabric サービスを定義する基本データ型。
 |Attribute|値|
 |---|---|
 |name|PlacementConstraints|
-|型|xs:string|
+|type|xs:string|
 |minOccurs|0|
 
 #### <a name="serviceplacementpolicies"></a>ServicePlacementPolicies
@@ -7527,7 +7527,7 @@ Microsoft Azure Service Fabric サービスを定義する基本データ型。
 |Attribute|値|
 |---|---|
 |content|2 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|ServiceTypesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7557,7 +7557,7 @@ Microsoft Azure Service Fabric サービスを定義する基本データ型。
 |Attribute|値|
 |---|---|
 |name|StatefulServiceType|
-|型|[StatefulServiceTypeType](#statefulservicetypetype-complextype)|
+|type|[StatefulServiceTypeType](#statefulservicetypetype-complextype)|
 
 #### <a name="statelessservicetype"></a>StatelessServiceType
 ステートレス ServiceType について説明します。
@@ -7565,7 +7565,7 @@ Microsoft Azure Service Fabric サービスを定義する基本データ型。
 |Attribute|値|
 |---|---|
 |name|StatelessServiceType|
-|型|[StatelessServiceTypeType](#statelessservicetypetype-complextype)|
+|type|[StatelessServiceTypeType](#statelessservicetypetype-complextype)|
 
 ## <a name="settingsoverridestype-complextype"></a>SettingsOverridesType complexType
 オーバーライドするサービス マニフェストの構成設定を宣言します。 1 つまたは複数のセクションのキーと値のペアから構成されます。 パラメーター値は、Invoke-ServiceFabricEncryptSecret コマンドレットを使用して暗号化できます。
@@ -7573,7 +7573,7 @@ Microsoft Azure Service Fabric サービスを定義する基本データ型。
 |Attribute|値|
 |---|---|
 |content|1 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|SettingsOverridesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7647,7 +7647,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |Attribute|値|
 |---|---|
 |content|1 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|SettingsType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7706,7 +7706,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |Attribute|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|StatefulServiceGroupType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7741,7 +7741,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |Attribute|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|StatefulServiceGroupTypeType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7769,7 +7769,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |Attribute|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|StatefulServiceType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7817,7 +7817,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |Attribute|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|StatefulServiceTypeType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7850,7 +7850,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |Attribute|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|StatelessServiceGroupType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7885,7 +7885,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |Attribute|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|StatelessServiceGroupTypeType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7907,7 +7907,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |Attribute|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|StatelessServiceType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7935,7 +7935,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |Attribute|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|StatelessServiceTypeType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7962,7 +7962,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |Attribute|値|
 |---|---|
 |content|2 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|TargetInformationType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7983,7 +7983,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |Attribute|値|
 |---|---|
 |name|CurrentInstallation|
-|型|[WindowsFabricDeploymentInformation](#windowsfabricdeploymentinformation-complextype)|
+|type|[WindowsFabricDeploymentInformation](#windowsfabricdeploymentinformation-complextype)|
 |minOccurs|0|
 
 #### <a name="targetinstallation"></a>TargetInstallation
@@ -7991,7 +7991,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |Attribute|値|
 |---|---|
 |name|TargetInstallation|
-|型|[WindowsFabricDeploymentInformation](#windowsfabricdeploymentinformation-complextype)|
+|type|[WindowsFabricDeploymentInformation](#windowsfabricdeploymentinformation-complextype)|
 |minOccurs|1|
 
 ## <a name="unmanageddlltype-complextype"></a>UnmanagedDllType complexType
@@ -8000,7 +8000,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |Attribute|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|UnmanagedDllType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -8021,7 +8021,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |Attribute|値|
 |---|---|
 |content|0 個の要素、11 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|WindowsFabricDeploymentInformation|
 
 ### <a name="xml-source"></a>XML ソース
@@ -8094,7 +8094,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |Attribute|値|
 |---|---|
 |name|InstanceId|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 #### <a name="msilocation"></a>MSILocation
@@ -8103,7 +8103,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |Attribute|値|
 |---|---|
 |name|MSILocation|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 #### <a name="clustermanifestlocation"></a>ClusterManifestLocation
@@ -8112,7 +8112,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |Attribute|値|
 |---|---|
 |name|ClusterManifestLocation|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 #### <a name="infrastructuremanifestlocation"></a>InfrastructureManifestLocation
@@ -8121,7 +8121,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |Attribute|値|
 |---|---|
 |name|InfrastructureManifestLocation|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 #### <a name="targetversion"></a>TargetVersion
@@ -8130,7 +8130,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |Attribute|値|
 |---|---|
 |name|TargetVersion|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 #### <a name="nodename"></a>NodeName
@@ -8139,7 +8139,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |Attribute|値|
 |---|---|
 |name|NodeName|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 #### <a name="removenodestate"></a>RemoveNodeState
@@ -8148,7 +8148,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |Attribute|値|
 |---|---|
 |name|RemoveNodeState|
-|型|xs:boolean|
+|type|xs:boolean|
 |use|省略可能|
 |既定値 (default)|false|
 
@@ -8158,7 +8158,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |Attribute|値|
 |---|---|
 |name|UpgradeEntryPointExe|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 #### <a name="upgradeentrypointexeparameters"></a>UpgradeEntryPointExeParameters
@@ -8167,7 +8167,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |Attribute|値|
 |---|---|
 |name|UpgradeEntryPointExeParameters|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 #### <a name="undoupgradeentrypointexe"></a>UndoUpgradeEntryPointExe
@@ -8176,7 +8176,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |Attribute|値|
 |---|---|
 |name|UndoUpgradeEntryPointExe|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 #### <a name="undoupgradeentrypointexeparameters"></a>UndoUpgradeEntryPointExeParameters
@@ -8185,7 +8185,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |Attribute|値|
 |---|---|
 |name|UndoUpgradeEntryPointExeParameters|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 ## <a name="windowsinfrastructuretype-complextype"></a>WindowsInfrastructureType complexType
@@ -8193,7 +8193,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |Attribute|値|
 |---|---|
 |content|1 個の要素、0 個の属性|
-|定義済み|グローバルに|
+|defined|グローバル|
 |name|WindowsInfrastructureType|
 
 ### <a name="xml-source"></a>XML ソース
