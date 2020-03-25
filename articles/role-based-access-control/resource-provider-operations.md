@@ -1242,7 +1242,7 @@ ms.locfileid: "77562005"
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | [説明] |
+> | アクションの種類 | Operation | 説明 |
 > | --- | --- | --- |
 > | DataAction | Microsoft.CognitiveServices/accounts/AnomalyDetector/timeseries/entire/detect/action | この操作により、系列全体を使用してモデルが生成され、各ポイントは同じモデルで検出されます。<br>このメソッドでは、特定のポイントの前後のポイントを使用して、異常であるかどうかを判断します。<br>全体を検出することで、時系列の全体的な状態をユーザーに提供することができます。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/AnomalyDetector/timeseries/last/detect/action | この操作では、最新のポイント以前のポイントを使用してモデルを生成します。 このメソッドでは、履歴ポイントのみを使用して、ターゲット ポイントが異常であるかどうかを判断します。 検出された最新のポイントは、ビジネス メトリックのリアルタイム監視のシナリオと一致します。 |
@@ -3874,7 +3874,7 @@ ms.locfileid: "77562005"
 ## <a name="microsoftmaps"></a>Microsoft.Maps
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | [説明] |
+> | アクションの種類 | Operation | 説明 |
 > | --- | --- | --- |
 > | DataAction | Microsoft.Maps/accounts/data/read | Maps アカウントにデータ読み取りアクセスを許可します。 |
 > | アクション | Microsoft.Maps/accounts/delete | Maps アカウントを削除します。 |
