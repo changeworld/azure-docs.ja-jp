@@ -4,15 +4,15 @@ description: HIPAA HITRUST ブループリント サンプルの概要。 この
 ms.date: 12/3/2019
 ms.topic: sample
 ms.openlocfilehash: ebe907053b37ebe0ff99248aa181a480c045d533
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "75470068"
 ---
 # <a name="overview-of-the-hipaa-hitrust-blueprint-sample"></a>HIPAA HITRUST ブループリント サンプルの概要
 
-HIPAA HITRUST ブループリント サンプルには、[HIPAA HITRUST](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html) 構成証明に役立つ、[Azure Policy](../../../policy/overview.md) を使用した一連のガバナンスのガードレールが用意されています。 
+HIPAA HITRUST ブループリント サンプルには、[HIPAA HITRUST](../../../policy/overview.md) 構成証明に役立つ、[Azure Policy](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html) を使用した一連のガバナンスのガードレールが用意されています。 
 
 ## <a name="blueprint-sample"></a>ブループリント サンプル
 

@@ -4,10 +4,10 @@ description: IRS 1075 ブループリント サンプルの概要。 このブ�
 ms.date: 11/19/2019
 ms.topic: sample
 ms.openlocfilehash: 1edd4b843c6cc8c486961cd2337f7b44e3b190e7
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "74546786"
 ---
 # <a name="overview-of-the-irs-1075-blueprint-sample"></a>IRS 1075 ブループリント サンプルの概要
@@ -18,7 +18,7 @@ IRS 1075 ブループリント サンプルでは、特定の IRS 1075 コント
 
 コントロール マッピングのセクションでは、このブループリント内に含まれるポリシーについてと、それらのポリシーが IRS 1075 のさまざまなコントロールにどのように対応するかについて詳しく説明します。 リソースはアーキテクチャに割り当てられると、割り当て済みのポリシーに違反していないかどうかを Azure Policy によって評価されます。 詳細については、[Azure Policy](../../../policy/overview.md) に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 IRS 1075 のブループリント サンプルの概要を確認しました。 次に、コントロール マッピングと、このサンプルをデプロイする方法を確認するには、次の記事を参照してください。
 

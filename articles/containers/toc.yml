@@ -47,7 +47,7 @@
       items:
         - name: 概要 - Service Fabric とコンテナー
           href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-containers-overview'
-        - name: 方法
+        - name: 操作方法
           items:
             - name: Windows でのコンテナー アプリケーションの作成
               href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers'

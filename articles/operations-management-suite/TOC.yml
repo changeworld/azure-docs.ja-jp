@@ -2,7 +2,7 @@
   items:
     - name: エージェントの監視
       href: ../monitoring/index.md
-- name: 作業開始
+- name: はじめに
   items:
     - name: Azure Monitor ログ
       href: ../log-analytics/log-analytics-get-started.md
@@ -28,7 +28,7 @@
           href: ../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2foperations-management-suite%2ftoc.json
         - name: Site Recovery の概要
           href: ../site-recovery/site-recovery-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json
-    - name: セキュリティ保護
+    - name: セキュリティで保護
       items:
         - name: リソースの監視
           href: ../security-center/security-center-monitoring.md
@@ -36,7 +36,7 @@
           href: ../security-center/security-center-managing-and-responding-alerts.md
         - name: ベースライン評価
           href: ../security-center/security-center-customize-os-security-config.md
-        - name: マルウェアの評価
+        - name: '[Malware Assessment] (マルウェアの評価)'
           href: ../security-center/security-center-install-endpoint-protection.md
         - name: セキュリティ製品の接続
           href: ../security-center/quick-security-solutions.md

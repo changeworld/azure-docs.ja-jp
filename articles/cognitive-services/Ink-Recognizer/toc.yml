@@ -5,7 +5,7 @@
   items:
     - name: Ink Recognizer API とは
       href: overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: REST API
@@ -14,7 +14,7 @@
           href: quickstarts/csharp.md
         - name: Java
           href: quickstarts/java.md
-        - name: JavaScript
+        - name: Javascript
           href: quickstarts/javascript.md
 - name: 概念
   items:

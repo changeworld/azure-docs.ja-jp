@@ -12,17 +12,17 @@ metadata:
   manager: rkarlin
   ms.date: 09/19/2019
   ms.openlocfilehash: cbd1ca9ead64bfda8401876ec54487f767363d3c
-  ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/26/2019
+  ms.lasthandoff: 03/24/2020
   ms.locfileid: "71299785"
 landingContent:
 - title: Azure Key Vault について
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure Key Vault とは
+    - text: Azure Key Vault とは?
       url: key-vault-overview.md
   - linkListType: concept
     links:
@@ -32,7 +32,7 @@ landingContent:
       url: key-vault-ovw-soft-delete.md
     - text: Throttling
       url: key-vault-ovw-throttling.md
-- title: 作業開始
+- title: はじめに
   linkLists:
   - linkListType: quickstart
     links:

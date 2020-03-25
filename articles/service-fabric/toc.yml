@@ -316,8 +316,6 @@
               href: service-fabric-cluster-resource-manager-defragmentation-metrics.md
             - name: クラスターの分散
               href: service-fabric-cluster-resource-manager-balancing.md
-            - name: サブクラスタリング
-              href: service-fabric-cluster-resource-manager-subclustering.md
             - name: Throttling
               href: service-fabric-cluster-resource-manager-advanced-throttling.md
             - name: サービスの移動
@@ -448,7 +446,7 @@
                   href: service-fabric-reliable-services-secure-communication-java.md
                 - name: WCF 通信のセキュリティ保護
                   href: service-fabric-reliable-services-secure-communication-wcf.md
-            - name: 構成
+            - name: '[構成]'
               href: service-fabric-reliable-services-configuration.md
             - name: 通知を送信する
               href: service-fabric-reliable-services-notifications.md

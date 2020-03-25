@@ -43,7 +43,7 @@
   items:
     - name: コード サンプル
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Video+Search'
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: ビデオの分析情報の取得
       href: video-insights.md

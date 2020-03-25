@@ -87,7 +87,7 @@
           href: luis-concept-intent.md
         - name: 発話
           href: luis-concept-utterance.md
-        - name: エンティティ
+        - name: '[エンティティ]'
           displayName: 'prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, machine-learn, exact, mixed, roles'
           href: luis-concept-entity-types.md
         - name: 事前構築済みのモデル
@@ -95,7 +95,7 @@
         - name: パターン
           href: luis-concept-patterns.md
           displayName: roles
-        - name: 機能
+        - name: '[機能]'
           href: luis-concept-feature.md
           displayName: 'descriptor, phrase list'
     - name: 予測スコア
@@ -408,6 +408,8 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/'
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: 暗号化
+      href: luis-encryption-of-data-at-rest.md
     - name: スタック オーバーフロー
       href: 'https://stackoverflow.com/questions/tagged/LUIS'
     - name: UserVoice

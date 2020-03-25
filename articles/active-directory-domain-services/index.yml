@@ -14,10 +14,10 @@ metadata:
   manager: daveba
   ms.date: 08/01/2019
   ms.openlocfilehash: f5fa27e19da6bb64b7e214ec32cbfbf0a417118e
-  ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/23/2019
+  ms.lasthandoff: 03/25/2020
   ms.locfileid: "70010563"
 landingContent:
 - title: Azure AD Domain Services について
@@ -34,7 +34,7 @@ landingContent:
       url: synchronization.md
     - text: FAQ
       url: faqs.md
-- title: 作業開始
+- title: はじめに
   linkLists:
   - linkListType: deploy
     links:
@@ -46,7 +46,7 @@ landingContent:
       url: join-windows-vm.md
     - text: 管理ツールのインストール
       url: tutorial-create-management-vm.md
-- title: 構成
+- title: '[構成]'
   linkLists:
   - linkListType: tutorial
     links:
@@ -62,7 +62,7 @@ landingContent:
       url: deploy-kcd.md
     - text: マネージド ドメインのセキュリティ保護
       url: secure-your-domain.md
-- title: 管理
+- title: 管理する
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -88,7 +88,7 @@ landingContent:
       url: join-ubuntu-linux-vm.md
     - text: Red Hat Enterprise Linux
       url: join-rhel-linux-vm.md
-- title: トラブルシューティング
+- title: '[トラブルシューティング]'
   linkLists:
   - linkListType: how-to-guide
     links:

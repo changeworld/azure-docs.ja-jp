@@ -9,10 +9,10 @@ metadata:
   ms.service: mysql
   ms.topic: landing-page
   ms.openlocfilehash: 6ccf544b524ad1ccd45b0aa814610902d54c0fd9
-  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/04/2019
+  ms.lasthandoff: 03/24/2020
   ms.locfileid: "70309301"
 landingContent:
 - title: Azure Database for MySQL について
@@ -59,7 +59,7 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: バックアップおよび復元
+    - text: バックアップと復元
       url: concepts-backup.md
     - text: ダンプと復元を使用して移行する
       url: concepts-migrate-dump-restore.md

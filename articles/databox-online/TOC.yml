@@ -31,7 +31,7 @@
           href: data-box-gateway-use-cases.md
     - name: 方法
       items:
-        - name: 管理
+        - name: 管理する
           items:
             - name: 共有
               href: data-box-gateway-manage-shares.md
@@ -43,9 +43,9 @@
               href: data-box-gateway-manage-access-power-connectivity-mode.md
             - name: PowerShell から
               href: data-box-gateway-connect-powershell-interface.md
-        - name: 監視
+        - name: モニター
           href: data-box-gateway-monitor.md
-        - name: トラブルシューティング
+        - name: '[トラブルシューティング]'
           href: data-box-gateway-troubleshoot.md
         - name: Microsoft サポートに問い合わせる
           href: data-box-edge-contact-microsoft-support.md
@@ -91,7 +91,7 @@
       items:
         - name: 'C# モジュールの開発'
           href: data-box-edge-create-iot-edge-module.md
-        - name: 管理
+        - name: 管理する
           items:
             - name: Edge コンピューティング
               href: data-box-edge-manage-compute.md
@@ -107,11 +107,11 @@
               href: data-box-edge-manage-access-power-connectivity-mode.md
             - name: PowerShell から
               href: data-box-edge-connect-powershell-interface.md
-        - name: トラブルシューティング
+        - name: '[トラブルシューティング]'
           href: data-box-edge-troubleshoot.md
         - name: Microsoft サポートに問い合わせる
           href: data-box-edge-contact-microsoft-support.md
-        - name: 監視
+        - name: モニター
           href: data-box-edge-monitor.md
         - name: デバイスの返却または交換
           href: data-box-edge-return-device.md

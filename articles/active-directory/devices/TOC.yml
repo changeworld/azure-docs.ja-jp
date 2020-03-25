@@ -32,7 +32,7 @@
       href: concept-primary-refresh-token.md
     - name: Azure マネージド ワークステーション
       href: concept-azure-managed-workstation.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   expanded: false
   items:
     - name: Azure AD Join の実装を計画する

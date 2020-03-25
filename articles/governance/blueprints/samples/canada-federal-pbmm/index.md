@@ -4,21 +4,21 @@ description: カナダ連邦の PBMM ブループリント サンプルの概要
 ms.date: 09/04/2019
 ms.topic: sample
 ms.openlocfilehash: c1c5f9c6ec8dc49db4c93d0fbf9caa379a4ab160
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "74544508"
 ---
 # <a name="overview-of-the-canada-federal-pbmm-blueprint-sample"></a>カナダ連邦の PBMM ブループリント サンプルの概要
 
-カナダ連邦の Protected B, Medium Integrity, Medium Availability (PBMM) のブループリント サンプルでは、[Canada Federal PBMM](https://www.canada.ca/en/government/system/digital-government/modern-emerging-technologies/cloud-services/government-canada-security-control-profile-cloud-based-it-services.html#toc4) の構成証明に役立つ、[Azure Policy](../../../policy/overview.md) を使用した一連のガバナンス ガードレールが提供されます。 
+カナダ連邦の Protected B, Medium Integrity, Medium Availability (PBMM) のブループリント サンプルでは、[Canada Federal PBMM](../../../policy/overview.md) の構成証明に役立つ、[Azure Policy](https://www.canada.ca/en/government/system/digital-government/modern-emerging-technologies/cloud-services/government-canada-security-control-profile-cloud-based-it-services.html#toc4) を使用した一連のガバナンス ガードレールが提供されます。 
 
 ## <a name="blueprint-sample"></a>ブループリント サンプル
 
 このブループリント サンプルは、カナダ連邦の PBMM フレームワークによる認定やそれへの準拠が必要とされる、Azure でデプロイされたアーキテクチャのために、一連の主要なポリシーをデプロイするのに役立ちます。 [コントロール マッピング](./control-mapping.md)のセクションでは、このイニシアチブ内に含まれるポリシーについてと、それらのポリシーが、カナダ連邦の PBMM フレームワークによって定義されたさまざまなコントロールに対応するうえでどのように役立つかについて詳しく説明します。 リソースはアーキテクチャに割り当てられると、割り当てられたポリシーに準拠しているかどうかを Azure Policy によって評価されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 カナダ連邦の PBMM ブループリント サンプルの概要を確認しました。 次に、コントロール マッピングと、このサンプルをデプロイする方法を確認するには、次の記事を参照してください。
 

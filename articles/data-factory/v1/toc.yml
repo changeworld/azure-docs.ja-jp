@@ -14,7 +14,7 @@
           href: data-factory-create-datasets.md
         - name: スケジュールと実行
           href: data-factory-scheduling-and-execution.md
-- name: 作業の開始
+- name: 開始するには
   expanded: true
   items:
     - name: データ コピー パイプラインの作成
@@ -22,7 +22,7 @@
       items:
         - name: コピー ウィザード
           href: data-factory-copy-data-wizard-tutorial.md
-        - name: Visual Studio
+        - name: "Visual\_Studio"
           href: data-factory-copy-activity-tutorial-using-visual-studio.md
         - name: Azure PowerShell
           href: data-factory-copy-activity-tutorial-using-powershell.md
@@ -33,9 +33,9 @@
     - name: データ変換パイプラインの作成
       href: data-factory-build-your-first-pipeline.md
       items:
-        - name: Azure ポータル
+        - name: Azure portal
           href: data-factory-build-your-first-pipeline-using-editor.md
-        - name: Visual Studio
+        - name: "Visual\_Studio"
           href: data-factory-build-your-first-pipeline-using-vs.md
         - name: Azure PowerShell
           href: data-factory-build-your-first-pipeline-using-powershell.md
@@ -45,9 +45,9 @@
           href: data-factory-build-your-first-pipeline-using-rest-api.md
     - name: オンプレミスとクラウドの間でのデータ移動
       href: data-factory-move-data-between-onprem-and-cloud.md
-    - name: FAQ
+    - name: よく寄せられる質問
       href: data-factory-faq.md
-- name: 方法
+- name: 操作方法
   items:
     - name: データの移動
       items:
@@ -78,7 +78,7 @@
               href: data-factory-azure-datalake-connector.md
             - name: Azure Cognitive Search
               href: data-factory-azure-search-connector.md
-            - name: Azure SQL Database
+            - name: Azure SQL データベース
               href: data-factory-azure-sql-connector.md
             - name: Azure SQL Data Warehouse
               href: data-factory-azure-sql-data-warehouse-connector.md

@@ -23,7 +23,7 @@
         - name: マネージド ディスク
           items:
             - name: CLI を使用して可用性ゾーン内にマネージド ディスクを追加する
-              href: '../virtual-machines/linux/add-disk.md#use-managed-disks'
+              href: '../virtual-machines/linux/add-disk.md#attach-a-new-disk-to-a-vm'
             - name: PowerShell を使用して可用性ゾーン内にマネージド ディスクを追加する
               href: '../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine'
         - name: 仮想マシン スケール セット
@@ -68,11 +68,11 @@
         - name: Event Hubs
           items:
             - name: Event Hubs の geo ディザスター リカバリー
-              href: '../event-hubs/event-hubs-geo-dr.md#availability-zones-preview'
+              href: '../event-hubs/event-hubs-geo-dr.md#availability-zones'
         - name: Service Bus
           items:
             - name: Service Bus の geo ディザスター リカバリー
-              href: '../service-bus-messaging/service-bus-geo-dr.md#availability-zones-preview'
+              href: '../service-bus-messaging/service-bus-geo-dr.md#availability-zones'
         - name: VPN Gateway
           items:
             - name: ゾーン冗長仮想ネットワーク ゲートウェイの作成

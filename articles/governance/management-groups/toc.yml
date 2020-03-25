@@ -7,7 +7,7 @@
       href: ../azure-management.md
     - name: 管理グループ
       href: ./overview.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   expanded: true
   items:
     - name: 管理グループの作成

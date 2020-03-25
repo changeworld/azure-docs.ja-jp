@@ -11,10 +11,10 @@ metadata:
   ms.author: dacoulte
   ms.date: 11/04/2019
   ms.openlocfilehash: 1a91f7fe63753ddc7c8b88d487064b15206fcfe3
-  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/04/2019
+  ms.lasthandoff: 03/25/2020
   ms.locfileid: "73494339"
 landingContent:
 - title: Azure Policy について
@@ -33,7 +33,7 @@ landingContent:
     links:
     - text: Build 2018 での Azure Policy
       url: https://channel9.msdn.com/events/Build/2018/THR2030
-- title: 作業開始
+- title: はじめに
   linkLists:
   - linkListType: quickstart
     links:
@@ -51,7 +51,7 @@ landingContent:
       url: ./tutorials/create-and-manage.md
     - text: VS Code 拡張機能を使用する
       url: ./how-to/extension-for-vscode.md
-    - text: Policy as Code ワークフローの設計
+    - text: コードとしてのポリシー ワークフローの設計
       url: ./concepts/policy-as-code.md
   - linkListType: deploy
     links:
@@ -63,7 +63,7 @@ landingContent:
     links:
     - text: カスタム ポリシーの作成
       url: ./tutorials/create-custom-policy-definition.md
-    - text: タグ ガバナンスの管理
+    - text: タグ ガバナンスを管理する
       url: ./tutorials/govern-tags.md
   - linkListType: how-to-guide
     links:

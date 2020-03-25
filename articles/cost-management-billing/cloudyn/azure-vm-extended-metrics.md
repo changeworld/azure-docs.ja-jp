@@ -1,20 +1,20 @@
 ---
-title: Azure 仮想マシン用の拡張メトリックを追加する | Microsoft Docs
+title: Azure 仮想マシン用の拡張メトリックを追加する
 description: この記事では、Azure VM 用の拡張診断メトリックを有効にして構成する方法を説明します。
-keywords: ''
 author: bandersmsft
 ms.reviewer: vitavor
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.custom: seodec18
-ms.openlocfilehash: 84a9d6aa6203b8a518b0e33bed0ec2707c4389a1
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ROBOTS: NOINDEX
+ms.openlocfilehash: b4c646f3d42edc39f457cd735f16409f4ef05d2c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082916"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79481621"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Azure 仮想マシン用の拡張メトリックを追加する
 
@@ -30,11 +30,13 @@ Cloudyn では、Azure VM からの Azure メトリック データを使って�
 たとえば、Azure VM の CPU 使用率とメモリ使用率を監視することができます。 Azure VM のメトリックは、_Percentage CPU_ および _\Memory\% Committed Bytes In Use_ に対応します。
 
 > [!NOTE]
-> 拡張メトリック データの収集は、Azure のゲスト レベルの監視でのみサポートされます。 Cloudyn には、[Log Analytics エージェント](../../azure-monitor/platform/agents-overview.md)との互換性はありません。 
+> 拡張メトリック データの収集は、Azure のゲスト レベルの監視でのみサポートされます。 Cloudyn には、[Log Analytics エージェント](../../azure-monitor/platform/agents-overview.md)との互換性はありません。
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>拡張メトリックが有効になっているかどうかを確認する
 
-1. Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
+1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 2. **[仮想マシン]** で VM を選んでから、 **[監視]** で **[メトリック]** を選びます。 使用可能なメトリックの一覧が表示されます。
 3. メトリックをいくつか選ぶと、グラフにそれらのデータが表示されます。  
     ![メトリックの例: ホストの CPU 使用率](./media/azure-vm-extended-metrics/metric01.png)

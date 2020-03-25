@@ -4,7 +4,7 @@
   items:
     - name: Azure Notebooks とは
       href: azure-notebooks-overview.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: サインインとユーザー ID の設定
       href: quickstart-sign-in-azure-notebooks.md
@@ -22,7 +22,7 @@
       href: tutorial-create-run-jupyter-notebook.md
 - name: サンプル
   items:
-    - name: ノートブックのサンプル
+    - name: サンプル ノートブック
       href: azure-notebooks-samples.md
 - name: 概念
   items:
@@ -30,7 +30,7 @@
       href: azure-notebooks-user-account.md
     - name: プロファイル
       href: azure-notebooks-user-profile.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: プロジェクトの作成と複製
       href: create-clone-jupyter-notebooks.md

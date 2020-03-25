@@ -77,7 +77,7 @@
           href: ansible-vm-create-from-shared-generalized-image.md
     - name: 仮想マシン スケール セット
       items:
-        - name: 構成
+        - name: '[構成]'
           href: ./ansible-create-configure-vmss.md
         - name: 配置
           href: ./ansible-deploy-app-vmss.md
@@ -111,7 +111,7 @@
       href: ./ansible-matrix.md
     - name: Azure 用のすべてのモジュール
       href: 'https://docs.ansible.com/ansible/latest/modules/list_of_cloud_modules#azure'
-- name: ツール
+- name: リソース
   items:
     - name: Ansible 用 Visual Studio Code 拡張機能
       href: 'https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible'

@@ -15,7 +15,7 @@
       items:
         - name: Jenkins サーバーを作成する
           href: install-solution-template-tutorial.md
-    - name: 2. 構成
+    - name: '2. [構成]'
       items:
         - name: Azure Container Instances でのスケーリング
           href: container-instances-jenkins.md

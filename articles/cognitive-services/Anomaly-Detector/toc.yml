@@ -5,7 +5,7 @@
   items:
     - name: Anomaly Detector API とは
       href: overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: クライアント ライブラリ
@@ -30,7 +30,7 @@
       href: tutorials/batch-anomaly-detection-powerbi.md
     - name: Azure Databricks を使用した、ストリーミング データの異常検出
       href: tutorials/anomaly-detection-streaming-databricks.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: データの異常を特定する
       href: how-to/identify-anomalies.md

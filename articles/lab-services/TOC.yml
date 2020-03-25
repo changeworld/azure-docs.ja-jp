@@ -237,7 +237,7 @@
               href: devtest-lab-guidance-governance-application-migration-integration.md
     - name: Azure でアプリをテストする
       href: test-app-azure.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       items:
         - name: VM および環境の作成の失敗に関するトラブルシューティング
           href: troubleshoot-vm-environment-creation-failures.md

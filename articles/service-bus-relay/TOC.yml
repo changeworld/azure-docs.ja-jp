@@ -57,7 +57,7 @@
           items:
             - name: .NET
               href: relay-hybrid-connections-dotnet-api-overview.md
-            - name: Node
+            - name: ノード
               href: relay-hybrid-connections-node-ws-api-overview.md
     - name: 管理する
       items:

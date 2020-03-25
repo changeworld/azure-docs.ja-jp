@@ -39,7 +39,7 @@
           href: animated-characters-recognition.md
         - name: ブランド
           href: customize-brands-model-overview.md
-        - name: Language
+        - name: 言語
           href: customize-language-model-overview.md
         - name: Person
           href: customize-person-model-overview.md
@@ -83,7 +83,7 @@
               href: customize-brands-model-with-website.md
             - name: Video Indexer API の使用
               href: customize-brands-model-with-api.md
-        - name: Language
+        - name: 言語
           items:
             - name: Video Indexer Web サイトの使用
               href: customize-language-model-with-website.md

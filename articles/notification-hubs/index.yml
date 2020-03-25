@@ -25,7 +25,7 @@ abstract:
     href: 'https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Notification-Hubs-in-an-Android-Application'
     width: 250
 sections:
-  - title: ステップバイステップのチュートリアル
+  - title: ステップバイステップ チュートリアル
     items:
       - type: paragraph
         text: Notification Hubs を使用してプッシュ通知を送信する方法について説明します。

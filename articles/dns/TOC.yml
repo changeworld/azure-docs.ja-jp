@@ -117,7 +117,7 @@
       items:
         - name: プライベート DNS ゾーンとレコードを保護する
           href: dns-protect-private-zones-recordsets.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       items:
         - name: トラブルシューティング ガイド
           href: dns-troubleshoot.md
@@ -157,22 +157,6 @@
           href: /dotnet/api/overview/azure/privatedns/management
         - name: REST
           href: /rest/api/dns/privatedns/privatezones
-- name: 関連項目
-  items:
-    - name: Private Link
-      href: ../private-link/private-link-overview.md
-    - name: Application Gateway
-      href: /azure/application-gateway/
-    - name: Virtual Network
-      href: /azure/virtual-network/
-    - name: 仮想マシン
-      href: /azure/virtual-machines/
-    - name: Load Balancer
-      href: /azure/load-balancer/
-    - name: Traffic Manager
-      href: /azure/traffic-manager/
-    - name: Web Apps
-      href: /azure/app-service/
 - name: リソース
   items:
     - name: Azure のロードマップ

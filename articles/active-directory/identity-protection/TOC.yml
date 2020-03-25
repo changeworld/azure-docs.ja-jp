@@ -17,7 +17,7 @@
       href: concept-identity-protection-user-experience.md
     - name: Identity Protection と B2B ユーザー
       href: concept-identity-protection-b2b.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   expanded: true
   items:
     - name: 通知の構成

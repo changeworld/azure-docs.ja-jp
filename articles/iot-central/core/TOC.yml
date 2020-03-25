@@ -127,8 +127,10 @@
               href: howto-manage-preferences.md
             - name: ライブ チャットの切り替え
               href: howto-show-hide-chat.md
-- name: 関連項目
+- name: リソース
   items:
+    - name: サポート オプションとヘルプ オプション
+      href: /azure/iot-fundamentals/iot-support-help
     - name: 業界アプリケーション テンプレート
       items:
         - name: 小売
@@ -139,30 +141,30 @@
           href: ../government/overview-iot-central-government.md
         - name: 医療
           href: ../healthcare/overview-iot-central-healthcare.md
-    - name: プラットフォーム サービス
+    - name: Azure IoT のサービス
       items:
         - name: IoT Hub
           href: /azure/iot-hub
-        - name: IoT プラグ アンド プレイ
-          href: /azure/iot-pnp
         - name: IoT Hub Device Provisioning Service
           href: /azure/iot-dps
-        - name: IoT サービスの SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: マップ
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT ソリューション アクセラレータ
+          href: /azure/iot-accelerators
+        - name: IoT プラグ アンド プレイ
+          href: /azure/iot-pnp
+        - name: Azure Maps
           href: /azure/azure-maps
         - name: Time Series Insights
           href: /azure/time-series-insights
-    - name: Edge ソリューション
+    - name: Azure IoT SDK
       items:
-        - name: Azure IoT Edge
-          href: /azure/iot-edge
+        - name: IoT サービスの SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: IoT デバイス SDK
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
-- name: リソース
-  items:
-    - name: サポート オプションとヘルプ オプション
-      href: /azure/iot-fundamentals/iot-support-help
     - name: IoT Central API リファレンス
       href: 'https://docs.microsoft.com/rest/api/iotcentral/'
     - name: 顧客データ要求
