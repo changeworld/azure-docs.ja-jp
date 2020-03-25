@@ -13,7 +13,7 @@ ms.locfileid: "73484089"
 ---
 このコンテナーには、次の構成設定があります。
 
-|必須|Setting|目的|
+|必須|設定|目的|
 |--|--|--|
 |はい|[ApiKey](#apikey-configuration-setting)|課金情報を追跡します。|
 |いいえ|[ApplicationInsights](#applicationinsights-setting)|お客様のコンテナーに対する [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) テレメトリ サポートの追加を有効にします。|
