@@ -8,10 +8,10 @@ ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
 ms.openlocfilehash: c298ec58b0d69d20429413f0f36b3e28ff8e5e61
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75441442"
 ---
 # <a name="update-rus-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>Azure Cosmos DB - Gremlin API のデータベースまたはグラフの RU/秒を更新する

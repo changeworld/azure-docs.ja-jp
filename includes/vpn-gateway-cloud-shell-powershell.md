@@ -5,24 +5,16 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 06/04/2019
+ms.date: 03/11/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a966dd6b5ea4f23ac2883fb2cdd9f81bd77e0d11
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 3a4946e39bb5f14708cf462f5f2c2a64ed6c0033
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77660490"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79137145"
 ---
-この記事では、PowerShell コマンドレットを使用します。 コマンドレットを実行するには、Azure でホストされ、ブラウザーを介して使用される対話型のシェル環境である Azure Cloud Shell を使用できます。 Azure Cloud Shell には、Azure PowerShell コマンドレットが事前にインストールされています。
+この記事では、PowerShell コマンドレットを使用します。 コマンドレットを実行するには、Azure Cloud Shell を使用できます。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。
 
-この記事に含まれるコードを Azure Cloud Shell で実行するには、Cloud Shell セッションを開き、コード ブロック上の **[コピー]** ボタンを使ってコードをコピーし、__Ctrl + Shift + V__ キー (Windows と Linux) または __command + Shift + V__ キー (macOS) を押して Cloud Shell セッションに貼り付けます。 テキストを貼り付けても自動的には実行されません。コードを実行するには、**Enter** キーを押します。
-
-Azure Cloud Shell は、次のいずれかの方法で起動できます。
-
-|  |   |
-|-----------------------------------------------|---|
-| コード ブロックの右上隅にある **[使ってみる]** を選択します。 テキストが自動的に Cloud Shell にコピーされるわけでは __ありません__ 。 | ![Azure Cloud Shell の [使ってみる] の例](./media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
-| ブラウザーで [shell.azure.com](https://shell.azure.com) を開きます。 | [![Azure Cloud Shell の起動ボタン](./media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |
-| [Azure Portal](https://portal.azure.com) の右上隅にあるメニューの **[Cloud Shell]** ボタンを選択します。 | ![Azure Portal の [Cloud Shell] ボタン](./media/cloud-shell-try-it/hdi-cloud-shell-menu.png) |
+Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) に移動して、別のブラウザー タブで Cloud Shell を起動することもできます。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けてから、Enter キーを押して実行します。

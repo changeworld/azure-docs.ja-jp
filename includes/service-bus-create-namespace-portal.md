@@ -9,10 +9,10 @@ ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: dc80141d796b66dd7e610342166f7b88df58f530
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "75927958"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Azure Portal での名前空間の作成
@@ -54,7 +54,7 @@ Azure の Service Bus メッセージング エンティティを使用するに
 3. **[共有アクセス ポリシー]** 画面で、 **[RootManageSharedAccessKey]** をクリックします。
    
     ![connection-info](./media/service-bus-create-namespace-portal/connection-info.png)
-4. **[ポリシー:RootManageSharedAccessKey]** ウィンドウで、 **[プライマリ接続文字列]** の横にあるコピー ボタンをクリックし、後で使用するために接続文字列をクリップボードにコピーします。 この値をメモ帳などに一時的に貼り付けます。
+4. **[ポリシー: RootManageSharedAccessKey]** ウィンドウで、 **[プライマリ接続文字列]** の横にある [コピー] ボタンをクリックし、後で使用するために接続文字列をクリップボードにコピーします。 この値をメモ帳などに一時的に貼り付けます。
    
     ![connection-string](./media/service-bus-create-namespace-portal/connection-string.png)
 5. 前の手順を繰り返し、 **[プライマリ キー]** の値をコピーして、後で使用するために一時的な場所に貼り付けます。

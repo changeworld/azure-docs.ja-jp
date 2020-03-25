@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Voyance の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Voyance の統合 | Microsoft Docs'
 description: Azure Active Directory と Voyance の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 04/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 3c286c004885cdc2cc83899bd06af19176c5581b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67087588"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-voyance"></a>チュートリアル:Azure Active Directory と Voyance の統合
+# <a name="tutorial-azure-active-directory-integration-with-voyance"></a>チュートリアル: Azure Active Directory と Voyance の統合
 
 このチュートリアルでは、Voyance と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Voyance と Azure AD の統合には、次の利点があります。
@@ -164,7 +164,7 @@ Voyance で Azure AD シングル サインオンを構成するには、次の�
 
     c. ダウンロード済みの Base64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、 **[IdP 証明書]** ボックスに貼り付けます。
     
-    d. **[Save]** をクリックします。
+    d. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 

@@ -7,13 +7,13 @@ ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: b283982e11449d234da966f15b86cc5b638a026c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75376661"
 ---
-# <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>チュートリアル:ELK を使用して Service Fabric アプリケーションを監視する
+# <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>チュートリアル: ELK を使用して Service Fabric アプリケーションを監視する
 
 このチュートリアルは、シリーズの第 4 部です。 ここでは、ELK (Elasticsearch、Logstash、Kibana) を使用して、Azure で実行されている Service Fabric アプリケーションを監視する方法について説明します。
 
@@ -100,7 +100,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
     logstash-plugin install logstash-input-azureeventhub
     ```
 
-4. 次の内容で Logstash 構成ファイルを作成します。または、既存の Logstash 構成ファイルを変更します。ファイルを作成する場合、Azure で ELK Bitnami イメージを使用するのであれば、```/opt/bitnami/logstash/conf/access-log.conf``` で構成ファイルを作成する必要があります。
+4. 次の内容で Logstash 構成ファイルを作成します。または、既存の Logstash 構成ファイルを変更します。ファイルを作成する場合、Azure で ELK Bitnami イメージを使用するのであれば、```/opt/bitnami/logstash/conf/access-log.conf``` で Logstash 構成ファイルを作成する必要があります。
 
     ```json
     input

@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 01dbbcddf7df8e261e865fbb61c1fcfd5abbd5fc
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 12bde51222e1e648f97476d5dab039b4ad2adfe8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278244"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067053"
 ---
-# <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用した仮想マシン スケール セットのディスクの作成および使用
+# <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>チュートリアル: Azure CLI を使用した仮想マシン スケール セットのディスクの作成および使用
 仮想マシン スケール セットでは、VM インスタンスのオペレーティング システム、アプリケーション、およびデータを格納するためにディスクを使用します。 スケール セットを作成および管理するときは、予測されるワークロードに適したディスクのサイズと構成を選択する必要があります。 このチュートリアルでは、VM ディスクの作成方法と管理方法について説明します。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
@@ -146,7 +146,7 @@ az vmss list-instance-connection-info \
 
 次の例に示すように、独自のパブリック IP アドレスとポート番号を使用して最初の VM インスタンスに接続します。
 
-```azurecli-interactive
+```console
 ssh azureuser@52.226.67.166 -p 50001
 ```
 
@@ -198,7 +198,7 @@ sudo df -h
 
 次の出力例は、3 つのディスクのファイルシステムが */datadisks* に正常にマウントされていることを示しています。
 
-```bash
+```output
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/sda1        30G  1.3G   28G   5% /
 /dev/sdb1        50G   52M   47G   1% /mnt

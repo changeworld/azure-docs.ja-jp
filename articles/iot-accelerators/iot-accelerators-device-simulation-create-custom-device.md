@@ -10,11 +10,11 @@ ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: troyhop
 ms.openlocfilehash: 302b863e7ad7d6df286adf53342356f279ab92d2
-ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50756790"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "61450544"
 ---
 # <a name="tutorial-create-a-custom-simulated-device"></a>チュートリアル: カスタムのシミュレートされたデバイスの作成
 
@@ -42,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure サブスクリプションの資格情報を使用してサインインするように求められる場合があります。
 
-次に、[Azure での IoT デバイス シミュレーションのデプロイと実行](quickstart-device-simulation-deploy.md)に関するクイック スタートでデプロイしたデバイス シミュレーションのタイルの **[起動]** をクリックします。
+次に、**Azure での IoT デバイス シミュレーションのデプロイと実行**に関するクイック スタートでデプロイしたデバイス シミュレーションのタイルの [[起動]](quickstart-device-simulation-deploy.md) をクリックします。
 
 ## <a name="view-your-device-models"></a>デバイス モデルを表示する
 
@@ -60,7 +60,7 @@ Azure サブスクリプションの資格情報を使用してサインイン�
 
 フォームに次の情報を入力します。
 
-| Setting             | 値                                                |
+| 設定             | 値                                                |
 | ------------------- | ---------------------------------------------------- |
 | Device model name (デバイス モデル名)   | Refrigerator (冷蔵庫)                                         |
 | モデルの説明   | A refrigerator with temperature and humidity sensors (温度計および湿度計付きの冷蔵庫) |
@@ -71,16 +71,16 @@ Azure サブスクリプションの資格情報を使用してサインイン�
 
 **[+ Add data point]\(+ データ ポイントの追加\)** をクリックし、次の値で温度と湿度のデータ ポイントを追加します。
 
-| Data Point (データ ポイント)          | 動作        | Min Value (最小値) | Max Value (最大値) | 単位 |
+| Data Point (データ ポイント)          | 動作        | Min Value (最小値) | Max Value (最大値) | ユニット |
 | ------------------- | --------------- | --------- | --------- | ---- |
-| 気温         | Random (ランダム)          | -50       | 100       | F    |
-| 湿度            | Random (ランダム)          | 0         | 100       | %    |
+| 気温         | ランダム          | -50       | 100       | F    |
+| 湿度            | ランダム          | 0         | 100       | %    |
 
 **[保存]** をクリックしてデバイス モデルを保存します。
 
 ![デバイス モデルを作成する](media/iot-accelerators-device-simulation-create-custom-device/adddevicemodel.png)
 
-冷蔵庫がデバイス モデルの一覧に表示されるようになりました。 冷蔵庫を見るために、**[次へ]** をクリックして別のページに移動しなくてはならない場合があります。
+冷蔵庫がデバイス モデルの一覧に表示されるようになりました。 冷蔵庫を見るために、 **[次へ]** をクリックして別のページに移動しなくてはならない場合があります。
 
 ## <a name="clone-a-device-model"></a>デバイス モデルを複製する
 
@@ -96,7 +96,7 @@ Azure サブスクリプションの資格情報を使用してサインイン�
 
 ![デバイス モデルを削除する](media/iot-accelerators-device-simulation-create-custom-device/deletedevice.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、カスタム デバイス モデルを作成、複製、および削除する方法について説明しました。 デバイス モデルの詳細については、以下のハウツー記事を参照してください。
 

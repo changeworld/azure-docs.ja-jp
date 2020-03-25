@@ -7,13 +7,13 @@ ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: d2bb37252bc93c982dbc090a0c3f20aef842325f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75351861"
 ---
-# <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>チュートリアル:Service Fabric Mesh アプリケーションをデプロイする
+# <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>チュートリアル: Service Fabric Mesh アプリケーションをデプロイする
 
 このチュートリアルはシリーズの第 3 部です。ここでは、Azure Service Fabric Mesh Web アプリケーションを Visual Studio から直接 発行する方法について説明します。
 

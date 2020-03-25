@@ -7,13 +7,13 @@ ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 42db17fa6474d3230bc523d0cf65b375cf01276e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75351739"
 ---
-# <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>チュートリアル:Service Fabric Mesh で実行されている Service Fabric アプリケーションをアップグレードする
+# <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>チュートリアル: Service Fabric Mesh で実行されている Service Fabric アプリケーションをアップグレードする
 
 このチュートリアルは、シリーズの第 3 部です。 割り当てられている CPU リソースを増やすことによって、[以前に Service Fabric Mesh にデプロイ](service-fabric-mesh-tutorial-template-deploy-app.md)された Service Fabric アプリケーションをアップグレードする方法について学習します。  完了すると、Web フロントエンド サービスがより多くの CPU リソースで実行するようになります。
 
@@ -68,7 +68,7 @@ az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-n
 
 変更内容をパラメーター ファイルに保存します。  
 
-*frontEndCpu* パラメーターは、[mesh_rp.windows.json デプロイ テンプレート](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json)の *parameters* セクションで宣言されています。
+*frontEndCpu* パラメーターは、*mesh_rp.windows.json デプロイ テンプレート*の [parameters](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) セクションで宣言されています。
 
 ```json
 "frontEndCpu": {

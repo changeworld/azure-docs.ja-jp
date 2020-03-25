@@ -10,10 +10,10 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.author: lcozzens
 ms.openlocfilehash: 71d6aafa82f647b9c6164ee9a06b43ed7e9a66af
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77523622"
 ---
 # <a name="import-to-an-azure-app-configuration-store"></a>Azure App Configuration ストアへのインポート
@@ -41,7 +41,7 @@ az appconfig kv import --name myTestAppConfigStore --source file --path ~/Import
 
 このスクリプトでは、次のコマンドを使用して App Configuration ストアへのインポートを実行します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | Notes |
+| command | メモ |
 |---|---|
 | [az appconfig kv import](/cli/azure/appconfig/kv#az-appconfig-kv-import) | App Configuration ストア リソースへのインポートを行います。 |
 

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Skills Base の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Skills Base の統合 | Microsoft Docs'
 description: Azure Active Directory と Skills Base の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: a088675bc1610daf275bac77ae222f0e664afd67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67090555"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>チュートリアル:Azure Active Directory と Skills Base の統合
+# <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>チュートリアル: Azure Active Directory と Skills Base の統合
 
 このチュートリアルでは、Skills Base と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Skills Base と Azure AD の統合には、次の利点があります。
@@ -146,7 +146,7 @@ Skills Base で Azure AD シングル サインオンを構成するには、次
     > [!Note]
     > Idp メタデータは、上のスクリーンショットに示すように、**メタデータ検証**ツールを使用して検証することもできます。
 
-    b. **[Save]** をクリックします。
+    b. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

@@ -5,10 +5,10 @@ keywords: Jenkins, Azure, 開発, Kubernetes, k8s, AKS, ブルー/グリーン �
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.openlocfilehash: 9d6551f910bd99322f844b44130ebb03732df83c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78251469"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Jenkins とブルー/グリーン デプロイ パターンを使用した Azure Kubernetes Service (AKS) へのデプロイ
@@ -27,11 +27,11 @@ Azure Kubernetes Service (AKS) を使用すると、ホストされている Kub
 > * Jenkins ジョブの作成と実行
 
 ## <a name="prerequisites"></a>前提条件
-- [GitHub アカウント](https://github.com):サンプル リポジトリを複製するために GitHub アカウントが必要です。
-- [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest):Kubernetes クラスターを作成するために Azure CLI 2.0 を使用します。
-- [Chocolatey](https://chocolatey.org):kubectl をインストールするために使用するパッケージ マネージャーです。
-- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/):Kubernetes クラスターに対してコマンドを実行するために使用するコマンド ライン インターフェイスです。
-- [jq](https://stedolan.github.io/jq/download/):簡便なコマンド ライン JSON プロセッサです。
+- [GitHub アカウント](https://github.com): サンプル リポジトリを複製するために GitHub アカウントが必要です。
+- [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest): Kubernetes クラスターを作成するために Azure CLI 2.0 を使用します。
+- [Chocolatey](https://chocolatey.org): kubectl をインストールするために使用するパッケージ マネージャーです。
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/): Kubernetes クラスターに対してコマンドを実行するために使用する、コマンド ライン インターフェイスです。
+- [jq](https://stedolan.github.io/jq/download/): 簡便なコマンドライン JSON プロセッサです。
 
 ## <a name="clone-the-sample-app-from-github"></a>GitHub からのサンプル アプリの複製
 
@@ -143,7 +143,7 @@ AKS でのブルー/グリーン デプロイの設定は、手動で行うこ�
     kubectl apply -f  test-endpoint-green.yml
     ```
 
-1. パブリック エンドポイントとテスト エンドポイントの DNS 名を更新します。 Kubernetes クラスターの作成時に、**MC_&lt;your-resource-group-name> _&lt;your-kubernetes-cluster-name>_ &lt;your-location>** という名前付けパターンで、[追加のリソース グループ](https://github.com/Azure/AKS/issues/3)も作成されます。
+1. パブリック エンドポイントとテスト エンドポイントの DNS 名を更新します。 Kubernetes クラスターの作成時に、[MC_](https://github.com/Azure/AKS/issues/3)your-resource-group-name> **&lt;your-kubernetes-cluster-name> _&lt;your-location>_ という名前付けパターンで、&lt;追加のリソース グループ**も作成されます。
 
     リソース グループ内のパブリック IP を特定します。
 
@@ -255,7 +255,7 @@ AKS でのブルー/グリーン デプロイの設定は、手動で行うこ�
 
 ## <a name="run-the-job"></a>ジョブの実行
 
-1. ローカル環境でプロジェクトを正常に実行できることを確認します。 その方法は次のとおりです。[ローカル コンピューターでプロジェクトを実行します](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it)。
+1. ローカル環境でプロジェクトを正常に実行できることを確認します。 以降の手順に、[ローカル コンピューターでプロジェクトを実行する](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it)方法を示します。
 
 1. Jenkins ジョブを実行します。 ジョブを初めて実行するときは、Jenkins によって、既定の非アクティブな環境であるブルーの環境に To Do アプリがデプロイされます。 
 

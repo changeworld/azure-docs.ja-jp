@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 8915970cd4c70228fad3b49921f4c81d6d90aa72
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78195330"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault のログ記録
@@ -46,7 +46,7 @@ Key Vault の概要については、「[Azure Key Vault とは](key-vault-overv
 * Azure PowerShell 1.0.0 以降のバージョン。 Azure PowerShell をインストールして、Azure サブスクリプションに関連付けるには、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」を参照してください。 Azure PowerShell をインストール済みで、バージョンがわからない場合は、Azure PowerShell コンソールで「`$PSVersionTable.PSVersion`」と入力します。  
 * Azure 上に確保された Key Vault のログを格納するための十分なストレージ。
 
-## <a id="connect"></a>Key Vault サブスクリプションに接続する
+## <a name="connect-to-your-key-vault-subscription"></a><a id="connect"></a>Key Vault サブスクリプションに接続する
 
 キーのログ記録の最初の設定手順は、ログに記録するキー コンテナーに Azure PowerShell をポイントすることです。
 
@@ -72,7 +72,7 @@ Set-AzContext -SubscriptionId <subscription ID>
 
 PowerShell を適切なサブスクリプションにポイントすることは、アカウントに複数のサブスクリプションが関連付けられている場合は特に重要な手順です。 Azure PowerShell の詳細については、「 [How to install and configure Azure PowerShell (Azure PowerShell のインストールと構成の方法)](/powershell/azure/overview)」をご覧ください。
 
-## <a id="storage"></a>ログ用のストレージ アカウントを作成する
+## <a name="create-a-storage-account-for-your-logs"></a><a id="storage"></a>ログ用のストレージ アカウントを作成する
 
 既存のストレージ アカウントをログのために使用できますが、Key Vault のログ専用にストレージ アカウントを作成することにします。 後でこれを指定することが必要になる場合に備えて、詳細情報を **sa** という名前の変数に格納します。
 
@@ -87,7 +87,7 @@ PowerShell を適切なサブスクリプションにポイントすることは
 >
 >
 
-## <a id="identify"></a>ログに対する Key Vault を識別する
+## <a name="identify-the-key-vault-for-your-logs"></a><a id="identify"></a>ログに対する Key Vault を識別する
 
 [入門チュートリアル](key-vault-get-started.md)では、キー コンテナー名は **ContosoKeyVault** でした。 この名前を引き続き使用して、**kv** という名前の変数の詳細情報を格納します。
 
@@ -95,7 +95,7 @@ PowerShell を適切なサブスクリプションにポイントすることは
 $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 ```
 
-## <a id="enable"></a>ログの有効化
+## <a name="enable-logging"></a><a id="enable"></a>ログの有効化
 
 Key Vault のログ記録を有効にするために、**Set-AzDiagnosticSetting** コマンドレットを、新しいストレージ アカウントおよび Key Vault 用に作成した変数と組み合わせて使用します。 また、 **-Enabled** フラグを **$true** に設定し、カテゴリを **AuditEvent** (Key Vault ログ記録の唯一のカテゴリ) に設定します。
 
@@ -132,7 +132,7 @@ Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Ena
   * 署名、確認、暗号化、復号化、キーのラップとラップ解除、シークレットの取得、およびキーとシークレット (およびそのバージョン) の一覧表示。
 * 結果として 401 応答が発生する、認証されていない要求。 たとえば、ベアラー トークンを持たない要求、形式が正しくない要求、有効期限切れの要求、または無効なトークンを持つ要求です。  
 
-## <a id="access"></a>ログへのアクセス
+## <a name="access-your-logs"></a><a id="access"></a>ログへのアクセス
 
 Key Vault のログは、指定したストレージ アカウント内の **insights-logs-auditevent** コンテナーに格納されます。 ログを表示するには、BLOB をダウンロードする必要があります。
 
@@ -214,7 +214,7 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
 * Key Vault リソースの診断設定の状態のクエリを実行するためのパラメーター: `Get-AzDiagnosticSetting -ResourceId $kv.ResourceId`
 * Key Vault リソースのログ記録を無効にするためのパラメーター: `Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Category AuditEvent`
 
-## <a id="interpret"></a>Key Vault のログを解釈する
+## <a name="interpret-your-key-vault-logs"></a><a id="interpret"></a>Key Vault のログを解釈する
 
 個々の BLOB はテキストとして格納されます (JSON BLOB 形式)。 ログ エントリの例を見てみましょう。 次のコマンドを実行します。
 
@@ -303,13 +303,13 @@ Get-AzKeyVault -VaultName 'contosokeyvault'`
 | **SecretList** |[コンテナー内のシークレットを一覧表示します](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
 | **SecretListVersions** |[シークレットのバージョンを一覧表示します](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
 
-## <a id="loganalytics"></a>Azure Monitor ログの使用
+## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>Azure Monitor ログの使用
 
 Azure Monitor ログの Key Vault ソリューションを使用して、Key Vault の **AuditEvent** ログを調査することができます。 Azure Monitor ログでは、ログ クエリを使用してデータを分析し、必要な情報を取得します。 
 
 詳細については、[Azure Monitor ログの Azure Key Vault ソリューション](../azure-monitor/insights/azure-key-vault.md)に関するページをご覧ください。 この記事では、Azure Monitor ログのプレビューで提供された以前の Key Vault ソリューションから移行する必要がある場合の手順について説明しました。つまり、最初にログを Azure ストレージ アカウントにルーティングし、そこから読み取ることができるよう Azure Monitor ログを構成しました。
 
-## <a id="next"></a>次のステップ
+## <a name="next-steps"></a><a id="next"></a>次のステップ
 
 .NET Web アプリケーションでの Azure Key Vault の使用方法に関するチュートリアルについては、「[Web アプリケーションからの Azure Key Vault の使用](tutorial-net-create-vault-azure-web-app.md)」を参照してください。
 

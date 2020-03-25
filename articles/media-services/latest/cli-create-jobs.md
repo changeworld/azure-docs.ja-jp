@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
 ms.openlocfilehash: 08caf4b78b1042d5753dba2bc73e93fa3a250a17
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71122391"
 ---
-# <a name="cli-example-create-and-submit-a-job"></a>CLI の例:ジョブの作成と送信
+# <a name="cli-example-create-and-submit-a-job"></a>CLI の例: ジョブの作成と送信
 
 Media Services v3 では、ビデオを処理するジョブを送信するときに、入力ビデオを検索する場所を Media Services に指示する必要があります。 選択肢の 1 つは、(この記事で示すように) HTTPS URL をジョブの入力として指定することです。 
 
@@ -85,6 +85,6 @@ az ams job start \
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [az ams job (CLI)](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)

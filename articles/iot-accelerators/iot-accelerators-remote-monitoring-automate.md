@@ -10,13 +10,13 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 676f1133a516174478a456a97bc467e7770fe6e7
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888889"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223569"
 ---
-# <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>チュートリアル:監視ソリューションに接続されているデバイスの問題の検出する
+# <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>チュートリアル: 監視ソリューションに接続されているデバイスの問題の検出
 
 このチュートリアルでは、リモート監視ソリューション アクセラレータを構成して、接続されている IoT デバイスの問題を検出します。 デバイスの問題を検出するには、ソリューションのダッシュボードでアラートを生成するルールを追加します。
 
@@ -51,7 +51,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 冷却装置の圧力が 150 PSI を超えるときに警告を生成する新しいルールを作成するには、 **[新しいルール]** をクリックします。 次の値を使用してルールを作成します。
 
-| Setting          | 値                                 |
+| 設定          | 値                                 |
 | ---------------- | ------------------------------------- |
 | 規則の名前        | Chiller 警告                       |
 | 説明      | Chiller の圧力が 150 PSI を超えました |
@@ -74,23 +74,23 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 直近の 5 分間にわたって冷却装置の平均湿度が 80% を超え、温度が華氏 75 度を超えたときに重大なアラートを生成する、複数の条件を持つルールを作成するには、 **[新しいルール]** をクリックします。 次の値を使用してルールを作成します。
 
-| Setting          | 値                                 |
+| 設定          | 値                                 |
 | ---------------- | ------------------------------------- |
 | 規則の名前        | Chiller の湿度と温度が危険    |
 | 説明      | 湿度と温度が危険です |
 | デバイス グループ     | **Chillers** デバイス グループ             |
-| 計算      | 平均                               |
+| 計算      | Average                               |
 | 期間      | 5                                     |
 | 条件 1 フィールド| 湿度                              |
 | 条件 1 演算子 | より大きい                      |
 | 条件 1 値    | 80                                |
-| 重大度レベル  | 重大                              |
+| 重大度レベル  | Critical                              |
 
 [![複数の条件を持つルールを作成する: パート 1](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-expanded.png#lightbox)
 
 2 つ目の条件を追加するには、[+ 条件の追加] をクリックします。 新しい条件で次の値を使用します。
 
-| Setting          | 値                                 |
+| 設定          | 値                                 |
 | ---------------- | ------------------------------------- |
 | 条件 2 フィールド| 温度                           |
 | 条件 2 演算子 | より大きい                      |
@@ -132,7 +132,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、リモート監視ソリューション アクセラレータの **[ルール]** ページを使用して、ソリューション内でアラートをトリガーするルールを作成および管理する方法について説明しました。 ソリューション アクセラレータを使用して接続されているデバイスを管理および構成する方法について学習するには、次のチュートリアルに進んでください。
 

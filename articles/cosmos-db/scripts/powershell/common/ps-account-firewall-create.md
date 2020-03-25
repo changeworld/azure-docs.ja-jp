@@ -7,10 +7,10 @@ ms.topic: sample
 ms.date: 09/20/2019
 ms.author: mjbrown
 ms.openlocfilehash: 6f018815bb8afd50bd9f21f8c088fd688ace1174
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75445086"
 ---
 # <a name="create-an-azure-cosmos-account-with-ip-firewall"></a>IP ファイアウォールを使用した Azure Cosmos アカウントを作成する

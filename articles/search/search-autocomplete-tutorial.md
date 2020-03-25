@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.openlocfilehash: 64c4e65ca7b69c7d61c706b48591ac19be3bfcf5
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72792519"
 ---
 # <a name="add-suggestions-or-autocomplete-to-your-azure-cognitive-search-application"></a>お使いの Azure Cognitive Search アプリケーションに検索候補またはオートコンプリートを追加する
@@ -308,7 +308,7 @@ var autocompleteUri = "https://" + searchServiceName + ".search.windows.net/inde
 
 1. F5 キーを押してアプリケーションを実行します。 サンプル Web アプリが既定のブラウザーで開きます。 インデックスとデータがお使いのサービスでホストされているだけで、操作方法はサンドボックス バージョンと同じです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この例では、オートコンプリートと検索候補をサポートする検索ボックスを作成するための基本的な手順について説明しています。 ASP.NET MVC アプリケーションをビルドし、Azure Cognitive Search .Net SDK または REST API を使用して検索候補を取得する方法を確認しました。
 

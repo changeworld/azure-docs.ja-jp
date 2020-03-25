@@ -9,10 +9,10 @@ ms.date: 04/05/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 996701f554858a503d5b8fe8a8e2711c7f968c2e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76276452"
 ---
 # <a name="create-a-zone-redundant-virtual-machine-scale-set-with-powershell"></a>PowerShell を使用してゾーン冗長仮想マシン スケール セットを作成する

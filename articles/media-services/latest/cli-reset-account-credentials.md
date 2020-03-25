@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 08/20/2019
 ms.author: juliako
 ms.openlocfilehash: 09c93e2d851bea22e9d54dde35398f36335eb896
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70967585"
 ---
-# <a name="cli-example-reset-the-account-credentials"></a>CLI の例:アカウント資格情報のリセット
+# <a name="cli-example-reset-the-account-credentials"></a>CLI の例: アカウント資格情報のリセット
 
 この記事の Azure CLI スクリプトは、アカウントの資格情報をリセットし、app.config 設定を取得する方法を示しています。
 
@@ -43,7 +43,7 @@ az ams account sp reset-credentials \
   --resource-group $resourceGroup 
  ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [az ams](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
 * [資格情報をリセットする](https://docs.microsoft.com/cli/azure/ams/account/sp?view=azure-cli-latest#az-ams-account-sp-reset-credentials)

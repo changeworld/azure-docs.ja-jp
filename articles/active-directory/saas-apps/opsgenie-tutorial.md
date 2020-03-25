@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と OpsGenie の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と OpsGenie の統合 | Microsoft Docs'
 description: Azure Active Directory と OpsGenie の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 446ac54d84f7b2b3bf3aaf6eaf5536f0dfb804fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67095749"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>チュートリアル:Azure Active Directory と OpsGenie の統合
+# <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>チュートリアル: Azure Active Directory と OpsGenie の統合
 
 このチュートリアルでは、OpsGenie と Azure Active Directory (Azure AD) を統合する方法について説明します。
 OpsGenie と Azure AD の統合には、次の利点があります。
@@ -218,7 +218,7 @@ OpsGenie で Azure AD シングル サインオンを構成するには、次の
    
     b. **[フル ネーム]** ボックスに、「**B. Simon**」と入力します。
    
-    c. **[Save]** をクリックします。 
+    c. **[保存]** をクリックします。 
 
 >[!NOTE]
 >B. Simon にプロファイルの設定方法が記載されたメールが届きます。

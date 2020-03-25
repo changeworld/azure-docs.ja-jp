@@ -8,10 +8,10 @@ ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
 ms.openlocfilehash: 4b5934e82c14f50ef1884a6c5618f4f98d663e1f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75441429"
 ---
 # <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---mongodb-api"></a>Azure Cosmos DB - MongoDB API のデータベースとグラフを一覧表示および取得する

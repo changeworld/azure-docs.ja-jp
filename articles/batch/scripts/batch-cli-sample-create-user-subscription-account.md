@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: labrenne
 ms.openlocfilehash: 5cab96c148d52597ee024f1ddb0b683db8d52dd7
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77024519"
 ---
-# <a name="cli-example-create-a-batch-account-in-user-subscription-mode"></a>CLI の例:ユーザー サブスクリプション モードでの Batch アカウントの作成
+# <a name="cli-example-create-a-batch-account-in-user-subscription-mode"></a>CLI の例: ユーザー サブスクリプション モードでの Batch アカウントの作成
 
 このスクリプトでは、ユーザー サブスクリプション モードで Azure Batch アカウントを作成します。 サブスクリプションにコンピューティング ノードを割り当てるアカウントは、Azure Active Directory トークンを使用して認証される必要があります。 割り当てられたコンピューティング ノードは、サブスクリプションの vCPU (コア) クォータに対してカウントされます。 
 
@@ -45,7 +45,7 @@ az group delete --name myResourceGroup
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | Notes |
+| command | メモ |
 |---|---|
 | [az role assignment create](/cli/azure/role) | ユーザー、グループ、またはサービス プリンシパルに対して、新しいロール割り当てを作成します。 |
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |

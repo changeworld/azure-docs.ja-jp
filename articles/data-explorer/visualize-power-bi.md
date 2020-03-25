@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Power BI で Azure Data Explorer のデータを視覚化する
+title: 'チュートリアル: Power BI で Azure データ エクスプローラーからデータを視覚化する'
 description: このチュートリアルでは、Power BI で Azure データ エクスプローラーに接続して、データを視覚化する方法について説明します。
 author: orspod
 ms.author: orspodek
@@ -8,13 +8,13 @@ ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.openlocfilehash: ec1579792a6e247bf49946bb8609a626154fbd46
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74037356"
 ---
-# <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>チュートリアル:Power BI で Azure Data Explorer のデータを視覚化する
+# <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>チュートリアル: Power BI で Azure データ エクスプローラーからデータを視覚化する
 
 Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Power BI はビジネス分析ソリューションであり、データを視覚化して、組織全体で結果を共有することができます。 このチュートリアルでは、最初に Azure データ エクスプローラーでビジュアルをレンダリングする方法を説明します。 次に、Azure データ エクスプローラーを Power BI と接続し、サンプル データに基づいてレポートを作成して、レポートを Power BI サービスに発行します。
 
@@ -213,7 +213,7 @@ Azure データ エクスプローラーに接続したので、Power Query エ�
 
     同僚が適切なアクセス許可を持っている場合は、共有を受けたレポートにアクセスできます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 作成したレポートを残しておきたくない場合は、単に *storm-events.pbix* ファイルを削除します。 発行したレポートを削除する場合は、以下の手順のようにします。
 
@@ -225,7 +225,7 @@ Azure データ エクスプローラーに接続したので、Power Query エ�
 
 1. 削除を確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [クエリを作成する](write-queries.md)

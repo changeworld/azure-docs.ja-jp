@@ -7,10 +7,10 @@ ms.topic: sample
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.openlocfilehash: 23ede06274f6e929bd04bf9ced60f349ae06caa9
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74871943"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB 用 Azure PowerShell サンプル: Gremlin API

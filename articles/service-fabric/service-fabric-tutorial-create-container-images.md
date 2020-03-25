@@ -7,13 +7,13 @@ ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: fe06da759a1ad42ef5cef888f98c440cdfb9569c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78252785"
 ---
-# <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>チュートリアル:Linux Service Fabric クラスターにコンテナー イメージを作成する
+# <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>チュートリアル: Linux Service Fabric クラスター上にコンテナー イメージを作成する
 
 このチュートリアルは、Linux Service Fabric クラスター内のコンテナーの使い方を実演するるチュートリアル シリーズの第 1 部です。 このチュートリアルでは、複数コンテナーのアプリケーションを Service Fabric で使うことができるように準備します。 以降のチュートリアルでは、これらのイメージを Service Fabric アプリケーションの一部として使います。 このチュートリアルで学習する内容は次のとおりです。
 

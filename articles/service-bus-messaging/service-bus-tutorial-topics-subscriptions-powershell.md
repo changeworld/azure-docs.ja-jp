@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
 ms.openlocfilehash: 3d1e1491ad045eba88ca7bbe54a1acb38199f7d7
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "65987910"
 ---
-# <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>チュートリアル:PowerShell とトピック/サブスクリプションを使用して在庫を更新する
+# <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>チュートリアル: PowerShell とトピック/サブスクリプションを使用して在庫を更新する
 
 Microsoft Azure Service Bus は、アプリケーションとサービスの間で情報を送信するマルチテナント クラウド メッセージング サービスです。 非同期操作により、柔軟なブローカー メッセージング、構造化された先入れ先出し型 (FIFO) のメッセージング、および発行/購読機能が可能になります。 
 
@@ -129,7 +129,7 @@ Get-AzServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespace-nam
 
    ![プログラムの出力](./media/service-bus-quickstart-powershell/dotnet.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 次のコマンドを実行して、リソース グループ、名前空間、およびすべての関連リソースを削除します。
 
@@ -271,11 +271,11 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 ```
 
 > [!NOTE]
-> Service Bus リソースを [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus エクスプローラーを使用すると、ユーザーは Service Bus 名前空間に接続し、簡単にメッセージング エンティティを管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が備わっています。 
+> Service Bus リソースは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus Explorer を使用すると、ユーザーは Service Bus 名前空間に接続し、簡単な方法でメッセージング エンティティを管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が用意されています。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure PowerShell を使用してリソースをプロビジョニングした後、Service Bus のトピックとそのサブスクリプションからメッセージを送受信しました。 以下の方法について学習しました。
+このチュートリアルでは、Azure PowerShell を使用してリソースをプロビジョニングした後、Service Bus のトピックとそのサブスクリプションからメッセージを送受信しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * Azure Portal を使用して、Service Bus トピックとそのトピックへの 1 つ以上のサブスクリプションを作成する

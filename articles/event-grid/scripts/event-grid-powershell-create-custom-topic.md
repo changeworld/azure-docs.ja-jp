@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 01/23/2020
 ms.author: tomfitz
 ms.openlocfilehash: 900f31ff87e6a588fc1d1e3efd854437d2c8c1b9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76719944"
 ---
 # <a name="create-event-grid-custom-topic-with-powershell"></a>PowerShell を使用した Event Grid のカスタム トピックの作成

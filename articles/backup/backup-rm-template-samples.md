@@ -5,10 +5,10 @@ ms.topic: sample
 ms.date: 01/31/2019
 ms.custom: mvc
 ms.openlocfilehash: 3c05f345c6c5df5d0350c75e52381c24b0609501
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74172181"
 ---
 # <a name="azure-resource-manager-templates-for-azure-backup"></a>Azure Backup 用 Azure Resource Manager テンプレート

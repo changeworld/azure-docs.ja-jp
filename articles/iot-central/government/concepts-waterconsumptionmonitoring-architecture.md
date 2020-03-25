@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 3a64ca5b0c2a092f895873e097ea6beb9a235a37
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77017702"
 ---
 # <a name="water-consumption-monitoring-reference-architecture"></a>水消費量監視の参照アーキテクチャ 

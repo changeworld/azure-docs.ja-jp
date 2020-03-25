@@ -10,13 +10,13 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 853fa2b80e04dd8d9225d023db8030fed044ed7f
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73890923"
 ---
-# <a name="tutorial-troubleshoot-and-fix-device-issues"></a>チュートリアル:デバイスの問題のトラブルシューティングと修正
+# <a name="tutorial-troubleshoot-and-fix-device-issues"></a>チュートリアル: デバイスの問題のトラブルシューティングと修正
 
 このチュートリアルでは、リモート監視ソリューション アクセラレータを使用して、接続されている IoT デバイスの問題を特定し、修正します。 ソリューション アクセラレータ ダッシュボードでアラートを使用して問題を特定した後、リモート ジョブを実行して問題を修正します。
 
@@ -82,7 +82,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、アラートを使用してデバイスの問題を特定する方法と、対象のデバイスを操作して問題を解決する方法について説明しました。 実デバイスをソリューション アクセラレータに接続する方法を学習するには、ハウツー記事に進んでください。
 

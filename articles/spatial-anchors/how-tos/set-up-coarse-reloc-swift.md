@@ -9,10 +9,10 @@ ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 7b568c43f8420b5a2f994b4cba145bf4d70b9010
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76546165"
 ---
 # <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-swift"></a>Swift で粗い再局在化を使用してアンカーを作成して配置する方法

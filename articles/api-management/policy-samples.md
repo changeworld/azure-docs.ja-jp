@@ -14,10 +14,10 @@ ms.date: 10/31/2017
 ms.author: apimpm
 ms.custom: mvc
 ms.openlocfilehash: 9bdcf9ea247adb8d5941c75f90f7db3915af20bc
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75940940"
 ---
 # <a name="api-management-policy-samples"></a>API Management ポリシーのサンプル

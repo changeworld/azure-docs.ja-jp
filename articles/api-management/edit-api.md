@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 11/08/2017
 ms.author: apimpm
 ms.openlocfilehash: 6be36493fabce07838991c789e111e918a9a826d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70072152"
 ---
 # <a name="edit-an-api"></a>API の編集
@@ -61,7 +61,7 @@ ms.locfileid: "70072152"
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [APIM ポリシーのサンプル](policy-samples.md)

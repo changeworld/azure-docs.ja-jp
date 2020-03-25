@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Infinite Campus の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Infinite Campus の統合 | Microsoft Docs'
 description: Azure Active Directory と Infinite Campus の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: d54769c1f3265e2cee619520044313fca46855a5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67100365"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>チュートリアル:Azure Active Directory と Infinite Campus の統合
+# <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>チュートリアル: Azure Active Directory と Infinite Campus の統合
 
 このチュートリアルでは、Infinite Campus と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Infinite Campus と Azure AD の統合には、次の利点があります。
@@ -140,7 +140,7 @@ Infinite Campus で Azure AD シングル サインオンを構成するには�
 
     d. **[Sync]\(同期\)** をクリックすると、 **[SSO Service Provider Configuration]\(SSO サービス プロバイダーの構成\)** ページに値が自動的に設定されます。 これらの値は上記のステップ 4 で示される値と一致することを確認できます。
 
-    e. **[Save]** をクリックします。
+    e. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

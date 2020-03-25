@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 1c3b158a2608d63fae6eea38c7263d0614519a5e
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76721525"
 ---
 # <a name="subscribe-to-events-for-a-custom-topic-with-powershell"></a>PowerShell を使用したカスタム トピックのイベントのサブスクライブ

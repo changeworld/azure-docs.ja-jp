@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Zscaler Beta の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Zscaler Beta の統合 | Microsoft Docs'
 description: Azure Active Directory と Zscaler Beta の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 04/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 07b0f8112f724c857ffb46378f7aa7ef605b9bbb
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68943283"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>チュートリアル:Azure Active Directory と Zscaler Beta の統合
+# <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>チュートリアル: Azure Active Directory と Zscaler Beta の統合
 
 このチュートリアルでは、Zscaler Beta と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Zscaler Beta を Azure AD に統合すると、次のことを実行できます。
@@ -118,7 +118,7 @@ Zscaler Beta で Azure AD シングル サインオンを構成するには、�
 
 6. Zscaler Beta アプリケーションでは、いくつかの追加の属性が SAML 応答で返されることを予期しています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、次の手順を実行して、以下の表に示すように SAML トークン属性を追加します。
     
-    | 名前 | ソース属性 | 
+    | Name | ソース属性 | 
     | ---------------| --------------- |
     | memberOf  | user.assignedroles |
 
@@ -171,7 +171,7 @@ Zscaler Beta で Azure AD シングル サインオンを構成するには、�
    
     ![管理](./media/zscaler-beta-tutorial/ic800206.png "管理")
 
-    a. **[Authentication Type]\(認証の種類\)** で **[SAML]** を選択します。
+    a. **[Authentication Type]\(認証タイプ\)** で **[SAML]** を選択します。
 
     b. **[Configure SAML]\(SAML の構成\)** を選択します。
 
@@ -201,7 +201,7 @@ Zscaler Beta で Azure AD シングル サインオンを構成するには、�
 
     a. 左下の **[Activation]\(アクティブ化\)** メニューにポインターを置きます。
 
-    b. **[アクティブ化]** を選択します。
+    b. **[アクティブ化]** を選びます。
 
 ## <a name="configure-proxy-settings"></a>プロキシ設定の構成
 Internet Explorer でプロキシ設定を構成するには、次の手順に従ってください。
@@ -214,7 +214,7 @@ Internet Explorer でプロキシ設定を構成するには、次の手順に�
 
 3. **[接続]** タブを選択します。 
   
-     ![[接続] タブ](./media/zscaler-beta-tutorial/ic769493.png "Connections")
+     ![[接続] タブ](./media/zscaler-beta-tutorial/ic769493.png "接続")
 
 4. **[LAN の設定]** を選択して **[ローカル エリア ネットワーク (LAN) の設定]** ダイアログ ボックスを開きます。
 
@@ -252,7 +252,7 @@ Azure Portal で Britta Simon というテスト ユーザーを作成します�
 
     a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** ボックスに「`brittasimon@yourcompanydomain.extension`」と入力します。 例: BrittaSimon@contoso.com。
+    b. **[ユーザー名]** ボックスに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば BrittaSimon@contoso.com です。
 
     c. **[パスワードを表示]** チェック ボックスを選択します。 **[パスワード]** ボックスに表示された値を書き留めます。
 

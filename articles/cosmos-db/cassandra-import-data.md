@@ -11,13 +11,13 @@ ms.date: 12/03/2018
 ms.custom: seodec18
 Customer intent: As a developer, I want to migrate my existing Cassandra workloads to Azure Cosmos DB so that the overhead to manage resources, clusters, and garbage collection is automatically handled by Azure Cosmos DB.
 ms.openlocfilehash: c754740369da6d0a8084b9b60ef178fb28e32f1b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75445669"
 ---
-# <a name="tutorial-migrate-your-data-to-cassandra-api-account-in-azure-cosmos-db"></a>チュートリアル:Azure Cosmos DB の Cassandra API アカウントにデータを移行する
+# <a name="tutorial-migrate-your-data-to-cassandra-api-account-in-azure-cosmos-db"></a>チュートリアル: Azure Cosmos DB の Cassandra API アカウントにデータを移行する
 
 開発者は、所有しているオンプレミスまたはクラウドで実行される既存の Cassandra のワークロードを Azure に移行したいと考えることがあります。 そのようなワークロードを、Azure Cosmos DB の Cassandra API アカウントに移行できます。 このチュートリアルでは、Apache Cassandra のデータを Azure Cosmos DB の Cassandra API アカウントに移行するために利用できる複数のオプションについて、その手順を説明します。
 
@@ -35,7 +35,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 * **スループットのニーズを推定する:** Azure Cosmos DB の Cassandra API アカウントにデータを移行する前に、ワークロードに必要なスループットを推定する必要があります。 一般に、CRUD 操作で必要な平均スループットで始めた後、抽出、変換、読み込み (ETL) またはスパイク性の操作に必要な追加スループットを含めることをお勧めします。 移行を計画するには次の詳細情報が必要です。 
 
-  * **既存のデータ サイズまたは推定データ サイズ:** データベースの最小サイズとスループットの要件を定義します。 新しいアプリケーションのデータ サイズを推定する場合は、データが行に一様に分布しているものと見なし、データ サイズを掛けることによって値を推定できます。 
+  * **既存データ サイズまたは推定データ サイズ:** 最小データベース サイズとスループット要件を定義します。 新しいアプリケーションのデータ サイズを推定する場合は、データが行に一様に分布しているものと見なし、データ サイズを掛けることによって値を推定できます。 
 
   * **必要なスループット:** 読み取り (クエリ/取得) および書き込み (更新/削除/挿入) の概算スループット レート。 この値は、必要な要求ユニット数と安定した状態データのサイズを計算するために必要です。  
 
@@ -63,11 +63,11 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 * **必要なスループットの割り当て:** Azure Cosmos DB は、要件の増大に従って、ストレージとスループットを自動的にスケーリングできます。 [Azure Cosmos DB の要求ユニット計算ツール](https://www.documentdb.com/capacityplanner)を使って、スループットのニーズを推定することができます。 
 
-* **Cassandra API アカウントにテーブルを作成する:** データの移行を開始する前に、Azure portal または cqlsh を使ってすべてのテーブルを事前に作成します。 データベース レベルのスループットがある Azure Cosmos アカウントに移行しようとしている場合は、Azure Cosmos コンテナーの作成時に必ずパーティション キーを指定してください。
+* **Cassandra API アカウントでテーブルを作成する:** データの移行を開始する前に、Azure portal または cqlsh からすべてのテーブルを事前に作成します。 データベース レベルのスループットがある Azure Cosmos アカウントに移行しようとしている場合は、Azure Cosmos コンテナーの作成時に必ずパーティション キーを指定してください。
 
-* **スループットを向上させる:** データの移行にかかる時間は、Azure Cosmos DB のテーブルに対してプロビジョニングしたスループットの量に依存します。 移行の間だけスループットを高くします。 スループットが高くなるほど、レート制限を回避し、移行に要する時間を短縮できます。 移行が完了したら、コストを節約するためにスループットを下げます。 また、Azure Cosmos アカウントをソース データベースと同じリージョンにすることもお勧めします。 
+* **スループットを上げる:** データの移行にかかる時間は、Azure Cosmos DB のテーブルに対してプロビジョニングしたスループットの量に依存します。 移行の間だけスループットを高くします。 スループットが高くなるほど、レート制限を回避し、移行に要する時間を短縮できます。 移行が完了したら、コストを節約するためにスループットを下げます。 また、Azure Cosmos アカウントをソース データベースと同じリージョンにすることもお勧めします。 
 
-* **SSL を有効にする:** Azure Cosmos DB には、厳密なセキュリティ要件と基準があります。 アカウントを操作するときは、SSL が有効になっていることを確認してください。 SSH で CQL を使用する場合は、SSL の情報を指定するオプションがあります。
+* **SSL を有効にする:** Azure Cosmos DB には、厳密なセキュリティ要件と基準が存在します。 アカウントを操作するときは、SSL が有効になっていることを確認してください。 SSH で CQL を使用する場合は、SSL の情報を指定するオプションがあります。
 
 ## <a name="options-to-migrate-data"></a>データを移行するためのオプション
 

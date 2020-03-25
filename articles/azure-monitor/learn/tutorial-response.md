@@ -8,10 +8,10 @@ ms.author: bwren
 ms.date: 10/05/2018
 ms.custom: mvc
 ms.openlocfilehash: 756ce6c8551d259fc27855489b4276d90c7aa771
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77670374"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Azure Monitor のアラートを使用してイベントに応答する
@@ -26,12 +26,12 @@ Azure Monitor のアラートは、Log Analytics リポジトリ内の重要な�
 このチュートリアルの例を完了するには、[Log Analytics ワークスペースに接続された](../../azure-monitor/learn/quick-collect-azurevm.md)既存の仮想マシンが必要です。  
 
 ## <a name="sign-in-to-azure-portal"></a>Azure Portal にサインインする
-Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。 
+Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。 
 
 ## <a name="create-alerts"></a>アラートを作成する
 アラートは Azure Monitor のアラート ルールによって作成され、保存済みのクエリまたはカスタム ログ検索を一定の間隔で自動的に実行できます。  特定のパフォーマンス メトリック、特定のイベントが作成されたとき、イベントが欠如しているとき、または特定の時間枠内に作成されたイベントの数に基づくアラートを作成できます。  たとえば、アラートを使用して、平均 CPU 使用率が特定のしきい値を超えた場合、不足している更新が検出された場合、または特定の Windows サービスまたは Linux デーモンが実行されていないときにイベントが生成された場合に通知を受信することができます。  ログ検索の結果が特定の条件に一致すると、アラートが作成されます。 さらに、アラートの通知や別のプロセスの呼び出しなど、1 つ以上のアクションを自動的に実行できます。 
 
-次の例では、[データの視覚化のチュートリアル](tutorial-logs-dashboards.md)で保存した "*Azure VM - プロセッサ使用率*" のクエリに基づいてメトリック測定アラート ルールを作成します。  90% のしきい値を超える仮想マシンごとにアラートが作成されます。  
+次の例では、*データの視覚化のチュートリアル*で保存した "[Azure VM - プロセッサ使用率](tutorial-logs-dashboards.md)" のクエリに基づいてメトリック測定アラート ルールを作成します。  90% のしきい値を超える仮想マシンごとにアラートが作成されます。  
 
 1. Azure Portal で、 **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
 2. 左側のウィンドウで、 **[アラート]** を選択し、ページの上部の **[新しいアラート ルール]** をクリックして新しいアラートを作成します。<br><br> ![新しいアラート ルールの作成](./media/tutorial-response/alert-rule-02.png)<br>

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と OnTrack の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と OnTrack の統合 | Microsoft Docs'
 description: Azure Active Directory と OnTrack の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 371ad2a8530de7b20427327d939bf164d871ab74
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68944034"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ontrack"></a>チュートリアル:Azure Active Directory と OnTrack の統合
+# <a name="tutorial-azure-active-directory-integration-with-ontrack"></a>チュートリアル: Azure Active Directory と OnTrack の統合
 
 このチュートリアルでは、OnTrack と Azure Active Directory (Azure AD) を統合する方法について説明します。
 OnTrack と Azure AD の統合には、次の利点があります。
@@ -150,7 +150,7 @@ OnTrack で Azure AD シングル サインオンを構成するには、次の�
 
     f. **[OK]** をクリックします。
 
-    g. **[Save]** をクリックします。
+    g. **[保存]** をクリックします。
 
 7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 

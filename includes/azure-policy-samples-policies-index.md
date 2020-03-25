@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 34d33a4509df6b19488833cd0273756a17e73630
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: bdd46f06357a806a707882a623520235e3903581
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77495037"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79381912"
 ---
 ## <a name="app-configuration"></a>App Configuration
 
@@ -21,6 +21,10 @@ ms.locfileid: "77495037"
 ## <a name="automation"></a>Automation
 
 [!INCLUDE [azure-policy-samples-policies-automation](azure-policy-samples-policies-automation.md)]
+
+## <a name="backup"></a>バックアップ
+
+[!INCLUDE [azure-policy-samples-policies-backup](azure-policy-samples-policies-backup.md)]
 
 ## <a name="batch"></a>Batch
 

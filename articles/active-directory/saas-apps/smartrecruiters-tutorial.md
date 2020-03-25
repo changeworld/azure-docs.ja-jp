@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と SmartRecruiters の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と SmartRecruiters の統合 | Microsoft Docs'
 description: Azure Active Directory と SmartRecruiters の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: f20a8a63160a498b9789f77eededad1fd6a02906
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67090105"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-smartrecruiters"></a>チュートリアル:Azure Active Directory と SmartRecruiters の統合
+# <a name="tutorial-azure-active-directory-integration-with-smartrecruiters"></a>チュートリアル: Azure Active Directory と SmartRecruiters の統合
 
 このチュートリアルでは、SmartRecruiters と Azure Active Directory (Azure AD) を統合する方法について説明します。
 SmartRecruiters と Azure AD の統合には、次の利点があります。

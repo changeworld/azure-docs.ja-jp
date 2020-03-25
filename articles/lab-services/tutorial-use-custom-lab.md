@@ -15,14 +15,14 @@ ms.custom: mvc
 ms.date: 01/18/2019
 ms.author: spelluru
 ms.openlocfilehash: ee9a68df685095244fc9471b7d4ab0f6cee0642d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68360266"
 ---
-# <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>チュートリアル:Azure DevTest Labs のラボへのアクセス
-このチュートリアルでは、[Azure DevTest Labs でラボを作成するチュートリアル](tutorial-create-custom-lab.md)で作成したラボを使います。
+# <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>チュートリアル: Azure DevTest Labs のラボにアクセスする
+このチュートリアルでは、[チュートリアル: Azure DevTest Labs でラボを作成する](tutorial-create-custom-lab.md)の記事で作成したラボを使います。
 
 このチュートリアルでは、次のアクションを実行します。
 
@@ -35,7 +35,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="access-the-lab"></a>ラボにアクセスする
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. 左側のメニューで、 **[すべてのリソース]** を選択します。 
 3. リソースの種類として **[DevTest Labs]** を選びます。 
 4. ラボを選びます。 
@@ -82,7 +82,7 @@ VM を使い終わったら、次の手順で VM を解放します。
 1. 一番下の **[要求可能な仮想マシン]** ボックスの一覧に、対象の VM が表示されていることを確認します。
 
     
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Azure DevTest Labs を使って作成されたラボにアクセスして使用する方法を示しました。 ラボの VM にアクセスして使用する方法について詳しくは、次をご覧ください 
 
 > [!div class="nextstepaction"]

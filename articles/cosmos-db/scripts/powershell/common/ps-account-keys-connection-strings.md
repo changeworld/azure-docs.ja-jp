@@ -7,10 +7,10 @@ ms.topic: sample
 ms.date: 09/20/2019
 ms.author: mjbrown
 ms.openlocfilehash: 96be5f09cddf5eefec6b471d30cf87d0f687485d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75441530"
 ---
 # <a name="connection-string-and-account-key-operations-for-an-azure-cosmos-account-using-powershell"></a>PowerShell を使用する、Azure Cosmos アカウントの接続文字列とアカウント キーの操作

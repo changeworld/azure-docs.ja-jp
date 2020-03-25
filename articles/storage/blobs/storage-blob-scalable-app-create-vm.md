@@ -8,10 +8,10 @@ ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
 ms.openlocfilehash: 60bb227af7cc886bb35cbd045cc8a27cf82ae903
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75372280"
 ---
 # <a name="create-a-virtual-machine-and-storage-account-for-a-scalable-application"></a>スケーラブルなアプリケーションの仮想マシンおよびストレージ アカウントの作成
