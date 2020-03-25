@@ -7,13 +7,13 @@ ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: b7754a289c06dff37aedcf8da76d35dfac4b183d
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78252798"
 ---
-# <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure の Service Fabric クラスターに Java アプリケーションをデプロイする
+# <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>チュートリアル: Azure の Service Fabric クラスターに Java アプリケーションをデプロイする
 
 このチュートリアルはシリーズの第 3 部です。Azure のクラスターに Service Fabric アプリケーションをデプロイする方法について説明します。
 
@@ -225,7 +225,7 @@ ms.locfileid: "78252798"
 
     ![Java Azure の投票アプリケーション](./media/service-fabric-tutorial-java-deploy-azure/votingappjavaazure.png)
 
-7. アプリケーションをクラスターからアンインストールするには、**Scripts** フォルダーの *uninstall.sh* スクリプトを実行します。
+7. アプリケーションをクラスターからアンインストールするには、*Scripts* フォルダーの **uninstall.sh** スクリプトを実行します。
 
     ```bash
     ./uninstall.sh

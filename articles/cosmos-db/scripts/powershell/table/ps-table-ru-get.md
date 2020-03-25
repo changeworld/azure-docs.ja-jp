@@ -8,10 +8,10 @@ ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
 ms.openlocfilehash: 76645dee5927b321b0a974911ce6514d4277c6c1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75441287"
 ---
 # <a name="get-throughput-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Azure Cosmos DB - Table API のテーブルに対するスループットを取得する (RU/秒)

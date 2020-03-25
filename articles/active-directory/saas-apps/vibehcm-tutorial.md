@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Vibe HCM の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Vibe HCM の統合 | Microsoft Docs'
 description: Azure Active Directory と Vibe HCM の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 4267b75be72c1d162b4abaf7184afcdd02c38720
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68943105"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-vibe-hcm"></a>チュートリアル:Azure Active Directory と Vibe HCM の統合
+# <a name="tutorial-azure-active-directory-integration-with-vibe-hcm"></a>チュートリアル: Azure Active Directory と Vibe HCM の統合
 
 このチュートリアルでは、Vibe HCM と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Vibe HCM と Azure AD の統合には、次の利点があります。

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と PolicyStat の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と PolicyStat の統合 | Microsoft Docs'
 description: Azure Active Directory と PolicyStat の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 327e470d60235e6bf400293e80e3aec5f6144ff4
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68943439"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-policystat"></a>チュートリアル:Azure Active Directory と PolicyStat の統合
+# <a name="tutorial-azure-active-directory-integration-with-policystat"></a>チュートリアル: Azure Active Directory と PolicyStat の統合
 
 このチュートリアルでは、PolicyStat と Azure Active Directory (Azure AD) を統合する方法について説明します。
 PolicyStat と Azure AD の統合には、次の利点があります。
@@ -144,7 +144,7 @@ PolicyStat で Azure AD シングル サインオンを構成するには、次�
     
     f. **[パラメーター 1]** の一覧から、その行に対して表示される値を入力します。
 
-    g. **[Save]** をクリックします。
+    g. **[保存]** をクリックします。
 
 7. **[PolicyStat の設定]** セクションで、要件どおりの適切な URL をコピーします。
 
@@ -178,7 +178,7 @@ PolicyStat で Azure AD シングル サインオンを構成するには、次�
 
     c. **[Last Name Attribute]\(姓属性\)** ボックスにユーザー "**Simon**" の**姓**を入力します。
 
-    d. **[Email Attribute]\(電子メール属性\)** ボックスにユーザー `BrittaSimon@contoso.com` の**メール アドレス**を入力します。
+    d. **[Email Attribute]\(電子メール属性\)** ボックスにユーザー  **の**メール アドレス`BrittaSimon@contoso.com`を入力します。
 
     e. **[変更を保存]** をクリックします。
 

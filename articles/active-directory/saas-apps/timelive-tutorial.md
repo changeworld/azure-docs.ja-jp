@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と TimeLive の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と TimeLive の統合 | Microsoft Docs'
 description: Azure Active Directory と TimeLive の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: a3f1e74b67d30fc5d0b994093f159de0cc833628
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67088586"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-timelive"></a>チュートリアル:Azure Active Directory と TimeLive の統合
+# <a name="tutorial-azure-active-directory-integration-with-timelive"></a>チュートリアル: Azure Active Directory と TimeLive の統合
 
 このチュートリアルでは、TimeLive と Azure Active Directory (Azure AD) を統合する方法について説明します。
 TimeLive と Azure AD の統合には、次の利点があります。

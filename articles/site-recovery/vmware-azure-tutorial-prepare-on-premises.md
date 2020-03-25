@@ -9,11 +9,11 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 4969a1f14e53aabf79495e179213f9763d4c8803
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893632"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222629"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Azure へのディザスター リカバリーのためにオンプレミス VMware サーバーを準備する
 
@@ -68,8 +68,8 @@ Site Recovery では、次のことを実行するために、VMware サーバ�
 
 VM にインストールするアクセス許可を持つドメイン アカウントまたはローカル アカウントを準備します。
 
-- **Windows VM**:ドメイン アカウントを使用していない場合に Windows VM にインストールするには、ローカル マシンでリモート ユーザー アクセスの制御を無効にします。 これを行うには、レジストリ **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** に DWORD エントリ **LocalAccountTokenFilterPolicy** を追加し、値を 1 に設定します。
-- **Linux VM**:Linux VM にインストールするには、ソースの Linux サーバーにルート アカウントを準備します。
+- **Windows VM**: ドメイン アカウントを使っていない場合に Windows VM にインストールするには、ローカル マシンでリモート ユーザー アクセス コントロールを無効にします。 これを行うには、レジストリ **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** に DWORD エントリ **LocalAccountTokenFilterPolicy** を追加し、値を 1 に設定します。
+- **Linux VM**: Linux VM にインストールするには、ソースの Linux サーバーにルート アカウントを準備します。
 
 
 ## <a name="check-vmware-requirements"></a>VMware の要件を確認する
@@ -94,7 +94,7 @@ VMware サーバーと VM が要件に準拠していることを確認します
 - **サイト間 VPN アクセス**:
     - フェールオーバーの前に、オンプレミスのマシンで RDP を有効にします。
     - RDP は、 **[Windows ファイアウォール]**  ->  **[許可されたアプリおよび機能]** から、**ドメインとプライベート** ネットワークでの使用を許可する必要があります。
-    - オペレーティング システムの SAN ポリシーが **[OnlineAll]** に設定されていることを確認します。 [詳細については、こちらを参照してください](https://support.microsoft.com/kb/3031135)。
+    - オペレーティング システムの SAN ポリシーが **[OnlineAll]** に設定されていることを確認します。 詳細については、[こちら](https://support.microsoft.com/kb/3031135)をご覧ください。
 - フェールオーバーをトリガーするときに、VM に保留中の Windows 更新プログラムがないようにします。 ある場合は、更新が完了するまで、仮想マシンにサインインすることはできません。
 - フェールオーバー後の Microsoft Azure VM で **[ブート診断]** をオンにして、VM のスクリーンショットを確認します。 接続できない場合は、VM が実行中であることを確認したうえで、[トラブルシューティングのヒント](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)を確認してください。
 

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と New Relic の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と New Relic の統合 | Microsoft Docs'
 description: Azure Active Directory と New Relic の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
 ms.openlocfilehash: dfa5fbcf5df8ee314aab3e4a8228d81e7e14565b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74233512"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-new-relic"></a>チュートリアル:Azure Active Directory と New Relic の統合
+# <a name="tutorial-azure-active-directory-integration-with-new-relic"></a>チュートリアル: Azure Active Directory と New Relic の統合
 
 このチュートリアルでは、New Relic と Azure Active Directory (Azure AD) を統合する方法について説明します。
 New Relic と Azure AD の統合には、次の利点があります。

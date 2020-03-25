@@ -8,10 +8,10 @@ ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 60ca1ef3d5c14a0f3dea5b662fc5c95184e6574d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75420630"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>環境の変更に関する問題を解決する
@@ -100,7 +100,7 @@ Azure Monitor ログでのログ ファイルの実行と検索については�
 |有効     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
 |Group     | ファイルを論理的にグループ化するためのグループ名。        |
-|Windows レジストリ キー   | ファイル確認のためのパス。その例を次に示します。"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
+|Windows レジストリ キー   | ファイル確認のためのパス (例: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup")。      |
 
 ### <a name="add-a-windows-file"></a>Windows ファイルを追加する
 
@@ -115,7 +115,7 @@ Azure Monitor ログでのログ ファイルの実行と検索については�
 |Group     | ファイルを論理的にグループ化するためのグループ名。        |
 |パスの入力     | ファイル確認のためのパス (例: "c:\temp\\\*.txt")。<br>"%winDir%\System32\\\*.*" などの環境変数も使用できます。         |
 |再帰     | 追跡する項目を検索するときに、再帰を使用するかどうかを決定します。        |
-|すべての設定のファイル コンテンツをアップロードする| 追跡した変更についてファイル コンテンツのアップロードをオンまたはオフにします。 使用できるオプションは **True** または **False** です。|
+|すべての設定のファイル コンテンツをアップロードする| 追跡した変更についてファイル コンテンツのアップロードをオンまたはオフにします。 使用可能なオプション: **True** または **False**。|
 
 ### <a name="add-a-linux-file"></a>Linux ファイルを追加する
 
@@ -133,7 +133,7 @@ Azure Monitor ログでのログ ファイルの実行と検索については�
 |再帰     | 追跡する項目を検索するときに、再帰を使用するかどうかを決定します。        |
 |sudo の使用     | この設定により、項目を確認するときに、sudo を使用するかどうかが決まります。         |
 |リンク     | この設定により、ディレクトリを走査するときの、シンボリック リンクの処理方法が決まります。<br> **無視** - シンボリック リンクを無視し、参照先のファイル/ディレクトリを含めません。<br>**フォロー** - 再帰中、シンボリック リンクをフォローします。参照先のファイル/ディレクトリも含めます。<br>**管理** - シンボリック リンクをフォローします。また、返された内容の処理を変更することができます。      |
-|すべての設定のファイル コンテンツをアップロードする| 追跡した変更についてファイル コンテンツのアップロードをオンまたはオフにします。 使用できるオプションは **True** または **False** です。|
+|すべての設定のファイル コンテンツをアップロードする| 追跡した変更についてファイル コンテンツのアップロードをオンまたはオフにします。 使用可能なオプション: **True** または **False**。|
 
    > [!NOTE]
    > "管理" リンク オプションはお勧めしません。 ファイルのコンテンツの取得はサポートされていません。

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Picturepark の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Picturepark の統合 | Microsoft Docs'
 description: Azure Active Directory と Picturepark の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 08c5bd8da0dda74156b2d44c8106ed345ef749dd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73177008"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>チュートリアル:Azure Active Directory と Picturepark の統合
+# <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>チュートリアル: Azure Active Directory と Picturepark の統合
 
 このチュートリアルでは、Picturepark と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Picturepark と Azure AD の統合には、次の利点があります。

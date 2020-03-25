@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と N2F - Expense reports の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と N2F - Expense reports の統合 | Microsoft Docs'
 description: Azure Active Directory と N2F - Expense reports の間のシングル サインオンの設定方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.openlocfilehash: 11f5e2f7763008c3af09c5367d90265af6a9653a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73161291"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>チュートリアル:Azure Active Directory と N2F - Expense reports の統合
+# <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>チュートリアル: Azure Active Directory と N2F - Expense reports の統合
 
 このチュートリアルでは、N2F - Expense reports と Azure Active Directory (Azure AD) を統合する方法について説明します。
 N2F - Expense reports と Azure AD の統合には、次の利点があります。
@@ -153,7 +153,7 @@ N2F - Expense reports で Azure AD シングル サインオンを構成する�
 
     b. **[Metadata URL]\(メタデータ URL\)** ボックスに、Azure Portal からコピーした **[アプリのフェデレーション メタデータ URL]** の値を貼り付けます。
 
-    c. **[Save]** をクリックします。
+    c. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 

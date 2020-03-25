@@ -4,10 +4,10 @@ description: Azure PowerShell スクリプトを使用して、お使いのス�
 ms.topic: sample
 ms.date: 1/28/2020
 ms.openlocfilehash: 786420ec8cef6516f7261c71b40641693efece07
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76775868"
 ---
 # <a name="powershell-script-to-find-the-recovery-services-vault-where-a-storage-account-is-registered"></a>ストレージ アカウントが登録されている Recovery Services コンテナーを見つけるための PowerShell スクリプト

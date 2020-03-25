@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と PostBeyond の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と PostBeyond の統合 | Microsoft Docs'
 description: Azure Active Directory と PostBeyond の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: fb6c32870d7a0ef07a6616d5669325538e64b14c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67094289"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-postbeyond"></a>チュートリアル:Azure Active Directory と PostBeyond の統合
+# <a name="tutorial-azure-active-directory-integration-with-postbeyond"></a>チュートリアル: Azure Active Directory と PostBeyond の統合
 
 このチュートリアルでは、PostBeyond と Azure Active Directory (Azure AD) を統合する方法について説明します。
 PostBeyond と Azure AD の統合には、次の利点があります。

@@ -14,13 +14,13 @@ ms.date: 01/22/2020
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: e95441aab6c8ce7de37ba5f6b08d5f7d54e13347
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77201300"
 ---
-# <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して仮想ネットワーク ピアリングで仮想ネットワークを接続する
+# <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>チュートリアル: Azure Portal を使用して仮想ネットワーク ピアリングで仮想ネットワークを接続する
 
 仮想ネットワーク ピアリングを使用して、仮想ネットワークを相互に接続できます。 これらの仮想ネットワークは、同じリージョン内にあっても異なるリージョン内にあってもかまいません (グローバル VNet ピアリングとも呼ばれます)。 仮想ネットワークをピアリングすると、それぞれの仮想ネットワークに存在するリソースが、あたかも同じ仮想ネットワーク内に存在するかのような待ち時間と帯域幅で相互に通信できます。 このチュートリアルでは、以下の内容を学習します。
 
@@ -44,21 +44,21 @@ Azure Portal (https://portal.azure.com ) にログインします。
 2. **[ネットワーク]** を選択してから、 **[仮想ネットワーク]** を選択します。
 3. **[基本]** タブで次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用します。
 
-    |設定|Value|
+    |設定|値|
     |---|---|
     |サブスクリプション| サブスクリプションを選択します。|
     |Resource group| **[新規作成]** を選択し、「*myResourceGroup*と入力します。|
     |リージョン| **[米国東部]** を選択します。|
-    |名前|myVirtualNetwork1|
+    |Name|myVirtualNetwork1|
 
-4. **[IP アドレス]** タブで、 **[アドレス空間]** フィールドに「10.0.0.0/16」と入力します。 下の **[サブネットの追加]** ボタンをクリックし、 **[サブネット名]** に「*Subnet1*」と入力し、 **[サブネット アドレス範囲]** に「10.0.0.0/24」と入力します。
+4. **[IP アドレス]** タブで、 **[アドレス空間]** フィールドに「10.0.0.0/16」と入力します。 下の **[サブネットの追加]** ボタンをクリックし、 *[サブネット名]* に「**Subnet1**」と入力し、 **[サブネット アドレス範囲]** に「10.0.0.0/24」と入力します。
 5. **[確認および作成]** を選択し、次に **[作成]** を選択します。
    
 5. 次のように値を変更して、手順 1 から 5 を繰り返します。
 
-    |設定|Value|
+    |設定|値|
     |---|---|
-    |名前|myVirtualNetwork2|
+    |Name|myVirtualNetwork2|
     |アドレス空間|10.1.0.0/16|
     |Resource group| **[既存のものを使用]** 、 **[myResourceGroup]** の順に選択します。|
     |サブネット名 | Subnet2|
@@ -73,7 +73,7 @@ Azure Portal (https://portal.azure.com ) にログインします。
 
 3. 次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[OK]** を選択します。
 
-    |設定|Value|
+    |設定|値|
     |---|---|
     |myVirtualNetwork1 からリモート仮想ネットワークへのピアリングの名前|myVirtualNetwork1-myVirtualNetwork2 - ページが初めて読み込まれるときは、ここに "remote virtual network" という語句が表示されます。 リモート仮想ネットワークを選択すると、"remote virtual network" という語句がリモート仮想ネットワークの名前に置き換えられます。|
     |サブスクリプション| サブスクリプションを選択します。|
@@ -98,10 +98,10 @@ Azure Portal (https://portal.azure.com ) にログインします。
 2. **[コンピューティング]** 、 **[Windows Server 2016 Datacenter]** の順に選択します。 別のオペレーティング システムを選択することもできますが、以降の手順では、 **[Windows Server 2016 Datacenter]** を選択したという前提で説明します。 
 3. **[基本]** について次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[作成]** を選択します。
 
-    |設定|Value|
+    |設定|値|
     |---|---|
     |Resource group| **[既存のものを使用]** 、 **[myResourceGroup]** の順に選択します。|
-    |名前|myVm1|
+    |Name|myVm1|
     |Location| **[米国東部]** を選択します。|
     |ユーザー名| 任意のユーザー名を入力します。|
     |Password| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
@@ -109,7 +109,7 @@ Azure Portal (https://portal.azure.com ) にログインします。
 4. **[サイズ]** オプションで VM サイズを選択します。
 5. **[ネットワーキング]** で以下の値を選択します。
 
-    |設定|Value|
+    |設定|値|
     |---|---|
     |仮想ネットワーク| myVirtualNetwork1 - まだ選択されていない場合は、 **[仮想ネットワーク]** を選択し、 **[myVirtualNetwork1]** を選択します。|
     |Subnet| Subnet1 - まだ選択されていない場合は、 **[サブネット]** を選択し、 **[Subnet1]** を選択します。|
@@ -122,9 +122,9 @@ Azure Portal (https://portal.azure.com ) にログインします。
 
 次のように値を変更して、手順 1 から 6 を繰り返します。
 
-|設定|Value|
+|設定|値|
 |---|---|
-|名前 | myVm2|
+|Name | myVm2|
 |仮想ネットワーク | myVirtualNetwork2|
 
 VM の作成には数分かかります。 両方の VM の作成が完了するまで、以降の手順に進まないでください。
@@ -132,7 +132,7 @@ VM の作成には数分かかります。 両方の VM の作成が完了する
 ## <a name="communicate-between-vms"></a>VM 間の通信
 
 1. ポータルの上部にある *[検索]* ボックスで、「*myVm1*」の入力を開始します。 検索結果に **myVm1** が表示されたら、それを選択します。
-2. 次の図に示すように、 **[接続]** を選択して *myVm1* VM へのリモート デスクトップ接続を作成します。
+2. 次の図に示すように、 *[接続]* を選択して **myVm1** VM へのリモート デスクトップ接続を作成します。
 
     ![仮想マシンへの接続](./media/tutorial-connect-virtual-networks-portal/connect-to-virtual-machine.png)  
 
@@ -165,9 +165,9 @@ VM の作成には数分かかります。 両方の VM の作成が完了する
 
 リソース グループとそれに含まれるすべてのリソースが不要になったら、それらを削除します。 
 
-1. ポータル上部の **[検索]** ボックスに「*myResourceGroup*」と入力します。 検索結果に **[myResourceGroup]** が表示されたら、それを選択します。
+1. ポータル上部の *[検索]* ボックスに「**myResourceGroup**」と入力します。 検索結果に **[myResourceGroup]** が表示されたら、それを選択します。
 2. **[リソース グループの削除]** を選択します。
-3. **[TYPE THE RESOURCE GROUP NAME:]\(リソース グループ名を入力してください:\)** に「*myResourceGroup*」と入力し、 **[削除]** を選択します。
+3. *[TYPE THE RESOURCE GROUP NAME:]\(リソース グループ名を入力してください:\)* に「**myResourceGroup**」と入力し、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

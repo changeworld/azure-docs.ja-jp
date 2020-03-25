@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 01/21/2020
 ms.author: babanisa
 ms.openlocfilehash: 87f8f79e2cf125fa5735653153d8fcaa781f5200
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76511520"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Event Grid のカスタム トピック用に独自のディザスター リカバリーを構築する
@@ -46,7 +46,7 @@ ms.locfileid: "76511520"
 
 最初に、Event Grid トピックを 2 つ作成します。 これらのトピックは、お客様のプライマリとセカンダリとして機能します。 既定では、イベントはお客様のプライマリ トピック経由で流れます。 プライマリ リージョンでサービスが停止した場合、お客様のセカンダリに引き継がれます。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。 
+1. [Azure portal](https://portal.azure.com) にサインインする 
 
 1. Azure のメイン メニューの左上隅で **[すべてのサービス]** を選択し、「**Event Grid**」を検索して、 **[Event Grid トピック]** を選択します。
 

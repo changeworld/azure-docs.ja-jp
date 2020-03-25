@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure DevOps Projects を使用して ASP.NET Core アプリを Azure Kubernetes Service にデプロイする
+title: 'チュートリアル: Azure DevOps Projects を使用して ASP.NET Core アプリを Azure Kubernetes Service にデプロイする'
 description: Azure DevOps Projects を利用すると、Azure を使い始めるのが簡単になります。 DevOps Projects を使用することによって、いくつかの簡単な手順で ASP.NET Core アプリを Azure Kubernetes Service (AKS) に簡単にデプロイできます。
 ms.author: mlearned
 ms.manager: gwallace
@@ -10,13 +10,13 @@ ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
 ms.openlocfilehash: b27d56d78296dc5500f97802f811a8923c4e87a8
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71969686"
 ---
-# <a name="tutorial-deploy-aspnet-core-apps-to-azure-kubernetes-service-with-azure-devops-projects"></a>チュートリアル:Azure DevOps Projects を使用して ASP.NET Core アプリを Azure Kubernetes Service にデプロイする
+# <a name="tutorial-deploy-aspnet-core-apps-to-azure-kubernetes-service-with-azure-devops-projects"></a>チュートリアル: Azure DevOps Projects を使用して ASP.NET Core アプリを Azure Kubernetes Service にデプロイする
 
 Azure DevOps Projects によって提供される簡略化されたエクスペリエンスを使用すると、既存のコードと Git リポジトリを使用するか、サンプル アプリケーションを選択して、Azure への継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインを作成することができます。 
 
@@ -35,7 +35,7 @@ DevOps Projects には、以下の機能もあります。
 > * CI パイプライン を確認する
 > * CD パイプライン を確認する
 > * 変更を Git にコミットし、Azure に自動的にデプロイする
-> * リソースのクリーンアップ
+> * リソースをクリーンアップする
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -45,7 +45,7 @@ DevOps Projects には、以下の機能もあります。
 
 DevOps Projects によって、Azure Pipelines に CI/CD パイプラインが作成されます。 新しい Azure DevOps 組織を作成するか、既存の組織を使用できます。 DevOps Projects によって、選択した Azure サブスクリプションに AKS クラスターなどの Azure リソースも作成されます。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 1. 左側のウィンドウで、 **[リソースの作成]** を選びます。
 
@@ -164,7 +164,7 @@ Web サイトに最新の作業を自動的にデプロイする CI/CD プロセ
 
 1. リリースが完了したら、アプリを更新して、変更を確認します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 テストを行っている場合は、リソースをクリーンアップすることによって、課金を回避することができます。 このチュートリアルで作成した AKS クラスターと関連リソースが必要なくなったら、削除してかまいません。 そうするには、DevOps Projects ダッシュボードで**削除**機能を使用します。
 
@@ -175,7 +175,7 @@ Web サイトに最新の作業を自動的にデプロイする CI/CD プロセ
 2. 右上の **[削除]** を選択します。 
 3. 確認のメッセージで **[はい]** を選択すると、リソースが "*完全に削除*" されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 必要に応じて、チームのニーズを満たすようにこれらのビルドおよびリリース パイプラインを変更できます。 この CI/CD パターンをご自身の他のパイプラインのテンプレートとして使用することもできます。 このチュートリアルでは、以下の内容を学習しました。
 
@@ -186,7 +186,7 @@ Web サイトに最新の作業を自動的にデプロイする CI/CD プロセ
 > * CI パイプライン を確認する
 > * CD パイプライン を確認する
 > * 変更を Git にコミットし、Azure に自動的にデプロイする
-> * リソースのクリーンアップ
+> * リソースをクリーンアップする
 
 Kubernetes ダッシュボードの使い方の詳細については、以下を参照してください。
 

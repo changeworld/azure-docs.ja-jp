@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 27c7e32f081003ac236c6d1405eb3512f6c4433c
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 62a8c68b11562cac7bb9e8a318cbe08084449423
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034637"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80066508"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>チュートリアル - Azure での Linux 仮想マシンの初回の起動時に cloud-init を使用してカスタマイズする方法
 
@@ -47,7 +47,7 @@ Microsoft ではパートナーと協力して、パートナーから Azure に
 |Canonical |UbuntuServer |18.04-LTS |latest |はい | 
 |Canonical |UbuntuServer |16.04 LTS |latest |はい | 
 |Canonical |UbuntuServer |14.04.5-LTS |latest |はい |
-|CoreOS |CoreOS |安定版 |latest |はい |
+|CoreOS |CoreOS |Stable |latest |はい |
 |OpenLogic 7.6 |CentOS |7-CI |latest |preview |
 |RedHat 7.6 |RHEL |7-RAW-CI |7.6.2019072418 |はい |
 |RedHat 7.7 |RHEL |7-RAW-CI |7.7.2019081601 |preview |
@@ -58,7 +58,7 @@ cloud-init が動作していることを確認するには、NGINX をインス
 
 Bash プロンプトまたは Cloud Shell で、*cloud-init.txt* という名前のファイルを作成し、次の構成を貼り付けます。 たとえば、「`sensible-editor cloud-init.txt`」と入力し、ファイルを作成して使用可能なエディターの一覧を確認します。 cloud-init ファイル全体 (特に最初の行) が正しくコピーされたことを確認してください。
 
-```azurecli-interactive
+```bash
 #cloud-config
 package_upgrade: true
 packages:
@@ -270,8 +270,8 @@ Web ブラウザーを開き、アドレス バーに「*https:\/\/\<publicIpAdd
 ![セキュリティで保護された実行中の NGINX サイトの表示](./media/tutorial-automate-vm-deployment/secured-nginx.png)
 
 
-## <a name="next-steps"></a>次の手順
-このチュートリアルでは、VM の初回の起動時に cloud-init を使用してカスタマイズしました。 以下の方法について学習しました。
+## <a name="next-steps"></a>次のステップ
+このチュートリアルでは、VM の初回の起動時に cloud-init を使用してカスタマイズしました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * cloud-init 構成ファイルを作成する

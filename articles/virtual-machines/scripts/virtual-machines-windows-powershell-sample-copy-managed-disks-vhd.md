@@ -1,5 +1,5 @@
 ---
-title: 別の地域のストレージ アカウントに、マネージド ディスクの VHD をエクスポート/コピーする - PowerShell のサンプル
+title: 別の地域のストレージ アカウントに、マネージド ディスクの VHD をエクスポートまたはコピーする - PowerShell サンプル
 description: Azure PowerShell スクリプト サンプル - 同じまたは別の地域のストレージ アカウントに、マネージド ディスクの VHD をエクスポート/コピーする
 services: virtual-machines-windows
 documentationcenter: storage
@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 09/17/2018
 ms.author: ramankum
 ms.openlocfilehash: 9d088c443490d22a68570daf4ce035639861b90d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75368863"
 ---
 # <a name="exportcopy-the-vhd-of-a-managed-disk-to-a-storage-account-in-different-region-with-powershell"></a>別の地域のストレージ アカウントに、マネージド ディスクの VHD を PowerShell でエクスポート/コピーする

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Fluxx Labs の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Fluxx Labs の統合 | Microsoft Docs'
 description: Azure Active Directory と Fluxx Labs の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: e624520a9d1f39bc8115ac72e9df0398065928f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67102386"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-fluxx-labs"></a>チュートリアル:Azure Active Directory と Fluxx Labs の統合
+# <a name="tutorial-azure-active-directory-integration-with-fluxx-labs"></a>チュートリアル: Azure Active Directory と Fluxx Labs の統合
 
 このチュートリアルでは、Fluxx Labs と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Fluxx Labs と Azure AD の統合には、次の利点があります。
@@ -168,7 +168,7 @@ Fluxx Labs で Azure AD シングル サインオンを構成するには、次�
 
     h. **[Name identifier Format]\(名前識別子の形式\)** ボックスに、次の値を入力します。`urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`
 
-    i. **[Save]** をクリックします。
+    i. **[保存]** をクリックします。
 
     > [!NOTE]
     > 内容が保存されると、フィールドはセキュリティのために空白で表示されますが、値は構成内に保存されています。
@@ -245,7 +245,7 @@ Azure AD ユーザーが Fluxx Labs にサインインできるようにする�
 
     a. Fluxx Labs では、SSO ログインの一意識別子として電子メールを使用します。 **[SSO UID]** フィールドにユーザーの電子メール アドレスを入力します。これは、SSO でのログインとして使用される電子メールアドレスと一致する電子メール アドレスです。
 
-    b. **[Save]** をクリックします。
+    b. **[保存]** をクリックします。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

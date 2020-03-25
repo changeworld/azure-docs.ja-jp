@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Nimblex の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Nimblex の統合 | Microsoft Docs'
 description: Azure Active Directory と Nimblex の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: jeedes
 ms.openlocfilehash: cd7199e94a58b3f0c121a0fd9401bff94406ed84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67096095"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-nimblex"></a>チュートリアル:Azure Active Directory と Nimblex の統合
+# <a name="tutorial-azure-active-directory-integration-with-nimblex"></a>チュートリアル: Azure Active Directory と Nimblex の統合
 
 このチュートリアルでは、Nimblex と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Nimblex と Azure AD の統合には、次の利点があります。
@@ -156,7 +156,7 @@ Nimblex で Azure AD シングル サインオンを構成するには、次の�
 
     c. **[Identity Provider Sso Target Url]\(ID プロバイダーの SSO ターゲット URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
-    d. **[Save]** をクリックします。
+    d. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 

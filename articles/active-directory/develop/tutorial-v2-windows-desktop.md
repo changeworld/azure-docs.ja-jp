@@ -16,10 +16,10 @@ ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 422251da25ae0ef911eb723bb0342a84fe99559c
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79129924"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Windows デスクトップ アプリから Microsoft Graph API を呼び出す
@@ -96,7 +96,7 @@ Microsoft Graph などの API では、特定のリソースへのアクセス�
 1. アプリケーションの名前を入力し、 **[登録]** を選択します。
 1. 画面の指示に従ってダウンロードし、1 回クリックするだけで、新しいアプリケーションが自動的に構成されます。
 
-### <a name="option-2-advanced-mode"></a>オプション 2:詳細設定モード
+### <a name="option-2-advanced-mode"></a>オプション 2: 詳細モード
 
 アプリケーションを登録し、ソリューションにアプリケーション登録情報を追加するには、次の手順を実行します。
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。

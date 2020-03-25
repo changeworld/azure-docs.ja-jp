@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と RFPIO の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と RFPIO の統合 | Microsoft Docs'
 description: Azure Active Directory と RFPIO の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 63d7b6af8ff76c890b98c29ded0e8bdc637b45dd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67092842"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>チュートリアル:Azure Active Directory と RFPIO の統合
+# <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>チュートリアル: Azure Active Directory と RFPIO の統合
 
 このチュートリアルでは、RFPIO と Azure Active Directory (Azure AD) を統合する方法について説明します。
 RFPIO と Azure AD の統合には、次の利点があります。
@@ -166,7 +166,7 @@ RFPIO で Azure AD シングル サインオンを構成するには、次の手
     > [!NOTE]
     >ダウンロードした**フェデレーション メタデータ XML** の内容をコピーするには、**Notepad++** または適切な **XML エディター**を使用します。
 
-    b. **[Validate (検証)]** をクリックします。
+    b. **[検証]** をクリックします。
 
     c. **[検証]** をクリックした後、 **[SAML(Enabled)(SAML (有効))]** をフリップしてオンにします。
 

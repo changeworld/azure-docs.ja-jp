@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と SimpleNexus の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と SimpleNexus の統合 | Microsoft Docs'
 description: Azure Active Directory と SimpleNexus の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: d368b6cd809ccf4e428974bf7c82c01bc5e035b7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74233418"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-simplenexus"></a>チュートリアル:Azure Active Directory と SimpleNexus の統合
+# <a name="tutorial-azure-active-directory-integration-with-simplenexus"></a>チュートリアル: Azure Active Directory と SimpleNexus の統合
 
 このチュートリアルでは、SimpleNexus と Azure Active Directory (Azure AD) を統合する方法について説明します。
 SimpleNexus と Azure AD の統合には、次の利点があります。

@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 08/22/2018
 ms.custom: mvc
 ms.openlocfilehash: 906901ce4792e8b363a3a9b77c9bf6bb4b59aec5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226472"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222469"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Windows Server を Azure にバックアップする
 
@@ -39,7 +39,7 @@ Windows Server をバックアップするには、まず、保存するバッ�
 
 3. **[Recovery Services コンテナー]** メニューで、
 
-    * **[名前]** に「*myRecoveryServicesVault*」と入力します。
+    * *[名前]* に「**myRecoveryServicesVault**」と入力します。
     * 現在のサブスクリプション ID が **[サブスクリプション]** に表示されます。
     * **[リソース グループ]** で **[既存のものを使用]** を選択し、 *[myResourceGroup]* を選択します。 *[myResourceGroup]* が存在しない場合は、 **[新規作成]** を選択し、「*myResourceGroup*」と入力します。
     * **[場所]** ドロップダウン メニューから *[西ヨーロッパ]* を選択します。
@@ -133,7 +133,7 @@ Microsoft Azure Recovery Services エージェントを利用し、Azure への�
 4. **[閉じる]** をクリックしてウィザードを閉じます。 バックアップ プロセスが完了する前にウィザードを閉じても、ウィザードはバックグラウンドで引き続き実行されます。
 5. 初回バックアップが完了すると、 **[ジョブは完了しました]** 状態が MARS エージェント コンソールの **[ジョブ]** ウィンドウに表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure portal を使用して以下を行いました。
 

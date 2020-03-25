@@ -9,10 +9,10 @@ ms.date: 03/05/2020
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 28a7845a6e16d854f1fe397abc857f8ba8bf61ce
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78669418"
 ---
 > [!NOTE]

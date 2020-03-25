@@ -10,10 +10,10 @@ ms.topic: tutorial
 description: このチュートリアルでは、Azure Dev Spaces と Visual Studio を使用して、Azure Kubernetes Service の .NET Core アプリケーションでのチーム開発を行う方法を示します
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
 ms.openlocfilehash: b4520ce35807fb022fa39ae9b00347a27e192380
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78245048"
 ---
 # <a name="team-development-using-net-core-and-visual-studio-with-azure-dev-spaces"></a>Azure Dev Spaces での .NET Core と Visual Studio を使用したチーム開発
@@ -102,7 +102,7 @@ Visual Studio 内から、F5 キーまたは Ctrl + F5 キーを押してサー�
 
 ### <a name="update-code-for-mywebapi"></a>*mywebapi* のコードを更新する
 
-1. *mywebapi* プロジェクトで、`Controllers/ValuesController.cs` ファイル内の `string Get(int id)` メソッドのコードを次のように変更します。
+1. *mywebapi* プロジェクトで、`string Get(int id)` ファイル内の `Controllers/ValuesController.cs` メソッドのコードを次のように変更します。
  
     ```csharp
     [HttpGet("{id}")]
