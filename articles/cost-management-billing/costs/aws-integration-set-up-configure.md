@@ -1,20 +1,18 @@
 ---
 title: Azure Cost Management と AWS の統合セットアップをする
 description: この記事では、Azure Cost Management で AWS のコストと使用状況レポートの統合を設定して構成する方法を説明します。
-keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: matrive
-ms.custom: ''
-ms.openlocfilehash: 90d75383c1bd7c67b3feeb77fe2284d7b4e0cdf9
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c0f6f18abf7c05cf5ae6dcaa31a57974ecfca806
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199995"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79203085"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>AWS のコストと使用状況レポートの統合を設定して構成する
 
@@ -39,11 +37,11 @@ AWS の Billing and Cost Management コンソールの **[Cost & Usage Reports]\
 9. [Configure S3 Bucket] ダイアログ ボックスで、次のいずれかの操作を実行します。
     1. ドロップダウン リストから既存のバケットを選択して **[次へ]** を選択します。
     2. バケット名と、新しいバケットを作成するリージョンを入力して **[次へ]** を選択します。
-10. **[I have confirmed that this policy is correct]** を選択してから、 **[Save]** をクリックします。
-11. (省略可能) [Report path prefix]\(レポート パス プレフィックス\) では、レポートの名前の先頭に追加するレポート パス プレフィックスを入力します。
+10.    **[I have confirmed that this policy is correct]** を選択してから、 **[Save]** をクリックします。
+11.    (省略可能) [Report path prefix]\(レポート パス プレフィックス\) では、レポートの名前の先頭に追加するレポート パス プレフィックスを入力します。
 プレフィックスを指定しない場合、既定のプレフィックスはレポートに指定した名前になります。 日付範囲は `/report-name/date-range/` の形式です。
 12. **[時間単位]** では、 **[毎時間]** を選択します。
-13. **[Report versioning]** では、レポートの各バージョンで前のバージョンを上書きするか、新しいレポートを追加するかを選択します。
+13.    **[Report versioning]** では、レポートの各バージョンで前のバージョンを上書きするか、新しいレポートを追加するかを選択します。
 14. **[Enable data integration for]\(データ統合の有効化対象\)** は、選択の必要はありません。
 15. **[圧縮]** では、 **[GZIP]** を選択します。
 16. **[次へ]** を選択します。
@@ -124,8 +122,8 @@ AWS 組織へのアクセス許可を追加します。
             "Effect": "Allow",
             "Action": [
 "organizations:ListAccounts",
-            "ce:*",
-            "cur:DescribeReportDefinitions"
+             "ce:*",
+             "cur:DescribeReportDefinitions"
             ],
             "Resource": "*"
         },
