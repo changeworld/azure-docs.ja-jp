@@ -9,13 +9,13 @@ ms.date: 03/06/2020
 ms.author: mhopkins
 ms.reviewer: dineshm
 ms.openlocfilehash: 49078d2f374203a9fab4fe0f5e3881f6b1b22959
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79130333"
 ---
-# <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>チュートリアル:Azure Storage を使用してクラウドに画像データをアップロードする
+# <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>チュートリアル: Azure Storage を使用してクラウドに画像データをアップロードする
 
 このチュートリアルは、シリーズの第 1 部です。 このチュートリアルでは、Azure Blob Storage クライアント ライブラリを使用してストレージ アカウントに画像をアップロードする Web アプリのデプロイ方法を学習します。 終了すると、Azure Storage に画像を格納して表示する Web アプリが完成します。
 
@@ -101,7 +101,7 @@ BLOB ストレージ アカウント名とキーをメモしておきます。 �
 
 [az appservice plan create](/cli/azure/appservice/plan) コマンドで、App Service プランを作成します。
 
-次の例では、**Free** 価格レベルの `myAppServicePlan` という名前の App Service プランを作成します。
+次の例では、`myAppServicePlan`Free**価格レベルの** という名前の App Service プランを作成します。
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku Free
@@ -109,7 +109,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 ## <a name="create-a-web-app"></a>Web アプリを作成する
 
-Web アプリでは、GitHub サンプル リポジトリからデプロイされるサンプル アプリ コード用のホスト領域を提供します。 [az webapp create](/cli/azure/webapp) コマンドを使って、`myAppServicePlan`App Service プランに [Web アプリ](../../app-service/overview.md)を作成します。  
+Web アプリでは、GitHub サンプル リポジトリからデプロイされるサンプル アプリ コード用のホスト領域を提供します。 [az webapp create](../../app-service/overview.md) コマンドを使って、`myAppServicePlan`App Service プランに [Web アプリ](/cli/azure/webapp)を作成します。  
 
 次のコマンドで、`<web_app>` を一意の名前に置き換えます。 有効な文字は、`a-z`、`0-9`、および `-` です。 `<web_app>` が一意でない場合は、"*指定された名前 `<web_app>` の Web サイトは既に存在します*" というエラー メッセージが表示されます。 Web アプリの既定の URL は、`https://<web_app>.azurewebsites.net` です。  
 
@@ -182,7 +182,7 @@ Web アプリをテストするには、発行したアプリの URL に移動�
 
 ![.NET で写真をアップロードする](media/storage-upload-process-images/figure1.png)
 
-サンプル コードでは、*Storagehelper.cs* ファイル内の `UploadFileToStorage` タスクの [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) メソッドを使用して、ストレージ アカウント内の *images* コンテナーに画像をアップロードします。 次のコード サンプルに、`UploadFileToStorage` タスクが含まれています。
+サンプル コードでは、`UploadFileToStorage`Storagehelper.cs*ファイル内の* タスクの *UploadAsync* メソッドを使用して、ストレージ アカウント内の [images](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) コンテナーに画像をアップロードします。 次のコード サンプルに、`UploadFileToStorage` タスクが含まれています。
 
 ```csharp
 public static async Task<bool> UploadFileToStorage(Stream fileStream, string fileName,
@@ -212,7 +212,7 @@ public static async Task<bool> UploadFileToStorage(Stream fileStream, string fil
 
 上のタスクでは、次のクラスとメソッドが使用されています。
 
-| クラス    | Method   |
+| クラス    | 方法   |
 |----------|----------|
 | [Uri](/dotnet/api/system.uri) | [Uri コンストラクター](/dotnet/api/system.uri.-ctor) |
 | [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) | [StorageSharedKeyCredential (String, String) コンストラクター](/dotnet/api/azure.storage.storagesharedkeycredential.-ctor) |
@@ -300,7 +300,7 @@ router.post('/', uploadStrategy, async (req, res) => {
 
 ## <a name="verify-the-image-is-shown-in-the-storage-account"></a>ストレージ アカウント内に画像が表示されることを確認する
 
-[Azure portal](https://portal.azure.com) にサインインします。 左側のメニューから **[ストレージ アカウント]** を選択し、ストレージ アカウントの名前を選択します。 **[コンテナー]** を選択し、 **[images]\(イメージ\)** コンテナーを選択します。
+[Azure portal](https://portal.azure.com) にサインインする 左側のメニューから **[ストレージ アカウント]** を選択し、ストレージ アカウントの名前を選択します。 **[コンテナー]** を選択し、 **[images]\(イメージ\)** コンテナーを選択します。
 
 コンテナー内に画像が表示されることを確認します。
 
@@ -310,7 +310,7 @@ router.post('/', uploadStrategy, async (req, res) => {
 
 サムネイルの表示をテストするには、**thumbnails** コンテナーに画像をアップロードして、アプリが **thumbnails** コンテナーを読み取れることを確認します。
 
-[Azure portal](https://portal.azure.com) にサインインします。 左側のメニューから **[ストレージ アカウント]** を選択し、ストレージ アカウントの名前を選択します。 **[コンテナー]** を選択し、 **[サムネイル]** コンテナーを選択します。 **[アップロード]** を選択して **[BLOB のアップロード]** ウィンドウを開きます。
+[Azure portal](https://portal.azure.com) にサインインする 左側のメニューから **[ストレージ アカウント]** を選択し、ストレージ アカウントの名前を選択します。 **[コンテナー]** を選択し、 **[サムネイル]** コンテナーを選択します。 **[アップロード]** を選択して **[BLOB のアップロード]** ウィンドウを開きます。
 
 ファイル ピッカーでファイルを選択し、 **[アップロード]** を選択します。
 

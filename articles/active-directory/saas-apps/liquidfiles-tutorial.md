@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と LiquidFiles の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と LiquidFiles の統合 | Microsoft Docs'
 description: Azure Active Directory と LiquidFiles の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6514594d3119ebf8fab774c3e84c85e34bdfeaf4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67097926"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-liquidfiles"></a>チュートリアル:Azure Active Directory と LiquidFiles の統合
+# <a name="tutorial-azure-active-directory-integration-with-liquidfiles"></a>チュートリアル: Azure Active Directory と LiquidFiles の統合
 
 このチュートリアルでは、LiquidFiles と Azure Active Directory (Azure AD) を統合する方法について説明します。
 LiquidFiles と Azure AD の統合には、次の利点があります。
@@ -155,7 +155,7 @@ LiquidFiles で Azure AD シングル サインオンを構成するには、次
 
     f. [Authn Context]\(認証コンテキスト\) テキスト ボックスに、次の値を入力します。`urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport`
 
-    g. **[Save]** をクリックします。
+    g. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

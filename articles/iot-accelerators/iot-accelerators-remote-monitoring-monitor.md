@@ -10,13 +10,13 @@ ms.date: 03/08/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 400a71b11fde210b889d938041e88c5ebe73c1dc
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73890865"
 ---
-# <a name="tutorial-monitor-your-iot-devices"></a>チュートリアル:IoT デバイスの監視
+# <a name="tutorial-monitor-your-iot-devices"></a>チュートリアル: IoT デバイスの監視
 
 このチュートリアルでは、リモート監視ソリューション アクセラレータを使用して、接続されている IoT デバイスを監視します。 ソリューション ダッシュボードを使用して、テレメトリ、デバイス情報、アラート、および KPI を表示します。
 
@@ -95,7 +95,7 @@ truck-02 の場合、すべての警告は貨物温度が通常よりも高い�
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、リモート監視ソリューション アクセラレータの **[ダッシュボード]** ページを使用して、シミュレートされたトラックをフィルター処理および監視する方法について説明しました。 ソリューション アクセラレータを使用して接続されているデバイスの問題を検出する方法について学習するには、次のチュートリアルに進んでください。
 

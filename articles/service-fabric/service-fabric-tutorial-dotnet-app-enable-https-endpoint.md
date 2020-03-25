@@ -5,13 +5,13 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 077c2ab67efa51542baa3048eb678fa22b0bc2eb
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614079"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222729"
 ---
-# <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>チュートリアル:Kestrel を使用して ASP.NET Core Web API フロントエンド サービスに HTTPS エンドポイントを追加する
+# <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>チュートリアル: Kestrel を使用して ASP.NET Core Web API フロントエンド サービスに HTTPS エンドポイントを追加する
 
 このチュートリアルは、シリーズの第 3 部です。  Service Fabric 上で実行されている ASP.NET Core サービスで HTTPS を有効にする方法を学習します。 完了すると、ポート 443 でリッスンする、HTTPS が有効な ASP.NET Core Web フロントエンドを備えた投票アプリケーションを作成できます。 [.NET Service Fabric アプリケーションの構築](service-fabric-tutorial-deploy-app-to-party-cluster.md)に関するページの投票アプリケーションを手動で作成しない場合は、完成したアプリケーションの[ソース コードをダウンロード](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)できます。
 
@@ -46,7 +46,7 @@ ms.locfileid: "75614079"
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>証明書を取得する、または開発用の自己署名証明書を作成する
 
-運用アプリケーションの場合は、[証明機関 (CA)](https://wikipedia.org/wiki/Certificate_authority) から取得した証明書を使用してください。 開発およびテスト用には、自己署名証明書を作成して使用することができます。 Service Fabric SDK には、自己署名証明書を作成して `Cert:\LocalMachine\My` 証明書ストアにインポートするための *CertSetup.ps1* スクリプトが含まれています。 コマンド プロンプトを管理者として開き、次のコマンドを実行して、サブジェクト名が "CN=mytestcert" の証明書を作成します。
+運用アプリケーションの場合は、[証明機関 (CA)](https://wikipedia.org/wiki/Certificate_authority) から取得した証明書を使用してください。 開発およびテスト用には、自己署名証明書を作成して使用することができます。 Service Fabric SDK には、自己署名証明書を作成して *証明書ストアにインポートするための*CertSetup.ps1`Cert:\LocalMachine\My` スクリプトが含まれています。 コマンド プロンプトを管理者として開き、次のコマンドを実行して、サブジェクト名が "CN=mytestcert" の証明書を作成します。
 
 ```powershell
 PS C:\program files\microsoft sdks\service fabric\clustersetup\secure> .\CertSetup.ps1 -Install -CertSubjectName CN=mytestcert
@@ -110,7 +110,7 @@ using Microsoft.Extensions.Configuration;
 using System.Security.Cryptography.X509Certificates;
 ```
 
-新しい *EndpointHttps* エンドポイントを使用し、ポート 443 でリッスンするように、`ServiceInstanceListener` を更新します。 Kestrel サーバーを使用するよう Web ホストを構成する際は、すべてのネットワーク インターフェイスで IPv6 アドレスをリッスンするよう Kestrel を構成する必要があります: `opt.Listen(IPAddress.IPv6Any, port, listenOptions => {...}`。
+新しい `ServiceInstanceListener`EndpointHttps *エンドポイントを使用し、ポート 443 でリッスンするように、* を更新します。 Kestrel サーバーを使用するよう Web ホストを構成する際は、すべてのネットワーク インターフェイスで IPv6 アドレスをリッスンするよう Kestrel を構成する必要があります: `opt.Listen(IPAddress.IPv6Any, port, listenOptions => {...}`。
 
 ```csharp
 new ServiceInstanceListener(
@@ -176,7 +176,7 @@ private X509Certificate2 GetHttpsCertificateFromStore()
 
 ## <a name="give-network-service-access-to-the-certificates-private-key"></a>証明書の秘密キーへのアクセス権を "ネットワーク サービス" に与える
 
-前の手順で、証明書を開発用コンピューターの `Cert:\LocalMachine\My` ストアにインポートしました。  ここで、サービスを実行しているアカウント (既定では "ネットワーク サービス") に証明書の秘密キーへのアクセス権を明示的に与える必要があります。 この手順は (certlm.msc ツールを使用して) 手動で行うことができますが、サービス マニフェストの **SetupEntryPoint** に[スタートアップ スクリプトを構成](service-fabric-run-script-at-service-startup.md)して自動的に PowerShell スクリプトを実行することをお勧めします。
+前の手順で、証明書を開発用コンピューターの `Cert:\LocalMachine\My` ストアにインポートしました。  ここで、サービスを実行しているアカウント (既定では "ネットワーク サービス") に証明書の秘密キーへのアクセス権を明示的に与える必要があります。 この手順は (certlm.msc ツールを使用して) 手動で行うことができますが、サービス マニフェストの [SetupEntryPoint](service-fabric-run-script-at-service-startup.md) に**スタートアップ スクリプトを構成**して自動的に PowerShell スクリプトを実行することをお勧めします。
 
 ### <a name="configure-the-service-setup-entry-point"></a>サービス セットアップ エントリ ポイントを構成する
 

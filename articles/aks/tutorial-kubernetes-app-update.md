@@ -6,13 +6,13 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
 ms.openlocfilehash: d5457d790cd3c95bb23ec0c517097b443a2389ed
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77593378"
 ---
-# <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) でのアプリケーションの更新
+# <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションの更新
 
 Kubernetes でアプリケーションをデプロイした後で、新しいコンテナー イメージまたはイメージ バージョンを指定することによってアプリケーションを更新できます。 更新は、デプロイの全体が一度に更新されないように、段階的に行われます。 この段階的な更新プログラムを使用すると、アプリケーションの更新中も引き続きアプリケーションを実行することができます。 デプロイ エラーが発生した場合のロールバック メカニズムも提供されています。
 
@@ -34,7 +34,7 @@ Kubernetes でアプリケーションをデプロイした後で、新しいコ
 
 ## <a name="update-an-application"></a>アプリケーションを更新する
 
-サンプル アプリケーションに変更を加えたうえで、AKS クラスターにデプロイ済みのバージョンを更新してみましょう。 複製された *azure-voting-app-redis* ディレクトリにいることを確認します。 その場合、サンプル アプリケーションのソース コードは、*azure-vote* ディレクトリ内にあります。 `vi` などのエディターで *config_file.cfg* ファイルを開きます。
+サンプル アプリケーションに変更を加えたうえで、AKS クラスターにデプロイ済みのバージョンを更新してみましょう。 複製された *azure-voting-app-redis* ディレクトリにいることを確認します。 その場合、サンプル アプリケーションのソース コードは、*azure-vote* ディレクトリ内にあります。 *などのエディターで*config_file.cfg`vi` ファイルを開きます。
 
 ```console
 vi azure-vote/azure-vote/config_file.cfg
@@ -85,7 +85,7 @@ docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v2
 次に、[docker push][docker-push] を使用してご利用のレジストリにイメージをアップロードします。 `<acrLoginServer>` は、実際の ACR ログイン サーバー名に置き換えてください。
 
 > [!NOTE]
-> ACR レジストリにプッシュする際に問題が発生する場合は、まだログインしていることを確認してください。 「[Azure Container Registry を作成する](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry)」手順で作成した Azure Container Registry の名前を使用して [az acr login][az-acr-login] コマンドを実行します。 たとえば、「 `az acr login --name <azure container registry name>` 」のように入力します。
+> ACR レジストリにプッシュする際に問題が発生する場合は、まだログインしていることを確認してください。 「[Azure Container Registry を作成する][az-acr-login]」手順で作成した Azure Container Registry の名前を使用して [az acr login](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry) コマンドを実行します。 たとえば、「 `az acr login --name <azure container registry name>` 」のように入力します。
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v2

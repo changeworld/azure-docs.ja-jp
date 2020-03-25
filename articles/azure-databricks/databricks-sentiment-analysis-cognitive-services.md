@@ -10,13 +10,13 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 07/29/2019
 ms.openlocfilehash: 382dff156c088f367200f0dd46c3758193ade189
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75889222"
 ---
-# <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>チュートリアル:Azure Databricks を使用した、ストリーミング データに対する感情分析
+# <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>チュートリアル: Azure Databricks を使用したストリーミング データに対する感情分析
 
 このチュートリアルでは、Azure Databricks を使用して、データ ストリームに対して、ほぼリアルタイムで感情分析を実行する方法について説明します。 Azure Event Hubs を使用して、データ インジェスト システムを設定します。 Spark Event Hubs コネクタを使用して Event Hubs から Azure Databricks にメッセージを読み取ります。 そして、Cognitive Services API シリーズを使用して、ストリーム配信されたデータに対して感情分析を実行します。
 
@@ -216,7 +216,7 @@ Twitter アプリケーションについて取得した値を保存します。
 **SendTweetsToEventHub** ノートブックで次のコードを貼り付けて、プレースホルダーを、先ほど作成した Event Hubs 名前空間と Twitter アプリケーションの値に置き換えます。 このノートブックによって、キーワード "Azure" が含まれたツイートがリアルタイムで Event Hubs にストリーム配信されます。
 
 > [!NOTE]
-> Twitter API には、特定の要求の制限と[クォータ](https://developer.twitter.com/en/docs/basics/rate-limiting.html)があります。 Twitter API の標準のレート制限では不足の場合、この例では Twitter API を使用せずにテキスト コンテンツを生成できます。 そうするには、変数 **dataSource** を `twitter` ではなく `test` に設定し、リスト **testSource** に適切なテスト入力を設定します。
+> Twitter API には、特定の要求の制限と[クォータ](https://developer.twitter.com/en/docs/basics/rate-limiting.html)があります。 Twitter API の標準のレート制限では不足の場合、この例では Twitter API を使用せずにテキスト コンテンツを生成できます。 そうするには、変数 **dataSource** を `test` ではなく `twitter` に設定し、リスト **testSource** に適切なテスト入力を設定します。
 
 ```scala
     import scala.collection.JavaConverters._
