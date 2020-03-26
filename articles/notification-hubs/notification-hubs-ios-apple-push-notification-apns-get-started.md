@@ -19,10 +19,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 05/21/2019
 ms.openlocfilehash: 032ca8d4ecbcf1fc7f3c22cbe5a0ee934fc5e17c
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74407073"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する
@@ -122,7 +122,7 @@ ms.locfileid: "74407073"
 
         ![Unzip Azure SDK][10]
 
-6. **Constants.h** という名前の新しいヘッダー ファイルをプロジェクトに追加します。 そのためには、プロジェクト名を右クリックし、 **[New File]\(新しいファイル\)** を選択します。次に、 **[Header File]\(ヘッダー ファイル\)** を選択します。 このファイルは、通知ハブの定数を保持します。 次に、 **[次へ]** を選択します。 ファイルに **Constants.h** という名前を付けます。
+6. **Constants.h** という名前の新しいヘッダー ファイルをプロジェクトに追加します。 そのためには、プロジェクト名を右クリックし、 **[New File]\(新しいファイル\)** を選択します。次に、 **[Header File]\(ヘッダー ファイル\)** を選択します。 このファイルは、通知ハブの定数を保持します。 **[次へ]** を選択します。 ファイルに **Constants.h** という名前を付けます。
 
 7. 次のコードを Constants.h ファイルに追加します。
 
@@ -499,7 +499,7 @@ iOS でプッシュ通知をテストするには、物理 iOS デバイスに�
 
     ![iOS App Push Notification Receive Test][35]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この簡単な例では、すべての登録済み iOS デバイスにプッシュ通知をブロードキャストしました。 特定の iOS デバイスにプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。
 

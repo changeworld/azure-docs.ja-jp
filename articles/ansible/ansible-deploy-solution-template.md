@@ -5,10 +5,10 @@ keywords: Ansible, Azure, DevOps, ソリューション テンプレート, 仮�
 ms.topic: quickstart
 ms.date: 04/30/2019
 ms.openlocfilehash: cc3a6c1f0ef36b51b62e6aa58f317aee13149589
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77193788"
 ---
 # <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>クイック スタート:Azure 用の Ansible ソリューション テンプレートを CentOS にデプロイする
@@ -31,7 +31,7 @@ Azure 用の Ansible ソリューション テンプレートは、Azure と連�
 
 1. 利用規約、プライバシー ポリシー、Azure Marketplace の使用条件の詳細を示すウィンドウが表示されます。 **[続行]** をクリックします。
 
-1. Azure portal が表示され、ソリューション テンプレートの説明が記載された Ansible ページが表示されます。 **作成** を選択します。
+1. Azure portal が表示され、ソリューション テンプレートの説明が記載された Ansible ページが表示されます。 **［作成］** を選択します
 
 1. **[Ansible の作成]** ページに、いくつかのタブが表示されます。 **[基本]** タブで、必要な情報を入力します。
 

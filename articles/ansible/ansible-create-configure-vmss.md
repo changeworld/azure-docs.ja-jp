@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, bash, プレイブック, 仮想マシン, 仮
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: e1cc40459988fb9bc38e3dbbcde563cebb531e3d
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156541"
 ---
 # <a name="tutorial-configure-virtual-machine-scale-sets-in-azure-using-ansible"></a>チュートリアル:Ansible を使用して Azure 内に仮想マシン スケール セットを構成する
@@ -44,7 +44,7 @@ ms.locfileid: "74156541"
 
 サンプル プレイブックを取得するには、次の 2 つの方法があります。
 
-* [プレイブックをダウンロード](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-create.yml)して `vmss-create.yml` に保存する。
+* [プレイブックをダウンロード](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-create.yml)して、`vmss-create.yml` に保存する。
 * `vmss-create.yml` という名前の新規ファイルを作成して、次のコンテンツをコピーする。
 
 ```yml
@@ -189,7 +189,7 @@ localhost                  : ok=8    changed=7    unreachable=0    failed=0
 
 [構成されているスケール セット](#configure-a-scale-set)には、現在 2 つのインスタンスがあります。 次の手順を使用してその値を確認します。
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 
 1. 構成したスケール セットに移動します。
 
@@ -201,7 +201,7 @@ localhost                  : ok=8    changed=7    unreachable=0    failed=0
     az vmss show -n myScaleSet -g myResourceGroup --query '{"capacity":sku.capacity}' 
     ```
 
-    Cloud Shell で Azure CLI コマンドを実行した結果に、現在 3 つのインスタンスが存在することが示されています。 
+    Cloud Shell で Azure CLI コマンドを実行した結果には、現在 3 つのインスタンスが存在することが示されています。 
 
     ```bash
     {
@@ -215,7 +215,7 @@ localhost                  : ok=8    changed=7    unreachable=0    failed=0
 
 サンプル プレイブックを取得するには、次の 2 つの方法があります。
 
-* [プレイブックをダウンロード](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-scale-out.yml)して `vmss-scale-out.yml` に保存する。
+* [プレイブックをダウンロード](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-scale-out.yml)して、`vmss-scale-out.yml` に保存する。
 * `vmss-scale-out.yml` という名前の新規ファイルを作成して、次のコンテンツをコピーする。
 
 ```yml
@@ -289,7 +289,7 @@ localhost                  : ok=5    changed=1    unreachable=0    failed=0
 
 次のように、Azure portal を使用して作業の結果を確認します。
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 
 1. 構成したスケール セットに移動します。
 
@@ -309,7 +309,7 @@ localhost                  : ok=5    changed=1    unreachable=0    failed=0
     }
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"] 
 > [チュートリアル:Ansible を使用して Azure の仮想マシン スケール セットにアプリをデプロイする](./ansible-deploy-app-vmss.md)

@@ -8,10 +8,10 @@ ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.openlocfilehash: 89e9faeb3c67d0fd0c57adea3a3f69ec5438e3a0
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73044643"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>チュートリアル:Enterprise セキュリティ パッケージを使用して HDInsight に Apache HBase ポリシーを構成する
@@ -30,7 +30,7 @@ Enterprise セキュリティ パッケージ (ESP) の Apache HBase クラス�
 
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
 
-* [Azure Portal](https://portal.azure.com/) にサインインします。
+* [Azure portal](https://portal.azure.com/) にサインインします。
 
 * [Enterprise セキュリティ パッケージで HDInsight HBase クラスター](apache-domain-joined-configure-using-azure-adds.md)を作成します。
 
@@ -113,7 +113,7 @@ SSH を使用して HBase クラスターに接続し、[Apache HBase シェル]
    |[HBase Column]\(HBase の列\)   |  * |
    |[Select Group]\(グループの選択\)  | |
    |ユーザーの選択  | sales_user1 |
-   |アクセス許可  | 読み取り |
+   |アクセス許可  | Read |
 
    トピック名には、次のワイルドカードを含めることができます。
 
@@ -137,7 +137,7 @@ SSH を使用して HBase クラスターに接続し、[Apache HBase シェル]
    |[HBase Column]\(HBase の列\)   |  * |
    |[Select Group]\(グループの選択\)  | |
    |ユーザーの選択  | marketing_user1 |
-   |アクセス許可  | 読み取り |
+   |アクセス許可  | Read |
 
    ![marketing 用の Apache Ranger ポリシーを作成する](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
 
@@ -231,17 +231,17 @@ SSH を使用して HBase クラスターに接続し、[Apache HBase シェル]
 
    ![HDInsight Ranger UI ポリシーの監査](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このアプリケーションを引き続き使用しない場合は、次の手順で作成した HBase クラスターを削除します。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. 上部の**検索**ボックスに「**HDInsight**」と入力します。 
 1. **[サービス]** の下の **[HDInsight クラスター]** を選択します。
 1. 表示される HDInsight クラスターの一覧で、このチュートリアル用に作成したクラスターの横にある **[...]** をクリックします。 
 1. **[削除]** をクリックします。 **[はい]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Apache HBase の使用](../hbase/apache-hbase-tutorial-get-started-linux.md)

@@ -5,10 +5,10 @@ keywords: Azure DevOps Terraform Cloud Shell
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.openlocfilehash: 3a9db1143ba07b549a271d53d610e0a4853467c6
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78945329"
 ---
 # <a name="tutorial-configure-azure-cloud-shell-for-terraform"></a>チュートリアル:Terraform 用に Azure Cloud Shell を構成する

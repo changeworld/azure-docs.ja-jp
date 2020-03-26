@@ -12,10 +12,10 @@ ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
 ms.openlocfilehash: 9dcb185ab8375d46c75a12e6adaeeae2358c13ac
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77022088"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>チュートリアル:Azure IoT Central からデータをエクスポートし、Power BI で分析情報を視覚化する
@@ -65,7 +65,7 @@ ms.locfileid: "77022088"
     * IoT Central アプリケーションの作成に使用したものと同じ **[サブスクリプション]** を選択します。
     * **retail-store-analysis** リソース グループを選択します。
     * IoT Central アプリケーションに使用したものと同じ場所を選択します。
-    * **作成** を選択します。 システムによってリソースが完全にプロビジョニングされるまで、数分間待たなければならない場合があります。
+    * **［作成］** を選択します システムによってリソースが完全にプロビジョニングされるまで、数分間待たなければならない場合があります。
 1. ポータルで、**retail-store-analysis** リソース グループに移動します。 デプロイが完了するまで待ちます。 場合によっては、 **[最新の情報に更新]** を選択してデプロイの状態を更新する必要があります。 また、 **[通知]** で、イベント ハブ名前空間の作成の状態を確認することもできます。
 1. **retail-store-analysis** リソース グループで、 **[Event Hubs 名前空間]** を選択します。 ポータルで **Event Hubs 名前空間**のホーム ページが表示されます。
 
@@ -168,7 +168,7 @@ Power BI ではストリーミング データにフィルターを適用でき�
     * IoT Central アプリケーションの作成に使用したものと同じ **[サブスクリプション]** を選択します。
     * **retail-store-analysis** リソース グループを選択します。
     * IoT Central アプリケーションに使用したものと同じ場所を選択します。
-    * **作成** を選択します。 システムによってリソースが完全にプロビジョニングされるまで、数分間待たなければならない場合があります。
+    * **［作成］** を選択します システムによってリソースが完全にプロビジョニングされるまで、数分間待たなければならない場合があります。
 1. Azure portal で新しいロジック アプリに移動します。
 1. **[Logic Apps デザイナー]** ページで、下にスクロールして **[空のロジック アプリ]** を選択します。
 1. **[コネクタとトリガーを検索する]** に、「_Event Hubs_」と入力します。

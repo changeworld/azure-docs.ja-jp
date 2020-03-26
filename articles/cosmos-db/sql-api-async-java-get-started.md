@@ -10,10 +10,10 @@ ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Java application with the Async Java SDK to access and manage Azure Cosmos DB resources so that customers can utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
 ms.openlocfilehash: 8704e399156b9cfc6b04ff47af49b956b597a539
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75444886"
 ---
 # <a name="tutorial-build-a-java-app-with-the-async-java-sdk-to-manage-data-stored-in-a-sql-api-account"></a>チュートリアル:Async Java SDK を使って Java アプリを構築し SQL API アカウントに格納されているデータを管理する
@@ -42,7 +42,7 @@ ms.locfileid: "75444886"
 
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 お持ちでない場合は、 [無料アカウント](https://azure.microsoft.com/free/)にサインアップしてください。 
 
-* [Git](https://git-scm.com/downloads)。
+* [Git](https://git-scm.com/downloads).
 
 * [Java Development Kit (JDK) 8 以降](https://aka.ms/azure-jdks)。
 
@@ -54,7 +54,7 @@ ms.locfileid: "75444886"
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a id="GitClone"></a>GitHub リポジトリを複製する
+## <a name="clone-the-github-repository"></a><a id="GitClone"></a>GitHub リポジトリを複製する
 
 [Azure Cosmos DB と Java の概要](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started)に関する GitHub リポジトリを複製します。 たとえば、ローカル ディレクトリで次のコマンドを実行し、サンプル プロジェクトをローカルで取得します。
 
@@ -75,7 +75,7 @@ cd azure-cosmosdb-get-started
 </dependency>
 ```
 
-## <a id="Connect"></a>Azure Cosmos アカウントに接続する
+## <a name="connect-to-an-azure-cosmos-account"></a><a id="Connect"></a>Azure Cosmos アカウントに接続する
 
 次に、[Azure portal](https://portal.azure.com) に戻り、エンドポイントとプライマリ マスター キーを取得します。 Azure Cosmos DB のエンドポイントとプライマリ キーは、アプリケーションが接続先を認識し、Azure Cosmos DB がアプリケーションの接続を信頼するために必要です。 `AccountSettings.java` ファイルは、プライマリ キーと URI の値を保持します。 
 
@@ -112,7 +112,7 @@ client = new AsyncDocumentClient.Builder()
          .build();
 ```
 
-## <a id="CreateDatabase"></a>データベースを作成する
+## <a name="create-a-database"></a><a id="CreateDatabase"></a>データベースを作成する
 
 DocumentClient クラスの `createDatabaseIfNotExists()` メソッドを使用して、ご自分の Azure Cosmos データベースを作成します。 データベースは、コレクションに分割された JSON ドキュメント ストレージの論理上のコンテナーです。
 
@@ -156,7 +156,7 @@ private void createDatabaseIfNotExists() throws Exception
 }
 ```
 
-## <a id="CreateColl"></a>コレクションを作成する
+## <a name="create-a-collection"></a><a id="CreateColl"></a>コレクションを作成する
 
 DocumentClient クラスの `createDocumentCollectionIfNotExists()` メソッドを使用して、コレクションを作成することができます。 コレクションには、JSON ドキュメントのほか、関連する JavaScript アプリケーション ロジックが格納されます。
 
@@ -200,7 +200,7 @@ private void createDocumentCollectionIfNotExists() throws Exception
     }
 ```
 
-## <a id="CreateDoc"></a>JSON ドキュメントを作成する
+## <a name="create-json-documents"></a><a id="CreateDoc"></a>JSON ドキュメントを作成する
 
 DocumentClient クラスの createDocument メソッドを使用して、ドキュメントを作成します。 ドキュメントは、ユーザー定義の (ユーザーが自由に定義できる) JSON コンテンツです。 ここで 1 つ以上のドキュメントを挿入できます。 "src/main/java/com/microsoft/azure/cosmosdb/sample/Families.java" ファイルでは、ファミリ JSON ドキュメントが定義されています。 
 
@@ -220,7 +220,7 @@ public static Family getJohnsonFamilyDocument() {
     }
 ```
 
-## <a id="Query"></a>Azure Cosmos DB リソースにクエリを実行する
+## <a name="query-azure-cosmos-db-resources"></a><a id="Query"></a>Azure Cosmos DB リソースにクエリを実行する
 
 Azure Cosmos DB では、各コレクションに格納された JSON ドキュメントに対する豊富なクエリがサポートされています。 次のサンプル コードでは、`queryDocuments` メソッドが含まれている SQL 構文を使用して Azure Cosmos DB のドキュメントにクエリを実行する方法を示します。
 
@@ -254,7 +254,7 @@ private void executeSimpleQueryAsyncAndRegisterListenerForResult(CountDownLatch 
 }
 ```
 
-## <a id="Run"></a>Java コンソール アプリケーションを実行する
+## <a name="run-your-java-console-application"></a><a id="Run"></a>Java コンソール アプリケーションを実行する
 
 コンソールからアプリケーションを実行するには、プロジェクト フォルダーに移動し、Maven を使用してコンパイルします。
 

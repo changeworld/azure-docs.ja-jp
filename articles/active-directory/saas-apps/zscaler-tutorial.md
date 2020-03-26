@@ -17,10 +17,10 @@ ms.date: 08/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dcf0341e03a5d95abbe8b1a8ce69379fef8251b7
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68989059"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Zscaler の統合
@@ -29,7 +29,7 @@ ms.locfileid: "68989059"
 
 * Zscaler にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントで Zscaler に自動的にサインインするように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -94,7 +94,7 @@ Zscaler に対する Azure AD SSO を構成してテストするには、次の�
 
 1. その他に、Zscaler アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | Name | ソース属性 |
+    | 名前 | ソース属性 |
     | ---------| ------------ |
     | memberOf     | user.assignedroles |
 
@@ -108,7 +108,7 @@ Zscaler に対する Azure AD SSO を構成してテストするには、次の�
 
     e. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
 
-    f. **[Save]** をクリックします。
+    f. **[保存]** をクリックします。
 
     > [!NOTE]
     > Azure AD で役割を構成する方法については、[ここ](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)をクリックしてください
@@ -171,7 +171,7 @@ Zscaler に対する Azure AD SSO を構成してテストするには、次の�
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
-1. ブラウザーに拡張機能を追加した後、 **[Set up Zscaler]\(Zscaler のセットアップ\)** をクリックすると、Zscaler アプリケーションに移動します。 そこから、管理者資格情報を提供して Zscaler にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 から 6 が自動化されます。
+1. ブラウザーに拡張機能を追加した後、 **[Set up Zscaler]\(Zscaler のセットアップ\)** をクリックすると、Zscaler アプリケーションに移動します。 そこから、管理者資格情報を提供して Zscaler にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 ～ 6 が自動化されます。
 
     ![SSO の設定](common/setup-sso.png)
 
@@ -203,7 +203,7 @@ Zscaler に対する Azure AD SSO を構成してテストするには、次の�
 
     g. department 属性に SAML 自動プロビジョニングを有効にするには、 **[Department Name Attribute]\(部署名属性\)** テキスト ボックスに **department** の値を入力します。
 
-    h. **[Save]** をクリックします。
+    h. **[保存]** をクリックします。
 
 1. **[ユーザー認証の構成]** ダイアログ ページで、次の手順に従います。
 
@@ -225,7 +225,7 @@ Zscaler に対する Azure AD SSO を構成してテストするには、次の�
 
 1. **[接続]** タブをクリックします。
   
-    ![接続](./media/zscaler-tutorial/ic769493.png "Connections")
+    ![接続](./media/zscaler-tutorial/ic769493.png "接続")
 
 1. **[LAN の設定]** をクリックして **[LAN の設定]** ダイアログを開きます。
 

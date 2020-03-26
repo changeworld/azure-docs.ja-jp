@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 22a8561d69dd0eeb22f9fe025f5b792422db2c17
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77208167"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>チュートリアル:Azure Notebooks を使用して電気自動車のルートを案内する (Python)
@@ -62,7 +62,7 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
  
     ![[新しいプロジェクトの作成] ウィンドウ](./media/tutorial-ev-routing/create-project-window.png)
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 1. プロジェクトが作成されたら、[Azure Maps の Jupyter ノートブック リポジトリ](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)からこの [Jupyter ノートブック ドキュメント ファイル](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb)をダウンロードします。
 

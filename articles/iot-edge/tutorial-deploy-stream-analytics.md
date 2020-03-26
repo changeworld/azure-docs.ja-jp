@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: d8c3bde0f32c1df6c98f6a71f6ab830c21256903
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76906291"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>チュートリアル:Azure Stream Analytics を IoT Edge モジュールとしてデプロイする
@@ -68,8 +68,8 @@ Azure Stream Analytics ジョブを作成して IoT Edge デバイスで実行�
    | ----- | ----- |
    | サブスクリプション | IoT ハブと同じサブスクリプションを選択します。 |
    | Resource group | IoT Edge のクイックスタートおよびチュートリアルのすべてのテスト リソースに、同じリソース グループを使用することをお勧めします。 たとえば、**IoTEdgeResources** を使用します。 |
-   | Name | ストレージ アカウント用に一意の名前を指定します。 |
-   | Location | 近くの場所を選択します。 |
+   | 名前 | ストレージ アカウント用に一意の名前を指定します。 |
+   | 場所 | 近くの場所を選択します。 |
 
 1. 他のフィールドは既定値のままにして、 **[確認と作成]** を選択します。
 
@@ -86,10 +86,10 @@ Azure Stream Analytics ジョブを作成して IoT Edge デバイスで実行�
    | ジョブ名 | ジョブの名前を指定します。 たとえば、「**IoTEdgeJob**」と指定します。 |
    | サブスクリプション | IoT ハブと同じサブスクリプションを選択します。 |
    | Resource group | IoT Edge のクイック スタートおよびチュートリアルで作成するすべてのテスト リソースに、同じリソース グループを使用することをお勧めします。 たとえば、**IoTEdgeResources** を使用します。 |
-   | Location | 近くの場所を選択します。 |
+   | 場所 | 近くの場所を選択します。 |
    | ホスティング環境 | **[Edge]** を選択します。 |
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 ### <a name="configure-your-job"></a>ジョブを構成する
 
@@ -193,7 +193,7 @@ IoT Edge デバイスに Azure Stream Analytics ジョブをデプロイする�
 
 1. **[ルート]** タブで、モジュールと IoT Hub の間でメッセージが渡される方法を定義します。 メッセージは、名前と値のペアを使用して作成されます。 既定の `route` および `upstream` の名前と値を、次の表に示すペア (次の名前と値のペア) に置き換えます。また、 _{moduleName}_ のインスタンスを実際の Azure Stream Analytics モジュールの名前に置き換えます。
 
-    | Name | Value |
+    | 名前 | Value |
     | --- | --- |
     | `telemetryToCloud` | `FROM /messages/modules/SimulatedTemperatureSensor/* INTO $upstream` |
     | `alertsToCloud` | `FROM /messages/modules/{moduleName}/* INTO $upstream` |

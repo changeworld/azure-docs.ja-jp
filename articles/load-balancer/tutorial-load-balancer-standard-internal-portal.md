@@ -16,10 +16,10 @@ ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: seodec18
 ms.openlocfilehash: 918a7700df6b5be3ebca7949875127e42f8d3a91
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75780697"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-standard-load-balancer-in-the-azure-portal"></a>チュートリアル:Azure portal の Standard ロードバランサーを使用して内部トラフィックの負荷を分散する
@@ -46,7 +46,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    - **ResourceGroup**: **[新規作成]** を選択してから「**MyResourceGroupLB**」と入力し、 **[OK]** を選択します。 
    - **[サブネット]**  >  **[名前]** : 「**MyBackendSubnet**」と入力します。
    
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
    ![仮想ネットワークの作成](./media/tutorial-load-balancer-basic-internal-portal/2-load-balancer-virtual-network.png)
 
@@ -92,13 +92,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    
 2. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[確認と作成]** を選択します。
 
-    | 設定                 | 値                                              |
+    | 設定                 | Value                                              |
     | ---                     | ---                                                |
     | サブスクリプション               | サブスクリプションを選択します。    |    
     | Resource group         | **[新規作成]** を選択して、テキスト ボックスに「*MyResourceGroupLB*」と入力します。|
-    | Name                   | *myLoadBalancer*                                   |
+    | 名前                   | *myLoadBalancer*                                   |
     | リージョン         | **[米国東部 2]** を選択します。                                        |
-    | 種類          | **[内部]** を選択します。                                        |
+    | Type          | **[内部]** を選択します。                                        |
     | SKU           | **[Standard]** を選択します。                          |
     | 仮想ネットワーク           | *[MyVNet]* を選択します。                          |    
     | IP アドレスの割り当て              | **[静的]** を選択します。   |

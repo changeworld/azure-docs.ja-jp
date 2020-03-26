@@ -2,25 +2,19 @@
 title: Azure PowerShell のサンプル スクリプト - Blob コンテナーの合計課金サイズを計算する | Microsoft Docs
 description: 課金の目的で Azure Blob ストレージ内のコンテナーの合計サイズを計算します。
 services: storage
-documentationcenter: na
 author: fhryo-msft
-manager: cbrooks
-editor: tysonn
-ms.assetid: ''
-ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
+ms.subservice: blobs
 ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
-ms.openlocfilehash: 02b4cfcc6d88430701f653665269532a4eb7092f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 12b32256c91dfcf93ca55eeb348cc78613ba860e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799254"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067103"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Blob コンテナーの合計課金サイズを計算する
 
@@ -85,7 +79,7 @@ For-Each Signed Identifier[512 bytes]
 
 * BLOB 毎に 124 のバイトのオーバーヘッドがありますが、これには次のものが含まれます。
     - 最終変更時刻
-    - Size
+    - サイズ
     - Cache-Control
     - Content-Type
     - Content-Language
@@ -120,7 +114,7 @@ For-Each Signed Identifier[512 bytes]
 
 [!code-powershell[main](../../../powershell_scripts/storage/calculate-container-size/calculate-container-size-ex.ps1 "Calculate container size")]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - コンテナーのサイズの見積もりを提供する簡単なスクリプトについては、「[Blob ストレージ コンテナーの合計サイズを計算する](../scripts/storage-blobs-container-calculate-size-powershell.md)」を参照してください。
 

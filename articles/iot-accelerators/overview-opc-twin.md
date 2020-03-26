@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 91448f55f0ebb88ba6c685b960ece9d91cb98e25
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73826221"
 ---
 # <a name="what-is-opc-twin"></a>OPC Twin とは
@@ -37,7 +37,7 @@ OPC Twin には、Azure Active Directory (AAD) ベースの認証と監査がエ
 ### <a name="simple-developer-experience"></a>シンプルな開発者エクスペリエンス 
 OPC Twin は、REST API を介して、任意のプログラミング言語で記述されたアプリケーションと共に使用できます。 開発者が OPC UA クライアントをソリューションに統合するうえで、OPC UA SDK の知識は必要ありません。 OPC Twin はステートレスのサーバーレス アーキテクチャにシームレスに統合できます。 たとえば、アラームおよびイベント ダッシュボードのアプリケーションを開発するフル スタックの Web 開発者は、OPC Twin を使用して、イベントに反応するロジックを JavaScript または TypeScript で記述できます。C や C#、OPC UA のフル スタック実装の知識は必要ありません。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは OPC Twin とその用途について説明しました。次に以下の記事を読むことをお勧めします。
 

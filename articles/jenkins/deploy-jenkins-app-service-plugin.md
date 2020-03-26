@@ -5,10 +5,10 @@ keywords: Jenkins, Azure, 開発, App Service
 ms.topic: tutorial
 ms.date: 07/31/2018
 ms.openlocfilehash: fcaf45003e865cc5aac3f6bd4580479a27d38b50
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78251455"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Jenkins プラグインを使用した Azure App Service へのデプロイ 
@@ -46,7 +46,7 @@ sudo apt-get install -y maven
 
 Web App for Containers にデプロイする場合は、ビルドに使用する Jenkins マスターまたは VM エージェントに Docker をインストールします。 手順については、[Ubuntu への Docker のインストール](https://docs.docker.com/engine/installation/linux/ubuntu/)に関するページを参照してください。
 
-## <a name="service-principal"></a>Jenkins 資格情報に Azure サービス プリンシパルを追加する
+## <a name="add-an-azure-service-principal-to-the-jenkins-credentials"></a><a name="service-principal"></a>Jenkins 資格情報に Azure サービス プリンシパルを追加する
 
 Azure にデプロイするには、Azure サービス プリンシパルが必要です。 
 

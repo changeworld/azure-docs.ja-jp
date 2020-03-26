@@ -4,10 +4,10 @@ description: Terraform を使用して Azure 仮想マシン スケール セッ
 ms.topic: tutorial
 ms.date: 11/07/2019
 ms.openlocfilehash: 4e445d5e6ae4b7fc4528c6d61ee2bc86870827b1
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77472232"
 ---
 # <a name="tutorial-create-an-azure-virtual-machine-scale-set-using-terraform"></a>チュートリアル:Terraform を使用して Azure 仮想マシン スケール セットを作成する

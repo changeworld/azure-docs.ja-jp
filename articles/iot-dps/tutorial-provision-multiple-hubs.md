@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: e1a66da52eea6d5da711fa6def58eba65d0960ed
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74976742"
 ---
 # <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>チュートリアル:負荷分散された IoT ハブへのデバイスのプロビジョニング
@@ -47,15 +47,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 割り当てポリシーは、デバイスを IoT ハブに割り当てる方法を決定する Device Provisioning Service 設定です。 次の 3 つの割り当てポリシーがサポートされています。 
 
-1. **[最短待機時間]** : デバイスに対する待ち時間が最も短いハブに基づいて、デバイスを IoT ハブにプロビジョニングします。
-2. **[加重が均等に分布]** (既定): リンクされた各 IoT Hub にデバイスが同程度にプロビジョニングされます。 これは、既定の設定です。 デバイスを 1 つの IoT ハブにのみプロビジョニングする場合は、この設定のままでかまいません。 
+1. **[最低待ち時間]** :デバイスに対する待ち時間が最も短いハブに基づいて、デバイスを IoT ハブにプロビジョニングします。
+2. **[加重が均等に分布]** (既定): リンクされた各 IoT Hub にデバイスが同程度にプロビジョニングされます。 これが既定の設定です。 デバイスを 1 つの IoT ハブにのみプロビジョニングする場合は、この設定のままでかまいません。 
 3. **[登録リストを経由する静的構成]** : 登録リストの目的の IoT ハブの仕様が、Device Provisioning Service レベルの割り当てポリシーよりも優先されます。
 
 次の手順に従って割り当てポリシーを設定します。
 
 1. 割り当てポリシーを設定するには、Device Provisioning Service ページで **[Manage allocation policy]\(割り当てポリシーの管理\)** をクリックします。
 2. 割り当てポリシーを **[Evenly weighted distribution]\(均等に重み付けされた分散\)** に設定します。
-3. **[Save]** をクリックします。
+3. **[保存]** をクリックします。
 
 ## <a name="link-the-new-iot-hub-to-the-device-provisioning-service"></a>新しい IoT ハブを Device Provisioning Service にリンクする
 
@@ -65,9 +65,9 @@ Device Provisioning Service と IoT ハブをリンクして、Provisioning Serv
 2. Device Provisioning Service ページで、 **[Linked IoT hubs]\(リンクされた IoT ハブ\)** をクリックします。
 3. **[追加]** をクリックします。
 4. **[Add link to IoT hub]\(IoT ハブへのリンクを追加\)** ページで、ラジオ ボタンを使用して、リンク対象の IoT ハブが現在のサブスクリプションと別のサブスクリプションのどちらにあるかを指定します。 次に、 **[IoT ハブ]** ボックスから IoT ハブの名前を選択します。
-5. **[Save]** をクリックします。
+5. **[保存]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

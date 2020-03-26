@@ -8,12 +8,12 @@ ms.date: 2/5/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ab3ed567d34c6284959f7875bb121ced4770d65e
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 3a71aa1a713891c773297a3789a9a9f4b36ab258
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133346"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80236046"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>チュートリアル:IoT Edge デバイスの構成
 
@@ -196,7 +196,7 @@ Azure Marketplace にある [[Azure IoT Edge on Ubuntu]](https://azuremarketplac
 
 1. Linux 仮想マシン上の SSH セッションから、Azure CLI を使用して Azure にサインインします。
 
-    ```bash
+    ```azurecli
     az login
     ```
 
@@ -206,7 +206,7 @@ Azure Marketplace にある [[Azure IoT Edge on Ubuntu]](https://azuremarketplac
 
 1. Azure CLI コマンドで使用する Azure サブスクリプションを設定します。
 
-    ```bash
+    ```azurecli
     az account set --subscription <subscriptionId>
     ```
 
@@ -218,7 +218,7 @@ Azure Marketplace にある [[Azure IoT Edge on Ubuntu]](https://azuremarketplac
 
 1. キー コンテナーに保存した証明書をダウンロードします: new-edge-device-full-chain.cert.pem、new-edge-device.key.pem、および azure-iot-test-only.root.ca.cert.pem
 
-    ```bash
+    ```azurecli
     key_vault_name="<key vault name>"
     sudo az keyvault secret download --vault-name $key_vault_name --name new-edge-device-full-chain-cert-pem -f /edgeMlCertificates/new-edge-device-full-chain.cert.pem
     sudo az keyvault secret download --vault-name $key_vault_name --name new-edge-device-key-pem -f /edgeMlCertificates/new-edge-device.key.pem

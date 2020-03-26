@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 51c14fd7f427c29c47521a7355309e62ab2254ca
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78298617"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory における属性マッピングの式の書き方
@@ -529,7 +529,7 @@ RemoveDuplicates 関数は複数値の文字列を受け取り、各値が一意
 
 ---
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
-**関数:**<br> SingleAppRoleAssignment([appRoleAssignments])
+**関数:**<br> SingleAppRoleAssignment(appRoleAssignments)
 
 **説明:**<br> 指定したアプリケーションで 1 人のユーザーに割り当てられた appRoleAssignments の全一覧から、単一の appRoleAssignment を返します。 appRoleAssignments オブジェクトを単一のロール名文字列に変換するために、この関数が必要になります。 ベスト プラクティスは、確実に 1 つの appRoleAssignment だけが一度に 1 人のユーザーに割り当てられるようにすることです。複数のロールが割り当てられると、返されるロール文字列を予測できません。 
 
@@ -537,7 +537,7 @@ RemoveDuplicates 関数は複数値の文字列を受け取り、各値が一意
 
   | 名前 | 必須/繰り返し | Type | Notes |
   |--- | --- | --- | --- |
-  | **appRoleAssignments** |必須 |String |**appRoleAssignments** オブジェクトappRoleAssignments |
+  | **appRoleAssignments** |必須 |String |**appRoleAssignments** オブジェクト |
 
 ---
 ### <a name="split"></a>Split

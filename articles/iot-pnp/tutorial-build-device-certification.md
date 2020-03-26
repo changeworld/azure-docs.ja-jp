@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: ce7d3ee8a0d05d837bc0049cba688cffe14d8a8c
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e97aa07d2a43a03805fd881c674157ee676c37b4
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721644"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239903"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>認定の準備が整った IoT プラグ アンド プレイ プレビュー デバイスの構築
 
@@ -91,7 +91,7 @@ Azure CLI を使用して**デバイス情報**インターフェイスを表示
 
 1. 次の Azure CLI コマンドを使用して、デバイス情報インターフェイス ID を含むインターフェイスを表示します。
 
-    ```cmd/sh
+    ```azurecli
     az iot pnp interface show --interface urn:azureiot:DeviceManagement:DeviceInformation:1
     ```
 

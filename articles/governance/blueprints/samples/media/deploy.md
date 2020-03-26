@@ -4,10 +4,10 @@ description: ブループリント アーティファクト パラメーター�
 ms.date: 02/25/2020
 ms.topic: sample
 ms.openlocfilehash: f4eb93d3e03b9a0e59a7d53304c19c371d42ea6e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78201729"
 ---
 # <a name="deploy-the-media-blueprint-sample"></a>メディア ブループリント サンプルをデプロイする

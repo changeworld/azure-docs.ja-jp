@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/20/2019
 ms.openlocfilehash: 7d7f573e5b18e6e0e63d3275aecefe408a9143fb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75456606"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>チュートリアル:Azure Logic Apps を使用して承認ベースの自動化されたワークフローを作成する
@@ -55,12 +55,12 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![ロジック アプリに関する情報を入力する](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app-settings.png)
 
-   | プロパティ | 値 | 説明 |
+   | プロパティ | Value | 説明 |
    |----------|-------|-------------|
-   | **Name** | LA-MailingList | ロジック アプリの名前。文字、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`(`、`)`)、およびピリオド (`.`) のみを含めることができます。 この例では、"LA-MailingList" を使用します。 |
+   | **名前** | LA-MailingList | ロジック アプリの名前。文字、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`(`、`)`)、およびピリオド (`.`) のみを含めることができます。 この例では、"LA-MailingList" を使用します。 |
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | お使いの Azure サブスクリプション名 |
    | **リソース グループ** | LA-MailingList-RG | [Azure リソース グループ](../azure-resource-manager/management/overview.md)の名前。関連するリソースの整理に使用します。 この例では、"LA-MailingList-RG" を使用します。 |
-   | **Location** | 米国西部 | ロジック アプリの情報の保存先となるリージョン。 この例では "米国西部" を使用します。 |
+   | **場所** | 米国西部 | ロジック アプリの情報の保存先となるリージョン。 この例では "米国西部" を使用します。 |
    | **Log Analytics** | Off | 診断ログの場合は、この設定を**オフ**のままにしてください。 |
    ||||
 
@@ -95,7 +95,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
       ![メールをチェックするフォルダー、間隔、頻度を指定](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-set-up-email.png)
 
-      | プロパティ | 値 | 説明 |
+      | プロパティ | Value | 説明 |
       |----------|-------|-------------|
       | **フォルダー** | `Inbox` | 監視するメール フォルダー |
       | **間隔** | `1` | チェックの間隔 (単位数) |
@@ -136,10 +136,10 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![[承認のメールを送信します] のプロパティ](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-approval-email-settings.png)
 
-   | プロパティ | 値 | 説明 |
+   | プロパティ | Value | 説明 |
    |----------|-------|-------------|
    | **To** | <*your-email-address*> | 承認者のメール アドレス。 テスト目的のため、ご自身のアドレスを使ってください。 この例では、架空の "sophia.owen@fabrikam.com" メール アドレスを使用します。 |
-   | **[件名]** | `Approve member request for test-members-ML` | わかりやすいメールの件名 |
+   | **件名** | `Approve member request for test-members-ML` | わかりやすいメールの件名 |
    | **ユーザー オプション** | `Approve, Reject` | 承認者が選択できる回答の選択肢。 既定では、承認者が回答として [Approve] または [Reject] を選択できます。 |
    ||||
 
@@ -203,7 +203,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![[メンバーをリストに追加する] の情報を入力](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member-settings.png)
 
-   | プロパティ | 必須 | 値 | 説明 |
+   | プロパティ | 必須 | Value | 説明 |
    |----------|----------|-------|-------------|
    | **リスト ID** | はい | `test-members-ML` | ご自分の MailChimp メーリング リストの名前。 この例では、"test-members-ML" を使用します。 |
    | **状態** | はい | `subscribed` | 新しいメンバーの登録状態を選択します。 この例では "subscribed" を使用します。 <p>詳細については、「[Manage subscribers with the MailChimp API (MailChimp API を使った購読者管理)](https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/)」を参照してください。 |
@@ -258,10 +258,10 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![成功時に送信されるメールの情報を入力](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success-settings.png)
 
-   | プロパティ | 必須 | 値 | 説明 |
+   | プロパティ | 必須 | Value | 説明 |
    |----------|----------|-------|-------------|
    | **To** | はい | <*your-email-address*> | 成功時のメールの送信先アドレス。 テスト目的で自分の電子メール アドレスを使用できます。 |
-   | **[件名]** | はい | <*subject-for-success-email*> | 成功時に送信されるメールの件名。 このチュートリアルでは、次のテキストを入力します。 <p>`Success! Member added to "test-members-ML": ` <p>動的コンテンツ リストから、 **[メンバーをリストに追加する]** の **[メール アドレス]** プロパティを選択します。 |
+   | **件名** | はい | <*subject-for-success-email*> | 成功時に送信されるメールの件名。 このチュートリアルでは、次のテキストを入力します。 <p>`Success! Member added to "test-members-ML": ` <p>動的コンテンツ リストから、 **[メンバーをリストに追加する]** の **[メール アドレス]** プロパティを選択します。 |
    | **本文** | はい | <*body-for-success-email*> | 成功時に送信されるメールの本文の内容。 このチュートリアルでは、次のテキストを入力します。 <p>`New member has joined "test-members-ML":` <p>動的コンテンツ リストから、 **[メール アドレス]** プロパティを選択します。 <p>次の行で、「`Member opt-in status: `」というテキストを入力します。 <p> 動的コンテンツ リストから、 **[メンバーをリストに追加する]** の **[状態]** プロパティを選択します。 |
    |||||
 
@@ -283,10 +283,10 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![失敗時に送信されるメールの情報を入力](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed-settings.png)
 
-   | プロパティ | 必須 | 値 | 説明 |
+   | プロパティ | 必須 | Value | 説明 |
    |----------|----------|-------|-------------|
    | **To** | はい | <*your-email-address*> | 失敗時のメールの送信先アドレス。 テスト目的で自分の電子メール アドレスを使用できます。 |
-   | **[件名]** | はい | <*subject-for-failure-email*> | 失敗時に送信されるメールの件名。 このチュートリアルでは、次のテキストを入力します。 <p>`Failed, member not added to "test-members-ML": ` <p>動的コンテンツ リストから、 **[メンバーをリストに追加する]** の **[メール アドレス]** プロパティを選択します。 |
+   | **件名** | はい | <*subject-for-failure-email*> | 失敗時に送信されるメールの件名。 このチュートリアルでは、次のテキストを入力します。 <p>`Failed, member not added to "test-members-ML": ` <p>動的コンテンツ リストから、 **[メンバーをリストに追加する]** の **[メール アドレス]** プロパティを選択します。 |
    | **本文** | はい | <*body-for-failure-email*> | 失敗時に送信されるメールの本文の内容。 このチュートリアルでは、次のテキストを入力します。 <p>`Member might already exist. Check your MailChimp account.` |
    |||||
 

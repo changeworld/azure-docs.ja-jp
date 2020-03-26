@@ -10,10 +10,10 @@ ms.date: 06/20/2019
 author: mlearned
 monikerRange: vsts
 ms.openlocfilehash: 4e7e9428af86f131632650f18d45e7dd48f4b5cb
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71971574"
 ---
 # <a name="continuously-deploy-to-azure-functions-with-devops-projects"></a>DevOps Projects を使用して Azure Functions に継続的にデプロイする
@@ -35,7 +35,7 @@ DevOps Projects には、以下の機能もあります。
 >* CI パイプライン を確認する
 >* CD パイプライン を確認する
 >* 変更を Git にコミットし、Azure に自動的にデプロイする
->* リソースのクリーンアップ
+>* リソースをクリーンアップする
 
 現在、関数用にサポートされているランタイムは **.NET** と **Node.js** です。 このチュートリアルでは、 .NET ランタイムを使用して、Azure Functions へのデプロイを行います。 
 
@@ -97,7 +97,7 @@ DevOps Projects によって、Azure DevOps 組織内に CI/CD パイプライ�
 
 1. **[ビルド]** の下のハイパーリンクをクリックします。 ブラウザーのタブに、新しいプロジェクトのビルド パイプラインが表示されます。
 
-    ![構築](_img/azure-devops-project-functions/build.png)
+    ![Build](_img/azure-devops-project-functions/build.png)
 
 1. **[編集]** を選択します。 このウィンドウで、ビルド パイプラインのさまざまなタスクを調べることができます。 ビルドでは、Git リポジトリからのソース コードのフェッチ、アプリケーションのビルド、単体テストの実行、デプロイに使用される出力の発行など、さまざまなタスクが実行されます。
 
@@ -152,11 +152,11 @@ DevOps Projects では、Azure DevOps 組織から Azure サブスクリプシ�
 
      しばらくすると Azure DevOps でビルドが開始され、リリースが実行されて、変更がデプロイされます。 DevOps Projects ダッシュボードで、またはブラウザーで Azure DevOps 組織を使用して、ビルドの状態を監視します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 作成した関連リソースが必要なくなったら、削除してかまいません。 DevOps Projects ダッシュボードで**削除**機能を使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 必要に応じて、チームのニーズを満たすようにこれらのビルドおよびリリース パイプラインを変更できます。 この CI/CD パターンをご自身の他のパイプラインのテンプレートとして使用することもできます。 このチュートリアルでは、以下の内容を学習しました。
 
@@ -167,5 +167,5 @@ DevOps Projects では、Azure DevOps 組織から Azure サブスクリプシ�
 > * CI パイプライン を確認する
 > * CD パイプライン を確認する
 > * 変更を Git にコミットし、Azure に自動的にデプロイする
-> * リソースのクリーンアップ
+> * リソースをクリーンアップする
 

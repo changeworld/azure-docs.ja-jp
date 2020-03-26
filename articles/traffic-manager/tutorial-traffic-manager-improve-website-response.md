@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 07/23/2018
 ms.author: rohink
 ms.openlocfilehash: f7778b60a5e84f5d8900b8e37bfa655a7915d403
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77136397"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>チュートリアル:Traffic Manager を使用して Web サイトの応答性を向上させる
@@ -141,11 +141,11 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 
     | 設定                 | Value                                              |
     | ---                     | ---                                                |
-    | Name                   | この名前は trafficmanager.net ゾーン内で一意である必要があります。結果的に、Traffic Manager プロファイルへのアクセスに使用される、DNS 名.trafficmanager.net になるためです。                                   |
+    | 名前                   | この名前は trafficmanager.net ゾーン内で一意である必要があります。結果的に、Traffic Manager プロファイルへのアクセスに使用される、DNS 名.trafficmanager.net になるためです。                                   |
     | ルーティング方法          | **パフォーマンス**によるルーティング方法を選択します。                                       |
     | サブスクリプション            | サブスクリプションを選択します。                          |
     | Resource group          | リソース グループ「*myResourceGroupTM1*」を選択します。 |
-    | Location                | **[米国東部]** を選択します。 これはリソース グループの場所を指定する設定であり、グローバルにデプロイされる Traffic Manager プロファイルには影響しません。                              |
+    | 場所                | **[米国東部]** を選択します。 これはリソース グループの場所を指定する設定であり、グローバルにデプロイされる Traffic Manager プロファイルには影響しません。                              |
     |
 
     ![Traffic Manager プロファイルの作成](./media/tutorial-traffic-manager-improve-website-response/traffic-manager-profile.png)
@@ -161,7 +161,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
     | 設定                 | Value                                              |
     | ---                     | ---                                                |
     | Type                    | Azure エンドポイント                                   |
-    | Name           | myEastUSEndpoint                                        |
+    | 名前           | myEastUSEndpoint                                        |
     | ターゲット リソースの種類           | パブリック IP アドレス                          |
     | ターゲット リソース          | **パブリック IP アドレスを選択**して、同じサブスクリプションでパブリック IP アドレスを持つリソースの一覧を表示します。 **[リソース]** で、*myIISVMEastUS-ip* という名前のパブリック IP アドレスを選択します。 これは、米国東部内の IIS サーバー VM のパブリック IP アドレスです。|
     |        |           |

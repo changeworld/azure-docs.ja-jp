@@ -6,15 +6,15 @@ ms.author: andrela
 ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 12/02/2018
-ms.openlocfilehash: 85a38fe3e2d17eb53d1ed5f8f231898849bd01db
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 4bb1a71c5d8a58e6d94007554c72019001d395db
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772063"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79529002"
 ---
-# <a name="azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MariaDB: MySQL Workbench を使った接続とデータの照会
+# <a name="azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MariaDB: MySQL Workbench を使用した接続とデータの照会
 
 このクイック スタートでは、MySQL Workbench を使用して Azure Database for MariaDB インスタンスに接続する方法を紹介します。 
 
@@ -33,7 +33,7 @@ ms.locfileid: "74772063"
 
 Azure Database for MariaDB インスタンスに接続するために必要な接続情報を取得します。 完全修飾サーバー名とサインイン資格情報が必要です。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 2. Azure portal の左側のメニューで、 **[すべてのリソース]** を選択します。 作成したサーバーを検索します (**mydemoserver** など)。
 
@@ -51,14 +51,14 @@ MySQL Workbench を使用して Azure Database for MariaDB サーバーに接続
 
 2. **[Setup New Connection]\(新しい接続の設定\)** ダイアログ ボックスの **[Parameters]\(パラメーター\)** タブに次の情報を入力します。
 
-   | Setting | 推奨値 | フィールドの説明 |
+   | 設定 | 推奨値 | フィールドの説明 |
    |---|---|---|
    |   接続名 | **Demo connection** | この接続のラベルを指定します。 |
    | 接続方法 | **Standard (TCP/IP)** | Standard (TCP/IP) で十分です。 |
-   | ホスト名 | *サーバー名* | Azure Database for MariaDB インスタンスを作成するときに使用したサーバー名の値を指定します。 この例におけるサーバーは、**mydemoserver.mariadb.database.azure.com** です。 例で示されているように、完全修飾ドメイン名 (\*.mariadb.database.azure.com) を使用します。 サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。  |
+   | hostname | *サーバー名* | Azure Database for MariaDB インスタンスを作成するときに使用したサーバー名の値を指定します。 この例におけるサーバーは、**mydemoserver.mariadb.database.azure.com** です。 例で示されているように、完全修飾ドメイン名 (\*.mariadb.database.azure.com) を使用します。 サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。  |
    | Port | **3306** | Azure Database for MariaDB に接続するときは、常にポート 3306 を使用します。 |
    | ユーザー名 |  *サーバー管理者ログイン名* | Azure Database for MariaDB インスタンスを作成するときに使用したサーバー管理者のログイン ユーザー名を入力します。 この例のユーザー名は **myadmin\@mydemoserver** です。 サーバー管理者のログイン名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 形式は *username\@servername* です。
-   | パスワード | *<お使いのパスワード>* | パスワードを保存するには、 **[Store in Vault]\(コンテナーに保存\)** を選択します。 |
+   | Password | *<お使いのパスワード>* | パスワードを保存するには、 **[Store in Vault]\(コンテナーに保存\)** を選択します。 |
 
    ![新しい接続の設定](./media/connect-workbench/2-setup-new-connection.png)
 

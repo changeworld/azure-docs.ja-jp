@@ -16,10 +16,10 @@ ms.date: 01/02/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 964ba7ba9ebac84e2895e5a50f3fa31f1dbdd874
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75659697"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-robin"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Robin の統合
@@ -95,7 +95,7 @@ Robin に対する Azure AD SSO を構成してテストするには、次の構
 
 1. その他に、Robin アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | Name | ソース属性|
+    | 名前 | ソース属性|
     | ---------------| --------- |
     | FirstName | User.givenname |
     | LastName | User.surname |
