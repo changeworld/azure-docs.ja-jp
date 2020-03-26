@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b655fa2f12eac894e97c61cc931983aa58fff7a9
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74007923"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Azure Active Directory レポートの概要
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) レポートを使用すると、ご利用の�
 - [セキュリティ レポート](#security-reports)
 - [アクティビティ レポート](#activity-reports)
 
-![レポート](./media/overview-reports/01.png)
+![レポーティング](./media/overview-reports/01.png)
 
 
 ## <a name="security-reports"></a>セキュリティ レポート
@@ -99,7 +99,7 @@ Azure Active Directory (Azure AD) レポートを使用すると、ご利用の�
 
 Azure AD では、レポート データにユーザー インターフェイスからだけでなく、一連の REST ベースの API を通じて[プログラムからアクセス](concept-reporting-api.md)することもできます。 これらの API は、さまざまなプログラミング言語とツールから呼び出すことができます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [リスクの高いサインイン レポート](concept-risky-sign-ins.md)
 - [監査ログ レポート](concept-audit-logs.md)

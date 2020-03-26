@@ -9,16 +9,16 @@ ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 3bd9489adaf46e604393fc7059d37443bdd5ec3e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73488861"
 ---
 1. 作成した仮想 WAN を探します。 [仮想 WAN] ページの **[接続]** セクションで、 **[ハブ]** を選択します。
 2. [ハブ] ページで、 **[+ 新しいハブ]** を選択して **[仮想ハブを作成する]** ページを開きます。
 
-    ![基本](./media/virtual-wan-tutorial-hub-include/basics.png "基本")
+    ![基本操作](./media/virtual-wan-tutorial-hub-include/basics.png "基本")
 3. **[仮想ハブを作成する]** ページの **[基本]** タブで、次のフィールドを入力します。
 
     **プロジェクトの詳細**
@@ -26,7 +26,7 @@ ms.locfileid: "73488861"
    * リージョン (旧称は場所)
    * 名前
    * ハブのプライベート アドレス空間。 ハブを作成するための最小アドレス空間は /24 です。これは、/25 から /32 のいずれの範囲でも、作成中にエラーが生成されることを意味します。
-4. **[次へ:サイト間]** を選択します。
+4. **サイト間** を選択します。
 
     ![サイト間](./media/virtual-wan-tutorial-hub-include/site-to-site.png "サイト間")
 

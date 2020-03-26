@@ -17,10 +17,10 @@ ms.date: 05/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b88822f164e0fe8cdf55eddfa981644f725e01f3
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73159919"
 ---
 # <a name="tutorial-integrate-soloinsight-cloudgate-sso-with-azure-active-directory"></a>チュートリアル:Soloinsight-CloudGate SSO を Azure Active Directory と統合する
@@ -29,7 +29,7 @@ ms.locfileid: "73159919"
 
 * Soloinsight-CloudGate SSO にアクセスできるユーザーを Azure AD で制御する。
 * ユーザーが自分の Azure AD アカウントを使用して、Soloinsight-CloudGate SSO に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) でアカウントを管理する。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -37,7 +37,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 開始するには、次が必要です。
 
-* Azure AD サブスクリプション。 サブスクリプションをお持ちでない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月間の無料試用版を入手できます。
+* Azure AD サブスクリプション。 サブスクリプションをお持ちでない場合は、[ここ](https://azure.microsoft.com/pricing/free-trial/)から 1 か月間の無料試用版を入手できます。
 * Soloinsight-CloudGate SSO シングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
@@ -101,7 +101,7 @@ Soloinsight-CloudGate SSO で Azure AD の SSO を構成してテストするに
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
-2. ブラウザーに拡張機能を追加した後、 **[Setup Soloinsight-CloudGate SSO]\(Soloinsight-CloudGate SSO のセットアップ\)** をクリックすると、Soloinsight-CloudGate SSO アプリケーションに移動します。 そこから、管理者資格情報を提供して Soloinsight-CloudGate SSO にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 から 8 が自動化されます。
+2. ブラウザーに拡張機能を追加した後、 **[Setup Soloinsight-CloudGate SSO]\(Soloinsight-CloudGate SSO のセットアップ\)** をクリックすると、Soloinsight-CloudGate SSO アプリケーションに移動します。 そこから、管理者資格情報を提供して Soloinsight-CloudGate SSO にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 ～ 8 が自動化されます。
 
     ![セットアップの構成](common/setup-sso.png)
 

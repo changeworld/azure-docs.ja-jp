@@ -10,10 +10,10 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
 ms.openlocfilehash: bd65a21c2aa21643c76966410931949db7d17ad6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73822786"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>チュートリアル:Azure AD サーバー プリンシパル (ログイン) を使用した Azure SQL Database におけるマネージド インスタンスのセキュリティ
@@ -44,7 +44,7 @@ ms.locfileid: "73822786"
 
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)
 - Azure SQL Database マネージド インスタンス
-  - 次の記事に従います。[クイック スタート:Azure SQL Database マネージド インスタンスの作成](sql-database-managed-instance-get-started.md)
+  - 次の記事に従います。[クイック スタート: Azure SQL Database マネージド インスタンスの作成](sql-database-managed-instance-get-started.md)
 - マネージド インスタンスにアクセスでき、[マネージド インスタンスの Azure AD 管理者をプロビジョニング済み](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)であること。 詳細については、次を参照してください。
     - [マネージド インスタンスへのアプリケーションの接続](sql-database-managed-instance-connect-app.md)に関するページ 
     - [マネージド インスタンスの接続アーキテクチャ](sql-database-managed-instance-connectivity-architecture.md)に関するページ
@@ -65,8 +65,8 @@ ms.locfileid: "73822786"
 
 マネージド インスタンスに接続する例については、次の記事を参照してください。
 
-- [クイック スタート:マネージド インスタンスに接続するように Azure VM を構成する](sql-database-managed-instance-configure-vm.md)
-- [クイック スタート:オンプレミスからマネージド インスタンスへのポイント対サイト接続を構成する](sql-database-managed-instance-configure-p2s.md)
+- [クイック スタート: マネージド インスタンスに接続するように Azure VM を構成する](sql-database-managed-instance-configure-vm.md)
+- [クイック スタート: オンプレミスからマネージド インスタンスへのポイント対サイト接続を構成する](sql-database-managed-instance-configure-p2s.md)
 
 1. [SQL Server Management Studio](sql-database-managed-instance-configure-p2s.md#use-ssms-to-connect-to-the-managed-instance) を利用し、標準の SQL Server アカウント (Azure AD 以外) である `sysadmin` または MI 用の Azure AD 管理者を使ってマネージド インスタンスにログインします。
 
@@ -191,7 +191,7 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
 
 1. SQL Server Management Studio で新しいクエリ ウィンドウを開きます。
 
-    この例では、_mygroup_ というグループが Azure AD に存在することを前提としています。 次のコマンドを実行します。
+    この例では、_mygroup_ というグループが Azure AD に存在することを前提としています。 たとえば、次のコマンドを実行します。
 
     ```sql
     USE master
@@ -432,7 +432,7 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
 - Service Broker とデータベース メールは、Azure AD サーバー プリンシパル (ログイン) を使用して設定できます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ### <a name="enable-security-features"></a>セキュリティ機能の有効化
 

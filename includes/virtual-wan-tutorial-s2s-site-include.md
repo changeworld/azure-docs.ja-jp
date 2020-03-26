@@ -9,16 +9,16 @@ ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 4bcee1097010bb8746b11185a470ca2584485c3f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73488914"
 ---
 1. 仮想 WAN のポータル ページの **[接続]** セクションで、 **[VPN サイト]** を選択して VPN サイト ページを開きます。
 2. **[VPN サイト]** ページで **[+ サイトの作成]** をクリックします。
 
-   ![基本](./media/virtual-wan-tutorial-site-include/basics.png "基本")
+   ![基本操作](./media/virtual-wan-tutorial-site-include/basics.png "基本")
 3. **[VPN サイトを作成する]** ページの **[基本]** タブで、次のフィールドを入力します。
 
     * **[リージョン]** - 旧称は場所。 これは、このサイト リソースを作成する場所です。

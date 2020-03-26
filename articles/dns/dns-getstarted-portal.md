@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 3/11/2019
 ms.author: rohink
 ms.openlocfilehash: 26e5386f1c9730f1600e59a002ea7845b82ffe06
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76937129"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure DNS ゾーンおよびレコードを作成する
@@ -45,7 +45,7 @@ DNS ゾーンにはドメインの DNS エントリが含まれています。 A
    - **Name**:このクイック スタートのサンプルでは「*contoso.xyz*」と入力します。 DNS ゾーン名には、Azure DNS サーバーに既に構成されていない任意の値を指定できます。 実際の値は、ドメイン名レジストラーから購入したドメインになります。
    - **[リソース グループ]** : **[新規作成]** を選択し、「*MyResourceGroup*」と入力して、 **[OK]** を選択します。 Azure サブスクリプション内で一意となるリソース グループ名を使用してください。 
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
    ![[DNS ゾーン]](./media/dns-getstarted-portal/openzone650.png)
 

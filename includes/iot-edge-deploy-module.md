@@ -9,10 +9,10 @@ ms.date: 12/31/2019
 ms.author: kgremban
 ms.custom: include file
 ms.openlocfilehash: abbde0cb8137650faad563248c8fafe7dc0f469a
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75564776"
 ---
 Azure IoT Edge の主要な機能の 1 つは、クラウドからお客様の IoT Edge デバイスにコードをデプロイできることです。 **IoT Edge モジュール**は、コンテナーとして実装されている実行可能ファイルのパッケージです。 このセクションでは、[Azure Marketplace の IoT Edge モジュールのセクション](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)で事前に構築したモジュールを、Azure IoT ハブから直接デプロイします。
@@ -41,7 +41,7 @@ Azure Marketplace からお客様の最初のモジュールをデプロイす�
 
    ![デバイスにモジュールを設定する](./media/iot-edge-deploy-module/set-modules-on-device.png)
 
-   **[次へ:ルート]** を選択し、ウィザードの次の手順に進みます。
+   **ルート** を選択し、ウィザードの次の手順に進みます。
 
 1. ウィザードの **[ルート]** タブで、モジュールと IoT ハブの間でメッセージが渡される方法を定義します。 メッセージは、名前と値のペアを使用して作成されます。 このクイック スタートでは、すべてのモジュールのすべてのメッセージを IoT Hub (`$upstream`) に送信します。 自動的に設定されない場合は、**名前**の**値** `upstream` を指定するために次のコードを追加します。
 
@@ -49,7 +49,7 @@ Azure Marketplace からお客様の最初のモジュールをデプロイす�
     FROM /messages/* INTO $upstream
    ```
 
-   **[次へ:確認と作成]** を選択し、ウィザードの次の手順に進みます。
+   **確認と作成** を選択し、ウィザードの次の手順に進みます。
 
 1. ウィザードの **[確認と作成]** タブでは、IoT Edge デバイスにデプロイされているすべてのモジュールを定義する JSON ファイルをプレビューできます。 **SimulatedTemperatureSensor** モジュールに加え、**edgeAgent** と **edgeHub** という 2 つの追加システム モジュールが含まれていることに注目してください。 確認が完了したら **[作成]** を選択します。
 

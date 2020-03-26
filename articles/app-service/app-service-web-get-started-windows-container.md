@@ -3,13 +3,13 @@ title: 'クイック スタート: Windows コンテナー (プレビュー)'
 description: 初めてのカスタム Windows コンテナーを Azure App Service にデプロイします。 コンテナー化を最大限に活用して、Windows コンテナーを自由にカスタマイズしましょう。
 ms.topic: quickstart
 ms.date: 08/30/2019
-ms.custom: seodec18
-ms.openlocfilehash: 7901498772b8e746fb2c87a5237f06ab279e3b64
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.custom: mvc, seodec18
+ms.openlocfilehash: cd6b78e5fd824cc013cc946d23677237923f485e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922310"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80047115"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Azure でのカスタム Windows コンテナーの実行 (プレビュー)
 
@@ -43,7 +43,7 @@ ms.locfileid: "75922310"
 
 1. 任意の種類の ASP.NET Web アプリを Azure にデプロイできます。 このクイックスタートでは、 **[MVC]** テンプレートを選択します。
 
-1. **[Docker サポート]** を選択し、認証が **[認証なし]** に設定されていることを確認します。 **作成** を選択します。
+1. **[Docker サポート]** を選択し、認証が **[認証なし]** に設定されていることを確認します。 **［作成］** を選択します
 
    ![ASP.NET Web アプリケーションを作成する](./media/app-service-web-get-started-windows-container/select-mvc-template-for-container.png)
 
@@ -79,7 +79,7 @@ ms.locfileid: "75922310"
 
 ## <a name="create-a-windows-container-app"></a>Windows コンテナー アプリの作成
 
-1. [Azure portal]( https://portal.azure.com) にサインインする
+1. [Azure portal]( https://portal.azure.com) にサインインします。
 
 1. Azure portal の左上隅にある **[リソースの作成]** を選択します。
 
@@ -87,7 +87,7 @@ ms.locfileid: "75922310"
 
 1. **[Web App Create]\(Web アプリの作成\)** で、サブスクリプションと**リソース グループ**を選択します。 必要な場合は、新しいリソース グループを作成できます。
 
-1. アプリ名 (例: *win-container-demo*) を入力し、 **[オペレーティング システム]** に **[Windows]** を選択します。 **[次へ:Docker]** を選択して続行します。
+1. アプリ名 (例: *win-container-demo*) を入力し、 **[オペレーティング システム]** に **[Windows]** を選択します。 **Docker** を選択して続行します。
 
    ![Web App for Containers を作成する](media/app-service-web-get-started-windows-container/create-web-app-continer.png)
 
@@ -145,7 +145,7 @@ https://<app_name>.scm.azurewebsites.net/api/logstream
    ```HTML
    <div class="jumbotron">
        <h1>ASP.NET in Azure!</h1>
-       <p class="lead">This is a simple app that we’ve built that demonstrates how to deploy a .NET app to Azure App Service.</p>
+       <p class="lead">This is a simple app that we've built that demonstrates how to deploy a .NET app to Azure App Service.</p>
    </div>
    ```
 

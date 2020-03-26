@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: sewatson
 ms.openlocfilehash: 6282acaf165d2f31a1a1ac525dad75ebc64a2a7c
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "62113954"
 ---
 # <a name="azure-database-for-postgresql-documentation"></a>Azure Database for PostgreSQL のドキュメント
@@ -26,11 +26,11 @@ Azure Database for PostgreSQL は、オープンソースの PostgreSQL デー�
 - [Azure Portal](/azure/postgresql/quickstart-create-server-database-portal)
 - [Azure CLI](/azure/postgresql/quickstart-create-server-database-azure-cli)
 
-## <a name="step-by-step-tutorials"></a>ステップバイステップのチュートリアル
+## <a name="step-by-step-tutorials"></a>ステップバイステップ チュートリアル
 
-以下の項目について説明します。
+具体的には、次の方法を学習します。
 
-- データベースの設計:[Azure portal](/azure/postgresql/tutorial-design-database-using-azure-portal) |  [Azure CLI](/azure/postgresql/tutorial-design-database-using-azure-cli)
+- データベースの設計: [Azure Portal](/azure/postgresql/tutorial-design-database-using-azure-portal) |  [Azure CLI](/azure/postgresql/tutorial-design-database-using-azure-cli)
 - [Python と CLI を使用して Web アプリを構築する](/azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json)
 
 ## <a name="samples"></a>サンプル 

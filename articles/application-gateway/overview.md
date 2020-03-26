@@ -9,10 +9,10 @@ ms.custom: mvc
 ms.date: 03/04/2020
 ms.author: victorh
 ms.openlocfilehash: 4a4395801218409fe77d1081689ba80b495fcfad
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78302578"
 ---
 # <a name="what-is-azure-application-gateway"></a>Azure Application Gateway とは

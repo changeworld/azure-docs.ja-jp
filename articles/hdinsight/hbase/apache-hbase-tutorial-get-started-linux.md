@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 06/25/2019
 ms.author: hrasheed
 ms.openlocfilehash: e43d2d64535085a9b22d2febc761fc7026498ba8
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71077151"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で Apache HBase を使用する
@@ -47,9 +47,9 @@ ms.locfileid: "71077151"
 
     |プロパティ |説明 |
     |---|---|
-    |Subscription|クラスターの作成に使用する Azure サブスクリプションを選択します。|
+    |サブスクリプション|クラスターの作成に使用する Azure サブスクリプションを選択します。|
     |Resource group|Azure リソース管理グループを作成するか、または既存のグループを使用します。|
-    |Location|リソース グループの [場所] を指定します。 |
+    |場所|リソース グループの [場所] を指定します。 |
     |ClusterName|HBase クラスターの名前を入力します。|
     |クラスター ログイン名とパスワード|既定のログイン名は **admin** です。|
     |SSH ユーザー名とパスワード|既定のユーザー名は **sshuser** です。|
@@ -290,21 +290,21 @@ HDInsight の HBase には、クラスターを監視するための Web UI が�
 
    - リージョン サーバー
    - バックアップ マスター
-   - tables
-   - タスク
+   - 表
+   - tasks
    - ソフトウェア属性
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 不整合を回避するために、クラスターを削除する前に HBase テーブルを無効にしておくことをお勧めします。 HBase コマンド `disable 'Contacts'` を使用できます。 このアプリケーションを引き続き使用しない場合は、次の手順で作成した HBase クラスターを削除します。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 1. 上部の**検索**ボックスに「**HDInsight**」と入力します。
 1. **[サービス]** の下の **[HDInsight クラスター]** を選択します。
 1. 表示される HDInsight クラスターの一覧で、このチュートリアル用に作成したクラスターの横にある **[...]** をクリックします。
 1. **[削除]** をクリックします。 **[はい]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Apache HBase クラスターの作成方法と、テーブルを作成してそのテーブルのデータを HBase シェルから表示する方法について学習しました。 また、HBase テーブルのデータに対して Hive クエリを使用する方法と、HBase C# REST API を使用して HBase テーブルを作成し、テーブルからデータを取得する方法についても学習しました。 詳細については、次を参照してください。
 

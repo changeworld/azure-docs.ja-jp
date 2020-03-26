@@ -10,10 +10,10 @@ ms.date: 07/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: dce3549bde4c62245e1d2b1f8ac0c88c0b70260c
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "70241402"
 ---
 # <a name="tutorial-order-azure-data-box-heavy"></a>チュートリアル:Azure Data Box Heavy を注文する
@@ -75,13 +75,13 @@ Azure Data Box Heavy は、迅速かつ簡単な信頼性の高い方法でオ�
     
    [![Azure Data Box 1 を検索する](media/data-box-deploy-ordered/search-azure-data-box1.png)](media/data-box-deploy-ordered/search-azure-data-box1.png#lightbox)
 
-3. **作成** を選択します。
+3. **［作成］** を選択します
 
 4. ご利用のリージョンで Data Box サービスが利用可能かどうかを確認します。 次の情報を入力または選択し、 **[適用]** を選択します。
 
-    |Setting  |値  |
+    |設定  |Value  |
     |---------|---------|
-    |Subscription     | Data Box サービス用の EA、CSP、または Azure スポンサー サブスクリプションを選択します。 <br> サブスクリプションは、課金アカウントにリンクされます。       |
+    |サブスクリプション     | Data Box サービス用の EA、CSP、または Azure スポンサー サブスクリプションを選択します。 <br> サブスクリプションは、課金アカウントにリンクされます。       |
     |転送の種類     | **[Azure へインポート]** を選択します。        |
     |ソースの国     | データが現在存在する国/地域を選択します。         |
     |宛先 Azure リージョン     | データを転送する Azure リージョンを選択します。        |
@@ -94,10 +94,10 @@ Azure Data Box Heavy は、迅速かつ簡単な信頼性の高い方法でオ�
 
 6. **[注文]** で**注文の詳細**を指定します。 次の情報を入力または選択し、 **[次へ]** を選択します。
     
-    |Setting  |値  |
+    |設定  |Value  |
     |---------|---------|
-    |Name     | 注文を追跡するためのフレンドリ名を指定します。 <br> 名前の長さは 3 ～ 24 文字で、文字、数字、ハイフンを使うことができます。 <br> 名前の最初と最後は、文字か数字とする必要があります。      |
-    |リソース グループ     | 既存のグループを使用するか、新しいグループを作成します。 <br> リソース グループとは、まとめて管理したり、デプロイしたりできるリソースの論理コンテナーです。         |
+    |名前     | 注文を追跡するためのフレンドリ名を指定します。 <br> 名前の長さは 3 ～ 24 文字で、文字、数字、ハイフンを使うことができます。 <br> 名前の最初と最後は、文字か数字とする必要があります。      |
+    |Resource group     | 既存のグループを使用するか、新しいグループを作成します。 <br> リソース グループとは、まとめて管理したり、デプロイしたりできるリソースの論理コンテナーです。         |
     |宛先 Azure リージョン     | ストレージ アカウントのリージョンを選択します。 <br> 詳細については、[利用可能なリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=databox)に関する記事をご覧ください。        |
     |保存先     | ストレージ アカウント、マネージド ディスク、またはその両方から選択します。 <br> 指定した Azure リージョンに基づいて、既存のストレージ アカウントのフィルター処理された一覧から 1 つまたは複数のストレージ アカウントを選択します。 <br>Data Box Heavy は、最大 10 個のストレージ アカウントにリンクできます。 <br> 新しい**汎用 v1 アカウント**、**汎用 v2 アカウント**、または **Blob Storage アカウント**を作成することもできます。 <br> Azure Data Lake Storage Gen 2 アカウントはサポートされていません。 [デバイスでサポートされるストレージ アカウント](data-box-heavy-system-requirements.md#supported-storage-accounts)に関する記事を参照してください。 <br>仮想ネットワークに対するストレージ アカウントがサポートされます。 セキュリティで保護されたストレージ アカウントと Data Box サービスとを連携させるには、ストレージ アカウントのネットワーク ファイアウォール設定内で、信頼できるサービスを有効にします。 詳細については、[Azure Data Box サービスを信頼できるサービスとして追加する](../storage/common/storage-network-security.md#exceptions)方法に関する記事を参照してください。|
 
@@ -107,7 +107,7 @@ Azure Data Box Heavy は、迅速かつ簡単な信頼性の高い方法でオ�
 
     保存先としてのストレージ アカウントに加えて、オンプレミス VHD からマネージド ディスクを作成するために Data Box Heavy を使用している場合は、次の情報を提供する必要があります。
 
-    |Setting  |値  |
+    |設定  |Value  |
     |---------|---------|
     |リソース グループ     | オンプレミスの VHD からマネージド ディスクを作成する場合は、新しい リソース グループを作成します。 既存のリソース グループを使用できるのは、Data Box サービスでマネージド ディスクの Data Box Heavy 注文を作成するときに、そのリソース グループがすでに作成されていた場合に限られます。 <br> 複数のリソース グループを指定するときは、各リソース グループをセミコロンで区切ります。 サポートされるリソース グループは、最大 10 個です。|
 
@@ -155,7 +155,7 @@ Azure Data Box Heavy は、迅速かつ簡単な信頼性の高い方法でオ�
  
 キャンセルされた注文を削除するには、 **[概要]** に移動し、コマンド バーの **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Data Box Heavy に関する次のようなトピックについて説明しました。
 

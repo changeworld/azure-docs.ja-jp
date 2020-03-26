@@ -4,10 +4,10 @@ description: ブループリント アーティファクト パラメーター�
 ms.date: 08/20/2019
 ms.topic: sample
 ms.openlocfilehash: df17f8c3f539e25635ea4718be9d51d5e5e3f708
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74545518"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Microsoft Cloud Adoption Framework for Azure 基盤ブループリント サンプルをデプロイする
@@ -83,7 +83,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
      このセクションで定義するパラメーターは、一貫性を維持するために、ブループリント定義のアーティファクトの多くで使用されます。
 
-     - **組織**: 組織名 (Contoso など) を入力します。一意である必要があります。
+     - **Organization**:組織名 (Contoso など) を入力します。一意である必要があります。
      - **Azure リージョン**: デプロイのための Azure リージョンを選択します。
      - **許可されている場所**: リソースを構築してよい Azure リージョンを指定します。
      
@@ -106,11 +106,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |許可される仮想マシンの SKU|ポリシー割り当て|Policy_Allowed-VM-SKUs|許可される仮想マシンの SKU|
 |Append CostCenter TAG to Resource Groups (リソース グループへの CostCenter タグの追加)|ポリシー割り当て|Policy_CostCenter_Tag|CostCenter タグと、リソース グループでのその値を追加します|
 |Resource Types that you do not want to allow in your environment (自分の環境で許可しないリソースの種類)|ポリシー割り当て|Policy _Allowed-Resource-Types|自分の環境でどのリソースの種類を許可するか|
-|Deploy Key Vault (Key Vault のデプロイ)|Resource Manager テンプレート|KV-AccessPolicy|**ロック済み** - Key Vault でアクセス許可を付与する Azure AD グループまたはユーザー <Object ID>|
-|Deploy Log Analytics (Log Analytics のデプロイ)|Resource Manager テンプレート|LogAnalytics_DataRetention|**ロック済み** - 日数データは Log Analytics に保持されます|
+|Key Vault のデプロイ|Resource Manager テンプレート|KV-AccessPolicy|**ロック済み** - Key Vault でアクセス許可を付与する Azure AD グループまたはユーザー <Object ID>|
+|Log Analytics のデプロイ|Resource Manager テンプレート|LogAnalytics_DataRetention|**ロック済み** - 日数データは Log Analytics に保持されます|
 |Log Analytics のデプロイ|Resource Manager テンプレート|LogAnalytics_Location|**ロック済み** - ワークスペースの確立時に使用されるリージョン|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 CAF 基盤ブループリント サンプルをデプロイする手順を確認したので、以下の記事に進み、アーキテクチャの詳細を確認します。
 

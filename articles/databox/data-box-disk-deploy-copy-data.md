@@ -10,11 +10,11 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: 93a7181a3b720a3b313bb75855b2564c4cd33bc1
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514155"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214328"
 ---
 ::: zone target="docs"
 
@@ -237,7 +237,7 @@ ms.locfileid: "76514155"
  
 7. コマンド プロンプト ウィンドウを開きます。 
 
-8. `DataBoxDiskSplitCopy.exe` を実行します。 種類
+8. `DataBoxDiskSplitCopy.exe` を実行します。 Type
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
 

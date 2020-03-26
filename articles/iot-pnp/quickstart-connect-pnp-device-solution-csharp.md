@@ -9,10 +9,10 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: 0953f68839217c1c75eb86f8399ce023f3863ab4
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76963973"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-c"></a>クイック スタート:ご利用のソリューションに接続されている IoT プラグ アンド プレイ プレビュー デバイスとやり取りする (C#)
@@ -35,7 +35,7 @@ dotnet --version
 
 [!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
-次のコマンドを実行して、ご使用のハブに対する "_IoT ハブ接続文字列_" を取得します (後で使用するためにメモします)。
+次のコマンドを実行して、ご使用のハブに対する _IoT ハブ接続文字列_ を取得します (後で使用するためにメモします)。
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
@@ -53,7 +53,7 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 
 1. これで、このターミナル ウィンドウは "_デバイス_" ターミナルとして使用されるようになります。 クローンしたリポジトリのフォルダーに移動し、さらに **/azure-iot-samples-csharp/digitaltwin/Samples/device/EnvironmentalSensorSample** フォルダーに移動します。
 
-1. "_デバイス接続文字列_" を構成します。
+1. _デバイス接続文字列_ を構成します。
 
     ```cmd/sh
     set DIGITAL_TWIN_DEVICE_CONNECTION_STRING=<YourDeviceConnectionString>
@@ -146,7 +146,7 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
     }
     ```
 
-1. "_デバイス_" ターミナルにアクセスして、デバイスが更新プログラムを受信済みであることを確認します。
+1. _デバイス_ ターミナルにアクセスして、デバイスが更新プログラムを受信済みであることを確認します。
 
     ```cmd/sh
     Received updates for property 'brightness'
@@ -215,7 +215,7 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
     Enter any key to finish
     ```
 
-1. "_デバイス_" ターミナルにアクセスすると、コマンドが確認済みであることがわかります。
+1. _デバイス_ ターミナルにアクセスすると、コマンドが確認済みであることがわかります。
 
     ```cmd/sh
     Command - blink was invoked from the service

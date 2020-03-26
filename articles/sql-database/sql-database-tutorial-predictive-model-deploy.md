@@ -14,10 +14,10 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
 ms.openlocfilehash: 9fa816b2a8e736f03c99b66b898f48bd2a483b31
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68596776"
 ---
 # <a name="tutorial-deploy-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>チュートリアル:R で Azure SQL Database Machine Learning Services (プレビュー) を使用して予測モデルをデプロイする
@@ -31,7 +31,7 @@ ms.locfileid: "68596776"
 > [!div class="checklist"]
 > * 機械学習モデルを生成するストアド プロシージャを作成する
 > * データベース テーブルにモデルを格納する
-> * モデルを使用して予測するストアド プロシージャを作成する
+> * モデルを使用して予測を行うストアド プロシージャを作成する
 > * 新しいデータでモデルを実行する
 
 [パート 1](sql-database-tutorial-predictive-model-prepare-data.md) では、サンプル データベースをインポートし、R での予測モデルのトレーニングに使用されるデータを準備する方法を学習しました。
@@ -44,7 +44,7 @@ ms.locfileid: "68596776"
 
 * このチュートリアル シリーズのパート 3 では、[**パート 1**](sql-database-tutorial-predictive-model-prepare-data.md) と[**パート 2**](sql-database-tutorial-predictive-model-build-compare.md) が完了していることを前提とします。
 
-## <a name="create-a-stored-procedure-that-generates-the-model"></a>モデルを生成するストアド プロシージャを作成する
+## <a name="create-a-stored-procedure-that-generates-the-model"></a>モデルを生成するストアド プロシージャの作成
 
 このチュートリアル シリーズのパート 2 では、デシジョン ツリー (dtree) モデルが最も正確であると判断しました。 ここでは、開発した R スクリプトを使用して、RevoScaleR パッケージの rxDTree を利用し、dtree モデルをトレーニングして生成するストアド プロシージャ (`generate_rental_rx_model`) を作成します。
 
@@ -90,7 +90,7 @@ GO
 
 ## <a name="store-the-model-in-a-database-table"></a>データベース テーブルにモデルを格納する
 
-TutorialDB データベースにテーブルを作成してから、そのテーブルにモデルを保存します。
+TutorialDB データベースにテーブルを作成し、そのテーブルにモデルを保存します。
 
 1. モデルを格納するためのテーブル (`rental_rx_models`) を作成します。
 
@@ -128,7 +128,7 @@ TutorialDB データベースにテーブルを作成してから、そのテー
     FROM rental_rx_models;
     ```
 
-## <a name="create-a-stored-procedure-that-makes-predictions"></a>予測するストアド プロシージャを作成する
+## <a name="create-a-stored-procedure-that-makes-predictions"></a>予測を行うストアド プロシージャを作成する
 
 トレーニング済みのモデルと一連の新しいデータを使用して予測するストアド プロシージャ (`predict_rentalcount_new`) を作成します。
 
@@ -197,9 +197,9 @@ RentalCount_Predicted
 332.571428571429
 ```
 
-Azure SQL データベースでモデルを正常に作成し、トレーニングしてデプロイしました。 その後、ストアド プロシージャでそのモデルを使用して、新しいデータに基づいて値を予測しました。
+Azure SQL データベースでモデルを正常に作成し、トレーニングしてデプロイしました。 そうしたら、ストアド プロシージャでそのモデルを使用して、新しいデータに基づいて値を予測します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 TutorialDB データベースの使用が終わったら、それを Azure SQL Database サーバーから削除します。
 
@@ -210,13 +210,13 @@ Azure portal から次の手順を実行します。
 1. 自分の TutorialDB データベースを選択します。
 1. **[概要]** ページで **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアル シリーズのパート 3 では、これらの手順を完了しました。
+このチュートリアル シリーズのパート 3 では、次の手順を完了しました。
 
 * 機械学習モデルを生成するストアド プロシージャを作成する
 * データベース テーブルにモデルを格納する
-* モデルを使用して予測するストアド プロシージャを作成する
+* モデルを使用して予測を行うストアド プロシージャを作成する
 * 新しいデータでモデルを実行する
 
 Azure SQL Database Machine Learning Services (プレビュー) での R の使用について、さらに学習する場合は、以下を参照してください。

@@ -13,10 +13,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/14/2019
 ms.openlocfilehash: 951f03f581906e45946ef75742421ba27d405267
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74406972"
 ---
 # <a name="set-up-push-notifications-in-a-notification-hub-in-the-azure-portal"></a>Azure portal で通知ハブのプッシュ通知を設定する
@@ -25,7 +25,7 @@ Azure Notification Hubs には、使いやすくスケールアウトにも対�
 
 このクイック スタートでは、Notification Hubs におけるプラットフォーム通知システム (PNS) の設定を使用して、複数のプラットフォームに対するプッシュ通知を設定します。 このクイック スタートでは、Azure portal での手順を紹介します。
 
-まだ通知ハブを作成していない場合は、新たに作成してください。 詳細については、「[Azure portal 内で Azure 通知ハブを作成する](create-notification-hub-portal.md)」を参照してください。 
+通知ハブを作成していない場合は、ここで作成します。 詳細については、「[Azure portal 内で Azure 通知ハブを作成する](create-notification-hub-portal.md)」を参照してください。 
 
 ## <a name="apple-push-notification-service"></a>Apple Push Notification Service
 
@@ -113,12 +113,12 @@ Baidu のプッシュ通知を設定するには、次の手順に従います�
 
 詳細については、[Baidu での Notification Hubs の使用](notification-hubs-baidu-china-android-notifications-get-started.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このクイック スタートでは、Azure portal 内で通知ハブに対してプラットフォーム通知システムの設定を構成する方法について説明しました。 
 
 さまざまなプラットフォームに対してプッシュ通知を送信する方法について詳しくは、以下のチュートリアルを参照してください。
 
-- [Notification Hubs と APNS を使用して iOS デバイスにプッシュ通知を送信する](notification-hubs-ios-apple-push-notification-apns-get-started.md)
+- [Azure Notification Hubs と APNS を使用した iOS デバイスへのプッシュ通知の送信](notification-hubs-ios-apple-push-notification-apns-get-started.md)に関するページをご覧ください
 - [Notification Hubs と Google FCM を使用して Android デバイスにプッシュ通知を送信する](notification-hubs-android-push-notification-google-fcm-get-started.md)
 - [Windows デバイス上で動作する UWP アプリにプッシュ通知を送信する](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)
 - [MPNS を使用して Windows Phone 8 アプリにプッシュ通知を送信する](notification-hubs-windows-mobile-push-notifications-mpns.md)

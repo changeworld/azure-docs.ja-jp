@@ -4,13 +4,13 @@ description: アプリ用に事前構築済みの Ruby コンテナーを構成�
 ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
-ms.custom: seodec18
-ms.openlocfilehash: 2b096725575598bd44d7da39f77f85dee5b5e40e
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 8daebba840223d050a14b4b99cb6ae15472ee4f5
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255800"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80046334"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Azure App Service 向けの Linux Ruby アプリを構成する
 
@@ -131,7 +131,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings APP_COMMAND_LINE="rails server -b 0.0.0.0"
 ```
 
-### <a name="set-secret_key_base-manually"></a> secret_key_base を手動で設定する
+### <a name="set-secret_key_base-manually"></a><a name="set-secret_key_base-manually"></a> secret_key_base を手動で設定する
 
 `secret_key_base` の値を App Service で自動的に生成するのではなく独自の値を使用するには、`SECRET_KEY_BASE` [アプリ設定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)にその値を設定します。 次に例を示します。
 

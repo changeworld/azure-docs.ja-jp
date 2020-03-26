@@ -6,24 +6,24 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 12/02/2019
+ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: 5cfdcf2664871849d4488be4320f6aa03e296ce7
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: f83af794a179634b9b6b7adedd329ea6f4a7b8d0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770035"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79536464"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MariaDB サーバーを作成する
 
-Azure CLI を使用すると、コマンドラインまたはスクリプトで Azure リソースを作成したり管理したりすることができます。 このクイック スタートでは、Azure CLI を使用して、約 5 分で Azure Database for MariaDB サーバーを Azure リソース グループに作成する方法を説明します。 
+Azure CLI を使用すると、コマンドラインまたはスクリプトで Azure リソースを作成したり管理したりすることができます。 このクイック スタートでは、Azure CLI を使用して、約 5 分で Azure Database for MariaDB サーバーを Azure リソース グループに作成する方法を説明します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-このクイック スタートで、CLI をローカルにインストールして使用する場合、Azure CLI バージョン 2.0 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 CLI をインストールまたはアップグレードする必要がある場合は、「[Install Azure CLI 2.0 (Azure CLI 2.0 のインストール)]( /cli/azure/install-azure-cli)」を参照してください。 
+このクイック スタートで、CLI をローカルにインストールして使用する場合、Azure CLI バージョン 2.0 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 CLI をインストールまたはアップグレードする必要がある場合は、「[Install Azure CLI 2.0 (Azure CLI 2.0 のインストール)]( /cli/azure/install-azure-cli)」を参照してください。
 
 複数のサブスクリプションをお持ちの場合は、リソースが含まれているサブスクリプションまたはお客様が課金の対象となっているサブスクリプションを選択してください。 アカウントの特定のサブスクリプション ID を選択するには、[az account set](/cli/azure/account#az-account-set) コマンドを使用します。
 
@@ -31,7 +31,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 [az group create](/cli/azure/group#az-group-create) コマンドを使用して [Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。
 
@@ -45,9 +45,9 @@ az group create --name myresourcegroup --location westus
 
 [az mariadb server create](/cli/azure/mariadb/server#az-mariadb-server-create) コマンドを使用して、Azure Database for MariaDB サーバーを作成します。 1 つのサーバーで複数のデータベースを管理できます。 通常は、プロジェクトまたはユーザーごとに個別のデータベースを使用します。
 
-Setting | 値の例 | 説明
+設定 | 値の例 | 説明
 ---|---|---
-名前 | **mydemoserver** | Azure Database for MariaDB サーバーを識別する一意の名前を入力します。 サーバー名に含めることができるのは、英小文字、数字、およびハイフン (-) のみであり、 3 から 63 文字にする必要があります。
+name | **mydemoserver** | Azure Database for MariaDB サーバーを識別する一意の名前を入力します。 サーバー名に含めることができるのは、英小文字、数字、およびハイフン (-) のみであり、 3 から 63 文字にする必要があります。
 resource-group | **myresourcegroup** | Azure リソース グループの名前を入力します。
 sku-name | **GP_Gen5_2** | SKU の名前。 省略表現の *<価格レベル>* \_ *<コンピューティング世代>* \_ *<仮想コア>* という規則に従います。 **sku-name** パラメーターの詳細については、この表の後続のセクションを参照してください。
 backup-retention | **7** | バックアップを保持する必要のある時間。 単位は日数です。 範囲は 7 から 35 です。 
@@ -74,13 +74,12 @@ az mariadb server create --resource-group myresourcegroup --name mydemoserver  -
 
 > [!NOTE]
 > 低負荷なコンピューティングと I/O がワークロードに適している場合は、Basic 価格レベルの使用を検討してください。 Basic 価格レベルで作成されたサーバーは後で General Purpose またはメモリ最適化にスケーリングできないことに注意してください。 詳細については、[価格に関するページ](https://azure.microsoft.com/pricing/details/mariadb/)を参照してください。
-> 
 
 ## <a name="configure-a-firewall-rule"></a>ファイアウォール規則を構成する
 
-[az mariadb server firewall-rule create](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create) コマンドを使用して、Azure Database for MariaDB サーバーレベルのファイアウォール規則を作成します。 サーバーレベルのファイアウォール規則により、mysql コマンドライン ツールや MySQL Workbench などの外部アプリケーションが、Azure Database for MariaDB サービスのファイアウォールを経由してサーバーに接続できるようになります。 
+[az mariadb server firewall-rule create](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create) コマンドを使用して、Azure Database for MariaDB サーバーレベルのファイアウォール規則を作成します。 サーバーレベルのファイアウォール規則により、mysql コマンドライン ツールや MySQL Workbench などの外部アプリケーションが、Azure Database for MariaDB サービスのファイアウォールを経由してサーバーに接続できるようになります。
 
-次の例では、特定の IP アドレス 192.168.0.1 からの接続を許可する、`AllowMyIP` と呼ばれるファイアウォール規則を作成しています。 お客様の接続元となる場所に対応する IP アドレスまたは IP アドレスの範囲に置き換えてください。 
+次の例では、特定の IP アドレス 192.168.0.1 からの接続を許可する、`AllowMyIP` と呼ばれるファイアウォール規則を作成しています。 お客様の接続元となる場所に対応する IP アドレスまたは IP アドレスの範囲に置き換えてください。
 
 ```azurecli-interactive
 az mariadb server firewall-rule create --resource-group myresourcegroup --server mydemoserver --name AllowMyIP --start-ip-address 192.168.0.1 --end-ip-address 192.168.0.1
@@ -88,14 +87,13 @@ az mariadb server firewall-rule create --resource-group myresourcegroup --server
 
 > [!NOTE]
 > Azure Database for MariaDB との接続では、ポート 3306 が通信に使用されます。 企業ネットワーク内から接続しようとしても、ポート 3306 でのアウトバウンド トラフィックが許可されていない場合があります。 このようなケースでサーバーに接続できるのは、IT 部門によってポート 3306 が開放されている場合だけです。
-> 
 
 ## <a name="configure-ssl-settings"></a>SSL 設定の構成
 
 既定では、サーバーとクライアント アプリケーション間で SSL 接続が適用されます。 この既定の設定では、インターネット経由のデータ ストリームを暗号化することによって、"移動中" のデータのセキュリティが確保されます。 このクイック スタートでは、サーバーの SSL 接続を無効にします。 実稼働サーバーで SSL を無効にすることはお勧めしません。 詳細については、「[Azure Database for MariaDB に安全に接続するためにご利用のアプリケーション内で SSL 接続を構成する](./howto-configure-ssl.md)」を参照してください。
 
 次の例では、Azure Database for MariaDB サーバー上で SSL の適用が無効になります。
- 
+
 ```azurecli-interactive
 az mariadb server update --resource-group myresourcegroup --name mydemoserver --ssl-enforcement Disabled
 ```
@@ -156,9 +154,10 @@ mysql コマンドライン ツールを使用してサーバーに接続する�
    ```sql
    status
    ```
+
    次のようなテキストが表示されます。
 
-   ```bash
+   ```cmd
    C:\Users\>mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
    Enter password: ***********
    Welcome to the MySQL monitor.  Commands end with ; or \g.
@@ -211,20 +210,20 @@ mysql コマンドライン ツールを使用してサーバーに接続する�
 
    ![新しい接続の設定](./media/quickstart-create-mariadb-server-database-using-azure-cli/setup-new-connection.png)
 
-   | Setting | 推奨値 | 説明 |
+   | 設定 | 推奨値 | 説明 |
    |---|---|---|
    | 接続名 | **Demo connection** | この接続のラベル (任意の接続名) を入力します |
    | 接続方法 | **Standard (TCP/IP)** | TCP/IP プロトコルを使用して Azure Database for MariaDB に接続します |
-   | ホスト名 | **mydemoserver.mariadb.database.azure.com** | 先ほど書き留めたサーバー名。 |
+   | hostname | **mydemoserver.mariadb.database.azure.com** | 先ほど書き留めたサーバー名。 |
    | Port | **3306** | Azure Database for MariaDB 用の既定のポート。 |
    | ユーザー名 | **myadmin\@mydemoserver** | 先ほど書き留めたサーバー管理者ログイン。 |
-   | パスワード | *<お使いのパスワード>* | 先ほど設定した管理者アカウントのパスワードを使用します。 |
+   | Password | *<お使いのパスワード>* | 先ほど設定した管理者アカウントのパスワードを使用します。 |
 
 3. すべてのパラメーターが正しく構成されているかどうかを確認するために、 **[Test Connection]\(接続のテスト\)** を選択します。
 
 4. 接続を選択するとサーバーに正常に接続できます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このクイック スタートで使用したリソースが別のクイック スタートまたはチュートリアルに必要なければ、次のコマンドを実行して削除できます。 
 
@@ -238,7 +237,7 @@ az group delete --name myresourcegroup
 az mariadb server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure CLI での MariaDB データベースの設計](./tutorial-design-database-cli.md)

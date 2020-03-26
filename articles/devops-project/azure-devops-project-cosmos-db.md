@@ -10,10 +10,10 @@ ms.date: 07/11/2019
 author: mlearned
 monikerRange: vsts
 ms.openlocfilehash: 229b4b9f53ea3866dce1169645f6d6da20827271
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73888900"
 ---
 # <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-projects"></a>DevOps Projects を使用して、Azure Cosmos DB を使用する Node.js アプリをデプロイする
@@ -45,7 +45,7 @@ Azure サブスクリプションが必要です。Azure サブスクリプシ�
 
 DevOps Projects によって、Azure Pipelines に CI/CD パイプラインが作成されます。 新しい Azure DevOps 組織を作成するか、既存の組織を使用できます。 DevOps Projects では、Azure Cosmos DB、Application Insights、App Service、App Service プランなどの Azure リソースも、選択した Azure サブスクリプションに作成されます。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. 左側のウィンドウで、 **[リソースの作成]** を選びます。
 
@@ -152,11 +152,11 @@ App Service に最新の作業をデプロイする CI/CD プロセスを使用�
 
      数秒後に Azure DevOps でビルドが開始され、リリースが実行されて、変更がデプロイされます。 DevOps Projects ダッシュボードで、またはブラウザーで Azure DevOps 組織を使用して、ビルドの状態を監視します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 作成した関連リソースが必要なくなったら、削除してください。 DevOps Projects ダッシュボードで**削除**機能を使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 チームのニーズを満たすようにこれらのビルドおよびリリース パイプラインを変更できます。 この CI/CD パターンをご自身の他のパイプラインのテンプレートとして使用することもできます。 このチュートリアルでは、以下の内容を学習しました。
 
@@ -167,7 +167,7 @@ App Service に最新の作業をデプロイする CI/CD プロセスを使用�
 > * CI パイプライン を確認する
 > * CD パイプライン を確認する
 > * 変更を Git にコミットし、Azure に自動的にデプロイする
-> * リソースのクリーンアップ
+> * リソースをクリーンアップする
 
 詳細および次の手順については、「[複数ステージの継続的デプロイ (CD) パイプラインを定義する](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts)」を参照してください。
 

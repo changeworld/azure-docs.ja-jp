@@ -8,10 +8,10 @@ ms.date: 01/18/2020
 ms.topic: quickstart
 ms.custom: mvc
 ms.openlocfilehash: e3e878b4f548da64ab04eb079d51b0846cf35c57
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76313877"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>クイック スタート:Visual Studio Code で Azure Stream Analytics ジョブを作成する (プレビュー)
@@ -175,7 +175,7 @@ Stream Analytics ジョブを定義する前に、後でジョブの入力とし
 
    |設定|推奨値|説明|
    |-------|---------------|-----------|
-   |Name|入力|ジョブの入力を識別する名前を入力します。|
+   |名前|入力|ジョブの入力を識別する名前を入力します。|
    |IotHubNamespace|MyASAIoTHub|対象の IoT ハブの名前を選択または入力します。 IoT ハブが同じサブスクリプション内に作成されている場合、IoT ハブ名は自動的に検出されます。|
    |SharedAccessPolicyName|iothubowner| |
 
@@ -207,7 +207,7 @@ Stream Analytics ジョブを定義する前に、後でジョブの入力とし
 
    |設定|推奨値|説明|
    |-------|---------------|-----------|
-   |Name|Output| ジョブの出力を識別する名前を入力します。|
+   |名前|出力| ジョブの出力を識別する名前を入力します。|
    |ストレージ アカウント|asaquickstartstorage|ストレージ アカウントの名前を選択または入力します。 ストレージ アカウントが同じサブスクリプション内に作成されている場合、ストレージ アカウント名は自動的に検出されます。|
    |コンテナー|container1|ストレージ アカウントで作成した既存のコンテナーを選択します。|
    |パスのパターン|output|コンテナー内に作成するファイル パスの名前を入力します。|

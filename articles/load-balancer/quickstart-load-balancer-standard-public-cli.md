@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: fdbd002ac946f3ac3a1a67980905d4ed6f5510c5
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 1f6a05fdfc28adf412ffbd1402e37b69d1c51634
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470345"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79477767"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>クイック スタート:Azure CLI を使用して VM の負荷を分散する Standard Load Balancer を作成する
 
@@ -58,7 +58,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
   az network public-ip create --resource-group myResourceGroupSLB --name myPublicIP --sku standard --zone 1
 ```
 
-Basic パブリック IP を作成するには、```-SKU Basic``` を使用します。 Basic パブリック IP は、**Standard** Load Balancer と共に利用することはできません。 運用環境のワークロードには **Standard** の使用をお勧めします。
+Basic パブリック IP を作成するには、`-SKU Basic` を使用します。 Basic パブリック IP は、**Standard** Load Balancer と共に利用することはできません。 運用環境のワークロードには **Standard** の使用をお勧めします。
 
 > [!IMPORTANT]
 > 以降このクイックスタートでは、前の SKU 選択プロセスで **Standard** SKU が選択されたことを前提に話を進めます。
@@ -73,7 +73,7 @@ Basic パブリック IP を作成するには、```-SKU Basic``` を使用し�
 
 ### <a name="create-the-load-balancer"></a>ロード バランサーを作成する
 
-[az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) を使用して、**myLoadBalancer** という名前のパブリック Azure Load Balancer を作成します。これには、**myFrontEnd** という名前のフロントエンド プールと、前のステップで作成したパブリック IP アドレス **myPublicIP** に関連付けられている **myBackEndPool** という名前のバックエンド プールを含めます。 Basic パブリック IP を作成するには、```--sku basic``` を使用します。 Microsoft では、運用環境のワークロードに Standard SKU をお勧めします。
+[az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) を使用して、**myLoadBalancer** という名前のパブリック Azure Load Balancer を作成します。これには、**myFrontEnd** という名前のフロントエンド プールと、前のステップで作成したパブリック IP アドレス **myPublicIP** に関連付けられている **myBackEndPool** という名前のバックエンド プールを含めます。 Basic パブリック IP を作成するには、`--sku basic` を使用します。 Microsoft では、運用環境のワークロードに Standard SKU をお勧めします。
 
 ```azurecli-interactive
   az network lb create \
@@ -83,7 +83,7 @@ Basic パブリック IP を作成するには、```-SKU Basic``` を使用し�
     --public-ip-address myPublicIP \
     --frontend-ip-name myFrontEnd \
     --backend-pool-name myBackEndPool       
-  ```
+```
 
 > [!IMPORTANT]
 > 以降このクイックスタートでは、前の SKU 選択プロセスで **Standard** SKU が選択されたことを前提に話を進めます。
@@ -133,7 +133,8 @@ Basic パブリック IP を作成するには、```-SKU Basic``` を使用し�
     --name myVnet \
     --subnet-name mySubnet
 ```
-###  <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
+
+### <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
 
 Standard Load Balancer の場合、バックエンドが扱う VM には、ネットワーク セキュリティ グループに属している NIC が必要です。 ネットワーク セキュリティ グループを作成して、仮想ネットワークへの受信接続を定義します。
 
@@ -161,6 +162,7 @@ Standard Load Balancer の場合、バックエンドが扱う VM には、ネ�
     --access allow \
     --priority 200
 ```
+
 ### <a name="create-nics"></a>NIC の作成
 
 [az network nic create](/cli/azure/network/nic#az-network-nic-create) を使用して 3 つのネットワーク インターフェイスを作成し、それらをパブリック IP アドレスとネットワーク セキュリティ グループに関連付けます。 
@@ -246,11 +248,11 @@ runcmd:
   - npm init
   - npm install express -y
   - nodejs index.js
-``` 
- 
+```
+
 [az vm create](/cli/azure/vm#az-vm-create) で、仮想マシンを作成します。
 
- ```azurecli-interactive
+```azurecli-interactive
 
   az vm create \
     --resource-group myResourceGroupSLB \
@@ -283,6 +285,7 @@ runcmd:
     --no-wait
 
 ```
+
 VM がデプロイされるまでに、数分かかる場合があります。
 
 ## <a name="test-the-load-balancer"></a>ロード バランサーをテストする
@@ -295,16 +298,18 @@ VM がデプロイされるまでに、数分かかる場合があります。
     --name myPublicIP \
     --query [ipAddress] \
     --output tsv
-``` 
+```
+
    ![ロード バランサーをテストする](./media/load-balancer-standard-public-cli/running-nodejs-app.png)
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要がなくなったら、[az group delete](/cli/azure/group#az-group-delete) コマンドを使用して、リソース グループ、ロード バランサー、およびすべての関連リソースを削除できます。
 
-```azurecli-interactive 
+```azurecli-interactive
   az group delete --name myResourceGroupSLB
 ```
+
 ## <a name="next-steps"></a>次のステップ
 このクイック スタートでは、Standard Load Balancer を作成し、それに VM をアタッチして、ロード バランサー トラフィック規則と正常性プローブを構成してから、ロード バランサーをテストしました。 Azure Load Balancer についてさらに学習するには、[Azure Load Balancer のチュートリアル](tutorial-load-balancer-standard-public-zone-redundant-portal.md)に進んでください。
 

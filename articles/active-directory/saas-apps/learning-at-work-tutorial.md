@@ -17,10 +17,10 @@ ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3249957fa20c208d0fd06c676200753163d4bfc8
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70376074"
 ---
 # <a name="tutorial-integrate-learning-at-work-with-azure-active-directory"></a>チュートリアル:Learning at Work と Azure Active Directory の統合
@@ -29,7 +29,7 @@ ms.locfileid: "70376074"
 
 * Learning at Work にアクセスする Azure AD のユーザーを制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Learning at Work に自動的にサインインするように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

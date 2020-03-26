@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/27/2020
 ms.openlocfilehash: 4adcda6030ed59cb6cc2285eb1c1eea0f768662c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77662748"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>チュートリアル:Azure Logic Apps、Azure Functions、Azure Storage を使用してメール処理のタスクを自動化する
@@ -601,7 +601,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
    | 設定 | Value | Notes |
    | ------- | ----- | ----- |
    | **To** | <*recipient-email-address*> | テスト目的で自分の電子メール アドレスを使用できます。 |
-   | **[件名]**  | ```ASAP - Review applicant for position:``` **件名** | メールに付ける件名。 このボックス内をクリックし、サンプル テキストを入力して、動的コンテンツ リストから **[新しい電子メールが届いたとき]** の **[Subject]** フィールドを選択します。 |
+   | **件名**  | ```ASAP - Review applicant for position:``` **件名** | メールに付ける件名。 このボックス内をクリックし、サンプル テキストを入力して、動的コンテンツ リストから **[新しい電子メールが届いたとき]** の **[Subject]** フィールドを選択します。 |
    | **本文** | ```Please review new applicant:``` <p>```Applicant name:``` **差出人** <p>```Application file location:``` **パス** <p>```Application email content:``` **本文** | メールの本文の内容。 このボックス内をクリックし、サンプル テキストを入力して、動的コンテンツ リストから次のフィールドを選択します。 <p>- **[新しい電子メールが届いたとき]** の **[差出人]** フィールド </br>- **[Create blob for email body]** の **[パス]** フィールド </br>- **[Call RemoveHTMLFunction to clean email body]** の **[Body]\(本文\)** フィールド |
    ||||
 

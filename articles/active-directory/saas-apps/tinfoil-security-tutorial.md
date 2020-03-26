@@ -17,10 +17,10 @@ ms.date: 10/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 71d3078b553843922cd51e4e0f43ea84b6dcde16
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74170757"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tinfoil-security"></a>チュートリアル:TINFOIL SECURITY と Azure Active Directory のシングル サインオン (SSO) 統合
@@ -150,7 +150,7 @@ TINFOIL SECURITY に対する Azure AD SSO を構成してテストするには�
 
 1. **[セキュリティ]** をクリックします。
 
-    ![セキュリティ](./media/tinfoil-security-tutorial/ic798972.png "セキュリティ")
+    ![Security](./media/tinfoil-security-tutorial/ic798972.png "Security")
 
 1. **[シングル サインオン]** 構成ページで、次の手順を実行します。
 
@@ -166,7 +166,7 @@ TINFOIL SECURITY に対する Azure AD SSO を構成してテストするには�
   
     e. **[Your Account ID]\(アカウント ID\)** の値をコピーし、Azure portal の **[ユーザー属性とクレーム]** セクションの **[ソース属性]** ボックスに値を貼り付けます。
 
-    f. **[Save]** をクリックします。
+    f. **[保存]** をクリックします。
 
 ### <a name="create-tinfoil-security-test-user"></a>TINFOIL SECURITY のテスト ユーザーの作成
 

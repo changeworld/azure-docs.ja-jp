@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 07/11/2019
 ms.openlocfilehash: 602de3e23eb5419958f84b071e2220550d1d04d0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73821716"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Azure SQL Database マネージド インスタンスの概要
@@ -45,7 +45,7 @@ ms.locfileid: "73821716"
 
 マネージド インスタンスを作成してアクセスを構成したら、オンプレミスまたは Azure VM 上の SQL Server からのデータベースの移行を開始できます。 移行するソース データベースにサポートされていない機能がある場合、移行は失敗します。 失敗を回避し、互換性を確認するために、[Data Migration Assistant (DMA) ](https://www.microsoft.com/download/details.aspx?id=53595) をインストールできます。これにより、SQL Server 上のデータベースが分析され、マネージド インスタンスへの移行を妨げる可能性がある問題 ([FileStream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) や複数のログ ファイルの存在など) が特定されます。 このような問題を解決すると、データベースはマネージド インスタンスに移行できる状態になります。 もう 1 つの便利なツールとして、[Database Experimentation Assistant](https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/) があります。このツールを使用すると、SQL Server 上のワークロードを記録し、マネージド インスタンス上で再生することができます。そのため、マネージド インスタンスに移行した場合にパフォーマンスの問題が発生するかどうかを判断できます。
 
-データベースをマネージド インスタンスに移行できる状態になったら、ネイティブの SQL Server 復元機能を使用して、データベースを `.bak` ファイルからマネージド インスタンスに復元できます。 この方法を使用すると、SQL Server データベース エンジンがインストールされているオンプレミスまたは Azure VM からデータベースを移行することができます。 クイック スタートについては、[バックアップからマネージド インスタンスへの復元](sql-database-managed-instance-get-started-restore.md)に関するページを参照してください。 このクイック スタートでは、`RESTORE` Transact-SQL コマンドを使用して、Azure Blob Storage に格納されている `.bak` ファイルから復元します。
+データベースをマネージド インスタンスに移行できる状態になったら、ネイティブの SQL Server 復元機能を使用して、データベースを `.bak` ファイルからマネージド インスタンスに復元できます。 この方法を使用すると、SQL Server データベース エンジンがインストールされているオンプレミスまたは Azure VM からデータベースを移行することができます。 クイック スタートについては、[バックアップからマネージド インスタンスへの復元](sql-database-managed-instance-get-started-restore.md)に関するページを参照してください。 このクイック スタートでは、`.bak` Transact-SQL コマンドを使用して、Azure Blob Storage に格納されている `RESTORE` ファイルから復元します。
 
 > [!TIP]
 > `BACKUP` Transact-SQL コマンドを使用して Azure Blob Storage にデータベースのバックアップを作成する場合は、「[SQL Server Backup to URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url)」を参照してください。
@@ -70,7 +70,7 @@ ms.locfileid: "73821716"
 
 [推奨される移行プロセス](sql-database-managed-instance-migrate.md)の詳細を確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [マネージド インスタンスでサポートされている機能の概要の一覧についてはこちら](sql-database-features.md)、[詳細情報と既知の問題についてはこちら](sql-database-managed-instance-transact-sql-information.md)を確認します。
 - [マネージド インスタンスの技術的な特性](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)を学びます。
