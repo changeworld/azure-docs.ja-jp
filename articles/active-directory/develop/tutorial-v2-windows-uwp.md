@@ -16,10 +16,10 @@ ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 68473ff5a3faddd36bd4299dfdc882f679acd068
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79129889"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>ユニバーサル Windows プラットフォーム アプリケーション (XAML) から Microsoft Graph API を呼び出す
@@ -206,7 +206,7 @@ Visual Studio では、プロジェクト テンプレートの一部として *
     }
     ```
 
-#### ユーザー トークンを対話形式で取得する<a name="more-information"></a>
+#### <a name="get-a-user-token-interactively"></a>ユーザー トークンを対話形式で取得する<a name="more-information"></a>
 
 `AcquireTokenInteractive` メソッドによって、ユーザーにサインインを求めるウィンドウが表示されます。 通常、アプリケーションのユーザーは、保護されたリソースに初めてアクセスするときに、対話形式でサインインを求められます。 また、自動でのトークンの取得に失敗した場合にも、ユーザーはサインインする必要があります。 たとえば、ユーザーのパスワードが期限切れになっている場合などです。
 
@@ -295,7 +295,7 @@ Visual Studio では、プロジェクト テンプレートの一部として *
 > [!NOTE]
 > MSAL.NET では、トークンの取得やアカウントの操作に非同期メソッドを使用しています。 UI スレッドでの UI 操作がサポートされている必要があります。 そのため、`Dispatcher.RunAsync` 呼び出しと、予防的な `ConfigureAwait(false)` 呼び出しが使用されています。
 
-#### サインアウトに関する詳細情報<a name="more-information-on-sign-out"></a>
+#### <a name="more-information-about-signing-out"></a>サインアウトに関する詳細情報<a name="more-information-on-sign-out"></a>
 
 `SignOutButton_Click` メソッドは、MSAL ユーザー キャッシュからユーザーを削除します。 このメソッドは、実際には現在のユーザーを忘れるように MSAL に指示します。 トークンを取得するための以降の要求は、対話型の場合にのみ成功します。
 
@@ -320,7 +320,7 @@ Visual Studio では、プロジェクト テンプレートの一部として *
    }
    ```
 
-#### 詳細情報<a name="more-information-1"></a>
+#### <a name="more-information"></a>詳細情報<a name="more-information-1"></a>
 
 **OpenID 接続**を使用して取得した ID トークンにも、ユーザー関連情報の少量のサブセットが含まれています。 `DisplayBasicTokenInfo` は、トークンに含まれている基本的な情報を表示します。 この情報には、ユーザーの表示名や ID が含まれます。 また、トークンの有効期限やアクセス トークン自体を表す文字列も含まれます。 **[Call Microsoft Graph API]\(Microsoft Graph API の呼び出し\)** ボタンを数回選択すると、その後の要求で同じトークンが再利用されていることが確認できます。 また、MSAL がトークンの更新時期だと判断したときに、有効期限が延長されることも確認できます。
 

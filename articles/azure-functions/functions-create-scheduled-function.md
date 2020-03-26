@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 03/28/2018
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 808f0f81f937da688a8873e5f6ee959976e9d6aa
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75769287"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Azure でタイマーによってトリガーされる関数を作成する
@@ -36,7 +36,7 @@ Azure Functions を使用して、定義したスケジュールに基づいて�
 
 ## <a name="create-a-timer-triggered-function"></a>タイマーによってトリガーされる関数の作成
 
-1. Function App を展開し、 **[関数]** の横にある **[+]** ボタンをクリックします。 これが関数アプリの初めての関数の場合は、 **[ポータル内]** 、 **[続行]** の順に選択します。 それ以外の場合は、手順 3 に進みます。
+1. Function App を展開し、 **[関数]+ の横にある** [ **]** ボタンをクリックします。 これが関数アプリの初めての関数の場合は、 **[ポータル内]** 、 **[続行]** の順に選択します。 それ以外の場合は、手順 3 に進みます。
 
    ![Azure Portal での関数のクイック スタート ページ](./media/functions-create-scheduled-function/function-app-quickstart-choose-portal.png)
 
@@ -50,7 +50,7 @@ Azure Functions を使用して、定義したスケジュールに基づいて�
 
     | 設定 | 推奨値 | 説明 |
     |---|---|---|
-    | **Name** | Default | タイマーによってトリガーされる関数の名前を定義します。 |
+    | **名前** | Default | タイマーによってトリガーされる関数の名前を定義します。 |
     | **[スケジュール]** | 0 \*/1 \* \* \* \* | 関数を毎分実行するようにスケジュールする 6 つのフィールドの [CRON 式](functions-bindings-timer.md#ncrontab-expressions)。 |
 
 4. **Create** をクリックしてください。 選択した言語で、毎分 (00 秒) に実行する関数が作成されます。
@@ -65,7 +65,7 @@ Azure Functions を使用して、定義したスケジュールに基づいて�
 
 1. 関数を展開し、 **[統合]** をクリックします。 ここでは、関数の入力および出力バインドを定義し、スケジュールも設定します。 
 
-2. `0 0 */1 * * *` の新しい 1 時間ごとの **[スケジュール]** 値を入力し、 **[保存]** をクリックします。  
+2. **の新しい 1 時間ごとの**[スケジュール]`0 0 */1 * * *` 値を入力し、 **[保存]** をクリックします。  
 
 ![関数が、Azure Portal のタイマー スケジュールを更新します。](./media/functions-create-scheduled-function/functions-timer-trigger-change-schedule.png)
 

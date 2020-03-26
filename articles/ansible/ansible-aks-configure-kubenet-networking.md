@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, bash, cloudshell, プレイブック, aks, コ
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.openlocfilehash: bfb19371ad651439c087cebd03023d48852ee2df
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156881"
 ---
 # <a name="tutorial-configure-kubenet-networking-in-azure-kubernetes-service-aks-using-ansible"></a>チュートリアル:Ansible を使用して Azure Kubernetes Service (AKS) で kubenet ネットワークを構成する
@@ -28,7 +28,7 @@ AKS のアプリケーションに対するネットワークの詳細につい�
 
 > [!div class="checklist"]
 >
-> * AKS クラスターの作成
+> * AKS クラスターを作成する
 > * Azure kubenet ネットワークの構成
 
 ## <a name="prerequisites"></a>前提条件
@@ -101,7 +101,7 @@ AKS のアプリケーションに対するネットワークの詳細につい�
   register: aks
 ```
 
-以下に、サンプルのプレイブックを使用する際に考慮すべき重要な点をいくつか示します。
+以下に、サンプル プレイブックを使用する際に考慮すべき重要な点をいくつか示します。
 
 - `azure_rm_aks_version` モジュールを使用して、サポートされているバージョンを見つけます。
 - `vnet_subnet_id` は、前のセクションで作成したサブネットです。
@@ -155,13 +155,13 @@ AKS クラスターを作成すると、ネットワーク セキュリティ �
       route_table: "{{ routetable.route_tables[0].id }}"
 ```
 
-以下に、サンプルのプレイブックを使用する際に考慮すべき重要な点をいくつか示します。
+以下に、サンプル プレイブックを使用する際に考慮すべき重要な点をいくつか示します。
 
 - `node_resource_group` は、AKS ノードが作成されるリソース グループ名です。
 - `vnet_subnet_id` は、前のセクションで作成したサブネットです。
 
 
-## <a name="run-the-sample-playbook"></a>サンプル プレイブックの実行
+## <a name="run-the-sample-playbook"></a>サンプル プレイブックを実行する
 
 このセクションでは、この記事で作成するタスクを呼び出す完全なサンプル プレイブックを示します。 
 
@@ -323,7 +323,7 @@ PLAY RECAP
 localhost                  : ok=15   changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この記事で作成したリソースが不要になったら、削除してください。 
 
@@ -350,7 +350,7 @@ localhost                  : ok=15   changed=2    unreachable=0    failed=0    s
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [チュートリアル - Ansible を使用して AKS で Azure Container Networking Interface (CNI) ネットワークを構成する](./ansible-aks-configure-cni-networking.md)

@@ -17,10 +17,10 @@ ms.date: 04/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b6b0d3248e63f4fc053748cda1633497d4eb4285
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67107036"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amms"></a>チュートリアル:Azure Active Directory と AMMS の統合

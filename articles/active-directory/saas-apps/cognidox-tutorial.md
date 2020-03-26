@@ -17,10 +17,10 @@ ms.date: 07/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad06d2f695109866bab60502a67f0d2c2f425477
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68480265"
 ---
 # <a name="tutorial-integrate-cognidox-with-azure-active-directory"></a>チュートリアル:Cognidox と Azure Active Directory の統合
@@ -29,7 +29,7 @@ ms.locfileid: "68480265"
 
 * Cognidox にアクセスできるユーザーを Azure AD で制御する。
 * ユーザーが自分の Azure AD アカウントを使用して Cognidox に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -101,7 +101,7 @@ Cognidox で Azure AD SSO を構成してテストするには、次の構成要
 
 6. その他に、Cognidox アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 [ユーザー属性] ダイアログの [ユーザー要求] セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。 
 
-    | Name | 名前空間  |  変換 | パラメーター 1 |
+    | 名前 | 名前空間  |  変換 | パラメーター 1 |
     | ---------------| --------------- | --------- |
     | wanshort | http://appinux.com/windowsaccountname2 | ExtractMailPrefix() | user.userprincipalname |
 
@@ -118,7 +118,7 @@ Cognidox で Azure AD SSO を構成してテストするには、次の構成要
 
     f. **[パラメーター 1]** の一覧に、その行に対して表示される値を入力します。
 
-    g. **[Save]** をクリックします。
+    g. **[保存]** をクリックします。
 
 4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 

@@ -15,10 +15,10 @@ ms.date: 09/26/2019
 ms.author: mametcal
 ms.custom: mvc
 ms.openlocfilehash: d519ac44d617f725aa9b3d3f11671122bd9477bc
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78944321"
 ---
 # <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>チュートリアル:Spring Boot アプリ内で機能フラグを使用する

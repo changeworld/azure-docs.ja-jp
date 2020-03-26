@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 10/01/2018
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 3d4cfc40f1849ecd2745b1d662973c7f64a0a60c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75769253"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>Azure Queue Storage によってトリガーされる関数の作成
@@ -36,7 +36,7 @@ Azure Storage キューにメッセージが送信されたときにトリガー
 
 ## <a name="create-a-queue-triggered-function"></a>キューによってトリガーされる関数の作成
 
-1. Function App を展開し、 **[関数]** の横にある **[+]** ボタンをクリックします。 これが関数アプリの初めての関数の場合は、 **[ポータル内]** 、 **[続行]** の順に選択します。 それ以外の場合は、手順 3 に進みます。
+1. Function App を展開し、 **[関数]+ の横にある** [ **]** ボタンをクリックします。 これが関数アプリの初めての関数の場合は、 **[ポータル内]** 、 **[続行]** の順に選択します。 それ以外の場合は、手順 3 に進みます。
 
    ![Azure Portal での関数のクイック スタート ページ](./media/functions-create-storage-queue-triggered-function/function-app-quickstart-choose-portal.png)
 
@@ -56,7 +56,7 @@ Azure Storage キューにメッセージが送信されたときにトリガー
 
     | 設定 | 推奨値 | 説明 |
     |---|---|---|
-    | **Name** | Function App 内で一意 | このキューによってトリガーされる関数の名前。 |
+    | **名前** | Function App 内で一意 | このキューによってトリガーされる関数の名前。 |
     | **キュー名**   | myqueue-items    | ストレージ アカウント内の接続先のキューの名前。 |
     | **ストレージ アカウント接続** | AzureWebJobsStorage | Function App によって既に使用されているストレージ アカウント接続を使用するか、新しく作成できます。  |    
 

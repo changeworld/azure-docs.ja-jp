@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: 09df78955de6423244c2d8ec94e1e1c06ecab257
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75648739"
 ---
 # <a name="create-and-use-a-custom-provider"></a>カスタム プロバイダーを作成して使用する
@@ -109,7 +109,7 @@ Azure 関数アプリのトリガー URL が **endpoint** の値になります�
 
 ### <a name="custom-actions"></a>カスタム アクション
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!NOTE]
 > `{subscriptionId}` と `{resourceGroupName}` の各プレースホルダーは、カスタム プロバイダーのデプロイ先のサブスクリプションとリソース グループに置き換えてください。
@@ -129,7 +129,7 @@ az resource invoke-action --action myCustomAction \
 *ids* | はい | カスタム プロバイダーのリソース ID
 *request-body* | いいえ | エンドポイントに送信される要求本文
 
-# <a name="templatetabtemplate"></a>[テンプレート](#tab/template)
+# <a name="template"></a>[テンプレート](#tab/template)
 
 [なし] :
 
@@ -137,7 +137,7 @@ az resource invoke-action --action myCustomAction \
 
 ### <a name="custom-resources"></a>カスタム リソース
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!NOTE]
 > `{subscriptionId}` と `{resourceGroupName}` の各プレースホルダーは、カスタム プロバイダーのデプロイ先のサブスクリプションとリソース グループに置き換えてください。
@@ -182,7 +182,7 @@ az resource show --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGr
 ---|---|---
 *id* | はい | カスタム リソースのリソース ID。 この ID は、カスタム プロバイダーのリソース ID の拡張情報です。
 
-# <a name="templatetabtemplate"></a>[テンプレート](#tab/template)
+# <a name="template"></a>[テンプレート](#tab/template)
 
 サンプル Resource Manager テンプレート:
 

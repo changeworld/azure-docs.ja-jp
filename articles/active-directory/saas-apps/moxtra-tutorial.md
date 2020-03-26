@@ -17,10 +17,10 @@ ms.date: 12/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d3e53ba11744b0e78287ffc46c4aac7b99b16b23
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74889636"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-moxtra"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Moxtra の統合
@@ -115,7 +115,7 @@ Moxtra に対する Azure AD SSO を構成してテストするには、次の�
 
     1. **[OK]** をクリックします。
 
-    1. **[Save]** をクリックします。
+    1. **[保存]** をクリックします。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 

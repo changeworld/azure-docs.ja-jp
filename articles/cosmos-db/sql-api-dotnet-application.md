@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 02/27/2020
 ms.author: sngun
 ms.openlocfilehash: 1f2051addfa1266b754d230c3804834c63f89002
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78274069"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>チュートリアル:Azure Cosmos DB で .NET SDK を使用して ASP.NET Core MVC Web アプリケーションを開発する
@@ -42,7 +42,7 @@ ms.locfileid: "78274069"
 > [!TIP]
 > このチュートリアルでは、ASP.NET Core MVC と Azure App Service の使用経験がある読者を想定しています。 ASP.NET Core や[前提条件となるツール](#prerequisites)を初めて扱う場合は、[GitHub][GitHub] から完成したサンプル プロジェクトをダウンロードし、必要な NuGet パッケージを追加して実行することをお勧めします。 プロジェクトをビルドした後でこの記事を見直すと、プロジェクトのコンテキストのコードについての洞察を得ることができます。
 
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a><a name="prerequisites"></a>前提条件
 
 この記事の手順を実行する前に、以下のリソースがあることを確認してください。
 
@@ -54,7 +54,7 @@ ms.locfileid: "78274069"
 
 この記事のすべてのスクリーンショットは、Microsoft Visual Studio Community 2019 のものです。 別のバージョンを使用すると、画面とオプションが完全に一致しなくなる可能性があります。 このソリューションは、前提条件を満たしている場合に機能します。
 
-## <a name="create-an-azure-cosmos-account"></a>手順 1:Azure Cosmos アカウントを作成する
+## <a name="step-1-create-an-azure-cosmos-account"></a><a name="create-an-azure-cosmos-account"></a>手順 1:Azure Cosmos アカウントを作成する
 
 まず Azure Cosmos アカウントを作成します。 Azure Cosmos DB SQL API アカウントが既にある場合、または Azure Cosmos DB エミュレーターを使用する場合は、スキップして「[手順 2: 新しい ASP.NET MVC アプリケーションを作成する](#create-a-new-mvc-application)」に進みます。
 
@@ -64,7 +64,7 @@ ms.locfileid: "78274069"
 
 次のセクションでは、新しい ASP.NET Core MVC アプリケーションを作成します。
 
-## <a name="create-a-new-mvc-application"></a>手順 2:新しい ASP.NET Core MVC アプリケーションを作成する
+## <a name="step-2-create-a-new-aspnet-core-mvc-application"></a><a name="create-a-new-mvc-application"></a>手順 2:新しい ASP.NET Core MVC アプリケーションを作成する
 
 1. Visual Studio を開き、 **[新しいプロジェクトの作成]** を選択します。
 
@@ -80,7 +80,7 @@ ms.locfileid: "78274069"
 
 1. **[デバッグ]**  >  **[デバッグの開始]** を選択するか F5 キーを押して、ASP.NET アプリケーションをローカルで実行します。
 
-## <a name="add-nuget-packages"></a>手順 3:Azure Cosmos DB NuGet パッケージをプロジェクトに追加する
+## <a name="step-3-add-azure-cosmos-db-nuget-package-to-the-project"></a><a name="add-nuget-packages"></a>手順 3:Azure Cosmos DB NuGet パッケージをプロジェクトに追加する
 
 これで、このソリューションに必要な ASP.NET Core MVC フレームワーク コードのほとんどを準備できました。次は Azure Cosmos DB に接続するために必要な NuGet パッケージを追加しましょう。
 
@@ -98,11 +98,11 @@ ms.locfileid: "78274069"
    Install-Package Microsoft.Azure.Cosmos
    ```
   
-## <a name="set-up-the-mvc-application"></a>手順 4:ASP.NET Core MVC アプリケーションをセットアップする
+## <a name="step-4-set-up-the-aspnet-core-mvc-application"></a><a name="set-up-the-mvc-application"></a>手順 4:ASP.NET Core MVC アプリケーションをセットアップする
 
 次に、モデル、ビュー、およびコントローラーをこの MVC アプリケーションに追加してみましょう。
 
-### <a name="add-a-model"></a> モデルを追加する
+### <a name="add-a-model"></a><a name="add-a-model"></a> モデルを追加する
 
 1. **ソリューション エクスプローラー**で、**Models** フォルダーを右クリックし、 **[追加]**  >  **[クラス]** を選択します。
 
@@ -114,7 +114,7 @@ ms.locfileid: "78274069"
 
 Azure Cosmos DB では、データの移動と格納に JSON が使用されます。 `JsonProperty` 属性を使って、JSON でのオブジェクトのシリアル化と逆シリアル化の方法を制御できます。 `Item` クラスは、`JsonProperty` 属性を示します。 このコードによって、JSON に入るプロパティ名の形式が制御されます。 また、.NET プロパティ `Completed` の名前が変更されます。
 
-### <a name="add-views"></a>ビューを追加する
+### <a name="add-views"></a><a name="add-views"></a>ビューを追加する
 
 次は、次の 3 つのビューを作成しましょう。
 
@@ -122,7 +122,7 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 * 新しい項目を作成するためのビューを追加する
 * 項目を編集するためのビューを追加する
 
-#### <a name="AddItemIndexView"></a>リスト項目ビューを追加する
+#### <a name="add-a-list-item-view"></a><a name="AddItemIndexView"></a>リスト項目ビューを追加する
 
 1. **ソリューション エクスプローラー**で、**Views** フォルダーを右クリックし、 **[追加]**  >  **[新しいフォルダー]** を選択します。 フォルダーに *Item* という名前を付けます。
 
@@ -141,7 +141,7 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 完了すると、Visual Studio によって作成された *cshtml* ファイルが開きます。 Visual Studio でそのファイルを閉じることができます。 これは後で使用します。
 
-#### <a name="AddNewIndexView"></a>新しい項目を作成するためのビューを追加する
+#### <a name="add-a-new-item-view"></a><a name="AddNewIndexView"></a>新しい項目を作成するためのビューを追加する
 
 項目を一覧表示するビューの作成方法と同様に、次の手順を使用して項目を作成する新しいビューを作成します。
 
@@ -155,7 +155,7 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
    * **[Use a layout page]\(レイアウト ページを使用する\)** をオンにして、「 *~/Views/Shared/_Layout.cshtml*」と入力します。
    * **[追加]** を選択します。
 
-#### <a name="AddEditIndexView"></a>項目を編集するためのビューを追加する
+#### <a name="add-an-edit-item-view"></a><a name="AddEditIndexView"></a>項目を編集するためのビューを追加する
 
 最後に、次の手順で項目を編集するビューを追加します。
 
@@ -171,7 +171,7 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 これらの手順が完了したら、Visual Studio に表示されている *cshtml* ドキュメントをすべて閉じてください。これらのビューは後で使用します。
 
-### <a name="initialize-services"></a>サービスを宣言して初期化する
+### <a name="declare-and-initialize-services"></a><a name="initialize-services"></a>サービスを宣言して初期化する
 
 最初に、Azure Cosmos DB に接続して使用するためのロジックを含むクラスを追加します。 このチュートリアルでは、このロジックを `CosmosDBService` というクラス、および `ICosmosDBService` というインターフェイス内にカプセル化します。 このサービスによって、CRUD 操作が実行されます。 また、不完全な項目の一覧表示、項目の作成、編集、削除などのフィード読み取り操作も実行されます。
 
@@ -203,7 +203,7 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
    :::code language="json" source="~/samples-cosmosdb-dotnet-core-web-app/src/appsettings.json":::
 
-### <a name="add-a-controller"></a>コントローラーを追加する
+### <a name="add-a-controller"></a><a name="add-a-controller"></a>コントローラーを追加する
 
 1. **ソリューション エクスプローラー**で、**Controllers** フォルダーを右クリックし、 **[追加]**  >  **[コントローラー]** を選択します。
 
@@ -221,7 +221,7 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 メソッド パラメーターの **Bind** 属性も使用して、オーバーポスティング攻撃から保護します。 詳細については、「[チュートリアル:ASP.NET MVC の Entity Framework を使用して CRUD 機能を実装する][Basic CRUD Operations in ASP.NET MVC]」を参照してください。
 
-## <a name="run-the-application"></a>手順 5: ローカルでアプリケーションを実行する
+## <a name="step-5-run-the-application-locally"></a><a name="run-the-application"></a>手順 5: ローカルでアプリケーションを実行する
 
 ローカル コンピューターでアプリケーションをテストするには、次の手順を実行します。
 
@@ -245,7 +245,7 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 1. アプリケーションのテストが完了したら、Ctrl キーを押しながら F5 キーを押してアプリケーションのデバッグを中止します。 これで、アプリケーションをデプロイする準備が整いました。
 
-## <a name="deploy-the-application-to-azure"></a>手順 6: アプリケーションの配置
+## <a name="step-6-deploy-the-application"></a><a name="deploy-the-application-to-azure"></a>手順 6: アプリケーションの配置
 
 以上で、Azure Cosmos DB と連携するアプリケーションが完成しました。今度は、この Web アプリを Azure App Service にデプロイします。  
 

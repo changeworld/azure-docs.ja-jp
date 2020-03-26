@@ -17,10 +17,10 @@ ms.date: 10/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5e54994d02dd1abbca1602952fbad058b3ad993d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72594258"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-scalex-enterprise"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ScaleX Enterprise の統合
@@ -29,7 +29,7 @@ ms.locfileid: "72594258"
 
 * ScaleX Enterprise にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して ScaleX Enterprise に自動的にサインインするように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -142,7 +142,7 @@ ScaleX Enterprise に対する Azure AD SSO を構成してテストするには
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
-1. ブラウザーに拡張機能を追加した後、 **[ScaleX Enterprise のセットアップ]** をクリックすると、ScaleX Enterprise アプリケーションに誘導されます。 そこから、管理者の資格情報を入力して ScaleX Enterprise にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 から 6 が自動化されます。
+1. ブラウザーに拡張機能を追加した後、 **[ScaleX Enterprise のセットアップ]** をクリックすると、ScaleX Enterprise アプリケーションに誘導されます。 そこから、管理者の資格情報を入力して ScaleX Enterprise にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 ～ 6 が自動化されます。
 
     ![セットアップの構成](common/setup-sso.png)
 

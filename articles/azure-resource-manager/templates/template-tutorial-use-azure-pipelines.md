@@ -6,10 +6,10 @@ ms.date: 10/29/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: e7d6b23aa3f35c99cf03f855152b2b231a60a965
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75921619"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>チュートリアル:Azure Pipelines を使用した Azure Resource Manager テンプレートの継続的インテグレーション
@@ -212,7 +212,7 @@ GitHub アカウントをお持ちでない場合は、[前提条件](#prerequis
 
 ## <a name="verify-the-deployment"></a>デプロイを検証する
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. リソース グループを開きます。 この名前は、パイプラインの YAML ファイルで指定したものです。  作成した 1 つのストレージ アカウントが表示されます。  ストレージ アカウント名は、**store** で始まります。
 1. ストレージ アカウント名を選択して開きます。
 1. **[プロパティ]** を選択します。 **[レプリケーション]** が **[ローカル冗長ストレージ (LRS)]** になっていることに注意してください。

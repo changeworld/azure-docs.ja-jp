@@ -17,10 +17,10 @@ ms.date: 08/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d4e497c556bde1be4e498cd85a68282a0e3b2666
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72026256"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Cisco Webex Meetings の統合
@@ -29,7 +29,7 @@ ms.locfileid: "72026256"
 
 * Cisco Webex Meetings にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Cisco Webex Meetings に自動的にサインインするように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -103,7 +103,7 @@ Cisco Webex Meetings に対する Azure AD SSO を構成してテストするに
 
 6. その他に、Cisco Webex Meetings アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 [ユーザー属性] ダイアログの [ユーザー要求] セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。 
 
-    | Name | ソース属性|
+    | 名前 | ソース属性|
     | ---------------|  --------- |
     |   firstname    | User.givenname |
     |   lastname    | User.surname |
@@ -120,7 +120,7 @@ Cisco Webex Meetings に対する Azure AD SSO を構成してテストするに
 
     e. **[ソース属性]** の一覧から、その行に表示される属性値をドロップダウン リストから選択します。
 
-    f. **[Save]** をクリックします。
+    f. **[保存]** をクリックします。
 
 4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -185,7 +185,7 @@ Cisco Webex Meetings に対する Azure AD SSO を構成してテストするに
     >[!NOTE]
     >**Just-In-Time** ユーザー プロビジョニングを有効にするには、 **[アカウントの自動作成]** をチェックする必要があります。 さらに、SAML トークン属性を、SAML 応答で渡す必要があります。
 
-    f. **[Save]** をクリックします。
+    f. **[保存]** をクリックします。
 
     >[!NOTE]
     >この構成は、メール形式の Webex UserID を使用するユーザー専用です。

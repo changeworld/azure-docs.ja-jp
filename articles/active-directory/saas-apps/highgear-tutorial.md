@@ -17,10 +17,10 @@ ms.date: 01/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ed06586435315935566ca0b1519b182d4fc47d39
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73159042"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-highgear"></a>チュートリアル:Azure Active Directory と HighGear の統合
@@ -150,7 +150,7 @@ HighGear のシングル サインオンを構成するには、お客様の Hig
 
 ![[Single Sign-On Settings]\(シングル サインオンの設定\) メニュー項目](media/highgear-tutorial/single-sign-on-settings-menu-item.png)
 
-1. **[Identity Provider Name]\(ID プロバイダー名\)** に、ログイン ページの HighGear のシングル サインオン ボタンに表示される簡単な説明を入力します。 例: Azure AD
+1. **[Identity Provider Name]\(ID プロバイダー名\)** に、ログイン ページの HighGear のシングル サインオン ボタンに表示される簡単な説明を入力します。 次に例を示します。Azure AD
 
 2. HighGear の **[Single Sign-On (SSO) URL]\(シングル サインオン (SSO) URL\)** フィールドに、Azure の **[HighGear の設定]** セクションにある **[ログイン URL]** フィールドの値を貼り付けます。
 
@@ -230,7 +230,7 @@ HighGear のシングル サインオンを構成するには、お客様の Hig
     ウィンドウが右側にスライドして、新しいユーザーの情報を入力できるようになります。  
     ![新しい連絡先フォーム](media/highgear-tutorial/new-contact-form.png)
 
-3. **[Name]\(名前\)** フィールドに、連絡先の名前を入力します。 例: Britta Simon
+3. **[Name]\(名前\)** フィールドに、連絡先の名前を入力します。 次に例を示します。Britta Simon
 
 4. **[More Options]\(その他のオプション\)** メニューをクリックし、 **[Account Info]\(アカウント情報\)** メニュー項目を選択します。
 
@@ -240,7 +240,7 @@ HighGear のシングル サインオンを構成するには、お客様の Hig
 
     **[Enable Single Sign-On]\(シングル サインオンを有効にする\)** フィールドも自動的に [Yes]\(はい\) に設定されます。
 
-6. **[Single Sign-On User Id]\(シングル サインオン ユーザー ID\)** フィールドに、ユーザーの ID を入力します。 次に例を示します。BrittaSimon@contoso.com
+6. **[Single Sign-On User Id]\(シングル サインオン ユーザー ID\)** フィールドに、ユーザーの ID を入力します。 例: BrittaSimon@contoso.com
 
     [Account Info]\(アカウント情報\) セクションは次のようになります。  
     ![完成した [Account Info]\(アカウント情報\) セクション](media/highgear-tutorial/finished-account-info-section.png)

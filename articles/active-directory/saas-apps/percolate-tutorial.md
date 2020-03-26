@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: a6c1f893757baf1e6c85420b31997a5073cff684
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67094595"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>チュートリアル:Azure Active Directory と Percolate との統合
@@ -120,7 +120,7 @@ Percolate で Azure AD シングル サインオンを構成するには、次�
 
     1. **[Azure AD 識別子]** 。
 
-    1. **ログアウト URL**
+    1. **[ログアウト URL]** 。
 
 ### <a name="configure-percolate-single-sign-on"></a>Percolate シングル サインオンの構成
 
@@ -172,7 +172,7 @@ Percolate で Azure AD シングル サインオンを構成するには、次�
 
     1. **[パスワードを表示]** を選択し、 **[パスワード]** ボックス内の値を書き留めます。
 
-    1. **作成** を選択します。
+    1. **［作成］** を選択します
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

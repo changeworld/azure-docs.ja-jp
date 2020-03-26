@@ -8,10 +8,10 @@ ms.date: 11/06/2018
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 7d121e9aeb897897322f1253c332e7a1baabdc9e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75768964"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Azure Logic Apps と統合される関数を作成する
@@ -43,7 +43,7 @@ Azure Functions は、Logic Apps デザイナーで Azure Logic Apps と統合�
 
 Cognitive Services API は、個々のリソースとして Azure で使用できます。 Text Analytics API を使用して、監視されているツイートの感情を検出します。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 2. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
 
@@ -53,9 +53,9 @@ Cognitive Services API は、個々のリソースとして Azure で使用で�
 
     | 設定      |  推奨値   | 説明                                        |
     | --- | --- | --- |
-    | **Name** | MyCognitiveServicesAccnt | 一意のアカウント名を選択します。 |
-    | **Location** | 米国西部 | お近くの場所を使用します。 |
-    | **[価格レベル]** | F0 | まずは低いレベルを選んでください。 呼び出し回数が不足する場合は、高いレベルにスケーリングします。|
+    | **名前** | MyCognitiveServicesAccnt | 一意のアカウント名を選択します。 |
+    | **場所** | 米国西部 | お近くの場所を使用します。 |
+    | **価格レベル** | F0 | まずは低いレベルを選んでください。 呼び出し回数が不足する場合は、高いレベルにスケーリングします。|
     | **リソース グループ** | myResourceGroup | このチュートリアルでは、すべてのサービスで同じリソース グループを使用します。|
 
 4. **[作成]** をクリックして、リソースを作成します。 
@@ -139,9 +139,9 @@ Cognitive Services API は、個々のリソースとして Azure で使用で�
 
     | 設定      |  推奨値   | 説明                                        |
     | ----------------- | ------------ | ------------- |
-    | **Name** | TweetSentiment | アプリの適切な名前を選択します。 |
+    | **名前** | TweetSentiment | アプリの適切な名前を選択します。 |
     | **リソース グループ** | myResourceGroup | 以前と同じ既存のリソース グループを選択します。 |
-    | **Location** | East US | 近くの場所を選択します。 |    
+    | **場所** | 米国東部 | 近くの場所を選択します。 |    
 
 4. 適切な設定値を入力したら、 **[作成]** をクリックしてロジック アプリを作成します。 
 
@@ -235,7 +235,7 @@ Cognitive Services API は、個々のリソースとして Azure で使用で�
 | 設定      |  推奨値   | 説明  |
 | ----------------- | ------------ | ------------- |
 | **To** | メール アドレスを入力します。 | 通知を受け取る電子メール アドレス。 |
-| **[件名]** | "ネガティブなツイートの感情を検出しました"  | 電子メール通知の件名。  |
+| **件名** | "ネガティブなツイートの感情を検出しました"  | 電子メール通知の件名。  |
 | **本文** | [ツイート テキスト]、[場所] | **[ツイート テキスト]** パラメーターと **[場所]** パラメーターをクリックします。 |
 
 1. **[保存]** をクリックします。

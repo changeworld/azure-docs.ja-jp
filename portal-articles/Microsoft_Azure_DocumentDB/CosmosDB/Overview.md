@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 12/13/2017
 ms.author: sewatson
 ms.openlocfilehash: bd5951fe86bde7e71c77d5564216421c1d2d1ea4
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "64708470"
 ---
 # <a name="azure-cosmos-db-documentation"></a>Azure Cosmos DB のドキュメント
@@ -47,14 +47,14 @@ Azure Cosmos DB といずれかのマルチモデル API を使用して、グ�
 
 - [.NET](/azure/cosmos-db/create-table-dotnet)
 
-## <a name="step-by-step-tutorials"></a>ステップバイステップのチュートリアル
+## <a name="step-by-step-tutorials"></a>ステップバイステップ チュートリアル
 
 Azure Cosmos DB を使用したアプリの開発方法の詳細:
 
-- Cosmos DB でアプリを開発する:[SQL](/azure/cosmos-db/tutorial-develop-sql-api-dotnet) | [MongoDB](/azure/cosmos-db/tutorial-develop-mongodb-nodejs) | [テーブル](/azure/cosmos-db/tutorial-develop-table-dotnet) | [グラフ](/azure/cosmos-db/tutorial-develop-graph-dotnet)
+- Cosmos DB でのアプリ開発: [SQL](/azure/cosmos-db/tutorial-develop-sql-api-dotnet) | [MongoDB](/azure/cosmos-db/tutorial-develop-mongodb-nodejs) | [Table](/azure/cosmos-db/tutorial-develop-table-dotnet) | [Graph](/azure/cosmos-db/tutorial-develop-graph-dotnet)
 - Cosmos DB へのデータ インポート: [SQL](/azure/cosmos-db/sql-api-import-data) | [MongoDB](/azure/cosmos-db/mongodb-migrate) 
-- Cosmos DB を使用してデータのクエリを実行する:[SQL](/azure/cosmos-db/tutorial-query-sql-api) | [MongoDB](/azure/cosmos-db/tutorial-query-mongodb) | [テーブル](/azure/cosmos-db/tutorial-query-table) | [グラフ](/azure/cosmos-db/tutorial-query-graph)
-- Cosmos DB でのグローバル データベース レプリケーション:[SQL](/azure/cosmos-db/tutorial-global-distribution-sql-api) | [MongoDB](/azure/cosmos-db/tutorial-global-distribution-mongodb) | [テーブル](/azure/cosmos-db/tutorial-global-distribution-table | [グラフ](/azure/cosmos-db/tutorial-global-distribution-graph)
+- Cosmos DB でのデータのクエリ: [SQL](/azure/cosmos-db/tutorial-query-sql-api) | [MongoDB](/azure/cosmos-db/tutorial-query-mongodb) | [Table](/azure/cosmos-db/tutorial-query-table) | [Graph](/azure/cosmos-db/tutorial-query-graph)
+- Cosmos DB でのグローバル データベース レプリケーション: [SQL](/azure/cosmos-db/tutorial-global-distribution-sql-api) | [MongoDB](/azure/cosmos-db/tutorial-global-distribution-mongodb) | [Table](/azure/cosmos-db/tutorial-global-distribution-table | [Graph](/azure/cosmos-db/tutorial-global-distribution-graph)
 - [エミュレーターを使用してアプリケーションをローカルに開発する](/azure/cosmos-db/local-emulator)
 
 ## <a name="samples"></a>サンプル

@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
 ms.openlocfilehash: 8f29a2bbe0eb392927dd111b13e2260111ddd18e
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76937313"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222789"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>チュートリアル:Azure DNS でドメインをホストする
 
@@ -49,10 +49,10 @@ Azure DNS 内でホストすることができ、テストに使用できるド�
 
    | **設定** | **Value** | **詳細** |
    |---|---|---|
-   |**Name**|ドメイン名 |購入したドメイン名。 このチュートリアルでは、例として contoso.net を使用します。|
+   |**名前**|ドメイン名 |購入したドメイン名。 このチュートリアルでは、例として contoso.net を使用します。|
    |**サブスクリプション**|<該当するサブスクリプション>|ゾーンの作成先となるサブスクリプションを選択します。|
    |**リソース グループ**|**[新規作成]** : contosoRG|リソース グループを作成します。 選択したサブスクリプション内で一意となるリソース グループ名を使用してください。<br>リソース グループの場所は、DNS ゾーンには影響しません。 DNS ゾーンの場所は常に "グローバル" であり、それは表示されません。|
-   |**地域**|East US||
+   |**場所**|米国東部||
 
 ## <a name="retrieve-name-servers"></a>ネーム サーバーの取得
 

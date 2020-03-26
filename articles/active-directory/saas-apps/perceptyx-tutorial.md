@@ -17,10 +17,10 @@ ms.date: 06/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4fba95add63a0784712b4c5b0d3989ae7b987ffb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67112874"
 ---
 # <a name="tutorial-integrate-perceptyx-with-azure-active-directory"></a>チュートリアル:Perceptyx を Azure Active Directory と統合する
@@ -29,7 +29,7 @@ ms.locfileid: "67112874"
 
 * Perceptyx にアクセスできるユーザーを Azure AD で制御します。
 * ユーザーが自分の Azure AD アカウントを使用して Whatfix に自動的にサインインできるようにします。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

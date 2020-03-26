@@ -5,10 +5,10 @@ keywords: ansible、azure、devops、bash、プレイブック、mysql、デー�
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 9cd574417733518b993bb242c2c168aba338e34a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78247869"
 ---
 # <a name="tutorial-configure-databases-in-azure-database-for-mysql-using-ansible"></a>チュートリアル:Ansible を使用して Azure Database for MySQL のデータベースを構成する

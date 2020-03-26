@@ -7,15 +7,15 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
-ms.date: 12/02/2019
-ms.openlocfilehash: b3ee0caa380cacc697a87307c3107b93aa241afb
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 5b55c457f5e30b1b844aafd0114f73b62bdbcac7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770766"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067971"
 ---
-# <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>Azure Database for MySQL: Go 言語を使った接続とデータの照会
+# <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>Azure Database for MySQL: Go 言語を使用した接続とデータの照会
 このクイックスタートでは、Windows、Ubuntu Linux、Apple macOS の各プラットフォームから、[Go](https://golang.org/) 言語で記述されたコードを使用して Azure Database for MySQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 このトピックでは、Go を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであるユーザーを想定しています。
 
 ## <a name="prerequisites"></a>前提条件
@@ -29,10 +29,10 @@ ms.locfileid: "74770766"
 ### <a name="windows"></a>Windows
 1. Go for Microsoft Windows を[ダウンロード](https://golang.org/dl/)し、[インストール手順](https://golang.org/doc/install)に従ってインストールします。
 2. スタート メニューからコマンド プロンプトを起動します。
-3. プロジェクトのフォルダーを作成します。 `mkdir  %USERPROFILE%\go\src\mysqlgo`
+3. プロジェクトのフォルダーを作成します。 [https://login.microsoftonline.com/consumers/](`mkdir  %USERPROFILE%\go\src\mysqlgo`)
 4. ディレクトリをプロジェクト フォルダーに変更します (例: `cd %USERPROFILE%\go\src\mysqlgo`)。
-5. GOPATH の環境変数がソース コード ディレクトリをポイントするように設定します。 `set GOPATH=%USERPROFILE%\go`
-6. `go get github.com/go-sql-driver/mysql` コマンドを実行して [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) をインストールします。
+5. GOPATH の環境変数がソース コード ディレクトリをポイントするように設定します。 [https://login.microsoftonline.com/consumers/](`set GOPATH=%USERPROFILE%\go`)
+6. [ コマンドを実行して ](https://github.com/go-sql-driver/mysql#installation)go-sql-driver for mysql`go get github.com/go-sql-driver/mysql` をインストールします。
 
    まとめると、Go をインストールしてから、コマンド プロンプトで以下のコマンドを実行します。
    ```cmd
@@ -48,7 +48,7 @@ ms.locfileid: "74770766"
 3. プロジェクトのフォルダーを自分のホーム ディレクトリに作成します (例: `mkdir -p ~/go/src/mysqlgo/`)。
 4. ディレクトリをこのフォルダーに変更します (例: `cd ~/go/src/mysqlgo/`)。
 5. GOPATH 環境変数に有効なソース ディレクトリを設定します (現在のホーム ディレクトリの go フォルダーなど)。 Bash シェルで `export GOPATH=~/go` を実行し、現在のシェル セッションの GOPATH として go ディレクトリを追加します。
-6. `go get github.com/go-sql-driver/mysql` コマンドを実行して [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) をインストールします。
+6. [ コマンドを実行して ](https://github.com/go-sql-driver/mysql#installation)go-sql-driver for mysql`go get github.com/go-sql-driver/mysql` をインストールします。
 
    まとめると、以下の Bash コマンドを実行します。
    ```bash
@@ -65,7 +65,7 @@ ms.locfileid: "74770766"
 3. プロジェクトのフォルダーを自分のホーム ディレクトリに作成します (例: `mkdir -p ~/go/src/mysqlgo/`)。
 4. ディレクトリをこのフォルダーに変更します (例: `cd ~/go/src/mysqlgo/`)。
 5. GOPATH 環境変数に有効なソース ディレクトリを設定します (現在のホーム ディレクトリの go フォルダーなど)。 Bash シェルで `export GOPATH=~/go` を実行し、現在のシェル セッションの GOPATH として go ディレクトリを追加します。
-6. `go get github.com/go-sql-driver/mysql` コマンドを実行して [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) をインストールします。
+6. [ コマンドを実行して ](https://github.com/go-sql-driver/mysql#installation)go-sql-driver for mysql`go get github.com/go-sql-driver/mysql` をインストールします。
 
    まとめると、Go をインストールしてから、以下の Bash コマンドを実行します。
    ```bash
@@ -348,6 +348,6 @@ func main() {
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [エクスポートとインポートを使用したデータベースの移行](./concepts-migrate-import-export.md)

@@ -16,10 +16,10 @@ ms.date: 02/13/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: da6ce8c25bdb8a051bb346868b900053ef231816
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77185635"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-klue"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Klue の統合
@@ -100,7 +100,7 @@ Klue で Azure AD SSO を構成してテストするには、次の構成要素�
 
 1. その他に、Klue アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | Name | ソース属性|
+    | 名前 | ソース属性|
     | ---------- | ----------- |
     | first_name | User.givenname |
     | last_name  | User.surname |

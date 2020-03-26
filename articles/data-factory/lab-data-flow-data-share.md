@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
 ms.openlocfilehash: 6c501205812ac72da8cd970b61b71e493888cef1
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76156728"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Azure Data Factory と Azure Data Share を使用したデータ統合
@@ -392,7 +392,7 @@ Azure Data Lake Storage にデータを正しくコピーできたら、その�
 
 1. **[スナップショット スケジュール]** チェック ボックスをオンにし、 *[Recurrence]\(繰り返し\)* ボックスの一覧を使用して、1 時間ごとにデータが更新されるように構成します。  
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
     これでアクティブなデータ共有が完成しました。 データ プロバイダーとしてデータ共有を作成する際に何が見えるか確認してみましょう。 
 

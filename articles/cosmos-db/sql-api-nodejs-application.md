@@ -10,10 +10,10 @@ ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Node.js web application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
 ms.openlocfilehash: 7a01c436f31a8ce5b8071db3eda4cf5562c421c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75441276"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>チュートリアル:JavaScript SDK を使用して Node.js Web アプリを構築して Azure Cosmos DB の SQL API アカウントを管理する 
@@ -38,7 +38,7 @@ ms.locfileid: "75441276"
 > * アプリケーションを Azure Cosmos DB に接続する
 > * アプリケーションを実行し、Azure にデプロイする
 
-## <a name="_Toc395783176"></a>前提条件
+## <a name="prerequisites"></a><a name="_Toc395783176"></a>前提条件
 
 この記事の手順を実行する前に、以下のリソースがあることを確認してください。
 
@@ -50,14 +50,14 @@ ms.locfileid: "75441276"
 * [Express ジェネレーター](https://www.expressjs.com/starter/generator.html) (`npm install express-generator -g` によって Express をインストールできます)
 * ローカル ワークステーションに [Git][Git] をインストールします。
 
-## <a name="_Toc395637761"></a>Azure Cosmos DB アカウントを作成する
+## <a name="create-an-azure-cosmos-db-account"></a><a name="_Toc395637761"></a>Azure Cosmos DB アカウントを作成する
 まず最初に、Azure Cosmos DB アカウントを作成します。 アカウントが既にある場合、またはこのチュートリアルで Azure Cosmos DB Emulator を使用する場合は、「[手順 2: 新しい Node.js アプリケーションを作成する](#_Toc395783178)」に進むことができます。
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 [!INCLUDE [cosmos-db-keys](../../includes/cosmos-db-keys.md)]
 
-## <a name="_Toc395783178"></a>新しい Node.js アプリケーションを作成する
+## <a name="create-a-new-nodejs-application"></a><a name="_Toc395783178"></a>新しい Node.js アプリケーションを作成する
 次に、Express フレームワークを使用した基本的な Hello World Node.js プロジェクトの作成について学習しましょう。
 
 1. Node.js のコマンド プロンプトなどのお好きなターミナルを開きます。
@@ -89,7 +89,7 @@ ms.locfileid: "75441276"
 
    ターミナル ウィンドウで Ctrl キーを押しながら C キーを押してアプリケーションを停止し、 **[y]** を選択してバッチ ジョブを終了します。
 
-## <a name="_Toc395783179"></a>必須のモジュールをインストールする
+## <a name="install-the-required-modules"></a><a name="_Toc395783179"></a>必須のモジュールをインストールする
 
 **package.json** ファイルは、プロジェクトのルートに作成されるファイルの 1 つです。 このファイルには、Node.js アプリケーションで必要な追加モジュールのリストが含まれます。 このファイルは、このアプリケーションを Azure にデプロイするときに、アプリケーションをサポートするために Azure にインストールする必要があるモジュールを判断するために使用されます。 このチュートリアルのために、さらに 2 つのパッケージをインストールします。
 
@@ -99,7 +99,7 @@ ms.locfileid: "75441276"
    npm install @azure/cosmos
    ```
 
-## <a name="_Toc395783180"></a>Node.js アプリケーションを Azure Cosmos DB に接続する
+## <a name="connect-the-nodejs-application-to-azure-cosmos-db"></a><a name="_Toc395783180"></a>Node.js アプリケーションを Azure Cosmos DB に接続する
 最初の設定と構成が済んだら、Todo アプリケーションが Azure Cosmos DB と通信を行うために必要なコードを作成します。
 
 ### <a name="create-the-model"></a>モデルを作成する
@@ -357,7 +357,7 @@ ms.locfileid: "75441276"
 
 3. 最後に、**app.js** ファイルを保存して閉じます。
 
-## <a name="_Toc395783181"></a>ユーザー インターフェイスを構築する
+## <a name="build-a-user-interface"></a><a name="_Toc395783181"></a>ユーザー インターフェイスを構築する
 
 次に、ユーザーがアプリケーションと対話できるように、ユーザー インターフェイスを構築しましょう。 前のセクションで作成した Express アプリケーションは、ビュー エンジンとして **Jade** を使用します。
 
@@ -433,7 +433,7 @@ ms.locfileid: "75441276"
     
 2 つ目のフォームには、2 つの入力フィールドと、コントローラーの **/addtask** メソッドに対するポストによって新しい項目を作成できるボタンが含まれます。 アプリケーションの動作に必要なものは、これですべてです。
 
-## <a name="_Toc395783181"></a>アプリケーションをローカルで実行する
+## <a name="run-your-application-locally"></a><a name="_Toc395783181"></a>アプリケーションをローカルで実行する
 
 アプリケーションをビルドしたら、お客様は次の手順を使用して、それをローカルで実行できます。  
 
@@ -454,7 +454,7 @@ ms.locfileid: "75441276"
 
 5. アプリケーションを停止するには、ターミナル ウィンドウで Ctrl キーを押しながら C キーを押し、 **[Y]** を選択してバッジ ジョブを終了します。
 
-## <a name="_Toc395783182"></a>アプリケーションを Web Apps にデプロイする
+## <a name="deploy-your-application-to-web-apps"></a><a name="_Toc395783182"></a>アプリケーションを Web Apps にデプロイする
 
 お客様のアプリケーションがローカルで成功した後は、次の手順を使用して、それを Azure にデプロイできます。
 
@@ -478,7 +478,7 @@ ms.locfileid: "75441276"
 
 これらのリソースが必要なくなったら、リソース グループ、Azure Cosmos DB アカウント、およびすべての関連リソースを削除できます。 そうするには、Azure Cosmos DB アカウントのためにお客様が使用したリソース グループを選択し、 **[削除]** を選択した後、削除するリソース グループの名前を確認します。
 
-## <a name="_Toc395637775"></a>次のステップ
+## <a name="next-steps"></a><a name="_Toc395637775"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Xamarin と Azure Cosmos DB を使用したモバイル アプリケーションの構築](mobile-apps-with-xamarin.md)

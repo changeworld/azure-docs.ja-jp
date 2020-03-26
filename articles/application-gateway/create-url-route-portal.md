@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: bc810ac7901d83f03d3f3ac2199561225326d261
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74048132"
 ---
 # <a name="tutorial-create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用してパス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する
@@ -49,7 +49,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
     - **[仮想マシン名]** : *myVM1*
     - **[リージョン]** : *(米国) 米国東部*
     - **[ユーザー名]** : *azureuser*
-    - **Password**:*Azure123456!*
+    - **パスワード**:*Azure123456!*
 
 
 4. **[Next:Disks]\(次へ: ディスク\)** を選択します。
@@ -121,7 +121,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
    > Application Gateway v2 SKU では、 **[パブリック]** フロントエンド IP 構成のみを選択できます。 プライベート フロントエンド IP 構成は、この v2 SKU では現在有効になっていません。
 
 2. **[パブリック IP アドレス]** として **[新規作成]** を選択し、パブリック IP アドレス名として「*myAGPublicIPAddress*」と入力し、 **[OK]** を選択します。 
-3. **[次へ:バックエンド]** を選択します。
+3. **バックエンド** を選択します。
 
 ### <a name="backends-tab"></a>[バックエンド] タブ
 
@@ -170,7 +170,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 12. **[追加]** を選択して、パスの規則を保存し、 **[ルーティング規則の追加]** タブに戻ります。
 13. 手順を繰り返し、Video 用の別の規則を追加します。
 14. **[追加]** を選択して、ルーティング規則を追加し、 **[構成]** タブに戻ります。
-15. **[次へ:タグ]** 、 **[次へ:確認と作成]** をクリックします。
+15. **タグ**、**次へ:確認と作成** をクリックします。
 
 > [!NOTE]
 > 既定のケースを処理するために、カスタム */* * パス規則を追加する必要はありません。 これは、既定のバックエンド プールによって自動的に処理されます。
@@ -205,6 +205,6 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
    ポート 8080 のリスナーは、この要求を *Video* バックエンド プールにルーティングします。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Application Gateway でのエンド ツー エンド SSL の有効化](application-gateway-backend-ssl.md)

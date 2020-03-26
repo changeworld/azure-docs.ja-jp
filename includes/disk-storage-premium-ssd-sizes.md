@@ -9,10 +9,10 @@ ms.date: 01/07/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 7b2d4777772d842898cfcdd04f1c6d926cdbf0ad
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76837563"
 ---
 | Premium SSD のサイズ | P1* | P2* | P3* | P4 | P6 | P10 | P15 | P20 | P30 | P40 | P50 | P60 | P70 | P80 |

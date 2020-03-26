@@ -12,13 +12,13 @@ ms.reviewer: v-masebo
 ms.date: 03/25/2019
 ms.custom: seo-java-july2019. seo-java-august2019
 ms.openlocfilehash: 034f92ca3b7552373ae69148d09d58d3a5dd166a
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76768653"
 ---
-# <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>クイック スタート:Java を使用して Azure SQL データベースに照会する
+# <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>クイック スタート: Java を使用して Azure SQL データベースに照会する
 
 このクイックスタートでは、Java を使用して Azure SQL データベースに接続し、T-SQL ステートメントを使用してデータを照会します。
 
@@ -28,17 +28,17 @@ ms.locfileid: "76768653"
 - [Azure SQL データベース](sql-database-single-database-get-started.md)
 - [Java](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) 関連のソフトウェア
 
-  # <a name="macostabmacos"></a>[macOS](#tab/macos)
+  # <a name="macos"></a>[macOS](#tab/macos)
 
-  「[macOS で SQL Server を使用して Java アプリを作成する](https://www.microsoft.com/sql-server/developer-get-started/java/mac/)」の手順 **1.2** と **1.3** を使用して、Homebrew と Java をインストールした後、Maven をインストールします。
+  「**macOS で SQL Server を使用して Java アプリを作成する**」の手順 **1.2** と [1.3](https://www.microsoft.com/sql-server/developer-get-started/java/mac/) を使用して、Homebrew と Java をインストールした後、Maven をインストールします。
 
-  # <a name="ubuntutabubuntu"></a>[Ubuntu](#tab/ubuntu)
+  # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
 
-  「[Ubuntu で SQL Server を使用して Java アプリを作成する](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/)」の手順 **1.2**、**1.3**、および **1.4** を使用して、Java と Java Development Kit をインストールした後、Maven をインストールします。
+  「**Ubuntu で SQL Server を使用して Java アプリを作成する**」の手順 **1.2**、**1.3**、および [1.4](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/) を使用して、Java と Java Development Kit をインストールした後、Maven をインストールします。
 
-  # <a name="windowstabwindows"></a>[Windows](#tab/windows)
+  # <a name="windows"></a>[Windows](#tab/windows)
 
-  「[Windows で SQL Server を使用して Java アプリを作成する](https://www.microsoft.com/sql-server/developer-get-started/java/windows/)」の手順 **1.2** と **1.3** を使用して、Java をインストールした後、Maven をインストールします。
+  「**Windows で SQL Server を使用して Java アプリを作成する**」の手順 **1.2** と [1.3](https://www.microsoft.com/sql-server/developer-get-started/java/windows/) を使用して、Java をインストールした後、Maven をインストールします。
 
   ---
 
@@ -50,13 +50,13 @@ ms.locfileid: "76768653"
 >
 > 作成して構成するには、[Azure portal](sql-database-managed-instance-get-started.md)、[PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md)、または [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) を使用して、[オンサイト](sql-database-managed-instance-configure-p2s.md)または [VM](sql-database-managed-instance-configure-vm.md) 接続を設定します。
 >
-> データを読み込む方法については、[Adventure Works](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) ファイルの [BACPAC を使用した復元](sql-database-import.md)に関するページを参照するか、[Wide World Importers データベースの復元](sql-database-managed-instance-get-started-restore.md)に関するページを参照してください。
+> データを読み込む方法については、[Adventure Works](sql-database-import.md) ファイルの [BACPAC を使用した復元](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)に関するページを参照するか、[Wide World Importers データベースの復元](sql-database-managed-instance-get-started-restore.md)に関するページを参照してください。
 
 ## <a name="get-sql-server-connection-information"></a>SQL サーバーの接続情報を取得する
 
 Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名またはホスト名、データベース名、およびログイン情報が必要になります。
 
-1. [Azure portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 2. **[SQL データベース]** を選択するか、 **[SQL マネージド インスタンス]** ページを開きます。
 

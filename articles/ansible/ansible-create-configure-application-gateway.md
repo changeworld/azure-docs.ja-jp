@@ -5,10 +5,10 @@ keywords: Ansible、Azure、DevOps、Bash、プレイブック、アプリケー
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 07f75e39b8c6f592ecd4c48697527493b1109bb9
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156616"
 ---
 # <a name="tutorial-manage-web-traffic-with-azure-application-gateway-using-ansible"></a>チュートリアル:Ansible を使用して Azure Application Gateway で Web トラフィックを管理する
@@ -30,7 +30,7 @@ ms.locfileid: "74156616"
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 このセクションのプレイブック コードでは、Azure リソース グループを作成します。 リソース グループは、Azure リソースが構成される論理コンテナーです。  
 
@@ -284,7 +284,7 @@ ansible-playbook appgw_create.yml
 
     ![動作中のアプリケーション ゲートウェイの成功したテスト](media/ansible-application-gateway-configure/application-gateway.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この記事で作成したリソースが不要になったら、削除してください。 
 
@@ -307,7 +307,7 @@ ansible-playbook appgw_create.yml
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure 上の Ansible](/azure/ansible/)

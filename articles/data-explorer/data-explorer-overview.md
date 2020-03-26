@@ -1,6 +1,6 @@
 ---
-title: Azure データ エクスプローラーとは
-description: Azure データ エクスプローラーは、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。
+title: Azure Data Explorerとは
+description: Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,15 +8,15 @@ ms.service: data-explorer
 ms.topic: overview
 ms.date: 09/24/2018
 ms.openlocfilehash: 02b239922f481240341225ea68d8d0ee7492c48b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59044176"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "60445809"
 ---
-# <a name="what-is-azure-data-explorer"></a>Azure データ エクスプローラーとは
+# <a name="what-is-azure-data-explorer"></a>Azure Data Explorerとは
 
-Azure データ エクスプローラーは、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 最新のソフトウェアによって生成される多数のデータ ストリームを処理できるので、データを収集、保存、分析できます。 Azure データ エクスプローラーは、Web サイト、アプリケーション、IoT デバイスなどのデータ ソースの大量の多様なデータの分析に最適です。 このデータは、診断、監視、報告、機械学習、付加的分析の各種機能に利用されます。 Azure Data Explorer を利用することでこのデータの取り込みがシンプルになり、データに対する複雑なクエリやアドホック クエリを数秒で実行できます。
+Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 最新のソフトウェアによって生成される多数のデータ ストリームを処理できるので、データを収集、保存、分析できます。 Azure データ エクスプローラーは、Web サイト、アプリケーション、IoT デバイスなどのデータ ソースの大量の多様なデータの分析に最適です。 このデータは、診断、監視、報告、機械学習、付加的分析の各種機能に利用されます。 Azure Data Explorer を利用することでこのデータの取り込みがシンプルになり、データに対する複雑なクエリやアドホック クエリを数秒で実行できます。
 
 ## <a name="what-makes-azure-data-explorer-unique"></a>Azure データ エクスプローラーを唯一無二の存在にしている要素は何ですか?
 
@@ -44,11 +44,11 @@ Azure データ エクスプローラーは、イベント ハブなどの一般
 
 Azure データ エクスプローラーの使用は一般的に次のパターンに従います。
 
-1. **データベースの作成:** "*クラスター*" を作成してから、そのクラスターに 1 つまたは複数の "*データベース*" を作成します。 [クイック スタート:Azure Data Explorer クラスターとデータベースを作成する](create-cluster-database-portal.md)
+1. **データベースの作成:** *クラスター*を作成し、そのクラスターで 1 つまたは複数の*データベース*を作成します。 [クイック スタート: Azure データ エクスプローラー クラスターとデータベースを作成する](create-cluster-database-portal.md)
 
-1. **データの取り込み:** クエリを実行できるように、データをデータベース テーブルに読み込みます。 [クイック スタート:イベント ハブから Azure Data Explorer にデータを取り込む](ingest-data-event-hub.md)
+1. **データの取り込み:** クエリを実行できるように、データをデータベース テーブルに読み込みます。 [クイック スタート: イベント ハブから Azure Data Explorer にデータを取り込む](ingest-data-event-hub.md)
 
-1. **データベースのクエリ:** Web アプリケーションを使用してクエリを実行し、結果を確認して共有します。 これは Azure portal で利用できます。また、スタンドアロン アプリケーションとして利用できます。 さらに、(SDK を利用して) プログラミングでクエリを送信したり、REST API エンドポイントにクエリを送信したりできます。 [クイック スタート:Azure Data Explorer でデータのクエリを実行する](web-query-data.md)
+1. **クエリ データベース:** Microsoft の Web アプリケーションを使用し、クエリを実行して結果を確認し、共有します。 これは Azure portal で利用できます。また、スタンドアロン アプリケーションとして利用できます。 さらに、(SDK を利用して) プログラミングでクエリを送信したり、REST API エンドポイントにクエリを送信したりできます。 [クイック スタート: Azure データ エクスプローラーでデータのクエリを実行する](web-query-data.md)
 
 ## <a name="query-experience"></a>クエリの利用
 
@@ -68,10 +68,10 @@ Azure データ エクスプローラーとそのクエリ言語に関するフ�
   - [MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto)
 - [ユーザーの声で製品について提案する](https://aka.ms/AzureDataExplorer.UserVoice)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[クイック スタート:Azure Data Explorer クラスターとデータベースを作成する](create-cluster-database-portal.md)
+[クイック スタート: Azure データ エクスプローラー クラスターとデータベースを作成する](create-cluster-database-portal.md)
 
-[クイック スタート:イベント ハブから Azure Data Explorer にデータを取り込む](ingest-data-event-hub.md)
+[クイック スタート: イベント ハブから Azure Data Explorer にデータを取り込む](ingest-data-event-hub.md)
 
-[クイック スタート:Azure Data Explorer でデータのクエリを実行する](web-query-data.md)
+[クイック スタート: Azure データ エクスプローラーでデータのクエリを実行する](web-query-data.md)

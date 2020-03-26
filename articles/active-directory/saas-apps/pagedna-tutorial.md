@@ -17,10 +17,10 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3c7f8c8efcad0a07a3d3a56925866b10d94f82ed
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68227480"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>チュートリアル:Azure Active Directory と PageDNA の統合
@@ -56,7 +56,7 @@ PageDNA では、次の機能をサポートしています。
 
 Azure AD への PageDNA の統合を構成するには、Azure Marketplace からマネージド SaaS アプリの一覧に PageDNA を追加する必要があります。
 
-1. [Azure Portal](https://portal.azure.com?azure-portal=true) にサインインします。
+1. [Azure portal](https://portal.azure.com?azure-portal=true) にサインインします。
 1. 左ウィンドウで、 **[Azure Active Directory]** を選択します。
 
     ![[Azure Active Directory] オプション](common/select-azuread.png)
@@ -104,7 +104,7 @@ PageDNA で Azure AD シングル サインオンを構成するには、次の�
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** ウィンドウで、次の手順を実行します。
+1. **[基本的な SAML 構成]** ウィンドウで、次の手順に従います。
 
     ![[PageDNA のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
@@ -167,7 +167,7 @@ PageDNA 側でシングル サインオンを構成するには、ダウンロ�
 
     1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
 
-    1. **作成** を選択します。
+    1. **［作成］** を選択します
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

@@ -6,10 +6,10 @@ ms.author: msangapu
 ms.topic: tutorial
 ms.date: 2/28/2020
 ms.openlocfilehash: d543a9364311b2cf5f0258fbf9185d27bb1bfb2f
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78399534"
 ---
 # <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>チュートリアル:Azure Monitor を使用した App Service アプリのトラブルシューティング
@@ -272,7 +272,7 @@ az monitor diagnostic-settings delete --resource $resourceID -n myMonitorLogs
 > * ログを Log Analytics に送信しました
 > * ログ クエリを使用して Web アプリのエラーを特定し、トラブルシューティングを行いました
 
-## <a name="nextsteps"></a> 次のステップ
+## <a name="next-steps"></a><a name="nextsteps"></a> 次のステップ
 * [Azure Monitor でログにクエリを実行する](../../azure-monitor/log-query/log-query-overview.md)
 * [Visual Studio での Azure App Service のトラブルシューティング](../troubleshoot-dotnet-visual-studio.md)
 * [HDInsight でのアプリ ログの分析](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

@@ -17,10 +17,10 @@ ms.date: 12/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f926741bde3bdcc69cb4ea30f54daca79606047e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160168"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>チュートリアル:Azure Active Directory と Palo Alto Networks Captive Portal の統合
@@ -163,7 +163,7 @@ Palo Alto Networks Captive Portal を使った Azure AD のシングル サイ�
 
     3. **[パスワード]** に、パスワードを入力します。 入力するパスワードはどこかに記録しておくことをお勧めします。 **[パスワードを表示]** チェック ボックスをオンにして、パスワードを表示することもできます。
 
-    4. **作成** を選択します。
+    4. **［作成］** を選択します
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

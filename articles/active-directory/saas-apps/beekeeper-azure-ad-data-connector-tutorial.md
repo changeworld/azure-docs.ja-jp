@@ -16,10 +16,10 @@ ms.date: 02/14/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bbac5f6b26ff5df9114eebdf850faff263f7cd78
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77373174"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beekeeper-azure-ad-sso"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Beekeeper Azure AD SSO の統合

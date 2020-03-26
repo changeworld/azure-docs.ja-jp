@@ -12,10 +12,10 @@ ms.date: 1/10/2020
 ms.author: tdsp
 ms.custom: previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 10d6e562301e089700940ac5dfb212bcc4e09653
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79088087"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Team Data Science Process とは
@@ -104,4 +104,4 @@ TDSP には、共有の分析およびストレージ インフラストラク�
 
 ## <a name="next-steps"></a>次のステップ
 
-「[Team Data Science Process:Roles and tasks (Team Data Science Process: 役割とタスク)](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md)」に、このプロセスを標準化するデータ サイエンス チームの主な人員の役割とそれに関連したタスクが概説されています。 
+「[Team Data Science Process: Roles and tasks (Team Data Science Process: 役割とタスク)](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md)」に、このプロセスを標準化するデータ サイエンス チームの主な人員の役割とそれに関連したタスクが概説されています。 

@@ -17,10 +17,10 @@ ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5fc1f6434bea8f75c7bcc7859c6f90d7abdd031b
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71091032"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workable"></a>チュートリアル:Azure Active Directory と Workable の統合
@@ -113,7 +113,7 @@ Workable で Azure AD シングル サインオンを構成するには、次の
 
     ![[Workable のドメインと URL] のシングル サインオン情報](common/both-signonurl.png)
 
-    **[サインオン URL]** テキスト ボックスに URL として「`https://www.workable.com/sso/signin`」と入力します
+    **[サインオン URL]** テキスト ボックスに URL として「`https://www.workable.com/sso/signin`」と入力します。
 
     > [!NOTE]
     > 応答 URL 値は、実際の値ではありません。 応答 URL 値を実際の応答 URL で更新します。 この値を取得するには、[Workable クライアント サポート チーム](mailto:support@workable.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

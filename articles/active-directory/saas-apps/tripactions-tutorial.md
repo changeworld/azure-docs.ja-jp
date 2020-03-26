@@ -16,10 +16,10 @@ ms.date: 01/08/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ccd0ee4beb40a670c0e05cb3cc1c4379de372ff6
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76266024"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tripactions"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と TripActions の統合

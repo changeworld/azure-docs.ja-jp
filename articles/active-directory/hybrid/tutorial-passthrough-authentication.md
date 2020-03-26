@@ -12,15 +12,15 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 96846d75111fe11b225704a248baeb006a3df3fb
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "66473013"
 ---
-# <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>チュートリアル: パススルー認証 (PTA) を使用して単一 AD フォレストを統合する
+# <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>チュートリアル:パススルー認証 (PTA) を使用して単一 AD フォレストを統合する
 
-![Create](media/tutorial-passthrough-authentication/diagram.png)
+![作成](media/tutorial-passthrough-authentication/diagram.png)
 
 以下のチュートリアルでは、パススルー認証を使用してハイブリッド ID 環境を作成する手順について説明します。  この環境は、テストを行うためや、ハイブリッド ID のしくみを詳しく理解するために使用できます。
 
@@ -45,7 +45,7 @@ ms.locfileid: "66473013"
 >[!NOTE]
 >ホスト コンピューター上で PowerShell のスクリプトを実行したことがない場合は、スクリプトを実行する前に、PowerShell で `Set-ExecutionPolicy remotesigned` を実行して "はい" を選択する必要があります。
 
-以下の手順を実行します。
+次の操作を行います。
 
 1. PowerShell ISE を管理者として起動します。
 2. 次のスクリプトを実行します。
@@ -86,11 +86,11 @@ Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive
 6. ライセンス キーを入力し、 **[次へ]** をクリックします。
 7. [ライセンス条項に同意します] をオンにし、 **[次へ]** をクリックします。
 8. **[カスタム: Windows のみをインストールする (詳細設定)]** を選択します。
-9. **[次へ]** をクリックします
+9. **[次へ]** をクリックします。
 10. インストールが完了したら、仮想マシンを再起動してサインインし、Windows の更新プログラムを実行して VM を最新の状態にします。  最新の更新プログラムをインストールします。
 
 ## <a name="install-active-directory-prerequisites"></a>Active Directory の前提条件をインストールする
-仮想マシンを稼働させたところで、Active Directory のインストール前にいくつかの作業を行う必要があります。  言い換えると、仮想マシンの名前を変更し、静的 IP アドレスと DNS 情報を設定して、リモート サーバー管理ツールをインストールする必要があります。   以下の手順を実行します。
+仮想マシンを稼働させたところで、Active Directory のインストール前にいくつかの作業を行う必要があります。  言い換えると、仮想マシンの名前を変更し、静的 IP アドレスと DNS 情報を設定して、リモート サーバー管理ツールをインストールする必要があります。   次の操作を行います。
 
 1. PowerShell ISE を管理者として起動します。
 2. `Set-ExecutionPolicy remotesigned` を実行し、"すべて続行 (A)" を選択します。  Enter キーを押します。
@@ -127,7 +127,7 @@ Restart-Computer
 ```
 
 ## <a name="create-a-windows-server-ad-environment"></a>Windows Server AD 環境を作成する
-VM を作成して、名前の変更と静的 IP アドレスの設定を行いました。これで、Active Directory Domain Services のインストールと構成に進むことができます。  以下の手順を実行します。
+VM を作成して、名前の変更と静的 IP アドレスの設定を行いました。これで、Active Directory Domain Services のインストールと構成に進むことができます。  次の操作を行います。
 
 1. PowerShell ISE を管理者として起動します。
 2. 次のスクリプトを実行します。
@@ -158,7 +158,7 @@ Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath $DatabasePath -Doma
 ```
 
 ## <a name="create-a-windows-server-ad-user"></a>Windows Server AD ユーザーを作成する
-Active Directory 環境を作成したところで、テスト アカウントが必要になります。  このアカウントは、オンプレミスの AD 環境で作成されて Azure AD に同期されます。  以下の手順を実行します。
+Active Directory 環境を作成したところで、テスト アカウントが必要になります。  このアカウントは、オンプレミスの AD 環境で作成されて Azure AD に同期されます。  次の操作を行います。
 
 1. PowerShell ISE を管理者として起動します。
 2. 次のスクリプトを実行します。
@@ -187,7 +187,7 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 1. [Azure portal](https://portal.azure.com) に移動し、Azure サブスクリプションがあるアカウントを使ってサインインします。
 2. **プラス (+) アイコン**を選択し、**Azure Active Directory** を検索します。
 3. 検索結果で **[Azure Active Directory]** を選択します。
-4. **作成** を選択します。</br>
+4. **［作成］** を選択します</br>
 ![作成](media/tutorial-password-hash-sync/create1.png)</br>
 5. **組織の名前**と**初期ドメイン名**を入力します。 **[作成]** を選択します。 これにより、ディレクトリが作成されます。
 6. これが完了したら、**こちら**のリンクをクリックし、ディレクトリを管理します。
@@ -204,20 +204,20 @@ Azure AD テナントを作成したので、次は全体管理者アカウン�
 5. 全体管理者のパスワードを覚えやすいものに変更します。
 
 ## <a name="add-the-custom-domain-name-to-your-directory"></a>カスタム ドメイン名をディレクトリに追加する
-テナントと全体管理者を作成したところで、Azure で確認できるようカスタム ドメインを追加する必要があります。  以下の手順を実行します。
+テナントと全体管理者を作成したところで、Azure で確認できるようカスタム ドメインを追加する必要があります。  次の操作を行います。
 
 1. [Azure portal](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) に戻って、 **[すべてのユーザー]** ブレードを閉じてください。
 2. 左側で **[カスタム ドメイン名]** を選択します。
 3. **[カスタム ドメインの追加]** を選択します。</br>
-![カスタム](media/tutorial-federation/custom1.png)</br>
+![Custom](media/tutorial-federation/custom1.png)</br>
 4. **[カスタム ドメイン名]** で、ボックスにカスタム ドメインの名前を入力し、 **[ドメインの追加]** をクリックします。
 5. [カスタム ドメイン名] 画面では、TXT 情報または MX 情報が表示されます。  この情報は、ドメインのドメイン レジストラーの DNS 情報に追加する必要があります。  そのため、ドメイン レジストラーに移動して、ドメインの DNS 設定で TXT 情報または MX 情報を入力します。  これにより、Azure でドメインを確認できるようになります。  Azure による確認には最大で 24 時間かかる可能性があります。  詳細については、[カスタム ドメインの追加](../../active-directory/fundamentals/add-custom-domain.md)に関するドキュメントを参照してください。</br>
-![カスタム](media/tutorial-federation/custom2.png)</br>
+![Custom](media/tutorial-federation/custom2.png)</br>
 6. 確認が確実に行われるよう、[確認] ボタンをクリックします。</br>
-![カスタム](media/tutorial-federation/custom3.png)</br>
+![Custom](media/tutorial-federation/custom3.png)</br>
 
 ## <a name="download-and-install-azure-ad-connect"></a>Azure AD Connect をダウンロードしてインストールする
-次に、Azure AD Connect をダウンロードしてインストールします。  インストールが完了したら、高速インストールを実行します。  以下の手順を実行します。
+次に、Azure AD Connect をダウンロードしてインストールします。  インストールが完了したら、高速インストールを実行します。  次の操作を行います。
 
 1. [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) をダウンロードします。
 2. **AzureADConnect.msi**を検索し、ダブルクリックします。

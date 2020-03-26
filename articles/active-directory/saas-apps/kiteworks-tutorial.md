@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
 ms.openlocfilehash: 52b113d92fa83795e94d5179ea47ed5d9d9e9a26
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68248917"
 ---
 # <a name="tutorial-integrate-kiteworks-with-azure-active-directory"></a>チュートリアル:Kiteworks と Azure Active Directory の統合
@@ -28,7 +28,7 @@ ms.locfileid: "68248917"
 
 * Kiteworks にアクセスする Azure AD ユーザーを制御する。
 * ユーザーが自分の Azure AD アカウントを使用して Kiteworks に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -126,7 +126,7 @@ Kiteworks で Azure AD SSO を構成してテストするには、次の構成�
 
     f. ダウンロードした証明書をメモ帳で開き、その内容をコピーして、 **[RSA Public Key Certificate (RSA 公開キーの証明書)]** ボックスに貼り付けます。
 
-    g. **[Save]** をクリックします。
+    g. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

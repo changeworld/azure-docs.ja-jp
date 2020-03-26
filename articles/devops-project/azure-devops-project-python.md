@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Azure DevOps Projects を使用して Python 用の CI/CD パイプラインを作成する
+title: 'クイック スタート: Azure DevOps Projects を使用して Python 用の CI/CD パイプラインを作成する'
 description: DevOps Projects を利用すると、Azure を使い始めるのが簡単になります。 いくつかの簡単な手順により、選択した Azure サービス上でアプリを稼働させることができます。
 ms.prod: devops
 ms.technology: devops-cicd
@@ -17,10 +17,10 @@ ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
 ms.openlocfilehash: b912dfe3fb6461a925977192a6631ecac1357d35
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77049839"
 ---
 # <a name="create-a-cicd-pipeline-for-python-with-azure-devops-projects"></a>Azure DevOps Projects を使用して Python 用の CI/CD パイプラインを作成する
