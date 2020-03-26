@@ -4,10 +4,10 @@ description: 相互に接続されているすべての仮想ネットワーク�
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.openlocfilehash: 9ba4780c59e5e9da4999573abbc08ecd2738a2cd
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74159190"
 ---
 # <a name="tutorial-validate-a-hub-and-spoke-network-in-azure-using-terraform"></a>チュートリアル:Terraform を使用して Azure でハブとスポーク ネットワークを検証する
@@ -17,8 +17,8 @@ ms.locfileid: "74159190"
 このチュートリアルに含まれるタスクは次のとおりです。
 
 > [!div class="checklist"]
-> * HCL (HashiCorp 言語) を使用して、ハブ スポーク トポロジにハブ VNet を実装する
-> * Terraform プランを使用して、デプロイするリソースを確認する
+> * HCL (HashiCorp 言語) を使用して、ハブ スポーク トポロジでハブ VNet を実装する
+> * Terraform plan を使用して、デプロイするリソースを確認する
 > * Terraform apply を使用して、Azure にリソースを作成する
 > * 異なるネットワークの間の接続を確認する
 > * Terraform を使用して、すべてのリソースを破棄する
@@ -118,7 +118,7 @@ ms.locfileid: "74159190"
 
 VPN エラーの解決方法の詳細については、[ハイブリッド VPN 接続のトラブルシューティング](/azure/architecture/reference-architectures/hybrid-networking/troubleshoot-vpn)の記事をご覧ください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアル シリーズで作成したリソースが不要になったら、削除してください。
 
@@ -142,7 +142,7 @@ VPN エラーの解決方法の詳細については、[ハイブリッド VPN �
     rm -r hub-spoke
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"] 
 > [Azure での Terraform の使用について詳細を参照](/azure/terraform)

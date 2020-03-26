@@ -9,11 +9,11 @@ ms.date: 02/21/2020
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 064fcf618914bca31ad9e7e60c76df8f599cd8bf
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77558879"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223649"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure Firewall をデプロイして構成する
 
@@ -61,7 +61,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 3. **[リソース グループ名]** として「*Test-FW-RG*」と入力します。
 4. **[サブスクリプション]** で、ご使用のサブスクリプションを選択します。
 5. **[リソース グループの場所]** で、場所を選択します。 作成する他のすべてのリソースは同じ場所にある必要があります。
-6. **作成** を選択します。
+6. **［作成］** を選択します
 
 ### <a name="create-a-vnet"></a>VNet を作成する
 
@@ -143,7 +143,7 @@ VNet にファイアウォールをデプロイします。
    |サブスクリプション     |\<該当するサブスクリプション\>|
    |Resource group     |**Test-FW-RG** |
    |名前     |**Test-FW01**|
-   |Location     |以前使用したのと同じ場所を選択します|
+   |場所     |以前使用したのと同じ場所を選択します|
    |仮想ネットワークの選択     |**[Use Existing]\(既存の使用\)** : **Test-FW-VN**|
    |パブリック IP アドレス     |**[新規追加]** 。 パブリック IP アドレスは、Standard SKU タイプであることが必要です。|
 
@@ -165,7 +165,7 @@ VNet にファイアウォールをデプロイします。
 5. **[サブスクリプション]** で、ご使用のサブスクリプションを選択します。
 6. **[リソース グループ]** で、 **[Test-FW-RG]** を選択します。
 7. **[場所]** で、以前使用したのと同じ場所を選択します。
-8. **作成** を選択します。
+8. **［作成］** を選択します
 9. **[更新]** を選択し、 **[Firewall-route]** ルート テーブルを選択します。
 10. **[サブネット]** を選択し、 **[関連付け]** を選択します。
 11. **[仮想ネットワーク]**  >  **[Test-FW-VN]** の順に選択します。

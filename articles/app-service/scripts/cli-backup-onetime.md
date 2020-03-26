@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 12/07/2017
 ms.author: msangapu
 ms.reviewer: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: ed9975d33259678defd34582e00294def7ce3467
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: fd310e81c6a86e651e27518acfdefa66980fa938
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74686835"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80059150"
 ---
 # <a name="back-up-an-app-using-cli"></a>CLI を使用してアプリをバックアップする
 
@@ -36,7 +36,7 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [`az storage account create`](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) | ストレージ アカウントを作成します。 |
@@ -47,7 +47,7 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 | [`az webapp config backup create`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-create) | App Service アプリのバックアップを作成します。 |
 | [`az webapp config backup list`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-list) | App Service アプリのバックアップの一覧を取得します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

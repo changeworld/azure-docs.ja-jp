@@ -17,10 +17,10 @@ ms.date: 07/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d7ac085beaa85a7ddf3a6c3bfc61820e8e5a63ea
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68496567"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>チュートリアル:Amazon ビジネスと Azure Active Directory の統合
@@ -29,7 +29,7 @@ ms.locfileid: "68496567"
 
 * Amazon ビジネスにアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Amazon ビジネスに自動的にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -128,7 +128,7 @@ Amazon ビジネスで Azure AD SSO を構成してテストするには、次�
 
     d. **[グループ要求の名前をカスタマイズする]** チェック ボックスをオンにし、ご自分の組織の要件に従ってグループ名を入力します。
 
-    e. **[Save]** をクリックします。
+    e. **[保存]** をクリックします。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードしてコンピューターに保存します。
 
@@ -176,27 +176,27 @@ Amazon ビジネスで Azure AD SSO を構成してテストするには、次�
 
 1. **Amazon connection data (Amazon 接続データ)** ウィザードで、 **[Next]\(次へ\)** をクリックします。
 
-    ![接続](media/amazon-business-tutorial/amazon-connect.png)
+    ![Connection](media/amazon-business-tutorial/amazon-connect.png)
 
 1. 構成されている手順の **[Status]\(状態\)** を確認し、 **[Start testing]\(テストの開始\)** をクリックします。
 
-    ![接続](media/amazon-business-tutorial/sso-connection1.png)
+    ![Connection](media/amazon-business-tutorial/sso-connection1.png)
 
 1. **Test SSO Connection (SSO 接続のテスト)** ウィザードで、 **[Test]\(テスト\)** をクリックします。
 
-    ![接続](media/amazon-business-tutorial/sso-connection2.png)
+    ![Connection](media/amazon-business-tutorial/sso-connection2.png)
 
 1. **IDP initiated URL** ウィザードで、 **[Activate]\(アクティブ化\)** をクリックする前に、**idpid** に割り当てられている値をコピーし、Azure portal の **[基本的な SAML 構成]** セクションにある **[応答 URL]** の **idpid** パラメーターに貼り付けます。
 
-    ![接続](media/amazon-business-tutorial/sso-connection3.png)
+    ![Connection](media/amazon-business-tutorial/sso-connection3.png)
 
 1. **Are you ready to switch to active SSO? (アクティブな SSO に切り替える準備ができましたか?)** ウィザードで、 **[I have fully tested SSO and am ready to go live]\(SSO は完全にテスト済みで、ライブにする準備ができている\)** チェック ボックスをオンにし、 **[Switch to active]\(アクティブに切り替える\)** をクリックします。
 
-    ![接続](media/amazon-business-tutorial/sso-connection4.png)
+    ![Connection](media/amazon-business-tutorial/sso-connection4.png)
 
 1. 最後に、 **[SSO Connection details]\(SSO 接続の詳細\)** セクションで、 **[Status]\(状態\)** が **[Active]\(アクティブ\)** として表示されます。
 
-    ![接続](media/amazon-business-tutorial/sso-connection5.png)
+    ![Connection](media/amazon-business-tutorial/sso-connection5.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

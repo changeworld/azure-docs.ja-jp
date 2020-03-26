@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: allensu
-ms.openlocfilehash: c99e232243e95d3aa0a85e09c2534973114e28ea
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 0ae159b57a89b4238d52d178d59cb79b452e0411
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74068760"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79214552"
 ---
 # <a name="azure-cli-script-example-load-balance-traffic-to-vms-within-a-specific-availability-zone"></a>Azure CLI スクリプトの例: 特定の可用性ゾーン内での VM へのトラフィックの負荷分散
 
@@ -55,7 +55,7 @@ ms.locfileid: "74068760"
 
   # Create an Azure Load Balancer.
    az network lb create \
-    --resource-group myResourceGroupLB \
+    --resource-group myResourceGroup \
     --name myLoadBalancer \
     --public-ip-address myPublicIP \
     --frontend-ip-name myFrontEndPool \
@@ -166,7 +166,7 @@ az group delete --name myResourceGroup
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、仮想マシン、可用性セット、ロード バランサー、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az-network-vnet-create) | Azure 仮想ネットワークとサブネットを作成します。 |
@@ -181,7 +181,7 @@ az group delete --name myResourceGroup
 | [az vm create](/cli/azure/vm#az-vm-create) | 仮想マシンを作成し、作成したマシンをネットワーク カード、仮想ネットワーク、サブネット、およびNSG に接続します。 このコマンドでは、使用する仮想マシン イメージと管理者の資格情報も指定します。  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

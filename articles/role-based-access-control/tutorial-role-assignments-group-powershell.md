@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
 ms.openlocfilehash: 2f001e781640704cfcee161b3de75b3f4cae1423
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77138239"
 ---
 # <a name="tutorial-grant-a-group-access-to-azure-resources-using-rbac-and-azure-powershell"></a>チュートリアル:RBAC と Azure PowerShell を使用して Azure リソースへのアクセス権をグループに付与する
@@ -48,8 +48,8 @@ RBAC でアクセス権を付与するには、ロールの割り当てを作成
 
 | セキュリティ プリンシパル | ロール定義 | Scope |
 | --- | --- | --- |
-| Group<br>(RBAC チュートリアル グループ) | [Reader](built-in-roles.md#reader) | サブスクリプション |
-| Group<br>(RBAC チュートリアル グループ)| [Contributor](built-in-roles.md#contributor) | Resource group<br>(rbac-tutorial-resource-group) |
+| グループ<br>(RBAC チュートリアル グループ) | [Reader](built-in-roles.md#reader) | サブスクリプション |
+| グループ<br>(RBAC チュートリアル グループ)| [Contributor](built-in-roles.md#contributor) | Resource group<br>(rbac-tutorial-resource-group) |
 
    ![グループのロールの割り当て](./media/tutorial-role-assignments-group-powershell/rbac-role-assignments.png)
 

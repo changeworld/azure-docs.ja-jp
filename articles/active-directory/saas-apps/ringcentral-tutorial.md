@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
 ms.openlocfilehash: de7cf57d177902efdbb44524703481e8c65c75c5
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72991465"
 ---
 # <a name="tutorial-integrate-ringcentral-with-azure-active-directory"></a>チュートリアル:Azure Active Directory と RingCentral の統合
@@ -28,7 +28,7 @@ ms.locfileid: "72991465"
 
 * RingCentral にアクセスするユーザーを Azure AD で制御する。
 * ユーザーが自分の Azure AD アカウントを使用して RingCentral に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure portal) でアカウントを管理する。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -52,9 +52,9 @@ Azure AD への RingCentral の統合を構成するには、管理対象の Saa
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
-1. 新しいアプリケーションを追加するために、 **[新しいアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**RingCentral**」と入力します。
-1. 結果のパネルから **[RingCentral]** を選択し、アプリを追加します。 アプリがテナントに追加される間、数秒待ちます。
+1. 結果のパネルから **[RingCentral]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -71,7 +71,7 @@ RingCentral で Azure AD SSO を構成してテストするには、次の構成
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-Azure portal で Azure AD SSO を有効にするには、次の手順に従います。
+これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
 1. [Azure portal](https://portal.azure.com/) の **RingCentral** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
@@ -172,7 +172,7 @@ Azure portal で Azure AD SSO を有効にするには、次の手順に従い�
 
     c. **[Attribute Mapping]\(属性マッピング\)** セクションの **[Map Email Attribute to]\(メール属性のマップ先\)** で `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` を選択します
 
-    d. **[Save]** をクリックします。
+    d. **[保存]** をクリックします。
 
     e. **[Step 2]\(ステップ 2\)** の **[Download]\(ダウンロード\)** をクリックして**サービス プロバイダー メタデータ ファイル**をダウンロードし、Azure portal 内でそれを **[基本的な SAML 構成]** セクションにアップロードして、 **[識別子]** と **[応答 URL]** を自動的に設定します。
 
@@ -186,7 +186,7 @@ Azure portal で Azure AD SSO を有効にするには、次の手順に従い�
 
     * **[Allow users to log in with SSO or RingCentral credential]\(ユーザーが SSO または RingCentral 資格情報でログインできるようにする\)** を選択します。
 
-    * **[Save]** をクリックします。
+    * **[保存]** をクリックします。
 
 ### <a name="create-ringcentral-test-user"></a>RingCentral のテスト ユーザーの作成
 

@@ -17,10 +17,10 @@ ms.date: 07/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c0b1471abd7e057af919ed274547daf94d356c2b
-ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70213610"
 ---
 # <a name="tutorial-integrate-the-cloud-security-fabric-with-azure-active-directory"></a>チュートリアル:The Cloud Security Fabric と Azure Active Directory の統合
@@ -29,7 +29,7 @@ ms.locfileid: "70213610"
 
 * The Cloud Security Fabric にアクセスできるユーザーを Azure AD で制御する。
 * ユーザーが自分の Azure AD アカウントを使用して自動的に The Cloud Security Fabric にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -112,7 +112,7 @@ The Cloud Security Fabric に対する Azure AD SSO を構成してテストす�
 
     b. **[署名アルゴリズム]** に対して **[SHA-256]** を選択します。
 
-    c. **[Save]** をクリックします。  
+    c. **[保存]** をクリックします。  
 
 6. **[The Cloud Security Fabric のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 

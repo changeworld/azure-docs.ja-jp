@@ -4,10 +4,10 @@ description: この Azure Policy パターンでは、ポリシー定義内で�
 ms.date: 01/31/2020
 ms.topic: sample
 ms.openlocfilehash: 4921bb216ef67b561bc8986cf48239e6448beafc
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77170180"
 ---
 # <a name="azure-policy-pattern-parameters"></a>Azure Policy パターン: パラメーター

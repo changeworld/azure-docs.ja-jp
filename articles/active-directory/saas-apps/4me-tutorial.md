@@ -17,10 +17,10 @@ ms.date: 08/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a3e8b753a9afb6b6d27466adb086717b52838e3a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72596309"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-4me"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と 4me の統合
@@ -29,7 +29,7 @@ ms.locfileid: "72596309"
 
 * 4me にアクセスする Azure AD ユーザーを制御する。
 * ユーザーが自分の Azure AD アカウントを使用して 4me に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -163,7 +163,7 @@ Azure AD への 4me の統合を構成するには、ギャラリーから管理
 
     ![4me の設定](./media/4me-tutorial/tutorial_4me_settings.png)
 
-1. **[シングル サインオン]** ページで、次の手順を実行します。
+1. **Single sign-on**(シングル サインオン) ページで、次の手順を実行します。
 
     ![4me のシングル サインオン](./media/4me-tutorial/tutorial_4me_singlesignon.png)
 
@@ -175,7 +175,7 @@ Azure AD への 4me の統合を構成するには、ギャラリーから管理
 
     d. **[Certificate fingerprint]\(証明書フィンガープリント\)** ボックスに、Azure portal からコピーした**拇印**の値をコロンで区切って貼り付けます (AA:BB:CC:DD:EE:FF:GG:HH:II)。
 
-    e. **[Save]** をクリックします。
+    e. **[保存]** をクリックします。
 
 ### <a name="create-4me-test-user"></a>4me のテスト ユーザーの作成
 

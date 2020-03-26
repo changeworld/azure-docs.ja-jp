@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: fd74b3fad7f0b26eff2fdedddae171a1b7297dcd
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 32e7b67cb3dda715127204d77c4988d41ed3f9d3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78898895"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80240281"
 ---
-# <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>クイック スタート:Azure CLI で Windows 仮想マシンを作成する
+# <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>クイック スタート: Azure CLI を使用して Windows 仮想マシンを作成する
 
 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、Azure CLI を使用して、Windows Server 2016 を実行する仮想マシン (VM) を Azure に展開する方法を示します。 次に、VM の動作を確認するために、VM に RDP 接続し、IIS Web サーバーをインストールします。
 
@@ -59,7 +59,7 @@ az vm create \
 
 VM とサポートするリソースを作成するには数分かかります。 次の出力例では、成功した VM 作成操作を示します。
 
-```azurecli-interactive
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",

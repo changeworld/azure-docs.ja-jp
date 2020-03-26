@@ -15,10 +15,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.openlocfilehash: e8dd9f310c303cc5a1c6db6150cf4d350b0da672
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77187501"
 ---
 # <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>PowerShell を使用して Azure Data Factory で Azure-SSIS IR を設定する

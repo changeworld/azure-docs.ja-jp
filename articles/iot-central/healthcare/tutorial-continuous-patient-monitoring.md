@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: 35ac39109bfcb4dc63b738c947d2ad8caf8ac0a6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77021289"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>チュートリアル:患者の継続的なモニタリング アプリ テンプレートのデプロイとウォークスルー

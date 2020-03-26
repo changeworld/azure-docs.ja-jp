@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7e7f5aa324db869e30a8b2fe214416129baca8d9
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68380734"
 ---
 # <a name="compare-b2b-collaboration-and-b2c-in-azure-active-directory"></a>Azure Active Directory での B2B コラボレーションと B2C の比較
@@ -41,7 +41,7 @@ B2B コラボレーション機能 |     Azure AD B2C スタンドアロン製�
 詳細情報: [ブログ記事](https://blogs.technet.microsoft.com/enterprisemobility/2017/02/01/azure-ad-b2b-new-updates-make-cross-business-collab-easy/)、[ドキュメント](what-is-b2b.md)  | 詳細情報: [製品ページ](https://azure.microsoft.com/services/active-directory-b2c/)、[ドキュメント](https://docs.microsoft.com/azure/active-directory-b2c/)
 
 
-### <a name="next-steps"></a>次の手順
+### <a name="next-steps"></a>次のステップ
 
 - [Azure AD B2B コラボレーションとは](what-is-b2b.md)
 - [B2B コラボレーション ユーザーのプロパティ](user-properties.md)

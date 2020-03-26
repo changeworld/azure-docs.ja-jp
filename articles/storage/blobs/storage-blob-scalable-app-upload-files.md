@@ -8,10 +8,10 @@ ms.date: 10/08/2019
 ms.author: rogarana
 ms.subservice: blobs
 ms.openlocfilehash: dd87e1a9bcff55813dff420976df58351386fb34
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75371940"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Azure Storage に大量のランダム データを並行でアップロードする
@@ -66,7 +66,7 @@ dotnet run
 
 スレッドの設定と接続制限設定に加えて、[UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync) メソッドの [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) が、並行処理を使用し MD5 ハッシュ検証が無効になるように構成されます。 ファイルは 100 MB のブロック単位でアップロードされます。この構成によってパフォーマンスは向上しますが、パフォーマンスが低いネットワークを使用している場合は、100 MB ブロック全体が再試行されるエラーが発生している場合と同然に、負荷が高くなる恐れがあります。
 
-|プロパティ|値|説明|
+|プロパティ|Value|説明|
 |---|---|---|
 |[ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount)| 8| アップロード時に、設定によって BLOB がブロックに分割されます。 最高のパフォーマンスを得るために、この値はコア数の 8 倍にしておく必要があります。 |
 |[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| このプロパティは、アップロードされたコンテンツの MD5 ハッシュのチェックを無効にします。 MD5 の検証を無効にすると、転送が高速になります。 ただし、転送されるファイルの有効性や整合性は確認されません。   |

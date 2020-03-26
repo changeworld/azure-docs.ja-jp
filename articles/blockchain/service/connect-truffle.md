@@ -5,10 +5,10 @@ ms.date: 11/20/2019
 ms.topic: quickstart
 ms.reviewer: janders
 ms.openlocfilehash: 9ea96aa32072775fe6fb9563442f5e3564d37ea5
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74455801"
 ---
 # <a name="quickstart-use-truffle-to-connect-to-azure-blockchain-service"></a>クイック スタート:Truffle を使用して Azure Blockchain Service に接続する
@@ -52,7 +52,7 @@ ms.locfileid: "74455801"
 
 Truffle プロジェクトを構成するには、Azure portal からいくつかのトランザクション ノード情報が必要です。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. Azure Blockchain Service メンバーに移動します。 **[Transaction nodes]\(トランザクション ノード\)** と既定のトランザクション ノード リンクを選択します。
 
     ![既定のトランザクション ノードを選択する](./media/connect-truffle/transaction-nodes.png)
@@ -117,7 +117,7 @@ Truffle プロジェクトを構成するには、Azure portal からいくつ�
     .exit
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、Truffle を使用して Azure Blockchain Service の既定のトランザクション ノードに接続し、対話型コンソールを使用して現在のブロックチェーンのブロック番号を確認しました。
 

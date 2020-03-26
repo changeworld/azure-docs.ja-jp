@@ -9,10 +9,10 @@ ms.date: 02/13/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
 ms.openlocfilehash: 35ca071cd8495611f0f350511ef9406f82c5be23
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77209428"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>チュートリアル:Azure Virtual WAN を使用して ExpressRoute の関連付けを作成する
@@ -44,7 +44,7 @@ ms.locfileid: "77209428"
 
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-## <a name="openvwan"></a>仮想 WAN を作成する
+## <a name="create-a-virtual-wan"></a><a name="openvwan"></a>仮想 WAN を作成する
 
 ブラウザーから [Azure ポータル](https://portal.azure.com) に移動し、Azure アカウントでサインインします。
 
@@ -62,19 +62,19 @@ ms.locfileid: "77209428"
 4. フィールドへの入力を完了したら、 **[確認および作成]** を選択します。
 5. 検証に合格したら、 **[作成]** を選択して仮想 WAN を作成します。
 
-## <a name="hub"></a>仮想ハブとゲートウェイを作成する
+## <a name="create-a-virtual-hub-and-gateway"></a><a name="hub"></a>仮想ハブとゲートウェイを作成する
 
 仮想ハブは、仮想 WAN によって作成および使用される仮想ネットワークです。 VPN や ExpressRoute など、さまざまなゲートウェイを含めることができます。 このセクションでは、仮想ハブの ExpressRoute ゲートウェイを作成します。 [新しい仮想ハブを作成する](#newhub)ときにゲートウェイを作成するか、[既存のハブ](#existinghub)を編集し、そのゲートウェイを作成できます。 
 
 ExpressRoute ゲートウェイは 2 Gbps の単位でプロビジョニングされます。 1 スケール ユニット = 2 Gbps で最大 10 スケール ユニットをサポート = 20 Gbps。 仮想ハブとゲートウェイが完全に作成されるまでに約 30 分かかります。
 
-### <a name="newhub"></a>新しい仮想ハブとゲートウェイを作成するには
+### <a name="to-create-a-new-virtual-hub-and-a-gateway"></a><a name="newhub"></a>新しい仮想ハブとゲートウェイを作成するには
 
 新しい仮想ハブを作成します。 ハブが作成されると、サイトをアタッチしていない場合でも、ハブに対して課金されます。
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-er-hub-include.md)]
 
-### <a name="existinghub"></a>既存のハブでゲートウェイを作成するには
+### <a name="to-create-a-gateway-in-an-existing-hub"></a><a name="existinghub"></a>既存のハブでゲートウェイを作成するには
 
 既存のハブを編集し、ゲートウェイを作成することもできます。
 
@@ -90,7 +90,7 @@ ExpressRoute ゲートウェイを作成したら、ゲートウェイの詳細�
 
 ![ゲートウェイの表示](./media/virtual-wan-expressroute-portal/viewgw.png "ゲートウェイの表示")
 
-## <a name="connectvnet"></a>VNet をハブに接続する
+## <a name="connect-your-vnet-to-the-hub"></a><a name="connectvnet"></a>VNet をハブに接続する
 
 このセクションでは、ハブと VNet の間にピアリング接続を作成します。 接続する VNet ごとにこれらの手順を繰り返します。
 
@@ -103,7 +103,7 @@ ExpressRoute ゲートウェイを作成したら、ゲートウェイの詳細�
     * **[サブスクリプション]** - サブスクリプションを確認します。
     * **[仮想ネットワーク]** - このハブに接続する仮想ネットワークを選択します。 仮想ネットワークに既存の仮想ネットワーク ゲートウェイを設定することは (VPN と ExpressRoute のどちらでも) できません。
 
-## <a name="connectcircuit"></a>回線をハブ ゲートウェイに接続する
+## <a name="connect-your-circuit-to-the-hub-gateway"></a><a name="connectcircuit"></a>回線をハブ ゲートウェイに接続する
 
 ゲートウェイが作成されたら、[ExpressRoute 回線](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) をそれに接続できます。 ExpressRoute Global Reach 対応の場所にある ExpressRoute Premium 回線は、Virtual WAN ExpressRoute ゲートウェイに接続できます。
 
@@ -116,7 +116,7 @@ ExpressRoute ゲートウェイを作成したら、ゲートウェイの詳細�
 
    ![回線の接続](./media/virtual-wan-expressroute-portal/cktconnect.png "回線の接続")
 
-### <a name="authkey"></a>承認キーを利用して接続するには
+### <a name="to-connect-by-redeeming-an-authorization-key"></a><a name="authkey"></a>承認キーを利用して接続するには
 
 接続するために与えられた承認キーと回線 URI を使用します。
 

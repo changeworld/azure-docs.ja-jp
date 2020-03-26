@@ -5,12 +5,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: このチュートリアルでは、Azure Dev Spaces と Visual Studio Code を使用して、Azure Kubernetes Service 上で Node.js アプリケーションのデバッグと迅速な反復型開発を行う方法を示します
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: 916f2b1449e9d1a29fde94be05e03c3e8211af8c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 6571e23c3ca9b67d4db3c9c7bcea1e4a3b80e4c1
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252017"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80240513"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-nodejs-with-azure-dev-spaces"></a>Kubernetes 開発空間を作成する: Azure Dev Spaces での Visual Studio Code と Node.js
 
@@ -106,7 +106,7 @@ Azure CLI の `azds prep` コマンドにより、既定の設定で Docker と 
 * `./charts/webfrontend` の下の [Helm チャート](https://docs.helm.sh)は、Kubernetes にコンテナーを展開する方法を記述しています。
 
 > [!TIP]
-> プロジェクトの [Dockerfile と Helm チャート](how-dev-spaces-works.md#prepare-your-code)は、対象のコードをビルドして実行するために Azure Dev Spaces によって使用されますが、プロジェクトのビルドおよび実行方法を変更する場合は、これらのファイルを変更することができます。
+> プロジェクトの [Dockerfile と Helm チャート](how-dev-spaces-works-prep.md#prepare-your-code)は、対象のコードをビルドして実行するために Azure Dev Spaces によって使用されますが、プロジェクトのビルドおよび実行方法を変更する場合は、これらのファイルを変更することができます。
 
 ここでは、これらのファイルの内容をすべて理解する必要はありません。 ただし、開発から運用まで、**コードとしての構成である同じ Kubernetes および Docker アセットを使用できるため、異なる環境にわたってより高い一貫性が提供されることに注意してください。**
  

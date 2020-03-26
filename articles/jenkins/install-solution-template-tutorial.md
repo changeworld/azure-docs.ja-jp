@@ -5,10 +5,10 @@ keywords: Jenkins, Azure, 開発, ポータル, 仮想マシン, ソリューシ
 ms.topic: tutorial
 ms.date: 03/03/2020
 ms.openlocfilehash: 3fa8dcbcc0edcc987fa9c4e76fbdb9d7a2f3396c
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78274531"
 ---
 # <a name="tutorial-create-a-jenkins-server-on-an-azure-linux-vm"></a>チュートリアル:Azure Linux VM に Jenkins サーバーを作成する 

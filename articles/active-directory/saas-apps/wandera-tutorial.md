@@ -17,10 +17,10 @@ ms.date: 07/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d4f5004571c849d90b7d811906684e66c10ee487
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68825291"
 ---
 # <a name="tutorial-integrate-wandera-with-azure-active-directory"></a>チュートリアル:Wandera と Azure Active Directory の統合
@@ -29,7 +29,7 @@ ms.locfileid: "68825291"
 
 * Wandera にアクセスする Azure AD ユーザーを制御する。
 * ユーザーが自分の Azure AD アカウントを使用して Wandera に自動的にサインインするように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -126,7 +126,7 @@ Wandera に対する Azure AD SSO を構成してテストするには、次の�
 
     c. フェデレーション メタデータ XML をメモ帳で開き、その内容をコピーして **[IdP Public X.509 Certificate]\(IdP パブリック X.509 証明書\)** ボックスに貼り付けます。
 
-    d. **[Save]** をクリックします。
+    d. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

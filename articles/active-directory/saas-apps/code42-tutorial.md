@@ -16,10 +16,10 @@ ms.date: 02/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d98a2f8c0612fc2c97c4456d0cd99f017b66aa5f
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77562705"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-code42"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Code42 の統合

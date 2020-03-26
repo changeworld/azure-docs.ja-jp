@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 50f339b257110f0a5dc0ac08b9f40043ee384afb
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74706908"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>チュートリアル:透過的なゲートウェイを介してデータを送信する
@@ -217,7 +217,7 @@ Avro ファイルを読み取って、ファイル内のメッセージの JSON 
    }
    ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このエンドツーエンドのチュートリアルで使用されるリソースを調べる予定の場合、作成したリソースのクリーンアップが完了するまで待ってください。 続ける予定がない場合は、次の手順を使用してそれらを削除してください。
 
@@ -229,7 +229,7 @@ Avro ファイルを読み取って、ファイル内のメッセージの JSON 
 
 4. ローカルの証明書を作成した場合は、フォルダー c:\\edgeCertificates を削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、開発用コンピューターを使用して、センサーおよび運用データをエッジ デバイスに送信するリーフ デバイスをシミュレートしました。 まず、エッジ デバイスのリアルタイム動作を調べてから、ストレージ アカウントにアップロードされたファイルに注目することによって、デバイス上のモジュールがデータをルーティング、分類、永続化、およびアップロードしたことを検証しました。
 

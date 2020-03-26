@@ -16,10 +16,10 @@ ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c18613233d6dec59c76db120ed7f089dfbb5fbac
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77046721"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ServiceNow の統合
@@ -124,7 +124,7 @@ ServiceNow で Azure AD SSO を構成してテストするには、次の構成�
    1. **名前**には、`B.Simon`を入力します。  
    1. **[ユーザー名]** に「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
    1. **[パスワードを表示]** を選択し、 **[パスワード]** ボックス内に表示された値を書き留めます。
-   1. **作成** を選択します。
+   1. **［作成］** を選択します
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
