@@ -45,7 +45,7 @@ ms.locfileid: "75609385"
 |Attribute|値|
 |---|---|
 |name|AccountName|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 ##### <a name="xml-source"></a>XML ソース
@@ -64,7 +64,7 @@ ms.locfileid: "75609385"
 |Attribute|値|
 |---|---|
 |name|Password|
-|型|xs:string|
+|type|xs:string|
 |use|省略可能|
 
 ##### <a name="xml-source"></a>XML ソース
@@ -112,7 +112,7 @@ ms.locfileid: "75609385"
 |Attribute|値|
 |---|---|
 |name|NameUri|
-|型|FabricUri|
+|type|FabricUri|
 |use|required|
 
 ##### <a name="xml-source"></a>XML ソース
@@ -131,7 +131,7 @@ ms.locfileid: "75609385"
 |Attribute|値|
 |---|---|
 |name|ApplicationId|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 ##### <a name="xml-source"></a>XML ソース
@@ -242,8 +242,8 @@ ms.locfileid: "75609385"
 |---|---|
 |name|ManifestId|
 |use|省略可能|
-|既定値 (default)||
-|型|xs:string|
+|default||
+|type|xs:string|
 
 ##### <a name="xml-source"></a>XML ソース
 ```xml
@@ -285,7 +285,7 @@ ms.locfileid: "75609385"
 |Attribute|値|
 |---|---|
 |name|ServicePackageName|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 ##### <a name="xml-source"></a>XML ソース
@@ -300,7 +300,7 @@ ms.locfileid: "75609385"
 |Attribute|値|
 |---|---|
 |name|RolloutVersion|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 ##### <a name="xml-source"></a>XML ソース
@@ -339,7 +339,7 @@ Azure ストレージ アカウントへの接続文字列。 形式:DefaultEndp
 |Attribute|値|
 |---|---|
 |name|ConnectionString|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 ##### <a name="xml-source"></a>XML ソース
@@ -378,7 +378,7 @@ Azure ストレージ アカウントへの接続文字列。 形式:DefaultEndp
 |Attribute|値|
 |---|---|
 |name|コンテナー名|
-|型|xs:string|
+|type|xs:string|
 
 ##### <a name="xml-source"></a>XML ソース
 ```xml
@@ -416,7 +416,7 @@ Azure ストレージ アカウントへの接続文字列。 形式:DefaultEndp
 |Attribute|値|
 |---|---|
 |name|DataDeletionAgeInDays|
-|型|xs:string|
+|type|xs:string|
 
 ##### <a name="xml-source"></a>XML ソース
 ```xml
@@ -454,7 +454,7 @@ Azure ストレージ アカウントへの接続文字列。 形式:DefaultEndp
 |Attribute|値|
 |---|---|
 |name|IsEnabled|
-|型|xs:string|
+|type|xs:string|
 
 ##### <a name="xml-source"></a>XML ソース
 ```xml
@@ -492,7 +492,7 @@ ETW イベントをフィルター処理するレベル。 指定したレベル
 |Attribute|値|
 |---|---|
 |name|LevelFilter|
-|型|xs:string|
+|type|xs:string|
 
 ##### <a name="xml-source"></a>XML ソース
 ```xml
@@ -567,7 +567,7 @@ ETW イベントをフィルター処理するレベル。 指定したレベル
 |Attribute|値|
 |---|---|
 |name|値|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 ##### <a name="xml-source"></a>XML ソース
@@ -606,7 +606,7 @@ ETW イベントをフィルター処理するレベル。 指定したレベル
 |Attribute|値|
 |---|---|
 |name|Path|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 ##### <a name="xml-source"></a>XML ソース
@@ -645,7 +645,7 @@ ETW イベントをフィルター処理するレベル。 指定したレベル
 |Attribute|値|
 |---|---|
 |name|RelativeFolderPath|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 ##### <a name="xml-source"></a>XML ソース
@@ -769,7 +769,7 @@ ETW イベントをフィルター処理するレベル。 指定したレベル
 |Attribute|値|
 |---|---|
 |name|UploadIntervalInMinutes|
-|型|xs:string|
+|type|xs:string|
 
 ##### <a name="xml-source"></a>XML ソース
 ```xml
@@ -806,7 +806,7 @@ ApplicationInstance ドキュメントと ServicePackage ドキュメントの�
 |Attribute|値|
 |---|---|
 |name|RolloutVersion|
-|型|xs:string|
+|type|xs:string|
 |use|required|
 
 ##### <a name="xml-source"></a>XML ソース
