@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 20fe29a6588891c35520db01ac0403fb5b3a85d7
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73936134"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Windows Server 2008 を実行しているサーバーを Azure に移行する
@@ -30,7 +30,7 @@ ms.locfileid: "73936134"
 「制限事項と既知の問題」セクションでは、いくつかの制限事項と、Windows Server 2008 マシンを Azure に移行する際に発生する可能性がある既知の問題の回避策を一覧に示しています。 
 
 > [!NOTE]
-> これで、Azure Migrate サービスを使用してオンプレミスから Azure に移行できます。 [詳細情報](../migrate/migrate-services-overview.md)。
+> これで、Azure Migrate サービスを使用してオンプレミスから Azure に移行できます。 [詳細については、こちらを参照してください](../migrate/migrate-services-overview.md)。
 
 
 ## <a name="supported-operating-systems-and-environments"></a>サポートされているオペレーティング システムと環境
@@ -54,7 +54,7 @@ Windows Server 2008 または Windows Server 2008 R2 を実行している Hyper
 
 このチュートリアルの手順以外の部分では、オンプレミス VMware 仮想マシンと Windows Server 2008 または 2008 R2 を実行している物理サーバーを移行する方法を説明しています。
 > [!TIP]
-> VMware VM をエージェントレスで Azure に移行する方法については、 [ここをクリック](https://aka.ms/migrateVMs-signup)してください。
+> VMware VM をエージェントレスで Azure に移行する方法については、 [ここをクリック](https://aka.ms/migrateVMs-signup)してください
 
 
 ## <a name="limitations-and-known-issues"></a>制限事項と既知の問題
@@ -82,7 +82,7 @@ Windows Server 2008 または Windows Server 2008 R2 を実行している Hyper
   >
 
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 次のタスクを実行して、Azure サブスクリプションおよびオンプレミス VMware/物理環境を準備します。
 
@@ -93,7 +93,7 @@ Windows Server 2008 または Windows Server 2008 R2 を実行している Hyper
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
 1. [Azure Portal](https://portal.azure.com) > **Recovery Services** にサインインします。
-2. **[リソースの作成]**  >  **[管理ツール]**  >  **[Backup and Site Recovery]** の順にクリックします。
+2. **[リソースの作成]**  >  **[管理ツール]**  >  **[バックアップおよびサイトの回復]** の順にクリックします。
 3. **[名前]** に、フレンドリ名 **W2K8-migration** を指定します。 複数のサブスクリプションがある場合は、適切なものを選択します。
 4. リソース グループ **w2k8migrate** を作成します。
 5. Azure リージョンを指定します。 サポートされているリージョンを確認するには、[Azure Site Recovery の価格の詳細](https://azure.microsoft.com/pricing/details/site-recovery/)に関するページでご利用可能な地域をご覧ください。
@@ -155,7 +155,7 @@ Azure への[テスト フェールオーバー](tutorial-dr-drill-azure.md)を�
 移行するマシンのフェールオーバーを実行します。
 
 1. **[設定]**  >  **[レプリケートされたアイテム]** で、[マシン] > **[フェールオーバー]** をクリックします。
-2. **[フェールオーバー]** で、フェールオーバーする**復旧ポイント**を選択します。 最新の復旧ポイントを選択します。
+2. **[フェールオーバー]** で、フェールオーバーする **[復旧ポイント]** を選択します。 最新の復旧ポイントを選択します。
 3. **[フェールオーバーを開始する前にマシンをシャットダウンします]** を選択します。 Site Recovery は、フェールオーバーを開始する前にサーバーをシャットダウンしようとします。 仮にシャットダウンが失敗したとしても、フェールオーバーは続行されます。 フェールオーバーの進行状況は **[ジョブ]** ページで確認できます。
 4. 想定どおりに Azure VM が Azure に表示されることを確認します。
 5. **[レプリケートされたアイテム]** でサーバーを右クリックし、 **[移行の完了]** を選択します。 次の処理が実行されます。

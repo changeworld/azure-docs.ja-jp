@@ -9,11 +9,11 @@ ms.date: 02/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
 ms.openlocfilehash: 9ac70252ce7c818ccbdecfd996b9970f011aa967
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77056344"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290190"
 ---
 # <a name="about-azure-virtual-wan"></a>Azure Virtual WAN の概要
 
@@ -29,7 +29,7 @@ Azure Virtual WAN は、サイト間 VPN、ユーザー VPN (ポイント対サ�
 * **自動化されたスポークの設定と構成:** 仮想ネットワークとワークロードを Azure ハブにシームレスに接続します。
 * **直感的なトラブルシューティング:** Azure 内でエンド ツー エンドのフローを確認し、この情報を使用して必要なアクションを実行できます。
 
-## <a name="basicstandard"></a>Basic および Standard の仮想 WAN
+## <a name="basic-and-standard-virtual-wans"></a><a name="basicstandard"></a>Basic および Standard の仮想 WAN
 
 仮想 WAN には、次の 2 つの種類があります:Basic と Standard です。 各種類に対して使用できる構成を、次の表に示します。
 
@@ -37,14 +37,14 @@ Azure Virtual WAN は、サイト間 VPN、ユーザー VPN (ポイント対サ�
 
 仮想 WAN をアップグレードする手順については、「[Virtual WAN を Basic から Standard にアップグレードする](upgrade-virtual-wan.md)」をご覧ください。
 
-## <a name="architecture"></a>アーキテクチャ
+## <a name="architecture"></a><a name="architecture"></a>アーキテクチャ
 
 仮想 WAN のアーキテクチャと Virtual WAN への移行方法については、次の記事を参照してください。
 
 * [仮想 WAN のアーキテクチャ](migrate-from-hub-spoke-topology.md)
 * [グローバル転送ネットワーク アーキテクチャ](virtual-wan-global-transit-network-architecture.md)
 
-## <a name="resources"></a>Virtual WAN リソース
+## <a name="virtual-wan-resources"></a><a name="resources"></a>Virtual WAN リソース
 
 エンドツーエンドの仮想 WAN を構成するには、次のリソースを作成します。
 
@@ -64,17 +64,17 @@ Azure Virtual WAN は、サイト間 VPN、ユーザー VPN (ポイント対サ�
 
   * **サイト:** このリソースは、サイト間接続にのみ使用されます。 サイト リソースは **vpnsite** です。 これは、オンプレミスの VPN デバイスとその設定を表します。 Virtual WAN パートナーと連携することで、この情報を Azure に自動的にエクスポートする組み込みのソリューションが得られます。
 
-## <a name="connectivity"></a>接続の種類
+## <a name="types-of-connectivity"></a><a name="connectivity"></a>接続の種類
 
 Virtual WAN では、次の種類の接続を使用できます。サイト間 VPN、ユーザー VPN (ポイント対サイト)、および ExpressRoute です。
 
-### <a name="s2s"></a>サイト間 VPN 接続
+### <a name="site-to-site-vpn-connections"></a><a name="s2s"></a>サイト間 VPN 接続
 
 ![Virtual WAN のダイアグラム](./media/virtual-wan-about/virtualwan.png)
 
 仮想 WAN サイト間接続を作成するときに、利用可能なパートナーと連携できます。 パートナーを利用しない場合は、手動で接続を構成できます。 詳細については、[Virtual WAN を使用したサイト間接続の作成](virtual-wan-site-to-site-portal.md)に関するページを参照してください。
 
-#### <a name="s2spartner"></a>Virtual WAN パートナーのワークフロー
+#### <a name="virtual-wan-partner-workflow"></a><a name="s2spartner"></a>Virtual WAN パートナーのワークフロー
 
 Virtual WAN パートナーと連携する場合のワークフローは、次のとおりです。
 
@@ -82,22 +82,22 @@ Virtual WAN パートナーと連携する場合のワークフローは、次�
 2. ブランチ デバイス (VPN/SDWAN) コントローラーが、Azure 接続構成を取得し、ローカル デバイスを更新します。 これにより、オンプレミス VPN デバイスの構成のダウンロード、編集、および更新が自動化されます。
 3. デバイスに適切な Azure 構成が設定されると、Azure WAN に対してサイト間接続 (2 つのアクティブなトンネル) が確立されます。 Azure では、IKEv1 と IKEv2 の両方がサポートされています。 BGP はオプションです。
 
-#### <a name="partners"></a>サイト間仮想 WAN 接続のパートナー
+#### <a name="partners-for-site-to-site-virtual-wan-connections"></a><a name="partners"></a>サイト間仮想 WAN 接続のパートナー
 
 利用可能なパートナーと場所の一覧については、[Virtual WAN のパートナーと場所](virtual-wan-locations-partners.md)に関する記事を参照してください。
 
-### <a name="uservpn"></a>ユーザー VPN (ポイント対サイト) 接続
+### <a name="user-vpn-point-to-site-connections"></a><a name="uservpn"></a>ユーザー VPN (ポイント対サイト) 接続
 
 IPsec/IKE (IKEv2) 接続または OpenVPN 接続を使用して、Azure 内のリソースに接続できます。 この種類の接続を使うには、クライアント コンピューター上で VPN クライアントを構成する必要があります。 詳細については、[ポイント対サイト接続の作成](virtual-wan-point-to-site-portal.md)に関する記事をご覧ください。
 
-### <a name="er"></a>ExpressRoute 接続
+### <a name="expressroute-connections"></a><a name="er"></a>ExpressRoute 接続
 ExpressRoute を使用すると、プライベート接続を介してオンプレミス ネットワークを Azure に接続できます。 接続を作成するには、[Virtual WAN を使用した ExpressRoute 接続の作成](virtual-wan-expressroute-portal.md)に関するページを参照してください。
 
-## <a name="locations"></a>場所
+## <a name="locations"></a><a name="locations"></a>場所
 
 場所の情報については、[Virtual WAN のパートナーと場所](virtual-wan-locations-partners.md)に関する記事を参照してください。
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a><a name="faq"></a>FAQ
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
 

@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: 07350ffe4a57bfe4a79bfce5d821b51535867935
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76167011"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>チュートリアル:Custom Vision Service を使用してエッジで画像の分類を実行する
@@ -72,9 +72,9 @@ Custom Vision サービスを使用して IoT Edge モジュールを開発す�
 
 4. 以下の値を設定して、プロジェクトを作成します。
 
-   | フィールド | 値 |
+   | フィールド | Value |
    | ----- | ----- |
-   | Name | **EdgeTreeClassifier** など、プロジェクトの名前を指定します。 |
+   | 名前 | **EdgeTreeClassifier** など、プロジェクトの名前を指定します。 |
    | 説明 | オプションのプロジェクトの説明。 |
    | リソース | Custom Vision Service リソースを含む Azure リソース グループを 1 つ選択するか、まだ追加していない場合は**新規作成**します。 |
    | プロジェクトの種類 | **分類** |
@@ -146,7 +146,7 @@ Custom Vision サービスを使用して IoT Edge モジュールを開発す�
 
 1. コマンド パレットで、**Azure IoT Edge:New IoT Edge solution** コマンドを入力して実行します。 コマンド パレットで、次の情報を指定してソリューションを作成します。 
 
-   | フィールド | 値 |
+   | フィールド | Value |
    | ----- | ----- |
    | フォルダーの選択 | VS Code によってソリューション ファイルが作成される、開発マシン上の場所を選択します。 |
    | Provide a solution name (ソリューション名の指定) | **CustomVisionSolution** のように、ソリューションのわかりやすい名前を入力するか、既定値をそのまま使用します。 |
@@ -212,7 +212,7 @@ Visual Studio Code の Python モジュール テンプレートには、IoT Edg
 
 1. 同じ Visual Studio Code ウィンドウで、コマンド パレットを使用して **Azure IoT Edge: Add IoT Edge Module** を実行することで追加できます。 コマンド パレットで、新しいモジュールに以下の情報を指定します。 
 
-   | Prompt | 値 | 
+   | Prompt | Value | 
    | ------ | ----- |
    | Select deployment template file (配置テンプレート ファイルの選択) | CustomVisionSolution フォルダー内の deployment.template.json ファイルを選択します。 |
    | Select module template (モジュール テンプレートの選択) | **[Python モジュール]** を選択します |

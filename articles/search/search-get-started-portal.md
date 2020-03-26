@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 02/10/2020
 ms.openlocfilehash: 6a3bbdae0d3fa898621c1c805388252beb891ecf
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121679"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290430"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![インデックス、インデクサー、およびデータソースの一覧](media/search-get-started-portal/tiles-indexers-datasources.png)
 
-## <a name="create-index"></a>インデックスの作成とデータの読み込み
+## <a name="create-an-index-and-load-data"></a><a name="create-index"></a>インデックスの作成とデータの読み込み
 
 検索クエリは、"[*インデックス*](search-what-is-an-index.md)" を反復処理します。インデックスには、検索可能なデータやメタデータに加え、特定の検索の動作を最適化する構造が含まれています。
 
@@ -132,7 +132,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 インデックスの設計時に何を編集できて何を編集できないかを明確に理解するために、インデックスの定義オプションをじっくり見てみましょう。 淡色表示されているオプションは、値を編集することも削除することもできないことを表します。 
 
-## <a name="query-index"></a> Search エクスプローラーを使用してクエリを実行する
+## <a name="query-using-search-explorer"></a><a name="query-index"></a> Search エクスプローラーを使用してクエリを実行する
 
 この時点で検索インデックスは、ビルトインの [**Search エクスプローラー**](search-explorer.md)のクエリ ページを使って照会する準備が整っています。 このページには、任意のクエリ文字列をテストできるよう検索ボックスが備わっています。
 
@@ -176,7 +176,7 @@ Bing や Google 検索で行うように用語や語句を入力するか、完�
 
 * **$top=10** では、全体の中から上位 10 件のドキュメントが返されます。 既定では、Azure Cognitive Search によって上位 50 件が返されます。 **$top** を使用して、この数を増減できます。
 
-### <a name="filter-query"></a> クエリのフィルター処理
+### <a name="filter-the-query"></a><a name="filter-query"></a> クエリのフィルター処理
 
 検索要求に対するフィルターの追加は、 **$filter** パラメーターを追加するときに行います。 
 
@@ -186,7 +186,7 @@ Bing や Google 検索で行うように用語や語句を入力するか、完�
 
 * フィルター構文は、OData 構文です。 詳細については、[フィルターの OData 構文](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)に関するページを参照してください。
 
-### <a name="facet-query"></a> クエリのファセット
+### <a name="facet-the-query"></a><a name="facet-query"></a> クエリのファセット
 
 ファセット フィルターは検索要求に追加されます。 指定したファセット値に一致するドキュメントの総数を facet パラメーターを使用して取得できます。
 
@@ -206,7 +206,7 @@ Bing や Google 検索で行うように用語や語句を入力するか、完�
 * *Rating* フィールドは倍精度浮動小数点数であり、グループ化は正確な値によります。 間隔によるグループ化 (たとえば、"三つ星評価"、"四つ星評価" など) について詳しくは、[Azure Cognitive Search でファセット ナビゲーションを実装する方法](https://docs.microsoft.com/azure/search/search-faceted-navigation#filter-based-on-a-range)に関するページを参照してください。
 
 
-### <a name="highlight-query"></a> 検索結果の強調表示
+### <a name="highlight-search-results"></a><a name="highlight-query"></a> 検索結果の強調表示
 
 検索結果の強調表示は、特定のフィールドで一致があった場合の、キーワードに一致したテキストの書式設定を表します。 検索対象の用語が説明に深く埋もれている場合、検索結果の強調表示を追加してその用語を見つけやすくすることができます。
 
@@ -220,7 +220,7 @@ Bing や Google 検索で行うように用語や語句を入力するか、完�
 
 * Azure Cognitive Search では、Lucene と Microsoft の 56 個のアナライザーをサポートしています。 Azure Cognitive Search により既定で使用されるのは、Lucene の標準アナライザーです。
 
-### <a name="fuzzy-search"></a> あいまい検索を試す
+### <a name="try-fuzzy-search"></a><a name="fuzzy-search"></a> あいまい検索を試す
 
 既定では、検索語のスペルを間違うと ("Seattle" に対する *seatle* など)、通常の検索では一致しません。 次の例では、検索結果が 1 件も返されません。
 
@@ -238,7 +238,7 @@ Bing や Google 検索で行うように用語や語句を入力するか、完�
 
 完全なクエリ パーサーによって有効になるクエリのシナリオの詳細については、[Azure Cognitive Search での Lucene クエリ構文](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)に関するページを参照してください。
 
-### <a name="geo-search"></a> 地理空間検索を試す
+### <a name="try-geospatial-search"></a><a name="geo-search"></a> 地理空間検索を試す
 
 地理空間検索は、座標を格納しているフィールドの [edm.GeographyPoint データ型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)によってサポートされます。 地理空間検索はフィルターの種類で、[フィルターの OData 構文](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)で指定します。
 

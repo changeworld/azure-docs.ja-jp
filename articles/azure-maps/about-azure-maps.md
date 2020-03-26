@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 411ffb9c05b0f6b4d8b7d37a11d0838c8734ec5e
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 5b1af5c728a14b29ca6e6c18b79b23db9ef010f2
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79079798"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80132482"
 ---
 # <a name="what-is-azure-maps"></a>Azure Maps とは
 

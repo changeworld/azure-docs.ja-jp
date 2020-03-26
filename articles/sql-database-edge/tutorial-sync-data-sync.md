@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
 ms.openlocfilehash: 7c38ba6dbabef4affd8672295a93d46fd4b0e494
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74384182"
 ---
 # <a name="tutorial-sync-data-from-sql-database-edge-to-azure-sql-database-by-using-sql-data-sync"></a>チュートリアル:SQL データ同期を使用して SQL Database Edge から Azure SQL Database にデータを同期する
@@ -58,6 +58,6 @@ SQL データ同期の詳細については、次の記事を参照してくだ�
 
 * [Transact-SQL を使用した同期スキーマの更新](../sql-database/sql-database-update-sync-schema.md)または [PowerShell](../sql-database/scripts/sql-database-sync-update-schema.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [PowerShell を使用して Azure SQL Database と Azure SQL Database Edge を同期します](../sql-database/scripts/sql-database-sync-data-between-azure-onprem.md)。 このチュートリアルでは、`OnPremiseServer` データベースの詳細を、Azure SQL Database Edge の詳細で置き換えます。

@@ -10,10 +10,10 @@ author: peterclu
 ms.author: peterlu
 ms.date: 03/10/2020
 ms.openlocfilehash: 82476b9cc8d92c815df602496ed3dcb33014a4fd
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79037295"
 ---
 # <a name="designer-sample-pipelines"></a>デザイナーのサンプル パイプライン

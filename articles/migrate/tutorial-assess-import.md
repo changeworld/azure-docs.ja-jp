@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 91b9c71e7c735fca08f71ca37ed28734c8d634a1
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 23fa1a2a0b035d04334c51c02411de6de70f2cad
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79079869"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79453648"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>インポートされたデータを使用してサーバーを評価する
 
@@ -142,7 +142,6 @@ CSV テンプレートをダウンロードし、サーバー情報を追加し�
 **Business owner (ビジネス オーナー)** | いいえ | 部署の所有者。
 **Business application name (ビジネス アプリケーション名)** | いいえ | アプリが属しているアプリケーションの名前。
 **場所** | いいえ | サーバーが配置されているデータセンター。
-**Server decommission date (サーバーの使用停止日)** | いいえ | 物理サーバー、または仮想サーバーの基となる物理サーバーの使用停止日。
 
 ### <a name="add-operating-systems"></a>オペレーティング システムを追加する
 

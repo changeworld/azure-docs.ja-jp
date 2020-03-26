@@ -11,10 +11,10 @@ ms.custom: seodec18
 ms.date: 11/05/2019
 ms.author: shvija
 ms.openlocfilehash: e5f52d0ddbf9a66d974732d6d98ca8a5b09cc2d0
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73720589"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-event-hubs-using-go"></a>クイック スタート:Go を使用して Event Hubs との間でイベントを送受信する
@@ -38,7 +38,7 @@ Azure Event Hubs はビッグ データ ストリーミング プラットフォ
 
 ### <a name="install-go-package"></a>Go パッケージをインストールする
 
-`go get` または `dep` を使用して、Event Hubs 用の Go パッケージを取得します。 例:
+`go get` または `dep` を使用して、Event Hubs 用の Go パッケージを取得します。 次に例を示します。
 
 ```bash
 go get -u github.com/Azure/azure-event-hubs-go
@@ -281,7 +281,7 @@ if err != nil {
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次の記事を参照してください。
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)

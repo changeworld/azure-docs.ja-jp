@@ -15,10 +15,10 @@ ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: b23c10fc2a551b8044b208911dbc048968b06564
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74419608"
 ---
 # <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>クイック スタート:Azure リソースに対するユーザーのアクセス権を表示する
@@ -29,7 +29,7 @@ ms.locfileid: "74419608"
 
  ユーザーのアクセス権を表示する方法は、ユーザーのロールの割り当てを一覧表示することです。 サブスクリプションのスコープで単独のユーザー、グループ、サービス プリンシパル、またはマネージド ID のロールの割り当てを表示するには、次の手順のようにします。
 
-1. Azure portal で、 **[すべてのサービス]** 、 **[サブスクリプション]** の順にクリックします。
+1. Azure portal で、 **[すべてのサービス]** 、 **[サブスクリプション]**  の順にクリックします。
 
 1. お使いのサブスクリプションをクリックします。
 
@@ -51,7 +51,7 @@ ms.locfileid: "74419608"
 
     このウィンドウでは、選択したセキュリティ プリンシパルに割り当てられているロールとスコープを確認できます。 このスコープに拒否割り当てがある場合、またはこのスコープに継承されている場合は、それが表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [チュートリアル:RBAC と Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する](quickstart-assign-role-user-portal.md)
