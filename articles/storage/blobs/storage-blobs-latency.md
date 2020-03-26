@@ -9,17 +9,17 @@ ms.date: 09/05/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 78440b8150a0992bed2e2a3e597fdac8e7a1c7b0
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75749714"
 ---
 # <a name="latency-in-blob-storage"></a>Blob Storage での待ち時間
 
 待ち時間とは、要求の完了をアプリケーションが待機しなければならない時間であり、応答時間と呼ばれることもあります。 待ち時間はアプリケーションのパフォーマンスに直接的な影響を及ぼすことがあります。 クレジット カード トランザクションの実行や Web ページの読み込みなど、人間が介在するシナリオでは多くの場合、低遅延が重要となります。 また、テレメトリのログ記録や IoT イベントなど、受信イベントを高速に処理する必要のあるシステムでも低遅延が要求されます。 この記事では、ブロック BLOB に対する操作の待ち時間を把握、測定する方法のほか、低遅延を実現するアプリケーションの設計方法について説明します。
 
-Azure Storage では、ブロック BLOB に関して Premium と Standard の 2 種類のパフォーマンス オプションが用意されています。 Premium ブロック BLOB は、ハイパフォーマンスの SSD ディスクにより、Standard ブロック BLOB と比較してきわめて短い待ち時間と高い一貫性を備えています。 詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](storage-blob-storage-tiers.md)」の「**Premium パフォーマンス ブロック BLOB ストレージ**」を参照してください。
+Azure Storage では、ブロック BLOB に関して Premium と Standard の 2 種類のパフォーマンス オプションが用意されています。 Premium ブロック BLOB は、ハイパフォーマンスの SSD ディスクにより、Standard ブロック BLOB と比較してきわめて短い待ち時間と高い一貫性を備えています。 詳細については、「**Azure Blob Storage: ホット、クール、アーカイブ ストレージ層**」の「[Premium パフォーマンス ブロック BLOB ストレージ](storage-blob-storage-tiers.md)」を参照してください。
 
 ## <a name="about-azure-storage-latency"></a>Azure Storage の待ち時間について
 
@@ -39,7 +39,7 @@ Azure Storage には、ブロック BLOB の待ち時間に関して 2 つのメ
 
 - **サーバーの待ち時間**: Azure Storage が最後の要求パケットを受け取ってから、1 つ目の応答パケットを返すまでの間隔を測定します。
 
-次の画像は、`Get Blob` 操作を呼び出すサンプル ワークロードについて、**成功した場合の E2E 平均待ち時間**と**成功した場合の平均サーバー待ち時間**を示しています。
+次の画像は、 **操作を呼び出すサンプル ワークロードについて、** 成功した場合の E2E 平均待ち時間**と**成功した場合の平均サーバー待ち時間`Get Blob`を示しています。
 
 ![Get Blob 操作の待ち時間のメトリックを示すスクリーンショット](media/storage-blobs-latency/latency-metrics-get-blob.png)
 
@@ -67,5 +67,5 @@ Azure Storage 要求の処理には、クライアントの CPU リソースと�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [BLOB ストレージのスケーラビリティとパフォーマンスのターゲット](scalability-targets.md)
+- [Blob ストレージのスケーラビリティおよびパフォーマンス ターゲット](scalability-targets.md)
 - [BLOB ストレージのパフォーマンスとスケーラビリティのチェックリスト](storage-performance-checklist.md)

@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 11/04/2019
 ms.author: alkohli
 ms.openlocfilehash: f463e8883efd5e2dfc4d7fff80912c193665b850
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78399808"
 ---
 # <a name="what-is-azure-stack-edge"></a>Azure Stack Edge とは

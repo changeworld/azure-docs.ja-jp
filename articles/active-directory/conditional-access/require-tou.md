@@ -12,13 +12,13 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3dd1b4cf554e773f49a15ac5cedcbcc5b3e710b9
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74380101"
 ---
-# <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>クイック スタート:クラウド アプリにアクセスする前に利用規約への同意を要求する
+# <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>クイック スタート: クラウド アプリにアクセスする前に使用条件への同意を要求する
 
 環境内の特定のクラウド アプリにアクセスする前に、使用条件 (ToU) を受け入れる形式でユーザーからの同意を得る場合があります。 Azure Active Directory (Azure AD) の条件付きアクセスでは、次のものが提供されます。
 
@@ -93,7 +93,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ポリシーに以下の内容を設定します。
 
-| Setting | 値 |
+| 設定 | 値 |
 | --- | --- |
 | ユーザーとグループ | Isabella Simonsen |
 | クラウド アプリ | Microsoft Azure の管理 |
@@ -105,7 +105,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[新規]** ページの **[名前]** ボックスに、「**Require TOU for Isabella**」と入力します。
 
-   ![名前](./media/require-tou/71.png)
+   ![Name](./media/require-tou/71.png)
 
 1. **[割り当て]** セクションで **[ユーザーとグループ]** をクリックします。
 
@@ -137,7 +137,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[許可]** ページで、次の手順に従います。
 
-   ![許可](./media/require-tou/111.png)
+   ![Grant](./media/require-tou/111.png)
 
    1. **[アクセス権の付与]** を選択します。
    1. **[My TOU]** を選択します。
@@ -189,11 +189,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 前のセクションでは、シミュレートされたサインインを評価する方法を学びました。 期待どおりに動作することを確認するには、シミュレーションに加え、条件付きアクセス ポリシーもテストすることをお勧めします。
 
-ポリシーをテストするには、**Isabella Simonsen** テスト アカウントを使用して [Azure Portal](https://portal.azure.com) にサインインしてみます。 使用条件への同意を求めるダイアログが表示されるはずです。
+ポリシーをテストするには、[Isabella Simonsen](https://portal.azure.com) テスト アカウントを使用して **Azure Portal** にサインインしてみます。 使用条件への同意を求めるダイアログが表示されるはずです。
 
 ![使用条件](./media/require-tou/57.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 不要になったら、テスト ユーザーと条件付きアクセス ポリシーを削除します。
 
@@ -206,7 +206,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![多要素認証](./media/require-tou/29.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [特定のアプリに対して MFA を必要にする](app-based-mfa.md)

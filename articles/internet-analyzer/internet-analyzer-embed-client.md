@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: f9ecb8d731945847160b49c68c554fafdd7285d9
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74896381"
 ---
 # <a name="embed-the-internet-analyzer-client"></a>Internet Analyzer クライアントの埋め込み
@@ -58,6 +58,6 @@ Internet Analyzer が正常に機能するには、Azure やその他 Microsoft 
 </html>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Internet Analyzer の FAQ](internet-analyzer-faq.md) を読む

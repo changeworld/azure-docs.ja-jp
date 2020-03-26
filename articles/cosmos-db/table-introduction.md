@@ -8,13 +8,13 @@ ms.topic: overview
 ms.date: 07/26/2019
 ms.author: sngun
 ms.openlocfilehash: 5b2e2c51eaa878ba0ce8bc31c001575acebe6919
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967543"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214910"
 ---
-# <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB の概要:テーブル API
+# <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB の概要: Table API
 
 [Azure Cosmos DB](introduction.md) には、Azure Table Storage 向けに作成されたアプリケーションの中でも、以下に挙げたような特に高度な機能を必要とするアプリケーションのための Table API が用意されています。
 
@@ -38,12 +38,12 @@ Azure Table Storage 用に作成されたアプリケーションについては
 | スループット | 可変スループット モデル。 テーブルには、20,000 操作/秒のスケーラビリティの制限あり。 | SLA によって保証された、[テーブルごとの専用の予約済みスループット](request-units.md)を備えた高いスケーラビリティ。 アカウントにはスループットの上限がなく、テーブルあたり 10,000, 000 操作/秒以上に対応。 |
 | グローバル配信 | 高可用性のために 1 つの読み取り可能なセカンダリ読み取りリージョンをオプションで備えた単一リージョン。 フェールオーバーを開始できない。 | 1 から任意の数のリージョンにわたる[ターンキー グローバル分散](distribute-data-globally.md)。 いつでも、世界中どこにでも、[自動フェールオーバーと手動フェールオーバー](high-availability.md)を実行可能。 任意のリージョンで書き込み操作を受け入れることができるマルチマスター機能。 |
 | インデックス作成 | PartitionKey と RowKey のプライマリ インデックスのみ。 セカンダリ インデックスなし。 | 既定ではすべてのプロパティに対する自動および完全なインデックス作成。インデックス管理なし。 |
-| Query | クエリの実行では、プライマリ キーにインデックスを使用し、それ以外の場合はスキャンする。 | クエリは、クエリ時間の短縮のためにプロパティの自動インデックス作成を利用できる。 |
-| 整合性 | プライマリ リージョン内では厳密な整合性。 セカンダリ リージョン内では最終的な整合性。 | アプリケーションのニーズに基づいて、可用性、待ち時間、スループット、および整合性のトレードオフを行う[明確に定義された 5 つの整合性レベル](consistency-levels.md)。 |
+| クエリ | クエリの実行では、プライマリ キーにインデックスを使用し、それ以外の場合はスキャンする。 | クエリは、クエリ時間の短縮のためにプロパティの自動インデックス作成を利用できる。 |
+| 一貫性 | プライマリ リージョン内では厳密な整合性。 セカンダリ リージョン内では最終的な整合性。 | アプリケーションのニーズに基づいて、可用性、待ち時間、スループット、および整合性のトレードオフを行う[明確に定義された 5 つの整合性レベル](consistency-levels.md)。 |
 | 価格 | ストレージ最適化。 | スループット最適化。 |
 | SLA | レプリケーション戦略によっては、99.9% から 99.99% の可用性。 | 1 つのリージョンのアカウントでは、読み取り可用性が 99.999%、書き込みの可用性が 99.99% であり、複数リージョンのアカウントでは 99.999% の書き込み可用性。 可用性、待ち時間、スループット、および一貫性をカバーする[包括的な SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/)。 |
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 [Azure Portal](https://portal.azure.com) で Azure Cosmos DB アカウントを作成しましょう。 その後、[.NET を使用したテーブル API のクイックスタート](create-table-dotnet.md)をお読みください。 
 
@@ -51,7 +51,7 @@ Azure Table Storage 用に作成されたアプリケーションについては
 > プレビュー中にテーブル API アカウントを作成した場合、一般公開されたテーブル API SDK を使うには[新しいテーブル API アカウント](create-table-dotnet.md#create-a-database-account)を作成してください。
 >
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 使用し始めるためのいくつかのヒントを次に示します。
 * [テーブル API を使用した .NET アプリケーションの構築](create-table-dotnet.md)

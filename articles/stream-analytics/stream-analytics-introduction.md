@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: 3399cc47af20df05d6315a4bd77965f799eaf5f9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f15a4605d28beaf97e877f337051a2ec13148a41
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426185"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80235760"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Azure Stream Analytics とは
 
@@ -39,7 +39,7 @@ Azure Stream Analytics ジョブは、入力、クエリ、および出力で構
 
 次の図は、データがどのように Stream Analytics に送信され、分析され、さらに格納やプレゼンテーションなどの他のアクションのために送信されるかを示しています。
 
-![Stream Analytics 導入のパイプライン](./media/stream-analytics-introduction/stream-analytics-intro-pipeline.png)
+![Stream Analytics 導入のパイプライン](./media/stream-analytics-introduction/stream-analytics-e2e-pipeline.png)
 
 ## <a name="key-capabilities-and-benefits"></a>主要な機能と利点
 

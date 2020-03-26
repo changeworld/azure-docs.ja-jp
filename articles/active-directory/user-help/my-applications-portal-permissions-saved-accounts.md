@@ -13,10 +13,10 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.custom: user-help
 ms.openlocfilehash: bac33386371b13950163727497cabd0f262df135
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77022411"
 ---
 # <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>マイ アプリ ポータルでのアプリケーションのアクセス許可の編集または取り消し

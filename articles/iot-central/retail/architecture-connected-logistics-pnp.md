@@ -8,10 +8,10 @@ ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
 ms.openlocfilehash: bde703310bb04cacbda0b90aec337cbbf1768d76
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77021136"
 ---
 # <a name="architecture-of-iot-central-connected-logistics-application-template"></a>IoT Central のコネクテッド ロジスティクス アプリケーション テンプレートのアーキテクチャ

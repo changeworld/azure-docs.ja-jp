@@ -8,10 +8,10 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 ms.openlocfilehash: 6c3ff10f37233294b75eceddd62c0a33f8864484
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75421638"
 ---
 # <a name="configure-a-virtual-machine-with-desired-state-configuration"></a>Desired State Configuration を使用して仮想マシンを構成する
@@ -27,7 +27,7 @@ Desired State Configuration (DSC) を有効にすると、Windows および Linu
 * Red Hat Enterprise Linux、CentOS、または Oracle Linux を実行している (クラシックではなく) Azure Resource Manager VM。 VM の作成手順については、「[Azure Portal で Linux 仮想マシンを作成する](../virtual-machines/linux/quick-create-portal.md)」を参照してください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
-https://portal.azure.com で Azure にサインインします
+[https://portal.azure.com](https://portal.azure.com ) で Azure にサインインします
 
 ## <a name="onboard-a-virtual-machine"></a>仮想マシンをオンボードする
 マシンをオンボードし、Desired State Configuration を有効にするには、さまざまな方法があります。 このクイックスタートでは、Automation アカウントを使用してオンボードする方法について説明します。 [オンボード](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding)の記事を読むと、マシンを Desired State Configuration にオンボードするさまざまな方法を理解できます。
@@ -104,7 +104,7 @@ configuration LAMPServer {
 
 ## <a name="compile-a-configuration"></a>構成をコンパイルする
 
-ノードに割り当てる前に、DSC 構成をノード構成 (MOF ドキュメント) にコンパイルする必要があります。 コンパイルでは構成が検証されます。また、パラメーター値を入力できます。 構成のコンパイルについて詳しくは、[Azure Automation DSC での構成のコンパイル](https://docs.microsoft.com/azure/automation/automation-dsc-compile)に関するページを参照してください。
+ノードに割り当てる前に、DSC 構成をノード構成 (MOF ドキュメント) にコンパイルする必要があります。 コンパイルでは構成が検証されます。また、パラメーター値を入力できます。 構成のコンパイルの詳細については、「[Azure Automation DSC での構成のコンパイル](https://docs.microsoft.com/azure/automation/automation-dsc-compile)」を参照してください。
 
 構成をコンパイルするには：
 

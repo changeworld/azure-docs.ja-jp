@@ -11,13 +11,13 @@ ms.date: 11/29/2018
 ms.author: labrenne
 ms.custom: mvc
 ms.openlocfilehash: 809ca9d9aafa813e05dea81eb05616eefcc65472
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77017209"
 ---
-# <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>クイック スタート:.NET API で最初の Azure Batch ジョブを実行する
+# <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>クイック スタート: .NET API で最初の Azure Batch ジョブを実行する
 
 このクイック スタートでは、Azure Batch .NET API に基づいて構築された C# アプリケーションから Azure Batch ジョブを実行します。 このアプリでは、複数の入力データ ファイルを Azure Storage にアップロードしてから、Batch コンピューティング ノード (仮想マシン) の "*プール*" を作成します。 その後、基本的なコマンドを使用してプールの各入力ファイルを処理するための "*タスク*" を実行するサンプル "*ジョブ*" を作成します。 このクイック スタートを完了すると、Batch サービスの主要な概念を理解し、より大規模でより現実的なワークロードで Batch を試せるようになります。
 
@@ -33,7 +33,7 @@ ms.locfileid: "77017209"
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
+Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)]
 
@@ -208,7 +208,7 @@ try
 
 ### <a name="create-tasks"></a>タスクの作成
 
-このアプリでは、[CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) オブジェクトの一覧を作成します。 各タスクは、[CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) プロパティを使用して入力の `ResourceFile` オブジェクトを処理します。 このサンプルのコマンド ラインでは、Windows の `type` コマンドを実行して入力ファイルを表示します。 このコマンドは、デモンストレーション用の簡単な例です。 Batch を使用する場合、コマンド ラインは、アプリまたはスクリプトを指定する場所です。 Batch には、アプリやスクリプトをコンピューティング ノードにデプロイする方法が多数用意されています。
+このアプリでは、[CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) オブジェクトの一覧を作成します。 各タスクは、`ResourceFile`CommandLine[ プロパティを使用して入力の ](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) オブジェクトを処理します。 このサンプルのコマンド ラインでは、Windows の `type` コマンドを実行して入力ファイルを表示します。 このコマンドは、デモンストレーション用の簡単な例です。 Batch を使用する場合、コマンド ラインは、アプリまたはスクリプトを指定する場所です。 Batch には、アプリやスクリプトをコンピューティング ノードにデプロイする方法が多数用意されています。
 
 その後、このアプリは、[AddTask](/dotnet/api/microsoft.azure.batch.joboperations.addtask) メソッドを使用してジョブにタスクを追加します。これにより、タスクは、コンピューティング ノードで実行するためにキューに登録されます。
 

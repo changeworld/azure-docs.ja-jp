@@ -15,13 +15,13 @@ ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 894fa2f3cda798a409db3ee8e9761c1702baf955
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035214"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79216130"
 ---
-# <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>クイック スタート:Azure portal で Linux 仮想マシンを作成する
+# <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>クイック スタート: Azure portal で Linux 仮想マシンを作成する
 
 Azure 仮想マシン (VM) は、Azure portal で作成できます。 Azure portal は、Azure リソースを作成するためのブラウザーベースのユーザー インターフェイスです。 このクイックスタートでは、Azure portal を使用して、Ubuntu 18.04 LTS を実行する Linux 仮想マシン (VM) をデプロイする方法を示します。 また、VM の動作を確認するために、VM に SSH 接続し、NGINX Web サーバーをインストールします。
 
@@ -34,13 +34,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 Bash シェルを開き、[ssh-keygen](https://www.ssh.com/ssh/keygen/) を使用して SSH キー ペアを作成します。 Bash シェルがローカル コンピューターにない場合は、[Azure Cloud Shell](https://shell.azure.com/bash) を使用してください。
 
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 1. ページの上部にあるメニューで、`>_` アイコンを選択して Cloud Shell を開きます。
 1. CloudShell の左上に "**Bash**" と表示されていることを確認します。 PowerShell と表示されている場合は、ドロップダウンを使用して **[Bash]** を選択し、 **[確認]** を選択して Bash シェルに変更します。
 1. 「`ssh-keygen -t rsa -b 2048`」と入力して ssh キーを作成します。 
 1. キー ペアを保存するファイルを入力するように求められます。 そのまま **Enter** キーを押すと、角かっこで囲まれて表示されている既定の場所に保存されます。 
 1. パスフレーズを入力するように求められます。 SSH キーのパスフレーズを入力するか、**Enter** キーを押してパスフレーズなしで続行することができます。
-1. `ssh-keygen` コマンドによって、公開キーと秘密キーが `id_rsa` の既定の名前で `~/.ssh directory` に生成されます。 このコマンドからは、公開キーの完全パスが返されます。 「`cat ~/.ssh/id_rsa.pub`」と入力して `cat` に公開キーのパスを指定すれば、その内容が表示されます。
+1. `ssh-keygen` コマンドによって、公開キーと秘密キーが `id_rsa` の既定の名前で `~/.ssh directory` に生成されます。 このコマンドからは、公開キーの完全パスが返されます。 「`cat`」と入力して `cat ~/.ssh/id_rsa.pub` に公開キーのパスを指定すれば、その内容が表示されます。
 1. この記事の後半で使用するために、このコマンドの出力をコピーし、どこかに保存してください。 これは公開キーです。VM にログインするために管理者アカウントを構成するときに必要になります。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
@@ -56,7 +56,7 @@ Bash シェルを開き、[ssh-keygen](https://www.ssh.com/ssh/keygen/) を使�
 
     ![VM の新しいリソース グループを作成する](./media/quick-create-portal/project-details.png)
 
-1. **[インスタンスの詳細]** で、 **[仮想マシン名]** として「*myVM*」と入力し、 **[リージョン]** として *[米国東部]* を選択し、 **[イメージ]** として *[Ubuntu 18.04 LTS]* を選択します。 他の既定値はそのままにします。
+1. **[インスタンスの詳細]** で、 *[仮想マシン名]* として「**myVM**」と入力し、 *[リージョン]* として **[米国東部]** を選択し、 *[イメージ]* として **[Ubuntu 18.04 LTS]** を選択します。 他の既定値はそのままにします。
 
     ![[Instance details] (インスタンスの詳細) セクション](./media/quick-create-portal/instance-details.png)
 
@@ -109,11 +109,11 @@ sudo apt-get -y install nginx
 
 ![NGINX の既定のサイト](./media/quick-create-portal/nginx.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要がなくなったら、リソース グループ、仮想マシン、およびすべての関連リソースを削除できます。 これを行うには、仮想マシンのリソース グループを選択し、 **[削除]** を選択して、削除するリソース グループの名前を確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、単純な仮想マシンをデプロイし、ネットワーク セキュリティ グループと規則を作成し、基本的な Web サーバーをインストールしました。 Azure 仮想マシンの詳細については、Linux VM のチュートリアルを参照してください。
 

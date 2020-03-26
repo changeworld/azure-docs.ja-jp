@@ -7,10 +7,10 @@ ms.service: virtual-machine-scale-sets
 ms.topic: quickstart
 ms.date: 10/10/2019
 ms.openlocfilehash: aeba9aee8dd10b1245fb0a1e1cc98a1951382c72
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "72530940"
 ---
 # <a name="encrypt-virtual-machine-scale-sets-with-azure-resource-manager"></a>Azure Resource Manager を使用して仮想マシン スケール セットを暗号化する
@@ -39,7 +39,7 @@ Linux 仮想マシン スケール セットの暗号化と暗号化解除は、
      2. Fill in the required fields then agree to the terms and conditions.
      3. Click **Purchase** to deploy the template.
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [仮想マシン スケール セットの Azure Disk Encryption](disk-encryption-overview.md)
 - [Azure CLI を使用して仮想マシン スケール セットを暗号化する](disk-encryption-cli.md)
