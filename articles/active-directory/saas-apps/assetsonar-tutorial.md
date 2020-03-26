@@ -17,10 +17,10 @@ ms.date: 12/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7b2f10a7d784fa7e089484afd5558c4c1db2275
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74896733"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-assetsonar"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と AssetSonar の統合

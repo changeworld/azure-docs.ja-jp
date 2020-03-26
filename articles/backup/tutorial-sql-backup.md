@@ -4,10 +4,10 @@ description: このチュートリアルでは、Azure VM 上で稼働してい�
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.openlocfilehash: 3216404b04647e2fb5f15beb09b9a4ccd6648bba
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74171882"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>Azure VM での SQL Server データベースのバックアップ
@@ -19,7 +19,7 @@ ms.locfileid: "74171882"
 > * コンテナーの作成と構成。
 > * データベースの検出とバックアップの設定。
 > * データベースに対する自動保護の設定。
-> * オンデマンド バックアップの実行。
+> * オンデマンド バックアップを実行します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -64,7 +64,7 @@ SQL Server VM を Azure Marketplace から作成しなかった場合、エラ�
 * 右大かっこ "]"
 * "F:\" で始まるデータベース名
 
-Azure テーブルでサポートされていない文字のエイリアス処理は用意されていますが、これらは使用しないことをお勧めします。 [詳細情報](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN)。
+Azure テーブルでサポートされていない文字のエイリアス処理は用意されていますが、これらは使用しないことをお勧めします。 [詳細については、こちらを参照してください](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN)。
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -220,7 +220,7 @@ VM 上で稼働しているデータベースを検出します。
 5. [OK] を選択して、バックアップを開始します。
 6. Recovery Services コンテナーに移動し、[バックアップ ジョブ] を選択して、バックアップ ジョブを監視します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure portal を使用して以下を行いました。
 
@@ -229,7 +229,7 @@ VM 上で稼働しているデータベースを検出します。
 > * コンテナーの作成と構成。
 > * データベースの検出とバックアップの設定。
 > * データベースに対する自動保護の設定。
-> * オンデマンド バックアップの実行。
+> * オンデマンド バックアップを実行します。
 
 ディスクから Azure 仮想マシンを復元するには、次のチュートリアルに進みます。
 

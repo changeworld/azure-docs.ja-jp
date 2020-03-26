@@ -8,10 +8,10 @@ ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
 ms.openlocfilehash: 15399d5a00c13141877dcf44640df2c1f9b9ba5c
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75889068"
 ---
 # <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>チュートリアル:Azure Key Vault を使用して Azure Databricks から Azure Blob Storage にアクセスする
@@ -32,7 +32,7 @@ ms.locfileid: "75889068"
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure portal](https://portal.azure.com/) にサインインする
+[Azure portal](https://portal.azure.com/) にサインインします。
 
 > [!Note]
 > **Azure 無料試用版サブスクリプション**を使用してこのチュートリアルを実行することはできません。
@@ -68,7 +68,7 @@ ms.locfileid: "75889068"
 
    ![Azure リソースの検索ボックスを作成する](./media/store-secrets-azure-key-vault/find-key-vault-resource.png)
 
-2. Key Vault リソースが自動的に選択されます。 **作成** を選択します。
+2. Key Vault リソースが自動的に選択されます。 **［作成］** を選択します
 
    ![Key Vault リソースを作成する](./media/store-secrets-azure-key-vault/create-key-vault-resource.png)
 
@@ -76,10 +76,10 @@ ms.locfileid: "75889068"
 
    |プロパティ|説明|
    |--------|-----------|
-   |Name|自分のキー コンテナーの一意の名前。|
+   |名前|自分のキー コンテナーの一意の名前。|
    |サブスクリプション|サブスクリプションを選択します。|
    |Resource group|リソース グループを選択するか、新しく作成します。|
-   |Location|場所を選択します。|
+   |場所|場所を選択します。|
 
    ![Azure キー コンテナーのプロパティ](./media/store-secrets-azure-key-vault/create-key-vault-properties.png)
 
@@ -91,11 +91,11 @@ ms.locfileid: "75889068"
 
 5. **[シークレットの作成]** ページで、次の情報を指定し、残りのフィールドには既定値をそのまま使用します。
 
-   |プロパティ|値|
+   |プロパティ|Value|
    |--------|-----------|
    |Upload options|マニュアル|
-   |Name|自分のストレージ アカウント キーのフレンドリ名。|
-   |値|自分のストレージ アカウントからのキー 1。|
+   |名前|自分のストレージ アカウント キーのフレンドリ名。|
+   |Value|自分のストレージ アカウントからのキー 1。|
 
    ![新しいキー コンテナー シークレットのプロパティ](./media/store-secrets-azure-key-vault/create-storage-secret.png)
 
@@ -116,12 +116,12 @@ ms.locfileid: "75889068"
    |ワークスペース名     | Databricks ワークスペースの名前を指定します        |
    |サブスクリプション     | ドロップダウンから Azure サブスクリプションを選択します。        |
    |Resource group     | 自分のキー コンテナーが含まれているリソース グループと同じリソース グループを選択します。 |
-   |Location     | 自分の Azure キー コンテナーと同じ場所を選択します。 使用可能なすべてのリージョンについては、[リージョン別の利用可能な Azure サービス](https://azure.microsoft.com/regions/services/)に関するページを参照してください。        |
+   |場所     | 自分の Azure キー コンテナーと同じ場所を選択します。 使用可能なすべてのリージョンについては、[リージョン別の利用可能な Azure サービス](https://azure.microsoft.com/regions/services/)に関するページを参照してください。        |
    |価格レベル     |  **Standard** と **Premium** のいずれかを選択します。 これらのレベルの詳細については、[Databricks の価格に関するページ](https://azure.microsoft.com/pricing/details/databricks/)を参照してください。       |
 
    ![Databricks ワークスペースのプロパティ](./media/store-secrets-azure-key-vault/create-databricks-service.png)
 
-   **作成** を選択します。
+   **［作成］** を選択します
 
 3. Azure portal で、新しく作成された Azure Databricks リソースに移動し、 **[Launch Workspace]\(ワークスペースの起動\)** を選択します。
 

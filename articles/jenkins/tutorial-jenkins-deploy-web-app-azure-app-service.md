@@ -5,13 +5,13 @@ ms.topic: tutorial
 ms.date: 10/23/2019
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: 9fcf178b71ac1f07bfb58cd2502701ae5392b472
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158395"
 ---
-# <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>チュートリアル: Jenkins の継続的インテグレーションおよびデプロイを使用して GitHub から Azure App Service にデプロイする
+# <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>チュートリアル:Jenkins の継続的インテグレーションおよびデプロイを使用して GitHub から Azure App Service にデプロイする
 
 このチュートリアルでは、Jenkins で継続的インテグレーション (CI) と継続的デプロイ (CD) を設定して、GitHub から [Azure App Service on Linux](/azure/app-service/containers/app-service-linux-intro) にサンプル Java Web アプリをデプロイします。 GitHub にコミットをプッシュしてアプリを更新すると、Jenkins によって自動的にお客様のアプリがビルドされ、Azure App Service に再発行されます。 このチュートリアルのサンプル アプリは、[Spring Boot](https://projects.spring.io/spring-boot/) フレームワークを使用して開発されました。 
 
@@ -158,7 +158,7 @@ az ad sp create-for-rbac --name "yourAzureServicePrincipalName" --password yourS
 
    ![Azure サービス プリンシパルの資格情報の追加](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-service-principal-credentials.png)
 
-   | プロパティ | 値 | 説明 | 
+   | プロパティ | Value | 説明 | 
    |----------|-------|-------------| 
    | **サブスクリプション ID** | <*yourAzureSubscription-ID*> | お客様の Azure サブスクリプションの GUID 値 <p>**ヒント**:お客様の Azure サブスクリプション ID がわからない場合は、コマンド ラインまたは Cloud Shell で次の Azure CLI コマンドを実行してから `id` GUID 値を使用します。 <p>`az account list` | 
    | **クライアント ID** | <*yourAzureServicePrincipal-ID*> | お客様の Azure サービス プリンシパル用に先ほど生成された `appId` GUID 値 | 
@@ -321,7 +321,7 @@ Jenkins で、お客様のアプリをビルドしてデプロイするための
 
 Jenkins プラグインでバグが発生した場合は、[Jenkins JIRA](https://issues.jenkins-ci.org/) で特定のコンポーネントについて問題を報告してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure VMs をビルド エージェントとして使用する](/azure/jenkins/jenkins-azure-vm-agents)

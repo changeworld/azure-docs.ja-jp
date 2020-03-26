@@ -15,13 +15,13 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 16b6e4f521568c89e415e6e9fa621175052cf34d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74026896"
 ---
-# <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>クイック スタート:Azure Active Directory における Office 365 グループの有効期限を設定する
+# <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>クイック スタート: Azure Active Directory における Office 365 グループの有効期限を設定する
 
 このクイック スタートでは、Office 365 グループの有効期限ポリシーを設定します。 ユーザーが独自のグループを設定できるようになっていると、未使用のグループが増えてしまうことがあります。 未使用のグループを管理する 1 つの方法は、それらのグループに有効期限を設定することです。グループを手動で削除するというメンテナンスの負担が軽減されます。
 
@@ -69,7 +69,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 これで完了です。 このクイック スタートを通じて、選択した Office 365 グループの有効期限ポリシーを正しく設定することができました。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 ### <a name="to-remove-the-expiration-policy"></a>有効期限ポリシーを削除するには
 
@@ -82,7 +82,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[Azure Active Directory]**  >  **[グループ]**  >  **[全般]** の順に選択します。 
 2. Azure portal で **[ユーザーは Office 365 グループを作成できます]** を **[いいえ]** に設定します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 PowerShell での手順や技術的制約など、有効期限の詳細については、次の記事を参照してください。
 

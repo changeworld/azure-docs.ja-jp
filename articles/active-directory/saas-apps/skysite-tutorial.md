@@ -17,10 +17,10 @@ ms.date: 08/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 93ef7f4201e9613cc6fa4391bc28d257272fa1c7
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72026120"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-skysite"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SKYSITE の統合
@@ -29,7 +29,7 @@ ms.locfileid: "72026120"
 
 * SKYSITE にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して SKYSITE に自動的にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -107,7 +107,7 @@ SKYSITE に対する Azure AD SSO を構成してテストするには、次の�
 
     c. **[グループ ID]** の **[ソース属性]** を選択します。
 
-    d. **[Save]** をクリックします。
+    d. **[保存]** をクリックします。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -163,7 +163,7 @@ SKYSITE に対する Azure AD SSO を構成してテストするには、次の�
 
     b. **[Upload certificate]\(証明書のアップロード\)** をクリックして、Azure portal からダウンロードした Base64 でエンコードされた証明書をアップロードします。
 
-    c. **[Save]** をクリックします。
+    c. **[保存]** をクリックします。
 
 ### <a name="create-skysite-test-user"></a>SKYSITE のテスト ユーザーの作成
 

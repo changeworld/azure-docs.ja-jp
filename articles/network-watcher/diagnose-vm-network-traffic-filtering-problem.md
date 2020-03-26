@@ -18,11 +18,11 @@ ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 68f575164487f726c2f6c7477ceacd731bb52b0f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844923"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290450"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して仮想マシン ネットワーク トラフィック フィルターの問題を診断する
 
@@ -42,12 +42,12 @@ Azure Portal (https://portal.azure.com ) にログインします。
 
     |設定|Value|
     |---|---|
-    |Name|myVm|
+    |名前|myVm|
     |ユーザー名| 任意のユーザー名を入力します。|
     |Password| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
     |サブスクリプション| サブスクリプションを選択します。|
     |Resource group| **[新規作成]** を選択し、「**myResourceGroup**と入力します。|
-    |Location| **[米国東部]** を選択します。|
+    |場所| **[米国東部]** を選択します。|
 
 4. VM のサイズを選択して、 **[選択]** を選択します。
 5. **[設定]** で、すべての既定値をそのままにして、 **[OK]** を選択します。

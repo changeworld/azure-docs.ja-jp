@@ -10,10 +10,10 @@ ms.date: 03/05/2020
 ms.author: labrenne
 ms.custom: mvc
 ms.openlocfilehash: a415a74af654ef9cf56a37c1fca5ac6632ba4418
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78672976"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>チュートリアル:Azure Batch を使用したシーンのレンダリング 

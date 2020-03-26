@@ -6,10 +6,10 @@ ms.topic: overview
 ms.date: 08/31/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 504ef93a0002895bc5662d95ad269c8593170ee2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74233011"
 ---
 # <a name="durable-functions-billing"></a>Durable Functions の課金
@@ -50,7 +50,7 @@ Durable Functions アプリによって発生する実際の Azure Storage コ�
 
 Azure Storage の価格について詳しくは、[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)に関するドキュメントを参照してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Functions の価格について学習する](https://azure.microsoft.com/pricing/details/functions/)

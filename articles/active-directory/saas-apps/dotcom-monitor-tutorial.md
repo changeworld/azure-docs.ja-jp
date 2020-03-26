@@ -16,10 +16,10 @@ ms.date: 12/26/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e6f8bd195043745d39327ae695abf00229aba8ec
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75648479"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-dotcom-monitor"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Dotcom-Monitor の統合
@@ -94,7 +94,7 @@ Dotcom-Monitor で Azure AD SSO を構成してテストするには、次の構
 
 1. その他に、Dotcom-Monitor アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | Name  |  ソース属性|
+    | 名前  |  ソース属性|
     | ------|--------- |
     | ロール | user.assignedroles |
 

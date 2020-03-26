@@ -9,10 +9,10 @@ ms.date: 07/05/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: e1abb759c80e770f1e650c232b6b2e21232b7e6f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75457728"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>チュートリアル:Azure Spatial Anchors を使用して新しい HoloLens Unity アプリを作成する詳細な手順
@@ -141,7 +141,7 @@ Unity を使用する際には、Unity API (UI を更新するために使用す
 
 ## <a name="get-the-azure-spatial-anchors-sdk"></a>Azure Spatial Anchors SDK の取得
 
-## <a name="via-unity-packagetabunitypackage"></a>[Unity パッケージ経由](#tab/UnityPackage)
+## <a name="via-unity-package"></a>[Unity パッケージ経由](#tab/UnityPackage)
 
 次に Azure Spatial Anchors SDK をダウンロードします。 [GitHub の Azure Spatial Anchors リリース ページ](https://github.com/Azure/azure-spatial-anchors-samples/releases)に移動します。 [Assets]\(アセット\) で、**AzureSpatialAnchors.unitypackage** をダウンロードします。 Unity で **[Assets]\(アセット\)** に移動し、 **[Import Package]\(パッケージのインポート\)**  >  **[Custom Package...]\(カスタム パッケージ\)** の順にクリックします。パッケージに移動して、 **[Open]\(開く\)** を選択します。
 
@@ -149,7 +149,7 @@ Unity を使用する際には、Unity API (UI を更新するために使用す
 
 Azure Spatial Anchors SDK を取得するために、ここで Nuget パッケージを復元する必要があります。 **Unity** でビルドし、その結果生成された **Visual Studio** ソリューションを開いてもう一度ビルドします (詳細は「[試してみる](#trying-it-out)」を参照)。
 
-## <a name="via-nugetforunitytabnugetforunity"></a>[NuGetForUnity 経由](#tab/NuGetForUnity)
+## <a name="via-nugetforunity"></a>[NuGetForUnity 経由](#tab/NuGetForUnity)
 
 まず NuGetForUnity をインストールする必要があります。 [GitHub の NuGetForUnity リリース ページ](https://github.com/GlitchEnzo/NuGetForUnity/releases)に移動します。 [Assets]\(資産\) で、最新の **NuGetForUnity.unitypackage** をダウンロードします。 Unity で **[Assets]\(アセット\)** に移動し、 **[Import Package]\(パッケージのインポート\)**  >  **[Custom Package...]\(カスタム パッケージ\)** の順にクリックします。パッケージに移動して、 **[Open]\(開く\)** を選択します。 Unity によって NugetForUnity がインストールされます。 Unity に新しい **NuGet** ドロップダウンが表示されない場合は、必要に応じて **[Projects]\(プロジェクト\)**  >  **[Assets]\(資産\)** を右クリックします。 次に、 **[Reimport All]\(すべてを再インポート\)** を選択します。
 

@@ -17,10 +17,10 @@ ms.date: 10/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 609e2af4862cdb3f9f95fa180881313707660ecb
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72969754"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cloudmore"></a>チュートリアル:Azure Active Directory と Cloudmore のシングル サインオン (SSO) 統合
@@ -29,7 +29,7 @@ ms.locfileid: "72969754"
 
 * Cloudmore にアクセスできるユーザーを Azure AD で制御します。
 * ユーザーが自分の Azure AD アカウントを使用して Cloudmore に自動的にサインインできるようにします。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -88,7 +88,7 @@ Cloudmore に対する Azure AD SSO を構成してテストするには、次�
 
     **[サインオン URL]** テキスト ボックスに URL として「`https://www.cloudmore.com`」と入力します。
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 1. Cloudmore アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 

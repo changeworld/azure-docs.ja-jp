@@ -4,10 +4,10 @@ description: このチュートリアルでは、Azure Blueprints のリソー�
 ms.date: 11/21/2019
 ms.topic: tutorial
 ms.openlocfilehash: ee57ff0c08f4fb8aa710dd2fa4dcef664484973d
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74327443"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>チュートリアル:Azure Blueprints のリソース ロックを使用して新しいリソースを保護する
@@ -132,7 +132,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. ブループリント割り当て用のパラメーター値を指定します。
 
-   - **基本**
+   - **基本操作**
 
      - **サブスクリプション**:ブループリント定義を保存した管理グループ内の 1 つ以上のサブスクリプションを選択します。 複数のサブスクリプションを選択すると、入力されたパラメーターを使用してサブスクリプションごとに割り当てが作成されます。
      - **割り当て名**:この名前は、ブループリント定義の名前に基づいて事前に入力されています。 この割り当てでは、新しいリソース グループのロックを表したいので、割り当て名を **assignment-locked-storageaccount-TestingBPLocks** に変更します。
@@ -152,10 +152,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
      このセクションで定義するパラメーターは、それが定義される成果物に適用されます。 これらのパラメーターはブループリントの割り当て時に定義されるので、[動的パラメーター](../concepts/parameters.md#dynamic-parameters)です。 各成果物に対して、パラメーター値を **[値]** 列に表示されている内容に設定してください。
 
-     |アーティファクト名|アーティファクトの種類|パラメーター名|値|説明|
+     |アーティファクト名|アーティファクトの種類|パラメーター名|Value|説明|
      |-|-|-|-|-|
      |RGtoLock リソース グループ|Resource group|名前|TestingBPLocks|ブループリントのロックを適用する新しいリソース グループの名前を定義します。|
-     |RGtoLock リソース グループ|Resource group|Location|米国西部 2|ブループリントのロックを適用する新しいリソース グループの場所を定義します。|
+     |RGtoLock リソース グループ|Resource group|場所|米国西部 2|ブループリントのロックを適用する新しいリソース グループの場所を定義します。|
      |StorageAccount|Resource Manager テンプレート|storageAccountType (StorageAccount)|Standard_GRS|ストレージの SKU。 既定値は "_Standard_LRS_" です。|
 
 1. すべてのパラメーターを入力したら、ページの下部にある **[割り当て]** を選択します。
@@ -216,14 +216,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 "**ブループリント割り当ての削除完了**" というポータルの通知が表示されたら、次の手順に進みます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルを完了したら、次のリソースを削除してください。
 
 - リソース グループ _TestingBPLocks_
 - ブループリント定義 _locked-storageaccount_
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Blueprints を使用して、デプロイされた新しいリソースを保護する方法について学習しました。 Azure Blueprints の詳細については、ブループリントのライフサイクルに関する記事に進んでください。
 

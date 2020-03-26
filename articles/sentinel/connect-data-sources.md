@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: yelevin
-ms.openlocfilehash: 311bb367748be98af704ab11919abea6e38d0ff3
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 9d2d1985b23e1c7f5e0f7d9fd2795bd85e28ace0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588333"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214810"
 ---
 # <a name="connect-data-sources"></a>データ ソースの接続
 
@@ -56,7 +56,6 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
     - [Office 365](connect-office-365.md)
     - [Microsoft Defender ATP](connect-microsoft-defender-advanced-threat-protection.md)
     - [Microsoft Web アプリケーション ファイアウォール](connect-microsoft-waf.md)
-    - [Windows セキュリティ イベント](connect-windows-security-events.md) 
     - [Windows ファイアウォール](connect-windows-firewall.md)
     - [Windows セキュリティ イベント](connect-windows-security-events.md)
 
@@ -91,7 +90,7 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
     - Linux サーバー
     - その他のクラウド
     
-## エージェントの接続オプション<a name="agent-options"></a>
+## <a name="agent-connection-options"></a>エージェントの接続オプション<a name="agent-options"></a>
 
 外部のアプライアンスを Azure Sentinel に接続するには、エージェントを専用のマシン (VM またはオンプレミス) に展開して、アプライアンスと Azure Sentinel の間の通信をサポートする必要があります。 エージェントのデプロイは、自動または手動で行うことができます。 自動デプロイは、専用マシンが Azure に作成中の新しい VM である場合にのみ使用できます。 
 

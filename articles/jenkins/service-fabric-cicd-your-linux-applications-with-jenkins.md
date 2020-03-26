@@ -5,10 +5,10 @@ keywords: Jenkins, Azure, 開発, CICD, Linux
 ms.topic: tutorial
 ms.date: 07/31/2018
 ms.openlocfilehash: 96e8c3721b5849b874878ea6a846271fb6760ffd
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77674645"
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>Jenkins を使用した Linux アプリケーションのビルドと配置

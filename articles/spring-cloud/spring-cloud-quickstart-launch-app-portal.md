@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: a215fe2305b320fe27ef9d868d060f3e9cb14c1c
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 9cd59fdf81e9b5d56872d20c76e8ea177b3c8577
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77431343"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79470896"
 ---
 # <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して既存の Azure Spring Cloud アプリケーションを起動する
 
@@ -48,7 +48,7 @@ ms.locfileid: "77431343"
 
 次のコマンドを使用して、Azure CLI 用の Azure Spring Cloud 拡張機能をインストールします
 
-```Azure CLI
+```azurecli
 az extension add --name spring-cloud
 ```
 
@@ -114,7 +114,7 @@ az extension add --name spring-cloud
 
 1. [Azure Cloud Shell](https://shell.azure.com) を開き、サンプル アプリのリポジトリをご利用のローカル コンピューターにクローンします。  ここでは、まず、`source-code` という名前の一時ディレクトリを作成してから、アプリを複製します。
 
-    ```azurecli
+    ```console
     mkdir source-code
     cd source-code
     git clone https://github.com/Azure-Samples/piggymetrics
@@ -122,10 +122,11 @@ az extension add --name spring-cloud
 
 2. 複製されたパッケージをビルドします。
 
-    ```azurecli
+    ```console
     cd piggymetrics
     mvn clean package -DskipTests
     ```
+
 3. リソース グループとサービスに名前を割り当てます。 次のプレースホルダーは、このチュートリアルで前にプロビジョニングしたリソース グループ名とサービス名で置き換えます。
 
     ```azurecli

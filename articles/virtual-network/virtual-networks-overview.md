@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 768d01346b7697953d44742458c7e507ae7c115a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 3b908406c8717d2fa8834bc4dff1bcd27ec4761f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894605"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290200"
 ---
 # <a name="what-is-azure-virtual-network"></a>Azure Virtual Network とは
 
@@ -38,7 +38,7 @@ Azure でネットワークを構築するときに、次の汎用的な設計�
 - アドレス空間が重複しないように徹底します。 VNet アドレス空間 (CIDR ブロック) が組織の他のネットワークの範囲と重複しないようにします。
 - サブネットは、VNet のアドレス空間全体を有効範囲に含めてはなりません。 事前に計画し、将来に備えてアドレス空間の一部を予約します。
 - 小規模な VNet を複数持つよりも、大規模な VNet を少数持つことをお勧めします。 これによって、管理の負担を抑えられます。
-- ネットワーク セキュリティ グループ (NSG) を使用して VNet を保護します。
+- VNet のサブネットにネットワーク セキュリティ グループ (NSG) を割り当てて VNet を保護します。
 
 ## <a name="communicate-with-the-internet"></a>インターネットとの通信
 

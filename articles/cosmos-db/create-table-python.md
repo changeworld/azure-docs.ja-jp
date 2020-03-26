@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Python での Table API の使用 - Azure Cosmos DB
+title: 'クイック スタート: Python での Table API の使用 - Azure Cosmos DB'
 description: このクイックスタートでは、Azure Cosmos DB Table API を使って Azure Portal と Python でアプリケーションを作成する方法を示します
 author: SnehaGunda
 ms.service: cosmos-db
@@ -10,13 +10,13 @@ ms.date: 04/10/2018
 ms.author: sngun
 ms.custom: seo-python-october2019
 ms.openlocfilehash: 9de9739efce13fc96bf550759eb0ef68d732af1e
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77212654"
 ---
-# <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>クイック スタート:Python と Azure Cosmos DB で Table API アプリを構築する
+# <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>クイックスタート: Python と Azure Cosmos DB で Table API アプリを構築する
 
 > [!div class="op_single_selector"]
 > * [.NET](create-table-dotnet.md)
@@ -25,13 +25,13 @@ ms.locfileid: "77212654"
 > * [Python](create-table-python.md)
 > 
 
-このクイックスタートでは、Azure portal を使用して、また GitHub からクローンした Python アプリを Visual Studio から使用して、Azure Cosmos DB Table API アカウントの作成と管理を行います。 Azure Cosmos DB は、マルチモデル データベース サービスです。グローバルな分散と水平方向のスケーリング機能により、ドキュメント データベースやテーブル データベース、キーと値のデータベース、グラフ データベースをすばやく作成し、クエリを実行することができます。
+このクイックスタートでは、Azure portal を使用して、また GitHub からクローンした Python アプリを Visual Studio から使用して、Azure Cosmos DB Table API アカウントの作成と管理を行います。 Azure Cosmos DB は、マルチモデル データベース サービスです。グローバルな分散と水平方向のスケーリング機能を備えたドキュメント データベースやテーブル データベース、キーと値のデータベース、グラフ データベースをすばやく作成し、クエリを実行することができます。
 
 ## <a name="prerequisites"></a>前提条件
 
-- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 または、Azure サブスクリプションなしで、[Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)こともできます。 または、`https://localhost:8081` の URI でキー `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` を使用して [Azure Cosmos DB Emulator](https://aka.ms/cosmosdb-emulator) を使用することもできます。
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 または、Azure サブスクリプションなしで、[Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)こともできます。 または、[ の URI でキー ](https://aka.ms/cosmosdb-emulator) を使用して `https://localhost:8081`Azure Cosmos DB Emulator`C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` を使用することもできます。
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/) (セットアップ時に **[Azure の開発]** および **[Python 開発]** ワークロードを選択)。 
-- [Git](https://git-scm.com/downloads).
+- [Git](https://git-scm.com/downloads)。
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 

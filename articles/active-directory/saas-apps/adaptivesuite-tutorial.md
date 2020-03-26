@@ -17,10 +17,10 @@ ms.date: 07/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bf05fc30a2b111a12c0b8e131db5117ec784075b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74232133"
 ---
 # <a name="tutorial-integrate-adaptive-insights-with-azure-active-directory"></a>チュートリアル:Adaptive Insights を Azure Active Directory と統合する
@@ -136,7 +136,7 @@ Adaptive Insights で Azure AD SSO を構成してテストするには、次の
 
     g. **Adaptive Insights の SSO URL** をコピーし、Azure portal の **[基本的な SAML 構成]** セクションの **[識別子 (エンティティ ID)]** ボックスと **[応答 URL]** ボックスに貼り付けます。
 
-    h. **[Save]** をクリックします。
+    h. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

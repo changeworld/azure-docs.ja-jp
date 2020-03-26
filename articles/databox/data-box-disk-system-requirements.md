@@ -10,11 +10,11 @@ ms.date: 09/04/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: fb2fd89664517e44cf5128a5c82e583f03087061
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70307693"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214260"
 ---
 ::: zone target="docs"
 
@@ -52,7 +52,7 @@ Data Box Disk に接続するクライアント経由でディスクのロック
 
 Windows クライアントでは、次のものもインストールする必要があります。
 
-| **ソフトウェア**| **バージョン** |
+| **ソフトウェア**| **Version** |
 | --- | --- |
 | Windows PowerShell |5.0 |
 | .NET Framework |4.5.1 |
@@ -77,7 +77,7 @@ Data Box Disk でサポートされるストレージの種類の一覧を次に
 | **ストレージ アカウント** | **メモ** |
 | --- | --- |
 | クラシック | Standard |
-| 汎用  |標準。V1 と V2 の両方がサポートされます。 また、ホット層とクール層の両方がサポートされます。 |
+| General Purpose  |標準。V1 と V2 の両方がサポートされます。 また、ホット層とクール層の両方がサポートされます。 |
 | BLOB ストレージ アカウント | |
 
 >[!NOTE]

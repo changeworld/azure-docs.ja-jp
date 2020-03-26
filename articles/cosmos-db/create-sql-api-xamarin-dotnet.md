@@ -8,11 +8,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: f951daf08590feb6fa1aaad831f8a735db141984
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 74d34705a6541b396fa2c2bf5028254f5f2e8d21
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77586769"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>クイック スタート:Azure Cosmos DB SQL API アカウントを使用して Xamarin で todo アプリを構築する
@@ -128,7 +128,7 @@ ToDoItems ソリューションのコードには、次の項目が含まれて�
 
 * ドキュメントのコンテナーに対するクエリを実行するときは、次の `CosmosDBService.GetToDoItems` 関数に示されているように `DocumentClient.CreateDocumentQuery<T>` メソッドを使用します。
 
-   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="GetToDoItems"::: 
+   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=GetToDoItems)] 
 
     `CreateDocumentQuery<T>` は、前のセクションで作成されたコンテナーを指す URI を受け取ります。 また、`Where` 句のような LINQ 演算子を指定することもできます。 このケースでは、完了していない todo 項目のみが返されます。
 
@@ -141,13 +141,13 @@ ToDoItems ソリューションのコードには、次の項目が含まれて�
 
 * `ComsmosDBService.InsertToDoItem` 関数は、新しいドキュメントを挿入する方法を示しています。
 
-   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="InsertToDoItem"::: 
+   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=InsertToDoItem)] 
 
     項目の URI が、挿入される項目と共に指定されています。
 
 * `CosmosDBService.UpdateToDoItem` 関数は、既存のドキュメントを新しいドキュメントで置き換える方法を示しています。
 
-   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="UpdateToDoItem"::: 
+   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=UpdateToDoItem)] 
 
     ここでは、置き換えるドキュメントを一意に識別するために新しい URI が必要です。これを取得するために、`UriFactory.CreateDocumentUri` を使用し、これにデータベースおよびコンテナー名とドキュメント ID を渡しています。
 
@@ -155,7 +155,7 @@ ToDoItems ソリューションのコードには、次の項目が含まれて�
 
 * 項目を削除する方法は、`CosmosDBService.DeleteToDoItem` 関数に示されています。
 
-   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="DeleteToDoItem"::: 
+   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=DeleteToDoItem)] 
 
     ここでも、一意のドキュメント URI が作成されて `DocumentClient.DeleteDocumentAsync` 関数に渡されていることに注目してください。
 

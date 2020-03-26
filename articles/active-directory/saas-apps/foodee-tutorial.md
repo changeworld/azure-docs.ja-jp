@@ -17,10 +17,10 @@ ms.date: 10/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 16e7c7e676737df7e755aa4e602f8ceabd8a002f
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72373185"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-foodee"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Foodee の統合
@@ -29,7 +29,7 @@ ms.locfileid: "72373185"
 
 * Foodee にアクセスする Azure AD ユーザーを制御する。
 * ユーザーが自分の Azure AD アカウントを使用して Foodee に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -151,7 +151,7 @@ Foodee に対する Azure AD SSO を構成してテストするには、次の�
 
    1. **[IDP NAME]\(IDP 名\)** ボックスに「Azure」のような名前を入力します。
    1. フェデレーション メタデータ XML をメモ帳で開き、その内容をコピーして **[IDP METADATA XML]\(IDP メタデータ XML\)** ボックスに貼り付けます。
-   1. **[Save]** をクリックします。
+   1. **[保存]** をクリックします。
 
 ### <a name="create-foodee-test-user"></a>Foodee のテスト ユーザーの作成
 

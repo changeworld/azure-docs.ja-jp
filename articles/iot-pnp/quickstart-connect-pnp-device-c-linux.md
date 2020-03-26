@@ -9,10 +9,10 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: 8134c0a97f6350cfa2cf616695c5990618455393
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75531263"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-running-on-linux-to-iot-hub-c-linux"></a>クイック スタート:Linux 上で実行されているサンプルの IoT プラグ アンド プレイ プレビュー デバイス アプリケーションを IoT Hub に接続する (C Linux)
@@ -94,7 +94,7 @@ git clone https://github.com/Azure/azure-iot-sdk-c --recursive -b public-preview
 
 1. デバイスの SDK ルート フォルダーの `digitaltwin_client/samples/digitaltwin_sample_environmental_sensor` フォルダーにある `EnvironmentalSensor.interface.json` ファイルを選択します。 **[開く]** 、 **[保存]** の順に選択し、インターフェイス ファイルをリポジトリにアップロードします。
 
-1. **[Company repository]\(会社リポジトリ\)** 、 **[接続文字列]** の順に選択します。 最初の "_会社モデル リポジトリの接続文字列_" をメモしておきます。このクイックスタートの後の手順で使用します。
+1. **[Company repository]\(会社リポジトリ\)** 、 **[接続文字列]** の順に選択します。 最初の_会社モデル リポジトリの接続文字列_をメモしておきます。このクイックスタートの後の手順で使用します。
 
 ## <a name="run-the-device-sample"></a>デバイス サンプルを実行する
 

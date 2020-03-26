@@ -17,10 +17,10 @@ ms.date: 05/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e0a1538f640bb4722eca1d4f3a80125837593bab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67085723"
 ---
 # <a name="tutorial-integrate-zscaler-private-access-zpa-with-azure-active-directory"></a>チュートリアル:Azure Active Directory と Zscaler Private Access (ZPA) の統合
@@ -29,7 +29,7 @@ ms.locfileid: "67085723"
 
 * Azure AD で、Zscaler Private Access (ZPA) にアクセスできるユーザーを制御できます。
 * ユーザーが自分の Azure AD アカウントで Zscaler Private Access (ZPA) に自動的にサインインするように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -101,7 +101,7 @@ Zscaler Private Access (ZPA) に対する Azure AD SSO を構成してテスト�
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
-2. ブラウザーに拡張機能を追加した後、 **[Setup Zscaler Private Access (ZPA)]\(Zscaler Private Access (ZPA) のセットアップ\)** をクリックすると、Zscaler Private Access (ZPA) アプリケーションに移動します。 そこから、管理者資格情報を入力して Zscaler Private Access (ZPA) にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 から 6 が自動化されます。
+2. ブラウザーに拡張機能を追加した後、 **[Setup Zscaler Private Access (ZPA)]\(Zscaler Private Access (ZPA) のセットアップ\)** をクリックすると、Zscaler Private Access (ZPA) アプリケーションに移動します。 そこから、管理者資格情報を入力して Zscaler Private Access (ZPA) にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 ～ 6 が自動化されます。
 
     ![セットアップの構成](common/setup-sso.png)
 
@@ -127,7 +127,7 @@ Zscaler Private Access (ZPA) に対する Azure AD SSO を構成してテスト�
 
     c. **[Domains]** フィールドから自分のドメインを選択します。
     
-    d. **[Save]** をクリックします。
+    d. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

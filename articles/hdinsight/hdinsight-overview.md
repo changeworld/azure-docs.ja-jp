@@ -1,20 +1,19 @@
 ---
-title: Apache Hadoop および Apache Spark テクノロジ スタックとは - Azure HDInsight
+title: Azure HDInsight とは
 description: HDInsight と、ビッグ データの分析用の Kafka、Hive、Storm、HBase を含む、Apache Hadoop および Apache Spark テクノロジ スタックおよびコンポーネントの概要。
-keywords: Azure Hadoop, Hadoop Azure, Hadoop の紹介, Hadoop の概要, Hadoop テクノロジ スタック, Hadoop の概説, Hadoop 入門, Hadoop クラスターとは, Hadoop クラスターについて, Hadoop の使用目的
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
-ms.date: 06/11/2019
-ms.openlocfilehash: 1cea76bec3a1b8b698a604c0bac491ac0319a10e
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
+ms.date: 02/27/2020
+ms.openlocfilehash: 31e8506067133304144614ff58974ee21e9680be
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791173"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79216430"
 ---
 # <a name="what-is-azure-hdinsight"></a>Azure HDInsight とは
 
@@ -46,7 +45,7 @@ HDInsight で利用可能な Hadoop テクノロジ スタック コンポーネ
 
 ## <a name="scenarios-for-using-hdinsight"></a>HDInsight を使用するシナリオ
 
-Azure HDInsight は、ビッグ データ処理のさまざまなシナリオに対応します。 ビッグ データは履歴データ (既に収集されて保存されているデータ) である場合もあれば、リアルタイム データ (ソースから直接ストリーミングされるデータ) である場合もあります。 そのようなデータの処理に関するシナリオは、次のカテゴリに集約することができます。 
+Azure HDInsight は、ビッグ データ処理のさまざまなシナリオに対応します。 ビッグ データは履歴データ (既に収集されて保存されているデータ) である場合もあれば、リアルタイム データ (ソースから直接ストリーミングされるデータ) である場合もあります。 そのようなデータの処理に関するシナリオは、次のカテゴリに集約することができます。
 
 ### <a name="batch-processing-etl"></a>バッチ処理 (ETL)
 
@@ -54,7 +53,7 @@ ETL (抽出、変換、読み込み) は、異種データ ソースから非構
 
 ### <a name="data-warehousing"></a>データ ウェアハウス
 
-HDInsight を使用して、あらゆる形式の構造化データや非構造化データに対話型クエリをペタバイト規模で実行することができます。 それらを BI ツールに接続するモデルを作成することもできます。 詳しくは、[こちらの顧客事例](https://customers.microsoft.com/story/milliman)をご覧ください。 
+HDInsight を使用して、あらゆる形式の構造化データや非構造化データに対話型クエリをペタバイト規模で実行することができます。 それらを BI ツールに接続するモデルを作成することもできます。 詳しくは、[こちらの顧客事例](https://customers.microsoft.com/story/milliman)をご覧ください。
 
 ![HDInsight のアーキテクチャ:データ ウェアハウス](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-warehouse.png "HDInsight のデータ ウェアハウスのアーキテクチャ")
 
@@ -62,7 +61,7 @@ HDInsight を使用して、あらゆる形式の構造化データや非構造�
 
 さまざまなデバイスからリアルタイムで受信したストリーミング データを HDInsight で処理することができます。 詳細については、[Azure マネージド ディスクを使用した HDInsight での Apache Kafka のパブリック プレビューを知らせる Azure のブログ記事を参照してください](https://azure.microsoft.com/blog/announcing-public-preview-of-apache-kafka-on-hdinsight-with-azure-managed-disks/)。
 
-![HDInsight のアーキテクチャ:モノのインターネット](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-iot.png "HDInsight IoT アーキテクチャ") 
+![HDInsight のアーキテクチャ:モノのインターネット](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-iot.png "HDInsight IoT アーキテクチャ")
 
 ### <a name="data-science"></a>データ サイエンス
 
@@ -82,13 +81,13 @@ HDInsight には、特定のクラスターの種類のほか、コンポーネ�
 
 |クラスターの種類 | 説明 |
 |---|---|
-|[Apache Hadoop](https://hadoop.apache.org/)|HDFS、YARN によるリソース管理、およびシンプルな MapReduce プログラミング モデルを使用して、バッチ データを同時に処理および分析するフレームワークです。|
-|[Apache Spark](https://spark.apache.org/)|ビッグ データ分析アプリケーションのパフォーマンスを向上させるメモリ内処理をサポートする、オープンソースの並列処理フレームワークです。 [HDInsight での Apache Spark の概要](./spark/apache-spark-overview.md)に関する記事を参照してください。|
-|[Apache HBase](https://hbase.apache.org/)|Hadoop 上に構築された NoSQL データベースです。数十億行 x 数百万列に達する可能性のある大量の非構造化データや半構造化データへのランダム アクセスと厳密な整合性を実現します。 [HDInsight での HBase の概要](./hbase/apache-hbase-overview.md)に関する記事を参照してください。|
-|[ML サービス](https://docs.microsoft.com/machine-learning-server/rebranding-microsoft-r-server)|並列分散 R プロセスをホストおよび管理するためのサーバーです。 データ サイエンティスト、統計学者、R プログラマーは、HDInsight でのスケーラブルで分散型の分析手法にオンデマンドでアクセスできるようになります。 [HDInsight の ML サービスの概要](./r-server/r-server-overview.md)に関するページを参照してください。|
-|[Apache Storm](https://storm.incubator.apache.org/)|大量のデータ ストリームを高速処理するための分散型リアルタイム計算システムです。 Storm は、HDInsight で管理されるクラスターとして提供されます。 「 [HDInsight (Hadoop) での Storm と HBase を使ったセンサー データの分析](/azure/hdinsight/storm/apache-storm-overview)」を参照してください。|
-|[Apache 対話型クエリ](https://cwiki.apache.org/confluence/display/Hive/LLAP)|対話型で高速な Hive クエリのメモリ内キャッシュです。 [HDInsight での対話型クエリの使用](./interactive-query/apache-interactive-query-get-started.md)に関する記事を参照してください。|
-|[Apache Kafka](https://kafka.apache.org/)|ストリーミング データ パイプラインおよびアプリケーションを構築するために使用されるオープンソースのプラットフォームです。 Kafka には、データ ストリームの発行とサブスクライブを可能にするメッセージ キュー機能も用意されています。 「[HDInsight での Apache Kafka の概要](./kafka/apache-kafka-introduction.md)」を参照してください。|
+|[Apache Hadoop](./hadoop/apache-hadoop-introduction.md)|HDFS、YARN によるリソース管理、およびシンプルな MapReduce プログラミング モデルを使用して、バッチ データを同時に処理および分析するフレームワークです。|
+|[Apache Spark](./spark/apache-spark-overview.md)|ビッグ データ分析アプリケーションのパフォーマンスを向上させるメモリ内処理をサポートする、オープンソースの並列処理フレームワークです。 [HDInsight での Apache Spark の概要](./spark/apache-spark-overview.md)に関する記事を参照してください。|
+|[Apache HBase](./hbase/apache-hbase-overview.md)|Hadoop 上に構築された NoSQL データベースです。数十億行 x 数百万列に達する可能性のある大量の非構造化データや半構造化データへのランダム アクセスと厳密な整合性を実現します。 [HDInsight での HBase の概要](./hbase/apache-hbase-overview.md)に関する記事を参照してください。|
+|[ML サービス](./r-server/r-server-overview.md)|並列分散 R プロセスをホストおよび管理するためのサーバーです。 データ サイエンティスト、統計学者、R プログラマーは、HDInsight でのスケーラブルで分散型の分析手法にオンデマンドでアクセスできるようになります。 [HDInsight の ML サービスの概要](./r-server/r-server-overview.md)に関するページを参照してください。|
+|[Apache Storm](./storm/apache-storm-overview.md)|大量のデータ ストリームを高速処理するための分散型リアルタイム計算システムです。 Storm は、HDInsight で管理されるクラスターとして提供されます。 「 [HDInsight (Hadoop) での Storm と HBase を使ったセンサー データの分析](./storm/apache-storm-overview.md)」を参照してください。|
+|[Apache 対話型クエリ](./interactive-query/apache-interactive-query-get-started.md)|対話型で高速な Hive クエリのメモリ内キャッシュです。 [HDInsight での対話型クエリの使用](./interactive-query/apache-interactive-query-get-started.md)に関する記事を参照してください。|
+|[Apache Kafka](./kafka/apache-kafka-introduction.md)|ストリーミング データ パイプラインおよびアプリケーションを構築するために使用されるオープンソースのプラットフォームです。 Kafka には、データ ストリームの発行とサブスクライブを可能にするメッセージ キュー機能も用意されています。 「[HDInsight での Apache Kafka の概要](./kafka/apache-kafka-introduction.md)」を参照してください。|
 
 ## <a name="open-source-components-in-hdinsight"></a>HDInsight のオープンソース コンポーネント
 
@@ -108,13 +107,13 @@ HDInsight クラスター (Spark、HBase、Kafka、Hadoopなど) は多数のプ
 
 HDInsight のデータ クエリやジョブは、Azure とシームレスに統合された HDInsight の開発ツール (IntelliJ、Eclipse、Visual Studio Code、Visual Studio) を使用して作成、送信することができます。
 
-* [Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin)
+* [Azure Toolkit for IntelliJ](./spark/apache-spark-intellij-tool-plugin.md)
 
-* [Azure Toolkit for Eclipse](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-eclipse-tool-plugin)
+* [Azure Toolkit for Eclipse](./spark/apache-spark-eclipse-tool-plugin.md)
 
-* [Azure HDInsight Tools for VS Code](https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode)
+* [Azure HDInsight Tools for VS Code](./hdinsight-for-vscode.md)
 
-* [Azure Data Lake Tools for Visual Studio](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-visual-studio-tools-get-started)
+* [Azure Data Lake Tools for Visual Studio](./hadoop/apache-hadoop-visual-studio-tools-get-started.md)
 
 ## <a name="business-intelligence-on-hdinsight"></a>HDInsight のビジネス インテリジェンス
 
@@ -130,10 +129,6 @@ Power Query アドインまたは Microsoft Hive ODBC ドライバーを使用�
 
 * [Microsoft Hive ODBC Driver を使用した Excel から Apache Hadoop への接続](./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md) (Windows が必要)
 
-* [HDInsight での SQL Server Analysis Services の使用](https://docs.microsoft.com/previous-versions/msp-n-p/dn749857(v=pandp.10))
-
-* [HDInsight での SQL Server Reporting Services の使用](https://docs.microsoft.com/previous-versions/msp-n-p/dn749856(v=pandp.10))
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [HDInsight で Apache Hadoop クラスターを作成する](./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)

@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 07/23/2019
 ms.author: lbosq
 ms.openlocfilehash: 78dfbabdcddaafefe77711e8f7b0ea1028f15c58
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77117914"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>クイック スタート:Gremlin コンソールを使用して Azure Cosmos DB グラフ データベースを作成、クエリ、および走査する
@@ -49,7 +49,7 @@ Gremlin コンソールは Groovy/Java ベースであり、Linux、Mac、およ
 
 [!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
-## <a id="ConnectAppService"></a>アプリ サービス/グラフへの接続
+## <a name="connect-to-your-app-servicegraph"></a><a id="ConnectAppService"></a>アプリ サービス/グラフへの接続
 1. Gremlin コンソールを開始する前に、`apache-tinkerpop-gremlin-console-3.2.5/conf` ディレクトリで remote-secure.yaml 構成ファイルを作成または変更します。
 2. 次の表の定義に従って、*host*、*port*、*username*、*password*、*connectionPool*、および *serializer* の構成を入力します。
 
@@ -58,7 +58,7 @@ Gremlin コンソールは Groovy/Java ベースであり、Linux、Mac、およ
     hosts|[ *<アカウント名>* .**gremlin**.cosmos.azure.com]|次のスクリーンショットをご覧ください。 これは、Azure portal の [概要] ページに表示される **[Gremlin URI]** の値から末尾の ":443/" を削除して角かっこで囲んだものです。 注:必ず Gremlin 値を使用してください。[ *<アカウント名>* .documents.azure.com] で終わる URI **ではありません**。この URI を使用すると、後で Gremlin クエリを実行したときに "Host did not respond in a timely fashion (ホストが適切な時間内に応答しませんでした)" 例外が発生する可能性があります。 
     port|443|443 に設定します。
     username|*自分のユーザー名*|`/dbs/<db>/colls/<coll>` 形式のリソースです。`<db>` は実際のデータベースの名前、`<coll>` は実際のコレクションの名前になります。
-    パスワード|*自分のプライマリ キー*| 以下の 2 つ目のスクリーンショットをご覧ください。 これは自分のプライマリ キーです。Azure Portal の [キー] ページの [プライマリ キー] ボックスから取得できます。 ボックスの左側にあるコピー ボタンを使用して値をコピーしてください。
+    password|*自分のプライマリ キー*| 以下の 2 つ目のスクリーンショットをご覧ください。 これは自分のプライマリ キーです。Azure Portal の [キー] ページの [プライマリ キー] ボックスから取得できます。 ボックスの左側にあるコピー ボタンを使用して値をコピーしてください。
     connectionPool|{enableSsl: true}|SSL 用の接続プールの設定です。
     serializer|{ className: org.apache.tinkerpop.gremlin.<br>driver.ser.GraphSONMessageSerializerV2d0,<br> config: { serializeResultToString: true }}|この値に設定します。改行 (`\n`) を削除して値を貼り付けてください。
 

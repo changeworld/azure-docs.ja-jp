@@ -5,10 +5,10 @@ ms.date: 10/14/2019
 ms.topic: tutorial
 ms.reviewer: brendal
 ms.openlocfilehash: 33a9e9c10c07d0808626353a7edfd505e0f60bc9
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74324818"
 ---
 # <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>チュートリアル:Azure Blockchain Workbench 用ブロックチェーン アプリケーションを作成する
@@ -281,7 +281,7 @@ contract HelloBlockchain {
     }
 ```
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>関数
 
 関数とは、コントラクト内のビジネス ロジックの実行可能ユニットです。 関数の必要なパラメーターは、構成ファイルで関数パラメーターとして定義します。 パラメーターの数、順序、型は両方のファイルで一致する必要があります。 関数は、構成ファイルで Blockchain Workbench ワークフローの遷移に関連付けます。 遷移とは、コントラクトで定められるとおりアプリケーションのワークフローの次のステージに進むために実行されるアクションです。
 
@@ -341,12 +341,12 @@ Blockchain Workbench にブロックチェーン アプリケーションを追�
 4. メンバーシップ一覧で、 **[メンバーの追加]** を選択します。
 5. 追加するメンバーの名前を選択するか、入力します。 Blockchain Workbench テナントに存在する Azure AD ユーザーのみが一覧に表示されます。 ユーザーが見つからない場合は、[Azure AD ユーザーを追加する](manage-users.md#add-azure-ad-users)必要があります。
 6. メンバーの**ロール**を選択します。 最初のメンバーのロールには **[要求元]** を選択します。
-7. **[追加]** を選択して、関連するロールを持つメンバーをアプリケーションに追加します。
+7. **[追加]** を選択して、メンバーとそのロールをアプリケーションに追加します。
 8. 別のメンバーを **[レスポンダー]** ロールとしてアプリケーションに追加します。
 
 Blockchain Workbench でのユーザー管理の詳細については、[Azure Blockchain Workbench でのユーザーの管理](manage-users.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このハウツー記事では、基本的な要求と応答のアプリケーションを作成しました。 アプリケーションを使用する方法については、次のハウツー記事に進みます。
 

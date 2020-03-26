@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, bash, cloudshell, プレイブック, aks, コ
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.openlocfilehash: 6672c3fac1c5d546a61622e3fd6df6c5397f87a2
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156688"
 ---
 # <a name="tutorial-configure-azure-kubernetes-service-aks-clusters-in-azure-using-ansible"></a>チュートリアル:Ansible を使用して Azure 内で Azure Kubernetes Service (AKS) クラスターを構成する
@@ -23,7 +23,7 @@ ms.locfileid: "74156688"
 
 > [!div class="checklist"]
 >
-> * AKS クラスターの作成
+> * AKS クラスターを作成する
 > * AKS クラスターの構成
 
 ## <a name="prerequisites"></a>前提条件
@@ -77,7 +77,7 @@ tasks:
         Environment: Production
 ```
 
-プレイブックを実行する前に、次の点に注意してください。
+プレイブックを実行する前に、次の注意事項を参照してください。
 
 - `tasks` 内の最初のセクションでは、`eastus` の場所にある `myResourceGroup` という名前のリソース グループが定義されています。
 - `tasks` 内の 2 番目のセクションでは、`myResourceGroup` というリソース グループ内に `myAKSCluster` という名前の AKS クラスターが定義されています。
@@ -145,7 +145,7 @@ localhost                  : ok=3    changed=2    unreachable=0    failed=0
             vm_size: Standard_D2_v2
 ```
 
-プレイブックを実行する前に、次の点に注意してください。
+プレイブックを実行する前に、次の注意事項を参照してください。
 
 - `your_ssh_key` プレースホルダーには、"ssh-rsa" (引用符は除く) で始まる実際の RSA 公開キーを 1 行形式で入力してください。
 
@@ -212,7 +212,7 @@ PLAY RECAP
 localhost                  : ok=2    changed=1    unreachable=0    failed=0
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [チュートリアル:Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング](/azure/aks/tutorial-kubernetes-scale)

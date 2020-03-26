@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
 ms.openlocfilehash: 84ed5db54874231d8bde4d892eedbc60c42a3430
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77918759"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Security Center とは

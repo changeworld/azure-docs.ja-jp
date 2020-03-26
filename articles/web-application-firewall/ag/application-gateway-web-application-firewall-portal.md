@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: 68a9f051bf3d59cbf32377cb503e9ded0a54d5e9
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74049232"
 ---
 # <a name="tutorial-create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
 ## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
 
@@ -84,7 +84,7 @@ Azure portal の左側のメニューにある **[リソースの作成]** を�
 
      ![新しいアプリケーション ゲートウェイの作成: フロントエンド](../media/application-gateway-web-application-firewall-portal/application-gateway-create-frontends.png)
 
-3. **[次へ:バックエンド]** を選択します。
+3. **バックエンド** を選択します。
 
 ### <a name="backends-tab"></a>[バックエンド] タブ
 
@@ -130,7 +130,7 @@ Azure portal の左側のメニューにある **[リソースの作成]** を�
 
      ![新しいアプリケーションゲートウェイの作成: ルーティング規則](../media/application-gateway-web-application-firewall-portal/application-gateway-create-rule-backends.png)
 
-7. **[次へ:タグ]** 、 **[次へ:確認と作成]** をクリックします。
+7. **タグ**、**次へ:確認と作成** をクリックします。
 
 ### <a name="review--create-tab"></a>[確認と作成] タブ
 
@@ -157,7 +157,7 @@ Azure portal の左側のメニューにある **[リソースの作成]** を�
     - **[リソース グループ]** :リソース グループ名には、**myResourceGroupAG** を選択します。
     - **[仮想マシン名]** : 仮想マシンの名前として「*myVM*」と入力します。
     - **[ユーザー名]** : 管理者のユーザー名として「*azureuser*」と入力します。
-    - **Password**:管理者パスワードとして「*Azure123456!* 」と入力します 。
+    - **パスワード**:管理者パスワードとして「*Azure123456!* 」と入力します 。
 4. 他の既定値をそのまま使用し、 **[Next: ディスク]** を選択します。  
 5. **[ディスク]** タブの既定値をそのまま使用し、 **[Next: Networking]\(次へ : ネットワーク\)** を選択します。
 6. **[ネットワーク]** タブで、 **[仮想ネットワーク]** に **myVNet** が選択されていること、および **[サブネット]** が **myBackendSubnet** に設定されていることを確認します。 他の既定値をそのまま使用し、 **[Next: 管理]** を選択します。<br>Application Gateway は、それが存在している仮想ネットワークの外部にあるインスタンスと通信できますが、IP 接続があることを確認する必要があります。
@@ -252,7 +252,7 @@ IIS はアプリケーション ゲートウェイを作成するのに必要で
 
    ![アプリケーション ゲートウェイのテスト](../media/application-gateway-web-application-firewall-portal/application-gateway-iistest.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 アプリケーション ゲートウェイと共に作成したリソースが不要になったら、リソース グループを削除します。 リソース グループを削除することで、アプリケーション ゲートウェイとそのすべての関連リソースも削除します。 
 
@@ -263,7 +263,7 @@ IIS はアプリケーション ゲートウェイを作成するのに必要で
 3. **[リソース グループ] ページ**で、 **[リソース グループの削除]** を選択します。
 4. **[TYPE THE RESOURCE GROUP NAME]\(リソース グループ名を入力してください\)** に「*myResourceGroupAG*」と入力し、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Web アプリケーション ファイアウォールの詳細](../overview.md)

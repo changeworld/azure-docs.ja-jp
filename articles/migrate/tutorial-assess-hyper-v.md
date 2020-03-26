@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 01/23/2020
 ms.custom: mvc
 ms.openlocfilehash: e4c505d74ff3bebc21f696b1c4b894afcdaa9974
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845518"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222009"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Azure Migrate Server Assessment を使用して Hyper-V VM を評価する
 
@@ -59,9 +59,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     Azure Migrate プロジェクトは、これらのリージョンで作成できます。
 
-    **地理的な場所** | **[リージョン]**
+    **地理的な場所** | **リージョン**
     --- | ---
-    Asia  | 東南アジア
+    アジア  | 東南アジア
     ヨーロッパ | 北ヨーロッパまたは西ヨーロッパ
     イギリス |  英国南部または英国西部
     United States | 米国東部、米国西部 2、または米国中西部
@@ -258,7 +258,7 @@ Azure Migrate Server Assessment を使用して実行できる評価には、2 �
 
     ![評価を作成する](./media/tutorial-assess-hyper-v/assessment-create.png)
 
-6. 評価が作成されたら、それを表示します ( **[サーバー]**  >  **[Azure Migrate: Server Assessment]** でクリックします。
+6. 評価が作成されたら、それを表示します ( **[サーバー]**  >  **[Azure Migrate: Server Assessment]** を使用した評価と依存関係の視覚化に関する問題のトラブルシューティングに役立ちます。
 7. **[評価のエクスポート]** をクリックし、Excel ファイルとしてダウンロードします。
 
 

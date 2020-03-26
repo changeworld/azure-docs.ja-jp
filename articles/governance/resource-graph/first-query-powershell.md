@@ -4,11 +4,11 @@ description: このクイックスタートでは、手順に従って、Azure P
 ms.date: 11/21/2019
 ms.topic: quickstart
 ms.openlocfilehash: dd96324671f46f98d5b6c8bae1839a5b02d38b23
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304147"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215630"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して最初の Resource Graph クエリを実行します
 
@@ -90,7 +90,7 @@ Azure PowerShell モジュールが選択した環境に追加されたので、
 > [!NOTE]
 > 既にアクセスできているサブスクリプションからクエリの結果が返されなかった場合、`Search-AzGraph` コマンドレットでは既定コンテキストのサブスクリプションが既定で使用されることに注意してください。 既定のコンテキストの一部であるサブスクリプション ID の一覧を表示するには、この `(Get-AzContext).Account.ExtendedProperties.Subscriptions` を実行します。アクセスできるすべてのサブスクリプション全体を検索する場合は、`$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}` を実行して `Search-AzGraph` コマンドレットの PSDefaultParameterValues を設定できます
    
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Resource Graph モジュールを Azure PowerShell 環境から削除する場合は、次のコマンドを使用して行うことができます。
 
@@ -105,7 +105,7 @@ Uninstall-Module -Name 'Az.ResourceGraph'
 > [!NOTE]
 > これにより、以前にダウンロードしたモジュールのファイルは削除されません。 実行中の PowerShell セッションから削除されるだけです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、Azure PowerShell 環境に Resource Graph モジュールを追加し、最初のクエリを実行しました。 Resource Graph 言語の詳細については、クエリ言語の詳細のページに進んでください。
 

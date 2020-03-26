@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: 48d05dad45a5ff4c561f492e424b53c918998c7c
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: c05e53bd8ad8ade8c1e42729f46c99a0059c4dce
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945452"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79470862"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Java Spring アプリケーションを起動する
 
@@ -69,6 +69,7 @@ az extension add --name spring-cloud
     ```azurecli
         az group create --location eastus --name <resource group name>
     ```
+
     Azure リソース グループの詳細については[こちら](../azure-resource-manager/management/overview.md)をご覧ください。
 
 4. Azure CLI ウィンドウを開き、次のコマンドを実行して、Azure Spring Cloud のインスタンスをプロビジョニングします。
@@ -104,14 +105,14 @@ az spring-cloud config-server git set -n <service instance name> --uri https://g
 
 1. 新しいフォルダーを作成し、Azure Cloud アカウントにサンプル アプリ リポジトリを複製します。  
 
-    ```azurecli
+    ```console
         mkdir source-code
         git clone https://github.com/Azure-Samples/piggymetrics
     ```
 
 2. ディレクトリを変更し、プロジェクトをビルドします。
 
-    ```azurecli
+    ```console
         cd piggymetrics
         mvn clean package -D skipTests
     ```
@@ -150,16 +151,21 @@ Web ブラウザーを介してアプリケーションにアクセスする手�
 ```azurecli
 az spring-cloud app update -n gateway --is-public true
 ```
+
 2. アプリケーションが実行されていることを確認できるように、**gateway** アプリケーションに対してパブリック IP を求めるクエリを実行します。
 
 Linux:
+
 ```azurecli
 az spring-cloud app show --name gateway | grep url
 ```
+
 Windows:
+
 ```azurecli
 az spring-cloud app show -s <service name> -g <resource group> -n gateway -o table
 ```
+
 3. 前のコマンドによって提供された URL に移動し、PiggyMetrics アプリケーションを実行します。
     ![PiggyMetrics が実行中のスクリーンショット](media/spring-cloud-quickstart-launch-app-cli/launch-app.png)
 

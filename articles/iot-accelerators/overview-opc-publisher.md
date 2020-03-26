@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 2310a81d3cfaeff203134af9968bc2d5caea3e9c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73824788"
 ---
 # <a name="what-is-opc-publisher"></a>OPC Publisher の概要
@@ -41,6 +41,6 @@ OPC UA サーバーに対する明確な発行間隔ごとに、この発行間�
 
 このアプリケーションでは、NuGet パッケージとして OPC Foundation OPC UA リファレンス スタックを使用しています。 ライセンス条項については、[https://opcfoundation.org/license/redistributables/1.3/](https://opcfoundation.org/license/redistributables/1.3/) を参照してください。
 
-### <a name="next-steps"></a>次の手順
+### <a name="next-steps"></a>次のステップ
 
 OPC Publisher の概要を学習しました。推奨される次の手順は [OPC Publisher を構成する](howto-opc-publisher-configure.md)方法を学習することです。

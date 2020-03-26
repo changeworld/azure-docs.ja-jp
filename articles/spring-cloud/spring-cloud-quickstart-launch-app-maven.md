@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: dd8ce6d9b4dc63592e491a06a0055a7d065252b5
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: d1e6d6db1465b20f1f32a8ffb2f978d0a04a1033
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201435"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79470845"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>クイック スタート:Maven プラグインを使用して Azure Spring Cloud アプリを起動する
 
@@ -77,13 +77,13 @@ Azure Spring Cloud の Maven プラグインを使用すると、自分の Azure
 
 1. 次のコマンドを実行して、Git リポジトリを複製します。
 
-    ```azurecli
+    ```console
     git clone https://github.com/Azure-Samples/PiggyMetrics
     ```
   
 1. 次のコマンドを実行して、ディレクトリを変更し、プロジェクトをビルドします。
 
-    ```azurecli
+    ```console
     cd piggymetrics
     mvn clean package -DskipTests
     ```
@@ -92,7 +92,7 @@ Azure Spring Cloud の Maven プラグインを使用すると、自分の Azure
 
 1. 親 POM を含む PiggyMetrics のルート フォルダー内で次のコマンドを実行して、構成を生成します。
 
-    ```azurecli
+    ```console
     mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.0.0:config
     ```
 
@@ -106,7 +106,7 @@ Azure Spring Cloud の Maven プラグインを使用すると、自分の Azure
 
 1. POM にプラグインの依存関係と構成が含まれるようになりました。 次のコマンドを使用して、アプリをデプロイします。
 
-   ```azurecli
+   ```console
    mvn azure-spring-cloud:deploy
    ```
 

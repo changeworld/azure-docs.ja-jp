@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: victorh
 ms.openlocfilehash: ca6be666a9b77532b4f1c61f6e3391c239e82c91
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74075149"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して複数の Web サイトをホストするアプリケーション ゲートウェイを作成し、構成します。
@@ -80,7 +80,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
      ![新しいアプリケーション ゲートウェイの作成: フロントエンド](./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png)
 
-3. **[次へ:バックエンド]** を選択します。
+3. **バックエンド** を選択します。
 
 ### <a name="backends-tab"></a>[バックエンド] タブ
 
@@ -130,7 +130,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
      ![新しいアプリケーションゲートウェイの作成: ルーティング規則](./media/create-multiple-sites-portal/fabrikamRule.png)
 
-7. **[次へ:タグ]** 、 **[次へ:確認と作成]** をクリックします。
+7. **タグ**、**次へ:確認と作成** をクリックします。
 
 ### <a name="review--create-tab"></a>[確認と作成] タブ
 
@@ -157,7 +157,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
     - **[リソース グループ]** :リソース グループ名には、**myResourceGroupAG** を選択します。
     - **[仮想マシン名]** : 仮想マシンの名前として「*contosoVM*」と入力します。
     - **[ユーザー名]** : 管理者のユーザー名として「*azureuser*」と入力します。
-    - **Password**:管理者パスワードとして「*Azure123456!* 」と入力します 。
+    - **パスワード**:管理者パスワードとして「*Azure123456!* 」と入力します 。
 4. 他の既定値をそのまま使用し、 **[Next: ディスク]** を選択します。  
 5. **[ディスク]** タブの既定値をそのまま使用し、 **[Next: Networking]\(次へ : ネットワーク\)** を選択します。
 6. **[ネットワーク]** タブで、 **[仮想ネットワーク]** に **myVNet** が選択されていること、および **[サブネット]** が **myBackendSubnet** に設定されていることを確認します。 他の既定値をそのまま使用し、 **[Next: 管理]** を選択します。<br>Application Gateway は、それが存在している仮想ネットワークの外部にあるインスタンスと通信できますが、IP 接続があることを確認する必要があります。
@@ -228,7 +228,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
     ![アプリケーション ゲートウェイの fabrikam サイトをテストする](./media/create-multiple-sites-portal/application-gateway-iistest2.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 アプリケーション ゲートウェイと共に作成したリソースが不要になったら、リソース グループを削除します。 リソース グループを削除する際は、アプリケーション ゲートウェイとそのすべての関連リソースも削除します。
 
@@ -239,7 +239,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 3. **[リソース グループ] ページ**で、 **[リソース グループの削除]** を選択します。
 4. **[TYPE THE RESOURCE GROUP NAME]\(リソース グループ名を入力してください\)** に「*myResourceGroupAG*」と入力し、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Application Gateway で実行できる操作の詳細を確認する](application-gateway-introduction.md)

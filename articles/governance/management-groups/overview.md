@@ -5,11 +5,11 @@ ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.date: 12/18/2019
 ms.topic: overview
 ms.openlocfilehash: 319f48d4d0f8ce8501fecb74282760340b597188
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186976"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79216030"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Azure 管理グループでリソースを整理する
 

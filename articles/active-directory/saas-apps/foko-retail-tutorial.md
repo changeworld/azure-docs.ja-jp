@@ -17,10 +17,10 @@ ms.date: 11/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 648feb2d25bfa32470b3ca76722e933a913f7491
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74534679"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-foko-retail"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Foko Retail の統合
