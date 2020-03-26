@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 85992224edd10c0a0f233de9f6274cc77e109b22
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517780"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "60757742"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>チュートリアル:VMware で Azure Data Box Gateway をプロビジョニングする
 
@@ -110,9 +110,9 @@ VMware ESXi 6.0、6.5、または 6.7 を実行しているホスト システ�
 
 7. ツールバーの **[ディレクトリの作成]** アイコンをクリックして、新しいフォルダーを作成します。 フォルダー名を指定して、メモしておきます。 このフォルダー名は後で仮想マシンを作成するときに使用します (推奨されるベスト プラクティス)。 **[ディレクトリの作成]** をクリックします。
 
-   ![ディレクトリを作成する](./media/data-box-gateway-deploy-provision-vmware/image5.png)
+   ![ディレクトリの作成](./media/data-box-gateway-deploy-provision-vmware/image5.png)
 
-8. **Datastore Browser** の左側のウィンドウに新しいフォルダーが表示されます。 **[アップロード]** アイコンをクリックし、**[ファイルのアップロード]** を選択します。
+8. **Datastore Browser** の左側のウィンドウに新しいフォルダーが表示されます。 **[アップロード]** アイコンをクリックし、 **[ファイルのアップロード]** を選択します。
 
     ![ファイルをアップロードする](./media/data-box-gateway-deploy-provision-vmware/image6.png)
 
@@ -125,25 +125,25 @@ VMware ESXi 6.0、6.5、または 6.7 を実行しているホスト システ�
 
     ![2 つの VMDK ファイルが 1 つのファイルにマージされる](./media/data-box-gateway-deploy-provision-vmware/image8.png)
 
-12. vSphere client のウィンドウに戻ります。 ナビゲーター ウィンドウで **[仮想マシン]** を選択します。 右側のウィンドウで、**[VM の作成/登録]** をクリックします。
+12. vSphere client のウィンドウに戻ります。 ナビゲーター ウィンドウで **[仮想マシン]** を選択します。 右側のウィンドウで、 **[VM の作成/登録]** をクリックします。
 
     ![VM を作成または登録する](./media/data-box-gateway-deploy-provision-vmware/image9.png)
 
-13. **[New Virtual Machine]\(新しい仮想マシン\)** が表示されます。 [Select creation type]\(作成の種類の選択\) で、**[Create a new virtual machine]\(新しい仮想マシンの作成\)**  を選択し、**[Next]\(次へ\)** をクリックします。
+13. **[New Virtual Machine]\(新しい仮想マシン\)** が表示されます。 [Select creation type]\(作成の種類の選択\) で、 **[Create a new virtual machine]\(新しい仮想マシンの作成\)**  を選択し、 **[Next]\(次へ\)** をクリックします。
     ![[Select creation type]\(作成の種類の選択\) ページ](./media/data-box-gateway-deploy-provision-vmware/image10.png)
 
-14. **[Select a Name and OS Name and Location]\(名前と OS 名と場所の選択\)**  ページで、仮想マシンの **[Name]\(名前\)** を指定します。 この名前は、手順 7 で指定したフォルダー名と一致させる必要があります (推奨されるベスト プラクティス)。 **[Guest OS family]\(ゲスト OS ファミリー\)** として [Windows] を、**[Guest OS version]\(ゲスト OS のバージョン\)** として [Microsoft Windows Server 2016 (64-bit)] を選択します。 **[次へ]** をクリックします。
+14. **[Select a Name and OS Name and Location]\(名前と OS 名と場所の選択\)**  ページで、仮想マシンの **[Name]\(名前\)** を指定します。 この名前は、手順 7 で指定したフォルダー名と一致させる必要があります (推奨されるベスト プラクティス)。 **[Guest OS family]\(ゲスト OS ファミリー\)** として [Windows] を、 **[Guest OS version]\(ゲスト OS のバージョン\)** として [Microsoft Windows Server 2016 (64-bit)] を選択します。 **[次へ]** をクリックします。
 
     ![[Select a Name and OS Name and Location]\(名前と OS 名と場所の選択\) ページ](./media/data-box-gateway-deploy-provision-vmware/image11.png)
 
 15. **[Select storage]\(ストレージの選択\)** ページで、VM のプロビジョニングに使用するデータストアを選択します。 **[次へ]** をクリックします。
 
     ![[Select storage]\(ストレージの選択\) ページ](./media/data-box-gateway-deploy-provision-vmware/image12.png)
-16. **[Customize settings]\(設定のカスタマイズ\)** ページで、**[CPU]** を [4] に、**[Memory]\(メモリ\)** を [8192 MB]\(以上) に、**[Hard disk 1]\(ハード ディスク 1\)** を [2 TB]\(以上) に設定します。 追加する **SCSI ハード _ ディスク** を選択します。 ここでは、それは LSI Logic SAS でした。 **静的 IDE ディスクはサポートされていません。** **[Hard disk 1]\(ハード ディスク 1\)** は仮想データ ディスクです。 一度ディスクをプロビジョニングすると、圧縮できなくなることに注意してください。 ディスクを縮小しようとすると、デバイスのローカル データすべてが失われます。 
+16. **[Customize settings]\(設定のカスタマイズ\)** ページで、 **[CPU]** を [4] に、 **[Memory]\(メモリ\)** を [8192 MB]\(以上) に、 **[Hard disk 1]\(ハード ディスク 1\)** を [2 TB]\(以上) に設定します。 追加する **SCSI ハード _ ディスク** を選択します。 ここでは、それは LSI Logic SAS でした。 **静的 IDE ディスクはサポートされていません。** **[Hard disk 1]\(ハード ディスク 1\)** は仮想データ ディスクです。 一度ディスクをプロビジョニングすると、圧縮できなくなることに注意してください。 ディスクを縮小しようとすると、デバイスのローカル データすべてが失われます。 
 
     ![[Customize settings]\(設定のカスタマイズ\) ページ](./media/data-box-gateway-deploy-provision-vmware/image13.png)
 
-    同じページで、**[Add hard disk]\(ハード ディスクの追加\)** をクリックし、**[Existing hard disk]\(既存のハード ディスク\)** を選択します。 データ ストア内の VMDK ファイルを選択します。 これにより、OS ディスクが追加されます。 
+    同じページで、 **[Add hard disk]\(ハード ディスクの追加\)** をクリックし、 **[Existing hard disk]\(既存のハード ディスク\)** を選択します。 データ ストア内の VMDK ファイルを選択します。 これにより、OS ディスクが追加されます。 
 
      ![Customize settings]\(設定のカスタマイズ\) ページ[](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 
@@ -151,7 +151,7 @@ VMware ESXi 6.0、6.5、または 6.7 を実行しているホスト システ�
 
      ![[Customize settings]\(設定のカスタマイズ\) ページ](./media/data-box-gateway-deploy-provision-vmware/image15.png)
 
-17. (省略可能) *VMware ESXi Server 6.7 を実行している場合にのみ、この手順を実行します*。 **[Customize settings]\(設定のカスタマイズ\)** ページで **[VM options]\(VM のオプション\)** をクリックします。 **[Boot options]\(ブート オプション\) > [Firmware]\(ファームウェア\)** に移動し、**[BIOS]** に変更します。 既定では、値は [EFI] に設定されます。 **[次へ]** をクリックします。
+17. (省略可能) *VMware ESXi Server 6.7 を実行している場合にのみ、この手順を実行します*。 **[Customize settings]\(設定のカスタマイズ\)** ページで **[VM options]\(VM のオプション\)** をクリックします。 **[Boot options]\(ブート オプション\) > [Firmware]\(ファームウェア\)** に移動し、 **[BIOS]** に変更します。 既定では、値は [EFI] に設定されます。 **[次へ]** をクリックします。
 
     ![VMware ESXi Server 6.7 を実行している場合の [Customize settings]\(設定のカスタマイズ\) ページ](./media/data-box-gateway-deploy-provision-vmware/image15a.png)
 
@@ -174,7 +174,7 @@ VMware ESXi 6.0、6.5、または 6.7 を実行しているホスト システ�
 仮想デバイスを起動して接続するには、次の手順を実行します。
 
 #### <a name="to-start-the-virtual-device"></a>仮想デバイスを起動するには
-1. 仮想デバイスを起動します。 右側のウィンドウで、VM の一覧からデバイスを選択し、右クリックしてコンテキスト メニューを表示します。 **[Power]**、**[Power on]** の順に選択します。 これで、仮想マシンの電源がオンになります。 Web クライアントの下部ウィンドウで状態を確認できます。
+1. 仮想デバイスを起動します。 右側のウィンドウで、VM の一覧からデバイスを選択し、右クリックしてコンテキスト メニューを表示します。 **[Power]** 、 **[Power on]** の順に選択します。 これで、仮想マシンの電源がオンになります。 Web クライアントの下部ウィンドウで状態を確認できます。
 
     ![仮想マシンの電源](./media/data-box-gateway-deploy-provision-vmware/image19.png)
 
@@ -213,7 +213,7 @@ VMware ESXi 6.0、6.5、または 6.7 を実行しているホスト システ�
 - 診断テストを実行して [Web UI のセットアップのトラブルシューティング](data-box-gateway-troubleshoot.md#run-diagnostics)を行う。
 - [ログ パッケージを生成してログ ファイルを表示する](data-box-gateway-troubleshoot.md#collect-support-package)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Data Box Gateway に関する次のようなトピックについて説明しました。
 

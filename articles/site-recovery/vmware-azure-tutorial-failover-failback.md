@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.custom: MVC
 ms.openlocfilehash: 8501bb1a998eb08984a118bfa5d52d1e3f3e4f84
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75498088"
 ---
 # <a name="fail-over--vmware-vms"></a>VMware VM をフェールオーバーする
