@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 60a4646b77f083590a6eb8a8648d6dea932f0bdd
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 263b4e76d334aab82f6bbac9aa268a50f4dd3784
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849753"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223839"
 ---
 # <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>Azure App Service で SSL バインディングを使用してカスタム DNS 名をセキュリティで保護する
 
@@ -50,7 +50,7 @@ ms.locfileid: "74849753"
 
 ## <a name="secure-a-custom-domain"></a>カスタム ドメインをセキュリティで保護する
 
-次の手順を実行します。
+手順は次のとおりです。
 
 <a href="https://portal.azure.com" target="_blank">Azure portal</a> の左側のメニューから、 **[App Services]**  >  **\<app-name>** を選択します。
 
@@ -79,7 +79,7 @@ ms.locfileid: "74849753"
 
 次の表を使用して、 **[TLS/SSL バインディング]** ダイアログで SSL バインディングを構成してから、 **[バインディングの追加]** をクリックします。
 
-| Setting | 説明 |
+| 設定 | 説明 |
 |-|-|
 | カスタム ドメイン | SSL バインディングを追加するドメイン名。 |
 | プライベート証明書のサムプリント | バインドする証明書。 |
@@ -131,7 +131,7 @@ ms.locfileid: "74849753"
 
 ![HTTPS の適用](./media/configure-ssl-bindings/enforce-https.png)
 
-操作が完了すると、アプリを指定する HTTP URL のいずれかに移動します。 例:
+操作が完了すると、アプリを指定する HTTP URL のいずれかに移動します。 次に例を示します。
 
 - `http://<app_name>.azurewebsites.net`
 - `http://contoso.com`
@@ -146,6 +146,12 @@ ms.locfileid: "74849753"
 ![TLS 1.1/1.2 の適用](./media/configure-ssl-bindings/enforce-tls1-2.png)
 
 操作が完了すると、アプリは下位の TLS バージョンでの接続をすべて拒否します。
+
+## <a name="handle-ssl-termination"></a>SSL の終了処理
+
+App Service では、[SSL 終了](https://wikipedia.org/wiki/TLS_termination_proxy)がネットワーク ロード バランサーで発生するため、すべての HTTPS リクエストは暗号化されていない HTTP リクエストとしてアプリに到達します。 ユーザー要求が暗号化されているかどうかをアプリ ロジックが確認する必要がある場合は、`X-Forwarded-Proto` ヘッダーを調べます。
+
+[Linux Node.js 構成](containers/configure-language-nodejs.md#detect-https-session)ガイドなどの言語固有の構成ガイドでは、アプリケーション コード内の HTTPS セッションを検出する方法について説明しています。
 
 ## <a name="automate-with-scripts"></a>スクリプトで自動化する
 
