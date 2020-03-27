@@ -12,17 +12,17 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: 647bdcf5c8c49b5c942419c78155ed4f61c848bb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826870"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215490"
 ---
 # <a name="quickstarts-azure-sql-database-connect-and-query"></a>クイック スタート:Azure SQL Database の接続とクエリ
 
 次のドキュメントは、Azure SQL データベースに接続してクエリを実行する例を紹介した Azure ページへのリンク集です。 トランスポート レベルのセキュリティについての推奨事項も提供されています。
 
-## <a name="quickstarts"></a>クイック スタート
+## <a name="quickstarts"></a>クイックスタート
 
 | |  |
 |---|---|
@@ -34,7 +34,7 @@ ms.locfileid: "73826870"
 |[.NET core](sql-database-connect-query-dotnet-core.md)|このクイック スタートでは、Azure SQL データベースに接続して Transact-SQL ステートメントでデータを照会する C# プログラムを Windows/Linux/macOS 上の .NET Core を使って作成する方法について説明します。|
 |[Go](sql-database-connect-query-go.md)|このクイック スタートでは、Go を使用して Azure SQL データベースに接続する方法を紹介します。 Transact-SQL ステートメントを使用してデータを照会および変更する方法についても説明します。|
 |[Java](sql-database-connect-query-java.md)|このクイック スタートでは、Java を使って Azure SQL データベースに接続した後、Transact-SQL ステートメントを使ってデータを照会する方法について説明します。|
-|[Node.JS](sql-database-connect-query-nodejs.md)|このクイック スタートでは、Azure SQL データベースに接続して Transact-SQL ステートメントでデータを照会するプログラムを Node.js を使って作成する方法について説明します。|
+|[Node.js](sql-database-connect-query-nodejs.md)|このクイック スタートでは、Azure SQL データベースに接続して Transact-SQL ステートメントでデータを照会するプログラムを Node.js を使って作成する方法について説明します。|
 |[PHP](sql-database-connect-query-php.md)|このクイック スタートでは、Azure SQL データベースに接続して Transact-SQL ステートメントでデータを照会するプログラムを PHP を使って作成する方法について説明します。|
 |[Python](sql-database-connect-query-python.md)|このクイック スタートでは、Python を使って Azure SQL データベースに接続した後、Transact-SQL ステートメントを使ってデータを照会する方法について説明します。 |
 |[Ruby](sql-database-connect-query-ruby.md)|このクイック スタートでは、Azure SQL データベースに接続して Transact-SQL ステートメントでデータを照会するプログラムを Ruby を使って作成する方法について説明します。|
@@ -59,19 +59,19 @@ Microsoft 以外のドライバーは、既定では TLS を使用しない場�
 
 次の表は、クライアント アプリケーションがさまざまな言語から SQL Server への接続に使用できる接続ライブラリや*ドライバー*を示しています。クライアント アプリケーションはオンプレミスおよびクラウドで実行される SQL Server と共にこれらを使用できます。 Linux、Windows、または Docker でこれらを使用して、Azure SQL Database や Azure SQL Data Warehouse に接続できます。 
 
-| 言語 | プラットフォーム | その他のリソース | ダウンロード | 作業開始 |
+| Language | プラットフォーム | その他のリソース | ダウンロード | はじめに |
 | :-- | :-- | :-- | :-- | :-- |
-| C# | Windows、Linux、macOS | [SQL Server 用 Microsoft ADO.NET](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-sql-server) | [ダウンロード](https://www.microsoft.com/net/download/) | [作業開始](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
-| Java | Windows、Linux、macOS | [SQL Server 用 Microsoft JDBC ドライバー](https://msdn.microsoft.com/library/mt484311.aspx) | [ダウンロード](https://go.microsoft.com/fwlink/?linkid=852460) |  [作業開始](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
-| PHP | Windows、Linux、macOS| [SQL Server 用 PHP SQL ドライバー](https://docs.microsoft.com/sql/connect/php/microsoft-php-driver-for-sql-server) | [ダウンロード](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server) | [作業開始](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)
-| Node.js | Windows、Linux、macOS | [SQL Server 用 Node.js ドライバー](https://msdn.microsoft.com/library/mt652093.aspx) | [インストール](https://msdn.microsoft.com/library/mt652094.aspx) |  [作業開始](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)
-| Python | Windows、Linux、macOS | [Python SQL ドライバー](https://msdn.microsoft.com/library/mt652092.aspx) | インストール オプション: <br/> \* [pymssql](https://msdn.microsoft.com/library/mt694094.aspx) <br/> \* [pyodbc](https://msdn.microsoft.com/library/mt763257.aspx) |  [作業開始](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu)
-| Ruby | Windows、Linux、macOS | [SQL Server 用 Ruby ドライバー](https://msdn.microsoft.com/library/mt691981.aspx) | [インストール](https://msdn.microsoft.com/library/mt711041.aspx) | [作業開始](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu)
-| C++ | Windows、Linux、macOS | [SQL Server 用 Microsoft ODBC ドライバー](https://msdn.microsoft.com/library/mt654048(v=sql.1).aspx) | [ダウンロード](https://msdn.microsoft.com/library/mt654048(v=sql.1).aspx) |  
+| C# | Windows、Linux、macOS | [Microsoft ADO.NET for SQL Server](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-sql-server) | [ダウンロード](https://www.microsoft.com/net/download/) | [開始するには](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
+| Java | Windows、Linux、macOS | [SQL Server 用 Microsoft JDBC ドライバー](https://msdn.microsoft.com/library/mt484311.aspx) | [ダウンロード](https://go.microsoft.com/fwlink/?linkid=852460) |  [開始するには](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
+| PHP | Windows、Linux、macOS| [SQL Server 用 PHP SQL ドライバー](https://docs.microsoft.com/sql/connect/php/microsoft-php-driver-for-sql-server) | [ダウンロード](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server) | [開始するには](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)
+| Node.js | Windows、Linux、macOS | [SQL Server 用 Node.js ドライバー](https://msdn.microsoft.com/library/mt652093.aspx) | [インストール](https://msdn.microsoft.com/library/mt652094.aspx) |  [開始するには](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)
+| Python | Windows、Linux、macOS | [Python SQL ドライバー](https://msdn.microsoft.com/library/mt652092.aspx) | インストール オプション: <br/> \* [pymssql](https://msdn.microsoft.com/library/mt694094.aspx) <br/> \* [pyodbc](https://msdn.microsoft.com/library/mt763257.aspx) |  [開始するには](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu)
+| Ruby | Windows、Linux、macOS | [SQL Server 用 Ruby ドライバー](https://msdn.microsoft.com/library/mt691981.aspx) | [インストール](https://msdn.microsoft.com/library/mt711041.aspx) | [開始するには](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu)
+| C++ | Windows、Linux、macOS | [Microsoft ODBC Driver for SQL Server](https://msdn.microsoft.com/library/mt654048(v=sql.1).aspx) | [ダウンロード](https://msdn.microsoft.com/library/mt654048(v=sql.1).aspx) |  
 
 次の表は、クライアント アプリケーションがオンプレミスまたはクラウドで SQL Server と共に使用できる、オブジェクト リレーショナル マッピング (ORM) フレームワークおよび Web フレームワークの例を示しています。 Linux、Windows、または Docker でフレームワークを使用して SQL Database および SQL Data Warehouse に接続できます。 
 
-| 言語 | プラットフォーム | ORM |
+| Language | プラットフォーム | ORM |
 | :-- | :-- | :-- |
 | C# | Windows、Linux、macOS | [Entity Framework](https://docs.microsoft.com/ef)<br>[Entity Framework Core](https://docs.microsoft.com/ef/core/index) |
 | Java | Windows、Linux、macOS |[Hibernate ORM](https://hibernate.org/orm)|
@@ -81,7 +81,7 @@ Microsoft 以外のドライバーは、既定では TLS を使用しない場�
 | Ruby | Windows、Linux、macOS | [Ruby on Rails](https://rubyonrails.org/) |
 ||||
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 接続アーキテクチャについては、「[Azure SQL Database 接続アーキテクチャ](sql-database-connectivity-architecture.md)」をご覧ください。
 - クライアント アプリケーションからの接続に使用する [SQL Server 用ドライバー](https://msdn.microsoft.com/library/mt654049.aspx)を探します
@@ -93,8 +93,8 @@ Microsoft 以外のドライバーは、既定では TLS を使用しない場�
   - [Python を使用して SQL Database に接続する](sql-database-connect-query-python.md)
   - [Ruby を使用して SQL Database に接続する](sql-database-connect-query-ruby.md)
 - 再試行ロジックのコード例:
-  - [ADO.NET を使用して SQL に弾性的に接続する][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
-  - [PHP を使用して SQL に弾性的に接続する][step-4-connect-resiliently-to-sql-with-php-p42h]
+  - [ADO.NET で SQL に弾性的に接続する][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
+  - [PHP で SQL に弾性的に接続する][step-4-connect-resiliently-to-sql-with-php-p42h]
 
 <!-- Link references. -->
 
