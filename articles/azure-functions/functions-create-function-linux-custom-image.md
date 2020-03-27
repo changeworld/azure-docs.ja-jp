@@ -4,13 +4,13 @@ description: カスタム Linux イメージで実行する Azure Functions を�
 ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
-zone_pivot_groups: programming-languages-set-functions01
-ms.openlocfilehash: b714806c163a94bbae7069c357e603b82ba797ba
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+zone_pivot_groups: programming-languages-set-functions
+ms.openlocfilehash: 8c074c677c645dd03e3cf5288d82aa3e65720e8b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482362"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223729"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>カスタム コンテナーを使用して Linux で関数を作成する
 
@@ -70,7 +70,7 @@ ms.locfileid: "77482362"
 
 1. ターミナルまたはコマンド プロンプトで、このチュートリアル用のフォルダーを適切な場所に作成し、そのフォルダーに移動します。
 
-1. 「[仮想環境を作成してアクティブにする](functions-create-first-function-python.md#create-and-activate-a-virtual-environment)」の手順に従って、このチュートリアルで使用する仮想環境を作成します。
+1. 「[仮想環境を作成してアクティブにする](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#create-venv)」の手順に従って、このチュートリアルで使用する仮想環境を作成します。
 
 1. 自分が選択した言語に合わせて次のコマンドを実行し、`LocalFunctionsProject` という名前のフォルダーに関数アプリ プロジェクトを作成します。 `--docker` オプションによって、プロジェクトの `Dockerfile` が生成されます。これにより、Azure Functions および選択されたランタイムで使用するための適切なカスタム コンテナーが定義されます。
 
@@ -339,8 +339,9 @@ Azure 上の関数アプリでは、ホスティング プランで関数の実�
 
     ```azurecli
     az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv
+    ```
     
-1. Add this setting to the function app by using the [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) command. In the following command, replace `<app_name>` with the name of your function app, and replace `<connection_string>` with the connection string from the previous step (a long encoded string that begins with "DefaultEndpointProtocol="):
+1. [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) コマンドを使用して、この設定を関数アプリに追加します。 次のコマンドで、`<app_name>` を関数アプリの名前に置き換え、`<connection_string>` を前の手順の接続文字列 ("DefaultEndpointProtocol=" で始まる長いエンコード文字列) に置き換えます。
  
     ```azurecli
     az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=<connection_string>
