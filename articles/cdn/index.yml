@@ -9,12 +9,12 @@ metadata:
   author: asudbring
   ms.author: allensu
   ms.date: 02/24/2020
-  ms.openlocfilehash: 7244b5f70468735a0dcced4d9cc9e71c1194350e
-  ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+  ms.openlocfilehash: e181f5cb94dc33765b6fceb81cc98832a3b800ce
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/25/2020
-  ms.locfileid: "77582570"
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "79479775"
 landingContent:
 - title: Azure CDN について
   linkLists:
@@ -26,6 +26,8 @@ landingContent:
     links:
     - text: Azure CDN のビデオ ライブラリ
       url: https://azure.microsoft.com/documentation/videos/index/?services=cdn
+    - text: Microsoft が提供する Azure CDN で HTTP オーバーライドを使用する方法
+      url: https://channel9.msdn.com/Shows/Azure-Friday/How-to-use-HTTP-overrides-on-Azure-CDN-from-Microsoft
 - title: はじめに
   linkLists:
   - linkListType: quickstart

@@ -1,8 +1,8 @@
-- name: Front Door Service のドキュメント
+- name: Front Door のドキュメント
   href: index.yml
 - name: 概要
   items:
-    - name: Azure Front Door Service とは
+    - name: Azure Front Door とは
       href: front-door-overview.md
 - name: クイックスタート
   expanded: true
@@ -27,6 +27,8 @@
       href: front-door-backend-pool.md
     - name: Front Door でのキャッシュ
       href: front-door-caching.md
+    - name: Front Door に関する FAQ
+      href: front-door-faq.md
     - name: geo フィルタリング
       href: front-door-geo-filtering.md
     - name: 正常性プローブ
@@ -49,6 +51,8 @@
       href: front-door-url-rewrite.md
     - name: URL リダイレクト
       href: front-door-url-redirect.md
+    - name: ワイルドカード ドメイン
+      href: front-door-wildcard-domain.md
 - name: 操作方法ガイド
   items:
     - name: トラフィックのリダイレクト
@@ -65,10 +69,6 @@
           href: front-door-troubleshoot-routing.md
         - name: 許可された証明機関
           href: front-door-troubleshoot-allowed-ca.md
-- name: よく寄せられる質問
-  items:
-    - name: Front Door に関する FAQ
-      href: front-door-faq.md
 - name: リファレンス
   items:
     - name: Azure CLI

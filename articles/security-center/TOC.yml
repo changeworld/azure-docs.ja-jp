@@ -37,9 +37,7 @@
       href: security-center-compliance-dashboard.md
 - name: 概念
   items:
-    - name: Security Center のセキュア スコア
-      href: security-center-secure-score.md
-    - name: 高度なセキュア スコア
+    - name: セキュリティ スコア
       href: secure-score-security-controls.md
     - name: アクセス許可
       href: security-center-permissions.md
@@ -59,16 +57,18 @@
           href: azure-kubernetes-service-integration.md
     - name: 脅威の防止とセキュリティ アラート
       items:
+        - name: Azure Security Center での脅威の防止
+          href: threat-protection.md
         - name: セキュリティ アラートの概要
           href: security-center-alerts-overview.md
         - name: アラートの参照リスト
           href: alerts-reference.md
+        - name: アラートのスキーマ
+          href: alerts-schemas.md
         - name: セキュリティ アラートの管理
           href: security-center-managing-and-responding-alerts.md
         - name: セキュリティ インシデントを管理する
           href: security-center-incident.md
-        - name: Azure Security Center での脅威の防止
-          href: threat-protection.md
         - name: クラウドのスマート アラートの関連付け (インシデント)
           href: security-center-alerts-cloud-smart.md
         - name: セキュリティ アラート マップと脅威インテリジェンス
@@ -201,6 +201,8 @@
       href: security-center-features-retirement-july2019.md
     - name: エンドポイント保護の評価および推奨事項
       href: security-center-endpoint-protection.md
+    - name: セキュア スコア (レガシ)
+      href: security-center-secure-score.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

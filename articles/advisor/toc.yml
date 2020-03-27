@@ -8,7 +8,7 @@
   items:
     - name: Advisor の使用を開始する
       href: advisor-get-started.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: Azure アプリケーションの可用性の向上
       href: advisor-high-availability-recommendations.md
@@ -26,6 +26,10 @@
       href: permissions.md
     - name: 推奨事項のアラートの構成
       href: advisor-alerts.md
+    - name: 推奨事項の一括修復
+      href: advisor-quick-fix.md
+    - name: Azure Resource Graph の Advisor データ
+      href: advisor-azure-resource-graph.md
 - name: リファレンス
   items:
     - name: Security Center

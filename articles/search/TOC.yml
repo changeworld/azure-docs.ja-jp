@@ -263,6 +263,8 @@
           href: search-pagination-page-layout.md
         - name: 関連性のチューニング (スコアリング プロファイル)
           href: index-add-scoring-profiles.md
+        - name: 関連性のチューニング (類似性アルゴリズム)
+          href: index-ranking-similarity.md
     - name: プラン
       items:
         - name: レベルの選択

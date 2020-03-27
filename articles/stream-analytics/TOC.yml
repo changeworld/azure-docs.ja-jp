@@ -23,13 +23,11 @@
       href: stream-analytics-manage-job.md
     - name: 2 - Azure Functions の実行
       href: stream-analytics-with-azure-functions.md
-    - name: 3 - JavaScript UDF の実行
-      href: stream-analytics-javascript-user-defined-functions.md
-    - name: 4 - Azure Pipelines での CI/CD によるデプロイ
+    - name: 3 - Azure Pipelines での CI/CD によるデプロイ
       href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: '5 - C# UDF の実行'
+    - name: '4 - C# UDF の実行'
       href: stream-analytics-edge-csharp-udf.md
-    - name: 6 - カスタム .NET 逆シリアライザーの作成
+    - name: 5 - カスタム .NET 逆シリアライザーの作成
       href: custom-deserializer.md
 - name: サンプル
   items:
@@ -61,6 +59,14 @@
           href: stream-analytics-sql-output-perf.md
         - name: BLOB のカスタム パス パターン
           href: stream-analytics-custom-path-patterns-blob-storage-output.md
+    - name: ユーザー定義関数
+      items:
+        - name: Machine Learning UDF
+          href: machine-learning-udf.md
+        - name: 'C# UDF'
+          href: stream-analytics-edge-csharp-udf-methods.md
+        - name: JavaScript UDF
+          href: stream-analytics-javascript-user-defined-functions.md
     - name: Stream Analytics のジョブを最適化する
       items:
         - name: ストリーミング ユニットの理解と調整
@@ -187,8 +193,6 @@
           href: stream-analytics-tools-for-visual-studio-edge-jobs.md
         - name: CI/CD パイプラインの設定
           href: stream-analytics-tools-for-visual-studio-cicd.md
-        - name: .NET UDF の作成
-          href: stream-analytics-edge-csharp-udf-methods.md
     - name: Visual Studio Code
       items:
         - name: サンプル データを使用してローカルでテストする

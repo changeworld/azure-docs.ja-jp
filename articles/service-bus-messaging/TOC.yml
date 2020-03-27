@@ -19,7 +19,7 @@
               href: service-bus-quickstart-powershell.md
             - name: Azure CLI
               href: service-bus-quickstart-cli.md
-            - name: Azure Resource Manager テンプレート
+            - name: ARM テンプレート
               href: service-bus-resource-manager-namespace-queue.md
         - name: メッセージを送受信する
           items:
@@ -41,7 +41,7 @@
           items:
             - name: Azure portal
               href: service-bus-quickstart-topics-subscriptions-portal.md
-            - name: Azure Resource Manager テンプレート
+            - name: ARM テンプレート
               href: service-bus-resource-manager-namespace-topic.md
         - name: メッセージの発行とサブスクライブ
           items:
@@ -65,6 +65,8 @@
       href: service-bus-tutorial-topics-subscriptions-portal.md
     - name: インベントリを更新する - CLI
       href: service-bus-tutorial-topics-subscriptions-cli.md
+    - name: Event Grid を使用したイベントへの応答
+      href: service-bus-to-event-grid-integration-example.md
 - name: サンプル
   items:
     - name: Service Bus サンプル
@@ -104,6 +106,8 @@
                   href: authenticate-application.md
         - name: 組み込みのセキュリティ制御
           href: service-bus-messaging-security-controls.md
+        - name: ネットワークのセキュリティ
+          href: network-security.md
 - name: 操作方法ガイド
   items:
     - name: Azure Service Manager (クラシック) API シリーズから Resource Manager API シリーズへの移行
@@ -126,8 +130,6 @@
               href: message-expiration.md
             - name: Azure Event Grid を使用したメッセージの処理
               href: service-bus-to-event-grid-integration-concept.md
-            - name: Azure Event Grid の例
-              href: service-bus-to-event-grid-integration-example.md
         - name: トピック フィルターとアクション
           href: topic-filters.md
         - name: Standard 名前空間から Premium 名前空間への移行
@@ -152,10 +154,6 @@
               href: service-bus-amqp-troubleshoot.md
         - name: 高度な機能
           items:
-            - name: ファイアウォールの使用
-              href: service-bus-ip-filtering.md
-            - name: 仮想ネットワーク サービス エンドポイント
-              href: service-bus-service-endpoints.md
             - name: 配達不能キュー
               href: service-bus-dead-letter-queues.md
             - name: メッセージのプリフェッチ
@@ -192,7 +190,7 @@
           href: service-bus-diagnostic-logs.md
         - name: メッセージ エンティティの一時停止と再アクティブ化
           href: entity-suspend.md
-        - name: Azure リソース マネージャー テンプレートの使用
+        - name: ARM テンプレートの使用
           href: service-bus-resource-manager-overview.md
           items:
             - name: 名前空間の作成
@@ -203,7 +201,13 @@
               href: service-bus-resource-manager-namespace-topic-with-rule.md
     - name: セキュリティで保護
       items:
-        - name: 保存時の暗号化向けに顧客管理キーを構成する
+        - name: ファイアウォールの構成
+          href: service-bus-ip-filtering.md
+        - name: 仮想ネットワーク サービス エンドポイントの構成
+          href: service-bus-service-endpoints.md
+        - name: プライベート エンドポイントの構成 (プレビュー)
+          href: private-link-service.md
+        - name: 顧客管理キーの構成
           href: configure-customer-managed-key.md
     - name: トラブルシューティング
       items:

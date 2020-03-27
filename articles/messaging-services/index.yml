@@ -1,0 +1,171 @@
+### YamlMime:Hub
+title: Azure メッセージング サービスのドキュメント
+summary: Azure Event Grid、Azure Event Hubs、Azure Service Bus、Azure Relay を使用してイベント メッセージを配信する方法について説明します。
+brand: azure
+metadata:
+  title: Azure メッセージング サービスのドキュメント
+  description: Azure Event Grid、Azure Event Hubs、Azure Service Bus、Azure Relay を使用してイベント メッセージを配信する方法について説明します。
+  services: multiple
+  ms.service: multiple
+  ms.topic: hub-page
+  author: spelluru
+  ms.author: spelluru
+  ms.date: 03/15/2020
+  ms.openlocfilehash: 65a4312d01d6f3652ebc37ee0276c912178d4ccd
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "79472256"
+highlightedContent:
+  items:
+  - title: Azure メッセージング サービスから選択する
+    itemType: overview
+    url: ../event-grid/compare-messaging-services.md
+  - title: Event Grid とは
+    itemType: overview
+    url: ../event-grid/overview.md
+  - title: Event Hubs とは
+    itemType: overview
+    url: ../event-hubs/event-hubs-about.md
+  - title: Service Bus とは
+    itemType: overview
+    url: ../service-bus-messaging/service-bus-messaging-overview.md
+  - title: リレーとは
+    itemType: overview
+    url: ../service-bus-relay/relay-what-is-it.md
+conceptualContent:
+  items:
+  - title: イベントのルーティング
+    links:
+    - url: ../event-grid/blob-event-quickstart-portal.md
+      itemType: quickstart
+      text: Azure portal で Blob Storage のイベントを Web エンドポイントにルーティングする
+    - url: ../event-grid/custom-event-to-function.md
+      itemType: quickstart
+      text: Event Grid を使用して Azure 関数にカスタム イベントをルーティングする
+    - url: ../event-grid/custom-event-quickstart-portal.md
+      itemType: quickstart
+      text: Azure portal と Event Grid を使ったカスタム イベントの Web エンドポイントへのルーティング
+    footerLink:
+      url: ../event-grid/index.yml
+      text: 詳細情報
+  - title: イベント ハブの作成
+    links:
+    - url: ../event-hubs/event-hubs-create.md
+      itemType: quickstart
+      text: Azure portal を使用したイベント ハブの作成
+    - url: ../event-hubs/event-hubs-quickstart-cli.md
+      itemType: quickstart
+      text: Azure CLI を使用したイベント ハブの作成
+    footerLink:
+      url: ../event-hubs/index.yml
+      text: 詳細情報
+  - title: Apache Kafka との統合
+    links:
+    - url: ../event-hubs/event-hubs-for-kafka-ecosystem-overview.md
+      itemType: overview
+      text: Apache Kafka 用 Event Hubs とは
+    - url: ../event-hubs/event-hubs-quickstart-kafka-enabled-event-hubs.md
+      itemType: quickstart
+      text: Apache Kafka 用 Event Hubs へのストリーム配信
+    footerLink:
+      url: ../event-hubs/index.yml
+      text: 詳細情報
+  - title: イベントの送受信
+    links:
+    - url: ../event-hubs/get-started-dotnet-standard-send-v2.md
+      itemType: quickstart
+      text: .NET Core を使用して Azure Event Hubs との間でイベントを送受信する
+    - url: ../event-hubs/event-hubs-java-get-started-send.md
+      itemType: quickstart
+      text: Java を使用して Azure Event Hubs との間でイベントを送受信する
+    - url: ../event-hubs/get-started-python-send-v2.md
+      itemType: quickstart
+      text: Python を使用してイベント ハブとの間でイベントを送受信する
+    footerLink:
+      url: ../event-hubs/index.yml
+      text: 詳細情報
+  - title: イベントのキャプチャ
+    links:
+    - url: ../event-hubs/event-hubs-dedicated-overview.md
+      itemType: overview
+      text: Azure Blob Storage または Azure Data Lake Storage でイベントをキャプチャする
+    - url: ../event-hubs/event-hubs-capture-enable-through-portal.md
+      itemType: quickstart
+      text: Azure Event Hubs からストリーム配信されるイベントのキャプチャを有効にする
+    footerLink:
+      url: ../event-hubs/index.yml
+      text: 詳細情報
+  - title: イベントの処理
+    links:
+    - url: ../event-hubs/event-hubs-tutorial-visualize-anomalies.md
+      itemType: tutorial
+      text: Azure Event Hubs に送信されたリアルタイム イベントのデータの異常を視覚化する
+    - url: ../event-hubs/event-hubs-kafka-stream-analytics.md
+      itemType: tutorial
+      text: Stream Analytics を使用して Event Hubs イベントの Apache Kafka を処理する
+    footerLink:
+      url: ../event-hubs/index.yml
+      text: 詳細情報
+  - title: キューを作成する
+    links:
+    - url: ../service-bus-messaging/service-bus-quickstart-portal.md
+      itemType: quickstart
+      text: Azure portal を使用して Service Bus キューを作成する
+    - url: ../service-bus-messaging/service-bus-quickstart-cli.md
+      itemType: quickstart
+      text: Azure CLI を使用して Service Bus キューを作成する
+    footerLink:
+      url: ../service-bus-messaging/index.yml
+      text: 詳細情報
+  - title: トピックとサブスクリプションを作成する
+    links:
+    - url: ../service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal.md
+      itemType: quickstart
+      text: Azure portal を使用して Service Bus トピックとそのサブスクリプションを作成する
+    - url: ../service-bus-messaging/service-bus-resource-manager-namespace-topic.md
+      itemType: quickstart
+      text: トピックとサブスクリプションを含む Service Bus 名前空間をテンプレートを使用して作成する
+    footerLink:
+      url: ../service-bus-messaging/index.yml
+      text: 詳細情報
+  - title: メッセージの送受信 - キュー
+    links:
+    - url: ../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md
+      itemType: concept
+      text: Azure Storage キューと Service Bus キューの比較
+    - url: ../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md
+      itemType: quickstart
+      text: Service Bus キューの使用
+    - url: ../service-bus-messaging/service-bus-java-how-to-use-queues.md
+      itemType: quickstart
+      text: Java で Azure Service Bus キューを使用してメッセージを送受信する
+    footerLink:
+      url: ../service-bus-messaging/index.yml
+      text: 詳細情報
+  - title: メッセージの発行とサブスクライブ
+    links:
+    - url: ../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md
+      itemType: quickstart
+      text: Service Bus トピックの概要
+    - url: ../service-bus-messaging/service-bus-java-how-to-use-topics-subscriptions.md
+      itemType: quickstart
+      text: Java で Service Bus のトピックとサブスクリプションを使用する
+    - url: ../service-bus-messaging/service-bus-python-how-to-use-topics-subscriptions.md
+      itemType: quickstart
+      text: Python で Service Bus のトピックとサブスクリプションを使用する
+    footerLink:
+      url: ../service-bus-messaging/index.yml
+      text: 詳細情報
+  - title: Hybrid Connections (ハイブリッド接続)
+    links:
+    - url: ../service-bus-relay/relay-hybrid-connections-dotnet-get-started.md
+      itemType: tutorial
+      text: .NET での Relay ハイブリッド接続 WebSocket の概要
+    - url: ../service-bus-relay/relay-hybrid-connections-http-requests-dotnet-get-started.md
+      itemType: tutorial
+      text: .NET での Relay ハイブリッド接続 HTTP 要求の概要
+    footerLink:
+      url: ../service-bus-relay/index.yml
+      text: 詳細情報

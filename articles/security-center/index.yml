@@ -11,12 +11,12 @@ metadata:
   author: memildin
   ms.author: memildin
   ms.date: 11/04/2019
-  ms.openlocfilehash: 2896bee8f5a07a7432ca3fa2ca49caa529fdeb1e
-  ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+  ms.openlocfilehash: a1d764ce1ce332290c1bd68c5beb5f2731ae5e41
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/25/2020
-  ms.locfileid: "77604780"
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "80159304"
 landingContent:
 - title: Security Center について
   linkLists:
@@ -32,15 +32,15 @@ landingContent:
     links:
     - text: コンテンツの保護
       url: container-security.md
-    - text: 動的コンプライアンス パッケージの追加
-      url: update-regulatory-compliance-packages.md
-    - text: Windows Admin Center との統合
-      url: windows-admin-center-integration.md
+    - text: VM 用の統合された脆弱性評価
+      url: built-in-vulnerability-assessment.md
+    - text: セキュリティ アラートのスキーマの確認
+      url: alerts-schemas.md
     - text: アラートや推奨事項に対する応答の自動化
       url: workflow-automation.md
     - text: セキュリティ アラートと推奨事項のエクスポート
       url: continuous-export.md
-    - text: Azure Key Vault 向けの Advanced Threat Protection の設定
+    - text: Azure Key Vault の脅威の防止の設定
       url: advanced-threat-protection-key-vault.md
 - title: はじめに
   linkLists:
@@ -56,8 +56,8 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: セキュリティ スコアとは
-      url: security-center-secure-score.md
+    - text: セキュア スコアについて
+      url: secure-score-security-controls.md
     - text: セキュリティの推奨事項への対応
       url: security-center-remediate-recommendations.md
     - text: セキュリティの推奨事項のカスタマイズ

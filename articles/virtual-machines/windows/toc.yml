@@ -585,6 +585,8 @@
               href: create-portal-availability-zone.md
     - name: 自動化ツールの使用
       items:
+        - name: カスタム データ
+          href: ../custom-data.md
         - name: Chef
           href: chef-automation.md
         - name: Visual Studio から Web アプリを発行する

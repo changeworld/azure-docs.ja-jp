@@ -113,8 +113,13 @@
           items:
             - name: セキュリティに関する推奨事項
               href: security-recommendations.md
-            - name: Azure Storage の暗号化
+            - name: Azure Storage の保存時の暗号化
               href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              items:
+                - name: Azure Key Vault でのカスタマー マネージド キー
+                  href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 要求でのカスタマー指定のキー
+                  href: ../common/encryption-customer-provided-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: データ操作の承認
               href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               items:
@@ -198,6 +203,8 @@
                   href: ../common/storage-import-export-data-from-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 操作方法
                   items:
+                    - name: カスタマー マネージド キーを使用する
+                      href: ../common/storage-import-export-encryption-key-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: ドライブの状態を表示する
                       href: ../common/storage-import-export-view-drive-status.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: ジョブの状態を表示する
@@ -658,8 +665,13 @@
               href: ../common/authorization-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: アクセスの制御 (ディレクトリとファイル)
               href: data-lake-storage-access-control.md
-            - name: Azure Storage の暗号化
+            - name: Azure Storage の保存時の暗号化
               href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              items:
+                - name: Azure Key Vault でのカスタマー マネージド キー
+                  href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 要求でのカスタマー指定のキー
+                  href: ../common/encryption-customer-provided-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: 高度な脅威保護
               href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Azure プライベート エンドポイントの使用
@@ -668,7 +680,7 @@
           items:
             - name: マルチプロトコル アクセス
               href: data-lake-storage-multi-protocol-access.md
-            - name: Blob Storage のサポートされている機能
+            - name: サポートされている BLOB ストレージ機能
               href: data-lake-storage-supported-blob-storage-features.md
             - name: サポート対象の Azure サービス
               href: data-lake-storage-supported-azure-services.md
@@ -822,7 +834,7 @@
           href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html'
         - name: Python
           href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html'
-        - name: Javascript
+        - name: JavaScript
           href: 'https://www.npmjs.com/package/@azure/storage-file-datalake/v/12.0.0-preview.6'
         - name: REST
           href: /rest/api/storageservices/data-lake-storage-gen2

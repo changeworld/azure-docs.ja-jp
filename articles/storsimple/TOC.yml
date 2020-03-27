@@ -1,12 +1,12 @@
 - name: StorSimple のドキュメント
-  href: index.md
+  href: index.yml
 - name: StorSimple Virtual Array
   items:
     - name: 概要
       items:
         - name: ソリューションとは
           href: storsimple-ova-overview.md
-    - name: 作業開始
+    - name: はじめに
       items:
         - name: プラン
           items:
@@ -16,7 +16,7 @@
               href: storsimple-ova-limits.md
             - name: ベスト プラクティスを確認する
               href: storsimple-ova-best-practices.md
-        - name: デプロイ
+        - name: 配置
           items:
             - name: デプロイを準備する
               href: storsimple-virtual-array-deploy1-portal-prep.md
@@ -119,7 +119,7 @@
           href: storsimple-8000-security.md
         - name: 利用可能なリージョン
           href: storsimple-regions.md
-    - name: 作業開始
+    - name: はじめに
       items:
         - name: プラン
           items:
@@ -131,7 +131,7 @@
               href: storsimple-8000-limits.md
             - name: ベスト プラクティス
               href: 'https://gallery.technet.microsoft.com/Azure-StorSimple-8000-72b01b68'
-        - name: Install
+        - name: インストール
           items:
             - name: 安全性を確認する
               href: storsimple-8000-safety.md
@@ -141,7 +141,7 @@
               href: storsimple-8600-hardware-installation.md
             - name: 10 GbE ネットワーク インターフェイス用にサポートされるハードウェア
               href: storsimple-supported-hardware-for-10-gbe-network-interfaces.md
-        - name: デプロイ
+        - name: 配置
           items:
             - name: StorSimple デバイス マネージャー サービス
               href: storsimple-8000-manage-service.md
@@ -159,7 +159,7 @@
               href: storsimple-adapter-for-sharepoint.md
     - name: 方法
       items:
-        - name: 管理
+        - name: 管理する
           items:
             - name: StorSimple Manager サービスの使用
               href: storsimple-8000-manager-service-administration.md
@@ -270,7 +270,7 @@
               href: 'https://gallery.technet.microsoft.com/Deploy-Hyper-V-with-Azure-0d1c6df6'
             - name: 分散されたグローバル名前空間
               href: 'https://www.microsoft.com/download/details.aspx?id=45507'
-        - name: 監視
+        - name: モニター
           items:
             - name: サービスの概要の使用
               href: storsimple-8000-service-dashboard.md
@@ -325,7 +325,7 @@
                   href: storsimple-5000-7000-afs-migration.md
             - name: 他のストレージ デバイスから
               href: 'https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf'
-        - name: アップデート
+        - name: 更新
           items:
             - name: Update 5 をインストールする - 最新
               href: storsimple-8000-install-update-5.md
@@ -369,7 +369,7 @@
       items:
         - name: ソリューションとは
           href: storsimple-data-manager-overview.md
-    - name: 作業開始
+    - name: はじめに
       items:
         - name: StorSimple Data Manager の使用
           href: storsimple-data-manager-ui.md
@@ -387,7 +387,7 @@
       items:
         - name: ソリューションとは
           href: storsimple-partner-csp-overview.md
-    - name: 作業開始
+    - name: はじめに
       items:
         - name: CSP の仮想アレイをデプロイする
           href: storsimple-partner-csp-deploy.md
@@ -397,7 +397,7 @@
           href: 'https://aka.ms/storsimple-virtual-array-latest-relnote'
         - name: CSP のリリース ノート
           href: 'https://partner.microsoft.com/Support/whats-new'
-        - name: 'CSP 向け StorSimple: FAQ'
+        - name: 'CSP 向け StorSimple: よく寄せられる質問'
           href: storsimple-partner-csp-faq.md
 - name: 関連項目
   items:
@@ -409,7 +409,7 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: マーケティング ブログ
       href: 'https://blogs.technet.com/b/cis/'
-    - name: Marketing
+    - name: マーケティング
       href: 'https://www.microsoft.com/server-cloud/products/storsimple/explore.aspx'
     - name: StorSimple サポート オプション
       href: storsimple-8000-support-options.md

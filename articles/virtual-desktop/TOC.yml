@@ -86,6 +86,8 @@
       href: publish-apps.md
     - name: MSIX アプリのアタッチを設定する
       href: app-attach.md
+    - name: Microsoft Teams の使用
+      href: teams-on-wvd.md
 - name: 概念
   items:
     - name: Windows Virtual Desktop の環境

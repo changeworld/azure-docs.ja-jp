@@ -16,6 +16,8 @@
       href: how-to-routefilter-portal.md
 - name: 概念
   items:
+    - name: リモート作業
+      href: work-remotely-support.md
     - name: 接続モデル
       href: expressroute-connectivity-models.md
     - name: 回線とピアリング

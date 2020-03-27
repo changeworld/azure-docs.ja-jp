@@ -16,6 +16,12 @@
       href: powershell-samples.md
 - name: 概念
   items:
+    - name: リモート作業のサポート
+      items:
+        - name: リモート作業
+          href: work-remotely-support.md
+        - name: NVA の構成とリモート作業
+          href: nva-work-remotely-support.md
     - name: VPN Gateway の設定について
       href: vpn-gateway-about-vpn-gateway-settings.md
     - name: VPN デバイスについて
@@ -150,6 +156,8 @@
               href: vpn-gateway-howto-openvpn.md
             - name: OpenVPN クライアントを構成する
               href: vpn-gateway-howto-openvpn-clients.md
+        - name: SSTP から OpenVPN プロトコルまたは IKEv2 に移行する
+          href: ikev2-openvpn-from-sstp.md
         - name: P2S 用公開 CA ゲートウェイ証明書への移行
           href: vpn-gateway-point-to-site-gateway-public-ca.md
         - name: Always On VPN デバイス トンネルの構成
@@ -217,7 +225,7 @@
           items:
             - name: ポイント対サイト接続の問題
               href: vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md
-            - name: ポイント対サイト接続の問題 - Mac OS X VPN クライアント
+            - name: ポイント対サイト接続の問題 - macOS X VPN クライアント
               href: vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md
             - name: ポイント対サイト - Azure AD 認証
               href: troubleshoot-ad-vpn-client.md

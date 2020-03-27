@@ -14,6 +14,10 @@
       items:
         - name: Azure Front Door 上の Web アプリケーション ファイアウォール
           href: ./afds/afds-overview.md
+    - name: Content Delivery Network
+      items:
+        - name: Azure CDN 上の Web アプリケーション ファイアウォール
+          href: ./cdn/cdn-overview.md
 - name: チュートリアル
   items:
     - name: Application Gateway
@@ -24,6 +28,10 @@
       items:
         - name: WAF ポリシーの構成 - ポータル
           href: ./afds/waf-front-door-create-portal.md
+    - name: Content Delivery Network
+      items:
+        - name: WAF ポリシーの構成 - ポータル
+          href: ./cdn/waf-cdn-create-portal.md
 - name: サンプル
   items:
     - name: Azure PowerShell
@@ -110,14 +118,14 @@
           href: ./afds/waf-front-door-tutorial-geo-filtering.md
         - name: 監視とログ記録
           href: ./afds/waf-front-door-monitor.md
-- name: トラブルシューティング
-  items:
-    - name: Application Gateway
+    - name: トラブルシューティング
       items:
-        - name: WAF のトラブルシューティング
-          href: ./ag/web-application-firewall-troubleshoot.md
-        - name: Log Analytics
-          href: ./ag/log-analytics.md
+        - name: Application Gateway
+          items:
+            - name: WAF のトラブルシューティング
+              href: ./ag/web-application-firewall-troubleshoot.md
+            - name: Log Analytics
+              href: ./ag/log-analytics.md
 - name: リファレンス
   items:
     - name: CRS ルール

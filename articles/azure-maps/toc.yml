@@ -89,8 +89,10 @@
       items:
         - name: 住所を検索する
           href: how-to-search-for-address.md
-        - name: 検索のベスト プラクティス
+        - name: Search Service の使用に関するベスト プラクティス
           href: how-to-use-best-practices-for-search.md
+        - name: Route Service の使用に関するベストプラクティス
+          href: how-to-use-best-practices-for-routing.md
         - name: 静的マップ上にカスタム データをレンダリングする
           href: how-to-render-custom-data.md
         - name: 公共輸送機関のルートを要求する
@@ -101,7 +103,7 @@
       items:
         - name: マップ コントロール
           items:
-            - name: Web マップ コントロールの概要
+            - name: Azure Maps のマップ コントロールを使用する
               href: how-to-use-map-control.md
             - name: マップを作成する
               href: map-create.md
@@ -247,12 +249,38 @@
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/'
         - name: サービス モジュール
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-rest/'
+        - name: 空間 IO モジュール
+          href: 'https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/'
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.maps/accounts
 - name: リソース
   items:
     - name: サポート オプションとヘルプ オプション
       href: /azure/iot-fundamentals/iot-support-help
+    - name: Azure IoT のサービス
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Hub Device Provisioning Service
+          href: /azure/iot-dps
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT ソリューション アクセラレータ
+          href: /azure/iot-accelerators
+        - name: IoT プラグ アンド プレイ
+          href: /azure/iot-pnp
+        - name: Azure Maps
+          href: /azure/azure-maps
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Azure IoT SDK
+      items:
+        - name: IoT サービスの SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: IoT デバイス SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
     - name: Azure Maps の使用条件
       href: 'https://azure.microsoft.com/support/legal/'
     - name: Azure Maps の価格
@@ -281,31 +309,3 @@
       href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
     - name: IoT School での Azure Maps
       href: 'https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo'
-- name: 関連項目
-  items:
-    - name: ソリューション
-      items:
-        - name: IoT ソリューション アクセラレータ
-          href: /azure/iot-suite
-        - name: IoT Central
-          href: /azure/iot-central/iot-support-help
-    - name: プラットフォーム サービス
-      items:
-        - name: IoT Hub
-          href: /azure/iot-hub
-        - name: IoT プラグ アンド プレイ
-          href: /azure/iot-pnp
-        - name: IoT Hub Device Provisioning Service
-          href: /azure/iot-dps
-        - name: マップ
-          href: /azure/azure-maps
-        - name: サービス SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: Time Series Insights
-          href: /azure/time-series-insights
-    - name: Edge ソリューション
-      items:
-        - name: IoT Edge
-          href: /azure/iot-edge
-        - name: IoT デバイス SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

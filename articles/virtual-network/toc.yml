@@ -23,23 +23,10 @@
       href: tutorial-restrict-network-access-to-resources.md
     - name: 仮想ネットワークの接続
       href: tutorial-connect-virtual-networks-portal.md
-    - name: NAT
-      items:
-        - name: NAT ゲートウェイの作成 - ポータル
-          href: quickstart-create-nat-gateway-portal.md
-        - name: NAT ゲートウェイの作成 - PowerShell
-          href: quickstart-create-nat-gateway-powershell.md
-        - name: NAT ゲートウェイの作成 - CLI
-          href: quickstart-create-nat-gateway-cli.md
-        - name: NAT ゲートウェイの作成 - ARM テンプレート
-          displayname: Resource Manager
-          href: quickstart-create-nat-gateway-template.md
-        - name: NAT ゲートウェイの作成と検証 - ポータル
-          href: tutorial-create-validate-nat-gateway-portal.md
-        - name: NAT ゲートウェイの作成と検証 - PowerShell
-          href: tutorial-create-validate-nat-gateway-powershell.md
-        - name: NAT ゲートウェイの作成と検証 - CLI
-          href: tutorial-create-validate-nat-gateway-cli.md
+    - name: NAT ゲートウェイの作成
+      href: quickstart-create-nat-gateway-portal.md
+    - name: NAT ゲートウェイの作成と検証
+      href: tutorial-create-validate-nat-gateway-portal.md
 - name: サンプル
   items:
     - name: Azure CLI
@@ -359,6 +346,19 @@
           href: move-across-regions-publicip-portal.md
         - name: パブリック IP - PowerShell
           href: move-across-regions-publicip-powershell.md
+    - name: NAT
+      items:
+        - name: NAT ゲートウェイの作成 - PowerShell
+          href: quickstart-create-nat-gateway-powershell.md
+        - name: NAT ゲートウェイの作成 - CLI
+          href: quickstart-create-nat-gateway-cli.md
+        - name: NAT ゲートウェイの作成 - ARM テンプレート
+          displayname: Resource Manager
+          href: quickstart-create-nat-gateway-template.md
+        - name: NAT ゲートウェイの作成と検証 - PowerShell
+          href: tutorial-create-validate-nat-gateway-powershell.md
+        - name: NAT ゲートウェイの作成と検証 - CLI
+          href: tutorial-create-validate-nat-gateway-cli.md
     - name: トラブルシューティング
       items:
         - name: 仮想ネットワーク ピアリングの問題をトラブルシューティングする
