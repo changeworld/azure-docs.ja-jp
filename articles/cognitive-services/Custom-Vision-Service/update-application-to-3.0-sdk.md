@@ -55,5 +55,5 @@ Custom Vision の一般提供が開始され、API が更新されました。
 
 ## <a name="next-steps"></a>次の手順
 
-* [API リファレンス ドキュメント (REST) のトレーニング](https://go.microsoft.com/fwlink/?linkid=865446)
+* [Training API リファレンス ドキュメント (REST)](https://go.microsoft.com/fwlink/?linkid=865446)
 * [Prediction API リファレンス ドキュメント (REST)](https://go.microsoft.com/fwlink/?linkid=865445)
