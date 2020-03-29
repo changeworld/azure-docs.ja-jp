@@ -59,7 +59,7 @@ Custom Vision Service からエクスポートされた ONNX モデルを Window
 
 1. Custom Vision Service を使用して分類器を[作成およびトレーニング](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)します。 モデルをエクスポートするには、 **[General (compact)]\(全般 (コンパクト)\)** など、__コンパクト__ なドメインを選択します。 既存の分類器をエクスポートするには、右上にある歯車アイコンを選択して、ドメインをコンパクトに変換します。 __[設定]__ でコンパクト モデルを選択し、保存してからプロジェクトをトレーニングします。  
 
-1. [パフォーマンス] タブに移動して、[モデルをエクスポート](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)します。コンパクト ドメインによるトレーニングの反復を選択すると、[エクスポート] ボタンが表示されます。 *[エクスポート]* 、 *[ONNX]* 、 *[エクスポート]* の順に選択します。 ファイルの準備ができたら、 *[ダウンロード]* ボタンを選択します。
+1. [パフォーマンス] タブに移動して、[モデルをエクスポート](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)します。コンパクト ドメインによるトレーニングのイテレーションを選択すると、[エクスポート] ボタンが表示されます。 *[エクスポート]* 、 *[ONNX]* 、 *[エクスポート]* の順に選択します。 ファイルの準備ができたら、 *[ダウンロード]* ボタンを選択します。
 
 1. ONNX ファイルをプロジェクトの __[Assets]__ フォルダーにドロップします。 
 
