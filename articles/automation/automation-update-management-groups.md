@@ -6,10 +6,10 @@ ms.subservice: update-management
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.openlocfilehash: 678b3f361e4456a2c482896f7d7dc20d530b917b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75420396"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>Update Management を利用して動的グループを使用する

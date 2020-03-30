@@ -8,10 +8,10 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: d4423b22c4c8afea5afa9c7040e081665b17ba87
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60774031"
 ---
 # <a name="rendering-using-azure"></a>Azure を使用したレンダリング
@@ -87,7 +87,7 @@ Azure Batch は複数の方法で使用できますが、そのすべての方�
   * [Batch Explorer](https://github.com/Azure/BatchExplorer) は、Batch アカウントを管理および監視することもできるクロス プラットフォーム クライアント ツールですが、Azure portal の UI よりも充実した機能がいくつか用意されています。  サポートされている各アプリケーション用にカスタマイズされた一連のプールおよびジョブ テンプレートがあり、このようなテンプレートを使うことで、プールの作成やジョブの送信を容易に行うことができます。
   * Azure portal を使用して、Azure Batch を管理および監視できます。
 * クライアント アプリケーション プラグイン:
-  * Batch Rendering をクライアント設計およびモデリング アプリケーション内から直接使えるようにするプラグインを使用できます。 このプラグインでは、主に、現在の 3D モデルに関するコンテキスト情報が含まれる Batch Explorer アプリケーションが呼び出されます。
+  * Batch レンダリングをクライアント設計およびモデリング アプリケーション内から直接使えるようにするプラグインを使用できます。 このプラグインでは、主に、現在の 3D モデルに関するコンテキスト情報が含まれる Batch Explorer アプリケーションが呼び出されます。
   * 次のプラグインを使用できます。
     * [Azure Batch for Maya](https://github.com/Azure/azure-batch-maya)
     * [3DS Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
@@ -100,6 +100,6 @@ Azure Batch Rendering を試すには、次の入門チュートリアルを参�
 * [Batch Explorer を使って Blender シーンをレンダリングする](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
 * [Batch CLI を使用して、Autodesk 3DS Max シーンをレンダリングする](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [こちらの記事](https://docs.microsoft.com/azure/batch/batch-rendering-applications)で、Azure Marketplace VM イメージに含まれているレンダリング アプリケーションとバージョンの一覧を確認します。

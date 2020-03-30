@@ -7,10 +7,10 @@ ms.date: 10/09/2019
 ms.author: dastrebe
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: 1601ab6d81b888fd2247e95f22c58e1fc91df698
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273734"
 ---
 # <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Consul をインストールして使用する
@@ -100,7 +100,7 @@ Helm とダウンロードした `consul-helm` チャートを使用して Consu
 
 ## <a name="validate-the-consul-installation"></a>Consul インストールを検証する
 
-リソースが正常に作成されたことを確認します。 [kubectl get svc][kubectl-get] コマンドと [kubectl get pod][kubectl-get] コマンドを使用して、`helm install` コマンドによって Consul コンポーネントがインストールされた `consul` 名前空間のクエリを実行します。
+リソースが正常に作成されたことを確認します。 [kubectl get svc][kubectl-get] コマンドと [kubectl get pod][kubectl-get] コマンドを使用して、`consul` コマンドによって Consul コンポーネントがインストールされた `helm install` 名前空間のクエリを実行します。
 
 ```console
 kubectl get svc --namespace consul --output wide

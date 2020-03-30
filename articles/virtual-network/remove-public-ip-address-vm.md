@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 12/04/2019
 ms.author: kumud
 ms.openlocfilehash: 1c27af30f97ea967d170b2cccaefb2e95f8fedaf
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74900740"
 ---
 # <a name="dissociate-a-public-ip-address-from-an-azure-vm"></a>パブリック IP アドレスの関連付けを Azure VM から解除する 
@@ -25,9 +25,9 @@ ms.locfileid: "74900740"
 
 パブリック IP アドレスの関連付けを VM から解除するには、[Azure portal](#azure-portal)、Azure [コマンド ライン インターフェイス](#azure-cli) (CLI)、または [PowerShell](#powershell) を使用できます。
 
-## <a name="azure-portal"></a>Azure ポータル
+## <a name="azure-portal"></a>Azure portal
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. パブリック IP アドレスの関連付けを解除したい仮想マシンを参照または検索して、選択します。
 3. [VM] ページで、 **[概要]** を選択し、次の図に示すようにパブリック IP アドレスを選択します：
 
@@ -122,6 +122,6 @@ ms.locfileid: "74900740"
      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic/ipConfigurations/ipconfigmyVM"
      ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [パブリック IP アドレスを VM に関連付ける](associate-public-ip-address-vm.md) 方法を学びます。

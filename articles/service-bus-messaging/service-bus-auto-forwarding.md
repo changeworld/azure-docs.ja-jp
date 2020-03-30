@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 8b8883b579233962de61e7247e6ac1cbcb2a6d80
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76761051"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>自動転送を使用した Service Bus エンティティのチェーン
@@ -27,7 +27,7 @@ Service Bus の*自動転送*機能を使用すると、キューまたはサブ
 
 ## <a name="using-autoforwarding"></a>自動転送の利用
 
-自動転送は､以下の例のように､ソースの [QueueDescription][QueueDescription] オブジェクトまたは [SubscriptionDescription][SubscriptionDescription] オブジェクトの [QueueDescription.ForwardTo][QueueDescription.ForwardTo] または [SubscriptionDescription.ForwardTo][SubscriptionDescription.ForwardTo] プロパティを、次の例のように設定することで有効にできます。
+自動転送は､以下の例のように､ソースの [QueueDescription][QueueDescription.ForwardTo] オブジェクトまたは [SubscriptionDescription][SubscriptionDescription.ForwardTo] オブジェクトの [QueueDescription.ForwardTo][QueueDescription] または [SubscriptionDescription.ForwardTo][SubscriptionDescription] プロパティを、次の例のように設定することで有効にできます。
 
 ```csharp
 SubscriptionDescription srcSubscription = new SubscriptionDescription (srcTopic, srcSubscriptionName);

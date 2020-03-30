@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 8/6/2019
 ms.author: alsin
 ms.openlocfilehash: 11c2549d7282bae5654ede1ac34d63a43cd0f059
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75451195"
 ---
 # <a name="power-options-available-from-the-azure-serial-console"></a>Azure シリアル コンソールから使用可能な電源オプション

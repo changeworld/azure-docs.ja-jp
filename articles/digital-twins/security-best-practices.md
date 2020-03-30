@@ -9,10 +9,10 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.openlocfilehash: 5fc5ba447557aa89e8f0870c576d6d4c439f3353
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76122561"
 ---
 # <a name="azure-digital-twins-security-best-practices"></a>Azure Digital Twins のセキュリティのベストプラクティス
@@ -69,7 +69,7 @@ Azure Digital Twins は、[Azure Active Directory](https://docs.microsoft.com/az
 > * トークンに対するアクセスの OAuth 2.0 スコープを制限します。
 > * トークンが有効である期間と、トークンが有効のままになっているかどうかを確認します。
 > * トークンが有効である期間を適切な期間に設定します。 期限切れのトークンを更新します。
-> * [ロールベースのアクセス制御のベスト プラクティス](#role-based-access-control-best-practices)に従い、未使用の**リダイレクト URI** とアクセス許可を削除します。
+> * **ロールベースのアクセス制御のベスト プラクティス**に従い、未使用の[リダイレクト URI](#role-based-access-control-best-practices) とアクセス許可を削除します。
 
 ## <a name="role-based-access-control-best-practices"></a>ロールベースのアクセス制御のベスト プラクティス
 

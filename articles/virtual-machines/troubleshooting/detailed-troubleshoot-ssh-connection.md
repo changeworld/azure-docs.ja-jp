@@ -16,10 +16,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: ee6d437915f6c87ce9ef5f9c711d90793a96048c
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77920129"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Azure での Linux VM 接続問題に関する SSH の詳細なトラブルシューティングの手順
@@ -75,8 +75,8 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 * Chmod 600 ~/.ssh/id_rsa (またはプライベート キーが格納されている他のファイル)
 * Chmod 644 ~/.ssh/known_hosts (SSH 経由で接続したホストが含まれます)
 
-## <a name="source-2-organization-edge-device"></a>ソース 2: 組織の境界デバイス
-エラーのソースである組織のエッジ デバイスを排除するには、インターネットに直接接続されているコンピューターから Azure VM に SSH 接続できることを確認します。 サイト間 VPN または Azure ExpressRoute 接続経由で VM にアクセスしている場合は、「[ソース 4: ネットワーク セキュリティ グループ](#nsg)」に進みます。
+## <a name="source-2-organization-edge-device"></a>ソース 2: 組織のエッジ デバイス
+エラーのソースである組織のエッジ デバイスを排除するには、インターネットに直接接続されているコンピューターから Azure VM に SSH 接続できることを確認します。 サイト間 VPN 接続または Azure ExpressRoute 接続を介して VM にアクセスする場合は、「 [ソース 4: ネットワーク セキュリティ グループ](#nsg)」に進みます。
 
 ![組織の境界デバイスを示す図](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot3.png)
 
@@ -95,7 +95,7 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 > [!NOTE]
-> このソースは、クラシック デプロイ モデルを使用して作成された VM にのみ適用されます。 Resource Manager を使用して作成された VM の場合は、「[ソース 4: ネットワーク セキュリティ グループ](#nsg)」に進みます。
+> このソースは、クラシック デプロイ モデルを使用して作成された VM にのみ適用されます。 Resource Manager を使用して作成された VM については、「 [ソース 4: ネットワーク セキュリティ グループ](#nsg)」に進みます。
 
 エラーのソースであるクラウド サービス エンドポイントと ACL を排除するには、同じ仮想ネットワーク内の別の Azure VM から SSH を使用して接続できることを確認します。
 

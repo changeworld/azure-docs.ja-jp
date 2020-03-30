@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:単一ページの Web アプリを作成する - Bing Web Search API
+title: 'チュートリアル: 単一ページの Web アプリを作成する - Bing Web Search API'
 titleSuffix: Azure Cognitive Services
 description: この単一ページのアプリは、Bing Web Search API を使用して、単一ページのアプリで関連する検索結果を取得、解析、および表示する方法を示しています。
 services: cognitive-services
@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: f692367ad431dc8f1623e1b3d5109c313e351934
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78943877"
 ---
-# <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>チュートリアル:Bing Web Search API を使用して単一ページの Web アプリを作成する
+# <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>チュートリアル: Bing Web Search API を使用して単一ページの Web アプリを作成する
 
 この単一ページのアプリは、Bing Web Search API から検索結果を取得、解析、および表示する方法を示しています。 このチュートリアルでは、定型の HTML と CSS を使用し、JavaScript コードに焦点を当てています。 HTML、CSS、および JS ファイルとクイック スタート手順は、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search) に掲載されています。
 
@@ -66,7 +66,7 @@ npm install
 
 ## <a name="html-form"></a>HTML フォーム
 
-`index.html` には、ユーザーが検索オプションを検索して選択できるフォームが含まれています。 フォームが送信され、`scripts.js` に定義されている `bingWebSearch()` メソッドが呼び出されると、`onsubmit` 属性が呼び出されます。 このスクリプトは次の 3 つの引数を受け取ります。
+`index.html` には、ユーザーが検索オプションを検索して選択できるフォームが含まれています。 フォームが送信され、`onsubmit` に定義されている `bingWebSearch()` メソッドが呼び出されると、`scripts.js` 属性が呼び出されます。 このスクリプトは次の 3 つの引数を受け取ります。
 
 * Search query (検索クエリ)
 * 選択されるオプション
@@ -331,7 +331,7 @@ function renderSearchResults(results) {
 }
 ```
 
-`renderResultsItems()` 関数は各 `RankingResponse` コレクション内の項目を反復処理し、`answerType` および `resultIndex` 値を使用して各ランキング結果を検索結果にマッピングします。さらに、適切なレンダリング関数を呼び出して、HTML を生成します。 項目に `resultIndex` が指定されていない場合は、`renderResultsItems()` がその種類の結果すべてを反復処理し、各項目でレンダリング関数を呼び出します。 結果の HTML は、`index.html` 内の適切な `<div>` 要素に挿入されます。
+`renderResultsItems()` 関数は各 `RankingResponse` コレクション内の項目を反復処理し、`answerType` および `resultIndex` 値を使用して各ランキング結果を検索結果にマッピングします。さらに、適切なレンダリング関数を呼び出して、HTML を生成します。 項目に `resultIndex` が指定されていない場合は、`renderResultsItems()` がその種類の結果すべてを反復処理し、各項目でレンダリング関数を呼び出します。 結果の HTML は、`<div>` 内の適切な `index.html` 要素に挿入されます。
 
 ```javascript
 // Render search results from the RankingResponse object per rank response and
