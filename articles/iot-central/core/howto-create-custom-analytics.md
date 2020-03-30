@@ -4,17 +4,17 @@ description: ソリューション開発者は、カスタムの分析と視覚�
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/02/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 7e5e8331509e99a7e556105ff1ea8ca2d0b285e7
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 7c2c14a937b4ef55d0e5f71e7b20214428ecd68c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023839"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80158199"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Azure Databricks を使用したカスタム分析で Azure IoT Central を拡張する
 
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [Azure IoT Central アプリケーション マネージャー](https://aka.ms/iotcentral) Web サイト上で、次の設定を使用して IoT Central アプリケーションを作成します。
 
-| 設定 | Value |
+| 設定 | 値 |
 | ------- | ----- |
 | 料金プラン | Standard |
 | アプリケーション テンプレート | ストア内分析 – 条件監視 |
@@ -53,13 +53,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="resource-group"></a>Resource group
 
-作成するその他のリソースを格納するため、**IoTCentralAnalysis** という [リソース グループを Azure portal で作成](https://portal.azure.com/#create/Microsoft.ResourceGroup)します。 Azure リソースは IoT Central アプリケーションと同じ場所に作成してください。
+作成するその他のリソースを格納するため、[IoTCentralAnalysis](https://portal.azure.com/#create/Microsoft.ResourceGroup) という **リソース グループを Azure portal で作成**します。 Azure リソースは IoT Central アプリケーションと同じ場所に作成してください。
 
 ### <a name="event-hubs-namespace"></a>Event Hubs 名前空間
 
 以下の設定を使用して、[Azure portal で Event Hubs 名前空間を作成](https://portal.azure.com/#create/Microsoft.EventHub)します。
 
-| 設定 | Value |
+| 設定 | 値 |
 | ------- | ----- |
 | Name    | 名前空間名を選択します |
 | Pricing tier | Basic |
@@ -72,7 +72,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 以下の設定を使用して、[Azure portal で Azure Databricks サービスを作成](https://portal.azure.com/#create/Microsoft.Databricks)します。
 
-| 設定 | Value |
+| 設定 | 値 |
 | ------- | ----- |
 | ワークスペース名    | ワークスペース名を選択します |
 | サブスクリプション | 該当するサブスクリプション |
@@ -106,10 +106,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[データのエクスポート]** ページに移動し、 **[+ 新規]** を選択してから、 **[Azure Event Hubs]** を選択します。
 1. 以下の設定を使用してエクスポートを構成してから、 **[保存]** を選択します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     | 表示名 | Event Hubs へのエクスポート |
-    | Enabled | On |
+    | 有効 | On |
     | Event Hubs 名前空間 | Event Hubs 名前空間の名前 |
     | イベント ハブ | centralexport |
     | 測定 | On |
@@ -130,7 +130,7 @@ Azure portal で、Azure Databricks サービスに移動し、 **[ワークス�
 
 次の表の情報を使用して、クラスターを作成します。
 
-| 設定 | Value |
+| 設定 | 値 |
 | ------- | ----- |
 | クラスター名 | centralanalysis |
 | クラスター モード | Standard |

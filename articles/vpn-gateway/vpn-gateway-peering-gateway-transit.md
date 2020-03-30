@@ -10,10 +10,10 @@ ms.tgt_pltfrm: na
 ms.date: 03/25/2018
 ms.author: yushwang
 ms.openlocfilehash: 3917101ee7ac151cf624e5be0f51ccf01c8cb1cc
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77161887"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する
@@ -48,7 +48,7 @@ ms.locfileid: "77161887"
 2. [デプロイ モデルが同じ仮想ネットワークのピアリングを作成する](../virtual-network/tutorial-connect-virtual-networks-portal.md)
 3. [デプロイ モデルが異なる仮想ネットワークのピアリングを作成する](../virtual-network/create-peering-different-deployment-models.md)
 
-## <a name="permissions"></a>アクセス許可
+## <a name="permissions"></a><a name="permissions"></a>アクセス許可
 
 仮想ネットワーク ピアリングの作成に使用するアカウントは、必要なロールまたはアクセス許可を持っている必要があります。 次の例では、Hub-RM と Spoke-Classic という名前の 2 つの仮想ネットワークをピアリングする場合、各仮想ネットワークに対して次のロールまたはアクセス許可を持っている必要があります。
     

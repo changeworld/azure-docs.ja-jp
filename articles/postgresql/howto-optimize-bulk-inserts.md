@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 4c4bac16917be0064ebb111328753d378d462a2a
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74770137"
 ---
 # <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server で一括挿入を最適化し、一時データを使用する 
@@ -34,7 +34,7 @@ ms.locfileid: "74770137"
 
 一部のお客様のワークロードでは、ログ記録されないテーブルの使用時に約 15% から 20% にパフォーマンスが向上しています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 一時データと大規模な一括挿入の使用について、ワークロードを見直します。 次の PostgreSQL のドキュメントを参照してください。
  
 - [Create Table SQL コマンド](https://www.postgresql.org/docs/current/static/sql-createtable.html)

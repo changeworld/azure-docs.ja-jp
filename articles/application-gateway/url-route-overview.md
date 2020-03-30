@@ -8,10 +8,10 @@ ms.date: 09/10/2019
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: e20acb131b1a091fef858dab34705f4a8d3b4c4a
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77251840"
 ---
 # <a name="url-path-based-routing-overview"></a>URL パス ベースのルーティングの概要
@@ -20,7 +20,7 @@ URL パス ベースのルーティングを使用すると、要求の URL パ�
 
 1 つのシナリオとして、異なる種類のコンテンツの要求を、異なるバックエンド サーバー プールにルーティングします。
 
-次の例では、Application Gateway は 3 つのバックエンド サーバー プールからの contoso.com のトラフィックを処理します (例: VideoServerPool、ImageServerPool、DefaultServerPool)。
+次の例では、Application Gateway は 3 つのバックエンド サーバー プール (VideoServerPool、ImageServerPool、DefaultServerPool など) からの contoso.com のトラフィックを処理します。
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
@@ -75,10 +75,10 @@ Application Gateway v1 と v2 のいずれをデプロイしているかによ�
 |v1 のパス パターン  |サポートされているか  |
 |---------|---------|
 |`/images/*`     |はい|
-|`/images*`     |no|
-|`/images/*.jpg`     |no|
-|`/*.jpg`     |no|
-|`/Repos/*/Comments/*`     |no|
+|`/images*`     |いいえ|
+|`/images/*.jpg`     |いいえ|
+|`/*.jpg`     |いいえ|
+|`/Repos/*/Comments/*`     |いいえ|
 |`/CurrentUser/Comments/*`     |はい|
 
 #### <a name="v2"></a>v2
@@ -89,9 +89,9 @@ Application Gateway v1 と v2 のいずれをデプロイしているかによ�
 |---------|---------|
 |`/images/*`     |はい|
 |`/images*`     |はい|
-|`/images/*.jpg`     |no|
-|`/*.jpg`     |no|
-|`/Repos/*/Comments/*`     |no|
+|`/images/*.jpg`     |いいえ|
+|`/*.jpg`     |いいえ|
+|`/Repos/*/Comments/*`     |いいえ|
 |`/CurrentUser/Comments/*`     |はい|
 
 詳しくは、「 [Resource Manager template using URL-based routing (URL ベースのルーティングを使用した Resource Manager テンプレート)](https://azure.microsoft.com/documentation/templates/201-application-gateway-url-path-based-routing) 」をご覧ください。

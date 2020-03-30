@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/23/2017
 ms.author: rapatchi
 ms.openlocfilehash: b5e126ebdf3b89470472391c59d378c7a6d39b86
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75609810"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Maven から Java ライブラリをフェッチするよう以前の Java Service Fabric アプリケーションを更新する
@@ -35,7 +35,7 @@ ms.locfileid: "75609810"
 > Service Fabric Java SDK をアンインストールすると、Yeoman は機能しなくなります。 Service Fabric Yeoman Java テンプレート ジェネレーターを起動して動作させるには、[ここ](service-fabric-create-your-first-linux-application-with-java.md)に記載されている前提条件に従ってください。
 
 ## <a name="service-fabric-java-libraries-on-maven"></a>Maven 上の Service Fabric Java ライブラリ
-Service Fabric Java ライブラリは、Maven でホストされてきました。 **mavenCentral** から Service Fabric Java ライブラリを使用するために、プロジェクトの ``pom.xml`` または ``build.gradle`` に依存関係を追加することができます。
+Service Fabric Java ライブラリは、Maven でホストされてきました。 ``pom.xml``mavenCentral``build.gradle`` から Service Fabric Java ライブラリを使用するために、プロジェクトの **または** に依存関係を追加することができます。
 
 ### <a name="actors"></a>アクター
 

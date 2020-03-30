@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 661afc08c76c6cde61b02a29a55b4a8bec932e21
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73175818"
 ---
 # <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>What If ツールを使用した条件付きアクセスのトラブルシューティング
@@ -61,7 +61,7 @@ What If ツールの使用を開始するために必要なのは**ユーザー*
 
 この一覧は、条件が適用された場合に適用されない条件付きアクセス ポリシーを示します。 この一覧には、すべてのポリシーとそれらが適用されない理由が含まれます。 例として、ポリシーから除外される可能性があるユーザーやグループがあります。
 
-## <a name="use-case"></a>ユース ケース
+## <a name="use-case"></a>使用事例
 
 多くの組織では、ネットワークの場所、信頼できる場所の許可、およびアクセスが行われてはいけない場所のブロックに基づいてポリシーが作成されます。
 
@@ -73,9 +73,9 @@ What If ツールの使用を開始するために必要なのは**ユーザー*
 
 このテストは、範囲を絞り込むための他のデータ ポイントを組み込むように拡張できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [条件付きアクセスとは](overview.md)
 * [Azure Active Directory Identity Protection とは](../identity-protection/overview-v2.md)
 * [デバイス ID とは](../devices/overview.md)
-* [動作のしくみ: Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)」を参照してください。
+* [しくみ: Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)

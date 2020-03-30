@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
 ms.openlocfilehash: 58b60a0eee8ab407709f33911d3c6b13ffbf301a
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77498378"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Azure Cognitive Search のインデックスを再構築する方法
@@ -34,7 +34,7 @@ ms.locfileid: "77498378"
 | インデックス内のアナライザー定義を更新または削除する | インデックス全体を再構築しない限り、インデックス内の既存のアナライザー構成 (アナライザー、トークナイザー、トークン フィルター、文字フィルター) を削除または変更することはできません。 |
 | サジェスタにフィールドを追加する | フィールドが既に存在していて、それを [Suggesters](index-add-suggesters.md) コンストラクトに追加する場合は、インデックスを再構築する必要があります。 |
 | フィールドの削除 | フィールドのすべてのトレースを物理的に削除するには、インデックスを再構築する必要があります。 直ちに再構築するのが現実的でない場合は、アプリケーション コードを変更し、"削除" フィールドへのアクセスを無効にするか、[$select クエリ パラメーター](search-query-odata-select.md)を使用して、結果セットに表示されるフィールドを選択できます。 物理的には、そのフィールドを無視するスキーマを適用すると、次に再構築が行われるまでフィールドの定義と内容はインデックスに維持されます。 |
-| 階層を切り替える | より多くの容量が必要な場合、Azure portal にはインプレース アップグレードはありません。 新しいサービスを作成し、その新しいサービスで最初からインデックスを構築する必要があります。 このプロセスを自動化するには、こちらの [Azure Cognitive Search .NET サンプル リポジトリ](https://github.com/Azure-Samples/azure-search-dotnet-samples)にある **index-backup-restore** サンプル コードを使用します。 このアプリでは、一連の JSON ファイルにインデックスをバックアップし、指定した検索サービスでインデックスを再作成します。|
+| 階層を切り替える | より多くの容量が必要な場合、Azure portal にはインプレース アップグレードはありません。 新しいサービスを作成し、その新しいサービスで最初からインデックスを構築する必要があります。 このプロセスを自動化するには、こちらの **Azure Cognitive Search .NET サンプル リポジトリ**にある [index-backup-restore](https://github.com/Azure-Samples/azure-search-dotnet-samples) サンプル コードを使用します。 このアプリでは、一連の JSON ファイルにインデックスをバックアップし、指定した検索サービスでインデックスを再作成します。|
 
 ## <a name="update-conditions"></a>条件を更新する
 
@@ -85,7 +85,7 @@ ms.locfileid: "77498378"
 
 フィールドを追加したり名前変更したりした場合は、[$select](search-query-odata-select.md) を使用してこのフィールドを返します。`search=*&$select=document-id,my-new-field,some-old-field&$count=true`
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 + [インデクサーの概要](search-indexer-overview.md)
 + [大規模なデータ セットに大規模にインデックスを付ける](search-howto-large-index.md)

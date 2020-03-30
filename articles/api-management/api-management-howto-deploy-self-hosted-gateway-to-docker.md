@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
 ms.openlocfilehash: b5acda30f7f4a01e1b7b6ac82652452c3c40e3bf
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75768505"
 ---
 # <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>Azure API Management のセルフホステッド ゲートウェイを Docker にデプロイする
@@ -28,7 +28,7 @@ ms.locfileid: "75768505"
 
 ## <a name="prerequisites"></a>前提条件
 
-- 次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)
+- [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイックスタートを完了します
 - Docker 環境を作成します。 [デスクトップ向けの Docker](https://www.docker.com/products/docker-desktop) は、開発および評価の目的に適したオプションです。 Docker のすべてのエディション、その機能、および Docker 自体に関する包括的なドキュメントについては、「[Docker Documentation (Docker ドキュメント)](https://docs.docker.com)」を参照してください。
 - [API Management インスタンスにゲートウェイ リソースをプロビジョニングします](api-management-howto-provision-self-hosted-gateway.md)
 

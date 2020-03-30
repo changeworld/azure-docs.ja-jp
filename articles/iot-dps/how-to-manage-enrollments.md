@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.openlocfilehash: 8bd896573dbd0b24df11c0d66009098de19654ac
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74974940"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Azure Portal でデバイス登録を管理する方法
@@ -34,7 +34,7 @@ ms.locfileid: "74974940"
      a. **[登録を管理します]** をクリックし、 **[登録グループ]** タブを選択します。  
      b. 上部にある **[追加]** をクリックします。  
      c. [Add Enrollment Group]\(登録グループの追加\) パネルが表示されたら、登録リストのエントリ情報を入力します。  **グループ名**は必須です。 **[証明書の種類]** に "[CA] または [中間]" を選択し、デバイス グループのルートの **[Primary certificate]/(プライマリ証明書/)** をアップロードします。  
-     d. **[Save]** をクリックします。 登録グループの作成に成功すると、 **[Enrollment Groups]\(登録グループ\)** タブにグループ名が表示されます。  
+     d. **[保存]** をクリックします。 登録グループの作成に成功すると、 **[Enrollment Groups]\(登録グループ\)** タブにグループ名が表示されます。  
 
      [![ポータルでの登録グループ](./media/how-to-manage-enrollments/group-enrollment.png)](./media/how-to-manage-enrollments/group-enrollment.png#lightbox)
     
@@ -49,7 +49,7 @@ ms.locfileid: "74974940"
        a. **[登録を管理します]** をクリックし、 **[個々の登録]** タブを選択します。  
        b. 上部にある **[追加]** をクリックします。   
        c. [Add Enrollment]\(登録の追加\) パネルが表示されたら、登録リストのエントリ情報を入力します。 まず、デバイスの構成証明の **[メカニズム]** を選択します (X.509 または TPM)。 X.509 証明書では、デバイスのリーフ **プライマリ証明書**をアップロードする必要があります。 TPM では、デバイスの**構成証明キー**と**登録 ID** を入力する必要があります。  
-       d. **[Save]** をクリックします。 登録グループの作成に成功すると、 **[Individual Enrollments]\(個別登録)** タブにデバイスが表示されます。  
+       d. **[保存]** をクリックします。 登録グループの作成に成功すると、 **[Individual Enrollments]\(個別登録)** タブにデバイスが表示されます。  
 
        [![ポータルでの個別登録](./media/how-to-manage-enrollments/individual-enrollment.png)](./media/how-to-manage-enrollments/individual-enrollment.png#lightbox)
 

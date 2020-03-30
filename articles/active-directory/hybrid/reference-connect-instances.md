@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect:同期サービス インスタンス | Microsoft Docs
+title: 'Azure AD Connect: 同期サービス インスタンス | Microsoft Docs'
 description: このページでは、Azure AD のインスタンスに関する注意事項を説明します。
 services: active-directory
 documentationcenter: ''
@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c342eac5460d8d52422b0497b1283f367660eb3c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66298831"
 ---
-# <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect:インスタンスに関する特別な考慮事項
+# <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect: インスタンスに関する特別な考慮事項
 Azure AD Connect は、世界中の Azure AD と Office 365 のインスタンスで最もよく使われています。 ただし、それ以外のインスタンスも存在し、URL の要件が異なるだけでなく、その他の特別な考慮事項があります。
 
 ## <a name="microsoft-cloud-germany"></a>Microsoft Cloud Germany
@@ -67,5 +67,5 @@ Microsoft Cloud Germany に現在ない機能:
 3. regedit を起動し、レジストリ キー `HKLM\SOFTWARE\Microsoft\Azure AD Connect\AzureInstance` の値を `4` に変更します。
 4. Azure AD Connect のインストール ウィザードに戻り、使用許諾契約書に同意して続行します。 インストール中、**カスタム構成** インストール パス (高速インストールではなく) を使用し、その後は通常どおりにインストールを続けます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

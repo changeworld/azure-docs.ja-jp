@@ -4,10 +4,10 @@ description: お客様は、ログに記録されたアクティビティを表�
 ms.date: 01/15/2020
 ms.topic: conceptual
 ms.openlocfilehash: a923a57ecc94ac15af207c2b8dc8998708b708d4
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77649638"
 ---
 # <a name="view-service-provider-activity"></a>サービス プロバイダーのアクティビティを表示する
@@ -29,7 +29,7 @@ Azure の委任されたリソース管理に委任サブスクリプション�
 ログに記録されたアクティビティは、過去 90 日間について Azure portal に格納されます。 このデータを 90 日間より長く格納する方法については、[Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する](../../azure-monitor/platform/activity-log-collect.md)ことに関するページを参照してください。
 
 > [!NOTE]
-> サービスプロバイダーからのユーザーはアクティビティログに表示されますが、これらのユーザーとそのロールの割り当ては **Access Control (IAM)** には表示されません。また、API 経由でロールの割り当て情報を取得したときも同様です。
+> サービスプロバイダーからのユーザーはアクティビティログに表示されますが、これらのユーザーとそのロールの割り当ては **Access Control (IAM)** には表示されません。また、Api 経由でロールの割り当て情報を取得したときも同様です。
 
 ## <a name="set-alerts-for-critical-operations"></a>重要な操作のアラートを設定する
 

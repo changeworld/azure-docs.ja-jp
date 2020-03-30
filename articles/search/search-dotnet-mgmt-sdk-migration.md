@@ -10,10 +10,10 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: b18e9688141ee64eb7dfcb82ce58db198e324b5b
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73847528"
 ---
 # <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>Azure Search .NET Management SDK のバージョンのアップグレード
@@ -33,7 +33,7 @@ Azure Search .NET Management SDK のバージョン 2 のターゲットは、�
 
 * `Services.CreateOrUpdate` とその非同期バージョンは、`SearchService` のプロビジョニングを自動的にポーリングし、サービスのプロビジョニングが完了するまで戻ることはなくなりました。 これにより、そのようなポーリング コードを自分で記述する必要がなくなります。
 * サービスのプロビジョニング を手動でポーリングする場合は、新しい `Services.BeginCreateOrUpdate` メソッドまたはその非同期バージョンのいずれかを使用できます。
-* 新しいメソッド `Services.Update` とその非同期バージョンが SDK に追加されています。 これらのメソッドでは、HTTP PATCH を使用して、サービスの増分更新をサポートします。 たとえば、目的の `partitionCount` プロパティと `replicaCount` プロパティのみを含むこれらのメソッドに `SearchService` インスタンスを渡すことで、サービスをスケーリングできるようになりました。 `Services.Get` を呼び出し、返された `SearchService` を変更して `Services.CreateOrUpdate` に渡すという古い方法は、引き続きサポートされますが、必要ではなくなりました。 
+* 新しいメソッド `Services.Update` とその非同期バージョンが SDK に追加されています。 これらのメソッドでは、HTTP PATCH を使用して、サービスの増分更新をサポートします。 たとえば、目的の `SearchService` プロパティと `partitionCount` プロパティのみを含むこれらのメソッドに `replicaCount` インスタンスを渡すことで、サービスをスケーリングできるようになりました。 `Services.Get` を呼び出し、返された `SearchService` を変更して `Services.CreateOrUpdate` に渡すという古い方法は、引き続きサポートされますが、必要ではなくなりました。 
 
 <a name="UpgradeSteps"></a>
 
@@ -46,5 +46,5 @@ NuGet が新しいパッケージとその依存関係をダウンロードし�
 
 すべてのビルド エラーを修正した後、必要に応じて新しい機能を利用するようにアプリケーションを変更できます。 SDK の新機能の詳細については、「[バージョン 2 の新機能](#WhatsNew)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 SDK についてのご意見をお待ちしております。 問題が発生した場合は、[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cognitive-search?tab=Newest) に質問を投稿してください。 バグを発見した場合は、 [Azure .NET SDK の GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/issues)で問題を報告できます。 問題のタイトルに、必ず "[search]" とラベルを付けてください。

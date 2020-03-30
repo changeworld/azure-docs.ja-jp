@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 1/29/2019
 ms.author: barclayn
 ms.openlocfilehash: 741e6b9cad20645fdfc085623fd9492a12ac1dfc
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68726557"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure で利用できるセキュリティ サービスとテクノロジ
@@ -31,7 +31,7 @@ ms.locfileid: "68726557"
 時間の経過と共に、このリストは Azure と同様に変更および増加します。 セキュリティ関連のサービスとテクノロジを最新の状態に維持するために、定期的にこのページを確認してください。
 
 ## <a name="general-azure-security"></a>Azure の全般的なセキュリティ
-|Service|説明|
+|サービス|説明|
 |--------|--------|
 |[Azure&nbsp;Security&nbsp;Center](/azure/security-center/security-center-intro)| ハイブリッド クラウド ワークロード全体でセキュリティ管理と高度な脅威保護を実現するクラウドのワークロードを保護するソリューションです。|
 |[Azure Key Vault](/azure/key-vault/key-vault-overview)| パスワード、接続文字列およびアプリの動作に必要なその他の情報を格納するセキュリティで保護された機密データ ストアです。 |
@@ -41,7 +41,7 @@ ms.locfileid: "68726557"
 <!---|[Azure&nbsp;Disk&nbsp;Encryption](/azure/azure-security-disk-encryption-overview)| THIS WILL GO TO THE NEW OVERVIEW TOPIC MEGHAN STEWART IS WRITING|--->
 
 ## <a name="storage-security"></a>ストレージのセキュリティ
-|Service|説明|
+|サービス|説明|
 |------|--------|
 | [Azure&nbsp;Storage&nbsp;Service&nbsp;Encryption](/azure/storage/common/storage-service-encryption)|Azure ストレージのデータを自動的に暗号化するセキュリティ機能です。   |
 |[StorSimple のハイブリッド ストレージの暗号化](/azure/storsimple/storsimple-ova-overview)| オンプレミスのデバイスと Azure クラウド ストレージ間のストレージ タスクを管理する統合ストレージ ソリューションです。|
@@ -54,7 +54,7 @@ ms.locfileid: "68726557"
 <!------>
 
 ## <a name="database-security"></a>データベースのセキュリティ
-|Service|説明|
+|サービス|説明|
 |------|--------|
 | [Azure&nbsp;SQL&nbsp;Firewall](/azure/sql-database/sql-database-firewall-configure)|データベースへのネットワーク経由の攻撃から保護するためのネットワークのアクセス制御機能です。 |
 |[Azure&nbsp;SQL&nbsp;Cell&nbsp;Level Encryption](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)| 詳細なレベルで暗号化を提供するデータベース セキュリティ テクノロジです。  |
@@ -65,7 +65,7 @@ ms.locfileid: "68726557"
 
 
 ## <a name="identity-and-access-management"></a>ID 管理とアクセス管理
-|Service|説明|
+|サービス|説明|
 |------|--------|
 | [Azure&nbsp;Role&nbsp;Based&nbsp;Access Control](/azure/active-directory/role-based-access-control-configure)|組織内でのロールに基づき、必要なリソースのみにアクセスすることをユーザーに許可するアクセス制御機能です。  |
 | [Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis)|マルチテナントのクラウドベースのディレクトリと Azure 内で複数の ID 管理サービスをサポートするクラウド ベースの認証リポジトリです。  |
@@ -74,13 +74,13 @@ ms.locfileid: "68726557"
 | [Azure Multi-Factor Authentication](/azure/active-directory/authentication/multi-factor-authentication)| セキュリティで保護された情報へのアクセスを許可する前に、いくつかの異なる認証および検証形式が使用されるセキュリティ対応の機能です。 |
 
 ## <a name="backup-and-disaster-recovery"></a>バックアップと障害復旧
-|Service|説明|
+|サービス|説明|
 |------|--------|
 | [Azure&nbsp;Backup](/azure/backup/backup-introduction-to-azure-backup)| Azure クラウドのデータをバックアップおよび復元するために使用される Azure ベースのサービスです。 |
 | [Azure&nbsp;Site&nbsp;Recovery](/azure/site-recovery/site-recovery-overview)|物理マシンと仮想マシン (VM) で実行中のワークロードでエラーが発生した場合にその復旧を可能にする、プライマリ サイトからセカンダリ ロケーションにワークロードをレプリケートするオンライン サービスです。 |
 
 ## <a name="networking"></a>ネットワーク
-|Service|説明|
+|サービス|説明|
 |------|--------|
 | [Network&nbsp;Security&nbsp;Groups](/azure/virtual-network/virtual-networks-nsg)| タプルが 5 つ使用された、意思決定を許可または拒否することができるネットワーク ベースのアクセス制御機能です。  |
 | [Azure VPN Gateway](/azure/vpn-gateway/vpn-gateway-about-vpngateways)| Azure Virtual Network へのクロスプレミス アクセスを許可する VPN エンドポイントとして使用されるネットワーク デバイスです。  |

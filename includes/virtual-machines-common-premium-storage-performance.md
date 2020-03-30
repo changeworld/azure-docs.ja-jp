@@ -9,10 +9,10 @@ ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 88b19257a6a7d335e6a928a9eaf7526fbfd5b02e
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75942747"
 ---
 ## <a name="application-performance-indicators"></a>アプリケーションのパフォーマンス指標
@@ -324,7 +324,7 @@ sudo reboot
 
 Windows では、記憶域スペースを使用してディスクをストライピングできます。 プールのディスクごとに 1 つの列を構成する必要があります。 そうしないと、ディスク間でのトラフィックの分散が不均等になるため、ストライプ ボリュームの全体的なパフォーマンスが予想よりも低くなる可能性があります。
 
-重要:サーバー マネージャーの UI を使用して、ストライプ ボリュームの列の総数を最大 8 列に設定できます。 8 個を超えるディスクを接続するときは、PowerShell を使用してボリュームを作成します。 PowerShell を使用すると、列数をディスクと同じ数に設定できます。 たとえば、1 つのストライプ セットに 16 個のディスクがある場合、*New-VirtualDisk* PowerShell コマンドレットの *NumberOfColumns* パラメーターで 16 列を指定します。
+重要: サーバー マネージャーの UI を使用して、ストライプ ボリュームの列の総数を最大 8 列に設定できます。 8 個を超えるディスクを接続するときは、PowerShell を使用してボリュームを作成します。 PowerShell を使用すると、列数をディスクと同じ数に設定できます。 たとえば、1 つのストライプ セットに 16 個のディスクがある場合、*New-VirtualDisk* PowerShell コマンドレットの *NumberOfColumns* パラメーターで 16 列を指定します。
 
 Linux では、MDADM ユーティリティを使用してディスクをストライピングします。 Linux でのディスク ストライピングの詳しい手順については、「 [Linux でのソフトウェア RAID の構成](../articles/virtual-machines/linux/configure-raid.md)」をご覧ください。
 

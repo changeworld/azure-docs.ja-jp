@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: 2d00a489af35f5960aaeb1dda7add5337d48d57d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75448163"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Ink Recognizer API とは

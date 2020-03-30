@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/12/2019
 ms.author: spelluru
 ms.openlocfilehash: f7c9feedddab1aea031cb3a8879e868aae04df00
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65236872"
 ---
 # <a name="understand-shared-ip-addresses-in-azure-devtest-labs"></a>Azure DevTest Labs の共有 IP アドレスについて
@@ -38,19 +38,19 @@ Azure DevTest Labs では、ラボの VM で同じパブリック IP アドレ�
 
 - **共有:** **共有**として作成された VM はすべて、1 つのリソース グループ (RG) に配置されます。 その RG には 1 つの IP アドレスが割り当てられ、RG 内のすべての VM がその IP アドレスを使用します。
 - **パブリック:** 作成した VM はすべて独自の IP アドレスを持ち、独自のリソース グループに作成されます。
-- **プライベート:** 作成したすべての VM でプライベート IP アドレスが使用されます。 リモート デスクトップで、インターネットから直接この VM に接続することはできません。
+- **プライベート:** 作成した VM はすべてプライベート IP アドレスを使用します。 リモート デスクトップで、インターネットから直接この VM に接続することはできません。
 
 共有 IP が有効になっている VM がサブネットに追加されると必ず、DevTest Lab によってロード バランサーに VM が自動的に追加され、パブリック IP アドレスで TCP ポート番号が割り当てられ、VM の RDP ポートに転送されます。  
 
 ## <a name="using-the-shared-ip"></a>共有 IP の使用
 
-- **Linux ユーザー:** VM への SSH では、IP アドレスまたは完全修飾ドメイン名を使用し、その後にコロン、ポート番号を指定します。 たとえば、次の図では、VM に接続するための RDP アドレスは `mydevtestlab597975021002.eastus.cloudapp.azure.com:50661` になります。
+- **Linux ユーザー:** SSH から VM に接続するには、IP アドレスまたは完全修飾ドメイン名、コロン、ポート番号の順に指定します。 たとえば、次の図では、VM に接続するための RDP アドレスは `mydevtestlab597975021002.eastus.cloudapp.azure.com:50661` になります。
 
   ![VM の例](media/devtest-lab-shared-ip/vm-info.png)
 
-- **Windows ユーザー:** Azure portal で **[接続]** ボタンを選択し、構成済みの RDP ファイルをダウンロードして VM にアクセスします。
+- **Windows ユーザー:** Azure Portal で **[接続]** ボタンを選択して、構成済み RDP ファイルをダウンロードして VM にアクセスします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure DevTest Labs でラボのポリシーを定義する](devtest-lab-set-lab-policy.md)
 * [Azure DevTest Labs で仮想ネットワークを構成する](devtest-lab-configure-vnet.md)

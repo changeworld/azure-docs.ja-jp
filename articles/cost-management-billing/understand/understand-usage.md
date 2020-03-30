@@ -6,14 +6,14 @@ ms.reviewer: micflan
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/20/2020
 ms.author: banders
-ms.openlocfilehash: e45ef26f3d0a4b968b601e70658c5f3680492682
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 3b4a5601f18a07ba1ecd6fdd93628d671a0acad2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199026"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065642"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Azure の利用状況と請求金額ファイル内の用語について
 
@@ -67,17 +67,19 @@ InvoiceSection | MCA | InvoiceSectionName を参照。
 InvoiceSectionId<sup>1</sup> | EA、MCA | EA 部門または MCA 請求書セクションの一意識別子。
 InvoiceSectionName | EA、MCA | EA 部門または MCA 請求書セクションの名前。
 IsAzureCreditEligible | All | Azure クレジットを使用して料金を支払うことができるかどうかを示す (値：True、False)。
-Location | MCA | リソースが実行されているデータセンターの場所。
+場所 | MCA | リソースが実行されているデータセンターの場所。
 MeterCategory | All | メーターの分類カテゴリの名前。 たとえば、*Cloud services*、*Networking* などです。
 MeterId<sup>1</sup> | All | メーターの一意識別子。
 MeterName | All | メーターの名前。
 MeterRegion | All | 場所に基づいて価格設定されたサービスに対する、データセンターの場所の名前。 Location を参照。
 MeterSubCategory | All | メーターのサブ分類カテゴリの名前。
 OfferId<sup>1</sup> | All | 購入したオファーの名前。
+PayGPrice | All | リソースの小売価格。
 PartNumber<sup>1</sup> | EA、PAYG | 特定のメーター価格の取得に使用される識別子。
 PlanName | EA、PAYG | Marketplace プランの名前。
 PreviousInvoiceId | MCA | この明細項目が返金の場合、元の請求書への参照。
 PricingCurrency | MCA | 交渉済みの価格に基づいて評価する場合に使用される通貨。
+PricingModel | All | メーターに対する価格設定の方法を示す識別子。 (値: オン デマンド、予約、スポット)
 Product | All | 製品の名前。
 ProductId<sup>1</sup> | MCA | 製品の一意識別子。
 ProductOrderId | All | 製品注文の一意識別子。

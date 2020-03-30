@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 874c282ff878126297dc46ca0e7a4c19910e40a1
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74159116"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Azure への移行後に Azure VM のディザスター リカバリーをセットアップする 
 
 
-[Site Recovery](site-recovery-overview.md) サービスを使用して[オンプレミス マシンを Azure VM に移行](tutorial-migrate-on-premises-to-azure.md)し、VM にセカンダリ Azure リージョンへのディザスター リカバリーをセットアップさせる場合、この記事の手順に従ってください。 この記事では、Azure VM エージェントが移行済みの VM に インストールされていることを確認する方法と、移行後に不要になった Site Recovery モビリティ サービスを削除する方法について説明します。
+[Site Recovery](tutorial-migrate-on-premises-to-azure.md) サービスを使用して[オンプレミス マシンを Azure VM に移行](site-recovery-overview.md)し、VM にセカンダリ Azure リージョンへのディザスター リカバリーをセットアップさせる場合、この記事の手順に従ってください。 この記事では、Azure VM エージェントが移行済みの VM に インストールされていることを確認する方法と、移行後に不要になった Site Recovery モビリティ サービスを削除する方法について説明します。
 
 
 
@@ -82,7 +82,7 @@ Windows のエージェントのインストールについては、[こちら](
         ```
 2. VM を再起動してからレプリケーションを構成します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure VM エージェント上の Site Recovery 拡張機能の[トラブルシューティングを確認](site-recovery-extension-troubleshoot.md)します。
 Azure VM をセカンダリ リージョンに[迅速にレプリケート](azure-to-azure-quickstart.md)します。

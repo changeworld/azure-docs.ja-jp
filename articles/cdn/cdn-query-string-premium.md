@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/11/2018
 ms.author: magattus
 ms.openlocfilehash: 365c52840d281c0f48d17aacc358e4cce513e3b4
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74083090"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---premium-tier"></a>クエリ文字列による Azure CDN キャッシュ動作の制御 - Premium レベル
@@ -37,12 +37,12 @@ Azure コンテンツ配信ネットワーク (CDN) を使用すると、クエ�
 
 次の 3 つのクエリ文字列モードを使用できます。
 
-- **standard-cache**: 既定モード。 このモードでは、CDN Point-of-Presence (POP) ノードは、クエリ文字列を要求元から最初の要求の配信元サーバーに渡して、資産をキャッシュします。 POP サーバーから提供される資産の後続の要求はすべて、キャッシュされた資産の有効期限が切れるまで、クエリ文字列を無視します。
+- **standard-cache**: 既定のモードです。 このモードでは、CDN Point-of-Presence (POP) ノードは、クエリ文字列を要求元から最初の要求の配信元サーバーに渡して、資産をキャッシュします。 POP サーバーから提供される資産の後続の要求はすべて、キャッシュされた資産の有効期限が切れるまで、クエリ文字列を無視します。
 
     >[!IMPORTANT] 
     > このアカウントのいずれかのパスでトークン認証が有効になっている場合は、standard-cache モードだけを使うことができます。 
 
-- **no-cache**: このモードでは、クエリ文字列を含む要求は CDN POP ノードでキャッシュされません。 POP ノードは配信元サーバーから直接資産を取得し、それを各要求により要求元に渡します。
+- **no-cache**: このモードでは、クエリ文字列のある要求は CDN POP ノードでキャッシュされません。 POP ノードは配信元サーバーから直接資産を取得し、それを各要求により要求元に渡します。
 
 - **unique-cache**: このモードでは、クエリ文字列を含む一意の URL が指定された各要求は、独自のキャッシュがある一意の資産として扱われます。 たとえば、example.ashx?q=test1 の要求の配信元サーバーからの応答は POP ノードでキャッシュされ、後続のキャッシュではその同じクエリ文字列により返されます。 example.ashx?q=test2 の要求は、独自の有効期限設定を持つ個別の資産としてキャッシュされます。
    

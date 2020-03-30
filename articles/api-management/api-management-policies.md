@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
 ms.openlocfilehash: 2b6e056fbfb134f0b1218b4281b9f971a0e24202
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71219476"
 ---
 # <a name="api-management-policies"></a>API Management policies (API Management のポリシー)
@@ -26,7 +26,7 @@ ms.locfileid: "71219476"
   
  ポリシーの式は、ポリシーで特に指定されていない限り、任意の API Management ポリシーで属性値またはテキスト値として使用できます。 [制御フロー](api-management-advanced-policies.md#choose) ポリシーや[変数の設定](api-management-advanced-policies.md#set-variable)ポリシーなど、一部のポリシーはポリシーの式に基づいています。 詳細については、「[詳細なポリシー](api-management-advanced-policies.md#AdvancedPolicies)」と「[ポリシーの式](api-management-policy-expressions.md)」をご覧ください。  
   
-##  <a name="ProxyPolicies"></a> ポリシー  
+##  <a name="policies"></a><a name="ProxyPolicies"></a> ポリシー  
   
 -   [アクセス制限ポリシー](api-management-access-restriction-policies.md#AccessRestrictionPolicies)  
     -   [HTTP ヘッダーを確認する](api-management-access-restriction-policies.md#CheckHTTPHeader) - HTTP ヘッダーの存在と値の両方、またはそのどちらかを適用します。  
@@ -80,7 +80,7 @@ ms.locfileid: "71219476"
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ポリシーを使用する方法の詳細については、次のトピックを参照してください。
 
 + [API Management のポリシー](api-management-howto-policies.md)

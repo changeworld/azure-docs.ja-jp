@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
 ms.openlocfilehash: 731f4e8cc8a93f33d6887f44fc8d09585e92a75a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75360346"
 ---
 # <a name="how-to-update-a-cloud-service"></a>クラウド サービスの更新方法
@@ -134,7 +134,7 @@ Azure では、更新中のサービス管理の柔軟性を高めるために�
   1. Locked 要素を使用すると、特定のデプロイで変更操作を呼び出すことができるタイミングを検出できます。
   2. RollbackAllowed 要素を使用すると、特定のデプロイで [Rollback Update Or Upgrade](/previous-versions/azure/reference/hh403977(v=azure.100)) 操作を呼び出すことができるタイミングを検出できます。
 
-  ロールバックを実行するために、Locked 要素と RollbackAllowed 要素の両方を確認する必要はありません。 RollbackAllowed が true に設定されていることを確認するだけで十分です。 次のように設定されている要求ヘッダーを使用してこれらのメソッドが呼び出された場合のみ、これらの要素が返されます: "x-ms-version: 2011-10-01" 以降のバージョン。 バージョン管理ヘッダーの詳細については、「 [サービス管理のバージョン管理](/previous-versions/azure/gg592580(v=azure.100))」を参照してください。
+  ロールバックを実行するために、Locked 要素と RollbackAllowed 要素の両方を確認する必要はありません。 RollbackAllowed が true に設定されていることを確認するだけで十分です。 "x-ms-version: 2011-10-01" またはそれ以降のバージョンに設定されている要求ヘッダーを使用してこれらのメソッドが呼び出された場合のみ、この 2 つの要素が返されます。 バージョン管理ヘッダーの詳細については、「 [サービス管理のバージョン管理](/previous-versions/azure/gg592580(v=azure.100))」を参照してください。
 
 更新やアップグレードのロールバックがサポートされないのは、次のような場合です。
 
@@ -155,11 +155,11 @@ Azure では、更新中のサービス管理の柔軟性を高めるために�
 
 最初の更新の進行中に 2 つ目の更新操作を開始すると、ロールバック操作と似た方法で処理が実行されます。 2 番目の更新が自動モードである場合、最初のアップグレード ドメインが直ちにアップグレードされ、複数のアップグレード ドメインのインスタンスが同時にオフラインになる可能性があります。
 
-次のような変更操作があります: [Change Deployment Configuration](/previous-versions/azure/reference/ee460809(v=azure.100))、[Upgrade Deployment](/previous-versions/azure/reference/ee460793(v=azure.100))、[Update Deployment Status](/previous-versions/azure/reference/ee460808(v=azure.100))、[Delete Deployment](/previous-versions/azure/reference/ee460815(v=azure.100))、および [Rollback Update Or Upgrade](/previous-versions/azure/reference/hh403977(v=azure.100))。
+変更操作には、[Change Deployment Configuration](/previous-versions/azure/reference/ee460809(v=azure.100))、[Upgrade Deployment](/previous-versions/azure/reference/ee460793(v=azure.100))、[Update Deployment Status](/previous-versions/azure/reference/ee460808(v=azure.100))、[Delete Deployment](/previous-versions/azure/reference/ee460815(v=azure.100))、および [Rollback Update Or Upgrade](/previous-versions/azure/reference/hh403977(v=azure.100)) があります。
 
 [Get Deployment](/previous-versions/azure/reference/ee460804(v=azure.100)) と [Get Cloud Service Properties](/previous-versions/azure/reference/ee460806(v=azure.100)) の 2 つの操作は Locked フラグを返します。このフラグを調べることで、特定のデプロイに対して変更操作を呼び出すことができるかどうかを判断できます。
 
-これらの操作のうち、Locked フラグを返すバージョンを呼び出すには、要求ヘッダーを次のように設定する必要があります: "x-ms-version: 2011-10-01" 以降。 バージョン管理ヘッダーの詳細については、「 [サービス管理のバージョン管理](/previous-versions/azure/gg592580(v=azure.100))」を参照してください。
+これらの操作のうち、Locked フラグを返すバージョンを呼び出すには、要求ヘッダーに "x-ms-version: 2011-10-01" 以降を設定する必要があります。 バージョン管理ヘッダーの詳細については、「 [サービス管理のバージョン管理](/previous-versions/azure/gg592580(v=azure.100))」を参照してください。
 
 <a name="distributiondfroles"></a>
 

@@ -15,10 +15,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
 ms.openlocfilehash: 4521c2c112c93e83144cfc84d600208817b2ccac
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75978045"
 ---
 # <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>オンプレミスの AlwaysOn 可用性グループの Azure への拡張
@@ -33,7 +33,7 @@ SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニン�
 * オンプレミスのネットワークと、Azure Virtual Network 間の接続。 この仮想ネットワークを作成する方法の詳細については、「[Azure Portal を使用してサイト間接続を作成する (クラシック)](../../../vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md)」を参照してください。
 
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../../../azure-resource-manager/management/deployment-models.md)です。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/management/deployment-models.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
 
 ## <a name="add-azure-replica-wizard"></a>Azure レプリカ ウィザードの追加
 このセクションでは、 **Azure レプリカの追加ウィザード** を使用して、AlwaysOn 可用性グループ ソリューションを拡張し、Azure レプリカを含める方法について説明します。
@@ -47,7 +47,7 @@ SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニン�
    
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742861.png)
 4. 既存のすべてのセカンダリ レプリカに接続する必要があります。 各レプリカの横にある **[接続...]** をクリックするか、画面下部の **[Connect All... (すべて接続...)]** をクリックできます。 認証後、 **[次へ]** をクリックして、次の画面に進みます。
-5. **[レプリカの指定]** ページの上部には、いくつかのタブが表示されます。 **[レプリカ]** 、 **[エンドポイント]** 、 **[バックアップの設定]** 、および **[リスナー]** です。 **[レプリカ]** タブで、 **[Azure レプリカの追加...]** をクリックして、Azure レプリカの追加ウィザードを起動します。
+5. **[レプリカの指定]** ページの上部には、いくつかのタブ ( **[レプリカ]** 、 **[エンドポイント]** 、 **[バックアップの設定]** 、および **[リスナー]** ) が表示されます。 **[レプリカ]** タブで、 **[Azure レプリカの追加...]** をクリックして、Azure レプリカの追加ウィザードを起動します。
    
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742863.png)
 6. 以前に Azure 管理証明書をインストールしている場合は、ローカルの Windows 証明書ストアから既存の Azure 管理証明書を選択します。 以前に Azure サブスクリプションを利用したことがある場合は、Azure サブスクリプションの ID を選択するか入力します。 [ダウンロード] をクリックすると、Azure 管理証明書をダウンロードしてインストールし、Azure アカウントを使用しているサブスクリプションの一覧をダウンロードすることができます。

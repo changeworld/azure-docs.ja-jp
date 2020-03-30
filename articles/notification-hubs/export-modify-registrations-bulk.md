@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/18/2019
 ms.openlocfilehash: 8eb03a42f38c0cc7fe82eda6a81d1c8c1213ec74
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71212401"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Azure Notification Hubs の登録情報を一括でエクスポートおよびインポートする
@@ -31,7 +31,7 @@ ms.locfileid: "71212401"
 
 ## <a name="import"></a>[インポート]
 
-### <a name="set-up"></a>セットアップ
+### <a name="set-up"></a>設定
 ここでは、次のエンティティがあることを前提としています。
 
 - プロビジョニングされた通知ハブ。
@@ -261,7 +261,7 @@ namespace ConsoleApplication1
 }
 ```
 
-## <a name="export"></a>エクスポート
+## <a name="export"></a>[エクスポート]
 登録情報のエクスポートは、インポートと似ていますが、次の点が異なります。
 
 - 出力 URL のみが必要です。
@@ -287,7 +287,7 @@ while(true){
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 登録について詳しくは、次の記事を参照してください。
 
 - [登録管理](notification-hubs-push-notification-registration-management.md)

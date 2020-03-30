@@ -4,10 +4,10 @@ description: Azure Container Instances サービスのクォータ、制限、�
 ms.topic: article
 ms.date: 03/01/2019
 ms.openlocfilehash: b3e7f2f67d806bd2fca74f58d446b0de9a4b8f44
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77117890"
 ---
 # <a name="quotas-and-limits-for-azure-container-instances"></a>Azure Container Instances のクォータと制限

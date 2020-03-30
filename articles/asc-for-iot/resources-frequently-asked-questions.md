@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 639a3f89e470a832279add8d2ed7cf49441611f4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73571796"
 ---
 # <a name="azure-security-center-for-iot-frequently-asked-questions"></a>Azure Security Center for IoT に関してよく寄せられる質問  
@@ -98,7 +98,7 @@ Azure Security Center for IoT は、エージェントによって生成され�
 
 1. [エージェントがデバイス上で実行している](how-to-agent-configuration.md)ことを確認します。
 
-2. IoT Hub で**セキュリティ**に対して[サービスが正常に有効になっている](quickstart-onboard-iot-hub.md)ことを確認します。 
+2. IoT Hub で[セキュリティ](quickstart-onboard-iot-hub.md)に対して**サービスが正常に有効になっている**ことを確認します。 
 
 3. デバイスが [IoT Hub で Azure Security Center for IoT モジュールを使用して構成されている](quickstart-create-security-twin.md)ことを確認します。  
 
@@ -139,7 +139,7 @@ Azure Security Center for IoT は、エージェントによって生成され�
 Azure Security Center for IoT モジュールは、エージェントの構成と管理に使用されます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Security Center for IoT の開始方法の詳細については、次の記事を参照してください。
 

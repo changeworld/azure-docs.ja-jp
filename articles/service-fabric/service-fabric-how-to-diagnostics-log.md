@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: srrengar
 ms.openlocfilehash: 8c4721584e74bd7f7111c516f2d16bd190392bb5
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75614368"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>Service Fabric アプリケーションにログ記録を追加する
@@ -161,7 +161,7 @@ ASP.NET Core のログ記録 ([Microsoft.Extensions.Logging NuGet パッケー�
 5. Serilog を使用せずに ASP.NET Core を使用する場合と同様にコードをインストルメント化します。
 
    >[!NOTE]
-   >前の例では、静的 `Log.Logger` を使用 "*しない*" ことをお勧めします。 Service Fabric は、1 つのプロセス内で同じサービスの種類の複数のインスタンスをホストできます。 静的 `Log.Logger` を使用すると、プロパティ エンリッチャーの最後のライターが、実行されているすべてのインスタンスの値を示すことになります。 これが、_logger 変数がサービス クラスのプライベート メンバー変数である理由の 1 つです。 また、サービス間で使用できる共通コードで `_logger` を使用できるようにする必要があります。
+   >前の例では、静的  *を使用 "* しない`Log.Logger`" ことをお勧めします。 Service Fabric は、1 つのプロセス内で同じサービスの種類の複数のインスタンスをホストできます。 静的 `Log.Logger` を使用すると、プロパティ エンリッチャーの最後のライターが、実行されているすべてのインスタンスの値を示すことになります。 これが、_logger 変数がサービス クラスのプライベート メンバー変数である理由の 1 つです。 また、サービス間で使用できる共通コードで `_logger` を使用できるようにする必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

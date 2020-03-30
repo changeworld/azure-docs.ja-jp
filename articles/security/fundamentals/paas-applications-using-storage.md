@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
 ms.openlocfilehash: 675e10101d01d831aad7652c70cbfcf320085a3c
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70999162"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Azure Storage を使用して PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティで保護するベスト プラクティス
@@ -27,7 +27,7 @@ ms.locfileid: "70999162"
 
 Azure は、オンプレミスでは簡単に実現できない方法で、ストレージをデプロイして使用することを可能にしています。 Azure Storage を使用すれば、比較的少ない労力で高レベルのスケーラビリティと可用性を実現できます。 Azure Storage は、Windows と Linux の Azure Virtual Machines の基盤となるだけでなく、大規模な分散アプリケーションもサポートしています。
 
-Azure Storage は次の 4 つのサービスを提供します:Blob ストレージ、テーブル ストレージ、キュー ストレージ、およびファイル ストレージ。 詳細については、「[Introduction to Microsoft Azure Storage (Microsoft Azure Storage の概要)](/azure/storage/common/storage-introduction)」をご覧ください。
+Azure Storage では、4 つのサービスが提供されます。Blob Storage、Table Storage、Queue Storage、および File Storage です。 詳細については、「[Introduction to Microsoft Azure Storage (Microsoft Azure Storage の概要)](/azure/storage/common/storage-introduction)」をご覧ください。
 
 [Azure Storage セキュリティ ガイド](/azure/storage/common/storage-security-guide)には、Azure Storage とセキュリティに関する詳細な情報が記載されています。 このベスト プラクティス記事では、セキュリティ ガイドに記載されているいくつかの概念をおおまかに説明し、セキュリティ ガイドへのリンクなど、詳細を確認するためのソースを紹介しています。
 
@@ -78,7 +78,7 @@ RBAC の詳細については、次の記事をご覧ください。
 ## <a name="enable-storage-service-encryption-for-data-at-rest"></a>保存データ用の Storage Service Encryption を有効にする
 File Storage の [Storage Service Encryption](/azure/storage/common/storage-service-encryption) を有効にすると、データは自動的に AES-256 暗号化で暗号化されます。 Microsoft がすべての暗号化、復号化、キー管理を処理します。 この機能は、LRS と GRS という種類の冗長性を使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティ保護するための、Azure Storage の一連のセキュリティ ベスト プラクティスについて説明しました。 PaaS デプロイのセキュリティ保護の詳細については、次のリンク先をご覧ください。
 

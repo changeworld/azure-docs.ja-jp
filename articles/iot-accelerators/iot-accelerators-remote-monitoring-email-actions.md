@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
 ms.openlocfilehash: c192ba73da0cfaf1832b6a1e572bd71b250a976b
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74168368"
 ---
 # <a name="add-an-email-action"></a>電子メール アクションを作成する
@@ -81,7 +81,7 @@ ms.locfileid: "74168368"
 
 以上で電子メール アクションを含むルールが有効になります。 アクションがトリガーされるたびに、新しい電子メールが受信者に送信されます。
 
-## Outlook にサインインする<a name="outlook"></a>
+## <a name="sign-in-to-outlook"></a>Outlook にサインインする<a name="outlook"></a>
 
 最初にソリューション アクセラレータで電子メール アクションを有効にするときは、Outlook にサインインする必要があります。 このアクションにより、電子メール通知を送信する電子メール アカウントがセットアップされます。
 
@@ -92,7 +92,7 @@ ms.locfileid: "74168368"
 
 サブスクリプション内の**共同作成者**ロールのいずれかのユーザーがソリューション アクセラレータをデプロイした場合は、アプリケーションに十分な権限がなく、Web UI を通じて電子メール アクションをセットアップおよび検証できません。
 
-作業を始める前に、ソリューション アクセラレータから電子メール通知を送信するために使用される Outlook アカウントを作成します。
+作業を始める前に、ソリューション アクセラレータから電子メール通知を送信する際に使用される Outlook アカウントを作成します。
 
 次の手順は、電子メール アクションを手動でセットアップおよび検証する方法を示しています。
 
@@ -132,13 +132,13 @@ ms.locfileid: "74168368"
 
 1. **[承認]** をクリックします。 サインインするように求められます。 サインインに使用するアカウントは、アプリケーションで電子メール通知を送信する際に使用する電子メール アドレスでなければなりません。
 
-1. **[Save]** をクリックします。 ソリューション アクセラレータに戻り、ページを更新します。
+1. **[保存]** をクリックします。 ソリューション アクセラレータに戻り、ページを更新します。
 
 1. 電子メール通知が正常に構成されると、次のメッセージが表示されます。
 
    ![Outlook へのサインインが成功](./media/iot-accelerators-remote-monitoring-email-actions/success-email.png)
 
-## 電子メールの HTML をカスタマイズする<a name="htmledit"></a>
+## <a name="customize-the-email-html"></a>電子メールの HTML をカスタマイズする<a name="htmledit"></a>
 
 リモート監視ソリューション アクセラレータには、アクション電子メール用のすぐに使用できる基本的な HTML テンプレートが用意されています。 電子メール テンプレートでは、電子メール アクション設定からの値が使用されます。 電子メールの例を次に示します。
 
@@ -170,7 +170,7 @@ ms.locfileid: "74168368"
 
 ![平均の計算](./media/iot-accelerators-remote-monitoring-email-actions/calculation-email.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このガイドでは、リモート監視ソリューション内で電子メール アクションを新規または既存のルールに追加する方法を説明しました。 また、メッセージの書式を定義する HTML の編集方法も説明しました。
 

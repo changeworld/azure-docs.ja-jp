@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: allensu
 ms.openlocfilehash: 6ea215b6aa826231e940f88c3687bb65591303f2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74225320"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>Linux VM の DHCPv6 の構成
@@ -56,7 +56,7 @@ Azure Marketplace の一部の Linux 仮想マシン イメージでは、動的
     ```
 Ubuntu 17.10 以降、既定のネットワーク構成メカニズムは [NETPLAN]( https://netplan.io) です。  インストール/インスタンス化時に、NETPLAN は、/{lib,etc,run}/netplan/*.yaml の場所にある YAML 構成ファイルからネットワーク構成を読み取ります。
 
-構成の各イーサネット インターフェイスに *dhcp6:true* ステートメントを含めてください。  例:
+構成の各イーサネット インターフェイスに *dhcp6:true* ステートメントを含めてください。  次に例を示します。
   
         network:
           version: 2

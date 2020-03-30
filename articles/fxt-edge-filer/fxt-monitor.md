@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
 ms.openlocfilehash: 3f422339af2040ad81c585c0e193e6cb3667b135
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72254878"
 ---
 # <a name="monitor-azure-fxt-edge-filer-hardware-status"></a>Azure FXT Edge Filer ハードウェアの状態を監視する
@@ -19,7 +19,7 @@ Azure FXT Edge Filer ハイブリッド ストレージ キャッシュ シス�
 
 ## <a name="system-health-status"></a>システムの正常性状態
 
-より高いレベルでキャッシュ操作を監視するには、[コントロール パネル ダッシュボード ガイド](https://azure.github.io/Avere/legacy/dashboard/4_7/html/ops_dashboard_index.html)の説明に従って、ソフトウェアのコントロール パネルの **[Dashboard]\(ダッシュボード\)** ページを使用します。
+より高いレベルでキャッシュ操作を監視するには、**コントロール パネル ダッシュボード ガイド**の説明に従って、ソフトウェアのコントロール パネルの [[Dashboard]\(ダッシュボード\)](https://azure.github.io/Avere/legacy/dashboard/4_7/html/ops_dashboard_index.html) ページを使用します。
 
 ## <a name="hardware-status-leds"></a>ハードウェアの状態 LED
 

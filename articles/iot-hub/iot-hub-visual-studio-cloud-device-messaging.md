@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
 ms.openlocfilehash: c56bb7030b2ebc12e3afc24e2d8cb29ce2dda0bf
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74079492"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Cloud Explorer for Visual Studio を使用してデバイスと IoT Hub 間でメッセージを送受信する
@@ -54,7 +54,7 @@ Visual Studio 2017 用の Visual Studio インストーラーの Cloud Explorer 
 
 ハブにアクセスするには、次の手順に従います。
 
-1. Visual Studio で、 **[表示]**  >  **[Cloud Explorer]** を選択して Cloud Explorer を開きます。
+1. Visual Studio で、 **[表示]**  >  **[Cloud Explorer]** の順に選択して Cloud Explorer を開きます。
 
 1. [アカウント管理] アイコンを選択して、サブスクリプションを表示します。
 
@@ -96,7 +96,7 @@ IoT Hub からデバイスにメッセージを送信するには、次の手順
 
     ![C2D メッセージ結果を送信する](media/iot-hub-visual-studio-cloud-device-messaging/send-c2d-message-result-vs2019.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 使用している IoT デバイスと Azure IoT Hub の間で D2C メッセージを監視し、C2D メッセージを送信する方法については学習しました。
 

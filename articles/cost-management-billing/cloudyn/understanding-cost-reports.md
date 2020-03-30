@@ -1,24 +1,26 @@
 ---
-title: Azure での Cloudyn コスト管理レポートの概要 | Microsoft Docs
+title: Azure における Cloudyn コスト管理レポートについて
 description: この記事では、Cloudyn コスト管理レポートの基本的なしくみと機能について説明します。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 89bcbf75396a1eda9de4a715739adb3a3696e137
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5d4f8e26aef5fbfb20c1721d1851a4940863121b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76773985"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474545"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>Cloudyn コスト管理レポートの概要
 
 この記事では、Cloudyn コスト管理レポートの基本的なしくみと機能について説明します。 ほとんどの Cloudyn レポートは、直感的で、統一感のある外観になっています。 この記事を読むと、すべてのコスト管理レポートを利用できるようになります。 標準機能の多くは各種レポートで使用できるため、レポート間を簡単に移動できます。 レポートはカスタマイズ可能で、いくつかのオプションから計算や結果の表示方法を選択できます。
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="report-fields-and-options"></a>レポートのフィールドとオプション
 
@@ -96,7 +98,7 @@ ms.locfileid: "76773985"
        - 1 つまたは複数のサービスを選択するか、すべてのサービスを選択します。
      - **プロバイダー**
        - 資産と経費が関連付けられているクラウド プロバイダー。
-     - **[リージョン]**
+     - **リージョン**
        - リソースがホストされるリージョン。
      - **可用性ゾーン**
        - AWS で隔離されている、リージョン内の場所。

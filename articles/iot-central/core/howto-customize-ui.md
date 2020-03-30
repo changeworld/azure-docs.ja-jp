@@ -4,16 +4,16 @@ description: Azure IoT Central アプリケーションのテーマとヘルプ�
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/06/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 3afa86aae3b51ea20610dcbff5211e59fb341650
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 8f76f143b6c6a26b88b78e20d8d5d8ae1ae48553
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018433"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80158011"
 ---
 # <a name="customize-the-azure-iot-central-ui"></a>Azure IoT Central の UI をカスタマイズする
 

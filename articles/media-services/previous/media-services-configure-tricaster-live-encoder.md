@@ -16,10 +16,10 @@ ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: 7909fbb958a66d00616d4ed1b844d02bb47d997e
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77152501"
 ---
 # <a name="use-the-newtek-tricaster-encoder-to-send-a-single-bitrate-live-stream"></a>NewTek TriCaster エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する  
@@ -78,23 +78,23 @@ Live Encoding 用に有効にされている AMS チャネルへの投稿フィ�
 >
 >
 
-## <a name="a-idconfigure_tricaster_rtmpconfigure-the-newtek-tricaster-encoder"></a><a id="configure_tricaster_rtmp"/>NewTek TriCaster エンコーダーを構成する
+## <a name="configure-the-newtek-tricaster-encoder"></a><a id="configure_tricaster_rtmp"/>NewTek TriCaster エンコーダーを構成する
 
 このチュートリアルでは、次の出力設定が使用されます。 このセクションの残りの部分では、構成の手順の詳細について説明します。
 
 **ビデオ**:
 
-* コーデック:H.264
-* プロファイル:高 (レベル 4.0)
-* ビットレート:5000 kbps
-* キーフレーム:2 秒 (60 秒)
-* フレーム レート:30
+* コーデック: H.264
+* プロファイル: 高 (レベル 4.0)
+* ビットレート: 5000 kbps
+* キーフレーム: 2 秒 (60 秒)
+* フレーム レート: 30
 
 **オーディオ**:
 
-* コーデック:AAC (LC)
-* ビットレート:192 kbps
-* サンプル レート:44.1 kHz
+* コーデック: AAC (LC)
+* ビットレート: 192 kbps
+* サンプル レート: 44.1 kHz
 
 ### <a name="configuration-steps"></a>構成の手順
 

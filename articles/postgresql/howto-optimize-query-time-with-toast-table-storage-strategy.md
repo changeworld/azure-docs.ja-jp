@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: ac1dc43a2b89bc1cc748947ec08e6ada87edbfcb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65066970"
 ---
 # <a name="optimize-query-time-with-the-toast-table-storage-strategy"></a>TOAST テーブル ストレージ戦略を使用してクエリ時間を最適化する 
@@ -28,7 +28,7 @@ TOAST を利用できるディスク上の列を格納するために、4 つの
 
 幅の広いテーブルと文字数が多いスキーマを使うワークロードがある場合は、PostgreSQL TOAST テーブルの使用を検討します。 サンプルの顧客テーブルには 350 個を超える列があり、いくつかの列では文字数が 255 文字に及んでいました。 TOAST テーブルの Main 戦略に変換された後、ベンチマーク クエリ時間は 4,203 秒から 467 秒に短縮されました。 これは 89 パーセント向上したことになります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 上記の特性を考慮して、ワークロードを見直します。 
 
 次の PostgreSQL のドキュメントを確認します。 

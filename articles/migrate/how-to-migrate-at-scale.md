@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: snehaa
 ms.openlocfilehash: 317b6e8aa799b7982e9897c6a504d6092491c7ec
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74196363"
 ---
 # <a name="scale-migration-of-vms"></a>VM の移行をスケーリングする 
@@ -19,7 +19,7 @@ ms.locfileid: "74196363"
 
 Site Recovery スクリプトは、GitHub の [Azure PowerShell サンプル](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) リポジトリからダウンロードできます。 スクリプトは、VMware、AWS、GCP の VM と物理サーバーを Azure のマネージド ディスクに移行するために使用できます。 また、VM を物理サーバーとして移行する場合は、これらのスクリプトを使用して Hyper-V VM を移行することもできます。 Azure Site Recovery PowerShell を使用したスクリプトは、[こちら](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell)に記載されています。
 
-## <a name="current-limitations"></a>現時点での制限事項
+## <a name="current-limitations"></a>現在の制限
 - ターゲット VM のプライマリ NIC に対してのみ、静的 IP アドレスの指定がサポートされています
 - スクリプトでは、Azure ハイブリッド特典に関連する入力は受け付けられません。ポータルで、レプリケートされた VM のプロパティを手動で更新する必要があります
 
@@ -67,6 +67,6 @@ CSV の準備ができたら、次の手順を実行してオンプレミス VM 
 ## <a name="how-to-migrate-to-managed-disks"></a>マネージド ディスクに移行する方法
 このスクリプトは、既定で VM を Azure のマネージド ディスクに移行します。 指定されたターゲット ストレージ アカウントが Premium ストレージ アカウントの場合、移行後に Premium マネージド ディスクが作成されます。 キャッシュ ストレージ アカウントは Standard アカウントのままにすることができます。 ターゲット ストレージ アカウントが Standard ストレージ アカウントの場合、移行後に Standard ディスクが作成されます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Site Recovery を使用してサーバーを Azure に移行する方法について[詳しく知る](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure)

@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 03/04/2020
 ms.author: aahi
 ms.openlocfilehash: a9519be591581fa434825f1a1fb31749788a21a8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78395736"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Text Analytics API とは
@@ -84,7 +84,7 @@ ID をベースに出力は 1 つの JSON ドキュメントとして返され�
 
 Text Analytics API のエンドポイントはすべて、未加工のテキスト データを受け取ります。 現在の上限はドキュメントあたり 5,120 文字です。それより大きなドキュメントを分析する必要がある場合は小さなまとまりに分割できます。
 
-| 制限 | Value |
+| 制限 | 値 |
 |------------------------|---------------|
 | 1 つのドキュメントの最大サイズ | [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) で測定される 5,120 文字。 |
 | 要求全体の最大サイズ | 1 MB |
@@ -95,9 +95,9 @@ Text Analytics API のエンドポイントはすべて、未加工のテキス�
 | レベル          | 1 秒あたりの要求数 | 1 分あたりの要求数 |
 |---------------|---------------------|---------------------|
 | S/マルチサービス | 1000                | 1000                |
-| S0/F0         | 100                 | 該当なし                 |
-| S1            | 200                 | 該当なし                 |
-| S2            | 該当なし                 | 該当なし                 |
+| S0/F0         | 100                 | 300                 |
+| S1            | 200                 | 300                 |
+| S2            | 300                 | 300                 |
 | S3            | 500                 | 500                 |
 | S4            | 1000                | 1000                |
 

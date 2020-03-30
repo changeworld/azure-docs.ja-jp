@@ -9,10 +9,10 @@ ms.date: 10/07/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: f7167cbb26e69941cade01ab8c0b8d9dc633f0d2
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72168382"
 ---
 カスタム IPsec ポリシーを操作する場合は、次の要件に注意してください。
@@ -26,7 +26,7 @@ ms.locfileid: "72168382"
 
 **使用可能な設定とパラメーター**
 
-| Setting | parameters |
+| 設定 | パラメーター |
 |--- |--- |
 | IKE 暗号化 | AES256、AES192、AES128 |
 | IKE 整合性 | SHA384、SHA256、SHA1 |

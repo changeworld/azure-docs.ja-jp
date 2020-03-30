@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: rapatchi
 ms.openlocfilehash: 0a243c1cd0ab0dcb93a1cc6169c89ba18606f346
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75451679"
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Azure Service Fabric Java クライアント API
@@ -62,7 +62,7 @@ AutoRest ツールを使って Service Fabric Java クライアント コード�
     autorest --input-file=servicefabric.json --java --output-folder=java-rest-api-code --namespace=servicefabricrest
     ```
    
-   次のコマンドは、``servicefabric.json`` 仕様ファイルを入力として受け取り、``java-rest-api-     code`` フォルダーに Java クライアント コードを生成して、コードを ``servicefabricrest`` 名前空間に配置します。 この手順の後、2 つのフォルダー ``models`` と ``implementation``、および ``java-rest-api-code`` フォルダーに生成された 2 つのファイル ``ServiceFabricClientAPIs.java`` と ``package-info.java`` を検索します。
+   次のコマンドは、``servicefabric.json`` 仕様ファイルを入力として受け取り、``java-rest-api-     code`` フォルダーに Java クライアント コードを生成して、コードを ``servicefabricrest`` 名前空間に配置します。 この手順の後、2 つのフォルダー ``models`` と ``implementation``、および ``ServiceFabricClientAPIs.java`` フォルダーに生成された 2 つのファイル ``package-info.java`` と ``java-rest-api-code`` を検索します。
 
 
 ## <a name="include-and-use-the-generated-client-in-your-project"></a>生成されたクライアントをプロジェクトに組み込んで使用する

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
 ms.openlocfilehash: 09051ad3633ddc720cb34d3d145ccf649fa9cb08
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77200114"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>パイプライン アクティビティでの Azure Key Vault シークレットの使用
@@ -47,11 +47,11 @@ ms.locfileid: "77200114"
 
 4. データ ファクトリ パイプラインで、新しい Web アクティビティを追加し、次のように構成します。  
 
-    |プロパティ  |Value  |
+    |プロパティ  |値  |
     |---------|---------|
     |セキュリティで保護された出力     |True         |
     |URL     |[自分のシークレットの URI 値]?api-version=7.0         |
-    |Method     |GET         |
+    |方法     |GET         |
     |認証     |MSI         |
     |リソース        |https://vault.azure.net       |
 

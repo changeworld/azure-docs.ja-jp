@@ -7,10 +7,10 @@ ms.author: joanpo
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.openlocfilehash: 33532380d8f98df44029eeea998130d1da5fdafd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73468544"
 ---
 # <a name="azure-data-share-concepts"></a>Azure Data Share の概念 
@@ -61,6 +61,6 @@ Azure Data Share では、データ共有に関連するいくつかの新しい
 
 受信者は、データ共有への招待を受信する人です。 通常、データ プロバイダーは、作成したデータ共有に受信者を追加します。 受信者が招待を承諾すると、データ コンシューマーになります。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 データの共有を始める方法については、[データの共有](share-your-data.md)に関するチュートリアルをご覧ください。

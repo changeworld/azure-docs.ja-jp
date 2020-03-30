@@ -4,10 +4,10 @@ description: Azure Container Instances のコンテナー グループに含ま�
 ms.topic: article
 ms.date: 09/03/2019
 ms.openlocfilehash: f57ebcf050b5563b45f10af57c1721338df88ff9
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74533300"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Azure Container Instances のコンテナーを更新する
@@ -71,7 +71,7 @@ Windows Server Core などの大規模なコンテナー イメージに基づ�
 
 コンテナー グループを削除して再作成する場合、"再デプロイ" ではなく新規作成になります。 すべてのイメージ レイヤーは、以前のデプロイでキャッシュされたレイヤーではなくレジストリからプルされます。 別の基になるホストにコンテナー グループがデプロイされるため、コンテナーの IP アドレスも変わる可能性があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、**コンテナー グループ**についてたびたび言及しました。 Azure Container Instances の各コンテナーはコンテナー グループにデプロイされます。コンテナー グループには複数のコンテナーを格納できます。
 

@@ -4,15 +4,15 @@ description: Advisor のアクセス許可と、それを利用してサブス�
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: c850d757044066d5c4a793e076436906d715833c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75422317"
 ---
 # <a name="permissions-in-azure-advisor"></a>Azure Advisor でのアクセス許可
 
-Azure Advisor は、Azure のリソースとサブスクリプションの使用状況と構成に基づいて推奨事項を提供します。 Advisor は[ロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/overview) (RBAC) が提供する[組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)を使用して、推奨事項および Advisor 機能へのアクセスを管理します。 
+Azure Advisor は、Azure のリソースとサブスクリプションの使用状況と構成に基づいて推奨事項を提供します。 Advisor は[ロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) (RBAC) が提供する[組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/overview)を使用して、推奨事項および Advisor 機能へのアクセスを管理します。 
 
 ## <a name="roles-and-their-access"></a>ロールとそのアクセス権
 

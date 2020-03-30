@@ -5,15 +5,15 @@ services: iot-central
 author: viv-liu
 ms.author: viviali
 ms.date: 01/30/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 0386897b6cecc27781626cfecd6f1f5f8a3752e4
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 725c5acf961fffb1fd4cf9bc17e37a5940f871cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524385"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80157910"
 ---
 # <a name="export-iot-data-to-destinations-in-azure"></a>Azure で宛先に IoT データをエクスポートする
 
@@ -307,7 +307,7 @@ Blob Storage のデバイスとプロパティ データを含むスナップシ
 
 各メッセージまたはスナップショット レコードは、最後にエクスポートされたメッセージ以降に公開されたデバイス テンプレートに加えられた 1 つ以上の変更を表しています。 各メッセージまたはレコードで送信される情報としては、次のものがあります。
 
-- 上記のデバイス ストリームの `instanceOf` に一致するデバイス テンプレートの `id`
+- 上記のデバイス ストリームの `id` に一致するデバイス テンプレートの `instanceOf`
 - デバイス テンプレートの`displayName`
 - デバイスの `capabilityModel` (その `interfaces` を含む)、テレメトリ、プロパティ、およびコマンドの定義
 - `cloudProperties` の定義

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Python での TensorFlow モデルの実行 - Custom Vision Service
+title: 'チュートリアル: Python での TensorFlow モデルの実行 - Custom Vision Service'
 titleSuffix: Azure Cognitive Services
 description: Python での TensorFlow モデルの実行 この記事は、Custom Vision Service 内のイメージ分類プロジェクトからエクスポートされたモデルにのみ適用されます。
 services: cognitive-services
@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: areddish
 ms.openlocfilehash: d7e3eeeea6bb25b4cddaea1d04e86f23ab7e4f5f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74969841"
 ---
-# <a name="tutorial-run-tensorflow-model-in-python"></a>チュートリアル:Python での TensorFlow モデルの実行
+# <a name="tutorial-run-tensorflow-model-in-python"></a>チュートリアル: Python での TensorFlow モデルの実行
 
 Custom Vision Service から [TensorFlow モデルをエクスポート](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)したら、このクイックスタートが、このモデルをローカルで使用して画像を分類する方法を示します。
 
@@ -208,7 +208,7 @@ with tf.compat.v1.Session() as sess:
         label_index += 1
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次に、モバイル アプリケーションにモデルをラップする方法を学びましょう。
 * [エクスポートされた Tensorflow モデルを Android アプリケーションで使用する](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)

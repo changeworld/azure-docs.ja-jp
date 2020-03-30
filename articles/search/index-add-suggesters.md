@@ -20,15 +20,15 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: a312068d5c8c574e7b069263cf37e3b855810e4b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72790100"
 ---
 # <a name="add-suggesters-to-an-index-for-typeahead-in-azure-cognitive-search"></a>Azure Cognitive Search で先行入力のために suggester をインデックスに追加する
 
-Azure Cognitive Search の "入力と平行して検索を行う" 機能または先行入力機能は、[検索インデックス](search-what-is-an-index.md)に追加する **suggester** コンストラクトに基づいて行われます。 それは、先行入力を有効にする 1 つ以上のフィールドのリストです。
+Azure Cognitive Search の "入力と平行して検索を行う" 機能または先行入力機能は、**検索インデックス**に追加する [suggester](search-what-is-an-index.md) コンストラクトに基づいて行われます。 それは、先行入力を有効にする 1 つ以上のフィールドのリストです。
 
 suggester では、2 種類の先行入力がサポートされています。"*オートコンプリート*" では入力した語句が補完され、"*検索候補*" では一致するドキュメントの短いリストが返されます。  
 
@@ -145,7 +145,7 @@ api-key: [admin or query key]
 + [DotNetHowToAutocomplete](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) は、C# と Java 両方のコードが含まれる古いサンプルです。 それでも、suggester の構築、提案されたクエリ、オートコンプリート、ファセット ナビゲーションが示されています。 このコード サンプルでは、ホストされた [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) サンプル データが使用されます。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の例において、要求の作成方法を確認することをお勧めします。
 

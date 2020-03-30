@@ -5,10 +5,10 @@ ms.date: 11/22/2019
 ms.topic: article
 ms.reviewer: janders
 ms.openlocfilehash: ac75be644877905c1517395c1c789b1ea16fd49c
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74455588"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Azure CLI を使用して Azure Blockchain Service を管理する
@@ -227,7 +227,7 @@ az role assignment create \
 |---------|-------------|
 | **role** | Azure AD ロールの名前。 |
 | **assignee** | Azure AD ユーザーの ID。 たとえば、`user@contoso.com` のように指定します。 |
-| **scope** | ロール割り当てのスコープ。 ブロックチェーン メンバーまたはトランザクション ノードのいずれかにすることができます。 |
+| **スコープ (scope)** | ロール割り当てのスコープ。 ブロックチェーン メンバーまたはトランザクション ノードのいずれかにすることができます。 |
 
 **例:**
 
@@ -263,7 +263,7 @@ az role assignment create \
 |---------|-------------|
 | **role** | Azure AD ロールの名前。 |
 | **assignee-object-id** | Azure AD グループ ID またはアプリケーション ID。 |
-| **scope** | ロール割り当てのスコープ。 ブロックチェーン メンバーまたはトランザクション ノードのいずれかにすることができます。 |
+| **スコープ (scope)** | ロール割り当てのスコープ。 ブロックチェーン メンバーまたはトランザクション ノードのいずれかにすることができます。 |
 
 **例:**
 
@@ -289,8 +289,8 @@ az role assignment delete \
 |---------|-------------|
 | **role** | Azure AD ロールの名前。 |
 | **assignee** | Azure AD ユーザーの ID。 たとえば、`user@contoso.com` のように指定します。 |
-| **scope** | ロール割り当てのスコープ。 ブロックチェーン メンバーまたはトランザクション ノードのいずれかにすることができます。 |
+| **スコープ (scope)** | ロール割り当てのスコープ。 ブロックチェーン メンバーまたはトランザクション ノードのいずれかにすることができます。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure portal で Azure Blockchain Service のトランザクション ノードを構成する](configure-transaction-nodes.md)方法を参照してください。

@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 07/20/2018
 ms.topic: conceptual
 ms.openlocfilehash: d4dcf6681ade977847c204dd1237f7cd7a67775e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75418262"
 ---
 # <a name="use-the-azure-automation-graphical-runbook-sdk"></a>Azure Automation Grpahical Runbook SDK を使用する
@@ -99,7 +99,7 @@ var initializeRunbookVariable = runbook.AddActivity(
 |WorkflowScriptActivity     | Runbook のコンテキストで、(Runbook の種類に応じて) PowerShell または PowerShell Workflow コードのブロックを実行します。 これは強力なツールですが、使いすぎないようにしてください。UI には、このスクリプト ブロックがテキストとして表示されます。実行エンジンは指定されたブロックをブラック ボックスとして扱い、基本的な構文チェックを除き、内容を分析しません。 単一の PowerShell コマンドを呼び出すだけの場合は、CommandActivity を使用することをお勧めします。        |
 
 > [!NOTE]
-> 指定のクラスから独自のアクティビティを派生させることはしないでください。Azure Automation では、カスタムのアクティビティ タイプで Runbook を実行できません。
+> 指定されたクラスから独自のアクティビティを派生させないでください。Azure Automation では、カスタム アクティビティ タイプの Runbook を使用できません。
 
 CommandActivity および InvokeRunbookActivity パラメーターは、直接の値ではなく値記述子として指定する必要があります。 値記述子には、実際のパラメーター値の生成方法を指定します。 現在、次の値記述子が用意されています。
 
@@ -115,7 +115,7 @@ CommandActivity および InvokeRunbookActivity パラメーターは、直接�
 |PowerShellExpressionValueDescriptor     | アクティビティを呼び出す直前に評価される自由形式の PowerShell 式を指定します。  <br/>これは強力なツールですが、使いすぎないようにしてください。UI には、この式がテキストとして表示されます。実行エンジンは指定されたブロックをブラック ボックスとして扱い、基本的な構文チェックを除き、内容を分析しません。 可能であれば、より具体的な値記述子を使用することお勧めします。      |
 
 > [!NOTE]
-> 指定のクラスから独自の値記述子を派生させないでください。Azure Automation では、カスタムの値記述子タイプで Runbook を実行できません。
+> 指定されたクラスから独自の値記述子を派生させないでください。Azure Automation では、カスタム値記述子タイプの Runbook を使用できません。
 
 アクティビティを接続するリンクをインスタンス化し、Runbook に追加します。
 

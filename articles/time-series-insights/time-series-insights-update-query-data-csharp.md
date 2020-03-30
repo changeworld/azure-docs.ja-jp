@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.custom: seodec18
 ms.openlocfilehash: 76e3ac85a6725976ebd14dac1805079613c94ec6
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76980989"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>C# を使用して Azure Time Series Insights プレビュー環境からデータを照会する
@@ -50,14 +50,14 @@ ms.locfileid: "76980989"
 
 1. [プレビューの Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-how-to-manage#create-the-environment) の環境をプロビジョニングします。
 1. [認証と承認](time-series-insights-authentication-and-authorization.md)に関するページにある説明に基づき、Azure Active Directory で Azure Time Series Insights 環境を設定します。 
-1. [Readme.md](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/Readme.md) に示されているように [GenerateCode.bat ](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/GenerateCode.bat)を実行して、Time Series Insights プレビュー クライアントの依存関係を生成します。
+1. [Readme.md](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/GenerateCode.bat) に示されているように [GenerateCode.bat ](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/Readme.md)を実行して、Time Series Insights プレビュー クライアントの依存関係を生成します。
 1. Visual Studio 上で `TSIPreviewDataPlaneclient.sln` ソリューションを開き、`DataPlaneClientSampleApp` を既定のプロジェクトとして設定します。
 1. [以下](#project-dependencies)に示された手順を使用して必要なプロジェクトの依存関係をインストールし、サンプルを実行可能な `.exe` ファイルにコンパイルします。
 1. `.exe` ファイルをダブルクリックして、実行します。
 
 ## <a name="project-dependencies"></a>プロジェクト依存関係
 
-最新版の Visual Studio を使用することをお勧めします。
+最新バージョンの Visual Studio を使用することをお勧めします。
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) - バージョン 16.4.2+
 

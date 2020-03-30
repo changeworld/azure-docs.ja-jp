@@ -9,10 +9,10 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/17/2020
 ms.openlocfilehash: 6e1321e01d8d12974a2704f4478b02a26c14142f
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76264935"
 ---
 # <a name="enable-multitenant-applications-with-azure-digital-twins"></a>Azure Digital Twins でマルチテナント アプリケーションを有効にする
@@ -52,7 +52,7 @@ Azure Digital Twins でソリューションを構築する開発者は、単一
   - **CUSTOMER** の Azure Active Directory テナント管理者は、[従量課金制の Azure サブスクリプション](https://azure.microsoft.com/offers/ms-azr-0003p/)を取得する必要があります。
   - その後、**CUSTOMER** の Azure Active Directory テナント管理者は、[テナントを新しいサブスクリプションとリンクする](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity)必要があります。
 
-- **CUSTOMER** の Azure Active Directory テナント管理者は、[Azure portal](https://portal.azure.com) で以下の手順を実行します。
+- [CUSTOMER](https://portal.azure.com) の Azure Active Directory テナント管理者は、**Azure portal** で以下の手順を実行します。
 
   1. 上部の Azure の検索フィールドで **[サブスクリプション]** を検索します。 **[サブスクリプション]** を選択します。
   1. **DEVELOPER** のアプリケーションで使用する Azure Active Directory テナントがあるサブスクリプションを選択します。

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 9c7385d3457f3f5dbed2633c20445bb9ef0b1638
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906865"
 ---
 [!INCLUDE [Prerequisites](prerequisites-python.md)]
@@ -49,10 +49,10 @@ endpoint = os.environ[endpoint_var_name]
 
 Translator Text のグローバル エンドポイントは、`endpoint` として設定されます。 `path` によって、`breaksentence` ルートが設定され、API のバージョン 3 を使用することが識別されます。
 
-このサンプルでは、指定されたテキストの言語を設定するために、`params` を使用しています。 `breaksentence` ルートに必ずしも `params` は必要ありません。 要求に含めなかった場合、指定されたテキストの言語の検出を API が試み、その情報が信頼度スコアと一緒に応答として返されます。
+このサンプルでは、指定されたテキストの言語を設定するために、`params` を使用しています。 `params` ルートに必ずしも `breaksentence` は必要ありません。 要求に含めなかった場合、指定されたテキストの言語の検出を API が試み、その情報が信頼度スコアと一緒に応答として返されます。
 
 >[!NOTE]
-> エンドポイント、ルート、および要求パラメーターの詳細については、「[Translator Text API 3.0: Languages](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence)」を参照してください。
+> エンドポイント、ルート、要求パラメーターの詳細については、「[Translator Text API 3.0: Languages](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence)」を参照してください。
 
 ```python
 path = '/breaksentence?api-version=3.0'
@@ -127,11 +127,11 @@ python sentence-length.py
 ]
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 サブスクリプション キーをプログラムにハードコーディングしている場合は、このクイック スタートを終了するときにサブスクリプション キーを必ず削除してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 API のリファレンスを見て、Translator Text API でできるすべてのことを理解してください。
 

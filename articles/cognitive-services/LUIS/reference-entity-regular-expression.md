@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
 ms.openlocfilehash: b9da76a80183f353a74d43e667bf6c9219eb6c05
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74841219"
 ---
 # <a name="regular-expression-entity"></a>正規表現エンティティ
@@ -50,7 +50,7 @@ ms.locfileid: "74841219"
 
 `When was kb123456 published?`:
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
 ```JSON
 "entities": [
@@ -64,7 +64,7 @@ ms.locfileid: "74841219"
 ```
 
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 予測エンドポイントの応答](#tab/V3)
 
 
 これは、クエリ文字列で `verbose=false` が設定されている場合の JSON です。
@@ -104,6 +104,6 @@ ms.locfileid: "74841219"
 
 * * *
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この[チュートリアル](tutorial-regex-entity.md)では、**正規表現**エンティティを使用して、発話から一貫した形式のデータを抽出するアプリを作成します。

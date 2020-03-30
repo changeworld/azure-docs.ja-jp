@@ -8,10 +8,10 @@ ms.date: 12/13/2019
 ms.author: bwren
 ms.subservice: ''
 ms.openlocfilehash: a2569ca3f998030680bd7dbd872d71ccd372a25d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77672431"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Azure で Resource Manager テンプレートを使用して診断設定を作成する
@@ -30,7 +30,7 @@ Resource Manager テンプレートをデプロイするには、PowerShell や 
 
 
 ## <a name="resource-logs"></a>リソース ログ
-リソース ログの場合は、`<resource namespace>/providers/diagnosticSettings` 型のリソースをテンプレートに追加します。 プロパティ セクションでは、「[Diagnostic Settings - Create Or Update](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)」 (診断設定 - 作成または更新) に記載の形式に従います。 収集するリソースに対して有効な各カテゴリの `logs` セクションに `category` を指定します。 [リソースでメトリックがサポートされている](metrics-supported.md)場合は、`metrics` プロパティを追加して、リソースのメトリックを同じ送信先に収集します。
+リソース ログの場合は、`<resource namespace>/providers/diagnosticSettings` 型のリソースをテンプレートに追加します。 プロパティ セクションでは、「[Diagnostic Settings - Create Or Update](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)」 (診断設定 - 作成または更新) に記載の形式に従います。 収集するリソースに対して有効な各カテゴリの `category` セクションに `logs` を指定します。 `metrics`リソースでメトリックがサポートされている[場合は、](metrics-supported.md) プロパティを追加して、リソースのメトリックを同じ送信先に収集します。
 
 次に示すのは、特定のリソースのリソース ログ カテゴリを、Log Analytics ワークスペース、ストレージ アカウント、およびイベント ハブに収集するテンプレートです。
 

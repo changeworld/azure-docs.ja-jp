@@ -10,10 +10,10 @@ ms.author: grhuynh
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.openlocfilehash: b426015906a8e17674123c0c3ad2fccb9c43798f
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72248560"
 ---
 # <a name="submit-a-workflow-using-multiple-inputs-from-the-same-sample"></a>同じサンプルに属する複数の入力を使用するワークフローを送信する
@@ -31,7 +31,7 @@ ms.locfileid: "72248560"
 入力として使用する BAM ファイルが複数あり (*reads.bam*、*additional_reads.bam*、*yet_more_reads.bam*)、それらを Azure のストレージ アカウントである *myaccount* にアップロード済みであるとします。 API URL とアクセス キーは用意されています。 また、**https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** に出力を配置したいと考えています。
 
 
-### <a name="submit-your-job-to-the-msgen-client"></a>`msgen` クライアントにジョブを送信する 
+### <a name="submit-your-job-to-the-msgen-client"></a>ジョブを `msgen` クライアントに送信する 
 
 --input-blob-name-1 引数にすべての BAM ファイルの名前を渡すことで、複数の BAM ファイルを送信できます。 すべてのファイルが同じサンプルに属している必要がありますが、ファイルの順序は重要ではありません。 次のセクションでは、Windows と Unix のコマンド ライン、および構成ファイルを使ったサンプルの送信について詳しく説明します。 わかりやすくするために改行が追加されています。
 
@@ -85,16 +85,16 @@ output_storage_account_key:       <storage access key to "myaccount">
 output_storage_account_container: outputs
 ```
 
-次の呼び出しを使って `config.txt` ファイルを送信します: `msgen submit -f config.txt`
+`config.txt` という呼び出しを使って、`msgen submit -f config.txt` ファイルを送信します。
 
 
 ## <a name="multiple-paired-fastq-files"></a>複数の FASTQ ファイルのペア
 
 ### <a name="upload-your-input-files-to-azure-storage"></a>Azure Storage に入力ファイルをアップロードする
-入力として使用する FASTQ ファイルのペアが複数ある (*reads_1.fq.gz* と *reads_2.fq.gz*、*additional_reads_1.fq.gz* と *additional_reads_2.fq.gz*、*yet_more_reads_1.fq.gz* と *yet_more_reads_2.fq.gz*) とします。 それらを Azure のストレージ アカウントである *myaccount* にアップロード済みで、API URL とアクセス キーは用意されています。 **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** に出力します。
+入力として使用する FASTQ ファイルのペアが複数ある (*reads_1.fq.gz* と *reads_2.fq.gz*、*additional_reads_1.fq.gz* と *additional_reads_2.fq.gz*、*yet_more_reads_1.fq.gz* と *yet_more_reads_2.fq.gz*) とします。 それらを Azure のストレージ アカウントである *myaccount* にアップロード済みで、API URL とアクセス キーは用意されています。 また、**https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** に出力を配置したいと考えています。
 
 
-### <a name="submit-your-job-to-the-msgen-client"></a>`msgen` クライアントにジョブを送信する 
+### <a name="submit-your-job-to-the-msgen-client"></a>ジョブを `msgen` クライアントに送信する 
 
 FASTQ ファイルのペアは同じサンプルに属しているだけでなく、一緒に処理する必要があります。  ファイル名の順序は、--input-blob-name-1 と --input-blob-name-2 に引数として渡される場合に重要になります。 
 
@@ -153,7 +153,7 @@ output_storage_account_key:       <storage access key to "myaccount">
 output_storage_account_container: outputs
 ```
 
-`msgen submit -f config.txt` という呼び出しを使って、`config.txt` ファイルを送信します。
+`config.txt` という呼び出しを使って、`msgen submit -f config.txt` ファイルを送信します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、複数の BAM ファイルまたは FASTQ ファイルのペアを Azure Storage にアップロードして、`msgen` Python クライアント経由で Microsoft Genomics サービスにワークフローを送信しました。 ワークフローの送信と Microsoft Genomics サービスで使用できるその他のコマンド関連の詳細情報については、[FAQ](frequently-asked-questions-genomics.md) に関するページをご覧ください。 

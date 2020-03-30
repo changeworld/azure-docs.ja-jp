@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
 ms.openlocfilehash: d8dd0c86fbc520d0bd3ef6034891bd9871774b4a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74232736"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Durable Functions を WebJobs として実行する方法
@@ -31,7 +31,7 @@ Durable Functions のチェーンのサンプルは、WebJobs SDK 2.x バージ�
 
 この記事の手順を完了するには、次のことが条件となります。
 
-* **Azure 開発**ワークロードと共に [Visual Studio 2019 をインストール](https://docs.microsoft.com/visualstudio/install/)します。
+* [Azure 開発](https://docs.microsoft.com/visualstudio/install/)ワークロードと共に **Visual Studio 2019 をインストール**します。
 
   Visual Studio は既にあるものの、必要なワークロードがない場合は、 **[ツール]**  >  **[ツールと機能の取得]** の順に選択してワークロードを追加してください。
 
@@ -78,7 +78,7 @@ Install-Package Microsoft.Extensions.Logging.Console -version 2.0.1
 
 コンソール アプリを作成し、必要な NuGet パッケージをインストールしたので、Durable Functions を使用する準備ができました。 そのためには、JobHost コードを使用します。
 
-Durable Functions 拡張機能を使用するには、`Main` メソッド内の `JobHostConfiguration` オブジェクトで `UseDurableTask` を呼び出します。
+Durable Functions 拡張機能を使用するには、`UseDurableTask` メソッド内の `JobHostConfiguration` オブジェクトで `Main` を呼び出します。
 
 ```cs
 var config = new JobHostConfiguration();
@@ -119,7 +119,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>関数
 
 WebJobs のコンテキスト内の Durable Functions と、Azure Functions のコンテキスト内の Durable Functions はやや異なります。 コードを記述する際は、この相違点に注意することが重要です。
 
@@ -269,6 +269,6 @@ WebJob として実行されるように設定された Durable Functions を取
    }
    ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 WebJobs SDK について詳しくは、「[How to use the WebJobs SDK (WebJobs SDK の使用方法)](../../app-service/webjobs-sdk-how-to.md)」をご覧ください。

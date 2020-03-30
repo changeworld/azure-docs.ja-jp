@@ -1,20 +1,20 @@
 ---
-title: チュートリアル - Azure で Cloudyn へのアクセスを割り当てる | Microsoft Docs
+title: チュートリアル - Azure で Cloudyn へのアクセスを割り当てる
 description: このチュートリアルでは、エンティティへのアクセス レベルを定義するユーザー アカウントを使って、Cloudyn データへのアクセス権を割り当てる方法について説明します。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 ms.reviewer: benshy
-ms.openlocfilehash: b93dfd7699ab2f1e2851b4d1f7e6d4c721186a2e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: e8fff8b75ff419cffc7f496f921dcba734109e5a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76774003"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79463613"
 ---
 # <a name="tutorial-assign-access-to-cloudyn-data"></a>チュートリアル:Cloudyn のデータへのアクセス権を割り当てる
 
@@ -33,6 +33,8 @@ Azure の契約またはアカウントを登録した時点で、管理者権�
 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -68,9 +70,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > [!WARNING]
 > 削除したユーザーは、復元できません。
 
-1.  Cloudyn ポータルで、右上にある歯車アイコンをクリックして **[ユーザー管理]** を選択します。
-2.  ユーザーの一覧で、削除するユーザーを選択し、 **[ユーザーの削除]** (ごみ箱の記号) をクリックします。
-3.  [ユーザーの削除] ボックスで **[はい]** をクリックした後、 **[OK]** をクリックします。
+1.    Cloudyn ポータルで、右上にある歯車アイコンをクリックして **[ユーザー管理]** を選択します。
+2.    ユーザーの一覧で、削除するユーザーを選択し、 **[ユーザーの削除]** (ごみ箱の記号) をクリックします。
+3.    [ユーザーの削除] ボックスで **[はい]** をクリックした後、 **[OK]** をクリックします。
 
 
 ## <a name="delete-or-export-personal-data"></a>個人データを削除またはエクスポートする

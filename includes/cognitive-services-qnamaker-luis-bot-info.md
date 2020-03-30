@@ -11,17 +11,17 @@ ms.custom: include file
 ms.date: 06/24/2019
 ms.author: diberry
 ms.openlocfilehash: f69502907e2dd3c5b3c64634b1b11e10af5397f5
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67438431"
 ---
 ## <a name="more-information-about-bots"></a>ボットに関する詳細情報
 
 ボットにこのサービスを使用する方法の詳細については、次のリソースから始めます。
 
-|Resource|目的|
+|リソース|目的|
 |--|--|
 |[Azure Bot サービス](https://dev.botframework.com/)|Azure Bot サービスは、ボット エンドポイントを備えた完全なクラウド ホスト型 Web サービスを提供します。 このサービスは [Bot Framework](https://github.com/Microsoft/botframework) を使用します。これはいくつかの言語で使用できます。|
 |[Bot Framework](https://github.com/Microsoft/botframework)|Microsoft Bot Framework は、エンタープライズ級の会話型 AI エクスペリエンスを構築するための包括的なプラットフォームです。|

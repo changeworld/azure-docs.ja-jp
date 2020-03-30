@@ -7,12 +7,12 @@ ms.author: jzim
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: container-service
-ms.openlocfilehash: 559c932c4826e82f36c09b85ee8da4186d90d34d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: e7396ce9fbed46688d59b582f246e5454d063fb3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276084"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477036"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Azure Red Hat OpenShift 開発環境の設定
 
@@ -30,7 +30,7 @@ Microsoft Azure Red Hat OpenShift アプリケーションをビルドして実�
 
 Azure Red Hat OpenShift には、Azure CLI のバージョン 2.0.65 またはそれ以降が必要です。 Azure CLI を既にインストール済みである場合は、以下を実行してバージョンを確認できます。
 
-```bash
+```azurecli
 az --version
 ```
 
@@ -38,7 +38,7 @@ az --version
 
 新しいインストールまたはアップグレードが必要な場合、[Azure CLI をインストールする手順はこちらにあります](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-別の方法として、[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を使用することもできます。 Azure Cloud Shell の使用時、[Azure Red Hat OpenShift クラスターの作成と管理](tutorial-create-cluster.md)のチュートリアル シリーズに従って進める予定の場合は、必ず **Bash** 環境を選択してください。
+別の方法として、[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を使用することもできます。 Azure Cloud Shell の使用時、**Azure Red Hat OpenShift クラスターの作成と管理**のチュートリアル シリーズに従って進める予定の場合は、必ず [Bash](tutorial-create-cluster.md) 環境を選択してください。
 
 ## <a name="register-providers-and-features"></a>プロバイダーと機能の登録
 
@@ -48,49 +48,49 @@ az --version
 
 1. 複数の Azure サブスクリプションがある場合は、適切なサブスクリプション ID を指定します。
 
-    ```bash
+    ```azurecli
     az account set --subscription <SUBSCRIPTION ID>
     ```
 
 1. Microsoft.ContainerService AROGA 機能を登録します。
 
-    ```bash
+    ```azurecli
     az feature register --namespace Microsoft.ContainerService -n AROGA
     ```
 
 1. Microsoft.Storage プロバイダーを登録します。
 
-    ```bash
+    ```azurecli
     az provider register -n Microsoft.Storage --wait
     ```
     
 1. Microsoft.Compute プロバイダーを登録します。
 
-    ```bash
+    ```azurecli
     az provider register -n Microsoft.Compute --wait
     ```
 
 1. Microsoft.Solutions プロバイダーを登録します。
 
-    ```bash
+    ```azurecli
     az provider register -n Microsoft.Solutions --wait
     ```
 
 1. Microsoft.Network プロバイダーを登録します。
 
-    ```bash
+    ```azurecli
     az provider register -n Microsoft.Network --wait
     ```
 
 1. Microsoft.KeyVault プロバイダーを登録します。
 
-    ```bash
+    ```azurecli
     az provider register -n Microsoft.KeyVault --wait
     ```
 
 1. Microsoft.ContainerService リソース プロバイダーの登録を更新します。
 
-    ```bash
+    ```azurecli
     az provider register -n Microsoft.ContainerService --wait
     ```
 

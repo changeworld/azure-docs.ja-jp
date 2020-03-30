@@ -11,10 +11,10 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
 ms.openlocfilehash: 44f1f7ae3b290e1dbf01877f3881e1d95a238446
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70208147"
 ---
 # <a name="set-up-a-common-identity-on-a-data-science-virtual-machine"></a>Data Science Virtual Machine で共通 ID を設定する
@@ -70,13 +70,13 @@ Azure AD DS により、Azure 上でフル マネージドのサービスを提�
    sudo mount -t cifs //[STORAGEACCT].file.core.windows.net/workspace [Your mount point] -o vers=3.0,username=[STORAGEACCT],password=[Access Key or SAS],dir_mode=0777,file_mode=0777,sec=ntlmssp
    ```
 1. たとえば、/data/workspace に Azure Files 共有をマウントしたものとします。 次に、共有内に各ユーザーのディレクトリを作成します (/data/workspace/user1、/data/workspace/user2 など)。 各ユーザーのワークスペースに、`notebooks` ディレクトリを作成します。 
-1. `$HOME/userx/notebooks/remote` に `notebooks` のシンボリック リンクを作成します。   
+1. `notebooks` に `$HOME/userx/notebooks/remote` のシンボリック リンクを作成します。   
 
 これで、Azure でホストされている Active Directory インスタンスでユーザーが設定されるようになります。 ユーザーは、Active Directory の資格情報を使って、Azure AD DS に参加している任意の DSVM (SSH または JupyterHub) にサインインできます。 ユーザー ワークスペースが Azure ファイル共有上にあるため、ユーザーは、JupyterHub の使用時に、任意の DSVM から自分のノートブックやその他の作業にアクセスできます。
 
 自動スケーリングの場合、仮想マシン スケール セットを使用して、この様式で、共有ディスクがマウントされているドメインにすべて参加している VM のプールを作成できます。 ユーザーは、仮想マシン スケール セット内の任意の使用可能なマシンにサインインし、ノートブックが保存されている共有ディスクにアクセスできます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [クラウド リソースにアクセスするための資格情報を安全に保存する](dsvm-secure-access-keys.md)
 

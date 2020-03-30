@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6156857202c1cca94df6d70ec2059daf55178f1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74025145"
 ---
 # <a name="application-registration-subtypes-and-permissions-in-azure-active-directory"></a>Azure Active Directory でのアプリケーション登録のサブタイプとアクセス許可
@@ -65,7 +65,7 @@ ms.locfileid: "74025145"
 > [!NOTE]
 > 作成のアクセス許可を含むロールを割り当てるとき、ロールの割り当てはディレクトリ スコープで行う必要があります。 リソース スコープで割り当てられた作成のアクセス許可は、アプリの登録を作成する権限を付与しません。
 
-### <a name="read"></a>読み取り
+### <a name="read"></a>Read
 
 組織内のすべてのメンバー ユーザーは、既定でアプリ登録情報を読み取ることができます。 一方、ゲスト ユーザーおよびアプリケーション サービス プリンシパルはできません。 ゲスト ユーザーまたはアプリケーションにロールを割り当てる予定の場合は、適切な読み取りアクセス許可を含める必要があります。
 
@@ -167,7 +167,7 @@ microsoft.directory/applications/permissions/update と同じアクセス許可�
 
 [!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure portal、Azure AD PowerShell、および Graph API](roles-create-custom.md) を使用してカスタム ロールを作成する
 - [カスタム ロールの割り当てを表示する](roles-view-assignments.md)

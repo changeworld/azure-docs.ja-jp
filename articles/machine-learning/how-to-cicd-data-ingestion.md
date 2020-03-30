@@ -11,12 +11,12 @@ author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 01/30/2020
-ms.openlocfilehash: 49b384e9e2d9b77179a0154bf2d96524c064c2ca
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: d987171d41bd6d80bab4cce91ef9ecec1f0dc7a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76960348"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80247182"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>データ インジェスト パイプラインの DevOps
 
@@ -28,7 +28,7 @@ ms.locfileid: "76960348"
 
 ![data-ingestion-pipeline](media/how-to-cicd-data-ingestion/data-ingestion-pipeline.png)
 
-このアプローチでは、トレーニング データは Azure BLOB ストレージに格納されています。 Azure Data Factory パイプラインを使って、入力 BLOB コンテナーからデータをフェッチし、変換して、そのデータを出力 BLOB コンテナーに保存します。 このコンテナーは、Azure Machine Learning service の[データ ストレージ](https://docs.microsoft.com/azure/machine-learning/concept-data#access-data-in-storage)として機能します。 データの準備が完了したら、Data Factory パイプラインを使ってトレーニング Machine Learning パイプラインを呼び出してモデルをトレーニングします。 この特定の例では、Azure Databricks クラスターで実行されている Python ノートブックによってデータ変換が実行されます。 
+このアプローチでは、トレーニング データは Azure BLOB ストレージに格納されています。 Azure Data Factory パイプラインを使って、入力 BLOB コンテナーからデータをフェッチし、変換して、そのデータを出力 BLOB コンテナーに保存します。 このコンテナーは、Azure Machine Learning service の[データ ストレージ](concept-data.md)として機能します。 データの準備が完了したら、Data Factory パイプラインを使ってトレーニング Machine Learning パイプラインを呼び出してモデルをトレーニングします。 この特定の例では、Azure Databricks クラスターで実行されている Python ノートブックによってデータ変換が実行されます。 
 
 ## <a name="what-we-are-building"></a>構築している内容
 
@@ -44,7 +44,7 @@ Python ノートブックのソース コードと Azure Data Factory のソー�
 
 ### <a name="python-notebook-source-code"></a>Python ノートブックのソース コード
 
-データ エンジニアは、IDE (たとえば、[Visual Studio Code](https://code.visualstudio.com)) 内のローカルで、または Databricks ワークスペースで、Python ノートブックのソース コードを編集します。 後者では、開発環境でコードをデバッグできます。 どのような場合でも、分岐ポリシーに従ってコードはリポジトリにマージされます。 `.ipynb` Jupyter Notebook 形式ではなく `.py` ファイルにコードを保存することを強くお勧めします。 こうすることで、コードが読みやすくなり、CI プロセスでの自動コード品質チェックが可能になります。
+データ エンジニアは、IDE (たとえば、[Visual Studio Code](https://code.visualstudio.com)) 内のローカルで、または Databricks ワークスペースで、Python ノートブックのソース コードを編集します。 後者では、開発環境でコードをデバッグできます。 どのような場合でも、分岐ポリシーに従ってコードはリポジトリにマージされます。 `.py` Jupyter Notebook 形式ではなく `.ipynb` ファイルにコードを保存することを強くお勧めします。 こうすることで、コードが読みやすくなり、CI プロセスでの自動コード品質チェックが可能になります。
 
 ### <a name="azure-data-factory-source-code"></a>Azure Data Factory ソース コード
 

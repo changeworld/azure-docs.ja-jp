@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 03/05/2020
 ms.openlocfilehash: 73b9ae6bc3c15526bfdafd74330c7b86286631b1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78396143"
 ---
 # <a name="enable-logging-in-azure-machine-learning"></a>Azure Machine Learning でログ記録を有効にする
@@ -31,7 +31,7 @@ Azure Machine Learning Python SDK を使用すると、既定の Python ロギ�
 
 ## <a name="training-models-and-compute-target-logging"></a>モデルのトレーニングとコンピューティング先のログ記録
 
-モデルのトレーニング プロセス中のログ記録を有効にするには複数の方法があり、例では一般的な設計パターンが示されています。 `Experiment` クラスの `start_logging` 関数を使用すると、実行関連のデータをクラウドのワークスペースに簡単にログ記録することができます。
+モデルのトレーニング プロセス中のログ記録を有効にするには複数の方法があり、例では一般的な設計パターンが示されています。 `start_logging` クラスの `Experiment` 関数を使用すると、実行関連のデータをクラウドのワークスペースに簡単にログ記録することができます。
 
 ```python
 from azureml.core import Experiment
@@ -58,7 +58,7 @@ run = experiment.submit(config=run_config_object, show_output=True)
 run.wait_for_completion(show_output=True)
 ```
 
-SDK では、トレーニングの特定のシナリオにおいて、既定の Python ロギング パッケージの使用もサポートされています。 次の例では、`AutoMLConfig` オブジェクトで `INFO` のログ記録レベルを有効にしています。
+SDK では、トレーニングの特定のシナリオにおいて、既定の Python ロギング パッケージの使用もサポートされています。 次の例では、`INFO` オブジェクトで `AutoMLConfig` のログ記録レベルを有効にしています。
 
 ```python
 from azureml.train.automl import AutoMLConfig

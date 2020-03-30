@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 93ec5e740ac6acf9420a9d980092ed772ac1618e
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720981"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Azure Machine Learning Python クライアント ライブラリを使って Python のデータ セットにアクセスする
@@ -28,7 +28,7 @@ Microsoft Azure Machine Learning Python クライアント ライブラリのプ
 * 実験から中間データセットにアクセスする
 * Python クライアント ライブラリを使用してデータ セットを列挙、メタデータにアクセス、データ セットのコンテンツを読み込み、新しいデータ セットを作成して既存のデータ セットを更新する
 
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a><a name="prerequisites"></a>前提条件
 Python クライアント ライブラリは、次の環境でテストされています。
 
 * Windows、Mac、Linux
@@ -42,7 +42,7 @@ Python クライアント ライブラリは、次の環境でテストされて
 
 [Anaconda](http://continuum.io/downloads#all)、[Canopy](https://store.enthought.com/downloads/) などの Python ディストリビューションを使用し、Python、IPython、また上述の 3 つのパッケージをインストールすることを推奨します。 IPython は厳密には必要ありませんが、データをインタラクティブに操作して視覚化する優れた環境になります。
 
-### <a name="installation"></a>Azure Machine Learning Python クライアント ライブラリをインストールする方法
+### <a name="how-to-install-the-azure-machine-learning-python-client-library"></a><a name="installation"></a>Azure Machine Learning Python クライアント ライブラリをインストールする方法
 このトピックで説明されているタスクを完了するには、Azure Machine Learning Python クライアント ライブラリをインストールします。 このライブラリは、[Python Package Index](https://pypi.python.org/pypi/azureml) から入手できます。 ご利用の Python 環境にインストールするには、ローカルの Python 環境から次のコマンドを実行します。
 
     pip install azureml
@@ -56,12 +56,12 @@ Python クライアント ライブラリは、次の環境でテストされて
     pip install git+https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python.git
 
 
-## <a name="datasetAccess"></a>を使ってデータ セットにアクセスする
+## <a name="use-code-snippets-to-access-datasets"></a><a name="datasetAccess"></a>を使ってデータ セットにアクセスする
 Python クライアント ライブラリを使うと、実行している実験から既存のデータ セットへプログラムでアクセスできるようになります。
 
 Azure Machine Learning Studio (クラシック) Web インターフェイスから、ローカル コンピューターでデータ セットを pandas DataFrame オブジェクトとしてダウンロードして逆シリアル化するために必要なすべての情報を含むコード スニペットを生成できます。
 
-### <a name="security"></a>データ アクセスのためのセキュリティ
+### <a name="security-for-data-access"></a><a name="security"></a>データ アクセスのためのセキュリティ
 Python クライアント ライブラリで使用するために Azure Machine Learning Studio (クラシック) で提供されるコード スニペットには、ユーザーのワークスペース ID や認証トークンが含まれます。 これらを使用すればワークスペースにフル アクセスできますので、パスワードなどで保護する必要があります。
 
 セキュリティ上の理由から、ワークスペースの **[所有者]** として設定された役割を持つユーザーのみコード スニペットの機能を使うことができます。 役割は Azure Machine Learning Studio (クラシック) で **[設定]** の下の **[ユーザー]** ページに表示されます。
@@ -82,7 +82,7 @@ Python クライアント ライブラリで使用するために Azure Machine 
 
 認証トークンは、 **[設定]** ページの **[認証トークン]** で管理されます。 認証トークンを再度生成することは可能ですが、以前のトークンへのアクセスは無効になります。
 
-### <a name="accessingDatasets"></a>ローカル Python アプリケーションからデータ セットにアクセスする
+### <a name="access-datasets-from-a-local-python-application"></a><a name="accessingDatasets"></a>ローカル Python アプリケーションからデータ セットにアクセスする
 1. Machine Learning Studio (クラシック) で、左側のナビゲーション バーの **[データセット]** をクリックします。
 2. アクセスするデータ セットを選択します。 **[マイ データ セット]** リストか **[サンプル]** リストからどのデータ セットでも選択できます。
 3. 下のツールバーから、 **[データ アクセス コードの生成]** をクリックします。 データが Python クライアント ライブラリと互換性のない形式の場合、このボタンは無効になります。
@@ -95,7 +95,7 @@ Python クライアント ライブラリで使用するために Azure Machine 
    
     ![ノートブックにコードを貼り付ける][ipython-dataset]
 
-## <a name="accessingIntermediateDatasets"></a>Machine Learning 実験から中間データセットにアクセスする
+## <a name="access-intermediate-datasets-from-machine-learning-experiments"></a><a name="accessingIntermediateDatasets"></a>Machine Learning 実験から中間データセットにアクセスする
 Machine Learning Studio (クラシック) で実験が実行されると、モジュールの出力ノードから中間データセットにアクセスできます。 中間データセットは、モデル ツールが実行されているときに中間手順で作成され使用されるデータです。
 
 中間データセットは、データの形式が Python クライアント ライブラリと互換性がある限りアクセスできます。
@@ -139,7 +139,7 @@ Machine Learning Studio (クラシック) で実験が実行されると、モ�
     
     ![ヒストグラム][ipython-histogram]
 
-## <a name="clientApis"></a>Machine Learning Python クライアント ライブラリを使用してデータ セットのアクセス、読み込み、作成、管理をする
+## <a name="use-the-machine-learning-python-client-library-to-access-read-create-and-manage-datasets"></a><a name="clientApis"></a>Machine Learning Python クライアント ライブラリを使用してデータ セットのアクセス、読み込み、作成、管理をする
 ### <a name="workspace"></a>ワークスペース
 ワークスペースは、Python クライアント ライブラリのエントリ ポイントです。 `Workspace` クラスに自分のワークスペース ID と認証トークンを指定し、インスタンスを作成します。
 
@@ -172,7 +172,7 @@ Machine Learning Studio (クラシック) で実験が実行されると、モ�
     ds = ws.datasets[0]
 
 
-### <a name="metadata"></a>Metadata
+### <a name="metadata"></a>メタデータ
 データセットには、コンテンツに加え、メタデータがあります (中間データセットはこのルールの例外であり、メタデータはありません)。
 
 作成時にユーザーが割り当てるメタデータの値の一部には次のものがあります。
@@ -312,7 +312,7 @@ Python クライアント ライブラリは、pandas DataFrame を次の形式�
 
 `data_type_id`、`name`、`description` のパラメーターはすべて省略可能で、前の値に対する既定値になります。 `dataframe` パラメーターは常に必要です。
 
-ご利用のデータが既にシリアル化されている場合、`update_from_dataframe` の代わりに `update_from_raw_data` を使用します。 `dataframe` の代わりに `raw_data` を渡すだけで、同様に動作します。
+ご利用のデータが既にシリアル化されている場合、`update_from_raw_data` の代わりに `update_from_dataframe` を使用します。 `raw_data` の代わりに `dataframe` を渡すだけで、同様に動作します。
 
 <!-- Images -->
 [security]:./media/python-data-access/security.png
