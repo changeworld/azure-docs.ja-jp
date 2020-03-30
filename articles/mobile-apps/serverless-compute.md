@@ -1,19 +1,18 @@
 ---
 title: Azure Functions とその他のサービスでサーバーレス モバイル アプリケーション バックエンドを構築する
 description: 堅牢なサーバーレス モバイル アプリケーション バックエンドを構築するために使用されるコンピューティング サービスについて説明します。
-author: elamalani
-manager: elamalani
+author: codemillmatt
 ms.service: vs-appcenter
 ms.assetid: 444f0959-aa7f-472c-a6c7-9eecea3a34b9
 ms.topic: conceptual
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: ec7091a32a1be8d875e16d8e0a9b20b5e80de387
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: d6a2bbc984a8808d2cd8a9b292e55d80f43f2e9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291959"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240145"
 ---
 # <a name="build-mobile-back-end-components-with-compute-services"></a>コンピューティング サービスを利用してモバイル バックエンド コンポーネントを構築する
 あらゆるモバイル アプリケーションが、データ ストレージ、ビジネス ロジック、セキュリティを担当するバックエンドを必要とします。 バックエンド コードをホストして実行するインフラストラクチャを管理するには、複数のサーバーのサイズ指定、プロビジョニング、およびスケーリングを行う必要があります。 また、OS の更新プログラムと関連するハードウェアを管理し、セキュリティ パッチを適用する必要があります。 さらに、パフォーマンス、可用性、フォールト トレランスのために、これらのインフラストラクチャ コンポーネントをすべて監視する必要があります。 

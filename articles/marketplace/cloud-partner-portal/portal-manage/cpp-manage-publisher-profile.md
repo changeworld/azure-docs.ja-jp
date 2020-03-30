@@ -1,21 +1,19 @@
 ---
 title: Azure Marketplace と AppSource の発行元プロファイルを管理する | Azure Marketplace
 description: PC 記事にリンクされている、非推奨の CPP 記事。以前の記述「Azure Marketplace と AppSource の発行元プロファイルを管理する方法について説明します」
-services: Azure, Marketplace, AppSource, Cloud Partner Portal, Partner Center
-author: ChJenk
-manager: pbutlerm
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.author: v-chjen
-ms.openlocfilehash: e2fdbd8720fe80a7d647f908a78614123202c657
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.author: dsindona
+ms.openlocfilehash: bc75ebbba807aa981e8de29c40947516fea6638d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666445"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288497"
 ---
 # <a name="manage-your-azure-marketplace-and-appsource-publisher-profile"></a>Azure Marketplace と AppSource の発行元プロファイルを管理する
 
-この機能は Microsoft [パートナー センター ポータル](https://partner.microsoft.com/)に移行されました。 詳細については、「[パートナー センターで Commercial Marketplace アカウントを管理する方法](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)」を参照してください。
+この機能は Microsoft [パートナー センター ポータル](https://partner.microsoft.com/) に移行されました。 詳細については、「[パートナー センターで Commercial Marketplace アカウントを管理する方法](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)」を参照してください。

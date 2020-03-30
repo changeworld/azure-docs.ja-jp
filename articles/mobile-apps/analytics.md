@@ -1,18 +1,18 @@
 ---
 title: Visual Studio App Center と Azure サービスを使用したモバイル アプリケーションの利用状況とユーザーの動作について
 description: ユーザーによるモバイル アプリケーションの利用状況を把握することでビジネス上の適切な意思決定を行うのに役立つ、App Center などのサービスについて学習します。
-author: elamalani
+author: codemillmatt
 ms.assetid: 34a8a070-9b3c-4faf-8588-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: ff25df55e8489819ca9400205cdea1b8ceb8bf80
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: 4dc3cea4497c55dda0d8da2ca29201615dadff19
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454530"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80241065"
 ---
 # <a name="analyze-and-understand-mobile-application-use"></a>モバイル アプリケーションの使用を分析して把握する
 アプリケーションをユーザーがどのように使用しているかをどの程度把握していますか。 アプリケーションのアクティブ ユーザーはどのくらいいて、その利用状況は時間の経過と共にどのように変化しているでしょう。 どのような機能が使用されており、また、最もよく使用される機能は何でしょう。 これらのユーザーは何をベースにしていますか。 最新バージョンのアプリケーションを使用しているユーザーはどのくらいいますか。 アプリからビジネス上の成功を得るには、これらのすべての質問を理解しておくことが重要です。 このような利用状況分析に関する質問に答えるには、アプリから利用状況データを収集する必要があります。

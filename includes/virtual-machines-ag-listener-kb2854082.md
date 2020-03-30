@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 28aab15dc67e051190e8d4e35e92240a56fe54a6
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67181123"
 ---
 次に、クラスター上に Windows Server 2008 R2 または Windows Server 2012 を実行しているサーバーがある場合は、修正プログラム [KB2854082](https://support.microsoft.com/kb/2854082) がオンプレミスのサーバーまたはクラスターの一部である Azure VM にそれぞれインストールされていることを確認する必要があります。 クラスター内 (可用性グループ内ではなく) のすべてのサーバーまたは VM にも、この修正プログラムがインストールされている必要があります。

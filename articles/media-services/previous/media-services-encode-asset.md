@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 06/25/2019
 ms.author: juliako
 ms.openlocfilehash: d5d5b8a7328ee82e94d494795617832cb0258667
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901508"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227047"
 ---
 # <a name="overview-of-azure-on-demand-media-encoders"></a>Azure オンデマンド メディア エンコーダーの概要 
 
@@ -36,7 +36,7 @@ Media Services アカウントの作成時に、**既定**のストリーミン�
 
 Media Services は次のオンデマンド エンコーダーをサポートしてます。これらについてはこの記事で説明します。
 
-* [Media Encoder Standard](media-services-encode-asset.md#media-encoder-standard)
+* [メディア エンコーダー スタンダード](media-services-encode-asset.md#media-encoder-standard)
 * [メディア エンコーダー Premium ワークフロー](media-services-encode-asset.md#media-encoder-premium-workflow)
 
 この記事には、オンデマンド メディア エンコーダーの簡単な説明と、詳しい情報を提供する記事のリンクが含まれています。 また、このトピックではエンコーダーを比較します。
@@ -68,7 +68,7 @@ Media Encoder Standard は、 [ここ](https://go.microsoft.com/fwlink/?linkid=6
 ### <a name="create-overlays"></a>オーバーレイを作成する
 詳細については、「 [オーバーレイを作成する](media-services-advanced-encoding-with-mes.md#overlay)」をご覧ください。
 
-### <a name="see-also"></a>関連項目
+### <a name="see-also"></a>参照
 [Media Services ブログ](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)
 
 ## <a name="media-encoder-premium-workflow"></a>メディア エンコーダー Premium ワークフロー

@@ -7,14 +7,14 @@ author: bwren
 ms.author: bwren
 ms.date: 06/25/2019
 ms.openlocfilehash: 897eff62fcbab5996b6b9493bd825ae412aa4c3e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356224"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226583"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Azure Monitor Log Analytics のログ クエリのスコープと時間範囲
-[Azure portal の [Log Analytics]](get-started-portal.md) で[ログ クエリ](log-query-overview.md)を実行するとき、クエリによって評価されるデータのセットは、選択したスコープと時間範囲によって異なります。 この記事では、スコープと時間範囲、および要件に応じてそれぞれを設定する方法について説明します。 さまざまな種類のスコープの動作についても説明します。
+[Azure portal の [Log Analytics]](log-query-overview.md) で[ログ クエリ](get-started-portal.md)を実行するとき、クエリによって評価されるデータのセットは、選択したスコープと時間範囲によって異なります。 この記事では、スコープと時間範囲、および要件に応じてそれぞれを設定する方法について説明します。 さまざまな種類のスコープの動作についても説明します。
 
 
 ## <a name="query-scope"></a>クエリ スコープ
@@ -22,7 +22,7 @@ ms.locfileid: "78356224"
 
 スコープは常に Log Analytics ウィンドウの左上に表示されます。 アイコンは、スコープが Log Analytics ワークスペースか、それとも Application Insights アプリケーションかを示します。 アイコンなしはその他の Azure リソースを示します。
 
-![Scope](media/scope/scope.png)
+![スコープ](media/scope/scope.png)
 
 スコープは Log Analytics の起動に使用する方法によって決まり、スコープをクリックして変更できる場合もあります。 次の表は、使用されるさまざまな種類のスコープとそれぞれの詳細の一覧です。
 
@@ -65,7 +65,7 @@ Log Analytics は、特定の数のリージョンが使用されているとき
 ## <a name="time-range"></a>時間の範囲
 時間範囲は、レコードが作成された時期に基づいてクエリで評価されるレコード セットを指定します。 次の表で説明しているように、これはワークスペースまたはアプリケーション内のすべてのレコードの標準プロパティによって定義されます。
 
-| 場所 | プロパティ |
+| Location | プロパティ |
 |:---|:---|
 | Log Analytics ワークスペース          | TimeGenerated |
 | Application Insights アプリケーション | timestamp     |

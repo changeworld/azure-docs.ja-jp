@@ -1,5 +1,5 @@
 ---
-title: Azure の請求書と毎日の使用状況データをダウンロードする | Microsoft Docs
+title: Azure の請求書と毎日の使用状況データをダウンロードする
 description: Azure の請求書と毎日の使用状況データをダウンロードまたは表示する方法について説明します。
 keywords: 請求書,請求書のダウンロード,Azure の請求書,Azure の使用状況
 author: genlin
@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: af2184d7faa2ace8ed1043eaf2aaec0d525bc937
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 629ab8a0f2af789501e6365c94f4ce7f3fd3649c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79125634"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237685"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Azure の請求書と毎日の使用状況データをダウンロードまたは表示する
 
@@ -62,7 +62,7 @@ Microsoft 顧客契約を結んでいる場合、請求書と使用量の情報�
 6. ダウンロードのコンテキスト メニューで、 **[請求書]** を選択します。
 
 最後の請求期間の請求書が表示されない場合は、**追加情報**に関するページを参照してください。 <!-- Fix this -->
-### <a name="noinvoice"></a> 前回の請求期間の請求書が表示されない理由
+### <a name="why-dont-i-see-an-invoice-for-the-last-billing-period"></a><a name="noinvoice"></a> 前回の請求期間の請求書が表示されない理由
 
 請求書が表示されない理由はいくつか考えられます。
 

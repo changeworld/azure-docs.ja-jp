@@ -5,10 +5,10 @@ keywords: jenkins, plugis, azure, devops
 ms.date: 03/22/2019
 ms.topic: article
 ms.openlocfilehash: ecc8f7f7435cbb0dbc80f334f27aaca7f4cd1ed7
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74158786"
 ---
 # <a name="jenkins-plugins-for-azure"></a>Azure 用の Jenkins プラグイン

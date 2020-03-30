@@ -1,18 +1,18 @@
 ---
 title: AppSource と Azure Marketplace の比較 | Azure
 description: この記事では、Microsoft AppSource および Azure Marketplace のネットショップについて説明します。
-author: jm-aditi-ms
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: dsindona
-ms.openlocfilehash: c07bba7340a1934fc422598c798022602e7c046a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd6c375231facc3d7afb35df74210d26b5f50ba8
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281614"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387786"
 ---
 # <a name="comparing-appsource-and-the-azure-marketplace"></a>AppSource と Azure Marketplace の比較
 [Azure Marketplace](https://azuremarketplace.microsoft.com) と [Microsoft AppSource](https://appsource.microsoft.com) のネットショップは、固有の顧客要件に対応します。 ネットショップを使用してロール単位で顧客をターゲティングします。 顧客に基づいて、適切なソリューションまたはサービスを提供できます。

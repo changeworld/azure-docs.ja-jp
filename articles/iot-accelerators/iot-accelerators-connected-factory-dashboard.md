@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: dobett
 ms.openlocfilehash: b53177d578768428665891704269e63bd8edb09e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73820173"
 ---
 # <a name="use-features-in-the-connected-factory-solution-accelerator-dashboard"></a>接続済みファクトリ ソリューション アクセラレータ ダッシュボードの機能を使用する
@@ -107,7 +107,7 @@ ms.locfileid: "73820173"
 > [!NOTE]
 > ソリューション アクセラレータに関連するすべての要素を確実に削除するには、[azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators#dashboard) サイトで削除してください。 ポータルでリソース グループを削除しないようにしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、実際のソリューション アクセラレータをデプロイできました。引き続き IoT ソリューション アクセラレータの概要について学習するには、次の記事を参照してください。
 

@@ -4,11 +4,11 @@ description: Azure Container Instances で現在実行されているコンテ�
 ms.topic: article
 ms.date: 03/30/2018
 ms.openlocfilehash: de48e6ac246e2b0751561b4c60bb63d88b599bdf
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250013"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225847"
 ---
 # <a name="execute-a-command-in-a-running-azure-container-instance"></a>実行中の Azure Container Instances でコマンドを実行する
 
@@ -16,7 +16,7 @@ Azure Container Instances は、実行中のコンテナーでのコマンドの
 
 ## <a name="run-a-command-with-azure-cli"></a>Azure CLI でコマンドを実行する
 
-[Azure CLI][azure-cli] で [az container exec][az-container-exec] を使用して、実行中のコンテナーでコマンドを実行します。
+[Azure CLI][az-container-exec] で [az container exec][azure-cli] を使用して、実行中のコンテナーでコマンドを実行します。
 
 ```azurecli
 az container exec --resource-group <group-name> --name <container-group-name> --exec-command "<command>"
