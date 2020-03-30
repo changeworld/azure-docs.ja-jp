@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 06/10/2018
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: 7baa2dbd1583ebbccbf9b21df3531404bd839e10
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1aaec104e9130eeef723c6505e04e3317271566b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74260795"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80234173"
 ---
 **構成およびプロセス サーバーの要件**
 
@@ -35,7 +35,7 @@ RAM | 16 GB
 **コンポーネント** | **要件** 
 --- | ---
 オペレーティング システム | Windows Server 2012 R2 <br> Windows Server 2016
-オペレーティング システムのロケール | 英語 (en-us)
+オペレーティング システムのロケール | 英語 (en-*)
 Windows Server の役割 | これらの役割を有効にしないでください。 <br> - Active Directory Domain Services <br>- インターネット インフォメーション サービス <br> - Hyper-V 
 グループ ポリシー | これらのグループ ポリシーを有効にしないでください。 <br> - コマンド プロンプトへのアクセス禁止。 <br> - レジストリ編集ツールへのアクセス禁止。 <br> - ファイル添付の信頼ロジック。 <br> - スクリプト実行の有効化。 <br> [詳細情報](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
 IIS | - 既存の Web サイトが存在しない <br> - ポート 443 でリッスンしている既存の Web サイト/アプリケーションが存在しない <br>- [匿名認証](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx)を有効にする <br> - [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 設定を有効にする 
@@ -76,7 +76,7 @@ MYSQL | MySQL をインストールする必要があります。 手動でイ�
 次の表は、構成サーバーの容量の要件をまとめたものです。 複数の VMware VM をレプリケートする場合、[容量プラン作成の考慮事項](../articles/site-recovery/site-recovery-plan-capacity-vmware.md)を確認し、[Azure Site Recovery Deployment Planner ツール](../articles/site-recovery/site-recovery-deployment-planner.md)を実行します。
 
 
-**CPU** | **メモリ** | **キャッシュ ディスク** | **データの変更率** | **レプリケートされたマシン**
+**CPU** | **[メモリ]** | **キャッシュ ディスク** | **データの変更率** | **レプリケートされたマシン**
 --- | --- | --- | --- | ---
 8 vCPU<br/><br/> 2 ソケット * 4 コア \@ 2.5 GHz | 16 GB | 300 GB | 500 GB 以下 | 100 台未満のマシン
 12 vCPU<br/><br/> 2 ソケット * 6 コア \@ 2.5 GHz | 18 GB | 600 GB | 500 GB ～ 1 TB | 100 ～ 150 台のマシン

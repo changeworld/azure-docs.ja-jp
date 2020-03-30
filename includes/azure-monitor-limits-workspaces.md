@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 49dc69eb73bd19509b5e14c5a4976cfa7208545a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 97f265d76ac70891e9cefc0ef6651e439706ed23
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75392346"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334854"
 ---
 **データの収集量と保持期間** 
 

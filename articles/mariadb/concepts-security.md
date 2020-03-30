@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: d23eabdacc57a3f5a10d9e3b132a6daac42fbd4d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 8f41fe1005e96b428337bc73b9d468962a079596
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772150"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79527828"
 ---
 # <a name="security-in-azure-database-for-mariadb"></a>Azure Database for MariaDB のセキュリティ
 
@@ -50,5 +50,5 @@ Azure Database for MariaDB サーバーを作成するときに、管理者ユ�
 [監査ログ](concepts-audit-logs.md)を使うと、データベースのアクティビティを追跡できます。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [IP](concepts-firewall-rules.md) または[仮想ネットワーク](concepts-data-access-security-vnet.md)のファイアウォール規則を有効にする

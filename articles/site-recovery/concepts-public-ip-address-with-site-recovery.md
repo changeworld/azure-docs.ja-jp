@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: b1f3ffa6fc90fc0cab0217d1b71907342f2dbd0d
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084245"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236539"
 ---
 # <a name="set-up-public-ip-addresses-after-failover"></a>フェールオーバー後にパブリック IP アドレスを設定する
 
@@ -53,7 +53,7 @@ Traffic Manager でのフェールオーバーシナリオの詳細について�
 - **プライマリ**エンドポイントは、ソース環境がAzure の内部または外部にあるかどうかによって、[Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints)または[外部](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)どちらにもなり得ます。
 - **フェールオーバー**エンドポイントが**Azure**エンドポイントとして作成されます。 **静的パブリック IP アドレス**を使用し、これが災害時に Traffic Manager 用の外部に接続するエンドポイントとなります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure Site Recovery を使ったAzure Traffic Manager](../site-recovery/concepts-traffic-manager-with-site-recovery.md)について詳しく見る
 - Traffic Manager の[ルーティング方法](../traffic-manager/traffic-manager-routing-methods.md)の詳細を確認する。
 - アプリケーションのフェールオーバーを自動化するための[復旧計画](site-recovery-create-recovery-plans.md)の詳細を確認する。
