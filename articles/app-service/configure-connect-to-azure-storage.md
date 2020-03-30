@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 ms.openlocfilehash: 64ef4dfe81e6415f1285a74962e2123507715119
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77120667"
 ---
 # <a name="configure-azure-files-in-a-windows-container-on-app-service"></a>App Service の Windows コンテナーで Azure Files を構成します。
@@ -38,7 +38,7 @@ ms.locfileid: "77120667"
 - Windows コンテナーの Azure Storage は、Windows App Service プランでの独自のコード使用のシナリオでは**サポートされていません**。
 - Windows コンテナーの Azure Storage では、インフラストラクチャの制限により、**Storage Firewall** 構成の使用は**サポートされていません**。
 - Windows コンテナーの Azure Storage では、アプリあたり**最大 5 つ**のマウント ポイントを指定できます。
-- アプリにマウントされた Azure Storage は App Service FTP/FTP エンドポイント経由でアクセスすることはできません。 [Azure ストレージ エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)を使用してください。
+- アプリにマウントされた Azure Storage に App Service の FTP または FTPS エンドポイント経由でアクセスすることはできません。 [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用します。
 - Azure Storage は個別に課金され、Web アプリには**含まれていません**。 [Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage)の詳細を確認してください。
 
 ## <a name="link-storage-to-your-web-app-preview"></a>ストレージを Web アプリにリンクする (プレビュー)

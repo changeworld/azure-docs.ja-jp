@@ -1,19 +1,18 @@
 ---
 title: Azure IoT Edge モジュールのオファーを作成する | Azure Marketplace
 description: Marketplace で新規 IoT Edge モジュールを公開する方法。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.author: pabutler
-ms.openlocfilehash: c1e2f5ac6078309b7bd8753a3fc57a592a67dcec
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 164b26560020054f4da8bd1aa0ba2a3ecff1875a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826091"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286627"
 ---
 # <a name="create-a-new-iot-edge-module-offer-with-the-cloud-partner-portal"></a>Cloud パートナー ポータルで新しい IoT Edge モジュールのオファーを作成する
 
@@ -26,13 +25,13 @@ ms.locfileid: "73826091"
 | サポート            | サポート連絡先およびポリシー情報が含まれます |
 
 
-## <a name="new-offer-form"></a>新しいオファー フォーム 
+## <a name="new-offer-form"></a>[新しいプラン] フォーム 
 
 [Cloud パートナー ポータル](https://cloudpartner.azure.com/)にサインインし、左側のメニュー バーで **[+ 新しいプラン]** を選択します。 [新しいプラン] メニューで、 **[IoT Edge モジュール]** を選択して **[新しいオファー]** フォームを表示し、新しい ioT Edge モジュール オファーの資産を定義するプロセスを開始します。 
 
 ![新しい IoT Edge モジュール オファーのユーザー インターフェイスの選択](./media/new-iot-edge-module-offer.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 IoT Edge モジュール オファーの種類に対する **[新しいプラン]** ページで提供されている一連のタブとフォーム フィールドを使用して、新しいオファーを作成できます。 以下の各記事では、タブを使用して新しい IoT Edge モジュール オファーの資産グループとサポート サービスを定義する方法が説明されています。
 

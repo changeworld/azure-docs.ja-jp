@@ -5,19 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 3fed615a767fee2fff1700f996b2103f411db825
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 3/18/2020
+ms.openlocfilehash: c0bee0b628a49746a19545d14b8b8761d0e880d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973477"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062418"
 ---
 # <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>Azure portal を使用した Azure Database for MySQL サーバーの管理
 この記事では、Azure Database for MySQL サーバーを管理する方法について示します。 管理タスクには、コンピューティングとストレージのスケーリング、管理者パスワードのリセット、サーバーの詳細の表示が含まれます。
 
 ## <a name="sign-in"></a>サインイン
-[Azure Portal](https://portal.azure.com) にサインインします。
+[Azure portal](https://portal.azure.com) にサインインする
 
 ## <a name="create-a-server"></a>サーバーの作成
 Azure Database for MySQL サーバーを作成して使用を開始する方法については、[クイックスタート](quickstart-create-mysql-server-database-using-azure-portal.md)を参照してください。
@@ -102,6 +102,6 @@ Azure portal を使用して、管理者ロールのパスワードを変更で�
 3. **[削除]** を選択します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [バックアップとサーバー復元](howto-restore-server-portal.md)について学習する
 - [Azure Database for MySQL でのチューニングと監視のオプション](concepts-monitoring.md)について学習する

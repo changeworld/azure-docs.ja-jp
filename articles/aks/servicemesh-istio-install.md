@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/19/2020
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 608eaaab9fb1e24b00d2aa2d4bfe393b5f17c9a1
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: f0fe4ab46bfe5c0c0c2ea67aa2e2694321628be5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593984"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79136365"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Istio をインストールして使用する
 
@@ -63,7 +63,7 @@ ms.locfileid: "77593984"
 
 [Grafana][grafana] と [Kiali][kiali] を Istio インストールの一部としてインストールします。 Grafana では分析と監視のダッシュボードが提供され、Kiali ではサービス メッシュ監視ダッシュボードが提供されます。 ご使用のセットアップでは、これらのコンポーネントそれぞれに資格情報が必要であり、[シークレット][kubernetes-secrets]として提供する必要があります。
 
-Istio コンポーネントをインストールするには、前もって Grafana と Kiali 両方のシークレットを作成する必要があります。 これらのシークレットは、Istio で使用される `istio-system` 名前空間にインストールする必要があるため、名前空間も作成する必要があります。 `kubectl create` によって名前空間を作成する場合は、`--save-config` オプションを使用する必要があります。これにより、Istio インストーラーは、今後このオブジェクトで `kubectl apply` を実行できるようになります。
+Istio コンポーネントをインストールするには、前もって Grafana と Kiali 両方のシークレットを作成する必要があります。 これらのシークレットは、Istio で使用される `istio-system` 名前空間にインストールする必要があるため、名前空間も作成する必要があります。 `--save-config` によって名前空間を作成する場合は、`kubectl create` オプションを使用する必要があります。これにより、Istio インストーラーは、今後このオブジェクトで `kubectl apply` を実行できるようになります。
 
 ```console
 kubectl create namespace istio-system --save-config
@@ -356,7 +356,7 @@ istioctl dashboard envoy <pod-name>.<namespace>
 
 ### <a name="remove-istio-components-and-namespace"></a>Istio コンポーネントおよび名前空間を削除する
 
-AKS クラスターから Istio を削除するには、`istio.aks.yaml` Istio コントロール プレーンの仕様ファイルと共に `istioctl manifest generate` コマンドを使用します。 これにより、展開したマニフェストが生成されます。これは、インストールされているすべてのコンポーネントと `istio-system` 名前空間を削除するために `kubectl delete` にパイプします。
+AKS クラスターから Istio を削除するには、`istioctl manifest generate` Istio コントロール プレーンの仕様ファイルと共に `istio.aks.yaml` コマンドを使用します。 これにより、展開したマニフェストが生成されます。これは、インストールされているすべてのコンポーネントと `kubectl delete` 名前空間を削除するために `istio-system` にパイプします。
 
 ```console
 istioctl manifest generate -f istio.aks.yaml -o istio-components-aks --logtostderr --set installPackagePath=./install/kubernetes/operator/charts 
@@ -418,11 +418,11 @@ Application Insights と Istio を使用して AKS アプリケーションを�
 [istio-install-download]: https://istio.io/docs/setup/kubernetes/download-release/
 [istio-install-istioctl]: https://istio.io/docs/setup/install/istioctl/
 [istio-configuration-profiles]: https://istio.io/docs/setup/additional-setup/config-profiles/
-[istio-control-plane]: https://istio.io/docs/reference/config/istio.operator.v1alpha12.pb/#IstioControlPlane
+[istio-control-plane]: https://istio.io/docs/reference/config/istio.operator.v1alpha1/
 [istio-bookinfo-example]: https://istio.io/docs/examples/bookinfo/
 
 [istio-feature-stages]: https://istio.io/about/feature-stages/
-[istio-feature-sds]: https://istio.io/docs/tasks/security/auth-sds/
+[istio-feature-sds]: https://istio.io/docs/tasks/traffic-management/ingress/secure-ingress-sds/
 [istio-feature-cni]: https://istio.io/docs/setup/additional-setup/cni/
 
 [install-wsl]: https://docs.microsoft.com/windows/wsl/install-win10

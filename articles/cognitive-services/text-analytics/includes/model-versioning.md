@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
 ms.openlocfilehash: 4cd8d0901ce23fb227bb6919dee18f5aa3d063ed
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77089087"
 ---
 Text Analytics API のバージョン 3 では、お使いのデータに対する最新のモデル バージョンを選択できます。 要求で必要なモデルのバージョンを選択するには、省略可能な `model-version` パラメーターを使用します。 このパラメーターが指定されていない場合、API の既定値は最新の安定したバージョンである `latest` になります。 どの要求でも最新のモデルバージョンを使用できますが、バージョンごとに更新される機能は一部だけです。 次の表では、各モデル バージョンで更新された機能について説明します。

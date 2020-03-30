@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: diberry
 ms.openlocfilehash: ec6f9592a4c149be382fab66cca27d929644d988
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78194511"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Azure リソース オーサリング キーに移行する
@@ -78,7 +78,7 @@ Azure サブスクリプションをお持ちでない場合は、[サインア�
 
 移行プロセスが完了すると、すべての LUIS アプリが 1 つの LUIS オーサリング リソースに割り当てられます。
 
-_LUIS ポータル_ の **[Manage]\(管理\) -> [Azure resources]\(Azure リソース\)** ページで、さらに多くのオーサリング リソースを作成して割り当てることができます。
+**LUIS ポータル**の _[Manage]\(管理\) -> [Azure resources]\(Azure リソース\)_ ページで、さらに多くのオーサリング リソースを作成して割り当てることができます。
 
 _Azure portal_ のオーサリング リソースの **[Access Control (IAM)]** ページから、そのリソースの共同作成者を追加できます。 詳細については、[共同作成者アクセスの追加](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource)に関するページを参照してください。
 

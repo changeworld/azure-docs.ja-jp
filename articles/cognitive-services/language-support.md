@@ -11,10 +11,10 @@ ms.date: 03/03/2020
 ms.author: erhopf
 ms.custom: seodec18
 ms.openlocfilehash: 48cb1ca1427ece0ee30a124b20d3918f1ace47eb
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78274148"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Azure Cognitive Services の自然言語のサポート
@@ -34,11 +34,11 @@ Azure Cognitive Services では、見る、聞く、話す、そして、ユー�
 ## <a name="speech"></a>音声
 
 * [カスタム音声](https://docs.microsoft.com/azure/cognitive-services/custom-speech-service/customspeech-how-to-topics/cognitive-services-custom-speech-change-locale)
-* [Speech Service:音声テキスト変換](https://docs.microsoft.com/azure/cognitive-services/speech-service/supported-languages#speech-to-text)
+* [音声サービス: 音声テキスト変換](https://docs.microsoft.com/azure/cognitive-services/speech-service/supported-languages#speech-to-text)
 * [音声サービス: Text-to-Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/supported-languages#text-to-speech)
-* [Speech Service:音声翻訳](https://docs.microsoft.com/azure/cognitive-services/speech-service/supported-languages#speech-translation)
+* [音声サービス: 音声翻訳](https://docs.microsoft.com/azure/cognitive-services/speech-service/supported-languages#speech-translation)
 
-## <a name="language"></a>Language
+## <a name="language"></a>言語
 
 * [Bing Spell Check](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages)
 * [Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/luis-supported-languages)
@@ -59,7 +59,7 @@ Azure Cognitive Services では、見る、聞く、話す、そして、ユー�
 
 * [Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/text-moderation-api-languages)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [Cognitive Services とは](welcome.md)
 * [アカウントの作成](cognitive-services-apis-create-account.md)

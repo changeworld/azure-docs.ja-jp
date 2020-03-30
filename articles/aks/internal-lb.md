@@ -5,11 +5,11 @@ services: container-service
 ms.topic: article
 ms.date: 03/04/2019
 ms.openlocfilehash: ff102ebe50dd4d2169090718ced9e550701b1b09
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595469"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229603"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で内部ロード バランサーを使用する
 
@@ -28,7 +28,7 @@ Azure Kubernetes Service (AKS) でアプリケーションへのアクセスを�
 
 ## <a name="create-an-internal-load-balancer"></a>内部ロード バランサーを作成します。
 
-内部ロード バランサーを作成するには、次の例に示すように、サービスの種類 *LoadBalancer* と *azure-load-balancer-internal* の注釈を含む `internal-lb.yaml` という名前のサービス マニフェストを作成します。
+内部ロード バランサーを作成するには、次の例に示すように、サービスの種類 `internal-lb.yaml`LoadBalancer*と*azure-load-balancer-internal*の注釈を含む* という名前のサービス マニフェストを作成します。
 
 ```yaml
 apiVersion: v1

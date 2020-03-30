@@ -5,24 +5,24 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b657d54c3ebbe5afc20fc98c1348bb783410df60
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d16412e4e35714c840516670f520f77daed1676d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181049"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80059951"
 ---
 クライアント証明書を生成すると、このクライアント証明書は、生成に使用したコンピューターに自動的にインストールされます。 別のクライアント コンピューターにクライアント証明書をインストールする場合は、生成したクライアント証明書をエクスポートする必要があります。
 
 1. クライアント証明書をエクスポートするには、 **[ユーザー証明書の管理]** を開きます。 生成したクライアント証明書は、既定では "Certificates - Current User\Personal\Certificates" にあります。 エクスポートするクライアント証明書を右クリックして、 **[すべてのタスク]** 、 **[エクスポート]** の順にクリックし、**証明書のエクスポート ウィザード**を開きます。
 
-   ![エクスポート](./media/vpn-gateway-certificates-export-client-cert-include/export.png)
+   ![[エクスポート]](./media/vpn-gateway-certificates-export-client-cert-include/export.png)
 2. 証明書のエクスポート ウィザードで **[次へ]** をクリックして続行します。
 
-   ![次へ](./media/vpn-gateway-certificates-export-client-cert-include/next.png)
+   ![Next](./media/vpn-gateway-certificates-export-client-cert-include/next.png)
 3. **[はい、秘密キーをエクスポートします]** を選び、 **[次へ]** をクリックします。
 
    ![秘密キーをエクスポートする](./media/vpn-gateway-certificates-export-client-cert-include/privatekeyexport.png)

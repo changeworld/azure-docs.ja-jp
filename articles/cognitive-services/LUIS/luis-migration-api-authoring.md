@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
 ms.openlocfilehash: eb01ccc211be55885b945c40bd88553818b0ab78
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73506794"
 ---
 # <a name="authoring-api-changes"></a>オーサリング API の変更点 
@@ -26,6 +26,6 @@ V2 またはプレビュー V3 APIS で作成できます。 同じアプリで 
 
 LUIS ポータルでは、V3 オーサリング API のみを使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 V3 API の[予測エンドポイントの変更点](luis-migration-api-v3.md)を確認します。

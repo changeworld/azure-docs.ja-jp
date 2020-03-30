@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
 ms.openlocfilehash: 5b2b8871d868e827532f23c7ef4f14fb00afb5bc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74072802"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>カスタム自動提案エクスペリエンスを構成する
@@ -83,10 +83,10 @@ GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/Suggestions
 
 それぞれの候補には、`displayText` フィールドと `query` フィールドが含まれています。 `displayText` フィールドには、検索ボックスのドロップダウン リストの設定に使用する検索候補のクエリ文字列が含まれています。
 
-ユーザーがドロップダウン リストから検索候補のクエリ文字列を選択する場合は、[Bing Custom Search API](overview.md) を呼び出すときに `query` フィールドのクエリ文字列を使用します。
+ユーザーがドロップダウン リストから検索候補のクエリ文字列を選択する場合は、`query`Bing Custom Search API[ を呼び出すときに ](overview.md) フィールドのクエリ文字列を使用します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [カスタム検索候補を取得する](./get-custom-suggestions.md)
 - [カスタム インスタンスを検索する](./search-your-custom-view.md)

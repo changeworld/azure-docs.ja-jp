@@ -2,14 +2,14 @@
 author: Blackmist
 ms.service: machine-learning
 ms.topic: include
-ms.date: 11/06/2019
+ms.date: 03/17/2020
 ms.author: larryfr
-ms.openlocfilehash: bda47b2a7e795e32db578817fc21bfda94833eee
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3732d5e63f606635a0a1851195ee487fd8da5818
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927026"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79472411"
 ---
 > [!TIP]
 > ml 拡張機能がインストールされていないというエラー メッセージを受け取った場合は、次のコマンドを使用してインストールしてください。

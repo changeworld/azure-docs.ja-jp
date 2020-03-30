@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.openlocfilehash: 0250810d25b0abb5bf675d8c91f3c0678d895c37
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 3/18/2020
+ms.openlocfilehash: 5f3027909d1c4684e2ef5d1b6e967cb11f570fd0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893163"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062429"
 ---
 # <a name="customize-server-parameters-by-using-azure-cli"></a>Azure CLI を使用したサーバー パラメーターのカスタマイズ
 Azure コマンド ライン ユーティリティ である Azure CLI を使用して、Azure Database for MySQL サーバーの構成パラメーターを一覧表示、表示、および更新できます。 エンジン構成のサブセットは、サーバー レベルで公開され、変更が可能です。 
@@ -34,14 +34,14 @@ az mysql server configuration list --resource-group myresourcegroup --server myd
 ## <a name="show-server-configuration-parameter-details"></a>サーバー構成パラメーター詳細を表示する
 サーバーの特定の構成パラメーターに関する詳細を表示するには、[az mysql server configuration show](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-show) コマンドを実行します。
 
-この例は、リソース グループ **myresourcegroup** にあるサーバー **mydemoserver.mysql.database.azure.com** の **slow\_query\_log** サーバー構成パラメーターの詳細を示します。
+この例は、リソース グループ **myresourcegroup\_ にあるサーバー \_mydemoserver.mysql.database.azure.com** の **slow**query**log** サーバー構成パラメーターの詳細を示します。
 ```azurecli-interactive
 az mysql server configuration show --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
 ## <a name="modify-a-server-configuration-parameter-value"></a>サーバー構成パラメーターの値を変更する
 特定のサーバー構成パラメーターの値を変更することもでき、MySQL サーバー エンジンの基盤となる構成値が更新されます。 構成を更新するには、[az mysql server configuration set](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-set) コマンドを使用します。 
 
-リソース グループ **myresourcegroup** にあるサーバー **mydemoserver.mysql.database.azure.com** の **slow\_query\_log** サーバー構成パラメーターを更新するには、次のコマンドを実行します。
+リソース グループ **myresourcegroup\_ にあるサーバー \_mydemoserver.mysql.database.azure.com** の **slow**query**log** サーバー構成パラメーターを更新するには、次のコマンドを実行します。
 ```azurecli-interactive
 az mysql server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver --value ON
 ```
@@ -77,7 +77,7 @@ SELECT name FROM mysql.time_zone_name;
 
 グローバル レベルのタイム ゾーンは、[az mysql server configuration set](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-set) コマンドを利用して設定できます。
 
-次のコマンドでは、リソース グループ **myresourcegroup** のサーバー **mydemoserver.mysql.database.azure.com** のサーバー構成パラメーター **time\_zone** が **US/Pacific** に更新されます。
+次のコマンドでは、リソース グループ **myresourcegroup\_ のサーバー** mydemoserver.mysql.database.azure.com**のサーバー構成パラメーター**time**zone** が **US/Pacific** に更新されます。
 
 ```azurecli-interactive
 az mysql server configuration set --name time_zone --resource-group myresourcegroup --server mydemoserver --value "US/Pacific"
@@ -94,6 +94,6 @@ SET time_zone = 'US/Pacific';
 [日付と時刻関数](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz)については MySQL ドキュメントを参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure ポータルでサーバー パラメーター](howto-server-parameters.md)を構成する方法

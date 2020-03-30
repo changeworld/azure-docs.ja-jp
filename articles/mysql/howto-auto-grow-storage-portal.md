@@ -5,13 +5,13 @@ author: ambhatna
 ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 7be3e7e1a0d2e48b37c319f67e3b382f825469df
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: ddbcb0143a4f84d9e0f3dc2fedf780fca6637692
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770613"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062513"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mysql-using-the-azure-portal"></a>Azure portal を使用した Azure Database for MySQL のストレージの自動拡張
 この記事では、Azure Database for MySQL サーバーのストレージを、ワークロードに影響を与えることなく拡張されるように構成する方法について説明します。
@@ -40,6 +40,6 @@ MySQL サーバー ストレージの自動拡張を設定するには、次の�
 
     ![Azure Database for MySQL - 自動拡張の成功](./media/howto-auto-grow-storage-portal/5-auto-grow-success.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [メトリックに関するアラートを作成する方法](howto-alert-on-metric.md)について学習します。

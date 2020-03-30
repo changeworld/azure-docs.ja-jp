@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: 2d0cf18de09932c5d66e269a85919f4d85383c5b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358087"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235215"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions のバインド式のパターン
 
@@ -115,7 +115,7 @@ public static void Run(Stream image, string filename, Stream imageSmall, ILogger
 <!--TODO: add JavaScript example -->
 <!-- Blocked by bug https://github.com/Azure/Azure-Functions/issues/248 -->
 
-バインド式とパターンを使用するのと同じ機能がクラス ライブラリの属性に適用されます。 次の例では、属性コンストラクター パラメーターは前の *function.json* の例と同じ `path` 値です。 
+バインド式とパターンを使用するのと同じ機能がクラス ライブラリの属性に適用されます。 次の例では、属性コンストラクター パラメーターは前の `path`function.json*の例と同じ* 値です。 
 
 ```csharp
 [FunctionName("ResizeImage")]
@@ -159,7 +159,7 @@ public static void Run(
 * NextVisibleTime
 * PopReceipt
 
-これらのメタデータ値は、*function.json* ファイルのプロパティでアクセスできます。 たとえば、キュー トリガーを使用していて、読み取る BLOB の名前がキュー メッセージに含まれているとします。 次の例に示すように、*function.json* ファイルで、BLOB `path` プロパティの `queueTrigger` メタデータ プロパティを使用できます。
+これらのメタデータ値は、*function.json* ファイルのプロパティでアクセスできます。 たとえば、キュー トリガーを使用していて、読み取る BLOB の名前がキュー メッセージに含まれているとします。 次の例に示すように、*function.json* ファイルで、BLOB `queueTrigger` プロパティの `path` メタデータ プロパティを使用できます。
 
 ```json
   "bindings": [

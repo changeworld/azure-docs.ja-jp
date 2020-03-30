@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 05/08/2019
 ms.author: alkohli
 ms.openlocfilehash: e8932097bcdef782b1a551d386c2872e02d8abfd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65442387"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229843"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Azure Data Box Gateway のシステム要件
 
@@ -34,7 +34,7 @@ Data Box Gateway の基になっているホスト システムでは、仮想�
 | 仮想プロセッサ (コア)   | 最低 4 |
 | メモリ  | 8 GB 以上|
 | 可用性|単一ノード|
-| ディスク| OS ディスク:250 GB <br> データ ディスク:最小 2 TB、シン プロビジョニング、SSD を使用する必要があります|
+| ディスク| OS ディスク: 250 GB <br> データ ディスク: 最小 2 TB、シン プロビジョニング、SSD を使用する必要があります|
 | ネットワーク インターフェイス|1 つ以上の仮想ネットワーク インターフェイス|
 
 
@@ -59,7 +59,7 @@ Data Box Gateway の基になっているホスト システムでは、仮想�
 [!INCLUDE [Supported storage accounts](../../includes/data-box-edge-gateway-supported-storage-accounts.md)]
 
 
-## <a name="supported-storage-types"></a>サポートされるストレージの種類
+## <a name="supported-storage-types"></a>サポートされているストレージの種類
 
 [!INCLUDE [Supported storage types](../../includes/data-box-edge-gateway-supported-storage-types.md)]
 

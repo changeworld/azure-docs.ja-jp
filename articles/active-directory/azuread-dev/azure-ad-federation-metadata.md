@@ -4,21 +4,21 @@ description: この記事では、Azure Active Directory が Azure Active Direct
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: c2d5f80b-aa74-452c-955b-d8eb3ed62652
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: ryanwi
-ms.reviewer: hirsin, dastrock
+ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: ff034da1f2f40ad0162e5b9fad477d066bc4c3e7
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: bcc44f61ccb7b4a19e7df39ab979669c5aa37da1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163692"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154901"
 ---
 # <a name="federation-metadata"></a>フェデレーション メタデータ
 
@@ -51,7 +51,7 @@ Azure AD は、フェデレーション メタデータを `https://login.micros
 ### <a name="entity-id"></a>エンティティ ID
 `EntityDescriptor` 要素は `EntityID` 属性を含みます。 `EntityID` 属性の値は発行者、つまり、トークンを発行した Security Token Service (STS) を表します。 トークンを受信したときに、発行者を検証することが重要です。
 
-次のメタデータは、`EntityID` 要素を含む、サンプルのテナント固有の `EntityDescriptor` 要素を示しています。
+次のメタデータは、`EntityDescriptor` 要素を含む、サンプルのテナント固有の `EntityID` 要素を示しています。
 
 ```
 <EntityDescriptor
@@ -91,7 +91,7 @@ MIIDPjCCAiqgAwIBAgIQVWmXY/+9RqFA/OG9kFulHDAJBgUrDgMCHQUAMC0xKzApBgNVBAMTImFjY291
 
 `KeyDescriptor` 要素は、フェデレーション メタデータ ドキュメントでは、WS-Federation 固有のセクションと SAML 固有のセクションという 2 つの場所にあります。 両方のセクションで発行された証明書は同じになります。
 
-WS-Federation 固有のセクションで、WS-Federation メタデータ リーダーは、`SecurityTokenServiceType` 型を含む `RoleDescriptor` 要素から証明書を読み取ります。
+WS-Federation 固有のセクションで、WS-Federation メタデータ リーダーは、`RoleDescriptor` 型を含む `SecurityTokenServiceType` 要素から証明書を読み取ります。
 
 `RoleDescriptor` 要素の例を次に示します。
 

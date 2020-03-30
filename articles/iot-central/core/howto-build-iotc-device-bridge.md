@@ -6,14 +6,14 @@ ms.service: iot-central
 author: viv-liu
 ms.author: viviali
 ms.date: 07/09/2019
-ms.topic: conceptual
+ms.topic: how-to
 manager: peterpr
-ms.openlocfilehash: b79020b4da08eeade0af885b4a6ca9f01c81c526
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 6499c9c29d10a2056b0af5499b68b5edd67d82cb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023210"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80158420"
 ---
 # <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>IoT Central デバイス ブリッジを構築して他の IoT クラウドを IoT Central に接続する
 
@@ -23,10 +23,10 @@ IoT Central デバイス ブリッジは、Sigfox、Particle、The Things Networ
 
 ## <a name="what-is-it-and-how-does-it-work"></a>その概要とそのしくみ
 IoT Central デバイス ブリッジは、GitHub のオープン ソース ソリューションです。 カスタム Azure Resource Manager テンプレートといくつかの Azure リソースを Azure サブスクリプションにデプロイする [Deploy to Azure]\(Azure へのデプロイ\) ボタンが用意されています。 リソースには次のものがあります。
--   Azure 関数アプリ
--   Azure Storage アカウント
--   従量課金プラン
--   Azure Key Vault
+-    Azure 関数アプリ
+-    Azure Storage アカウント
+-    従量課金プラン
+-    Azure Key Vault
 
 関数アプリはデバイス ブリッジの重要な要素です。 それは、単純な Webhook の統合によって、他の IoT プラットフォームまたは任意のカスタム プラットフォームから HTTP POST 要求を受信します。 Sigfox、Particle、および TTN の各クラウドに接続する方法を示す例が提供されています。 お使いのプラットフォームで関数アプリに HTTP POST 要求を送信できる場合は、カスタムの IoT クラウドに接続するようにこのソリューションを簡単に拡張できます。
 関数アプリでは、IoT Central で受け入れられる形式にデータを変換し、DPS API を使用してそれを転送します。

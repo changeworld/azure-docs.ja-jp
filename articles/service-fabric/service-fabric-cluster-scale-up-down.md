@@ -4,11 +4,11 @@ description: ノードの種類/仮想マシン スケール セットごとに�
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.openlocfilehash: 26ef13f38d525e4e493ad933bfb906dd36ed0070
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587483"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229395"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>クラスターをスケールインまたはスケールアウトする
 
@@ -184,7 +184,7 @@ else
 }
 ```
 
-以下の **sfctl** コードでは、コマンド `sfctl node list --query "sort_by(items[*], &name)[-1].name"` を使用して、最後に作成されたノードの **node-name** 値を取得します。
+以下の **sfctl** コードでは、コマンド **を使用して、最後に作成されたノードの**node-name`sfctl node list --query "sort_by(items[*], &name)[-1].name"` 値を取得します。
 
 ```shell
 # Inform the node that it is going to be removed

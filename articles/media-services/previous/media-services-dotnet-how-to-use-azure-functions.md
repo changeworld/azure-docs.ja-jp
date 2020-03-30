@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 618acae10b874eb5ebd5b6da7fe081368528dbd8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61217510"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227067"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Media Services を使用する Azure 関数の開発
 
-この記事では、Media Services を使用した Azure Functions の作成方法について説明しています。 この記事で定義されている Azure Function は、新しい MP4 ファイルの **input** という名前付きストレージ アカウント コンテナーを監視します。 ストレージ コンテナーにファイルを削除すると、BLOB トリガーは関数を実行します。 Azure 関数について確認するには、**Azure 関数**のセクションで[概要](../../azure-functions/functions-overview.md)およびその他のトピックを参照してください。
+この記事では、Media Services を使用した Azure Functions の作成方法について説明しています。 この記事で定義されている Azure Function は、新しい MP4 ファイルの **input** という名前付きストレージ アカウント コンテナーを監視します。 ストレージ コンテナーにファイルを削除すると、BLOB トリガーは関数を実行します。 Azure 関数について確認するには、[Azure 関数](../../azure-functions/functions-overview.md)のセクションで**概要**およびその他のトピックを参照してください。
 
 Azure Media Services を使用する既存の Azure 関数を探してデプロイするには、[Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) をチェックアウトしてください。 このリポジトリには、Media Services を使ったサンプルが格納されています。Blob Storage から直接コンテンツを取り込んだり、エンコードしたり、Blob Storage にコンテンツを書き戻したりする処理に関連するワークフローの例が紹介されています。 また、webhook と Azure キューを介してジョブの通知を監視するサンプルも含まれています。 さらに、[Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) リポジトリの例に基づいて関数をデプロイすることもできます。 関数をデプロイするには、 **[Azure に配置する]** を押します。
 
@@ -46,13 +46,13 @@ Media Services の関数を開発するときは、自分が開発するさま�
 
 この記事で定義されている関数では、アプリケーション設定に次の環境変数があることを前提としています。
 
-**AMSAADTenantDomain**:Azure AD テナント エンドポイント。 AMS API への接続の詳細については、[こちら](media-services-use-aad-auth-to-access-ams-api.md)の記事を参照してください。
+**AMSAADTenantDomain**: Azure AD テナント エンドポイント。 AMS API への接続の詳細については、[こちら](media-services-use-aad-auth-to-access-ams-api.md)の記事を参照してください。
 
-**AMSRESTAPIEndpoint**:REST API エンドポイントを表す URI。 
+**AMSRESTAPIEndpoint**: REST API エンドポイントを表す URI。 
 
-**AMSClientId**:Azure AD アプリケーション クライアント ID。
+**AMSClientId**: Azure AD アプリケーション クライアント ID。
 
-**AMSClientSecret**:Azure AD アプリケーション クライアント シークレット。
+**AMSClientSecret**: Azure AD アプリケーション クライアント シークレット。
 
 **StorageConnection**: Media Services アカウントに関連付けられているアカウントのストレージ接続。 この値は、**function.json** ファイルと **run.csx** ファイルで使用されます (下記参照)。
 
@@ -64,11 +64,11 @@ Media Services の関数を開発するときは、自分が開発するさま�
 2. **C#** 言語と**データ処理**シナリオを選択します。
 3. **BlobTrigger** テンプレートを選択します。 BLOB を **input** コンテナーにアップロードするたびに、この関数はトリガーされます。 **input** 名は、次の手順の **Path** で指定されます。
 
-    ![ファイルのアップロード](./media/media-services-azure-functions/media-services-azure-functions004.png)
+    ![files](./media/media-services-azure-functions/media-services-azure-functions004.png)
 
 4. **BlobTrigger** を選択すると、一部の追加のコントロールがページに表示されます。
 
-    ![ファイルのアップロード](./media/media-services-azure-functions/media-services-azure-functions005.png)
+    ![files](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
 4. **Create** をクリックしてください。 
 
@@ -76,7 +76,7 @@ Media Services の関数を開発するときは、自分が開発するさま�
 
 開発した Azure 関数は、コード ファイルなど、このセクションで取り上げる各種ファイルに関連付けることになります。 Azure Portal を使用して関数を作成すると、**function.json** および **run.csx** が自動的に作成されます。 ユーザーは、**project.json** ファイルを追加するか、アップロードする必要があります。 このセクションの残りの部分では、各ファイルの簡単な説明とその定義を紹介します。
 
-![ファイルのアップロード](./media/media-services-azure-functions/media-services-azure-functions003.png)
+![files](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 ### <a name="functionjson"></a>function.json
 
@@ -340,7 +340,7 @@ public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, s
 >[!NOTE]
 > 従量課金プランで BLOB トリガーを使用していると、関数アプリがアイドル状態になったあと、新しい BLOB の処理が最大で 10 分遅延する場合があります。 関数アプリが実行されると、BLOB は直ちに処理されます。 詳しくは、「[BLOB ストレージ トリガーとバインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、Media Services アプリケーションの開発準備が整いました。 
  

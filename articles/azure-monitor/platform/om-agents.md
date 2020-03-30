@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
 ms.openlocfilehash: 92b6737f48d8d8704f461c9adac92284b323b05f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77659409"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234199"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager を Azure Monitor に接続する
 
@@ -47,7 +47,7 @@ IT セキュリティ ポリシーによってネットワーク上のコンピ�
     - 米国中西部
     - オーストラリア東南部
     - 西ヨーロッパ
-    - 米国東部
+    - East US
     - 東南アジア
     - 東日本
     - 英国南部
@@ -115,19 +115,19 @@ Operations Manager 管理グループが  Log Analytics ワークスペースの
 1. Operations Manager コンソールで、 **[管理]** ワークスペースを選択します。
 1. [Operations Management Suite] ノードを展開し、 **[接続]** をクリックします。
 1. **[Operations Management Suite への登録]** リンクをクリックします。
-1. **[Operations Management Suite オンボード ウィザード:認証]** ページで、OMS サブスクリプションに関連付けられている管理者アカウントの電子メール アドレスまたは電話番号とパスワードを入力して、 **[サインイン]** をクリックします。
+1. **[Operations Management Suite オンボード ウィザード: 認証]** ページで、OMS サブスクリプションに関連付けられている管理者アカウントの電子メール アドレスまたは電話番号とパスワードを入力して、 **[サインイン]** をクリックします。
 
    >[!NOTE]
    >Operations Management Suite 名は廃止されました。
 
-1. 認証に成功すると、**Operations Management Suite オンボード ウィザード:ワークスペースの選択** ページで、Azure テナント、サブスクリプション、および Log Analytics ワークスペースを選択するように求められます。 複数のワークスペースがある場合は、ドロップダウン リストから Operations Manager 管理グループに登録するワークスペースを選択し、 **[次へ]** をクリックします。
+1. 正しく認証されると､**Operations Management Suite Onboarding Wizard: Select Workspace** ページが表示され､Azure テナント、サブスクリプション、Log Analytics ワークスペースを選択するよう求められます｡ 複数のワークスペースがある場合は、ドロップダウン リストから Operations Manager 管理グループに登録するワークスペースを選択し、 **[次へ]** をクリックします。
 
    > [!NOTE]
    > Operations Manager では､1 度に 1 つの Log Analytics ワークスペースをサポートしています｡ 前回のワークスペースで Azure Monitor に登録されている接続とコンピューターは、Azure Monitor から削除されます。
    >
    >
-1. **[Operations Management Suite オンボード ウィザード:概要]** ページで設定を確認し、正しい場合は **[作成]** をクリックします。
-1. **[Operations Management Suite オンボード ウィザード:完了]** ページで **[閉じる]** をクリックします。
+1. **[Operations Management Suite オンボード ウィザード: 概要]** ページで設定を確認し、問題がなければ **[作成]** をクリックします。
+1. **[Operations Management Suite オンボード ウィザード: 完了]** ページで、 **[閉じる]** をクリックします。
 
 ### <a name="add-agent-managed-computers"></a>エージェントで管理されたコンピューターを追加する
 
@@ -147,7 +147,7 @@ Log Analytics ワークスペースとの統合が構成された後には､サ
 1. Operations Manager コンソールを開き、 **[Administration (管理)]** ワークスペースを選択します。
 1. [Operations Management Suite] を展開し、 **[接続]** をクリックします。
 1. [OMS の接続] ビューで、 **[プロキシ サーバーの構成]** をクリックします。
-1. **[Operations Management Suite 設定ウィザード:プロキシ サーバー]** ページで **[Operations Management Suite へのアクセスにプロキシ サーバーを使用する]** を選択して、ポート番号と URL を入力し (例: http://corpproxy:80 )、 **[完了]** をクリックします。
+1. **[Operations Management Suite 設定ウィザード: プロキシ サーバー]** ページで **[Operations Management Suite へのアクセスにプロキシ サーバーを使用する]** を選択して、ポート番号と URL を入力し (例: http://corpproxy:80 )、 **[完了]** をクリックします。
 
 プロキシ サーバーで認証が必要な場合は、次の手順を実行して、管理グループ内の Azure Monitor への報告を行うマネージド コンピューターに伝達される必要がある設定と資格情報を構成します。
 
@@ -173,13 +173,13 @@ Log Analytics ワークスペースとの統合が構成された後には､サ
 * **Microsoft.SystemCenter.Advisor.MPUpdate** - ベース Azure Monitor 管理パックを更新します。 既定では 12 時間おきに実行されます。
 * **Microsoft.SystemCenter.Advisor.Core.GetIntelligencePacksRule** - ワークスペースで有効にされたソリューション管理パックを更新します。 既定では 5 分おきに実行されます。
 
-この 2 つのルールはオーバーライドすることができます。具体的には、2 つのルールを無効にして自動ダウンロードを防止することも、新しい管理パックの有無とダウンロードの必要性を判断するために行う管理サーバーと Azure Monitor の同期の頻度を変更することもできます。 秒単位の値で **Frequency** パラメーターを変更して同期スケジュールに変更を加える場合、または **Enabled** パラメーターを変更してルールを無効にする場合は、「[How to Override a Rule or Monitor (ルールまたはモニターをオーバーライドする方法)](https://technet.microsoft.com/library/hh212869.aspx)」の手順に従ってください。 Operations Manager Management Group クラスのすべてのオブジェクトに対するオーバーライドを対象としています。
+この 2 つのルールはオーバーライドすることができます。具体的には、2 つのルールを無効にして自動ダウンロードを防止することも、新しい管理パックの有無とダウンロードの必要性を判断するために行う管理サーバーと Azure Monitor の同期の頻度を変更することもできます。 秒単位の値で [Frequency](https://technet.microsoft.com/library/hh212869.aspx) パラメーターを変更して同期スケジュールに変更を加える場合、または **Enabled** パラメーターを変更してルールを無効にする場合は、「**How to Override a Rule or Monitor (ルールまたはモニターをオーバーライドする方法)** 」の手順に従ってください。 Operations Manager Management Group クラスのすべてのオブジェクトに対するオーバーライドを対象としています。
 
 引き続き既存の変更管理プロセスに従って運用管理グループにおける管理パックのリリースを制御する場合は、ルールを無効にし、更新が許可されている特定の期間中にルールを有効にすることができます。 環境内に開発または QA 管理グループがあり､その管理グループがインターネットと接続できる場合は､Log Analytics ワークスペースを使ってその管理グループがそのシナリオをサポートするように設定できます｡ そうすることによって、Azure Monitor 管理パックを生産管理グループにリリースする前に、その都度､管理パックをレビューし、評価することができます。
 
 ## <a name="switch-an-operations-manager-group-to-a-new-log-analytics-workspace"></a>Operations Manager グループを新しい Log Analytics ワークスペースに切り替える
 
-1. Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
+1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 1. Azure ポータルで、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **Log Analytics** を選択して､ワークスペースを作成します｡  
 1. Operations Manager 管理者ロールのメンバーであるアカウントを使用して Operations Manager コンソールを開き、 **[管理]** ワークスペースを選択します。
 1. Log Analytics を展開し、 **[接続]** を選択します。
@@ -187,7 +187,7 @@ Log Analytics ワークスペースとの統合が構成された後には､サ
 1. **Log Analytics オンボード ウィザード**に従って､新しい Log Analytics ワークスペースに関連付けられている管理者アカウントの電子メール アドレスか電話番号とパスワードを入力します｡
 
    > [!NOTE]
-   > **[Operations Management Suite オンボード ウィザード:ワークスペースの選択]** ページには、使用中の既存のワークスペースが表示されます。
+   > **[Operations Management Suite オンボード ウィザード: ワークスペースの選択]** ページに、使用されている既存のワークスペースが表示されます。
    >
    >
 

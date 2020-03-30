@@ -12,10 +12,10 @@ ms.date: 01/27/2020
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: d901a803311805825c22503af6098e805a67e8f6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76843454"
 ---
 # <a name="the-confidence-score-of-an-answer"></a>回答の信頼度スコア

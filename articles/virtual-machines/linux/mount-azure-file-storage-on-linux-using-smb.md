@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 7b9b536def2aa7da25fef9f3baa5efdd8b0ed6f7
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 0314095a053087a7d490926c41c6ae386c304919
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944610"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066647"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>SMB を使用して Linux VM に Azure File Storage をマウントする
 
@@ -29,7 +29,7 @@ File Storage でホストされている SMB マウントに VM からファイ�
 
 *myResourceGroup* という名前のリソース グループを "*米国東部*" に作成します。
 
-```bash
+```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
@@ -37,7 +37,7 @@ az group create --name myResourceGroup --location eastus
 
 [az storage account create](/cli/azure/storage/account) を使用して、作成したリソース グループ内に新しいストレージ アカウントを作成します。 この例では、*mySTORAGEACCT\<random number>* という名前のストレージ アカウントを作成し、そのストレージ アカウントの名前を変数 **STORAGEACCT** に設定します。 ストレージ アカウント名は一意にする必要があります。`$RANDOM` を使用し、末尾に番号を追加して、一意にします。Ⅰ
 
-```bash
+```azurecli
 STORAGEACCT=$(az storage account create \
     --resource-group "myResourceGroup" \
     --name "mystorageacct$RANDOM" \
@@ -52,7 +52,7 @@ STORAGEACCT=$(az storage account create \
 
 [az storage account keys list](/cli/azure/storage/account/keys) を使用して、ストレージ アカウント キーを表示します。 この例では、**STORAGEKEY** 変数にキー 1 の値を格納しています。
 
-```bash
+```azurecli
 STORAGEKEY=$(az storage account keys list \
     --resource-group "myResourceGroup" \
     --account-name $STORAGEACCT \
@@ -67,7 +67,7 @@ STORAGEKEY=$(az storage account keys list \
 
 この例では、10-GiB クォータを使用して、*myshare* という名前の共有を作成します。 
 
-```bash
+```azurecli
 az storage share create --name myshare \
     --quota 10 \
     --account-name $STORAGEACCT \
@@ -103,6 +103,7 @@ Linux VM を再起動すると、マウントされた SMB 共有はシャット
 ```bash
 //myaccountname.file.core.windows.net/mystorageshare /mnt/mymountpoint cifs vers=3.0,username=mystorageaccount,password=myStorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
 ```
+
 実稼働環境のセキュリティを向上させるために、fstab の外部に資格情報を保存する必要があります。
 
 ## <a name="next-steps"></a>次のステップ

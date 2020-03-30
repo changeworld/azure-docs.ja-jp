@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
 ms.openlocfilehash: c1b48ae8191e2e5313d9037c791eca73c8a55691
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77191382"
 ---
 # <a name="improve-security-for-b2b-messages-by-using-certificates"></a>証明書を使用して B2B メッセージのセキュリティを強化する
@@ -34,7 +34,7 @@ B2B 通信の機密性を確保する必要がある場合は、統合アカウ�
 
 B2B 機能を備えたロジック アプリで "*パブリック証明書*" を使うには、最初に統合アカウントに証明書をアップロードする必要があります。 作成した[契約](logic-apps-enterprise-integration-agreements.md)でプロパティを定義した後は、証明書を使って B2B メッセージをセキュリティ保護できるようになります。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。 Azure のメイン メニューで、 **[すべてのリソース]** を選択します。 検索ボックスに統合アカウント名を入力し、目的の統合アカウントを選択します。
+1. [Azure portal](https://portal.azure.com) にサインインする Azure のメイン メニューで、 **[すべてのリソース]** を選択します。 検索ボックスに統合アカウント名を入力し、目的の統合アカウントを選択します。
 
    ![統合アカウントを探して選択する](media/logic-apps-enterprise-integration-certificates/select-integration-account.png)  
 
@@ -44,7 +44,7 @@ B2B 機能を備えたロジック アプリで "*パブリック証明書*" を
 
 3. **[証明書]** で **[追加]** を選びます。 **[証明書の追加]** で、証明書に関する下記の情報を指定します。 完了したら、 **[OK]** を選びます。
 
-   | プロパティ | Value | 説明 | 
+   | プロパティ | 値 | 説明 | 
    |----------|-------|-------------|
    | **Name** | <*証明書名*> | 証明書の名前 (この例では "publicCert") | 
    | **証明書の種類** | パブリック | 証明書の種類 |
@@ -73,7 +73,7 @@ B2B 機能を備えたロジック アプリで "*プライベート証明書*" 
    `Set-AzKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName 
    '7cd684f4-8a78-49b0-91ec-6a35d38739ba' -PermissionsToKeys decrypt, sign, get, list`
  
-3. [Azure portal](https://portal.azure.com) にサインインします。 Azure のメイン メニューで、 **[すべてのリソース]** を選択します。 検索ボックスに統合アカウント名を入力し、目的の統合アカウントを選択します。
+3. [Azure portal](https://portal.azure.com) にサインインする Azure のメイン メニューで、 **[すべてのリソース]** を選択します。 検索ボックスに統合アカウント名を入力し、目的の統合アカウントを選択します。
 
    ![統合アカウントの検索](media/logic-apps-enterprise-integration-certificates/select-integration-account.png) 
 
@@ -83,7 +83,7 @@ B2B 機能を備えたロジック アプリで "*プライベート証明書*" 
 
 5. **[証明書]** で **[追加]** を選びます。 **[証明書の追加]** で、証明書に関する下記の情報を指定します。 完了したら、 **[OK]** を選びます。
 
-   | プロパティ | Value | 説明 | 
+   | プロパティ | 値 | 説明 | 
    |----------|-------|-------------|
    | **Name** | <*証明書名*> | 証明書の名前 (この例では "privateCert") | 
    | **証明書の種類** | プライベート | 証明書の種類 |

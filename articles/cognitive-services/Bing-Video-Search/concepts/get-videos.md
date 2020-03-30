@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
 ms.openlocfilehash: 5add9597924aa77ede875d0056e83eceb4f99598
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111441"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218917"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Bing Video Search API で動画を検索する
 
@@ -144,7 +144,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="expanding-the-query"></a>クエリの展開
 
-Bing がクエリを展開して元の検索を絞り込むことができる場合、[Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) オブジェクトには `queryExpansions` フィールドが含まれます。 たとえば、クエリが *Cleaning Gutters* であれば、クエリは次のように展開されます。Gutter Cleaning **Tools**、Cleaning Gutters **From the Ground**、Gutter Cleaning **Machine**、および **Easy** Gutter Cleaning。
+Bing がクエリを展開して元の検索を絞り込むことができる場合、[Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) オブジェクトには `queryExpansions` フィールドが含まれます。 たとえば、クエリが *Cleaning Gutters* だった場合、展開されるクエリには、Gutter Cleaning **Tools**、Cleaning Gutters **From the Ground**、Gutter Cleaning **Machine**、および **Easy** Gutter Cleaning となる場合があります。
 
 次の例は、*Cleaning Gutters* の展開されたクエリを示しています。
 

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
 ms.openlocfilehash: 1045f86db5e1a9ed1979a266937974045e401e27
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77667094"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234575"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure Monitor の Azure ネットワーク監視ソリューション
 
@@ -208,7 +208,7 @@ Set-AzDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspaceId -
 
 1. [Azure Application Gateway から Azure Monitor に診断が直接送信されるように構成します。](#enable-azure-application-gateway-diagnostics-in-the-portal)
 2. [Azure ネットワーク セキュリティ グループから Azure Monitor に診断が直接送信されるように構成します。](#enable-azure-network-security-group-diagnostics-in-the-portal)
-2. [ソリューション ギャラリーからの Azure Monitor ソリューションの追加](solutions.md)に関する記事で説明されている手順に従って、*Azure Application Gateway Analytics* ソリューションと *Azure Network Security Group Analytics* ソリューションを有効にします。
+2. *ソリューション ギャラリーからの Azure Monitor ソリューションの追加*に関する記事で説明されている手順に従って、*Azure Application Gateway Analytics* ソリューションと [Azure Network Security Group Analytics](solutions.md) ソリューションを有効にします。
 3. 新しいデータ型を使用するように、保存されたクエリ、ダッシュボード、またはアラートを更新します。
    + 型を AzureDiagnostics にします。 ResourceType を使用して、Azure ネットワーク ログをフィルター処理できます。
 

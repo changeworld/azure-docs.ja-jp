@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/11/2019
 ms.author: dapine
 ms.openlocfilehash: 46e9f8e660c3fd62807d630481e6b3057d2351a5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76717010"
 ---
 # <a name="create-a-custom-keyword-using-speech-studio"></a>カスタム キーワードを作成する - Speech Studio
@@ -25,7 +25,7 @@ ms.locfileid: "76717010"
 
 ## <a name="create-your-keyword"></a>キーワードを作成する
 
-カスタム キーワードを使用する前に、[Speech Studio](https://aka.ms/sdsdk-speechportal) の [[Custom Keyword]\(カスタム キーワード\)](https://aka.ms/sdsdk-wakewordportal) ページを使用してキーワードを作成する必要があります。 キーワードを指定すると、デバイスにデプロイするファイルが生成されます。
+カスタム キーワードを使用する前に、[Speech Studio](https://aka.ms/sdsdk-wakewordportal) の [[Custom Keyword]\(カスタム キーワード\)](https://aka.ms/sdsdk-speechportal) ページを使用してキーワードを作成する必要があります。 キーワードを指定すると、デバイスにデプロイするファイルが生成されます。
 
 1. [Speech Studio](https://aka.ms/sdsdk-speechportal)に移動して**サインイン**します。音声サブスクリプションをまだ持っていない場合は、[ **[サブスクリプションを作成する]** ](https://go.microsoft.com/fwlink/?linkid=2086754) を選択します。
 

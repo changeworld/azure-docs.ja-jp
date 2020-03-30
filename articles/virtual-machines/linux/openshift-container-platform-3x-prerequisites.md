@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 76e7a9aa9c0f17501885c8bd06c6997fdc8d2104
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: b2b34a6fdf96613c5bc372e585598fabbe43d53d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255690"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066603"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Azure に OpenShift Container Platform 3.11 をデプロイする一般的な前提条件 | Microsoft Docs
 
@@ -54,16 +54,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン 
 [az login](/cli/azure/reference-index) コマンドで Azure サブスクリプションにサインインし、画面上の指示に従うか、 **[使ってみる]** をクリックして Cloud Shell を使用します。
 
-```azurecli 
+```azurecli
 az login
 ```
+
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 [az group create](/cli/azure/group) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 キー コンテナーをホストするには、専用のリソース グループを使用する必要があります。 このグループは、OpenShift クラスター リソースがデプロイするリソース グループとは別です。
 
 次の例では、*keyvaultrg* という名前のリソース グループを場所 *eastus* に作成します。
 
-```azurecli 
+```azurecli
 az group create --name keyvaultrg --location eastus
 ```
 
@@ -81,7 +82,7 @@ az keyvault create --resource-group keyvaultrg --name keyvault \
 ## <a name="create-an-ssh-key"></a>SSH キーの作成 
 SSH キーは、OpenShift Origin クラスターへのアクセスをセキュリティで保護するために必要です。 `ssh-keygen` コマンドを使用して、SSH キーペアを作成します (Linux または macOS 上)。
  
- ```bash
+```bash
 ssh-keygen -f ~/.ssh/openshift_rsa -t rsa -N ''
 ```
 
@@ -115,6 +116,7 @@ az group create -l eastus -n openshiftrg
 ```azurecli
 az group show --name openshiftrg --query id
 ```
+
 コマンドの出力を保存し、次のコマンドで $scope の代わりに使用します
 
 ```azurecli
@@ -123,6 +125,7 @@ az ad sp create-for-rbac --name openshiftsp \
 ```
 
 コマンドから返された appId プロパティとパスワードを書き留めます。
+
 ```json
 {
   "appId": "11111111-abcd-1234-efgh-111111111111",
@@ -132,6 +135,7 @@ az ad sp create-for-rbac --name openshiftsp \
   "tenant": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
 }
 ```
+
  > [!WARNING] 
  > このパスワードは再度取得できないため、セキュリティで保護されたパスワードを必ず書き留めておいてください。
 
@@ -160,7 +164,7 @@ Key Vault のシークレットにこれらのファイルを格納する必要�
 
 Azure CLI を使用して、シークレットを作成します。 次に例を示します。
 
-```bash
+```azurecli
 az keyvault secret set --vault-name KeyVaultName -n mastercafile --file ~/certificates/masterca.pem
 ```
 

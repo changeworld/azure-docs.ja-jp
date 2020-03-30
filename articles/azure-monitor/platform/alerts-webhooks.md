@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
 ms.openlocfilehash: 27510871f9a022cb27c6b03b812ce1d37b47312c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77665070"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226395"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Azure Monitor でクラシック メトリック アラートを使用して Webhook を呼び出す
 
@@ -68,7 +68,7 @@ POST 操作には、すべてのメトリックベースのアラートについ
 ```
 
 
-| フィールド | Mandatory | 値の固定セット | Notes |
+| フィールド | Mandatory | 値の固定セット | メモ |
 |:--- |:--- |:--- |:--- |
 | status |Y |"Activated"、"Resolved" |設定した条件に基づいたアラートの状態。 |
 | context |Y | |アラート コンテキスト。 |
@@ -85,7 +85,7 @@ POST 操作には、すべてのメトリックベースのアラートについ
 | windowSize |メトリック アラートの場合 | |しきい値に基づいてアラート アクティビティを監視するために使用される期間。 値は 5 分～ 1 日の範囲で指定する必要があります。 値は ISO 8601 の期間の形式である必要があります。 |
 | timeAggregation |メトリック アラートの場合 |"Average"、"Last"、"Maximum"、"Minimum"、"None"、"Total" |収集されたデータの経時的な結合方法。 既定値は Average です。 [使用できる値](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx)を参照してください。 |
 | operator |メトリック アラートの場合 | |設定したしきい値と現在のメトリック データを比較するために使用される演算子。 |
-| subscriptionId |Y | |Azure サブスクリプション ID。 |
+| subscriptionId |Y | |Azure サブスクリプション ID です。 |
 | resourceGroupName |Y | |影響を受けるリソースのリソース グループの名前。 |
 | resourceName |Y | |影響を受けるリソースのリソース名。 |
 | resourceType |Y | |影響を受けるリソースの種類。 |

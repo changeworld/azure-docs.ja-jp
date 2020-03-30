@@ -20,11 +20,11 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: a97bee27b74aa211b4d4d56547726555edefa87a
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539401"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236907"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Azure Cognitive Search インデックスの文字列フィールドに言語アナライザーを追加する
 
@@ -62,7 +62,7 @@ Azure Cognitive Search では、Lucene によって提供される 35 個のア�
 ## <a name="language-analyzer-list"></a>言語アナライザー一覧 
  サポートされている言語と、Lucene およびマイクロソフトのアナライザーの名前を以下に一覧します。  
 
-|Language|Microsoft のアナライザーの名前|Lucene のアナライザーの名前|  
+|言語|Microsoft のアナライザーの名前|Lucene のアナライザーの名前|  
 |--------------|-----------------------------|--------------------------|  
 |アラビア語|ar.microsoft|ar.lucene|  
 |アルメニア語||hy.lucene|  
@@ -123,7 +123,7 @@ Azure Cognitive Search では、Lucene によって提供される 35 個のア�
 
  名前に **Lucene** が含まれるすべてのアナライザーでは、[Apache Lucene の言語アナライザー](https://lucene.apache.org/core/6_6_1/core/overview-summary.html )が利用されています。
 
-## <a name="see-also"></a>関連項目  
+## <a name="see-also"></a>参照  
 
 + [インデックスの作成 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
 

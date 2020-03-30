@@ -1,19 +1,19 @@
 ---
 title: レンダリング範囲 | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps のレンダリング範囲となるリージョンと、レンダリングの詳細レベルについて説明します。
-author: jingjing-z
+author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 03/22/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 7821b0b76fb9be1b62aaf334b3c07aaff1d0021a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: ddc53111cd69072322f37fdfb25c37665c852c23
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209547"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536753"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure Maps のレンダリング範囲
 
@@ -152,7 +152,7 @@ Azure Maps は、ラスター タイルとベクター タイルの両方を使�
 | イギリス領ヴァージン諸島   | ✓ | ✓ |
 | アメリカ領ヴァージン諸島      | ✓ | ✓ |
 
-## <a name="asia"></a>Asia 
+## <a name="asia"></a>アジア 
 
 | 国/リージョン | ラスター タイルの統合 | ベクター タイルの統合 |
 | ------ | :------------------: | :------------------: |

@@ -4,11 +4,11 @@ description: ポリシーの定義とパラメーターを評価のためにリ�
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.openlocfilehash: f03c654dfc4c8dfdf2bdc5103a5961b4d8ce1e64
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78354986"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231415"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy の割り当ての構造
 
@@ -59,12 +59,12 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 このプロパティの値は次のとおりです。
 
-|モード |JSON 値 |Type |手動で修復 |アクティビティ ログ エントリ |説明 |
+|モード |JSON 値 |種類 |手動で修復 |アクティビティ ログ エントリ |説明 |
 |-|-|-|-|-|-|
-|Enabled |Default |string |はい |はい |ポリシーの効果は、リソースの作成時または更新時に適用されます。 |
+|有効 |Default |string |はい |はい |ポリシーの効果は、リソースの作成時または更新時に適用されます。 |
 |無効 |DoNotEnforce |string |はい |いいえ | ポリシーの効果は、リソースの作成時または更新時に適用されません。 |
 
-ポリシーまたはイニシアティブの定義で **enforcementMode** を指定しないと、値 _Default_ が使用されます。 **enforcementMode** が _DoNotEnforce_ に設定されている場合でも、[deployIfNotExists](./effects.md#deployifnotexists) のポリシーに対して[修復タスク](../how-to/remediate-resources.md)を開始できます。
+ポリシーまたはイニシアティブの定義で **enforcementMode** を指定しないと、値 _Default_ が使用されます。 [enforcementMode](../how-to/remediate-resources.md) が [DoNotEnforce](./effects.md#deployifnotexists) に設定されている場合でも、**deployIfNotExists** のポリシーに対して_修復タスク_を開始できます。
 
 ## <a name="policy-definition-id"></a>ポリシー定義 ID
 

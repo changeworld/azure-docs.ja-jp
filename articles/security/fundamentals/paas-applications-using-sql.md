@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
-ms.openlocfilehash: f7d993799fed637fbec55afc8f06d90c8fc6910f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c73f585e3102618cea378716491f9354810a6db8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726773"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80125005"
 ---
 # <a name="best-practices-for-securing-paas-databases-in-azure"></a>Azure で PaaS データベースを保護するベスト プラクティス
 
-この記事では、PaaS (platform-as-a-service) の Web アプリケーションとモバイル アプリケーションをセキュリティ保護するための、[Azure SQL Database](../../sql-database/sql-database-technical-overview.md) と [SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) の一連のセキュリティ ベスト プラクティスについて説明します。 このベスト プラクティスは、Azure に関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
+この記事では、PaaS (platform-as-a-service) の Web アプリケーションとモバイル アプリケーションをセキュリティ保護するための、[Azure SQL Database](../../sql-database/sql-database-technical-overview.md) と [SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) の一連のセキュリティ ベスト プラクティスについて説明します。 このベスト プラクティスは、Azure に関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
 
 Azure SQL Database と SQL Data Warehouse は、インターネット ベースのアプリケーション用のリレーショナル データベース サービスを提供します。 PaaS デプロイで Azure SQL Database と SQL Data Warehouse を使用するときに、アプリケーションとデータの保護に役立つサービスを見ていきましょう。
 
 - Azure Active Directory 認証 (SQL Server 認証ではない)
 - Azure SQL ファイアウォール
-- 透過的なデータ暗号化 (TDE)
+- Transparent Data Encryption (TDE)
 
 ## <a name="use-a-centralized-identity-repository"></a>一元化された ID レポジトリを使用
 Azure SQL データベースは、次の 2 種類の認証のいずれかを使用するように構成できます。
@@ -53,7 +53,7 @@ Azure SQL データベースは、次の 2 種類の認証のいずれかを使�
 Azure AD 認証の詳細については、次を参照してください。
 
 - [Azure Active Directory 認証を使用して SQL Database、マネージド インスタンス、または SQL Data Warehouse を認証する](../../sql-database/sql-database-aad-authentication.md)
-- [Azure SQL Data Warehouse への認証](../../sql-data-warehouse/sql-data-warehouse-authentication.md)
+- [Azure SQL Data Warehouse への認証](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-authentication.md)
 - [Azure AD 認証を使用して Azure SQL DB のトークンベース認証をサポート](../../sql-database/sql-database-aad-authentication.md)
 
 > [!NOTE]
@@ -68,7 +68,7 @@ SQL Database 既定ソース IP アドレス制限では、他のサブスクリ
 
 Azure SQL ファイアウォールと IP の制限については、次を参照してください。
 
-- [Azure SQL Database と SQL Data Warehouse へのアクセスの制御](../../sql-database/sql-database-control-access.md)
+- [Azure SQL Database と SQL Data Warehouse へのアクセスの制御](../../sql-database/sql-database-manage-logins.md)
 - [Azure SQL Database と SQL Data Warehouse のファイアウォール規則](../../sql-database/sql-database-firewall-configure.md)
 
 
@@ -83,7 +83,7 @@ Azure SQL では [Always Encrypted](/sql/relational-databases/security/encryptio
 
 セキュリティで保護されたシステムの設計、機密資産の暗号化、データベース サーバーに対するファイアウォールの構築などの、データベースを保護する追加の対策を講じることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティ保護するための、SQL Database と SQL Data Warehouse の一連のセキュリティ ベスト プラクティスについて説明しました。 PaaS デプロイのセキュリティ保護の詳細については、次のリンク先をご覧ください。
 
 - [PaaS デプロイをセキュリティで保護する](paas-deployments.md)

@@ -16,15 +16,15 @@ ms.date: 03/18/2019
 ms.author: xpouyat
 ms.reviewer: anilmur;juliako
 ms.openlocfilehash: 27bdf82d4515678e28eadf07fe325860fe5df063
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015448"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227015"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Premium Encoder での複数の入力ファイルとコンポーネント プロパティの使用
 ## <a name="overview"></a>概要
-**メディア エンコーダー プレミアム ワークフロー** メディア プロセッサを使用してタスクを送信するときに、コンポーネント プロパティのカスタマイズ、クリップ リスト XML コンテンツの指定、または複数の入力ファイルの送信が必要になる場合があります。 次に例をいくつか示します。
+**メディア エンコーダー プレミアム ワークフロー** メディア プロセッサを使用してタスクを送信するときに、コンポーネント プロパティのカスタマイズ、クリップ リスト XML コンテンツの指定、または複数の入力ファイルの送信が必要になる場合があります。 いくつかの例を次に示します。
 
 * 各入力ビデオの実行時に、テキストをビデオに重ね合わせて、テキスト値 (たとえば、現在の日付) を設定する。
 * クリップ リスト XML をカスタマイズする (トリミングあり/なしの 1 つまたは複数のソース ファイルを指定)。
@@ -269,7 +269,7 @@ XML 値が想定されるプロパティを設定するには、 `<![CDATA[ and 
   </transcodeRequest>
 ```
 
-## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>例 1:ビデオにイメージを重ね合わせる
+## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>例 1: ビデオにイメージを重ね合わせる
 
 ### <a name="presentation"></a>プレゼンテーション
 ビデオのエンコード中、入力ビデオにロゴ イメージを重ね合わせる例を見てみましょう。 この例では、入力ビデオの名前は "Microsoft_HoloLens_Possibilities_816p24.mp4"、ロゴの名前は "logo.png" です。 以下の手順を実行する必要があります。
@@ -429,7 +429,7 @@ public ITask AddNew(string taskName, IMediaProcessor mediaProcessor, string conf
 
 サンプル ワークフローは [GitHub](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/)からダウンロードできします。
 
-## <a name="example-2--multiple-audio-language-encoding"></a>例 2:複数のオーディオ言語のエンコード
+## <a name="example-2--multiple-audio-language-encoding"></a>例 2: 複数のオーディオ言語のエンコード
 
 複数のオーディオ言語をエンコードするワークフローの例は、[GitHub](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/MultilanguageAudioEncoding) で入手できます。
 
@@ -466,7 +466,7 @@ public ITask AddNew(string taskName, IMediaProcessor mediaProcessor, string conf
 
 * エンコードされた資産には複数の言語オーディオ トラックが含まれ、これらのトラックを Azure Media Player で選択できるようになります。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 * [Azure Media Services の Premium Encoding の紹介 (ブログの投稿)](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
 * [Azure Media Services で Premium Encoding を使用する方法 (ブログの投稿)](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
 * [Azure Media Services を使用してオンデマンド コンテンツをエンコードする](media-services-encode-asset.md#media-encoder-premium-workflow)

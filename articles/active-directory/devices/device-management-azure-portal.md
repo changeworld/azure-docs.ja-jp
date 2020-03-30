@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c8e94a1b15ad8cd55019f9351c82f58130e472d
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e09de5911ca0946bfcbcb77d1ad4131c8feac9f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420607"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230475"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Azure portal を使用してデバイス ID を管理する
 
@@ -29,15 +29,10 @@ Azure Active Directory (Azure AD) のデバイス ID 管理を使用して、ユ
 
 ## <a name="manage-device-identities"></a>デバイス ID を管理する
 
-Azure AD ポータルは、お客様のデバイス ID を一元的に管理する場所を提供します。 この場所に移動するには、[直接リンク](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)を使用するか、または次の手動の手順に従います。
+Azure AD ポータルは、お客様のデバイス ID を一元的に管理する場所を提供します。 この場所にアクセスするには、[直接リンク](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)を使用するか、次のようにします。
 
-1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
-
-2. **[Azure Active Directory]** を検索して選択するか、 **[ホーム]** ページから選択します。
-
-3. **[管理]** セクションで、 **[デバイス]** をクリックします。
-
-   ![デバイス設定の構成](./media/device-management-azure-portal/74.png)
+1. [Azure portal](https://portal.azure.com) にサインインする
+1. **[Azure Active Directory]**  >  **[デバイス]** の順に移動します。
 
 **[デバイス]** ページでは、次の操作が可能です。
 
@@ -50,9 +45,7 @@ Azure AD ポータルは、お客様のデバイス ID を一元的に管理す�
 
 Azure AD ポータルを使ってデバイス ID を管理するには、デバイスが Azure AD に[登録されているか参加している](overview.md)必要があります。 管理者は、デバイスの設定を構成することによって、デバイスの登録および参加のプロセスを調整できます。
 
-![デバイス設定の構成](./media/device-management-azure-portal/22.png)
-
-デバイス設定ページでは、以下の構成を行うことができます。
+デバイスの設定ページでは、デバイス ID に関連する設定を構成できます。
 
 ![Intune デバイスの管理](./media/device-management-azure-portal/21.png)
 
@@ -63,7 +56,7 @@ Azure AD ポータルを使ってデバイス ID を管理するには、デバ�
 
 - **[Azure AD 参加済みデバイスの追加のローカル管理者]** - デバイスに対するローカル管理者権限が付与されるユーザーを選択できます。 ここに追加されたユーザーは、Azure AD の "*デバイス管理者*" ロールに追加されます。 Azure AD のグローバル管理者とデバイスの所有者には、既定でローカル管理者権限が付与されます。 このオプションは、Azure AD Premium や Enterprise Mobility Suite (EMS) などの製品を通じて使用できる Premium Edition 機能です。
 - **[ユーザーはデバイスを Azure AD に登録できます]** - Windows 10 (個人用)、iOS、Android、および macOS デバイスを Azure AD に登録できるようにするには、この設定を構成する必要があります。 **[なし]** を選択した場合、デバイスは Azure AD に登録できません。 Microsoft Intune または Mobile Device Management (MDM) for Office 365 への登録には、この登録が必要です。 これらのサービスのいずれかを構成した場合は、 **[すべて]** が選択され、 **[なし]** は選択できなくなります。
-- **[デバイスを参加させるには Multi-factor Auth が必要]** - デバイスを Azure AD に参加させるときに、ユーザーが追加の認証要素の提供を求められるようにするかどうかを選ぶことができます。 既定値は **[いいえ]** です。 デバイスの登録時に多要素認証を必要とすることをお勧めします。 このサービスの多要素認証を有効にする前に、デバイスを登録するユーザーに対して多要素認証が構成されていることを確認する必要があります。 他の Azure Multi-Factor Authentication サービスの詳細については、[Azure Multi-Factor Authentication の概要](../authentication/concept-mfa-whichversion.md)に関するページを参照してください。 
+- **[デバイスを参加させるには Multi-factor Auth が必要]** - デバイスを Azure AD に参加させるときに、ユーザーが追加の認証要素の提供を求められるようにするかどうかを選ぶことができます。 既定値は **No** です。 デバイスの登録時に多要素認証を必要とすることをお勧めします。 このサービスの多要素認証を有効にする前に、デバイスを登録するユーザーに対して多要素認証が構成されていることを確認する必要があります。 他の Azure Multi-Factor Authentication サービスの詳細については、[Azure Multi-Factor Authentication の概要](../authentication/concept-mfa-whichversion.md)に関するページを参照してください。 
 
 > [!NOTE]
 > **[デバイスを参加させるには多要素認証が必要]** 設定は、Azure AD に参加しているか Azure AD に登録されているデバイスに適用されます。 この設定は、ハイブリッド Azure AD 参加済みデバイスには適用されません。
@@ -81,12 +74,7 @@ Azure AD ポータルを使ってデバイス ID を管理するには、デバ�
 登録済みおよび参加済みのデバイスを検索するには、次の 2 つのオプションがあります。
 
 - **[デバイス]** ページの **[管理]** セクションにある **[すべてのデバイス]**  
-
-   ![すべてのデバイス](./media/device-management-azure-portal/41.png)
-
 - **[ユーザー]** ページの **[管理]** セクションにある **[デバイス]**
-
-   ![すべてのデバイス](./media/device-management-azure-portal/43.png)
 
 どちらのオプションでも、次のようなビューが表示されます。
 
@@ -131,7 +119,7 @@ Intune 管理者の場合は、**Microsoft Intune** としてマークされて�
 
    ![Intune デバイスの管理](./media/device-management-azure-portal/32.png)
 
-**解説:**
+**備考:**
 
 - デバイスを有効/無効にするには、Azure AD のグローバル管理者またはクラウド デバイス管理者である必要があります。 
 - デバイスを無効にすると、デバイスは Azure AD で正常に認証されなくなり、それによってデバイスは、デバイス CA または WH4B 資格情報の使用によって保護されている Azure AD リソースにアクセスできなくなります。
@@ -147,9 +135,9 @@ Intune 管理者の場合は、**Microsoft Intune** としてマークされて�
 
 - **[デバイス]** ページのツール バー
 
-   ![デバイスを削除する](./media/device-management-azure-portal/34.png)
+   ![デバイスの削除](./media/device-management-azure-portal/34.png)
 
-**解説:**
+**備考:**
 
 - デバイスを削除するには、Azure AD のグローバル管理者または Intune 管理者である必要があります。
 - デバイスを削除する場合、以下の点に注意してください。
@@ -193,8 +181,6 @@ BitLocker キーを表示またはコピーするには、デバイスの所有�
 
 監査データへのエントリ ポイントは、 **[デバイス]** ページの **[アクティビティ]** セクションの **[監査ログ]** です。
 
-![監査ログ](./media/device-management-azure-portal/61.png)
-
 監査ログには、次のものを示す既定のリスト ビューがあります。
 
 - 発生の日付と時刻
@@ -210,17 +196,17 @@ BitLocker キーを表示またはコピーするには、デバイスの所有�
 
 報告されるデータを有用なものだけに絞り込むために、次のフィールドを使用して監査データをフィルター処理できます。
 
-- Category
+- カテゴリ
 - アクティビティのリソースの種類
 - アクティビティ
 - 期間
-- ターゲット
+- 移行先
 - 開始者 (アクター)
 
 フィルターだけでなく、特定のエントリを検索することができます。
 
 ![監査ログ](./media/device-management-azure-portal/65.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [方法: Azure AD で古いデバイスを管理する](manage-stale-devices.md)

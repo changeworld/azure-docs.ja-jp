@@ -9,19 +9,19 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 7d7b9f847cdcc4ab4b1ff065425eebe07fb4d888
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75773946"
 ---
-1. **[Create a Peering]\(ピアリングの作成\)** ページの **[構成]** タブで、次のようにフィールドに入力します。
+1. **[ピアリングの作成]** ページの **[構成]** タブで、次のようにフィールドに入力します。
 
     > [!div class="mx-imgBorder"]
     > ![ピアリングの構成 - Exchange](../media/setup-exchange-conf-tab.png)
 
     * **[ピアリングの種類]** には、 *[Exchange]* を選択します。
-    * **[SKU]** には、 *[Basic Free]\(Basic 無料\)* を選択します。
+    * **[SKU]** には、 *[Basic Free]\(基本無料\)* を選択します。
     * ピアリングを Azure リソースに変換する**都市圏**の場所を選択します。 選択した**都市圏**の場所に、Azure リソースに変換されない Microsoft とのピアリング接続がある場合、そのような接続は、以下に示すように **[ピアリング接続]** セクションに一覧表示されます。 次に、それらのピアリング接続を Azure リソースに変換することができます。
 
         > [!div class="mx-imgBorder"]

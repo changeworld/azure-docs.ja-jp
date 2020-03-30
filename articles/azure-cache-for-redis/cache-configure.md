@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
 ms.openlocfilehash: f10be8efcd2d8e838b4b5f62310eb405f6ed0158
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714638"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235551"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure Cache for Redis の構成方法
 このトピックでは、Azure Cache for Redis インスタンスで利用可能な構成について説明します。 このトピックでは、Azure Cache for Redis インスタンスの既定の Redis サーバー構成についても説明します。
@@ -162,7 +162,7 @@ Redis キースペース通知は、 **[詳細設定]** ブレードで構成し
 >
 >
 
-詳細については、 [Redis キースペース通知](https://redis.io/topics/notifications)に関するトピックを参照してください。 サンプル コードについては、[Hello world](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) サンプルの [KeySpaceNotifications.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) ファイルを参照してください。
+詳細については、 [Redis キースペース通知](https://redis.io/topics/notifications)に関するトピックを参照してください。 サンプル コードについては、[Hello world](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) サンプルの [KeySpaceNotifications.cs](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) ファイルを参照してください。
 
 
 <a name="recommendations"></a>
@@ -179,7 +179,7 @@ Redis キースペース通知は、 **[詳細設定]** ブレードで構成し
 
 ![Recommendations](./media/cache-configure/redis-cache-recommendations.png)
 
-**[Azure Cache for Redis]** ブレードの [[Monitoring charts]\(監視グラフ)](cache-how-to-monitor.md#monitoring-charts) セクションと [[Usage charts]\(使用状況グラフ)](cache-how-to-monitor.md#usage-charts) セクションでは、以下のメトリックを監視できます。
+[[Azure Cache for Redis]](cache-how-to-monitor.md#monitoring-charts) ブレードの [[Monitoring charts]\(監視グラフ)](cache-how-to-monitor.md#usage-charts) セクションと **[Usage charts]\(使用状況グラフ)** セクションでは、以下のメトリックを監視できます。
 
 各価格レベルには、クライアント接続、メモリ、および帯域幅についてさまざまな制限があります。 長時間にわたり、キャッシュがこれらのメトリックの最大容量に近づいている場合は、推奨項目が作成されます。 **[推奨事項]** ツールで検証されるメトリックと制限の詳細については、次の表をご覧ください。
 
@@ -388,7 +388,7 @@ Azure Cache for Redis の監視と診断の詳細については、「[Azure Cac
 
 | 設定 | 既定値 | 説明 |
 | --- | --- | --- |
-| `databases` |16 |データベースの既定の数は 16 ですが、価格レベルに基づいてさまざまな数を構成できます。<sup>1</sup> 既定のデータベースは DB 0 です。`dbid` が `0` ～ `databases - 1` の間の数値である `connection.GetDatabase(dbid)` を使用して、接続ごとに異なるデータベースを選択できます。 |
+| `databases` |16 |データベースの既定の数は 16 ですが、価格レベルに基づいてさまざまな数を構成できます。<sup>1</sup> 既定のデータベースは DB 0 です。`connection.GetDatabase(dbid)` が `dbid` ～ `0` の間の数値である `databases - 1` を使用して、接続ごとに異なるデータベースを選択できます。 |
 | `maxclients` |価格レベルによって異なります。<sup>2</sup> |この値は、同時に接続が許可されているクライアントの最大数です。 制限に達すると、Redis はすべての新しい接続を終了し、"max number of clients reached" エラーを返します。 |
 | `maxmemory-policy` |`volatile-lru` |Maxmemory ポリシーとは、`maxmemory` (キャッシュ作成時に選択したキャッシュのサイズ) に達したときに、Redis が削除する項目を選択する方法についての設定です。 Azure Cache for Redis の既定の設定は `volatile-lru` で、LRU アルゴリズムを使用して、有効期限が設定されているキーを削除します。 この設定は、Azure ポータルで構成できます。 詳細については、「[メモリ ポリシー](#memory-policies)」をご覧ください。 |
 | `maxmemory-samples` |3 |LRU アルゴリズムと最小 TTL アルゴリズムは精緻なアルゴリズムではなく、メモリを節約するための近似アルゴリズムです。 既定では、Redis はキーを 3 つ確認し、直近の使用頻度が比較的低いものを 1 つ選択します。 |
@@ -494,7 +494,7 @@ shard1>get myKey
 (error) MOVED 866 13.90.202.154:13000 (shard 0)
 ```
 
-前の例ではシャード 1 を選択しましたが、エラー メッセージの `(shard 0)` 部分で示されているように、`myKey` はシャード 0 にあります。 この例では、`myKey` にアクセスするために、シャード ピッカーを使用してシャード 0 を選択してから、目的のコマンドを発行します。
+前の例ではシャード 1 を選択しましたが、エラー メッセージの `myKey` 部分で示されているように、`(shard 0)` はシャード 0 にあります。 この例では、`myKey` にアクセスするために、シャード ピッカーを使用してシャード 0 を選択してから、目的のコマンドを発行します。
 
 
 ## <a name="move-your-cache-to-a-new-subscription"></a>新しいサブスクリプションへのキャッシュの移動

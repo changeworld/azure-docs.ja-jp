@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/12/2017
 ms.author: tomfitz
 ms.openlocfilehash: 6e56c5e528a17d42a75da54158f00857a917645c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75649259"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226231"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition 関数
 このセクションには、サポートされているすべての CreateUiDefinition 関数の署名が含まれています。
@@ -48,7 +48,7 @@ ms.locfileid: "75649259"
 ### <a name="steps"></a>steps
 指定したステップで定義されている要素の出力値が返されます。 基本ステップの要素の出力値を取得するには、代わりに `basics()` を使用します。
 
-次の例は、`foo` という名前のステップの、`bar` という名前の要素の出力を返します。
+次の例は、`bar` という名前のステップの、`foo` という名前の要素の出力を返します。
 
 ```json
 "[steps('foo').bar]"
@@ -462,7 +462,7 @@ ms.locfileid: "75649259"
 ```
 
 ### <a name="not"></a>not
-パラメーターが `false` に評価される場合、`true` が返されます。 この関数は、ブール型のパラメーターのみをサポートしています。
+パラメーターが `true` に評価される場合、`false` が返されます。 この関数は、ブール型のパラメーターのみをサポートしています。
 
 次の例は、 `true`を返します。
 

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
 ms.openlocfilehash: 3cd330e9c4ceba2feeb7a74cafe9f094fd03d690
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669116"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226451"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor によって監視される内容
 この記事では、Azure Monitor によって監視されるさまざまなアプリケーションとサービスについて説明します。 
@@ -52,7 +52,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 - ログ - このサービスは、プラットフォームのログとメトリックを Azure Monitor ログに収集できる診断設定をサポートしています。
 - 分析情報 - サービスで使用可能な分析情報があり、サービスに対するカスタマイズされた監視エクスペリエンスを提供します。
 
-| サービス | メトリック | ログ | 分析情報 | Notes |
+| サービス | メトリック | ログ | 分析情報 | メモ |
 |:---|:---|:---|:---|:---|
 |Active Directory | いいえ | はい | [はい](../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md) |  |
 |Active Directory B2C | いいえ | いいえ | いいえ |  |
@@ -217,7 +217,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 ## <a name="resources-outside-of-azure"></a>Azure 外部のリソース
 Azure Monitor は、次の表に示す方法を使用して、Azure 外部のリソースからデータを収集できます。
 
-| リソース | Method |
+| リソース | 方法 |
 |:---|:---|
 | [アプリケーション] | Application Insights を使用して、Azure 外部の Web アプリケーションを監視します。 「[Application Insights とは何か?](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)」を参照してください。 |
 | 仮想マシン | Log Analytics エージェントを使用して、他のクラウド環境やオンプレミスにある仮想マシンのゲスト オペレーティング システムからデータを収集します。 「[Log Analytics エージェントを使用してログ データを収集する](platform/log-analytics-agent.md)」を参照してください。 |

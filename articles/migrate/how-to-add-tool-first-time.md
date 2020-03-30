@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: raynew
 ms.openlocfilehash: 319d97d96bd054aed90079777e2ff83d0e308e5e
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74185953"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>評価/移行ツールの初回追加
@@ -49,8 +49,8 @@ Azure サブスクリプション内に新しい Azure Migrate プロジェク�
     ヨーロッパ | 北ヨーロッパまたは西ヨーロッパ
     日本  | 東日本または西日本
     イギリス | 英国南部または英国西部
-    米国 | 米国中部または米国西部 2
-    カナダ | カナダ中部
+    United States | 米国中部または米国西部 2
+    Canada | カナダ中部
     インド  | インド中部またはインド南部
     オーストラリア | オーストラリア南東部
 
@@ -81,6 +81,6 @@ Azure サブスクリプション内に新しい Azure Migrate プロジェク�
 3. **[設定]** で、[ここをクリックして**新しいプロジェクトを作成する] を選択**します。
 4. 前の手順で説明したように、新しいプロジェクトを作成し、新しいツールを追加します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 追加の[評価](how-to-assess.md)ツールと[移行](how-to-migrate.md)ツールを追加する方法を確認します。 

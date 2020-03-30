@@ -10,11 +10,11 @@ ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.openlocfilehash: 4ad58bc2d61f063dce2c23f60a65dcbec48a2303
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825094"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233719"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Apache Hive クエリを実行する
 
@@ -32,7 +32,7 @@ Data Lake Tools for Visual Studio を使用して、Azure Data Lake Analytics �
 
 * Azure HDInsight クラスター。 HDInsight クラスターを作成するには、[Azure HDInsight での Apache Hadoop の使用](apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。 対話型 Apache Hive クエリを実行するには、[HDInsight 対話型クエリ](../interactive-query/apache-interactive-query-get-started.md) クラスターが必要です。  
 
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/)。 [Visual Studio Community エディション](https://visualstudio.microsoft.com/vs/community/)は無料です。 ここでは、[Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) の手順について説明します。
+* [Visual Studio](https://visualstudio.microsoft.com/downloads/). [Visual Studio Community エディション](https://visualstudio.microsoft.com/vs/community/)は無料です。 ここでは、[Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) の手順について説明します。
 
 ## <a name="install-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio のインストール  
 
@@ -320,7 +320,7 @@ Hive ジョブを表示するには:
 
 * ユーザーのローカルのリージョン設定によっては、Visual Studio によって作成された HQL スクリプトがエンコードされます。 このスクリプトをバイナリ ファイルとしてクラスターにアップロードした場合、スクリプトは正しく実行されません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Data Lake Tools for Visual Studio パッケージを使用して、Visual Studio から HDInsight クラスターに接続する方法を説明しました。 Hive クエリを実行する方法についても説明しました。 詳細と例については、次の記事をご覧ください。
 

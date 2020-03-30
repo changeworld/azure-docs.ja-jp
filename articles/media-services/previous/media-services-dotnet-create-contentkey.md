@@ -1,6 +1,6 @@
 ---
 title: .NET を使用したコンテンツ キーの作成
-description: この記事では、アセットに安全にアクセスできる ContentKey を作成する方法について説明します。
+description: この記事では、アセットに安全にアクセスできるコンテンツ キーを作成する方法について説明します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: aebd6dee9314d6e5641988767c024790b6b721f4
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74887699"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227063"
 ---
 # <a name="create-contentkeys-with-net"></a>.NET を使用したコンテンツ キーの作成 
 > [!div class="op_single_selector"]
@@ -30,9 +30,9 @@ ms.locfileid: "74887699"
 
 Media Services では、暗号化されたアセットを作成して送信できます。 **ContentKey** により、**アセット**に安全にアクセスすることができます。 
 
-新しいアセットを作成するときは ([ファイルをアップロード](media-services-dotnet-upload-files.md)する前など)、次の暗号化オプションを指定できます:**StorageEncrypted**、**CommonEncryptionProtected**、または **EnvelopeEncryptionProtected**。 
+新しいアセットを作成するときは ([ファイルをアップロード](media-services-dotnet-upload-files.md)する前など)、次の暗号化オプションを指定できます: **StorageEncrypted**、**CommonEncryptionProtected**、または **EnvelopeEncryptionProtected**。 
 
-クライアントにアセットを配信するときは、次の 2 つの暗号化のどちらかを使用して[アセットが動的に暗号化されるように構成できます](media-services-dotnet-configure-asset-delivery-policy.md):**DynamicEnvelopeEncryption** または **DynamicCommonEncryption**。
+クライアントにアセットを配信するときは、次の 2 つの暗号化のどちらかを使用して[アセットが動的に暗号化されるように構成できます](media-services-dotnet-configure-asset-delivery-policy.md): **DynamicEnvelopeEncryption** または **DynamicCommonEncryption**。
 
 暗号化されたアセットには、 **ContentKey**を関連付ける必要があります。 この記事では、コンテンツ キーの作成方法について説明します。
 
@@ -70,7 +70,7 @@ Media Services では、暗号化されたアセットを作成して送信で�
     }
 ```
 
-## <a id="envelope_contentkey"></a>エンベロープ タイプの ContentKey の作成
+## <a name="create-envelope-type-contentkey"></a><a id="envelope_contentkey"></a>エンベロープ タイプの ContentKey の作成
 次のコード スニペットでは、エンベロープ暗号化タイプのコンテンツ キーを作成します。 その後、キーを指定されたアセットに関連付けます。
 
 ```csharp
@@ -108,7 +108,7 @@ call
 ```
 
 
-## <a id="common_contentkey"></a>共通タイプの ContentKey の作成
+## <a name="create-common-type-contentkey"></a><a id="common_contentkey"></a>共通タイプの ContentKey の作成
 次のコード スニペットでは、共通暗号化タイプのコンテンツ キーを作成します。 その後、キーを指定されたアセットに関連付けます。
 
 ```csharp

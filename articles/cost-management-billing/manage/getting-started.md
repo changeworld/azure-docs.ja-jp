@@ -6,25 +6,27 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 3/11/2020
 ms.author: banders
-ms.openlocfilehash: e22663cf8cabd5d2abf487c96f2d69aeaaa90ab7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 0e0003b3adfdb6ebba49bd8d014fc0ba287ca3aa
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199706"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238144"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Azure の課金とコスト管理で想定外の料金を防ぐ
 
 Azure にサインアップしたら、支出を把握するために行えることがいくつかあります。
 
-- サービスを追加する前に[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)や Azure 価格シートを使用するか、Azure portal でサービスを追加する際に推定コストを把握します。
+- サービスを追加する前に[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)や Azure 価格シートを使用することで、また、サービスを追加している間は Azure portal で推定コストを把握します。
 - [予算](../costs/tutorial-acm-create-budgets.md)、[アラート](../costs/cost-mgt-alerts-monitor-usage-spending.md)、[コスト分析](../costs/quick-acm-cost-analysis.md)を使用してコストを監視します。
-- 請求書に記載されている請求金額を、[詳しい使用状況ファイル](download-azure-invoice-daily-usage-date.md)を比較してそれらを確認します。
+- 請求書に記載されている請求金額について、[詳しい使用状況ファイル](download-azure-invoice-daily-usage-date.md)と比較して確認します。
 - [Billing](https://docs.microsoft.com/rest/api/billing/) API と [Consumption](https://docs.microsoft.com/rest/api/consumption/) API を使用して課金およびコストのデータを独自のレポート システムに統合します。
 - マイクロソフト エンタープライズ契約 (EA)、クラウド ソリューション プロバイダー (CSP)、Azure スポンサー プランのお客様向けに別途用意されているリソースおよびツールを使用します。
 - [Azure 無料アカウント](https://azure.microsoft.com/free/)で利用できる[最も人気の高い Azure サービスを 12 か月間無料](create-free-services.md)で活用します。 下記の推奨事項に加えて、[無料アカウントの課金の回避](avoid-charges-free-account.md)に関する記事もご覧ください。
+
+Azure サブスクリプションを取り消す必要がある場合は、「[Azure サブスクリプションの取り消し](cancel-azure-subscription.md)」を参照してください。
 
 ## <a name="get-estimated-costs-before-adding-azure-services"></a>Azure サービスを追加する前にコストを見積もる
 
@@ -53,7 +55,7 @@ Azure にサインアップしたら、支出を把握するために行える�
 
 ### <a name="review-estimated-costs-in-the-azure-portal"></a>Azure portal で推定料金を検討する
 
-Azure portal でサービスを追加している間は、1 か月あたりの推定コストを表示できます。 たとえば、Windows VM のサイズを選択すると、コンピューティング時間の推定月額料金が表示されます。
+サービスを追加している間は、1 か月あたりの推定コストを Azure portal で表示できます。 たとえば、Windows VM のサイズを選択すると、コンピューティング時間の推定月額料金が表示されます。
 
 ![例: 推定月額料金を示す A1 Windows VM](./media/getting-started/vm-size-cost.png)
 
@@ -67,7 +69,7 @@ Azure portal でサービスを追加している間は、1 か月あたりの�
 
 [予算](../costs/tutorial-acm-create-budgets.md)を作成して、コストを管理し、異常な支出や浪費について、関係者に自動的に通知する[アラート](../costs/cost-mgt-alerts-monitor-usage-spending.md)を作成できます。
 
-### <a name="costs"></a> コスト分析を使用してコストを調査および分析する
+### <a name="explore-and-analyze-costs-with-cost-analysis"></a><a name="costs"></a> コスト分析を使用してコストを調査および分析する
 
 Azure サービスを実行状態に移した後は、定期的にコストをチェックして Azure の利用状況を追跡してください。 コスト分析を使用することで、Azure の利用に関するコストの発生源を把握することができます。
 
@@ -120,7 +122,7 @@ Microsoft 顧客契約 (MCA) で Azure を使用している場合は、[請求�
 
 Azure の [Billing](https://docs.microsoft.com/rest/api/billing/) と [Consumption](https://docs.microsoft.com/rest/api/consumption/) API を使用して、請求データとコスト データをプログラムから入手することもできます。 課金対象の使用状況を取得するには、RateCard API と Usage API を組み合わせて使用します。 詳細については、「[Microsoft Azure リソースの消費を把握する](usage-rate-card-overview.md)」をご覧ください。
 
-## <a name="other-offers"></a> その他のリソースと特殊なケース
+## <a name="additional-resources-and-special-cases"></a><a name="other-offers"></a> その他のリソースと特殊なケース
 
 ### <a name="ea-csp-and-sponsorship-customers"></a>EA、CSP、およびスポンサープランのお客様
 使用を開始するには、アカウント マネージャーまたは Azure パートナーに連絡してください。
@@ -133,7 +135,7 @@ Azure の [Billing](https://docs.microsoft.com/rest/api/billing/) と [Consumpti
 
 大規模な組織の IT を管理している場合は、[Azure エンタープライズ スキャフォールディング](/azure/architecture/cloud-adoption-guide/subscription-governance)に関する記事と、[エンタープライズ IT に関するホワイト ペーパー](https://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) (.pdf をダウンロード、英語のみ) を読むことをお勧めします。
 
-### <a name="EA"></a>Azure portal での Enterprise Agreement のコスト ビュー
+### <a name="enterprise-agreement-cost-views-in-the-azure-portal"></a><a name="EA"></a>Azure portal での Enterprise Agreement のコスト ビュー
 
 Enterprise コスト ビューは、現在、パブリック プレビューの中にあります。 注意する項目:
 
@@ -159,7 +161,7 @@ Microsoft 顧客契約 (MCA) の課金アカウント経由で Azure にアク�
 
 ### <a name="request-a-service-level-agreement-credit-for-a-service-incident"></a>サービス インシデントに対するサービス レベル アグリーメントの控除を要求する
 
-サービス レベル アグリーメント (SLA) では、稼働時間と接続に関するマイクロソフトの確約内容について説明しています。 Azure サービスで稼働時間や接続に影響を与える問題 (しばしば "*停止*" と呼ばれる) が発生すると、サービス インシデントが報告されます。 SLA に記載されている各サービスのサービス レベルが達成および維持されていない場合は、月額サービス料金の一部が控除対象になる場合があります。
+サービス レベル アグリーメント (SLA) では、稼働時間と接続に関する Microsoft の確約内容について説明しています。 Azure サービスで稼働時間や接続に影響を与える問題 (しばしば "*停止*" と呼ばれる) が発生すると、サービス インシデントが報告されます。 SLA に記載されている各サービスのサービス レベルが達成および維持されていない場合は、月額サービス料金の一部が控除対象になる場合があります。
 
 控除を要求するには、次の手順を実行します。
 
@@ -167,7 +169,7 @@ Microsoft 顧客契約 (MCA) の課金アカウント経由で Azure にアク�
 2. 新しいサポート リクエストを作成します。
 3. **[問題の種類]** で **[課金]** を選択します。
 4. **[問題の種類]** で **[払戻要求]** を選択します。
-5. SLA の控除を求めていることを指定する詳細を追加し、日付/時刻/タイムゾーン、および影響を受けたサービス (VM、Web サイトなど) を記載します。
+5. SLA の控除を求めていることを指定する詳細を追加し、日付、時刻、タイムゾーン、および影響を受けたサービス (VM、Web サイトなど) を記載します。
 6. 連絡先情報の詳細を確認し、 **[作成]** を選択して要求を送信します。
 
 SLA のしきい値は、サービスによって異なります。 たとえば、SQL Web サービス レベルの SLA は 99.9%、VM の SLA は 99.95%、SQL Standard サービス レベルの SLA は 99.99% です。
@@ -181,5 +183,5 @@ SLA のしきい値は、サービスによって異なります。 たとえば
 ご質問がある場合やヘルプが必要な場合は、[サポート要求を作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
 
 ## <a name="next-steps"></a>次のステップ
-- 予算オーバーを防ぐには、[使用制限](spending-limit.md)の使い方を確認します。
+- 予算オーバーを防ぐために、[使用制限](spending-limit.md)の使い方を確認します。
 - [Azure コストの分析](../costs/quick-acm-cost-analysis.md)を開始します。

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: erhopf
 ms.openlocfilehash: 60b415f69800885f37ee53cc4f090098f5ebf1f1
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74806081"
 ---
 # <a name="inspect-custom-speech-data"></a>Custom Speech データを検査する
@@ -51,7 +51,7 @@ Custom Speech には、オーディオ データを対応する認識結果と�
 
 品質テストの検査は、音声認識エンドポイントの品質がアプリケーションに十分かどうかを検証するために役立ちます。 文字起こしされたオーディオが必要な正確性の客観的な尺度を得るには、[正確性の評価](how-to-custom-speech-evaluate-data.md)に関するページの手順に従ってください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [データを評価する](how-to-custom-speech-evaluate-data.md)
 - [モデルをトレーニングする](how-to-custom-speech-train-model.md)

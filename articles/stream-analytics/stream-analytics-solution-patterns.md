@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 2a449c55a0998f1a114f6aa9d2c067e48cc0cdce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b95863c1ae53bd0642aec356f55aba1faf8ef09
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443679"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535784"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics のソリューション パターン
 
@@ -92,7 +92,7 @@ Azure Stream Analytics のビルトインの[異常検出モデル](stream-analy
 
 ![ASA データ ウェアハウジング](media/stream-analytics-solution-patterns/datawarehousing.png)
 
-トレードオフとしてある程度の待ち時間は生じますが、イベントを Azure Blob Storage にアーカイブしたうえで、[PolyBase を使用してそれらを SQL Data Warehouse にインポート](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md)するなどすれば、スループットを改善することができます。 Stream Analytics から Blob Storage への出力と Blob Storage から SQL Data Warehouse への入力は、[データをタイムスタンプごとにアーカイブ](stream-analytics-custom-path-patterns-blob-storage-output.md)し、定期的にインポートすることによって、手動で関連付ける必要があります。
+トレードオフとしてある程度の待ち時間は生じますが、イベントを Azure Blob Storage にアーカイブしたうえで、[PolyBase を使用してそれらを SQL Data Warehouse にインポート](../synapse-analytics/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md)するなどすれば、スループットを改善することができます。 Stream Analytics から Blob Storage への出力と Blob Storage から SQL Data Warehouse への入力は、[データをタイムスタンプごとにアーカイブ](stream-analytics-custom-path-patterns-blob-storage-output.md)し、定期的にインポートすることによって、手動で関連付ける必要があります。
 
 この使用パターンでは、Azure Stream Analytics がほぼリアルタイムの ETL エンジンとして使用されます。 新たに到着するイベントは、ダウンストリームの Analytics Service から利用できるように、絶えず変換されて格納されます。
 

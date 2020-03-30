@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fa022f181e2061c6a7f3e08d1f2f501ddd9cac3
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111416"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218905"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>検索応答に含まれる回答をフィルタリングする  
 
@@ -53,7 +53,7 @@ Bing から返される応答をフィルター処理するには、API を呼�
 
 回答のコンマ区切りリストである [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) クエリ パラメーターを使用すれば、Bing が応答に取り込む回答の種類 (たとえば、画像、ビデオ、ニュースなど) をフィルター処理することができます。 Bing によって回答に関連するコンテンツが検出された場合、その回答は応答に含められます。 
 
-応答から画像などの特定の回答を除外するには、回答の種類の先頭に `-` 文字を追加します。 例:
+応答から画像などの特定の回答を除外するには、回答の種類の先頭に `-` 文字を追加します。 次に例を示します。
 
 ```
 &responseFilter=-images,-videos

@@ -12,19 +12,19 @@ ms.topic: reference
 ms.date: 10/03/2019
 ms.author: diberry
 ms.openlocfilehash: a49452653f8ac4bcc62758d801a235be0929d314
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78270584"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218705"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>LUIS モデルにおけるカルチャごとのエンティティ
 
 Language Understanding (LUIS) では、作成済みのエンティティが提供されています。 作成済みエンティティをアプリケーションに組み込むと、LUIS は対応するエンティティの予測をエンドポイントの応答に含めます。 すべての発話例にも、エンティティでラベルが付けられます。 作成済みエンティティの動作を変更することは**できません**。 特に記載のない限り、作成済みエンティティはすべての LUIS アプリケーション ロケール (カルチャ) で使用できます。 次の表では、各カルチャでサポートされている作成済みエンティティを示します。
 
-|カルチャ|サブカルチャ|Notes|
+|カルチャ|サブカルチャ|メモ|
 |--|--|--|
-|Chinese|[zh-CN](#chinese-entity-support)||
+|中国語|[zh-CN](#chinese-entity-support)||
 |Dutch|[nl-NL](#dutch-entity-support)||
 |English|[en-US (米国)](#english-american-entity-support)||
 |French|[fr-CA (カナダ)](#french-canadian-entity-support)、[fr-FR (フランス)](#french-france-entity-support), ||
@@ -47,10 +47,10 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 |事前構築済みのエンティティ|```zh-CN``` |
 ------|:------:|
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    V2、V3   |
-[Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    V2、V3   |
+[通貨 (金額)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2、V3   |
 [Dimension](luis-reference-prebuilt-dimension.md):<br>ボリューム<br>area<br>weight<br>information (例: bit/byte)<br>length (例: meter)<br>speed (例: mile per hour)  |    V2、V3   |
-[Email](luis-reference-prebuilt-email.md)   |    V2、V3   |
+[電子メール](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    -   |
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
@@ -59,7 +59,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    V2、V3   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
-[温度](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、V3   |
+[Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、V3   |
 [[URL]](luis-reference-prebuilt-url.md)   |    V2、V3   |
 
 ## <a name="dutch-entity-support"></a>オランダ語のエンティティのサポート
@@ -69,10 +69,10 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 |事前構築済みのエンティティ|```nl-NL``` |
 ------|:------:|
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    V2、V3   |
-[Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    V2、V3   |
+[通貨 (金額)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    V2、V3   |
 [Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
 [Dimension](luis-reference-prebuilt-dimension.md):<br>ボリューム<br>area<br>weight<br>information (例: bit/byte)<br>length (例: meter)<br>speed (例: mile per hour)  |    V2、V3   |
-[Email](luis-reference-prebuilt-email.md)   |    V2、V3   |
+[電子メール](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
@@ -81,7 +81,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
-[温度](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、V3   |
+[Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、V3   |
 [[URL]](luis-reference-prebuilt-url.md)   |    V2、V3   |
 
 ## <a name="english-american-entity-support"></a>英語 (米国) のエンティティのサポート
@@ -91,10 +91,10 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 |事前構築済みのエンティティ|```en-US``` |
 ------|:------:|
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    V2、V3   |
-[Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    V2、V3   |
+[通貨 (金額)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2、V3   |
 [Dimension](luis-reference-prebuilt-dimension.md):<br>ボリューム<br>area<br>weight<br>information (例: bit/byte)<br>length (例: meter)<br>speed (例: mile per hour)  |    V2、V3   |
-[Email](luis-reference-prebuilt-email.md)   |    V2、V3   |
+[電子メール](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    V2、V3   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
@@ -103,7 +103,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    V2、V3   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
-[温度](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、V3   |
+[Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、V3   |
 [[URL]](luis-reference-prebuilt-url.md)   |    V2、V3   |
 
 ## <a name="french-france-entity-support"></a>フランス語 (フランス) のエンティティのサポート
@@ -113,10 +113,10 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 |事前構築済みのエンティティ|```fr-FR``` |
 ------|:------:|
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    V2、V3   |
-[Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    V2、V3   |
+[通貨 (金額)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2、V3   |
 [Dimension](luis-reference-prebuilt-dimension.md):<br>ボリューム<br>area<br>weight<br>information (例: bit/byte)<br>length (例: meter)<br>speed (例: mile per hour)  |    V2、V3   |
-[Email](luis-reference-prebuilt-email.md)   |    V2、V3   |
+[電子メール](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
@@ -125,7 +125,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |   -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
-[温度](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、V3   |
+[Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、V3   |
 [[URL]](luis-reference-prebuilt-url.md)   |    V2、V3   |
 
 ## <a name="french-canadian-entity-support"></a>フランス語 (カナダ) のエンティティのサポート
@@ -135,10 +135,10 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 |事前構築済みのエンティティ|```fr-CA``` |
 ------|:------:|
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    V2、V3   |
-[Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    V2、V3   |
+[通貨 (金額)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2、V3   |
 [Dimension](luis-reference-prebuilt-dimension.md):<br>ボリューム<br>area<br>weight<br>information (例: bit/byte)<br>length (例: meter)<br>speed (例: mile per hour)  |    V2、V3   |
-[Email](luis-reference-prebuilt-email.md)   |    V2、V3   |
+[電子メール](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
@@ -147,7 +147,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
-[温度](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、V3   |
+[Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、V3   |
 [[URL]](luis-reference-prebuilt-url.md)   |    V2、V3   |
 
 ## <a name="german-entity-support"></a>ドイツ語のエンティティのサポート
@@ -157,10 +157,10 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 |事前構築済みのエンティティ|```de-DE``` |
 ------|:------:|
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    V2、V3   |
-[Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    V2、V3   |
+[通貨 (金額)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2、V3   |
 [Dimension](luis-reference-prebuilt-dimension.md):<br>ボリューム<br>area<br>weight<br>information (例: bit/byte)<br>length (例: meter)<br>speed (例: mile per hour)  |    V2、V3   |
-[Email](luis-reference-prebuilt-email.md)   |    V2、V3   |
+[電子メール](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
@@ -169,7 +169,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
-[温度](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、V3   |
+[Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、V3   |
 [[URL]](luis-reference-prebuilt-url.md)   |    V2、V3   |
 
 ## <a name="italian-entity-support"></a>イタリア語のエンティティのサポート
@@ -181,10 +181,10 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 |事前構築済みのエンティティ|```it-IT``` |
 ------|:------:|
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    V2、V3   |
-[Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    V2、V3   |
+[通貨 (金額)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    V2、V3   |
 [Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
 [Dimension](luis-reference-prebuilt-dimension.md):<br>ボリューム<br>area<br>weight<br>information (例: bit/byte)<br>length (例: meter)<br>speed (例: mile per hour)  |    V2、V3   |
-[Email](luis-reference-prebuilt-email.md)   |    V2、V3   |
+[電子メール](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
@@ -193,7 +193,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
-[温度](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、V3   |
+[Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、V3   |
 [[URL]](luis-reference-prebuilt-url.md)   |    V2、V3   |
 
 ## <a name="japanese-entity-support"></a>日本語のエンティティのサポート
@@ -203,10 +203,10 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 |事前構築済みのエンティティ|```ja-JP``` |
 ------|:------:|
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    V2、-   |
-[Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    V2、-   |
+[通貨 (金額)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    V2、-   |
 [Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
 [Dimension](luis-reference-prebuilt-dimension.md):<br>ボリューム<br>area<br>weight<br>information (例: bit/byte)<br>length (例: meter)<br>speed (例: mile per hour)  |    V2、-   |
-[Email](luis-reference-prebuilt-email.md)   |    V2、V3   |
+[電子メール](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2、-   |
@@ -215,7 +215,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2、-   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
-[温度](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、-   |
+[Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、-   |
 [[URL]](luis-reference-prebuilt-url.md)   |    V2、V3   |
 
 ## <a name="korean-entity-support"></a>韓国語のエンティティのサポート
@@ -225,10 +225,10 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 |事前構築済みのエンティティ|```ko-KR``` |
 ------|:------:|
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    -   |
-[Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    -   |
+[通貨 (金額)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    -   |
 [Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
 [Dimension](luis-reference-prebuilt-dimension.md):<br>ボリューム<br>area<br>weight<br>information (例: bit/byte)<br>length (例: meter)<br>speed (例: mile per hour)  |    -   |
-[Email](luis-reference-prebuilt-email.md)   |    V2、V3   |
+[電子メール](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [Number](luis-reference-prebuilt-number.md)   |    -   |
@@ -237,7 +237,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [Percentage](luis-reference-prebuilt-percentage.md)   |    -   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
-[温度](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    -   |
+[Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    -   |
 [[URL]](luis-reference-prebuilt-url.md)   |    V2、V3   |
 
 ## <a name="portuguese-brazil-entity-support"></a>ポルトガル語 (ブラジル) のエンティティのサポート
@@ -247,10 +247,10 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 |事前構築済みのエンティティ|```pt-BR``` |
 ------|:------:|
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    V2、V3   |
-[Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    V2、V3   |
+[通貨 (金額)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2、V3   |
 [Dimension](luis-reference-prebuilt-dimension.md):<br>ボリューム<br>area<br>weight<br>information (例: bit/byte)<br>length (例: meter)<br>speed (例: mile per hour)  |    V2、V3   |
-[Email](luis-reference-prebuilt-email.md)   |    V2、V3   |
+[電子メール](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
@@ -259,7 +259,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
-[温度](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、V3   |
+[Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、V3   |
 [[URL]](luis-reference-prebuilt-url.md)   |    V2、V3   |
 
 ## <a name="spanish-spain-entity-support"></a>スペイン語 (スペイン) のエンティティのサポート
@@ -269,10 +269,10 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 |事前構築済みのエンティティ|```es-ES``` |
 ------|:------:|
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    V2、V3   |
-[Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    V2、V3   |
+[通貨 (金額)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2、V3   |
 [Dimension](luis-reference-prebuilt-dimension.md):<br>ボリューム<br>area<br>weight<br>information (例: bit/byte)<br>length (例: meter)<br>speed (例: mile per hour)  |    V2、V3   |
-[Email](luis-reference-prebuilt-email.md)   |    V2、V3   |
+[電子メール](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
@@ -281,7 +281,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
-[温度](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、V3   |
+[Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、V3   |
 [[URL]](luis-reference-prebuilt-url.md)   |    V2、V3   |
 
 ## <a name="spanish-mexico-entity-support"></a>スペイン語 (メキシコ) のエンティティのサポート
@@ -291,10 +291,10 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 |事前構築済みのエンティティ|```es-MX``` |
 ------|:------:|
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    -   |
-[Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    -   |
+[通貨 (金額)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    -   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    -   |
 [Dimension](luis-reference-prebuilt-dimension.md):<br>ボリューム<br>area<br>weight<br>information (例: bit/byte)<br>length (例: meter)<br>speed (例: mile per hour)  |    -   |
-[Email](luis-reference-prebuilt-email.md)   |    V2、V3   |
+[電子メール](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
@@ -303,7 +303,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [Percentage](luis-reference-prebuilt-percentage.md)   |    -   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
-[温度](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    -   |
+[Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    -   |
 [[URL]](luis-reference-prebuilt-url.md)   |    V2、V3   |
 
 「[非推奨のエンティティ](luis-reference-prebuilt-deprecated.md)」の注をご覧ください

@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 11/29/2017
 ms.author: cshoe
 ms.openlocfilehash: 9ed2b81c12c698822b9542bb6903189c865b572b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358317"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235159"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions における SendGrid のバインディング
 
@@ -260,7 +260,7 @@ def main(req: func.HttpRequest, sendGridMessage: func.Out[str]) -> func.HttpResp
 
 # <a name="java"></a>[Java](#tab/java)
 
-次の例では、SendGrid 出力バインディングを使用してメールを送信するために、[Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)の `@SendGridOutput` 注釈を使用しています。
+次の例では、SendGrid 出力バインディングを使用してメールを送信するために、`@SendGridOutput`Java 関数ランタイム ライブラリ[の ](/java/api/overview/azure/functions/runtime) 注釈を使用しています。
 
 ```java
 package com.function;
@@ -360,7 +360,7 @@ public static void Run(
 | direction |該当なし| `out` に設定する必要があります。| いいえ |
 | name |該当なし| 要求または要求本文の関数コードで使用される変数名。 戻り値が 1 つの場合、この値は `$return` です。 | いいえ |
 | apiKey | ApiKey | API キーを含むアプリ設定の名前。 設定されていない場合、既定のアプリの設定名は *AzureWebJobsSendGridApiKey* です。| いいえ |
-| to| ターゲット | 受信者の電子メール アドレス。 | はい |
+| から| ターゲット | 受信者の電子メール アドレス。 | はい |
 | from| ソース | 送信者の電子メール アドレス。 |  はい |
 | subject| サブジェクト | 電子メールの件名。 | はい |
 | text| Text | 電子メールの本文。 | はい |

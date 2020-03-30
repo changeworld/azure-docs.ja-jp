@@ -7,11 +7,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 5657be0dbaeb46f8f899a9b4a2f8ba9b4fe9ebaa
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461404"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226495"
 ---
 # <a name="add-push-notifications-to-your-xamarinandroid-app"></a>Xamarin.Android アプリへのプッシュ通知の追加
 
@@ -30,11 +30,11 @@ ms.locfileid: "77461404"
 * アクティブな Google アカウント。 [accounts.google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302)で、Google アカウントにサインアップできます。
 * [Google Cloud Messaging のクライアント コンポーネント](https://components.xamarin.com/view/GCMClient/)。
 
-## <a name="configure-hub"></a>通知ハブを構成する
+## <a name="configure-a-notification-hub"></a><a name="configure-hub"></a>通知ハブを構成する
 
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
-## <a id="register"></a>Firebase Cloud Messaging を有効にする
+## <a name="enable-firebase-cloud-messaging"></a><a id="register"></a>Firebase Cloud Messaging を有効にする
 
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
@@ -42,19 +42,19 @@ ms.locfileid: "77461404"
 
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push-for-firebase.md)]
 
-## <a id="update-server"></a>サーバー プロジェクトをプッシュ通知を送信するように更新する
+## <a name="update-the-server-project-to-send-push-notifications"></a><a id="update-server"></a>サーバー プロジェクトをプッシュ通知を送信するように更新する
 
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
-## <a id="configure-app"></a>プッシュ通知のクライアント プロジェクトを構成する
+## <a name="configure-the-client-project-for-push-notifications"></a><a id="configure-app"></a>プッシュ通知のクライアント プロジェクトを構成する
 
 [!INCLUDE [mobile-services-xamarin-android-push-configure-project](../../includes/mobile-services-xamarin-android-push-configure-project.md)]
 
-## <a id="add-push"></a>アプリケーションにプッシュ通知コードを追加する
+## <a name="add-push-notifications-code-to-your-app"></a><a id="add-push"></a>アプリケーションにプッシュ通知コードを追加する
 
 [!INCLUDE [app-service-mobile-xamarin-android-push-add-to-app](../../includes/app-service-mobile-xamarin-android-push-add-to-app.md)]
 
-## <a name="test"></a>アプリケーションでプッシュ通知をテストする
+## <a name="test-push-notifications-in-your-app"></a><a name="test"></a>アプリケーションでプッシュ通知をテストする
 
 エミュレーターで仮想デバイスを使用して、アプリをテストできます。 エミュレーターで実行するときに必要な追加の構成手順があります。
 

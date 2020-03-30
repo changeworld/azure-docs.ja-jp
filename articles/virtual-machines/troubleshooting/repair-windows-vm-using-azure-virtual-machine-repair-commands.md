@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: 6bda8cb831e84a56c889ed40109954551a34c113
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 2055558ef80a641084a7cf9d299281497d282936
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796171"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060672"
 ---
 # <a name="repair-a-windows-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Azure 仮想マシンの修復コマンドを使用して Windows VM を修復する
 
@@ -32,7 +32,7 @@ Azure の Windows 仮想マシン (VM) で起動エラーまたはディスク �
 
 Azure VM の修復コマンドを使用して VM の OS ディスクを変更できるだけでなく、VM を削除して再作成する必要がなくなりました。
 
-次の手順に従って、VM の問題のトラブルシューティングを行います。
+次のステップに従って、VM の問題のトラブルシューティングを行います。
 
 1. Azure Cloud Shell を起動する
 2. az extension add/update を実行する。
@@ -54,7 +54,7 @@ Azure VM の修復コマンドを使用して VM の OS ディスクを変更で
 
    Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。
 
-   Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com](https://shell.azure.com) に移動して、別のブラウザー タブで Cloud Shell を開くこともできます。
+   Cloud Shell を開くには、コード ブロックの右上隅にある **[試してみる]** を選択します。 [https://shell.azure.com](https://shell.azure.com) に移動して、別のブラウザー タブで Cloud Shell を開くこともできます。
 
    **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell にコード貼り付けてから、 **[入力]** を選択して実行します。
 
@@ -62,45 +62,45 @@ Azure VM の修復コマンドを使用して VM の OS ディスクを変更で
 
 2. `az vm repair` コマンドを初めて使用する場合は、VM 修復 CLI 拡張機能を追加します。
 
-   ```azurepowershell-interactive
+   ```azurecli-interactive
    az extension add -n vm-repair
    ```
 
    `az vm repair` コマンドを以前使用したことがある場合は、VM 修復拡張機能に更新プログラムを適用します。
 
-   ```azurepowershell-interactive
+   ```azurecli-interactive
    az extension update -n vm-repair
    ```
 
 3. `az vm repair create` を実行します。 このコマンドでは、機能していない VM の OS ディスクのコピーが作成され、修復 VM が作成されて、ディスクに接続されます。
 
-   ```azurepowershell-interactive
+   ```azurecli-interactive
    az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose
    ```
 
 4. `az vm repair run` を実行します。 このコマンドでは、修復 VM を介して接続されているディスクで指定した修復スクリプトが実行されます。
 
-   ```azurepowershell-interactive
+   ```azurecli-interactive
    az vm repair run  –g MyResourceGroup –n MyVM -–run-on-repair --run-id 2 --verbose
    ```
 
 5. `az vm repair restore` を実行します。 このコマンドでは、修復された OS ディスクが VM の元の OS ディスクとスワップされます。
 
-   ```azurepowershell-interactive
+   ```azurecli-interactive
    az vm repair restore -g MyResourceGroup -n MyVM --verbose
    ```
 
 ## <a name="verify-and-enable-boot-diagnostics"></a>ブート診断を確認して有効にする
 
-次の例では、``myResourceGroup`` という名前のリソース グループの ``myVMDeployed`` という名前の VM で診断拡張機能を有効にします。
+次の例では、``myVMDeployed`` という名前のリソース グループの ``myResourceGroup`` という名前の VM で診断拡張機能を有効にします。
 
 Azure CLI
 
-```azurepowershell-interactive
+```azurecli-interactive
 az vm boot-diagnostics enable --name myVMDeployed --resource-group myResourceGroup --storage https://mystor.blob.core.windows.net/
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * VM への接続の問題が発生した場合は、[Azure VM への RDP 接続のトラブルシューティング](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-connection)に関する記事をご覧ください。
 * VM で実行されているアプリケーションへのアクセスに関する問題については、「[Azure 上の仮想マシンにおけるアプリケーション接続に関する問題のトラブルシューティング](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-app-connection)」をご覧ください。

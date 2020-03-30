@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: e9ad7c52af20762633c710b39a64fbebf0cf6213
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73487744"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218825"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>LUIS ポータルで 1000 件の発話をバッチ テストする
 
@@ -30,7 +30,7 @@ ms.locfileid: "73487744"
 
 バッチ テストのために、*データ セット*と呼ばれる発話のバッチ ファイルを送信します。 データ セットは JSON 形式のファイルで、ラベル付きの**重複していない**発話が最大 1,000 件含まれます。 アプリでは、最大 10 個のデータ セットをテストできます。 さらにテストする必要がある場合は、データ セットを削除し、新しいものを追加します。
 
-|**規則**|
+|**ルール**|
 |--|
 |*重複する発話がない|
 |発話が 1000 以下|
@@ -132,6 +132,6 @@ False Positive セクションは、そうであってはいけないときに�
 
 バッチ テストでエラーがある場合は、より多くの発話を意図に追加したり、LUIS が意図を区別する助けとなるエンティティを使用して、より多くの発話にラベル付けしたりできます。 発話を追加し、それらにラベル付けしてもバッチ テストで予測エラーが発生する場合は、LUIS がより迅速に学習する助けになるように、ドメイン固有のボキャブラリを含む[語句一覧](luis-concept-feature.md)機能を追加することを検討してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [バッチをテストする](luis-how-to-batch-test.md)方法を学習します。

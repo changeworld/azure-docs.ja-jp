@@ -9,10 +9,10 @@ ms.date: 11/13/2019
 ms.author: barclayn
 ms.custom: include file
 ms.openlocfilehash: d0ede337f2ae17f28cd02df7ed35919bd9955e7a
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74048560"
 ---
 この記事には、Azure Virtual Machines のセキュリティに関する推奨事項が含まれています。 次の推奨事項に従うことで、このモデルで説明されている共有責任のセキュリティ義務を果たすことができます。 これらの推奨事項は、Web アプリ ソリューションの全体的なセキュリティの向上にも役立ちます。 サービス プロバイダーとしての責任を果たすための Microsoft の取り組みの詳細については、「[クラウド コンピューティングについての共有責任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)」を参照してください。
@@ -60,6 +60,6 @@ Azure Security Center の一般的な情報については、「[Azure Security 
 | 管理ポートへのアクセスを制限する。 | 攻撃者は、パブリック クラウドの IP 範囲をスキャンして、開いている管理ポートを探し、よく使用されるパスワードや、修正プログラムが適用されていない既知の脆弱性などの "簡単な" 攻撃を試みます。 [Just-In-Time (JIT) VM アクセス](../articles/security-center/security-center-just-in-time.md)を使用すると、Azure VM への受信トラフィックをロックダウンできます。これにより、必要なときに VM への容易な接続を提供しながら、攻撃に対する露出を減らすことができます。 | - |
 | ネットワーク アクセスを制限する。 | ネットワーク セキュリティ グループを使用すると、ネットワーク アクセスを制限し、公開するエンドポイントの数を制御できます。 詳細については、「[ネットワーク セキュリティ グループを作成、変更、削除](../articles/virtual-network/manage-network-security-group.md)」をご覧ください。 | - |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 追加のセキュリティ要件については、アプリケーション プロバイダーに確認してください。 セキュリティで保護されたアプリケーションの開発の詳細については、[セキュリティで保護された開発に関するドキュメント](../articles/security/fundamentals/abstract-develop-secure-apps.md)を参照してください。

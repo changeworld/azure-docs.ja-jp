@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: cd51eca0ea4563e1b56f74677df0829669d9e177
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75773726"
 ---
 1. **[ピアリングの作成]** ページの **[構成]** タブで、次のようにフィールドに入力します。
@@ -21,7 +21,7 @@ ms.locfileid: "75773726"
     > ![ピアリングの構成 - Exchange](../media/setup-exchange-conf-tab.png)
 
     * **[ピアリングの種類]** には、 *[Exchange]* を選択します。
-    * **[SKU]** には、 *[Basic Free]\(Basic 無料\)* を選択します。
+    * **[SKU]** には、 *[Basic Free]\(基本無料\)* を選択します。
     * ピアリングを設定する**都市圏**の場所を選択します。
 
         > [!NOTE]
@@ -50,7 +50,7 @@ ms.locfileid: "75773726"
         1. **[Maximum advertised IPv4 addresses]\(アドバタイズされる最大の IPv4 アドレス\)** と **[Maximum advertised IPv6 addresses]\(アドバタイズされる最大の IPv6 アドレス\)** のフィールドに、アドバタイズする IPv4 と IPv6 のプレフィックスの番号をそれぞれ入力します。
         1. **[OK]** をクリックして接続設定を保存します。
 
-1. 前に選択した**都市圏**内で、Microsoft がユーザーのネットワークと同一の場所に設置されている任意のファシリティに接続を追加するには、前の手順を繰り返してください。
+1. 前に選択した **[Metro]\(都市圏\)** 内で、Microsoft がユーザーのネットワークと同一の場所に設置されている任意のファシリティに接続を追加するには、前の手順を繰り返します。
 
 1. 必要なすべての接続を追加したら、 **[確認と作成]** をクリックします。
 

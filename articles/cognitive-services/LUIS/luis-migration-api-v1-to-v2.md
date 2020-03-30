@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: diberry
 ms.openlocfilehash: 2f67bf0951ef8928297c71e8fc9f924cf05c63f4
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68932689"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>LUIS アプリの API v1 から v2 への移行ガイド
@@ -28,7 +28,7 @@ LUIS では、LUIS API 用の新しい[リージョン](https://aka.ms/LUIS-regi
 オーサリング API ルートは、前は **prog** ルートが使用されていましたが、**api** ルートを使用するように変更されました。
 
 
-| version | ルート |
+| version | ルート (route) |
 |--|--|
 |1|/luis/v1.0/**prog**/apps|
 |2|/luis/**api**/v2.0/apps|
@@ -107,7 +107,7 @@ v2 エンドポイントの成功応答:
 ## <a name="key-management-no-longer-in-api"></a>API でのキー管理が不要
 サブスクリプション エンドポイント キー API は非推奨であり、410 GONE を返します。
 
-| version | ルート |
+| version | ルート (route) |
 |--|--|
 |1|/luis/v1.0/prog/subscriptions|
 |1|/luis/v1.0/prog/subscriptions/{subscriptionKey}|
@@ -117,7 +117,7 @@ Azure Portal で Azure [エンドポイント キー](luis-how-to-azure-subscrip
 ## <a name="new-versioning-route"></a>新しいバージョン管理ルート
 v2 モデルは、[バージョン](luis-how-to-manage-versions.md)に含まれています。 バージョン名は、ルートの 10 文字です。 既定のバージョンは "0.1" です。
 
-| version | ルート |
+| version | ルート (route) |
 |--|--|
 |1|/luis/v1.0/**prog**/apps/{appId}/entities|
 |2|/luis/**api**/v2.0/apps/{appId}/**versions**/{versionId}/entities|
@@ -136,7 +136,7 @@ LUIS メタデータを返す API のいくつかが新しい名前に変更さ�
 ## <a name="sample-renamed-to-suggest"></a>"sample" から "suggest" への名前変更
 LUIS では、モデルを強化する可能性がある既存の[エンドポイント発話](luis-how-to-review-endpoint-utterances.md)から、発話が提案されます。 以前のバージョンでは、その提案は **sample** でした。 新しいバージョンでは、名前が sample から **suggest** に変更されています。 これは、LUIS Web サイトでは **[エンドポイントの発話の確認](luis-how-to-review-endpoint-utterances.md)** と呼ばれます。
 
-| version | ルート |
+| version | ルート (route) |
 |--|--|
 |1|/luis/v1.0/**prog**/apps/{appId}/entities/{entityId}/**sample**|
 |1|/luis/v1.0/**prog**/apps/{appId}/intents/{intentId}/**sample**|
@@ -158,7 +158,7 @@ LUIS では、モデルを強化する可能性がある既存の[エンドポ�
 ### <a name="prebuilt-entities"></a>事前構築済みのエンティティ 
 [事前構築済みのエンティティ](luis-prebuilt-entities.md)は変更されました。 V2 の事前構築済みのエンティティが使用されていることを確認してください。 これには、datetime の代わりの [datetimeV2](luis-reference-prebuilt-datetimev2.md) の使用も含まれます。 
 
-### <a name="actions"></a>Actions
+### <a name="actions"></a>アクション
 アクション プロパティが有効ではなくなりました。 これは空にする必要があります 
 
 ### <a name="labeled-utterances"></a>ラベル付きの発話
@@ -167,7 +167,7 @@ V1 のラベル付きの発話では、単語またはフレーズの先頭と�
 ## <a name="common-reasons-for-http-response-status-codes"></a>HTTP 応答状態コードの一般的な理由
 [LUIS API の応答コード](luis-reference-response-codes.md)に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 v2 API のドキュメントを使用して、LUIS [エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356)および[オーサリング](https://go.microsoft.com/fwlink/?linkid=2092087) API に対する既存の REST 呼び出しを更新します。 
 

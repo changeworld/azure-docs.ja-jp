@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 876026b5399631728331c4a9e67482a34f9d0b2d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a5140da32eb6fce03131a42bfa90e71e64552431
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225553"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218797"
 ---
 # <a name="using-authoring-and-runtime-resource-keys"></a>オーサリングおよびランタイム リソース キーの使用
 
@@ -58,7 +58,7 @@ LUIS ポータルにサインインすると、進む手順を選択できます
 
     ![Language Understanding リソースを作成する](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
 
-    |名前|目的|
+    |Name|目的|
     |--|--|
     |リソース名| 選択したカスタム名。オーサリングおよび予測エンドポイント クエリの URL の一部として使用されます。|
     |サブスクリプション名| リソースに対して課金されるサブスクリプション。|
@@ -81,21 +81,21 @@ LUIS ポータルにサインインすると、進む手順を選択できます
 
 1. Azure CLI にサインインします。
 
-    ```console
+    ```azurecli
     az login
     ```
 
     ブラウザー開いたら、正しいアカウントを選択し、認証できます。
 
-1. **LUIS オーサリング リソース**を作成します。種類に `LUIS.Authoring`、名前に `my-luis-authoring-resource`、_既存_ リソース グループに `my-resource-group`、リージョンに `westus` を指定します。 
+1. **LUIS オーサリング リソース**を作成します。種類に `LUIS.Authoring`、名前に `my-luis-authoring-resource`、_既存_リソース グループに `my-resource-group`、リージョンに `westus` を指定します。 
 
-    ```console
+    ```azurecli
     az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
     ```
 
-1. **LUIS 予測エンドポイント リソース**を作成します。種類に `LUIS`、名前に `my-luis-prediction-resource`、_既存_ リソース グループに `my-resource-group`、リージョンに `westus` を指定します。 無料レベル以上のスループットが必要であれば、`F0` を `S0` に変更します。 詳細は、[価格レベルとスループット](luis-boundaries.md#key-limits)に関するページをご覧ください。
+1. **LUIS 予測エンドポイント リソース**を作成します。種類に `LUIS`、名前に `my-luis-prediction-resource`、_既存_リソース グループに `my-resource-group`、リージョンに `westus` を指定します。 無料レベル以上のスループットが必要であれば、`F0` を `S0` に変更します。 詳細は、[価格レベルとスループット](luis-boundaries.md#key-limits)に関するページをご覧ください。
 
-    ```console
+    ```azurecli
     az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
     ```
 
@@ -145,7 +145,7 @@ CI/CD パイプラインなどの自動化を目指す場合、LUIS アプリへ
 
     この POST API には、次の設定が必要です。
 
-    |種類|Setting|値|
+    |種類|設定|値|
     |--|--|--|
     |ヘッダー|`Authorization`|`Authorization` の値は `Bearer {token}` です。 トークンの値の前に、`Bearer` という単語とスペースを 1 つ入力する必要があることに注意してください。|
     |ヘッダー|`Ocp-Apim-Subscription-Key`|実際のオーサリング キー。|
@@ -187,7 +187,7 @@ Azure portal の **[キー]** ページで、Azure キーを再生成します�
     ![ご自身の LUIS 支払いレベルの変更](./media/luis-usage-tiers/plans.png)
 1.  価格の変更が完了したら、ポップアップ ウィンドウで新しい価格レベルを確認します。 
     ![ご自身の LUIS 支払いレベルの確認](./media/luis-usage-tiers/updated.png)
-1. 必ず **[発行]** ページで[このエンドポイント キーを割り当て](#assign-a-resource-to-an-app)て、すべてのエンドポイントのクエリで使用します。 
+1. 必ず [[発行]](#assign-a-resource-to-an-app) ページで**このエンドポイント キーを割り当て**て、すべてのエンドポイントのクエリで使用します。 
 
 ## <a name="viewing-azure-resource-metrics"></a>Azure リソース メトリックの表示
 
@@ -212,7 +212,7 @@ Azure で LUIS の使用に関する情報を表示できます。 **[概要]** 
 
 特定の期間に対して、**呼び出し合計**メトリックのメトリック アラートを追加します。 アラートを受け取るすべてのユーザーのメール アドレスを追加します。 アラートを受け取るすべてのシステムの Webhook を追加します。 アラートがトリガーされたときに、ロジック アプリを実行することもできます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [バージョンを使用](luis-how-to-manage-versions.md)してアプリのライフ サイクルを制御する方法を確認します。
 * [オーサリング リソース](luis-concept-keys.md#authoring-key)やそのリソースの[共同作成者](luis-concept-keys.md#contributions-from-other-authors)などの概念を理解します。

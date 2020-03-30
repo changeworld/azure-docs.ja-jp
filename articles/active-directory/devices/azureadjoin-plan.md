@@ -12,13 +12,13 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6bbecf0e365ba7a8424da775245181fa64c21f6
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78672693"
 ---
-# <a name="how-to-plan-your-azure-ad-join-implementation"></a>方法:Azure AD Join の実装を計画する
+# <a name="how-to-plan-your-azure-ad-join-implementation"></a>方法: Azure AD 参加の実装を計画する
 
 Azure AD 参加により、ユーザーの生産性とセキュリティを維持しながら、デバイスをオンプレミスの Active Directory に参加させる必要なしに Azure AD に直接参加させることができます。 Azure AD 参加は、大規模デプロイとスコープ付きのデプロイの両方についてエンタープライズ対応になっています。   
 
@@ -67,7 +67,7 @@ Azure AD 参加は、マネージド環境とフェデレーション環境の�
 
 フェデレーション環境には、WS-Trust と Ws-Fed の両方のプロトコルをサポートしている ID プロバイダーが必要です。
 
-- **WS-Fed:** このプロトコルは、デバイスを Azure AD に参加させるために必要です。
+- **Ws-Fed:** このプロトコルは、デバイスを Azure AD に参加させるために必要です。
 - **WS-Trust:** このプロトコルは、Azure AD 参加済みデバイスにサインインするために必要です。
 
 AD FS を使用している場合は、次の WS-Trust エンドポイントを有効にする必要があります。`/adfs/services/trust/2005/usernamemixed`
@@ -259,8 +259,8 @@ MDM プロバイダーを選択して関連設定を構成します。
 
 スコープに基づいて、次のいずれかのようになります。 
 
-- **ユーザーが MDM のスコープ内にいる**:Azure AD Premium のサブスクリプションがある場合は、Azure AD 参加と共に MDM の登録が自動化されます。 スコープ内のすべてのユーザーには、MDM に対する適切なライセンスが必要です。 このシナリオで MDM の登録に失敗した場合は、Azure AD 参加もロールバックされます。
-- **ユーザーが MDM のスコープ内にいない**:ユーザーが MDM のスコープ内にいない場合、Azure AD 参加は MDM 登録なしで完了します。 その結果、アンマネージド デバイスが生じます。
+- **ユーザーが MDM のスコープ内にいる**: Azure AD Premium のサブスクリプションがある場合は、Azure AD 参加と共に MDM の登録が自動化されます。 スコープ内のすべてのユーザーには、MDM に対する適切なライセンスが必要です。 このシナリオで MDM の登録に失敗した場合は、Azure AD 参加もロールバックされます。
+- **ユーザーが MDM のスコープ内にいない**: ユーザーが MDM のスコープ内にいない場合、Azure AD 参加は MDM 登録なしで完了します。 その結果、アンマネージド デバイスが生じます。
 
 ### <a name="mdm-urls"></a>MDM URL
 
@@ -282,7 +282,7 @@ MAM は、Azure AD 参加に適用されません。
 
 Azure AD に対して状態ローミングを有効にして、ユーザーがデバイス間で設定を同期できるようにするには、「[Azure Active Directory の Enterprise State Roaming を有効にする](enterprise-state-roaming-enable.md)」をご覧ください。 
 
-**推奨事項**:この設定は、ハイブリッド Azure AD 参加済みデバイスに対しても有効にしてください。
+**推奨事項**: この設定は、ハイブリッド Azure AD 参加済みデバイスに対しても有効にしてください。
 
 ## <a name="configure-conditional-access"></a>条件付きアクセスを構成する
 
