@@ -9,17 +9,17 @@ ms.date: 02/19/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: ec684e5e6fa2ef8e9ed30be49f59e8aa7ef3a28b
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79117104"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>ポイント対サイト構成で保持できる VPN クライアント エンドポイントの最大数を教えてください。
 
 それは、ゲートウェイ SKU によって異なります。 サポートされる接続の数の詳細については、「[ゲートウェイの SKU](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku)」を参照してください。
 
-### <a name="supportedclientos"></a>ポイント対サイト接続で使用できるクライアント オペレーティング システムを教えてください。
+### <a name="what-client-operating-systems-can-i-use-with-point-to-site"></a><a name="supportedclientos"></a>ポイント対サイト接続で使用できるクライアント オペレーティング システムを教えてください。
 
 次のクライアント オペレーティング システムがサポートされています。
 
@@ -103,7 +103,7 @@ Azure では、P2S VPN 向けに Windows、Mac、および Linux をサポート
 
 はい。Powershell または Azure Portal を使用して、既にデプロイされているゲートウェイでこれらの新機能を有効にできます。ただし、ご利用のゲートウェイ SKU が、RADIUS と IKEv2 のいずれかまたは両方をサポートしている必要があります。 たとえば VPN Gateway Basic SKU は、RADIUS と IKEv2 のどちらもサポートしていません。
 
-### <a name="removeconfig"></a>P2S 接続の構成を削除するにはどうすればよいですか。
+### <a name="how-do-i-remove-the-configuration-of-a-p2s-connection"></a><a name="removeconfig"></a>P2S 接続の構成を削除するにはどうすればよいですか。
 
 P2S 構成は、次のコマンドを使って Azure CLI と PowerShell を使用して削除できます。
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/03/2020
 ms.author: lugoldbe
 ms.openlocfilehash: 22af1f413bef0c69eb732f75fa03049140e4c7e3
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76964303"
 ---
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート

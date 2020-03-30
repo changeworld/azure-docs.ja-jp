@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: longl
 ms.openlocfilehash: da9ad5576d146c007e45124668875e9681860ce6
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76938826"
 ---
 # <a name="specify-a-face-recognition-model"></a>顔認識モデルを指定する
@@ -57,9 +57,9 @@ var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recog
 
 ## <a name="identify-faces-with-specified-model"></a>指定されたモデルで顔を識別する
 
-Face サービスは画像から顔データを抽出し、([Add face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API の呼び出しなどによって) それを **Person** オブジェクトに関連付けることができます。また、複数の **Person** オブジェクトを **PersonGroup** にまとめて格納することができます。 次に、[Face - Identify] の呼び出しによって) 新しい顔を **PersonGroup** と比較し、そのグループ内の一致した人物を識別することができます
+Face サービスは画像から顔データを抽出し、(**Add face** API の呼び出しなどによって) それを [Person](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) オブジェクトに関連付けることができます。また、複数の **Person** オブジェクトを **PersonGroup** にまとめて格納することができます。 次に、**Face - Identify** の呼び出しによって) 新しい顔を [Face - Identify] と比較し、そのグループ内の一致した人物を識別することができます
 
-**PersonGroup** は、すべての **Person** に対して 1 つの一意な認識モデルを持つ必要があります。これは、グループを作成する ([PersonGroup - Create] または [LargePersonGroup - Create]) ときに `recognitionModel` パラメーターを使用して指定できます。 このパラメーターを指定しない場合、元の `recognition_01` モデルが使用されます。 グループは常に、その作成時に指定された認識モデルを使用します。新しい顔がグループに追加されると、その顔はこのモデルに関連付けられます。これはグループの作成後に変更することはできません。 **PersonGroup** に設定されているモデルを調べるには、_returnRecognitionModel_ パラメーターを **true** に設定して [PersonGroup - Get] API を使用します。
+**PersonGroup** は、すべての **Person** に対して 1 つの一意な認識モデルを持つ必要があります。これは、グループを作成する (`recognitionModel`PersonGroup - Create[PersonGroup - Create]LargePersonGroup - Create[LargePersonGroup - Create] パラメーターを使用して指定できます。 このパラメーターを指定しない場合、元の `recognition_01` モデルが使用されます。 グループは常に、その作成時に指定された認識モデルを使用します。新しい顔がグループに追加されると、その顔はこのモデルに関連付けられます。これはグループの作成後に変更することはできません。 **PersonGroup** に設定されているモデルを調べるには、[PersonGroup - Get] パラメーターを _true_ に設定して **PersonGroup - Get** API を使用します。
 
 .NET クライアント ライブラリの次のコード例を参照してください。
 
@@ -69,15 +69,15 @@ string personGroupId = "mypersongroupid";
 await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_02");
 ```
 
-このコードでは、`mypersongroupid` という ID の **PersonGroup** を作成し、_recognition_02_ モデルを使用して顔の特徴を抽出するように設定します。
+このコードでは、**という ID の**PersonGroup`mypersongroupid` を作成し、_recognition_02_ モデルを使用して顔の特徴を抽出するように設定します。
 
-それに対応して、顔検出時に ([Face - Detect] API によって) この **PersonGroup** と比較するために使用するモデルを指定する必要があります。 使用するモデルは常に **PersonGroup** の設定と一致している必要があります。していない場合、互換性のないモデルが原因で操作が失敗します。
+それに対応して、顔検出時に (**Face - Detect** API によって) この [Face - Detect] と比較するために使用するモデルを指定する必要があります。 使用するモデルは常に **PersonGroup** の設定と一致している必要があります。していない場合、互換性のないモデルが原因で操作が失敗します。
 
 [Face - Identify] API に変更はありません。検出でモデルのバージョンを指定することだけが必要です。
 
 ## <a name="find-similar-faces-with-specified-model"></a>指定されたモデルで似た顔を検索する
 
-類似検索のための認識モデルも指定できます。 [FaceList - Create] または [LargeFaceList - Create] で顔のリストを作成するときに、`recognitionModel` でモデルのバージョンを割り当てることができます。 このパラメーターを指定しない場合、元の `recognition_01` モデルが使用されます。 顔リストは常に、その作成時に指定された認識モデルを使用します。新しい顔がリストに追加されると、その顔はこのモデルに関連付けられます。これは作成後に変更できません。 顔リストに設定されているモデルを調べるには、_returnRecognitionModel_ パラメーターを **true** に設定して [FaceList - Get] API を使用します。
+類似検索のための認識モデルも指定できます。 `recognitionModel`FaceList - Create API[FaceList - Create]LargeFaceList - Create[LargeFaceList - Create] でモデルのバージョンを割り当てることができます。 このパラメーターを指定しない場合、元の `recognition_01` モデルが使用されます。 顔リストは常に、その作成時に指定された認識モデルを使用します。新しい顔がリストに追加されると、その顔はこのモデルに関連付けられます。これは作成後に変更できません。 顔リストに設定されているモデルを調べるには、[FaceList - Get] パラメーターを _true_ に設定して **FaceList - Get** API を使用します。
 
 .NET クライアント ライブラリの次のコード例を参照してください。
 
@@ -85,7 +85,7 @@ await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", 
 await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_02");
 ```
 
-このコードは、特徴抽出のための _recognition_02_ モデルを使用して、`My face collection` という名前の顔リストを作成します。 新しく検出された顔に似た顔をこの顔リストから検索するときは、その顔が _recognition_02_ モデルを使用して検出 ([Face - Detect]) 済みである必要があります。 前のセクションと同様に、モデルは一貫している必要があります。
+このコードは、特徴抽出のための `My face collection`recognition_02 _モデルを使用して、_ という名前の顔リストを作成します。 新しく検出された顔に似た顔をこの顔リストから検索するときは、その顔が [Face - Detect] モデルを使用して検出 (_Face - Detect_) 済みである必要があります。 前のセクションと同様に、モデルは一貫している必要があります。
 
 [Face - Find Similar] API に変更はありません。検出でモデルのバージョンを指定するだけです。
 
@@ -99,7 +99,7 @@ await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognit
 
 1. 2 つの **PersonGroup** を作成し、それぞれ _recognition_01_ と _recognition_02_ を指定します。
 1. 画像データを使用して顔を検出し、これら 2 つの **PersonGroup** の **Person** にそれらの顔を登録し、[PersonGroup - Train] API でトレーニング プロセスをトリガーします。
-1. 両方の **PersonGroup** に対して [Face - Identify] でテストを実行し、結果を比較します。
+1. 両方の [Face - Identify] に対して **Face - Identify** でテストを実行し、結果を比較します。
 
 信頼度しきい値 (顔を識別するために要求されるモデルの信頼度を決定する 0 ～ 1 の値) をいつも指定する場合、モデルごとに異なるしきい値を使用することが必要な場合があります。 あるモデルのしきい値を別のモデルと共有することは想定されておらず、共有しても同じ結果が得られるとは限りません。
 

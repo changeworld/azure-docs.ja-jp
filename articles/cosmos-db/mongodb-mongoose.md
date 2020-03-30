@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 11/18/2019
-author: sivethe
-ms.author: sivethe
+ms.date: 03/20/2020
+author: timsander1
+ms.author: tisande
 ms.custom: seodec18
-ms.openlocfilehash: be3fd42f33fd66fe2bf5a773eafafba5d6982706
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 7f4d955583b82b224e3c963431c234ef4690198a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184779"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063730"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Node.js Mongoose アプリケーションを Azure Cosmos DB に接続する
 
@@ -60,6 +60,7 @@ Cosmos アカウントを作成しましょう。 使用するアカウントが
      > ```--save``` フラグによって、package.json ファイルに依存関係が追加されます。
 
 1. index.js ファイルに依存関係をインポートします。
+
     ```JavaScript
    var mongoose = require('mongoose');
    var env = require('dotenv').config();   //Use the .env file to load the variables
@@ -218,7 +219,7 @@ Mongoose には、[ディスクリミネーター](https://mongoosejs.com/docs/d
     const commonModel = mongoose.model('Common', new mongoose.Schema({}, baseConfig));
     ```
 
-1. ここで 'Family' モデルを定義します。 ```mongoose.model```の代わりに ```commonModel.discriminator``` を使用していることに注意してください。 さらに、Mongoose スキーマに基本構成を追加します。 次のように、discriminatorKey は ```FamilyType``` になります。
+1. ここで 'Family' モデルを定義します。 ```commonModel.discriminator```の代わりに ```mongoose.model``` を使用していることに注意してください。 さらに、Mongoose スキーマに基本構成を追加します。 次のように、discriminatorKey は ```FamilyType``` になります。
 
     ```JavaScript
     const Family_common = commonModel.discriminator('FamilyType', new     mongoose.Schema({
@@ -306,14 +307,14 @@ Mongoose には、[ディスクリミネーター](https://mongoosejs.com/docs/d
 
 説明からわかるように、Mongoose ディスクリミネーターは容易に使用できます。 そのため、Mongoose フレームワークを使用するアプリがある場合は、このチュートリアルを使用すると、それほど多くの変更を行わなくても Azure Cosmos の MongoDB 用 API を使用してアプリケーションを実行できます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure Cosmos DB の MongoDB 用 API と共に [Studio 3T を使用する](mongodb-mongochef.md)方法を学習します。
-- Azure Cosmos DB の MongoDB 用 API と共に [Robo 3T を使用する](mongodb-robomongo.md)方法を学習します。
+- Azure Cosmos DB の MongoDB 用 API と共に [Robo 3T を使用する](mongodb-robomongo.md)方法を学びます。
 - Azure Cosmos DB の MongoDB 用 API を使用した MongoDB の[サンプル](mongodb-samples.md)を調査します。
 
 [alldata]: ./media/mongodb-mongoose/mongo-collections-alldata.png

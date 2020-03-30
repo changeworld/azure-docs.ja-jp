@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 96aa7517a3418ab30b0b6a1736eea950ecf4a731
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 913a2b26f67773d9fafbc0a8430d121fbabb97cd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533802"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80053458"
 ---
 # <a name="add-contributors-to-your-app"></a>アプリに共同作成者を追加する
 
@@ -41,7 +41,7 @@ LUIS オーサリング エクスペリエンスが LUIS ポータルの **[管�
 
     ユーザーのメール アドレスが見つかったら、アカウントを選択し、 **[保存]** を選択します。 
 
-    このロールの割り当てで問題が発生した場合は、[Azure のロールの割り当て](../../role-based-access-control/role-assignments-portal.md)と [Azure のアクセス制御のトラブルシューティング](../../role-based-access-control/troubleshooting.md#problems-with-rbac-role-assignments)に関する記事を参照してください。
+    このロールの割り当てで問題が発生した場合は、[Azure のロールの割り当て](../../role-based-access-control/role-assignments-portal.md)と [Azure のアクセス制御のトラブルシューティング](../../role-based-access-control/troubleshooting.md#problems-with-azure-role-assignments)に関する記事を参照してください。
 
 ## <a name="add-collaborator-to-luis-app"></a>LUIS アプリにコラボレーターを追加する
 
@@ -94,7 +94,7 @@ LUIS では、Azure Active Directory (Azure AD) の標準的な同意フロー�
 Azure Active Directory ユーザーと同意の詳細を確認します。 
 * [ご利用のアプリを特定のユーザー セットに制限する](../../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [バージョンを使用](luis-how-to-manage-versions.md)してアプリのライフ サイクルを制御する方法を確認します。
 * [オーサリング リソース](luis-concept-keys.md#authoring-key)やそのリソースの[共同作成者](luis-concept-keys.md#contributions-from-other-authors)などの概念を理解します。

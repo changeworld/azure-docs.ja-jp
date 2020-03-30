@@ -12,12 +12,12 @@ ms.date: 09/11/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: c5005f6438a53215054c6152722d1449aa593b4f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 56975cebbfe4f6dd6452c850c338d431faea27bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160918"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050492"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft ID プラットフォームのベスト プラクティスと推奨事項
 
@@ -56,7 +56,7 @@ ms.locfileid: "77160918"
 
 |   |   |
 |---|---|
-| ![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) | リダイレクト URI を管理します。 <ul><li>すべてのリダイレクト URI の所有権を維持し、それらの DNS レコードを最新の状態に保ちます。</li><li>URI にワイルドカード (*) を使用しないでください。</li><li>Web アプリの場合は、すべての URI がセキュリティで保護され、暗号化されていることを確認します (たとえば、https スキームの使用など)。</li><li>パブリック クライアントの場合、該当する場合 (主に iOS および Android) はプラットフォーム固有のリダイレクト URI を使用します。 それ以外の場合は、アプリにコール バックするときの競合を防ぐために、ランダム性が高いリダイレクト URI を使用します。</li><li>アプリが独立した Web エージェントから使用されている場合は、 https://login.microsoftonline.com/common/oauth2/nativeclient を使用できます。</li><li>未使用または不要なリダイレクト URI を定期的に確認して整理します。</li></ul> |
+| ![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) | リダイレクト URI を管理します。 <ul><li>すべてのリダイレクト URI の所有権を維持し、それらの DNS レコードを最新の状態に保ちます。</li><li>URI にワイルドカード (*) を使用しないでください。</li><li>Web アプリの場合は、すべての URI がセキュリティで保護され、暗号化されていることを確認します (たとえば、https スキームの使用など)。</li><li>パブリック クライアントの場合、該当する場合 (主に iOS および Android) はプラットフォーム固有のリダイレクト URI を使用します。 それ以外の場合は、アプリにコール バックするときの競合を防ぐために、ランダム性が高いリダイレクト URI を使用します。</li><li>アプリが独立した Web エージェントから使用されている場合は、`https://login.microsoftonline.com/common/oauth2/nativeclient` を使用できます。</li><li>未使用または不要なリダイレクト URI を定期的に確認して整理します。</li></ul> |
 | ![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) | アプリがディレクトリに登録されている場合は、アプリ登録所有者の一覧を最小化して手動で監視します。 |
 | ![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) | 明示的に必要な場合を除き、[OAuth2 の暗黙的な許可フロー](v2-oauth2-implicit-grant-flow.md)のサポートを有効にしないでください。 有効なシナリオについては、[こちら](v2-oauth2-implicit-grant-flow.md#suitable-scenarios-for-the-oauth2-implicit-grant)を参照してください。 |
 | ![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) | ユーザー名/パスワードにうまく対処してください。 ユーザーのパスワードを直接処理する[リソース所有者パスワード資格情報フロー (ROPC)](v2-oauth-ropc.md) を使用しないでください。 このフローには高度な信頼とユーザーの公開が必要であり、他のより安全なフローを使用できない場合にのみ使用します。 このフローは、一部のシナリオ (DevOps など) ではまだ必要ですが、それを使用するとアプリケーションに制約が課せされることに注意してください。  最新の手法については、「[認証フローとアプリケーションのシナリオ](authentication-flows-app-scenarios.md)」を参照してください。|

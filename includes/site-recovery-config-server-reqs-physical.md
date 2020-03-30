@@ -10,10 +10,10 @@ ms.date: 09/03/2018
 ms.author: raynew
 ms.custom: include file
 ms.openlocfilehash: afeae4af9b41bf434b26833a3bd927118a4697ae
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67181401"
 ---
 **物理サーバー レプリケーションに使用する構成/プロセス サーバーの要件**
@@ -44,7 +44,7 @@ Port | 443 を許可 (コントロール チャネルのオーケストレーシ
 
 **構成/プロセス サーバーのサイズ要件**
 
-**CPU** | **メモリ** | **キャッシュ ディスク** | **データの変更率** | **レプリケートされたマシン**
+**CPU** | **[メモリ]** | **キャッシュ ディスク** | **データの変更率** | **レプリケートされたマシン**
 --- | --- | --- | --- | ---
 8 vCPU<br/><br/> 2 ソケット * 4 コア \@ 2.5 GHz | 16GB | 300 GB | 500 GB 以下 | 100 台未満のマシン
 12 vCPU<br/><br/> 2 ソケット * 6 コア \@ 2.5 GHz | 18 GB | 600 GB | 500 GB ～ 1 TB | 100 ～ 150 台のマシン

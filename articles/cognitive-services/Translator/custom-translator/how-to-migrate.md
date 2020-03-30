@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: 2fa90a8099778bf37ce8534e968a2b1b4345c2d8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75446779"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Microsoft Translator Hub ワークスペースとプロジェクトを移行する
@@ -80,9 +80,9 @@ ms.locfileid: "75446779"
 
 4. 次のページで、以下の 2 つのオプションのいずれかを選択します。
 
-    a. Deployed Trainings only (デプロイされたトレーニングのみ): このオプションを選択すると、お客様のデプロイされたシステムと関連するドキュメントのみが移行されます。
+    a. Deployed Trainings only (デプロイされたトレーニングのみ): このオプションを選択すると、デプロイされたシステムと関連するドキュメントのみが移行されます。
 
-    b. All Successful Trainings (成功したすべてのトレーニング): このオプションを選択すると、成功したすべてのトレーニングと関連するドキュメントが移行されます。
+    b. All Successful Trainings (成功したすべてのトレーニング): このオプションを選択すると、すべての成功したトレーニングと関連するドキュメントが移行されます。
 
     c. Custom Translator の移行先のワークスペース ID を入力します。
 
@@ -108,7 +108,7 @@ Hub からワークスペース/プロジェクトの移行を要求すると、
 
 2. Migrated On (移行日): 移行の日付とタイム スタンプ
 
-3. プロジェクト:移行が要求されたプロジェクトの数と、正常に移行されたプロジェクトの数。
+3. プロジェクト: 移行が要求されたプロジェクトの数と、正常に移行されたプロジェクトの数。
 
 4. トレーニング: 移行が要求されたトレーニングの数と、正常に移行されたトレーニングの数。
 

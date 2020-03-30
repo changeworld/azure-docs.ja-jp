@@ -9,10 +9,10 @@ ms.date: 05/02/2018
 ms.author: clemensv
 ms.custom: include file
 ms.openlocfilehash: 3c18efa7eb520b765c9bb3c2aff00104f971f5a8
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67181413"
 ---
 ### <a name="create-a-nodejs-application"></a>Node.js アプリケーションの作成
@@ -27,7 +27,7 @@ ms.locfileid: "67181413"
 
 ### <a name="write-some-code-to-send-messages"></a>メッセージを送信するコードを記述する
 
-1. `sender.js` ファイルの先頭に次の `constants` を追加します。
+1. `constants` ファイルの先頭に次の `sender.js` を追加します。
    
     ```js
     const https = require('hyco-https');

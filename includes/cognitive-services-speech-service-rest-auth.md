@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
 ms.openlocfilehash: dc5e251fee00ee22edb2261c1abd8404714834ba
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78668304"
 ---
 ## <a name="authentication"></a>認証
@@ -18,7 +18,7 @@ ms.locfileid: "78668304"
 | サポートされている Authorization ヘッダー | 音声テキスト変換 | テキスト読み上げ |
 |------------------------|----------------|----------------|
 | Ocp-Apim-Subscription-Key | はい | いいえ |
-| Authorization:Bearer | はい | はい |
+| Authorization: Bearer | はい | はい |
 
 `Ocp-Apim-Subscription-Key` ヘッダーを使用する場合、指定する必要があるのはサブスクリプション キーだけです。 次に例を示します。
 
@@ -30,7 +30,7 @@ ms.locfileid: "78668304"
 
 ### <a name="how-to-get-an-access-token"></a>アクセス トークンを取得する方法
 
-アクセス トークンを取得するには、`Ocp-Apim-Subscription-Key` とサブスクリプション キーを使用して、`issueToken` エンドポイントに対して要求を実行する必要があります。
+アクセス トークンを取得するには、`issueToken` とサブスクリプション キーを使用して、`Ocp-Apim-Subscription-Key` エンドポイントに対して要求を実行する必要があります。
 
 `issueToken` エンドポイントの形式は次のとおりです。
 

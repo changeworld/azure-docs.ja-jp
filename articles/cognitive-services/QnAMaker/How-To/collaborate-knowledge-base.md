@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/03/2020
 ms.author: diberry
 ms.openlocfilehash: b5adc7ebacde056a141ca3b361b9eb2ea7900a39
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75660751"
 ---
 # <a name="collaborate-on-your-knowledge-base"></a>ナレッジ ベースの共同利用

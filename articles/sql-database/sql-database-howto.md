@@ -11,18 +11,18 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 11/14/2019
-ms.openlocfilehash: e45baba74d7bf752718e5e36a148a91987cd3ffb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: c3f7b33e4b42b08334cfb687024985c878dc3713
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082420"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79209418"
 ---
 # <a name="how-to-use-azure-sql-database"></a>Azure SQL Database を使用する方法
 
 このセクションでは、お客様の Azure SQL データベースを管理して構成するのに役立つさまざまなガイド、スクリプト、説明をご紹介します。 また、[単一データベース](sql-database-howto-single-database.md)と [Managed Instance](sql-database-howto-managed-instance.md) については個別の攻略ガイドもご覧いただけます。
 
-## <a name="load-data"></a>データを読み込む
+## <a name="load-data"></a>データの読み込み
 
 - [Azure 内での単一データベースまたはプールされたデータベースのコピー](sql-database-copy.md)
 - [BACPAC からの DB のインポート](sql-database-import.md)
@@ -43,7 +43,7 @@ ms.locfileid: "74082420"
 
 - [手動チューニング](sql-database-performance-guidance.md)
 - [DMV を使用したパフォーマンスの監視](sql-database-monitoring-with-dmvs.md)
-- [クエリ ストアを使用したパフォーマンスの監視](sql-database-operate-query-store.md)
+- [クエリ ストアを使用したパフォーマンスの監視](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
 - [Intelligent Insights を使用したパフォーマンスのトラブルシューティング](sql-database-intelligent-insights-troubleshoot-performance.md)
 - [Intelligent Insights 診断ログの使用](sql-database-intelligent-insights-use-diagnostics-log.md)
 - [インメモリ OLTP スペースの監視](sql-database-in-memory-oltp-monitoring.md)
@@ -92,7 +92,7 @@ ms.locfileid: "74082420"
 - [SaaS Video Indexer](saas-tenancy-video-index-wingtip-brk3120-20171011.md)
 - [SaaS アプリのセキュリティ](saas-tenancy-elastic-tools-multi-tenant-row-level-security.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [マネージド インスタンスの攻略ガイド](sql-database-howto-managed-instance.md)の詳細を確認する。
 - [単一データベースの攻略ガイド](sql-database-howto-single-database.md)の詳細を確認する。

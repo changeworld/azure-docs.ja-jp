@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: diberry
 ms.openlocfilehash: d3f8696388a33a8ea112aae438c6bbe9af520c61
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904270"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79219109"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>LUIS ポータルでの新しい LUIS アプリの作成
 LUIS アプリを作成するにはいくつかの方法があります。 LUIS ポータル内または LUIS オーサリング [API](developer-reference-resource.md) を使用して LUIS アプリを作成できます。
@@ -77,6 +77,6 @@ LUIS アプリを作成するにはいくつかの方法があります。 LUIS 
 * オフライン分析のためにエンドポイントログを `.csv` としてエクスポートする
 * アプリの削除
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 アプリ デザインに意図検出が含まれている場合、[新しい意図を作成](luis-how-to-add-intents.md)し、サンプル発話を追加します。 アプリ デザインがデータ抽出のみの場合、None 意図にサンプル発話を追加し、[エンティティを作成](luis-how-to-add-example-utterances.md)し、そのエンティティでサンプル発話にラベルを付けます。 

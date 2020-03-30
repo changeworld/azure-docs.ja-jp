@@ -12,10 +12,10 @@ ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 6cc0508a63f26b955ac5e0ebf3ef58a184a35997
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78671646"
 ---
 # <a name="custom-email-verification-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム メール確認
@@ -28,7 +28,7 @@ Azure Active Directory B2C (Azure AD B2C) でカスタム メールを使用し�
 
 ## <a name="create-a-sendgrid-account"></a>SendGrid アカウントの作成
 
-まだ用意していない場合、まず、SendGrid アカウントを設定してください (Azure のお客様は毎月、25,000 の無料電子メールをロック解除できます)。 設定方法については、「[SendGrid を使用した Azure での電子メールの送信方法](../sendgrid-dotnet-how-to-send-email.md)」の「[SendGrid アカウントの作成](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account)」セクションをご覧ください。
+まだ用意していない場合、まず、SendGrid アカウントを設定してください (Azure のお客様は毎月、25,000 の無料電子メールをロック解除できます)。 設定方法については、「[SendGrid を使用した Azure での電子メールの送信方法](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account)」の「[SendGrid アカウントの作成](../sendgrid-dotnet-how-to-send-email.md)」セクションをご覧ください。
 
 [SendGrid API キー](../sendgrid-dotnet-how-to-send-email.md#to-find-your-sendgrid-api-key)を作成するセクションを必ず完了してください。 後の手順で使用するために、API キーを記録しておきます。
 
@@ -36,7 +36,7 @@ Azure Active Directory B2C (Azure AD B2C) でカスタム メールを使用し�
 
 次に、SendGrid API キーを Azure AD B2C ポリシー キーに格納し、ポリシーで参照されるようにします。
 
-1. [Azure portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用の Azure AD B2C ディレクトリを選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 1. [概要] ページで、 **[Identity Experience Framework]** を選択します。
@@ -45,7 +45,7 @@ Azure Active Directory B2C (Azure AD B2C) でカスタム メールを使用し�
 1. ポリシー キーの**名前**を入力します。 たとえば、「 `SendGridSecret` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
 1. **[シークレット]** に、前に記録したクライアント シークレットを入力します。
 1. **[キー使用法]** として [`Signature`] を選択します。
-1. **［作成］** を選択します
+1. **作成** を選択します。
 
 ## <a name="create-sendgrid-template"></a>SendGrid テンプレートを作成する
 
@@ -158,7 +158,7 @@ SendGrid アカウントを作成し、SendGrid API キーを Azure AD B2C ポ�
 
 ## <a name="add-azure-ad-b2c-claim-types"></a>Azure AD B2C の要求の種類を追加する
 
-ポリシーで、`<BuildingBlocks>` 内の `<ClaimsSchema>` 要素に次の要求の種類を追加します。
+ポリシーで、`<ClaimsSchema>` 内の `<BuildingBlocks>` 要素に次の要求の種類を追加します。
 
 これらの要求の種類は、ワンタイム パスワード (OTP) コードを利用してメール アドレスを生成し、検証するために必要です。
 
@@ -185,9 +185,9 @@ SendGrid アカウントを作成し、SendGrid API キーを Azure AD B2C ポ�
 
 JSON オブジェクトの構造は、InputClaims の InputParameters と TransformationClaimTypes というドット表記で ID により定義されます。 ドット表記の数値は配列を意味します。 値は、InputClaims の値と InputParameters の "Value" プロパティから取得されます。 JSON 要求変換の詳細については、「[JSON 要求変換](json-transformations.md)」を参照してください。
 
-次の要求変換を `<BuildingBlocks>` 内の `<ClaimsTransformations>` 要素に追加します。 要求変換 XML を次のように更新します。
+次の要求変換を `<ClaimsTransformations>` 内の `<BuildingBlocks>` 要素に追加します。 要求変換 XML を次のように更新します。
 
-* 「[SendGrid テンプレートの作成](#create-sendgrid-template)」で先に作成した SendGrid トランザクション テンプレートの ID で `template_id` InputParameter 値を更新します。
+* 「`template_id`SendGrid テンプレートの作成[」で先に作成した SendGrid トランザクション テンプレートの ID で ](#create-sendgrid-template) InputParameter 値を更新します。
 * `from.email` アドレス値を更新します。 確認メールがスパムに指定されないように有効なメール アドレスを使用します。
 * `personalizations.0.dynamic_template_data.subject` 件名入力パラメーターの値を組織に適切な件名で更新します。
 
@@ -236,7 +236,7 @@ JSON オブジェクトの構造は、InputClaims の InputParameters と Transf
 
 ![確認コード メールの送信アクション](media/custom-email/display-control-verification-email-action-01.png)
 
-引き続きコンテンツ定義の下の `<BuildingBlocks>` 内で、種類が [VerificationControl](display-control-verification.md) の次の [DisplayControl](display-controls.md) をポリシーに追加します。
+引き続きコンテンツ定義の下の `<BuildingBlocks>` 内で、種類が [VerificationControl](display-controls.md) の次の [DisplayControl](display-control-verification.md) をポリシーに追加します。
 
 ```XML
 <DisplayControls>

@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodc18
 ms.date: 03/04/2019
-ms.openlocfilehash: 7a82c8af518ec062eb38f921ebf85848d10da129
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 34316b13c93ca2739e87262dd09dcbaf38186b16
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168916"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79204479"
 ---
-# <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>ダウンロード可能なインフォグラフィック:機械学習の基礎とアルゴリズムの使用例
+# <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>インフォグラフィックのダウンロード: Machine Learning の基礎とアルゴリズムの使用例
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 機械学習の基礎の概要については、このわかりやすいインフォグラフィックをダウンロードしていただけます。よく使用されるアルゴリズムについて説明し、機械学習に関する一般的な質問に答えるものとなっています。 機械学習の初心者向けに、使用するアルゴリズムの選択や目的を理解するうえで役立つ使用例が用意されています。
 
@@ -27,9 +29,9 @@ ms.locfileid: "77168916"
 
 ## <a name="download-the-infographic-with-algorithm-examples"></a>インフォグラフィックとアルゴリズムの例をダウンロードする
 
-**ダウンロード[:機械学習の基礎に関するインフォグラフィックとアルゴリズム使用例へのリンク (PDF)](https://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
+**[ダウンロード: 機械学習の基礎に関するインフォグラフィックとアルゴリズム使用例へのリンク (PDF)](https://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
 
-![インフォグラフィック:機械学習の基礎とアルゴリズムの使用例。 Popular algorithms. Machine learning for beginners.](./media/basics-infographic-with-algorithm-examples/machine-learning-basics-infographic-with-algorithm-examples.png)
+![Infographic: Machine learning basics with algorithm examples. Popular algorithms. Machine learning for beginners.](./media/basics-infographic-with-algorithm-examples/machine-learning-basics-infographic-with-algorithm-examples.png)
 
 ## <a name="more-help-with-algorithms-for-beginners-and-advanced-users"></a>アルゴリズムの初級ユーザーと上級ユーザーのための追加情報
 

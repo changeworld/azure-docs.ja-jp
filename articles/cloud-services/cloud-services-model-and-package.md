@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: 32603f4ab33e020245861e5dc66d2ade545fa627
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77148311"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225935"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>クラウド サービス モデルとそのパッケージ化について
 クラウド サービスは、サービス定義 *(.csdef)* 、サービスの構成 *(.cscfg)* 、サービス パッケージ *(.cspkg)* の 3 つのコンポーネントから作成されます。 **ServiceDefinition.csdef** ファイルと **ServiceConfig.cscfg** ファイルはどちらも XML をベースとし、クラウド サービスの構造と構成方法について記述したファイルであり、まとめてモデルと呼ばれています。 **ServicePackage.cspkg** は、**ServiceDefinition.csdef** とその他のものから生成される zip ファイルで、必要なすべてのバイナリベースの依存関係が含まれます。 Azure では、**ServicePackage.cspkg** と **ServiceConfig.cscfg** の両方からクラウド サービスが作成されます。
@@ -221,7 +221,7 @@ Azure では、Web ロールに 1 つのエントリ ポイントのみを使用
 
 Azure のクラウド サービスとしてアプリケーションをデプロイするには、まず適切な形式でアプリケーションをパッケージ化する必要があります。 **CSPack** コマンドライン ツール ( [Azure SDK](https://azure.microsoft.com/downloads/)にインストール済み) を使用して、Visual Studio に代わる方法として、パッケージ ファイルを作成できます。
 
-**CSPack** はサービス定義ファイルとサービス構成ファイルの内容を使用して、パッケージの内容を定義します。 **CSPack** は、 [Azure ポータル](cloud-services-how-to-create-deploy-portal.md#create-and-deploy)を使用して Azure にアップロードできるアプリケーション パッケージ ファイル (.cspkg) を生成します。 既定では、パッケージの名前は `[ServiceDefinitionFileName].cspkg` ですが、**CSPack** の `/out` オプションを使用して別の名前を指定することもできます。
+**CSPack** はサービス定義ファイルとサービス構成ファイルの内容を使用して、パッケージの内容を定義します。 **CSPack** は、 [Azure ポータル](cloud-services-how-to-create-deploy-portal.md#create-and-deploy)を使用して Azure にアップロードできるアプリケーション パッケージ ファイル (.cspkg) を生成します。 既定では、パッケージの名前は `[ServiceDefinitionFileName].cspkg` ですが、`/out`CSPack**の** オプションを使用して別の名前を指定することもできます。
 
 **CSPack** は次の場所にあります  
 `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\[sdk-version]\bin\`
@@ -262,7 +262,7 @@ cspack [DirectoryName]\[ServiceDefinition]
 
 変数が定義されている場所は次のとおりです。
 
-| 変数 | Value |
+| 変数 | 値 |
 | --- | --- |
 | \[DirectoryName\] |Azure プロジェクトの .csdef ファイルを含むルート プロジェクト ディレクトリの下のサブディレクトリです。 |
 | \[ServiceDefinition\] |サービス定義ファイルの名前。 既定では、このファイルの名前は ServiceDefinition.csdef です。 |

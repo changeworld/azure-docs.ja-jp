@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 02/25/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: b51016b1b73b51cd1f1ec827f05fc9a93dd4cb38
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: eb62883859a3efeb1c05deb38d8a40fba76e9cdf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650709"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79137922"
 ---
 # <a name="list-blobs-with-net"></a>.NET を使用して BLOB を一覧表示する
 
 BLOB をコードから一覧表示する際には、Azure Storage からの結果の取得方法を管理するためのオプションをいくつか指定できます。 各結果セットで返す結果の数を指定し、後続のセットを取得できます。 名前がその文字または文字列から始まる BLOB を返すようにプレフィックスを指定できます。 また、フラット リスト構造 (階層) で BLOB を一覧表示できます。 階層リストでは、フォルダーに整理されたかのように BLOB が返されます。 
 
-この記事では、[.NET 用の Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage/client)を使用して BLOB を一覧表示する方法について説明します。  
+この記事では、[.NET 用の Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage?view=azure-dotnet)を使用して BLOB を一覧表示する方法について説明します。  
 
 ## <a name="understand-blob-listing-options"></a>BLOB の一覧表示オプションについて
 
@@ -39,7 +39,7 @@ BLOB をコードから一覧表示する際には、Azure Storage からの結�
 
 ### <a name="manage-how-many-results-are-returned"></a>返される結果の数を管理する
 
-既定では、一覧表示操作では一度に最大 5000 の結果が返されます。 返される結果セットを減らすには、いずれかの **ListBlobs** メソッドを呼び出すときに、`maxresults` パラメーターに 0 以外の値を指定します。
+既定では、一覧表示操作では一度に最大 5000 の結果が返されます。 返される結果セットを減らすには、いずれかの `maxresults`ListBlobs **メソッドを呼び出すときに、** パラメーターに 0 以外の値を指定します。
 
 一覧表示操作が 5000 を超える BLOB を返す場合、または一覧表示操作によってストレージ アカウント内のコンテナーのサブセットが返されるように `maxresults` の値を指定した場合、Azure Storage は BLOB の一覧と共に*継続トークン*を返します。 継続トークンは、Azure Storage から次の結果セットを取得するために使用できる非透過の値です。
 
@@ -51,7 +51,7 @@ BLOB をコードから一覧表示する際には、Azure Storage からの結�
 
 ### <a name="return-metadata"></a>メタデータを返す
 
-結果と共に BLOB のメタデータを返すには、[BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) 列挙型の **Metadata** 値を指定します。 Azure Storage は、返される各 BLOB にメタデータを追加します。そのため、BLOB のメタデータを取得するために、いずれかの **FetchAttributes** メソッドをこのコンテキストで呼び出す必要はありません。
+結果と共に BLOB のメタデータを返すには、**BlobListingDetails** 列挙型の [Metadata](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) 値を指定します。 Azure Storage は、返される各 BLOB にメタデータを追加します。そのため、BLOB のメタデータを取得するために、いずれかの **FetchAttributes** メソッドをこのコンテキストで呼び出す必要はありません。
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>フラットな一覧表示と階層的な一覧表示
 
