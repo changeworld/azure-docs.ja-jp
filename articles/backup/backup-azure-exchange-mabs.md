@@ -5,10 +5,10 @@ ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.openlocfilehash: 9e623b1bdce93c340ccd0e61f9f5145e7154beff
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78295846"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Azure Backup Server を使用して Exchange サーバーを Azure にバックアップする
@@ -100,7 +100,7 @@ Exchange サーバーに MABS 保護エージェントをインストールす�
 * **元の Exchange Server の場所に回復する:** データは元の Exchange サーバーに回復します。
 * **Exchange Server 上の別のデータベースに回復する:** データは別の Exchange サーバー上の別のデータベースに回復します。
 * **回復用データベースに回復する:** データは Exchange 回復データベース (RDB) に回復します。
-* **回復用データベースに回復する:** データはネットワーク フォルダーに回復します。
+* **ネットワーク フォルダーにコピーする:** データはネットワーク フォルダーに回復します。
 * **テープにコピーする:** テープ ライブラリまたはスタンドアロンのテープ ドライブが MABS に接続され、そこで構成されている場合、復旧ポイントは空きテープにコピーされます。
 
     ![オンライン レプリケーションの選択](./media/backup-azure-backup-exchange-server/choose-online-replication.png)

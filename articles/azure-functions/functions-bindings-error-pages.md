@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: cshoe
 ms.openlocfilehash: befdb4a8cceaef18961c1e9297e23ed5d405ff50
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77586191"
 ---
 # <a name="azure-functions-error-handling"></a>Azure Functions のエラー処理

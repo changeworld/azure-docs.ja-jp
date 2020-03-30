@@ -12,10 +12,10 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.openlocfilehash: a6ec31f0d60c7f6e3737dc4042b05a6d8bf3dd5e
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76699973"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Azure Active Directory の接続済みサービスでエラーを診断する
@@ -53,7 +53,7 @@ MVC プロジェクトの場合、接続済みサービスは、以前にサー�
 * 個々のユーザー アカウント
 * 組織アカウント
 
-MVC プロジェクトで Windows 認証を検出するために、接続済みサービスは `web.config` ファイルで `authentication` 要素を探します。
+MVC プロジェクトで Windows 認証を検出するために、接続済みサービスは `authentication` ファイルで `web.config` 要素を探します。
 
 ```xml
 <configuration>
@@ -63,7 +63,7 @@ MVC プロジェクトで Windows 認証を検出するために、接続済み�
 </configuration>
 ```
 
-Web API プロジェクトで Windows 認証を検出するために、接続済みサービスはプロジェクトの `.csproj` ファイルで `IISExpressWindowsAuthentication` 要素を探します。
+Web API プロジェクトで Windows 認証を検出するために、接続済みサービスはプロジェクトの `IISExpressWindowsAuthentication` ファイルで `.csproj` 要素を探します。
 
 ```xml
 <Project>

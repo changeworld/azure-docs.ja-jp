@@ -1,19 +1,19 @@
 ---
-title: クイックスタート - コスト分析を使用して Azure のコストを調査する | Microsoft Docs
+title: クイックスタート - コスト分析を使用して Azure のコストを調査する
 description: このクイック スタートは、コスト分析を使用して Azure 組織のコストを調査および分析するために役立ちます。
 author: bandersmsft
 ms.author: banders
-ms.date: 02/11/2020
+ms.date: 03/24/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 82cd596f08136f6d9b327fc83122c0f32d8f9914
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 53e1ef2f5e4faecd3ab2dee1350f3e9087df8e9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649298"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80155955"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>クイック スタート:コスト分析を使用してコストを調査および分析する
 
@@ -27,12 +27,13 @@ Azure コストを正しく制御して最適化するには、コストが組�
 - コスト ビューをカスタマイズする
 - コスト分析データをダウンロードする
 
-
 ## <a name="prerequisites"></a>前提条件
 
 コスト分析では、さまざまな種類の Azure アカウントがサポートされています。 サポートされているアカウントの種類の完全な一覧については、「[Understand Cost Management data (Cost Management データの概要)](understand-cost-mgt-data.md)」を参照してください。 コスト データを表示するには、少なくとも Azure アカウントの読み取りアクセス許可が必要です。
 
 Azure Cost Management データに対するアクセス権の割り当てについては、[データへのアクセス許可の割り当て](../../cost-management/assign-access-acm-data.md)に関するページを参照してください。
+
+新しいサブスクリプションをご利用の場合、すぐには Cost Management 機能を使用できません。 すべての Cost Management 機能を使用できるようになるまでに、最大 48 時間かかる場合があります。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -43,6 +44,10 @@ Azure Cost Management データに対するアクセス権の割り当てにつ�
 コスト分析でコストを確認するには、Azure portal でスコープを開き、メニューで **[コスト分析]** を選択します。 たとえば、 **[サブスクリプション]** に移動し、一覧からサブスクリプションを選択して、メニューから **[コスト分析]** を選択します。 コスト分析で別のスコープに切り替えるには、 **[スコープ]** ピルを使用します。 スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」を参照してください。
 
 選択したスコープは、データの統合とコスト情報へのアクセスの制御のために、Cost Management 全体を通して使用されます。 スコープを使用する場合は、複数選択を行いません。 代わりに、他のユーザーがロールアップする、より大きなスコープを選択してから、必要な入れ子のスコープにフィルターで絞り込みます。 ユーザーによっては、複数の入れ子になったスコープをカバーする単一の親スコープにアクセスできない場合があるため、このアプローチを理解することは重要です。
+
+コスト分析を使用する方法の詳細については、ビデオ「[Azure portal で Cost Management を使用する方法](https://www.youtube.com/watch?v=mfxysF-kTFA)」をご覧ください。
+
+>[!VIDEO https://www.youtube.com/embed/mfxysF-kTFA]
 
 初期のコスト分析ビューには、次の領域が含まれています。
 
@@ -65,7 +70,6 @@ Azure Cost Management データに対するアクセス権の割り当てにつ�
 コスト予測では、選択した期間における推定コストの予測が表示されます。 このモデルは、時系列回帰モデルに基づいています。 コストを正確に予測するために、少なくとも 10 日間のコストと使用状況の最新データが必要です。 指定の期間に対して、予測モデルでは、予測期間のトレーニング データの同等の部分が必要です。 たとえば、3 か月の予測には、少なくとも 3 か月間のコストと使用状況の最新データが必要です。
 
 このモデルでは、最大 6 か月間のトレーニング データを使用して、1 年間のコストを予測します。 予測が変更されるには、少なくとも 7 日間のトレーニング データが必要です。 予測は、コストや使用パターンにおける急増や急減など、大幅な変化に基づいています。 予測では、 **[Group by]\(グループ化\)** プロパティ内の項目ごとに個々の予測が生成されることはありません。 合計の累積コストの予測のみが提供されます。 複数の通貨を使用する場合、モデルではコストの予測が米国ドルでのみ提供されます。
-
 
 ## <a name="customize-cost-views"></a>コスト ビューをカスタマイズする
 
@@ -174,11 +178,17 @@ Azure タグ ポリシーを使用してコスト データの可視性を向上
 
 コスト分析を Azure portal のダッシュボードにピン留めするか、またはコスト分析へのリンクをコピーすることで、カスタマイズされたビューを保存して他のユーザーと共有します。
 
+ポータルを使用してコストに関する知識を組織で共有する方法の詳細については、ビデオ「[Azure Cost Management のビューを共有、保存する](https://www.youtube.com/watch?v=kQkXXj-SmvQ)」をご覧ください。
+
+>[!VIDEO https://www.youtube.com/embed/kQkXXj-SmvQ]
+
 コスト分析をピン留めするには、右上隅にあるピン アイコンを選択します。 コスト分析をピン留めすると、メイン グラフまたはテーブル ビューだけが保存されます。 他のユーザーがタイルにアクセスできるようにするには、ダッシュボードを共有します。 ダッシュボードの構成だけが共有され、基になるデータには他のユーザーはアクセスできないことに注意してください。 コストへのアクセス権がないのに、共有ダッシュボードにアクセスすると、"アクセス拒否" メッセージが表示されます。
 
 コスト分析へのリンクを共有するには、ブレードの上部にある **[共有]** を選択します。 カスタム URL が表示され、この特定のスコープに対するこの特定のビューが開かれます。 コストへのアクセス権がない場合にこの URL を受け取ると、"アクセス拒否" メッセージが表示されます。
 
 サポートされている各スコープに対するコストへのアクセス許可について詳しくは、「[スコープを理解して使用する](understand-work-scopes.md)」をご覧ください。
+
+
 
 ## <a name="automation-and-offline-analysis"></a>自動化とオフライン分析
 
