@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: cherylmc
 ms.openlocfilehash: d7a2040748d170b4e536df59947ea811f149d931
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356003"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225127"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>VPN ゲートウェイの構成設定について
 
@@ -30,7 +30,7 @@ VPN Gateway の接続は複数のリソースの構成に依存し、それぞ�
 
 
 
-## <a name="gwtype"></a>ゲートウェイの種類
+## <a name="gateway-types"></a><a name="gwtype"></a>ゲートウェイの種類
 
 各仮想ネットワークに配置できる各種類の仮想ネットワーク ゲートウェイは 1 つに限られています。 仮想ネットワーク ゲートウェイを作成するときは、ゲートウェイの種類が構成に対して適切であることを確認する必要があります。
 
@@ -49,7 +49,7 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 -VpnType RouteBased
 ```
 
-## <a name="gwsku"></a>ゲートウェイの SKU
+## <a name="gateway-skus"></a><a name="gwsku"></a>ゲートウェイの SKU
 
 [!INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
 
@@ -75,7 +75,7 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --resource-group TestRG1 --vnet VNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait
 ```
 
-###  <a name="resizechange"></a>SKU のサイズ変更または変更
+###  <a name="resizing-or-changing-a-sku"></a><a name="resizechange"></a>SKU のサイズ変更または変更
 
 VPN ゲートウェイがあり、別のゲートウェイ SKU を使用する場合、使用可能なオプションは、ゲートウェイ SKU のサイズを変更するか、別の SKU に変更することです。 別のゲートウェイ SKU に変更する場合、既存のゲートウェイを完全に削除して、新しいゲートウェイを作成します。 ゲートウェイの作成には、最大で 45 分かかる場合があります。 これと比較して、ゲートウェイ SKU のサイズを変更する場合は、ゲートウェイを削除して再構築する必要がないため、ダウンタイムはあまりありません。 ゲートウェイ SKU を変更する代わりにサイズを変更するオプションが利用できる場合は、そのオプションを利用するようにしてください。 ただし、サイズ変更に関する以下の規則があります。
 
@@ -83,15 +83,15 @@ VPN ゲートウェイがあり、別のゲートウェイ SKU を使用する�
 2. 古いゲートウェイ SKU では、Basic、Standard、HighPerformance SKU の間でサイズ変更できます。
 3. Basic/Standard/HighPerformance SKU から VpnGw SKU にサイズ変更することは**できません**。 代わりに新しい SKU に[変更](#change)する必要があります。
 
-#### <a name="resizegwsku"></a>ゲートウェイのサイズを変更する
+#### <a name="to-resize-a-gateway"></a><a name="resizegwsku"></a>ゲートウェイのサイズを変更する
 
 [!INCLUDE [Resize a SKU](../../includes/vpn-gateway-gwsku-resize-include.md)]
 
-####  <a name="change"></a>古い (レガシ) SKU から新しい SKU に変更する
+####  <a name="to-change-from-an-old-legacy-sku-to-a-new-sku"></a><a name="change"></a>古い (レガシ) SKU から新しい SKU に変更する
 
 [!INCLUDE [Change a SKU](../../includes/vpn-gateway-gwsku-change-legacy-sku-include.md)]
 
-## <a name="connectiontype"></a>接続の種類
+## <a name="connection-types"></a><a name="connectiontype"></a>接続の種類
 
 Resource Manager デプロイ モデルの各構成では、仮想ネットワーク ゲートウェイの接続の種類を指定する必要があります。 `-ConnectionType` に使用できる Resource Manager PowerShell 値は次のとおりです。
 
@@ -108,7 +108,7 @@ New-AzVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg
 -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
 ```
 
-## <a name="vpntype"></a>VPN の種類
+## <a name="vpn-types"></a><a name="vpntype"></a>VPN の種類
 
 VPN Gateway 構成に対して仮想ネットワーク ゲートウェイを作成する場合は、VPN の種類を指定する必要があります。 選択する VPN の種類は、作成する接続トポロジによって異なります。 たとえば、P2S 接続の場合、VPN の種類は RouteBased である必要があります。 VPN の種類は、使用しているハードウェアによっても異なる場合があります。 S2S 構成では、VPN デバイスが必要です。 一部の VPN デバイスでは、特定の VPN の種類のみがサポートされます。
 
@@ -126,11 +126,11 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 -GatewayType Vpn -VpnType RouteBased
 ```
 
-## <a name="requirements"></a>ゲートウェイの要件
+## <a name="gateway-requirements"></a><a name="requirements"></a>ゲートウェイの要件
 
 [!INCLUDE [vpn-gateway-table-requirements](../../includes/vpn-gateway-table-requirements-include.md)]
 
-## <a name="gwsub"></a>ゲートウェイ サブネット
+## <a name="gateway-subnet"></a><a name="gwsub"></a>ゲートウェイ サブネット
 
 VPN ゲートウェイを作成する前に、ゲートウェイ サブネットを作成する必要があります。 ゲートウェイ サブネットには、仮想ネットワーク ゲートウェイの VM とサービスが使用する IP アドレスが含まれます。 仮想ネットワーク ゲートウェイを作成すると、ゲートウェイ VM はゲートウェイ サブネットにデプロイされ、必要な VPN ゲートウェイ設定で構成されます。 ゲートウェイ サブネットには、追加の VM などをデプロイしないでください。 ゲートウェイ サブネットを正常に動作させるには、"GatewaySubnet" という名前を付ける必要があります。 ゲートウェイ サブネットに "GatewaySubnet" という名前を付けることで、これが仮想ネットワーク ゲートウェイの VM とサービスをデプロイするサブネットであることを Azure が認識できます。
 
@@ -150,7 +150,7 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/2
 
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
-## <a name="lng"></a>ローカル ネットワーク ゲートウェイ
+## <a name="local-network-gateways"></a><a name="lng"></a>ローカル ネットワーク ゲートウェイ
 
  ローカル ネットワーク ゲートウェイは、仮想ネットワーク ゲートウェイとは異なります。 VPN ゲートウェイの構成を作成する場合、通常、ローカル ネットワーク ゲートウェイはオンプレミスの場所を表します。 クラシック デプロイ モデルでは、ローカル ネットワーク ゲートウェイはローカル サイトとして参照されます。
 
@@ -165,7 +165,7 @@ New-AzLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
 
 場合によっては、ローカル ネットワーク ゲートウェイ設定を変更する必要があります。 たとえば、アドレス範囲を追加または変更する場合や、VPN デバイスの IP アドレスが変更された場合などです。 「[PowerShell を使用したローカル ネットワーク ゲートウェイの設定の変更](vpn-gateway-modify-local-network-gateway.md)」を参照してください。
 
-## <a name="resources"></a>REST API、PowerShell コマンドレット、および CLI
+## <a name="rest-apis-powershell-cmdlets-and-cli"></a><a name="resources"></a>REST API、PowerShell コマンドレット、および CLI
 
 VPN Gateway 構成に対して REST API、PowerShell コマンドレット、または Azure CLI を使用する場合のテクニカル リソースおよび具体的な構文の要件については、次のページを参照してください。
 

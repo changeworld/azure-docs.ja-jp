@@ -20,20 +20,20 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 902996c1813931638012c78f81bd65c400bee7a1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74113162"
 ---
 # <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>Azure Cognitive Search の OData 地理空間関数 - `geo.distance` および `geo.intersects`
 
 Azure Cognitive Search では、[OData フィルター式](query-odata-filter-orderby-syntax.md)で `geo.distance` および `geo.intersects` 関数を介した地理空間クエリがサポートされています。 `geo.distance` 関数では、フィルターの一部として渡される 2 つのポイント (1 つはフィールドまたは範囲変数、もう 1 つは定数) の間の距離がキロメートル単位で返されます。 `geo.intersects` 関数からは、指定されたポイントが指定された多角形の内部にある場合、`true` が返されます。ポイントはフィールドまたは範囲変数として、多角形は定数として指定されて、フィルターの一部として渡されます。
 
-また、[ **$orderby** パラメーター](search-query-odata-orderby.md)内で `geo.distance` 関数を使用することで、指定されたポイントからの距離によって検索結果を並べ替えることもできます。 **$orderby** の `geo.distance` の構文は **$filter** の場合と同じになります。 **$orderby** で `geo.distance` を使用するとき、それが適用されるフィールドは `Edm.GeographyPoint` 型にする必要があり、また**並べ替え可能**である必要があります。
+また、`geo.distance`[$orderby **パラメーター**内で ](search-query-odata-orderby.md) 関数を使用することで、指定されたポイントからの距離によって検索結果を並べ替えることもできます。 `geo.distance`$orderby**の** の構文は **$filter** の場合と同じになります。 `geo.distance`$orderby**で** を使用するとき、それが適用されるフィールドは `Edm.GeographyPoint` 型にする必要があり、また**並べ替え可能**である必要があります。
 
 > [!NOTE]
-> **$orderby** パラメーターで `geo.distance` を使用する場合、関数に渡すフィールドには 1 つの geo ポイントのみを含める必要があります。 言い換えると、`Collection(Edm.GeographyPoint)` ではなく `Edm.GeographyPoint` 型である必要があります。 Azure Cognitive Search のコレクション フィールドに対して並べ替えることはできません。
+> `geo.distance`$orderby**パラメーターで** を使用する場合、関数に渡すフィールドには 1 つの geo ポイントのみを含める必要があります。 言い換えると、`Edm.GeographyPoint` ではなく `Collection(Edm.GeographyPoint)` 型である必要があります。 Azure Cognitive Search のコレクション フィールドに対して並べ替えることはできません。
 
 ## <a name="syntax"></a>構文
 
@@ -94,10 +94,10 @@ Azure Cognitive Search では、クエリの形状が長方形で、(`geo.inters
 
 ### <a name="geo-spatial-functions-and-null"></a>地理空間関数と `null`
 
-Azure Cognitive Search での他のコレクション以外のすべてのフィールドのように、`Edm.GeographyPoint` 型のフィールドには `null` 値を含めることができます。 `null` であるフィールドに対する `geo.intersects` が Azure Cognitive Search によって評価されると、結果は常に `false` になります。 この場合の `geo.distance` の動作はコンテキストによって異なります。
+Azure Cognitive Search での他のコレクション以外のすべてのフィールドのように、`Edm.GeographyPoint` 型のフィールドには `null` 値を含めることができます。 `geo.intersects` であるフィールドに対する `null` が Azure Cognitive Search によって評価されると、結果は常に `false` になります。 この場合の `geo.distance` の動作はコンテキストによって異なります。
 
-- フィルターでは、`null` フィールドの `geo.distance` は結果として `null` になります。 つまり、`null` を null 以外の任意の値と比較すると `false` に評価されるため、ドキュメントは一致しません。
-- **$orderby** を使用して結果を並べ替える場合、`null` フィールドの `geo.distance` は結果として最大限の距離になります。 このようなフィールドを持つドキュメントは、`asc` の並べ替え方向が使用された場合 (既定値)、他のいずれのものよりも下位に並べ替えられ、方向が `desc` の場合は、他のいずれのものよりも上位に並べ替えられます。
+- フィルターでは、`geo.distance` フィールドの `null` は結果として `null` になります。 つまり、`null` を null 以外の任意の値と比較すると `false` に評価されるため、ドキュメントは一致しません。
+- **$orderby** を使用して結果を並べ替える場合、`geo.distance` フィールドの `null` は結果として最大限の距離になります。 このようなフィールドを持つドキュメントは、`asc` の並べ替え方向が使用された場合 (既定値)、他のいずれのものよりも下位に並べ替えられ、方向が `desc` の場合は、他のいずれのものよりも上位に並べ替えられます。
 
 ## <a name="examples"></a>例
 
@@ -121,7 +121,7 @@ Azure Cognitive Search での他のコレクション以外のすべてのフィ
 
     search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
 
-## <a name="next-steps"></a>次の手順  
+## <a name="next-steps"></a>次のステップ  
 
 - [Azure Cognitive Search のフィルター](search-filters.md)
 - [Azure Cognitive Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)

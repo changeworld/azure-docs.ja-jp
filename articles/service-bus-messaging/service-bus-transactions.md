@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.openlocfilehash: 22744ecbced40b3195f4d047227b1e2a37228102
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774521"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230063"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Service Bus のトランザクション処理の概要
 
@@ -39,7 +39,7 @@ Service Bus は、トランザクションのスコープ内の単一メッセ�
 * **[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient)、[MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender)、[TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)** : Send、SendAsync、SendBatch、SendBatchAsync 
 * **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)** : Complete、CompleteAsync、Abandon、AbandonAsync、Deadletter、DeadletterAsync、Defer、DeferAsync、RenewLock、RenewLockAsync 
 
-一部の受信ループ内、または [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) コールバックで、[ReceiveMode.PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) モードを使用してアプリケーションがメッセージを取得した後にのみ、メッセージを処理するためのトランザクション スコープを開くことを前提としているため、受信操作は含まれません。
+一部の受信ループ内、または [OnMessage](/dotnet/api/microsoft.azure.servicebus.receivemode) コールバックで、[ReceiveMode.PeekLock](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) モードを使用してアプリケーションがメッセージを取得した後にのみ、メッセージを処理するためのトランザクション スコープを開くことを前提としているため、受信操作は含まれません。
 
 その後、メッセージの処理 (完了、破棄、配信不能、延期) がトランザクションのスコープ内で発生します。この処理の発生は、トランザクションの全体的な結果に依存します。
 
