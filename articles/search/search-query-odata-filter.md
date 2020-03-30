@@ -20,11 +20,11 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: b966e9cfa3ef40666dbbd62135f8f964e5eb2023
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113208"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236827"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>Azure Cognitive Search での OData $filter 構文
 
@@ -106,7 +106,7 @@ variable ::= identifier | field_path
 Azure Cognitive Search に送信できるフィルター式のサイズと複雑性には制限があります。 この上限はおおよそ、フィルター式の句の数に基づきます。 目安として、数百の句がある場合、上限を超える危険性があります。 サイズが無制限のフィルターを生成しない方法でアプリケーションを設計することをお勧めします。
 
 > [!TIP]
-> 等価比較の長い論理和演算ではなく、[ `search.in` 関数](search-query-odata-search-in-function.md) を使用すると、関数呼び出しが 1 つの句としてカウントされるため、フィルター句の制限を回避するのに役立ちます。
+> 等価比較の長い論理和演算ではなく、[`search.in` 関数](search-query-odata-search-in-function.md) を使用すると、関数呼び出しが 1 つの句としてカウントされるため、フィルター句の制限を回避するのに役立ちます。
 
 ## <a name="examples"></a>例
 
@@ -174,11 +174,11 @@ Azure Cognitive Search に送信できるフィルター式のサイズと複雑
 
     $filter=Rooms/any(room: room/Tags/any(tag: search.in(tag, 'heated towel racks,hairdryer included', ','))
 
-"waterfront" という言葉の付いたドキュメントを探します。 このフィルターは `search=waterfront` を指定した[検索要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)と同じになります。
+"waterfront" という言葉の付いたドキュメントを探します。 このフィルターは [ を指定した](https://docs.microsoft.com/rest/api/searchservice/search-documents)検索要求`search=waterfront`と同じになります。
 
     $filter=search.ismatchscoring('waterfront')
 
-"hostel" という言葉を含み、評価が 4 以上のドキュメントを探すか、"motel" という言葉を含み、評価が 5 のドキュメントを探します。 この要求は、`or` を使用してフルテキスト検索とフィルター操作を組み合わせたものであるため、`search.ismatchscoring` 関数なしでは表現できませんでした。
+"hostel" という言葉を含み、評価が 4 以上のドキュメントを探すか、"motel" という言葉を含み、評価が 5 のドキュメントを探します。 この要求は、`search.ismatchscoring` を使用してフルテキスト検索とフィルター操作を組み合わせたものであるため、`or` 関数なしでは表現できませんでした。
 
     $filter=search.ismatchscoring('hostel') and rating ge 4 or search.ismatchscoring('motel') and rating eq 5
 
@@ -194,7 +194,7 @@ Azure Cognitive Search に送信できるフィルター式のサイズと複雑
 
     $filter=search.ismatch('"hotel airport"~5', 'Description', 'full', 'any') and not Rooms/any(room: room/SmokingAllowed)
 
-## <a name="next-steps"></a>次の手順  
+## <a name="next-steps"></a>次のステップ  
 
 - [Azure Cognitive Search のフィルター](search-filters.md)
 - [Azure Cognitive Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)

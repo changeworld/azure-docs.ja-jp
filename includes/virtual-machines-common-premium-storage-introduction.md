@@ -9,10 +9,10 @@ ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 86d03e980a233a60e4f3a6541462264dae0862af
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74005584"
 ---
 この記事では、Azure Premium Storage を使用する高パフォーマンスのアプリケーションを構築するためのガイドラインを示します。 このドキュメントで説明する手順は、アプリケーションで使用されているテクノロジに適用できるパフォーマンスのベスト プラクティスと組み合わせて使用できます。 ガイドラインを示すために、このドキュメント全体を通じて、Premium Storage で実行されている SQL Server を例として使用しています。

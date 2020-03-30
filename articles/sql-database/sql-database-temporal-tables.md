@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: carlrab
 ms.date: 06/26/2019
 ms.openlocfilehash: 98fd2658f3fbcb0e7e29114d29f8dc6ed39eedf2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73820721"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Azure SQL Database のテンポラル テーブルの概要
@@ -32,7 +32,7 @@ ms.locfileid: "73820721"
 
 さいわい、このアクティビティ情報を保持するために、アプリに手を加える必要はありません。 この処理は、テンポラル テーブルによって自動的に行われるため、Web サイトの設計の幅が広がり、より多くの時間をデータの分析そのものに費やすことができます。 必要な作業は **WebSiteInfo** テーブルを " [システム バージョン管理のテンポラル テーブル](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_0)" として構成するだけです。 以降、このシナリオのテンポラル テーブルを利用するための詳しい手順を説明します。
 
-## <a name="step-1-configure-tables-as-temporal"></a>手順 1:テーブルをテンポラルとして構成する
+## <a name="step-1-configure-tables-as-temporal"></a>手順 1: テーブルをテンポラルとして構成する
 アプリケーションをゼロから開発するか、既にあるアプリケーションをアップグレードするかに応じて、テンポラル テーブルを作成するか、または既存のテーブルに経時的な属性を追加します。 実際には、その両方の作業が必要になることも少なからずあるでしょう。 [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) (SSMS) や [SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) (SSDT) など、任意の Transact-SQL 開発ツールを使用して以下の作業を実行してください。
 
 > [!IMPORTANT]
@@ -105,7 +105,7 @@ ON dbo.WebsiteUserInfoHistory
 WITH (DROP_EXISTING = ON); 
 ```
 
-## <a name="step-2-run-your-workload-regularly"></a>手順 2:ワークロードを定期的に実行する
+## <a name="step-2-run-your-workload-regularly"></a>手順 2: ワークロードを定期的に実行する
 テンポラル テーブルの大きな利点は、変更を追跡するために、既存の Web サイトになんら変更や調整を加える必要がないことです。 テンポラル テーブルは一度作成すれば、その後はユーザーに意識させることなく、データに変更が行われるたびに、以前の行バージョンを保存します。 
 
 このシナリオで変更の自動追跡を利用するために、ユーザーが Web サイト セッションを終了するたびに、**PagesVisited** 列を更新してみましょう。
@@ -119,7 +119,7 @@ WHERE [UserID] = 1;
 
 ![TemporalArchitecture](./media/sql-database-temporal-tables/AzureTemporal5.png)
 
-## <a name="step-3-perform-historical-data-analysis"></a>手順 3:履歴データの分析を実行する
+## <a name="step-3-perform-historical-data-analysis"></a>手順 3: 履歴データの分析を実行する
 テンポラル テーブルのシステム バージョン管理を有効にしたらクエリを実行するだけです。それだけで履歴データの分析ができます。 この記事では、一般的な分析のニーズに対応する例をいくつか紹介します。細かな点も余さずお伝えするために、[FOR SYSTEM_TIME](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_3) 句で導入されたさまざまなオプションについて詳しく見ていきます。
 
 1 時間前の時点における訪問 Web ページ数の順に上位 10 ユーザーを表示するには、次のクエリを実行します。
@@ -188,12 +188,12 @@ ALTER TABLE dbo.WebsiteUserInfo
 同じことは、最新の [SSDT](https://msdn.microsoft.com/library/mt204009.aspx) を使用して行うこともできます。データベースに接続した状態で (オンライン モード) またはデータベース プロジェクトの一部として (オフライン モード)、テンポラル テーブルのスキーマを変更することができます。
 
 ## <a name="controlling-retention-of-historical-data"></a>履歴データのリテンション期間を制御する
-システム バージョン管理のテンポラル テーブルでは、履歴テーブルによるデータベース サイズの増大が、通常のテーブルよりも顕著である場合があります。 サイズが大きいうえに絶えず増大する履歴テーブルは、純粋にストレージ コストの面だけでなく、テンポラル クエリのパフォーマンスの足かせとなるという点でも、問題となる可能性があります。 したがって、データの保持ポリシーを作成して履歴テーブルのデータを管理することが、あらゆるテンポラル テーブルのライフサイクルの計画と管理において重要な要素となります。 Azure SQL Database では、テンポラル テーブル内の履歴データを次の方法で管理できます。
+システム バージョン管理のテンポラル テーブルでは、履歴テーブルによるデータベース サイズの増大が、通常のテーブルよりも顕著である場合があります。 大量の履歴データが増加を続けると、ストレージ費用と一時的なクエリ実行による負荷の両方に起因し、問題が引き起こされる可能性があります。 したがって、データの保持ポリシーを作成して履歴テーブルのデータを管理することが、あらゆるテンポラル テーブルのライフサイクルの計画と管理において重要な要素となります。 Azure SQL Database では、テンポラル テーブル内の履歴データを次の方法で管理できます。
 
-* [テーブル パーティション](https://msdn.microsoft.com/library/mt637341.aspx#Anchor_2)
+* [テーブル パーティション分割](https://msdn.microsoft.com/library/mt637341.aspx#Anchor_2)
 * [カスタム クリーンアップ スクリプト](https://msdn.microsoft.com/library/mt637341.aspx#Anchor_3)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - テンポラル テーブルの詳細については、「チェック アウト[テンポラル テーブル](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables)」をご覧ください。
 - Channel 9 にアクセスして、[テンポラル テーブル導入による実際の成功事例](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions)や[テンポラル技術のライブ デモンストレーション](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016)をご覧ください。

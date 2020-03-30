@@ -5,19 +5,19 @@ services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
 author: keithcharlie
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: kevidal
-ms.openlocfilehash: c213bbcb3c7859aa4718916aafab970b3ffd4613
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2c1cb755b62812336a306994f6820573130815e6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813040"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288361"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS アプリケーションのオファー発行ガイド
 
-SaaS アプリケーションは、3 つの行動喚起"お問い合わせ"、"今すぐ試す"、"今すぐ入手する" を使用して、マーケットプレースに公開できます。 このガイドでは、これら 3 つのオプションとそれぞれの要件について説明します。 
+SaaS アプリケーションは、"お問い合わせ"、"今すぐ試す"、"今すぐ入手する" の 3 つの行動喚起を使用して、マーケットプレースに公開できます。 このガイドでは、これら 3 つのオプションとそれぞれの要件について説明します。 
 
 ## <a name="offer-overview"></a>オファーの概要  
 
@@ -88,7 +88,7 @@ SaaS アプリケーションの技術面の要件はシンプルです。 パ�
 * [Active Directory に重点を置いた Microsoft Azure ビデオ](https://azure.microsoft.com/resources/videos/index/?services=active-directory)
 
 無料の Azure Active Directory トレーニングは以下で利用できます。  
-* [IT プロ向けの Microsoft Azure コンテンツ シリーズ:Azure Active Directory](https://mva.microsoft.com/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
+* [IT プロ向けの Microsoft Azure コンテンツ シリーズ: Azure Active Directory](https://mva.microsoft.com/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
 
 さらに、Azure Active Directory は、サービス更新プログラムを確認するサイトを提供しています   
 * [Azure AD サービスの更新情報](https://azure.microsoft.com/updates/?product=active-directory)
@@ -141,7 +141,7 @@ SaaS ベースの技術的ソリューションをサブスクリプションと
 >[!Note]
 >クラウド ソリューション プロバイダー (CSP) のパートナー チャネル オプトインが利用できるようになりました。  Microsoft CSP パートナー チャネルを通じたオファーのマーケティングの詳細については、「[Cloud Solution Providers (クラウド ソリューション プロバイダー)](./cloud-solution-providers.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 まだ行っていない場合は、
 
 - マーケットプレースに[登録](https://azuremarketplace.microsoft.com/sell)します。

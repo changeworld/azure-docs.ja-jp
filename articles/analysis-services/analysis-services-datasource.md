@@ -8,10 +8,10 @@ ms.date: 02/20/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: f65d8fa2c2e522c718c637e32defc4c56fca8364
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461659"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services でサポートされるデータ ソース
@@ -20,7 +20,7 @@ Analysis Services プロジェクトを使用した Visual Studio の [データ
 
 ## <a name="azure-data-sources"></a>Azure データ ソース
 
-|データ ソース  |メモリ内  |DirectQuery  |Notes |
+|データ ソース  |メモリ内  |DirectQuery  |メモ |
 |---------|---------|---------|---------|
 |Azure SQL データベース      |   はい      |    はい      |<sup>[2](#azprovider)</sup>、<sup>[3](#azsqlmanaged)</sup>|
 |Azure Synapse Analytics (SQL Data Warehouse)      |   はい      |   はい       |<sup>[2](#azprovider)</sup>|
@@ -42,7 +42,7 @@ Analysis Services プロジェクトを使用した Visual Studio の [データ
 
 ## <a name="other-data-sources"></a>他のデータ ソース
 
-|データ ソース | メモリ内 | DirectQuery |Notes   |
+|データ ソース | メモリ内 | DirectQuery |メモ   |
 |  --- | --- | --- | --- |
 |Access データベース     |  はい | いいえ |  |
 |Active Directory     |  はい | いいえ | <sup>[6](#tab1400b)</sup>  |

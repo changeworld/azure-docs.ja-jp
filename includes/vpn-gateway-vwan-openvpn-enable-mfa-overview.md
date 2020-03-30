@@ -9,10 +9,10 @@ ms.date: 02/14/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 3417bf0bd4ae1e0aa670f9fbfcc1fbbfeb372972
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77471539"
 ---
 ユーザーにアクセスを許可する前に 2 つ目の認証要素の入力を求めるようにしたい場合には、Azure AD テナント用の Azure Multi-Factor Authentication (MFA) を構成できます。 MFA はユーザー単位で構成できます。または、[条件付きアクセス](../articles/active-directory/conditional-access/overview.md)を介して MFA を利用することもできます。

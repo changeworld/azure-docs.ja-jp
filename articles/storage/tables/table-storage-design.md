@@ -5,15 +5,15 @@ services: storage
 author: SnehaGunda
 ms.service: storage
 ms.topic: article
-ms.date: 04/23/2018
+ms.date: 03/09/2020
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 95272956da4567ec21e1c4603b88472e45373a39
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8df639eea757c374554fa19e57c43cef79308e98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351172"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228291"
 ---
 # <a name="design-scalable-and-performant-tables"></a>高性能で拡張性の高いテーブルの設計
 
@@ -132,7 +132,7 @@ Table service とはどのようなものでしょうか。 名前が示すと�
 
 Table service では、個々のノードが 1 つ以上の完全なパーティションを提供し、サービスのスケーリングはノード間でパーティションの負荷を動的に分散させることで行われます。 ノードに負荷がかかる場合は、テーブル サービスのパーティション範囲を 別のノードと*分割*し、トラフィックが少ないときにサービスを*マージ*して、パーティション範囲を複数のトラフィックの少ないノードから 1 つのノードに戻すことができます。  
 
-Table service の内部詳細、特に、サービスのパーティション管理方法については、ホワイト ペーパー [Microsoft Azure のストレージ: 強力な一貫性を備えた高可用性クラウド ストレージ サービス](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)を参照してください。  
+Table service の内部詳細、特に、サービスのパーティション管理方法については、ホワイト ペーパー [Microsoft Azure のストレージ: 強力な一貫性を備えた高使用可能なクラウド ストレージ サービス](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)を参照してください。  
 
 ## <a name="entity-group-transactions"></a>エンティティ グループ トランザクション
 エンティティ グループ トランザクション (EGT) は、Table service で複数のエンティティ間でアトミックな更新を行うための唯一の組み込みのメカニズムです。 EGT は、*バッチ トランザクション*とも呼ばれています。 EGT では、同じパーティションに格納されたエンティティしか処理できません (つまり、特定のテーブルで同じパーティション キーを共有しています)。 そのため、複数のエンティティにまたがるアトミックなトランザクションが必要な場合は、それらのエンティティを同じパーティションに格納する必要があります。 これが、異なる種類のエンティティに複数のテーブルを使わずに、異なる種類のエンティティを同じテーブル (とパーティション) に格納する主な理由です。 単一の EGT で最大 100 個のエンティティを処理できます。  複数の並行処理 EGT を送信する場合は、それらの EGT が EGT 間の共通であるエンティティには動作しないことを確認することが重要です。さもないと、処理が遅くなる可能性があります。
@@ -140,19 +140,8 @@ Table service の内部詳細、特に、サービスのパーティション管
 また、EGT によって、設計で評価が必要なトレードオフが生じる可能性があります。 つまり、使用するパーティションが増えると、ノード間で要求を負荷分散しやすくなるため、アプリケーションのスケーラビリティが向上します。 一方、使用するパーティションが増えると、アプリケーションでアトミックなトランザクションを実行し、データの強力な一貫性を維持する能力が制限される可能性があります。 さらに、1 つのノードの予想されるトランザクションのスループットを制限する可能性がある、パーティション レベルの特定のスケーラビリティ ターゲットがあります。 Azure Standard Storage アカウントのスケーラビリティ ターゲットの詳細については、[Standard Storage アカウントのスケーラビリティ ターゲット](../common/scalability-targets-standard-account.md)に関するページを参照してください。 Table service のスケーラビリティ ターゲットの詳細については、「[Table Storage のスケーラビリティとパフォーマンスのターゲット](scalability-targets.md)」を参照してください。
 
 ## <a name="capacity-considerations"></a>容量に関する考慮事項
-次の表に、Table service ソリューションの設計時に考慮する必要のある主要な値をまとめます。  
 
-| Azure ストレージ アカウントの合計容量 | 500 TB |
-| --- | --- |
-| Azure のストレージ アカウントのテーブルの数 |ストレージ アカウントの容量のみによる制限 |
-| テーブルのパーティションの数 |ストレージ アカウントの容量のみによる制限 |
-| パーティション内のエンティティの数 |ストレージ アカウントの容量のみによる制限 |
-| 個別のエンティティのサイズ |1 MBまでの最大 255 個のプロパティ (**PartitionKey**、**RowKey**、**タイムスタンプ**を含む) |
-| **PartitionKey** のサイズ |最大 1 KB の文字列 |
-| **RowKey**のサイズ |最大 1 KB の文字列 |
-| エンティティ グループ トランザクションのサイズ |トランザクションには最大で 100 個のエンティティを含めることができ、ペイロードは 4 MB 未満にする必要があります。 EGT では 1 回に 1 つのエンティティしか更新できません。 |
-
-詳細については、「 [Table サービス データ モデルについて](https://msdn.microsoft.com/library/azure/dd179338.aspx)」を参照してください。  
+[!INCLUDE [storage-table-scale-targets](../../../includes/storage-tables-scale-targets.md)]
 
 ## <a name="cost-considerations"></a>コストに関する考慮事項
 テーブル ストレージは比較的安価ですが、Table service ソリューションの評価の一環として、容量の使用とトランザクションの量を踏まえてコストを見積もる必要があります。 ただし、多くのシナリオでは、ソリューションのパフォーマンスとスケーラビリティを向上させるために、非正規化されたデータまたは重複するデータを格納するのも有効です。 価格の詳細については、「 [Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。  

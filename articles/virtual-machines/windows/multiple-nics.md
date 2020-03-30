@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
 ms.openlocfilehash: 20a595e1386a8d33c919ad4ff151d65e30b31eda
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75358277"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226703"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>複数の NIC を持つ Windows 仮想マシンの作成と管理
 Azure の仮想マシン (VM) は、複数の仮想ネットワーク インターフェイス カード (NIC) を持つことができます。 一般的なシナリオは、フロントエンドとバックエンドの接続に異なるサブネットを使用する場合です。 VM 上の複数の NIC を複数のサブネットに関連付けることはできますが、それらのサブネットはすべて同じ仮想ネットワーク (vNet) 内に存在する必要があります。 この記事では、複数の NIC を持つ VM を作成する方法について説明します。 既存の VM に NIC を追加するまたはそこから NIC を削除する方法についても説明します。 [VM のサイズ](sizes.md)によってサポートされる NIC の数が異なります。VM のサイズを決める際はご注意ください。
@@ -139,7 +139,7 @@ $myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
     $vm = Get-AzVm -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-3. 次の例では、*mySubnetBackEnd* にアタッチされる *myNic3* という名前の [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) を使用して、仮想 NIC を作成します。 この仮想 NIC は、[Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface) を使用して、*myResourceGroup* の *myVM* という名前の VM にアタッチされます。
+3. 次の例では、[mySubnetBackEnd](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) にアタッチされる *myNic3* という名前の *New-AzNetworkInterface* を使用して、仮想 NIC を作成します。 この仮想 NIC は、*Add-AzVMNetworkInterface* を使用して、*myResourceGroup* の [myVM](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface) という名前の VM にアタッチされます。
 
     ```powershell
     # Get info for the back end subnet
@@ -204,7 +204,7 @@ $myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
     $nicId = (Get-AzNetworkInterface -ResourceGroupName "myResourceGroup" -Name "myNic3").Id   
     ```
 
-4. [Remove-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmnetworkinterface) を使用して NIC を削除してから [Update-AzVm](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) を使用して VM を更新します。 次の例では、前記の手順で `$nicId` が取得した *myNic3* を削除します。
+4. [Remove-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmnetworkinterface) を使用して NIC を削除してから [Update-AzVm](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) を使用して VM を更新します。 次の例では、前記の手順で *が取得した*myNic3`$nicId` を削除します。
 
     ```powershell
     Remove-AzVMNetworkInterface -VM $vm -NetworkInterfaceIDs $nicId | `
@@ -291,7 +291,7 @@ Azure では、既定のゲートウェイが、仮想マシンにアタッチ�
               0.0.0.0          0.0.0.0      192.168.2.1      192.168.2.4   5015
     ```
 
-    リストされたルートのうち、**Gateway** の値が *192.168.1.1* になっているルートは、プライマリ ネットワーク インターフェイスの既定のルートです。 **Gateway** の値が *192.168.2.1* になっているルートは、追加したルートです。
+    リストされたルートのうち、*Gateway* の値が **192.168.1.1** になっているルートは、プライマリ ネットワーク インターフェイスの既定のルートです。 *Gateway* の値が **192.168.2.1** になっているルートは、追加したルートです。
 
 ## <a name="next-steps"></a>次のステップ
 複数の NIC を持つ VM を作成する場合、「[Windows VM のサイズ](sizes.md)」を確認してください。 VM の各サイズでサポートされている NIC の最大数に注意してください。 

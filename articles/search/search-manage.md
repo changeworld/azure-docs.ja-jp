@@ -10,11 +10,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 3abbf2c8e0734d17aabadd2ae5f61cc03889964b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754328"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236839"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure portal での Azure Cognitive Search のサービス管理
 > [!div class="op_single_selector"]
@@ -77,7 +77,7 @@ Microsoft の管理が及ばない外部の壊滅的災害の際にサービス�
 
 ## <a name="backup-and-restore"></a>バックアップと復元
 
-Azure Cognitive Search は主要なデータ ストレージ ソリューションではないため、セルフサービスのバックアップと復元のための正式なメカニズムは提供されません。 ただし、こちらの [Azure Cognitive Search .NET サンプル リポジトリ](https://github.com/Azure-Samples/azure-search-dotnet-samples)の **index-backup-restore** サンプル コードを使用して、インデックス定義とインデックス スナップショットを一連の JSON ファイルにバックアップし、後で必要に応じて、これらのファイルを使用してインデックスを復元できます。 このツールを使用して、サービス レベル間でインデックスを移動することもできます。
+Azure Cognitive Search は主要なデータ ストレージ ソリューションではないため、セルフサービスのバックアップと復元のための正式なメカニズムは提供されません。 ただし、こちらの **Azure Cognitive Search .NET サンプル リポジトリ**の [index-backup-restore](https://github.com/Azure-Samples/azure-search-dotnet-samples) サンプル コードを使用して、インデックス定義とインデックス スナップショットを一連の JSON ファイルにバックアップし、後で必要に応じて、これらのファイルを使用してインデックスを復元できます。 このツールを使用して、サービス レベル間でインデックスを移動することもできます。
 
 そうしない場合は、インデックスの作成と設定に使われるアプリケーション コードが、誤ってインデックスを削除した場合の事実上の復元オプションです。 インデックスを再構築するには、インデックスを削除し (存在する場合)、サービスでインデックスを再作成して、プライマリ データ ストアからデータを取得することによって再読み込みします。
 

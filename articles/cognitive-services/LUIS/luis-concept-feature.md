@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: diberry
 ms.openlocfilehash: b151043babd6c67a17f704bb671a415fcc3ba7b2
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280913"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79219169"
 ---
 # <a name="machine-learned-features"></a>機械学習の特徴 
 
@@ -89,6 +89,6 @@ API では、`enabledForAllModels` フラグによって、このモデルのス
 ## <a name="best-practices"></a>ベスト プラクティス
 [ベスト プラクティス](luis-concept-best-practices.md)を確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [フィーチャーの追加](luis-how-to-add-features.md)に関するページで、フィーチャーを LUIS アプリに追加する方法の詳細を確認します。

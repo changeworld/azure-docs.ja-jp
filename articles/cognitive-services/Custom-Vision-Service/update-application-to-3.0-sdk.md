@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: areddish
 ms.openlocfilehash: c134f30b124113a23df0e73cd1bbc8209e335183
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73647498"
 ---
 # <a name="update-to-the-30-api"></a>3\.0 API に更新する
@@ -53,7 +53,7 @@ Custom Vision の一般提供が開始され、API が更新されました。
 
 イテレーションが発行されると、アプリでは、Prediction API 呼び出し内にその名前を指定することにより、イテレーションを使用して予測を行うことができます。 イテレーションを予測呼び出しで使用できないようにするには、 **[UnpublishIteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.0/operations/5c771cdcbf6a2b18a0c3b81a)** API を使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [API リファレンス ドキュメント (REST) のトレーニング](https://go.microsoft.com/fwlink/?linkid=865446)
 * [Prediction API リファレンス ドキュメント (REST)](https://go.microsoft.com/fwlink/?linkid=865445)

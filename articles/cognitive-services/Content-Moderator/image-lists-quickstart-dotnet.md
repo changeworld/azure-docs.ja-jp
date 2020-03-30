@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: e650529f3adb998ce683354565acdeb3928b50c3
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72931763"
 ---
 # <a name="moderate-with-custom-image-lists-in-c"></a>C# でカスタム画像リストを使用してモデレートする
@@ -587,7 +587,7 @@ private static IList<ImageList> GetAllListIds(ContentModeratorClient client)
 
 ## <a name="add-code-to-simulate-the-use-of-an-image-list"></a>画像リストの使用をシミュレートするコードを追加する
 
-次のコードを **Main** メソッドに追加する このコードは、リストを定義および管理するときに実行する多くの操作をシミュレートするだけでなく、リストを使用して画像をスクリーニングします。 ログ記録機能を使用すると、SDK から Content Moderator サービスへの呼び出しによって生成された応答オブジェクトを確認できます。
+次のコードを **Main** メソッドに追加します。 このコードは、リストを定義および管理するときに実行する多くの操作をシミュレートするだけでなく、リストを使用して画像をスクリーニングします。 ログ記録機能を使用すると、SDK から Content Moderator サービスへの呼び出しによって生成された応答オブジェクトを確認できます。
 
 ```csharp
 // Create the text writer to use for logging, and cache a static reference to it.
@@ -657,7 +657,7 @@ Console.WriteLine("Press any key to exit...");
 Console.ReadKey();
 ```
 
-## <a name="run-the-program-and-review-the-output"></a>プログラムを実行して出力を確認する
+## <a name="run-the-program-and-review-the-output"></a>プログラムを実行して出力をレビューする
 
 リスト ID と画像コンテンツ ID は、アプリケーションを実行するたびに変わります。
 プログラムからは、次のようなログ ファイル出力が書き込まれます。
@@ -1078,6 +1078,6 @@ Response:
 []
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 .NET 用のこのクイック スタートや他の Content Moderator のクイック スタートのために、[Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) と [Visual Studio ソリューション](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)を入手し、統合を開始します。

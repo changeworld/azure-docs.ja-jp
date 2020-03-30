@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86d924860e97b15a0a4af46c5bc35b0e0050292b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422598"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230351"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理の委任とロール
 
@@ -102,7 +102,7 @@ IT 管理者の Hana には、各部署に連絡先担当者がいます。マ�
 | [カタログを削除する](entitlement-management-catalog-create.md#delete-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |
 | [アクセス パッケージ管理者に委任する](entitlement-management-delegate-managers.md) | :heavy_check_mark: |  | :heavy_check_mark: |  |
 | [アクセス パッケージ管理者を削除する](entitlement-management-delegate-managers.md#remove-an-access-package-manager) | :heavy_check_mark: |  | :heavy_check_mark: |  |
-| [新しいアクセス パッケージをカタログに作成する](entitlement-management-access-package-create.md) | :heavy_check_mark: |  | :heavy_check_mark:  | :heavy_check_mark:  |
+| [カタログ内に新しいアクセス パッケージを作成する](entitlement-management-access-package-create.md) | :heavy_check_mark: |  | :heavy_check_mark:  | :heavy_check_mark:  |
 | [アクセス パッケージ内のリソースのロールを変更する](entitlement-management-access-package-resources.md) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 | [ポリシーの作成と編集](entitlement-management-access-package-request-policy.md) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 | [アクセス パッケージにユーザーを直接割り当てる](entitlement-management-access-package-assignments.md#directly-assign-a-user) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |

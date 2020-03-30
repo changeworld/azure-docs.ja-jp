@@ -13,12 +13,12 @@ ms.date: 11/18/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 3d73e803a31867bedbd0ff069b8c9321257b78cb
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 8c97387bfd2a362d3bf5a6b8a3252242f061da31
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695570"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050286"
 ---
 # <a name="confidential-client-assertions"></a>機密クライアント アサーション
 
@@ -50,9 +50,9 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 Azure AD で想定される要求は次のとおりです。
 
-要求の種類 | Value | 説明
+要求の種類 | 値 | 説明
 ---------- | ---------- | ----------
-aud | https://login.microsoftonline.com/{tenantId}/v2.0 | "aud" (対象ユーザー) 要求では、JWT が意図する受信者 (ここでは Azure AD) を指定します。[RFC 7519、セクション 4.1.3] を参照してください。
+aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | "aud" (対象ユーザー) 要求では、JWT が意図する受信者 (ここでは Azure AD) を指定します。[RFC 7519、セクション 4.1.3] を参照してください。
 exp | 2019 年 6 月 27 日木曜日 15:04:17 GMT + 0200 (ロマンス夏時間) | "exp" (有効期限) 要求は、JWT の処理を受け入れることができなくなる時刻を指定します。 [RFC 7519、セクション 4.1.4] を参照してください。
 iss | {ClientID} | "iss" (発行者) 要求では、JWT を発行した元本を指定します。 この要求の処理はアプリケーション固有です。 "iss" 値は、StringOrURI 値を含む大文字と小文字が区別される文字列です。 [RFC 7519、セクション 4.1.1]
 jti | (Guid) | "jti" (JWT ID) 要求は、JWT の一意の識別子を提供します。 識別子の値は、同じ値が誤って異なるデータ オブジェクトに割り当てられる可能性が無視できるほど低くなる方法で割り当てる必要があります。複数の発行者を使用するアプリケーションの場合は、異なる発行者が生成した値が競合しないように防ぐ必要があります。 "jti" 要求を使用すると、JWT の再生を防ぐことができます。 "jti" 値は大文字と小文字が区別される文字列です。 [RFC 7519、セクション 4.1.7]
@@ -196,4 +196,4 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 渡したディクショナリ内の要求の 1 つが必須の要求の 1 つと同じである場合は、追加の要求の値が考慮されます。 これによって、MSAL.NET で計算された要求がオーバーライドされます。
 
-Azure AD で想定される必須の要求を含め、独自の要求を指定する場合は、`mergeWithDefaultClaims` パラメーターに `false` を渡します。
+Azure AD で想定される必須の要求を含め、独自の要求を指定する場合は、`false` パラメーターに `mergeWithDefaultClaims` を渡します。

@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: larryfr
 author: Blackmist
-ms.date: 11/06/2019
+ms.date: 03/06/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5257d9f94f6304c2a8dbea3f1648a71d0ba65e94
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 127a0a2b7f7573db91df9347169e90de3e14c4c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064752"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232891"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースへのアクセスの管理
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -118,7 +118,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 
 ### <a name="q-what-are-the-permissions-needed-to-perform-various-actions-in-the-azure-machine-learning-service"></a>Q. Azure Machine Learning service でさまざまなアクションを実行するために必要なアクセス許可はどのようなものですか。
 
-次の表は、Azure Machine Learning アクティビティの概要と、それらを最小のスコープで実行するために必要なアクセス許可をまとめたものです。 たとえば、ワークスペース スコープ (列 4) を使用してアクティビティを実行できる場合は、そのアクセス許可を持つそれより高いすべてのスコープも自動的に機能します。 この表内のすべてのパスは、`Microsoft.MachineLearningServices/` に対する**相対パス**です。
+次の表は、Azure Machine Learning アクティビティの概要と、それらを最小のスコープで実行するために必要なアクセス許可をまとめたものです。 たとえば、ワークスペース スコープ (列 4) を使用してアクティビティを実行できる場合は、そのアクセス許可を持つそれより高いすべてのスコープも自動的に機能します。 この表内のすべてのパスは、 **に対する**相対パス`Microsoft.MachineLearningServices/`です。
 
 | アクティビティ | サブスクリプション レベルのスコープ | リソース グループレベルのスコープ | ワークスペースレベルのスコープ |
 |---|---|---|---|
@@ -172,5 +172,5 @@ az role definition update --role-definition update_def.json --subscription <sub-
 
 - [エンタープライズ セキュリティの概要](concept-enterprise-security.md)
 - [仮想ネットワーク内での実験と推論/スコアの安全な実行](how-to-enable-virtual-network.md)
-- [チュートリアル:モデルをトレーニングする](tutorial-train-models-with-aml.md)
+- [チュートリアル: モデルをトレーニングする](tutorial-train-models-with-aml.md)
 - [リソース プロバイダー操作](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)

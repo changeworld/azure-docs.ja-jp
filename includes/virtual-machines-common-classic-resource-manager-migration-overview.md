@@ -9,10 +9,10 @@ ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
 ms.openlocfilehash: 4e07334e859f2c1401547cc3f88988830b71c5e1
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77192937"
 ---
 この記事では、サービスとしてのインフラストラクチャ (IaaS) のリソースをクラシック デプロイ モデルから Resource Manager デプロイ モデルに移行する方法と、サブスクライブ内で共存する 2 つのデプロイ モデルから仮想ネットワークのサイト間ゲートウェイを使用してリソースに接続する方法の詳細を説明します。 [Azure Resource Manager の機能と利点](../articles/azure-resource-manager/management/overview.md)の詳細を参照してください。 
@@ -74,7 +74,7 @@ Resource Manager デプロイ モデルでは、既定でアプリケーショ�
 > Resource Manager デプロイ モデルには、従来のイメージおよびディスクという概念がありません。 クラシック イメージやディスクは、ストレージ アカウントを移行すると Resource Manager スタックには表示されなくなりますが、バッキング VHD はストレージ アカウントに残ります。
 
 次のスクリーンショットは、Azure portal を使用してクラシック ストレージ アカウントを Azure Resource Manager ストレージ アカウントにアップグレードする方法を示しています。
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. ストレージ アカウントに移動します。
 3. **[設定]** セクションで、 **[ARM への移行]** をクリックします。
 4. **[検証]** をクリックして、移行が可能かどうかを確かめます。

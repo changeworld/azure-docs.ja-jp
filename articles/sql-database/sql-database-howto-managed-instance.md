@@ -12,11 +12,11 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 04/16/2019
 ms.openlocfilehash: 906ae2a970ce1d5b82302d0277ca45bd93c23011
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811198"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228835"
 ---
 # <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>Azure SQL Database でマネージド インスタンスを作成する方法
 
@@ -44,6 +44,6 @@ ms.locfileid: "73811198"
 - [トランザクション レプリケーション](replication-with-sql-database-managed-instance.md)では、マネージド インスタンス間でご利用のデータをレプリケートしたり、オンプレミスの SQL Server からマネージド インスタンスまたはその逆にデータをレプリケートしたりすることができます。 トランザクション レプリケーションの使用方法と構成方法の詳細については、このガイドを参照してください。
 - [脅威検出の構成](sql-database-managed-instance-threat-detection.md) – [脅威検出](sql-database-threat-detection-overview.md)は、SQL インジェクションや疑わしい場所からのアクセスなど、さまざまな潜在的な攻撃を検出する組み込みの Azure SQL Database 機能です。 このガイドでは、マネージド インスタンス用に[脅威検出](sql-database-threat-detection-overview.md)を有効にして構成する方法を学習できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [単一データベースの攻略ガイド](sql-database-howto-single-database.md)の詳細を確認する

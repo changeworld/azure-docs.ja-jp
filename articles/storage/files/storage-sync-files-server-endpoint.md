@@ -8,16 +8,16 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 684b30a24e049722cb531cbc84e3a2cd90912ec8
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932632"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228279"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Azure File Sync サーバー エンドポイントの追加/削除
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
 
-"*サーバー エンドポイント*" は、"*登録済みサーバー*" 上の特定の場所 (サーバー ボリュームのフォルダーやボリュームのルートなど) を表します。 名前空間が重複していなければ、同じボリューム上に複数のサーバー エンドポイントが存在する可能性があります (たとえば、F:\sync1 と F:\sync2 など)。 サーバー エンドポイントごとに、クラウドの階層化ポリシーを個別に構成できます。 既存の一連のファイルを含むサーバーの場所をサーバー エンドポイントとして同期グループに追加すると、それらのファイルは、同期グループの他のエンドポイント上に既にある他のファイルと統合されます。
+"*サーバー エンドポイント*" は、"*登録済みサーバー*" 上の特定の場所 (サーバー ボリュームのフォルダーやボリュームのルートなど) を表します。 名前空間が重複していなければ、同じボリューム上に複数のサーバー エンドポイントが存在する可能性があります (たとえば、F:\sync1 と F:\sync2 など)。 各サーバー エンドポイントについて、クラウドの階層化ポリシーを個別に構成することができます。 既存の一連のファイルを含むサーバーの場所をサーバー エンドポイントとして同期グループに追加すると、それらのファイルは、同期グループの他のエンドポイント上に既にある他のファイルと統合されます。
 
 Azure File Sync をエンドツーエンドでデプロイする方法の詳細については、[Azure File Sync をデプロイする方法](storage-sync-files-deployment-guide.md)に関するページを参照してください。
 
@@ -36,7 +36,7 @@ Azure File Sync をエンドツーエンドでデプロイする方法の詳細�
 **[サーバー エンドポイントの追加]** では、次の情報を指定する必要があります。
 
 - **登録済みサーバー**: サーバー エンドポイントを作成するサーバーまたはクラスターの名前。
-- **パス**:同期グループの一部として同期する Windows Server 上のパス。
+- **パス**: 同期グループの一部として同期する Windows Server 上のパス。
 - **クラウドの階層化**: クラウドの階層化を有効または無効にするスイッチ。 クラウドの階層化を有効にすると、ファイルが Azure ファイル共有に "*階層化*" されます。 これにより、オンプレミスのファイル共有は、データセットの完全なコピーではなく、キャッシュに変換されるので、サーバーでの容量効率の管理に役立ちます。
 - **ボリュームの空き領域**: サーバー エンドポイントが配置されているボリュームに確保する空き領域のサイズ。 たとえば、単一のサーバー エンドポイントで [ボリュームの空き領域] をボリュームの 50% に設定すると、データの約半量が Azure Files に階層化されます。 クラウドの階層化が有効かどうかにかかわらず、Azure ファイル共有は、データの完全なコピーを常に同期グループ内に保持します。
 
@@ -71,7 +71,7 @@ Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order Clou
 
     ![同期グループからサーバー エンドポイントを削除する](media/storage-sync-files-server-endpoint/remove-server-endpoint-1.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure File Sync でのサーバーの登録/登録解除](storage-sync-files-server-registration.md)
 - [Azure File Sync のデプロイの計画](storage-sync-files-planning.md)
 - [Azure File Sync の監視](storage-sync-files-monitoring.md)

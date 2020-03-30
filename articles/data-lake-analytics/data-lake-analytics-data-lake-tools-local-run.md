@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
 ms.openlocfilehash: 42e58125fcbc3ab411c0d7503c42c14c28178428
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "62113937"
 ---
 # <a name="run-u-sql-scripts-on-your-local-machine"></a>ローカル コンピューターで U-SQL スクリプトを実行する
@@ -27,7 +27,7 @@ U-SQL スクリプトを開発すると、スクリプトをローカルで実�
 
 |コンポーネント|ローカルの実行|クラウド実行|
 |---------|---------|---------|
-|Storage|ローカル データ ルート フォルダー|既定の Azure Data Lake Store アカウント|
+|ストレージ|ローカル データ ルート フォルダー|既定の Azure Data Lake Store アカウント|
 |Compute|U-SQL ローカル実行エンジン|Azure Data Lake Analytics サービス|
 |実行環境|ローカル コンピューター上の作業ディレクトリ|Azure Data Lake Analytics クラスター|
 
@@ -106,7 +106,7 @@ U-SQL クエリで U-SQL データベース オブジェクトを使用するか
 
 詳細については、[Azure Data Lake U-SQL SDK](data-lake-analytics-u-sql-sdk.md) に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Data Lake Analytics の CI/CD パイプラインをセットアップする方法](data-lake-analytics-cicd-overview.md)。
 - [Azure Data Lake Analytics コードをテストする方法](data-lake-analytics-cicd-test.md)。

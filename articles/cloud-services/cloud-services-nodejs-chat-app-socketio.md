@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: tagore
 ms.openlocfilehash: 0b515c630d8a3539cdab1df64b1925e9fcaf206e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75360771"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Azure Cloud Services で Socket.IO を使用する Node.js チャット アプリケーションを構築する
@@ -104,7 +104,7 @@ Azure エミュレーターでアプリケーションをテストする前に�
        PS C:\node\chatapp\WorkerRole1> Start-AzureEmulator -Launch
    
    > [!NOTE]
-   > エミュレーターの起動時に問題が発生した場合 (例: Start-AzureEmulator : 予期しないエラーが発生しました。  詳細:予期しないエラーが発生しました)、通信オブジェクト System.ServiceModel.Channels.ServiceChannel は、状態が Faulted であるため通信に使用できません。
+   > エミュレーターの起動時に問題が発生した場合 (例: Start-AzureEmulator : 予期しないエラーが発生しました。  詳細: 予期しないエラーが発生しました)、通信オブジェクト System.ServiceModel.Channels.ServiceChannel はフォールト状態にあるため、これを通信に使用することはできません。
    > 
    > AzureAuthoringTools v 2.7.1 と AzureComputeEmulator v 2.7 を再インストールし、そのバージョンが一致することを確認します。
 

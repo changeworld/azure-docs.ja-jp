@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: tagore
 ms.openlocfilehash: 764567bffd2a08ebb5beb17e3063998848b3f110
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79127338"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>2023 年 3 月 1 日までに IaaS リソースを Azure Resource Manager に移行する 
 
-2014 年に Azure Resource Manager で IaaS を起動し、その後ずっと機能を強化してきました。 [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) には現在、完全な IaaS 機能とその他の強化機能が含まれるため、2020 年 2 月 28 日に Azure Service Manager を介した IaaS VM の管理が非推奨となり、2023 年 3 月 1 日にこの機能の提供は完全に終了となります。 
+2014 年に Azure Resource Manager で IaaS が開始され、以降、機能が強化されています。 [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) には現在、完全な IaaS 機能とその他の強化機能が含まれるため、2020 年 2 月 28 日に Azure Service Manager を介した IaaS VM の管理が非推奨となり、2023 年 3 月 1 日にこの機能の提供は完全に終了となります。 
 
 現在、IaaS VM の約 90% で Azure Resource Manager が使用されています。 Azure Service Manager (ASM) を介して IaaS リソースを使用する場合は、今すぐ移行の計画を開始し、2023 年 3 月 1 日までに完了して [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/)をご利用ください。
 
@@ -34,14 +34,14 @@ ms.locfileid: "79127338"
 次の Azure サービスと機能は、この提供終了の影響を**受けません**: 
 - Cloud Services 
 - クラシック VM で使用されて**いない**ストレージ アカウント 
-- クラシック VM で使用されて**いない**仮想ネットワーク (VNet)。 
+- クラシック VM で使用されて**いない**仮想ネットワーク (VNet) 
 - その他のクラシック リソース
 
 ## <a name="what-actions-should-i-take"></a>どのような対応が必要ですか? 
 
 - Azure Resource Manager への移行の計画をすぐに開始します。 
 
-- [Linux](./linux/migration-classic-resource-manager-plan.md) および [Windows](./windows/migration-classic-resource-manager-plan.md) のクラシック VM を Azure Resource Manager に移行する場合の[詳細について学習](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview)します。
+- [Linux](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview) および [Windows](./linux/migration-classic-resource-manager-plan.md) のクラシック VM を Azure Resource Manager に移行する場合の[詳細について学習](./windows/migration-classic-resource-manager-plan.md)します。
 
 - 詳細については、「[クラシックから Azure Resource Manager への移行に関してよく寄せられる質問](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq)」を参照してください
 

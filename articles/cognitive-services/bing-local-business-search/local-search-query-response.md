@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: rosh
 ms.openlocfilehash: 25bcdb89002fec4f9b67b091996d7bf80bcf21c8
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74326734"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Bing Local Business Search API クエリと応答の送信と使用
@@ -23,7 +23,7 @@ Bing Local Business Search API から、検索クエリをそのエンドポイ�
 
 ## <a name="creating-a-request"></a>要求の作成
 
-Bing Local Business Search API に要求を送信するには、検索語句を `q=` パラメーターに追加してから、それを API エンドポイントに追加して、`Ocp-Apim-Subscription-Key` ヘッダーを含めます。 例:
+Bing Local Business Search API に要求を送信するには、検索語句を `q=` パラメーターに追加してから、それを API エンドポイントに追加して、`Ocp-Apim-Subscription-Key` ヘッダーを含めます。 次に例を示します。
 
 `https://api.cognitive.microsoft.com/bing/localbusinesses/v7.0/search?q=restaurant+in+Bellevue`
 
@@ -61,7 +61,7 @@ API によって返される JSON の結果には、次の属性が含まれま�
 * entityPresentationInfo
 * geo
 * id
-* 名前
+* name
 * routeablePoint
 * telephone
 * url
@@ -146,7 +146,7 @@ Expires: Tue, 16 Oct 2018 16:25:15 GMT
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../includes/cognitive-services-bing-throttling-requests.md)]
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Local Business Search のクイック スタート](quickstarts/local-quickstart.md)
 - [Local Business Search (Java) のクイック スタート](quickstarts/local-search-java-quickstart.md)
 - [Local Business Search (Node.js) のクイック スタート](quickstarts/local-search-node-quickstart.md)

@@ -12,10 +12,10 @@ ms.date: 09/26/2019
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: 7e1ea234bde96ce84259841bbc592bf6373bc639
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71802808"
 ---
 # <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>QnA Maker と LUIS にボットを組み合わせてナレッジ ベースを配信する
@@ -25,7 +25,7 @@ QnA Maker には複数のナレッジ ベースを簡単に作成できますが
 
 この記事では、Bot Framework v3 SDK を使用します。 この情報の Bot Framework v4 SDK バージョンに関心がある場合は、こちらの [Bot Framework に関する記事](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csharp)をご覧ください。
 
-## <a name="architecture"></a>アーキテクチャ
+## <a name="architecture"></a>Architecture
 
 ![QnA Maker と Language Understanding アーキテクチャ](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
 
@@ -232,12 +232,12 @@ QnA Maker には複数のナレッジ ベースを簡単に作成できますが
 
     ![コンソール ビルド](../media/qnamaker-tutorials-qna-luis/console-build.png)
 
-## <a name="test-the-bot"></a>ボットをテストする
+## <a name="test-the-bot"></a>ボットのテスト
 Azure portal で、 **[Test in Web Chat]\(Web チャットでのテスト\)** を選択してボットをテストします。 異なる意図のメッセージを入力して、対応するナレッジ ベースからの応答を得ます。
 
 ![Web チャット テスト](../media/qnamaker-tutorials-qna-luis/qnamaker-web-chat.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [QnA Maker のビジネス継続性計画の作成](../How-To/business-continuity-plan.md)

@@ -3,12 +3,12 @@ title: リソース プロバイダーとリソースの種類
 description: リソース マネージャーをサポートするリソース プロバイダー、そのスキーマと利用可能な API バージョン、およびリソースをホストできるリージョンについて説明します。
 ms.topic: conceptual
 ms.date: 08/29/2019
-ms.openlocfilehash: ce68762dae14f98a751cb4b619b75ff04a5f655b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 82b8251006a1a2d4edd198eca843489d3720f8d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474557"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234087"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure リソース プロバイダーと種類
 
@@ -84,7 +84,7 @@ Get-AzResourceProvider -ListAvailable | Select-Object ProviderNamespace, Registr
 
 これは次のような結果を返します。
 
-```powershell
+```output
 ProviderNamespace                RegistrationState
 -------------------------------- ------------------
 Microsoft.ClassicCompute         Registered
@@ -102,7 +102,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
 
 これは次のような結果を返します。
 
-```powershell
+```output
 ProviderNamespace : Microsoft.Batch
 RegistrationState : Registering
 ResourceTypes     : {batchAccounts, operations, locations, locations/quotas}
@@ -119,7 +119,7 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.Batch
 
 これは次のような結果を返します。
 
-```powershell
+```output
 {ProviderNamespace : Microsoft.Batch
 RegistrationState : Registered
 ResourceTypes     : {batchAccounts}
@@ -136,7 +136,7 @@ Locations         : {West Europe, East US, East US 2, West US...}
 
 次のような結果が返されます。
 
-```powershell
+```output
 batchAccounts
 operations
 locations
@@ -153,7 +153,7 @@ API バージョンは、リリース プロバイダーがリリースする RE
 
 次のような結果が返されます。
 
-```powershell
+```output
 2017-05-01
 2017-01-01
 2015-12-01
@@ -171,7 +171,7 @@ API バージョンは、リリース プロバイダーがリリースする RE
 
 次のような結果が返されます。
 
-```powershell
+```output
 West Europe
 East US
 East US 2
@@ -189,7 +189,7 @@ az provider list --query "[].{Provider:namespace, Status:registrationState}" --o
 
 これは次のような結果を返します。
 
-```azurecli
+```output
 Provider                         Status
 -------------------------------- ----------------
 Microsoft.ClassicCompute         Registered
@@ -217,7 +217,7 @@ az provider show --namespace Microsoft.Batch
 
 これは次のような結果を返します。
 
-```azurecli
+```output
 {
     "id": "/subscriptions/####-####/providers/Microsoft.Batch",
     "namespace": "Microsoft.Batch",
@@ -236,7 +236,7 @@ az provider show --namespace Microsoft.Batch --query "resourceTypes[*].resourceT
 
 次のような結果が返されます。
 
-```azurecli
+```output
 Result
 ---------------
 batchAccounts
@@ -255,7 +255,7 @@ az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceTyp
 
 次のような結果が返されます。
 
-```azurecli
+```output
 Result
 ---------------
 2017-05-01
@@ -275,7 +275,7 @@ az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceTyp
 
 次のような結果が返されます。
 
-```azurecli
+```output
 Result
 ---------------
 West Europe

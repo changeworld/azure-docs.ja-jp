@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: diberry
 ms.openlocfilehash: c4ea9c5663755a4feb1693dd925d99b10c466140
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70256603"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Microsoft Azure Traffic Manager を使用した複数のキーにわたるエンドポイント クォータの管理
-Language Understanding (LUIS) では、1 つのキーのクォータを超えて、エンドポイント要求クォータを増やすことができます。 そのためには、LUIS の複数のキーを作成し、 **[Publish]\(公開\)** ページの **[Resources and Keys]\(リソースとキー\)** セクションで LUIS アプリケーションに追加します。 
+Language Understanding (LUIS) では、1 つのキーのクォータを超えて、エンドポイント要求クォータを増やすことができます。 そのためには、LUIS の複数のキーを作成し、 **公開** ページの **リソースとキー** セクションで LUIS アプリケーションに追加します。 
 
 クライアント アプリケーションでは、複数のキーにわたってトラフィックを管理する必要があります。 LUIS ではこれは行われません。 
 
@@ -371,7 +371,7 @@ Traffic Manager の[診断ログ](../../traffic-manager/traffic-manager-diagnost
 ## <a name="clean-up"></a>クリーンアップ
 2 つの LUIS エンドポイント キー、3 つの Traffic Manager プロファイル、およびこれらの 5 つのリソースが含まれていたリソース グループを削除します。 これは Azure portal から実行します。 リソースの一覧から 5 つのリソースを削除します。 次に、リソース グループを削除します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このトラフィック管理コードを BotFramework ボットに追加する方法を理解するために、BotFramework v4 の[ミドルウェア](https://docs.microsoft.com/azure/bot-service/bot-builder-create-middleware?view=azure-bot-service-4.0&tabs=csaddmiddleware%2Ccsetagoverwrite%2Ccsmiddlewareshortcircuit%2Ccsfallback%2Ccsactivityhandler) オプションを確認します。 
 

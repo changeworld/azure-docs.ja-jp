@@ -6,17 +6,17 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.openlocfilehash: c6e15c9a99a78f0f3637f718b35462fe49fd5ee6
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201980"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235091"
 ---
 # <a name="azure-blob-storage-output-binding-for-azure-functions"></a>Azure Functions における Azure Blob Storage の出力バインド
 
 出力バインドを使用すると、Azure 関数内で Blob Storage データを変更および削除できます。
 
-セットアップと構成の詳細については、[概要](./functions-bindings-storage-blob.md)に関するページをご覧ください。
+セットアップと構成の詳細については、[概要](./functions-bindings-storage-blob.md)を参照してください。
 
 ## <a name="example"></a>例
 
@@ -355,7 +355,7 @@ public static void Run(
 |**direction** | 該当なし | 出力バインディングの場合は `out` に設定する必要があります。 例外は、[使用方法](#usage)のセクションに記載しています。 |
 |**name** | 該当なし | 関数コード内の BLOB を表す変数の名前。  `$return` に設定して、関数の戻り値を参照します。|
 |**path** |**BlobPath** | BLOB コンテナーへのパス。 |
-|**connection** |**[接続]**| このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br><br>接続文字列は、[BLOB のみのストレージ アカウント](../storage/common/storage-account-overview.md#types-of-storage-accounts)ではなく汎用ストレージ アカウントに対するものである必要があります。|
+|**connection** |**Connection**| このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br><br>接続文字列は、[BLOB のみのストレージ アカウント](../storage/common/storage-account-overview.md#types-of-storage-accounts)ではなく汎用ストレージ アカウントに対するものである必要があります。|
 |該当なし | **Access (アクセス)** | 読み取りと書き込みのどちらを行うかを示します。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -400,4 +400,4 @@ JavaScript では、`context.bindings.<name from function.json>` を使用して
 ## <a name="next-steps"></a>次のステップ
 
 - [Blob Storage データの変更時に関数を実行する](./functions-bindings-storage-blob-trigger.md)
-- [関数の実行時に Blob Storage データを読み取る](./functions-bindings-storage-blob-input.md)
+- [関数が実行されたときに Blob Storage データを読み取る](./functions-bindings-storage-blob-input.md)

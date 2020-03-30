@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a367e4d98135b5d29c4a0e38363739ca2689dcab
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 158dd9d6a38cc1aaf7667c0b16518e23b3f7cecf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128004"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79366685"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Windows Virtual Desktop で Windows 7 仮想マシンをデプロイする
 
@@ -35,7 +35,7 @@ Windows Virtual Desktop で Windows 7 VM を設定するには、次のように
 4. RDP でのホストへの接続時に使用したアカウントを、"リモート デスクトップ ユーザー" グループに追加します。 これを行わないと、VM を Active Directory ドメインに参加させた後に接続できなくなる可能性があります。
 5. VM の Windows Update に移動します。
 6. 重要なカテゴリのすべての Windows Update をインストールします。
-7. 省略可能なカテゴリのすべての Windows Update (言語パックを除く) をインストールします。 これにより、これらの手順を完了するために必要なリモート デスクトップ プロトコル 8.0 更新プログラム ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35393)) がインストールされます。
+7. 省略可能なカテゴリのすべての Windows Update (言語パックを除く) をインストールします。 これにより、これらの手順を完了するために必要なリモート デスクトップ プロトコル 8.0 更新プログラム ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35387)) がインストールされます。
 8. ローカル グループ ポリシー エディターを開き、 **[コンピューターの構成]**  >  **[管理用テンプレート]**  >  **[Windows コンポーネント]**  >  **[リモート デスクトップ サービス]**  >  **[リモート デスクトップ セッション ホスト]**  >  **[リモート セッション環境]** の順に移動します。
 9. リモート デスクトップ プロトコル 8.0 ポリシーを有効にします。
 10. Active Directory ドメインにこの VM を参加させます。

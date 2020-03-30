@@ -1,19 +1,18 @@
 ---
 title: HTTPS エンドポイント | Azure Marketplace
 description: HTTPS エンドポイントの潜在顧客管理を構成します。
-services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.author: evansma
-ms.openlocfilehash: 83efb9cfd1ee7464a334ebc4064dbfaa20ab30de
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 6a0131cf94759fc529a52ea33d5392a60c5ef30c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812289"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281597"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>HTTPS エンドポイントを使用して潜在顧客管理を構成する
 

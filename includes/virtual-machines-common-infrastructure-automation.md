@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
 ms.openlocfilehash: 9cbc48d8bca2f7491d0464be1c5bd64054927dc9
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77608743"
 ---
 Azure の仮想マシン (VM) を一貫した方法で大規模に作成および管理するには、一般的に、何らかの形で自動化することが必要です。 Azure インフラストラクチャのデプロイと管理のライフサイクル全体を自動化できるツールやソリューションはたくさんあります。 この記事では、Azure で使用できるインフラストラクチャ自動化ツールの一部を紹介します。 これらのツールは、一般的に、次のいずれかのアプローチに適しています。

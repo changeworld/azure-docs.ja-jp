@@ -10,12 +10,12 @@ ms.author: ramakoni
 ms.reviewer: ''
 ms.date: 09/27/2019
 manager: dcscontentpm
-ms.openlocfilehash: ed80482147d415ed890bb50ee70be9457c9c5211
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: cf2d9b218fe63414af2446b8562d3ba187b2d395
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562294"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535767"
 ---
 # <a name="azure-sql-database-importexport-service-takes-a-long-time-to-import-or-export-a-database"></a>Azure SQL Database Import/Export サービスでのデータベースのインポートまたはエクスポートに時間がかかる
 
@@ -47,7 +47,7 @@ Azure SQL Database Import/Export サービスでは、インポート操作と�
 
 ## <a name="things-to-consider-when-you-export-or-import-an-azure-sql-database"></a>Azure SQL データベースをエクスポートまたはインポートするときの考慮事項
 
-* この記事で説明するすべての方法でデータベース トランザクション ユニット (DTU) クォータが使い尽くされ、Azure SQL Database サービスによる調整が発生します。 [Azure portal でデータベースの DTU 統計を表示](https://docs.microsoft.com/azure/sql-database/sql-database-monitor-tune-overview#monitor-database-performance)できます。 データベースがそのリソース上限に達している場合は、[サービス レベルをアップグレードして](https://docs.microsoft.com/azure/sql-database/sql-database-scale-resources)さらにリソースを追加します。
+* この記事で説明するすべての方法でデータベース トランザクション ユニット (DTU) クォータが使い尽くされ、Azure SQL Database サービスによる調整が発生します。 [Azure portal でデータベースの DTU 統計を表示](https://docs.microsoft.com/azure/sql-database/sql-database-monitor-tune-overview#sql-database-resource-monitoring)できます。 データベースがそのリソース上限に達している場合は、[サービス レベルをアップグレードして](https://docs.microsoft.com/azure/sql-database/sql-database-scale-resources)さらにリソースを追加します。
 * 理想的には、お使いの SQL データベースと同じリージョンで VM からクライアント アプリケーション (sqlpackage ユーティリティやカスタム DAC アプリケーションなど) を実行してください。 そうしないと、ネットワークの遅延に関連するパフォーマンスの問題が発生する可能性があります。
 * インデックスがクラスター化されていない大規模なテーブルの場合、エクスポートが非常に遅くなり、エクスポートに失敗することもあります。 テーブルを分割できず、並列でエクスポートできないことがこの動作の原因です。 そのため、1 つのトランザクションでエクスポートしなければならず、特にテーブルが大きい場合、パフォーマンスの低下やエクスポートの失敗を引き起こします。
 

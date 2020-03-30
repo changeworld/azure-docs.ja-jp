@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.openlocfilehash: 2636e9a225002148e4cd79bb2176e0883aed623a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844940"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236091"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server 内のログ
 Azure Database for PostgreSQL では、Postgres の標準ログを構成してアクセスできます。 ログは、構成エラーと十分に最適化されていないパフォーマンスの特定、トラブルシューティング、修復に使用できます。 構成してアクセスできるログ情報には、エラー、クエリ情報、自動バキューム レコード、接続、チェックポイントが含まれます。 (トランザクション ログへのアクセスは利用できません)。
@@ -69,7 +69,7 @@ Powershell、CLI、または REST API を使用して診断ログを有効にす
 
 ### <a name="access-diagnostic-logs"></a>診断ログにアクセスする
 
-ログへのアクセス方法は、選択したエンドポイントによって異なります。 Azure Storage については、[ログ ストレージ アカウント](../azure-monitor/platform/resource-logs-collect-storage.md)に関する記事を参照してください。 Event Hubs の場合は、[Azure ログのストリーミング](../azure-monitor/platform/resource-logs-stream-event-hubs.md)に関する記事を参照してください。
+ログへのアクセス方法は、選択したエンドポイントによって異なります。 Azure Storage については、[ストレージ アカウントのログ](../azure-monitor/platform/resource-logs-collect-storage.md)に関する記事を参照してください。 Event Hubs の場合は、[Azure ログのストリーミング](../azure-monitor/platform/resource-logs-stream-event-hubs.md)に関する記事を参照してください。
 
 Azure Monitor ログの場合は、選択したワークスペースにログが送信されます。 Postgres ログでは **AzureDiagnostics** コレクション モードが使用されるため、AzureDiagnostics テーブルからクエリを実行できます。 表内のフィールドについては、以下で説明します。 クエリとアラートの詳細については、[Azure Monitor のログ クエリ](../azure-monitor/log-query/log-query-overview.md)の概要に関する記事を参照してください。
 
@@ -108,7 +108,7 @@ AzureDiagnostics
 | リソース | サーバーの名前 |
 | カテゴリ | `PostgreSQLLogs` |
 | OperationName | `LogEvent` |
-| errorLevel | ログ レベル、例:LOG、ERROR、NOTICE |
+| errorLevel | ログ レベル (LOG、ERROR、NOTICE など) |
 | Message | プライマリ ログ メッセージ | 
 | Domain | サーバーのバージョン (postgres 10 など) |
 | Detail | セカンダリ ログ メッセージ (該当する場合) |

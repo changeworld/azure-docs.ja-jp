@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: e28863f9980d6403bef1f88de01b7a9b5271b444
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 43024b63a355646f607adbb6623cc6c349374ea8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60197087"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535597"
 ---
 # <a name="integrating-azure-data-lake-storage-gen1-with-other-azure-services"></a>Azure Data Lake Storage Gen1 と他の Azure サービスを統合する
 Azure Data Lake Storage Gen1 を他の Azure サービスと連携させれば、さまざまなシナリオが可能になります。 次の記事では、Data Lake Storage Gen1 と統合できるサービスについてまとめてあります。
@@ -60,12 +60,12 @@ Power BI を使用して、Data Lake Storage Gen1 アカウントからデータ
 SSIS で Data Lake Storage Gen1 接続マネージャーを使用して、SSIS パッケージを Data Lake Storage Gen1 と接続することができます。 詳しくは、[SSIS での Data Lake Storage Gen1 の使用](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager)に関するページをご覧ください。
 
 ## <a name="use-data-lake-storage-gen1-with-sql-data-warehouse"></a>Data Lake Storage Gen1 を SQL Data Warehouse と共に使用する
-PolyBase を使用して、Data Lake Storage Gen1 から SQL Data Warehouse にデータを読み込むことができます。 詳しくは、[SQL Data Warehouse での Data Lake Storage Gen1 の使用](../sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md)に関する記事をご覧ください。
+PolyBase を使用して、Data Lake Storage Gen1 から SQL Data Warehouse にデータを読み込むことができます。 詳しくは、[SQL Data Warehouse での Data Lake Storage Gen1 の使用](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md)に関する記事をご覧ください。
 
 ## <a name="use-data-lake-storage-gen1-with-azure-event-hubs"></a>Data Lake Storage Gen1 を Azure Event Hubs と共に使用する
 Azure Data Lake Storage Gen1 を使用して、Azure Event Hubs によって受信されたデータをアーカイブしてキャプチャできます。 詳しくは、[Azure Event Hubs での Data Lake Storage Gen1 の使用](data-lake-store-archive-eventhub-capture.md)に関する記事をご覧ください。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 * [Azure Data Lake Storage Gen1 の概要](data-lake-store-overview.md)
 * [ポータルを使用して Data Lake Storage Gen1 の使用を開始する](data-lake-store-get-started-portal.md)
 * [PowerShell を使用して Data Lake Storage Gen1 の使用を開始する](data-lake-store-get-started-powershell.md)  

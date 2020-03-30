@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/16/2018
 ms.openlocfilehash: fb9f9cfdba07ebe0bc5800def6d93950869e9727
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75456645"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Azure Logic Apps で Liquid テンプレートを使用して高度な JSON 変換を実行する
@@ -83,7 +83,7 @@ ms.locfileid: "75456645"
 2. ロジック アプリ デザイナーで、ロジック アプリに[要求トリガー](../connectors/connectors-native-reqres.md#add-request)を追加します。
 
 3. トリガーで、 **[新しいステップ]** を選択します。 
-   検索ボックスに、フィルターとして「liquid」と入力し、アクションとして **[Transform JSON to JSON - Liquid]\(JSON から JSON への変換- Liquid\)** を選択します。
+   検索ボックスにフィルターとして「liquid」と入力し、 **[Transform JSON to JSON - Liquid]** アクションを選択します。
 
    ![Liquid アクションを見つけて選択する](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 

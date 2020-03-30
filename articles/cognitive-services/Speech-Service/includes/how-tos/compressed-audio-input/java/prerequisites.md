@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: dapine
 ms.openlocfilehash: e77e61fc977231effb098c1cbe80cf2e6666c489
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943739"
 ---
 圧縮オーディオの処理は、[GStreamer](https://gstreamer.freedesktop.org) を使用して実装されます。 ライセンスの理由から、Speech SDK では GStreamer バイナリはコンパイルおよびリンクされません。 代わりに、Android では事前構築済みのバイナリを使用する必要があります。 事前構築済みのライブラリをダウンロードするには、「[Android 開発用のインストール](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c)」を参照してください。
@@ -76,7 +76,7 @@ APP_PLATFORM = android-21
 APP_BUILD_SCRIPT = Android.mk
 ```
 
-Ubuntu 16.04 または 18.04 で次のコマンドを使用して、`libgstreamer_android.so` を構築できます。 次のコマンド ラインは、[Android NDK b16b](https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip) での [Gstreamer Android バージョン 1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/gstreamer-1.0-android-universal-1.14.4.tar.bz2) に対してのみテストされています。
+Ubuntu 16.04 または 18.04 で次のコマンドを使用して、`libgstreamer_android.so` を構築できます。 次のコマンド ラインは、[Android NDK b16b](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/gstreamer-1.0-android-universal-1.14.4.tar.bz2) での [Gstreamer Android バージョン 1.14.4](https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip) に対してのみテストされています。
 
 ```sh
 # Assuming wget and unzip already installed on the system

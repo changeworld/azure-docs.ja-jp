@@ -9,10 +9,10 @@ ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: dc7c86ff1df48f9ce96769098f7aab76d33c8822
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68481503"
 ---
 Event Hubs は、パーティション化されたコンシューマー パターンを使用してメッセージ ストリーミングを実現します。このパターンでは、各コンシューマーはメッセージ ストリームの特定のサブセット (またはパーティション) のみを読み取ります。 このパターンでは、イベント処理能力を水平方向に拡張 (スケールアウト) することができ、キューおよびトピックでは利用できない、ストリームに重点を置いたその他の機能が利用できます。

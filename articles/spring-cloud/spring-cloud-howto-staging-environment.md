@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 5612a514ed89f73453f3751b34263b0beeea1c59
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 2e29f6a75b303518ac34ecf9b570bd7638cf0c3a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77138141"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471032"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Azure Spring Cloud でステージング環境を設定する
 
@@ -44,7 +44,7 @@ Azure portal で自分のサービス インスタンスに移動し、 **[Deplo
 
 1. ローカル開発環境で、PiggyMetrics のゲートウェイ アプリケーションに小さな変更を加えます。 たとえば、*gateway/src/main/resources/static/css/launch.css* ファイルの色を変更します。 こうすることで、2 つのデプロイを簡単に区別できるようになります。 jar パッケージをビルドするには、次のコマンドを実行します。 
 
-    ```azurecli
+    ```console
     mvn clean package
     ```
 

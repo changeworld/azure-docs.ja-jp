@@ -4,10 +4,10 @@ description: ブループリントの割り当て中にブループリント ア
 ms.date: 08/22/2019
 ms.topic: conceptual
 ms.openlocfilehash: 51026862c989f15acf6d3e21702cfcfc8b2b27b0
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74128823"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Azure ブループリントでのデプロイ シーケンスについて
@@ -139,7 +139,7 @@ JSON の例では、次の変数を独自の値で置き換える必要があり
 
 成果物の依存関係が既定の順序を変更しないと宣言されている場合、変更は加えられません。 たとえば、サブスクリプション レベルのポリシーに依存するリソース グループです。 もう 1 つの例は、リソース グループ 'standard rg' 子ロールの割り当てに依存しているリソース グループ ' standard rg' 子ポリシーの割り当てです。 どちらの場合も、`dependsOn` によって既定のシーケンス順序が変更されることはなく、何の変更も加えられません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ブループリントのライフサイクル](lifecycle.md)を参照する。
 - [静的および動的パラメーター](parameters.md)の使用方法を理解する。

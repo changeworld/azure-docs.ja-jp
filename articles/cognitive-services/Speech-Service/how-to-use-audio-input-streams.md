@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: fmegen
 ms.openlocfilehash: 3039276a49e7bb41660d114e78ca047a3f77f279
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74109940"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>Speech SDK のオーディオ入力ストリーム API について
@@ -59,7 +59,7 @@ Speech SDK の**オーディオ入力ストリーム** API では、マイクま
    };
   ```
 
-- オーディオ形式と入力ストリームに基づいてオーディオ構成を作成します。 認識エンジンを作成するときは、通常の音声構成とオーディオ入力構成の両方を渡します。 例:
+- オーディオ形式と入力ストリームに基づいてオーディオ構成を作成します。 認識エンジンを作成するときは、通常の音声構成とオーディオ入力構成の両方を渡します。 次に例を示します。
 
   ```csharp
   var audioConfig = AudioConfig.FromStreamInput(new ContosoAudioStream(config), audioFormat);
@@ -73,7 +73,7 @@ Speech SDK の**オーディオ入力ストリーム** API では、マイクま
   var text = result.GetText();
   ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
 - [C# で音声を認識する方法を確認する](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

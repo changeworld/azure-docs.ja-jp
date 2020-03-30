@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
 ms.openlocfilehash: bcf92838483fbb6b54802cc0d44cc44ea086d705
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77430655"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236751"
 ---
 # <a name="protect-your-machines-and-applications"></a>マシンとアプリケーションを保護する
 Azure Security Center によって潜在的なセキュリティの脆弱性が識別されると、リソースを堅牢化および保護するために必要な管理を構成するプロセスを説明する推奨事項が作成されます。
@@ -63,7 +63,7 @@ Azure Security Center によって潜在的なセキュリティの脆弱性が�
 
 
 
-### <a name="vms-and-computers"></a>VM およびサーバー
+### <a name="vms-and-servers"></a><a name="vms-and-computers"></a>VM およびサーバー
 [VM およびコンピューター] セクションには、VM とコンピューターに関するすべてのセキュリティ推奨事項の概要が表示されます。 4 種類のマシンが含まれます。
 
 ![Azure 以外のコンピューター](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon1.png) Azure 以外のコンピューター。
@@ -84,7 +84,7 @@ Azure Security Center によって潜在的なセキュリティの脆弱性が�
 
 
 
-### <a name="vmscale-sets"></a>仮想マシン スケール セット
+### <a name="virtual-machine-scale-sets"></a><a name="vmscale-sets"></a>仮想マシン スケール セット
 Security Center は、スケール セットがあるかどうかを自動的に検出し、それらに Microsoft Monitoring Agent をインストールすることを推奨します。
 
 Microsoft Monitoring Agent をインストールするには 
@@ -110,7 +110,7 @@ Microsoft Monitoring Agent をインストールするには
 
 
 
-### <a name="cloud-services"></a>クラウド サービス
+### <a name="cloud-services"></a><a name="cloud-services"></a>クラウド サービス
 クラウド サービスについては、オペレーティング システムのバージョンが最新でないときに、推奨事項が作成されます。
 
 ![クラウド サービス](./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig1-new006-2017.png)
@@ -122,7 +122,7 @@ Microsoft Monitoring Agent をインストールするには
 
 
 
-### <a name="app-services"></a>App Service
+### <a name="app-services"></a><a name="app-services"></a>App Service
 App Service 情報を表示するには、Security Center の Standard 価格レベルを使用し、サブスクリプションでApp Service を有効にする必要があります。 この機能を有効にする方法については、「[Azure Security Center で App Service を保護する](security-center-app-services.md)」を参照してください。
 
 **[App Service]** には、App Service 環境の一覧と、Security Center によって実行された評価に基づく正常性についての概要が表示されます。
@@ -157,7 +157,7 @@ Web アプリケーションを選択すると、次の 3 つのタブがある�
 
 
 
-### <a name="containers"></a>コンテナー
+### <a name="containers"></a><a name="containers"></a>コンテナー
 
 環境に応じて **[コンテナー]** タブを開くと、次の 3 種類のリソースのいずれかが表示されます。
 

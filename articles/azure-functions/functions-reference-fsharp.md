@@ -7,11 +7,11 @@ ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
 ms.openlocfilehash: 669701f91ab28a4eb734b0346be6515dc44e8685
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356996"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234943"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F# 開発者向けリファレンス
 
@@ -48,7 +48,7 @@ FunctionsProject
 
 関数アプリの構成に使用できる共有 [host.json](functions-host-json.md) ファイルがあります。 各関数には、独自のコード ファイル (.fsx) とバインディング構成ファイル (function.json) があります。
 
-Functions ランタイムの[バージョン 2.x およびそれ以降](functions-versions.md) で必要なバインディング拡張機能は、`bin` フォルダー内の実際のライブラリファイルと共に、`extensions.csproj`ファイルで定義されます。 ローカルで開発する場合は、[バインド拡張機能を登録する](./functions-bindings-register.md#extension-bundles)必要があります。 Azure portal 上で関数を開発するときに、この登録が実行されます。
+Functions ランタイムの[バージョン 2.x およびそれ以降](functions-versions.md) で必要なバインディング拡張機能は、`extensions.csproj` フォルダー内の実際のライブラリファイルと共に、`bin`ファイルで定義されます。 ローカルで開発する場合は、[バインド拡張機能を登録する](./functions-bindings-register.md#extension-bundles)必要があります。 Azure portal 上で関数を開発するときに、この登録が実行されます。
 
 ## <a name="binding-to-arguments"></a>引数へのバインド
 「[Azure Functions のトリガーとバインドの開発者用リファレンス](functions-triggers-bindings.md)」で詳しく説明されているように、各バインドはいくつかの引数のセットをサポートしています。 たとえば、BLOB トリガーでサポートされている引数バインドの 1 つは、POCO です。これは、F# レコードを使用して表すことができます。 次に例を示します。
@@ -61,9 +61,9 @@ let Run(blob: string, output: byref<Item>) =
     output <- item
 ```
 
-F# Azure 関数は、1 つまたは複数の引数を受け取ります。 Azure Functions の引数についての説明では、"*入力*" 引数と "*出力*" 引数が出てきます。 入力引数は、名前が示すとおり、F# Azure 関数への入力です。 "*出力*" 引数は、関数から "*出力*" データを返す方法として機能する、変更可能なデータまたは `byref<>` 引数です。
+F# Azure 関数は、1 つまたは複数の引数を受け取ります。 Azure Functions の引数についての説明では、"*入力*" 引数と "*出力*" 引数が出てきます。 入力引数は、名前が示すとおり、F# Azure 関数への入力です。 "*出力*" 引数は、関数から "`byref<>`出力 *" データを返す方法として機能する、変更可能なデータまたは*  引数です。
 
-上の例では、`blob` が入力引数で、`output` が出力引数です。 `output` に `byref<>` を使用したことに注意してください (`[<Out>]` という注釈を付ける必要はありません)。 `byref<>` 型を使用すると、関数は引数が参照するレコードまたはオブジェクトを変更できます。
+上の例では、`blob` が入力引数で、`output` が出力引数です。 `byref<>` に `output` を使用したことに注意してください (`[<Out>]` という注釈を付ける必要はありません)。 `byref<>` 型を使用すると、関数は引数が参照するレコードまたはオブジェクトを変更できます。
 
 F# レコードを入力型として使用する場合は、Azure Functions フレームワークがレコードを関数に渡す前にフィールドを適切に設定できるように、レコード定義を `[<CLIMutable>]` でマークする必要があります。 内部的には、 `[<CLIMutable>]` によってレコードのプロパティのセッターが生成されます。 次に例を示します。
 
@@ -141,7 +141,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 * `System.Net.Http`
 * `System.Threading.Tasks`
 * `Microsoft.Azure.WebJobs`
-* `Microsoft.Azure.WebJobs.Host`
+* [https://login.microsoftonline.com/consumers/](`Microsoft.Azure.WebJobs.Host`)
 
 ## <a name="referencing-external-assemblies"></a>外部アセンブリの参照
 同様に、フレームワーク アセンブリ参照を、`#r "AssemblyName"` ディレクティブと共に追加できます。
@@ -169,7 +169,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 * `Microsoft.Azure.WebJobs.Host`
 * `Microsoft.Azure.WebJobs.Extensions`
 * `System.Web.Http`
-* `System.Net.Http.Formatting`
+* [https://login.microsoftonline.com/consumers/](`System.Net.Http.Formatting`)
 
 さらに、次のアセンブリは特別扱いされ、simplename によって参照される場合があります (例: `#r "AssemblyName"`)。
 
@@ -177,7 +177,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 * `Microsoft.WindowsAzure.Storage`
 * `Microsoft.ServiceBus`
 * `Microsoft.AspNet.WebHooks.Receivers`
-* `Microsoft.AspNEt.WebHooks.Common`
+* [https://login.microsoftonline.com/consumers/](`Microsoft.AspNEt.WebHooks.Common`)
 
 プライベート アセンブリを参照する必要がある場合は、アセンブリ ファイルを関数に関連する `bin` フォルダーにアップロードし、ファイル名 (例: `#r "MyAssembly.dll"`) を使用して参照できます。 関数フォルダーにファイルをアップロードする方法については、パッケージ管理の次のセクションを参照してください。
 
@@ -203,7 +203,7 @@ Azure Functions は、コードを実行するとき、 `COMPILED` が定義さ�
 <a name="package"></a>
 
 ## <a name="package-management"></a>パッケージの管理
-NuGet パッケージを F# 関数で使用するには、`project.json` ファイルを関数アプリのファイル システムにある関数のフォルダーに追加します。 次に示すのは、`Microsoft.ProjectOxford.Face` Version 1.1.0 への NuGet パッケージ参照を追加する、`project.json` ファイルの例です。
+NuGet パッケージを F# 関数で使用するには、`project.json` ファイルを関数アプリのファイル システムにある関数のフォルダーに追加します。 次に示すのは、`project.json` Version 1.1.0 への NuGet パッケージ参照を追加する、`Microsoft.ProjectOxford.Face` ファイルの例です。
 
 ```json
 {
@@ -280,7 +280,7 @@ let mylog(log: ILogger, text: string) =
 
 * `#load "logger.fsx"` によって、関数フォルダーにあるファイルが読み込まれます。
 * `#load "package\logger.fsx"` によって、関数フォルダー内の `package` フォルダーにあるファイルが読み込まれます。
-* `#load "..\shared\mylogger.fsx"` によって、関数フォルダーと同じレベル (`wwwroot` の直下) にある `shared` フォルダーのファイルが読み込まれます。
+* `#load "..\shared\mylogger.fsx"` によって、関数フォルダーと同じレベル (`shared` の直下) にある `wwwroot` フォルダーのファイルが読み込まれます。
 
 `#load` ディレクティブは、`.fsx` (F# スクリプト) ファイルだけで動作します。`.fs` ファイルでは動作しません。
 

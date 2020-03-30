@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 71858755fe31823d4d7ef8623b915db851530116
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72755237"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>C# で好ましくない要素を検出するためにビデオ コンテンツを分析する
@@ -55,7 +55,7 @@ Azure Media Services エクスプローラーは、AMS のユーザー フレン
 ## <a name="create-the-visual-studio-project"></a>Visual Studio プロジェクトの作成
 
 1. Visual Studio で、新しい**コンソール アプリ (.NET Framework)** プロジェクトを作成し、**VideoModeration** という名前を付けます。 
-1. ソリューションに他のプロジェクトがある場合は、このプロジェクトを単一のスタートアップ プロジェクトとして選択します。
+1. ソリューションに他のプロジェクトがある場合は、これを単一のスタートアップ プロジェクトとして選択します。
 1. 必須の NuGet パッケージを入手します。 ソリューション エクスプローラーでプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。次のパッケージを見つけてインストールします。
     - windowsazure.mediaservices
     - windowsazure.mediaservices.extensions
@@ -66,7 +66,7 @@ Azure Media Services エクスプローラーは、AMS のユーザー フレン
 
 ### <a name="update-the-programs-using-statements"></a>プログラムの using ステートメントを更新する
 
-_Program.cs_ ファイルの先頭に次の `using` ステートメントを追加します。
+`using`Program.cs_ファイルの先頭に次の_ ステートメントを追加します。
 
 ```csharp
 using System;
@@ -83,7 +83,7 @@ using System.Collections.Generic;
 
 ### <a name="set-up-resource-references"></a>リソース参照を設定する
 
-次の静的フィールドを _Program.cs_ 内の **Program** クラスに追加します。 これらのフィールドには、AMS サブスクリプションに接続するために必要な情報が保持されます。 上記の手順で取得した値を使用して、これらのフィールドに入力します。 `CLIENT_ID` はご使用の Azure AD アプリの**アプリケーション ID** 値で、`CLIENT_SECRET` はそのアプリ用に作成した "VideoModKey" の値です。
+次の静的フィールドを **Program.cs** 内の _Program_ クラスに追加します。 これらのフィールドには、AMS サブスクリプションに接続するために必要な情報が保持されます。 上記の手順で取得した値を使用して、これらのフィールドに入力します。 `CLIENT_ID` はご使用の Azure AD アプリの**アプリケーション ID** 値で、`CLIENT_SECRET` はそのアプリ用に作成した "VideoModKey" の値です。
 
 ```csharp
 // declare constants and globals
@@ -120,7 +120,7 @@ private static readonly string CONTENT_MODERATOR_PRESET_FILE = "preset.json";
 
 ローカル ビデオ ファイルを使用する場合 (最も簡単な場合) は、そのファイルをプロジェクトに追加して、そのパスを `INPUT_FILE` 値として入力します (相対パスは実行ディレクトリを基準とします)。
 
-現在のディレクトリに _preset.json_ ファイルを作成し、それを使用してバージョン番号を指定する必要もあります。 例:
+現在のディレクトリに _preset.json_ ファイルを作成し、それを使用してバージョン番号を指定する必要もあります。 次に例を示します。
 
 ```JSON
 {
@@ -359,7 +359,7 @@ static void StateChanged(object sender, JobStateChangedEventArgs e)
 }
 ```
 
-### <a name="run-the-program-and-review-the-output"></a>プログラムを実行して出力を確認する
+### <a name="run-the-program-and-review-the-output"></a>プログラムを実行して出力をレビューする
 
 Content Moderation ジョブが完了したら、JSON 応答を分析します。 以下の要素で構成されます。
 
@@ -371,7 +371,7 @@ Content Moderation ジョブが完了したら、JSON 応答を分析します�
 > [!NOTE]
 > - `adultScore` は、特定の状況で、性的に露骨な表現または成人向けの表現であると考えられるコンテンツの存在の可能性および予測スコアを表します。
 > - `racyScore` は、特定の状況で、性的に挑発的または成熟した表現であると考えられるコンテンツの存在の可能性および予測スコアを表します。
-> - `adultScore` と `racyScore` の値は 0 から 1 の範囲です。 スコアが高いほど、モデルによる予測においてカテゴリが該当する可能性は高くなります。 このプレビューは、人がコーディングした結果ではなく、統計モデルに依存しています。 独自のコンテンツを使用してテストを行い、実際の要件に合うように各カテゴリをどのように設定するかを決めることをお勧めします。
+> - `adultScore` と `racyScore` の値は 0 から 1 の範囲です。 このモデルでは、スコアが高いほど、そのカテゴリに該当する可能性が高いと予測しています。 このプレビューは、人がコーディングした結果ではなく、統計モデルに依存しています。 独自のコンテンツを使用してテストを行い、実際の要件に合うように各カテゴリをどのように設定するかを決めることをお勧めします。
 > - `reviewRecommended` は、内部スコアのしきい値に応じて true または false のどちらかになります。 ユーザーは、この値を使用するか、独自のコンテンツ ポリシーに基づいてカスタムしきい値を決めるかを見極める必要があります。
 
 ```json
@@ -426,7 +426,7 @@ Content Moderation ジョブが完了したら、JSON 応答を分析します�
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 モデレーション出力から[ビデオ レビュー](video-reviews-quickstart-dotnet.md)を生成する方法について説明する。
 

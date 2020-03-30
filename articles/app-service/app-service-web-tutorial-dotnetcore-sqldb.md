@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 73c68e03ca2403be51664cb59158762cedccc721
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9a3247298ed69cdefb3ce5021f0c4051052105f7
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80046958"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80297794"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>チュートリアル:Azure App Service での ASP.NET Core および SQL Database アプリの作成
 
@@ -63,8 +63,8 @@ cd dotnetcore-sqldb-tutorial
 次のコマンドを実行して、必要なパッケージをインストールし、データベースの移行を実行し、アプリケーションを起動します。
 
 ```bash
-dotnet restore
-dotnet ef database update
+dotnet tool install -g dotnet-ef --version 3.1.1
+dotnet-ef database update
 dotnet run
 ```
 

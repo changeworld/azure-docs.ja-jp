@@ -1,19 +1,18 @@
 ---
 title: プライベート SKU とプラン | Azure Marketplace
 description: プライベート SKU を使用してプランの利用を管理する方法。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/15/2019
-ms.author: pabutler
-ms.openlocfilehash: eb6eac5eafaeea239bfaf9cf2aface3db659dd57
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: ee3ab7be4d15b13a3c0bb014a3ca4d4096299b4c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818833"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280390"
 ---
 <a name="private-skus-and-plans"></a>プライベート SKU とプラン
 ============
@@ -127,7 +126,7 @@ API を使用すると、CSV のアップロードまたは対象ユーザーの
 
     制限された対象ユーザー オブジェクトごとに、次のようにします。
 
-    a. `restrictedAudience.uploadedCsvUri` のコンテンツをダウンロードします。 コンテンツは、単にヘッダーが含まれる CSV ファイルです。 例:
+    a. `restrictedAudience.uploadedCsvUri` のコンテンツをダウンロードします。 コンテンツは、単にヘッダーが含まれる CSV ファイルです。 次に例を示します。
 
         type,id,description
         subscriptionId,541a269f-3df2-486e-8fe3-c8f9dcf28205,sub1

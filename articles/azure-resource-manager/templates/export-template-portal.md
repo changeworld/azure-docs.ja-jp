@@ -4,11 +4,11 @@ description: Azure portal を使用して、サブスクリプション内のリ
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: 8cdba58a7a2ba998bac7fc0225ff957047cd69b0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474213"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234011"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Azure portal のテンプレートへの単一および複数リソースのエクスポート
 
@@ -49,7 +49,7 @@ Resource Manager では、テンプレートにエクスポートするリソー
 
 リソースグループまたはリソースからエクスポートする場合、エクスポートされたテンプレートは、リソースの種類ごとに [パブリッシュされたスキーマ](https://github.com/Azure/azure-resource-manager-schemas/tree/master/schemas) から生成されます。 場合によっては、スキーマにリソースの種類に対する最新バージョンがないことがあります。 エクスポートしたテンプレートに必要なプロパティが含まれていることを確認してください。 必要に応じて、エクスポートされたテンプレートを編集し、必要な API バージョンを使用します。
 
-テンプレートのエクスポート機能は、Azure Data Factory リソースのエクスポートをサポートしていません。 Data Factory リソースをエクスポートする方法については、「[Azure Data Factory のデータ ファクトリをコピーまたは複製する](https://aka.ms/exportTemplateViaAdf)」 を参照してください。
+テンプレートのエクスポート機能は、Azure Data Factory リソースのエクスポートをサポートしていません。 Data Factory リソースをエクスポートする方法については、「[Azure Data Factory のデータ ファクトリをコピーまたは複製する](https://aka.ms/exportTemplateViaAdf)」を参照してください。
 
 クラシック デプロイ モデルを使用して作成されたリソースをエクスポートするには、[Resource Manager デプロイ モデルに移行する](https://aka.ms/migrateclassicresourcetoarm)必要があります。
 

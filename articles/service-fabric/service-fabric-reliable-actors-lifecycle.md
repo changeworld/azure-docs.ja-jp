@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
 ms.openlocfilehash: b05da78091260297d94062c06cba100d01ce7e2e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75349343"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229267"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>アクターのライフ サイクル、自動ガベージ コレクション、および手動による削除
 アクターは、いずれかのメソッドが最初に呼び出された時点でアクティブ化されます。 一定期間 (値は構成可能) 使用されていない場合、アクターは非アクティブ化されます (アクター ランタイムでガベージ コレクションが発生します)。 アクターとその状態はいつでも手動で削除できます。
@@ -52,7 +52,7 @@ ms.locfileid: "75349343"
 * *スキャン間隔*。 これは、アクター ランタイムがアクティブ アクター テーブルで、非アクティブ化およびガベージ コレクションが可能なアクターをスキャンする間隔です。 この既定値は 1 分です。
 * *アイドル タイムアウト*。 これは、非アクティブ化およびガベージ コレクションの前に、アクターが未使用 (アイドル) のままでいる必要がある時間です。 この既定値は 60 分です。
 
-通常は、これらの既定値を変更する必要はありません。 ただし、必要であれば、[アクター サービス](service-fabric-reliable-actors-platform.md)の登録時に `ActorServiceSettings` を通じてこの間隔を変更できます。
+通常は、これらの既定値を変更する必要はありません。 ただし、必要であれば、`ActorServiceSettings`アクター サービス[の登録時に ](service-fabric-reliable-actors-platform.md) を通じてこの間隔を変更できます。
 
 ```csharp
 public class Program

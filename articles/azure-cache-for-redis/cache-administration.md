@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
 ms.openlocfilehash: 69686cad20bc4ce70bff2a92a216c9430522c301
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356424"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235583"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Azure Cache for Redis を管理する方法
 このトピックでは、Azure Cache for Redis インスタンスについて、[再起動](#reboot)、[更新スケジュール](#schedule-updates)などの管理タスクを実行する方法について説明します。
@@ -76,7 +76,7 @@ PowerShell での手順については、「[To reboot an Azure Cache for Redis]
 
 メンテナンス時間を指定するには、目的の曜日をオンにし、曜日ごとにメンテナンス時間の開始時刻を指定して、 **[OK]** をクリックします。 メンテナンス時間の時刻は UTC 時間で指定します。 
 
-更新の既定の最小メンテナンス時間は 5 時間です。 この値は、Azure portal からは構成できませんが、PowerShell で [New-AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) コマンドレットの `MaintenanceWindow` パラメーターを使用して構成できます。 詳細については、「Can I manage scheduled updates using PowerShell, CLI, or other management tools? (PowerShell、CLI、またはその他の管理ツールを使用して、スケジュールされている更新を管理できますか)」を参照してください。
+更新の既定の最小メンテナンス時間は 5 時間です。 この値は、Azure portal からは構成できませんが、PowerShell で `MaintenanceWindow`New-AzRedisCacheScheduleEntry[ コマンドレットの ](/powershell/module/az.rediscache/new-azrediscachescheduleentry) パラメーターを使用して構成できます。 詳細については、「Can I manage scheduled updates using PowerShell, CLI, or other management tools? (PowerShell、CLI、またはその他の管理ツールを使用して、スケジュールされている更新を管理できますか)」を参照してください。
 
 ## <a name="schedule-updates-faq"></a>更新のスケジュールに関する FAQ
 * [更新スケジュール機能を使用しない場合、更新はどのタイミングで実行されますか。](#when-do-updates-occur-if-i-dont-use-the-schedule-updates-feature)

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
 ms.openlocfilehash: b360bc82b80e834492b524acc5c4535b0409eda1
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74280822"
 ---
 # <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>意図とエンティティの予測精度を示す予測スコア
@@ -56,7 +56,7 @@ ms.locfileid: "74280822"
 
 スコアが非常に近い 2 つの意図は、**非決定性トレーニング**のために順序が逆になる可能性があります。 トップ スコアがセカンド トップになり、セカンド トップ スコアがファースト トップ スコアになることがあります。 この状況を防ぐには、上位 2 つの各意図に、2 つの意図を区別する単語選択とコンテキストを含む発話の例を追加します。 2 つの意図の発話例の数はだいたい同じにする必要があります。 トレーニングによる逆転を防ぐために分離の目安は、スコアの差を 15% にすることです。
 
-[すべてのデータを使用してトレーニングする](luis-how-to-train.md#train-with-all-data)ことで、**非決定性トレーニング**をオフにすることができます。
+**すべてのデータを使用してトレーニングする**ことで、[非決定性トレーニング](luis-how-to-train.md#train-with-all-data)をオフにすることができます。
 
 ## <a name="differences-with-predictions-between-different-training-sessions"></a>異なるトレーニング セッション間の予測との違い
 
@@ -64,11 +64,11 @@ ms.locfileid: "74280822"
 
 意図の信頼性を示すためにチャットボットで特定の LUIS スコアを必要とする場合、上位 2 つの意図のスコアの差異を使用する必要があります。 このような状況では、トレーニングのバリエーションが柔軟になります。
 
-[すべてのデータを使用してトレーニングする](luis-how-to-train.md#train-with-all-data)ことで、**非決定性トレーニング**をオフにすることができます。
+**すべてのデータを使用してトレーニングする**ことで、[非決定性トレーニング](luis-how-to-train.md#train-with-all-data)をオフにすることができます。
 
 ## <a name="e-exponent-notation"></a>E (指数) 表記
 
-予測スコアでは、`9.910309E-07` など、0 から 1 の範囲を超えているように "_見える_" 指数表記が使用される場合があります。 このスコアは、非常に**小さな**数を表します。
+予測スコアでは、 _など、0 から 1 の範囲を超えているように "_ 見える`9.910309E-07`" 指数表記が使用される場合があります。 このスコアは、非常に**小さな**数を表します。
 
 |E 表記スコア |実際のスコア|
 |--|--|
@@ -78,6 +78,6 @@ ms.locfileid: "74280822"
 
 句読点を使用する方法または無視する方法の[詳細を確認](luis-concept-utterance.md#punctuation-marks)してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [エンティティの追加](luis-how-to-add-entities.md)に関するページで、LUIS アプリにエンティティを追加する方法の詳細を確認します。

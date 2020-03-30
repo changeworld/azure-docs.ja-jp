@@ -1,19 +1,18 @@
 ---
 title: Azure アプリケーション オファーを発行する | Azure Marketplace
 description: Azure Marketplace で Azure アプリケーション オファーを発行するプロセスと手順について説明します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/25/2019
-ms.author: pabutler
-ms.openlocfilehash: 0005760a16f5109ca3555df5c5c5137facc84c40
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 9f89e31c2d17ef74971d2057ba58e9572e92184c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826160"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280101"
 ---
 # <a name="publish-azure-application-offer"></a>Azure アプリケーション オファーを公開する
 
@@ -54,7 +53,7 @@ Cloud パートナー ポータルのオファーの **[状態]** タブで発�
 **[状態]** タブには、オファーの発行状態の表示に加え、問題が発生した発行ステップからのエラー メッセージとフィードバックも表示されます。  重大な問題の場合、発行は取り消されます。  その場合は、報告された問題を解決して、オファーを再発行する必要があります。  **Microsoft によるレビュー**のステップには、オファーの広範なレビューとそれに関連する技術資産 (特に Azure Resource Manager テンプレートの場合) が含まれるため、通常、問題は pull request (PR) のリンクとして示されます。  これらの PR を表示してそれに対応する方法については、「[レビュー フィードバックの処理](./cpp-handling-review-feedback.md)」をご覧ください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 発行手順のどこかでエラーが発生した場合は、それらを修正し、オファーを再発行する必要があります。  **Microsoft によるレビュー**のステップで重大な問題が発生した場合は、Microsoft レビュー チームの Azure DevOps リポジトリにアクセスして、[レビューのフィードバックを処理する](./cpp-handling-review-feedback.md)必要があります。
 

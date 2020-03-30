@@ -5,11 +5,11 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.openlocfilehash: 69687cee8b8a907b82f2c848242ac64d54dedb87
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77663506"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226379"
 ---
 # <a name="azure-monitor-cli-quick-start-samples"></a>Azure Monitor の CLI クイック スタート サンプル
 この記事では、Azure Monitor の機能にアクセスするために役立つコマンド ライン インターフェイス (CLI) のサンプル コマンドを紹介します。 Azure Monitor では、Cloud Services、Virtual Machines、Web Apps を自動スケールできます。また、アラート通知の送信や、構成済みのテレメトリ データの値に基づく Web URL の呼び出しも行うことができます。

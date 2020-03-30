@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
 ms.openlocfilehash: 5249a3a1f51eea2ecd0999d71c6b08fdacf37a34
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68405419"
 ---
 # <a name="autosuggest-api-upgrade-guide"></a>Autosuggest API のアップグレード ガイド
@@ -54,7 +54,7 @@ RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
 ResourceAccessDenied|InsufficientAuthorization
 ExceededVolume|RateLimitExceeded
 ExceededQpsLimit|RateLimitExceeded
-Disabled|InsufficientAuthorization.AuthorizationDisabled
+無効|InsufficientAuthorization.AuthorizationDisabled
 UnexpectedError|ServerError.UnexpectedError
 DataSourceErrors|ServerError.ResourceError
 AuthorizationMissing|InvalidAuthorization.AuthorizationMissing
@@ -68,7 +68,7 @@ ExpiredAuthorizationToken|InsufficientAuthorization.AuthorizationExpired
 InsufficientScope|InsufficientAuthorization
 Blocked|InvalidRequest.Blocked
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [使用と表示の要件](./UseAndDisplayRequirements.md)

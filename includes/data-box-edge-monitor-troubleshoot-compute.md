@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: alkohli
 ms.openlocfilehash: f3bb391dceb1948820d00c0d09229f2c106ffc0b
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68601350"
 ---
 コンピューティング ロールが構成されている Data Box Edge デバイスでは、一部の Docker コマンドをモジュールの監視やトラブルシューティングに利用できます。 利用できるコマンドの一覧を表示するには、[PowerShell インターフェイスに接続し](#connect-to-the-powershell-interface)、`dkrdbe` 関数を使用します。
@@ -121,7 +121,7 @@ reateOptions":"{\"HostConfig\":{\"Binds\":[\"/home/hcsshares/share4-dl460:/home/
 
 特定のコンテナーのログを取得するには、まず、コンテナーを一覧表示し、次に、関心があるコンテナーのログを取得します。
 
-1. [PowerShell インターフェイスに接続します](#connect-to-the-powershell-interface)。
+1. [PowerShell インターフェイスに接続する](#connect-to-the-powershell-interface)。
 2. 実行中のコンテナーの一覧を取得するには、`ps` コマンドを実行します。
 
     ```powershell
@@ -154,7 +154,7 @@ reateOptions":"{\"HostConfig\":{\"Binds\":[\"/home/hcsshares/share4-dl460:/home/
 
 デバイスのメモリ、CPU 使用率、IO を監視するには、`stats` コマンドを使用します。
 
-1. [PowerShell インターフェイスに接続します](#connect-to-the-powershell-interface)。
+1. [PowerShell インターフェイスに接続する](#connect-to-the-powershell-interface)。
 2. `stats` コマンドを実行し、ライブ ストリームを無効にし、最初の結果のみをプルします。
 
    ```powershell

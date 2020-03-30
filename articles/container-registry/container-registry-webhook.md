@@ -4,10 +4,10 @@ description: レジストリ リポジトリでプッシュまたはプル ア�
 ms.topic: article
 ms.date: 05/24/2019
 ms.openlocfilehash: 5e6fd2d9f4c7727365a8e2fe3893aafebfeb7bd4
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74454366"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Azure Container Registry webhook の使用
@@ -23,7 +23,7 @@ webhook 要求の詳細については、「[Azure Container Registry webhook �
 
 ## <a name="create-webhook---azure-portal"></a>Webhook の作成 - Azure portal
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 1. webhook を作成するコンテナー レジストリに移動します。
 1. **[サービス]** で **[Webhook]** を選択します。
 1. webhook ツールバーで **[追加]** を選択します。
@@ -37,7 +37,7 @@ webhook 要求の詳細については、「[Azure Container Registry webhook �
 | カスタム ヘッダー | POST 要求と共に渡すヘッダー。 "キー: 値" の形式にする必要があります。 |
 | トリガー アクション | Webhook をトリガーするアクション。 アクションには、イメージのプッシュ、イメージの削除、Helm chart のプッシュ、chart の削除、およびイメージの検疫などがあります。 Webhook をトリガーするアクションを 1 つ以上選択できます。 |
 | Status | Webhook の作成後の状態。 既定で有効です。 |
-| Scope | Webhook が動作するスコープです。 指定しない場合、スコープはレジストリ内のすべてのイベントです。 "リポジトリ:タグ" または "リポジトリ:*" (あるリポジトリ以下のすべてのタグの場合) という形式を使用して、リポジトリまたはタグに指定できます。 |
+| スコープ | Webhook が動作するスコープです。 指定しない場合、スコープはレジストリ内のすべてのイベントです。 "リポジトリ:タグ" または "リポジトリ:*" (あるリポジトリ以下のすべてのタグの場合) という形式を使用して、リポジトリまたはタグに指定できます。 |
 
 Webhook フォームの例 :
 
@@ -53,7 +53,7 @@ az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --act
 
 ## <a name="test-webhook"></a>Webhook をテストする
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 Webhook を使用する前に、 **[Ping]** ボタンを使ってテストできます。 Ping を実行すると、指定されたエンドポイントに一般的な POST 要求が送信され、応答がログに記録されます。 ping 機能を使用して、webhook が正しく構成されていることを確認できます。
 
@@ -79,7 +79,7 @@ az acr webhook list-events --registry mycontainerregistry08 --name myacrwebhook0
 
 ## <a name="delete-webhook"></a>Webhook の削除
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 Azure Portal で webhook を選択してから **[削除]** ボタンをクリックすると、各 webhook を削除できます。
 
@@ -89,7 +89,7 @@ Azure Portal で webhook を選択してから **[削除]** ボタンをクリ�
 az acr webhook delete --registry mycontainerregistry --name myacrwebhook01
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ### <a name="webhook-schema-reference"></a>Webhook スキーマ リファレンス
 
@@ -101,4 +101,4 @@ Azure Container Registry によって出力される JSON イベント ペイロ
 
 この記事で説明したネイティブ レジストリ Webhook イベントだけでなく、Azure Container Registry は Event Grid に対してイベントを生成できます。
 
-[クイック スタート:Event Grid へのコンテナー レジストリ イベントの送信](container-registry-event-grid-quickstart.md)
+[クイック スタート - Event Grid へのコンテナー レジストリ イベントの送信](container-registry-event-grid-quickstart.md)

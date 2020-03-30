@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 2bbd7911a40d6a256d478e2533ad2469b8fd6973
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73889340"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Time Series Insights を使用して、デバイス シミュレーション ソリューション アクセラレータから送信されたテレメトリを視覚化する
@@ -55,7 +55,7 @@ Time Series Insights にテレメトリをストリーム配信するには、�
 
 [Azure Time Series Insights](../../articles/time-series-insights/time-series-insights-overview.md) は、IoT 規模の時系列データをクラウドで管理するための、フル マネージドの分析、ストレージ、視覚化サービスです。 新しい Time Series Insights 環境を作成するには:
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 1. **[リソースの作成]**  >  **[モノのインターネット (IoT)]**  >  **[Time Series Insights]** を選択します。
 
@@ -63,10 +63,10 @@ Time Series Insights にテレメトリをストリーム配信するには、�
 
 1. ソリューション アクセラレータと同じリソース グループに Time Series Insights 環境を作成するには、次の表の値を使用します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
     | 環境名 | 次のスクリーンショットでは、**Contoso-TSI** という名前を使用しています。 この手順を完了したら、独自の一意の名前を選択してください。 |
-    | Subscription | ドロップダウンから Azure サブスクリプションを選択します。 |
+    | サブスクリプション | ドロップダウンから Azure サブスクリプションを選択します。 |
     | Resource group | **contoso-simulation**。 使用しているソリューション アクセラレータの名前を使用します。 |
     | Location | この記事では、 **[米国東部]** を使用します。 環境は、デバイス シミュレーション アクセラレータと同じリージョンに作成します。 |
     | Sku |**S1** |
@@ -95,7 +95,7 @@ IoT Hub に接続する新しいイベント ソースを作成します。 前�
 
 1. IoT Hub を新しいイベント ソースとして構成するには、次の表の値を使用します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
     | イベント ソース名 | 次のスクリーンショットでは、**contoso-iot-hub** という名前を使用しています。 この手順を完了したら、独自の一意の名前を使用してください。 |
     | source | **IoT Hub** |
@@ -163,7 +163,7 @@ Time Series Insights エクスプローラーは、テレメトリを視覚化�
 
     ![Time Series Insights エクスプローラーでのダッシュボード](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-dashboard.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 さらに調べる場合は、ソリューション アクセラレータをデプロイしたままにします。
 
