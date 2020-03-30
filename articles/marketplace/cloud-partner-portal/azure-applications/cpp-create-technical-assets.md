@@ -1,19 +1,18 @@
 ---
 title: Azure アプリケーションの技術アセットを作成する | Azure Marketplace
 description: Azure アプリケーション オファー用の技術アセットを作成します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/13/2018
-ms.author: pabutler
-ms.openlocfilehash: c9abaab4597e9fea43a2f0dcabc0e4a527ed5a6a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 041b2133ed63a906d3fea3ab67890a0057151b9b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827596"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285267"
 ---
 # <a name="prepare-your-azure-application-technical-assets"></a>Azure アプリケーションの技術アセットを準備する
 
@@ -69,16 +68,16 @@ Azure アプリケーションを管理するためのスクリプト環境と�
 
 開発環境には次にツールを加えることを推奨します｡
 
-- [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+- [Azure 記憶域エクスプローラー](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 - [Visual Studio Code](https://code.visualstudio.com/) と次の拡張機能:
 
-  - 拡張機能: [Azure リソース マネージャー ツール](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+  - 拡張機能: [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
   - 拡張機能: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
   - 拡張機能: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
 また､[Azure Developer Tools](https://azure.microsoft.com/tools/) ページの記載されている利用可能なツールもご覧になることをお勧めします｡Visual Studio を使用する場合は､[Visual Studio Marketplace](https://marketplace.visualstudio.com/) もご覧ください｡
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure アプリケーション プランの作成](./cpp-create-offer.md)
 

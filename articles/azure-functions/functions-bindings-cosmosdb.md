@@ -7,11 +7,11 @@ ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: seodec18
 ms.openlocfilehash: e30b256d9fa43402c3b2c444aa1a0e0dc16cfdcf
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120577"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235183"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Functions 1.x の Azure Cosmos DB バインド
 

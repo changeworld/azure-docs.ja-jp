@@ -7,12 +7,12 @@ ms.date: 02/11/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 3eec39e975b1e782eafe16205623c625f462a865
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: de6bb3fe0879a69467283e93a04a355876a02cba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209411"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246689"
 ---
 # <a name="how-to-transfer-a-payload-between-device-and-dps"></a>デバイスと DPS の間でペイロードを転送する方法
 DPS では、デバイスを正しい IoT Hub に適切にプロビジョニングするために、デバイスの追加データが必要になる場合があり、データはそのデバイスから提供される必要があります。 逆に、DPS では、クライアント側ロジックの処理を進めるためにデバイスにデータを返すことができます。 
@@ -30,7 +30,6 @@ DPS では、デバイスを正しい IoT Hub に適切にプロビジョニン�
            “endorsementKey”: “stuff”, 
            “storageRootKey”: “things” 
        }, 
-       “interfaces”: “TODO: get how interfaces are reported by devices from PnP folks.”, 
        “payload”: “your additional data goes here. It can be nested JSON.” 
     } 
    ```

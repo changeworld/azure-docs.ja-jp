@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: dapine
 ms.openlocfilehash: 9a3456eb4d30aa8d163488f558b571dd97c73bf4
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77605124"
 ---
 # <a name="deploy-the-form-recognizer-container-to-azure-container-instances"></a>Azure Container Instances に Form Recognizer コンテナーをデプロイする
@@ -22,7 +22,7 @@ ms.locfileid: "77605124"
 Cognitive Services [Form Recognizer](form-recognizer-container-howto.md) コンテナーを Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/) にデプロイする方法について説明します。 この手順では、Azure Form Recognizer リソースの作成方法を示します。 次に、関連するコンテナー イメージをプルする方法について説明します。 最後に、ブラウザーからこの 2 つのオーケストレーションを行う機能を取り上げます。 コンテナーを使用することで、開発者の関心をインフラストラクチャの管理から切り離し、アプリケーション開発に専念させることができます。
 
 > [!IMPORTANT]
-> Form Recognizer コンテナーでは、現在、Form Recognizer API バージョン1.0 が使用されています。 API の最新バージョンにアクセスするには、代わりにマネージド サービスを使用します。
+> Form Recognizer コンテナーでは、現在、Form Recognizer API バージョン 1.0 が使用されています。 API の最新バージョンにアクセスするには、代わりにマネージド サービスを使用します。
 
 [!INCLUDE [Prerequisites](../containers/includes/container-preview-prerequisites.md)]
 

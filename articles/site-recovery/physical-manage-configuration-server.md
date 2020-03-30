@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: f443f0362ecad8448895322686a7175b2813141e
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 25be48e9caed446be3a86a11143ce3040808065a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084613"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294306"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>物理サーバー ディザスター リカバリー用の構成サーバーの管理
 
@@ -39,7 +39,7 @@ Azure への物理サーバーのディザスター リカバリーに [Azure Si
 | IIS | - 既存の Web サイトが存在しない <br> - [匿名認証](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx)を有効にする <br> - [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 設定を有効にする  <br> - ポート 443 でリッスンしている既存の Web サイト/アプリケーションが存在しない<br>|
 | NIC の種類 | VMXNET3 (VMware VM としてデプロイされている場合) |
 | IP アドレスの種類 | 静的 |
-| インターネットへのアクセス | サーバーは、次の URL にアクセスできる必要があります。 <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://management.azure.com <br> - *.services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (スケールアウト プロセス サーバーには必要なし) <br> - time.nist.gov <br> - time.windows.com |
+| インターネットへのアクセス | サーバーは、次の URL にアクセスできる必要があります。 <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - `https://management.azure.com` <br> - *.services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (スケールアウト プロセス サーバーには必要なし) <br> - time.nist.gov <br> - time.windows.com |
 | Port | 443 (コントロール チャネルのオーケストレーション)<br>9443 (データ転送)|
 
 ## <a name="download-the-latest-installation-file"></a>最新のインストール ファイルのダウンロード
@@ -106,7 +106,7 @@ Azure への物理サーバーのディザスター リカバリーに [Azure Si
   ```
 
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 
 |パラメーター名| 種類 | 説明| 値|
 |-|-|-|-|
@@ -177,7 +177,7 @@ ProxyPassword="Password"
 4. ポータルから新しい登録ファイルをダウンロードし、これをツールへの入力として指定します。
       ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
 5. プロキシ サーバーの詳細を入力し、 **[登録]** をクリックします。  
-6. 管理者の PowerShell コマンド ウィンドウを開きます。
+6. 管理者として PowerShell コマンド ウィンドウを開きます。
 7. 次のコマンドを実行します。
 
     ```powershell
@@ -206,7 +206,7 @@ ProxyPassword="Password"
 4. **[Vault Registration (コンテナーの登録)]** タブをクリックします。
 5. ポータルから新しい登録ファイルをダウンロードし、これをツールへの入力として指定します。
 6. プロキシ サーバーの詳細を入力し、 **[登録]** をクリックします。  
-7. 管理者の PowerShell コマンド ウィンドウを開きます。
+7. 管理者として PowerShell コマンド ウィンドウを開きます。
 8. 次のコマンドを実行します。
     ```powershell
     $pwd = ConvertTo-SecureString -String MyProxyUserPassword
@@ -217,7 +217,7 @@ ProxyPassword="Password"
 
 ## <a name="upgrade-a-configuration-server"></a>構成サーバーをアップグレードする
 
-構成サーバーを更新するには、更新プログラムのロールアップを実行します。 更新は N-4 までのバージョンに適用できます。 例:
+構成サーバーを更新するには、更新プログラムのロールアップを実行します。 更新は N-4 までのバージョンに適用できます。 次に例を示します。
 
 - 9\.7、9.8、9.9、または 9.10 を実行している場合は、9.11 に直接アップグレードできます。
 - 9\.6 以前を実行している場合に、9.11 にアップグレードするには、まずバージョン 9.7 にアップグレードしてから、 9\.11 にアップグレードする必要があります。
@@ -313,7 +313,7 @@ ProxyPassword="Password"
 ## <a name="common-issues"></a>一般的な問題
 [!INCLUDE [site-recovery-vmware-to-azure-install-register-issues](../../includes/site-recovery-vmware-to-azure-install-register-issues.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure への[物理サーバー](tutorial-physical-to-azure.md)のディザスター リカバリーの設定に関するチュートリアルをご覧ください。
 

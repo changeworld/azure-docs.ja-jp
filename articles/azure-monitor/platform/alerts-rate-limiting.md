@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 3/12/2018
 ms.subservice: alerts
 ms.openlocfilehash: 066fcac24571c8e982784a3845a010525ff9088a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77665529"
 ---
 # <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>音声、SMS、電子メール、Azure アプリ プッシュ通知、webhook 投稿のレート制限
@@ -20,7 +20,7 @@ ms.locfileid: "77665529"
 
 - **SMS**: 5 分ごとに 1 件以下の SMS。
 - **音声**: 5 分ごとに 1 件以下の音声通話。
-- **電子メール**: 1 時間で 100 件以下の電子メール。
+- **電子メール**: 1 時間で 100 件未満の電子メール。
  
   その他のアクションは、レート制限を受けません。
 

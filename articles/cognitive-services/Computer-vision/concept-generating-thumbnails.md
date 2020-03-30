@@ -12,10 +12,10 @@ ms.date: 03/11/2018
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 4874910f37b49990a659b48af0cf27921c3fcd5e
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68945228"
 ---
 # <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>Computer Vision でのスマート トリミングされたサムネイルの生成
@@ -32,7 +32,7 @@ Computer Vision のサムネイル生成アルゴリズムは次のように動�
 
 画像をアップロードすると、Computer Vision API によって画像が分析されて "*関心領域*" が特定されます。 その領域を使用して画像のトリミング方法を決めることができます。 ただし縦横比が指定されている場合、トリミング操作は常に所定の縦横比と一致します。
 
-**areaOfInterest** API を呼び出すと、その元の "*関心領域*" について未加工の境界ボックスの座標を取得することもできます。 その情報を使用して、元の画像に自由に変更を加えることができます。
+*areaOfInterest* API を呼び出すと、その元の "**関心領域**" について未加工の境界ボックスの座標を取得することもできます。 その情報を使用して、元の画像に自由に変更を加えることができます。
 
 ## <a name="examples"></a>例
 
@@ -48,6 +48,6 @@ Computer Vision のサムネイル生成アルゴリズムは次のように動�
 |![白い花と緑の背景](./Images/flower.png) | ![Vision Analyze 花のサムネイル](./Images/flower_thumbnail.png) |
 |![共同住宅の屋上にいる女性](./Images/woman_roof.png) | ![共同住宅の屋上にいる女性のサムネイル](./Images/woman_roof_thumbnail.png) |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [イメージへのタグ付け](concept-tagging-images.md)および[イメージの分類](concept-categorizing-images.md)について確認します。

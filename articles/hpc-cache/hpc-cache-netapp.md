@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: c6259dabd5ee9c53d37a3396f36832720a103c23
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 38f9d0338ce4c47024d670e6d3ee89a97faecc91
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582166"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80238674"
 ---
 # <a name="use-azure-hpc-cache-with-azure-netapp-files"></a>Azure HPC Cache と Azure NetApp Files を使用する
 
@@ -76,7 +76,7 @@ Azure NetApp Files ボリュームによって使用される IP アドレスご
 
 IP アドレスは Azure CLI で見つけることもできます。
 
-```bash
+```azurecli
 az netappfiles volume list -g ${RESOURCE_GROUP} --account-name ${ANF_ACCOUNT} --pool-name ${POOL} --query "[].mountTargets[].ipAddress" | grep -Ee '[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+' | tr -d '"' | tr -d , | sort | uniq
 ```
 
@@ -88,7 +88,7 @@ Azure NetApp Files システムのエクスポート名には 1 つのパス コ
 
 Azure NetApp Files ボリュームを直接マウントするのではなく、クライアント マシンがキャッシュをマウントする必要があります。 「[Azure HPC Cache をマウントする](hpc-cache-mount.md)」の手順に従います。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure NetApp Files](../azure-netapp-files/index.yml) の設定と使用に関する詳細を確認する
 * Azure NetApp Files を使用するための Azure HPC Cache システムの計画と設定については、[サポートにお問い合わせください](hpc-cache-support-ticket.md)。

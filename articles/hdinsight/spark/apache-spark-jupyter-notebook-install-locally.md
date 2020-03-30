@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.openlocfilehash: 225ee7028b9610a4974f9bee05da667d78d3355e
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73903733"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter Notebook をコンピューターにインストールして HDInsight の Apache Spark に接続する
@@ -67,7 +67,7 @@ Jupyter Notebook をインストールする前に Python をインストール�
 
 1. 新しい作業ディレクトリから、次のコマンドを入力して、目的のカーネルをインストールします。
 
-    |Kernel (カーネル) | command |
+    |カーネル | command |
     |---|---|
     |Spark|`jupyter-kernelspec install sparkmagic/kernels/sparkkernel`|
     |SparkR|`jupyter-kernelspec install sparkmagic/kernels/sparkrkernel`|
@@ -179,8 +179,8 @@ Jupyter をコンピューターにインストールしてから HDInsight 上�
 > [!WARNING]  
 > Jupyter がローカル コンピューターにインストールされている場合、同じ Spark クラスター上で複数のユーザーが同時に同じノートブックを実行できます。 そのような状況では、複数の Livy セッションが作成されます。 問題が発生してデバッグが必要となった場合、それは Livy セッションとユーザーの対応関係を追跡する複雑な作業となります。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [概要:Azure HDInsight での Apache Spark](apache-spark-overview.md)
-* [Apache Spark と BI:HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](apache-spark-use-bi-tools.md)
-* [Apache Spark と Machine Learning:HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
+* [概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)
+* [Apache Spark と BI: HDInsight の Spark と BI ツールを使用して対話型データ分析を実行する](apache-spark-use-bi-tools.md)
+* [Apache Spark と Machine Learning: HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)

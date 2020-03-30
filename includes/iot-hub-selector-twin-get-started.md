@@ -5,14 +5,14 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 08/20/2019
 ms.openlocfilehash: c412f7f3e20e4d04083e457bfb245b850b65e126
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70050409"
 ---
 > [!div class="op_single_selector"]
-> * [Node.JS](../articles/iot-hub/iot-hub-node-node-twin-getstarted.md)
+> * [Node.js](../articles/iot-hub/iot-hub-node-node-twin-getstarted.md)
 > * [.NET](../articles/iot-hub/iot-hub-csharp-csharp-twin-getstarted.md)
 > * [Java](../articles/iot-hub/iot-hub-java-java-twin-getstarted.md)
 > * [Python](../articles/iot-hub/iot-hub-python-twin-getstarted.md)

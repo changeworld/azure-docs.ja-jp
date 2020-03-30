@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: fc6766943747c066581fe3820481cfe4a35d5296
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a693eb374365670da3fe8c4b2bb8ce664a024217
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774976"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295435"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>Azure AD 認証を使用して REST で Media Services API にアクセスする
 
@@ -54,7 +54,7 @@ Azure Media Services で Azure AD Authentication を使用する場合は、次�
 - [Azure AD 認証による Azure Media Services API へのアクセスの概要](media-services-use-aad-auth-to-access-ams-api.md)に関する記事を確認してください。
 - [Postman](https://www.getpostman.com/) REST クライアントをインストールして、この記事に記載されている REST API を実行します。 
 
-    このチュートリアルでは **Postman** を使用しますが、任意の REST ツールを使用できます。 その他の選択肢は、REST プラグインを使用する **Visual Studio Code** や **Telerik Fiddler** です。 
+    このチュートリアルでは **Postman** を使用しますが、任意の REST ツールを使用できます。 その他の選択肢は、REST プラグインを使用した **Visual Studio Code** や **Telerik Fiddler** です。 
 
 ## <a name="get-the-authentication-information-from-the-azure-portal"></a>Azure Portal から認証情報を取得する
 
@@ -83,7 +83,7 @@ Media Services API にアクセスするには、以下のデータ ポイント
 5. 既存の **Azure AD アプリケーション**を選択するか、新しいアプリケーションを作成します (後述します)。
 
     > [!NOTE]
-    > Azure Media REST 要求を成功させるには、呼び出すユーザーに、アクセスしたい Media Services アカウントの**共同作成者**ロールまたは**所有者**ロールが付与されている必要があります。 "リモート サーバーがエラーを返しました: (401) 未承認" という例外を受け取る場合は、「[アクセス制御](media-services-use-aad-auth-to-access-ams-api.md#access-control)」を確認してください。
+    > Azure Media REST 要求を成功させるには、呼び出すユーザーに、アクセスしたい Media Services アカウントの**共同作成者**ロールまたは**所有者**ロールが付与されている必要があります。 "リモート サーバーがエラーを返しました: (401) Unauthorized" という例外を受け取る場合は、「[アクセス制御](media-services-use-aad-auth-to-access-ams-api.md#access-control)」を参照してください。
 
     新しい AD アプリケーションを作成する場合は、次の手順を実行します。
     
@@ -128,7 +128,7 @@ AD 接続パラメーターの値を web.config ファイルまたは app.config
 2. **[POST]** を選択します。
 3. 次のようにテナント名の末尾に **.onmicrosoft.com** を指定し、URL の末尾に **oauth2/token** を指定して、テナント名を含む URL を入力します。 
 
-    https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token
+    `https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token`
 
 4. **[Headers]\(ヘッダー\)** タブを選択します。
 5. "Key/Value"(キー/値) データ グリッドを使用して **[Headers]\(ヘッダー\)** 情報を入力します。 
@@ -192,5 +192,5 @@ AD 接続パラメーターの値を web.config ファイルまたは app.config
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure AD Authentication for Azure Media Services Access: Both via REST API (Azure Media Services にアクセスするための Azure AD Authentication: 両方で REST API を使用)](https://github.com/willzhan/WAMSRESTSoln) のサンプル コードを試してください。
+* [Azure AD Authentication for Azure Media Services Access: Both via REST API](https://github.com/willzhan/WAMSRESTSoln) (Azure Media Services にアクセスするための Azure AD Authentication: 両方で REST API を使用) のサンプル コードを試してください。
 * [.NET を使用したファイルのアップロード](media-services-dotnet-upload-files.md)

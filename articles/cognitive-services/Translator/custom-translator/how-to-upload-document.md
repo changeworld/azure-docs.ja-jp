@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: b2a249a40d8c782d54a12df43d33655f3409753c
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73647376"
 ---
 # <a name="upload-a-document"></a>ドキュメントのアップロード
@@ -40,19 +40,19 @@ ms.locfileid: "73647376"
     -  トレーニング: これらのドキュメントはトレーニング セットに使用されます。
     -  チューニング: これらのドキュメントはチューニング セットに使用されます。
     -  テスト: これらのドキュメントはテスト セットに使用されます。
-    -  Phrase Dictionary (句辞書): これらのドキュメントは句辞書に使用されます。
-    -  Sentence Dictionary (文辞書): これらのドキュメントは文辞書に使用されます
+    -  Phrase Dictionary (フレーズ辞書): これらのドキュメントはフレーズ辞書に使用されます。
+    -  Sentence Dictionary (文辞書): これらのドキュメントは文辞書に使用されます。
 
     b.  言語ペア
 
-    c.  Override document if exists (存在する場合はドキュメントを上書きする): 既存のドキュメントを同じ名前で上書きする場合は、このチェック ボックスをオンにします。
+    c.  Override document if exists (存在する場合はドキュメントを上書きする): 既存のドキュメントを同じ名前で上書きする場合は、このチェックボックスをオンにします。
 
     d.  関連するセクションに並列データまたは複合データを入力します。
 
     -  Parallel data (並列データ):
         -  ソース ファイル: ローカル コンピューターからソース言語ファイルを選択します。
         -  ターゲット ファイル: ローカル コンピューターからターゲット言語ファイルを選択します。
-        -  Document name (ドキュメント名): 並列ファイルをアップロードする場合にのみ使用されます。
+        -  ドキュメント名: 並列ファイルをアップロードする場合にのみ使用されます。
 
     - Combo data (複合データ):
         -  Combo File (複合ファイル): ローカル コンピューターから複合ファイルを選択します。 複合ファイルには、ソース言語とターゲット言語の両方の文があります。 複合ファイルには[名前付け規則](document-formats-naming-convention.md)が重要です。
@@ -84,7 +84,7 @@ ms.locfileid: "73647376"
 
 3. 任意のアップロード履歴レコードをクリックします。 アップロード履歴の詳細ページには、アップロードの一部としてアップロードされたファイル、アップロードされたファイルの状態、ファイルの言語、エラー メッセージ (アップロードにエラーがある場合) が表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ドキュメントの詳細ページ](how-to-view-document-details.md)を使用して、抽出された文の一覧を確認します。
 - [モデルをトレーニングする方法](how-to-train-model.md)。

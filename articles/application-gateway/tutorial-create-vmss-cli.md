@@ -8,16 +8,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: ec1837419390fc29e53565881e41fd4265914f78
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a5b9fa6eca25aa5ed64725ee677330053e60cb37
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074522"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239478"
 ---
 # <a name="create-an-application-gateway-with-a-virtual-machine-scale-set-using-the-azure-cli"></a>仮想マシン スケール セットのあるアプリケーション ゲートウェイを Azure CLI で作成する
 
-バックエンド サーバーに[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使用する[アプリケーション ゲートウェイ](application-gateway-introduction.md)を Azure CLI で作成することができます。 この例では、アプリケーション ゲートウェイの既定のバックエンド プールに追加された 2 つの仮想マシン インスタンスがスケール セットに含まれています。
+バックエンド サーバーに[仮想マシン スケール セット](application-gateway-introduction.md)を使用する[アプリケーション ゲートウェイ](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を Azure CLI で作成することができます。 この例では、アプリケーション ゲートウェイの既定のバックエンド プールに追加された 2 つの仮想マシン インスタンスがスケール セットに含まれています。
 
 この記事では、次のことについて説明します。
 
@@ -32,7 +32,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 CLI をローカルにインストールして使用する場合、このクイック スタートを実施するには、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 [az group create](/cli/azure/group#az-group-create) を使用してリソース グループを作成します。 
 
@@ -44,7 +44,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>ネットワーク リソースを作成する 
 
-[az network vnet create](/cli/azure/network/vnet) を使用して、*myVNet* という名前の仮想ネットワークと *myAGSubnet* という名前のサブネットを作成します。 次に、[az network vnet subnet create](/cli/azure/network/vnet/subnet) を使用して、バックエンド サーバーに必要な *myBackendSubnet* という名前のサブネットを追加できます。 [az network public-ip create](/cli/azure/network/public-ip) を使用して *myAGPublicIPAddress* という名前のパブリック IP アドレスを作成します。
+*az network vnet create* を使用して、*myVNet* という名前の仮想ネットワークと [myAGSubnet](/cli/azure/network/vnet) という名前のサブネットを作成します。 次に、*az network vnet subnet create* を使用して、バックエンド サーバーに必要な [myBackendSubnet](/cli/azure/network/vnet/subnet) という名前のサブネットを追加できます。 *az network public-ip create* を使用して [myAGPublicIPAddress](/cli/azure/network/public-ip) という名前のパブリック IP アドレスを作成します。
 
 ```azurecli-interactive
 az network vnet create \
@@ -128,7 +128,7 @@ az vmss extension set \
 
 アプリケーション ゲートウェイのパブリック IP アドレスを取得するには、[az network public-ip show](/cli/azure/network/public-ip) を使用できます。 そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。
 
-```azurepowershell-interactive
+```azurecli-interactive
 az network public-ip show \
   --resource-group myResourceGroupAG \
   --name myAGPublicIPAddress \
@@ -138,7 +138,7 @@ az network public-ip show \
 
 ![アプリケーション ゲートウェイでのベース URL のテスト](./media/tutorial-create-vmss-cli/tutorial-nginxtest.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

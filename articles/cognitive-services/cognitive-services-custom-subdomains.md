@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
 ms.openlocfilehash: 108e5ebfa34db711af4ff33cbf4fbba897b8947d
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73647685"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Cognitive Services のカスタム サブドメイン名
@@ -34,7 +34,7 @@ Azure Cognitive Services では、[Azure portal](https://portal.azure.com)、[Az
 
 ## <a name="do-i-need-to-update-my-existing-resources"></a>既存のリソースを更新する必要はありますか?
 
-No. リージョン エンドポイントは、新しいおよび既存の Cognitive Services に対して引き続き機能します。カスタム サブドメイン名は省略可能です。 カスタム サブドメイン名が追加されている場合でも、リージョン エンドポイントはリソースで引き続き機能します。
+いいえ。 リージョン エンドポイントは、新しいおよび既存の Cognitive Services に対して引き続き機能します。カスタム サブドメイン名は省略可能です。 カスタム サブドメイン名が追加されている場合でも、リージョン エンドポイントはリソースで引き続き機能します。
 
 ## <a name="what-if-an-sdk-asks-me-for-the-region-for-a-resource"></a>SDK でリソースのリージョンが要求された場合はどうすればよいですか?
 
@@ -43,7 +43,7 @@ No. リージョン エンドポイントは、新しいおよび既存の Cogni
 
 リージョン エンドポイントとカスタム サブドメイン名は両方サポートされており、どちらを使用しても変わりはありません。 ただし、完全なエンドポイントが必要です。
 
-リージョン情報は、[Azure portal](https://portal.azure.com) のご利用のリソースの **[概要]** ブレードで確認できます。 リージョン エンドポイントの完全な一覧については、[Is リージョン エンドポイントの一覧はありますか?](#is-there-a-list-of-regional-endpoints) に関するページをご覧ください。
+リージョン情報は、**Azure portal** のご利用のリソースの [[概要]](https://portal.azure.com) ブレードで確認できます。 リージョン エンドポイントの完全な一覧については、[Is リージョン エンドポイントの一覧はありますか?](#is-there-a-list-of-regional-endpoints) に関するページをご覧ください。
 
 ## <a name="are-custom-subdomain-names-regional"></a>カスタム サブドメイン名はリージョン単位ですか?
 
@@ -55,7 +55,7 @@ No. リージョン エンドポイントは、新しいおよび既存の Cogni
 
 ## <a name="can-i-change-a-custom-domain-name"></a>カスタム ドメイン名を変更できますか?
 
-No. カスタム サブドメイン名は、作成されてリソースに関連付けられた後は、変更することはできません。
+いいえ。 カスタム サブドメイン名は、作成されてリソースに関連付けられた後は、変更することはできません。
 
 ## <a name="can-i-reuse-a-custom-domain-name"></a>カスタム ドメイン名を再利用できますか?
 
@@ -92,11 +92,11 @@ No. カスタム サブドメイン名は、作成されてリソースに関連
 | | 西ヨーロッパ | `https://westeurope.api.cognitive.microsoft.com` |
 | | 米国西部 | `https://westus.api.cognitive.microsoft.com` |
 | | 米国西部 2 | `https://westus2.api.cognitive.microsoft.com` |
-| 米国政府 | 米国政府バージニア州 | `https://virginia.api.cognitive.microsoft.us` |
+| US Gov | US Gov バージニア州 | `https://virginia.api.cognitive.microsoft.us` |
 | 中国 | 中国東部 2 | `https://chinaeast2.api.cognitive.azure.cn` |
-| | 中国 (北部) | `https://chinanorth.api.cognitive.azure.cn` |
+| | 中国北部 | `https://chinanorth.api.cognitive.azure.cn` |
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [Azure Cognitive Services とは](Welcome.md)
 * [認証](authentication.md)

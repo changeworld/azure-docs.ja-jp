@@ -1,19 +1,19 @@
 ---
 title: Azure Maps API の使用状況メトリックを表示する | Microsoft Azure Maps
 description: この記事では、Azure portal で Microsoft Azure Maps API の呼び出しに関するメトリックを表示する方法について説明します。
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: cc9834f4e1df1a68f78230ec587254c72aeabbcf
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 0eb117af712b3b1f63a3f99c96cba9775f8e3996
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208687"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335162"
 ---
 # <a name="view-azure-maps-api-usage-metrics"></a>Azure Maps API の使用状況メトリックを表示する
 
@@ -42,7 +42,7 @@ Maps アカウントの **[概要]** ページでいくつかの共通メトリ�
 
       ![Azure Maps 使用状況メトリック ペイン](media/how-to-view-api-usage/portal-metrics.png)
 
-5. 次に、 **[過去 24 時間] (自動)** をクリックして、 *[時間の範囲]* を選択できます。 既定では、時間の範囲は 24 時間に設定されています。 クリックすると、選択可能な時間の範囲がすべて表示されます。 また、 *[時間の粒度]* を選択したり、同じドロップダウン内の *[ローカル]* または *[GMT]* として時間を示すように選んだりすることができます。 **[Apply]** をクリックします。
+5. 次に、 *[過去 24 時間] (自動)* をクリックして、 **[時間の範囲]** を選択できます。 既定では、時間の範囲は 24 時間に設定されています。 クリックすると、選択可能な時間の範囲がすべて表示されます。 また、 *[時間の粒度]* を選択したり、同じドロップダウン内の *[ローカル]* または *[GMT]* として時間を示すように選んだりすることができます。 **[Apply]** をクリックします。
 
     ![Azure Maps メトリックの時間の範囲](media/how-to-view-api-usage/time-range.png)
 

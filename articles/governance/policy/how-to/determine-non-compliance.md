@@ -4,11 +4,11 @@ description: リソースのコンプライアンス違反には多くの理由�
 ms.date: 04/26/2019
 ms.topic: how-to
 ms.openlocfilehash: c931831ddf3cc727b9861e75969eac3bf00c9e45
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972822"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231211"
 ---
 # <a name="determine-causes-of-non-compliance"></a>コンプライアンス違反の原因の特定
 
@@ -24,10 +24,10 @@ Azure リソースにポリシー ルールへのコンプライアンス違反�
 
 - 名前、種類、場所、リソース ID などのリソースの詳細
 - コンプライアンス対応状態と、現在のポリシー割り当ての最後の評価のタイムスタンプ
-- リソースのコンプライアンス違反の _理由_ の一覧
+- リソースのコンプライアンス違反の_理由_の一覧
 
 > [!IMPORTANT]
-> _コンプライアンス違反_ コンプライアンス違反のリソースのコンプライアンスの詳細に、該当のリソースでのプロパティの現在の値が表示されるときには、ユーザーにその**種類**のリソースに対する**読み取り**操作が必要です。 たとえば、_コンプライアンス違反_ のリソースが **Microsoft.Compute/virtualMachines** の場合、ユーザーには、**Microsoft.Compute/virtualMachines/read** 操作が必要です。 ユーザーに必要な操作がない場合は、アクセス エラーが表示されます。
+> _コンプライアンス違反_のリソースのコンプライアンスの詳細に、該当のリソースでのプロパティの現在の値が表示されるときには、ユーザーにその**種類**のリソースに対する**読み取り**操作が必要です。 たとえば、_コンプライアンス違反_のリソースが **Microsoft.Compute/virtualMachines** の場合、ユーザーには、**Microsoft.Compute/virtualMachines/read** 操作が必要です。 ユーザーに必要な操作がない場合は、アクセス エラーが表示されます。
 
 コンプライアンスの詳細を表示するには、次の手順に従います。
 
@@ -79,7 +79,7 @@ Azure リソースにポリシー ルールへのコンプライアンス違反�
 
 ### <a name="compliance-reasons"></a>コンプライアンスの理由
 
-次のマトリックスは、可能性のある各 _理由_ と、ポリシー定義内でのその[条件](../concepts/definition-structure.md#conditions)の対応を示しています。
+次のマトリックスは、可能性のある各_理由_と、ポリシー定義内でのその[条件](../concepts/definition-structure.md#conditions)の対応を示しています。
 
 |理由 | 条件 |
 |-|-|
@@ -188,7 +188,7 @@ Audit that an application is installed inside Windows VMs.                Compli
 Audit that an application is installed inside Windows VMs                 NonCompliant                       02/09/2019 09:00:20 AM 02/09/2019 09:00:23 AM VM01  ../15ze1...
 ```
 
-## <a name="a-namechange-historychange-history-preview"></a><a name="change-history"/>変更履歴 (プレビュー)
+## <a name="change-history-preview"></a><a name="change-history"/>変更履歴 (プレビュー)
 
 新しい**パブリック プレビュー**の一環として、[完全モードの削除](../../../azure-resource-manager/templates/complete-mode-deletion.md)をサポートするすべての Azure リソースについて、過去 14 日間の変更履歴が使用可能です。 変更履歴では、変更が検出された日時についての詳細と、各変更の "_差分表示_" が提供されます。 変更の検出は、Resource Manager のプロパティが追加、削除、変更されるとトリガーされます。
 
@@ -202,7 +202,7 @@ Audit that an application is installed inside Windows VMs                 NonCom
 
    ![[リソース コンプライアンス] ページの Azure Policy の [変更履歴] タブ](../media/determine-non-compliance/change-history-tab.png)
 
-1. 検出された変更のいずれかを選択します。 **[変更履歴]** ページに、リソースの _差分表示_ が示されます。
+1. 検出された変更のいずれかを選択します。 _[変更履歴]_ ページに、リソースの**差分表示**が示されます。
 
    ![[変更履歴] ページの Azure Policy 変更履歴の差分表示](../media/determine-non-compliance/change-history-visual-diff.png)
 

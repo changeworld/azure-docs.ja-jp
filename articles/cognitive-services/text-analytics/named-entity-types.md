@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: aahi
 ms.openlocfilehash: 164e803a6af8a7d1ccdc9c70cc3e42b787857b3a
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77086874"
 ---
 # <a name="supported-types-for-named-entity-recognition-version-3-preview"></a>固有表現抽出
@@ -27,11 +27,11 @@ Text Analytics API には、テキスト内のエンティティを識別し、�
 
 サポートされているエンティティ型とサブタイプ (該当する場合) を以下に示します。
 
-#### <a name="generaltabgeneral"></a>[全般](#tab/general)
+#### <a name="general"></a>[全般](#tab/general)
 
 [!INCLUDE [supported entity types - general](./includes/entity-types/general-entities.md)]
 
-#### <a name="personal-informationtabpersonal"></a>[個人情報](#tab/personal)
+#### <a name="personal-information"></a>[個人情報](#tab/personal)
 
 [!INCLUDE [supported entity types - personally identifying information](./includes/entity-types/personal-information-entities.md)]
 

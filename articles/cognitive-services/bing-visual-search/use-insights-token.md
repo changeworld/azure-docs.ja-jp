@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
 ms.openlocfilehash: 251197c456ece4fe2dbbe264219d52f3502b7492
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67341719"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>分析情報トークンを使用して画像についての分析情報を取得する
@@ -474,7 +474,7 @@ if __name__ == '__main__':
     main()
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Visual Search のシングルページ Web アプリを作成する](tutorial-bing-visual-search-single-page-app.md)  
 [Bing Visual Search API とは](overview.md)  

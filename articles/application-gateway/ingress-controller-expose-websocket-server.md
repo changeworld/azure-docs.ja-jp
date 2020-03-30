@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 01fde82e69917f59f6519524c4c8828feb84a4f9
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 1f068c9d98a827afd16da01bdc40cbb6ca5dc465
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795966"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79297834"
 ---
 # <a name="expose-a-websocket-server-to-application-gateway"></a>WebSocket サーバーを Application Gateway に公開する
 
-Application Gateway v2 のドキュメントで説明されているように、[WebSocket および HTTP/2 プロトコルをネイティブにサポート](https://docs.microsoft.com/azure/application-gateway/overview#websocket-and-http2-traffic)しています。 Application Gateway と Kubernetes イングレスのどちらも、WebSocket サポートの有効または無効を選択できるようにユーザーが構成できる設定はないことに注意してください。
+Application Gateway v2 のドキュメントで説明されているように、[WebSocket および HTTP/2 プロトコルをネイティブにサポート](features.md#websocket-and-http2-traffic)しています。 Application Gateway と Kubernetes イングレスのどちらも、WebSocket サポートの有効または無効を選択できるようにユーザーが構成できる設定はないことに注意してください。
 
 次の Kubernetes デプロイ YAML は、WebSocket サーバーのデプロイに使用される最小構成を示しています。これは、通常の Web サーバーをデプロイする場合と同じです。
 ```yaml

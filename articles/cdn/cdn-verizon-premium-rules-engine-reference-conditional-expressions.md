@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
 ms.openlocfilehash: d28bda28894477845c2a050666b3b4dd332b7d50
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74082970"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-conditional-expressions"></a>Azure CDN from Verizon Premium ルール エンジンの条件式
@@ -26,13 +26,13 @@ IF | IF 式は、常にルール内のステートメントの最初の部分で
 AND IF | AND IF 式は、次の種類の条件式の後にのみ追加できます: IF、AND IF。 これは、最初の IF ステートメントで別の条件を満たす必要があることを示します。
 ELSE IF| ELSE IF 式では、この ELSE IF ステートメントで指定した一連の機能が行われる前に、満たす必要がある代替条件を指定します。 ELSE IF ステートメントの存在は、前のステートメントが終わったことを示します。 ELSE IF ステートメントの後に配置できる条件式は、別の ELSE IF ステートメントのみです。 つまり ELSE IF ステートメントは、満たす必要がある追加条件を 1 つ指定するときのみに使用される場合があります。
 
-**例**:![CDN の一致条件](./media/cdn-rules-engine-reference/cdn-rules-engine-conditional-expression.png)
+**例**: ![CDN の一致条件](./media/cdn-rules-engine-reference/cdn-rules-engine-conditional-expression.png)
 
  > [!TIP]
    > 前の規則で指定したアクションは、後続の規則でオーバーライドされます。
-   > 例:キャッチ オール ルールで、すべての要求をトークン ベースの認証によってセキュリティで保護します。 特定の種類の要求で例外を設定するために、そのすぐ下に別のルールを作成する場合があります。
+   > 例: キャッチ オール ルールでは、トークン ベースの認証からすべての要求をセキュリティで保護します。 特定の種類の要求で例外を設定するために、そのすぐ下に別のルールを作成する場合があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure CDN の概要](cdn-overview.md)
 - [ルール エンジンのリファレンス](cdn-verizon-premium-rules-engine-reference.md)

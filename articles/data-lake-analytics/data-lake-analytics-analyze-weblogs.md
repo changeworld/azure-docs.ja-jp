@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 04c6d4c74a82ccfbcbb0faecb0dca5ec495f6663
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71672874"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>Azure Data Lake Analytics を使用する Web サイト ログの分析
@@ -32,7 +32,7 @@ Data Lake Analytics を使用して Web サイトのログを分析する方法�
 * **Data Lake Analytics アカウント。**  [Azure Data Lake Analytics アカウントの作成](data-lake-analytics-get-started-portal.md)に関するセクションを参照してください。
 * **サンプル データをインストールします。** Azure ポータル、Data Lake Analytics アカウントを開き、左側のメニューにある **[サンプル スクリプト]** をクリックし、 **[サンプル データのコピー]** をクリックします。 
 
-## <a name="connect-to-azure"></a>Azure への接続
+## <a name="connect-to-azure"></a>Azure に接続する
 U-SQL スクリプトをビルドしてテストするには、Azure に接続しておく必要があります。
 
 **Data Lake Analytics に接続するには**
@@ -58,7 +58,7 @@ U SQL アプリケーションの大部分は、U-SQL スクリプトです。 U
 2. プロジェクトの種類として、[U-SQL プロジェクト] を選択します。
 
     ![新しい U-SQL Visual Studio プロジェクト](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-new-project.png)
-3. Click **OK**. Visual Studio で、Script.usql ファイルを使用してソリューションが作成されます。
+3. **[OK]** をクリックします。 Visual Studio で、Script.usql ファイルを使用してソリューションが作成されます。
 4. 次のスクリプトを Script.usql ファイルに入力します。
 
         // Create a database for easy reuse, so you don't need to read from a file every time.
@@ -168,7 +168,7 @@ U SQL アプリケーションの大部分は、U-SQL スクリプトです。 U
 3. **UnsuccessfulResponses.log** をダブルクリックします。
 4. ジョブのグラフ ビューで出力ファイルをダブルクリックして、出力ファイルに直接移動することもできます。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 さまざまなツールを使用して Data Lake Analytics の使用を開始する方法については、以下をご覧ください。
 
 * [Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)

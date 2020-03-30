@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
 ms.openlocfilehash: 4b6d954d06f09bef5240bddc4860ddbc83513d69
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916593"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79219117"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS の言語と地域のサポート
 
@@ -30,7 +30,7 @@ LUIS はサービス内にさまざまな機能を備えています。 すべ�
 
 LUIS が理解する発話の言語を次に示します。
 
-| Language |Locale  |  事前構築済みのドメイン | 事前構築済みのエンティティ | フレーズ リストのレコメンデーション | \**[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(センチメントと<br>キーワード)|
+| 言語 |Locale  |  事前構築済みのドメイン | 事前構築済みのエンティティ | フレーズ リストのレコメンデーション | \**[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(センチメントと<br>キーワード)|
 |--|--|:--:|:--:|:--:|:--:|
 | 英語 (米国) |`en-US` | ✔ | ✔  |✔|✔|
 | アラビア語 (プレビュー - 現代標準アラビア語) |`ar-AR`|-|-|-|-|
@@ -77,10 +77,10 @@ Speech ディクテーション モードの言語については、Speech の�
 ## <a name="tokenization"></a>トークン化
 機械学習を実行するために、LUIS では、発話がカルチャに基づいて[トークン](luis-glossary.md#token)に分割されます。
 
-|Language|  すべてのスペースまたは特殊文字 | 文字レベル|複合語|[返されるトークン化されたエンティティ](luis-concept-data-extraction.md#tokenized-entity-returned)
+|言語|  すべてのスペースまたは特殊文字 | 文字レベル|複合語|[返されるトークン化されたエンティティ](luis-concept-data-extraction.md#tokenized-entity-returned)
 |--|:--:|:--:|:--:|:--:|
 |アラビア語|||||
-|Chinese||✔||✔|
+|中国語||✔||✔|
 |Dutch|||✔|✔|
 |英語 (en-us)|✔ ||||
 |フランス語 (fr-FR)|✔||||

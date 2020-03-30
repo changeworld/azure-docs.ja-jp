@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 62afa5ee6993aa1bb3c7b5926e5320ab1fa510a2
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74157598"
 ---
 # <a name="azure-signalr-service-internals"></a>Azure SignalR Service の内部
@@ -25,7 +25,7 @@ Azure SignalR Service は、ASP.NET Core SignalR フレームワーク上に構�
 
 セルフホステッド ASP.NET Core SignalR アプリケーションとの相違点についても説明します。
 
-![アーキテクチャ](./media/signalr-concept-internals/arch.png)
+![Architecture](./media/signalr-concept-internals/arch.png)
 
 ## <a name="server-connections"></a>サーバー接続
 

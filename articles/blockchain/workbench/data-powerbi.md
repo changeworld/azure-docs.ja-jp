@@ -5,15 +5,15 @@ ms.date: 05/09/2019
 ms.topic: article
 ms.reviewer: mmercuri
 ms.openlocfilehash: 6e1f160c3563a280548c74ebe84f30bf08945c3f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74324790"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>Microsoft Power BI で Azure Blockchain Workbench データを使用する
 
-Microsoft Power BI は Power BI Desktop を使用して SQL DB データベースから高度なレポートを容易に生成して、[ https://www.powerbi.com](https://www.powerbi.com) に公開する機能を提供します。
+Microsoft Power BI は Power BI Desktop を使用して SQL DB データベースから高度なレポートを容易に生成して、[https://www.powerbi.com](https://www.powerbi.com) に公開する機能を提供します。
 
 この記事には、Power BI Desktop から Azure Blockchain Workbench の SQL データベースへ接続し、レポートを作成し、powerbi.com にレポートをデプロイする方法に関するステップ バイ ステップのチュートリアルが含まれています。
 
@@ -49,7 +49,7 @@ Microsoft Power BI は Power BI Desktop を使用して SQL DB データベー�
 
 これで Power BI で通常行うように、レポートを作成して公開することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Blockchain Workbench のデータベース ビュー](database-views.md)

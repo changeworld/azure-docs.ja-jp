@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.openlocfilehash: 8ec6f32d7db0161cef00330aa38601ba9bdb309d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 3/18/2020
+ms.openlocfilehash: fc2b1bbe0a3249014e663d43ee4db87cab5eedcf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893146"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063258"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Azure ポータルを使用して Azure Database for MySQL のサーバー パラメーターを構成する方法
 
@@ -41,12 +41,12 @@ InnoDB バッファー プールのサイズは構成できず、ご自分の[�
 |:---|---:|---:|---:|
 |Basic| 1| 832| |
 |Basic| 2| 2560| |
-|汎用| 2| 3584| 7168|
-|汎用| 4| 7680| 15360|
-|汎用| 8| 15360| 30720|
-|汎用| 16| 31232| 62464|
-|汎用| 32| 62976| 125952|
-|汎用| 64| 125952| 251904|
+|General Purpose| 2| 3584| 7168|
+|General Purpose| 4| 7680| 15360|
+|General Purpose| 8| 15360| 30720|
+|General Purpose| 16| 31232| 62464|
+|General Purpose| 32| 62976| 125952|
+|General Purpose| 64| 125952| 251904|
 |メモリ最適化| 2| 7168| 14336|
 |メモリ最適化| 4| 15360| 30720|
 |メモリ最適化| 8| 30720| 61440|
@@ -78,7 +78,7 @@ CALL mysql.az_load_timezone();
 ```
 
 > [!IMPORTANT]
-> タイム ゾーン テーブルが適切に設定されていることを確認するために、サーバーを再起動する必要があります。 サーバーを再起動するには、[Azure portal](howto-restart-server-portal.md) または [CLI](howto-restart-server-cli.md) を使用します。
+> タイム ゾーン テーブルにデータが正しく入力されるようにするには、サーバーを再起動する必要があります。 サーバーを再起動するには、[Azure portal](howto-restart-server-portal.md) または [CLI](howto-restart-server-cli.md) を使用します。
 
 利用可能なタイム ゾーン値を表示するには、次のコマンドを実行します。
 
@@ -102,6 +102,6 @@ SET time_zone = 'US/Pacific';
 
 [日付と時刻関数](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz)については MySQL ドキュメントを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Database for MySQL の接続ライブラリ](concepts-connection-libraries.md)

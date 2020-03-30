@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 09c4420647043fccc408631fec75854667923721
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74085257"
 ---
 Microsoft Azure クラウド サービスに関する問題を診断するためには、仮想マシン上で問題の発生に伴って生成されるクラウド サービスのログ ファイルを収集する必要があります。 AzureLogCollector 拡張機能をオンデマンドで使用し、クラウド サービスの VM (Web ロールと worker ロールの両方) からログを一度に収集して、Azure ストレージ アカウントにその収集したファイルを転送することができます。このとき、リモートから VM にログオンする必要は一切ありません。
@@ -31,9 +31,9 @@ Microsoft Azure クラウド サービスに関する問題を診断するため
 
 いずれの収集モードも、次の構造体を使用してデータ収集フォルダーを追加指定できます。
 
-* **Name**:収集の名前。収集されたファイルを含む zip ファイル内のサブフォルダーの名前として使用されます。
-* **[場所]** :収集されるファイルがある仮想マシン上のフォルダーのパス。
-* **SearchPattern**:収集対象ファイルの名前のパターン。 既定値は "\*" です
+* **Name**: 収集の名前。収集されたファイルを含む zip ファイル内のサブフォルダーの名前として使用されます。
+* **Location**: 収集されたファイルが配置される仮想マシン上のフォルダーのパス。
+* **SearchPattern**: 収集対象ファイル名のパターン。 既定値は "\*" です
 * **Recursive**: 収集されたファイルを、指定された場所で再帰的に配置するかどうか。
 
 ## <a name="prerequisites"></a>前提条件
@@ -177,14 +177,14 @@ param (
 )
 ```
 
-* **ServiceName**:クラウド サービス名。
-* **Roles**:ロールの一覧 (“WebRole1” または ”WorkerRole1” など)。
-* **Instances**:コンマで区切られたロール インスタンスの名前の一覧。すべてのロール インスタンスを指定するときは、ワイルドカード文字列 (“*”) を使用してください。
-* **Slot**:スロット名。 “Production” または “Staging”。
-* **[モード]** :収集モード。 “Full” または “GA”。
-* **StorageAccountName**:収集されたデータを格納するための Azure ストレージ アカウントの名前。
-* **StorageAccountKey**:Azure ストレージ アカウント キーの名前。
-* **AdditionalDataLocationList**:次の構造の一覧:
+* **ServiceName**: クラウド サービスの名前。
+* **Roles**: 一連のロール (“WebRole1”、”WorkerRole1” など)。
+* **Instances**: 一連のロール インスタンスの名前をコンマで区切って指定します。すべてのロール インスタンスを指定するときは、ワイルドカード文字列 (“*”) を使用してください。
+* **Slot**: スロット名。 “Production” または “Staging”。
+* **Mode**: 収集モード。 “Full” または “GA”。
+* **StorageAccountName**: 収集されたデータを格納するための Azure ストレージ アカウントの名前。
+* **StorageAccountKey**: Azure ストレージ アカウント キーの名前。
+* **AdditionalDataLocationList**: 次の構造体のリスト。
 
   ```powershell
   {
@@ -259,12 +259,12 @@ param (
 )
 ```
 
-* **ServiceName**:クラウド サービス名。
-* **VMName**:VM の名前。
-* **[モード]** :収集モード。 “Full” または “GA”。
-* **StorageAccountName**:収集されたデータを格納するための Azure ストレージ アカウントの名前。
-* **StorageAccountKey**:Azure ストレージ アカウント キーの名前。
-* **AdditionalDataLocationList**:次の構造の一覧:
+* **ServiceName**: クラウド サービスの名前。
+* **VMName**: VM の名前。
+* **Mode**: 収集モード。 “Full” または “GA”。
+* **StorageAccountName**: 収集されたデータを格納するための Azure ストレージ アカウントの名前。
+* **StorageAccountKey**: Azure ストレージ アカウント キーの名前。
+* **AdditionalDataLocationList**: 次の構造体のリスト。
 
   ```
   {

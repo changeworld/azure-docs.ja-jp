@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jhakulin
 ms.openlocfilehash: 350c2bf3c4d0fc0a16f1b393e7c8d8a372679797
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78331146"
 ---
 # <a name="configure-openssl-for-linux"></a>Linux 用 OpenSSL の構成

@@ -13,16 +13,18 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
-ms.openlocfilehash: c1271d5b63fa796fe44b7a40c364953464a87539
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 505f58f13a7186948a228fefe872d74fb98eba33
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68596671"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80345772"
 ---
 # <a name="tutorial-prepare-data-to-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>チュートリアル:R で Azure SQL Database Machine Learning Services (プレビュー) を使用して予測モデルをトレーニングするためのデータを準備する
 
 この 3 部構成のチュートリアル シリーズのパート 1 では、R を使用して、Azure SQL データベースのデータをインポートして準備します。このシリーズでは、その後、このデータを利用し、R で Azure SQL Database Machine Learning Services (プレビュー) を使用して予測機械学習モデルをトレーニングしてデプロイします。
+
+[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 このチュートリアル シリーズでは、あなたはスキー レンタル業を自ら営んでおり、今後のレンタル数を予測する必要があるとします。 この情報は、在庫、スタッフおよび設備の準備に役立ちます。
 

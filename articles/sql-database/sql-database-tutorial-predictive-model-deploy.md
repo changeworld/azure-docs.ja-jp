@@ -13,16 +13,18 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
-ms.openlocfilehash: 9fa816b2a8e736f03c99b66b898f48bd2a483b31
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7779db053344f99238d38d5d49762730efbc5fc4
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68596776"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80346317"
 ---
 # <a name="tutorial-deploy-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>チュートリアル:R で Azure SQL Database Machine Learning Services (プレビュー) を使用して予測モデルをデプロイする
 
 この 3 部構成のチュートリアルのパート 3 では、Azure SQL Database Machine Learning Services (プレビュー) を使用して、R で開発した予測モデルを SQL データベースにデプロイします。
+
+[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 埋め込みの R スクリプトで、モデルを使用して予測するストアド プロシージャを作成します。 モデルは Azure SQL データベースで実行されるため、データベースに格納されているデータに対して簡単にトレーニングすることができます。
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 17778b3edf1845d85302a0bcdf72a1ebc3919cea
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67181113"
 ---
 ## <a name="viewing-your-tags-in-the-usage-details"></a>使用量の詳細でタグを確認する
