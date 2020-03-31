@@ -16,10 +16,10 @@ ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: johndeu
 ms.openlocfilehash: 7ccc2d5956b44a8cd85f19e0905539c32f58bc5e
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78164000"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Azure Media Indexer によるメディア ファイルのインデックス作成
@@ -142,7 +142,7 @@ Azure Media Indexer を使用すると、メディア ファイルのコンテ�
 ```
 
 <!-- __ -->
-### <a id="output_files"></a>出力ファイル
+### <a name="output-files"></a><a id="output_files"></a>出力ファイル
 既定では、ジョブのインデックスを作成すると、次の出力ファイルが生成されます。 ファイルは、最初の出力資産に格納されます。
 
 複数の入力メディア ファイルがある場合、インデクサーはジョブの出力に対して "JobResult.txt" という名前のマニフェスト ファイルを生成します。 各入力メディア ファイルでは、結果として得られる TTML、WebVTT、キーワード ファイルには順に番号が振られ、"エイリアス" を使用して名前が付けられます。
@@ -240,7 +240,7 @@ Azure Media Indexer を使用すると、メディア ファイルのコンテ�
 
 (成功したジョブの場合) と同じ出力が生成されます。 エラー列の値に基づいて、出力マニフェスト ファイルで、入力ファイルが失敗したかどうかを参照します。 失敗した入力ファイルでは、結果として得られる TTML、WebVTT、キーワード ファイルは生成されません。
 
-### <a id="preset"></a> Azure Media Indexer 用のタスク プリセット
+### <a name="task-preset-for-azure-media-indexer"></a><a id="preset"></a> Azure Media Indexer 用のタスク プリセット
 Azure Media Indexer からの処理は、オプションのタスク プリセットをタスクと共に指定することでカスタマイズできます。  次の表は、この configuration xml の形式の説明です。
 
 | 名前 | 必須 | 説明 |
@@ -249,7 +249,7 @@ Azure Media Indexer からの処理は、オプションのタスク プリセ�
 | **metadata** |false |語彙アダプテーション用に指定する資産ファイルのメタデータ。  標準的ではない語彙 (固有名詞など) をインデクサーに認識させる必要があるときに使用します。<br/>`<metadata key="..." value="..."/>` <br/><br/>事前定義済みの**キー**に対して**値**を指定できます。 現在サポートされているキーは<br/><br/>"title" と "description" です。これは、語彙アダプテーションで対象ジョブの言語モデルを微調整し、音声認識の精度を高める目的で使用します。  インターネット検索機能は、これらの値を足掛かりとしてコンテキストに合ったテキスト ドキュメントを検索し、そのコンテンツを使って、インデックス作成タスクの過程で用いられる内部辞書を補強します。<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
 | **features** <br/><br/> バージョン 1.2 で追加。 現時点でサポートされている機能は、音声認識 ("ASR") のみです。 |false |音声認識機能には、次の設定キーがあります。<table><tr><th><p>Key</p></th>        <th><p>説明</p></th><th><p>値の例</p></th></tr><tr><td><p>Language</p></td><td><p>マルチメディア ファイル内で認識される自然言語。</p></td><td><p>English、Spanish</p></td></tr><tr><td><p>CaptionFormats</p></td><td><p>出力キャプション形式をセミコロンで区切ったリスト (存在する場合)</p></td><td><p>ttml;webvtt</p></td></tr><tr><td><p></p></td><td><p> </p></td><td><p>True、False</p></td></tr><tr><td><p>GenerateKeywords</p></td><td><p>キーワード XML ファイルが必要かどうかを指定するブール型のフラグ。</p></td><td><p>True、False。 </p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>(信頼レベルに関係なく) フル キャプションを強制するかどうかを指定するブール型のフラグ。  </p><p>既定値は false です。この場合、信頼レベルが 50% 未満の語句は最終的なキャプションの出力から除外され、省略記号 ("...") で置き換えられます。  省略記号は、キャプションの品質管理や監査に用いられます。</p></td><td><p>True、False。 </p></td></tr></table> |
 
-### <a id="error_codes"></a>エラー コード
+### <a name="error-codes"></a><a id="error_codes"></a>エラー コード
 エラーが発生した場合、Azure Media Indexer は、次のいずれかのエラー コードを返します。
 
 | コード | 名前 | 考えられる原因 |
@@ -265,7 +265,7 @@ Azure Media Indexer からの処理は、オプションのタスク プリセ�
 | 4000 |バッチのインデックス作成一部成功しました |一部の入力メディア ファイルは、インデックスを付けるできませんでした。 詳細については、「 <a href="#output_files">出力ファイル</a>。 |
 | その他 |内部エラー |サポート チームにお問い合わせください。 [https://github.com/mysqljs/mysql/](indexer@microsoft.com) |
 
-## <a id="supported_languages"></a>サポートされている言語
+## <a name="supported-languages"></a><a id="supported_languages"></a>サポートされている言語
 現時点では、英語とスペイン語の言語がサポートされています。  
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
