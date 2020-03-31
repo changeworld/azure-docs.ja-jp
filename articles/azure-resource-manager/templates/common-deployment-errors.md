@@ -4,12 +4,12 @@ description: Azure Resource Manager を使用した Azure へのリソースの�
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 10/04/2019
-ms.openlocfilehash: 58519056bd59f449fe26aa2fee3620f3ed28cc31
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: bc1568c53cdb5518f694d77a2f28f3cf77296ee2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154518"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460383"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング
 
@@ -114,7 +114,7 @@ PowerShell でデプロイ エラー コードとメッセージを表示する�
 Azure CLI でデプロイ エラー コードとメッセージを表示するには、以下を使用します。
 
 ```azurecli-interactive
-az group deployment operation list --name exampledeployment -g examplegroup --query "[*].properties.statusMessage"
+az deployment group operation list --name exampledeployment -g examplegroup --query "[*].properties.statusMessage"
 ```
 
 ポータルで通知を選択します。
@@ -172,7 +172,7 @@ New-AzResourceGroupDeployment `
 次のコマンドでデプロイ操作を確認します。
 
 ```azurecli
-az group deployment operation list \
+az deployment group operation list \
   --resource-group examplegroup \
   --name exampledeployment
 ```
@@ -180,7 +180,7 @@ az group deployment operation list \
 次のコマンドを使用して、要求の内容を確認します。
 
 ```azurecli
-az group deployment operation list \
+az deployment group operation list \
   --name exampledeployment \
   -g examplegroup \
   --query [].properties.request
@@ -189,7 +189,7 @@ az group deployment operation list \
 次のコマンドを使用して、応答の内容を確認します。
 
 ```azurecli
-az group deployment operation list \
+az deployment group operation list \
   --name exampledeployment \
   -g examplegroup \
   --query [].properties.response

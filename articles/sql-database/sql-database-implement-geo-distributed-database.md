@@ -11,14 +11,14 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 1da977f41add19afa6f84b7e5a3dc99c980ac1cf
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 58d5bd4a7f3087e11056354f7534c3c9dbebca3c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74421128"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067285"
 ---
-# <a name="tutorial-implement-a-geo-distributed-database"></a>チュートリアル:地理的に分散したデータベースの実装
+# <a name="tutorial-implement-a-geo-distributed-database"></a>チュートリアル: geo 分散型データベースを実装する
 
 Azure SQL データベースとアプリケーションをリモート リージョンにフェールオーバーするよう構成し、フェールオーバー計画をテストします。 学習内容は次のとおりです。
 
@@ -58,7 +58,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 既存の Azure SQL サーバーと別のリージョンにある新しい Azure SQL サーバーとの間で、Azure PowerShell を使用して[フェールオーバー グループ](sql-database-auto-failover-group.md)を作成します。 その後、そのフェールオーバー グループにサンプル データベースを追加します。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
 > [!INCLUDE [sample-powershell-install](../../includes/sample-powershell-install-no-ssh.md)]
@@ -90,12 +90,12 @@ Get-AzSqlDatabase -ResourceGroupName $resourceGroup -ServerName $server -Databas
     Add-AzSqlDatabaseToFailoverGroup -ResourceGroupName $resourceGroup -ServerName $server -FailoverGroupName $failoverGroup
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!IMPORTANT]
 > `az login` を実行して Azure にサインインします。
 
-```powershell
+```azurecli
 $admin = "<adminName>"
 $password = "<password>"
 $resourceGroup = "<resourceGroupName>"
@@ -150,7 +150,7 @@ geo レプリケーションの設定は、Azure portal でデータベースを
    </dependency>
    ```
 
-1. `dependencies` セクションの後に `properties` セクションを追加して Java バージョンを指定します。
+1. `properties` セクションの後に `dependencies` セクションを追加して Java バージョンを指定します。
 
    ```xml
    <properties>
@@ -159,7 +159,7 @@ geo レプリケーションの設定は、Azure portal でデータベースを
    </properties>
    ```
 
-1. `properties` セクションの後に `build` セクションを追加してマニフェスト ファイルをサポートします。
+1. `build` セクションの後に `properties` セクションを追加してマニフェスト ファイルをサポートします。
 
    ```xml
    <build>
@@ -317,7 +317,7 @@ geo レプリケーションの設定は、Azure portal でデータベースを
 
 以下に示した各スクリプトを実行してフェールオーバーをシミュレートし、アプリケーションの結果を観察します。 データベースの移行中、いくつかの挿入と選択が失敗します。そのようすに注目してください。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 次のコマンドを使用して、テスト中にディザスター リカバリー サーバーのロールを確認することができます。
 
@@ -342,11 +342,11 @@ geo レプリケーションの設定は、Azure portal でデータベースを
     -ServerName $server -FailoverGroupName $failoverGroup
    ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 次のコマンドを使用して、テスト中にディザスター リカバリー サーバーのロールを確認することができます。
 
-```azure-cli
+```azurecli
 az sql failover-group show --name $failoverGroup --resource-group $resourceGroup --server $drServer
 ```
 
@@ -354,21 +354,21 @@ az sql failover-group show --name $failoverGroup --resource-group $resourceGroup
 
 1. フェールオーバー グループの手動フェールオーバーを開始します。
 
-   ```azure-cli
+   ```azurecli
    az sql failover-group set-primary --name $failoverGroup --resource-group $resourceGroup --server $drServer
    ```
 
 1. フェールオーバー グループを再びプライマリ サーバーに戻します。
 
-   ```azure-cli
+   ```azurecli
    az sql failover-group set-primary --name $failoverGroup --resource-group $resourceGroup --server $server
    ```
 
 * * *
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure SQL データベースとアプリケーションをリモート リージョンにフェールオーバーするよう構成し、フェールオーバー計画をテストしました。 以下の方法について学習しました。
+このチュートリアルでは、Azure SQL データベースとアプリケーションをリモート リージョンにフェールオーバーするよう構成し、フェールオーバー計画をテストしました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > - geo レプリケーション フェールオーバー グループを作成する

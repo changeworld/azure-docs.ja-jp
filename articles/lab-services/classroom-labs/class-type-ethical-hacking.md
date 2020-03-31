@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
 ms.openlocfilehash: 2b600edc4c360a2b2990be34e44bb8fbd1c8f721
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74133185"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>エシカル ハッキング クラスを教えるためのラボを設定する 
@@ -139,7 +139,7 @@ Rapid7 Metasploitable イメージは、故意にセキュリティの脆弱性�
 ## <a name="conclusion"></a>まとめ
 この記事では、エシカル ハッキング クラスのラボを作成する手順について説明しました。 侵入テストを行えるように、入れ子になった仮想化を設定して、ホスト仮想マシン内に 2 つの仮想マシンを作成する手順が含まれます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次の手順は、どのラボの設定でも同じです。
 
 - [ユーザーの追加](tutorial-setup-classroom-lab.md#add-users-to-the-lab)

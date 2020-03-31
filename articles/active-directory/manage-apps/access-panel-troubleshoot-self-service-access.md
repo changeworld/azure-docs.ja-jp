@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a981dfb1d72c21eccf2ad7119ea219114ed15aed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65784275"
 ---
 # <a name="problem-using-self-service-application-access"></a>アプリケーションのセルフ サービス アクセス使用に関する問題点
@@ -98,5 +98,5 @@ ms.locfileid: "65784275"
 
 -   Fiddler のトレース
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [セルフサービス グループ管理に必要な Azure Active Directory の設定](../users-groups-roles/groups-self-service-management.md)

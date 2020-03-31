@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: 133edc64ac2f858a397a4a184c24497dae8af333
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67565726"
 ---
 # <a name="how-to-rotate-access-key-for-azure-signalr-service"></a>Azure SignalR Service のアクセス キーのローテーション方法
@@ -49,7 +49,7 @@ ms.locfileid: "67565726"
 
 Azure SignalR Service では、特定の状況下で必須のアクセス キーの再生成が強制的に実行されることがあります。 このサービスでは、電子メールとポータル通知を使用して顧客への通知が行われます。 この通知を受信した場合や、アクセス キーを原因とするサービス エラーが発生した場合は、このガイドの手順に従ってキーをローテーションしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 適切なセキュリティ プラクティスとして、アクセス キーを定期的にローテーションします。
 

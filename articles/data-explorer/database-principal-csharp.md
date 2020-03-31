@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: 797d1253d44739f2026563e3df72bc85a8ef382e
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76965288"
 ---
 # <a name="add-database-principals-for-azure-data-explorer-by-using-c"></a>C# を使用して Azure Data Explorer 用のデータベース プリンシパルを追加する
@@ -79,7 +79,7 @@ await kustoManagementClient.DatabasePrincipalAssignments.CreateOrUpdateAsync(res
 | principalId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | プリンシパル ID。ユーザーの電子メール、アプリケーション ID、またはセキュリティ グループ名を指定できます。|
 | ロール (role) | *管理者* | データベース プリンシパルのロール。'Admin'、'Ingestor'、'Monitor'、'User'、'UnrestrictedViewers'、'Viewer' を指定できます。|
 | tenantIdForPrincipal | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | プリンシパルのテナント ID。|
-| principalType | *App* | プリンシパルの種類。'User'、'App'、または 'Group' を指定できます。|
+| principalType | *アプリ* | プリンシパルの種類。'User'、'App'、または 'Group' を指定できます。|
 
 ## <a name="next-steps"></a>次のステップ
 

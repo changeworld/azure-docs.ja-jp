@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 03/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 58a7689263f9bc761eb0b904a9376c1ca0112c13
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: f2b51213dfc6d7e55f76e78b92d12111f84736be
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128105"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79365391"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>チュートリアル:サービスの更新プログラムを検証するためのホスト プールを作成する
 
@@ -76,7 +76,7 @@ Get-RdsHostPool -TenantName $myTenantName -Name "contosoHostPool"
 
 ## <a name="next-steps"></a>次のステップ
 
-検証ホスト プールを作成したので、次は Microsoft 仮想デスクトップ リソースを管理する管理ツールをデプロイし、接続する方法を学習できます。
+検証ホスト プールを作成したので、Azure Service Health を使用して Windows Virtual Desktop のデプロイを監視する方法を学習できます。 
 
 > [!div class="nextstepaction"]
-> [管理ツールのデプロイのチュートリアル](./manage-resources-using-ui.md)
+> [サービス アラートを設定する](./set-up-service-alerts.md)

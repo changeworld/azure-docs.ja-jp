@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: e2d258f327ade2149adc92bdb7fb4bcc87cdd58c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67181216"
 ---
 #### <a name="to-install-the-storsimple-adapter-for-sharepoint"></a>SharePoint 用 StorSimple アダプターをインストールするには
@@ -27,5 +27,5 @@ ms.locfileid: "67181216"
    
     ![StorSimple adapter setup finished page](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup_finish-include.png) 
 7. SharePoint サーバーの全体管理ページを開きます。 SharePoint 用 StorSimple アダプターへのリンクを含む StorSimple 構成グループが表示されます。
-8. 次のステップへ進みます:[RBS の構成](#configure-rbs)。
+8. 次の [RBS の構成](#configure-rbs)手順に進みます。
 

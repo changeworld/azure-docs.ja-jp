@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: cshoe
 ms.openlocfilehash: dd74fd5c38e5a8800d2092afc1db1b412b126861
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77649910"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>GitHub Actions を使用した継続的デリバリー
@@ -33,7 +33,7 @@ Azure Functions のワークフロー ファイルには、次の 3 つのセク
 
 ## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
-[Azure CLI](/cli/azure/) の [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) コマンドを使用すると、[サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)を作成できます。 このコマンドは、Azure portal の [Azure Cloud Shell](https://shell.azure.com) を使用するか、 **[試してみる]** ボタンを選択して実行できます。
+[Azure CLI](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) の [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) コマンドを使用すると、[サービス プリンシパル](/cli/azure/)を作成できます。 このコマンドは、Azure portal の [Azure Cloud Shell](https://shell.azure.com) を使用するか、 **[試してみる]** ボタンを選択して実行できます。
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<APP_NAME> --sdk-auth
@@ -60,7 +60,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 1. 新しいシークレットを追加します。
 
-   * Azure CLI を使用して作成したサービス プリンシパルを使用している場合は、 **[名前]** に `AZURE_CREDENTIALS` を使用します。 次に、コピーした JSON オブジェクト出力を **[値]** に貼り付け、 **[Add secret]\(シークレットの追加\)** を選択します。
+   * Azure CLI を使用して作成したサービス プリンシパルを使用している場合は、`AZURE_CREDENTIALS`[名前]**に** を使用します。 次に、コピーした JSON オブジェクト出力を **[値]** に貼り付け、 **[Add secret]\(シークレットの追加\)** を選択します。
    * 発行プロファイルを使用している場合は、`SCM_CREDENTIALS`[名前]**に** を使用します。 次に、発行プロファイルのファイルの内容を **[値]** に使用し、 **[Add secret]\(シークレットの追加\)** を選択します。
 
 これで GitHub は、お使いの Azure の関数アプリに認証できるようになりました。

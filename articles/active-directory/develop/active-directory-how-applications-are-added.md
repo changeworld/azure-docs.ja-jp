@@ -14,12 +14,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: daf26f346ab10906eb5c37c6d7d2bb24736417cb
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d47ed3a4cd4fbdcb69b956d3c8418f70a71cf44f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698818"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230751"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>アプリケーションを Azure AD に追加する方法と理由
 
@@ -77,7 +77,7 @@ Azure AD には、2 つの表現のアプリケーションがあります。
 * 管理者がアプリ ギャラリーからアプリケーションを追加するとき (これによって基になるアプリケーション オブジェクトも作成されます)
 * [Azure AD アプリケーション プロキシ](/azure/active-directory/manage-apps/application-proxy)を使用するアプリケーションを追加する
 * シングル サインオンのために、SAML またはパスワードのシングル サインオン (SSO) を使用してアプリを接続する
-* Azure AD Graph API または PowerShell でプログラムを使用する
+* Microsoft Graph API または PowerShell でプログラムを使用する
 
 ## <a name="how-are-application-objects-and-service-principals-related-to-each-other"></a>アプリケーション オブジェクトとサービス プリンシパルの相互の関係
 
@@ -100,13 +100,13 @@ Azure AD と統合するアプリケーションのパブリッシャー/ベン�
 
 ### <a name="notes-and-exceptions"></a>エラーと例外
 
-* すべてのサービス プリンシパルがアプリケーション オブジェクトを逆参照するわけではありません。 Azure AD が最初に構築された時点では、アプリケーションに提供されるサービスははるかに限定的であり、サービス プリンシパルはアプリケーション ID を確立するのに十分でした。 元のサービス プリンシパルは、Windows Server Active Directory サービス アカウントとよく似ていました。 このため、現在でも、先にアプリケーション オブジェクトを作成せずに、Azure AD PowerShell を使用するなど、異なる経路でサービス プリンシパルを作成できます。 Azure AD Graph API では、サービス プリンシパルを作成する前に、アプリケーション オブジェクトが必要です。
+* すべてのサービス プリンシパルがアプリケーション オブジェクトを逆参照するわけではありません。 Azure AD が最初に構築された時点では、アプリケーションに提供されるサービスははるかに限定的であり、サービス プリンシパルはアプリケーション ID を確立するのに十分でした。 元のサービス プリンシパルは、Windows Server Active Directory サービス アカウントとよく似ていました。 このため、現在でも、先にアプリケーション オブジェクトを作成せずに、Azure AD PowerShell を使用するなど、異なる経路でサービス プリンシパルを作成できます。 Microsoft Graph API では、サービス プリンシパルを作成する前に、アプリケーション オブジェクトが必要です。
 * 現在、このような情報の中にはプログラムによって公開されていないものがあります。 次の情報は UI でのみ使用できます。
   * 要求変換ルール
   * 属性マッピング (ユーザーのプロビジョニング)
-* サービス プリンシパル オブジェクトおよびアプリケーション オブジェクトの詳細については、Azure AD Graph REST API のリファレンス ドキュメントを参照してください。
-  * [Application](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
-  * [サービス プリンシパル](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
+* サービス プリンシパル オブジェクトおよびアプリケーション オブジェクトの詳細については、Microsoft Graph API のリファレンス ドキュメントを参照してください。
+  * [Application](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0)
+  * [サービス プリンシパル](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>アプリケーションを Azure AD と統合する理由
 

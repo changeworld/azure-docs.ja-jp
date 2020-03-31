@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 394b242ab46da7821f77e8d008836753f4e358e2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67181124"
 ---
 この手順では、フェールオーバー クラスター マネージャーおよび SQL Server Management Studio で可用性グループ リスナーを手動で作成します。
@@ -29,7 +29,7 @@ ms.locfileid: "67181124"
 6. **[リソース]** タブをクリックして、作成したクライアント アクセス ポイントを展開します。 
     クラスター内の各クラスター ネットワークの IP アドレス リソースが表示されます。 これが Azure 専用ソリューションである場合は、1 つの IP アドレス リソースだけが表示されます。
 
-7. 次のいずれかを実行します。
+7. 以下のいずれかを実行します。
    
    * ハイブリッド ソリューションを構成するには
      

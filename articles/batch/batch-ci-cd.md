@@ -1,19 +1,19 @@
 ---
 title: Azure Pipelines を使用して HPC ソリューションを構築してデプロイする - Azure Batch
 description: Azure Batch で実行する HPC アプリケーションのビルド/リリース パイプラインをデプロイする方法について説明します。
-author: christianreddington
+author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: conceptual
 ms.custom: fasttrack-new
 services: batch
 ms.service: batch
-ms.openlocfilehash: ee87cd7d80d4b24e8c52fb3c7dbb780d39071066
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 50cb711dfd16c2a8718d13ba9255ace1e7e3e26d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935140"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79533132"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Azure Pipelines を使用する HPC ソリューションの構築とデプロイ
 

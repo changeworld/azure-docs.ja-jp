@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
 ms.openlocfilehash: 87f6b9cef50e4b8c388be835b2aa7bed8177ac4b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61447456"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>azureiotsolutions.com サイトを使用してソリューション アクセラレータをデプロイする
@@ -28,7 +28,7 @@ Azure IoT ソリューション アクセラレータを [AzureIoTSolutions.com]
 
 * **Standard**:運用環境を開発するための拡張インフラストラクチャ デプロイ。 Azure Container Service により、マイクロサービスが複数の Azure 仮想マシンにデプロイされます。 個々のマイクロサービスをホストする Docker コンテナーは、Kubernetes によって調整されます。
 * **Basic**:デモンストレーションのため、またはデプロイをテストするための低コスト バージョン。 すべてのマイクロサービスが 1 つの Azure 仮想マシンにデプロイされます。
-* **ローカル**:テストと開発のためのローカル コンピューターのデプロイ。 このアプローチでは、マイクロサービスをローカル Docker コンテナーにデプロイし、クラウド内の IoT Hub、Azure Cosmos DB、および Azure Storage サービスに接続します。
+* **Local**: テストと開発のためのローカル コンピューターのデプロイ。 このアプローチでは、マイクロサービスをローカル Docker コンテナーにデプロイし、クラウド内の IoT Hub、Azure Cosmos DB、および Azure Storage サービスに接続します。
 
 各ソリューション アクセラレータは、IoT Hub、Azure Stream Analytics、Cosmos DB など、Azure サービスの異なる組み合わせを使用します。 詳細については、[AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators) にアクセスしてソリューション アクセラレータを選択してください。
 
@@ -62,7 +62,7 @@ AzureIoTSolutions.com サイトは、[Azure Certified for IoT デバイス カ�
 
 ユーザーがハードウェア製造元である場合は、 **[パートナーになる]** をクリックして、Certified for IoT プログラムでの Microsoft とのパートナー提携について確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 IoT ソリューション アクセラレータの 1 つを試してみるには、クイック スタートを参照してください。
 

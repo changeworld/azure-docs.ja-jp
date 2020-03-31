@@ -11,10 +11,10 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.openlocfilehash: 331a2317f11fbb6f0dd1437a0b41f7ad110a63c7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74928022"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>Azure エラスティック データベース ジョブで SSISDB のログをクリーンアップする
@@ -260,7 +260,7 @@ SELECT * FROM jobs.job_executions WHERE is_active = 1
 ORDER BY start_time DESC
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure-SSIS Integration Runtime に関連した管理タスクと監視タスクについては、次の記事を参照してください。 Azure-SSIS IR は、Azure SQL Database の SSISDB に格納される SSIS パッケージのランタイム エンジンです。
 

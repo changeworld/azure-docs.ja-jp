@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 02274bacb66a33ef54e07bc8113d7db46d4d5296
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67181365"
 ---
 #### <a name="to-add-a-storsimple-backup-policy"></a>StorSimple のバックアップ ポリシーを追加するには
@@ -27,7 +27,7 @@ ms.locfileid: "67181365"
        
    3. このバックアップ ポリシーにボリュームを割り当てるには、 **[ボリュームの追加]** を選択してから、ボリュームの表形式の一覧でチェック ボックスをオンにして、1 つまたは複数のボリュームをこのバックアップ ポリシーに割り当てます。
 
-       ![バックアップ ポリシーの追加](./media/storsimple-8000-add-backup-policy-u2/addbupol2.png)
+       ![バックアップ ポリシーを追加する](./media/storsimple-8000-add-backup-policy-u2/addbupol2.png)
 
    4. このバックアップ ポリシーのスケジュールを定義するには、 **[最初のスケジュール]** をクリックしてから、次のパラメーターを変更します。
 

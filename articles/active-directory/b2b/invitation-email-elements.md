@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3f93586d46aa01116990f8f02f344c6952d3c1b1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65768366"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B コラボレーションの招待メールの要素 - Azure Active Directory
@@ -53,7 +53,7 @@ ms.locfileid: "65768366"
 
   ![招待元のイニシャルが表示されている招待を示すスクリーンショット](media/invitation-email-elements/inviters-initials.png)
 
-### <a name="body"></a>本文
+### <a name="body"></a>Body
 本文には、[ゲスト ユーザーをディレクトリ、グループ、またはアプリに招待](add-users-administrator.md)するときに、または [Invitation API を使用して](customize-invitation-api.md)招待元が作成するメッセージが含まれています。 これはテキスト領域であるため、セキュリティ上の理由で HTML タグは処理されません。
 
   ![招待メールの本文を示すスクリーンショット](media/invitation-email-elements/invitation-email-body.png)
@@ -81,7 +81,7 @@ ms.locfileid: "65768366"
 
 これらのいずれの設定も構成されていない場合、言語は既定で英語 (米国) になります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure AD B2B コラボレーションに関する以下の記事を参照してください。
 

@@ -15,10 +15,10 @@ ms.date: 05/23/2019
 ms.author: rogirdh
 ms.custom: seodec18
 ms.openlocfilehash: 3abc09f8c82442e3b24a9edf6ef4fb42f19dfde8
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74806951"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure での Oracle VM イメージとそのデプロイ
@@ -102,7 +102,7 @@ Azure で高可用性と災害復旧ソリューションを設計すること�
 
 
 ## <a name="support-for-jd-edwards"></a>JD Edwards のサポート
-JD Edwards EnterpriseOne バージョン 9.2、以降は、Oracle のサポート情報 [Doc ID 2178595.1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4) に従って、固有の `Minimum Technical Requirements` (MTR) を満たす**すべてのパブリック クラウド ソリューション**でサポートされています。  OS およびソフトウェア アプリケーションの互換性の MTR 仕様に準拠したカスタム イメージを作成する必要があります。 
+JD Edwards EnterpriseOne バージョン 9.2、以降は、Oracle のサポート情報 [Doc ID 2178595.1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4) に従って、固有の  **(MTR) を満たす**すべてのパブリック クラウド ソリューション`Minimum Technical Requirements`でサポートされています。  OS およびソフトウェア アプリケーションの互換性の MTR 仕様に準拠したカスタム イメージを作成する必要があります。 
 
 
 ## <a name="oracle-weblogic-server-virtual-machine-images"></a>Oracle WebLogic Server 仮想マシン イメージ
@@ -126,7 +126,7 @@ JD Edwards EnterpriseOne バージョン 9.2、以降は、Oracle のサポー�
     -Dweblogic.rjvm.enableprotocolswitch=true
     ```
 
-関連情報については、<https://support.oracle.com> にあるサポート技術情報 **860340.1** をご覧ください。
+関連情報については、**にあるサポート技術情報**860340.1<https://support.oracle.com> をご覧ください。
 
 * **動的なクラスタリングと負荷分散の制限事項。** Oracle WebLogic Server で動的クラスターを使用し、Azure 上の単一のパブリック負荷分散エンドポイントを介して、それを公開すると仮定します。 これは、それぞれの管理サーバーに固定のポート番号を使用し (範囲から動的に割り当てられていない)、管理者が追跡記録しているマシンより多く管理サーバーを起動しない限り、実現できます。 つまり、1 つの仮想マシンに対する管理サーバーが複数にならないようにします。 設定の結果、起動する Oracle WebLogic Server の数が仮想マシンより多くなる場合 (つまり、複数の Oracle WebLogic Server インスタンスが同じ仮想マシンを共有する場合)、指定したポート番号に複数の Oracle WebLogic Server インスタンス サーバーをバインドすることはできません。 その仮想マシン上ではその他は失敗します。
 
@@ -139,7 +139,7 @@ JD Edwards EnterpriseOne バージョン 9.2、以降は、Oracle のサポー�
    JDK 6 および JDK 7 のイメージで利用可能な JDK と、そこから派生した仮想マシンおよびイメージは、Azure 内でのみ使用できます。
 * **64-bit JDK.** Azure によって提供される Oracle WebLogic Server 仮想マシンおよび Oracle JDK 仮想マシンのイメージには、Windows Server と JDK 両方の 64 ビット版が含まれています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Microsoft Azure 内の仮想マシン イメージに基づいた現在の Oracle ソリューションの概要を理解しました。 次の手順では、Azure で最初の Oracle データベースをデプロイします。
 
 > [!div class="nextstepaction"]

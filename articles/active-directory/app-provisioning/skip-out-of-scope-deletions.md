@@ -16,10 +16,10 @@ ms.date: 12/10/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a1668c022a0f067a381ba09b397c7d38c99ad074
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77522451"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>スコープ外に出るユーザー アカウントの削除をスキップする

@@ -5,11 +5,11 @@ ms.date: 11/20/2019
 ms.topic: article
 ms.reviewer: janders
 ms.openlocfilehash: 4a9a4f660dd171e65b600ec4cd66714ca476b091
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326301"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227403"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Azure Blockchain Service のトランザクション ノードを構成する
 
@@ -17,7 +17,7 @@ ms.locfileid: "74326301"
 
 既定のトランザクション ノードの詳細を表示するには:
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. Azure Blockchain Service メンバーに移動します。 **[Transaction nodes]\(トランザクション ノード\)** を選択します。
 
     ![既定のトランザクション ノードを選択する](./media/configure-transaction-nodes/nodes.png)
@@ -35,12 +35,12 @@ ms.locfileid: "74326301"
 
     ![トランザクション ノードを追加する](./media/configure-transaction-nodes/add-node.png)
 
-    | Setting | 説明 |
+    | 設定 | 説明 |
     |---------|-------------|
     | 名前 | トランザクション ノードの名前。 名前は、トランザクション ノードのエンドポイントの DNS アドレスを作成するために使われます。 たとえば、「 `newnode-myblockchainmember.blockchain.azure.com` 」のように入力します。 作成後にノード名を変更することはできません。 |
-    | パスワード | 強力なパスワードを設定します。 そのパスワードを使って、基本認証でトランザクション ノードのエンドポイントにアクセスします。
+    | Password | 強力なパスワードを設定します。 そのパスワードを使って、基本認証でトランザクション ノードのエンドポイントにアクセスします。
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
     新しいトランザクション ノードのプロビジョニングには、約 10 分かかります。 追加のトランザクション ノードにはコストがかかります。 コストについて詳しくは、[Azure の価格](https://aka.ms/ABSPricing)に関するページをご覧ください。
 
@@ -67,11 +67,11 @@ Azure Blockchain Service のトランザクション ノード エンドポイ�
 
     ![IAM ロールを追加する](./media/configure-transaction-nodes/add-role.png)
 
-    | Setting | Action |
+    | 設定 | アクション |
     |---------|-------------|
     | Role | **[所有者]** 、 **[共同作成者]** 、または **[閲覧者]** を選択します。
     | アクセスの割り当て先 | **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選択します。
-    | 選択 | 追加するユーザー、グループ、またはサービス プリンシパルを検索します。
+    | Select | 追加するユーザー、グループ、またはサービス プリンシパルを検索します。
 
 1. **[保存]** を選択して、ロールの割り当てを追加します。
 
@@ -79,19 +79,19 @@ Azure AD のアクセス制御について詳しくは、「[RBAC と Azure port
 
 Azure AD 認証を使って接続する方法について詳しくは、[AAD 認証を使用したノードへの接続](configure-aad.md)に関する記事をご覧ください。
 
-### <a name="basic-authentication"></a>基本認証
+### <a name="basic-authentication"></a>[基本認証]
 
 HTTPS 基本認証では、ユーザー名とパスワードの資格情報を、エンドポイントへの要求の HTTPS ヘッダーで渡します。
 
 トランザクション ノードの基本認証エンドポイントの詳細は、Azure portal で表示できます。 Azure Blockchain Service メンバーのトランザクション ノードの 1 つに移動し、設定で **[基本認証]** を選択します。
 
-![基本認証](./media/configure-transaction-nodes/basic.png)
+![[基本認証]](./media/configure-transaction-nodes/basic.png)
 
 ユーザー名はノードの名前で、変更できません。
 
 URL を使用するには、\<password\> をノードのプロビジョニング時に設定したパスワードに置き換えます。 パスワードは、 **[パスワードのリセット]** を選択して更新できます。
 
-### <a name="access-keys"></a>[アクセス キー]
+### <a name="access-keys"></a>アクセス キー
 
 アクセス キー認証では、アクセス キーはエンドポイントの URL に含まれます。 トランザクション ノードをプロビジョニングすると、2 つのアクセス キーが生成されます。 どちらのアクセス キーも認証に使用できます。 キーが 2 つあるのは、キーを変更およびローテーションできるようにするためです。
 
@@ -131,7 +131,7 @@ Web3、Nethereum、Web3js、および Truffle を使用して、トランザク�
 
 ![サンプル コード](./media/configure-transaction-nodes/sample-code.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure CLI を使用してトランザクション ノードを構成する](manage-cli.md)

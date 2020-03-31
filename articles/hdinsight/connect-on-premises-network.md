@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
 ms.openlocfilehash: 2ed7a5b9c81d1b50f80f379a88688b69c49ed382
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78897909"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>オンプレミス ネットワークへの HDInsight の接続
@@ -73,7 +73,7 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
 
 1. __[基本]__ タブで、次の情報を入力します。  
   
-    | フィールド | Value |
+    | フィールド | 値 |
     | --- | --- |
     |サブスクリプション |適切なサブスクリプションを選択します。|
     |Resource group |前に作成した仮想ネットワークが含まれているリソース グループを選択します。|
@@ -92,7 +92,7 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
 
 4. **[ネットワーク]** タブで、次の情報を入力します。
 
-    | フィールド | Value |
+    | フィールド | 値 |
     | --- | --- |
     |仮想ネットワーク | 前に作成した仮想ネットワークを選択します。|
     |Subnet | 前に作成した仮想ネットワークの既定のサブネットを選択します。 VPN Gateway で使用されているサブネットは選択 __しないでください__。|

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/16/2019
 ms.author: amverma
 ms.openlocfilehash: 62e4d3dbd7357f8c98df3307c1c8fe52cbed1c5e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67707776"
 ---
 # <a name="hb-series-virtual-machines-overview"></a>HB シリーズ仮想マシンの概要
@@ -63,7 +63,7 @@ VM 自体は、pNUMA 0 がそれに与えられなかったことを知りませ
 | Azure CycleCloud のサポート    | はい                         |
 | Azure Batch のサポート         | はい                         |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure での [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) および [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc) の HPC VM サイズの詳細を確認する。
 

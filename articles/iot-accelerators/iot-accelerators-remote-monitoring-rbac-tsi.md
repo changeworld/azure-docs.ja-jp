@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 08/06/2018
 ms.topic: conceptual
 ms.openlocfilehash: 9d5d572c3e32e3645e65ba8d6fc28b567b3c1e9a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65827173"
 ---
 # <a name="configure-access-controls-for-the-time-series-insights-telemetry-explorer"></a>Time Series Insights テレメトリ エクスプローラー用のアクセス制御を構成する
@@ -25,7 +25,7 @@ ms.locfileid: "65827173"
 
 次の手順に従って、ユーザー プリンシパルにデータ アクセスを許可します。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 2. Time Series Insights 環境を検索します。 **[検索]** ボックスに「**Time Series**」と入力します。 検索結果の **[Time Series Environment]\(Time Series 環境\)** を選択します。 
 
@@ -54,7 +54,7 @@ ms.locfileid: "65827173"
 
     ![Time Series Insights ソースの管理 - 結果](media/iot-accelerators-remote-monitoring-rbac-tsi/getstarted-grant-data-access5.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、リモート監視ソリューション アクセラレータで Time Series Insights テレメトリ エクスプローラー用のアクセス制御を付与する方法について説明します。
 

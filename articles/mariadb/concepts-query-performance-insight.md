@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: eb124f40ff915b56011d5f16cd83a9358960621e
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 88777ee44551ed6abdb7a6c7c909d6bf55db48c0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772304"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79527846"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mariadb"></a>Azure Database for MariaDB の Query Performance Insight
 
@@ -66,6 +66,6 @@ Azure Database for MariaDB サーバーのポータル ページで、メニュ�
 
 ![Query Performance Insight の待機時間の統計](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure Database for MariaDB での[監視およびチューニング](concepts-monitoring.md)についてさらに学習する。

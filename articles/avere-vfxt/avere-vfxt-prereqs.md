@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
 ms.openlocfilehash: a183989cc666f00da4be077c719c40d2524fd6e0
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547508"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227491"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Avere vFXT の作成を準備する
 

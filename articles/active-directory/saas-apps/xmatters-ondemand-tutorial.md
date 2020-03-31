@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: e8ae31122d59238ac104d7d873cf56f32977c9af
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67086516"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>チュートリアル:Azure Active Directory と xMatters OnDemand の統合
@@ -152,11 +152,11 @@ xMatters OnDemand で Azure AD シングル サインオンを構成するには
 
 2. 上部のツールバーで、 **[管理者]** をクリックし、左側にあるナビゲーション バーで **[会社の詳細]** をクリックします。
 
-    ![管理](./media/xmatters-ondemand-tutorial/IC776795.png "Admin")
+    ![管理者](./media/xmatters-ondemand-tutorial/IC776795.png "[Admin]")
 
 3. **[SAML 構成]** ページで、次の手順を実行します。
 
-    ![SAML 構成](./media/xmatters-ondemand-tutorial/IC776796.png "SAML 構成")
+    ![[SAML 構成]](./media/xmatters-ondemand-tutorial/IC776796.png "[SAML 構成]")
 
     a. **[Enable SAML]** を選択します。
 
@@ -168,7 +168,7 @@ xMatters OnDemand で Azure AD シングル サインオンを構成するには
 
     e. [会社の詳細] ページで、上部にある **[変更の保存]** をクリックします。
 
-    ![会社の詳細](./media/xmatters-ondemand-tutorial/IC776797.png "Company details")
+    ![Company details](./media/xmatters-ondemand-tutorial/IC776797.png "会社の詳細情報")
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -230,11 +230,11 @@ xMatters OnDemand で Azure AD シングル サインオンを構成するには
 
 2. **[Users]\(ユーザー\)** タブをクリックし、 **[Add User]\(ユーザーの追加\)** をクリックします。
 
-    ![ユーザー](./media/xmatters-ondemand-tutorial/IC781048.png "Users")
+    ![ユーザー](./media/xmatters-ondemand-tutorial/IC781048.png "ユーザー")
 
 3. **[ユーザーの追加]** セクションで、次の手順に従います。
 
-    ![Add a User](./media/xmatters-ondemand-tutorial/IC781049.png "Add a User")
+    ![[ユーザーの追加]](./media/xmatters-ondemand-tutorial/IC781049.png "ユーザーを追加する")
 
     a. **[アクティブ]** を選択します。
 
@@ -246,7 +246,7 @@ xMatters OnDemand で Azure AD シングル サインオンを構成するには
 
     e. **[Site]\(サイト\)** ボックスに、プロビジョニングする有効な Azure AD アカウントの有効なサイトを入力します。
 
-    f. **[Save]** をクリックします。
+    f. **[保存]** をクリックします。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

@@ -14,10 +14,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a1aa99e7e71ad78a62c1a9da303b2ecc8347ebeb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65783847"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory アプリケーション プロキシと Tableau 
@@ -60,9 +60,9 @@ Tableau を発行するには、Azure Portal でアプリケーションを発�
 
 5. 新しいアプリに関する情報を必須フィールドに入力します。 次のガイダンスに従って設定してください。 
 
-    - **内部 URL**:このアプリケーションは、Tableau URL そのものである内部 URL を持っている必要があります。 たとえば、「 `https://adventure-works.tableau.com` 」のように入力します。 
+    - **[内部 URL]** : このアプリケーションは、Tableau URL そのものである内部 URL を持っている必要があります。 たとえば、「 `https://adventure-works.tableau.com` 」のように入力します。 
 
-    - **事前認証方法**:Azure Active Directory (推奨ですが必須ではありません)。 
+    - **[事前認証方法]** : Azure Active Directory (推奨ですが必須ではありません) 
 
 6. ブレード上部の **[追加]** を選択します。 アプリケーションが追加されて、クイック スタート メニューが表示されます。 
 
@@ -80,7 +80,7 @@ Tableau を発行するには、Azure Portal でアプリケーションを発�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure AD アプリケーション プロキシに関する詳細は、[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](application-proxy.md)をご覧ください。
 

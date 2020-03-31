@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b8ad2499aea8bf4e41ca00d6c78d76e112f0493e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65825233"
 ---
 # <a name="problems-signing-in-to-a-custom-developed-application"></a>カスタム開発されたアプリケーションへのサインインに関する問題
@@ -35,7 +35,7 @@ ms.locfileid: "65825233"
 
 * 類似したエラーや問題については、[Azure AD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory) を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure AD 開発者ガイド](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)<br>
 

@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: bb296db0d97382deac984369704777de5d5cb362
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65147684"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Azure ストレージ サービスでのクロス オリジン リソース共有 (CORS) のサポート
@@ -130,10 +130,10 @@ CORS ルールは、次のように評価されます。
 
 | Request |  |  | Response |  |
 | --- | --- | --- | --- | --- |
-| **メソッド** |**元のドメイン** |**要求ヘッダー** |**ルールの一致** |**結果** |
+| **方法** |**元のドメイン** |**要求ヘッダー** |**ルールの一致** |**結果** |
 | **PUT** |http:\//www.contoso.com |x-ms-blob-content-type |最初のルール |Success |
 | **GET** |http:\//www.contoso.com |x-ms-blob-content-type |2 番目のルール |Success |
-| **GET** |http:\//www.contoso.com |x-ms-client-request-id |2 番目のルール |失敗 |
+| **GET** |http:\//www.contoso.com |x-ms-client-request-id |2 番目のルール |障害 |
 
 最初の要求は最初のルールと一致します (元のドメインが許可される元のドメインと一致し、メソッドが許可されるメソッドと一致し、ヘッダーが許可されるヘッダーと一致します)。そのため、成功します。
 
@@ -167,18 +167,18 @@ GET/HEAD 以外のメソッドに対する応答はユーザー エージェン�
 | **要求に Origin ヘッダーが存在する** |**このサービスに CORS ルールが指定されている** |**すべての元のドメインを許可する照合ルール (*) が存在する** |**元のドメインと完全に一致する照合ルールが存在する** |**Origin に設定された Vary にヘッダーが応答に含まれている** |**Access-Control-Allowed-Origin が応答に含まれている: "*"** |**Access-Control-Exposed-Headers が応答に含まれている** |
 | いいえ |いいえ |いいえ |いいえ |いいえ |いいえ |いいえ |
 | いいえ |はい |いいえ |いいえ |はい |いいえ |いいえ |
-| いいえ |可能 |はい |いいえ |いいえ |可能 |はい |
+| いいえ |はい |はい |いいえ |いいえ |はい |はい |
 | はい |いいえ |いいえ |いいえ |いいえ |いいえ |いいえ |
-| 可能 |はい |いいえ |可能 |はい |いいえ |可能 |
+| はい |はい |いいえ |はい |はい |いいえ |はい |
 | はい |はい |いいえ |いいえ |はい |いいえ |いいえ |
-| 可能 |はい |はい |いいえ |いいえ |可能 |はい |
+| はい |はい |はい |いいえ |いいえ |はい |はい |
 
 ## <a name="billing-for-cors-requests"></a>CORS 要求への課金
 ご使用のアカウントで ([Set Blob Service Properties](https://msdn.microsoft.com/library/hh452235.aspx)、[Set Queue Service Properties](https://msdn.microsoft.com/library/hh452232.aspx)、[Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx) を呼び出して) いずれかのストレージ サービスに対して CORS を有効にしている場合、成功したプレフライト要求に対して課金されます。 費用を最小限に抑えるには、エージェント ユーザーが要求をキャッシュするよう、CORS ルールの **MaxAgeInSeconds** 要素に大きい値を設定することを検討してください。
 
 失敗したプレフライト要求に対しては課金されません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Set Blob Service Properties](https://msdn.microsoft.com/library/hh452235.aspx)
 
 [Set Queue Service Properties](https://msdn.microsoft.com/library/hh452232.aspx)

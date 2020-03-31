@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: manayar
 ms.openlocfilehash: 37d93b04e6755512eac6c2a168bd2a04f8ac298f
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76275875"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>アプリケーションの正常性拡張機能と仮想マシン スケール セットの使用
-お使いのアプリケーションの正常性の監視は、ご自身のデプロイを管理およびアップグレードするための重要なシグナルです。 Azure 仮想マシン スケール セットでは、[OS イメージの自動アップグレード](virtual-machine-scale-sets-automatic-upgrade.md)などの[ローリング アップグレード](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)がサポートされ、個々のインスタンスの正常性を監視することで、ご自身のデプロイをアップグレードします。
+お使いのアプリケーションの正常性の監視は、ご自身のデプロイを管理およびアップグレードするための重要なシグナルです。 Azure 仮想マシン スケール セットでは、[OS イメージの自動アップグレード](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)などの[ローリング アップグレード](virtual-machine-scale-sets-automatic-upgrade.md)がサポートされ、個々のインスタンスの正常性を監視することで、ご自身のデプロイをアップグレードします。
 
 この記事では、アプリケーションの正常性拡張機能を使用して、仮想マシン スケール セットにデプロイされたご自身のアプリケーションの正常性を監視する方法について説明します。
 
@@ -59,7 +59,7 @@ ms.locfileid: "76275875"
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
 | publisher | `Microsoft.ManagedServices` | string |
-| 型 | `ApplicationHealthLinux` (Linux)、`ApplicationHealthWindows` (Windows) | string |
+| type | `ApplicationHealthLinux` (Linux)、`ApplicationHealthWindows` (Windows) | string |
 | typeHandlerVersion | `1.0` | INT |
 
 ### <a name="settings"></a>設定

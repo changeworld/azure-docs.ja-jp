@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7e2a8cad7cd4410a95a6ebd60ada22de456737bf
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67462531"
 ---
 # <a name="azure-ad-registered-devices"></a>Azure AD 登録済みデバイス
@@ -34,7 +34,7 @@ Azure AD 登録済みデバイスの目標は、Bring Your Own Device (BYOD) ま
 |   | iOS/Android – ポータル サイトまたは Microsoft Authenticator アプリ |
 |   | MacOS – ポータル サイト |
 | **デバイスのサインイン オプション** | エンドユーザーのローカル資格情報 |
-|   | パスワード |
+|   | Password |
 |   | Windows Hello |
 |   | PIN |
 |   | 他のデバイスの生体認証またはパターン |
@@ -59,7 +59,7 @@ Windows 10 の設定メニューを使用して手動でまたは初めて作業
 
 別のユーザーは、ルート化されている個人用の Android フォンで組織のメールにアクセスしたいと考えています。 会社では準拠デバイスが必要であり、ルート化されたすべてのデバイスをブロックするために Intune コンプライアンス ポリシーが作成されています。 このデバイス上の組織リソースへの従業員からのアクセスは阻止されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure portal を使用してデバイス ID を管理する](device-management-azure-portal.md)
 - [Azure AD で古いデバイスを管理する](manage-stale-devices.md)

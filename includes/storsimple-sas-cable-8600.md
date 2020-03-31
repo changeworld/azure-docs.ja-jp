@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 51e1fd18b52d7e215ba43be540156199fb41778e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67181209"
 ---
 #### <a name="to-attach-the-sas-cables"></a>SAS ケーブルの取り付け方法
@@ -44,7 +44,7 @@ ms.locfileid: "67181209"
       | Label | 説明 |
       |:--- |:--- |
       | A |主エンクロージャ |
-      | b |EBOD エンクロージャ |
+      | B |EBOD エンクロージャ |
       | 1 |コントローラー 0 |
       | 2 |コントローラー 1 |
       | 3 |EBOD コントローラー 0 |

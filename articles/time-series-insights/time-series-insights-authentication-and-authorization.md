@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.custom: seodec18
 ms.openlocfilehash: ff5f7a80e2dcedb1795bae14ee9140c2842303a5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76984590"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API の認証と承認
@@ -38,7 +38,7 @@ Azure Active Directory のアプリ登録フローには、主に 3 つの手順
 
 1. Azure Active Directory に[アプリケーションを登録する](#azure-active-directory-app-registration)。
 1. [Time Series Insights 環境へのデータ アクセス](#granting-data-access)をアプリケーションに承認します。
-1. [クライアント アプリ](#client-app-initialization)の  **からトークンを取得するには、** [申請 ID] **と**[クライアント シークレット]`https://api.timeseries.azure.com/` を使用します。 トークンは、Time Series Insights API の呼び出しに使用できます。
+1. **クライアント アプリ**の  **からトークンを取得するには、** [申請 ID]`https://api.timeseries.azure.com/` と[[クライアント シークレット]](#client-app-initialization) を使用します。 トークンは、Time Series Insights API の呼び出しに使用できます。
 
 **手順 3** に従い、アプリケーションとユーザーの資格情報を分離すると、次のことが可能になります。
 
@@ -107,7 +107,7 @@ Azure Active Directory のアプリ登録フローには、主に 3 つの手順
 [Time Series Insights REST APIs](https://docs.microsoft.com/rest/api/time-series-insights/) に対して認証されたクエリを実行するには、任意の REST クライアント (Postman、JavaScript、C#) を使用して、有効な OAuth 2.0 ベアラー トークンを [Authorization ヘッダー](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate)内で渡す必要があります。 
 
 > [!TIP]
-> チャートやグラフと共に [JavaScript クライアント SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) を使用して、プログラムによって Time Series Insights API で認証を行う方法については、Azure Time Series Insights の[クライアント SDK のサンプルの視覚化](https://tsiclientsample.azurewebsites.net/)に関する記事を参照してください。
+> チャートやグラフと共に [JavaScript クライアント SDK](https://tsiclientsample.azurewebsites.net/) を使用して、プログラムによって Time Series Insights API で認証を行う方法については、Azure Time Series Insights の[クライアント SDK のサンプルの視覚化](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)に関する記事を参照してください。
 
 ### <a name="http-headers"></a>HTTP ヘッダー
 

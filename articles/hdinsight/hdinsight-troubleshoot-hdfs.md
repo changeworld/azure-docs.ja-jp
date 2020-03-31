@@ -9,17 +9,17 @@ ms.topic: troubleshooting
 ms.date: 09/30/2019
 ms.custom: seodec18
 ms.openlocfilehash: 6b0a81a2f3af10a1e5ad60c6c33357a6e906ee47
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75895244"
 ---
 # <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Hadoop HDFS のトラブルシューティング
 
 Apache Ambari で Hadoop 分散ファイル システム (HDFS) ペイロードを操作するときに発生する主な問題とその解決策について説明します。 コマンドの完全な一覧については、[HDFS コマンド ガイド](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HDFSCommands.html)と[ファイル システム シェル ガイド](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)を参照してください。
 
-## <a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>クラスター内からローカルの HDFS にアクセスする方法
+## <a name="how-do-i-access-the-local-hdfs-from-inside-a-cluster"></a><a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>クラスター内からローカルの HDFS にアクセスする方法
 
 ### <a name="issue"></a>問題
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: radwiv
 ms.openlocfilehash: 2429a8d08baa34aed120cffa069abae1fb9a3df9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75353516"
 ---
 # <a name="configure-packet-captures-for-vpn-gateways"></a>VPN ゲートウェイのパケット キャプチャを構成する

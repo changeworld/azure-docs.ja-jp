@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewr: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8fa8ea75cc7fda05326c802c25a91d025b66b5ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65784410"
 ---
 # <a name="how-applications-appear-on-the-access-panel"></a>アクセス パネルにアプリケーションが表示される方法
@@ -153,5 +153,5 @@ Web ベースのポータルであるアクセス パネルを使用すると、
 
 -   Fiddler のトレース
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure Active Directory でのアプリケーションの管理](what-is-application-management.md)

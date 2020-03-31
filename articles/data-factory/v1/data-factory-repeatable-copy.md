@@ -13,15 +13,15 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 7188cb5774699fc6e31fc3b8c78068bb33c6f552
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929008"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236291"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Azure Data Factory での反復可能なコピー
 
-## <a name="repeatable-read-from-relational-sources"></a>リレーショナル ソースからの反復可能な読み取り
+## <a name="repeatable-read-from-relational-sources"></a>リレーショナル ソースからの反復可能読み取り
 リレーショナル データ ストアからデータをコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。 Azure Data Factory では、スライスを手動で再実行できます。 障害が発生したときにスライスを再実行できるように、データセットの再試行ポリシーを構成することもできます。 いずれかの方法でスライスが再実行された際は、何度スライスが実行されても同じデータが読み込まれることを確認する必要があります。  
  
 > [!NOTE]
@@ -147,7 +147,7 @@ ID    Product        Quantity    ModifiedDate
 
 メカニズム 1 と同様、コピー アクティビティにより、指定したスライスのデータが対象 SQL テーブルからクリーンアップされます。 その後、ソースのデータが対象のテーブルに挿入されます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 完全な JSON の例については、次のコネクタに関する記事を参照してください。 
 
 - [Azure SQL Database](data-factory-azure-sql-connector.md)

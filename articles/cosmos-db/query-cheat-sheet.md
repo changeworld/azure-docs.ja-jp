@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
 ms.openlocfilehash: 51660fb416aa9850381f515a3a31cc57519094b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66256974"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB クエリのチート シート
@@ -30,7 +30,7 @@ ms.locfileid: "66256974"
 
 ![Azure Cosmos DB クエリ チート シート - A3 サイズ、SQL API、JavaScript、MongoDB、Gremlin、および Table API のクエリと関数を使用](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 クエリの記述の詳細については、以下の記事を参照してください。
 * SQL API クエリについては、[SQL API を使用したクエリ](tutorial-query-sql-api.md)、[Azure Cosmos DB のための SQL クエリ](how-to-sql-query.md)、および[SQL 構文のリファレンス](sql-api-query-reference.md)を参照してください
 * MongoDB クエリについては、[Azure Cosmos DB の MongoDB 用 API を使用するクエリ](tutorial-query-mongodb.md)と [Azure Cosmos DB の MongoDB 用 API の機能のサポートと構文](mongodb-feature-support.md)に関するページを参照してください

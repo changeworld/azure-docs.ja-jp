@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: d2e9fcd6f6292c1da76e725e90deda4547b3682d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74975518"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL の監視とチューニング - Hyperscale (Citus)
@@ -27,19 +27,19 @@ Hyperscale (Citus) には、サーバー グループ内の各ノード用のメ
 
 これらのメトリックは、Hyperscale (Citus) ノードで使用できます。
 
-|メトリック|メトリックの表示名|単位|説明|
+|メトリック|メトリックの表示名|ユニット|説明|
 |---|---|---|---|
 |active_connections|アクティブな接続|Count|サーバーへのアクティブな接続の数|
 |cpu_percent|CPU 使用率|Percent|使用されている CPU の割合|
 |iops|IOPS|Count|[IOPS 定義](../virtual-machines/linux/premium-storage-performance.md#iops)と [Hyperscale スループット](concepts-hyperscale-configuration-options.md)に関する記事を参照してください|
 |memory_percent|メモリの割合|Percent|使用されているメモリの割合|
-|network_bytes_ingress|Network In|Bytes|アクティブな接続全体のネットワーク受信。|
-|network_bytes_egress|Network Out|Bytes|アクティブな接続全体のネットワーク送信。|
+|network_bytes_ingress|Network In|バイト|アクティブな接続全体のネットワーク受信。|
+|network_bytes_egress|Network Out|バイト|アクティブな接続全体のネットワーク送信。|
 |storage_percent|ストレージの割合|Percent|サーバーの最大数のうち使用されているストレージの割合|
-|storage_used|使用済みストレージ|Bytes|使用されているストレージの量。 サービスで使用されるストレージには、データベース ファイル、トランザクション ログ、サーバー ログが含まれることがあります。|
+|storage_used|使用済みストレージ|バイト|使用されているストレージの量。 サービスで使用されるストレージには、データベース ファイル、トランザクション ログ、サーバー ログが含まれることがあります。|
 
 Azure にはクラスター全体の集計メトリックは用意されていませんが、複数のノードのメトリックを同じグラフに配置することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - メトリックに対するアラートの作成のガイダンスについては、[アラートを設定する方法](howto-hyperscale-alert-on-metric.md)に関するページをご覧ください。

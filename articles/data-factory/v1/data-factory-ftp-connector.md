@@ -13,11 +13,11 @@ ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 55c8bf2210eb0990a91aeff1f90e4af4db2c22ab
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927178"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236371"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Azure Data Factory を使用して FTP サーバーからデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -39,10 +39,10 @@ FTP サーバーから、サポートされている任意のシンク データ
 
 FTP サーバーとして、同じオンプレミスのコンピューターまたは IaaS VM にゲートウェイをインストールすることが可能です。 ただし、リソースの競合を防ぎ、パフォーマンスの向上を図るために、別のコンピューターまたは IaaS VM にゲートウェイをインストールすることをお勧めします。 別のコンピューターにゲートウェイをインストールすると、そのコンピューターが FTP サーバーにアクセスできるようになります。
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 さまざまなツールまたは API を使用して、FTP ソースからデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-パイプラインを作成する最も簡単な方法は、**Data Factory コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」で、簡単なチュートリアルをご覧いただけます。
+パイプラインを作成する最も簡単な方法は、**Data Factory コピー ウィザード**を使うことです。 「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」で、簡単なチュートリアルをご覧いただけます。
 
 また、次のツールを使用してパイプラインを作成することもできます。**Visual Studio**、**PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
@@ -388,8 +388,8 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 > [!NOTE]
 > ソース データセット列からシンク データセット列へのマッピングについては、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
-次の記事を参照してください。
+## <a name="next-steps"></a>次のステップ
+次の記事をご覧ください。
 
 * Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 

@@ -2,14 +2,14 @@
 title: エージェントベースの Azure Migrate Server Migration を使用して VMware VM を移行する
 description: Azure Migrate を使用して VMware VM のエージェントベース移行を実行する方法について説明します。
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 03/09/2020
 ms.custom: MVC
-ms.openlocfilehash: 49b576770d67ae9d2b98a8a0004f4219ecf0fae4
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 64873c5185660c58cd4d07d60df3d086364d6288
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77057279"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222029"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware VM を Azure に移行する (エージェントベース)
 
@@ -156,7 +156,7 @@ Azure Migrate Server Migration では、以下を実行するために、VMware 
 
 - マシンのレプリケーションを有効にしている場合は、Azure Migrate レプリケーション アプライアンスでこのサービスをプッシュ インストールできます。または、手動でインストールしたり、インストール ツールを使用したりできます。
 - このチュートリアルでは、プッシュ インストールでモビリティ サービスをインストールします。
-- プッシュ インストールの場合は、Azure Migrate Server Migration で VM へのアクセスに使用できるアカウントを準備する必要があります。
+- プッシュ インストールの場合は、Azure Migrate Server Migration で VM へのアクセスに使用できるアカウントを準備する必要があります。 モビリティ サービスを手動でインストールしない場合、このアカウントはプッシュ インストールにのみ使用されます。
 
 アカウントを次のように準備します。
 
@@ -201,9 +201,9 @@ VMware サーバーと VM が、Azure への移行の要件に準拠している
 
     Azure Migrate プロジェクトは、これらのいずれの地域でも作成できます。
 
-    **地理的な場所** | **[リージョン]**
+    **地理的な場所** | **リージョン**
     --- | ---
-    Asia | 東南アジア
+    アジア | 東南アジア
     ヨーロッパ | 北ヨーロッパまたは西ヨーロッパ
     United States | 米国東部または米国中西部
 
@@ -409,7 +409,10 @@ OVF テンプレートのダウンロード後、それを VMware にインポ�
 
 ## <a name="complete-the-migration"></a>移行を完了する
 
-1. 移行が完了したら、VM を右クリックして、 **[移行を停止する]** を選択します。 これで、オンプレミスのマシンのレプリケーションが停止し、VM のレプリケーション状態情報がクリーンアップされます。
+1. 移行が完了したら、VM を右クリックして、 **[移行を停止する]** を選択します。 次の処理が実行されます。
+    - オンプレミス マシンのレプリケーションを停止します。
+    - Azure Migrate: Server Migration の **[サーバーをレプリケートしています]** のカウントからマシンを削除します。Server Migration に関するエラーのトラブルシューティングに役立つ情報を提供しています。
+    - VM のレプリケーション状態情報をクリーンアップします。
 2. Azure VM の [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) または [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) エージェントを、移行されたマシンにインストールします。
 3. データベース接続文字列、および Web サーバー構成の更新など、移行後のアプリの微調整を実行します。
 4. Azure で現在実行されている移行後のアプリケーション上で、最終的なアプリケーションと移行の受け入れのテストを実行します。

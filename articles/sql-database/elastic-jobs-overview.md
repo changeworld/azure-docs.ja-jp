@@ -11,12 +11,12 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 633c3ffc8e266087c88116a15c43469727a9a50d
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: e5b07ac0e9421cbca034b17c573cab16641f49f7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133642"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79214472"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>エラスティック ジョブの作成、構成、および管理
 
@@ -33,9 +33,9 @@ ms.locfileid: "77133642"
 
 ## <a name="create-run-and-manage-jobs"></a>ジョブの作成、実行、および管理
 
-1. [PowerShell](elastic-jobs-powershell.md) または [T-SQL](elastic-jobs-tsql.md#create-a-credential-for-job-execution) を使用して、"*ジョブ データベース*" にジョブ実行のための資格情報を作成します。
+1. *PowerShell* または [T-SQL](elastic-jobs-powershell.md) を使用して、"[ジョブ データベース](elastic-jobs-tsql.md#create-a-credential-for-job-execution)" にジョブ実行のための資格情報を作成します。
 2. [PowerShell](elastic-jobs-powershell.md) または [T-SQL](elastic-jobs-tsql.md#create-a-target-group-servers) を使用して、ターゲット グループ (ジョブの実行の対象とするデータベース) を定義します。
-3. ジョブを実行するデータベースのそれぞれに、ジョブ エージェントの資格情報を作成 [(グループ内の各データベースにユーザー (またはロール) を追加)](sql-database-control-access.md) します。 例については、[PowerShell のチュートリアル](elastic-jobs-powershell.md)を参照してください。
+3. ジョブを実行するデータベースのそれぞれに、ジョブ エージェントの資格情報を作成 [(グループ内の各データベースにユーザー (またはロール) を追加)](sql-database-manage-logins.md) します。 例については、[PowerShell のチュートリアル](elastic-jobs-powershell.md)を参照してください。
 4. [PowerShell](elastic-jobs-powershell.md) または [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) を使用してジョブを作成します。
 5. [PowerShell](elastic-jobs-powershell.md) または [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) を使用してジョブ ステップを追加します。
 6. [PowerShell](elastic-jobs-powershell.md#run-the-job) または [T-SQL](elastic-jobs-tsql.md#begin-ad-hoc-execution-of-a-job) を使用してジョブを実行します。

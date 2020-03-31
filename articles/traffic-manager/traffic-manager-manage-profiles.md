@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: rohink
 ms.openlocfilehash: adfe7d117d2329832a5b5e9e782a9029a682ff3b
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938605"
 ---
 # <a name="manage-an-azure-traffic-manager-profile"></a>Azure Traffic Manager プロファイルの管理

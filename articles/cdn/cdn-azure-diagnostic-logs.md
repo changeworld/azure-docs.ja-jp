@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
 ms.openlocfilehash: 86696ed6715b4e43a9d02232c013eb64feb61f67
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67594203"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 診断ログ
@@ -51,7 +51,7 @@ Azure Diagnostics ログにより、基本的な使用メトリックを CDN エ
 
 CDN コア分析を使用してログ記録を有効にするには、次の手順に従います。
 
-[Azure Portal](https://portal.azure.com) にサインインします。 ワークフローの CDN をまだ有効にしていない場合は、[Azure CDN のプロファイルとエンドポイントを作成](cdn-create-new-endpoint.md)してから続行してください。
+[Azure portal](https://portal.azure.com) にサインインします。 ワークフローの CDN をまだ有効にしていない場合は、[Azure CDN のプロファイルとエンドポイントを作成](cdn-create-new-endpoint.md)してから続行してください。
 
 1. Azure Portal で、**CDN プロファイル** に移動してください。
 
@@ -196,7 +196,7 @@ Azure ストレージ アカウントからコア分析データにアクセス�
 |プロファイル名 |CDN プロファイルの名前|
 |エンドポイント名 |CDN エンドポイントの名前|
 |年|  年の 4 桁表記 (例: 2017)|
-|月| 月の 2 桁表記。 01 = 1 月 ... 12 = 12 月|
+|Month| 月の 2 桁表記。 01 = 1 月 ... 12 = 12 月|
 |日|   日付の 2 桁表記|
 |PT1H.json| 分析データが格納されている実際の JSON ファイル|
 

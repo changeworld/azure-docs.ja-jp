@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: b8a01b5f2f5ec64fea014468356408220f9c4f1a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721372"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Azure 仮想マシン上の SQL Server にデータを移動する
@@ -38,7 +38,7 @@ Machine Learning 用に Azure SQL Database にデータを移動するための�
 >
 >
 
-## <a name="prereqs"></a>前提条件
+## <a name="prerequisites"></a><a name="prereqs"></a>前提条件
 このチュートリアルでは、以下があることを前提としています。
 
 * **Azure サブスクリプション**。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
@@ -46,14 +46,14 @@ Machine Learning 用に Azure SQL Database にデータを移動するための�
 * **Azure VM 上に SQL Server**がプロビジョニングされていること。 手順については、「 [高度な分析のために Azure SQL Server 仮想マシンを IPython Notebook サーバーとして設定する](../data-science-virtual-machine/setup-sql-server-virtual-machine.md)」を参照してください。
 * **Azure PowerShell** がローカルにインストールされ構成されていること。 手順については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」を参照してください。
 
-## <a name="filesource_to_sqlonazurevm"></a> フラット ファイル ソースから Azure VM 上の SQL Server にデータを移動する
+## <a name="moving-data-from-a-flat-file-source-to-sql-server-on-an-azure-vm"></a><a name="filesource_to_sqlonazurevm"></a> フラット ファイル ソースから Azure VM 上の SQL Server にデータを移動する
 データがフラット ファイル (行と列の形式で配置されている) に存在する場合は、次の方法を使用して Azure の SQL Server VM にデータを移動できます。
 
 1. [コマンド ライン一括コピー ユーティリティ (BCP)](#insert-tables-bcp)
 2. [一括挿入 SQL クエリ](#insert-tables-bulkquery)
 3. [SQL Server のグラフィカル組み込みユーティリティ (インポート/エクスポート、SSIS)](#sql-builtin-utilities)
 
-### <a name="insert-tables-bcp"></a>コマンド ライン一括コピー ユーティリティ (BCP)
+### <a name="command-line-bulk-copy-utility-bcp"></a><a name="insert-tables-bcp"></a>コマンド ライン一括コピー ユーティリティ (BCP)
 BCP は、SQL Server と一緒にインストールされるコマンド ライン ユーティリティであり、データを移動する最も簡単な方法の 1 つです。 これは、3 つの異なる SQL Server (オンプレミスの SQL Server、SQL Azure、および Azure での SQL Server VM) のすべてで機能します。
 
 > [!NOTE]
@@ -86,7 +86,7 @@ BCP は、SQL Server と一緒にインストールされるコマンド ライ�
 >
 >
 
-### <a name="insert-tables-bulkquery-parallel"></a>高速データ移動用の挿入の並列処理
+### <a name="parallelizing-inserts-for-faster-data-movement"></a><a name="insert-tables-bulkquery-parallel"></a>高速データ移動用の挿入の並列処理
 移動するデータのサイズが大きい場合は、PowerShell スクリプトで複数の BCP コマンドを並行して同時に実行することによって、高速化できます。
 
 > [!NOTE]
@@ -132,7 +132,7 @@ Get-Job | Receive-Job
 Set-ExecutionPolicy Restricted #reset the execution policy
 ```
 
-### <a name="insert-tables-bulkquery"></a>一括挿入 SQL クエリ
+### <a name="bulk-insert-sql-query"></a><a name="insert-tables-bulkquery"></a>一括挿入 SQL クエリ
 [一括挿入 SQL クエリ](https://msdn.microsoft.com/library/ms188365)は、行/列ベースのファイルからデータをデータベースにインポートする場合に使用できます (サポートされるタイプについては「[一括エクスポートまたは一括インポートのデータの準備 (SQL Server)](https://msdn.microsoft.com/library/ms188609)」のトピックで説明されています)。
 
 一括挿入用のいくつかのサンプル コマンドを以下に示します。  
@@ -156,14 +156,14 @@ Set-ExecutionPolicy Restricted #reset the execution policy
     )
     ```
 
-### <a name="sql-builtin-utilities"></a>
+### <a name="built-in-utilities-in-sql-server"></a><a name="sql-builtin-utilities"></a>
 SQL Server 統合サービス (SSIS) を使用して、フラット ファイルから Azure の SQL Server VM にデータをインポートすることができます。
 SSIS は 2 つの Studio 環境で使用できます。 詳細については、「 [統合サービス (SSIS) と Studio 環境](https://technet.microsoft.com/library/ms140028.aspx)」を参照してください:。
 
 * SQL Server データ ツールの詳細については、「 [Microsoft SQL Server データ ツール](https://msdn.microsoft.com/data/tools.aspx)  
 * インポート/エクスポート ウィザードの詳細については、「 [SQL Server のインポートおよびエクスポート ウィザード](https://msdn.microsoft.com/library/ms141209.aspx)
 
-## <a name="sqlonprem_to_sqlonazurevm"></a>オンプレミスの SQL Server から Azure VM 上の SQL Server にデータを移動する
+## <a name="moving-data-from-on-premises-sql-server-to-sql-server-on-an-azure-vm"></a><a name="sqlonprem_to_sqlonazurevm"></a>オンプレミスの SQL Server から Azure VM 上の SQL Server にデータを移動する
 次の移行方法を使用することもできます。
 
 1. [Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード](#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard)
@@ -176,7 +176,7 @@ SSIS は 2 つの Studio 環境で使用できます。 詳細については、
 ### <a name="deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard"></a>Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード
 **Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード** は、オンプレミスの SQL Server インスタンスから Azure VM の SQL Server にデータを簡単に移行するためのお勧めの方法です。 詳しい手順や、その他の代替策の詳細については、「[Azure VM の SQL Server へのデータベースの移行](../../virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md)」を参照してください。
 
-### <a name="export-flat-file"></a>フラット ファイルへのエクスポート
+### <a name="export-to-flat-file"></a><a name="export-flat-file"></a>フラット ファイルへのエクスポート
 「 [データの一括インポートと一括エクスポート (SQL Server)](https://msdn.microsoft.com/library/ms175937.aspx) 」のトピックで説明されているように、さまざまな方法を使用してオンプレミスの SQL Server からデータを一括エクスポートできます。 このドキュメントでは、一例として一括コピー プログラム (BCP) について説明します。 データをフラット ファイルにエクスポートした後は、一括インポートを使用して別の SQL Server にそのデータをインポートできます。
 
 1. 次のように bcp ユーティリティを使用して、オンプレミスの SQL Server からファイルにデータをエクスポートします。
@@ -194,12 +194,12 @@ SSIS は 2 つの Studio 環境で使用できます。 詳細については、
         bcp dbname..tablename format nul -c -x -f  exportformatfilename.xml  -U username@servername.database.windows.net -S tcp:servername -P password  --t \t -r \n
 4. 「[ファイル ソースからのデータの移動](#filesource_to_sqlonazurevm) 」セクションで説明されているいずれかの方法を使用して、フラット ファイルのデータを SQL Server に移動します。
 
-### <a name="sql-migration"></a>SQL Database 移行ウィザード
+### <a name="sql-database-migration-wizard"></a><a name="sql-migration"></a>SQL Database 移行ウィザード
 [SQL Server データベース移行ウィザード](https://sqlazuremw.codeplex.com/) は、2 つの SQL server インスタンス間でデータを移動するための使いやすい方法を提供します。 これにより、ユーザーはソースと移動先テーブル間でデータ スキーマをマップし、列の型と他のさまざまな機能を選択できます。 これは、内部で一括コピー (BCP) を使用します。 次に、SQL データベースの移行ウィザードのようこそ画面のスクリーン ショットを示します。  
 
 ![SQL Server 移行ウィザード][2]
 
-### <a name="sql-backup"></a>データベースのバックアップと復元
+### <a name="database-back-up-and-restore"></a><a name="sql-backup"></a>データベースのバックアップと復元
 SQL Server は以下のものをサポートします。
 
 1. [データベースのバックアップと復元機能](https://msdn.microsoft.com/library/ms187048.aspx) (ローカル ファイルに対するバックアップと復元、または BLOB への BACPAC エクスポート) と[データ層アプリケーション](https://msdn.microsoft.com/library/ee210546.aspx) (BACPAC を使用)。

@@ -8,10 +8,10 @@ ms.date: 12/02/2019
 ms.author: sngun
 ms.reviewer: sngun
 ms.openlocfilehash: a46a69476a2ad6550bc7b3a533fd09565d461db3
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74872130"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Azure Cosmos DB でのグローバル データ分散 - 内部のしくみ
@@ -79,7 +79,7 @@ Cosmos データベースを単一または複数の書き込みリージョン�
 
 Cosmos DB の 5 つの一貫性モデルのセマンティクスについては[こちら](consistency-levels.md)で取り上げられています。また、高水準の TLA+ 仕様を使用した数学的観点からの説明は、[こちら](https://github.com/Azure/azure-cosmos-tla)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次に、次の記事を使用してグローバル分散を構成する方法について説明します。
 

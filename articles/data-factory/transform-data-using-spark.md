@@ -11,10 +11,10 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/31/2018
 ms.openlocfilehash: eb887a7d9081875c28964ddb1e3d1b2e609862fd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74912965"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Azure Data Factory での Spark アクティビティを使用したデータの変換
@@ -59,7 +59,7 @@ Spark アクティビティのサンプルの JSON 定義を次に示します�
 
 | プロパティ              | 説明                              | 必須 |
 | --------------------- | ---------------------------------------- | -------- |
-| 名前                  | パイプラインのアクティビティの名前。    | はい      |
+| name                  | パイプラインのアクティビティの名前。    | はい      |
 | description           | アクティビティの動作を説明するテキスト。  | いいえ       |
 | type                  | Spark アクティビティの場合、アクティビティの種類は HDInsightSpark です。 | はい      |
 | linkedServiceName     | Spark プログラムが実行されている HDInsight Spark のリンクされたサービスの名前。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | はい      |
@@ -67,10 +67,10 @@ Spark アクティビティのサンプルの JSON 定義を次に示します�
 | rootPath              | Azure BLOB コンテナーと Spark ファイルを含むフォルダー。 ファイル名は大文字と小文字が区別されます。 このフォルダーの構造の詳細については、「フォルダー構造」(次のセクション) をご覧ください。 | はい      |
 | entryFilePath         | Spark コード/パッケージのルート フォルダーへの相対パス。 エントリ ファイルは、Python ファイルまたは .jar ファイルのいずれかにする必要があります。 | はい      |
 | className             | アプリケーションの Java/Spark のメイン クラス      | いいえ       |
-| arguments             | Spark プログラムのコマンドライン引数の一覧です。 | いいえ       |
+| 引数             | Spark プログラムのコマンドライン引数の一覧です。 | いいえ       |
 | proxyUser             | Spark プログラムの実行を偽装する借用すユーザー アカウント | いいえ       |
 | sparkConfig           | 「[Spark Configuration - Application properties (Spark 構成 - アプリケーションのプロパティ)](https://spark.apache.org/docs/latest/configuration.html#available-properties)」と題するトピックに示されている Spark 構成プロパティの値を指定します。 | いいえ       |
-| getDebugInfo          | HDInsight クラスターで使用されている Azure Storage または sparkJobLinkedService で指定された Azure Storage に Spark ログ ファイルがコピーされるタイミングを指定します。 使用できる値は以下の通りです。None、Always、または Failure。 既定値:なし。 | いいえ       |
+| getDebugInfo          | HDInsight クラスターで使用されている Azure Storage または sparkJobLinkedService で指定された Azure Storage に Spark ログ ファイルがコピーされるタイミングを指定します。 使用できる値: None、Always、または Failure。 既定値: None。 | いいえ       |
 
 ## <a name="folder-structure"></a>フォルダー構造
 Spark ジョブは、Pig/Hive ジョブよりも拡張性に優れています。 Spark ジョブの場合、jar パッケージ (java CLASSPATH に配置)、python ファイル (PYTHONPATH に配置) など、複数の依存関係を利用できます。
@@ -107,7 +107,7 @@ SparkJob2
         script2.py
     logs
 ```
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 別の手段でデータを変換する方法を説明している次の記事を参照してください。 
 
 * [U-SQL アクティビティ](transform-data-using-data-lake-analytics.md)

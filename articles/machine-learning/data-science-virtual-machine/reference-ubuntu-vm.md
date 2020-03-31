@@ -9,10 +9,10 @@ ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
 ms.openlocfilehash: 5c184e7f1dc828c3f9ff8d449d29ab3aaa4d1cf6
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77525823"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>リファレンス: Ubuntu (Linux) Data Science Virtual Machine
@@ -254,7 +254,7 @@ R と Python のモデルを Azure Machine Learning にデプロイする方法�
 
 ## <a name="machine-learning-tools"></a>機械学習ツール
 
-VM には、プリコンパイルされてローカルにプレインストールされた機械学習ツールとアルゴリズムが備わっています。 チェックの内容は次のとおりです
+VM には、プリコンパイルされてローカルにプレインストールされた機械学習ツールとアルゴリズムが備わっています。 これには以下が含まれます。
 
 * **Vowpal Wabbit**: 高速オンライン学習アルゴリズム。
 * **xgboost**: 最適化されたブースト ツリー アルゴリズムを提供するツール。

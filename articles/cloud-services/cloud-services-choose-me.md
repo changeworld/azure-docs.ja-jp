@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
 ms.openlocfilehash: c531e02656c9f6342670024b2220386e789a2d98
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75386852"
 ---
 # <a name="overview-of-azure-cloud-services"></a>Azure Cloud Services の概要
@@ -23,9 +23,9 @@ Azure Cloud Services は、[サービスとしてのプラットフォーム](ht
 
 Azure Cloud Services ロールには、次の 2 種類があります。 2 つの唯一の違いは、VM でロールがホストされる方法です。
 
-* **Web ロール**:IIS を使用して自動的にアプリをデプロイおよびホストします。
+* **Web ロール**: IIS を使用して自動的にアプリをデプロイおよびホストします。
 
-* **worker ロール**:IIS を使用せず、アプリをスタンドアロンで実行します。
+* **worker ロール**: IIS を使用せず、アプリをスタンドアロンで実行します。
 
 たとえば、単純なアプリケーションでは、web ロールを 1 つだけ使用して web サイトにサービスを提供している場合があります。 もっと複雑なアプリケーションでは、Web ロールを使用してユーザーからの受信要求を処理し、次にそれらの要求を worker ロールに渡して処理を行っている場合があります (この通信は、[Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) または [Azure Queue Storage](../storage/common/storage-introduction.md) を使用する可能性があります)。
 

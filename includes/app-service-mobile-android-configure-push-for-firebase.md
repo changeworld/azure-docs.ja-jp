@@ -5,10 +5,10 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 51a75ee7bf87c38e3916bdbc8d85abcfb14dca8b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67181680"
 ---
 1. [Azure Portal](https://portal.azure.com/) で、 **[すべて参照]**  >  **[App Services]** の順にクリックし、Mobile Apps バックエンドをクリックします。 **[設定]** で、 **[App Service Push (App Service プッシュ)]** 、通知ハブ名の順にクリックします。

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ms.openlocfilehash: 5f7035472ae408987a14f06492a762b56fa657b8
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76697610"
 ---
 # <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>委任されたアクセス許可とアプリケーションのアクセス許可の違いを識別する方法

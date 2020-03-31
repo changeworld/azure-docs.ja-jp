@@ -4,15 +4,15 @@ titleSuffix: Azure App Configuration
 description: 機能フィルターを使用してユーザーのサブセットに対して機能を有効にする方法を説明します
 ms.service: azure-app-configuration
 author: lisaguthrie
+ms.author: lcozzens
 ms.topic: conceptual
 ms.date: 3/9/2020
-ms.author: lcozzens
-ms.openlocfilehash: b01a22d5a7068ee49e718a66432f52a8f6ef02ac
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 181c97615985283011834dcf9145810b1563fb4a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79126414"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80057013"
 ---
 # <a name="use-feature-filters-to-enable-a-feature-for-a-subset-of-users"></a>機能フィルターを使用してユーザーのサブセットに対して機能を有効にする
 

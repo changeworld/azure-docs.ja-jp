@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: cynthn
 ms.openlocfilehash: cc83c8b73c73b2aa70bc36bad175e5c19c1ab700
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76275711"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Azure PowerShell を使用して仮想マシン スケール セットを管理する
@@ -38,7 +38,7 @@ Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 ```
 
-特定の VM インスタンスに関する追加情報を表示するには、[Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) に `-InstanceId` パラメーターを追加し、表示するインスタンスを指定します。 次の例では、*myScaleSet* という名前のスケール セットおよび *myResourceGroup* リソース グループ内の VM インスタンス *0* に関する情報を表示します。 独自の名前を次のように入力します。
+特定の VM インスタンスに関する追加情報を表示するには、`-InstanceId`Get-AzVmssVM[ に ](/powershell/module/az.compute/get-azvmssvm) パラメーターを追加し、表示するインスタンスを指定します。 次の例では、*myScaleSet* という名前のスケール セットおよび *myResourceGroup* リソース グループ内の VM インスタンス *0* に関する情報を表示します。 独自の名前を次のように入力します。
 
 ```powershell
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "0"

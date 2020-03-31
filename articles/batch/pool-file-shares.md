@@ -15,10 +15,10 @@ ms.date: 05/24/2018
 ms.author: labrenne
 ms.custom: ''
 ms.openlocfilehash: 156dad25af5abd1b4d5db32569faf09a23fadfb1
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77022513"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Batch プールと共に Azure ファイル共有を使用する

@@ -1,18 +1,18 @@
 ---
 title: Linux を実行する仮想マシンで LVM を構成する
 description: Azure で Linux の LVM を構成する方法について説明します。
-author: mimckitt
+author: gbowerman
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 09/27/2018
-ms.author: mimckitt
+ms.author: guybo
 ms.subservice: disks
-ms.openlocfilehash: 781ff1e6bda655ebd60d86e19375dcb6da051039
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 7f560a1e6266b5f2452bf9442d2d4c983de1236e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78969731"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066796"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>Azure で Linux VM の LVM を構成する
 このドキュメントでは、Azure 仮想マシンに論理ボリューム マネージャー (LVM) を構成する方法を説明します。 LVM は Azure VM の OS ディスクまたはデータ ディスクで使用できますが、既定では、ほとんどのクラウド イメージの OS ディスクには LVM は構成されません。 以下の手順では、データ ディスクへの LVM の構成に焦点を当てます。
@@ -149,7 +149,7 @@ LVM を使用して、複数の物理ディスクを 1 つの記憶域ボリュ�
 
 Linux VM で TRIM のサポートを有効にする方法は 2 通りあります。 通常どおり、ご使用のディストリビューションで推奨される方法をお問い合わせください。
 
-- 次のように、`/etc/fstab` で `discard` マウント オプションを使用します。
+- 次のように、`discard` で `/etc/fstab` マウント オプションを使用します。
 
     ```bash 
     /dev/data-vg01/data-lv01  /data  ext4  defaults,discard  0  2

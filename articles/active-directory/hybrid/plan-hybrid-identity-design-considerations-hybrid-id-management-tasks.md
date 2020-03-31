@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8a829d39ff21a1abeafd3b4362747894d196d9d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67109378"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>ハイブリッド ID ライフサイクルの計画を立てる
@@ -66,9 +66,9 @@ ID マネージャーの目標の 1 つは、あらゆる ID プロバイダー�
 *    どのようなシングル サインオン機能が利用できますか。
 *    B2B と B2C の間の ID フェデレーションにはどのような選択肢がありますか。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [ハイブリッド ID 管理の導入戦略の決定](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 [設計上の考慮事項の概要](plan-hybrid-identity-design-considerations-overview.md)
 

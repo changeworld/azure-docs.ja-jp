@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/28/2020
 ms.author: victorh
 ms.openlocfilehash: ab9a500d9535b55702b8baff15f8cc47e6ac2c86
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78196717"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Azure Firewall と Azure Standard Load Balancer を統合する

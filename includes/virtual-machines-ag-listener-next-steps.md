@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 27b09ea9cc7ce3cf2559304a26d0c04f3ea30b54
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67181127"
 ---
 リスナーは、クライアントを自動的にプライマリ レプリカに接続するだけでなく、読み取り専用ワークロードをセカンダリにリダイレクトするのにも使用できます。 このように使用することで、ソリューション全体のパフォーマンスとスケーラビリティが向上します。 詳細については、「[Use ReadIntent Routing with Azure AlwaysOn Availability Group Listener (Azure AlwaysOn 可用性グループ リスナーと共に ReadIntent ルーティングを使用する)](https://go.microsoft.com/fwlink/?LinkId=522515)」を参照してください。

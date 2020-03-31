@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8818158e8eefe89a1cec98c7e4972ac4a6d931a6
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: dc6eee984f6c6fbdf916d1287d98b921158271af
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78207369"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79136399"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-whosoffice"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と WhosOffice の統合
 
@@ -30,7 +30,7 @@ ms.locfileid: "78207369"
 * ユーザーが自分の Azure AD アカウントを使用して WhosOffice に自動的にサインインできるようになります。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -179,7 +179,7 @@ WhosOffice で Azure AD SSO を構成してテストするには、次の構成�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

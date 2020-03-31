@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 12/06/2019
 ms.author: yelevin
 ms.openlocfilehash: b392644e504fa8187e637278bef8718c9c2caa3f
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77582128"
 ---
 # <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Azure Sentinel でハンティング ライブストリームを使用して脅威を検出する

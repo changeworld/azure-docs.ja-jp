@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: f38f0cec336061c97daa02798e94d98844d76ea2
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+manager: lizross
+ms.openlocfilehash: 9f9f7f709d31967e892900ccb25657a5963c0379
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368776"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79370221"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>チュートリアル:Windows Virtual Desktop でテナントを作成する
 
@@ -72,7 +73,7 @@ Azure Active Directory ユーザーに TenantCreator アプリケーション �
 
 TenantCreator アプリケーション ロールを割り当てるには:
 
-1. TenantCreator アプリケーション ロールを管理するには、 [Azure portal](https://portal.azure.com)  にアクセスします。 **[エンタープライズ アプリケーション]** を選択します。 複数の Azure Active Directory テナントを操作する場合は、プライベート ブラウザー セッションを開き、URL をコピーしてアドレス バーに貼り付けるのがベスト プラクティスです。
+1. TenantCreator アプリケーション ロールを管理するには、[Azure portal](https://portal.azure.com) にアクセスします。 **[エンタープライズ アプリケーション]** を選択します。 複数の Azure Active Directory テナントを操作する場合は、プライベート ブラウザー セッションを開き、URL をコピーしてアドレス バーに貼り付けるのがベスト プラクティスです。
 
    ![Azure portal でのエンタープライズ アプリケーションの検索を示すスクリーンショット](media/azure-portal-enterprise-applications.png)
 2. **[エンタープライズ アプリケーション]** 内で「**Windows Virtual Desktop**」を検索します。 前のセクションで同意した 2 つのアプリケーションが表示されます。 これらの 2 つのアプリについて、 **[Windows Virtual Desktop]** を選択します。
@@ -81,7 +82,7 @@ TenantCreator アプリケーション ロールを割り当てるには:
 3. **[ユーザーとグループ]** を選択します。 アプリケーションへの同意を付与した管理者が、**既定のアクセス** ロールを割り当てられた状態で既に表示されている場合があります。 これだけでは Windows Virtual Desktop テナントを作成するのに不十分です。 以降の手順に従って、**TenantCreator** ロールをユーザーに付加します。
    
    !["Windows Virtual Desktop" エンタープライズ アプリケーションを管理するために割り当てられたユーザーとグループを示すスクリーンショット。 このスクリーンショットには、"既定のアクセス" の割り当てのみが示されています。](media/tenant-default-access.png)
-4. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ブレードで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** タブで **[ユーザーとグループ]** を選択します。
 5. 自分の Windows Virtual Desktop テナントを作成するユーザー アカウントを検索します。 わかりやすいように、これはグローバル管理者アカウントにできます。
    - Microsoft の ID プロバイダー (contosoadmin@live.com、contosoadmin@outlook.com など) を使用している場合、Windows Virtual Desktop にサインインできない場合があります。 代わりにドメイン固有のアカウントを使用することをお勧めします (admin@contoso.com、admin@contoso.onmicrosoft.com など)。
 

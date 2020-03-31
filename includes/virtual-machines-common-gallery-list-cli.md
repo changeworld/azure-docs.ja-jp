@@ -9,10 +9,10 @@ ms.date: 09/20/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 1ec3ecdafb8e475f5f13372789528612ccd7b8b9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66226008"
 ---
 ## <a name="using-rbac-to-share-images"></a>RBAC を使用してイメージを共有する

@@ -9,10 +9,10 @@ ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: e5148ff9e92a2e550a3117356a4e77cbac8fc6f4
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67673408"
 ---
 *キャッシュのウォームアップ*  
@@ -73,7 +73,7 @@ IO 要求サイズ、% 読み取り/書き込み、% ランダム/順次の各�
    | キャッシュ ディスクの初期化 |CacheReads |RandomWrites\_1 MB |2 時間 |
 1. 次のパラメーターを使用して、キャッシュ ディスクのウォームアップの Iometer テストを実行します。 ターゲット ボリュームに 3 つのワーカー スレッドを使用し、キューの深さとして 128 を使用します。 [Test Setup]\(テストの設定\) タブでテストの [Run time]\(実行時間\) を 2 時間に設定します。
 
-   | シナリオ | ターゲット ボリューム | Name | 時間 |
+   | シナリオ | ターゲット ボリューム | Name | Duration |
    | --- | --- | --- | --- |
    | キャッシュ ディスクのウォームアップ |CacheReads |RandomReads\_1 MB |2 時間 |
 

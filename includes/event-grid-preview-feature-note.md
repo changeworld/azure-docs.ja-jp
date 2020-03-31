@@ -9,10 +9,10 @@ ms.date: 11/06/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: d32beb2d799a60cb9c5be061c39e4ec834da8dcf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66814832"
 ---
 この機能はプレビュー段階にあります。 これを使用するには、プレビュー拡張機能またはモジュールをインストールする必要があります。
@@ -28,9 +28,9 @@ Azure CLI の場合は、[Event Grid 拡張機能](/cli/azure/azure-cli-extensio
 
 ローカル インストールの場合:
 
-1. [Azure CLI のインストール](/cli/azure/install-azure-cli)を実行します。 `az --version` をチェックして、最新バージョンがあることを確認します。
+1. [Azure CLI のインストール](/cli/azure/install-azure-cli)を実行します。 `az --version` を使って確認し、最新バージョンがあることを確認します。
 1. `az extension remove -n eventgrid` で以前のバージョンの拡張機能をアンインストールします。
-1. `az extension add -n eventgrid` で `eventgrid` 拡張機能をインストールします
+1. `eventgrid` で `az extension add -n eventgrid` 拡張機能をインストールします
 
 ### <a name="install-module-for-powershell"></a>PowerShell 用のモジュールのインストール
 

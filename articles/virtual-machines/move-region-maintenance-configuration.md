@@ -9,10 +9,10 @@ ms.tgt_pltfrm: vm
 ms.date: 03/04/2020
 ms.author: shants
 ms.openlocfilehash: fe03bead238d3fb7bda3ee685bd5587c3e0dbc58
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78304342"
 ---
 # <a name="move-a-maintenance-control-configuration-to-another-region"></a>メンテナンス コントロール構成を別のリージョンに移動する
@@ -46,7 +46,7 @@ ms.locfileid: "78304342"
     ```
 2. 返されたテーブル リストで、サブスクリプション内の構成レコードを確認します。 次に例を示します。 リストには、ご使用の環境固有の値が含まれます。
 
-    **名前** | **場所** | **リソース グループ**
+    **Name** | **Location** | **リソース グループ**
     --- | --- | ---
     Skip Maintenance | eastus2 | configuration-resource-group
     IgniteDemoConfig | eastus2 | configuration-resource-group

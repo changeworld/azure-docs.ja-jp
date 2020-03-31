@@ -5,10 +5,10 @@ author: ecfan
 ms.author: estfan
 ms.date: 11/03/2016
 ms.openlocfilehash: 3ca8d631110f8b175e7dc68d61cc6da4ac87d375
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789522"
 ---
 ## <a name="prerequisites"></a>前提条件

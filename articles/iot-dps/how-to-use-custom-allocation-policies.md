@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 87ffca1957d4ec449753f1966ed05cf3948f5ca2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75453933"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>カスタム割り当てポリシーの使用方法
@@ -99,7 +99,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
 このセクションでは、カスタム割り当てポリシーを実装する Azure 関数を作成します。 この関数により、デバイスの登録 ID に文字列 **-contoso-tstrsd-007** または **-contoso-hpsd-088** が含まれているかどうかに基づいて、デバイスをどちら部門の IoT ハブに登録すべきかが決定されます。 また、デバイスがトースターであるかヒート ポンプであるかに基づいて、デバイス ツインの初期状態が設定されます。
 
-1. [Azure portal](https://portal.azure.com) にサインインする ご自分のホーム ページから **[+ リソースの作成]** を選択します。
+1. [Azure portal](https://portal.azure.com) にサインインします。 ご自分のホーム ページから **[+ リソースの作成]** を選択します。
 
 2. *[Marketplace を検索]* 検索ボックスで、「関数アプリ」と入力します。 ドロップダウン リストから **[関数アプリ]** を選択し、 **[作成]** を選択します。
 

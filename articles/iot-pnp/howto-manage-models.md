@@ -5,15 +5,15 @@ author: Philmea
 manager: philmea
 ms.service: iot-pnp
 services: iot-pnp
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/26/2019
 ms.author: philmea
-ms.openlocfilehash: 7e71c940d0c083642954114cf4fa1617b93335b9
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 78406175090521af70381f61f4e33dfb6c35ac8c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531261"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80159151"
 ---
 # <a name="manage-models-in-the-repository"></a>リポジトリ内のモデルを管理する
 

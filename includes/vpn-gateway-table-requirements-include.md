@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: dc018b5d09c9b33c10cd2d54ac6572537e05ed25
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67181062"
 ---
 次の表に、PolicyBased および RouteBased の VPN Gateway の要件を示します。 この表は、リソース マネージャーとクラシック デプロイ モデルの両方に適用されます。 クラシック モデルでは、PolicyBased VPN Gateway は静的ゲートウェイと同じです。また、RouteBased のゲートウェイは動的ゲートウェイと同じです。

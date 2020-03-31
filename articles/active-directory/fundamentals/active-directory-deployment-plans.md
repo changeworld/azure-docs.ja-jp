@@ -13,11 +13,11 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 17e6708225262349d56c6e261895882e9c31677f
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558527"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230467"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory のデプロイ計画
 ここでは、Azure Active Directory (Azure AD) の機能のデプロイについてのエンド ツー エンドのガイダンスを紹介しています。 Azure AD のデプロイ計画では、Azure AD の代表的な機能について、そのビジネス上の価値や計画の考慮事項、正しくデプロイするうえで必要な運用手順をひととおり説明しています。
@@ -63,7 +63,7 @@ ms.locfileid: "74558527"
 | -| -|
 | [Multi-Factor Authentication](https://aka.ms/deploymentplans/mfa)| Azure Multi-Factor Authentication (MFA) は、Microsoft の 2 段階認証ソリューションです。 管理者が承認した認証方式を使用することにより、Azure MFA では、データやアプリケーションへのアクセスを保護しながら、シンプルなサインイン プロセスへの要求に応えることができます。 |
 | [条件付きアクセス](https://aka.ms/deploymentplans/ca)| 条件付きアクセスを使用すると、クラウド アプリへのアクセスをだれに許可するかを各種の条件に基づいて自動的に判断するアクセスの制御を実装できます。 |
-| [セルフサービスのパスワード リセット](https://aka.ms/deploymentplans/sspr)| パスワード リセットのセルフサービスにより、ユーザーは、必要に応じていつでも、どこでも、管理者の介入なしでパスワードをリセットできます。 |
+| [セルフサービス パスワード リセット](https://aka.ms/deploymentplans/sspr)| セルフサービス パスワード リセット により、ユーザーは、必要に応じていつでも、どこでも、管理者の介入なしでパスワードをリセットできます。 |
 | [パスワードレス](https://aka.ms/deploymentplans/passwordless) | 組織内の Microsoft Authenticator アプリまたは FIDO2 セキュリティ キーを使用してパスワードレス認証を実装します。 |
 
 ## <a name="deploy-application-management"></a>アプリケーション管理のデプロイ

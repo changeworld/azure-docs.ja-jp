@@ -1,6 +1,6 @@
 ---
 title: 統合された登録の使用を開始する - Azure Active Directory
-description: Azure AD Multi-Factor Authentication とセルフサービスのパスワード リセットの統合された登録の有効化 (プレビュー)
+description: Azure AD Multi-Factor Authentication とセルフサービス パスワード リセットの統合された登録の有効化 (プレビュー)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 25c64d9e959b1d68de23e83e26d3495bd3939986
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75425188"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>統合されたセキュリティ情報の登録の有効化 (プレビュー)
@@ -26,7 +26,7 @@ ms.locfileid: "75425188"
 
 |     |
 | --- |
-| Azure Multi-Factor Authentication と Azure Active Directory (Azure AD) セルフサービスのパスワード リセットのための統合されたセキュリティ情報の登録は、Azure AD のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
+| Azure Multi-Factor Authentication と Azure Active Directory (Azure AD) セルフサービス パスワード リセットのための統合されたセキュリティ情報の登録は、Azure AD のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
 |     |
 
 > [!NOTE]
@@ -58,7 +58,7 @@ Internet Explorer でサイトとゾーンの割り当て一覧を構成した�
 
 ## <a name="conditional-access-policies-for-combined-registration"></a>統合登録の条件付きアクセス ポリシー
 
-Azure Multi-Factor Authentication とパスワード リセットのセルフサービスの登録をユーザーがいつどのように行うかについてのセキュリティ保護が、条件付きアクセス ポリシーのユーザー アクションを使用して可能になりました。 このプレビュー機能は、[統合登録プレビュー](../authentication/concept-registration-mfa-sspr-combined.md)を有効にしている組織で使用することができます。 この機能は、HR オンボード中に信頼できるネットワークの場所などの一元化された場所から Azure Multi-Factor Authentication および SSPR の登録をユーザーに行わせたい組織で有効にすることができます。 条件付きアクセスでの信頼できる場所の作成について詳しくは、[Azure Active Directory 条件付きアクセスの場所の条件の概要](../conditional-access/location-condition.md#named-locations)に関する記事をご覧ください。
+Azure Multi-Factor Authentication とセルフサービス パスワード リセット の登録をユーザーがいつどのように行うかについてのセキュリティ保護が、条件付きアクセス ポリシーのユーザー アクションを使用して可能になりました。 このプレビュー機能は、[統合登録プレビュー](../authentication/concept-registration-mfa-sspr-combined.md)を有効にしている組織で使用することができます。 この機能は、HR オンボード中に信頼できるネットワークの場所などの一元化された場所から Azure Multi-Factor Authentication および SSPR の登録をユーザーに行わせたい組織で有効にすることができます。 条件付きアクセスでの信頼できる場所の作成について詳しくは、[Azure Active Directory 条件付きアクセスの場所の条件の概要](../conditional-access/location-condition.md#named-locations)に関する記事をご覧ください。
 
 ### <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>信頼できる場所からの登録を要求するポリシーを作成する
 
@@ -93,7 +93,7 @@ Azure Multi-Factor Authentication とパスワード リセットのセルフサ
 
 [Multi-Factor Authentication と SSPR で使用可能な方法](concept-authentication-methods.md)
 
-[セルフサービスのパスワード リセットを構成する](howto-sspr-deployment.md)
+[セルフサービス パスワード リセットを構成する](howto-sspr-deployment.md)
 
 [Azure Multi-Factor Authentication を構成する](howto-mfa-getstarted.md)
 

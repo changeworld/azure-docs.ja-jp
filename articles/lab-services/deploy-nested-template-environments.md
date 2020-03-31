@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: e83bc4e77a44f20d55fa3b56bc81aefd1d25bb03
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76168820"
 ---
 # <a name="deploy-nested-azure-resource-manager-templates-for-testing-environments"></a>テスト環境向けに入れ子になったAzure Resource Manager テンプレートをデプロイする
@@ -66,7 +66,7 @@ DevTest Labs が環境を使用するしくみになじみがない場合は、�
 "outputs": {}
 ```
 
-このテンプレートが格納されているリポジトリ内のフォルダーに、**NestOne.json** ファイルおよび **NestOne.parameters.json** ファイルを含むサブフォルダー `nestedtemplates` があります。 **azuredeploy.json** には、成果物の場所、入れ子になったテンプレート のフォルダー、入れ子になったテンプレート ファイルの名前を使用して、テンプレートの URI が構築されています。 同様に、パラメーターの URI が、成果物の場所、入れ子になったテンプレートのフォルダー、および入れ子になったテンプレートのパラメーター ファイルを使用して構築されています。 
+このテンプレートが格納されているリポジトリ内のフォルダーに、`nestedtemplates`NestOne.json**ファイルおよび**NestOne.parameters.json**ファイルを含むサブフォルダー** があります。 **azuredeploy.json** には、成果物の場所、入れ子になったテンプレート のフォルダー、入れ子になったテンプレート ファイルの名前を使用して、テンプレートの URI が構築されています。 同様に、パラメーターの URI が、成果物の場所、入れ子になったテンプレートのフォルダー、および入れ子になったテンプレートのパラメーター ファイルを使用して構築されています。 
 
 Visual Studio での同じプロジェクト構造の画像を次に示します。 
 

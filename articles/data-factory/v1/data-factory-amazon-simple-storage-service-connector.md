@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b23be9901df7ca435f412d9f49e1a7ad88382ade
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924837"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236447"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Azure Data Factory を使用した Amazon Simple Storage Service からのデータの移動
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -39,7 +39,7 @@ Amazon S3 からデータをコピーするには、次のアクセス許可が�
 
 Amazon S3 のアクセス許可の完全な一覧については、「[ポリシーでのアクセス許可の指定](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html)」を参照してください。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 さまざまなツールや API を使用して、Amazon S3 ソースからデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
 パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 簡単なチュートリアルについては、「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」をご覧ください。
@@ -87,16 +87,16 @@ Amazon S3 のアクセス許可の完全な一覧については、「[ポリシ
 ```
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
-データセットを指定して Azure Blob Storage の入力データを表すには、そのデータセットの type プロパティを **AmazonS3** に設定します。 また、データセットの **linkedServiceName** プロパティは、Amazon S3 のリンクされたサービスの名前に設定します。 データセットの定義に使用できるセクションとプロパティの完全な一覧については、[データセットの作成](data-factory-create-datasets.md)に関する記事をご覧ください。 
+データセットを指定して Azure Blob Storage の入力データを表すには、そのデータセットの type プロパティを **AmazonS3** に設定します。 また、データセットの **linkedServiceName** プロパティは、Amazon S3 のリンクされたサービスの名前に設定します。 データセットの定義に使用できるセクションとプロパティの完全な一覧については、[データセットの作成](data-factory-create-datasets.md)をご覧ください。 
 
 構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (SQL Database、Azure BLOB、Azure テーブルなど) でほぼ同じです。 **typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **AmazonS3** 型のデータセットの **typeProperties** セクション (Amazon S3 データセットを含む) には次のプロパティがあります。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| bucketName |S3 バケットの名前。 |string |はい |
-| key |S3 オブジェクト キー。 |string |いいえ |
-| prefix |S3 オブジェクト キーのプレフィックス。 キーがこのプレフィックスで始まるオブジェクトが選択されます。 キーが空の場合にのみ適用されます。 |string |いいえ |
-| version |S3 のバージョン管理が有効になっている場合の S3 オブジェクトのバージョン。 |string |いいえ |
+| bucketName |S3 バケットの名前。 |String |はい |
+| key |S3 オブジェクト キー。 |String |いいえ |
+| prefix |S3 オブジェクト キーのプレフィックス。 キーがこのプレフィックスで始まるオブジェクトが選択されます。 キーが空の場合にのみ適用されます。 |String |いいえ |
+| version |S3 のバージョン管理が有効になっている場合の S3 オブジェクトのバージョン。 |String |いいえ |
 | format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text 形式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 形式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 形式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 形式](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet 形式](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間でファイルをそのままコピー (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 | |いいえ |
 | compression | データの圧縮の種類とレベルを指定します。 サポートされている型は次のとおりです。**GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 | |いいえ |
 
@@ -174,7 +174,7 @@ Amazon S3 のアクセス許可の完全な一覧については、「[ポリシ
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| recursive |ディレクトリで S3 オブジェクトを再帰的に一覧表示するかどうかを指定します。 |true または false |いいえ |
+| recursive |ディレクトリで S3 オブジェクトを再帰的に一覧表示するかどうかを指定します。 |true/false |いいえ |
 
 ## <a name="json-example-copy-data-from-amazon-s3-to-azure-blob-storage"></a>JSON の使用例:Amazon S3 から Azure Blob Storage にデータをコピーする
 このサンプルは、Amazon S3 から Azure Blob Storage にデータをコピーする方法を示します。 Data Factory のコピー アクティビティを使用して、[サポートされている任意のシンク](data-factory-data-movement-activities.md#supported-data-stores-and-formats)データを直接コピーすることもできます。
@@ -359,8 +359,8 @@ Amazon S3 のアクセス許可の完全な一覧については、「[ポリシ
 > ソース データセット列からシンク データセット列へのマッピングについては、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。
 
 
-## <a name="next-steps"></a>次の手順
-次の記事を参照してください。
+## <a name="next-steps"></a>次のステップ
+次の記事をご覧ください。
 
 * Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 

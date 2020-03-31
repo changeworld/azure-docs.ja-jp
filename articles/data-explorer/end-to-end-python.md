@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: 61864c51c2ab99e5266e39f2c9a7344aaf7413c1
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76964304"
 ---
 # <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-python"></a>Python による Azure Data Explorer へのエンドツーエンドの BLOB の取り込み

@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 11/08/2018
 ms.author: genli
 ms.openlocfilehash: 92ad33fbc759605ae901c3bcf09283c8e0b1c4b5
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77918191"
 ---
 #  <a name="cannot-remote-desktop-to-azure-virtual-machines-because-of-static-ip"></a>静的 IP のために Azure Virtual Machines にリモート デスクトップ接続できない

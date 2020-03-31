@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.openlocfilehash: 6b841d6b47e009c3b01d9925e11d352c00ed5c19
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75426436"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Azure Stream Analytics の入力について
@@ -42,4 +42,4 @@ Stream Analytics は、"*参照データ*" と呼ばれる入力もサポート�
 
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
-> [クイック スタート:Azure Portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)
+> [クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)

@@ -7,10 +7,10 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 05/08/2019
 ms.openlocfilehash: ee032cdf4a3f72b2cd2e7da0658effe75b6fb1fa
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76274926"
 ---
 # <a name="troubleshooting-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift のトラブルシューティング
@@ -24,7 +24,7 @@ ms.locfileid: "76274926"
 
 ## <a name="hidden-azure-red-hat-openshift-cluster-resource-group"></a>Azure Red Hat OpenShift クラスター リソース グループが非表示になる
 
-現時点では、Azure CLI (`az openshift create` コマンド) によって自動的に作成される `Microsoft.ContainerService/openShiftManagedClusters` リソースが、Azure portal で表示されません。 **[リソース グループ]** ビューで、 **[非表示の型の表示]** をオンにして、リソース グループを表示してください。
+現時点では、Azure CLI (`Microsoft.ContainerService/openShiftManagedClusters` コマンド) によって自動的に作成される `az openshift create` リソースが、Azure portal で表示されません。 **[リソース グループ]** ビューで、 **[非表示の型の表示]** をオンにして、リソース グループを表示してください。
 
 ![ポータル内の非表示の型のチェック ボックスを示すスクリーンショット](./media/aro-portal-hidden-type.png)
 

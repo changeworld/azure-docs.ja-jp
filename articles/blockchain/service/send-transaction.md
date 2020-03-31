@@ -5,10 +5,10 @@ ms.date: 12/06/2019
 ms.topic: tutorial
 ms.reviewer: chrisseg
 ms.openlocfilehash: 5b901ab904425a22d2fe9643ffa75a4e978efa88
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74972870"
 ---
 # <a name="tutorial-create-buildanddeploysmartcontracts-on-azure-blockchain-service"></a>チュートリアル:スマート コントラクトの作成、ビルド、Azure Blockchain Service へのデプロイ
@@ -47,7 +47,7 @@ node-gyp の詳細については、[GitHub の node-gyp のリポジトリ](htt
 
 Azure Blockchain Development Kit for Ethereum では、プロジェクト テンプレートと Truffle ツールを使用して、コントラクトのスキャフォールディング、ビルド、およびデプロイを支援します。 開始する前に、前提条件の「[クイックスタート: Visual Studio Code を使用して Azure Blockchain Service コンソーシアム ネットワークに接続する](connect-vscode.md)」を完了してください。 クイックスタートには、Ethereum 用 Azure Blockchain 開発キットのインストールと構成の手順が紹介されています。
 
-1. VS Code コマンド パレットで、**[Azure Blockchain: New Solidity Project]\(Azure Blockchain: 新しい Solidity プロジェクト\)** を選択します。
+1. VS Code コマンド パレットで、 **[Azure Blockchain: New Solidity Project]\(Azure Blockchain: 新しい Solidity プロジェクト\)** を選択します。
 1. **[Create basic project]\(基本プロジェクトの作成\)** を選択します。
 1. `HelloBlockchain` という名前の新しいフォルダーを作成し、**新しいプロジェクトのパスを選択**します。
 
@@ -59,7 +59,7 @@ Azure Blockchain Development Kit によって、新しい Solidity プロジェ�
 
 ## <a name="build-a-smart-contract"></a>スマート コントラクトをビルドする
 
-スマート コントラクトは、プロジェクトの **contracts** ディレクトリに配置されます。 スマート コントラクトのコンパイルは、ブロックチェーンにデプロイする前に行います。 プロジェクト内のすべてのスマート コントラクトをコンパイルするには、**[Build Contracts]\(コントラクトのビルド\)** コマンドを使用します。
+スマート コントラクトは、プロジェクトの **contracts** ディレクトリに配置されます。 スマート コントラクトのコンパイルは、ブロックチェーンにデプロイする前に行います。 プロジェクト内のすべてのスマート コントラクトをコンパイルするには、 **[Build Contracts]\(コントラクトのビルド\)** コマンドを使用します。
 
 1. VS Code エクスプローラーのサイドバーで、プロジェクトの **[contracts]** フォルダーを展開します。
 1. **HelloBlockchain.sol** を右クリックし、メニューの **[Build Contracts]\(コントラクトのビルド\)** を選択します。
@@ -94,7 +94,7 @@ Azure Blockchain Development Kit では、Truffle を使用して移行スクリ
 
     ![スマート コントラクト インタラクション ページの例](./media/send-transaction/interaction-page.png)
 
-1. スマート コントラクト関数を呼び出すには、コントラクト アクションを選択して必要な引数を渡します。 **[SendRequest]** コントラクト アクションを選択し、**[requestMessage]** パラメーターに「**Hello, Blockchain!** 」と入力します。 **[実行]** を選択すると、トランザクションを介して **SendRequest** 関数が呼び出されます。
+1. スマート コントラクト関数を呼び出すには、コントラクト アクションを選択して必要な引数を渡します。 **[SendRequest]** コントラクト アクションを選択し、「**Hello, Blockchain!** 」と **requestMessage** パラメーターに入力します。 **[実行]** を選択すると、トランザクションを介して **SendRequest** 関数が呼び出されます。
 
     ![SendRequest アクションを実行する](./media/send-transaction/sendrequest-action.png)
 
@@ -104,16 +104,16 @@ Azure Blockchain Development Kit では、Truffle を使用して移行スクリ
 
 SendRequest 関数によって **RequestMessage** フィールドと **State** フィールドが設定されています。 **RequestMessage** の最新の状態は、引数として渡した **Hello, Blockchain** です。 **[State]\(状態\)** フィールドの値は **[Request]\(要求\)** のままです。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要なくなったら、前提条件の "*ブロックチェーン メンバーの作成*" に関するクイックスタートで作成した `myResourceGroup` リソース グループを削除することで、リソースを削除できます。
 
 リソース グループを削除するには:
 
 1. Azure Portal で、左側のナビゲーション ウィンドウの **[リソース グループ]** に移動し、削除するリソース グループを選択します。
-1. **[リソース グループの削除]** を選択します。 リソース グループ名を入力して削除を確認し、**[削除]** を選択します。
+1. **[リソース グループの削除]** を選択します。 リソース グループ名を入力して削除を確認し、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Blockchain Development Kit を使用してサンプル Solidity プロジェクトを作成しました。 スマート コントラクトをビルドしてデプロイし、Azure Blockchain Service 上でホストされているブロックチェーン コンソーシアム ネットワーク上のトランザクションを介して関数を呼び出しました。
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: curtand
 ms.openlocfilehash: 787fa67ee77997fd1f9967db3abdbfc83d4ffad2
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77064072"
 ---
 # <a name="create-app-passwords-from-the-security-info-preview-page"></a>[Security info (preview)] (セキュリティ情報 (プレビュー)) ページからアプリ パスワードを作成する

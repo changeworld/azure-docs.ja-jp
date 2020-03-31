@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 86f6732cbf2409d3c79a3d7709100e8af24988a0
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66494535"
 ---
 # <a name="ingest-data-from-logstash-to-azure-data-explorer"></a>Logstash から Azure Data Explorer にデータを取り込む
@@ -42,7 +42,7 @@ ms.locfileid: "66494535"
 
 ## <a name="create-a-mapping"></a>マッピングを作成する
 
-マッピングは、受信データをターゲット テーブルのスキーマに変換するために Azure Data Explorer によって使用されます。 次のコマンドでは、`path` で示される受信 json からプロパティを抽出して `column` に出力する、`basicmsg` という名前の新しいマッピングを作成しています。
+マッピングは、受信データをターゲット テーブルのスキーマに変換するために Azure Data Explorer によって使用されます。 次のコマンドでは、`basicmsg` で示される受信 json からプロパティを抽出して `path` に出力する、`column` という名前の新しいマッピングを作成しています。
 
 クエリ ウィンドウで次のコマンドを実行します。
 
@@ -112,7 +112,7 @@ output {
 | **ingest_url** | インジェストに関連する通信の Kusto エンドポイント。|
 | **app_id**、**app_key**、および **app_tenant**| Azure Data Explorer に接続するために必要な資格情報。 取り込み特権を備えたアプリケーションを必ず使用してください。 |
 | **database**| イベントを配置するデータベースの名前。 |
-| **table** | イベントを配置するターゲット テーブルの名前。 |
+| **テーブル** | イベントを配置するターゲット テーブルの名前。 |
 | **mapping** | マッピングは、受信イベント json 文字列を適切な行形式にマッピングするために使用されます (どのプロパティをどの列に入力するかを定義します)。 |
 
 ## <a name="run-logstash"></a>Logstash を実行する
@@ -136,7 +136,7 @@ output {
 
 1. Ctrl + C キーを押して、Logstash を終了します
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 お客様のデータベースで次のコマンドを実行して、`logs` テーブルをクリーンアップします。
 
@@ -144,6 +144,6 @@ output {
 .drop table logs
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [クエリを作成する](write-queries.md)

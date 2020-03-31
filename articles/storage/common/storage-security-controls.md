@@ -2,19 +2,18 @@
 title: Azure Storage のセキュリティ コントロール
 description: Azure Storage を評価するためのセキュリティ コントロールのチェックリスト
 services: storage
-documentationcenter: ''
 author: msmbaldwin
-manager: rkarlin
 ms.service: storage
+ms.subservice: common
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2cc54077456fce1e7e0f47843a762beee8e715f7
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 379acaf48c02f0a579c07773cd48366d962a44f5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526758"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80061124"
 ---
 # <a name="security-controls-for-azure-storage"></a>Azure Storage のセキュリティ コントロール
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: takamath
 ms.openlocfilehash: 4549ee0f50c06040b70307c96b5ca96cd4162214
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74974295"
 ---
 # <a name="connect-to-your-virtual-machines-through-a-browser"></a>ブラウザーを使用して仮想マシンに接続する 

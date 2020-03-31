@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 12/08/2019
 ms.author: spelluru
 ms.openlocfilehash: e6ee1137fce97cbe5a64aa5287223f6ba09dcf47
-ms.sourcegitcommit: 6e42ce0ca0a7ac572398e9d024fcf69906670d74
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74936109"
 ---
 # <a name="azure-event-hubs---resource-manager-exceptions"></a>Azure Event Hubs - Resource Manager の例外
@@ -27,13 +27,13 @@ ms.locfileid: "74936109"
 
 次のセクションでは、Azure Resource Manager によって表示されるさまざまな例外/エラーを示します。
 
-## <a name="error-code-conflict"></a>エラー コード:競合
+## <a name="error-code-conflict"></a>エラー コード:Conflict
 
 | エラー コード | エラー サブコード | エラー メッセージ | 説明 | 推奨 |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| 競合 | 40300 | The maximum number of resources of type EventHub has been reached or exceeded. (EventHub タイプのリソースの最大数に達したか、それを超えています。) Actual: #, Max allowed: # (実際: #、許可される最大数: #) | 名前空間は、格納できる Event Hubs 数の[クォータ](event-hubs-quotas.md)に達しました。 | 未使用または余分なイベント ハブを名前空間から削除するか、[専用クラスター](event-hubs-dedicated-overview.md)にアップグレードすることを検討してください。 |
-| 競合 | なし | Disaster recovery (DR) config can't be deleted because replication is in progress. (レプリケーションが進行中のため、ディザスター リカバリー (DR) 構成を削除できません。) Fail over or break pairing before attempting to delete the DR Config. (フェールオーバーまたはペアリングを解除してから、DR 構成を削除します。) | [GeoDR レプリケーション](event-hubs-geo-dr.md)が進行中であるため、現時点では構成を削除できません。 | 構成削除のブロックを解除するには、レプリケーションが完了するまで待機するか、フェールオーバーをトリガーするか、GeoDR のペアリングを解除します。 |
-| 競合 | なし | Namespace update failed with conflict in backend. (バックエンドで競合が発生したため、名前空間の更新に失敗しました。) | 現在、この名前空間で別の操作が実行されています。 | 現在の操作が完了するまで待ってから、再試行してください。 |
+| Conflict | 40300 | The maximum number of resources of type EventHub has been reached or exceeded. (EventHub タイプのリソースの最大数に達したか、それを超えています。) Actual: #, Max allowed: # (実際: #、許可される最大数: #) | 名前空間は、格納できる Event Hubs 数の[クォータ](event-hubs-quotas.md)に達しました。 | 未使用または余分なイベント ハブを名前空間から削除するか、[専用クラスター](event-hubs-dedicated-overview.md)にアップグレードすることを検討してください。 |
+| Conflict | なし | Disaster recovery (DR) config can't be deleted because replication is in progress. (レプリケーションが進行中のため、ディザスター リカバリー (DR) 構成を削除できません。) Fail over or break pairing before attempting to delete the DR Config. (フェールオーバーまたはペアリングを解除してから、DR 構成を削除します。) | [GeoDR レプリケーション](event-hubs-geo-dr.md)が進行中であるため、現時点では構成を削除できません。 | 構成削除のブロックを解除するには、レプリケーションが完了するまで待機するか、フェールオーバーをトリガーするか、GeoDR のペアリングを解除します。 |
+| Conflict | なし | Namespace update failed with conflict in backend. (バックエンドで競合が発生したため、名前空間の更新に失敗しました。) | 現在、この名前空間で別の操作が実行されています。 | 現在の操作が完了するまで待ってから、再試行してください。 |
 
 ## <a name="error-code-429"></a>エラー コード:429
 

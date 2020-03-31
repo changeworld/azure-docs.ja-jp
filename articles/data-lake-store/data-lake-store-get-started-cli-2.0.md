@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 9431cc7fa12b86371ce6b2325aca8e13d264442e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60885348"
 ---
 # <a name="get-started-with-azure-data-lake-store-using-azure-cli"></a>Azure CLI を使用して Azure Data Lake Store の使用を開始する
@@ -40,7 +40,7 @@ Azure CLI は、Azure リソースを管理するための、Azure のコマン�
 
 * **Azure CLI** - 手順については、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 
 この記事では、Data Lake Storage Gen1 に対してエンド ユーザーとしてログインする比較的単純な認証方法を使用します。 その後、Data Lake Storage Gen1 アカウントとファイル システムに対するアクセス レベルは、そのログイン ユーザーのアクセス レベルで管理されます。 ただし、Data Lake Storage Gen1 には他の認証方法も存在します (**エンド ユーザー認証**と**サービス間認証**)。 認証方法の詳細については、[エンドユーザー認証](data-lake-store-end-user-authenticate-using-active-directory.md)または[サービス間認証](data-lake-store-authenticate-using-active-directory.md)に関するページを参照してください。
 
@@ -232,7 +232,7 @@ az dls account delete --account mydatalakestoragegen1
 
 確認を求めるメッセージが表示されたら、「 **Y** 」と入力して、アカウントを削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Data Lake Storage Gen1 を使用してビッグ データの要件に対応する](data-lake-store-data-scenarios.md) 
 * [Data Lake Storage Gen1 でのデータのセキュリティ保護](data-lake-store-secure-data.md)
 * [Data Lake Storage Gen1 で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

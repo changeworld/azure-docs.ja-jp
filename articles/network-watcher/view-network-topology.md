@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: damendo
 ms.openlocfilehash: 675919db55932d3ccc04fd5397f6f673832b4900
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840572"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Azure 仮想ネットワークのトポロジを表示する
@@ -26,9 +26,9 @@ ms.locfileid: "76840572"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name = "azure-portal"></a>トポロジを表示する - Azure Portal
+## <a name="view-topology---azure-portal"></a><a name = "azure-portal"></a>トポロジを表示する - Azure Portal
 
-1. 必要な[アクセス許可](required-rbac-permissions.md)を持つアカウントで [Azure Portal](https://portal.azure.com) にログインします。
+1. 必要な[アクセス許可](https://portal.azure.com)を持つアカウントで [Azure Portal](required-rbac-permissions.md) にログインします。
 2. ポータルの左上にある **[すべてのサービス]** を選択します。
 3. **[すべてのサービス]** フィルター ボックスに、「*Network Watcher*」と入力します。 結果に **[Network Watcher]** が表示されたら、それを選択します。
 4. **[トポロジ]** を選択します。 トポロジを生成するには、トポロジを生成する仮想ネットワークが存在する領域と同じ領域にネットワーク ウォッチャーが必要です。 トポロジを生成する仮想ネットワークがあるリージョンでネットワーク ウォッチャーが有効ではない場合は、すべてのリージョンでネットワーク ウォッチャーが自動的に作成されます。 ネットワーク ウォッチャーは **NetworkWatcherRG** という名前のリソース グループに作成されます。
@@ -45,9 +45,9 @@ ms.locfileid: "76840572"
 
 6. **[ダウンロード トポロジ]** を選択して、イメージを編集可能なファイル (svg 形式) としてダウンロードします。
 
-図に示すリソースは、仮想ネットワーク内のネットワーク コンポーネントのサブセットです。 たとえば、ネットワーク セキュリティ グループが表示されている間、その中のセキュリティ ルールは図に表示されません。 この図では区別されていませんが、各行は 2 つのリレーションシップ ("*包含*" または "*関連*") のいずれかを示しています。 仮想ネットワーク内のリソースの完全な一覧とリソース間のリレーションシップの種類を表示するには、[PowerShell](#powershell) または [Azure CLI](#azure-cli) を使用してトポロジを生成します。
+図に示すリソースは、仮想ネットワーク内のネットワーク コンポーネントのサブセットです。 たとえば、ネットワーク セキュリティ グループが表示されている間、その中のセキュリティ ルールは図に表示されません。 この図では区別されていませんが、各行は 2 つのリレーションシップ (*包含*または*関連*) のいずれかを示しています。 仮想ネットワーク内のリソースの完全な一覧とリソース間のリレーションシップの種類を表示するには、[PowerShell](#powershell) または [Azure CLI](#azure-cli) を使用してトポロジを生成します。
 
-## <a name = "azure-cli"></a>トポロジを表示する - Azure CLI
+## <a name="view-topology---azure-cli"></a><a name = "azure-cli"></a>トポロジを表示する - Azure CLI
 
 次の手順でコマンドを実行できます。
 - Azure Cloud Shell では、コマンドの右上にある **[テスト]** を選択します。 Azure Cloud Shell は、無料の対話型シェルで、一般的な Azure ツールがプリインストールされ、お客様のアカウントで使用するよう構成されています。
@@ -80,7 +80,7 @@ ms.locfileid: "76840572"
 
    返される出力で、リレーションシップと[プロパティ](#properties)の詳細を確認します。 トポロジを表示する既存の仮想ネットワークがない場合は、[ネットワーク仮想アプライアンス経由のトラフィックのルーティング](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) スクリプト サンプルを使用して仮想ネットワークを作成できます。 トポロジの図を表示し、編集可能なファイル形式でダウンロードするには、[Portal](#azure-portal) を使用します。
 
-## <a name = "powershell"></a>トポロジを表示する - PowerShell
+## <a name="view-topology---powershell"></a><a name = "powershell"></a>トポロジを表示する - PowerShell
 
 次の手順でコマンドを実行できます。
 - Azure Cloud Shell では、コマンドの右上にある **[テスト]** を選択します。 Azure Cloud Shell は、無料の対話型シェルで、一般的な Azure ツールがプリインストールされ、お客様のアカウントで使用するよう構成されています。
@@ -137,12 +137,12 @@ ms.locfileid: "76840572"
 
 トポロジで返されるすべてのリソースには次のプロパティがあります。
 
-- **Name**:リソースの名前
-- **Id**:リソースの URI。
-- **[場所]** :リソースが存在する Azure リージョン。
+- **Name**: リソースの名前。
+- **Id**: リソースの URI。
+- **Location**: リソースが存在する Azure リージョン。
 - **Associations**: 参照されたオブジェクトへの関連付けのリスト。 各関連付けには、次のプロパティがあります。
     - **AssociationType**: 子オブジェクトと親のリレーションシップを参照します。 有効な値は *Contains* または *Associated*。
-    - **Name**:参照されたリソースの名前。
+    - **Name**: 参照されたリソースの名前。
     - **ResourceId**: 関連付けで参照されているリソースの URI。
 
 ## <a name="next-steps"></a>次のステップ

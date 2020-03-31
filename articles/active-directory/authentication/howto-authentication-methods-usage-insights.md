@@ -1,6 +1,6 @@
 ---
 title: 認証方法の使用状況と分析情報 - Azure Active Directory
-description: Azure AD のパスワード リセットのセルフサービスと Multi-Factor Authentication の認証方法の使用状況に関するレポート
+description: Azure AD のセルフサービス パスワード リセット と Multi-Factor Authentication の認証方法の使用状況に関するレポート
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,15 +12,15 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b448e6ce7c8b4522d5e7bdbafb39eccca982fdee
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74848512"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>認証方法の使用状況と分析情報 (プレビュー)
 
-使用状況と分析情報を使うと、Azure Multi-Factor Authentication やパスワード リセットのセルフサービスなどの機能の認証方法が組織内でどのように機能しているかについて理解を深めることができます。 このレポート機能は、組織が登録中の方法や各方法の使用状況を確認するための手段となるものです。
+使用状況と分析情報を使うと、Azure Multi-Factor Authentication やセルフサービス パスワード リセット などの機能の認証方法が組織内でどのように機能しているかについて理解を深めることができます。 このレポート機能は、組織が登録中の方法や各方法の使用状況を確認するための手段となるものです。
 
 ## <a name="permissions-and-licenses"></a>アクセス許可とライセンス
 
@@ -31,9 +31,9 @@ ms.locfileid: "74848512"
 - セキュリティ管理者
 - レポート閲覧者
 
-使用状況と分析情報にアクセスするうえで追加のライセンスは必要ありません。 Azure Multi-Factor Authentication とパスワード リセットのセルフサービス (SSPR) のライセンス情報は、[Azure Active Directory の価格に関するサイト](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
+使用状況と分析情報にアクセスするうえで追加のライセンスは必要ありません。 Azure Multi-Factor Authentication とセルフサービス パスワード リセット (SSPR) のライセンス情報は、[Azure Active Directory の価格に関するサイト](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
 
-## <a name="how-it-works"></a>動作のしくみ
+## <a name="how-it-works"></a>しくみ
 
 認証方法の使用状況と分析情報にアクセスする方法は次のとおりです。
 
@@ -94,7 +94,7 @@ ms.locfileid: "74848512"
 
 使用状況と分析情報のデータは、Azure Multi-Factor Authentication のアクティビティ レポートや、Azure AD のサインイン レポートに含まれる情報の代わりとなるものではありません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [認証方法の使用状況レポート API を使用する](https://docs.microsoft.com/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
 - [組織の認証方法を選択する](concept-authentication-methods.md)

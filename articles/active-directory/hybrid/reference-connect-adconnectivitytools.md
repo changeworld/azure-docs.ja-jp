@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect:ADConnectivityTools PowerShell リファレンス | Microsoft Docs
+title: 'Azure AD Connect: ADConnectivityTools PowerShell リファレンス | Microsoft Docs'
 description: このドキュメントでは、 ADConnectivityTools.psm1 PowerShell モジュールの参照情報を示します。
 author: billmath
 manager: daveba
@@ -11,13 +11,13 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6b90ff82601acca1249c7d8c353944e39e89f95
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66473789"
 ---
-# <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect:ADConnectivityTools PowerShell リファレンス
+# <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect: ADConnectivityTools PowerShell リファレンス
 
 次のドキュメントでは、Azure AD Connect に含まれる ADConnectivityTools.psm1 PowerShell モジュールの参照情報を示します。
 
@@ -27,7 +27,7 @@ ms.locfileid: "66473789"
 
 ローカルの Dns の問題を検出します。
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Confirm-DnsConnectivity [-Forest] <String> [-DCs] <Array> [-ReturnResultAsPSObject] [<CommonParameters>]
@@ -52,7 +52,7 @@ Confirm-DnsConnectivity -Forest "TEST.CONTOSO.COM" -DCs "MYDC1.CONTOSO.COM","MYD
 Confirm-DnsConnectivity -Forest "TEST.CONTOSO.COM"
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 
 指定されたフォレストが存在するかどうかを判別します。
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Confirm-ForestExists [-Forest] <String> [<CommonParameters>]
@@ -132,7 +132,7 @@ Confirm-ForestExists [-Forest] <String> [<CommonParameters>]
 Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM"
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -161,7 +161,7 @@ Accept wildcard characters: False
 
 AD フォレストの機能レベルを確認します。
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="samaccount"></a>SamAccount
 
@@ -200,7 +200,7 @@ Confirm-FunctionalLevel -Forest "test.contoso.com" -RunWithCurrentlyLoggedInUser
 Confirm-FunctionalLevel -ForestFQDN $ForestFQDN -RunWithCurrentlyLoggedInUserCredentials -Verbose
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -262,7 +262,7 @@ Accept wildcard characters: False
 
 ローカル ネットワーク接続の問題を検出します。
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Confirm-NetworkConnectivity [-DCs] <Array> [-SkipDnsPort] [-ReturnResultAsPSObject] [<CommonParameters>]
@@ -289,7 +289,7 @@ Confirm-NetworkConnectivity -SkipDnsPort -DCs "MYDC1.CONTOSO.COM","MYDC2.CONTOSO
 Confirm-NetworkConnectivity -DCs "MYDC1.CONTOSO.COM","MYDC2.CONTOSO.COM" -Verbose
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-dcs"></a>-DCs
 
@@ -352,7 +352,7 @@ Accept wildcard characters: False
 
 指定されたフォレストと、関連付けられているドメイン コント ローラーが到達可能かどうかを判断します。
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Confirm-TargetsAreReachable [-Forest] <String> [-DCs] <Array> [<CommonParameters>]
@@ -376,7 +376,7 @@ Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM" -DCs "MYDC1.CONTOSO.COM",
 Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM"
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -421,7 +421,7 @@ Accept wildcard characters: False
 
 取得したフォレスト FQDN 内のドメインに到達できることを確認します
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="samaccount"></a>SamAccount
 
@@ -460,7 +460,7 @@ Confirm-ValidDomains -Forest "test.contoso.com" -RunWithCurrentlyLoggedInUserCre
 Confirm-ValidDomains -ForestFQDN $ForestFQDN -RunWithCurrentlyLoggedInUserCredentials -Verbose
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -521,7 +521,7 @@ Accept wildcard characters: False
 
 ユーザーがエンタープライズ管理者の資格情報を持っていることを確認します。
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Confirm-ValidEnterpriseAdminCredentials [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
@@ -546,7 +546,7 @@ Confirm-ValidEnterpriseAdminCredentials -DomainName test.contoso.com -Verbose
 Confirm-ValidEnterpriseAdminCredentials -RunWithCurrentlyLoggedInUserCredentials -Verbose
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-runwithcurrentlyloggedinusercredentials"></a>-RunWithCurrentlyLoggedInUserCredentials
 
@@ -575,7 +575,7 @@ Accept wildcard characters: False
 
 アカウントとパスワードの組み合わせから、DomainFQDN を取得します。
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-DomainFQDNData [[-DomainFQDNDataType] <String>] [-RunWithCurrentlyLoggedInUserCredentials]
@@ -602,7 +602,7 @@ Get-DomainFQDNData -DomainFQDNDataType DomainFQDNName -Verbose
 Get-DomainFQDNData -DomainFQDNDataType RootDomainName -RunWithCurrentlyLoggedInUserCredentials
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-domainfqdndatatype"></a>-DomainFQDNDataType
 
@@ -664,7 +664,7 @@ Accept wildcard characters: False
 
 アカウントとパスワードの組み合わせから、ForestFQDN を取得します。
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ForestFQDN [-Forest] <String> [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
@@ -689,7 +689,7 @@ Get-ForestFQDN -Forest CONTOSO.MICROSOFT.COM -Verbose
 Get-ForestFQDN -Forest CONTOSO.MICROSOFT.COM -RunWithCurrentlyLoggedInUserCredentials -Verbose
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -734,7 +734,7 @@ Accept wildcard characters: False
 
 Main 関数。
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Start-ConnectivityValidation [-Forest] <String> [-AutoCreateConnectorAccount] <Boolean> [[-UserName] <String>]
@@ -753,7 +753,7 @@ AD の資格情報が有効であることを確認する使用可能なすべ�
 Start-ConnectivityValidation -Forest "test.contoso.com" -AutoCreateConnectorAccount $True -Verbose
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -773,9 +773,9 @@ Accept wildcard characters: False
 
 #### <a name="-autocreateconnectoraccount"></a>-AutoCreateConnectorAccount
 
-カスタム インストールの場合: AADConnect のウィザードの [AD フォレスト アカウント] ウィンドウ上でユーザーが [新しい AD アカウントを作成] を選択した場合、フラグは $True です。
+カスタム インストールの場合: AADConnect のウィザードの [AD フォレスト アカウント] ウィンドウでユーザーが [新しい AD アカウントを作成] を選択した場合、フラグは $True です。
 ユーザーが [既存 AD アカウントを使用] を選択した場合は $False です。
-簡易インストールの場合: 簡易インストールの場合、この変数の値は $True になっている必要があります。
+簡易インストールの場合: 簡易インストールの場合、この変数の値は $True である必要があります。
 
 ```yml
 Type: Boolean
@@ -816,7 +816,7 @@ Accept wildcard characters: False
 
 ネットワーク接続テストのメイン関数です。
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Start-NetworkConnectivityDiagnosisTools [[-Forest] <String>] [-Credentials] <PSCredential>
@@ -842,7 +842,7 @@ Start-NetworkConnectivityDiagnosisTools -Forest "TEST.CONTOSO.COM"
 Start-NetworkConnectivityDiagnosisTools -Forest "TEST.CONTOSO.COM" -DCs "DC1.TEST.CONTOSO.COM", "DC2.TEST.CONTOSO.COM"
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 

@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.openlocfilehash: dd5b4ec53d82421ddd9d680ca41e48eeecc43c2c
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74768386"
 ---
 # <a name="query-performance-insight"></a>Query Performance Insight 
@@ -45,7 +45,7 @@ Azure Database for PostgreSQL サーバーのポータル ページのメニュ�
 ## <a name="considerations"></a>考慮事項
 * Query Performance Insight は、[読み取りレプリカ](concepts-read-replicas.md)では使用できません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Azure Database for PostgreSQL での[監視およびチューニング](concepts-monitoring.md)の詳細を確認する。
 
 

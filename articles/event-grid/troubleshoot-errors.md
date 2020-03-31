@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: spelluru
 ms.openlocfilehash: 1ab9aeac0bde21e229fdb57b7ad02d5d48471551
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645074"
 ---
 # <a name="troubleshoot-azure-event-grid-errors"></a>Azure Event Grid エラーのトラブルシューティング

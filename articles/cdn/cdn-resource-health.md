@@ -15,10 +15,10 @@ ms.workload: integration
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 6710f5e5b873f751ad21068acdc15d38574f8378
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593438"
 ---
 # <a name="monitor-the-health-of-azure-cdn-resources"></a>Azure CDN リソースの正常性の監視
@@ -60,7 +60,7 @@ Azure CDN リソース正常性に関連する状態を次に示します。
 |申し訳ありません。補助ポータルの読み込みで問題が発生しています | ここで状態の更新をもう一度確認してください。想定された時間が経過しても問題が解決しない場合は、サポートにお問い合わせください。|
 申し訳ありません。CDN プロバイダーの一部で問題が発生しています | ここで状態の更新をもう一度確認してください。想定された時間が経過しても問題が解決しない場合は、サポートにお問い合わせください。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Resource Health の概要を確認します](../resource-health/resource-health-overview.md)
 - [CDN 圧縮に関する問題のトラブルシューティングを行います](./cdn-troubleshoot-compression.md)

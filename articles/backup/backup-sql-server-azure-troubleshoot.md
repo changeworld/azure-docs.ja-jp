@@ -3,24 +3,25 @@ title: SQL Server のデータベース バックアップに関するトラブ�
 description: Azure VM で実行されている SQL Server データベースの Azure Backup によるバックアップに関するトラブルシューティング情報です。
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 69cae196e7fad70d75fb12709e5bf0d618bbc81c
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 8d49adb0ab741903ccb2989cfeb4ceaef2e8a38d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602329"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79408618"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Azure Backup を使用した SQL Server データベースのバックアップのトラブルシューティング
 
 この記事では、Azure 仮想マシンで実行されている SQL Server データベースに関するトラブルシューティング情報を提供します。
 
-バックアップ プロセスと制限事項の詳細については、「[Azure VM での SQL Server Backup について](backup-azure-sql-database.md#feature-consideration-and-limitations)」を参照してください。
+バックアップ プロセスと制限事項の詳細については、「[Azure VM での SQL Server Backup について](sql-support-matrix.md#feature-consideration-and-limitations)」を参照してください。
 
 ## <a name="sql-server-permissions"></a>SQL Server 権限
 
 仮想マシン上で SQL Server データベースの保護を構成するには、その仮想マシンに **AzureBackupWindowsWorkload** 拡張機能をインストールする必要があります。 **UserErrorSQLNoSysadminMembership** エラーが発生した場合は、必要なバックアップ アクセス許可が SQL Server インスタンスにないことを意味します。 このエラーを解決するには、「[VM のアクセス許可を設定する](backup-azure-sql-database.md#set-vm-permissions)」の手順に従います。
 
 ## <a name="troubleshoot-discover-and-configure-issues"></a>検出と構成の問題のトラブルシューティング
+
 Recovery Services コンテナーを作成して構成した後、データベースの検出とバックアップの構成は 2 段階のプロセスで行います。<br>
 
 ![sql](./media/backup-azure-sql-database/sql.png)
@@ -37,7 +38,23 @@ Recovery Services コンテナーを作成して構成した後、データベ�
 
 SQL VM を新しいコンテナーに登録する必要がある場合は、古いコンテナーから登録解除する必要があります。  コンテナーから SQL VM を登録解除するには、保護されているすべてのデータ ソースの保護を停止する必要があります。その後、バックアップされているデータを削除できます。 バックアップされているデータの削除は破壊的な操作です。  SQL VM を登録解除するためのすべての注意事項を確認し、実行してから、この同じ VM を新しいコンテナーに登録し、バックアップ操作を再試行してください。
 
+## <a name="troubleshoot-backup-and-recovery-issues"></a>バックアップと復旧に関する問題のトラブルシューティング  
 
+場合によっては、バックアップ操作や復元操作でランダムなエラーが発生したり、これらの操作がスタックしたりすることがあります。 これは、VM のウイルス対策プログラムが原因である可能性があります。 ベスト プラクティスとして、次の手順を実行することをお勧めします。
+
+1. 次のフォルダーをウイルス対策スキャンの対象から除外します
+
+    `C:\Program Files\Azure Workload Backup` `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.Edp.AzureBackupWindowsWorkload`
+
+    `C:\` を *SystemDrive* の文字で置き換えてください。
+
+1. VM 内で実行されている次の 3 つのプロセスを、ウイルス対策スキャンの対象から除外します。
+
+    - IaasWLPluginSvc.exe
+    - IaasWorkloadCoordinaorService.exe
+    - TriggerExtensionJob.exe
+
+1. SQL には、ウイルス対策プログラムの使用に関するいくつかのガイドラインも用意されています。 詳細については、[こちらの記事](https://support.microsoft.com/help/309422/choosing-antivirus-software-for-computers-that-run-sql-server)をご覧ください。
 
 ## <a name="error-messages"></a>エラー メッセージ
 
@@ -149,7 +166,6 @@ SQL VM を新しいコンテナーに登録する必要がある場合は、古�
 | エラー メッセージ | 考えられる原因 | 推奨される操作 |
 |---|---|---|
 VM は、インターネット接続の問題により、Azure Backup サービスに接続できません。 | VM には、Azure Backup サービス、Azure Storage、または Azure Active Directory サービスへの送信接続が必要です。| - NSG を使用して接続を制限する場合は、AzureBackup サービス タグを使用して、Azure Backup サービス、Azure Storage、または Azure Active Directory サービスへの発信アクセスを許可する必要があります。 アクセス権を付与するには、次の[手順](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#allow-access-using-nsg-tags)に従います。<br>- DNS が Azure エンドポイントを解決することを確認します。<br>- VM が、インターネット アクセスをブロックするロード バランサーの背後にあるかどうかを確認します。 パブリック IP を VM に割り当てることで、検出が機能します。<br>- 上記の 3 つのターゲット サービスへの呼び出しをブロックするファイアウォール/ウイルス対策/プロキシが存在しないことを確認します。
-
 
 ## <a name="re-registration-failures"></a>再登録エラー
 

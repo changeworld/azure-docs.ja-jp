@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33830ce5822b2edee345cf58fc6f2a53d3c863fa
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: cd021b9547048e9f5218ce4f2b8b110b15d05963
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227601"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048561"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>チュートリアル:Azure Active Directory と Deputy の統合
 
@@ -174,7 +174,7 @@ Deputy で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="configure-deputy-single-sign-on"></a>Deputy シングル サインオンの構成
 
-1. [https://(サブドメイン).deputy.com/exec/config/system_config]( https://(your-subdomain).deputy.com/exec/config/system_config) に移動します。 **[Security Settings (セキュリティの設定)]** に移動し、 **[編集]** をクリックします。
+1. `https://(your-subdomain).deputy.com/exec/config/system_config` という URL に移動します。 **[Security Settings (セキュリティの設定)]** に移動し、 **[編集]** をクリックします。
    
     ![Configure single sign-on](./media/deputy-tutorial/tutorial_deputy_004.png)
 

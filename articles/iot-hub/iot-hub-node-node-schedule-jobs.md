@@ -10,10 +10,10 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.openlocfilehash: 5053935f52153f0cd6ff2f05c5153732f5bda945
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110845"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>ジョブのスケジュールとブロードキャスト (Node.js)

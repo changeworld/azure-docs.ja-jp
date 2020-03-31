@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
 ms.openlocfilehash: b207012335e68d389a07b54408e840dbb305a30c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930133"
 ---
 # <a name="azure-data-factory-unpivot-transformation"></a>Azure Data Factory のピボット解除変換
@@ -43,16 +43,16 @@ ADF のマッピング データ フローで、正規化されていないデ�
 
 (省略可能) 行の値から作成される新しい列の先頭、中間、および末尾に文字列を追加する名前付けパターンを設定できます。
 
-たとえば、"売上" を "地域" によってピボット処理すると、各売上値から新しい列値が算出されるだけです。 例: "25"、"50"、"1000" などです。ただし、"売上" というプレフィックス値を設定すれば、値に "売上" が付加されます。
+たとえば、"売上" を "地域" によってピボット処理すると、各売上値から新しい列値が算出されるだけです。 次に例を示します。"25"、"50"、"1000" などです。ただし、"売上" というプレフィックス値を設定すれば、値に "売上" が付加されます。
 
 <img src="media/data-flow/unpivot3.png" width="400">
 
-[Column Arrangement]\(列の配列\) を [Normal]\(標準\) に設定すると、すべてのピボットされた列がグループ化され、それらの値が集計されます。 [Column Arrangement]\(列の配置\) を [Lateral]\(水平\) に設定すると、列と値が入れ替わります。
+[Column Arrangement]\(列の配置\) を [Normal]\(標準\) に設定すると、すべてのピボットされた列がグループ化され、それらの値が集計されます。 [Column Arrangement]\(列の配置\) を [Lateral]\(水平\) に設定すると、列と値が入れ替わります。
 
 ![ピボット解除変換](media/data-flow//unpivot7.png "ピボット解除オプション 5")
 
 ピポット解除された最終的なデータの結果セットには、別個の行の値にピボット解除された列の合計が表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [ピボット解除変換](data-flow-pivot.md)を使用して、行を列にピボットします。

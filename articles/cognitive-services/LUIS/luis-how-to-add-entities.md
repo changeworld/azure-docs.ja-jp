@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: diberry
 ms.openlocfilehash: 1f2b293acdc77e25e6b932c47d466cc28a04a2b6
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383681"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79219137"
 ---
 # <a name="add-entities-to-extract-data"></a>データを抽出するエンティティを追加する 
 
@@ -88,9 +88,9 @@ Language Understanding (LUIS) アプリでユーザーの発話から重要な�
 
 |色 - リスト アイテム名|色 - シノニム|
 |--|--|
-|赤|深紅、血、リンゴ、消防車|
+|[赤]|深紅、血、リンゴ、消防車|
 |青|空、青空、コバルト|
-|緑|濃緑、ライム|
+|[緑]|濃緑、ライム|
 
 リスト エンティティを作成する手順を使用します。 リスト エンティティが作成されたら、意図でサンプル発話にラベルを付ける必要はありません。 リスト アイテムとシノニムは正確なテキストを使用して照合されます。 
 
@@ -177,7 +177,7 @@ Pattern.any が含まれているパターンでエンティティが正しく�
 
 <a name="create-a-pattern-from-an-utterance"></a>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"] 
 > [事前構築済みのモデルの使用](howto-add-prebuilt-models.md) 

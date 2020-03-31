@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 9ef9eada9b9aec50642a8bf357edab0677868817
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74949391"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop の Apache Hive と Apache Pig で C# のユーザー定義関数を使用する
@@ -56,7 +56,7 @@ Apache Hive UDF の C# プロジェクトを作成するには、次のように
 
 2. **[新しいプロジェクトの作成]** を選択します。
 
-3. **[新しいプロジェクトの作成]** ウィンドウで、 **[コンソール アプリ (.NET Framework)]** テンプレート (C# バージョン) を選択します。 次に、 **[次へ]** を選択します。
+3. **[新しいプロジェクトの作成]** ウィンドウで、 **[コンソール アプリ (.NET Framework)]** テンプレート (C# バージョン) を選択します。 **[次へ]** を選択します。
 
 4. **[新しいプロジェクトを構成します]** ウィンドウで、*HiveCSharp* の**プロジェクト名**を入力し、新しいプロジェクトを保存する**場所**に移動または場所を作成します。 **[作成]** を選択します。
 
@@ -123,7 +123,7 @@ Apache Hive UDF の C# プロジェクトを作成するには、次のように
 
 2. **[開始]** ウィンドウで、 **[新しいプロジェクトの作成]** を選択します。
 
-3. **[新しいプロジェクトの作成]** ウィンドウで、 **[コンソール アプリ (.NET Framework)]** テンプレート (C# バージョン) を選択します。 次に、 **[次へ]** を選択します。
+3. **[新しいプロジェクトの作成]** ウィンドウで、 **[コンソール アプリ (.NET Framework)]** テンプレート (C# バージョン) を選択します。 **[次へ]** を選択します。
 
 4. **[新しいプロジェクトを構成します]** ウィンドウで、*PigUDF* の**プロジェクト名**を入力し、新しいプロジェクトを保存する**場所**に移動または場所を作成します。 **[作成]** を選択します。
 
@@ -269,7 +269,7 @@ Pig UDF アプリケーションを使用する Pig ジョブを実行するこ�
 
 5. `exit` を使用して、pig を終了します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このドキュメントでは、HDInsight の Hive と Pig から .NET Framework アプリケーションを使用する方法について説明しました。 Hive と Pig で Python を使用する方法について学習するには、[HDInsight における Apache Hive および Apache Pig での Python の使用](python-udf-hdinsight.md)に関するページを参照してください。
 

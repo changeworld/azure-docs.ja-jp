@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.openlocfilehash: 3e4ef5d2d6db3a3d4f8923f47079f2484639a751
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74973987"
 ---
 # <a name="configure-ssl-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) での SSL の構成
@@ -37,5 +37,5 @@ psql "sslmode=verify-full sslrootcert=DigiCertGlobalRootCA.crt.pem host=mydemose
 > [!TIP]
 > `sslrootcert` に渡された値が、保存済みの証明書のファイル パスと一致することを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure Database for PostgreSQL - Hyperscale (Citus) のファイアウォール規則](concepts-hyperscale-firewall-rules.md)を使用して、セキュリティをさらに強化します。

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
 ms.openlocfilehash: a7bb74c09b45429a160a3ec481c23073575cfe3c
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75892519"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227235"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Azure Data Factory を使用して MongoDB のデータをコピーする
 
@@ -48,9 +48,9 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 |type プロパティは、次のように設定する必要があります:**MongoDbV2** |はい |
+| type |type プロパティは、次のように設定する必要があります:**MongoDbV2** |はい |
 | connectionString |MongoDB 接続文字列 (例: `mongodb://[username:password@]host[:port][/[database][?options]]`) を指定します。 詳細については、[MongoDB のマニュアルの接続文字列に関するページ](https://docs.mongodb.com/manual/reference/connection-string/)を参照してください。 <br/><br /> パスワードを Azure Key Vault に格納して、接続文字列から  `password`  構成をプルすることもできます。 詳細については、「 [Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。 |はい |
-| [データベース] | アクセスするデータベースの名前。 | はい |
+| database | アクセスするデータベースの名前。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 **例:**
@@ -78,7 +78,7 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは、次のように設定する必要があります:**MongoDbV2Collection** | はい |
+| type | データセットの type プロパティは、次のように設定する必要があります:**MongoDbV2Collection** | はい |
 | collectionName |MongoDB データベースのコレクション名前。 |はい |
 
 **例:**
@@ -110,7 +110,7 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**MongoDbV2Source** | はい |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**MongoDbV2Source** | はい |
 | filter | クエリ演算子を使用して選択フィルターを指定します。 コレクション内のすべてのドキュメントを返すには、このパラメーターを省略するか、空のドキュメント ({}) を渡します。 | いいえ |
 | cursorMethods.project | プロジェクションのドキュメントで返されるフィールドを指定します。 一致するドキュメント内のすべてのフィールドを返すには、このパラメーターを省略します。 | いいえ |
 | cursorMethods.sort | 一致するドキュメントがクエリによって返される順序を指定します。 「[cursor.sort()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort)」を参照してください。 | いいえ |

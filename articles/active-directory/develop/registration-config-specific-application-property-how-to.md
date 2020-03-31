@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ms.openlocfilehash: 36d74b9926639bb4ec49821a3d73b5d615016394
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76702676"
 ---
 # <a name="azure-portal-registration-fields-for-custom-developed-apps"></a>独自に開発したアプリ用の Azure portal の登録フィールド
@@ -40,7 +40,7 @@ ms.locfileid: "76702676"
 
 | フィールド            | 説明                                                                              |
 |------------------|------------------------------------------------------------------------------------------|
-| Name             | アプリケーションの名前です。 4 文字以上にする必要があります。                |
+| 名前             | アプリケーションの名前です。 4 文字以上にする必要があります。                |
 | サポートされているアカウントの種類| アプリケーションでサポートするアカウントを選択します: この組織のディレクトリ内のアカウントのみ、任意の組織のディレクトリ内のアカウント、または任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント。  |
 | リダイレクト URI (省略可能) | 作成するアプリの種類として **[Web]** または **[パブリック クライアント (モバイルとデスクトップ)]** を選択してから、アプリケーションのリダイレクト URI (または応答 URL) を入力します。 Web アプリケーションの場合は、アプリのベース URL を指定します。 ローカル マシンで実行されている Web アプリの URL であれば、たとえば http://localhost:31544 のようになります。 ユーザーはこの URL を使用して、Web クライアント アプリケーションにサインインすることになります。 パブリック クライアント アプリケーションの場合は、トークン応答を返すために Azure AD によって使用される URI を指定します。 アプリケーション固有の値 (たとえば、myapp://auth) を入力します。Web アプリケーションまたはネイティブ アプリケーションの具体的な例を見るには、[クイック スタート](https://docs.microsoft.com/azure/active-directory/develop)を参照してください。|
 

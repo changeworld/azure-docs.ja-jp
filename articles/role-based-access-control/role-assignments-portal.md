@@ -15,11 +15,11 @@ ms.date: 01/25/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: e2458b07602bca3b6f12b2f486b509c11d705461
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78344379"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225587"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Azure RBAC と Azure portal を使用してロールの割り当てを追加または削除する
 

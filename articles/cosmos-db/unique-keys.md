@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.reviewer: sngun
 ms.openlocfilehash: f234579c6fb2b6f1bc0cd518b87ea69fae30093a
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74869835"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Azure Cosmos DB の一意キー制約
@@ -53,7 +53,7 @@ ms.locfileid: "74869835"
 
 * 一意キー名では大文字と小文字が区別されます。 たとえば、あるコンテナーの一意キー制約が `/address/zipcode` に設定されているとします。 データに `ZipCode` という名前のフィールドがあると、`zipcode` と `ZipCode` は同じではないため、一意キーとして "null" が挿入されます。 このように大文字と小文字が区別されることにより、ZipCode を含む他のすべてのレコードは、重複する "null" が一意キー制約に違反するため、挿入できません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [論理パーティション](partition-data.md)の詳細を確認する
 * コンテナーの作成時に[一意キーを定義する方法](how-to-define-unique-keys.md)を確認する

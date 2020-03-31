@@ -11,10 +11,10 @@ ms.date: 03/02/2020
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: 81f4e753ffbaaefd5761c9396a6533bac9f212c1
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78254835"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Azure Batch で コンテナー アプリケーションを実行する
@@ -29,16 +29,16 @@ Azure Batch を使用すると、Azure で大量のバッチ コンピューテ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* **SDK バージョン**: Batch SDK は、次のバージョンの時点でコンテナー イメージをサポートします。
+* **SDK バージョン**: 次のバージョンの時点で、Batch SDK ではコンテナー イメージをサポートしています。
     * Batch REST API バージョン 2017-09-01.6.0
     * Batch .NET SDK バージョン 8.0.0
     * Batch Python SDK バージョン 4.0
     * Batch Java SDK バージョン 3.0
     * Batch Node.js SDK バージョン 3.0
 
-* **アカウント**: Azure サブスクリプションで、Batch アカウントを作成する必要があります。また、必要に応じて Azure Storage アカウントを作成します。
+* **アカウント**: ご使用の Azure サブスクリプションで、Batch アカウントを作成する必要があります。また、必要に応じて、Azure Storage アカウントを作成します。
 
-* **サポートされている VM イメージ**: コンテナーは、「サポートされている仮想マシン イメージ」のセクションで詳細に説明されているイメージから、仮想マシン構成で作成されたプールでのみサポートされます。 カスタム イメージを提供する場合は、次のセクションの注意点と「[マネージ カスタム イメージを使用して仮想マシンのプールを作成する](batch-custom-images.md)」の要件を参照してください。
+* **サポートされている VM イメージ**: コンテナーは、以下の「サポートされている仮想マシン イメージ」セクションで説明するイメージの仮想マシン構成で作成されたプールでのみサポートされます。 カスタム イメージを提供する場合は、次のセクションの注意点と「[マネージ カスタム イメージを使用して仮想マシンのプールを作成する](batch-custom-images.md)」の要件を参照してください。
 
 ### <a name="limitations"></a>制限事項
 
@@ -93,7 +93,7 @@ Docker を実行している VM から、Batch と互換性のある Linux デ�
 
 ## <a name="container-configuration-for-batch-pool"></a>Batch プール用のコンテナー構成
 
-Batch プールでコンテナー ワークロードを実行するには、プールの [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) オブジェクトに [ContainerConfiguration](/dotnet/api/microsoft.azure.batch.containerconfiguration) 設定を指定する必要があります。 (この記事では、Batch .NET API 参照へのリンクを提供しています。 対応する設定は、[Batch Python](/python/api/overview/azure/batch) API にあります。)
+Batch プールでコンテナー ワークロードを実行するには、プールの [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.containerconfiguration) オブジェクトに [ContainerConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) 設定を指定する必要があります。 (この記事では、Batch .NET API 参照へのリンクを提供しています。 対応する設定は、[Batch Python](/python/api/overview/azure/batch) API にあります。)
 
 次の例のように、プリフェッチされたコンテナー イメージを使用して、または使用しないでコンテナー対応プールを作成できます。 プル (プリフェッチ) プロセスにより、インターネット上の別のコンテナー レジストリまたは Docker Hub のいずれかから、コンテナー イメージを事前に読み込むことができます。 最も高いパフォーマンスを得るには、Batch アカウントと同じリージョンにある [Azure コンテナー レジストリ](../container-registry/container-registry-intro.md)を使用します。
 
@@ -251,7 +251,7 @@ Batch タスクのコンテナー イメージが [ENTRYPOINT](https://docs.dock
 
 ### <a name="container-task-working-directory"></a>コンテナー タスクの作業ディレクトリ
 
-Batch コンテナー タスクは、コンテナー内の作業ディレクトリで実行されます。これは、通常の (コンテナーでない) タスク用に Batch が設定するディレクトリによく似ています。 この作業ディレクトリは、イメージ内に構成されている場合、または既定のコンテナーの作業ディレクトリ (Windows コンテナー上の `C:\`、または Linux コンテナー上の `/`) 内に構成されている場合、[WORKDIR](https://docs.docker.com/engine/reference/builder/#workdir) とは異なることに注意してください。
+Batch コンテナー タスクは、コンテナー内の作業ディレクトリで実行されます。これは、通常の (コンテナーでない) タスク用に Batch が設定するディレクトリによく似ています。 この作業ディレクトリは、イメージ内に構成されている場合、または既定のコンテナーの作業ディレクトリ (Windows コンテナー上の [、または Linux コンテナー上の ](https://docs.docker.com/engine/reference/builder/#workdir)) 内に構成されている場合、`C:\`WORKDIR`/` とは異なることに注意してください。
 
 Batch コンテナー タスクの場合:
 
@@ -308,7 +308,7 @@ CloudTask containerTask = new CloudTask (
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Shipyard レシピ](https://github.com/Azure/batch-shipyard/tree/master/recipes)を使用して Azure Batch でコンテナー ワークロードを簡単にデプロイする方法については、[Batch Shipyard](https://github.com/Azure/batch-shipyard) ツールキットも参照してください。
+* [Shipyard レシピ](https://github.com/Azure/batch-shipyard)を使用して Azure Batch でコンテナー ワークロードを簡単にデプロイする方法については、[Batch Shipyard](https://github.com/Azure/batch-shipyard/tree/master/recipes) ツールキットも参照してください。
 
 * Linux での Docker CE のインストールおよび使用の詳細については、[Docker](https://docs.docker.com/engine/installation/) ドキュメントをご覧ください。
 

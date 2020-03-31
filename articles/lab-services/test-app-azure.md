@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 09/04/2018
 ms.author: spelluru
 ms.openlocfilehash: f8c57b9e1fabbd04a7d9c92484b0f52f074c2577
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65872355"
 ---
 # <a name="test-your-app-in-azure"></a>Azure でアプリをテストする 
@@ -31,8 +31,8 @@ ms.locfileid: "65872355"
 4. [Azure Files にファイル共有を作成する](../storage/files/storage-how-to-create-file-share.md)アーティクル内の手順に従い、Azure storage 内にファイル共有を作成します。 
 
 ## <a name="mount-the-file-share-on-your-local-machine"></a>ローカル コンピューターにファイル共有をマウントする
-1. ローカル コンピューター上で、[Windows で Azure ファイル共有を使用する](../storage/files/storage-how-to-use-files-windows.md)アーティクルの[Windows で Azure ファイル共有の資格情報を保持する](../storage/files/storage-how-to-use-files-windows.md#persisting-azure-file-share-credentials-in-windows)セクションのスクリプトを使用します。 
-2. 次に、`net use`コマンドを使用して、コンピューターにファイル共有をマウントします。 サンプル コマンドを次に示します:コマンドを実行する前に、ご自分の Azure ストレージ名とファイル共有名を指定します。 
+1. ローカル コンピューター上で、[Windows で Azure ファイル共有を使用する](../storage/files/storage-how-to-use-files-windows.md#persisting-azure-file-share-credentials-in-windows)アーティクルの[Windows で Azure ファイル共有の資格情報を保持する](../storage/files/storage-how-to-use-files-windows.md)セクションのスクリプトを使用します。 
+2. 次に、`net use`コマンドを使用して、コンピューターにファイル共有をマウントします。 サンプル コマンドを次に示します: コマンドを実行する前に、Azure Storage の名前とファイル共有名を指定します。 
 
     `net use Z: \\<YOUR AZURE STORAGE NAME>.file.core.windows.net\<YOUR FILE SHARE NAME> /persistent:yes`
 
@@ -99,7 +99,7 @@ ms.locfileid: "65872355"
 
     Azure で作成した テスト VM 内でアプリにアクセスしテストできるようになりました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ラボで VM を使用する方法については次のアーティクルを参照してください。 
 
 - [VM をラボに追加する](devtest-lab-add-vm.md)

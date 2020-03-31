@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/12/2018
 ms.author: rogarana
 ms.openlocfilehash: 8c180cfc597c0ade27b1fe8cca5a8751176ea12e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75460116"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Windows 仮想マシンを非管理対象ディスクからマネージド ディスクに変換します
@@ -34,7 +34,7 @@ ms.locfileid: "75460116"
 ## <a name="convert-single-instance-vms"></a>単一インスタンスの VM を変換する
 このセクションでは、単一インスタンスの Azure VM を非管理対象ディスクからマネージド ディスクに変換する方法について説明します。 (VM が可用性セットに含まれている場合は次のセクションを参照してください。) 
 
-1. [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) コマンドレットを使用して VM の割り当てを解除します。 次の例では、`myResourceGroup` という名前のリソース グループに含まれる `myVM` という名前の VM の割り当てを解除します。 
+1. [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) コマンドレットを使用して VM の割り当てを解除します。 次の例では、`myVM` という名前のリソース グループに含まれる `myResourceGroup` という名前の VM の割り当てを解除します。 
 
    ```azurepowershell-interactive
    $rgName = "myResourceGroup"
@@ -54,7 +54,7 @@ ms.locfileid: "75460116"
 
 マネージド ディスクに変換する VM が可用性セット内にある場合は、最初に可用性セットを管理対象の可用性セットに変換する必要があります。
 
-1. [Update-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/update-azavailabilityset) コマンドレットを使用して可用性セットを変換します。 次の例では、`myResourceGroup` という名前のリソース グループの `myAvailabilitySet` という名前の可用性セットを更新します。
+1. [Update-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/update-azavailabilityset) コマンドレットを使用して可用性セットを変換します。 次の例では、`myAvailabilitySet` という名前のリソース グループの `myResourceGroup` という名前の可用性セットを更新します。
 
    ```azurepowershell-interactive
    $rgName = 'myResourceGroup'

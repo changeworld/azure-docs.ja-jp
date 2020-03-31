@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
 ms.openlocfilehash: 41112359408497d84243ed9bb06f396acf008dc5
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74666003"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - データ移行のベスト プラクティス
@@ -115,7 +115,7 @@ Hive metastore はスクリプトを使用するか、DB のレプリケーシ�
 - XSLT などのツールを使用して、オンプレミスの特定の HDFS ベースのパスを特定の WASB または ADLS に変換します。
 - HDInsight で実行されている Ranger にポリシーをインポートします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このシリーズの次の記事をお読みください。
 

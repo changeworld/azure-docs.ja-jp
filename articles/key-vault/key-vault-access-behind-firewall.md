@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 36dada57e587da6e023a83c8ebb6555abe44b9ba
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 42b4eab5f2417f97ab3d37274e6fca1965eca95f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184848"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79457459"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>ファイアウォールの向こう側にある Azure Key Vault へのアクセス
 
@@ -52,7 +52,7 @@ Key Vault クライアント アプリケーションは、認証用の Azure Ac
 | 操作の種類 | エンドポイント:ポート |
 | --- | --- |
 | Key Vault コントロール プレーン操作<br> (Azure Resource Manager を使用) |**グローバル:**<br> management.azure.com:443<br><br> **Azure China:**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government:**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> management.microsoftazure.de:443 |
-| Azure Active Directory Graph API |**グローバル:**<br> graph.windows.net:443<br><br> **Azure China:**<br> graph.chinacloudapi.cn:443<br><br> **Azure US Government:**<br> graph.windows.net:443<br><br> **Azure Germany:**<br> graph.cloudapi.de:443 |
+| Microsoft Graph API |**グローバル:**<br> graph.microsoft.com:443<br><br> **Azure China:**<br> graph.chinacloudapi.cn:443<br><br> **Azure US Government:**<br> graph.microsoft.com:443<br><br> **Azure Germany:**<br> graph.cloudapi.de:443 |
 
 ## <a name="key-vault-operations"></a>Key Vault の操作
 

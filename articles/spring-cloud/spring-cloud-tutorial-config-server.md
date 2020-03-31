@@ -7,10 +7,10 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
 ms.openlocfilehash: 5e0b5633a153583117cfe0d90ec5c0e7c5f2a147
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76277521"
 ---
 # <a name="tutorial-set-up-a-spring-cloud-config-server-instance-for-your-service"></a>チュートリアル:自分のサービス向けに Spring Cloud Config Server インスタンスを設定する

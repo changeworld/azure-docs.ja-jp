@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: cc3f38e9bb96ce76263a3124f8bfdc49dc638bfd
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113780"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236787"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>データ インポートの概要 - Azure Cognitive Search
 
@@ -48,7 +48,7 @@ REST API では、JSON 要求本文を利用して HTTP POST 要求を Azure Cog
 .NET SDK では、データを `IndexBatch` オブジェクトにパッケージ化します。 `IndexBatch` は複数の `IndexAction` オブジェクトをカプセル化したものです。このオブジェクトにはそれぞれ、ドキュメント 1 つと、そのドキュメントへのアクションを Azure Cognitive Search に指示するプロパティが 1 つ含まれています。 コード例は、[ C# Quickstart](search-get-started-dotnet.md) を参照してください。
 
 
-| @search.action | 説明 | 各ドキュメントに必要なフィールド | メモ |
+| @search.action | 説明 | 各ドキュメントに必要なフィールド | Notes |
 | -------------- | ----------- | ---------------------------------- | ----- |
 | `upload` |`upload` アクションは、ドキュメントが新しい場合は挿入され、存在する場合は更新/置換される "upsert" に似ています。 |キーのほか、定義するその他すべてのフィールド |既存のドキュメントを更新または置換する際に、要求で指定されていないフィールドは `null`に設定されます。 この処理は、フィールドが null 以外の値に設定されていた場合にも行われます。 |
 | `merge` |指定されたフィールドで既存のドキュメントを更新します。 ドキュメントがインデックスに存在しない場合、マージは失敗します。 |キーのほか、定義するその他すべてのフィールド |マージで指定したすべてのフィールドは、ドキュメント内の既存のフィールドを置き換えます。 .NET SDK では、`DataType.Collection(DataType.String)` 型のフィールドがこれに含まれます。 REST API では、`Collection(Edm.String)` 型のフィールドがこれに含まれます。 たとえば、ドキュメントにフィールド `tags` があり、その値が `["budget"]` である場合、`tags` に値 `["economy", "pool"]` を指定してマージを実行すると、`tags` フィールドの最終的な値は `["economy", "pool"]` になります。 `["budget", "economy", "pool"]`にはなりません。 |

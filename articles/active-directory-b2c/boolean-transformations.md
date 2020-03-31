@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/03/2020
+ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e470ea65085bf71f0052567d5bf367661852d1cb
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: ea3b273070702144d5296d07cb8712da044819a8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268015"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471967"
 ---
 # <a name="boolean-claims-transformations"></a>ブール値要求変換
 
@@ -28,13 +28,13 @@ ms.locfileid: "78268015"
 
 2 つのブール値 inputClaims の AND 演算を実行し、演算の結果で outputClaim を設定します。
 
-| Item  | TransformationClaimType  | データ型  | Notes |
+| アイテム  | TransformationClaimType  | データ型  | メモ |
 |-------| ------------------------ | ---------- | ----- |
 | InputClaim | inputClaim1 | boolean | 評価する最初の ClaimType。 |
 | InputClaim | inputClaim2  | boolean | 評価する 2 つ目の ClaimType。 |
 |OutputClaim | outputClaim | boolean | この claims transformation が呼び出された後に生成される ClaimType (true または false)。 |
 
-次の要求変換は、2 つのブール値 ClaimTypes (`isEmailNotExist` および `isSocialAccount`) を AND 演算する方法が示されています。 両方の入力要求の値が `true` である場合、出力要求 `presentEmailSelfAsserted` は `true` に設定されます。 ソーシャル アカウントの電子メールが空の場合、オーケストレーションのステップで、事前条件を使用してセルフアサート ページをプリセットできます。
+次の要求変換は、2 つのブール値 ClaimTypes (`isEmailNotExist` および `isSocialAccount`) を AND 演算する方法が示されています。 両方の入力要求の値が `presentEmailSelfAsserted` である場合、出力要求 `true` は `true` に設定されます。 ソーシャル アカウントの電子メールが空の場合、オーケストレーションのステップで、事前条件を使用してセルフアサート ページをプリセットできます。
 
 ```XML
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="AndClaims">
@@ -61,12 +61,12 @@ ms.locfileid: "78268015"
 
 2 つの要求のブール値が等しいことをチェックし、等しくない場合は例外をスローします。
 
-| Item | TransformationClaimType  | データ型  | Notes |
+| アイテム | TransformationClaimType  | データ型  | メモ |
 | ---- | ------------------------ | ---------- | ----- |
 | inputClaim | inputClaim | boolean | アサートされる ClaimType。 |
 | InputParameter |valueToCompareTo | boolean | 比較される値 (true または false)。 |
 
-**AssertBooleanClaimIsEqualToValue** 要求変換は、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって呼び出される[検証技術プロファイル](validation-technical-profile.md)から常に実行する必要があります。 **UserMessageIfClaimsTransformationBooleanValueIsNotEqual** セルフアサート技術プロファイル メタデータにより、技術プロファイルによってユーザーに表示されるエラー メッセージが制御されます。
+**AssertBooleanClaimIsEqualToValue** 要求変換は、[セルフアサート技術プロファイル](validation-technical-profile.md)によって呼び出される[検証技術プロファイル](self-asserted-technical-profile.md)から常に実行する必要があります。 **UserMessageIfClaimsTransformationBooleanValueIsNotEqual** セルフアサート技術プロファイル メタデータにより、技術プロファイルによってユーザーに表示されるエラー メッセージが制御されます。 エラー メッセージは、[ローカライズ](localization-string-ids.md#claims-transformations-error-messages)できます。
 
 ![AssertStringClaimsAreEqual の実行](./media/boolean-transformations/assert-execution.png)
 
@@ -112,13 +112,13 @@ ms.locfileid: "78268015"
 - 入力要求:
     - **inputClaim**: false
     - **valueToCompareTo**: true
-- 結果:エラーがスローされます
+- 結果: エラーがスローされます
 
 ## <a name="comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue
 
 要求のブール値が `true` または `false` と等しいことを確認して、圧縮の結果を返します。
 
-| Item | TransformationClaimType  | データ型  | Notes |
+| アイテム | TransformationClaimType  | データ型  | メモ |
 | ---- | ------------------------ | ---------- | ----- |
 | InputClaim | inputClaim | boolean | アサートされる ClaimType。 |
 | InputParameter |valueToCompareTo | boolean | 比較される値 (true または false)。 |
@@ -156,7 +156,7 @@ ms.locfileid: "78268015"
 
 ブール値 inputClaim の NOT 演算を実行し、演算の結果で outputClaim を設定します。
 
-| Item | TransformationClaimType | データ型 | Notes |
+| アイテム | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | boolean | 演算処理される要求。 |
 | OutputClaim | outputClaim | boolean | この claims transformation が呼び出された後に生成される ClaimType (true または false)。 |
@@ -184,7 +184,7 @@ ms.locfileid: "78268015"
 
 2 つのブール値 inputClaims の OR を計算し、演算の結果で outputClaim を設定します。
 
-| Item | TransformationClaimType | データ型 | Notes |
+| アイテム | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | boolean | 評価する最初の ClaimType。 |
 | InputClaim | inputClaim2 | boolean | 評価する 2 つ目の ClaimType。 |
