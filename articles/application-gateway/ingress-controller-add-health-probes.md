@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 5d0543a3a43d53e462a6406312faddf37d2653c6
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73795595"
 ---
 # <a name="add-health-probes-to-your-service"></a>正常性プローブをサービスに追加する
@@ -55,7 +55,7 @@ Kubernetes API リファレンス:
 > * `HttpHeaders`、`InitialDelaySeconds`、`SuccessThreshold` はサポートされていません。
 
 ##  <a name="without-readinessprobe-or-livenessprobe"></a>`readinessProbe` または `livenessProbe` を使用しない
-上記のプローブが指定されなかった場合、イングレス コントローラーでは、`backend-path-prefix` 注釈に対して指定された `Path` またはサービスの `ingress` 定義内に指定された `path` にサービスが到達できることを想定します。
+上記のプローブが指定されなかった場合、イングレス コントローラーでは、`Path` 注釈に対して指定された `backend-path-prefix` またはサービスの `path` 定義内に指定された `ingress` にサービスが到達できることを想定します。
 
 ## <a name="default-values-for-health-probe"></a>正常性プローブの既定値
 readiness/liveness probe によって推定できないプロパティにはすべて、既定値が設定されます。

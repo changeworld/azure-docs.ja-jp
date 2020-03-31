@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 3eedfb1e9ec59fbe12ee94a65d3702a7ef8ca95a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823640"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>エラスティック データベース ツールに関してよく寄せられる質問 (FAQ)
@@ -54,6 +54,6 @@ Elastic Scale API を使用すると、シャーディング キーの接続デ�
 
 ## <a name="does-the-split-merge-tool-provision-or-delete-a-database-during-a-split-or-merge-operation"></a>分割や結合などの操作の実行時に、Split Merge ツールではデータベースがプロビジョニング (または削除) されますか
 
-No. **分割** 操作の場合、適切なスキーマを持ったターゲット データベースが存在し、シャード マップ マネージャーに登録されている必要があります。  **結合** 操作の場合、シャード マップ マネージャーからシャードを削除してから、データベースを削除する必要があります。
+いいえ。 **分割** 操作の場合、適切なスキーマを持ったターゲット データベースが存在し、シャード マップ マネージャーに登録されている必要があります。  **結合** 操作の場合、シャード マップ マネージャーからシャードを削除してから、データベースを削除する必要があります。
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

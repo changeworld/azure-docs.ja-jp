@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: victorh
 ms.openlocfilehash: 6396f8292a4c54f7fce237439f37c3e8156d59e8
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74169048"
 ---
 # <a name="fqdn-tags-overview"></a>FQDN タグの概要
@@ -40,6 +40,6 @@ FQDN タグは、よく知られている Microsoft サービスに関連付け�
 > [!NOTE]
 > アプリケーション ルールで FQDN タグを選択する場合は、[プロトコル:ポート] フィールドを **[https]** に設定する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Azure ファイアーウォールのデプロイ方法については、「[Tutorial: Deploy and configure Azure Firewall using the Azure portal (チュートリアル: Azure portal を使用して Azure Firewall のデプロイと構成を行う)](tutorial-firewall-deploy-portal.md)」を参照してください。
+Azure Firewall のデプロイ方法については、「[チュートリアル: Azure portal を使用して Azure Firewall をデプロイして構成する](tutorial-firewall-deploy-portal.md)」を参照してください。

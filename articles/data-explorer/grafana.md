@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.openlocfilehash: a1c52007ea86ca0812c4a73a92ce81db6ddadc7b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74038020"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>Grafana で Azure Data Explorer のデータを視覚化する
@@ -32,7 +32,7 @@ Grafana の Azure Data Explorer プラグインを使用し、Azure Data Explore
 
 * Grafana の [Azure Data Explorer プラグイン](https://grafana.com/plugins/grafana-azure-data-explorer-datasource/installation)。
 
-* StormEvents サンプル データを含むクラスター。 詳細については、「[クイック スタート: Azure Data Explorer クラスターとデータベースを作成する](create-cluster-database-portal.md)」、および「[Azure のデータ エクスプローラーにサンプル データを取り込む](ingest-sample-data.md)」を参照してください。
+* StormEvents サンプル データを含むクラスター。 詳細については、「[Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md)」 (クイック スタート: Azure データ エクスプローラー クラスターとデータベースを作成する) と「[Azure データ エクスプローラーにサンプル データを取り込む](ingest-sample-data.md)」を参照してください。
 
     [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
@@ -56,12 +56,12 @@ Grafana の Azure Data Explorer プラグインを使用し、Azure Data Explore
 
     ![接続のプロパティ](media/grafana/connection-properties.png)
 
-    | Grafana UI | Azure ポータル | Azure CLI |
+    | Grafana UI | Azure portal | Azure CLI |
     | --- | --- | --- |
     | サブスクリプション ID | サブスクリプション ID | SubscriptionId |
     | テナント ID | ディレクトリ ID | tenant |
     | クライアント ID | アプリケーション ID | appId |
-    | クライアント シークレット | パスワード | password |
+    | クライアント シークレット | Password | パスワード |
     | | | |
 
 1. **[Save & Test]\(保存してテスト\)** を選択します。
@@ -131,6 +131,6 @@ Azure Data Explorer を Grafana のデータ ソースとして構成したら�
 
 1. **ダッシュボードの保存**アイコンを選択して、変更を保存します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Data Explorer のクエリを記述する](write-queries.md)

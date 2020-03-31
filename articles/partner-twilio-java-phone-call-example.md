@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: 168ec65cfd0ff4e87c33324daa353b554111c8aa
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73838553"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>Azure 上の Java アプリケーションで Twilio を使用して通話する方法
@@ -26,7 +26,7 @@ ms.locfileid: "73838553"
 
 このトピックでコードを使用するためには次の操作を行う必要があります。
 
-1. Twilio アカウントと認証トークンを取得します。 Twilio の使用を開始するには、[https://www.twilio.com/pricing][twilio_pricing] で価格を評価します。 [https://www.twilio.com/try-twilio][try_twilio] でサインアップできます。 Twilio から提供される API については、[https://www.twilio.com/api][twilio_api] を参照してください。
+1. Twilio アカウントと認証トークンを取得します。 Twilio を利用し始める前に、[https://www.twilio.com/pricing][twilio_pricing] で価格を検討します。 [https://www.twilio.com/try-twilio][try_twilio] でサインアップできます。 Twilio から提供される API については、[https://www.twilio.com/api][twilio_api] を参照してください。
 2. Twilio JAR を入手します。 [https://github.com/twilio/twilio-java][twilio_java_github] では、GitHub ソースをダウンロードして独自の JAR を作成するか、またはビルド済み JAR (依存関係あり、またはなし) をダウンロードできます。
    このトピックでのコードは、ビルド済み TwilioJava-3.3.8-with-dependencies JAR を使用して記述されています。
 3. JAR を Java ビルド パスに追加します。
@@ -176,8 +176,8 @@ ms.locfileid: "73838553"
 
 Azure にデプロイする準備ができたら、クラウドへのデプロイ用に再コンパイルし、Azure にデプロイして、ブラウザーで http://*your_hosted_name*.cloudapp.net/TwilioCloud/callform.jsp を実行します (*your_hosted_name* は実際の値に置き換えてください)。
 
-## <a name="next-steps"></a>次の手順
-Azure 上の Java で Twilio を使用した基本機能を示すために、このコードが用意されました。 運用環境で Azure に展開する前に、エラー処理やその他の機能をさらに追加することができます。 例:
+## <a name="next-steps"></a>次のステップ
+Azure 上の Java で Twilio を使用した基本機能を示すために、このコードが用意されました。 運用環境で Azure に展開する前に、エラー処理やその他の機能をさらに追加することができます。 次に例を示します。
 
 * Web フォームを使用する代わりに、Azure ストレージ BLOB または SQL Database を使用して、電話番号と通話テキストを保存できます。 Java で Azure ストレージ BLOB を使用する方法の詳細については、 [Java から BLOB ストレージ サービスを使用する方法に関するページ][howto_blob_storage_java]を参照してください。 
 * **RoleEnvironment.getConfigurationSettings** を使用すると、Twilio アカウント ID と認証トークンは、その値を makecall.jsp 内にハードコーディングするのではなく、デプロイの構成設定から取得できます。 **RoleEnvironment** クラスについては、[JSP での Azure サービス ランタイム ライブラリの使用][azure_runtime_jsp]に関するページを参照してください。
@@ -186,7 +186,7 @@ Azure 上の Java で Twilio を使用した基本機能を示すために、こ
 
 Twilio の詳細については、[https://www.twilio.com/docs][twilio_docs] を参照してください。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 * [Java で音声および SMS 機能に Twilio を使用する方法][howto_twilio_voice_sms_java]
 * [証明書を Java CA 証明書ストアに追加する方法][add_ca_cert]
 

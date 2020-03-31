@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/30/2019
 ms.author: surmb
 ms.openlocfilehash: 71e1f8be2af5556d86996175e8a1ddbccc9c7de1
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72001674"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Application Gateway のバックエンドの正常性に関する問題のトラブルシューティング
@@ -129,7 +129,7 @@ Also check whether any NSG/UDR/Firewall is blocking access to the Ip and port of
 
 **原因:** DNS 解決フェーズの後、Application Gateway は、HTTP 設定で構成されている TCP ポートでバックエンド サーバーへの接続を試行します。 Application Gateway が指定されたポートで TCP セッションを確立できない場合、probe はこのメッセージで "異常" とマークされます。
 
-**解決策:** このエラーが発生した場合は、次の手順を実行します。
+**解決方法:** このエラーが発生した場合は、次の手順を実行します。
 
 1.  ブラウザーまたは PowerShell を使用して、HTTP 設定に指定されているポートでバックエンド サーバーに接続できるかどうかを確認します。 たとえば、`Test-NetConnection -ComputerName
     www.bing.com -Port 443` コマンドを実行します。
@@ -157,7 +157,7 @@ Also check whether any NSG/UDR/Firewall is blocking access to the Ip and port of
 
     a.  コマンド プロンプトを開き (Win+R -\> cmd)、「`netstat`」と入力して、Enter キーを押します。
 
-    b.  構成されているポートでサーバーがリッスンしているかどうかを確認します。 例:
+    b.  構成されているポートでサーバーがリッスンしているかどうかを確認します。 次に例を示します。
     ```
             Proto Local Address Foreign Address State PID
             TCP 0.0.0.0:80 0.0.0.0:0 LISTENING 4
@@ -172,7 +172,7 @@ Also check whether any NSG/UDR/Firewall is blocking access to the Ip and port of
 
 **原因:** TCP 接続が確立され、SSL ハンドシェイクが完了すると (SSL が有効な場合)、Application Gateway は probe を HTTP GET 要求としてバックエンド サーバーに送信します。 前述のように、既定の probe の対象は \<プロトコル\>://127.0.0.1:\<ポート\>/ であり、200 から 399 の範囲の応答状態コードは正常であると見なされます。 サーバーからそれ以外の状態コードが返された場合、そのサーバーはこのメッセージで "異常" とマークされます。
 
-**解決策:** バックエンド サーバーの応答コードに応じて、次の手順を実行できます。 一般的な状態コードをいくつか次に示します。
+**解決方法:** バックエンド サーバーの応答コードに応じて、次の手順を実行できます。 一般的な状態コードをいくつか次に示します。
 
 | **Error** | **アクション** |
 | --- | --- |
@@ -193,7 +193,7 @@ Also check whether any NSG/UDR/Firewall is blocking access to the Ip and port of
 
 **原因:** カスタム probe を作成する場合、応答本文の文字列と一致させることによってバックエンド サーバーを "正常" とマークすることもできます。 たとえば、一致する文字列として "unauthorized" を受け入れるように Application Gateway を構成できます。 probe 要求に対するバックエンド サーバーの応答に文字列 **unauthorized** が含まれている場合は、"正常" とマークされます。 それ以外の場合は、このメッセージで "異常" とマークされます。
 
-**解決策:** この問題を解決するには、次の手順に従ってください。
+**解決方法:** この問題を解決するには、次の手順に従ってください。
 
 1.  バックエンド サーバーにローカルでアクセスするか、probe パス上のクライアント マシンからアクセスして、応答本文を確認します。
 
@@ -210,7 +210,7 @@ Also check whether any NSG/UDR/Firewall is blocking access to the Ip and port of
 **原因:** Application Gateway v2 でのエンドツーエンド SSL を使用するには、サーバーが正常であると判断するためにバックエンド サーバーの証明書を検証する必要があります。
 SSL 証明書を信頼するには、そのバックエンド サーバーの証明書が、Application Gateway の信頼されたストアに含まれる CA によって発行されている必要があります。 証明書が信頼された CA によって発行されていない場合 (自己署名証明書が使用された場合など)、ユーザーは、発行者の証明書を Application Gateway にアップロードする必要があります。
 
-**解決策:** 信頼されたルート証明書をエクスポートして Application Gateway にアップロードするには、次の手順に従います。 (この手順は、Windows クライアント向けです。)
+**解決方法:** 信頼されたルート証明書をエクスポートして Application Gateway にアップロードするには、次の手順に従います。 (この手順は、Windows クライアント向けです。)
 
 1.  対象のアプリケーションがホストされているマシンにサインインします。
 
@@ -245,7 +245,7 @@ SSL 証明書を信頼するには、そのバックエンド サーバーの証
 
 Application Gateway の HTTP 設定にアップロードされた証明書は、バックエンド サーバー証明書のルート証明書と一致している必要があります。
 
-**解決策:** このエラー メッセージが表示された場合は、Application Gateway にアップロードされた証明書とバックエンド サーバーにアップロードされた証明書が一致していません。
+**解決方法:** このエラー メッセージが表示された場合は、Application Gateway にアップロードされた証明書とバックエンド サーバーにアップロードされた証明書が一致していません。
 
 上記の方法の手順 1 から 11 に従って、正しい信頼されたルート証明書を Application Gateway にアップロードします。
 
@@ -253,7 +253,7 @@ Application Gateway で信頼されるルート証明書を抽出してアップ
 > [!NOTE]
 > このエラーは、バックエンド サーバーが TLS ハンドシェイク中に "ルート -> 中間 (該当する場合) -> リーフ" を含む証明書の完全なチェーンを交換していない場合にも発生する可能性があります。 確認するには、任意のクライアントから OpenSSL コマンドを使用し、Application Gateway probe に構成された設定を使用してバックエンド サーバーに接続します。
 
-例:
+次に例を示します。
 ```
 OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 ```
@@ -290,7 +290,7 @@ HTTP 設定で **[バックエンド アドレスからホスト名を選択し�
 
 このエラー メッセージが表示される場合は、バックエンド証明書の CN が、カスタム probe または HTTP 設定 ( **[Pick Hostname from Backend HTTP Settings]\(ホスト名をバックエンド HTTP 設定から選択します\)** が選択されている場合) で構成されているホスト名と一致していません。 既定の probe を使用している場合、ホスト名は **127.0.0.1** に設定されます。 これが目的の値でない場合は、カスタム probe を作成し、HTTP 設定に関連付ける必要があります。
 
-**解決策:**
+**解決方法:**
 
 この問題を解決するには、次の手順に従ってください。
 
@@ -323,7 +323,7 @@ OpenSSL を使用する Linux の場合:
 
 **原因:** すべての証明書には有効期限の範囲があり、サーバーの SSL 証明書が有効でない限り、HTTPS 接続はセキュリティで保護されません。 現在の日付が **[有効期間の開始]** と **[有効期間の終了]** の範囲内にある必要があります。 そうでない場合、証明書は無効と見なされ、セキュリティ上の問題となります。この場合、Application Gateway によってバックエンド サーバーが "異常" とマークされます。
 
-**解決策:** SSL 証明書の有効期限が切れた場合は、ベンダーで証明書を更新し、新しい証明書を使用してサーバーの設定を更新します。 自己署名証明書の場合は、有効な証明書を生成し、ルート証明書を Application Gateway の HTTP 設定にアップロードする必要があります。 そのためには、次の手順に従います。
+**解決方法:** SSL 証明書の有効期限が切れた場合は、ベンダーで証明書を更新し、新しい証明書を使用してサーバーの設定を更新します。 自己署名証明書の場合は、有効な証明書を生成し、ルート証明書を Application Gateway の HTTP 設定にアップロードする必要があります。 そのためには、次の手順に従います。
 
 1.  ポータルで Application Gateway の HTTP 設定を開きます。
 
@@ -337,7 +337,7 @@ OpenSSL を使用する Linux の場合:
 
 **原因:** このエラーは、Application Gateway が証明書の有効性を確認できない場合に発生します。
 
-**解決策:** この問題を解決するには、サーバー上の証明書が適切に作成されていることを確認します。 たとえば、[OpenSSL](https://www.openssl.org/docs/man1.0.2/man1/verify.html) を使用して、証明書とそのプロパティを確認し、Application Gateway の HTTP 設定への証明書の再アップロードを試行できます。
+**解決方法:** この問題を解決するには、サーバー上の証明書が適切に作成されていることを確認します。 たとえば、[OpenSSL](https://www.openssl.org/docs/man1.0.2/man1/verify.html) を使用して、証明書とそのプロパティを確認し、Application Gateway の HTTP 設定への証明書の再アップロードを試行できます。
 
 <a name="backend-health-status-unknown"></a>バックエンドの正常性状態: 不明
 -------------------------------
@@ -353,7 +353,7 @@ OpenSSL を使用する Linux の場合:
 1.  パブリック ドメイン名を解決できない仮想ネットワーク上にカスタム DNS サーバーが構成されている。
 1.  Application Gateway が異常な状態である。
 
-**解決策:**
+**解決方法:**
 
 1.  NSG によって、ポート 65503 から 65534 (v1 SKU) または 65200 から 65535 (v2 SKU) への**インターネット**からのアクセスがブロックされているかどうかを確認します。
 
@@ -391,7 +391,7 @@ OpenSSL を使用する Linux の場合:
 
 1.  Application Gateway が正常で実行中であることを確認するには、ポータルの **[Resource Health]\(リソース正常性\)** オプションにアクセスし、状態が **[正常]** であることを確認します。 **[異常]** または **[デグレード]** 状態が表示される場合は、[サポートにお問い合わせください](https://azure.microsoft.com/support/options/)。
 
-<a name="next-steps"></a>次の手順
+<a name="next-steps"></a>次のステップ
 ----------
 
 [Application Gateway の診断とログ](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)の詳細を確認します。

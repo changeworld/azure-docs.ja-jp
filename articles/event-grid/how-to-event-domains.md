@@ -8,10 +8,10 @@ ms.author: babanisa
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.openlocfilehash: 1d07227249806b7d54523af66817a170c19354ee
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72786550"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>イベント ドメインを使用してトピックを管理し、イベントを発行する
@@ -35,7 +35,7 @@ ms.locfileid: "72786550"
 
 大規模なトピック セットを管理するには、イベント ドメインを作成します。
 
-# <a name="azure-clitabazurecli"></a>[Azure CLI](#tab/azurecli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
 ```azurecli-interactive
 # If you haven't already installed the extension, do it now.
@@ -48,7 +48,7 @@ az eventgrid domain create \
   -l <location>
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```azurepowershell-interactive
 # If you have not already installed the module, do it now.
 # This module is required for preview features.
@@ -86,7 +86,7 @@ New-AzureRmEventGridDomain `
 
 Event Grid には、ドメイン内のさまざまなトピックへのアクセスを特定のユーザーに割り当てるために使用できる 2 つの組み込みロールがあります。 これらのロールは、サブスクリプションの作成と削除を許可する `EventGrid EventSubscription Contributor (Preview)` と、イベント サブスクリプションのリストのみを許可する `EventGrid EventSubscription Reader (Preview)` です。
 
-# <a name="azure-clitabazurecli"></a>[Azure CLI](#tab/azurecli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 次の Azure CLI コマンドでは、`alice@contoso.com` によるイベント サブスクリプションの作成と削除を、トピック `demotopic1` のみに制限します。
 
 ```azurecli-interactive
@@ -96,7 +96,7 @@ az role assignment create \
   --scope /subscriptions/<sub-id>/resourceGroups/<my-resource-group>/providers/Microsoft.EventGrid/domains/<my-domain-name>/topics/demotopic1
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 次の PowerShell コマンドでは、`alice@contoso.com` によるイベント サブスクリプションの作成と削除を、トピック `demotopic1` のみに制限します。
 
 ```azurepowershell-interactive
@@ -117,7 +117,7 @@ Event Grid サービスでは、ドメイン トピックのイベント サブ�
 
 通常、前のセクションでアクセスを許可されたユーザーが、サブスクリプションを作成します。 この記事では、簡単にするため自分でサブスクリプションを作成します。 
 
-# <a name="azure-clitabazurecli"></a>[Azure CLI](#tab/azurecli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
 ```azurecli-interactive
 az eventgrid event-subscription create \
@@ -126,7 +126,7 @@ az eventgrid event-subscription create \
   --endpoint https://contoso.azurewebsites.net/api/updates
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```azurepowershell-interactive
 New-AzureRmEventGridSubscription `
@@ -175,7 +175,7 @@ New-AzureRmEventGridSubscription `
 }]
 ```
 
-# <a name="azure-clitabazurecli"></a>[Azure CLI](#tab/azurecli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 Azure CLI を使用してドメイン エンドポイントを取得するには、以下を使用します。
 
 ```azurecli-interactive
@@ -192,7 +192,7 @@ az eventgrid domain key list \
   -n <my-domain>
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 PowerShell を使用してドメイン エンドポイントを取得するには、以下を使用します。
 
 ```azurepowershell-interactive
@@ -212,6 +212,6 @@ Get-AzureRmEventGridDomainKey `
 
 次に、HTTP POST を実行するための任意のメソッドを使用して、Event Grid ドメインにイベントを発行します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * イベント ドメインの概念の概要と役立つ理由の詳細については、[イベント ドメインの概念の概要](event-domains.md)に関するページを参照してください。

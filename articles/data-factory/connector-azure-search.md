@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/13/2019
 ms.openlocfilehash: 418026d5569cd7e4a7c5239f99650833b1b9514d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75892934"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Cognitive Search インデックスにデータをコピーする
@@ -42,7 +42,7 @@ Azure Cognitive Search のリンクされたサービスでは、次のプロパ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティは、次のように設定する必要があります:**AzureSearch**。 | はい |
+| type | type プロパティを **AzureSearch** に設定する必要があります。 | はい |
 | url | 検索サービスの URL。 | はい |
 | key | 検索サービスの管理者キー。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
@@ -80,7 +80,7 @@ Azure Cognitive Search のリンクされたサービスでは、次のプロパ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは、次のように設定する必要があります:**AzureSearchIndex** | はい |
+| type | データセットの type プロパティは、**AzureSearchIndex** を設定する必要があります。 | はい |
 | indexName | 検索インデックスの名前。 Data Factory では、インデックスは作成されません。 このインデックスは Azure Cognitive Search に存在する必要があります。 | はい |
 
 **例:**
@@ -112,8 +112,8 @@ Azure Cognitive Search にデータをコピーするには、コピー アク�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**AzureSearchIndexSink** | はい |
-| writeBehavior | ドキュメントがそのインデックスに既に存在する場合に、マージするか置換するかを指定します。 詳細については、「[WriteBehavior プロパティ](#writebehavior-property)」を参照してください。<br/><br/>使用できる値は、以下のとおりです。**マージ** (既定) および**アップロード**。 | いいえ |
+| type | コピー アクティビティのソースの type プロパティは **AzureSearchIndexSink** を設定する必要があります。 | はい |
+| writeBehavior | ドキュメントがそのインデックスに既に存在する場合に、マージするか置換するかを指定します。 詳細については、「[WriteBehavior プロパティ](#writebehavior-property)」を参照してください。<br/><br/>使用可能な値: **マージ** (既定値) および **アップロード**。 | いいえ |
 | writeBatchSize | バッファー サイズが writeBatchSize に達すると、検索インデックスにデータをアップロードします。 詳細については、「[WriteBatchSize プロパティ](#writebatchsize-property)」を参照してください。<br/><br/>使用可能な値: 1 ～ 1,000 の整数。既定値は 1000 です。 | いいえ |
 
 ### <a name="writebehavior-property"></a>WriteBehavior プロパティ

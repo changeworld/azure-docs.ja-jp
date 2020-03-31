@@ -17,10 +17,10 @@ ms.date: 10/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cd179049f88454c62244cf1819cee08ef78d0633
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72373253"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-thousandeyes"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ThousandEyes の統合
@@ -29,7 +29,7 @@ ms.locfileid: "72373253"
 
 * ThousandEyes にアクセスできるユーザーを Azure AD で管理できます。
 * ユーザーが自分の Azure AD アカウントを使用して ThousandEyes に自動的にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -134,19 +134,19 @@ ThousandEyes で Azure AD SSO を構成してテストするには、次の構�
 
 2. 上部のメニューで **[Settings]** をクリックします。
 
-    ![設定](./media/thousandeyes-tutorial/ic790066.png "Settings")
+    ![設定](./media/thousandeyes-tutorial/ic790066.png "設定")
 
 3. ページの下部にある **[Account]**
 
-    ![Account](./media/thousandeyes-tutorial/ic790067.png "Account")
+    ![アカウント](./media/thousandeyes-tutorial/ic790067.png "Account")
 
 4. **[Security & Authentication]** タブをクリックします。
 
-    ![セキュリティと認証](./media/thousandeyes-tutorial/ic790068.png "Security & Authentication")
+    ![[Security & Authentication]\(セキュリティと認証\)](./media/thousandeyes-tutorial/ic790068.png "[Security & Authentication]")
 
 5. **[Setup Single Sign-On]** セクションで、次の手順を実行します。
 
-    ![シングル サインオンの設定](./media/thousandeyes-tutorial/ic790069.png "Setup Single Sign-On")
+    ![[Setup Single Sign-On]\(シングル サインオンの設定\)](./media/thousandeyes-tutorial/ic790069.png "[Setup Single Sign-On]")
 
     a. **[シングル サインオンを有効にする]** を選択します。
 
@@ -158,11 +158,11 @@ ThousandEyes で Azure AD SSO を構成してテストするには、次の構�
 
     e. **[Verification Certificate]\(検証証明書\)** で **[Choose file]\(ファイルの選択\)** をクリックし、Azure Portal からダウンロードした証明書をアップロードします。
 
-    f. **[Save]** をクリックします。
+    f. **[保存]** をクリックします。
 
 ### <a name="create-thousandeyes-test-user"></a>ThousandEyes テスト ユーザーの作成
 
-このセクションの目的は、ThousandEyesで Britta Simon というユーザーを作成することです。 ThousandEyes では、自動ユーザー プロビジョニングがサポートされています。この設定は、既定で有効になっています。 自動ユーザー プロビジョニングの構成方法の詳細については、[こちら](thousandeyes-provisioning-tutorial.md)を参照してください。
+このセクションの目的は、ThousandEyesで Britta Simon というユーザーを作成することです。 ThousandEyes では、自動ユーザー プロビジョニングがサポートされています。この設定は、既定で有効になっています。 自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](thousandeyes-provisioning-tutorial.md)をご覧ください。
 
 **ユーザーを手動で作成する必要がある場合は、次の手順を実行します:**
 
@@ -170,19 +170,19 @@ ThousandEyes で Azure AD SSO を構成してテストするには、次の構�
 
 2. **[設定]** をクリックします。
 
-    ![設定](./media/thousandeyes-tutorial/IC790066.png "Settings")
+    ![設定](./media/thousandeyes-tutorial/IC790066.png "設定")
 
 3. **[アカウント]** クリックします。
 
-    ![Account](./media/thousandeyes-tutorial/IC790067.png "Account")
+    ![アカウント](./media/thousandeyes-tutorial/IC790067.png "Account")
 
 4. **[Accounts & Users]** タブをクリックします。
 
-    ![アカウントとユーザー](./media/thousandeyes-tutorial/IC790073.png "Accounts & Users")
+    ![[Accounts & Users]\(アカウントとユーザー\)](./media/thousandeyes-tutorial/IC790073.png "[Accounts & Users]")
 
 5. **[Add Users & Accounts]** セクションで、次の手順を実行します。
 
-    ![ユーザー アカウントの追加](./media/thousandeyes-tutorial/IC790074.png "Add User Accounts")
+    ![[Add User Accounts]\(ユーザー アカウントの追加\)](./media/thousandeyes-tutorial/IC790074.png "ユーザー アカウントの追加")
 
     a. **[Name]\(名前\)** ボックスに、ユーザーの名前を入力します (**B.Simon** など)。
 

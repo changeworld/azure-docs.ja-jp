@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: e82fa00226c964d5ba774cdf06f5b0f3898bdc55
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74113076"
 ---
 # <a name="troubleshooting-odata-collection-filters-in-azure-cognitive-search"></a>Azure Cognitive Search での OData コレクション フィルターのトラブルシューティング
@@ -36,7 +36,7 @@ Azure Cognitive Search でコレクションのフィールドの[フィルタ�
 
 次の表では、コレクションのフィルターを実行しようとしたときに発生する可能性があるエラーの一覧を示します。 これらのエラーは、ラムダ式の内部でサポートされていないフィルター式の機能を使うと発生します。 各エラーでは、エラーを回避するためにフィルターを書き直す方法についてのガイダンスを示します。 表には、そのエラーを回避する方法についての詳細を提供するこの記事の関連セクションへのリンクも含まれています。
 
-| エラー メッセージ | 状況 | 詳細については、次をご覧ください。 |
+| エラー メッセージ | 状況 | 詳細については、「 |
 | --- | --- | --- |
 | The function 'ismatch' has no parameters bound to the range variable 's'. Only bound field references are supported inside lambda expressions ('any' or 'all'). Please change your filter so that the 'ismatch' function is outside the lambda expression and try again. (関数 'ismatch' に範囲変数 's' にバインドされたパラメーターがありません。ラムダ式内ではバインドされたフィールド参照のみがサポートされます ('any' または 'all')。'ismatch' 関数がラムダ式の外部になるようにフィルターを変更して、もう一度お試しください。) | ラムダ式の内部での `search.ismatch` または `search.ismatchscoring` の使用 | [複雑なコレクションのフィルター処理に関する規則](#bkmk_complex) |
 | Invalid lambda expression. Found a test for equality or inequality where the opposite was expected in a lambda expression that iterates over a field of type Collection(Edm.String). For 'any', please use expressions of the form 'x eq y' or 'search.in(...)'. For 'all', please use expressions of the form 'x ne y', 'not (x eq y)', or 'not search.in(...)'. (無効なラムダ式です。Collection(Edm.String) 型のフィールドに対して反復処理を行うラムダ式において、逆のテストが必要な場所で等値または非等値のテストが見つかりました。'any' の場合は、'x eq y' または 'search.in(...)' の形式の式を使用してください。'all' の場合は、'x ne y'、'not (x eq y)'、または 'not search.in(...)' の形式の式を使用してください。) | `Collection(Edm.String)` 型のフィールドでのフィルター処理 | [文字列コレクションのフィルター処理に関する規則](#bkmk_strings) |
@@ -68,7 +68,7 @@ Azure Cognitive Search でコレクションのフィールドの[フィルタ�
 
 `any` の本体では等値のテストだけを行うことができ、`all` の本体では非等値のテストだけを行うことができます。
 
-また、`any` の本体では `or` を使って、`all` の本体では `and` を使って、複数の式を組み合わせることもできます。 `search.in` 関数は `or` による等値チェックの結合と同じなので、それも `any` の本体で使用できます。 逆に、`not search.in` は `all` の本体で使用できます。
+また、`or` の本体では `any` を使って、`and` の本体では `all` を使って、複数の式を組み合わせることもできます。 `search.in` 関数は `or` による等値チェックの結合と同じなので、それも `any` の本体で使用できます。 逆に、`not search.in` は `all` の本体で使用できます。
 
 たとえば、次の式は使用できます。
 
@@ -171,10 +171,10 @@ Azure Cognitive Search でコレクションのフィールドの[フィルタ�
 
     また、次の式は使用できますが、条件が重複しているため役には立ちません。
     - `ratings/any(r: r ne 5 or r gt 7)`
-  - `eq`、`lt`、`le`、`gt`、または `ge` を含む単純な比較式は、`and`/`or` と組み合わせることができます。 例:
+  - `eq`、`lt`、`le`、`gt`、または `ge` を含む単純な比較式は、`and`/`or` と組み合わせることができます。 次に例を示します。
     - `ratings/any(r: r gt 2 and r le 5)`
     - `ratings/any(r: r le 5 or r gt 7)`
-  - `and` (積) で組み合わされた比較式を、`or` を使ってさらに組み合わせることができます。 この形式は、ブール ロジックでは "[選言標準形](https://en.wikipedia.org/wiki/Disjunctive_normal_form)" (DNF) と呼ばれます。 例:
+  - `and` (積) で組み合わされた比較式を、`or` を使ってさらに組み合わせることができます。 この形式は、ブール ロジックでは "[選言標準形](https://en.wikipedia.org/wiki/Disjunctive_normal_form)" (DNF) と呼ばれます。 次に例を示します。
     - `ratings/any(r: (r gt 2 and r le 5) or (r gt 7 and r lt 10))`
 - `all` に関する規則:
   - 単純な等値式を他の任意の式と組み合わせることはできません。 たとえば、次の式は使用できます。
@@ -185,10 +185,10 @@ Azure Cognitive Search でコレクションのフィールドの[フィルタ�
 
     また、次の式は使用できますが、条件が重複しているため役には立ちません。
     - `ratings/all(r: r eq 5 and r le 7)`
-  - `ne`、`lt`、`le`、`gt`、または `ge` を含む単純な比較式は、`and`/`or` と組み合わせることができます。 例:
+  - `ne`、`lt`、`le`、`gt`、または `ge` を含む単純な比較式は、`and`/`or` と組み合わせることができます。 次に例を示します。
     - `ratings/all(r: r gt 2 and r le 5)`
     - `ratings/all(r: r le 5 or r gt 7)`
-  - `or` (和) で組み合わされた比較式を、`and` を使ってさらに組み合わせることができます。 この形式は、ブール ロジックでは "[連言標準形](https://en.wikipedia.org/wiki/Conjunctive_normal_form)" (CNF) と呼ばれます。 例:
+  - `or` (和) で組み合わされた比較式を、`and` を使ってさらに組み合わせることができます。 この形式は、ブール ロジックでは "[連言標準形](https://en.wikipedia.org/wiki/Conjunctive_normal_form)" (CNF) と呼ばれます。 次に例を示します。
     - `ratings/all(r: (r le 2 or gt 5) and (r lt 7 or r ge 10))`
 
 <a name="bkmk_complex"></a>
@@ -223,7 +223,7 @@ Azure Cognitive Search でコレクションのフィールドの[フィルタ�
 
 フィルターを頻繁に作成し、単に憶えるより最初の原則から規則を理解する方が役に立つ場合は、[Azure Cognitive Search での OData コレクション フィルターの概要](search-query-understand-collection-filters.md)に関する記事をご覧ください。
 
-## <a name="next-steps"></a>次の手順  
+## <a name="next-steps"></a>次のステップ  
 
 - [Azure Cognitive Search での OData コレクション フィルターの概要](search-query-understand-collection-filters.md)
 - [Azure Cognitive Search のフィルター](search-filters.md)

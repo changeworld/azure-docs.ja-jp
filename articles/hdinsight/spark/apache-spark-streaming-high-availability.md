@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: ac51b77e1ffc2b476b0a73dac9b6917552a86ce4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74807155"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>YARN で高可用性 Apache Spark Streaming ジョブを作成する
@@ -117,10 +117,10 @@ DStream チェックポイント処理でドライバーを復旧するには:
     // to be able to recover on restart, store all offsets in an external database
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Apache Spark Streaming の概要](apache-spark-streaming-overview.md)
 * [イベント処理を 1 回だけ伴う Apache Spark Streaming ジョブを作成します](apache-spark-streaming-exactly-once.md)
 * [YARN での実行時間の長い Apache Spark Streaming ジョブ](https://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/)
-* [Structured Streaming:フォールト トレラントなセマンティクス](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html#fault-tolerance-semantics)
-* [分離されたストリーム:拡張性の高いストリーム処理のためのフォールト トレラント モデル](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf)
+* [Structured Streaming: フォールト トレラントなセマンティクス](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html#fault-tolerance-semantics)
+* [分離されたストリーム: 拡張性の高いストリーム処理のためのフォールト トレラント モデル](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf)

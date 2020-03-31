@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2fa6a4cf184b426355f62117ea51642127eee529
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74382139"
 ---
 # <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>方法:Azure Multi-Factor Authentication 登録ポリシーを構成する
@@ -43,7 +43,7 @@ Azure Multi-Factor Authentication の詳細については、[Azure Multi-Factor
    1. **[コントロール]** で:
       1. **[Azure MFA への登録を必須とする]** チェックボックスがオンであることを確認し、 **[選択]** を選択します。
    1. **[ポリシーの適用]**  -  **[オン]**
-   1. **[[Save]]**
+   1. **および**
 
 ## <a name="user-experience"></a>ユーザー エクスペリエンス
 
@@ -53,10 +53,10 @@ Azure Active Directory Identity Protection によって、次回対話形式で�
 
 - [Azure AD Identity Protection を使用したサインイン エクスペリエンス](concept-identity-protection-user-experience.md)。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [サインインとユーザー リスク ポリシーを有効にする](howto-identity-protection-configure-risk-policies.md)
 
-- [Azure AD のパスワード リセットのセルフサービスを有効にする](../authentication/howto-sspr-deployment.md)
+- [Azure AD のセルフサービス パスワード リセット を有効にする](../authentication/howto-sspr-deployment.md)
 
 - [Azure Multi-Factor Authentication を有効にする](../authentication/howto-mfa-getstarted.md)

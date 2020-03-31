@@ -10,10 +10,10 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.openlocfilehash: 5145aa0ffdc4095f178a214f63433e5bcece83b6
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72249164"
 ---
 # <a name="submit-a-workflow-using-a-bam-file-input"></a>BAM ファイルの入力を使用したワークフローの送信
@@ -21,7 +21,7 @@ ms.locfileid: "72249164"
 この記事では、入力ファイルが単一の BAM ファイルである場合に、Microsoft Genomics サービスにワークフローを送信する方法を示します。 このトピックでは、`msgen` クライアントを既にインストールして実行していること、また、Azure Storage の使用方法をよく理解していることを前提とします。 提供されたサンプル データを使用してワークフローを正常に送信したら、この記事を読み進める準備は完了です。 
 
 ## <a name="set-up-upload-your-bam-file-to-azure-storage"></a>設定: Azure Storage に BAM ファイルをアップロードする
-単一の BAM ファイル *reads.bam* を保持しており、これを Azure にあるお使いのストレージ アカウント *myaccount*に **https://<span> </span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/inputs/reads<span></span>.bam<span> </span>** としてアップロード済みであることを前提としましょう。 API URL とアクセス キーを保持しています。 また、**https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** に出力を配置したいと考えています。
+単一の BAM ファイル *reads.bam* を保持しており、これを Azure にあるお使いのストレージ アカウント *myaccount*に **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/inputs/reads<span></span>.bam<span></span>** としてアップロード済みであることを前提としましょう。 API URL とアクセス キーは用意されています。 また、**https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** に出力を配置したいと考えています。
 
 
 
@@ -79,7 +79,7 @@ output_storage_account_key:       <storage access key to "myaccount">
 output_storage_account_container: outputs
 ```
 
-`msgen submit -f config.txt` という呼び出しを使って、`config.txt` ファイルを送信します。
+`config.txt` という呼び出しを使って、`msgen submit -f config.txt` ファイルを送信します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、BAM ファイルを Azure Storage にアップロードして、`msgen` Python クライアント経由で Microsoft Genomics サービスにワークフローを送信しました。 ワークフローの送信と Microsoft Genomics サービスで使用できるその他のコマンド関連の詳細情報については、[FAQ](frequently-asked-questions-genomics.md) に関するページをご覧ください。 

@@ -11,10 +11,10 @@ ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: d888c8fd3bf7cd44c37e7225618bd197f419d275
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76030127"
 ---
 # <a name="create-configurations-from-existing-servers"></a>既存のサーバーから構成を作成する

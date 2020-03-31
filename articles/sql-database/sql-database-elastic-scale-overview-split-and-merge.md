@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 8b0db4a1e55b53165e40e176834d66b62926e24b
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74421563"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>スケールアウトされたクラウド データベース間のデータ移動
@@ -212,7 +212,7 @@ Split-Merge サービスでは、完了した要求と実行中の要求を監�
 
 ### <a name="azure-diagnostics"></a>Azure Diagnostics
 
-Split-Merge サービスは、監視と診断を行うために Azure SDK 2.5 に基づく Azure Diagnostics を使用します。 診断構成を制御する方法については、次の記事で説明されています。[Azure Cloud Services と Virtual Machines の診断機能の有効化に関する記事](../cloud-services/cloud-services-dotnet-diagnostics.md) ダウンロード パッケージには、Web ロール用と worker ロール用の 2 つの診断構成が含まれています。 これには、パフォーマンス カウンター、IIS ログ、Windows イベント ログ、および Split-Merge アプリケーション イベント ログを記録するための定義が含まれます。
+Split-Merge サービスは、監視と診断を行うために Azure SDK 2.5 に基づく Azure Diagnostics を使用します。 「 [Azure Cloud Services および Virtual Machines の診断機能](../cloud-services/cloud-services-dotnet-diagnostics.md)」で説明したように、診断構成を制御します。 ダウンロード パッケージには、Web ロール用と worker ロール用の 2 つの診断構成が含まれています。 これには、パフォーマンス カウンター、IIS ログ、Windows イベント ログ、および Split-Merge アプリケーション イベント ログを記録するための定義が含まれます。
 
 ## <a name="deploy-diagnostics"></a>診断のデプロイ
 
@@ -239,7 +239,7 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext `
     -Slot Production -Role "SplitMergeWorker"
 ```
 
-診断設定を構成してデプロイする方法の詳細については、次の記事で説明されています:[Azure Cloud Services と Virtual Machines の診断機能の有効化に関する記事](../cloud-services/cloud-services-dotnet-diagnostics.md)
+診断設定を構成してデプロイする方法の詳細については、「 [Azure Cloud Services および Virtual Machines の診断機能](../cloud-services/cloud-services-dotnet-diagnostics.md)」を参照してください。
 
 ## <a name="retrieve-diagnostics"></a>診断の取得
 

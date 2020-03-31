@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: 0f935999b68a7283c032d43c42d688b273d5c450
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75720346"
 ---
 # <a name="secure-your-cluster-in-azure-data-explorer---azure-portal"></a>Azure Data Explorer でのクラスターのセキュリティ保護 - Azure portal

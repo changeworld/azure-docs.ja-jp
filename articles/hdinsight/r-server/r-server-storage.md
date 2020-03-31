@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/02/2020
 ms.openlocfilehash: 1c79d0390a80a1358ddb09707fbabf6a5a2affdc
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75660241"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure HDInsight の ML Services 向けの Azure storage ソリューション
@@ -100,7 +100,7 @@ inputFile <-file.path(bigDataDirRoot,"mysamplefile1.csv")
 
 ここでは、ディレクトリとファイルの参照はすべて、ストレージ アカウント `wasbs://container2@storage2.blob.core.windows.net` を指しています。 これは、先ほど指定した**名前ノード**です。
 
-次のように、**storage2** で `/user/RevoShare/<SSH username>` ディレクトリを構成します。
+次のように、`/user/RevoShare/<SSH username>`storage2**で** ディレクトリを構成します。
 
 ```bash
 hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user

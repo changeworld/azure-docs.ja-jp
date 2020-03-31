@@ -8,10 +8,10 @@ services: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
 ms.openlocfilehash: baa02c4d946a121f26f421af99835ae2bea18847
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74130335"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>Application Gateway での WebSocket のサポートの概要
@@ -121,6 +121,6 @@ WebSocket が動作するためには、バックエンドの構成済みのポ�
 
 もう 1 つの理由としては、アプリケーション ゲートウェイのバックエンドの正常性プローブでサポートされるプロトコルが HTTP と HTTPS のみであるという点が挙げられます。 バックエンド サーバーが HTTP または HTTPS プローブに応答しない場合、そのバックエンド サーバーはバックエンド プールから取り除かれます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 WebSocket のサポートについて学習した後は、 [アプリケーション ゲートウェイの作成](quick-create-powershell.md) に関するページに進んで、WebSocket が有効な Web アプリケーションを作成しましょう。

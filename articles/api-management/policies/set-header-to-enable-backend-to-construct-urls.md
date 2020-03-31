@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: e525029ae8eab086d11126a4e18958423e207aa1
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70067499"
 ---
 # <a name="add-a-forwarded-header"></a>転送ヘッダーの追加
@@ -29,7 +29,7 @@ ms.locfileid: "70067499"
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Forward gateway hostname to backend for generating correct urls in responses.policy.xml)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 APIM ポリシーの詳細については、以下をご覧ください。
 

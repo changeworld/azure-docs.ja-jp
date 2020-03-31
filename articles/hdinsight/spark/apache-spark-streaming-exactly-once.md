@@ -9,19 +9,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.openlocfilehash: ee4f9b84e822cb370e5fe3d55fcceb9c8a9f2ab9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74228982"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>イベント処理を 1 回だけ伴う Apache Spark Streaming ジョブを作成します
 
 システムでの障害発生後にストリーム処理アプリケーションがメッセージの再処理を行う方法はさまざまです。
 
-* 少なくとも 1 回:各メッセージは必ず処理されますが、複数回処理される可能性があります。
-* 多くても 1 回:各メッセージは、処理される場合と処理されない場合があります。 メッセージが処理される場合は、1 回だけ処理されます。
-* 厳密に 1 回:各メッセージは、必ず 1 回だけ処理されることが保証されます。
+* 少なくとも 1 回: 各メッセージは必ず処理されますが、複数回処理される可能性があります。
+* 多くても 1 回: 各メッセージは、処理される場合と処理されない場合があります。 メッセージが処理される場合は、1 回だけ処理されます。
+* 厳密に 1 回: 各メッセージは、必ず 1 回だけ処理されることが保証されます。
 
 この記事では、Spark Streaming が厳密に 1 回だけ処理するように構成する方法について説明します。
 
@@ -87,7 +87,7 @@ Spark Streaming がその使用をサポートしている先書きログでは�
 
 もう 1 つの例は、Azure Storage Blob や Azure Data Lake Storage のように、パーティション分割されたファイル システムを使う方法です。 この場合は、シンク ロジックでファイルの存在を確認する必要はありません。 イベントを表すファイルが存在する場合は、同じデータで単純に上書きされます。 存在しない場合は、計算されたパスで新しいファイルが作成されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Apache Spark Streaming の概要](apache-spark-streaming-overview.md)
 * [Apache Hadoop YARN で高可用性 Apache Spark Streaming ジョブを作成する](apache-spark-streaming-high-availability.md)

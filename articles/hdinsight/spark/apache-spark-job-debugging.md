@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: bcf2f97e855126c86dbb1d74cd430704e2af3af1
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75932130"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Azure HDInsight で実行される Apache Spark ジョブのデバッグ
 
-この記事では、[Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) UI、Spark UI、および Spark History Server を使用して、HDInsight クラスター上で実行されている [Apache Spark](https://spark.apache.org/) ジョブを追跡およびデバッグする方法について説明します。 まず、「**Machine Learning:MLLib を使用した食品検査データの予測分析**」で使用した Spark クラスターのノートブックを使用して Spark ジョブを実行します。 他の方法 (**spark-submit** など) で送信したアプリケーションについても、以下の手順に従って追跡することができます。
+この記事では、[Apache Hadoop YARN](https://spark.apache.org/) UI、Spark UI、および Spark History Server を使用して、HDInsight クラスター上で実行されている [Apache Spark](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) ジョブを追跡およびデバッグする方法について説明します。 まず、「**Machine Learning: MLLib を使用した食品検査データの予測分析**」で使用した Spark クラスターのノートブックを使用して Spark ジョブを実行します。 他の方法 (**spark-submit** など) で送信したアプリケーションについても、以下の手順に従って追跡することができます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -25,7 +25,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * HDInsight での Apache Spark クラスター。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。
 
-* 「 **[Machine Learning:MLlib を使用した食品検査データの予測分析](apache-spark-machine-learning-mllib-ipython.md)** 」のノートブックが既に実行されているはずです。 このノートブックの実行方法については、リンク先のページを参照してください。  
+* 「 **[Machine Learning: MLlib を使用した食品検査データの予測分析](apache-spark-machine-learning-mllib-ipython.md)** 」で使用した Spark クラスターのノートブックを使用して Spark ジョブを実行します。 このノートブックの実行方法については、リンク先のページを参照してください。  
 
 ## <a name="track-an-application-in-the-yarn-ui"></a>YARN UI でのアプリケーションの追跡
 
@@ -112,8 +112,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="for-data-analysts"></a>データ アナリスト向け
 
-* [Apache Spark と Machine Learning:HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark と Machine Learning:HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark と Machine Learning: HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark と Machine Learning: HDInsight 上で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
 * [HDInsight 上での Apache Spark を使用した Web サイト ログ分析](apache-spark-custom-library-website-log-analysis.md)
 * [HDInsight での Apache Spark を使用した Application Insight テレメトリ データ分析](apache-spark-analyze-application-insight-logs.md)
 

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: f36db28b58cd57b6407019b378a82632aa6c6228
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840657"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>VM の送受信ネットワーク トラフィックのパターンをオープン ソース ツールで視覚化する

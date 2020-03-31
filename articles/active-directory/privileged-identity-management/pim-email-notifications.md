@@ -17,10 +17,10 @@ ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ee5f2edbae28276f8485ae774a5b1c52e1af2fd1
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72756396"
 ---
 # <a name="email-notifications-in-pim"></a>PIM での電子メール通知
@@ -54,7 +54,7 @@ Azure AD ロールに対するこれらの電子メールをどのユーザー�
 | セキュリティ管理者</br>(アクティブ化/有資格) | いいえ | はい* | はい |
 | グローバル管理者</br>(アクティブ化/有資格) | いいえ | はい* | はい |
 
-\* [**通知**設定](pim-how-to-change-default-settings.md#notifications)が**有資格**に設定されている場合。
+\*[**通知**設定](pim-how-to-change-default-settings.md#notifications)が**有資格**に設定されている場合。
 
 ユーザーが架空の Contoso 組織の Azure AD ロールをアクティブ化したときに送信される電子メールの例を次に示します。
 
@@ -99,7 +99,7 @@ Privileged Identity Management は、Azure リソース ロールに関して次
 
 ![Azure リソース ロールに関する新しい Privileged Identity Management 電子メール](./media/pim-email-notifications/email-resources-new.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Privileged Identity Management で Azure AD ロールの設定を構成する](pim-how-to-change-default-settings.md)
 - [Privileged Identity Management で Azure AD ロールに対する要求を承認または拒否する](azure-ad-pim-approval-workflow.md)

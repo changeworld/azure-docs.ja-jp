@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 55e6bbc338c1ac6f9ef935b4a3a05c32f2b5e9f5
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72755225"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Azure Key Vault を使用して Azure Cosmos キーをセキュリティ保護する 
@@ -34,7 +34,7 @@ Azure Cosmos DB アクセス キーを Key Vault に格納して読み取るた�
 2. **[リソースの作成] > [セキュリティ] > [Key Vault]** を選択します。  
 3. **[キー コンテナーの作成]** セクションで、次の情報を入力します。  
    * **[名前]:** Key Vault の一意の名前を指定します。  
-   * **[サブスクリプション]:** 使用するサブスクリプションを選択します。  
+   * **[サブスクリプション]** : 使用するサブスクリプションを選択します。  
    * **[リソース グループ]** で、 **[新規作成]** を選択し、リソース グループ名を入力します。  
    * [場所] プルダウン メニューで、場所を選択します。  
    * 他のオプションは既定値のままにしておきます。  
@@ -89,7 +89,7 @@ Azure Cosmos DB アクセス キーを Key Vault に格納して読み取るた�
  
 同様に、Key Vault にアクセスするユーザーを追加できます。 自分自身を Key Vaultに追加する必要があります。これには、**アクセスポリシー** をクリックしてから、Visual Studio でアプリケーションを実行するために必要なすべてのアクセス許可を付与します。 このアプリケーションをデスクトップから実行するとき、自分の ID が使用されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Cosmos DB のファイアウォールを構成するには、[ファイアウォールのサポート](firewall-support.md)に関する記事を参照してください。
 * 仮想ネットワーク サービス エンドポイントを構成するには、[VNet サービス エンドポイントを使用してアクセスをセキュリティで保護する](vnet-service-endpoint.md)方法に関する記事をご覧ください。

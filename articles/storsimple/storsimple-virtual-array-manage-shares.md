@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 82a6cdb6c9a39a0d196049a7ba662681ea06b36a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "62116868"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-shares-on-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple Virtual Array で共有を管理する
@@ -67,7 +67,7 @@ StorSimple サービスの概要ブレードの **[共有]** メニューには�
 
 以下のタスクを実行するには、このチュートリアルの手順に従います。
 
-* 共有を追加する
+* 共有の追加
 * 共有を変更する
 * 共有をオフラインにする
 * 共有を削除する
@@ -142,6 +142,6 @@ StorSimple サービスの概要ブレードの **[共有]** メニューには�
 3. 削除する共有の状態を確認します。 削除する共有がオフラインでない場合は、最初にその共有をオフラインにします。 「[共有をオフラインにする](#take-a-share-offline)」の手順に従ってください。
 4. 確認を求められたら、 **[削除]** ブレードでその確認を受け入れて、 **[削除]** をクリックします。 共有が削除され、 **[共有]** ブレードに、仮想アレイ内の更新された共有の一覧が表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [StorSimple 共有を複製する](storsimple-virtual-array-clone.md)方法を確認します。
 

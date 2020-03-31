@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 378aa35ff4b43f5a268ac3dcd9530783ada6921e
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76512965"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Azure Active Directory ハイブリッド ID の設計上の考慮事項 - 次の段階

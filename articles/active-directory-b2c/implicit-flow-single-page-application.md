@@ -12,10 +12,10 @@ ms.date: 07/19/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 37b59c2a23a8f00e8376be2ac4a7b35a6d58aa28
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78399004"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OAuth 2.0 暗黙的フローを使用したシングルページ サインイン

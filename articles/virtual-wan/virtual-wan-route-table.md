@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
 ms.openlocfilehash: a55e1453fe7fe4d135286b22dabf58d434762581
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645108"
 ---
 # <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>トラフィックをネットワーク仮想アプライアンスに誘導するための Virtual WAN ハブ ルート テーブルを作成する
@@ -43,7 +43,7 @@ ms.locfileid: "75645108"
 5. 2 つの VNet が既に作成されていることを確認します。 それらは、スポーク VNet として使用されます。 この記事では、VNet スポークのアドレス空間は 10.0.2.0/24 と 10.0.3.0/24 です。 VNet の作成方法に関する情報が必要な場合は、「[PowerShell を使用して仮想ネットワークを作成する](../virtual-network/quick-create-powershell.md)」を参照してください。
 6. どの VNet 内にも仮想ネットワーク ゲートウェイがないことを確認します。
 
-## <a name="signin"></a>1.サインイン
+## <a name="1-sign-in"></a><a name="signin"></a>1.サインイン
 
 Resource Manager PowerShell コマンドレットの最新版がインストールされていることを確認します。 PowerShell コマンドレットのインストールの詳細については、[Azure PowerShell のインストールと構成の方法](/powershell/azure/install-az-ps)に関するページを参照してください。 この点は重要です。以前のバージョンのコマンドレットには、この演習に必要な最新の値が含まれていません。
 
@@ -63,7 +63,7 @@ Resource Manager PowerShell コマンドレットの最新版がインストー�
    Select-AzSubscription -SubscriptionName "Name of subscription"
    ```
 
-## <a name="rg"></a>2.リソースを作成する
+## <a name="2-create-resources"></a><a name="rg"></a>2.リソースを作成する
 
 1. リソース グループを作成します。
 
@@ -81,7 +81,7 @@ Resource Manager PowerShell コマンドレットの最新版がインストー�
    New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24" -Location "West US"
    ```
 
-## <a name="connections"></a>3.接続を作成する
+## <a name="3-create-connections"></a><a name="connections"></a>3.接続を作成する
 
 間接スポーク VNet と DMZ VNet から仮想ハブへのハブ仮想ネットワーク接続を作成します。
 
@@ -95,7 +95,7 @@ Resource Manager PowerShell コマンドレットの最新版がインストー�
   New-AzVirtualHubVnetConnection -ResourceGroupName "testRG" -VirtualHubName "westushub" -Name  "testvnetconnection3" -RemoteVirtualNetwork $remoteVirtualNetwork3
   ```
 
-## <a name="route"></a>4.仮想ハブ ルートを作成する
+## <a name="4-create-a-virtual-hub-route"></a><a name="route"></a>4.仮想ハブ ルートを作成する
 
 この記事では、間接スポーク VNet のアドレス空間は 10.0.2.0/24 と 10.0.3.0/24 であり、DMZ NVA ネットワーク インターフェイスのプライベート IP アドレスは 10.0.4.5 です。
 
@@ -103,7 +103,7 @@ Resource Manager PowerShell コマンドレットの最新版がインストー�
 $route1 = New-AzVirtualHubRoute -AddressPrefix @("10.0.2.0/24", "10.0.3.0/24") -NextHopIpAddress "10.0.4.5"
 ```
 
-## <a name="applyroute"></a>5.仮想ハブ ルート テーブルを作成する
+## <a name="5-create-a-virtual-hub-route-table"></a><a name="applyroute"></a>5.仮想ハブ ルート テーブルを作成する
 
 仮想ハブ ルート テーブルを作成し、作成済みのルートに適用します。
  
@@ -111,7 +111,7 @@ $route1 = New-AzVirtualHubRoute -AddressPrefix @("10.0.2.0/24", "10.0.3.0/24") -
 $routeTable = New-AzVirtualHubRouteTable -Route @($route1)
 ```
 
-## <a name="commit"></a>6.変更をコミットする
+## <a name="6-commit-the-changes"></a><a name="commit"></a>6.変更をコミットする
 
 仮想ハブに変更をコミットします。
 

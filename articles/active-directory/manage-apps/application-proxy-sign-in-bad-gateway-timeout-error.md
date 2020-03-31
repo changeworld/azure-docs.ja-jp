@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d61f4b4bce9b8287dc13237f071684ea5d135fa
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74275464"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーション使用時の "この企業アプリケーションにアクセスできない" というエラー
@@ -103,6 +103,6 @@ ms.locfileid: "74275464"
 
 そのマシンからアプリケーションに到達できる場合は、コネクタ自体の問題またはエラーを調べます。 いくつかの一般的なエラーは、[トラブルシューティング ドキュメント](application-proxy-troubleshoot.md#connector-errors)で確認できます。 また、コネクタのログを直接確認して、エラーを識別することもできます。 多くのエラー メッセージで、解決策のためのより具体的な推奨事項を共有できます。 ログを表示する方法については、[コネクタのドキュメント](application-proxy-connectors.md#under-the-hood)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure AD アプリケーション プロキシ コネクタについて](application-proxy-connectors.md)

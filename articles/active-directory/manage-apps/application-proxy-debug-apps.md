@@ -12,10 +12,10 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.openlocfilehash: 575891d99c077299f5e7abf008c1ebb2b158373f
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74382069"
 ---
 # <a name="debug-application-proxy-application-issues"></a>アプリケーション プロキシ アプリケーションの問題をデバッグする 
@@ -39,7 +39,7 @@ ms.locfileid: "74382069"
 
 ![アプリケーションをデバッグする手順を示すフローチャート](media/application-proxy-debug-apps/application-proxy-apps-debugging-flowchart.png)
 
-|  | Action | 説明 | 
+|  | アクション | 説明 | 
 |---------|---------|---------|
 |1 | ブラウザーを開き、アプリにアクセスして、資格情報を入力する | ご自分の資格情報を使用してアプリへのサインインを試し、任意のユーザーに関連するエラー ([この企業アプリケーションにアクセスできない](application-proxy-sign-in-bad-gateway-timeout-error.md)など) を確認します。 |
 |2 | アプリへのユーザーの割り当てを確認する | ユーザー アカウントに、企業ネットワーク内からアプリにアクセスするためのアクセス許可があることを確認してから、「[アプリケーションをテストする](application-proxy-add-on-premises-application.md#test-the-application)」の手順に従って、アプリへのサインインをテストします。 サインインに関する問題が解決しない場合は、[サインイン エラーのトラブルシューティング方法](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)に関するページを参照してください。  |
@@ -50,7 +50,7 @@ ms.locfileid: "74382069"
 |7 | ネットワーク待ち時間を確認する | ページの読み込みが遅い場合、[待機時間を削減するための考慮事項](application-proxy-network-topology.md#considerations-for-reducing-latency)でネットワーク待機時間を最小限に抑える方法について学習します。 | 
 |8 | その他のトラブルシューティング ヘルプを確認する | 問題が解決しない場合は、[アプリケーション プロキシのトラブルシューティング ドキュメント](application-proxy-troubleshoot.md)でその他のトラブルシューティングの記事を検索します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 
 * [コネクタ グループを使用して別のネットワークや場所にアプリケーションを発行する](application-proxy-connector-groups.md)

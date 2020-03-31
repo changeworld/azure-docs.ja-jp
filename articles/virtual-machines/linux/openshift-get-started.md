@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 05/7/2019
 ms.author: haroldw
 ms.openlocfilehash: 021ebe010a27fa155de861121e1972466c800f4a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74035421"
 ---
 # <a name="openshift-in-azure"></a>Azure の OpenShift
@@ -47,7 +47,7 @@ Container Platform は Red Hat 製のエンタープライズ対応[市販バー
 
 OKD は OpenShift の[オープン ソース](https://www.okd.io/)上流プロジェクトであり、コミュニティによりサポートされています。 OKD は CentOS または Red Hat Enterprise Linux (RHEL) にインストールできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure で OpenShift の共通の前提条件を構成する](./openshift-container-platform-3x-prerequisites.md)
 - [OpenShift Container Platform の Azure へのデプロイ](./openshift-container-platform-3x.md)

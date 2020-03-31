@@ -7,17 +7,17 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: d6c813dec3922334f7462b1226ea22371fd5f43b
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68736287"
 ---
 # <a name="azure-data-catalog-terminology"></a>Azure Data Catalog の用語集
 
 この記事では、Azure Data Catalog のドキュメントで使用される概念と用語について説明します。
 
-## <a name="catalog"></a>カタログ
+## <a name="catalog"></a>Catalog
 
 Azure Data Catalog は、データ ソースとデータ資産を登録できるクラウドベースのメタデータ リポジトリです。 カタログは、データ ソースから抽出された構造メタデータとユーザーが追加した記述メタデータの一元的な保存場所です。
 
@@ -73,7 +73,7 @@ Azure Data Catalog では、登録されているデータ資産を説明する�
 
 エキスパートとは、データ資産について知識がある "専門家" の観点を持つ人物と認められたユーザーです。 すべてのユーザーは、自分または他のユーザーを資産のエキスパートとして追加することができます。 エキスパートに登録された場合でも、Azure Data Catalog に追加の特権は付与されませんが、観点を簡単に特定できるようになります。たとえば、資産の記述メタデータを確認するときに役に立ちます。
 
-## <a name="owner"></a>Owner
+## <a name="owner"></a>所有者
 
 所有者は、Azure Data Catalog のデータ資産を管理する追加の特権を持つユーザーです。 ユーザーは、登録したデータ資産の所有権を得ることができます。また、所有者は他のユーザーを共同所有者として追加することができます。 詳細については、「[データ資産を管理する方法](data-catalog-how-to-manage.md)」を参照してください  
 
@@ -84,6 +84,6 @@ Azure Data Catalog では、登録されているデータ資産を説明する�
 
 登録は、データ資産メタデータをデータ ソースから抽出し、Azure Data Catalog サービスにコピーする操作です。 登録されたデータ資産は、注釈を付けて検索することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[クイック スタート:Azure データ カタログを作成する](data-catalog-get-started.md) 
+[クイック スタート: Azure データ カタログを作成する](data-catalog-get-started.md) 

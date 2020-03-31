@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 11b6553fe8aceef0d3d15977998dd870c275128a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61294345"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボのライセンスされたイメージの有効化
@@ -28,7 +28,7 @@ Azure DevTest Labs では、ライセンスされたイメージとは、イメ�
 ## <a name="determining-whether-a-licensed-image-is-available-to-users"></a>ライセンスされたイメージをユーザーが使用できるかどうかを確認する
 ライセンスされたイメージからユーザーが VM を作成できるようにする最初の手順として、ライセンスされたイメージの使用条件に同意していることを確認します。 次の手順では、ライセンスされたイメージのオファーの状態を表示し、必要に応じて使用条件に同意する方法を示します。
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインする
 
 1. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 
@@ -92,7 +92,7 @@ Azure DevTest Labs では、ライセンスされたイメージとは、イメ�
 - [Custom images or formulas? (カスタム イメージか数式か?)](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
 - [Copying Custom Images between Azure DevTest Labs (Azure DevTest Labs 間でのカスタム イメージのコピー)](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [VM からカスタム イメージを作成する](devtest-lab-create-custom-image-from-vm-using-portal.md)
 - [VHD ファイルからカスタム イメージを作成する](devtest-lab-create-template.md)

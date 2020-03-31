@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: bced6a9e6c59dc32657dbabef986e29e0447b28b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60947232"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner のコスト見積もりレポート 
@@ -52,9 +52,9 @@ Azure のコンピューティング、ストレージ、ネットワークの�
 
 **コンピューティング**:DR のニーズに応じて Azure で実行される IaaS VM のコストです。 DR ドリル (テスト フェールオーバー) 時に Site Recovery によって作成される VM のほか、 Azure 上で実行される VM が対象となります (SQL Server Always On 可用性グループやドメイン コントローラー/ドメイン ネーム サーバーなど)。
 
-**ストレージ**:DR のニーズに応じて消費される Azure Storage のコストです。 レプリケーションや DR ドリル時に使用されるストレージの消費が対象となります。
+**ストレージ**: DR のニーズに応じて消費される Azure Storage のコストです。 レプリケーションや DR ドリル時に使用されるストレージの消費が対象となります。
 
-**[Network]\(ネットワーク\)** :必要な DR に関する ExpressRoute とサイト間 VPN のコスト。 
+**ネットワーク**:必要な DR に関する ExpressRoute とサイト間 VPN のコスト。 
 
 **Azure Site Recovery ライセンス**:すべての適合 VM に関する Site Recovery のライセンス コスト。 Detailed cost analysis (詳細コスト分析) テーブルに VM を手動で入力した場合、その VM に関して生じる Site Recovery のライセンス コストも対象となります。
 
@@ -167,7 +167,7 @@ eastus、eastus2、westus、centralus、northcentralus、southcentralus、northe
 ## <a name="supported-currencies"></a>サポートされる通貨
 Site Recovery Deployment Planner は、次のいずれかの通貨でコスト レポートを生成できます。
 
-|通貨|Name||通貨|Name||通貨|Name|
+|Currency|名前||Currency|名前||Currency|名前|
 |---|---|---|---|---|---|---|---|
 |ARS|アルゼンチン ペソ ($)||AUD|オーストラリア ドル ($)||BRL|ブラジル レアル (R$)|
 |CAD|カナダ ドル ($)||CHF|スイス フラン (chf)||DKK|デンマーク クローネ (kr)|
@@ -178,5 +178,5 @@ Site Recovery Deployment Planner は、次のいずれかの通貨でコスト �
 |SAR|サウジ リアル (SR)||SEK|スウェーデン クローナ (kr)||TWD|台湾ドル (NT$)|
 |TRY|トルコ リラ (TL)||USD| 米ドル ($)||ZAR|南アフリカ ランド (R)|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Site Recovery を使用して Hyper-V から Azure に VM](hyper-v-azure-tutorial.md) をレプリケートして保護する方法について詳しく調べてみましょう。

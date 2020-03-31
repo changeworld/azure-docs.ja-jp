@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: allensu
 ms.openlocfilehash: f35007bc3c47aeec9bcdd8a418983b95f6f20ad6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74225417"
 ---
 # <a name="azure-cli-samples-for-load-balancer"></a>Load Balancer 用の Azure CLI サンプル

@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 1ff8c382813654b1dee38a99bf2cc0ca67afbedd
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76313829"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>Python で Notification Hubs を使用する方法
@@ -301,7 +301,7 @@ hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
 
 結果として HTTP URL が取得する通知ハブの送信要求には、"test" クエリ文字列が追加されます。
 
-## <a name="complete-tutorial"></a>チュートリアルの完了
+## <a name="complete-the-tutorial"></a><a name="complete-tutorial"></a>チュートリアルの完了
 
 ここで、Python バックエンドから通知を送信して、使用についてのチュートリアルを完了できます。
 

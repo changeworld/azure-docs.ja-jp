@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 570f28ce559ff1c1180ffaacb781b9120b1890a2
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73795483"
 ---
 # <a name="use-private-ip-for-internal-routing-for-an-ingress-endpoint"></a>イングレス エンドポイントの内部ルーティングにプライベート IP を使用する 
@@ -51,7 +51,7 @@ appgw.ingress.kubernetes.io/use-private-ip: "true"
 
 
 ## <a name="assign-globally"></a>グローバルに割り当てる
-念のため、プライベート IP で公開されるすべてのイングレスを制限することを要件にして、`helm` の構成で `appgw.usePrivateIP: true` を使用します。
+念のため、プライベート IP で公開されるすべてのイングレスを制限することを要件にして、`appgw.usePrivateIP: true` の構成で `helm` を使用します。
 
 ### <a name="usage"></a>使用法
 ```yaml

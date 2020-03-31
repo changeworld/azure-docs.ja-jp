@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b39238575c05d35a2d87999e08c49c0c77e99bfb
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74380007"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスのサービス依存関係の概要 
@@ -56,11 +56,11 @@ ms.locfileid: "74380007"
 |                     | Windows Azure Active Directory              | 事前バインディング |
 | Project             | Dynamics CRM                                | 事前バインディング |
 | Skype for Business  | Exchange                                    | 事前バインディング |
-| Visual Studio       | Microsoft Azure 管理 (ポータルおよび API) | 事前バインディング |
+| Visual Studio       | Microsoft Azure 管理 (ポータルおよび API) | 事前バインディング |
 | Microsoft フォーム     | Exchange                                    | 事前バインディング |
 |                     | SharePoint                                  | 事前バインディング |
 | Microsoft To-Do     | Exchange                                    | 事前バインディング |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 お使いの環境に条件付きアクセスを実装する方法については、「[Azure Active Directory の条件付きアクセスの展開を計画する](plan-conditional-access.md)」をご覧ください。

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 01/08/2020
 tags: connectors
 ms.openlocfilehash: b0f2b8b9c369fdb42c7e0e7f77fc090424ae3729
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75732701"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して、Office 365 Outlook のメール、連絡先、カレンダーを管理する
@@ -39,7 +39,7 @@ ms.locfileid: "75732701"
 
 [トリガー](../logic-apps/logic-apps-overview.md#logic-app-concepts)は、ロジック アプリのワークフローを開始するイベントです。 この例のロジック アプリでは、指定された間隔と頻度に基づいて、メール アカウントの更新されたカレンダー イベントを確認する "ポーリング" トリガーを使用します。
 
-1. [Azure portal](https://portal.azure.com) のロジック アプリ デザイナーでブランクのロジック アプリを開きます。
+1. [Azure portal](https://portal.azure.com) のロジック アプリ デザイナーで空のロジック アプリを開きます。
 
 1. 検索ボックスに、フィルターとして「`office 365 outlook`」と入力します。 この例では、 **[予定しているイベントがすぐに開始されるとき]** を選択します。
    
@@ -51,7 +51,7 @@ ms.locfileid: "75732701"
 
    ![トリガーのプロパティを構成する](./media/connectors-create-api-office365-outlook/select-calendar.png)
 
-1. トリガーで、 **[頻度]** と **[間隔]** の値を設定します。 **タイム ゾーン**など、使用可能なその他のトリガーのプロパティを追加するには、 **[新しいパラメーターの追加]** リストからそれらプロパティを選択します。
+1. トリガーに、 **[頻度]** と **[間隔]** の値を設定します。 **タイム ゾーン**など、使用可能なその他のトリガーのプロパティを追加するには、 **[新しいパラメーターの追加]** リストからそれらプロパティを選択します。
 
    たとえば、トリガーを使用して 15 分ごとにカレンダーをチェックするには、 **[頻度]** を **[分]** に設定し、 **[間隔]** を `15` に設定します。 
 

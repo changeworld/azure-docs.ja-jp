@@ -14,10 +14,10 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dc06abca08b2522ac57552e85f7c1bac3ef854af
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68561877"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>Azure Active Directory を使用してグループ情報を編集する
@@ -25,7 +25,7 @@ ms.locfileid: "68561877"
 Azure Active Directory (Azure AD) を使用すると、名前、説明、またはメンバーシップの種類の更新など、グループの設定を編集できます。
 
 ## <a name="to-edit-your-group-settings"></a>グループ設定を編集するには
-1. ディレクトリの全体管理者アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. ディレクトリのグローバル管理者アカウントを使用して [Azure portal](https://portal.azure.com) にサインインします。
 
 2. **[Azure Active Directory]** を選択し、 **[グループ]** を選択します。
 
@@ -55,7 +55,7 @@ Azure Active Directory (Azure AD) を使用すると、名前、説明、また�
     
     - **[オブジェクト ID]。** オブジェクト ID は変更できませんが、コピーして PowerShell コマンドでグループに対して使用できます。 PowerShell コマンドレットの使用に関する詳細については、[グループ設定の構成用の Azure Active Directory コマンドレット](../users-groups-roles/groups-settings-v2-cmdlets.md)に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次の記事は、Azure Active Directory に関する追加情報を示します。
 
 - [グループとメンバーを表示する](active-directory-groups-view-azure-portal.md)

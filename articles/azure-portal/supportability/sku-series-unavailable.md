@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 01/27/2020
 ms.author: xingwan
 ms.openlocfilehash: b0f0762ded6804c0b0d90a19223c082f0fb8fd49
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76843638"
 ---
 # <a name="region-or-sku-unavailable"></a>リージョンまたは SKU が利用できない

@@ -9,10 +9,10 @@ ms.assetid: 8a4e901e-9656-4a60-90d0-d78ff2f00656
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.openlocfilehash: 8b176434ce450382cc6463e7d21d341a74581ed8
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71316608"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>Azure PowerShell で Azure Data Lake Analytics の使用を開始する
@@ -126,7 +126,7 @@ Wait-AdlJob -Account $adla -JobId $job.JobId
 Export-AdlStoreItem -Account $adls -Path "/data.csv" -Destination "C:\data.csv"
 ```
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * 他のツールを使用する同じチュートリアルを表示するには、ページの上部にあるタブ セレクターをクリックします。
 * U-SQL の詳細については、「 [Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」を参照してください。

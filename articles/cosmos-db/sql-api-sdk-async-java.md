@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 07/01/2019
 ms.author: moderakh
 ms.openlocfilehash: 05f597093c27f84d7f20cf0abd5858f44645b88d
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73574928"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB Async Java SDK:リリース ノートとリソース
@@ -20,7 +20,7 @@ ms.locfileid: "73574928"
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET Change Feed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
-> * [Node.JS](sql-api-sdk-node.md)
+> * [Node.js](sql-api-sdk-node.md)
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
@@ -37,15 +37,15 @@ SQL API Async Java SDK は、[Netty ライブラリ](https://netty.io/)をサポ
 | **SDK のダウンロード** | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) |
 |**API ドキュメント** |[Java API リファレンス ドキュメント](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient?view=azure-java-stable) | 
 |**SDK への協力** | [GitHub](https://github.com/Azure/azure-cosmosdb-java) | 
-|**作業開始** | [Async Java SDK の開始](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started) | 
+|**開始するには** | [Async Java SDK の開始](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started) | 
 |**Code sample** | [GitHub](https://github.com/Azure/azure-cosmosdb-java#usage-code-sample)| 
 | **パフォーマンスに関するヒント**| [GitHub の Readme](https://github.com/Azure/azure-cosmosdb-java#guide-for-prod)| 
 | **サポートされている最小ランタイム**|[JDK 8](https://aka.ms/azure-jdks) | 
 
 [!INCLUDE [Release notes](~/azure-cosmosdb-java-v2/changelog/README.md)]
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>関連項目
-Cosmos DB の詳細については、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) サービス ページをご覧ください。
+Cosmos DB の詳細については、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) サービス ページを参照してください。
 

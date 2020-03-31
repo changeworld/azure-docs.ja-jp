@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/12/2019
 ms.author: spelluru
 ms.openlocfilehash: 4e3cf302437c3e4954ac977ac3f4ff6b2021a760
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72330503"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボのスケジュールを作成して管理する 
@@ -75,8 +75,8 @@ ms.locfileid: "72330503"
 
 
 
-## <a name="next-steps"></a>次の手順
-次の記事を参照してください。
+## <a name="next-steps"></a>次のステップ
+次の記事をご覧ください。
 
 - [管理者としてラボ アカウントを作成および管理する](how-to-manage-lab-accounts.md)
 - [ラボ所有者としてラボを作成および管理する](how-to-manage-classroom-labs.md)

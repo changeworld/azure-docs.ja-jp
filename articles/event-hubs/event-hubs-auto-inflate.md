@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: dc6edaebebe89b6d4a35ada58d40795f86a935d3
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72264480"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Azure Event Hubs のスループット単位を自動的にスケールアップする
@@ -28,7 +28,7 @@ Azure Event Hubs は、拡張性の高いデータ ストリーミング プラ�
 * データの受信レートが、設定されたスループット単位を超えている。
 * データの送信要求レートが、設定されたスループット単位を超えている。
 
-負荷が最小しきい値を超えた場合、ServerBusy エラーなどで失敗する要求なく、Event Hubs サービスでスループットが増えます。
+負荷が最小しきい値を超えていて、ServerBusy エラーなどで失敗した要求がない場合、Event Hubs サービスでスループットが増えます。
 
 ## <a name="how-auto-inflate-works"></a>自動インフレのしくみ
 
@@ -76,7 +76,7 @@ Standard レベルの Event Hubs 名前空間の自動インフレを有効ま�
 
 ### <a name="enable-auto-inflate-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して自動インフレを有効にする
 
-Azure Resource Manager テンプレートのデプロイ時に自動インフレを有効にできます。 たとえば、`isAutoInflateEnabled` プロパティを **true** に設定し、`maximumThroughputUnits` を 10 に設定します。 例:
+Azure Resource Manager テンプレートのデプロイ時に自動インフレを有効にできます。 たとえば、`isAutoInflateEnabled` プロパティを **true** に設定し、`maximumThroughputUnits` を 10 に設定します。 次に例を示します。
 
 ```json
 "resources": [
@@ -122,7 +122,7 @@ Azure Resource Manager テンプレートのデプロイ時に自動インフレ
 完全なテンプレートについては、GitHub の[イベント ハブ名前空間とインフレの有効化](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-inflate)のテンプレートを参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Event Hubs の詳細については、次のリンク先を参照してください:
 

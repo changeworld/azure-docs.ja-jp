@@ -13,10 +13,10 @@ ms.topic: troubleshooting
 ms.date: 01/21/2020
 ms.custom: seodec18
 ms.openlocfilehash: 245a0b18187ff1c1b226e94b03374f2c071e51c0
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76314829"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Azure Time Series Insights で待機時間を削減するために調整を監視して緩和する

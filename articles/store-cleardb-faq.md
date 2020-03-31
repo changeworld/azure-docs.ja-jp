@@ -12,10 +12,10 @@ ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: ddbf1eb960a24cfaa8d09ab45b6febca07e6d504
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75979926"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Azure App Service での ClearDB MySql データベースの使用に関してよく寄せられる質問 (FAQ)
@@ -38,10 +38,10 @@ Azure で MySQL をホストするには、他にもいくつかの選択肢が�
 ## <a name="do-i-need-a-credit-card-for-the-web-app--mysql-template-in-the-azure-marketplace"></a>Azure Marketplace で Web アプリケーションと MySQL テンプレートを入手するには、クレジット カードが必要ですか。
 ご利用のサブスクリプションの種類によります。 一般的なサブスクリプションの種類をいくつか示します。
 
-* [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/):クレジット カードが必要です。有料の MySQL データベースの購入時にクレジット カードに課金されます。
-* [無料試用版](https://azure.microsoft.com/pricing/free-trial/):Microsoft Azure サービスに使用できるクレジットが含まれていますが、サードパーティのリソースは購入できません。 サード パーティのサービスや有料の MySQL データベースを購入するには、クレジット カードを有効にしたサブスクリプションを使う必要があります。 Web Apps では無料の ClearDB MySQL データベースを作成できます。
-* [MSDN サブスクリプション](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) と **MSDN 向け開発テスト用の従量課金制プラン**:無料試用版と同様に、MSDN サブスクリプションで ClearDB から有料の MySQL ソリューションを購入するには、クレジット カードが必要です。
-* [マイクロソフト エンタープライズ契約 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/):EA のお客様の場合、Azure Marketplace (サード パーティ) での購入はすべて EA に対して課金されます (四半期ごとに個別の請求書が発行されます)。 Marketplace での購入はすべて、年額コミットメントとは別に課金されます。 現時点では、アゼルバイジャン、クロアチア、ノルウェー、プエルトリコで登録されたお客様は Azure ストアをご利用いただけませんのでご注意ください。 
+* [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/): クレジット カードが必要です。有料の MySQL データベースの購入時にクレジット カードに課金されます。
+* [無料評価版](https://azure.microsoft.com/pricing/free-trial/): Microsoft Azure サービスに使用できるクレジットが含まれていますが、サードパーティのリソースは購入できません。 サード パーティのサービスや有料の MySQL データベースを購入するには、クレジット カードを有効にしたサブスクリプションを使う必要があります。 Web Apps では無料の ClearDB MySQL データベースを作成できます。
+* [MSDN サブスクリプション](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) と **MSDN 向け開発テスト用の従量課金制プラン**: 無料評価版と同様に、MSDN サブスクリプションで ClearDB から有料の MySQL ソリューションを購入するには、クレジット カードが必要です。
+* [エンタープライズ契約 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/): EA のお客様の場合、Azure Marketplace (サード パーティ) での購入はすべて EA に対して課金されます (四半期ごとに個別の請求書が発行されます)。 Marketplace での購入はすべて、年額コミットメントとは別に課金されます。 現時点では、アゼルバイジャン、クロアチア、ノルウェー、プエルトリコで登録されたお客様は Azure ストアをご利用いただけませんのでご注意ください。 
 
 ## <a name="why-was-i-charged-350-for-a-web-app--mysql-from-the-azure-marketplace"></a>Azure Marketplace から Web アプリケーションと MySQL に 3.50 ドルを課金されているのはなぜですか。
 既定のデータベース オプションは Titan で、価格は 3.50 ドルです。 データベースの作成時には価格が表示されないため、このデータベースを誤って購入してしまった可能性があります。 今後プロセスの改善に努めてまいりますが、それまでは、Web アプリケーションとデータベースについて選択した価格レベルをすべて確認してから、 **[作成]** をクリックしてリソースのデプロイを開始してください。

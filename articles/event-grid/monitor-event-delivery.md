@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 16587feaca65aa21836d9be1c44e00faa0f4f8d8
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76722137"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Event Grid メッセージ配信の監視 
@@ -37,8 +37,8 @@ Event Grid は、持続性のある配信を提供します。 各サブスク�
 
 * **[配信成功]** : イベントは正常にサブスクリプションのエンドポイントに配信され、2xx 応答を受信しました。
 * **[配信失敗]** : イベントはサブスクリプションのエンドポイントに送信されましたが、4xx または 5xx 応答を受信しました。
-* **[期限切れのイベント]** : イベントは配信されず、すべての再試行が送信済みになりました。 イベントは破棄されました。
-* **[一致するイベント]** : トピックにあるイベントがイベント サブスクリプションと一致しました。
+* **[Expired Events]\(イベントの有効期限切れ\)** : イベントは配信されず、すべての再試行が送信済みになりました。 イベントは破棄されました。
+* **[Matched Events]\(イベント照合済み\)** : トピックのイベントがイベント サブスクリプションと一致しました。
 
 ## <a name="event-subscription-status"></a>イベント サブスクリプションの状態
 

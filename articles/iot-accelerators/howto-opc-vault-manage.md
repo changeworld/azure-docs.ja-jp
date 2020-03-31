@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 890a25ed2cf11d657cad930815d78dbf968cc9f9
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71203658"
 ---
 # <a name="manage-the-opc-vault-certificate-service"></a>OPC Vault 証明書サービスを管理する
@@ -25,7 +25,7 @@ OPC Vault をデプロイした後に、ルート CA 証明書を作成する必
 > [!IMPORTANT]
 > 発行者 CA 証明書を作成または更新するには、管理者ロールが必要です。
 
-1. `https://myResourceGroup-app.azurewebsites.net` で証明書サービスを開き、サインインします。
+1. `https://myResourceGroup-app.azurewebsites.net` で証明書サービスを開いて、サインインします。
 2. **[Certificate Groups]\(証明書グループ\)** に移動します。
 3. 既定の 1 つの証明書グループが一覧に示されています。 **[編集]** を選択します。
 4. **[Edit Certificate Group Details]\(証明書グループの詳細を編集する\)** で、お使いの CA およびアプリケーション証明書のサブジェクト名と有効期間を変更できます。 サブジェクトと有効期間は、最初の CA 証明書が発行される前に 1 回だけ設定する必要があります。 操作中に有効期間を変更すると、発行される証明書と CRL の有効期間が一致しなくなる可能性があります。
@@ -65,7 +65,7 @@ OPC Vault マイクロサービスのユーザー ロールは、Azure AD エン
 
 ### <a name="add-user"></a>ユーザーの追加
 
-1. Azure Portal を開きます。
+1. Azure portal を開きます。
 2. **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]** の順に移動します。
 3. OPC Vault マイクロサービスの登録を選択します (既定では、ご自身の `resourceGroupName-service`)。
 4. **[ユーザーとグループ]** に移動します。
@@ -77,7 +77,7 @@ OPC Vault マイクロサービスのユーザー ロールは、Azure AD エン
 
 ### <a name="remove-user"></a>ユーザーの削除
 
-1. Azure Portal を開きます。
+1. Azure portal を開きます。
 2. **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]** の順に移動します。
 3. OPC Vault マイクロサービスの登録を選択します (既定では、ご自身の `resourceGroupName-service`)。
 4. **[ユーザーとグループ]** に移動します。
@@ -92,7 +92,7 @@ OPC Vault マイクロサービスのユーザー ロールは、Azure AD エン
 
 #### <a name="for-an-approver-role-the-following-permissions-must-be-added-to-key-vault"></a>承認者ロールの場合、次のアクセス許可を Key Vault に追加する必要があります
 
-1. Azure Portal を開きます。
+1. Azure portal を開きます。
 2. デプロイ時に使用した OPC Vault `resourceGroupName` に移動します。
 3. Key Vault `resourceGroupName-xxxxx` に移動します。
 4. **[アクセス ポリシー]** に移動します。
@@ -106,7 +106,7 @@ OPC Vault マイクロサービスのユーザー ロールは、Azure AD エン
 
 #### <a name="for-an-administrator-role-the-following-permissions-must-be-added-to-key-vault"></a>管理者ロールの場合、次のアクセス許可を Key Vault に追加する必要があります
 
-1. Azure Portal を開きます。
+1. Azure portal を開きます。
 2. デプロイ時に使用した OPC Vault `resourceGroupName` に移動します。
 3. Key Vault `resourceGroupName-xxxxx` に移動します。
 4. **[アクセス ポリシー]** に移動します。
@@ -120,13 +120,13 @@ OPC Vault マイクロサービスのユーザー ロールは、Azure AD エン
 
 ### <a name="remove-user-access-policy-from-azure-key-vault"></a>Azure Key Vault からユーザー アクセス ポリシーを削除する
 
-1. Azure Portal を開きます。
+1. Azure portal を開きます。
 2. デプロイ時に使用した OPC Vault `resourceGroupName` に移動します。
 3. Key Vault `resourceGroupName-xxxxx` に移動します。
 4. **[アクセス ポリシー]** に移動します。
 5. 削除するユーザーを見つけて、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、OPC Vault 証明書とユーザーを管理する方法を学習しました。以下に進むことができます。
 

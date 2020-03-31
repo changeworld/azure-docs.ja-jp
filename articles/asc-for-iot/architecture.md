@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 2e55f98f8c7b6ddbc21f7ea8633467461ea5be29
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75922175"
 ---
 # <a name="azure-security-center-for-iot-architecture"></a>Azure Security Center for IoT のアーキテクチャ

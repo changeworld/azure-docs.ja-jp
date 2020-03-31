@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: rohink
 ms.openlocfilehash: daf7d09916d276130e337f7acea738228ee23707
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938778"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Traffic Manager での複数値ルーティング方法の構成
@@ -41,7 +41,7 @@ Traffic Manager プロファイル用のリソース グループを作成しま
 1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーク]**  >  **[Traffic Manager プロファイル]**  >  **[作成]** の順に選択します。
 2. **[Traffic Manager プロファイルの作成]** で、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[作成]** を選択します。
     
-    | 設定                 | Value                                              |
+    | 設定                 | 値                                              |
     | ---                     | ---                                                |
     | Name                   | この名前は trafficmanager.net ゾーン内で一意である必要があります。結果的に、Traffic Manager プロファイルへのアクセスに使用される、DNS 名.trafficmanager.net になるためです。                                   |
     | ルーティング方法          | **[複数値]** ルーティング方式を選択します。                                       |
@@ -60,9 +60,9 @@ Traffic Manager プロファイル用のリソース グループを作成しま
 2. **[Traffic Manager プロファイル]** の **[設定]** セクションで **[エンドポイント]** をクリックし、 **[追加]** をクリックします。
 3. 次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[OK]** を選択します。
 
-    | 設定                 | Value                                              |
+    | 設定                 | 値                                              |
     | ---                     | ---                                                |
-    | Type                    | 外部エンドポイント                                   |
+    | 種類                    | 外部エンドポイント                                   |
     | Name           | myEndpoint1                                        |
     | 完全修飾ドメイン名 (FQDN) または IP           | この Traffic Manager プロファイルに追加するエンドポイントのパブリック IP アドレスを入力します                         |
     |        |           |

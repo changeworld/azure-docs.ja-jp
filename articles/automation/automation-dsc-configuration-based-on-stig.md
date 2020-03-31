@@ -11,10 +11,10 @@ ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 275b3bd25f931b73e8a378433899ef9ade4d47c1
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76028279"
 ---
 # <a name="configuration-based-on-stig"></a>STIG に基づく構成

@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 843f12d14120a7becdc1e8b15bfcc65948602c44
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74007748"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD 監査アクティビティのリファレンス
@@ -140,112 +140,112 @@ Azure AD のレポート アーキテクチャは、次のコンポーネント�
 |認証|V1 アプリケーションの作成|
 |認証|V2 アプリケーションの作成|
 |認証|テナント内のカスタム ドメインの作成|
-|Authorization|新しい AdminUserJourney の作成|
-|Authorization|ローカライズされたリソース json の作成|
-|Authorization|新しいカスタム IDP の作成|
-|Authorization|新しい IDP の作成|
-|Authorization|B2C ディレクトリ リソースの作成または更新|
-|Authorization|ポリシーの作成|
-|Authorization|trustFramework ポリシーの作成|
-|Authorization|構成可能なプレフィックスを持つ trustFramework ポリシーの作成|
-|Authorization|ユーザー属性の作成|
-|Authorization|CreateTrustFrameworkPolicy|
-|Authorization|新しい AdminUserJourney の作成または更新|
-|Authorization|IDP の削除|
-|Authorization|IdentityProvider の削除|
-|Authorization|V1 アプリケーションの削除|
-|Authorization|V2 アプリケーションの削除|
-|Authorization|V2 アプリケーションのアクセス許可の付与の削除|
-|Authorization|B2C ディレクトリ リソースの削除|
-|Authorization|CPIM キー コンテナーの削除|
-|Authorization|trustFramework ポリシーの削除|
-|Authorization|ユーザー属性の削除|
-|Authorization|B2C 機能の有効化|
-|Authorization|サブスクリプション内の B2C ディレクトリ リソースの取得|
-|Authorization|カスタム IDP の取得|
-|Authorization|IDP の取得|
-|Authorization|V1 および V2 アプリケーションの取得|
-|Authorization|V1 アプリケーションの取得|
-|Authorization|V1 アプリケーションの取得|
-|Authorization|V2 アプリケーションの取得|
-|Authorization|V2 アプリケーションの取得|
-|Authorization|B2C ディレクトリ リソースの取得|
-|Authorization|テナント内のカスタム ドメインの一覧の取得|
-|Authorization|ユーザー体験の取得|
-|Authorization|ユーザー体験で許可されているアプリケーション要求の取得|
-|Authorization|ユーザー体験で許可されているセルフアサート要求の取得|
-|Authorization|ポリシーの許可されているセルフアサート要求の取得|
-|Authorization|使用可能な出力要求の一覧の取得|
-|Authorization|ユーザー体験のコンテンツ定義の取得|
-|Authorization|固有の管理フローの IDP の取得|
-|Authorization|JWK のキー コンテナー アクティブ キー メタデータの取得|
-|Authorization|すべての管理フローの一覧の取得|
-|Authorization|すべてのユーザーのすべての管理フローに対するタグの一覧の取得|
-|Authorization|ユーザーのテナントの一覧の取得|
-|Authorization|ローカル アカウントのセルフアサート要求の取得|
-|Authorization|ローカライズされたリソース json の取得|
-|Authorization|Microsoft.AzureActiveDirectory リソース プロバイダーの操作の取得|
-|Authorization|ポリシーの取得|
-|Authorization|ポリシーの取得|
-|Authorization|テナントのリソース プロパティの取得|
-|Authorization|サポートされている IDP の一覧の取得|
-|Authorization|ユーザー体験でサポートされている IDP の一覧の取得|
-|Authorization|テナント情報の取得|
-|Authorization|テナントで許可されている機能の取得|
-|Authorization|テナントで定義されているカスタム IDP の一覧の取得|
-|Authorization|テナントで定義されている IDP の一覧の取得|
-|Authorization|テナントで定義されているローカル IDP の一覧の取得|
-|Authorization|リソース作成のためのユーザーに関するテナントの詳細の取得|
-|Authorization|テナントの一覧の取得|
-|Authorization|tenantDomains の取得|
-|Authorization|CPIM のサポートされている既定のカルチャの取得|
-|Authorization|管理フローの詳細の取得|
-|Authorization|このテナントの UserJourneys の一覧の取得|
-|Authorization|CPIM の使用可能なサポートされるカルチャのセットの取得|
-|Authorization|trustFramework ポリシーの取得|
-|Authorization|trustFramework ポリシーの xml としての取得|
-|Authorization|ユーザー属性の取得|
-|Authorization|ユーザー属性の取得|
-|Authorization|ユーザー体験の一覧の取得|
-|Authorization|GetIEFPolicies|
-|Authorization|GetIdentityProviders|
-|Authorization|GetTrustFrameworkPolicy|
-|Authorization|jwk 形式での CPIM キー コンテナーの取得|
-|Authorization|テナント内のキー コンテナーの一覧の取得|
-|Authorization|テナントの種類の取得|
-|Authorization|MigrateTenantMetadata|
-|Authorization|IdentityProvider のパッチ|
-|Authorization|PutTrustFrameworkPolicy|
-|Authorization|PutTrustFrameworkpolicy|
-|Authorization|ユーザー体験の削除|
-|Authorization|CPIM キー コンテナー バックアップの復元|
-|Authorization|V2 アプリケーションのアクセス許可の付与の取得|
-|Authorization|現在のテナントの V2 アプリケーション サービス プリンシパルの取得|
-|Authorization|カスタム IDP の更新|
-|Authorization|IDP の更新|
-|Authorization|ローカル IDP の更新|
-|Authorization|V1 アプリケーションの更新|
-|Authorization|V2 アプリケーションの更新|
-|Authorization|V2 アプリケーションのアクセス許可の付与の更新|
-|Authorization|ポリシーの更新|
-|Authorization|ユーザー属性の更新|
-|Authorization|CPIM 暗号化キーのアップロード|
-|Authorization|ユーザーの承認:テナント機能セットに対して API が無効化された|
-|Authorization|ユーザーの承認:'テナント管理者' としてのアクセスを付与されているユーザー|
-|Authorization|ユーザーの承認:ユーザーが '認証されたユーザー' アクセス権を付与された|
-|Authorization|B2C 機能が有効になっているかどうかの確認|
-|Authorization|機能が有効になっているかどうかの確認|
-|Authorization|プログラムの作成|
-|Authorization|プログラムの削除|
-|Authorization|プログラム コントロールのリンク|
-|Authorization|Azure AD アクセス レビューへのオンボード|
-|Authorization|プログラム コントロールのリンクの解除|
-|Authorization|プログラムの更新|
-|Authorization|デスクトップ SSO の無効化|
-|Authorization|特定のドメインに対するデスクトップ SSO の無効化|
-|Authorization|アプリケーション プロキシの無効化|
-|Authorization|パススルー認証の無効化|
-|Authorization|デスクトップ SSO の有効化|
+|承認|新しい AdminUserJourney の作成|
+|承認|ローカライズされたリソース json の作成|
+|承認|新しいカスタム IDP の作成|
+|承認|新しい IDP の作成|
+|承認|B2C ディレクトリ リソースの作成または更新|
+|承認|ポリシーの作成|
+|承認|trustFramework ポリシーの作成|
+|承認|構成可能なプレフィックスを持つ trustFramework ポリシーの作成|
+|承認|ユーザー属性の作成|
+|承認|CreateTrustFrameworkPolicy|
+|承認|新しい AdminUserJourney の作成または更新|
+|承認|IDP の削除|
+|承認|IdentityProvider の削除|
+|承認|V1 アプリケーションの削除|
+|承認|V2 アプリケーションの削除|
+|承認|V2 アプリケーションのアクセス許可の付与の削除|
+|承認|B2C ディレクトリ リソースの削除|
+|承認|CPIM キー コンテナーの削除|
+|承認|trustFramework ポリシーの削除|
+|承認|ユーザー属性の削除|
+|承認|B2C 機能の有効化|
+|承認|サブスクリプション内の B2C ディレクトリ リソースの取得|
+|承認|カスタム IDP の取得|
+|承認|IDP の取得|
+|承認|V1 および V2 アプリケーションの取得|
+|承認|V1 アプリケーションの取得|
+|承認|V1 アプリケーションの取得|
+|承認|V2 アプリケーションの取得|
+|承認|V2 アプリケーションの取得|
+|承認|B2C ディレクトリ リソースの取得|
+|承認|テナント内のカスタム ドメインの一覧の取得|
+|承認|ユーザー体験の取得|
+|承認|ユーザー体験で許可されているアプリケーション要求の取得|
+|承認|ユーザー体験で許可されているセルフアサート要求の取得|
+|承認|ポリシーの許可されているセルフアサート要求の取得|
+|承認|使用可能な出力要求の一覧の取得|
+|承認|ユーザー体験のコンテンツ定義の取得|
+|承認|固有の管理フローの IDP の取得|
+|承認|JWK のキー コンテナー アクティブ キー メタデータの取得|
+|承認|すべての管理フローの一覧の取得|
+|承認|すべてのユーザーのすべての管理フローに対するタグの一覧の取得|
+|承認|ユーザーのテナントの一覧の取得|
+|承認|ローカル アカウントのセルフアサート要求の取得|
+|承認|ローカライズされたリソース json の取得|
+|承認|Microsoft.AzureActiveDirectory リソース プロバイダーの操作の取得|
+|承認|ポリシーの取得|
+|承認|ポリシーの取得|
+|承認|テナントのリソース プロパティの取得|
+|承認|サポートされている IDP の一覧の取得|
+|承認|ユーザー体験でサポートされている IDP の一覧の取得|
+|承認|テナント情報の取得|
+|承認|テナントで許可されている機能の取得|
+|承認|テナントで定義されているカスタム IDP の一覧の取得|
+|承認|テナントで定義されている IDP の一覧の取得|
+|承認|テナントで定義されているローカル IDP の一覧の取得|
+|承認|リソース作成のためのユーザーに関するテナントの詳細の取得|
+|承認|テナントの一覧の取得|
+|承認|tenantDomains の取得|
+|承認|CPIM のサポートされている既定のカルチャの取得|
+|承認|管理フローの詳細の取得|
+|承認|このテナントの UserJourneys の一覧の取得|
+|承認|CPIM の使用可能なサポートされるカルチャのセットの取得|
+|承認|trustFramework ポリシーの取得|
+|承認|trustFramework ポリシーの xml としての取得|
+|承認|ユーザー属性の取得|
+|承認|ユーザー属性の取得|
+|承認|ユーザー体験の一覧の取得|
+|承認|GetIEFPolicies|
+|承認|GetIdentityProviders|
+|承認|GetTrustFrameworkPolicy|
+|承認|jwk 形式での CPIM キー コンテナーの取得|
+|承認|テナント内のキー コンテナーの一覧の取得|
+|承認|テナントの種類の取得|
+|承認|MigrateTenantMetadata|
+|承認|IdentityProvider のパッチ|
+|承認|PutTrustFrameworkPolicy|
+|承認|PutTrustFrameworkpolicy|
+|承認|ユーザー体験の削除|
+|承認|CPIM キー コンテナー バックアップの復元|
+|承認|V2 アプリケーションのアクセス許可の付与の取得|
+|承認|現在のテナントの V2 アプリケーション サービス プリンシパルの取得|
+|承認|カスタム IDP の更新|
+|承認|IDP の更新|
+|承認|ローカル IDP の更新|
+|承認|V1 アプリケーションの更新|
+|承認|V2 アプリケーションの更新|
+|承認|V2 アプリケーションのアクセス許可の付与の更新|
+|承認|ポリシーの更新|
+|承認|ユーザー属性の更新|
+|承認|CPIM 暗号化キーのアップロード|
+|承認|ユーザーの承認: テナント機能セットに対して API が無効化された|
+|承認|ユーザーの承認: 'テナント管理者' としてのアクセスを付与されているユーザー|
+|承認|ユーザーの承認: ユーザーが '認証されたユーザー' アクセス権を付与された|
+|承認|B2C 機能が有効になっているかどうかの確認|
+|承認|機能が有効になっているかどうかの確認|
+|承認|プログラムの作成|
+|承認|プログラムの削除|
+|承認|プログラム コントロールのリンク|
+|承認|Azure AD アクセス レビューへのオンボード|
+|承認|プログラム コントロールのリンクの解除|
+|承認|プログラムの更新|
+|承認|デスクトップ SSO の無効化|
+|承認|特定のドメインに対するデスクトップ SSO の無効化|
+|承認|アプリケーション プロキシの無効化|
+|承認|パススルー認証の無効化|
+|承認|デスクトップ SSO の有効化|
 |ディレクトリ管理|特定のドメインに対するデスクトップ SSO の有効化|
 |ディレクトリ管理|アプリケーション プロキシの有効化|
 |ディレクトリ管理|パススルー認証の有効化|
@@ -602,7 +602,7 @@ Azure AD のレポート アーキテクチャは、次のコンポーネント�
 |[ユーザー管理]|バイラル ユーザーの作成|
 |[ユーザー管理]|ユーザー パスワードの登録|
 |[ユーザー管理]|ユーザー パスワードのリセット|
-|[ユーザー管理]|セルフサービスによるパスワード リセットのブロック|
+|[ユーザー管理]|セルフサービス パスワード リセットのブロック|
 
 
 ## <a name="terms-of-use"></a>使用条件
@@ -621,7 +621,7 @@ Azure AD のレポート アーキテクチャは、次のコンポーネント�
 |使用条件|使用条件の公開の取り消し|
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure AD レポートの概要](overview-reports.md)
 - [監査ログ レポート](concept-audit-logs.md) 

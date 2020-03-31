@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 843d5da26d6791cea880e5dfb654fe27b74f5d9f
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73936043"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Hyper-V VM のディザスター リカバリーの容量を計画する 
@@ -47,7 +47,7 @@ Site Recovery Capacity Planner は、ソース環境とワークロードの分�
 
 2. **[Select a planner type]\(プランナーの種類を選択する\)** リスト ボックスから **[Quick Planner]\(クイック プランナー\)** を選択します。
 
-   ![作業開始](./media/site-recovery-capacity-planner/getting-started.png)
+   ![はじめに](./media/site-recovery-capacity-planner/getting-started.png)
 
 3. **Capacity Planner** ワークシートに、必要な情報を入力します。 以下のスクリーンショットの赤の丸が付いているすべてのフィールドに入力します。
 
@@ -77,7 +77,7 @@ Site Recovery Capacity Planner は、ソース環境とワークロードの分�
    * **[Number of additional Process Servers required]\(必要なその他のプロセス サーバーの数\)** :既定で構成サーバーで実行しているプロセス サーバーの他に、追加のプロセス サーバーが必要かどうかを示します。
    * **[100% additional storage on the Source]\(ソースでの 100% 追加ストレージ\)** :ソースの場所に追加ストレージが必要かどうかを示します。
 
-      ![Output](./media/site-recovery-capacity-planner/output.png)
+      ![出力](./media/site-recovery-capacity-planner/output.png)
 
 ## <a name="run-the-detailed-planner"></a>詳細なプランナーの実行
 
@@ -146,5 +146,5 @@ AA から AE の列が出力され、各 VM の情報が示されます。
 
    ![Capacity Planner](./media/site-recovery-capacity-planner/capacity-planner.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Capacity Planner ツールを[実行する方法について説明します](site-recovery-capacity-planning-for-hyper-v-replication.md)。

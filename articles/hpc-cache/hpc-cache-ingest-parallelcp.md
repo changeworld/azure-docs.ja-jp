@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
 ms.openlocfilehash: 90e05ad3d42b1009b631630fe476669a9f418d33
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74166899"
 ---
 # <a name="azure-hpc-cache-data-ingest---parallel-copy-script-method"></a>Azure HPC Cache のデータ取り込み - 並列コピー スクリプトを使用した方法

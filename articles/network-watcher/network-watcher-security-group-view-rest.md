@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: c9c76e9c06d4c45a096cff79dac82bb80ebe25d1
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840742"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>REST API を使用してセキュリティ グループ ビューで仮想マシンのセキュリティを分析する
@@ -61,7 +61,7 @@ $resourceGroupName = '<resource group name>'
 armclient get https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview
 ```
 
-必要な情報は、次の例に示す応答の "type" (`Microsoft.Compute/virtualMachines`) の下の **id** です。
+必要な情報は、次の例に示す応答の "type" ( **) の下の** id`Microsoft.Compute/virtualMachines` です。
 
 ```json
 ...,

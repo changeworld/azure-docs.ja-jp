@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: spelluru
 ms.openlocfilehash: cc82355ee43f9fee4f9c2e1bb1bcc0481e4dcea3
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73608543"
 ---
 # <a name="azlabservices-powershell-module-preview"></a>Az.LabServices PowerShell モジュール (プレビュー)
@@ -33,7 +33,7 @@ PowerShell コマンドを使って、すべてのラボで実行中のすべて
 Get-AzLabAccount | Get-AzLab | Get-AzLabVm -Status Running | Stop-AzLabVm
 ```
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 1. コンピューターに [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) が存在しない場合は、インストールします。 
 2. [Az.LabServices.psm1](https://github.com/Azure/azure-devtestlab/blob/master/samples/ClassroomLabs/Modules/Library/Az.LabServices.psm1) をお使いのコンピューターにダウンロードします。
 3. モジュールをインポートします。
@@ -47,5 +47,5 @@ Get-AzLabAccount | Get-AzLab | Get-AzLabVm -Status Running | Stop-AzLabVm
     Get-AzLabAccount | Get-AzLab
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [GitHub の Az.LabServices ホーム ページ](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Modules/Library)を参照してください。

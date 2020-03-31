@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
 ms.openlocfilehash: ef781653332984a7fb6d71ef91d53cbf77e6c91c
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72437971"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した Desired State Configuration 拡張機能
@@ -204,9 +204,9 @@ DSC 拡張機能の既定の構成スクリプトは、次の表に記載され�
 | settings.configurationArguments.ConfigurationMode |string |LCM のモードを指定します。 有効なオプションには、**ApplyOnly**、**ApplyandMonitor**、および **ApplyandAutoCorrect** があります。  既定値は **ApplyandMonitor** です。 |
 | settings.configurationArguments.RefreshFrequencyMins | uint32 | LCM が Automation アカウントを使用して更新プログラムの確認を試みる頻度を指定します。  既定値は **30** です。  最小値は **15** です。 |
 | settings.configurationArguments.ConfigurationModeFrequencyMins | uint32 | LCM が現在の構成を検証する頻度を指定します。 既定値は **15** です。 最小値は **15** です。 |
-| settings.configurationArguments.RebootNodeIfNeeded | ブール値 | DSC 操作で要求した場合に、ノードが自動的に再起動されてよいかどうかを指定します。 既定値は **false** です。 |
+| settings.configurationArguments.RebootNodeIfNeeded | boolean | DSC 操作で要求した場合に、ノードが自動的に再起動されてよいかどうかを指定します。 既定値は **false** です。 |
 | settings.configurationArguments.ActionAfterReboot | string | 構成を適用したときの再起動後の動作を指定します。 有効なオプションは、**ContinueConfiguration** と **StopConfiguration** です。 既定値は **ContinueConfiguration** です。 |
-| settings.configurationArguments.AllowModuleOverwrite | ブール値 | LCM がノード上の既存のモジュールを上書きするかどうかを指定します。 既定値は **false** です。 |
+| settings.configurationArguments.AllowModuleOverwrite | boolean | LCM がノード上の既存のモジュールを上書きするかどうかを指定します。 既定値は **false** です。 |
 
 ## <a name="settings-vs-protectedsettings"></a>settings と protectedSettings
 
@@ -356,27 +356,27 @@ The only possible values are '', 'Enable', and 'Disable' (Privacy.dataCollection
 "WmfVersion is '{0}'.
 Only possible values are … and 'latest' (WmfVersion は '{0}' です。指定できる値は … および 'latest' のみです)"
 
-**問題点**:指定した値が許可されていません。
+**問題点**: 指定した値が許可されていません。
 
-**解決策**:無効な値を有効な値に変更してください。
+**解決策**: 無効な値を有効な値に変更してください。
 詳しくは、「[詳細](#details)」の表をご覧ください。
 
 ### <a name="invalid-url"></a>無効な URL
 
 "ConfigurationData.url is '{0}'. This is not a valid URL. (Configuration.url は '{0}' です。これは有効な URL ではありません。)" "DataBlobUri is '{0}'. これは有効な URL ではありません)" "Configuration.url is '{0}'.This is not a valid URL (Configuration.url は '{0}' です。 これは有効な URL ではありません)"
 
-**問題点**:指定した URL が無効です。
+**問題点**: 指定した URL が無効です。
 
-**解決策**:指定した URL すべてを確認してください。
+**解決策**: 指定した URL すべてを確認してください。
 拡張機能がリモート マシンにアクセスできるように、すべての URL が有効な場所に解決されていることを確認します。
 
 ### <a name="invalid-registrationkey-type"></a>無効な RegistrationKey の型
 
 "Invalid type for parameter RegistrationKey of type PSCredential. (型 PSCredential のパラメーター RegistrationKey の無効な型。)"
 
-**問題点**:protectedSettings.configurationArguments の *RegistrationKey* の値は、PSCredential 以外の型としては指定できません。
+**問題点**: protectedSettings.configurationArguments の *RegistrationKey* の値は、PSCredential 以外の型としては指定できません。
 
-**解決策**:RegistrationKey の protectedSettings.configurationArguments エントリを、次の形式を使用して PSCredential 型に変更してください。
+**解決策**: RegistrationKey の protectedSettings.configurationArguments エントリを、次の形式を使用して PSCredential 型に変更してください。
 
 ```json
 "configurationArguments": {
@@ -391,18 +391,18 @@ Only possible values are … and 'latest' (WmfVersion は '{0}' です。指定�
 
 "Invalid configurationArguments type {0} (無効な configurationArguments の型 {0})"
 
-**問題点**:*ConfigurationArguments* プロパティが**ハッシュ テーブル** オブジェクトに解決できません。
+**問題点**: *ConfigurationArguments* プロパティが**ハッシュ テーブル** オブジェクトに解決できません。
 
-**解決策**:*ConfigurationArguments* プロパティを**ハッシュ テーブル**にしてください。
+**解決策**: *ConfigurationArguments* プロパティを**ハッシュ テーブル**にしてください。
 前の例に示されている形式に従います。 引用符、コンマ、および中かっこに注意します。
 
 ### <a name="duplicate-configurationarguments"></a>ConfigurationArguments の重複
 
 "Found duplicate arguments '{0}' in both public and protected configurationArguments (パブリックと保護対象の両方の configurationArguments で重複する引数 '{0}' が見つかりました)"
 
-**問題点**:パブリック設定の *ConfigurationArguments* と保護された設定の *ConfigurationArguments* に同じ名前のプロパティが含まれています。
+**問題点**: パブリック設定の *ConfigurationArguments* と保護された設定の *ConfigurationArguments* に同じ名前のプロパティが含まれています。
 
-**解決策**:重複するプロパティのいずれかを削除してください。
+**解決策**: 重複するプロパティのいずれかを削除してください。
 
 ### <a name="missing-properties"></a>不足しているプロパティ
 
@@ -418,14 +418,14 @@ Only possible values are … and 'latest' (WmfVersion は '{0}' です。指定�
 
 "protectedSettings.ConfigurationDataUrlSasToken requires that settings.configurationData.url is specified (protectedSettings.ConfigurationDataUrlSasToken には settings.configurationData.url の指定が必要です)"
 
-**問題点**:定義したプロパティには、不足している別のプロパティが必要です。
+**問題点**: 定義したプロパティには、不足している別のプロパティが必要です。
 
 **解決策**:
 
 - 不足しているプロパティを指定します。
 - 不足しているプロパティを必要とするプロパティを削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [仮想マシン スケール セットと Azure DSC 拡張機能の使用](../../virtual-machine-scale-sets/virtual-machine-scale-sets-dsc.md)について知る。
 - [DSC による安全な資格情報管理](dsc-credentials.md)の詳細を確認する。

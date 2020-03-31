@@ -8,10 +8,10 @@ ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 28a280ea7c3bf9ef84a1fff05da5090ed526fb12
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73837470"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Java での Azure Files 用の開発
@@ -221,7 +221,7 @@ if ( file.deleteIfExists() ) {
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 その他の Azure ストレージ API に関する詳細については、次のリンク先をご覧ください。
 
 * [Java 開発者向けの Azure](/java/azure)/)

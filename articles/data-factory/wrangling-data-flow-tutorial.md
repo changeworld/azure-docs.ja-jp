@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
 ms.openlocfilehash: 8ae109045381dba77610dedc5bb95e233b213eee
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73682272"
 ---
 # <a name="prepare-data-with-wrangling-data-flow"></a>ラングリング データ フローを使用してデータを準備する
@@ -55,6 +55,6 @@ Azure Data Factory でラングリング データ フローを作成するに�
 
 ![ラングリング](media/wrangling-data-flow/tutorial2.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [マッピング データ フローの作成](tutorial-data-flow.md)方法について確認します。

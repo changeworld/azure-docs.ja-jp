@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/11/2018
 ms.author: spelluru
 ms.openlocfilehash: 9bc784ee57b9bde393408cbefa9a197aebc59b08
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76264460"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Service Bus リソースを作成する

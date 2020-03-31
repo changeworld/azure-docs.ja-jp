@@ -8,10 +8,10 @@ ms.date: 08/18/2016
 ms.topic: article
 tags: connectors
 ms.openlocfilehash: 179c7538d8072f0e1a4f7d049cf521971efd7a21
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75666858"
 ---
 # <a name="get-and-manage-profiles-in-office-365-users-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Office 365 ユーザー内のプロファイルを取得および管理する

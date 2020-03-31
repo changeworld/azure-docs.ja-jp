@@ -14,10 +14,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/28/2019
 ms.openlocfilehash: 51d0880b7f56d523a01fbc993993b3caf7328134
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76261077"
 ---
 # <a name="change-pricing-tier-of-an-azure-notification-hubs-namespace"></a>Azure Notification Hubs 名前空間の価格レベルを変更する
@@ -36,7 +36,7 @@ Azure portal 使用時には、名前空間のページまたはハブのペー�
 ### <a name="change-tier-on-the-namespace-page"></a>名前空間のページでレベルを変更する
 次の手順は、名前空間のページで名前空間の価格レベルを変更する手順を示しています。 名前空間のレベルを変更すると、名前空間内のすべてのハブに変更が適用されます。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. 左側のメニューから、 **[すべてのサービス]** を選択します。 
 3. **[Internet of Things] (モノのインターネット)** セクションで、 **[Notification Hub Namespaces] (Notification Hub の名前空間)** を選択します。 テキストの横にある星 (`*`) を選択すると、その項目が左側のナビゲーション バーの **[お気に入り]** の下に追加されます。 これは、次回以降、名前空間のページによりすばやくアクセスする助けになります。 これを [お気に入り] に追加したら、 **[Notification Hub Namespaces] (Notification Hub の名前空間)** を選択します。 
 
@@ -56,7 +56,7 @@ Azure portal 使用時には、名前空間のページまたはハブのペー�
 ### <a name="change-tier-on-the-hub-page"></a>ハブのページでレベルを変更する
 次の手順は、ハブのページで名前空間の価格レベルを変更する手順を示しています。 これらの手順はハブのページから開始しているにもかかわらず、実際には名前空間と、その名前空間内のすべてのハブの価格レベルを変更します。 
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. 左側のメニューから、 **[すべてのサービス]** を選択します。
 3. **[Internet of Things] (モノのインターネット)** セクションで **[Notification Hub]** を選択します。 
 4. 目的の通知**ハブ**を選択します。 

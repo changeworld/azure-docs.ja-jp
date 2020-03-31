@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4a44e32efa3e38cf9c4df7dc00e3189c129db418
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72886842"
 ---
 # <a name="identity-protection-policies"></a>Identity Protection ポリシー
@@ -47,16 +47,16 @@ Identity Protection では、リアルタイムとオフラインの両方で各
 
 ## <a name="user-risk-policy"></a>ユーザー リスクのポリシー
 
-Identity Protection では、ユーザーの標準的な行動であると確信できるものは何かを判断し、それを使用してユーザーのリスクに関する意思決定を行うことができます。 ユーザー リスクとは、ID が侵害されている確率の計算です。 管理者は、このリスク スコア シグナルに基づいて決定を行い、組織の要件を強制することができます。 管理者は、アクセスをブロックする、アクセスを許可する、またはアクセスを許可するが [Azure AD のパスワード リセットのセルフサービス](../authentication/howto-sspr-deployment.md)を使用してパスワードを変更する必要があることを選択できます。
+Identity Protection では、ユーザーの標準的な行動であると確信できるものは何かを判断し、それを使用してユーザーのリスクに関する意思決定を行うことができます。 ユーザー リスクとは、ID が侵害されている確率の計算です。 管理者は、このリスク スコア シグナルに基づいて決定を行い、組織の要件を強制することができます。 管理者は、アクセスをブロックする、アクセスを許可する、またはアクセスを許可するが [Azure AD のセルフサービス パスワード リセット ](../authentication/howto-sspr-deployment.md)を使用してパスワードを変更する必要があることを選択できます。
 
-リスクが検出された場合、ユーザーは、パスワード リセットのセルフサービスを実行して自己修復し、ユーザーのリスク イベントを閉じて、管理者に対する不要なノイズが発生しないようにすることができます。
+リスクが検出された場合、ユーザーは、セルフサービス パスワード リセット を実行して自己修復し、ユーザーのリスク イベントを閉じて、管理者に対する不要なノイズが発生しないようにすることができます。
 
 > [!NOTE] 
-> ユーザー リスク ポリシーをトリガーする前に、ユーザーがパスワード リセットのセルフサービスに登録済みである必要があります。
+> ユーザー リスク ポリシーをトリガーする前に、ユーザーがセルフサービス パスワード リセット に登録済みである必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [Azure AD のパスワード リセットのセルフサービスを有効にする](../authentication/howto-sspr-deployment.md)
+- [Azure AD のセルフサービス パスワード リセット を有効にする](../authentication/howto-sspr-deployment.md)
 
 - [Azure Multi-Factor Authentication を有効にする](../authentication/howto-mfa-getstarted.md)
 

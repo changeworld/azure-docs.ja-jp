@@ -17,10 +17,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4d723af5d994006c4ae4f90905ede73fa87326bf
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74014262"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>チュートリアル:Azure Active Directory Reporting API と証明書を使用したデータの取得
@@ -87,7 +87,7 @@ ms.locfileid: "74014262"
   
 7. これで、この証明書を使用して MS Graph API のアクセス トークンを取得できるようになりました。 MSCloudIdUtils PowerShell モジュールの **Get-MSCloudIdMSGraphAccessTokenFromCert** コマンドレットを使い、前の手順で取得したアプリケーション ID とサムプリントを渡します。 
 
-   ![Azure ポータル](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
+   ![Azure portal](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
 
 8. Powershell スクリプトでアクセス トークンを使用して、Graph API のクエリを実行します。 MSCloudIDUtils の **Invoke-MSCloudIdMSGraphQuery** コマンドレットを使って SignIns と directoryAudits エンドポイントを列挙します。 複数のページにわたる結果を処理し、それらの結果を PowerShell パイプラインに送っています。
 
@@ -99,7 +99,7 @@ ms.locfileid: "74014262"
 
 11. このデータを CSV にエクスポートし、SIEM システムに保存できるようになります。 また、スケジュールされたタスクにスクリプトをラップすれば、ソース コードにアプリケーション キーを保存せずに Azure AD データをテナントから定期的に取得することができます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Reporting API の概要を把握します](concept-reporting-api.md)
 * [監査 API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 

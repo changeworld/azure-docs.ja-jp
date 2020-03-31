@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: troubleshooting
 ms.date: 08/01/2019
 ms.openlocfilehash: 84bd14f8ae18527b4f6e9d8509a12555baec8771
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68879554"
 ---
 # <a name="troubleshooting-azure-data-catalog"></a>Azure Data Catalog のトラブルシューティング
@@ -39,6 +39,6 @@ Azure Data Catalog ポータルにはサインインできるものの、デー�
 
 詳細については、「 [認証ポリシーの構成](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn486781(v=ws.11))」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure データ カタログを作成する](data-catalog-get-started.md)

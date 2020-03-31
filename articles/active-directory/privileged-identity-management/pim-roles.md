@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6fac7074cf85a585c93ece60be9eea8ffb9a6345
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72895199"
 ---
 # <a name="roles-you-cant-manage-in-privileged-identity-management"></a>Privileged Identity Management で管理できないロール
@@ -42,7 +42,7 @@ Exchange 管理者と SharePoint 管理者を除く Exchange Online または Sh
 > [!NOTE]
 > SharePoint 管理者は、SharePoint Online 管理センターを通じた SharePoint Online への管理アクセスが可能で、SharePoint Online でのほぼすべてのタスクを実行できます。 対象となるユーザーは、Privileged Identity Management でアクティブにした後、SharePoint 内でこのロールを使用できるようになるまでに遅延が生じる場合があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Privileged Identity Management で Azure AD ロールを割り当てる](pim-how-to-add-role-to-user.md)
 - [Privileged Identity Management で Azure リソース ロールを割り当てる](pim-resource-roles-assign-roles.md)

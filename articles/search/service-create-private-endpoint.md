@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.openlocfilehash: 2664b1abd4131cf1dca186c7b044e338bf1efa84
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75945818"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search-preview"></a>Azure Cognitive Search に安全な接続を行うためのプライベート エンドポイントを作成する (プレビュー)
@@ -59,11 +59,11 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
 
     | 設定 | 値 |
     | ------- | ----- |
-    | Name | 「*MyVirtualNetwork*」と入力します。 |
+    | 名前 | 「*MyVirtualNetwork*」と入力します。 |
     | アドレス空間 | 「*10.1.0.0/16*」と入力します。 |
     | サブスクリプション | サブスクリプションを選択します。|
     | Resource group | **[新規作成]** を選択し、「*myResourceGroup*」と入力して、 **[OK]** を選択します。 |
-    | Location | **[米国西部]** 、またはあなたが使用しているリージョンを選択します。|
+    | 場所 | **[米国西部]** 、またはあなたが使用しているリージョンを選択します。|
     | サブネット - 名前 | 「*mySubnet*」と入力します。 |
     | サブネット アドレス範囲 | 「*10.1.0.0/24*」と入力します。 |
     |||
@@ -86,11 +86,11 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
     | Resource group | **[myResourceGroup]** を選択します。 これは前のセクションで作成しました。|
     | **インスタンスの詳細** |  |
     | URL | 一意の名前を入力します。 |
-    | Location | このプレビュー機能へのアクセスを要求するときにあなたが指定したリージョンを選択します。 |
+    | 場所 | このプレビュー機能へのアクセスを要求するときにあなたが指定したリージョンを選択します。 |
     | Pricing tier | **[価格レベルの変更]** を選択し、 **[Basic]** を選びます。 プレビューのためには、このレベルが必要です。 |
     |||
   
-1. **[次へ:スケール]** をクリックします。
+1. **スケール** をクリックします。
 
 1. 残りは既定値のままにして、 **[次へ:ネットワーク]** を選択します。
 
@@ -104,8 +104,8 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
     | ------- | ----- |
     | サブスクリプション | サブスクリプションを選択します。 |
     | Resource group | **[myResourceGroup]** を選択します。 これは前のセクションで作成しました。|
-    | Location | **[米国西部]** を選択します。|
-    | Name | 「 *myPrivateEndpoint*」と入力します。  |
+    | 場所 | **[米国西部]** を選択します。|
+    | 名前 | 「 *myPrivateEndpoint*」と入力します。  |
     | ターゲット サブリソース | 既定の **searchService** をそのまま使用します。 |
     | **ネットワーク** |  |
     | 仮想ネットワーク  | リソース グループの *[myResourceGroup]* から、 *[MyVirtualNetwork]* を選択します。 |
@@ -143,7 +143,7 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
     | リージョン | **[米国西部]** 、またはあなたが使用しているリージョンを選択します。 |
     | 可用性のオプション | 既定値 **[インフラストラクチャ冗長は必要ありません]** をそのまま使用します。 |
     | Image | **[Windows Server 2019 Datacenter]** を選択します。 |
-    | Size | 既定値 **[Standard DS1 v2]** をそのまま使用します。 |
+    | サイズ | 既定値 **[Standard DS1 v2]** をそのまま使用します。 |
     | **管理者アカウント** |  |
     | ユーザー名 | 任意のユーザー名を入力します。 |
     | Password | 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
@@ -155,7 +155,7 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
     | Windows ライセンスを既にお持ちの場合 | 既定値 **[なし]** のままにします。 |
     |||
 
-1. **[次へ:ディスク]** を選択します。
+1. **ディスク** を選択します。
 
 1. **[仮想マシンの作成 - Disk]** で、既定値のままにし、 **[Next: Networking]\(次へ : ネットワーク\)** を選択します。
 

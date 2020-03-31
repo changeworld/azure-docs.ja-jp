@@ -11,10 +11,10 @@ ms.author: ronmat
 ms.reviewer: vanto, carlrab
 ms.date: 08/05/2019
 ms.openlocfilehash: 8eb8e4fccc17fe31def671cf6e8edb19d867b244
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73822502"
 ---
 # <a name="azure-sql-database-advanced-threat-protection-for-single-or-pooled-databases"></a>単一データベースまたはプールされたデータベースに対する Azure SQL Database の Advanced Threat Protection
@@ -43,9 +43,9 @@ ms.locfileid: "73822502"
 
 スクリプトの例については、[PowerShell を使用した監査と Advanced Threat Protection の構成](scripts/sql-database-auditing-and-threat-detection-powershell.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [Advanced Threat Protection](sql-database-threat-detection-overview.md) についてさらに詳しく学習します。
+- [Advanced Threat Protection](sql-database-threat-detection-overview.md) の詳細について学習します。
 - [マネージド インスタンスでの Advanced Threat Protection](sql-database-managed-instance-threat-detection.md) の詳細について学習します。  
 - [Advanced Data Security](sql-database-advanced-data-security.md) の詳細について学習します。
 - [監査](sql-database-auditing.md)の詳細について学習します。

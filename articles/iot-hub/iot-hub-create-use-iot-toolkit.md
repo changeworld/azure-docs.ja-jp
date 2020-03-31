@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
 ms.openlocfilehash: 668087ae596688e86b7b84a16bc5c0fd0f9fcef6
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75912239"
 ---
 # <a name="create-an-iot-hub-using-the-azure-iot-tools-for-visual-studio-code"></a>Visual Studio Code 用の Azure IoT Tools を使用して IoT ハブを作成する

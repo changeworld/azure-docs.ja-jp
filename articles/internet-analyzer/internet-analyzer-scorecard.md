@@ -8,10 +8,10 @@ ms.topic: guide
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: a05c704f62d93bdc110d8a5943dd266ca22eb5f4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73510300"
 ---
 # <a name="interpreting-your-scorecard"></a>スコアカードの解釈
@@ -55,6 +55,6 @@ Internet Analyzer の場合、サンプル メトリックが実際の母集団�
 時系列は、時間の経過と共にメトリックがどのように変化するかを示します。 インターネットには、トラフィックのピーク期間、平日と週末の人口差、休日など、パフォーマンスに影響する一時的な要因が多数あります。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、[Internet Analyzer の概要](internet-analyzer-overview.md)に関する記事を参照してください。

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: brendm
 ms.openlocfilehash: daa549e248668add54530e90174134c4e0059b3a
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76276837"
 ---
 # <a name="start-stop-and-delete-your-azure-spring-cloud-application"></a>Azure Spring Cloud アプリケーションを開始、停止、削除する

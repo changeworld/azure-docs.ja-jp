@@ -11,10 +11,10 @@ ms.date: 02/04/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d73a1a3ce23817d9d6f742a4a8c730afb58ee0c8
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78226998"
 ---
 # <a name="userjourneys"></a>UserJourneys
@@ -35,9 +35,9 @@ ms.locfileid: "78226998"
 
 **UserJourney** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| Id | はい | ポリシー内の他の要素から参照するために使用できるユーザー体験の識別子。 [証明書利用者ポリシー](relyingparty.md)の **DefaultUserJourney** 要素は、この属性をポイントします。 |
+| Id | はい | ポリシー内の他の要素から参照するために使用できるユーザー体験の識別子。 **証明書利用者ポリシー**の [DefaultUserJourney](relyingparty.md) 要素は、この属性をポイントします。 |
 
 **UserJourney** 要素には、次の要素が含まれています。
 
@@ -61,7 +61,7 @@ ms.locfileid: "78226998"
 
 **OrchestrationStep** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | `Order` | はい | オーケストレーション手順の順序。 |
 | `Type` | はい | オーケストレーション手順の種類。 指定できる値 <ul><li>**ClaimsProviderSelection** -オーケストレーション手順が、様々な要求プロバイダーをユーザーに選択肢として表示することを示します。</li><li>**CombinedSignInAndSignUp** - オーケストレーション手順がサインインとローカル アカウントのサインアップ ページを結合ソーシャル プロバイダーに提示することを示します。</li><li>**ClaimsExchange** - オーケストレーション手順が要求プロバイダーと要求を交換することを示します。</li><li>**GetClaims** - オーケストレーション手順が入力要求を読み取ることを示します。</li><li>**SendClaims** - オーケストレーション手順が証明書利用者に対して、要求発行者によって発行されたトークンを使用して要求を送信することを示します。</li></ul> |
@@ -90,7 +90,7 @@ ms.locfileid: "78226998"
 
 **Precondition** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | `Type` | はい | この前提条件に対して実行するチェックまたはクエリの種類。 値に **ClaimsExist** を指定すると、指定した要求がユーザーの現在の要求セット内に存在する場合にアクションが実行されます。または、**ClaimEquals** を指定すると、指定した要求が存在し、その値が指定値と等しい場合にアクションが実行されます。 |
 | `ExecuteActionsIf` | はい | 前提条件内のアクションを実行する必要があるかどうかを true または false を使用して決定します。 |
@@ -99,7 +99,7 @@ ms.locfileid: "78226998"
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| Value | 1:n | クエリされる ClaimTypeReferenceId。 別の値要素には、チェック対象の値が含まれています。</li></ul>|
+| 値 | 1:n | クエリされる ClaimTypeReferenceId。 別の値要素には、チェック対象の値が含まれています。</li></ul>|
 | アクション | 1:1 | オーケストレーション手順内の前提条件チェックが true の場合に実行する必要があるアクション。 `Action` の値を `SkipThisOrchestrationStep` に設定すると、関連付けられている `OrchestrationStep` は実行されません。 |
 
 #### <a name="preconditions-examples"></a>前提条件の例
@@ -170,13 +170,13 @@ Preconditions では複数の前提条件を確認できます。 次の例で�
 
 **ClaimsProviderSelections** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | DisplayOption| いいえ | 単一の要求プロバイダーの選択が可能な場合の動作を制御します。 使用可能な値: `DoNotShowSingleProvider` (既定値)。ユーザーはフェデレーション ID プロバイダーに直ちにリダイレクトされます。 または、 `ShowSingleProvider` Azure AD B2C では、単一の ID プロバイダーの選択があるサインイン ページが表示されます。 この属性を使用するには、[コンテンツ定義のバージョン](page-layout.md)が  `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` 以上になっている必要があります。|
 
 **ClaimsProviderSelection** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | TargetClaimsExchangeId | いいえ | 要求プロバイダー選定の次のオーケストレーション手順で実行される、要求交換の識別子。 この属性、または ValidationClaimsExchangeId 属性を指定する必要がありますが、両方を指定することはできません。 |
 | ValidationClaimsExchangeId | いいえ | 要求プロバイダー選定を検証するために現在のオーケストレーション手順で実行される、要求交換の識別子。 この属性、または TargetClaimsExchangeId 属性を指定する必要がありますが、両方を指定することはできません。 |
@@ -228,7 +228,7 @@ Preconditions では複数の前提条件を確認できます。 次の例で�
 
 **ClaimsExchange** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Id | はい | 要求交換手順の識別子。 この識別子は、ポリシーの要求プロバイダー選定手順から要求交換を参照するために使用されます。 |
 | TechnicalProfileReferenceId | はい | 実行される技術プロファイルの識別子。 |

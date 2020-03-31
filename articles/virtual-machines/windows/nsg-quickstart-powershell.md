@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.openlocfilehash: 547ca9c98d77b2aaa6d3630bff4b2ec10dcc5be0
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75754176"
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>PowerShell を使用して Azure の VM へのポートとエンドポイントを開放する方法
@@ -60,7 +60,7 @@ $nsg = New-AzNetworkSecurityGroup `
     -SecurityRules $httprule
 ```
 
-ここで、ネットワーク セキュリティ グループをサブネットに割り当ててみましょう。 次の例では、[Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) を使用して、*myVnet* という名前の既存の仮想ネットワークを *$vnet* 変数に割り当てます。
+ここで、ネットワーク セキュリティ グループをサブネットに割り当ててみましょう。 次の例では、*Get-AzVirtualNetwork* を使用して、*myVnet* という名前の既存の仮想ネットワークを [$vnet](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) 変数に割り当てます。
 
 ```powershell
 $vnet = Get-AzVirtualNetwork `

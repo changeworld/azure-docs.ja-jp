@@ -8,10 +8,10 @@ ms.date: 02/25/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 6ed382e88700e4ecd7f8de20a2c8da7ed3c13566
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77921794"
 ---
 # <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>Front Door Service の除外リストを使用する Web アプリケーション ファイアウォール (WAF) 

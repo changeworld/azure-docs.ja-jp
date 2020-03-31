@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: rohink
 ms.openlocfilehash: 84367a00643c48e7fe2fb7f907bab64589193b2e
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938533"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Traffic Manager のパフォーマンスに関する考慮事項
@@ -28,7 +28,7 @@ WestUS と EastAsia のリージョンに Web サイトのインスタンスが�
 
 Traffic Manager が Web サイトのパフォーマンスに対して影響を与えることができるのは、初期 DNS 参照のみです。 Traffic Manager プロファイルの名前の DNS 要求は trafficmanager.net ゾーンをホストする Microsoft DNS ルート サーバーによって処理されます。 Traffic Manager は、Traffic Manager ポリシーとプローブの結果に基づいて、Microsoft DNS ルート サーバーを設定し、定期的に更新します。 そのため、初期の DNS lookup 時であっても、DNS クエリが Traffic Manager に送信されることはありません。
 
-Traffic Manager は、いくつかのコンポーネントで構成されます: DNS サーバー、API サービス、ストレージ レイヤー、エンドポイント監視サービス。 Traffic Manager のサービス コンポーネントでエラーが発生しても、Traffic Manager プロファイルに関連付けられた DNS 名への影響はありません。 Microsoft DNS サーバー内のレコードは変更されません。 ただし、エンドポイントの監視と DNS の更新は実行されません。 したがって、プライマリ サイトがダウンすると、Traffic Manager は DNS を更新してフェールオーバー サイトを指し示すことができません。
+Traffic Manager は、DNS ネーム サーバー、API サービス、ストレージ層、エンドポイント監視サービスなど、いくつかのコンポーネントで構成されます。 Traffic Manager のサービス コンポーネントでエラーが発生しても、Traffic Manager プロファイルに関連付けられた DNS 名への影響はありません。 Microsoft DNS サーバー内のレコードは変更されません。 ただし、エンドポイントの監視と DNS の更新は実行されません。 したがって、プライマリ サイトがダウンすると、Traffic Manager は DNS を更新してフェールオーバー サイトを指し示すことができません。
 
 DNS 名前解決は短時間で処理され、結果はキャッシュに保存されます。 初期 DNS lookup の速度は、クライアントが名前解決に使用する DNS サーバーに依存します。 通常、クライアントは DNS lookup を約 50 ミリ秒以内で完了します。 lookup の結果は、DNS の Time-to-live (TTL) に設定されている時間キャッシュに保存されます。 Traffic Manager の TTL の既定値は 300 秒です。
 

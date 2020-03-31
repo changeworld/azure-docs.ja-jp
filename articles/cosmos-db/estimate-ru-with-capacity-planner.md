@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: dech
 ms.openlocfilehash: f10ace47f774e31b586f7736f5fb8e5dfea0c948
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68707456"
 ---
 # <a name="estimate-rus-using-the-azure-cosmos-db-capacity-planner"></a>Azure Cosmos DB Capacity Planner を使用して RU/秒を見積もる
@@ -24,13 +24,13 @@ Capacity Planner は、2 つのモードで使用できます。
 |**モード**  |**説明**  |
 |---------|---------|
 |Basic|迅速で大まかな RU/秒とコストの見積もりを提供します。 このモードは、インデックス作成ポリシー、一貫性、およびその他のパラメーターに対して既定の Azure Cosmos DB 設定を前提としています。 <br/><br/>Azure Cosmos DB で実行する可能性のあるワークロードを評価するときは、迅速で大まかな見積もりを得るために基本モードを使用します。|
-|詳細|追加設定 (インデックス作成ポリシー、一貫性レベル、およびコストとスループットに影響を与えるその他のパラメーター) の調整機能により、より詳細な RU/秒とコストの見積もりを提供します。 <br/><br/>新しいプロジェクトの RU/秒の見積もりを作成する場合や、より詳細な見積もりが必要な場合は、詳細モードを使用します。 |
+|詳細設定|追加設定 (インデックス作成ポリシー、一貫性レベル、およびコストとスループットに影響を与えるその他のパラメーター) の調整機能により、より詳細な RU/秒とコストの見積もりを提供します。 <br/><br/>新しいプロジェクトの RU/秒の見積もりを作成する場合や、より詳細な見積もりが必要な場合は、詳細モードを使用します。 |
 
 
 ## <a name="estimate-provisioned-throughput-and-cost-using-basic-mode"></a>基本モードを使用してプロビジョニング済みスループットとコストを見積もる
 基本モードを使ってワークロードの素早い見積もりを取得するには、[Capacity Planner](https://cosmos.azure.com/capacitycalculator/) に移動します。 該当のワークロードに基づいて次のパラメーターを入力します。 
 
-|**Input (入力)**  |**説明**  |
+|**入力**  |**説明**  |
 |---------|---------|
 |リージョンの数|Azure Cosmos DB は、すべての Azure リージョンで利用できます。 該当のワークロードに必要なリージョンの数を選択します。 ご使用の Cosmos アカウントには、任意の数のリージョンを関連付けることができます。 詳細については、Azure Cosmos DB の[グローバル分散](distribute-data-globally.md)に関する記事を参照してください。|
 |マルチリージョンの書き込み|[マルチリージョンの書き込み](distribute-data-globally.md#key-benefits-of-global-distribution)を有効にすると、お使いのアプリケーションは任意の Azure リージョンに対して読み取りおよび書き込みを行うことができます。 マルチリージョンの書き込みを無効にすると、アプリケーションは単一リージョンに対してデータの書き込みを行うことができます。 <br/><br/> さまざまなリージョンでの待機時間の短い書き込みを必要とするアクティブ/アクティブのワークロードが予期される場合は、マルチリージョンの書き込みを有効にしてください。 たとえば、さまざまなリージョンでデータベースにデータを大量に書き込む IOT ワークロードがあります。 <br/><br/> マルチリージョンの書き込みでは、99.999% の読み取りと書き込みの可用性が保証されます。 マルチリージョンの書き込みでは、単一の書き込みリージョンと比べて、より多くのスループットが必要になります。 詳細については、[単一の書き込みリージョンと複数の書き込みリージョンでの RU の違い](optimize-cost-regions.md)に関する記事を参照してください。|
@@ -49,7 +49,7 @@ Capacity Planner は、2 つのモードで使用できます。
 
 サインインすると、基本モードのフィールドと比べて追加のフィールドが表示されます。 該当のワークロードに基づいて追加のパラメーターを入力します。 
 
-|**Input (入力)**  |**説明**  |
+|**入力**  |**説明**  |
 |---------|---------|
 |API|Azure Cosmos DB は、マルチモデルおよびマルチ API のサービスです。 新しいワークロードの場合は、SQL (Core) API を選択します。 |
 |リージョンの数|Azure Cosmos DB は、すべての Azure リージョンで利用できます。 該当のワークロードに必要なリージョンの数を選択します。 ご使用の Cosmos アカウントには、任意の数のリージョンを関連付けることができます。 詳細については、Azure Cosmos DB の[グローバル分散](distribute-data-globally.md)に関する記事を参照してください。|
@@ -72,7 +72,7 @@ Azure Cosmos Capacity Calculator は、ワークロードに対するポイン�
 
 たとえば、1 秒あたり 100 回実行されるクエリ ``SELECT * FROM c WHERE c.id = 'Alice'`` がワークロードに必要で、このクエリの RU 料金が 10 RU の場合、これらの要求を処理するには、100 クエリ/秒 * 10 RU/クエリ = 1000 RU/秒が必要になります。 これらの RU/秒 を、ワークロードで発生する読み取りや書き込みに必要な RU/秒に追加します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Cosmos DB の価格モデル](how-pricing-works.md)の詳細を確認します。
 * 新しい [Cosmos アカウント、データベース、コンテナー](create-cosmosdb-resources-portal.md)を作成します。

@@ -16,10 +16,10 @@ ms.date: 07/05/2018
 ms.author: kirpas
 ms.subservice: disks
 ms.openlocfilehash: c76f57d15cd4cbdad5ded3b7545aab4d57272a50
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74033494"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>仮想マシンの OS ドライブを展開する方法
@@ -166,7 +166,7 @@ Start-AzVM -ResourceGroupName $rgName -Name $vmName
 
 ## <a name="resizing-data-disks"></a>データ ディスクのサイズを変更する
 
-この記事では VM の OS ディスクの拡張に主に重点を置きましたが、スクリプトは VM に接続されたデータ ディスクの拡張にも使用できます。 たとえば、VM に接続されている最初のデータ ディスクを拡張するには、`StorageProfile` の `OSDisk` オブジェクトを `DataDisks` 配列に置き換え、数値インデックスを使用して接続されている最初のデータ ディスクへの参照を取得します。次に例を示します。
+この記事では VM の OS ディスクの拡張に主に重点を置きましたが、スクリプトは VM に接続されたデータ ディスクの拡張にも使用できます。 たとえば、VM に接続されている最初のデータ ディスクを拡張するには、`OSDisk` の `StorageProfile` オブジェクトを `DataDisks` 配列に置き換え、数値インデックスを使用して接続されている最初のデータ ディスクへの参照を取得します。次に例を示します。
 
 **マネージド ディスク**
 
@@ -214,6 +214,6 @@ VM 用にディスクを拡張したら、OS に移動して、新しいスペ�
 4.  **DISKPART** プロンプトで「`extend [size=<size>]`」と入力します。 これにより、選択したボリュームがメガバイト (MB) 単位の *size* で拡張されます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 また、[Azure portal](attach-managed-disk-portal.md) を使用してディスクを接続することもできます。

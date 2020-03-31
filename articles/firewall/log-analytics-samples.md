@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 01/23/2020
 ms.author: victorh
 ms.openlocfilehash: bc34afe82c1b73afb5f3d5d1a07f2a5059590146
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76705987"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>Azure Firewall ログ分析のサンプル
@@ -177,4 +177,4 @@ AzureDiagnostics
 ![ログ エントリ](media/log-analytics-samples/log3.png)
 ## <a name="next-steps"></a>次のステップ
 
-Azure Firewall の監視と診断については、[チュートリアル: 「Azure Firewall のログとメトリックを監視する](tutorial-diagnostics.md)」を参照してください。
+Azure Firewall の監視と診断については、「[チュートリアル: Azure Firewall のログとメトリックを監視する](tutorial-diagnostics.md)」を参照してください。

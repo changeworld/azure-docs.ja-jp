@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/06/2018
 ms.author: terrylan
 ms.openlocfilehash: ef81e74b07a351139aa8feefbdf1b89ea7e4994f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68727182"
 ---
 # <a name="azure-infrastructure-integrity"></a>Azure インフラストラクチャの整合性
@@ -55,10 +55,10 @@ Azure では、デプロイされて実行中のすべてのロール (インタ
 ### <a name="compute-connectivity"></a>コンピューティング接続
 Azure では、デプロイされているアプリケーションまたはサービスに、標準の Web ベースのプロトコル経由でアクセスできることが保証されます。 インターネットに接続する Web ロールの仮想インスタンスは、外部のインターネット接続が可能であり、Web ユーザーから直接アクセスできます。 パブリックにアクセス可能な Web ロール仮想インスタンスの代わりに worker ロールが実行する操作の機密性と整合性を保護するために、バックエンド処理 worker ロールの仮想インスタンスは、外部のインターネット接続は可能ですが、外部の Web ユーザーから直接アクセスすることはできません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Microsoft が提供する Azure アーキテクチャの保護の詳細については、以下を参照してください。
 
-- [Azure ファシリティ、プレミス、および物理的なセキュリティ](physical-security.md)
+- [Azure の施設、建物、および物理上のセキュリティ](physical-security.md)
 - [Azure インフラストラクチャの可用性](infrastructure-availability.md)
 - [Azure 情報システムのコンポーネントと境界](infrastructure-components.md)
 - [Azure ネットワーク アーキテクチャ](infrastructure-network.md)

@@ -10,10 +10,10 @@ ms.service: automation
 ms.subservice: update-management
 manager: carmonm
 ms.openlocfilehash: ec35d11eba59ea21947e2c3cd5286bababa4eabb
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76153856"
 ---
 # <a name="understand-and-resolve-windows-hybrid-runbook-worker-health-in-update-management"></a>Update Management での Windows Hybrid Runbook Worker の正常性を把握して解決する
@@ -104,7 +104,7 @@ Microsoft Monitoring Agent を再インストールするには、[Microsoft Mon
 
 Crypto フォルダー アクセスのチェックでは、ローカル システム アカウントが C:\ProgramData\Microsoft\Crypto\RSA にアクセスできるかどうかを判別します。
 
-## <a name="troubleshoot-offline"></a>オフライン トラブルシューティング
+## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>オフライン トラブルシューティング
 
 スクリプトをローカルに実行することで、Hybrid Runbook Worker のトラブルシューティング ツールをオフラインで使用できます。 このスクリプト ([Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration)) は PowerShell ギャラリーで入手できます。 このスクリプトを実行するには、WMF 4.0 以上をインストールしておく必要があります。 最新バージョンの PowerShell をダウンロードするには、「[PowerShell のさまざまなバージョンのインストール](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)」を参照してください。
 

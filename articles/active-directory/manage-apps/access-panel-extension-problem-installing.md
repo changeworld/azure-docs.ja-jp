@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 771ba79f067cbff1ab8bbfece64f4028b4ca50b0
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74275855"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>アクセス パネルのブラウザー拡張機能のインストール
@@ -127,5 +127,5 @@ Internet Explorer 用のアクセス パネル拡張機能をユーザーのコ�
 -   タイム ゾーンと、エラーが発生したときの時刻または時間帯
 -   Fiddler のトレース
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](what-is-single-sign-on.md)

@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 1/14/2020
 ms.openlocfilehash: b358287664ac6d6a3b641e1ab63073810ceb4c40
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78208605"
 ---
 # <a name="azure-data-explorer-connector-for-apache-spark"></a>Apache Spark 用の Azure Data Explorer コネクタ

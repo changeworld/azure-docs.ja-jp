@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: 4826bcdc85e0c6189c51aa262014fe154bb479b1
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74534815"
 ---
 # <a name="azure-active-directory-governance-operations-reference-guide"></a>Azure Active Directory ガバナンス運用リファレンス ガイド
@@ -31,7 +31,7 @@ ms.locfileid: "74534815"
 
 Azure Active Directory を管理するには、ロールアウト プロジェクトに含まれていない主要な運用タスクとプロセスを継続的に実行する必要があります。 環境を最適化するために、これらのタスクを設定することも重要です。 主なタスクと推奨される所有者は次のとおりです。
 
-| タスク | Owner |
+| タスク | 所有者 |
 | :- | :- |
 | SIEM システムで Azure AD 監査ログをアーカイブする | InfoSec 運用チーム |
 | 準拠していないマネージド アプリケーションを検出する | IAM 運用チーム |
@@ -141,6 +141,6 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 - Azure EA ポータルへのアクセスをロックする。
 - エンタイトルメント管理を実装し、リソースのコレクションに対して管理されたアクセスを提供します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure AD の運用のチェックとアクション](active-directory-ops-guide-ops.md)を開始します。

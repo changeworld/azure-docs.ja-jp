@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/14/2019
 ms.openlocfilehash: 4460c24bb742bff72af47954363b1051f5d9b43d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75895289"
 ---
 # <a name="troubleshoot-by-using-azure-hdinsight"></a>Azure HDInsight を使用したトラブルシューティング

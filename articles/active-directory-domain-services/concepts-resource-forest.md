@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: iainfou
 ms.openlocfilehash: a583e32cbc3d58d5dfc5616335b2f38ad20fac14
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74234396"
 ---
 # <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services のリソース フォレストの概念と機能
@@ -34,7 +34,7 @@ Azure Active Directory Domain Services (AD DS) により、従来のオンプレ
 
 Azure AD DS では、フォレストにはドメインが 1 つだけ含まれます。 多くの場合、オンプレミスの AD DS フォレストには多数のドメインが含まれます。 大規模な組織では、特に合併や買収の後に、複数のオンプレミス フォレストが存在し、各フォレストにそれぞれ複数のドメインが含まれている場合があります。
 
-既定では、Azure AD DS マネージド ドメインは "*ユーザー*" フォレストとして作成されます。 この種類のフォレストは、オンプレミスの AD DS 環境で作成されたユーザー アカウントを含め、Azure AD のすべてのオブジェクトを同期します。 ドメインに参加している VM へのサインインなどのために、Azure AD DS マネージド ドメインに対してユーザー アカウントを直接認証できます。 ユーザー フォレストが機能するのは、パスワード ハッシュの同期が可能で、ユーザーがスマート カード認証などの専用サインイン方法を使用していない場合です。
+既定では、Azure AD DS マネージド ドメインは "*ユーザー*" フォレストとして作成されます。 このタイプのフォレストでは、オンプレミスの AD DS 環境で作成されたユーザー アカウントも含め、Azure AD 内のすべてのオブジェクトが同期されます。 ドメインに参加している VM へのサインインなどのために、Azure AD DS マネージド ドメインに対してユーザー アカウントを直接認証できます。 ユーザー フォレストが機能するのは、パスワード ハッシュの同期が可能で、ユーザーがスマート カード認証などの専用サインイン方法を使用していない場合です。
 
 Azure AD DS の "*リソース*" フォレストでは、ユーザーは自身のオンプレミス AD DS からの、一方向のフォレストの "*信頼*" を介して認証されます。 この方法では、ユーザー オブジェクトとパスワード ハッシュが Azure AD DS に同期されません。 ユーザー オブジェクトと資格情報は、オンプレミスの AD DS にのみ存在します。 このアプローチを使用すると、企業は、LDAPS、Kerberos、NTLM などの従来の認証に依存するリソースとアプリケーション プラットフォームを Azure でホストでき、一方で認証に関する問題や懸念事項が取り除かれます。 Azure AD DS リソース フォレストは現在、プレビューの段階です。
 
@@ -112,7 +112,7 @@ Active Directory の DC により、次のプロトコルのいずれかを使�
 
 信頼によって、信頼する側のドメインに渡される認証要求を検証するためのメカニズムが提供されます。 リソース コンピューターのアクセス制御メカニズムによって、信頼される側のドメイン内の要求元に許可される最終的なアクセス レベルが決まります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 信頼の詳細については、[Azure AD DS でのフォレストの信頼のしくみ][concepts-trust]に関するページを参照してください。
 

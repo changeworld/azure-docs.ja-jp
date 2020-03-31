@@ -9,10 +9,10 @@ ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
 ms.openlocfilehash: 04df30c2a97e865d23999df26768b38cb38be607
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68855551"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>Azure Data Lake Storage Gen2 の URI を使用する
@@ -27,25 +27,25 @@ Data Lake Storage Gen2 の URI 構文は、Data Lake Storage Gen2 を既定の�
 
 <pre>abfs[s]<sup>1</sup>://&lt;file_system&gt;<sup>2</sup>@&lt;account_name&gt;<sup>3</sup>.dfs.core.windows.net/&lt;path&gt;<sup>4</sup>/&lt;file_name&gt;<sup>5</sup></pre>
 
-1. **スキーム識別子**:`abfs` プロトコルがスキーム識別子として使用されます。 接続時に Secure Socket Layer (SSL) を使用するかどうかを選択できます。 Secure Socket Layer を介して接続する場合は、`abfss` を使用します。
+1. **スキーム識別子**: `abfs` プロトコルがスキーム識別子として使用されます。 接続時に Secure Socket Layer (SSL) を使用するかどうかを選択できます。 Secure Socket Layer を介して接続する場合は、`abfss` を使用します。
 
-2. **ファイル システム**:ファイルとフォルダーを保持する親ロケーションです。 これは、Azure Storage Blob サービスのコンテナーと同じです。
+2. **ファイル システム**: ファイルとフォルダーを保持する親ロケーションです。 これは、Azure Storage Blob サービスのコンテナーと同じです。
 
-3. **アカウント名**:作成時にストレージ アカウントに付与された名前です。
+3. **アカウント名**: 作成時にストレージ アカウントに付与された名前です。
 
-4. **パス**:スラッシュ (`/`) で区切って表現したディレクトリ構造です。
+4. **パス**: ディレクトリ構造をスラッシュ (`/`) で区切って表現したものです。
 
-5. **ファイル名**:個々のファイルの名前です。 このパラメーターは、ディレクトリをアドレス指定する場合は省略可能です。
+5. **ファイル名**: 個々のファイルの名前です。 このパラメーターは、ディレクトリをアドレス指定する場合は省略可能です。
 
 ただし、アカウント作成時、アドレス指定するアカウントが既定のファイル システムとして設定された場合、簡潔な URI 構文は次のようになります。
 
 <pre>/&lt;path&gt;<sup>1</sup>/&lt;file_name&gt;<sup>2</sup></pre>
 
-1. **パス**:スラッシュ (`/`) で区切って表現したディレクトリ構造です。
+1. **パス**: ディレクトリ構造をスラッシュ (`/`) で区切って表現したものです。
 
-2. **ファイル名**:個々のファイルの名前です。
+2. **ファイル名**: 個々のファイルの名前です。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

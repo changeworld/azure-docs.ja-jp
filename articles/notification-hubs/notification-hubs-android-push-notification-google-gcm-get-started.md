@@ -19,10 +19,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: c938b6174226ef9ea1104c5e95968d6122e922cf
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72386316"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>チュートリアル:Azure Notification Hubs と Google Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する (非推奨)
@@ -76,14 +76,14 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 
 これで、通知ハブが GCM と連動するように構成されました。接続文字列を使用して、プッシュ通知の受信と送信の両方にアプリを登録できます。
 
-## <a id="connecting-app"></a>通知ハブにアプリを接続する
+## <a name="connect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>通知ハブにアプリを接続する
 
 ### <a name="create-a-new-android-project"></a>新しい Android プロジェクトを作成する
 
 1. Android Studio で新しい Android Studio プロジェクトを開始する
 
    ![Android Studio - new project][13]
-2. **[Phone and Tablet (電話とタブレット)]** フォーム ファクターを選択し、サポートする **[Minimum SDK (最低限の SDK)]** を選択します。 その後、 **[次へ]** をクリックします。
+2. **[Phone and Tablet (電話とタブレット)]** フォーム ファクターを選択し、サポートする **[Minimum SDK (最低限の SDK)]** を選択します。 続けて、 **[次へ]** をクリックします。
 
    ![Android Studio - project creation workflow][14]
 3. メイン アクティビティに **[Empty Activity (空のアクティビティ)]** を選択し、 **[Next (次へ)]** をクリックして、 **[Finish (完了)]** をクリックします。
@@ -383,7 +383,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
         });
     }
     ```
-10. `ToastNotify` メソッドでは "*Hello World*" `TextView` コントロールを使用し、アプリで状態と通知を継続的に報告します。 activity_main.xml レイアウトでは、そのコントロールに次の ID を追加します。
+10. `ToastNotify` メソッドでは "*Hello World*" `TextView` コントロールを使用し、アプリで状態と通知を継続的にレポートします。 activity_main.xml レイアウトでは、そのコントロールに次の ID を追加します。
 
     ```xml
     android:id="@+id/text_hello"
@@ -714,7 +714,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
     }
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、バックエンドに登録されているすべての Android デバイスにブロードキャスト通知を送信しました。 特定の Android デバイスにプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。  
 

@@ -10,10 +10,10 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: fcc70267754f7e66f29dd1b855d3efb8b814e78b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72793021"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-9"></a>Azure Search .NET SDK バージョン 9 へのアップグレード
@@ -151,7 +151,7 @@ var index = new Index()
 
 ### <a name="removed-facetresults-and-hithighlights"></a>削除された FacetResults と HitHighlights
 
-`FacetResults` および `HitHighlights` クラスが削除されました。 ファセットの結果は `IDictionary<string, IList<FacetResult>>` として型指定され、`IDictionary<string, IList<string>>` として強調表示されます。 この変更によるビルド エラーを解決する簡単な方法として、削除された型を使用する各ファイルの上部に `using` エイリアスを追加します。 例:
+`FacetResults` および `HitHighlights` クラスが削除されました。 ファセットの結果は `IDictionary<string, IList<FacetResult>>` として型指定され、`IDictionary<string, IList<string>>` として強調表示されます。 この変更によるビルド エラーを解決する簡単な方法として、削除された型を使用する各ファイルの上部に `using` エイリアスを追加します。 次に例を示します。
 
 ```csharp
 using FacetResults = System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<Models.FacetResult>>;
@@ -160,17 +160,17 @@ using HitHighlights = System.Collections.Generic.IDictionary<string, System.Coll
 
 ### <a name="change-to-synonymmap"></a>SynonymMap に対する変更 
 
-`SynonymMap` コンストラクターで、`SynonymMapFormat` に対する `enum` パラメーターはなくなりました。 この列挙型の値は 1 つだけであり、そのため冗長でした。 この結果としてビルド エラーが発生する場合は、単純に `SynonymMapFormat` パラメーターの参照を削除してください。
+`SynonymMap` コンストラクターで、`enum` に対する `SynonymMapFormat` パラメーターはなくなりました。 この列挙型の値は 1 つだけであり、そのため冗長でした。 この結果としてビルド エラーが発生する場合は、単純に `SynonymMapFormat` パラメーターの参照を削除してください。
 
 ### <a name="miscellaneous-model-class-changes"></a>その他のモデル クラスの変更
 
-`AutocompleteParameters` の `AutocompleteMode` プロパティが null 許容ではなくなりました。 このプロパティを `null` に割り当てるコードがある場合、これを単に削除することで、プロパティは既定値に自動的に初期化されます。
+`AutocompleteMode` の `AutocompleteParameters` プロパティが null 許容ではなくなりました。 このプロパティを `null` に割り当てるコードがある場合、これを単に削除することで、プロパティは既定値に自動的に初期化されます。
 
 `IndexAction` コンストラクターに対するパラメーターの順序が変わり、このコンストラクターは自動生成されるようになりました。 コンストラクターを使用する代わりに、ファクトリ メソッド `IndexAction.Upload`、`IndexAction.Merge` などを使用することをお勧めします。
 
 ### <a name="removed-preview-features"></a>削除されたプレビュー機能
 
-バージョン 8.0-preview からバージョン 9 にアップグレードする場合、ユーザーが管理するキーによる暗号化は、。この機能はまだプレビュー段階であるため、削除されていることに注意してください。 具体的には、`Index` および `SynonymMap` の `EncryptionKey` プロパティが削除されています。
+バージョン 8.0-preview からバージョン 9 にアップグレードする場合、ユーザーが管理するキーによる暗号化は、。この機能はまだプレビュー段階であるため、削除されていることに注意してください。 具体的には、`EncryptionKey` および `Index` の `SynonymMap` プロパティが削除されています。
 
 アプリケーションにこの機能に対するハードの依存関係が存在する場合、Azure Search .NET SDK のバージョン 9 にアップグレードすることはできません。 バージョン 8.0-preview を引き続き使用できますが、 **実稼働アプリケーションでのプレビュー版 SDK の使用は推奨されない**ことに注意してください。 プレビュー機能は評価のみを目的としており、変更される場合があります。
 
@@ -179,7 +179,7 @@ using HitHighlights = System.Collections.Generic.IDictionary<string, System.Coll
 
 ### <a name="behavioral-change-in-data-retrieval"></a>データ取得の動作変更
 
-型 `Document` のインスタンスを返す "動的に型指定された" `Search`、`Suggest`、または `Get` API を使用する場合、空の JSON 配列が `string[]` ではなく `object[]` に逆シリアル化されるようになったことに注意してください。
+型 `Search` のインスタンスを返す "動的に型指定された" `Suggest`、`Get`、または `Document` API を使用する場合、空の JSON 配列が `object[]` ではなく `string[]` に逆シリアル化されるようになったことに注意してください。
 
 ## <a name="conclusion"></a>まとめ
 Azure Search .NET SDK の使い方について詳しくは、[.NET の方法](search-howto-dotnet-sdk.md)に関する記事をご覧ください。

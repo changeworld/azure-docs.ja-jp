@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.openlocfilehash: 9dbb7905c2a0fed65ede610577e0fa11a1deef92
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60345398"
 ---
 # <a name="support-additional-protocols-for-iot-hub"></a>IoT Hub に対するその他のプロトコルのサポート
@@ -31,7 +31,7 @@ MQTT アダプターは、その他のプロトコルのプロトコル アダ�
 
 柔軟性を高めるために、Azure IoT プロトコル ゲートウェイと MQTT の実装はオープン ソース ソフトウェア プロジェクトで提供されます。 オープンソース プロジェクトを使用して、さまざまなプロトコルやプロトコル バージョンのサポートを追加したり、シナリオに合わせて実装をカスタマイズしたりできます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure IoT プロトコル ゲートウェイについて、およびそれを IoT ソリューションの一部として使用およびデプロイする方法については、以下をご覧ください。
 

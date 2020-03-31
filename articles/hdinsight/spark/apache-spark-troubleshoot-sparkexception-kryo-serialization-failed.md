@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: 23693dcae2f361b88440ec88ca39fd8ed229d85a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75894255"
 ---
 # <a name="unable-to-download-large-data-sets-using-jdbcodbc-and-apache-thrift-software-framework-in-hdinsight"></a>HDInsight で JDBC/ODBC および Apache Thrift ソフトウェア フレームワークを使用して大規模なデータ セットをダウンロードできない
@@ -33,7 +33,7 @@ Buffer overflow. Available: 0, required: 36518. To avoid this, increase spark.kr
 
 ## <a name="resolution"></a>解決策
 
-バッファー値 `Kryoserializer` を増やします。 `spark.kryoserializer.buffer.max` という名前のキーを追加して、`Custom spark2-thrift-sparkconf` の下の spark2 構成の `2048` に設定します。
+バッファー値 `Kryoserializer` を増やします。 `spark.kryoserializer.buffer.max` という名前のキーを追加して、`2048` の下の spark2 構成の `Custom spark2-thrift-sparkconf` に設定します。
 
 ## <a name="next-steps"></a>次のステップ
 

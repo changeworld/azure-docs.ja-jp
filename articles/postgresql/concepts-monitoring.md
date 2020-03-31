@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.openlocfilehash: 2d2bb5440e6d23a4cb5781244ba33ab4c5be2612
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78252583"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) を監視およびチューニングする
@@ -55,10 +55,10 @@ Azure Database for PostgreSQL では、次のメトリックを使用できま�
 
 ## <a name="planned-maintenance-notification"></a>計画メンテナンスの通知
 
-**計画メンテナンスの通知**によって、Azure Database for PostgreSQL - Single Server に対して今後予定されているメンテナンスに関するアラートを受信できます。 これらの通知は [Service Health の](../service-health/overview.md)計画メンテナンスに統合されており、サブスクリプションに対してスケジュールされたすべてのメンテナンスを 1 か所に表示できます。 また、異なるリソースに対しては異なる連絡先が必要になる場合があるため、さまざまなリソース グループに対して適切なユーザーへの通知をスケーリングすることも可能です。 今後のメンテナンスに関する通知は、イベントの 72 時間前に送信されます。
+**計画メンテナンスの通知**によって、Azure Database for PostgreSQL - Single Server に対して今後予定されているメンテナンスに関するアラートを受信できます。 これらの通知は [Service Health の](../service-health/overview.md)計画メンテナンスに統合されており、サブスクリプションに対してスケジュールされたすべてのメンテナンスを 1 か所に表示できます。 また、異なるリソースに対しては異なる連絡先が必要になる場合があるため、さまざまなリソース グループに対して適切なユーザーへの通知をスケーリングすることも可能です。 今後のメンテナンスに関する通知は、イベントの 72 時間前に受信します。
 
 > [!Note]
-> Microsoft では、**計画メンテナンスの通知**の 72 時間での通知をすべてのイベントに対して提供するために、あらゆる試みを行います。 ただし、重大時やセキュリティ更新プログラムに関する場合には、イベントが迫ってからでも通知が送信されたり、あるいは通知が省略されたりすることがあります。
+> Microsoft では、**計画メンテナンスの通知**の 72 時間での通知をすべてのイベントに対して提供するために、あらゆる試みを行います。 ただし、重大時やセキュリティ更新プログラムに関する場合には、イベントが迫ってから通知が送信されたり、あるいは通知が省略されたりすることがあります。
 
 ### <a name="to-receive-planned-maintenance-notification"></a>計画メンテナンスの通知を受信するには
 

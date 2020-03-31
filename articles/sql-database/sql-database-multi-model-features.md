@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
 ms.openlocfilehash: 2e8519fa8d96b7fe016b9da4ba84ce481a57d94e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73802811"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Azure SQL Database のマルチモデル機能
@@ -68,7 +68,7 @@ Azure SQL Database では、データベース内の多対多リレーション�
 
 Azure SQL Database では、JavaScript Object Notation [(JSON)](https://www.json.org/) 形式で表されたデータを解析およびクエリし、リレーショナル データを JSON テキストとしてエクスポートすることができます。
 
-JSON は、最新の Web およびモバイル アプリケーションのデータを交換するために使用される一般的なデータ形式です。 また、JSON は、ログ ファイルや [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) のような NoSQL データベースに半構造化データを格納するためにも使用されます。 多くの REST Web サービスは、JSON テキストとして書式設定された結果を返したり、JSON 形式のデータを受け入れたりします。 [Azure Cognitive Search](https://azure.microsoft.com/services/search/)、[Azure Storage](https://azure.microsoft.com/services/storage/)、および [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) などの多くの Azure サービスには、JSON を返したり、使用したりする REST エンドポイントがあります。
+JSON は、最新の Web およびモバイル アプリケーションのデータを交換するために使用される一般的なデータ形式です。 また、JSON は、ログ ファイルや [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) のような NoSQL データベースに半構造化データを格納するためにも使用されます。 REST Web サービスの多くは結果を JSON テキスト形式で返し、データを JSON 形式で受け取ります。 [Azure Cognitive Search](https://azure.microsoft.com/services/search/)、[Azure Storage](https://azure.microsoft.com/services/storage/)、および [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) などの多くの Azure サービスには、JSON を返したり、使用したりする REST エンドポイントがあります。
 
 Azure SQL Database では、JSON データを簡単に操作し、データベースを最新のサービスと統合することができます。 Azure SQL Database には、JSON データを操作するために、次の関数が用意されています。
 
@@ -136,7 +136,7 @@ CREATE TABLE Collection (
 
 リレーショナル モデルを実際にキー/値ペア ソリューションとして効果的に使用する方法の例としては、[BWin でインメモリ OLTP を使用して前例のないパフォーマンスとスケールを実現する方法](https://blogs.msdn.microsoft.com/sqlcat/20../../how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale/)に関する記事に書かれている、1 秒あたり 1.200.000 のバッチを実現した ASP.NET キャッシュ ソリューションの説明を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure SQL Database のマルチモデル機能は、Azure SQL Database と SQL Server の間で共有される、SQL Server データベース エンジンのコア機能でもあります。 これらの機能の詳細については、次の SQL リレーショナル データベース ドキュメントのページを参照してください。
 
 * [グラフの処理](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview)

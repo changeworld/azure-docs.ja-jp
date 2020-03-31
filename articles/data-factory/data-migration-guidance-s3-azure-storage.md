@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
 ms.openlocfilehash: 6f2db91a35573bc2cbdd0df2cb1ac09914cc956b
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76122646"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Azure Data Factory を使用して Amazon S3 から Azure Storage にデータを移行する 
@@ -81,7 +81,7 @@ ADF の既定では、HTTPS プロトコル経由の暗号化された接続を�
 
 - Amazon S3 アカウントに対して認証するには、[IAM アカウントのアクセス キー](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service#linked-service-properties)を使用する必要があります。 
 - Azure Blob Storage に接続するには、複数の認証の種類がサポートされています。  [Azure リソースにはマネージド ID](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity) を使用することを強くお勧めします。Azure AD で自動的に管理されるADF ID を基にして構築されており、リンクされたサービス定義で資格情報を指定せずにパイプラインを構成できます。  また、[サービス プリンシパル](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication)、[共有アクセス署名](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)、または[ストレージ アカウント キー](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication)を使用して Azure Blob Storage に対する認証を行うこともできます。 
-- Azure Data Lake Storage Gen2 に接続するには、複数の認証の種類がサポートされています。  [サービス プリンシパル](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication)または[ストレージ アカウント キー](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication)を使用することもできますが、[Azure リソースのマネージド ID](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity) を使用することを強くお勧めします。 
+- Azure Data Lake Storage Gen2 に接続するには、複数の認証の種類がサポートされています。  [サービス プリンシパル](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity)または[ストレージ アカウント キー](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication)を使用することもできますが、[Azure リソースのマネージド ID](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication) を使用することを強くお勧めします。 
 - Azure リソースに対してマネージド ID を使用していない場合は、[Azure Key Vault に資格情報を格納](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)して、ADF のリンクされたサービスを変更せずに、キーを一元的に管理およびローテーションすることを強くお勧めします。  これは、[CI/CD のベスト プラクティス](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)の1 つでもあります。 
 
 ### <a name="initial-snapshot-data-migration"></a>初回のスナップショット データ移行 

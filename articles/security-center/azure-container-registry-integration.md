@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 11/19/2019
 ms.author: memildin
 ms.openlocfilehash: 069ce6ca1e76a9bd954031708702c973387abbaa
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78205995"
 ---
 # <a name="azure-container-registry-integration-with-security-center"></a>Azure Container Registry と Security Center の統合

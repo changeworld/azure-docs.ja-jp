@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: f7a6ab954aff1bcc2e3dae3fc035db4b136ccbbe
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73818161"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>HDInsight Spark クラスターを使用して Data Lake Storage Gen1 内のデータを分析する
@@ -23,7 +23,7 @@ ms.locfileid: "73818161"
 
 * Azure Data Lake Storage Gen1 アカウント。 「[Azure portal で Azure Data Lake Storage Gen1 の使用を開始する](../../data-lake-store/data-lake-store-get-started-portal.md)」の手順に従ってください。
 
-* Data Lake Storage Gen1 をストレージとして使用する Azure HDInsight Spark クラスター。 [HDInsight のクラスターを設定する](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。
+* Data Lake Storage Gen1 をストレージとして使用する Azure HDInsight Spark クラスター。 「[クイック スタート: HDInsight のクラスターを設定する](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」の手順に従います。
 
 ## <a name="prepare-the-data"></a>データを準備する
 
@@ -108,7 +108,7 @@ Data Lake Storage を追加ストレージとして使用し、Azure Storage Blo
            # Register the data fram as a table to run queries against
            hvacdf.registerTempTable("hvac")
 
-6. PySpark カーネルを使用しているため、`%%sql` マジックを使用して、作成した一時テーブル **hvac** に対して SQL クエリを直接実行できます。 `%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、[Apache Spark HDInsight クラスターと Jupyter Notebook で使用可能なカーネル](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)に関する記事を参照してください。
+6. PySpark カーネルを使用しているため、**マジックを使用して、作成した一時テーブル**hvac`%%sql` に対して SQL クエリを直接実行できます。 `%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、[Apache Spark HDInsight クラスターと Jupyter Notebook で使用可能なカーネル](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)に関する記事を参照してください。
 
         %%sql
         SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"
@@ -124,7 +124,7 @@ Data Lake Storage を追加ストレージとして使用し、Azure Storage Blo
 8. アプリケーションの実行が完了したら、Notebook をシャットダウンしてリソースを解放する必要があります。 そのためには、Notebook の **[ファイル]** メニューの **[Close and Halt]** (閉じて停止) をクリックします。 これにより、Notebook がシャットダウンされ、閉じられます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [スタンドアロン Scala アプリケーションを作成して、Apache Spark クラスターで実行する](apache-spark-create-standalone-application.md)
 * [Azure Toolkit for IntelliJ の HDInsight ツールを使用して HDInsight Spark Linux クラスター向けの Apache Spark アプリケーションを作成する](apache-spark-intellij-tool-plugin.md)

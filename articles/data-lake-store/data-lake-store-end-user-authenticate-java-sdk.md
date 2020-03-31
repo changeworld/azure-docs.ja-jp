@@ -1,5 +1,5 @@
 ---
-title: 'エンドユーザー認証: Java から Azure Active Directory を使用して Azure Data Lake Storage Gen1 に対する認証を行う | Microsoft Docs'
+title: 'エンドユーザー認証: Azure Active Directory を使用した Java と Azure Data Lake Storage Gen1 | Microsoft Docs'
 description: Java と Azure Active Directory を使用した Azure Data Lake Storage Gen1 によるエンドユーザー認証を行う方法について説明します
 services: data-lake-store
 documentationcenter: ''
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 8b558fca964f33d47d331e007329d1bae2626877
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60878103"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-java"></a>Azure Data Lake Storage Gen1 による Java を使用したエンドユーザー認証
@@ -75,7 +75,7 @@ ms.locfileid: "60878103"
 
 Data Lake Storage Gen1 SDK には、Data Lake Storage Gen1 アカウントとの対話に必要なセキュリティ トークンを管理できる便利な方法が用意されています。 ただし、使用する方法はこれらに限定されるわけではありません。 [Azure Active Directory SDK](https://github.com/AzureAD/azure-activedirectory-library-for-java) や独自のカスタム コードの使用など、トークンを取得するその他の方法も使用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、エンドユーザー認証を使って、Java SDK を使用して Azure Data Lake Storage Gen1 により認証する方法を説明しました。 これで、Java SDK を使用して Azure Data Lake Storage Gen1 を操作する方法について説明した次の記事に進めるようになりました。
 
 * [Java SDK を使用した Data Lake Storage Gen1 に対するデータ操作](data-lake-store-get-started-java-sdk.md)

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 9/11/2018
 ms.author: dekapur
 ms.openlocfilehash: 6a00b7d1b72d594c08021982b2448de6275414c8
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75610065"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Service Fabric スタンドアロン クラスターのデプロイの計画と準備

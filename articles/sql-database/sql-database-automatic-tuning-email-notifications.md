@@ -12,17 +12,17 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/03/2019
 ms.openlocfilehash: b48c37a6e607d121416ebae4d74e58f39670b79a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73821922"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>自動チューニングの電子メール通知
 
 SQL Database のチューニング推奨情報は、Azure SQL Database の[自動チューニング機能](sql-database-automatic-tuning.md)によって生成されます。 このソリューションは、SQL Database のワークロードを継続的に監視して分析し、個別のデータベースそれぞれについて、インデックスの作成や削除、クエリ実行プランの最適化に関するカスタマイズされたチューニング推奨情報を提供します。
 
-SQL Database 自動チューニングの推奨情報は、[REST API](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) 呼び出しで取得するか、[T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) や [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) のコマンドを使用して、[Azure Portal](sql-database-advisor-portal.md) で確認できます。 この記事は、PowerShell スクリプトを使用して自動チューニングに関する推奨情報を取得する方法に基づいています。
+SQL Database 自動チューニングの推奨情報は、[REST API](sql-database-advisor-portal.md) 呼び出しで取得するか、[T-SQL](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) や [PowerShell](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) のコマンドを使用して、[Azure Portal](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) で確認できます。 この記事は、PowerShell スクリプトを使用して自動チューニングに関する推奨情報を取得する方法に基づいています。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -248,7 +248,7 @@ PowerShell スクリプトを調整することにより、自動電子メール
 
 カスタム シナリオによって異なりますが、さらにソリューションをカスタマイズして、特定のチューニング イベントに基づいた電子メールや、複数のサブスクリプションまたはデータベースに関して複数の受信者への電子メールを作成できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 自動チューニングによってデータベース パフォーマンスを向上させる方法について詳しくは、「[Azure SQL Database での自動チューニング](sql-database-automatic-tuning.md)」をご覧ください。
 - Azure SQL Database で自動チューニングを有効にするには、「[自動チューニングの有効化](sql-database-automatic-tuning-enable.md)」をご覧ください。

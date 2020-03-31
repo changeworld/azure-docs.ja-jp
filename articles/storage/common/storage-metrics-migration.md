@@ -9,10 +9,10 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 537369c9466b1083723642ec9e93fcdf25056c5e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68855339"
 ---
 # <a name="azure-storage-metrics-migration"></a>Azure Storage メトリックの移行
@@ -45,7 +45,7 @@ Azure Storage では、従来のメトリック値を収集し、集計して、
 
 | 従来のメトリック | 新しいメトリック |
 | ------------------- | ----------------- |
-| **Capacity**            | ディメンション **BlobType** が **BlockBlob** または **PageBlob** と等しい **BlobCapacity** |
+| **[容量]**            | ディメンション **BlobType** が **BlockBlob** または **PageBlob** と等しい **BlobCapacity** |
 | **ObjectCount**        | ディメンション **BlobType** が **BlockBlob** または **PageBlob** と等しい **BlobCount** |
 | **ContainerCount**      | **ContainerCount** |
 
@@ -104,7 +104,7 @@ Azure Storage では、従来のメトリック値を収集し、集計して、
 | **TotalIngress** | **イングレス** |
 | **TotalRequests** | **トランザクション** |
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 
 ### <a name="how-should-i-migrate-existing-alert-rules"></a>既存のアラート ルールを移行する必要はありますか?
 
@@ -114,7 +114,7 @@ Azure Storage では、従来のメトリック値を収集し、集計して、
 
 いいえ。 メトリック データをストレージ アカウントにアーカイブするには、[Azure Monitor Diagnostic Setting API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate) を使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview.md)
 * [Azure Monitor の Storage メトリック](./storage-metrics-in-azure-monitor.md)

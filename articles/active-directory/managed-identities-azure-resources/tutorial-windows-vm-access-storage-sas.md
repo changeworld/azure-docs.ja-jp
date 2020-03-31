@@ -16,13 +16,13 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c344c25a696500182030ff849a001ad586c92032
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74232156"
 ---
-# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して SAS 資格情報で Azure Storage にアクセスする
+# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>チュートリアル: Windows VM のシステム割り当てマネージド ID を使用して SAS 資格情報で Azure Storage にアクセスする
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -48,7 +48,7 @@ Service SAS は、アカウント アクセス キーを公開することなく
 1. Azure Portal の左上隅にある **[+/新しいサービスの作成]** ボタンをクリックします。
 2. **[ストレージ]** 、次に **[ストレージ アカウント]** をクリックすると、新しい [ストレージ アカウントの作成] パネルが表示されます。
 3. ストレージ アカウントの名前を入力します。この場前は後ほど使用します。  
-4. **[デプロイ モデル]** と **[アカウントの種類]** がそれぞれ [Resource manager] と [汎用] に設定されている必要があります。 
+4. **[デプロイ モデル]** と **[アカウントの種類]** が "Resource manager" と "General purpose" にそれぞれ設定されている必要があります。 
 5. **[サブスクリプション]** と **[リソース グループ]** が、前の手順で VM を作成したときに指定したものと一致していることを確認します。
 6. **Create** をクリックしてください。
 
@@ -200,7 +200,7 @@ Context           : Microsoft.WindowsAzure.Commands.Storage.AzureStorageContext
 Name              : testblob
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Windows VM のシステム割り当てマネージド ID を使用して SAS 資格情報で Azure Storage にアクセスする方法について説明しました。  Azure Storage SAS の詳細については、以下を参照してください。
 

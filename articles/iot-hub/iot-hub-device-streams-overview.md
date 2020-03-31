@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: robinsh
 ms.openlocfilehash: ff738e56226f7cbb720a754573a9d8607e0e3247
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73890471"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub デバイス ストリーム (プレビュー)
@@ -190,7 +190,7 @@ echo サンプルを次に示します。
 
 4. サービス ローカル プロキシは、ユーザーからの新しい SSH 接続を待機している指定されたポートをリッスンします (このサンプルではポート 2222 を使用していますが、それ以外の利用可能なポートに構成することもできます)。 ユーザーは SSH クライアントを、localhost 上のサービス ローカル プロキシ ポートにポイントします。
 
-### <a name="notes"></a>メモ
+### <a name="notes"></a>Notes
 
 * 上記の手順では、SSH クライアント (右側) から SSH デーモン (左側) の間のエンド ツー エンド トンネルを完了します。 このエンド ツー エンド接続の一部として、デバイス ストリーム経由の IoT Hub への送信トラフィックが含まれます。
 
@@ -208,7 +208,7 @@ echo サンプルを次に示します。
 
 * [C デバイス プログラム](quickstart-device-streams-proxy-c.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 以下のリンクを使用して、デバイス ストリームについてさらに詳しく学習します。
 

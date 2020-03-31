@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.openlocfilehash: 393356bd8604f6e7622acd778817681aad31f1f9
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76935019"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Azure Toolkit for IntelliJ を使用して HDInsight 上で VPN を介して Apache Spark アプリケーションをリモートでデバッグする
@@ -299,7 +299,7 @@ SSH を使用して [Apache Spark](https://spark.apache.org/) アプリケーシ
 
     ![IntelliJ IDEA debugger console output](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-complete-window.png)
 
-## <a name="seealso"></a>次のステップ
+## <a name="next-steps"></a><a name="seealso"></a>次のステップ
 
 * [概要:Azure HDInsight での Apache Spark](apache-spark-overview.md)
 

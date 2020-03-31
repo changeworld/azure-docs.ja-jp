@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
 ms.openlocfilehash: 9ff8cc64266375a2d439763b222870843136f67a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70101506"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>マルチテナント ホスティング権限を使用して Azure 上で Windows 10 をデプロイする方法 

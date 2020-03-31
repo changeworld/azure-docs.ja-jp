@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
 ms.openlocfilehash: 84c2bad1004029fe61dcfc19321957a170284587
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75612259"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix Query Server REST SDK
 
-[Apache Phoenix](https://phoenix.apache.org/) は、[Apache HBase](apache-hbase-overview.md) の上に構築されたオープンソースの超並列リレーショナル データベース レイヤーです。 Phoenix では、[SQLLine](apache-hbase-query-with-phoenix.md) などの SSH ツールを利用して HBase で SQL に似たクエリを使うことができます。 Phoenix にはまた、Phoenix Query Server (PQS) と呼ばれる HTTP サーバーも用意されています。これは、クライアント通信のために JSON と Protocol Buffers の 2 つのトランスポート メカニズムをサポートするシン クライアントです。 Protocol Buffers が既定のメカニズムであり、JSON より効率的な通信を提供します。
+[Apache Phoenix](https://phoenix.apache.org/) は、[Apache HBase](apache-hbase-overview.md) の上に構築されたオープンソースの超並列リレーショナル データベース レイヤーです。 Phoenix では、[SQLLine](apache-hbase-query-with-phoenix.md) などの SSH ツールを利用して HBase で SQL に似たクエリを使うことができます。 また、Phoenix では、Phoenix Query Server (PQS) という名前の HTTP サーバーも提供されています。これは、クライアント通信用に JSON と Protocol Buffers の 2 種類のトランスポート メカニズムをサポートするシン クライアントです。 Protocol Buffers が既定のメカニズムであり、JSON より効率的な通信を提供します。
 
 この記事では、PQS REST SDK を使って、テーブルを作成する方法、行を個別にまたは一括でアップサートする方法、および SQL ステートメントでデータを選ぶ方法について説明します。 例では、[Apache Phoenix Query Server 用の Microsoft .NET ドライバー](https://www.nuget.org/packages/Microsoft.Phoenix.Client)を使います。 この SDK は [Apache Calcite の Avatica](https://calcite.apache.org/avatica/) API を基に構築されており、シリアル化形式に Protocol Buffers のみを使います。
 
@@ -31,7 +31,7 @@ Apache Phoenix Query Server 用の Microsoft .NET ドライバーは NuGet パ�
 
 ## <a name="instantiate-new-phoenixclient-object"></a>新しい PhoenixClient オブジェクトのインスタンス化
 
-ライブラリの使用を開始するには、クラスターへの `Uri` およびクラスターの Apache Hadoop ユーザー名とパスワードを含む `ClusterCredentials` を渡して、新しい `PhoenixClient` オブジェクトをインスタンス化します。
+ライブラリの使用を開始するには、クラスターへの `PhoenixClient` およびクラスターの Apache Hadoop ユーザー名とパスワードを含む `ClusterCredentials` を渡して、新しい `Uri` オブジェクトをインスタンス化します。
 
 ```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net/"), "USERNAME", "PASSWORD");
@@ -94,7 +94,7 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 他の RDBMS と同じように、HBase はテーブルにデータを格納します。 Phoenix では、標準の SQL クエリを使って新しいテーブルを作成し、プライマリ キーと列の型を定義します。
 
-この例および以降のすべての例では、「[新しい PhoenixClient オブジェクトのインスタンス化](#instantiate-new-phoenixclient-object)」での定義に従ってインスタンス化された `PhoenixClient` オブジェクトを使います。
+この例および以降のすべての例では、「`PhoenixClient`新しい PhoenixClient オブジェクトのインスタンス化[」での定義に従ってインスタンス化された ](#instantiate-new-phoenixclient-object) オブジェクトを使います。
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -160,7 +160,7 @@ finally
 }
 ```
 
-上の例では、`IF NOT EXISTS` オプションを使って `Customers` という名前の新しいテーブルを作成しています。 `CreateStatementRequestAsync` を呼び出して、Avitica (PQS) サーバーで新しいステートメントを作成します。 `finally` ブロックは、返された `CreateStatementResponse` オブジェクトと `OpenConnectionResponse` オブジェクトを閉じます。
+上の例では、`Customers` オプションを使って `IF NOT EXISTS` という名前の新しいテーブルを作成しています。 `CreateStatementRequestAsync` を呼び出して、Avitica (PQS) サーバーで新しいステートメントを作成します。 `finally` ブロックは、返された `CreateStatementResponse` オブジェクトと `OpenConnectionResponse` オブジェクトを閉じます。
 
 ## <a name="insert-data-individually"></a>データの個別挿入
 
@@ -281,7 +281,7 @@ finally
 
 ## <a name="batch-insert-data"></a>データのバッチ挿入
 
-次のコードは、データを個別に挿入するコードとほぼ同じです。 この例では、準備されたステートメントで `ExecuteRequestAsync` を繰り返し呼び出すのではなく、`ExecuteBatchRequestAsync` の呼び出しで `UpdateBatch` オブジェクトを使います。
+次のコードは、データを個別に挿入するコードとほぼ同じです。 この例では、準備されたステートメントで `UpdateBatch` を繰り返し呼び出すのではなく、`ExecuteBatchRequestAsync` の呼び出しで `ExecuteRequestAsync` オブジェクトを使います。
 
 ```csharp
 string connId = Guid.NewGuid().ToString();

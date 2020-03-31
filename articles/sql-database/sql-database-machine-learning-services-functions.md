@@ -14,15 +14,15 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
 ms.openlocfilehash: 939798d5d9eb2843d7bbbbe74680342e4ce6ce95
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60702454"
 ---
 # <a name="write-advanced-r-functions-in-azure-sql-database-using-machine-learning-services-preview"></a>Machine Learning Services (プレビュー) を使用して Azure SQL Database に高度な R 関数を記述する
 
-この記事では、R の算術関数およびユーティリティ関数を SQL ストアド プロシージャに埋め込む方法を説明します。 T-SQL に実装するのが複雑になる高度な統計関数が、R では 1 行のみのコードで実現できます。
+この記事では、R の算術関数およびユーティリティ関数を SQL ストアド プロシージャに埋め込む方法を説明します。 T-SQL で実装するのが複雑な高度な統計関数は、R を使用すると 1 行のコードだけで実行できます。
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
@@ -32,13 +32,13 @@ ms.locfileid: "60702454"
 
 - 以降の演習のサンプル コードを実行するには、あらかじめ、Machine Learning Services (R を使用) が有効になった Azure SQL データベースを用意しておく必要があります。 パブリック プレビュー期間中は、Microsoft がお客様のオンボードを行い、既存のデータベースまたは新しいデータベースに対して機械学習を有効にします。 「[Sign up for the preview (プレビューにサインアップする)](sql-database-machine-learning-services-overview.md#signup)」の手順に従ってください。
 
-- 最新の [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) をインストールしていることを確認してください。 他のデータベース管理またはクエリ ツールを使用して R スクリプトを実行することはできますが、このクイック スタートでは、SSMS を使用します。
+- 最新の [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) をインストールしていることを確認してください。 他のデータベース管理またはクエリ ツールを使用して R スクリプトを実行することはできますが、このクイック スタートでは SSMS を使用します。
 
 ## <a name="create-a-stored-procedure-to-generate-random-numbers"></a>乱数を生成するストアド プロシージャを作成する
 
 わかりやすくするために、Machine Learning Services (プレビュー) を使用する Azure SQL Database で既定でインストールされて読み込まれる R の `stats` パッケージを使用します。 このパッケージには一般的な統計タスク用の関数が数百個含まれており、その中に `rnorm` 関数があります。 この関数は、与えられた標準偏差と平均に対して正規分布を使用して、指定された数の乱数を生成します。
 
-たとえば、次の R コードは、指定の標準偏差 3 に対して平均 50 で 100 個の数を返します。
+たとえば、次の R コードは、指定された 3 の標準偏差で、平均値が 50 の 100 個の数値を返します。
 
 ```R
 as.data.frame(rnorm(100, mean = 50, sd = 3));
@@ -57,7 +57,7 @@ WITH RESULT SETS(([Density] FLOAT NOT NULL));
 
 さまざまな乱数のセットを簡単に生成するにはどうすればよいでしょうか。
 
-SQL と組み合わせれば簡単です。 ユーザーから引数を取得するストアド プロシージャを定義し、それらの引数を変数として R スクリプトに渡します。
+SQL と組み合わせれば簡単です。 ユーザーから引数を取得し、これらの引数を変数として R スクリプトに渡すストアド プロシージャを定義します。
 
 ```sql
 CREATE PROCEDURE MyRNorm (

@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 96ab0d1b3bbab9c97c04da4f918f3aaa2f1d07e4
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74275618"
 ---
 # <a name="no-working-connector-group-found-for-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーション用として動作するコネクタ グループが見つからない
@@ -60,7 +60,7 @@ ms.locfileid: "74275618"
    
 ## <a name="move-an-active-connector"></a>アクティブなコネクタを移動する
 
-グループに属し、ターゲットのバックエンド アプリケーションにアクセスできるアクティブなコネクタがある場合は、割り当てられているグループにそのコネクタを移動できます。 移動するには、コネクタをクリックします。 [コネクタ グループ] フィールドで、ドロップダウンを使用して正しいグループを選択し、[保存] をクリックします。
+グループに属し、ターゲットのバックエンド アプリケーションにアクセスできるアクティブなコネクタがある場合は、割り当てられているグループにそのコネクタを移動できます。 それを行うには、コネクタをクリックします。 [コネクタ グループ] フィールドで、ドロップダウンを使用して正しいグループを選択し、[保存] をクリックします。
 
 ## <a name="resolve-an-inactive-connector"></a>アクティブではないコネクタを解決する
 
@@ -68,7 +68,7 @@ ms.locfileid: "74275618"
 
 この問題の調査方法の詳細については、ポートのトラブルシューティングに関するドキュメントを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure AD アプリケーション プロキシ コネクタについて](application-proxy-connectors.md)
 
 

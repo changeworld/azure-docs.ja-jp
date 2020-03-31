@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: c84452ff71fa34a65b2e56ec753b68bf551c7e35
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73826273"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>接続済みファクトリ ソリューション アクセラレータに関してよく寄せられる質問
@@ -42,7 +42,7 @@ Microsoft が OPC UA を選んだのは、それがオープンであり、特�
 
 IP アドレスを追加するには次の 2 つのオプションがあります。
 
-* [リポジトリ](https://github.com/Azure/azure-iot-connected-factory)で `Simulation/Factory/Add-SimulationPublicIp.ps1` PowerShell スクリプトを使用する。 パラメーターとしてデプロイ名を渡します。 ローカル デプロイの場合は、`<your username>ConnFactoryLocal` を使用します。 このスクリプトは VM の IP アドレスを出力します。
+* `Simulation/Factory/Add-SimulationPublicIp.ps1`リポジトリ[で ](https://github.com/Azure/azure-iot-connected-factory) PowerShell スクリプトを使用する。 パラメーターとしてデプロイ名を渡します。 ローカル デプロイの場合は、`<your username>ConnFactoryLocal` を使用します。 このスクリプトは VM の IP アドレスを出力します。
 
 * Azure Portal でデプロイ環境のリソース グループを見つけます。 ローカル デプロイの場合を除き、リソース グループは、ソリューション名またはデプロイ名に指定した名前になります。 ビルド スクリプトを使用したローカル デプロイの場合は、リソース グループの名前は `<your username>ConnFactoryLocal` になります。 ここで新しい**パブリック IP アドレス** リソースをリソース グループに追加します。
 
@@ -59,7 +59,7 @@ IP アドレスを削除するには次の 2 つのオプションがありま�
 
 ### <a name="how-do-i-sign-in-to-the-simulation-vm"></a>シミュレーション VM にサインインするにはどうすればいいですか
 
-シミュレーション VM へのサインインは、[リポジトリ](https://github.com/Azure/azure-iot-connected-factory)の `build.ps1` PowerShell スクリプトを使用してソリューションをデプロイしている場合にのみサポートされます。
+シミュレーション VM へのサインインは、`build.ps1`リポジトリ[の ](https://github.com/Azure/azure-iot-connected-factory) PowerShell スクリプトを使用してソリューションをデプロイしている場合にのみサポートされます。
 
 www.azureiotsolutions.com からソリューションをデプロイした場合は、VM にサインインすることはできません。 パスワードはランダムに生成され、リセットはできないため、サインインできません。
 
@@ -76,7 +76,7 @@ www.azureiotsolutions.com からソリューションをデプロイした場合
 1. アクティブなコンテナーを確認するには、`docker ps` を実行します。
 1. すべてのシミュレーション コンテナーを停止するには、`./stopsimulation` を実行します。
 1. すべてのシミュレーション コンテナーを開始するには、次のようにします。
-    * シェル変数を **IOTHUB_CONNECTIONSTRING** という名前でエクスポートします。 `<name of your deployment>.config.user` ファイルの **IotHubOwnerConnectionString** 設定の値を使用します。 例:
+    * シェル変数を **IOTHUB_CONNECTIONSTRING** という名前でエクスポートします。 **ファイルの**IotHubOwnerConnectionString`<name of your deployment>.config.user` 設定の値を使用します。 次に例を示します。
 
         ```sh
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
@@ -86,11 +86,11 @@ www.azureiotsolutions.com からソリューションをデプロイした場合
 
 ### <a name="how-do-i-update-the-simulation-in-the-vm"></a>VM のシミュレーションを更新するにはどうすればいいですか
 
-シミュレーションに何らかの変更を加えた場合は、`updatedimulation` コマンドを使用すると、[リポジトリ](https://github.com/Azure/azure-iot-connected-factory)内の `build.ps1` PowerShell script を使用できます。 このスクリプトはすべてのシミュレーション コンポーネントをビルドして、VM 上のシミュレーションの停止、アップロード、インストール、および開始を行います。
+シミュレーションに何らかの変更を加えた場合は、`build.ps1` コマンドを使用すると、[リポジトリ](https://github.com/Azure/azure-iot-connected-factory)内の `updatedimulation` PowerShell script を使用できます。 このスクリプトはすべてのシミュレーション コンポーネントをビルドして、VM 上のシミュレーションの停止、アップロード、インストール、および開始を行います。
 
 ### <a name="how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution"></a>ソリューションで使用される IoT ハブの接続文字列を探すにはどうすればいいですか
 
-[リポジトリ](https://github.com/Azure/azure-iot-connected-factory)の `build.ps1` スクリプトを使用してソリューションをデプロイした場合、接続文字列は `<name of your deployment>.config.user` ファイル内の **IotHubOwnerConnectionString** の値になります。
+`build.ps1`リポジトリ[の ](https://github.com/Azure/azure-iot-connected-factory) スクリプトを使用してソリューションをデプロイした場合、接続文字列は **ファイル内の**IotHubOwnerConnectionString`<name of your deployment>.config.user` の値になります。
 
 次のように Azure Portal を使用して、接続文字列を検索することもできます。 デプロイ環境のリソース グループに含まれる IoT Hub リソースから、接続文字列の設定を見つけます。
 
@@ -115,7 +115,7 @@ www.azureiotsolutions.com からソリューションをデプロイした場合
 
 ### <a name="how-can-i-get-log-data-from-the-simulation-components"></a>シミュレーション コンポーネントからログ データを取得するにはどうすればいいですか
 
-シミュレーションのすべてのコンポーネントは、ログ ファイルに情報が記録されます。 これらのファイルは `home/docker/Logs` フォルダーの VM 内にあります。 ログを取得するには、[リポジトリ](https://github.com/Azure/azure-iot-connected-factory)内の `Simulation/Factory/Get-SimulationLogs.ps1` PowerShell スクリプトを使用できます。
+シミュレーションのすべてのコンポーネントは、ログ ファイルに情報が記録されます。 これらのファイルは `home/docker/Logs` フォルダーの VM 内にあります。 ログを取得するには、`Simulation/Factory/Get-SimulationLogs.ps1`リポジトリ[内の ](https://github.com/Azure/azure-iot-connected-factory) PowerShell スクリプトを使用できます。
 
 スクリプトを使用するには VM にサインインする必要があります。 サインイン時には資格情報を入力しなければならない場合があります。 資格情報を探すには、「[シミュレーション VM にサインインするにはどうすればいいですか](#how-do-i-sign-in-to-the-simulation-vm)」をご覧ください。
 
@@ -158,7 +158,7 @@ IoT Hub に送信されるデータが表示されない場合は、シミュレ
 
 ### <a name="how-do-enable-the-interactive-map-while-debugging-locally"></a>ローカルでのデバッグ中にインタラクティブ マップを有効にするにはどうすればいいですか
 
-ローカルでのデバッグ中にインタラクティブ マップを有効にするには、デプロイのルートにあるファイル `local.user.config` と `<yourdeploymentname>.user.config` で設定 `MapApiQueryKey` の値を、事前にコピーしておいた **QueryKey** の値に設定します。
+ローカルでのデバッグ中にインタラクティブ マップを有効にするには、デプロイのルートにあるファイル `MapApiQueryKey` と `local.user.config` で設定 `<yourdeploymentname>.user.config` の値を、事前にコピーしておいた **QueryKey** の値に設定します。
 
 ### <a name="how-do-i-use-a-different-image-at-the-home-page-of-my-dashboard"></a>ダッシュボードのホーム ページに別のイメージを使用するにはどうすればいいですか
 
@@ -168,7 +168,7 @@ IoT Hub に送信されるデータが表示されない場合は、シミュレ
 
 OPC UA 非対応デバイスから接続済みファクトリに利用統計情報を送信するには、次の手順に従います。
 
-1. `ContosoTopologyDescription.json` ファイルで[接続済みファクトリ トポロジに新しいステーションを構成](iot-accelerators-connected-factory-configure.md)します。
+1. [ ファイルで](iot-accelerators-connected-factory-configure.md)接続済みファクトリ トポロジに新しいステーションを構成`ContosoTopologyDescription.json`します。
 
 1. 接続済みファクトリと互換性のある次のような JSON 形式で利用統計情報を取り込みます。
 
@@ -190,7 +190,7 @@ OPC UA 非対応デバイスから接続済みファクトリに利用統計情�
 
 1. 接続済みファクトリ App Service を再起動します。
 
-### <a name="next-steps"></a>次の手順
+### <a name="next-steps"></a>次のステップ
 
 IoT ソリューション アクセラレータの他の機能についても学習できます。
 

@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9e45249245aaab97070b7e774d4b6bab6827bdc9
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74021997"
 ---
 # <a name="complete-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure リソース ロールのアクセス レビューを完了する
@@ -60,7 +60,7 @@ ms.locfileid: "74021997"
 
 そのレビューが今後も必要なければ、削除します。 **[削除]** を選択して、Privileged Identity Management サービスからレビューを削除します。
 
-## <a name="results"></a>結果
+## <a name="results"></a>[結果]
 
 **[結果]** ページで、レビュー結果の一覧の表示とダウンロードを行います。
 
@@ -72,7 +72,7 @@ ms.locfileid: "74021997"
 
 ![名前とユーザー プリンシパル名を一覧する [レビュー担当者] ページ](media/pim-resource-roles-complete-access-review/rbac-access-review-reviewers.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Privileged Identity Management で Azure リソース ロールのアクセス レビューを開始する](pim-resource-roles-start-access-review.md)
 - [Privileged Identity Management で Azureリソース ロールのアクセス レビューを実行する](pim-resource-roles-perform-access-review.md)

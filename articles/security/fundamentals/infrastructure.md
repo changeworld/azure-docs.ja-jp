@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/18/2019
 ms.author: terrylan
 ms.openlocfilehash: 10aecff797effb5abebea16a18dd4e02f40de326
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72595403"
 ---
 # <a name="azure-infrastructure-security"></a>Azure インフラストラクチャのセキュリティ
@@ -35,11 +35,11 @@ Microsoft Azure は、Microsoft によって管理および運用されている
 - [運用ネットワーク](production-network.md)
 - [SQL Database](infrastructure-sql.md)
 - [操作](infrastructure-operations.md)
-- [監視](infrastructure-monitoring.md)
+- [Monitoring](infrastructure-monitoring.md)
 - [整合性](infrastructure-integrity.md)
 - [データ保護](protection-customer-data.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [クラウドにおける共同責任](shared-responsibility.md)について理解します。
 

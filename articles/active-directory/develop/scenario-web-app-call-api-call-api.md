@@ -15,17 +15,17 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 28b4be46dc686c6e1b55f1ab36e0607057ebdbbd
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76758973"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Web API を呼び出す Web アプリ: Web API を呼び出す
 
 トークンを取得すると、保護された Web API を呼び出せます。
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 以下に、`HomeController` のアクションの簡略化されたコードを示します。 このコードでは、Microsoft Graph を呼び出すトークンを取得します。 Microsoft Graph を REST API として呼び出す方法を示すコードが追加されています。 Microsoft Graph API の URL は、appsettings.json ファイルで提供され、`webOptions` という名前の変数に読み取られます。
 
@@ -86,7 +86,7 @@ public async Task<IActionResult> Profile()
 >
 > Azure のほとんどの Web API には、API の呼び出しを簡略化する SDK が用意されています。 これは Microsoft Graph にも当てはまります。 次の記事では、API の使用方法を示すチュートリアルの探し方について説明します。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```Java
 private String getUserInfoFromGraph(String accessToken) throws Exception {
@@ -112,7 +112,7 @@ private String getUserInfoFromGraph(String accessToken) throws Exception {
 
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
 @app.route("/graphcall")

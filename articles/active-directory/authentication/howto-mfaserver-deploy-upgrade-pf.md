@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fd000f4b2a462e9bc9d2c54b57834b346688e6b5
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74848121"
 ---
 # <a name="upgrade-the-phonefactor-agent-to-azure-multi-factor-authentication-server"></a>PhoneFactor エージェントから Azure Multi-Factor Authentication Server へのアップグレード
@@ -73,7 +73,7 @@ PhoneFactor エージェント v5.x 以前から Azure Multi-factor Authenticati
 > [!NOTE]
 > 8\.0 よりも前のバージョンから Azure MFA Server 8.0 以降にアップグレードするときは、アップグレード後にモバイル アプリ Web サービスをアンインストールできます
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure Multi-Factor Authentication Server の[ユーザー ポータルをインストールする](howto-mfaserver-deploy-userportal.md)。
 

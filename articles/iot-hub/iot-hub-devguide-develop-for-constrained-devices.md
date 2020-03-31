@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: robinsh
 ms.openlocfilehash: a1918a99efcdcc5764140093ad422f7887ca3c88
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73954690"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>Azure IoT C SDK を使用した制約のあるデバイス向けの開発
@@ -33,7 +33,7 @@ C SDK は apt-get、NuGet、および MBED からパッケージ形式で入手�
 
 ### <a name="remove-additional-protocol-libraries"></a>余分なプロトコル ライブラリを削除する
 
-C SDK では、現在、次の 5 つのプロトコルがサポートされています: MQTT、MQTT over WebSocket、AMQP、AMQP over WebSocket、HTTPS。 ほとんどのシナリオでは、クライアント上で実行されているプロトコルのうちの 1 つ、2 つを必要とします。したがって、使用しないプロトコル ライブラリは SDK から削除することができます。 シナリオに適した通信プロトコルの選択方法の詳細については、[IoT Hub の通信プロトコルの選択](iot-hub-devguide-protocols.md)に関する記事を参照してください。 たとえば、MQTT は、制約のあるデバイスに適する場合が多い軽量なプロトコルです。
+今日、C SDK では、MQTT、MQTT over WebSocket、AMQP、AMQP over WebSocket、HTTPS という 5 つのプロトコルがサポートされています。 ほとんどのシナリオでは、クライアント上で実行されているプロトコルのうちの 1 つ、2 つを必要とします。したがって、使用しないプロトコル ライブラリは SDK から削除することができます。 シナリオに適した通信プロトコルの選択方法の詳細については、[IoT Hub の通信プロトコルの選択](iot-hub-devguide-protocols.md)に関する記事を参照してください。 たとえば、MQTT は、制約のあるデバイスに適する場合が多い軽量なプロトコルです。
 
 AMQP ライブラリと HTTP ライブラリは、次の cmake コマンドを使用して削除できます。
 
@@ -77,9 +77,9 @@ C SDK にはオプションとして [C SDK シリアライザー](https://githu
 
 C SDK では 2 つのプログラミング モデルがサポートされています。 一方のセットには、下位レイヤーを意味する挿入辞 _LL_ を伴った API が含まれています。 この API セットは軽量であり、ワーカー スレッドを起動しません。このことは、ユーザーがスケジュール設定を手動で制御する必要があることを意味します。 たとえば、デバイス クライアント用の _LL_ API はこちらの[ヘッダー ファイル](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client_ll.h)で確認することができます。 
 
-_LL_ インデックスを伴っていない、もう一方の API セットは便利なレイヤーと呼ばれています。この場合、ワーカー スレッドは自動的に起動します。 たとえば、デバイス クライアント用の便利なレイヤーの API はこちらの[IoT Device Client ヘッダー ファイル](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client.h)で確認できます。 余分な各スレッドによってシステム リソースの大部分が占有される可能性がある制約付きのデバイスの場合は、_LL_ API の使用を検討してください。
+_LL_ インデックスを伴っていない、もう一方の API セットはコンビニエンス レイヤーと呼ばれています。この場合、ワーカー スレッドは自動的に起動します。 たとえば、デバイス クライアント用の便利なレイヤーの API はこちらの[IoT Device Client ヘッダー ファイル](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client.h)で確認できます。 余分な各スレッドによってシステム リソースの大部分が占有される可能性がある制約付きのデバイスの場合は、_LL_ API の使用を検討してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure IoT C SDK アーキテクチャの詳細について説明します。
 -   [Azure IoT C SDK ソース コード](https://github.com/Azure/azure-iot-sdk-c/)

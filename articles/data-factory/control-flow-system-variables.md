@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.openlocfilehash: 0a5237336530d30c3801b13b910171e236e87a23
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73679289"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされているシステム変数
@@ -50,5 +50,5 @@ ms.locfileid: "73679289"
 | --- | --- |
 | @trigger().outputs.windowStartTime |トリガーがパイプライン実行を呼び出すようにスケジュールされたウィンドウの開始時間。 タンブリング ウィンドウ トリガーの頻度が [毎時間] の場合、この時間は、1 時間の開始時点となります。|
 | @trigger().outputs.windowEndTime |トリガーがパイプライン実行を呼び出すようにスケジュールされたウィンドウの終了時間。 タンブリング ウィンドウ トリガーの頻度が [毎時間] の場合、この時間は、1 時間の終了時点となります。|
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 これらの変数を式で使用する方法については、[式言語と関数](control-flow-expression-language-functions.md)に関するページを参照してください。

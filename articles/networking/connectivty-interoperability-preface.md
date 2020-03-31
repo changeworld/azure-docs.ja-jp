@@ -11,13 +11,13 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 0cbd4b620a03ed26e95679cf7cb1abef277a9471
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873797"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-test-setup"></a>Azure バックエンド接続機能の相互運用性: テストの設定
+# <a name="interoperability-in-azure-back-end-connectivity-features-test-setup"></a>Azure バックエンド接続機能の相互運用性: テスト セットアップ
 
 この記事では、Azure のネットワーク サービスがコントロール プレーン レベルとデータ プレーン レベルでどのように相互運用されるかを分析するために使用できる、テスト セットアップについて説明します。 Azure のネットワーク コンポーネントについて簡単に見てみましょう。
 
@@ -39,7 +39,7 @@ ms.locfileid: "74873797"
 -   ハブ VNet は、別の ExpressRoute プライベート ピアリングを使用して、オンプレミスの Location 2 ネットワークに接続されます。 以降、この記事では、この 2 つ目の ExpressRoute 回線を ExpressRoute 2 と呼びます。
 -   また、ハブ VNet とオンプレミスの Location 1 ネットワークは、どちらも ExpressRoute 1 によって Azure Region 2 のリモート VNet に接続されています。
 
-## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>ExpressRoute とサイト間 VPN 接続を組み合わせる
+## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>ExpressRoute とサイト間 VPN 接続の併用
 
 ###  <a name="site-to-site-vpn-over-expressroute"></a>ExpressRoute 上のサイト間 VPN
 
@@ -67,7 +67,7 @@ ExpressRoute とサイト間 VPN が共存する接続を構成する方法の�
 
 詳細については、「[VPN ゲートウェイとは][VPN]」および[高可用性 NVA のデプロイ][Deploy-NVA]に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 テスト トポロジの[構成の詳細][Configuration]を確認します。
 

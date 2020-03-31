@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
 ms.openlocfilehash: 3ca00a03976ae38b7956616b8287220a7bc5998c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73825846"
 ---
 # <a name="performing-disaster-recovery-drill"></a>障害復旧訓練の実行
@@ -38,7 +38,7 @@ ms.locfileid: "73825846"
 
 障害をシミュレートするために、ソース データベースの名前を変更できます。 この名前変更によって、アプリケーションの接続エラーが発生します。
 
-### <a name="recovery"></a>復旧
+### <a name="recovery"></a>Recovery
 
 * [こちら](sql-database-disaster-recovery.md)の説明に従って、データベースの geo リストアを別のサーバーに実行します。
 * アプリケーションの構成を変更して、復旧したデータベースに接続し、「[復旧後のデータベースの構成](sql-database-disaster-recovery.md)」のガイドに従って、復旧を完了します。
@@ -55,7 +55,7 @@ ms.locfileid: "73825846"
 
 障害をシミュレートするために、データベースに接続されている Web アプリケーションまたは仮想マシンを無効にできます。 この障害のシミュレーションによって、Web クライアントの接続エラーが発生します。
 
-### <a name="recovery"></a>復旧
+### <a name="recovery"></a>Recovery
 
 * ディザスター リカバリー リージョンのアプリケーション構成が (完全にアクセス可能な新しいプライマリになる) 前のセカンダリをポイントしていることを確認します。
 * セカンダリ サーバーから、フェールオーバー グループの[計画されたフェールオーバー](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)を開始します。
@@ -65,7 +65,7 @@ ms.locfileid: "73825846"
 
 復旧後に、アプリケーションの整合性を検証して訓練を完了します (接続性、基本的な機能のテスト、訓練のサインオフに必要なその他の検証など)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * ビジネス継続性の設計および復旧シナリオについては、[継続性のシナリオ](sql-database-business-continuity.md)を参照してください。
 * Azure SQL Database 自動バックアップの詳細については、「 [SQL Database 自動バックアップ](sql-database-automated-backups.md) 」を参照してください。

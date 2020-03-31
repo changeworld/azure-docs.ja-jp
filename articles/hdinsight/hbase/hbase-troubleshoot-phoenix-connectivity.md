@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/14/2019
 ms.openlocfilehash: b886f51bcb2bb7308c49c76563dcb70148bbc583
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75887293"
 ---
 # <a name="scenario-apache-phoenix-connectivity-issues-in-azure-hdinsight"></a>シナリオ:Azure HDInsight の Apache Phoenix の接続に関する問題
@@ -26,7 +26,7 @@ Apache Phoenix で Apache HBase に接続できません。 さまざまな理�
 
 アクティブな Zookeeper ノードの IP が正しくありません。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 アクティブな Zookeeper ノードの IP は、 **[HBase]**  >  **[Quick Links]\(クイック リンク\)**  >  **[ZK (Active)]\(ZK (アクティブ)\)**  >  **[Zookeeper Info]\(Zookeeper 情報\)** へのリンクをたどることで、Ambari UI から識別できます。 必要に応じて IP を修正します。
 
@@ -46,7 +46,7 @@ Error while connecting to sqlline.py (Hbase - phoenix) Setting property: [isolat
 ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,,1485464083256.c0568c94033870c517ed36c45da98129. is not online on 10.2.0.5,16020,1489466172189)
 ```
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 Apache Ambari UI から、次の手順に従って、すべての ZooKeeper ノード上で HMaster サービスを再起動します。
 

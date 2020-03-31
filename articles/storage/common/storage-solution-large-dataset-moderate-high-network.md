@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: f7177a95bdd585ff2822c9ac8c94a85d12f9259b
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69900362"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>中速から高速のネットワーク帯域幅での大規模なデータセットのデータ転送
@@ -39,7 +39,7 @@ ms.locfileid: "69900362"
 
 - ネットワーク転送に時間がかかりすぎると予想される場合は、物理デバイスを使用する必要があります。 この場合に推奨されるオプションは、Azure Data Box ファミリのデバイスを使用するオフライン転送、または独自のディスクを使用する Azure Import/Export です。
 
-    - **オフライン転送用の azure Data Box ファミリ** – 時間、ネットワークの可用性、またはコストが限られている場合は、Microsoft によって提供される Data Box デバイスのデバイスを使用して、大量のデータを Azure に移動します。 Robocopy などのツールを使って、オンプレミスのデータをコピーします。 転送対象のデータのサイズに応じて、Data Box Disk、Data Box、Data Box Heavy から選択できます。
+    - **オフライン転送用の Azure Data Box ファミリ** – 時間、ネットワークの可用性、またはコストが限られている場合は、Microsoft が供給する Data Box デバイスのデバイスを使用して、大量のデータを Azure に移動します。 Robocopy などのツールを使って、オンプレミスのデータをコピーします。 転送対象のデータのサイズに応じて、Data Box Disk、Data Box、Data Box Heavy から選択できます。
     - **Azure Import/Export** – 大量のデータを安全に Azure Blob Storage と Azure Files にインポートするために、独自のディスク ドライブを送付して Azure Import/Export サービスを使用します。 また、このサービスでは、Azure Blob Storage からディスク ドライブにデータを転送し、オンプレミスのサイトに送付できます。
 
 - ネットワーク転送が妥当であると予想される場合は、「[ネットワーク帯域幅 - 高](#high-network-bandwidth)」で詳しく説明されている以下のツールのいずれかを使用できます。
@@ -62,7 +62,7 @@ ms.locfileid: "69900362"
 
 オフライン データ転送を使用する場合は、以下の表を使用して、主な機能の違いを理解します。
 
-|                                     |    Data Box Disk      |    Data Box                                      |    Data Box Heavy            |    Import/Export                       |
+|                                     |    Data Box Disk      |    Data Box                                      |    Data Box Heavy            |    インポート/エクスポート                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
 |    データ サイズ                        |    最大 35 TB                 |    デバイスあたり最大 80 TB                       |    デバイスあたり最大 800 TB               |    変数                            |
 |    データ型                        |    Azure BLOB                  |    Azure BLOB<br>Azure Files                    |    Azure BLOB<br>Azure Files            |    Azure BLOB<br>Azure Files          |
@@ -72,7 +72,7 @@ ms.locfileid: "69900362"
 |    Azure からデータをエクスポートする           |    いいえ                           |    いいえ                                            |    いいえ                                    |    はい                                 |
 |    暗号化                       |    AES 128 ビット                  |    AES 256 ビット                                   |    AES 256 ビット                           |    AES 128 ビット                         |
 |    ハードウェア                         |     Microsoft による提供          |    Microsoft による提供                            |    Microsoft による提供                    |    お客様による提供                   |
-|    Linux                |    USB 3.1/SATA                 |    RJ 45、SFP+                                   |    RJ45、QSFP+                           |    SATA II/SATA III                    |
+|    ネットワーク インターフェイス                |    USB 3.1/SATA                 |    RJ 45、SFP+                                   |    RJ45、QSFP+                           |    SATA II/SATA III                    |
 |    パートナー統合              |    一部                         |    [高](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [高](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    一部                                |
 |    発送                         |    Microsoft による管理            |    Microsoft による管理                             |    Microsoft による管理                     |    お客様による管理                    |
 | データの移動時に使用する         |コマース境界内|コマース境界内|コマース境界内|地理的境界を越える (US から EU など)|
@@ -93,10 +93,10 @@ ms.locfileid: "69900362"
 |    ユーザー タイプ                        |    IT プロフェッショナルまたは開発者                                       |    Dev                                       |    IT プロフェッショナル                                                |    IT プロフェッショナル                                                             |
 |    価格                          |    無料、データ エグレス料金を適用         |    無料、データ エグレス料金を適用         |    [料金](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                                               |    [料金](https://azure.microsoft.com/pricing/details/data-factory/)                                                            |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Import/Export でデータを転送する方法を学習します](/azure/storage/common/storage-import-export-data-to-blobs)。
-- 以下の方法を理解します。
+- 以下の方法を理解します
 
     - [Data Box Edge を使用してデータを転送する](https://docs.microsoft.com/azure/databox/data-box-disk-quickstart-portal)。
     - [Data Box を使用してデータを転送する](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal)。

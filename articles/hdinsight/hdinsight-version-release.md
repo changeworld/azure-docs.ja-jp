@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.openlocfilehash: 0463e3297bbb2fda50adfeefaa89f0a7a3ef8b0a
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72901524"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4.0 の概要
@@ -96,7 +96,7 @@ HDI 4.0 に含まれる Apache Oozie 4.3.1 では以下の点が変更されて�
 * Spark-LLAP クラスターでは LLAP を "*無効にする*" ことはできません。 LLAP をオフにすることだけができます。
 * Azure Data Lake Storage Gen2 では、Jupyter Notebook を Spark クラスターに保存できません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure HDInsight のドキュメント](index.yml)
 * [リリース ノート](hdinsight-release-notes.md)

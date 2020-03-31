@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 42561570e24aec5edd33248ef1738e53175e480e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60632461"
 ---
 # <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>StorSimple デバイスの電源冷却モジュールを交換する
@@ -139,6 +139,6 @@ StorSimple デバイスに PCM を取り付けるには次の手順に従いま�
    > [!NOTE]
    > 置換用 PCM が完全に初期化されるまで数分かかる場合があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 「 [StorSimple ハードウェア コンポーネントの交換](storsimple-8000-hardware-component-replacement.md)」の説明を参照してください。
 

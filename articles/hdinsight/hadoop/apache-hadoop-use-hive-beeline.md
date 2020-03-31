@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: 77a451cb9f6598bbe7013f4215cfa7cab40186bd
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79037538"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Apache Hive で Apache Beeline クライアントを使用する

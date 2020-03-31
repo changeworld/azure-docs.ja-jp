@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e5c7919dcc89e34831cb4cae7921b60b35eb4c69
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74024963"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Azure Active Directory でのカスタム管理者ロール (プレビュー)
@@ -61,7 +61,7 @@ Azure AD の組み込みロールとカスタム ロールは、[Azure のロー
 - Microsoft によって作成されて変更できない組み込みロール。
 - 組織によって作成および管理されるカスタム ロール。
 
-### <a name="scope"></a>Scope (スコープ)
+### <a name="scope"></a>スコープ
 
 スコープとは、ロールの割り当ての一部として特定の Azure AD リソースに対して許可されるアクションの制限です。 ロールを割り当てるときに、特定のリソースに対する管理者のアクセスを制限するスコープを指定できます。 たとえば、開発者にカスタム ロールを付与し、特定のアプリケーション登録の管理だけを許可したい場合は、ロールの割り当てでスコープとして特定のアプリケーション登録を含めることができます。
 
@@ -73,7 +73,7 @@ Azure AD の組み込みロールとカスタム ロールは、[Azure のロー
 
 [!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure portal、Azure AD PowerShell、および Graph API](roles-create-custom.md) を使用して、カスタム ロールの割り当てを作成する
 - [カスタム ロールの割り当てを表示する](roles-view-assignments.md#view-assignments-of-single-application-scope)

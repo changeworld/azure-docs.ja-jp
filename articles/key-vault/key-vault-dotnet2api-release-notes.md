@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: mbaldwin
 ms.openlocfilehash: 07502b4c4487a7517e2fe73b62eae0a237a6f22b
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70883270"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2.0 - リリース ノートおよび移行ガイド
@@ -53,7 +53,7 @@ Key Vault 証明書では x509 証明書を管理し、次の動作をサポー�
 
 ## <a name="return-types"></a>戻り値の型
 
-* **KeyList** と **SecretList** は現在、*ListKeysResponseMessage* ではなく *IPage\<T>* を返します。
+* **KeyList** と **SecretList** は現在、*ListKeysResponseMessage\< ではなく* IPage*T>* を返します。
 * 生成される **BackupKeyAsync** は現在、*Value* (バックアップ BLOB) を含む *BackupKeyResult* を返します。 以前は、メソッドがラップされ、値のみが返されました。
 
 ## <a name="exceptions"></a>例外

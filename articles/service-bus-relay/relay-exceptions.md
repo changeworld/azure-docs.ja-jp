@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/20/2017
 ms.author: spelluru
 ms.openlocfilehash: fe8f057443b978e70e7cdd2591affd455fefdca8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60749038"
 ---
 # <a name="azure-relay-exceptions"></a>Azure Relay の例外
@@ -31,13 +31,13 @@ Relay API からは、次のカテゴリに分類できる例外が生成され�
 
 *   **ユーザー コードのエラー**: [System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx)、[System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx)、[System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx)、[System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx)。 
 
-    **一般的なアクション**: 処理を続行する前にコードの修正を試みます。
+    **一般的なアクション**: 処理を実行する前にコードの修正を試みてください。
 *   **セットアップ/構成エラー**: [System.UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx)。 
 
-    **一般的なアクション**: 構成を確認します。 必要に応じて、構成を変更します。
+    **一般的なアクション**: 構成を確認してください。 必要に応じて、構成を変更します。
 *   **一時的な例外**: [Microsoft.ServiceBus.Messaging.MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception)、[Microsoft.ServiceBus.Messaging.ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)、[Microsoft.ServiceBus.Messaging.MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception)。 
 
-    **一般的なアクション**: 操作を再試行するか、またはユーザーに通知します。
+    **一般的なアクション**: 操作を再試行するか、ユーザーに通知してください。
 *   **その他の例外**: [System.Transactions.TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx)、[System.TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx)。 
 
     **一般的なアクション**: 例外の種類によって異なります。 次のセクションの表を参照してください。 
@@ -90,7 +90,7 @@ The time allotted to this operation may have been a portion of a longer timeout.
 
     場合によっては、Relay サービスで要求の処理が遅れることがあります。 これは、トラフィックの多い時間帯などに発生することがあります。 これが発生した場合は、遅延の後、操作が成功するまで操作を再試行できます。 複数回試行しても同じ操作が失敗する場合は、[Azure のサービス状態のサイト](https://azure.microsoft.com/status/)を確認し、既知のサービス停止がないかどうかを確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure Relay に関する FAQ](relay-faq.md)
 * [Relay 名前空間の作成](relay-create-namespace-portal.md)
 * [Azure Relay と .NET の使用](relay-hybrid-connections-dotnet-get-started.md)

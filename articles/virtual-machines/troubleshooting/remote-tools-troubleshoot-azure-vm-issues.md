@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
 ms.openlocfilehash: b86b1a2d8a49554cc3df99e0a32a2c0ccaacb560
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77920010"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>リモート ツールを使用して Azure VM の問題をトラブルシューティングする

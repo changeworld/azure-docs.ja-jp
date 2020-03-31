@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/07/2019
 ms.openlocfilehash: f00ecd19877ba6236bde5de73d450967abc1fe15
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73821044"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Azure SQL Database Premium RS サービス レベル (プレビュー) の廃止 - 移行のオプション
@@ -26,7 +26,7 @@ ms.locfileid: "73821044"
 
 - 仮想コア サービス レベル
 
-  [仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)の **General Purpose** サービス レベルと **Business Critical** サービス レベル。 これらの 2 つのサービス レベルは一般提供中です。 仮想コアベースの購入モデルでは、最大でデータベースあたり 100 TB の自動スケーリングによってお客様のワークロードのニーズにオンデマンドで適応する**ハイパースケール** サービス レベルも提供されています。 ハイパースケール サービス レベルでは、Premium RS サービス レベルにより近い価格で、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)の Premium サービス レベルに相当する IO パフォーマンスが提供されます。
+  **仮想コアベースの購入モデル**の **General Purpose** サービス レベルと [Business Critical](sql-database-service-tiers-vcore.md) サービス レベル。 これらの 2 つのサービス レベルは一般提供中です。 仮想コアベースの購入モデルでは、最大でデータベースあたり 100 TB の自動スケーリングによってお客様のワークロードのニーズにオンデマンドで適応する**ハイパースケール** サービス レベルも提供されています。 ハイパースケール サービス レベルでは、Premium RS サービス レベルにより近い価格で、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)の Premium サービス レベルに相当する IO パフォーマンスが提供されます。
 - Dev/Test 価格
 
   [Dev/Test 価格](https://azure.microsoft.com/pricing/dev-test/)では、お客様の Visual Studio サブスクリプションによって、ライセンス込みの価格と比較して最大 55% の割引が提供されます。
@@ -97,7 +97,7 @@ Premium RS サービス レベルから DTU モデルまたは仮想コア モ�
 
 ターゲットのコンピューティング サイズがソースのデータベースの最大データベース サイズをサポートしている限り、制限や特別なシーケンス処理を伴うことなく、Premium RS コンピューティング サイズのデータベースを DTU ベースまたは仮想コアベースのコンピューティング サイズのデータベースにコピーできます。 データベースのコピーによって、コピー操作を開始した時点のデータ スナップショットが作成されるので、コピー元とコピー先の間でデータ同期が行われません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 単一データベースに対して選択できる具体的なコンピューティング サイズとストレージ サイズの詳細については、[単一データベースに対する SQL Database の仮想コアベースのリソース制限](sql-database-vcore-resource-limits-single-databases.md)に関するページを参照してください。
 - エラスティック プールに対して選択できる具体的なコンピューティング サイズとストレージ サイズの詳細については、[エラスティック プールに対する SQL Database 仮想コア ベースのリソース制限](sql-database-vcore-resource-limits-elastic-pools.md)に関するページを参照してください。

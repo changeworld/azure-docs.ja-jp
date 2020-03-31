@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: e86c92fa1cfb13929d5617502224f479709efdd3
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76756336"
 ---
 # <a name="message-expiration-time-to-live"></a>メッセージの有効期限 (Time to Live)
@@ -41,7 +41,7 @@ ms.locfileid: "76756336"
 >
 > メッセージング エンティティ (キューおよびトピック) の既定の有効期限も、Service Bus の Standard レベルと Premium レベルでは [TimeSpan.Max](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue) です。  Basic レベルでは、既定の有効期間は 14 日間です。
 
-有効期限が切れたメッセージは、[EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enabledeadletteringonmessageexpiration#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) プロパティを設定するか、またはポータルでそれぞれのボックスにチェックを付けることで、[配信不能キュー](service-bus-dead-letter-queues.md)に移動することもできます。 オプションを無効のままにすると、期限切れのメッセージは削除されます。 配信不能キューに移動された期限切れのメッセージは、ユーザー プロパティ セクションにブローカーが保存する [DeadletterReason](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) プロパティを評価することで、他の配信不能キューと区別できます。この場合、値は [TTLExpiredException](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) になります。
+有効期限が切れたメッセージは、[EnableDeadLetteringOnMessageExpiration](service-bus-dead-letter-queues.md) プロパティを設定するか、またはポータルでそれぞれのボックスにチェックを付けることで、[配信不能キュー](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enabledeadletteringonmessageexpiration#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration)に移動することもできます。 オプションを無効のままにすると、期限切れのメッセージは削除されます。 配信不能キューに移動された期限切れのメッセージは、ユーザー プロパティ セクションにブローカーが保存する [DeadletterReason](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) プロパティを評価することで、他の配信不能キューと区別できます。この場合、値は [TTLExpiredException](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) になります。
 
 上記のように、ロック中のメッセージは有効期限が切れず、フラグがエンティティに設定されている場合は、ロックが破棄された時点で、または有効期限が切れるとメッセージは配信不能キューに移動されます。 ただし、メッセージが正常に到着した場合は移動されません。この場合、有効期限が切れたとされたにもかかわらず、アプリケーションによって正常に処理されたと推測できます。
 

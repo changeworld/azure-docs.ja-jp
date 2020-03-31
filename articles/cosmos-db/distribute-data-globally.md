@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.openlocfilehash: 84cd201cd758293082a61a87528332c7d8c58811
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76264307"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Azure Cosmos DB でのグローバルなデータの分散 - 概要
@@ -45,7 +45,7 @@ Azure Cosmos DB のマルチホーム API を使用すると、アプリケー�
 
 **明確に定義された複数の一貫性モデルの中から選択する。** Azure Cosmos DB のレプリケーション プロトコルでは、明確に定義された、実際的かつ直感的な 5 つの一貫性モデルが提供されています。 各モデルには、一貫性とパフォーマンスのトレードオフがあります。 これらの一貫性モデルを使用することで、グローバル分散アプリケーションを容易に構築することができます。
 
-## <a id="Next Steps"></a>次のステップ
+## <a name="next-steps"></a><a id="Next Steps"></a>次のステップ
 
 以下の記事でグローバル分散の詳細についてご覧ください。
 

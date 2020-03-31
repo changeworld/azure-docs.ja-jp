@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/26/2020
 ms.author: avverma
 ms.openlocfilehash: ffcdaf76bdd08ee5505ddbeff6a6698e231b6171
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77919840"
 ---
 # <a name="use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットでカスタム スケールイン ポリシーを使用する
@@ -235,7 +235,7 @@ NewestVM を Default または OldestVM に変更する場合も、同じプロ�
 
 非ゾーン仮想マシン スケール セットの場合は、スケール セット全体で最も新しい VM が削除対象に選択されます。 "保護されている" VM は削除からスキップされます。 
 
-## <a name="troubleshoot"></a>トラブルシューティング
+## <a name="troubleshoot"></a>[トラブルシューティング]
 
 1. スケールイン ポリシーを有効にできない: "タイプ 'properties' のオブジェクトにメンバー 'scaleInPolicy' が見つかりませんでした" でエラー メッセージが始まる "BadRequest" エラーが発生する場合は、仮想マシン スケール セットに使用されている API のバージョンを確認します。 この機能では、API バージョン 2019-03-01 以降が必要です。
 

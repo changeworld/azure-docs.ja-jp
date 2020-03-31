@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/11/2018
 ms.author: spelluru
 ms.openlocfilehash: 4500fcfa6fbfb346a6e5c7fd045ba0046a901b91
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60561626"
 ---
 # <a name="redeploy-a-vm-in-a-lab-in-azure-devtest-labs"></a>ラボ内の VM を Azure DevTest Labs で再デプロイする
@@ -27,7 +27,7 @@ ms.locfileid: "60561626"
 ## <a name="steps-to-redeploy-a-vm-in-a-lab"></a>ラボで VM を再デプロイする手順 
 Azure DevTest Labs でラボ内の VM を再デプロイするには、次の手順を実行します。 
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 3. ラボの一覧で、再デプロイする VM が含まれているラボを選択します。  
 4. 左側のパネルで、 **[仮想マシン]** を選択します。 
@@ -39,7 +39,7 @@ Azure DevTest Labs でラボ内の VM を再デプロイするには、次の手
 
     ![状態を再デプロイする](media/devtest-lab-redeploy-vm/redeploy-status.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure DevTest Labs の [VM のサイズを変更する](devtest-lab-resize-vm.md)方法について説明します。
 
 

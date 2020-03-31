@@ -15,10 +15,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f4c637a01825616334cda8faa594efd08f29de8d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74213086"
 ---
 # <a name="azure-ad-connect---msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Azure AD Connect - msExchUserHoldPolicies と cloudMsExchUserHoldPolicies
@@ -70,5 +70,5 @@ msExchangeUserHoldPolicies は、単一機関の属性です。  単一機関の
 
 たとえば両方がオンプレミスと Azure で同時に変更された場合など、特定の状況では、これによりいくつかの問題が発生する可能性があります。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: cynthn
 ms.openlocfilehash: 8512d9b701242dc686d49bbe56e8a2059f14ee3d
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73180023"
 ---
 # <a name="create-a-proximity-placement-group-using-the-portal"></a>ポータルを使用して、近接通信配置グループを作成します。
@@ -51,7 +51,7 @@ ms.locfileid: "73180023"
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure PowerShell](proximity-placement-groups.md) を使用して近接通信配置グループを作成することもできます。
 

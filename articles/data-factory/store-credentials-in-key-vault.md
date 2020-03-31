@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jingwang
 ms.openlocfilehash: 1418205843fefc76db4e73832736b308d0cc79a3
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76122612"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Azure Key Vault への資格情報の格納
@@ -42,7 +42,7 @@ Azure Key Vault のリンクされたサービスでは、次のプロパティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティは、次のように設定する必要があります:**AzureKeyVault**。 | はい |
+| type | type プロパティは **AzureKeyVault** に設定する必要があります。 | はい |
 | baseUrl | Azure Key Vault の URL を指定します。 | はい |
 
 **オーサリング UI の使用:**
@@ -75,7 +75,7 @@ Azure Key Vault のリンクされたサービスでは、次のプロパティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | フィールドの type プロパティは、**AzureKeyVaultSecret** に設定する必要があります。 | はい |
+| type | フィールドの type プロパティは **AzureKeyVaultSecret** に設定する必要があります。 | はい |
 | secretName | Azure Key Vault 内のシークレットの名前。 | はい |
 | secretVersion | Azure Key Vault 内のシークレットのバージョン。<br/>指定しない場合は、常に最新バージョンのシークレットが使用されます。<br/>指定した場合は、その特定のバージョンに固定されます。| いいえ |
 | store | 資格情報の格納に使用する Azure Key Vault のリンクされたサービスを表します。 | はい |

@@ -8,17 +8,17 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: a0256470892d634361498f1632027aff562c7761
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74871807"
 ---
 # <a name="array-functions-azure-cosmos-db"></a>配列関数 (Azure Cosmos DB)
 
 配列関数を使用すると、Azure Cosmos DB 内の配列に対する演算を実行できます。
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>関数
 
 次のスカラー関数では、配列入力値に対して演算が実行され、数値、ブール値、または配列値が返されます。
   
@@ -28,7 +28,7 @@ ms.locfileid: "74871807"
 |[ARRAY_SLICE](sql-query-array-slice.md)|||  
   
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Cosmos DB のシステム関数](sql-query-system-functions.md)
 - [Azure Cosmos DB の概要](introduction.md)

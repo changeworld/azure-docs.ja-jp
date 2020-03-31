@@ -8,13 +8,13 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.author: yushwang
 ms.openlocfilehash: 96e5c26ea7b5f1baa33fd8830491ee3aa1e60221
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75778084"
 ---
-# <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>サンプル構成:Cisco ASA デバイス (IKEv2/BGP なし)
+# <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>サンプル構成: Cisco ASA デバイス (IKEv2/BGP なし)
 この記事では、Cisco Adaptive Security Appliance (ASA) デバイスを Azure VPN ゲートウェイに接続するためのサンプル構成を紹介します。 この例は、ボーダー ゲートウェイ プロトコル (BGP) を使用せずに IKEv2 を実行する Cisco ASA デバイスに適用されます。 
 
 ## <a name="device-at-a-glance"></a>デバイスの概略
@@ -32,7 +32,7 @@ ms.locfileid: "75778084"
 |                        |                                   |
 
 > [!NOTE]
-> このサンプル構成では、Cisco ASA デバイスが Azure の**ルートベース**の VPN ゲートウェイに接続されます。 この接続では、[こちらの記事](vpn-gateway-connect-multiple-policybased-rm-ps.md)で説明したカスタム IPsec/IKE ポリシーと **UsePolicyBasedTrafficSelectors** オプションが使用されます。
+> このサンプル構成では、Cisco ASA デバイスが Azure の**ルートベース**の VPN ゲートウェイに接続されます。 この接続では、**こちらの記事**で説明したカスタム IPsec/IKE ポリシーと [UsePolicyBasedTrafficSelectors](vpn-gateway-connect-multiple-policybased-rm-ps.md) オプションが使用されます。
 >
 > このサンプルで使用する ASA デバイスの **IKEv2** ポリシーは、VTI ベースではなくアクセスリストベースの構成であることが必要です。 オンプレミスの VPN デバイスで IKEv2 ポリシーがサポートされることを、VPN デバイス ベンダーの仕様で確認してください。
 
@@ -114,8 +114,8 @@ Azure の構成を作成する具体的な手順については、[単一の VPN
   - 外部インターフェイスの名前: **outside**
   - **Azure_Gateway_Public_IP**
   - **OnPrem_Device_Public_IP**
-  - IKE:**Pre_Shared_Key**
-  - 仮想ネットワークおよびローカル ネットワーク ゲートウェイの名前:**VNetName** と **LNGName**
+  - IKE: **Pre_Shared_Key**
+  - 仮想ネットワークおよびローカル ネットワーク ゲートウェイの名前: **VNetName** と **LNGName**
   - 仮想ネットワークおよびオンプレミスのネットワーク アドレス **プレフィックス**
   - 適切な**ネットマスク**
 

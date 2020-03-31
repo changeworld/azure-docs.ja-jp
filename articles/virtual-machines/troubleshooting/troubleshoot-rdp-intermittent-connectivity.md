@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
 ms.openlocfilehash: c22a401a6b25f7bb2c27a10e52214fa42ac6089b
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77918225"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>Azure VM でリモート デスクトップの接続が頻繁に切れる
@@ -149,7 +149,7 @@ ms.locfileid: "77918225"
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxConnectionTime' /t REG_DWORD /d 0 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxConnectionTime' /t REG_DWORD /d 0 /f
-16. RDP セッションのアイドル時間のコントロールを設定します。   REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxIdleTime' /t REG_DWORD /d 1 /f 
+16. RDP セッションのアイドル時間のコントロールを設定します。REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxIdleTime' /t REG_DWORD /d 1 /f 
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v ' MaxIdleTime' /t REG_DWORD /d 0 /f
 

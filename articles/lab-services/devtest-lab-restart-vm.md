@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 52d3b92909483a99eb82c86b727261bbeb5f8d46
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76759996"
 ---
 # <a name="restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>ラボ内の VM を Azure DevTest Labs で再起動する
@@ -37,7 +37,7 @@ ms.locfileid: "76759996"
    >
 
 ## <a name="steps-to-restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>ラボ内の VM を Azure DevTest Labs で再起動する手順
-1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインする
 1. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 1. ラボの一覧で、再起動する VM が含まれているラボを選択します。
 1. 左側のパネルで、 **[仮想マシン]** を選択します。

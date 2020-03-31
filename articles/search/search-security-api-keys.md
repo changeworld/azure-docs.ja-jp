@@ -9,15 +9,15 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 68a17b8b3587077222a9ed2057927c8f16253c1e
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72794380"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Azure Cognitive Search サービスの管理者 API キーを作成する
 
-Search サービスへのすべての HTTP 要求には、対象のサービス用に生成された読み取り専用の API キーが必要です。 この API キーは、その Search サービス エンドポイントへのアクセスを認証するための唯一のメカニズムであり、すべての要求に含まれる必要があります。 [REST ソリューション](search-get-started-postman.md)では、通常、API キーは要求のヘッダーで指定されます。 [.NET ソリューション](search-howto-dotnet-sdk.md#core-scenarios)では、多くの場合、キーは構成の設定として指定され、[SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) 上の [Credentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) (管理者キー) または [SearchCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.searchcredentials) (クエリ キー) として渡されます。
+Search サービスへのすべての HTTP 要求には、対象のサービス用に生成された読み取り専用の API キーが必要です。 この API キーは、その Search サービス エンドポイントへのアクセスを認証するための唯一のメカニズムであり、すべての要求に含まれる必要があります。 [REST ソリューション](search-get-started-postman.md)では、通常、API キーは要求のヘッダーで指定されます。 [.NET ソリューション](search-howto-dotnet-sdk.md#core-scenarios)では、多くの場合、キーは構成の設定として指定され、[SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) 上の [Credentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.searchcredentials) (管理者キー) または [SearchCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) (クエリ キー) として渡されます。
 
 キーは、サービスのプロビジョニング中に検索サービスで作成されます。 [Azure portal](https://portal.azure.com) でキーの値を表示および取得することができます。
 
@@ -43,7 +43,7 @@ API キーは、ランダムに生成された数字と文字から成る文字�
 
 アクセス キーはポータルで取得するか、または[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/) 経由で取得できます。 詳細については、[管理者 API キーとクエリ API キーを管理する](search-security-api-keys.md)をご覧ください。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. サブスクリプションの[検索サービス](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)を一覧表示します。
 3. サービスを選択し、[概要] ページで **[設定]**  > **[キー]** の順に移動して管理者キーとクエリ キーを表示します。
 
@@ -55,7 +55,7 @@ API キーは、ランダムに生成された数字と文字から成る文字�
 
 クライアント アプリでアクセスと操作を制限することは、サービスで検索アセットを保護するために不可欠です。 クライアント アプリから発信されたクエリには、常に管理者キーではなくクエリ キーを使用します。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. サブスクリプションの[検索サービス](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)を一覧表示します。
 3. サービスを選択し、[概要]ページで、 **[設定]**  > **[キー]** をクリックします。
 4. **[クエリ キーの管理]** をクリックします。
@@ -93,7 +93,7 @@ API キーは、ランダムに生成された数字と文字から成る文字�
 > [!Note]
 > 検索結果に対する ID ベースのアクセスの場合は、セキュリティ フィルターを作成して ID 別に結果に手を入れ、要求者がアクセスしてはいけないドキュメントを削除します。 詳細については、[セキュリティ フィルター](search-security-trimming-for-azure-search.md)と[Active Directory を使用してセキュリティ保護する](search-security-trimming-for-azure-search-with-aad.md)を参照してください。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 + [Azure Cognitive Search でのロール ベースのアクセス制御](search-security-rbac.md)
 + [PowerShell を使用した管理](search-manage-powershell.md) 

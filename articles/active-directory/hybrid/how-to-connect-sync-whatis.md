@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e3b87f40d75d4045155e7dd953dc76ffd9de2b34
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60348741"
 ---
-# <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect 同期: 同期を理解してカスタマイズする
+# <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect sync: 同期を理解してカスタマイズする
 Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) は、Azure AD Connect の主要コンポーネントです。 オンプレミス環境と Azure AD 間の ID データの同期に関連するすべての操作を処理します。 Azure AD Connect Sync は、Azure Active Directory Connector で構成された DirSync、Azure AD Sync、Forefront Identity Manager の後継となります。
 
 このトピックは **Azure AD Connect 同期** (別名: **同期エンジン**) のホームであり、関連する他のすべてのトピックへのリンクを示します。 Azure AD Connect へのリンクについては、「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」を参照してください。

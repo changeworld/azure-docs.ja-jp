@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 10/25/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 17404388b2b6c3fee1c6ab666f7233a66817f642
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74082867"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-key-vault-preview"></a>Azure Key Vault 用の Azure Event Grid イベント スキーマ (プレビュー)
@@ -69,14 +69,14 @@ Azure Key Vault アカウントでは、以下の種類のイベントが生成�
 | ---------- | ----------- |---|
 | id | string | このイベントをトリガーしたオブジェクトの ID |
 | vaultName | string | このイベントをトリガーしたオブジェクトのキー コンテナー名 |
-| ObjectType | string | このイベントをトリガーしたオブジェクトの種類 |
+| objectType | string | このイベントをトリガーしたオブジェクトの種類 |
 | objectName | string | このイベントをトリガーしたオブジェクトの名前 |
 | version | string | このイベントをトリガーしたオブジェクトのバージョン |
 | nbf | number | このイベントをトリガーしたオブジェクトの 1970-01-01T00:00:00Z 以後の開始日 (秒単位) |
 | exp | number | このイベントをトリガーしたオブジェクトの 1970-01-01T00:00:00Z 以後の有効期限 (秒単位) |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
 * Azure Event Grid サブスクリプションの作成方法の詳細については、「[Event Grid サブスクリプション スキーマ](subscription-creation-schema.md)」を参照してください。

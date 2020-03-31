@@ -12,13 +12,13 @@ ms.topic: article
 ms.date: 10/11/2017
 ms.author: apimpm
 ms.openlocfilehash: b99ca444532799d21850058eae0e3f40ed871135
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61074056"
 ---
-# <a name="terminology"></a>用語集
+# <a name="terminology"></a>用語
 
 この記事では、API Management (APIM) に固有の用語の定義について説明します。
 
@@ -32,7 +32,7 @@ ms.locfileid: "61074056"
 * **リビジョン** - API の準備が整って開発者に使用され始めたら、その API に変更を加える際には、API の呼び出し元を混乱させないように注意する必要があります。 また、行った変更内容を開発者に知らせると有効です。 詳細については、[リビジョンの使用](api-management-get-started-revise-api.md)に関する記事をご覧ください。
 * **開発者ポータル** - 顧客 (開発者) は、開発者ポータルを使用して API にアクセスする必要があります。 開発者ポータルはカスタマイズできます。 詳細については、[開発者ポータルのカスタマイズ](api-management-customize-styles.md)に関する記事をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [インスタンスの作成](get-started-create-service-instance.md)

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
 ms.openlocfilehash: 4ad57c1c71a51f948bd405a5487a1e27e36bfff7
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77920894"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-azure-cli"></a>Azure CLI に対する計画済みメンテナンスの通知の処理

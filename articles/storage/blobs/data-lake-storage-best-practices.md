@@ -9,10 +9,10 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
 ms.openlocfilehash: ac4e126c7ecbd1fc781db74e5b19635b273bbb34
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72299662"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 の使用に関するベスト プラクティス
@@ -47,7 +47,7 @@ Azure Databricks からご利用のストレージ アカウントにアクセ�
 
 Data Lake Storage Gen2 などのクラウド サービスでシステムを構築するときは、可用性の要件と、サービスで中断が発生したときの対応について考慮する必要があります。 ある問題は特定のインスタンスに限定またはリージョン全域にわたる可能性があるため、両方について計画しておくことが重要です。 ワークロードの目標復旧時間と目標復旧ポイントの SLA によっては、高可用性とディザスター リカバリーのために多少は積極的な戦略を選択することをお勧めします。
 
-### <a name="high-availability-and-disaster-recovery"></a>高可用性と障害復旧
+### <a name="high-availability-and-disaster-recovery"></a>高可用性とディザスター リカバリー
 
 高可用性 (HA) とディザスター リカバリー (DR) は結合して取り扱うこともありますが、それぞれの戦略は特にデータに関してはわずかに異なります。 Data Lake Storage Gen2 は局所的なハードウェア障害に備えて、既に内部的に 3 倍のレプリケーションを処理しています。 さらに、ZRS や GZRS (プレビュー) などの他のレプリケーション オプションによって HA が改善され、GRS と RA-GRS によって DR が改善されます。 HA の計画をビルドするとき、サービスの中断が発生した場合に備えて、ワークロードはローカルまたは新しいリージョンに別途レプリケートしたインスタンスに切り替えることで、できるだけ早く最新のデータにアクセスする必要があります。
 

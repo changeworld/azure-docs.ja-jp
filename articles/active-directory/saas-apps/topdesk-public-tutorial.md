@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
 ms.openlocfilehash: e5575a2e8f776e87fcd4e6f4a7a9244752ebfd9a
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71950417"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>チュートリアル:Azure Active Directory と TOPdesk - Public の統合
@@ -147,19 +147,19 @@ TOPdesk - Public で Azure AD シングル サインオンを構成するには�
 
 2. **[TOPdesk]** メニューで **[Settings]** をクリックします。
    
-    ![設定](./media/topdesk-public-tutorial/ic790598.png "Settings")
+    ![設定](./media/topdesk-public-tutorial/ic790598.png "設定")
 
 3. **[Login Settings]** をクリックします。
    
-    ![Login Settings](./media/topdesk-public-tutorial/ic790599.png "Login Settings")
+    ![ログイン設定](./media/topdesk-public-tutorial/ic790599.png "[Login Settings]")
 
 4. **[Login Settings]** メニューを展開し、 **[General]** をクリックします。
    
-    ![General](./media/topdesk-public-tutorial/ic790600.png "General")
+    ![全般](./media/topdesk-public-tutorial/ic790600.png "全般")
 
 5. **[SAML login]** 構成セクションの **[Public]** で、次の手順に従います。
    
-    ![Technical Settings](./media/topdesk-public-tutorial/ic790601.png "Technical Settings")
+    ![技術設定](./media/topdesk-public-tutorial/ic790601.png "技術設定")
    
     a. **[Download]** をクリックしてパブリック メタデータ ファイルをダウンロードし、コンピューターにローカルに保存します。
    
@@ -171,7 +171,7 @@ TOPdesk - Public で Azure AD シングル サインオンを構成するには�
    
 6. 証明書ファイルを作成するには、次の手順を実行します。
     
-    ![Certificate](./media/topdesk-public-tutorial/ic790606.png "Certificate")
+    ![[MSSQLSERVER のプロトコルのプロパティ]](./media/topdesk-public-tutorial/ic790606.png "Certificate")
     
     a. Azure Portal からダウンロードしたメタデータ ファイルを開きます。
     
@@ -183,11 +183,11 @@ TOPdesk - Public で Azure AD シングル サインオンを構成するには�
 
 7. **[Public]** セクションで、 **[Add]** をクリックします。
     
-    ![SAML ログイン](./media/topdesk-public-tutorial/ic790625.png "SAML ログイン")
+    ![SAML ログイン](./media/topdesk-public-tutorial/ic790625.png "[Public]")
 
 8. **[SAML configuration assistant]** ダイアログ ページで、次の手順を実行します。
     
-    ![SAML Configuration Assistant](./media/topdesk-public-tutorial/ic790608.png "SAML Configuration Assistant")
+    ![SAML 構成アシスタント](./media/topdesk-public-tutorial/ic790608.png "[SAML configuration assistant]")
     
     a. Azure Portal からダウンロードしたメタデータ ファイルをアップロードするには、 **[Federation Metadata]** で **[Browse]** をクリックします。
 
@@ -199,7 +199,7 @@ TOPdesk - Public で Azure AD シングル サインオンを構成するには�
 
     e. **[Display name]** テキスト ボックスに、構成の名前を入力します。
 
-    f. **[Save]** をクリックします。
+    f. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -265,7 +265,7 @@ Azure AD ユーザーが TOPdesk - Public にサインインできるように�
 
 3. [New Person] ダイアログで、次の手順を実行します。
    
-    ![New Person](./media/topdesk-public-tutorial/ic790629.png "New Person")
+    ![[New Person]\(新しいユーザー\)](./media/topdesk-public-tutorial/ic790629.png "新しいユーザー")
    
     a. [General] タブをクリックします。
 
@@ -273,7 +273,7 @@ Azure AD ユーザーが TOPdesk - Public にサインインできるように�
  
     c. アカウントの **[Site]** を選択します。
  
-    d. **[Save]** をクリックします。
+    d. **[保存]** をクリックします。
 
 > [!NOTE]
 > 他の TOPdesk - Public ユーザー アカウントの作成ツールまたは TOPdesk - Public から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。

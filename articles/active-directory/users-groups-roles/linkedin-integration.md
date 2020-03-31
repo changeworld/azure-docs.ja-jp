@@ -14,10 +14,10 @@ ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0bf65f69d9dcaf6de2236c98b56b58ec7e021099
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74025413"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>Azure Active Directory で LinkedIn アカウント接続を統合します。
@@ -67,7 +67,7 @@ ms.locfileid: "74025413"
 ### <a name="get-the-current-list-of-selected-users"></a>選択したユーザーの現在の一覧を取得する
 
 1. 管理者アカウントで Microsoft 365 にサインインします。
-1. [https://www.powershellgallery.com/packages/Az.ApplicationMonitor](https://linkedinselectedusermigration.azurewebsites.net/ ) にアクセスします。 LinkedIn アカウント接続に選択されているユーザーの一覧が表示されます。
+1. [https://tsiclientsample.azurewebsites.net/windFarmGen.html](https://linkedinselectedusermigration.azurewebsites.net/ ) にアクセスします。 LinkedIn アカウント接続に選択されているユーザーの一覧が表示されます。
 1. リストを CSV ファイルにエクスポートします。
 
 ### <a name="move-the-currently-selected-individual-users-to-a-group"></a>現在選択されている個々のユーザーのグループへの移行
@@ -93,17 +93,17 @@ ms.locfileid: "74025413"
 1. [Office 2016 管理用テンプレート ファイル (ADMX/ADML)](https://www.microsoft.com/download/details.aspx?id=49030) をダウンロードします。
 1. **ADMX** ファイルを抽出して中央のストアにコピーします。
 1. [グループ ポリシーの管理] を開きます。
-1. 次の設定を使用してグループ ポリシー オブジェクトを作成します。 **[ユーザーの構成]**  >  **[管理用テンプレート]**  >  **[Microsoft Office 2016]**  >  **[その他]**  >  **[LinkedIn の機能を Office アプリケーションで表示]** 。
+1. **[ユーザーの構成]**  >  **[管理用テンプレート]**  >  **[Microsoft Office 2016]**  >  **[その他]**  >  **[Show LinkedIn features in Office applications]\(Office アプリケーションに LinkedIn の機能を表示する\)** の設定でグループ ポリシー オブジェクトを作成します。
 1. **[有効]** または **[無効]** を選択します。
   
-   State | 効果
+   State | 結果
    ------ | ------
    **有効** | Office 2016 オプションで **Office アプリケーションでの LinkedIn の表示機能** 設定が有効になります。 組織内のユーザーは、各自の Office 2016 アプリケーションで LinkedIn の機能を使用できます。
    **Disabled** | Office 2016 オプションで **Office アプリケーションでの LinkedIn の表示機能** 設定が無効になり、エンドユーザーはこの設定を変更できません。 組織内のユーザーがその Office 2016 アプリケーションで LinkedIn の機能を使用することはできません。
 
 このグループ ポリシーが適用されるのは、ローカル コンピューターの Office 2016 アプリだけです。 ユーザーが各自の Office 2016 アプリで LinkedIn を無効にした場合でも、Office 365 で LinkedIn の機能が表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [LinkedIn のユーザーの同意とデータ共有](linkedin-user-consent.md)
 

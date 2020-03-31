@@ -13,10 +13,10 @@ ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 08/21/2019
 ms.openlocfilehash: a560f4f1399792a7b150b37c3c048ccc0079b98d
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74420787"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Azure SQL Database の長期的なバックアップ保有期間を管理する
@@ -88,7 +88,7 @@ LTR ポリシーを使用して保持されている特定のデータベース�
 **Get-AzSqlDatabaseLongTermRetentionBackup** および **Restore-AzSqlDatabase** の場合、次のいずれかのロールが必要です。
 
 - サブスクリプションの所有者ロール、または
-- SQL Server の共同作成者ロール、または
+- SQL Server 共同作成者ロールまたは
 - 次のアクセス許可を持つカスタム ロール:
 
    Microsoft.Sql/locations/longTermRetentionBackups/read  Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionBackups/read  Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/read
@@ -204,7 +204,7 @@ Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.Resour
 > [!NOTE]
 > ここから、SQL Server Management Studio を使用して、復元されたデータベースに接続し、必要なタスクを実行できます。たとえば、復元されたデータベースからデータを少し抽出して既存のデータベースにコピーしたり、既存のデータベースを削除し、復元されたデータベースの名前を既存のデータベース名に変更したりできます。 [ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - サービスによって生成された自動バックアップについては、[自動バックアップ](sql-database-automated-backups.md)に関する記事を参照してください。
 - バックアップの長期保存については、[バックアップの長期保存](sql-database-long-term-retention.md)に関する記事を参照してください。

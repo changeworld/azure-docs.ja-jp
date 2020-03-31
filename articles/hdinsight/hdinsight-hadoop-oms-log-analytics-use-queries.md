@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
 ms.openlocfilehash: 65e85548420116bdfcab87fe9f81a20e66226beb
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74803823"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor ログでクエリを実行して HDInsight クラスターを監視する
@@ -55,7 +55,7 @@ HDInsight クラスターの特定のメトリックを検索する方法を説�
     | where Type == "Heartbeat"
     ```
 
-1. 左側のメニューにあるオプションを使用して、詳しく調べることができます。 例:
+1. 左側のメニューにあるオプションを使用して、詳しく調べることができます。 次に例を示します。
 
     - 特定のノードからのログを表示するには、次のようにします。
 
@@ -121,13 +121,13 @@ search in (metrics_resourcemanager_queue_root_default_CL) *
 
 1. 編集または削除するアラートを選択します。
 
-1. 次のオプションがあります。 **[保存]** 、 **[破棄]** 、 **[無効化]** 、 **[削除]** です。
+1. **[保存]** 、 **[破棄]** 、 **[無効化]** 、および **[削除]** の各オプションがあります。
 
     ![HDInsight Azure Monitor ログ アラートの削除または編集](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
 
 詳細については、「[Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../azure-monitor/platform/alerts-metric.md)」を参照してください。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [Azure Monitor でログ クエリの使用を開始する](../azure-monitor/log-query/get-started-queries.md)
 * [Azure Monitor のビュー デザイナーを使用してカスタム ビューを作成する](../azure-monitor/platform/view-designer.md)

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.openlocfilehash: 532bbaf0b983b2d4310780686777cbe895afebe4
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76774616"
 ---
 # <a name="service-bus---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Service Bus - Azure Active Directory Access Control Service から Shared Access Signature 承認への移行
@@ -33,11 +33,11 @@ ACS に依存しているすべての既存アプリケーションに対して�
 
 ACS と Service Bus は、共有知識である*署名キー*を通して統合されます。 ACS 名前空間は署名キーを使用して認証トークンを署名します。Service Bus は署名キーを使用して、ペアの ACS 名前空間によってトークンが発行されていることを確認します。 ACS 名前空間は、サービス ID と承認規則を保持します。 承認ルールでは、外部 ID プロバイダーによって発行されたどのサービス ID とトークンが、Service Bus 名前空間グラフの一部に対しどのようなタイプのアクセスが可能かを、最長プレフィックス一致の形で定義します。
 
-たとえば ACS ルールでは、パス プレフィックス `/` への**送信**要求をサービス ID に付与できます。つまり、そのルールに基づいて ACS により発行されたトークンは、名前空間内のすべてのエンティティに対して送信する権限をクライアントに付与します。 パス プレフィックスが `/abc` の場合、ID による送信は `abc` という名前のエンティティか、またはそのプレフィックスの下に編成されたエンティティに制限されます。 この移行ガイドの読者は、すでにこれらの概念についてよく知っていることを前提としています。
+たとえば ACS ルールでは、パス プレフィックス  **への**送信`/`要求をサービス ID に付与できます。つまり、そのルールに基づいて ACS により発行されたトークンは、名前空間内のすべてのエンティティに対して送信する権限をクライアントに付与します。 パス プレフィックスが `/abc` の場合、ID による送信は `abc` という名前のエンティティか、またはそのプレフィックスの下に編成されたエンティティに制限されます。 この移行ガイドの読者は、すでにこれらの概念についてよく知っていることを前提としています。
 
 移行シナリオは、大きく分けて 3 つのカテゴリに分類されます。
 
-1.  **既定値を変更しない**。 自動生成される**所有者**サービス ID と ACS 名前空間の秘密キーを Service Bus 名前空間と組み合わせて渡す [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) オブジェクトを使用し、新しいルールを追加していない場合があります。
+1.  **既定値を変更しない**。 自動生成される[所有者](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider)サービス ID と ACS 名前空間の秘密キーを Service Bus 名前空間と組み合わせて渡す **SharedSecretTokenProvider** オブジェクトを使用し、新しいルールを追加していない場合があります。
 
 2.  **単純なルールのカスタム サービス ID**。 新しいサービス ID を追加し、新しいサービス ID それぞれに、ある特定のエンティティに対する **送信**、**リッスン**、および**管理**のアクセス許可を付与している場合があります。
 
@@ -53,7 +53,7 @@ ACS と Service Bus は、共有知識である*署名キー*を通して統合�
 
 アプリケーションが単純なルールのカスタム サービス ID を使用する場合、特定のキューのアクセスを制御する ACS サービス ID が作成されていれば移行は簡単です。 このシナリオは SaaS スタイルのソリューションのケースで多く見られます。このケースでは、各キューがテナント サイトやブランチ オフィスへのブリッジとして使用され、その特定のサイトに対してサービス ID が作成されます。 ここでは、それぞれのサービス ID は、キューで直接 Shared Access Signature ルールに移行できます。 サービス ID の名前を SAS ルールの名前にして、サービス ID キーを SAS ルール キーにすることができます。 そうすることで、SAS ルールの権限は、エンティティに対しそれぞれ該当する ACS ルールと同等に構成されます。
 
-この新しい追加の SAS 構成を ACS と統合された既存の名前空間に配置し、その後、ACS からの移行を [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) ではなく [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) を使用して実行します。 名前空間では ACS からのリンクを解除する必要はありません。
+この新しい追加の SAS 構成を ACS と統合された既存の名前空間に配置し、その後、ACS からの移行を [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) ではなく [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) を使用して実行します。 名前空間では ACS からのリンクを解除する必要はありません。
 
 ### <a name="complex-rules"></a>複雑なルール
 

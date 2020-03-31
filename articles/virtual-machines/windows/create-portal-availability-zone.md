@@ -16,10 +16,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: ''
 ms.openlocfilehash: c6f843693ccfa16f9b31027ba370242e0462b138
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74033891"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>Azure Portal を使用して可用性ゾーン内に Windows 仮想マシンを作成する
@@ -72,6 +72,6 @@ VM が可用性ゾーンに展開されると、その VM のマネージド デ
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、可用性ゾーン内に VM を作成する方法を説明しました。 Azure VM の[可用性](availability.md)の詳細を確認してください。

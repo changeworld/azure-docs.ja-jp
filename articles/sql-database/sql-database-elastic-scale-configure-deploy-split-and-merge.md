@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 50dbca0b3a761b72134eaa6cfed57e231be4ef13
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74421036"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>split-merge サービスをデプロイして、シャード化されたデータベース間でデータを移動する
@@ -57,13 +57,13 @@ split-merge ツールを使用すると、シャード化されたデータベ�
 1. 新しいデータベースを作成するか、または Split-Merge 操作用のステータス データベースとして使用する既存のデータベースを選択し、そのデータベースの接続文字列を取得します。
 
    > [!IMPORTANT]
-   > 現時点では、状態データベースでラテン語の照合順序 (SQL\_Latin1\_General\_CP1\_CI\_AS) を使用する必要があります。 詳細については、「 [Windows 照合順序名 (TRANSACT-SQL)](https://msdn.microsoft.com/library/ms188046.aspx)」をご覧ください。
+   > 現時点では、状態データベースでラテン語の照合順序 (SQL\_Latin1\_General\_CP1\_CI\_AS) を使用する必要があります。 詳細については、「[Windows 照合順序名 (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx)」を参照してください。
 
    Azure SQL DB では、通常、接続文字列の形式は次のようになります。
 
       `Server=<serverName>.database.windows.net; Database=<databaseName>;User ID=<userId>; Password=<password>; Encrypt=True; Connection Timeout=30`
 
-1. ElasticScaleMetadata 設定の **SplitMergeWeb** ロールと **SplitMergeWorker** ロールの両方のセクションに *.cscfg* ファイルの接続文字列を入力します。
+1. ElasticScaleMetadata 設定の *SplitMergeWeb* ロールと **SplitMergeWorker** ロールの両方のセクションに **.cscfg** ファイルの接続文字列を入力します。
 
 1. **SplitMergeWorker** ロールの場合は、**WorkerRoleSynchronizationStorageAccountConnectionString** 設定として Azure Storage への有効な接続文字列を入力します。
 

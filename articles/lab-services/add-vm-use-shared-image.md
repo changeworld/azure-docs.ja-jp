@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 08/02/2019
 ms.author: spelluru
 ms.openlocfilehash: c13b2c3d00a0ab0af0f7785feae645d907ffdaa3
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68775787"
 ---
 # <a name="add-a-vm-using-an-image-from-the-attached-shared-image-gallery"></a>接続されている共有イメージ ギャラリーのイメージを使って VM を追加する
 Azure DevTest Labs では、共有イメージ ギャラリーをラボに接続し、ラボで作成する VM のベースとしてギャラリー内のイメージを使用することができます。 共有イメージ ギャラリーをラボに接続する方法については、[共有イメージ ギャラリーの構成](configure-shared-image-gallery.md)に関する記事を参照してください。 この記事では、接続されている共有イメージ ギャラリーのイメージをベースとして使用してラボに VM を追加する方法について説明します。 
 
-## <a name="azure-portal"></a>Azure ポータル
+## <a name="azure-portal"></a>Azure portal
 このセクションでは、Azure portal を使用して、接続されている共有イメージ ギャラリーのイメージに基づいて VM をラボに追加する方法について説明します。 このセクションでは、Azure portal を使用して VM を作成するための詳細な手順については説明しません。 それらの詳細については、「[VM の作成 - Azure portal](devtest-lab-add-vm.md)」を参照してください。 ここでは、接続されているイメージ ギャラリーからイメージを選択し、使用するイメージのバージョンを選択する手順についてのみ説明します。 
 
 ラボに VM を追加するときに、接続されている共有イメージ ギャラリーのイメージを基本イメージとして選択できます。 
@@ -64,5 +64,5 @@ Resource Manager テンプレートの完全な例については、GitHub リ�
     ```
 2. `properties.SharedImageId` への以前の呼び出しで受け取った共有イメージの ID を渡して、仮想マシンで PUT メソッドを呼び出します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 共有イメージ ギャラリーをラボに接続して構成する方法については、[共有イメージ ギャラリーの構成](configure-shared-image-gallery.md)に関する記事を参照してください。

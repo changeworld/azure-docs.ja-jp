@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4be8290f12d64f0c556100c63ec159bd414c6fcb
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74382088"
 ---
 # <a name="how-to-give-risk-feedback-in-azure-ad-identity-protection"></a>方法:Azure AD Identity Protection でリスクに関するフィードバックを提供する
@@ -45,7 +45,7 @@ Azure AD ではフィードバックを使用して、基になるユーザー�
 
 リスクに関するフィードバックを Azure AD に提供するためのシナリオおよびメカニズムを次に示します。
 
-| シナリオ | フィードバックを提供する方法 | 内部的な動作 | メモ |
+| シナリオ | フィードバックを提供する方法 | 内部的な動作 | Notes |
 | --- | --- | --- | --- |
 | **サインインのセキュリティが侵害されていない (偽陽性)** <br> "危険なサインイン" レポートには、危険なサインイン ([リスクの状態] = [危険]) が表示されていますが、サインインが侵害されていなかった場合。 | サインインを選択し、[サインインを安全と確認しますか?] をクリックします。 | Azure AD はサインインの集約リスクを "なし" ([リスクの状態] = [安全であるとの確認済み]、[リスク レベル (集約)] = [-]) に移し、ユーザー リスクへの影響を反転します。 | 現時点では、[サインインを安全と確認しますか?] オプションは、"危険なサインイン" レポートでのみ使用できます。 |
 | **サインインのセキュリティが侵害された (真陽性)** <br> "危険なサインイン" レポートには、危険なサインイン ([リスクの状態] = [危険]) が低い危険性 ([リスク レベル (集約)] = [低]) で表示されており、そのサインインが実際に侵害された場合。 | サインインを選択し、[サインインを侵害ありと確認しますか?] をクリックします。 | Azure AD サインインの集約リスクとユーザー リスクを "高" に変更します ([リスクの状態] = [セキュリティ侵害を確認しました]、[リスク レベル] = [高])。 | 現時点では、[サインインを侵害ありと確認しますか?] オプションは、"危険なサインイン" レポートでのみ使用できます。 |
@@ -58,6 +58,6 @@ Identity Protection のユーザー リスク検出に関するフィードバ�
 
 !["危険なユーザー" レポートの [リスク処理状態]](./media/howto-identity-protection-risk-feedback/risky-users-provide-feedback.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Active Directory Identity Protection のリスク検出リファレンス](risk-events-reference.md)

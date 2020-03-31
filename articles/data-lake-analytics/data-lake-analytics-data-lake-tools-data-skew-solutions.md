@@ -9,10 +9,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/16/2016
 ms.openlocfilehash: 9ff7ba5f04a8c1862f8ef136f8f3f6900f00a431
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71802548"
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>Azure Data Lake Tools for Visual Studio を使用してデータ スキュー問題を解決する
@@ -30,7 +30,7 @@ Azure Data Lake Tools for Visual Studio は、ジョブにおいてデータ ス
 
 ## <a name="solution-1-improve-table-partitioning"></a>解決策 1: テーブルのパーティションを改善する
 
-### <a name="option-1-filter-the-skewed-key-value-in-advance"></a>オプション 1:傾斜したキーの値を事前にフィルター処理する
+### <a name="option-1-filter-the-skewed-key-value-in-advance"></a>オプション 1: 傾斜したキーの値を事前にフィルター処理する
 
 ビジネス ロジックに影響を与えないなら、事前に頻度の高い値をフィルター処理できます。 たとえば、GUID 列に多数の 000 000-000 がある場合は、その値の集計は避けたいかもしれません。 集計前に「WHERE GUID != “000-000-000”」と入力して、頻度の高い値をフィルター処理することができます。
 
@@ -38,17 +38,17 @@ Azure Data Lake Tools for Visual Studio は、ジョブにおいてデータ ス
 
 前述の例では、国や地域全体の税務監査状況だけを確認するのであれば、ID 番号をキーとして選択してデータ分散を改善することができます。 異なるパーティションやディストリビューション キーを選択することでデータをより均等に分散できる場合もありますが、それがビジネス ロジックに影響を与えないように注意する必要があります。 たとえば、各州の納税額の合計を計算するには、_州_ をパーティション キーとして指定します。 問題が改善されない場合は、オプション 3 を試してみます。
 
-### <a name="option-3-add-more-partition-or-distribution-keys"></a>オプション 3: パーティション キーまたはディストリビューション キーを追加する
+### <a name="option-3-add-more-partition-or-distribution-keys"></a>オプション 3:パーティション キーまたはディストリビューション キーを追加する
 
 _州_ のみをパーティション キーとして使用する代わりに、パーティションに 2 つ以上のキーを使用することができます。 たとえば、_郵便番号_ を追加のパーティション キーとして加えて、データ パーティションのサイズを削減し、データをより均等に分散することを検討してもよいでしょう。
 
-### <a name="option-4-use-round-robin-distribution"></a>オプション 4: ラウンドロビン分散を使用する
+### <a name="option-4-use-round-robin-distribution"></a>オプション 4:ラウンドロビン分散を使用する
 
 パーティションとディストリビューションに適切なキーが見つからない場合は、ラウンドロビン分散を使用することができます。 ラウンドロビン分散はすべての行を均等に処理し、対応するバケットにランダムに配置します。 データは均等に分散されますが、地域情報を失い、一部の操作においてジョブのパフォーマンスが削減されるという欠点もあります。 さらに、いずれにしても傾斜キーの集計を行うという場合は、データ スキュー問題はなくなりません。 ラウンドロビン分散の詳細については、「[CREATE TABLE (U-SQL): Creating a Table with Schema (CREATE TABLE (U-SQL): スキーマを使用してテーブルを作成する)](/u-sql/ddl/tables/create/managed/create-table-u-sql-creating-a-table-with-schema#dis_sch)」の「U-SQL Table Distributions (U-SQL テーブルの分散)」を参照してください。
 
 ## <a name="solution-2-improve-the-query-plan"></a>解決策 2: クエリ プランを改善する
 
-### <a name="option-1-use-the-create-statistics-statement"></a>オプション 1:CREATE STATISTICS ステートメントを使用する
+### <a name="option-1-use-the-create-statistics-statement"></a>オプション 1: CREATE STATISTICS ステートメントを使用する
 
 U-SQL では、CREATE STATISTICS ステートメントをテーブルで提供します。 このステートメントは、テーブルに格納された値分布などのデータの特性に関する詳細情報を、クエリ オプティマイザーに提供します。 ほとんどのクエリでは、クエリ オプティマイザーは高品質のクエリ プランに必要な統計情報を既に生成しています。 場合によっては、CREATE STATISTICS で追加の統計情報を作成したり、またはクエリ デザインを変更したりすることで、クエリのパフォーマンスを向上させる必要があるでしょう。 詳細については、「[CREATE STATISTICS (U-SQL)](/u-sql/ddl/statistics/create-statistics)」ページを参照してください。
 
@@ -97,7 +97,7 @@ U-SQL では、CREATE STATISTICS ステートメントをテーブルで提供�
                 ON @Sessions.Query == @Campaigns.Query
         ;   
 
-### <a name="option-3-use-rowcount"></a>オプション 3: ROWCOUNT を使用する  
+### <a name="option-3-use-rowcount"></a>オプション 3:ROWCOUNT を使用する  
 SKEWFACTOR に加えて、特定の傾斜キー結合については、結合された一方の行セットが小さいことがわかっている場合、JOIN の前に U-SQL ステートメントに ROWCOUNT のヒントを追加してオプティマイザーに認識させることができます。 これによりオプティマイザーは、ブロードキャストの結合方法を選択してパフォーマンスを改善することができます。 ただし、ROWCOUNT はデータ スキュー問題の対処にある程度役立ちますが、問題を解決するわけではありません。
 
     OPTION(ROWCOUNT = n)
@@ -126,7 +126,7 @@ SKEWFACTOR に加えて、特定の傾斜キー結合については、結合さ
 
 複雑な処理ロジックに対応するユーザー定義演算子を構築することもあるでしょう。適切に構築されたレジューサーおよびコンバイナーは、一部のケースにおいてデータ スキュー問題を軽減する場合があります。
 
-### <a name="option-1-use-a-recursive-reducer-if-possible"></a>オプション 1:可能な限り再帰的なレジューサーを使用する
+### <a name="option-1-use-a-recursive-reducer-if-possible"></a>オプション 1: 可能な限り再帰的なレジューサーを使用する
 
 既定では、ユーザー定義レジューサーは非再帰モードで実行されます。これは、キーの作業負荷が軽減された場合、その負荷が 1 つの頂点に配布されることを意味します。 しかし、データがスキューされている場合、膨大なデータ セットが 1 つの頂点で処理され、長いあいだ実行されることがあります。
 

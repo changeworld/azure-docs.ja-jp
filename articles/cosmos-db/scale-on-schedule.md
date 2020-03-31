@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: mjbrown
 ms.openlocfilehash: 68ba40ea212c061fa5c8bbddc47ea0dfc6d8caa4
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75934948"
 ---
 # <a name="scale-azure-cosmos-db-throughput-by-using-azure-functions-timer-trigger"></a>Azure Functions のタイマー トリガーを使用して Azure Cosmos DB のスループットをスケーリングする

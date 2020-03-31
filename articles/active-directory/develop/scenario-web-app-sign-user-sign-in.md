@@ -15,10 +15,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: cbec6c5644690f6d7e522294a37c8ea5e2d49e30
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76701520"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>ユーザーをサインインさせる Web アプリ:サインインとサインアウト
@@ -34,7 +34,7 @@ ms.locfileid: "76701520"
 
 ### <a name="sign-in-button"></a>サインイン ボタン
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 ASP.NET Core では、サインイン ボタンは `Views\Shared\_LoginPartial.cshtml` で公開されます。 認証済みのアカウントがない場合にのみ表示されます。 つまり、ユーザーがまだサインインしていない場合やサインアウト済みの場合に表示されます。
 
@@ -52,7 +52,7 @@ else
 }
 ```
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 ASP.NET MVC では、サインアウト ボタンは `Views\Shared\_LoginPartial.cshtml` で公開されます。 認証済みのアカウントがある場合にのみ表示されます。 つまり、ユーザーが既にサインインしている場合に表示されます。
 
@@ -69,7 +69,7 @@ else
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Java のクイックスタートでは、サインイン ボタンは [main/resources/templates/index.html](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/src/main/resources/templates/index.html) ファイルに配置されています。
 
@@ -91,7 +91,7 @@ Java のクイックスタートでは、サインイン ボタンは [main/reso
 </html>
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Python のクイックスタートでは、サインイン ボタンはありません。 分離コードは、Web アプリのルートに到達すると、ユーザーにサインインを求めるメッセージを自動的に表示します。 [app.py#L14-L18](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/0.1.0/app.py#L14-L18) を参照してください。
 
@@ -107,13 +107,13 @@ def index():
 
 ### <a name="signin-action-of-the-controller"></a>コントローラーの `SignIn` アクション
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 ASP.NET では、Web アプリの **[サインイン]** ボタンを選択すると、`AccountController` コントローラーの `SignIn` アクションがトリガーされます。 以前のバージョンの ASP.NET Core テンプレートでは、`Account` コントローラーは Web アプリに埋め込まれていました。 コントローラーは ASP.NET Core フレームワークの一部になったため、これは当てはまらなくなりました。
 
 `AccountController` 用のコードは、ASP.NET Core リポジトリから [AccountController.cs](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs) で入手できます。 アカウント制御では、Microsoft ID プラットフォーム エンドポイントへのリダイレクトによって、ユーザーにチャレンジを行います。 詳細については、ASP.NET Core の一部として提供されている [SignIn](https://github.com/aspnet/AspNetCore/blob/f3e6b74623d42d5164fd5f97a288792c8ad877b6/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs#L23-L31) メソッドを参照してください。
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 ASP.NET では、サインアウトは、コントローラー (例: [AccountController.cs#L16-L23](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L16-L23)) の `SignOut()` メソッドからトリガーされます。 このメソッドは、(ASP.NET Core での動作とは対照的に) ASP.NET フレームワークの一部ではありません。 リダイレクト URI を提案した後に OpenID サインイン チャレンジを送信します。
 
@@ -128,7 +128,7 @@ public void SignIn()
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Java では、サインアウトは、Microsoft ID プラットフォームの `logout` エンドポイントを直接呼び出し、`post_logout_redirect_uri` 値を提供することによって処理されます。 詳細については、[AuthPageController.java#L30-L48](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L30-L48) を参照してください。
 
@@ -156,7 +156,7 @@ public class AuthPageController {
     // More code omitted for simplicity
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 他のプラットフォームとは異なり、MSAL.Python では、ユーザーのサインインをログイン ページから実行できるようにしています。 [app.py#L20-L28](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L20-L28) を参照してください。
 
@@ -216,19 +216,19 @@ Web アプリによってユーザーが `logout` エンドポイントにリダ
 
 ### <a name="application-registration"></a>アプリケーションの登録
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 アプリケーションの登録中に、ログアウト後の URI を登録します。 このチュートリアルでは、 **[認証]** ページの **[詳細設定]** セクションの **[ログアウト URL]** フィールドに `https://localhost:44321/signout-oidc` と登録しました。 詳細については、「[webApp アプリを登録する](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp)」を参照してください。
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 アプリケーションの登録中に、ログアウト後の URI を登録します。 このチュートリアルでは、 **[認証]** ページの **[詳細設定]** セクションの **[ログアウト URL]** フィールドに `https://localhost:44308/Account/EndSession` と登録しました。 詳細については、「[webApp アプリを登録する](https://github.com/Azure-Samples/active-directory-dotnet-web-single-sign-out#register-the-service-app-webapp-distributedsignout-dotnet)」を参照してください。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 アプリケーションの登録中に、ログアウト後の URI を登録します。 このチュートリアルでは、 **[認証]** ページの **[詳細設定]** セクションの **[ログアウト URL]** フィールドに `http://localhost:8080/msal4jsample/sign_out` と登録しました。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 アプリケーションの登録中に、追加のログアウト URL を登録する必要はありません。 アプリはそのメイン URL でコールバックされます。
 
@@ -236,7 +236,7 @@ Web アプリによってユーザーが `logout` エンドポイントにリダ
 
 ### <a name="sign-out-button"></a>サインアウト ボタン
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 ASP.NET Core では、サインアウト ボタンは `Views\Shared\_LoginPartial.cshtml` で公開されます。 認証済みのアカウントがある場合にのみ表示されます。 つまり、ユーザーが既にサインインしている場合に表示されます。
 
@@ -257,7 +257,7 @@ else
 }
 ```
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 ASP.NET MVC では、サインアウト ボタンは `Views\Shared\_LoginPartial.cshtml` で公開されます。 認証済みのアカウントがある場合にのみ表示されます。 つまり、ユーザーが既にサインインしている場合に表示されます。
 
@@ -283,7 +283,7 @@ else
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Java のクイックスタートでは、サインアウト ボタンは main/resources/templates/auth_page.html ファイルにあります。
 
@@ -298,7 +298,7 @@ Java のクイックスタートでは、サインアウト ボタンは main/re
 ...
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Python のクイックスタートでは、サインアウト ボタンは [templates/index.html#L10](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/templates/index.html#L10) ファイルに配置されています。
 
@@ -321,7 +321,7 @@ Python のクイックスタートでは、サインアウト ボタンは [temp
 
 ### <a name="signout-action-of-the-controller"></a>コントローラーの `SignOut` アクション
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 ASP.NET では、Web アプリの **[サインアウト]** ボタンを選択すると、`AccountController` コントローラーの `SignOut` アクションがトリガーされます。 以前のバージョンの ASP.NET Core テンプレートでは、`Account` コントローラーは Web アプリに埋め込まれていました。 コントローラーは ASP.NET Core フレームワークの一部になったため、これは当てはまらなくなりました。
 
@@ -333,7 +333,7 @@ ASP.NET では、Web アプリの **[サインアウト]** ボタンを選択す
   - ブラウザーからセッション Cookie を消去します。
   - ログアウト URL をコールバックします。 既定では、ログアウト URL は、サインアウト済みビューのページ [SignedOut.html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml) を表示します。 このページは ASP.NET Core の一部としても提供されています。
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 ASP.NET では、サインアウトは、コントローラー (例: [AccountController.cs#L25-L31](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L25-L31)) の `SignOut()` メソッドからトリガーされます。 このメソッドは、ASP.NET Core での動作とは対照的に、ASP.NET フレームワークの一部ではありません。 それでは次のことが行われます。
 
@@ -354,7 +354,7 @@ public void SignOut()
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Java では、サインアウトは、Microsoft ID プラットフォームの `logout` エンドポイントを直接呼び出し、`post_logout_redirect_uri` 値を提供することによって処理されます。 詳細については、[AuthPageController.java#L50-L60](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L50-L60) を参照してください。
 
@@ -372,7 +372,7 @@ Java では、サインアウトは、Microsoft ID プラットフォームの `
     }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ユーザーをサインアウトさせるコードは [app.py#L46-L52](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/48637475ed7d7733795ebeac55c5d58663714c60/app.py#L47-L48) に含まれています。
 
@@ -391,7 +391,7 @@ def logout():
 
 ログアウト後の URI により、アプリケーションはグローバル サインアウトに参加できるようになります。
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 ASP.NET Core OpenID Connect ミドルウェアでは、`OnRedirectToIdentityProviderForSignOut` という名前の OpenID Connect イベントを提供することで、お客様のアプリで Microsoft ID プラットフォーム `logout` エンドポイントへの呼び出しをインターセプトすることができます。 このイベントをサブスクライブする (そしてトークン キャッシュをクリアする) 方法の例については、[Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L156](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L156) を参照してください
 
@@ -403,7 +403,7 @@ ASP.NET Core OpenID Connect ミドルウェアでは、`OnRedirectToIdentityProv
     };
 ```
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 ASP.NET では、ミドルウェアに委任してサインアウトを実行し、セッション Cookie をクリアします。
 
@@ -420,11 +420,11 @@ public class AccountController : Controller
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Java のクイックスタートでは、ログアウト後のリダイレクト URI は index.html ページを表示するだけです。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Python のクイックスタートでは、ログアウト後のリダイレクト URI は index.html ページを表示するだけです。
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/05/2019
 ms.author: spelluru
 ms.openlocfilehash: 6cf3d2f82c98a3caab47ff48a600316747932b72
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70390046"
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>Azure DevTest Labs で仮想ネットワークを構成する
@@ -32,12 +32,12 @@ ms.locfileid: "70390046"
 ## <a name="configure-a-virtual-network-for-a-lab-using-the-azure-portal"></a>Azure ポータルを使用してラボ用の仮想ネットワークを構成する
 次に、ラボに既存の仮想ネットワーク (およびサブネット) を追加し、同じラボで VM を作成するときにそれを使用できるようにするための手順を説明します。 
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインする
 1. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 1. ラボの一覧で目的のラボを選択します。 
 1. ラボのメイン ウィンドウで、 **[構成とポリシー]** を選択します。
 
-    ![ラボの構成とポリシーにアクセスする](./media/devtest-lab-configure-vnet/policies-menu.png)
+    ![ラボの [構成とポリシー] にアクセスする](./media/devtest-lab-configure-vnet/policies-menu.png)
 1. **[外部リソース]** セクションで **[仮想ネットワーク]** を選択します。 現在のラボに構成した仮想ネットワークのほか、ラボ用に作成される既定の仮想ネットワークの一覧が表示されます。 
 1. **[+ 追加]** を選択します。
    
@@ -68,6 +68,6 @@ Azure の [Virtual Network ドキュメント](https://docs.microsoft.com/azure/
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ラボに目的の仮想ネットワークを追加したら、次は [ラボに VM を追加](devtest-lab-add-vm.md)します。
 

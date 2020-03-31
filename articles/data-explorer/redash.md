@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 0380689ae6ca81e3f31a07f1e205c7773fdea8c6
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76773950"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-redash"></a>Azure Data Explorer からのデータを Redash で視覚化する

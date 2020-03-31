@@ -9,10 +9,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: db2336fb79207ada24b71e0e64f0aaaab543e4da
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73241548"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Visual Studio Code 用の PySpark 対話型環境を設定する
@@ -52,19 +52,19 @@ sudo apt-get install libkrb5-dev
 sudo apt-get install python-dev
 ```
 
-VSCode を再起動して、**HDInsight: PySpark Interactive を実行しているスクリプト エディターに戻ります。**
+VSCode を再起動して、**HDInsight: PySpark Interactive** を実行しているスクリプト エディターに戻ります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ### <a name="demo"></a>デモ
-* HDInsight for VS Code:[ビデオ](https://go.microsoft.com/fwlink/?linkid=858706)
+* HDInsight for VS Code: [ビデオ](https://go.microsoft.com/fwlink/?linkid=858706)
 
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
 * [Azure HDInsight Tool for Visual Studio Code を使用する](hdinsight-for-vscode.md)
 * [Azure Toolkit for IntelliJ を使用して Apache Spark Scala アプリケーションを作成して送信する](spark/apache-spark-intellij-tool-plugin.md)
 * [Azure Toolkit for IntelliJ を使用して SSH 経由で Apache Spark アプリケーションをリモートでデバッグする](spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md)
 * [Azure Toolkit for IntelliJ を使用して VPN 経由で Apache Spark アプリケーションをリモートでデバッグする](spark/apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Azure Toolkit for Eclipse の HDInsight Tools を使用して Apache Spark アプリケーションを作成する](spark/apache-spark-eclipse-tool-plugin.md)
+* [Azure Toolkit for Eclipse 上の HDInsight Tools を使用して Apache Spark アプリケーションを作成する](spark/apache-spark-eclipse-tool-plugin.md)
 * [HDInsight 上の Apache Spark クラスターで Apache Zeppelin Notebook を使用する](spark/apache-spark-zeppelin-notebook.md)
 * [HDInsight 用の Apache Spark クラスター内の Jupyter Notebook で使用可能なカーネル](spark/apache-spark-jupyter-notebook-kernels.md)
 * [Jupyter Notebook で外部のパッケージを使用する](spark/apache-spark-jupyter-notebook-use-external-packages.md)

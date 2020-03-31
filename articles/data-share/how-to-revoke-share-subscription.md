@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.openlocfilehash: 97f672b266c2df6956282aea6dec8d5207944943
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73476376"
 ---
 # <a name="how-to-revoke-a-consumers-share-subscription-in-azure-data-share"></a>Azure Data Share でコンシューマーの共有サブスクリプションを取り消す方法
@@ -25,5 +25,5 @@ Azure Data Share で、送信した共有に移動し、 **[Share Subscriptions]
 
 削除する共有サブスクリプションの受信者の横にあるボックスをオンにして、 **[取り消す]** をクリックします。 コンシューマーは、所有するデータの更新を取得しなくなります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 詳細については、[データ共有を監視する](how-to-monitor.md)方法に関する記述を参照してください。

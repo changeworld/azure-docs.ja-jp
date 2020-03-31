@@ -6,10 +6,10 @@ ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
 ms.openlocfilehash: c7d778a0afca4b3552976526d58a2cb2efe12161
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75689615"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>PowerShell を使用して、削除された App Service アプリを復元する

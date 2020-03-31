@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.date: 5/6/2019
 ms.topic: conceptual
 ms.openlocfilehash: 46aa411826dd3ea578a2d98b0fe631ab0a12ef4a
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74769882"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql---single-server"></a>Azure Kubernetes Service と Azure Database for PostgreSQL - Single Server を接続する
@@ -47,11 +47,11 @@ az network nic list --resource-group nodeResourceGroup -o table
 OSBA を使用すると、Azure Database for PostgreSQL サーバーを作成し、Kubernetes のネイティブ言語で AKS クラスターにそれをバインドできます。 OSBA と Azure Database for PostgreSQL を併用する方法については、[OSBA GitHub ページ](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/postgresql.md)で確認できます。 
 
 
-## <a name="connection-pooling"></a>接続プール
+## <a name="connection-pooling"></a>接続のプール
 接続プーラーにより、データベースへの新しい接続の作成と終了に関連するコストと時間が最小限に抑えられます。 プールは、再利用できる接続のコレクションです。 
 
 PostgreSQL では複数の接続プーラーを使用できます。 その 1 つは [PgBouncer](https://pgbouncer.github.io/) です。 Microsoft Container Registry では、提供されている軽量なコンテナー化された PgBouncer をサイドカーで使用して、AKS から Azure Database for PostgreSQL への接続をプールできます。 このイメージにアクセスして使用する方法については、[Docker Hub のページ](https://hub.docker.com/r/microsoft/azureossdb-tools-pgbouncer/)をご覧ください。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 -  [Azure Kubernetes Service クラスターを作成する](../aks/kubernetes-walkthrough.md)

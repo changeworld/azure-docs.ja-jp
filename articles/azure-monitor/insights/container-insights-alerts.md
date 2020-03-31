@@ -4,10 +4,10 @@ description: この記事では、コンテナー用 Azure Monitor からのメ�
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 5d73f4399d10683597fb2a2e8a3a2ab4ba0d1165
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75730927"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>コンテナー用 Azure Monitor でパフォーマンスの問題に関するアラートを設定する方法
@@ -283,11 +283,11 @@ InsightsMetrics
 >コンテナー リソースの使用率に関するアラート ルールを作成する次の手順では、「[ログ アラートの API の基本設定を切り替える](../platform/alerts-log-api-switch.md)」の説明に従って、新しいログ アラート API に切り替える必要があります。
 >
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. Azure portal で、 **[Log Analytics ワークスペース]** を検索して選択します。
 3. Log Analytics ワークスペースの一覧で、コンテナーの Azure Monitor をサポートしているワークスペースを選択します。 
 4. 左側のウィンドウで、 **[ログ]** を選択し、Azure Monitor ログの ページを開きます。 このページを使用して、Azure Log Analytics クエリを記述し、実行することができます。
-5. [ログ] ページで、前述のクエリの1つを [検索クエリ] のフィールドに貼り付け、[実行**] を選択して結果を検証します。 この手順を実行しない場合、 **[+ 新しいアラート]** オプションを選択することはできません。
+5. **[ログ]** ページで、前述の[クエリ](#resource-utilization-log-search-queries)の1つを **[検索クエリ]** のフィールドに貼り付け、 **[実行]** を選択して結果を検証します。 この手順を実行しない場合、 **[+ 新しいアラート]** オプションを選択することはできません。
 6. **[+ 新しいアラート]** を選択してログアラートを作成します。
 7. **[条件]** セクションで、事前定義済みのカスタム ログ条件の **[Whenever the Custom log search is \<logic undefined>]\(カスタム ログ検索が <ロジックが定義されていません> であるときは常に\)** を選択します。 シグナルの種類として **[custom log search]\(カスタム ログ検索\)** が自動的に選択されます。これは、Azure Monitor のログ ページで直接アラート ルールを作成しているためです。  
 8. 前述の[クエリ](#resource-utilization-log-search-queries)のいずれかを **[検索クエリ]** フィールドに貼り付けます。

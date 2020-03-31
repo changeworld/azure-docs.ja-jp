@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
 ms.openlocfilehash: 28278f76497d6e9d0fee221bb4ef32fe6d369db0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75966659"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Avere vFXT for Azure のディザスター リカバリーに関するガイダンス

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: ced075395c4f2a51308d5d3b0cbe4c0153a17816
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75931480"
 ---
 # <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>StorSimple Snapshot Manager での MMC メニュー操作の使用

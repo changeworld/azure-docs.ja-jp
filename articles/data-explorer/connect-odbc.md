@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/30/2019
 ms.openlocfilehash: 1b2e7a79eb932f5b971dda1d5d51b650789394db
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74034030"
 ---
 # <a name="connect-to-azure-data-explorer-with-odbc"></a>ODBC を使って Azure Data Explorer に接続する
@@ -70,6 +70,6 @@ ODBC Driver for SQL Server を使用して ODBC データ ソースを構成す�
 
     ![テストに成功しました](media/connect-odbc/test-succeeded.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Tableau から Azure Data Explorer に接続する](tableau.md)

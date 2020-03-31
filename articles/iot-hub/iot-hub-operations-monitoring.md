@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: nberdy
 ms.openlocfilehash: 84f28a1cb411e7df156fc08fa683efe7f83eda64
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60345722"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>IoT Hub 操作の監視 (非推奨)
@@ -27,7 +27,7 @@ IoT Hub では、次の 6 つのカテゴリのイベントを監視します。
 * デバイス ID の操作
 * デバイス テレメトリ
 * クラウドからデバイスへのメッセージ
-* Connections
+* 接続
 * ファイルのアップロード
 * メッセージ ルーティング
 
@@ -120,7 +120,7 @@ C2D コマンド カテゴリでは、IoT Hub で発生し、かつクラウド�
 }
 ```
 
-### <a name="connections"></a>Connections
+### <a name="connections"></a>接続
 
 接続のカテゴリでは、デバイスが IoT Hub に接続したときに発生する、または IoT Hub から切断したときのエラーを追跡します。 このカテゴリの追跡は、許可されていない接続の試行を識別する場合、および接続状態が悪い領域内で接続が失われたタイミングを突き止める場合に便利です
 
@@ -264,7 +264,7 @@ class Program
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 

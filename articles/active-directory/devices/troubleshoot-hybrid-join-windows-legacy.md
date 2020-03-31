@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e168deea1ba442d48f483264c1e97ce618040f18
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74379115"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>ハイブリッド Azure Active Directory 参加済みダウンレベル デバイスのトラブルシューティング 
@@ -46,7 +46,7 @@ Windows 10 または Windows Server 2016 については、「[Windows 10 と Wi
 - デバイスの初回登録/参加は、サインインまたはロック/ロック解除のいずれかのタイミングで試行するように構成されています。 タスク スケジューラのタスクによってトリガーされる 5 分間の待ち時間が生じる場合があります。 
 - Windows 7 SP1 または Windows Server 2008 R2 SP1 の場合、[KB4284842](https://support.microsoft.com/help/4284842) がインストールされていることを確認してください。 この更新によって、今後、パスワードの変更後、保護されているキーにお客様がアクセスできなくなったことによる認証エラーを防止できます。
 
-## <a name="step-1-retrieve-the-registration-status"></a>手順 1:登録状態を取得する 
+## <a name="step-1-retrieve-the-registration-status"></a>手順 1: 登録状態を取得する 
 
 **登録状態を確認するには:**  
 
@@ -58,7 +58,7 @@ Windows 10 または Windows Server 2016 については、「[Windows 10 と Wi
 
 ![[Workplace Join for Windows (Windows の社内参加)]](./media/troubleshoot-hybrid-join-windows-legacy/01.png)
 
-## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>手順 2:ハイブリッド Azure AD 参加状態を評価する 
+## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>手順 2: ハイブリッド Azure AD 参加状態を評価する 
 
 デバイスがハイブリッド Azure AD 参加済みではなかった場合は、"参加" ボタンをクリックすることでハイブリッド Azure AD 参加を試みることができます。 ハイブリッド Azure AD 参加の試みに失敗した場合は、エラーの詳細が表示されます。
 
@@ -91,7 +91,7 @@ Windows 10 または Windows Server 2016 については、「[Windows 10 と Wi
 
     ![[Workplace Join for Windows (Windows の社内参加)]](./media/troubleshoot-hybrid-join-windows-legacy/05.png)
 
-状態情報は、**Applications and Services Log\Microsoft-Workplace Join** の下にあるイベント ログでも確認できます。
+状態に関する情報は、**Applications and Services Log\Microsoft-Workplace Join** のイベント ログで確認することもできます。
   
 **ハイブリッド Azure AD 参加に失敗する最も一般的な原因:** 
 
@@ -103,6 +103,6 @@ Windows 10 または Windows Server 2016 については、「[Windows 10 と Wi
    - または、ドメインが管理されている場合は、シームレス SSO が構成されていないか機能していない。
    - ユーザーがデバイスの上限に達している。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ご不明な点がある場合は、[デバイス管理の FAQ](faq.md) をご覧ください。  

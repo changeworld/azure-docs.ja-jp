@@ -14,10 +14,10 @@ ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: dfca2b1311f1b55f19d5709f7c9ca7c3e366769c
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76695740"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>国内クラウド環境で MSAL を使用する
@@ -55,7 +55,7 @@ Azure Government サブスクリプションをお持ちでない場合は、開
 
 特定のプログラミング言語で国内クラウドを使用する方法の詳細については、お使いの言語に一致するタブを選択してください。
 
-## <a name="nettabdonet"></a>[.NET](#tab/donet)
+## <a name="net"></a>[.NET](#tab/donet)
 
 MSAL.NET を使用して、国内クラウドへのユーザーのサインインを実行し、トークンを取得し、Microsoft Graph API を呼び出すことができます。
 
@@ -64,7 +64,7 @@ MSAL.NET を使用して、国内クラウドへのユーザーのサインイ�
 - ユーザーのサインインを実行してトークンを取得するには、次のチュートリアルに従います: [ソブリン クラウドで Microsoft ID プラットフォームを使用して ASP.NET Core Web アプリのサインイン ユーザーを構築する](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-4-Sovereign#build-an-aspnet-core-web-app-signing-in-users-in-sovereign-clouds-with-the-microsoft-identity-platform)。
 - Microsoft Graph API を呼び出すには、次のチュートリアルに従います: [Microsoft の国内クラウドで職場と学校のアカウントを使用してサインインするユーザーの代わりに Microsoft ID プラットフォームを使用して ASP.NET Core 2.x Web アプリから Microsoft Graph API を呼び出す](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-4-Sovereign-Call-MSGraph#using-the-microsoft-identity-platform-to-call-the-microsoft-graph-api-from-an-an-aspnet-core-2x-web-app-on-behalf-of-a-user-signing-in-using-their-work-and-school-account-in-microsoft-national-cloud)。
 
-## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ソブリン クラウド用の MSAL.js アプリケーションを有効にするには、次のようにします。
 
@@ -136,7 +136,7 @@ const myMSALObj = new UserAgentApplication(msalConfig);
 
    すべての国内クラウド用の Microsoft Graph エンドポイントを見つけるには、[国内クラウド内の Microsoft Graph エンドポイント](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)に関する記事を参照してください。
 
-## <a name="pythontabpython"></a>[Python](#tab/python)
+## <a name="python"></a>[Python](#tab/python)
 
 ソブリン クラウド用の MSAL Python アプリケーションを有効にするには、次のようにします。
 
@@ -159,7 +159,7 @@ const myMSALObj = new UserAgentApplication(msalConfig);
     "scope": "User.Read"
     ```
     
-## <a name="javatabjava"></a>[Java](#tab/java)
+## <a name="java"></a>[Java](#tab/java)
 
 ソブリン クラウド用の MSAL for Java アプリケーションを有効にするには、次のようにします。
 
@@ -182,7 +182,7 @@ const myMSALObj = new UserAgentApplication(msalConfig);
 "scope": "User.Read"
 ```
 
-## <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
+## <a name="objective-c"></a>[Objective-C](#tab/objc)
 
 iOS および macOS 用の MSAL は、各国のクラウドでトークンを取得するために使用できますが、`MSALPublicClientApplication` を作成する場合は追加の構成が必要です。
 
@@ -205,7 +205,7 @@ MSALPublicClientApplication *application =
                 [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&applicationError];
 ```
 
-## <a name="swifttabswift"></a>[Swift](#tab/swift)
+## <a name="swift"></a>[Swift](#tab/swift)
 
 iOS および macOS 用の MSAL は、各国のクラウドでトークンを取得するために使用できますが、`MSALPublicClientApplication` を作成する場合は追加の構成が必要です。
 

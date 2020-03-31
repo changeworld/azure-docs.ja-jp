@@ -13,10 +13,10 @@ ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5ad84b8910e8d4f8af9845c33c22d128e317dedc
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74232104"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Azure Active Directory のレポートと監視のデプロイを計画する
@@ -97,7 +97,7 @@ Azure AD の監視とレポートをデプロイするには、Azure AD テナ�
 
 * ビジネスのニーズを満たすためにソリューションに必要
 * ビジネスのニーズを満たすために、存在することが望ましい
-* 適用不可
+* 適用なし
 
 |領域 |説明 |
 |-|-|
@@ -111,7 +111,7 @@ Azure AD の監視とレポートをデプロイするには、Azure AD テナ�
 
 Azure AD の監視では、Azure AD のアクティビティ ログを、ビジネスのニーズに最も合ったシステムにルーティングできます。 その後は、それらのログを保持して長期的なレポートや分析に利用し、環境の分析情報を入手したり、SIEM ツールと統合したりできます。
 
-#### <a name="decision-flow-chartan-image-showing-what-is-described-in-subsequent-sectionsmediareporting-deployment-plandeploy-reporting-flow-diagrampng"></a>意思決定フロー チャート![後続のセクションの説明内容を示す画像](media/reporting-deployment-plan/deploy-reporting-flow-diagram.png)
+#### <a name="decision-flow-chartan-image-showing-what-is-described-in-subsequent-sections"></a>意思決定フロー チャート![後続のセクションの説明内容を示す画像](media/reporting-deployment-plan/deploy-reporting-flow-diagram.png)
 
 #### <a name="archive-logs-in-a-storage-account"></a>ログをストレージ アカウントにアーカイブする
 
@@ -189,7 +189,7 @@ Azure AD のロールを使用すると、自分のロールに応じて、Azure
 
  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) の実装を検討する 
 

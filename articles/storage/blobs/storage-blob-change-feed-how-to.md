@@ -9,10 +9,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.openlocfilehash: 75995eeb3f8255cb4c60d5be267f9c343edfea89
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74111852"
 ---
 # <a name="process-change-feed-in-azure-blob-storage-preview"></a>Azure Blob Storage の変更フィードを処理する (プレビュー)
@@ -369,6 +369,6 @@ private async Task<bool> IsSegmentConsumableAsync(ChangeFeed changeFeed, ChangeF
 >[!TIP]
 > セグメントでは、1 つまたは複数の *chunkFilePath* に変更フィード ログを含めることができます。 複数の *chunkFilePath* の場合、システムでは内部的にレコードを複数のシャードにパーティション分割して、公開スループットを管理します。 セグメントの各パーティションに相互排他的な BLOB の変更が含まれており、順序付けに違反することなく個別に処理できることが保証されます。 **ChangeFeedSegmentShardReader** クラスを使用すると、ご自分のシナリオで最も効率的な場合にシャード レベルでレコードを反復処理できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 変更フィード ログについて、さらに学習します。 [Azure Blob Storage の変更フィード (プレビュー)](storage-blob-change-feed.md) に関するページを参照してください

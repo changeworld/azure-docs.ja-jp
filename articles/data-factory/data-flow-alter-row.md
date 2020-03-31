@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
 ms.openlocfilehash: 0798a3f9ab45ce68086681e7aea96deeb9639f94
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75834535"
 ---
 # <a name="alter-row-transformation-in-mapping-data-flow"></a>マッピング データ フローでの行の変更変換
@@ -67,7 +67,7 @@ ms.locfileid: "75834535"
 
 ### <a name="example"></a>例
 
-以下の例は、受信ストリーム `SpecifyUpsertConditions` を受け取り、行の変更条件を 3 つ作成する、`CleanData` という行の変更変換です。 前の変換では、データベース内で行の挿入、更新、削除を実行するかどうかを決定する `alterRowCondition` という列が計算されます。 列の値に、行の変更ルールと一致する文字列値が含まれている場合、そのポリシーが割り当てられています。
+以下の例は、受信ストリーム `CleanData` を受け取り、行の変更条件を 3 つ作成する、`SpecifyUpsertConditions` という行の変更変換です。 前の変換では、データベース内で行の挿入、更新、削除を実行するかどうかを決定する `alterRowCondition` という列が計算されます。 列の値に、行の変更ルールと一致する文字列値が含まれている場合、そのポリシーが割り当てられています。
 
 Data Factory UX では、この変換は次の図のようになります。
 

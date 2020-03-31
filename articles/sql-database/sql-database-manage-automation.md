@@ -12,10 +12,10 @@ ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 9d826a75f05cf2031565f89e21d7f3667ecc8f17
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73822804"
 ---
 # <a name="managing-azure-sql-databases-using-azure-automation"></a>Azure Automation を使用した Azure SQL データベースの管理
@@ -32,7 +32,7 @@ Azure Automation でクラウド管理タスクを自動実行すれば、運用
 
 ## <a name="how-can-azure-automation-help-manage-azure-sql-databases"></a>Azure Automation を Azure SQL データベースの管理に役立てる方法
 
-[Azure PowerShell ツール](/powershell/azure/overview)で利用可能な [Azure SQL Database PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/servicemanagement/azure/#sql)を使用することにより、Azure Automation で Azure SQL データベースを管理できます。 Azure Automation には、このような Azure SQL Database PowerShell コマンドレットがあらかじめ用意されており、サービス内ですべての SQL DB 管理タスクを実行することができます。 Azure Automation 内のこれらのコマンドレットと別の Azure サービスのコマンドレットを組み合わせて、Azure サービスとサード パーティ システム全体の複雑なタスクを自動化することもできます。
+[Azure PowerShell ツール](https://docs.microsoft.com/powershell/module/servicemanagement/azure/#sql)で利用可能な [Azure SQL Database PowerShell コマンドレット](/powershell/azure/overview)を使用することにより、Azure Automation で Azure SQL データベースを管理できます。 Azure Automation には、このような Azure SQL Database PowerShell コマンドレットがあらかじめ用意されており、サービス内ですべての SQL DB 管理タスクを実行することができます。 Azure Automation 内のこれらのコマンドレットと別の Azure サービスのコマンドレットを組み合わせて、Azure サービスとサード パーティ システム全体の複雑なタスクを自動化することもできます。
 
 さらに、Azure Automation には、PowerShell を使用して SQL コマンドを発行することにより、SQL サーバーと直接通信する機能もあります。
 
@@ -43,10 +43,10 @@ Azure Automation でクラウド管理タスクを自動実行すれば、運用
 - [データベースがその最大サイズに近づいた場合の SQL テーブルの切り捨て](https://gallery.technet.microsoft.com/scriptcenter/Azure-Automation-Your-SQL-30f8736b)
 - [Azure SQL データベースにおけるテーブルの断片化率が高い場合のインデックス作成](https://gallery.technet.microsoft.com/scriptcenter/Indexes-tables-in-an-Azure-73a2a8ea)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここまで、Azure Automation の基本と Azure Automation を使用して Azure SQL データベースを管理する方法について説明しました。Azure Automation の詳細については、これらのリンクを参照してください。
 
 - [Azure Automation Overview (Azure Automation の概要)](../automation/automation-intro.md)
 - [初めての Runbook](../automation/automation-first-runbook-graphical.md)
-- [Azure Automation:クラウド内の SQL エージェント](https://azure.microsoft.com/blog/20../../azure-automation-your-sql-agent-in-the-cloud/) 
+- [Azure Automation: クラウド内の SQL エージェント](https://azure.microsoft.com/blog/20../../azure-automation-your-sql-agent-in-the-cloud/) 
