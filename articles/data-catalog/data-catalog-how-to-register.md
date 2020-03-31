@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 0c5fdac7df41fec3a6206dbd78af74b7f1b58c7f
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68736318"
 ---
 # <a name="register-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でのデータ ソースの登録
@@ -77,5 +77,5 @@ Data Catalog データ ソース登録ツールを使用して、登録された
 ## <a name="summary"></a>まとめ
 構造メタデータと記述メタデータがデータ ソースからカタログ サービスにコピーされるため、Data Catalog でデータ ソースを登録すると、データ ソースの検出と把握が容易になります。 データ ソースを登録すると、Data Catalog ポータルを使用してデータ ソースの注釈付け、管理、および検出ができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 データ ソースの登録の詳細については、「[Azure Data Catalog の概要](data-catalog-get-started.md)」チュートリアルをご覧ください。

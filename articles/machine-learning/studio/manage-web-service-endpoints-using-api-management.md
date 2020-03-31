@@ -10,14 +10,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: d0e9fff56949125c5fa797e0e4ef7e1183448dd0
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: cbe01ee9b8edeab349db484cea6c25dca32bf213
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168584"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218021"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>API Management を使用して Azure Machine Learning Studio (クラシック) Web サービスを管理する
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 ## <a name="overview"></a>概要
 このガイドでは、API Management を使用して Azure Machine Learning Studio (クラシック) Web サービスを管理する方法について簡単に説明します。
 
@@ -35,7 +38,7 @@ Azure API Management は、ユーザー アクセス、使用帯域幅の調整�
 
 Azure Machine Learning Web サービスは、API Management インスタンスを使って管理できます。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. **[+ リソースの作成]** を選択します。
 3. 検索ボックスに「API management」と入力して "API Management" リソースを選択します。
 4. **Create** をクリックしてください。
@@ -214,7 +217,7 @@ Web サービスを作成します。 **[Web サービス]** を展開し、 **[
 ![yes-to-publish](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
 
 ### <a name="test-the-web-service"></a>Web サービスをテストする
-AzureML web サービスは、RSS (要求/応答サービス) と BES (バッチ実行サービス) のエンドポイントで構成されます。 RSS は、同期の実行用です。 BES は、同期ジョブの実行用です。 次のサンプルの Python ソースを使用して、Web サービスをテストするには、Azure SDK for Python をダウンロードして、インストールする必要があります (「[Python のインストール方法](/azure/python/python-sdk-azure-install)」を参照)。
+AzureML web サービスは、RSS (要求/応答サービス) と BES (バッチ実行サービス) のエンドポイントで構成されます。 RSS は、同期の実行用です。 BES は、同期ジョブの実行用です。 次のサンプルの Python ソースを使用して、Web サービスをテストするには、Azure SDK for Python をダウンロードして、インストールする必要があります (「 [Python をインストールする方法](/azure/python/python-sdk-azure-install)」をご覧ください)。
 
 次のサンプルのソースには、実験の**workspace**、**service**、**api_key** が必要です。 Web サービス ダッシュボードの実験の **[要求/応答]** か **[バッチ実行]** をクリックするとワークスペースとサービスが表示されます。
 
@@ -245,9 +248,9 @@ RRS エンドポイントを簡単にテストするには、Web サービス �
 
     import urllib2
     import json
-    workspace = "<REPLACE WITH YOUR EXPERIMENT’S WEB SERVICE WORKSPACE ID>"
-    service = "<REPLACE WITH YOUR EXPERIMENT’S WEB SERVICE SERVICE ID>"
-    api_key = "<REPLACE WITH YOUR EXPERIMENT’S WEB SERVICE API KEY>"
+    workspace = "<REPLACE WITH YOUR EXPERIMENT'S WEB SERVICE WORKSPACE ID>"
+    service = "<REPLACE WITH YOUR EXPERIMENT'S WEB SERVICE SERVICE ID>"
+    api_key = "<REPLACE WITH YOUR EXPERIMENT'S WEB SERVICE API KEY>"
     data = {
     "Inputs": {
         "input1": {

@@ -1,8 +1,8 @@
 ---
 title: 招待リンクまたは電子メールを使用せずに B2B ゲストを追加する - Azure AD
 description: Azure Active Directory B2B コラボレーションの招待を利用しないでゲスト ユーザーが他のゲスト ユーザーを Azure AD に追加することができます。
-services: active-directory
 documentationcenter: ''
+services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
@@ -12,18 +12,18 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9efbb941e589cb8e4cf56ee06a697a1557a3cc89
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 42c9caaf581fab37e2e55cbe408db6d6d846622a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74268942"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050908"
 ---
 # <a name="add-b2b-collaboration-guest-users-without-an-invitation-link-or-email"></a>招待リンクまたはメールを使用せずに B2B コラボレーション ゲスト ユーザーを追加する
 
 共有アプリに直接リンクを送信してゲスト ユーザーを招待できるようになりました。 この方法を使用すると、特殊な場合を除き、ゲスト ユーザーは招待メールを使用する必要がありません。 ゲスト ユーザーがアプリのリンクをクリックしてプライバシー条項を確認し同意すると、アプリにシームレスにアクセスできます。 詳細については、「[B2B コラボレーションの招待の利用](redemption-experience.md)」を参照してください。   
 
-この新しい方法が使用できるようになる前は、招待メールを使用せずゲスト ユーザーを招待するには、(自分の組織または取引先組織からの) 招待元を**ゲストの招待元**ディレクトリ ロールに追加し、UI または PowerShell を通して招待元がゲスト ユーザーをディレクトリ、グループまたはアプリケーションに追加していました。 (PowerShell を使用する場合は、招待メールを使用する必要はありません)。 例:
+この新しい方法が使用できるようになる前は、招待メールを使用せずゲスト ユーザーを招待するには、(自分の組織または取引先組織からの) 招待元を**ゲストの招待元**ディレクトリ ロールに追加し、UI または PowerShell を通して招待元がゲスト ユーザーをディレクトリ、グループまたはアプリケーションに追加していました。 (PowerShell を使用する場合は、招待メールを使用する必要はありません)。 次に例を示します。
 
 1. ホスト組織のユーザー (たとえば、WoodGrove) が、パートナー組織の 1 人のユーザー (たとえば、Sam@litware.com) をゲストとして招待します。
 2. ホスト組織の管理者は、Sam が取引先組織 (Litware) からの他のユーザーを特定し追加できるよう[ポリシーを設定](delegate-invitations.md)します。 (Sam を**ゲストの招待元**ロールに追加する必要があります。)
@@ -33,7 +33,7 @@ ms.locfileid: "74268942"
 
 ディレクトリにユーザーを招待した場合、ゲスト ユーザーは、リソース テナント固有の Azure Portal URL (https://portal.azure.com/*resourcetenant*onmicrosoft.com など) に直接アクセスしてプライバシー条項を読み、これに同意する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure AD B2B コラボレーションとは](what-is-b2b.md)
 - [B2B コラボレーションの招待の利用](redemption-experience.md)

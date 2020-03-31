@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 09/14/2018
 ms.openlocfilehash: b035be727df2dfecb613da79681affd740c69bec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60333862"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics の CI/CD パイプラインをセットアップする方法  
@@ -43,8 +43,8 @@ U-SQL プロジェクトのビルド タスクを設定する前に、U-SQL プ�
 
 ない場合、プロジェクトを移行する 2 つのオプションがあります。
 
-- オプション 1:古いインポート項目を前述の項目に変更します。
-- オプション 2:古いプロジェクトを Azure Data Lake Tools for Visual Studio で開きます。 2\.3.3000.0 よりも新しいバージョンを使用します。 古いプロジェクト テンプレートが自動的に最新バージョンにアップグレードされます。 2\.3.3000.0 より新しいバージョンで作成された新しいプロジェクトでは、新しいテンプレートが使用されます。
+- オプション 1: 古いインポート項目を前述の項目に変更します。
+- オプション 2: 古いプロジェクトを Azure Data Lake Tools for Visual Studio で開きます。 2\.3.3000.0 よりも新しいバージョンを使用します。 古いプロジェクト テンプレートが自動的に最新バージョンにアップグレードされます。 2\.3.3000.0 より新しいバージョンで作成された新しいプロジェクトでは、新しいテンプレートが使用されます。
 
 ### <a name="get-nuget"></a>NuGet を入手する
 
@@ -363,7 +363,7 @@ U-SQL データベース プロジェクトのビルド出力は、名前に `.u
 
 Azure Pipelines でデータベース デプロイ タスクを設定するには、次の手順を実行します。
 
-1. ビルドまたはリリース パイプラインで PowerShell Script タスクを追加し、次の PowerShell スクリプトを実行します。 このタスクは、`PackageDeploymentTool.exe` と `PackageDeploymentTool.exe` の Azure SDK 依存関係を取得するのに役立ちます。 **-AzureSDK** および **-DBDeploymentTool** パラメーターを設定すると、依存関係とデプロイ ツールを特定のフォルダーに読み込むことができます。 **-AzureSDK** パスを手順 2 の **-AzureSDKPath** パラメーターとして `PackageDeploymentTool.exe` に渡します。 
+1. ビルドまたはリリース パイプラインで PowerShell Script タスクを追加し、次の PowerShell スクリプトを実行します。 このタスクは、`PackageDeploymentTool.exe` と `PackageDeploymentTool.exe` の Azure SDK 依存関係を取得するのに役立ちます。 **-AzureSDK** および **-DBDeploymentTool** パラメーターを設定すると、依存関係とデプロイ ツールを特定のフォルダーに読み込むことができます。 **-AzureSDK** パスを手順 2 の `PackageDeploymentTool.exe`-AzureSDKPath**パラメーターとして** に渡します。 
 
     ```powershell
     <#
@@ -452,14 +452,14 @@ Azure Pipelines でデータベース デプロイ タスクを設定するに�
 
 ### <a name="packagedeploymenttoolexe-parameter-descriptions"></a>PackageDeploymentTool.exe のパラメーターの説明:
 
-#### <a name="common-parameters"></a>一般的なパラメーター
+#### <a name="common-parameters"></a>共通パラメーター
 
 | パラメーター | 説明 | Default value | 必須 |
 |---------|-----------|-------------|--------|
 |Package|デプロイする U-SQL データベース デプロイ パッケージのパス。|null|true|
-|Database|デプロイまたは作成されるデータベース名。|master|false|
+|データベース|デプロイまたは作成されるデータベース名。|master|false|
 |LogFile|ログ用のファイルのパス。 既定では標準出力 (コンソール) です。|null|false|
-|LogLevel|ログ レベル:詳細、標準、警告、エラー。|LogLevel.Normal|false|
+|LogLevel|ログ レベル: 詳細、標準、警告、エラー。|LogLevel.Normal|false|
 
 #### <a name="parameter-for-local-deployment"></a>ローカル デプロイのパラメーター
 
@@ -483,7 +483,7 @@ Azure Pipelines でデータベース デプロイ タスクを設定するに�
 |CertFile|このファイルは、非対話型認証のために X.509 認証を保存します。 既定では、クライアントのシークレットの認証が使用されます。|null|false|
 | JobPrefix | U-SQL DDL ジョブのデータベース デプロイ用のプレフィックス。 | Deploy_ + DateTime.Now | false |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Data Lake Analytics コードをテストする方法](data-lake-analytics-cicd-test.md)。
 - [ローカル コンピューターで U-SQL スクリプトを実行する](data-lake-analytics-data-lake-tools-local-run.md)。

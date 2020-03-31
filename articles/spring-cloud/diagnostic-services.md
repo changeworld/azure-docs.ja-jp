@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.openlocfilehash: 544de1b4ac46a58d533f71a46266807a3b93820a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77920044"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>診断設定でログとメトリックを分析する

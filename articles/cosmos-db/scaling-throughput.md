@@ -8,10 +8,10 @@ ms.date: 12/02/2019
 ms.author: sngun
 ms.reviewer: sngun
 ms.openlocfilehash: 440f23afcd08326261be30432ad1f0ecb16f55fd
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873507"
 ---
 # <a name="globally-scale-provisioned-throughput"></a>プロビジョニングされたスループットのグローバルなスケーリング 
@@ -36,7 +36,7 @@ Cosmos コンテナーに *'R'* 個の RU が構成され、Cosmos アカウン�
 
 選択した[整合性モデル](consistency-levels.md)もスループットに影響します。 整合性レベルが比較的緩やかな場合 (*セッション*、*一貫性のあるプレフィックス*、*最終的*など)、比較的強固な場合 (*有界整合性制約*や*厳密*など) と比べ、ほぼ 2 倍の読み取りスループットを得ることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のステップでは、コンテナーまたはデータベースのスループットを構成する方法を学習できます。
 

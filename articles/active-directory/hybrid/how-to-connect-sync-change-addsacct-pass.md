@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect 同期: AD DS アカウントのパスワードの変更 | Microsoft Docs'
+title: 'Azure AD Connect Sync: AD DS アカウント パスワードの変更 | Microsoft ドキュメント'
 description: このトピックのドキュメントでは、AD DS アカウントのパスワードが変更された後に、Azure AD Connect を更新する方法について説明します。
 services: active-directory
 keywords: AD DS アカウント、Active Directory アカウント、パスワード
@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 35e04be046e20883f60c576745a29342add68a81
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60241585"
 ---
 # <a name="changing-the-ad-ds-account-password"></a>AD DS アカウント パスワードの変更
@@ -44,7 +44,7 @@ AD DS アカウントとは、Azure AD Connect でオンプレミスの Active D
 
 4. **[アクション]** の **[プロパティ]** を選択します。
 
-5. ポップアップ ダイアログで、 **[Connect to Active Directory Forest (Active Directory フォレストに接続)]** を選択します。
+5. ポップアップ ダイアログで、 **[Connect to Active Directory Forest] \(Active Directory フォレストに接続)** を選択します。
 
 6. AD DS アカウントの新しいパスワードを **[パスワード]** テキストボックスに入力します。
 
@@ -52,9 +52,9 @@ AD DS アカウントとは、Azure AD Connect でオンプレミスの Active D
 
 8. Windows サービス コントロール マネージャーで Azure AD のConnect 同期サービスを再起動します。 これは、古いパスワードへの参照がメモリ キャッシュから削除されるようにするために行います。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 **概要トピック**
 
-* [Azure AD Connect 同期:同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
+* [Azure AD Connect sync: 同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
 
 * [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)

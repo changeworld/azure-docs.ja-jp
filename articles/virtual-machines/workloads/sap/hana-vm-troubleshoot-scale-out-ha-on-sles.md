@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
 ms.openlocfilehash: e93b3412785817050ac53030be9ff2172a678c06
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617123"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>SLES 12 SP3 での SAP HANA スケールアウトの高可用性セットアップの確認とトラブルシューティング 
@@ -172,7 +172,7 @@ nc: connect to 10.0.2.40 port 40002 (tcp) failed: Connection refused
 
 テスト システムからの **corosync.conf** の内容は、一例です。
 
-[クラスターのインストール](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#cluster-installation)に関するセクションの手順 11 で説明されているように、最初のセクションは **totem** です。 **mcastaddr** の値は無視できます。 既存のエントリを保持します。 **token** と **consensus** のエントリは、[Microsoft Azure SAP HANA のドキュメント][sles-pacemaker-ha-guide]に従って設定する必要があります。
+**クラスターのインストール**に関するセクションの手順 11 で説明されているように、最初のセクションは [totem](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#cluster-installation) です。 **mcastaddr** の値は無視できます。 既存のエントリを保持します。 **token** と **consensus** のエントリは、[Microsoft Azure SAP HANA のドキュメント][sles-pacemaker-ha-guide]に従って設定する必要があります。
 
 <pre><code>
 totem {
@@ -457,7 +457,7 @@ node.startup = automatic
 5. イニシエーター名の上にある **[Service Start]\(サービスの開始\)** 値が **[When Booting]\(起動時\)** に設定されていることを確認します。
 6. そうでない場合は、 **[Manually]\(手動\)** の代わりに **[When Booting]\(起動時\)** に設定します。
 7. 次に、上部のタブを **[Connected Targets]\(接続済みのターゲット\)** に切り替えます。
-8. **[Connected Targets]\(接続済みのターゲット)** 画面に、次の例のような SBD デバイスのエントリが表示されます:**10.0.0.19:3260 iqn.2006-04.dbhso.local:dbhso**。
+8. **[Connected Targets]\(接続済みのターゲット\)** 画面に、この例: **10.0.0.19:3260 iqn.2006-04.dbhso.local:dbhso** のような SBD デバイスのエントリが表示されます。
 9. **Start-Up** 値が **on boot** に設定されているかどうかを確認します。
 10. そうでない場合は、 **[Edit]\(編集\)** を選択して変更します。
 11. 変更内容を保存し、YaST2 を終了します。

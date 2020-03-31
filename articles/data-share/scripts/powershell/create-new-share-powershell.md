@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
 ms.openlocfilehash: 54d5dc35cf230b62cbe5f8c3cb4a1dc81eccf1e3
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70307258"
 ---
 # <a name="use-powershell-to-create-a-data-share-in-azure"></a>PowerShell を使用して Azure 内にデータ共有を作成する
@@ -44,7 +44,7 @@ New-AzDataShare -ResourceGroupName $resourceGroupName -AccountName $dataShareAcc
 | [New-AzDataShare](/powershell/module/az.datashare/new-azdatashare?view=azps-2.6.0) | データ共有を作成します。 |
 |||
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/)を参照してください。
 

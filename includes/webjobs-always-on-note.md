@@ -9,10 +9,10 @@ ms.date: 02/19/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 82e5221daefaecb687ad9feb79305e546d4ec17e
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68424163"
 ---
 > [!NOTE]

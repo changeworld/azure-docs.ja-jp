@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/29/2016
 ms.author: manuaery
 ms.openlocfilehash: 9edc0b552f5c2f38e646bc4b44dd8df5c16b0457
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61408508"
 ---
 # <a name="use-the-device-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>StorSimple Virtual Array に接続されている StorSimple デバイス マネージャーのデバイスの概要ブレードを使用する
@@ -51,8 +51,8 @@ StorSimple デバイス ブレードには、StorSimple デバイスを管理す
 
 * **[共有]** タイルまたは **[ボリューム]** タイルでは、デバイス内の共有数またはボリューム数の概要が状態別にグループ化されています。 タイルをクリックすると、**共有**または**ボリューム**の一覧がブレードに表示されます。それぞれのプロパティを表示または変更するには、その共有またはボリュームをクリックします。 詳細については、[共有を管理](storsimple-virtual-array-manage-shares.md)する方法または[ボリュームを管理](storsimple-virtual-array-manage-volumes.md)する方法に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
-以下の項目について説明します。
+## <a name="next-steps"></a>次のステップ
+具体的には、次の方法を学習します。
 - [StorSimple Virtual Array での共有の管理](storsimple-virtual-array-manage-shares.md)
     
 - [StorSimple Virtual Array でのボリュームの管理](storsimple-virtual-array-manage-volumes.md)

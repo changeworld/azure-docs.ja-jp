@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: dnb
 ms.openlocfilehash: 5360ada6dab19564bfa88697d2adc6ef751f3935
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78254802"
 ---
 # <a name="participate-in-the-global-site-reliability-engineering-community"></a>グローバルなサイト信頼性エンジニアリング コミュニティに参加する

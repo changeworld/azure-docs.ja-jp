@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: alkohli
 ms.openlocfilehash: f32f8925bca33d90afa48071d0c0944ba63861cd
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278840"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228175"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>StorSimple デバイス マネージャー サービスを使用してボリュームを管理する (Update 3 以降)
 
@@ -25,8 +25,8 @@ StorSimple デバイス マネージャー サービスは Azure Portal の拡�
 
 StorSimple ボリュームは、次のいずれかです。
 
-* **ローカル固定ボリューム**:これらのボリュームのデータは、常にローカル StorSimple デバイスに残ります。
-* **階層化ボリューム**:これらのボリュームのデータは、クラウドにあふれる場合があります。
+* **ローカル固定ボリューム**: これらのボリュームのデータは、常にローカル StorSimple デバイスに残ります。
+* **階層化ボリューム**: これらのボリュームのデータは、クラウドにあふれる場合があります。
 
 アーカイブ ボリュームは、階層化ボリュームの一種です。 アーカイブ ボリュームでより大きな重複除去チャンク サイズを使用すると、デバイスはより大きなデータのセグメントをクラウドに転送できます。
 

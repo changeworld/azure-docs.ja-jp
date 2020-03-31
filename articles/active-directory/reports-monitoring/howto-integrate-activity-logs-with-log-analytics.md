@@ -3,7 +3,7 @@ title: Azure Active Directory のログを Azure Monitor ログにストリー�
 description: Azure Active Directory のログを Azure Monitor ログと統合する方法について説明します
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 2c3db9a8-50fa-475a-97d8-f31082af6593
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bffe16d604ac6b86b489092f50fbdc0b856867b3
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 213fb6e73ae2fc4314320d0e3e593632d8eb7f85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989768"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231767"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Azure AD ログを Azure Monitor ログと統合する
 
@@ -44,8 +44,8 @@ Ignite セッションの次のビデオでは、実用的なユーザー シナ
 
 監査アクティビティ ログとサインイン アクティビティ ログを Azure Monitor ログにルーティングして、さらに詳しく分析できます。 
 
-* **[監査ログ]** :テナント内で実行されたすべてのタスクの履歴は、[監査ログ アクティビティ レポート](concept-audit-logs.md)で把握できます。
-* **サインイン ログ**:監査ログによって報告されたタスクをだれが実行したかは、[サインイン アクティビティ レポート](concept-sign-ins.md)で判断することができます。
+* **監査ログ**: テナント内で実行されたすべてのタスクの履歴は、[監査ログ アクティビティ レポート](concept-audit-logs.md)で把握できます。
+* **サインイン ログ**: 監査ログによって報告されたタスクをだれが実行したかは、[サインイン アクティビティ レポート](concept-sign-ins.md)で判断することができます。
 
 > [!NOTE]
 > 現時点では、B2C 関連の監査およびサインインのアクティビティ ログはサポートされません。
@@ -62,7 +62,7 @@ Ignite セッションの次のビデオでは、実用的なユーザー シナ
 
 ## <a name="send-logs-to-azure-monitor"></a>ログを Azure Monitor に送信する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 
+1. [Azure portal](https://portal.azure.com) にサインインする 
 
 2. **[Azure Active Directory]**  >  **[診断設定]**  ->  **[Add diagnostic setting]\(診断設定の追加\)** を選択します。 **[監査ログ]** または **[サインイン]** ページから **[エクスポート設定]** を選択して、診断設定の構成ページに移動することもできます。  
     
@@ -80,7 +80,7 @@ Ignite セッションの次のビデオでは、実用的なユーザー シナ
 
 7. 約 15 分後に、イベントが Log Analytics ワークスペースにストリーミングされていることを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Monitor ログ を使用して Azure AD アクティビティ ログを分析する](howto-analyze-activity-logs-log-analytics.md)
 * [Azure Active Directory ログ分析用のビューのインストールと使用](howto-install-use-log-analytics-views.md)

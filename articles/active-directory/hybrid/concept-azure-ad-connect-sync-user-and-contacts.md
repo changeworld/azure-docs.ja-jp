@@ -16,13 +16,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 661747754369c17ca98ae69d477e04124b6a2942
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60245494"
 ---
-# <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect 同期: ユーザー、グループ、および連絡先について
+# <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect Sync: ユーザー、グループ、および連絡先について
 複数の Active Directory フォレストを使用することになる理由はさまざまあり、複数の異なるデプロイ トポロジがあります。 一般的なモデルとしては、アカウント リソース デプロイ、合併や買収の後で GAL 同期が行われたフォレストなどがあります。 ただし、純粋なモデルがある一方で、ハイブリッド モデルも一般的です。 Azure AD Connect Sync の既定の構成では特殊なモデルを想定しませんが、インストール ガイドにおけるユーザーの一致の選択方法によっては、異なる動作が見られることもあります。
 
 このトピックでは、既定の構成が特定のトポロジでどのように動作するかを説明します。 構成の概要についてと、構成を確認するために使用できる同期ルール エディターについて取り上げます。
@@ -74,6 +74,6 @@ Azure AD に対するオブジェクトのプロビジョニングでは、メ�
 オブジェクトが Azure AD にエクスポートされると、sourceAnchor は変更できなくなります。 オブジェクトがエクスポートされると、Azure AD が受け取った **sourceAnchor** 値を使用してメタバース属性 **cloudSourceAnchor** が設定されます。 **sourceAnchor** が変更され、**cloudSourceAnchor** と一致しない場合、**Out to AAD – User Join** というルールによって **[sourceAnchor 属性が変更されました]** というエラーがスローされます。 この場合、オブジェクトを再度同期できるようにする前に、構成またはデータを修正して、同じ sourceAnchor がメタバースに再び存在するようにする必要があります。
 
 ## <a name="additional-resources"></a>その他のリソース
-* [Azure AD Connect 同期:同期オプションをカスタマイズする](how-to-connect-sync-whatis.md)
+* [Azure AD Connect Sync: 同期オプションのカスタマイズ](how-to-connect-sync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)
 

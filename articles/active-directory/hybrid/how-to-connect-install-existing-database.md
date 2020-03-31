@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4dc6993586063c9c99a287c51d799b44f921768d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60245292"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>既存の ADSync データベースを使用して Azure AD Connect をインストールする
@@ -67,11 +67,11 @@ Azure AD Connect には、データを格納する SQL Server データベース
 ![PowerShell](./media/how-to-connect-install-existing-database/db2.png)
 1. [Azure AD Connect へようこそ] 画面が表示されます。 ライセンス条項とプライバシーに関する声明に同意したら、 **[続行]** をクリックします。
    ![ようこそ](./media/how-to-connect-install-existing-database/db3.png)
-1. **[必須コンポーネントのインストール]** 画面で **[既存の SQL Server を使用する]** オプションをオンにします。 ADSync データベースをホストしている SQL サーバーの名前を指定します。 ADSync データベースのホストに使用されている SQL エンジン インスタンスが SQL サーバーで既定のインスタンスではない場合、SQL エンジン インスタンス名を指定する必要があります。 さらに、SQL の参照が有効ではない場合、SQL エンジン インスタンスのポート番号も指定する必要があります。 例:         
+1. **[必須コンポーネントのインストール]** 画面で **[既存の SQL Server を使用する]** オプションをオンにします。 ADSync データベースをホストしている SQL サーバーの名前を指定します。 ADSync データベースのホストに使用されている SQL エンジン インスタンスが SQL サーバーで既定のインスタンスではない場合、SQL エンジン インスタンス名を指定する必要があります。 さらに、SQL の参照が有効ではない場合、SQL エンジン インスタンスのポート番号も指定する必要があります。 次に例を示します。         
    ![ようこそ](./media/how-to-connect-install-existing-database/db4.png)           
 
 1. **[Azure AD に接続]** 画面で、Azure AD ディレクトリのグローバル管理者の資格情報を指定する必要があります。 既定の onmicrosoft.com ドメインでアカウントを使用することをお勧めします。 このアカウントは、Azure AD のサービス アカウントを作成するためにのみ使用され、ウィザードが完了した後は使用されません。
-   ![接続](./media/how-to-connect-install-existing-database/db5.png)
+   ![のインスタンスに接続するときには、](./media/how-to-connect-install-existing-database/db5.png)
  
 1. **[ディレクトリの接続]** 画面では、ディレクトリ同期に構成されている既存の AD フォレストは、赤色の×アイコンで表示されます。 オンプレミスの AD フォレストの変更を同期するには、AD DS アカウントが必要です。 Azure AD Connect ウィザードでは、ADSync データベースに格納されている AD DS アカウントの資格情報を取得できません。これは、資格情報が暗号化され、復号には前の Azure AD Connect サーバーが必要なためです。 **[資格情報の変更]** をクリックして、AD フォレストの AD DS アカウントを指定します。
    ![Directories](./media/how-to-connect-install-existing-database/db6.png)
@@ -103,9 +103,9 @@ Azure AD Connect には、データを格納する SQL Server データベース
 |パススルー認証およびデスクトップ シングル サインオン|お使いのアクティブな同期サーバーの構成に合わせてサインイン方法を更新します。  サーバーをプライマリに昇格させる前にこの作業を実行しないと、パススルー認証とシームレス シングル サインオンが無効になり、バックアップ サインイン オプションとしてパスワード ハッシュの同期を設定していないときにテナントがロックアウトされる可能性があります。 また、ステージング モードでパススルー認証を有効にすると、新しい認証エージェントがインストールおよび登録され、サインイン要求を受け入れる高可用性エージェントとして実行されることに注意してください。|
 |PingFederate によるフェデレーション|お使いのアクティブな同期サーバー用に構成された PingFederate ポリシーが Azure 認証で引き続き使用されます。  必要に応じて、スタンバイ サーバーがアクティブな同期インスタンスになるための準備として、サインイン方法を PingFederate に変更することもできます。  この手順は、PingFederate で追加のドメインをフェデレーションする必要があるときまで延期することができます。|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure AD Connect がインストールされたので、[インストールを確認し、ライセンスを割り当てる](how-to-connect-post-installation.md)ことができます。
-- インストールの結果有効になった機能について詳しくは、[誤った削除操作を防止する機能](how-to-connect-sync-feature-prevent-accidental-deletes.md)と [Azure AD Connect Health](how-to-connect-health-sync.md) に関する各ページを参照してください。
+- インストールの結果有効になった機能については、[誤った削除操作を防止する機能](how-to-connect-sync-feature-prevent-accidental-deletes.md)と [Azure AD Connect Health](how-to-connect-health-sync.md) に関する各ページを参照してください。
 - 一般的なトピックについては、[スケジューラの使用と同期のトリガー方法](how-to-connect-sync-feature-scheduler.md)に関するページを参照してください。
 - 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

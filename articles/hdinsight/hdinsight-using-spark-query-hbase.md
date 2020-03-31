@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/24/2020
 ms.openlocfilehash: 888f24e13ce67c878592068927383dd8cbfefa60
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77623105"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Apache Spark を使用した Apache HBase データの読み取り/書き込み
@@ -34,7 +34,7 @@ Spark クラスターが HDInsight クラスターのクエリを実行できる
 1. HBase でいくつかのサンプル データを準備します。
 2. HBase クラスターの構成フォルダー (/etc/hbase/conf) から hbase-site.xml ファイルを取得します。
 3. hbase-site.xml のコピーを Spark 2 の構成フォルダー (/etc/spark2/conf) に配置します。
-4. `packages` オプションで、Maven 座標を使用して Spark HBase コネクターを参照する `spark-shell` を実行します。
+4. `spark-shell` オプションで、Maven 座標を使用して Spark HBase コネクターを参照する `packages` を実行します。
 5. Spark のスキーマを HBase にマップするカタログを定義します。
 6. RDD または DataFrame API を使用して HBase データと対話します。
 

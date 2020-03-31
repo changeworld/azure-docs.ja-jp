@@ -17,10 +17,10 @@ ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.openlocfilehash: b3db86137207ae726c7befc393f62590fd1456d7
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74008263"
 ---
 # <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルの使用状況と分析情報のレポート
@@ -60,6 +60,6 @@ ms.locfileid: "74008263"
 
 ![使用状況と分析情報のレポート](./media/concept-usage-insights-report/usage-and-insights-report.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [サインイン レポート](concept-sign-ins.md)

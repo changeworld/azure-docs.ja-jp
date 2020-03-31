@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/10/2019
 ms.openlocfilehash: 9a7521f61dc59bd954629a05638c159ab0e70556
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658491"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Azure Monitor のビュー デザイナーを使用してカスタム ビューを作成する
@@ -21,8 +21,8 @@ Azure Monitor のビュー デザイナーを使用すると、Log Analytics ワ
 
 ビュー デザイナーの詳細については、次を参照してください。
 
-* [タイルのリファレンス](view-designer-tiles.md):カスタム ビューで使用できる各タイルの設定に関するリファレンス ガイドです。
-* [視覚化パーツのリファレンス](view-designer-parts.md):カスタム ビューで使用可能な視覚化パーツの設定のリファレンス ガイドを提供します。
+* [タイルのリファレンス](view-designer-tiles.md): カスタム ビューで使用できる各タイルの設定に関するリファレンス ガイドです。
+* [視覚化パーツのリファレンス](view-designer-parts.md): カスタム ビューで使用可能な視覚化パーツの設定へのリファレンス ガイドを提供します。
 
 
 ## <a name="concepts"></a>概念
@@ -69,9 +69,9 @@ Log Analytics ワークスペースのメニューで **[ビュー デザイナ�
 新しいビューの作成または既存のビューの編集には、ビュー デザイナーを使います。 
 
 ビュー デザイナーには、3 つのウィンドがあります。 
-* **デザイン**:作成または編集しているカスタム ビューが表示されます。 
-* **コントロール**:**デザイン** ウィンドウに追加するタイルとパーツが含まれています。 
-* **[プロパティ]** :タイルまたは選択したパーツのプロパティが表示されます。
+* **デザイン**: 作成または編集しているカスタム ビューが表示されます。 
+* **コントロール**: **デザイン** ウィンドウに追加するタイルとパーツが含まれています。 
+* **プロパティ**: タイルまたは選択したパーツのプロパティが表示されます。
 
 ![ビュー デザイナー](media/view-designer/view-designer-screenshot.png)
 
@@ -100,7 +100,7 @@ Log Analytics ワークスペースのメニューで **[ビュー デザイナ�
 | 保存        | 変更を保存し、ビューを閉じます。 |
 | Cancel      | 変更を破棄し、ビューを閉じます。 |
 | ビューの削除 | ビューを削除します。 |
-| エクスポート      | 別のワークスペースにインポートできる [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)にビューをエクスポートします。 ファイルの名前はビューの名前であり、拡張子は *omsview* です。 |
+| [エクスポート]      | 別のワークスペースにインポートできる [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)にビューをエクスポートします。 ファイルの名前はビューの名前であり、拡張子は *omsview* です。 |
 | [インポート]      | 別のワークスペースからエクスポートした *omsview* ファイルをインポートします。 これにより、既存のビューの構成が上書きされます。 |
 | 複製       | 新しいビューを作成して、ビュー デザイナーで開きます。 新しいビューの名前は、元の名前の末尾に "*コピー*" が追加されたものになります。 |
 
