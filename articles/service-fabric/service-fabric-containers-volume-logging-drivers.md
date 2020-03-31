@@ -4,15 +4,15 @@ description: Service Fabric は、Azure Files を使用したコンテナーか�
 ms.topic: conceptual
 ms.date: 6/10/2018
 ms.openlocfilehash: 514a0cb12359d58e38ebc30ae12cdb277757f2b2
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75750045"
 ---
 # <a name="azure-files-volume-driver-for-service-fabric"></a>Service Fabric 用の Azure Files ボリューム ドライバー
 
-Azure Files ボリューム ドライバーは、Docker コンテナーに [Azure Files](/azure/storage/files/storage-files-introduction) ベースのボリュームを提供する [Docker ボリューム プラグイン](https://docs.docker.com/engine/extend/plugins_volume/)です。 これは Service Fabric アプリケーションとしてパッケージ化されており、Service Fabric クラスターにデプロイして、クラスター内の他の Service Fabric コンテナー アプリケーションにボリュームを提供できます。
+Azure Files ボリューム ドライバーは、Docker コンテナーに [Azure Files](https://docs.docker.com/engine/extend/plugins_volume/) ベースのボリュームを提供する [Docker ボリューム プラグイン](/azure/storage/files/storage-files-introduction)です。 これは Service Fabric アプリケーションとしてパッケージ化されており、Service Fabric クラスターにデプロイして、クラスター内の他の Service Fabric コンテナー アプリケーションにボリュームを提供できます。
 
 > [!NOTE]
 > Azure Files ボリューム プラグインのバージョン 6.5.661.9590 が一般公開されています。

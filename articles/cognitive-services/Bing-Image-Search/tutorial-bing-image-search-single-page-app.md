@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:単一ページの Web アプリを作成する - Bing Image Search API
+title: 'チュートリアル: 単一ページの Web アプリを作成する - Bing Image Search API'
 titleSuffix: Azure cognitive services
 description: Bing Image Search API を使用すると、Web 上で高品質で関連性の高い画像を検索できます。 このチュートリアルを使用して、検索クエリを API に送信し、Web ページ内に結果を表示できる単一ページの Web アプリケーションを構築します。
 services: cognitive-services
@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: 9227417d28eb09a322dd4757033ee62fee97d91c
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78943901"
 ---
-# <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>チュートリアル:Bing Image Search API を使用して単一ページのアプリを作成する
+# <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>チュートリアル: Bing Image Search API を使用して単一ページの Web アプリを作成する
 
 Bing Image Search API を使用すると、Web 上で高品質で関連性の高い画像を検索できます。 このチュートリアルを使用して、検索クエリを API に送信し、Web ページ内に結果を表示できる単一ページの Web アプリケーションを構築します。 このチュートリアルは、Bing Web Search の[対応するチュートリアル](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md)と似ています。
 
@@ -43,7 +43,7 @@ Bing Image Search API を使用すると、Web 上で高品質で関連性の高
 このアプリケーションは、Web ブラウザーの固定ストレージを使用して API サブスクリプション キーを格納します。 格納されているキーがない場合、この Web ページでは、後で使用できるようにキーの入力と格納をユーザーに求めます。 API によって後でキーが拒否された場合、そのキーはアプリでストレージから削除されます。 このサンプルでは、グローバル エンドポイントを使用しています。 または、Azure portal に表示される、リソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用することもできます。
 
 
-`localStorage` オブジェクト (ブラウザーでサポートされている場合) または Cookie のいずれかを使用する `storeValue` 関数と `retrieveValue` 関数を定義します。
+`storeValue` オブジェクト (ブラウザーでサポートされている場合) または Cookie のいずれかを使用する `retrieveValue` 関数と `localStorage` 関数を定義します。
 
 ```javascript
 // Cookie names for data being stored
@@ -104,7 +104,7 @@ bingSearchOptions(this), getSubscriptionKey())">
 
 ## <a name="send-search-requests"></a>検索要求を送信する
 
-このアプリケーションは、HTML `<form>` を使用し、`newBingImageSearch()` を呼び出す `onsubmit` 属性を使用して、まずユーザー検索要求を送信します。
+このアプリケーションは、HTML `<form>` を使用し、`onsubmit` を呼び出す `newBingImageSearch()` 属性を使用して、まずユーザー検索要求を送信します。
 
 ```html
 <form name="bing" onsubmit="return newBingImageSearch(this)">
@@ -407,6 +407,6 @@ CORS プロキシをインストールして、チュートリアル アプリ�
 > [!div class="nextstepaction"]
 > [Bing Image Search API を使用して画像の詳細情報を抽出する](tutorial-image-post.md)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [Bing Image Search API リファレンス](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

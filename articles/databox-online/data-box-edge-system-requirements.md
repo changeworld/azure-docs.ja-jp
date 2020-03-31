@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 458c062eef011363724cb894ce67ba75181ba8ba
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76757868"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229855"
 ---
 # <a name="azure-data-box-edge-system-requirements"></a>Azure Data Box Edge のシステム要件
 
@@ -58,7 +58,7 @@ Azure IoT Edge では、サポートされている IoT Hub プロトコルを�
 
 Azure IoT Edge ランタイムをホストするサーバーのポート構成には、次の表を使用します。
 
-| ポート番号 | インまたはアウト | ポート範囲 | Required | ガイダンス |
+| ポート番号 | インまたはアウト | ポート範囲 | 必須 | ガイダンス |
 |----------|-----------|------------|----------|----------|
 | TCP 443 (HTTPS)| アウト       | WAN        | はい      | IoT Edge のプロビジョニングのため、送信用に開きます。 この構成は、手動スクリプトや Azure IoT Device Provisioning Service (DPS) を使用する場合に必要です。|
 

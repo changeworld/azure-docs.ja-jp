@@ -10,10 +10,10 @@ ms.date: 11/13/2019
 ms.author: dkshir
 ms.custom: security-recommendations
 ms.openlocfilehash: 0ada9a520a5be56444a1c3e746a68dbcf9275686
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74048455"
 ---
 # <a name="security-recommendations-for-azure-internet-of-things-iot-deployment"></a>Azure のモノのインターネット (IoT) デプロイのセキュリティに関する推奨事項
@@ -63,7 +63,7 @@ ms.locfileid: "74048455"
 | クラウドから IoT ソリューションを監視する | [Azure Monitor のメトリック](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics)を使用して、IoT Hub ソリューションの全体的な正常性を監視します。 | - |
 | 診断を設定する | ソリューションのイベントをログに記録してから、パフォーマンスを視覚化するために診断ログを Azure Monitor に送信することで、操作を注意深く観察します。 詳細については、[IoT ハブでの問題の監視と診断](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitor-resource-health)に関するページを参照してください。 | - |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure IoT に関する高度なシナリオでは、追加のセキュリティ要件を考慮する必要がある場合があります。 詳細なガイダンスについては、[IoT セキュリティのアーキテクチャ](iot-security-architecture.md)に関するページを参照してください。
 

@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: diberry
 ms.openlocfilehash: 6ee156efb5512c92d86ba05513b6a2b91df4eae8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976963"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79219181"
 ---
 # <a name="entities-and-their-purpose-in-luis"></a>エンティティと LUIS におけるその目的
 
@@ -37,10 +37,10 @@ ms.locfileid: "74976963"
 
  独自のエンティティを定義することや、[datetimeV2](luis-reference-prebuilt-datetimev2.md)、[ordinal (序数)](luis-reference-prebuilt-ordinal.md)、[email (電子メール)](luis-reference-prebuilt-email.md)、[phone number (電話番号)](luis-reference-prebuilt-phonenumber.md) などの一般的な概念について、事前構築済みのエンティティを使用して時間を節約することができます。
 
-|発話|エンティティ|Data|
+|発話|Entity|Data|
 |--|--|--|
 |ニューヨーク行きのチケットを 3 枚購入する|事前構築済みの数値<br>場所.目的地|3<br>ニューヨーク|
-|3 月 5 日のニューヨーク発ロンドン行きのチケットを購入する|場所.出発地<br>場所.目的地<br>事前構築済みの datetimeV2|ニューヨーク<br>ロンドン<br>2018 年 3 月 5 日|
+|3 月 5 日のニューヨーク発ロンドン行きのチケットを購入する|場所.出発地<br>場所.目的地<br>事前構築済みの datetimeV2|ニューヨーク<br>London<br>2018 年 3 月 5 日|
 
 ### <a name="entities-are-optional"></a>エンティティは省略可能
 
@@ -58,10 +58,10 @@ ms.locfileid: "74976963"
 
 |発話|予測される意図|抽出されたエンティティ|説明|
 |--|--|--|--|
-|[Help]|help|-|何も抽出されません。|
+|Help|help|-|何も抽出されません。|
 |Send something|sendSomething|-|何も抽出されません。 このコンテキストで `something` を抽出するようにモデルがトレーニングされておらず、受信者も存在しません。|
-|Send Bob a present|sendSomething|`Bob`、`present`|モデルは [personName](luis-reference-prebuilt-person.md) という事前構築済みのエンティティでトレーニングされており、これによって名前 `Bob` が抽出されました。 `present` を抽出するのに機械学習エンティティが使用されています。|
-|Send Bob a box of chocolates|sendSomething|`Bob`、`box of chocolates`|データの 2 つの重要な部分である `Bob` と `box of chocolates` がエンティティによって抽出されています。|
+|Send Bob a present|sendSomething|`Bob`, `present`|モデルは [personName](luis-reference-prebuilt-person.md) という事前構築済みのエンティティでトレーニングされており、これによって名前 `Bob` が抽出されました。 `present` を抽出するのに機械学習エンティティが使用されています。|
+|Send Bob a box of chocolates|sendSomething|`Bob`, `box of chocolates`|データの 2 つの重要な部分である `Bob` と `box of chocolates` がエンティティによって抽出されています。|
 
 ## <a name="design-entities-for-decomposition"></a>分解のためのエンティティの設計
 
@@ -134,11 +134,11 @@ LUIS によって検出された `location` のロールが判断できない場
 
 LUIS ポータルは、発話の例のエンティティに、選択したエンティティと異なるエンティティ予測があるときを示します。 この異なるスコアは、現在のトレーニング済みのモデルに基づいています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 正しい[発話](luis-concept-utterance.md)の概念について学習します。
 
 [エンティティの追加](luis-how-to-add-entities.md)に関するページで、LUIS アプリにエンティティを追加する方法の詳細を確認します。
 
-手順については、「[チュートリアル: Language Understanding (LUIS) で機械学習エンティティを使用して、ユーザーの発話から構造化データを抽出する](tutorial-machine-learned-entity.md)」を参照して、機械学習エンティティを使用して発話から構造化データを抽出する方法について確認します。
+「[チュートリアル:Language Understanding (LUIS) で機械学習エンティティを使用して、ユーザーの発話から構造化データを抽出する](tutorial-machine-learned-entity.md)」を参照して、機械学習エンティティを使用して発話から構造化データを抽出する方法について確認します。
  

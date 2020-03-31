@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/05/2019
 ms.author: encorona
 ms.openlocfilehash: 86a12bd1dccc2b6ac15010546d7e990b768ebc02
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75453350"
 ---
 # <a name="how-to-add-a-one-step-correction-to-a-custom-command-preview"></a>方法:カスタム コマンドにワンステップ修正を追加する (プレビュー)
@@ -36,8 +36,8 @@ ms.locfileid: "75453350"
 
 次の記事の手順を完了している必要があります。
 
-- [クイック スタート:カスタム コマンドを作成する (プレビュー)](./quickstart-custom-speech-commands-create-new.md)
-- [クイック スタート:パラメーターを使用してカスタム コマンドを作成する (プレビュー)](./quickstart-custom-speech-commands-create-parameters.md)
+- [クイック スタート: カスタム コマンドを作成する (プレビュー)](./quickstart-custom-speech-commands-create-new.md)
+- [クイック スタート: パラメーターを使用してカスタム コマンドを作成する (プレビュー)](./quickstart-custom-speech-commands-create-parameters.md)
 - [方法: カスタム コマンドに確認を追加する (プレビュー)](./how-to-custom-speech-commands-confirmations.md)
 
 ## <a name="add-the-advanced-rules-for-one-step-correction"></a>ワンステップ修正の高度なルールを追加する 
@@ -52,7 +52,7 @@ ms.locfileid: "75453350"
    | --------------------- | ---------------------------------------------------------------- | -------------------------------------------------- |
    | 規則の名前             | Update previous alarm                                            | ルールの目的を説明する名前          |
    | 条件            | UpdateLastCommand & Required Parameter - DateTime                | ルールを実行できるタイミングを決定する条件    |   
-   | アクション               | SpeechResponse - "- Updating previous alarm to {DateTime}"       | ルール条件が真のときに実行するアクション |
+   | Actions               | SpeechResponse - "- Updating previous alarm to {DateTime}"       | ルール条件が真のときに実行するアクション |
    | 実行後の状態 | Complete command                                                 | ターン後のユーザーの状態                   |
 
 1. 先ほど作成したルールを高度なルールの先頭に移動します (パネルでルールをスクロールし、上矢印をクリックします)。

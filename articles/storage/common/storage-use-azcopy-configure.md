@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
 ms.openlocfilehash: d2cb40d7510e46539db46bdb61ec2d64c0fd1ec7
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77526497"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy の構成、最適化、トラブルシューティング
@@ -129,7 +129,7 @@ AzCopy は、ジョブごとにログ ファイルとプラン ファイルを�
 
 ### <a name="review-the-logs-for-errors"></a>ログでエラーを確認する
 
-次のコマンドでは、`04dc9ca9-158f-7945-5933-564021086c79` ログから状態が `UPLOADFAILED` であるすべてのエラーが取得されます。
+次のコマンドでは、`UPLOADFAILED` ログから状態が `04dc9ca9-158f-7945-5933-564021086c79` であるすべてのエラーが取得されます。
 
 **Windows (PowerShell)**
 

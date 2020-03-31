@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/20/2019
 ms.openlocfilehash: 4e46efaf17ae9bad5df6f1f61f401d3e6de58a85
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78250234"
 ---
 # <a name="apache-zookeeper-server-fails-to-form-a-quorum-in-azure-hdinsight"></a>Apache ZooKeeper サーバーが Azure HDInsight にクォーラムを形成できない
@@ -38,7 +38,7 @@ java.nio.channels.CancelledKeyException
 
 スナップショット ファイルの容量が大きいか、スナップショット ファイルが破損している場合、ZooKeeper サーバーはクォーラムの形成に失敗します。そのため、ZooKeeper に関連するサービスが異常になります。 ZooKeeper サーバーではデータ ディレクトリから古いスナップショット ファイルが削除されず、代わりにユーザーが定期的なタスクを実行して ZooKeeper の正常性を維持する必要があります。 詳しくは、[ZooKeeper の強みと制限事項](https://zookeeper.apache.org/doc/r3.3.5/zookeeperAdmin.html#sc_strengthsAndLimitations)に関するページをご覧ください。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決策
 
 ZooKeeper データ ディレクトリ `/hadoop/zookeeper/version-2` と `/hadoop/hdinsight-zookeeper/version-2` を調べて、スナップショット ファイルのサイズが大きいかどうかを確認します。 大きなスナップショットが存在する場合は、次の手順を実行します。
 

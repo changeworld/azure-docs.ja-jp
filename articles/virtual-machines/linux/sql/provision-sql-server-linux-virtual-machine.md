@@ -5,18 +5,18 @@ services: virtual-machines-linux
 author: MashaMSFT
 manager: craigg
 ms.date: 10/22/2019
-ms.topic: conceptual
 tags: azure-service-management
+ms.topic: conceptual
 ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 85d2396a05e7496b56bd83bd834150aa6d864c62
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 43ba4eed4dcfd6d8e86c21f1ee5214108c44a8c2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882680"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060228"
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Azure Portal での Linux SQL Server 仮想マシンのプロビジョニング
 
@@ -37,9 +37,9 @@ ms.locfileid: "72882680"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free) を作成してください。
 
-## <a id="create"></a>SQL Server がインストールされた Linux VM の作成
+## <a name="create-a-linux-vm-with-sql-server-installed"></a><a id="create"></a>SQL Server がインストールされた Linux VM の作成
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. 左側のウィンドウで、 **[リソースの作成]** を選びます。
 
@@ -60,7 +60,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    > [!TIP]
    > Developer エディションでは、Enterprise エディションの機能を使用してテストまたは開発を行うことができますが、SQL Server のライセンス コストはかかりません。 料金は、Linux VM の実行コストに対してのみ支払います。
 
-1. **作成** を選択します。 
+1. **［作成］** を選択します 
 
 
 ### <a name="set-up-your-linux-vm"></a>Linux VM の設定
@@ -101,7 +101,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[Review + create]\(レビュー + 作成\)** を選択します。
 1. **[確認および作成]** ウィンドウで、 **[作成]** を選択します。
 
-## <a id="connect"></a>Linux VM への接続
+## <a name="connect-to-the-linux-vm"></a><a id="connect"></a>Linux VM への接続
 
 BASH シェルを既に使用している場合、**ssh** コマンドを使用して Azure VM に接続します。 次のコマンドの VM ユーザー名と IP アドレスを置き換えて、Linux VM に接続します。
 
@@ -128,7 +128,7 @@ Linux VM への接続の詳細については、[ポータルを使用して Azu
 > [!Note]
 > サーバーのホストキーがレジストリにキャッシュされていないことを示す PuTTY のセキュリティ アラートが表示された場合は、次のオプションから選択します。 このホストを信頼する場合は、 **[Yes]\(はい\)** を選択して PuTTy のキャッシュにキーを追加し、接続を続行します。 キーをキャッシュに追加せずに接続を 1 回だけ実行する場合は、 **[No]\(いいえ\)** を選択します。 このホストを信頼しない場合は、 **[Cancel]\(キャンセル\)** を選択して接続を破棄します。
 
-## <a id="password"></a>SA パスワードの変更
+## <a name="change-the-sa-password"></a><a id="password"></a> SA パスワードの変更
 
 新しい仮想マシンには、ランダム SA パスワードで SQL Server がインストールされます。 このパスワードは、SA ログインで SQL Server に接続する前にリセットしてください。
 
@@ -153,7 +153,7 @@ Linux VM への接続の詳細については、[ポータルを使用して Azu
 
 既定では、SQL Server コマンドライン ツール パッケージなど、いくつかの SQL Server [パッケージ](sql-server-linux-virtual-machines-overview.md#packages)がインストールされています。 このツール パッケージには、**sqlcmd** ツールと **bcp** ツールが含まれています。 便宜上、必要に応じてツールのパス `/opt/mssql-tools/bin/` を **PATH** 環境変数に追加することができます。
 
-1. 次のコマンドを実行して、ログイン セッションと対話型/非ログイン セッションの両方の **PATH** を変更します。
+1. 次のコマンドを実行し、ログイン セッションと対話型/非ログイン セッションの両方の **PATH** を変更します。
 
    ```bash
    echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile
@@ -161,7 +161,7 @@ Linux VM への接続の詳細については、[ポータルを使用して Azu
    source ~/.bashrc
    ```
 
-## <a id="remote"></a>リモート接続の構成
+## <a name="configure-for-remote-connections"></a><a id="remote"></a>リモート接続の構成
 
 Azure VM 上の SQL Server にリモートで接続する必要がある場合、ネットワーク セキュリティ グループで受信規則を構成する必要があります。 この規則により、SQL Server がリッスンするポート (既定では 1433) のトラフィックが許可されます。 次の手順では、この手順に Azure Portal を使用する方法について説明します。
 
@@ -193,7 +193,7 @@ Azure VM 上の SQL Server にリモートで接続する必要がある場合�
    sudo firewall-cmd --reload
    ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure に SQL Server 2017 仮想マシンを作成できたので、**sqlcmd** を使用してローカルで接続し、Transact-SQL クエリを実行できます。
 

@@ -8,10 +8,10 @@ ms.topic: include
 ms.date: 01/15/2020
 ms.author: ralphe
 ms.openlocfilehash: c6291a714083df8954d5162ad38d31b2e3caee76
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925341"
 ---
 ## <a name="prerequisites"></a>前提条件
@@ -294,7 +294,7 @@ ms.locfileid: "78925341"
     }
     ```
 
-2. `public static async Task Main(string[] args)` 関数内の `CreateConversationAsync();` を次のように置き換えます。
+2. `CreateConversationAsync();` 関数内の `public static async Task Main(string[] args)` を次のように置き換えます。
 
     ```csharp
     // Set this to the conversation you want to join

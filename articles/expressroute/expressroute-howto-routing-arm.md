@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
 ms.openlocfilehash: 2c28df35eec862afb5b0078ca7693898e9b58533
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436928"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231275"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>PowerShell を使用した ExpressRoute 回線のピアリングの作成と変更
 
@@ -49,7 +49,7 @@ ExpressRoute 回線にプライベート ピアリングおよび Microsoft ピ�
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
-## <a name="msft"></a>Microsoft ピアリング
+## <a name="microsoft-peering"></a><a name="msft"></a>Microsoft ピアリング
 
 このセクションでは、ExpressRoute 回線用の Microsoft ピアリング構成を作成、取得、更新、および削除します。
 
@@ -137,7 +137,7 @@ ExpressRoute 回線にプライベート ピアリングおよび Microsoft ピ�
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
 
-### <a name="getmsft"></a>Microsoft ピアリングの詳細を取得するには
+### <a name="to-get-microsoft-peering-details"></a><a name="getmsft"></a>Microsoft ピアリングの詳細を取得するには
 
 構成の詳細を取得するには、次の例を使用します。
 
@@ -147,7 +147,7 @@ $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupNa
 Get-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
 ```
 
-### <a name="updatemsft"></a>Microsoft ピアリング構成を更新するには
+### <a name="to-update-microsoft-peering-configuration"></a><a name="updatemsft"></a>Microsoft ピアリング構成を更新するには
 
 次の例を使用して構成の任意の部分を更新することができます。
 
@@ -159,7 +159,7 @@ Set-AzExpressRouteCircuitPeeringConfig  -Name "MicrosoftPeering" -ExpressRouteCi
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-### <a name="deletemsft"></a>Microsoft ピアリングを削除するには
+### <a name="to-delete-microsoft-peering"></a><a name="deletemsft"></a>Microsoft ピアリングを削除するには
 
 以下のコマンドレットを実行して、ピアリング構成を削除することができます。
 
@@ -169,7 +169,7 @@ Remove-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRoute
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-## <a name="private"></a>Azure プライベート ピアリング
+## <a name="azure-private-peering"></a><a name="private"></a>Azure プライベート ピアリング
 
 このセクションでは、ExpressRoute 回線用の Azure プライベート ピアリング構成を作成、取得、更新、および削除します。
 
@@ -269,7 +269,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    > 
    >
 
-### <a name="getprivate"></a>Azure プライベート ピアリングの詳細を取得するには
+### <a name="to-get-azure-private-peering-details"></a><a name="getprivate"></a>Azure プライベート ピアリングの詳細を取得するには
 
 構成の詳細を取得するには、次の例を使用します。
 
@@ -279,7 +279,7 @@ $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupNa
 Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt
 ```
 
-### <a name="updateprivate"></a>Azure プライベート ピアリングの構成を更新するには
+### <a name="to-update-azure-private-peering-configuration"></a><a name="updateprivate"></a>Azure プライベート ピアリングの構成を更新するには
 
 構成の任意の部分を更新するには、次の例を使用します。 この例では、回線の VLAN ID が 100 から 500 に更新されています。
 
@@ -289,7 +289,7 @@ Set-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRoute
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-### <a name="deleteprivate"></a>Azure プライベート ピアリングを削除するには
+### <a name="to-delete-azure-private-peering"></a><a name="deleteprivate"></a>Azure プライベート ピアリングを削除するには
 
 ピアリング構成を削除するには、次の例を実行します。
 

@@ -4,10 +4,10 @@ description: ブループリント定義をコードとして使用する方法�
 ms.date: 09/03/2019
 ms.topic: how-to
 ms.openlocfilehash: fc7b9818072665d79deaf8a456868943e8428730
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873201"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>PowerShell を使用したブループリント定義のインポートとエクスポート
@@ -21,7 +21,7 @@ Azure Blueprints は、Azure portal で完全に管理できます。 組織が 
   - テスト環境でのブループリント定義の自動テスト
   - 継続的インテグレーションと継続的デプロイ (CI/CD) パイプラインのサポート
 
-理由にかかわらず、ブループリント定義をコードとして管理することには利点があります。 この記事では、[Az.Blueprint](https://powershellgallery.com/packages/Az.Blueprint/) モジュールで `Import-AzBlueprintWithArtifact` および `Export-AzBlueprintWithArtifact` コマンドを使用する方法について説明します。
+理由にかかわらず、ブループリント定義をコードとして管理することには利点があります。 この記事では、`Import-AzBlueprintWithArtifact`Az.Blueprint`Export-AzBlueprintWithArtifact` モジュールで [ および ](https://powershellgallery.com/packages/Az.Blueprint/) コマンドを使用する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,7 +38,7 @@ Azure Blueprints は、Azure portal で完全に管理できます。 組織が 
 ブループリントのエクスポートとインポートについて確認する前に、ブループリント定義を構成するファイルがどのような構造であるかを見てみましょう。 ブループリント定義は、専用のフォルダーに格納するようにします。
 
 > [!IMPORTANT]
-> `Import-AzBlueprintWithArtifact` コマンドレットの **Name** パラメーターに値が渡されない場合は、ブループリント定義が格納されているフォルダーの名前が使用されます。
+> **コマンドレットの**Name`Import-AzBlueprintWithArtifact` パラメーターに値が渡されない場合は、ブループリント定義が格納されているフォルダーの名前が使用されます。
 
 ブループリント定義 (`blueprint.json` という名前を付ける必要があります) と共に、ブループリント定義を構成する成果物があります。 各成果物は、必ず `artifacts` という名前のサブフォルダー内に存在します。
 まとめると、ブループリント定義の構造は、フォルダー内の JSON ファイルとして、次のようになります。
@@ -119,7 +119,7 @@ Azure Blueprints は、Azure portal で完全に管理できます。 組織が 
 - [ブループリント リソースのロック](../concepts/resource-locking.md)を使用してデプロイを保護する。
 - [ブループリントをコードとして管理する](https://github.com/Azure/azure-blueprints/blob/master/README.md)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ブループリントのライフサイクル](../concepts/lifecycle.md)を参照する。
 - [静的および動的パラメーター](../concepts/parameters.md)の使用方法を理解する。

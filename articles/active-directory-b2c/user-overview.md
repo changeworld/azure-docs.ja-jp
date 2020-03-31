@@ -11,10 +11,10 @@ ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 9630e1f23b6595ca690ecafcf0c4b9bfff603f2e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78185660"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー アカウントの概要
@@ -32,7 +32,7 @@ Azure Active Directory B2C (Azure AD B2C) には、作成できるアカウン�
 
 ## <a name="work-account"></a>職場アカウント
 
-職場アカウントは、Azure AD に基づいて、すべてのテナントに対して同じ方法で作成されます。 職場アカウントを作成するには、「[クイック スタート:Azure Active Directory に新しいユーザーを追加する](../active-directory/fundamentals/add-users-azure-active-directory.md)」を参照してください。 職場アカウントは、Azure portal で **[新しいユーザー]** を選択して作成できます。
+職場アカウントは、Azure AD に基づいて、すべてのテナントに対して同じ方法で作成されます。 職場アカウントを作成するには、「[クイック スタート: Azure Active Directory に新しいユーザーを追加する](../active-directory/fundamentals/add-users-azure-active-directory.md)」の情報を使用できます。 職場アカウントは、Azure portal で **[新しいユーザー]** を選択して作成できます。
 
 新しい職場アカウントを追加する場合は、次の構成設定を考慮する必要があります。
 

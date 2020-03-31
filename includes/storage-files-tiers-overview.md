@@ -9,10 +9,10 @@ ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: f4e5c59a5ce7c0d743a574309bb1b9276ce80bea
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77597830"
 ---
 Azure Files では、Premium と Standard の 2 つの異なるストレージのサービス レベルが提供されており、お客様のシナリオのパフォーマンスと価格の要件に合わせて共有を調整できます。

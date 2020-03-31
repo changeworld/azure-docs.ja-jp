@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/24/2020
 ms.author: cherylmc
 ms.openlocfilehash: 381f45a51002188c72174cff83c26b829912a0b9
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77596829"
 ---
 # <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion"></a>Azure Bastion を使用して Linux 仮想マシンに SSH 接続する
@@ -45,7 +45,7 @@ SSH 経由で Linux VM に接続するには、お使いの VM で次のポー�
 
 * 受信ポート:SSH (22)
 
-## <a name="username"></a>接続: ユーザー名とパスワードを使用する
+## <a name="connect-using-username-and-password"></a><a name="username"></a>接続: ユーザー名とパスワードを使用する
 
 1. [Azure Portal](https://portal.azure.com)を開きます。 接続先の仮想マシンに移動し、 **[接続]** をクリックし、ドロップダウンから **[Bastion]** を選択します。
 
@@ -56,7 +56,7 @@ SSH 経由で Linux VM に接続するには、お使いの VM で次のポー�
 1. 仮想マシンに SSH 接続するためのユーザー名とパスワードを入力します。
 1. キーを入力したら、 **[接続]** をクリックします。
 
-## <a name="privatekey"></a>接続: 秘密キーを手動で入力する
+## <a name="connect-manually-enter-a-private-key"></a><a name="privatekey"></a>接続: 秘密キーを手動で入力する
 
 1. [Azure Portal](https://portal.azure.com)を開きます。 接続先の仮想マシンに移動し、 **[接続]** をクリックし、ドロップダウンから **[Bastion]** を選択します。
 
@@ -68,7 +68,7 @@ SSH 経由で Linux VM に接続するには、お使いの VM で次のポー�
 1. **[SSH 秘密キー]** のテキスト領域に秘密キーを入力します (または直接貼り付けます)。
 1. キーを入力したら、 **[接続]** をクリックします。
 
-## <a name="ssh"></a>接続: 秘密キー ファイルを使用する
+## <a name="connect-using-a-private-key-file"></a><a name="ssh"></a>接続: 秘密キー ファイルを使用する
 
 1. [Azure Portal](https://portal.azure.com)を開きます。 接続先の仮想マシンに移動し、 **[接続]** をクリックし、ドロップダウンから **[Bastion]** を選択します。
 
