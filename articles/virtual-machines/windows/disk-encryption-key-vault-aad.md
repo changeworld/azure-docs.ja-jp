@@ -8,11 +8,11 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 5a42b1e0dc82b3340bbebe176c71cb1754d00664
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72246000"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224671"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>Azure AD を使用した Azure Disk Encryption 用のキー コンテナーの作成と構成 (以前のリリース)
 
@@ -40,7 +40,7 @@ Azure Disk Encryption は [Azure Key Vault](https://azure.microsoft.com/document
 
 
 >[!WARNING]
->暗号化シークレットがリージョンの境界を越えないようにするため、Azure Disk Encryption では Key Vault と VM を同じリージョンに併置する必要があります。 暗号化する VM と同じリージョン内に Key Vault を作成し、使用します。 
+>暗号化シークレットがリージョンの境界を超えないようにするため、Azure Disk Encryption では Key Vault と VM を同じリージョンに併置する必要があります。 暗号化する VM と同じリージョン内に Key Vault を作成し、使用します。 
 
 
 ### <a name="create-a-key-vault-with-powershell"></a>PowerShell を使用してキー コンテナーを作成する
@@ -219,7 +219,7 @@ Azure プラットフォームには、Key Vault 内の暗号化キーまたは�
 1. キー コンテナーを選択し、 **[アクセス ポリシー]** に移動し、 **[クリックして高度なアクセス ポリシーを表示する]** を選択します。
 2. **[ボリューム暗号化に対して Azure Disk Encryption へのアクセスを有効にする]** というボックスをオンにします。
 3. 必要に応じて、 **[展開に対して Azure Virtual Machines へのアクセスを有効にする]** と **[テンプレートの展開に対して Azure Resource Manager へのアクセスを有効にする]** の一方または両方をオンにします。 
-4. **[Save]** をクリックします。
+4. **[保存]** をクリックします。
 
 ![Azure Key Vault の高度なアクセス ポリシー](../media/disk-encryption/keyvault-portal-fig4.png)
 
@@ -454,6 +454,6 @@ PowerShell スクリプトを使用する前に、Azure Disk Encryption の前�
 ```
 
  
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Windows VM で Azure AD を使用して Azure Disk Encryption を有効にする (以前のリリース)](disk-encryption-windows-aad.md)

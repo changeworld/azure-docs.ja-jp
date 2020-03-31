@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: e0df0773daf8f9be21ac70d8390013adfd93483a
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78402675"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>チュートリアル:Azure Databricks を使用した、ストリーミング データの異常検出
@@ -161,7 +161,7 @@ Twitter アプリケーションについて取得した値を保存します。
 
 4. **[作成]** ダイアログ ボックスで、次の値を入力します。
 
-    |Value |説明  |
+    |値 |説明  |
     |---------|---------|
     |名前     | Anomaly Detector リソースの名前。        |
     |サブスクリプション     | リソースが関連付けられる Azure サブスクリプション。        |

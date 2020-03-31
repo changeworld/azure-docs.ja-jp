@@ -4,10 +4,10 @@ description: Azure Service Fabric アプリケーション コードでマネー
 ms.topic: article
 ms.date: 10/09/2019
 ms.openlocfilehash: 59680ec7911f55c3dc49d8834b410a039aa435dc
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75610320"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>Service Fabric アプリケーションのマネージド ID を活用して Azure サービスにアクセスする方法 (プレビュー)
@@ -323,7 +323,7 @@ HTTP 応答ヘッダーの "状態コード" フィールドは、要求の成�
 
 | 要素 | 説明 |
 | ------- | ----------- |
-| コード | エラー コード。 |
+| code | エラー コード。 |
 | correlationId | デバッグに使用できる相関 ID。 |
 | message | エラーの詳細な説明。 **エラーの説明は、予告なく変更になる場合があります。エラー メッセージ自体に依存しないでください。**|
 

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
 ms.openlocfilehash: 32fa54ef0d8eccaf8745ee37cb028d4f3c6d73eb
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650880"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225875"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Azure Event Hubs および Azure Logic Apps でイベントを監視および送受信する
 
@@ -74,7 +74,7 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
    ![トリガーのプロパティ](./media/connectors-create-api-azure-event-hubs/event-hubs-trigger.png)
 
-   | プロパティ | Required | 説明 |
+   | プロパティ | 必須 | 説明 |
    |----------|----------|-------------|
    | **イベント ハブ名** | はい | 監視するイベント ハブの名前 |
    | **コンテンツの種類** | いいえ | イベントのコンテンツの種類 既定では、 `application/octet-stream`です。 |
@@ -86,7 +86,7 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
    **追加のプロパティ**
 
-   | プロパティ | Required | 説明 |
+   | プロパティ | 必須 | 説明 |
    |----------|----------|-------------|
    | **コンテンツ スキーマ** | いいえ | イベント ハブから読み取るイベントの JSON コンテンツ スキーマ たとえば、コンテンツのスキーマを指定する場合は、スキーマと一致するイベントのみのロジック アプリをトリガーできます。 |
    | **最小パーティション キー** | いいえ | 読み取る最小の[パーティション](../event-hubs/event-hubs-features.md#partitions) ID を入力します。 既定では、すべてのパーティションが読み取られます。 |
@@ -130,7 +130,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
    ![イベント ハブ名を選択し、イベントの内容を入力する](./media/connectors-create-api-azure-event-hubs/event-hubs-send-event-action.png)
 
-   | プロパティ | Required | 説明 |
+   | プロパティ | 必須 | 説明 |
    |----------|----------|-------------|
    | **イベント ハブ名** | はい | イベントの送信先となるイベント ハブを選択します |
    | **コンテンツ** | いいえ | 送信するイベントのコンテンツ |
@@ -152,7 +152,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 1. 接続情報の入力を求められたら、次の詳細を入力します。
 
-   | プロパティ | Required | Value | 説明 |
+   | プロパティ | 必須 | 値 | 説明 |
    |----------|----------|-------|-------------|
    | **Connection Name** | はい | <*connection-name*> | 作成する接続の名前 |
    | **イベント ハブの名前空間** | はい | <*event-hubs-namespace*> | 使用する場合は、Event Hubs 名前空間を選択します。 |

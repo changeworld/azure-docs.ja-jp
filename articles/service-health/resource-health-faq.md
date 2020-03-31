@@ -3,11 +3,11 @@ title: Azure Resource Health の FAQ
 description: Azure Resource Health の概要
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 9f626dc4366cbdd9215704de97bb03fad19422eb
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: 5a15ded1c279e700fb71e5ea7aa866e5afc29f8a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75912785"
 ---
 # <a name="azure-resource-health-faq"></a>Azure Resource Health の FAQ
@@ -46,7 +46,7 @@ Resource Health では、[リソースの種類](resource-health-checks-resource
 ポータルでは、ユーザーが開始したアクションは青の通知アイコンを使用して表示されますが、計画的および計画外のイベントは赤色の警告アイコンを使用して表示されます。 詳細については、[Resource Health の概要](Resource-health-overview.md)に関するページを参照してください。  
 
 ## <a name="can-i-integrate-resource-health-with-my-monitoring-tools"></a>Resource Health をユーザー固有の監視ツールと統合できますか。
-Resource Health では、アクティビティ ログ ベースのアラートに対して[サポート](resource-health-alert-arm-template-guide.md)が提供されます。 アクティビティ ログ アラートでは、[アクション グループ](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)を使用して、アラートがトリガーされたことをユーザーに通知します。 アクション グループでは、メール、SMS、Webhook、ITSM アクションなどのさまざまな通知チャネルがサポートされています。
+Resource Health では、アクティビティ ログ ベースのアラートに対して[プレビュー サポート](resource-health-alert-arm-template-guide.md)が提供されます。 アクティビティ ログ アラートでは、[アクション グループ](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)を使用して、アラートがトリガーされたことをユーザーに通知します。 アクション グループでは、メール、SMS、Webhook、ITSM アクションなどのさまざまな通知チャネルがサポートされています。
 
 ## <a name="where-do-i-find-resource-health"></a>Resource Health はどこにありますか。
 Azure Portal にログインした後、複数の方法で Resource Health にアクセスできます。

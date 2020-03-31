@@ -6,10 +6,10 @@ ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
 ms.openlocfilehash: 385806dca7dcac9fd0aac4c1bf9e1072e7fe5ecb
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75979469"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Update Management、Change Tracking、および Inventory ソリューションを複数の VM で使用できるようにする
@@ -39,7 +39,7 @@ Azure Portal で**仮想マシン**に移動します。
 
 仮想マシンの一覧はフィルターされ、同じサブスクリプションおよび場所にある仮想マシンのみが表示されます。 お使いの仮想マシンが 4 つ以上のリソース グループにある場合、最初の 3 つのリソース グループが選択されます。
 
-### <a name="resource-group-limit"></a> オンボードの制限事項
+### <a name="onboarding-limitations"></a><a name="resource-group-limit"></a> オンボードの制限事項
 
 オンボードのために使用できるリソース グループの数は、[Resource Manager のデプロイメントの制限](../azure-resource-manager/templates/cross-resource-group-deployment.md)によって制限されます。 Resource Manager のデプロイ (更新プログラムの展開と混同しないでください) は、デプロイあたり 5 つのリソース グループに制限されています。 オンボードの整合性を確保するため、それらのリソース グループのうちの 2 つは、Log Analytics ワークスペース、Automation アカウント、および関連リソースを構成するために予約されています。 これで、デプロイのために選択するリソース グループは 3 つ残ります。 この制限は、Automation ソリューションによって管理できるリソース グループの数ではなく、同時オンボードのみに適用されます。
 
@@ -101,7 +101,7 @@ Log Analytics ワークスペースと Automation アカウントの選択を確
 
 * VM の開始/停止の Runbook スケジュール
 * VM の開始/停止の Runbook
-* 変数:
+* 変数
 
 Automation アカウントの自分のワークスペースを Log Analytics ワークスペースからリンク解除することもできます。 自分のワークスペースで、 **[関連リソース]** の **[Automation アカウント]** を選択します。 [Automation アカウント] ページで **[アカウントのリンク解除]** を選択します。
 
