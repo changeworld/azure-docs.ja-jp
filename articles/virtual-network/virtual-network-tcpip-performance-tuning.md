@@ -16,10 +16,10 @@ ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
 ms.openlocfilehash: bb23484903ac3ce129c6e7a7a27e0765c227fb1d
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68297777"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Azure VM の TCP/IP パフォーマンス チューニング
@@ -224,11 +224,11 @@ Set-NetTCPSetting
 | | | | |
 |-|-|-|-|
 |**AutoTuningLevel**|**スケール ファクター**|**スケール乗数**|**最大ウィンドウ サイズを<br/>計算するための数式**|
-|Disabled|なし|なし|ウィンドウ サイズ|
+|無効|なし|なし|ウィンドウ サイズ|
 |制限付き|4|2^4|ウィンドウ サイズ * (2^4)|
 |厳しく制限|2|2^2|ウィンドウ サイズ * (2^2)|
 |Normal|8|2^8|ウィンドウ サイズ * (2^8)|
-|試験段階|14|2^14|ウィンドウ サイズ * (2^14)|
+|Experimental|14|2^14|ウィンドウ サイズ * (2^14)|
 
 これらの設定は TCP のパフォーマンスに影響する可能性が最も高いものですが、Azure で制御されないインターネット上の他の多くの要素も TCP のパフォーマンスに影響する可能性があることに留意しておいてください。
 
@@ -265,7 +265,7 @@ Receive Side Scaling (RSS) は、受信処理をマルチプロセッサ シス�
 
 VM 上で高速ネットワークが有効になっているときに最大のパフォーマンスを実現するには、RSS を有効にする必要があります。 RSS は、高速ネットワークを使用しない VM 上でも利点があります。 RSS が有効になっているかどうかを判断する方法と、これを有効にすることについては、「[Azure 仮想マシンのネットワーク スループットの最適化](https://aka.ms/FastVM)」を参照してください。
 
-### <a name="tcp-timewait-and-timewait-assassination"></a>TCP TIME_WAIT と TIME_WAIT アセシネーション
+### <a name="tcp-time_wait-and-time_wait-assassination"></a>TCP TIME_WAIT と TIME_WAIT アセシネーション
 
 TCP TIME_WAIT は、ネットワークとアプリケーションのパフォーマンスに影響を与えるもう 1 つの一般的な設定です。 多くのソケットを開閉しているビジーな VM 上では、クライアントまたはサーバー (ソース IP:送信元ポート + 宛先 IP:送信先ポート) として、TCP の通常の動作中に、特定のソケットが最終的に長時間 TIME_WAIT 状態になることがあります。 この TIME_WAIT 状態は、ソケットを閉じる前に、そのソケットで他のデータを配信できることを意味します。 そのため、TCP/IP スタックは一般に、クライアントの TCP SYN パケットを自動的に削除することにより、ソケットの再利用を防止します。
 
@@ -373,6 +373,6 @@ NTttcp は、Linux または Windows VM の TCP パフォーマンスをテス�
 
 ただし、これらのパケットの種類は、TCP のスループットがこの記事の他のセクションで説明した理由により最大パフォーマンスを達成していないことを示します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで Azure VM の TCP/IP パフォーマンス チューニングについて学習したので、[仮想ネットワークの計画](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)の他の考慮事項について読んだり、[仮想ネットワークの接続と構成の詳細](https://docs.microsoft.com/azure/virtual-network/)について調べたりできます。

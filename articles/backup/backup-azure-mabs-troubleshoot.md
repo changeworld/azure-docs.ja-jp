@@ -5,10 +5,10 @@ ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.openlocfilehash: cc0cf7e91c1aacbc637d33ab1e5546cc54836b28
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78673113"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Azure Backup Server のトラブルシューティング

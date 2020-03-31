@@ -4,10 +4,10 @@ description: このチュートリアルでは、1 つ以上のタイマー ト�
 ms.topic: article
 ms.date: 06/27/2019
 ms.openlocfilehash: 3202b5d8c426165d81129f1affa69b3a3d515ce9
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78402869"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>定義したスケジュールで ACR タスクを実行する

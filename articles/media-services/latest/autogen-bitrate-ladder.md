@@ -15,10 +15,10 @@ ms.date: 02/10/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: c25c32f35adc1c017f0f4c012c82bd7e0af8d452
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60733319"
 ---
 #  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>自動生成されたビットレート ラダーでエンコードする
@@ -33,14 +33,14 @@ ms.locfileid: "60733319"
 
 このプリセットの使用方法の例については、[ファイルのストリーミング](stream-files-dotnet-quickstart.md)に関する記事を参照してください。
 
-## <a name="output"></a>Output
+## <a name="output"></a>出力
 
 このセクションでは、**AdaptiveStreaming** プリセットによるエンコードの結果として Media Services エンコーダーによって生成される出力レイヤーの 3 つの例を示します。 どの場合でも、出力には、128 kbps でエンコードされたステレオ音声を含む音声のみの MP4 ファイルが含まれます。
 
 ### <a name="example-1"></a>例 1
 高さが "1080" でフレーム レートが "29.970" のソースからは、6 層のビデオ レイヤーが生成されます。
 
-|レイヤー|高さ|幅|ビットレート (kbps)|
+|レイヤー|[高さ]|幅|ビットレート (kbps)|
 |---|---|---|---|
 |1|1080|1920|6780|
 |2|720|1280|3520|
@@ -52,7 +52,7 @@ ms.locfileid: "60733319"
 ### <a name="example-2"></a>例 2
 高さが "720" でフレーム レートが "23.970" のソースからは、5 層のビデオ レイヤーが生成されます。
 
-|レイヤー|高さ|幅|ビットレート (kbps)|
+|レイヤー|[高さ]|幅|ビットレート (kbps)|
 |---|---|---|---|
 |1|720|1280|2940|
 |2|540|960|1850|
@@ -63,13 +63,13 @@ ms.locfileid: "60733319"
 ### <a name="example-3"></a>例 3
 高さが "360" でフレーム レートが "29.970" のソースからは、3 層のビデオ レイヤーが生成されます。
 
-|レイヤー|高さ|幅|ビットレート (kbps)|
+|レイヤー|[高さ]|幅|ビットレート (kbps)|
 |---|---|---|---|
 |1|360|640|700|
 |2|270|480|440|
 |3|180|320|230|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [ファイルのストリーミング](stream-files-dotnet-quickstart.md)

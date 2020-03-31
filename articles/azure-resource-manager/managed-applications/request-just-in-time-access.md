@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: evanhi
 ms.openlocfilehash: 7f475774828bcaecd471e13de994b156041323ed
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75649483"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>Azure Managed Applications でジャストインタイム アクセスを有効にして要求する

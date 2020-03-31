@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: cb906f6b3cf333e3fb3a24a934e5d9f11fc10cda
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 9660e87f3ee4e1c1c6a270f14928fdd111664e66
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654479"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480880"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure の Network Performance Monitor ソリューション
 
@@ -39,7 +39,8 @@ NPM は、次のリージョンのいずれかでホストされているワー�
 * 北ヨーロッパ
 * 西ヨーロッパ
 * フランス中部
-
+* カナダ中部
+* 米国西部
 * 米国中西部
 * 米国中北部
 * 米国中南部

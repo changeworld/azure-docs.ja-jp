@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 376808a6d8f61d4dc03d17061323a473d48053a6
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76907342"
 ---
 # <a name="move-a-service-fabric-mesh-application-to-another-azure-region"></a>Service Fabric Mesh アプリケーションを別の Azure リージョンに移動する
@@ -32,7 +32,7 @@ ms.locfileid: "76907342"
 
 3. エクスポートされたテンプレートをレビュー (および必要に応じて編集) し、既存のプロパティ値がターゲット リージョンで使用するものであることを確認します。 新しい `location` (Azure リージョン) は、再デプロイ時に指定するパラメーターです。
 
-## <a name="move"></a>[詳細ビュー]
+## <a name="move"></a>詳細ビュー
 
 1. ターゲット リージョンに新しいリソース グループを作成するか、既存のリソース グループを使用します。
 

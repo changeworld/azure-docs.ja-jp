@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
 ms.openlocfilehash: a55ef4f814c0d13a6efbeeb8cd9a5565d2869432
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78183297"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート

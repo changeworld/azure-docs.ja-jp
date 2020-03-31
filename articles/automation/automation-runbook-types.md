@@ -6,17 +6,17 @@ ms.subservice: process-automation
 ms.date: 03/05/2019
 ms.topic: conceptual
 ms.openlocfilehash: 6346c29210b6390f11c884ff51e0b60af89bbbb7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75420907"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235511"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation の Runbook の種類
 
 Azure Automation がサポートする数種類の Runbook について次の表で簡単に説明します。  その後のセクションでは、使用するときの考慮事項など、各種類に関して詳しく説明します。
 
-| 種類 | 説明 |
+| Type | 説明 |
 |:--- |:--- |
 | [グラフィカル](#graphical-runbooks)|Windows PowerShell に基づいており、Azure ポータルのグラフィカル エディターで完全に作成および編集されます。 |
 | [グラフィカル PowerShell ワークフロー](#graphical-runbooks)|Windows PowerShell ワークフローに基づいており、Azure ポータルのグラフィカル エディターで完全に作成および編集されます。 |

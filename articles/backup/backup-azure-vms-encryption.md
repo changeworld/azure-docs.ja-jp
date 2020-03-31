@@ -4,10 +4,10 @@ description: Azure Backup サービスを使用して、暗号化された Azure
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.openlocfilehash: a3976cc83f749b1abe00cef3f5bf867ffbc30ab6
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78206692"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>暗号化された Azure VM をバックアップおよび復元する

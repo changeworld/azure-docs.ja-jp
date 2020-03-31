@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
 ms.openlocfilehash: aac0060527af7b7d880f971e7608be3fa44a2d15
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76905115"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>事前作成済みテンプレートを使用したロジック アプリ ワークフローの作成
@@ -44,12 +44,12 @@ Azure サブスクリプションがない場合は、始める前に[無料の 
 
    ![ロジック アプリの詳細を指定する](./media/logic-apps-create-logic-apps-from-templates/logic-app-settings.png)
 
-   | 設定 | Value | 説明 | 
+   | 設定 | 値 | 説明 | 
    | ------- | ----- | ----------- | 
-   | **Name** | <*ロジック アプリ名*> | 一意のロジック アプリ名を指定します。 | 
+   | **名前** | <*ロジック アプリ名*> | 一意のロジック アプリ名を指定します。 | 
    | **サブスクリプション** | <*Azure サブスクリプション名*> | 使用する Azure サブスクリプションを選択します。 | 
    | **リソース グループ** | <*Azure リソース グループ名*> | このロジック アプリ用の [Azure リソース グループ](../azure-resource-manager/management/overview.md)を作成するか選択し、このアプリに関連するすべてのリソースを整理します。 | 
-   | **地域** | <*Azure データセンターのリージョン*> | ロジック アプリをデプロイするデータセンターのリージョンを選びます (たとえば米国西部)。 | 
+   | **場所** | <*Azure データセンターのリージョン*> | ロジック アプリをデプロイするデータセンターのリージョンを選びます (たとえば米国西部)。 | 
    | **Log Analytics** | **[オフ]** (既定値) または **[オン]** | [Azure Monitor ログ](../log-analytics/log-analytics-overview.md)を通じてロジック アプリの[診断ログ](../logic-apps/monitor-logic-apps-log-analytics.md)を設定します。 Log Analytics ワークスペースが既にあることが要件です。 | 
    |||| 
 

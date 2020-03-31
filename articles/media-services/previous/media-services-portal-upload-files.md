@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 3ebeb3c601dd3f734265d49d60728056561928be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61127823"
 ---
 # <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>Azure Portal での Media Services アカウントへのファイルのアップロード 
@@ -32,7 +32,7 @@ ms.locfileid: "61127823"
 > [!NOTE]
 > Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
-Azure Media Services で、デジタル ファイルをアセットにアップロードします。 資産には、ビデオ、オーディオ、画像、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイル (および各ファイルのメタデータ) を含めることができます。 ファイルをアップロードすると、クラウドにコンテンツが安全に保存され、処理したりストリーミングしたりできるようになります。
+Azure Media Services で、デジタル ファイルをアセットにアップロードします。 アセットには、ビデオ、オーディオ、画像、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイル (および各ファイルのメタデータ) を含めることができます。 ファイルをアップロードすると、クラウドにコンテンツが安全に保存され、処理したりストリーミングしたりできるようになります。
 
 Media Services では、処理するファイルに対して、最大ファイル サイズの制限があります。 ファイル サイズの制限の詳細については、[Media Services のクォータと制限](media-services-quotas-and-limitations.md)に関する記事を参照してください。
 
@@ -40,7 +40,7 @@ Media Services では、処理するファイルに対して、最大ファイ�
 
 ## <a name="upload-files"></a>ファイルをアップロードする
 1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。
-2. **[設定]**  >  **[資産]** を参照してください。 次に、 **[アップロード]** ボタンを選択します。
+2. **[設定]**  >  **[アセット]** を参照してください。 次に、 **[アップロード]** ボタンを選択します。
    
     ![ファイルをアップロードする](./media/media-services-portal-vod-get-started/media-services-upload.png)
    
@@ -61,7 +61,7 @@ Media Services では、処理するファイルに対して、最大ファイ�
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [アップロードしたアセットのエンコード](media-services-portal-encode.md)方法を学ぶ。
 
 * また、Azure Functions を使用すると、構成したコンテナーにファイルが到着したときにエンコード ジョブをトリガーすることもできます。 詳しくは、「[Media Services:Integrating Azure Media Services with Azure Functions and Logic Apps (Media Services: Azure Media Services と Azure Functions および Logic Apps の統合)](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/)」のサンプルをご覧ください。

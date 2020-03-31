@@ -3,7 +3,7 @@ title: エンタイトルメント管理でレポートおよびログを表示�
 description: Azure Active Directory エンタイトルメント管理でユーザー割り当てレポートと監査ログを表示する方法について説明します。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: jocastel-MSFT
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 10/28/2019
-ms.author: ajburnle
+ms.date: 03/22/2020
+ms.author: barclayn
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 819badb85e532275b4d5d6ca84c3e6e7fe527fa0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 514f8e86d6bd28cc5212e0f0058f00e270f43e35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422549"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128415"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でレポートとログを表示する
 
@@ -109,5 +109,6 @@ Azure AD は、要求の進行中は、以下を含め追加の監査レコー�
 
 ## <a name="next-steps"></a>次のステップ
 
+- [レポートとログをアーカイブする](entitlement-management-logs-and-reporting.md)
 - [Azure AD エンタイトルメント管理のトラブルシューティング](entitlement-management-troubleshoot.md)
 - [一般的なシナリオ](entitlement-management-scenarios.md)

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: erhopf
 ms.openlocfilehash: b076c642f72e45f58be61d67e887e11b6ccb0aba
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74975858"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>カスタム音声を作成するための音声サンプルを録音する
@@ -43,7 +43,7 @@ Role|目的
 
 ## <a name="choose-your-voice-talent"></a>ボイス タレントを選択する
 
-カスタム ボイス タレントの適任候補は、ボイスオーバーやキャラクター ボイスの仕事の経験がある演者です。 アナウンサーやニュースキャスターから適任のタレントが見つかることもよくあります。
+カスタム音声タレントの適任候補は、ボイスオーバーやキャラクター ボイスの仕事の経験がある演者です。 アナウンサーやニュースキャスターから適任のタレントが見つかることもよくあります。
 
 好みの自然な声を持ったボイス タレントを選びます。 ユニークな "キャラクター" 音声を作ることは可能ですが、そのような声を一貫して演じることはほとんどのタレントにとってかなり難しく、喉に負担がかかる可能性があります。
 
@@ -215,7 +215,7 @@ Custom Voice ポータルでは、提供される個々の発話が個別のフ�
 
 後で必要な場合に備えて、オリジナルの録音を安全な場所に保管します。 台本とメモも保存しておきます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 録音をアップロードしてカスタム音声を作成する準備ができました。
 

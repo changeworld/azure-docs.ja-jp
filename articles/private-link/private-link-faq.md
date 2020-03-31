@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: 7870b68ca931123d50e88e846aa066ce53972dbc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75349934"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure Private Link のよく寄せられる質問 (FAQ)

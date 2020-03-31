@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
 ms.openlocfilehash: cf6e4e4f0bfab43fb738f8415022e55fcbcbd05a
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76156456"
 ---
 # <a name="how-to-add-validations-to-custom-command-parameters-preview"></a>方法:カスタム コマンド パラメーターに検証を追加する (プレビュー)
@@ -41,10 +41,10 @@ ms.locfileid: "76156456"
 
    | 設定           | 推奨値                                          | 説明                                                                                      |
    | ----------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-   | Name              | 気温                                              | コマンド パラメーターのわかりやすい名前                                                    |
+   | 名前              | 気温                                              | コマンド パラメーターのわかりやすい名前                                                    |
    | 必須          | true                                                     | コマンドを完了する前にこのパラメーターの値を必須とするかどうかを示すチェックボックス |
    | 応答テンプレート | "- What temperature would you like?" (何度にしますか。)                     | 理解されていないとき、このパラメーターの値を問うプロンプト                              |
-   | 種類              | Number                                                   | Number、String、Date Time など、パラメーターの型                                      |
+   | Type              | Number                                                   | Number、String、Date Time など、パラメーターの型                                      |
    | 検証        | 最小値:60、最大値:80                             | Number パラメーターの場合、パラメーターに許容される値の範囲                             |
    | 応答テンプレート | "- Sorry, I can only set between 60 and 80 degrees" (申し訳ありません、設定できる範囲は 60 から 80 度までです)      | 検証が失敗した場合、別の値を要求するプロンプト                                       |
 
@@ -63,7 +63,7 @@ ms.locfileid: "76156456"
    | ---------- | --------------------------------------------------------- | -------------------------------------------------- |
    | 規則の名前  | 確認メッセージ                                      | ルールの目的を説明する名前          |
    | 条件 | 必須のパラメーター - Temperature                          | ルールを実行できるタイミングを決定する条件    |
-   | アクション    | SpeechResponse - "- Ok, setting to {Temperature} degrees" (了解です。{Temperature} 度に設定します) | ルール条件が真のときに実行するアクション |
+   | Actions    | SpeechResponse - "- Ok, setting to {Temperature} degrees" (了解です。{Temperature} 度に設定します) | ルール条件が真のときに実行するアクション |
 
 > [!TIP]
 > この例では、音声応答を利用して結果を確定します。 クライアント アクションでコマンドを完了する例については、「[方法: Speech SDK を使用し、クライアントでコマンドを実行する (プレビュー)](./how-to-custom-speech-commands-fulfill-sdk.md)」をご覧ください

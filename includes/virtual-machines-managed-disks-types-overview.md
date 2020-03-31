@@ -9,10 +9,10 @@ ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 72d87142f9b9c1f7bcb2b02281851bd1e29bc9c8
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78262557"
 ---
 現在、Azure マネージド ディスクには 4 種類のディスクがあり、それぞれの種類は特定の顧客シナリオを対象としています。

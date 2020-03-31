@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 48c09a6100586c0c99f3d54f9708c770488c681f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61463852"
 ---
 #  <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>fMP4 チャンクを生成するエンコーディング タスクを作成する
@@ -32,13 +32,13 @@ ms.locfileid: "61463852"
             formatOption: AssetFormatOption.AdaptiveStreaming);
 ```
 
-## <a id="encoding_with_dotnet"></a>Media Services .NET SDK を使用したエンコード
+## <a name="encoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>Media Services .NET SDK を使用したエンコード
 
 次のコード サンプルでは、Media Services SDK を使用して次のタスクを実行します。
 
 - エンコード ジョブを作成します。
 - **Media Encoder Standard** エンコーダーの参照を取得します。
-- エンコーディング タスクをジョブに追加し、**アダプティブ ストリーミング** プリセットを使用するように指定します。 
+- エンコード タスクをジョブに追加し、**アダプティブ ストリーミング** プリセットを使用するように指定します。 
 - fMP4 チャンクと .ism ファイルが含まれる出力資産を作成します。
 - ジョブの進行状況を確認するイベント ハンドラーを追加します。
 - ジョブを送信します。
@@ -176,6 +176,6 @@ namespace AdaptiveStreaming
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 [Media Services Encoding の概要](media-services-encode-asset.md)
 

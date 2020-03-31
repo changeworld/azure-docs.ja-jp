@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 04/11/2019
 ms.openlocfilehash: 75d9660eb35b5d7ddc644d177c11ae489e2853dc
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74792114"
 ---
 # <a name="get-more-data-items-or-records-by-using-pagination-in-azure-logic-apps"></a>Azure Logic Apps で改ページ位置の自動修正を使用し、データ、項目、レコードを増やす
@@ -33,7 +33,7 @@ ms.locfileid: "74792114"
 * [HTTP](https://docs.microsoft.com/azure/connectors/connectors-native-http)
 * [IBM DB2](https://docs.microsoft.com/connectors/db2/)
 * [Microsoft Teams](https://docs.microsoft.com/connectors/teams/)
-* [Oracle Database](https://docs.microsoft.com/connectors/oracle/)
+* [Oracle データベース](https://docs.microsoft.com/connectors/oracle/)
 * [Salesforce](https://docs.microsoft.com/connectors/salesforce/)
 * [SharePoint](https://docs.microsoft.com/connectors/sharepointonline/)
 * [SQL Server](https://docs.microsoft.com/connectors/sql/)

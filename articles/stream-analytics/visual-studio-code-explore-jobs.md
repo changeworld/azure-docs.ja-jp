@@ -7,10 +7,10 @@ ms.author: mamccrea
 ms.date: 05/15/2019
 ms.topic: conceptual
 ms.openlocfilehash: 1d3a02d3778f9b4113767c5f755d675aeadd901b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75474757"
 ---
 # <a name="explore-azure-stream-analytics-with-visual-studio-code-preview"></a>Visual Studio Code で使用する Azure Stream Analytics の詳細 (プレビュー)

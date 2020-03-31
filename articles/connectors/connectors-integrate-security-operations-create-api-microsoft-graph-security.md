@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
 ms.openlocfilehash: b4f51b192d1a7c0ee14a769321793753e8217dea
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77598835"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>セキュリティ操作を Microsoft Graph Security および Azure Logic Apps と統合することで脅威の防止能力を強化する
@@ -38,7 +38,7 @@ Microsoft Graph Security の詳細については、「[Microsoft Graph Security
 
 * Microsoft Graph Security コネクタを使用するには、Azure Active Directory (AD) テナント管理者によって "*明示的に与えられた*" 同意が必要です。これは [Microsoft Graph Security の認証要件](https://aka.ms/graphsecurityauth)の一部です。 この同意には、Microsoft Graph Security コネクタのアプリケーション ID と名前が必要です。これらは [Azure portal](https://portal.azure.com) でも見つけることができます。
 
-  | プロパティ | Value |
+  | プロパティ | 値 |
   |----------|-------|
   | **アプリケーション名** | `MicrosoftGraphSecurityConnector` |
   | **アプリケーション ID** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |
@@ -91,9 +91,9 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
 1.  トリガーには、監視するアラートに関する情報を提供します。 その他のプロパティについては、 **[新しいパラメーターの追加]** 一覧を開き、パラメーターを選択して、そのプロパティをトリガーに追加します。
 
-   | プロパティ | プロパティ (JSON) | Required | Type | 説明 |
+   | プロパティ | プロパティ (JSON) | 必須 | Type | 説明 |
    |----------|-----------------|----------|------|-------------|
-   | **間隔** | `interval` | はい | 整数 | ワークフローの実行間隔を、[頻度] に指定された単位に基づいて表す正の整数。 間隔の最小値と最大値は次のとおりです。 <p><p>- Month: 1 から 16 か月 <br>- Day: 1 から 500 日 <br>- Hour: 1 から 12,000 時間 <br>- Minute: 1 から 72,000 分 <br>- Second: 1 から 9,999,999 秒 <p>たとえば間隔が 6 で、頻度が "月" である場合は、繰り返しは 6 か月ごとになります。 |
+   | **間隔** | `interval` | はい | Integer | ワークフローの実行間隔を、[頻度] に指定された単位に基づいて表す正の整数。 間隔の最小値と最大値は次のとおりです。 <p><p>- Month: 1 から 16 か月 <br>- Day: 1 から 500 日 <br>- Hour: 1 から 12,000 時間 <br>- Minute: 1 から 72,000 分 <br>- Second: 1 から 9,999,999 秒 <p>たとえば間隔が 6 で、頻度が "月" である場合は、繰り返しは 6 か月ごとになります。 |
    | **頻度** | `frequency` | はい | String | 繰り返しの時間の単位: **[秒]** 、 **[分]** 、 **[時間]** 、 **[日]** 、 **[週]** 、または **[月]** |
    | **タイム ゾーン** | `timeZone` | いいえ | String | 開始時刻を指定したときに限り適用されます。このトリガーに [UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を指定することはできないためです。 適用するタイム ゾーンを選択してください。 |
    | **[開始時刻]** | `startTime` | いいえ | String | 開始日時を次の形式で指定します。 <p><p>YYYY-MM-DDThh:mm:ss (タイム ゾーンを選択した場合) <p>または <p>YYYY-MM-DDThh:mm:ssZ (タイム ゾーンを選択しなかった場合) <p>たとえば、2017 年 9 月 18 日午後 2:00 にする場合は、"2017-09-18T14:00:00" と指定し、太平洋標準時などのタイム ゾーンを選択します。 または、タイム ゾーンなしで「2017-09-18T14:00:00Z」と指定します。 <p>**注:** この開始時刻には、最大で 49 年先の時刻を指定できます。また、[UTC の日付と時刻の形式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (ただし、[UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を除く) で[日付と時刻に関する ISO 8601 規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)に従っている必要があります。 タイム ゾーンを選択しない場合は、末尾にスペースを入れず、アルファベットの "Z" を追加してください。 この "Z" は、同等の[航海時間](https://en.wikipedia.org/wiki/Nautical_time)を表します。 <p>単純なスケジュールでは、開始時刻と最初の実行時刻が一致するのに対して、複雑なスケジュールでは、トリガーが作動するのは開始時刻以降となります。 "[*開始日時の使用方法を具体的に教えてください*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time)" |

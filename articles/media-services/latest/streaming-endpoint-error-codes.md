@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: juliako
 ms.openlocfilehash: ebcda6026f79bc88df91471d8be88316ba57bfc6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65411370"
 ---
 # <a name="streaming-endpoint-origin-errors"></a>ストリーミング エンドポイント (配信元) エラー 
@@ -28,7 +28,7 @@ ms.locfileid: "65411370"
 
 要求に無効な情報が含まれており、エラー コードと次のいずれかの理由で拒否されています。
 
-|エラー コード|16 進値 |エラーの説明|
+|エラー コード|16 進数値 |エラーの説明|
 |---|---|---|
 |MPE_BAD_URL_SYNTAX |0x80890201|URL 構文または形式エラー。 例として、無効な型の要求、無効なフラグメント、または無効なトラックなどがあります。 |
 |MPE_ENC_ENCRYPTION_NOT_SPECIFIED_IN_URL |0x8088024C|要求の URL に暗号化タグが含まれていません。 CMAF 要求では、URL 内に暗号化タグが必要です。 1 つ以上の暗号化の種類で構成されているその他のプロトコルでも、あいまいさを排除するために暗号化タグが必要です。 |
@@ -38,7 +38,7 @@ ms.locfileid: "65411370"
 
 次のいずれかの理由で要求が受け入れられません。
 
-|エラー コード|16 進値 |エラーの説明|
+|エラー コード|16 進数値 |エラーの説明|
 |---|---|---|
 |MPE_STORAGE_AUTHENTICATION_FAILED |0x808900EA|要求を満たすためのストレージに対する要求が、認証エラーで失敗しました。 これは、ストレージ キーがローテーションされ、サービスでストレージ キーを同期できなかった場合に発生する可能性があります。 <br/><br/>Azure portal の [[ヘルプとサポート]](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) に移動し、Azure サポートに連絡してください。|
 |MPE_STORAGE_INSUFFICIENT_ACCOUNT_PERMISSIONS |0x808900EB |ストレージ操作エラー。アカウントの権限不足のためにアクセスに失敗しました。 |
@@ -52,7 +52,7 @@ ms.locfileid: "65411370"
 
 もう存在していないリソースを操作しようとしています。 たとえば、リソースは既に削除されている可能性があります。
 
-|エラー コード|16 進値 |エラーの説明|
+|エラー コード|16 進数値 |エラーの説明|
 |---|---|---|
 |MPE_EGRESS_TRACK_NOT_FOUND |0x80890209 |要求されたトラックが見つかりません。 |
 |MPE_RESOURCE_NOT_FOUND |0x808901F9 |要求されたリソースが見つかりません。 |
@@ -70,13 +70,13 @@ ms.locfileid: "65411370"
 
 `PUT` または `POST` 操作で指定されたリソースの ID が、既存のリソースで使用されています。 この問題を解決するには、リソースの別の ID を使用します。
 
-|エラー コード|16 進値 |エラーの説明|
+|エラー コード|16 進数値 |エラーの説明|
 |---|---|---|
 |MPE_STORAGE_CONFLICT  |0x808900EE  |ストレージ操作エラー。競合エラーです。  |
 
 ## <a name="410"></a>410
 
-|エラー コード|16 進値 |エラーの説明|
+|エラー コード|16 進数値 |エラーの説明|
 |---|---|---|
 |MPE_FILTER_FORCE_END_LEFT_EDGE_CROSSED_DVR_WINDOW|0x80890263|ライブ ストリーミングでは、forceEndTimestamp を持つフィルターが true に設定されている場合、開始または終了タイムスタンプは、現在の DVR ウィンドウの外部に設定されます。|
 
@@ -84,7 +84,7 @@ ms.locfileid: "65411370"
 
 操作で、サーバーで利用できるバージョンとは異なる eTag が指定されました。つまり、オプティミスティック同時実行制御エラーです。 リソースの最新バージョンを読み取り、要求の eTag を更新した後、要求を再試行してください。
 
-|エラー コード|16 進値 |エラーの説明|
+|エラー コード|16 進数値 |エラーの説明|
 |---|---|---|
 |MPE_FRAGMENT_NOT_READY |0x80890200 |要求されたフラグメントは準備ができていません。|
 |MPE_STORAGE_PRECONDITION_FAILED| 0x808900EF|ストレージ操作エラー。前提条件エラーです。|
@@ -93,7 +93,7 @@ ms.locfileid: "65411370"
 
 クライアントによって送信されたペイロード形式が、サポートされていない形式になっています。
 
-|エラー コード|16 進値 |エラーの説明|
+|エラー コード|16 進数値 |エラーの説明|
 |---|---|---|
 |MPE_ENC_ALREADY_ENCRYPTED| 0x8088021F| 既に暗号化されているコンテンツに暗号化を適用すべきではありません。|
 |MPE_ENC_INVALID_INPUT_ENCRYPTION_FORMAT|0x8088021D |入力形式の暗号化が無効です。|
@@ -165,7 +165,7 @@ ms.locfileid: "65411370"
 
 ## <a name="416-range-not-satisfiable"></a>416 Range Not Satisfiable
 
-|エラー コード|16 進値 |エラーの説明|
+|エラー コード|16 進数値 |エラーの説明|
 |---|---|---|
 |MPE_STORAGE_INVALID_RANGE|0x808900F1|ストレージ操作エラー。HTTP 416 エラー (無効な範囲) が返されました。|
 
@@ -173,7 +173,7 @@ ms.locfileid: "65411370"
 
 要求の処理中に、Media Services では、処理の続行を妨げる何らかのエラーが発生します。  
 
-|エラー コード|16 進値 |エラーの説明|
+|エラー コード|16 進数値 |エラーの説明|
 |---|---|---|
 |MPE_STORAGE_SOCKET_TIMEOUT|0x808900F4|Winhttp エラー コード ERROR_WINHTTP_TIMEOUT (0x00002ee2) を受け取り、それから変換されました。|
 |MPE_STORAGE_SOCKET_CONNECTION_ERROR|0x808900F5|Winhttp エラー コード ERROR_WINHTTP_CONNECTION_ERROR (0x00002efe) を受け取り、それから変換されました。|
@@ -190,11 +190,11 @@ ms.locfileid: "65411370"
 > 503 エラーが発生した理由についての詳細な情報を取得するには、エラー メッセージとエラー コード文字列を確認してください。 このエラーは常に調整を意味するものではありません。
 > 
 
-|エラー コード|16 進値 |エラーの説明|
+|エラー コード|16 進数値 |エラーの説明|
 |---|---|---|
 |MPE_STORAGE_SERVER_BUSY|0x808900E8|ストレージ操作エラー。HTTP サーバー ビジー エラー 503 を受け取りました。|
 
-## <a name="ask-questions-give-feedback-get-updates"></a>質問する。フィードバックする。最新情報を入手する
+## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手
 
 「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 
@@ -204,6 +204,6 @@ ms.locfileid: "65411370"
 - [Azure Media Services の概念](concepts-overview.md)
 - [クォータと制限](limits-quotas-constraints.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [例: .NET で ApiException から ErrorCode と Message にアクセスする](configure-connect-dotnet-howto.md#connect-to-the-net-client)

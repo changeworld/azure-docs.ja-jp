@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: e3d9f63d2f365d5f91f205dc57b1d28e42711403
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 015631efc0077bdaab9a335b4a38fbf4f927e22d
+  ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "80129822"
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "80286015"
 highlightedContent:
   items:
   - title: Azure 開発者向けファースト ステップ ガイド
@@ -32,7 +32,7 @@ highlightedContent:
     url: https://docs.microsoft.com/azure/cloud-adoption-framework/
   - title: Microsoft Learn でスキルを身に付ける
     itemType: learn
-    url: https://docs.microsoft.com/learn/browse/?products=azure&resource_type=learning%20path
+    url: https://docs.microsoft.com/learn/browse/?products=azure&resource_type=learning+path
 productDirectory:
   title: Azure 製品を参照する
   items:
@@ -279,7 +279,7 @@ productDirectory:
     - analytics
     url: data-explorer/index.yml
   - title: Azure Data Lake Storage
-    summary: Azure Blob Storage 上に構築された、非常にスケーラブルで安全なデータ レイク機能
+    summary: Azure Blob Storage 上に構築された、非常にスケーラブルで安全なデータ レイク機能です。
     imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
     azureCategories:
     - analytics
@@ -336,7 +336,7 @@ productDirectory:
     - analytics
     url: hdinsight/index.yml
   - title: Log Analytics
-    summary: アプリケーション、インフラストラクチャ、ネットワークの完全な監視
+    summary: アプリケーション、インフラストラクチャ、ネットワークを完全に監視
     imageSrc: https://static.docs.com/ui/media/product/azure/log-analytics.svg
     azureCategories:
     - analytics
@@ -601,7 +601,7 @@ productDirectory:
     - migration
     url: dms/index.yml
   - title: Azure SQL データベース
-    summary: クラウドで管理されたインテリジェントな SQL。
+    summary: クラウド内の管理されたインテリジェントな SQL
     imageSrc: https://static.docs.com/ui/media/product/azure/sql-database.svg
     azureCategories:
     - featured
@@ -674,7 +674,7 @@ productDirectory:
     - developer-tools
     url: https://docs.microsoft.com/visualstudio/online/overview/what-is-vsonline
   - title: Application Insights
-    summary: アプリケーション、インフラストラクチャ、ネットワークの完全な監視
+    summary: アプリケーション、インフラストラクチャ、ネットワークを完全に監視
     imageSrc: https://static.docs.com/ui/media/product/azure/application-insights.svg
     azureCategories:
     - devops
@@ -693,7 +693,7 @@ productDirectory:
     - devops
     url: https://docs.microsoft.com/azure/devops/boards/
   - title: Azure Monitor
-    summary: アプリケーション、インフラストラクチャ、ネットワークの完全な監視
+    summary: アプリケーション、インフラストラクチャ、ネットワークを完全に監視
     imageSrc: https://static.docs.com/ui/media/product/azure/monitor.svg
     azureCategories:
     - devops

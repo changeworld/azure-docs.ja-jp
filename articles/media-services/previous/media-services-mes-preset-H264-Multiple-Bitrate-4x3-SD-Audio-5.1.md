@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 7f5ea80a055c34cddeab042c33071c6f5799a443
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61463669"
 ---
 # <a name="h264-multiple-bitrate-4x3-sd-audio-51"></a>H264 Multiple Bitrate 4x3 SD Audio 5.1
@@ -29,7 +29,7 @@ ms.locfileid: "61463669"
  このプリセットにより、GOP 単位でアラインメントされた 1,600 kbps から 400 kbps までの一連の MP4 ファイル 5 個と、AAC 5.1 オーディオが生成されます。 このプリセットのプロファイル、ビットレート、サンプリング レートなどの詳細については、下に定義されている XML または JSON を確認してください。 各要素の意味と各要素に有効な値の説明については、「[Media Encoder Standard スキーマ](media-services-mes-schema.md)」を参照してください。  
   
 > [!NOTE]
->  レイヤー間で `Width` と `Height` の値を変更する際は、縦横比が変わらないようにしてください。 例: 1920x1080、1280x720、1080x576、640x360。 1280x720、720x480、640x360 などの縦横比を混在させて使用しないでください。  
+>  レイヤー間で `Width` と `Height` の値を変更する際は、縦横比が変わらないようにしてください。 次に例を示します。1920x1080、1280x720、1080x576、640x360。 1280x720、720x480、640x360 などの縦横比を混在させて使用しないでください。  
   
  XML  
   

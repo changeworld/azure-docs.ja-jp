@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 3a8d1f93930d2b298eeb7d10a73624b9a19bcc0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60756205"
 ---
 # <a name="troubleshoot-your-azure-data-box-edge-issues"></a>Azure Data Box Edge に関する問題のトラブルシューティング 
@@ -84,6 +84,6 @@ ms.locfileid: "60756205"
     [!INCLUDE [data-box-edge-edge-upload-error-reference](../../includes/data-box-edge-gateway-upload-error-reference.md)]
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [このリリースの既知の問題](data-box-gateway-release-notes.md)について学習します。

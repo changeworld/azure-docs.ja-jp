@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: ee04fa7120f5510d703d72e662036f4fe952cd66
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78330670"
 ---
 # <a name="get-started-with-azure-ad-authentication-by-using-the-azure-portal"></a>Azure ポータルで Azure AD 認証を開始する
@@ -47,13 +47,13 @@ Azure Media Services で Azure AD 認証を使用する場合、次の 2 つの�
 
 ## <a name="service-principal-authentication--recommended"></a>サービス プリンシパル認証 (推奨)
 
-Azure Active Directory (Azure AD) アプリとシークレットを使用してサービスを認証します。 これは、Media Services API を呼び出す中間層サービスに対して推奨されます。 たとえば、Web アプリ、関数、Logic Apps、API、マイクロサービスなどです。 これは、推奨されている認証方法です。
+Azure Active Directory (Azure AD) アプリとシークレットを使用してサービスを認証します。 これは、Media Services API を呼び出す中間層サービスに対して推奨されます。 たとえば、Web Apps、Functions、Logic Apps、API、マイクロサービスなどです。 これは、推奨されている認証方法です。
 
 ### <a name="manage-your-azure-ad-app-and-secret"></a>Azure AD アプリとシークレットの管理
 
 **[AAD アプリとシークレットの管理]** セクションでは、新しい Azure AD アプリを選択または作成し、シークレットを生成できます。 セキュリティ上の理由により、ブレードを閉じた後にシークレットを表示することはできません。 アプリケーションでは、認証にアプリケーション ID とシークレットを使用して、メディア サービスの有効なトークンを取得します。
 
-Azure AD テナントにアプリケーションを登録し、アプリケーションを Azure サブスクリプションのロールに割り当てるための十分なアクセス許可があることを確認してください。 詳細については、[「必要なアクセス許可」](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)を参照してください。
+Azure AD テナントにアプリケーションを登録し、アプリケーションを Azure サブスクリプションのロールに割り当てるための十分なアクセス許可があることを確認してください。 詳細については、「[必要なアクセス許可](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)」を参照してください。
 
 ### <a name="connect-to-media-services-api"></a>Media Services API に接続する
 

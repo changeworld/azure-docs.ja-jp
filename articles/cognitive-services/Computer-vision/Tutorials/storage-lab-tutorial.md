@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 7c83350dbecaf20e9b35f159b2c01824777bc665
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74973715"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>チュートリアル:Computer Vision を使用して Azure Storage に画像メタデータを生成する
@@ -137,13 +137,13 @@ Visual Studio でお客様の ASP.NET Web アプリケーションを開き、�
 
 ![メタデータ タグが一覧表示された画像のプロパティ ダイアログ ウィンドウ](../Images/blob-metadata.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 お客様の Web アプリの作業を続行する場合は、「[次のステップ](#next-steps)」セクションを参照してください。 このアプリケーションを使い続ける予定がない場合は、アプリに固有のリソースをすべて削除する必要があります。 リソースの削除は、お客様の Azure Storage サブスクリプションと Computer Vision リソースが含まれているリソース グループを削除することで実行できます。 これにより、ストレージ アカウント、そこにアップロードされた BLOB、および ASP.NET Web アプリに接続するために必要な App Service リソースが削除されます。 
 
 リソース グループを削除するには、ポータルで **[リソース グループ]** タブを開き、お客様がこのプロジェクトに使用したリソース グループに移動して、ビューの上部にある **[リソース グループの削除]** をクリックします。 リソース グループはいったん削除すると復旧できないため、リソース グループの名前を入力して削除の意思を確認するように求められます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure の Computer Vision サービスを既存の Web アプリに設定して、BLOB 画像をアップロードしたときにキャプションとキーワードが自動的に生成されるようにしました。 次は、Azure Storage ラボの演習 6 を参照して、お客様の Web アプリに検索機能を追加する方法について学習してください。 そこでは、Computer Vision サービスによって生成される検索キーワードを利用します。
 

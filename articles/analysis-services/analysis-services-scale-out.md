@@ -8,10 +8,10 @@ ms.date: 03/02/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 3ea304d038618fc428f20e7ad72b398f593d09a8
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78247988"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services のスケールアウト

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 81b4ffc8f77673e52bb78f891e3de618b67e0d1b
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74806064"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>ヒューマン ラベル付け文字起こしの作成方法
@@ -29,7 +29,7 @@ ms.locfileid: "74806064"
 
 次に例をいくつか示します。
 
-| 使用を避ける文字 | 代替 | メモ |
+| 使用を避ける文字 | Substitution | Notes |
 | ------------------- | ------------ | ----- |
 | “Hello world” | "Hello world" | 開始と終了の引用符が、適切な ASCII 文字に置き換えられています。 |
 | John’s day | John's day | アポストロフィが、適切な ASCII 文字に置き換えられています。 |
@@ -84,7 +84,7 @@ ms.locfileid: "74806064"
 
 次に例をいくつか示します。
 
-| 使用を避ける文字 | 代替   | メモ |
+| 使用を避ける文字 | Substitution   | Notes |
 | ------------------- | -------------- | ----- |
 | "你好" | "你好" | 開始と終了の引用符が、適切な文字に置き換えられています。 |
 | 需要什么帮助? | 需要什么帮助？| 疑問符が、適切な文字に置き換えられています。 |

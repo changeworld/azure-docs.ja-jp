@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 7c147d99eaabee70316521d1f2bdc41933162ab1
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69542612"
 ---
 # <a name="encode-an-asset-by-using-media-encoder-standard-in-the-azure-portal"></a>Azure Portal での Media Encoder Standard を使用した資産のエンコード
@@ -41,14 +41,14 @@ Media Services では、ダイナミック パッケージが使用できます�
 Media Encoder Standard を使用してコンテンツをエンコードするには、次の手順に従います。
 
 1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。
-2. **[設定]**  >  **[資産]** を参照してください。 エンコードする資産を選択します。
+2. **[設定]**  >  **[アセット]** を参照してください。 エンコードするアセットを選択します。
 3. **[エンコード]** を選択します。
-4. **[資産のエンコード]** ウィンドウで、**Media Encoder Standard** プロセッサとプリセットを選択します。 プリセットについては、[ビットレート ラダーの自動生成](media-services-autogen-bitrate-ladder-with-mes.md)に関するページと [Media Encoder Standard 用のタスク プリセット](media-services-mes-presets-overview.md)に関するページを参照してください。 入力ビデオに最適なプリセットを選択することが重要です。 たとえば、入力ビデオの解像度が 1920 &#215; 1080 ピクセルであるとわかっている場合は、**H264 Multiple Bitrate 1080p** のプリセットを使用します。 低解像度 (640 &#215; 360) のビデオの場合は、**H264 Multiple Bitrate 1080p** プリセットを使用しないでください。
+4. **[アセットのエンコード]** ウィンドウで、**Media Encoder Standard** プロセッサとプリセットを選択します。 プリセットについては、[ビットレート ラダーの自動生成](media-services-autogen-bitrate-ladder-with-mes.md)に関するページと [Media Encoder Standard 用のタスク プリセット](media-services-mes-presets-overview.md)に関するページを参照してください。 入力ビデオに最適なプリセットを選択することが重要です。 たとえば、入力ビデオの解像度が 1920 &#215; 1080 ピクセルであるとわかっている場合は、**H264 Multiple Bitrate 1080p** のプリセットを使用します。 低解像度 (640 &#215; 360) のビデオの場合は、**H264 Multiple Bitrate 1080p** プリセットを使用しないでください。
    
    リソースを管理しやすくするために、出力アセットの名前とジョブの名前を編集することができます。
    
    ![Encode assets](./media/media-services-portal-vod-get-started/media-services-encode1.png)
-5. **作成** を選択します。
+5. **［作成］** を選択します
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -56,6 +56,6 @@ Media Encoder Standard を使用してコンテンツをエンコードするに
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Azure Portal で[エンコード ジョブの進行状況を監視](media-services-portal-check-job-progress.md)します。  
 

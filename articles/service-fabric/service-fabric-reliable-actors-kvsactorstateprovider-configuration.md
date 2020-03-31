@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/2/2017
 ms.author: sumukhs
 ms.openlocfilehash: cdb115bd57cf3d5af4388f4efa03c2522feef9ca
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75609776"
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Reliable Actors の構成 - KVSActorStateProvider
@@ -41,7 +41,7 @@ Azure Service Fabric ランタイムは settings.xml ファイルで定義済み
 &lt;ActorName&gt;ServiceReplicatorConfig
 
 ### <a name="configuration-names"></a>構成名
-| Name | ユニット | 既定値 | 解説 |
+| 名前 | ユニット | 既定値 | 解説 |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Seconds |0.015 |操作を受信してからプライマリに受信確認を返すまで、セカンダリでレプリケーターが待機する期間です。 この期間内で処理された操作に対して送信される他の受信確認は、1 つの応答として送信されます。 |
 | ReplicatorEndpoint |該当なし |既定値なし - 必須パラメーター |プライマリとセカンダリのレプリケーターがレプリカ セットの他のレプリケーターと通信するために使用する IP アドレスとポートです。 これは、サービス マニフェストの TCP リソース エンドポイントを参照する必要があります。 サービス マニフェストでのエンドポイント リソースの定義の詳細については、「 [サービス マニフェストでのリソースの指定](service-fabric-service-manifest-resources.md) 」をご覧ください。 |
@@ -58,7 +58,7 @@ Azure Service Fabric ランタイムは settings.xml ファイルで定義済み
 &lt;ActorName&gt;ServiceLocalStoreConfig
 
 ### <a name="configuration-names"></a>構成名
-| Name | ユニット | 既定値 | 解説 |
+| 名前 | ユニット | 既定値 | 解説 |
 | --- | --- | --- | --- |
 | MaxAsyncCommitDelayInMilliseconds |ミリ秒 |200 |持続性のあるローカル ストア コミットに、バッチ処理の最大間隔を設定します。 |
 | MaxVerPages |ページ数 |16384 |ローカル ストア データベースにおけるバージョン ページの最大数です。 未処理のトランザクションの最大数を決定します。 |

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 0565cc149a36baf31d8516fffcf48b194c465760
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76261485"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Durable Functions のタイマー (Azure Functions)
@@ -29,7 +29,7 @@ ms.locfileid: "76261485"
 
 次の例は、実行を遅らせる持続的タイマーを使用する方法を示しています。 この例では、10 日間、請求の通知を毎日発行します。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("BillingIssuer")]
@@ -48,7 +48,7 @@ public static async Task Run(
 > [!NOTE]
 > 前記の C# の例は Durable Functions 2.x をターゲットにしています。 Durable Functions 1.x の場合、`IDurableOrchestrationContext` の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```js
 const df = require("durable-functions");
@@ -72,7 +72,7 @@ module.exports = df.orchestrator(function*(context) {
 
 この例は、持続的タイマーを使用して、タイムアウトを実装する方法を示しています。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("TryGetQuote")]
@@ -106,7 +106,7 @@ public static async Task<bool> Run(
 > [!NOTE]
 > 前記の C# の例は Durable Functions 2.x をターゲットにしています。 Durable Functions 1.x の場合、`IDurableOrchestrationContext` の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```js
 const df = require("durable-functions");
