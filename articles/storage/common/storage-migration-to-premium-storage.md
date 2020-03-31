@@ -10,10 +10,10 @@ ms.author: rogarana
 ms.reviewer: yuemlu
 ms.subservice: common
 ms.openlocfilehash: 7cb5a335af7093bc217578d57340b03b8b9c08b3
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75748346"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Azure Premium Storage への移行 (非管理対象ディスク)
@@ -38,7 +38,7 @@ Azure Premium Storage は、高負荷の I/O ワークロードを実行する�
 
 移行プロセス全体を完了するには、このガイドで説明する手順の前後で追加の操作が必要になる場合があります。 たとえば、アプリケーションをしばらく停止することが必要になる場合がある、仮想ネットワークやエンドポイントの構成や、アプリケーション内部のコード変更などがあります。 これらの操作は、アプリケーションごとに異なります。Premium Storage への完全な移行をできる限りシームレスに行うには、このガイドで説明する手順と共に、これらの必要な操作を完了してください。
 
-## <a name="plan-the-migration-to-premium-storage"></a>Premium Storage への移行を計画する
+## <a name="plan-for-the-migration-to-premium-storage"></a><a name="plan-the-migration-to-premium-storage"></a>Premium Storage への移行を計画する
 このセクションでは、この記事の移行手順を実行できる状態にし、VM およびディスクの種類について最適な決定を行うことができるようにします。
 
 ### <a name="prerequisites"></a>前提条件
@@ -76,7 +76,7 @@ Premium Storage の仕様の詳細については、「[Premium ページ BLOB �
 #### <a name="disk-caching-policy"></a>ディスク キャッシュ ポリシー
 既定では、ディスクのキャッシュ ポリシーは、すべてのPremium データ ディスクに対して「*読み取り専用*」、VM にアタッチされた Premium オペレーティング システム ディスクに対して「*読み取り/書き込み*」です。 アプリケーションの IO パフォーマンスを最適化するには、この構成をお勧めします。 書き込み量の多いディスクや書き込み専用のディスク (SQL Server ログ ファイルなど) の場合は、ディスク キャッシュを無効にすることで、アプリケーションのパフォーマンスを向上できる場合があります。 既存のデータ ディスクのキャッシュ設定は、[Azure portal](https://portal.azure.com)、または *Set-AzureDataDisk* コマンドレットの *-HostCaching* パラメーターを使用して更新できます。
 
-#### <a name="location"></a>Location
+#### <a name="location"></a>場所
 Azure Premium Storage を使用できる場所を選択します。 使用できる場所に関する最新情報については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/#services)」をご覧ください。 VM のディスクを保存するストレージ アカウントと同じリージョンにある VM は、個々のリージョン内にある場合よりも優れたパフォーマンスを提供します。
 
 #### <a name="other-azure-vm-configuration-settings"></a>Azure VM のその他の構成設定
@@ -85,7 +85,7 @@ Azure VM を作成するときに、特定の VM の設定を構成するよう�
 ### <a name="optimization"></a>Optimization
 「[Azure Premium Storage:高パフォーマンスのための設計](../../virtual-machines/windows/premium-storage-performance.md)」では、Azure Premium Storage を使用して高パフォーマンスのアプリケーションを構築するためのガイドラインが示されています。 ガイドラインは、アプリケーションで使われているテクノロジに適用できるパフォーマンスのベスト プラクティスと組み合わせて使えます。
 
-## <a name="prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage"></a>仮想ハード ディスク (VHD) を準備して Premium Storage にコピーする
+## <a name="prepare-and-copy-virtual-hard-disks-vhds-to-premium-storage"></a><a name="prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage"></a>仮想ハード ディスク (VHD) を準備して Premium Storage にコピーする
 このセクションでは、VM からの VHD の準備と、Azure Storageへの VHD のコピーに関するガイドラインを提供します。
 
 * [シナリオ 1: "既存の Azure VM を Azure Premium Storage に移行している"](#scenario1)
@@ -107,7 +107,7 @@ Azure VM を作成するときに、特定の VM の設定を構成するよう�
 >
 >
 
-### <a name="scenario1"></a>シナリオ 1:"既存の Azure VM を Azure Premium Storage に移行している"
+### <a name="scenario-1-i-am-migrating-existing-azure-vms-to-azure-premium-storage"></a><a name="scenario1"></a>シナリオ 1:"既存の Azure VM を Azure Premium Storage に移行している"
 既存の Azure VM を移行する場合は、VM を停止し、VHD の種類に応じて VJD を準備した後、AzCopy または PowerShell で VHD をコピーします。
 
 クリーンな状態を移行するため、VM を完全にダウンする必要があります。 移行が完了するまではダウンタイムになります。
@@ -159,7 +159,7 @@ VHD を管理するためにストレージ アカウントを作成します。
 
 データ ディスクの場合、一部のデータ ディスク (たとえば、負荷の軽いストレージのあるディスク) を Standard Storage アカウントで保持することもできますが、運用ワークロード用のすべてのデータを、Premium Storage を使うように移動することを強くお勧めします。
 
-#### <a name="copy-vhd-with-azcopy-or-powershell"></a>手順 3. AzCopy または PowerShell で VHD をコピーする
+#### <a name="step-3-copy-vhd-with-azcopy-or-powershell"></a><a name="copy-vhd-with-azcopy-or-powershell"></a>手順 3. AzCopy または PowerShell で VHD をコピーする
 これら 2 つのオプションを処理するには、コンテナーのパスとストレージ アカウント キーを検索する必要があります。 コンテナーのパスとストレージ アカウント キーは、**Azure Portal** >  **[ストレージ]** で見つかります。 コンテナーの URL は、"https:\//myaccount.blob.core.windows.net/mycontainer/" のようになります。
 
 ##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>オプション 1: AzCopy を使って VHD をコピーする (非同期コピー)
@@ -218,7 +218,7 @@ C:\PS> $destinationContext = New-AzStorageContext  –StorageAccountName "destac
 C:\PS> Start-AzStorageBlobCopy -srcUri $sourceBlobUri -SrcContext $sourceContext -DestContainer "vhds" -DestBlob "myvhd.vhd" -DestContext $destinationContext
 ```
 
-### <a name="scenario2"></a>シナリオ 2:"他のプラットフォームの VM を Azure Premium Storage に移行している"
+### <a name="scenario-2-i-am-migrating-vms-from-other-platforms-to-azure-premium-storage"></a><a name="scenario2"></a>シナリオ 2:"他のプラットフォームの VM を Azure Premium Storage に移行している"
 Azure 以外のクラウド ストレージから Azure へ VHD を移行する場合は、最初に VHD をローカル ディレクトリにエクスポートする必要があります。 VHD が格納されているローカル ディレクトリの完全なソース パスを用意し、AzCopy を使って Azure Storage にアップロードします。
 
 #### <a name="step-1-export-vhd-to-a-local-directory"></a>手順 1. VHD をローカル ディレクトリにエクスポートする
@@ -303,7 +303,7 @@ AzCopy ツールの使用の詳細については、「 [AzCopy コマンド ラ
 >
 >
 
-## <a name="create-azure-virtual-machine-using-premium-storage"></a>Premium Storage を使って Azure VM を作成する
+## <a name="create-azure-vms-using-premium-storage"></a><a name="create-azure-virtual-machine-using-premium-storage"></a>Premium Storage を使って Azure VM を作成する
 目的のストレージ アカウントに VHD がアップロードまたはコピーされたら、このセクションの手順に従って、シナリオに応じて VHD を OS イメージまたは OS ディスクとして登録し、その VHD から VM インスタンスを作成します。 作成後に、データ ディスク VHD を VM に接続できます。
 移行スクリプトの例は、このセクションの最後にあります。 この簡単なスクリプトは、すべてのシナリオには対応しません。 特定のシナリオに対応するように、スクリプトの更新が必要になる場合があります。 このスクリプトが実際のシナリオに適用できるかどうかを確認するには、「[サンプル移行スクリプト](#a-sample-migration-script)」をご覧ください。
 
@@ -431,7 +431,7 @@ Update-AzureVM  -VM $vm
 
 最後に、アプリケーションのニーズに応じて、新しい VM のバックアップとメンテナンスのスケジュールを計画します。
 
-### <a name="a-sample-migration-script"></a>サンプル移行スクリプト
+### <a name="a-sample-migration-script"></a><a name="a-sample-migration-script"></a>サンプル移行スクリプト
 移行する VM が複数ある場合は、PowerShell スクリプトを使用した自動化が便利です。 次に示すサンプルは、VM の移行を自動化するサンプル スクリプトです。 このスクリプトはほんの一例であり、現在の VM ディスクについていくつかの仮定が含まれていることに注意してください。 特定のシナリオに対応するように、スクリプトの更新が必要になる場合があります。
 
 前提条件は次のとおりです。
@@ -739,7 +739,7 @@ Update-AzureVM  -VM $vm
     New-AzureVM -ServiceName $DestServiceName -VMs $vm -Location $Location
 ```
 
-#### <a name="optimization"></a>最適化
+#### <a name="optimization"></a><a name="optimization"></a>最適化
 現在の VM の構成は、Standard ディスクで問題なく動作するようにカスタマイズされている可能性があります。 たとえば、パフォーマンスを向上させるために、ストライプ ボリュームで多くのディスクを使用しています。 たとえば、Premium Storage では、4 つのディスクを個別に使うのではなく、1 つのディスクを使うことによって、コストを最適化できる場合があります。 このような最適化は個々のケースに応じて処理する必要があり、移行後にカスタム手順が必要になります。 このプロセスは、セットアップ時に定義されたディスク レイアウトに依存するデータベースおよびアプリケーションではうまく機能しない可能性があることに注意してください。
 
 ##### <a name="preparation"></a>準備

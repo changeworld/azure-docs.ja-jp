@@ -16,10 +16,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 3b84119cdcc1bb7e8603de64e3d23c69dac70cc3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74022303"
 ---
 # <a name="move-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery-services"></a>Azure Site Recovery サービスを使用して Azure 内の別のリージョンに SQL Server VM を移動する
@@ -84,7 +84,7 @@ SQL Server VM を別のリージョンに移動するには、次の手順を実
 1. **[Recovery Services コンテナー]** を選択し、作成した Recovery Services コンテナーを選択します。 
 1. **[概要]** ウィンドウで、 **[レプリケート]** を選択します。 
 
-   ![レプリケーションの構成](media/virtual-machines-windows-sql-move-to-new-region/configure-replication.png)
+   ![レプリケーションの設定](media/virtual-machines-windows-sql-move-to-new-region/configure-replication.png)
 
 1. **[ソース]** を選択し、次にソースとして **[Azure]** を選択します。 ソース VM の場所など、他のドロップダウン フィールドに適切な値を選択します。 **[ソースの場所]** リージョンにあるリソース グループのみが、 **[ソース リソース グループ]** フィールドに表示されます。 
 1. **[仮想マシン]** を選択し、移行する仮想マシンを選択します。 **[OK]** を選択して VM の選択を保存します。 
@@ -148,7 +148,7 @@ SQL Server VM を別のリージョンに移動するには、次の手順を実
 1. ソース リージョンのリソースを再利用する予定がない場合は、関連するすべてのネットワーク リソースと、対応するストレージ アカウントを削除します。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、次の記事を参照してください。 
 

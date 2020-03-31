@@ -15,10 +15,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: a6600af353daf2bfa7b49196f48ba5b60e6c45fb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74022363"
 ---
 # <a name="use-the-azure-cli-to-configure-an-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Azure CLI を使用して Azure VM で SQL Server の Always On 可用性グループを構成する
@@ -93,7 +93,7 @@ az sql vm add-to-group -n <VM2 Name> -g <Resource Group Name> --sqlvm-group <clu
 ```
 クラスターに他の SQL Server VM を追加するには、このコマンドを使用します。 SQL Server VM 名の `-n` パラメーターのみを変更してください。 
 
-## <a name="step-4-create-the-availability-group"></a>手順 4:可用性グループの作成
+## <a name="step-4-create-the-availability-group"></a>手順 4:可用性グループを作成する
 [SQL Server Management Studio](/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio)、[PowerShell](/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell)、[Transact-SQL](/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql) のいずれかを使用して、通常どおりに可用性グループを手動で作成します。 
 
 >[!IMPORTANT]
@@ -127,7 +127,7 @@ az network lb create --name sqlILB -g <resource group name> --sku Standard `
    1. [Azure portal](https://portal.azure.com) で、ご利用のリソース グループに移動します。 
    1. 仮想ネットワーク リソースを選択します。 
    1. **[設定]** ウィンドウで **[プロパティ]** を選択します。 
-   1. 仮想ネットワークのリソース ID を特定し、その最後に `/subnets/<subnetname>` を追加してサブネット リソース ID を作成します。 例:
+   1. 仮想ネットワークのリソース ID を特定し、その最後に `/subnets/<subnetname>` を追加してサブネット リソース ID を作成します。 次に例を示します。
       - 仮想ネットワークのリソース ID は `/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet` です。
       - サブネット名は `default` です。
       - そのため、サブネット リソース ID は `/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet/subnets/default` です。
@@ -212,7 +212,7 @@ Azure CLI で構成された可用性グループ リスナーを後で削除す
 az sql vm group ag-listener delete --group-name <cluster name> --name <listener name > --resource-group <resource group name>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、次の記事を参照してください。 
 

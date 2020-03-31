@@ -5,18 +5,18 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 27ac4b67aa19aa59abe80ccf9409acf7b587a22b
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 8e65ebbfa0971bf2156165b55ca18eee3cc74bc9
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250105"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239277"
 ---
-# <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>チュートリアル:Azure Resource Manager テンプレートを使用して SQL BACPAC ファイルをインポートする
+# <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>チュートリアル:ARM テンプレートを使用して SQL BACPAC ファイルをインポートする
 
-Azure SQL Database 拡張機能を使用して Azure Resource Manager テンプレートで BACPAC ファイルをインポートする方法について説明します。 デプロイの成果物は、デプロイを完了するために必要なメイン テンプレート ファイルに加えたすべてのファイルです。 この BACPAC ファイルが成果物です。 
+Azure SQL Database 拡張機能を使用して Azure Resource Manager (ARM) テンプレートで BACPAC ファイルをインポートする方法について説明します。 デプロイの成果物は、デプロイを完了するために必要なメイン テンプレート ファイルに加えたすべてのファイルです。 この BACPAC ファイルが成果物です。 
 
-このチュートリアルでは、テンプレートを作成して Azure SQL サーバー、SQL データベースをデプロイし、BACPAC ファイルをインポートします。 Azure Resource Manager テンプレートを使用して Azure 仮想マシン拡張機能をデプロイする方法については、次の記事を参照してください。[チュートリアル: Azure Resource Manager テンプレートを使用して仮想マシン拡張機能をデプロイする](./template-tutorial-deploy-vm-extensions.md)
+このチュートリアルでは、テンプレートを作成して Azure SQL サーバー、SQL データベースをデプロイし、BACPAC ファイルをインポートします。 ARM テンプレートを使用して Azure 仮想マシン拡張機能をデプロイする方法については、「[チュートリアル: ARM テンプレートを使用して仮想マシン拡張機能をデプロイする](./template-tutorial-deploy-vm-extensions.md)」を参照してください。
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -33,20 +33,20 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-* Visual Studio Code と Resource Manager ツール拡張機能。 「[Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](./use-vs-code-to-create-template.md)」を参照してください。
+* Visual Studio Code と Resource Manager ツール拡張機能。 [Visual Studio Code を使って ARM テンプレートを作成する方法](./use-vs-code-to-create-template.md)に関するページを参照してください。
 * セキュリティを向上させるために、生成されたパスワードを Azure SQL Server 管理者アカウントに対して使用します。 パスワードを生成するために使用できるサンプルを次に示します。
 
     ```console
     openssl rand -base64 32
     ```
 
-    Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、「[チュートリアル:Resource Manager テンプレートのデプロイで Azure Key Vault を統合する](./template-tutorial-use-key-vault.md)」を参照してください。 パスワードは 3 か月ごとに更新することをお勧めします。
+    Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、「[チュートリアル:ARM テンプレートのデプロイで Azure Key Vault を統合する](./template-tutorial-use-key-vault.md)」を参照してください。 パスワードは 3 か月ごとに更新することをお勧めします。
 
 ## <a name="prepare-a-bacpac-file"></a>BACPAC ファイルを準備する
 
 BACPAC ファイルは、[GitHub](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac) で共有されています。 独自のものを作成するには、「[Azure SQL データベースを BACPAC ファイルにエクスポートする](../../sql-database/sql-database-export.md)」を参照してください。 ファイルを独自の場所に発行する場合は、チュートリアルの後半でテンプレートを更新する必要があります。
 
-BACPAC ファイルは、Resource Manager テンプレートを使用してインポートする前に、Azure Storage アカウントに格納する必要があります。 以下の PowerShell スクリプトは、次の手順で BACPAC ファイルを準備します。
+BACPAC ファイルは、ARM テンプレートを使用してインポートする前に、Azure Storage アカウントに格納する必要があります。 以下の PowerShell スクリプトは、次の手順で BACPAC ファイルを準備します。
 
 * BACPAC ファイルをダウンロードします。
 * Azure ストレージ アカウントを作成します。

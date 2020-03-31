@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
 ms.openlocfilehash: 1b807908c9fb54ecf15de6d44a04760659196a31
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75980964"
 ---
 # <a name="diagnostic-logs-for-azure-web-application-firewall"></a>Azure Web アプリケーション ファイアウォールの診断ログ
@@ -234,7 +234,7 @@ Application Gateway と WAF v2 の場合、ログにはさらにいくつかの�
 |message     | トリガーするイベントのわかりやすいメッセージ。 詳細は details セクションに示されます。        |
 |action     |  要求に対して実行されるアクション。 使用できる値は Blocked と Allowed です。      |
 |site     | ログの生成対象のサイト。 ルールがグローバルであるため、現時点では Global のみ表示されます。|
-|詳細     | トリガーするイベントの詳細。        |
+|details     | トリガーするイベントの詳細。        |
 |details.message     | ルールの説明。        |
 |details.data     | 要求で見つかった、ルールに一致するデータ。         |
 |details.file     | ルールが含まれている構成ファイル。        |

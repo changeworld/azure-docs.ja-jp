@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 01/22/2020
-ms.openlocfilehash: 267779afc749fccba41935741630a759576d6e77
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.date: 03/11/2020
+ms.openlocfilehash: 38d44f5a2ce22de15cb14ea5aa7a9ca1ea7c03cf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76515022"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481067"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>仮想コア購入モデルを使用した単一データベースに対するリソース制限
 
@@ -50,7 +50,7 @@ SQL Database サーバー上の 1 つのデータベースに対する DTU 購�
 |IO 待機時間 (概算)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|
 |最大データ IOPS *|320|640|1280|1920|2560|
 |最大ログ速度 (Mbps)|3.8|7.5|15|22.5|30|
-|最大同時実行ワーカー (要求) 数|75|150|300|450|600|
+|最大同時実行ワーカー (要求) 数|75|150|該当なし|450|600|
 |最大同時セッション数|30,000|30,000|30,000|30,000|30,000|
 |レプリカの数|1|1|1|1|1|
 |マルチ AZ|該当なし|該当なし|該当なし|該当なし|該当なし|
@@ -102,6 +102,7 @@ SQL Database サーバー上の 1 つのデータベースに対する DTU 購�
 |TempDB の最大データ サイズ (GB)|32|64|96|128|160|192|
 |ストレージの種類| [注 1](#notes) |[注 1](#notes)|[注 1](#notes) |[注 1](#notes) |[注 1](#notes) |[注 1](#notes) |
 |最大データ IOPS *|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|
+|最大ログ速度 (Mbps)|100 |100 |100 |100 |100 |100 |
 |IO 待機時間 (概算)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|
 |最大同時実行ワーカー (要求) 数|200|400|600|800|1000|1200|
 |最大同時セッション数|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -126,6 +127,7 @@ SQL Database サーバー上の 1 つのデータベースに対する DTU 購�
 |TempDB の最大データ サイズ (GB)|224|256|288|320|512|768|
 |ストレージの種類| [注 1](#notes) |[注 1](#notes) |[注 1](#notes) |[注 1](#notes) |[注 1](#notes) |[注 1](#notes) |
 |最大データ IOPS *|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|
+|最大ログ速度 (Mbps)|100 |100 |100 |100 |100 |100 |
 |IO 待機時間 (概算)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|
 |最大同時実行ワーカー (要求) 数|1400|1600|1800|2000|3200|4800|
 |最大同時セッション数|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -154,6 +156,7 @@ SQL Database サーバー上の 1 つのデータベースに対する DTU 購�
 |TempDB の最大データ サイズ (GB)|64|128|192|256|320|384|448|
 |ストレージの種類| [注 1](#notes) |[注 1](#notes)|[注 1](#notes) |[注 1](#notes) |[注 1](#notes) |[注 1](#notes) |[注 1](#notes) |
 |最大データ IOPS *|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|
+|最大ログ速度 (Mbps)|100 |100 |100 |100 |100 |100 |100 |
 |IO 待機時間 (概算)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|
 |最大同時実行ワーカー (要求) 数|200|400|600|800|1000|1200|1400|
 |最大同時セッション数|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -180,6 +183,7 @@ SQL Database サーバー上の 1 つのデータベースに対する DTU 購�
 |TempDB の最大データ サイズ (GB)|512|576|640|768|1024|1280|2560|
 |ストレージの種類| [注 1](#notes) |[注 1](#notes)|[注 1](#notes)|[注 1](#notes) |[注 1](#notes) |[注 1](#notes) |[注 1](#notes) |
 |最大データ IOPS *|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|
+|最大ログ速度 (Mbps)|100 |100 |100 |100 |100 |100 |100 |
 |IO 待機時間 (概算)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|
 |最大同時実行ワーカー (要求) 数|1600|1800|2000|2400|3200|4000|8000|
 |最大同時セッション数|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -191,7 +195,7 @@ SQL Database サーバー上の 1 つのデータベースに対する DTU 購�
 
 \* IO サイズの最大値。範囲は 8 KB ～ 64 KB。 実際の IOPS はワークロードに依存します。 詳細については、[データ IO のガバナンス](sql-database-resource-limits-database-server.md#resource-governance)に関するページを参照してください。
 
-#### <a name="notes"></a>メモ
+#### <a name="notes"></a>Notes
 
 **注 1**: Hyperscale は、個別のコンピューティングとストレージ コンポーネントを含む多層アーキテクチャです。[Hyperscale サービス レベルのアーキテクチャ](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)
 

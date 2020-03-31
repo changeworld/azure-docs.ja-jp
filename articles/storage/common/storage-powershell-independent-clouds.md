@@ -10,10 +10,10 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 5fa515515c06466e121a5c0ee925fd4d14245363
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74895237"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Azure から独立しているクラウドでの Azure PowerShell によるストレージの管理
@@ -60,7 +60,7 @@ Get-AzLocation | select Location, DisplayName
 
 次の表は、German Cloud に対して返される場所を示しています。
 
-|Location | 表示名 |
+|場所 | 表示名 |
 |----|----|
 | `germanycentral` | ドイツ中部|
 | `germanynortheast` | ドイツ北東部 |
@@ -84,7 +84,7 @@ Get-AzEnvironment | select Name, StorageEndpointSuffix
 
 このコマンドは、次の結果を返します。
 
-| EnableAdfsAuthentication| StorageEndpointSuffix|
+| 名前| StorageEndpointSuffix|
 |----|----|
 | AzureChinaCloud | core.chinacloudapi.cn|
 | AzureCloud | core.windows.net |
@@ -154,7 +154,7 @@ table endpoint = http://myexistingstorageaccount.table.core.usgovcloudapi.net/
 
 以降は、ストレージ アカウントを管理するために使用している PowerShell で、「[Azure Storage での Azure PowerShell の使用](storage-powershell-guide-full.md)」に説明されているように、データ プレーンにアクセスできます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この演習用に新しいリソース グループとストレージ アカウントを作成した場合は、リソース グループを削除することで、両方のアセットを削除できます。 リソース グループを削除すると、そのグループに含まれるすべてのリソースが削除されます。
 
@@ -162,7 +162,7 @@ table endpoint = http://myexistingstorageaccount.table.core.usgovcloudapi.net/
 Remove-AzResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [PowerShell セッション間でのユーザー ログインの保持](/powershell/azure/context-persistence)
 * [Azure Government ストレージ](../../azure-government/documentation-government-services-storage.md)

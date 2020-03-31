@@ -8,11 +8,11 @@ ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 467c70a722b8a243be6ac2826188a4ba3459aa06
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961368"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229051"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Azure への VMware ディザスター リカバリーの容量とスケーリングを計画する
 
@@ -168,6 +168,6 @@ Windows ベースの仮想マシン用にマスター ターゲット サーバ�
  > [!NOTE]
  > 最新バージョンの [Windows 用マスター ターゲット サーバー統合セットアップ ファイル](https://aka.ms/latestmobsvc)をダウンロードしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner) をダウンロードして実行します。

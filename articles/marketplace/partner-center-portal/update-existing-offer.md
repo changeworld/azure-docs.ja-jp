@@ -1,19 +1,18 @@
 ---
 title: Commercial Marketplace の既存のオファーを更新する
 description: 既存の Commercial Marketplace オファーの更新 (編集、ドラフトの削除、発行要求のキャンセル、オファーまたはプランの販売停止、プライベートの対象ユーザーの同期など) を行う方法。
-author: ChJenk
-manager: evansma
-ms.author: v-chjen
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/16/2020
-ms.openlocfilehash: feeebc9446ccb1f651d8f3968feccdf9e577501e
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 8b8362a4d5ad742f29637ed03133bc6983bd5dd9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76168992"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285148"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Commercial Marketplace で既存のオファーを更新する
 

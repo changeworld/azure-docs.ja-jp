@@ -12,10 +12,10 @@ ms.author: aamalvea
 ms.reviewer: carlrab
 ms.date: 01/30/2019
 ms.openlocfilehash: ba882176fbe17f7b74c786f421dde8fadd58d9b7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73821314"
 ---
 # <a name="planning-for-azure-maintenance-events-in-azure-sql-database"></a>Azure SQL Database での Azure メンテナンス イベントの計画
@@ -43,7 +43,7 @@ Azure SQL データベースに計画メンテナンス イベントを準備す
 SQL データベースでログイン エラーが発生している場合は、[Azure portal](https://portal.azure.com)の [[リソース正常性]](../service-health/resource-health-overview.md#get-started) ウィンドウで、現在の状態を確認します。 [正常性の履歴] セクションには、(該当する場合は) イベントごとのダウンタイムの理由が含まれています。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - SQL Database の[リソース正常性](sql-database-resource-health.md)に関する詳細を確認します
 - 再試行ロジックの詳細については、「[一時エラーの再試行ロジック](sql-database-connectivity-issues.md#retry-logic-for-transient-errors)」を参照してください

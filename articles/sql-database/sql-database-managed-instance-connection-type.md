@@ -10,10 +10,10 @@ ms.author: srbozovi
 ms.reviewer: vanto
 ms.date: 10/07/2019
 ms.openlocfilehash: 46223d1701b930d93de7c49c1e216a41045dda16
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73819453"
 ---
 # <a name="azure-sql-database-managed-instance-connection-types"></a>Azure SQL Database マネージド インスタンスの接続の種類
@@ -63,7 +63,7 @@ $mi = Get-AzSqlInstance -ResourceGroupName {rg-name} -Name {mi-name}
 $mi = $mi | Set-AzSqlInstance -ProxyOverride "Redirect" -force
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [データベースをマネージド インスタンスに復元する](sql-database-managed-instance-get-started-restore.md)
 - [マネージド インスタンスのパブリック エンドポイントの構成](sql-database-managed-instance-public-endpoint-configure.md)方法について学習する

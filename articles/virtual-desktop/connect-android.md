@@ -5,15 +5,15 @@ services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 09/26/2019
+ms.date: 03/25/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 99d52077d84ab8a9495f92d9c75fb742ff988ba8
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: d2990c82efbcdac7d453f920301787b8c83db1e9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128264"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295372"
 ---
 # <a name="connect-with-the-android-client"></a>Android クライアントに接続する
 
@@ -26,7 +26,7 @@ ms.locfileid: "79128264"
 
 ## <a name="install-the-android-client"></a>Android クライアントをインストールする
 
-開始するには、クライアントを[ダウンロード](https://play.google.com/store/apps/details?id=com.microsoft.rdc.android)して、ご利用の Android デバイスにインストールします。
+開始するには、クライアントを[ダウンロード](https://play.google.com/store/apps/details?id=com.microsoft.rdc.androidx)して、ご利用の Android デバイスにインストールします。
 
 ## <a name="subscribe-to-a-feed"></a>フィードのサブスクライブ
 

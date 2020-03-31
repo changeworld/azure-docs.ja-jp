@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: d74b00a4bade956d3a511a47b0a6b0011b9fb212
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78267422"
 ---
 # <a name="nvv3-series"></a>NVv3 シリーズ
@@ -22,9 +22,9 @@ NVv3 インスタンス内の各 GPU には GRID ライセンスが付属して�
 
 Premium Storage キャッシュ:サポートされています
 
-ライブ マイグレーション：サポートされていません
+ライブ マイグレーション: サポートされていません
 
-メモリ保持更新:サポートされていません
+メモリ保持更新: サポートされていません
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | GPU | GPU メモリ: GiB | 最大データ ディスク数 | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数 | 仮想ワークステーション | 仮想アプリケーション |
 |---|---|---|---|---|---|---|---|---|---|---|

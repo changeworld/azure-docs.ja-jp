@@ -12,10 +12,10 @@ ms.author: genemi
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: 31f712f80ee2492e4bbaec99bd093d46f9d04e6d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73824007"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>SQL Database によるテナント単位データベース パターンを使用するマルチテナント SaaS アプリケーションをデプロイして操作する
@@ -64,7 +64,7 @@ SaaS の設計と管理のさまざまなパターンを確認するために、
 
     - **[リソース グループ]** : **[新規作成]** を選択し、先ほど選択したリソース グループの一意の名前を指定します。
     - **[場所]** :ドロップダウン リストから場所を選択します。
-    - **User**:先ほど選択したユーザー名の値を使用します。
+    - **[ユーザー]** :先ほど選択したユーザー名の値を使用します。
 
 1. アプリケーションをデプロイします。
 
@@ -256,7 +256,7 @@ Events Hub を更新すると、新しいテナントが一覧に表示されま
 - エラスティック ジョブについては、 [スケールアウトされたクラウド データベースの管理](elastic-jobs-overview.md)に関するページを参照してください。
 - マルチテナント SaaS アプリケーションについては、 [マルチテナント SaaS アプリケーションの設計パターン](saas-tenancy-app-design-patterns.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルで学習した内容は次のとおりです。
 

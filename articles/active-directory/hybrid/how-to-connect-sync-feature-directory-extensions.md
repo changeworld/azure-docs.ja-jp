@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 80438319a6337dd6f28f9bdca8a428829b6cb0b9
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77917915"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同期: ディレクトリ拡張機能
@@ -41,8 +41,8 @@ ms.locfileid: "77917915"
 インストールでは、次の属性が表示されます。これらは有効な候補です。
 
 * ユーザーおよびグループ オブジェクト型
-* 単一値の属性:文字列、ブール値、整数、バイナリ
-* 複数値の属性:文字列、バイナリ
+* 単一値の属性: 文字列、ブール値、整数、バイナリ
+* 複数値の属性: 文字列、バイナリ
 
 
 >[!NOTE]
@@ -69,7 +69,7 @@ Azure AD のオブジェクトでは、ディレクトリ拡張機能に対し�
 >[!NOTE]
 > Microsoft Graph API で、属性が返されるように要求する必要があります。 次のような属性を明示的に選択します: `https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division`。
 >
-> 詳細については、[Microsoft Graph:クエリ パラメーターの使用](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter)に関するページを参照してください。
+> 詳細については、[Microsoft Graph: クエリ パラメーターの使用](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter)に関するトピックをご覧ください。
 
 ## <a name="use-the-attributes-in-dynamic-groups"></a>動的グループで属性を使用する
 

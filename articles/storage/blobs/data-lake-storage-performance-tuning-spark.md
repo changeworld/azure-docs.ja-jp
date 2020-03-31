@@ -1,5 +1,5 @@
 ---
-title: パフォーマンスの調整:Spark、HDInsight & Azure Data Lake Storage Gen2 | Microsoft Docs
+title: 'パフォーマンスをチューニングする: Spark、HDInsight & Azure Data Lake Storage Gen2 | Microsoft Docs'
 description: Azure Data Lake Storage Gen2 の Spark パフォーマンス チューニング ガイドライン
 services: storage
 author: normesta
@@ -10,25 +10,25 @@ ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: a70b8112af201a49e7eece8b689e75102ec55880
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74327547"
 ---
-# <a name="tune-performance-spark-hdinsight--azure-data-lake-storage-gen2"></a>パフォーマンスの調整:Spark、HDInsight & Azure Data Lake Storage Gen2
+# <a name="tune-performance-spark-hdinsight--azure-data-lake-storage-gen2"></a>パフォーマンスをチューニングする: Spark、HDInsight & Azure Data Lake Storage Gen2
 
 Spark のパフォーマンスをチューニングするときは、クラスター上で実行されるアプリの数を考慮する必要があります。  既定では、4 つのアプリを同時に HDI クラスターで実行することができます (注: この既定の設定は変更される可能性があります)。  使用するアプリ数をより少なくすることができます。そうすれば、既定の設定をオーバーライドして、これらのアプリでより多くのクラスターを使用できます。  
 
 ## <a name="prerequisites"></a>前提条件
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-* **Azure Data Lake Storage Gen2 アカウント**。 アカウントの作成手順については、[クイック スタート: Azure Data Lake Storage Gen2 ストレージ アカウントを作成する](data-lake-storage-quickstart-create-account.md)」を参照してください。
+* **Azure Data Lake Storage Gen2 アカウント**。 アカウントの作成手順については、[クイック スタート:Azure Data Lake Storage Gen2 ストレージ アカウントを作成する](data-lake-storage-quickstart-create-account.md)」を参照してください。
 * Data Lake Storage Gen2 アカウントにアクセスできる **Azure HDInsight クラスター**。 「[Use Azure Data Lake Storage Gen2 with Azure HDInsight clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)」 (Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する) を参照してください。 クラスターのリモート デスクトップが有効になっていることを確認します。
 * **Data Lake Storage Gen2 で実行中の Spark クラスター**。  詳細については、[HDInsight Spark クラスターを使用した Data Lake Storage Gen2 のデータの分析](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)に関するページを参照してください。
 * **Data Lake Storage Gen2 のパフォーマンス チューニング ガイドライン**。  一般的なパフォーマンスの概念については、[Data Lake Storage Gen2 のパフォーマンス チューニング ガイダンス](data-lake-storage-performance-tuning-guidance.md)を参照してください。 
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>パラメーター
 
 Spark ジョブを実行するときは、以下が Data Lake Storage Gen2 のパフォーマンスを向上させるためにチューニングできる最も重要な設定です。
 
@@ -52,20 +52,20 @@ Data Lake Storage Gen2 内のデータを操作する Spark 分析ワークロ�
 
 I/O 集中型のジョブのコンカレンシーを向上させる一般的な方法はいくつかあります。
 
-**手順 1: クラスターで実行するアプリの数を決定する** – 現在の 1 つを含めて、いくつのアプリがクラスターで実行されるかを知っておくべきです。  各 Spark 設定の既定値は、同時に実行するアプリは 4 つと想定しています。  そのため、各アプリに対して使用可能なクラスターは 25% しかありません。  優れたパフォーマンスを得るには、Executor の数を変更することで、既定の設定をオーバーライドします。  
+**ステップ 1:クラスターで実行するアプリの数を決定する** – 現在の 1 つを含めて、いくつのアプリがクラスターで実行されるかを知っておくべきです。  各 Spark 設定の既定値は、同時に実行するアプリは 4 つと想定しています。  そのため、各アプリに対して使用可能なクラスターは 25% しかありません。  優れたパフォーマンスを得るには、Executor の数を変更することで、既定の設定をオーバーライドします。  
 
-**手順 2: Executor-memory を設定する** – 最初に設定するのは、Executor-memory です。  メモリは、実行しようとしているジョブに依存します。  Executor あたりに割り当てるメモリを少なくすることで、コンカレンシー数を増やすことができます。  ジョブを実行したときにメモリ不足例外が発生した場合は、このパラメーターの値を大きくする必要があります。  別の方法としては、メモリ容量が大きいクラスターを使用してメモリ量を増やすか、クラスター内のサイズを増やすことが挙げられます。  メモリの量が増えると使用できる Executor の数も増えて、コンカレンシーが向上されます。
+**手順 2:Executor-memory を設定する** – 最初に設定するのは、Executor-memory です。  メモリは、実行しようとしているジョブに依存します。  Executor あたりに割り当てるメモリを少なくすることで、コンカレンシー数を増やすことができます。  ジョブを実行したときにメモリ不足例外が発生した場合は、このパラメーターの値を大きくする必要があります。  別の方法としては、メモリ容量が大きいクラスターを使用してメモリ量を増やすか、クラスター内のサイズを増やすことが挙げられます。  メモリの量が増えると使用できる Executor の数も増えて、コンカレンシーが向上されます。
 
-**手順 3: Executor-cores を設定する** – I/O 集中型ワークロードには複雑な操作がないため、Executor あたりの並列タスク数を増やすために、Executor-cores 数を多く設定して始めると便利です。  適切な出発点として、Executor-cores を 4 に設定します。   
+**ステップ 3:Executor-cores を設定する** – I/O 集中型ワークロードには複雑な操作がないため、Executor あたりの並列タスク数を増やすために、Executor-cores 数を多く設定して始めると便利です。  適切な出発点として、Executor-cores を 4 に設定します。   
 
     executor-cores = 4
 Executor-cores の数を増やすと多くの並列処理を行うことができます。Executor-cores を変えて試してみてください。  さらに複雑な操作を含むジョブの場合は、Executor あたりのコアの数を減らす必要があります。  Executor-cores を 4 より大きくすると、ガベージ コレクションが非効率的になりパフォーマンスが低下する可能性があります。
 
-**手順 4: クラスターの YARN メモリの量を決定する** – この情報は、Ambari で使用できます。  YARN に移動し、[Configs] \(構成) タブを表示します。YARN メモリは、このウィンドウに表示されます。  
+**手順 4:クラスターの YARN メモリの量を決定する** – この情報は、Ambari で使用できます。  YARN に移動し、[Configs] \(構成) タブを表示します。YARN メモリは、このウィンドウに表示されます。  
 ウィンドウには、既定の YARN コンテナーのサイズも表示されます。  YARN コンテナーのサイズは、Executor パラメーターごとのメモリと同じです。
 
     Total YARN memory = nodes * YARN memory per node
-**手順 5: Num-executors を計算する**
+**手順 5:Num-executors を計算する**
 
 **メモリの制約を計算する** - Num-executors パラメーターは、メモリまたは CPU のいずれかで指定します。  メモリの制約は、アプリケーションで使用可能な YARN メモリの量によって決まります。  合計 YARN メモリを取得して、Executor-memory で除算します。  制約は、アプリの数に応じてスケールを小さくする必要があるため、アプリの数で除算します。
 
@@ -83,19 +83,19 @@ Num-executors を大きな数に設定してもパフォーマンスは必ずし
 
 現在 8 つの D4v2 ノードから成るクラスターがあり、実行しようとしているアプリを含む 2 つのアプリが実行されるとします。  
 
-**手順 1: クラスターで実行するアプリの数を決定する** – 実行しようとしているアプリを含む 2 つのアプリがクラスターにあることがわかっています。  
+**ステップ 1:クラスターで実行するアプリの数を決定する** – 実行しようとしているアプリを含む 2 つのアプリがクラスターにあることがわかっています。  
 
-**手順 2: Executor-memory を設定する** – この例では、I/O 負荷の高いジョブには、6GB の Executor-memory で十分だと判断します。  
+**手順 2:Executor-memory を設定する** – この例では、I/O 負荷の高いジョブには、6GB の Executor-memory で十分だと判断します。  
 
     executor-memory = 6GB
-**手順 3: Executor-cores を設定する** – これは I/O 負荷の高いジョブであるため、各 Executor のコア数は 4 に設定できます。  Executor あたりのコア数を 4 より大きくすると、ガベージ コレクションの問題が発生する可能性があります。  
+**ステップ 3:Executor-cores を設定する** – これは I/O 負荷の高いジョブであるため、各 Executor のコア数は 4 に設定できます。  Executor あたりのコア数を 4 より大きくすると、ガベージ コレクションの問題が発生する可能性があります。  
 
     executor-cores = 4
-**手順 4: クラスターの YARN メモリの量を決定する** – 各 D4v2 が 25 GB の YARN メモリを持つことを確認するために Ambari に移動します。  8 つのノードがあるため、使用可能な YARN メモリ量は 8 を乗算して求めます。
+**手順 4:クラスターの YARN メモリの量を決定する** – 各 D4v2 が 25 GB の YARN メモリを持つことを確認するために Ambari に移動します。  8 つのノードがあるため、使用可能な YARN メモリ量は 8 を乗算して求めます。
 
     Total YARN memory = nodes * YARN memory* per node
     Total YARN memory = 8 nodes * 25GB = 200GB
-**手順 5: Num-executors を計算する** – Num-executors パラメーターは、最小メモリの制約と CPU の制約を Spark で実行されるアプリの数で除算して求めます。    
+**手順 5:Num-executors を計算する** – Num-executors パラメーターは、最小メモリの制約と CPU の制約を Spark で実行されるアプリの数で除算して求めます。    
 
 **メモリの制約を計算する** – メモリの制約は、Executor あたりのメモリで除算した YARN メモリの合計として計算します。
 

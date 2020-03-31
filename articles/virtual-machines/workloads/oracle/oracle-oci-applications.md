@@ -14,10 +14,10 @@ ms.date: 07/18/2019
 ms.author: rogirdh
 ms.custom: ''
 ms.openlocfilehash: b183a4d4922c89f60ccb19b3e3e978216f33cc9a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70100081"
 ---
 # <a name="architectures-to-deploy-oracle-applications-on-azure"></a>Azure に Oracle アプリケーションをデプロイするアーキテクチャ
@@ -189,7 +189,7 @@ PeopleTools クライアントは、開発、移行、アップグレードな�
 
 [!INCLUDE [virtual-machines-oracle-applications-identity](../../../../includes/virtual-machines-oracle-applications-identity.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Terraform スクリプト](https://github.com/microsoft/azure-oracle)を使用して、Azure で Oracle アプリを設定し、OCI とのクロスクラウド接続を確立します。
 

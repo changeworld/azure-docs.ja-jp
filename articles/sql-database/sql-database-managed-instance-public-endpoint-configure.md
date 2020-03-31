@@ -11,17 +11,17 @@ ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/07/2019
 ms.openlocfilehash: 1acd7d6a3b203997e3acd8d7959b1572e09845f3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227997"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228603"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>Azure SQL Database マネージド インスタンスのパブリック エンドポイントの構成
 
 [マネージド インスタンス](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)のパブリック エンドポイントを使用すると、[仮想ネットワーク](../virtual-network/virtual-networks-overview.md)の外部からマネージド インスタンスにデータ アクセスできます。 マネージド インスタンスには、Power BI や Azure App Service などのマルチテナント Azure サービスまたはオンプレミス ネットワークからアクセスできます。 マネージド インスタンスでパブリック エンドポイントを使用すると、VPN を使用する必要がなくなるため、VPN のスループットの問題を回避できます。
 
-この記事では、以下の方法について説明します。
+この記事では、次の方法について学習します。
 
 > [!div class="checklist"]
 > - Azure portal でマネージド インスタンスのパブリック エンドポイントを有効にする
@@ -92,14 +92,14 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 1. **[受信セキュリティ規則]** タブを選択し、**deny_all_inbound** 規則よりも優先度の高い規則を以下の設定で**追加**します。 </br> </br>
 
-    |Setting  |推奨値  |説明  |
+    |設定  |推奨値  |説明  |
     |---------|---------|---------|
     |**ソース**     |任意の IP アドレスまたはサービス タグ         |<ul><li>Power BI などの Azure サービスの場合は、Azure クラウド サービス タグを選択します</li> <li>コンピューターまたは Azure VM の場合は、NAT IP アドレスを使用します</li></ul> |
     |**ソース ポート範囲**     |*         |ソース ポートは、通常、動的に割り当てられ、予測できないため、* (任意) のままにしておきます |
     |**宛先**     |Any         |マネージド インスタンスのサブネットへのトラフィックを許可するには、宛先は [任意] のままにしておきます |
     |**宛先ポート範囲**     |3342         |宛先ポート野範囲を 3342 に設定します。これが、マネージド インスタンスのパブリック TDS エンドポイントです |
     |**プロトコル**     |TCP         |マネージド インスタンスは、TDS に TCP プロトコルを使用します |
-    |**アクション**     |Allow         |パブリック エンドポイントを介したマネージド インスタンスへの受信トラフィックを許可します |
+    |**操作**     |Allow         |パブリック エンドポイントを介したマネージド インスタンスへの受信トラフィックを許可します |
     |**優先順位**     |1300         |この規則が **deny_all_inbound** 規則よりも優先度が高いことを確認してください |
 
     ![mi-nsg-rules.png](media/sql-database-managed-instance-public-endpoint-configure/mi-nsg-rules.png)
@@ -114,6 +114,6 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
     ![mi-public-endpoint-conn-string.png](media/sql-database-managed-instance-public-endpoint-configure/mi-public-endpoint-conn-string.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [パブリック エンドポイントで安全に Azure SQL Database マネージド インスタンスを使用する](sql-database-managed-instance-public-endpoint-securely.md)方法を学習する。

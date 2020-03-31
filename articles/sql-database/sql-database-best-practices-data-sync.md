@@ -12,10 +12,10 @@ ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
 ms.openlocfilehash: ee929fa227cb105b73bc929c13a768aabef37ce3
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75771685"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>SQL データ同期のベスト プラクティス 
@@ -27,7 +27,7 @@ SQL データ同期の概要については、[Azure SQL データ同期を使�
 > [!IMPORTANT]
 > 現時点では、Azure SQL データ同期で Azure SQL Database Managed Instance はサポート**されていません**。
 
-## <a name="security-and-reliability"></a>セキュリティと信頼性
+## <a name="security-and-reliability"></a><a name="security-and-reliability"></a>セキュリティと信頼性
 
 ### <a name="client-agent"></a>クライアント エージェント
 
@@ -52,7 +52,7 @@ Azure SQL Database では、単一の資格情報セットのみをサポート�
 
 ## <a name="setup"></a>セットアップ
 
-### <a name="database-considerations-and-constraints"></a>データベースの考慮事項と制約
+### <a name="database-considerations-and-constraints"></a><a name="database-considerations-and-constraints"></a>データベースの考慮事項と制約
 
 #### <a name="sql-database-instance-size"></a>SQL データベース インスタンスのサイズ
 
@@ -61,7 +61,7 @@ Azure SQL Database では、単一の資格情報セットのみをサポート�
 > [!IMPORTANT]
 > SQL データ同期では、各データベースで追加のメタデータを格納します。 必要な領域を計算するときに、このメタデータを必ず考慮してください。 追加されるオーバーヘッドの量は、テーブルの幅 (たとえば、幅が狭いテーブルでは必要なオーバーヘッドが増えます) とトラフィックの量に関係しています。
 
-### <a name="table-considerations-and-constraints"></a>テーブルの考慮事項と制約
+### <a name="table-considerations-and-constraints"></a><a name="table-considerations-and-constraints"></a>テーブルの考慮事項と制約
 
 #### <a name="selecting-tables"></a>テーブルの選択
 
@@ -77,7 +77,7 @@ Azure SQL Database では、単一の資格情報セットのみをサポート�
 
 初期化時には空のテーブルが最高のパフォーマンスを提供します。 ターゲット テーブルが空の場合、データ同期は一括挿入を使用してデータを読み込みます。 それ以外の場合、データ同期は行単位の比較と挿入を行って競合を確認します。 ただし、パフォーマンスが重要でない場合は、既にデータが含まれているテーブル間の同期を設定することができます。
 
-### <a name="provisioning-destination-databases"></a>同期先データベースをプロビジョニングする
+### <a name="provisioning-destination-databases"></a><a name="provisioning-destination-databases"></a>同期先データベースをプロビジョニングする
 
 SQL データ同期は、データベースの基本的な自動プロビジョニングを提供します。
 
@@ -101,7 +101,7 @@ SQL データ同期には、自動プロビジョニングについて次のよ�
 -   サービスをテストする場合にのみ、SQL データ同期の自動プロビジョニング機能を使用します。  
 -   運用環境では、データベース スキーマをプロビジョニングします。
 
-### <a name="locate-hub"></a>ハブ データベースを配置する場所
+### <a name="where-to-locate-the-hub-database"></a><a name="locate-hub"></a>ハブ データベースを配置する場所
 
 #### <a name="enterprise-to-cloud-scenario"></a>企業とクラウド間のシナリオ
 
@@ -118,7 +118,7 @@ SQL データ同期には、自動プロビジョニングについて次のよ�
 
 ## <a name="sync"></a>同期
 
-### <a name="avoid-a-slow-and-costly-initial-synchronization"></a>時間とコストがかかる初期同期の回避
+### <a name="avoid-slow-and-costly-initial-sync"></a><a name="avoid-a-slow-and-costly-initial-synchronization"></a>時間とコストがかかる初期同期の回避
 
 このセクションでは、同期グループの初期同期について説明します。 初期同期に余計な時間がかかったり、必要以上にコストがかかったりしないようにする方法を説明します。
 
@@ -132,13 +132,13 @@ SQL データ同期には、自動プロビジョニングについて次のよ�
 
 可能であれば、最初は同期グループのいずれかのデータベースのデータだけを使用します。
 
-### <a name="design-to-avoid-synchronization-loops"></a>同期ループを避ける設計
+### <a name="design-to-avoid-sync-loops"></a><a name="design-to-avoid-synchronization-loops"></a>同期ループを避ける設計
 
 同期ループは、同期グループ内で循環参照がある場合に発生します。 このシナリオでは、1 つのデータベースにおける各変更が、同期グループ内の複数のデータベース間で際限なく循環的にレプリケートされます。   
 
 パフォーマンスの低下とコストの大幅な増加を引き起こす可能性があるため、必ず同期ループを回避するようにしてください。
 
-### <a name="handling-changes-that-fail-to-propagate"></a>反映されない変更
+### <a name="changes-that-fail-to-propagate"></a><a name="handling-changes-that-fail-to-propagate"></a>反映されない変更
 
 #### <a name="reasons-that-changes-fail-to-propagate"></a>変更が反映されない理由
 
@@ -164,7 +164,7 @@ SQL データ同期には、自動プロビジョニングについて次のよ�
 
 ## <a name="maintenance"></a>メンテナンス
 
-### <a name="avoid-out-of-date-databases-and-sync-groups"></a>データベースと同期グループが古くならないようにする
+### <a name="avoid-out-of-date-databases-and-sync-groups"></a><a name="avoid-out-of-date-databases-and-sync-groups"></a>データベースと同期グループが古くならないようにする
 
 同期グループまたは同期グループ内のデータベースが最新でなくなる場合があります。 同期グループの状態が **[Out-of-date]\(最新ではありません\)** の場合、同期グループは機能しなくなります。 データベースの状態が **[Out-of-date]\(最新ではありません\)** の場合、データが失われる可能性があります。 このシナリオからの回復を試みるよりも、このシナリオを回避することをお勧めします。
 
@@ -189,7 +189,7 @@ SQL データ同期には、自動プロビジョニングについて次のよ�
 -   外部キーの値を更新して、失敗した行に含まれている値を含めます。
 -   失敗した行のデータ値を更新して、ターゲット データベースのスキーマまたは外部キーと互換性を持たせます。
 
-### <a name="avoid-deprovisioning-issues"></a>プロビジョニング解除の問題を回避する
+### <a name="avoid-deprovisioning-issues"></a><a name="avoid-deprovisioning-issues"></a>プロビジョニング解除の問題を回避する
 
 状況によっては、クライアント エージェントへのデータベースの登録を解除すると、同期に失敗することがあります。
 
@@ -210,7 +210,7 @@ SQL データ同期には、自動プロビジョニングについて次のよ�
 2. データベースを削除した各同期グループにデータベースを戻します。  
 3. 影響を受けた各同期グループをデプロイします (この操作によりデータベースをプロビジョニングします)。  
 
-### <a name="modifying-your-sync-group"></a>同期グループを変更する
+### <a name="modifying-a-sync-group"></a><a name="modifying-your-sync-group"></a>同期グループを変更する
 
 同期グループからデータベースを削除した後、変更のいずれかをデプロイするまで同期グループを編集しないでください。
 

@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.custom: seodec18
 ms.openlocfilehash: 8232fd4c2a1e17800c96854b4ba7298e57ed84b7
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76989894"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>クエリのパフォーマンスを最大化するための JSON の調整 
@@ -165,7 +165,7 @@ Azure クラウドに送信されるときに JSON にシリアル化される [
 
 * キー プロパティ **deviceId** および **series.tagId** がある参照データ テーブル:
 
-   | deviceId | series.tagId | messageId | deviceLocation | 型 | unit |
+   | deviceId | series.tagId | messageId | deviceLocation | type | unit |
    | --- | --- | --- | --- | --- | --- |
    | FXXX | pumpRate | LINE\_DATA | EU | Flow Rate | ft3/s |
    | FXXX | oilPressure | LINE\_DATA | EU | Engine Oil Pressure | psi |
@@ -174,7 +174,7 @@ Azure クラウドに送信されるときに JSON にシリアル化される [
 
 * Time Series Insights イベント テーブル (フラット化後):
 
-   | deviceId | series.tagId | messageId | deviceLocation | 型 | unit | timestamp | series.value |
+   | deviceId | series.tagId | messageId | deviceLocation | type | unit | timestamp | series.value |
    | --- | --- | --- | --- | --- | --- | --- | --- |
    | FXXX | pumpRate | LINE\_DATA | EU | Flow Rate | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
    | FXXX | oilPressure | LINE\_DATA | EU | Engine Oil Pressure | psi | 2018-01-17T01:17:00Z | 34.7 |

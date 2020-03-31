@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: spelluru
 ms.openlocfilehash: 964a472a5c0a6350090f83755747a12e89a1650e
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68422917"
 ---
 # <a name="what-is-azure-relay"></a>Azure Relay とは
@@ -40,7 +40,7 @@ Azure Relay は、VPN のようなネットワーク レベルの統合テクノ
 4. リレー サービスは次に、そのクライアント専用の双方向ソケットを介してオンプレミス サービスにデータを*リレー*します。 クライアントに、オンプレミス サービスへの直接接続は必要ありません。 サービスの場所を知っている必要がありません。 また、オンプレミス サービスのために、ファイアウォールで受信ポートを開いておく必要はありません。
 
 
-## <a name="features"></a>機能 
+## <a name="features"></a>特徴 
 Azure Relay には、次の 2 つの機能があります。
 
 - [ハイブリッド接続](#hybrid-connections) - オープン スタンダードの Web ソケットを使用することで、マルチプラットフォームの用途に対応します。
@@ -64,7 +64,7 @@ WCF Relay は、完全な .NET Framework (NETFX) と共に、WCF で動作しま
 |  | WCF リレー | ハイブリッド接続 |
 | --- |:---:|:---:|
 | **WCF** |x | |
-| **.NET Core** | |○ |
+| **.NET Core** | |x |
 | **.NET Framework** |x |x |
 | **Java script/Node.JS** | |x |
 | **標準ベースのオープン プロトコル** | |x |
@@ -85,7 +85,7 @@ WCF Relay は、完全な .NET Framework (NETFX) と共に、WCF で動作しま
 8. ゲートウェイは、リッスンしているクライアントからのメッセージをすべて送信側クライアントに転送します。 
 9. ゲートウェイは、送信側クライアントからのすべてのメッセージをリッスンしているクライアントに転送します。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [.NET WebSocket の概要](relay-hybrid-connections-dotnet-get-started.md)
 * [.NET HTTP 要求の概要](relay-hybrid-connections-http-requests-dotnet-get-started.md)
 * [Node WebSocket の概要](relay-hybrid-connections-node-get-started.md)

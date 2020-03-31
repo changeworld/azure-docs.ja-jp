@@ -2,7 +2,7 @@
 title: Azure Active Directory ポータルでのリスクのフラグ付きユーザー | Microsoft Docs
 description: Azure Active Directory ポータルのリスクのフラグ付きユーザー セキュリティ レポートについて説明します。
 services: active-directory
-author: cawrites
+author: MarkusVi
 manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1412cacd453de01f1937fbcf5e712afdac88def
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 30d02c5484ea4cce2953eac6b1b7b26a17c142bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68989694"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルでリスクのフラグ付きユーザーを修復する
@@ -59,7 +59,7 @@ Microsoft 365 管理センターで**リスクのフラグ付きユーザー**�
 
 影響を受けたアカウントの問題を解決し、環境を保護するために、以下の操作を実行してください。
 
-1.  多要素認証とセルフサービスのパスワード リセットに関する[情報が正しいことを検証](https://aka.ms/MFAValid)します。 
+1.  多要素認証とセルフサービス パスワード リセットに関する[情報が正しいことを検証](https://aka.ms/MFAValid)します。 
 2.  すべてのユーザーの[多要素認証を有効](https://aka.ms/MFAuth)にします。 
 3.  この[修復スクリプト](https://aka.ms/remediate)を使用すると、影響を受けたすべてのアカウントに対して、以下の手順を自動的に実行します。 
 
@@ -90,7 +90,7 @@ Microsoft 365 管理センターで**リスクのフラグ付きユーザー**�
 - すべてのアカウントに対して、この[スクリプトを使用してメールボックスの監査を有効](https://aka.ms/mailboxaudit1)にします。 
 - すべてのメールボックスの代理人のアクセス許可とメール転送ルールを確認します。 この [PowerShell スクリプト](https://aka.ms/delegateforwardrules)を使用して、この作業を実行することができます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
 * [リスクのフラグ付きユーザー](concept-user-at-risk.md)

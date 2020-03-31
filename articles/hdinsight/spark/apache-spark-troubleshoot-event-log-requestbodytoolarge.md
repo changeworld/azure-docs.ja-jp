@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: 777d06670238a7625d190c92f78a55cd4794d226
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75894400"
 ---
 # <a name="nativeazurefilesystemrequestbodytoolarge-appear-in-apache-spark-streaming-app-log-in-hdinsight"></a>"NativeAzureFileSystem...RequestBodyTooLarge" が HDInsight の Apache Spark ストリーミング アプリのログに表示される
@@ -28,7 +28,7 @@ ms.locfileid: "75894400"
 
 Spark 2.3 では、各 Spark アプリによって 1 つの Spark イベント ログ ファイルが生成されます。 Spark ストリーミング アプリの Spark イベント ログ ファイルは、アプリの実行中も拡張され続けます。 現在、WASB 上のファイルには 5 万ブロックの制限があり、既定のブロック サイズは 4 MB です。 そのため、既定の構成では、最大ファイル サイズは 195 GB です。 しかし Azure Storage では最大ブロック サイズが 100 MB に増えており、1 つのファイルの上限は実質的に 4.75 TB になります。 詳細については、「[BLOB ストレージのスケーラビリティとパフォーマンスのターゲット](../../storage/blobs/scalability-targets.md)」を参照してください。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
 このエラーには、次の 3 つの解決策があります。
 

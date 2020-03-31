@@ -12,11 +12,11 @@ manager: rkarlin
 ms.reviewer: vanto
 ms.date: 03/31/2019
 ms.openlocfilehash: 1f0e6694e596dc60264dfe0789a2f80090e0da3d
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293846"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232595"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Azure SQL Database 向け Advanced Data Security
 

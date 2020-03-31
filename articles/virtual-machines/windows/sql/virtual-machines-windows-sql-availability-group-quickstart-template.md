@@ -16,10 +16,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: edf810dfc975eebaf261eac7b89106c9e29c759c
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74022380"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-an-azure-vm"></a>Azure クイックスタート テンプレートを使用して Azure VM で SQL Server の可用性グループを構成する
@@ -102,9 +102,9 @@ Always On 可用性グループ リスナーには、Azure Load Balancer の内�
 4. **[ロード バランサー]** ブレードで **[作成]** を選択します。
 5. **[ロード バランサーの作成]** ダイアログボックスで、次のようにロード バランサーを構成します。
 
-   | Setting | 値 |
+   | 設定 | 値 |
    | --- | --- |
-   | **Name** |ロード バランサーを表すテキスト名を入力します。 たとえば、「**sqlLB**」などと入力します。 |
+   | **名前** |ロード バランサーを表すテキスト名を入力します。 たとえば、「**sqlLB**」などと入力します。 |
    | **Type** |**内部**:ほとんどの実装では、内部ロード バランサーを使います。この場合、同じ仮想ネットワーク内のアプリケーションを可用性グループに接続できます。  </br> **外部**:アプリケーションをパブリック インターネット接続経由で可用性グループに接続できます。 |
    | **Virtual Network** | SQL Server インスタンスが存在する仮想ネットワークを選択します。 |
    | **サブネット** | SQL Server インスタンスが存在するサブネットを選択します。 |
@@ -112,14 +112,14 @@ Always On 可用性グループ リスナーには、Azure Load Balancer の内�
    | **プライベート IP アドレス** | サブネット内の利用可能な IP アドレスを指定します。 |
    | **サブスクリプション** |複数のサブスクリプションを所有している場合、このフィールドが表示されます。 このリソースに関連付けられているサブスクリプションを選択します。 通常は、可用性グループのすべてのリソースについて同じサブスクリプションを選択してください。 |
    | **リソース グループ** |SQL Server インスタンスが存在するリソース グループを選択します。 |
-   | **Location** |Azure において SQL Server インスタンスが存在する場所を選択します。 |
+   | **場所** |Azure において SQL Server インスタンスが存在する場所を選択します。 |
    | &nbsp; | &nbsp; |
 
-6. **作成** を選択します。 
+6. **［作成］** を選択します 
 
 
 >[!IMPORTANT]
-> 各 SQL Server VM 用のパブリック IP リソースには、Standard ロード バランサーと互換性のある Standard SKU が必要です。 VM のパブリック IP リソースの SKU を決定するには、 **[リソース グループ]** に移動し、SQL Server VM 用の **[パブリック IP アドレス]** リソースを選択し、 **[概要]** ウィンドウの **[SKU]** で値を見つけます。 
+> 各 SQL Server VM 用のパブリック IP リソースには、Standard Load Balancer と互換性のある Standard SKU が必要です。 VM のパブリック IP リソースの SKU を決定するには、 **[リソース グループ]** に移動し、SQL Server VM 用の **[パブリック IP アドレス]** リソースを選択し、 **[概要]** ウィンドウの **[SKU]** で値を見つけます。 
 
 ## <a name="step-4-create-the-availability-group-listener-and-configure-the-internal-load-balancer-by-using-the-quickstart-template"></a>手順 4:クイックスタート テンプレートを使用して、可用性グループ リスナーを作成し、内部ロード バランサーを構成する
 
@@ -161,9 +161,9 @@ Always On 可用性グループ リスナーには、Azure Load Balancer の内�
 >デプロイが途中で失敗した場合は、**101-sql-vm-aglistener-setup** クイックスタート テンプレートを再デプロイする前に、PowerShell を使用して、手動で[新たに作成されたリスナーを削除する](#remove-the-availability-group-listener)必要があります。 
 
 ## <a name="remove-the-availability-group-listener"></a>可用性グループ リスナーを削除する
-テンプレートで構成された可用性グループ リスナーを後で削除する必要がある場合は、SQL VM リソース プロバイダーを経由する必要があります。 リスナーは SQL VM リソース プロバイダーを介して登録されるため、SQL Server Management Studio を使用して削除するだけでは十分ではありません。 
+テンプレートで構成された可用性グループ リスナーを後で削除する必要がある場合は、SQL VM リソース プロバイダーを経由する必要があります。 リスナーは SQL VM リソースプロバイダーを介して登録されるため、SQL Server Management Studio を使用して削除するだけでは十分ではありません。 
 
-最もよい方法は、PowerShell で次のコード スニペットを使用して、SQL VM リソース プロバイダーから削除することです。 そうすることで、SQL VM リソース プロバイダーから可用性グループ リスナー メタデータが削除されます。 また、可用性グループから物理的にリスナーが削除されます。 
+最もよい方法は、PowerShell で次のコード スニペットを使用して、SQL VM リソース プロバイダーから削除することです。 そうすることで、SQL VM リソースプロバイダーから可用性グループ リスナー メタデータが削除されます。 また、可用性グループから物理的にリスナーが削除されます。 
 
 ```PowerShell
 # Remove the availability group listener
@@ -204,7 +204,7 @@ Azure クイックスタート テンプレートで可用性グループ リス
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、次の記事を参照してください。 
 

@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 04/09/2018
 ms.reviewer: davberg
 ms.openlocfilehash: 71413e9a1e0b368bf5d3ae26bbc97d7d78da9422
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969746"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Linux VM のコンピューティング ベンチマーク スコア

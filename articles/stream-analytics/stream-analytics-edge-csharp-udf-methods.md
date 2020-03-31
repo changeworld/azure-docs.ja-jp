@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.custom: seodec18
 ms.openlocfilehash: f07c02df1b8e0032c9e1b4ef9a24c345fee20a40
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75426311"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>Azure Stream Analytics ジョブ用の .NET Standard ユーザー定義関数を開発する (プレビュー)
@@ -21,7 +21,7 @@ Azure Stream Analytics では、イベント データのストリームを介�
 クラウド ジョブ用の .NET ユーザー定義関数は、以下で利用できます。
 * 米国中西部
 * 北ヨーロッパ
-* East US
+* 米国東部
 * 米国西部
 * 米国東部 2
 * 西ヨーロッパ

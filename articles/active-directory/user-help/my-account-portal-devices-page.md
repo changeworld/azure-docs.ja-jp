@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
 ms.openlocfilehash: e273a44c1cbc5a6a6161f059038c7e87973a33d5
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77062491"
 ---
 # <a name="manage-your-connected-devices-from-the-devices-page"></a>接続されているデバイスを [デバイス] ページから管理する
@@ -31,7 +31,7 @@ ms.locfileid: "77062491"
 
 ## <a name="view-your-connected-devices"></a>接続されているデバイスを表示する
 
-1. 職場または学校アカウントにサインインした後、 **[マイ アカウント]** ページ (https://myprofile.microsoft.com/) に移動します。
+1. 職場または学校アカウントにサインインした後、 **[マイ アカウント]** (https://myprofile.microsoft.com/) ページ) に移動します。
 
 2. 左側のナビゲーション ウィンドウから **[デバイス]** を選択するか、 **[デバイス]** ブロックから **[デバイスの管理]** リンクを選択します。
 

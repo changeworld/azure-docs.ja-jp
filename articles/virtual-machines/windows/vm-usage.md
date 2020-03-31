@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
 ms.openlocfilehash: 2aa175d97787d82aae062a95ed519f35ff65816b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75982269"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Azure 仮想マシンの使用量について
@@ -79,10 +79,10 @@ Azure ギャラリーの一部のイメージについては、イメージの�
 |    CanadaEast            |    カナダ東部                               |
 |    CentralIndia          |    インド中部                            |
 |    centralus             |    米国中部                            |
-|    chinaeast             |    中国 (東部)                            |
-|    chinanorth            |    中国 (北部)                           |
+|    chinaeast             |    中国東部                            |
+|    chinanorth            |    中国北部                           |
 |    eastasia              |    東アジア                             |
-|    eastus                |    East US                               |
+|    eastus                |    米国東部                               |
 |    eastus2               |    米国東部 2                             |
 |    GermanyCentral        |    ドイツ中部                            |
 |    GermanyNortheast      |    ドイツ北東部                          |
@@ -101,10 +101,10 @@ Azure ギャラリーの一部のイメージについては、イメージの�
 |    ukwest                |    英国西部                               |
 |    USDoDCentral          |    US DoD Central                        |
 |    USDoDEast             |    US DoD East                           |
-|    USGovArizona          |    米国政府アリゾナ                         |
-|    usgoviowa             |    米国政府アイオワ州                            |
-|    USGovTexas            |    米国政府テキサス                           |
-|    usgovvirginia         |    米国政府バージニア州                        |
+|    USGovArizona          |    USGov アリゾナ                         |
+|    usgoviowa             |    USGov アイオワ州                            |
+|    USGovTexas            |    USGov テキサス                           |
+|    usgovvirginia         |    USGov バージニア州                        |
 |    westcentralus         |    米国中西部                       |
 |    westeurope            |    西ヨーロッパ                           |
 |    WestIndia             |    インド西部                               |

@@ -7,12 +7,12 @@ ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
-ms.openlocfilehash: 15a3b39b1466ffec87971b8f054ca916567d89d7
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 0d36d7db4d85ece8de77040925c535305951562b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944952"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066681"
 ---
 # <a name="preview-create-a-linux-vm-with-azure-image-builder"></a>プレビュー:Azure Image Builder で Linux VM を作成する
 
@@ -64,7 +64,7 @@ az provider register -n Microsoft.Storage
 いくつかの情報を繰り返し使用するので、その情報を格納するいくつかの変数を作成します。
 
 
-```azurecli-interactive
+```console
 # Resource group name - we are using myImageBuilderRG in this example
 imageResourceGroup=myImageBuilerRGLinux
 # Datacenter location - we are using West US 2 in this example
@@ -77,7 +77,7 @@ runOutputName=aibLinux
 
 サブスクリプション ID の変数を作成します。 `az account show | grep id` を使用してこれを取得できます。
 
-```azurecli-interactive
+```console
 subscriptionID=<Your subscription ID>
 ```
 
@@ -104,7 +104,7 @@ az role assignment create \
 
 パラメーター化されたサンプル イメージ構成テンプレートが作成されており、使用できます。 サンプル .json ファイルをダウンロードし、事前に設定した変数を使用してこれを構成します。
 
-```azurecli-interactive
+```bash
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Linux_Managed_Image/helloImageTemplateLinux.json -o helloImageTemplateLinux.json
 
 sed -i -e "s/<subscriptionID>/$subscriptionID/g" helloImageTemplateLinux.json
@@ -116,7 +116,7 @@ sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateLinux.json
 
 必要に応じて、このサンプル .json を変更できます。 たとえば、ビルドの実行時間を長くするために、`buildTimeoutInMinutes` の値を増やすことができます。 `vi` のようなテキスト エディターを使って、Cloud Shell でファイルを編集できます。
 
-```azurecli-interactive
+```bash
 vi helloImageTemplateLinux.json
 ```
 
@@ -188,13 +188,13 @@ az vm create \
 
 VM の作成の出力から IP アドレスを取得し、それを使用して VM に SSH 接続します。
 
-```azurecli-interactive
+```bash
 ssh azureuser@<pubIp>
 ```
 
 SSH 接続が確立されるとすぐに、イメージが当日のメッセージでカスタマイズされたことがわかります。
 
-```console
+```output
 
 *******************************************************
 **            This VM was built from the:            **
@@ -209,7 +209,7 @@ SSH 接続が確立されるとすぐに、イメージが当日のメッセー�
 
 Image Builder テンプレートの [プロパティ] には、ソース イメージ、実行しているカスタマイズ スクリプト、および配布されている場所が表示されます。
 
-```azurecli-interactive
+```bash
 cat helloImageTemplateLinux.json
 ```
 
@@ -230,7 +230,7 @@ az resource delete \
 
 イメージ リソース グループを削除します。
 
-```bash
+```azurecli
 az group delete -n $imageResourceGroup
 ```
 

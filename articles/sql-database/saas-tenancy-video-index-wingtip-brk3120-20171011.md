@@ -4,19 +4,17 @@ description: この記事では、2017 年 10 月 11 日に開催された Ignit
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: ''
-ms.devlang: ''
-ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 0194d99a10eb34ecd8ad10fa0a1509baf8436381
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.topic: conceptual
+ms.openlocfilehash: 1ee8f2fff958045f652b72358ab928f82920fd6b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818471"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067612"
 ---
 # <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>Azure SQL Database を使用するマルチテナント SaaS アプリに関するインデックスと注釈付きのビデオ
 
@@ -168,42 +166,42 @@ ms.locfileid: "73818471"
 
 
 &nbsp; <a name="anchor-image-wtip-min02940"/>
-#### <a name="14-myob-elastic-pool-usage-example-02930"></a>14.MYOB のエラスティック プール使用例、0:29:30
+#### <a name="14-myob-elastic-pool-usage-example-02930"></a>14. MYOB のエラスティック プール使用例、0:29:30
 [![MYOB のエラスティック プール使用例][image-wtip-min02940-myob-elastic]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=1770)
 
 
 &nbsp; <a name="anchor-image-wtip-min03136"/>
-#### <a name="15-learning-from-myob-and-other-isvs-03125"></a>15.MYOB および他の ISV からの教訓、0:31:25
+#### <a name="15-learning-from-myob-and-other-isvs-03125"></a>15. MYOB および他の ISV からの教訓、0:31:25
 [![MYOB および他の ISV からの教訓][image-wtip-min03136-learning-isvs]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=1885)
 
 
 &nbsp; <a name="anchor-image-wtip-min04315"/>
-#### <a name="16-patterns-compose-into-e2e-saas-scenario-03142"></a>16.E2E SaaS シナリオを構成するパターン、0:31:42
+#### <a name="16-patterns-compose-into-e2e-saas-scenario-03142"></a>16. E2E SaaS シナリオを構成するパターン、0:31:42
 [![E2E SaaS シナリオを構成するパターン][image-wtip-min04315-patterns-compose]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=1902)
 
 
 &nbsp; <a name="anchor-image-wtip-min04733"/>
-#### <a name="17-canonical-hybrid-multi-tenant-saas-app-04604"></a>17.正規のハイブリッド マルチテナント SaaS アプリ、0:46:04
+#### <a name="17-canonical-hybrid-multi-tenant-saas-app-04604"></a>17. 正規のハイブリッド マルチテナント SaaS アプリ、0:46:04
 [![正規のハイブリッド マルチテナント SaaS アプリ][image-wtip-min04733-canonical-hybrid]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=2764)
 
 
 &nbsp; <a name="anchor-image-wtip-min04810"/>
-#### <a name="18-wingtip-saas-sample-app-04801"></a>18.Wingtip SaaS サンプル アプリ、0:48:01
+#### <a name="18-wingtip-saas-sample-app-04801"></a>18. Wingtip SaaS サンプル アプリ、0:48:01
 [![Wingtip SaaS サンプル アプリ][image-wtip-min04810-wingtip-saas-app]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=2881)
 
 
 &nbsp; <a name="anchor-image-wtip-min04910"/>
-#### <a name="19-scenarios-and-patterns-explored-in-the-tutorials-04900"></a>19.チュートリアルで調査されているシナリオとパターン、0:49:00
+#### <a name="19-scenarios-and-patterns-explored-in-the-tutorials-04900"></a>19. チュートリアルで調査されているシナリオとパターン、0:49:00
 [![チュートリアルで調査されているシナリオとパターン][image-wtip-min04910-scenarios-tutorials]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=2940)
 
 
 &nbsp; <a name="anchor-image-wtip-min05018"/>
-#### <a name="20-demo-of-tutorials-and-github-repository-05012"></a>20.チュートリアルと GitHub リポジトリのデモ、0:50:12
+#### <a name="20-demo-of-tutorials-and-github-repository-05012"></a>20. チュートリアルと GitHub リポジトリのデモ、0:50:12
 [![チュートリアルと GitHub リポジトリのデモ][image-wtip-min05018-demo-tutorials-github]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=3012)
 
 
 &nbsp; <a name="anchor-image-wtip-min05038"/>
-#### <a name="21-github-repo-microsoftwingtipsaas-05032"></a>21.GitHub リポジトリ Microsoft/WingtipSaaS、0:50:32
+#### <a name="21-github-repo-microsoftwingtipsaas-05032"></a>21. GitHub リポジトリ Microsoft/WingtipSaaS、0:50:32
 [![GitHub リポジトリ Microsoft/WingtipSaaS][image-wtip-min05038-github-wingtipsaas]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=3032)
 
 
@@ -306,7 +304,7 @@ ms.locfileid: "73818471"
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [最初のチュートリアル記事][saas-how-welcome-wingtip-app-679t]
 

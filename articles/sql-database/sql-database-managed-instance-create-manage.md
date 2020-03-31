@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 713217a933c646cc4d04759f5697bbc0312827ce
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823400"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232511"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Azure SQL Database Managed Instance のマネージド API リファレンス
 
@@ -72,13 +72,13 @@ Azure PowerShell を使用してマネージド インスタンスを作成お�
 マネージド インスタンスの作成後、インスタンス データベースを作成し、管理するには、次の T-SQL コマンドを使用します。 これらのコマンドを発行するには、Azure portal、[SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio)、[Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is)、 [Visual Studio Code](https://code.visualstudio.com/docs)、または Azure SQL Database サーバーに接続し、Transact-SQL コマンドを渡すことができるその他の任意のプログラムを使用します。
 
 > [!TIP]
-> Microsoft Windows で SQL Server Management Studio を使用して、マネージド インスタンスを構成して接続する必要があることを示すクイック スタートについては、「[クイック スタート:Azure SQL Database Managed Instance に接続するように Azure VM を構成する](sql-database-managed-instance-configure-vm.md)」および「[クイック スタート:オンプレミスから Azure SQL Database Managed Instance へのポイント対サイト接続を構成する](sql-database-managed-instance-configure-p2s.md)。
+> Microsoft Windows で SQL Server Management Studio を使用して、マネージド インスタンスを構成して接続する必要があることを示すクイック スタートについては、「[クイック スタート:「Azure SQL Database Managed Instance に接続するように Azure VM を構成する」](sql-database-managed-instance-configure-vm.md)および[「クイック スタート:オンプレミスから Azure SQL Database Managed Instance へのポイント対サイト接続を構成する」](sql-database-managed-instance-configure-p2s.md)。
 > [!IMPORTANT]
 > Transact-SQL を使用して、マネージド インスタンスを作成または削除することはできません。
 
 | command | 説明 |
 | --- | --- |
-|[CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current)|新しいマネージド インスタンス データベースを作成します。 新しいデータベースを作成するには、マスター データベースに接続する必要があります。|
+|[CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current)|新しいマネージド インスタンス データベースを作成します。 新しいデータベースを作成するには、master データベースに接続している必要があります。|
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) |Azure SQL Database Managed Instance データベースを変更します。|
 
 ## <a name="rest-api-create-and-manage-managed-instances"></a>REST API:マネージド インスタンスを作成して管理する
@@ -94,7 +94,7 @@ Azure PowerShell を使用してマネージド インスタンスを作成お�
 |[Managed Instances - List By Resource Group](https://docs.microsoft.com/rest/api/sql/managedinstances/listbyresourcegroup)|リソース グループ内のマネージド インスタンスの一覧を取得します。|
 |[Managed Instances - Update](https://docs.microsoft.com/rest/api/sql/managedinstances/update)|マネージド インスタンスを更新します。|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - SQL Server データベースを Azure に移行する方法については、「[Azure SQL Database に移行](sql-database-single-database-migrate.md)」を参照してください。
 - サポートされている機能については、[機能](sql-database-features.md)に関する記事をご覧ください。

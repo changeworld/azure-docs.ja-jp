@@ -7,11 +7,11 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: 650fb7f0877a98ef53ed3868550f9c084ecb5885
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083692"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229035"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>フェールオーバー時に IP アドレスを保持する
 
@@ -161,6 +161,6 @@ B 社は、サブネット レベルで分離されているアプリをフェ�
  - アプリの回復性のためには、B 社は各アプリを独自の専用 Azure VNet 内に配置する必要があります。
  - 各アプリが別個の VNet 内にあれば、B 社は分離されたアプリをフェールオーバーし、ソースの接続をターゲット リージョンにルーティングできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [復旧計画](site-recovery-create-recovery-plans.md)について学習します。

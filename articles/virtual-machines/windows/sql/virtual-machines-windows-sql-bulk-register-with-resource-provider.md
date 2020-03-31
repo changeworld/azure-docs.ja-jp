@@ -14,10 +14,10 @@ ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 015aa4c209a99921a930a51b15c3d0230722519a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75353887"
 ---
 # <a name="bulk-register-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Azure の SQL 仮想マシンを SQL VM リソース プロバイダーに一括登録する
