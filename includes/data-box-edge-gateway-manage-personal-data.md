@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
 ms.openlocfilehash: af4c3829c8b12bfcaae0602dde8f459de7e50f3a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67181816"
 ---
 - **注文の詳細**。 注文が作成されると、ユーザーの配送先住所、メール アドレス、および連絡先情報が Azure Portal に格納されます。 たとえば、次の情報が保存の対象となります。
@@ -18,7 +18,7 @@ ms.locfileid: "67181816"
   - 番地
   - City
   - ZIP コード/郵便番号
-  - 状態
+  - State
   - 国/地方/地域
   - 配送追跡番号
 

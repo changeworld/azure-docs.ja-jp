@@ -1,18 +1,18 @@
 ---
 title: Visual Studio App Center を使用してアプリケーションのリアルタイムの障害とエラーを監視する
 description: モバイル アプリケーションの障害とエラーを監視するサービスとしての App Center について説明します。
-author: elamalani
+author: codemillmatt
 ms.assetid: 12a8a079-9b3c-4faf-8588-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: 38822ee6630f1dfd77ea2c62f9e4c489d159a1a2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: 6e7e29f28390278b21fb164365cc02d834e05b62
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454429"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240877"
 ---
 # <a name="monitor-failures-and-errors-in-real-time-for-your-mobile-application"></a>モバイル アプリケーションの障害とエラーをリアルタイムで監視する
 アプリケーションが何千人ものユーザーによって使用されている場合、バグが発生しやすくなります。 ユーザーは、予期しないアプリケーションの障害に遭遇する可能性があります。 ユーザーにとっては、必要なのは動作する信頼性の高いアプリケーションです。 バグや障害が発生するアプリケーションでは、優れたユーザー エクスペリエンスが得られません。 失望したユーザーは、アプリをアンインストールしたり、低評価のレビューを残したり、公の場でエクスペリエンスに関して批判や不満を述べたりします。

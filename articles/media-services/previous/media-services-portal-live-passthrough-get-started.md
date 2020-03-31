@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: a83d6ae2e3ed13f0d03e0fdc87a3b45a4119ba88
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162754"
 ---
 # <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Azure portal を使用してオンプレミス エンコーダーでライブ ストリーミングを実行する方法
@@ -47,7 +47,7 @@ ms.locfileid: "77162754"
 * [Azure Media Services を使用したライブ ストリーミングの概要](media-services-manage-channels-overview.md)
 * [マルチビットレートのストリームを作成するオンプレミス エンコーダーを使用したライブ ストリーミング](media-services-live-streaming-with-onprem-encoders.md)
 
-## <a id="scenario"></a>一般的なライブ ストリーミング シナリオ
+## <a name="common-live-streaming-scenario"></a><a id="scenario"></a>一般的なライブ ストリーミング シナリオ
 
 次の手順では、パススルー配信用に構成されたチャネルを使用する、一般的なライブ ストリーミング アプリケーションの作成に関連するタスクについて説明します。 このチュートリアルでは、パススルー チャネルとライブ イベントを作成、管理する方法について説明します。
 

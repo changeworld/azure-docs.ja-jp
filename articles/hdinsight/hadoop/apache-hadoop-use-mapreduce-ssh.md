@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/10/2020
 ms.openlocfilehash: 543bc29adc85bd767de9479607d067fadf7b0078
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75934695"
 ---
 # <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>HDInsight 上の Apache Hadoop で MapReduce と SSH を使用する
@@ -42,7 +42,7 @@ HDInsight の Apache Hadoop クラスター。 [Azure portal を使用した Apa
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/WordCountOutput
     ```
 
-    このコマンドは、`hadoop-mapreduce-examples.jar` ファイルに含まれている `wordcount` クラスを起動します。 入力として `/example/data/gutenberg/davinci.txt` ドキュメントを使用し、出力を `/example/data/WordCountOutput` に格納します。
+    このコマンドは、`wordcount` ファイルに含まれている `hadoop-mapreduce-examples.jar` クラスを起動します。 入力として `/example/data/gutenberg/davinci.txt` ドキュメントを使用し、出力を `/example/data/WordCountOutput` に格納します。
 
     > [!NOTE]
     > この MapReduce ジョブとサンプル データの詳細については、「[HDInsight 上の Apache Hadoop で MapReduce を使用する](hdinsight-use-mapreduce.md)」をご覧ください。

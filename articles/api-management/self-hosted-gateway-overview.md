@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
 ms.openlocfilehash: 415f0e209e607a863d715b1a66a2435603a662f0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73510556"
 ---
 # <a name="self-hosted-api-management-gateway-overview"></a>セルフホステッド Azure API Management ゲートウェイの概要
@@ -78,7 +78,7 @@ Azure への接続性が失われると、セルフホステッド ゲートウ�
 
 接続が復元されると、停止の影響を受けた各セルフホステッド ゲートウェイは、関連付けられている API Management サービスに自動的に再接続し、ゲートウェイが "オフライン" になっていた間に発生したすべての構成の更新をダウンロードします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 -   [このトピックの追加の背景情報についてのホワイトペーパーを読む](https://aka.ms/hybrid-and-multi-cloud-api-management)
 -   [Docker にセルフホステッド ゲートウェイをデプロイする](api-management-howto-deploy-self-hosted-gateway-to-docker.md)

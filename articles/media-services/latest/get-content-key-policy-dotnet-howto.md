@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.custom: seodec18
 ms.date: 04/15/2019
 ms.author: juliako
-ms.openlocfilehash: ff27ae0fd639316f03fe89ffc906561b3ef85f6f
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.custom: seodec18
+ms.openlocfilehash: 2dea262fadb61adc9e219b76f9ac048c11e650d5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76515073"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065958"
 ---
 # <a name="get-a-signing-key-from-the-existing-policy"></a>既存のポリシーから署名キーを取得する
 

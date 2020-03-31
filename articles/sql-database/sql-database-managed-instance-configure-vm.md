@@ -12,13 +12,13 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
 ms.openlocfilehash: 7273c7b1dbf5eb6c855b95a8661f38bd4bd14af7
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73839040"
 ---
-# <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>クイック スタート: Azure SQL Database Managed Instance に接続するように Azure VM を構成する
+# <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>クイック スタート:Azure SQL Database Managed Instance に接続するように Azure VM を構成する
 
 このクイック スタートでは、SQL Server Management Studio (SSMS) を使用して、Azure SQL Database Managed Instance に接続するように Azure 仮想マシンを構成する方法を示します。 ポイント対サイト接続を使用して、オンプレミスのクライアント コンピューターから接続する方法を示すクイック スタートについては、「[ポイント対サイト接続の構成](sql-database-managed-instance-configure-p2s.md)」をご覧ください。
 
@@ -28,7 +28,7 @@ ms.locfileid: "73839040"
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure Portal](https://portal.azure.com/) にサインインします。
+[Azure portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="create-a-new-subnet-in-the-managed-instance-vnet"></a>マネージド インスタンス VNet で新しいサブネットを作成する
 
@@ -44,9 +44,9 @@ ms.locfileid: "73839040"
 
 3. 次の表の情報を参考にして、フォームに必要事項を入力します。
 
-   | Setting| 推奨値 | Description |
+   | 設定| 推奨値 | 説明 |
    | ---------------- | ----------------- | ----------- |
-   | **Name** | 有効な名前|有効な名前については、[名前付け規則と制限事項](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。|
+   | **名前** | 有効な名前|有効な名前については、[名前付け規則と制限事項](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。|
    | **アドレス範囲 (CIDR ブロック)** | 有効な範囲 | このクイック スタートでは既定値で問題ありません。|
    | **ネットワーク セキュリティ グループ** | なし | このクイック スタートでは既定値で問題ありません。|
    | **ルート テーブル** | なし | このクイック スタートでは既定値で問題ありません。|
@@ -73,16 +73,16 @@ SQL マネージド インスタンスはプライベート仮想ネットワー
 
 2. 次の表の情報を参考にして、フォームに必要事項を入力します。
 
-   | Setting| 推奨値 | 説明 |
+   | 設定| 推奨値 | 説明 |
    | ---------------- | ----------------- | ----------- |
    | **サブスクリプション** | 有効なサブスクリプション | 新しいリソースを作成するアクセス許可があるサブスクリプションでなければなりません。 |
    | **リソース グループ** |「[マネージド インスタンスを作成する](sql-database-managed-instance-get-started.md)」クイック スタートで指定したリソース グループ。|VNet が存在するリソース グループでなければなりません。|
-   | **Location** | リソース グループの場所 | この値は、選択したリソース グループに基づいて設定されます。 |
+   | **場所** | リソース グループの場所 | この値は、選択したリソース グループに基づいて設定されます。 |
    | **仮想マシン名**  | 有効な名前 | 有効な名前については、[名前付け規則と制限事項](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。|
    |**管理ユーザー名**|有効なユーザー名|有効な名前については、[名前付け規則と制限事項](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 "serveradmin" は予約済みのサーバー レベルのロールであるため、使用しないでください。<br>[VM に接続](#connect-to-virtual-machine)するときは常に、このユーザー名を使用します。|
    |**パスワード**|有効なパスワード|パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。<br>[VM に接続](#connect-to-virtual-machine)するときは常に、このパスワードを使用します。|
    | **仮想マシン サイズ** | 任意の有効なサイズ | このクイック スタートでは、このテンプレートの既定値 **Standard_B2s** で十分です。 |
-   | **Location**|[resourceGroup().location]| この値は変更しないでください。 |
+   | **場所**|[resourceGroup().location]| この値は変更しないでください。 |
    | **仮想ネットワーク名**|マネージド インスタンスを作成した仮想ネットワーク。|
    | **サブネット名**|前の手順で作成したサブネットの名前| マネージド インスタンスを作成したサブネットは選択しないでください。|
    | **artifacts Location (成果物の場所)** | [deployment().properties.templateLink.uri] | この値は変更しないでください。 |
@@ -139,7 +139,7 @@ SQL マネージド インスタンスはプライベート仮想ネットワー
 
 接続後は、データベース ノード内のシステム データベースとユーザー データベースを確認できます。また、セキュリティ、サーバー オブジェクト、レプリケーション、管理、SQL Server エージェント、および XEvent プロファイラー ノードのさまざまなオブジェクトを確認できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - ポイント対サイト接続を使用して、オンプレミスのクライアント コンピューターから接続する方法を示すクイック スタートについては、[ポイント対サイト接続の構成](sql-database-managed-instance-configure-p2s.md)に関するページをご覧ください。
 - アプリケーションの接続オプションの概要については、[マネージド インスタンスにアプリケーションを接続する](sql-database-managed-instance-connect-app.md)方法に関するページを参照してください。

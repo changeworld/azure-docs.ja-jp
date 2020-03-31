@@ -16,10 +16,10 @@ ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 60bfc964ffc394b3f79c9d279158003f383b7331
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943435"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>ホーム領域検出ポリシーを使用して、アプリケーションの Azure Active Directory サインイン動作を構成する
@@ -168,14 +168,14 @@ Azure AD PowerShell コマンドレットを使って次のようなシナリオ
 
 何も返されない場合は、テナント内にポリシーが作成されていないことを意味します。
 
-### <a name="example-set-hrd-policy-for-an-application"></a>例:アプリケーション用の HRD ポリシーを設定する 
+### <a name="example-set-hrd-policy-for-an-application"></a>例: アプリケーション用の HRD ポリシーを設定する 
 
 この例では、アプリケーションに割り当てられたときに以下を行うポリシーを作成します。 
 - テナント内のドメインが 1 つのみの場合、ユーザーがアプリケーションにサインインするときに、AD FS サインイン画面への移動を自動高速化する。 
 - テナント内にフェデレーション ドメインが複数あるときに、AD FS サインイン画面への移動を自動高速化する。
 - ポリシー割り当て先のアプリケーションのフェデレーション ユーザー用の Azure Active Directory に対して、非対話型のユーザー名/パスワード サインインを直接行えるようにする。
 
-#### <a name="step-1-create-an-hrd-policy"></a>手順 1:HRD ポリシーを作成する
+#### <a name="step-1-create-an-hrd-policy"></a>手順 1: HRD ポリシーを作成する
 
 以下のポリシーは、テナント内のドメインが 1 つのみの場合、ユーザーがアプリケーションにサインインするときに、AD FS サインイン画面への移動を自動高速化します。
 
@@ -204,7 +204,7 @@ Get-AzureADPolicy
 
 作成した HRD ポリシーを適用するには、複数のアプリケーション サービス プリンシパルに HRD ポリシーを割り当てる必要があります。
 
-#### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>手順 2:ポリシーを割り当てるサービス プリンシパルを見つける  
+#### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>手順 2: ポリシーを割り当てるサービス プリンシパルを見つける  
 ポリシーを割り当てるサービス プリンシパルの **ObjectID** が必要となります。 サービス プリンシパルの **ObjectID** を検索するには、複数の方法があります。    
 
 ポータルを使うか、[Microsoft Graph](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) のクエリを行うことができます。 また、[Graph エクスプローラー ツール](https://developer.microsoft.com/graph/graph-explorer)に移動して Azure AD アカウントにサインインし、組織のすべてのサービス プリンシパルを表示することもできます。 
@@ -215,7 +215,7 @@ PowerShell を使用しているため、次のコマンドレットを使用し
 Get-AzureADServicePrincipal
 ```
 
-#### <a name="step-3-assign-the-policy-to-your-service-principal"></a>手順 3:サービス プリンシパルにポリシーを割り当てる  
+#### <a name="step-3-assign-the-policy-to-your-service-principal"></a>手順 3: サービス プリンシパルにポリシーを割り当てる  
 自動高速化を構成するアプリケーションのサービス プリンシパルの **ObjectID** を入手した後、次のコマンドを実行します。 このコマンドは、手順 1 で作成した HRD ポリシーを、手順 2 で取得したサービス プリンシパルに関連付けます。
 
 ``` powershell
@@ -226,18 +226,18 @@ Add-AzureADServicePrincipalPolicy -Id <ObjectID of the Service Principal> -RefOb
 
 アプリケーションに HomeRealmDiscovery ポリシーが既に割り当てられている場合は、さらにポリシーを追加することはできません。  その場合は、アプリケーションに割り当てられているホーム領域検出ポリシーの定義を変更して、別のパラメーターを追加します。
 
-#### <a name="step-4-check-which-application-service-principals-your-hrd-policy-is-assigned-to"></a>手順 4:HRD ポリシーが割り当てられているアプリケーション サービス プリンシパルを確認する
+#### <a name="step-4-check-which-application-service-principals-your-hrd-policy-is-assigned-to"></a>手順 4: HRD ポリシーが割り当てられているアプリケーション サービス プリンシパルを確認する
 HRD ポリシーがどのアプリケーションに構成されているかを確認するには、**Get-AzureADPolicyAppliedObject** コマンドレットを使用します。 そして、確認するポリシーの **ObjectID** を渡します。
 
 ``` powershell
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
-#### <a name="step-5-youre-done"></a>手順 5:以上で終わりです。
+#### <a name="step-5-youre-done"></a>手順 5: 完了
 アプリケーションを実行して、新しいポリシーが機能していることを確認します。
 
-### <a name="example-list-the-applications-for-which-hrd-policy-is-configured"></a>例:HRD ポリシーが構成されているアプリケーションを一覧表示する
+### <a name="example-list-the-applications-for-which-hrd-policy-is-configured"></a>例: HRD ポリシーが構成されているアプリケーションを一覧表示する
 
-#### <a name="step-1-list-all-policies-that-were-created-in-your-organization"></a>手順 1:組織内で作成されたすべてのポリシーを一覧表示する 
+#### <a name="step-1-list-all-policies-that-were-created-in-your-organization"></a>手順 1: 組織で作成されたすべてのポリシーを一覧表示する 
 
 ``` powershell
 Get-AzureADPolicy
@@ -245,23 +245,23 @@ Get-AzureADPolicy
 
 割り当てを一覧表示するポリシーの **ObjectID** をメモします。
 
-#### <a name="step-2-list-the-service-principals-to-which-the-policy-is-assigned"></a>手順 2:ポリシーが割り当てられているサービス プリンシパルを一覧表示する  
+#### <a name="step-2-list-the-service-principals-to-which-the-policy-is-assigned"></a>手順 2: ポリシーが割り当てられているサービス プリンシパルを一覧表示する  
 
 ``` powershell
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 
-### <a name="example-remove-an-hrd-policy-for-an-application"></a>例:アプリケーション用の HRD ポリシーを削除する
-#### <a name="step-1-get-the-objectid"></a>手順 1:ObjectID を取得する
+### <a name="example-remove-an-hrd-policy-for-an-application"></a>例: アプリケーション用の HRD ポリシーを削除する
+#### <a name="step-1-get-the-objectid"></a>手順 1: ObjectID を取得する
 先述の例を使って、ポリシーの **ObjectID** と、ポリシーを削除するアプリケーション サービス プリンシパルのオブジェクト ID を取得します。 
 
-#### <a name="step-2-remove-the-policy-assignment-from-the-application-service-principal"></a>手順 2:アプリケーション サービス プリンシパルからポリシーの割り当てを削除する  
+#### <a name="step-2-remove-the-policy-assignment-from-the-application-service-principal"></a>手順 2: アプリケーション サービス プリンシパルからポリシー割り当てを削除する  
 
 ``` powershell
 Remove-AzureADServicePrincipalPolicy -id <ObjectId of the Service Principal>  -PolicyId <ObjectId of the policy>
 ```
 
-#### <a name="step-3-check-removal-by-listing-the-service-principals-to-which-the-policy-is-assigned"></a>手順 3:ポリシーが割り当てられているサービス プリンシパルを一覧表示して、削除を確認する 
+#### <a name="step-3-check-removal-by-listing-the-service-principals-to-which-the-policy-is-assigned"></a>手順 3: ポリシーが割り当てられているサービス プリンシパルを一覧表示して、削除を確認する 
 
 ``` powershell
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>

@@ -13,10 +13,10 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: d061a132699e733e78a7d717ee32222b158d73b4
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74927535"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Azure Data Factory の Delete アクティビティ
@@ -83,8 +83,8 @@ Azure Data Factory の Delete アクティビティを使用して、オンプ�
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | dataset | 削除するファイルまたはフォルダーを決定するデータセット参照を指定します。 | はい |
-| recursive | ファイルをサブフォルダーから再帰的に削除するか、指定したフォルダーからのみ削除するかを指定します。  | No. 既定では、 `false`です。 |
-| maxConcurrentConnections | フォルダーまたはファイルを削除するために同時にストレージ ストアに接続する接続の数。   |  No. 既定では、 `1`です。 |
+| recursive | ファイルをサブフォルダーから再帰的に削除するか、指定したフォルダーからのみ削除するかを指定します。  | いいえ。 既定では、 `false`です。 |
+| maxConcurrentConnections | フォルダーまたはファイルを削除するために同時にストレージ ストアに接続する接続の数。   |  いいえ。 既定では、 `1`です。 |
 | enablelogging | 削除されたフォルダーまたはファイルの名前を記録する必要があるかどうかを示します。 true の場合は、さらに、ログ ファイルを保存するストレージ アカウントを指定する必要があります。それにより、ログ ファイルを読み取って Delete アクティビティの動作を追跡することができます。 | いいえ |
 | logStorageSettings | enablelogging = true の場合にのみ適用されます。<br/><br/>Delete アクティビティによって削除されたフォルダーまたはファイルの名前を含むログ ファイルの保存場所を指定できるストレージ プロパティのグループ。 | いいえ |
 | linkedServiceName | enablelogging = true の場合にのみ適用されます。<br/><br/>Delete アクティビティによって削除されたフォルダーまたはファイルの名前を含むログ ファイルを格納するための [Azure Storage](connector-azure-blob-storage.md#linked-service-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties)、または [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) のリンクされたサービス。 ファイルを削除するには、delete アクティビティによって使用されるものと同じ種類の Integration Runtime で構成する必要があることに注意してください。 | いいえ |
@@ -116,7 +116,7 @@ Delete アクティビティの結果は、次の 2 つの場所から表示お�
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>Delete アクティビティのログ ファイル例
 
-| Name | カテゴリ | Status | Error |
+| 名前 | カテゴリ | Status | エラー |
 |:--- |:--- |:--- |:--- |
 | test1/yyy.json | ファイル | Deleted |  |
 | test2/hello789.txt | ファイル | Deleted |  |
@@ -133,7 +133,7 @@ Root/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 次に、データ セットおよび Delete アクティビティからのさまざまなプロパティ値の組み合わせにより、Delete アクティビティを使用してフォルダーまたはファイルを削除します。
 
-| folderPath (データ セットから) | fileName (データ セットから) | recursive (Delete アクティビティから) | Output |
+| folderPath (データ セットから) | fileName (データ セットから) | recursive (Delete アクティビティから) | 出力 |
 |:--- |:--- |:--- |:--- |
 | Root/ Folder_A_2 | NULL | False | Root/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.txt |
 | Root/ Folder_A_2 | NULL | True | Root/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_A_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_1/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>7.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8.txt</strike> |
@@ -573,7 +573,7 @@ Copy アクティビティによって使用されるデータ宛先のデータ
 
 -   ファイル属性のフィルターを使用する場合: modifiedDatetimeStart と modifiedDatetimeEnd により削除するファイルを選択します。データセットで必ず "fileName" に設定してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Data Factory でのファイルの移動方法の詳細について説明します。
 

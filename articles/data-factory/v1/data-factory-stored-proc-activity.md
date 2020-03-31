@@ -13,10 +13,10 @@ ms.author: abnarain
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: 45aa49de51f42b26c653b15e79c865e3f5647c39
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74931640"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server ストアド プロシージャ アクティビティ
@@ -40,7 +40,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
 
 ストアド プロシージャ アクティビティを使用して、社内または Azure 仮想マシン (VM) 上の次のいずれかのデータ ストアでストアド プロシージャを呼び出すことができます。
 
-- Azure SQL Database
+- Azure SQL データベース
 - Azure SQL Data Warehouse
 - SQL Server データベース SQL Server を使用している場合、データベースをホストするコンピューターと同じコンピューターまたはデータベースにアクセスできる別のコンピューター上にデータ管理ゲートウェイをインストールします。 データ管理ゲートウェイは、安全かつ管理された方法でオンプレミスまたは Azure VM 上のデータ ソースをクラウド サービスに接続するコンポーネントです。 詳細については、[データ管理ゲートウェイ](data-factory-data-management-gateway.md)に関する記事をご覧ください。
 
@@ -124,7 +124,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
 
     ![リンクされたサービスを表示しているツリー ビュー](media/data-factory-stored-proc-activity/tree-view.png)
 
-### <a name="create-an-output-dataset"></a>出力データセットの作成
+### <a name="create-an-output-dataset"></a>出力データセットを作成する
 ストアド プロシージャがデータを生成しない場合でも、ストアド プロシージャ アクティビティの出力データセットを指定する必要があります。 これは、出力データセットによってアクティビティのスケジュール (時間単位、日単位など、アクティビティの実行頻度) が開始されるためです。 出力データセットでは、ストアド プロシージャを実行する、Azure SQL Database、Azure SQL Data Warehouse、または SQL Server Database を表す**リンクされたサービス**を使用する必要があります。 出力データセットは、パイプラインの別のアクティビティ ([連鎖するアクティビティ](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)) による後続処理のために、ストアド プロシージャの結果を渡す 1 つの方法として使用できます。 ただし、Data Factory では、ストアド プロシージャの出力をこのデータセットに自動的に書き込むわけではありません。 出力データセットが参照する SQL テーブルへの書き込みは、ストアド プロシージャが実行します。 出力データセットに**ダミー データセット** (ストアド プロシージャの出力を実際には保持しないテーブルを参照するデータセット) を指定できる場合もあります。 このダミー データセットは、ストアド プロシージャ アクティビティを実行するスケジュールの指定にのみ使用されます。
 
 1. **[...More (その他)]** (ツール バー上) をクリックし、 **[新しいデータセット]** 、 **[Azure SQL]** の順にクリックします。 コマンド バーの **[新しいデータセット]** をクリックし、 **[Azure SQL]** を選択します。
@@ -305,7 +305,7 @@ JSON 形式のストアド プロシージャ アクティビティの定義を�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| 名前 | アクティビティの名前 |はい |
+| name | アクティビティの名前 |はい |
 | description |アクティビティの用途を説明するテキストです。 |いいえ |
 | type | 次のように設定する必要があります。**SqlServerStoredProcedure** | はい |
 | inputs | 省略可能。 入力データセットを指定した場合、ストアド プロシージャ アクティビティの実行に使用できる ("準備完了" 状態である) 必要があります。 ストアド プロシージャで入力データセットをパラメーターとして使用することはできません。 入力データセットは、ストアド プロシージャ アクティビティを開始する前に、依存関係の確認にのみ使用されます。 |いいえ |

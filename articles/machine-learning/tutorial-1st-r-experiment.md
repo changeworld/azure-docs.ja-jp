@@ -1,7 +1,7 @@
 ---
-title: チュートリアル:R のロジスティック回帰モデル
+title: チュートリアル:R を使用して機械学習モデルを作成する
 titleSuffix: Azure Machine Learning
-description: このチュートリアルでは、R パッケージ azuremlsdk と caret を使用してロジスティック回帰モデルを作成し、自動車事故での死亡の可能性を予測します。
+description: このチュートリアルでは、Azure Machine Learning R SDK を使用して、自動車事故における死亡の可能性を予測するロジスティック回帰モデルを作成します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: 09c976f3076ea41a0441ea62a14ba4d45395a1d4
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 72488ba339399c526e882ffd11c41410a0b011ea
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77648293"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80159095"
 ---
-# <a name="tutorial-create-a-logistic-regression-model-in-r-with-azure-machine-learning"></a>チュートリアル:Azure Machine Learning を使用して R でロジスティック回帰モデルを作成する
+# <a name="tutorial-use-r-to-create-a-machine-learning-model"></a>チュートリアル:R を使用して機械学習モデルを作成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-このチュートリアルでは、R と Azure Machine Learning を使用して、自動車事故における死亡の可能性を予測するロジスティック回帰モデルを作成します。 このチュートリアルを完了すると、より複雑な実験およびワークフローの開発にスケールアップするための、Azure Machine Learning R SDK の実用的な知識が得られます。
+このチュートリアルでは、Azure Machine Learning R SDK を使用して、自動車事故における死亡の可能性を予測するロジスティック回帰モデルを作成します。 Azure Machine Learning のクラウド リソースと R を組み合わせて、モデルのトレーニングとデプロイのためのスケーラブルな環境を実現する方法について見ていきましょう。  
 
 このチュートリアルでは、以下のタスクを実行します。
 > [!div class="checklist"]
@@ -49,7 +49,7 @@ Azure Machine Learning ワークスペースは、機械学習モデルを実験
 > お使いの**ワークスペース**と**サブスクリプション**をメモしておきます。 これらは、適切な場所に実験を作成するために必要になります。 
 
 
-## <a name="azure"></a>ノートブック フォルダーの複製
+## <a name="clone-a-notebook-folder"></a><a name="azure"></a>ノートブック フォルダーの複製
 
 この例では、インストール不要であらかじめ構成されているエクスペリエンスを実現するために、お使いのワークスペースでクラウド ノートブック サーバーを使用します。 お使いの環境、パッケージ、および依存関係を制御したい場合は、[独自の環境](https://azure.github.io/azureml-sdk-for-r/articles/installation.html)を使用してください。
 

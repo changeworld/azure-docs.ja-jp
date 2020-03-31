@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bc88640cdff4f716902a80bb149913b961d40ae3
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900055"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230099"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect:ステージング サーバーとディザスター リカバリー
 ステージング モードのサーバーでは、構成を変更した後、そのサーバーをアクティブにする前に変更内容をプレビューできます。 また、フル インポートおよび完全同期を実行して、変更を運用環境に加える前に、すべての変更が予定どおりに加えられていることを確認できます。
@@ -50,7 +50,7 @@ ms.locfileid: "69900055"
 この方法を適用するには、次の手順に従います。
 
 1. [準備](#prepare)
-2. [構成](#configuration)
+2. [Configuration](#configuration)
 3. [インポートおよび同期](#import-and-synchronize)
 4. [確認](#verify)
 5. [アクティブなサーバーの切り替え](#switch-active-server)
@@ -71,7 +71,7 @@ ms.locfileid: "69900055"
 
 これで、Azure AD とオンプレミスの AD (Exchange ハイブリッド デプロイを使用している) へのエクスポートの変更がステージングされました。 次の手順では、実際にディレクトリへのエクスポートを開始する前に、変更される内容を確認できます。
 
-#### <a name="verify"></a>確認
+#### <a name="verify"></a>Verify (英語の可能性あり)
 1. コマンド プロンプトを起動し、`%ProgramFiles%\Microsoft Azure AD Sync\bin` に移動します。
 2. 次のコマンドを実行します。`csexport "Name of Connector" %temp%\export.xml /f:x` 同期サービスにコネクタの名前があることを確認できます。 Azure AD の場合は、"contoso.com - AAD" のような名前が表示されます。
 3. 次のコマンドを実行します。`CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` %temp% に export.csv という名前のファイルが生成されます。このファイルは、Microsoft Excel で開くことができます。 このファイルには、エクスポートの対象となるすべての変更が含まれています。
@@ -267,7 +267,7 @@ Write-Host Writing processedusers${outputfilecount}.csv -ForegroundColor Yellow
 $objOutputUsers | Export-Csv -path processedusers${outputfilecount}.csv -NoTypeInformation
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 **概要トピック**  
 
 * [Azure AD Connect 同期:同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)  

@@ -10,10 +10,10 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.openlocfilehash: 66bac2a063a3257a2101ca2f30e5946264adb9ae
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76989554"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search でインクリメンタル エンリッチメントのキャッシュを構成する方法

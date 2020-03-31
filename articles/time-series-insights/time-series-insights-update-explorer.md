@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: seodec18
 ms.openlocfilehash: c117510749abcf997e414371faa6dea1dc79ea7a
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75861763"
 ---
 # <a name="azure-time-series-insights-preview-explorer"></a>Azure Time Series Insights プレビュー エクスプローラー
@@ -215,7 +215,7 @@ Time Series Insights プレビュー条件編集パネルには、次のパラ�
 
 **Where**:次の表で示すオペランドのセットを使用して、イベントをすばやくフィルター処理するには、Where 句を使用します。 オペランドを選択して検索を実施した場合、述語はその検索に基づいて自動的に更新されます。 サポートされるオペランドの型には以下が含まれます。
 
-| 操作 | サポートされている型   | メモ |
+| Operation | サポートされている型   | Notes |
 | --- | --- | --- |
 | `<`、`>`、`<=`, `>=` | Double、DateTime、TimeSpan | |
 | `=`、`!=`、`<>` | String、Bool、Double、DateTime、TimeSpan、NULL |

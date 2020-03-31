@@ -4,17 +4,17 @@ description: ソリューション開発者を対象にして、サービス SDK
 author: Philmea
 ms.author: philmea
 ms.date: 12/26/2019
-ms.topic: tutorial
+ms.topic: how-to
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 485b17ff236de32eab5388629c1bb6044ba19197
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: e349aadfd629202b1c8cdb5c53a88e0a6c2e06de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531345"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80159219"
 ---
 # <a name="connect-to-and-interact-with-an-iot-plug-and-play-preview-device"></a>IoT プラグ アンド プレイ プレビュー デバイスに接続してやり取りする
 

@@ -9,10 +9,10 @@ ms.date: 07/09/2019
 ms.topic: article
 ms.service: event-hubs
 ms.openlocfilehash: 531426656fe833752c9c4685688c00de3894895b
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69991942"
 ---
 # <a name="process-data-from-your-event-hub-using-azure-stream-analytics"></a>Azure Stream Analytics を使用してイベント ハブからのデータを処理する 
@@ -26,7 +26,7 @@ Azure Event Hubs と Azure Stream Analytics の統合の主な利点を次に示
 
 ## <a name="end-to-end-flow"></a>エンド ツー エンドのフロー
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 
+1. [Azure portal](https://portal.azure.com) にサインインします。 
 1. **Event Hubs の名前空間**に移動して、その**イベント ハブ**に移動します。受信データが保持されています。 
 1. イベント ハブのページ上で **[データの処理]** を選択します。  
 
@@ -82,5 +82,5 @@ Azure Stream Analytics ジョブは既定で、3 つのストリーミング ユ
 
 ![ストリーミング ユニットのスケール](./media/process-data-azure-stream-analytics/scale.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Stream Analytics クエリの詳細を確認するには、[Stream Analytics クエリ言語](/stream-analytics-query/built-in-functions-azure-stream-analytics)に関するページをご覧ください

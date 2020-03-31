@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: trbye
 ms.date: 10/25/2019
-ms.openlocfilehash: b2c7825b10feab45df9cb89dbe2b82da1c143866
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: e6fa3b9705fcd718f802b73560e7703b008af2b5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129754"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064008"
 ---
 # <a name="model-interpretability-in-automated-machine-learning"></a>自動機械学習におけるモデルの解釈可能性
 
@@ -23,7 +23,7 @@ ms.locfileid: "79129754"
 
 この記事では、Azure Machine Learning を使用して、自動機械学習 (ML) で解釈可能性機能を有効にする方法について説明します。 自動 ML は、エンジニアリングされた特徴量の重要度を理解するのに役立ちます。 
 
-1\.0.85 より後のすべての SDK バージョンは、既定で `model_explainability=True` となります。 SDK バージョン 1.0.85 以前のバージョンでは、モデルの解釈可能性を使用するために、ユーザーは `AutoMLConfig` オブジェクトに `model_explainability=True` を設定する必要があります。 
+1\.0.85 より後のすべての SDK バージョンは、既定で `model_explainability=True` となります。 SDK バージョン 1.0.85 以前のバージョンでは、モデルの解釈可能性を使用するために、ユーザーは `model_explainability=True` オブジェクトに `AutoMLConfig` を設定する必要があります。 
 
 この記事では、次のことについて説明します。
 

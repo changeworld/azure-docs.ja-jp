@@ -8,10 +8,10 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: 697e2640b7215e0bbb9202c672f936535831eb99
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75449717"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch Rendering の機能
@@ -48,7 +48,7 @@ Windows 2016 のイメージと CentOS のイメージがあります。  [Azure
 
 使用されライセンス料金が発生するアプリケーションは、プール構成で指定する必要があります。
 
-* [プールの作成](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body)時に `applicationLicenses` プロパティを指定します。  文字列の配列 "vray"、"arnold"、"3dsmax"、"maya" で、次の値を指定できます。
+* `applicationLicenses`プールの作成[時に ](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body) プロパティを指定します。  文字列の配列 "vray"、"arnold"、"3dsmax"、"maya" で、次の値を指定できます。
 * 1 つまたは複数のアプリケーションを指定すると、それらのアプリケーションのコストが VM のコストに追加されます。  アプリケーションの料金は、[Azure Batch の料金ページ](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering)で確認できます。
 
 > [!NOTE]

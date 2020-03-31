@@ -12,15 +12,15 @@ manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 01/15/2019
 ms.openlocfilehash: b4af3f897a12c71d73962735d3fe68d95f138cef
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74912923"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>Azure Data Factory で Hadoop Hive アクティビティを使用してデータを変換する
 
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-hive-activity.md)
 > * [現在のバージョン](transform-data-using-hadoop-hive.md)
 
@@ -58,18 +58,18 @@ Azure Data Factory の使用経験がない場合は、この記事を読む前�
 ## <a name="syntax-details"></a>構文の詳細
 | プロパティ            | 説明                                                  | 必須 |
 | ------------------- | ------------------------------------------------------------ | -------- |
-| 名前                | アクティビティの名前                                         | はい      |
+| name                | アクティビティの名前                                         | はい      |
 | description         | アクティビティの用途を説明するテキストです。                | いいえ       |
 | type                | Hive アクティビティの場合、アクティビティの種類は HDinsightHive です        | はい      |
 | linkedServiceName   | Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | はい      |
 | scriptLinkedService | 実行する Hiveスクリプトの格納に使用される Azure Storage のリンクされたサービスへの参照。 このリンクされたサービスを指定していない場合は、HDInsight のリンクされたサービスで定義されている Azure Storage のリンクされたサービスが使用されます。 | いいえ       |
 | scriptPath          | scriptLinkedService で参照される Azure Storage に格納されているスクリプト ファイルへのパスを指定します。 ファイル名は大文字と小文字が区別されます。 | はい      |
-| getDebugInfo        | HDInsight クラスターで使用されている Azure Storage または scriptLinkedService で指定された Azure Storage にログ ファイルがコピーされるタイミングを指定します。 使用できる値は以下の通りです。None、Always、または Failure。 既定値:なし。 | いいえ       |
-| arguments           | Hadoop ジョブの引数の配列を指定します。 引数はコマンド ライン引数として各タスクに渡されます。 | いいえ       |
+| getDebugInfo        | HDInsight クラスターで使用されている Azure Storage または scriptLinkedService で指定された Azure Storage にログ ファイルがコピーされるタイミングを指定します。 使用できる値: None、Always、または Failure。 既定値: None。 | いいえ       |
+| 引数           | Hadoop ジョブの引数の配列を指定します。 引数はコマンド ライン引数として各タスクに渡されます。 | いいえ       |
 | defines             | Hive スクリプト内で参照するキーと値のペアとしてパラメーターを指定します。 | いいえ       |
 | queryTimeout        | クエリのタイムアウト値 (分単位)。 HDInsight クラスターで Enterprise セキュリティ パッケージが有効になっているときに適用できます。 | いいえ       |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 別の手段でデータを変換する方法を説明している次の記事を参照してください。 
 
 * [U-SQL アクティビティ](transform-data-using-data-lake-analytics.md)

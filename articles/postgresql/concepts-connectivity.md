@@ -8,10 +8,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: fe5b772946bece165a4e09f170355dc7b595a48f
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74768845"
 ---
 # <a name="handling-transient-connectivity-errors-for-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の一時的な接続エラーに対処する
@@ -44,6 +44,6 @@ ms.locfileid: "74768845"
 
 再試行ロジックは必ずテストしてください。 たとえば、Azure Database for PostgreSQL サーバーのコンピューティング リソースをスケールアップまたはスケールダウンしているときに、実際のコードを実行してみましょう。 この操作中に発生した短時間のダウンタイムには、アプリケーションで問題なく対処する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Database for PostgreSQL への接続に関する問題のトラブルシューティング](howto-troubleshoot-common-connection-issues.md)

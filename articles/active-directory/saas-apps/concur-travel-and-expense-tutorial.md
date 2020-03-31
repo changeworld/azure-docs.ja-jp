@@ -17,10 +17,10 @@ ms.date: 03/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9dddd9f6904aa5ef7840850792aeabf04666dddc
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72373407"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur-travel-and-expense"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Concur Travel and Expense の統合
@@ -29,7 +29,7 @@ ms.locfileid: "72373407"
 
 * Concur Travel and Expense にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Concur Travel and Expense に自動的にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -49,7 +49,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 * Concur Travel and Expense では、運用環境と導入環境の両方で SSO のテストがサポートされます 
 
 > [!NOTE]
-> このアプリケーションの識別子は、米国、EMEA、中国の 3 つのリージョンのそれぞれについて固定された文字列値です。 そのため、1 つのテナントで構成できるインスタンスは、各リージョンにつき 1 つだけです。 
+> このアプリケーションの識別子は、3 つのリージョンのそれぞれについて固定された文字列値です。それらのリージョンは、米国、EMEA、および中国です。 そのため、1 つのテナントで構成できるインスタンスは、各リージョンにつき 1 つだけです。 
 
 ## <a name="adding-concur-travel-and-expense-from-the-gallery"></a>ギャラリーからの Concur Travel and Expense の追加
 

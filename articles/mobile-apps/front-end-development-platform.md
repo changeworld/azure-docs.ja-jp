@@ -1,19 +1,18 @@
 ---
 title: Visual Studio と Azure サービスを使用してクライアント アプリケーションを構築するためのフロントエンド開発プラットフォームを選択する
 description: クライアント アプリケーションを構築するための、サポートされているネイティブおよびクロス プラットフォームの言語について説明します。
-author: elamalani
-manager: elamalani
+author: codemillmatt
 ms.service: vs-appcenter
 ms.assetid: 355f0959-aa7f-472c-a6c7-9eecea3a34b9
 ms.topic: conceptual
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: c55c9c36d84c8545f4192e1c9a65d8af0c580396
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: 714916c755ce50f6e596cee4be85ceb0b142c789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453152"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240854"
 ---
 # <a name="choose-mobile-development-frameworks"></a>モバイル開発フレームワークの選択
 開発者は、クロス プラットフォームの手法における特定のフレームワークとパターンを利用し、クライアント側の技術を使ってモバイル アプリケーション自体を構築できます。 開発者は、決定要因に基づいて以下を構築できます。

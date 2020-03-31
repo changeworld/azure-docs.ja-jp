@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.openlocfilehash: 55984082a6b287e9f7cdca005a24ef3c18032491
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75456698"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Azure Logic Apps で変数を使用して値を格納および管理する
@@ -67,7 +67,7 @@ ms.locfileid: "75456698"
 
    | プロパティ | 必須 | 値 |  説明 |
    |----------|----------|-------|--------------|
-   | **Name** | はい | <*variable-name*> | 値を増やす変数の名前 |
+   | **名前** | はい | <*variable-name*> | 値を増やす変数の名前 |
    | **Type** | はい | <*variable-type*> | 変数のデータ型 |
    | **Value** | いいえ | <*start-value*> | 変数の初期値 <p><p>**ヒント**:省略することもできますが、変数の開始値を常に把握するため、この値を設定することをお勧めします。 |
    |||||
@@ -207,7 +207,7 @@ ms.locfileid: "75456698"
 
    | プロパティ | 必須 | 値 |  説明 |
    |----------|----------|-------|--------------|
-   | **Name** | はい | <*variable-name*> | 値を増やす変数の名前 |
+   | **名前** | はい | <*variable-name*> | 値を増やす変数の名前 |
    | **Value** | いいえ | <*increment-value*> | 変数の値を増やすために使用する値。 既定値は 1 です。 <p><p>**ヒント**:省略することもできますが、変数の値を増やす場合の具体的な値を常に把握するため、この値を設定することをお勧めします。 |
    ||||
 
@@ -328,7 +328,7 @@ ms.locfileid: "75456698"
 
 | プロパティ | 必須 | 値 |  説明 |
 |----------|----------|-------|--------------|
-| **Name** | はい | <*variable-name*> | 値を減らす変数の名前 | 
+| **名前** | はい | <*variable-name*> | 値を減らす変数の名前 | 
 | **Value** | いいえ | <*increment-value*> | 変数の値を減らすのに使用する値。 既定値は 1 です。 <p><p>**ヒント**:省略することもできますが、変数の値を減らす場合の具体的な値を常に把握するため、この値を設定することをお勧めします。 |
 ||||| 
 
@@ -361,7 +361,7 @@ ms.locfileid: "75456698"
 
 | プロパティ | 必須 | 値 |  説明 |
 |----------|----------|-------|--------------|
-| **Name** | はい | <*variable-name*> | 変更する変数の名前 |
+| **名前** | はい | <*variable-name*> | 変更する変数の名前 |
 | **Value** | はい | <*new-value*> | 変数に代入する値。 両方のデータ型が一致している必要があります。 |
 ||||| 
 
@@ -419,7 +419,7 @@ ms.locfileid: "75456698"
 
 | プロパティ | 必須 | 値 |  説明 |
 |----------|----------|-------|--------------|
-| **Name** | はい | <*variable-name*> | 変更する変数の名前 |
+| **名前** | はい | <*variable-name*> | 変更する変数の名前 |
 | **Value** | はい | <*append-value*> | 追加する値。データ型は任意です。 |
 |||||
 

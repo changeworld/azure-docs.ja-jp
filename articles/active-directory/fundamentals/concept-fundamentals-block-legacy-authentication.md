@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 63271567e70955f6dfb0b10a5c882b6dce9545ce
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74932188"
 ---
 # <a name="blocking-legacy-authentication"></a>レガシ認証をブロックする
@@ -95,7 +95,7 @@ Exchange Server と Skype for Business をオンプレミスで使用してい�
 * [ハイブリッド先進認証を使用するようにオンプレミスで Exchange Server を構成する方法](https://docs.microsoft.com/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)に関するページ
 * [Skype for Business で先進認証 (ADAL) を使用する方法](https://docs.microsoft.com/skypeforbusiness/manage/authentication/use-adal)に関するページ
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ハイブリッド先進認証を使用するようにオンプレミスで Exchange Server を構成する方法](https://docs.microsoft.com/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)に関するページ
 - [Skype for Business で先進認証 (ADAL) を使用する方法](https://docs.microsoft.com/skypeforbusiness/manage/authentication/use-adal)に関するページ

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 69a01ec021ecbade235a693b1be502353420fde0
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 89bdd209315445519c35f3ef2c2f1ad2555106ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767468"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79531398"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>Azure portal で低速クエリ ログを構成してアクセスする
 
@@ -23,7 +23,7 @@ Azure portal から [Azure Database for MariaDB の低速クエリ ログ](conce
 ## <a name="configure-logging"></a>ログの構成
 低速クエリ ログへのアクセスを構成します。 
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 2. Azure Database for MariaDB サーバーを選択します。
 
@@ -43,7 +43,7 @@ Azure portal から [Azure Database for MariaDB の低速クエリ ログ](conce
 ## <a name="view-list-and-download-logs"></a>リストの表示とログのダウンロード
 ログ記録が開始された後、使用可能な低速クエリ ログの一覧を表示したり、個々のログ ファイルをダウンロードしたりすることができます。 
 
-1. Azure Portal を開きます。
+1. Azure portal を開きます。
 
 2. Azure Database for MariaDB サーバーを選択します。
 
@@ -78,7 +78,7 @@ Azure portal から [Azure Database for MariaDB の低速クエリ ログ](conce
 
 1. 構成したデータ シンクを調べて低速クエリ ログにアクセスします。 ログが表示されるまでに最大で 10 分かかる可能性があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [CLI での低速クエリ ログへのアクセス](howto-configure-server-logs-cli.md)に関する記事を参照して、プログラムで低速クエリ ログをダウンロードする方法について学習します。
 - Azure Database for MariaDB の[低速クエリ ログ](concepts-server-logs.md)の詳細について学習します。
 - パラメーターの定義とログ記録の詳細については、[ログ](https://mariadb.com/kb/en/library/slow-query-log-overview/)に関する MariaDB のドキュメントを参照してください。

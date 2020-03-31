@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 13d642597fdf5d0eae6c6fd4f0cab16181f033c2
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383966"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233107"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Azure DevTest Labs でのクレーム可能 VM の作成と管理
-要求可能な VM をラボに追加する方法は、"*ベース*" ([カスタム イメージ](devtest-lab-create-template.md)、[数式](devtest-lab-manage-formulas.md)、[Marketplace イメージ](devtest-lab-configure-marketplace-images.md)のいずれか) から[標準の VM を追加](devtest-lab-add-vm.md)する方法と似ています。 このチュートリアルでは、Azure Portal を使用して DevTest Labs でクレーム可能 VM をラボに追加する方法を説明し、ユーザーが VM を要求および解放する際に従うプロセスを示します。
+要求可能な VM をラボに追加する方法は、"[ベース](devtest-lab-add-vm.md)" (*カスタム イメージ*、[数式](devtest-lab-create-template.md)、[Marketplace イメージ](devtest-lab-manage-formulas.md)のいずれか) から[標準の VM を追加](devtest-lab-configure-marketplace-images.md)する方法と似ています。 このチュートリアルでは、Azure Portal を使用して DevTest Labs でクレーム可能 VM をラボに追加する方法を説明し、ユーザーが VM を要求および解放する際に従うプロセスを示します。
 
 ## <a name="steps-to-add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs で要求可能 VM をラボに追加する手順
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインする
 1. **[すべてのサービス]** を選択し、 **[DEVOPS]** セクションの **[DevTest Labs]** を選択します。 **[DEVOPS]** セクションで **[DevTest Labs]** の隣の [*] (星) を選択した場合。 この操作により、次に簡単にアクセスできるように左側のナビゲーション メニューに **[DevTest Labs]** が追加されます。 その後は、左側のナビゲーション メニューの **[DevTest Labs]** を選択できます。
 
     ![[すべてのサービス] - [DevTest Labs] を選択する](./media/devtest-lab-create-lab/all-services-select.png)
@@ -37,7 +37,7 @@ ms.locfileid: "74383966"
 1. **[仮想マシン]** ページの **[基本設定]** タブで、次のようにします。
     1. **[仮想マシン名]** テキスト ボックスに、VM の名前を入力します。 テキスト ボックスには自動生成された一意の名前が自動的に入力されます。 この名前は、電子メール アドレス内のユーザー名に対応しており、その後に一意の 3 桁の数字が続きます。 この機能により、マシンを作成するたびにマシンの名前を考えて入力する時間を節約できます。 必要に応じて、任意の名前でこの自動入力されるフィールドをオーバーライドすることができます。 VM の自動入力される名前をオーバーライドするには、 **[仮想マシン名]** テキスト ボックスに名前を入力します。
     2. **[ユーザー名]** に、仮想マシンの管理者権限を付与するユーザー名を入力します。 マシンの**ユーザー名**は、自動生成された一意の名前で事前入力されます。 この名前は、電子メール アドレス内のユーザー名に対応しています。 この機能により、新しいマシンを作成するたびにユーザー名を決める時間を節約できます。 ここでも、必要に応じて、任意のユーザー名でこの自動入力されるフィールドをオーバーライドすることができます。 ユーザー名の自動入力される値をオーバーライドするには、 **[ユーザー名]** テキスト ボックスに値を入力します。 このユーザーには、仮想マシンの**管理者**権限が付与されます。
-    3. ラボで最初の VM を作成する場合は、ユーザーの**パスワード**を入力します。 このパスワードをラボに関連付けられている Azure Key Vault での既定のパスワードとして保存するには、 **[既定のパスワードとして保存する]** を選択します。 既定のパスワードは、次の名前でキー コンテナーに保存されます:**VmPassword**。 ラボで次の VM を作成しようとすると、**VmPassword** が**パスワード**に自動的に選択されます。 値をオーバーライドするには、 **[保存されているシークレットを使用する]** チェック ボックスをオフにして、パスワードを入力します。
+    3. ラボで最初の VM を作成する場合は、ユーザーの**パスワード**を入力します。 このパスワードをラボに関連付けられている Azure Key Vault での既定のパスワードとして保存するには、 **[既定のパスワードとして保存する]** を選択します。 既定のパスワードは、**VmPassword** の名前でキー コンテナーに保存されます。 ラボで次の VM を作成しようとすると、**VmPassword** が**パスワード**に自動的に選択されます。 値をオーバーライドするには、 **[保存されているシークレットを使用する]** チェック ボックスをオフにして、パスワードを入力します。
 
         最初にシークレットをキー コンテナーに保存してから、ラボで VM を作成するときにそれを使用することもできます。 詳細については、「[Azure DevTest Labs でキー コンテナーにシークレットを格納する](devtest-lab-store-secrets-in-key-vault.md)」を参照してください。 キー コンテナーに格納されているパスワードを使用するには、 **[保存されているシークレットを使用する]** を選択し、シークレット (パスワード) に対応するキー値を指定します。
     4. **[その他のオプション]** セクションで、 **[サイズの変更]** を選択します。 定義済みの項目のいずれかを選択して、作成する VM のプロセッサ コア、RAM サイズ、ハード ドライブ サイズを指定します。
@@ -97,6 +97,6 @@ ms.locfileid: "74383966"
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * 作成されたら、管理ウィンドウの **[接続]** を選択して VM に接続できます。
 * [DevTest Labs Azure Resource Manager のクイックスタート テンプレート ギャラリー](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)を検索します。

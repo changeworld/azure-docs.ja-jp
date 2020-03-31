@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4c8be715391f71e281ca41cc68428a2d29d78783
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: f657f02a39a023f6cb620895549105e7fd1eb233
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864130"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128163"
 ---
 # <a name="sql-data-warehouse-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>Azure 上の T-SQL と Python を使用した SQL Data Warehouse データ サイエンスのチュートリアル
 
-ここでは、SQL Data Warehouse を使って予測分析を行うチュートリアルを紹介します。 Team Data Science Process で概説された手順を踏襲しています。 Team Data Science Process の概要については、[データ サイエンス プロセス](overview.md)に関するページを参照してください。 SQL Data Warehouse の概要については、「[Azure SQL Data Warehouse の概要](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)」を参照してください。
+ここでは、SQL Data Warehouse を使って予測分析を行うチュートリアルを紹介します。 Team Data Science Process で概説された手順を踏襲しています。 Team Data Science Process の概要については、[データ サイエンス プロセス](overview.md)に関するページを参照してください。 SQL Data Warehouse の概要については、「[Azure SQL Data Warehouse の概要](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)」を参照してください。
 
 Team Data Science Process を実行するデータ サイエンスのチュートリアルは他にも存在し、使用する**プラットフォーム**ごとにグループ化されています。 これらの例の箇条書きについては、[Team Data Science Process を実行するチュートリアル](walkthroughs.md)に関するページをご覧ください。
 

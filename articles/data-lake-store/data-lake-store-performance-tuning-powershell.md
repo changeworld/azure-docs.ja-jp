@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: stewu
 ms.openlocfilehash: c975af1799d427651b76bb9fde5ff765afed3f86
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73904577"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 で PowerShell を使用するためのパフォーマンス チューニング ガイダンス
@@ -44,7 +44,7 @@ Export-AzDataLakeStoreItem -AccountName "Data Lake Storage Gen1 account name" `
 
 次の考慮事項は、パフォーマンスに関連するプロパティに指定する値を決める方法です。 使用できるガイダンスがいくつかあります。
 
-* **手順 1:合計スレッド数を決める** - まず、使用する合計スレッド数を計算します。 一般的なガイドラインとして、各物理コアに 6 個のスレッドを使用する必要があります。
+* **ステップ 1:合計スレッド数を決める** - まず、使用する合計スレッド数を計算します。 一般的なガイドラインとして、各物理コアに 6 個のスレッドを使用する必要があります。
 
     `Total thread count = total physical cores * 6`
 
@@ -64,7 +64,7 @@ Export-AzDataLakeStoreItem -AccountName "Data Lake Storage Gen1 account name" `
 
     `PerFileThreadCount = 10 + ((10 GB - 2.5 GB) / 256 MB) = 40 threads`
 
-* **手順 3:ConcurrentFilecount を計算する** - 合計スレッド数と PerFileThreadCount を使用して、次の式に基づいて ConcurrentFileCount を計算します。
+* **ステップ 3:ConcurrentFilecount を計算する** - 合計スレッド数と PerFileThreadCount を使用して、次の式に基づいて ConcurrentFileCount を計算します。
 
     `Total thread count = PerFileThreadCount * ConcurrentFileCount`
 
@@ -96,7 +96,7 @@ Export-AzDataLakeStoreItem -AccountName "Data Lake Storage Gen1 account name" `
 
 * **調整エラー**:コンカレンシーがあまりに多くなると、調整エラーが表示される場合があります。 調整エラーが表示される場合は、コンカレンシーを減らすか、Microsoft にお問い合わせください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Data Lake Storage Gen1 を使用してビッグ データの要件に対応する](data-lake-store-data-scenarios.md) 
 * [Data Lake Storage Gen1 でのデータのセキュリティ保護](data-lake-store-secure-data.md)

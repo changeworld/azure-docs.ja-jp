@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: cherylmc
 ms.openlocfilehash: 626302845dfb4b19deb921675601818b35ab8edb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74083543"
 ---
 # <a name="configure-macsec-on-expressroute-direct-ports"></a>ExpressRoute Direct ポートで MACsec を構成する
@@ -134,7 +134,7 @@ Set-AzExpressRoutePort -ExpressRoutePort $erDirect
 ### <a name="test-connectivity"></a>接続をテストする
 お使いの ExpressRoute Direct ポートで (MACsec キーの更新を含め) MACsec を構成したら、回路の BGP セッションが稼働しているかどうかを[確認](expressroute-troubleshooting-expressroute-overview.md)します。 ポートにまだ何の回路もない場合、最初に 1 つ作成し、回路の Azure プライベート ペアリングまたは Microsoft ペアリングを設定してください。 お使いのネットワーク デバイスと Microsoft のネットワーク デバイスの間で MACsec キーが一致しないなど、MACsec が間違って構成された場合、レイヤー 2 で ARP 解決が表示されず、レイヤー 3 で BGP 確立が表示されません。 すべてが正しく構成されている場合、双方向で BGP ルートが正しくアドバタイズされており、ExpressRoute 経由で適宜、アプリケーション データが流れているはずです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 1. [ExpressRoute Direct で ExpressRoute 回路を作成する](expressroute-howto-erdirect.md)
 2. [ExpressRoute 回線を Azure 仮想ネットワークにリンクする](expressroute-howto-linkvnet-arm.md)
 3. [ExpressRoute 接続を確認する](expressroute-troubleshooting-expressroute-overview.md)

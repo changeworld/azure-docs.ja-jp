@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/07/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 9df7593a9fd191d3a734fba5e81fb1aecba08345
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: d2423d04ead9040cce53d847d24efe75be680d94
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668827"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397301"
 ---
 # <a name="view-and-retrieve-azure-activity-log-events"></a>Azure アクティビティ ログ イベントを表示して取得する
 
@@ -168,35 +168,6 @@ GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5
 ```HTTP
 GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01
 ```
-
-
-## <a name="activity-logs-analytics-monitoring-solution"></a>Activity Logs Analytics 監視ソリューション
-Azure Log Analytics 監視ソリューションには、Log Analytics ワークスペースのアクティビティ ログ レコードを分析するための、複数のログ クエリとビューが含まれています。
-
-### <a name="prerequisites"></a>前提条件
-サブスクリプションのアクティビティ ログを Log Analytics ワークスペースに送信するために、診断設定を作成する必要があります。 「[Azure Monitor の Log Analytics ワークスペースで Azure リソース ログを収集する](resource-logs-collect-workspace.md)」を参照してください。
-
-### <a name="install-the-solution"></a>ソリューションをインストールする
-**Activity Log Analytics** ソリューションをインストールするには、「[監視ソリューションをインストール](../insights/solutions.md#install-a-monitoring-solution)」するの手順を使用します。 追加の構成は必要ありません。
-
-### <a name="use-the-solution"></a>ソリューションの使用
-**[アクティビティ ログ]** ページの上部にある **[ログ]** をクリックして、サブスクリプションのための [Activity Log Analytics 監視ソリューション](activity-log-collect.md)を開きます。 Azure portal で、ご自身のサブスクリプションの **[監視]** メニューで、すべての監視ソリューションにアクセスします。 **[Insights]\(インサイト\)** セクションで **[More]\(詳細\)** を選択して、ソリューション タイルのある **[概要]** ページを開きます。 **[Azure アクティビティ ログ]** タイルには、ワークスペース内の **AzureActivity** レコードの数が表示されます。
-
-![Azure アクティビティ ログのタイル](media/collect-activity-logs/azure-activity-logs-tile.png)
-
-
-**[Azure アクティビティ ログ]** タイルをクリックして、 **[Azure アクティビティ ログ]** ビューを開きます。 ビューには、次の表の視覚化パーツが含まれています。 それぞれのパーツには、指定された時間範囲について、そのパーツの基準に該当する項目が 10 個まで表示されます。 パーツの下部にある **[すべて表示]** をクリックすると、すべての一致するレコードを返すログ クエリを実行できます。
-
-![Azure のアクティビティ ログのダッシュボード](media/collect-activity-logs/activity-log-dash.png)
-
-| 視覚化パーツ | 説明 |
-| --- | --- |
-| [Azure Activity Log Entries] \(Azure のアクティビティ ログ エントリ) | 選択した日付範囲の Azure アクティビティ ログ エントリ レコード合計上位の棒グラフが表示され、アクティビティの呼び出し元上位 10 個のリストも表示されます。 棒グラフをクリックすると、`AzureActivity` のログ検索が実行されます。 呼び出し元の項目をクリックするとログ検索が実行され、その項目のアクティビティ ログ エントリがすべて返されます。 |
-| [Activity Logs by Status] \(状態ごとのアクティビティ ログ) | 選択した日付範囲の Azure アクティビティ ログ状態のドーナツ グラフと、上位 10 件の状態レコードの一覧を表示します。 `AzureActivity | summarize AggregatedValue = count() by ActivityStatus` のログ クエリを実行するには、グラフをクリックします。 状態の項目をクリックするとログ検索が実行され、その状態レコードのアクティビティ ログ エントリがすべて返されます。 |
-| [Activity Logs by Resource] \(リソースごとのアクティビティ ログ) | アクティビティ ログのあるリソースの合計数が表示され、上位 10 個のリソースと各リソースのレコード カウントも表示されます。 合計領域をクリックすると、`AzureActivity | summarize AggregatedValue = count() by Resource` のログ検索が実行され、ソリューションで使用可能なすべての Azure リソースが表示されます。 リソースをクリックするとログ クエリが実行され、そのリソースのアクティビティ レコードがすべて返されます。 |
-| [Activity Logs by Resource Provider] \(リソース プロバイダーごとのアクティビティ ログ) | アクティビティ ログを生成するリソース プロバイダーの合計数が表示され、上位 10 個も表示されます。 合計領域をクリックすると、`AzureActivity | summarize AggregatedValue = count() by ResourceProvider` のログ クエリが実行され、Azure のリソース プロバイダーがすべて表示されます。 リソース プロバイダーをクリックするとログ クエリが実行され、プロバイダーのアクティビティ レコードがすべて返されます。 |
-
-
 
 
 ## <a name="next-steps"></a>次のステップ

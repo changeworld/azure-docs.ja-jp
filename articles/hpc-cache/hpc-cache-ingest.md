@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
 ms.openlocfilehash: a5625341e3dd279d93a59c57cd3325245351723e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646729"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233439"
 ---
 # <a name="move-data-to-azure-blob-storage"></a>Azure Blob Storage にデータを移動する
 
@@ -58,7 +58,7 @@ Avere CLFSLoad ユーティリティには、次の情報が必要です。
 
 Avere CLFSLoad ユーティリティを使用したくない場合、または大量のデータを既存の Blob Storage ターゲットに追加したい場合は、キャッシュ経由でデータをコピーすることができます。 Azure HPC Cache は、複数のクライアントからの要求を同時に処理するように設計されています。したがって、キャッシュ経由でデータをコピーするには、複数クライアントからの並列書き込みを使用する必要があります。
 
-![マルチクライアントのマルチスレッドのデータ移動を示す図:左上に、オンプレミスのハードウェア ストレージを表すアイコンがあり、そこから複数の矢印が出ています。 矢印は、4 つのクライアント マシンを指しています。 各クライアント マシンから Azure HPC Cache に向かって 3 本の矢印が出ています。 Azure HPC Cache から、複数の矢印が Blob Storage を指しています。](media/hpc-cache-parallel-ingest.png)
+![マルチクライアント、マルチスレッドのデータ移動を示す図: 左上に、オンプレミスのハードウェア ストレージを表すアイコンがあり、そこから複数の矢印が出ています。 矢印は、4 つのクライアント マシンを指しています。 各クライアント マシンから Azure HPC Cache に向かって 3 本の矢印が出ています。 Azure HPC Cache から、複数の矢印が Blob Storage を指しています。](media/hpc-cache-parallel-ingest.png)
 
 ストレージ システム間でデータを転送するためによく使われる ``cp`` または ``copy`` コマンドは、一度に 1 つのファイルだけをコピーするシングルスレッドのプロセスです。 つまり、一度に 1 つのファイルしかファイル サーバーに取り込まれません。これでは、キャッシュのリソースを浪費してしまいます。
 

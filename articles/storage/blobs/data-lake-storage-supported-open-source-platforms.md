@@ -9,10 +9,10 @@ ms.date: 02/26/2020
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 422b814f1d9738ca4f03d08dfecc6761b764f997
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78196027"
 ---
 # <a name="open-source-platforms-that-support-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 がサポートされているオープンソース プラットフォーム
@@ -34,7 +34,7 @@ ms.locfileid: "78196027"
 | [Azure Databricks](https://azure.microsoft.com/services/databricks/) | 5.1 以降 | [Databricks Runtime のバージョン](https://docs.databricks.com/release-notes/runtime/databricks-runtime-ver.html) |
 |[Hortonworks](https://hortonworks.com/)| 3.1.x++ | [クラウド データ アクセスの構成](https://docs.hortonworks.com/HDPDocuments/Cloudbreak/Cloudbreak-2.9.0/cloud-data-access/content/cb_configuring-access-to-adls2.html) |
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [Azure Data Lake Storage Gen2 に関する既知の問題](data-lake-storage-known-issues.md)
 - [Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能](data-lake-storage-supported-blob-storage-features.md)

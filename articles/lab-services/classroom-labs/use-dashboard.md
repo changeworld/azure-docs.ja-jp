@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
 ms.openlocfilehash: 363e5705e9ccf4aa207ff7e5cafb615bc01bc7d3
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77538942"
 ---
 # <a name="dashboard-for-classroom-labs"></a>クラスルーム ラボ用のダッシュボード
@@ -28,7 +28,7 @@ ms.locfileid: "77538942"
 ## <a name="costs-and-billing-tile"></a>コストと課金のタイル
 このタイルには、次のコスト見積もりの詳細が表示されます。
 
-| 設定 | Value | 
+| 設定 | 値 | 
 | ------- | ----- | 
 | [Quota hours]\(クォータ時間\) | ユーザーがスケジュールされた時間外に VM を使用できる最大時間数。 |
 | [Scheduled hours]\(スケジュールされた時間\) | ラボで設定されたスケジュールに基づいて発生する時間。 この値は、すべてのスケジュール イベントに対して開始比または終了日が設定されている場合にのみ使用できます。 |

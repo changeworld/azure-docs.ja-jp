@@ -16,10 +16,10 @@ ms.author: marsma
 ms.reviwer: hahamil
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 9928b64d286cc5072f28f7cc17e4af3e95662cd0
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77085621"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Android デバイスの共有デバイス モード

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.openlocfilehash: ae1773ec1d470b9cff2efb00c200427b7b4c2fb4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69614823"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Azure Cosmos DB を使用したクエリ パフォーマンスのチューニング
@@ -93,7 +93,7 @@ Expect: 100-continue
 {"query":"SELECT * FROM c WHERE c.city = 'Seattle'"}
 ```
 
-各クエリの実行ページは、`Accept: application/query+json` ヘッダーと本文 SQL クエリを使用する REST API `POST` に対応します。 クエリごとにサーバーへ 1 つまたは複数のラウンド トリップが実行され、実行を再開するために、クライアントとサーバー間で `x-ms-continuation` トークンがエコーされます。 FeedOptions の構成オプションは、要求ヘッダーの形式でサーバーに渡されます。 たとえば、`MaxItemCount` は `x-ms-max-item-count` に対応します。 
+各クエリの実行ページは、`POST` ヘッダーと本文 SQL クエリを使用する REST API `Accept: application/query+json` に対応します。 クエリごとにサーバーへ 1 つまたは複数のラウンド トリップが実行され、実行を再開するために、クライアントとサーバー間で `x-ms-continuation` トークンがエコーされます。 FeedOptions の構成オプションは、要求ヘッダーの形式でサーバーに渡されます。 たとえば、`MaxItemCount` は `x-ms-max-item-count` に対応します。 
 
 この要求は、(読みやすくするために切り捨てられます) 次の応答を返します。
 
@@ -136,7 +136,7 @@ REST API の要求ヘッダーとオプションの詳細については、「[R
 ## <a name="best-practices-for-query-performance"></a>クエリ パフォーマンスに関するベスト プラクティス
 Azure Cosmos DB クエリのパフォーマンスに影響を与える最も一般的な要因を次に示します。 この後、この記事の中でそれぞれのトピックについて詳しく説明します。
 
-| 係数 | ヒント | 
+| 要素 | ヒント | 
 | ------ | -----| 
 | プロビジョニング スループット | クエリごとの RU を測定し、クエリに必要なプロビジョニング スループットがあることを確認します。 | 
 | パーティション分割とパーティション キー | 待ち時間を短くするために、フィルター句と一致するパーティション キー値のクエリが優先されます。 |
@@ -237,7 +237,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 ```
 
-| メトリック | 単位 | 説明 | 
+| メトリック | ユニット | 説明 | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | ミリ秒 | クエリ実行時間 | 
 | `queryCompileTimeInMs` | ミリ秒 | クエリのコンパイル時間  | 
@@ -259,19 +259,19 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 以下は、クエリの例とクエリ実行から返されたメトリックを解釈する方法です。 
 
-| Query | メトリックの例 | 説明 | 
+| クエリ | メトリックの例 | 説明 | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | 取得されたドキュメントの数は、TOP 句と一致した 100 + 1 になっています。 スキャンであるため、クエリ時間の大部分が `WriteOutputTime` と `DocumentLoadTime` で費やされています。 | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | RetrievedDocumentCount が高くなっています (TOP 句と一致する 500 + 1 になっています)。 | 
 | `SELECT * FROM c WHERE c.N = 55` | `"IndexLookupTime": "00:00:00.0009500"` | `/N/?` に対するインデックス参照であるため、IndexLookupTime のキー参照に約 0.9 ミリ秒かかっています。 | 
 | `SELECT * FROM c WHERE c.N > 55` | `"IndexLookupTime": "00:00:00.0017700"` | `/N/?` に対するインデックス参照であるため、範囲スキャンの IndexLookupTime では、これより少し長い 1.7 ミリ秒かかっています。 | 
 | `SELECT TOP 500 c.N FROM c` | `"IndexLookupTime": "00:00:00.0017700"` | `DocumentLoadTime` では前のクエリと同じ時間がかかっていますが、プロジェクションさているプロパティが 1 つのみのため、より短い `WriteOutputTime` になっています。 | 
-| `SELECT TOP 500 udf.toPercent(c.N) FROM c` | `"UserDefinedFunctionExecutionTime": "00:00:00.2136500"` | 各値が `c.N` の UDF を実行するために、`UserDefinedFunctionExecutionTime` で約 213 ミリ秒かかっています。 |
+| `SELECT TOP 500 udf.toPercent(c.N) FROM c` | `"UserDefinedFunctionExecutionTime": "00:00:00.2136500"` | 各値が `UserDefinedFunctionExecutionTime` の UDF を実行するために、`c.N` で約 213 ミリ秒かかっています。 |
 | `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(c.Name, 'Den')` | `"IndexLookupTime": "00:00:00.0006400", "SystemFunctionExecutionTime": "00:00:00.0074100"` | `IndexLookupTime` の `/Name/?` では約 0.6 ミリ秒かかっています。 `SystemFunctionExecutionTime` でのほとんどのクエリの実行時間 は最大 7 ミリ秒です。 |
 | `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(LOWER(c.Name), 'den')` | `"IndexLookupTime": "00:00:00", "RetrievedDocumentCount": 2491,  "OutputDocumentCount": 500` | `LOWER` を使用しているため、クエリはスキャンとして実行され、2491 の取得ドキュメント中、500 ドキュメントが返されました。 |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * サポートされている SQL クエリ演算子とキーワードの詳細については、「[SQL クエリ](sql-query-getting-started.md)」を参照してください。 
 * 要求ユニットの詳細については、「[要求ユニット](request-units.md)」を参照してください。
 * インデックス作成ポリシーの詳細については、「[インデックス作成ポリシー](index-policy.md)」を参照してください 

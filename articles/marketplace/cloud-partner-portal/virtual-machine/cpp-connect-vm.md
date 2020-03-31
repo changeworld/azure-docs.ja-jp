@@ -1,19 +1,18 @@
 ---
 title: Microsoft Azure ベースの仮想マシンに接続する | Azure Marketplace
 description: Azure に作成された新しい仮想マシンに接続する方法について説明します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/19/2018
-ms.author: pabutler
-ms.openlocfilehash: 3256115821abf5e81d04268ffd2eb310d213ab06
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: dsindona
+ms.openlocfilehash: 2b7eb6d321a64835254b684c8faeedc53645dffe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432001"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278060"
 ---
 # <a name="connect-to-your-azure-based-virtual-machine"></a>Azure ベースの仮想マシンに接続する
 
@@ -23,7 +22,7 @@ ms.locfileid: "75432001"
 
 Azure にホストされている Windows ベースの VM には、リモート デスクトップ クライアントを使用して接続することになります。  ほとんどのバージョンの Windows は、リモート デスクトップ プロトコル (RDP) をネイティブでサポートしています。  その他のマシンのクライアントについて詳しくは、「[リモート デスクトップ クライアント](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)」を参照してください。  
 
-次の記事では、組み込みの Windows RDP サポートを使用して VM に接続する方法について詳しく説明しています。[Windows が実行されている Azure 仮想マシンに接続してログオンする方法](../../../virtual-machines/windows/connect-logon.md)。  
+ビルトインの Windows RDP サポートを使用して VM に接続する方法については、「[Windows が実行されている Azure 仮想マシンに接続してログオンする方法](../../../virtual-machines/windows/connect-logon.md)」の記事で詳しく説明しています。  
 
 >[!TIP]
 > このプロセス中にセキュリティ警告が表示されることがあります (.rdp ファイルの発行元が不明、ユーザーの資格情報を確認できないなど)。  これらの警告は無視しても問題ありません。
@@ -49,7 +48,7 @@ Linux ベースの VM に接続するには、Secure Shell プロトコル (SSH)
 8. **[Open]\(開く\)** をクリックして PuTTY ターミナルを開きます。  
 9. プロンプトが表示されたら、Linux VM のアカウント名とパスワードを入力します。 
 
-接続に問題がある場合は、SSH クライアントのドキュメント、たとえば「[Chapter 10:Common error messages (第 10 章: 一般的なエラー メッセージ)](https://www.ssh.com/ssh/putty/putty-manuals)」を参照してください。
+接続に問題がある場合は、SSH クライアントのドキュメント、たとえば「[Chapter 10: Common error messages (第 10 章: 一般的なエラー メッセージ)](https://www.ssh.com/ssh/putty/putty-manuals)」を参照してください。
 
 プロビジョニング済みの Linux VM にデスクトップを追加する方法など、詳細については、「[リモート デスクトップをインストールして Azure の Linux VM に接続するように構成する](../../../virtual-machines/linux/use-remote-desktop.md)」を参照してください。
 

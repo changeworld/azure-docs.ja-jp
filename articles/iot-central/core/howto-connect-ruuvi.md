@@ -3,19 +3,19 @@ title: Azure IoT Central で RuuviTag を接続する | Microsoft Docs
 description: RuuviTag 環境センサーを、お使いの IoT Central アプリケーションに接続する方法について説明します。
 services: iot-central
 ms.service: iot-central
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
 - iot-storeAnalytics-conditionMonitor
 - iot-p0-scenario
 ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
-ms.openlocfilehash: 8ca6e15dc53754645bb228d183fd3d71ac6282ec
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e8d1c4a605e8db2e9753bb80c9712dd6c2be7b59
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026459"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80158246"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>RuuviTag センサーを Azure IoT Central アプリケーションに接続する
 
@@ -70,7 +70,7 @@ RuuviTag デバイス テンプレートを追加するには:
 1. **[+新規]** を選択します。
 1. 一意の**デバイス ID** と、わかりやすい**デバイス名**を指定します。  
 1. **シミュレートされた**設定を有効にします。
-1. **作成** を選択します。  
+1. **［作成］** を選択します  
 
 ## <a name="next-steps"></a>次の手順
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
 ms.openlocfilehash: 8a82d2ad3e79633bb930348c6162996e961c4306
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77612963"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services の正常性状態の理解と中断されたドメインの解決
@@ -72,7 +72,7 @@ Azure AD DS マネージド ドメインが "*要注意*" 状態である場合�
 Azure AD DS マネージド ドメインは、次のいずれかの理由により、 **[中断済み]** 状態になります。
 
 * 1 つ以上の重大アラートが、15 日以内に解決されなかった場合。
-    * 重大アラートは、Azure AD DS で必要なリソースへのアクセスを妨げる誤った構成によって発生する可能性があります。 たとえば、マネージド ドメインで [AADDS104:ネットワーク エラー][alert-nsg] アラートが 16 日間以上解決されていない場合です。
+    * 重大アラートは、Azure AD DS で必要なリソースへのアクセスを妨げる誤った構成によって発生する可能性があります。 たとえば、マネージド ドメインで [AADDS104: ネットワーク エラー][alert-nsg] アラートが 15 日間解決されていない場合です。
 * Azure サブスクリプションに請求の問題がある場合、または Azure サブスクリプションの有効期限が切れた場合。
 
 Azure プラットフォームがドメインの管理、監視、パッチ適用、バックアップを行うことができない場合、マネージド ドメインは中断されます。 マネージド ドメインは 15 日間 "*中断済み*" 状態のままになります。 マネージド ドメインへのアクセスを維持するには、重大アラートを直ちに解決してください。

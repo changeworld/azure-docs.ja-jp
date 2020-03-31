@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 01/14/2019
 ms.author: barclayn
 ms.openlocfilehash: 7821fdc0dfda5db8d660a38a59efc774e30b9f4a
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68727468"
 ---
 # <a name="microsoft-services-in-cybersecurity"></a>サイバーセキュリティの Microsoft サービス

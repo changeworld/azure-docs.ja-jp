@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: curtand
 ms.openlocfilehash: e85be9140aabe5b66e63d3ccdd4a3ea907a1d6fc
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77062406"
 ---
 # <a name="set-up-a-phone-number-as-your-verification-method"></a>電話番号を検証方法として設定する
@@ -35,7 +35,7 @@ ms.locfileid: "77062406"
 
 セキュリティ情報の方法は、2 要素セキュリティ認証とパスワードのリセットの両方に使用されます。 ただし、すべてのメソッドを両方に使用できるわけではありません。
 
-| Method | 使用目的 |
+| 方法 | 使用目的 |
 | ------ | -------- |
 | Authenticator アプリ | 2 要素認証とパスワードのリセット認証。 |
 | テキスト メッセージ | 2 要素認証とパスワードのリセット認証。 |

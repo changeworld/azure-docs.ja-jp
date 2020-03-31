@@ -1,19 +1,18 @@
 ---
 title: クラウド ソリューション プロバイダー | Azure Marketplace
 description: 発行元は、Microsoft クラウド ソリューション プロバイダー (CSP) パートナー チャネルを通して各自のオファーを販売できるようになりました。
-services: Azure, Marketplace, Compute, Storage, Networking, Partner Center
-author: ChJenk
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/12/2019
-ms.author: v-chjen
-ms.openlocfilehash: 546702af671cfe9506a4fc0448f40b7b8353960c
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: dsindona
+ms.openlocfilehash: 9d7cbdd5ad551ba48f08f62237d5384aa7998fb8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038788"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281665"
 ---
 # <a name="cloud-solution-providers"></a>クラウド ソリューション プロバイダー
 
@@ -190,7 +189,7 @@ Cloud パートナー ポータルで CSP チャネルにオプトインして�
 
 ![Cloud パートナー ポータルでの CSP 関連情報](media/marketplace-publishers-guide/cpp-csp-information.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 「[Azure Marketplace と AppSource の公開ガイド](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)」を参照してください。
 

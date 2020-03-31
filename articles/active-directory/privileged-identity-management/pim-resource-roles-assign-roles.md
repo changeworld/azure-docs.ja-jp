@@ -16,17 +16,17 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 34051a31c6ccf69356f330d7c5ecb009f760857a
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895947"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231803"
 ---
 # <a name="assign-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure リソース ロールを割り当てる
 
 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) では、組み込みの Azure リソース ロールと、以下を含むカスタム ロール (ただしこれらに限定されません) を管理できます。
 
-- Owner
+- 所有者
 - User Access Administrator
 - Contributor
 - セキュリティ管理者
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) では、
 
 ユーザーを Azure リソース ロールの候補にするには、次の手順を実行します。
 
-1. [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)ロールのメンバー ユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
+1. [特権ロール管理者](https://portal.azure.com/)ロールのメンバー ユーザーで [Azure portal](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) にサインインします。
 
     Privileged Identity Management を管理するためのアクセス権を別の管理者に付与する方法については、「[Privileged Identity Management を管理する他の管理者にアクセス権を付与する](pim-how-to-give-access-to-pim.md)」を参照してください。
 
@@ -53,7 +53,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) では、
 
 1. サブスクリプションや管理グループなど、管理するリソースを選択します。
 
-1. [管理] の **[ロール]** を選択して、Azure リソースのロール一覧を表示します。
+1. [管理] で **[ロール]** を選択して、Azure リソースのロール一覧を表示します。
 
     ![Azure リソース ロール](./media/pim-resource-roles-assign-roles/resources-roles.png)
 
@@ -109,7 +109,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) では、
 
 1. サブスクリプションや管理グループなど、管理するリソースを選択します。
 
-1. [管理] の **[ロール]** を選択して、Azure リソースのロール一覧を表示します。
+1. [管理] で **[ロール]** を選択して、Azure リソースのロール一覧を表示します。
 
     ![Azure リソース ロール - ロールの選択](./media/pim-resource-roles-assign-roles/resources-update-select-role.png)
 
@@ -123,7 +123,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) では、
 
     ロールの割り当てを延長する方法については、[Privileged Identity Management で Azure リソース ロールを延長または更新する方法](pim-resource-roles-renew-extend.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Privileged Identity Management で Azure リソース ロールを延長または更新する](pim-resource-roles-renew-extend.md)
 - [Privileged Identity Management で Azure リソース ロールの設定を構成する](pim-resource-roles-configure-role-settings.md)

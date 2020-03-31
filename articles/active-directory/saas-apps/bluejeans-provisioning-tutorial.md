@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:BlueJeans を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
+title: 'チュートリアル: BlueJeans を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
 description: Azure Active Directory を構成して、ユーザー アカウントを BlueJeans に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
 documentationcenter: ''
@@ -17,13 +17,13 @@ ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fcb3fe009a6482c8e512899a952694beaed361a7
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77059015"
 ---
-# <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>チュートリアル:BlueJeans を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>チュートリアル: BlueJeans を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルの目的は、Azure AD が自動的にユーザーまたはグループを BlueJeans にプロビジョニングまたは BlueJeans からプロビジョニング解除するように構成するために、BlueJeans と Azure Active Directory (Azure AD) で実行される手順を示すことです。
 

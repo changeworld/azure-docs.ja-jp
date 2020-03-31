@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: labrenne
-ms.openlocfilehash: 22ee4aad6d2aabcc26dd97e50a2c716cb14be67a
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: d0238e0b5b882748218835d7f06a147d435a9f90
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77483586"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80245057"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Batch プールで RDMA または GPU インスタンスを使用する
 
@@ -42,7 +42,7 @@ Batch のコンピューティング集中型サイズの RDMA または GPU の
 
 ### <a name="linux-pools---virtual-machine-configuration"></a>Linux プール - 仮想マシン構成
 
-| Size | 機能 | オペレーティング システム | 必要なソフトウェア | プールの設定 |
+| サイズ | 機能 | オペレーティング システム | 必要なソフトウェア | プールの設定 |
 | -------- | -------- | ----- |  -------- | ----- |
 | [H16r、H16mr、A8、A9](../virtual-machines/linux/sizes-hpc.md)<br/>[NC24r、NC24rs_v2、NC24rs_v3、ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16.04 LTS、または<br/>CentOS-based HPC<br/>(Azure Marketplace) | Intel MPI 5<br/><br/>Linux RDMA ドライバー | ノード間通信を有効にし、同時実行タスクの実行を無効にする |
 | [NC、NCv2、NCv3、NDv2 シリーズ](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla GPU (シリーズによって異なります) | Ubuntu 16.04 LTS、または<br/>CentOS 7.3 または 7.4<br/>(Azure Marketplace) | NVIDIA CUDA または CUDA Toolkit ドライバー | 該当なし | 
@@ -52,7 +52,7 @@ Batch のコンピューティング集中型サイズの RDMA または GPU の
 
 ### <a name="windows-pools---virtual-machine-configuration"></a>Windows プール - 仮想マシン構成
 
-| Size | 機能 | オペレーティング システム | 必要なソフトウェア | プールの設定 |
+| サイズ | 機能 | オペレーティング システム | 必要なソフトウェア | プールの設定 |
 | -------- | ------ | -------- | -------- | ----- |
 | [H16r、H16mr、A8、A9](../virtual-machines/sizes-hpc.md)<br/>[NC24r、NC24rs_v2、NC24rs_v3、ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Windows Server 2016、2012 R2、または<br/>2012 (Azure Marketplace) | Microsoft MPI 2012 R2 以降または<br/> Intel MPI 5<br/><br/>Windows RDMA ドライバー | ノード間通信を有効にし、同時実行タスクの実行を無効にする |
 | [NC、NCv2、NCv3、ND、NDv2 シリーズ](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU (シリーズによって異なります) | Windows Server 2016 または <br/>2012 R2 (Azure Marketplace) | NVIDIA CUDA または CUDA Toolkit ドライバー| 該当なし | 
@@ -66,7 +66,7 @@ Batch のコンピューティング集中型サイズの RDMA または GPU の
 > N シリーズのサイズは、クラウド サービス構成の Batch プールではサポートされていません。
 >
 
-| Size | 機能 | オペレーティング システム | 必要なソフトウェア | プールの設定 |
+| サイズ | 機能 | オペレーティング システム | 必要なソフトウェア | プールの設定 |
 | -------- | ------- | -------- | -------- | ----- |
 | [H16r、H16mr、A8、A9](../virtual-machines/sizes-hpc.md) | RDMA | Windows Server 2016、2012 R2、2012、または<br/>2008 R2 (ゲスト OS ファミリ) | Microsoft MPI 2012 R2 以降または<br/>Intel MPI 5<br/><br/>Windows RDMA ドライバー | ノード間通信を有効にし、<br/> 同時実行タスクの実行を無効にする |
 
@@ -76,7 +76,7 @@ Batch プール用の特殊な VM サイズを構成するために、必要な�
 
 * 仮想マシン構成のプールの場合、ドライバーとソフトウェアがプレインストールされている構成済みの [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) VM イメージを選択します。 例 : 
 
-  * [CentOS-based 7.4 HPC](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased74HPC?tab=Overview) - RDMA ドライバーと Intel MPI 5.1 が含まれています
+  * [CentOS-based 7.4 HPC](https://azuremarketplace.microsoft.com/marketplace/apps/openlogic.centos-hpc?tab=Overview) - RDMA ドライバーと Intel MPI 5.1 が含まれています
 
   * [Data Science Virtual Machine](../machine-learning/data-science-virtual-machine/overview.md) for Linux または Windows - NVIDIA CUDA ドライバーが含まれています
 
@@ -106,7 +106,7 @@ Windows NC ノードのプールで CUDA アプリケーションを実行する
 3. パッケージを Batch アカウントにアップロードします。 手順については、[アプリケーション パッケージ](batch-application-packages.md)のガイダンスを参照してください。 アプリケーション ID (*GPUDriver* など) とバージョン (*411.82* など) を指定します。
 1. Batch API または Azure portal で、必要な数のノードとスケールを指定して、仮想マシン構成でプールを作成します。 次の表に、開始タスクを使用して NVIDIA GPU ドライバーを自動的にインストールする際の設定の例を示します。
 
-| 設定 | Value |
+| 設定 | 値 |
 | ---- | ----- | 
 | **イメージの種類** | Marketplace (Linux/Windows) |
 | **発行元** | MicrosoftWindowsServer |
@@ -127,7 +127,7 @@ Linux NC ノードのプールで CUDA アプリケーションを実行する�
 4. NC VM をサポートするリージョンに Batch アカウントを作成します。
 5. Batch API または Azure Portal で、[カスタム イメージを使い](batch-sig-images.md)、必要な数のノードとスケールを指定して、プールを作成します。 次の表に、イメージのプール設定の例を示します。
 
-| 設定 | Value |
+| 設定 | 値 |
 | ---- | ---- |
 | **イメージの種類** | カスタム イメージ |
 | **カスタム イメージ** | *イメージの名前* |
@@ -145,7 +145,7 @@ Azure H16r VM ノードのプールで Windows MPI アプリケーションを�
 1. 次の手順に従って、Batch 用の [Shared Image Gallery イメージ](batch-sig-images.md)を作成します。
 1. Batch API または Azure portal で、[Shared Image Gallery を使い](batch-sig-images.md)、必要な数のノードとスケールを指定して、プールを作成します。 次の表に、イメージのプール設定の例を示します。
 
-| 設定 | Value |
+| 設定 | 値 |
 | ---- | ---- |
 | **イメージの種類** | カスタム イメージ |
 | **カスタム イメージ** | *イメージの名前* |
@@ -156,11 +156,11 @@ Azure H16r VM ノードのプールで Windows MPI アプリケーションを�
 
 ## <a name="example-intel-mpi-on-a-linux-h16r-vm-pool"></a>例:Linux H16r VM プール上の Intel MPI
 
-Linux H シリーズのノードのプールで MPI アプリケーションを実行するには、1 つのオプションとして、Azure Marketplace から入手した [CentOS ベースの 7.4 HPC](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased74HPC?tab=Overview) イメージを使用します。 Linux RDMA ドライバーと Intel MPI はプレインストールされています。 このイメージは、Docker コンテナーのワークロードもサポートしています。
+Linux H シリーズのノードのプールで MPI アプリケーションを実行するには、1 つのオプションとして、Azure Marketplace から入手した [CentOS ベースの 7.4 HPC](https://azuremarketplace.microsoft.com/marketplace/apps/openlogic.centos-hpc?tab=Overview) イメージを使用します。 Linux RDMA ドライバーと Intel MPI はプレインストールされています。 このイメージは、Docker コンテナーのワークロードもサポートしています。
 
 Batch API または Azure portal で、このイメージを使い、必要な数のノードとスケールを指定して、プールを作成します。 次の表に、プール設定の例を示します。
 
-| 設定 | Value |
+| 設定 | 値 |
 | ---- | ---- |
 | **イメージの種類** | Marketplace (Linux/Windows) |
 | **発行元** | OpenLogic |

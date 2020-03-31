@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 55da8731855c8afda496edff33f3fbb7982cd44b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65784554"
 ---
 # <a name="how-to-use-self-service-application-access"></a>アプリケーションのセルフサービス アクセスの使用方法
@@ -45,7 +45,7 @@ ms.locfileid: "65784554"
 
 ## <a name="enable-self-service-application-access-to-allow-users-to-find-their-own-applications"></a>セルフ サービス アプリケーションへのアクセスを有効にすることでユーザーによる独自のアプリケーションの検索を許可します。
 
-セルフ サービス アプリケーションへのアクセスは、ユーザーにアプリケーションの自己検出を許可したり、必要に応じてビジネス グループによるこれらのアプリケーションへのアクセス承認を許可したりする場合に優れた方法です。 ビジネス グループがアクセス パネルから直接、ユーザーに割り当てられた (パスワード シングル サインオン アプリケーションに関する)資格情報を管理できるようにすることができます。
+セルフ サービス アプリケーションへのアクセスは、ユーザーにアプリケーションの自己検出を許可したり、必要に応じてビジネス グループによるこれらのアプリケーションへのアクセス承認を許可したりする場合に優れた方法です。 ビジネス グループによる、アクセス パネルからユーザーに割り当てられたパスワード シングル サインオン アプリケーションに対する資格情報の管理を許可できます。
 
 アプリケーションに対するセルフ サービス アクセスを有効にするには、次の手順を実行します。
 
@@ -85,5 +85,5 @@ ms.locfileid: "65784554"
 
 これらの承認は、単一の承認ワークフローでのみサポートされます。つまり、複数の承認者を指定しても、いずれか 1 人の承認者がアプリケーションへのアクセスを承認する可能性があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [セルフサービス グループ管理に必要な Azure Active Directory の設定](../users-groups-roles/groups-self-service-management.md)

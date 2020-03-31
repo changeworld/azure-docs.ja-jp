@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2a3e7373a8b0354a3d08debf944f2f77f1609382
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60347748"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect:旧バージョンから最新バージョンにアップグレードする
@@ -44,11 +44,11 @@ Azure AD Connect のアップグレードで使用できる方法は複数あり
 > [!NOTE]
 > 新しい Azure AD Connect サーバーが Azure AD に対する変更の同期を開始できるようにした後は、DirSync または Azure AD Sync を使用してロールバックしないでください。Azure AD Connect から DirSync、Azure AD Sync などの従来のクライアントへのダウングレードはサポートされておらず、Azure AD のデータ損失などの問題につながる場合があります。
 
-## <a name="in-place-upgrade"></a>インプレース アップグレード
+## <a name="in-place-upgrade"></a>一括アップグレード
 インプレース アップグレードは、Azure AD Sync または Azure AD Connect からの移動に使用できます。 DirSync からの移動、または Forefront Identity Manager (FIM) + Azure AD コネクタのソリューションには使用できません。
 
 この方法は、サーバーが 1 台でオブジェクトが約 100,000 未満の場合にお勧めします。 標準の同期規則に対する変更があった場合は、アップグレード後にフル インポートと完全同期が実行されます。 この方法により、新しい構成がシステムのすべての既存のオブジェクトに適用されることが保証されます。 同期エンジンのスコープ内のオブジェクトの数によっては、数時間かかることがあります。 通常の差分同期スケジューラー (既定では 30 分ごとに同期) は中断されますが、パスワード同期は継続されます。 インプレース アップグレードは週末に実行するよう検討してください。 新しい Azure AD Connect リリースで標準構成に変更がなかった場合は、通常の差分インポートまたは差分同期が開始します。  
-![インプレース アップグレード](./media/how-to-upgrade-previous-version/inplaceupgrade.png)
+![一括アップグレード](./media/how-to-upgrade-previous-version/inplaceupgrade.png)
 
 標準の同期規則を変更した場合は、これらの規則はアップグレード時に既定の構成に戻ります。 アップグレードの前後で構成が維持されていることを確認するには、[既定の構成を変更するためのベスト プラクティス](how-to-connect-sync-best-practices-changing-default-configuration.md)に関するページの説明に従って変更を行ってください。
 
@@ -142,7 +142,7 @@ Azure AD Connect のアップグレードで使用できる方法は複数あり
 
 Azure AD Connect を以前のバージョンからアップグレードするとき、その最初の段階で次のエラーに遭遇することがあります。 
 
-![Error](./media/how-to-upgrade-previous-version/error1.png)
+![エラー](./media/how-to-upgrade-previous-version/error1.png)
 
 このエラーは、Azure Active Directory コネクタ (ID b891884f-051e-4a83-95af-2544101c9083) が現在の Azure AD Connect の構成に存在しないことが原因で発生します。 それが事実であるかどうかを確認するには、PowerShell ウィンドウを開いて `Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083` コマンドレットを実行します。
 
@@ -167,5 +167,5 @@ PowerShell コマンドレットから "**the specified MA could not be found (�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)に関する記事をご覧ください。

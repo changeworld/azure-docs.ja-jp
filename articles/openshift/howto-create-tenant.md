@@ -7,11 +7,11 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: ad03538cafcce9c1d660d0f2ac5eb3c6ae5f4f38
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76270463"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224767"
 ---
 # <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift 用の Azure AD テナントの作成
 
@@ -24,7 +24,7 @@ Azure AD テナントをまだお持ちでない場合は、次の手順に従�
 テナントを作成するには:
 
 1. Azure Red Hat OpenShift クラスターと関連付けるアカウントを使用して [Azure portal](https://portal.azure.com/) にサインインします。
-2. 新しいテナント (新しい "*Azure Active Directory*" とも呼ばれる) を作成するために [Azure Active Directory ブレード](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory)を開きます。
+2. 新しいテナント (新しい "[Azure Active Directory](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory)" とも呼ばれる) を作成するために *Azure Active Directory ブレード*を開きます。
 3. **[組織名]** を入力します。
 4. **初期ドメイン名**を入力します。 これには *onmicrosoft.com* が追加されます。 ここで "*組織名*" の値を再利用できます。
 5. テナントが作成される国またはリージョンを選択します。
@@ -33,13 +33,13 @@ Azure AD テナントをまだお持ちでない場合は、次の手順に従�
 
     ![右上にテナント名が表示された portal のスクリーンショット][tenantcallout]  
 
-8. 後で Azure Red Hat OpenShift クラスターを作成する場所を指定できるように、 *[テナント ID]* をメモしておいてください。 portal に新しいテナントの Azure Active Directory 概要ブレードが表示されているはずです。 **[プロパティ]** を選択し、 **[ディレクトリ ID]** の値をコピーします。 [Azure Red Hat OpenShift クラスターの作成](tutorial-create-cluster.md)のチュートリアルでは、この値を `TENANT` と呼びます。
+8. 後で Azure Red Hat OpenShift クラスターを作成する場所を指定できるように、 *[テナント ID]* をメモしておいてください。 portal に新しいテナントの Azure Active Directory 概要ブレードが表示されているはずです。 **[プロパティ]** を選択し、 **[ディレクトリ ID]** の値をコピーします。 `TENANT`Azure Red Hat OpenShift クラスターの作成[のチュートリアルでは、この値を ](tutorial-create-cluster.md) と呼びます。
 
 [tenantcallout]: ./media/howto-create-tenant/tenant-callout.png
 
 ## <a name="resources"></a>リソース
 
-[Azure AD テナント](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)の詳細については、[Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory/)を参照してください。
+[Azure AD テナント](https://docs.microsoft.com/azure/active-directory/)の詳細については、[Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

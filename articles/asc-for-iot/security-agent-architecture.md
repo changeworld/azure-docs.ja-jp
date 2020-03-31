@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
 ms.openlocfilehash: 998aeab197931a75579fc39b28e3a248b85fc57b
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68596912"
 ---
 # <a name="security-agent-reference-architecture"></a>セキュリティ エージェントの参照アーキテクチャ
@@ -47,13 +47,13 @@ Azure Security Center for IoT セキュリティ エージェントはオープ�
 
 Azure Security Center for IoT では、32 ビットと 64 ビットの Windows のエージェントには異なるインストーラー、32 ビットと 64 ビットの Linux のエージェントには同じインストーラーが用意されています。 次の表に従って、ご使用のデバイスごとに適切なエージェント インストーラーがあることを確認してください。
 
-| アーキテクチャ | Linux | Windows |    詳細|
+| Architecture | Linux | Windows |    詳細|
 |----------|----------------------------------------------|-------------|-------------------------------------------|
 | 32 ビット  | C  | C#  ||
 | 64 ビット  | C# または C           | C#      | デバイス リソースがさらに制限されているか少ないデバイスについては、C エージェントを使用することをお勧めします。|
 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Azure Security Center for IoT セキュリティ エージェントのアーキテクチャと利用できるインストーラーについて学習しました。
 
@@ -63,4 +63,4 @@ Azure Security Center for IoT のデプロイの概要について引き続き�
 - [セキュリティ エージェント](how-to-deploy-agent.md)を選択してデプロイする
 - Azure Security Center for IoT [サービスの前提条件](service-prerequisites.md)を確認する
 - [IoT Hub で Azure Security Center for IoT サービスを有効にする](quickstart-onboard-iot-hub.md)方法を学習する
-- [Azure Security Center for IoT についてよく寄せられる質問](resources-frequently-asked-questions.md)から、サービスについて確認する
+- [Azure Security Center for IoT に関してよく寄せられる質問](resources-frequently-asked-questions.md)から、サービスについて確認する

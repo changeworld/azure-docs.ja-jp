@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 02/14/2019
 ms.author: cynthn
 ms.openlocfilehash: 434a3ef8c9bc1738252d59a5dca5bec16d85e45e
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78970305"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Docker と Compose を使用して Azure 内で複数コンテナー アプリケーションを定義して実行する
@@ -94,7 +94,7 @@ db:
 ```
 
 ## <a name="start-the-containers-with-compose"></a>Compose によるコンテナーの起動
-*docker-compose.yml* ファイルと同じディレクトリで、次のコマンドを実行します (環境によっては、`sudo` を実行するのに `docker-compose` が必要な場合があります)。
+*docker-compose.yml* ファイルと同じディレクトリで、次のコマンドを実行します (環境によっては、`docker-compose` を実行するのに `sudo` が必要な場合があります)。
 
 ```bash
 sudo docker-compose up -d

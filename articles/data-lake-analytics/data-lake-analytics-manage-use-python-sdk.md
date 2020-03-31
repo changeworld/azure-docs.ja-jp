@@ -10,10 +10,10 @@ ms.assetid: d4213a19-4d0f-49c9-871c-9cd6ed7cf731
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.openlocfilehash: d40658e1510c9ae8a2e3e1f865df7ac95f61abfb
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68355984"
 ---
 # <a name="manage-azure-data-lake-analytics-using-python"></a>Python を使用して Azure Data Lake Analytics を管理する
@@ -97,7 +97,7 @@ import time
 
 このスクリプトを実行して、モジュールをインポートできることを確認します。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 
 ### <a name="interactive-user-authentication-with-a-pop-up"></a>ポップアップを使用した対話型ユーザー認証
 
@@ -259,7 +259,7 @@ adlaAccountClient.computePolicies.createOrUpdate(
     rg, adla, "GaryMcDaniel", newPolicyParams)
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 他のツールを使用する同じチュートリアルを表示するには、ページの上部にあるタブ セレクターをクリックします。
 - U-SQL の詳細については、「 [Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」を参照してください。

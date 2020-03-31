@@ -9,10 +9,10 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.openlocfilehash: 2604d5b357feacce3493b4a4ded971144262611d
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77161938"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Azure Databricks クラスターに対するリージョンのディザスター リカバリー
@@ -21,7 +21,7 @@ ms.locfileid: "77161938"
 
 ## <a name="azure-databricks-architecture"></a>Azure Databricks のアーキテクチャ
 
-アーキテクチャを全体的な視点から眺めてみましょう。Azure portal から Azure Databricks ワークスペースを作成すると、選択した Azure リージョン (米国西部など) に、ご利用のサブスクリプションの Azure リソースとして[マネージド アプライアンス](../azure-resource-manager/managed-applications/overview.md)がデプロイされます。 このアプライアンスは、ご利用のサブスクリプションで利用できる Azure Storage アカウントおよび[ネットワーク セキュリティ グループ](../virtual-network/manage-network-security-group.md)と共に [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) にデプロイされます。 この仮想ネットワークが Databricks ワークスペースに対する境界レベルのセキュリティを提供し、またネットワーク セキュリティ グループによって保護されることになります。 Databricks クラスターは、ワークスペース内でワーカー VM とドライバー VM の種類、Databricks Runtime のバージョンを指定することによって作成できます。 永続データはストレージ アカウント上で利用でき、Azure Blob Storage または Azure Data Lake Store のどちらかになります。 クラスターの作成後は、ノートブック、REST API、ODBC/JDBC エンドポイントを特定のクラスターにアタッチすることにより、そのエンドポイントを介してジョブを実行することができます。
+アーキテクチャを全体的な視点から眺めてみましょう。Azure portal から Azure Databricks ワークスペースを作成すると、選択した Azure リージョン (米国西部など) に、ご利用のサブスクリプションの Azure リソースとして[マネージド アプライアンス](../azure-resource-manager/managed-applications/overview.md)がデプロイされます。 このアプライアンスは、ご利用のサブスクリプションで利用できる Azure Storage アカウントおよび[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-overview.md)と共に [Azure Virtual Network](../virtual-network/manage-network-security-group.md) にデプロイされます。 この仮想ネットワークが Databricks ワークスペースに対する境界レベルのセキュリティを提供し、またネットワーク セキュリティ グループによって保護されることになります。 Databricks クラスターは、ワークスペース内でワーカー VM とドライバー VM の種類、Databricks Runtime のバージョンを指定することによって作成できます。 永続データはストレージ アカウント上で利用でき、Azure Blob Storage または Azure Data Lake Store のどちらかになります。 クラスターの作成後は、ノートブック、REST API、ODBC/JDBC エンドポイントを特定のクラスターにアタッチすることにより、そのエンドポイントを介してジョブを実行することができます。
 
 Databricks ワークスペース環境の管理と監視は、Databricks のコントロール プレーンで行います。 クラスターの作成をはじめとするすべての管理操作は、コントロール プレーンから開始されます。 メタデータ (スケジュールされたジョブなど) はすべて Azure Database に格納され、geo レプリケーションによるフォールト トレランスが確保されます。
 

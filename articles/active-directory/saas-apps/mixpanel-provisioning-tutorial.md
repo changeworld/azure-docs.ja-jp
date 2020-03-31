@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: Zhchia
 ms.openlocfilehash: 0182d0158144a010274799cc41991ba87120e9d8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76907170"
 ---
 # <a name="tutorial-configure-mixpanel-for-automatic-user-provisioning"></a>チュートリアル:Mixpanel を構成し、自動ユーザー プロビジョニングに対応させる
@@ -104,7 +104,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 9. **[属性マッピング]** セクションで、Azure AD から Mixpanel に同期されるユーザー属性を確認します。 **[Matching]** プロパティとして選択されている属性は、更新処理で Mixpanel のユーザー アカウントとの照合に使用されます。 [一致する対象の属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)を変更する場合は、その属性に基づいたユーザーのフィルター処理が確実に Mixpanel API でサポートされているようにする必要があります。 **[保存]** ボタンをクリックして変更をコミットします。
 
-   |Attribute|Type|
+   |属性|Type|
    |---|---|
    |userName|String|
    |displayName|String|
@@ -113,7 +113,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 11. **[属性マッピング]** セクションで、Azure AD から Mixpanel に同期されるグループ属性を確認します。 **[Matching]** プロパティとして選択されている属性は、更新処理で Mixpanel のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-      |Attribute|Type|
+      |属性|Type|
       |---|---|
       |displayName|String|
       |members|リファレンス|

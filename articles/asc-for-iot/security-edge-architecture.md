@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 148c68234a937efde554ef00a6014cdc1a350f34
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71315886"
 ---
 # <a name="azure-iot-edge-security-module"></a>Azure IoT Edge セキュリティ モジュール
@@ -54,7 +54,7 @@ IoT Edge 用の Azure Security Center for IoT セキュリティ モジュール
 
 現在、IoT Edge 用の Azure Security Center for IoT セキュリティ モジュールは、Linux でのみ利用できます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、IoT Edge 用の Azure Security Center for IoT セキュリティ モジュールのアーキテクチャと機能について説明しました。
 

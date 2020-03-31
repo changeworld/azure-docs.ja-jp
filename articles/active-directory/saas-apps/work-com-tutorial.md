@@ -17,10 +17,10 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7a6dc16eef1bb36a5bd6cbf0502a83481230bc0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67087095"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>チュートリアル:Azure Active Directory と Work.com の統合
@@ -134,11 +134,11 @@ Work.com で Azure AD シングル サインオンを構成するには、次の
 
 2. **[セットアップ]** に移動します。
    
-    ![Setup](./media/work-com-tutorial/ic794108.png "Setup")
+    ![セットアップ](./media/work-com-tutorial/ic794108.png "セットアップ")
 
 3. 左側のナビゲーション ウィンドウの **[管理]** セクションで、 **[ドメインの管理]** をクリックして関連するセクションを展開し、 **[マイ ドメイン]** をクリックして **[マイ ドメイン]** ページを開きます。 
    
-    ![My Domain](./media/work-com-tutorial/ic767825.png "My Domain")
+    ![[My Domain]\(マイ ドメイン\)](./media/work-com-tutorial/ic767825.png "[マイ ドメイン]")
 
 4. ドメインが正しく設定されていることを確認するには、“**ステップ 4 ユーザーへのデプロイ**” で “**マイ ドメインの設定**” を確認します。
    
@@ -148,23 +148,23 @@ Work.com で Azure AD シングル サインオンを構成するには、次の
 
 6. **[セットアップ]** に移動します。
     
-    ![Setup](./media/work-com-tutorial/ic794108.png "Setup")
+    ![セットアップ](./media/work-com-tutorial/ic794108.png "セットアップ")
 
 7. **[セキュリティ制御]** メニューを展開表示し、 **[シングル サインオンの設定]** をクリックします。
     
-    ![Single Sign-On Settings](./media/work-com-tutorial/ic794113.png "Single Sign-On Settings")
+    ![シングル サインオンの設定](./media/work-com-tutorial/ic794113.png "[シングル サインオンの設定]")
 
 8. **[シングル サインオンの設定]** ダイアログ ページで、次の手順を実行します。
     
-    ![SAML 有効](./media/work-com-tutorial/ic781026.png "SAML Enabled")
+    ![[SAML Enabled]\(SAML の有効化\)](./media/work-com-tutorial/ic781026.png "[SAML Enabled]")
     
     a. **[SAML Enabled]** を選択します。
     
-    b. **[新規]** をクリックします。
+    b. **[新規作成]** をクリックします。
 
 9. **[SAML シングル サインオンの設定]** セクションで、次の手順に従います。
     
-    ![SAML Single Sign-On Setting](./media/work-com-tutorial/ic794114.png "SAML Single Sign-On Setting")
+    ![[SAML Single Sign-On Setting]\(SAML シングル サインオンの設定\)](./media/work-com-tutorial/ic794114.png "SAML シングル サインオンの設定")
     
     a. **[名前]** テキスト ボックスに、構成の名前を入力します。  
        
@@ -187,19 +187,19 @@ Work.com で Azure AD シングル サインオンを構成するには、次の
     
     i. **[サービス プロバイダーが開始した要求のバインド]** で **[HTTP POST]** を選択します。
     
-    j. **[Save]** をクリックします。
+    j. **[保存]** をクリックします。
 
 10. Work.com クラシック ポータルで、左側のナビゲーション ウィンドウの **[ドメインの管理]** をクリックして関連するセクションを展開し、 **[マイ ドメイン]** をクリックして **[マイ ドメイン]** ページを開きます。 
     
-    ![My Domain](./media/work-com-tutorial/ic794115.png "My Domain")
+    ![[My Domain]\(マイ ドメイン\)](./media/work-com-tutorial/ic794115.png "[マイ ドメイン]")
 
 11. **[マイ ドメイン]** ページの **[Login Page Branding (ログイン ページのブランド)]** をクリックして、 **[編集]** をクリックします。
     
-    ![Login Page Branding](./media/work-com-tutorial/ic767826.png "Login Page Branding")
+    ![[Login Page Branding]\(ログイン ページのブランド\)](./media/work-com-tutorial/ic767826.png "ログイン ページのブランド")
 
 12. **[Login Page Branding (ログイン ページのブランド)]** ページの **[認証サービス]** セクションに、 **[SAML SSO 設定]** の名前が表示されます。 それを選んで、 **[保存]** をクリックします。
     
-    ![Login Page Branding](./media/work-com-tutorial/ic784366.png "Login Page Branding")
+    ![[Login Page Branding]\(ログイン ページのブランド\)](./media/work-com-tutorial/ic784366.png "ログイン ページのブランド")
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -261,19 +261,19 @@ Azure Active Directory ユーザーがサインインできるように、Azure 
 
 2. **[セットアップ]** に移動します。
    
-    ![Setup](./media/work-com-tutorial/IC794108.png "Setup")
+    ![セットアップ](./media/work-com-tutorial/IC794108.png "セットアップ")
 
 3. **[ユーザーの管理]\>[ユーザー]** に移動します。
    
-    ![Manage Users](./media/work-com-tutorial/IC784369.png "Manage Users")
+    ![ユーザーの管理](./media/work-com-tutorial/IC784369.png "[Manage Users]")
 
 4. **[新しいユーザー]** をクリックします。
    
-    ![All Users](./media/work-com-tutorial/IC794117.png "All Users")
+    ![[All Users]\(すべてのユーザー\)](./media/work-com-tutorial/IC794117.png "すべてのユーザー")
 
 5. [User Edit]\(ユーザーの編集\) セクションで、次の手順に従って、プロビジョニングする有効な Azure AD アカウントの属性を関連するボックスに入力します。
    
-    ![User Edit](./media/work-com-tutorial/ic794118.png "User Edit")
+    ![[User Edit]\(ユーザーの編集\)](./media/work-com-tutorial/ic794118.png "ユーザーの編集")
    
     a. **[First Name]\(名\)** ボックスに、ユーザーの**名** (**Britta**) を入力します。
     
@@ -289,7 +289,7 @@ Azure Active Directory ユーザーがサインインできるように、Azure 
     
     g. **[Role]\(役割\)** 、 **[User License]\(ユーザー ライセンス\)** 、 **[Profile]\(プロファイル\)** を選択します。
     
-    h. **[Save]** をクリックします。  
+    h. **[保存]** をクリックします。  
       
     > [!NOTE]
     > アカウントがアクティブになる前に、Azure AD アカウント所有者に、アカウント確認用のリンクを含む電子メールが送信されます。

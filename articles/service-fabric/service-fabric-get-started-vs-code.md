@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 67846293257661a4f7a907d76402d2e98c339225
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 17bff459a0399d39c6bfdd772ad16d0b5b2f6771
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251636"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229319"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Visual Studio Code 用の Service Fabric
 
@@ -48,7 +48,7 @@ Java 開発の場合は、以下の前提条件をインストールする必要
 .NET Core/C# 開発の場合は、以下の前提条件をインストールする必要があります。
 
 * [.NET Core](https://www.microsoft.com/net/learn/get-started) (バージョン 2.0.0 以降)
-* [C# for Visual Studio Code (OmniSharp 搭載) VS Code 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) C# サービスのデバッグに必要です。 VS Code の**アクティビティ バー**にある [拡張機能] アイコンをクリックし、拡張機能を検索してインストールするか、VS Code Marketplace からインストールすることができます。
+* [C# for Visual Studio Code (OmniSharp 搭載) VS Code 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) C# サービスのデバッグに必要です。 VS Code の**アクティビティ バー**にある [拡張機能] アイコンをクリックし、拡張機能を検索してインストールするか、VS Code Marketplace からインストールすることができます。
 
 ## <a name="setup"></a>セットアップ
 

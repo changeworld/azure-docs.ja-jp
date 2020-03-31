@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/30/2019
 ms.openlocfilehash: 20309babb9ece0ae20e7442543b0d378f9a51060
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75895058"
 ---
 # <a name="scenario-apache-hive-zeppelin-interpreter-gives-a-zookeeper-error-in-azure-hdinsight"></a>シナリオ:Azure HDInsight で Apache Hive Zeppelin インタープリターから Zookeeper エラーが発生する
@@ -30,7 +30,7 @@ java.sql.SQLException: org.apache.hive.jdbc.ZooKeeperHiveClientException: Unable
 
 The Zeppelin Hive JDBC Interpreter is pointing to the wrong URL. (Zeppelin Hive JDBC インタープリターが間違った URL を指しています。)
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
 1. Hive コンポーネントの概要に移動し、"Hive JDBC Url" をクリップボードにコピーします。
 

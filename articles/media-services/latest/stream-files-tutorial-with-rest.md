@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/05/2019
+ms.date: 03/16/2020
 ms.author: juliako
-ms.openlocfilehash: d4175f2508edab1cf54e415652e9e9cb37b879b1
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 35be4ec2c4f5f8c299120c0ba7dbdcb1dd112473
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514342"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79472035"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - REST
 
@@ -58,7 +58,9 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
  git clone https://github.com/Azure-Samples/media-services-v3-rest-postman.git
  ```
 
-[!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
+## <a name="access-api"></a>API へのアクセス
+
+詳細については、「[Media Services API にアクセスするための資格情報を取得する](access-api-howto.md)」を参照してください
 
 ## <a name="configure-postman"></a>Postman を構成する
 
@@ -75,7 +77,7 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
     > [!Note]
     > 前述の **[Access the Media Services API]\(Media Services API にアクセスする\)** セクションから取得した値で、アクセス変数を更新します。
 
-7. 選択されたファイルをダブルクリックして、[API へのアクセス](#access-the-media-services-api)に関する手順に従って取得した値を入力します。
+7. 選択されたファイルをダブルクリックして、[API へのアクセス](#access-api)に関する手順に従って取得した値を入力します。
 8. ダイアログを閉じます。
 9. ドロップ ダウンから **[Azure Media Service v3 Environment]\(Azure Media Service v3 環境\)** 環境を選択します。
 

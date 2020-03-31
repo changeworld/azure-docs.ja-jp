@@ -8,10 +8,10 @@ ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
 ms.openlocfilehash: af99f369245d6006d0d4784e572020b820e406a3
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71266056"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>Striim を使用して Azure Cosmos DB Cassandra API アカウントにデータを移行する
@@ -41,7 +41,7 @@ Azure Marketplace の Striim イメージは、データウェアハウスとデ
 
 1. **[Striim Cluster settings]\(Striim クラスターの設定\)** ウィンドウで、Striim のデプロイの種類と仮想マシンのサイズを選択します。
 
-   |Setting | 値 | 説明 |
+   |設定 | 値 | 説明 |
    | ---| ---| ---|
    |Striim のデプロイの種類 |スタンドアロン | Striim は、 **[スタンドアロン]** または **[クラスター]** のデプロイの種類で実行できます。 スタンドアロン モードでは、Striim サーバーは単一の仮想マシンにデプロイされます。データ ボリュームに応じて VM のサイズを選択できます。 クラスター モードでは、Striim サーバーは、選択されたサイズの 2 つ以上の VM にデプロイされます。 ノードの数が 2 つを超えるクラスター環境では、自動の高可用性とフェールオーバーが提供されます。</br></br> このチュートリアルでは、[スタンドアロン] オプションを選択できます。 既定の “Standard_F4s” サイズの VM を使用します。 | 
    | Striim クラスターの名前|    <Striim_cluster_Name>|  Striim クラスターの名前。|
@@ -192,7 +192,7 @@ Azure Marketplace の Striim イメージは、データウェアハウスとデ
 
 Azure の Striim ソリューションを使用することにより、Oracle、Cassandra、MongoDB、およびその他のさまざまなソースから Azure Cosmos DB にデータを継続的に移行することができます。 詳細については、[Striim の Web サイト](https://www.striim.com/)や [Striim の 30 日間無料お試し版のダウンロード](https://go2.striim.com/download-free-trial) ページにアクセスしてください。Striim で移行パスを設定しようとして問題が発生した場合、[サポート リクエスト](https://go2.striim.com/request-support-striim)を提出してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * データを Azure Cosmos DB SQL API に移行する場合は、[Striim を使用して Cassandra API アカウントにデータを移行する方法](cosmosdb-sql-api-migrate-data-striim.md)に関するページを参照してください。
 

@@ -17,10 +17,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 037e005993a54e525560571a6d893197af99b6a0
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67807774"
 ---
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>Microsoft Teams からのオンプレミス アプリケーションへのアクセス
@@ -53,7 +53,7 @@ Azure Active Directory アプリケーション プロキシを使用すると�
 
 チームのいずれかのメンバーがタブを追加すると、そのタブはチャネル内の全ユーザーに表示されます。 アプリへのアクセス権を持つすべてのユーザーが、Microsoft Teams の資格情報を使ったシングル サインオンでアクセスできます。 アプリへのアクセス権を持たないユーザーの場合、Teams にタブは表示されますが、オンプレミスのアプリケーションと Azure Portal の公開バージョンへのアクセス権が付与されるまで、アクセスはブロックされます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - アプリケーション プロキシで[オンプレミスの SharePoint サイトを公開する](application-proxy-integrate-with-sharepoint-server.md)方法を学びます。
 - 外部 URL に[カスタム ドメイン](application-proxy-configure-custom-domain.md)を使用するようアプリを構成します。

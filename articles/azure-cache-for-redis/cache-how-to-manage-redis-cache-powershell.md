@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
 ms.openlocfilehash: a385d3ed7ef46389f96de72c98ffc29cebf60ec4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355858"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235487"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Azure PowerShell を使用した Azure Cache for Redis の管理
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "78355858"
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
-クラシック デプロイ モデルの詳細については、「[Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について](../azure-resource-manager/management/deployment-models.md)」を参照してください。
+クラシック デプロイ モデルについて詳しくは、「[Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について](../azure-resource-manager/management/deployment-models.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 Azure PowerShell をインストール済みである場合、Azure PowerShell Version 1.0.0 以降であることが必要です。 インストールした Azure PowerShell のバージョンは、Azure PowerShell コマンド プロンプトで次のコマンドを使用して確認できます。
@@ -119,19 +119,19 @@ Microsoft Azure Germany の詳細については、「[Microsoft Azure Germany](
 
 | パラメーター | 説明 | Default |
 | --- | --- | --- |
-| 名前 |キャッシュの名前 | |
-| 場所 |キャッシュの場所 | |
+| Name |キャッシュの名前 | |
+| Location |キャッシュの場所 | |
 | ResourceGroupName |キャッシュを作成するリソース グループの名前 | |
-| サイズ |キャッシュのサイズ。 有効な値は次のとおりです。P1、P2、P3、P4、C0、C1、C2、C3、C4、C5、C6、250MB、1GB、2.5GB、6GB、13GB、26GB、53GB |1GB |
-| ShardCount |クラスタリングが有効になっている Premium キャッシュを作成するときに作成するシャードの数。 有効な値は次のとおりです。1、2、3、4、5、6、7、8、9、10 | |
-| SKU |キャッシュの SKU を指定します。 有効な値は次のとおりです。Basic、Standard、Premium |Standard |
+| Size |キャッシュのサイズ。 有効な値: P1、P2、P3、P4、C0、C1、C2、C3、C4、C5、C6、250 MB、1 GB、2.5 GB、6 GB、13 GB、26 GB、53 GB |1GB |
+| ShardCount |クラスタリングが有効になっている Premium キャッシュを作成するときに作成するシャードの数。 有効な値: 1、2、3、4、5、6、7、8、9、10 | |
+| SKU |キャッシュの SKU を指定します。 有効な値: Basic、Standard、Premium |Standard |
 | RedisConfiguration |Redis 構成の設定を指定します。 各設定の詳細については、次の「 [RedisConfiguration プロパティ](#redisconfiguration-properties) 」の表をご覧ください。 | |
 | EnableNonSslPort |非 SSL ポートが有効になっているかどうかを示します。 |False |
 | MaxMemoryPolicy |このパラメーターは非推奨となりました。代わりに、RedisConfiguration を使用します。 | |
 | StaticIP |VNET でキャッシュをホストする場合に、キャッシュのサブネットで一意の IP アドレスを指定します。 指定していない場合、サブネットから自動的にアドレスが 1 つ選択されます。 | |
 | Subnet |VNET でキャッシュをホストする場合に、キャッシュをデプロイするサブネットの名前を指定します。 | |
 | VirtualNetwork |VNET でキャッシュをホストする場合に、キャッシュをデプロイする VNET のリソース ID を指定します。 | |
-| KeyType |アクセス キーを更新するときに再生成するアクセス キーを指定します。 有効な値は次のとおりです。Primary、Secondary | |
+| KeyType |アクセス キーを更新するときに再生成するアクセス キーを指定します。 有効な値: Primary、Secondary | |
 
 ### <a name="redisconfiguration-properties"></a>RedisConfiguration プロパティ
 | プロパティ | 説明 | 価格レベル |
@@ -243,7 +243,7 @@ Premium キャッシュを作成する場合は、P1 (6 GB ～ 60 GB)、P2 (13 G
 
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -Sku Premium -Size P1 -ShardCount 3
 
-`RedisConfiguration` の値を指定する場合は、`@{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}` のように、キー/値のペアとして値を `{}` で囲みます。 次の例では、`allkeys-random` に設定された maxmemory ポリシーと `KEA` に設定されたキースペース通知を使用して、Standard の 1 GB のキャッシュを作成しています。 詳細については、「[キースペース通知 (詳細設定)](cache-configure.md#keyspace-notifications-advanced-settings)」および「[メモリ ポリシー](cache-configure.md#memory-policies)」をご覧ください。
+`RedisConfiguration` の値を指定する場合は、`{}` のように、キー/値のペアとして値を `@{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}` で囲みます。 次の例では、`allkeys-random` に設定された maxmemory ポリシーと `KEA` に設定されたキースペース通知を使用して、Standard の 1 GB のキャッシュを作成しています。 詳細については、「[キースペース通知 (詳細設定)](cache-configure.md#keyspace-notifications-advanced-settings)」および「[メモリ ポリシー](cache-configure.md#memory-policies)」をご覧ください。
 
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -RedisConfiguration @{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}
 
@@ -322,7 +322,7 @@ Azure Cache for Redis インスタンスを更新するには、[Set-AzRedisCach
 <a name="scale"></a>
 
 ## <a name="to-scale-an-azure-cache-for-redis"></a>Azure Cache for Redis をスケーリングするには
-`Size`、`Sku`、または `ShardCount` のプロパティが変更されたときに、`Set-AzRedisCache` を使用して、Azure Cache for Redis インスタンスをスケーリングできます。 
+`Set-AzRedisCache`、`Size`、または `Sku` のプロパティが変更されたときに、`ShardCount` を使用して、Azure Cache for Redis インスタンスをスケーリングできます。 
 
 > [!NOTE]
 > PowerShell を使用してキャッシュをスケールする場合、Azure ポータルからキャッシュをスケールする場合と同じ制限とガイドラインが適用されます。 別の価格レベルにスケーリングできますが、次のような制約があります。
@@ -421,11 +421,11 @@ Azure Cache for Redis インスタンスを更新するには、[Set-AzRedisCach
 
     Get-AzRedisCache
 
-特定のリソース グループのすべてのキャッシュに関する情報を取得するには、`ResourceGroupName` パラメーターを指定して `Get-AzRedisCache` を実行します。
+特定のリソース グループのすべてのキャッシュに関する情報を取得するには、`Get-AzRedisCache` パラメーターを指定して `ResourceGroupName` を実行します。
 
     Get-AzRedisCache -ResourceGroupName myGroup
 
-特定のキャッシュに関する情報を取得するには、キャッシュの名前を `Name` パラメーターに設定し、そのキャッシュが含まれているリソース グループを `ResourceGroupName` パラメーターに設定して、`Get-AzRedisCache` を実行します。
+特定のキャッシュに関する情報を取得するには、キャッシュの名前を `Get-AzRedisCache` パラメーターに設定し、そのキャッシュが含まれているリソース グループを `Name` パラメーターに設定して、`ResourceGroupName` を実行します。
 
     PS C:\> Get-AzRedisCache -Name myCache -ResourceGroupName myGroup
 
@@ -529,7 +529,7 @@ Azure Cache for Redis インスタンスを更新するには、[Set-AzRedisCach
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-キャッシュのプライマリ キーまたはセカンダリ キーを再生成するには、`New-AzRedisCacheKey` コマンドレットを呼び出し、名前とリソース グループを渡して、`KeyType` パラメーターに `Primary` または `Secondary` を指定します。 次の例では、キャッシュのセカンダリ アクセス キーが再生成されます。
+キャッシュのプライマリ キーまたはセカンダリ キーを再生成するには、`New-AzRedisCacheKey` コマンドレットを呼び出し、名前とリソース グループを渡して、`Primary` パラメーターに `Secondary` または `KeyType` を指定します。 次の例では、キャッシュのセカンダリ アクセス キーが再生成されます。
 
     PS C:\> New-AzRedisCacheKey -Name myCache -ResourceGroupName myGroup -KeyType Secondary
 
@@ -775,9 +775,9 @@ Azure Cache for Redis インスタンスを再起動するには、`Reset-AzRedi
 Azure での Windows PowerShell の使用の詳細については、次のリソースをご覧ください。
 
 * [MSDN 上の Azure Cache for Redis コマンドレットのドキュメント](https://docs.microsoft.com/powershell/module/az.rediscache)
-* [Azure Resource Manager コマンドレット](https://go.microsoft.com/fwlink/?LinkID=394765): Azure Resource Manager モジュールのコマンドレットを使用する方法について説明しています。
-* [リソース グループを使用した Azure リソースの管理](../azure-resource-manager/templates/deploy-portal.md): Azure portal 上でリソース グループを作成および管理する方法について説明しています。
-* [Azure のブログ](https://azure.microsoft.com/blog/): Azure の新機能について説明しています。
-* [Windows PowerShell のブログ](https://blogs.msdn.com/powershell): Windows PowerShell の新機能について説明しています。
-* ["Hey, Scripting Guy!"ブログ](https://blogs.technet.com/b/heyscriptingguy/): 実践で使えるヒントとテクニックを Windows PowerShell コミュニティから得られます。
+* [Azure Resource Manager コマンドレットに関するページ](https://go.microsoft.com/fwlink/?LinkID=394765): Azure Resource Manager モジュールのコマンドレットを使用する方法について説明します。
+* [リソース グループを使用した Azure リソースの管理](../azure-resource-manager/templates/deploy-portal.md): Azure ポータルでリソース グループを作成して管理する方法について説明します。
+* [Azure blog (Azure のブログ)](https://azure.microsoft.com/blog/): Azure の新機能について説明します。
+* [Windows PowerShell blog (Windows PowerShell ブログ)](https://blogs.msdn.com/powershell): Windows PowerShell の新機能について説明します。
+* ["Hey, Scripting Guy!" ブログ](https://blogs.technet.com/b/heyscriptingguy/): 実践で使えるヒントとテクニックを Windows PowerShell コミュニティから得られます。
 

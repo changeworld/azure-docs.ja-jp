@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: d2b8b2fecbf85e6590294f1fbd7ff2a4453b9e87
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460752"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236795"
 ---
 # <a name="create-a-basic-index-in-azure-cognitive-search"></a>Azure Cognitive Search で基本インデックスを作成する
 
@@ -145,7 +145,7 @@ Azure Cognitive Search における*インデックス*とは、Azure Cognitive 
 スキーマを定義する際に、インデックスの各フィールドの名前、型、属性を指定する必要があります。 フィールドの型によって、そのフィールドに格納されているデータが分類されます。 属性は個々のフィールドに設定されてフィールドの使用方法を指定します。 次の表に、指定できる型と属性をまとめます。
 
 ### <a name="data-types"></a>データ型
-| 種類 | 説明 |
+| Type | 説明 |
 | --- | --- |
 | *Edm.String* |フルテキスト検索 (単語区切り、ステミングなど) のために必要に応じてトークン化できるテキスト。 |
 | *Collection(Edm.String)* |フルテキスト検索のために必要に応じてトークン化することのできる一連の文字列。 コレクション内の項目の数に理論上の上限はありませんが、ペイロードのサイズに対する 16 MB の上限がコレクションに適用されます。 |
@@ -166,7 +166,7 @@ Azure Cognitive Search の[サポートされるデータ型](https://docs.micro
 
 インデックスの作成に使用する API には、さまざまな既定の動作があります。 [REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Index) の場合、ほとんどの属性は既定で有効であり (たとえば、文字列フィールドの **searchable** および **retrievable** は true です)、無効にする場合は、単にそれらを設定するだけです。 .NET SDK の場合は、逆のことが言えます。 明示的に設定していないプロパティの場合、既定では、特に有効にしない限り、対応する検索動作は無効にされています。
 
-| Attribute | 説明 |
+| 属性 | 説明 |
 | --- | --- |
 | `key` |ドキュメント検索に使用される各ドキュメントの一意の ID を提供する文字列です。 各インデックスに、1 つのキーが必要です。 1 つのフィールドだけをキーにすることができ、その型を Edm.String に設定する必要があります。 |
 | `retrievable` |検索結果でフィールドを返すことができるかどうかを設定します。 |

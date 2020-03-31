@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
 ms.openlocfilehash: d0f96fe758966a435f8fb8e448e75cbb18b85122
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77604513"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>Azure Security Center で Disk Encryption を適用する
@@ -47,7 +47,7 @@ Security Center で暗号化が必要と識別された Azure Virtual Machines �
 
 Azure Virtual Machines に使用できる方法はたくさんあります。 既に Azure PowerShell または Azure CLI についてよく知っている方は、他の方法を好む場合もあります。 こうした方法の詳細については、「[Azure Disk Encryption](../security/fundamentals/encryption-overview.md)」を参照してください。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 このドキュメントでは、"ディスク暗号化の適用" というセキュリティ センターの推奨事項を実装する方法について説明しました。 ディスク暗号化の詳細については、以下を参照してください。
 
 * [Encryption and key management with Azure Key Vault (Azure Key Vault を使用した暗号化とキー管理) (Azure Key Vault を使用した暗号化とキー管理)](https://azure.microsoft.com/documentation/videos/azurecon-2015-encryption-and-key-management-with-azure-key-vault/) 」(動画、36 分 39 秒) -- IaaS VM と Azure Key Vault のディスク暗号化管理を使用し、データを保護する方法について説明しています。

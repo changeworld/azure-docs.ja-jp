@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: robinsh
 ms.openlocfilehash: 3613062cf8765a4aec3327b660bb5818898f2dd1
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110420"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>IoT Hub を使用したクラウドからデバイスへのメッセージの送信 (Python)
@@ -53,7 +53,7 @@ cloud-to-device メッセージの詳細については、[IoT Hub 開発者ガ�
 
 1. テキスト エディターを使って、**SimulatedDevice.py** ファイルを作成します。
 
-2. **SimulatedDevice.py** ファイルの先頭に、次の `import` ステートメントと変数を追加します。
+2. `import`SimulatedDevice.py**ファイルの先頭に、次の** ステートメントと変数を追加します。
 
    ```python
     import threading
@@ -124,7 +124,7 @@ cloud-to-device メッセージの詳細については、[IoT Hub 開発者ガ�
 
 1. テキスト エディターを使って、**SendCloudToDeviceMessage.py** ファイルを作成します。
 
-2. **SendCloudToDeviceMessage.py** ファイルの先頭に、次の `import` ステートメントと変数を追加します。
+2. `import`SendCloudToDeviceMessage.py**ファイルの先頭に、次の** ステートメントと変数を追加します。
 
     ```python
     import random

@@ -4,10 +4,10 @@ description: Service Fabric の DNS サービスを使用して、クラスタ�
 ms.topic: conceptual
 ms.date: 7/20/2018
 ms.openlocfilehash: 317aa81238ec7a0dc24b69b1d00568901b9bc34f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75458034"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric の DNS サービス
@@ -46,7 +46,7 @@ Service Fabric バージョン 6.3 以降では、Service Fabric の DNS プロ�
 
 テンプレートが用意されたら、次の手順で DNS サービスを有効にできます。
 
-1. `Microsoft.ServiceFabric/clusters` リソースの `apiversion` が `2017-07-01-preview` 以降に設定されていることを確認し、設定されていない場合は、それを次の例に示すように更新します。
+1. `apiversion` リソースの `2017-07-01-preview` が `Microsoft.ServiceFabric/clusters` 以降に設定されていることを確認し、設定されていない場合は、それを次の例に示すように更新します。
 
     ```json
     {
@@ -60,7 +60,7 @@ Service Fabric バージョン 6.3 以降では、Service Fabric の DNS プロ�
 
 2. ここで、次のいずれかの方法で DNS サービスを有効にします。
 
-   - 既定の設定で DNS サービスを有効にするには、次の例のように、`properties` セクション内の `addonFeatures` セクションに DNS サービスを追加します。
+   - 既定の設定で DNS サービスを有効にするには、次の例のように、`addonFeatures` セクション内の `properties` セクションに DNS サービスを追加します。
 
         ```json
           "properties": {
@@ -72,7 +72,7 @@ Service Fabric バージョン 6.3 以降では、Service Fabric の DNS プロ�
           }
         ```
 
-   - 既定以外の設定でサービスを有効にするには、`properties` セクション内の `fabricSettings` セクションに `DnsService` セクションを追加します。 このケースでは、DnsService を `addonFeatures` に追加する必要はありません。 DNS サービスに関して設定できるプロパティの詳細については、[DNS サービスの設定](./service-fabric-cluster-fabric-settings.md#dnsservice)に関するページを参照してください。
+   - 既定以外の設定でサービスを有効にするには、`DnsService` セクション内の `fabricSettings` セクションに `properties` セクションを追加します。 このケースでは、DnsService を `addonFeatures` に追加する必要はありません。 DNS サービスに関して設定できるプロパティの詳細については、[DNS サービスの設定](./service-fabric-cluster-fabric-settings.md#dnsservice)に関するページを参照してください。
 
        ```json
            "properties": {

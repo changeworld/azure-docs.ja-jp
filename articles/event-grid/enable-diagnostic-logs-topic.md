@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/30/2020
 ms.author: spelluru
 ms.openlocfilehash: a32d26629bb9efed4a4f1f49eee2f0534e1873a9
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76960204"
 ---
 #  <a name="diagnostic-logs-for-an-azure-event-grid-topic"></a>Azure Event Grid トピックの診断ログ
@@ -28,7 +28,7 @@ Event Grid ユーザーは、診断設定を使用して、Azure ストレージ
 
 ## <a name="steps-for-enabling-diagnostic-logs-for-a-topic"></a>トピックの診断ログを有効にする手順
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. 診断ログ設定を有効にするイベント グリッド トピックに移動します。 
 3. 左側のメニューの **[監視]** の下にある **[診断設定]** を選択します。
 4. **[診断設定]** ページで、 **[Add New Diagnostic Setting]\(新しい診断設定の追加\)** を選択します。 

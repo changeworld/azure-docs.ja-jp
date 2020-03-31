@@ -4,15 +4,15 @@ description: この記事では、モデルのメタデータとデータを Azu
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3f63ecf560a14248fed6dea53c30a27acdf9a938
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 83da2024ab74b705b45a5891f6b40251020dad31
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73573446"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408667"
 ---
 # <a name="backup-and-restore"></a>バックアップと復元
 
@@ -37,7 +37,7 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 
 2.  **[有効]** をクリックし、 **[ストレージの設定]** をクリックします。
 
-    ![有効化](./media/analysis-services-backup/aas-backup-enable.png)
+    ![[有効化]](./media/analysis-services-backup/aas-backup-enable.png)
 
 3. 既存のストレージ アカウントを選択するか、新しいアカウントを作成します。
 
@@ -73,7 +73,7 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 ### <a name="powershell"></a>PowerShell
 [Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase) コマンドレットを使用します。
 
-## <a name="restore"></a>復元
+## <a name="restore"></a>[復元]
 復元の際、バックアップ ファイルは、サーバー用に構成したストレージ アカウントにある必要があります。 バックアップ ファイルをオンプレミスの場所からストレージ アカウントに移動する必要がある場合は、[Microsoft Azure ストレージ エクスプローラー](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)か、[AzCopy](../storage/common/storage-use-azcopy.md) コマンドライン ユーティリティを使用してください。 
 
 

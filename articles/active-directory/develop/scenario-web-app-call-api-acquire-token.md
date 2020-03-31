@@ -15,10 +15,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: abf7d800eda376c21dfdd672032ddb65e27355be
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76759076"
 ---
 # <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Web API を呼び出す Web アプリ:アプリのトークンを取得する
@@ -28,7 +28,7 @@ ms.locfileid: "76759076"
 - トークン キャッシュを使用して Web API のトークンを取得します。 このトークンを取得するには、`AcquireTokenSilent` メソッドを呼び出します。
 - 保護された API を呼び出して、アクセス トークンをパラメーターとして渡します。
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 コントローラー メソッドは、ユーザーが Web アプリを使用するために認証されるようにする `[Authorize]` 属性によって保護されます。 以下に、Microsoft Graph を呼び出すコードを示します。
 
@@ -75,7 +75,7 @@ public async Task<IActionResult> Profile()
 
 このような高度な手順については、[3-WebApp-multi-APIs](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/3-WebApp-multi-APIs) チュートリアルの第 3 章を参照してください。
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 ASP.NET のコードは、ASP.NET Core 用に示したコードと似ています。
 
@@ -83,7 +83,7 @@ ASP.NET のコードは、ASP.NET Core 用に示したコードと似ていま�
 - そこから、MSAL.NET `IConfidentialClientApplication` オブジェクトを構築します。
 - 最後に、機密クライアント アプリケーションの `AcquireTokenSilent` メソッドを呼び出します。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Java のサンプルでは、API を呼び出すコードは getUsersFromGraph メソッド ([AuthPageController.java#L62](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L62)) にあります。
 
@@ -145,7 +145,7 @@ public ModelAndView getUserFromGraph(HttpServletRequest httpRequest, HttpServlet
 // Code omitted here
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Python のサンプルでは、Microsoft Graph を呼び出すコードは [app.py#L53-L62](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/48637475ed7d7733795ebeac55c5d58663714c60/app.py#L53-L62) にあります。
 

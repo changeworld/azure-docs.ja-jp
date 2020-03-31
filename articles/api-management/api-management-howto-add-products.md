@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 08/10/2018
 ms.author: apimpm
 ms.openlocfilehash: 813117bce4abd3550ac559109c1650ea4a7cff5c
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74538257"
 ---
 # <a name="create-and-publish-a-product"></a>製品を作成して発行する  
@@ -69,7 +69,7 @@ Azure API Management の製品には、少なくとも 1 つの API に加え、
 
 **[アクセス制御]** タブで、開発者やゲスト向けに製品の可視性を設定します。
 
-## <a name="add-apis"> </a>製品への API の追加
+## <a name="add-apis-to-a-product"></a><a name="add-apis"> </a>製品への API の追加
 
 製品には、1 つまたは複数の API が関連付けられています。 複数の API を組み込み、開発者ポータルを通じてそれらを開発者に提供できます。 製品の作成時に既存の API を追加できます。 製品には後から API を追加できます。 **[設定]** ページを使用して追加することも、API の作成時に追加することもできます。
 
@@ -87,7 +87,7 @@ Azure API Management の製品には、少なくとも 1 つの API に加え、
 > [!TIP]
 > [REST API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription/createorupdate) または PowerShell コマンドを通じてカスタム サブスクリプション キーを使用して、"*製品*" へのユーザーのサブスクリプションを作成または更新できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

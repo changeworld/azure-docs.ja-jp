@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: 6c737af85e2a7205dca6a56174dfda565da1410d
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: a76852a6e3cc5ffcdfcac62ce29fe47c97af3df1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304322"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79136161"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の推奨事項とベスト プラクティス
 
@@ -43,7 +43,7 @@ ms.locfileid: "78304322"
 | 移行計画を作成する |事前に計画を作成することによって、移行を円滑に進めることができます。 [ユーザー移行](user-migration.md)の詳細について確認してください。|
 | 使いやすさとセキュリティ | ソリューションでは、アプリケーションの使いやすさと組織におけるリスクの許容レベルとの間で適切なバランスを取る必要があります。 |
 | オンプレミスの依存関係をクラウドに移行する | ソリューションの回復性を確保できるようにするために、クラウドへの既存のアプリケーションの依存関係の移行を検討してください。 |
-| 既存のアプリを b2clogin.com に移行する | login.microsoftonline.com の廃止は、2020 年 12 月 4 日にすべての Azure AD B2C テナントに対して有効になります。 [詳細については、こちらを参照してください](b2clogin.md)。 |
+| 既存のアプリを b2clogin.com に移行する | login.microsoftonline.com の廃止は、2020 年 12 月 4 日にすべての Azure AD B2C テナントに対して有効になります。 詳細については、[こちら](b2clogin.md)をご覧ください。 |
 
 ## <a name="implementation"></a>実装
 
@@ -51,7 +51,7 @@ ms.locfileid: "78304322"
 
 |  |  |
 |--|--|
-| Visual Studio Code 用 Azure AD B2C 拡張機能を使用してカスタム ポリシーを編集する | Visual Studio Code と、このコミュニティによって構築された[拡張機能を Visual Studio Code Marketplace から]((https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c))ダウンロードします。 Microsoft の公式製品ではありませんが、Visual Studio Code 用の Azure AD B2C 拡張機能には、カスタム ポリシーの操作をより簡単にするのに役立つ機能がいくつか含まれています。 |
+| Visual Studio Code 用 Azure AD B2C 拡張機能を使用してカスタム ポリシーを編集する | Visual Studio Code と、このコミュニティによって構築された[拡張機能を Visual Studio Code Marketplace から](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c)ダウンロードします。 Microsoft の公式製品ではありませんが、Visual Studio Code 用の Azure AD B2C 拡張機能には、カスタム ポリシーの操作をより簡単にするのに役立つ機能がいくつか含まれています。 |
 | Azure AD B2C のトラブルシューティングを行う方法について確認する | 開発時に[カスタム ポリシーのトラブルシューティング](https://docs.microsoft.com/azure/active-directory-b2c/troubleshoot-custom-policies?tabs=applications)を行う方法について確認してください。 通常の認証フローとはどのようになるか確認し、異常やエラーを検出するためのツールを使用します。 たとえば、[Application Insights](troubleshoot-with-application-insights.md) を使用して、ユーザー体験の出力ログを確認します。 |
 | 実績のあるカスタム ポリシー パターンからなる Microsoft のライブラリを活用する | 強化された Azure AD B2C カスタマー ID およびアクセス管理 (CIAM) ユーザー体験のいくつかの[サンプル](https://github.com/azure-ad-b2c/samples)を確認してください。 |
 

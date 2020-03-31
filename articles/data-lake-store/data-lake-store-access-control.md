@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 276e691351d852d6dcb0075d47bf33af6767fc10
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226092"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229887"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Store Gen1 のアクセス制御
 
@@ -27,9 +27,9 @@ Azure Data Lake Store Gen1 は、POSIX アクセス制御モデルから派生�
 
 アクセス制御リスト (ACL) には、**アクセス ACL** と**既定の ACL** の 2 種類があります。
 
-* **アクセス ACL**:オブジェクトへのアクセスを制御します。 ファイルとフォルダーの両方にアクセス ACL があります。
+* **アクセス ACL**: オブジェクトへのアクセスを制御します。 ファイルとフォルダーの両方にアクセス ACL があります。
 
-* **既定の ACL**:フォルダーに関連付けられた ACL の "テンプレート" です。この ACL によって、そのフォルダーの下に作成されるすべての子項目のアクセス ACL が決まります。 ファイルには既定の ACL がありません。
+* **既定の ACL**: フォルダーに関連付けられた ACL の "テンプレート" です。この ACL によって、そのフォルダーの下に作成されるすべての子項目のアクセス ACL が決まります。 ファイルには既定の ACL がありません。
 
 
 アクセス ACL と既定の ACL は両方とも同じ構造です。
@@ -59,7 +59,7 @@ Azure Data Lake Store Gen1 は、POSIX アクセス制御モデルから派生�
 |--------------|------------|------------------------|
 | 7            | `RWX`        | 読み取り + 書き込み + 実行 |
 | 5            | `R-X`        | 読み取り + 実行         |
-| 4            | `R--`        | 読み取り                   |
+| 4            | `R--`        | Read                   |
 | 0            | `---`        | アクセス許可なし         |
 
 
@@ -71,12 +71,12 @@ Data Lake Store Gen1 で使用されている POSIX 形式のモデルでは、�
 
 Data Lake Store Gen1 アカウントに対する特定の操作の実行に必要なアクセス許可について理解できるように、一般的なシナリオを次に示します。
 
-| Operation | Object              |    /      | Seattle/   | Portland/   | Data.txt       |
+| 操作 | Object              |    /      | Seattle/   | Portland/   | Data.txt       |
 |-----------|---------------------|-----------|------------|-------------|----------------|
-| 読み取り      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
+| Read      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
 | 追加 | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
 | 削除    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| Create    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| 作成    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | List      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
 | List      | /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
 | List      | /Seattle/Portland/  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
@@ -132,8 +132,8 @@ Data Lake Storage Gen1 でユーザーに "プライマリ グループ" が関�
 
 **新しいファイルまたはフォルダーに対する所有グループの割り当て**
 
-* **ケース 1**:ルート フォルダー "/"。 このフォルダーは、Data Lake Store Gen1 アカウントの作成時に作成されます。 この場合、所有グループはすべてゼロの GUID に設定されます。  この値では、どのようなアクセスも許可されません。  グループが割り当てられるまでのプレースホルダーです。
-* **ケース 2** (その他すべての場合):新しい項目が作成されると、所有グループが親フォルダーからコピーされます。
+* **ケース 1**: ルート フォルダー "/"。 このフォルダーは、Data Lake Store Gen1 アカウントの作成時に作成されます。 この場合、所有グループはすべてゼロの GUID に設定されます。  この値では、どのようなアクセスも許可されません。  グループが割り当てられるまでのプレースホルダーです。
+* **ケース 2** (その他すべての場合): 新しい項目が作成されると、所有グループが親フォルダーからコピーされます。
 
 **所有グループの変更**
 
@@ -297,6 +297,6 @@ GUID が表示されるのは、そのユーザーがもう Azure AD に存在�
 * [Ubuntu での POSIX ACL](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [ACL using access control lists on Linux (Linux でのアクセス制御リストを使用した ACL)](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [Azure Data Lake Storage Gen1 の概要](data-lake-store-overview.md)

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 86aaebe652968a2ea33fd8e15f9de9c1dff31a30
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: c2d1e8b4975be0657983192df00cc434da00a6f7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086970"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228371"
 ---
 # <a name="create-an-azure-storage-account"></a>Azure Storage アカウントの作成
 
@@ -75,7 +75,7 @@ Azure CLI はローカルにインストールして使用することもでき�
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-[Azure portal](https://portal.azure.com) にサインインします。
+[Azure portal](https://portal.azure.com) にサインインする
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -219,7 +219,10 @@ az group create --name $resourceGroupName --location "$location" &&
 az group deployment create --resource-group $resourceGroupName --template-file "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
 ```
 
-テンプレートを作成する方法を学習するには、以下をご覧ください。
+> [!NOTE]
+> このテンプレートは、例としてのみ機能します。 このテンプレートの一部として構成されていないストレージ アカウント設定は多数あります。 たとえば、[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) を使用する場合、`isHnsEnabledad` オブジェクトの `StorageAccountPropertiesCreateParameters` プロパティを `true` に設定して、このテンプレートを変更します。 
+
+このテンプレートの変更方法または新しいテンプレートの作成方法については、以下を参照してください。
 
 - [Azure Resource Manager のドキュメント](/azure/azure-resource-manager/)。
 - [ストレージ アカウント テンプレート リファレンス](/azure/templates/microsoft.storage/allversions)。

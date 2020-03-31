@@ -10,11 +10,11 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
 ms.openlocfilehash: 280851b2fea0b8100a7d0f8ec8105109a41c8c83
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252078"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237147"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスとは
 
@@ -38,7 +38,7 @@ Azure Machine Learning コンピューティング インスタンス (プレビ
 |事前構成済み&nbsp;または&nbsp; ML|事前に構成された最新の ML パッケージ、ディープ ラーニング フレームワーク、GPU ドライバーを使用して、セットアップ タスクの時間を節約できます。|
 |フル カスタマイズが可能|Azure VM の種類 (GPU を含む) や永続的な低レベル カスタマイズ (パッケージやドライバーのインストールなど) が広範にサポートされているので、高度なシナリオに簡単に対応できます。 |
 
-## <a name="contents"></a>ツールと環境
+## <a name="tools-and-environments"></a><a name="contents"></a>ツールと環境
 
 Azure Machine Learning コンピューティング インスタンスを使用すると、ワークスペース内の完全統合型ノートブックでモデルを作成し、トレーニングし、デプロイすることができます。
 
@@ -139,7 +139,7 @@ Azure Machine Learning Studio 内のご利用のワークスペースで、 **[�
 
 コンピューティング インスタンスは、Azure Machine Learning コンピューティング トレーニング クラスターのように、[トレーニング コンピューティング ターゲット](concept-compute-target.md#train)として使用できます。 TensorFlow/PyTorch エスティメーターを使用して分散トレーニング ジョブを実行するためのマルチ GPU VM をプロビジョニングします。 また、実行構成を作成し、それをコンピューティング インスタンス上での実験に使用することもできます。 コンピューティング インスタンスは、テストまたはデバッグのシナリオのためのローカル推論配置ターゲットとして使用できます。
 
-## <a name="notebookvm"></a>Notebook VM はどうなったのか
+## <a name="what-happened-to-notebook-vm"></a><a name="notebookvm"></a>Notebook VM はどうなったのか
 
 Notebook VM は、コンピューティング インスタンスに置き換えられつつあります。  
 

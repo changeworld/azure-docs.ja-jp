@@ -9,16 +9,18 @@ ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 892f8bb24da00f1bd5827725f40fdc4359be0937
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9d05677ec47851557594ef47499da653accad141
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906553"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79370476"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>カスタム ドメインを Azure Blob Storage エンドポイントにマップする
 
 カスタム ドメインは、BLOB サービス エンドポイントまたは[静的な Web サイト](storage-blob-static-website.md)のエンドポイントにマップできます。 
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
 > このマッピングは、サブドメイン (例: `www.contoso.com`) に対してのみ機能します。 Web エンドポイントをルート ドメイン (例: `contoso.com`) で使用できるようにする場合、Azure CDN を使用する必要があります。 ガイダンスについては、この記事の「[HTTPS が有効になっているカスタム ドメインをマップする](#enable-https)」セクションを参照してください。 この記事のそのセクションに移動してカスタム ドメインのルート ドメインを有効にするため、そのセクション内の HTTPS を有効にする手順は省略可能です。 
@@ -62,7 +64,7 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 
 4. その文字列からプロトコル識別子 (*例:* HTTPS など) と末尾のスラッシュを削除します。 次の表に例を示します。
 
-   | エンドポイントの種類 |  エンドポイント (endpoint) | ホスト名 |
+   | エンドポイントの種類 |  endpoint | ホスト名 |
    |------------|-----------------|-------------------|
    |BLOB サービス  | `https://mystorageaccount.blob.core.windows.net/` | `mystorageaccount.blob.core.windows.net` |
    |静的な Web サイト  | `https://mystorageaccount.z5.web.core.windows.net/` | `mystorageaccount.z5.web.core.windows.net` |
@@ -148,7 +150,7 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 
 4. その文字列からプロトコル識別子 (*例:* HTTPS など) と末尾のスラッシュを削除します。 次の表に例を示します。
 
-   | エンドポイントの種類 |  エンドポイント (endpoint) | ホスト名 |
+   | エンドポイントの種類 |  endpoint | ホスト名 |
    |------------|-----------------|-------------------|
    |BLOB サービス  | `https://mystorageaccount.blob.core.windows.net/` | `mystorageaccount.blob.core.windows.net` |
    |静的な Web サイト  | `https://mystorageaccount.z5.web.core.windows.net/` | `mystorageaccount.z5.web.core.windows.net` |
@@ -231,7 +233,7 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 
 カスタム ドメインのマッピングを削除するには、カスタム ドメインの登録を解除します。 次の手順のいずれかを使用します。
 
-#### <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+#### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 カスタム ドメイン設定を削除するには、次の操作を行います。
 
@@ -246,7 +248,7 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 
 カスタム ドメインが正常に削除されたら、ストレージ アカウントが正常に更新されたことを伝えるポータルの通知が表示されます。
 
-#### <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 カスタム ドメインの登録を削除するには、[az storage account update](https://docs.microsoft.com/cli/azure/storage/account) CLI コマンドを使用して、`--custom-domain` 引数値に空の文字列 (`""`) を指定します。
 
@@ -268,7 +270,7 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
       --custom-domain ""
   ```
 
-#### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

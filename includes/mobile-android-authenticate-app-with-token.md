@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: crdun
 ms.openlocfilehash: deb94cab97bd9a402676cdc5c0239da8d07ed8b2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67181863"
 ---
 前の例では、標準のサインインを示しました。標準のサインインでは、アプリケーションが開始されるたびに、クライアントは ID プロバイダーとバックエンド Azure サービスの両方にアクセスする必要があります。 この方法は非効率であり、多くの顧客が同時にアプリケーションを開始しようとした場合に使用率に関連する問題が発生する場合があります。 よって、Azure サービスから返される承認トークンをキャッシュし、最初にその承認トークンの使用を試してから、プロバイダー ベースのサインインを使用する方が効果的です。

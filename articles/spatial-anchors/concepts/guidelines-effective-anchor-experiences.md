@@ -9,10 +9,10 @@ ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 9a24da8d76f401f534eccf33312fbf0c2bee9f5d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74270517"
 ---
 # <a name="create-an-effective-anchor-experience-by-using-azure-spatial-anchors"></a>Azure Spatial Anchors を使用して効果的なアンカー エクスペリエンスを作成する
@@ -72,7 +72,7 @@ Spatial Anchors は適切なアンカーを作成するのに役立ちます。 
 
 多くの場合、アンカーはアプリのエクスペリエンスへのエントリ ポイントです。 ユーザーがエクスペリエンスに入ることができるように、このステップはすばやく確実に行われることが望まれます。 ユーザーがアンカーを検索する方法に時間をかけることは、重要な設計上の手順です。 "*ターゲット*" と "*部屋*" という 2 つの広範なシナリオの観点から、アンカーの検索について考えると役に立ちます。
 
-### <a name="targets"></a>ターゲット
+### <a name="targets"></a>対象サーバー
 
 ターゲットのシナリオでは、アンカーの場所はよく知られています。 たとえば、架空の複合現実絵画アプリでは、1 人のユーザーが壁に仮想キャンバスを配置します。 そのユーザーは、室内の他のユーザーに、壁の同じ場所にデバイスを向けてアンカーを特定し、エクスペリエンスを開始するよう指示します。
 

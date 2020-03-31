@@ -17,17 +17,17 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 68aa62ad34f8db531d439a581ef024862da0f90c
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162312"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Azure イベント ハブの診断ログを設定する
 
 Azure Event Hubs の 2 種類のログを表示できます。
 
-* **[アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)** : これらのログには、ジョブで実行された操作に関する情報が含まれます。 このログは常に有効になっています。
+* **[アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)** : これらのログには、ジョブで実行される操作に関する情報が含まれます。 このログは常に有効になっています。
 * **[診断ログ](../azure-monitor/platform/platform-logs-overview.md)** : 診断ログを構成することで、ジョブで発生するすべてのイベントについて、より深く考察できます。 診断ログは、ジョブが作成されたときからジョブが削除されるまでのアクティビティを記録します。ジョブの実行中に発生した更新やアクティビティも含まれます。
 
 ## <a name="enable-diagnostic-logs"></a>Traffic Manager で診断ログを有効にする

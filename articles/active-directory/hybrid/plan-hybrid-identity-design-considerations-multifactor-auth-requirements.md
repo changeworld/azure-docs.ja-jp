@@ -1,6 +1,6 @@
 ---
 title: ハイブリッド ID 設計 - 多要素認証要件 - Azure | Microsoft Docs
-description: 条件を利用してアクセスを制御する Azure Active Directory は、ユーザーの認証時、アプリケーションにアクセスを与える前に、選択された特定の条件を確認します。 条件が満たされていれば、ユーザーは承認され、アプリケーションにアクセスできます。
+description: 条件付きアクセス制御を使用して、Azure Active Directory では、ユーザーの認証時、アプリケーションにアクセスを与える前に、選択された特定の条件を確認します。 条件が満たされていれば、ユーザーは承認され、アプリケーションにアクセスできます。
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4743195fc79d43571ec79a13b8518edc7e81379b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67109290"
 ---
 # <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションの多要素認証要件の決定
@@ -55,9 +55,9 @@ ms.locfileid: "67109290"
 * 会社はアプリのすべての有資格ユーザーに対して MFA を有効にする必要がありますか。それとも、管理者だけですか。
 * MFA を常に有効にする必要がありますか。それとも、ユーザーが企業ネットワークの外からログインしたときだけですか。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [ハイブリッド ID 導入戦略の定義](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 [設計上の考慮事項の概要](plan-hybrid-identity-design-considerations-overview.md)
 

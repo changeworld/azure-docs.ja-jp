@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: tagore
 ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972942"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233815"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>クラウド サービスの監視の概要
 
-どのクラウド サービスでも主要なパフォーマンス メトリックを監視することができます。 各クラウド サービス ロールでは、最小限のデータ (CPU 使用率、ネットワーク使用率、ディスク使用率) を収集します。 クラウド サービスにより `Microsoft.Azure.Diagnostics` 拡張機能がロールに適用されている場合、そのロールはその他のデータ ポイントを収集できます。 この記事では、クラウド サービス対応の Azure Diagnostics の概要について説明します。
+どのクラウド サービスでも主要なパフォーマンス メトリックを監視することができます。 各クラウド サービス ロールは最小限のデータ (CPU 使用率、ネットワーク使用状況、ディスク使用率) を収集します。 クラウド サービスにより `Microsoft.Azure.Diagnostics` 拡張機能がロールに適用されている場合、そのロールはその他のデータ ポイントを収集できます。 この記事では、クラウド サービス対応の Azure Diagnostics の概要について説明します。
 
 ベーシックな監視機能では、ロール インスタンスのパフォーマンス カウンター データは、3 分間隔でサンプリングされて収集されます。 このベーシックな監視のデータはストレージ アカウントには格納されないため、追加のコストが伴うことはありません。
 

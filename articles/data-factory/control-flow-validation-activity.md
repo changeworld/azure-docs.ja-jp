@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.openlocfilehash: f63c78c59d7d6be3c66ea0785389eff73e3bff60
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73678362"
 ---
 # <a name="validation-activity-in-azure-data-factory"></a>Azure Data Factory の検証アクティビティ
@@ -60,22 +60,22 @@ ms.locfileid: "73678362"
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-名前 | '検証' アクティビティの名前 | string | はい |
-type | **Validation** に設定する必要があります。 | string | はい |
+name | '検証' アクティビティの名前 | String | はい |
+type | **Validation** に設定する必要があります。 | String | はい |
 dataset | アクティビティは、このデータセット参照が存在していて指定された条件を満たしていること、またはタイムアウトに達していることを検証するまで、実行をブロックします。 提供するデータセットは、"MinimumSize" または "ChildItems" プロパティをサポートする必要があります。 | データセット参照 | はい |
-timeout | アクティビティの実行に関するタイムアウトを指定します。 値が指定されていない場合は、既定値の 7 日 ("7.00:00:00") が使用されます。 形式は d.hh:mm:ss です | string | いいえ |
-sleep | 検証の試行間の遅延 (秒単位)。 値が指定されていない場合は、既定値の 10 秒が使用されます。 | 整数 | いいえ |
+timeout | アクティビティの実行に関するタイムアウトを指定します。 値が指定されていない場合は、既定値の 7 日 ("7.00:00:00") が使用されます。 形式は d.hh:mm:ss です | String | いいえ |
+sleep | 検証の試行間の遅延 (秒単位)。 値が指定されていない場合は、既定値の 10 秒が使用されます。 | Integer | いいえ |
 childItems | フォルダーに子項目があるかどうかチェックします。 次のいずれかに設定できます。true:フォルダーが存在していることと項目があることを検証します。 フォルダー内に少なくとも 1 つの項目が存在するか、タイムアウト値に到達するまで、ブロックします。-false:フォルダーが存在していることと、それが空であることを検証します。 フォルダーが空になるまで、またはタイムアウト値に達するまで、ブロックします。 値が指定されていない場合、フォルダーが存在するかタイムアウトに達するまで、アクティビティはブロックされます。 | Boolean | いいえ |
-minimumSize | ファイルの最小サイズ (バイト単位)。 値が指定されていない場合は、既定値の 0 バイトが使用されます | 整数 | いいえ |
+minimumSize | ファイルの最小サイズ (バイト単位)。 値が指定されていない場合は、既定値の 0 バイトが使用されます | Integer | いいえ |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Data Factory でサポートされている他の制御フロー アクティビティを参照してください。
 
 - [If Condition アクティビティ](control-flow-if-condition-activity.md)
 - [ExecutePipeline アクティビティ](control-flow-execute-pipeline-activity.md)
 - [ForEach アクティビティ](control-flow-for-each-activity.md)
-- [GetMetadata アクティビティ](control-flow-get-metadata-activity.md)
+- [メタデータの取得アクティビティ](control-flow-get-metadata-activity.md)
 - [ルックアップ アクティビティ](control-flow-lookup-activity.md)
 - [Web アクティビティ](control-flow-web-activity.md)
 - [Until アクティビティ](control-flow-until-activity.md)

@@ -20,15 +20,15 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 06eb29f2f3245d3f4fd047fb86b2b57fb1f0989e
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72793350"
 ---
 # <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>Azure Cognitive Search での OData フルテキスト検索関数 - `search.ismatch` および `search.ismatchscoring`
 
-Azure Cognitive Search では、`search.ismatch` および `search.ismatchscoring` 関数を介して [OData フィルター式](query-odata-filter-orderby-syntax.md)のコンテキストでのフルテキスト検索がサポートされています。 これらの関数を使用すると、[Search API](https://docs.microsoft.com/rest/api/searchservice/search-documents) の最上位の `search` パラメーターを使用しただけでは不可能な方法で、フルテキスト検索と厳密なブール値フィルタリングを組み合わせることができます。
+Azure Cognitive Search では、[ および ](query-odata-filter-orderby-syntax.md) 関数を介して `search.ismatch`OData フィルター式`search.ismatchscoring`のコンテキストでのフルテキスト検索がサポートされています。 これらの関数を使用すると、`search`Search API[ の最上位の ](https://docs.microsoft.com/rest/api/searchservice/search-documents) パラメーターを使用しただけでは不可能な方法で、フルテキスト検索と厳密なブール値フィルタリングを組み合わせることができます。
 
 > [!NOTE]
 > `search.ismatch` および `search.ismatchscoring` 関数は、[Search API](https://docs.microsoft.com/rest/api/searchservice/search-documents) のフィルター内でのみサポートされます。 これらは、[Suggest](https://docs.microsoft.com/rest/api/searchservice/suggestions) API または [Autocomplete](https://docs.microsoft.com/rest/api/searchservice/autocomplete) API ではサポートされていません。
@@ -72,9 +72,9 @@ search_mode ::= "'any'" | "'all'"
 | パラメーター名 | 種類 | 説明 |
 | --- | --- | --- |
 | `search` | `Edm.String` | 検索クエリ ([simple](query-simple-syntax.md) または [full](query-lucene-syntax.md) Lucene クエリ構文)。 |
-| `searchFields` | `Edm.String` | 検索する検索可能フィールドのコンマ区切りリスト。既定値はインデックスのすべての検索可能フィールドになります。 `search` パラメーター内で[フィールド検索](query-lucene-syntax.md#bkmk_fields)を使用すると、このパラメーターで指定したフィールドはいずれも Lucene クエリ内のフィールド指定子によってオーバーライドされます。 |
+| `searchFields` | `Edm.String` | 検索する検索可能フィールドのコンマ区切りリスト。既定値はインデックスのすべての検索可能フィールドになります。 [ パラメーター内で](query-lucene-syntax.md#bkmk_fields)フィールド検索`search`を使用すると、このパラメーターで指定したフィールドはいずれも Lucene クエリ内のフィールド指定子によってオーバーライドされます。 |
 | `queryType` | `Edm.String` | `'simple'` または `'full'`。既定値は `'simple'` です。 `search` パラメーターで使用されたクエリ言語を指定します。 |
-| `searchMode` | `Edm.String` | `'all'` または `'any'`。既定値は `'any'` です。 ドキュメントを一致としてカウントするために、`search` パラメーター内の任意の検索語句またはすべての検索語句が一致する必要があるかどうかが示されます。 `search` パラメーター内で [Lucene ブール演算子](query-lucene-syntax.md#bkmk_boolean)を使用すると、それらはこのパラメーターよりも優先されます。 |
+| `searchMode` | `Edm.String` | `'any'` または `'all'`。既定値は `'any'` です。 ドキュメントを一致としてカウントするために、`search` パラメーター内の任意の検索語句またはすべての検索語句が一致する必要があるかどうかが示されます。 [ パラメーター内で ](query-lucene-syntax.md#bkmk_boolean)Lucene ブール演算子`search`を使用すると、それらはこのパラメーターよりも優先されます。 |
 
 上記のパラメーターはすべて、それに対応する[Search API の検索要求パラメーター](https://docs.microsoft.com/rest/api/searchservice/search-documents)に等しくなります。
 
@@ -96,7 +96,7 @@ search_mode ::= "'any'" | "'all'"
 
 ## <a name="examples"></a>例
 
-"waterfront" という言葉の付いたドキュメントを探します。 このフィルターは `search=waterfront` を指定した[検索要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)と同じになります。
+"waterfront" という言葉の付いたドキュメントを探します。 このフィルターは [ を指定した](https://docs.microsoft.com/rest/api/searchservice/search-documents)検索要求`search=waterfront`と同じになります。
 
     search.ismatchscoring('waterfront')
 
@@ -118,7 +118,7 @@ search_mode ::= "'any'" | "'all'"
 
     search.ismatch('"hotel airport"~5', 'Description', 'full', 'any') and Rooms/any(room: not room/SmokingAllowed)
 
-## <a name="next-steps"></a>次の手順  
+## <a name="next-steps"></a>次のステップ  
 
 - [Azure Cognitive Search のフィルター](search-filters.md)
 - [Azure Cognitive Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)

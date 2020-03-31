@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 5/1/2017
 ms.custom: sfrev
 ms.openlocfilehash: 5f7b3a4d43d35f0d2965dd33c8f69143f4b3a8f7
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938905"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Azure Service Fabric Reliable Collection のトランザクションとロック モード
@@ -70,9 +70,9 @@ FIFO の保持のため、`TryPeekAsync` または `TryDequeueAsync` により R
 
 | 要求\許可 | なし | 共有 | 更新 | 排他的 |
 | --- |:--- |:--- |:--- |:--- |
-| 共有 |競合なし |競合なし |競合 |競合 |
-| 更新 |競合なし |競合なし |競合 |競合 |
-| 排他的 |競合なし |競合 |競合 |競合 |
+| 共有 |競合なし |競合なし |Conflict |Conflict |
+| 更新 |競合なし |競合なし |Conflict |Conflict |
+| 排他的 |競合なし |Conflict |Conflict |Conflict |
 
 デッドロック検出のために、Reliable Collection API のタイムアウト引数が使用されます。
 たとえば、2 つのトランザクション (T1 と T2) が K1 を読み取って更新しようとしているとします。
