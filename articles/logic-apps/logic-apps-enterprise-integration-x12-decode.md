@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/27/2017
 ms.openlocfilehash: 918516a5629f8570d54c641ffc29f2367937266f
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74792376"
 ---
 # <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack が適用された Azure Logic Apps で X12 メッセージをデコードする
@@ -57,7 +57,7 @@ Decode X12 メッセージ コネクタを使用すると、取引先契約に�
 
     ![integration account connection created](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage6.png) 
 
-    例:
+    次に例を示します。
 
     ![デコードする X12 フラット ファイル メッセージの選択](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage7.png) 
 
@@ -102,6 +102,6 @@ X12 Decode コネクタは次のタスクを実行します。
 ## <a name="view-the-swagger"></a>Swagger の表示
 [Swagger の詳細](/connectors/x12/)を参照してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Enterprise Integration Pack についての詳細情報](../logic-apps/logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack について学習する") 
 
