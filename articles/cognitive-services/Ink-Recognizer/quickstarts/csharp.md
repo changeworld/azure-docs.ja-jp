@@ -39,7 +39,7 @@ ms.locfileid: "77137894"
         3. `Newtonsoft.Json` を探して、パッケージをインストールします
 - Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
 
-- このクイックスタートのインク ストローク データのサンプルは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-ink-strokes.json) にあります。
+- このクイックスタートのインク ストローク データのサンプルは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Vision/InkRecognition/quickstart/example-ink-strokes.json) にあります。
 
 ### <a name="create-an-ink-recognizer-resource"></a>Ink Recognizer リソースを作成する
 
@@ -90,7 +90,7 @@ ms.locfileid: "77137894"
 
 ## <a name="run-the-application-and-view-the-response"></a>アプリケーションを実行し、応答を表示する
 
-アプリケーションを実行します。 成功応答が JSON 形式で返されます。 JSON 応答は [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-response.json) でも確認できます。
+アプリケーションを実行します。 成功応答が JSON 形式で返されます。 JSON 応答は [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Vision/InkRecognition/quickstart/example-response.json) でも確認できます。
 
 
 ## <a name="next-steps"></a>次のステップ
