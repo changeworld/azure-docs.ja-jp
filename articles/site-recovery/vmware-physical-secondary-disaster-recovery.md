@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
 ms.openlocfilehash: 71d230c9fea25edfbf0ca4ea40f15b69779ad060
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620531"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228803"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>オンプレミスの VMware 仮想マシンまたは物理サーバーのセカンダリ サイトへのディザスター リカバリーをセットアップする
 
@@ -53,7 +53,7 @@ o   物理マシンの場合は、この[チュートリアル](./physical-azure
 **レプリケート** |ディスク (Windows および Linux) |ボリューム - Windows<br> ディスク - Linux
 **共有ディスク クラスター** |サポートされていません|サポートされています
 **データ チャーンの制限 (平均)** |ディスクあたり 10 MB/秒のデータ<br> VM あたり 25 MB/秒のデータ<br> [詳細情報](./site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) | ディスクあたり 10 MB/秒を超えるデータ  <br> VM あたり 25 MB/秒を超えるデータ
-**監視** |Azure Portal から|CX (構成サーバー) から
+**Monitoring** |Azure Portal から|CX (構成サーバー) から
 **サポート マトリックス** | [詳しくは、ここをクリック](./vmware-physical-azure-support-matrix.md)|[ASR Scout 互換のマトリックスのダウンロード](https://aka.ms/asr-scout-cm)
 
 
@@ -143,7 +143,7 @@ o   物理マシンの場合は、この[チュートリアル](./physical-azure
 ## <a name="updates"></a>更新プログラム
 
 ### <a name="site-recovery-scout-801-update-7"></a>Site Recovery Scout 8.0.1 更新プログラム 7 
-更新日:2018 年 12 月 31 日 [Scout 更新プログラム 7](https://aka.ms/asr-scout-update7) をダウンロードします。
+更新:2018 年 12 月 31 日 [Scout 更新プログラム 7](https://aka.ms/asr-scout-update7) をダウンロードします。
 Scout 更新プログラム 7 は完全なインストーラーであり、新規インストールにも、以前の更新プログラム (更新プログラム 1 から更新プログラム 6) に含まれる既存のエージェント/MT のアップグレードにも使用できます。 更新プログラム 1 から更新プログラム 6 までのすべての修正と、下記の新しい修正および拡張機能が含まれています。
  
 #### <a name="new-features"></a>新機能
@@ -151,10 +151,10 @@ Scout 更新プログラム 7 は完全なインストーラーであり、新�
 * TLS v1.2 のサポート
 
 #### <a name="bug-and-security-fixes"></a>バグとセキュリティの修正
-* 修正済み:Windows クラスター/スタンドアロン マシンには、復旧/DR ドリルに正しくない IP 構成があります。
-* 修正済み:V2V クラスターのディスク追加操作が失敗することがあります。
+* 固定:Windows クラスター/スタンドアロン マシンには、復旧/DR ドリルに正しくない IP 構成があります。
+* 固定:V2V クラスターのディスク追加操作が失敗することがあります。
 * 修正済み: マスター ターゲットが Windows Server 2016 の場合、復旧フェーズの間に、vContinuum ウィザードがスタックします
-* 修正済み:MySQL をバージョン 5.7.23 にアップグレードすることで、MySQL のセキュリティの問題が軽減されます
+* 固定:MySQL をバージョン 5.7.23 にアップグレードすることで、MySQL のセキュリティの問題が軽減されます
 
 #### <a name="manual-upgrade-for-php-and-mysql-on-csps-and-rx"></a>CS、PS、RX での PHP と MySQL の手動アップグレード
 構成サーバー、プロセス サーバー、RX サーバーで、PHP スクリプト プラットフォームをバージョン 7.2.10 にアップグレードする必要があります。
@@ -162,7 +162,7 @@ Scout 更新プログラム 7 は完全なインストーラーであり、新�
 [クイック インストール ガイド](https://aka.ms/asr-scout-quick-install-guide)で説明されている手動の手順に従って、PHP と MySQL のバージョンをアップグレードしてください。
 
 ### <a name="site-recovery-scout-801-update-6"></a>Site Recovery Scout 8.0.1 更新プログラム 6 
-更新日:2017 年 10 月 12 日
+更新:2017 年 10 月 12 日
 
 [Scout 更新プログラム 6](https://aka.ms/asr-scout-update6) をダウンロードします。
 
@@ -231,7 +231,7 @@ Scout 更新プログラム 5 は累積的な更新プログラムです。 更�
     * SCSI が一致しない問題のために単一ノード クラスター保護が失敗する問題を修正。 
     * ターゲット クラスター ディスクが存在する場合、P2V Windows クラスター サーバーの再保護が失敗する問題を修正。 
     
-* 修正済み:フェールバック保護中に、選択されたマスター ターゲット サーバーが保護されたソース マシンと同じ ESXi サーバーにない場合 (フォワード保護中)、フェールバック回復中に vContinuum が間違ったマスター ターゲット サーバーを取得し、回復操作が失敗する。
+* 固定:フェールバック保護中に、選択されたマスター ターゲット サーバーが保護されたソース マシンと同じ ESXi サーバーにない場合 (フォワード保護中)、フェールバック回復中に vContinuum が間違ったマスター ターゲット サーバーを取得し、回復操作が失敗する。
 
 > [!NOTE]
 > * P2V クラスター修正は、Site Recovery Scout 更新プログラム 5 で新しく保護された物理 MSCS クラスターのみに適用されます。 以前の更新プログラムを持つ保護された P2V MSCS クラスターに、クラスターの修正をインストールするには、[Site Recovery Scout リリース ノート](https://aka.ms/asr-scout-release-notes)のセクション 12 に記載されているアップグレードの手順に従います。
@@ -318,7 +318,7 @@ Site Recovery の更新プログラムはすべて累積的です。 更新プ�
 
 更新プログラム 2 の修正内容は次のとおりです。
 
-* **構成サーバー**:構成サーバーが Azure Site Recovery 資格情報コンテナーに登録される際に、31 日間の無料計測機能が予期どおりに動作しない問題。
+* **構成サーバー**: 構成サーバーが Azure Site Recovery 資格情報コンテナーに登録される際に、31 日間の無料計測機能が予期どおりに動作しない問題。
 * **統合エージェント**:マスター ターゲット サーバーをバージョン 8.0 から 8.0.1 にアップグレードする際に更新プログラムがインストールされないという更新プログラム 1 の問題の修正。
 
 ### <a name="azure-site-recovery-scout-801-update-1"></a>Azure Site Recovery Scout 8.0.1 更新プログラム 1

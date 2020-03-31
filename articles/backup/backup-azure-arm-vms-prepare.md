@@ -4,11 +4,11 @@ description: Azure Backup を使用して Recovery Services コンテナーに A
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.openlocfilehash: aeadd7bc798f690c67eef38c6dc645204ff39115
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705549"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233943"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Recovery Services コンテナーに Azure VM をバックアップする
 
@@ -168,10 +168,10 @@ ms.locfileid: "76705549"
 
 **スナップショット** | **コンテナーへのデータ転送** | **ジョブの状態**
 --- | --- | ---
-[完了] | 進行中 | 進行中
-[完了] | スキップ | [完了]
-[完了] | [完了] | [完了]
-[完了] | 失敗 | 警告で完了
+完了 | 進行中 | 進行中
+完了 | スキップ | 完了
+完了 | 完了 | 完了
+完了 | 失敗 | 警告で完了
 失敗 | 失敗 | 失敗
 
 この機能により、同じ VM に対して 2 つのバックアップを並列に実行できるようになりましたが、どちらのフェーズ (スナップショット、コンテナーへのデータ転送) でも実行できるのは 1 つのサブタスクだけです。 この分離機能により、進行中のバックアップ ジョブが翌日のバックアップになって失敗するシナリオは回避されます。 次の日のバックアップは、前の日のバックアップ ジョブが進行中の状態にある場合、**コンテナーへのデータ転送**がスキップされた状態でスナップショットを完了できます。

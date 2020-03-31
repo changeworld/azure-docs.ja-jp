@@ -1,21 +1,20 @@
 ---
 title: Azure SQL Database Edge プレビューでの ONNX を使用した機械学習と AI | Microsoft Docs
 description: Azure SQL Database Edge プレビューの機械学習では、Open Neural Network Exchange (ONNX) 形式のモデルがサポートされています。 ONNX とは、さまざまな機械学習フレームワークとツールの間でモデルを交換する場合に使用できるオープン形式です。
-keywords: SQL Database Edge をデプロイする
+keywords: sql database edge のデプロイ
 services: sql-database-edge
 ms.service: sql-database-edge
 ms.subservice: machine-learning
 ms.topic: conceptual
-author: ronychatterjee
-ms.author: achatter
-ms.reviewer: davidph
-ms.date: 11/07/2019
-ms.openlocfilehash: bdb602598f3d8b4aaed5d6061542d540a82ebc75
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+author: dphansen
+ms.author: davidph
+ms.date: 03/26/2020
+ms.openlocfilehash: 7813a08b6b18e517b81e8c4bfac660d198eba7f7
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114598"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366276"
 ---
 # <a name="machine-learning-and-ai-with-onnx-in-sql-database-edge-preview"></a>SQL Database Edge プレビューでの ONNX を使用した機械学習と AI
 
@@ -53,7 +52,7 @@ ONNX 形式でモデルを取得するには:
 
 モデルの入力については、モデルへの各入力がテーブル内の 1 つの列に対応するように構造化する必要があります。 たとえば、pandas データフレームを使用してモデルをトレーニングする場合、各入力はモデルに対して個別の列とする必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure portal を介して SQL Database Edge をデプロイする](deploy-portal.md)
 - [Azure SQL Database Edge Preview に ONNX モデルをデプロイする](deploy-onnx.md)

@@ -7,17 +7,17 @@ ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 71321fa631bafde5b1dbaac2d165cb68fd8116d4
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164595"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235111"
 ---
 # <a name="azure-queue-storage-trigger-and-bindings-for-azure-functions-overview"></a>Azure Functions における Azure Queue storage のトリガーとバインドの概要
 
 Azure Functions は、新しい Azure Queue storage メッセージが作成されたときに実行でき、関数内でキュー メッセージを書き込むことができます。
 
-| アクション | Type |
+| アクション | 種類 |
 |---------|---------|
 | キュー ストレージのデータが変更されたときに関数を実行する | [トリガー](./functions-bindings-storage-queue-trigger.md) |
 | キュー ストレージ メッセージを書き込む |[出力バインド](./functions-bindings-storage-queue-output.md) |
@@ -28,7 +28,7 @@ Azure Functions は、新しい Azure Queue storage メッセージが作成さ�
 
 トリガーとバインドを使用するには、適切なパッケージを参照する必要があります。 NuGet パッケージは .NET クラス ライブラリに使用されますが、他のすべてのアプリケーションの種類には拡張バンドルが使用されます。
 
-| Language                                        | 追加手段                                   | 解説 
+| 言語                                        | 追加手段                                   | 解説 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | [NuGet パッケージ] バージョン 3.x をインストールする | |
 | C# スクリプト、Java、JavaScript、Python、PowerShell | [拡張機能バンドル]を登録する          | Visual Studio Code で使用するには [Azure Tools 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)をお勧めします。 |

@@ -7,10 +7,10 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 08260437076728421cb6fa393f481d27b95b1782
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461608"
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>Apache Cordova アプリへのプッシュ通知の追加
@@ -23,7 +23,7 @@ ms.locfileid: "77461608"
 
 ダウンロードされたクイック スタート サーバー プロジェクトを使用しない場合は、プッシュ通知拡張機能パッケージが必要です。 詳細については、「[Mobile Apps 用 .NET バックエンド サーバー SDK の操作][1]」を参照してください。
 
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a><a name="prerequisites"></a>前提条件
 
 このチュートリアルでは、Visual Studio 2015 で開発された Apache Cordova アプリケーションがあることを前提にしています。 このデバイスは、Google Android Emulator、Android デバイス、Windows デバイス、または iOS デバイスで実行する必要があります。
 
@@ -37,7 +37,7 @@ ms.locfileid: "77461608"
 * (iOS) [Apple Developer Program メンバーシップ][7]と iOS デバイス (iOS シミュレーターはプッシュ通知をサポートしていません)
 * (Windows) [Microsoft Store 開発者アカウント][8]と Windows 10 デバイス
 
-## <a name="configure-hub"></a>通知ハブを構成する
+## <a name="configure-a-notification-hub"></a><a name="configure-hub"></a>通知ハブを構成する
 
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
@@ -47,7 +47,7 @@ ms.locfileid: "77461608"
 
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
-## <a name="add-push-to-app"></a>Cordova アプリを変更する
+## <a name="modify-your-cordova-app"></a><a name="add-push-to-app"></a>Cordova アプリを変更する
 
 Apache Cordova アプリ プロジェクトが確実にプッシュ通知を処理する準備ができるように、Cordova プッシュ プラグインに加え、プラットフォーム固有のいずれかのプッシュ サービスをインストールします。
 
@@ -175,13 +175,13 @@ Apache Cordova アプリケーションでは、デバイスやネットワー�
 
 このセクションを完了すると、Android 用のプッシュ通知を有効にすることができます。
 
-#### <a name="enable-gcm"></a>Firebase Cloud Messaging を有効にする
+#### <a name="enable-firebase-cloud-messaging"></a><a name="enable-gcm"></a>Firebase Cloud Messaging を有効にする
 
 最初は Google Android プラットフォームを対象にしているため、Firebase Cloud Messaging を有効にする必要があります。
 
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
-#### <a name="configure-backend"></a>FCM を使用してプッシュ要求を送信するようにモバイル アプリ バックエンドを構成する
+#### <a name="configure-the-mobile-app-back-end-to-send-push-requests-using-fcm"></a><a name="configure-backend"></a>FCM を使用してプッシュ要求を送信するようにモバイル アプリ バックエンドを構成する
 
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push.md)]
 
@@ -205,7 +205,7 @@ pushRegistration = PushNotification.init({
 });
 ```
 
-#### <a name="configure-device"></a>USB デバッグ用に Android デバイスを構成する
+#### <a name="configure-your-android-device-for-usb-debugging"></a><a name="configure-device"></a>USB デバッグ用に Android デバイスを構成する
 
 Android デバイスにアプリケーションをデプロイするには、USB デバッグを有効にしておく必要があります。 Android フォンで次の手順を実行します。
 
@@ -369,7 +369,7 @@ Visual Studio で、**Windows-x64** や **Windows-x86** などの Windows プラ
 
 項目が追加されたときに、通知が受信されていることを確認します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a><a name="next-steps"></a>次のステップ
 
 * プッシュ通知の詳細については、 [Notification Hubs][17] に関する記事を参照してください。
 * まだ実行していない場合は、チュートリアルを続行して Apache Cordova アプリに[認証を追加][14]してください。

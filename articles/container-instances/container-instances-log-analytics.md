@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 01/08/2020
 ms.author: danlep
 ms.openlocfilehash: 304e98fff386911b878877d2f03d489d0eef5dd7
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75770545"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Azure Monitor ログによるコンテナー グループおよびインスタンスのログ記録
@@ -98,7 +98,7 @@ az container create --resource-group myResourceGroup --name mycontainergroup001 
 
 コマンドを発行した直後に、Azure から展開の詳細を含む応答を受け取るはずです。
 
-## <a name="view-logs"></a>ログを表示する。
+## <a name="view-logs"></a>ログを表示する
 
 コンテナー グループを展開した後、最初のログ エントリが Azure portal に表示されるまでに数分 (最大 10 分) かかることがあります。 `ContainerInstanceLog_CL` テーブル内のコンテナー グループのログを表示するには、次の手順を実行します。
 
