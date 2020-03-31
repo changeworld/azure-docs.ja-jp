@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 51239f4cf49784dd47470e1272b90508eaf25e6f
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70764230"
 ---
 # <a name="best-practices-for-query-store"></a>クエリ ストア関連のベスト プラクティス
@@ -45,5 +45,5 @@ ms.locfileid: "70764230"
 ## <a name="get-quick-insights-into-query-store"></a>クエリ ストアに対するクイック インサイトを取得します。
 Azure portal にある [Query Performance Insight](concepts-query-performance-insight.md) を利用して､クエリ ストア内のデータに対するクイック インサイトを取得することができます｡ 視覚化することによって､長期にわたって最も長い期間実行されているクエリと最も長い待機イベントが明らかになります｡
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure portal](howto-configure-server-parameters-using-portal.md) または [Azure CLI](howto-configure-server-parameters-using-cli.md) を使用してパラメーターを取得または設定する方法を学びます｡

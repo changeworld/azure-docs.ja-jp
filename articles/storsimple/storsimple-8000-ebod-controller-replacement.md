@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: b05d1f36d1e74b3d915e216676859654fbcbacf3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60578665"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228211"
 ---
 # <a name="replace-an-ebod-controller-on-your-storsimple-device"></a>StorSimple デバイスの EBOD コントローラーを交換する
 
@@ -41,7 +41,7 @@ ms.locfileid: "60578665"
 StorSimple デバイスの障害が発生した EBOD コントローラー モジュールを交換する前に、その他の EBOD コントローラー モジュールがアクティブであり実行中であることを確認します。 次の手順と表で、EBOD コントローラー モジュールを取り外す方法について説明します。
 
 #### <a name="to-remove-an-ebod-module"></a>EBOD モジュールを取り外すには
-1. Azure Portal を開きます。
+1. Azure portal を開きます。
 2. デバイスに移動し、 **[設定]**  >  **[ハードウェアの状態]** を選択し、アクティブな EBOD コントローラー モジュールの LED の状態が緑色であり、障害が発生している EBOD コントローラー モジュールの LED が赤色になっていることを確認します。
 3. デバイスの背面で、障害が発生している EBOD コントローラー モジュールを見つけます。
 4. EBOD モジュールをシステムから取り出す前に、EBOD コントローラー モジュールをコントローラーに接続しているケーブルを外します。
@@ -98,6 +98,6 @@ StorSimple デバイスの障害が発生した EBOD コントローラー モ�
    | 8 |EBOD エンクロージャ |
    | 9 |電力配分装置 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 「 [StorSimple ハードウェア コンポーネントの交換](storsimple-8000-hardware-component-replacement.md)」の説明を参照してください。
 

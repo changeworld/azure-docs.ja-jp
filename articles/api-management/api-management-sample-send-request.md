@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 1c86570850894a47f57a2d3587811411cc9a76eb
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77190008"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Azure API Management サービスからの外部サービスの使用
@@ -68,13 +68,13 @@ Slack には、着信 Web フックの概念があります。 着信 Web フッ
 `send-request` ポリシーは、外部サービスを使用し複雑な処理機能を実行したり、さらにポリシーを処理したりするために API Management サービスにデータを返すことに使用できます。
 
 ### <a name="authorizing-reference-tokens"></a>参照トークンの承認
-API Management の主な機能には、バックエンド リソースの保護があります。 API によって使用される承認サーバーで、[Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md) のように、その OAuth2 フローの一部として [JWT トークン](https://jwt.io/)が作成される場合、`validate-jwt` ポリシーを使用すると、そのトークンの有効性を検証できます。 一部の承認サーバーでは、承認サーバーへのコールバックを行わなければ検証できない[参照トークン](https://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/)と呼ばれるものが作成されます。
+API Management の主な機能には、バックエンド リソースの保護があります。 API によって使用される承認サーバーで、[Azure Active Directory](https://jwt.io/) のように、その OAuth2 フローの一部として [JWT トークン](../active-directory/hybrid/whatis-hybrid-identity.md)が作成される場合、`validate-jwt` ポリシーを使用すると、そのトークンの有効性を検証できます。 一部の承認サーバーでは、承認サーバーへのコールバックを行わなければ検証できない[参照トークン](https://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/)と呼ばれるものが作成されます。
 
 ### <a name="standardized-introspection"></a>標準化されたイントロスペクション
 これまで、承認サーバーで参照トークンを検証するための標準的な方法はありませんでした。 ただし、最近 IETF から、トークンの有効性をリソース サーバーが検証する方法を定義した標準 [RFC 7662](https://tools.ietf.org/html/rfc7662) の提案が公開されました。
 
 ### <a name="extracting-the-token"></a>トークンの抽出
-まず、トークンを Authorization ヘッダーから抽出します。 ヘッダー値は、[RFC 6750](https://tools.ietf.org/html/rfc6750#section-2.1) に従って、`Bearer` 承認スキーム、単一スペース、および承認トークンを使用して形式を指定する必要があります。 残念ながら、認証スキームが省略されている場合もあります。 これに解析時に対応するため、API Management は、スペースでヘッダー値を分割し、返された文字列の配列から最後の文字を選択します。 これにより、不適切な形式の承認ヘッダーに対応できます。
+まず、トークンを Authorization ヘッダーから抽出します。 ヘッダー値は、`Bearer`RFC 6750[ に従って、](https://tools.ietf.org/html/rfc6750#section-2.1) 承認スキーム、単一スペース、および承認トークンを使用して形式を指定する必要があります。 残念ながら、認証スキームが省略されている場合もあります。 これに解析時に対応するため、API Management は、スペースでヘッダー値を分割し、返された文字列の配列から最後の文字を選択します。 これにより、不適切な形式の承認ヘッダーに対応できます。
 
 ```xml
 <set-variable name="token" value="@(context.Request.Headers.GetValueOrDefault("Authorization","scheme param").Split(' ').Last())" />
@@ -98,7 +98,7 @@ API Management の主な機能には、バックエンド リソースの保護�
 ```
 
 ### <a name="checking-the-response"></a>応答の確認
-`response-variable-name` 属性は、返された応答へのアクセスを提供するために使用されます。 このプロパティで定義されている名前は、`IResponse` オブジェクトにアクセスする `context.Variables` ディクショナリへのキーとして使用できます。
+`response-variable-name` 属性は、返された応答へのアクセスを提供するために使用されます。 このプロパティで定義されている名前は、`context.Variables` オブジェクトにアクセスする `IResponse` ディクショナリへのキーとして使用できます。
 
 応答オブジェクトから本文を取得できます。RFC 7622 は、応答は JSON オブジェクトである必要があり、ブール値である `active` というプロパティが少なくとも 1 つ必要であることを API Management に示します。 `active` が true の場合、トークンは有効であるとみなされます。
 
@@ -122,7 +122,7 @@ API Management の主な機能には、バックエンド リソースの保護�
 </choose>
 ```
 
-`bearer` トークンの使用方法が記載されている [RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) に従い、API Management は、401 応答と共に `WWW-Authenticate` ヘッダーも返します。 WWW-Authenticate は、正しく認証される要求を構築する方法をクライアントに指示することを目的としています。 OAuth2 フレームワークで実行可能なアプローチは多岐にわたるため、必要なすべての情報を通信することは困難です。 さいわいにも、 [クライアントが正しくリソース サーバーに要求を承認させる方法](https://tools.ietf.org/html/draft-jones-oauth-discovery-00)を支援する取り組みが進行中です。
+[ トークンの使用方法が記載されている ](https://tools.ietf.org/html/rfc6750#section-3)RFC 6750`bearer` に従い、API Management は、401 応答と共に `WWW-Authenticate` ヘッダーも返します。 WWW-Authenticate は、正しく認証される要求を構築する方法をクライアントに指示することを目的としています。 OAuth2 フレームワークで実行可能なアプローチは多岐にわたるため、必要なすべての情報を通信することは困難です。 さいわいにも、 [クライアントが正しくリソース サーバーに要求を承認させる方法](https://tools.ietf.org/html/draft-jones-oauth-discovery-00)を支援する取り組みが進行中です。
 
 ### <a name="final-solution"></a>最終的なソリューション
 これらをすべてまとめると、次のポリシーがあることになります。

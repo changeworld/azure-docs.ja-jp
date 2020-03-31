@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: bdd33d85ee0aac4808c343af088d4db1a0dc963e
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: eed839c277156046ff9b7d97c6e87636a0822889
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767774"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79299330"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>クエリの監視とワークロード パフォーマンスの向上のための自動チューニングの有効化
 
@@ -34,7 +34,14 @@ Azure SQL Database は自動的に管理されるデータ サービスです。
 
 自動チューニングの構成を [Azure の既定値] から継承するかどうかをサーバー レベルで選択できます。 Azure の既定値では、FORCE_LAST_GOOD_PLAN と CREATE_INDEX が有効で、DROP_INDEX が無効です。
 
-### <a name="azure-portal"></a>Azure ポータル
+> [!IMPORTANT]
+> 2020 年 3 月より、自動チューニングに関する Azure の既定値の変更は次のように有効になります。
+>
+> - 新しい Azure の既定値では、FORCE_LAST_GOOD_PLAN が有効、CREATE_INDEX が無効、DROP_INDEX が無効になります。
+> - 自動チューニング設定が構成されていない既存のサーバーは、新しい Azure の既定値を継承するように自動的に構成されます。 これは、現在未定義の状態の自動チューニングのサーバー設定があるすべてのお客様に適用されます。
+> - 新しく作成されたサーバーは、新しい Azure の既定値を継承するように自動的に構成されます (新しいサーバーの作成時に自動チューニング構成が未定義の状態だった以前とは異なります)。
+
+### <a name="azure-portal"></a>Azure portal
 
 Azure SQL Database 論理**サーバー**で自動チューニングを有効にするには、Azure portal でサーバーに移動し、メニューで **[自動チューニング]** を選択します。
 
@@ -60,13 +67,13 @@ Azure SQL Database では、各データベースの自動チューニング構�
 > 一般的な推奨事項は、すべてのデータベースで同じ構成設定を自動的に適用できるように、**サーバー レベル**で自動チューニング構成を管理することです。 個々のデータベースの設定が、同じサーバーから設定を継承している他のデータベースの設定と異なるようにする必要がある場合にのみ、個々のデータベースで自動チューニングを構成します。
 >
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 **単一のデータベース**で自動チューニングを有効にするには、Azure Portal でデータベースに移動し、 **[自動チューニング]** を選択します。
 
 個々の自動チューニング設定は、データベースごとに個別に構成できます。 個々の自動チューニング オプションを手動で構成したり、オプションがサーバーから設定を継承するように指定したりできます。
 
-![Database](./media/sql-database-automatic-tuning-enable/database.png)
+![データベース](./media/sql-database-automatic-tuning-enable/database.png)
 
 DROP_INDEX オプションは、現時点では、パーティションの切り替えとインデックス ヒントを使うアプリケーションと互換性がなく、このような場合は有効にしてはならないことに注意してください。
 
@@ -114,7 +121,7 @@ ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_I
 
 「[自動チューニングの電子メール通知](sql-database-automatic-tuning-email-notifications.md)」のガイドを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [自動チューニングに関する記事](sql-database-automatic-tuning.md)を読み、自動チューニングと、パフォーマンスの向上にいかに役立つかを確認します。
 * Azure SQL Database のパフォーマンスに関する推奨事項の概要については、「[パフォーマンスに関する推奨事項](sql-database-advisor.md)」を参照してください。

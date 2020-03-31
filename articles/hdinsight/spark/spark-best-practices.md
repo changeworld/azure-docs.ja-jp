@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.openlocfilehash: 20033e52e862f086d1491c06d38cdf4f2c57ba8d
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71106883"
 ---
 # <a name="apache-spark-best-practices"></a>Apache Spark のベスト プラクティス
@@ -62,7 +62,7 @@ ms.locfileid: "71106883"
 | Data Lake Storage Gen1 | [Azure HDInsight クラスターで Data Lake Storage Gen1 を使用する](../hdinsight-hadoop-use-data-lake-store.md) |
 | Azure Blob Storage | [Azure HDInsight クラスターで Azure Storage を使用する](../hdinsight-hadoop-use-blob-storage.md) |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Apache Spark の設定を構成する](apache-spark-settings.md)
 * [HDInsight で Apache Spark ジョブを最適化する](apache-spark-perf.md)

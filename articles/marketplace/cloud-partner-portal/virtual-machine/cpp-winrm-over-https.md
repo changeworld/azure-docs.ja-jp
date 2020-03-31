@@ -1,19 +1,18 @@
 ---
 title: Azure のための HTTPS 経由での Windows リモート管理 | Azure Marketplace
 description: PowerShell を使用してリモートで管理できるように、Azure でホストされる Windows ベースの VM を構成する方法について説明します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: pabutler
-ms.openlocfilehash: e39f83b2ed715afbfff69770c151cfc4d527105d
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.author: dsindona
+ms.openlocfilehash: 7c799c4a56ee5fc2074e4d644bdbcbc6d2b1ca5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132260"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288752"
 ---
 # <a name="windows-remote-management-over-https"></a>HTTPS 経由での Windows リモート管理
 
@@ -38,5 +37,5 @@ Windows ベースの VM 用の WinRM エンドポイントは、開発の 2 つ�
 - デプロイの後 - Azure でホストされている既存の VM で。  既に Azure に VM ソリューションをデプロイしてあり、それに対して Windows リモート管理を有効にする必要がある場合は、このアプローチを使用します。  このアプローチでは、Azure portal で手動による変更を行い、ターゲット VM でスクリプトを実行する必要があります。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 新しい VM を作成する場合は、[VHD からの VM のデプロイ](./cpp-deploy-vm-vhd.md)の間に WinRM を有効にすることができます。  それ以外の場合は、既存の VM で WinRM を有効にできます

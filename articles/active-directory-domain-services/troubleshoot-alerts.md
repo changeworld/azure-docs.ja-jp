@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 01/21/2020
 ms.author: iainfou
 ms.openlocfilehash: c83caf31e25ae2212ed120e77e017ac3849898e8
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77612901"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>既知の問題:Azure Active Directory Domain Services での一般的なアラートと解決策
@@ -30,7 +30,7 @@ ms.locfileid: "77612901"
 
 "*マネージド ドメインに関連付けられている Azure AD ディレクトリが削除されている可能性があります。マネージド ドメインはもうサポートされる構成に含まれていません。Microsoft は、マネージド ドメインに対する監視、管理、修正プログラムの適用、および同期を実行できません。* "
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 通常、このエラーは、Azure サブスクリプションを新しい Azure AD ディレクトリに移動し、Azure AD DS に関連付けられている古い Azure AD ディレクトリを削除したときに発生します。
 
@@ -42,7 +42,7 @@ ms.locfileid: "77612901"
 
 "*Azure AD B2C ディレクトリで Azure AD Domain Services を有効にできません。* "
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 Azure AD DS は、Azure AD ディレクトリと自動的に同期します。 Azure AD ディレクトリが B2C 用に構成されている場合、Azure AD DS をデプロイして同期することはできません。
 
@@ -60,7 +60,7 @@ Azure AD DS マネージド ドメインの正常性が 2 時間以内に自動�
 
 "*Azure AD Domain Services を有効にしている仮想ネットワークの IP アドレス範囲がパブリック IP 範囲内にあります。Azure AD Domain Services は、プライベート IP アドレス範囲にある仮想ネットワークで有効にする必要があります。この構成は、マネージド ドメインに対する監視、管理、修正のプログラム適用、および同期を行うための Microsoft の能力に影響します。* "
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 開始する前に、[プライベート IP v4 アドレス空間](https://en.wikipedia.org/wiki/Private_network#Private_IPv4_address_spaces)について理解しておく必要があります。
 
@@ -88,7 +88,7 @@ Azure AD DS マネージド ドメインの正常性が 2 時間以内に自動�
 
 *ご利用のマネージド ドメインに関連付けられた Azure サブスクリプションが削除されています。Azure AD Domain Services が引き続き正しく動作するには、アクティブなサブスクリプションが必要です。*
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 Azure AD DS にはアクティブなサブスクリプションが必要です。別のサブスクリプションに移動することはできません。 Azure AD DS マネージド ドメインが関連付けられていた Azure サブスクリプションが削除されている場合は、Azure サブスクリプションと Azure AD DS マネージド ドメインを再作成する必要があります。
 
@@ -102,7 +102,7 @@ Azure AD DS にはアクティブなサブスクリプションが必要です�
 
 *ご利用のマネージド ドメインに関連付けられた Azure サブスクリプションがアクティブではありません。Azure AD Domain Services が引き続き正しく動作するには、アクティブなサブスクリプションが必要です。*
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 Azure AD DS には、アクティブなサブスクリプションが必要です。 Azure AD DS マネージド ドメインが関連付けられていた Azure サブスクリプションがアクティブでない場合は、それを更新して、サブスクリプションを再度アクティブにする必要があります。
 
@@ -117,7 +117,7 @@ Azure AD DS には、アクティブなサブスクリプションが必要で�
 
 *The subscription used by Azure AD Domain Services has been moved to another directory. (Azure AD Domain Services によって使用されるサブスクリプションは、別のディレクトリに移動されました。)Azure AD Domain Services needs to have an active subscription in the same directory to function properly. (Azure AD Domain Services を正常に機能させるには、アクティブなサブスクリプションを同じディレクトリに配置する必要があります。)*
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 Azure AD DS にはアクティブなサブスクリプションが必要です。別のサブスクリプションに移動することはできません。 Azure AD DS マネージド ドメインが関連付けられていた Azure サブスクリプションが移動されている場合は、サブスクリプションを前のディレクトリに戻すか、既存のディレクトリから[マネージド ドメインを削除](delete-aadds.md)し、[選択したサブスクリプションに、代替の Azure AD DS マネージド ドメインを作成します](tutorial-create-instance.md)。
 
@@ -127,7 +127,7 @@ Azure AD DS にはアクティブなサブスクリプションが必要です�
 
 *ご利用のマネージド ドメインに使用されているリソースが削除されています。このリソースは、Azure AD Domain Services が正しく動作するために必要です。*
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 Azure AD DS では、パブリック IP アドレス、仮想ネットワーク インターフェイス、ロード バランサーなど、適切に機能するために追加のリソースが作成されます。 これらのリソースのいずれかが削除されると、マネージド ドメインはサポートされない状態になり、ドメインが管理されなくなります。 これらのリソースの詳細については、「[Azure AD DS によって使用されるネットワーク リソース](network-considerations.md#network-resources-used-by-azure-ad-ds)」を参照してください。
 
@@ -146,7 +146,7 @@ Azure AD DS では、パブリック IP アドレス、仮想ネットワーク 
 
 *Azure AD Domain Services のデプロイ用に選択されたサブネットがいっぱいになり、作成する必要がある追加のドメイン コントローラー用の領域がありません。*
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 Azure AD DS の仮想ネットワーク サブネットには、自動的に作成されたリソースのための十分な IP アドレスが必要です。 この IP アドレス空間には、メンテナンス イベントがある場合に代替リソースを作成する必要性があります。 使用可能な IP アドレスが不足するリスクを最小限に抑えるために、独自の VM などの追加リソースを Azure AD DS と同じ仮想ネットワーク サブネットにデプロイしないでください。
 
@@ -158,7 +158,7 @@ Azure AD DS の仮想ネットワーク サブネットには、自動的に作�
 
 *A service principal that Azure AD Domain Services uses to service your domain is not authorized to manage resources on the Azure subscription. (ご使用のドメインへのサービス提供のために Azure AD Domain Services によって使用されるサービス プリンシパルに、Azure サブスクリプション上のリソースを管理する権限がありません。)The service principal needs to gain permissions to service your managed domain. (このサービス プリンシパルは、マネージド ドメインにサービスを提供するためのアクセス許可を取得する必要があります。)*
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 自動的に生成されるサービス プリンシパルの中には、Azure AD DS マネージド ドメインのリソースの管理と作成に使用されるものがあります。 これらのいずれかのサービス プリンシパルのアクセス許可が変更されると、ドメインではリソースを正しく管理できません。 次の手順では、サービス プリンシパルに対するアクセス許可を理解し、付与する方法について説明します。
 
@@ -171,7 +171,7 @@ Azure AD DS の仮想ネットワーク サブネットには、自動的に作�
 
 *このドメインの仮想ネットワークのサブネットに十分な IP アドレスがない可能性があることを確認しました。Azure AD Domain Services では、それが有効にされているサブネット内に少なくとも 2 つの使用可能な IP アドレスが必要です。サブネット内に少なくとも 3 - 5 個のスペア IP アドレスを用意することをお勧めします。他の仮想マシンがサブネット内にデプロイされ、使用可能な数の IP アドレスがすべて使用されたか、サブネット内の使用可能 IP アドレスの数に制限がある場合にこの状況が発生した可能性があります。*
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 Azure AD DS の仮想ネットワーク サブネットには、自動的に作成されたリソースのための十分な IP アドレスが必要です。 この IP アドレス空間には、メンテナンス イベントがある場合に代替リソースを作成する必要性があります。 使用可能な IP アドレスが不足するリスクを最小限に抑えるために、独自の VM などの追加リソースを Azure AD DS と同じ仮想ネットワーク サブネットにデプロイしないでください。
 
@@ -194,7 +194,7 @@ Azure AD DS マネージド ドメインの正常性が 2 時間以内に自動�
 
 *Azure AD Domain Services で使用されているリソースが、予期しない状態で検出され、復旧することができません。*
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 このエラーは回復できません。 アラートを解決するには、[既存の Azure AD DS マネージド ドメインを削除](delete-aadds.md)し、新たに作成します。 Azure AD DS マネージド ドメインの削除に問題がある場合は、追加のトラブルシューティングの支援のために [Azure サポート リクエストを開きます][azure-support]。
 
@@ -204,7 +204,7 @@ Azure AD DS マネージド ドメインの正常性が 2 時間以内に自動�
 
 *The subnet selected for deployment of Azure AD Domain Services is invalid, and cannot be used. (Azure AD Domain Services のデプロイ用に選択されたサブネットが無効であるため、使用できません。)*
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 このエラーは回復できません。 アラートを解決するには、[既存の Azure AD DS マネージド ドメインを削除](delete-aadds.md)し、新たに作成します。 Azure AD DS マネージド ドメインの削除に問題がある場合は、追加のトラブルシューティングの支援のために [Azure サポート リクエストを開きます][azure-support]。
 
@@ -214,7 +214,7 @@ Azure AD DS マネージド ドメインの正常性が 2 時間以内に自動�
 
 *ターゲット スコープがロックされているため、マネージド ドメインで使用されている 1 つ以上のネットワーク リソースを操作できません。*
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 変更や削除を防ぐために、Azure リソースにリソース ロックを適用できます。 Azure AD DS はマネージド サービスであるため、Azure プラットフォームは構成を変更する機能を必要とします。 リソース ロックが一部の Azure AD DS コンポーネントに適用されている場合、Azure プラットフォームはその管理タスクを実行できません。
 
@@ -229,7 +229,7 @@ Azure AD DS コンポーネントのリソース ロックを確認して削除�
 
 *ポリシー制限により、マネージド ドメインで使用されている 1 つ以上のネットワーク リソースを操作できません。*
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 ポリシーは、許可する構成アクションを制御するために、Azure リソースとリソース グループに適用されます。 Azure AD DS はマネージド サービスであるため、Azure プラットフォームは構成を変更する機能を必要とします。 ポリシーが一部の Azure AD DS コンポーネントに適用されている場合、Azure プラットフォームはその管理タスクを実行できない可能性があります。
 
@@ -244,7 +244,7 @@ Azure AD DS コンポーネントに適用されているポリシーを確認�
 
 "*マネージド ドメインが Azure AD と最後に同期されたのは [date] です。ユーザーがマネージド ドメインでサインインできない、またはグループ メンバーシップが Azure AD と同期されていない可能性があります。* "
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 [Azure AD DS の正常性をチェック](check-health.md)して、マネージド ドメインの構成の問題を示しているアラートがないか確認します。 ネットワーク構成に問題があると、Azure AD からの同期がブロックされる可能性があります。 構成の問題を示しているアラートを解決できる場合は、2 時間待機してから、同期が正常に完了したかどうかを再度確認してください。
 
@@ -259,7 +259,7 @@ Azure AD DS コンポーネントに適用されているポリシーを確認�
 
 "*マネージド ドメインが最後にバックアップされたのは [date] です。* "
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 [Azure AD DS の正常性をチェック](check-health.md)して、マネージド ドメインの構成の問題を示しているアラートがないか確認します。 ネットワーク構成に問題があると、Azure プラットフォームが正常にバックアップを取れない場合があります。 構成の問題を示しているアラートを解決できる場合は、2 時間待機してから、同期が正常に完了したかどうかを再度確認してください。
 
@@ -269,7 +269,7 @@ Azure AD DS コンポーネントに適用されているポリシーを確認�
 
 "*マネージド ドメインは、ドメインに関連付けられている Azure サブスクリプションがアクティブでないため中断されます。* "
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 > [!WARNING]
 > Azure AD DS マネージド ドメインは長時間中断されると、削除される危険性があります。 中断の理由をできるだけ早く解決してください。 詳細については、[Azure AD DS の中断状態の理解](suspension.md)に関する記事を参照してください。
@@ -287,7 +287,7 @@ Azure AD DS には、アクティブなサブスクリプションが必要で�
 
 "*マネージド ドメインは、無効な構成により中断されます。サービスは、マネージド ドメインのドメイン コントローラーの管理、パッチ適用、または更新を長い間行うことができませんでした。* "
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 > [!WARNING]
 > Azure AD DS マネージド ドメインは長時間中断されると、削除される危険性があります。 中断の理由をできるだけ早く解決してください。 詳細については、[Azure AD DS の中断状態の理解](suspension.md)に関する記事を参照してください。

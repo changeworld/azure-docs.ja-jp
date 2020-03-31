@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 8c5b3fcc1cb2ac481be0b435c48ce213c716edde
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 05968fdd9e2ddfd89bd9310c744d9ee699f440d2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78198169"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79472726"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-net-app-to-store-secrets-in-azure-key-vault"></a>チュートリアル:Linux VM と .NET アプリを使用してシークレットを Azure Key Vault に格納する
 
@@ -43,7 +43,7 @@ Azure Key Vault は、お使いのアプリケーション、サービス、IT �
 
 ## <a name="understand-managed-service-identity"></a>マネージド サービス ID について
 
-Azure Key Vault を使用すると、資格情報を安全に保存することができます。したがって、コードには資格情報を含めませんが、資格情報を取得するために Azure Key Vault に対して認証する必要があります。 しかし、Key Vault に対して認証するには資格情報が必要になります。 これは、古典的なブートストラップ問題です。 マネージド サービス ID (MSI) は、Azure と Azure Active Directory (Azure AD) を使用してブートストラップ ID を提供できます。これにより、物事をさらに簡単に始められるようになります。
+Azure Key Vault は資格情報を安全に格納できるため、これらはコードに含まれません。ただし、それらを取得するには Azure Key Vault に対して認証する必要があります。 しかし、Key Vault に対して認証するには資格情報が必要になります。 これは、古典的なブートストラップ問題です。 マネージド サービス ID (MSI) は、Azure と Azure Active Directory (Azure AD) を使用してブートストラップ ID を提供できます。これにより、物事をさらに簡単に始められるようになります。
 
 Azure サービス (Virtual Machines、App Service、Functions など) に対して MSI を有効にすると、そのサービスのインスタンス用のサービス プリンシパルが Azure Active Directory に作成されます。 サービスのインスタンスには、サービス プリンシパルの資格情報が挿入されます。
 
@@ -79,7 +79,7 @@ az group create --name "<YourResourceGroupName>" --location "West US"
 
 * キー コンテナー名: 数字、文字、ハイフン (0-9、a-z、A-Z、\-) のみを含んだ 3 から 24 文字の文字列。
 * リソース グループ名
-* 場所: **[米国西部]**
+* 場所:**米国西部**
 
 ```azurecli-interactive
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
@@ -114,7 +114,7 @@ az vm create \
 
 VM とサポートするリソースを作成するには数分かかります。 次の出力例では、VM 作成操作が成功したことを示します。
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -139,7 +139,7 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 
 このコマンドの出力は次のようになります。
 
-```azurecli
+```output
 {
   "systemAssignedIdentity": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "userAssignedIdentities": {}

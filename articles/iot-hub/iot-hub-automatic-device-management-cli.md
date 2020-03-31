@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: chrisgre
-ms.openlocfilehash: 381f550f6d64dee3c7649a040c1e24b7c9d42f2c
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 748f3e09fd03a6f37954c8dfaf4b6ae9144384bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78669422"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235600"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>Azure CLI を使用した IoT デバイス/モジュールの自動管理
 
@@ -122,7 +122,7 @@ Azure IoT Hub の自動デバイス管理では、多数のデバイスを管理
 
 次のコマンドを使用して、構成を作成します。
 
-```cli
+```azurecli
    az iot hub configuration create --config-id [configuration id] \
      --labels [labels] --content [file path] --hub-name [hub name] \
      --target-condition [target query] --priority [int] \
@@ -147,7 +147,7 @@ Azure IoT Hub の自動デバイス管理では、多数のデバイスを管理
 
 次のコマンドを使用して、構成の内容を表示します。
 
-```cli
+```azurecli
 az iot hub configuration show --config-id [configuration id] \
   --hub-name [hub name]
 ```
@@ -166,7 +166,7 @@ az iot hub configuration show --config-id [configuration id] \
 
 次のコマンドを使用して、メトリック別のデバイス ID、モジュール ID、オブジェクトの一覧を表示できます。
 
-```cli
+```azurecli
 az iot hub configuration show-metric --config-id [configuration id] \
    --metric-id [metric id] --hub-name [hub name] --metric-type [type] 
 ```
@@ -193,7 +193,7 @@ az iot hub configuration show-metric --config-id [configuration id] \
 
 次のコマンドを使用して、構成を更新します。
 
-```cli
+```azurecli
 az iot hub configuration update --config-id [configuration id] \
    --hub-name [hub name] --set [property1.property2='value']
 ```
@@ -216,10 +216,11 @@ az iot hub configuration update --config-id [configuration id] \
 
 次のコマンドを使用して、構成を削除します。
 
-```cli
+```azurecli
 az iot hub configuration delete --config-id [configuration id] \
    --hub-name [hub name] 
 ```
+
 * --**config-id** - IoT ハブに存在する構成の名前です。
 
 * --**hub-name** - 構成が存在する IoT ハブの名前です。 ハブは現在のサブスクリプションにある必要があります。 コマンド `az account set -s [subscription name]` を使用して目的のサブスクリプションに切り替えます。

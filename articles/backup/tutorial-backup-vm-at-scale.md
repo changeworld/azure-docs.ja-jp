@@ -1,15 +1,15 @@
 ---
-title: チュートリアル - Azure 仮想マシンの大規模なバックアップ
+title: チュートリアル - 複数の Azure 仮想マシンをバックアップする
 description: このチュートリアルでは、Recovery Services コンテナーを作成し、バックアップ ポリシーを定義して、複数の仮想マシンを同時にバックアップする方法について説明します。
 ms.date: 01/31/2019
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 6034202649e6d9bce75f0069316b79b55e533490
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: f9306f2ef5c4b2a53dcba17cafca9ea13b8dab43
+ms.sourcegitcommit: 940e16ff194d5163f277f98d038833b1055a1a3e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171845"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80245244"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Azure Portal を使用して複数の仮想マシンをバックアップする
 
@@ -24,7 +24,7 @@ Azure でデータをバックアップする場合は、Recovery Services コ�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure Portal](https://portal.azure.com/) にサインインします。
+[Azure portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
@@ -48,7 +48,7 @@ Recovery Services コンテナーには、バックアップ データと、保�
 
 Recovery Services コンテナーは、保護する仮想マシンと同じ場所にある必要があります。 複数のリージョンに仮想マシンがある場合は、各リージョンで Recovery Services コンテナーを作成します。 このチュートリアルでは、Recovery Services コンテナーを *西ヨーロッパ* に作成します。*myVM* (クイックスタートで作成された仮想マシン) は西ヨーロッパに作成されたためです。
 
-Recovery Services コンテナーの作成には数分かかることがあります。 ポータルの右上の領域で、状態の通知を監視します。 コンテナーが作成されると、Recovery Services コンテナーの一覧に表示されます。
+Recovery Services コンテナーの作成には数分かかることがあります。 ポータルの右上の領域に状態が通知され、確認することが出来ます。 コンテナーが作成されると、Recovery Services コンテナーの一覧に表示されます。
 
 Recovery Services コンテナーを作成する場合、既定では、コンテナーには geo 冗長ストレージがあります。 データの回復性を提供するために、geo 冗長ストレージは 2 つの Azure リージョン間でデータを複数回レプリケートします。
 
@@ -130,7 +130,7 @@ Recovery Services コンテナーのバックアップを有効にしました�
 
     ![Backup Jobs tile](./media/tutorial-backup-vm-at-scale/initial-backup-complete.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 引き続きチュートリアルの作業を行う場合は、このチュートリアルで作成したリソースをクリーンアップしないでください。 作業を続行しない場合は、次の手順に従って、このチュートリアルで作成したすべてのリソースを Azure Portal で削除します。
 
@@ -166,7 +166,7 @@ Recovery Services コンテナーのバックアップを有効にしました�
 
     コンテナーが削除されると、Recovery Services コンテナーの一覧に戻ります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure portal を使用して以下を行いました。
 

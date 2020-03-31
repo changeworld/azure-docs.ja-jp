@@ -7,12 +7,12 @@ ms.service: site-reliability-engineering
 ms.topic: article
 ms.date: 02/18/2020
 ms.author: dnb
-ms.openlocfilehash: be6e00ba0d20d11f75954d3b9c6b056160a5016b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: a891b580b5cb62d111e5d8a6980f4f547345deb6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599544"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471253"
 ---
 # <a name="sources-for-site-reliability-engineering-information"></a>サイト信頼性エンジニアリング情報のソース
 
@@ -23,7 +23,7 @@ Web には、サイト信頼性エンジニアリング (SRE) 情報のソース
 SRE および SRE 関連のトピックへのリンクがまとめられているいくつかのリストを次に示します。
 
 * [すばらしいサイト信頼性エンジニアリング](https://github.com/dastergon/awesome-sre)
-* [すばらしいサイト信頼性エンジニアリング ツール](https://github.com/squadcastHQ/awesome-sre-tools)
+* [すばらしいサイト信頼性エンジニアリング ツール](https://github.com/SquadcastHub/awesome-sre-tools)
 * [スケーラブルで信頼性が高くパフォーマンスに優れる大規模システムのパターン](http://awesome-scalability.com)
 * [すばらしい分散システム](https://github.com/theanalyst/awesome-distributed-systems)
 * [すばらしいコンセンサス](https://github.com/dgryski/awesome-consensus)

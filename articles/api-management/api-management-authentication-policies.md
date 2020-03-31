@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 5ca153f0d52b65aa1ee56d5757381f1f31c7eeb5
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 828f738ff8923dc8194e2449f5fb0be74ef45ad7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120828"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473559"
 ---
 # <a name="api-management-authentication-policies"></a>API Management の認証ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。
 
-##  <a name="AuthenticationPolicies"></a> 認証ポリシー
+##  <a name="authentication-policies"></a><a name="AuthenticationPolicies"></a> 認証ポリシー
 
 -   [基本認証](api-management-authentication-policies.md#Basic) -基本認証を使用してバックエンド サービスで認証します。
 
@@ -31,7 +31,7 @@ ms.locfileid: "77120828"
 
 -   [マネージド ID による認証](api-management-authentication-policies.md#ManagedIdentity) - API Management サービスに対する[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) による認証
 
-##  <a name="Basic"></a> 基本認証
+##  <a name="authenticate-with-basic"></a><a name="Basic"></a> 基本認証
  `authentication-basic` ポリシーを使用し、基本認証を使用してバックエンド サービスで認証します。 このポリシーでは、HTTP 承認ヘッダーが、ポリシーに指定された資格情報に対応する値に効率よく設定されます。
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
@@ -48,13 +48,13 @@ ms.locfileid: "77120828"
 
 ### <a name="elements"></a>要素
 
-|Name|説明|Required|
+|Name|説明|必須|
 |----------|-----------------|--------------|
 |authentication-basic|ルート要素。|はい|
 
 ### <a name="attributes"></a>属性
 
-|Name|説明|Required|Default|
+|Name|説明|必須|Default|
 |----------|-----------------|--------------|-------------|
 |username|基本認証の資格情報のユーザー名を指定します。|はい|該当なし|
 |パスワード|基本認証の資格情報のパスワードを指定します。|はい|該当なし|
@@ -66,7 +66,7 @@ ms.locfileid: "77120828"
 
 -   **ポリシー スコープ:** すべてのスコープ
 
-##  <a name="ClientCertificate"></a> クライアント証明書による認証
+##  <a name="authenticate-with-client-certificate"></a><a name="ClientCertificate"></a> クライアント証明書による認証
  `authentication-certificate` ポリシーを使用し、クライアント証明書を使用してバックエンド サービスで認証します。 証明書は最初に [API Management にインストール](https://go.microsoft.com/fwlink/?LinkID=511599)する必要があります。サムプリントによって識別されます。
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
@@ -88,13 +88,13 @@ ms.locfileid: "77120828"
 
 ### <a name="elements"></a>要素  
   
-|Name|説明|Required|  
+|Name|説明|必須|  
 |----------|-----------------|--------------|  
 |authentication-certificate|ルート要素。|はい|  
   
 ### <a name="attributes"></a>属性  
   
-|Name|説明|Required|Default|  
+|Name|説明|必須|Default|  
 |----------|-----------------|--------------|-------------|  
 |thumbprint|クライアント証明書のサムプリント。|`thumbprint` または `certificate-id` のいずれかが存在しなければなりません。|該当なし|  
 |証明書 ID|証明書リソースの名前。|`thumbprint` または `certificate-id` のいずれかが存在しなければなりません。|該当なし|  
@@ -106,8 +106,8 @@ ms.locfileid: "77120828"
   
 -   **ポリシー スコープ:** すべてのスコープ  
 
-##  <a name="ManagedIdentity"></a> マネージド ID による認証  
- `authentication-managed-identity` ポリシーを使用して、API Management サービスのマネージド ID を利用したバックエンド サービスによる認証を行います。 このポリシーでは、指定されたリソースにアクセスするためのアクセス トークンを Azure Active Directory から取得するために、基本的にマネージド ID を利用します。 トークンが正常に取得されると、ポリシーは、`Bearer` スキームを使用してトークンの値を `Authorization` ヘッダーに設定します。
+##  <a name="authenticate-with-managed-identity"></a><a name="ManagedIdentity"></a> マネージド ID による認証  
+ `authentication-managed-identity` ポリシーを使用して、API Management サービスのマネージド ID を利用したバックエンド サービスによる認証を行います。 このポリシーでは、指定されたリソースにアクセスするためのアクセス トークンを Azure Active Directory から取得するために、基本的にマネージド ID を利用します。 トークンが正常に取得されると、ポリシーは、`Authorization` スキームを使用してトークンの値を `Bearer` ヘッダーに設定します。
   
 ### <a name="policy-statement"></a>ポリシー ステートメント  
   
@@ -118,7 +118,7 @@ ms.locfileid: "77120828"
 ### <a name="example"></a>例  
 #### <a name="use-managed-identity-to-authenticate-with-a-backend-service"></a>マネージド ID を使用してバックエンド サービスで認証する
 ```xml  
-<authentication-managed-identity resource="https://graph.windows.net"/> 
+<authentication-managed-identity resource="https://graph.microsoft.com"/> 
 ```
 ```xml  
 <authentication-managed-identity resource="https://management.azure.com/"/> <!--Azure Resource Manager-->
@@ -147,13 +147,13 @@ ms.locfileid: "77120828"
 
 ### <a name="elements"></a>要素  
   
-|Name|説明|Required|  
+|Name|説明|必須|  
 |----------|-----------------|--------------|  
 |authentication-managed-identity |ルート要素。|はい|  
   
 ### <a name="attributes"></a>属性  
   
-|Name|説明|Required|Default|  
+|Name|説明|必須|Default|  
 |----------|-----------------|--------------|-------------|  
 |resource|文字列 をオンにします。 Azure Active Directory におけるターゲット Web API のアプリ ID (セキュリティで保護されたリソース)。|はい|該当なし|  
 |output-token-variable-name|文字列 をオンにします。 オブジェクトの種類 `string` としてトークン値を受け取るコンテキスト変数の名前。 |いいえ|該当なし|  

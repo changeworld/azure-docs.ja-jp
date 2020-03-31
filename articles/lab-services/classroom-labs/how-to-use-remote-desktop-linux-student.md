@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 08/20/2019
 ms.author: spelluru
 ms.openlocfilehash: 0f45af2730b05998fc82212c63778c89bb16b6ef
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73585093"
 ---
 # <a name="use-remote-desktop-for-linux-virtual-machines-in-a-classroom-lab-of-azure-lab-services"></a>Azure Lab Services のクラスルーム ラボで Linux 仮想マシン用リモート デスクトップを使用する
@@ -29,7 +29,7 @@ ms.locfileid: "73585093"
 > **リモート デスクトップ接続**を有効にすると、Linux マシンの **RDP** ポートのみが開きます。 インストラクターは、最初に SSH を使用して Linux マシンに接続し、RDP と GUI のパッケージをインストールします。これで、後で RDP を使用して Linux マシンに接続できるようになります。 
 
 ## <a name="connect-to-the-student-vm"></a>学生の VM に接続する
-ラボ所有者 (教師または教授) がマシンにインストールされた RDP と GUI のパッケージを使用してテンプレート VM を**発行**すると、学生が学生の Linux VM に RDP 接続できるようになります。 手順は次のようになります。 
+ラボ所有者 (教師または教授) がマシンにインストールされた RDP と GUI のパッケージを使用してテンプレート VM を**発行**すると、学生が学生の Linux VM に RDP 接続できるようになります。 次に手順を示します。 
 
 1. 学生がラボのポータルに直接 (`https://labs.azure.com`)、または登録リンク (`https://labs.azure.com/register/<registrationCode>`) を使用してサインインすると、学生がアクセスできる各ラボのタイルが表示されます。 
 2. VM が停止状態の場合は、タイルでボタンを切り替えて VM を起動します。 
@@ -46,6 +46,6 @@ ms.locfileid: "73585093"
 
 **[RDP]** オプションを選択した場合は、RDP ファイルがお使いのコンピューターにダウンロードされます。 それを保存してから開いて、マシンに接続します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 クラスルーム ラボで Linux VM 用リモート デスクトップ接続機能を有効にする方法については、[Linux 仮想マシン用リモート デスクトップの有効化](how-to-enable-remote-desktop-linux.md)に関するページを参照してください。 
 

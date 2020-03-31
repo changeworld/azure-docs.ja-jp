@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 02/14/2020
 ms.openlocfilehash: 0b746963cea5a950ba47d8b4dfeb074cb0910436
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77471025"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>HDInsight クラスターを作成するときにカスタム Apache Hive ライブラリを追加する
@@ -23,7 +23,7 @@ HDInsight で [Apache Hive](https://hive.apache.org/) ライブラリを事前�
 
 クラスターを作成するときは、スクリプト アクションを使用して、作成されたクラスター ノードを変更できます。 このドキュメントのスクリプトは、唯一のパラメーターでライブラリの場所を受け取ります。 この場所は Azure Storage アカウントである必要があり、ライブラリは jar ファイルとして格納されている必要があります。
 
-クラスターの作成時に、そのスクリプトによってファイルが列挙され、ヘッド ノードとワーカー ノードの `/usr/lib/customhivelibs/` ディレクトリにコピーされて、`core-site.xml` ファイルの `hive.aux.jars.path` プロパティに追加されます。 Linux ベースのクラスターでは、それらのファイルの場所に合わせて `hive-env.sh` ファイルも更新されます。
+クラスターの作成時に、そのスクリプトによってファイルが列挙され、ヘッド ノードとワーカー ノードの `/usr/lib/customhivelibs/` ディレクトリにコピーされて、`hive.aux.jars.path` ファイルの `core-site.xml` プロパティに追加されます。 Linux ベースのクラスターでは、それらのファイルの場所に合わせて `hive-env.sh` ファイルも更新されます。
 
 この記事のスクリプト アクションを使用すると、**WebHCat** および **HiveServer2** 用に Hive クライアントを使用するときにライブラリが使用可能になります。
 
@@ -56,10 +56,10 @@ HDInsight で [Apache Hive](https://hive.apache.org/) ライブラリを事前�
 
 1. **[スクリプト アクション]** では、次の情報を指定します。
 
-    |プロパティ |Value |
+    |プロパティ |値 |
     |---|---|
     |スクリプトの種類|- Custom|
-    |名前|ライブラリ |
+    |Name|ライブラリ |
     |Bash スクリプト URI|`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`|
     |ノードの種類|ヘッド、ワーカー|
     |パラメーター|jar が格納されているコンテナーとストレージ アカウントの WASB アドレスを入力します。 たとえば、「 `wasbs://libs@mystorage.blob.core.windows.net/` 」のように入力します。|

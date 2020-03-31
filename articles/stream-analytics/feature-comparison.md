@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 8cdba27ac949584e1fa96e3f7b0874f4fc0d4212
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cdae6a3b7319aefa9d4f19b5d613d1afb8b6804a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443657"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235323"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Azure Stream Analytics の機能の比較
 
@@ -20,7 +20,7 @@ Azure Stream Analytics では、[Azure portal](stream-analytics-quick-create-por
 ## <a name="cloud-job-features"></a>クラウド ジョブの機能
 
 
-|機能  |ポータル  |Visual Studio  |Visual Studio Code  |
+|機能  |ポータル  |Visual Studio  |Visual Studio Code  |
 |---------|---------|---------|---------|
 |クロス プラットフォーム     |Mac</br>Linux</br>Windows         |Windows        |Mac</br>Linux</br>Windows          |
 |スクリプトの作成     |はい         |はい         |はい         |
@@ -40,7 +40,7 @@ Azure Stream Analytics では、[Azure portal](stream-analytics-quick-create-por
 |カスタム メッセージ プロパティ     |はい         |はい         |いいえ       |
 |C# カスタム コード関数とデシリアライザー|読み取り専用モード|はい|いいえ|
 |JavaScript UDF および UDA     |はい         |はい         |Windows のみ         |
-|Machine Learning Service     |はい。ただし、クエリはテストできません        |はい         |いいえ         |
+|Machine Learning Service     |はい        |はい         |いいえ         |
 |Machine Learning Studio     |はい。ただし、クエリはテストできません        |はい |いいえ         |
 |互換性レベル     |1.0</br>1.1</br>1.2 (既定値)         |1.0</br>1.1</br>1.2 (既定値)           |1.0</br>1.1</br>1.2 (既定値)           |
 |組み込みの ML ベースの異常検出関数     |はい         |はい         |はい         |
@@ -50,7 +50,7 @@ Azure Stream Analytics では、[Azure portal](stream-analytics-quick-create-por
 
 ## <a name="iot-edge-job-features"></a>IoT Edge ジョブの機能
 
-|機能  |ポータル  |Visual Studio  |Visual Studio Code  |
+|機能  |ポータル  |Visual Studio  |Visual Studio Code  |
 |---------|---------|---------|---------|
 |ジョブの作成     |はい         |はい         |いいえ         |
 |ソース管理     |いいえ         |はい         |いいえ         |

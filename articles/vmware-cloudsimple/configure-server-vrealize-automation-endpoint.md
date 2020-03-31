@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Solutions (AVS) - AVS プライベート クラウド上で vRealize Automation 用の vCenter を設定する
-description: AVS プライベート クラウド上で VMware vRealize Automation 用のエンドポイントとして VMware vCenter サーバーを設定する方法について説明します
+title: Azure VMware Solution by CloudSimple - プライベート クラウド上で vRealize Automation 用の vCenter を設定する
+description: CloudSimple プライベート クラウド上で VMware vRealize Automation 用のエンドポイントとして VMware vCenter サーバーを設定する方法について説明します。
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/19/2019
@@ -8,23 +8,23 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 41106498594ac05b944323e5f5e63de739aedf37
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: df73acfc469a8b7b5329b61095aefdbd73baafd4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024842"
 ---
-# <a name="set-up-vcenter-on-your-avs-private-cloud-for-vmware-vrealize-automation"></a>AVS プライベート クラウド上で VMware vRealize Automation 用の vCenter を設定する
+# <a name="set-up-vcenter-on-your-private-cloud-for-vmware-vrealize-automation"></a>プライベート クラウド上で VMware vRealize Automation 用の vCenter を設定する
 
-AVS プライベート クラウド上で VMware vRealize Automation 用のエンドポイントとして VMware vCenter サーバーを設定することができます。
+CloudSimple プライベート クラウド上で VMware vRealize Automation 用のエンドポイントとして VMware vCenter サーバーを設定することができます。
 
 ## <a name="before-you-begin"></a>開始する前に
 
 vCenter サーバーを構成する前に、次のタスクを完了します。
 
-* オンプレミス環境と AVS プライベート クラウドの間の[サイト間 VPN 接続](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)を構成します。
-* AVS プライベート クラウドの DNS サーバーに対する[オンプレミスの DNS 要求の DNS 転送を構成します](on-premises-dns-setup.md)。
+* オンプレミス環境とプライベート クラウドの間の[サイト間 VPN 接続](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)を構成します。
+* プライベート クラウドの DNS サーバーに対する[オンプレミスの DNS 要求の DNS 転送を構成します](on-premises-dns-setup.md)。
 * [サポート リクエスト](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を送信して、次の表に記載されている一連のアクセス許可を持つ vRealize Automation IaaS 管理ユーザーを作成します。
 
 | 属性値 | 権限 |
@@ -44,7 +44,7 @@ vCenter サーバーを構成する前に、次のタスクを完了します。
 
 ## <a name="install-vrealize-automation-in-your-on-premises-environment"></a>オンプレミス環境への vRealize Automation のインストール
 
-1. AVS のサポートがお客様のために作成した IaaS 管理者として、vRealize Automation IaaS サーバー アプライアンスにサインインします。
+1. CloudSimple のサポートがお客様のために作成した IaaS 管理者として、vRealize Automation IaaS サーバー アプライアンスにサインインします。
 2. vRealize Automation エンドポイント用の vSphere エージェントをデプロイします。
     1. https://*vra-url*:5480/installer にアクセスします。この *vra-url* は、vRealize Automation 管理 UI にアクセスするために使用する URL です。
     2. **[IaaS Installer]\(IaaS のインストーラー\)** をクリックしてインストーラーをダウンロードします。<br>
@@ -59,7 +59,7 @@ vCenter サーバーを構成する前に、次のタスクを完了します。
     ![vRA のログイン情報](media/configure-vra-endpoint-account.png)
     8. プロキシ設定には、 **[Agent type]\(エージェントの種類\)** として「**vSphere**」と入力します。 エージェントの名前を入力します。
     9. **[Manager Service Host]\(マネージャー サービス ホスト\)** フィールドと **[Model Manager Web Service Host]\(モデル マネージャー Web サービス ホスト\)** フィールドに IaaS サーバーの FQDN を入力します。 **[Test]\(テスト\)** をクリックして、各 FQDN 値の接続をテストします。 テストが失敗する場合は、IaaS サーバーのホスト名が解決されるように DNS 設定を変更します。
-    10. AVS プライベート クラウドの vCenter サーバー エンドポイントの名前を入力します。 名前は、後で構成プロセスで使用するのでメモします。
+    10. プライベート クラウドの vCenter サーバー エンドポイントの名前を入力します。 名前は、後で構成プロセスで使用するのでメモします。
 
         ![vRA のインストールのプロキシ](media/configure-vra-endpoint-proxy.png)
 
@@ -72,8 +72,8 @@ vCenter サーバーを構成する前に、次のタスクを完了します。
 2. **[Infrastructure]\(インフラストラクチャ\)**  >  **[Endpoints]\(エンドポイント\)**  >  **[Endpoints]\(エンドポイント\)** を選択します。
 3. **[New]\(新規\)**  >  **[Virtual]\(仮想\)**  >  **[vSphere]** を選択します。
 4. 前の手順で指定した vSphere エンドポイントの名前を入力します。
-5. **[Address]\(アドレス\)** に、 https://*vcenter-fqdn*/sdk という形式で AVS プライベート クラウドの vCenter Server の URL を入力します。この *vcenter-fqdn* は vCenter サーバーの名前です。
-6. AVS のサポートがお客様のために作成した vRealize Automation IaaS 管理ユーザーの資格情報を入力します。
+5. **[Address]\(アドレス\)** に、 https://*vcenter-fqdn*/sdk という形式で Private Cloud vCenter Server の URL を入力します。この *vcenter-fqdn* は vCenter サーバーの名前です。
+6. CloudSimple のサポートがお客様のために作成した vRealize Automation IaaS 管理ユーザーの資格情報を入力します。
 7. **[Test Connection]\(テスト接続\)** をクリックして、ユーザーの資格情報を確認します。 テストが失敗する場合は、URL、アカウント情報、および[エンドポイント名](#verify-the-endpoint-name)を確認し、もう一度テストします。
 8. テストが正常に完了したら、 **[OK]** をクリックして vSphere エンドポイントを作成します。
     ![vRA エンドポイント構成のアクセス](media/configure-vra-endpoint-vra-edit.png)

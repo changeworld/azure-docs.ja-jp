@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/08/2018
 ms.openlocfilehash: c09439c5f54ae4b0884e9e25ae9a5a488f935bac
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930224"
 ---
 # <a name="azure-data-factory-data-flow-sort-transformations"></a>Azure Data Factory Data Flow の並べ替え変換
@@ -34,6 +34,6 @@ ms.locfileid: "74930224"
 
 ADF Data Flow は、複数のノードやパーティションにデータが分散されている、ビッグ データの Spark クラスター上で実行されます。 並べ替え変換によってデータの順序を保持している場合は、データ フローの設計時にこの点に留意することが重要です。 後続の変換でデータのパーティションを再作成すると、データがシャッフルされるため、並べ替えた順序が失われる可能性があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 並べ替え後に、[集計変換](data-flow-aggregate.md)を使用できます

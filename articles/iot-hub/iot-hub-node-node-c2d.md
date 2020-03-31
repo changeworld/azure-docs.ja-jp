@@ -10,10 +10,10 @@ ms.devlang: javascript
 ms.topic: conceptual
 ms.date: 06/16/2017
 ms.openlocfilehash: 8071ddbc5f6073598daf0a08d359ccd19ccd1e4a
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110793"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-nodejs"></a>IoT Hub を使用したクラウドからデバイスへのメッセージの送信 (Node.js)
@@ -54,7 +54,7 @@ cloud-to-device メッセージの詳細については、[IoT Hub 開発者ガ�
 
 このセクションでは、[デバイスから IoT Hub へのテレメトリ送信](quickstart-send-telemetry-node.md)に関するページで作成したシミュレート デバイス アプリを変更して、cloud-to-device メッセージを IoT ハブから受信するようにします。
 
-1. テキスト エディターを使用して **SimulatedDevice.js** ファイルを開きます。 このファイルは、[デバイスから IoT ハブへの利用統計情報の送信](quickstart-send-telemetry-node.md)に関するクイックスタートでダウンロードした Node.js サンプル コードのルート フォルダーの **iot-hub\Quickstarts\simulated-device** フォルダーにあります。
+1. テキスト エディターを使用して **SimulatedDevice.js** ファイルを開きます。 このファイルは、**デバイスから IoT ハブへの利用統計情報の送信**に関するクイックスタートでダウンロードした Node.js サンプル コードのルート フォルダーの [iot-hub\Quickstarts\simulated-device](quickstart-send-telemetry-node.md) フォルダーにあります。
 
 2. IoT Hub から送信されたメッセージを受信するために、デバイス クライアントにハンドラーを登録します。 次のスニペットのように、デバイス クライアントを作成する行の直後に、`client.on` の呼び出しを追加します。
 
@@ -103,7 +103,7 @@ cloud-to-device メッセージの詳細については、[IoT Hub 開発者ガ�
 
 3. テキスト エディターを使用して、**sendcloudtodevicemessage** フォルダーに **SendCloudToDeviceMessage.js** ファイルを作成します。
 
-4. **SendCloudToDeviceMessage.js** ファイルの先頭に、次の `require` ステートメントを追加します。
+4. `require`SendCloudToDeviceMessage.js**ファイルの先頭に、次の** ステートメントを追加します。
 
     ```javascript
     'use strict';

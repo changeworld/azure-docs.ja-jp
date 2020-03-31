@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: d44391624e29d2bdd182bb07452e0e8def2d1407
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67656689"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>チュートリアル:Azure Active Directory と ITRP の統合
@@ -139,17 +139,17 @@ ITRP に対する Azure AD シングル サインオンを構成するには、�
 
 1. ウィンドウの上部にある **[Settings]\(設定\)** アイコンを選択します。
 
-    ![[Settings]\(設定\) アイコン](./media/itrp-tutorial/ic775570.png "[Settings]\(設定\) アイコン")
+    ![[設定] アイコン](./media/itrp-tutorial/ic775570.png "Settings icon")
 
 1. 左側のウィンドウで、 **[Single Sign-On]\(シングル サインオン\)** を選択します。
 
-    ![[Single Sign-On]\(シングル サインオン\)](./media/itrp-tutorial/ic775571.png "[Single Sign-On]\(シングル サインオン\)")
+    ![[Single Sign-On]\(シングル サインオン\) を選択します](./media/itrp-tutorial/ic775571.png "[シングル サインオン] の選択")
 
 1. **[Single Sign-On]\(シングル サインオン\)** 構成セクションで、次の手順を実行します。
 
-    ![[Single sign-on]\(シングル サインオン\) セクション](./media/itrp-tutorial/ic775572.png "[Single sign-on]\(シングル サインオン\) セクション")
+    ![[Single Sign-On]\(シングル サインオン\) セクション](./media/itrp-tutorial/ic775572.png "[Single Sign-On]\(シングル サインオン\) セクション")
 
-    ![[Single sign-on]\(シングル サインオン\) セクション](./media/itrp-tutorial/ic775573.png "[Single sign-on]\(シングル サインオン\) セクション")
+    ![[Single Sign-On]\(シングル サインオン\) セクション](./media/itrp-tutorial/ic775573.png "[Single Sign-On]\(シングル サインオン\) セクション")
 
     1. **[Enabled]** を選択します。
 
@@ -183,7 +183,7 @@ ITRP に対する Azure AD シングル サインオンを構成するには、�
 
     1. **[パスワードを表示]** を選択し、 **[パスワード]** ボックス内の値を書き留めます。
 
-    1. **作成** を選択します。
+    1. **［作成］** を選択します
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -225,11 +225,11 @@ Azure AD ユーザーが ITRP にサインインできるようにするには�
 
 1. メニューで **[People]\(ユーザー\)** を選択します。
 
-    ![[People]\(ユーザー\) の選択](./media/itrp-tutorial/ic775587.png "[People]\(ユーザー\) の選択")
+    ![[People]\(ユーザー\) を選択します](./media/itrp-tutorial/ic775587.png "[People]\(ユーザー\) を選択します")
 
 1. プラス記号 ( **+** ) を選択して、新しいユーザーを追加します。
 
-    ![プラス記号の選択](./media/itrp-tutorial/ic775576.png "プラス記号の選択")
+    ![プラス記号を選択します](./media/itrp-tutorial/ic775576.png "プラス記号を選択します")
 
 1. **[Add New Person]\(新しいユーザーの追加\)** ダイアログ ボックスで、次の手順を実行します。
 

@@ -1,23 +1,22 @@
 ---
 title: Azure Marketplace 向け Cloud パートナー ポータルの仮想マシンの SKU タブ
 description: Azure Marketplace で仮想マシンのオファーを作成する際に使用する SKU タブについて説明します。
-services: Azure, Marketplace, Cloud Partner Portal, virtual machine
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: pabutler
-ms.openlocfilehash: 101f928e296d0b48b4e077676393772829aa76ab
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 49f1de5128325b2884ea76b010727be45f1b195d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73808967"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288888"
 ---
 # <a name="virtual-machine-skus-tab"></a>仮想マシンの SKU タブ
 
-**[新しいオファー]** ページの **[SKU]** タブを使用すると、1 つまたは複数の SKU を作成して、それらを新しいオファーに関連付けることができるようになります。  異なる SKU を使用すると、機能セット、VM イメージの種類、スループットやスケーラビリティ、課金モデル、その他のいくつかの特性でソリューションを区別できます。
+**[新しいプラン]** ページの **[SKU]** タブを使用すると、1 つまたは複数の SKU を作成して、それらを新しいプランに関連付けることができるようになります。  異なる SKU を使用すると、機能セット、VM イメージの種類、スループットやスケーラビリティ、課金モデル、その他のいくつかの特性でソリューションを区別できます。
 
 
 ## <a name="create-a-sku"></a>SKU の作成
@@ -89,6 +88,6 @@ ms.locfileid: "73808967"
 * 各リージョンの価格を個別に設定するには、価格設定のスプレッドシートをエクスポートし、カスタム価格設定を適用し、それからインポートします。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [テスト ドライブ](./cpp-test-drive-tab.md)機能をサポートしている場合は、必要に応じてその情報を指定します。そうでない場合は、オファーに対する [Marketplace](./cpp-marketplace-tab.md) データを指定します。

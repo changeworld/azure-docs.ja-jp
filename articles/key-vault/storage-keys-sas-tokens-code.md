@@ -9,10 +9,10 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.openlocfilehash: cbd7bd034c5cbbdf5308ec660a96dc52a9a2b310
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78200704"
 ---
 # <a name="fetch-shared-access-signature-tokens-in-code"></a>コードでの Shared Access Signature トークンの取得
@@ -51,7 +51,7 @@ accountSasCredential.UpdateSASToken(sasToken);
 
 
 ## <a name="next-steps"></a>次のステップ
-- [Azure PowerShell](key-vault-overview-storage-keys-powershell.md) または [Azure CLI と Key Vault を使用してストレージ アカウント キーを管理する](key-vault-ovw-storage-keys.md)方法を確認する。
+- [Azure PowerShell](key-vault-ovw-storage-keys.md) または [Azure CLI と Key Vault を使用してストレージ アカウント キーを管理する](key-vault-overview-storage-keys-powershell.md)方法を確認する。
 - [マネージド ストレージ アカウント キーのサンプル](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)を参照する
 - [キー、シークレット、証明書について](about-keys-secrets-and-certificates.md)
 - [Key Vault PowerShell リファレンス](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)

@@ -1,19 +1,18 @@
 ---
 title: パートナー センターのコマーシャル マーケットプレース分析の [顧客] ダッシュボード
 description: コマーシャル マーケットプレース分析の [顧客] ダッシュボードを使用して、成長傾向などの顧客に関する情報にアクセスする方法について説明します。
-author: ChJenk
-manager: evansma
-ms.author: v-chjen
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: f2eaaf2ec2f3dad1da345d0cfeadf1cae223a592
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 7fe56a81bc82f9d49cf9f81b30986882b6d13cfe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264018"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286117"
 ---
 # <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析の [顧客] ダッシュボード
 

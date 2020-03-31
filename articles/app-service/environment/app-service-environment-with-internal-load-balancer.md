@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d8ed6b1806e1cbb0ca7419c5892a4a84bc62e541
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 0c03905017629e28e41cce2adaa65eac347b8185
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688720"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294733"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>App Service 環境での内部ロード バランサーの使用
 
@@ -20,7 +20,7 @@ ms.locfileid: "74688720"
 > この記事は、App Service Environment v1 に関するものです。 より強力なインフラストラクチャ上で実行できる、使いやすい新しいバージョンの App Service Environment があります。 新しいバージョンの詳細については、「[App Service Environment の概要](intro.md)」を参照してください。
 >
 
-App Service Environment (ASE) 機能は Azure App Service の Premium サービス オプションであり、マルチテナント スタンプでは使用できない高度な構成機能を提供します。 ASE 機能は、基本的に Azure App Service を顧客の Azure Virtual Network (VNet) にデプロイします。 App Service 環境によって提供される機能の詳細については、[App Service 環境の概要][WhatisASE]に関するページを参照してください。 VNet での稼働の利点については、「[Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)][virtualnetwork]」を参照してください。 
+App Service Environment (ASE) 機能は Azure App Service の Premium サービス オプションであり、マルチテナント スタンプでは使用できない高度な構成機能を提供します。 ASE 機能は、基本的に Azure App Service を顧客の Azure Virtual Network (VNet) にデプロイします。 App Service Environment によって提供される機能の詳細については、[App Service Environment の概要][WhatisASE]に関するページを参照してください。 VNet での稼働の利点については、「[Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)][virtualnetwork]」を参照してください。 
 
 ## <a name="overview"></a>概要
 ASE は、インターネットにアクセスできるエンドポイント、または VNet の IP アドレスを使用して展開できます。 IP アドレスを VNet アドレスに設定するには、内部ロード バランサー (ILB) を含む ASE を展開する必要があります。 ILB を含むように ASE を構成する場合は、次の項目を指定します。
@@ -93,8 +93,8 @@ ASE を作成すると、指定したサブドメインがサブドメインと�
 4. 作成後に、ASE にWeb アプリを作成します。 
 5. VNET に VM がない場合は作成します (ASE と同じサブネットには作成しないでください。作成すると問題が発生します)。
 6. サブドメインの DNS を設定します。 DNS のサブドメインでワイルドカードを使用できます。または、単純なテストを行いたい場合は、VM 上のホスト ファイルを編集して、Web アプリ名を VIP IP アドレスに設定します。 ASE のサブドメイン名が .ilbase.com の場合、Web アプリを mytestapp にすると、アドレスは mytestapp.ilbase.com になります。ホスト ファイルでそのように設定します (Windows でのホスト ファイルの場所は C:\Windows\System32\drivers\etc\)。
-7. この VM 上でブラウザーを使用し、 https://mytestapp.ilbase.com (または、Web アプリ名とサブドメインの組み合わせ) に移動します。
-8. その VM でブラウザーを使用して、 https://mytestapp.ilbase.com に移動します。 自己署名証明書を使用する場合は、セキュリティが確保されないことを受け入れる必要があります。 
+7. この VM 上でブラウザーを使用し、`https://mytestapp.ilbase.com` (または、Web アプリ名とサブドメインの組み合わせ) に移動します。
+8. その VM でブラウザーを使用して、 `https://mytestapp.ilbase.com` に移動します。 自己署名証明書を使用する場合は、セキュリティが確保されないことを受け入れる必要があります。 
 
 ILB の IP アドレスは、仮想 IP アドレスとして [プロパティ] にリスト表示されます。
 
@@ -122,7 +122,7 @@ ILB ASE の管理は、通常の ASE の管理方法とほぼ同じです。 ホ
     *.scm ftp publish 
 
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 App Service 環境の使用を開始するには、「[App Service 環境の概要][WhatisASE]」をご覧ください。
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]

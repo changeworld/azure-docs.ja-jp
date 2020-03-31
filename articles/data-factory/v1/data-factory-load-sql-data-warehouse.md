@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 68afc782e13f967bc1b455434c3ae952baff81b9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 079d29c241cfbbdcc991f024c07b07b378670c10
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980917"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80130880"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>1 TB のデータを Data Factory を使用して 15 分以内に Azure SQL Data Warehouse に 読み込む
 > [!NOTE]
 > この記事は、Data Factory のバージョン 1 に適用されます。 最新バージョンの Data Factory サービスを使用している場合は、[Data Factory を使用して Azure SQL Data Warehouse をコピー先またはコピー元としてデータをコピーする方法](../connector-azure-sql-data-warehouse.md)に関するページをご覧ください。
 
 
-[Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) は、クラウドベースのスケールアウト データベースであり、リレーショナルか非リレーショナルかを問わず、大規模なデータを処理できます。  超並列処理 (MPP) アーキテクチャを基盤とする SQL Data Warehouse は、企業のウェアハウスのワークロード向けに最適化されています。  ストレージとコンピューティングを別々にスケールできる柔軟性によって、クラウドの弾力性を提供します。
+[Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) は、クラウドベースのスケールアウト データベースであり、リレーショナルか非リレーショナルかを問わず、大規模なデータを処理できます。  超並列処理 (MPP) アーキテクチャを基盤とする SQL Data Warehouse は、企業のウェアハウスのワークロード向けに最適化されています。  ストレージとコンピューティングを別々にスケールできる柔軟性によって、クラウドの弾力性を提供します。
 
 Azure SQL Data Warehouse は、**Azure Data Factory** の使用によって、さらに使いやすくなっています。  Azure Data Factory は、フル マネージドのクラウド ベースのデータ統合サービスであり、このサービスを使用して既存のシステムのデータを SQL Data Warehouse に入力することで、貴重な時間を節約しながら、SQL Data Warehouse の評価と分析ソリューションの構築を行うことができます。 Azure Data Factory を使用して Azure SQL Data Warehouse にデータを読み込む主な利点を次に示します。
 
@@ -210,7 +210,7 @@ Azure SQL Data Warehouse データベースを実行するためのいくつか�
 * 読み込み速度を上げるために、一時的なデータに対するヒープの使用を検討します。
 * 統計は、Azure SQL Data Warehouse の読み込みが完了した後で作成します。
 
-詳細については、「[Azure SQL Data Warehouse のベスト プラクティス](../../sql-data-warehouse/sql-data-warehouse-best-practices.md)」を参照してください。
+詳細については、「[Azure SQL Data Warehouse のベスト プラクティス](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Data Factory コピー ウィザード](data-factory-copy-wizard.md) - この記事では、コピーウィザードの詳細について説明します。

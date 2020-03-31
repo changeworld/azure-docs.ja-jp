@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 048d9f3089a433dbf8c2647ed86ddab69c78ebaa
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 444d7f1574cf1517b01250bcb9d810731030182d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772046"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79527794"
 ---
 # <a name="server-concepts-in-azure-database-for-mariadb"></a>Azure Database for MariaDB のサーバーの概念
 この記事では、Azure Database for MariaDB サーバーを操作するための考慮事項とガイドラインを示します。
@@ -48,7 +48,7 @@ Azure Database for MariaDB サーバー内には 1 つまたは複数のデー�
 ## <a name="how-do-i-manage-a-server"></a>サーバーの管理方法
 Azure Database for MariaDB サーバーを管理するには、Azure portal または Azure CLI を使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - サービスの概要については、[Azure Database for MariaDB の概要](./overview.md)に関するページをご覧ください。
 - **サービス レベル**に基づく特定のリソース クォータと制限については、[サービス レベル](./concepts-pricing-tiers.md)に関するページをご覧ください
 

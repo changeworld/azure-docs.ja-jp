@@ -10,10 +10,10 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
 ms.openlocfilehash: db3da5ff2d7e8b6fa493f5338fac93df0d1a7fe2
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110902"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-nodejs"></a>IoT Hub を使用してデバイスからクラウドにファイルをアップロードする (Node.js)
@@ -70,9 +70,9 @@ ms.locfileid: "77110902"
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-3. テキスト エディターを使用して、```simulateddevice``` フォルダーに **SimulatedDevice.js** ファイルを作成します。
+3. テキスト エディターを使用して、**フォルダーに**SimulatedDevice.js```simulateddevice``` ファイルを作成します。
 
-4. **SimulatedDevice.js** ファイルの先頭に、次の ```require``` ステートメントを追加します。
+4. ```require```SimulatedDevice.js**ファイルの先頭に、次の** ステートメントを追加します。
 
     ```javascript
     'use strict';
@@ -82,7 +82,7 @@ ms.locfileid: "77110902"
     var clientFromConnectionString = require('azure-iot-device-mqtt').clientFromConnectionString;
     ```
 
-5. `deviceconnectionstring` 変数を追加し、それを使用して **Client** インスタンスを作成します。  「*IoT Hub の作成*」セクションで作成したデバイスの名前で `{deviceconnectionstring}` を置き換えます。
+5. `deviceconnectionstring` 変数を追加し、それを使用して **Client** インスタンスを作成します。  「`{deviceconnectionstring}`IoT Hub の作成 *」セクションで作成したデバイスの名前で*  を置き換えます。
 
     ```javascript
     var connectionString = '{deviceconnectionstring}';
@@ -143,9 +143,9 @@ ms.locfileid: "77110902"
     npm install azure-iothub --save
     ```
 
-3. テキスト エディターを使用して、`fileuploadnotification` フォルダーに **FileUploadNotification.js** ファイルを作成します。
+3. テキスト エディターを使用して、**フォルダーに**FileUploadNotification.js`fileuploadnotification` ファイルを作成します。
 
-4. **FileUploadNotification.js** ファイルの冒頭に次の `require` ステートメントを追加します。
+4. `require`FileUploadNotification.js**ファイルの冒頭に次の** ステートメントを追加します。
 
     ```javascript
     'use strict';

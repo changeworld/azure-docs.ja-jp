@@ -1,19 +1,18 @@
 ---
 title: Microsoft Commercial Marketplace の FAQ
 description: Azure Marketplace と Microsoft AppSource についての一般的な質問への回答
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/4/2019
-ms.author: ellacroi
-ms.openlocfilehash: 6a7a0d5bdd07221be823f8b94bd581db6d966fa8
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.author: dsindona
+ms.openlocfilehash: ae5c691375d52bc7da7a877f5b2e0c2ca52cc87e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74306406"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288463"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft Commercial Marketplace の FAQ
 
@@ -157,7 +156,7 @@ BYOL ソリューションに対するライセンス資格情報の取得と適
 
 **Free レベルまたはライセンス持ち込み (BYOL) オファリングをデプロイするには、ファイル上に支払い方法 (クレジット カードなど) を指定する必要がありますか?**
 
-No. Free レベルまたは BYOL オファリングをデプロイするために支払い方法は必要ありません。 ただし、無料試用版オファリングには支払い方法が必要です。 **[今すぐ入手する]** または **[Free software trial] (無料試用版ソフトウェア)** ボタンを含む一覧が、選択された Azure サブスクリプションにデプロイされます。  これらの一覧は、選択されたアカウントの登録された支払い方法を使用して課金されます。 Azure 使用料金は、ソフトウェア ライセンス料とは別に課金されます。
+いいえ。 Free レベルまたは BYOL オファリングをデプロイするために支払い方法は必要ありません。 ただし、無料試用版オファリングには支払い方法が必要です。 **[今すぐ入手する]** または **[Free software trial] (無料試用版ソフトウェア)** ボタンを含む一覧が、選択された Azure サブスクリプションにデプロイされます。  これらの一覧は、選択されたアカウントの登録された支払い方法を使用して課金されます。 Azure 使用料金は、ソフトウェア ライセンス料とは別に課金されます。
 
 **Azure Marketplace で販売されるオファーの価格について質問がある場合、Enterprise Agreement (EA) インダイレクト カスタマーはだれに問い合わせればよいですか?**
 
@@ -177,7 +176,7 @@ Enterprise Agreement (EA) インダイレクト カスタマーは、Azure Marke
 
 **Azure Marketplace での購入物にボリューム ライセンス割引は適用されますか?**
 
-No. Azure Marketplace でソリューションを所有する発行元が価格を設定できます。  Azure Marketplace での購入物に対して標準のマイクロソフト ボリューム ライセンス割引は適用されません。
+いいえ。 Azure Marketplace でソリューションを所有する発行元が価格を設定できます。  Azure Marketplace での購入物に対して標準のマイクロソフト ボリューム ライセンス割引は適用されません。
 
 **Azure Marketplace サブスクリプションの詳細や課金情報はどこで表示できますか?**
 
@@ -365,7 +364,7 @@ Microsoft アカウントをまだ持っていない場合は、[アカウント
 "*Web Apps (SaaS アプリ、アドオン) およびコンサルティング サービス*":
 
 1. パートナー センターで、疑問符アイコンを選択して **[サポート]** をクリックします。
-1. [https://www.powershellgallery.com/packages/Az.ApplicationMonitor](<https://go.microsoft.com/fwlink/?linkid=844975>) にアクセスします。
+1. <https://go.microsoft.com/fwlink/?linkid=844975> にアクセスします。
 1. サポート ページで、オファーの種類を選択します。
 1. 発行されたオファーの **[削除]** を選択します。
 1. インシデント チケットを作成します。
@@ -433,7 +432,7 @@ Azure Marketplace での購入物に関する課金やサブスクリプショ�
 
     ![リージョンの選択](media/marketplace-publishers-guide/FAQ-choose-geo.png)
 
-1.  販売できるすべての国/地域が掲載された一覧がポップアップ表示されます。  この SKU を使用できるようにしたい各国/地域の横にあるチェック ボックスをクリックします。 Click **OK**.
+1.  販売できるすべての国/地域が掲載された一覧がポップアップ表示されます。  この SKU を使用できるようにしたい各国/地域の横にあるチェック ボックスをクリックします。 **[OK]** をクリックします。
 
     ![国/地域の選択](media/marketplace-publishers-guide/FAQ-select-countries.png)
 
@@ -472,7 +471,7 @@ Free レベルのサブスクリプションのオファリングは永続的に
 
 はい。サポート チケットを通じて要求すると、適切であると思われる場合、Microsoft はお客様に対するクレジットを処理します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 「[Azure Marketplace と AppSource の公開ガイド](/azure/marketplace/marketplace-publishers-guide)」ページを参照してください。
 

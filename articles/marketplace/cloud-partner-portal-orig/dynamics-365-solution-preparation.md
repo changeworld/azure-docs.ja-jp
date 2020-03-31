@@ -1,20 +1,18 @@
 ---
 title: Dynamics 365 ソリューションの準備
 description: コンポーネントのパッケージ化、インストール、アンインストールのためのフレームワーク
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
-manager: Ricarod.Villalobos
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: bcb3bb63f305aeb98efda3baf0f6661bd7f67a7c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: ac1e4fa541e945f20904ced114a36b58d14585ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824246"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278588"
 ---
 # <a name="dynamics-365-solution-preparation"></a>Dynamics 365 ソリューションの準備
 
@@ -24,7 +22,7 @@ Dynamics 365 ソリューション システムは、特定のビジネス機能
 
 ![CRMScreenShot1](media/CRMScreenShot1.png)
 
-_**"注:** 次のパッケージの例では、ソリューション名を "SampleSolution.zip" と仮定します"_
+_**注:** 次のパッケージの例では、ソリューション名を "SampleSolution.zip" と仮定します_
 
 新しい ISV は、[https://msdn.microsoft.com/library/gg334530.aspx](https://msdn.microsoft.com/library/gg334530.aspx) で、ソリューションの作成に関する詳細情報を得ることができます。
 

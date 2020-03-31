@@ -1,19 +1,18 @@
 ---
 title: ユーザー VHD から Azure VM をデプロイする | Azure Marketplace
 description: ユーザー VHD イメージをデプロイして Azure VM インスタンスを作成する方法について説明します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/29/2018
-ms.author: pabutler
-ms.openlocfilehash: 8421e9b7b7e2b7d13054e977da83be044b4e6af7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 957bc187b0123338947f62333c913cf82a6c66a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73816637"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277958"
 ---
 # <a name="deploy-an-azure-vm-from-a-user-vhd"></a>ユーザー VHD から Azure VM をデプロイする
 
@@ -32,7 +31,7 @@ ms.locfileid: "73816637"
 | userStorageAccountName     | ストレージ アカウントの名前                                                    |
 | sNameForPublicIP           | パブリック IP の DNS 名。 小文字にする必要があります。                                  |
 | subscriptionId             | Azure サブスクリプションの識別子。                                                  |
-| location                   | リソース グループの標準的な Azure 地理的場所                       |
+| Location                   | リソース グループの標準的な Azure 地理的場所                       |
 | vmName                     | 仮想マシンの名前                                                    |
 | vaultName                  | Key Vault の名前                                                          |
 | vaultResourceGroup         | Key Vault のリソース グループ
@@ -65,6 +64,6 @@ New-AzResourceGroupDeployment -Name "dplisvvm$postfix" -ResourceGroupName "$rgNa
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 使用する VM がデプロイされたら、[VM イメージを認定](./cpp-certify-vm.md)する準備が整います。

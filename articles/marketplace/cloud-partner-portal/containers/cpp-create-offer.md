@@ -1,19 +1,18 @@
 ---
 title: Azure Containers オファーを作成する | Azure Marketplace
 description: Marketplace 用の新しいコンテナー オファーを発行する方法。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
-ms.author: pabutler
-ms.openlocfilehash: a9766f234b074fd259eeb7bcc184573e21e390a7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: d2a18d0fee4352cd88e4c64ab99a7dfc1b08ed75
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823219"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280084"
 ---
 # <a name="create-a-new-container-offer-with-the-cloud-partner-portal"></a>Cloud パートナー ポータルで新しいコンテナー オファーを作成する
 
@@ -32,7 +31,7 @@ ms.locfileid: "73823219"
 
 ![新しいオファーのコンテナー オプションを選択](./media/azure-container-offer.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 コンテナー オファーの種類に対応する **[New Offer]\(新しいオファー)** ページには、新しいオファーを作成するのに使用する一連のタブとフォーム フィールドが用意されています。 以下の各記事では、タブを使用して新しいコンテナー オファーの資産グループとサポート サービスを定義する方法が説明されています。
 

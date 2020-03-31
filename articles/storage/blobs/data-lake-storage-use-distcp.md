@@ -9,11 +9,11 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 3c09a95309e001def306698bbba4f6d0a1a2804d
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543659"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228411"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Distcp を使用して Azure Storage Blob と Azure Data Lake Storage Gen2 の間でデータをコピーする
 
@@ -71,9 +71,9 @@ DistCp の最小粒度は 1 ファイルであるため、DistCp を Data Lake S
 
 使用できるガイダンスがいくつかあります。
 
-* **手順 1: '既定' の YARN アプリ キューに使用できる合計メモリを決定する** - 最初の手順では、'既定' の YARN アプリ キューに使用可能なメモリを決定します。 この情報は、クラスターに関連付けられている Ambari ポータルで確認できます。 YARN に移動し、[Configs]\(構成\) タブで '既定' の YARN アプリ キューに使用可能な YARN メモリを確認します。 これは、DistCp ジョブ (実際には MapReduce ジョブ) に使用可能なメモリの合計です。
+* **ステップ 1:'既定' の YARN アプリ キューに使用できる合計メモリを決定する** - 最初の手順では、'既定' の YARN アプリ キューに使用可能なメモリを決定します。 この情報は、クラスターに関連付けられている Ambari ポータルで確認できます。 YARN に移動し、[Configs]\(構成\) タブで '既定' の YARN アプリ キューに使用可能な YARN メモリを確認します。 これは、DistCp ジョブ (実際には MapReduce ジョブ) に使用可能なメモリの合計です。
 
-* **手順 2: マッパーの数を計算する** - **m** の値は、合計 YARN メモリを YARN コンテナーのサイズで割った値と等しくなります。 YARN コンテナー サイズの情報は、Ambari ポータルでも入手できます。 YARN に移動し、[Configs] \(構成) タブを表示します。YARN コンテナーのサイズは、このウィンドウに表示されます。 マッパーの数 (**m**) を求めるための式を次に示します
+* **手順 2:マッパーの数を計算する** - **m** の値は、合計 YARN メモリを YARN コンテナーのサイズで割った値と等しくなります。 YARN コンテナー サイズの情報は、Ambari ポータルでも入手できます。 YARN に移動し、[Configs] \(構成) タブを表示します。YARN コンテナーのサイズは、このウィンドウに表示されます。 マッパーの数 (**m**) を求めるための式を次に示します
 
         m = (number of nodes * YARN memory for each node) / YARN container size
 

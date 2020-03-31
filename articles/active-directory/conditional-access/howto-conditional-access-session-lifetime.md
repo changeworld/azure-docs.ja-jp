@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb094d04a7210d76a98f3e47af750e49b617e493
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6e9c0c88064c00c97de7dc58a500910e81c04eef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77195064"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230795"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>条件付きアクセスを使用して認証セッション管理を構成する
 
@@ -37,7 +37,7 @@ ms.locfileid: "77195064"
 
 ユーザー サインインの頻度に関する Azure Active Directory (Azure AD) の既定の構成は、90 日間のローリング ウィンドウです。 多くの場合、ユーザーに資格情報を要求することは賢明であるように思われますが、逆効果になることがあります。何も考えずに資格情報を入力するように教えられたユーザーは、意図せずに、資格情報を求める悪意のあるプロンプトに入力してしまう可能性があります。
 
-ユーザーにサインインし直すように求めないことは不安に感じられるかもしれませんが、実際は IT ポリシーのどのような違反によってもセッションは取り消されます。 たとえば、パスワードの変更、非準拠のデバイス、アカウントの無効化などがあります (ただしこれらに限定されません)。 また、明示的に [PowerShell を使用してユーザーのセッションを取り消す](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)ことができます。 Azure AD の既定の構成は、結局、「セッションのセキュリティ体制が変更していなければ、資格情報の提供をユーザーに求めない」というものになります。
+ユーザーにサインインし直すように求めないことは不安に感じられるかもしれませんが、実際は IT ポリシーのどのような違反によってもセッションは取り消されます。 たとえば、パスワードの変更、非準拠のデバイス、アカウントの無効化などがあります (ただしこれらに限定されません)。 また、明示的に [PowerShell を使用してユーザーのセッションを取り消す](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)ことができます。 Azure AD の既定の構成は、結局、「セッションのセキュリティ体制が変更していなければ、資格情報の提供をユーザーに求めない」というものになります。
 
 サインイン頻度設定は、標準に従って OAUTH2 または OIDC プロトコルを実装したアプリで動作します。 Windows、Mac、次の Web アプリケーションを含むモバイル用のほとんどの Microsoft ネイティブ アプリは、この設定に準拠します。
 
@@ -72,7 +72,7 @@ Azure AD 参加済み、ハイブリッド Azure AD 参加済み、または Azu
 
 永続的なブラウザー セッションでは、ユーザーはブラウザー ウィンドウを閉じてから再度開いた後でもサインインした状態を維持できます。
 
-ブラウザー セッション永続化に対し、Azure AD では既定で、認証が成功した後に「サインインの状態を維持しますか?」というプロンプトを表示して、個人用デバイスのユーザーがセッションを持続するかどうかを 選択できるようにしています。 「[AD FS シングル サイン オンの設定](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
+ブラウザー セッション永続化に対し、Azure AD では既定で、認証が成功した後に「サインインの状態を維持しますか?」というプロンプトを表示して、個人用デバイスのユーザーがセッションを持続するかどうかを 選択できるようにしています。 「[AD FS シングル サイン オンの設定](/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
 )」の記事のガイダンスを使用して AD FS でブラウザー永続化が構成されている場合、そのポリシーに従って、Azure AD セッションも永続化します。 また、テナント内のユーザーに「サインインの状態を維持しますか?」というプロンプトを表示するかどうかを構成することもできます。 それには、[Azure AD サインイン ページのカスタマイズ](../fundamentals/customize-branding.md)に関する記事にあるガイダンスを使用して、Azure portal の企業ブランド ウィンドウで適切な設定を変更します。
 
 ## <a name="configuring-authentication-session-controls"></a>認証セッション コントロールの構成

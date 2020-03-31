@@ -5,16 +5,16 @@ author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ab12b206d5bb82956a8b607368af44ea0eaca40e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 30b66414e87f642bc72b8723ebff57f2e9009f17
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75471037"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239251"
 ---
-# <a name="tutorial-troubleshoot-resource-manager-template-deployments"></a>チュートリアル:Resource Manager テンプレート デプロイのトラブルシューティング
+# <a name="tutorial-troubleshoot-arm-template-deployments"></a>チュートリアル:ARM テンプレート デプロイのトラブルシューティング
 
-Resource Manager テンプレート デプロイ エラーのトラブルシューティング方法について学習します。 このチュートリアルでは、テンプレートに 2 つのエラーを設定し、アクティビティ ログとデプロイ履歴を使用して問題を解決する方法について学習します。
+Azure Resource Manager (ARM) テンプレート デプロイ エラーのトラブルシューティング方法について説明します。 このチュートリアルでは、テンプレートに 2 つのエラーを設定し、アクティビティ ログとデプロイ履歴を使用して問題を解決する方法について学習します。
 
 テンプレート デプロイに関連するエラーには、次の 2 種類があります。
 
@@ -39,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-* Visual Studio Code と Resource Manager ツール拡張機能。 「[Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](use-vs-code-to-create-template.md)」を参照してください。
+* Visual Studio Code と Resource Manager ツール拡張機能。 [Visual Studio Code を使って ARM テンプレートを作成する方法](use-vs-code-to-create-template.md)に関するページを参照してください。
 
 ## <a name="create-a-problematic-template"></a>問題のあるテンプレートの作成
 
@@ -93,7 +93,7 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
 
 デプロイ エラーは、次の手順を使用して、Azure portal で見つけることができます。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[リソース グループ]** を選択し、目的のリソース グループ名を選択して、リソース グループを開きます。 **[デプロイ]** の下に **[1 件失敗]** が表示されます。
 
     ![Resource Manager チュートリアルのトラブルシューティング](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
@@ -107,7 +107,7 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
 
 アクティビティ ログからエラーを見つけることもできます。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[監視]**  >  **[アクティビティ ログ]** を選択します。
 3. フィルターを使用してログを見つけます。
 
@@ -128,4 +128,4 @@ Azure リソースが不要になったら、リソース グループを削除�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Resource Manager テンプレート デプロイ エラーのトラブルシューティング方法について学習しました。  詳細については、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](common-deployment-errors.md)」を参照してください。
+このチュートリアルでは、ARM テンプレート デプロイ エラーのトラブルシューティング方法について説明しました。  詳細については、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](common-deployment-errors.md)」を参照してください。

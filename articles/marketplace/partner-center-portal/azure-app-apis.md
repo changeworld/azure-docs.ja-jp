@@ -1,19 +1,18 @@
 ---
 title: コマーシャル マーケットプレースでの Azure アプリ向けオンボード用 API
 description: Microsoft パートナー センター上のコマーシャル マーケットプレースにおける Azure アプリ向け API の前提条件。
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: c14d8c6f27e4b0f4a4a75fa14b83455ff30ee35a
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: cc4d56058ce3985ec3a1d9124ef4ec73ff6be1a2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933661"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279761"
 ---
 # <a name="api-for-onboarding-azure-apps-in-partner-center"></a>パートナー センターで Azure アプリをオンボードするための API
 

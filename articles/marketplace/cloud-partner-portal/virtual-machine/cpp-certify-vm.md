@@ -1,19 +1,18 @@
 ---
 title: Azure Marketplace 向けに VM イメージを認定する
 description: VM イメージをテストし送信して､Azure Marketplace の認定を受ける方法を説明しています。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/26/2018
-ms.author: pabutler
-ms.openlocfilehash: 4088864db4bf861d07821f5a0287336d8431f889
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 0225069179e0d7d94a983c5161976a5c1933fac5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826522"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278197"
 ---
 # <a name="certify-your-vm-image"></a>VM イメージを認定する
 
@@ -74,6 +73,6 @@ Azure 認定用の認定テスト ツールはローカルの Windows マシン�
 ![認定テスト結果の保存](./media/publishvm_031.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次に、マーケットプレースに提出する [各 VHD の URI (Uniform Resource Identifier) を作成](./cpp-get-sas-uri.md)します。 

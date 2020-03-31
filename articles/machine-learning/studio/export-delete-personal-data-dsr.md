@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 5228e42a778714f0d656bc993007692bd32d84fb
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: c380d10d0c68794ec3810cea25341d68bb41400d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168610"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227227"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) から製品内ユーザー データをエクスポートおよび削除する
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Azure Machine Learning Studio (クラシック) によって格納された製品内データは、Azure portal、Studio (クラシック) インターフェイス、PowerShell、および認証済み REST API を使用して削除またはエクスポートできます。 この記事では、その方法について説明します。 
 
@@ -53,7 +55,7 @@ Machine Learning Studio (クラシック) には 3 種類のアカウントが�
     - UI、REST API、または PowerShell パッケージを介して個人データおよび顧客データをエクスポートすることができます。
     - Azure Portal でデータを削除できます。
 
-## <a name="delete"></a>Studio (クラシック) でワークスペース データを削除する 
+## <a name="delete-workspace-data-in-studio-classic"></a><a name="delete"></a>Studio (クラシック) でワークスペース データを削除する 
 
 ### <a name="delete-individual-assets"></a>個々の資産を削除する
 
@@ -64,7 +66,7 @@ Machine Learning Studio (クラシック) には 3 種類のアカウントが�
 ### <a name="delete-an-entire-workspace"></a>ワークスペース全体を削除する
 
 ユーザーはまた、ワークスペース全体を削除することもできます。
-- 有料のワークスペース:Azure portal を使用して削除します。
+- 有料ワークスペース: Azure Portal を介して削除します。
 - 無料のワークスペース: **[設定]** ウィンドウの [削除] ボタンを使用します。
 
 ![Machine Learning Studio (クラシック) で無料のワークスペースを削除する](./media/export-delete-personal-data-dsr/delete-studio-data-workspace.png)

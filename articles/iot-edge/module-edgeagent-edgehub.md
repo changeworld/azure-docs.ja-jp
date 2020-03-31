@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 4684daf2a1095a40c478170be37edcae788868ef
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548613"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237427"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>IoT Edge エージェントと IoT Edge ハブのモジュール ツインのプロパティ
 
@@ -77,7 +77,7 @@ IoT Edge エージェントの報告されるプロパティには、次の 3 �
 | プロパティ | 説明 |
 | -------- | ----------- |
 | lastDesiredVersion | この整数は、IoT Edge エージェントによって処理された必要なプロパティの最後のバージョンを参照します。 |
-| lastDesiredStatus.code | これは、IoT Edge エージェントによって表示された最後の必要なプロパティを参照する状態コードです。 使用できる値は以下の通りです。`200` 成功、`400` 無効な構成、`412` 無効なスキーマ バージョン、`417` 必要なプロパティが空、`500` 失敗 |
+| lastDesiredStatus.code | これは、IoT Edge エージェントによって表示された最後の必要なプロパティを参照する状態コードです。 許可される値: `200` 成功、`400` 無効な構成、`412` 無効なスキーマ バージョン、`417` 必要なプロパティが空、`500` 失敗 |
 | lastDesiredStatus.description | 状態のテキストでの説明 |
 | deviceHealth | `healthy` すべてのモジュールのランタイムの状態が `running` または `stopped` のどちらかである場合、`unhealthy` それ以外の場合 |
 | configurationHealth.{deploymentId}.health | `healthy` デプロイ {deploymentId} によって設定されたすべてのモジュールのランタイムの状態が `running` または `stopped` のどちらかである場合、`unhealthy` それ以外の場合 |
@@ -115,7 +115,7 @@ IoT Edge ハブのモジュール ツインは `$edgeHub` と呼ばれ、デバ�
 | プロパティ | 説明 |
 | -------- | ----------- |
 | lastDesiredVersion | この整数は、IoT Edge ハブによって処理された必要なプロパティの最後のバージョンを参照します。 |
-| lastDesiredStatus.code | IoT Edge ハブによって表示された最後の必要なプロパティを参照する状態コード。 使用できる値は以下の通りです。`200` 成功、`400` 無効な構成、`500` 失敗 |
+| lastDesiredStatus.code | IoT Edge ハブによって表示された最後の必要なプロパティを参照する状態コード。 許可される値: `200` 成功、`400` 無効な構成、`500` 失敗 |
 | lastDesiredStatus.description | 状態を説明するテキスト。 |
 | clients.{device or moduleId}.status | このデバイスまたはモジュールの接続状態。 可能性のある値 {"connected" \| "disconnected"}。 切断された状態になることができるのはモジュール ID だけです。 IoT Edge ハブに接続されるダウンストリーム デバイスは、接続されている場合にのみ表示されます。 |
 | clients.{device or moduleId}.lastConnectTime | デバイスまたはモジュールが接続された最後の時間。 |

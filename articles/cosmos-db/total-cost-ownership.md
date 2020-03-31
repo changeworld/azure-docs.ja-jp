@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
 ms.openlocfilehash: b24b69716e472082abfdb388e7d79e88a8e23e64
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72754789"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>総保有コスト (TCO) と Azure Cosmos DB
@@ -56,7 +56,7 @@ Azure Cosmos DB のサーバーレス プロビジョニング モデルでは�
 
 * **予約容量により最大 65% のコストの節約が可能:** Azure Cosmos DB の[予約容量](cosmos-db-reserved-capacity.md)は、Azure Cosmos DB のリソース料金 1 年分または 3 年分を前払いすることで経費を節減するのに役立ちます。 1 年分または 3 年分を事前にコミットすることでコストを大幅に減らすことができ、通常価格に比べ、20% から 65% の割引になります。 ミッション クリティカルなワークロードでは、容量のプロビジョニングの観点からより良い SLA が得られます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Cosmos DB の価格モデルがお客様にとっていかにコスト効率がよいか](total-cost-ownership.md)について詳しく学習します
 * [開発とテストのための最適化](optimize-dev-test.md)の詳細について学習します
@@ -64,5 +64,5 @@ Azure Cosmos DB のサーバーレス プロビジョニング モデルでは�
 * [ストレージ コストの最適化](optimize-cost-storage.md)の詳細について学習します
 * [読み取りと書き込みのコストの最適化](optimize-cost-reads-writes.md)の詳細について学習します
 * [クエリ コストの最適化](optimize-cost-queries.md)の詳細について学習します
-* [複数リージョンの Cosmos アカウント コストの最適化](optimize-cost-regions.md)の詳細を確認します
+* [複数リージョンの Cosmos アカウント コストの最適化](optimize-cost-regions.md)について確認する
 * [NoSQL データベース クラウド サービスの総 (非) 保有コスト](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf)の詳細を確認します

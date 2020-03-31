@@ -15,10 +15,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 374b215a737efbe3d421b6dc49af01303ec54473
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76759162"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Web API を呼び出す Web アプリ: コード構成
@@ -42,7 +42,7 @@ Microsoft 認証ライブラリ (MSAL) の次のライブラリでは、Web ア�
 
 関心があるプラットフォームのタブを選択してください。
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 ユーザーのサインインは Open ID Connect (OIDC) ミドルウェアに委任されるので、OIDC プロセスと対話する必要があります。 対話する方法は、使用するフレームワークによって異なります。
 
@@ -57,7 +57,7 @@ ASP.NET Core の場合は、ミドルウェアの OIDC イベントをサブス�
 > [!NOTE]
 > これらのコード例を完全に理解するには、[ASP.NET Core の基礎](https://docs.microsoft.com/aspnet/core/fundamentals)、特に[依存関係の挿入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)と[オプション](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options)について熟知している必要があります。
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 ユーザーのサインインは Open ID Connect (OIDC) ミドルウェアに委任されるので、OIDC プロセスと対話する必要があります。 対話する方法は、使用するフレームワークによって異なります。
 
@@ -69,12 +69,12 @@ ASP.NET の場合は、ミドルウェアの OIDC イベントをサブスクラ
 
 この記事および以下のコードの例は、[ASP.NET Web アプリ サンプル](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect)から抜粋されたものです。 完全な実装の詳細については、そのサンプルをご覧ください。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 この記事および以下のコードの例は、[Microsoft Graph を呼び出す Java Web アプリケーション](https://github.com/Azure-Samples/ms-identity-java-webapp) (MSAL for Java を使用する Web アプリ サンプル) から抜粋されています。
 そのサンプルでは、現在、MSAL for Java を使用して、承認コードの URL を生成し、Microsoft ID プラットフォームに対する承認エンドポイントへのナビゲーションを処理しています。 また、Sprint セキュリティを使用してユーザーをサインインさせることもできます。 完全な実装の詳細については、そのサンプルをご覧ください。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 この記事および以下のコードの例は、[Microsoft Graph を呼び出す Python Web アプリケーション](https://github.com/Azure-Samples/ms-identity-python-webapp) (MSAL.Python を使用する Web アプリ サンプル) から抜粋されています。
 そのサンプルでは、現在、MSAL.Python を使用して、承認コードの URL を生成し、Microsoft ID プラットフォームに対する承認エンドポイントへのナビゲーションを処理しています。 完全な実装の詳細については、そのサンプルをご覧ください。
@@ -83,7 +83,7 @@ ASP.NET の場合は、ミドルウェアの OIDC イベントをサブスクラ
 
 ## <a name="code-that-redeems-the-authorization-code"></a>承認コードを引き換えるコード
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 ### <a name="startupcs"></a>Startup.cs
 
@@ -334,7 +334,7 @@ public class TokenAcquisition : ITokenAcquisition
 
 `AcquireTokenByAuthorizationCode` メソッドでは、実際に、ASP.NET によって要求された承認コードが引き換えられ、MSAL.NET ユーザー トークン キャッシュに追加されるトークンが取得されます。 その後、キャッシュのトークンが、ASP.NET Core コントローラーで使用されます。
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 OpenID Connect の構成と、`OnAuthorizationCodeReceived` イベントのサブスクリプションが [App_Start\Startup.Auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) ファイルで行われることを除き、ASP.NET での処理は ASP.NET Core と同じように行われます。 ASP.NET では [Web.config#L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15) で `RedirectUri` を指定する必要があることを除き、概念も ASP.NET Core と似ています。 この構成は、アプリケーションをデプロイするときに変更する必要があるため、ASP.NET Core の場合より堅牢さが少し低下します。
 
@@ -405,7 +405,7 @@ public partial class Startup
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 「[ユーザーをサインインさせる Web アプリ: コード構成](scenario-web-app-sign-user-app-configuration.md?tabs=java#initialization-code)」を参照して、Java サンプルで承認コードを取得する方法を理解してください。 アプリがコードを受け取った後、[AuthFilter.java#L51-L56](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java#L51-L56) では次のことが行われます。
 
@@ -474,7 +474,7 @@ class AuthHelper {
     }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 認証コードフローは、「[ユーザーをサインインさせる Web アプリ: コード構成](scenario-web-app-sign-user-app-configuration.md?tabs=python#initialization-code)」で示されているように要求されます。 その後、Flask によって URL `/getAToken` からルーティングされた `authorized` 関数でコードが受信されます。 このコードの完全なコンテキストについては、[app.py#L30-L44](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L30-L44) を参照してください。
 
@@ -507,7 +507,7 @@ def authorized():
 > Web アプリまたは Web API でのトークン キャッシュの実装は、[ファイル ベース](scenario-desktop-acquire-token.md#file-based-token-cache)であることが多いデスクトップ アプリケーションでの実装とは異なります。
 > セキュリティとパフォーマンスのため、Web アプリと Web API では、ユーザー アカウントごとに 1 つのトークン キャッシュが存在することが重要です。 アカウントごとにトークン キャッシュをシリアル化する必要があります。
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 ASP.NET Core のチュートリアルでは、依存関係の挿入を使用して、アプリケーションの Startup.cs ファイルでトークン キャッシュの実装を決定できます。 Microsoft.Identity.Web には、「[トークン キャッシュのシリアル化](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/Microsoft.Identity.Web/README.md#token-cache-serialization)」で説明されている構築済みのトークン キャッシュ シリアライザーが付属しています。 興味深い可能性として、ASP.NET Core の[分散メモリ キャッシュ](https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cache)を選択できます。
 
@@ -540,7 +540,7 @@ services.AddDistributedSqlServerCache(options =>
 
 トークン キャッシュ プロバイダーの詳細については、チュートリアルの [ASP.NET Core Web アプリのチュートリアルのトークン キャッシュ](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache) フェーズも参照してください。
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 Web アプリまたは Web API でのトークン キャッシュの実装は、[ファイル ベース](scenario-desktop-acquire-token.md#file-based-token-cache)であることが多いデスクトップ アプリケーションでの実装とは異なります。
 
@@ -565,7 +565,7 @@ public static class MsalAppBuilder
   }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 MSAL Java では、トークン キャッシュをシリアル化および逆シリアル化するメソッドが提供されています。 Java のサンプルでは、セッションからのシリアル化が処理されています ([AuthHelper.java#L99-L122](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L99-L122) の `getAuthResultBySilentFlow` メソッドを参照)。
 
@@ -598,7 +598,7 @@ IAuthenticationResult getAuthResultBySilentFlow(HttpServletRequest httpRequest, 
 
 `SessionManagementHelper` クラスの詳細は、[MSAL for Java のサンプル](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/SessionManagementHelper.java)で提供されています。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Python のサンプルでは、要求ごとに機密クライアント アプリケーションを再作成し、Flask セッション キャッシュにシリアル化することによって、アカウントごとに 1 つのキャッシュが確保されています。
 

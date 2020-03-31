@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: jingwang
 ms.openlocfilehash: f2e70a7b900ad918cda05ce34204e2de1e6e67ef
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75830192"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Azure Data Factory での区切りテキスト形式
@@ -28,7 +28,7 @@ ms.locfileid: "75830192"
 
 | プロパティ         | 説明                                                  | 必須 |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| 型             | データセットの type プロパティは、**DelimitedText** に設定する必要があります。 | はい      |
+| type             | データセットの type プロパティは、**DelimitedText** に設定する必要があります。 | はい      |
 | location         | ファイルの場所の設定。 ファイル ベースの各コネクタには、固有の場所の種類と `location` でサポートされるプロパティがあります。  | はい      |
 | columnDelimiter  | ファイル内の列を区切るために使用する文字。 現時点では、複数文字の区切り記号はマッピング データ フローについてのみサポートされており、コピー アクティビティではサポートされていません。 <br>既定値は**コンマ `,`** です。列区切り記号が区切り記号なしを意味する空の文字列として定義されている場合は、行全体が 1 つの列と見なされます。 | いいえ       |
 | rowDelimiter     | ファイル内の行を区切るために使われる 1 文字または "\r\n"。<br>既定値は、**読み取りでは "\r\n"、"\r"、"\n" のいずれか**、**書き込みでは "\n" または "\r\n"** (それぞれ、マッピング データ フローおよびコピー アクティビティ)。 <br>`rowDelimiter` を区切り記号なし (空の文字列) に設定するときは、`columnDelimiter` も区切り記号なし (空の文字列) に設定する必要があります。これは、コンテンツ全体を 1 つの値として扱うことを意味します。 | いいえ       |
@@ -77,7 +77,7 @@ Azure Blob Storage の区切りテキスト データセットの例を次に示
 
 | プロパティ       | 説明                                                  | 必須 |
 | -------------- | ------------------------------------------------------------ | -------- |
-| 型           | コピー アクティビティのソースの type プロパティは **DelimitedTextSource** に設定する必要があります。 | はい      |
+| type           | コピー アクティビティのソースの type プロパティは **DelimitedTextSource** に設定する必要があります。 | はい      |
 | formatSettings | プロパティのグループ。 後の**区切りテキストの読み取り設定**に関する表をご覧ください。 | いいえ       |
 | storeSettings  | データ ストアからデータを読み取る方法を指定するプロパティのグループ。 ファイル ベースの各コネクタには、`storeSettings` に、固有のサポートされる読み取り設定があります。 | いいえ       |
 
@@ -85,7 +85,7 @@ Azure Blob Storage の区切りテキスト データセットの例を次に示
 
 | プロパティ      | 説明                                                  | 必須 |
 | ------------- | ------------------------------------------------------------ | -------- |
-| 型          | formatSettings の type は、**DelimitedTextReadSetting** に設定する必要があります。 | はい      |
+| type          | formatSettings の type は、**DelimitedTextReadSetting** に設定する必要があります。 | はい      |
 | skipLineCount | 入力ファイルからのデータ読み取り時にスキップする**空でない**行数を示します。 <br>skipLineCount と firstRowAsHeader の両方が指定されている場合、行が最初にスキップされ、次に、入力ファイルからヘッダー情報が読まれます。 | いいえ       |
 
 ### <a name="delimited-text-as-sink"></a>シンクとしての区切りテキスト
@@ -94,7 +94,7 @@ Azure Blob Storage の区切りテキスト データセットの例を次に示
 
 | プロパティ       | 説明                                                  | 必須 |
 | -------------- | ------------------------------------------------------------ | -------- |
-| 型           | コピー アクティビティのソースの type プロパティは **DelimitedTextSink** に設定する必要があります。 | はい      |
+| type           | コピー アクティビティのソースの type プロパティは **DelimitedTextSink** に設定する必要があります。 | はい      |
 | formatSettings | プロパティのグループ。 後の**区切りテキストの書き込み設定**に関する表をご覧ください。 |          |
 | storeSettings  | データ ストアにデータを書き込む方法を指定するプロパティのグループ。 ファイル ベースの各コネクタには、`storeSettings` に、固有のサポートされる書き込み設定があります。  | いいえ       |
 
@@ -102,7 +102,7 @@ Azure Blob Storage の区切りテキスト データセットの例を次に示
 
 | プロパティ      | 説明                                                  | 必須                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| 型          | formatSettings の type は、**DelimitedTextWriteSetting** に設定する必要があります。 | はい                                                   |
+| type          | formatSettings の type は、**DelimitedTextWriteSetting** に設定する必要があります。 | はい                                                   |
 | fileExtension | 出力ファイルの名前に使用するファイル拡張子 (`.csv`、`.txt` など)。 出力の DelimitedText データセットで `fileName` が指定されていない場合、指定する必要があります。 ファイル名が出力データセット内で構成されている場合は、シンク ファイル名として使用され、ファイル拡張子の設定は無視されます。  | 出力データセットでファイル名が指定されていない場合、はい |
 
 ## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: b5f1fc7f877854dd06fbbe09ff82e47208fa12d0
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72792045"
 ---
 # <a name="conditional-cognitive-skill"></a>条件付きコグニティブ スキル
@@ -43,14 +43,14 @@ Microsoft.Skills.Util.ConditionalSkill
 
 -   注釈パス (式内のパスは、"$(" と ")" で区切る必要があります)
  <br/>
-    次に例を示します。
+    例 :
     ```
         "= $(/document)"
         "= $(/document/content)"
     ```
 
 -  リテラル (文字列、数値、true、false、null) <br/>
-    次に例を示します。
+    例 :
     ```
        "= 'this is a string'"   // string (note the single quotation marks)
        "= 34"                   // number
@@ -59,21 +59,21 @@ Microsoft.Skills.Util.ConditionalSkill
     ```
 
 -  比較演算子 (==、!=、>=、>、<=、<) を使用する式 <br/>
-    次に例を示します。
+    例 :
     ```
         "= $(/document/language) == 'en'"
         "= $(/document/sentiment) >= 0.5"
     ```
 
 -   ブール演算子 (&&、||、!、^) を使用する式 <br/>
-    次に例を示します。
+    例 :
     ```
         "= $(/document/language) == 'en' && $(/document/sentiment) > 0.5"
         "= !true"
     ```
 
 -   数値演算子 (+、-、\*、/、%) を使用する式 <br/>
-    次に例を示します。 
+    例 : 
     ```
         "= $(/document/sentiment) + 0.5"         // addition
         "= $(/document/totalValue) * 1.10"       // multiplication
@@ -87,7 +87,7 @@ Microsoft.Skills.Util.ConditionalSkill
 
 | 入力   | 説明 |
 |-------------|-------------|
-| condition   | この入力は、評価する条件を表す[評価済みフィールド](#evaluated-fields)です。 この条件はブール値 (*true* または *false*) に評価されます。   <br/>  次に例を示します。 <br/> "= true" <br/> "= $(/document/language) =='fr'" <br/> "= $(/document/pages/\*/language) == $(/document/expectedLanguage)" <br/> |
+| condition   | この入力は、評価する条件を表す[評価済みフィールド](#evaluated-fields)です。 この条件はブール値 (*true* または *false*) に評価されます。   <br/>  例 : <br/> "= true" <br/> "= $(/document/language) =='fr'" <br/> "= $(/document/pages/\*/language) == $(/document/expectedLanguage)" <br/> |
 | whenTrue    | この入力は、条件が *true* に評価された場合に返される値を表す[評価済みフィールド](#evaluated-fields)です。 定数文字列は単一引用符 (' と ') に囲まれて返されます。 <br/>サンプル値: <br/> "= 'contract'"<br/>"= $(/document/contractType)" <br/> "= $(/document/entities/\*)" <br/> |
 | whenFalse   | この入力は、条件が *false* に評価された場合に返される値を表す[評価済みフィールド](#evaluated-fields)です。 <br/>サンプル値: <br/> "= 'contract'"<br/>"= $(/document/contractType)" <br/> "= $(/document/entities/\*)" <br/>
 
@@ -173,7 +173,7 @@ Microsoft.Skills.Util.ConditionalSkill
 一部のパラメーターは評価されるため、記載されたパターンに慎重に従う必要があります。 式は等号 "=" で始める必要があります。 パスは "$(" と ")" で区切る必要があります。 文字列は必ず単一引用符で囲んでください。 これは、エバリュエーターで文字列と実際のパスや演算子を区別するのに役立ちます。 また、演算子の両側には必ず空白を入れてください (たとえば、パス内の "*" は乗算という意味ではありません)。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 + [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)

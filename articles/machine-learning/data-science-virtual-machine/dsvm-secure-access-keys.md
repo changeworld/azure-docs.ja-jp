@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.openlocfilehash: 17e611007d2b5400497597946159826df7aa4848
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 1cb0c5094d49eac5a1c8f63406a28d2927d8fa94
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195601"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477325"
 ---
 # <a name="store-access-credentials-securely-on-an-azure-data-science-virtual-machine"></a>Azure Data Science Virtual Machine にアクセス資格情報を安全に保存する
 
@@ -27,10 +27,9 @@ ms.locfileid: "70195601"
 
 Azure リソースのマネージド ID と Key Vault に関するドキュメントは、これらのサービスの詳細情報についての包括的なリソースで構成されています。 この記事の残りの部分では、データ サイエンス仮想マシン (DSVM) で MSI と Key Vault を使用して Azure リソースにアクセスする基本的な方法について説明します。 
 
-## <a name="create-a-managed-identity-on-the-dsvm"></a>DSVM 上でマネージド ID を作成する 
+## <a name="create-a-managed-identity-on-the-dsvm"></a>DSVM 上でマネージド ID を作成する
 
-
-```
+```azurecli-interactive
 # Prerequisite: You have already created a Data Science VM in the usual way.
 
 # Create an identity principal for the VM.
@@ -39,9 +38,9 @@ az vm assign-identity -g <Resource Group Name> -n <Name of the VM>
 az resource list -n <Name of the VM> --query [*].identity.principalId --out tsv
 ```
 
-
 ## <a name="assign-key-vault-access-permissions-to-a-vm-principal"></a>VM プリンシパルに Key Vault のアクセス許可を割り当てる
-```
+
+```azurecli-interactive
 # Prerequisite: You have already created an empty Key Vault resource on Azure by using the Azure portal or Azure CLI.
 
 # Assign only get and set permissions but not the capability to list the keys.
@@ -50,7 +49,7 @@ az keyvault set-policy --object-id <Principal ID of the DSVM from previous step>
 
 ## <a name="access-a-secret-in-the-key-vault-from-the-dsvm"></a>DSVM からキー コンテナー内のシークレットにアクセスする
 
-```
+```bash
 # Get the access token for the VM.
 x=`curl http://localhost:50342/oauth2/token --data "resource=https://vault.azure.net" -H Metadata:true`
 token=`echo $x | python -c "import sys, json; print(json.load(sys.stdin)['access_token'])"`
@@ -61,7 +60,7 @@ curl https://<Vault Name>.vault.azure.net/secrets/SQLPasswd?api-version=2016-10-
 
 ## <a name="access-storage-keys-from-the-dsvm"></a>DSVM からストレージ キーにアクセスする
 
-```
+```bash
 # Prerequisite: You have granted your VMs MSI access to use storage account access keys based on instructions at https://docs.microsoft.com/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-storage. This article describes the process in more detail.
 
 y=`curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true`
@@ -70,6 +69,7 @@ curl https://management.azure.com/subscriptions/<SubscriptionID>/resourceGroups/
 
 # Now you can access the data in the storage account from the retrieved storage account keys.
 ```
+
 ## <a name="access-the-key-vault-from-python"></a>Python からキー コンテナーにアクセスする
 
 ```python
@@ -101,7 +101,7 @@ print("My secret value is {}".format(secret.value))
 
 ## <a name="access-the-key-vault-from-azure-cli"></a>Azure CLI からキー コンテナーにアクセスする
 
-```
+```azurecli-interactive
 # With managed identities for Azure resources set up on the DSVM, users on the DSVM can use Azure CLI to perform the authorized functions. The following commands enable access to the key vault from Azure CLI without requiring login to an Azure account.
 # Prerequisites: MSI is already set up on the DSVM as indicated earlier. Specific permissions, like accessing storage account keys, reading specific secrets, and writing new secrets, are provided to the MSI.
 

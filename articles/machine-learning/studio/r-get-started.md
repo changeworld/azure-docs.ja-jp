@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 9e010a5179f2da2d5bbce5526d59ac075a9270b0
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 1b347707b3c656bd692a29f0fd748c1503be4fb8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169260"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218007"
 ---
 # <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) で R プログラミング言語の使用を開始する
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 <!-- Stephen F Elston, Ph.D. -->
 
@@ -47,7 +49,7 @@ Azure Machine Learning Studio (クラシック) 環境で R コードを作成�
 * 用意されたデータを使用し、データセットのいくつかの変数間における相関関係を分析します。
 * 最終的に、牛乳生産の季節的な時系列予測モデルを作成します。
 
-## <a id="mlstudio"></a>Machine Learning Studio (クラシック) での R 言語の操作
+## <a name="interact-with-r-language-in-machine-learning-studio-classic"></a><a id="mlstudio"></a>Machine Learning Studio (クラシック) での R 言語の操作
 
 このセクションでは、Machine Learning Studio (クラシック) 環境における R プログラミング言語操作の基本を見ていきます。 R 言語は、Azure Machine Learning Studio (クラシック) 環境内でカスタマイズされた分析とデータ操作モジュールを作成するための、強力なツールを提供します。
 
@@ -139,7 +141,7 @@ RStudio のチュートリアル入門書が「[Using the RStudio IDE (RStudio I
 
 RStudio の使用に関する追加情報が、以下の「[RStudio ドキュメント ガイド](#appendixa)」に記載されています。  
 
-## <a id="scriptmodule"></a>R スクリプトの実行モジュールでのデータ入出力
+## <a name="get-data-in-and-out-of-the-execute-r-script-module"></a><a id="scriptmodule"></a>R スクリプトの実行モジュールでのデータ入出力
 
 このセクションでは、[R スクリプトの実行][execute-r-script]モジュールでデータを入出力する方法を説明します。 [R スクリプトの実行][execute-r-script]モジュールでさまざまなデータ型の入出力を操作する方法を確認します。
 
@@ -147,7 +149,7 @@ RStudio の使用に関する追加情報が、以下の「[RStudio ドキュメ
 
 ### <a name="load-and-check-data-in-machine-learning-studio-classic"></a>Machine Learning Studio (クラシック) でのデータの読み込みとチェック
 
-#### <a id="loading"></a>データセットの読み込み
+#### <a name="load-the-dataset"></a><a id="loading"></a>データセットの読み込み
 
 最初に、**csdairydata.csv** ファイルを Azure Machine Learning Studio (クラシック) に読み込みます。
 
@@ -347,7 +349,7 @@ R デバイス出力を表示するには、ポートを選択して、 **[視�
 
 *図 8: R デバイス ポートからのグラフィックス出力*  
 
-## <a id="filtering"></a>データのフィルター処理と変換
+## <a name="data-filtering-and-transformation"></a><a id="filtering"></a>データのフィルター処理と変換
 
 このセクションでは、カリフォルニア酪農データに対して、基本的なフィルター処理と変換操作を行います。 このセクションの終了までに、データを分析モデルの構築に適した形式にします。  
 
@@ -643,7 +645,7 @@ cadairydata <- na.omit(cadairydata)
 
 この時点でデータはクリーンアップされ、モデリングの準備が整いました。 [R スクリプトの実行][execute-r-script]モジュールの結果データセット出力に関する視覚化サマリーを調べると、"Month" 列が希望する 12 個の一意値を持つ "Categorical" であることがわかります。
 
-## <a id="timeseries"></a>時系列オブジェクトと相関関係分析
+## <a name="time-series-objects-and-correlation-analysis"></a><a id="timeseries"></a>時系列オブジェクトと相関関係分析
 
 このセクションでは、いくつかの基本的な R 時系列オブジェクトについて調べ、変数間の相関関係を分析します。 目標は、いくつかの時間差におけるペアワイズ相関情報を含むデータフレームを出力することです。
 
@@ -942,7 +944,7 @@ outframe
 
 *図 19: 相関関係分析による結果出力*
 
-## <a id="seasonalforecasting"></a>時系列の例: 季節的予測
+## <a name="time-series-example-seasonal-forecasting"></a><a id="seasonalforecasting"></a>時系列の例: 季節的予測
 
 現在データは、分析に適したフォームになっており、変数間に有意な相関関係はないと判断しています。 先に進み、時系列予測モデルを作成しましょう。 このモデルを使用し、2013 年の 12 か月のカリフォルニアにおける牛乳生産を予測します。
 
@@ -1300,7 +1302,7 @@ maml.mapOutputPort('RMS.df')
 
 これらの結果から、季節因子をモデルに追加すると、RMS 誤差が大幅に少なくなることがわかります。 それほど意外ではありませんが、トレーニング データの RMS 誤差は、予測よりもわずかに少なくなっています。
 
-## <a id="appendixa"></a>RStudio ドキュメント ガイド
+## <a name="guide-to-rstudio-documentation"></a><a id="appendixa"></a>RStudio ドキュメント ガイド
 
 RStudio はドキュメントが非常に整っているため、 ここでは、使用を開始するための RStudio ドキュメントの重要なセクションに対するリンクをいくつか示します。
 
@@ -1308,7 +1310,7 @@ RStudio はドキュメントが非常に整っているため、 ここでは�
 * **R コードの編集と実行** - RStudio は、R コードを編集し実行するための統合環境を提供します。 詳細については、「[Editing and Executing Code (コードの編集と実行)](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code)」を参照してください。
 * **デバッグ** - RStudio には、強力なデバッグ機能が搭載されています。 デバッグ機能の詳細については、「[Debugging with RStudio (RStudio でのデバッグ)](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio)」を参照してください。 ブレークポイントのトラブルシューティング機能の詳細については、「[Breakpoint Troubleshooting (ブレークポイントのトラブルシューティング)](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting)」を参照してください。
 
-## <a id="appendixb"></a>参考資料
+## <a name="further-reading"></a><a id="appendixb"></a>参考資料
 
 この R プログラミングのチュートリアルでは、Azure Machine Learning Studio (クラシック) で、R 言語を使用するために必要な基本事項について説明します。 R に精通していない場合、CRAN に 2 つの入門書が用意されています。
 

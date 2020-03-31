@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.service: key-vault
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: 8c9390ea498647d34e8643ed4be596372ffb8696
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 01fb5393217834bc0196da25c4a56314ca7eae2a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293387"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294534"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API のエラー コード
  
@@ -99,7 +99,7 @@ Azure OAUTH エンドポイントからアクセス トークンを要求する�
 
 ### <a name="troubleshooting-401"></a>401 のトラブルシューティング
 
-401 は、キー コンテナーに要求を行う前に、トークンの生成時点から調査する必要があります。 一般に、コードはトークンを要求するために使用されます。 トークンが受け取られると、Key Vault 要求に渡されます。 コードがローカルで実行されている場合は、Fiddler を使用して https://login.microsoftonline.com への要求と応答をキャプチャできます。 要求は次のようになります。
+401 は、キー コンテナーに要求を行う前に、トークンの生成時点から調査する必要があります。 一般に、コードはトークンを要求するために使用されます。 トークンが受け取られると、Key Vault 要求に渡されます。 コードがローカルで実行されている場合は、Fiddler を使用して `https://login.microsoftonline.com` への要求と応答をキャプチャできます。 要求は次のようになります。
 
 ``` 
 POST https://login.microsoftonline.com/<key vault tenant ID>/oauth2/token HTTP/1.1

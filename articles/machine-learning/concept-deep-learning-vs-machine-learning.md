@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 03/05/2020
-ms.openlocfilehash: a930dc3974536047096912505b9a786cf53c41b8
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: bcacf4ff66e114f65ac75f0aadd1564875f15f62
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78328593"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79501368"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>ディープ ラーニングと機械学習
 
@@ -120,4 +120,4 @@ AI、機械学習、ディープ ラーニングの間の関係を理解する�
 
 - [Chainer モデルを使用して手書きの数字を分類する](https://docs.microsoft.com/azure/machine-learning/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)
 
-また、[機械学習アルゴリズムのクイック ガイド](algorithm-cheat-sheet.md)を使用して、モデルのアルゴリズムを選択します。
+また、[機械学習アルゴリズムのクイック ガイド](../synapse-analytics/sql-data-warehouse/cheat-sheet.md)を使用して、モデルのアルゴリズムを選択します。

@@ -10,14 +10,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: 79a7b157d5daf8940aba454808c65ed433cfe29c
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 4cf918abae51ca330054ef86e57095d29a21a37a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169009"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79204530"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio を使用して顧客離れを分析する (クラシック)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 ## <a name="overview"></a>概要
 この記事では、Azure Machine Learning Studio (クラシック) を使用して構築された顧客離れ分析プロジェクトのリファレンス実装を紹介します。 また、産業界の顧客離れの問題を総合的に解決するための関連の汎用モデルについて説明します。 さらに、Machine Learning を使用して構築されたモデルの正確度を測定し、モデルの開発を進めるために方向性を評価します。  
 
@@ -131,7 +134,7 @@ ms.locfileid: "77169009"
 
 SAS Enterprise Miner 12 のデスクトップのエディションを使用して構築された同等のモデルには、スコアのデータセットを提出しました。 SAS モデルと 4 つのすべての Machine Learning Studio (クラシック) モデルの精度を測定しました。  
 
-## <a name="results"></a>[結果]
+## <a name="results"></a>結果
 このセクションでは、スコア付けデータセットに基づいて、モデルの正確度に関してわかったことを紹介します。  
 
 ### <a name="accuracy-and-precision-of-scoring"></a>スコア付けの正確度と精度

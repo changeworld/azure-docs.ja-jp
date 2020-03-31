@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e74a7ab0c003aaf9d90211484b39f8322cd9c329
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77648004"
 ---
 # <a name="features-and-licenses-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の機能とライセンス
@@ -63,7 +63,7 @@ Azure Multi-Factor Authentication は、組織のニーズに応じて、いく�
 
 Azure Multi-Factor Authentication を使用するには、資格のある Azure AD のレベルに登録するか、ご購入ください。 Azure AD には、Free、Office 365 アプリ エディション (Office 365 Business Premium、E3、または E5 の顧客向け)、Premium P1、および Premium P2 の 4 つのエディションが用意されています。
 
-Free エディションは、Azure サブスクリプションに含まれます。 セキュリティの既定値群を使用する方法、または *Azure AD 全体管理者*ロールでアカウントを保護する方法についての情報は、[下記のセクション](#azure-ad-free-tier)を参照してください。
+Free エディションは、Azure サブスクリプションに含まれます。 セキュリティの既定値群を使用する方法、または [Azure AD 全体管理者](#azure-ad-free-tier)ロールでアカウントを保護する方法についての情報は、*下記のセクション*を参照してください。
 
 Azure AD Premium エディションは、Microsoft の担当者、[Open Volume License プログラム](https://www.microsoft.com/licensing/licensing-programs/open-license.aspx)、および [Cloud Solution Providers プログラム](https://go.microsoft.com/fwlink/?LinkId=614968&clcid=0x409)から入手できます。 Azure および Office 365 サブスクライバーは Azure Active Directory Premium P1 および P2 をオンラインで購入することもできます。 [サインイン](https://portal.office.com/Commerce/Catalog.aspx)して購入します。
 

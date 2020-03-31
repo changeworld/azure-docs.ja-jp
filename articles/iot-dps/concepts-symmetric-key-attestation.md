@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.openlocfilehash: 0e3d343c0a68dd527e4e8e8d23e5b3843a216a78
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975297"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233327"
 ---
 # <a name="symmetric-key-attestation"></a>対称キーの構成証明
 
@@ -48,7 +48,7 @@ SAS トークンの形式は次のとおりです。
 
 | 値 | 説明 |
 | --- | --- |
-| {signature} |HMAC-SHA256 署名文字列。 個別の登録の場合は、対称キー (プライマリまたはセカンダリ) を使用してハッシュを実行することにより、この署名が生成されます。 登録グループの場合は、登録グループ キーから派生したキーを使用して、ハッシュを実行します。 ハッシュは、`URL-encoded-resourceURI + "\n" + expiry` の形式のメッセージに対して実行されます。 **重要**:キーは、HMAC-SHA256 計算の実行に使用する前に、base64 からデコードする必要があります。 また、署名の結果は、URL でエンコードする必要があります。 |
+| {signature} |HMAC-SHA256 署名文字列。 個別の登録の場合は、対称キー (プライマリまたはセカンダリ) を使用してハッシュを実行することにより、この署名が生成されます。 登録グループの場合は、登録グループ キーから派生したキーを使用して、ハッシュを実行します。 ハッシュは、`URL-encoded-resourceURI + "\n" + expiry` の形式のメッセージに対して実行されます。 **重要**: キーは、HMAC-SHA256 計算の実行に使用する前に、base64 からデコードする必要があります。 また、署名の結果は、URL でエンコードする必要があります。 |
 | {resourceURI} |このトークンを使用してアクセスできる登録エンドポイントの URI。Device Provisioning Service インスタンスのスコープ ID で始まっています。 たとえば、`{Scope ID}/registrations/{Registration ID}` のように指定します。 |
 | {expiry} |1970 年 1 月 1 日の 00 時 00 分 00 秒 UTC からのエポック秒で表される UTF8 文字列。 |
 | {URL-encoded-resourceURI} |小文字のリソース URI の小文字の URL エンコード |
@@ -110,10 +110,10 @@ String deviceKey = Utils.ComputeDerivedSymmetricKey(Convert.FromBase64String(mas
 
 デバイス キーが工場でインストールされない場合は、[ハードウェア セキュリティ モジュール HSM](concepts-security.md#hardware-security-module) を使用してデバイス ID を安全に保管する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 対称キー構成証明について理解できたので、以下の記事で詳細を確認してください。
 
-* [クイック スタート:対称キーを使用してシミュレートされたデバイスをプロビジョニングする](quick-create-simulated-device-symm-key.md)
+* [クイック スタート: 対称キーを使用してシミュレートされたデバイスをプロビジョニングする](quick-create-simulated-device-symm-key.md)
 * [自動プロビジョニングの概念を確認する](./concepts-auto-provisioning.md)
 * [自動プロビジョニングの使用を始める](./quick-setup-auto-provision.md) 

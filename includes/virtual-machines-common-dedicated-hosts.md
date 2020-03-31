@@ -9,10 +9,10 @@ ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 2daaf9bbdf90029f0aad4333ab94e2d1d1d3d7ff
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79129557"
 ---
 ## <a name="limitations"></a>制限事項
@@ -98,7 +98,7 @@ Azure で VM を作成するときに、VM に使用する専用ホストを選�
 
 詳しくは、「[Azure 専用ホストの価格](https://aka.ms/ADHPricing)」をご覧ください。
 
-また、Azure Dedicated Host の [予約インスタンスを使用してコストを節約することもできます](../articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md)。
+また、Azure Dedicated Host[の](../articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md)予約インスタンスを使用してコストを節約することもできます。
  
 ## <a name="sizes-and-hardware-generations"></a>サイズとハードウェアの世代
 

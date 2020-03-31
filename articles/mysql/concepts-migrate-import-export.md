@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
 ms.openlocfilehash: 83b0a69e063e9427c726216ef873f5a1c97f9582
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78163728"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>インポートとエクスポートを使用した MySQL データベースの移行
@@ -42,7 +42,7 @@ Azure Database for MySQL に移行するとき、インポート ファイルお
 ## <a name="determine-when-to-use-import-and-export-techniques-instead-of-a-dump-and-restore"></a>ダンプと復元の代わりにインポート/エクスポート手法を使用する状況の判断
 次のシナリオでは、MySQL ツールを使用して、データベースを Azure MySQL Database にインポートおよびエクスポートします。 他のシナリオでは、代わりに[ダンプと復元](concepts-migrate-dump-restore.md)の方法を使用することでメリットが得られます。 
 
-- 既存の MySQL データベースから少数のテーブルを選択して、Azure MySQL Database にインポートする必要がある場合は、インポート/エクスポート手法を使用するのが適しています。  これにより、不要なテーブルを移行から除外して、時間とリソースを節約できます。 たとえば、[mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables) では `--include-tables` スイッチまたは `--exclude-tables` スイッチを使用し、[mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables) では `--tables` スイッチを使用します。
+- 既存の MySQL データベースから少数のテーブルを選択して、Azure MySQL Database にインポートする必要がある場合は、インポート/エクスポート手法を使用するのが適しています。  これにより、不要なテーブルを移行から除外して、時間とリソースを節約できます。 たとえば、`--include-tables`mysqlpump`--exclude-tables` では [ スイッチまたは ](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables) スイッチを使用し、`--tables`mysqldump[ では ](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables) スイッチを使用します。
 - テーブル以外のデータベース オブジェクトを移行する場合は、それらのオブジェクトを明示的に作成します。 制約 (主キー、外部キー、インデックス)、ビュー、関数、プロシージャ、トリガーなど、移行するデータベース オブジェクトを含めます。
 - MySQL データベース以外の外部データ ソースからデータを移行する場合は、フラット ファイルを作成し、[mysqlimport](https://dev.mysql.com/doc/refman/5.7/en/mysqlimport.html) を使用してそれらのファイルをインポートします。
 

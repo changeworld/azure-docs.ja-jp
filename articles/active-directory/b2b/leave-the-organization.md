@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8bce67c81b924d768826402b707c41c085b7767b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74272492"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>ゲスト ユーザーとして組織を脱退する
@@ -52,7 +52,7 @@ ms.locfileid: "74272492"
 30 日の期間中、テナント管理者はいつでも必要に応じてアカウントを完全削除できます。 これを行うには、次の手順を実行します。
 
 1. [Azure Portal](https://portal.azure.com) で、 **[Azure Active Directory]** を選択します。
-2. **[管理]** にある **[Users]** を選択します。
+2. **[管理]** にある **[ユーザー]** を選択します。
 3. **Deleted users** を選択します。
 4. 削除済みユーザーの横のチェック ボックスを選択して、**Delete permanently** を選択します。
 
@@ -60,7 +60,7 @@ ms.locfileid: "74272492"
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure AD B2B の概要については、「[Azure AD B2B コラボレーションとは](what-is-b2b.md)」を参照してください。
 

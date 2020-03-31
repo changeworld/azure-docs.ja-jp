@@ -6,13 +6,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: d91048c52794869b5db1467a3456ca58e703d1ad
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 3/18/2020
+ms.openlocfilehash: 79c5c7e485cc9cb03757b8a981cef92d79b81c3d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719927"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79537178"
 ---
 # <a name="handle-transient-errors-and-connect-efficiently-to-azure-database-for-mysql"></a>一時的なエラーを処理して Azure Database for MySQL に効率的に接続する
 

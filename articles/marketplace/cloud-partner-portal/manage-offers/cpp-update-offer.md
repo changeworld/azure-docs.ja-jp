@@ -1,19 +1,18 @@
 ---
 title: Marketplace のオファーを更新する | Azure Marketplace
 description: Cloud パートナー ポータルを使用して Azure Marketplace および AppSource Marketplace でオファーを更新する
-services: Azure, AppSource, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/11/2019
-ms.author: pabutler
-ms.openlocfilehash: b3f579dbdc943b2380c9de3dde6b2ebf4754d4d1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 101369a050770be3acd9534cef6229037fe1c366
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826725"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288514"
 ---
 # <a name="update-azure-marketplace-and-appsource-offers"></a>Azure Marketplace および AppSource のオファーを更新する
 
@@ -104,7 +103,7 @@ SKU が新しいリージョンで利用できるようになると、その特�
 
 1. 価格を下げる SKU を選択します。
 2. 低い価格を設定するには、最初に使用した方法と同じ方法を使用する必要があります。つまり、ポータル UI で直接行う方法か、スプレッドシートのインポート/エクスポートを使用する方法です。
-3. **[Save]** をクリックします。
+3. **[保存]** をクリックします。
 4. **[発行]** を選択して、発行プロセスを開始します。
 
 価格がマーケットプレースに公開されると、新規のお客様にはその価格が表示され、すべての新規のお客様は新しい割引価格を支払うことになります。  既存のお客様の場合、価格の引き下げは、価格の引き下げが有効になった請求期間の開始時点に遡って反映されます。  価格の引き下げが発生した請求期間の請求が既に行われている場合、引き下げられた価格分を補うために次の請求期間中に返金されます。
@@ -125,6 +124,6 @@ SKU が新しいリージョンで利用できるようになると、その特�
 発行アクティビティの履歴を表示するには、Cloud パートナー ポータルの左側にある縦方向のメニューバーの **[履歴]** タブを選択します。  [履歴] ページには、いくつかの特性を使用したフィルター処理機能があり、列の順序変更をサポートしています。  各発行イベントにはタイムスタンプが付けられています。  詳細については、「[[監査履歴] ページ](../portal-tour/cpp-history-page.md)」を参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Cloud パートナー ポータルを使用して、[発行済みの SKU またはオファーを削除する](./cpp-delete-offer.md)こともできます。

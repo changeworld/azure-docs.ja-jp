@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9618e02f54fbb2a3b92771761c5fcf700d126b5c
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275210"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227887"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect のトポロジ
 この記事では、主な統合ソリューションとして Azure AD Connect 同期を使用する、さまざまなオンプレミス トポロジおよび Azure Active Directory (Azure AD) トポロジについて説明します。 この記事には、サポートされている構成とサポートされていない構成の両方が含まれています。
@@ -29,7 +29,7 @@ ms.locfileid: "70275210"
 
 以下に、この記事での図の凡例を示します。
 
-| 説明 | シンボル |
+| 説明 | Symbol |
 | --- | --- |
 | オンプレミスの Active Directory フォレスト |![オンプレミスの Active Directory フォレスト](./media/plan-connect-topologies/LegendAD1.png) |
 | オンプレミス Active Directory とフィルター処理されたインポート |![Active Directory とフィルター処理されたインポート](./media/plan-connect-topologies/LegendAD2.png) |
@@ -192,9 +192,9 @@ Azure AD のテナントは、分離するように設計されています。 �
 
 FIM 2010 または MIM 2016 オンプレミスを使用して、2 つの Exchange 組織間でユーザーを同期できます (GALSync 経由)。 1 つの組織内のユーザーは、他の組織では外部ユーザーおよび連絡先として表示されます。 これらの異なるオンプレミス Active Directory インスタンスは、独自の Azure AD テナントと同期できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 これらのシナリオのために Azure AD Connect をインストールする方法については、「 [Azure AD Connect のカスタム インストール](how-to-connect-install-custom.md)」を参照してください。
 
 [Azure AD Connect Sync](how-to-connect-sync-whatis.md) の構成に関するページをご覧ください。
 
-詳細については、[オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)に関するページを参照してください。
+[オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)に関する記事をご覧ください。

@@ -1,19 +1,18 @@
 ---
 title: SaaS Fulfillment API v2 | Azure Marketplace
 description: この記事では、関連付けられている Fulfillment v2 API を使用して、AppSource と Azure Marketplace 上に SaaS オファーを作成して管理する方法について説明します。
-services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 10/18/2019
-ms.author: evansma
-ms.openlocfilehash: 4c73a59352422626ec3c6012607009995479d0cc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: ca49418013357ecaae62ea5e91374eaa1cbde59d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73816603"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275766"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS Fulfillment API バージョン 2 
 
@@ -281,7 +280,7 @@ Azure SaaS では、SaaS サブスクリプション購入のライフ サイク
 
 指定された SaaS サブスクリプションを取得します。 この呼び出しを使用して、ライセンス情報およびプラン情報を取得します。
 
-##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>取得<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId?api-version=<ApiVersion>`
+##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>取得<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *クエリ パラメーター:*
 
@@ -593,7 +592,7 @@ Request Body:
 
 指定したサブスクリプションを登録解除し削除します。
 
-##### <a name="deletebr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionid-api-versionapiversion"></a>削除<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId> ?api-version=<ApiVersion>`
+##### <a name="deletebr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>削除<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *クエリ パラメーター:*
 
@@ -878,6 +877,6 @@ API エンドポイント パスはモック API と実際の API のどちら�
 
 この記事の API 呼び出しはどれも、モック ホスト エンドポイントに対して行えます。 通常は、応答としてモック データを戻すことが期待されています。 モック API に対するサブスクリプションの更新メソッドの呼び出しには、常に 500 が返されます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 開発者は、[Cloud パートナー ポータル REST API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) を使用して、ワークロード、オファー、およびパブリッシャー プロファイルの操作をプログラムで取得することもできます。

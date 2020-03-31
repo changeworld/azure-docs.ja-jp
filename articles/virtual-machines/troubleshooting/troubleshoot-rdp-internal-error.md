@@ -13,11 +13,11 @@ ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
 ms.openlocfilehash: 8046e4f42db50db15c840a13b95ae1f3620a8c7f
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77918259"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231915"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>リモート デスクトップを介して Azure VM に接続しようとするときに、内部エラーが発生する
 
@@ -85,7 +85,7 @@ ms.locfileid: "77918259"
 
     3. Azure portal の RDP ポートで、[新しいポートのネットワーク セキュリティ グループを更新](../../virtual-network/security-overview.md)します。
 
-#### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>手順 2:RDP の自己署名証明書に適切なアクセス許可を設定する
+#### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>手順 2: RDP の自己署名証明書に適切なアクセス許可を設定する
 
 1.  PowerShell インスタンスで、次のコマンドを 1 つずつ実行して、RDP の自己署名証明書を更新します。
 
@@ -134,7 +134,7 @@ ms.locfileid: "77918259"
 
 4. VM を再起動し、VM へのリモート デスクトップ接続の開始を試行します。 エラーが引き続き発生する場合は、次の手順に移動します。
 
-#### <a name="step-3-enable-all-supported-tls-versions"></a>手順 3:サポートされているすべての TLS バージョンを有効にする
+#### <a name="step-3-enable-all-supported-tls-versions"></a>手順 3: サポートされているすべての TLS バージョンを有効にする
 
 RDP クライアントでは、既定のプロトコルとして TLS 1.0 が使用されます。 ただし、これは新しい標準となっている TLS 1.1 に変更できます。 VM で TLS 1.1 が無効になっている場合、接続は失敗します。
 1.  CMD インスタンスで、TLS プロトコルを有効にします。

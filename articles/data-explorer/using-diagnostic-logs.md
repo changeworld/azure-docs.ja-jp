@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.openlocfilehash: 3e10979e26cacdc0c2071a6030c945adad21a51c
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277427"
 ---
 # <a name="monitor-azure-data-explorer-ingestion-operations-using-diagnostic-logs-preview"></a>診断ログを使用して Azure Data Explorer インジェスト操作を監視する (プレビュー)
@@ -66,7 +66,7 @@ Azure Data Explorer は、アプリケーション、Web サイト、IoT デバ�
 
 ログの JSON 文字列には、次の表に示す要素が含まれます。
 
-|Name               |説明
+|名前               |説明
 |---                |---
 |time               |レポートされた時刻
 |resourceId         |Azure Resource Manager リソース ID
@@ -100,7 +100,7 @@ Azure Data Explorer は、アプリケーション、Web サイト、IoT デバ�
 ```
 **成功した操作の診断ログのプロパティ**
 
-|Name               |説明
+|名前               |説明
 |---                |---
 |succeededOn        |インジェストの完了時刻
 |operationId        |Azure Data Explorer インジェスト操作 ID
@@ -141,7 +141,7 @@ Azure Data Explorer は、アプリケーション、Web サイト、IoT デバ�
 
 **失敗した操作の診断ログのプロパティ**
 
-|Name               |説明
+|名前               |説明
 |---                |---
 |failedOn           |インジェストの完了時刻
 |operationId        |Azure Data Explorer インジェスト操作 ID

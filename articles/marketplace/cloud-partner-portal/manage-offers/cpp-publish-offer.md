@@ -1,19 +1,18 @@
 ---
 title: Marketplace のオファーを発行する | Azure Marketplace
 description: Cloud パートナー ポータルを使用して Azure Marketplace および AppSource Marketplace でオファーを発行する
-services: Azure, AppSource, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/12/2019
-ms.author: pabutler
-ms.openlocfilehash: e77f0994f604f3a7365f1ed1ddb9191a2510883a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: ab75afd2278433dc36c3d1280b41edfa1e34ddce
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826734"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286406"
 ---
 # <a name="publish-azure-marketplace-and-appsource-offers"></a>Azure Marketplace および AppSource のオファーを発行する
 
@@ -38,6 +37,6 @@ ms.locfileid: "73826734"
 発行プロセスを開始した後に、要求を取り消すことが必要な場合があります。 発行要求は、"*発行元のサインアウト*" ステップに到達するまで取り消すことはできません。 取り消すには、 **[発行の取り消し]** をクリックします。 発行の状態がステップ 1 にリセットされます。再度発行するには、 **[発行]** をクリックし、 **[状態]** タブの手順に従う必要があります。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 発行プロセス時には、オファーが公開されるまで[オファーの状態](./cpp-view-status-offer.md)を監視すると便利です。 

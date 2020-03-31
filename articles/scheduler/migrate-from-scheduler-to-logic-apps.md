@@ -10,10 +10,10 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 02/29/2020
 ms.openlocfilehash: 90c3cc2e096b9b58465987bc53f718c5d06c6203
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78899081"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure Scheduler ジョブを Azure Logic Apps に移行する
@@ -228,7 +228,7 @@ Azure サブスクリプションに有料サポート プランがある場合�
 
 1. **[サポート]** メニューの **[新しいサポート リクエスト]** を選択します。 リクエストに関して次の情報を入力します。
 
-   | プロパティ | Value |
+   | プロパティ | 値 |
    |---------|-------|
    | **問題の種類** | **テクニカル** |
    | **サブスクリプション** | <*ご使用の Azure サブスクリプション*> |

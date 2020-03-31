@@ -1,19 +1,18 @@
 ---
 title: Azure IoT Edge モジュールの技術アセットを作成する | Azure Marketplace
 description: IoT Edge モジュールの技術アセットを作成します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.author: pabutler
-ms.openlocfilehash: 57bc2f789836a7d3453004cdacc59029c4b24129
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 304ea31f2a6f9820226a6ad0db8bfc803e6fdb94
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827620"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285216"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>IoT Edge モジュールの技術アセットの準備
 
@@ -109,7 +108,7 @@ IoT Module SDK を使用するモジュールは、テレメトリ目的で一�
 
 IoT Module SDK を使用していないモジュールでは、ダウンロード数など Cloud パートナー ポータルを通して入手できる分析情報の精度が低くなります。
 
-### <a name="security"></a>セキュリティ
+### <a name="security"></a>Security
 
 ホストに対する IoT Edge モジュールの特権アクセスは最小限にする必要があります。 [特権モジュール](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities)を避ける必要があります。
 
@@ -137,6 +136,6 @@ Module IoT SDK の同梱は、認定の前提条件ではありません。 た�
 Cloud パートナー ポータルに IoT Edge モジュールをアップロードするには、まず [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) (ACR) でこれをホストする必要があります。 モジュールには、マニフェスト タグによって参照されるイメージ タグを含む、発行するすべてのタグを含める必要があります。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [IoT Edge モジュール プランの作成](./cpp-create-offer.md)

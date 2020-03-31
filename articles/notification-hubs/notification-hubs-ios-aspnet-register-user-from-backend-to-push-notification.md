@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 3fec04a1a45f8b154e27a1e5303e44111f4cb421
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71211873"
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>ASP.NET を使用した現在のユーザーのプッシュ通知への登録
@@ -36,11 +36,11 @@ ms.locfileid: "71211873"
 
 1. MainStoryboard_iPhone.storyboard で、オブジェクト ライブラリから次のコンポーネントを追加します。
 
-   * **ラベル**:"Push to User with Notification Hubs"
-   * **ラベル**:"InstallationId"
-   * **ラベル**:"User"
+   * **ラベル**: "Push to User with Notification Hubs"
+   * **ラベル**: "InstallationId"
+   * **ラベル**: "User"
    * **テキスト フィールド**: "User"
-   * **ラベル**:"Password"
+   * **ラベル**: "Password"
    * **テキスト フィールド**: "Password"
    * **ボタン**: "Login"
 
@@ -124,7 +124,7 @@ ms.locfileid: "71211873"
     これにより、要求のデバイス トークンが設定されます。
 
    > [!NOTE]
-   > この時点では、このメソッドに他のコードは存在しません。 [Notification Hubs の使用の開始](notification-hubs-ios-apple-push-notification-apns-get-started.md)に関するチュートリアルを完了したときに追加された `registerNativeWithDeviceToken` メソッドへの呼び出しが既にある場合は、その呼び出しをコメント解除するか、削除する必要があります。
+   > この時点では、このメソッドに他のコードは存在しません。 `registerNativeWithDeviceToken`Notification Hubs の使用の開始[に関するチュートリアルを完了したときに追加された ](notification-hubs-ios-apple-push-notification-apns-get-started.md) メソッドへの呼び出しが既にある場合は、その呼び出しをコメント解除するか、削除する必要があります。
 
 8. `PushToUserAppDelegate.m` ファイルに次のハンドラー メソッドを追加します。
 
@@ -151,7 +151,7 @@ ms.locfileid: "71211873"
     }
     ```
 
-10. `PushToUserViewController.m` ファイルの `viewDidLoad`メソッドで、次のように `installationId` ラベルを初期化します。
+10. `viewDidLoad` ファイルの `PushToUserViewController.m`メソッドで、次のように `installationId` ラベルを初期化します。
 
     ```objc
     DeviceInfo* deviceInfo = [(PushToUserAppDelegate*)[[UIApplication sharedApplication]delegate] deviceInfo];

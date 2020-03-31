@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: spelluru
 ms.openlocfilehash: dd1fc4c1076d89c12b25837db9fa6a0ac3e1f3a5
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70014230"
 ---
 # <a name="use-azure-functions-to-extend-devtest-labs"></a>Azure Functions を使用した DevTest Labs の拡張
@@ -41,7 +41,7 @@ Azure Functions を使用して、DevTest Labs で既にサポートされてい
 - **UpdateInternalSupportPage**:この関数では、DevTest Labs に対してクエリが行われ、仮想マシンの詳細を使用して社内サポート ページが直接更新されます。
 - **ApplyWindowsUpdateArtifact**:ラボ内の VM の場合、この関数では、**Windows Update** の成果物が適用されます。
 
-## <a name="how-it-works"></a>動作のしくみ
+## <a name="how-it-works"></a>しくみ
 ユーザーが DevTest Labs で **[社内サポート]** ページを選択すると、VM、ラボ所有者、およびサポート連絡先に関する情報が事前に入力されたページが表示されます。  
 
 **[Select here to refresh]\(更新するにはここを選択\)** ボタンを選択すると、ページから、1 番目の Azure 関数が呼び出されます。**UpdateInternalSupportPage**。 この関数では、DevTest Labs に情報が照会され、新しい情報で **[社内サポート]** ページが書き換えられます。
@@ -109,7 +109,7 @@ Visual Studio で、Azure 関数を発行したら、 **[アクション]** で 
 
     ![関数のテスト](./media/extend-devtest-labs-azure-functions/test-function.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Functions は、既に組み込まれているもの以外の DevTest Labs の機能を拡張するのに役立ち、お客様のチーム固有の要件を満たすのに役立ちます。 このパターンは、さらに多くのことをカバーするために拡張および拡大できます。  DevTest Labs の詳細については、次の記事を参照してください。 
 
 - [DevTest Labs の企業向け参照アーキテクチャ](devtest-lab-reference-architecture.md)

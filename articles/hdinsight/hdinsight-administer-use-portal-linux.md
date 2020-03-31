@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/12/2020
 ms.openlocfilehash: b9d923b3272f9d8b3da39d7cdb771a766eee4eab
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561784"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233703"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure Portal を使用して HDInsight の Apache Hadoop クラスターを管理する
 
@@ -29,13 +29,13 @@ HDInsight 上の 既存の Apache Hadoop クラスター。  「[Azure Portal �
 
 [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
-## <a name="showClusters"></a>クラスターの一覧と表示
+## <a name="list-and-show-clusters"></a><a name="showClusters"></a>クラスターの一覧と表示
 
 **[HDInsight クラスター]** ページに既存のクラスターの一覧が表示されます。  ポータルから:
 1. 左側のメニューから **[すべてのサービス]** を選択します。
 2. **[ANALYTICS]** の **[HDInsight クラスター]** を選択します。
 
-## <a name="homePage"></a> クラスター ホーム ページ
+## <a name="cluster-home-page"></a><a name="homePage"></a> クラスター ホーム ページ
 
 [ **[HDInsight クラスター]** ](#showClusters) ページから、ご自身のクラスター名を選択します。  これにより、次の図のような **[概要]** ビューが開きます。
 
@@ -45,7 +45,7 @@ HDInsight 上の 既存の Apache Hadoop クラスター。  「[Azure Portal �
 
 | Item| 説明 |
 |---|---|
-|[詳細ビュー]|クラスターを別のリソース グループまたは別のサブスクリプションに移動します。|
+|詳細ビュー|クラスターを別のリソース グループまたは別のサブスクリプションに移動します。|
 |削除|クラスターを削除します。 |
 |更新|ビューを更新します。|
 
@@ -72,7 +72,7 @@ HDInsight 上の 既存の Apache Hadoop クラスター。  「[Azure Portal �
     |SSH およびクラスターのログイン|Secure Shell (SSH) 接続を使用してクラスターに接続する方法を表示します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。|
     |Data Lake Storage Gen1|Data Lake Storage Gen1 へのアクセスを構成します。  「[クイック スタート:HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。|
     |ストレージ アカウント|ストレージ アカウントとキーを表示します。 ストレージ アカウントは、クラスター作成プロセス中に構成されます。|
-    |[アプリケーション]|HDInsight アプリケーションを追加/削除します。  「[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)」を参照してください。|
+    |アプリケーション|HDInsight アプリケーションを追加/削除します。  「[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)」を参照してください。|
     |スクリプト操作|クラスター上の Bash スクリプトを実行します。 「 [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」をご覧ください。|
     |外部メタストア|[Apache Hive](https://hive.apache.org/) メタストアと [Apache Oozie](https://oozie.apache.org/) メタストアを表示します。 メタストアを構成できるのは、クラスターの作成処理中のみです。|
     |HDInsight パートナー|現在の HDInsight パートナーを追加または削除します。|
@@ -96,7 +96,7 @@ HDInsight 上の 既存の Apache Hadoop クラスター。  「[Azure Portal �
     |リソース ヘルス|「[Azure Resource Health の概要](../service-health/resource-health-overview.md)」をご覧ください。|
     |新しいサポート要求|Microsoft サポートのサポート チケットを作成できます。|
 
-## <a name="properties"></a> クラスターのプロパティ
+## <a name="cluster-properties"></a><a name="properties"></a> クラスターのプロパティ
 
 [クラスター ホーム ページ](#homePage)の **[設定]** で、 **[プロパティ]** を選択します。
 
@@ -219,7 +219,7 @@ HDInsight クラスターは、2 つのユーザー アカウントを持つこ�
 4. **[スクリプト アクション]** ページで、 **[新規で送信]** を選択します。
 5. **[スクリプト アクションの送信]** ページで、次の情報を入力します。
 
-   | フィールド | Value |
+   | フィールド | 値 |
    | --- | --- |
    | スクリプトの種類 | ドロップダウン リストから **[- カスタム]** を選択します。|
    | 名前 |"SSH パスワードの変更" |

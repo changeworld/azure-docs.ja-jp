@@ -14,10 +14,10 @@ ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 8bb00c770c61a0a5462a01ae552bd7e40a7cdb36
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77470651"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Azure DevTest Labs インフラストラクチャのガバナンス - リソース
@@ -76,7 +76,7 @@ DevTest Labs をデプロイするときは、開始時のポリシーを具体�
 ラボ内のリソースの削除を防ぐにはどうすればよいですか?
 
 ### <a name="answer"></a>Answer
-ラボ レベルで適切なアクセス許可を設定し、承認されたユーザーのみがリソースを削除したりラボのポリシーを変更したりできるようにすることをお勧めします。 開発者は、**DevTest Labs ユーザー** グループ内に配置する必要があります。 開発リーダーまたはインフラストラクチャ リーダーが、**DevTest Labs 所有者**になる必要があります。 ラボの所有者は 2 人だけにすることをお勧めします。 破損を防ぐため、このポリシーをコード リポジトリに拡張します。 ラボのユーザーは、リソースを使用する権限はありますが、ラボのポリシーを更新することはできません。 各組み込みグループがラボ内で持っているロールと権限の一覧については、「[Azure DevTest Labs での所有者とユーザーの追加](devtest-lab-add-devtest-user.md)」を参照してください。
+ラボ レベルで適切なアクセス許可を設定し、承認されたユーザーのみがリソースを削除したりラボのポリシーを変更したりできるようにすることをお勧めします。 開発者は、**DevTest Labs ユーザー** グループ内に配置する必要があります。 開発リーダーまたはインフラストラクチャ リーダーが、**DevTest Labs 所有者**になる必要があります。 ラボの所有者は 2 人だけにすることをお勧めします。 破損を防ぐため、このポリシーをコード リポジトリに拡張します。 ラボのユーザーは、リソースを使用する権限はありますが、ラボのポリシーを更新することはできません。 各組み込みグループがラボ内で持っているロールと権限の一覧については、「[Azure DevTest Labs での所有者とユーザーの追加](devtest-lab-add-devtest-user.md)」をご覧ください。
 
 ## <a name="move-lab-to-another-resource-group"></a>ラボを別のリソース グループに移動する 
 

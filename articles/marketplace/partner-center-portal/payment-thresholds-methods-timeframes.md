@@ -2,17 +2,16 @@
 Description: 支払いの送金に要する概算時間、適用可能な支払いしきい値、および支払いを受けることができる Microsoft マーケットプレースは、お住まいの国または地域および支払い先口座の種類によって異なります。
 title: コマーシャル マーケットプレースでの支払いのしきい値、方法、および概算時間 |Azure Marketplace
 ms.date: 12/10/2019
-ms.topic: article
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+ms.topic: conceptual
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
-ms.openlocfilehash: 6bb05513d59870b7fa0d997eb31510494a9938e0
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: fe18fab4a2ea61f41e017704105e37f28c20e456
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931876"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279727"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>支払いのしきい値、方法、期間
 

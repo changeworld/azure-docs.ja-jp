@@ -1,19 +1,18 @@
 ---
 title: SaaS オファー作成のチェックリスト - Azure 向けの Commercial Marketplace
 description: SaaS オファー作成プロセスで指定できる詳細。 - Azure 向けの Commercial Marketplace
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 8b01f15673f68bcc3fb0b205b9dd85a276c9b972
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 60111b6a23c76314383c5f95be3eb4b38f90d3e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930301"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281342"
 ---
 # <a name="saas-offer-creation-checklist"></a>SaaS オファー作成のチェックリスト
 
@@ -21,7 +20,7 @@ SaaS オファー作成プロセスでは、複数のページを使用します
 
 入力または指定する必要がある項目を以下に示します。 省略可能な領域や、既定値が指定されている領域もありますが、必要に応じて変更できます。 これらのセクションについて、記載されている順序で作業する必要はありません。
 
-| **項目**    | **目的**  |
+| **Item**    | **目的**  |
 | :---------- | :-------------------|
 | [ **[新しいオファー] モーダル**](#new-offer-modal) | オファーの ID 情報を収集します。  |
 | [[オファーのセットアップ] ページ](#offer-setup-page) | 使用する主要な機能と、Microsoft を介してオファーを販売する方法を選択できます。  |
@@ -79,7 +78,7 @@ SaaS オファー作成プロセスでは、複数のページを使用します
 
 | **フィールド名**    | **メモ**   |
 | :---------------- | :-----------| 
-| Name  | 必須。最大 50 文字。 |
+| 名前  | 必須。最大 50 文字。 |
 | まとめ  | 必須。最大 100 文字。 | 
 | 説明  | 必須。最大 3,000 文字。 |
 | Getting Started Instructions (使用開始時の説明)  | 必須。最大 3,000 文字。 |

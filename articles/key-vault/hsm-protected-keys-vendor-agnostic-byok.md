@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
 ms.openlocfilehash: 08a4330f4a786deca8ddb2f1c6803b29152e7f50
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79080138"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-preview"></a>HSM で保護されたキーを Key Vault にインポートする (プレビュー)

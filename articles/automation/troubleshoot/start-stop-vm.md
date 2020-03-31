@@ -10,15 +10,15 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 97ea98fc38fc8d06dc1bc65ee057241da6f15488
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78851388"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Start/Stop VMs during off-hours ソリューションのトラブルシューティング
 
-## <a name="deployment-failure"></a>シナリオ:VM の起動/停止ソリューションを正常にデプロイできない
+## <a name="scenario-the-startstop-vm-solution-fails-to-properly-deploy"></a><a name="deployment-failure"></a>シナリオ:VM の起動/停止ソリューションを正常にデプロイできない
 
 ### <a name="issue"></a>問題
 
@@ -77,7 +77,7 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
 4. Log Analytics ワークスペースがロックされている場合は、Azure portal でワークスペースに移動し、すべてのリソースのロックを削除します。
 5. 上記の解決方法でイシューが解決しない場合は、「[ソリューションを更新する](../automation-solution-vm-management.md#update-the-solution)」の手順に従って、起動/停止ソリューションを再デプロイします。
 
-## <a name="all-vms-fail-to-startstop"></a>シナリオ:すべての VM を起動/停止できない
+## <a name="scenario-all-vms-fail-to-startstop"></a><a name="all-vms-fail-to-startstop"></a>シナリオ:すべての VM を起動/停止できない
 
 ### <a name="issue"></a>問題
 
@@ -118,7 +118,7 @@ VM の起動/停止ソリューションを構成したが、構成されてい�
   Get-AzureRmAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value
   ```
 
-## <a name="some-vms-fail-to-startstop"></a>シナリオ:一部の VM を起動または停止できない
+## <a name="scenario-some-of-my-vms-fail-to-start-or-stop"></a><a name="some-vms-fail-to-startstop"></a>シナリオ:一部の VM を起動または停止できない
 
 ### <a name="issue"></a>問題
 
@@ -155,7 +155,7 @@ VM の起動/停止ソリューションを構成したが、構成されてい�
 
 * [ジョブ ストリーム](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)を確認してエラーを探します。 ポータルで Automation アカウントに移動し、 **[プロセス オートメーション]** の下で **[ジョブ]** を選択します。
 
-## <a name="custom-runbook"></a>シナリオ:カスタム Runbook を使用して VM を起動または停止できない
+## <a name="scenario-my-custom-runbook-fails-to-start-or-stop-my-vms"></a><a name="custom-runbook"></a>シナリオ:カスタム Runbook を使用して VM を起動または停止できない
 
 ### <a name="issue"></a>問題
 
@@ -169,7 +169,7 @@ VM の起動/停止ソリューションを構成したが、構成されてい�
 
 [Start/Stop VMs during off-hours ソリューション](../automation-solution-vm-management.md)を使用して Azure Automation で VM を起動および停止することをお勧めします。 このソリューションは Microsoft が作成したものです。 カスタム Runbook は Microsoft ではサポートされていません。 [Runbook のトラブルシューティング](runbooks.md)の記事を参照すると、カスタム Runbook に関する解決策が見つかる場合があります。 この記事では、すべての種類の Runbook に関する一般的なガイダンスとトラブルシューティングを示します。 [ジョブ ストリーム](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)を確認してエラーを探します。 ポータルで Automation アカウントに移動し、 **[プロセス オートメーション]** の下で **[ジョブ]** を選択します。
 
-## <a name="dont-start-stop-in-sequence"></a>シナリオ:VM が正しい順序で起動または停止しない
+## <a name="scenario-vms-dont-start-or-stop-in-the-correct-sequence"></a><a name="dont-start-stop-in-sequence"></a>シナリオ:VM が正しい順序で起動または停止しない
 
 ### <a name="issue"></a>問題
 
@@ -189,7 +189,7 @@ VM の起動/停止ソリューションを構成したが、構成されてい�
 
 ソリューションを使用して VM を順番に起動/停止する方法の詳細および追加の手順については、[VM を順番に起動/停止する](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags)方法に関するページを参照してください。
 
-## <a name="403"></a>シナリオ:VM の起動/停止ジョブが "403 許可されていません" 状態で失敗する
+## <a name="scenario-startstop-vm-job-fails-with-403-forbidden-status"></a><a name="403"></a>シナリオ:VM の起動/停止ジョブが "403 許可されていません" 状態で失敗する
 
 ### <a name="issue"></a>問題
 
@@ -209,7 +209,7 @@ Start/Stop VMs during off-hours ソリューションの Runbook に対する `4
 
 この問題は、アクセス許可がない場合に発生する可能性があります。 リソースに対するアクセス許可を確認する方法については、「[クイック スタート:Azure portal を使用してユーザーに割り当てられているロールを表示する](../../role-based-access-control/check-access.md)」を参照してください。 実行アカウントで使用されるサービス プリンシパルのアプリケーション ID を指定する必要があります。 この値を取得するには、Azure portal で Automation アカウントに移動し、 **[アカウント設定]** の下で **[実行アカウント]** を選択して適切な実行アカウントをクリックします。
 
-## <a name="other"></a>シナリオ:問題が上記の一覧にない
+## <a name="scenario-my-problem-isnt-listed-above"></a><a name="other"></a>シナリオ:問題が上記の一覧にない
 
 ### <a name="issue"></a>問題
 

@@ -5,15 +5,15 @@ author: Philmea
 manager: philmea
 ms.service: iot-pnp
 services: iot-pnp
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/26/2019
 ms.author: philmea
-ms.openlocfilehash: c73848af299f87edf60ab36713d09ad4421b18fd
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 4969c4f10787fa9b2d601d5b12edf823d1987301
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531232"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80159134"
 ---
 # <a name="onboard-to-the-azure-certified-for-iot-portal"></a>Azure Certified for IoT ポータルにオンボードする
 

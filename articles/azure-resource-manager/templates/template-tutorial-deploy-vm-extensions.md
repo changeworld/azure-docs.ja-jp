@@ -5,16 +5,16 @@ author: mumian
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 30b7aeaed0bfc2621cb2c71ab3f5e618771a1c26
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 469948d3d3207dd684d5a9b752e0c448ac7e83a9
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250082"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239258"
 ---
-# <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>チュートリアル:Azure Resource Manager テンプレートを使用して仮想マシン拡張機能をデプロイする
+# <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>チュートリアル:ARM テンプレートを使用して仮想マシン拡張機能をデプロイする
 
-[Azure 仮想マシン拡張機能](../../virtual-machines/extensions/features-windows.md)を使用して、Azure VM でデプロイ後の構成タスクと自動化タスクを実行する方法について説明します。 Azure VM と共に、多くのさまざまな VM 拡張機能を使用できます。 このチュートリアルでは、Azure Resource Manager テンプレートからカスタム スクリプト拡張機能をデプロイして、Windows VM で PowerShell スクリプトを実行します。  スクリプトによって Web サーバーが VM にインストールされます。
+[Azure 仮想マシン拡張機能](../../virtual-machines/extensions/features-windows.md)を使用して、Azure VM でデプロイ後の構成タスクと自動化タスクを実行する方法について説明します。 Azure VM と共に、多くのさまざまな VM 拡張機能を使用できます。 このチュートリアルでは、Azure Resource Manager (ARM) テンプレートからカスタム スクリプト拡張機能をデプロイして、Windows VM で PowerShell スクリプトを実行します。  スクリプトによって Web サーバーが VM にインストールされます。
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -31,14 +31,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-* Visual Studio Code と Resource Manager ツール拡張機能。 「[Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](use-vs-code-to-create-template.md)」を参照してください。
+* Visual Studio Code と Resource Manager ツール拡張機能。 [Visual Studio Code を使って ARM テンプレートを作成する方法](use-vs-code-to-create-template.md)に関するページを参照してください。
 * セキュリティを向上させるには、生成されたパスワードを仮想マシンの管理者アカウントに対して使用します。 パスワードを生成するためのサンプルを次に示します。
 
     ```console
     openssl rand -base64 32
     ```
 
-    Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、「[チュートリアル:Resource Manager テンプレートのデプロイで Azure Key Vault を統合する](./template-tutorial-use-key-vault.md)」を参照してください。 また、パスワードは 3 か月ごとに更新することをお勧めします。
+    Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、「[チュートリアル:ARM テンプレートのデプロイで Azure Key Vault を統合する](./template-tutorial-use-key-vault.md)」を参照してください。 また、パスワードは 3 か月ごとに更新することをお勧めします。
 
 ## <a name="prepare-a-powershell-script"></a>PowerShell スクリプトを準備する
 
@@ -52,7 +52,7 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ## <a name="open-a-quickstart-template"></a>クイック スタート テンプレートを開く
 
-Azure クイック スタート テンプレートは、Resource Manager テンプレートのリポジトリです。 テンプレートを最初から作成しなくても、サンプル テンプレートを探してカスタマイズすることができます。 このチュートリアルで使用するテンプレートは、「[Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)」(単純な Windows VM をデプロイする) と呼ばれます。
+Azure クイックスタート テンプレートは、ARM テンプレートのリポジトリです。 テンプレートを最初から作成しなくても、サンプル テンプレートを探してカスタマイズすることができます。 このチュートリアルで使用するテンプレートは、「[Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)」(単純な Windows VM をデプロイする) と呼ばれます。
 
 1. Visual Studio Code の **[ファイル]**  >  **[ファイルを開く]** を選択します。
 1. **[ファイル名]** ボックスに https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json という URL を貼り付けます。
@@ -107,7 +107,7 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-デプロイ手順については、「[チュートリアル: 依存リソースを含む Azure Resource Manager テンプレートを作成する](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)」で使用されたものと同じテンプレートです。 生成されたパスワードを仮想マシンの管理者アカウントに対して使用することが推奨されます。 この記事の「[前提条件](#prerequisites)」セクションを参照してください。
+デプロイ手順については、「[チュートリアル: 依存リソースを含む ARM テンプレートを作成する](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)」の「テンプレートのデプロイ」セクションを参照してください。 生成されたパスワードを仮想マシンの管理者アカウントに対して使用することが推奨されます。 この記事の「[前提条件](#prerequisites)」セクションを参照してください。
 
 ## <a name="verify-the-deployment"></a>デプロイを検証する
 

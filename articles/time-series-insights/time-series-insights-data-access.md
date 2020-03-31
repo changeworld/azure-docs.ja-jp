@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/10/2020
 ms.custom: seodec18
 ms.openlocfilehash: 1c8f14bb1bca082a9d887e5d6d88aec213448c3e
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894802"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228047"
 ---
 # <a name="grant-data-access-to-an-environment"></a>環境へのデータ アクセスの許可
 
@@ -28,7 +28,7 @@ ms.locfileid: "75894802"
 ## <a name="sign-in-to-time-series-insights"></a>Time Series Insights へのサインイン
 
 1. [Azure portal](https://portal.azure.com/) にサインインする
-1. Time Series Insights 環境を検索します。 **[検索ボックス]** に「`Time Series`」と入力します。 検索結果の **[Time Series Environment]\(Time Series 環境\)** を選択します。
+1. Time Series Insights 環境を検索します。 `Time Series`[検索ボックス] **に「** 」と入力します。 検索結果の **[Time Series Environment]\(Time Series 環境\)** を選択します。
 1. リストから Time Series Insights 環境を選択します。
 
 ## <a name="grant-data-access"></a>データ アクセスの許可

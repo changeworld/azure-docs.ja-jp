@@ -13,16 +13,18 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 7dfd12729c5697d1935d098cbd4ed863a4551acd
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 0bb3abc7b7102da55c9ededcadd7a301f74065ab
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719876"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80349334"
 ---
 # <a name="work-with-r-and-sql-data-in-azure-sql-database-machine-learning-services-preview"></a>Azure SQL Database Machine Learning Services (プレビュー) での R および SQL データの処理
 
 この記事では、[Azure SQL Database の Machine Learning Services (R を使用)](sql-database-machine-learning-services-overview.md) でデータを R と SQL Database 間で移動するときに発生する可能性のある、一般的な問題についていくつか説明します。 この演習で得られるエクスペリエンスは、独自のスクリプトでデータを扱うときの重要な背景知識を提供します。
+
+[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 発生する可能性がある問題には次のものがあります。
 
@@ -30,8 +32,6 @@ ms.locfileid: "76719876"
 - 暗黙的な変換が発生することがある
 - cast および convert 操作が必要な場合がある
 - R と SQL で異なるデータ オブジェクトが使用される
-
-[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -71,7 +71,7 @@ EXECUTE sp_execute_external_script @language = N'R'
 
 答えは通常、R の `str()` コマンドを使用すればわかります。 指定の R オブジェクトのデータ スキーマが情報メッセージとして返されるよう、R スクリプトの任意の場所に関数 `str(object_name)` を追加します。 このメッセージは SSMS の **[メッセージ]** タブで表示することができます。
 
-なぜ例 1 と例 2 の結果がこれほど異なるのかを理解するため、各ステートメントの `@script` 変数定義の最後に、行 `str(OutputDataSet)` を次のように挿入します。
+なぜ例 1 と例 2 の結果がこれほど異なるのかを理解するため、各ステートメントの `str(OutputDataSet)` 変数定義の最後に、行 `@script` を次のように挿入します。
 
 **str 関数が追加された例 1**
 
@@ -102,7 +102,7 @@ str(OutputDataSet);
 
 ```text
 STDOUT message(s) from external script:
-'data.frame':   3 obs. of  1 variable:
+'data.frame':    3 obs. of  1 variable:
 $ mytextvariable: Factor w/ 3 levels " ","hello","world": 2 1 3
 ```
 
@@ -110,13 +110,13 @@ $ mytextvariable: Factor w/ 3 levels " ","hello","world": 2 1 3
 
 ```text
 STDOUT message(s) from external script:
-'data.frame':   1 obs. of  3 variables:
+'data.frame':    1 obs. of  3 variables:
 $ c..hello..: Factor w/ 1 level "hello": 1
 $ X...      : Factor w/ 1 level " ": 1
 $ c..world..: Factor w/ 1 level "world": 1
 ```
 
-ご覧のように、R 構文をわずかに変更するだけで結果のスキーマに大きな影響がありました。 すべての詳細については、["Advanced R" by Hadley Wickham](http://adv-r.had.co.nz)の「*Data Structures*」セクションで R データ型の相違点が詳細に説明されています。
+ご覧のように、R 構文をわずかに変更するだけで結果のスキーマに大きな影響がありました。 すべての詳細については、 *"Advanced R" by Hadley Wickham*の「[Data Structures](http://adv-r.had.co.nz)」セクションで R データ型の相違点が詳細に説明されています。
 
 現時点では、R オブジェクトをデータ フレームに強制変換するときは予想される結果を確認する必要がある、という点のみ注意してください。
 

@@ -1,19 +1,18 @@
 ---
 title: Azure Table Storage | Azure Marketplace
 description: Azure Table Storage で潜在顧客管理を構成します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.author: pabutler
-ms.openlocfilehash: 21105d72ccd288faf0fed58019e67afe2e1c9d01
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: cee28c65b97d4ac163f78b746dc7be9ee210843c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825272"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280356"
 ---
 # <a name="lead-management-instructions-for-table-storage"></a>テーブル ストレージでの潜在顧客管理の手順
 
@@ -133,7 +132,7 @@ ms.locfileid: "73825272"
    1. **[電子メールを送信する]** ウィンドウで、次のフィールドに情報を入力します。
 
       - **[宛先]** : 通知を受け取るすべてのユーザーのメール アドレス。
-      - **[件名]** : メールの件名。 例: "*新しい潜在顧客!* "
+      - **[件名]** : メールの件名。 次に例を示します。"*新しい潜在顧客!* "
       - **[本文]** : 各メールに含めるテキスト (省略可能)。 また、潜在顧客の情報を挿入する関数として `body('Get_entities')?['value']` を貼り付けます。
 
         >[!NOTE] 
@@ -162,6 +161,6 @@ ms.locfileid: "73825272"
 
  ![フローのエラーの電子メール通知](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-failure-note.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [潜在顧客の構成](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)

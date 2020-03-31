@@ -5,20 +5,20 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7069ff363cf274ba855efc9b598d8d01e64e18d1
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: ad6ea3c68ed6f48ac48bbbdafed7f8660df23937
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250123"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239228"
 ---
-# <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>チュートリアル:Azure Resource Manager テンプレートのデプロイ時に成果物をセキュリティで保護する
+# <a name="tutorial-secure-artifacts-in-arm-template-deployments"></a>チュートリアル:ARM テンプレートのデプロイ時に成果物をセキュリティで保護する
 
-Azure Resource Manager テンプレート内で使用される成果物を Azure Storage アカウントの Shared Access Signature (SAS) を使用してセキュリティで保護する方法について説明します。 デプロイの成果物は、メイン テンプレート ファイルに加え、デプロイを完了するために必要なすべてのファイルです。 たとえば「[チュートリアル: Azure Resource Manager テンプレートを使用して SQL BACPAC ファイルをインポートする](./template-tutorial-deploy-sql-extensions-bacpac.md)」では、メイン テンプレートを使って Azure SQL Database インスタンスを作成します。 また、BACPAC ファイルを呼び出してテーブルを作成し、データを挿入します。 BACPAC ファイルは成果物として、Azure ストレージ アカウントに格納されます。 成果物へのアクセスには、ストレージ アカウント キーが使用されています。 
+Azure Resource Manager (ARM) テンプレート内で使用される成果物を Azure Storage アカウントの Shared Access Signature (SAS) を使用してセキュリティで保護する方法について説明します。 デプロイの成果物は、メイン テンプレート ファイルに加え、デプロイを完了するために必要なすべてのファイルです。 たとえば「[チュートリアル: ARM テンプレートを使用して SQL BACPAC ファイルをインポートする](./template-tutorial-deploy-sql-extensions-bacpac.md)」では、メイン テンプレートを使って Azure SQL データベース インスタンスを作成します。 また、BACPAC ファイルを呼び出してテーブルを作成し、データを挿入します。 BACPAC ファイルは成果物として、Azure ストレージ アカウントに格納されます。 成果物へのアクセスには、ストレージ アカウント キーが使用されています。
 
 このチュートリアルでは、SAS を使用して、ご自分の Azure Storage アカウント内の BACPAC ファイルへの制限付きアクセスを許可します。 SAS の詳細については、「[Shared Access Signatures (SAS) の使用](../../storage/common/storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
 
-リンクされたテンプレートをセキュリティで保護する方法については、「[チュートリアル: リンクされた Azure Resource Manager テンプレートの作成](./template-tutorial-create-linked-templates.md)」を参照してください。
+リンクされたテンプレートをセキュリティで保護する方法については、「[チュートリアル: リンクされた ARM テンプレートの作成](./template-tutorial-create-linked-templates.md)」を参照してください。
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -35,19 +35,19 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-* Visual Studio Code と Resource Manager ツール拡張機能。 「[Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](./use-vs-code-to-create-template.md)」を参照してください。
-* 「[チュートリアル: Azure Resource Manager テンプレートを使用して SQL BACPAC ファイルをインポートする](./template-tutorial-deploy-sql-extensions-bacpac.md)」を確認します。 このチュートリアルで使用するテンプレートは、そのチュートリアルで開発したものです。 この記事では、完成したテンプレートのダウンロード リンクを提供しています。
+* Visual Studio Code と Resource Manager ツール拡張機能。 [Visual Studio Code を使って ARM テンプレートを作成する方法](./use-vs-code-to-create-template.md)に関するページを参照してください。
+* 「[チュートリアル: ARM テンプレートを使用して SQL BACPAC ファイルをインポートする](./template-tutorial-deploy-sql-extensions-bacpac.md)」を確認します。 このチュートリアルで使用するテンプレートは、そのチュートリアルで開発したものです。 この記事では、完成したテンプレートのダウンロード リンクを提供しています。
 * セキュリティを向上させるために、生成されたパスワードを SQL Server 管理者アカウントに対して使用します。 パスワードを生成するために使用できるサンプルを次に示します。
 
     ```console
     openssl rand -base64 32
     ```
 
-    Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、「[チュートリアル:Resource Manager テンプレートのデプロイで Azure Key Vault を統合する](./template-tutorial-use-key-vault.md)」を参照してください。 パスワードは 3 か月ごとに更新することをお勧めします。
+    Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、「[チュートリアル:ARM テンプレートのデプロイで Azure Key Vault を統合する](./template-tutorial-use-key-vault.md)」を参照してください。 パスワードは 3 か月ごとに更新することをお勧めします。
 
 ## <a name="prepare-a-bacpac-file"></a>BACPAC ファイルを準備する
 
-このセクションでは、Resource Manager テンプレートをデプロイするときに、セキュリティで保護された方法で BACPAC ファイルにアクセスできるようにそのファイルを準備します。 このセクションには、5 つの手順があります。
+このセクションでは、ARM テンプレートをデプロイするときに、セキュリティで保護された方法で BACPAC ファイルにアクセスできるようにそのファイルを準備します。 このセクションには、5 つの手順があります。
 
 * BACPAC ファイルをダウンロードします。
 * Azure ストレージ アカウントを作成します。
@@ -115,7 +115,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="open-an-existing-template"></a>既存のテンプレートを開く
 
-このセッションでは、「[チュートリアル: Azure Resource Manager テンプレートを使用して SQL BACPAC ファイルをインポートする](./template-tutorial-deploy-sql-extensions-bacpac.md)」で作成したテンプレートを変更し、SAS トークンを使用して BACPAC ファイルを呼び出します。 SQL 拡張機能チュートリアルで開発されたテンプレートは、[GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json) で共有されています。
+このセッションでは、「[チュートリアル: ARM テンプレートを使用して SQL BACPAC ファイルをインポートする](./template-tutorial-deploy-sql-extensions-bacpac.md)」で作成したテンプレートを変更し、SAS トークンを使用して BACPAC ファイルを呼び出します。 SQL 拡張機能チュートリアルで開発されたテンプレートは、[GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json) で共有されています。
 
 1. Visual Studio Code から、 **[ファイル]**  >  **[ファイルを開く]** を選択します。
 1. **[ファイル名]** に以下の URL を貼り付けます。
@@ -138,7 +138,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="edit-the-template"></a>テンプレートの編集
 
-1. storageAccountKey のパラメーター定義を次のパラメーター定義に置き換えます。 
+1. storageAccountKey のパラメーター定義を次のパラメーター定義に置き換えます。
 
     ```json
         "_artifactsLocationSasToken": {
@@ -211,7 +211,7 @@ Azure リソースが不要になったら、リソース グループを削除�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、SQL サーバーと SQL データベースをデプロイし、SAS トークンを使用して BACPAC ファイルをインポートしました。 Azure パイプラインを作成し、継続的に Resource Manager テンプレートを開発およびデプロイする方法については、以下を参照してください。
+このチュートリアルでは、SQL サーバーと SQL データベースをデプロイし、SAS トークンを使用して BACPAC ファイルをインポートしました。 複数のリージョンにわたって Azure リソースをデプロイする方法のほか、安全なデプロイの実践については、以下を参照してください
 
 > [!div class="nextstepaction"]
-> [Azure Pipelines を使用した継続的インテグレーション](./template-tutorial-use-azure-pipelines.md)
+> [安全なデプロイ プラクティスの使用](./deployment-manager-tutorial.md)

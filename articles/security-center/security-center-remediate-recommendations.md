@@ -14,17 +14,17 @@ ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: 6863f4bbfc6aabc4e7bf4314ad26dd4590d31362
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77603506"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Azure Security Center の修復レコメンデーション
 
 レコメンデーションは、リソースのセキュリティを強化する方法を提案します。 レコメンデーションに記載されている修復手順に従って、レコメンデーションを実装します。
 
-## 修復手順 <a name="remediation-steps"></a>
+## <a name="remediation-steps"></a>修復手順 <a name="remediation-steps"></a>
 
 すべてのレコメンデーションを確認したら、最初に修復するレコメンデーションを決定します。 [セキュリティ スコアの影響](security-center-recommendations.md#monitor-recommendations)を使用して、最初にすることの優先順位を決めることをお勧めします。
 
@@ -36,7 +36,7 @@ ms.locfileid: "77603506"
 
 1. 完了すると、修復が成功したかどうかを知らせる通知が表示されます。
 
-## クイック修復のレコメンデーション<a name="one-click"></a>
+## <a name="quick-fix-remediation"></a>クイック修復のレコメンデーション<a name="one-click"></a>
 
 クイック修復を使用すると、複数のリソースに関するレコメンデーションを迅速に修復できます。 これは、特定のレコメンデーションにのみ使用できます。 クイック修復によって修復が簡単になり、セキュリティ スコアをすばやく向上させ、環境内のセキュリティを強化することができます。
 
@@ -65,7 +65,7 @@ ms.locfileid: "77603506"
 
 1. 完了すると、修復が成功したかどうかを知らせる通知が表示されます。
 
-## アクティビティ ログでのクイック修復のログ <a name="activity-log"></a>
+## <a name="quick-fix-remediation-logging-in-the-activity-log"></a>アクティビティ ログでのクイック修復のログ <a name="activity-log"></a>
 
 修復操作では、テンプレートのデプロイまたは REST PATCH API の呼び出しを使用して、リソースに構成を適用します。 これらの操作は、[Azure のアクティビティ ログ](../azure-resource-manager/management/view-activity-logs.md)に記録されます。
 

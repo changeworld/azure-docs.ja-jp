@@ -4,10 +4,10 @@ description: Application Insights で行う継続的な監視を迅速にセッ�
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.openlocfilehash: e565101218b975ef2bd29b8a32a4aa1bf4300b6d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77655397"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>リリース パイプラインに継続的監視を追加する
@@ -34,7 +34,7 @@ Azure Pipelines と Azure Application Insights を統合すると、ソフトウ
 
 1. **[ステージ 1]** 構成ウィンドウで、次のフィールドを入力します。 
 
-    | パラメーター        | Value |
+    | パラメーター        | 値 |
    | ------------- |:-----|
    | **ステージ名**      | ステージ名を指定するか、 **[ステージ 1]** のままにします。 |
    | **Azure サブスクリプション** | ドロップダウンを展開して、使用するリンク済み Azure サブスクリプションを選択します。|

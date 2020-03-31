@@ -1,5 +1,5 @@
 ---
-title: Azure Notification Hubs と Google Firebase Cloud Messaging を使用して特定の Android デバイスにプッシュ通知を送信する | Microsoft Docs
+title: Azure Notification Hubs と Google Firebase Cloud Messaging を使用して特定のデバイスにプッシュ通知を送信する | Microsoft Docs
 description: Azure Notification Hubs と Google Firebase Cloud Messaging (FCM) を使用して特定の Android デバイスにプッシュ通知を送信する方法について説明します。
 services: notification-hubs
 documentationcenter: android
@@ -17,14 +17,14 @@ ms.date: 04/30/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/30/2019
-ms.openlocfilehash: 1d0825fcfbcf10aaebc320a5c7cbbf2dd8c13856
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: b7ee3afc2e8b9958a868c8c117262d2017c9b600
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213347"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80126875"
 ---
-# <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-firebase-cloud-messaging-fcm"></a>チュートリアル:Azure Notification Hubs と Google Firebase Cloud Messaging (FCM) を使用して特定の Android デバイスにプッシュ通知を送信する
+# <a name="tutorial-send-notifications-to-specific-devices-using-notification-hubs-and-google-firebase-cloud-messaging"></a>チュートリアル:Notification Hubs と Google Firebase Cloud Messaging を使用して特定のデバイスに通知を送信する
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -44,7 +44,7 @@ ms.locfileid: "71213347"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルは、「[チュートリアル: Azure Notification Hubs と Google Firebase Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する](notification-hubs-android-push-notification-google-fcm-get-started.md)」で作成したアプリをベースにしています。 このチュートリアルを開始する前に、「[チュートリアル: Azure Notification Hubs と Google Firebase Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する](notification-hubs-android-push-notification-google-fcm-get-started.md)」を完了しておきます。
+このチュートリアルは、「[チュートリアル: Azure Notification Hubs と Google Firebase Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する](notification-hubs-android-push-notification-google-fcm-get-started.md)」を完了しておきます。 このチュートリアルを開始する前に、「[チュートリアル: Azure Notification Hubs と Google Firebase Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する](notification-hubs-android-push-notification-google-fcm-get-started.md)」を完了しておきます。
 
 ## <a name="add-category-selection-to-the-app"></a>アプリケーションにカテゴリ選択を追加する
 
@@ -326,7 +326,7 @@ ms.locfileid: "71213347"
 
     ![テクノロジのニュース通知](./media/notification-hubs-aspnet-backend-android-breaking-news/technolgy-news-notification.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、カテゴリに登録している特定の Android デバイスにブロードキャスト通知を送信しました。 特定のユーザーにプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。
 

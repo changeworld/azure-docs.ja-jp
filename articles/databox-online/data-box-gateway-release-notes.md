@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: alkohli
 ms.openlocfilehash: f4ee3a5bd754335ab1c7f124671e9c37307a6a28
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60754201"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231447"
 ---
 # <a name="azure-data-box-edgeazure-data-box-gateway-general-availability-release-notes"></a>Azure Data Box Edge/Azure Data Box Gateway 一般提供リリース ノート
 
@@ -40,14 +40,14 @@ ms.locfileid: "60754201"
 
 次の表は、このリリースを実行している Data Box Gateway の既知の問題の概要を示しています。
 
-| No. | 機能 | 問題 | 対応策/コメント |
+| いいえ。 | 機能 | 問題 | 対応策/コメント |
 | --- | --- | --- | --- |
 | **1.** |ファイルの種類 | 文字ファイル、ブロック ファイル、ソケット、パイプ、シンボリック リンクのファイルの種類はサポートされていません。  |これらのファイルをコピーすると、結果として NFS 共有に長さ 0 のファイルが作成されます。 このようなファイルはエラー状態のままになり、*error.xml* にも報告されます。 <br> ディレクトリへのシンボリック リンクにより、ディレクトリがオフラインとマークされなくなります。 その結果、ディレクトリがオフラインであり、関連付けられているすべてのコンテンツが Azure に完全にアップロードされたことを示す灰色のクロスがディレクトリに表示されなくなることがあります。 |
 | **2.** |削除 | このリリースのバグのため、NFS 共有が削除される場合に共有を削除できないことがあります。 共有の状態として *Deleting* が表示されます。  |これが発生するのは、サポートされないファイル名を共有が使用している場合のみです。 |
 | **3.** |コピー | データのコピーが次のエラーで失敗します。ファイル システム制限のため、要求された操作を完了できませんでした。  |128 KB を超えるファイル サイズに関連付けられた代替データ ストリーム (ADS) はサポートされていません。   |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Data Box Gateway のデプロイを準備](data-box-gateway-deploy-prep.md)します。
 - [Azure Data Box Edge のデプロイを準備](data-box-edge-deploy-prep.md)します。

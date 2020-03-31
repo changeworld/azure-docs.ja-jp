@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
 ms.openlocfilehash: 1a0a6cf5a26854539dc4bbb0ae0254bbf08dad1f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73494590"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Azure Toolkit for IntelliJ を使用した失敗した Spark ジョブのデバッグ (プレビュー)
@@ -46,7 +46,7 @@ ms.locfileid: "73494590"
 
    c. **[次へ]** を選択します。
 
-2. **[新しいプロジェクト]** ウィンドウで、次の手順を実行します。
+2. **[New Project]\(新しいプロジェクト\)** ウィンドウで、次の手順を実行します。
 
    ![Intellij の新しいプロジェクト、Spark バージョンの選択](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-project.png)
 
@@ -114,7 +114,7 @@ Spark Scala/Java アプリケーション作成した後、次の手順を実行
 
 1. デバッグの後、プロジェクトが正常に完了した場合は、失敗したジョブを HDInsight クラスター上の Spark に再送信できます。
 
-## <a name="seealso"></a>次のステップ
+## <a name="next-steps"></a><a name="seealso"></a>次のステップ
 
 * [概要:Apache Spark アプリケーションをデバッグする](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
 

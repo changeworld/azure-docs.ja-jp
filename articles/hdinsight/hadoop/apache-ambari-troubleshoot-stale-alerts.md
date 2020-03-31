@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: f9dfcb930e3fe4f862f9f51ff00270d0eb0c66ca
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77539112"
 ---
 # <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>シナリオ:Azure HDInsight での Apache Ambari の古いアラート
@@ -36,7 +36,7 @@ Ambari エージェントでは、多くのリソースの正常性が継続的�
 
 * クラスター内の少数のホストが多数のコンポーネントをホストしているため、多くのアラートの実行を要求されています。 コンポーネントの数が多い場合、アラート ジョブがスケジュールされた間隔で実行されない可能性があります。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
 Ambari の古いアラートに関する問題を解決するには、次の方法を試してください。
 

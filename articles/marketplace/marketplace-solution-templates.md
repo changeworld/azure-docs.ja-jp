@@ -2,19 +2,18 @@
 title: Azure アプリケーション ソリューション テンプレートのオファー発行ガイド | Azure Marketplace
 description: この記事では、Azure Marketplace でソリューション テンプレートを発行するための要件を説明します
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: ellacroi
-manager: nunoc
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 9/25/2019
-ms.author: ellacroi
-ms.openlocfilehash: 934a5e050e190c9a1f90bb3a22c2d1323a3ccecf
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: c84436015ad37b57f6603551f1d328ac76181836
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73808300"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288735"
 ---
 # <a name="azure-applications-solution-template-offer-publishing-guide"></a>Azure アプリケーション:ソリューション テンプレートのオファー発行ガイド
 
@@ -27,14 +26,14 @@ ms.locfileid: "73808300"
 
 ## <a name="requirements-for-solution-templates"></a>ソリューション テンプレートの要件
 
-| **要件** | **詳細**  |
+| **必要条件** | **詳細**  |
 | ---------------  | -----------  |
 |請求/メータリング    |  リソースが顧客の Azure サブスクリプションでプロビジョニングされます。 従量課金制 (PAYGO) の仮想マシンが Microsoft 経由で顧客とトランザクション処理され、顧客の Azure サブスクリプション (PAYGO) により課金されます。  <br/> ライセンス持ち込み (BYOL) の場合、Microsoft が顧客サブスクリプションで生じるインフラストラクチャ コストを請求し、ユーザーが顧客に対して直接ソフトウェア ライセンス料金を処理します。   |
 |Azure と互換性がある仮想ハード ディスク (VHD)  |   VM は、Windows または Linux 上に構築されている必要があります。  詳細については、「[Azure と互換性のある VHD の作成](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md)」をご覧ください。 |
 | 顧客の利用状況属性 | Azure Marketplace に発行されるすべてのソリューション テンプレートで、顧客の利用状況属性を有効にする必要があります。 顧客の利用状況属性とそれを有効にする方法の詳細については、「[Azure パートナーの顧客の利用状況の属性](./azure-partner-customer-usage-attribution.md)」をご覧ください。  |
 | Managed Disks を使用する | [Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) は、Azure における IaaS VM の永続化ディスクの既定のオプションです。 Managed Disks は、ソリューション テンプレートで使用する必要があります。 <br> <br> 1.Azure ARM テンプレートで Managed Disks を使用するための[ガイダンス](https://docs.microsoft.com/azure/virtual-machines/windows/using-managed-disks-template-deployments)と[サンプル](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)に従って、ソリューション テンプレートを更新します。 <br> <br> 2.次の手順に従って、Managed Disks の基盤となる VHD をストレージ アカウントにインポートし、VHD をイメージとして Marketplace に発行します。 <br> <ul> <li> [PowerShell](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-vhd?toc=%2fpowershell%2fmodule%2ftoc.json) </li> <li> [CLI](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd?toc=%2fcli%2fmodule%2ftoc.json) </li> </ul> |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 まだ行っていない場合は、Marketplace で[登録](https://azuremarketplace.microsoft.com/sell)します。
 
 登録が済み、新しいオファーの作成または既存のオファーについての作業を行っている場合は、[Cloud パートナー ポータル](https://cloudpartner.azure.com)にサインインして、オファーを作成または完了します。
