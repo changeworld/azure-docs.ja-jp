@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 22324f59f766e8cd7fd8776acea72e3a56a8519f
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 006c780aeb3db813c8fdfb5da0b5c13fc4dcfebc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74421697"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067427"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: Azure Key Vault 内で機密データを保護し、暗号化キーを格納する
 
@@ -42,7 +42,7 @@ Always Encrypted を使用するようデータベースを構成したら、Vis
 - Azure アカウントとサブスクリプション。 お持ちでない場合は、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 - [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) バージョン 13.0.700.242 以降。
 - [.NET framework 4.6](https://msdn.microsoft.com/library/w0x726c2.aspx) 以降 (クライアント コンピューター上)。
-- [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)。
+- [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
 - [Azure PowerShell](/powershell/azure/overview) または [Azure CLI](/cli/azure/install-azure-cli)
 
 ## <a name="enable-your-client-application-to-access-the-sql-database-service"></a>クライアント アプリケーションから SQL Database サービスにアクセスできるようにする
@@ -57,7 +57,7 @@ Azure Active Directory (AAD) アプリケーションを設定し、アプリケ
 
 次のスクリプトを実行して、Key Vault をすばやく作成できます。 これらのコマンドの詳細、およびキー コンテナーの作成と構成の詳細については、「[Azure Key Vault とは](../key-vault/key-vault-overview.md)」をご覧ください。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager (RM) モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 AzureRM モジュールのバグ修正は、少なくとも 2020 年 12 月までは引き続き受け取ることができます。  Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。 その互換性の詳細については、「[新しい Azure PowerShell Az モジュールの概要](/powershell/azure/new-azureps-module-az)」を参照してください。
@@ -81,9 +81,9 @@ Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGro
 Set-AzKeyVaultAccessPolicy  -VaultName $vaultName  -ResourceGroupName $resourceGroupName -ServicePrincipalName $applicationId -PermissionsToKeys get,wrapKey,unwrapKey,sign,verify,list
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```powershell
+```azurecli
 $subscriptionName = '<subscriptionName>'
 $userPrincipalName = '<username@domain.com>'
 $applicationId = '<applicationId from AAD application>'
@@ -106,7 +106,7 @@ az keyvault set-policy --name $vaultName --key-permissions get, list, sign, unwr
 
 ## <a name="create-a-blank-sql-database"></a>空の SQL データベースを作成する
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. **[リソースの作成]**  >  **[データベース]**  >  **[SQL データベース]** に移動します。
 3. 新規または既存のサーバーに **Clinic** という名前の**空の**データベースを作成します。 Azure Portal でデータベースを作成する詳しい手順については、「[初めての Azure SQL データベース](sql-database-single-database-get-started.md)」を参照してください。
 
@@ -159,7 +159,7 @@ GO
 
 SSMS に用意されているウィザードを使用すると、列マスター キー、列暗号化キー、および暗号化する列を設定するだけで簡単に Always Encrypted を構成できます。
 
-1. **[データベース]**  >  **空の**  >  **[テーブル]** を使用して、SQL データベース内の機密データを保護する方法について説明します。
+1. **[データベース]**  > **空の** >  **[テーブル]** を使用して、SQL データベース内の機密データを保護する方法について説明します。
 2. **Patients** テーブルを右クリックして **[列の暗号化]** を選択すると、Always Encrypted ウィザードが起動します。
 
     ![[列の暗号化]](./media/sql-database-always-encrypted-azure-key-vault/encrypt-columns.png)
@@ -279,7 +279,7 @@ static void InitializeAzureKeyVaultProvider() {
 - 暗号化された列にデータを挿入する。
 - 暗号化された列をフィルター処理して、特定の値を持つレコードを選択する。
 
-*Program.cs* の内容を次のコードに置き換えます。 Main メソッドのすぐ前の行にある connectionString のグローバル変数の接続文字列を、Azure ポータルから取得した有効な接続文字列に置き換えます。 コードに対する変更はこれだけです。
+*Program.cs* のコンテンツを次のコードに置き換えます。 Main メソッドのすぐ前の行にある connectionString のグローバル変数の接続文字列を、Azure ポータルから取得した有効な接続文字列に置き換えます。 コードに対する変更はこれだけです。
 
 アプリケーションを実行して、Always Encrypted の動作を見てみましょう。
 
@@ -608,7 +608,7 @@ SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
      暗号化された列のプレーンテキスト データを確認できます。
      ![新しいコンソール アプリケーション](./media/sql-database-always-encrypted-azure-key-vault/ssms-plaintext.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Always Encrypted を使用するデータベースを作成したら、次の操作を試してみてください。
 
@@ -621,4 +621,4 @@ Always Encrypted を使用するデータベースを作成したら、次の操
 - [透過的なデータ暗号化](https://msdn.microsoft.com/library/bb934049.aspx)
 - [SQL Server の暗号化](https://msdn.microsoft.com/library/bb510663.aspx)
 - [Always Encrypted ウィザード](https://msdn.microsoft.com/library/mt459280.aspx)
-- [Always Encrypted に関するブログ](https://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
+- [Always Encrypted 関連のブログ](https://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)

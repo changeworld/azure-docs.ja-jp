@@ -11,10 +11,10 @@ ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
 ms.openlocfilehash: bd5f9fc787a6299e8d7c14f4b99f6f4d59cf78af
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74819071"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Azure Site Recovery を使用した Premium Storage への移行
@@ -176,7 +176,7 @@ VM が 1 つの可用性セットに存在する場合には、すべての VM �
  
 フェールオーバー後のデプロイメント モデルは、ニーズに合わせて選択できます。 フェールオーバー後のデプロイ モデルとして Azure Resource Manager を選択する場合、VM (Resource Manager) を VM (Resource Manager) にフェールオーバーするか、VM (クラシック) を VM (Resource Manager) にフェールオーバーすることができます。
 
-### <a name="step-8-run-a-test-failover"></a>ステップ 8:テスト フェールオーバーの実行
+### <a name="step-8-run-a-test-failover"></a>手順 8:テスト フェールオーバーの実行
 
 レプリケーションが完了したかどうかを確認するには、[Site Recovery] インスタンスを選択し、 **[設定]**  >  **[レプリケートされたアイテム]** を選択します。 レプリケーション プロセスの状態と進捗状況が表示されます。 
 
@@ -210,7 +210,7 @@ Site Recovery では、Premium Storage 対応の VM と同じか類似の種類�
 * [仮想マシンおよび物理サーバーの保護の監視とトラブルシューティング](../../site-recovery/site-recovery-monitoring-and-troubleshooting.md)
 * [Microsoft Azure Site Recovery フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 仮想マシンの移行に関する具体的なシナリオについては、次のリソースを参照してください。
 
@@ -220,7 +220,7 @@ Site Recovery では、Premium Storage 対応の VM と同じか類似の種類�
 
 また、Azure Storage と Azure Virtual Machines の詳細については、次のリソースもご覧ください。
 
-* [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
+* [Azure ストレージ](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
 
 [1]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-1.png

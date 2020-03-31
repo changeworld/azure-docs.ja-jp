@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: c26cca40b0bf6d02bcec09945043f4ba854fa8e9
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 34a70a4698b69881a06cfb7a7017fa0c30647197
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012227"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80047695"
 ---
 # <a name="api-management-transformation-policies"></a>API Management の変換ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。
 
-##  <a name="TransformationPolicies"></a> 変換ポリシー
+##  <a name="transformation-policies"></a><a name="TransformationPolicies"></a> 変換ポリシー
 
 -   [JSON から XML への変換](api-management-transformation-policies.md#ConvertJSONtoXML) - 要求本文または応答本文を JSON から XML に変換します。
 
@@ -44,7 +44,7 @@ ms.locfileid: "74012227"
 
 -   [XSLT を使用した XML の変換](api-management-transformation-policies.md#XSLTransform) - 要求本文または応答本文に含まれる XML に XSL 変換を適用します。
 
-##  <a name="ConvertJSONtoXML"></a> JSON から XML への変換
+##  <a name="convert-json-to-xml"></a><a name="ConvertJSONtoXML"></a> JSON から XML への変換
  `json-to-xml` ポリシーは、要求本文または応答本文を JSON から XML に変換します。
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
@@ -75,10 +75,10 @@ ms.locfileid: "74012227"
 
 ### <a name="attributes"></a>属性
 
-|名前|説明|必須|既定値|
+|名前|説明|必須|Default|
 |----------|-----------------|--------------|-------------|
 |apply|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   always - 常に変換を適用します。<br />-   content-type-json - 応答の Content-Type ヘッダーに JSON の存在が示されている場合のみ変換を行います。|はい|該当なし|
-|consider-accept-header|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   true - 要求の Accept ヘッダーで JSON が要求されている場合に変換を適用します。<br />-   false - 常に変換を適用します。|いいえ|true|
+|consider-accept-header|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   true - 要求の Accept ヘッダーで XML が要求されている場合に変換を適用します。<br />-   false - 常に変換を適用します。|いいえ|true|
 |parse-date|`false` に設定すると、変換中、日付値がコピーされます。|いいえ|true|
 
 ### <a name="usage"></a>使用法
@@ -88,7 +88,7 @@ ms.locfileid: "74012227"
 
 -   **ポリシー スコープ:** すべてのスコープ
 
-##  <a name="ConvertXMLtoJSON"></a> XML から JSON への変換
+##  <a name="convert-xml-to-json"></a><a name="ConvertXMLtoJSON"></a> XML から JSON への変換
  `xml-to-json` ポリシーは、要求本文または応答方文を XML から JSON に変換します。 このポリシーを使用すると、XML のみのバックエンド Web サービスに基づく API を最新化することができます。
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
@@ -123,7 +123,7 @@ ms.locfileid: "74012227"
 |----------|-----------------|--------------|-------------|
 |kind|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   javascript-friendly - 変換後の JSON が JavaScript 開発者にとってわかりやすい形になります。<br />-   direct - 変換後の JSON に元の XML ドキュメントの構造が反映されます。|はい|該当なし|
 |apply|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   always - 常に変換します。<br />-   content-type-xml - 応答の Content-Type ヘッダーに XML の存在が示されている場合のみ変換を行います。|はい|該当なし|
-|consider-accept-header|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   true - 要求の Accept ヘッダーで XML が要求されている場合に変換を適用します。<br />-   false - 常に変換を適用します。|いいえ|true|
+|consider-accept-header|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   true - 要求の Accept ヘッダーで JSON が要求されている場合に変換を適用します。<br />-   false - 常に変換を適用します。|いいえ|true|
 
 ### <a name="usage"></a>使用法
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
@@ -132,7 +132,7 @@ ms.locfileid: "74012227"
 
 -   **ポリシー スコープ:** すべてのスコープ
 
-##  <a name="Findandreplacestringinbody"></a> 本文内の文字列の検索および置換
+##  <a name="find-and-replace-string-in-body"></a><a name="Findandreplacestringinbody"></a> 本文内の文字列の検索および置換
  `find-and-replace` ポリシーは、要求または応答内の文字部分列を検索し、別の部分文字列で置き換えます。
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
@@ -167,7 +167,7 @@ ms.locfileid: "74012227"
 
 -   **ポリシー スコープ:** すべてのスコープ
 
-##  <a name="MaskURLSContent"></a> コンテンツ内の URL のマスク
+##  <a name="mask-urls-in-content"></a><a name="MaskURLSContent"></a> コンテンツ内の URL のマスク
  `redirect-content-urls` ポリシーは、応答本文内のリンクを、ゲートウェイを経由して同じリンクをポイントするように書き換えます (マスクします)。 応答本文のリンクをゲートウェイにポイントさせる場合は outbound セクションで使用します。 反対の効果を生じさせる場合は inbound セクションで使用します。
 
 > [!NOTE]
@@ -198,7 +198,7 @@ ms.locfileid: "74012227"
 
 -   **ポリシー スコープ:** すべてのスコープ
 
-##  <a name="SetBackendService"></a> バックエンド サービスの設定
+##  <a name="set-backend-service"></a><a name="SetBackendService"></a> バックエンド サービスの設定
  `set-backend-service` ポリシーを使用すると、該当する操作の API 設定で指定されているものとは異なるバックエンドに受信要求をリダイレクトできます。 このポリシーでは、受信要求のバックエンド サービスのベース URL をこのポリシーで指定した URL に変更します。
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
@@ -283,7 +283,7 @@ or
 
 -   **ポリシー スコープ:** すべてのスコープ
 
-##  <a name="SetBody"></a> 本文の設定
+##  <a name="set-body"></a><a name="SetBody"></a> 本文の設定
  着信要求と発信要求のメッセージ本文を設定するには、`set-body` ポリシーを使用します。 メッセージ本文へのアクセスには、ポリシーを inbound セクションと outbound セクションのどちらに記載するかに応じて `context.Request.Body` プロパティまたは `context.Response.Body` を使用します。
 
 > [!IMPORTANT]
@@ -400,7 +400,7 @@ or
 |----------|-----------------|--------------|
 |set-body|ルート要素。 本文のテキストか、または本文を返す式を記載します。|はい|
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Properties
 
 |名前|説明|必須|Default|
 |----------|-----------------|--------------|-------------|
@@ -453,7 +453,7 @@ OriginalUrl.
 
 -   **ポリシー スコープ:** すべてのスコープ
 
-##  <a name="SetHTTPheader"></a> HTTP ヘッダーの設定
+##  <a name="set-http-header"></a><a name="SetHTTPheader"></a> HTTP ヘッダーの設定
  `set-header` ポリシーは、既存の応答ヘッダーまたは要求ヘッダーに値を割り当てるか、新しい応答ヘッダーまたは要求ヘッダーを追加します。
 
  HTTP ヘッダーのリストを HTTP メッセージに挿入します。 受信パイプラインに配置した場合、このポリシーは、ターゲット サービスに渡される要求の HTTP ヘッダーを設定します。 送信パイプラインに配置した場合、このポリシーは、ゲートウェイのクライアントに送信される応答の HTTP ヘッダーを設定します。
@@ -515,12 +515,12 @@ OriginalUrl.
 |set-header|ルート要素。|はい|
 |value|設定するヘッダーの値を指定します。 同じ名前のヘッダーが複数ある場合は、`value` 要素をさらに追加します。|いいえ|
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Properties
 
 |名前|説明|必須|Default|
 |----------|-----------------|--------------|-------------|
 |exists-action|対象のヘッダーが既に指定されている場合の操作を指定します。 この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   override - 既存のヘッダーの値を置き換えます。<br />-   skip - 既存のヘッダーの値を置き換えません。<br />-   append - 既存のヘッダーの値に値を追加します。<br />-   delete - 要求からヘッダーを削除します。<br /><br /> `override` に設定した場合、同じ名前の複数のエントリを記載すると、すべてのエントリに従ってヘッダーが設定されます (複数回記載されます)。結果に設定されるのは記載した値のみです。|いいえ|override|
-|名前|設定するヘッダーの名前を指定します。|はい|該当なし|
+|name|設定するヘッダーの名前を指定します。|はい|該当なし|
 
 ### <a name="usage"></a>使用法
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
@@ -529,7 +529,7 @@ OriginalUrl.
 
 -   **ポリシー スコープ:** すべてのスコープ
 
-##  <a name="SetQueryStringParameter"></a> クエリ文字列パラメーターの設定
+##  <a name="set-query-string-parameter"></a><a name="SetQueryStringParameter"></a> クエリ文字列パラメーターの設定
  `set-query-parameter` ポリシーは、要求クエリ文字列パラメーターの追加、値の置換、または削除を行います。 このポリシーを使用すると、オプションであるかまたは要求内に存在しない、バックエンド サービスで必要とされるクエリ パラメーターを渡すことができます。
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
@@ -575,12 +575,12 @@ OriginalUrl.
 |set-query-parameter|ルート要素。|はい|
 |value|設定するクエリ パラメーターの値を指定します。 同じ名前のクエリ パラメーターが複数ある場合は、`value` 要素をさらに追加します。|はい|
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Properties
 
 |名前|説明|必須|Default|
 |----------|-----------------|--------------|-------------|
 |exists-action|対象のクエリ パラメーターが既に指定されている場合の操作を指定します。 この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   override - 既存のパラメーターの値を置き換えます。<br />-   skip - 既存のクエリ パラメーターの値を置き換えません。<br />-   append - 既存のクエリ パラメーターの値に値を追加します。<br />-   delete - 要求からクエリ パラメーターを削除します。<br /><br /> `override` に設定した場合、同じ名前の複数のエントリを記載すると、すべてのエントリに従ってクエリ パラメーターが設定されます (複数回記載されます)。結果に設定されるのは記載した値のみです。|いいえ|override|
-|名前|設定するクエリ パラメーターの名前を指定します。|はい|該当なし|
+|name|設定するクエリ パラメーターの名前を指定します。|はい|該当なし|
 
 ### <a name="usage"></a>使用法
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
@@ -589,7 +589,7 @@ OriginalUrl.
 
 -   **ポリシー スコープ:** すべてのスコープ
 
-##  <a name="RewriteURL"></a> URL の書き換え
+##  <a name="rewrite-url"></a><a name="RewriteURL"></a> URL の書き換え
  `rewrite-uri` ポリシーは、次の例に示すように、要求 URL をパブリックな形式から Web サービスで想定されている形式に変換します。
 
 - パブリック URL - `http://api.example.com/storenumber/ordernumber`
@@ -655,7 +655,7 @@ OriginalUrl.
 
 ### <a name="attributes"></a>属性
 
-|Attribute|説明|必須|Default|
+|属性|説明|必須|Default|
 |---------------|-----------------|--------------|-------------|
 |template|クエリ文字列パラメーターを設定した実際の Web サービス URL。 式を使用する場合は、値の全体が式である必要があります。|はい|該当なし|
 |copy-unmatched-params|元の URL テンプレートに存在しない着信要求のクエリ パラメーターを、書き換えテンプレートで定義されている URL に追加するかどうかを指定します。|いいえ|true|
@@ -667,7 +667,7 @@ OriginalUrl.
 
 -   **ポリシー スコープ:** すべてのスコープ
 
-##  <a name="XSLTransform"></a> XSLT を使用した XML の変換
+##  <a name="transform-xml-using-an-xslt"></a><a name="XSLTransform"></a> XSLT を使用した XML の変換
  `Transform XML using an XSLT` ポリシーは、要求本文または応答本文に含まれる XML に XSL 変換を適用します。
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
@@ -721,7 +721,7 @@ OriginalUrl.
 |名前|説明|必須|
 |----------|-----------------|--------------|
 |xsl-transform|ルート要素。|はい|
-|パラメーター|変換で使用する変数の定義に使用します。|いいえ|
+|パラメーター (parameter)|変換で使用する変数の定義に使用します。|いいえ|
 |xsl:stylesheet|ルート スタイルシート要素。 この中で定義する要素と属性はすべて、標準的な [XSLT の仕様](https://www.w3.org/TR/xslt)に従う必要があります。|はい|
 
 ### <a name="usage"></a>使用法
@@ -731,7 +731,7 @@ OriginalUrl.
 
 -   **ポリシー スコープ:** すべてのスコープ
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、次のトピックを参照してください。
 

@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: ce5fb014c7d954b3e8430a86430c6a666adff204
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75969244"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Azure Data Factory のパイプラインから Spark プログラムを呼び出す
@@ -63,7 +63,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 ### <a name="create-a-data-factory"></a>Data Factory の作成
 データ ファクトリを作成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. **[新規]**  >  **[データ + 分析]**  >  **[データ ファクトリ]** を選択します。
 
@@ -78,7 +78,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 
 1. **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
    > [!IMPORTANT]
    > Data Factory インスタンスを作成するには、サブスクリプション/リソース グループ レベルで [Data Factory の共同作業者](../../role-based-access-control/built-in-roles.md#data-factory-contributor) ロールのメンバーである必要があります。
@@ -273,7 +273,7 @@ getDebugInfo を **Always** に設定しているため、BLOB コンテナー�
 詳細なトラブルシューティングを行う場合は、次の手順を実行します。
 
 
-1. [https://tsiclientsample.azurewebsites.net/windFarmGen.html](`https://<CLUSTERNAME>.azurehdinsight.net/yarnui/hn/cluster`) にアクセスします。
+1. `https://<CLUSTERNAME>.azurehdinsight.net/yarnui/hn/cluster` にアクセスします。
 
     ![YARN UI アプリケーション](media/data-factory-spark/yarnui-application.png)
 
@@ -328,7 +328,7 @@ Spark アクティビティを使用するパイプラインのサンプル JSON
 | -------- | ----------- | -------- |
 | name | パイプラインのアクティビティの名前。 | はい |
 | description | アクティビティの動作を説明するテキスト。 | いいえ |
-| 型 | このプロパティは HDInsightSpark に設定する必要があります。 | はい |
+| type | このプロパティは HDInsightSpark に設定する必要があります。 | はい |
 | linkedServiceName | Spark プログラムが実行されている HDInsight のリンクされたサービスの名前。 | はい |
 | rootPath | BLOB コンテナーと Spark ファイルを含むフォルダー。 ファイル名の大文字と小文字は区別されます。 | はい |
 | entryFilePath | Spark コード/パッケージのルート フォルダーへの相対パス。 | はい |
@@ -344,7 +344,7 @@ Spark アクティビティでは、Pig および Hive アクティビティが�
 
 HDInsight のリンクされたサービスによって参照される Blob Storage に、次のフォルダー構造を作成します。 その後、依存ファイルを、**entryFilePath** で表されるルート フォルダー内の適切なサブフォルダーにアップロードします。 たとえば、Python ファイルはルート フォルダーの pyFiles サブフォルダーに、jar ファイルはルート フォルダーの jar サブフォルダーにアップロードします。 実行時、Data Factory サービスに必要な Blob Storage のフォルダー構造を次に示します。
 
-| Path | 説明 | 必須 | 種類 |
+| Path | 説明 | 必須 | Type |
 | ---- | ----------- | -------- | ---- |
 | 。 | ストレージのリンクされたサービスにおける Spark ジョブのルート パス。 | はい | Folder |
 | &lt;user defined &gt; | Spark ジョブの入力ファイルを指定するパス。 | はい | ファイル |

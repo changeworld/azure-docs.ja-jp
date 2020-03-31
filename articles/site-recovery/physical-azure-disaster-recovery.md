@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 2f92c2b800c6d30cc5f365e6d24925a70d3db55a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980308"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229147"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Azure にオンプレミス物理サーバーのディザスター リカバリーを設定する
 
@@ -129,7 +129,7 @@ VM を Azure にレプリケートするアクセス許可がお使いの Azure 
 IP アドレス ベースのファイアウォール規則では、HTTPS (443) ポートの上に示されているすべての Azure URL への通信が許可される必要があります。 IP 範囲を簡略化および制限するために、URL フィルタリングを実行することをお勧めします。
 
 - **商用 IP** - [Azure データセンターの IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)と HTTPS (443) ポートを許可します。 AAD、バックアップ、レプリケーション、およびストレージ URL をサポートするために、サブスクリプションの Azure リージョンの IP アドレス範囲を許可します。  
-- **Government IP** - AAD、バックアップ、レプリケーション、およびストレージ URL をサポートするために、すべての米国政府リージョン (バージニア、テキサス、アリゾナ、およびアイオワ) の [Azure Government データセンターの IP 範囲](https://www.microsoft.com/en-us/download/details.aspx?id=57063)と HTTPS (443) ポートを許可します。  
+- **Government IP** - AAD、バックアップ、レプリケーション、およびストレージ URL をサポートするために、すべてのUSGov リージョン (バージニア、テキサス、アリゾナ、およびアイオワ) の [Azure Government データセンターの IP 範囲](https://www.microsoft.com/en-us/download/details.aspx?id=57063)と HTTPS (443) ポートを許可します。  
 
 #### <a name="run-setup"></a>セットアップを実行する
 ローカル管理者として統合セットアップを実行し、構成サーバーをインストールします。 プロセス サーバーとマスター ターゲット サーバーも既定で構成サーバーにインストールされます。

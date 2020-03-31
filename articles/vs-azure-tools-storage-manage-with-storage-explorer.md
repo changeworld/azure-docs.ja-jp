@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
 ms.openlocfilehash: 7886d5a1ad0745550767b7d6f19592ca3c84b00a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891199"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235875"
 ---
 # <a name="get-started-with-storage-explorer"></a>Storage Explorer の概要
 
@@ -25,7 +25,7 @@ Microsoft Azure Storage Explorer は、Windows、macOS、Linux での Azure Stor
 
 ## <a name="prerequisites"></a>前提条件
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 Storage Explorer は次のバージョンの Windows でサポートされています。
 
@@ -35,13 +35,13 @@ Storage Explorer は次のバージョンの Windows でサポートされてい
 
 Storage Explorer を使用するには、すべてのバージョンの Windows で .NET Framework 4.6.2 以降が必要です。
 
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 Storage Explorer は次のバージョンの macOS でサポートされています。
 
 * macOS 10.12 Sierra 以降のバージョン
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 Storage Explorer は、Linux の一般的なディストリビューションのほとんどで、[Snap Store](https://snapcraft.io/storage-explorer) から入手できます。 このインストールには、Snap Store をお勧めします。 新しいバージョンが Snap Store に公開されると、Storage Explorer スナップによって、そのすべての依存関係と更新プログラムがインストールされます。
 
@@ -65,7 +65,7 @@ Linux での Storage Explorer のインストールの詳細については、�
 
 ---
 
-## <a name="download-and-install"></a>ダウンロードとインストール
+## <a name="download-and-install"></a>ダウンロードしてインストールする
 
 Storage Explorer をダウンロードしてインストールする方法については、「[Azure Storage Explorer](https://www.storageexplorer.com)」を参照してください。
 
@@ -235,7 +235,7 @@ Azure サブスクリプションを使って Azure Cosmos DB アカウントを
 
 この例では、Data Lake Storage Gen1 を使用します。 Azure Data Lake Storage Gen2 が利用できるようになりました。 詳細については、「[Azure Data Lake Storage Gen1 とは](./data-lake-store/data-lake-store-overview.md)」を参照してください。
 
-## Storage Explorer で Shared Access Signature を生成する<a name="generate-a-sas-in-storage-explorer"></a>
+## <a name="generate-a-shared-access-signature-in-storage-explorer"></a>Storage Explorer で Shared Access Signature を生成する<a name="generate-a-sas-in-storage-explorer"></a>
 
 ### <a name="account-level-shared-access-signature"></a>アカウント レベルの Shared Access Signature
 
@@ -266,7 +266,7 @@ Shared Access Signature をサービス レベルで取得できます。 詳細
 >
 >
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Storage Explorer を使用して Azure Blob Storage リソースを管理する](vs-azure-tools-storage-explorer-blobs.md)
 * [Azure Storage Explorer を使用してデータを操作する](./cosmos-db/storage-explorer.md)
