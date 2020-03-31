@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
 ms.openlocfilehash: 12aeea8393a00d7d2662c826f847265bdbdc0119
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75442710"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Azure API Management と Azure Application Insights を統合する方法
@@ -74,7 +74,7 @@ Azure Application Insights を使用する前に、このサービスのイン�
 
 | 設定名                        | 値の型                        | 説明                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [有効化]                              | boolean                           | この API のログ記録が有効になっているかどうかを指定します。                                                                                                                                                                                                                                                                                                |
+| 有効化                              | boolean                           | この API のログ記録が有効になっているかどうかを指定します。                                                                                                                                                                                                                                                                                                |
 | 宛先                         | Azure Application Insights ロガー | 使用する Azure Application Insights ロガーを指定します。                                                                                                                                                                                                                                                                                           |
 | [Sampling (%)]\(サンプリング (%)\)                        | decimal                           | 0 から 100 までの値 (パーセント)。 <br/> Azure Application Insights に記録する要求のパーセンテージを指定します。 0% サンプリングの場合、要求はまったく記録されません。100% サンプリングの場合、すべての要求が記録されます。 <br/> この設定は、Azure Application Insights に要求記録が与えるパフォーマンス上の影響を抑える目的で使用されます (下のセクションをご覧ください)。 |
 | [Always log errors]\(エラーは常に記録する\)                   | boolean                           | この設定が選択されている場合、 **[サンプリング]** 設定に関係なく、すべてのエラーが Azure Application Insights に記録されます。                                                                                                                                                                                                                  |

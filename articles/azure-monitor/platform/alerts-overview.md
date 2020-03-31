@@ -5,11 +5,11 @@ ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
 ms.openlocfilehash: 7ca77531ed3e1fae8ec297e430597452c7512aea
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77665666"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234335"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure のアラートの概要 
 
@@ -111,7 +111,7 @@ Azure Monitor のメトリック、Application Insights、Log Analytics、およ
 
 [アラート] ページの上部にある次の値を選択すると、別のページが開きます。
 
-| Value | 説明 |
+| 値 | 説明 |
 |:---|:---|
 | アラート合計数 | 選択された条件に一致するアラートの総数。 この値を選択すると、フィルター処理されていない [すべてのアラート] ビューが開きます。 |
 | スマート グループ | 選択された条件に一致する、アラートから作成されたスマート グループの総数。 この値を選択すると、[すべてのアラート] ビューにスマート グループの一覧が開きます。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 11/27/2019
 ms.author: spelluru
-ms.openlocfilehash: d4c4f055114ccd0be4bbc588b7785eb0fb2f48c4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6cbaf447dfcf06ae11f2282d7d847978297af8b8
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426887"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384893"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>トピック、サブスクリプション、ルールを含んだ Service Bus 名前空間を Azure Resource Manager テンプレートで作成します。
 
@@ -40,8 +40,6 @@ Azure リソースの名前付け規則のプラクティスとパターンに�
 > * [トピックとサブスクリプションを含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-topic.md)
 > 
 > 最新のテンプレートを確認する場合は、「 [Azure クイックスタート テンプレート][Azure Quickstart Templates] 」ギャラリーで "Service Bus" を検索してください。
-> 
-> 
 
 ## <a name="what-do-you-deploy"></a>デプロイ対象
 
@@ -64,6 +62,7 @@ Azure Resource Manager を使用して、テンプレートのデプロイ時に
 このテンプレートでは、次のパラメーターを定義します。
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
+
 作成する Service Bus 名前空間の名前。
 
 ```json
@@ -73,6 +72,7 @@ Azure Resource Manager を使用して、テンプレートのデプロイ時に
 ```
 
 ### <a name="servicebustopicname"></a>serviceBusTopicName
+
 Service Bus 名前空間に作成するトピックの名前。
 
 ```json
@@ -82,6 +82,7 @@ Service Bus 名前空間に作成するトピックの名前。
 ```
 
 ### <a name="servicebussubscriptionname"></a>serviceBusSubscriptionName
+
 Service Bus 名前空間に作成するサブスクリプションの名前。
 
 ```json
@@ -89,7 +90,9 @@ Service Bus 名前空間に作成するサブスクリプションの名前。
 "type": "string"
 }
 ```
+
 ### <a name="servicebusrulename"></a>serviceBusRuleName
+
 Service Bus 名前空間に作成するルール (フィルター) の名前。
 
 ```json
@@ -97,7 +100,9 @@ Service Bus 名前空間に作成するルール (フィルター) の名前。
    "type": "string",
   }
 ```
+
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
+
 テンプレートの Service Bus API バージョン。
 
 ```json
@@ -108,7 +113,9 @@ Service Bus 名前空間に作成するルール (フィルター) の名前。
            "description": "Service Bus ApiVersion used by the template" 
        }
 ```
+
 ## <a name="resources-to-deploy"></a>デプロイ対象のリソース
+
 **Messaging** タイプの標準的な Service Bus 名前空間を作成し、トピックとサブスクリプションとルールを追加します。
 
 ```json
@@ -164,21 +171,25 @@ Service Bus 名前空間に作成するルール (フィルター) の名前。
 JSON の構文とプロパティについては、[namespaces](/azure/templates/microsoft.servicebus/namespaces)、[topics](/azure/templates/microsoft.servicebus/namespaces/topics)、[subscriptions](/azure/templates/microsoft.servicebus/namespaces/topics/subscriptions)、および [rules](/azure/templates/microsoft.servicebus/namespaces/topics/subscriptions/rules) を参照してください。
 
 ## <a name="commands-to-run-deployment"></a>デプロイを実行するコマンド
+
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ## <a name="powershell"></a>PowerShell
-```powershell
+
+```powershell-interactive
 New-AzureResourceGroupDeployment -Name \<deployment-name\> -ResourceGroupName \<resource-group-name\> -TemplateUri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-subscription-rule/azuredeploy.json>
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
-```azurecli
+
+```azurecli-interactive
 azure config mode arm
 
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-subscription-rule/azuredeploy.json>
 ```
 
 ## <a name="next-steps"></a>次のステップ
+
 次の記事を参照して、これらのリソースの管理方法を確認してください。
 
 * [Azure Service Bus を管理する](service-bus-management-libraries.md)
@@ -193,4 +204,3 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 [Recommended naming conventions for Azure resources]: /azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging
 [Service Bus namespace with topic, subscription, and rule]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-topic-subscription-rule/
 [Service Bus queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-

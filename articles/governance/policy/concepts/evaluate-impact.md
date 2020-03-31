@@ -4,10 +4,10 @@ description: Azure 環境に新しいポリシー定義を導入するときの�
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.openlocfilehash: 562fa2378356ddc1eac48b6ea5c160ebf655d525
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74463529"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy"></a>新しい Azure ポリシーの影響を評価する
@@ -66,7 +66,7 @@ Azure Policy は、Azure リソースをビジネス標準に合わせて管理�
 
 ポリシー定義の実装と割り当てが最後のステップではありません。 新しいポリシー定義に対するリソースの[コンプライアンス](../how-to/get-compliance-data.md) レベルを継続的に監視し、非準拠デバイスが識別された場合に対して適切な [Azure Monitor のアラートと通知](../../../azure-monitor/platform/alerts-overview.md)をセットアップします。 また、ポリシー定義および関連する割り当てを定期的に評価し、ポリシー定義がビジネス ポリシーとコンプライアンス ニーズを満たしていることを検証することもお勧めします。 不要になった場合は、ポリシーを削除する必要があります。 また、基になる Azure リソースが発展し、新しいプロパティと機能が追加されたら、ポリシーを更新する必要もあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ポリシー定義の構造](./definition-structure.md)についてさらに学習します。
 - [ポリシー割り当ての構造](./assignment-structure.md)についてさらに学習します。

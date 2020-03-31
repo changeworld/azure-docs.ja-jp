@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/11/2019
 ms.author: juliako
 ms.openlocfilehash: cd955f97a2f26543f799d95b7dc0b1de235333c5
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74186208"
 ---
 # <a name="filter-your-manifests-using-dynamic-packager"></a>Dynamic Packager を使用してマニフェストをフィルター処理する
@@ -52,7 +52,7 @@ REST の例については、[REST を使用したファイルのアップロー
 
 ![Azure Media Player の診断][amp_diagnostics]
 
-### <a name="examples-urls-with-filters-in-query-string"></a>次に例を示します。クエリ文字列にフィルターを含む URL
+### <a name="examples-urls-with-filters-in-query-string"></a>例 :クエリ文字列にフィルターを含む URL
 
 ABR ストリーミング プロトコルにフィルターを適用できます。HLS、MPEG-DASH、および Smooth Streaming) に適用できます。 次の表に、フィルターを含んだ URL の例をいくつか示します。
 
@@ -148,7 +148,7 @@ ABR ストリーミング プロトコルにフィルターを適用できます
     - アセットのトラックのプロパティを調べるには、[マニフェスト ファイルを取得して調査](#get-and-examine-manifest-files)します。
     - アセット フィルターのタイムスタンプのプロパティを設定するための数式は次のとおりです。 <br/>startTimestamp = &lt;マニフェストにおける開始時間&gt; +  &lt;所定のフィルター開始時間 (秒)&gt; * タイムスケール
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の記事では、プログラムを使ってフィルターを作成する方法が紹介されています。  
 

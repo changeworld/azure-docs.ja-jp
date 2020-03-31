@@ -13,10 +13,10 @@ ms.date: 12/14/2017
 ms.author: damendo
 ms.custom: ''
 ms.openlocfilehash: c3a85de3a201a89d6d9500e4f4b2df9e667e3537
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840538"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>特定の場所から Azure リージョンへの相対待機時間を確認する
@@ -124,7 +124,7 @@ Get-AzNetworkWatcherReachabilityReport `
 > [!NOTE]
 > 単一の場所を指定する場合とは異なり、場所を指定しない場合や、複数の場所 ("米国西部 2"、"米国西部" など) を指定する場合は、コマンドの実行時にインターネット サービス プロバイダーを指定する必要があります。 
 
-## <a name="view-available"></a>使用できる国/リージョン、州、市区町村、プロバイダーを表示する
+## <a name="view-available-countriesregions-states-cities-and-providers"></a><a name="view-available"></a>使用できる国/リージョン、州、市区町村、プロバイダーを表示する
 
 特定のインターネット サービス プロバイダー、国/リージョン、州、および市区町村のデータを使用できます。 データを表示できるすべてのインターネット サービス プロバイダー、国/リージョン、州、および市区町村の一覧を表示するには、次のコマンドを入力します。
 

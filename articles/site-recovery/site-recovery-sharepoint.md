@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
 ms.openlocfilehash: d74e28ce470c23bbc8ee2081532a198c260ccea5
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74706362"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Azure Site Recovery を使用して多層 SharePoint アプリケーションのディザスター リカバリーを設定する
@@ -86,7 +86,7 @@ Site Recovery はアプリケーションに依存しないため、サポート
 
 ## <a name="networking-configuration"></a>ネットワーク構成
 
-### <a name="network-properties"></a>Network properties
+### <a name="network-properties"></a>ネットワークのプロパティ
 
 * アプリ層と Web 層の仮想マシンについては、仮想マシンがフェールオーバー後に適切な DR ネットワークにアタッチできるように、Azure ポータルでネットワーク設定を行います。
 
@@ -102,7 +102,7 @@ Site Recovery はアプリケーションに依存しないため、サポート
 インターネットに面しているサイトの場合は、Azure サブスクリプションで[[Priority] 型の Traffic Manager](../traffic-manager/traffic-manager-create-profile.md) プロファイルを作成します。 そして、次の方法で DNS と Traffic Managerプロファイル の設定をします。
 
 
-| **Where** | **ソース** | **ターゲット**|
+| **Where** | **ソース** | **移行先**|
 | --- | --- | --- |
 | パブリック DNS | SharePoint サイト用のパブリック DNS <br/><br/> 例: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
 | オンプレミス DNS | sharepointonprem.contoso.com | オンプレミスファーム上のパブリック IP |
@@ -199,5 +199,5 @@ SQL Always ON 可用性グループのテスト フェールオーバーの実�
 3.  [フェールオーバー] をクリックします。
 4.  フェールオーバー プロセスを開始する復旧ポイントを選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Site Recovery を利用した他のアプリケーションのレプリケーションについては](site-recovery-workload.md)､他の場所でも説明しています｡

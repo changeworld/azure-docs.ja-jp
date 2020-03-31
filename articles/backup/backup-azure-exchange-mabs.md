@@ -4,12 +4,12 @@ description: Azure Backup Server を使用して Exchange サーバーを Azure 
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 9e623b1bdce93c340ccd0e61f9f5145e7154beff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b9c8cfb32adce39dab47159c7d644b92e0ced46e
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78295846"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397956"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Azure Backup Server を使用して Exchange サーバーを Azure にバックアップする
 
@@ -34,7 +34,7 @@ Exchange サーバーに MABS 保護エージェントをインストールす�
 4. 保護する Exchange サーバー データベースを選択し、 **[次へ]** をクリックします。
 
    > [!NOTE]
-   > Exchange 2013 を保護する場合は、「 [Exchange 2013 の前提条件](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/dn751029(v=sc.12))」を確認してください。
+   > Exchange 2013 を保護する場合は、「 [Exchange 2013 の前提条件](https://docs.microsoft.com/system-center/dpm/back-up-exchange?view=sc-dpm-2016)」を確認してください。
    >
    >
 

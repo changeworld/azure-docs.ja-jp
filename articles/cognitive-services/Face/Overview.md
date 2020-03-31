@@ -9,14 +9,16 @@ ms.subservice: face-api
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: c4e2253229f4461bcb6a2a9fe3e561f3cde29760
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: c433d99fd96e99d418fd5500c1075e68dfb1742c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170248"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80053592"
 ---
 # <a name="what-is-the-azure-face-service"></a>Azure Face サービスとは
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Azure Cognitive Services Face サービスは、画像に含まれている人の顔の検出、認識、分析に使用されるアルゴリズムを備えています。 人の顔の情報を処理する機能は、多種多様なソフトウェア シナリオで重要です。 シナリオの例として、セキュリティ、自然なユーザー インターフェイス、画像コンテンツの分析と管理、モバイル アプリ、ロボティクスなどがあります。
 

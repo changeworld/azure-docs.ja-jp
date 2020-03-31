@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 73256aef19a03c4c971be5fc9e69f988ef5a831a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75438626"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: よく寄せられる質問
@@ -141,7 +141,7 @@ A. Azure portal では、Data Box の注文に移動し、**概要**に移動で
 A.  Data Box では、80 TB のストレージ容量を使用できます。 データ サイズが 40 TB から 80 TB の場合、1 台の Data Box デバイスを使用できます。 500 TB までのより大きなデータ サイズの場合、複数の Data Box デバイスを注文できます。 データ サイズが 500 TB を超える場合は、Data Box Heavy にサインアップしてください。  
 
 ### <a name="q-what-are-the-maximum-block-blob-and-page-blob-sizes-supported-by-data-box"></a>Q. Data Box でサポートされるブロック BLOB とページ BLOB の最大サイズを教えてください。 
-A.  最大サイズは Azure Storage の上限によって左右されます。 最大ブロック BLOB は約 4.768 TiB、ページ BLOB の最大サイズは 8 TiB です。 詳細については、[Blob storage ストレージのスケーラビリティとパフォーマンス](../storage/blobs/scalability-targets.md) に関する記述を参照してください。
+A.  最大サイズは Azure Storage の上限によって左右されます。 最大ブロック BLOB は約 4.768 TiB、ページ BLOB の最大サイズは 8 TiB です。 詳細については、「[BLOB ストレージのスケーラビリティとパフォーマンスのターゲット](../storage/blobs/scalability-targets.md)」を参照してください。
 
 ### <a name="q-how-do-i-know-that-my-data-is-secure-during-transit"></a>Q. 移動中のデータのセキュリティは、どのようにして確保されているのですか? 
 A. 移動中に Data Box が確実に保護されるように、いくつかのセキュリティ機能が実装されています。 これらの中には、開封明示シール、ハードウェアとソフトウェアの改ざん検出、デバイスのロック解除パスワードなどがあります。 詳細については、「[Azure Data Box のセキュリティとデータ保護](data-box-security.md)」を参照してください。

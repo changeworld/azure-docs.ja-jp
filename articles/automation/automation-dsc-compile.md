@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 09/10/2018
 ms.topic: conceptual
-ms.openlocfilehash: a4a46837e366caf2860aa0d6597ec7aebc94905a
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 48593920bdfcf743fceaeaeec891c0d5c4f2e108
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650012"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80057634"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Azure Automation State Configuration での DSC 構成のコンパイル
 
@@ -127,7 +127,7 @@ PSCredentials をパラメーターとして渡す方法の詳細については
 
 ### <a name="manage-configurationdata-when-compiling-configurations-in-azure-automation"></a>Azure Automation で構成をコンパイルするときに ConfigurationData を管理する
 
-**ConfigurationData** によって、PowerShell DSC の使用中に環境固有の構成と構造上の構成を分離することができます。 詳細については、「[PowerShell DSC で "環境" から "構造" を分離する](https://blogs.msdn.com/b/powershell/archive/2014/01/09/continuous-deployment-using-dsc-with-minimal-change.aspx)」を参照してください。
+**ConfigurationData** によって、PowerShell DSC の使用中に環境固有の構成と構造上の構成を分離することができます。 詳細については、「[PowerShell DSC で "環境" から "構造" を分離する](https://devblogs.microsoft.com/powershell/separating-what-from-where-in-powershell-dsc/)」を参照してください。
 
 > [!NOTE]
 > Azure Automation State Configuration でのコンパイル時には、**ConfigurationData** は、Azure PowerShell では使用できますが、Azure portal では使用できません。

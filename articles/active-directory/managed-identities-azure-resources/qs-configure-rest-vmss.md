@@ -16,11 +16,11 @@ ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dce9894b26d03c351a2209792cc076de91feba54
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429993"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227735"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>REST API 呼び出しを使用して仮想マシン スケール セットで Azure リソースのマネージド ID を構成する
 
@@ -46,7 +46,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
     - [マネージド ID 共同作成者](/azure/role-based-access-control/built-in-roles#managed-identity-contributor)ロール。ユーザー割り当てマネージド ID を作成します。
     - 仮想マシン スケール セットのユーザー割り当て ID を割り当てたり削除したりするための[マネージド ID オペレーター](/azure/role-based-access-control/built-in-roles#managed-identity-operator) ロール。
 - Windows を使用している場合は、[Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/about) をインストールするか、Azure Portal で [Azure Cloud Shell](../../cloud-shell/overview.md) を使用します。
-- [Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/about) または [Linux ディストリビューション OS](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) を使用する場合は、[Azure CLI ローカル コンソールをインストール](/cli/azure/install-azure-cli)します。
+- [Windows Subsystem for Linux](/cli/azure/install-azure-cli) または [Linux ディストリビューション OS](https://msdn.microsoft.com/commandline/wsl/about) を使用する場合は、[Azure CLI ローカル コンソールをインストール](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)します。
 - Azure CLI ローカル コンソールを使用している場合は、システム割り当てマネージド ID またはユーザー割り当てマネージド ID を管理する Azure サブスクリプションに関連付けられているアカウントで `az login` を使用して Azure にサインインします。
 
 
@@ -60,7 +60,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 システム割り当てマネージド ID を有効にして仮想マシン スケール セットを作成するには、仮想マシン スケール セットを作成し、システム割り当てマネージド ID の種類の値を指定して Resource Manager エンドポイントを呼び出す CURL を使用するためのアクセス トークンを取得する必要があります。
 
-1. [az group create](/cli/azure/group/#az-group-create) を使用して、仮想マシン スケール セットとその関連リソースの管理およびデプロイ用に[リソース グループ](../../azure-resource-manager/management/overview.md#terminology)を作成します。 代わりに使用するリソース グループが既にある場合は、この手順をスキップできます。
+1. [az group create](../../azure-resource-manager/management/overview.md#terminology) を使用して、仮想マシン スケール セットとその関連リソースの管理およびデプロイ用に[リソース グループ](/cli/azure/group/#az-group-create)を作成します。 代わりに使用するリソース グループが既にある場合は、この手順をスキップできます。
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
@@ -78,7 +78,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    az account get-access-token
    ``` 
 
-4. Azure Resource Manager REST エンドポイントを呼び出す CURL を使用して、仮想マシン スケール セットを作成します。 次の例では、値 `"identity":{"type":"SystemAssigned"}` からの要求本文で指定されたシステム割り当てマネージド ID を使用して、*myResourceGroup* 内の *myVMSS* という仮想マシン スケール セットを作成します。 `<ACCESS TOKEN>` は前の手順で Bearer アクセス トークンを要求したときに受け取った値に置き換え、`<SUBSCRIPTION ID>` 値はご利用の環境に合わせて置き換えます。
+4. Azure Resource Manager REST エンドポイントを呼び出す CURL を使用して、仮想マシン スケール セットを作成します。 次の例では、値  *からの要求本文で指定されたシステム割り当てマネージド ID を使用して、* myResourceGroup*内の*myVMSS`"identity":{"type":"SystemAssigned"}` という仮想マシン スケール セットを作成します。 `<ACCESS TOKEN>` は前の手順で Bearer アクセス トークンを要求したときに受け取った値に置き換え、`<SUBSCRIPTION ID>` 値はご利用の環境に合わせて置き換えます。
 
    ```bash   
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PUT -d '{"sku":{"tier":"Standard","capacity":3,"name":"Standard_D1_v2"},"location":"eastus","identity":{"type":"SystemAssigned"},"properties":{"overprovision":true,"virtualMachineProfile":{"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"createOption":"FromImage"}},"osProfile":{"computerNamePrefix":"myVMSS","adminUsername":"azureuser","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaceConfigurations":[{"name":"myVMSS","properties":{"primary":true,"enableIPForwarding":true,"ipConfigurations":[{"name":"myVMSS","properties":{"subnet":{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet"}}}]}}]}},"upgradePolicy":{"mode":"Manual"}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -170,7 +170,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    az account get-access-token
    ```
 
-2. *myVMSS* という仮想マシン スケール セットの値 `{"identity":{"type":"SystemAssigned"}` により要求本文で指定された仮想マシン スケール セットでシステム割り当てマネージド ID を有効にするには、Azure Resource Manager REST エンドポイントを呼び出す以下の CURL コマンドを使用します。  `<ACCESS TOKEN>` は前の手順で Bearer アクセス トークンを要求したときに受け取った値に置き換え、`<SUBSCRIPTION ID>` 値はご利用の環境に合わせて置き換えます。
+2. `{"identity":{"type":"SystemAssigned"}`myVMSS*という仮想マシン スケール セットの値* により要求本文で指定された仮想マシン スケール セットでシステム割り当てマネージド ID を有効にするには、Azure Resource Manager REST エンドポイントを呼び出す以下の CURL コマンドを使用します。  `<ACCESS TOKEN>` は前の手順で Bearer アクセス トークンを要求したときに受け取った値に置き換え、`<SUBSCRIPTION ID>` 値はご利用の環境に合わせて置き換えます。
    
    > [!IMPORTANT]
    > 仮想マシン スケール セットに割り当てられている既存のユーザー割り当てマネージド ID を削除しないようにするには、次の CURL コマンドを使用してユーザー割り当てマネージド ID を一覧表示する必要があります。`curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"` 応答の `identity` 値で指定されたユーザー割り当てマネージド ID が仮想マシン スケール セットに割り当てられている場合は、仮想マシン スケール セットでシステム割り当てマネージド ID を有効にしている間、ユーザー割り当てマネージド ID を保持する方法を示す手順 3 にスキップします。
@@ -204,7 +204,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    
    たとえば、仮想マシン スケール セットにユーザー割り当てマネージド ID `ID1` と `ID2` が割り当てられている状態で、仮想マシン スケール セットにシステム割り当てマネージド ID を追加する場合は、次の CURL 呼び出しを使用します。 `<ACCESS TOKEN>` と `<SUBSCRIPTION ID>` は、ご利用の環境に適した値に置き換えます。
 
-   API バージョン `2017-12-01` では、ユーザー割り当てマネージド ID が `identityIds` 値に配列形式で保存されていましたが、API バージョン `2018-06-01` では `userAssignedIdentities` 値にディクショナリ形式で保存されます。
+   API バージョン `2018-06-01` では、ユーザー割り当てマネージド ID が `userAssignedIdentities` 値に配列形式で保存されていましたが、API バージョン `identityIds` では `2017-12-01` 値にディクショナリ形式で保存されます。
    
    **API バージョン 2018-06-01**
 
@@ -281,7 +281,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    az account get-access-token
    ```
 
-2. システム割り当てマネージド ID を無効にするには、Azure Resource Manager REST エンドポイントを呼び出す CURL を使用して、仮想マシン スケール セットを更新します。  次の例では、*myVMSS* という仮想マシン スケール セットから値 `{"identity":{"type":"None"}}` によって要求本文で指定されたシステム割り当てマネージド ID を無効にします。  `<ACCESS TOKEN>` は前の手順で Bearer アクセス トークンを要求したときに受け取った値に置き換え、`<SUBSCRIPTION ID>` 値はご利用の環境に合わせて置き換えます。
+2. システム割り当てマネージド ID を無効にするには、Azure Resource Manager REST エンドポイントを呼び出す CURL を使用して、仮想マシン スケール セットを更新します。  次の例では、`{"identity":{"type":"None"}}`myVMSS*という仮想マシン スケール セットから値* によって要求本文で指定されたシステム割り当てマネージド ID を無効にします。  `<ACCESS TOKEN>` は前の手順で Bearer アクセス トークンを要求したときに受け取った値に置き換え、`<SUBSCRIPTION ID>` 値はご利用の環境に合わせて置き換えます。
 
    > [!IMPORTANT]
    > 仮想マシン スケール セットに割り当てられている既存のユーザー割り当てマネージド ID を削除しないようにするには、次の CURL コマンドを使用してユーザー割り当てマネージド ID を一覧表示する必要があります。`curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"` ユーザー割り当てマネージド ID が仮想マシン スケール セットに割り当てられている場合は、仮想マシン スケール セットでシステム割り当てマネージド ID を削除する一方でユーザー割り当てマネージド ID を保持する方法を示す手順 3 にスキップします。
@@ -311,7 +311,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
     }
    ```
 
-   **API バージョン 2018-06-01** を使用している場合、ユーザー割り当てマネージド ID を持つ仮想マシン スケール セットからシステム割り当てマネージド ID を削除するには、`UserAssigned` 値と `userAssignedIdentities` ディクショナリ値を維持したまま、`{"identity":{"type:" "}}` 値から `SystemAssigned` を削除します。 **API バージョン 2017-12-01** またはそれ以前を使用している場合は、`identityIds` 配列を維持します。
+   `SystemAssigned`API バージョン 2018-06-01`{"identity":{"type:" "}}` を使用している場合、ユーザー割り当てマネージド ID を持つ仮想マシン スケール セットからシステム割り当てマネージド ID を削除するには、`UserAssigned` 値と `userAssignedIdentities` ディクショナリ値を維持したまま、**値から** を削除します。 **API バージョン 2017-12-01** またはそれ以前を使用している場合は、`identityIds` 配列を維持します。
 
 ## <a name="user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID
 
@@ -337,9 +337,9 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    az account get-access-token
    ``` 
 
-4. 次のセクション「[ユーザー割り当てマネージド ID を作成する](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity)」の手順を使用して、ユーザー割り当てマネージド ID を作成します。
+4. 「[Create a user assigned managed identity](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity)」(ユーザー割り当てマネージド ID を作成する) に示されている手順を使用して、ユーザー割り当てマネージド ID を作成します。
 
-5. Azure Resource Manager REST エンドポイントを呼び出す CURL を使用して、仮想マシン スケール セットを作成します。 次の例では、値 `"identity":{"type":"UserAssigned"}` からの要求本文で指定されたユーザー割り当てマネージド ID `ID1` を使用して、*myResourceGroup* リソース グループ内の *myVMSS* という仮想マシン スケール セットを作成します。 `<ACCESS TOKEN>` は前の手順で Bearer アクセス トークンを要求したときに受け取った値に置き換え、`<SUBSCRIPTION ID>` 値はご利用の環境に合わせて置き換えます。
+5. Azure Resource Manager REST エンドポイントを呼び出す CURL を使用して、仮想マシン スケール セットを作成します。 次の例では、値 *からの要求本文で指定されたユーザー割り当てマネージド ID* を使用して、*myResourceGroup* リソース グループ内の `ID1`myVMSS`"identity":{"type":"UserAssigned"}` という仮想マシン スケール セットを作成します。 `<ACCESS TOKEN>` は前の手順で Bearer アクセス トークンを要求したときに受け取った値に置き換え、`<SUBSCRIPTION ID>` 値はご利用の環境に合わせて置き換えます。
  
    **API バージョン 2018-06-01**
 
@@ -542,7 +542,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 4. 仮想マシン スケール セットにユーザー割り当てマネージド ID またはシステム割り当てマネージド ID が割り当てられていない場合は、仮想マシン スケール セットに最初のユーザー割り当てマネージド ID を割り当てるために Azure Resource Manager REST エンドポイントを呼び出す次の CURL コマンドを使用します。  ユーザー割り当てマネージド ID またはシステム割り当てマネージド ID が仮想マシン スケール セットに割り当てられている場合は、システム割り当てマネージド ID を保持しながら、仮想マシン スケール セットに複数のユーザー割り当てマネージド ID を追加する方法を示す手順 5 にスキップします。
 
-   次の例では、*myResourceGroup* リソース グループ内の *myVMSS* という仮想マシン スケール セットに、ユーザー割り当てマネージド ID `ID1` を割り当てます。  `<ACCESS TOKEN>` は前の手順で Bearer アクセス トークンを要求したときに受け取った値に置き換え、`<SUBSCRIPTION ID>` 値はご利用の環境に合わせて置き換えます。
+   次の例では、`ID1`myResourceGroup*リソース グループ内の*myVMSS*という仮想マシン スケール セットに、ユーザー割り当てマネージド ID* を割り当てます。  `<ACCESS TOKEN>` は前の手順で Bearer アクセス トークンを要求したときに受け取った値に置き換え、`<SUBSCRIPTION ID>` 値はご利用の環境に合わせて置き換えます。
 
    **API バージョン 2018-06-01**
 

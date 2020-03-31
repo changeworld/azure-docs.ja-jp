@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 11/1/2018
 ms.author: rambala
-ms.openlocfilehash: 608b5e0011d4ed656ff61fec84a23f2fb22373b3
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 378b639e89ffd46f6b32d7004f934104dd4b5407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74080795"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064838"
 ---
 # <a name="configure-bfd-over-expressroute"></a>ExpressRoute 経由の BFD の構成
 
@@ -38,21 +38,21 @@ MSEE では、新しく作成されたすべての ExpressRoute プライベー�
 CE/PE (Cisco IOS XE を使用) の構成の例を次に示します。 
 
     interface TenGigabitEthernet2/0/0.150
-      description private peering to Azure
-      encapsulation dot1Q 15 second-dot1q 150
-      ip vrf forwarding 15
-      ip address 192.168.15.17 255.255.255.252
-      bfd interval 300 min_rx 300 multiplier 3
+       description private peering to Azure
+       encapsulation dot1Q 15 second-dot1q 150
+       ip vrf forwarding 15
+       ip address 192.168.15.17 255.255.255.252
+       bfd interval 300 min_rx 300 multiplier 3
 
 
     router bgp 65020
-      address-family ipv4 vrf 15
-        network 10.1.15.0 mask 255.255.255.128
-        neighbor 192.168.15.18 remote-as 12076
-        neighbor 192.168.15.18 fall-over bfd
-        neighbor 192.168.15.18 activate
-        neighbor 192.168.15.18 soft-reconfiguration inbound
-      exit-address-family
+       address-family ipv4 vrf 15
+          network 10.1.15.0 mask 255.255.255.128
+          neighbor 192.168.15.18 remote-as 12076
+          neighbor 192.168.15.18 fall-over bfd
+          neighbor 192.168.15.18 activate
+          neighbor 192.168.15.18 soft-reconfiguration inbound
+       exit-address-family
 
 >[!NOTE]
 >既にある既存のプライベート ピアリングで BFD を有効にするには、そのピアリングをリセットする必要があります。 「[ExpressRoute 回線のピアリングをリセットする][ResetPeering]」を参照してください。

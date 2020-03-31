@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 03/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcdd89ba7741257443cf5e7567c59a6986e43c20
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8054d8985596095db32d9262322d7fb0f4aab8c8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424842"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295150"
 ---
 # <a name="conditional-access-risk-based-conditional-access"></a>条件付きアクセス:リスクベースの条件付きアクセス
 
@@ -30,13 +30,13 @@ Azure AD Premium P2 のライセンスを所持する組織では、Azure AD Ide
 
 このポリシーを有効にすると、すべてのユーザーが 14 日以内に Azure Multi-Factor Authentication に登録することを求められます。 
 
-1. **Azure portal** にサインインする
+1. **Azure portal** にサインインします。
 1. **[すべてのサービス]** をクリックし、 **[Azure AD Identity Protection]** に移動します。
 1. **[MFA 登録]** をクリックします。
 1. **[割り当て]** で、 **[ユーザー]** を選択します。
    1. **[Include]\(含める\)** で、 **[すべてのユーザー]** を選択します。
    1. **[除外]** で、 **[対象外とするユーザーの選択]** を選択し、組織の緊急アクセス用または非常用アカウントを選択して、 **[選択]** を選びます。 
-   1. **[完了]** を選択します。
+   1. **[Done]** を選択します。
 1. **[ポリシーの適用]** を **[オン]** に設定します。
 1. **[保存]** をクリックします。
 
@@ -44,13 +44,13 @@ Azure AD Premium P2 のライセンスを所持する組織では、Azure AD Ide
 
 Microsoft では、研究者、法執行機関、Microsoft のさまざまなセキュリティ チーム、その他の信頼できる情報源と協力して、ユーザー名とパスワードのペアを調査しています。 それらのペアのいずれかが環境内のアカウントに一致すると、次のポリシーを使用して、リスクベースのパスワード変更がトリガーされます。
 
-1. **Azure portal** にサインインする
+1. **Azure portal** にサインインします。
 1. **[すべてのサービス]** をクリックし、 **[Azure AD Identity Protection]** に移動します。
 1. **[ユーザーのリスク ポリシー]** をクリックします。
 1. **[割り当て]** で、 **[ユーザー]** を選択します。
    1. **[Include]\(含める\)** で、 **[すべてのユーザー]** を選択します。
    1. **[除外]** で、 **[対象外とするユーザーの選択]** を選択し、組織の緊急アクセス用または非常用アカウントを選択して、 **[選択]** を選びます。
-   1. **[完了]** を選択します。
+   1. **[Done]** を選択します。
 1. **[条件]** の下の **[ユーザーのリスク]** を選択し、 **[高]** を選択します。
    1. **[選択]** 、 **[完了]** の順にクリックします。
 1. **[Controls]\(制御\)**  >  **[アクセス]** で、 **[アクセスを許可]** を選択し、 **[パスワードの変更を必須とする]** を選択します。
@@ -62,13 +62,13 @@ Microsoft では、研究者、法執行機関、Microsoft のさまざまなセ
 
 ほとんどのユーザーは、追跡できる正常な動作をしています。この規範から外れた場合は、そのユーザーにサインインを許可すると危険であることがあります。 そのユーザーをブロックしたり、多要素認証を実行してユーザーが本人であることを証明するように求めたりすることが必要な場合もあります。 危険なサインインが検出されたときに MFA を必要とするポリシーを有効にするには、次のポリシーを有効にします。
 
-1. **Azure portal** にサインインする
+1. **Azure portal** にサインインします。
 1. **[すべてのサービス]** をクリックし、 **[Azure AD Identity Protection]** に移動します。
 1. **[サインインのリスク ポリシー]** をクリックします。
 1. **[割り当て]** で、 **[ユーザー]** を選択します。
    1. **[Include]\(含める\)** で、 **[すべてのユーザー]** を選択します。
    1. **[除外]** で、 **[対象外とするユーザーの選択]** を選択し、組織の緊急アクセス用または非常用アカウントを選択して、 **[選択]** を選びます。
-   1. **[完了]** を選択します。
+   1. **[Done]** を選択します。
 1. **[条件]** の下の **[Sign-in risk]\(サインインのリスク\)** を選択し、 **[中以上]** を選択します。
    1. **[選択]** 、 **[完了]** の順にクリックします。
 1. **[Controls]\(制御\)**  >  **[アクセス]** で、 **[アクセスを許可]** を選択し、 **[Require multi-factor authentication]\(多要素認証を要求する\)** を選択します。
@@ -80,7 +80,7 @@ Microsoft では、研究者、法執行機関、Microsoft のさまざまなセ
 
 [Conditional Access common policies](concept-conditional-access-policy-common.md) (条件付きアクセスの一般的なポリシー)
 
-[条件付きアクセスのレポート専用モードを使用した影響の判断](howto-conditional-access-report-only.md)
+[条件付きアクセスのレポート専用モードを使用した影響を判断する](howto-conditional-access-report-only.md)
 
 [Simulate sign in behavior using the Conditional Access What If tool](troubleshoot-conditional-access-what-if.md) (条件付きアクセスの What If ツールを使用したサインイン動作のシミュレート)
 

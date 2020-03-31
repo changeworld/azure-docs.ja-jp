@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: 9d213c8fa03ad2ca5e5fd7e620e52aa502749be2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969335"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79219157"
 ---
 # <a name="authoring-and-runtime-keys"></a>オーサリング キーとランタイム キー
 
@@ -44,7 +44,7 @@ Language Understanding (LUIS) には、次の 2 つのサービスと API セッ
 
 LUIS では、次の 3 種類の Azure リソースを使用できます。 
  
-|Key|目的|Cognitive Service `kind`|Cognitive Service `type`|
+|Key|目的|Cognitive service `kind`|Cognitive service `type`|
 |--|--|--|--|
 |[オーサリング キー](#programmatic-key)|作成、トレーニング、発行、テストを使用して、アプリケーションのデータにアクセスして管理します。 プログラムを使用して LUIS アプリを作成する場合は、LUIS オーサリング キーを作成します。<br><br>`LUIS.Authoring` キーの目的は、次のことを可能にすることです。<br>* トレーニングや発行など、Language Understanding のアプリとモデルをプログラムで管理する<br> * [共同作成者ロール](#contributions-from-other-authors)にユーザーを割り当てることで、オーサリング リソースへのアクセス許可を制御する|`LUIS.Authoring`|`Cognitive Services`|
 |[予測キー](#prediction-endpoint-runtime-key)| 予測エンドポイント要求に対してクエリを実行します。 クライアント アプリでスターター リソースによって提供される 1000 件を超えて予測を要求する前に、LUIS 予測キーを作成します。 |`LUIS`|`Cognitive Services`|
@@ -115,7 +115,7 @@ LUIS アプリを移行できます。 Azure portal または Azure CLI では�
 
 所有者とすべての共同作成者は、アプリを作成できるアクセス権を持っています。 
 
-|オーサリング アクセスに含まれるもの|メモ|
+|オーサリング アクセスに含まれるもの|Notes|
 |--|--|
 |エンドポイント キーの追加または削除||
 |バージョンのエクスポート||

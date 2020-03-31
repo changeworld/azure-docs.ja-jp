@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: bf4c7e9fc623ad7dc74b6da943232d5c558d43a4
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 698fab470cdc8b8d04fa4319fd71c31b58d1c5a3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920265"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066891"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows でのカスタムのスクリプト拡張機能
 
@@ -149,7 +149,7 @@ GitHub または Azure Storage などからスクリプトを外部でダウン�
 
 CustomScript (バージョン 1.10 以降) では、"fileUris" 設定で指定された URL からファイルをダウンロードするための[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) ベースの RBAC がサポートされています。 これにより、ユーザーが SAS トークンやストレージ アカウント キーなどのシークレットを渡さなくとも、CustomScript で Azure Storage プライベート BLOB またはコンテナーにアクセスできるようになります。
 
-この機能を使用するには、ユーザーが、[システムによって割り当てられたか](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-system-assigned-identity)または[ユーザーが割り当てた](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-user-assigned-identity) ID を CustomScript が実行されると想定される VM または VMSS に追加し、[Azure Storage コンテナーまたは BLOB にマネージド ID のアクセス権を付与する必要があります](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access)。
+この機能を使用するには、ユーザーが、[システムによって割り当てられたか](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)または[ユーザーが割り当てた](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity) ID を CustomScript が実行されると想定される VM または VMSS に追加し、[Azure Storage コンテナーまたは BLOB にマネージド ID のアクセス権を付与する必要があります](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access)。
 
 ターゲット VM/VMSS でシステムによって割り当てられた ID を使用するには、"managedidentity" フィールドを空の JSON オブジェクトに設定します。 
 

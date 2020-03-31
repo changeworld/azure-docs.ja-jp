@@ -4,10 +4,10 @@ description: Azure コンテナー レジストリの使用時の一般的な問
 ms.topic: article
 ms.date: 07/02/2019
 ms.openlocfilehash: ea4432c9e92c4a0380517e39678814e2d1cb3bfc
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74456417"
 ---
 # <a name="check-the-health-of-an-azure-container-registry"></a>Azure コンテナー レジストリの正常性のチェック
@@ -33,7 +33,7 @@ az acr check-health
 
 ### <a name="check-the-environment-and-a-target-registry"></a>環境とターゲット レジストリをチェックする
 
-レジストリへのアクセスをチェックし、ローカル環境チェックを実行するには、ターゲット レジストリの名前を渡します。 例:
+レジストリへのアクセスをチェックし、ローカル環境チェックを実行するには、ターゲット レジストリの名前を渡します。 次に例を示します。
 
 ```azurecli
 az acr check-health --name myregistry
@@ -72,7 +72,7 @@ Fetch access token for registry 'myregistry.azurecr.io' : OK
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [az acr check-health][az-acr-check-health] コマンドによって返されるエラー コードの詳細については、「[正常性チェックのエラー リファレンス](container-registry-health-error-reference.md)」をご覧ください。
 

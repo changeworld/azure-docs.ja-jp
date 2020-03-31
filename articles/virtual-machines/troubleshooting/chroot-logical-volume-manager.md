@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
 ms.openlocfilehash: 20d710f717a9dff26f46ac7a201a9b694f3fbe84
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74684127"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Azure シリアル コンソールにアクセスできず、ディスク レイアウトが LVM (論理ボリューム マネージャー) を使用している場合の Linux VM のトラブルシューティング
@@ -190,7 +190,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 
 **chroot** 環境を終了し、必要な **LV** をマウントします
 
-![詳細](./media/chroot-logical-volume-manager/advanced.png)
+![詳細設定](./media/chroot-logical-volume-manager/advanced.png)
 
 以下を実行して、**chroot** 環境にもう一度アクセスします
 
@@ -198,11 +198,11 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 
 すべての LV がマウントされたパーティションとして表示されるはずです
 
-![詳細](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
+![詳細設定](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
 
 インストールされている**カーネル**をクエリします
 
-![詳細](./media/chroot-logical-volume-manager/rpm-kernel.png)
+![詳細設定](./media/chroot-logical-volume-manager/rpm-kernel.png)
 
 必要に応じて**カーネル**を削除またはアップグレードします
 ![詳細](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)
@@ -269,7 +269,7 @@ Azure portal で、障害が発生している VM に移動し、 **[ディス�
 VM が実行中で、ディスク スワップにより VM がシャットダウンされる場合は、ディスク スワップ操作が完了してから VM を再起動します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 項目ごとに詳しい情報を確認できます。
 
  [Azure シリアル コンソール]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)

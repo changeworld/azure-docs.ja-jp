@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: mcoskun
 ms.openlocfilehash: ac6bb14517b67a4b308460583e8c9fb99a2df9f0
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75922775"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Reliable Services と Reliable Actors をバックアップおよび復元する
@@ -242,7 +242,7 @@ Reliable State Manager には、読み書き操作を中断することなく、
 
 `BackupAsync` が呼び出された後にコミットするトランザクションは、バックアップに含まれていることもあれば、含まれていないこともあります。  プラットフォームによりローカルのバックアップ フォルダーにデータが入力されると (すなわち、ローカルのバックアップがランタイムにより完了すると)、サービスのバックアップ コールバックが呼び出されます。  このコールバックは、Azure Storage などの外部の場所にバックアップ フォルダーを移動する役割を担います。
 
-### <a name="restore"></a>[復元]
+### <a name="restore"></a>復元
 Reliable State Manager には、`RestoreAsync` API を使用してバックアップから復元する機能があります。  
 `RestoreContext` での `RestoreAsync` メソッドは、`OnDataLossAsync` メソッド内のみで呼び出すことができます。
 `OnDataLossAsync` により返されるブール値は、サービスの状態が外部ソースから復元されたかどうかを示すものです。

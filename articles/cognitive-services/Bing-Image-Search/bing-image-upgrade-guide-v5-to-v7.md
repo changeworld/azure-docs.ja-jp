@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
 ms.openlocfilehash: c4c6b95996206cfb38ea3f77b89c3ebe3c2c0026
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68883504"
 ---
 # <a name="bing-image-search-api-v7-upgrade-guide"></a>Bing Image Search API v7 のアップグレード ガイド
@@ -56,7 +56,7 @@ RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
 ResourceAccessDenied|InsufficientAuthorization
 ExceededVolume|RateLimitExceeded
 ExceededQpsLimit|RateLimitExceeded
-Disabled|InsufficientAuthorization.AuthorizationDisabled
+無効|InsufficientAuthorization.AuthorizationDisabled
 UnexpectedError|ServerError.UnexpectedError
 DataSourceErrors|ServerError.ResourceError
 AuthorizationMissing|InvalidAuthorization.AuthorizationMissing
@@ -83,13 +83,13 @@ Blocked|InvalidRequest.Blocked
 
 ### <a name="image-insights-changes"></a>イメージの分析情報の変更
 
-- [ImagesInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) の `annotations` フィールドの名前が `imageTags` に変更されました。  
+- `annotations`ImagesInsights[ の ](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) フィールドの名前が `imageTags` に変更されました。  
 
 - `AnnotationModule` オブジェクトの名前が [ImageTagsModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetagsmodule) に変更されました。  
 
 - `Annotation` オブジェクトの名前が [Tag](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#tag) に変更され、`confidence` フィールドが削除されました。  
 
-- [Image](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) オブジェクトの `insightsSourcesSummary` フィールドの名前が `insightsMetadata` に変更されました。  
+- `insightsSourcesSummary`Image[ オブジェクトの ](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) フィールドの名前が `insightsMetadata` に変更されました。  
 
 - `InsightsSourcesSummary` オブジェクトの名前が [InsightsMetadata](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightsmetadata) に変更されました。  
 
@@ -126,13 +126,13 @@ Blocked|InvalidRequest.Blocked
 
     -   `recognizedEntityGroups` フィールドの型が `RecognizedEntityGroup[]` から [RecognizedEntitiesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#recognizedentitiesmodule) に変更されました。  
 
--   [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) の `categoryClassification` フィールドの名前が `annotations` に変更され、型が `AnnotationsModule` に変更されました。  
+-   `categoryClassification`ImageInsights[ の ](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) フィールドの名前が `annotations` に変更され、型が `AnnotationsModule` に変更されました。  
 
 ### <a name="images-answer"></a>イメージの応答
 
 -   [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) から displayShoppingSourcesBadges フィールドと displayRecipeSourcesBadges フィールドが削除されました。  
 
--   [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) の `nextOffsetAddCount` フィールドの名前が `nextOffset` に変更されました。 オフセットの使用方法も変更されています。 以前は、[offset](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offset) クエリ パラメーターを `nextOffsetAddCount` の値、前の offset の値、および結果内のイメージ数の合計に設定していましたが、 `offset` を `nextOffset` の値に設定するようになりました。  
+-   `nextOffsetAddCount`Images[ の ](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) フィールドの名前が `nextOffset` に変更されました。 オフセットの使用方法も変更されています。 以前は、[offset](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offset) クエリ パラメーターを `nextOffsetAddCount` の値、前の offset の値、および結果内のイメージ数の合計に設定していましたが、 `offset` を `nextOffset` の値に設定するようになりました。  
 
 
 ## <a name="non-breaking-changes"></a>非破壊的変更
@@ -149,8 +149,8 @@ Blocked|InvalidRequest.Blocked
 
 ### <a name="object-changes"></a>オブジェクトの変更
 
-- [Offer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offer) オブジェクトに `description` フィールドと `lastUpdated` フィールドが追加されました。  
+- `description`Offer`lastUpdated` オブジェクトに [ フィールドと ](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offer) フィールドが追加されました。  
 
-- [ImageGallery](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagegallery) オブジェクトに `name` フィールドが追加されました。  
+- `name`ImageGallery[ オブジェクトに ](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagegallery) フィールドが追加されました。  
 
-- [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) オブジェクトに `similarTerms` フィールドが追加されました。 このフィールドには、ユーザーのクエリ文字列と意味的に類似している用語のリストが含まれます。  
+- `similarTerms`Images[ オブジェクトに ](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) フィールドが追加されました。 このフィールドには、ユーザーのクエリ文字列と意味的に類似している用語のリストが含まれます。  
