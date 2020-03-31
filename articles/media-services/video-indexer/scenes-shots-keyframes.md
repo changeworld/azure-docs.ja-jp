@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
 ms.openlocfilehash: a833fd808049cfce95b182910e50e38d3c39f4e5
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976606"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225459"
 ---
 # <a name="scenes-shots-and-keyframes"></a>シーン、ショット、キーフレーム
 
@@ -127,6 +127,6 @@ Insights JSON 内の個々のショットに関連付けられたショット �
 * 複数の顔: 人物が 3 人以上。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [API によって生成される Video Indexer の出力の詳細](video-indexer-output-json-v2.md#scenes)

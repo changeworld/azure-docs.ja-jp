@@ -26,6 +26,8 @@
   items:
     - name: デプロイ アーキテクチャの決定
       href: deployment-architecture.md
+    - name: トラブルシューティング
+      href: troubleshoot.md
 - name: リソース
   items:
     - name: よく寄せられる質問

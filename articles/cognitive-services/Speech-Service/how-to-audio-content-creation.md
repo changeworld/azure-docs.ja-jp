@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: dapine
 ms.openlocfilehash: ab0d2b8d95b4cb5996dd93fa0bb24085c9de26d5
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78331538"
 ---
 # <a name="improve-synthesis-with-audio-content-creation"></a>Audio Content Creation を使用して合成を向上させる

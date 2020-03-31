@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/19/2020
 ms.author: victorh
 ms.openlocfilehash: b1e7dce6f652d8c9e0fcf5974c3e72be9e1e7844
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77482184"
 ---
 # <a name="azure-firewall-certifications"></a>Azure Firewall の認定資格

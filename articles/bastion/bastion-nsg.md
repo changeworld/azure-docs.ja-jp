@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: charwen
 ms.openlocfilehash: 15abee4688a2f6aefa2b08ad2b8eee6622d56be2
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77087275"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>NSG アクセスと Azure Bastion を使用する
@@ -28,7 +28,7 @@ Azure Bastion の使用時にネットワーク セキュリティ グループ 
 * 接続統合 - ブラウザー内でのシングルクリックによる RDP/SSH セッション
 * Azure VM ではパブリック IP が必要ありません。
 
-## <a name="nsg"></a>ネットワーク セキュリティ グループ
+## <a name="network-security-groups"></a><a name="nsg"></a>ネットワーク セキュリティ グループ
 
 このセクションでは、ユーザーと Azure Bastion との間のネットワーク トラフィックと、仮想ネットワーク内のターゲット VM へのネットワークトラフィックについて説明します。
 
@@ -50,7 +50,7 @@ Azure Bastion は、AzureBastionSubnet に特定してデプロイされます�
 
    * **Azure Bastion からのイグレス トラフィック:** Azure Bastion は、プライベート IP 経由でターゲット VM にリーチします。 プライベート IP 経由のターゲット VM 側で RDP/SSH ポート (それぞれポート 3389/22) が開かれている必要があります。 ベスト プラクティスとして、この規則に Azure Bastion サブネットの IP アドレス範囲を追加して、ターゲット VM サブネット内のターゲット VM で Bastion によってのみこれらのポートが開かれるよにすることができます。
 
-## <a name="apply"></a>AzureBastionSubnet への NSG の適用
+## <a name="apply-nsgs-to-azurebastionsubnet"></a><a name="apply"></a>AzureBastionSubnet への NSG の適用
 
 NSG を作成して ***AzureBastionSubnet*** に適用する場合は、NSG に次の規則を追加済みであることを確認してください。 これらのルールを追加しないと、NSG の作成/更新は失敗します。
 

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: alkohli
 ms.openlocfilehash: 72e1d3b0ad72b1e68b88eb0550cbe839ade9d929
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535181"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229791"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box と Azure Data Box Heavy の追跡とイベントのログ記録
 
@@ -24,7 +24,7 @@ Data Box または Data Box Heavy の注文は、注文、設定、データの�
 | Data Box 注文の段階       | 追跡と監査のためのツール                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
 | 注文の作成               | [RBAC を使用して注文へのアクセス制御を設定する](#set-up-access-control-on-the-order)                                                    |
-| 処理された注文            | 以下を通じて[注文を追跡する](#track-the-order) <ul><li> Azure ポータル </li><li> 運送業者の Web サイト </li><li>電子メール通知</ul> |
+| 処理された注文            | 以下を通じて[注文を追跡する](#track-the-order) <ul><li> Azure portal </li><li> 運送業者の Web サイト </li><li>メール通知</ul> |
 | デバイスを設定する              | [アクティビティ ログ](#query-activity-logs-during-setup)に記録されたデバイスの資格情報へのアクセス                                              |
 | デバイスへのデータのコピー        | データのコピー用の [*error.xml* ファイルを確認する](#view-error-log-during-data-copy)                                                             |
 | 発送の準備をする            | デバイス上のマニフェスト ファイルまたは [BOM ファイルを検査する](#inspect-bom-during-prepare-to-ship)                                      |
@@ -411,6 +411,6 @@ Audit Logs Path      : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 BOM Files Path       : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Data Box および Data Box Heavy の問題のトラブルシューティング](data-box-troubleshoot.md)方法を確認します。

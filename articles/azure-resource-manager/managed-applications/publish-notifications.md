@@ -6,10 +6,10 @@ ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
 ms.openlocfilehash: ff058d7b51bd2e5efd80db69e5928d58fc5a7725
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76715676"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>Azure Managed Applications と通知
@@ -184,7 +184,7 @@ eventTime | 通知をトリガーしたイベントのタイムスタンプ。 (
 provisioningState | マネージド アプリケーション インスタンスのプロビジョニングの状態。 (例: Succeeded、Failed、Deleting、Deleted)
 error | *provisioningState が Failed の場合にのみ指定されます*。 エラー コード、メッセージ、およびエラーの原因となった問題の詳細が含まれます。
 applicationDefinitionId | *サービス カタログ マネージド アプリケーションに対してのみ指定されます*。 マネージド アプリケーション インスタンスがプロビジョニングされたアプリケーション定義の完全修飾リソース識別子を表します。
-プラン | *Azure Marketplace マネージド アプリケーションに対してのみ指定されます*。 マネージド アプリケーション インスタンスのパブリッシャー、オファー、SKU、およびバージョンを表します。
+plan | *Azure Marketplace マネージド アプリケーションに対してのみ指定されます*。 マネージド アプリケーション インスタンスのパブリッシャー、オファー、SKU、およびバージョンを表します。
 billingDetails | *Azure Marketplace マネージド アプリケーションに対してのみ指定されます*。 マネージド アプリケーション インスタンスの課金の詳細。 Azure Marketplace で使用量の詳細を照会するために使用できる resourceUsageId が含まれます。
 
 ## <a name="endpoint-authentication"></a>エンドポイントの認証

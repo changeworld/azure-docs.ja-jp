@@ -4,14 +4,14 @@ description: Azure portal または CLI を使用して、メトリック アラ
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 02/16/2020
+ms.date: 03/13/2020
 ms.subservice: alerts
-ms.openlocfilehash: 5452f67a9da9a71a72c9387bc3e62d6735929984
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: cefccd08ea66638f08f00e280fe2704444a7f916
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664713"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79369388"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Azure Monitor を使用してメトリック アラートを作成、表示、管理する
 
@@ -136,7 +136,7 @@ Azure Monitor のメトリック アラートには、メトリックのいず�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Resource Manager テンプレートを使用してメトリック アラートを作成します](../../azure-monitor/platform/alerts-enable-template.md)。
+- [Azure Resource Manager テンプレートを使用してメトリック アラートを作成します](../../azure-monitor/platform/alerts-metric-create-templates.md)。
 - [メトリック アラートのしくみを理解します](alerts-metric-overview.md)。
 - [動的しきい値条件のメトリックのアラートのしくみを理解します](alerts-dynamic-thresholds.md)。
 - [メトリック アラートの Web hook スキーマを理解します](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)

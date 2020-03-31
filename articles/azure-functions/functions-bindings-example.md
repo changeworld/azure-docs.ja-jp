@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: 8685c0fe02ad6c68918736e857c2015e2bfb4595
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74227243"
 ---
 # <a name="azure-functions-trigger-and-binding-example"></a>Azure Functions のトリガーとバインドの例
@@ -132,7 +132,7 @@ public class Person
 
 これで、Azure Queue によってトリガーされ、データを Azure Table Storage に出力する実用的な関数が完成しました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Functions のバインド式のパターン](./functions-bindings-expressions-patterns.md)

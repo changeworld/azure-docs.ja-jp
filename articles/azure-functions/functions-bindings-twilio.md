@@ -7,10 +7,10 @@ ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1426d6e770cca566c4b77ca4742e2f8a0fbb5465
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76715061"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Azure Functions の Twilio バインド
@@ -35,7 +35,7 @@ Twilio バインディングは [Microsoft.Azure.WebJobs.Extensions.Twilio](http
 
 ## <a name="example---functions-2x-and-higher"></a>例 - Functions 2.x 以降
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 次の例は、キュー メッセージによってトリガーされたときにテキスト メッセージを送信する [C# 関数](functions-dotnet-class-library.md)を示しています。
 
@@ -70,7 +70,7 @@ namespace TwilioQueueOutput
 
 この例では、メソッドの戻り値で `TwilioSms` 属性を使用します。 代わりに、`out CreateMessageOptions` パラメーターまたは `ICollector<CreateMessageOptions>` または `IAsyncCollector<CreateMessageOptions>` パラメーターを持つ属性を使用することができます。
 
-# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
+# <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
 次の例は、*function.json* ファイルの Twilio 出力バインドと、そのバインドを使用する [C# スクリプト関数](functions-reference-csharp.md)を示しています。 関数は、`out`パラメーターを使用してテキスト メッセージを送信します。
 
@@ -156,7 +156,7 @@ public static async Task Run(string myQueueItem, IAsyncCollector<CreateMessageOp
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 次の例は、*function.json* ファイルの Twilio 出力バインドと、バインドを使用する [JavaScript 関数](functions-reference-node.md)を示しています。
 
@@ -201,7 +201,7 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 次の例では、次の *function.js* で定義されているように、出力バインドを使用して SMS メッセージを送信する方法を示します。
 
@@ -239,7 +239,7 @@ def main(req: func.HttpRequest, twilioMessage: func.Out[str]) -> func.HttpRespon
     return func.HttpResponse(f"Message sent")
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 次の例では、[TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) 注釈を使用して SMS メッセージを送信する方法を示します。 `to`、`from`、および `body` の値は、プログラムによってオーバーライドされた場合でも、属性定義に必要です。
 
@@ -287,7 +287,7 @@ public class TwilioOutput {
 
 ## <a name="attributes-and-annotations"></a>属性と注釈
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [C# クラス ライブラリ](functions-dotnet-class-library.md)では、[TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) 属性を使用します。
 
@@ -305,21 +305,21 @@ public static CreateMessageOptions Run(
 
 完全な例については、「[C# の例](#example)」を参照してください。
 
-# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
+# <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
 属性は、C# スクリプトではサポートされていません。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 属性は、JavaScript ではサポートされていません。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 属性は、Python ではサポートされていません。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-`T` が `int`、`String`、`byte[]`、POJO 型などのネイティブ Java 型である場合は、[`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.outputbinding)パラメーターに [TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) 注釈を配置します。
+[ が ](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput)、[、`OutputBinding<T>`、POJO 型などのネイティブ Java 型である場合は、](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.outputbinding)`T``int`パラメーターに `String`TwilioSmsOutput`byte[]` 注釈を配置します。
 
 ---
 

@@ -11,10 +11,10 @@ ms.date: 08/31/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 00938d831e70289b24acb599b81016aa6e564d78
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78186932"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Azure AD B2C を使用して Azure API Management API をセキュリティで保護する
@@ -160,7 +160,7 @@ API を呼び出すには、Azure AD B2C によって発行されたアクセス
 
 1. さらに、次のヘッダーを追加します。
 
-    | Key | Value |
+    | Key | 値 |
     | --- | ----- |
     | `Authorization` | 先ほど記録したエンコード済みトークン値。先頭に `Bearer ` を付けます ("Bearer" の後にスペースを含めます) |
     | `Ocp-Apim-Subscription-Key` | 先ほど記録した APIM サブスクリプション キー |

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.openlocfilehash: a834c68119340d796f87971912a07fc0524a6d21
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718615"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218857"
 ---
 # <a name="language-support-for-computer-vision"></a>Computer Vision の言語サポート
 
@@ -32,29 +32,29 @@ OCR は入力素材の言語を自動的に検出するため、API 呼び出し
 |アラビア語 | `ar`|✔ |
 |簡体中国語 | `zh-Hans`|✔ |
 |繁体中国語 | `zh-Hant`|✔ |
-|チェコ語 | `cs` |✔ |
-|デンマーク語 | `da` |✔ |
-|オランダ語 | `nl` |✔ |
-|英語 | `en` |✔ |
-|フィンランド語 | `fi` |✔ |
-|フランス語 | `fr` |✔ |
-|ドイツ語 | `de` |✔ |
-|ギリシャ語 | `el` |✔ |
-|ハンガリー語 | `hu` |✔ |
-|イタリア語 | `it` |✔ |
-|日本語 | `ja` |✔ |
-|韓国語 | `ko` |✔ |
+|Czech | `cs` |✔ |
+|Danish | `da` |✔ |
+|Dutch | `nl` |✔ |
+|English | `en` |✔ |
+|Finnish | `fi` |✔ |
+|French | `fr` |✔ |
+|German | `de` |✔ |
+|Greek | `el` |✔ |
+|Hungarian | `hu` |✔ |
+|Italian | `it` |✔ |
+|Japanese | `ja` |✔ |
+|Korean | `ko` |✔ |
 |ノルウェー語 | `nb` |✔ |
-|ポーランド語 | `pl` |✔ |
-|ポルトガル語 | `pt` |✔ |
-|ルーマニア語 | `ro` |✔ |
-|ロシア語 | `ru` |✔ |
-|セルビア語 (キリル文字) | `sr-Cyrl` |✔ |
+|Polish | `pl` |✔ |
+|Portuguese | `pt` |✔ |
+|Romanian | `ro` |✔ |
+|Russian | `ru` |✔ |
+|セルビア語 (キリル) | `sr-Cyrl` |✔ |
 |セルビア語 (ラテン) | `sr-Latn` |✔ |
-|スロバキア語 | `sk` |✔ |
-|スペイン語 | `es` |✔ |
-|スウェーデン語 | `sw` |✔ |
-|トルコ語 | `tr` |✔ |
+|Slovak | `sk` |✔ |
+|Spanish | `es` |✔ |
+|Swedish | `sw` |✔ |
+|Turkish | `tr` |✔ |
 
 ## <a name="image-analysis"></a>画像分析
 
@@ -63,12 +63,12 @@ OCR は入力素材の言語を自動的に検出するため、API 呼び出し
 |言語 | 言語コード | Categories | Tags | 説明 | 成人向けコンテンツ | ブランド | Color | 顔 | ImageType | Objects | 有名人 | ランドマーク |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |中国語 | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
-|英語 | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|
-|日本語 | `ja`   | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
-|ポルトガル語 | `pt` | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
-|スペイン語 | `es`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
+|English | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|
+|Japanese | `ja`   | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
+|Portuguese | `pt` | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
+|Spanish | `es`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このガイドで説明されている Computer Vision 機能を使ってみます。
 

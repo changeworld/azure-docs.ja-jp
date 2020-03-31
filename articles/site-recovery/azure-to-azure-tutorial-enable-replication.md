@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 1/24/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 979b390f65363b43f33ce2f09d26844c3cc1a2e8
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: c5d2bbe920f87421550fadf30a7e7e9d23931bfd
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759791"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80292480"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Azure VM のディザスター リカバリーを設定する
 
@@ -66,7 +66,7 @@ Site Recovery が期待どおりに動作するには、レプリケートする
 
 アウトバウンド接続を制御するために URL ベースのファイアウォール プロキシを使用している場合、以下の URL へのアクセスを許可してください。
 
-| **[URL]** | **詳細** |
+| **URL** | **詳細** |
 | ------- | ----------- |
 | `*.blob.core.windows.net` | ソース リージョンのキャッシュ ストレージ アカウントに、VM からデータが書き込まれるよう許可します。 |
 | `login.microsoftonline.com` | Site Recovery サービス URL に対する承認と認証を提供します。 |
@@ -75,7 +75,7 @@ Site Recovery が期待どおりに動作するには、レプリケートする
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP アドレス範囲に対する送信接続
 
-ネットワーク セキュリティ グループ (NSG) を使用している場合、Azure Storage、Azure Active Directory、Site Recovery サービス、Site Recovery 監視を利用するための、サービスタグ ベースの NSG ルールを作成します。 [詳細については、こちらを参照してください](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)。
+ネットワーク セキュリティ グループ (NSG) を使用している場合、Azure Storage、Azure Active Directory、Site Recovery サービス、Site Recovery 監視を利用するための、サービスタグ ベースの NSG ルールを作成します。 [詳細については、こちらを参照してください](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)。
 
 ## <a name="verify-azure-vm-certificates"></a>Azure VM の証明書の確認
 

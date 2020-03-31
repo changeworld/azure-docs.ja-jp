@@ -5,11 +5,11 @@ ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.openlocfilehash: cc1e100a0c2e652ab081869409fd24dbf88017a3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230897"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235023"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions の継続的なデプロイ
 
@@ -32,7 +32,7 @@ Azure の関数のデプロイの単位は関数アプリです。 関数アプ�
 >[!NOTE]  
 > 継続的なデプロイは、従量課金プランで実行されている Linux アプリではまだサポートされていません。 
 
-## <a name="credentials"></a>継続的なデプロイを設定する
+## <a name="set-up-continuous-deployment"></a><a name="credentials"></a>継続的なデプロイを設定する
 
 既存の関数アプリの継続的なデプロイを構成するには、次の手順を実行します。 この手順は GitHub リポジトリとの統合を示しますが、Azure Repos またはその他のソース コード リポジトリに対しても同様の手順が適用されます。
 
@@ -80,7 +80,7 @@ Azure の関数のデプロイの単位は関数アプリです。 関数アプ�
 > [!NOTE]
 > 継続的インテグレーションを構成した後は、Functions のポータルでソース ファイルを編集することはできなくなります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Functions のベスト プラクティス](functions-best-practices.md)

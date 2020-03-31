@@ -3,12 +3,12 @@ title: ファイルとフォルダーのバックアップに関する一般的�
 description: Azure Backup を使用したファイルとフォルダーのバックアップに関する一般的な質問に対応します。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 7b80932d49038bb42fa93f71b3ac0194c2869489
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: adcbf5c3b404de46634423f8f59c4798d44bebe0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425070"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233915"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>ファイルとフォルダーのバックアップに関する一般的な質問
 
@@ -98,7 +98,7 @@ MARS エージェントは NTFS に依存しており、ファイルの名前/�
 1. 既定では、スクラッチ フォルダーは `\Program Files\Microsoft Azure Recovery Services Agent\Scratch` にあります。
 2. スクラッチ フォルダーの場所のパスが、次に示すレジストリ キー エントリの値と一致していることを確認します。
 
-    | レジストリ パス | レジストリ キー | Value |
+    | レジストリ パス | レジストリ キー | 値 |
     | --- | --- | --- |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*新しいキャッシュ フォルダーの場所* |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*新しいキャッシュ フォルダーの場所* |
@@ -113,7 +113,7 @@ MARS エージェントは NTFS に依存しており、ファイルの名前/�
 4. 十分な容量がある別のドライブに `\Scratch`フォルダー全体をコピーします。 コンテンツがコピーされ、移動されていないことを確認します。
 5. 新しく移動されたスクラッチ フォルダーのパスを使って、次のレジストリ エントリを更新します。
 
-    | レジストリ パス | レジストリ キー | Value |
+    | レジストリ パス | レジストリ キー | 値 |
     | --- | --- | --- |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*新しいスクラッチ フォルダーの場所* |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*新しいスクラッチ フォルダーの場所* |
@@ -149,9 +149,9 @@ MARS エージェントは NTFS に依存しており、ファイルの名前/�
 
 ### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>バックアップに使用される帯域幅の量を調整する方法はありますか。
 
-はい。帯域幅とタイミングを調整するには、MARS エージェントにある **[プロパティの変更]** オプションを使用できます。 [詳細については、こちらを参照してください](backup-configure-vault.md#enable-network-throttling)。
+はい。帯域幅とタイミングを調整するには、MARS エージェントにある **[プロパティの変更]** オプションを使用できます。 [詳細については、こちらを参照してください](backup-windows-with-mars-agent.md#enable-network-throttling)。
 
-## <a name="restore"></a>[復元]
+## <a name="restore"></a>復元
 
 ### <a name="manage"></a>管理する
 

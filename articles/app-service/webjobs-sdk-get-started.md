@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
 ms.openlocfilehash: bfbae282f9c383c19aae84a70dfc53f754bd9367
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77592613"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理で Azure WebJobs SDK の使用を開始する
@@ -195,7 +195,7 @@ ASP.NET Core では、ホストの構成は [`HostBuilder`](/dotnet/api/microsof
 
 1. App Service アプリを作成したのと同じ**リージョン**または近くのリージョンを選択します。
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
    ![ストレージ アカウントの作成](./media/webjobs-sdk-get-started/create-storage-account.png)
 
@@ -326,7 +326,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 1. **[アプリケーション設定]** ボックスに Application Insights インストルメンテーション キーがない場合は、先ほどコピーしたキーを追加します (App Service アプリを作成する方法によっては、インストルメンテーション キーが既にある場合があります)。
 
-   |名前  |Value  |
+   |名前  |値  |
    |---------|---------|
    |APPINSIGHTS_INSTRUMENTATIONKEY | {instrumentation key} |
 
@@ -421,7 +421,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 1. コンソール ウィンドウを閉じます。
 
-## <a name="deploy-as-a-webjob"></a>Azure にデプロイする
+## <a name="deploy-to-azure"></a><a name="deploy-as-a-webjob"></a>Azure にデプロイする
 
 デプロイ中、関数を実行するアプリ サービス インスタンスを作成します。 .NET Core コンソール アプリを Azure で App Service に発行すると、Web ジョブとして自動的に実行されます。 発行に関する詳細については、「[Visual Studio を使用して Web ジョブを開発してデプロイする](webjobs-dotnet-deploy-vs.md)」を参照してください。
 

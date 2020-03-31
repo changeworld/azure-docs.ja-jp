@@ -1,5 +1,5 @@
 ---
-title: カスタム音声を作成する - Speech サービス
+title: Custom Voice を作成する - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: 実際のデータをアップロードする準備ができたら、Custom Voice ポータルに移動します。 Custom Voice プロジェクトを作成するか、選択します。 このプロジェクトでは、実際の音声トレーニングに使用するデータとして適切な言語/ロケールと性別プロパティを共有する必要があります。
 services: cognitive-services
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
 ms.openlocfilehash: bbe1d651a7d2d2cac1b1aa78b815b2797ad185c5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76717318"
 ---
-# <a name="create-a-custom-voice"></a>カスタム音声を作成する
+# <a name="create-a-custom-voice"></a>Custom Voice を作成する
 
-[カスタム音声用のデータの準備](how-to-custom-voice-prepare-data.md)に関するページでは、カスタム音声のトレーニングに使用できるさまざまなデータの種類と、さまざまな形式の要件について説明しました。 実際のデータが準備できたら、[Custom Voice ポータル](https://aka.ms/custom-voice-portal)に、または Custom Vision Training API を使用して、そのデータのアップロードを開始できます。 ここでは、ポータルを使用したカスタム音声のトレーニング手順を説明します。
+[Custom Voice 用のデータの準備](how-to-custom-voice-prepare-data.md)に関するページでは、カスタム音声のトレーニングに使用できるさまざまなデータの種類と、さまざまな形式の要件について説明しました。 実際のデータが準備できたら、[Custom Voice ポータル](https://aka.ms/custom-voice-portal)に、または Custom Vision Training API を使用して、そのデータのアップロードを開始できます。 ここでは、ポータルを使用したカスタム音声のトレーニング手順を説明します。
 
 > [!NOTE]
 > このページでは、「[Custom Voice の概要](how-to-custom-voice.md)」と[カスタム音声用のデータの準備](how-to-custom-voice-prepare-data.md)に関するページを読み、Custom Voice プロジェクトを作成していることを前提としています。
@@ -32,7 +32,7 @@ ms.locfileid: "76717318"
 
 **[データ]** タブに移動し、 **[データのアップロード]** をクリックします。 ウィザードで、準備したものと一致する正しいデータの種類を選択します。
 
-アップロードする各データセットでは、選択したデータの種類の要件が満たされている必要があります。 アップロードする前に、データを正しく書式設定することが重要です。 これにより、データが Custom Voice サービスによって確実に処理されます。 [カスタム音声用のデータの準備](how-to-custom-voice-prepare-data.md)に関するページに移動し、実際のデータが正しく書式設定されていることを確認します。
+アップロードする各データセットでは、選択したデータの種類の要件が満たされている必要があります。 アップロードする前に、データを正しく書式設定することが重要です。 これにより、データが Custom Voice サービスによって確実に処理されます。 [Custom Voice 用のデータの準備](how-to-custom-voice-prepare-data.md)に関するページに移動し、実際のデータが正しく書式設定されていることを確認します。
 
 > [!NOTE]
 > Free サブスクリプション (F0) ユーザーは、2 個のデータセットを同時にアップロードできます。 Standard サブスクリプション (S0) ユーザーは、5 個のデータセットを同時にアップロードできます。 制限に達した場合は、少なくとも 1 つのデータセットのインポートが終わるまで待機します。 その後、やり直してください。

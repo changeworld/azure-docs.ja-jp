@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.openlocfilehash: 11e68aaa7c70d4f888c0009bc28d9bb90f431f3b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75354455"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>統合と開発に Azure Stream Analytics CI/CD NuGet パッケージを使用する 
@@ -92,6 +92,6 @@ arm -JobTemplate <templateFilePath> -JobParameterFile <jobParameterFilePath> [-O
 
 ## <a name="next-steps"></a>次のステップ
 
-* [クイック スタート:Visual Studio で Azure Stream Analytics クラウド ジョブを作成する](stream-analytics-quick-create-vs.md)
+* [クイック スタート: Visual Studio で Azure Stream Analytics クラウド ジョブを作成する](stream-analytics-quick-create-vs.md)
 * [Visual Studio で Stream Analytics クエリをローカルでテストする](stream-analytics-vs-tools-local-run.md)
 * [Visual Studio で使用する Azure Stream Analytics ジョブの詳細](stream-analytics-vs-tools.md)

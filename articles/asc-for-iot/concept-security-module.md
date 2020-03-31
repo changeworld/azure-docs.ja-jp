@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/24/2019
 ms.author: mlottner
 ms.openlocfilehash: ab3b6e740e644a1ed1495eb776045888be448047
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68596497"
 ---
 # <a name="security-module"></a>セキュリティ モジュール
@@ -44,7 +44,7 @@ Azure Security Center for IoT は、サービス内の各デバイスのセキ�
 ツインの作成、カスタマイズ、および構成方法の詳細については、[セキュリティ モジュール ツインの作成](quickstart-create-security-twin.md)および[セキュリティ エージェントの構成](how-to-agent-configuration.md)に関するページを参照してください。 IoT Hub でのモジュール ツインの概念の詳細については、[モジュール ツインの理解](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins)に関するページを参照してください。 
  
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 - [Azure Security Center for IoT の概要](overview.md)
 - [セキュリティ エージェントをデプロイする](how-to-deploy-agent.md)
 - [セキュリティ エージェントの認証方法](concept-security-agent-authentication-methods.md)
