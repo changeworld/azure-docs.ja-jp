@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 99ec639b88f3334530243242aadfa0ab52a40df0
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74113153"
 ---
 # <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>Azure Cognitive Search での OData $orderby 構文
@@ -56,9 +56,9 @@ sortable_function ::= geo_distance_call | 'search.score()'
 
 複数の並べ替え基準を指定できます。 式の順序によって最終的な並べ替え順序が決められます。 たとえば、スコア別に降順で並べ替えた後、評価で並べ替える場合、構文は `$orderby=search.score() desc,Rating desc` のようになります。
 
-**$orderby** の `geo.distance` の構文は **$filter** の場合と同じになります。 **$orderby** で `geo.distance` を使用するとき、それが適用されるフィールドは `Edm.GeographyPoint` 型にする必要があり、また `sortable` である必要があります。
+`geo.distance`$orderby**の** の構文は **$filter** の場合と同じになります。 `geo.distance`$orderby**で** を使用するとき、それが適用されるフィールドは `Edm.GeographyPoint` 型にする必要があり、また `sortable` である必要があります。
 
-**$orderby** の `search.score` の構文は `search.score()` です。 関数 `search.score` には、いかなるパラメーターも取得されません。
+`search.score`$orderby**の** の構文は `search.score()` です。 関数 `search.score` には、いかなるパラメーターも取得されません。
 
 ## <a name="examples"></a>例
 
@@ -78,7 +78,7 @@ search.score と評価に基づいて降順でホテルを並べ替え、その�
 
     $orderby=search.score() desc,Rating desc,geo.distance(Location, geography'POINT(-122.131577 47.678581)') asc
 
-## <a name="next-steps"></a>次の手順  
+## <a name="next-steps"></a>次のステップ  
 
 - [Azure Cognitive Search での検索結果の操作方法](search-pagination-page-layout.md)
 - [Azure Cognitive Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)

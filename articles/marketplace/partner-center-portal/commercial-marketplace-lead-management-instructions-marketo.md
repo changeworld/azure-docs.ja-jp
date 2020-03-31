@@ -1,19 +1,18 @@
 ---
 title: Marketo でリード管理を構成する | Azure Marketplace
 description: Azure Marketplace のお客様向けに Marketo でリード管理を構成します。
-services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.author: evansma
-ms.openlocfilehash: 8d13e8c3aeabf6d3fdea80ffddbae47b80adc139
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 35d57d117f6308863965ffd789c0e28bedd0f301
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812132"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281512"
 ---
 # <a name="configure-lead-management-in-marketo"></a>Marketo でリード管理を構成する
 

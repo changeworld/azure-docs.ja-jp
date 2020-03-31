@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bd538529756270053351e4c2d85f5761b198eeff
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 62a283efb93987d3c4a6564c9b25d2031c269559
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78187884"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80051461"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Twitter アカウントでのサインアップおよびサインインを設定する
 
@@ -27,7 +27,7 @@ Azure AD B2C で ID プロバイダーとして Twitter を使用するには、
 1. Twitter アカウント資格情報を使用して [Twitter Developers](https://developer.twitter.com/en/apps) Web サイトにサインインします。
 1. **[アプリの作成]** を選択します。
 1. **アプリ名**と**アプリケーションの説明**を入力します。
-1. **Web サイトの URL** で、`https://your-tenant.b2clogin.com`を入力します。 `your-tenant` をテナントの名前に置き換えます。 たとえば、「 https://contosob2c.b2clogin.com 」のように入力します。
+1. **Web サイトの URL** で、`https://your-tenant.b2clogin.com`を入力します。 `your-tenant` をテナントの名前に置き換えます。 たとえば、「 `https://contosob2c.b2clogin.com` 」のように入力します。
 1. **[Callback URL]** に「`https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp`」と入力します。 `your-tenant` を自分のテナント名に置き換え、`your-user-flow-Id` を自分のユーザー フローの識別子に置き換えます。 たとえば、「 `b2c_1A_signup_signin_twitter` 」のように入力します。 テナント名とユーザー フロー ID が Azure AD B2C に大文字で定義されている場合でも、それらを入力するときに、すべて小文字を使用する必要があります。
 1. ページ下部の使用条件を確認して同意し、 **[作成]** を選択します。
 1. **[アプリの詳細]** ページで、 **[編集 > 詳細の編集]** を選択して、 **[Twitter でサインインを有効にする]** のチェック ボックスにチェックを入れ、 **[保存]** を選択します。

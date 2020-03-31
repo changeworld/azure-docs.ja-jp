@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: c2367fc58530675783277c2edc4d62efd55a1da8
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 683b89b29265159b0316d427a7ae616bf3766f7c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74771882"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79529019"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Azure portal を使用して Azure Database for MariaDB のメトリックのアラートを設定する
 
@@ -84,6 +84,6 @@ ms.locfileid: "74771882"
 * アラートを**無効**にしてアラートを一時的に停止する、または**有効**にして通知の受け取りを再開する。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [アラートでの webhook の構成](../monitoring-and-diagnostics/insights-webhooks-alerts.md)に関する詳細情報を確認します。
 * [メトリック収集の概要](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) 情報を入手して、サービスの可用性と応答性を確認します。

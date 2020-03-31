@@ -9,10 +9,10 @@ ms.date: 01/10/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: dac17da4aa3d3d73ccbbc101cba4326a17fec9b1
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79127774"
 ---
 # <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して管理ツールをデプロイする

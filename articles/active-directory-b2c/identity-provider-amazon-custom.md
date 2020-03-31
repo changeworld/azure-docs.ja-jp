@@ -12,10 +12,10 @@ ms.date: 10/05/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 2de891ee109677f92ff603759701f7732f5951ba
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78188513"
 ---
 # <a name="set-up-sign-in-with-an-amazon-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して Amazon アカウントでのサインインを設定する
@@ -38,14 +38,14 @@ Amazon アカウントのユーザーがサインインできるようにする�
 3. **[Register new application (新しいアプリケーションの登録)]** を選択します。
 4. **[Name (名前)]** 、 **[Description (説明)]** 、および **[Privacy Notice URL (プライバシーに関する声明の URL)]** を入力して、 **[Save (保存)]** をクリックします。 プライバシーに関する声明は、プライバシー情報をユーザーに提供するページです。
 5. **[Web Settings (Web 設定)]** セクションで、 **[Client ID (クライアント ID)]** の値をコピーします。 **[Show Secret (シークレットの表示)]** を選択して、クライアント シークレットを取得しコピーします。 テナントで ID プロバイダーとして Amazon アカウントを構成するには、この両方が必要です。 **[Client Secret]** は、重要なセキュリティ資格情報です。
-6. **[Web Settings (Web 設定)]** セクションで、 **[Edit (編集)]** を選択し、 **[Allowed JavaScript Origins (許可される JavaScript の配信元)]** で「`https://your-tenant-name.b2clogin.com`」を入力し、 **[Allowed Return URLs (許可されるリターン URL)]** で「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」を入力します。 `your-tenant-name` をテナントの名前に置き換えます。 テナントが Azure AD B2C に大文字で定義されている場合でも、テナント名を入力するときに、すべての小文字を使用します。
+6. **[Web Settings (Web 設定)]** セクションで、 **[Edit (編集)]** を選択し、`https://your-tenant-name.b2clogin.com`[Allowed JavaScript Origins (許可される JavaScript の配信元)] **で「** 」を入力し、`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`[Allowed Return URLs (許可されるリターン URL)] **で「** 」を入力します。 `your-tenant-name` をテナントの名前に置き換えます。 テナントが Azure AD B2C に大文字で定義されている場合でも、テナント名を入力するときに、すべての小文字を使用します。
 7. **[保存]** をクリックします。
 
 ## <a name="create-a-policy-key"></a>ポリシー キーを作成する
 
 Azure AD B2C テナントで前に記録したクライアント シークレットを格納する必要があります。
 
-1. [Azure portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 2. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
 3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 4. [概要] ページで、 **[Identity Experience Framework]** を選択します。
@@ -122,7 +122,7 @@ Amazon アカウントをクレーム プロバイダーとして定義するに
 この時点では、ID プロバイダーはセットアップされていますが、サインアップ/サインイン画面で使用することはできません。 これを使用できるようにするには、既存のテンプレート ユーザー体験の複製を作成してから、それを Amazon ID プロバイダーも含まれるように変更します。
 
 1. スターター パックから *TrustFrameworkBase.xml* ファイルを開きます。
-2. `Id="SignUpOrSignIn"` を含む **UserJourney** 要素を見つけ、その内容全体をコピーします。
+2. **を含む**UserJourney`Id="SignUpOrSignIn"` 要素を見つけ、その内容全体をコピーします。
 3. *TrustFrameworkExtensions.xml* を開き、**UserJourneys** 要素を見つけます。 要素が存在しない場合は追加します。
 4. コピーした **UserJourney** 要素の内容全体を **UserJourneys** 要素の子として貼り付けます。
 5. ユーザー体験の ID の名前を変更します。 たとえば、「 `SignUpSignInAmazon` 」のように入力します。
@@ -131,7 +131,7 @@ Amazon アカウントをクレーム プロバイダーとして定義するに
 
 **ClaimsProviderSelection** 要素は、サインアップおよびサインイン画面の ID プロバイダー ボタンに類似しています。 Amazon アカウントのために **ClaimsProviderSelection** 要素を追加すると、ユーザーがこのページにアクセスしたときに新しいボタンが表示されます。
 
-1. 作成したユーザー体験内で、`Order="1"` を含む **OrchestrationStep** 要素を見つけます。
+1. 作成したユーザー体験内で、**を含む**OrchestrationStep`Order="1"` 要素を見つけます。
 2. **ClaimsProviderSelects** の下に、次の要素を追加します。 **TargetClaimsExchangeId** の値を適切な値 (`AmazonExchange` など) に設定します。
 
     ```XML
@@ -142,7 +142,7 @@ Amazon アカウントをクレーム プロバイダーとして定義するに
 
 ボタンが所定の位置に配置されたので、ボタンをアクションにリンクする必要があります。 この場合のアクションは、Azure AD B2C がトークンを受信するために Amazon アカウントと通信することです。
 
-1. ユーザー体験内で、`Order="2"` を含む **OrchestrationStep** を見つけます。
+1. ユーザー体験内で、**を含む**OrchestrationStep`Order="2"` を見つけます。
 2. 次の **ClaimsExchange** 要素を追加します。ID には、**TargetClaimsExchangeId** に使用したのと同じ値を使用するようにしてください。
 
     ```XML

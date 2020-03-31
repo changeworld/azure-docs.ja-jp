@@ -11,10 +11,10 @@ ms.date: 01/29/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: dfb34085181e0b759d1d77485ff21b5bc59e0de3
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78189771"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
@@ -49,9 +49,9 @@ ms.locfileid: "78189771"
 
 **ClaimsProvider** 要素には、以下の要素が含まれています。
 
-| 要素 | 発生回数 | Description |
+| 要素 | 発生回数 | 説明 |
 | ------- | ---------- | ----------- |
-| Domain | 0:1 | クレーム プロバイダーのドメイン名を含む文字列。 たとえば、クレーム プロバイダーが Facebook 技術プロファイルを含めている場合、ドメイン名は Facebook.com です。 このドメイン名は、技術プロファイルによってオーバーライドされない限り、クレーム プロバイダーで定義されているすべての技術プロファイルに使用されます。 ドメイン名も **domain_hint** で参照されます。 詳細については、「[Azure Active Directory B2C を使用した直接サインインの設定](direct-signin.md)」の「**サインインをソーシャル プロバイダーにリダイレクトする**」セクションを参照してください。 |
+| Domain | 0:1 | クレーム プロバイダーのドメイン名を含む文字列。 たとえば、クレーム プロバイダーが Facebook 技術プロファイルを含めている場合、ドメイン名は Facebook.com です。 このドメイン名は、技術プロファイルによってオーバーライドされない限り、クレーム プロバイダーで定義されているすべての技術プロファイルに使用されます。 ドメイン名も **domain_hint** で参照されます。 詳細については、「**Azure Active Directory B2C を使用した直接サインインの設定**」の「[サインインをソーシャル プロバイダーにリダイレクトする](direct-signin.md)」セクションを参照してください。 |
 | DisplayName | 1:1 | クレーム プロバイダーの名前を含む文字列。 |
 | [TechnicalProfiles](technicalprofiles.md) | 0:1 | クレーム プロバイダーによってサポートされている技術プロファイルのセット |
 

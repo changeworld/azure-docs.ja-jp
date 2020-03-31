@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/16/2019
 ms.openlocfilehash: efcc45dcf3565b70305323701810c49c4a720394
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930404"
 ---
 # <a name="exists-transformation-in-mapping-data-flow"></a>マッピング データ フローの存在変換
@@ -55,9 +55,9 @@ ms.locfileid: "74930404"
 
 ### <a name="example"></a>例
 
-以下の例は、左側ストリーム `NameNorm2` と右側ストリーム `TypeConversions` を取る `checkForChanges` という名前の存在変換です。  存在条件の式は `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region` です。この式では、各ストリームで `EMPID` 列と `Region` 列の両方が一致する場合に true が返されます。 存在を確認している間、`negate` は false になります。 最適化タブでブロードキャストを有効にしていないので、`broadcast` の値は `'none'` になります。
+以下の例は、左側ストリーム `checkForChanges` と右側ストリーム `NameNorm2` を取る `TypeConversions` という名前の存在変換です。  存在条件の式は `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region` です。この式では、各ストリームで `EMPID` 列と `Region` 列の両方が一致する場合に true が返されます。 存在を確認している間、`negate` は false になります。 最適化タブでブロードキャストを有効にしていないので、`broadcast` の値は `'none'` になります。
 
-Data Factory UX でのこの変換は次の図のようになります。
+Data Factory UX では、この変換は次の図のようになります。
 
 ![存在の例](media/data-flow/exists-script.png "存在の例")
 
@@ -72,6 +72,6 @@ NameNorm2, TypeConversions
     ) ~> checkForChanges
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 同様の変換として、[参照](data-flow-lookup.md)と[結合](data-flow-join.md)があります。

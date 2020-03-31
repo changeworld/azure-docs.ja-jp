@@ -10,10 +10,10 @@ ms.author: bwren
 ms.custom: subject-monitoring
 ms.subservice: logs
 ms.openlocfilehash: d243224192b5761af45d387690f5fb41b84481e6
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588724"
 ---
 # <a name="azure-cosmos-db-monitoring-data-reference"></a>Azure Cosmos DB 監視データのリファレンス
@@ -21,7 +21,7 @@ ms.locfileid: "77588724"
 
 
 ## <a name="resource-logs"></a>リソース ログ
-次の表に、Azure Monitor ログまたは Azure Storage で Azure Cosmos DB リソース ログが収集される場合のそれらのプロパティを示します。 Azure Monitor ログでは、**ResourceProvider** 値が *MICROSOFT.DOCUMENTDB* の **AzureDiagnostics** テーブルで収集されます。 
+次の表に、Azure Monitor ログまたは Azure Storage で Azure Cosmos DB リソース ログが収集される場合のそれらのプロパティを示します。 Azure Monitor ログでは、**ResourceProvider** 値が **MICROSOFT.DOCUMENTDB** の *AzureDiagnostics* テーブルで収集されます。 
 
 | Azure Storage のフィールドまたはプロパティ | Azure Monitor ログのプロパティ | 説明 |
 | --- | --- | --- |
@@ -29,7 +29,7 @@ ms.locfileid: "77588724"
 | **resourceId** | **リソース** | ログが有効になっている Azure Cosmos DB アカウント。|
 | **category** | **カテゴリ** | Azure Cosmos DB ログの場合、利用できるログの種類には **DataPlaneRequests**、**MongoRequests**、**QueryRuntimeStatistics**、**PartitionKeyStatistics**、**PartitionKeyRUConsumption**、**ControlPlaneRequests** があります。 |
 | **operationName** | **OperationName** | 操作の名前。 この値は、Create、Update、Read、ReadFeed、Delete、Replace、Execute、SqlQuery、Query、JSQuery、Head、HeadFeed、または Upsert 操作のいずれかです。   |
-| **properties** | 300 | このフィールドの内容については、以下の行を参照してください。 |
+| **properties** | 該当なし | このフィールドの内容については、以下の行を参照してください。 |
 | **activityId** | **activityId_g** | ログに記録された操作の一意の GUID。 |
 | **userAgent** | **userAgent_s** | 要求を実行するクライアント ユーザー エージェントを示す文字列。 {ユーザー エージェント名}/{バージョン} という形式です。|
 | **requestResourceType** | **requestResourceType_s** | アクセスされたリソースの種類。 この値は、リソースの種類 Database、Container、Document、Attachment、User、Permission、StoredProcedure、Trigger、UserDefinedFunction、または Offer のいずれかです。 |

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 09/25/2019
 ms.author: mlottner
 ms.openlocfilehash: 4440fec98d1f561da6375bcaadba4282076cc53b
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71299472"
 ---
 # <a name="azure-security-center-for-iot-prerequisites"></a>Azure Security Center for IoT の前提条件
@@ -84,7 +84,7 @@ Azure Security Center for IoT では、ヨーロッパの全リージョンか�
 
 Azure Security Center for IoT エージェントは、増え続けているデバイスとプラットフォームをサポートしています。 [サポートされているプラットフォームの一覧](how-to-deploy-agent.md)を参照して、既存または予定しているデバイス ライブラリを確認してください。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Azure IoT セキュリティの[概要](overview.md)を読む
 - [このサービスを有効にする](quickstart-onboard-iot-hub.md)方法を学習する
 - [Azure Security Center for IoT の FAQ](resources-frequently-asked-questions.md) を読む

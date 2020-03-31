@@ -9,10 +9,10 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: dineshm
 ms.openlocfilehash: 0f9e80aff20c1b2663491f6d6ceb99aaec58230f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74269448"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>C++ での Azure Storage のリソース一覧の取得
@@ -34,7 +34,7 @@ ms.locfileid: "74269448"
 
 ## <a name="asynchronous-versus-synchronous"></a>非同期と同期
 
-C++ 用ストレージ クライアント ライブラリは [C++ REST ライブラリ](https://github.com/Microsoft/cpprestsdk)上に構築されているため、[pplx::task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html) を使用した非同期操作が基本的にサポートされます。 例:
+C++ 用ストレージ クライアント ライブラリは [C++ REST ライブラリ](https://github.com/Microsoft/cpprestsdk)上に構築されているため、[pplx::task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html) を使用した非同期操作が基本的にサポートされます。 次に例を示します。
 
 ```cpp
 pplx::task<list_blob_item_segment> list_blobs_segmented_async(continuation_token& token) const;
@@ -192,7 +192,7 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 * 限定的な一覧取得は、同期シナリオの便利なラッパーとして、ライブラリで提供されます。
 * どん欲な一覧取得は推奨されないため、ライブラリから削除されました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Storage および C++ 用クライアント ライブラリの詳細については、以下のリソースを参照してください。
 

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 12/19/2019
 ms.author: memildin
 ms.openlocfilehash: 74ed55e1d460495bfa8d3d4c00bd37bb7f05260e
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75552867"
 ---
 # <a name="protect-azure-data-and-storage-services"></a>Azure のデータ サービスとストレージ サービスを保護する

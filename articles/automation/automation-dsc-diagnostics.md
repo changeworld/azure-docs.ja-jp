@@ -10,10 +10,10 @@ ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 578fcf4cd03a2d4fc8400b9e84f53206750a588c
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77430722"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Azure Monitor ログへの Azure Automation State Configuration レポート データの転送
@@ -140,7 +140,7 @@ Azure Automation の診断により、Azure Monitor ログに 2 つのカテゴ�
 | NodeName_s |管理対象ノードの名前。 |
 | NodeComplianceStatus_s |ノードが準拠しているかどうか。 |
 | DscReportStatus |コンプライアンス チェックが正常に実行されたかどうか。 |
-| ConfigurationMode | ノードに構成が適用される方法。 次のいずれかの値になります。 <ul><li>*ApplyOnly*:DSC が構成を適用し、以降は新しい構成がターゲット ノードにプッシュない限り、または新しい構成がサーバーからプルされるまで何もしません。 新しい構成が最初に適用された後、DSC は以前の構成された状態からの誤差を確認しません。 DSC は *ApplyOnly* 値が有効になる前に、構成の適用が成功するまで試行します。 </li><li>*ApplyAndMonitor*:これが既定値です。 LCM が任意の新しい構成を適用します。 新しい構成が最初に適用された後、ターゲット ノードが目的の状態から変わった場合、DSC はログに不一致を報告します。 DSC は *ApplyAndMonitor* 値が有効になる前に、構成の適用が成功するまで試行します。</li><li>*ApplyAndAutoCorrect*:DSC によって新しい構成が適用されます。 新しい構成が最初に適用された後、ターゲット ノードが目的の状態から変わった場合、DSC はログに不一致を報告し、現在の構成を再適用します。</li></ul> |
+| ConfigurationMode | ノードに構成が適用される方法。 次のいずれかの値になります。 <ul><li>*ApplyOnly*: DSC が構成を適用し、以降は新しい構成がターゲット ノードにプッシュない限り、または新しい構成がサーバーからプルされるまで何もしません。 新しい構成が最初に適用された後、DSC は以前の構成された状態からの誤差を確認しません。 DSC は *ApplyOnly* 値が有効になる前に、構成の適用が成功するまで試行します。 </li><li>*ApplyAndMonitor*: これが既定値です。 LCM が任意の新しい構成を適用します。 新しい構成が最初に適用された後、ターゲット ノードが目的の状態から変わった場合、DSC はログに不一致を報告します。 DSC は *ApplyAndMonitor* 値が有効になる前に、構成の適用が成功するまで試行します。</li><li>*ApplyAndAutoCorrect*: DSC によって新しい構成が適用されます。 新しい構成が最初に適用された後、ターゲット ノードが目的の状態から変わった場合、DSC はログに不一致を報告し、現在の構成を再適用します。</li></ul> |
 | HostName_s | 管理対象ノードの名前。 |
 | IPAddress | 管理対象ノードの IPv4 アドレス。 |
 | カテゴリ | DscNodeStatus。 |

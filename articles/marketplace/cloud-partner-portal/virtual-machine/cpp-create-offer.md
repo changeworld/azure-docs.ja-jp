@@ -1,19 +1,18 @@
 ---
 title: Azure Marketplace での仮想マシン オファーを作成する
 description: Azure Marketplace 向けの新しい仮想マシン (VM) オファーを作成するために必要な手順を示します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/19/2018
-ms.author: pabutler
-ms.openlocfilehash: 1e10bd22b91b51fb811601e49fad06d8f8b30127
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: bc1cf7a839307e65bd91eb29531663141e521472
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817102"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278043"
 ---
 # <a name="create-virtual-machine-offer"></a>仮想マシン オファーを作成する
 
@@ -43,7 +42,7 @@ ms.locfileid: "73817102"
 > **[仮想マシン]** オプションが表示されない場合、または有効にならない場合は、このオファーの種類を作成するためのアクセス許可がアカウントにありません。  開発者アカウントの登録など、このオファーの種類に対するすべての[前提条件](./cpp-prerequisites.md)を満たしていることを確認してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このセクションの以降のトピックは、 **[新しいプラン]** ページ (VM オファーの種類用) のタブに対応しています。  各記事では、関連付けられたタブを使用して、新しい VM オファーの資産グループとサポート サービスを定義する方法が説明されています。
 

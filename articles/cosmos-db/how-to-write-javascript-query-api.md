@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
 ms.openlocfilehash: 221a3118808a044ef1b1b822b9c95772bf792f34
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75441705"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>Javascript クエリ API を使用して Azure Cosmos DB でストアド プロシージャおよびトリガーを記述する方法
 
 Azure Cosmos DB では、ストアド プロシージャまたはトリガーの記述に使用できる SQL 言語の知識がなくても、円滑な JavaScript インターフェイスを使用して最適化されたクエリを実行できます。 Azure Cosmos DB のJavaScript クエリ API サポートについての詳しくは、 [Azure Cosmos DB のJavaScript 言語統合クエリ API の操作](javascript-query-api.md)に関する記事を参照してください。
 
-## <a id="stored-procedures"></a>JavaScript クエリ API を使用したストアド プロシージャ
+## <a name="stored-procedure-using-the-javascript-query-api"></a><a id="stored-procedures"></a>JavaScript クエリ API を使用したストアド プロシージャ
 
 次のコード サンプルでは、ストアド プロシージャで JavaScript クエリ API を使用する方法の例を示します。 ストアド プロシージャは入力パラメーターによって指定された Azure Cosmos 項目を挿入し、`__.filter()` メソッドでメタデータ ドキュメントを更新します。このメソッドと共に入力項目のサイズ プロパティに基づき、minSize、maxSize、totalSize が指定されます。
 

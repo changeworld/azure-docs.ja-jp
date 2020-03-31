@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: understand-apache-spark-data-formats
 ms.date: 01/31/2019
 ms.openlocfilehash: 36f39503ca32f1ee4b422ae7b1cf9abf48716f07
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73648168"
 ---
 # <a name="understand-differences-between-u-sql-and-spark-data-formats"></a>U-SQL と Spark のデータ形式の違いを理解する
@@ -25,7 +25,7 @@ ms.locfileid: "73648168"
 
 ファイルに格納されているデータは、さまざまな方法で移動できます。
 
-- [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) アカウントから [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) アカウントにデータをコピーする [Azure Data Factory](../data-factory/introduction.md) パイプラインを作成します。
+- [Azure Data Lake Storage Gen1](../data-factory/introduction.md) アカウントから [Azure Data Lake Storage Gen2](../data-lake-store/data-lake-store-overview.md) アカウントにデータをコピーする [Azure Data Factory](../storage/blobs/data-lake-storage-introduction.md) パイプラインを作成します。
 - [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) アカウントからデータを読み取り [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) アカウントに書き込む Spark ジョブを作成します。 元のファイル形式を保持する必要がない場合は、使用状況に応じて、Parquet などの別の形式で記述することをお勧めします。
 
 「[ビッグ データ分析ソリューションを Azure Data Lake Storage Gen1 から Azure Data Lake Storage Gen2 にアップグレードする](../storage/blobs/data-lake-storage-upgrade.md)」の記事を確認することをお勧めします。
@@ -46,7 +46,7 @@ U-SQL では、組み込みの Parquet アウトプッターを使用し、フ�
 - データ編成 (パーティション分割)。U-SQL テーブルには 2 つのレベルのパーティション分割が用意されています。 外部レベル (`PARTITIONED BY`) は値で表され、ほとんどの場合、フォルダー階層を使用して Hive/Spark パーティション構成にマップされます。 Null 値が正しいフォルダーにマップされていることを確認する必要があります。 U-SQL の内部レベル (`DISTRIBUTED BY`) では、ラウンド ロビン、範囲、ハッシュ、および直接ハッシュの 4 つのディストリビューション スキームが提供されています。
     Hive/Spark テーブルでは、U-SQL とは異なるハッシュ関数を使用して、値のパーティション分割またはハッシュ パーティション分割のみをサポートしています。 U-SQL テーブル データを出力する場合は、Spark の値のパーティション分割にのみマップでき、最終的な Spark クエリに応じてデータ レイアウトをさらに調整することが必要になる場合があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [U-SQL 開発者向けの Spark コードの概念について](understand-spark-code-concepts.md)
 - [ビッグ データ分析ソリューションを Azure Data Lake Storage Gen1 から Azure Data Lake Storage Gen2 にアップグレードする](../storage/blobs/data-lake-storage-upgrade.md)

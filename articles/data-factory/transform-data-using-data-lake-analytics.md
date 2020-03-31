@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2018
 ms.openlocfilehash: 257c71f7994b889540ec8cc5d0f384f3f8894f4d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74913267"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics で U-SQL スクリプトを実行してデータを変換 
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-usql-activity.md)
 > * [現在のバージョン](transform-data-using-data-lake-analytics.md)
 
@@ -36,7 +36,7 @@ Data Lake Analytics U-SQL アクティビティでパイプラインを作成す
 
 | プロパティ                 | 説明                              | 必須                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
-| **type**                 | type プロパティは次の値に設定されます。**AzureDataLakeAnalytics**。 | はい                                      |
+| **type**                 | type プロパティは **AzureDataLakeAnalytics**に設定する必要があります。 | はい                                      |
 | **accountName**          | Azure Data Lake Analytics アカウント名。  | はい                                      |
 | **dataLakeAnalyticsUri** | Azure Data Lake Analytics URI。           | いいえ                                       |
 | **subscriptionId**       | Azure サブスクリプション ID                    | いいえ                                       |
@@ -59,7 +59,7 @@ Azure Data Lake Analytics のリンクされたサービスには、Azure Data L
 | **servicePrincipalKey** | アプリケーションのキーを取得します。           | はい      |
 | **tenant**              | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | はい      |
 
-**例:サービス プリンシパルの認証**
+**例: サービス プリンシパル認証**
 ```json
 {
     "name": "AzureDataLakeAnalyticsLinkedService",
@@ -119,7 +119,7 @@ Azure Data Lake Analytics のリンクされたサービスには、Azure Data L
 
 | プロパティ            | 説明                              | 必須 |
 | :------------------ | :--------------------------------------- | :------- |
-| 名前                | パイプラインのアクティビティの名前。     | はい      |
+| name                | パイプラインのアクティビティの名前。     | はい      |
 | description         | アクティビティの動作を説明するテキスト。  | いいえ       |
 | type                | Data Lake Analytics U-SQL アクティビティの場合、アクティビティの種類は **DataLakeAnalyticsU-SQL** です。 | はい      |
 | linkedServiceName   | Azure Data Lake Analytics にリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。  |はい       |
@@ -129,7 +129,7 @@ Azure Data Lake Analytics のリンクされたサービスには、Azure Data L
 | priority            | キューされているすべてのジョブのうち、先に実行するジョブを決定します。 数値が小さいほど、優先度は高くなります。 | いいえ       |
 | parameters          | U-SQL スクリプトに渡すパラメーター。    | いいえ       |
 | runtimeVersion      | 使用する U-SQL エンジンのランタイム バージョン。 | いいえ       |
-| compilationMode     | <p>U-SQL のコンパイル モード。 次のいずれかの値を指定する必要があります。**Semantic:** セマンティック チェックと必要なサニティ チェックのみを実行します。**Full:** 構文チェック、最適化、コード生成などを含めた完全コンパイルを実行します。**SingleBox:** TargetType を SingleBox に設定して完全コンパイルを実行します。 このプロパティの値を指定しない場合、サーバーが最適なコンパイル モードを決定します。 | いいえ |
+| compilationMode     | <p>U-SQL のコンパイル モード。 次のいずれかの値を指定する必要があります: **Semantic:** セマンティクスの検査と必要なサニティ チェックのみを実行します。**Full:** 構文チェック、最適化、コードの生成などを含む完全コンパイルを実行します。**SingleBox:** TargetType を SingleBox に設定して完全コンパイルを実行します。 このプロパティの値を指定しない場合、サーバーが最適なコンパイル モードを決定します。 | いいえ |
 
 スクリプト定義については、[SearchLogProcessing.txt](#sample-u-sql-script) をご覧ください。 
 
@@ -176,7 +176,7 @@ Azure Data Lake Analytics サービスで実行されるジョブのパイプラ
 }
 ```
 
-代わりに、動的パラメーターを使用することもできます。 例: 
+代わりに、動的パラメーターを使用することもできます。 次に例を示します。 
 
 ```json
 "parameters": {
@@ -187,7 +187,7 @@ Azure Data Lake Analytics サービスで実行されるジョブのパイプラ
 
 この場合、入力ファイルは引き続き /datalake/input フォルダーから取得され、出力ファイルは /datalake/output フォルダーに生成されます。 ファイル名は、パイプラインのトリガー時に渡される期間の開始時間に基づいて動的に付けられます。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 別の手段でデータを変換する方法を説明している次の記事を参照してください。 
 
 * [Hive アクティビティ](transform-data-using-hadoop-hive.md)

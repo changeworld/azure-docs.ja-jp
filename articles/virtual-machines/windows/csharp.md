@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
 ms.openlocfilehash: 3930e51f63615abd21a7b04199a0f4767925792a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78944510"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>C# を使用して Azure で Windows VM を作成および管理する #
@@ -59,7 +59,7 @@ NuGet パッケージを使用すると、手順を完了するために必要�
 
 ### <a name="create-the-authorization-file"></a>承認ファイルを作成する
 
-1. ソリューション エクスプローラーで、 *[myDotnetProject]*  >  **[追加]**  >  **[新しい項目]** を右クリックしてから、 *[Visual C# アイテム]* で **[テキスト ファイル]** を選択します。 ファイルに *azureauth.properties* と名前を付けて、 **[追加]** をクリックします。
+1. ソリューション エクスプローラーで、 *[myDotnetProject]*  >  **[追加]**  >  **[新しい項目]** を右クリックしてから、 **[Visual C# アイテム]** で *[テキスト ファイル]* を選択します。 ファイルに *azureauth.properties* と名前を付けて、 **[追加]** をクリックします。
 2. 次の承認プロパティを追加します。
 
     ```

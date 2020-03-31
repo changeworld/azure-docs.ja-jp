@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: rezas
-ms.openlocfilehash: 244a71d400493a2029e831b729c63bc0b0dfe559
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 7ab3b48d22f116a707f68cbf6284928c7d2557e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049645"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79409499"
 ---
 # <a name="tls-support-in-iot-hub"></a>IoT Hub の TLS サポート
 
@@ -61,6 +61,8 @@ TLS 1.2 を使用する必要がある IoT Hub は、次のリージョンで作
 * East US
 * 米国中南部
 * 米国西部 2
+* US Gov アリゾナ
+* US Gov バージニア州
 
 > [!NOTE]
 > フェールオーバー時、IoT Hub の `minTlsVersion` プロパティは、フェールオーバー後に geo ペア リージョンで有効なままになります。
@@ -78,7 +80,7 @@ TLS 1.2 のみを受け入れるように構成されている IoT Hub では、
 
 次のリンクを使用して、IoT Hub クライアント SDK で TLS 1.2 および許可されている暗号を構成します。
 
-| Language | TLS 1.2 をサポートするバージョン | ドキュメント |
+| 言語 | TLS 1.2 をサポートするバージョン | ドキュメント |
 |----------|------------------------------------|---------------|
 | C        | タグ 2019-12-11 以降            | [リンク](https://aka.ms/Tls_C_SDK_IoT) |
 | Python   | バージョン 2.0.0 以降             | [リンク](https://aka.ms/Tls_Python_SDK_IoT) |

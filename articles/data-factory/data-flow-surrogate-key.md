@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/12/2019
 ms.openlocfilehash: bab48aa9079c1b8020bb828a6bb91bd244a78cf1
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930199"
 ---
 # <a name="mapping-data-flow-surrogate-key-transformation"></a>マッピング データ フローの代理キー変換
@@ -51,6 +51,6 @@ ms.locfileid: "74930199"
 
 ![代理キー結合](media/data-flow/sk004.png "代理キー結合")
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これらの例では、[結合](data-flow-join.md)と[派生列](data-flow-derived-column.md)の変換を使用します。

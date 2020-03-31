@@ -1,19 +1,18 @@
 ---
 title: Azure Marketplace から VM をデプロイする
 description: Azure Marketplace の事前構成済み仮想マシンから仮想マシンをデプロイする方法について説明します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/29/2018
-ms.author: pabutler
-ms.openlocfilehash: 2888d7643fd4f624634dc2ec520bec6e753382f1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 7d5269cf8865faeb65356bc8fd3eea087cb7653c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73816818"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277975"
 ---
 # <a name="deploy-a-virtual-machine-from-the-azure-marketplace"></a>Azure Marketplace から仮想マシンをデプロイする
 
@@ -53,6 +52,6 @@ New-AzResourceGroupDeployment -Name "dplvm$postfix" -ResourceGroupName "$rgName"
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 事前構成済み VM をデプロイしたら、それに含まれるソリューションやサービスにアクセスし、構成したり、さらなる開発のために使用したりできます。 

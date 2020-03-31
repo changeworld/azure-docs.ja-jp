@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.openlocfilehash: e0a24b52c12bce6a8e016a926dfa64a1e36a7cc6
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72753315"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Azure Cosmos DB の複数リージョンのコストを最適化する
@@ -31,7 +31,7 @@ ms.locfileid: "72753315"
 
 米国西部にコンテナーがあり、今月は 10,000 RU/秒のスループットでプロビジョニングされ、1 TB のデータが格納されているとします。 3 つのリージョン (米国東部、北ヨーロッパ、東アジア) を追加し、それぞれのストレージとスループットが同じであるとき、グローバルに分散されたお客様のアプリから 4 つすべてのリージョンのコンテナーに書き込めるようにしたいとしましょう。 月の請求書の合計金額は次のとおりです (1 か月を 31 日とした場合)。
 
-|**項目**|**使用量 (月単位)**|**レート**|**月額料金**|
+|**項目**|**使用量 (月単位)**|**料金**|**毎月のコスト**|
 |----|----|----|----|
 |米国西部のコンテナーのスループット料金 (複数の書き込みリージョン) |10,000 RU/秒 * 24 * 31 |100 RU/秒で 1 時間あたり $0.016 |$1,190.40 |
 |追加された 3 つのリージョン (米国東部、北ヨーロッパ、東アジア) のスループット料金 (複数の書き込みリージョン) |(3 + 1) * 10,000 RU/秒 * 24 * 31 |100 RU/秒で 1 時間あたり $0.016 |$4,761.60 |
@@ -49,7 +49,7 @@ ms.locfileid: "72753315"
 
 3. お客様のリージョンのアクティビティを監視すれば、オンデマンドでリージョンを追加したり削除したりして、読み取りと書き込みのスループットをスケーリングすることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次は、先に進み、以下の各記事で Azure Cosmos DB でのコストの最適化の詳細について学習することができます。
 
@@ -58,5 +58,5 @@ ms.locfileid: "72753315"
 * [スループット コストの最適化](optimize-cost-throughput.md)の詳細について学習します
 * [ストレージ コストの最適化](optimize-cost-storage.md)の詳細について学習します
 * [読み取りと書き込みのコストの最適化](optimize-cost-reads-writes.md)の詳細について学習します
-* [クエリのコストの最適化](optimize-cost-queries.md)について確認する
+* [クエリ コストの最適化](optimize-cost-queries.md)の詳細について学習します
 

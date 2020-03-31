@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: crdun
 ms.openlocfilehash: 8d7731480b6239c572d39f52b6a0217d2ac48d25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66240225"
 ---
 1. クライアント プロジェクト (.sln) のソリューション ファイルに移動し、Visual Studio を使用してファイルを開きます。

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 393563427e936e07315cd44b78cb793d4292b352
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176569"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224839"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Azure API Management の製品テンプレート
 
@@ -28,7 +28,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 -   [製品リスト](#ProductList)  
   
--   [成果物](#Product)  
+-   [Product](#Product)  
   
 > [!NOTE]
 >  このドキュメントには既定のテンプレートのサンプルが含まれていますが、それらは継続的な改善に伴って変更される可能性があります。 開発者ポータルで目的の個々のテンプレートに移動することで、最新の既定のテンプレートを表示できます。 テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)に関するページを参照してください。  
@@ -37,7 +37,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="ProductList"></a> 製品リスト  
+##  <a name="product-list"></a><a name="ProductList"></a> 製品リスト  
  **製品リスト** テンプレートを使用すると、開発者ポータルで製品リスト ページの本文をカスタマイズすることができます。  
   
  ![Product 一覧](./media/api-management-product-templates/APIM_ProductsListTemplatePage.png "APIM_ProductsListTemplatePage")  
@@ -83,7 +83,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 |--------------|----------|-----------------|  
 |Paging|[Paging](api-management-template-data-model-reference.md#Paging) エンティティ。|製品コレクションのページング情報。|  
 |Filtering|[フィルター処理](api-management-template-data-model-reference.md#Filtering)エンティティ。|製品リスト ページのフィルター処理情報。|  
-|Products|[製品](api-management-template-data-model-reference.md#Product)エンティティのコレクション。|現在のユーザーに表示される製品。|  
+|製品|[製品](api-management-template-data-model-reference.md#Product)エンティティのコレクション。|現在のユーザーに表示される製品。|  
   
 ### <a name="sample-template-data"></a>サンプル テンプレート データ  
   
@@ -123,7 +123,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }  
 ```  
   
-##  <a name="Product"></a> Product  
+##  <a name="product"></a><a name="Product"></a> Product  
  **Product** テンプレートを使用すると、開発者ポータルで製品 ページの本文をカスタマイズすることができます。  
   
  ![開発者ポータルの製品ページ](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
@@ -206,17 +206,17 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 |プロパティ|種類|説明|  
 |--------------|----------|-----------------|  
-|Product|[成果物](api-management-template-data-model-reference.md#Product)|指定された製品。|  
-|IsDeveloperSubscribed|ブール値|現在のユーザーがこの製品をサブスクライブしているかどうか。|  
+|Product|[Product](api-management-template-data-model-reference.md#Product)|指定された製品。|  
+|IsDeveloperSubscribed|boolean|現在のユーザーがこの製品をサブスクライブしているかどうか。|  
 |SubscriptionState|number|サブスクリプションの状態。 次の状態があります。<br /><br /> -   `0 - suspended` – サブスクリプションがブロックされています。サブスクライバーは製品の API を呼び出すことができません。<br />-   `1 - active` – サブスクリプションがアクティブです。<br />-   `2 - expired` – サブスクリプションの期限になり、サブスクリプションが非アクティブ化されました。<br />-   `3 - submitted` – サブスクリプション要求が開発者によって行われましたが、まだ承認または拒否されていません。<br />-   `4 - rejected` – サブスクリプション要求が管理者によって拒否されました。<br />-   `5 - cancelled` – サブスクリプションが開発者または管理者によって取り消されました。|  
 |制限|array|このプロパティは非推奨です。使用しないでください。|  
-|DelegatedSubscriptionEnabled|ブール値|このサブスクリプションで[委任](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/)が有効かどうか。|  
+|DelegatedSubscriptionEnabled|boolean|このサブスクリプションで[委任](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/)が有効かどうか。|  
 |DelegatedSubscriptionUrl|string|委任が有効になっている場合、委任されたサブスクリプションの URL。|  
-|IsAgreed|ブール値|製品に条件がある場合、現在のユーザーがその条件に同意したかどうか。|  
-|Subscriptions|[サブスクリプションの概要](api-management-template-data-model-reference.md#SubscriptionSummary)エンティティのコレクション。|製品のサブスクリプション。|  
+|IsAgreed|boolean|製品に条件がある場合、現在のユーザーがその条件に同意したかどうか。|  
+|サブスクリプション|[サブスクリプションの概要](api-management-template-data-model-reference.md#SubscriptionSummary)エンティティのコレクション。|製品のサブスクリプション。|  
 |Apis|[API](api-management-template-data-model-reference.md#API) エンティティのコレクション。|この製品の API。|  
-|CannotAddBecauseSubscriptionNumberLimitReached|ブール値|サブスクリプション数制限に関して、現在のユーザーがこの製品をサブスクライブできるかどうか。|  
-|CannotAddBecauseMultipleSubscriptionsNotAllowed|ブール値|複数サブスクリプションの可否に関して、現在のユーザーがこの製品をサブスクライブできるかどうか。|  
+|CannotAddBecauseSubscriptionNumberLimitReached|boolean|サブスクリプション数制限に関して、現在のユーザーがこの製品をサブスクライブできるかどうか。|  
+|CannotAddBecauseMultipleSubscriptionsNotAllowed|boolean|複数サブスクリプションの可否に関して、現在のユーザーがこの製品をサブスクライブできるかどうか。|  
   
 ### <a name="sample-template-data"></a>サンプル テンプレート データ  
   
@@ -262,5 +262,5 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }  
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](api-management-developer-portal-templates.md)に関するページを参照してください。

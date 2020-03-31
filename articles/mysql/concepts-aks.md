@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 71b266231b7ed3012e5ea7f65fe9487eeb5fb358
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 9e020d34b6cfb8117ccff1114cc938c966126b77
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74773613"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79537280"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>Azure Kubernetes Service と Azure Database for MySQL を接続する
 
@@ -48,6 +48,6 @@ OSBA を使用すると、Azure Database for MySQL サーバーを作成し、Ku
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure Kubernetes Service クラスターを作成する](../aks/kubernetes-walkthrough.md)
 - [OSBA と Azure Database for MySQL を使用して Helm チャートから WordPress をインストールする](../aks/integrate-azure.md)方法を学習する

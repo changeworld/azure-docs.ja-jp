@@ -8,16 +8,16 @@ ms.topic: conceptual
 description: Azure Dev Space でプライベート Helm リポジトリを使用します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー, Helm
 manager: gwallace
-ms.openlocfilehash: 6036184c43242f2ec2279438950b26dfb53e9bb4
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: c8f0e463bc78d278d8162f8389664dbb46a83301
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77538671"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240470"
 ---
 # <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>Azure Dev Spaces でプライベート Helm リポジトリを使用する
 
-[Helm][helm] は、Kuberentes 用のパッケージ マネージャーです。 Helm では、依存関係をパッケージ化するために[チャート][helm-chart]形式が使用されます。 Helm チャートは、パブリックまたはプライベートのリポジトリに格納されます。 Azure Dev Spaces では、アプリケーションを実行するときに、パブリックリ ポジトリからのみ Helm チャートが取得されます。 Helm リポジトリがプライベートである場合、または Azure Dev Spaces でアクセスできない場合は、そのリポジトリからアプリケーションにチャートを直接追加できます。 チャートを直接追加すると、Azure Dev Spaces で、プライベート Helm リポジトリにアクセスしなくてもアプリケーションを実行することができます。
+[Helm][helm] は、Kubernetes 用のパッケージ マネージャーです。 Helm では、依存関係をパッケージ化するために[チャート][helm-chart]形式が使用されます。 Helm チャートは、パブリックまたはプライベートのリポジトリに格納されます。 Azure Dev Spaces では、アプリケーションを実行するときに、パブリックリ ポジトリからのみ Helm チャートが取得されます。 Helm リポジトリがプライベートである場合、または Azure Dev Spaces でアクセスできない場合は、そのリポジトリからアプリケーションにチャートを直接追加できます。 チャートを直接追加すると、Azure Dev Spaces で、プライベート Helm リポジトリにアクセスしなくてもアプリケーションを実行することができます。
 
 ## <a name="add-the-private-helm-repository-to-your-local-machine"></a>プライベート Helm リポジトリをローカル コンピューターに追加する
 
@@ -37,7 +37,7 @@ azds prep --enable-ingress
 ```
 
 > [!TIP]
-> `prep` コマンドを実行すると、対象のプロジェクトの [Dockerfile と Helm チャート](../how-dev-spaces-works.md#prepare-your-code)の生成が試行されます。 これらのファイルは、対象のコードをビルドして実行するために Azure Dev Spaces によって使用されますが、プロジェクトのビルドおよび実行方法を変更する場合は、これらのファイルを変更することができます。
+> `prep` コマンドを実行すると、対象のプロジェクトの [Dockerfile と Helm チャート](../how-dev-spaces-works-prep.md#prepare-your-code)の生成が試行されます。 これらのファイルは、対象のコードをビルドして実行するために Azure Dev Spaces によって使用されますが、プロジェクトのビルドおよび実行方法を変更する場合は、これらのファイルを変更することができます。
 
 アプリケーションのチャート ディレクトリにチャートを含む [requirements.yaml][helm-requirements] ファイルを作成します。 たとえば、アプリケーションの名前が *app1* の場合は、*charts/app1/requirements.yaml* を作成します。
 

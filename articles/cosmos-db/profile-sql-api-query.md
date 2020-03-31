@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: girobins
 ms.openlocfilehash: 48b9a67de5c870a187ee008bd97265760ca6c341
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70998361"
 ---
 # <a name="get-sql-query-execution-metrics-and-analyze-query-performance-using-net-sdk"></a>SQL クエリの実行メトリックを取得し、.NET SDK を使用してクエリのパフォーマンスを分析する
@@ -22,7 +22,7 @@ ms.locfileid: "70998361"
 
 [DocumentClient.CreateDocumentQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentquery.aspx) のすべてのオーバーロードで、省略可能な [FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx) パラメーターが使用されます。 このオプションは、クエリの実行で何をチューニングでき、何をパラメーター化できるかを指示します。 
 
-SQL クエリの実行メトリックを収集するには、[FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx) の [PopulateQueryMetrics](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.populatequerymetrics.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.PopulateQueryMetrics) パラメーターを `true` に設定する必要があります。 `PopulateQueryMetrics` を true に設定すると、関連する `QueryMetrics` が `FeedResponse` に格納されます。 
+SQL クエリの実行メトリックを収集するには、[FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.populatequerymetrics.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.PopulateQueryMetrics) の [PopulateQueryMetrics](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx) パラメーターを `true` に設定する必要があります。 `PopulateQueryMetrics` を true に設定すると、関連する `FeedResponse` が `QueryMetrics` に格納されます。 
 
 ## <a name="get-query-metrics-with-asdocumentquery"></a>AsDocumentQuery() を使用してクエリのメトリックを取得する
 次のコード例では、[AsDocumentQuery()](https://msdn.microsoft.com/library/microsoft.azure.documents.linq.documentqueryable.asdocumentquery.aspx) メソッドを使用したメトリックの取得方法を示します。
@@ -62,7 +62,7 @@ while (documentQuery.HasMoreResults)
 ```
 ## <a name="aggregating-querymetrics"></a>QueryMetrics の集計
 
-前のセクションでは、[ExecuteNextAsync](https://msdn.microsoft.com/library/azure/dn850294.aspx) メソッドへの呼び出しが複数回あったことに注目してください。 各呼び出しで `QueryMetrics` のディクショナリを持つ `FeedResponse` オブジェクトが返されました (クエリの継続ごとに 1 つ)。 次の例では、これらの `QueryMetrics` を LINQ を使用して集計する方法を示します。
+前のセクションでは、[ExecuteNextAsync](https://msdn.microsoft.com/library/azure/dn850294.aspx) メソッドへの呼び出しが複数回あったことに注目してください。 各呼び出しで `FeedResponse` のディクショナリを持つ `QueryMetrics` オブジェクトが返されました (クエリの継続ごとに 1 つ)。 次の例では、これらの `QueryMetrics` を LINQ を使用して集計する方法を示します。
 
 ```csharp
 List<QueryMetrics> queryMetricsList = new List<QueryMetrics>();
@@ -115,7 +115,7 @@ foreach(IGrouping<string, KeyValuePair<string, QueryMetrics>> grouping in groupe
 
 ## <a name="linq-on-documentquery"></a>DocumentQuery の LINQ
 
-`AsDocumentQuery()` メソッドを使用して、LINQ クエリから `FeedResponse` を取得することもできます。
+`FeedResponse` メソッドを使用して、LINQ クエリから `AsDocumentQuery()` を取得することもできます。
 
 ```csharp
 IDocumentQuery<Document> linqQuery = client.CreateDocumentQuery(collection.SelfLink, feedOptions)
@@ -129,7 +129,7 @@ IReadOnlyDictionary<string, QueryMetrics> queryMetrics = feedResponse.QueryMetri
 
 ## <a name="expensive-queries"></a>コストの高いクエリ
 
-各クエリで使用された要求単位をキャプチャして、コストの高いクエリや高スループットを消費するクエリを調査することができます。 `FeedResponse` で [RequestCharge](https://msdn.microsoft.com/library/azure/dn948712.aspx) プロパティを使用することで、要求の使用量を取得できます。 Azure portal と各種の SDK を使用して要求の使用量を取得する方法の詳細については、[要求ユニット使用量の検出](find-request-unit-charge.md)に関する記事を参照してください。
+各クエリで使用された要求単位をキャプチャして、コストの高いクエリや高スループットを消費するクエリを調査することができます。 [ で ](https://msdn.microsoft.com/library/azure/dn948712.aspx)RequestCharge`FeedResponse` プロパティを使用することで、要求の使用量を取得できます。 Azure portal と各種の SDK を使用して要求の使用量を取得する方法の詳細については、[要求ユニット使用量の検出](find-request-unit-charge.md)に関する記事を参照してください。
 
 ```csharp
 string query = "SELECT * FROM c";
@@ -233,14 +233,14 @@ WHERE c.description = "BABYFOOD, DESSERT, FRUIT DESSERT, WITHOUT ASCORBIC ACID, 
 
 クエリ パフォーマンスのチューニングの詳細については、[クエリ パフォーマンスのチューニング](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-metrics)に関する記事を参照してください。
 
-## <a id="References"></a>参考資料
+## <a name="references"></a><a id="References"></a>参考資料
 
 - [Azure Cosmos DB SQL の仕様](https://go.microsoft.com/fwlink/p/?LinkID=510612)
 - [ANSI SQL 2011](https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
 - [JSON](https://json.org/)
 - [LINQ](/previous-versions/dotnet/articles/bb308959(v=msdn.10)) 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [クエリ パフォーマンスのチューニング](sql-api-query-metrics.md)
 - [インデックス作成の概要](index-overview.md)

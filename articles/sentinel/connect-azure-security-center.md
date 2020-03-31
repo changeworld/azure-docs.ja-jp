@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: yelevin
 ms.openlocfilehash: e6e24a97a8b98bdd5447295880811914100563fe
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588537"
 ---
 # <a name="connect-data-from-azure-security-center"></a>Azure Security Center からデータを接続する
@@ -40,7 +40,7 @@ Azure Sentinel では、[Azure Security Center](../security-center/security-cent
 
 1. Azure Security Center のアラートによって Azure Sentinel で自動的にインシデントが生成されるようにするかどうかを選択できます。 **[Create incidents]\(インシデントの作成\)** で **[有効化]** を選択して、接続されたセキュリティ サービスで生成されたアラートからインシデントを自動的に作成する既定の分析ルールを有効にします。 次に、 **[分析]** でこのルールを編集してから、 **[Active rules]\(アクティブなルール\)** を選択します。
 
-3. **[Connect]** をクリックします。
+3. **[接続]** をクリックします。
 
 4. Azure Security Center のアラートで Log Analytics の関連スキーマを使用するには、**SecurityAlert** を検索します。
 

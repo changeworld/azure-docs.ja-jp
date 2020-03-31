@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/18/2017
 ms.author: cynthn
 ms.openlocfilehash: ad213cc02f707609a837ea66b79e51c6f2a617f8
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919772"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226979"
 ---
 # <a name="azure-classic-cli-commands"></a>Azure クラシック CLI コマンド 
 
@@ -190,7 +190,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
     hdinsight config add-script-action [options] <configFilePath>
 
 
-例:クラスターを作成するときに実行するスクリプト アクションを含む構成ファイルの作成
+例: クラスターを作成するときに実行するスクリプト アクションを含む構成ファイルの作成
 
     hdinsight config create "C:\myFiles\configFile.config"
     hdinsight config add-script-action --configFilePath "C:\myFiles\configFile.config" --nodeType HeadNode --uri <scriptActionURI> --name myScriptAction --parameters "-param value"
@@ -199,7 +199,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
     hdinsight cluster create [options] <clusterName>
 
-例:Linux クラスターで Storm を作成する
+例: Linux クラスターでの Storm の作成
 
     azure hdinsight cluster create -g myarmgroup -l westus -y Linux --clusterType Storm --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 myNewCluster01
 
@@ -207,7 +207,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
     + Submitting the request to create cluster...
     info:    hdinsight cluster create command OK
 
-例:スクリプト アクションを使用したクラスターの作成
+例: スクリプト アクションによるクラスターの作成
 
     azure hdinsight cluster create -g myarmgroup -l westus -y Linux --clusterType Hadoop --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 –configurationPath "C:\myFiles\configFile.config" myNewCluster01
 
