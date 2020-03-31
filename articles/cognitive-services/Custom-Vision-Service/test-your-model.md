@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: anroth
 ms.openlocfilehash: c6ed8869f6d33609381a42fd22d728e9e5542802
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73721190"
 ---
 # <a name="test-and-retrain-a-model-with-custom-vision-service"></a>Custom Vision Service を使用したモデルのテストと再トレーニング
@@ -46,10 +46,10 @@ ms.locfileid: "73721190"
     > [!TIP]
     > 既定のビューには、現在のイテレーションのイメージが表示されます。 __[Iteration]__ (イテレーション) ドロップ ダウン フィールドを使用すると、以前のイテレーションで送信されたイメージを表示できます。
 
-2. イメージの上にポインターを置き、分類器が予測したタグを表示します。
+2. イメージの上にポインターを置き、分類子が予測したタグを表示します。
 
     > [!TIP]
-    > イメージは、最も分類器に貢献できるイメージが一番上になるように順位付けされます。 異なる並べ替えを選択するには、 __[Sort]__ (並べ替え) セクションを使用します。
+    > イメージは、最も分類器に貢献したイメージが一番上になるように順位付けされます。 異なる並べ替えを選択するには、 __[Sort]__ (並べ替え) セクションを使用します。
 
     トレーニング データにイメージを追加するには、イメージとタグを選択してから __[保存して閉じる]__ を選択します。 イメージは __[Predictions]__ (予測) から削除され、トレーニング イメージに追加されます。 __[Training Images]__ (トレーニング イメージ) タブを選択すると、これを表示できます。
 
@@ -57,6 +57,6 @@ ms.locfileid: "73721190"
 
 3. __[Train]__ (トレーニング) ボタンを使用して、分類子を再トレーニングします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [分類器の改善](getting-started-improving-your-classifier.md)

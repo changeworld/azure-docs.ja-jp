@@ -15,11 +15,11 @@ ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1c46facb2d43137175730bf04fea0efec9c1ecbd
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063851"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231715"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
@@ -348,7 +348,7 @@ Cloud App Security SIEM エージェントは、Cloud App Security を SIEM サ�
 
 詳しくは、「[ハイブリッド Azure Active Directory 参加済みデバイスの構成方法](../device-management-hybrid-azuread-joined-devices-setup.md)」をご覧ください。
 
-#### <a name="review-members-of-built-in-office-365-admin-roleshttpssupportofficecomarticleabout-office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d"></a>[Office 365 の組み込み管理者ロール](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)のメンバーを確認する
+#### <a name="review-members-of-built-in-office-365-admin-roles"></a>[Office 365 の組み込み管理者ロール](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)のメンバーを確認する
 Office 365 を使用している場合。
 ‎
 #### <a name="validate-incident-response-plan"></a>インシデント対応計画を検証する

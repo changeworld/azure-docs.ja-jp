@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: pafarley
 ms.openlocfilehash: fa13d9bdf73b87597d4eb01830ec2c76538521fe
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73799946"
 ---
 ## <a name="get-the-training-and-prediction-keys"></a>トレーニング キーと予測キーを取得する

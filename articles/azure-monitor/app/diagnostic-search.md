@@ -4,11 +4,11 @@ description: Web アプリによって送信された未加工のテレメトリ
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.openlocfilehash: 8039a55784f63030f330d6c1e2061e99b8b63bbf
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669677"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234703"
 ---
 # <a name="using-search-in-application-insights"></a>Application Insights の検索の使用
 
@@ -133,9 +133,9 @@ Application Insights SDK によって送信される標準のテレメトリに�
 
 [ログとカスタム テレメトリを Application Insights に送信する方法についてはこちら](../../azure-monitor/app/asp-net-trace-logs.md)。
 
-## <a name="questions"></a>Q & A
+## <a name="q--a"></a><a name="questions"></a>Q & A
 
-### <a name="limits"></a>保持されるデータの量はどのくらいですか
+### <a name="how-much-data-is-retained"></a><a name="limits"></a>保持されるデータの量はどのくらいですか
 
 「[制限の概要](../../azure-monitor/app/pricing.md#limits-summary)」を参照してください。
 
@@ -143,7 +143,7 @@ Application Insights SDK によって送信される標準のテレメトリに�
 
 POST データは自動的に記録されませんが、[TrackTrace または log の呼び出し](../../azure-monitor/app/asp-net-trace-logs.md)を使用できます。 メッセージ パラメーターに POST データを格納します。 プロパティと同じ方法でメッセージをフィルター処理することはできませんが、サイズの制限が緩和されます。
 
-## <a name="add"></a>次のステップ
+## <a name="next-steps"></a><a name="add"></a>次のステップ
 
 * [Analytics で複雑なクエリを作成する](../../azure-monitor/log-query/get-started-portal.md)
 * [Application Insights にログとカスタム テレメトリを送信する](../../azure-monitor/app/asp-net-trace-logs.md)

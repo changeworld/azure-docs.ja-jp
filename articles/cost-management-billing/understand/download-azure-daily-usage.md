@@ -7,13 +7,13 @@ ms.author: banders
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: 156f47e7a5571d37d836e68c7817352626fbd734
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 03/19/2020
+ms.openlocfilehash: 3a7e1e8670911d361b3c59aacc0973eac035fb70
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200250"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065703"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Azure の使用量と料金の表示とダウンロード
 
@@ -21,30 +21,31 @@ Azure の利用状況と請求金額に対する日単位の内訳を Azure port
 
 Microsoft 顧客契約 (MCA) を結んでいる場合、Azure の利用状況と請求金額を表示するには、課金プロファイルの所有者、共同作成者、閲覧者、または請求書管理者である必要があります。  Microsoft Partner Agreement (MPA) を結んでいる場合、Azure の利用状況と請求金額を表示してダウンロードできるのは、取引先組織である Microsoft の全体管理者ロールと管理者エージェント ロールだけです。 [Azure portal で課金アカウントの種類を確認](#check-your-billing-account-type)してください。
 
+使用量と請求金額のダウンロード オプションは、使用するサブスクリプションの種類により異なります。 
+
 ## <a name="download-usage-from-the-azure-portal-csv"></a>Azure portal から利用状況をダウンロードする (.csv)
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. "*コスト管理 + 請求*" を検索します。
-
-    ![Azure portal の検索を表示するスクリーンショット](./media/download-azure-daily-usage/portal-cm-billing-search.png)
-
+1. "*コスト管理 + 請求*" を検索します。  
+    ![Azure portal の検索を表示しているスクリーンショット](./media/download-azure-daily-usage/portal-cm-billing-search.png)
 1. お持ちのアクセス権によっては、課金アカウントまたは課金プロファイルを選択する必要があります。
 1. 左側のメニューの **[課金]** から **[請求書]** を選択します。
 1. 請求書グリッドで、ダウンロードする使用量に対応する請求期間の行を探します。
-1. 右側にある**ダウンロード アイコン**または省略記号 (`...`) を選択します。
-1. 右側に [ダウンロード] ペインが開きます。 **[使用量の詳細]** セクションから **[ダウンロード]** を選択します。
+1. 右側にある**ダウンロード アイコン**または省略記号 (`...`) を選択します。  
+  ![[使用量 + 請求金額] の [ダウンロード] の場所を示すスクリーンショット](./media/download-azure-daily-usage/download-usage-others.png)  
+1. 右側に [ダウンロード] ペインが開きます。 **[使用量の詳細]** セクションから **[ダウンロード]** を選択します。  
+
 
 ## <a name="download-usage-for-ea-customers"></a>EA のお客様の使用量のダウンロード
 
 EA のお客様として使用量データを表示およびダウンロードするには、料金表示ポリシーが有効になっているエンタープライズ管理者、アカウント所有者、または部門管理者である必要があります。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. "*コスト管理 + 請求*" を検索します。
-
-    ![Azure portal の検索を表示するスクリーンショット](./media/download-azure-daily-usage/portal-cm-billing-search.png)
-
+1. "*コスト管理 + 請求*" を検索します。  
+    ![Azure portal の検索を表示しているスクリーンショット](./media/download-azure-daily-usage/portal-cm-billing-search.png)
 1. **[使用量 + 請求金額]** を選択します。
-1. ダウンロードしたい月で、 **[ダウンロード]** を選択します。
+1. ダウンロードしたい月で、 **[ダウンロード]** を選択します。  
+    ![[使用量 + 請求金額] の [ダウンロード] の場所を示すスクリーンショット](./media/download-azure-daily-usage/download-usage-ea.png)
 
 ## <a name="download-usage-for-pending-charges"></a>保留中の料金の使用量のダウンロード
 

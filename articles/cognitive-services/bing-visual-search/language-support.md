@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: scottwhi
 ms.openlocfilehash: b17341bc234ff3dfecc2c6dcd84ef77116a95d61
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68883548"
 ---
 # <a name="language-and-region-support-for-the-bing-visual-search-api"></a>Bing Visual Search API の言語と地域のサポート
@@ -34,7 +34,7 @@ Bing Visual Search API では 30 を超える国/地域がサポートされ、�
 > - レシピ、ショッピング、画像を含むページなどの分析情報が使用できるのは en-US 市場のみです。
 
 
-## <a name="countriesregions"></a>国/地域
+## <a name="countriesregions"></a>国/リージョン
 
 |国/リージョン|コード|
 |-------|----|
@@ -43,7 +43,7 @@ Bing Visual Search API では 30 を超える国/地域がサポートされ、�
 |オーストリア|AT|
 |ベルギー|BE|
 |ブラジル|BR|
-|カナダ|CA|
+|Canada|CA|
 |チリ|CL|
 |デンマーク|DK|
 |フィンランド|FI|
@@ -73,49 +73,49 @@ Bing Visual Search API では 30 を超える国/地域がサポートされ、�
 |台湾|TW|
 |トルコ|TR|
 |イギリス|GB|
-|米国|US|
+|United States|US|
 
 
 ## <a name="markets"></a>市場
 
 |国/リージョン|言語|市場コード|
 |-------|--------|-----------|
-|アルゼンチン|スペイン語|es-AR|
-|オーストラリア|英語|en-AU|
-|オーストリア|ドイツ語|de-AT|
-|ベルギー|オランダ語|nl-BE|
-|ベルギー|フランス語|fr-BE|
-|ブラジル|ポルトガル語|pt-BR|
-|カナダ|英語|en-CA|
-|カナダ|フランス語|fr-CA|
-|チリ|スペイン語|es-CL|
-|デンマーク|デンマーク語|da-DK|
-|フィンランド|フィンランド語|fi-FI|
-|フランス|フランス語|fr-FR|
-|ドイツ|ドイツ語|de-DE|
-|香港特別行政区|繁体字中国語|zh-HK|
-|インド|英語|en-IN|
-|インドネシア|英語|en-ID|
-|イタリア|イタリア語|it-IT|
-|日本|日本語|ja-JP|
-|韓国|韓国語|ko-KR|
-|マレーシア|英語|en-MY|
-|メキシコ|スペイン語|es-MX|
-|オランダ|オランダ語|nl-NL|
-|ニュージーランド|英語|en-NZ|
+|アルゼンチン|Spanish|es-AR|
+|オーストラリア|English|en-AU|
+|オーストリア|German|de-AT|
+|ベルギー|Dutch|nl-BE|
+|ベルギー|French|fr-BE|
+|ブラジル|Portuguese|pt-BR|
+|Canada|English|en-CA|
+|Canada|French|fr-CA|
+|チリ|Spanish|es-CL|
+|デンマーク|Danish|da-DK|
+|フィンランド|Finnish|fi-FI|
+|フランス|French|fr-FR|
+|ドイツ|German|de-DE|
+|香港特別行政区|Traditional Chinese|zh-HK|
+|インド|English|en-IN|
+|インドネシア|English|en-ID|
+|イタリア|Italian|it-IT|
+|日本|Japanese|ja-JP|
+|韓国|Korean|ko-KR|
+|マレーシア|English|en-MY|
+|メキシコ|Spanish|es-MX|
+|オランダ|Dutch|nl-NL|
+|ニュージーランド|English|en-NZ|
 |中国|中国語|zh-CN|
-|ポーランド|ポーランド語|pl-PL|
-|ポルトガル|ポルトガル語|pt-PT|
-|フィリピン|英語|en-PH|
-|ロシア|ロシア語|ru-RU|
+|ポーランド|Polish|pl-PL|
+|ポルトガル|Portuguese|pt-PT|
+|フィリピン|English|en-PH|
+|ロシア|Russian|ru-RU|
 |サウジアラビア|アラビア語|ar-SA|
-|南アフリカ|英語|en-ZA|
-|スペイン|スペイン語|es-ES|
-|スウェーデン|スウェーデン語|sv-SE|
-|スイス|フランス語|fr-CH|
-|スイス|ドイツ語|de-CH|
-|台湾|繁体字中国語|zh-TW|
-|トルコ|トルコ語|tr-TR|
-|イギリス|英語|en-GB|
-|米国|英語|en-US|
-|米国|スペイン語|es-US|
+|南アフリカ|English|en-ZA|
+|スペイン|Spanish|es-ES|
+|スウェーデン|Swedish|sv-SE|
+|スイス|French|fr-CH|
+|スイス|German|de-CH|
+|台湾|Traditional Chinese|zh-TW|
+|トルコ|Turkish|tr-TR|
+|イギリス|English|en-GB|
+|United States|English|ja-JP|
+|United States|Spanish|es-US|

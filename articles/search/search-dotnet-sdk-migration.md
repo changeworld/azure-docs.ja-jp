@@ -10,10 +10,10 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: fcad05749892e3a652e110a7e351450bffaca6f2
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72792980"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-3"></a>Azure Search .NET SDK バージョン 3 へのアップグレード
@@ -71,7 +71,7 @@ NuGet が新しいパッケージとその依存関係をダウンロードし�
 バージョン 3 には、アプリケーションのリビルドだけでなく、コードの変更が必要な場合がある重大な変更が少し含まれています。
 
 ### <a name="indexesgetclient-return-type"></a>Indexes.GetClient の戻り型
-`Indexes.GetClient` メソッドには新しい戻り型があります。 以前は `SearchIndexClient` が返されていましたが、これはバージョン 2.0-preview で `ISearchIndexClient` に変更され、この変更がバージョン 3 にも引き継がれています。 これは、単体テストで `ISearchIndexClient` の模擬実装を返すことによって `GetClient` メソッドの模擬テストを実行したいユーザーをサポートするための変更です。
+`Indexes.GetClient` メソッドには新しい戻り型があります。 以前は `SearchIndexClient` が返されていましたが、これはバージョン 2.0-preview で `ISearchIndexClient` に変更され、この変更がバージョン 3 にも引き継がれています。 これは、単体テストで `GetClient` の模擬実装を返すことによって `ISearchIndexClient` メソッドの模擬テストを実行したいユーザーをサポートするための変更です。
 
 #### <a name="example"></a>例
 次のようなコードがあるものとします。

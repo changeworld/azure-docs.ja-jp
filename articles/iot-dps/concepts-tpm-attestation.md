@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: 624171ffc10a06ac3089b6dceb1683c63c88dbda
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74975280"
 ---
 # <a name="tpm-attestation"></a>TPM の構成証明
@@ -63,7 +63,7 @@ TPM を装備したデバイスを Device Provisioning Service に初めて接�
 
 ![デバイスが Device Provisioning Service との接続を再確立して EK の所有権を検証する](./media/concepts-tpm-attestation/step-three-validation.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、デバイスが IoT Hub に接続され、デバイスのキーが安全に格納されていることがわかり安心できます。 Device Provisioning Service で TPM を使用してデバイスの ID を安全に検証する方法を確認しました。詳細について次の記事を参照してください。
 

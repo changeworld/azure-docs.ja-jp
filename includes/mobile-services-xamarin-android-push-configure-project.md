@@ -5,10 +5,10 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 69dc0e1c14bc88cdbf0aa48700f95058ba759cc0
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67181681"
 ---
 1. ソリューション ビュー (または Visual Studio の**ソリューション エクスプローラー**) で、 **[Components]** フォルダーを右クリックして **[コンポーネントをさらに取得する...]** をクリックし、 **[Google Cloud Messaging Client]** コンポーネントを検索して、それをプロジェクトに追加します。

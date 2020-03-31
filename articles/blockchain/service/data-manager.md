@@ -5,10 +5,10 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 ms.reviewer: chroyal
 ms.openlocfilehash: 78c93880007259267b26cf53e93de722be1c7323
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77209445"
 ---
 # <a name="what-is-blockchain-data-manager-for-azure-blockchain-service"></a>Azure Blockchain Service のブロックチェーン データ マネージャーとは

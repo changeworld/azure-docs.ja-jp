@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: diberry
 ms.openlocfilehash: 7412677773b60a1894a6ece7251e797bfddee091
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280809"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218777"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>LUIS アプリに対して良い発話を理解する
 
@@ -118,7 +118,7 @@ LUIS JSON アプリ ファイルに対して、分音記号または句読点の
 
 ### <a name="ignoring-words-and-punctuation"></a>単語と句読点を無視する
 
-パターン内の特定の語や句読点を無視する場合は、[パターン](luis-concept-patterns.md#pattern-syntax)使用時に大かっこ `[]` の _ignore_ 構文を指定します。 
+パターン内の特定の語や句読点を無視する場合は、[パターン](luis-concept-patterns.md#pattern-syntax)使用時に大かっこ _の_ignore`[]` 構文を指定します。 
 
 ## <a name="training-utterances"></a>発話のトレーニング
 
@@ -128,7 +128,7 @@ LUIS JSON アプリ ファイルに対して、分音記号または句読点の
 
 開発者は、発話を[予測エンドポイント](luis-how-to-azure-subscription.md) URL に送信することにより、実際のトラフィックで LUIS アプリケーションのテストを開始する必要があります。 これらの発話は、[発話の確認](luis-how-to-review-endpoint-utterances.md)での意図とエンティティのパフォーマンスを向上させるために使われます。 LUIS Web サイトのテスト ウィンドウで送信されるテストは、エンドポイント経由では送信されず、したがってアクティブな学習には影響しません。 
 
-## <a name="review-utterances"></a>発話の確認
+## <a name="review-utterances"></a>発話を確認する
 
 モデルがトレーニングされて発行され、[エンドポイント](luis-glossary.md#endpoint) クエリを受け取った後、LUIS によって提案された[発話を確認](luis-how-to-review-endpoint-utterances.md)します。 LUIS は、意図またはエンティティに対してスコアの低いエンドポイント発話を選択します。 
 
@@ -144,12 +144,12 @@ LUIS JSON アプリ ファイルに対して、分音記号または句読点の
 
 |発話|
 |--|
-|What kind of county fairs are happening in the Seattle area this summer?|
-|Is the current rating for the Seattle review fair?|
+|今年の夏、シアトル地区でどのような種類のカウンティー フェアが開催されますか?|
+|シアトル レビューの現在の評価は公正ですか?|
 
 イベント エンティティですべてのイベント データを検索する場合は、2 つ目ではなく最初の発話の単語 `fair` にラベルを付けます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ユーザーの発話を理解するための LUIS アプリのトレーニングについては、「[発話の例を追加する](luis-how-to-add-example-utterances.md)」を参照してください。
 

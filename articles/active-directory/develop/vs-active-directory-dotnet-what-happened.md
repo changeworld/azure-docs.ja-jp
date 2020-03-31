@@ -12,10 +12,10 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.openlocfilehash: ac38adba4ca0d978dd48a546bed1b1faf4fe40fe
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79036969"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>MVC プロジェクト (Visual Studio Azure Active Directory 接続済みサービス) の変更点
@@ -32,7 +32,7 @@ ms.locfileid: "79036969"
 
 プロジェクト ファイル (.NET 参照) と `packages.config` (NuGet 参照) に影響します。
 
-| Type | リファレンス |
+| 種類 | リファレンス |
 | --- | --- |
 | .NET; NuGet | Microsoft.IdentityModel.Protocol.Extensions |
 | .NET; NuGet | Microsoft.Owin |
@@ -47,7 +47,7 @@ ms.locfileid: "79036969"
 
 追加の参照 ( **[ディレクトリ データの読み取り]** オプションを選択した場合):
 
-| Type | リファレンス |
+| 種類 | リファレンス |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework.SqlServer (Visual Studio 2015 のみ) |
@@ -61,7 +61,7 @@ ms.locfileid: "79036969"
 
 次の参照は削除されます (Visual Studio 2015 では ASP.NET 4 プロジェクトのみ)。
 
-| Type | リファレンス |
+| 種類 | リファレンス |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |
@@ -87,7 +87,7 @@ ms.locfileid: "79036969"
     </appSettings>
     ```
 
-- `System.IdentityModel.Tokens.Jwt` と `Microsoft.IdentityModel.Protocol.Extensions`の `<runtime><assemblyBinding>` ノードの下に `<dependentAssembly>` 要素が追加されます。
+- `<dependentAssembly>` と `<runtime><assemblyBinding>`の `System.IdentityModel.Tokens.Jwt` ノードの下に `Microsoft.IdentityModel.Protocol.Extensions` 要素が追加されます。
 
 追加の変更 ( **[ディレクトリ データの読み取り]** オプションを選択した場合):
 
@@ -121,7 +121,7 @@ ms.locfileid: "79036969"
     </entityFramework>
     ```
 
-- `Microsoft.Data.Services.Client`、`Microsoft.Data.Edm`、`Microsoft.Data.OData` の `<runtime><assemblyBinding>`ノードの下に `<dependentAssembly>` 要素が追加されます。
+- `<dependentAssembly>`、`<runtime><assemblyBinding>`、`Microsoft.Data.Services.Client` の `Microsoft.Data.Edm`ノードの下に `Microsoft.Data.OData` 要素が追加されます。
 
 ## <a name="code-changes-and-additions"></a>コードの変更と追加
 

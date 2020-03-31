@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/13/2019
 ms.author: alkohli
 ms.openlocfilehash: 760f5c6c929aa082993683d7a466a71c6484289a
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67148135"
 ---
 # <a name="troubleshoot-data-copy-issues-in-azure-data-box-disk"></a>Azure Data Box Disk でのデータのコピーに関する問題のトラブルシューティング
@@ -24,7 +24,7 @@ ms.locfileid: "67148135"
 
 このセクションでは、データをディスクにコピーするために Linux クライアントを使用するときに直面する上位の問題の一部について詳述します。
 
-### <a name="issue-drive-getting-mounted-as-read-only"></a>問題: ドライブが読み取り専用としてマウントされる
+### <a name="issue-drive-getting-mounted-as-read-only"></a>問題点:ドライブが読み取り専用としてマウントされる
  
 **原因** 
 
@@ -70,7 +70,7 @@ Linux システムで次の手順を実行します。
 8. マウント解除後に再マウントして、ファイルの永続性を検証します。
 9. データのコピーを続行します。
  
-### <a name="issue-error-with-data-not-persisting-after-copy"></a>問題: データがコピー後に保持されないエラー
+### <a name="issue-error-with-data-not-persisting-after-copy"></a>問題点:データがコピー後に保持されないエラー
  
 **原因** 
 
@@ -97,6 +97,6 @@ Linux システムで次の手順を実行します。
 |[エラー] 例外がスローされました: Bad JSON escape sequence. (JSON エスケープ シーケンスが正しくありません。) |このメッセージは、config.json の形式が無効である場合にレポートされます。 <br> ファイルを保存する前に、[JSONlint](https://jsonlint.com/) を使用して `config.json` を検証してください。|
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [検証ツールの問題をトラブルシューティングする](data-box-disk-troubleshoot.md)方法を学習します。

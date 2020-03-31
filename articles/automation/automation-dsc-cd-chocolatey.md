@@ -6,10 +6,10 @@ ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
 ms.openlocfilehash: 4445f6e9b72380b66f3282d50871b4283f7fc7fa
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75966740"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>使用例: Automation State Configuration と Chocolatey を使用した仮想マシンへの継続的なデプロイ
@@ -181,7 +181,7 @@ Get-AzureRmAutomationDscCompilationJob `
 バージョンを QA に渡し、デプロイが承認されるたびに、パッケージが作成され、nuspec と nupkg が更新あれて、NuGet サーバーにデプロイされます。 さらに、構成 (前の手順 4) も、新しいバージョン番号を承認するために更新する必要があります。 構成はプル サーバーに送られ、コンパイルされる必要があります。
 ここからの先の、更新をプルし、インストールする方法は、構成に依存する VM によって異なります。 これらの更新はいずれも単純で、PowerShell でほんの 1 ～ 2 行です。 Azure DevOps の場合、これらの更新の一部は、ビルドに連結できるビルド タスク内でカプセル化されます。 詳細については、この[記事](https://www.visualstudio.com/docs/alm-devops-feature-index#continuous-delivery)を参照してください。 この [GitHub のリポジトリ](https://github.com/Microsoft/vso-agent-tasks) で、使用できるさまざまなビルド タスクを列挙しています。
 
-## <a name="notes"></a>メモ
+## <a name="notes"></a>Notes
 
 この使用例では、Azure ギャラリーにある一般的な Windows Server 2012 R2 イメージから VM を開始します。 格納されている任意のイメージから開始し、DSC 構成で微調整を行うことができます。
 ただし、イメージに組み込まれている構成を変更するのは、DSC を使用して構成を動的に更新するよりもはるかに困難です。

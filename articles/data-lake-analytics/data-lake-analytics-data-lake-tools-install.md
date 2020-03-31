@@ -10,10 +10,10 @@ ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.openlocfilehash: 08f0456b6a8b663f0af68fbb179de14b9e3acf79
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70914072"
 ---
 # <a name="install-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio のインストール
@@ -22,7 +22,7 @@ Visual Studio を使用して Azure Data Lake Analytics アカウントを作成
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Visual Studio**:Express を除くすべてのエディションがサポートされます。
+* **Visual Studio**: Express を除くすべてのエディションがサポートされます。
 
   * Visual Studio 2019
   * Visual Studio 2017
@@ -51,7 +51,7 @@ Azure Data Lake Tools for Visual Studio は、Visual Studio 2017 15.3 以降で�
 * **サーバー エクスプローラー** > の **[Azure]** ノードに **[Data Lake Analytics]** ノードが含まれている。
 * **[ツール]** メニューに **[Data Lake]** 項目がある。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 診断情報のログについては、「[Azure Data Lake Analytics の診断ログへのアクセス](data-lake-analytics-diagnostic-logs.md)」を参照してください。
 * より複雑なクエリを表示する場合は、「 [チュートリアル: Azure Data Lake Analytics を使用して Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)」をご覧ください。

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: bf7c425766a97aaa1d143133f04502a0aa3c36cb
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76756179"
 ---
 # <a name="resize-a-vm-in-a-lab-in-azure-devtest-labs"></a>ラボ内の VM を Azure DevTest Labs でサイズ変更する
@@ -31,7 +31,7 @@ Azure DevTest Labs でラボ内の VM のサイズを変更するには、次の
 > [!NOTE]
 > リモート デスクトップ セッション (RDP) を介して VM に接続している場合、作業を保存し、サイズを変更する前に、VM から接続を切断します。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 3. ラボの一覧で、サイズ変更する VM が含まれているラボを選択します。  
 4. 左側のパネルで、 **[仮想マシン]** を選択します。 

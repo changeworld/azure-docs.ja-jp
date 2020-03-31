@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 840049265d3b6e4d2fddd794646bfd5691aab9a1
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74083986"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>CSP を使用した Azure への VMware ディザスター リカバリーにおけるマルチテナント サポートの概要
@@ -136,7 +136,7 @@ ms.locfileid: "74083986"
 ![architecture-shared-hsp](./media/vmware-azure-multi-tenant-overview/managed-service-scenario.png)  
 **複数の vCenter を使用する管理されたサービス シナリオ**
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Site Recovery のロールベースのアクセス制御の詳細について[学習する](site-recovery-role-based-linked-access-control.md)。
 - [Azure に VMware VM のディザスター リカバリーを設定する](vmware-azure-tutorial.md)方法を学習する。
 - [VMWare VM 向け CSP によるマルチ テナント](vmware-azure-multi-tenant-csp-disaster-recovery.md)について学習する。
