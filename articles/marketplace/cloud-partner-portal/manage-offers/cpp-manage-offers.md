@@ -1,19 +1,18 @@
 ---
 title: Azure Marketplace と AppSource Marketplace のオファーを管理する | Azure Marketplace
 description: Azure Marketplace と AppSource Marketplace のオファーの管理
-services: Azure, AppSource, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.author: pabutler
-ms.openlocfilehash: 9bbbad0434cf0e3b27d985b10bd0552d1fb4315a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 8b964075a7ad38cae43b8f3bda15f7d8c76318ea
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826751"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286440"
 ---
 # <a name="manage-azure-and-appsource-marketplace-offers"></a>Azure Marketplace と AppSource Marketplace のオファーを管理する
 
@@ -24,7 +23,7 @@ ms.locfileid: "73826751"
 
 Cloud パートナー ポータルを使用すると、パブリッシャーは、オファー上で次の基本的な操作を実行できます。
 
-|     Operation      |  説明                                           |
+|     操作      |  説明                                           |
 |     ---------      |  -----------                                           |
 | [プランの作成](./cpp-create-offer.md)   | オンボーディング リポジトリで保留中のオファー エントリを作成しますが、それを Microsoft マーケットプレースに自動的に発行しません。 | 
 | [オファーの状態の確認](./cpp-view-status-offer.md)   | オファーの発行状態を表示します。  ポータル内には、状態の情報が表示される複数の場所があります。 |
@@ -34,6 +33,6 @@ Cloud パートナー ポータルを使用すると、パブリッシャーは�
 |  |  |
   
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Cloud パートナー ポータルの機能やユーザー インターフェイスについてよくご存知でない場合は、「[Cloud パートナー ポータル ツアー](../portal-tour/cpp-portal-tour.md)」をご覧ください。  次に、[オファーの作成](./cpp-create-offer.md)の詳細をご覧ください。

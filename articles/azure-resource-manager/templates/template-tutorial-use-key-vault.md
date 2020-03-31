@@ -6,16 +6,16 @@ ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: bae67b0177823ab4558085db67423edea062fa3c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: a305914c5c870543e16c515880955693c2634044
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250070"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239170"
 ---
-# <a name="tutorial-integrate-azure-key-vault-in-your-resource-manager-template-deployment"></a>チュートリアル:Resource Manager テンプレートのデプロイで Azure Key Vault を統合する
+# <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>チュートリアル:ARM テンプレートのデプロイで Azure Key Vault を統合する
 
-Azure のキー コンテナーからシークレットを取得し、Azure Resource Manager のデプロイ時にシークレットをパラメーターとして渡す方法を説明します。 キー コンテナー ID のみを参照するため、パラメーター値が公開されることはありません。 詳細については、「[デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](./key-vault-parameter.md)」を参照してください
+Azure のキー コンテナーからシークレットを取得し、Azure Resource Manager (ARM) テンプレートのデプロイ時にシークレットをパラメーターとして渡す方法を説明します。 キー コンテナー ID のみを参照するため、パラメーター値が公開されることはありません。 詳細については、「[デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](./key-vault-parameter.md)」を参照してください
 
 「[リソースのデプロイ順序の設定](./template-tutorial-create-templates-with-dependent-resources.md)」チュートリアルでは、仮想マシン (VM) を作成します。 VM 管理者のユーザー名とパスワードを指定する必要があります。 パスワードを指定する代わりに、Azure Key Vault にパスワードを事前に格納しておき、デプロイ時にキー コンテナーからパスワードを取得するようテンプレートをカスタマイズすることができます。
 
@@ -39,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-* Visual Studio Code と Resource Manager ツール拡張機能。 「[Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](use-vs-code-to-create-template.md)」を参照してください。
+* Visual Studio Code と Resource Manager ツール拡張機能。 [Visual Studio Code を使って ARM テンプレートを作成する方法](use-vs-code-to-create-template.md)に関するページを参照してください。
 * セキュリティを向上させるために、生成されたパスワードを VM 管理者アカウントに対して使用します。 パスワードを生成するためのサンプルを次に示します。
 
     ```console
@@ -49,7 +49,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prepare-a-key-vault"></a>キー コンテナーを準備する
 
-このセクションでは、テンプレートをデプロイするときにシークレットを取得できるように、キー コンテナーを作成し、それにシークレットを追加します。 キー コンテナーを作成するにはさまざまな方法があります。 このチュートリアルでは、Azure PowerShell を使用して [Resource Manager テンプレート](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json)をデプロイします。 このテンプレートは、次の処理を実行します。
+このセクションでは、テンプレートをデプロイするときにシークレットを取得できるように、キー コンテナーを作成し、それにシークレットを追加します。 キー コンテナーを作成するにはさまざまな方法があります。 このチュートリアルでは、Azure PowerShell を使用して [ARM テンプレート](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json)をデプロイします。 このテンプレートは、次の処理を実行します。
 
 * `enabledForTemplateDeployment` プロパティを有効にしてキー コンテナーを作成します。 テンプレートのデプロイ プロセスが、このキー コンテナーで定義されているシークレットにアクセスできるようにするには、このプロパティを *true* にする必要があります。
 * キー コンテナーにシークレットを追加します。 シークレットは、VM の管理者パスワードを格納します。
@@ -97,7 +97,7 @@ ID をコピーして貼り付けると、ID が複数の行に分かれてし�
 
 ## <a name="open-a-quickstart-template"></a>クイック スタート テンプレートを開く
 
-Azure クイック スタート テンプレートは、Resource Manager テンプレートのリポジトリです。 テンプレートを最初から作成しなくても、サンプル テンプレートを探してカスタマイズすることができます。 このチュートリアルで使用するテンプレートは、「[Deploy a simple Windows VM (単純な Windows VM をデプロイする)](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)」と呼ばれます。
+Azure クイックスタート テンプレートは、ARM テンプレートのリポジトリです。 テンプレートを最初から作成しなくても、サンプル テンプレートを探してカスタマイズすることができます。 このチュートリアルで使用するテンプレートは、「[Deploy a simple Windows VM (単純な Windows VM をデプロイする)](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)」と呼ばれます。
 
 1. Visual Studio Code の **[ファイル]**  >  **[ファイルを開く]** を選択します。
 
@@ -107,7 +107,7 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 
-1. **[開く]** を選択して、ファイルを開きます。 シナリオは、「[チュートリアル: 依存リソースを含む Azure Resource Manager テンプレートを作成する](./template-tutorial-create-templates-with-dependent-resources.md)」で使用されたものと同じテンプレートです。
+1. **[開く]** を選択して、ファイルを開きます。 シナリオは、「[チュートリアル: 依存リソースを含む ARM テンプレートを作成する](./template-tutorial-create-templates-with-dependent-resources.md)」で使用したものと同じです。
    このテンプレートには、次の 5 つのリソースが定義されています。
 
    * `Microsoft.Storage/storageAccounts` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)をご覧ください。

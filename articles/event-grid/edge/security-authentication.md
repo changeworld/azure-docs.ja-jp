@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 5dfa17fd702b76e2cfaa7a91066dbc6749c1069e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76844515"
 ---
 # <a name="security-and-authentication"></a>セキュリティと認証
@@ -42,7 +42,7 @@ Event Grid モジュールでは、HTTP エンドポイントと HTTPS エンド
 | 使用できる値 | 説明 |
 | ---------------- | ------------ |
 | 高 | 既定値。 HTTPS のみが有効になります
-| Enabled | HTTP と HTTPS の両方が有効になります
+| 有効 | HTTP と HTTPS の両方が有効になります
 | 無効 | HTTP のみが有効になります
 
 ## <a name="inbound-client-authentication"></a>受信クライアント認証

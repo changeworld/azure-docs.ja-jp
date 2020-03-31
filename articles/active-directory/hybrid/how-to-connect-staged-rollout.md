@@ -11,10 +11,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f3044ebdd716eb85dc63d3a77089912d0d51d8b6
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74915229"
 ---
 # <a name="migrate-to-cloud-authentication-by-using-staged-rollout-preview"></a>段階的なロールアウトを使用してクラウド認証に移行する (プレビュー)
@@ -150,7 +150,7 @@ PowerShell を使用して、 Active Directory Domain Services フォレスト�
 - **オプション B** - *パス スルー認証* + *シームレス SSO*
 - **サポートされていない** - *パスワードハッシュ同期* + *パススルー認証* + *シームレスSSO*
 
-以下の手順を実行します。
+次の操作を行います。
 
 1. UX のプレビューにアクセスするには、[Azure AD ポータル](https://aka.ms/stagedrolloutux)にサインインします。
 
@@ -235,5 +235,5 @@ A:いいえ。この機能は、フェデレーションからクラウド認証
 
 A:はい。 PowerShell を使用して段階的なロールアウトを実行する方法については、「[Azure AD プレビュー」](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure Active Directory 2.0 プレビュー](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )

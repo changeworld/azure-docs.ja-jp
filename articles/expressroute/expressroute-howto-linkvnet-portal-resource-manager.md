@@ -1,5 +1,5 @@
 ---
-title: ExpressRoute:VNet を回線にリンクする:Azure ポータル
+title: ExpressRoute:VNet を回線にリンクする:Azure portal
 description: Azure ExpressRoute 回線に VNet を接続する 手順を説明します。
 services: expressroute
 author: cherylmc
@@ -9,11 +9,11 @@ ms.date: 09/17/2019
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: 4c7a24ad692086398059d1afd48c8927e9d18582
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74022189"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233759"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>ポータルを使用して仮想ネットワークを ExpressRoute 回線に接続する
 > [!div class="op_single_selector"]
@@ -122,7 +122,7 @@ ms.locfileid: "74022189"
 
    ![基本ページ](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
 5. **[設定]** ページで **[仮想ネットワーク ゲートウェイ]** を選び、 **[承認の利用]** チェック ボックスをオンにします。
-6. **承認キー**と**ピア回線 URI** を入力し、接続に名前を付けます。 Click **OK**. **[ピア回線の URI]** は、ExpressRoute 回線のリソース ID です (ExpressRoute 回線の [Properties Setting]\(プロパティ設定\) ウィンドウで確認できます)。
+6. **承認キー**と**ピア回線 URI** を入力し、接続に名前を付けます。 **[OK]** をクリックします。 **[ピア回線の URI]** は、ExpressRoute 回線のリソース ID です (ExpressRoute 回線の [Properties Setting]\(プロパティ設定\) ウィンドウで確認できます)。
 
    ![[設定] ページ](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
 7. **[概要]** ページの内容を確認し、 **[OK]** をクリックします。
@@ -135,5 +135,5 @@ ExpressRoute 回線を仮想ネットワークにリンクしている接続を�
 
 接続のページの **[削除]** アイコンを選ぶことにより、接続を削除して、ExpressRoute 回線への VNet のリンクを解除することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。

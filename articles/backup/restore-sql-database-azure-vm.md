@@ -3,12 +3,12 @@ title: Azure VM 上の SQL Server データベースを復元する
 description: この記事では、Azure VM 上で実行されており、Azure Backup でバックアップしてある SQL Server データベースを復元する方法について説明します。
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 58525069af28be250c3536db076a38fb350bc1da
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 642476c98ca223da01bda5c6eb79ee9b53732468
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75390757"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227463"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Azure VM 上の SQL Server データベースを復元する
 
@@ -112,24 +112,25 @@ Azure Backup は、Azure VM 上で実行されている SQL Server データベ�
 2. バックアップ ファイルを復元する先の SQL サーバーの名前を選択します。
 3. **[サーバー上の宛先パス]** に、手順 2 で選択したサーバー上のフォルダー パスを入力します。 これは、必要なすべてのバックアップ ファイルをサービスがダンプする場所です。 通常、ネットワーク共有パスや、宛先パスとして指定されているマウントされた Azure ファイル共有のパスを使うと、同じネットワーク内の他のマシンや、それらにマウントされている同じ Azure ファイル共有でこれらのファイルに簡単にアクセスできます。<BR>
 
->ターゲットとなる登録済み VM にマウントされている Azure ファイル共有でデータベース バックアップ ファイルを復元するには、NT AUTHORITY\SYSTEM でファイル共有にアクセスできることを確認します。 下の手順を行い、VM にマウントされている AFS に読み取り/書き込みアクセス許可を付与できます。
->- `PsExec -s cmd` を実行し、NT AUTHORITY\SYSTEM シェルに入ります
->   - `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>` を実行します
->   - `dir \\<storageacct>.file.core.windows.net\<filesharename>` でアクセスの有効性を検証します
->- バックアップ コンテナーから `\\<storageacct>.file.core.windows.net\<filesharename>` (パス) へのファイルとしての復元を開始します<BR>
-Psexec は <https://docs.microsoft.com/sysinternals/downloads/psexec> からダウンロードできます
+    >ターゲットとなる登録済み VM にマウントされている Azure ファイル共有でデータベース バックアップ ファイルを復元するには、NT AUTHORITY\SYSTEM でファイル共有にアクセスできることを確認します。 下の手順を行い、VM にマウントされている AFS に読み取り/書き込みアクセス許可を付与できます。
+    >
+    >- `PsExec -s cmd` を実行し、NT AUTHORITY\SYSTEM シェルに入ります
+    >   - `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>` を実行します
+    >   - `dir \\<storageacct>.file.core.windows.net\<filesharename>` でアクセスの有効性を検証します
+    >- バックアップ コンテナーから `\\<storageacct>.file.core.windows.net\<filesharename>` (パス) へのファイルとしての復元を開始します<BR>
+    Psexec は <https://docs.microsoft.com/sysinternals/downloads/psexec> からダウンロードできます
 
 4. **[OK]** を選択します。
 
-![[ファイルとして復元] を選択する](./media/backup-azure-sql-database/restore-as-files.png)
+    ![[ファイルとして復元] を選択する](./media/backup-azure-sql-database/restore-as-files.png)
 
 5. 使用可能なすべての .bak ファイルの復元先に対応する **[復元ポイント]** を選択します。
 
-![[復元ポイント] を選択する](./media/backup-azure-sql-database/restore-point.png)
+    ![[復元ポイント] を選択する](./media/backup-azure-sql-database/restore-point.png)
 
 6. 選択した復旧ポイントに関連付けられているすべてのバックアップ ファイルが、この宛先パスにダンプされます。 このファイルは、SQL Server Management Studio を使用して、ファイルが存在する任意のマシンにデータベースとして復元できます。
 
-![宛先パスにバックアップ ファイルを復元する](./media/backup-azure-sql-database/sql-backup-files.png)
+    ![宛先パスにバックアップ ファイルを復元する](./media/backup-azure-sql-database/sql-backup-files.png)
 
 ### <a name="restore-to-a-specific-point-in-time"></a>特定の時点に復元する
 
@@ -163,6 +164,9 @@ Psexec は <https://docs.microsoft.com/sysinternals/downloads/psexec> からダ�
 1. 一覧から復旧ポイントを選択し、 **[OK]** を選択して復元ポイントの手順を完了します。
 
     ![完全復旧ポイントを選択する](./media/backup-azure-sql-database/choose-fd-recovery-point.png)
+
+    >[!NOTE]
+    > 既定では、過去 30 日間の復旧ポイントが表示されます。 **[フィルター]** をクリックして範囲をカスタマイズすると、30 日間より前の回復ポイントを表示できます。
 
 1. **[詳細な構成]** メニューで、復元後にデータベースを非運用状態のままにする場合は、 **[NORECOVERY を使用して復元]** を有効にします。
 1. 宛先サーバー上の復元場所を変更する場合は、新しいターゲット パスを入力します。

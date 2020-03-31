@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
 ms.openlocfilehash: 39835d9d73adcbe474d3b70dfced313e18d1a3b3
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77603420"
 ---
 # <a name="security-alerts-map-and-threat-intelligence"></a>セキュリティ アラート マップと脅威インテリジェンス
@@ -57,7 +57,7 @@ Security Center のセキュリティ アラート マップを使用して、�
 
 
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 この記事では、Security Center の脅威インテリジェンスを使用して、疑わしいアクティビティの特定を支援する方法について説明しました。 Security Center の詳細については、次の記事を参照してください。
 
 * [Azure Security Center でのセキュリティ アラートの管理と対応](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)。 Security Center でアラートを管理し、セキュリティ インシデントに対応する方法を説明します。

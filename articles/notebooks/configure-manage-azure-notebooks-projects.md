@@ -2,15 +2,15 @@
 title: Azure Notebooks プレビューの構成と管理
 description: Azure Notebooks UI とターミナル直接アクセスの両方を使用し、プロジェクト メタデータ、プロジェクト ファイル、プロジェクトの環境を管理して、セットアップする方法について説明します。
 ms.topic: how-to
-ms.date: 05/13/2019
-ms.openlocfilehash: 5c97372133315e6f0bcd3b854793b6b4746b5ba5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 02/28/2020
+ms.openlocfilehash: 1674effda2cb9bda45f49c91ca618225b0a75f0c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646264"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236123"
 ---
-# <a name="a-idmanage-and-configure-projects--manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" /> Azure Notebooks プレビューでプロジェクトを管理および構成する
+# <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" /> Azure Notebooks プレビューでプロジェクトを管理および構成する
 
 Azure Notebooks プレビューのプロジェクトは、基本的には、Jupyter ノートブックが実行される基になる Linux 仮想マシンと、ファイル フォルダーおよび記述メタデータで構成されます。 
 
@@ -83,7 +83,7 @@ Azure Notebooks のプロジェクト ダッシュボードを使用すると、
 | ダウンロード | d | ファイルまたはフォルダーのコンテンツを含む zip ファイルをダウンロードします。 |
 | [名前の変更] | a | ファイルまたはフォルダーに付ける新しい名前を求めるメッセージが表示されます。 |
 | 削除 | x | 削除の確認メッセージを表示した後、そのファイルをプロジェクトから完全に削除します。 削除を元に戻すことはできません。 |
-| [詳細ビュー] | m | 同じプロジェクト内の別のフォルダーにファイルを移動します。 |
+| 詳細ビュー | m | 同じプロジェクト内の別のフォルダーにファイルを移動します。 |
 
 #### <a name="preview"></a>プレビュー
 
@@ -131,6 +131,9 @@ Azure Notebooks は、プロジェクトに対してサーバーを初めて作�
 - **シェル スクリプト**:2 番目のドロップダウン リストで、プロジェクトの bash シェル スクリプト (通常は拡張子が *.sh* のファイル) を選択します。このスクリプトには、環境を初期化するときに実行するコマンドが格納されています。
 
 - **Environment.yml**:2 番目のドロップダウン リストで、conda 環境を使用して、Python プロジェクト用の *environments.yml* ファイルを選択します。
+
+   > [!WARNING]
+   > これは開発段階のプレビュー サービスであるため、現在、`Environment.yml` 設定がプロジェクトに正しく適用されないという問題が確認されています。 現時点では、指定した環境ファイルが、プロジェクトとそこに含まれる Jupyter ノートブックに読み込まれません。
 
 ステップの追加が完了したら、 **[保存]** を選択します。
 

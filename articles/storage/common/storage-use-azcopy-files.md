@@ -8,10 +8,10 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.openlocfilehash: 8aa0e5304825b3f016694a40b3fc1e176518237a
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77526690"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>AzCopy とファイル ストレージでデータを転送する 
@@ -105,7 +105,7 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 | **構文** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.file.core.windows.net/<file-share-or-directory-name><SAS-token>' --include-path <semicolon-separated-file-list>` |
 | **例** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --include-path 'photos;documents\myFile.txt'` |
 
-この例では、AzCopy によって `C:\myDirectory\photos` ディレクトリと `C:\myDirectory\documents\myFile.txt` ファイルが転送されます。 `C:\myDirectory\photos` ディレクトリ内のすべてのファイルを転送するには、`--recursive` オプションを含める必要があります。
+この例では、AzCopy によって `C:\myDirectory\photos` ディレクトリと `C:\myDirectory\documents\myFile.txt` ファイルが転送されます。 `--recursive` ディレクトリ内のすべてのファイルを転送するには、`C:\myDirectory\photos` オプションを含める必要があります。
 
 `--exclude-path` オプションを使用してファイルを除外することもできます。 詳細については、「[azcopy copy](storage-ref-azcopy-copy.md)」リファレンス ドキュメントを参照してください。
 
@@ -183,7 +183,7 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 | **構文** | `azcopy copy 'https://<storage-account-name>.file.core.windows.net/<file-share-or-directory-name><SAS-token>' '<local-directory-path>'  --include-path <semicolon-separated-file-list>` |
 | **例** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt' --recursive` |
 
-この例では、AzCopy によって `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` ディレクトリと `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/documents/myFile.txt` ファイルが転送されます。 `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` ディレクトリ内のすべてのファイルを転送するには、`--recursive` オプションを含める必要があります。
+この例では、AzCopy によって `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` ディレクトリと `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/documents/myFile.txt` ファイルが転送されます。 `--recursive` ディレクトリ内のすべてのファイルを転送するには、`https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` オプションを含める必要があります。
 
 `--exclude-path` オプションを使用してファイルを除外することもできます。 詳細については、「[azcopy copy](storage-ref-azcopy-copy.md)」リファレンス ドキュメントを参照してください。
 

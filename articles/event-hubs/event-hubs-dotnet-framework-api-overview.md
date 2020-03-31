@@ -9,16 +9,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: f67351fa38543504d63dbf8d86c9537feea24a4f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: b14759ed39037bfa172366a2ed8f8ca089786ec6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312619"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79137613"
 ---
 # <a name="event-hubs-net-framework-api-overview"></a>Event Hubs .NET Framework API の概要
 
-この記事は主要な Azure Event Hubs [.NET Framework クライアント API](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) についてまとめてあります。 2 つのカテゴリがあります。管理 API とランタイム API です。 ランタイム API はメッセージの送受信に必要なすべての操作で構成されています。 管理操作では、エンティティを作成、更新、削除することで Event Hubs エンティティの状態を管理できます。
+この記事は主要な Azure Event Hubs [.NET Framework クライアント API](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) についてまとめてあります。 2 つのカテゴリがあります。管理 API とランタイム API です。 ランタイム API はメッセージの送受信に必要なすべての操作で構成されています。 管理操作では、エンティティを作成、更新、削除することで Event Hubs エンティティの状態を管理できます。
 
 [監視シナリオ](event-hubs-metrics-azure-monitor.md)は管理とランタイムの両方にまたがります。 .NET API に関する詳細なリファレンス ドキュメントについては、[.NET Framework](/dotnet/api/microsoft.servicebus.messaging.eventhubclient)、[.NET Standard](/dotnet/api/microsoft.azure.eventhubs)、および [EventProcessorHost API](/dotnet/api/microsoft.azure.eventhubs.processor) に関するリファレンスを参照してください。
 

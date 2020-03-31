@@ -15,10 +15,10 @@ ms.date: 12/07/2018
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: df923ac479ce5f5a3668c18c616b11348dc6c0b3
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77022241"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>効率的に Batch リソースを一覧表示するクエリを作成する
@@ -73,7 +73,7 @@ filter 文字列は、返される項目の数を減らす式です。 たとえ
 * 論理演算子の `and` と `or` を使用して、複数の式を結合できます。
 * たとえば、実行中の "レンダリング" タスクのみをリストする場合の filter 文字列は `(state eq 'running') and startswith(id, 'renderTask')`となります。
 
-### <a name="select"></a>選択
+### <a name="select"></a>Select
 select 文字列は、各項目に対して返されるプロパティの値を制限します。 プロパティ名の一覧を指定すると、指定されたプロパティ値のみがクエリ結果で返されます。
 
 * select 文字列は、プロパティ名のコンマ区切りリストで構成されます。 クエリするエンティティ型のすべてのプロパティを指定できます。

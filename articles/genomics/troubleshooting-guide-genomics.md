@@ -12,10 +12,10 @@ ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
 ms.openlocfilehash: f6ef56e4188a7541036db096e4ab35a1b95fc141
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73485996"
 ---
 # <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
@@ -126,7 +126,7 @@ Microsoft Genomics サービス (msgen) では、次の 2 種類のエラーが�
 | BAM          | 206        |   Unable to read BAM file [File_name]. Header of file was corrupt.\(BAM ファイル [File_name] を読み取ることができません。ファイルのヘッダーが破損しています。\)                                                                                      | BAM ファイルの形式を確認してください。  正しく書式設定されたファイルを使用して、ワークフローを送信します。                                                                            |
 | BAM          | 207        |  Unable to read BAM file [File_name]. File truncated near offset [offset].\(BAM ファイル [File_name] を読み取ることができません。ファイルはオフセット [offset] 付近で切り詰められています。\)                                                                                       | BAM ファイルの形式を確認してください。  正しく書式設定されたファイルを使用して、ワークフローを送信します。                                                                            |
 | BAM          | 208        |   Invalid BAM file. The ReadID [Read_Id] has no sequence in file [File_name].\(BAM ファイルが無効です。ファイル [File_name] 内の ReadID [Read_Id] にシーケンスがありません。\)                                                                                      | BAM ファイルの形式を確認してください。  正しく書式設定されたファイルを使用して、ワークフローを送信します。                                                                             |
-| FASTQ        | 300        |  Unable to read FASTQ file. [File_name] doesn't end with a newline.\(FASTQ ファイルを読み取ることができません。[File_name] が改行で終わっていません。\)                                                                                     | FASTQ ファイルの形式を修正して、ワークフローを再送信します。                                                                           |
+| FASTQ        | 該当なし        |  Unable to read FASTQ file. [File_name] doesn't end with a newline.\(FASTQ ファイルを読み取ることができません。[File_name] が改行で終わっていません。\)                                                                                     | FASTQ ファイルの形式を修正して、ワークフローを再送信します。                                                                           |
 | FASTQ        | 301        |   Unable to read FASTQ file [File_name]. FASTQ record is larger than buffer size at offset: [_offset]\(FASTQ ファイル [File_name] を読み取ることができません。FASTQ レコードがオフセット: [_offset] でバッファー サイズより大きくなっています\)                                                                                      | FASTQ ファイルの形式を修正して、ワークフローを再送信します。                                                                         |
 | FASTQ        | 302        |     FASTQ Syntax error. File [File_name] has a blank line.\(FASTQ 構文エラー。ファイル [File_name] には空白行があります。\)                                                                                    | FASTQ ファイルの形式を修正して、ワークフローを再送信します。                                                                         |
 | FASTQ        | 303        |       FASTQ Syntax error. File[File_name] has an invalid starting character at offset: [_offset],  line type: [line_type], character: [_char]\(FASTQ 構文エラー。ファイル [File_name] には、オフセット: [_offset]、行タイプ: [line_type]、文字: [_char] に無効な開始文字があります\)                                                                                  | FASTQ ファイルの形式を修正して、ワークフローを再送信します。                                                                         |
@@ -141,6 +141,6 @@ Microsoft Genomics サービス (msgen) では、次の 2 種類のエラーが�
 
 ジョブのエラーが解決しない場合や、その他の質問がある場合は、Azure Portal の Microsoft Genomics サポートに問い合わせてください。 サポート要求を送信する方法の詳細については、[こちら](file-support-ticket-genomics.md)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Microsoft Genomics サービスに関する一般的な問題のトラブルシューティングと解決方法を学びました。 詳細情報とその他の一般的な FAQ については、「[よく寄せられる質問](frequently-asked-questions-genomics.md)」を参照してください。 

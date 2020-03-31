@@ -3,27 +3,16 @@ title: SAP HANA バックアップのサポート マトリックス
 description: この記事では、Azure Backup を使用して Azure VM 上の SAP HANA データベースをバックアップするときにサポートされるシナリオと制限事項について説明します。
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 82d844385290ab0dc2953537c1f9a3387dd7b2b2
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 8496dc4996cac68535bfe9be30e4b5f72e2d5721
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842633"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227459"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Azure VM 上の SAP HANA データベースのバックアップに関するサポート マトリックス
 
 Azure Backup では、Azure への SAP HANA データベースのバックアップがサポートされます。 この記事では、Azure Backup を使用して Azure VM 上の SAP HANA データベースをバックアップするときにサポートされるシナリオと適用される制限事項についてまとめます。
-
-## <a name="onboard-to-the-public-preview"></a>パブリック プレビューにオンボードする
-
-以下のように、パブリック プレビューにオンボードします。
-
-* ポータルで、[この記事に従って](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors#solution-3---azure-portal)、Recovery Services サービス プロバイダーにご利用のサブスクリプション ID を登録します。
-* PowerShell では、このコマンドレットを実行します。 "登録済み" として完了するはずです。
-
-```PowerShell
-Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
-```
 
 > [!NOTE]
 > ログ バックアップの頻度を最大 15 分ごとに設定できるようになりました。 ログ バックアップでは、データベースの完全バックアップが正常に完了した後にのみ、フローが開始されます。
@@ -33,10 +22,10 @@ Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Micros
 | **シナリオ**               | **サポートされている構成**                                | **サポートされていない構成**                              |
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | **トポロジ**               | Azure Linux VM 実行されている SAP HANA のみ                    | HANA ラージ インスタンス (HLI)                                   |
-| **地域**                   | **一般公開:**<br />**ヨーロッパ** – 西ヨーロッパ、北ヨーロッパ、フランス中部、英国南部、英国西部、ドイツ北部、ドイツ中西部、スイス北部、スイス西部<br />**アジア太平洋** – オーストラリア中部、オーストラリア中部 2、オーストラリア東部、オーストラリア南東部、日本東部、日本西部、韓国中部、韓国南部<br /><br>**プレビュー:**<br />**アメリカ** – 米国中部、米国東部 2、米国東部、米国中北部、米国中南部、米国西部 2、米国中西部、米国西部、カナダ中部、カナダ東部 <br />**アジア太平洋** – 東アジア、東南アジア、インド中部、インド南部 | 中国東部、中国北部、中国東部 2、中国北部 2、インド西部、中央スイス北部、南アフリカ北部、南アフリカ西部、アラブ首長国連邦北部、アラブ首長国連邦中部、Azure Government リージョン、フランス南部、ブラジル南部 |
-| **OS のバージョン**            | SLES 12 SP2、SP3、SP4                                | SLES 15、RHEL                                                |
-| **HANA のバージョン**          | HANA 1.x の場合は SDC、SPS04 Rev 44 以下の HANA 2.x の場合は MDC            | -                                                            |
-| **HANA のデプロイメント**       | 単一の Azure VM 上の SAP HANA - スケールアップのみ               | スケールアウト                                                    |
+| **地域**                   | **一般公開:**<br> **アメリカ** – 米国中部、米国東部 2、米国東部、米国中北部、米国中南部、米国西部 2、米国中西部、米国西部、カナダ中部、カナダ東部、ブラジル南部 <br> **アジア太平洋** – オーストラリア中部、オーストラリア中部 2、オーストラリア東部、オーストラリア南東部、東日本、西日本、韓国中部、韓国南部、東アジア、東南アジア、インド中部、インド南部、インド西部、中国東部、中国北部、中国東部 2、中国北部 2 <br> **ヨーロッパ** – 西ヨーロッパ、北ヨーロッパ、フランス中部、英国南部、英国西部、ドイツ北部、ドイツ中西部、スイス北部、スイス西部、中央スイス北部 <br> **アフリカ/中東** – 南アフリカ北部、南アフリカ西部、アラブ首長国連邦北部、アラブ首長国連邦中部  <BR>  **Azure Government リージョン** | フランス南部、ドイツ中部、ドイツ北東部、US Gov アイオワ |
+| **OS のバージョン**            | SLES 12 SP2、SP3、または SP4。SLES 15 SP1                              | RHEL                                                |
+| **HANA のバージョン**          | HANA 1.x の場合は SDC、SPS04 Rev 46 以下の HANA 2.x の場合は MDC       | -                                                            |
+| **HANA のデプロイメント**       | 単一の Azure VM 上の SAP HANA - スケールアップのみ。 <br><br> 高可用性のデプロイでは、2 つの異なるマシン上の両方のノードが、個別のデータ チェーンを持つ個々のノードとして扱われます。               | スケールアウト <br><br> 高可用性のデプロイでは、バックアップはセカンダリ ノードに自動的にフェールオーバーされません。 バックアップの構成は、ノードごとに個別に行う必要があります。                                           |
 | **HANA インスタンス**         | 単一の Azure VM 上の単一の SAP HANA インスタンス – スケールアップのみ | 単一の VM 上の複数の SAP HANA インスタンス                  |
 | **HANA データベースの種類**    | 1\.x の場合は SDC (Single Database Container)、2.x の場合は MDC (Multi-Database Container) | HANA 1.x での MDC                                              |
 | **HANA データベースのサイズ**     | HANA によって報告された 2 TB の完全バックアップサイズ                   |                                                              |
@@ -49,8 +38,6 @@ Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Micros
 
 > [!NOTE]
 > SAP HANA ネイティブ クライアント (SAP HANA Studio/Cockpit/DBA Cockpit) からのバックアップおよび復元操作は、現在サポートされていません。
-
-
 
 ## <a name="next-steps"></a>次のステップ
 

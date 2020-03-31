@@ -1,19 +1,18 @@
 ---
 title: 会社の職場アカウントとパートナー センター
 description: 会社が Microsoft を使用して職場アカウントを設定しているかどうかを確認する方法、新しい職場アカウントを作成する方法、または複数の職場アカウントを設定してパートナー センターで使用する方法。
-author: ChJenk
-manager: evansma
+author: dsindona
 ms.author: parthp
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 4783d3ac8ef78929621179d87f9c8948f6dd079c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c4e7427d87c5f88d8c686b867ef88ceb05f28286
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811995"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281427"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>会社の職場アカウントとパートナー センター
 
@@ -53,6 +52,6 @@ Azure Active Directory にカスタム ドメインを追加する方法の詳�
 
 ![職場アカウントによるサインインに関するトラブルシューティングのダイアグラム](./media/onboarding-aad-flow.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [パートナー センターで Commercial Marketplace アカウントを管理する](./manage-account.md) 

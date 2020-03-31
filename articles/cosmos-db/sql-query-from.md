@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 3939594064b63c567720378b9d316acca64d3266
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77587687"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>Azure Cosmos DB での FROM 句
@@ -23,7 +23,7 @@ FROM 句では、クエリごとに次の規則が適用されます。
 
 * エイリアス化されると、元のソース名をバインドすることはできなくなります。 たとえば、`SELECT Families.id FROM Families f` は無効な構文となります。識別子 `Families` がエイリアス化されており、それ以上解決できないためです。  
 
-* 参照されているすべてのプロパティを完全修飾し、厳格なスキーマの準拠がない場合の曖昧なバインドを回避する必要があります。 たとえば、プロパティ `id` がバインドされていないため、`SELECT id FROM Families f` は無効な構文です。
+* 参照されているすべてのプロパティを完全修飾し、厳格なスキーマの準拠がない場合の曖昧なバインドを回避する必要があります。 たとえば、プロパティ `SELECT id FROM Families f` がバインドされていないため、`id` は無効な構文です。
 
 ## <a name="syntax"></a>構文
   
@@ -147,7 +147,7 @@ FROM 句により、ソースを小さなサブセットに限定することが
     ]
 ```
 
-前のクエリでは、配列をソースとして使用していますが、オブジェクトをソースとして使用することもできます。 クエリでは、ソース内のすべての有効な定義済みの JSON 値が結果に含まれるものと見なされます。 次の例は、`address.state` 値がない `Families` を除外しています。
+前のクエリでは、配列をソースとして使用していますが、オブジェクトをソースとして使用することもできます。 クエリでは、ソース内のすべての有効な定義済みの JSON 値が結果に含まれるものと見なされます。 次の例は、`Families` 値がない `address.state` を除外しています。
 
 ```sql
     SELECT *

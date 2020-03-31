@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: daec0aaf04cae26b6467cc4472305e75517cee5d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: a0cee198f028fd90e04dac15e98d7cd33aee9201
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772989"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79532350"
 ---
 # <a name="mariadb-drivers-and-management-tools-compatible-with-azure-database-for-mariadb"></a>Azure Database for MariaDB と互換性がある MariaDB ドライバーと管理ツール
 
@@ -23,7 +23,7 @@ Azure Database for MariaDB では、MariaDB サーバーのコミュニティ �
 
 目標は、MariaDB ドライバーの 3 つの最新バージョンと、常に MariaDB ドライバーの機能と使いやすさを向上させ続けているオープン ソース コミュニティの作成者の努力をサポートすることです。 テストによって Azure Database for MariaDB 10.2 と互換性のあることがわかっているドライバーの一覧を次の表に示します。
 
-**ドライバー** | **リンク** | **互換性のあるバージョン** | **互換性のないバージョン** | **メモ**
+**[ドライバー]** | **リンク** | **互換性のあるバージョン** | **互換性のないバージョン** | **メモ**
 ---|---|---|---|---
 PHP | https://secure.php.net/downloads.php | 5.5、5.6、7.x | 5.3 | SSL MySQLi との PHP 7.0 接続では、接続文字列に MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT を追加します。 <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> PDO の設定: ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` オプションを false に設定します。
 .NET | [GitHub 上の MySqlConnector](https://github.com/mysql-net/MySqlConnector) <br> [Nuget のインストール パッケージ](https://www.nuget.org/packages/MySqlConnector/) | 0.27 以降 | 0.26.5 以前 |
@@ -48,6 +48,6 @@ SQL クエリのオート コンプリート | X | X |
 サーバー パラメーターの表示 | X | X | X
 クライアント接続の表示 | X | X | X
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Database for MariaDB への接続に関する問題のトラブルシューティング](howto-troubleshoot-common-connection-issues.md)

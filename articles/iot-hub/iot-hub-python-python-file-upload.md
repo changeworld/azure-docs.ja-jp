@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: robinsh
 ms.openlocfilehash: f1c0c046c40ff8edbc33c5e93e4207d9fe2fc67a
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110750"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>IoT Hub を使用してデバイスからクラウドにファイルをアップロードする (Python)
@@ -64,7 +64,7 @@ ms.locfileid: "77110750"
 
 3. テキスト エディターを使用して、作業フォルダーに **FileUpload.py** ファイルを作成します。
 
-4. **FileUpload.py** ファイルの先頭に次の `import` ステートメントと変数を追加します。 
+4. `import`FileUpload.py**ファイルの先頭に次の** ステートメントと変数を追加します。 
 
     ```python
     import time

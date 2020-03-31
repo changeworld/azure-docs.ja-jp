@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 902f3628235cc8a4524ddc4dd8a5327592fe47e7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793216"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236807"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Azure Cognitive Search でのクエリの種類と構成
 
@@ -93,7 +93,7 @@ Azure Cognitive Search は、Apache Lucene を基盤としており、一般的�
 
 [完全な Lucene クエリ構文](query-Lucene-syntax.md#bkmk_syntax)は、要求に `queryType=full` を追加することで有効になります。これは、[Apache Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) の一部として開発されたもので、広く採用されている表現性の高いクエリ言語です。 完全な構文は、単純な構文を拡張したものです。 単純な構文で記述するすべてのクエリは、完全な Lucene パーサーで実行できます。 
 
-次の例で示すのは、同じクエリでも、queryType 設定が異なると、異なる結果が生成されるということです。 最初のクエリでは、`historic` の後の `^3` が検索語句の一部として扱われます。 このクエリの最上位の結果は "Marquis Plaza & Suites" であり、その説明には *ocean* が含まれています
+次の例で示すのは、同じクエリでも、queryType 設定が異なると、異なる結果が生成されるということです。 最初のクエリでは、`^3` の後の `historic` が検索語句の一部として扱われます。 このクエリの最上位の結果は "Marquis Plaza & Suites" であり、その説明には *ocean* が含まれています
 
 ```
 queryType=simple&search=ocean historic^3&searchFields=Description, Tags&$select=HotelId, HotelName, Tags, Description&$count=true
@@ -157,7 +157,7 @@ Azure Cognitive Search では、検索結果のページングを簡単に実装
 ### <a name="hit-highlighting"></a>検索結果の強調表示
 Azure Cognitive Search では、検索クエリに一致する検索結果の特定の部分を正確に強調表示できます。これは、 **`highlight`** 、 **`highlightPreTag`** 、 **`highlightPostTag`** の各パラメーターを使用して簡単に行えます。 一致するテキストを強調表示する*検索可能*フィールドを指定できるほか、Azure Cognitive Search から返される一致テキストの先頭と末尾に追加する文字列タグを正確に指定することもできます。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 + [Azure Cognitive Search のフルテキスト検索のしくみ (クエリ解析アーキテクチャ)](search-lucene-query-architecture.md)
 + [Search エクスプローラー](search-explorer.md)

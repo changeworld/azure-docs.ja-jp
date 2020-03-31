@@ -4,15 +4,15 @@ description: Azure Analysis Services サーバーに Excel を使って接続す
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: bb76accfef94327386d0ff58d003782a9fe3b0d2
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: b5c46c8b85af59efaf611300e2ab7129b3ef3cde
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73573148"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411386"
 ---
 # <a name="connect-with-excel"></a>Excel を使用した接続
 
@@ -40,7 +40,7 @@ Excel でのサーバーへの接続は、Excel 2016 以降のデータの取得
     ![Excel 選択モデルから接続する](./media/analysis-services-connect-excel/aas-connect-excel-select.png)
 
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 [クライアント ライブラリ](analysis-services-data-providers.md)   
 [サーバーの管理](analysis-services-manage.md)     

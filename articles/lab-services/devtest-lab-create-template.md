@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 853c138c8cf73b41b0cebb6c1d349865e18eab6a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61296053"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>VHD ファイルからカスタム イメージを作成する
@@ -33,7 +33,7 @@ ms.locfileid: "61296053"
 
 次の手順で、Azure Portal を使用して VHD ファイルからカスタム イメージを作成します。
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインする
 
 1. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 
@@ -61,8 +61,8 @@ ms.locfileid: "61296053"
 1. カスタム イメージの作成に使用されるイメージがライセンスされていない (Microsoft によって公開されていない) イメージの場合でも、プラン名、プランの提供、プランの公開元を入力できます。
 
    - **プラン名:** このカスタム イメージの作成元の Marketplace イメージの名前 (SKU) を入力します。 
-   - **プランの提供:** このカスタム イメージの作成元の Marketplace イメージの製品 (プラン) を入力します。 
-   - **プランの公開元:** このカスタム イメージの作成元の Marketplace イメージの公開元を入力します。
+   - **プランの提供:** このカスタム イメージの作成元の Marketplace イメージ の製品 (オファー) を入力します。 
+   - **プランの公開元:** このカスタム イメージの作成元の Marketplace イメージ の公開元を入力します。
 
    > [!NOTE]
    > カスタム イメージの作成に使用するイメージがライセンスされたイメージ**ではない**場合、これらのフィールドは空であり、必要に応じて入力できます。 イメージがライセンスされたイメージ**である**場合、フィールドにはプランの情報が自動的に入力されます。 その場合、フィールドの情報を変更しようとすると、警告メッセージが表示されます。
@@ -83,6 +83,6 @@ ms.locfileid: "61296053"
 - [Custom images or formulas? (カスタム イメージか数式か?)](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
 - [Copying Custom Images between Azure DevTest Labs (Azure DevTest Labs 間でのカスタム イメージのコピー)](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [VM をラボに追加する](./devtest-lab-add-vm.md)

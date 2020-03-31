@@ -18,10 +18,10 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: b45ba0c0b417be9cf308fedbb7fad2f6ad5fceaf
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77159733"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 デバイス許可付与フロー
@@ -60,8 +60,8 @@ scope=user.read%20openid%20profile
 
 | パラメーター | 条件 | 説明 |
 | --- | --- | --- |
-| `tenant` | Required | /common、/consumers、または /organizations が可能です。  GUID またはフレンドリ名の形式でアクセス許可を要求するディレクトリ テナントを指定することもできます。  |
-| `client_id` | Required | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた**アプリケーション (クライアント) ID**。 |
+| `tenant` | 必須 | /common、/consumers、または /organizations が可能です。  GUID またはフレンドリ名の形式でアクセス許可を要求するディレクトリ テナントを指定することもできます。  |
+| `client_id` | 必須 | **Azure portal の [アプリの登録]** エクスペリエンスでアプリに割り当てられた[アプリケーション (クライアント) ID](https://go.microsoft.com/fwlink/?linkid=2083908)。 |
 | `scope` | 推奨 | ユーザーに同意を求める [スコープ](v2-permissions-and-consent.md) の、スペースで区切られたリスト。  |
 
 ### <a name="device-authorization-response"></a>デバイス承認応答
@@ -75,7 +75,7 @@ scope=user.read%20openid%20profile
 |`verification_uri`| URI | ユーザーがサインインするために `user_code` を使用してアクセスする必要がある URI。 |
 |`expires_in`      | INT | `device_code` と `user_code` の有効期限か切れるまでの秒数。 |
 |`interval`        | INT | ポーリング要求の間にクライアントが待機する秒数。 |
-| `message`        | String | ユーザーのための指示が含まれている、人間が判読可能な文字列。 これは、`?mkt=xx-XX` という形式で**クエリ パラメーター**を要求に含め、適切な言語カルチャ コードを入力することで、ローカライズできます。 |
+| `message`        | String | ユーザーのための指示が含まれている、人間が判読可能な文字列。 これは、 **という形式で**クエリ パラメーター`?mkt=xx-XX`を要求に含め、適切な言語カルチャ コードを入力することで、ローカライズできます。 |
 
 > [!NOTE]
 > `verification_uri_complete` 応答フィールドは現時点では含まれておらず、サポートされていません。  このことに触れる理由は、[標準](https://tools.ietf.org/html/rfc8628)を読むと、デバイス コード フロー標準のオプションの部分として `verification_uri_complete` が示されているためです。
@@ -86,7 +86,7 @@ scope=user.read%20openid%20profile
 
 ユーザーが個人のアカウント (/common または /consumers) で認証された場合は、認証状態をデバイスに転送するためにもう一度サインインするように求められます。  また、アクセス許可が付与されることを承知していることを確認するために、同意を求めるメッセージも表示されます。  これは、認証に使用される職場または学校のアカウントには適用されません。 
 
-ユーザーが `verification_uri` で認証している間、クライアントは `device_code` を使用して要求されたトークンを取得するために `/token` エンドポイントをポーリングする必要があります。
+ユーザーが `verification_uri` で認証している間、クライアントは `/token` を使用して要求されたトークンを取得するために `device_code` エンドポイントをポーリングする必要があります。
 
 ``` 
 POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
@@ -97,12 +97,12 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 ```
 
-| パラメーター | Required | 説明|
+| パラメーター | 必須 | 説明|
 | -------- | -------- | ---------- |
-| `tenant`  | Required | 初期要求で使用されているのと同じテナントまたはテナント エイリアス。 | 
-| `grant_type` | Required | `urn:ietf:params:oauth:grant-type:device_code` である必要があります。|
-| `client_id`  | Required | 最初の要求で使用された `client_id` と一致する必要があります。 |
-| `device_code`| Required | デバイス承認要求に対して返された `device_code`。  |
+| `tenant`  | 必須 | 初期要求で使用されているのと同じテナントまたはテナント エイリアス。 | 
+| `grant_type` | 必須 | `urn:ietf:params:oauth:grant-type:device_code` である必要があります。|
+| `client_id`  | 必須 | 最初の要求で使用された `client_id` と一致する必要があります。 |
+| `device_code`| 必須 | デバイス承認要求に対して返された `device_code`。  |
 
 ### <a name="expected-errors"></a>予期されるエラー
 
@@ -112,7 +112,7 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 | ------ | ----------- | -------------|
 | `authorization_pending` | ユーザーはまだ認証を完了していませんが、フローを取り消していません。 | 少なくとも `interval` 秒後に要求を繰り返します。 |
 | `authorization_declined` | エンド ユーザーが承認要求を拒否しました。| ポーリングを停止し、未認証の状態に戻します。  |
-| `bad_verification_code`| `/token` エンドポイントに送信された `device_code` が認識されませんでした。 | クライアントが要求時に正しい `device_code` を送信していることを確認します。 |
+| `bad_verification_code`| `device_code` エンドポイントに送信された `/token` が認識されませんでした。 | クライアントが要求時に正しい `device_code` を送信していることを確認します。 |
 | `expired_token` | 少なくとも `expires_in` 秒が経過したので、この `device_code` を使って認証することはもうできません。 | ポーリングを停止し、未認証の状態に戻します。 |   
 
 ### <a name="successful-authentication-response"></a>正常な認証応答

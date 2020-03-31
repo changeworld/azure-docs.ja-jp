@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 756c45541907c52448805376e1b054180c31fdf5
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74848104"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>最新の Azure Multi-Factor Authentication Server にアップグレードする
@@ -84,7 +84,7 @@ v6.x 以前から v7.x 以降にアップグレードする場合、すべての
    * Unregister-MultiFactorAuthenticationAdfsAdapter.ps1
    * MultiFactorAuthenticationAdfsAdapter.config
 
-3. `Register-AdfsAuthenticationProvider` コマンドの末尾に `-ConfigurationFilePath [path]` を追加して、Register-MultiFactorAuthenticationAdfsAdapter.ps1 スクリプトを編集します。 *[path]* は、MultiFactorAuthenticationAdfsAdapter.config ファイルまたは前の手順でエクスポートした構成ファイルへの完全なパスに置き換えます。
+3. `-ConfigurationFilePath [path]` コマンドの末尾に `Register-AdfsAuthenticationProvider` を追加して、Register-MultiFactorAuthenticationAdfsAdapter.ps1 スクリプトを編集します。 *[path]* は、MultiFactorAuthenticationAdfsAdapter.config ファイルまたは前の手順でエクスポートした構成ファイルへの完全なパスに置き換えます。
 
    新しい MultiFactorAuthenticationAdfsAdapter.config の属性を調べて、古い構成ファイルと一致するかどうかを確認します。 新しいバージョンで追加または削除された属性がある場合は、古い構成ファイルから新しい構成ファイルに属性値をコピーするか、一致するように古い構成ファイルを変更します。
 
@@ -110,7 +110,7 @@ v6.x 以前から v7.x 以降にアップグレードする場合、すべての
 9. 手順 2 を繰り返して、AD FS ファームから削除したサーバーを更新し、それらのサーバーの AD FS サービスを再開します。
 10. これらのサーバーを AD FS ファームに追加して戻します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Multi-Factor Authentication とサード パーティ VPN の高度なシナリオ](howto-mfaserver-nps-vpn.md)の例を入手する
 

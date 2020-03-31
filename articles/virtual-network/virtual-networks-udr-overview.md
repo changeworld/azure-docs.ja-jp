@@ -17,11 +17,11 @@ ms.date: 10/26/2017
 ms.author: malop
 ms.reviewer: kumud
 ms.openlocfilehash: 8b95bb45436f45dc0e62fb12d6ab1b24c37372e1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357543"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235959"
 ---
 # <a name="virtual-network-traffic-routing"></a>仮想ネットワーク トラフィックのルーティング
 
@@ -149,7 +149,7 @@ ER と VPN Gateway ルートの伝達は、ルート テーブルのプロパテ
 
 テーブルの各ルートについて説明する包括的なルーティング テーブルについては、「[ルーティングの例](#routing-example)」をご覧ください。
 
-## <a name="default-route"></a>アドレス プレフィックス 0.0.0.0/0
+## <a name="00000-address-prefix"></a><a name="default-route"></a>アドレス プレフィックス 0.0.0.0/0
 
 アドレス プレフィックスが 0.0.0.0/0 のルートは、サブネットのルート テーブルのその他のルートのアドレス プレフィックスに含まれていない IP アドレス宛てのトラフィックをルーティングする方法を Azure に指示します。 サブネットが作成されると、アドレス プレフィックスが 0.0.0.0/0 で、ネクストホップの種類が **インターネット** の[既定](#default) のルートが作成されます。 このルートをオーバーライドしない場合、その他のルートのアドレス プレフィックスに含まれていない IP アドレス宛てのすべてのトラフィックがインターネットにルーティングされます。 例外として、Azure サービスのパブリック IP アドレスへのトラフィックは Azure バックボーン ネットワーク上に残され、インターネットにルーティングされません。 このルートを[カスタム](#custom-routes) ルートでオーバーライドした場合、ルート テーブルのその他のルートのアドレス プレフィックスに含まれていないアドレス宛てのトラフィックは、カスタム ルートでの指定に応じて、ネットワーク 仮想アプライアンスまたは仮想ネットワーク ゲートウェイに送信されます。
 

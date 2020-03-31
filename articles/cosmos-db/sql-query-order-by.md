@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: tisande
 ms.openlocfilehash: b88184be39a41ec42f8fb304a7511073f645f1cb
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77188727"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB での ORDER BY 句
@@ -131,7 +131,7 @@ ORDER BY <sort_specification>
 }
 ```
 
-`Order By` 句に `lastName` を含むクエリを実行すると、結果には `lastName` プロパティが定義されているドキュメントのみが含まれます。 `lastName` について明示的に含めるパスが定義されていないため、クエリ結果に `lastName` のないドキュメントは表示されません。
+`lastName` 句に `Order By` を含むクエリを実行すると、結果には `lastName` プロパティが定義されているドキュメントのみが含まれます。 `lastName` について明示的に含めるパスが定義されていないため、クエリ結果に `lastName` のないドキュメントは表示されません。
 
 2 つのドキュメント (そのうちの 1 つには `lastName` が定義されていない) について、`lastName` で並べ替えるクエリを次に示します。
 

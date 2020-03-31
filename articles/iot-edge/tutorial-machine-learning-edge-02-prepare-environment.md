@@ -4,16 +4,16 @@ description: チュートリアル:エッジでの機械学習用のモジュー
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 1/23/2020
+ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9809a9b4d644a1fa11fe9cce1cbd35b037206b29
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 42c776d4d6c3973e7c222c9c9adf3e5105f6c84f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944290"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79296806"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>チュートリアル:IoT Edge 上に機械学習用の環境を設定する
 
@@ -177,7 +177,7 @@ Azure IoT Hub は、IoT デバイスとクラウドとの間の安全な通信�
 
 ## <a name="review-route-to-storage-in-iot-hub"></a>IoT Hub 内での Storage へのルートを確認する
 
-前のセクションで実行したスクリプトでは、IoT ハブの作成処理の一環として、カスタム エンドポイントとルートも作成されています。 IoT Hub ルートは、クエリ式とエンドポイントで構成されています。 メッセージが式と一致すると、データはルートに沿って、関連付けられているエンドポイントに送信されます。 エンドポイントにできるのは、イベント ハブ、Service Bus キュー、トピックです。 この場合は、ストレージ アカウント内の BLOB コンテナーがエンドポイントです。 Azure portal を使用して、スクリプトで作成されたルートを確認してみましょう。
+前のセクションで実行したスクリプトでは、IoT ハブの作成処理の一環として、カスタム エンドポイントとルートも作成されています。 IoT Hub ルートは、クエリ式とエンドポイントで構成されています。 メッセージが式と一致すると、データはルートに沿って、関連付けられているエンドポイントに送信されます。 エンドポイントにできるのは、イベント ハブ、Service Bus キュー、トピックです。 この場合は、ストレージ アカウント内の BLOB コンテナーがエンドポイントです。 Azure portal を使用して、スクリプトによって作成されたルートを確認してみましょう。
 
 1. [Azure portal](https://portal.azure.com) を開いて、このチュートリアルで使用しているリソース グループに移動します。
 
@@ -189,12 +189,13 @@ Azure IoT Hub は、IoT デバイスとクラウドとの間の安全な通信�
 
 1. **[ストレージ]** セクションを展開します。
 
-   ![カスタム エンドポイントの一覧に turbofandevicestorage があることを確認する](media/tutorial-machine-learning-edge-02-prepare-environment/custom-endpoints.png)
+   ![カスタム エンドポイントの一覧に turbofanDeviceStorage があることを確認する](media/tutorial-machine-learning-edge-02-prepare-environment/custom-endpoints.png)
 
-   カスタム エンドポイントの一覧に **turbofandevicestorage** があることを確認します。 このエンドポイントについて、次の特性に注目してください。
+   カスタム エンドポイントの一覧に **turbofanDeviceStorage** があることを確認します。 このエンドポイントについて、次の特性に注目してください。
 
    * **[コンテナー名]** に表示されている `devicedata` という名前で作成した Blob Storage コンテナーを参照します。
    * **[ファイル名の形式]** に、名前の最後の要素として partition が含まれています。 この形式は、後のチュートリアルで行う Azure Notebooks でのファイル操作の際、さらに便利です。
+   * **[状態]** が正常である必要があります。
 
 1. **[ルート]** タブを選択します。
 

@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.openlocfilehash: 3d9dec0065bb62821fcedcbc4f6e5b578c061caf
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934555"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233619"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux での HDInsight の使用方法
 
@@ -111,7 +111,7 @@ Azure Storage または Data Lake Storage を使用している場合、HDInsigh
 
 HDInsight では、データ ストレージ リソース (Azure Blob Storage と Azure Data Lake Storage) は、コンピューティング リソースから切り離されています。 したがって、必要なコンピューティング処理を実行するために HDInsight クラスターを作成し、作業完了時にそのクラスターを削除できます。一方で、お使いのデータ ファイルは、必要なだけクラウド ストレージに安全に保持し続けることができます。
 
-### <a name="URI-and-scheme"></a>URI およびスキーム
+### <a name="uri-and-scheme"></a><a name="URI-and-scheme"></a>URI およびスキーム
 
 いくつかのコマンドでは、ファイルにアクセスするときに、URI の一部としてスキームを指定する必要があります。 たとえば、Storm-HDFS コンポーネントでは、スキームを指定する必要があります。 既定ではない記憶域 (記憶域クラスターに "追加の" ストレージとして追加した記憶域) を使用する場合は、URI の一部として常にスキームを使用する必要があります。
 
@@ -208,7 +208,7 @@ __Azure Data Lake Storage__ を使用している場合は、次のリンクを�
 * [Java](../data-lake-store/data-lake-store-get-started-java-sdk.md)
 * [Python](../data-lake-store/data-lake-store-get-started-python.md)
 
-## <a name="scaling"></a>クラスターのスケーリング
+## <a name="scaling-your-cluster"></a><a name="scaling"></a>クラスターのスケーリング
 
 クラスターのスケール設定機能を使用すると、クラスターによって使用されるデータ ノードの数を動的に変更できます。 クラスターで他のジョブまたはプロセスを実行している間にスケーリング操作を実行できます。  「[Scale HDInsight clusters](./hdinsight-scaling-best-practices.md)」 (HDInsight クラスターをスケールする) も参照してください
 

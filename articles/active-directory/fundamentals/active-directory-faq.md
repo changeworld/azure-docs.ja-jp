@@ -14,10 +14,10 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6eb0b5e37843413667e51112f52e6a69534e3425
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063630"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Azure Active Directory についてよくあるご質問
@@ -118,7 +118,7 @@ Azure AD 有料サービス (Enterprise Mobility + Security など) は、エン
 
 **A:** はい。パスワード ライトバックが有効な状態であれば、管理者によって実行されるパスワード操作は、オンプレミスの環境に書き戻されます。  
 
-<a name="for-more-answers-to-password-related-questions-see-password-management-frequently-asked-questionsauthenticationactive-directory-passwords-faqmd"></a>パスワード関連の質問に対する回答については、「[パスワード管理に関するよく寄せられる質問 (FAQ)](../authentication/active-directory-passwords-faq.md)」を参照してください。
+<a name="for-more-answers-to-password-related-questions-see-password-management-frequently-asked-questions"></a>パスワード関連の質問に対する回答については、「[パスワード管理に関するよく寄せられる質問 (FAQ)](../authentication/active-directory-passwords-faq.md)」を参照してください。
 ---
 **Q:パスワードを変更しようとしているときに既存の Office 365/Azure AD パスワードを忘れた場合は、どうすればよいですか?**
 

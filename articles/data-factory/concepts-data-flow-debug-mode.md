@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/06/2019
 ms.openlocfilehash: 18848695327a374f12fbe5a34d03366b050d8b65
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74928362"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>マッピング データ フローのデバッグ モード
@@ -37,11 +37,11 @@ Azure Data Factory マッピング データ フローのデバッグ モード�
 
 デバッグが終了したら、[デバッグ] スイッチをオフにして、Azure Databricks クラスターを終了できるようにし、デバッグ アクティビティについて課金されないようにします。
 
-## <a name="debug-settings"></a>デバッグ設定
+## <a name="debug-settings"></a>デバッグの設定
 
 デバッグ設定は、Data Flow のキャンバス ツール バーにある [Debug Settings] (デバッグ設定) をクリックすることで編集できます。 ここで、各ソース変換に使用する行制限やファイル ソースを選択できます。 この設定の行制限の対象となるのは、現在のデバッグ セッションのみです。 SQL DW ソースに使用する、ステージングのリンクされたサービスを選択することもできます。 
 
-![デバッグ設定](media/data-flow/debug-settings.png "デバッグ設定")
+![デバッグ設定](media/data-flow/debug-settings.png "デバッグの設定")
 
 データフローまたは参照されているデータセットにパラメーターがある場合は、 **[パラメーター]** タブを選択して、デバッグ中に使用する値を指定できます。
 
@@ -85,7 +85,7 @@ Join、Exists、または Lookup の変換を単体テストする場合、ご�
 
 ![列の統計](media/data-flow/stats.png "列の統計")
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * データ フローの構築とデバッグが完了したら、[パイプラインからデータ フローを実行します。](control-flow-execute-data-flow-activity.md)
 * データ フローでパイプラインをテストする場合は、パイプラインの[デバッグ実行の実行オプションを使用します。](iterative-development-debugging.md)

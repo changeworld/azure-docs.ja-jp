@@ -8,10 +8,10 @@ ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
 ms.openlocfilehash: 2af20a1ddf4239b7eec6cceabf2ff9711959c128
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77189095"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>(非推奨) Azure Container Service DC/OS クラスターで Vamp を使用してマイクロサービスをカナリア リリースする
@@ -233,7 +233,7 @@ Vamp により、ブループリントに説明された新しい sava:1.1.0 サ
 
 両バージョンの sava を同じクラスターにデプロイし、**重み**スライダー動かして、これらの sava 間のトラフィックの配分を調整します。
 
-1. **[重み]** の横の ![[Vamp UI - edit]\(Vamp UI - 編集\)](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) をクリックします。
+1. ![[重み]](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) の横の **[Vamp UI - edit]\(Vamp UI - 編集\)** をクリックします。
 
 2. 重みの配分を 50%/50% に設定し、 **[保存]** をクリックします。
 
@@ -270,7 +270,7 @@ Vamp は**条件**を使用して、ゲートウェイのルート間のトラ�
 
    ![Vamp UI - ゲートウェイへの条件の適用](./media/container-service-dcos-vamp-canary-release/26_apply_condition.png)
 
-5. 最後に、ゲートウェイの重みを調整して、残りのすべてのトラフィック (すべての非 Firefox ユーザー) を新しい sava:1.1.0 に送信します。 **[重み]** の横の ![[Vamp UI - edit]\(Vamp UI - 編集\)](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) をクリックして、100% がルート sava/sava_cluster/sava:1.1.0/webport に送信されるように重みの配分を設定します。
+5. 最後に、ゲートウェイの重みを調整して、残りのすべてのトラフィック (すべての非 Firefox ユーザー) を新しい sava:1.1.0 に送信します。 ![[重み]](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) の横の **[Vamp UI - edit]\(Vamp UI - 編集\)** をクリックして、100% がルート sava/sava_cluster/sava:1.1.0/webport に送信されるように重みの配分を設定します。
 
    これで、条件によってフィルターされないすべてのトラフィックが、新しい sava:1.1.0 に送信されます。
 
