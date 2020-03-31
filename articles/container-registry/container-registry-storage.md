@@ -4,10 +4,10 @@ description: Azure Container Registry に Docker コンテナー イメージが
 ms.topic: article
 ms.date: 03/21/2018
 ms.openlocfilehash: f66c3dd95edfe5035c46857cb6f9aa59d8a6a0e1
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74456212"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Azure Container Registry へのコンテナー イメージの保存
@@ -36,7 +36,7 @@ Azure では、geo 冗長ストレージ スキームを使用して、コンテ
 | イメージ | 制限なし |
 | レイヤー | 制限なし |
 | Tags | 制限なし|
-| Storage | 5 TB |
+| ストレージ | 5 TB |
 
 膨大な数のリポジトリとタグは、レジストリのパフォーマンスに影響する可能性があります。 レジストリのメンテナンス ルーチンの一部として、未使用のリポジトリ、タグ、およびイメージを定期的に削除してください。 リポジトリ、イメージ、タグなどの削除されたレジストリ リソースは、削除後に元に戻すことは*できません*。 レジストリのリソースを削除する方法については、「[Azure Container Registry 内のコンテナー イメージを削除する](container-registry-delete.md)」を参照してください。
 
@@ -44,7 +44,7 @@ Azure では、geo 冗長ストレージ スキームを使用して、コンテ
 
 価格の詳細については、「[Azure Container Registry の価格][pricing]」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Container Registry の SKU (Basic、Standard、Premium) の詳細については、「[Azure Container Registry SKU](container-registry-skus.md)」を参照してください。
 
