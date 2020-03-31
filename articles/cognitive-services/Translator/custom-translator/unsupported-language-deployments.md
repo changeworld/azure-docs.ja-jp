@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 04/24/2019
 ms.author: swmachan
 ms.openlocfilehash: 3c5c74fc853b5a2425a58e1704aad43350cba212
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73837446"
 ---
 # <a name="unsupported-language-deployments"></a>サポートされていない言語の展開
@@ -45,7 +45,7 @@ ms.locfileid: "73837446"
 
 ![Hub から移行する方法](media/unsupported-language-deployments/request-unsupported-trainings.jpg) 
 
-## <a name="whats-next"></a>次の手順
+## <a name="whats-next"></a>次の操作
 
 ハブの使用を中止し、すべてのモデルの展開を解除すると、展開用に選択したモデルが保存されます。  サポートされていないモデルを展開するための要求は 5 月 24日までに送信してください。  これらのモデルは 6 月 15 日に展開し、翻訳ツールの V3 API を通じてアクセスできます。  さらに、V2 API は 7 月 1 日まで利用できます。  
 
@@ -54,7 +54,7 @@ ms.locfileid: "73837446"
 
 標準のカスタム翻訳ツール モデルとは異なりハブ モデルは単一の領域でのみ利用できるため、複数領域のホスティング料金は適用されません。  展開した後は、移行したカスタム翻訳ツール プロジェクトを通じていつでも、ハブのモデルを展開解除することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [モデルをトレーニングします](how-to-train-model.md)。
 - [Microsoft Translator Text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) を介してデプロイされた翻訳モデルを使い始めます。

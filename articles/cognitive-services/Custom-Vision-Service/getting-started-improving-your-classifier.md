@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
 ms.openlocfilehash: c2858d5f9bca662cbbcd48b2345a7dc2c7ae48b2
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73718533"
 ---
 # <a name="how-to-improve-your-classifier"></a>分類子を改善する方法
@@ -106,7 +106,7 @@ ms.locfileid: "73718533"
 
 視覚的な検査により、その後でさらにトレーニング データを追加するか、または既存のトレーニング データを変更することによって修正できるパターンを識別できる場合があります。 たとえば、リンゴとライムを区別する分類子によって、すべての緑色のリンゴに誤ってライムとしてラベルが付けられる可能性があります。 この問題は、緑色のリンゴのタグ付きの画像を含むトレーニング データを追加および提供することによって修正できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このガイドでは、カスタム画像分類モデルをより正確にするためのいくつかの技法について説明しました。 次に、画像を予測 API に送信することによって、それらの画像をプログラムでテストする方法を説明します。
 

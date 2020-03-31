@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
 ms.openlocfilehash: f00c7b12accde9df9a5708a2b8b378d70428318d
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74091253"
 ---
 # <a name="troubleshoot-vcenter-server-discovery-failures"></a>vCenter Server の検出エラーをトラブルシューティングする
@@ -77,6 +77,6 @@ DRA プロキシ構成の場合
 
 4. DRA プロバイダー サービスを再起動します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [VMware VM のディザスター リカバリー用の構成サーバーを管理する](https://docs.microsoft.com/azure/site-recovery/vmware-azure-manage-configuration-server#refresh-configuration-server) 

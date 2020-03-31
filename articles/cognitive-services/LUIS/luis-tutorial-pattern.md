@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: diberry
 ms.openlocfilehash: 69894dfc6bcbe9eb56451524c78e82da2745aa52
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75979764"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>チュートリアル:一般的なパターン テンプレート発話フォーマットを追加して予測を改善する
@@ -445,7 +445,7 @@ LUIS トレーニングは毎回まったく同じではなく、少し変動が
 
 新しいテンプレート発話は次のようになります。
 
-`who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`.
+`who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`
 
 ここでは、必須の動詞の時制を囲む**グループ**と、**or** パイプでつなげた省略可能な `in` および `on` を使用しています。
 
@@ -530,7 +530,7 @@ Pattern.any エンティティは、さまざまな長さのエンティティ�
 
 1. 左側のナビゲーションの **[Entities]\(エンティティ\)** を選択します。
 
-1. **[+ Create]\(+ 作成\)** を選択し、名前「`FormName`」を入力し、タイプとして **[Pattern.any]** を選択します。 **作成** を選択します。
+1. **[+ Create]\(+ 作成\)** を選択し、名前「`FormName`」を入力し、タイプとして **[Pattern.any]** を選択します。 **［作成］** を選択します
 
 ### <a name="add-a-pattern-that-uses-the-patternany"></a>Pattern.any を使用するパターンを追加する
 

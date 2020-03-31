@@ -12,10 +12,10 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: fd00e4105ce4edae9d014df2a83c5ae3aaf778da
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68854260"
 ---
 # <a name="project-acoustics-unity-design-tutorial"></a>Project Acoustics Unity のデザイン チュートリアル
@@ -91,6 +91,6 @@ Acoustics は、プレイヤーの位置を中心とした「シミュレーシ�
 
 ![実行時の Project Acoustics のボクセルのスクリーンショット](media/voxels-runtime.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [設計プロセス](design-process.md)の背後にある概念に焦点を当てたケース スタディを確認する
 

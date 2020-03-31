@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: kumud
 ms.openlocfilehash: b90910614bcd86a54198b1a0961a3378427ea87e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73164153"
 ---
 # <a name="deploy-virtual-machine-scale-sets-with-ipv6-in-azure-preview"></a>Azure 内で IPv6 を使用して仮想マシン スケール セットをデプロイする (プレビュー)
@@ -92,6 +92,6 @@ ms.locfileid: "73164153"
 ## <a name="sample-virtual-machine-scale-set-template-json"></a>サンプル仮想マシン スケール セット テンプレートの JSON
 
 デュアル スタック (IPv4 + IPv6) 仮想マシン スケール セットをデュアル スタック外部ロード バランサーおよび仮想ネットワーク ビューのサンプル テンプレートと共にデプロイするには、[こちら](https://azure.microsoft.com/resources/templates/ipv6-in-vnet-vmss/)をご覧ください。
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure 仮想ネットワークでの IPv6 サポートの詳細については、[Azure Virtual Network の IPv6 の概要](ipv6-overview.md)に関するページを参照してください。

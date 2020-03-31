@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
 ms.openlocfilehash: 685f04b27cd315b04ef5c45e155e825eebe2747b
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73953898"
 ---
 # <a name="prepare-target-vmware-to-azure"></a>ターゲットを準備する (VMware から Azure)
@@ -21,17 +21,17 @@ ms.locfileid: "73953898"
 ## <a name="prerequisites"></a>前提条件
 
 この記事は以下を前提としています。
-- 物理サーバーを保護するための Recovery Services コンテナーを作成してあること。 Recovery Services コンテナーは [Azure portal](https://portal.azure.com "Azure ポータル") から作成できます。
+- 物理サーバーを保護するための Recovery Services コンテナーを作成してあること。 Recovery Services コンテナーは [Azure portal](https://portal.azure.com "Azure portal") から作成できます。
 - 物理サーバーを Azure にレプリケートできるように[オンプレミス環境をセットアップ](physical-azure-disaster-recovery.md)してあること。
 
 ## <a name="prepare-target"></a>ターゲットを準備する
 
-**ステップ 1: 保護の目標の選択**と**ステップ 2: ソースの準備**を完了した後は、**ステップ 3:ターゲットの準備**を行います
+**ステップ 1: 保護の目標の選択**と**ステップ 2: ソースの準備**を完了した後は、**ステップ 3: ターゲットの準備**を行います。
 
 ![ターゲットを準備する](./media/physical-azure-set-up-target/prepare-target-physical-to-azure.png)
 
 1. **サブスクリプション:** ドロップダウン メニューから、物理サーバーのレプリケート先のサブスクリプションを選びます。
-2. **デプロイ モデル:** デプロイ モデルを選びます (クラシックまたは Resource Manager)
+2. **デプロイメント モデル:** デプロイメント モデルを選びます (クラシックまたは Resource Manager)。
 
 選んだデプロイメント モデルに基づいて検証が実行され、物理サーバーのレプリケートおよびフェールオーバー先のターゲット サブスクリプションに、互換性のあるストレージ アカウントと仮想ネットワークが少なくとも 1 つはあることが確認されます。
 
@@ -39,5 +39,5 @@ ms.locfileid: "73953898"
 
 互換性のある Resource Manager ストレージ アカウントまたは仮想ネットワークがない場合は、ページの上部にある **[+ ストレージ アカウント]** または **[+ ネットワーク]** ボタンをクリックして作成できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [レプリケーションの設定を構成する](vmware-azure-set-up-replication.md)。

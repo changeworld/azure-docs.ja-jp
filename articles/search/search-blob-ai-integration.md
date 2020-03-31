@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 591437eb3951164d53388b6164103948e9ad65e0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73496432"
 ---
 # <a name="use-ai-to-understand-blob-storage-data"></a>AI を使用して BLOB ストレージ データを理解する
@@ -54,7 +54,7 @@ Azure Cognitive Search と Azure Blob Storage が必要です。 BLOB ストレ�
 
 AI エンリッチメントはインデックス作成パイプラインのアドオンであり、Azure Cognitive Search では、それらのパイプラインは "*インデクサー*" の上に構築されます。 インデクサーは、データソースに対応したサブサービスであり、データのサンプリング、メタデータ データの読み取り、データの取得、および後続のインポートに備えたネイティブ形式から JSON ドキュメントへのデータのシリアル化、などを行うための内部ロジックを備えています。 インデクサーは、AI とは別に、インポートのために単独で使用されることがよくありますが、AI エンリッチメント パイプラインを構築する場合は、インデクサーとそれに対応するスキルセットが必要になります。 このセクションでは、インデクサーについて説明します。次のセクションでは、スキルセットに焦点を当てます。
 
-Azure Storage 内の BLOB は、[Azure Cognitive Search Blob Storage インデクサー](search-howto-indexing-azure-blob-storage.md) を使用してインデックス作成されます。 このインデクサーを呼び出すには、 **[データのインポート]** ウィザード、REST API、または .NET SDK を使用します。 コード内でこのインデクサーを使用するには、種類を設定してから、Azure Storage アカウントおよび BLOB コンテナーを含む接続情報を指定します。 ご利用の BLOB のサブセットを作成するには、パラメーターとして渡すことができる仮想ディレクトリを作成するか、ファイルの種類の拡張子に基づいてフィルター処理を行います。
+Azure Storage 内の BLOB は、[Azure Cognitive Search Blob Storage インデクサー](search-howto-indexing-azure-blob-storage.md)を使用してインデックス作成されます。 このインデクサーを呼び出すには、 **[データのインポート]** ウィザード、REST API、または .NET SDK を使用します。 コード内でこのインデクサーを使用するには、種類を設定してから、Azure Storage アカウントおよび BLOB コンテナーを含む接続情報を指定します。 ご利用の BLOB のサブセットを作成するには、パラメーターとして渡すことができる仮想ディレクトリを作成するか、ファイルの種類の拡張子に基づいてフィルター処理を行います。
 
 インデクサーでは、"ドキュメント解析" を行い、BLOB を開いてコンテンツが検査されます。 データソースに接続したら、それがパイプラインでの最初のステップとなります。 BLOB データの場合は、ここで、PDF、Office ドキュメント、画像、およびその他のコンテンツの種類が検出されます。 テキストの抽出によるドキュメント解析は課金の対象外です。 画像抽出によるドキュメント解析は、[価格ページ](https://azure.microsoft.com/pricing/details/search/)で確認できる料金で課金されます。
 
@@ -108,11 +108,11 @@ Azure Storage では、ナレッジ ストアの形態には BLOB コンテナ�
 
 パイプラインの最後にあるエンリッチされたドキュメントは、元の入力バージョンとは異なります。具体的には、エンリッチメント中に抽出または生成された新しい情報を含む追加のフィールドが存在します。 そのため、使用する出力構造に関係なく、元のコンテンツと作成されたコンテンツの組み合わせを操作できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Storage のデータを最大限に活用するために、AI エンリッチメントを使ってできることは、まだまだあります。たとえば、さまざまな方法で Cognitive Services を組み合わせたり、目的に合った既存の Cognitive Services がない場合にスタム スキルを作成したりできます。 詳細については、次のリンク先を参照してください。
 
-+ [Azure portal (Azure Blob storage) を使用して BLOB をアップロード、ダウンロード、および一覧表示する](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
++ [Azure portal を使用して BLOB をアップロード、ダウンロード、および一覧表示する (Azure Blob Storage)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 + [BLOB インデクサーを設定する (Azure Cognitive Search)](search-howto-indexing-azure-blob-storage.md) 
 + [AI エンリッチメントの概要 (Azure Cognitive Search)](cognitive-search-concept-intro.md) 
 + [スキルセットを作成する (Azure Cognitive Search)](cognitive-search-defining-skillset.md)

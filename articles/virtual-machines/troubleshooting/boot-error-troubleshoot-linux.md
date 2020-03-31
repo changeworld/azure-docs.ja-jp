@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 11/20/2019
 ms.author: vilibert
 ms.openlocfilehash: 37cb201751f72918838efe5837aa0e357d483f24
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74408561"
 ---
 # <a name="troubleshoot-azure-linux-virtual-machines-boot-errors"></a>Azure Linux Virtual Machines のブート エラーのトラブルシューティング
@@ -27,7 +27,7 @@ ms.locfileid: "74408561"
 
 * [GRUB の復旧](troubleshoot-vm-boot-error.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [VM シリアル コンソール](serial-console-linux.md)
 
@@ -36,16 +36,16 @@ Azure で OS ディスクを復旧 VM に接続して Linux VM のトラブル�
 - [Azure VM の修復](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)
 
  ディスクのスワップ: これは次のいずれかを使用して自動化できます。
-- [Power Shell の回復スクリプト](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager)
-- [bash の回復スクリプト](https://github.com/sribs/azure-support-scripts)
+- [Power Shell の復旧スクリプト](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager)
+- [bash の復旧スクリプト](https://github.com/sribs/azure-support-scripts)
 
 - [CLI](troubleshoot-recovery-disks-linux.md)
 - [Azure Portal](troubleshoot-recovery-disks-portal-linux.md)
 
 
-## <a name="disk-swap-video"></a>ディスクのスワップの動画:
+## <a name="disk-swap-video"></a>ディスク スワップの動画:
 
-GRUB にアクセスできない場合は、お使いの VM をディスクのスワップを行って自動的に復旧する手順を[この](https://youtu.be/m5t0GZ5oGAc)動画で確認してください。
+GRUB にアクセスできない場合は、[こちら](https://youtu.be/m5t0GZ5oGAc)の動画を見て、VM を復旧するためのディスク スワップ手順を簡単に自動化する方法を確認してください
 
 ## <a name="unofficial-solution"></a>非公式の解決方法
 

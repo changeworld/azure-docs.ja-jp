@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 10/15/2019
 ms.author: kumud
 ms.openlocfilehash: 76d1ba2717ac3c8ac8e86687ef1754a8790f3e4d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72595082"
 ---
 # <a name="reserve-public-ipv6-address-prefix"></a>パブリック IPv6 アドレスのプレフィックスを予約する
@@ -117,6 +117,6 @@ az network public-ip create \
 --public-ip-prefix  IPv6PrefixWestUS
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [IPv6 アドレスのプレフィックス](ipv6-public-ip-address-prefix.md)の詳細について学習する。
 - [IPv6 アドレス](ipv6-overview.md)の詳細について学習します。

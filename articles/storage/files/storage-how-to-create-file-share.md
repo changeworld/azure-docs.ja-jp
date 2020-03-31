@@ -9,10 +9,10 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: ed6abbac7c5953eaec4fa4584248d0d98b49ba63
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77596908"
 ---
 # <a name="create-an-azure-file-share"></a>Azure ファイル共有を作成する
@@ -41,9 +41,9 @@ Azure ファイル共有は、ストレージの共有プールを表す最上�
 
 Azure では、お客様のさまざまなストレージ シナリオに対して複数のストレージ アカウントの種類がサポートされていますが、Azure Files には主に 2 種類のストレージ アカウントがあります。 作成する必要があるストレージ アカウントの種類は、Standard ファイル共有または Premium ファイル共有のどちらを作成するかによって異なります。 
 
-- **General Purpose バージョン 2 (GPv2) ストレージ アカウント**:GPv2 ストレージ アカウントでは、Standard またはハード ディスクベース (HDD ベース) のハードウェアに Azure ファイル共有をデプロイできます。 GPv2 ストレージ アカウントでは、Azure ファイル共有を格納するだけでなく、BLOB コンテナー、キュー、テーブルなどの他のストレージ リソースを格納することもできます。 
+- **General Purpose バージョン 2 (GPv2) ストレージ アカウント**:GPv2 ストレージ アカウントを使うと、Standard のハード ディスク ベース (HDD ベース) のハードウェアに、Azure ファイル共有をデプロイできます。 GPv2 ストレージ アカウントでは、Azure ファイル共有を格納するだけでなく、BLOB コンテナー、キュー、テーブルなどの他のストレージ リソースを格納することもできます。 
 
-- **FileStorage ストレージ アカウント**:FileStorage ストレージ アカウントでは、Premium またはソリッドステート ディスクベース (SSD ベース) のハードウェアに Azure ファイル共有をデプロイできます。 FileStorage アカウントは、Azure ファイル共有を格納するためにのみ使用できます。FileStorage アカウントでその他のストレージ リソース (BLOB コンテナー、キュー、テーブルなど) をデプロイすることはできません。
+- **FileStorage ストレージ アカウント**:FileStorage ストレージ アカウントを使うと、Premium のソリッドステート ディスク ベース (SSD ベース) のハードウェアに、Azure ファイル共有をデプロイできます。 FileStorage アカウントは、Azure ファイル共有を格納するためにのみ使用できます。FileStorage アカウントでその他のストレージ リソース (BLOB コンテナー、キュー、テーブルなど) をデプロイすることはできません。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 Azure portal を使用してストレージ アカウントを作成するには、ダッシュボードから **[+ リソースの作成]** を選択します。 その結果表示される Azure Marketplace の検索ウィンドウで、**ストレージ アカウント**を検索し、検索結果を選択します。 これにより、ストレージ アカウントの概要ページが表示されます。ストレージ アカウントの作成ウィザードを続行するには、 **[作成]** を選択します。

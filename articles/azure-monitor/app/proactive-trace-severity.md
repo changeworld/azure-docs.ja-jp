@@ -4,10 +4,10 @@ description: スマート検出を使用してトレースのテレメトリか�
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.openlocfilehash: 30bdd30ac9c49bb79a3c48bae8149ec761756dd4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671683"
 ---
 # <a name="degradation-in-trace-severity-ratio-preview"></a>トレースの重大度の比率の低下 (プレビュー)

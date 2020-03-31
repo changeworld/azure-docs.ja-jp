@@ -4,10 +4,10 @@ description: この記事では、コンテナーの Azure Monitor エージェ�
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.openlocfilehash: 28b93190298ae61732ff7d2e297899af4ba0e5f2
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75933015"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>コンテナーの Azure Monitor に対するエージェントのデータ収集を構成する
@@ -65,7 +65,7 @@ ConfigMap 構成ファイルを構成してクラスターにデプロイする�
     
     例: `kubectl apply -f container-azm-ms-agentconfig.yaml`. 
 
-    Azure Red Hat OpenShift では、エディターの変更内容を保存します。
+    Azure Red Hat OpenShift では、エディターに変更内容を保存します。
 
 構成の変更が有効になるまでに数分かかる場合があり、クラスター内のすべての omsagent ポッドが再起動されます。 すべての omsagent ポッドが同時に再起動されるのではなく、ローリング再起動で行われます。 再起動が完了すると、次のような結果を含むメッセージが表示されます: `configmap "container-azm-ms-agentconfig" created`。
 

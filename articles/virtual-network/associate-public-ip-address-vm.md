@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: kumud
 ms.openlocfilehash: 5acda69ce08bc493d5349b084d1cfafc8432145b
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75647460"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>仮想マシンへのパブリック IP アドレスの関連付け
@@ -27,7 +27,7 @@ ms.locfileid: "75647460"
 
 ## <a name="azure-portal"></a>Azure portal
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. パブリック IP アドレスを追加する仮想マシンを参照または検索して、選択します。
 3. 以下の画像に示すように、 **[設定]** 下にある **[ネットワーク]** を選択して、パブリック IP アドレスを追加するネットワーク インターフェイスを選択します。
 

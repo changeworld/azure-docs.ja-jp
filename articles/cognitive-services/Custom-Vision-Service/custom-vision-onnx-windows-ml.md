@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 3b56cd12aec21cffd98a0143f5cf3f083ec55e94
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74960555"
 ---
 # <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>チュートリアル:Custom Vision からエクスポートされた ONNX モデルを Windows ML (プレビュー) で使用する
@@ -59,7 +59,7 @@ Custom Vision Service からエクスポートされた ONNX モデルを Window
 
 1. Custom Vision Service を使用して分類器を[作成およびトレーニング](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)します。 モデルをエクスポートするには、 **[General (compact)]\(全般 (コンパクト)\)** など、__コンパクト__ なドメインを選択します。 既存の分類器をエクスポートするには、右上にある歯車アイコンを選択して、ドメインをコンパクトに変換します。 __[設定]__ でコンパクト モデルを選択し、保存してからプロジェクトをトレーニングします。  
 
-1. [パフォーマンス] タブに移動して、[モデルをエクスポート](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)します。コンパクト ドメインによるトレーニングのイテレーションを選択すると、[エクスポート] ボタンが表示されます。 *[エクスポート]* 、 *[ONNX]* 、 *[エクスポート]* の順に選択します。 ファイルの準備ができたら、 *[ダウンロード]* ボタンを選択します。
+1. [パフォーマンス] タブに移動して、[モデルをエクスポート](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)します。コンパクト ドメインによるトレーニングの反復を選択すると、[エクスポート] ボタンが表示されます。 *[エクスポート]* 、 *[ONNX]* 、 *[エクスポート]* の順に選択します。 ファイルの準備ができたら、 *[ダウンロード]* ボタンを選択します。
 
 1. ONNX ファイルをプロジェクトの __[Assets]__ フォルダーにドロップします。 
 
@@ -76,7 +76,7 @@ Custom Vision Service からエクスポートされた ONNX モデルを Window
 
 1. ボタンをクリックして、評価するイメージを選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Custom Vision モデルをエクスポートして使用する別の方法については、次のドキュメントを参照してください。
 

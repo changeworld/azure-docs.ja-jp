@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: angle
 ms.openlocfilehash: 3e7d8ee2b156a30b11cda79798a8af8a8ecf4f64
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74776624"
 ---
 # <a name="disclosure-design-patterns"></a>設計パターンを開示する
@@ -252,6 +252,6 @@ Recommendations
 * [規制の概要](concepts-gating-overview.md)
 * [開示する方法](concepts-disclosure-guidelines.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ボイス タレント向けの開示](https://aka.ms/disclosure-voice-talent)

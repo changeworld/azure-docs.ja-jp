@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: a8bb49e20ec5812a4882966c6918cf2bd59f36a0
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645431"
 ---
 # <a name="security-controls-for-azure-service-fabric"></a>Azure Service Fabric のセキュリティ コントロール
@@ -20,7 +20,7 @@ ms.locfileid: "75645431"
 
 ## <a name="network"></a>ネットワーク
 
-| セキュリティ コントロール | はい/いいえ | メモ |
+| セキュリティ コントロール | はい/いいえ | Notes |
 |---|---|--|
 | サービス エンドポイントのサポート| はい |  |
 | VNet インジェクションのサポート| はい |  |
@@ -29,7 +29,7 @@ ms.locfileid: "75645431"
 
 ## <a name="monitoring--logging"></a>監視およびログ記録
 
-| セキュリティ コントロール | はい/いいえ | メモ|
+| セキュリティ コントロール | はい/いいえ | Notes|
 |---|---|--|
 | Azure 監視サポート (Log analytics や App Insights など)| はい | Azure 監視サポートとサード パーティ サポートの使用。 |
 | コントロールと管理プレーンのログ記録と監査| はい | コントロール プレーン操作はすべて、監査と承認のプロセスを経由して実行されます。 |
@@ -37,14 +37,14 @@ ms.locfileid: "75645431"
 
 ## <a name="identity"></a>ID
 
-| セキュリティ コントロール | はい/いいえ | メモ|
+| セキュリティ コントロール | はい/いいえ | Notes|
 |---|---|--|
 | 認証| はい | 認証は Azure Active Directory を介して行われます。 |
 | 承認| はい | SFRP 経由の呼び出しのための ID およびアクセス管理 (IAM)。 クラスター エンド ポイントは、ユーザーと管理者という 2 つのロールで直接呼び出すことができます。ユーザーは API をいずれかのロールにマッピングできます。 |
 
 ## <a name="data-protection"></a>データ保護
 
-| セキュリティ コントロール | はい/いいえ | メモ |
+| セキュリティ コントロール | はい/いいえ | Notes |
 |---|---|--|
 | 保存時のサーバー側の暗号化: Microsoft のマネージド キー | はい | ユーザーは、クラスターと、クラスター構築の土台となる仮想マシン スケール セットを所有します。 Azure Disk Encryption は仮想マシン スケール セットで有効にできます。 |
 | 保存時のサーバー側の暗号化: カスタマー マネージド キー (BYOK) | はい | ユーザーは、クラスターと、クラスター構築の土台となる仮想マシン スケール セットを所有します。 Azure Disk Encryption は仮想マシン スケール セットで有効にできます。 |
@@ -54,7 +54,7 @@ ms.locfileid: "75645431"
 
 ## <a name="configuration-management"></a>構成管理
 
-| セキュリティ コントロール | はい/いいえ | メモ|
+| セキュリティ コントロール | はい/いいえ | Notes|
 |---|---|--|
 | 構成管理のサポート (構成のバージョン管理など)| はい | |
 

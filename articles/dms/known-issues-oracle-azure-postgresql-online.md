@@ -3,8 +3,8 @@ title: 既知の問題:Oracle から Azure Database for PostgreSQL への移行
 titleSuffix: Azure Database Migration Service
 description: Azure Database Migration Service を使用した Oracle から Azure Database for PostgreSQL 単一サーバーへのオンライン移行に関する既知の問題と移行の制限事項について説明します。
 services: database-migration
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 6ab1050290119a53ee0fb674e6939938a3b855e0
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: fcebc7eb170239e5d7efd8a32599a6e782f630bd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77648600"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235252"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>Oracle から Azure DB for PostgreSQL-Single Server へのオンライン移行に関する既知の問題と移行の制限事項
 

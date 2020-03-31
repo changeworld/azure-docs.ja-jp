@@ -15,10 +15,10 @@ ms.date: 09/12/2019
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: c18190ec5e5d079d51630a976681717a78a46e00
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77087050"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch プールのコンピューティング ノード用の VM サイズを選択する
@@ -73,7 +73,7 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 
 ### <a name="pools-in-cloud-service-configuration"></a>クラウド サービス構成のプール
 
-クラウド サービス構成のバッチ プールでは、次を**除く**すべての [Cloud Services 向け VM サイズ](../cloud-services/cloud-services-sizes-specs.md)がサポートされます。
+クラウド サービス構成のバッチ プールでは、次を[除く](../cloud-services/cloud-services-sizes-specs.md)すべての **Cloud Services 向け VM サイズ**がサポートされます。
 
 | VM シリーズ  | サポートされないサイズ |
 |------------|-------------------|

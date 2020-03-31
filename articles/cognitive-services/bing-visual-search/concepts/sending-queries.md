@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: aahi
 ms.openlocfilehash: 5d27aa80a63232694e1c9951f98b2191ba575e74
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75913062"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Bing Visual Search API に検索クエリを送信する
@@ -73,7 +73,7 @@ Visual Search のエンドポイントは、https:\/\/api.cognitive.microsoft.co
 
 要求で指定する必要があるクエリ パラメーターを次に示します。 少なくとも、`mkt` クエリ パラメーターを含める必要があります。
 
-| Name | 値 | 種類 | 必須 |
+| 名前 | 値 | Type | 必須 |
 | --- | --- | --- | --- |
 | <a name="cc" />cc  | 結果の取得元を表す 2 文字の国番号です。<br /><br /> このパラメーターを設定する場合は、[Accept-Language](#acceptlanguage) ヘッダーも指定する必要があります。 Bing は、言語の一覧で見つかった最初のサポートされている言語を使用し、その言語と指定された国番号を組み合わせて、結果を返す市場を決定します。 言語一覧にサポートされている言語が含まれない場合、Bing は要求をサポートする最も近い言語と市場を検索します。 または、指定された市場ではなく、集計された市場または既定の市場を使って結果を取得する場合もあります。<br /><br /> このクエリ パラメーターと `Accept-Language` クエリ パラメーターは、複数の言語を指定する場合にのみ使う必要があります。それ以外の場合は、`mkt` および `setLang` クエリ パラメーターを使う必要があります。<br /><br /> このパラメーターと [mkt](#mkt) クエリ パラメーターは相互に排他的なので、両方指定することはできません。 | String | いいえ       |
 | <a name="mkt" />mkt   | 結果の取得元の市場。 <br /><br /> **注:** 常に市場を指定することをお勧めします (わかっている場合)。 市場を指定すると、Bing が要求をルーティングして最適な応答を返すのに役立ちます。<br /><br /> このパラメーターと [cc](#cc) クエリ パラメーターは相互に排他的なので、両方指定することはできません。 | String | はい      |
@@ -465,7 +465,7 @@ Content-Disposition: form-data; name="knowledgeRequest"
 }
 ```
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - [Bing Visual Search API とは](../overview.md)
 - [チュートリアル:Visual Search のシングルページ Web アプリを作成する](../tutorial-bing-visual-search-single-page-app.md)

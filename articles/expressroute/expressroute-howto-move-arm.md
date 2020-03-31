@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: cherylmc
 ms.openlocfilehash: 4e49a3bc803733f5e78207fa3573c93395924d6a
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74080166"
 ---
 # <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>PowerShell を使用してクラシック デプロイ モデルから Resource Manager デプロイ モデルに ExpressRoute 回線を移行する
@@ -30,7 +30,7 @@ ExpressRoute 回線をクラシック デプロイ モデルと Resource Manager
 
 ## <a name="move-an-expressroute-circuit"></a>ExpressRoute 回線の移行
 
-### <a name="step-1-gather-circuit-details-from-the-classic-deployment-model"></a>手順 1: クラシック デプロイ モデルからの回線の詳細を収集する
+### <a name="step-1-gather-circuit-details-from-the-classic-deployment-model"></a>手順 1:クラシック デプロイ モデルからの回線の詳細を収集する
 
 Azure クラシック環境にサインインし、サービス キーを収集します。
 
@@ -59,7 +59,7 @@ Azure クラシック環境にサインインし、サービス キーを収集�
    Get-AzureDedicatedCircuit
    ```
 
-### <a name="step-2-sign-in-and-create-a-resource-group"></a>手順 2: サインインし、リソース グループを作成する
+### <a name="step-2-sign-in-and-create-a-resource-group"></a>手順 2:サインインし、リソース グループを作成する
 
 Resource Manager 環境にサインインし、新しいリソース グループを作成します。
 
@@ -154,7 +154,7 @@ Move-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Locati
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ExpressRoute 回線のルーティングの作成と変更を行う](expressroute-howto-routing-arm.md)
 * [仮想ネットワークを ExpressRoute 回線にリンクする](expressroute-howto-linkvnet-arm.md)

@@ -97,6 +97,8 @@
           href: concepts-data-encryption-mysql.md
         - name: Azure AD 認証
           href: concepts-azure-ad-authentication.md
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: ビジネス継続性
       items:
         - name: ビジネス継続性の概要
@@ -176,6 +178,8 @@
           href: howto-configure-ssl.md
         - name: Web Apps
           href: howto-connect-webapp.md
+        - name: リダイレクトによる接続
+          href: howto-redirection.md
     - name: サーバー パラメーターの構成
       items:
         - name: Azure portal
@@ -246,6 +250,10 @@
       items:
         - name: Azure AD の統合の構成
           href: howto-configure-sign-in-azure-ad-authentication.md
+    - name: パブリック ネットワーク アクセスの拒否
+      items:
+        - name: Azure portal
+          href: howto-deny-public-network-access.md
     - name: サーバーの再起動
       items:
         - name: Azure portal

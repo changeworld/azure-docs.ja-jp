@@ -4,10 +4,10 @@ description: Web サイトを再デプロイせずにそのパフォーマンス
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.openlocfilehash: 63d632df61548d15a1e0a606cf2e198207faf341
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670051"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Application Insights コードなしアタッチを使用した実行時の Web アプリのインストルメント化
@@ -84,7 +84,7 @@ Application Insights を有効にすると、Web アプリに DLL と Applicatio
 4. .config ファイルで実行した編集を再開します。
 
 
-## <a name="troubleshoot"></a>トラブルシューティング
+## <a name="troubleshooting"></a><a name="troubleshoot"></a>トラブルシューティング
 
 ### <a name="confirm-a-valid-installation"></a>有効なインストールの確認 
 
@@ -247,7 +247,7 @@ IIS のサポート:IIS 7、7.5、8、8.5 (IIS は必須)。
 
 * 最新の Application Insights SDK をサーバーにダウンロードします。
 
-## <a name="questions"></a>Status Monitor に関する質問
+## <a name="questions-about-status-monitor"></a><a name="questions"></a>Status Monitor に関する質問
 
 ### <a name="what-is-status-monitor"></a>Status Monitor とは何ですか?
 
@@ -304,13 +304,13 @@ Status Monitor を使用して実行時にのみインストルメント化す�
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
-## <a name="download"></a>Status Monitor のダウンロード
+## <a name="download-status-monitor"></a><a name="download"></a>Status Monitor のダウンロード
 
 - 新しい[PowerShell モジュール](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)を使用します
 - [Status Monitor インストーラー](https://go.microsoft.com/fwlink/?LinkId=506648)をダウンロードし、実行します。
 - または、[Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx) を実行し、その中で Application Insights Status Monitor を検索します。
 
-## <a name="next"></a>次のステップ
+## <a name="next-steps"></a><a name="next"></a>次のステップ
 
 テレメトリの表示:
 

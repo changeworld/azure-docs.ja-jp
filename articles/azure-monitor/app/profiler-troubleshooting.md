@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: f284d4dfbe550c357f81c01fa0a66aa9878b6c1e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671564"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Application Insights Profiler の有効化または表示に関する問題のトラブルシューティング
@@ -20,7 +20,7 @@ ms.locfileid: "77671564"
 * ASP.NET Core 3.x アプリケーションのプロファイリングは、まだサポートされていません。
   * Profiler をオンにする必要がある場合は、回避策として [ASP.NET Core 用の Application Insights Profiler](https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore) を使用することができます。 プロファイラーには Linux 用のラベルが付けられますが、Windows 上の .NET Core 3.0 以降のアプリケーションでも動作します。 詳細については、「[サポートされているバージョン](https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore#supported-versions)」を参照してください。
 
-## <a id="troubleshooting"></a>一般的なトラブルシューティング
+## <a name="general-troubleshooting"></a><a id="troubleshooting"></a>一般的なトラブルシューティング
 
 ### <a name="profiles-are-uploaded-only-if-there-are-requests-to-your-application-while-profiler-is-running"></a>Profiler の実行中にアプリケーションへの要求がある場合しか、プロファイルがアップロードされない
 
@@ -52,7 +52,7 @@ Profiler では、トレース メッセージとカスタム イベントが Ap
 * プロキシまたはファイアウォールが https://gateway.azureserviceprofiler.net へのアクセスをブロックしていないことを確認します。
 * Profiler は、Free または Shared App Service プランではサポートされていません。 これらのプランのいずれかを使用している場合は、Basic プランのいずれかにスケールアップすると、Profiler が動作を開始します。
 
-### <a id="double-counting"></a>並列スレッドの二重カウント
+### <a name="double-counting-in-parallel-threads"></a><a id="double-counting"></a>並列スレッドの二重カウント
 
 スタック ビューアーに表示される合計時間メトリックが、要求期間よりも長くなる場合があります。
 
@@ -69,7 +69,7 @@ Profiler を正常に動作させるためには:
 * Web アプリで Application Insights が有効になっている必要があります。
 * Web アプリには、次のアプリ設定が必要です。
 
-    |アプリ設定    | Value    |
+    |アプリ設定    | 値    |
     |---------------|----------|
     |APPINSIGHTS_INSTRUMENTATIONKEY         | Application Insights リソースの iKey    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
@@ -101,7 +101,7 @@ Profiler を構成すると、Web アプリの設定に対して更新が行わ�
 1. **[Always On]** を**オン**に設定します。
 1. 次のアプリ設定を作成します。
 
-    |アプリ設定    | Value    |
+    |アプリ設定    | 値    |
     |---------------|----------|
     |APPINSIGHTS_INSTRUMENTATIONKEY         | Application Insights リソースの iKey    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
