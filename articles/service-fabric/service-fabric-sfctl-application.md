@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: b4e1066bba1db387c9dc0600bc55522f0b5fe897
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76906202"
 ---
 # <a name="sfctl-application"></a>sfctl application
@@ -31,7 +31,7 @@ ms.locfileid: "76906202"
 | manifest | アプリケーションの種類を記述するマニフェストを取得します。 |
 | provision | 外部ストアの ".sfpkg" パッケージまたはイメージ ストアのアプリケーション パッケージを使って、Service Fabric アプリケーションの種類をプロビジョニングするか、クラスターに登録します。 |
 | report-health | Service Fabric アプリケーションの正常性レポートを送信します。 |
-| 型 | 指定した名前と完全に一致する Service Fabric クラスター内のアプリケーションの種類の一覧を取得します。 |
+| type | 指定した名前と完全に一致する Service Fabric クラスター内のアプリケーションの種類の一覧を取得します。 |
 | type-list | Service Fabric クラスター内のアプリケーションの種類の一覧を取得します。 |
 | unprovision | Service Fabric アプリケーションの種類をクラスターから削除または登録解除します。 |
 | upgrade | Service Fabric クラスターで、アプリケーションのアップグレードを開始します。 |

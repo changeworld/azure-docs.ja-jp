@@ -7,10 +7,10 @@ ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 11/04/2019
 ms.openlocfilehash: d5b5a69c7927d07c0ae6b3b56ec97b6551e5d46b
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77191329"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-http-endpoints-in-azure-logic-apps"></a>Azure Logic Apps で HTTP エンドポイントを使用して、ロジック アプリの呼び出し、トリガー、または入れ子を行います。
@@ -19,7 +19,7 @@ ms.locfileid: "77191329"
 
 HTTP エンドポイントを設定するには、次のいずれかのトリガーの種類を使用できます。それにより、ロジック アプリが受信要求を受信できるようになります。
 
-* [要求](../connectors/connectors-native-reqres.md)
+* [Request](../connectors/connectors-native-reqres.md)
 * [HTTP Webhook](../connectors/connectors-native-webhook.md)
 * [ApiConnectionWebhook の種類](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger)を持ち、受信 HTTP 要求を受信できるマネージド コネクタ トリガー
 

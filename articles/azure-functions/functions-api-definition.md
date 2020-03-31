@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
 ms.openlocfilehash: a80079574dc29c54de89f5275c65637b205742d7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74227408"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Azure Functions での OpenAPI 2.0 メタデータのサポート (プレビュー)
@@ -25,7 +25,7 @@ Azure Functions での OpenAPI 2.0 (旧称 Swagger) メタデータ サポート
 >[!TIP]
 >特定の機能の詳細について学習するには、[概要チュートリアル](./functions-api-definition-getting-started.md)から始めて後でこのドキュメントに戻ることをお勧めします。
 
-## <a name="enable"></a>OpenAPI 定義のサポートの有効化
+## <a name="enable-openapi-definition-support"></a><a name="enable"></a>OpenAPI 定義のサポートの有効化
 すべての OpenAPI 設定を、関数アプリの**プラットフォーム機能**の **API の定義**ページで構成できます。
 
 > [!NOTE]
@@ -33,18 +33,18 @@ Azure Functions での OpenAPI 2.0 (旧称 Swagger) メタデータ サポート
 
 ホストされる OpenAPI と定義およびクイック スタート定義の生成を有効にするには、 **[API 定義のソース]** を **[関数 (プレビュー)]** に設定します。 **外部 URL** を使用して、他の場所でホストされている OpenAPI 定義を自分の関数で使用できます。
 
-## <a name="generate-definition"></a>関数のメタデータからの Swagger スケルトンの生成
+## <a name="generate-a-swagger-skeleton-from-your-functions-metadata"></a><a name="generate-definition"></a>関数のメタデータからの Swagger スケルトンの生成
 テンプレートは、最初の OpenAPI 定義の記述を開始するのに役立ちます。 定義テンプレート機能では、HTTP トリガー関数ごとに、function.json ファイル内のすべてのメタデータを使用してスパース OpenAPI 定義が作成されます。 要求や応答のテンプレートなど、[OpenAPI 仕様](https://swagger.io/specification/)から API に関する詳細情報を入力する必要があります。
 
 手順については、この[概要チュートリアル](./functions-api-definition-getting-started.md)を確認してください
 
-### <a name="templates"></a>使用可能なテンプレート
+### <a name="available-templates"></a><a name="templates"></a>使用可能なテンプレート
 
 |名前| 説明 |
 |:-----|:-----|
 |Generated Definition (生成された定義)|関数の既存のメタデータから推論可能な情報量が最大の OpenAPI 定義|
 
-### <a name="quickstart-details"></a>生成された定義に含まれるメタデータ
+### <a name="included-metadata-in-the-generated-definition"></a><a name="quickstart-details"></a>生成された定義に含まれるメタデータ
 
 次の表は、Azure ポータル設定と、生成された Swagger スケルトンにマップされたときの function.json 内の対応するデータを表します。
 
@@ -53,7 +53,7 @@ Azure Functions での OpenAPI 2.0 (旧称 Swagger) メタデータ サポート
 |[Host](https://swagger.io/specification/#fixed-fields-15)|**関数アプリの設定** > **App Service の設定** > **概要** > **URL**|*存在しない*
 |[Paths](https://swagger.io/specification/#paths-object-29)|**統合** > **選択した HTTP メソッド**|バインディング: ルート
 |[Path Item](https://swagger.io/specification/#path-item-object-32)|**統合** > **ルート テンプレート**|バインディング: メソッド
-|[Security](https://swagger.io/specification/#security-scheme-object-112)|**キー**|*存在しない*|
+|[Security](https://swagger.io/specification/#security-scheme-object-112)|**[キー]**|*存在しない*|
 |operationID*|**ルート + 使用できる動詞**|ルート + 使用できる動詞|
 
 \*Operation ID は PowerApps + Flow と統合する場合のみ必要です。
@@ -62,7 +62,7 @@ Azure Functions での OpenAPI 2.0 (旧称 Swagger) メタデータ サポート
 >
 > 詳細については、「[Customize your Swagger definition for PowerApps](https://powerapps.microsoft.com/tutorials/customapi-how-to-swagger/)」(PowerApps の Swagger 定義のカスタマイズ) を参照してください。
 
-## <a name="CICD"></a>CI/CD を使用した API 定義の設定
+## <a name="use-cicd-to-set-an-api-definition"></a><a name="CICD"></a>CI/CD を使用した API 定義の設定
 
  ソース管理から API 定義を変更するためにソース管理を有効にする前に、ポータルで API 定義ホスティングを有効にする必要があります。 以下の手順に従います。
 
@@ -75,7 +75,7 @@ Azure Functions での OpenAPI 2.0 (旧称 Swagger) メタデータ サポート
 
 これで、リポジトリ内の swagger.json への変更は、API 定義 URL にある関数アプリ、および手順 1.c でメモしたキーでホストされるようになります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [概要チュートリアル](functions-api-definition-getting-started.md)。 OpenAPI 定義が動作することを確認するチュートリアルを試してください。
 * [Azure Functions GitHub リポジトリ](https://github.com/Azure/Azure-Functions/) API 定義のサポート プレビューについてフィードバックを提供するには、Functions リポジトリを参照してください。 更新が必要な内容については、Github の問題を作成してください。
 * [Azure Functions の開発者向けガイド](functions-reference.md) 関数のコーディングとトリガーおよびバインドの定義に関して学習してください。

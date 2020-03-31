@@ -13,10 +13,10 @@ ms.date: 04/02/2019
 tags: ''
 keywords: ''
 ms.openlocfilehash: 67af4eae03b773fad9cf38964152c1fb9d623bd5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72025943"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Azure で IBM zD&T 開発/テスト環境をインストールする
@@ -52,7 +52,7 @@ zD&T のすべてのエディションが Windows Server ではなく、x86 Linu
 
      - **ハードウェア ベースのライセンス サーバー**では、ソフトウェアのすべての部分にアクセスするために必要な Rational Token を含む USB ハードウェア デバイスが必要です。 これは、IBM から取得する必要があります。
 
-     - **ソフトウェア ベースのライセンス サーバー**では、ライセンス キーを管理するための集中管理サーバーを設定する必要があります。 この方法をお勧めします。それには、管理サーバーで IBM から受信したキーを設定する必要があります。
+     - **ソフトウェア ベースのライセンス サーバー**では、ライセンス キーを管理するための集中管理サーバーを設定する必要があります。 この方法が推奨されます。IBM から受け取ったキーを管理サーバーに設定する必要があります。
 
 ## <a name="create-the-base-image-and-connect"></a>基本イメージおよび接続を作成する
 
@@ -136,6 +136,6 @@ Web サーバーは、起動されると、インストール プロセス中に
 
 3. この URL を Web ブラウザーに貼り付けて、zD&T インストールのための管理コンポーネントを開きます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [IBM zD&T v1 の Application Developers Controlled Distribution (ADCD) を設定する](./demo.md)

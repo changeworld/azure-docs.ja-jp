@@ -8,10 +8,10 @@ ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
 ms.openlocfilehash: d30652d4e068cbceb79e6da60b48176b9de64647
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670442"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-resource-logs-archived-to-a-storage-account"></a>ストレージ アカウントにアーカイブされている Azure Monitor プラットフォーム ログの形式変更のための準備

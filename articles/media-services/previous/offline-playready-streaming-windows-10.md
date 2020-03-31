@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
 ms.openlocfilehash: 350b8d111652511627ddf67236f63248a5489015
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74970450"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>Windows 10 用のオフライン PlayReady ストリーミング  
@@ -128,8 +128,8 @@ private async void LoadUri_Click(object sender, RoutedEventArgs e)
 
 ## <a name="additional-notes"></a>その他のメモ
 
-* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. のサービス使用条件とプライバシー ポリシーが適用されます。
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [DRM システムのハイブリッド設計](hybrid-design-drm-sybsystem.md)

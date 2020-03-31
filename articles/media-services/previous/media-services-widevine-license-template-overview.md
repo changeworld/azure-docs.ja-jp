@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: c7511279e66ab598e4ae3c26f053915b7393b39d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74978392"
 ---
 # <a name="widevine-license-template-overview"></a>Widevine ライセンス テンプレートの概要 
@@ -191,7 +191,7 @@ Media Services が提供する .NET API を使用して、Widevine ライセン�
 
 ## <a name="additional-notes"></a>その他のメモ
 
-* Widevine は Google Inc. が提供するサービスで、Google Inc. のサービス利用規約とプライバシー ポリシーが適用されます。
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

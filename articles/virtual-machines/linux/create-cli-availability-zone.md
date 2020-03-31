@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 3f15b59be1182a65da7acb54d0748caf69fc0af3
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: e229bb7af02255c0714c559b841afac9a66a7c7d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970202"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535614"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Azure CLI を使用して可用性ゾーン内に Linux 仮想マシンを作成する
 
@@ -33,7 +33,7 @@ az vm list-skus --location eastus2 --output table
 
 次に示したのは、その出力例の抜粋です。これは各 VM サイズが提供されている可用性ゾーンを確認できます。
 
-```azurecli
+```output
 ResourceType      Locations  Name               [...]    Tier       Size     Zones
 ----------------  ---------  -----------------           ---------  -------  -------
 virtualMachines   eastus2    Standard_DS1_v2             Standard   DS1_v2   1,2,3
@@ -68,13 +68,13 @@ az group create --name myResourceGroupVM --location eastus2
 
 仮想マシンを作成するときに、オペレーティング システム イメージ、ディスクのサイズ、管理者資格情報など、いくつかの選択肢があります。 この例では、Ubuntu Server を実行する *myVM* という名前の仮想マシンを作成します。 VM は、可用性ゾーン *1* に作成されます。 既定では、VM は、*Standard_DS1_v2* サイズで作成されます。
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create --resource-group myResourceGroupVM --name myVM --location eastus2 --image UbuntuLTS --generate-ssh-keys --zone 1
 ```
 
 VM の作成には数分かかることがあります。 VM が作成されると、Azure CLI で VM に関する以下の情報が出力されます。 `zones` の値を書き留めておきます。この値は、VM が実行されている可用性ゾーンを表します。 
 
-```azurecli 
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroupVM/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -105,7 +105,7 @@ az disk show --resource-group myResourceGroupVM --name $osdiskname
 
 この出力は、マネージド ディスクが VM と同じ可用性ゾーン内にあることを示しています。
 
-```azurecli
+```output
 {
   "creationData": {
     "createOption": "FromImage",
@@ -153,7 +153,7 @@ az network public-ip show --resource-group myResourceGroupVM --name $ipaddressna
 
 この出力は、IP アドレスが VM と同じ可用性ゾーン内にあることを示しています。
 
-```azurecli
+```output
 {
   "dnsSettings": null,
   "etag": "W/\"b7ad25eb-3191-4c8f-9cec-c5e4a3a37d35\"",

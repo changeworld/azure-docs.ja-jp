@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 09/12/2019
 ms.author: cshoe
 ms.openlocfilehash: 83bef8d788d3ef8bb6f8337b8e39b195748702bb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74227290"
 ---
 # <a name="handle-azure-functions-binding-errors"></a>Azure Functions のバインド エラーの処理

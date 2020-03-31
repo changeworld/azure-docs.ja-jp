@@ -7,10 +7,10 @@ ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
 ms.openlocfilehash: 133e89bd9187ae5e48fa208b407678760d31adfd
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78163762"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>PowerShell Azure Functions をローカル環境でデバッグする

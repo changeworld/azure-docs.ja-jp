@@ -15,11 +15,11 @@ ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.openlocfilehash: 52779b7ffea0f33676426f145a700c7181cf0bf1
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161258"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230735"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>方法: エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ
 
@@ -69,7 +69,7 @@ SAML 要求に NameIDPolicy の要素が含まれていない場合、Azure AD �
 
 `NameIdentifier` (または NameID) 要求の必要なソースを選択します。 次のオプションから選択できます。
 
-| Name | 説明 |
+| 名前 | 説明 |
 |------|-------------|
 | Email | ユーザーの電子メール アドレス |
 | userprincipalName | ユーザーのユーザー プリンシパル名 (UPN) |
@@ -99,7 +99,7 @@ SAML 要求に NameIDPolicy の要素が含まれていない場合、Azure AD �
 
 要求変換関数を使用することもできます。
 
-| Function | 説明 |
+| 機能 | 説明 |
 |----------|-------------|
 | **ExtractMailPrefix()** | メール アドレスまたはユーザー プリンシパル名からドメイン サフィックスを除去します。 これにより、渡されたユーザー名の最初の部分のみが抽出されます (例: joe_smith@contoso.com ではなく "joe_smith" のみ)。 |
 | **Join()** | 属性を検証済みドメインと結合します。 選択したユーザー ID 値にドメインが含まれる場合、ユーザー名が抽出されて、選択された検証済みドメインが追加されます。 たとえば、ユーザー ID 値としてメール アドレス (joe_smith@contoso.com) を選択し、検証済みドメインとして contoso.onmicrosoft.com を選択した場合、結果は joe_smith@contoso.onmicrosoft.com になります。 |
@@ -126,7 +126,7 @@ SAML 要求に NameIDPolicy の要素が含まれていない場合、Azure AD �
 
 次の関数を使用して、要求を変換できます。
 
-| Function | 説明 |
+| 機能 | 説明 |
 |----------|-------------|
 | **ExtractMailPrefix()** | メール アドレスまたはユーザー プリンシパル名からドメイン サフィックスを除去します。 これにより、渡されたユーザー名の最初の部分のみが抽出されます (例: joe_smith@contoso.com ではなく "joe_smith" のみ)。 |
 | **Join()** | 2 つの属性を結合することで、新しい値を作成します。 必要に応じて、2 つの属性の間に区切り記号を使用できます。 NameID 要求の変換では、結合は検証済みドメインに制限されます。 選択したユーザー ID 値にドメインが含まれる場合、ユーザー名が抽出されて、選択された検証済みドメインが追加されます。 たとえば、ユーザー ID 値としてメール アドレス (joe_smith@contoso.com) を選択し、検証済みドメインとして contoso.onmicrosoft.com を選択した場合、結果は joe_smith@contoso.onmicrosoft.com になります。 |

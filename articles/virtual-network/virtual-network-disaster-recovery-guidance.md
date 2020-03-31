@@ -16,10 +16,10 @@ ms.date: 05/16/2016
 ms.author: narayan
 ms.reviewer: aglick
 ms.openlocfilehash: 3f91d24bff0bec540ff0e7964f21c2f47c03638c
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67876169"
 ---
 # <a name="virtual-network--business-continuity"></a>Virtual Network – ビジネス継続性

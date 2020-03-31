@@ -12,10 +12,10 @@ ms.date: 04/17/2019
 ms.author: kefre
 ms.custom: seodec18
 ms.openlocfilehash: e8ab205a43e5cb1e8e2b96dbd9600e1fceb29403
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68564594"
 ---
 # <a name="computer-vision-api-frequently-asked-questions"></a>Computer Vision API についてよく寄せられる質問

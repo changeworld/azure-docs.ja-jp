@@ -7,11 +7,11 @@ ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 12/05/2019
 ms.openlocfilehash: 797cd82327d68003d4e5f007d1f16e9534092ac0
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191352"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237167"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps 用のオンプレミス データ ゲートウェイのインストール
 

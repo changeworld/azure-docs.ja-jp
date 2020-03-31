@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 01/08/2020
 ms.author: cherylmc
 ms.openlocfilehash: ab44d5358154c17622eef68205ac2326e81377a0
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75770970"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>PowerShell を使用した ExpressRoute 回線の作成と変更
@@ -36,7 +36,7 @@ ms.locfileid: "75770970"
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
-## <a name="create"></a>ExpressRoute 回線の作成とプロビジョニング
+## <a name="create-and-provision-an-expressroute-circuit"></a><a name="create"></a>ExpressRoute 回線の作成とプロビジョニング
 ### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1.Azure アカウントにサインインしてサブスクリプションを選択する
 
 [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
@@ -52,7 +52,7 @@ Get-AzExpressRouteServiceProvider
 
 接続プロバイダーがそこにリストされているかどうかを確認します。 以下の項目は、回線を作成する際に後で必要になるため、書き留めておいてください。
 
-* Name
+* 名前
 * PeeringLocations
 * BandwidthsOffered
 
@@ -285,7 +285,7 @@ Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "Exp
 get-help Get-AzExpressRouteCircuit -detailed
 ```
 
-## <a name="modify"></a>ExpressRoute 回線の変更
+## <a name="modifying-an-expressroute-circuit"></a><a name="modify"></a>ExpressRoute 回線の変更
 ExpressRoute 回線の特定のプロパティは、接続に影響を与えることなく変更できます。
 
 ダウンタイムなく、次のタスクを実行できます。
@@ -371,7 +371,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ### <a name="to-control-access-to-the-classic-and-resource-manager-environments"></a>クラシック環境および Resource Manager 環境へのアクセスを制御するには
 「[クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線の移行](expressroute-howto-move-arm.md)」の説明を参照してください。
 
-## <a name="delete"></a>ExpressRoute 回線のプロビジョニング解除と削除
+## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a><a name="delete"></a>ExpressRoute 回線のプロビジョニング解除と削除
 次の情報をメモしておきます。
 
 * ExpressRoute 回線からすべての仮想ネットワークのリンクを解除する必要があります。 この操作が失敗した場合は、回線にリンクされている仮想ネットワークがないか確認してください。

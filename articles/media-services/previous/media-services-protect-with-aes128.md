@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 01153317b49e4543f10faa517bce7bcc01ce22d4
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895825"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232779"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>AES-128 動的暗号化とキー配信サービスの使用
 > [!div class="op_single_selector"]
@@ -71,16 +71,16 @@ Media Services キー配信サービスと動的暗号化を使用して、AES �
 
 この記事の残りの部分では、説明、コード例、および前述したタスクの実行方法を説明するトピックへのリンクを紹介します。
 
-## <a name="current-limitations"></a>現時点での制限事項
+## <a name="current-limitations"></a>現在の制限
 資産の配信ポリシーを追加または更新する場合は、既存のすべてのロケーターを削除し、新しいロケーターを作成する必要があります。
 
-## <a id="create_asset"></a>資産を作成し、その資産にファイルをアップロードする
+## <a name="create-an-asset-and-upload-files-into-the-asset"></a><a id="create_asset"></a>資産を作成し、その資産にファイルをアップロードする
 ビデオの管理、エンコード、およびストリーミングを行うには、最初にコンテンツを Media Services にアップロードする必要があります。 コンテンツをアップロードすると、クラウドにコンテンツが安全に保存され、処理したりストリーミングしたりできるようになります。 
 
 詳細については、[Media Services アカウントへのファイルのアップロード](media-services-dotnet-upload-files.md)に関するページを参照してください。
 
-## <a id="encode_asset"></a>ファイルが含まれている資産をアダプティブ ビットレート MP4 セットにエンコードする
-動的暗号化では、一連のマルチビットレート MP4 ファイルまたはマルチビットレート Smooth Streaming ソース ファイルを含む資産を作成します。 そうすれば、マニフェストまたはフラグメント要求で指定された形式に基づき、オンデマンド ストリーミング サーバーによって、ユーザーが選択したプロトコルでストリームを受信するようになります。 そのため、単一のストレージ形式のファイルだけに対して保存と支払を行う必要があります。 Media Services は、クライアントからの要求に応じて適切な応答を作成して返します。 詳細については、[動的パッケージの概要](media-services-dynamic-packaging-overview.md)に関するページを参照してください。
+## <a name="encode-the-asset-that-contains-the-file-to-the-adaptive-bitrate-mp4-set"></a><a id="encode_asset"></a>ファイルが含まれている資産をアダプティブ ビットレート MP4 セットにエンコードする
+動的暗号化では、一連のマルチビットレート MP4 ファイルまたはマルチビットレート Smooth Streaming ソース ファイルを含む資産を作成します。 そうすれば、マニフェストまたはフラグメント要求で指定された形式に基づき、オンデマンド ストリーミング サーバーによって、ユーザーが選択したプロトコルでストリームを受信するようになります。 そのため、単一のストレージ形式のファイルだけに対して保存と支払を行う必要があります。 Media Services は、クライアントからの要求に応じて適切な応答を作成して返します。 詳細については、[ダイナミック パッケージの概要](media-services-dynamic-packaging-overview.md)に関するページを参照してください。
 
 >[!NOTE]
 >Media Services アカウントの作成時に、既定のストリーミング エンドポイントが "停止" 状態でアカウントに追加されます。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが "実行中" 状態である必要があります。 
@@ -89,17 +89,17 @@ Media Services キー配信サービスと動的暗号化を使用して、AES �
 
 エンコード手順については、[Media Encoder Standard による資産のエンコード](media-services-dotnet-encode-with-media-encoder-standard.md)に関するページを参照してください。
 
-## <a id="create_contentkey"></a>コンテンツ キーを作成し、それをエンコードした資産に関連付ける
+## <a name="create-a-content-key-and-associate-it-with-the-encoded-asset"></a><a id="create_contentkey"></a>コンテンツ キーを作成し、それをエンコードした資産に関連付ける
 Media Services では、コンテンツ キーに、資産を暗号化するときに使用するキーが含まれています。
 
 詳細については、[コンテンツ キーの作成](media-services-dotnet-create-contentkey.md)に関するページを参照してください。
 
-## <a id="configure_key_auth_policy"></a>コンテンツ キーの承認ポリシーを構成する
+## <a name="configure-the-content-keys-authorization-policy"></a><a id="configure_key_auth_policy"></a>コンテンツ キーの承認ポリシーを構成する
 Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。 コンテンツ キー承認ポリシーを構成する必要があります。 キーをクライアント (プレーヤー) に配信するには、クライアントがポリシーの要件を満たしている必要があります。 コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (オープン、トークン制限、または IP 制限) を指定できます。
 
 詳細については、[コンテンツ キー承認ポリシーの構成](media-services-dotnet-configure-content-key-auth-policy.md)に関するページを参照してください。
 
-## <a id="configure_asset_delivery_policy"></a>資産の配信ポリシーを構成する
+## <a name="configure-an-asset-delivery-policy"></a><a id="configure_asset_delivery_policy"></a>資産の配信ポリシーを構成する
 資産の配信ポリシーを構成します。 資産の配信ポリシーの構成には、次のような内容が含まれます。
 
 * キー取得 URL。 
@@ -109,7 +109,7 @@ Media Services では、キーを要求するユーザーを承認する複数�
 
 詳細については、[資産配信ポリシーの構成](media-services-dotnet-configure-asset-delivery-policy.md)に関するページを参照してください。
 
-## <a id="create_locator"></a>ストリーミング URL を取得するために OnDemand ストリーミング ロケーターを作成する
+## <a name="create-an-ondemand-streaming-locator-to-get-a-streaming-url"></a><a id="create_locator"></a>ストリーミング URL を取得するために OnDemand ストリーミング ロケーターを作成する
 Smooth Streaming、DASH、または HLS のストリーミング URL をユーザーに提供する必要があります。
 
 > [!NOTE]
@@ -137,7 +137,7 @@ Smooth Streaming、DASH、または HLS のストリーミング URL をユー�
 
 [Azure Media Services Player](https://aka.ms/azuremediaplayer) を使用して、ストリームをテストできます。
 
-## <a id="client_request"></a>クライアントが配信サービスにキーを要求する方法
+## <a name="how-can-your-client-request-a-key-from-the-key-delivery-service"></a><a id="client_request"></a>クライアントが配信サービスにキーを要求する方法
 以前の手順で、マニフェスト ファイルを参照する URL を構成しました。 クライアントは、キー配信サービスへの要求を実行するために、ストリーミング マニフェスト ファイルから必要な情報を抽出する必要があります。
 
 ### <a name="manifest-files"></a>マニフェスト ファイル
@@ -246,7 +246,7 @@ HLS の場合、ルート マニフェストはセグメント ファイルに�
     <add key="Audience" value="urn:test"/>
     ```
 
-### <a id="example"></a>例
+### <a name="example"></a><a id="example"></a>例
 
 Program.cs ファイルのコードを、このセクションで示されているコードで上書きします。
  

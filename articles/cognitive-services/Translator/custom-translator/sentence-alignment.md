@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: adbc21c3e963a98a8482de0c26bf5e257f43013e
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: cf5b2b84142c9104ea5b3afa3ad179fd0ec07449
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675452"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80370133"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>並列ドキュメントの文のペアリングとアライン
 
@@ -37,8 +37,8 @@ Custom Translator では、一度に 1 文ずつ、文の翻訳が学習され�
 | ドキュメントの種類   | 推奨される文の最小数 | 文の最大数 |
 |------------|--------------------------------------------|--------------------------------|
 | トレーニング   | 10,000                                     | 上限なし                 |
-| チューニング     | 5,000                                      | 2,500                          |
-| テスト    | 5,000                                      | 2,500                          |
+| チューニング     | 500                                      | 2,500       |
+| テスト    | 500                                      | 2,500  |
 | Dictionary | 0                                          | 上限なし                 |
 
 > [!NOTE]
@@ -46,6 +46,6 @@ Custom Translator では、一度に 1 文ずつ、文の翻訳が学習され�
 > - チューニングとテストは省略可能です。 これらを指定しないと、確認とテストに使用するためのトレーニングからの適切な比率がシステムで削除されます。 
 > - モデルは、辞書データのみを使用してトレーニングすることができます。 「[辞書とは](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/what-is-dictionary)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Custom Translator で[辞書](what-is-dictionary.md)を使用する方法について説明します。

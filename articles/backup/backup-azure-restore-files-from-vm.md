@@ -3,12 +3,12 @@ title: Azure VM バックアップからファイルとフォルダーを回復�
 description: この記事では、Azure 仮想マシンの復旧ポイントからファイルとフォルダーを回復する方法について説明します。
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 4565929b5475e2348685fbec77b596b65ed73fd6
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: 0e3061ea8fc26adcf39fe415cd9a662de739543a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114328"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233879"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 
@@ -125,7 +125,7 @@ pvs <volume name as shown above in the script output>
 
 ```bash
 #!/bin/bash
-lvdisplay <volume-group-name from the pvs command’s results>
+lvdisplay <volume-group-name from the pvs command's results>
 ```
 
 論理ボリュームを任意のパスにマウントするには、次のようにします。
@@ -202,11 +202,11 @@ Linux では、ファイルの復元に使用するコンピューターの OS �
 
 - `download.microsoft.com`
 - リカバリ サービスの URL (geo 名はリカバリ サービス コンテナーが存在するリージョンを表します)
-  - <https://pod01-rec2.geo-name.backup.windowsazure.com> (Azure の パブリック地域用)
-  - <https://pod01-rec2.geo-name.backup.windowsazure.cn> (Azure China 21Vianet 用)
-  - <https://pod01-rec2.geo-name.backup.windowsazure.us> (Azure US Government 用)
-  - <https://pod01-rec2.geo-name.backup.windowsazure.de> (Azure Germany 用)
-- 送信ポート 3260
+  - `https://pod01-rec2.geo-name.backup.windowsazure.com` (Azure の パブリック地域用)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.cn` (Azure China 21Vianet 用)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.us` (Azure US Government 用)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.de` (Azure Germany 用)
+- 送信ポート 53 (DNS)、443、3260
 
 > [!NOTE]
 >
@@ -295,7 +295,7 @@ Linux の場合、スクリプトによって復旧ポイントに接続する�
 
 Microsoft では、各コンポーネントの相互の認証ができるように、相互の CHAP 認証メカニズムを使用しています。 つまり、偽のイニシエーターが iSCSI ターゲットに接続したり、偽のターゲットがスクリプトを実行するマシンに接続するのは非常に困難です。
 
-回復サービスとマシン間のデータ フローは、TCP 経由でセキュリティで保護された SSL トンネルを構築することで保護されます (スクリプトを実行するマシンでは、[TLS 1.2 がサポートされている必要があります](#system-requirements))。
+回復サービスとマシン間のデータ フローは、TCP 経由でセキュリティで保護された TLS トンネルを構築することで保護されます (スクリプトを実行するマシンでは、[TLS 1.2 がサポートされている必要があります](#system-requirements))。
 
 親 VM またはバックアップされた VM に存在するすべてのファイル アクセス制御リスト (ACL) は、マウントされているファイル システムにも保持されます。
 

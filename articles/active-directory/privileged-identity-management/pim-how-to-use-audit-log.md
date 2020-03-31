@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4b8aef68e0f61e6ca995fc2bb362d59aba73ead2
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78329514"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールの監査履歴を表示する
@@ -118,7 +118,7 @@ Azure AD ロールの監査履歴を表示するには、次の手順に従い�
 
 1. 特権ロール管理者ロールのアクセス許可で [Azure portal](https://aad.portal.azure.com) にサインインし、Azure AD を開きます。
 1. **[監査ログ]** を選択します。
-1. **[サービス]** フィルターを使用して、Privileged Identity Management サービスの監査イベントのみを表示します。 **[監査ログ]** ページで、次のことを実行できます。
+1. **[サービス]** フィルターを使用して、Privileged Identity Management サービスの監査イベントのみを表示します。 **[監査ログ]** ページでは、次のことを実行できます。
 
     - **[状態の理由]** 列で監査イベントの理由を確認します。
     - "ロールへのメンバーの追加要求が承認されました" イベントの **[開始者 (アクター)]** 列で承認者を確認します。

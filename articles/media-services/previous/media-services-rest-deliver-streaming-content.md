@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 787336f00a83d9403e3069754787743b9be6c5b1
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77050001"
 ---
 # <a name="publish-azure-media-services-content-using-rest"></a>REST を使用して Azure Media Services コンテンツを発行する 
@@ -169,7 +169,7 @@ URL:**Path** + アセット ファイル mp4 名
 
     https://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
 
-## <a id="types"></a>列挙型
+## <a name="enum-types"></a><a id="types"></a>列挙型
     [Flags]
     public enum AccessPermissions
     {
@@ -193,7 +193,7 @@ URL:**Path** + アセット ファイル mp4 名
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 [Media Services Operations REST API の概要](media-services-rest-how-to-use.md)
 
 [資産配信ポリシーを構成する](media-services-rest-configure-asset-delivery-policy.md)

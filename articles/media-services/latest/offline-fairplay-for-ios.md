@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
 ms.openlocfilehash: 70256046089a59df1de79b78124c5d60fde77080
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76705940"
 ---
 # <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>Media Services v3 を使用した iOS 用のオフラインの FairPlay ストリーミング

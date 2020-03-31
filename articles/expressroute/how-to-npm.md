@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: cherylmc
 ms.openlocfilehash: 54fa3dcbfbbcb3153f81407a9bc9b52511405390
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74076602"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>ExpressRoute に使用する Network Performance Monitor の構成
@@ -34,7 +34,7 @@ ms.locfileid: "74076602"
 
 * 過去の時点の ExpressRoute システム状態を確認する
 
-## <a name="workflow"></a>ワークフロー
+## <a name="workflow"></a><a name="workflow"></a>ワークフロー
 
 監視エージェントは、複数のサーバー (オンプレミスと Azure の両方) にインストールされます。 これらのエージェントは互いに通信を行いますが、データは送信せず、TCP ハンドシェイク パケットを送信します。 エージェント間の通信によって、Azure は、トラフィックが通過する可能性のある経路とネットワーク トポロジとをマッピングすることができます。
 
@@ -47,7 +47,7 @@ ms.locfileid: "74076602"
 
 既に Network Performance Monitor を使用して他のオブジェクトやサービスを監視しており、かつワークスペースが既に、サポートされているいずれかのリージョンに存在する場合は、手順 1. と手順 2. を省略し、手順 3. で構成を始めてください。
 
-## <a name="configure"></a>手順 1: ワークスペースを作成する
+## <a name="step-1-create-a-workspace"></a><a name="configure"></a>手順 1:ワークスペースを作成する
 
 ExpressRoute 回線への VNet リンクを含んだサブスクリプションにワークスペースを作成します。
 
@@ -77,9 +77,9 @@ ExpressRoute 回線への VNet リンクを含んだサブスクリプション�
 
    ![追加の構成](./media/how-to-npm/5.png)
 
-## <a name="agents"></a>手順 2: エージェントのインストールと構成
+## <a name="step-2-install-and-configure-agents"></a><a name="agents"></a>手順 2:エージェントのインストールと構成
 
-### <a name="download"></a>2.1: エージェントのセットアップ ファイルをダウンロードする
+### <a name="21-download-the-agent-setup-file"></a><a name="download"></a>2.1: エージェントのセットアップ ファイルをダウンロードする
 
 1. リソースの **[ネットワーク パフォーマンス モニターの構成]** ページの **[共通設定]** タブに移動します。 **[Log Analytics エージェントをインストールする]** セクションでサーバーのプロセッサに対応するエージェントをクリックし、セットアップ ファイルをダウンロードします。
 2. 次に、 **[ワークスペース ID]** と **[主キー]** をメモ帳にコピーします。
@@ -87,7 +87,7 @@ ExpressRoute 回線への VNet リンクを含んだサブスクリプション�
 
    ![PowerShell スクリプト](./media/how-to-npm/7.png)
 
-### <a name="installagent"></a>2.2: (監視対象となるすべての VNET の) 各監視サーバーに監視エージェントをインストールする
+### <a name="22-install-a-monitoring-agent-on-each-monitoring-server-on-each-vnet-that-you-want-to-monitor"></a><a name="installagent"></a>2.2: (監視対象となるすべての VNET の) 各監視サーバーに監視エージェントをインストールする
 
 冗長性のため、ExpressRoute 接続の両側に、少なくとも 2 つのエージェントをインストールすることをお勧めします (たとえば、オンプレミス、Azure VNET)。 エージェントは Windows Server (2008 SP1 以降) にインストールする必要があります。 Windows デスクトップ OS や Linux OS を使用した ExpressRoute 回線の監視はサポートされていません。 次の手順を使用してエージェントをインストールします。
    
@@ -116,7 +116,7 @@ ExpressRoute 回線への VNet リンクを含んだサブスクリプション�
 
 9. 監視対象となるすべての VNET に対してこの手順を繰り返します。
 
-### <a name="proxy"></a>2.3: プロキシ設定の構成 (省略可能)
+### <a name="23-configure-proxy-settings-optional"></a><a name="proxy"></a>2.3: プロキシ設定の構成 (省略可能)
 
 Web プロキシを使用してインターネットにアクセスしている場合、以下の手順を使用して、Microsoft Monitoring Agent のプロキシ設定を構成します。 これらの手順は、各サーバーに対して実行してください。 構成が必要なサーバーの数が多い場合には、このプロセスを自動化するスクリプトを使った方が作業が簡単に済むことも考えられます。 その場合は、「[スクリプトを使って Microsoft Monitoring Agent のプロキシ設定を構成するには](../log-analytics/log-analytics-windows-agent.md)」を参照してください。
 
@@ -129,7 +129,7 @@ Web プロキシを使用してインターネットにアクセスしている�
 
    ![proxy](./media/how-to-npm/11.png)
 
-### <a name="verifyagent"></a>2.4: エージェントの接続を確認する
+### <a name="24-verify-agent-connectivity"></a><a name="verifyagent"></a>2.4: エージェントの接続を確認する
 
 エージェントが通信できているかどうかは簡単に確認できます。
 
@@ -140,7 +140,7 @@ Web プロキシを使用してインターネットにアクセスしている�
 
    ![status](./media/how-to-npm/12.png)
 
-### <a name="firewall"></a>2.5: 監視エージェント サーバーのファイアウォール ポートを開放する
+### <a name="25-open-the-firewall-ports-on-the-monitoring-agent-servers"></a><a name="firewall"></a>2.5: 監視エージェント サーバーのファイアウォール ポートを開放する
 
 TCP プロトコルを使用するには、ファイアウォール ポートを開放して、監視エージェントを確実に通信可能な状態にする必要があります。
 
@@ -157,7 +157,7 @@ PowerShell スクリプトを実行して、Network Performance Monitor に必�
 
 ![PowerShell_Script](./media/how-to-npm/script.png)
 
-## <a name="opennsg"></a>手順 3: ネットワーク セキュリティ グループ規則を構成する
+## <a name="step-3-configure-network-security-group-rules"></a><a name="opennsg"></a>手順 3:ネットワーク セキュリティ グループ規則を構成する
 
 Azure 内のエージェント サーバーを監視するには、NPM の代理トランザクションに使用されるポートの TCP トラフィックを許可するようにネットワーク セキュリティ グループ (NSG) 規則を構成する必要があります。 既定のポートは 8084 です。 これにより、Azure VM にインストールされている監視エージェントが、オンプレミスの監視エージェントと通信できるようになります。
 
@@ -167,7 +167,7 @@ NSG の詳細については、[ネットワーク セキュリティ グルー�
 >この手順に進む前に、エージェント (オンプレミス サーバー エージェントと Azure サーバー エージェントの両方) がインストール済みであること、また PowerShell スクリプトを実行済みであることを確認してください。
 >
 
-## <a name="setupmonitor"></a>手順 4: ピアリング接続を検出する
+## <a name="step-4-discover-peering-connections"></a><a name="setupmonitor"></a>手順 4:ピアリング接続を検出する
 
 1. **[すべてのリソース]** ページに移動し、ホワイトリストに登録された NPM ワークスペースをクリックして、Network Performance Monitor の概要タイルに移動します。
 
@@ -182,7 +182,7 @@ NSG の詳細については、[ネットワーク セキュリティ グルー�
    * このサブスクリプションに関連付けられている ExpressRoute 回線のすべての Microsoft ピアリング接続。
    * このサブスクリプションに関連付けられている VNet に接続するすべてのプライベート ピアリング接続。
             
-## <a name="configmonitor"></a>手順 5: モニターを構成する
+## <a name="step-5-configure-monitors"></a><a name="configmonitor"></a>手順 5: モニターを構成する
 
 このセクションでは、モニターを構成します。 監視するピアリングの種類 (**プライベート ピアリング** または **Microsoft ピアリング**) に対応する手順に従ってください。
 
@@ -218,43 +218,43 @@ Microsoft ピアリングの場合は、監視する Microsoft ピアリング�
 6. 設定を保存します。
 7. 規則を有効にして監視対象の値とエージェントを選択した後、30 ～ 60 分ほど待つと、値が反映され始め、 **[ExpressRoute の監視]** タイルが利用できる状態になります。
 
-## <a name="explore"></a>手順 6: 監視タイルを表示する
+## <a name="step-6-view-monitoring-tiles"></a><a name="explore"></a>手順 6: 監視タイルを表示する
 
 監視中のタイルが表示されていれば、ExpressRoute 回線と接続リソースが NPM によって監視されています。 Microsoft ピアリングのタイルをクリックすると、Microsoft ピアリング接続の正常性をドリルダウンできます。
 
 ![監視タイル](./media/how-to-npm/15.png)
 
-### <a name="dashboard"></a>[Network Performance Monitor] ページ
+### <a name="network-performance-monitor-page"></a><a name="dashboard"></a>[Network Performance Monitor] ページ
 
 NPM ページには、ExpressRoute に関して、その回線とピアリングの正常性を大まかに示したページが表示されます。
 
 ![ダッシュボード](./media/how-to-npm/dashboard.png)
 
-### <a name="circuits"></a>回線の一覧
+### <a name="list-of-circuits"></a><a name="circuits"></a>回線の一覧
 
 監視対象の全 ExpressRoute 回線の一覧を表示するには、 **[ExpressRoute 回線]** タイルをクリックします。 いずれかの回線を選択すると、その正常性状態のほか、パケット損失、帯域幅使用率、待ち時間の各トレンド グラフを表示できます。 これらのグラフは対話操作が可能です。 グラフのプロット対象となる時間枠を自分で選んでカスタマイズすることができます。 グラフ上の領域でマウスをドラッグすることによってデータ ポイントを拡大し、細かく表示することができます。
 
 ![回線一覧](./media/how-to-npm/circuits.png)
 
-#### <a name="trend"></a>パケット損失、待ち時間、スループットのトレンド
+#### <a name="trend-of-loss-latency-and-throughput"></a><a name="trend"></a>パケット損失、待ち時間、スループットのトレンド
 
 帯域幅、待ち時間、損失の各グラフは対話操作が可能です。 これらのグラフの任意のセクションをマウス操作で拡大することができます。 また、左上の [アクション] ボタンの下にある **[日付/時刻]** をクリックすることによって、帯域幅、待ち時間、損失データの表示対象間隔を変更することもできます。
 
 ![トレンド](./media/how-to-npm/16.png)
 
-### <a name="peerings"></a>ピアリング一覧
+### <a name="peerings-list"></a><a name="peerings"></a>ピアリング一覧
 
 プライベート ピアリング上の仮想ネットワークに対するすべての接続の一覧を表示するには、ダッシュボードの **[プライベート ピアリング]** タイルをクリックします。 ここでいずれかの仮想ネットワークの接続を選択すると、その正常性状態のほか、パケット損失、帯域幅使用率、待ち時間の各トレンド グラフを表示できます。
 
 ![回線一覧](./media/how-to-npm/peerings.png)
 
-### <a name="nodes"></a>ノード ビュー
+### <a name="nodes-view"></a><a name="nodes"></a>ノード ビュー
 
 選択した ExpressRoute ピアリング接続のオンプレミス ノードと Azure VM/Microsoft サービス エンドポイント間のすべてのリンクの一覧を表示するには、 **[ノード リンクの表示]** をクリックします。 各リンクの正常性状態、およびそれらに関連付けられた損失および待ち時間の傾向を表示できます。
 
 ![ノード ビュー](./media/how-to-npm/nodes.png)
 
-### <a name="topology"></a>回線トポロジ
+### <a name="circuit-topology"></a><a name="topology"></a>回線トポロジ
 
 回線トポロジを表示するには、 **[トポロジ]** タイルをクリックします。 この操作により、選択した回線またはピアリングのトポロジ ビューが表示されます。 トポロジ ダイアグラムには、ネットワーク上の各セグメントの待ち時間が表示されます。 各レイヤー 3 ホップがダイアグラムのノードで表現されます。 いずれかのホップをクリックすると、そのホップについてのさらに詳しい情報が表示されます。
 

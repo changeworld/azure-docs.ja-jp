@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: akjosh
 ms.openlocfilehash: 5914947bd994ee405f253e34c3dd919dd6561898
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073634"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227875"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Stackify Retrace Linux Agent 拡張機能
 
@@ -43,7 +43,7 @@ Retrace は 1 つのプラットフォーム上のすべての環境にまたが
 
 Retrace エージェントは､次の Linux ディストリビューションに対して実行できます｡
 
-| ディストリビューション | Version |
+| Distribution | Version |
 |---|---|
 | Ubuntu | 16.04 LTS､14.04 LTS､16.10､17.04 |
 | Debian | 7.9+ および 8.2+､9 |

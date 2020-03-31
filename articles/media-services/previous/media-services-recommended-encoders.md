@@ -10,10 +10,10 @@ ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 89b01a3fb066f181f5ec54b481b71feaa7a6ae08
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77131402"
 ---
 # <a name="recommended-on-premises-encoders"></a>推奨のオンプレミス エンコーダー

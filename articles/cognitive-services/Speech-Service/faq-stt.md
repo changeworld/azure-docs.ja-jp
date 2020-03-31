@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/4/2019
 ms.author: panosper
 ms.openlocfilehash: a279aebdd19ebd3a41ddad0c1c279937e00838c2
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77168461"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>音声テキスト変換についてよく寄せられる質問

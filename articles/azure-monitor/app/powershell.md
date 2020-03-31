@@ -1,18 +1,14 @@
 ---
 title: PowerShell での Azure Application Insights の自動化 | Microsoft Docs
 description: Azure Resource Manager テンプレートを使用して、PowerShell でのリソース、アラート、および可用性テストの作成および管理を自動化します。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 10/17/2019
-ms.openlocfilehash: 82b406d6f2d9f9dc4464472108c8136c7b65c67a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 9494b659b5b4357f3190c45d8cc72c4e130f0ecc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977830"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234671"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>PowerShell を使用した Application Insights リソースの管理
 
@@ -132,7 +128,7 @@ Resource Manager テンプレートを使用して新しい Application Insights
             },
             "dailyQuotaResetTime": {
                 "type": "int",
-                "defaultValue": 24,
+                "defaultValue": 0,
                 "metadata": {
                     "description": "Enter daily quota reset hour in UTC (0 to 23). Values outside the range will get a random reset hour."
                 }
@@ -324,16 +320,30 @@ Set-ApplicationInsightsRetention `
 Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> | Format-List
 ```
 
-1 日あたりの上限のプロパティを設定するには、同じコマンドレットを使用します。 たとえば、上限を 300 GB/日に設定するには、以下のようにします。 
+1 日あたりの上限のプロパティを設定するには、同じコマンドレットを使用します。 たとえば、上限を 300 GB/日に設定するには、以下のようにします。
 
 ```PS
 Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> -DailyCapGB 300
 ```
 
+[ARMClient](https://github.com/projectkudu/ARMClient) を使用して、1 日あたりの上限のパラメーターを取得および設定することもできます。  現在の値を取得するには、以下を使用します。
+
+```PS
+armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
+```
+
+## <a name="set-the-daily-cap-reset-time"></a>1 日あたりの上限のリセット時間を設定する
+
+1 日あたりの上限のリセット時間を設定するには、[ARMClient](https://github.com/projectkudu/ARMClient) を使用できます。 次に、`ARMClient` を使用してリセット時間を新しい時間 (この例では 12:00 UTC) に設定する例を示します。
+
+```PS
+armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview "{'CurrentBillingFeatures':['Basic'],'DataVolumeCap':{'ResetTime':12}}"
+```
+
 <a id="price"></a>
 ## <a name="set-the-pricing-plan"></a>料金プランを設定する 
 
-現在の料金プランを取得するには、[Set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) コマンドレットを使用します。 
+現在の料金プランを取得するには、[Set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) コマンドレットを使用します。
 
 ```PS
 Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <resource name> | Format-List
@@ -354,14 +364,31 @@ Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <
                -appName myApp
 ```
 
-|priceCode|プラン|
+`priceCode` は次のように定義されます。
+
+|priceCode|plan|
 |---|---|
 |1|GB あたり (以前は Basic プランと呼ばれていました)|
 |2|ノードごと (以前は Enterprise プランと呼ばれていました)|
 
+最後に、[ARMClient](https://github.com/projectkudu/ARMClient) を使用して、料金プランと 1 日あたりの上限のパラメーターを取得および設定できます。  現在の値を取得するには、以下を使用します。
+
+```PS
+armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
+```
+
+これらのパラメーターはすべて、以下を使用して設定できます。
+
+```PS
+armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
+"{'CurrentBillingFeatures':['Basic'],'DataVolumeCap':{'Cap':200,'ResetTime':12,'StopSendNotificationWhenHitCap':true,'WarningThreshold':90,'StopSendNotificationWhenHitThreshold':true}}"
+```
+
+これにより、1 日あたりの上限が 200 GB/日に設定され、1 日あたりの上限のリセット時間が 12:00 UTC に構成され、上限に達したときと警告レベルに達したときに電子メールが送信されます。また、警告のしきい値が上限の 90% に設定されます。  
+
 ## <a name="add-a-metric-alert"></a>メトリック アラートの追加
 
-メトリック アラートの作成を自動化するには、[メトリック アラート テンプレートに関する記事](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-a-simple-static-threshold-metric-alert)を参照
+メトリック アラートの作成を自動化するには、[メトリック アラート テンプレートに関する記事](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-a-simple-static-threshold-metric-alert)を参照してください
 
 
 ## <a name="add-an-availability-test"></a>可用性テストの追加

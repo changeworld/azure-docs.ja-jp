@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
 ms.openlocfilehash: f222cdd315b79503b1bdea032f495c71df4682b5
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084261"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236551"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>オンプレミスからフェールオーバー後に Azure VM に接続する 
 
@@ -33,22 +33,22 @@ ms.locfileid: "74084261"
 
 Azure VM への接続を確保するには、フェールオーバー前にオンプレミスのマシンを準備します。
 
-### <a name="prepare-windows-machines"></a>Windows マシンの準備
+### <a name="prepare-windows-machines"></a>Windows マシンの準備作業
 
 オンプレミスの Windows マシンで、次の手順を実行します。
 
 1. Windows 設定を構成します。 これには、すべての静的な固定ルートまたは WinHTTP プロキシを削除することと、ディスク SAN ポリシーを **OnlineAll** に設定することが含まれます。 [こちらの手順](../virtual-machines/windows/prepare-for-upload-vhd-image.md#set-windows-configurations-for-azure)に従います。
 
-2. [こちらのサービス](../virtual-machines/windows/prepare-for-upload-vhd-image.md#check-the-windows-services) が実行されていることを確認します。
+2. [こちらに示したサービス](../virtual-machines/windows/prepare-for-upload-vhd-image.md#check-the-windows-services)が稼働していることを確認します。
 
-3. オンプレミスのマシンへのリモート接続を許可するために、リモート デスクトップ (RDP) を有効にします。 PowerShell を使用して RDP を有効にする[方法を確認してください](../virtual-machines/windows/prepare-for-upload-vhd-image.md#update-remote-desktop-registry-settings)。
+3. オンプレミスのマシンへのリモート接続を許可するために、リモート デスクトップ (RDP) を有効にします。 PowerShell を使用して RDP を有効にする方法については、[こちら](../virtual-machines/windows/prepare-for-upload-vhd-image.md#update-remote-desktop-registry-settings)を参照してください。
 
 4. フェールオーバー後にインターネット経由で Azure VM にアクセスするには、オンプレミスのマシン上の Windows ファイアウォールにおいて、パブリック プロファイルで TCP と UDP を許可し、すべてのプロファイルに対して許可されたアプリとして RDP を設定します。
 
-5. フェールオーバー後にサイト間 VPN 経由で Azure VM にアクセスする場合は、オンプレミスのマシン上の Windows ファイアウォールで、ドメイン プロファイルとプライベート プロファイルに対して RDP を許可します。 RDP トラフィックを許可する[方法を確認してください](../virtual-machines/windows/prepare-for-upload-vhd-image.md#configure-windows-firewall-rules)。
+5. フェールオーバー後にサイト間 VPN 経由で Azure VM にアクセスする場合は、オンプレミスのマシン上の Windows ファイアウォールで、ドメイン プロファイルとプライベート プロファイルに対して RDP を許可します。 RDP トラフィックを許可する方法については、[こちら](../virtual-machines/windows/prepare-for-upload-vhd-image.md#configure-windows-firewall-rules)を参照してください。
 6. フェールオーバーを開始するときに、実行待ちの Windows 更新プログラムがオンプレミス VM にないことを確認してください。 存在する場合、フェールオーバー後に Azure VM で更新プログラムのインストールが開始されることがあり、更新が完了するまで VM にサインインできません。
 
-### <a name="prepare-linux-machines"></a>Linux マシンの準備
+### <a name="prepare-linux-machines"></a>Linux マシンの準備作業
 
 オンプレミスの Linux マシンで、次の手順を実行します。
 
@@ -60,13 +60,13 @@ Azure VM への接続を確保するには、フェールオーバー前にオ�
 
 フェールオーバー後に、作成された Azure VM で次の手順を実行します。
 
-1. インターネット経由で VM に接続するには、パブリック IP アドレスを VM に割り当てます。 オンプレミスのマシンに使用したパブリック IP アドレスと同じものを Azure VM に対して使用することはできません。 [詳細情報](../virtual-network/virtual-network-public-ip-address.md)
-2. VM 上のネットワーク セキュリティ グループ (NSG) 規則で RDP または SSH ポートへの着信接続が許可されていることを確認します。
+1. インターネット経由で VM に接続できるように、VM にパブリック IP アドレスを割り当てます。 オンプレミスのマシンに使用したパブリック IP アドレスと同じアドレスを Azure VM に使用することはできません。 [詳細情報](../virtual-network/virtual-network-public-ip-address.md)
+2. VM 上のネットワーク セキュリティ グループ (NSG) 規則で RDP または SSH ポートへの受信接続が許可されていることを確認します。
 3. [[ブート診断]](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) をオンにして VM を表示します。
 
 
 > [!NOTE]
-> Azure Bastion サービスでは、Azure VM へのプライベート RDP および SSH アクセスが提供されます。 このサービスに関する[詳細情報](../bastion/bastion-overview.md)を参照してください。
+> Azure Bastion サービスでは、Azure VM へのプライベート RDP および SSH アクセスが提供されます。 このサービスの詳細については、[こちら](../bastion/bastion-overview.md)を参照してください。
 
 ## <a name="set-a-public-ip-address"></a>パブリック IP アドレスの設定
 
@@ -153,7 +153,7 @@ IP アドレスを維持するには、次の手順を実行する必要があ�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 オンプレミスの Active Directory と DNS の Azure へのレプリケートについて[確認します](site-recovery-active-directory.md)。
 
 

@@ -1,18 +1,14 @@
 ---
 title: Azure Application Insights でのデータ保持と保存 | Microsoft Docs
 description: データ保持およびプライバシー ポリシー ステートメント
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/29/2019
-ms.openlocfilehash: ba8a76cd4d3804bcb062ae0554e3fe7002804ed2
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 30878eecf795c85713b9f09b8325b326416022b8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031682"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234707"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights でのデータの収集、保持、保存
 
@@ -174,6 +170,12 @@ services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {
 既定では、`%TEMP%/appInsights-node{INSTRUMENTATION KEY}` はデータを保持するために使用されます。 このフォルダーにアクセスするためのアクセス許可は、現在のユーザーと管理者に制限されています。 (ここにある[実装](https://github.com/Microsoft/ApplicationInsights-node.js/blob/develop/Library/Sender.ts)を参照してください。)
 
 フォルダー プレフィックス `appInsights-node` は、[Sender.ts](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384) にある静的変数 `Sender.TEMPDIR_PREFIX` のランタイム値を変更することによって上書きできます。
+
+### <a name="javascript-browser"></a>JavaScript (ブラウザー)
+
+データを永続化するには、[HTML5 セッション ストレージ](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)を使用します。 `AI_buffer` と `AI_sent_buffer` という 2 つの別のバッファーが使用されます。 バッチ処理され、送信を待機しているテレメトリは `AI_buffer` に格納されます。 送信されたテレメトリは、インジェスト サーバーが正常に受信されたことを応答するまで `AI_sent_buffer` に配置されます。 テレメトリが正常に受信されると、すべてのバッファーから削除されます。 一時的なエラーが発生した場合 (たとえば、ユーザーがネットワーク接続を失った場合)、正常に受信されるか、インジェスト サーバーがテレメトリが無効であると応答するまで (たとえば、不正なスキーマ、古すぎる)、テレメトリは `AI_buffer` に格納されたままです。
+
+テレメトリ バッファーを無効にするには、[`enableSessionStorageBuffer`](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/JavaScript/JavaScriptSDK.Interfaces/IConfig.ts#L31) を `false` に設定します。 セッション ストレージがオフの場合、代わりにローカル アレイが永続ストレージとして使用されます。 JavaScript SDK はクライアント デバイス上で実行されるため、ユーザーはブラウザーの開発者ツールを介してこの格納場所にアクセスできます。
 
 ### <a name="opencensus-python"></a>OpenCensus Python
 

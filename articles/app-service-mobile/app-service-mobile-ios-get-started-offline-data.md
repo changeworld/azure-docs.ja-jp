@@ -7,10 +7,10 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: d943213814b999f101a541abb0195a9fdd5a7423
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77459176"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>iOS モバイル アプリでオフライン同期を有効にする
@@ -23,7 +23,7 @@ Mobile Apps を初めて使用する場合は、最初に「[iOS アプリの作
 
 オフライン同期機能の詳細については、[Mobile Apps でのオフライン データ同期]に関する記事をご覧ください。
 
-## <a name="review-sync"></a>クライアント同期コードの確認
+## <a name="review-the-client-sync-code"></a><a name="review-sync"></a>クライアント同期コードの確認
 「[iOS アプリの作成]」チュートリアルでダウンロードしたクライアント プロジェクトには、ローカルの Core Data に基づいたデータベースを使用したオフライン同期をサポートするコードが既に含まれています。 このセクションでは、チュートリアルのコードに既に含まれているものについて簡単に説明します。 機能の概念的な概要については、[Mobile Apps でのオフライン データ同期]に関する記事をご覧ください。
 
 Mobile Apps のオフライン データ同期機能を使用すると、エンド ユーザーは、ネットワークにアクセスできない場合でもローカル データベースを操作できます。 アプリケーションでこれらの機能を使用するには、 `MSClient` の同期コンテキストを初期化して、ローカル ストアを参照します。 次に、**MSSyncTable** インターフェイスを使用してテーブルを参照します。
@@ -129,7 +129,7 @@ Swift のアプリは、ユーザーが更新操作を実行したときと起�
 
 アプリはデータが変更されたとき (Objective-C) またはアプリの起動時 (Objective-C と Swift) に同期するため、ユーザーがオンラインであることを前提としています。 後のセクションで、ユーザーがオフラインのときでも編集できるようにアプリを更新します。
 
-## <a name="review-core-data"></a>Core Data モデルの確認
+## <a name="review-the-core-data-model"></a><a name="review-core-data"></a>Core Data モデルの確認
 Core Data オフライン ストアを使用するときは、データ モデルで特定のテーブルとフィールドを定義する必要があります。 サンプル アプリケーションには、あらかじめ適切な形式でデータ モデルが含まれています。 このセクションでは、これらのテーブルとその使用方法について説明します。
 
 **QSDataModel.xcdatamodeld** を開きます。 4 つのテーブルが定義されています。3 つは SDK で使用され、1 つは To Do 項目自体に使用されます。
@@ -196,7 +196,7 @@ Core Data オフライン ストアを使用するときは、データ モデ�
 | updatedAt | Date | (省略可能) **updatedAt** システム プロパティにマップします。 |
 | version | String | (省略可能) 競合の検出に使用され、バージョンにマップします。 |
 
-## <a name="setup-sync"></a>アプリケーションの同期動作を変更する
+## <a name="change-the-sync-behavior-of-the-app"></a><a name="setup-sync"></a>アプリケーションの同期動作を変更する
 このセクションでは、アプリの起動時または項目を挿入および更新したときに同期しないように、アプリを変更します。 更新操作ボタンが実行されたときにのみ同期します。
 
 **Objective-C**:
@@ -225,7 +225,7 @@ Core Data オフライン ストアを使用するときは、データ モデ�
   self.onRefresh(self.refreshControl)
 ```
 
-## <a name="test-app"></a>アプリケーションをテストする
+## <a name="test-the-app"></a><a name="test-app"></a>アプリケーションをテストする
 ここでは、無効な URL に接続してオフライン シナリオをシミュレートします。 データ項目を追加すると、ローカル Core Data ストアに保持されますが、モバイル アプリ バックエンドとは同期されません。
 
 1. **QSTodoService.m** のモバイル アプリ URL を無効な URL に変更し、アプリをもう一度実行します。

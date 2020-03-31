@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: c5bba7296a05cfbb72698a991ece1ef298689bd1
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76900667"
 ---
 # <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>ファイアウォールまたはプロキシ サーバーのセーフリストに Azure portal の URL を追加する
@@ -26,7 +26,7 @@ Azure portal の URLl のセキュリティ制限をバイパスするように�
 
 Azure portal 用にセーフリストに追加する URL エンドポイントは、組織がデプロイされている Azure クラウドに固有のものです。 これらのエンドポイントへのネットワークトラフィックで制限をバイパスできるようにするには、クラウドを選択します。 次に、プロキシサーバーまたはファイアウォールに URL の一覧を追加します。
 
-#### <a name="public-cloudtabpublic-cloud"></a>[パブリック クラウド](#tab/public-cloud)
+#### <a name="public-cloud"></a>[パブリック クラウド](#tab/public-cloud)
 
 ```
 *.aadcdn.microsoftonline-p.com
@@ -50,7 +50,7 @@ Azure portal 用にセーフリストに追加する URL エンドポイント�
 *.windows-int.net
 ```
 
-#### <a name="us-government-cloudtabus-government-cloud"></a>[米国政府のクラウド](#tab/us-government-cloud)
+#### <a name="us-government-cloud"></a>[米国政府のクラウド](#tab/us-government-cloud)
 
 ```
 *.azure.us
@@ -63,7 +63,7 @@ Azure portal 用にセーフリストに追加する URL エンドポイント�
 *.windowsazure.us
 ```
 
-#### <a name="china-government-cloudtabchina-government-cloud"></a>[中国政府のクラウド](#tab/china-government-cloud)
+#### <a name="china-government-cloud"></a>[中国政府のクラウド](#tab/china-government-cloud)
 
 ```
 *.azure.cn

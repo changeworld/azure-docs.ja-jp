@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2017
 ms.author: vikdesai
 ms.openlocfilehash: dab1517bd683d0e754559c3e0610f515a7d1f15f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74035229"
 ---
 # <a name="save-costs-with-azure-reserved-vm-instances"></a>Azure Reserved VM Instances を使用してコストを削減する

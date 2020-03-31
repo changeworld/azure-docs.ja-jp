@@ -6,10 +6,10 @@ ms.custom: fasttrack-edit
 ms.topic: article
 ms.date: 06/24/2019
 ms.openlocfilehash: 5693d9e90de9ba68e7b76e0f2bd5b75141dbda71
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77596812"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>可用性ゾーンを使用する Azure Kubernetes Service (AKS) クラスターを作成する

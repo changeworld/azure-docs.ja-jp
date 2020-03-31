@@ -4,11 +4,11 @@ description: Application Insights で Web と worker ロールを効果的に監
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.openlocfilehash: ce794a7bd18635fddfa30056ab2d675dc138097d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77655839"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234767"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure クラウド サービス向けの Application Insights
 [Application Insights][start] では、Application Insights SDK からのデータとお客様のクラウド サービスからの [Azure 診断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)データを組み合わせることで、[Azure クラウド サービス アプリ](https://azure.microsoft.com/services/cloud-services/)の可用性、パフォーマンス、障害、使用状況を監視できます。 アプリのパフォーマンスと効果に関するフィードバックが得られたら、各開発ライフサイクルにおける設計の方向性について、情報に基づいて選択できます。
@@ -94,7 +94,7 @@ Application Insights を使ってクラウド サービスを監視する最も�
 
 Application Insights に送信される診断情報のレベルを変更したい場合、[ *.cscfg* ファイルを直接編集することで](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)実行できます。
 
-## <a name="sdk"></a>各プロジェクトに SDK をインストールする
+## <a name="install-the-sdk-in-each-project"></a><a name="sdk"></a>各プロジェクトに SDK をインストールする
 このオプションでは、カスタム ビジネス テレメトリを任意のロールに追加できます。 お客様のアプリの使用状況とパフォーマンスについてより詳しい分析が得られます。
 
 Visual Studio で、Application Insights SDK を各クラウド アプリ プロジェクト用に構成します。

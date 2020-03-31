@@ -15,10 +15,10 @@ ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
 ms.openlocfilehash: fbc6d6fa8f9a3b424eaec1f04a61b5ca24fe14fc
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77161785"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計 

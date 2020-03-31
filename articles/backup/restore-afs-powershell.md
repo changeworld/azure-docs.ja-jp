@@ -4,10 +4,10 @@ description: この記事では、Azure Backup サービスと PowerShell を使
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: 99aeaa6173bb5336e6e1719a9fc0df0c668374e2
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77086832"
 ---
 # <a name="restore-azure-files-with-powershell"></a>PowerShell を使用して Azure Files を復元する

@@ -10,11 +10,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.openlocfilehash: edddd100bddab1d642a8169353298a2d20620274
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928130"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236351"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Azure Data Factory を使用して MongoDB からデータを移動する
 
@@ -41,10 +41,10 @@ Azure Data Factory サービスをオンプレミスの MongoDB データベー�
     > [!NOTE]
     > Azure IaaS VM でホストされている場合でも、MongoDB への接続にゲートウェイを使用する必要があります。 クラウドでホストされている MongoDB のインスタンスに接続しようとしている場合は、IaaS VM にゲートウェイ インスタンスをインストールすることもできます。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 さまざまなツール/API を使用して、オンプレミスの MongoDB データ ストアからデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
+パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
 また、次のツールを使用してパイプラインを作成することもできます。**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
@@ -298,8 +298,8 @@ MongoDB にデータを移動する場合、MongoDB 型から .NET 型に対す�
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
-| ObjectID |string |
-| String |string |
+| ObjectID |String |
+| String |String |
 | UUID |Guid |
 | Object |入れ子の区切り文字に "_" を使用してフラット化された列に再正規化されます。 |
 
@@ -321,14 +321,14 @@ Azure Data Factory では、ビルトインの ODBC ドライバーを使用し�
 ### <a name="example"></a>例
 例として下に挙げる "ExampleTable" は、各セルにオブジェクトの配列が 1 つ含まれた列 Invoices と、スカラー型の配列が 1 つ含まれた列 Ratings で構成された MongoDB テーブルです。
 
-| _id | Customer Name | Invoices | Service Level | Ratings |
+| _id | Customer Name | Invoices | サービス レベル | Ratings |
 | --- | --- | --- | --- | --- |
 | 1111 |ABC |[{invoice_id:”123”, item:”toaster”, price:”456”, discount:”0.2”}, {invoice_id:”124”, item:”oven”, price: ”1235”, discount: ”0.2”}] |シルバー |[5,6] |
 | 2222 |XYZ |[{invoice_id:”135”, item:”fridge”, price: ”12543”, discount: ”0.0”}] |ゴールド |[1,2] |
 
 ドライバーによって、この単一のテーブルを表す複数の仮想テーブルが生成されます。 最初の仮想テーブルは、次に示す "ExampleTable" という名前のベース テーブルです。 ベース テーブルには元のテーブルのすべてのデータが含まれますが、配列のデータは省略され、仮想テーブルで展開されます。
 
-| _id | Customer Name | Service Level |
+| _id | Customer Name | サービス レベル |
 | --- | --- | --- |
 | 1111 |ABC |シルバー |
 | 2222 |XYZ |ゴールド |

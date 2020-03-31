@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
 ms.openlocfilehash: e398f23559729580ae4ad8b6507c2f09328052b5
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670901"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234591"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Web アプリケーションのパフォーマンスを監視する
 
@@ -20,7 +20,7 @@ Application Insights は、Java と ASP.NET の Web アプリケーションと�
 
 クライアント側で、Application Insights は、Web ページと、iOS、Android、Windows ストア アプリを含むさまざまなデバイスからテレメトリを取得できます。
 
-## <a name="setup"></a>パフォーマンス モニターの設定
+## <a name="set-up-performance-monitoring"></a><a name="setup"></a>パフォーマンス モニターの設定
 プロジェクトに Application Insights を追加していない場合 (つまり、ApplicationInsights.config がない場合)、以下のいずれかの方法で開始します。
 
 * [ASP.NET Web アプリ](../../azure-monitor/app/asp-net.md)
@@ -29,7 +29,7 @@ Application Insights は、Java と ASP.NET の Web アプリケーションと�
 * [Java EE Web アプリ](../../azure-monitor/app/java-get-started.md)
   * [依存関係の監視を追加する](../../azure-monitor/app/java-agent.md)
 
-## <a name="view"></a>パフォーマンス メトリックの監視
+## <a name="exploring-performance-metrics"></a><a name="view"></a>パフォーマンス メトリックの監視
 [Azure ポータル](https://portal.azure.com)で、アプリケーション用に設定した Application Insights リソースを参照します。 概要ブレードに、基本的なパフォーマンス データが表示されます。
 
 詳細を表示したり、より長い期間の結果を表示したりするには、グラフをクリックします。 たとえば、[要求] タイルをクリックして、次の時間範囲を選択します。
@@ -43,7 +43,7 @@ Application Insights は、Java と ASP.NET の Web アプリケーションと�
 > [!NOTE]
 > **すべてのメトリックのチェック ボックスをオフにしてください** 。 メトリックはグループに分けられ、グループ内のあるメンバーが選択されると、そのグループのメンバーのみが表示されます。
 
-## <a name="metrics"></a>どのような意味がありますか? パフォーマンス タイルとレポート
+## <a name="what-does-it-all-mean-performance-tiles-and-reports"></a><a name="metrics"></a>どのような意味がありますか? パフォーマンス タイルとレポート
 パフォーマンスに関する各種メトリックを取得できます。 まず、アプリケーション ブレードに既定で表示されるメトリックから始めます。
 
 ### <a name="requests"></a>Requests
@@ -96,7 +96,7 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 
 *[アラートの追加] ボタンが表示されません。* これは、読み取り専用のアクセス許可しかないグループ アカウントなのでしょうか? アカウント管理者にご確認ください。
 
-## <a name="diagnosis"></a>問題の診断
+## <a name="diagnosing-issues"></a><a name="diagnosis"></a>問題の診断
 パフォーマンス上の問題を検出して診断するためのいくつかのヒントを以下に記します。
 
 * [Web テスト][availability]を設定して、Web サイトが停止した場合や、間違って応答したり、応答速度が低下したりした場合にアラートを送信するようにします。 
@@ -130,7 +130,7 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 ![7 日間の範囲と時間枠における [GET Customers/Details]\(顧客/詳細の取得\) の 3 つの期間スパイク](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
 
 
-## <a name="next"></a>次のステップ
+## <a name="next-steps"></a><a name="next"></a>次のステップ
 [Web テスト][availability] - 世界中から定期的に Web 要求をアプリケーションに送信します。
 
 [診断トレースの収集と検索][diagnostic] - トレース呼び出しを挿入し、結果を詳しく調べて問題を特定します。

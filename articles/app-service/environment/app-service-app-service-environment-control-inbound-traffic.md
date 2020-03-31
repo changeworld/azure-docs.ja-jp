@@ -8,10 +8,10 @@ ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: aa43d44a691fa9151959e8817596bdfc9bba65f0
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74687390"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>App Service 環境への受信トラフィックを制御する方法
@@ -109,7 +109,7 @@ Visual Studio でのリモート デバッグが使用されている場合、�
 
 ASE でアプリが IP SSL を使用するように構成されている場合、外部の顧客に特殊なポート ペアのマッピングは表示されず、外部の顧客がマッピングを確認する必要はありません。  アプリへのトラフィックは、構成済みの IP SSL アドレスに通常流れていきます。  特殊なポート ペアへの変換は、ASE を含むサブネットへのトラフィックのルーティングの最終段階において内部で自動的に実行されます。 
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 App Service 環境の使用を開始するには、「 [App Service 環境の概要][IntroToAppServiceEnvironment]
 
 アプリの App Service 環境からバックエンド リソースへの安全な接続の詳細については、「[App Service 環境からバックエンド リソースに安全に接続する][SecurelyConnecttoBackend]」を参照してください。

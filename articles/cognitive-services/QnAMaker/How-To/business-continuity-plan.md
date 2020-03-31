@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: diberry
 ms.openlocfilehash: f920a789f1ec631c5d70863b10d8364b3eb81b6c
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77650471"
 ---
 # <a name="create-a-business-continuity-plan-for-your-qna-maker-service"></a>QnA Maker サービスのビジネス継続性計画を作成する

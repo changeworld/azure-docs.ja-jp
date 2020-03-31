@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
 ms.openlocfilehash: 1fddbe908ccebc1384dcccde0810366f1a6d5da7
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73796232"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>仮想ネットワーク ピアリングの問題をトラブルシューティングする
@@ -212,7 +212,7 @@ NVA デバイスの設定とルーティングのトラブルシューティン�
 
 この問題のトラブルシューティングを行うには:
 
-1. Azure ポータルにサインインします。 
+1. Azure portal にサインインします。 
 1. Web アプリで **[ネットワーク]** を選択し、 **[VNet 統合]** を選びます。
 1. リモート仮想ネットワークが表示されているかどうかを確認します。 リモート仮想ネットワークのアドレス空間を手動で入力します ( **[ネットワークの同期]** と **[ルートの追加]** )。
 
@@ -235,6 +235,6 @@ NVA デバイスの設定とルーティングのトラブルシューティン�
 
 この問題を解決するには、 **[Azure Databricks]** から仮想ネットワーク ピアリングを構成し、 **[リソース ID]** を使用してターゲット仮想ネットワークを指定します。 詳細については、「[Databricks 仮想ネットワークからリモート仮想ネットワークへのピアリング](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-peering.html#id2)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure VM 間の接続に関する問題のトラブルシューティング](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-connectivity-problem-between-vms)

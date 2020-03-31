@@ -1,27 +1,19 @@
 ---
 title: Azure CLI を使用して Linux VM にデータ ディスクを追加する
 description: Azure CLI を使用して Linux VM に永続データ ディスクを追加する方法について説明します
-services: virtual-machines-linux
-documentationcenter: ''
 author: roygara
 manager: twooley
-editor: tysonn
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.date: 06/13/2018
 ms.author: rogarana
-ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: 5d7ec2cbbc5cc1bf8bdc87d7f82a965b3bc8c267
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a80a1fe21ba0b40aebf9e426e3d49f499c2d2a21
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037100"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226835"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Linux VM へのディスクの追加
 この記事では、メンテナンスやサイズ変更により VM が再プロビジョニングされる場合でもデータを保持できるように、永続ディスクを VM に接続する方法について説明します。
@@ -240,7 +232,7 @@ Linux VM で TRIM のサポートを有効にする方法は 2 通りありま�
 
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Linux マシンのパフォーマンスの最適化](optimization.md) に関する推奨事項を読んで、Linux VM が正しく構成されていることを確認します。
 * ディスクを追加してストレージ容量を拡張し、 [RAID を構成](configure-raid.md) してパフォーマンスを強化します。

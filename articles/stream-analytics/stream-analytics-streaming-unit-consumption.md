@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/27/2020
 ms.openlocfilehash: 397e455c8b6a1097e2a32473036e1acd2bbdf2eb
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921149"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232047"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>ストリーミング ユニットの理解と調整
 

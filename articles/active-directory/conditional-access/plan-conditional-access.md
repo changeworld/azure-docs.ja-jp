@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e1c75d5022432a9a57b30aabec4dd2c4f76f2f29
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78671832"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>方法:Azure Active Directory の条件付きアクセスの展開を計画する

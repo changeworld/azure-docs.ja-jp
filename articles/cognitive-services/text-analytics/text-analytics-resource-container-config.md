@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: dapine
 ms.openlocfilehash: 8a39327275dca43ddb6ce0e46a3e3bb51ec4555b
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73795303"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Text Analytics の docker コンテナーの構成
@@ -51,7 +51,7 @@ Text Analytics ではコンテナーごとに一般的な構成フレームワ�
 
 |必須| 名前 | データ型 | 説明 |
 |--|------|-----------|-------------|
-|はい| `Billing` | string | 課金エンドポイント URI。 課金 URI の取得の詳細については、「[必須パラメーターの収集](how-tos/text-analytics-how-to-install-containers.md#gathering-required-parameters)」を参照してください。 リージョンのエンドポイントの詳細および全一覧については、「[Cognitive Services のカスタム サブドメイン名](../cognitive-services-custom-subdomains.md)」を参照してください。 |
+|はい| `Billing` | String | 課金エンドポイント URI。 課金 URI の取得の詳細については、「[必須パラメーターの収集](how-tos/text-analytics-how-to-install-containers.md#gathering-required-parameters)」を参照してください。 リージョンのエンドポイントの詳細および全一覧については、「[Cognitive Services のカスタム サブドメイン名](../cognitive-services-custom-subdomains.md)」を参照してください。 |
 
 ## <a name="eula-setting"></a>Eula 設定
 
@@ -79,8 +79,8 @@ Text Analytics コンテナーでは、トレーニングやサービスのデ�
 
 |省略可能| 名前 | データ型 | 説明 |
 |-------|------|-----------|-------------|
-|禁止| `Input` | string | Text Analytics コンテナーでは、これは使用されません。|
-|省略可能| `Output` | string | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
+|禁止| `Input` | String | Text Analytics コンテナーでは、これは使用されません。|
+|省略可能| `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>docker run コマンドの例 
 
@@ -100,21 +100,21 @@ Text Analytics コンテナーでは、トレーニングやサービスのデ�
 > コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](how-tos/text-analytics-how-to-install-containers.md#billing)」を参照してください。
 > ApiKey の値は、Azure `Text Analytics` リソース キー ページにある**キー**です。 
 
-#### <a name="key-phrase-extractiontabkeyphrase"></a>[キー フレーズ抽出](#tab/keyphrase)
+#### <a name="key-phrase-extraction"></a>[キー フレーズ抽出](#tab/keyphrase)
 
 [!INCLUDE [key-phrase-extraction-docker-examples](includes/key-phrase-extraction-docker-examples.md)]
 
-#### <a name="language-detectiontablanguage"></a>[言語検出](#tab/language)
+#### <a name="language-detection"></a>[言語検出](#tab/language)
 
 [!INCLUDE [language-detection-docker-examples](includes/language-detection-docker-examples.md)]
 
-#### <a name="sentiment-analysistabsentiment"></a>[感情分析](#tab/sentiment)
+#### <a name="sentiment-analysis"></a>[感情分析](#tab/sentiment)
 
 [!INCLUDE [sentiment-analysis-docker-examples](includes/sentiment-analysis-docker-examples.md)]
 
 ***
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [コンテナーのインストール方法と実行方法](how-tos/text-analytics-how-to-install-containers.md)を確認する。
-* さらに [Azure Cognitive Services コンテナー](../cognitive-services-container-support.md)を使用する
+* さらに [Cognitive Services コンテナー](../cognitive-services-container-support.md)を使用する

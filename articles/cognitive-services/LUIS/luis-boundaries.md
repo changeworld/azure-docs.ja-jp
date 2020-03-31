@@ -12,11 +12,11 @@ ms.date: 11/07/2019
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: d584b00caef628eb9dfd085b1fdce2bb7b353988
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273517"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218837"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>LUIS モデルとキーの境界
 LUIS には、複数の境界領域があります。 1 つは[モデル境界](#model-boundaries)で、これにより LUIS で意図、エンティティ、および機能が制御されます。 2 つ目の領域は、キーの種類に基づく[クォータ制限](#key-limits)です。 3 つ目の境界領域は、LUIS Web サイトを制御するための[キーボードの組み合わせ](#keyboard-controls)です。 4 つ目の領域は、LUIS オーサリング Web サイトと LUIS [エンドポイント](luis-glossary.md#endpoint) API の間の[世界リージョン マッピング](luis-reference-regions.md)です。
@@ -29,7 +29,7 @@ LUIS には、複数の境界領域があります。 1 つは[モデル境界](
 |領域|制限|
 |--|:--|
 | [アプリ名][luis-get-started-create-app] | \* 既定の最大文字数 |
-| [アプリケーション]| Azure オーサリング リソースごとに 500 アプリケーション |
+| アプリケーション| Azure オーサリング リソースごとに 500 アプリケーション |
 | [バッチ テスト][batch-testing]| 10 データセット、データセットあたり 1000 発話|
 | 明示的なリスト | アプリケーションあたり 50|
 | 外部エンティティ | 無制限 |

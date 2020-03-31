@@ -7,10 +7,10 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 1/30/2018
 ms.openlocfilehash: d91d46e0119c22f4f2538ab5ea982ca4418256cf
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74792655"
 ---
 # <a name="custom-connectors-in-logic-apps"></a>Logic Apps のカスタム コネクタ

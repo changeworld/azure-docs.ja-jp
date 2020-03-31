@@ -7,10 +7,10 @@ ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.openlocfilehash: 73905483850a47a9d036bef1b9e1ee60d3484555
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77484589"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Azure Stream Analytics で JSON データと Avro データを解析する

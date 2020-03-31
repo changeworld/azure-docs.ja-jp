@@ -5,12 +5,12 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: f61fdedcd3c910ef5d09685fea00473a83b321f1
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: cf82dddf281e8e6f1348884702e32330dee4781b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834279"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235531"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Update Management、Change Tracking、および Inventory ソリューションの配布準備
 
@@ -18,11 +18,11 @@ Azure Automation には、オペレーティング システムのセキュリ�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[https://portal.azure.com](https://portal.azure.com ) で Azure にサインインします
+https://portal.azure.com で Azure にサインインします
 
 ## <a name="enable-solutions"></a>ソリューションの有効化
 
-Automation アカウントに移動し、 **[構成管理]** で、 **[インベントリ]** または **[Change Tracking]\(変更の追跡\)** をクリックします。
+Automation アカウントに移動し、 **[構成管理]** で、 **[インベントリ]** または **[変更の追跡]** を選択します。
 
 Log Analytics ワークスペースおよび Automation アカウントを選択し、 **[有効にする]** をクリックして、ソリューションを有効にします。 ソリューションを有効にするには最大 15 分かかります。
 
@@ -35,17 +35,17 @@ Log Analytics ワークスペースおよび Automation アカウントを選択
 
 Change Tracking と Inventory ソリューションには、仮想マシンで[変更を追跡](automation-vm-change-tracking.md)し、[インベントリを作成](automation-vm-inventory.md)する機能が用意されています。 この手順では、仮想マシンでソリューションを有効にします。
 
-Change Tracking と Inventory ソリューションの配布準備通知が完了したら、 **[構成管理]** で **[Update Management]** をクリックします。
+Change Tracking とインベントリ ソリューションのオンボード通知が完了したら、 **[更新プログラムの管理]** で **[更新プログラムの管理]** を選択します。
 
-Update Management ソリューションでは、Azure Windows VM の更新プログラムとパッチを管理できます。 利用可能な更新プログラムの状態を迅速に把握したり、必要な更新プログラムのインストールをスケジュールしたり、デプロイの結果を確認して、VM に更新プログラムが正常に適用されたことを検証したりできます。 この操作では、ご利用の VM のソリューションを有効にしました。
+Update Management ソリューションでは、Azure およびハイブリッド VM の更新プログラムと修正プログラムを管理できます。 利用可能な更新プログラムの状態を迅速に把握したり、必要な更新プログラムのインストールをスケジュールしたりすることができます。また、デプロイの結果を確認して、VM に更新プログラムが正常に適用されたことを確認できます。
 
-**[更新の管理]** で **[更新プログラムの管理]** を選択します。 選択されている Log Analytics ワークスペースは、前の手順で使用されたワークスペースと同じです。 **[有効]** をクリックして、Update Management ソリューションの配布準備を行います。 ソリューションを有効にするには最大 15 分かかります。
+ソリューションの有効化ページで選択されている Log Analytics ワークスペースは、前の手順で使用されたワークスペースと同じです。 **[有効化]** をクリックして、Update Management ソリューションをオンボードします。 ソリューションを有効にするには最大 15 分かかります。
 
 ![Update ソリューションの配布準備](media/automation-onboard-solutions-from-automation-account/onboardsolutions2.png)
 
 ## <a name="scope-configuration"></a>スコープ構成
 
-各ソリューションは、ワークスペース内のスコープ構成を使用して、ソリューションの対象となるコンピューターを決定します。 スコープ構成は、ソリューションのスコープを特定のコンピューターに限定するために使用される、1 つ以上の保存された検索条件のグループです。 スコープ構成にアクセスするには、 **[関連リソース]** の Automation アカウントで、 **[ワークスペース]** を選択します。 次に、 **[ワークスペースのデータ ソース]** のワークスペースで、 **[スコープ構成]** を選択します。
+各ソリューションは、ワークスペース内のスコープ構成を使用して、ソリューションの対象となるコンピューターを決定します。 スコープ構成は、ソリューションのスコープを特定のコンピューターに限定するために使用される、1 つ以上の保存された検索条件のグループです。 スコープ構成にアクセスするには、お使いの Automation アカウントで、 **[関連リソース]** の下の **[ワークスペース]** を選択します。 次に、 **[Workspace data sources]\(ワークスペース データ ソース\)** のワークスペースで、 **[Scope Configurations]\(スコープ構成\)** を選択します。
 
 選択したワークスペースに Update Management や Change Tracking のソリューションがまだない場合、次のスコープ構成が作成されます。
 
@@ -61,7 +61,7 @@ Update Management ソリューションでは、Azure Windows VM の更新プロ
 
 Log Analytics ワークスペースに移動し、 **[全般]** の **[保存された検索条件]** を選択します。 次の表は、これらのソリューションで使用される 2 つの保存された検索条件を示しています。
 
-|Name     |カテゴリ  |エイリアス  |
+|名前     |カテゴリ  |エイリアス  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | 更新プログラム        | Updates__MicrosoftDefaultComputerGroup         |
@@ -72,7 +72,7 @@ Log Analytics ワークスペースに移動し、 **[全般]** の **[保存さ
 
 ## <a name="onboard-azure-vms"></a>Azure VM のオンボード
 
-Automation アカウントの **[構成管理]** で **[インベントリ]** または **[Change Tracking]\(変更の追跡\)** を選択するか、 **[更新の管理]** で **[更新プログラムの管理]** を選択します。
+Automation アカウントの **[構成管理]** で **[インベントリ]** または **[変更の追跡]** を選択するか、 **[更新プログラムの管理]** で **[更新プログラムの管理]** を選択します。
 
 **[+ Azure VM の追加]** をクリックし、リストから 1 つ以上の VM を選択します。 有効にできない仮想マシンは灰色で表示され、選択できません。 Azure VM は、ご使用の Automation アカウントの場所に関係なく任意のリージョンに存在できます。 **[Update Management の有効化]** ページで、 **[有効化]** をクリックします。 このアクションにより、選択された VM が、ソリューションのコンピューター グループの保存された検索条件に追加されます。
 
@@ -80,13 +80,13 @@ Automation アカウントの **[構成管理]** で **[インベントリ]** �
 
 ## <a name="onboard-a-non-azure-machine"></a>Azure 以外のマシンの配布準備
 
-Azure に存在しないマシンは手動で追加する必要があります。 Automation アカウントの **[構成管理]** で **[インベントリ]** または **[Change Tracking]\(変更の追跡\)** を選択するか、 **[更新の管理]** で **[更新プログラムの管理]** を選択します。
+Azure に存在しないマシンは手動で追加する必要があります。 Automation アカウントの **[構成管理]** で **[インベントリ]** または **[変更の追跡]** を選択するか、 **[更新プログラムの管理]** で **[更新プログラムの管理]** を選択します。
 
 **[Add non-Azure machine]\(Azure 以外のマシンを追加する\)** をクリックします。 このアクションにより、新しいブラウザー ウィンドウが開きます。このウィンドウには、マシンがソリューションへのレポートを開始できるように、[Microsoft Monitoring Agent をマシンにインストールして構成する方法](../azure-monitor/platform/log-analytics-agent.md)が示されます。 System Center Operations Manager によって現在管理されているマシンの配布準備を行う場合、新しいエージェントは必要ありません。ワークスペース情報は、既存のエージェントに入力されます。
 
 ## <a name="onboard-machines-in-the-workspace"></a>ワークスペースでのマシンの配布準備
 
-手動でインストールしたマシンや、既にワークスペースへのレポートを行っているマシンは、Azure Automation に追加してソリューションを有効にする必要があります。 Automation アカウントの **[構成管理]** で **[インベントリ]** または **[Change Tracking]\(変更の追跡\)** を選択するか、 **[更新の管理]** で **[更新プログラムの管理]** を選択します。
+手動でインストールしたマシンや、既にワークスペースへのレポートを行っているマシンは、Azure Automation に追加してソリューションを有効にする必要があります。 Automation アカウントの **[構成管理]** で **[インベントリ]** または **[変更の追跡]** を選択するか、 **[更新プログラムの管理]** で **[更新プログラムの管理]** を選択します。
 
 **[マシンの管理]** を選択します。 このアクションにより、 **[マシンの管理]** ページが開きます。 このページを使用すると、一部のマシン、使用可能なすべてのマシン、または現在のすべてのマシンと今後のすべてのマシンで、ソリューションを有効にすることができます。 前に **[Enable on all available and future machines]\(使用可能なマシンと今後のマシンすべてで有効にします\)** を選択している場合、 **[マシンの管理]** ボタンはグレー表示される可能性があります。
 
@@ -104,7 +104,7 @@ Azure に存在しないマシンは手動で追加する必要があります�
 
 ### <a name="selected-machines"></a>選択したマシン
 
-1 つ以上のマシンに対してソリューションを有効にするには、 **[Enable on selected machines]\(選択したマシンで有効にします\)** を選択し、ソリューションに追加する各マシンの横にある **[追加]** をクリックします。 このタスクにより、選択したマシン名が、ソリューションの "保存した検索クエリ" コンピューター グループに追加されます。
+1 つ以上のマシンに対してソリューションを有効にするには、 **[選択したマシンで有効にします]** を選択し、ソリューションに追加する各マシンの横にある **[追加]** をクリックします。 このタスクにより、選択したマシン名が、ソリューションの "保存した検索クエリ" コンピューター グループに追加されます。
 
 ## <a name="unlink-workspace"></a>ワークスペースのリンクの解除
 
@@ -141,7 +141,7 @@ Azure に存在しないマシンは手動で追加する必要があります�
 
 * VM の開始/停止の Runbook スケジュール
 * VM の開始/停止の Runbook
-* 変数:
+* 変数
 
 Automation アカウントの自分のワークスペースを Log Analytics ワークスペースからリンク解除することもできます。 自分のワークスペースで、 **[関連リソース]** の **[Automation アカウント]** を選択します。 [Automation アカウント] ページで **[アカウントのリンク解除]** を選択します。
 

@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
 ms.openlocfilehash: c6e74e7992326d2a4b8fe24510742422b005c2e2
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756162"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236035"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure Public Cloud での分離
 Azure を使用すると、共有物理インフラストラクチャでアプリケーションと仮想マシン (VM) を実行できます。 クラウド環境でのアプリケーションの実行を促進する主要な経済的要因の 1 つは、共有リソースのコストを複数の顧客間で分散できることです。 このマルチテナント機能の実施では、さまざまな顧客間で低コストでリソースを多重化することによって効率が向上します。 残念ながら、機密性の高いアプリケーションや VM を実行するために、悪意のあるユーザーが存在する可能性がある物理サーバーやその他のインフラストラクチャ リソースを共有する危険も生じます。

@@ -9,10 +9,10 @@ ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
 ms.openlocfilehash: 58ae39e8dfdf918ae14ca9bb8dac28405828999e
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78330959"
 ---
 # <a name="verifying-expressroute-connectivity"></a>ExpressRoute 接続の検証

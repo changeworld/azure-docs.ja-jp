@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/01/2020
 ms.openlocfilehash: 5b2df194761ebc167e67498a985960a4fce35f19
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76905304"
 ---
 # <a name="create-schemas-for-tracking-x12-messages-in-azure-logic-apps"></a>Azure Logic Apps で X12 メッセージを追跡するためのスキーマを作成する
@@ -55,7 +55,7 @@ ms.locfileid: "76905304"
 }
 ```
 
-| プロパティ | Required | Type | 説明 |
+| プロパティ | 必須 | Type | 説明 |
 |----------|----------|------|-------------|
 | senderPartnerName | いいえ | String | X12 メッセージ送信者のパートナー名 |
 | receiverPartnerName | いいえ | String | X12 メッセージ受信者のパートナー名 |
@@ -74,7 +74,7 @@ ms.locfileid: "76905304"
 | isTechnicalAcknowledgmentExpected | はい | Boolean | X12 契約で技術確認が構成されているかどうか |
 | isFunctionalAcknowledgmentExpected | はい | Boolean | X12 契約で機能確認が構成されているかどうか |
 | needAk2LoopForValidMessages | はい | Boolean | 有効なメッセージのために AK2 ループが必要かどうか |
-| segmentsCount | いいえ | 整数 | X12 トランザクション セット内のセグメントの数 |
+| segmentsCount | いいえ | Integer | X12 トランザクション セット内のセグメントの数 |
 |||||
 
 ## <a name="x12-transaction-set-acknowledgment-tracking-schema"></a>X12 トランザクション セット受信確認追跡スキーマ
@@ -111,7 +111,7 @@ ms.locfileid: "76905304"
 }
 ```
 
-| プロパティ | Required | Type | 説明 |
+| プロパティ | 必須 | Type | 説明 |
 |----------|----------|------|-------------|
 | senderPartnerName | いいえ | String | X12 メッセージ送信者のパートナー名 |
 | receiverPartnerName | いいえ | String | X12 メッセージ受信者のパートナー名 |
@@ -169,7 +169,7 @@ ms.locfileid: "76905304"
 }
 ```
 
-| プロパティ | Required | Type | 説明 |
+| プロパティ | 必須 | Type | 説明 |
 |----------|----------|------|-------------|
 | senderPartnerName | いいえ | String | X12 メッセージ送信者のパートナー名 |
 | receiverPartnerName | いいえ | String | X12 メッセージ受信者のパートナー名 |
@@ -220,7 +220,7 @@ ms.locfileid: "76905304"
 }
 ```
 
-| プロパティ | Required | Type | 説明 |
+| プロパティ | 必須 | Type | 説明 |
 |----------|----------|------|-------------|
 | senderPartnerName | いいえ | String | X12 メッセージ送信者のパートナー名 |
 | receiverPartnerName | いいえ | String | X12 メッセージ受信者のパートナー名 |
@@ -273,7 +273,7 @@ ms.locfileid: "76905304"
 }
 ```
 
-| プロパティ | Required | Type | 説明 |
+| プロパティ | 必須 | Type | 説明 |
 |----------|----------|------|-------------|
 | senderPartnerName | いいえ | String | X12 メッセージ送信者のパートナー名 |
 | receiverPartnerName | いいえ | String | X12 メッセージ受信者のパートナー名 |
@@ -329,7 +329,7 @@ ms.locfileid: "76905304"
 }
 ```
 
-| プロパティ | Required | Type | 説明 |
+| プロパティ | 必須 | Type | 説明 |
 |----------|----------|------|-------------|
 | senderPartnerName | いいえ | String | X12 メッセージ送信者のパートナー名 |
 | receiverPartnerName | いいえ | String | X12 メッセージ受信者のパートナー名 |

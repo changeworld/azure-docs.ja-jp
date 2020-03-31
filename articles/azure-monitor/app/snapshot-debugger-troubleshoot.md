@@ -6,13 +6,13 @@ author: brahmnes
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 485f35ed249ab7f6bbb987d8c79afe20287cd25a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671411"
 ---
-# <a id="troubleshooting"></a> Application Insights Snapshot Debugger の有効化やスナップショットの表示に関する問題のトラブルシューティング
+# <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Application Insights Snapshot Debugger の有効化やスナップショットの表示に関する問題のトラブルシューティング
 アプリケーションに対して Application Insights Snapshot Debugger を有効にしたにもかかわらず、例外のスナップショットが表示されない場合は、次の手順を使用してトラブルシューティングを行うことができます。 スナップショットが生成されない理由としては、さまざまなことが考えられます。 スナップショットの正常性チェックを実行すると、いくつかの一般的な原因を特定できます。
 
 ## <a name="use-the-snapshot-health-check"></a>スナップショットの正常性チェックを使用する

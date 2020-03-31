@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: osamam
 ms.openlocfilehash: 8adfcc6559e3e2d48aabd3cfeec4fe20541917c3
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74072138"
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>複数のネットワーク パスを使用した非対称ルーティング

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 07/17/2019
 ms.author: juliako
 ms.openlocfilehash: d9e42e809443a2dd6cdeb989f692b96d63269f79
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78673574"
 ---
 # <a name="azure-media-player-overview"></a>Azure Media Player の概要

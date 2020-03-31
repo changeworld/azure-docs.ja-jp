@@ -17,10 +17,10 @@ ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
 ms.openlocfilehash: 5a6da7e65a9a3e962a2df37b062792fbb990d04d
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73159683"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Azure Kubernetes ネットワーク ポリシーの概要
@@ -42,7 +42,7 @@ ACS エンジンは、Azure での Kubernetes クラスター デプロイ用 Az
 
 ACS エンジンを使用してデプロイされたクラスターでポリシーを有効にするには、クラスター定義ファイルで networkPolicy 設定の値が "azure" になるように指定します。
 
-#### <a name="example-configuration"></a>構成の例
+#### <a name="example-configuration"></a>構成例
 
 次の JSON 構成の例では、新しい仮想ネットワークとサブネットを作成し、Azure CNI を使用して、そこに Kubernetes クラスターをデプロイします。 JSON ファイルの編集には "メモ帳" を使用することをお勧めします。 
 ```json
@@ -99,7 +99,7 @@ ACS エンジンを使用してデプロイされたクラスターでポリシ�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure Kubernetes Service](../aks/intro-kubernetes.md) について確認します。
 -  [コンテナー ネットワーク](container-networking-overview.md)について確認します。
 - Kubernetes クラスターまたは Docker コンテナー用の[プラグインをデプロイ](deploy-container-networking.md)します。

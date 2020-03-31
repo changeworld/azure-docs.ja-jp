@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/13/2019
 ms.author: erhopf
 ms.openlocfilehash: 0bcdd315fe11b7472166a5a9ad4f7395e22d2126
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72675629"
 ---
 Xamarin を使用したクロスプラットフォーム モバイル アプリ .NET 開発用の Visual Studio プロジェクトを作成するには、次のことを行う必要があります。

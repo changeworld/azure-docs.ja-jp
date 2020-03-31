@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/12/2018
 ms.author: jaredro
-ms.openlocfilehash: eda0011ea4d259d0e60cb894c2b42325ddfc2eb7
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a39cf4e09a70ca2b1225d699c84abf0e7f1d2eab
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076631"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476408"
 ---
 # <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>Azure CLI を使用して ExpressRoute Global Reach を構成する
 
@@ -53,7 +53,7 @@ az account set --subscription <your subscription ID>
 
 接続を有効にするためにコマンドを実行する場合、パラメーターの値に次の要件があることに注意してください。
 
-* *peer-circuit* は、完全なリソース ID にする必要があります。 例:
+* *peer-circuit* は、完全なリソース ID にする必要があります。 次に例を示します。
 
   > /subscriptions/{自分のサブスクリプション ID}/resourceGroups/{自分のリソース グループ}/providers/Microsoft.Network/expressRouteCircuits/{自分の回線名}
 
@@ -67,7 +67,7 @@ az network express-route peering connection create -g <ResourceGroupName> --circ
 
 CLI 出力は次のようになります。
 
-```azurecli
+```output
 {
   "addressPrefix": "<__.__.__.__/29>",
   "authorizationKey": null,
@@ -103,7 +103,7 @@ CLI 出力は次のようになります。
 
    CLI 出力は次のようになります。
 
-   ```azurecli
+   ```output
    {
      "authorizationKey": "<authorizationKey>",
      "authorizationUseStatus": "Available",
@@ -148,7 +148,7 @@ az network express-route peering connection delete -g <ResourceGroupName> --circ
 
 この操作が完了すると、ExpressRoute 回線を経由したオンプレミスのネットワーク間の接続は存在しなくなります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ExpressRoute Global Reach について詳しく学習する](expressroute-global-reach.md)
 * [ExpressRoute 接続を確認する](expressroute-troubleshooting-expressroute-overview.md)

@@ -4,11 +4,11 @@ description: この記事では、AKS Container Insights ソリューション�
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 3ff2c35ae9f5838447ce90e2a020649427920a43
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198039"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234471"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>コンテナーに対する Azure Monitor の概要
 

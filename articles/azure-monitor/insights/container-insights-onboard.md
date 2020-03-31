@@ -4,11 +4,11 @@ description: この記事では、コンテナーがどのように動作し、�
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.openlocfilehash: 7aad7e7dd5ec2569377f9276c2e4793c7afd631a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198073"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234495"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Azure Monitor for containers を有効にする方法
 

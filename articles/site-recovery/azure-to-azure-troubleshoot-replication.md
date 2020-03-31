@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 8/2/2019
-ms.openlocfilehash: e5e52c6e8560c7369054cfc9fcf2ba4c405671e0
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 67b68cc8a1db4a058675dc51fb3805093c455908
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190805"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80276667"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリーでのレプリケーションのトラブルシューティング
 
@@ -23,7 +23,7 @@ Azure Site Recovery は、一貫してソース リージョンからディザ�
 
 以下のセクションでは、原因と解決策について説明します。
 
-## <a name="high-data-change-rate-on-the-source-virtal-machine"></a>ソース仮想マシンにおけるデータ変更率が高い
+## <a name="high-data-change-rate-on-the-source-virtual-machine"></a><a name="high-data-change-rate-on-the-source-virtal-machine"></a>ソース仮想マシンにおけるデータ変更率が高い
 
 Azure Site Recovery がイベントを作成するのは、ソース仮想マシン上のデータ変更率が、サポートされている制限よりも高い場合です。 問題が高チャーンによるものかどうかを確認するには、 **[レプリケートされたアイテム]**  >  **[VM]**  >  **[Events -last 72 hours]\(イベント - 過去 72 時間\)** に移動します。
 "データ変更率がサポートされている制限を超えています" というイベントが表示されるはずです。
@@ -42,12 +42,12 @@ Azure Site Recovery がイベントを作成するのは、ソース仮想マシ
 
 **レプリケーション先のストレージ** | **ソース ディスクの平均 I/O サイズ** |**ソース ディスクの平均データ チャーン** | **ソース データ ディスクの 1 日あたりの合計データ チャーン**
 ---|---|---|---
-Standard Storage | 8 KB | 2 MB/秒 | (ディスクあたり) 168 GB
-Premium P10 または P15 ディスク | 8 KB  | 2 MB/秒 | (ディスクあたり) 168 GB
-Premium P10 または P15 ディスク | 16 KB | 4 MB/秒 |  (ディスクあたり) 336 GB
+Standard Storage | 8 KB    | 2 MB/秒 | (ディスクあたり) 168 GB
+Premium P10 または P15 ディスク | 8 KB    | 2 MB/秒 | (ディスクあたり) 168 GB
+Premium P10 または P15 ディスク | 16 KB | 4 MB/秒 |    (ディスクあたり) 336 GB
 Premium P10 または P15 ディスク | 32 KB 以上 | 8 MB/秒 | (ディスクあたり) 672 GB
 Premium P20、P30、P40、または P50 ディスク | 8 KB    | 5 MB/s | (ディスクあたり) 421 GB
-Premium P20、P30、P40、または P50 ディスク | 16 KB 以上 |10 MB/s | (ディスクあたり) 842 GB
+Premium P20、P30、P40、または P50 ディスク | 16 KB 以上 |20 MB/秒 | (ディスクあたり) 1,684 GB
 
 ### <a name="solution"></a>解決策
 
@@ -69,7 +69,7 @@ Azure Site Recovery にはデータ変更率に制限があり、これはディ
     1. **[概要]** に、SAS URL が生成されたことを示すバナーが表示される場合があります。 このバナーを選択して、エクスポートをキャンセルします。 バナーが表示されない場合は、このステップを無視してください。
     1. SAS URL が取り消されたら、すぐにマネージド ディスクの **[構成]** に移動します。 Site Recovery がソース ディスクで観測されたチャーン率をサポートするように、サイズを大きくします。
 
-## <a name="Network-connectivity-problem"></a>ネットワーク接続の問題
+## <a name="network-connectivity-problems"></a><a name="Network-connectivity-problem"></a>ネットワーク接続の問題
 
 ### <a name="network-latency-to-a-cache-storage-account"></a>キャッシュ ストレージ アカウントへのネットワーク待ち時間
 
@@ -98,7 +98,7 @@ Site Recovery レプリケーションを動作させるには、VM で特定の
 
 #### <a name="known-issue-in-sql-server-2016-and-2017"></a>SQL Server 2016 および 2017 での既知の問題
 
-**修正方法**: 記事「[SQL Server 2016 および 2017 で非コンポーネント ベースのバックアップが含まれる仮想マシンをバックアップするとエラーが発生する](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component)」を参照してください。
+**修正方法**: 記事「[SQL Server 2016 および 2017 で非コンポーネント ベースのバックアップが含まれる仮想マシンをバックアップするとエラーが発生する](https://support.microsoft.com/en-us/help/4508218/cumulative-update-16-for-sql-server-2017)」を参照してください。
 
 #### <a name="youre-using-azure-storage-spaces-direct-configuration"></a>Azure 記憶域スペース ダイレクト構成を使用しています
 

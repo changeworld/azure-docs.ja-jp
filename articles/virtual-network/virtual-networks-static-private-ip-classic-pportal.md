@@ -17,10 +17,10 @@ ms.date: 02/04/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9de9fd2eb7a46719b841a885ac173f8d9c1271c1
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71059101"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-portal"></a>Azure Portal を使用して仮想マシン (クラシック) のプライベート IP アドレスを構成する
@@ -47,7 +47,7 @@ ms.locfileid: "71059101"
 3. **[VM の作成]** で、作成する VM の名前 (ここでは*DNS01* )、ローカル管理者のアカウント、およびパスワードを入力します。
    
     ![Azure ポータルでの VM の作成](./media/virtual-networks-static-ip-classic-pportal/figure02.png)
-4. **[オプションの構成]**  >  **[ネットワーク]**  >  **[Virtual Network]** の順に選択し、 **[TestVNet]** を選択します。 **[TestVNet]** を使用できない場合は、場所として *[米国中央部]* を使用しており、この記事の冒頭で説明されているテスト環境が作成済みであることを確認してください。
+4. **[オプションの構成]**  >  **[ネットワーク]**  >  **[Virtual Network]** の順に選択し、 **[TestVNet]** を選択します。 **[TestVNet]** を使用できない場合は、場所として *[米国中部]* を使用しており、この記事の冒頭で説明されているテスト環境が作成済みであることを確認してください。
    
     ![Azure ポータルでの VM の作成](./media/virtual-networks-static-ip-classic-pportal/figure03.png)
 5. **[ネットワーク]** で、以下のように、現在選択されているサブネットが *FrontEnd* であることを確認し、 **[IP アドレス]** を選択してから、 **[IP アドレスの割り当て]** の下にある **[静的]** を選択して、 **[IP アドレス]** に 「*192.168.1.101*」と入力します。
@@ -80,7 +80,7 @@ ms.locfileid: "71059101"
 
 VM のオペレーティング システム内で Azure 仮想マシンに割り当てられるプライベート IP は、必要でない限り静的に割り当てないことをお勧めします。 実際にオペレーティング システム内でプライベート IP アドレスを手動で設定する場合は、それが Azure VM に割り当てられているプライベート IP アドレスと同じアドレスであるようにしてください。そうしないと、仮想マシンへの接続が失われる可能性があります。 仮想マシンのオペレーティング システム内で Azure の仮想マシンに割り当てられているパブリック IP アドレスを手動で割り当てないでください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [予約済みパブリック IP](virtual-networks-reserved-public-ip.md) アドレスについて理解する。
 * [インスタンスレベル パブリック IP (ILPIP)](virtual-networks-instance-level-public-ip.md) アドレスについて理解する。
 * [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)を確認する。

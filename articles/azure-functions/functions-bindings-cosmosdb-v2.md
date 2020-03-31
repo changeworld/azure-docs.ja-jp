@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 02/24/2017
 ms.author: cshoe
 ms.openlocfilehash: f258a7aff52796a53540706bc8413575d63c9e7d
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77605764"
 ---
 # <a name="azure-cosmos-db-trigger-and-bindings-for-azure-functions-2x-overview"></a>Azure Functions 2.x での Azure Cosmos DB のトリガーとバインドの概要

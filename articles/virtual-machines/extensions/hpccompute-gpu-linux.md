@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
 ms.openlocfilehash: 6ea61acfc2db3c8f1f5c9c0ac8da8f19897d441e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073737"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226883"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Linux 用の NVIDIA GPU ドライバー拡張機能
 
@@ -36,11 +36,11 @@ NVIDIA GPU ドライバーを [Windows の N シリーズ VM](hpccompute-gpu-win
 
 この拡張機能では、特定の OS バージョンのドライバー サポートに応じて、次の OS ディストリビューションをサポートしています。
 
-| ディストリビューション | Version |
+| Distribution | Version |
 |---|---|
-| Linux:Ubuntu | 16.04 LTS、18.04 LTS |
-| Linux:Red Hat Enterprise Linux | 7.3、7.4、7.5、7.6 |
-| Linux:CentOS | 7.3、7.4、7.5、7.6 |
+| Linux: Ubuntu | 16.04 LTS、18.04 LTS |
+| Linux: Red Hat Enterprise Linux | 7.3、7.4、7.5、7.6 |
+| Linux: CentOS | 7.3、7.4、7.5、7.6 |
 
 ### <a name="internet-connectivity"></a>インターネット接続
 
@@ -70,14 +70,14 @@ NVIDIA GPU ドライバー用の Microsoft Azure 拡張機能では、ターゲ�
 }
 ```
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Properties
 
 | 名前 | 値/例 | データ型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.HpcCompute | string |
 | type | NvidiaGpuDriverLinux | string |
-| typeHandlerVersion | 1.2 | int |
+| typeHandlerVersion | 1.2 | INT |
 
 ### <a name="settings"></a>設定
 
@@ -85,12 +85,12 @@ NVIDIA GPU ドライバー用の Microsoft Azure 拡張機能では、ターゲ�
 
 | 名前 | 説明 | Default value | 有効な値 | データ型 |
 | ---- | ---- | ---- | ---- | ---- |
-| updateOS | ドライバーのインストールに必要ない場合でも、カーネルを更新します。 | false | true、false | ブール値 |
+| updateOS | ドライバーのインストールに必要ない場合でも、カーネルを更新します。 | false | true、false | boolean |
 | driverVersion | NV: GRID ドライバーのバージョン<br> NC/ND: CUDA Toolkit のバージョン。 選択した CUDA の最新のドライバーが自動的にインストールされます。 | latest | GRID: "430.30"、"418.70"、"410.92"、"410.71"、"390.75"、"390.57"、"390.42"<br> CUDA: "10.0.130"、"9.2.88"、"9.1.85" | string |
-| installCUDA | CUDA Toolkit をインストールします。 NC/ND シリーズの VM のみに関係します。 | true | true、false | ブール値 |
+| installCUDA | CUDA Toolkit をインストールします。 NC/ND シリーズの VM のみに関係します。 | true | true、false | boolean |
 
 
-## <a name="deployment"></a>Deployment
+## <a name="deployment"></a>デプロイ
 
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート 
@@ -190,7 +190,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/community/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、[サポートの要求] をクリックします。 Azure サポートの使用方法の詳細については、「 [Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 拡張機能の詳細については、「[Linux 用の仮想マシンの拡張機能とその機能](features-linux.md)」を参照してください。
 
 N シリーズ VM の詳細については、「[GPU 最適化済み仮想マシンのサイズ](../linux/sizes-gpu.md)」を参照してください。

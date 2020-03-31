@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
 ms.openlocfilehash: b9a448ff41c66fa3a38c124f7acde062bacbe9ba
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980199"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236707"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Windows Azure Diagnostics を使用したイベントの集計と収集
 > [!div class="op_single_selector"]

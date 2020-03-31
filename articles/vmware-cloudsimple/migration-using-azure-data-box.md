@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f368ad7cf9b83195e35a2283de7a3644cc9fc317
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 65167169248d83ebfec2c49c308673ec9315934e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77019759"
 ---
 # <a name="migrating-data-to-azure-vmware-solution-by-using-azure-data-box"></a>Azure Data Box を使用した Azure VMware ソリューションへのデータ移行
 
 Microsoft Azure Data Box クラウド ソリューションを使用すると、迅速かつ安価な信頼性の高い方法で、数テラバイト (TB) のデータを Azure に送信できます。 独自の Data Box ストレージ デバイスを出荷することにより、セキュリティで保護されたデータ転送を高速化します。 各ストレージ デバイスは、最大で 80 TB のストレージ容量を使用でき、地域の運送業者によって皆さんのデータセンターに輸送されます。 デバイスは堅牢な筐体で保護され、転送中のデータはセキュリティで保護されます。
 
-Data Box を使用すると、VMware データを AVS プライベート クラウドに一括移行できます。 オンプレミスの VMware vSphere 環境からのデータは、ネットワーク ファイル システム (NFS) プロトコルを使用して Data Box にコピーされます。 一括データ移行では、仮想マシン、構成、および関連するデータの特定時点のコピーを Data Box に保存した後、それを Azure に手動で配布します。
+Data Box を使用すると、VMware データをプライベート クラウドに一括移行できます。 オンプレミスの VMware vSphere 環境からのデータは、ネットワーク ファイル システム (NFS) プロトコルを使用して Data Box にコピーされます。 一括データ移行では、仮想マシン、構成、および関連するデータの特定時点のコピーを Data Box に保存した後、それを Azure に手動で配布します。
 
 この記事では、次の内容について説明します。
 
@@ -27,7 +27,7 @@ Data Box を使用すると、VMware データを AVS プライベート クラ�
 * NFS を使用した、オンプレミスの VMware 環境から Data Box へのデータのコピー。
 * Data Box の返却の準備。
 * Azure VMware ソリューションにコピーするための BLOB データの準備。
-* Azure から AVS プライベート クラウドへのデータのコピー。
+* Azure からプライベート クラウドへのデータのコピー。
 
 ## <a name="scenarios"></a>シナリオ
 
@@ -44,11 +44,11 @@ Data Box は、一括データ移行のために次のシナリオで使用し�
 
 * Azure VMware ソリューションのプロビジョニングが行われるのと同じリージョンに、仮想ネットワークとストレージ アカウントを作成します。
 
-* [ExpressRoute を使用して Azure 仮想ネットワークを AVS に接続する](virtual-network-connection.md)方法に関する記事の手順に従って、AVS プライベート クラウドから、ストレージ アカウントが作成された仮想ネットワークへの [Azure 仮想ネットワーク接続](cloudsimple-azure-network-connection.md)を作成します。
+* 「[ExpressRoute を使用して Azure 仮想ネットワークを CloudSimple に接続する](virtual-network-connection.md)」の手順に従って、プライベート クラウドからストレージ アカウントが作成された仮想ネットワークへの [Azure 仮想ネットワーク接続](cloudsimple-azure-network-connection.md)を作成します。
 
 ## <a name="set-up-data-box-for-nfs"></a>NFS 用の Data Box を設定する
 
-[「チュートリアル:ケーブルを配線して Azure Data Box に接続する](../databox/data-box-deploy-set-up.md)」の「デバイスに接続する」セクションの手順に従って、Data Box のローカル Web UI に接続します。 次のようにして、NFS クライアントへのアクセスを許可するように Data Box を構成します。
+[「チュートリアル:ケーブルを配線して Azure Data Box に接続する](../databox/data-box-deploy-set-up.md)」の「デバイスに接続する」セクションの手順に従って、Data Box のローカル Web UI に接続します。  次のようにして、NFS クライアントへのアクセスを許可するように Data Box を構成します。
 
 1. ローカル Web UI で、 **[接続とコピー]** ページに移動します。 **[NFS の設定]** で、 **[NFS のクライアント アクセス]** を選択します。 
 
@@ -95,7 +95,7 @@ Data Box からの NFS 共有は、NFS データストアにデータをコピ�
 
    ![新しいデータストアの追加 - NFS 構成](media/databox-migration-add-datastore-nfs-configuration.png)
 
-6. ウィザードの手順 4 で、データストアをマウントする ESXi ホストを選択し、 **[次へ]** を選択します。 クラスターでは、すべてのホストを選択して、仮想マシンの移行を確実に行います。
+6. ウィザードの手順 4 で、データストアをマウントする ESXi ホストを選択し、 **[次へ]** を選択します。  クラスターでは、すべてのホストを選択して、仮想マシンの移行を確実に行います。
 
    ![新しいデータストアの追加 - ホストの選択](media/databox-migration-add-datastore-nfs-select-hosts.png)
 
@@ -103,7 +103,7 @@ Data Box からの NFS 共有は、NFS データストアにデータをコピ�
 
 ## <a name="copy-data-to-the-data-box-nfs-datastore"></a>データを Data Box NFS データストアにコピーする
 
-仮想マシンは、新しいデータストアに移行または複製することができます。 移行する未使用の仮想マシンは、 **[ストレージ vMotion]** オプションを使用して Data Box NFS データストアに移行することができます。 アクティブな仮想マシンは、Data Box NFS データストアに複製できます。
+仮想マシンは、新しいデータストアに移行または複製することができます。  移行する未使用の仮想マシンは、 **[ストレージ vMotion]** オプションを使用して Data Box NFS データストアに移行することができます。 アクティブな仮想マシンは、Data Box NFS データストアに複製できます。
 
 * **移動**できる仮想マシンを特定して一覧表示します。
 * **複製**する必要がある仮想マシンを特定して一覧表示します。
@@ -157,7 +157,7 @@ Data Box からの NFS 共有は、NFS データストアにデータをコピ�
 
 ### <a name="copy-iso-files-to-the-data-box-datastore"></a>ISO ファイルを Data Box データストアにコピーする
 
-1. オンプレミスの vCenter Web UI で **[ストレージ]** に移動します。 **[Databox-Datastore]** を選択し、 **[ファイル]** を選択します。 ISO ファイルを保存するための新しいフォルダーを作成します。
+1. オンプレミスの vCenter Web UI で **[ストレージ]** に移動します。  **[Databox-Datastore]** を選択し、 **[ファイル]** を選択します。 ISO ファイルを保存するための新しいフォルダーを作成します。
 
     ![ISO のコピー - 新しいフォルダーの作成](media/databox-migration-create-folder.png)
 
@@ -213,28 +213,28 @@ Data Box NFS データストアは、返却の準備をする前に VMware ESXi 
 
 ## <a name="copy-data-from-azure-storage-to-azure-vmware-solution"></a>Azure ストレージから Azure VMware ソリューションにデータをコピーする
 
-Data Box デバイスにコピーされたデータは、Data Box の注文状態が完了と表示されると、Azure ストレージ アカウントで利用できるようになります。 これで、Azure VMware ソリューションにデータをコピーできます。 ストレージ アカウントのデータは、NFS プロトコルを使用して AVS プライベート クラウドの vSAN データストアにコピーする必要があります。 
+Data Box デバイスにコピーされたデータは、Data Box の注文状態が完了と表示されると、Azure ストレージ アカウントで利用できるようになります。 これで、Azure VMware ソリューションにデータをコピーできます。 ストレージ アカウントのデータは、NFS プロトコルを使用してプライベート クラウドの vSAN データストアにコピーする必要があります。 
 
-まず、**AzCopy** を使用して、Azure の Linux 仮想マシン上のマネージド ディスクに BLOB ストレージ データをコピーします。 NFS を使用してマネージド ディスクを使用可能にし、NFS 共有を AVS プライベート クラウド上にデータストアとしてマウントして、データをコピーします。 この方法により、お使いの AVS プライベート クラウドにデータをより迅速にコピーすることができます。
+まず、**AzCopy** を使用して、Azure の Linux 仮想マシン上のマネージド ディスクに BLOB ストレージ データをコピーします。 NFS を使用してマネージド ディスクを使用可能にし、NFS 共有をプライベート クラウド上にデータストアとしてマウントして、データをコピーします。 この方法により、プライベート クラウドへのデータのコピーをより迅速に行えます。
 
-### <a name="copy-data-to-your-avs-private-cloud-using-a-linux-virtual-machine-and-managed-disks-and-then-export-as-nfs-share"></a>Linux 仮想マシンとマネージド ディスクを使用して AVS プライベート クラウドにデータをコピーし、NFS 共有としてエクスポートする
+### <a name="copy-data-to-your-private-cloud-using-a-linux-virtual-machine-and-managed-disks-and-then-export-as-nfs-share"></a>Linux 仮想マシンとマネージド ディスクを使用してプライベート クラウドにデータをコピーし、NFS 共有としてエクスポートする
 
-1. ストレージ アカウントが作成され、かつ AVS プライベート クラウドへの Azure 仮想ネットワーク接続があるリージョンと同じリージョンで、Azure で [Linux 仮想マシン](../virtual-machines/linux/quick-create-portal.md)を作成します。
+1. ストレージ アカウントが作成され、かつプライベート クラウドへの Azure 仮想ネットワーク接続があるリージョンと同じリージョンで、Azure で [Linux 仮想マシン](../virtual-machines/linux/quick-create-portal.md)を作成します。
 
-2. BLOB データよりもストレージ容量が大きいマネージド ディスクを作成し、[それを Linux 仮想マシンに接続します](../virtual-machines/linux/attach-disk-portal.md)。 使用可能な最大のマネージド ディスクの容量よりも BLOB データの量が多い場合は、複数の手順または複数のマネージド ディスクを使用してデータをコピーする必要があります。
+2. BLOB データよりもストレージ容量が大きいマネージド ディスクを作成し、[それを Linux 仮想マシンに接続します](../virtual-machines/linux/attach-disk-portal.md)。  使用可能な最大のマネージド ディスクの容量よりも BLOB データの量が多い場合は、複数の手順または複数のマネージド ディスクを使用してデータをコピーする必要があります。
 
 3. Linux 仮想マシンに接続し、マネージド ディスクをマウントします。
 
 4. [AzCopy を Linux 仮想マシンに](../storage/common/storage-use-azcopy-v10.md)インストールします。
 
-5. AzCopy を使用して Azure BLOB ストレージからマネージド ディスクにデータをダウンロードします。 コマンドの構文: `azcopy copy "https://<storage-account-name>.blob.core.windows.net/<container-name>/*" "<local-directory-path>/"`。 `<storage-account-name>` を、お使いの Azure ストレージ アカウント名に置き換え、`<container-name>` を、Data Box を使用してコピーしたデータを保持するコンテナーに置き換えます。
+5. AzCopy を使用して Azure BLOB ストレージからマネージド ディスクにデータをダウンロードします。  コマンドの構文: `azcopy copy "https://<storage-account-name>.blob.core.windows.net/<container-name>/*" "<local-directory-path>/"`。  `<storage-account-name>` を、お使いの Azure ストレージ アカウント名に置き換え、`<container-name>` を、Data Box を使用してコピーしたデータを保持するコンテナーに置き換えます。
 
 6. Linux 仮想マシンに NFS サーバーをインストールします。
 
     - Ubuntu/Debian ディストリビューションの場合: `sudo apt install nfs-kernel-server`。
     - Enterprise Linux ディストリビューションの場合: `sudo yum install nfs-utils`。
 
-7. Azure BLOB ストレージのデータがコピーされたマネージド ディスク上のフォルダーのアクセス許可を変更します。 NFS 共有としてエクスポートするすべてのフォルダーのアクセス許可を変更します。
+7. Azure BLOB ストレージのデータがコピーされたマネージド ディスク上のフォルダーのアクセス許可を変更します。  NFS 共有としてエクスポートするすべてのフォルダーのアクセス許可を変更します。
 
     ```bash
     chmod -R 755 /<folder>/<subfolder>
@@ -247,7 +247,7 @@ Data Box デバイスにコピーされたデータは、Data Box の注文状�
     sudo vi /etc/exports
     ```
     
-    AVS プライベート クラウドの各 ESXi ホスト IP のファイルに次の行を入力します。 複数のフォルダーの共有を作成する場合は、すべてのフォルダーを追加します。
+    プライベート クラウドの各 ESXi ホスト IP のファイルに次の行を入力します。  複数のフォルダーの共有を作成する場合は、すべてのフォルダーを追加します。
 
     ```bash
     /<folder>/<subfolder> <ESXiNode1IP>(rw,sync,no_root_squash,no_subtree_check)
@@ -261,11 +261,11 @@ Data Box デバイスにコピーされたデータは、Data Box の注文状�
 10. コマンド `sudo systemctl restart nfs-kernel-server` を使用して NFS カーネル サーバーを再起動します。
 
 
-### <a name="mount-the-linux-virtual-machine-nfs-share-as-a-datastore-on-an-avs-private-cloud-vcenter-cluster-and-then-copy-data"></a>Linux 仮想マシン NFS 共有をデータストアとして AVS プライベート クラウドの vCenter クラスターにマウントし、データをコピーする
+### <a name="mount-the-linux-virtual-machine-nfs-share-as-a-datastore-on-a-private-cloud-vcenter-cluster-and-then-copy-data"></a>Linux 仮想マシン NFS 共有をデータストアとしてプライベート クラウドの vCenter クラスターにマウントし、データをコピーする
 
-Linux 仮想マシンからの NFS 共有は、AVS プライベート クラウドの vCenter クラスター上にデータストアとしてマウントする必要があります。 マウントされたデータは、NFS データストアから AVS プライベート クラウドの vSAN データストアにコピーできます。
+Linux 仮想マシンからの NFS 共有は、プライベート クラウドの vCenter クラスター上にデータストアとしてマウントする必要があります。 マウントされたデータは、NFS データストアからプライベート クラウドの vSAN データストアにコピーできます。
 
-1. お使いの AVS プライベート クラウドの vCenter サーバーにログインします。
+1. お使いのプライベート クラウドの vCenter サーバーにログインします。
 
 2. **[データセンター]** を右クリックして **[ストレージ]** を選択し、 **[新しいデータストア**] を選択した後、 **[次へ]** を選択します。
 
@@ -279,11 +279,11 @@ Linux 仮想マシンからの NFS 共有は、AVS プライベート クラウ�
 
    ![新しいデータストアの追加 - NFS バージョン](media/databox-migration-add-datastore-nfs-version.png)
 
-5. ウィザードの手順 3 で、データストアの名前、パス、およびサーバーを指定します。 サーバーには Linux 仮想マシンの IP アドレスを使用できます。 フォルダー パスは `/<folder>/<subfolder>/` の形式になります。
+5. ウィザードの手順 3 で、データストアの名前、パス、およびサーバーを指定します。  サーバーには Linux 仮想マシンの IP アドレスを使用できます。  フォルダー パスは `/<folder>/<subfolder>/` の形式になります。
 
    ![新しいデータストアの追加 - NFS 構成](media/databox-migration-add-datastore-nfs-configuration.png)
 
-6. ウィザードの手順 4 で、データストアをマウントする ESXi ホストを選択し、 **[次へ]** を選択します。 クラスターでは、すべてのホストを選択して、仮想マシンの移行を確実に行います。
+6. ウィザードの手順 4 で、データストアをマウントする ESXi ホストを選択し、 **[次へ]** を選択します。  クラスターでは、すべてのホストを選択して、仮想マシンの移行を確実に行います。
 
    ![新しいデータストアの追加 - ホストの選択](media/databox-migration-add-datastore-nfs-select-hosts.png)
 
@@ -291,13 +291,13 @@ Linux 仮想マシンからの NFS 共有は、AVS プライベート クラウ�
 
 ### <a name="add-virtual-machines-and-virtual-machine-templates-from-an-nfs-datastore-to-the-inventory"></a>仮想マシンと仮想マシンテン プレートを NFS データストアからインベントに追加する
 
-1. AVS プライベート クラウドの vCenter Web UI で **[ストレージ]** に移動します。 Linux 仮想マシン NFS データストアを選択し、 **[ファイル]** を選択します。
+1. プライベート クラウドの vCenter Web UI で **[ストレージ]** に移動します。  Linux 仮想マシン NFS データストアを選択し、 **[ファイル]** を選択します。
 
     ![NFS データストアからのファイルの選択](media/databox-migration-datastore-select-files.png)
 
-2. 仮想マシンまたは仮想マシン テンプレートが格納されているフォルダーを選択します。 詳細ウィンドウで、仮想マシンの場合は .vmx ファイルを選択し、仮想マシン テンプレートの場合は .vmtx ファイルを選択します。
+2. 仮想マシンまたは仮想マシン テンプレートが格納されているフォルダーを選択します。  詳細ウィンドウで、仮想マシンの場合は .vmx ファイルを選択し、仮想マシン テンプレートの場合は .vmtx ファイルを選択します。
 
-3. **[Register VM]\(VM の登録\)** を選択して、AVS プライベート クラウドの vCenter に仮想マシンを登録します。
+3. **[Register VM]\(VM の登録\)** を選択して、プライベート クラウドの vCenter に仮想マシンを登録します。
 
     ![仮想マシンの登録](media/databox-migration-datastore-register-vm.png)
 
@@ -305,29 +305,29 @@ Linux 仮想マシンからの NFS 共有は、AVS プライベート クラウ�
 
 4. すべての仮想マシンと仮想マシン テンプレートについて、手順 3 と 4 を繰り返します。
 
-5. ISO ファイルが格納されているフォルダーに移動します。 ISO ファイルを選択し、 **[コピー先]** を選択して、vSAN データストア上のフォルダーにファイルをコピーします。
+5. ISO ファイルが格納されているフォルダーに移動します。  ISO ファイルを選択し、 **[コピー先]** を選択して、vSAN データストア上のフォルダーにファイルをコピーします。
 
-これで、仮想マシンと仮想マシン テンプレートが AVS プライベート クラウドの vCenter で利用できるようになります。 これらの仮想マシンは、オンにする前に NFS データストアから vSAN データストアに移動する必要があります。 **[ストレージ vMotion]** オプションを使用し、仮想マシンのターゲットとして vSAN データストアを選択できます。
+これで、仮想マシンと仮想マシン テンプレートがプライベート クラウドの vCenter で利用できるようになります。 これらの仮想マシンは、オンにする前に NFS データストアから vSAN データストアに移動する必要があります。 **[ストレージ vMotion]** オプションを使用し、仮想マシンのターゲットとして vSAN データストアを選択できます。
 
 仮想マシン テンプレートは、Linux 仮想マシン NFS データストアから vSAN データストアに複製する必要があります。
 
 ### <a name="clean-up-your-linux-virtual-machine"></a>Linux 仮想マシンをクリーンアップする
 
-すべてのデータが AVS プライベート クラウドにコピーされたら、AVS プライベート クラウドから NFS データストアを削除できます。
+すべてのデータがプライベート クラウドにコピーされたら、プライベート クラウドから NFS データストアを削除できます。
 
 1. すべての仮想マシンとテンプレートが vSAN データストアに移動および複製されていることを確認します。
 
 2. インベントリから NFS データストアのすべての仮想マシン テンプレートを削除します。
 
-3. AVS プライベート クラウドの vCenter から Linux 仮想マシンのデータストアをマウント解除します。
+3. プライベート クラウドの vCenter から Linux 仮想マシンのデータストアをマウント解除します。
 
 4. Azure から仮想マシンとマネージド ディスクを削除します。
 
-5. ストレージ アカウントで Data Box によって転送されたデータを保持しない場合は、Azure ストレージ アカウントを削除します。 
+5. ストレージ アカウントで Data Box によって転送されたデータを保持しない場合は、Azure ストレージ アカウントを削除します。  
     
 
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Data Box](../databox/data-box-overview.md) の詳細を確認します。
-* [AVS プライベート クラウドにワークロードを移行する](migrate-workloads.md)ためのさまざまなオプションの詳細を確認します。
+* [ワークロードをプライベート クラウドに移行する](migrate-workloads.md)ためのさまざまなオプションの詳細を確認します。

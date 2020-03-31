@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:ナレッジ ベースの作成、トレーニング、発行 - QnA Maker
 description: QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マニュアルなど、独自のコンテンツから作成できます。 この記事には、単純な FAQ Web ページから QnA Maker ナレッジ ベースを作成して、QnA Maker に関する質問に答える例が含まれています。
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 02/08/2020
-ms.openlocfilehash: fd4e6a4c4288caaf714f4bfc15282b6c4b1e1111
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: b1f80006e2dc72b5b623f4c29c093c734dc1efea
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78299093"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79219017"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>クイック スタート:QnA Maker ナレッジ ベースの作成、トレーニング、発行
 
@@ -40,7 +40,7 @@ QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マ
 
 1. **[Step 4]\(手順 4\)** で、次の表を使用して設定を構成します。
 
-    |設定|Value|
+    |設定|値|
     |--|--|
     |**Enable multi-turn extraction from URLs, .pdf or .docx files (URL、.pdf、または .docx ファイルからの複数ターンの抽出を有効にする)**|オン|
     |**Default answer text (既定の回答テキスト)**| `Quickstart - default answer not found.`|

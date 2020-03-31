@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 02/28/2019
 ms.openlocfilehash: 74b12c1bc6e2a88582cc357c8091b5590e6bf3cb
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78191284"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の Linux ノードにセキュリティとカーネルの更新を適用します

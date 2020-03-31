@@ -8,10 +8,10 @@ ms.date: 09/07/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 7ab04e23b838f2dfd39b73476db7492947d62e6e
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74688814"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>App Service 環境を使用した geo 分散スケール

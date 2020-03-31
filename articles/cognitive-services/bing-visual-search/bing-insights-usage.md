@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: scottwhi
 ms.openlocfilehash: df66dbeebb04209921ff91c4b99a14580f026718
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74111640"
 ---
 # <a name="examples-of-bing-insights-usage"></a>Bing 分析情報の使用例
@@ -73,7 +73,7 @@ ms.locfileid: "74111640"
 
 ![境界ボックスとホット スポット](./media/click-to-search.PNG)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 最初の要求を送信してみるには、クイック スタートを参照してください。[C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)
 

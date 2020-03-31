@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 745be21c2a7a09a09fdbbfd57a305d09a4fac3ed
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72793441"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>"完全な" Lucene 検索構文の使用 (Azure Cognitive Search での高度なクエリ)
@@ -139,7 +139,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
   ![Postman の応答のサンプル](media/search-query-lucene-examples/intrafieldfilter.png)
 
-**fieldName:searchExpression** 構文を使用して、フィールド検索操作を定義できます。検索式は、単一の単語、単一の語句、またはかっこで囲まれた複雑な式が可能であり、必要に応じてブール演算子も使用できます。 たとえば、次のようになります。
+**fieldName:searchExpression** 構文を使用して、フィールド検索操作を定義できます。検索式は、単一の単語、単一の語句、またはかっこで囲まれた複雑な式が可能であり、必要に応じてブール演算子も使用できます。 例として、次のようなものがあります。
 
 - `business_title:(senior NOT junior)`
 - `state:("New York" OR "New Jersey")`
@@ -152,7 +152,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 > [!NOTE]
 > 上記の例では、クエリの各部分に明示的に指定されたフィールド名があるため、`searchFields` パラメーターを使用する必要がありませんでした。 ただし、いくつかの部分で特定のフィールドをスコープにし、他の部分は複数のフィールドに適用できるクエリを実行する場合は、`searchFields` パラメーターを引き続き使用できます。 たとえば、クエリ `search=business_title:(senior NOT junior) AND external&searchFields=posting_type` は、`business_title` フィールドの `senior NOT junior` のみと一致し、`posting_type` フィールドの "external" と一致します。 **fieldName:searchExpression** に指定されたフィールド名は常に `searchFields` パラメーターに優先するため、この例では `searchFields` パラメーターに `business_title` を含める必要はありません。
 
-## <a name="example-3-fuzzy-search"></a>例 3:あいまい検索
+## <a name="example-3-fuzzy-search"></a>例 3: あいまい検索
 
 完全な Lucene 構文では、構造が似ている用語に一致するあいまい検索もサポートしています。 あいまい検索を実行するには、1 つの言葉の終わりにチルダ記号 `~` を付けます。任意で編集距離を指定するパラメーターとして 0 ～ 2 の値を指定します。 たとえば、`blue~` または `blue~1` は blue、blues、glue を返します。
 
@@ -207,7 +207,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~0
 ```
 
-## <a name="example-5-term-boosting"></a>例 5: 用語ブースト
+## <a name="example-5-term-boosting"></a>例 5:用語ブースト
 用語ブーストでは、指定用語を含む文書に含まない文書より高い順位が設定されます (ブーストされます)。 用語をブーストするには、キャレット記号 "^" とブースト係数 (数字) を検索語句の終わりに付けます。 
 
 ### <a name="full-urls"></a>完全な URL
@@ -235,7 +235,7 @@ musicstoreindex の例の **genre** など、特定のフィールドの一致�
 係数レベルを設定するときにブースト係数を大きくするほど、その用語の関連性が他の検索用語に比べて大きくなります。 既定のブースト係数は 1 です。 ブースト係数は整数にする必要がありますが、1 に満たない (0.2 など) 数字にすることができます。
 
 
-## <a name="example-6-regex"></a>例 6: Regex
+## <a name="example-6-regex"></a>例 6:Regex
 
 正規表現検索では、スラッシュ "/" の間のコンテンツに基づいて一致が検索されます。[RegExp](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html) クラスに詳細があります。
 
@@ -259,7 +259,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 > 正規表現クエリは[分析](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis)されません。 不完全なクエリ用語に対して適用される変換は、大文字から小文字への変換だけです。
 >
 
-## <a name="example-7-wildcard-search"></a>例 7: ワイルドカード検索
+## <a name="example-7-wildcard-search"></a>例 7:ワイルドカード検索
 一般的に認められている構文を利用できます。複数の場合は (\*) を、単数の場合は (?) をワイルドカード文字として検索できます。 Lucene Query Parser では、これらの文字を語句ではなく 1 つの用語に利用することにご注意ください。
 
 ### <a name="partial-query-string"></a>部分クエリ文字列
@@ -281,7 +281,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 > ワイルドカード クエリは[分析](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis)されません。 不完全なクエリ用語に対して適用される変換は、大文字から小文字への変換だけです。
 >
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 自分のコードに Lucene Query Parser を指定してみてください。 次のリンクでは、.NET と REST API の両方の検索クエリを設定する方法について説明しています。 これらのリンクでは、既定の単純な構文を使用しています。**queryType** を指定するには、この記事で学習したことを応用する必要があります。
 
 * [.NET SDK を使用したインデックスのクエリ実行](search-query-dotnet.md)

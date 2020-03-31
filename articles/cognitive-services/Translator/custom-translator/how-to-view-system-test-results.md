@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: f5e1a21f24fdd2458d4803d6ed1675455fa5037d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68595605"
 ---
 # <a name="view-system-test-results"></a>システムのテスト結果の表示
@@ -70,12 +70,12 @@ ms.locfileid: "68595605"
 
 2. 正常にトレーニングが完了したモデルで、まだデプロイされていない場合は、[デプロイ] ボタンが表示されます。
 
-    ![モデルをデプロイする](media/how-to/how-to-deploy-model.png)
+    ![モデルのデプロイ](media/how-to/how-to-deploy-model.png)
 
 3.  [デプロイ] をクリックします。
 4.  モデルをデプロイするリージョンの **[Deployed]\(デプロイ対象\)** を選択し、[保存] をクリックします。 複数のリージョンの **[Deployed]\(デプロイ対象\)** を選択することができます。
 
-    ![モデルをデプロイする](media/how-to/how-to-deploy-model-regions.png)
+    ![モデルのデプロイ](media/how-to/how-to-deploy-model-regions.png)
 
 5.  モデルの状態は [状態] 列で確認できます。
 
@@ -90,17 +90,17 @@ ms.locfileid: "68595605"
 
 2. 正常にデプロイされたモデルには、 **[更新]** ボタンが表示されます。
 
-    ![モデルをデプロイする](media/how-to/how-to-update-undeploy-model.png)
+    ![モデルのデプロイ](media/how-to/how-to-update-undeploy-model.png)
 
 3.  **[Update]\(更新\)** を選択します。
 4.  モデルをデプロイまたはデプロイ解除するリージョンの **[Deployed]\(デプロイ対象\)** または **[Undeployed]\(デプロイ解除対象\)** を選択して、 **[Save]\(保存\)** をクリックします。
 
-    ![モデルをデプロイする](media/how-to/how-to-undeploy-model.png)
+    ![モデルのデプロイ](media/how-to/how-to-undeploy-model.png)
 
 >[!Note]
 >すべてのリージョンについて **[Undeployed]\(デプロイ解除対象\)** を選択した場合、モデルはすべてのリージョンからデプロイ解除されて、デプロイ解除済み状態にされます。 それは使用できなくなります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Microsoft Translator Text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) を介してデプロイされた翻訳モデルを使い始めます。
 - [設定を管理](how-to-manage-settings.md)してワークスペースを共有し、サブスクリプション キーを管理する方法について説明します。

@@ -12,10 +12,10 @@ ms.date: 02/01/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: b2b2bc8dd4e60348553228b8b418df252a8c426a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78186252"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C でユーザー エクスペリエンスのインターフェースをカスタマイズする

@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 11/21/2018
 ms.author: ramkris
 ms.openlocfilehash: 3dc2a2d7c0e9fae425340ab1aa91790070708cd1
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73606201"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java Bulk Executor ライブラリ:ダウンロード情報
@@ -21,7 +21,7 @@ ms.locfileid: "73606201"
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET Change Feed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
-> * [Node.JS](sql-api-sdk-node.md)
+> * [Node.js](sql-api-sdk-node.md)
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
@@ -33,10 +33,10 @@ ms.locfileid: "73606201"
 
 | |  |
 |---|---|
-|**説明**|Bulk Executor ライブラリを使うと、クライアント アプリケーションは、Azure Cosmos DB アカウントで一括操作を実行できます。 Bulk Executor ライブラリは、BulkImport および BulkUpdate 名前空間を提供します。 BulkImport モジュールは、コレクションに対してプロビジョニングされているスループットを最大限まで消費するように最適化された方法で、ドキュメントを一括して取り込むことができます。 BulkUpdate モジュールは、Azure Cosmos コンテナー内の既存のデータを修正プログラムとして一括更新できます。|
+|**説明**|Bulk Executor ライブラリを使うと、クライアント アプリケーションは、Azure Cosmos DB アカウントで一括操作を実行できます。 Bulk Executor ライブラリは、BulkImport および BulkUpdate 名前空間を提供します。 BulkImport モジュールは、コレクションに対してプロビジョニングされているスループットを最大限まで消費するように最適化された方法で、ドキュメントを一括して取り込むことができます。 BulkUpdate モジュールでは、Azure Cosmos コンテナー内の既存のデータをパッチとして一括更新できます。|
 |**SDK のダウンロード**|[Maven](https://search.maven.org/#search%7Cga%7C1%7Cdocumentdb-bulkexecutor)|
-|**GitHub 内の Bulk Executor ライブラリ**|[GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started)|
+|**GitHub の Bulk Executor ライブラリ**|[GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started)|
 | **API ドキュメント**| [Java API リファレンス ドキュメント](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)|
-|**作業開始**|[Bulk Executor ライブラリ Java SDK の概要](bulk-executor-java.md)|
+|**開始するには**|[Bulk Executor ライブラリ Java SDK の概要](bulk-executor-java.md)|
 |**サポートされている最小ランタイム**|[Java Development Kit (JDK) 7+](https://aka.ms/azure-jdks)|
 

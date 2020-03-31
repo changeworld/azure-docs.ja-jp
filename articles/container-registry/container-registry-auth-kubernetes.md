@@ -7,10 +7,10 @@ ms.author: karolz
 ms.reviewer: danlep
 ms.date: 02/10/2020
 ms.openlocfilehash: 0608ca0e0e53acf2f19910a7f1107dacf67d4e61
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77154778"
 ---
 # <a name="pull-images-from-an-azure-container-registry-to-a-kubernetes-cluster"></a>Azure コンテナー レジストリから Kubernetes クラスターにイメージをプルする
@@ -47,7 +47,7 @@ kubectl create secret docker-registry <secret-name> \
 ```
 各値の説明:
 
-| Value | 説明 |
+| 値 | 説明 |
 | :--- | :--- |
 | `secret-name` | イメージのプル シークレットの名前 (例: *acr-secret)* |
 | `namespace` | シークレット格納先の Kubernetes 名前空間 <br/> シークレットを、既定の名前空間以外の名前空間に配置する場合にのみ必要 |

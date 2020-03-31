@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: yulili
 ms.openlocfilehash: 5fd7f125037777c55b748b45df49f8f5cd2d0409
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74975892"
 ---
 # <a name="quickstart-synthesize-speech-in-swift-on-ios-using-the-speech-sdk"></a>クイック スタート:iOS 上で Swift と Speech SDK を使用して音声を合成する
@@ -82,7 +82,7 @@ Xcode を起動し、 **[File]**  >  **[New]**  >  **[Project]** の順にクリ
 1. コード例をビルドし、メニューから **[Product]**  >  **[Run]** の順に選択するか、 **[Play]** ボタンをクリックして、iOS シミュレーターで実行します。
 1. テキストを入力してアプリのボタンをクリックすると、合成された音声が再生されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [GitHub でサンプルを詳しく見てみる](https://aka.ms/csspeech/samples)

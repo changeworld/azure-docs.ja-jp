@@ -6,11 +6,11 @@ ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
 ms.openlocfilehash: 58d3cf6261456c09195ad6dafaeb781b55d9e5ee
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310086"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235451"
 ---
 # <a name="view-azure-update-management-update-assessments"></a>Azure Update Management で更新プログラムの評価を表示する
 
@@ -45,7 +45,7 @@ Azure Automation アカウントで **[Update Management]** をクリックす�
 |ツール     | 1 つまたは複数のタスクを完了するのに役立つユーティリティまたは機能です。        |
 |更新プログラム     | 現在インストールされているアプリケーションまたはファイルに対する更新プログラムです。        |
 
-### <a name="linux-2"></a>Linux
+### <a name="linux"></a><a name="linux-2"></a>Linux
 
 |分類  |説明  |
 |---------|---------|

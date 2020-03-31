@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 235efd746562ea4bd52b9cb57da0d8165d60de02
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75561322"
 ---
 # <a name="configure-prerequisites"></a>構成の前提条件
@@ -69,7 +69,7 @@ Azure portal の左上で、 **[リソースの作成]** をクリックして�
 | [SSH Public Key for Admin User]\(管理者ユーザー用の SSH 公開キー\) | VM にログインするために使用される SSH 公開キー - パスフレーズを設定することはできません |
 | サブスクリプション | クラスターをデプロイする対象の Azure サブスクリプション |
 | リソース グループ | 新しいリソース グループを作成するか、クラスター リソースの既存の空のリソース グループを選択します |
-| Location | クラスターをデプロイする対象の Azure リージョン |
+| 場所 | クラスターをデプロイする対象の Azure リージョン |
 
    ![オファーの [基本] ブレード](media/openshift-marketplace-self-managed/ocp-basics.png)  
 <br>

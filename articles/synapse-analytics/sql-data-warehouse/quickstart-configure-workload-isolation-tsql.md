@@ -1,22 +1,22 @@
 ---
 title: クイック スタート:ワークロードの分離を構成する - T-SQL
 description: T-SQL を使用して、ワークロードの分離を構成します。
-services: sql-data-warehouse
+services: synapse-analytics
 author: ronortloff
 manager: craigg
-ms.service: sql-data-warehouse
+ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: workload-management
+ms.subservice: ''
 ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 29f380c468eef27fa7bc00930b5005c8d0b0bf16
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 555d437fb0ee898473b37febb1774924b55bfa1d
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80124460"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80350842"
 ---
 # <a name="quickstart-configure-workload-isolation-using-t-sql"></a>クイック スタート:T-SQL を使用してワークロードの分離を構成する
 

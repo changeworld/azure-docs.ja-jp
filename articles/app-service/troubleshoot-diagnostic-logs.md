@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
 ms.openlocfilehash: 433f8fa36f17f7cb145261273586a684658acda5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985936"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236083"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service でのアプリの診断ログの有効化
 ## <a name="overview"></a>概要
@@ -23,7 +23,7 @@ Azure では、組み込みの診断機能により、 [App Service アプリ](o
 >
 >
 
-|Type|プラットフォーム|Location|説明|
+|Type|プラットフォーム|場所|説明|
 |-|-|-|-|
 | アプリケーションのログ記録 | Windows、Linux | App Service ファイル システムおよび Azure Storage BLOB | アプリケーションのコードによって生成されたメッセージがログに記録されます。 メッセージは、選択した Web フレームワークによって、またはお使いの言語の標準ログ パターンを使用してアプリケーションのコードから直接、生成できます。 各メッセージには、次のいずれかのカテゴリが割り当てられます: **重大**、**エラー**、**警告**、**情報**、**デバッグ**、**トレース**。 アプリケーションのログ記録を有効にするときに、重大度レベルを設定することにより、ログ記録の詳細さを指定できます。|
 | Web サーバーのログ記録| Windows | App Service ファイル システムまたは Azure Storage BLOB| [W3C 拡張ログ ファイル形式](/windows/desktop/Http/w3c-logging)の生 HTTP 要求データ。 各ログ メッセージには、HTTP メソッド、リソース URI、クライアント IP、クライアント ポート、ユーザー エージェント、応答コードなどのデータが含まれます。 |
@@ -81,7 +81,7 @@ Azure では、組み込みの診断機能により、 [App Service アプリ](o
 
 [Azure portal](https://portal.azure.com) で Windows アプリの Web サーバー ログ記録を有効にするには、アプリに移動し、 **[App Service ログ]** を選択します。
 
-**[Web サーバー ログ]** で、Blob Storage にログを格納する場合は **[ストレージ]** を選択し、App Service ファイル システムにログを格納する場合は **[ファイル システム]** を選択します。 
+**[Web サーバーのログ記録]** で、Blob Storage にログを格納する場合は **[ストレージ]** を選択し、App Service ファイル システムにログを格納する場合は **[ファイル システム]** を選択します。 
 
 **[リテンション期間 (日)]** で、ログを保持する日数を設定します。
 
@@ -191,7 +191,7 @@ Windows アプリの場合、ZIP ファイルには、App Service ファイル �
 | AppServiceFileAuditLogs | TBA | はい | FTP および Kudu 経由のファイル変更 |
 | AppServiceAppLogs | TBA | Java SE および Tomcat | アプリケーション ログ |
 
-## <a name="nextsteps"></a> 次のステップ
+## <a name="next-steps"></a><a name="nextsteps"></a> 次のステップ
 * [Azure Monitor でログにクエリを実行する](../azure-monitor/log-query/log-query-overview.md)
 * [Azure App Service を監視する方法](web-sites-monitor.md)
 * [Visual Studio での Azure App Service のトラブルシューティング](troubleshoot-dotnet-visual-studio.md)

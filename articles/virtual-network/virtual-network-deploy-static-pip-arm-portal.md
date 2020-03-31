@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: kumud
 ms.openlocfilehash: 66050c16f40e0a06117327ef53e3aae87d03c5db
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76043550"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>Azure portal を使用して静的パブリック IP アドレスを持つ仮想マシンを作成する
@@ -38,12 +38,12 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
     |設定|値|
     |---|---|
-    |Name|myVM|
+    |名前|myVM|
     |ユーザー名| 任意のユーザー名を入力します。|
     |Password| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
     |サブスクリプション| サブスクリプションを選択します。|
     |Resource group| **[既存のものを使用]** を選択し、 **[myResourceGroup]** を選択します。|
-    |Location| **[米国東部]** を選択します。|
+    |場所| **[米国東部]** を選択します。|
 
 4. VM のサイズを選択して、 **[選択]** を選択します。
 5. **[設定]** で **[パブリック IP アドレス]** を選択します。

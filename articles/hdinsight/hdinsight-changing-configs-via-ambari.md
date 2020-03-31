@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.openlocfilehash: 15a2c75a7619a815655be0fd9fd3044d86acd057
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150121"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233651"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Apache Ambari を使用して HDInsight クラスター構成を最適化する
 
@@ -175,7 +175,7 @@ CBO を有効にすると、次の追加の構成パラメーターによって 
 
 使用可能な圧縮の種類は次のとおりです。
 
-| 形式 | ツール | アルゴリズム | ファイル拡張子 | 分割可能かどうか |
+| Format | ツール | アルゴリズム | ファイル拡張子 | 分割可能かどうか |
 | -- | -- | -- | -- | -- |
 | Gzip | Gzip | DEFLATE | .gz | いいえ |
 | Bzip2 | Bzip2 | Bzip2 |.bz2 | はい |
@@ -276,11 +276,11 @@ Hive の既定の結合の種類は "*シャッフル結合*" です。 Hive で
 
 Hive 実行エンジンの最適化に関するその他の推奨事項を次に示します。
 
-| Setting | 推奨 | HDInsight の既定値 |
+| 設定 | 推奨 | HDInsight の既定値 |
 | -- | -- | -- |
 | `hive.mapjoin.hybridgrace.hashtable` | True = 安全性は高いが低速、false = 高速 | false |
 | `tez.am.resource.memory.mb` | ほとんどの場合、上限は 4 GB | Auto-Tuned |
-| `tez.session.am.dag.submit.timeout.secs` | 300+ | 300 |
+| `tez.session.am.dag.submit.timeout.secs` | 300+ | 該当なし |
 | `tez.am.container.idle.release-timeout-min.millis` | 20000+ | 10000 |
 | `tez.am.container.idle.release-timeout-max.millis` | 40000+ | 20000 |
 
@@ -416,7 +416,7 @@ HBase では、*HFile* と呼ばれる内部ファイル形式でデータを保
 
 * HBase リージョンのブロックの乗数は、`hbase.hregion.memstore.block.multiplier` で定義されています。 既定値は 4 ですが、 最大許容値は 8 です。
 
-* Memstore が (`hbase.hregion.memstore.flush.size`  *  `hbase.hregion.memstore.block.multiplier`) バイトになると、HBase は更新をブロックします。
+* Memstore が (`hbase.hregion.memstore.flush.size` * `hbase.hregion.memstore.block.multiplier`) バイトになると、HBase は更新をブロックします。
 
     フラッシュ サイズとブロック乗数の既定値を使用した場合、Memstore のサイズが 128 * 4 = 512 MB になると更新がブロックされます。 更新のブロックの数を減らすには、`hbase.hregion.memstore.block.multiplier` の値を増やします。
 
@@ -428,11 +428,11 @@ Memstore のサイズは、`hbase.regionserver.global.memstore.UpperLimit` パ�
 
 ### <a name="set-memstore-local-allocation-buffer"></a>Memstore のローカル割り当てバッファーを設定する
 
-Memstore のローカル割り当てバッファーの使用は、`hbase.hregion.memstore.mslab.enabled` プロパティで指定します。 有効 (true) にすると、負荷の高い書き込み操作中にヒープの断片化を防ぐことができます。 既定値は true です。
+Memstore のローカル割り当てバッファーの使用は、`hbase.hregion.memstore.mslab.enabled` プロパティで指定します。 有効 (true) にすると、負荷の高い書き込み操作中にヒープの断片化を防ぐことができます。 既定値は、true です。
 
 ![hbase.hregion.memstore.mslab.enabled](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-mslab-enabled.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Apache Ambari Web UI を使用して HDInsight クラスターを管理する](hdinsight-hadoop-manage-ambari.md)
 * [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)

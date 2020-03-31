@@ -16,10 +16,10 @@ ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: 4767f7bb5ba02c838c0e21721e55a6564a14acd1
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69016652"
 ---
 # <a name="comparison-of-azure-on-demand-media-encoders"></a>Azure オンデマンド メディア エンコーダーの比較  
@@ -43,8 +43,8 @@ ms.locfileid: "69016652"
 |グラフィックスのオーバーレイ|イメージ ソースから|イメージとテキスト ソースから|
 |複数のオーディオ言語トラック|制限あり|[はい](media-services-media-encoder-premium-workflow-multiplefilesinput.md#example-2--multiple-audio-language-encoding)|
 
-## <a id="billing"></a>各エンコーダーで使用される課金メーター
-| メディア プロセッサ名 | 適用される価格 | メモ |
+## <a name="billing-meter-used-by-each-encoder"></a><a id="billing"></a>各エンコーダーで使用される課金メーター
+| メディア プロセッサ名 | 適用される価格 | Notes |
 | --- | --- | --- |
 | **メディア エンコーダー スタンダード** |エンコーダー |エンコード タスクは、出力として生成されたすべてのメディア ファイルの合計再生時間 (分単位) に基づいて課金されます。料金は[こちら][1] (「ENCODER」列) に記載されています。 |
 | **メディア エンコーダー Premium ワークフロー** |プレミアム エンコーダー |エンコード タスクは、出力として生成されたすべてのメディア ファイルの合計再生時間 (分単位) に基づいて課金されます。料金は[こちら][1] (「PREMIUM ENCODER」列) に記載されています。 |

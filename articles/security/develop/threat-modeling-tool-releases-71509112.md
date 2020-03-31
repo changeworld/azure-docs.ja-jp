@@ -9,10 +9,10 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 01/15/2019
 ms.openlocfilehash: a921310f14f0d48922165a46d750366e170ee374
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78269910"
 ---
 # <a name="threat-modeling-tool-ga-release-71509112---9122018"></a>Threat Modeling Tool GA リリース 7.1.50911.2 - 9/12/2018

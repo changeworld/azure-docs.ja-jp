@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 06/20/2019
 ms.author: zarhoads
 ms.openlocfilehash: b03256ee65a3c40d8a64d70b877c49e44e68f822
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77595223"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>クイック スタート:Draft を使用して Azure Kubernetes Service (AKS) で開発する

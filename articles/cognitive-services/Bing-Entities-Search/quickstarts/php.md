@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/11/2019
 ms.author: aahi
 ms.openlocfilehash: 41fa0b469d0d86b8c1d9234455ade0395fa86f3d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75383948"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-php"></a>クイック スタート:PHP を使用して Bing Entity Search REST API に検索要求を送信する
@@ -83,7 +83,7 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 ?>
 ```
 
-**応答**
+**Response**
 
 成功した応答は、次の例に示すように JSON で返されます。 
 

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 50751c7d23797a597dc5e2d209c1e3eecf6f7a40
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614623"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229399"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Service Fabric クラスター管理とクラスター リソース マネージャーの統合
 Service Fabric クラスター リソース マネージャーは Service Fabric でのアップグレードを推進していませんが、関係しています。 クラスター リソース マネージャーが管理に役立つ第 1 の点は、クラスターとクラスター内のサービスの望ましい状態を追跡できることです。 クラスター リソース マネージャーは、クラスターを望ましい構成に設定できない場合に正常性レポートを送信します。 たとえば、容量が不十分な場合、クラスター リソース マネージャーから問題を示す正常性の計画とエラーが送信されます。 統合のもう 1 つの利点は、アップグレードのしくみに関係があります。 クラスター リソース マネージャーは、アップグレード中、動作を若干変更します。  

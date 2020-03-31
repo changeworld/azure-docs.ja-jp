@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: vturecek
 ms.openlocfilehash: 4a489993f982993d5703a9b46d42fffaa6134038
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457547"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229495"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Service Fabric アプリケーションで暗号化されたシークレットを管理する
 このガイドでは、Service Fabric アプリケーションでシークレットを管理する手順について説明します。 シークレットは、ストレージ接続文字列、パスワード、プレーン テキストで処理できないその他の値など、機密情報である可能性があります。

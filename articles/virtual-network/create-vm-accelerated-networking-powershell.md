@@ -15,11 +15,11 @@ ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: gsilva
 ms.openlocfilehash: 16837782af2f08e27363091dc21587a100194cd8
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083693"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225187"
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking-using-azure-powershell"></a>Azure PowerShell を使用して高速ネットワークを備えた Windows 仮想マシンを作成する
 
@@ -40,7 +40,7 @@ ms.locfileid: "74083693"
 
 ## <a name="limitations-and-constraints"></a>制限と制約
 
-### <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
+### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 Azure ギャラリーでは次のディストリビューションが既定でサポートされています。
 * **Windows Server 2016 Datacenter** 
 * **Windows Server 2012 R2 Datacenter**
@@ -64,8 +64,8 @@ VM インスタンスの詳細については、[Windows VM のサイズ](../vir
 
 ## <a name="create-a-windows-vm-with-azure-accelerated-networking"></a>Azure 高速ネットワークが有効な Windows VM を作成する
 ## <a name="portal-creation"></a>ポータルの作成
-この記事では、高速ネットワークを使用した仮想マシンを、Azure PowerShell を使って作成する手順について説明しますが、[高速ネットワークを使用した仮想マシンは、Azure portal を使って作成することもできます](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 portal で仮想マシンを作成するときは、 **[仮想マシンの作成]** ブレードで **[ネットワーク]** タブを選択します。このタブには、 **[高速ネットワーク]** のオプションがあります。  [サポートされるオペレーティングシステム](#supported-operating-systems)と [VM サイズ](#supported-vm-instances)を選択している場合、このオプションは自動的に [オン] になります。  そうでない場合は、高速ネットワークに対して [オフ] オプションが選択され、有効にならない理由がユーザーに示されます。   
-* *注:* ポータルからは、サポートされているオペレーティング システムのみを有効にできます。  カスタム イメージを使用していて、そのイメージで高速ネットワークがサポートされている場合は、CLI または Powershell を使用して VM を作成してください。 
+この記事では、高速ネットワークを使用した仮想マシンを、Azure PowerShell を使って作成する手順について説明しますが、[高速ネットワークを使用した仮想マシンは、Azure portal を使って作成することもできます](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 ポータルで仮想マシンを作成するときは、 **[仮想マシンの作成]** ブレードで **[ネットワーク]** タブを選択します。このタブには、 **[高速ネットワーク]** のオプションがあります。  [サポートされるオペレーティングシステム](#supported-operating-systems)と [VM サイズ](#supported-vm-instances)を選択している場合、このオプションは自動的に [オン] になります。  そうでない場合は、高速ネットワークに対して [オフ] オプションが選択され、有効にならない理由がユーザーに示されます。   
+* *注:* ポータルからは、サポートされているオペレーティング システムのみを有効にできます。  カスタム イメージを使用しているときに、そのイメージで高速ネットワークがサポートされている場合は、CLI または Powershell を使用して VM を作成してください。 
 
 仮想マシンが作成されたら、「高速ネットワークが有効化されていることを確認する」の手順に従って、高速ネットワークが有効であることを確認できます。
 

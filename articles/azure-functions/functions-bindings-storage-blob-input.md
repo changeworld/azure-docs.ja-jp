@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.openlocfilehash: e074d7d74c0c5f020cb8086124634b25012927db
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77201984"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Azure Functions における Azure Blob Storage の入力バインド
@@ -306,7 +306,7 @@ public static void Run(
 |**direction** | 該当なし | `in` に設定する必要があります。 例外は、[使用方法](#usage)のセクションに記載しています。 |
 |**name** | 該当なし | 関数コード内の BLOB を表す変数の名前。|
 |**path** |**BlobPath** | BLOB へのパス。 |
-|**connection** |**[接続]**| このバインドに使用する[ストレージ接続文字列](../storage/common/storage-configure-connection-string.md)を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br><br>接続文字列は、[BLOB のみのストレージ アカウント](../storage/common/storage-account-overview.md#types-of-storage-accounts)ではなく汎用ストレージ アカウントに対するものである必要があります。|
+|**connection** |**接続**| このバインドに使用する[ストレージ接続文字列](../storage/common/storage-configure-connection-string.md)を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br><br>接続文字列は、[BLOB のみのストレージ アカウント](../storage/common/storage-account-overview.md#types-of-storage-accounts)ではなく汎用ストレージ アカウントに対するものである必要があります。|
 |該当なし | **Access (アクセス)** | 読み取りと書き込みのどちらを行うかを示します。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

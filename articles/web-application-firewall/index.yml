@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: vhorne
   ms.author: victorh
-  ms.date: 09/28/2019
-  ms.openlocfilehash: 1fb58cdf0f5c88a560ccbd4140564497745b503e
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 03/27/2020
+  ms.openlocfilehash: 89dde5fdc9ee20f6a8687ee88359a3cfe453f5e9
+  ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "73508773"
+  ms.lasthandoff: 03/27/2020
+  ms.locfileid: "80366452"
 landingContent:
 - title: 概要
   linkLists:
@@ -27,6 +27,8 @@ landingContent:
       url: ./ag/ag-overview.md
     - text: Front Door 上の Web アプリケーション ファイアウォール
       url: ./afds/afds-overview.md
+    - text: Azure CDN 上の Web アプリケーション ファイアウォール
+      url: ./cdn/cdn-overview.md
 - title: はじめに
   linkLists:
   - linkListType: tutorial

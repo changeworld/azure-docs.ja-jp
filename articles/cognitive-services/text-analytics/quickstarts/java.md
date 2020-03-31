@@ -12,10 +12,10 @@ ms.date: 12/17/2019
 ms.author: aahi
 ms.custom: seo-java-july2019, seo-java-august2019
 ms.openlocfilehash: 0541438659f25780be0c7bc1c87670cab6d7ca08
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75446322"
 ---
 # <a name="quickstart-use-java-to-call-the-azure-text-analytics-cognitive-service"></a>クイック スタート:Java を使用して Azure Text Analytics Cognitive Service を呼び出す
@@ -689,7 +689,7 @@ public class GetEntities {
 > [!div class="nextstepaction"]
 > [Text Analytics と Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
  [Text Analytics の概要](../overview.md)  
  [よく寄せられる質問 (FAQ)](../text-analytics-resource-faq.md)

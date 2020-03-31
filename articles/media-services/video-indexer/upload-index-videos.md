@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
 ms.openlocfilehash: 245eabdf4d77682c87062c2581239a554112d748
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77468764"
 ---
 # <a name="upload-and-index-your-videos"></a>ビデオのアップロードとインデックス作成  
@@ -58,7 +58,7 @@ Video Indexer API でビデオをアップロードする場合、次のアッ�
 
 Video Indexer で使用できるファイル形式の一覧については、「[入力コンテナー/ファイル形式](../latest/media-encoder-standard-formats.md#input-containerfile-formats)」を参照してください。
 
-## <a name="a-idwebsiteupload-and-index-a-video-using-the-video-indexer-website"></a><a id="website"/>Video Indexer Web サイトを使用したビデオのアップロードとインデックス作成
+## <a name="upload-and-index-a-video-using-the-video-indexer-website"></a><a id="website"/>Video Indexer Web サイトを使用したビデオのアップロードとインデックス作成
 
 > [!NOTE]
 > ビデオの名前は、80 文字以下にする必要があります。
@@ -74,7 +74,7 @@ Video Indexer で使用できるファイル形式の一覧については、「
 
     Video Indexer が分析を完了すると、ビデオへのリンクとビデオの内容の簡単な説明を含んだ通知が表示されます。 たとえば、人物、トピックス、OCR などが表示されます。
 
-## <a name="a-idapisupload-and-index-with-api"></a><a id="apis"/>API を使用したアップロードとインデックス作成
+## <a name="upload-and-index-with-api"></a><a id="apis"/>API を使用したアップロードとインデックス作成
 
 [Upload Video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API を使用して、URL に基づいてビデオのアップロードとインデックス作成を行います。 後述のコード サンプルには、バイト配列をアップロードする方法を示すコメント アウトされたコードが含まれています。 
 

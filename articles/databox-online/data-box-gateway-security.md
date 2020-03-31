@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
 ms.openlocfilehash: 89f981fcda8f40daff49ebdf796b896d90ce1754
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69900624"
 ---
 # <a name="azure-data-box-gateway-security-and-data-protection"></a>Azure Data Box Gateway のセキュリティとデータ保護
@@ -92,6 +92,6 @@ Data Box Gateway サービスは、次のシナリオの個人情報を収集し
 
 詳細については、[セキュリティ センター](https://www.microsoft.com/trustcenter)で Microsoft のプライバシー ポリシーを確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Data Box Gateway デバイスをデプロイする](data-box-gateway-deploy-prep.md)

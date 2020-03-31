@@ -12,12 +12,12 @@ metadata:
   author: spelluru
   ms.author: spelluru
   ms.date: 01/29/2020
-  ms.openlocfilehash: 9ddc73fb4b6511180a4dbae58c11bc57c6c0162b
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 957a942efd618003dd3ff3f9f76be72799770859
+  ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "79453685"
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "80288293"
 landingContent:
 - title: Event Hubs について
   linkLists:
@@ -70,7 +70,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Apache Kafka 対応イベント ハブを作成する
-      url: event-hubs-create-kafka-enabled.md
+      url: event-hubs-create.md
     - text: イベント ハブ内の Kafka ブローカーをミラーリングする
       url: event-hubs-kafka-mirror-maker-tutorial.md
     - text: Apache Spark をイベント ハブに接続する

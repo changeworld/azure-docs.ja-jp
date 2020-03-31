@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: dapine
 ms.openlocfilehash: 308a474970db54022e5351fdf349d9572fbafb0d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888568"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218781"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS docker コンテナーのインストールと実行
  
@@ -252,7 +252,7 @@ ApiKey={API_KEY}
 
 クエリ パラメーターを使用すると、クエリの応答で何がどのように返されるかを構成できます。
 
-|Query parameter (クエリ パラメーター)|種類|目的|
+|Query parameter (クエリ パラメーター)|Type|目的|
 |--|--|--|
 |`query`|string|ユーザーの発話。|
 |`verbose`|boolean|予測されるモデルのすべてのメタデータを返すかどうかを示すブール値。 既定値は false です。|
@@ -268,7 +268,7 @@ ApiKey={API_KEY}
 
 クエリ パラメーターを使用すると、クエリの応答で何がどのように返されるかを構成できます。
 
-|Query parameter (クエリ パラメーター)|種類|目的|
+|Query parameter (クエリ パラメーター)|Type|目的|
 |--|--|--|
 |`q`|string|ユーザーの発話。|
 |`timezoneOffset`|number|timezoneOffset を使用すると、事前構築済みのエンティティ datetimeV2 で使用される[タイムゾーンを変更](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)できます。|

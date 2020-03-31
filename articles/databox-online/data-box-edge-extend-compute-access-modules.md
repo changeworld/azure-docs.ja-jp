@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/17/2019
 ms.author: alkohli
 ms.openlocfilehash: 907647725dd6795b3b6482476de7442fbbf66114
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65917115"
 ---
 # <a name="enable-compute-network-on-your-azure-data-box-edge"></a>Azure Data Box Edge でコンピューティング ネットワークを管理する
@@ -96,6 +96,6 @@ Data Box Edge デバイスで Web サーバー アプリ モジュールを追�
 
     ![指定したポート経由でモジュールに接続されていることを確認する](media/data-box-edge-extend-compute-access-modules/verify-connect-module-1.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure portal を使用してユーザーを管理する](data-box-edge-manage-users.md)方法について学習します。

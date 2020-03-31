@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 0aaf816cdfe7d42fd345eb4f010cf47b1615f462
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76989537"
 ---
 # <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>仮想マシンとの間のコピーと貼り付け:Azure Bastion
@@ -24,7 +24,7 @@ ms.locfileid: "76989537"
 
 テキストのコピー/貼り付けのみがサポートされています。 直接コピーと貼り付けを行う場合は、Azure Bastion セッションの初期化中に、クリップボードへのアクセスを求めるメッセージがブラウザーに表示されることがあります。 Web ページにクリップボードへのアクセスを**許可**します。
 
-## <a name="to"></a>リモート セッションへのコピー
+## <a name="copy-to-a-remote-session"></a><a name="to"></a>リモート セッションへのコピー
 
 [Azure Portal](https://portal.azure.com) を使用して仮想マシンを接続した後で、次の手順を実行します。
 
@@ -39,7 +39,7 @@ ms.locfileid: "76989537"
 
    ![貼り付け](./media/bastion-vm-manage/local.png)
 
-## <a name="from"></a>リモート セッションからのコピー
+## <a name="copy-from-a-remote-session"></a><a name="from"></a>リモート セッションからのコピー
 
 [Azure Portal](https://portal.azure.com) を使用して仮想マシンを接続した後で、次の手順を実行します。
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: pafarley
 ms.openlocfilehash: 15e39eb9f5b8dd3556ea9ff8240bc2c9d252cd31
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73743057"
 ---
 # <a name="face-detection-and-attributes"></a>顔検出と顔属性
@@ -76,7 +76,7 @@ ms.locfileid: "73743057"
     >[!NOTE]
     > シャッター角度が小さいカメラは、各フレームで受ける光量が少なくなるため、画像が暗くなります。 使用する適切なレベルを決定する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 顔検出の概念が理解できたので、特定の画像内の顔を検出するスクリプトを作成する方法について説明します。
 

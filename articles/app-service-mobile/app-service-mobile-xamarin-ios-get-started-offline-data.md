@@ -7,10 +7,10 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 3a5128f6918b22be2ff1ef6adf3e453b1f373ea6
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461302"
 ---
 # <a name="enable-offline-sync-for-your-xamarinios-mobile-app"></a>Xamarin iOS モバイル アプリのオフライン同期を有効にする
@@ -30,7 +30,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 2. QSTodoService.cs ファイルを開き、`#define OFFLINE_SYNC_ENABLED` の定義をコメント解除します。
 3. クライアント アプリの再構築と実行 アプリは、オフライン同期を有効にする前と同じように動作します。ただし今度は、オフライン シナリオで使用できるデータがローカル データベースに格納されます。
 
-## <a name="update-sync"></a>アプリを更新してバックエンドから切断する
+## <a name="update-the-app-to-disconnect-from-the-backend"></a><a name="update-sync"></a>アプリを更新してバックエンドから切断する
 ここでは、オフライン状況をシミュレートするために、モバイル アプリ バックエンドへの接続を解除します。 データ項目を追加すると、例外ハンドラーによって、アプリがオフライン モードであることが通知されます。 この状態では、新しい項目はローカル ストアに追加され、プッシュが次に接続状態で実行したときに、モバイル アプリ バックエンドに同期されます。
 
 1. 共有プロジェクトの QSToDoService.cs を編集します。 **applicationURL** を、無効な URL を指すように変更します。
@@ -44,7 +44,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 5. (省略可能) PC に Visual Studio がインストールされている場合は、**サーバー エクスプローラー**を開きます。 **[Azure]** ->  **[SQL Databases]** を選択して、データベースに移動します。 データベースを右クリックし、 **[SQL Server オブジェクト エクスプローラーで開く]** を選択します。 これで SQL データベースのテーブルとその内容を参照できます。 バックエンド データベース内のデータが変更されていないことを確認します。
 6. (省略可能) Fiddler や Postman などの REST ツールを使用して、モバイルのバックエンドをクエリします。その際、`https://<your-mobile-app-backend-name>.azurewebsites.net/tables/TodoItem` の形式で、GET クエリを使用します。
 
-## <a name="update-online-app"></a>モバイル アプリ バックエンドに再接続するようにアプリケーションを更新する
+## <a name="update-the-app-to-reconnect-your-mobile-app-backend"></a><a name="update-online-app"></a>モバイル アプリ バックエンドに再接続するようにアプリケーションを更新する
 ここでは、アプリをモバイル アプリ バックエンドに再接続します。 これは、アプリケーションがオフライン状態から、モバイル アプリ バックエンドとのオンライン状態に移行したことをシミュレートします。   ネットワーク接続を無効にしてネットワーク破損をシミュレートした場合、コードを変更する必要はありません。
 ネットワークを再び有効にします。  初めてアプリケーションを実行すると、`RefreshDataAsync` メソッドが呼び出されます。 これが次に `SyncAsync` を呼び出し、ローカル ストアとバックエンドのデータベースを同期します。
 

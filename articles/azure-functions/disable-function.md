@@ -4,10 +4,10 @@ description: Azure Functions で関数を無効または有効にする方法を
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.openlocfilehash: fb8edf635856078655b8640ba0e1723fdd5e8a5a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77116148"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Azure Functions で関数を無効にする方法

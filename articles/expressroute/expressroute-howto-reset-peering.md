@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/13/2018
 ms.author: charwen
 ms.openlocfilehash: 9f32eb439872de9e4687d046745c03bafd86b2fa
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75941736"
 ---
 # <a name="reset-expressroute-circuit-peerings"></a>ExpressRoute 回線のピアリングをリセットする

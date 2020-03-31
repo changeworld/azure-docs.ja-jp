@@ -8,11 +8,11 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 5c947617f0c27708e72f9bff92e2b0041473cd92
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356143"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231691"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>App Service Environment v1 で Web アプリを作成する
 
@@ -57,7 +57,7 @@ ms.locfileid: "78356143"
     ASE で内部 VIP を使用する場合、ASE 内のアプリの URL は [*サイト名*].[*ASE の作成時に指定されたサブドメイン*] になります。   
     ASE の作成時に ASP を選択すると、 **[名前]** の下のサブドメインが更新されます。
 
-## <a name="createplan"></a> App Service プランを作成する
+## <a name="create-an-app-service-plan"></a><a name="createplan"></a> App Service プランを作成する
 App Service 環境に App Service プランを作成する場合、ASE には共有ワーカーがないため、ワーカーの選択肢が異なります。  使用する必要があるワーカーは、管理者によって ASE に割り当てられたワーカーです。つまり、新しいプランを作成するには、ASE ワーカー プールに既に存在しているすべてのプランのインスタンスの総数よりも多くのワーカーを ASE ワーカー プールに割り当てておく必要があります。  プランを作成するのに十分なワーカーが ASE ワーカー プールにない場合は、ASE の管理者に依頼してワーカーを追加してもらう必要があります。
 
 App Service 環境でホストされる App Service プランに関するもう 1 つの違いは、価格の選択肢がないことです。  App Service 環境を利用する場合、システムによって使用されるコンピューティング リソースについて料金を支払い、その環境内のプランに対する追加料金はありません。  通常、App Service プランを作成する際に、価格プランを選択します。これに基づいて、支払い価格が決定されます。  App Service 環境は、基本的に、コンテンツを作成できるプライベートな場所です。  支払いは環境に対するもので、コンテンツをホストする操作を対象にしたものではありません。

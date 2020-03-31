@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: 9345b6fb28aa282e85f1167f6f2531e5f990e3a2
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74688325"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>Azure App Service での HTTP エラー "502 無効なゲートウェイ" と "503 サービス利用不可" のトラブルシューティング
@@ -92,7 +92,7 @@ Kudu で利用できる機能の詳細については、 [知っておくべき 
 #### <a name="scale-the-app"></a>アプリをスケーリングする
 Azure App Service では、アプリケーションが実行されるスケールを調整することによって、パフォーマンスとスループットを高めることができます。 アプリのスケール アップには、2 つの関連する措置が伴います。1 つは、App Service プランの価格レベルを引き上げること、もう 1 つは、価格レベルを引き上げた後に特定の設定を構成することです。
 
-スケーリングの詳細については、[Azure App Service でのアプリのスケール](manage-scale-up.md)に関する記事を参照してください。
+スケーリングの詳細については、[Azure App Service でのアプリのスケーリング](manage-scale-up.md)に関する記事を参照してください。
 
 加えて、アプリケーションを複数のインスタンスで実行することもできます。 処理能力がアップするだけでなく、ある程度の耐障害性を確保することができます。 この場合、1 つのインスタンスでプロセスがダウンしても、他のインスタンスが要求の処理を続行します。
 
@@ -103,7 +103,7 @@ AutoHeal は、選択された設定 (構成の変更、要求、メモリに基
 
 詳細については、 [Azure Web Sites の自動復旧](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/)に関するページを参照してください。
 
-#### <a name="restart-the-app"></a>アプリの再起動
+#### <a name="restart-the-app"></a>アプリを再起動する
 1 回限りの問題であれば、通常これが最も簡単な復旧方法です。 アプリを停止または再起動するためのオプションは、[Azure Portal](https://portal.azure.com/) のアプリ ブレードにあります。
 
  ![HTTP エラー "502 無効なゲートウェイ" と "503 サービス利用不可" を解決するためにアプリを再起動する](./media/app-service-web-troubleshoot-HTTP-502-503/2-restart.png)

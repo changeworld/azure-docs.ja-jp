@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
 ms.openlocfilehash: a720627e1783d2e29ef180b7855132ea59444cab
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77659232"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226323"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Log Analytics と Application Insights に格納される個人データに関するガイダンス
 

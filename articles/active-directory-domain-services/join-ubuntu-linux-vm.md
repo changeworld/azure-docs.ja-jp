@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: iainfou
 ms.openlocfilehash: bc5371ccbd3ba66117d5c613090b70ce7f07d51e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78298843"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Ubuntu Linux 仮想マシンを Azure AD Domain Services のマネージド ドメインに参加させる
@@ -141,7 +141,7 @@ sudo apt-get install krb5-user samba sssd sssd-tools libnss-sss libpam-sss ntp n
     kinit contosoadmin@AADDSCONTOSO.COM
     ```
 
-1. 最後に、`realm join` コマンドを使用して、マシンを Azure AD DS マネージド ドメインに参加させます。 前の `kinit` コマンドで指定した Azure AD DS のマネージド ドメインの一部である同じユーザー アカウントを使用します (`contosoadmin@AADDSCONTOSO.COM` など)。
+1. 最後に、`realm join` コマンドを使用して、マシンを Azure AD DS マネージド ドメインに参加させます。 前の `kinit` コマンドで指定した、Azure AD DS のマネージド ドメインの一部である同じユーザー アカウントを使用します (`contosoadmin@AADDSCONTOSO.COM` など)。
 
     ```console
     sudo realm join --verbose AADDSCONTOSO.COM -U 'contosoadmin@AADDSCONTOSO.COM' --install=/

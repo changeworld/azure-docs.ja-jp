@@ -7,17 +7,17 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: ba9a2aca73dbdb8de298b68670fd6ab16f810a4d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77671544"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234639"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Application Insights を使用したライブ Azure App Service アプリのプロファイリング
 
 Profiler は、Basic 以上のサービス レベルを使用し、Azure App Service で実行されている ASP.NET および ASP.NET Coreアプリで実行できます。 現時点では、[この方法](profiler-aspnetcore-linux.md)でのみ Linux で Profiler を有効にできます。
 
-## <a id="installation"></a> アプリの Profiler を有効にする
+## <a name="enable-profiler-for-your-app"></a><a id="installation"></a> アプリの Profiler を有効にする
 アプリで Profiler を有効にするには、次の手順に従います。 別の種類の Azure サービスを実行している場合、以下のサポートされている他のプラットフォームで Profiler を有効にする手順を参照してください。
 * [Cloud Services](../../azure-monitor/app/profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Service Fabric アプリケーション](../../azure-monitor/app/profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
@@ -43,7 +43,7 @@ Application Insights Profiler は、App Services ランタイムの一部とし�
 Azure App Service のアプリ設定を作成することで、Application Insights Profiler を有効にすることができます。 これらのアプリ設定は、上記のオプションのページを使って作成します。 ただし、テンプレートやその他の手段を使えば、これらの設定の作成を自動化することができます。 これらの設定は、Application Insights リソースと Azure App Service のサブスクリプションが違っていても動作します。
 Profiler を有効にするために必要な設定は次のとおりです。
 
-|アプリ設定    | Value    |
+|アプリ設定    | 値    |
 |---------------|----------|
 |APPINSIGHTS_INSTRUMENTATIONKEY         | Application Insights リソースの iKey    |
 |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |

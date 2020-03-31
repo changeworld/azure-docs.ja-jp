@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
 ms.openlocfilehash: dddf402455292e19bf0fcda3c50d9ce10d5888d2
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71099067"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>仮想ネットワークまたは VPN 接続の構成および検証
@@ -258,7 +258,7 @@ AS 番号と BGP ピア アドレスを `LocalNetworkGateway` に手動で指定
 
 ### <a name="validate-the-bgp-configuration"></a>BGP 構成の検証
 
-BGP が正しく構成されているかどうかを確認するには、`get-AzureRmVirtualNetworkGateway` と `get-AzureRmLocalNetworkGateway` コマンドレットを実行します。 次に、`BgpSettingsText` 部分で BGP 関連の出力を確認します。 例:
+BGP が正しく構成されているかどうかを確認するには、`get-AzureRmVirtualNetworkGateway` と `get-AzureRmLocalNetworkGateway` コマンドレットを実行します。 次に、`BgpSettingsText` 部分で BGP 関連の出力を確認します。 次に例を示します。
 
 ```
 {
@@ -304,7 +304,7 @@ Azure 仮想ネットワーク ゲートウェイの種類をポリシーベー�
 > [!Note]
 > このプロセスには約 60 分かかります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure VM 間の接続に関する問題のトラブルシューティング](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-connectivity-problem-between-vms)
 

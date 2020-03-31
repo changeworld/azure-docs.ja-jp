@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/14/2018
 ms.author: yushwang
 ms.openlocfilehash: eaca48fc354f1cf37635e9729b04eaaaa882ba1c
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77161904"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>S2S VPN または VNet-to-VNet 接続の IPsec/IKE ポリシーを構成する
@@ -21,7 +21,7 @@ ms.locfileid: "77161904"
 
 
 
-## <a name="about"></a>Azure VPN ゲートウェイの IPsec/IKE ポリシーのパラメーターについて
+## <a name="about-ipsec-and-ike-policy-parameters-for-azure-vpn-gateways"></a><a name="about"></a>Azure VPN ゲートウェイの IPsec/IKE ポリシーのパラメーターについて
 IPsec/IKE 標準プロトコルは、幅広い暗号アルゴリズムをさまざまな組み合わせでサポートしています。 このプロトコルがクロスプレミスと VNet-to-VNet 接続でコンプライアンスまたはセキュリティ要件を満たすためにどのように役立つかについては、「[About cryptographic requirements and Azure VPN gateways](vpn-gateway-about-compliance-crypto.md)」(暗号化要件と Azure VPN Gateway について) を参照してください。
 
 この記事では、IPsec/IKE ポリシーを作成して構成し、新規または既存の接続に適用する手順を示します。
@@ -40,7 +40,7 @@ IPsec/IKE 標準プロトコルは、幅広い暗号アルゴリズムをさま�
 > 3. IKE (メイン モード) と IPsec (クイック モード) の両方について、すべてのアルゴリズムとパラメーターを指定する必要があります。 ポリシーを部分的に指定することはできません。
 > 4. オンプレミスの VPN デバイスでポリシーがサポートされることを、VPN デバイス ベンダーの仕様で確認してください。 ポリシーに対応していない場合、S2S または VNet-to-VNet 接続を確立することはできません。
 
-## <a name ="workflow"></a>パート 1 - IPsec/IKE ポリシーを作成して設定するためのワークフロー
+## <a name="part-1---workflow-to-create-and-set-ipsecike-policy"></a><a name ="workflow"></a>パート 1 - IPsec/IKE ポリシーを作成して設定するためのワークフロー
 このセクションでは、S2S VPN または VNet-to-VNet 接続の IPsec/IKE ポリシーの作成と更新を行うためのワークローについて説明します。
 1. 仮想ネットワークと VPN ゲートウェイを作成する
 2. クロスプレミス接続用のローカル ネットワーク ゲートウェイ、または VNet-to-VNet 接続用の別の仮想ネットワーク ゲートウェイを作成する
@@ -52,7 +52,7 @@ IPsec/IKE 標準プロトコルは、幅広い暗号アルゴリズムをさま�
 
 ![ipsec-ike-policy](./media/vpn-gateway-ipsecikepolicy-rm-powershell/ipsecikepolicy.png)
 
-## <a name ="params"></a>パート 2 - サポートされる暗号アルゴリズムとキーの強度
+## <a name="part-2---supported-cryptographic-algorithms--key-strengths"></a><a name ="params"></a>パート 2 - サポートされる暗号アルゴリズムとキーの強度
 
 以下の表は、サポートされている暗号アルゴリズムと、ユーザーが構成できるキーの強度を一覧にしたものです。
 
@@ -107,7 +107,7 @@ IPsec/IKE 標準プロトコルは、幅広い暗号アルゴリズムをさま�
 
 詳細については、[RFC3526](https://tools.ietf.org/html/rfc3526) と [RFC5114](https://tools.ietf.org/html/rfc5114) を参照してください。
 
-## <a name ="crossprem"></a>パート 3 - IPsec/IKE ポリシーを使用して新しい S2S VPN 接続を作成する
+## <a name="part-3---create-a-new-s2s-vpn-connection-with-ipsecike-policy"></a><a name ="crossprem"></a>パート 3 - IPsec/IKE ポリシーを使用して新しい S2S VPN 接続を作成する
 
 このセクションでは、IPsec/IKE ポリシーを使用して S2S VPN 接続を作成する手順について説明します。 以下の手順によって、次の図に示す接続が作成されます。
 
@@ -115,12 +115,12 @@ IPsec/IKE 標準プロトコルは、幅広い暗号アルゴリズムをさま�
 
 S2S VPN 接続を作成するための詳細な手順については、[S2S VPN 接続の作成](vpn-gateway-create-site-to-site-rm-powershell.md)に関する記事をご覧ください。
 
-### <a name="before"></a>開始する前に
+### <a name="before-you-begin"></a><a name="before"></a>開始する前に
 
 * Azure サブスクリプションを持っていることを確認します。 Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 * Azure Resource Manager PowerShell コマンドレットをインストールします。 PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell の概要](/powershell/azure/overview)」を参照してください。
 
-### <a name="createvnet1"></a>手順 1 - 仮想ネットワーク、VPN ゲートウェイ、およびローカル ネットワーク ゲートウェイを作成する
+### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a><a name="createvnet1"></a>手順 1 - 仮想ネットワーク、VPN ゲートウェイ、およびローカル ネットワーク ゲートウェイを作成する
 
 #### <a name="1-declare-your-variables"></a>1.変数を宣言する
 
@@ -184,7 +184,7 @@ New-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Lo
 New-AzLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 -Location $Location1 -GatewayIpAddress $LNGIP6 -AddressPrefix $LNGPrefix61,$LNGPrefix62
 ```
 
-### <a name="s2sconnection"></a>手順 2 - IPsec/IKE ポリシーを使用して S2S VPN 接続を作成する
+### <a name="step-2---create-a-s2s-vpn-connection-with-an-ipsecike-policy"></a><a name="s2sconnection"></a>手順 2 - IPsec/IKE ポリシーを使用して S2S VPN 接続を作成する
 
 #### <a name="1-create-an-ipsecike-policy"></a>1.IPsec/IKE ポリシーの作成
 
@@ -216,7 +216,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG
 > 接続に IPsec/IKE ポリシーを指定すると、Azure VPN ゲートウェイは、その特定の接続に対して指定された暗号アルゴリズムとキーの強度を使用する IPsec/IKE 提案のみを送受信します。 接続するオンプレミスの VPN デバイスが、ポリシーの完全な組み合わせを使用するか受け入れることを確認する必要があります。それ以外の場合、S2S VPN トンネルは確立されません。
 
 
-## <a name ="vnet2vnet"></a>パート 4 - IPsec/IKE ポリシーを使用して新しい VNet-to-VNet 接続を作成する
+## <a name="part-4---create-a-new-vnet-to-vnet-connection-with-ipsecike-policy"></a><a name ="vnet2vnet"></a>パート 4 - IPsec/IKE ポリシーを使用して新しい VNet-to-VNet 接続を作成する
 
 IPsec/IKE ポリシーを使用した VNet-to-VNet 接続の作成手順は、S2S VPN 接続の作成手順に似ています。 以下のサンプル スクリプトは、次の図に示す接続を作成します。
 
@@ -224,7 +224,7 @@ IPsec/IKE ポリシーを使用した VNet-to-VNet 接続の作成手順は、S2
 
 VNet 間の接続を作成するための詳細な手順については、[VNet-to-VNet 接続の作成](vpn-gateway-vnet-vnet-rm-ps.md)に関する記事を参照してください。 TestVNet1 と VPN Gateway を作成して構成するには、[パート 3](#crossprem) の手順を完了している必要があります。
 
-### <a name="createvnet2"></a>手順 1 - 2 つ目の仮想ネットワークと VPN ゲートウェイを作成する
+### <a name="step-1---create-the-second-virtual-network-and-vpn-gateway"></a><a name="createvnet2"></a>手順 1 - 2 つ目の仮想ネットワークと VPN ゲートウェイを作成する
 
 #### <a name="1-declare-your-variables"></a>1.変数を宣言する
 
@@ -304,7 +304,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection21 -ResourceGroupName $RG
 ![ipsec-ike-policy](./media/vpn-gateway-ipsecikepolicy-rm-powershell/ipsecikepolicy.png)
 
 
-## <a name ="managepolicy"></a>パート 5 - 接続の IPsec/IKE ポリシーを更新する
+## <a name="part-5---update-ipsecike-policy-for-a-connection"></a><a name ="managepolicy"></a>パート 5 - 接続の IPsec/IKE ポリシーを更新する
 
 最後のセクションでは、既存の S2S または VNet 間接続の IPsec/IKE ポリシーを管理する方法を示します。 ここでは、接続に対して次の操作を行います。
 

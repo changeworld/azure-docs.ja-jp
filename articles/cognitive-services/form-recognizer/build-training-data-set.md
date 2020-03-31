@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
 ms.openlocfilehash: 71ad7c5dd3ad74082da552cd3c45142bc0c2d624
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75380628"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>カスタム モデルのトレーニング データ セットを作成する
@@ -69,6 +69,6 @@ Form Recognizer のカスタム モデルを使用する場合は、モデルを
 
 トレーニング データ セットの作成方法を習得したので、クイックスタートに従って、カスタム Form Recognizer モデルをトレーニングし、お使いのフォームでの使用を開始してください。
 
-* [クイック スタート:cURL を使用してモデルをトレーニングし、フォーム データを抽出する](./quickstarts/curl-train-extract.md)
-* [クイック スタート:Python で REST API を使用してモデルをトレーニングし、フォーム データを抽出する](./quickstarts/python-train-extract.md)
+* [クイック スタート: cURL を使用してモデルをトレーニングし、フォーム データを抽出する](./quickstarts/curl-train-extract.md)
+* [クイック スタート: Python で REST API を使用してモデルをトレーニングし、フォーム データを抽出する](./quickstarts/python-train-extract.md)
 * [REST API と Python を使用したラベルのトレーニング](./quickstarts/python-labeled-data.md)

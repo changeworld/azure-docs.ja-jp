@@ -13,10 +13,10 @@ ms.date: 02/22/2019
 tags: ''
 keywords: ''
 ms.openlocfilehash: 66f80c79219090c27da37dfc1d9149df5604961f
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68841390"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>IBM zD&T v1 の Application Developers Controlled Distribution (ADCD) を設定する
@@ -35,7 +35,7 @@ zD&T 同様、ADCD は IBM のお客様とパートナー様だけが利用で�
 
 - IBM PartnerWorld またはパスポート アドバンテージ経由の ADCD メディアへのアクセス。
 
-- [ライセンス サーバー](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.tools.user.guide.doc/topics/zdt_ee.html)。 これは IBM zD&T を実行するために必要です。 その作成方法は、IBM からのソフトウェア ライセンスの取得方法によって異なります。
+- [ライセンス サーバー](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.tools.user.guide.doc/topics/zdt_ee.html)。 これは IBM zD&T を実行するために必要です。 これを作成する方法は、IBM からソフトウェアのライセンスをどのように取得するかによって異なります。
 
   - **ハードウェア ベースのライセンス サーバー**では、ソフトウェアのすべての部分にアクセスするために必要な Rational Token を含む USB ハードウェア デバイスが必要です。 これは、IBM から取得する必要があります。
 

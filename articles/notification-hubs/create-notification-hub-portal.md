@@ -12,14 +12,14 @@ ms.date: 02/14/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: 53abc28a6923c2d55b3bb39defb08778485a9744
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3aeeb989d15dc74849c85fa58cbefa891809f3c5
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "71212449"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80347086"
 ---
-# <a name="create-an-azure-notification-hub-in-the-azure-portal"></a>Azure portal 内で Azure 通知ハブを作成する 
+# <a name="quickstart-create-an-azure-notification-hub-in-the-azure-portal"></a>クイック スタート:Azure portal 内で Azure 通知ハブを作成する 
 Azure Notification Hubs は、任意のバックエンド (クラウドまたはオンプレミス) から任意のプラットフォーム (iOS、Android、Windows、Kindle、Baidu など) に通知を送信できる、使いやすく、かつスケールアウトされたプッシュ エンジンを提供します。 このサービスの詳細については、「[Azure Notification Hubs とは](notification-hubs-push-notification-overview.md)」を参照してください。
 
 このクイック スタートでは、Azure portal 内で通知ハブを作成します。 最初のセクションでは、Notification Hubs 名前空間を作成し、その名前空間の中にハブを作成する手順を示します。 2 つ目のセクションでは、既存の Notification Hubs 名前空間の中に通知ハブを作成する手順を示します。 
@@ -32,8 +32,8 @@ Azure Notification Hubs は、任意のバックエンド (クラウドまたは
 ## <a name="create-a-notification-hub-in-an-existing-namespace"></a>既存の名前空間の中に通知ハブを作成する
 このセクションでは、既存の名前空間の中に通知ハブを作成します。 
 
-1. [Azure portal](https://portal.azure.com) にサインインする
-2. 左側のメニューで **[すべてのサービス]** を選択し、「**通知ハブ**」を検索します。 **[Notification Hub の名前空間]** の横にある`*`星印 **(** ) を選択して、左側のメニューの **[お気に入り]** セクションに追加します。 **[Notification Hub の名前空間]** を選択します。 
+1. [Azure portal](https://portal.azure.com) にサインインします。
+2. 左側のメニューで **[すべてのサービス]** を選択し、「**通知ハブ**」を検索します。 **[Notification Hub の名前空間]** の横にある**星印** (`*`) を選択して、左側のメニューの **[お気に入り]** セクションに追加します。 **[Notification Hub の名前空間]** を選択します。 
 
       ![Azure portal - [Notification Hub の名前空間] を選択する](./media/create-notification-hub-portal/select-notification-hub-namespaces-all-services.png)
 3. **[Notification Hub の名前空間]** ページで、一覧から目的の名前空間を選択します。 

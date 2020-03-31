@@ -8,11 +8,11 @@ ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 999177f821b98adfa015520252bd3323d0892533
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77662539"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234455"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Azure での管理ソリューション ファイルの作成 (プレビュー)
 > [!NOTE]

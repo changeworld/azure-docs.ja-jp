@@ -7,10 +7,10 @@ ms.author: pharring
 ms.date: 03/28/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 6991db6055ca8556adff67f194bac0f4aa04cb06
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671394"
 ---
 # <a name="upgrading-the-snapshot-debugger"></a>スナップショット デバッガーのアップグレード

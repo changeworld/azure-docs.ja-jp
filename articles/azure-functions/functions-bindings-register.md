@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
 ms.openlocfilehash: 1688fe848beb62731391bf4399a0dabec5265320
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357866"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235175"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Functions バインド拡張機能を登録する
 
@@ -31,7 +31,7 @@ Azure Functions バージョン 2.x では、[バインド](./functions-triggers
 |Visual Studio を使用する C# クラス ライブラリ|[NuGet ツールを使用](#vs)|[NuGet ツールを使用](#vs)|
 |Visual Studio Code を使用する C# クラス ライブラリ|該当なし|[.NET Core CLI を使用](#vs-code)|
 
-## <a name="extension-bundles"></a>ローカル開発用の拡張機能バンドル
+## <a name="extension-bundles-for-local-development"></a><a name="extension-bundles"></a>ローカル開発用の拡張機能バンドル
 
 拡張機能バンドルは、互換性のある一連の関数バインド拡張機能を関数アプリに追加できるデプロイ テクノロジです。 アプリをビルドするときに、定義済みの一連の拡張機能が追加されます。 バンドルで定義されている拡張機能パッケージは相互に互換性があるため、パッケージ間の競合を回避できます。 拡張機能バンドルは、アプリの host.json ファイルで有効にします。  
 
@@ -47,7 +47,7 @@ Azure Functions Core Tools、Visual Studio Code を使用するすべてのロ�
 
 <a name="local-csharp"></a>
 
-## <a name="vs"></a> Visual Studio を使用する C\# クラス ライブラリ
+## <a name="c-class-library-with-visual-studio"></a><a name="vs"></a> Visual Studio を使用する C\# クラス ライブラリ
 
 **Visual Studio** では、次の例に示すように [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) コマンドを使用して、Package Manager Console からパッケージをインストールできます。
 
@@ -61,7 +61,7 @@ Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_V
 
 `Install-Package` を使用してバインディングの参照を行う場合、[拡張機能バンドル](#extension-bundles)を使用する必要はありません。 この方法は、Visual Studio でビルドされたクラス ライブラリに固有のものです。
 
-## <a name="vs-code"></a>Visual Studio Code を使用する C# クラス ライブラリ
+## <a name="c-class-library-with-visual-studio-code"></a><a name="vs-code"></a>Visual Studio Code を使用する C# クラス ライブラリ
 
 **Visual Studio Code** では、コマンド プロンプトから .NET Core CLI の [dotnet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) コマンドを使用して C# クラス ライブラリ プロジェクトのパッケージをインストールします。 次の例は、バインディングの追加方法を示しています。
 

@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 447b3dcf5040835f5a853beff68bde794ece51f5
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047255"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235279"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Durable Functions のエラー処理 (Azure Functions)
 
@@ -21,7 +21,7 @@ Durable Function のオーケストレーションはコードで実装され、
 
 たとえば、ある口座の資金を別の口座に送金する次のオーケストレーター関数を検討します。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("TransferFunds")]
@@ -62,7 +62,7 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
 > [!NOTE]
 > 前述の C# の例は Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`IDurableOrchestrationContext` の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -106,7 +106,7 @@ module.exports = df.orchestrator(function*(context) {
 
 アクティビティ関数またはサブオーケストレーション関数を呼び出すときに、自動再試行ポリシーを指定できます。 次の例では、関数の呼び出しを最大 3 回試行し、次の再試行まで 5 秒間待機します。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("TimerOrchestratorWithRetry")]
@@ -125,7 +125,7 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
 > [!NOTE]
 > 前述の C# の例は Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`IDurableOrchestrationContext` の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -158,7 +158,7 @@ module.exports = df.orchestrator(function*(context) {
 
 オーケストレーター関数内の関数呼び出しは、完了に時間がかかりすぎる場合は破棄できます。 現時点でこれを適切に行うには、次の例のように、`context.CreateTimer` (.NET) または `context.df.createTimer` (JavaScript) を `Task.WhenAny` (.NET) または `context.df.Task.any` (JavaScript) と組み合わせて使用して[持続的タイマー](durable-functions-timers.md)を作成します。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("TimerOrchestrator")]
@@ -191,7 +191,7 @@ public static async Task<bool> Run([OrchestrationTrigger] IDurableOrchestrationC
 > [!NOTE]
 > 前述の C# の例は Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`IDurableOrchestrationContext` の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");

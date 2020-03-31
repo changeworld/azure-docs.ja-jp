@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
 ms.openlocfilehash: 176cd9b0bf72a123bc644ebc27ee0e091aa54e97
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357531"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225227"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Azure における IP アドレスの種類と割り当て方法
 

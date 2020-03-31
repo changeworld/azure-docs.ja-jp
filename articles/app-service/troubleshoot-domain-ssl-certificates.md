@@ -9,10 +9,10 @@ ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: e299821b54692327cbb7d497af0295e3b93658cf
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75966972"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Azure App Serviceでのドメインと SSL 証明書に関する問題のトラブルシューティング
@@ -88,7 +88,7 @@ Azure Portal から [Azure App Service 証明書](./configure-ssl-certificate.md
 
     **解決策**:証明書が不正であるとマークされて 24 時間以内に解決されない場合は、以下の手順に従ってください。
 
-    1. [Azure portal](https://portal.azure.com) にサインインする
+    1. [Azure portal](https://portal.azure.com) にサインインします。
     2. **[App Service 証明書]** に移動して、証明書を選択します。
     3. **[証明書の構成]**  >  **[手順 2: 確認]**  >  **[ドメインの検証]** と選択します。 この手順により、問題を解決するため、Azure の証明書プロバイダーに電子メールの通知が送信されます。
 
@@ -190,7 +190,7 @@ App Service 証明書が更新されましたが、その App Service 証明書�
 
 証明書の同期を強制することができます。
 
-1. [Azure portal](https://portal.azure.com) にサインインする **[App Service 証明書]** を選択し、次に目的の証明書を選択します。
+1. [Azure portal](https://portal.azure.com) にサインインします。 **[App Service 証明書]** を選択し、次に目的の証明書を選択します。
 2. **[キー更新と同期]** を選択してから、 **[同期]** を選択します。同期が完了するまでしばらく時間がかかります。 
 3. 同期が完了すると、次の通知が表示されます。"最新の証明書ですべてのリソースが正常に更新されました。"
 

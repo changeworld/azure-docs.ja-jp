@@ -4,10 +4,10 @@ description: Azure Backup Server を使用して、システム状態をバッ�
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.openlocfilehash: 358a1c96d598788170993fc48e60daae2b6b036c
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77505882"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-by-using-azure-backup-server"></a>Azure Backup Server を使用してシステム状態をバックアップし、ベア メタルに復元する

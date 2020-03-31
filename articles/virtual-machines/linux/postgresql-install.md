@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
 ms.openlocfilehash: bbfad994de663881e3aa03292fc0d0611a0d0933
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75747799"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Azure での PostgreSQL のインストールと構成

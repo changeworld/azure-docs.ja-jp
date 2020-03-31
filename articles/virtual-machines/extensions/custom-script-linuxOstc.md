@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
-ms.openlocfilehash: b7dbabf5be8b1f223f6e39f294b9d7022b83c4f8
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a3eae08510e57227b91deeeb7a7a608a6652cb4a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073179"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535410"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Linux 仮想マシンで Azure カスタム スクリプト拡張機能 v1 を使用する
 
@@ -123,10 +123,10 @@ GitHub または Azure Storage などスクリプトを外部でダウンロー�
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.OSTCExtensions | string |
 | type | CustomScriptForLinux | string |
-| typeHandlerVersion | 1.5 | int |
+| typeHandlerVersion | 1.5 | INT |
 | fileUris (例) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
 | commandToExecute (例) | python MyPythonScript.py \<my-param1\> | string |
-| enableInternalDNSCheck | true | ブール値 |
+| enableInternalDNSCheck | true | boolean |
 | storageAccountName (例) | examplestorageacct | string |
 | storageAccountKey (例) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
 
@@ -274,7 +274,7 @@ az vm extension set
 
 次のような、拡張機能の実行を特定します。
 
-```text
+```output
 2018/04/26 15:29:44.835067 INFO [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] Target handler state: enabled
 2018/04/26 15:29:44.867625 INFO [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] [Enable] current handler state is: notinstalled
 2018/04/26 15:29:44.959605 INFO Event: name=Microsoft.OSTCExtensions.CustomScriptForLinux, op=Download, message=Download succeeded, duration=59
@@ -305,7 +305,7 @@ az vm extension set
 
 次のような各実行を特定します。
 
-```text
+```output
 2018/04/26 15:29:46 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] Enable,transitioning,0,Launching the script...
 2018/04/26 15:29:46 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] sequence number is 0
 2018/04/26 15:29:46 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] setting file path is/var/lib/waagent/Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2/config/0.settings
@@ -347,12 +347,12 @@ az vm extension list -g myResourceGroup --vm-name myVM
 
 出力は次のテキストのようになります。
 
-```azurecli
+```output
 Name                  ProvisioningState    Publisher                   Version  AutoUpgradeMinorVersion
 --------------------  -------------------  ------------------------  ---------  -------------------------
 CustomScriptForLinux  Succeeded            Microsoft.OSTCExtensions        1.5  True
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 コード、現在の問題、およびバージョンについては、[カスタム スクリプト拡張機能 リポジトリ](https://github.com/Azure/azure-linux-extensions/tree/master/CustomScript)をご覧ください。

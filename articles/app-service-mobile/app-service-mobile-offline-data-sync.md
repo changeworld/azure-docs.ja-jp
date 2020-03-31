@@ -7,10 +7,10 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/30/2016
 ms.openlocfilehash: 0cc4309fa57a29997bdd2f650634efd0723e6965
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77458751"
 ---
 # <a name="offline-data-sync-in-azure-mobile-apps"></a>Azure モバイル アプリでのオフライン データ同期
@@ -55,7 +55,7 @@ Windows Phone または Microsoft Store で SQLite ベースの実装を使用�
 
 同期コンテキストへのローカル ストアの関連付けは、初期化メソッド ([.NET クライアント SDK] の `IMobileServicesSyncContext.InitializeAsync(localstore)` など) を使用して行います。
 
-## <a name="how-sync-works"></a>オフライン同期のしくみ
+## <a name="how-offline-synchronization-works"></a><a name="how-sync-works"></a>オフライン同期のしくみ
 同期テーブルを使用する場合、クライアント コードによって、ローカルの変更内容が Azure モバイル アプリ バックエンドと同期される時期が制御されます。 ローカルの変更を *プッシュする* 呼び出しが行われるまで、バックエンドには何も送信されません。 同様に、ローカル ストアに新しいデータが入力されるのは、データを *プルする* 呼び出しが行われる場合のみです。
 
 * **Push**: プッシュは同期コンテキストに対する操作であり、最後のプッシュ以降の CUD に関するすべての変更を送信します。 個々のテーブルの変更だけを送信すると操作の順番が間違って送信される可能性があるため、このような送信を行うことができないことに注意してください。 プッシュは Azure モバイル アプリ バックエンドに対して一連の REST 呼び出しを実行し、呼び出しを受けたバックエンドがサーバー データベースを変更します。

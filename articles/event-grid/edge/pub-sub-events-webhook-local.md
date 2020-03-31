@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: ba82b1bea4753cd51e275a78b248247032d79a01
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086640"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236247"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>チュートリアル:ローカルでイベントを発行してサブスクライブする
 

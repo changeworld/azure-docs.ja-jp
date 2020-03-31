@@ -14,10 +14,10 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: e4d8299c06bfa5b0f33bff8fa592a2fa549c695c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74707615"
 ---
 # <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Azure Storage の使用 (Azure Web ジョブ プロジェクト)
@@ -161,6 +161,6 @@ public static void UseStorageAPI(
 
 キュー メッセージによってトリガーされるテーブルの処理方法、テーブル処理に固有ではない WebJobs SDK のシナリオの詳細については、「 [Azure キュー ストレージと Visual Studio 接続済みサービスの概要 (Web ジョブ プロジェクト)](../storage/vs-storage-webjobs-getting-started-queues.md)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Azure テーブルを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。 Azure WebJobs および WebJobs SDK の使用方法の詳細については、「 [Azure WebJobs のドキュメント リソース](https://go.microsoft.com/fwlink/?linkid=390226)」をご覧ください。

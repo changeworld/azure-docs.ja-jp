@@ -8,10 +8,10 @@ ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
 ms.openlocfilehash: 12bc51e800ef5ccd4ad3c72d3860fb22bac5b749
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77664917"
 ---
 # <a name="application-insights-log-based-metrics"></a>Application Insights ログベースのメトリック

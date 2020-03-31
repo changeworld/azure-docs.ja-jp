@@ -8,10 +8,10 @@ ms.service: web-application-firewall
 ms.date: 11/19/2019
 ms.author: ant
 ms.openlocfilehash: 1fac524af4b69f8e35934840643c6d3ad99fe1cd
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74174244"
 ---
 # <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>Azure PowerShell を使用して Web アプリケーションのファイアウォール ポリシーを移行する
@@ -210,6 +210,6 @@ function Main() {
 
 Main
 ```
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Web アプリケーション ファイアウォールの CRS ルール グループとルール](application-gateway-crs-rulegroups-rules.md)の詳細をご確認ください。

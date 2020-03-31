@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/10/2020
 ms.author: swmachan
 ms.openlocfilehash: a4f9833e8dd14dc7c8ec5849cb809bf2089a5dae
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77206125"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Translator Text API の言語と地域のサポート

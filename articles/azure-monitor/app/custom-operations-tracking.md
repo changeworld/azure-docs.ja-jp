@@ -1,19 +1,15 @@
 ---
 title: Azure Application Insights .NET SDK でカスタム操作を追跡する
 description: Azure Application Insights .NET SDK でカスタム操作を追跡する
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 7b92a386d691e15975f18de169d7924b82ec5c5f
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 31c1fb366e7b109ea1fa4977d8e2f908e766e0f2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951345"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234739"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Application Insights .NET SDK でカスタム操作を追跡する
 
@@ -479,7 +475,7 @@ public async Task RunAllTasks()
 
 各 Application Insights 操作 (要求または依存関係) には `Activity` が含まれます。`StartOperation` が呼び出されるときに、その下にアクティビティが作成されます。 `StartOperation` は、要求または依存関係テレメトリを追跡し、すべてが関連付けられていることを確認する推奨の方法です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Application Insights における[テレメトリの相関付け](correlation.md)について基本的な知識を身に付けます。
 - 相関データで[トランザクションの診断エクスペリエンス](../../azure-monitor/app/transaction-diagnostics.md)と[アプリケーション マップ](../../azure-monitor/app/app-map.md)がどのように機能するかを確認します。

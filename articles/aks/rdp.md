@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 06/04/2019
 ms.openlocfilehash: 897504aa9902d0feaf4245c719d3a4a3c6fd2241
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77594483"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>メンテナンスまたはトラブルシューティングのために RDP を使用して Azure Kubernetes Service (AKS) クラスターの Windows Server ノードに接続する

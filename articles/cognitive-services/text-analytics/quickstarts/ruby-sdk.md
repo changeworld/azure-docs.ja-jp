@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: aahi
 ms.openlocfilehash: 0d4d32a413dd22c55f1b2f01dce3a3df81f5f729
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77919670"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-for-ruby"></a>クイック スタート:Ruby 用 Text Analytics クライアント ライブラリを使用する

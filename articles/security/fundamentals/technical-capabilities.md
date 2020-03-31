@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
 ms.openlocfilehash: 61afad1d9994fd703bd8df047d1861baddeae997
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76845348"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure セキュリティの技術的な機能

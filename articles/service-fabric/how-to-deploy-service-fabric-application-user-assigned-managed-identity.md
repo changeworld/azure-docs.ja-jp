@@ -4,10 +4,10 @@ description: この記事では、ユーザー割り当てのマネージド ID 
 ms.topic: article
 ms.date: 12/09/2019
 ms.openlocfilehash: a5eeaf0d6420fa36c0a78f7553ddfd82197d8ec4
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75610337"
 ---
 # <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>ユーザー割り当てのマネージド ID を持つ Service Fabric アプリケーションをデプロイする (プレビュー)

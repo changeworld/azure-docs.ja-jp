@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
 ms.openlocfilehash: b34fdc36bd0b1ce294a92b2ae8fa5da01568e5a9
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74787371"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して REST エンドポイントを呼び出す
@@ -42,7 +42,7 @@ ms.locfileid: "74787371"
 
 この組み込みトリガーは、REST API を記述した Swagger ファイルの URL に HTTP 要求を送信し、そのファイルの内容を含む応答を返します。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 ロジック アプリ デザイナーで空のロジック アプリを開きます。
+1. [Azure portal](https://portal.azure.com) にサインインします。 ロジック アプリ デザイナーで空のロジック アプリを開きます。
 
 1. デザイナーの検索ボックスに、フィルターとして「swagger」と入力します。 **[トリガー]** の一覧から、 **[HTTP + Swagger]** トリガーを選択します。
 
@@ -78,7 +78,7 @@ ms.locfileid: "74787371"
 
 この組み込みアクションは、REST API を記述した Swagger ファイルの URL に HTTP 要求を送信し、そのファイルの内容を含む応答を返します。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 ロジック アプリ デザイナーでロジック アプリを開きます。
+1. [Azure portal](https://portal.azure.com) にサインインします。 ロジック アプリ デザイナーでロジック アプリを開きます。
 
 1. HTTP + Swagger アクションを追加するステップで、 **[新しいステップ]** を選択します。
 
@@ -145,16 +145,16 @@ ms.locfileid: "74787371"
 
 ここでは、以下の情報を返す HTTP + Swagger トリガーまたはアクションからの出力の詳細情報を示します。 HTTP + Swagger 呼び出しにより、次の情報が返されます。
 
-| プロパティ名 | 種類 | 説明 |
+| プロパティ名 | Type | 説明 |
 |---------------|------|-------------|
 | headers | object | 要求のヘッダー |
 | body | object | JSON オブジェクト | 要求の本文の内容を含むオブジェクト |
-| status code | int | 要求の状態コード |
+| status code | INT | 要求の状態コード |
 |||
 
 | status code | 説明 |
 |-------------|-------------|
-| 200 | OK |
+| 200 | [OK] |
 | 202 | 承認済み |
 | 400 | 正しくない要求 |
 | 401 | 権限がありません |
@@ -163,6 +163,6 @@ ms.locfileid: "74787371"
 | 500 | 内部サーバー エラー。 不明なエラーが発生しました。 |
 |||
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

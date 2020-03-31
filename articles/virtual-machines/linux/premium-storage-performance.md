@@ -8,11 +8,11 @@ ms.date: 06/27/2017
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 9940ee4cfce9721ac65f2b3cf1469e180adfa098
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458695"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231983"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: 高パフォーマンス用に設計する
 [!INCLUDE [virtual-machines-common-premium-storage-introduction](../../../includes/virtual-machines-common-premium-storage-introduction.md)]

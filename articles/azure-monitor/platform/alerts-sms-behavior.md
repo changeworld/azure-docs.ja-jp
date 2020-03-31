@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.subservice: alerts
 ms.openlocfilehash: b75bda626f887f1224c1b0f18a80887983a2367d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77665308"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>アクション グループの SMS アラート動作

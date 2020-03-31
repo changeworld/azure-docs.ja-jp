@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: aahi
-ms.openlocfilehash: b722fd34a78f1e9c2f4a660c205cf4a1e163a5d7
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: ba80d1396b30b61bdfe4c121220429f5a7d994b0
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78253059"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "79485944"
 ---
 C# 用 Bing Custom Search クライアント ライブラリの使用を開始します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 Bing Custom Search API を使用すると、関心のあるトピックに合わせてカスタマイズした、広告なしの検索エクスペリエンスを作成できます。 このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingCustomWebSearch) にあります。
 
@@ -86,9 +86,9 @@ C# 用 Bing Custom Search クライアント ライブラリを使用して、�
     {
         Console.WriteLine("Didn't see any Web data..");
     }
-    ```csharp
+    ```
 
-## Next steps
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Build a Custom Search web app](../../tutorials/custom-search-web-page.md)
+> [Custom Search Web アプリの作成](../../tutorials/custom-search-web-page.md)

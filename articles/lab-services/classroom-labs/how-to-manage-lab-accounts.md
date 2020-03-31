@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/14/2020
 ms.author: spelluru
 ms.openlocfilehash: c82b5d02ab3928eb0472f2a047cdca2238bf0b63
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443399"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237259"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>Azure Lab Services でラボ アカウントを管理する 
 Azure Lab Services では、ラボ アカウントは、クラスルーム ラボなどのマネージド ラボ型のコンテナーです。 管理者は、Azure Lab Services を使用してラボ アカウントを設定し、アカウントにラボを作成できるラボ所有者にアクセスを提供します。 この記事では、ラボ アカウントの作成、すべてのラボ アカウントの表示、またはラボ アカウントの削除を行う方法について説明します。
@@ -120,4 +120,4 @@ Azure Lab Services では、ラボ アカウントは、クラスルーム ラ�
 - [ラボに共有イメージ ギャラリーをアタッチする](how-to-attach-detach-shared-image-gallery.md)
 - [ユーザーをラボ所有者として追加する](how-to-add-user-lab-owner.md)
 - [ラボのファイアウォール設定の表示](how-to-configure-firewall-settings.md)
-- [ラボのその他設定を構成する](how-to-configure-lab-accounts.md)
+- [ラボのその他の設定を構成する](how-to-configure-lab-accounts.md)

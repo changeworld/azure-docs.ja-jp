@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/13/2019
 ms.openlocfilehash: 21269f7d5a9ec832a49a613351702dd24be156af
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75894164"
 ---
 # <a name="unable-to-access-data-lake-storage-files-in-azure-hdinsight"></a>Azure HDInsight で Data Lake ストレージ ファイルにアクセスできない
@@ -30,7 +30,7 @@ LISTSTATUS failed with error 0x83090aa2 (Forbidden. ACL verification failed. Eit
 
 ユーザーによってファイル/フォルダーのサービス プリンシパル (SP) のアクセス許可が取り消されている可能性があります。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 1. SP に、パスに沿って走査するための 'x' アクセス許可があることを確認します。 詳細については、「 [アクセス許可](https://hdinsight.github.io/ClusterCRUD/ADLS/adls-create-permission-setup.html)」を参照してください。 Data Lake ストレージ アカウント内のファイルまたはフォルダーへのアクセスを確認するための dfs コマンドの例:
 
@@ -99,7 +99,7 @@ Token Refresh failed - Received invalid http response: 500
     Error: java.lang.IllegalArgumentException: Token Refresh failed - Received invalid http response: 500, text = Response{protocol=http/1.1, code=500, message=Internal Server Error, url=http://clustername.hmssomerandomstringc.cx.internal.cloudapp.net:909/api/oauthtoken}
     ```
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 次の PowerShell スクリプトを使用して、新しい証明書を作成するか、既存の証明書を割り当てます。
 

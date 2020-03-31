@@ -1,5 +1,5 @@
 ---
-title: 2 要素検証方法と設定を変更する - Azure AD
+title: 2 要素検証方法と設定を変更する - Azure Active Directory
 description: '[追加のセキュリティ確認] ページから、職場または学校アカウントに対するセキュリティ検証方法と設定を変更する方法について説明します。'
 services: active-directory
 author: curtand
@@ -10,50 +10,50 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 02/20/2020
 ms.author: curtand
-ms.openlocfilehash: 457608af9a5ffc06a778e900363bc8138fcb4e99
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 5949f04ecc28a88e340a9c2de530031793f193a0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062593"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227707"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>2 要素検証方法と設定を変更する
 
 職場または学校アカウントのセキュリティ検証方法を設定した後は、次のような関連する詳細情報を更新できます。
 
-- 既定のセキュリティ検証方法の変更。
+- 既定値のセキュリティ検証方法
 
-- 電話番号など、セキュリティ検証方法の詳細の追加または更新。
+- 電話番号などのセキュリティ検証方法の詳細
 
-- 新しい Authenticator アプリ の設定、または Authenticator アプリからのデバイスの削除。
+- Authenticator アプリ の設定、または Authenticator アプリからのデバイスの削除
 
 ## <a name="using-the-additional-security-verification-page"></a>[追加のセキュリティ確認] ページを使用する
 
-2 要素認証の有効化と管理について組織から具体的な手順が提供されている場合は、その手順に従う必要があります。 それ以外の場合は、[[追加のセキュリティ確認]](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) ページからセキュリティ検証方法の設定にアクセスできます。
+2 要素認証の有効化と管理について組織から具体的な手順が提供されている場合は、その手順に従う必要があります。 それ以外の場合は、[[追加のセキュリティ確認]](https://docs.microsoft.com/azure/active-directory/user-help/multi-factor-authentication-end-user-first-time) ページからセキュリティ検証方法の設定にアクセスできます。
 
 >[!Note]
->画面に表示される内容と、この記事の内容が一致しない場合は、管理者によってセキュリティ情報 (プレビュー) エクスペリエンスが有効にされているか、または組織に独自のカスタム ポータルがあることを意味します。 セキュリティ情報エクスペリエンスについて詳しくは、「[セキュリティ情報 (プレビュー) の概要](user-help-security-info-overview.md)」をご覧ください。 組織のカスタム ポータルについて詳しくは、ヘルプ デスクにお問い合わせください。
+>画面に表示される内容と、この記事の内容が一致しない場合は、管理者によって **セキュリティ情報 (プレビュー)** エクスペリエンスが有効にされているか、または組織に独自のカスタム ポータルがあることを意味します。 新しいセキュリティ情報エクスペリエンスについて詳しくは、「[セキュリティ情報 (プレビュー) の概要](user-help-security-info-overview.md)」をご覧ください。 組織のカスタム ポータルについて詳しくは、組織のヘルプ デスクにお問い合わせください。
 
 ### <a name="to-get-to-the-additional-security-verification-page"></a>[追加のセキュリティ確認] ページに移動するには
 
-- [[追加のセキュリティ確認]](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) ページに移動します。
+このリンクを使用して、[[追加のセキュリティ確認] ページ](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1)に進むことができます。
 
-    ![[追加のセキュリティ確認] ページと、利用可能なセキュリティ検証方法の詳細](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page.png)
+![[追加のセキュリティ確認] ページと、利用可能なセキュリティ検証方法の詳細](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page.png)
 
-    このリンクをクリックしても機能しない場合は、以下の手順に従って **[追加のセキュリティ確認]** ページにアクセスすることもできます。
+以下の手順に従って **[追加のセキュリティ確認]** ページにアクセスすることもできます。
 
-    1. [https://myapps.microsoft.com](https://myapps.microsoft.com) にサインインします。
+1. [https://myapps.microsoft.com](https://myapps.microsoft.com) にサインインします。
 
-    2. 右上でアカウント名を選択し、**プロファイル**を選択します。
+1. 右上でアカウント名を選択し、**プロファイル**を選択します。
 
-    3. **[追加のセキュリティ確認]** を選択します。  
+1. **[追加のセキュリティ確認]** を選択します。  
 
-        ![[追加のセキュリティ確認] ページへのマイ アプリのリンク](./media/multi-factor-authentication-end-user-manage-settings/mfa-myapps-link.png)
+    ![[追加のセキュリティ確認] ページへのマイ アプリのリンク](./media/multi-factor-authentication-end-user-manage-settings/mfa-myapps-link.png)
 
 >[!Note]
->**[追加のセキュリティ確認]** ページの **[アプリ パスワード]** セクションについて詳しくは、「[2 段階認証のアプリ パスワードを管理する](multi-factor-authentication-end-user-app-passwords.md)」をご覧ください。 アプリ パスワードは、2 要素認証がまだサポートされていないアプリに対してのみ使用する必要があります。
+>**[追加のセキュリティ確認]** ページの **[アプリ パスワード]** セクションについて詳しくは、「[2 段階認証のアプリ パスワードを管理する](multi-factor-authentication-end-user-app-passwords.md)」をご覧ください。 アプリ パスワードは、2 要素認証がサポートされていないアプリに対してのみ使用する必要があります。
 
 ## <a name="change-your-default-security-verification-method"></a>既定のセキュリティ検証方法を変更する
 
@@ -63,17 +63,17 @@ ms.locfileid: "77062593"
 
 ### <a name="to-change-your-default-security-verification-method"></a>既定のセキュリティ検証方法を変更するには
 
-1. **[追加のセキュリティ確認]** ページで、 **[必要に応じて設定オプションを変更してください]** のドロップダウン リストから、使用する方法を選択します。 すべてのオプションが表示されますが、組織で使用できるオプションのみを選択できます。
+1. **[追加のセキュリティ確認]** ページで、 **[必要に応じて設定オプションを変更してください]** のリストから使用する方法を選択します。 すべてのオプションが表示されますが、組織で使用できるオプションのみを選択できます。
 
-    - **[アプリケーションで通知する]** 。 検証プロンプトが待機していることを示す通知を Authenticator アプリで受け取ります。
+    - **[アプリケーションで通知する]** :検証プロンプトが待機していることを示す通知を Authenticator アプリで受け取ります。
 
-    - **[認証用電話に電話をかける]** 。 情報の確認を求める電話呼び出しをモバイル デバイスで受け取ります。
+    - **[認証用電話に電話をかける]** :情報の確認を求める電話呼び出しをモバイル デバイスで受け取ります。
 
-    - **[認証用電話にコードを送信する]** 。 モバイル デバイスでテキスト メッセージの一部として確認コードを受け取ります。 職場または学校アカウントの検証プロンプトに、このコードを入力する必要があります。
+    - **[認証用電話にコードを送信する]** :モバイル デバイスでテキスト メッセージの一部として確認コードを受け取ります。 職場または学校アカウントの検証プロンプトに、このコードを入力する必要があります。
 
-    - **[会社電話に発信]** 。 情報の確認を求める電話呼び出しを会社の電話で受け取ります。
+    - **[会社電話に発信]** :情報の確認を求める電話呼び出しを会社の電話で受け取ります。
 
-    - **[アプリの確認コードを使用する]** 。 Authenticator アプリを使用して、職場または学校アカウントからのプロンプトに入力する確認コードを受け取ります。
+    - **[アプリの確認コードを使用する]** :Authenticator アプリを使用して、職場または学校アカウントからのプロンプトに入力する確認コードを受け取ります。
 
 2. **[保存]** を選択します。
 
@@ -88,25 +88,25 @@ ms.locfileid: "77062593"
 
 1. **[追加のセキュリティ確認]** ページの **[応答に使用する方法を選択してください]** セクションで、 **[認証用電話]** (メインのモバイル デバイス) と **[会社電話]** の電話番号情報を更新します。
 
-2. **[代替の認証用電話]** オプションの横にあるボックスをオンにして、メインのデバイスにアクセスできない場合にテキスト メッセージまたは電話を受けることができるサブの電話番号を入力します。
+1. **[代替の認証用電話]** オプションの横にあるボックスをオンにして、メインのデバイスにアクセスできない場合にテキスト メッセージまたは電話を受けることができるサブの電話番号を入力します。
 
-3. **[保存]** を選択します。
+1. **[保存]** を選択します。
 
 ## <a name="add-a-new-account-to-the-microsoft-authenticator-app"></a>新しいアカウントを Microsoft Authenticator アプリに追加する
 
 [Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) または [iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458) 用の Microsoft Authenticator アプリで、職場または学校アカウントを設定できます。
 
-以前に Microsoft Authenticator アプリで職場または学校アカウントを設定したことがある場合、もう一度行う必要はありません。
+既に Microsoft Authenticator アプリで職場または学校アカウントを設定したことがある場合、もう一度行う必要はありません。
 
 1. **[追加のセキュリティ確認]** ページの **[応答に使用する方法を選択してください]** セクションで、 **[Authenticator アプリの設定]** を選択します。
 
     ![Microsoft Authenticator アプリで職場または学校アカウントを設定する](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page-auth-app.png)
 
-2. モバイル デバイスを使用した QR コードのスキャンなど、画面の指示に従った後、 **[次へ]** を選択します。
+1. モバイル デバイスを使用した QR コードのスキャンなど、画面の指示に従った後、 **[次へ]** を選択します。
 
     Microsoft Authenticator アプリで通知を承認し、情報を確認するように求められます。
 
-3. **[保存]** を選択します。
+1. **[保存]** を選択します。
 
 ## <a name="delete-your-account-or-device-from-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリからアカウントまたはデバイスを削除する
 
@@ -116,21 +116,19 @@ Microsoft Authenticator アプリからアカウントを削除することが�
 
 1. **[追加のセキュリティ確認]** ページの **[応答に使用する方法を選択してください]** セクションで、 **[Authenticator アプリの設定]** を選択します。
 
-2. **[保存]** を選択します。
+1. **[保存]** を選択します。
 
 ### <a name="to-delete-your-account-from-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリからアカウントを削除するには
 
-- Microsoft Authenticator アプリから、削除するデバイスの横にある **[削除]** ボタンを選択します。
+Microsoft Authenticator アプリから、削除するデバイスの横にある **[削除]** ボタンを選択します。
 
 ## <a name="turn-on-two-factor-verification-prompts-on-a-trusted-device"></a>信頼されたデバイスで 2 要素認証のプロンプトを有効にする
 
-組織の設定によっては、ブラウザーで 2 段階認証を実行するときに、 **[今後 X 日間はこのメッセージを表示しない]** というチェック ボックスが表示される場合があります。 このチェック ボックスをオンにして 2 要素認証のプロンプトを停止した場合、デバイスを紛失したとき、またはデバイスが侵害された可能性があるときは、アカウントを保護するために、2 要素認証のプロンプトを再び有効にする必要があります。 残念ながら、1 台のデバイスについてプロンプトを再び有効にすることはできません。 すべてのデバイスのプロンプトを同時に有効にする必要があります。
+組織の設定によっては、ブラウザーで 2 段階認証を実行するときに、 **[今後 X 日間はこのメッセージを表示しない]** というチェック ボックスが表示される場合があります。 このオプションを選択して 2 要素認証のプロンプトを停止した場合、デバイスを紛失したとき、またはデバイスが侵害された可能性があるときは、アカウントを保護するために、2 要素認証のプロンプトを再び有効にする必要があります。 すべてのデバイスのプロンプトを同時に有効にする必要があります。 残念ながら、特定のデバイスについてのみプロンプトを再び有効にすることはできません。
 
 ### <a name="to-turn-two-factor-verification-prompts-back-on-for-your-devices"></a>デバイスに対する 2 要素認証のプロンプトを再び有効にするには
 
-- **[追加のセキュリティ確認]** ページで、 **[以前の信頼済みデバイスに Multi-Factor Authentication を復元する]** を選択します。
-
-    任意のデバイスで次回サインインするときに、2 要素認証を実行するよう求められます。
+[ **[追加のセキュリティ確認]** ページ](#to-get-to-the-additional-security-verification-page)で、 **[以前の信頼済みデバイスに Multi-Factor Authentication を復元する]** を選択します。 任意のデバイスで次回サインインするときに、2 要素認証を実行するよう求められます。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -138,6 +136,6 @@ Microsoft Authenticator アプリからアカウントを削除することが�
 
 - 2 要素認証がサポートされていないアプリについて、[2 要素認証のアプリ パスワードを管理](multi-factor-authentication-end-user-app-passwords.md)します。
 
-- [2 要素認証を使用してサインインする](multi-factor-authentication-end-user-signin.md)
+- [2 要素認証を使用したサインインの方法](multi-factor-authentication-end-user-signin.md)
 
-- [2 要素認証のサポートを受ける](multi-factor-authentication-end-user-troubleshoot.md)
+- [2 要素認証のよくある問題の解決](multi-factor-authentication-end-user-troubleshoot.md)

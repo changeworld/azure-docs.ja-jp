@@ -12,10 +12,10 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: d3afcded894f72626a4f24bcbe85c34ac1329c29
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72242918"
 ---
 # <a name="project-acoustics-unrealwwise-quickstart"></a>Project Acoustics Unreal/Wwise のクイックスタート
@@ -59,7 +59,7 @@ Project Acoustics Unreal プラグインでは、Wwise Unreal プラグイン AP
 
     ![コメント アウトされた "DXSDK" が示されているコード エディター](media/directx-sdk-comment.png)
 
-* Visual Studio 2019 を使用してコンパイルする場合: Wwise でのリンク エラーを回避するため、*AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs* で既定の *VSVersion* の値を手動で **vc150** に変更します。
+* Visual Studio 2019 を使用してコンパイルする場合:Wwise でのリンク エラーを回避するため、*AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs* で既定の *VSVersion* の値を手動で **vc150** に変更します。
 
     ![VSVersion が "vc150" に変更されたコード エディター](media/vsversion-comment.png)
 
@@ -96,6 +96,6 @@ Project Acoustics Wwise ミキサー プラグインでは、Wwise に組み込�
 
 Project Acoustics では、シミュレートされたプレーヤーの各位置を中心とした "シミュレーション リージョン" ボックス内の計算が行われます。 サンプル パッケージ内の音響資産は、シミュレーション領域の半径が 45 m でベイクされています。 減衰は、45 m の前で 0 になるように設計されています。 この減衰は厳密な要件ではありませんが、リスナーの 45 メートル以内のジオメトリのみで音が遮られるという点に注意してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Unreal プロジェクトに [Project Acoustics プラグインを統合します](unreal-integration.md)。
 * 独自のベイク用の[Azure アカウントを作成します](create-azure-account.md)。

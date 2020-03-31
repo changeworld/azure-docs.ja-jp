@@ -4,11 +4,11 @@ description: Azure portal と Azure Key Vault を使用して Azure でセキュ
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.openlocfilehash: 0f384da75f09390e9b0988722b974e7e16d13e63
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452279"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229415"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Azure ポータルを使用して Azure で Service Fabric クラスターを作成する
 > [!div class="op_single_selector"]
@@ -68,7 +68,7 @@ Service Fabric を操作するために、クライアント認証証明書を K
 
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>Service Fabric クラスター リソースの検索
 
-[Azure portal][azure-portal] にサインインする
+[Azure portal][azure-portal] にサインインします。
 **[リソースの作成]** をクリックし、新しいリソース テンプレートを追加します。 **[Marketplace]** の **[すべて]** で、Service Fabric クラスター テンプレートを検索します。
 一覧から **[Service Fabric クラスター]** を選択します。
 
