@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 9f3802ada79ee87d1a04634f7caac3b1b4286dce
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74978034"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>チュートリアル:IoT デバイスで Custom Vision を使用して視覚的な状態を報告する
@@ -78,7 +78,7 @@ IoT Visual Alerts アプリは状況に応じて 4 つの異なる状態を切�
     1. _IoTHub\IotHubWrapper.cs_ スクリプトで、`s_connectionString` 変数をデバイスの適切な接続文字列に更新します。 
     1. Azure portal で IoT Hub インスタンスを読み込み、 **[エクスプローラー]** の下にある **[IoT デバイス]** をクリックしてターゲット デバイスを選択し (または必要に応じて作成し)、 **[プライマリ接続文字列]** から接続文字列を指定します。 文字列には、`{your iot hub name}.azure-devices.net;DeviceId={your device id};SharedAccessKey={your access key}` の形式の IoT Hub 名、デバイス ID、共有アクセスキーが含まれます。
 
-## <a name="run-the-app"></a>アプリの実行
+## <a name="run-the-app"></a>アプリを実行する
 
 PC でアプリを実行している場合は、Visual Studio ではターゲット デバイスの **[ローカル コンピューター]** を選択し、ターゲット プラットフォームでは **x64** または **x86** を選択します。 その後、F5 を押して、プログラムを実行します。 アプリが起動し、カメラからのライブ フィードとステータス メッセージが表示されます。
 
@@ -128,13 +128,13 @@ ARM プロセッサを搭載した IoT デバイスにデプロイする場合�
 
 アプリをデバイスで実行していて、IP アドレスを再度取得する必要がある場合 (たとえば、[Windows IoT Remote Client](https://www.microsoft.com/p/windows-iot-remote-client/9nblggh5mnxz#activetab=pivot:overviewtab) を使用してリモート接続を確立する場合)、IoT Hub を使用して `GetIpAddress` メソッドを呼び出すことができます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Custom Vision プロジェクトを保持する必要がなくなった場合は削除します。 [Custom Vision Web サイト](https://customvision.ai)で、 **[Projects]\(プロジェクト\)** に移動し、新しいプロジェクトのごみ箱アイコンを選択します。
 
 !["My New Project" とごみ箱アイコンが表示されたパネルのスクリーンショット](./media/csharp-tutorial/delete_project.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、IoT デバイスで視覚的な状態に関する情報を検出し、結果を IoT Hub に送信するアプリケーションを設定して実行しました。 次の手順として、ソース コードをさらに調査するか、以下の推薦される変更を行います。
 

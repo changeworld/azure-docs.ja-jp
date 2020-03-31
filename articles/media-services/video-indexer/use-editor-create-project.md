@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
 ms.openlocfilehash: 9f16ab34dc9b37806f9c58b22a3f02afe839632e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73839164"
 ---
 # <a name="use-the-video-indexer-editor-to-create-projects"></a>Video Indexer エディターを使用してプロジェクトを作成する
@@ -55,7 +55,7 @@ Video Indexer Web サイトでは、ビデオの詳細な分析情報を使用�
 
     **[結果のフィルター処理]** を選択して、結果をさらにフィルター処理することができます。 フィルター処理によって、特定の人物が登場するビデオを表示したり、特定の言語または所有者のビデオのみを結果として表示するように指定したりできます。 <br/> クエリのスコープを指定することもできます。 たとえば、"GitHub" を OCR から検索する場合、 **[ビジュアル テキスト]** を選択します。
 
-    ![filter](./media/video-indexer-view-edit/visual-text.png)
+    ![Assert](./media/video-indexer-view-edit/visual-text.png)
 
     クエリに複数のフィルターを重ねることができます。 フィルターを追加/削除するには、 **+** / **-** ボタンを使用します。 すべてのフィルターを削除するには、 **[フィルターのクリア]** を使用します。
 1. ビデオを追加するには、ビデオを選択してから **[追加]** を選択します。

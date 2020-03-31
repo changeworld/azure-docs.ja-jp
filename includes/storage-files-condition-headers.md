@@ -9,10 +9,10 @@ ms.date: 09/04/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 4604616cd4f2d6c75c272586df1331fc405061cb
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70737493"
 ---
 ## <a name="error-conditionheadersnotsupported-from-a-web-application-using-azure-files-from-browser"></a>ブラウザーから Azure Files を使用する Web アプリケーションの ConditionHeadersNotSupported エラー
@@ -25,7 +25,7 @@ ms.locfileid: "70737493"
 
 条件ヘッダーはまだサポートされていません。 それらを実装しているアプリケーションでは、ファイルにアクセスするたびに、ファイル全体を要求する必要があります。
 
-### <a name="workaround"></a>対処法
+### <a name="workaround"></a>回避策
 
 新しいファイルがアップロードされるとき、cache-control プロパティは既定で "no-cache" になっています。 アプリケーションで毎回ファイルを要求するようにするには、ファイルの cache-control プロパティを "no-cache" から "no-cache, no-store, must-revalidate" に更新する必要があります。 これは、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用して実現できます。
 

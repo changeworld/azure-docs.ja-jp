@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/10/2019
 ms.author: vilibert
 ms.openlocfilehash: a154ab4742f0d0d7acae0376bcf894bc2b62b4cd
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74186759"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>事前に GRUB と sysrq に確実にアクセスできるようにすることでダウンタイムを大幅に短縮する
@@ -436,5 +436,5 @@ GRUB にアクセスできるようにすると、初期化プロセスを中断
 ![single_user_ubuntu](./media/virtual-machines-serial-console/single-user-ubuntu.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure シリアル コンソール]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)についてさらに詳しく学習します

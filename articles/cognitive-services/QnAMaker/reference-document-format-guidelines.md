@@ -4,10 +4,10 @@ description: URL の種類を使用して、QnA セットをインポートお�
 ms.topic: reference
 ms.date: 01/02/2020
 ms.openlocfilehash: 6a954f2fd607b70c6db256ab6dcc1dbcd7a5a473
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77651797"
 ---
 # <a name="format-guidelines-for-imported-documents-and-urls"></a>インポートされたドキュメントおよび URL の形式のガイドライン
@@ -48,7 +48,7 @@ QnA Maker では、次のような視覚的な手がかりに基づいて、フ�
 
 ## <a name="brochures-guidelines-papers-and-other-files"></a>パンフレット、ガイドライン、論文、およびその他のファイル
 
-明確な構造とレイアウトがあれば、他の多くの種類のドキュメントも処理して QA ペアを生成することができます。 チェックの内容は次のとおりですパンフレット、ガイドライン、レポート、ホワイト ペーパー、科学論文、ポリシー、書籍などが含まれます。[こちら](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx)の例を参照してください。
+明確な構造とレイアウトがあれば、他の多くの種類のドキュメントも処理して QA ペアを生成することができます。 これには以下が含まれます。パンフレット、ガイドライン、レポート、ホワイト ペーパー、科学論文、ポリシー、書籍などが含まれます。[こちら](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx)の例を参照してください。
 
 次に示すのは、索引のない半構造化ドキュメントの例です。
 
@@ -76,7 +76,7 @@ Answer2
 
 構造化 *.txt*、 *.tsv*、または *.xls* ファイル形式の QnA を QnA Maker にアップロードして、ナレッジ ベースを作成または拡張することもできます。  これらはプレーン テキストでも、RTF または HTML のコンテンツが含まれていても構いません。
 
-| 質問  | Answer  | メタデータ (1 つのキー: 1 つの値) |
+| Question  | Answer  | メタデータ (1 つのキー: 1 つの値) |
 |-----------|---------|-------------------------|
 | 質問 1 | 回答 1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | 質問 2 | 回答 2 |      `Key:Value`           |
@@ -103,7 +103,7 @@ Answer2
 
 ナレッジ ベースをインポートすると、既にあるナレッジ ベースの内容が置き換えられます。 インポートでは、データ ソース情報を含んだ .tsv 形式の構造化ファイルが必要となります。 この情報によって、QnA Maker は質問とその回答のペアをグループ化し、その帰属先となるデータ ソースを特定することができます。
 
-| 質問  | Answer  | source| メタデータ (1 つのキー: 1 つの値) |
+| Question  | Answer  | source| メタデータ (1 つのキー: 1 つの値) |
 |-----------|---------|----|---------------------|
 | 質問 1 | 回答 1 | URL 1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | 質問 2 | 回答 2 | 編集|    `Key:Value`       |

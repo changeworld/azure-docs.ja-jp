@@ -4,10 +4,10 @@ description: Service Fabric ステートフル サービスは、可用性と拡
 ms.topic: conceptual
 ms.date: 1/3/2019
 ms.openlocfilehash: 48fa682f4c017f66911729e1f581f3aa91cdc28d
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75609725"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Azure Service Fabric ステートフル サービスの Reliable Collection の概要

@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6187fa9f274c6d00c1c9872a1b27268ac91295e
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 2b99a80a90df8fcfc5efe6dfa0c2cd7e8e5e04e0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161488"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050880"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>ゲスト ユーザーのための AD FS およびサード パーティ プロバイダーとの直接フェデレーション (プレビュー)
 |     |
@@ -47,6 +47,7 @@ ms.locfileid: "78161488"
 
 ### <a name="dns-verified-domains-in-azure-ad"></a>Azure AD での DNS 検証済みドメイン
 フェデレーションを行うドメインは、Azure AD で DNS 検証済み***でない***ことが必要です。 直接フェデレーションは、アンマネージド (電子メールで検証済み、または "バイラル") の Azure AD テナントで設定できます。理由は、それらが DNS で検証されないためです。
+
 ### <a name="authentication-url"></a>認証 URL
 直接フェデレーションをポリシーで使用できるのは、認証 URL のドメインがターゲット ドメインと一致する場合か、認証 URL がこれらの許可されている ID プロバイダーのうちの 1 つである場合のみです (この一覧は変更される場合があります)。
 -   accounts.google.com
@@ -94,7 +95,7 @@ Azure AD B2B は、以下に示す特定の要件に従って、SAML プロト�
 
 IdP からの SAML 2.0 応答に必須の属性:
 
-|属性  |Value  |
+|属性  |値  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
 |対象ユーザー     |`urn:federation:MicrosoftOnline`         |
@@ -103,7 +104,7 @@ IdP からの SAML 2.0 応答に必須の属性:
 
 IdP によって発行される SAML 2.0 トークンに必須の要求:
 
-|属性  |Value  |
+|属性  |値  |
 |---------|---------|
 |NameID の形式     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
@@ -120,7 +121,7 @@ Azure AD B2B は、以下に示すいくつかの特定の要件に従って、W
 
 IdP からの WS-Fed メッセージに必須の属性:
  
-|属性  |Value  |
+|属性  |値  |
 |---------|---------|
 |PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
 |対象ユーザー     |`urn:federation:MicrosoftOnline`         |
@@ -128,7 +129,7 @@ IdP からの WS-Fed メッセージに必須の属性:
 
 IdP によって発行される WS-Fed トークンに必須の要求:
 
-|属性  |Value  |
+|属性  |値  |
 |---------|---------|
 |ImmutableID     |`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |

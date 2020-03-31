@@ -15,6 +15,8 @@
       href: web-query-data.md
 - name: チュートリアル
   items:
+    - name: クエリを作成する
+      href: write-queries.md
     - name: E2E プログラムによる BLOB の取り込み
       items:
         - name: 'C#'
@@ -32,14 +34,22 @@
         - name: データ取り込みの概要
           displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
           href: ingest-data-overview.md
+        - name: データ インジェストのプロパティ
+          href: ingestion-properties.md
+        - name: データ インジェストの形式
+          href: ingestion-supported-formats.md
     - name: Kusto クエリ言語
       items:
         - name: クイック リファレンス ガイド
           href: kql-quick-reference.md
     - name: データ視覚化の概要
       href: viz-overview.md
-    - name: セキュリティの概要
-      href: security.md
+    - name: Security
+      items:
+        - name: セキュリティの概要
+          href: security.md
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
 - name: 操作方法ガイド
   items:
     - name: クラスターとデータベースの作成
@@ -60,6 +70,8 @@
           href: ingest-data-one-click.md
         - name: ストリーミング インジェスト
           href: ingest-data-streaming.md
+        - name: LightIngest の使用
+          href: lightingest.md
         - name: イベント ハブ
           items:
             - name: Azure portal
@@ -106,8 +118,6 @@
           href: ingest-json-formats.md
     - name: クエリ データ
       items:
-        - name: クエリを作成する
-          href: write-queries.md
         - name: Azure Data Lake でデータのクエリを実行する
           href: data-lake-query-data.md
         - name: Azure Monitor でデータのクエリを実行する
@@ -158,12 +168,22 @@
           href: k2bridge.md
     - name: セキュリティで保護
       items:
+        - name: ネットワークの分離 (VNet)
+          items:
+            - name: VNet にクラスターを作成する - ポータル
+              href: vnet-create-cluster-portal.md
+            - name: クラスターを VNet にデプロイする
+              href: vnet-deployment.md
+            - name: VNet のクラスターの作成、接続、操作のトラブルシューティング
+              href: vnet-deploy-troubleshoot.md
         - name: クラスターのセキュリティを管理する
           href: manage-cluster-security.md
         - name: マネージド ID の構成
           href: managed-identities.md
         - name: 顧客管理キーの構成
           items:
+            - name: ポータル
+              href: customer-managed-keys-portal.md
             - name: 'C#'
               href: customer-managed-keys-csharp.md
             - name: Azure Resource Manager テンプレート
@@ -214,10 +234,6 @@
               href: delete-data.md
             - name: 重複したデータを処理する
               href: dealing-with-duplicates.md
-    - name: 配置
-      items:
-        - name: 仮想ネットワークにクラスターをデプロイする
-          href: vnet-deployment.md
     - name: モニター
       items:
         - name: 診断ログを使用してインジェストを監視する
@@ -236,6 +252,12 @@
               href: data-factory-template.md
             - name: Azure Data Factory を使用して制御コマンドを実行する
               href: data-factory-command-activity.md
+        - name: Microsoft Flow コネクタ
+          items:
+            - name: Microsoft Flow コネクタ
+              href: flow.md
+            - name: Microsoft Flow コネクタの使用例
+              href: flow-usage.md
         - name: Apache Spark コネクタ
           href: spark-connector.md
         - name: Python を使用して Databricks から接続する

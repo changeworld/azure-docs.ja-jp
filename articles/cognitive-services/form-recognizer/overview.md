@@ -9,14 +9,16 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 0d78f3cc4f2b12b2d9f45878a0c1b91263112689
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 6b19dc11438274ecf6218d5c0bd8c9ef3dafbf01
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118542"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80052434"
 ---
 # <a name="what-is-form-recognizer"></a>Form Recognizer とは
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Azure Form Recognizer は、機械学習テクノロジを使用して、フォーム ドキュメントからテキストや、キーと値のペア、テーブル データを識別して抽出する Cognitive Services です。 フォームからテキストを取り込んで、元のファイル内の関係を含む構造化データを出力します。 手作業による操作やデータ サイエンスに関する専門知識があまりなくても、特定のコンテンツに合わせた正確な結果がすばやく得られます。 Form Recognizer は、カスタム モデル、あらかじめ構築されたレシート モデル、Layout API から成ります。 REST API を使用して Form Recognizer モデルを呼び出すことにより、複雑さを軽減し、自分のワークフローやアプリケーションに統合することができます。
 
@@ -49,7 +51,7 @@ Form Recognizer にはさらに、英語で書かれた米国のレシートを�
 
 ## <a name="layout-api"></a>Layout API
 
-Form Recognizer は、高精細の光学式文字認識 (OCR) を使用して、テキストやテーブル構造 (テキストが関連付けられた行番号と列番号) を抽出することもできます。 
+Form Recognizer は、高精細の光学式文字認識 (OCR) を使用して、テキストやテーブル構造 (テキストが関連付けられた行番号と列番号) を抽出することもできます。
 
 ## <a name="get-started"></a>はじめに
 
@@ -59,9 +61,9 @@ Form Recognizer は、高精細の光学式文字認識 (OCR) を使用して、
   * ラベルを使用しないトレーニング
     * [クイック スタート: cURL で REST API を使用して Form Recognizer モデルをトレーニングし、フォーム データを抽出する](quickstarts/curl-train-extract.md)
     * [クイック スタート: Python で REST API を使用して Form Recognizer モデルをトレーニングし、フォーム データを抽出する](quickstarts/python-train-extract.md)
-  * ラベルを使用したトレーニング 
+  * ラベルを使用したトレーニング
     * [サンプル ラベル付けツールを使用したラベルによる Form Recognizer モデルのトレーニング](quickstarts/label-tool.md)
-    * [REST API と Python でラベルを使用して Form Recognizer モデルをトレーニングする](quickstarts/python-labeled-data.md) 
+    * [REST API と Python でラベルを使用して Form Recognizer モデルをトレーニングする](quickstarts/python-labeled-data.md)
 * あらかじめ構築されたレシート - 米国のレシートからデータを抽出します。
   * [クイック スタート: cURL を使用してレシートのデータを抽出する](quickstarts/curl-receipts.md)
   * [クイック スタート: Python を使用してレシートのデータを抽出する](quickstarts/python-receipts.md)
@@ -92,7 +94,7 @@ Form Recognizer は、高精細の光学式文字認識 (OCR) を使用して、
 
 * 形式は、JPEG、PNG、BMP、PDF (テキストまたはスキャン)、または TIFF である必要があります。
 * ファイル サイズは 20 MB 未満である必要があります。
-* 画像の寸法は、50 x 50 ピクセルから 10,000 x 10,000 ピクセルの間である必要があります。 
+* 画像の寸法は、50 x 50 ピクセルから 10,000 x 10,000 ピクセルの間である必要があります。
 * PDF の寸法は、最大で 17 x 17 インチにする必要があります (リーガル サイズまたは A3 サイズ以下の用紙に対応します)。
 * PDF および TIFF の場合、最初の 200 ページのみが処理されます (Free レベルのサブスクリプションでは、最初の 2 ページのみが処理されます)。
 

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 7578811c37cd0bbe47821dadacce5fa5974f56cf
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68812735"
 ---
 # <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Linux 用の Azure Security Center for IoT の C ベースのセキュリティ エージェントをデプロイする
@@ -28,10 +28,10 @@ ms.locfileid: "68812735"
 
 このガイドでは、以下の方法について説明します。 
 > [!div class="checklist"]
-> * Install
+> * インストール
 > * デプロイの確認
 > * エージェントのアンインストール
-> * トラブルシューティング 
+> * [トラブルシューティング] 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -90,7 +90,7 @@ ms.locfileid: "68812735"
     systemctl status ASCIoTAgent.service
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Azure Security Center for IoT サービスの[概要](overview.md)を読みます
 - Azure Security Center for IoT の[アーキテクチャ](architecture.md)の詳細を確認します
 - [サービス](quickstart-onboard-iot-hub.md)を有効にします

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
 ms.openlocfilehash: acb9784b745fa90fc9cd264162930020e6d64751
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668504"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226411"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Azure Monitor のログ アラートのトラブルシューティング  
 
@@ -83,7 +83,7 @@ ms.locfileid: "77668504"
 
 ## <a name="log-alert-fired-unnecessarily"></a>ログ アラートが不必要に作動する
 
-[Azure アラート](../platform/alerts-managing-alert-states.md)で表示したとき、構成した [Azure Monitor のログ アラート ルール](../platform/alerts-log.md)が予期せずトリガーされる場合があります。 以下のセクションでは、よくある原因をいくつか説明します。
+[Azure アラート](../platform/alerts-log.md)で表示したとき、構成した [Azure Monitor のログ アラート ルール](../platform/alerts-managing-alert-states.md)が予期せずトリガーされる場合があります。 以下のセクションでは、よくある原因をいくつか説明します。
 
 ### <a name="alert-triggered-by-partial-data"></a>一部のデータによってアラートがトリガーされる
 

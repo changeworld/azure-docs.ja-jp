@@ -1,20 +1,18 @@
 ---
 title: クラウド パートナー ポータルでユーザーの管理 | Azure Marketplace
 description: クラウド パートナー ポータルでのユーザーの管理
-services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
-manager: pbutlerm
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: b14d40e9b3a2aa1ca71335b60e97f15b3782698f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 441f466fcbeb05d06d565dbe1af237d01554d844
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823277"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280220"
 ---
 <a name="managing-users-on-cloud-partner-portal"></a>クラウド パートナー ポータルでのユーザーの管理
 ======================================

@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2019
 ms.openlocfilehash: 6cbbe63d7968816de78256f5a8408517bb8da278
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75973792"
 ---
 # <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>Azure VM に追加されたディスクのレプリケーションを有効にする

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 02/18/2020
 ms.author: mlottner
 ms.openlocfilehash: 70396cdcaf8b6e2ac66619290eea35a7b260cd9a
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461251"
 ---
 # <a name="tutorial-configure-security-agents"></a>チュートリアル:セキュリティ エージェントを構成する
@@ -31,7 +31,7 @@ ms.locfileid: "77461251"
 > * ツインのプロパティを編集してエージェントの動作を変更する
 > * 既定の構成を検出する
 
-## <a name="agents"></a>[エージェント]
+## <a name="agents"></a>エージェント
 
 Azure Security Center for IoT セキュリティ エージェントは、IoT デバイスからデータを収集し、検出された脆弱性を軽減するためにセキュリティ アクションを実行します。 セキュリティ エージェント構成は、カスタマイズ可能なモジュール ツイン プロパティのセットを使用して制御することができます。 一般に、これらのプロパティに対する第 2 更新は、めったに起こりません。  
 

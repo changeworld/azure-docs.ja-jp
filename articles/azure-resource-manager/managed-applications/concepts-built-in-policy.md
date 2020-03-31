@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: hich
 ms.openlocfilehash: ec0fe8f66ef2ad2458b4ffad0e848591793e5b05
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75649347"
 ---
 # <a name="deploy-associations-for-a-managed-application-using-azure-policy"></a>Azure Policy を使用して、 Azure マネージアプリケーションのアソシエーションをデプロイする
@@ -48,6 +48,6 @@ Azure カスタム リソース プロバイダーの開発に関する質問が
 - [概念:Azure カスタム プロバイダー リソースのオンボード](../custom-providers/concepts-resource-onboarding.md)
 - [チュートリアル:カスタム プロバイダーを使用したリソースのオンボード](../custom-providers/tutorial-resource-onboarding.md)
 - [チュートリアル:Azure でカスタム アクションとカスタム リソースを作成する](../custom-providers/tutorial-get-started-with-custom-providers.md)
-- [クイック スタート:カスタム リソース プロバイダーの作成とカスタム リソースのデプロイ](../custom-providers/create-custom-provider.md)
+- [クイック スタート: カスタム リソース プロバイダーの作成とカスタム リソースのデプロイ](../custom-providers/create-custom-provider.md)
 - [方法: カスタム アクションを Azure REST API に追加する](../custom-providers/custom-providers-action-endpoint-how-to.md)
 - [方法: カスタム リソースを Azure REST API に追加する](../custom-providers/custom-providers-resources-endpoint-how-to.md)

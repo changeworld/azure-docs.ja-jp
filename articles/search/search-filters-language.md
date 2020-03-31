@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 5dbf32610e54df4ff009d4cb0a0b080babb4ec73
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74112068"
 ---
 # <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>Azure Cognitive Search での言語によるフィルター処理の方法 
@@ -21,7 +21,7 @@ ms.locfileid: "74112068"
 
 要求のクエリ パラメーターは、検索操作の範囲指定だけでなく、提供する検索機能と互換性がある内容を含まないフィールドの結果をトリミングするためにも使用されています。
 
-| parameters | 目的 |
+| パラメーター | 目的 |
 |-----------|--------------|
 | **searchFields** | フル テキスト検索の対象を、指定したフィールドの一覧にのみ制限します。 |
 | **$select** | 応答をトリミングし、指定したフィールドのみを含めます。 既定では、すべての取得可能なフィールドが返されます。 **$select** パラメーターを使用すると、返すフィールドを選択できます。 |
@@ -60,7 +60,7 @@ parameters =
 > [!Note]
 > クエリに $filter 引数はありませんが、このユース ケースはフィルターの概念と密接に関係しているため、フィルター処理のシナリオとして紹介しています。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 + [Azure Cognitive Search のフィルター](search-filters.md)
 + [言語アナライザー](https://docs.microsoft.com/rest/api/searchservice/language-support)

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
 ms.openlocfilehash: 3c1a6cfa5227369bf1cde4af087019727c22c0c2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75462956"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>Reliable Services 通信 API の使用方法
@@ -128,7 +128,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 ```
 
-通信リスナーは、`ServiceContext` の `CodePackageActivationContext` から、割り当てられているエンドポイント リソースにアクセスできます。 その後、リスナーは開かれたときに、要求のリッスンを開始できます。
+通信リスナーは、`CodePackageActivationContext` の `ServiceContext` から、割り当てられているエンドポイント リソースにアクセスできます。 その後、リスナーは開かれたときに、要求のリッスンを開始できます。
 
 ```csharp
 var codePackageActivationContext = serviceContext.CodePackageActivationContext;
@@ -147,7 +147,7 @@ int port = codePackageActivationContext.getEndpoint("ServiceEndpoint").getPort()
 >
 
 ### <a name="service-address-registration"></a>サービスのアドレスの登録
-Service Fabric クラスターでは、 *ネーム サービス* と呼ばれるシステム サービスが実行されます。 ネーム サービスは、サービスの各インスタンスまたはレプリカがリッスンしているサービスとそのアドレスのレジストラーです。 `ICommunicationListener(C#) / CommunicationListener(Java)` の `OpenAsync(C#) / openAsync(Java)` メソッドが完了すると、戻り値がネーム サービスに登録されます。 ネーム サービスで公開されるこの戻り値は、値が任意である文字列です。 この文字列値は、クライアントがネーム サービスにサービスのアドレスを要求したときに表示されます。
+Service Fabric クラスターでは、 *ネーム サービス* と呼ばれるシステム サービスが実行されます。 ネーム サービスは、サービスの各インスタンスまたはレプリカがリッスンしているサービスとそのアドレスのレジストラーです。 `OpenAsync(C#) / openAsync(Java)` の `ICommunicationListener(C#) / CommunicationListener(Java)` メソッドが完了すると、戻り値がネーム サービスに登録されます。 ネーム サービスで公開されるこの戻り値は、値が任意である文字列です。 この文字列値は、クライアントがネーム サービスにサービスのアドレスを要求したときに表示されます。
 
 ```csharp
 public Task<string> OpenAsync(CancellationToken cancellationToken)

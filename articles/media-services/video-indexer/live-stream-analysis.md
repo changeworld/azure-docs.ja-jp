@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
 ms.openlocfilehash: 89d0254fc758834c437f347e6ecb7bcafc1fe467
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74185993"
 ---
 # <a name="live-stream-analysis-with-video-indexer"></a>Video Indexer を使用したライブ ストリーム分析
@@ -41,6 +41,6 @@ Azure Media Services Video Indexer は、ビデオおよびオーディオ フ�
 
 完全なコードと、結果をデプロイするためのステップバイステップ ガイドは、[Video Indexer を使用したライブ メディア分析に関する GitHub プロジェクト](https://aka.ms/livestreamanalysis)にあります。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Video Indexer の概要](video-indexer-overview.md)

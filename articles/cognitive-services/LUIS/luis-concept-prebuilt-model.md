@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
 ms.openlocfilehash: e0b5b95a7524b60a7c3367035a15a7158fa7908a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74280832"
 ---
 # <a name="prebuilt-models"></a>事前構築済みのモデル
@@ -26,9 +26,9 @@ ms.locfileid: "74280832"
 
 LUIS では、3 種類の事前構築済みモデルが提供されています。 各モデルは、いつでもアプリに追加できます。 
 
-|モデルの種類|内容|
+|モデルの種類|Includes|
 |--|--|
-|[ドメイン](luis-reference-prebuilt-domains.md)|意図、発話、エンティティ|
+|[[ドメイン]](luis-reference-prebuilt-domains.md)|意図、発話、エンティティ|
 |意図|意図、発話|
 |[エンティティ](luis-reference-prebuilt-entities.md)|エンティティのみ| 
 
@@ -61,6 +61,6 @@ LUIS には、日付、時刻、数字、測定値、通貨など、一般的な
 > [!NOTE]
 > **builtin.datetime** は非推奨です。 [**builtin.datetimeV2**](luis-reference-prebuilt-datetimev2.md) によって置き換えられます。datetimeV2 は日付と時間の範囲を認識し、あいまいな日付と時刻の認識が強化されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 アプリに[事前構築済みエンティティを追加する](luis-prebuilt-entities.md)方法を学習してください。
