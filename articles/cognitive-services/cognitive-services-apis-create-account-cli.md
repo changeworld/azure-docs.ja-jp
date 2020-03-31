@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: aahi
 ms.openlocfilehash: 72b00d78d19ed0e963b4dad01b82033c659e1efd
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78401781"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218665"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Azure コマンド ライン インターフェイス (CLI) を使用して Cognitive Services リソースを作成する
 
@@ -110,9 +110,9 @@ az group create \
 | サービス            | 種類                 |
 |--------------------|----------------------|
 | Speech Services    | `SpeechServices`     |
-| Speech Recognition | `SpeakerRecognition` |
+| 音声認識 | `SpeakerRecognition` |
 
-### <a name="language"></a>Language
+### <a name="language"></a>言語
 
 | サービス            | 種類                |
 |--------------------|---------------------|
@@ -198,7 +198,7 @@ Cognitive Services リソースをクリーンアップして削除したい場�
 az group delete --name cognitive-services-resource-group
 ```
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [Azure Cognitive Services に対する要求の認証](authentication.md)
 * [Azure Cognitive Services とは](Welcome.md)

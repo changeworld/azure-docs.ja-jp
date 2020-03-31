@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 12/03/2019
 ms.author: spelluru
 ms.openlocfilehash: fc5051667100a2ebaa01b7815f825fadd766b08f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75456974"
 ---
 # <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>Azure DevTest Labs 仮想マシンに、成果物を適用する場合に生じる問題のトラブルシューティング
@@ -79,7 +79,7 @@ $vm.Properties.canApplyArtifacts
 4. スクリプトに望ましくない動作があるかどうかを判断します。 その場合は、成果物の更新を要求します (パブリックリポジトリからのものである場合)。または、自分で修正してください (プライベートリポジトリからのものである場合)。
 
 > [!TIP]
-> [パブリックリポジトリ](https://github.com/Azure/azure-devtestlab) でホストされている成果物の問題を修正し、レビューと承認のために変更を送信することができます。 [README.md](https://github.com/Azure/azure-devtestlab/blob/master/Artifacts/README.md) ドキュメントの「**コントリビューション**」のセクションを参照してください。
+> [パブリックリポジトリ](https://github.com/Azure/azure-devtestlab) でホストされている成果物の問題を修正し、レビューと承認のために変更を送信することができます。 **README.md** ドキュメントの「[コントリビューション](https://github.com/Azure/azure-devtestlab/blob/master/Artifacts/README.md)」のセクションを参照してください。
 > 
 > 独自の成果物の作成の詳細については、[AUTHORING.md](https://github.com/Azure/azure-devtestlab/blob/master/Artifacts/AUTHORING.md) ドキュメントを参照してください。
 

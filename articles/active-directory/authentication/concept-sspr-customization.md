@@ -1,6 +1,6 @@
 ---
-title: セルフサービスによるパスワード リセットのカスタマイズ - Azure Active Directory
-description: Azure AD のセルフサービスによるパスワード リセットのカスタマイズ オプション
+title: セルフサービス パスワード リセットのカスタマイズ - Azure Active Directory
+description: Azure AD のセルフサービス パスワード リセットのカスタマイズ オプション
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,19 +12,19 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c6f7f59f7bcc93edafa3cbb47bd432b52bde985c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75979455"
 ---
-# <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>セルフ サービスによるパスワードのリセットのための Azure AD 機能のカスタマイズ
+# <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>セルフサービス パスワード リセットのための Azure AD 機能のカスタマイズ
 
-Azure Active directory (Azure AD) のセルフサービスによるパスワードのリセット (SSPR) をデプロイする IT プロフェッショナルは、ユーザーのニーズに合わせてエクスペリエンスをカスタマイズできます。
+Azure Active directory (Azure AD) のセルフサービス パスワード リセット (SSPR) をデプロイする IT プロフェッショナルは、ユーザーのニーズに合わせてエクスペリエンスをカスタマイズできます。
 
 ## <a name="customize-the-contact-your-administrator-link"></a>"管理者に問い合わせてください" リンクのカスタマイズ
 
-パスワード リセットのセルフサービス ユーザーは、パスワード リセット ポータルで [管理者に問い合わせてください] リンクを使用できます。 ユーザーがこのリンクを選択すると、次の 2 つの操作のいずれかが実行されます。
+セルフサービス パスワード リセット ユーザーは、パスワード リセット ポータルで [管理者に問い合わせてください] リンクを使用できます。 ユーザーがこのリンクを選択すると、次の 2 つの操作のいずれかが実行されます。
 
 * 既定の状態のままである場合:
    * メールが管理者に送信され、ユーザーのパスワードの変更についての支援が求められます。 後の「[電子メールのサンプル](#sample-email)」をご覧ください。
@@ -55,7 +55,7 @@ Azure Active directory (Azure AD) のセルフサービスによるパスワー�
 
 組織でパスワードのリセット要求を管理者に通知しないようにする場合は、以下の構成を有効にできます。
 
-* すべてのエンド ユーザーに対してセルフ サービスによるパスワードのリセットを有効にします。 このオプションは **[パスワード リセット]**  >  **[プロパティ]** の下にあります。 ユーザーに自分のパスワードをリセットさせたくない場合は、アクセスの対象を空のグループにすることができます。 *このオプションは推奨されません。*
+* すべてのエンド ユーザーに対してセルフサービス パスワード リセットを有効にします。 このオプションは **[パスワード リセット]**  >  **[プロパティ]** の下にあります。 ユーザーに自分のパスワードをリセットさせたくない場合は、アクセスの対象を空のグループにすることができます。 *このオプションは推奨されません。*
 * ヘルプデスクのリンクをカスタマイズして、ユーザーがヘルプを得るために使用できる Web URL または mailto: アドレスを指定します。 このオプションは **[パスワード リセット]**  >  **[カスタマイズ]**  >  **[カスタム ヘルプデスクの電子メールまたは URL]** の下にあります。
 
 ## <a name="customize-the-ad-fs-sign-in-page-for-sspr"></a>SSPR の AD FS サインイン ページをカスタマイズする
@@ -92,7 +92,7 @@ Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwor
 
 * [SSPR のロールアウトを正常に完了する方法](howto-sspr-deployment.md)
 * [パスワードのリセットまたは変更](../user-help/active-directory-passwords-update-your-own-password.md)
-* [セルフサービスのパスワード リセットのための登録](../user-help/active-directory-passwords-reset-register.md)
+* [セルフサービス パスワード リセットのための登録](../user-help/active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](concept-sspr-licensing.md)
 * [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ](howto-sspr-authenticationdata.md)
 * [ユーザーが使用できる認証方法](concept-sspr-howitworks.md#authentication-methods)

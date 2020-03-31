@@ -8,11 +8,11 @@ ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 4bd9c64e1b9219f6752172d9dc518af71ad67e70
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598587"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232291"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Windows で Azure ファイル共有を使用する
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、Windows と Windows Server でシームレスに使うことができます。 この記事では、Windows と Windows Server で Azure ファイル共有を使う際の注意点について取り上げます。
@@ -45,7 +45,7 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 
 * **ストレージ アカウント キー**: Azure ファイル共有をマウントするには、プライマリ (またはセカンダリ) ストレージ キーが必要です。 現時点では、SAS キーは、マウントではサポートされていません。
 
-* **ポート 445 が開いていることを確認する**: SMB プロトコルでは、TCP ポート 445 が開いている必要があります。ポート 445 がブロックされている場合は、接続が失敗します。 ポート 445 がファイアウォールでブロックされているかどうかは、`Test-NetConnection` コマンドレットで確認できます。 [ポート 445 のブロックを回避するさまざまな方法についてはこちらで](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)確認できます。
+* **ポート 445 が開いていること**: SMB プロトコルでは、TCP ポート 445 が開放されている必要があります。ポート 445 がブロックされていると接続に失敗します。 ポート 445 がファイアウォールでブロックされているかどうかは、`Test-NetConnection` コマンドレットで確認できます。 [ポート 445 のブロックを回避するさまざまな方法についてはこちらで](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)確認できます。
 
     次の PowerShell コードは、Azure PowerShell モジュールがインストール済みであることを想定しています。詳細については、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)に関するページを参照してください。 `<your-storage-account-name>` と `<your-resource-group-name>` は、実際のストレージ アカウントの該当する名前に置き換えてください。
 
@@ -168,7 +168,7 @@ New-PSDrive -Name <desired-drive-letter> -PSProvider FileSystem -Root "\\$($file
 ```
 
 > [!Note]  
-> `New-PSDrive` コマンドレットの `-Persist` オプションを使ってできることは、資格情報が保存されている場合に、ファイル共有を起動時に再マウントすることだけです。 資格情報を保存するには、[前述の説明](#persisting-azure-file-share-credentials-in-windows)に従って cmdkey を使います。 
+> `-Persist` コマンドレットの `New-PSDrive` オプションを使ってできることは、資格情報が保存されている場合に、ファイル共有を起動時に再マウントすることだけです。 資格情報を保存するには、[前述の説明](#persisting-azure-file-share-credentials-in-windows)に従って cmdkey を使います。 
 
 次のPowerShell コマンドレットを使えば、必要に応じて Azure ファイル共有のマウントを解除できます。
 
@@ -234,13 +234,13 @@ Windows で Azure ファイル共有をマウントするには、ポート 445 
 | Windows Server 2019                       | 無効             | Windows の機能を使って削除 |
 | Windows Server バージョン 1709 以降            | 無効             | Windows の機能を使って削除 |
 | Windows 10 バージョン 1709 以降                | 無効             | Windows の機能を使って削除 |
-| Windows Server 2016                       | Enabled              | Windows の機能を使って削除 |
-| Windows 10 バージョン 1507、1607、1703 | Enabled              | Windows の機能を使って削除 |
-| Windows Server 2012 R2                    | Enabled              | Windows の機能を使って削除 | 
-| Windows 8.1                               | Enabled              | Windows の機能を使って削除 | 
-| Windows Server 2012                       | Enabled              | レジストリで無効化       | 
-| Windows Server 2008 R2                    | Enabled              | レジストリで無効化       |
-| Windows 7                                 | Enabled              | レジストリで無効化       | 
+| Windows Server 2016                       | 有効              | Windows の機能を使って削除 |
+| Windows 10 バージョン 1507、1607、1703 | 有効              | Windows の機能を使って削除 |
+| Windows Server 2012 R2                    | 有効              | Windows の機能を使って削除 | 
+| Windows 8.1                               | 有効              | Windows の機能を使って削除 | 
+| Windows Server 2012                       | 有効              | レジストリで無効化       | 
+| Windows Server 2008 R2                    | 有効              | レジストリで無効化       |
+| Windows 7                                 | 有効              | レジストリで無効化       | 
 
 ### <a name="auditing-smb-1-usage"></a>SMB 1 の使用状況の監査
 > Windows Server 2019、Windows Server 半期チャネル (バージョン 1709 および 1803)、Windows Server 2016、Windows 10 (バージョン 1507、1607、1703、1709、1803)、Windows Server 2012 R2、Windows 8.1 が対象となります
@@ -284,7 +284,7 @@ Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol
 ### <a name="disabling-smb-1-on-legacy-versions-of-windowswindows-server"></a>レガシ バージョンの Windows/Windows Server で SMB 1 を無効にする
 > Windows Server 2012、Windows Server 2008 R2、Windows 7 が対象となります。
 
-レガシ バージョンの Windows/Windows Server では SMB 1 を完全に削除することはできませんが、レジストリで無効にすることができます。 SMB 1 を無効にするには、`DWORD` 型で値 `0` の新しいレジストリ キー `SMB1` を `HKEY_LOCAL_MACHINE > SYSTEM > CurrentControlSet > Services > LanmanServer > Parameters` に作成します。
+レガシ バージョンの Windows/Windows Server では SMB 1 を完全に削除することはできませんが、レジストリで無効にすることができます。 SMB 1 を無効にするには、`SMB1` 型で値 `DWORD` の新しいレジストリ キー `0` を `HKEY_LOCAL_MACHINE > SYSTEM > CurrentControlSet > Services > LanmanServer > Parameters` に作成します。
 
 次の PowerShell コマンドレットを使って簡単に実行することもできます。
 

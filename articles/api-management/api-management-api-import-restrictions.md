@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
 ms.openlocfilehash: 61d43addfdf9008cb7aa8a073dcf3bb702cb55f1
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76513373"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API のインポートに関する制限事項と既知の問題
@@ -27,11 +27,11 @@ ms.locfileid: "76513373"
 
 API をインポートするときに、制限や ID の問題が発生し、それを修正しないと正常にインポートを実行することができない場合があります。 この記事ではこうした制限について、API のインポート形式別に説明します。 また、OpenAPI のエクスポートの仕組みについても説明します。
 
-## <a name="open-api"> </a>OpenAPI/Swagger のインポートの制限事項
+## <a name="openapiswagger-import-limitations"></a><a name="open-api"> </a>OpenAPI/Swagger のインポートの制限事項
 
 Open API ドキュメントのインポートでエラーが発生した場合は、事前に検証を行っていることを確認します。 これは、Azure portal でデザイナーを使用する ([デザイン] - [フロント エンド] - [OpenAPI 仕様エディター]) か、<a href="https://editor.swagger.io">Swagger Editor</a> などのサードパーティ ツールを使用して実行できます。
 
-### <a name="open-api-general"> </a>全般
+### <a name="general"></a><a name="open-api-general"> </a>全般
 
 -   パスとクエリの両方の間で必要なパラメーターは、一意の名前が必要です。 (OpenAPI では、パラメーター名は、パス、クエリ、ヘッダーなどの場所でのみ一意である必要があります。 ただし、API Management では、パスのパラメーターとクエリのパラメーターの両方によって操作を区別できます (これは OpenAPI ではサポートされていません)。 このため、URL テンプレート　全体の中で、パラメーターの名前を一意にする必要があります。)
 -   `\$ref` ポインターは、外部ファイルを参照できません。
@@ -44,11 +44,11 @@ Open API ドキュメントのインポートでエラーが発生した場合�
 -   定義された URL パラメーターは URL テンプレートに含まれている必要があります。
 -   API によって返される MIME 型を説明する `Produces` キーワードはサポートされていません。 
 
-### <a name="open-api-v2"> </a>OpenAPI バージョン 2
+### <a name="openapi-version-2"></a><a name="open-api-v2"> </a>OpenAPI バージョン 2
 
 -   JSON 形式のみがサポートされています。
 
-### <a name="open-api-v3"> </a>OpenAPI バージョン 3
+### <a name="openapi-version-3"></a><a name="open-api-v3"> </a>OpenAPI バージョン 3
 
 -   多数の `servers` が指定された場合、API Management では、最初の HTTPS URL の選択が試行されます。 HTTPS URL がない場合は、最初の HTTP URL が使用されます。 HTTP URL がない場合、サーバーの URL は空になります。
 -   `Examples` はサポートされていませんが、`example` はサポートされています。
@@ -91,7 +91,7 @@ operationId の正規化規則
 - 残りの 4 文字は、必要に応じて `-1, -2, ..., -999` の形式で、重複除去サフィックスに使用します。
 
 
-## <a name="wsdl"> </a>WSDL
+## <a name="wsdl"></a><a name="wsdl"> </a>WSDL
 
 WSDL ファイルは、SOAP パススルー API と SOAP-to-REST API の作成に使用されます。
 
@@ -119,6 +119,6 @@ WSDL ファイルは、SOAP パススルー API と SOAP-to-REST API の作成�
     </complexType>
 ```
 
-## <a name="wadl"> </a>WADL
+## <a name="wadl"></a><a name="wadl"> </a>WADL
 
 現時点では、WADL のインポートに関する既知の問題はありません。
