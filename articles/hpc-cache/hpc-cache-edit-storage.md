@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 1/08/2020
 ms.author: rohogue
 ms.openlocfilehash: 5635bfc6ea5faea41b125037c76c0b8635e0f528
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75867001"
 ---
 # <a name="edit-storage-targets"></a>ストレージ ターゲットを編集する

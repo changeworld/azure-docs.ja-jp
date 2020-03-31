@@ -9,12 +9,12 @@ ms.date: 01/21/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 2c3b329aa767fbe9795c90ca236008210576fe12
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 77ad8579f31ce900a67e2ba3ddc53a5b034b6d42
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514733"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79454671"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 
@@ -197,7 +197,7 @@ VNet 内の Azure Storage に対する[サービス エンドポイント](/azur
     ```
 
 > [!IMPORTANT]
-> **拒否**するように[既定のルールを設定](#change-the-default-network-access-rule)します。そうしないと、ネットワーク ルールは効力を発揮しません。
+> [拒否](#change-the-default-network-access-rule)するように**既定のルールを設定**します。そうしないと、ネットワーク ルールは効力を発揮しません。
 
 #### <a name="cliv2"></a>CLIv2
 
@@ -235,7 +235,7 @@ VNet 内の Azure Storage に対する[サービス エンドポイント](/azur
     ```
 
 > [!IMPORTANT]
-> **拒否**するように[既定のルールを設定](#change-the-default-network-access-rule)します。そうしないと、ネットワーク ルールは効力を発揮しません。
+> [拒否](#change-the-default-network-access-rule)するように**既定のルールを設定**します。そうしないと、ネットワーク ルールは効力を発揮しません。
 
 ## <a name="grant-access-from-an-internet-ip-range"></a>インターネットの IP 範囲からのアクセスを許可する
 
@@ -317,7 +317,7 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
     ```
 
 > [!IMPORTANT]
-> **拒否**するように[既定のルールを設定](#change-the-default-network-access-rule)します。そうしないと、ネットワーク ルールは効力を発揮しません。
+> [拒否](#change-the-default-network-access-rule)するように**既定のルールを設定**します。そうしないと、ネットワーク ルールは効力を発揮しません。
 
 #### <a name="cliv2"></a>CLIv2
 
@@ -354,7 +354,7 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
     ```
 
 > [!IMPORTANT]
-> **拒否**するように[既定のルールを設定](#change-the-default-network-access-rule)します。そうしないと、ネットワーク ルールは効力を発揮しません。
+> [拒否](#change-the-default-network-access-rule)するように**既定のルールを設定**します。そうしないと、ネットワーク ルールは効力を発揮しません。
 
 ## <a name="exceptions"></a>例外
 
@@ -372,28 +372,30 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 
 | サービス                  | リソース プロバイダー名     | 許可される操作                 |
 |:------------------------ |:-------------------------- |:---------------------------------- |
-| Azure Backup             | Microsoft.RecoveryServices | IAAS 仮想マシンの管理対象外のディスクのバックアップとリストアを実行します。 (マネージド ディスクの場合は必須ではありません)。 [詳細については、こちらを参照してください](/azure/backup/backup-introduction-to-azure-backup)。 |
-| Azure Data Box           | Microsoft.DataBox          | Data Box を使用して Azure にデータをインポートできるようにします。 [詳細については、こちらを参照してください](/azure/databox/data-box-overview)。 |
-| Azure DevTest Labs       | Microsoft.DevTestLab       | カスタム イメージの作成とアーティファクトのインストール [詳細については、こちらを参照してください](/azure/devtest-lab/devtest-lab-overview)。 |
+| Azure Backup             | Microsoft.RecoveryServices | IAAS 仮想マシンの管理対象外のディスクのバックアップとリストアを実行します。 (マネージド ディスクの場合は必須ではありません)。 詳細については、[こちら](/azure/backup/backup-introduction-to-azure-backup)をご覧ください。 |
+| Azure Data Box           | Microsoft.DataBox          | Data Box を使用して Azure にデータをインポートできるようにします。 詳細については、[こちら](/azure/databox/data-box-overview)をご覧ください。 |
+| Azure DevTest Labs       | Microsoft.DevTestLab       | カスタム イメージの作成とアーティファクトのインストール 詳細については、[こちら](/azure/devtest-lab/devtest-lab-overview)をご覧ください。 |
 | Azure Event Grid         | Microsoft.EventGrid        | Blob Storage のイベント発行を有効にし、ストレージ キューへの発行を Event Grid に許可します。 [Blob Storage イベント](/azure/event-grid/event-sources)と[キューへの発行](/azure/event-grid/event-handlers)について確認してください。 |
 | Azure Event Hubs         | Microsoft.EventHub         | Event Hubs Capture を使用したアーカイブ データのキャプチャ [詳細については、こちらを参照してください](/azure/event-hubs/event-hubs-capture-overview)。 |
 | Azure File Sync          | Microsoft.StorageSync      | オンプレミスのファイル サーバーを Azure ファイル共有のキャッシュに変換できます。 マルチサイト同期、迅速なディザスターリカバリー、クラウド側バックアップが可能となります。 [詳細情報](../files/storage-sync-files-planning.md) |
-| Azure HDInsight          | Microsoft.HDInsight        | 新しい HDInsight クラスターのための既定のファイル システムの初期コンテンツをプロビジョニングします。 [詳細については、こちらを参照してください](/azure/hdinsight/hdinsight-hadoop-use-blob-storage)。 |
-| Azure Import Export      | Microsoft.ImportExport     | Import/Export サービスを使用して、Azure のデータのインポートと Azure からのデータのエクスポートを行えるようにします。 [詳細については、こちらを参照してください](/azure/storage/common/storage-import-export-service)。  |
-| Azure Monitor            | Microsoft.Insights         | リソース診断ログ、Azure Active Directory サインインと監査ログ、Microsoft Intune ログなど、セキュリティで保護されたストレージ アカウントへの監視データの書き込みを許可します。 [詳細については、こちらを参照してください](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。 |
-| Azure のネットワーク         | Microsoft.Network          | ネットワーク トラフィック ログの保存および分析 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)。 |
-| Azure Site Recovery      | Microsoft.SiteRecovery     | ファイアウォールが有効なキャッシュ、ソース、またはターゲット ストレージ アカウントを使用している場合、Azure IaaS 仮想マシンのディザスター リカバリーのレプリケーションを有効にします。  [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。 |
+| Azure HDInsight          | Microsoft.HDInsight        | 新しい HDInsight クラスターのための既定のファイル システムの初期コンテンツをプロビジョニングします。 詳細については、[こちら](/azure/hdinsight/hdinsight-hadoop-use-blob-storage)をご覧ください。 |
+| Azure Import Export      | Microsoft.ImportExport     | Import/Export サービスを使用して、Azure のデータのインポートと Azure からのデータのエクスポートを行えるようにします。 詳細については、[こちら](/azure/storage/common/storage-import-export-service)をご覧ください。  |
+| Azure Monitor            | Microsoft.Insights         | リソース診断ログ、Azure Active Directory サインインと監査ログ、Microsoft Intune ログなど、セキュリティで保護されたストレージ アカウントへの監視データの書き込みを許可します。 詳細については、[こちら](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)をご覧ください。 |
+| Azure のネットワーク         | Microsoft.Network          | ネットワーク トラフィック ログの保存および分析 詳細については、[こちら](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)をご覧ください。 |
+| Azure Site Recovery      | Microsoft.SiteRecovery     | ファイアウォールが有効なキャッシュ、ソース、またはターゲット ストレージ アカウントを使用している場合、Azure IaaS 仮想マシンのディザスター リカバリーのレプリケーションを有効にします。  詳細については、[こちら](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)をご覧ください。 |
 
-また、 **[信頼された Microsoft サービスを許可]** の設定を有効にすると、以下に示すサービスの特定のインスタンスからストレージ アカウントにアクセスできます (そのリソース インスタンスの[システム割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に明示的に [RBAC ロールを割り当てている](storage-auth-aad.md#assign-rbac-roles-for-access-rights)場合)。 この場合、インスタンスのアクセス範囲は、マネージド ID に割り当てられた RBAC ロールに対応します。
+また、 **[信頼された Microsoft サービスを許可]** の設定を有効にすると、以下に示すサービスの特定のインスタンスからストレージ アカウントにアクセスできます (そのリソース インスタンスの[システム割り当てマネージド ID](storage-auth-aad.md#assign-rbac-roles-for-access-rights) に明示的に [RBAC ロールを割り当てている](../../active-directory/managed-identities-azure-resources/overview.md)場合)。 この場合、インスタンスのアクセス範囲は、マネージド ID に割り当てられた RBAC ロールに対応します。
 
-| サービス                        | リソース プロバイダー名          | 目的            |
-| :----------------------------- | :------------------------------------- | :---------- |
+| サービス                        | リソース プロバイダー名                 | 目的            |
+| :----------------------------- | :------------------------------------- | :----------------- |
+| Azure Cognitive Search         | Microsoft.Search/searchServices        | インデックス作成、処理、およびクエリのために、Cognitive Search サービスがストレージ アカウントにアクセスできるようになります。 |
 | Azure Container Registry タスク | Microsoft.ContainerRegistry/registries | ACR タスクは、コンテナー イメージを作成するときにストレージアカウントにアクセスできます。 |
 | Azure Data Factory             | Microsoft.DataFactory/factories        | ADF ランタイムを使用してストレージ アカウントへのアクセスを許可します。 |
-| Azure Logic Apps               | Microsoft.Logic/workflows              | ロジック アプリがストレージ アカウントにアクセスできるようにします。 [詳細については、こちらを参照してください](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)。 |
-| Azure Machine Learning | Microsoft.MachineLearningServices      | 承認された Azure Machine Learning ワークスペースは、BLOB ストレージに実験の出力、モデル、およびログを書き込みます。 [詳細については、こちらを参照してください](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace)。 |
-| Azure SQL Data Warehouse       | Microsoft.Sql                          | PolyBase を使用した特定の SQL データベース インスタンスからのデータのインポートとエクスポートを許可します。 [詳細については、こちらを参照してください](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。 |
-| Azure Stream Analytics         | Microsoft.StreamAnalytics             | ストリーミング ジョブからのデータを Blob Storage に書き込むことができます。 現在、この機能はプレビュー段階にあります。 [詳細については、こちらを参照してください](/azure/stream-analytics/blob-output-managed-identity)。 |
+| Azure Data Share               | Microsoft.DataShare/accounts           | Data Share を使用してストレージ アカウントにアクセスできるようになります。 |
+| Azure Logic Apps               | Microsoft.Logic/workflows              | ロジック アプリがストレージ アカウントにアクセスできるようにします。 詳細については、[こちら](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity)をご覧ください。 |
+| Azure Machine Learning サービス | Microsoft.MachineLearningServices      | 承認された Azure Machine Learning ワークスペースでは、BLOB ストレージに実験の出力、モデル、およびログを書き込み、データを読み取ります。 詳細については、[こちら](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace)をご覧ください。 | 
+| Azure SQL Data Warehouse       | Microsoft.Sql                          | PolyBase を使用した特定の SQL データベース インスタンスからのデータのインポートとエクスポートを許可します。 詳細については、[こちら](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)をご覧ください。 |
+| Azure Stream Analytics         | Microsoft.StreamAnalytics             | ストリーミング ジョブからのデータを Blob Storage に書き込むことができます。 現在、この機能はプレビュー段階にあります。 詳細については、[こちら](/azure/stream-analytics/blob-output-managed-identity)をご覧ください。 |
 | Azure Synapse Analytics        | Microsoft.Synapse ワークスペース          | Synapse Analytics から Azure Storage のデータにアクセスできるようにします。 |
 
 
@@ -440,7 +442,7 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
     ```
 
 > [!IMPORTANT]
-> **拒否**するように[既定のルールを設定](#change-the-default-network-access-rule)していることを確認します。そうしないと、例外の削除は効力を発揮しません。
+> [拒否](#change-the-default-network-access-rule)するように**既定のルールを設定**していることを確認します。そうしないと、例外の削除は効力を発揮しません。
 
 #### <a name="cliv2"></a>CLIv2
 
@@ -465,7 +467,7 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
     ```
 
 > [!IMPORTANT]
-> **拒否**するように[既定のルールを設定](#change-the-default-network-access-rule)していることを確認します。そうしないと、例外の削除は効力を発揮しません。
+> [拒否](#change-the-default-network-access-rule)するように**既定のルールを設定**していることを確認します。そうしないと、例外の削除は効力を発揮しません。
 
 ## <a name="next-steps"></a>次のステップ
 

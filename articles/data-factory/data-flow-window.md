@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
 ms.openlocfilehash: fa34def67d91332a00bf0ee92b365957a47f9616
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74931480"
 ---
 # <a name="azure-data-factory-window-transformation"></a>Azure Data Factory のウィンドウ変換
@@ -47,6 +47,6 @@ Over 句の別の部分では、```Order By``` を設定します。 これに�
 
 式ビルダーを通じて ADF Data Flow 記述言語で使用できる集計関数と分析関数の全一覧については、 https://aka.ms/dataflowexpressions をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 単純なグループ別集計が必要な場合は、[集計変換](data-flow-aggregate.md)を使用してください。

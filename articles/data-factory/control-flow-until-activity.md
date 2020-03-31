@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: b4786b612dedb065239f57e0286bafb688180dff
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75440371"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Azure Data Factory の Until アクティビティ
@@ -54,7 +54,7 @@ Until アクティビティは、プログラミング言語における do-unti
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
 name | `Until` アクティビティの名前。 | String | はい
-型 | **Until** に設定する必要があります。 | String | はい
+type | **Until** に設定する必要があります。 | String | はい
 expression | true または false に評価される式であることが必要です | 式。  | はい
 timeout | ここに指定した時間が経過すると、do-until ループがタイムアウトします。 | 文字列 をオンにします。 `d.hh:mm:ss` または `hh:mm:ss`。 既定値は 7 日間です。 最大値は 90 日間です。 | いいえ
 Activities | 式が `true` に評価されるまで実行される一連のアクティビティです。 | アクティビティの配列。 |  はい
@@ -65,7 +65,7 @@ Activities | 式が `true` に評価されるまで実行される一連のア�
 > このセクションでは、パイプラインを実行するための JSON の定義とサンプル PowerShell コマンドを紹介しています。 Azure PowerShell と JSON 定義を使用して Data Factory パイプラインを作成するための詳細な手順が記載されているチュートリアルについては、[Azure PowerShell を使用したデータ ファクトリの作成に関するチュートリアル](quickstart-create-data-factory-powershell.md)を参照してください。
 
 ### <a name="pipeline-with-until-activity"></a>Until アクティビティのあるパイプライン
-この例では、パイプラインに 2 つのアクティビティ **Until** および **Wait** が含まれています。 Web アクティビティをループ実行する前に、指定した待ち時間が Wait アクティビティによって確保されます。 Data Factory における式と関数については、[式言語と関数](control-flow-expression-language-functions.md)に関するページを参照してください。 
+この例では、パイプラインに **Until** および **Wait** という 2 つのアクティビティが含まれています。 Web アクティビティをループ実行する前に、指定した待ち時間が Wait アクティビティによって確保されます。 Data Factory における式と関数については、[式言語と関数](control-flow-expression-language-functions.md)に関するページを参照してください。 
 
 ```json
 {

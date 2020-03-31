@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
 ms.openlocfilehash: f57b274715eb1c8a4d517f5655c09c366574d412
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75445223"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API に格納されているデータを管理するために MongoDB 拡張コマンドを使用する 
@@ -30,7 +30,7 @@ Azure Cosmos DB の MongoDB 用 API を使用することで、MongoDB アプリ
 * [コレクションの更新](#update-collection)
 * [コレクションの取得](#get-collection)
 
-## <a id="create-database"></a>データベースの作成
+## <a name="create-database"></a><a id="create-database"></a>データベースの作成
 
 データベースの作成拡張コマンドは、新しい MongoDB データベースを作成します。 データベース名は、コマンドの実行対象のデータベース コンテキストから使用されます。 CreateDatabase コマンドの形式は次のとおりです。
 
@@ -72,7 +72,7 @@ use test
 db.runCommand({customAction: "CreateDatabase", offerThroughput: 1000 });
 ```
 
-## <a id="update-database"></a>データベースの更新
+## <a name="update-database"></a><a id="update-database"></a>データベースの更新
 
 データベースの更新拡張コマンドは、指定したデータベースに関連付けられているプロパティを更新します。 現時点では、更新できるのは "offerThroughput" プロパティのみです。
 
@@ -105,7 +105,7 @@ use test
 db.runCommand({customAction: "UpdateDatabase", offerThroughput: 1200 });
 ```
 
-## <a id="get-database"></a>データベースの取得
+## <a name="get-database"></a><a id="get-database"></a>データベースの取得
 
 データベースの取得拡張コマンドは、データベース オブジェクトを返します。 データベース名は、コマンドの実行対象のデータベース コンテキストから使用されます。
 
@@ -145,7 +145,7 @@ use test
 db.runCommand({customAction: "GetDatabase"});
 ```
 
-## <a id="create-collection"></a>コレクションの作成
+## <a name="create-collection"></a><a id="create-collection"></a>コレクションの作成
 
 コレクションの作成拡張コマンドは、新しい MongoDB コレクションを作成します。 データベース名は、コマンドの実行対象のデータベース コンテキストから使用されます。 CreateCollection コマンドの形式は次のとおりです。
 
@@ -191,7 +191,7 @@ use test
 db.runCommand({customAction: "CreateCollection", collection: "testCollection", offerThroughput: 1000, shardKey: "a.b" });
 ```
 
-## <a id="update-collection"></a>コレクションの更新
+## <a name="update-collection"></a><a id="update-collection"></a>コレクションの更新
 
 コレクションの更新拡張コマンドは、指定したコレクションに関連付けられているプロパティを更新します。
 
@@ -226,7 +226,7 @@ use test
 db.runCommand({customAction: "UpdateCollection", collection: "testCollection", offerThroughput: 1200 });
 ```
 
-## <a id="get-collection"></a>コレクションの取得
+## <a name="get-collection"></a><a id="get-collection"></a>コレクションの取得
 
 コレクションの取得カスタム コマンドは、コレクション オブジェクトを返します。
 
@@ -271,7 +271,7 @@ use test
 db.runCommand({customAction: "GetCollection", collection: "testCollection"});
 ```
 
-## <a id="default-output"></a>カスタム コマンドの既定の出力
+## <a name="default-output-of-a-custom-command"></a><a id="default-output"></a>カスタム コマンドの既定の出力
 
 指定しない場合、カスタムの応答には次のフィールドを持つドキュメントが含まれます。
 

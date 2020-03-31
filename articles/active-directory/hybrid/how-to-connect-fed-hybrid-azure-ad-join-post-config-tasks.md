@@ -16,12 +16,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70e3267792f27a170efa26cc4267d1b25045a099
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: ffb8243041bb93ba8be6a65bb83df6f84affaee3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231242"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80049656"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加の構成後のタスク
 
@@ -43,9 +43,9 @@ Windows 10 および Windows Server 2016 を搭載するすべてのドメイン
 ## <a name="2-configure-network-with-device-registration-endpoints"></a>2.デバイス登録エンドポイントとのネットワークを構成する
 Azure AD への登録のため、組織ネットワーク内のコンピューターから次の URL にアクセスできることを確認します。
 
-* https://enterpriseregistration.windows.net
-* https://login.microsoftonline.com
-* https://device.login.microsoftonline.com 
+* `https://enterpriseregistration.windows.net`
+* `https://login.microsoftonline.com`
+* `https://device.login.microsoftonline.com` 
 
 ## <a name="3-implement-wpad-for-windows-10-devices"></a>3.Windows 10 デバイスに WPAD を実装する
 送信プロキシ経由でインターネットにアクセスする組織の場合は、Windows 10 コンピューターを Azure AD に登録できるように、Web プロキシ自動発見 (WPAD) を実装します。
@@ -76,9 +76,9 @@ Azure AD への登録のため、組織ネットワーク内のコンピュー�
 
 ## <a name="8-add-azure-ad-endpoint-to-windows-down-level-devices"></a>8.ダウンレベルの Windows デバイスに Azure AD エンドポイントを追加する
 
-デバイスの認証時に証明書の指定を求めるメッセージが表示されないように、ダウンレベルの Windows デバイス上のローカル イントラネット ゾーンに、Azure AD デバイス認証エンドポイントを追加します。 https://device.login.microsoftonline.com 
+デバイスの認証時に証明書の指定を求めるメッセージが表示されないように、ダウンレベルの Windows デバイス上のローカル イントラネット ゾーンに、Azure AD デバイス認証エンドポイントを追加します。`https://device.login.microsoftonline.com` 
 
-[シームレス SSO](how-to-connect-sso.md) を使っている場合は、そのゾーンで [スクリプトを介したステータス バーの更新を許可する] も有効にして、次のエンドポイントを追加します。 https://autologon.microsoftazuread-sso.com 
+[シームレス SSO](how-to-connect-sso.md) を使っている場合は、そのゾーンで [スクリプトを介したステータス バーの更新を許可する] も有効にして、次のエンドポイントを追加します。`https://autologon.microsoftazuread-sso.com` 
 
 ## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9.ダウンレベルの Windows デバイスに Microsoft Workplace Join をインストールする
 
@@ -96,5 +96,5 @@ Azure AD への登録のため、組織ネットワーク内のコンピュー�
 >[!NOTE]
 >2012R2 の場合、ポリシーの設定は **[コンピューターの構成] > [ポリシー] > [管理用テンプレート] > [Windows コンポーネント] > [社内参加] > [Automatically workplace join client computers]\(クライアント コンピューターを自動的に社内参加させる\)** にあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [デバイス ライトバックの構成](how-to-connect-device-writeback.md)

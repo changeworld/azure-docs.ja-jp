@@ -11,10 +11,10 @@ ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: e73eae4d66f4ff94a48dfa27e258f8ba8ef87633
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79126761"
 ---
 # <a name="localization"></a>ローカリゼーション
@@ -39,9 +39,9 @@ ms.locfileid: "79126761"
 
 **Localization** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| Enabled | いいえ | 指定できる値: `true` または `false`。 |
+| 有効 | いいえ | 指定できる値: `true` または `false`。 |
 
 **Localization** 要素には、次の XML 要素が含まれています。
 
@@ -54,7 +54,7 @@ ms.locfileid: "79126761"
 
 **SupportedLanguages** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | DefaultLanguage | はい | ローカライズされたリソースの既定値として使用される言語。 |
 | MergeBehavior | いいえ | 同じ識別子を持つ親ポリシーに存在するすべての ClaimType と一緒にマージされる、値の列挙値。 基本ポリシーで指定された要求を上書きする場合は、この属性を使用します。 指定できる値: `Append`、`Prepend`、または `ReplaceAll`。 `Append` 値は、存在するデータのコレクションを、親ポリシーで指定したコレクションの末尾に追加する必要があることを指定します。 `Prepend` 値は、存在するデータのコレクションを、親ポリシーで指定したコレクションの前に追加する必要があることを指定します。 `ReplaceAll` 値は、親ポリシーで定義されているデータのコレクションを、現在のポリシーで定義されているデータを代わりに使用して無視する必要があることを指定します。 |
@@ -71,7 +71,7 @@ ms.locfileid: "79126761"
 
 **LocalizedResources** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Id | はい | ローカライズされたリソースを一意に識別するために使用される識別子。 |
 
@@ -94,7 +94,7 @@ ms.locfileid: "79126761"
 
 **LocalizedCollection** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | ElementType | はい | ポリシー ファイル内の ClaimType 要素またはユーザー インターフェイス要素を参照します。 |
 | ElementId | はい | **ElementType** が ClaimType に設定されている場合に使用される、ClaimsSchema セクションで定義済みの要求の種類への参照を含む文字列。 |
@@ -102,19 +102,19 @@ ms.locfileid: "79126761"
 
 **LocalizedCollection** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | Description |
+| 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| Item | 0:n | ユーザーが要求についてユーザー インターフェイスで選択可能なオプション (ドロップダウン リストの値など) を定義します。 |
+| アイテム | 0:n | ユーザーが要求についてユーザー インターフェイスで選択可能なオプション (ドロップダウン リストの値など) を定義します。 |
 
 **Item** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Text | はい | このオプションのユーザー インターフェイスでユーザーに表示する必要がある、ユーザーフレンドリーな表示文字列。 |
-| Value | はい | このオプションの選択に関連付けられている要求の文字列値。 |
-| SelectByDefault | いいえ | このオプションが既定で UI で選択するかどうかを示します。 指定できる値True または False。 |
+| 値 | はい | このオプションの選択に関連付けられている要求の文字列値。 |
+| SelectByDefault | いいえ | このオプションが既定で UI で選択するかどうかを示します。 使用可能な値: True または False。 |
 
-次の例は、**LocalizedCollections** 要素の使用を示しています。 これには、2 つの**LocalizedCollection** 要素が含まれています。1 つは英語用、もう 1 つはスペイン語用です。 両方とも、英語とスペイン語の項目の一覧を使用して、要求 `Gender` の **Restriction** コレクションを設定します。
+次の例は、**LocalizedCollections** 要素の使用を示しています。 これには、2 つの**LocalizedCollection** 要素が含まれています。1 つは英語用、もう 1 つはスペイン語用です。 両方とも、英語とスペイン語の項目の一覧を使用して、要求 **の**Restriction`Gender` コレクションを設定します。
 
 ```XML
 <LocalizedResources Id="api.selfasserted.en">
@@ -144,11 +144,11 @@ ms.locfileid: "79126761"
 
 **LocalizedString** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | ElementType | はい | ポリシー内の要求の種類要素またはユーザー インターフェイス要素への参照。 指定できる値: `ClaimType`、`UxElement`、`ErrorMessage`、`Predicate`、または `GetLocalizedStringsTransformationClaimType`。 `ClaimType` 値は、StringId で指定された、要求属性のいずれかをローカライズするために使用されます。 `UxElement` 値は、StringId で指定されたユーザー インターフェイス要素のいずれかをローカライズするために使用されます。 `ErrorMessage` 値は、StringId で指定されたシステム エラー メッセージのいずれかをローカライズするために使用されます。 `Predicate` 値は、StringId で指定された、[Predicate](predicates.md) エラー メッセージのいずれかをローカライズするために使用されます。 `InputValidation` 値は、StringId で指定された [PredicateValidation](predicates.md) グループ エラー メッセージのいずれかをローカライズするために使用されます。 `GetLocalizedStringsTransformationClaimType` 値は、ローカライズされた文字列を要求にコピーするために使用されます。 詳細については、[GetLocalizedStringsTransformation 要求変換](string-transformations.md#getlocalizedstringstransformation)に関する記事を参照してください。  | 
 | ElementId | はい | **ElementType** が `ClaimType`、`Predicate`、または `InputValidation` に設定されている場合、この要素には ClaimsSchema セクションで定義済みの要求の種類への参照が含まれます。 |
-| StringId | はい | **ElementType** が `ClaimType` に設定されている場合、この要素には要求の種類の属性への参照が含まれます。 指定できる値: `DisplayName`、`AdminHelpText`、または `PatternHelpText`。 `DisplayName` 値は、要求の表示名を設定するために使用されます。 `AdminHelpText` 値は、要求ユーザーのヘルプ テキスト名を設定するために使用されます。 `PatternHelpText` 値は、要求パターンのヘルプ テキストを設定するために使用されます。 **ElementType** が `UxElement` に設定されている場合、この要素にはユーザー インターフェイス要素の属性への参照が含まれます。 **ElementType** が `ErrorMessage` に設定されている場合、この要素はエラー メッセージの識別子を指定します。 `UxElement` 識別子の完全な一覧については、「[ローカライズ文字列 ID](localization-string-ids.md)」を参照してください。|
+| StringId | はい | **ElementType** が `ClaimType` に設定されている場合、この要素には要求の種類の属性への参照が含まれます。 指定できる値: `DisplayName`、`AdminHelpText`、または `PatternHelpText`。 `DisplayName` 値は、要求の表示名を設定するために使用されます。 `AdminHelpText` 値は、要求ユーザーのヘルプ テキスト名を設定するために使用されます。 `PatternHelpText` 値は、要求パターンのヘルプ テキストを設定するために使用されます。 **ElementType** が `UxElement` に設定されている場合、この要素にはユーザー インターフェイス要素の属性への参照が含まれます。 **ElementType** が `ErrorMessage` に設定されている場合、この要素はエラー メッセージの識別子を指定します。 [ 識別子の完全な一覧については、「](localization-string-ids.md)ローカライズ文字列 ID`UxElement`」を参照してください。|
 
 
 次の例は、ローカライズされたサインアップ ページを示しています。 最初の 3 つの **LocalizedString** 値は、要求属性を設定します。 4 つ目の値は、続行ボタンの値を変更します。 最後の値は、エラーメッセージを変更します。
@@ -165,7 +165,7 @@ ms.locfileid: "79126761"
 </LocalizedResources>
 ```
 
-次の例は、Id `IsLengthBetween8And64` を持つ **Predicate** のローカライズされた **UserHelpText** を示しています。 また、Id `StrongPassword` を持つ **PredicateValidation** の Id `CharacterClasses` を持つ **PredicateGroup** のローカライズされた **UserHelpText** を示しています。
+次の例は、Id **を持つ**Predicate**のローカライズされた**UserHelpText`IsLengthBetween8And64` を示しています。 また、Id **を持つ**PredicateValidation**の Id** を持つ `CharacterClasses`PredicateGroup**のローカライズされた**UserHelpText`StrongPassword` を示しています。
 
 ```XML
 <PredicateValidation Id="StrongPassword">

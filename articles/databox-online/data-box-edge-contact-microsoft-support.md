@@ -4,16 +4,16 @@ description: Data Box Edge または Data Box Gateway の注文に関連する�
 services: databox
 author: alkohli
 ms.service: databox
-ms.subservice: ''
+ms.subservice: edge
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 9db119733bb80d9ae1462b70c3ffe555b2493405
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: c93a2e2f3162891e72cf6d57f3df6c3ceaf0c7fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68361327"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064985"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box-edge-and-azure-data-box-gateway"></a>Azure Data Box Edge と Azure Data Box Gateway のサポート チケットを開く
 
@@ -37,7 +37,7 @@ ms.locfileid: "68361327"
     5. 発生している問題の簡単な **[概要]** を入力します。 
     6. **[問題の種類]** を選択します。
     7. 選択した問題の種類に基づき、対応する **[問題のサブタイプ]** を選択します。
-    8. **[次へ:ソリューション >>]** を選択します。
+    8. **ソリューション >>** を選択します。
 
         ![基本](./media/data-box-edge-contact-microsoft-support/data-box-edge-support-request-1.png)
 
@@ -53,13 +53,13 @@ ms.locfileid: "68361327"
     8. **[応答時間]** は、サブスクリプション プランに基づいて自動的に選択されます。
     9. サポートにご希望の言語を指定します。
     10. **[連絡先情報]** で、名前、メール、電話、オプションの連絡先、国や地域を指定します。 Microsoft サポートでは、この情報を使用してお客様に連絡し、詳細、診断、および解決策に関する情報を提供します。 
-    11. **[次へ:確認と作成 >>]** を選択します。
+    11. **確認と作成 >>** を選択します。
 
-        ![問題点](./media/data-box-edge-contact-microsoft-support/data-box-edge-support-request-2.png)
+        ![問題](./media/data-box-edge-contact-microsoft-support/data-box-edge-support-request-2.png)
 
-4. **[確認と作成]** タブで、サポート チケットに関連する情報を確認します。 **作成** を選択します。 
+4. **[確認と作成]** タブで、サポート チケットに関連する情報を確認します。 **［作成］** を選択します 
 
-    ![問題点](./media/data-box-edge-contact-microsoft-support/data-box-edge-support-request-3.png)
+    ![問題](./media/data-box-edge-contact-microsoft-support/data-box-edge-support-request-3.png)
 
     お客様がサポート チケットを作成すると、サポート エンジニアが可能な限り迅速にお客様に連絡し、リクエストを処理します。
 
@@ -97,7 +97,7 @@ ms.locfileid: "68361327"
 3. サポート要求を選択してクリックします。 この要求のステータスと詳細を表示することができます。 この要求をフォローアップする場合は、 **[+ 新しいメッセージ]** をクリックします。
 
    
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Data Box Edge に関する問題のトラブルシューティング](data-box-edge-troubleshoot.md)方法を確認します。
 [Data Box Gateway に関する問題のトラブルシューティング](data-box-gateway-troubleshoot.md)方法を確認します。

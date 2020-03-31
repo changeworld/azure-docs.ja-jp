@@ -9,10 +9,10 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.openlocfilehash: 4edafc0c07e967acfabf7fdc5b58c481b2cfccc3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75436042"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Azure HDInsight で Enterprise セキュリティ パッケージ クラスターを作成および構成する
@@ -47,7 +47,7 @@ Azure HDInsight の Enterprise セキュリティ パッケージ (ESP) を使�
     |---|---|
     |サブスクリプション|リソースをデプロイするサブスクリプションを選択します。|
     |Resource group|**[新規作成]** を選択して `OnPremADVRG` という名前を入力します。|
-    |Location|場所を選択します。|
+    |場所|場所を選択します。|
     |管理ユーザー名|`HDIFabrikamAdmin`|
     |管理パスワード|パスワードを入力します。|
     |ドメイン名|`HDIFabrikam.com`|
@@ -122,7 +122,7 @@ Azure HDInsight の Enterprise セキュリティ パッケージ (ESP) を使�
 1. **[リソースの作成]** を選択し、「`directory`」と入力します。 **[Azure Active Directory]**  >  **[作成]** を選択します。
 1. **[組織名]** に「`HDIFabrikam`」と入力します。
 1. **[初期ドメイン名]** に「`HDIFabrikamoutlook`」と入力します。
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
     ![Azure AD Directory を作成する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-new-directory.png)
 
@@ -140,7 +140,7 @@ Azure HDInsight の Enterprise セキュリティ パッケージ (ESP) を使�
 1. 新しい **[Azure Active Directory]** で、 **[管理]** の下にある **[グループ]** を選択します。
 1. **[+ 新しいグループ]** を選択します。
 1. **[グループ名]** テキスト ボックスに「`AAD DC Administrators`」と入力します。
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 ## <a name="configure-your-azure-ad-tenant"></a>Azure AD テナントを構成する
 
@@ -154,12 +154,12 @@ Active Directory テナント管理者を作成します。
 
 1. 新しいユーザーについて次の詳細を入力します。
 
-    **[ID]**
+    **ID**
 
     |プロパティ |説明 |
     |---|---|
     |ユーザー名|テキスト ボックスに「`fabrikamazureadmin`」と入力します。 [ドメイン名] ドロップダウン リストから、[`hdifabrikam.com`] を選択します。|
-    |Name| 「`fabrikamazureadmin`」と入力します。|
+    |名前| 「`fabrikamazureadmin`」と入力します。|
 
     **パスワード**
     1. **[自分でパスワードを作成する]** を選択します。
@@ -176,7 +176,7 @@ Active Directory テナント管理者を作成します。
 
     ![Azure AD ロール ダイアログ ボックス](./media/apache-domain-joined-create-configure-enterprise-security-cluster/azure-ad-add-role-member.png)
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 1. 次に、新しいユーザーに Azure portal にサインインしてもらいます。そこでは、パスワードの変更を求めるメッセージが表示されます。 これは、Microsoft Azure Active Directory Connect を構成する前に行う必要があります。
 
@@ -221,7 +221,7 @@ Azure AD Domain Services (Azure AD DS) の構成に使用できるユーザー�
 1. サブスクリプションを選択します。
 1. **[リソース グループ]** で、 **[新規作成]** を選択し、「`HDIFabrikam-CentralUS`」と入力します。
 1. **[場所]** で **[米国中部]** を選択します。
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 ![ユーザー割り当てマネージド ID を新規作成する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0082.png)
 
@@ -358,7 +358,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
         | Protocol | Any |
         | アクション | Allow |
         | Priority | \<望ましい値> |
-        | Name | Port_LDAP_636 |
+        | 名前 | Port_LDAP_636 |
 
     ![[受信セキュリティ規則の追加] ダイアログ ボックス](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
 
@@ -407,7 +407,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 
             ![クラスター アクセス グループ HDIUserGroup を選択する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0129.jpg)
 
-    1. クラスター構成の他の手順を完了し、 **[クラスターの概要]** で詳細を確認します。 **作成** を選択します。
+    1. クラスター構成の他の手順を完了し、 **[クラスターの概要]** で詳細を確認します。 **［作成］** を選択します
 
 1. `https://CLUSTERNAME.azurehdinsight.net` で新しく作成したクラスターの Ambari UI にサインインします。 管理者ユーザー名 `hdiadmin@hdifabrikam.com` とそのパスワードを使用します。
 

@@ -4,7 +4,7 @@ description: Azure コンピューティング ユニットの概念の概要。
 services: virtual-machines
 documentationcenter: ''
 author: mimckitt
-manager: gwallace
+manager: vashan
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.service: virtual-machines
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
-ms.author: jonbeck
-ms.openlocfilehash: 65d83e76d464da997c6933610ae97dc176df7964
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.author: mimckitt
+ms.openlocfilehash: e344d09497a30dec546dfaedd3d78f30c7d214d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919789"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535699"
 ---
 # <a name="azure-compute-unit-acu"></a>Azure コンピューティング ユニット (ACU)
 

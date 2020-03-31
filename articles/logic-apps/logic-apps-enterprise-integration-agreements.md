@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: 521a0ef4053be55e6c7322da5af26ccfc6c844e5
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74790743"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Azure Logic Apps で取引先契約を作成して管理する
@@ -40,7 +40,7 @@ RosettaNet メッセージを交換するための契約を作成するには、
 
 ## <a name="create-agreements"></a>契約を作成する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 Azure のメイン メニューで、 **[すべてのサービス]** を選びます。 検索ボックスに、フィルターとして「統合」と入力します。 結果から、次のリソースを選択します。**統合アカウント**
 
    ![統合アカウントの検索](./media/logic-apps-enterprise-integration-agreements/find-integration-accounts.png)
@@ -59,14 +59,14 @@ Azure のメイン メニューで、 **[すべてのサービス]** を選び�
 
    | プロパティ | 必須 | 値 | 説明 |
    |----------|----------|-------|-------------|
-   | **Name** | はい | <*agreement-name*> | 契約の名前 |
+   | **名前** | はい | <*agreement-name*> | 契約の名前 |
    | **契約の種類** | はい | **AS2**、**X12**、または **EDIFACT** | ご利用の契約でのプロトコルの種類。 契約ファイルを作成する場合は、そのファイルの内容が契約の種類と一致する必要があります。 | |  
    | **ホスト パートナー** | はい | <*host-partner-name*> | ホスト パートナーは、契約を指定する組織を表します。 |
    | **ホスト ID** | はい | <*host-partner-identifier*> | ホスト パートナーの ID |
    | **ゲスト パートナー** | はい | <*guest-partner-name*> | ゲスト パートナーは、ホスト パートナーと取引している組織を表します。 |
    | **ゲスト ID** | はい | <*guest-partner-identifier*> | ゲスト パートナーの ID |
-   | **受信設定** | 多様 | 多様 | これらのプロパティは、ホスト パートナーが契約内のゲスト パートナーからすべての受信メッセージを受信する方法を指定します。 詳細については、それぞれの契約の種類を参照してください。 <p>- [AS2 メッセージの設定](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT メッセージの設定](logic-apps-enterprise-integration-edifact.md) <br>- [X12 メッセージの設定](logic-apps-enterprise-integration-x12.md) |
-   | **送信の設定** | 多様 | 多様 | これらのプロパティは、ホスト パートナーが契約内のゲスト パートナーにすべての送信メッセージを送信する方法を指定します。 詳細については、それぞれの契約の種類を参照してください。 <p>- [AS2 メッセージの設定](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT メッセージの設定](logic-apps-enterprise-integration-edifact.md) <br>- [X12 メッセージの設定](logic-apps-enterprise-integration-x12.md) |
+   | **受信設定** | 場合により異なる | 場合により異なる | これらのプロパティは、ホスト パートナーが契約内のゲスト パートナーからすべての受信メッセージを受信する方法を指定します。 詳細については、それぞれの契約の種類を参照してください。 <p>- [AS2 メッセージの設定](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT メッセージの設定](logic-apps-enterprise-integration-edifact.md) <br>- [X12 メッセージの設定](logic-apps-enterprise-integration-x12.md) |
+   | **送信の設定** | 場合により異なる | 場合により異なる | これらのプロパティは、ホスト パートナーが契約内のゲスト パートナーにすべての送信メッセージを送信する方法を指定します。 詳細については、それぞれの契約の種類を参照してください。 <p>- [AS2 メッセージの設定](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT メッセージの設定](logic-apps-enterprise-integration-edifact.md) <br>- [X12 メッセージの設定](logic-apps-enterprise-integration-x12.md) |
    |||||
 
 1. 契約の作成が終了したら、 **[追加]** ページで、 **[OK]** を選択してご自分の統合アカウントに戻ります。
@@ -101,7 +101,7 @@ Azure のメイン メニューで、 **[すべてのサービス]** を選び�
 
 1. 選択した契約を削除することを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [AS2 メッセージの交換](logic-apps-enterprise-integration-as2.md)
 * [EDIFACT メッセージの交換](logic-apps-enterprise-integration-edifact.md)

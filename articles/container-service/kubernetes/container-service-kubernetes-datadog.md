@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: c8ed146a224ec4225a7a0e85c76227fb1dc71b0b
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 1f3f70c30ab397bd549a2f3305a738274ee4f64f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271048"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79371173"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-datadog"></a>(非推奨) DataDog を使用した Azure Container Service クラスターの監視
 
@@ -25,8 +25,8 @@ ms.locfileid: "76271048"
 
 `az` ツールがインストールされていることを確認するには、次を実行します。
 
-```console
-$ az --version
+```azurecli
+az --version
 ```
 
 `az` ツールをインストールしていないない場合、[ここ](https://github.com/azure/azure-cli#installation)に手順が記載されています。
@@ -34,13 +34,13 @@ $ az --version
 `kubectl` ツールがインストールされていることを確認するには、次を実行します。
 
 ```console
-$ kubectl version
+kubectl version
 ```
 
 `kubectl` をインストールしていない場合、次を実行できます。
 
-```console
-$ az acs kubernetes install-cli
+```azurecli
+az acs kubernetes install-cli
 ```
 
 ## <a name="datadog"></a>Datadog

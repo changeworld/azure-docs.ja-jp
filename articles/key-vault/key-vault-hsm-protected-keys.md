@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
 ms.openlocfilehash: 048e5072c592cf2de32e533014c99034572a1c47
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79082899"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>HSM で保護されたキーを Key Vault にインポートする
@@ -34,7 +34,7 @@ HSM で保護されたキーの Key Vault への転送は、使用する HSM に
 |ベンダー名|ベンダーの種類|サポートされている HSM モデル|サポートされている HSM キーの転送方法|
 |---|---|---|---|
 |nCipher|Manufacturer|<ul><li>HSM の nShield ファミリ</li></ul>|[従来の BYOK の方法を使用する](hsm-protected-keys-legacy.md)|
-|Thales|Manufacturer|<ul><li>ファームウェアのバージョンが 7.3 以降の SafeNet Luna HSM 7 ファミリ</li></ul>| [新しい BYOK の方法を使用する (プレビュー)](hsm-protected-keys-vendor-agnostic-byok.md)|
+|Thales|Manufacturer|<ul><li>SafeNet Luna HSM 7 ファミリ (ファームウェア バージョン 7.3 以降)</li></ul>| [新しい BYOK の方法を使用する (プレビュー)](hsm-protected-keys-vendor-agnostic-byok.md)|
 |Fortanix|サービスとしての HSM|<ul><li>Self-Defending Key Management Service (SDKMS)</li></ul>|[新しい BYOK の方法を使用する (プレビュー)](hsm-protected-keys-vendor-agnostic-byok.md)|
 
 

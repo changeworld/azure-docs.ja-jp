@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: robinsh
 ms.openlocfilehash: c812e00699cd8f8cfbaf32feea1b43866ffb0990
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78674367"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>チュートリアル:Azure IoT Hub のメッセージ エンリッチメントを使用する
@@ -76,7 +76,7 @@ IoT ハブ名やストレージ アカウント名など、グローバルに一
 
 次に示したのは、このスクリプトによって作成されるリソースです。 *Enriched* と表示されているリソースは、エンリッチメントが適用されたメッセージ用であることを意味します。 *Original* と表示されているリソースは、エンリッチメントが適用されていないメッセージ用であることを意味します。
 
-| 名前 | Value |
+| 名前 | 値 |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | container name | original  |
@@ -258,7 +258,7 @@ az iot hub route create \
 
 2. ContosoStorageEndpointEnriched エンドポイントのリストに次の値を追加します。
 
-   | Key | Value | エンドポイント (ドロップダウン リスト) |
+   | Key | 値 | エンドポイント (ドロップダウン リスト) |
    | ---- | ----- | -------------------------|
    | myIotHub | $iothubname | AzureStorageContainers > ContosoStorageEndpointEnriched |
    | DeviceLocation | $twin.tags.location | AzureStorageContainers > ContosoStorageEndpointEnriched |
@@ -296,7 +296,7 @@ Resource Manager テンプレートを使用して、リソース、メッセー
 
    次に示すのは、テンプレートを読み込むことによって作成されるリソースです。 **Enriched** と表示されているリソースは、エンリッチメントが適用されたメッセージ用であることを意味します。 **Original** と表示されているリソースは、エンリッチメントが適用されていないメッセージ用であることを意味します。 これらは、Azure CLI スクリプトで使用される値と同じです。
 
-   | 名前 | Value |
+   | 名前 | 値 |
    |-----|-----|
    | resourceGroup | ContosoResourcesMsgEn |
    | container name | original  |

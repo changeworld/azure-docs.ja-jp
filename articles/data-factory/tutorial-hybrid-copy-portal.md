@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 01/11/2018
-ms.openlocfilehash: 01f2644874da032b95162f3f5721ab9dbea74265
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 03/12/2020
+ms.openlocfilehash: c073d3e51234e0ed8e524c2ae557d4158ad9e7d7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974710"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065149"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>オンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーする
 このチュートリアルでは、Azure Data Factory ユーザー インターフェイス (UI) を使用して、オンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーするデータ ファクトリ パイプラインを作成します。 セルフホステッド統合ランタイムを作成して使用すると、オンプレミス データ ストアとクラウド データ ストア間でデータを移動できます。
@@ -91,15 +91,15 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 #### <a name="create-the-adftutorial-container"></a>adftutorial コンテナーの作成
 このセクションでは、**adftutorial** という名前の BLOB コンテナーを Blob Storage に作成します。
 
-1. **[ストレージ アカウント]** ウィンドウで **[概要]** に移動し、 **[BLOB]** を選択します。
+1. **[ストレージ アカウント]** ウィンドウで **[概要]** に移動し、 **[コンテナー]** を選択します。
 
     ![BLOB オプションを選択する](media/tutorial-hybrid-copy-powershell/select-blobs.png)
 
-1. **[Blob service]** ウィンドウで **[コンテナー]** を選択します。
+1. **[コンテナー]** ウィンドウで **[+ コンテナー]** を選択して新しいコンテナーを作成します。
 
-1. **[新しいコンテナー]** ウィンドウの **[名前]** に「**adftutorial**」と入力します。 **[OK]** をクリックします。
+1. **[新しいコンテナー]** ウィンドウの **[名前]** に「**adftutorial**」と入力します。 **[作成]** を選択します。
 
-1. コンテナーの一覧で、 **[adftutorial]** を選択します。
+1. コンテナーの一覧で、作成した **[adftutorial]** を選択します。
 
 1. **adftutorial** の **[コンテナー]** ウィンドウを開いたままにしておきます。 チュートリアルの最後で、このページを使用して出力を確認します。 このコンテナーには output フォルダーが Data Factory によって自動的に作成されます。手動で作成する必要はありません。
 
@@ -127,7 +127,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
      リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。
 1. **[バージョン]** で、 **[V2]** を選択します。
 1. **[場所]** で、データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 Data Factory によって使用されるデータ ストア (Storage、SQL Database など) やコンピューティング (Azure HDInsight など) は、他のリージョンに存在していてもかまいません。
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 1. 作成が完了すると、図に示されているような **[Data Factory]** ページが表示されます。
 
@@ -143,29 +143,29 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 1. **[プロパティ]** ウィンドウの下部にある **[全般]** タブで、 **[名前]** に「**SQLServerToBlobPipeline**」と入力します。
 
-   ![パイプライン名](./media/tutorial-hybrid-copy-portal/pipeline-name.png)
-
 1. **[アクティビティ]** ツール ボックスで **[Move & Transform]\(移動と変換\)** を展開します。 パイプライン デザイン サーフェイスに **[コピー]** アクティビティをドラッグ アンド ドロップします。 アクティビティの名前を「**CopySqlServerToAzureBlobActivity**」に設定します。
 
 1. **[プロパティ]** ウィンドウの **[ソース]** タブに移動し、 **[+ 新規]** を選択します。
 
 1. **[新しいデータセット]** ダイアログ ボックスで、**SQL Server** を検索します。 **[SQL Server]** を選択し、 **[続行]** を選択します。
+    ![新しい SqlServer データセット](./media/tutorial-hybrid-copy-portal/create-sqlserver-dataset.png)
 
 1. **[プロパティの設定]** ダイアログ ボックスの **[名前]** に、「**SqlServerDataset**」と入力します。 **[リンクされたサービス]** で **[+ 新規]** を選択します。 この手順でソース データ ストア (SQL Server データベース) への接続を作成します。
 
 1. **[New Linked Service]\(新しいリンクされたサービス\)** ダイアログ ボックスで、 **[名前]** に「**SqlServerLinkedService**」と入力します。 **[Connect via integration runtime]\(統合ランタイム経由で接続\)** で **[+新規]** を選択します。  このセクションでは、セルフホステッド統合ランタイムを作成し、SQL Server データベースがあるオンプレミスのマシンに関連付けます。 セルフホステッド統合ランタイムは、マシンの SQL Server データベースから Blob Storage にデータをコピーするコンポーネントです。
 
-1. **[Integration Runtime セットアップ]** ダイアログ ボックスで **[Self-Hosted]\(セルフホステッド\)** を選択し、 **[次へ]** を選択します。
+1. **[Integration Runtime セットアップ]** ダイアログ ボックスで **[Self-Hosted]\(セルフホステッド\)** を選択し、 **[続行]** を選択します。
 
-1. [名前] に「**TutorialIntegrationRuntime**」と入力します。 **[次へ]** を選択します。
+1. [名前] に「**TutorialIntegrationRuntime**」と入力します。 **[作成]** を選択します。
 
-1. [設定] には、 **[Click here to launch the express setup for this computer]\(ここをクリックしてこのコンピューターの高速セットアップを起動する\)** を選択します。この操作により、統合ランタイムがコンピューターにインストールされ、Data Factory に登録されます。 別の方法として、手動セットアップのオプションを使用できます。インストール ファイルをダウンロードして実行し、キーを使用して統合ランタイムを登録します。
+1. [設定] の **[Click here to launch the express setup for this computer]\(このコンピューターで高速セットアップを起動するにはここをクリック\)** を選択します。 この操作により、統合ランタイムがマシンにインストールされ、Data Factory に登録されます。 別の方法として、手動セットアップのオプションを使用できます。インストール ファイルをダウンロードして実行し、キーを使用して統合ランタイムを登録します。
+    ![統合ランタイムのセットアップ](./media/tutorial-hybrid-copy-portal/intergration-runtime-setup.png)
 
-1. **[Integration Runtime (セルフホステッド) 高速セットアップ]** ウィンドウで、 **[閉じる]** を選択します。
+1. **[Integration Runtime (セルフホステッド) 高速セットアップ]** ウィンドウで、処理が完了したら **[閉じる]** を選択します。
 
     ![Integration Runtime (セルフホステッド) 高速セットアップ](./media/tutorial-hybrid-copy-portal/integration-runtime-setup-successful.png)
 
-1. **[New Linked Service]\(新しいリンクされたサービス\)** ダイアログ ボックスで、 **[Connect via integration runtime]\(統合ランタイム経由で接続\)** の **TutorialIntegrationRuntime** が接続されていることを確認します。 その後、次の手順を行います。
+1. **[New linked service (SQL Server)]\(新しいリンクされたサービス (SQL Server)\)** ダイアログ ボックスで、 **[Connect via integration runtime]\(統合ランタイム経由で接続\)** の **TutorialIntegrationRuntime** が選択されていることを確認します。 その後、次の手順を行います。
 
     a. **[名前]** に「**SqlServerLinkedService**」と入力します。
 
@@ -179,13 +179,17 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
     f. **[接続テスト]** を選択します。 この手順は、作成したセルフホステッド統合ランタイムを使用して Data Factory が SQL Server データベースに接続できることを確認するために行います。
 
-    g. リンクされたサービスを保存するには、 **[完了]** を選択します。
+    g. リンクされたサービスを保存するには、 **[作成]** を選択します。
+ 
+    ![新しいリンクされたサービス (SQL Server)](./media/tutorial-hybrid-copy-portal/new-sqlserver-linked-service.png)
 
-1. ソース データセットが開かれているウィンドウに戻ります。 **[プロパティ]** ウィンドウの **[接続]** タブで、以下の手順を実行します。
+1. リンクされたサービスが作成されると、SqlServerDataset の **[プロパティの設定]** ページに戻ります。 次の手順を実行します。
 
     a. **[リンクされたサービス]** に **SqlServerLinkedService** が表示されていることを確認します。
 
-    b. **[テーブル]** で **[dbo].[emp]** を選択します。
+    b. **[テーブル名]** で **[dbo].[emp]** を選択します。
+    
+    c. **[OK]** を選択します。
 
 1. **SQLServerToBlobPipeline** のタブに移動するか、またはツリービューの **SQLServerToBlobPipeline** を選択します。
 
@@ -199,10 +203,11 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 1. **[プロパティの設定]** ダイアログ ボックスで、[名前] に「**AzureBlobDataset**」と入力します。 **[リンクされたサービス]** ボックスの横にある **[+ 新規]** をクリックします。
 
-1. **[New Linked Service (Azure Blob Storage)]\(新しいリンクされたサービス (Azure Blob Storage)\)** ダイアログ ボックスで、名前として「**AzureStorageLinkedService**」と入力し、 **[ストレージ アカウント]** 名の一覧からご自身のストレージ アカウントを選択します。 接続をテストし、 **[完了]** を選択して、リンクされたサービスをデプロイします。
-1. リンクされたサービスが作成されると、 **[プロパティの設定]** ページに戻ります。 **[続行]** をクリックします。
+1. **[New Linked Service (Azure Blob Storage)]\(新しいリンクされたサービス (Azure Blob Storage)\)** ダイアログ ボックスで、名前として「**AzureStorageLinkedService**」と入力し、 **[ストレージ アカウント]** 名の一覧からご自身のストレージ アカウントを選択します。 接続をテストし、 **[作成]** を選択して、リンクされたサービスをデプロイします。
 
-1. シンク データセットが開かれているウィンドウに戻ります。 **[接続]** タブで、次の手順を実行します。
+1. リンクされたサービスが作成されると、 **[プロパティの設定]** ページに戻ります。 **[OK]** を選択します。
+
+1. シンク データセットを開きます。 **[接続]** タブで、次の手順を実行します。
 
     a. **[リンクされたサービス]** で **AzureStorageLinkedService** が選択されていることを確認します。
 
@@ -215,11 +220,13 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 1. パイプラインが開かれているタブに移動するか、ツリー ビューでパイプラインを選択します。 **[Sink Dataset]\(シンク データセット\)** で **AzureBlobDataset** が選択されていることを確認します。
 
-1. パイプライン設定を検証するには、パイプラインのツール バーにある **[検証]** を選択します。 **パイプラインの検証レポート**を閉じるには、 **[閉じる]** を選択します。
+1. パイプライン設定を検証するには、パイプラインのツール バーにある **[検証]** を選択します。 **[Pipe validation output]\(パイプ検証出力\)** を閉じるには、 **>>** アイコンを選択します。
+    ![パイプラインの検証](./media/tutorial-hybrid-copy-portal/validate-pipeline.png)
+    
 
-1. 作成したエンティティを Data Factory に発行するには、 **[すべて公開]** を選択します。
+1. 作成したエンティティを Data Factory に発行するには、 **[すべて発行]** を選択します。
 
-1. **[発行は成功しました]** ポップアップが表示されるまで待ちます。 発行の状態を確認するには、ウィンドウの上部にある **[通知の表示]** リンクを選択します。 通知ウィンドウを閉じるには、 **[閉じる]** を選択します。
+1. **発行が完了**したことを示すポップアップが表示されるまで待ちます。 発行の状態を確認するには、ウィンドウの上部にある **[通知の表示]** リンクを選択します。 通知ウィンドウを閉じるには、 **[閉じる]** を選択します。
 
 
 ## <a name="trigger-a-pipeline-run"></a>パイプラインの実行をトリガーする
@@ -229,8 +236,10 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 1. **[監視]** タブに移動します。前の手順で手動でトリガーしたパイプラインを確認します。
 
+1. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、 *[パイプライン名]* の **[SQLServerToBlobPipeline]** リンクを選択します。 
     ![パイプラインの実行を監視する](./media/tutorial-hybrid-copy-portal/pipeline-runs.png)
-1. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、 **[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクを選択します。 パイプラインにはアクティビティが 1 つしかないため、表示されるアクティビティの実行は 1 つのみです。 コピー操作の詳細を確認するために、 **[アクション]** 列にある **[詳細]** リンク (眼鏡アイコン) を選択します。 再度パイプラインの実行ビューに移動するには、一番上にある **[Pipeline Runs]\(パイプラインの実行\)** を選択します。
+
+1. **[アクティビティの実行]** ページで [詳細] (眼鏡アイコン) リンクを選択し、コピー操作の詳細を確認します。 再度パイプラインの実行ビューに移動するには、一番上にある **[すべてのパイプラインの実行]** を選択します。
 
 ## <a name="verify-the-output"></a>出力を検証する
 このパイプラインは、`adftutorial` BLOB コンテナーに対して *fromonprem* という名前の出力フォルダーを自動的に作成します。 出力フォルダーに *[pipeline().RunId].txt* ファイルがあることを確認してください。

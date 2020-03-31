@@ -15,14 +15,14 @@ ms.date: 12/05/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 12/04/2019
-ms.openlocfilehash: ec0181dd75cd656859967c30dc3941175407413a
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f78f24ee68545b386169e29a5a52ccc572849ad7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894978"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80127055"
 ---
-# <a name="tutorial-send-notifications-to-universal-windows-platform-apps-by-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム アプリに通知を送信する
+# <a name="tutorial-send-notifications-to-universal-windows-platform-apps-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム アプリに通知を送信する
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -96,7 +96,7 @@ UWP アプリにプッシュ通知を送信するには、アプリを Windows �
        ![[新しいプロジェクト] ダイアログ](./media/notification-hubs-windows-store-dotnet-get-started/new-project-dialog.png)
 
     3. **[新しいプロジェクトの構成]** ダイアログで、 **[プロジェクト名]** を入力し、プロジェクト ファイルの **[場所]** を入力します。
-    4. **作成** を選択します。
+    4. **［作成］** を選択します
 
 3. **ターゲット**と**最小**プラットフォーム バージョンの既定値を受け入れ、 **[OK]** を選択します。
 4. ソリューション エクスプローラーで Windows ストア アプリ プロジェクトを右クリックし、 **[発行]** 、 **[アプリケーションをストアと関連付ける]** の順に選択します。 **アプリケーションを Windows ストアと関連付ける** ウィザードが表示されます。
@@ -175,7 +175,7 @@ UWP アプリにプッシュ通知を送信するには、アプリを Windows �
 
     ![通知メッセージ](./media/notification-hubs-windows-store-dotnet-get-started/test-notification-message.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ポータルまたはコンソール アプリを使用して、すべての Windows デバイスにブロードキャスト通知を送信しました。 特定のデバイスにプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]

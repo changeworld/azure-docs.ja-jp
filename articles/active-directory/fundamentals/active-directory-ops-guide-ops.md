@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: d039373d3e70076149da2b970a234b59d7aa661a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75422939"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Azure Active Directory 一般的な運用ガイド リファレンス
@@ -91,7 +91,7 @@ Azure AD Connect および AD FS を監視するために組織は [Azure AD Con
 #### <a name="on-premises-agents-logs-recommended-reading"></a>オンプレミスのエージェント ログに関する推奨資料
 
 - [アプリケーション プロキシのトラブルシューティング](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot)
-- [セルフサービスによるパスワードのリセットのトラブルシューティング - Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#password-writeback-event-log-error-codes)
+- [セルフサービス パスワード リセット のトラブルシューティング - Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#password-writeback-event-log-error-codes)
 - [Azure AD アプリケーション プロキシ コネクタについて](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors)
 - [Azure AD Connect:パススルー認証のトラブルシューティング](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-pass-through-authentication#collecting-pass-through-authentication-agent-logs)
 - [Azure MFA NPS 拡張機能のエラー コードのトラブルシューティング](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-nps-errors)
