@@ -2,13 +2,13 @@
 title: Azure Site Recovery の最新情報
 description: Azure Site Recovery サービスの新機能と最新の更新プログラムの概要について説明します。
 ms.topic: conceptual
-ms.date: 01/31/2020
-ms.openlocfilehash: cae653c9e51e2a497d6fa3781415a1f836053593
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 03/03/2020
+ms.openlocfilehash: abb1592bcacf025e9a052d7a9222f6fb3d2b72d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064531"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228995"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery の最新情報
 
@@ -22,13 +22,27 @@ Site Recovery コンポーネントでは、N-4 バージョン (N は最新リ�
 
 **アップデート** |  **統合セットアップ** | **構成サーバー ova** | **モビリティ サービス エージェント** | **Site Recovery プロバイダー** | **Recovery Services エージェント**
 --- | --- | --- | --- | --- | ---
+[ロールアップ 45](https://support.microsoft.com/help/4550047/) | 9.32.5487.1 | 5.1.5400.0 | 9.32.5487.1 | 5.1.5400.0 | 2.0.9165.0
 [ロールアップ 43](https://support.microsoft.com/help/4537047/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
 [ロールアップ 42](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
 [ロールアップ 41](https://support.microsoft.com/help/4528026/) | 9.29.5367.1 | 5.1.5000.0 | 9.29.5367.1 | 5.1.5000.0 | 2.0.9165.0
 [ロールアップ 40](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
-[ロールアップ 39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
 
 更新プログラムのインストールとサポートの詳細については、[こちら](service-updates-how-to.md)を参照してください。
+
+> [!NOTE]
+> 更新プログラムの ロールアップ 44 は、Site Recovery プロバイダーおよびエージェントの更新プログラムが含まれていなかったため、表には表示されていません。
+
+## <a name="updates-march-2020"></a>更新プログラム (2020 年 3 月)
+
+### <a name="update-rollup-45"></a>更新プログラム ロールアップ 45
+
+[更新プログラム ロールアップ 45](https://support.microsoft.com/help/4550047/update-rollup-45-for-azure-site-recovery) では、以下の更新が提供されます。
+
+**アップデート** | **詳細**
+--- | ---
+**プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)
+**問題の修正/改善点** | さまざまな修正プログラムと機能強化 (詳細はロールアップを参照)
 
 ## <a name="updates-january-2020"></a>更新プログラム (2020 年 1 月)
 
@@ -43,7 +57,7 @@ Site Recovery コンポーネントでは、N-4 バージョン (N は最新リ�
 
 ### <a name="azure-vmware-disaster-recovery"></a>Azure VMware のディザスター リカバリー
 
-Azure 仮想マシンで、お客様が管理するキーを使用した保存時の暗号化が可能な VM がサポートされるようになりました。 [詳細については、こちらを参照してください](azure-to-azure-how-to-enable-replication-cmk-disks.md)。
+Azure 仮想マシンで、お客様が管理するキーを使用した保存時の暗号化が可能な VM がサポートされるようになりました。 詳細については、[こちら](azure-to-azure-how-to-enable-replication-cmk-disks.md)をご覧ください。
 
 
 ### <a name="update-rollup-43"></a>更新プログラム ロールアップ 43
@@ -122,7 +136,7 @@ Azure VM ディザスター リカバリーの新機能をまとめて表に示�
 
 **機能** | **詳細**
 --- | ---
-**テスト フェールオーバーの設定** | テスト フェールオーバーを設定するときに、テスト フェールオーバー VM とネットワークの設定を構成できるようになりました。これには、IP アドレス、NSG、内部負荷分散、および各マシン NIC のパブリック IP アドレスが含まれます。 これらの設定は省略可能であり、現在の動作は変更されません。 これらの設定を構成しない場合は、テスト フェールオーバー時に Azure VNet を選択できます。 [詳細については、こちらを参照してください](https://azure.microsoft.com/blog/customize-networking-for-dr-drills-azure-site-recovery/)。
+**テスト フェールオーバーの設定** | テスト フェールオーバーを設定するときに、テスト フェールオーバー VM とネットワークの設定を構成できるようになりました。これには、IP アドレス、NSG、内部負荷分散、および各マシン NIC のパブリック IP アドレスが含まれます。 これらの設定は省略可能であり、現在の動作は変更されません。 これらの設定を構成しない場合は、テスト フェールオーバー時に Azure VNet を選択できます。 詳細については、[こちら](https://azure.microsoft.com/blog/customize-networking-for-dr-drills-azure-site-recovery/)をご覧ください。
 **復旧計画** | 復旧計画は、フェールオーバーの信頼性を確保するために、100 VM に制限されるようになりました。
 
 ### <a name="vmware-to-azure-disaster-recovery"></a>VMware から Azure へのディザスター リカバリー
@@ -163,7 +177,7 @@ Azure VM ディザスター リカバリーの新機能をまとめて表に示�
 
 **機能** | **詳細**
 --- | ---
-新しいプロセス サーバー アラート | 新しいプロセス サーバー アラートを追加しました。 [詳細については、こちらを参照してください](vmware-physical-azure-monitor-process-server.md)。
+新しいプロセス サーバー アラート | 新しいプロセス サーバー アラートを追加しました。 詳細については、[こちら](vmware-physical-azure-monitor-process-server.md)をご覧ください。
 
 ### <a name="hyper-v-disaster-recovery"></a>Hyper-V のディザスター リカバリー
 
@@ -255,8 +269,8 @@ Site Recovery では、キャッシュ ストレージまたはターゲット �
 
 **機能** | **詳細**
 --- | ---
-**追加されたディスクのレプリケート** | 既にディザスター リカバリーが有効になっている Azure VM に追加されたデータ ディスクのレプリケーションを有効にします。 [詳細については、こちらを参照してください](azure-to-azure-enable-replication-added-disk.md)。
-**自動更新** | ディザスター リカバリーが有効になっている Azure VM で実行されるモビリティ サービス拡張機能の自動更新を構成するときに、Site Recovery によって作成される既定のアカウントを使用する代わりに、既存の Automation アカウントを選択できるようになりました。 [詳細については、こちらを参照してください](azure-to-azure-autoupdate.md)。
+**追加されたディスクのレプリケート** | 既にディザスター リカバリーが有効になっている Azure VM に追加されたデータ ディスクのレプリケーションを有効にします。 詳細については、[こちら](azure-to-azure-enable-replication-added-disk.md)をご覧ください。
+**自動更新** | ディザスター リカバリーが有効になっている Azure VM で実行されるモビリティ サービス拡張機能の自動更新を構成するときに、Site Recovery によって作成される既定のアカウントを使用する代わりに、既存の Automation アカウントを選択できるようになりました。 詳細については、[こちら](azure-to-azure-autoupdate.md)をご覧ください。
 
 
 ### <a name="vmwarephysical-server-disaster-recovery"></a>VMware/物理サーバーのディザスター リカバリー
@@ -265,7 +279,7 @@ Site Recovery では、キャッシュ ストレージまたはターゲット �
 
 **機能** | **詳細**
 --- | ---
-**プロセス サーバーの監視** | オンプレミスの VMware VM と物理サーバーのディザスター リカバリーについて、強化されたサーバー正常性レポートおよびアラート機能により、プロセス サーバーの問題を監視してトラブルシューティングします。 [詳細については、こちらを参照してください](vmware-physical-azure-monitor-process-server.md)。
+**プロセス サーバーの監視** | オンプレミスの VMware VM と物理サーバーのディザスター リカバリーについて、強化されたサーバー正常性レポートおよびアラート機能により、プロセス サーバーの問題を監視してトラブルシューティングします。 詳細については、[こちら](vmware-physical-azure-monitor-process-server.md)をご覧ください。
 
 
 
@@ -342,7 +356,7 @@ Site Recovery では、キャッシュ ストレージまたはターゲット �
 
 高速ネットワークによって、VM へのシングル ルート I/O 仮想化 (SR-IOV) が可能になり、ネットワークのパフォーマンスが向上します。 Azure VM のレプリケーションを有効にすると、Site Recovery は、高速ネットワークが有効になっているかどうかを検出します。 有効な場合はフェールオーバー後に、[Windows](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell#enable-accelerated-networking-on-existing-vms) と [Linux](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli#enable-accelerated-networking-on-existing-vms) の両方について、Site Recovery によってターゲットのレプリカ Azure VM 上に高速ネットワークが自動的に構成されます。
 
-[詳細については、こちらを参照してください](azure-vm-disaster-recovery-with-accelerated-networking.md)。
+詳細については、[こちら](azure-vm-disaster-recovery-with-accelerated-networking.md)をご覧ください。
 
 ### <a name="update-rollup-32"></a>更新プログラム ロールアップ 32
 
@@ -410,7 +424,7 @@ Site Recovery では、キャッシュ ストレージまたはターゲット �
 
 Site Recovery では、モビリティ サービス拡張機能に対する自動更新のオプションが追加されました。 モビリティ サービス拡張機能は、Site Recovery によってレプリケートされる各 Azure VM にインストールされます。 レプリケーションを有効にするときには、拡張機能に対する更新の管理を Site Recovery に許可するかどうかを選択します。
 
-更新では VM の再起動は必要とされず、レプリケーションに影響はありません。 [詳細については、こちらを参照してください](azure-to-azure-autoupdate.md)。
+更新では VM の再起動は必要とされず、レプリケーションに影響はありません。 詳細については、[こちら](azure-to-azure-autoupdate.md)をご覧ください。
 
 ### <a name="pricing-calculator-for-azure-vm-disaster-recovery"></a>Azure VM ディザスター リカバリー用の料金計算ツール
 
@@ -441,7 +455,7 @@ Azure VM のディザスター リカバリーでは、VM のライセンス コ
 **機能** | **詳細**
 --- | ---
 **リージョンのサポート** | オーストラリア中部 1 およびオーストラリア中部 2 で Site Recovery のサポートが追加されました。
-**ディスク暗号化のサポート** | Azure AD アプリを使用した、Azure Disk Encryption (ADE) で暗号化された Azure VM のディザスター リカバリーのサポートが追加されました。 [詳細については、こちらを参照してください](azure-to-azure-how-to-enable-replication-ade-vms.md)。
+**ディスク暗号化のサポート** | Azure AD アプリを使用した、Azure Disk Encryption (ADE) で暗号化された Azure VM のディザスター リカバリーのサポートが追加されました。 詳細については、[こちら](azure-to-azure-how-to-enable-replication-ade-vms.md)をご覧ください。
 **ディスクの除外** | 初期化されていないディスクが、Azure VM のレプリケーション中に自動的に除外されるようになりました。
 **ファイアウォールが有効なストレージ (PowerShell)** | [ファイアウォールが有効なストレージ アカウント](https://docs.microsoft.com/azure/storage/common/storage-network-security)のサポートが追加されました。<br/><br/> ファイアウォールが有効なストレージ アカウント上のアンマネージド ディスクを持つ Azure VM を、ディザスター リカバリーのために別の Azure リージョンにレプリケートできます。<br/><br/> ファイアウォールが有効なストレージ アカウントを、アンマネージド ディスクのターゲット ストレージ アカウントとして使用できます。<br/><br/> PowerShell のみの使用がサポートされるようになりました。
 
@@ -474,7 +488,7 @@ Azure VM のディザスター リカバリーでは、VM のライセンス コ
 --- | ---
 **Linux のサポート** | RedHat Enterprise Linux 6.10; CentOS 6.10 のサポートが追加されました。<br/><br/>
 **クラウドのサポート** | ドイツのクラウドで Azure VM のディザスター リカバリーがサポートされるようになりました。
-**サブスクリプション間のディザスター リカバリー** | 同じ Azure Active Directory テナント内の異なるサブスクリプションで、別のリージョンに Azure VM をレプリケートすることがサポートされるようになりました。 [詳細については、こちらを参照してください](https://aka.ms/cross-sub-blog)。
+**サブスクリプション間のディザスター リカバリー** | 同じ Azure Active Directory テナント内の異なるサブスクリプションで、別のリージョンに Azure VM をレプリケートすることがサポートされるようになりました。 詳細については、[こちら](https://aka.ms/cross-sub-blog)をご覧ください。
 
 ### <a name="vmware-vmphysical-server-disaster-recovery"></a>VMware VM/物理サーバーのディザスター リカバリー
 今月追加された機能は、表にまとめられています。

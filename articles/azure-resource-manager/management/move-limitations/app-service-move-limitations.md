@@ -4,10 +4,10 @@ description: Azure Resource Manager を使用して、App Service リソース�
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.openlocfilehash: 338b0559a5de9468ff60024b88d0f676a9fc3e8b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75474929"
 ---
 # <a name="move-guidance-for-app-service-resources"></a>App Service リソースの移動に関するガイダンス

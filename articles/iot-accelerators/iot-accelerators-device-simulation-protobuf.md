@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 11/06/2018
 ms.author: dobett
 ms.openlocfilehash: bc08cd5183bcaac6cb77ccb0938b07893f082862
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78250223"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Protocol Buffers を使用してテレメトリをシリアル化する
@@ -40,7 +40,7 @@ Protobuf では、データをシリアル化するためにコンパイル済�
 * .NET Core。 [Mac、Linux、および Windows 用の .NET Core をダウンロード](https://www.microsoft.com/net/download)できます。
 * Postman。 [Mac、Windows、または Linux 用の Postman をダウンロード](https://www.getpostman.com/apps)できます。
 * [Azure サブスクリプションにデプロイされた IoT ハブ](../iot-hub/iot-hub-create-through-portal.md)。 このガイドの手順を完了するには、IoT ハブの接続文字列が必要です。 この接続文字列は、Azure portal から取得できます。
-* SQL API を使用し、かつ[強力な一貫性](../cosmos-db/manage-account.md)を確保するように構成された、[Azure サブスクリプションにデプロイ済みの Cosmos DB データベース](../cosmos-db/create-sql-api-dotnet.md#create-account)。 このガイドの手順を完了するには、Cosmos DB データベースの接続文字列が必要です。 この接続文字列は、Azure portal から取得できます。
+* SQL API を使用し、かつ[強力な一貫性](../cosmos-db/create-sql-api-dotnet.md#create-account)を確保するように構成された、[Azure サブスクリプションにデプロイ済みの Cosmos DB データベース](../cosmos-db/manage-account.md)。 このガイドの手順を完了するには、Cosmos DB データベースの接続文字列が必要です。 この接続文字列は、Azure portal から取得できます。
 * [Azure サブスクリプションにデプロイされた Azure ストレージ アカウント](../storage/common/storage-account-create.md)。 このガイドの手順を完了するには、ストレージ アカウントの接続文字列が必要です。 この接続文字列は、Azure portal から取得できます。
 
 ## <a name="prepare-your-development-environment"></a>開発環境を準備する
@@ -145,7 +145,7 @@ Visual Studio Code の新しいインスタンスで、GitHub からダウンロ
 
 デバイス モデルを作成し、メッセージ形式を指定したら、次は **proto** ファイルを作成します。 **proto** ファイルには、次のものを追加します。
 
-* デバイス モデル内の **ClassName** プロパティに一致する `csharp_namespace`。
+* デバイス モデル内の `csharp_namespace`ClassName**プロパティに一致する**。
 * シリアル化する各データ構造用のメッセージ。
 * メッセージ内の各フィールドの名前と型。
 

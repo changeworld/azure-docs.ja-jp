@@ -12,10 +12,10 @@ ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: labrenne
 ms.openlocfilehash: d317d7395a8246c109073a72338b55960cb50954
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77023618"
 ---
 # <a name="pool-delete-complete-event"></a>プール削除の完了イベント
@@ -32,7 +32,7 @@ ms.locfileid: "77023618"
 }
 ```
 
-|要素|Type|Notes|
+|要素|種類|メモ|
 |-------------|----------|-----------|
 |`id`|String|プールの ID。|
 |`startTime`|DateTime|プールの削除が開始された時刻。|

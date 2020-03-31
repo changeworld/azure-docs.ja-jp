@@ -7,13 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/02/2018
 ms.author: dsindona
-ms.reviewer: v-divte; v-miclar
-ms.openlocfilehash: 192fea4101fb972ec66bb5f21a2a83f9903f0855
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8ae1dcbeff6e14e6f1f7cd44ae3a0a68bd379b56
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278111"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387344"
 ---
 # <a name="common-issues-during-vhd-creation-faq"></a>VHD 作成における一般的な問題 (FAQ)
 
@@ -44,7 +43,7 @@ Azure Marketplace は現在、マネージド ストレージ上に存在する�
 
 ## <a name="how-do-you-generate-new-ssh-certificates"></a>新しい SSH 証明書を生成するにはどうすればよいですか?
 
-証明書の生成については、後続のセクション「[VM オファーの技術資産の作成](./cpp-get-sas-uri.md)」の「[VM イメージの Shared Access Signature URI の取得](./cpp-create-technical-assets.md)」の記事に説明されています。
+証明書の生成については、後続のセクション「[VM オファーの技術資産の作成](./cpp-create-technical-assets.md)」の「[VM イメージの Shared Access Signature URI の取得](./cpp-get-sas-uri.md)」の記事に説明されています。
 
 
 ## <a name="how-do-you-configure-a-virtual-private-network-vpn-to-work-with-my-vms"></a>VM で使用するよう仮想プライベート ネットワーク (VPN) を構成するにはどうすればよいですか?
@@ -67,7 +66,7 @@ Azure Resource Manager デプロイ モデルを使用している場合、VPN �
 
 ## <a name="in-a-vm-how-do-you-manage-the-custom-script-extension-in-the-startup-task"></a>VM で、スタートアップ タスクのカスタム スクリプト拡張機能を管理するにはどうすればよいですか?
 
-次の記事では、Azure PowerShell モジュールと Azure Resource Manager テンプレートを使用したカスタム スクリプト拡張機能の使用方法について詳しく説明します。また、Windows システムでのトラブルシューティング手順についても詳しく説明します。「[Windows でのカスタムのスクリプト拡張機能](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)」
+次の記事では、Azure PowerShell モジュールと Azure Resource Manager テンプレートを使用したカスタム スクリプト拡張機能の使用方法について詳しく説明します。また、Windows システムでのトラブルシューティング手順についても詳しく説明します。[Windows でのカスタムのスクリプト拡張機能](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)
 
 
 ## <a name="are-32-bit-applications-or-services-supported-in-the-azure-marketplace"></a>32 ビット アプリケーションやサービスは Azure Marketplace でサポートされていますか?

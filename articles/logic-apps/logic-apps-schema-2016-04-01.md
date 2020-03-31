@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
 ms.openlocfilehash: e2f65f1c52dc7dfb2e4e4bf66f5c7e82f4b802b8
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74792885"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Azure Logic Apps のスキーマの更新 - 2016 年 6 月 1 日
@@ -153,7 +153,7 @@ Azure Logic Apps の[更新されたバージョンのスキーマ](https://sche
 
 ### <a name="new-trackedproperties-for-actions"></a>アクションの新しい trackedProperties
 
-アクションに `trackedProperties` というプロパティを (`runAfter` や `type` の兄弟として) 追加できるようになりました。 ワークフローの一環として出力される Azure 診断のテレメトリに含める特定のアクションの入力または出力を、このオブジェクトで指定します。 例:
+アクションに `trackedProperties` というプロパティを (`runAfter` や `type` の兄弟として) 追加できるようになりました。 ワークフローの一環として出力される Azure 診断のテレメトリに含める特定のアクションの入力または出力を、このオブジェクトで指定します。 次に例を示します。
 
 ``` json
 {
@@ -172,7 +172,7 @@ Azure Logic Apps の[更新されたバージョンのスキーマ](https://sche
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ロジック アプリのワークフロー定義の作成](../logic-apps/logic-apps-author-definitions.md)
 * [ロジック アプリ デプロイを自動化する](logic-apps-azure-resource-manager-templates-overview.md)

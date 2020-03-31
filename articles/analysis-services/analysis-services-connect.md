@@ -4,15 +4,15 @@ description: Azure の Analysis Services サーバーに接続してデータを
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3231b46060cbb755ada000473c8fbe873cc51ef1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2875959a833134131fa6db6d51df0c2b47a39377
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73147316"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411310"
 ---
 # <a name="connecting-to-servers"></a>サーバーへの接続
 

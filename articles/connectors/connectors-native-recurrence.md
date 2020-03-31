@@ -7,10 +7,10 @@ ms.reviewer: deli, klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/25/2019
 ms.openlocfilehash: a9c167c5767a4156147e13a1e4ae21162e506474
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75445857"
 ---
 # <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-recurrence-trigger-in-azure-logic-apps"></a>Azure Logic Apps で繰り返しトリガーを使用して繰り返しタスクおよびワークフローを作成、スケジュール設定、および実行する
@@ -42,7 +42,7 @@ ms.locfileid: "75445857"
 
 ## <a name="add-recurrence-trigger"></a>繰り返しトリガーを追加する
 
-1. [Azure portal](https://portal.azure.com) にサインインする 空のロジック アプリを作成します。
+1. [Azure portal](https://portal.azure.com) にサインインします。 空のロジック アプリを作成します。
 
 1. ロジック アプリ デザイナーが表示されたら、検索ボックスに、フィルターとして「`recurrence`」と入力します。 トリガーの一覧から、ロジック アプリ ワークフロー内の最初の手順として次のトリガーを選択します。**定期的なアイテム**
 
@@ -52,9 +52,9 @@ ms.locfileid: "75445857"
 
    ![間隔と頻度の設定](./media/connectors-native-recurrence/recurrence-trigger-details.png)
 
-   | プロパティ | JSON での名前 | 必須 | 種類 | 説明 |
+   | プロパティ | JSON での名前 | 必須 | Type | 説明 |
    |----------|-----------|----------|------|-------------|
-   | **間隔** | `interval` | はい | 整数 | ワークフローの実行間隔を、[頻度] に指定された単位に基づいて表す正の整数。 間隔の最小値と最大値は次のとおりです。 <p>- Month: 1 から 16 か月 </br>- Day: 1 から 500 日 </br>- Hour: 1 から 12,000 時間 </br>- Minute: 1 から 72,000 分 </br>- Second: 1 から 9,999,999 秒<p>たとえば間隔が 6 で、頻度が "月" である場合は、繰り返しは 6 か月ごとになります。 |
+   | **間隔** | `interval` | はい | Integer | ワークフローの実行間隔を、[頻度] に指定された単位に基づいて表す正の整数。 間隔の最小値と最大値は次のとおりです。 <p>- Month: 1 から 16 か月 </br>- Day: 1 から 500 日 </br>- Hour: 1 から 12,000 時間 </br>- Minute: 1 から 72,000 分 </br>- Second: 1 から 9,999,999 秒<p>たとえば間隔が 6 で、頻度が "月" である場合は、繰り返しは 6 か月ごとになります。 |
    | **頻度** | `frequency` | はい | String | 繰り返しの時間の単位: **[秒]** 、 **[分]** 、 **[時間]** 、 **[日]** 、 **[週]** 、または **[月]** |
    ||||||
 
@@ -72,7 +72,7 @@ ms.locfileid: "75445857"
 
    ![詳細スケジュール オプション](./media/connectors-native-recurrence/recurrence-trigger-more-options-details.png)
 
-   | プロパティ | JSON での名前 | 必須 | 種類 | 説明 |
+   | プロパティ | JSON での名前 | 必須 | Type | 説明 |
    |----------|-----------|----------|------|-------------|
    | **タイム ゾーン** | `timeZone` | いいえ | String | 開始時刻を指定したときに限り適用されます。このトリガーに [UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を指定することはできないためです。 適用するタイム ゾーンを選択してください。 |
    | **[開始時刻]** | `startTime` | いいえ | String | 開始日時を次の形式で指定します。 <p>YYYY-MM-DDThh:mm:ss (タイム ゾーンを選択した場合) <p>または <p>YYYY-MM-DDThh:mm:ssZ (タイム ゾーンを選択しなかった場合) <p>たとえば、2017 年 9 月 18 日午後 2:00 にする場合は、"2017-09-18T14:00:00" と指定し、太平洋標準時などのタイム ゾーンを選択します。 または、タイム ゾーンなしで「2017-09-18T14:00:00Z」と指定します。 <p>**注:** この開始時刻には、最大で 49 年先の時刻を指定できます。また、[UTC の日付と時刻の形式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (ただし、[UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を除く) で[日付と時刻に関する ISO 8601 規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)に従っている必要があります。 タイム ゾーンを選択しない場合は、末尾にスペースを入れず、アルファベットの "Z" を追加してください。 この "Z" は、同等の[航海時間](https://en.wikipedia.org/wiki/Nautical_time)を表します。 <p>単純なスケジュールでは、開始時刻と最初の実行時刻が一致するのに対して、複雑なスケジュールでは、トリガーが作動するのは開始時刻以降となります。 "[*開始日時の使用方法を具体的に教えてください*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time)" |

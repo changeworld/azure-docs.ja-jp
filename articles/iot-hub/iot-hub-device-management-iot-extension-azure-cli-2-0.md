@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: c189ad1a6b6ebc13b71ca547176af27a43a78a7d
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 88c3d1f4213b161d5e322349a7f0e1bc1dd952e7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673436"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239659"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>Azure CLI 向けの IoT 拡張機能を使用した Azure IoT Hub デバイス管理
 
@@ -71,13 +71,13 @@ Azure CLI と Azure CLI 向けの IoT 拡張機能をさまざまな管理オプ
 
 次のコマンドを実行して Azure アカウントにサインインします。
 
-```bash
+```azurecli
 az login
 ```
 
 ## <a name="direct-methods"></a>ダイレクト メソッド
 
-```bash
+```azurecli
 az iot hub invoke-device-method --device-id <your device id> \
   --hub-name <your hub name> \
   --method-name <the method name> \
@@ -88,7 +88,7 @@ az iot hub invoke-device-method --device-id <your device id> \
 
 次のコマンドを実行して、目的のプロパティ interval = 3000 を設定します。
 
-```bash
+```azurecli
 az iot hub device-twin update -n <your hub name> \
   -d <your device id> --set properties.desired.interval = 3000
 ```
@@ -99,7 +99,7 @@ az iot hub device-twin update -n <your hub name> \
 
 次のコマンドを実行して、デバイスの報告されるプロパティを取得します。
 
-```bash
+```azurecli
 az iot hub device-twin show -n <your hub name> -d <your device id>
 ```
 
@@ -109,13 +109,13 @@ az iot hub device-twin show -n <your hub name> -d <your device id>
 
 次のコマンドを実行して、デバイスのタグとプロパティを取得します。
 
-```bash
+```azurecli
 az iot hub device-twin show --hub-name <your hub name> --device-id <your device id>
 ```
 
 次のコマンドを実行して、フィールド role = temperature&humidity をデバイスに追加します。
 
-```bash
+```azurecli
 az iot hub device-twin update \
   --hub-name <your hub name> \
   --device-id <your device id> \
@@ -126,14 +126,14 @@ az iot hub device-twin update \
 
 次のコマンドを実行して、タグ role = 'temperature&humidity' のクエリを実行します。
 
-```bash
+```azurecli
 az iot hub query --hub-name <your hub name> \
   --query-command "SELECT * FROM devices WHERE tags.role = 'temperature&humidity'"
 ```
 
 次のコマンドを実行して、タグ role = 'temperature&humidity' 以外のすべてのデバイスのクエリを実行します。
 
-```bash
+```azurecli
 az iot hub query --hub-name <your hub name> \
   --query-command "SELECT * FROM devices WHERE tags.role != 'temperature&humidity'"
 ```

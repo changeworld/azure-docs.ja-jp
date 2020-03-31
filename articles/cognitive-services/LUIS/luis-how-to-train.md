@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: diberry
 ms.openlocfilehash: 1da8ab3015730c6b3e1962301a34b1ad43b1aad6
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74143698"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218757"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>LUIS アプリのアクティブなバージョンをトレーニングする 
 
@@ -30,7 +30,7 @@ ms.locfileid: "74143698"
 
 [LUIS ポータル](https://www.luis.ai)で反復的なプロセスを開始するには、まず、LUIS アプリを少なくとも 1 回トレーニングする必要があります。 すべての意図に少なくとも 1 つの発話があることをトレーニングの前に確認してください。
 
-1. **My Apps** ページでアプリの名前を選択してアプリにアクセスします。 
+1. **[My Apps]\(マイ アプリ\)** ページでご自身のアプリの名前を選択して、アプリにアクセスします。 
 
 1. アプリで、上部パネルの **[トレーニング]** を選択します。 
 
@@ -46,7 +46,7 @@ ms.locfileid: "74143698"
 
 ### <a name="version-settings-api-use-of-usealltrainingdata"></a>バージョン設定 API の UseAllTrainingData の使用
 
-`UseAllTrainingData` を true に設定してこの機能を無効にし、[バージョン設定 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) を使用します。 
+[ を true に設定してこの機能を無効にし、](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings)バージョン設定 API`UseAllTrainingData` を使用します。 
 
 ## <a name="unnecessary-training"></a>不要なトレーニング
 
@@ -58,7 +58,7 @@ LUIS ポータルでのトレーニングは、 **[トレーニング]** ボタ�
 
 トレーニングが完了したことを知るには、すべてのモデルが正常にトレーニングされるまで状態をポーリングする必要があります。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [対話型テスト](luis-interactive-test.md)
 * [バッチ テスト](luis-how-to-batch-test.md)

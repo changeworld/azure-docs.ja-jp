@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: c294d4583ba2690e1f4952441ffb43bff1459059
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75386920"
 ---
 # <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services のアプリケーションとサービスの可用性の問題:よく寄せられる質問 (FAQ)
