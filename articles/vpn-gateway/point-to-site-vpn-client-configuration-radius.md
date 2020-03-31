@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: cherylmc
 ms.openlocfilehash: 6e1b162d17e2369b579fc1210c57e0409b0546bc
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77148472"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>P2S RADIUS 認証用の VPN クライアント構成ファイルを作成およびインストールする
@@ -39,13 +39,13 @@ P2S RADIUS 認証の構成ワークフローは次のとおりです。
 この記事のセクションを使用するには、最初に使用する認証の種類 (ユーザー名/パスワード、証明書、またはその他の認証の種類) を決定します。 各セクションに、Windows、Mac OS X、Linux 向けの手順があります (現時点では、利用できる手順は限られています)。
 
 
-## <a name="adeap"></a>ユーザー名/パスワード認証
+## <a name="usernamepassword-authentication"></a><a name="adeap"></a>ユーザー名/パスワード認証
 
 ユーザー名/パスワード認証を構成して、Active Directory を使用するか、または使用しないようにできます。 いずれかのシナリオで、接続するすべてのユーザーに、RADIUS を使用して認証できるユーザー名とパスワードの資格情報があることを確認します。
 
 ユーザー名/パスワード認証を構成する場合、EAP-MSCHAPv2 のユーザー名/パスワード認証プロトコルの構成のみを作成できます。 コマンドでは、`-AuthenticationMethod` は `EapMSChapv2` です。
 
-### <a name="usernamefiles"></a> 1.VPN クライアント構成ファイルの生成
+### <a name="1-generate-vpn-client-configuration-files"></a><a name="usernamefiles"></a> 1.VPN クライアント構成ファイルの生成
 
 Azure portal または Azure PowerShell を使用して VPN クライアント構成ファイルを生成することができます。
 
@@ -80,7 +80,7 @@ New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -Authen
 Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 ```
 
-### <a name="setupusername"></a> 2.VPN クライアントの構成
+### <a name="2-configure-vpn-clients"></a><a name="setupusername"></a> 2.VPN クライアントの構成
 
 次の VPN クライアントを構成できます。
 
@@ -88,7 +88,7 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 * [Mac (OS X)](#admaccli)
 * [strongSwan を使用する Linux](#adlinuxcli)
  
-#### <a name="adwincli"></a>Windows VPN クライアント設定
+#### <a name="windows-vpn-client-setup"></a><a name="adwincli"></a>Windows VPN クライアント設定
 
 バージョンがクライアントのアーキテクチャと一致する限り、各 Windows クライアント コンピューターで同じ VPN クライアント構成パッケージを使用できます。 サポートされているクライアント オペレーティング システムの一覧については、[FAQ](vpn-gateway-vpn-faq.md#P2S) を参照してください。
 
@@ -98,7 +98,7 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 2. パッケージをインストールするには、ダブルクリックします。 SmartScreen ポップアップが表示されたら、 **[詳細]**  >  **[実行]** の順に選択します。
 3. クライアント コンピューターで **[ネットワークの設定]** に移動し、 **[VPN]** を選択します。 VPN 接続により、その接続先の仮想ネットワークの名前が表示されます。 
 
-#### <a name="admaccli"></a>Mac (OS X) VPN クライアント設定
+#### <a name="mac-os-x-vpn-client-setup"></a><a name="admaccli"></a>Mac (OS X) VPN クライアント設定
 
 1. **VpnClientSetup mobileconfig** ファイルを選択し、各ユーザーに送信します。 電子メールや別の方法を使用できます。
 
@@ -147,7 +147,7 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
     ![[認証設定]](./media/point-to-site-vpn-client-configuration-radius/adauthentication.png)
 12. **[ネットワーク]** ダイアログ ボックスに戻り、 **[適用]** を選択して、変更を保存します。 接続を開始するには、 **[接続]** を選択します。
 
-#### <a name="adlinuxcli"></a>strongSwan を使用した Linux VPN クライアントの設定
+#### <a name="linux-vpn-client-setup-through-strongswan"></a><a name="adlinuxcli"></a>strongSwan を使用した Linux VPN クライアントの設定
 
 次の手順は、Ubuntu 17.0.4 上で strongSwan 5.5.1 を使用して作成されました。 実際の画面は、使用している Linux と strongSwan のバージョンによって異なる場合があります。
 
@@ -176,7 +176,7 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 
    ![ネットワーク マネージャーでの "VPN Radius" 接続](./media/point-to-site-vpn-client-configuration-radius/ConnectRADIUS.png)
 
-## <a name="certeap"></a>証明書認証
+## <a name="certificate-authentication"></a><a name="certeap"></a>証明書認証
  
 EAP-TLS プロトコルを使用する RADIUS 証明書認証用の VPN クライアント構成ファイルを作成できます。 通常、企業が発行した証明書を使用して、VPN のユーザーを認証します。 接続するすべてのユーザーのデバイスに証明書がインストールされていることと、その証明書が RADIUS サーバーで検証できることを確認します。
 
@@ -190,7 +190,7 @@ EAP-TLS プロトコルを使用する RADIUS 証明書認証用の VPN クラ�
 
 `-ClientRootCert` は、ルート証明書を含む .cer ファイルです。 これは、省略可能なパラメーターです。 接続元にするデバイスがクライアント証明書を 1 つしか持っていない場合は、このパラメーターを指定する必要はありません。
 
-### <a name="certfiles"></a>1.VPN クライアント構成ファイルの生成
+### <a name="1-generate-vpn-client-configuration-files"></a><a name="certfiles"></a>1.VPN クライアント構成ファイルの生成
 
 証明書認証で使用する VPN クライアント構成ファイルを生成します。 VPN クライアント構成ファイルの生成には、次のコマンドを使用します。
  
@@ -211,7 +211,7 @@ New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -Authen
 Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" | fl
 ```
  
-### <a name="setupusername"></a> 2.VPN クライアントの構成
+### <a name="2-configure-vpn-clients"></a><a name="setupusername"></a> 2.VPN クライアントの構成
 
 次の VPN クライアントを構成できます。
 
@@ -219,13 +219,13 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" | fl
 * [Mac (OS X)](#certmaccli)
 * Linux (サポート対象、まだ記事の手順はありません)
 
-#### <a name="certwincli"></a>Windows VPN クライアント設定
+#### <a name="windows-vpn-client-setup"></a><a name="certwincli"></a>Windows VPN クライアント設定
 
 1. 構成パッケージを選択し、クライアント デバイスにインストールします。 64 ビットのプロセッサ アーキテクチャの場合は、**VpnClientSetupAmd64** インストーラー パッケージを選択します。 32 ビットのプロセッサ アーキテクチャの場合は、**VpnClientSetupX86** インストーラー パッケージを選択します。 SmartScreen ポップアップが表示されたら、 **[詳細]**  >  **[実行]** の順に選択します。 パッケージを保存して、他のクライアント コンピューターにインストールすることもできます。
 2. 各クライアントには、認証のためにクライアント証明書が必要です。 クライアント証明書をインストールします。 クライアント証明書については、[ポイント対サイトのクライアント証明書](vpn-gateway-certificates-point-to-site.md)に関するページを参照してください。 生成された証明書をインストールするには、「[Install a certificate on Windows clients](point-to-site-how-to-vpn-client-install-azure-cert.md)」 (Windows クライアントに証明書をインストールする) を参照してください。
 3. クライアント コンピューターで **[ネットワークの設定]** に移動し、 **[VPN]** を選択します。 VPN 接続により、その接続先の仮想ネットワークの名前が表示されます。
 
-#### <a name="certmaccli"></a>Mac (OS X) VPN クライアント設定
+#### <a name="mac-os-x-vpn-client-setup"></a><a name="certmaccli"></a>Mac (OS X) VPN クライアント設定
 
 Azure 仮想ネットワークに接続するすべての Mac デバイスごとに、個別のプロファイルを作成する必要があります。 これは、これらのデバイスでは、認証用のユーザー証明書をプロファイルで指定する必要があるためです。 **Generic** フォルダーには、プロファイルの作成に必要な情報がすべて揃っています。
 
@@ -263,7 +263,7 @@ Azure 仮想ネットワークに接続するすべての Mac デバイスごと
    !["ローカル ID" ボックス](./media/point-to-site-vpn-client-configuration-radius/applyconnect.png)
 9. **[ネットワーク]** ダイアログ ボックスで、 **[適用]** を選択して、すべての変更を保存します。 次に、 **[接続]** を選択して、Azure 仮想ネットワークへの P2S 接続を開始します。
 
-## <a name="otherauth"></a>他の認証の種類またはプロトコルを使用する
+## <a name="working-with-other-authentication-types-or-protocols"></a><a name="otherauth"></a>他の認証の種類またはプロトコルを使用する
 
 別の認証の種類 (OTP など) を使用するか、別の認証プロトコル (EAP-MSCHAPv2 の代わりに PEAP-MSCHAPv2 など) を使用するには、独自の VPN クライアント構成プロファイルを作成する必要があります。 プロファイルを作成するには、仮想ネットワーク ゲートウェイの IP アドレス、トンネルの種類、分割トンネルのルートなどの情報が必要です。 この情報は、次の手順を実行することで取得できます。
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 01/31/2018
 ms.author: cherylmc
 ms.openlocfilehash: d73bc8e9c39c14a254e8f7bae1d7b1a96a6c3225
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75780166"
 ---
 # <a name="troubleshoot-vpn-gateway"></a>VPN Gateway のトラブルシューティング

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/04/2018
 ms.author: cherylmc
-ms.openlocfilehash: 1f0cc1d63f8560399d1d71c8d010c37bd2c5e387
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 121790fce220874babedf67cd72471caa7e92ae6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778755"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80241104"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>CLI を使用してルートベースの VPN ゲートウェイを作成する
 
@@ -29,15 +29,15 @@ CLI をローカルにインストールして使用する場合、この記事�
 [az group create](/cli/azure/group) コマンドを使用して、リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name TestRG1 --location eastus
 ```
 
-## <a name="vnet"></a>仮想ネットワークの作成
+## <a name="create-a-virtual-network"></a><a name="vnet"></a>仮想ネットワークの作成
 
 [az network vnet create](/cli/azure/network/vnet) コマンドを使用して、仮想ネットワークを作成します。 次の例では、**EastUS** の場所に、**VNet1** という名前の仮想ネットワークを作成します。
 
-```azurecli-interactive 
+```azurecli-interactive
 az network vnet create \
   -n VNet1 \
   -g TestRG1 \
@@ -47,11 +47,11 @@ az network vnet create \
   --subnet-prefix 10.1.0.0/24
 ```
 
-## <a name="gwsubnet"></a>ゲートウェイ サブネットの追加
+## <a name="add-a-gateway-subnet"></a><a name="gwsubnet"></a>ゲートウェイ サブネットの追加
 
 ゲートウェイ サブネットには、仮想ネットワーク ゲートウェイ サービスが使用する予約済み IP アドレスが含まれます。 次の例を使用してゲートウェイ サブネットを追加します。
 
-```azurepowershell-interactive
+```azurecli-interactive
 az network vnet subnet create \
   --vnet-name VNet1 \
   -n GatewaySubnet \
@@ -59,7 +59,7 @@ az network vnet subnet create \
   --address-prefix 10.1.255.0/27 
 ```
 
-## <a name="PublicIP"></a>パブリック IP アドレスの要求
+## <a name="request-a-public-ip-address"></a><a name="PublicIP"></a>パブリック IP アドレスの要求
 
 VPN ゲートウェイには、動的に割り当てられるパブリック IP アドレスが必要です。 仮想ネットワーク用に作成した VPN ゲートウェイにパブリック IP アドレスが割り当てられます。 次の例を使用して、パブリック IP アドレスを要求します。
 
@@ -70,7 +70,7 @@ az network public-ip create \
   --allocation-method Dynamic 
 ```
 
-## <a name="CreateGateway"></a>VPN ゲートウェイの作成
+## <a name="create-the-vpn-gateway"></a><a name="CreateGateway"></a>VPN ゲートウェイの作成
 
 VPN ゲートウェイの作成には、[az network vnet-gateway create](/cli/azure/group) コマンドを使用します。
 
@@ -91,7 +91,7 @@ az network vnet-gateway create \
 
 VPN ゲートウェイの作成には 45 分以上かかる場合があります。
 
-## <a name="viewgw"></a>VPN ゲートウェイの表示
+## <a name="view-the-vpn-gateway"></a><a name="viewgw"></a>VPN ゲートウェイの表示
 
 ```azurecli-interactive
 az network vnet-gateway show \
@@ -101,7 +101,7 @@ az network vnet-gateway show \
 
 応答は次のようになります。
 
-```
+```output
 {
   "activeActive": false,
   "bgpSettings": null,
@@ -159,7 +159,7 @@ az network public-ip show \
 
 応答の例:
 
-```
+```output
 {
   "dnsSettings": null,
   "etag": "W/\"a12d4d03-b27a-46cc-b222-8d9364b8166a\"",
@@ -170,6 +170,7 @@ az network public-ip show \
     "etag": null,
     "id": "/subscriptions/<subscription ID>/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW/ipConfigurations/vnetGatewayConfig0",
 ```
+
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 作成したリソースが必要でなくなったら、[az group delete](/cli/azure/group) を使用してリソース グループを削除します。 これでリソース グループとそれに含まれるすべてのリソースが削除されます。

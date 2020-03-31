@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d7938f7db22f004a0bf6cdf2e22dc8e103896719
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617396"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>SAP NetWeaver マルチ SID 構成の作成
@@ -88,7 +88,7 @@ Azure 内部ロード バランサーを使用して複数の仮想 IP アドレ
 ## <a name="prepare-the-infrastructure"></a>インフラストラクチャの準備
 インフラストラクチャの準備ために、次のパラメーターを持つ追加の SAP ASCS/SCS インスタンスをインストールできます。
 
-| パラメーター名 | Value |
+| パラメーター名 | 値 |
 | --- | --- |
 | SAP ASCS/SCS SID |pr1-lb-ascs |
 | SAP DBMS の内部ロード バランサー | PR5 |

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: avverma
 ms.openlocfilehash: f335b0fb3396103c321d740bcf6d125e60e95086
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78274579"
 ---
 # <a name="preview-automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>プレビュー:Azure Virtual Machine Scale Sets の自動インスタンス修復

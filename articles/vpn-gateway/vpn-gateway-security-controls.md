@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: mbaldwin
 ms.openlocfilehash: cdf616b29a93e786ef26af83b5d3b3541f94d67c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75972287"
 ---
 # <a name="security-controls-for-azure-vpn-gateway"></a>Azure VPN Gateway のセキュリティ コントロール
@@ -23,7 +23,7 @@ ms.locfileid: "75972287"
 
 ## <a name="network"></a>ネットワーク
 
-| セキュリティ コントロール | はい/いいえ | メモ |
+| セキュリティ コントロール | はい/いいえ | Notes |
 |---|---|--|
 | サービス エンドポイントのサポート| 該当なし | |
 | VNet インジェクションのサポート| 該当なし | |
@@ -32,7 +32,7 @@ ms.locfileid: "75972287"
 
 ## <a name="monitoring--logging"></a>監視およびログ記録
 
-| セキュリティ コントロール | はい/いいえ | メモ|
+| セキュリティ コントロール | はい/いいえ | Notes|
 |---|---|--|
 | Azure 監視サポート (Log analytics や App Insights など)| はい | [Azure Monitor の診断ログ/アラート](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md) & [Azure Monitor のメトリック/アラート](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md)に関するページを参照してください。  |
 | コントロールと管理プレーンのログ記録と監査| はい | Azure Resource Manager アクティビティ ログ。 |
@@ -40,14 +40,14 @@ ms.locfileid: "75972287"
 
 ## <a name="identity"></a>ID
 
-| セキュリティ コントロール | はい/いいえ | メモ|
+| セキュリティ コントロール | はい/いいえ | Notes|
 |---|---|--|
 | 認証| はい | サービスを管理し、Azure VPN ゲートウェイを構成するための [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)。 |
 | 承認| はい | [RBAC](../role-based-access-control/overview.md) 経由で承認をサポートします。 |
 
 ## <a name="data-protection"></a>データ保護
 
-| セキュリティ コントロール | はい/いいえ | メモ |
+| セキュリティ コントロール | はい/いいえ | Notes |
 |---|---|--|
 | 保存時のサーバー側の暗号化: Microsoft のマネージド キー | 該当なし | VPN ゲートウェイは顧客データを格納するのではなく、顧客データを転送します。 |
 | 転送中の暗号化 (ExpressRoute 暗号化、VNet 内の暗号化、および VNet 間暗号化など)| はい | VPN ゲートウェイは、Azure VPN ゲートウェイと顧客のオンプレミスの VPN デバイス (S2S) または VPN クライアント (P2S) の間の顧客パケットを暗号化します。 VPN ゲートウェイはまた、VNet 間の暗号化もサポートします。 |
@@ -57,7 +57,7 @@ ms.locfileid: "75972287"
 
 ## <a name="configuration-management"></a>構成管理
 
-| セキュリティ コントロール | はい/いいえ | メモ|
+| セキュリティ コントロール | はい/いいえ | Notes|
 |---|---|--|
 | 構成管理のサポート (構成のバージョン管理など)| はい | 管理操作では、Azure VPN ゲートウェイ構成の状態を Azure Resource Manager テンプレートとしてエクスポートしたり、一定期間にわたってバージョン管理したりできます。 |
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: cherylmc
 ms.openlocfilehash: a354f8031c26ca86876dc6f3a2092610226cc84b
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75834565"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Azure CLI を使用して VNet 間の VPN ゲートウェイ接続を構成する
@@ -31,7 +31,7 @@ ms.locfileid: "75834565"
 >
 >
 
-## <a name="about"></a>VNet の接続について
+## <a name="about-connecting-vnets"></a><a name="about"></a>VNet の接続について
 
 VNet の接続方法は複数あります。 以降のセクションでは、仮想ネットワークを接続するさまざまな方法について説明します。
 
@@ -47,7 +47,7 @@ VNet 間接続の構成は、VNet を簡単に接続するための良い方法�
 
 VNET ピアリングを使用して VNet を接続することを検討する場合もあります。 VNET ピアリングは VPN ゲートウェイを使用せず、さまざまな制約があります。 さらに、[VNET ピアリングの料金](https://azure.microsoft.com/pricing/details/virtual-network)は、[VNet 間 VPN Gateway の料金](https://azure.microsoft.com/pricing/details/vpn-gateway)と計算方法が異なります。 詳細については、「 [VNet ピアリング](../virtual-network/virtual-network-peering-overview.md)」を参照してください。
 
-## <a name="why"></a>VNet 間接続を作成する理由
+## <a name="why-create-a-vnet-to-vnet-connection"></a><a name="why"></a>VNet 間接続を作成する理由
 
 VNet 間接続による仮想ネットワークの接続が望ましいのは、次のような場合です。
 
@@ -61,7 +61,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 
 マルチサイト構成と VNet 間通信を組み合わせることができます。 そのため、クロスプレミス接続と仮想ネットワーク間接続とを組み合わせたネットワーク トポロジを確立することができます。
 
-## <a name="steps"></a>どの VNet 間の手順を使用する必要がありますか。
+## <a name="which-vnet-to-vnet-steps-should-i-use"></a><a name="steps"></a>どの VNet 間の手順を使用する必要がありますか。
 
 この記事では、VNet 間接続の 2 種類の手順について説明します。 1 つは [VNet が同じサブスクリプション内に存在する](#samesub)場合の手順で、もう 1 つは [VNet が別のサブスクリプション内に存在する](#difsub)場合の手順です。 
 
@@ -76,13 +76,13 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
   ![v2v diagram](./media/vpn-gateway-howto-vnet-vnet-cli/v2vdiffsub.png)
 
 
-## <a name="samesub"></a>同じサブスクリプション内にある VNet の接続
+## <a name="connect-vnets-that-are-in-the-same-subscription"></a><a name="samesub"></a>同じサブスクリプション内にある VNet の接続
 
 ### <a name="before-you-begin"></a>開始する前に
 
 開始する前に、最新バージョンの CLI コマンド (2.0 以降) をインストールします。 CLI コマンドのインストール方法については、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」をご覧ください。
 
-### <a name="Plan"></a>IP アドレス範囲の計画
+### <a name="plan-your-ip-address-ranges"></a><a name="Plan"></a>IP アドレス範囲の計画
 
 以下の手順に従って、2 つの仮想ネットワークを、それぞれのゲートウェイ サブネットおよび構成と共に作成します。 その後、2 つの VNet 間の VPN 接続を作成します。 ネットワーク構成の IP アドレスの範囲を計画することが重要です。 VNet の範囲やローカル ネットワークの範囲が重複することは、どのような形であれ許容されないので注意してください。 以下の例では、DNS サーバーは含まれていません。 仮想ネットワークの名前解決が必要な場合は、[名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)に関する記事を参照してください。
 
@@ -92,7 +92,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 
 * VNet 名: TestVNet1
 * リソース グループ:TestRG1
-* 場所:East US
+* 場所:米国東部
 * TestVNet1: 10.11.0.0/16 と 10.12.0.0/16
 * FrontEnd:10.11.0.0/24
 * BackEnd: 10.12.0.0/24
@@ -117,11 +117,11 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 * VPNType: RouteBased
 * 接続:VNet4toVNet1
 
-### <a name="Connect"></a>手順 1 - サブスクリプションに接続する
+### <a name="step-1---connect-to-your-subscription"></a><a name="Connect"></a>手順 1 - サブスクリプションに接続する
 
 [!INCLUDE [CLI login](../../includes/vpn-gateway-cli-login-numbers-include.md)]
 
-### <a name="TestVNet1"></a>手順 2 - TestVNet1 を作成し、構成する
+### <a name="step-2---create-and-configure-testvnet1"></a><a name="TestVNet1"></a>手順 2 - TestVNet1 を作成し、構成する
 
 1. リソース グループを作成します。
 
@@ -159,7 +159,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
    az network vnet-gateway create -n VNet1GW -l eastus --public-ip-address VNet1GWIP -g TestRG1 --vnet TestVNet1 --gateway-type Vpn --sku VpnGw1 --vpn-type RouteBased --no-wait
    ```
 
-### <a name="TestVNet4"></a>手順 3 - TestVNet4 を作成し、構成する
+### <a name="step-3---create-and-configure-testvnet4"></a><a name="TestVNet4"></a>手順 3 - TestVNet4 を作成し、構成する
 
 1. リソース グループを作成します。
 
@@ -194,11 +194,11 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
    az network vnet-gateway create -n VNet4GW -l westus --public-ip-address VNet4GWIP -g TestRG4 --vnet TestVNet4 --gateway-type Vpn --sku VpnGw1 --vpn-type RouteBased --no-wait
    ```
 
-### <a name="createconnect"></a>手順 4 - 接続を作成する
+### <a name="step-4---create-the-connections"></a><a name="createconnect"></a>手順 4 - 接続を作成する
 
 ここまでで、VPN ゲートウェイを備えた VNet を 2つ用意できました。 次の手順では、仮想ネットワーク ゲートウェイの間に VPN ゲートウェイ接続を作成します。 上記の例を使用した場合、VNet ゲートウェイは異なるリソース グループに存在します。 ゲートウェイが異なるリソース グループにある場合は、接続時に各ゲートウェイのリソース ID を特定して指定する必要があります。 VNet が同じリソース グループにある場合は、リソース ID を指定する必要がないため、[2 番目の手順](#samerg)を使用できます。
 
-### <a name="diffrg"></a>異なるリソース グループにある VNet を接続するには
+### <a name="to-connect-vnets-that-reside-in-different-resource-groups"></a><a name="diffrg"></a>異なるリソース グループにある VNet を接続するには
 
 1. 次のコマンドの出力から、VNet1GW のリソース ID を取得します。
 
@@ -249,7 +249,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
    ```
 5. 接続を確認します。 [接続の確認](#verify)に関するセクションを参照してください。
 
-### <a name="samerg"></a>同じリソース グループにある VNet を接続するには
+### <a name="to-connect-vnets-that-reside-in-the-same-resource-group"></a><a name="samerg"></a>同じリソース グループにある VNet を接続するには
 
 1. TestVNet1 から TestVNet4 への接続を作成します。 この手順では、TestVNet1 から TestVNet4 への接続を作成します。 この例ではリソース グループが同じであることに注意してください。 ここでも参照される共有キーが表示されます。 共有キーには独自の値を使用することができますが、両方の接続の共有キーが一致する必要があります。 接続の作成が完了するまでしばらくかかります。
 
@@ -263,15 +263,15 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
    ```
 3. 接続を確認します。 [接続の確認](#verify)に関するセクションを参照してください。
 
-## <a name="difsub"></a>異なるサブスクリプション内にある VNet の接続
+## <a name="connect-vnets-that-are-in-different-subscriptions"></a><a name="difsub"></a>異なるサブスクリプション内にある VNet の接続
 
 このシナリオでは、TestVNet1 と TestVNet5 を接続します。 VNet は異なるサブスクリプション内に存在します。 サブスクリプションが同じ Active Directory テナントに関連付けられている必要はありません。 この構成の手順では、TestVNet1 を TestVNet5 に接続するために VNet 間接続を追加します。
 
-### <a name="TestVNet1diff"></a>手順 5 - TestVNet1 を作成し、構成する
+### <a name="step-5---create-and-configure-testvnet1"></a><a name="TestVNet1diff"></a>手順 5 - TestVNet1 を作成し、構成する
 
 以下の手順は、前のセクションで説明した手順の続きです。 TestVNet1 と TestVNet1 の VPN ゲートウェイを作成して構成するには、[手順 1.](#Connect) と[手順 2.](#TestVNet1) を完了する必要があります。 この構成では、前のセクションの TestVNet4 を作成する必要はありません。ただし、TestVNet4 を作成しても以下の手順に影響はありません。 手順 1. と手順 2. が完了したら、(次の) 手順 6. に進んでください。
 
-### <a name="verifyranges"></a>手順 6 - IP アドレス範囲を確認する
+### <a name="step-6---verify-the-ip-address-ranges"></a><a name="verifyranges"></a>手順 6 - IP アドレス範囲を確認する
 
 追加の接続を作成する場合、重要なのは、新しい仮想ネットワークの IP アドレス空間が、他の VNet 範囲またはローカル ネットワーク ゲートウェイ範囲のどれとも重複していないことを確認することです。 この演習では、TestVNet5 に次の値を使用します。
 
@@ -290,7 +290,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 * 接続:VNet5toVNet1
 * ConnectionType: VNet2VNet
 
-### <a name="TestVNet5"></a>手順 7 - TestVNet5 を作成し、構成する
+### <a name="step-7---create-and-configure-testvnet5"></a><a name="TestVNet5"></a>手順 7 - TestVNet5 を作成し、構成する
 
 この手順は、新しいサブスクリプション (サブスクリプション 5) との関連で実行する必要があります。 この部分は、サブスクリプションを所有する別の組織の管理者が実行することがあります。 サブスクリプションを切り替えるには、`az account list --all` を使用して、ご自分のアカウントで使用できるサブスクリプションを一覧表示します。次に、`az account set --subscription <subscriptionID>` を実行して、使用するサブスクリプションに切り替えます。
 
@@ -329,7 +329,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
    az network vnet-gateway create -n VNet5GW -l japaneast --public-ip-address VNet5GWIP -g TestRG5 --vnet TestVNet5 --gateway-type Vpn --sku VpnGw1 --vpn-type RouteBased --no-wait
    ```
 
-### <a name="connections5"></a>手順 8 - 接続を作成する
+### <a name="step-8---create-the-connections"></a><a name="connections5"></a>手順 8 - 接続を作成する
 
 ゲートウェイが異なるサブスクリプションにあるため、この手順は、 **[サブスクリプション 1]** と **[サブスクリプション 5]** というマークの付いた 2 つの CLI セッションに分かれています。 サブスクリプションを切り替えるには、`az account list --all` を使用して、ご自分のアカウントで使用できるサブスクリプションを一覧表示します。次に、`az account set --subscription <subscriptionID>` を実行して、使用するサブスクリプションに切り替えます。
 
@@ -367,12 +367,12 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
    az network vpn-connection create -n VNet5ToVNet1 -g TestRG5 --vnet-gateway1 /subscriptions/e7e33b39-fe28-4822-b65c-a4db8bbff7cb/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW -l japaneast --shared-key "eeffgg" --vnet-gateway2 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW
    ```
 
-## <a name="verify"></a>接続の確認
+## <a name="verify-the-connections"></a><a name="verify"></a>接続の確認
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
 [!INCLUDE [verify connections](../../includes/vpn-gateway-verify-connection-cli-rm-include.md)]
 
-## <a name="faq"></a>VNet 間接続に関してよく寄せられる質問
+## <a name="vnet-to-vnet-faq"></a><a name="faq"></a>VNet 間接続に関してよく寄せられる質問
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
 ## <a name="next-steps"></a>次のステップ

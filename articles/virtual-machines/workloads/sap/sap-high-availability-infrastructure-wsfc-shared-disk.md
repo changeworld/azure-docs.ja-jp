@@ -17,11 +17,11 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8a49bc979923bf52d099e30615910c5bdb0601b6
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591933"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235895"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>SAP ASCS/SCS 用の Windows フェールオーバー クラスターと共有ディスクを使用して SAP HA 向けに Azure インフラストラクチャを準備する
 
@@ -222,7 +222,7 @@ _**図 1:** SAP 高可用性 Azure Resource Manager パラメーターを設定�
 >
 >
 
-## <a name="c87a8d3f-b1dc-4d2f-b23c-da4b72977489"></a> 運用環境で使用するための企業ネットワーク接続 (クロスプレミス) を使用する仮想マシンのデプロイ
+## <a name="deploy-virtual-machines-with-corporate-network-connectivity-cross-premises-to-use-in-production"></a><a name="c87a8d3f-b1dc-4d2f-b23c-da4b72977489"></a> 運用環境で使用するための企業ネットワーク接続 (クロスプレミス) を使用する仮想マシンのデプロイ
 運用 SAP システムの場合、Azure VPN Gateway または Azure ExpressRoute を使って、企業ネットワーク接続を使う Azure Virtual Machines をデプロイします。
 
 > [!NOTE]
@@ -251,7 +251,7 @@ _**図 1:** SAP 高可用性 Azure Resource Manager パラメーターを設定�
    /subscriptions/<subscription ID>/resourceGroups/<VPN name>/providers/Microsoft.Network/virtualNetworks/azureVnet/subnets/<subnet name>
    ```
 
-## <a name="7fe9af0e-3cce-495b-a5ec-dcb4d8e0a310"></a> テストおよびデモ用のクラウドのみの SAP インスタンスのデプロイ
+## <a name="deploy-cloud-only-sap-instances-for-test-and-demo"></a><a name="7fe9af0e-3cce-495b-a5ec-dcb4d8e0a310"></a> テストおよびデモ用のクラウドのみの SAP インスタンスのデプロイ
 クラウドのみのデプロイメント モデルで高可用性 SAP システムをデプロイすることができます。 この種類のデプロイは、主として、デモおよびテストのユース ケースに適しています。 運用環境での使用には適していません。
 
 - Azure Portal の **[パラメーター]** ウィンドウにある **[NEWOREXISTINGSUBNET]\(新規または既存のサブネット\)** ボックスで、 **[new]\(新規\)** を選びます。 **[SUBNETID]** フィールドは空白のままにしておきます。
@@ -290,7 +290,7 @@ _**図 1:** SAP 高可用性 Azure Resource Manager パラメーターを設定�
 
 以降のセクションでは、テンプレートと、テンプレートで指定する必要があるパラメーターの詳細について説明します。
 
-### <a name="ASCS-SCS-template"></a> ASCS/SCS テンプレート
+### <a name="ascsscs-template"></a><a name="ASCS-SCS-template"></a> ASCS/SCS テンプレート
 
 ASCS/SCS テンプレートは、複数の ASCS/SCS インスタンスをホストする Windows Server フェールオーバー クラスターの作成に使用できる 2 つの仮想マシンをデプロイします。
 
@@ -316,7 +316,7 @@ ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マ�
 
 ロード バランサーには、1 つの VIP (Linux の場合は 2 つ) が含まれています。1 つは ASCS/SCS 用の VIP、1 つは ERS 用の VIP (Linux のみ) です。
 
-#### <a name="0f3ee255-b31e-4b8a-a95a-d9ed6200468b"></a> SAP ASCS/SCS のポート
+#### <a name="sap-ascsscs-ports"></a><a name="0f3ee255-b31e-4b8a-a95a-d9ed6200468b"></a> SAP ASCS/SCS のポート
 次の一覧には、すべての負荷分散規則が含まれています (x は、1、2、3 などの SAP システムの番号です)。
 - すべての SAP システム用の Windows 固有のポート:445、5985
 - ASCS ポート (インスタンス番号 x0):32x0、36x0、39x0、81x0、5x013、5x014、5x016
@@ -328,7 +328,7 @@ ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マ�
 - ASCS/SCS 内部ロード バランサー プローブ ポート:620x0
 - ERS 内部ロード バランサー プローブ ポート (Linux のみ):621x2
 
-### <a name="database-template"></a> データベース テンプレート
+### <a name="database-template"></a><a name="database-template"></a> データベース テンプレート
 
 データベース テンプレートは、1 つの SAP システムのリレーショナル データベース管理システム (RDBMS) のインストールに使用できる 1 つまたは 2 つの仮想マシンをデプロイします。 たとえば、5 つの SAP システムに ASCS/SCS テンプレートをデプロイする場合は、このテンプレートを 5 回デプロイする必要があります。
 
@@ -345,7 +345,7 @@ ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マ�
 - **[管理ユーザー名] と [管理パスワード]** :マシンへのサインインに使用できる新しいユーザーを作成します。
 - **[Subnet Id]\(サブネット ID\)** : ASCS/SCS テンプレートのデプロイ時に使ったサブネットの ID または ASCS/SCS テンプレートのデプロイの一部として作成されたサブネットの ID を入力します。
 
-### <a name="application-servers-template"></a> アプリケーション サーバー テンプレート
+### <a name="application-servers-template"></a><a name="application-servers-template"></a> アプリケーション サーバー テンプレート
 
 アプリケーション サーバー テンプレートは、1 つの SAP システムの SAP アプリケーション サーバー インスタンスとして使用できる 2 つ以上の仮想マシンをデプロイします。 たとえば、5 つの SAP システムに ASCS/SCS テンプレートをデプロイする場合は、このテンプレートを 5 回デプロイする必要があります。
 
@@ -359,7 +359,7 @@ ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マ�
   -  **[Subnet Id]\(サブネット ID\)** : ASCS/SCS テンプレートのデプロイ時に使ったサブネットの ID または ASCS/SCS テンプレートのデプロイの一部として作成されたサブネットの ID を入力します。
 
 
-## <a name="47d5300a-a830-41d4-83dd-1a0d1ffdbe6a"></a> Azure Virtual Network
+## <a name="azure-virtual-network"></a><a name="47d5300a-a830-41d4-83dd-1a0d1ffdbe6a"></a> Azure Virtual Network
 このガイドの例では、Azure Virtual Network インスタンスのアドレス空間は 10.0.0.0/16 です。 Subnet という名前のサブネットが 1 つあり、そのアドレス範囲は 10.0.0.0/24 です。 すべての仮想マシンと内部ロード バランサーは、この仮想ネットワークにデプロイされます。
 
 > [!IMPORTANT]
@@ -367,7 +367,7 @@ ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マ�
 >
 >
 
-## <a name="b22d7b3b-4343-40ff-a319-097e13f62f9e"></a> DNS IP アドレス
+## <a name="dns-ip-addresses"></a><a name="b22d7b3b-4343-40ff-a319-097e13f62f9e"></a> DNS IP アドレス
 
 必要な DNS IP アドレスを設定するには、次の手順を実行します。
 
@@ -393,7 +393,7 @@ ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マ�
 | 第 1 の DNS サーバー |domcontr-0 |pr1-nic-domcontr-0 |10.0.0.10 |
 | 第 2 の DNS サーバー |domcontr-1 |pr1-nic-domcontr-1 |10.0.0.11 |
 
-## <a name="9fbd43c0-5850-4965-9726-2a921d85d73f"></a> クラスター化された SAP ASCS/SCS インスタンスとクラスター化された DBMS インスタンスのホスト名と静的 IP アドレス
+## <a name="host-names-and-static-ip-addresses-for-the-sap-ascsscs-clustered-instance-and-dbms-clustered-instance"></a><a name="9fbd43c0-5850-4965-9726-2a921d85d73f"></a> クラスター化された SAP ASCS/SCS インスタンスとクラスター化された DBMS インスタンスのホスト名と静的 IP アドレス
 
 オンプレミスのデプロイの場合、次の予約されたホスト名と IP アドレスが必要です。
 
@@ -407,7 +407,7 @@ ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マ�
 
 他の 2 つの仮想ホスト名 pr1-ascs-sap と pr1-dbms-sap および関連する IP アドレスは、DNS サーバーで手動作成できます。 クラスター化された SAP ASCS/SCS インスタンスおよびクラスター化された DBMS インスタンスは、これらのリソースを使用します。 その方法については、「[クラスター化された SAP ASCS/SCS インスタンスの仮想ホスト名の作成][sap-ha-guide-9.1.1]」を参照してください。
 
-## <a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a> SAP 仮想マシンの静的 IP アドレスの設定
+## <a name="set-static-ip-addresses-for-the-sap-virtual-machines"></a><a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a> SAP 仮想マシンの静的 IP アドレスの設定
 クラスターで使用する仮想マシンをデプロイした後は、すべての仮想マシンに静的 IP アドレスを設定する必要があります。 これは、ゲスト オペレーティング システムではなく、Azure Virtual Network の構成で行います。
 
 1. Azure Portal で、 **[リソース グループ]**  >  **[ネットワーク カード]**  >  **[設定]**  >  **[IP アドレス]** の順に選択します。
@@ -437,7 +437,7 @@ ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マ�
 | DBMS インスタンスの第 1 のクラスター ノード |pr1-db-0 |pr1-nic-db-0 |10.0.0.30 |
 | DBMS インスタンスの第 2 のクラスター ノード |pr1-db-1 |pr1-nic-db-1 |10.0.0.31 |
 
-## <a name="7a8f3e9b-0624-4051-9e41-b73fff816a9e"></a> Azure 内部ロード バランサーの静的 IP アドレスの設定
+## <a name="set-a-static-ip-address-for-the-azure-internal-load-balancer"></a><a name="7a8f3e9b-0624-4051-9e41-b73fff816a9e"></a> Azure 内部ロード バランサーの静的 IP アドレスの設定
 
 SAP Azure Resource Manager テンプレートでは、SAP ASCS/SCS インスタンス クラスターと DBMS クラスターで使用される Azure 内部ロード バランサーが作成されます。
 
@@ -465,7 +465,7 @@ Azure 内部ロード バランサーの静的 IP アドレスを設定するに
 | SAP DBMS の内部ロード バランサー |pr1-lb-dbms |10.0.0.33 |
 
 
-## <a name="f19bd997-154d-4583-a46e-7f5a69d0153c"></a> Azure 内部ロード バランサーの既定の ASCS/SCS 負荷分散規則
+## <a name="default-ascsscs-load-balancing-rules-for-the-azure-internal-load-balancer"></a><a name="f19bd997-154d-4583-a46e-7f5a69d0153c"></a> Azure 内部ロード バランサーの既定の ASCS/SCS 負荷分散規則
 
 SAP Azure Resource Manager テンプレートによって、必要なポートが作成されます。
 * 既定のインスタンス番号が 00 である ABAP ASCS インスタンス
@@ -517,7 +517,7 @@ _**図 5:** Azure 内部ロード バランサーの既定の ASCS/SCS 負荷分
 
 ロード バランサー pr1-lb-dbms の IP アドレスを、DBMS インスタンスの仮想ホスト名の IP アドレスに設定します。
 
-### <a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a> Azure 内部ロード バランサーの既定の ASCS/SCS 負荷分散規則の変更
+### <a name="change-the-ascsscs-default-load-balancing-rules-for-the-azure-internal-load-balancer"></a><a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a> Azure 内部ロード バランサーの既定の ASCS/SCS 負荷分散規則の変更
 
 SAP ASCS または SCS インスタンスに別の番号を使う場合は、それらのポートの名前と値を既定値から変更する必要があります。
 
@@ -536,7 +536,7 @@ SAP ASCS または SCS インスタンスに別の番号を使う場合は、そ
 
    _**図 6:** Azure 内部ロード バランサーの既定の ASCS/SCS 負荷分散規則を変更する_
 
-## <a name="e69e9a34-4601-47a3-a41c-d2e11c626c0c"></a> ドメインへの Windows 仮想マシンの追加
+## <a name="add-windows-virtual-machines-to-the-domain"></a><a name="e69e9a34-4601-47a3-a41c-d2e11c626c0c"></a> ドメインへの Windows 仮想マシンの追加
 
 仮想マシンに静的 IP アドレスを割り当てた後、ドメインに仮想マシンを追加します。
 
@@ -544,7 +544,7 @@ SAP ASCS または SCS インスタンスに別の番号を使う場合は、そ
 
 _**図 7:** ドメインに仮想マシンを追加する_
 
-## <a name="661035b2-4d0f-4d31-86f8-dc0a50d78158"></a> SAP ASCS/SCS インスタンスの両方のクラスター ノードでのレジストリ エントリの追加
+## <a name="add-registry-entries-on-both-cluster-nodes-of-the-sap-ascsscs-instance"></a><a name="661035b2-4d0f-4d31-86f8-dc0a50d78158"></a> SAP ASCS/SCS インスタンスの両方のクラスター ノードでのレジストリ エントリの追加
 
 Azure Load Balancer は、設定されている時間 (アイドル タイムアウト) だけ接続がアイドル状態になっていると接続を閉じる内部ロード バランサーを備えています。 ダイアログ インスタンスの SAP ワーク プロセスは、最初のエンキュー/デキュー要求の送信が必要になるとすぐに、SAP エンキュー プロセスへの接続を開きます。 通常、これらの接続は、ワーク プロセスまたはエンキュー プロセスが再起動するまで確立されたままになります。 しかし、接続が一定時間アイドル状態の場合、Azure 内部ロード バランサーによって接続は閉じられます。 SAP ワーク プロセスはエンキュー プロセスへの接続が存在しなくなっていると再確立するため、これが問題になることはありません。 これらのアクティビティは SAP プロセスの開発者トレースに記録されますが、これらのトレースでは大量の追加コンテンツが作成されます。 そのため、両方のクラスター ノードで TCP/IP の `KeepAliveTime` と `KeepAliveInterval` を変更することをお勧めします。 TCP/IP パラメーターでのこれらの変更と、後で説明する SAP プロファイル パラメーターを組み合わせます。
 
@@ -554,7 +554,7 @@ SAP ASCS/SCS インスタンスの両方のクラスター ノードでレジス
 | --- | --- |
 | 変数名 |`KeepAliveTime` |
 | 変数の型 |REG_DWORD (Decimal) |
-| Value |120000 |
+| 値 |120000 |
 | ドキュメントへのリンク |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
 
 **表 3:** 第 1 の TCP/IP パラメーターを変更する
@@ -565,21 +565,21 @@ SAP ASCS/SCS インスタンスの両方のクラスター ノードでレジス
 | --- | --- |
 | 変数名 |`KeepAliveInterval` |
 | 変数の型 |REG_DWORD (Decimal) |
-| Value |120000 |
+| 値 |120000 |
 | ドキュメントへのリンク |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
 
 **表 4:** 第 2 の TCP/IP パラメーターを変更する
 
 変更を適用するには、両方のクラスター ノードを再起動します。
 
-## <a name="0d67f090-7928-43e0-8772-5ccbf8f59aab"></a> SAP ASCS/SCS インスタンス用の Windows Server フェールオーバー クラスターをセットアップする
+## <a name="set-up-a-windows-server-failover-cluster-for-an-sap-ascsscs-instance"></a><a name="0d67f090-7928-43e0-8772-5ccbf8f59aab"></a> SAP ASCS/SCS インスタンス用の Windows Server フェールオーバー クラスターをセットアップする
 
 SAP ASCS/SCS インスタンス用の Windows Server フェールオーバー クラスターのセットアップには、以下のタスクが含まれます。
 
 - クラスター構成内のクラスター ノードを収集します。
 - クラスターのファイル共有監視を構成します。
 
-### <a name="5eecb071-c703-4ccc-ba6d-fe9c6ded9d79"></a> クラスター構成内のクラスター ノードの収集
+### <a name="collect-the-cluster-nodes-in-a-cluster-configuration"></a><a name="5eecb071-c703-4ccc-ba6d-fe9c6ded9d79"></a> クラスター構成内のクラスター ノードの収集
 
 1. 役割と機能の追加ウィザードで、両方のクラスター ノードにフェールオーバー クラスタリングを追加します。
 2. フェールオーバー クラスター マネージャーを使用して、フェールオーバー クラスターをセットアップします。 フェールオーバー クラスター マネージャーで、 **[クラスターの作成]** を選び、第 1 のクラスター (ノード A) の名前だけを追加します。 第 2 のノードはまだ追加しないでください。第 2 のノードは後の手順で追加します。
@@ -658,14 +658,14 @@ SAP ASCS/SCS インスタンス用の Windows Server フェールオーバー �
    _**図 19:** ディスク クォーラムに関する警告を無視する_
 
 
-#### <a name="e49a4529-50c9-4dcf-bde7-15a0c21d21ca"></a> クラスターのファイル共有監視の構成
+#### <a name="configure-a-cluster-file-share-witness"></a><a name="e49a4529-50c9-4dcf-bde7-15a0c21d21ca"></a> クラスターのファイル共有監視の構成
 
 クラスターのファイル共有監視の構成には、以下のタスクが含まれます。
 
 - ファイル共有を作成します。
 - フェールオーバー クラスター マネージャーでファイル共有監視クォーラムを設定します。
 
-#### <a name="06260b30-d697-4c4d-b1c9-d22c0bd64855"></a> ファイル共有の作成
+#### <a name="create-a-file-share"></a><a name="06260b30-d697-4c4d-b1c9-d22c0bd64855"></a> ファイル共有の作成
 
 1. クォーラム ディスクではなく、ファイル共有監視を選択します。 SIOS DataKeeper は、このオプションをサポートしています。
 
@@ -704,7 +704,7 @@ SAP ASCS/SCS インスタンス用の Windows Server フェールオーバー �
 
    _**図 23:** ファイル共有クォーラムでクラスター名オブジェクトのセキュリティ属性を設定する_
 
-#### <a name="4c08c387-78a0-46b1-9d27-b497b08cac3d"></a> フェールオーバー クラスター マネージャーでのファイル共有監視クォーラムの設定
+#### <a name="set-the-file-share-witness-quorum-in-failover-cluster-manager"></a><a name="4c08c387-78a0-46b1-9d27-b497b08cac3d"></a> フェールオーバー クラスター マネージャーでのファイル共有監視クォーラムの設定
 
 1. クラスター クォーラム構成ウィザードを開きます。
 
@@ -744,7 +744,7 @@ Windows フェールオーバー クラスターが正常にインストール�
 
 これらの設定はお客様とテストしたものであり、適切な妥協が提供されます。 十分な回復力がある一方で、SAP ソフトウェアの実際のエラー状態またはノードや VM の障害において十分に高速なフェールオーバーも提供します。
 
-### <a name="5c8e5482-841e-45e1-a89d-a05c0907c868"></a> SAP ASCS/SCS クラスター共有ディスクのための SIOS DataKeeper Cluster Edition のインストール
+### <a name="install-sios-datakeeper-cluster-edition-for-the-sap-ascsscs-cluster-share-disk"></a><a name="5c8e5482-841e-45e1-a89d-a05c0907c868"></a> SAP ASCS/SCS クラスター共有ディスクのための SIOS DataKeeper Cluster Edition のインストール
 
 これで、Azure で動作する Windows Server フェールオーバー クラスタリング構成が完了しました。 SAP ASCS/SCS インスタンスをインストールするには、共有ディスク リソースが必要です。 Azure では必要な共有ディスク リソースを作成できません。 サード パーティ製ソリューションの SIOS DataKeeper Cluster Edition を使って、共有ディスク リソースを作成できます。
 
@@ -754,7 +754,7 @@ SAP ASCS/SCS クラスター共有ディスク用の SIOS DataKeeper Cluster Edi
 - SIOS DataKeeper をインストールします。
 - SIOS DataKeeper をセットアップします。
 
-### <a name="1c2788c3-3648-4e82-9e0d-e058e475e2a3"></a> .NET Framework 3.5 の追加
+### <a name="add-net-framework-35"></a><a name="1c2788c3-3648-4e82-9e0d-e058e475e2a3"></a> .NET Framework 3.5 の追加
 Windows Server 2012 R2 では、.NET Framework 3.5 は自動的に有効化またはインストールされません。 SIOS DataKeeper をインストールするすべてのノードに .NET が必要なので、クラスター内のすべての仮想マシンのゲスト オペレーティング システムに .NET Framework 3.5 をインストールする必要があります。
 
 .NET Framework 3.5 は 2 とおりの方法で追加できます。
@@ -775,7 +775,7 @@ Windows Server 2012 R2 では、.NET Framework 3.5 は自動的に有効化ま�
   Dism /online /enable-feature /featurename:NetFx3 /All /Source:installation_media_drive:\sources\sxs /LimitAccess
   ```
 
-### <a name="dd41d5a2-8083-415b-9878-839652812102"></a> SIOS DataKeeper のインストール
+### <a name="install-sios-datakeeper"></a><a name="dd41d5a2-8083-415b-9878-839652812102"></a> SIOS DataKeeper のインストール
 
 クラスターの各ノードに SIOS DataKeeper Cluster Edition をインストールします。 SIOS DataKeeper で仮想共有記憶域を作成するには、同期されたミラーを作成し、クラスター共有記憶域をシミュレートします。
 
@@ -822,7 +822,7 @@ SIOS DataKeeper をインストールするには
 
 6. メッセージが表示されたら、仮想マシンを再起動します。
 
-### <a name="d9c1fc8e-8710-4dff-bec2-1f535db7b006"></a> SIOS DataKeeper のセットアップ
+### <a name="set-up-sios-datakeeper"></a><a name="d9c1fc8e-8710-4dff-bec2-1f535db7b006"></a> SIOS DataKeeper のセットアップ
 
 両方のノードに SIOS DataKeeper をインストールした後、構成を開始します。 この構成の目的は、各仮想マシンに接続された追加ディスク間で同期データ レプリケーションを実現することです。
 

@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: manayar
-ms.openlocfilehash: 222f26febb7b14c627307295a8cdd68a17694d03
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 74195e83e17140b67ac060e1791c580e90e720f6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275894"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79534441"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets の FAQ
 
@@ -162,7 +162,7 @@ VM に対して証明書を安全に配布するには、お客様のキー コ�
 ### <a name="how-do-i-use-self-signed-certificates-provisioned-for-azure-service-fabric-clusters"></a>Azure Service Fabric クラスター用にプロビジョニングされた自己署名証明書の使用方法
 最新の例については、Azure シェル内で次の Azure CLI ステートメントを使用し、Service Fabric CLI モジュール例のドキュメント (StdOut に出力されます) を参照してください。
 
-```bash
+```azurecli
 az sf cluster create -h
 ```
 
@@ -221,7 +221,7 @@ SSH 公開キーは、Linux VM の作成時にプレーン テキストで提供
 }
 ```
 
-linuxConfiguration の要素名 | 必須 | 種類 | 説明
+linuxConfiguration の要素名 | 必須 | Type | 説明
 --- | --- | --- | ---
 ssh | いいえ | コレクション | Linux OS の SSH キーの構成を指定します。
 path | はい | String | SSH キーまたは証明書を配置する Linux ファイル パスを指定します。
@@ -521,6 +521,7 @@ IP アドレスは指定したサブネットから選択されます。
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>高速ネットワークでスケール セットを使用できますか?
 
 はい。 高速ネットワークを使用するには、スケール セットの networkInterfaceConfigurations 設定で enableAcceleratedNetworking を true に設定します。 次に例を示します。
+
 ```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
@@ -540,6 +541,7 @@ IP アドレスは指定したサブネットから選択されます。
 ### <a name="how-can-i-configure-the-dns-servers-used-by-a-scale-set"></a>スケール セットによって使用される DNS サーバーは、どのように構成すればよいですか?
 
 カスタム DNS 構成を持つ仮想マシン スケール セットを作成するには、スケール セットの networkInterfaceConfigurations セクションに dnsSettings JSON パケットを追加します。 例:
+
 ```json
     "dnsSettings":{
         "dnsServers":["10.0.0.6", "10.0.0.5"]
@@ -639,9 +641,11 @@ Azure Portal で仮想マシン スケール セットの VM 数を変更する�
 ### <a name="is-it-possible-to-integrate-scale-sets-with-azure-monitor-logs"></a>複数のスケール セットを Azure Monitor ログに統合することはできますか。
 
 はい、スケール セットの VM に Azure Monitor 拡張機能をインストールすることで可能です。 Azure CLI の例を次に示します。
-```
+
+```azurecli
 az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group Team-03 --vmss-name nt01 --settings "{'workspaceId': '<your workspace ID here>'}" --protected-settings "{'workspaceKey': '<your workspace key here'}"
 ```
+
 Azure portal の Log Analytics ワークスペースに、必要な workspaceId と workspaceKey が表示されます。 [概要] ページで、[設定] タイルをクリックします。 上部の [接続されたソース] タブをクリックします。
 
 > [!NOTE]

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: 5d80cb2f2ed844126d1e9311151e6c53fcb11840
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894869"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225039"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>証明書認証 (クラシック) を使用してポイント対サイト接続を構成する
 
@@ -136,7 +136,7 @@ ms.locfileid: "75894869"
 
 9. **[新しい VPN 接続]** ページで、ページの一番下にある **[OK]** を選択して、仮想ネットワーク ゲートウェイの作成を開始します。 選択したゲートウェイ SKU によっては、VPN ゲートウェイの完了に最大 45 分かかることがあります。
  
-## <a name="generatecerts"></a>証明書を作成する
+## <a name="create-certificates"></a><a name="generatecerts"></a>証明書を作成する
 
 Azure は、ポイント対サイト VPN の VPN クライアントを認証するために証明書を使用します。 そのため、ルート証明書の公開キー情報を Azure にアップロードします。 それにより、その公開キーは*信頼できる*と見なされます。 信頼されたルート証明書からクライアント証明書を生成し、各クライアント コンピューターの Certificates-Current User\Personal\Certificates 証明書ストアにインストールする必要があります。 この証明書は、VNet に接続しようとするクライアントを認証するために使用されます。 
 
