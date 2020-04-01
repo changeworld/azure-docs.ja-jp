@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/10/2020
 ms.author: radeltch
-ms.openlocfilehash: 975f4940590bfbdab559122c68488c51c65d868e
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: ace30b044682cb4e62a0f81da90f21a77be1edd4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896299"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80372980"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする 
 
@@ -35,19 +35,19 @@ ms.locfileid: "75896299"
 
 [2205917]:https://launchpad.support.sap.com/#/notes/2205917
 [1944799]:https://launchpad.support.sap.com/#/notes/1944799
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
 [1984787]:https://launchpad.support.sap.com/#/notes/1984787
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [1410736]:https://launchpad.support.sap.com/#/notes/1410736
-[1900823]: https://launchpad.support.sap.com/#/notes/1900823
-[2292690]: https://launchpad.support.sap.com/#/notes/2292690
-[2455582]: https://launchpad.support.sap.com/#/notes/2455582
-[2593824]: https://launchpad.support.sap.com/#/notes/2455582
-[2009879]: https://launchpad.support.sap.com/#/notes/2009879
+[1900823]:https://launchpad.support.sap.com/#/notes/1900823
+[2292690]:https://launchpad.support.sap.com/#/notes/2292690
+[2455582]:https://launchpad.support.sap.com/#/notes/2455582
+[2593824]:https://launchpad.support.sap.com/#/notes/2455582
+[2009879]:https://launchpad.support.sap.com/#/notes/2009879
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
 
@@ -87,7 +87,7 @@ ms.locfileid: "75896299"
 * Azure 固有の RHEL ドキュメント:
   * [Microsoft Azure で使用するために Red Hat Enterprise Linux に SAP HANA をインストールする](https://access.redhat.com/solutions/3193782)
 * [Azure NetApp Files を使用した Microsoft Azure 上の NetApp SAP アプリケーション][anf-sap-applications-azure]
-* [ネットワーク ファイル システム (NFS) を使用した NetApp システムでの SAP HANA](https://www.netapp.com/us/media/tr-4435.pdf): Azure NFS by NetApp を使用して SAP HANA を設定する方法に関する情報が含まれる構成ガイド
+
 
 ## <a name="overview"></a>概要
 
@@ -559,8 +559,8 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
      * **[Local Host Name]\(ローカル ホスト名\)** : Enter キーを押して既定値をそのまま使用します
      * **[Do you want to add hosts to the system?]\(システムにホストを追加しますか?\)** : 「**y**」と入力します
      * **[comma-separated host names to add]\(追加するコンマ区切りホスト名\)** : 「**hanadb2, hanadb3**」と入力します
-     * **[Root User Name]\(ルート ユーザー名\)** [root]: Enter キーを押して既定値をそのまま使用します
-     * [roles for host hanadb2]\(host hanadb2 のロール\): 「**1**」と入力します (ワーカーの場合)
+     * **[Root User Name]\(ルート ユーザー名\)** [root]\: Enter キーを押して既定値をそのまま使用します
+     * [roles for host hanadb2]\(host hanadb2 のロール\)\: 「**1**」と入力します (ワーカーの場合)
      * ホスト hanadb2 の **[Host Failover Group]\(ホスト フェールオーバー グループ\)** [既定値]: Enter キーを押して既定値をそのまま使用します
      * ホスト hanadb2 の **[Storage Partition Number]\(ストレージ パーティション番号\)** [<<assign automatically>>]: Enter キーを押して既定値をそのまま使用します
      * ホスト hanadb2 の **[Worker Group]\(ワーカー グループ\)** [既定値]: Enter キーを押して既定値をそのまま使用します
@@ -703,9 +703,9 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
 6. 基になる Azure NetApp Files ストレージ向けに SAP HANA を最適化するには、次の SAP HANA パラメーターを設定します。
 
    - `max_parallel_io_requests` **128**
-   - `async_read_submit` **on**
-   - `async_write_submit_active` **on**
-   - `async_write_submit_blocks` **all**
+   - `async_read_submit` **オン**
+   - `async_write_submit_active` **オン**
+   - `async_write_submit_blocks` **すべて**
 
    詳細については、「[NetApp AFF Systems で NFS を使用した SAP HANA の構成ガイド](https://www.netapp.com/us/media/tr-4435.pdf)」を参照してください。 
 

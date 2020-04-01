@@ -15,10 +15,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: f2513b1fee022199f040ba0dcf83110c0b3b1365
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76701571"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>ユーザーをサインインさせる Web アプリ:アプリの登録
@@ -48,7 +48,7 @@ ms.locfileid: "76701571"
 1. お使いのアカウントで複数のテナントにアクセスできる場合は、右上隅で自分のアカウントをクリックします。 次に、ポータル セッションを目的の Azure Active Directory (Azure AD) テナントに変更します。
 1. 左側のウィンドウで、 **[Azure Active Directory]** サービスを選択し、 **[アプリの登録]** 、 **[新規登録]** の順に選択します。
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
    1. 自分のアプリケーションでサポートされているアカウントの種類を選択します。 (「[サポートされているアカウントの種類](./v2-supported-account-types.md)」を参照してください。)
@@ -60,7 +60,7 @@ ms.locfileid: "76701571"
    1. **[暗黙的な許可]** の下の **[ID トークン]** を選択します。
    1. **[保存]** を選択します。
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
    1. 自分のアプリケーションでサポートされているアカウントの種類を選択します。 (「[サポートされているアカウントの種類](./v2-supported-account-types.md)」を参照してください。)
@@ -71,7 +71,7 @@ ms.locfileid: "76701571"
 1. **[詳細設定]** の **[暗黙的な許可]** セクションで **[ID トークン]** を選択します。 このサンプルでは、ユーザーをサインインさせるには、[暗黙的な許可フロー](v2-oauth2-implicit-grant-flow.md)を有効にする必要があります。
 1. **[保存]** を選択します。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 1. **[アプリケーションの登録]** ページが表示されたら、アプリケーションの表示名を入力します。 たとえば、「**java-webapp**」と入力します。
 1. **[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox、Outlook.com など)]** を選択し、 **[アプリケーションの種類]** に **[Web アプリ / API]** を選択します。
@@ -95,7 +95,7 @@ ms.locfileid: "76701571"
    1. **[追加]** を選択します。
    1. キー値が表示されたら、後で使うためにコピーしておきます。 この値は二度と表示されず、他の何らかの手段で取得することもできません。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
    1. **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します。 たとえば、「**python-webapp**」と入力します。
