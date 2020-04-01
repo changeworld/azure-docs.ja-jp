@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 09/10/2019
-  ms.openlocfilehash: 7090c0814e91b2178dea44eed4d28e6f4e80bd77
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 03/24/2020
+  ms.openlocfilehash: 2df970e3aa36f69dc6f2d990ee307db6536a8ac9
+  ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77470618"
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "80282037"
 highlightedContent:
   items:
   - title: ガバナンスの概要
@@ -113,6 +113,8 @@ additionalContent:
         url: /dotnet/api/overview/azure/managementgroups
       - text: Azure SDK For Node
         url: /javascript/api/@azure/arm-managementgroups/managementgroups
+      - text: REST
+        url: /rest/api/resources/managementgroups
     - title: Azure Policy
       links:
       - text: Azure CLI
@@ -126,12 +128,6 @@ additionalContent:
       - text: Azure PowerShell
         url: https://www.powershellgallery.com/packages/Az.GuestConfiguration
         note: (ゲスト構成)
-      - text: Azure SDK for .NET
-        url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
-        note: (割り当て)
-      - text: Azure SDK for .NET
-        url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
-        note: (ポリシー定義)
       - text: REST
         url: /rest/api/policy-insights/
         note: (ポリシーの分析情報)
@@ -149,6 +145,22 @@ additionalContent:
         note: (ゲスト構成)
       - text: Resource Manager テンプレート
         url: /azure/templates/microsoft.authorization/allversions
+    - title: Azure Policy (その他)
+      links:
+      - text: Azure SDK for .NET
+        url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
+        note: (割り当て)
+      - text: Azure SDK for .NET
+        url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+        note: (ポリシー定義)
+      - text: Azure SDK For Node
+        url: /javascript/api/@azure/arm-policy
+        note: (ポリシー)
+      - text: Azure SDK For Node
+        url: /javascript/api/@azure/arm-policyinsights
+        note: (ポリシーの分析情報)
+      - text: Azure SDK for Python
+        url: /python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights
     - title: Azure Blueprint
       links:
       - text: ブループリントの関数

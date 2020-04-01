@@ -58,22 +58,24 @@
       href: best-practices.md
     - name: 一般的な条件付きアクセス ポリシー
       items:
+        - name: レガシ認証をブロックする
+          href: howto-conditional-access-policy-block-legacy.md
         - name: 管理者に対して MFA を必須にする
           href: howto-conditional-access-policy-admin-mfa.md
         - name: Azure 管理のために MFA を必須にする
           href: howto-conditional-access-policy-azure-management.md
         - name: すべてのユーザーに対して MFA を必須にする
           href: howto-conditional-access-policy-all-users-mfa.md
-        - name: レガシ認証をブロックする
-          href: howto-conditional-access-policy-block-legacy.md
         - name: リスクベースの条件付きアクセス
           href: howto-conditional-access-policy-risk.md
-        - name: 信頼できる場所を MFA 登録で必須にする
+        - name: セキュリティ情報の登録のセキュリティ保護
           href: howto-conditional-access-policy-registration.md
         - name: 場所ごとにアクセスをブロックする
           href: howto-conditional-access-policy-location.md
         - name: Require compliant devices (準拠しているデバイスが必須)
           href: howto-conditional-access-policy-compliant-device.md
+        - name: アクセスのブロック
+          href: howto-conditional-access-policy-block-access.md
     - name: レガシ認証をブロックする
       href: block-legacy-authentication.md
     - name: 承認済みクライアント アプリを必須にする
@@ -94,6 +96,8 @@
       href: policy-migration-mfa.md
     - name: トラブルシューティング
       items:
+        - name: サインインに関する問題のトラブルシューティング
+          href: troubleshoot-conditional-access.md
         - name: What If ツールを使用したトラブルシューティング
           href: troubleshoot-conditional-access-what-if.md
 - name: リソース

@@ -10,12 +10,12 @@ metadata:
   author: DCtheGeek
   ms.author: dacoulte
   ms.date: 11/04/2019
-  ms.openlocfilehash: 1a91f7fe63753ddc7c8b88d487064b15206fcfe3
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: d4ebb4dbc8fb2bc71ac9f061ef6d4500b86831ff
+  ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "73494339"
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "80289194"
 landingContent:
 - title: Azure Policy について
   linkLists:
@@ -109,10 +109,6 @@ landingContent:
       url: /powershell/module/az.resources/#policies
     - text: Azure PowerShell (ポリシーの分析情報)
       url: /powershell/module/az.policyinsights#policy_insights
-    - text: Azure SDK for .NET (割り当て)
-      url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
-    - text: Azure SDK for .NET (ポリシーの定義)
-      url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
     - text: REST (ポリシーの分析情報)
       url: /rest/api/policy-insights/
     - text: REST (割り当て)
@@ -123,3 +119,21 @@ landingContent:
       url: /rest/api/resources/policysetdefinitions
     - text: Resource Manager テンプレート
       url: /azure/templates/microsoft.authorization/allversions
+- title: リファレンス (その他)
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure SDK for .NET (割り当て)
+      url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
+    - text: Azure SDK for .NET (ポリシーの定義)
+      url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+    - text: Azure SDK for Node (ポリシー)
+      url: /javascript/api/@azure/arm-policy
+    - text: Azure SDK for Node (ポリシーの分析情報)
+      url: /javascript/api/@azure/arm-policyinsights
+    - text: Azure SDK for Python (ポリシー)
+      url: /python/api/azure-mgmt-resource/azure.mgmt.resource.policy
+    - text: Azure SDK for Python (ポリシー クライアント)
+      url: /python/api/azure-mgmt-resource/azure.mgmt.resource.policyclient
+    - text: Azure SDK for Python (ポリシーの分析情報)
+      url: /python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights

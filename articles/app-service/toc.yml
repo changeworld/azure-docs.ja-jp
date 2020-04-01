@@ -265,6 +265,8 @@
           href: 'https://azure.microsoft.com/documentation/scripts/'
     - name: トラブルシューティング
       items:
+        - name: 断続的な送信接続エラーのトラブルシューティング
+          href: troubleshoot-intermittent-outbound-connection-errors.md
         - name: Visual Studio を使用したトラブルシューティング
           href: troubleshoot-dotnet-visual-studio.md
         - name: Node.js アプリのトラブルシューティング

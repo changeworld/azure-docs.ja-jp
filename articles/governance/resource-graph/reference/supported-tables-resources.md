@@ -1,14 +1,14 @@
 ---
 title: サポートされている Resource Manager のリソースの種類
 description: Azure Resource Graph でサポートされている Resource Manager のリソースの種類と変更履歴の一覧を示します。
-ms.date: 03/09/2020
+ms.date: 03/23/2020
 ms.topic: reference
-ms.openlocfilehash: 9844b2fe7f1cbaf069789a4083229b4a6f37f38f
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 64fd860090cc15cc6914ee926772146b98477edb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943978"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80130612"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph のテーブルとリソースの種類のリファレンス
 
@@ -244,6 +244,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.managednetwork/managednetworks/managednetworkgroups
 - microsoft.managednetwork/managednetworks/managednetworkpeeringpolicies
 - microsoft.maps/accounts
+- microsoft.maps/accounts/privateatlases
 - microsoft.marketplaceapps/classicdevservices
 - microsoft.media/mediaservices
 - microsoft.media/mediaservices/liveevents
@@ -291,6 +292,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.network/networkinterfaces
 - microsoft.network/networkprofiles
 - microsoft.network/networksecuritygroups
+- microsoft.network/networkvirtualappliances
 - microsoft.network/networkwatchers
 - microsoft.network/networkwatchers/connectionmonitors
 - microsoft.network/networkwatchers/flowlogs
@@ -307,6 +309,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.network/routefilters
 - microsoft.network/routetables
 - microsoft.network/sampleresources
+- microsoft.network/securitypartnerproviders
 - microsoft.network/serviceendpointpolicies
 - microsoft.network/trafficmanagerprofiles
 - microsoft.network/virtualhubs
@@ -339,6 +342,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.projectarcadia/workspaces/sparkcomputes
 - microsoft.projectarcadia/workspaces/sqlcomputes
 - microsoft.projectbabylon/accounts
+- microsoft.quantum/workspaces
 - microsoft.recoveryservices/vaults
 - microsoft.redhatopenshift/openshiftclusters
 - microsoft.relay/namespaces
@@ -441,6 +445,8 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - u2uconsult.theidentityhub/services
 - wandisco.fusion/fusiongroups
 - wandisco.fusion/fusiongroups/azurezones
+- wandisco.fusion/fusiongroups/azurezones/plugins
+- wandisco.fusion/fusiongroups/managedonpremzones
 - wandisco.fusion/fusiongroups/onpremzones
 - wandisco.fusion/fusiongroups/replicationrules
 
