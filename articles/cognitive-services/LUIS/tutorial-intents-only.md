@@ -1,22 +1,14 @@
 ---
 title: チュートリアル:意図の予測 - LUIS
-titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、ユーザーの意図を予測するカスタム アプリを作成します。 このアプリは、メール アドレスや日付などの発話テキストからさまざまなデータ要素を抽出しないため、最も単純な種類の LUIS アプリです。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 89fb76f8c5cc4323e1211524340c0965a7d0716d
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.date: 03/24/2020
+ms.openlocfilehash: c58c96f717de77c065d7f844928714eb4fb3e4db
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76262753"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80286746"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>チュートリアル:ユーザーの意図を特定する LUIS アプリを構築する
 
@@ -53,7 +45,11 @@ ms.locfileid: "76262753"
 
 ## <a name="create-a-new-intent"></a>新しい意図を作成する
 
-1. ポータルで、アプリの **[Build]** セクション内にある **[+ Create]** を選択します。 新しい意図の名前として「`OrderPizza`」を入力し、 **[Done]** を選択します。
+意図は、ユーザーの意図に基づいて自然言語のテキストからの決定されるユーザー発話を分類するために使用されます。
+
+発話の分類には、その意図に分類されるためのユーザーの発話例が意図に必要です。
+
+1. **[Intents]** \(意図\) ページの **[ビルド]** セクションから **[+ 作成]** を選択して新しい意図を作成します。 新しい意図の名前として「`OrderPizza`」を入力し、 **[完了]** を選択します。
 
     `OrderPizza` 意図は、ユーザーがピザの注文を希望したときに予測されます。
 
@@ -70,7 +66,7 @@ ms.locfileid: "76262753"
 
     ![発話の例を追加する](media/tutorial-intents-only/add-example-utterances-for-pizza-order.png)
 
-    "_発話例_" を提供することで、この意図についてはどのような種類の発話を予測する必要があるか、LUIS のトレーニングを行っています。
+    _発話例_を指定することで、この意図に予測される種類の発話を、LUIS にトレーニングできます。
 
     [!INCLUDE [Do not use too few utterances](includes/do-not-use-too-few-utterances.md)]
 

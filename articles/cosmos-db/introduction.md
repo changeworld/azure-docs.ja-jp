@@ -6,20 +6,20 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: f322a240835d86697ae18c984700f22ca7b00145
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 2a09d5af013e804f33327855fb7b9f2104bc225c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882178"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215250"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB の概要
 
 現在のアプリケーションには、優れた応答性と、常時接続が求められます。 待機時間の短縮と高可用性を実現するには、これらのアプリケーションのインスタンスをそのユーザーの近くにあるデータ センターにデプロイする必要があります。 アプリケーションには、ピーク時の使用量の大きな変化に即応し、増え続けるデータを格納し、ミリ秒単位でユーザーがこうしたデータを利用できるようにすることが求められます。
 
-Azure Cosmos DB は、Microsoft によってグローバルに配布されるマルチモデル データベース サービスです。 Cosmos DB では、ボタンを 1 つクリックするだけで、世界中の Azure リージョンをいくつでもまたいでスループットとストレージをエラスティックかつ個別にスケーリングできます。 スループットとストレージをエラスティックにスケーリングし、SQL、MongoDB、Cassandra、Tables、Gremlin などの好みの API を使用して、数ミリ秒 (1 桁) の高速データ アクセスを利用できます。 Cosmos DB では、スループット、待ち時間、可用性、および整合性の保証について包括的な[サービス レベル アグリーメント](https://aka.ms/acdbsla) (SLA) が提供されています。この点は、他のどのデータベース サービスにもないメリットです。
+Azure Cosmos DB は、Microsoft によってグローバルに配布されるマルチモデル データベース サービスです。 Cosmos DB では、ボタンを 1 つクリックするだけで、世界中の Azure リージョンをいくつでもまたいでスループットとストレージをエラスティックかつ個別にスケーリングできます。 スループットとストレージをエラスティックにスケーリングし、次のような好みの API を使用して、数ミリ秒 (1 桁) の高速データ アクセスを利用できます。SQL、MongoDB、Cassandra、Tables、Gremlin など。 Cosmos DB では、スループット、待ち時間、可用性、および整合性の保証について包括的な[サービス レベル アグリーメント](https://aka.ms/acdbsla) (SLA) が提供されています。この点は、他のどのデータベース サービスにもないメリットです。
 
-Azure サブスクリプションを必要とせず、課金や契約もなく [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。
+Azure サブスクリプション、課金、契約がなくても [Azure Cosmos DB を無料でお試し](https://azure.microsoft.com/try/cosmosdb/)いただけます。または、[Azure Cosmos DB Free レベル](optimize-dev-test.md#azure-cosmos-db-free-tier)を使用してアカウントを取得し、最初の 400 RU/秒と 5 GB のストレージを無料でご利用いただけます。
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)
@@ -91,7 +91,7 @@ Cosmos DB では、Cosmos データベースに格納されているデータを
 
 さまざまなデータについて、リアルタイムに近い応答時間と[グローバルな規模](distribute-data-globally.md)で膨大な量のデータや読み書きを処理する必要のある [Web、モバイル、ゲーム、IoT アプリケーション](use-cases.md)は、Cosmos DB の[保証された高可用性](https://azure.microsoft.com/support/legal/sla/cosmos-db/)、高スループット、低待ち時間、調整可能な整合性の恩恵を受けます。 [IoT とテレマティック](use-cases.md#iot-and-telematics)、[小売りとマーケティング](use-cases.md#retail-and-marketing)、[ゲーム](use-cases.md#gaming)、[Web アプリとモバイル アプリ](use-cases.md#web-and-mobile-applications)の作成に Azure Cosmos DB をどのように適用できるかをご確認ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Cosmos DB のコア概念である[ターンキー グローバル分散](distribute-data-globally.md)、[パーティション分割](partitioning-overview.md)、および[プロビジョニング済みのスループット](request-units.md)に関する記事を参照してください。
 

@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.openlocfilehash: e97a712664a5864062fef2bba36dda76175af715
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: ed0c570449a0c21e9eace1273228539db7c208da
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199854"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80238655"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>クイック スタート:Azure Data Explorer クラスターとデータベースを作成する
 
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 コンピューティング リソースとストレージ リソースの定義済みセットを使って、Azure リソース グループ内に Azure Data Explorer クラスターを作成します。
 
-1. ポータルの左上隅にある **[リソースの作成]** ボタン (+) を選択します。
+1. ポータルの左上隅にある **[+ リソースの作成]** ボタンを選択します。
 
 1. *Azure Data Explorer* を検索します。
 

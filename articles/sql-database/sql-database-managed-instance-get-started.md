@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein, carlrab
 ms.date: 09/26/2019
-ms.openlocfilehash: 2af153e5cf09cf331be016066e9c9210a0d39b03
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 25128442cd922f6b9130586e245695b6880f661c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838157"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80257616"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>クイック スタート:Azure SQL Database マネージド インスタンスの作成
 
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 1. Azure portal の左側のメニューにある **[Azure SQL]** を選択します。 **[Azure SQL]** が一覧にない場合は、 **[すべてのサービス]** を選択し、検索ボックスに「**Azure SQL**」と入力します。
 2. **[+ 追加]** を選択して、 **[Select SQL deployment option]\(SQL デプロイ オプションの選択\)** ページを開きます。 **[マネージド インスタンス]** タイルの **[詳細の表示]** を選択すると、Azure SQL Database マネージド インスタンスに関する追加情報を表示できます。
-3. **作成** を選択します。
+3. **［作成］** を選択します
 
    ![マネージド インスタンスを作成する](./media/sql-database-managed-instance-get-started/create-managed-instance.png)
 
@@ -51,12 +51,12 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
    このタブで必要となる情報については、次の表を参考にしてください。
 
-   | Setting| 推奨値 | 説明 |
+   | 設定| 推奨値 | 説明 |
    | ------ | --------------- | ----------- |
    | **サブスクリプション** | 該当するサブスクリプション。 | 新しいリソースを作成するアクセス許可を与えるサブスクリプション。 |
    | **リソース グループ** | 新規または既存のリソース グループ。|有効なリソース グループ名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。|
    | **マネージド インスタンス名** | 有効な名前。|有効な名前については、[名前付け規則と制限事項](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。|
-   | **[リージョン]** |マネージド インスタンスの作成先となるリージョン。|リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。|
+   | **リージョン** |マネージド インスタンスの作成先となるリージョン。|リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。|
    | **マネージド インスタンス管理者ログイン** | 有効なユーザー名。 | 有効な名前については、[名前付け規則と制限事項](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 "serveradmin" は予約済みのサーバー レベルのロールであるため、使用しないでください。|
    | **パスワード** | 有効なパスワード。| パスワードは 16 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
 
@@ -74,7 +74,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
    このタブで必要となる情報については、次の表を参考にしてください。
 
-   | Setting| 推奨値 | 説明 |
+   | 設定| 推奨値 | 説明 |
    | ------ | --------------- | ----------- |
    | **Virtual Network** | **[新しい仮想ネットワークの作成]** または有効な仮想ネットワークとサブネットを選択します。| ネットワークまたはサブネットが使用できない場合は、新しいマネージド インスタンスのターゲットとして選択する前に、[ネットワーク要件を満たすように変更する](sql-database-managed-instance-configure-vnet-subnet.md)必要があります。 マネージド インスタンスのネットワーク環境を構成するための要件については、[マネージド インスタンスの仮想ネットワークの構成](sql-database-managed-instance-connectivity-architecture.md)に関する記事を参照してください。 |
    | **接続の種類** | 接続の種類として、プロキシまたはリダイレクトを選択します。|接続の種類の詳細については、[Azure SQL Database の接続ポリシー](sql-database-connectivity-architecture.md#connection-policy)に関するページを参照してください。|
@@ -91,12 +91,12 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
    このタブで必要となる情報については、次の表を参考にしてください。
 
-   | Setting| 推奨値 | 説明 |
+   | 設定| 推奨値 | 説明 |
    | ------ | --------------- | ----------- |
-   | **照合順序** | マネージド インスタンスに対して使用する照合順序を選択します。 SQL Server からデータベースを移行する場合は、`SELECT SERVERPROPERTY(N'Collation')` を使用してソースの照合順序を確認し、その値を使用してください。| 照合順序の詳細については、「[サーバーの照合順序の設定または変更](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation)」を参照してください。|   
+   | **Collation** | マネージド インスタンスに対して使用する照合順序を選択します。 SQL Server からデータベースを移行する場合は、`SELECT SERVERPROPERTY(N'Collation')` を使用してソースの照合順序を確認し、その値を使用してください。| 照合順序の詳細については、「[サーバーの照合順序の設定または変更](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation)」を参照してください。|   
    | **タイム ゾーン** | マネージド インスタンスで監視するタイム ゾーンを選択します。|詳細については、[タイム ゾーン](sql-database-managed-instance-timezone.md)に関するページを参照してください。|
    | **フェールオーバー セカンダリとして使用する** | **[はい]** を選択します。 | マネージド インスタンスをフェールオーバー グループのセカンダリとして使用するには、このオプションを有効にします。|
-   | **プライマリ マネージド インスタンス** ( **[フェールオーバー セカンダリとして使用する]** が **[はい]** に設定されている場合) | 作成しているマネージド インスタンスと同じ DNS ゾーンに参加することになる既存のプライマリ マネージド インスタンスを選択します。 | この手順により、フェールオーバー グループの作成後の構成が有効になります。 詳細については、[チュートリアル: SQL Database マネージド インスタンスをフェールオーバー グループに追加する](sql-database-managed-instance-failover-group-tutorial.md)」を参照してください。|
+   | **プライマリ マネージド インスタンス** ( **[フェールオーバー セカンダリとして使用する]** が **[はい]** に設定されている場合) | 作成しているマネージド インスタンスと同じ DNS ゾーンに参加することになる既存のプライマリ マネージド インスタンスを選択します。 | この手順により、フェールオーバー グループの作成後の構成が有効になります。 詳細については、「[チュートリアル:SQL Database マネージド インスタンスをフェールオーバー グループに追加する](sql-database-managed-instance-failover-group-tutorial.md)」を参照してください。|
 
 ### <a name="review--create"></a>確認と作成
 
@@ -122,6 +122,10 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 > 1. Azure portal で、マネージド インスタンスをデプロイしている ( **[基本]** タブの) リソース グループを開きます。
 > 2. **[デプロイ]** を選択します。
 > 3. 進行中のマネージド インスタンスのデプロイ操作を選択します。
+
+> [!IMPORTANT]
+> マネージド インスタンスの作成の状態を取得できるようにするには、リソース グループに対する**読み取りアクセス許可**が必要です。 このアクセス許可がない場合、またはマネージド インスタンスの作成プロセス中にこのアクセス許可を取り消した場合は、リソース グループのデプロイの一覧にマネージド インスタンスが表示されない可能性があります。
+>
 
 ## <a name="post-deployment-operations"></a>デプロイ後の操作
 
@@ -173,7 +177,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
    コピーされた値は、マネージド インスタンスへの接続に使用できる完全修飾ドメイン名 (FQDN) を表します。 たとえば、このアドレスは *your_host_name.a1b2c3d4e5f6.database.windows.net* のような形式になります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 マネージド インスタンスに接続する方法を学習する
 - アプリケーションの接続オプションの概要については、[マネージド インスタンスにアプリケーションを接続する](sql-database-managed-instance-connect-app.md)方法に関するページを参照してください。

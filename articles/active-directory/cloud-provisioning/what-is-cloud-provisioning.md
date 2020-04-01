@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69b8cbdba018b9d03dca67573b1f4fe6efa546b6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a86d34fca9a88b0df601533a0f3de1cc97ad1a2f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024043"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80050597"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect クラウド プロビジョニングとは
 Azure AD Connect クラウド プロビジョニングは、ユーザー、グループ、および連絡先を Azure AD に同期するためのハイブリッド ID の 目標を満たすために設計された新しい Microsoft エージェントです。  これは Azure AD Connect sync と共に使用することができ、次のような利点があります。

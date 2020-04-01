@@ -1,5 +1,6 @@
 ---
 title: Azure Virtual Network NAT とは
+titlesuffix: Azure Virtual Network
 description: Virtual Network NAT の機能、リソース、アーキテクチャ、実装の概要。 Virtual Network NAT の動作のしくみと、クラウドにおける NAT ゲートウェイ リソースの使用方法について説明します。
 services: virtual-network
 documentationcenter: na
@@ -11,16 +12,16 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/05/2020
+ms.date: 03/14/2020
 ms.author: allensu
-ms.openlocfilehash: 205826a6ad952383582f5a8086cbd8b85dbc3794
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 4b34d4208d8686cdac3f8164d2cf7efb2d881346
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359254"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79409900"
 ---
-# <a name="what-is-virtual-network-nat-public-preview"></a>Virtual Network NAT (パブリック プレビュー) とは
+# <a name="what-is-virtual-network-nat"></a>Virtual Network NAT とは
 
 Virtual Network NAT (ネットワーク アドレス変換) は、仮想ネットワーク用のアウトバウンドのみのインターネット接続を簡単に行えるようにするものです。 これをサブネットに対して構成した場合、指定した静的パブリック IP アドレスがすべてのアウトバウンド接続で使用されます。  ロード バランサーや、仮想マシンに直接アタッチされたパブリック IP アドレスがなくても、アウトバウンド接続が可能となります。 NAT はフル マネージドで、高い回復性を備えています。
 
@@ -36,10 +37,6 @@ Virtual Network NAT (ネットワーク アドレス変換) は、仮想ネッ�
 
 
 *図:Virtual Network NAT*
-
-
->[!NOTE] 
->Virtual Network NAT は、現時点ではパブリック プレビューとして提供されています。 現在は、ご利用いただける[リージョン](#region-availability)が限られています。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms)」をご覧ください。
 
 ## <a name="static-ip-addresses-for-outbound-only"></a>アウトバウンド専用の静的 IP アドレス
 
@@ -91,9 +88,9 @@ NAT は最初からスケールアウトに完全対応しています。 シス
 
 NAT のパブリック側からは、TCP リセット パケットなどのトラフィックは一切生成されません。  出力されるのは、お客様の仮想ネットワークによって生成されたトラフィックだけです。
 
-## <a name="configurable-idle-timeout"></a>構成可能なアイドル タイムアウト
+## <a name="configurable-tcp-idle-timeout"></a>構成可能な TCP アイドル タイムアウト
 
-4 分というアイドル タイムアウトの既定値が使用され、最大 120 分にまで増やすことができます。 また、アイドル タイマーは、フロー上の任意のアクティビティ (TCP キープアライブを含む) でリセットすることもできます。
+4 分という TCP アイドル タイムアウトの既定値が使用されます。これは最大 120 分にまで増やすことができます。 また、アイドル タイマーは、フロー上の任意のアクティビティ (TCP キープアライブを含む) でリセットすることもできます。
 
 ## <a name="regional-or-zone-isolation-with-availability-zones"></a>リージョン単位の分離と可用性ゾーンを使用したゾーン単位の分離
 
@@ -125,48 +122,6 @@ NAT のパブリック側からは、TCP リセット パケットなどのト�
 
 一般提供時には、NAT のデータ パスの可用性が 99.9% 以上となります。
 
-## <a name = "region-availability"></a>利用可能なリージョン
-
-現在 NAT は、次のリージョンで提供されています。
-
-- 西ヨーロッパ
-- 東日本
-- 米国東部 2
-- 米国西部
-- 米国西部 2
-- 米国中西部
-
-## <a name = "enable-preview"></a>パブリック プレビューへの参加
-
-パブリック プレビューに参加するためには、サブスクリプションのご登録が必要です。  参加は 2 つの手順から成るプロセスとなっています。以下に、Azure CLI を使用した手順と Azure PowerShell を使用した手順を記載します。  アクティブ化が完了するまでに数分かかる場合があります。
-
-### <a name="azure-cli"></a>Azure CLI
-
-1. サブスクリプションをパブリック プレビューに登録します。
-
-    ```azurecli-interactive
-      az feature register --namespace Microsoft.Network --name AllowNatGateway
-    ```
-
-2. 登録をアクティブ化します。
-
-    ```azurecli-interactive
-      az provider register --namespace Microsoft.Network
-    ```
-
-### <a name="azure-powershell"></a>Azure PowerShell
-
-1. サブスクリプションをパブリック プレビューに登録します。
-
-    ```azurepowershell-interactive
-      Register-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowNatGateway
-    ```
-
-2. 登録をアクティブ化します。
-
-    ```azurepowershell-interactive
-      Register-AzResourceProvider -ProviderNamespace Microsoft.Network
-    ```
 
 ## <a name="pricing"></a>価格
 
@@ -180,7 +135,9 @@ NAT ゲートウェイは、2 つの測定値を使用して課金されます�
 リソース時間は、NAT ゲートウェイ リソースが存在する期間に相当します。
 データ処理量は、NAT ゲートウェイ リソースによって処理されたすべてのトラフィックに相当します。
 
-パブリック プレビュー期間中は、価格が 50% 引きとなります。
+## <a name="availability"></a>可用性
+
+Virtual Network NAT と NAT ゲートウェイ リソースは、すべての Azure パブリック クラウド [リージョン](https://azure.microsoft.com/global-infrastructure/regions/)で利用できます。
 
 ## <a name="support"></a>サポート
 
@@ -188,11 +145,12 @@ NAT のサポートは、通常のサポート チャンネルを通じて提供
 
 ## <a name="feedback"></a>フィードバック
 
-サービスを改善するために、皆様のご意見をお待ちしております。 [パブリック プレビューに関するフィードバック](https://aka.ms/natfeedback)をお寄せください。  また、今後の新機能に関する提案や投票も、[NAT の UserVoice](https://aka.ms/natuservoice) で受け付けております。
+サービスを改善するために、皆様のご意見をお待ちしております。 今後の新機能に関する提案や投票も、[NAT の UserVoice](https://aka.ms/natuservoice) で受け付けております。
+
 
 ## <a name="limitations"></a>制限事項
 
-* NAT は、Standard SKU のパブリック IP、パブリック IP プレフィックス、ロード バランサーの各リソースと共に利用することができます。   Basic リソース (Basic Load Balancer など) やそれらから派生した製品を NAT と共存させることはできません。  Basic リソースは、NAT が構成されていないサブネットに配置する必要があります。
+* NAT は、Standard SKU のパブリック IP、パブリック IP プレフィックス、ロード バランサーの各リソースと共に利用することができます。 Basic リソース (Basic Load Balancer など) やそれらから派生した製品を NAT と共存させることはできません。  Basic リソースは、NAT が構成されていないサブネットに配置する必要があります。
 * サポートされるアドレス ファミリーは IPv4 です。  IPv6 アドレス ファミリーを NAT で扱うことはできません。  IPv6 プレフィックスを持つサブネットに NAT をデプロイすることはできません。
 * NAT を使用している場合、NSG フロー ログはサポートされません。
 * NAT を複数の仮想ネットワークにまたがって使用することはできません。
@@ -201,4 +159,4 @@ NAT のサポートは、通常のサポート チャンネルを通じて提供
 
 * [NAT ゲートウェイ リソース](./nat-gateway-resource.md)について学習する。
 * [UserVoice で Virtual Network NAT の新機能の構築を提案する](https://aka.ms/natuservoice)。
-* [パブリック プレビューに関するフィードバックを送る](https://aka.ms/natfeedback)。
+

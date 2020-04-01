@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 03/03/2020
-ms.openlocfilehash: 27dae07328af125c25512ab9f1eb81d0f4eda99b
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.date: 03/24/2020
+ms.openlocfilehash: 475f89fc5b33948864fd83c39ee8058ab6908cad
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78271321"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80247199"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Cognitive Search の新機能
 
@@ -26,6 +26,12 @@ ms.locfileid: "78271321"
 Azure Search は、コア操作での拡張された (ただし、省略可能な) 認知スキルと AI 処理の使用を反映するために、**Azure Cognitive Search** に名前が変更されました。 API のバージョン、NuGet のパッケージ、名前空間、およびエンドポイントは変更されません。 新規および既存の検索ソリューションは、サービス名の変更の影響を受けません。
 
 ## <a name="feature-announcements"></a>機能のお知らせ
+
+### <a name="march-2020"></a>2020 年 3 月
+
++ [ネイティブな BLOB の論理的な削除 (プレビュー)](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) とは、論理的に削除された状態にある BLOB を Azure Cognitive Search の Azure Blob Storage インデクサーが認識し、インデックス作成中に対応する検索ドキュメントを削除することを意味します。
+
++ 新しい安定版 [Management REST API (2020-03-13)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) が利用できるようになりました。 
 
 ### <a name="february-2020"></a>2020 年 2 月
 

@@ -4,13 +4,13 @@ description: アプリ用に事前構築済みの Python コンテナーを構�
 ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
-ms.custom: seodec18
-ms.openlocfilehash: d2c5a094c45eeca779a33a39261bd3fc17d53d1a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 8a9276f73c1d9bdf0289f41bb59340b29f5a2575
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913856"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80046021"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service 向けの Linux Python アプリを構成する
 
@@ -50,7 +50,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="customize-build-automation"></a>ビルドの自動化のカスタマイズ
 
-ビルドの自動化を有効にして Git または zip パッケージを使用してアプリをデプロイする場合、App Service のビルド自動化によって、次の手順が実行されます。
+ビルドの自動化を有効にして Git または zip パッケージを使用してアプリをデプロイする場合、App Service のビルドの自動化によって、次の手順が実行されます。
 
 1. `PRE_BUILD_SCRIPT_PATH` によって指定された場合、カスタム スクリプトを実行します。
 1. `pip install -r requirements.txt` を実行します。
@@ -68,7 +68,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ビルドの自動化をカスタマイズするためのその他の環境変数については、「[Oryx の構成](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)」を参照してください。
 
-Linux の Python アプリが App Service でどのように実行、ビルドされるかについて詳しくは、[Python アプリの検出とビルドに関する Oryx のドキュメント](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/python.md)を参照してください。
+Linux 上で App Service によって Python アプリが実行されビルドされる方法に関する詳細については、[Oryx ドキュメントの Python アプリが検出されビルドされる方法](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/python.md)に関するページを参照してください。
 
 ## <a name="container-characteristics"></a>コンテナーの特性
 

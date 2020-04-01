@@ -4,12 +4,12 @@ description: Azure Blockchain Workbench プレビューとその機能の概要�
 ms.date: 09/05/2019
 ms.topic: overview
 ms.reviewer: brendal
-ms.openlocfilehash: 88c162539e5d0480d7f938c674b96c2f396774e3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 162626ba2303ab04bd2963a5add61c556615ebec
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75387073"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79203646"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Azure Blockchain Workbench とは
 
@@ -29,7 +29,7 @@ Azure Blockchain Workbench では、ブロックチェーン アプリケーシ�
 
 開発者は、Blockchain Workbench の REST API とメッセージ ベース API を使用して、ブロックチェーンを既存のシステムと統合できます。 これらの API は、複数の分散型台帳テクノロジー、ストレージ、およびデータベース ソリューションを置き換えたり、使用したりするためのインターフェイスを提供します。
 
-Blockchain Workbench では、メッセージ ベース API に送信されたメッセージを変換して、そのブロックチェーンのネイティブ API で受け付けられる形式のトランザクションを作成することができます。  また Workbench では、トランザクションに署名をし、それを適切なブロックチェーンにルーティングできます。 
+Blockchain Workbench では、メッセージ ベース API に送信されたメッセージを変換して、そのブロックチェーンのネイティブ API で想定される形式のトランザクションを作成することができます。  また Workbench では、トランザクションに署名をし、それを適切なブロックチェーンにルーティングできます。 
 
 Workbench は、Service Bus と Event Grid にイベントを自動的に配信し、下流のコンシューマーにメッセージを送信します。 開発者は、これらのメッセージング システムのいずれかを統合してトランザクションを実行し、結果を確認できます。
 

@@ -8,12 +8,12 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナ
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 5deebf7a51917a2b199ad525ab087fd5b0268c18
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 5d0d1541600f4c10b021d5d7f7f435f1aa5ae589
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245033"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80239723"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>クイック スタート:Kubernetes 上でデバッグと反復処理を行う: Visual Studio と .NET Core - Azure Dev Spaces
 
@@ -94,7 +94,9 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:62266
 Completed warmup for project 'webfrontend' in 125 seconds.
 ```
 
-上記の例では、パブリック URL は http://default.webfrontend.1234567890abcdef1234.eus.azds.io/ です。 ご自分のサービスのパブリック URL に移動し、開発空間で稼働しているサービスを操作します。
+上記の例では、パブリック URL は http://default.webfrontend.1234567890abcdef1234.eus.azds.io/ です。 
+
+**[デバッグ]** を選択し、次に **[デバッグの開始]** を選択します。 数秒後にサービスが開始され、Visual Studio でサービスのパブリック URL を使用してブラウザーが開かれます。 ブラウザーが自動的に開かれない場合は、ブラウザーでご自分のサービスのパブリック URL に移動し、開発空間で実行されているサービスを操作します。
 
 このプロセスにより、サービスへのパブリック アクセスが無効になった可能性があります。 パブリック アクセスを有効にするには、[*values.yaml* 内のイングレス値][ingress-update]を更新することができます。
 
@@ -106,7 +108,7 @@ Visual Studio がまだ開発空間に接続されている場合は、停止ボ
 ViewData["Message"] = "Your application description page in Azure.";
 ```
 
-変更を保存し、起動設定のドロップダウンで **[Azure Dev Spaces]** を使用してサービスを開始します。 ブラウザーでご自分のサービスのパブリック URL を開き、 *[詳細]* をクリックします。 更新されたメッセージが表示されることを確認します。
+変更を保存し、 **[デバッグ]** を選択してから、 **[デバッグの開始]** を選択します。 数秒後にサービスが開始され、Visual Studio でサービスのパブリック URL を使用してブラウザーが開かれます。 ブラウザーが自動的に開かれない場合は、ブラウザーでサービスのパブリック URL に移動し、 *[概要]* をクリックします。 更新されたメッセージが表示されることを確認します。
 
 Azure Dev Spaces では、コードが編集されるたびに新しいコンテナー イメージをリビルドして再デプロイするのではなく、既存のコンテナー内でコードの増分再コンパイルを実行して、編集とデバッグのループを高速化します。
 
@@ -133,5 +135,5 @@ az group delete --name MyResourceGroup --yes --no-wait
 > [!div class="nextstepaction"]
 > [複数のコンテナーの操作とチーム開発](multi-service-netcore-visualstudio.md)
 
-[ingress-update]: how-dev-spaces-works.md#how-running-your-code-is-configured
+[ingress-update]: how-dev-spaces-works-up.md#how-running-your-code-is-configured
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

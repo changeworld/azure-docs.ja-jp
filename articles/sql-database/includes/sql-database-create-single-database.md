@@ -3,89 +3,177 @@ author: MashaMSFT
 ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
-ms.date: 02/14/2020
+ms.date: 03/10/2020
 ms.author: mathoma
 ms.reviewer: vanto
-ms.openlocfilehash: d800d273cce995c618422a3a9d0934b2657e6ef5
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: c1ca87b6e7b8afb50522e73107707e15782a0a91
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78194302"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79200488"
 ---
-この手順では、Azure SQL Database の単一データベースを作成します。 
+このステップでは、AdventureWorksLT サンプル データを使用する Azure SQL Database サーバーと単一データベースを作成します。 データベースを作成するには、Azure portal のメニューと画面を使用するか、Azure Cloud Shell で Azure CLI または PowerShell スクリプトを使用します。
 
-> [!IMPORTANT]
-> この記事の実行に使用しているコンピューターのパブリック IP アドレスを使用するようにファイアウォール規則を確実に設定してください。
->
-> 詳細については、[データベース レベルのファイアウォール規則の作成](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)に関するページを参照してください。ご利用のコンピューターのサーバーレベルのファイアウォール規則に使用する IP アドレスを調べる場合は、[サーバーレベルのファイアウォールの作成](../sql-database-server-level-firewall-rule.md)に関するページを参照してください。  
+どの方法を使用する場合でも、サーバーレベルのファイアウォール規則を、サーバーへのアクセスに使用するコンピューターのパブリック IP アドレスを許可するように設定する必要があります。 サーバーのファイアウォール規則を作成する方法の詳細については、[サーバーレベルのファイアウォール規則の作成](../sql-database-server-level-firewall-rule.md)に関するページをご覧ください。 また、データベースレベルのファイアウォール規則を作成することもできます。 [データベースレベルのファイアウォール規則の作成](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)に関するページをご覧ください。 
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-Azure portal を使用して、リソース グループと単一データベースを作成します。
+Azure portal でリソース グループ、SQL サーバー、単一データベースを作成するには、次の手順を行います。
 
-1. [Azure portal](https://portal.azure.com) の左側のメニューで **[Azure SQL]** を選択します。 **[Azure SQL]** が一覧にない場合は、 **[すべてのサービス]** を選択し、検索ボックスに「*Azure SQL*」と入力します。 (省略可能) **[Azure SQL]** の横にある星を選択してお気に入りに追加し、左側のナビゲーションに項目として追加します。 
-2. **[+ 追加]** を選択して、 **[Select SQL deployment option]\(SQL デプロイ オプションの選択\)** ページを開きます。 **[データベース]** タイルで **[詳細の表示]** を選択すると、さまざまなデータベースに関する追加情報を表示できます。
-3. **[作成]** を選択します。
+1. [ポータル](https://portal.azure.com)にサインインします。
+1. 検索バーで **Azure SQL** を検索して、選択します。
+1. **[Azure SQL]** ページで、 **[追加]** を選択します。 
+   
+   ![Azure SQL に追加する](../media/sql-database-single-database-get-started/sqldbportal.png)
+   
+1. **[SQL デプロイ オプションを選択する]** ページで、 **[SQL データベース]** タイルを選択して、 **[リソースの種類]** で **[単一データベース]** を選択します。 **[詳細の表示]** を選択すると、さまざまなデータベースの詳細情報が表示されます。
+1. **［作成］** を選択します
+   
+   ![単一データベースの作成](../media/sql-database-single-database-get-started/create-single-database.png)
+   
+1. **[SQL データベースの作成]** フォームの **[基本]** タブにある **[プロジェクトの詳細]** で、適切な Azure **[サブスクリプション]** を選択します (まだ選択されていない場合)。
+1. **[リソース グループ]** で、 **[新規作成]** を選択し、「*myResourceGroup*」と入力して、 **[OK]** を選択します。
+1. **[データベースの詳細]** で、 **[データベース名]** に「*mySampleDatabase*」と入力します。
+1. **[サーバー]** で、 **[新規作成]** を選択し、 **[新しいサーバー]** フォームに次のように入力します。
+   - **[サーバー名]** : 「*mysqlserver*」と入力します。さらに、一意にするためにいくつかの文字を入力します。
+   - **サーバー管理者ログイン**:「*azureuser*」と入力します。
+   - **パスワード**:要件を満たすパスワードを入力し、 **[パスワードの確認入力]** フィールドにもう一度入力します。
+   - **[場所]** :ドロップ ダウンを表示して、 **[(米国) 米国東部]** などの場所を選択します。
+   
+   **[OK]** を選択します。
+   
+   ![新しいサーバー](../media/sql-database-single-database-get-started/new-server.png)
+   
+   サーバーとデータベースにログインできるように、サーバー管理者ログインとパスワードを記録します。 ログインまたはパスワードを忘れた場合は、データベースを作成した後、 **[SQL サーバー]** ページでログイン名を取得するか、パスワードをリセットできます。 **[SQL サーバー]** ページを開くには、データベースの **[概要]** ページでサーバー名を選択します。
+   
+1. **[Compute + storage]\(計算とストレージ\)** で、既定値を構成する必要がある場合は、 **[データベースの構成]** を選択します。
+   
+   **[構成]** ページで、必要に応じて次の操作を行うことができます。
+   - **[コンピューティング レベル]** を **[プロビジョニング済み]** から **[サーバーレス]** に変更する。
+   - **[仮想コア]** と **[データの最大サイズ]** の設定を確認および変更する。
+   - **[構成の変更]** を選択してハードウェアの世代を変更する。
+   
+   変更した後、 **[適用]** を選択します。
+   
+1. **ページの下部にある [Next: Networking]\(次へ: ネットワーク\)** を選択します。
+   
+   ![新しい SQL データベース - [基本] タブ](../media/sql-database-single-database-get-started/new-sql-database-basics.png)
+   
+1. **[ネットワーク]** タブの **[接続方法]** で、 **[パブリック エンドポイント]** を選択します。 
+1. **[ファイアウォール規則]** で、 **[現在のクライアント IP アドレスを追加する]** を **[はい]** に設定します。
+1. **ページの下部にある [Next: Additional settings]\(次へ: 追加設定\)** を選択します。
+   
+   ![[ネットワーク] タブ](../media/sql-database-single-database-get-started/networking.png)
+   
+   ファイアウォール設定の詳細については、[[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]](../sql-database-networkaccess-overview.md) および[プライベート エンドポイントの追加](../../private-link/private-endpoint-overview.md)に関するページを参照してください。
+   
+1. **[追加設定]** タブにある **[データ ソース]** セクションの **[既存のデータを使用します]** で、 **[サンプル]** を選択します。
+1. ページ下部にある **[確認と作成]** を選択します。
+   
+   ![[追加設定] タブ](../media/sql-database-single-database-get-started/additional-settings.png)
+   
+1. 設定を確認したら、 **[作成]** を選択します。
 
-   ![単一データベースの作成](../media/sql-database-get-started-portal/create-single-database.png)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-4. **[基本]** タブの **[プロジェクトの詳細]** セクションで、次の値を入力または選択します。
+Azure コマンド ライン インターフェイス (Azure CLI) を使用して、Azure リソース グループ、SQL サーバー、単一データベースを作成できます。 Azure Cloud Shell を使用しない場合、コンピューターに [Azure CLI をインストール](/cli/azure/install-azure-cli)します。
 
-   - **サブスクリプション**:表示されていない場合は、ドロップ ダウンして適切なサブスクリプションを選択します。
-   - **[リソース グループ]** : **[新規作成]** を選択し、「`myResourceGroup`」と入力して、 **[OK]** を選択します。
+Azure Cloud Shell で次のコード サンプルを実行するには、コード サンプルのタイトル バーで **[テスト]** を選択します。 Cloud Shell が開いたら、コード サンプルのタイトル バーで **[コピー]** を選択し、コード サンプルを Cloud Shell ウィンドウに貼り付けます。 コードで、`<Subscription ID>` をお使いの Azure サブスクリプション ID に置き換え、`$startip` と `$endip` では、`0.0.0.0` をご使用のコンピューターのパブリック IP アドレスに置き換えます。
 
-     ![新しい SQL データベース - 基本タブ](../media/sql-database-get-started-portal/new-sql-database-basics.png)
+画面に表示されるプロンプトに従って、Azure にサインインし、コードを実行します。 
 
-5. **[データベースの詳細]** セクションで、次の値を入力または選択します。
+上部のバーで [Cloud Shell] アイコンを選択して、Azure portal から Azure Cloud Shell を使用することもできます。 
+   
+   ![Azure Cloud Shell](../media/sql-database-single-database-get-started/cloudshell.png)
+   
+ポータルで初めて Cloud Shell を使用する場合は、 **[ようこそ]** ダイアログで **[Bash]** を選択します。 以降のセッションでは、Bash 環境で Azure CLI を使用します。また、Cloud Shell コントロール バーから **[Bash]** を選択することができます。 
 
-   - **データベース名**: 「`mySampleDatabase`」と入力します。
-   - **[サーバー]** : **[新規作成]** を選択して次の値を入力し、 **[選択]** を選択します。
-       - **[サーバー名]** : 一意性を確保するためにいくつかの数字とともに「`mysqlserver`」と入力します。
-       - **サーバー管理者ログイン**:「`azureuser`.
-       - **パスワード**:パスワードの要件を満たす複雑なパスワードを入力します。
-       - **[場所]** :ドロップダウンから場所 (`West US` など) を選択します。
+次の Azure CLI コードでは、サーバーにアクセスするための Azure リソース グループ、SQL サーバー、単一データベース、ファイアウォール規則を作成します。 後でこれらのリソースを管理できるように、生成されたリソース グループとサーバーの名前を必ず記録しておいてください。
 
-         ![新しいサーバー](../media/sql-database-get-started-portal/new-server.png)
+```azurecli-interactive
+#!/bin/bash
 
-      > [!IMPORTANT]
-      > 忘れずにサーバー管理者のログインとパスワードを記録して、このクイック スタートと他のクイック スタートのためにサーバーとデータベースにログインできるようにします。 ログインまたはパスワードを忘れた場合は、 **[SQL サーバー]** ページでログイン名を取得するかパスワードをリセットします。 **[SQL サーバー]** ページを開くには、データベースの作成後にデータベースの **[概要]** ページでサーバー名を選択します。
+# Sign in to Azure and set execution context (if necessary)
+az login
+az account set --subscription <Subscription ID>
 
-   - **[SQL エラスティック プールを使用しますか?]** : **[いいえ]** オプションを選択します。
-   - **[コンピューティングとストレージ]** : **[データベースの構成]** を選択します。 
+# Set the resource group name and location for your server
+resourceGroupName=myResourceGroup-$RANDOM
+location=westus2
 
-     ![SQL データベースの詳細](../media/sql-database-get-started-portal/sql-db-basic-db-details.png)
+# Set an admin login and password for your database
+adminlogin=azureuser
+password=Azure1234567
 
-   - **[プロビジョニング済み]** を選択します。  または、 **[サーバーレス]** を選択して、サーバーレス データベースを作成します。
+# Set a logical server name that is unique in the system
+servername=server-$RANDOM
 
-     ![プロビジョニング済みの第 4 世代](../media/sql-database-get-started-portal/create-database-provisioned.png)
+# Set the ip address range that can access your database
+startip=0.0.0.0
+endip=0.0.0.0
 
-   - **仮想コア**、**データの最大サイズ**の設定を確認します。 必要に応じて、これらを変更します。 
-     - 必要に応じて、 **[構成の変更]** を選択して、ハードウェアの世代を変更することもできます。
-   - **[適用]** を選択します。
+# Create a resource group
+az group create \
+    --name $resourceGroupName \
+    --location $location
 
-6. **[ネットワーク]** タブを選択し、[ **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** ](../sql-database-networkaccess-overview.md)かどうか、または[プライベート エンドポイント](../../private-link/private-endpoint-overview.md)を追加するかどうかを決定します。
+# Create a logical server in the resource group
+az sql server create \
+    --name $servername \
+    --resource-group $resourceGroupName \
+    --location $location  \
+    --admin-user $adminlogin \
+    --admin-password $password
 
-   ![[ネットワーク] タブ](../media/sql-database-get-started-portal/create-database-networking.png)
+# Configure a firewall rule for the server
+az sql server firewall-rule create \
+    --resource-group $resourceGroupName \
+    --server $servername \
+    -n AllowYourIp \
+    --start-ip-address $startip \
+    --end-ip-address $endip
 
-7. **[追加設定]** タブを選択します。 
-8. **[データ ソース]** セクションの **[既存のデータを使用します]** で、`Sample` を選択します。
+# Create a gen5 2 vCore database in the server
+az sql db create \
+    --resource-group $resourceGroupName \
+    --server $servername \
+    --name mySampleDatabase \
+    --sample-name AdventureWorksLT \
+    --edition GeneralPurpose \
+    --family Gen5 \
+    --capacity 2 \
+```
 
-   ![追加の SQL DB 設定](../media/sql-database-get-started-portal/create-sql-database-additional-settings.png)
+前述のコードでは、次の Azure CLI コマンドを使用しています。
 
-   > [!IMPORTANT]
-   > このクイック スタートとこのデータを使用する他の Azure SQL Database クイック スタートを簡単に実行できるように、必ず **Sample (AdventureWorksLT)** を選択します。
+| command | 説明 |
+|---|---|
+| [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | サブスクリプションを現在のアクティブなサブスクリプションとして設定します。 | 
+| [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | 単一データベースとエラスティック プールをホストする SQL Database サーバーを作成します。 |
+| [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-create) | サーバーのファイアウォール規則を作成します。 | 
+| [az sql db create](/cli/azure/sql/db#az-sql-db-create?view=azure-cli-latest) | データベースを作成します。 | 
 
-9. 残りの値は既定値のままにして、フォームの下部にある **[確認および作成]** を選択します。
-10. 最終設定を確認し、 **[作成]** を選択します。
-
-11. **[SQL Database]** フォームで **[作成]** を選択して、リソース グループ、サーバー、データベースをデプロイし、プロビジョニングします。
+他の Azure SQL Database の Azure CLI サンプルについては、[Azure CLI サンプル](../sql-database-cli-samples.md)に関するページをご覧ください。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
+Windows PowerShell を使用して、Azure リソース グループ、SQL サーバー、単一データベースを作成できます。 Azure Cloud Shell を使用しない場合、[Azure PowerShell モジュールをインストール](/powershell/azure/install-az-ps)します。
+
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-PowerShell を使用して、リソース グループと単一データベースを作成します。
+Azure Cloud Shell で次のコード サンプルを実行するには、コードのタイトル バーで **[テスト]** を選択します。 Cloud Shell が開いたら、コード サンプルのタイトル バーで **[コピー]** を選択し、コード サンプルを Cloud Shell ウィンドウに貼り付けます。 コードで、`<Subscription ID>` をお使いの Azure サブスクリプション ID に置き換え、`$startIp` と `$endIp` では、`0.0.0.0` をご使用のコンピューターのパブリック IP アドレスに置き換えます。 
+
+画面に表示されるプロンプトに従って、Azure にサインインし、コードを実行します。 
+
+上部のバーで [Cloud Shell] アイコンを選択して、Azure portal から Azure Cloud Shell を使用することもできます。 
+   
+   ![Azure Cloud Shell](../media/sql-database-single-database-get-started/cloudshell.png)
+   
+ポータルから初めて Cloud Shell を使用する場合は、 **[ようこそ]** ダイアログで **[PowerShell]** を選択します。 以降のセッションでは、PowerShell を使用します。また、Cloud Shell コントロール バーからこれを選択することもできます。 
+
+次の PowerShell コードでは、サーバーにアクセスするための Azure リソース グループ、SQL サーバー、単一データベース、ファイアウォール規則を作成します。 後でこれらのリソースを管理できるように、生成されたリソース グループとサーバーの名前を必ず記録しておいてください。
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -93,18 +181,16 @@ PowerShell を使用して、リソース グループと単一データベー�
    $resourceGroupName = "myResourceGroup-$(Get-Random)"
    $location = "West US"
    $adminLogin = "azureuser"
-   $password = "PWD27!"+(New-Guid).Guid
+   $password = "Azure1234567"
    $serverName = "mysqlserver-$(Get-Random)"
    $databaseName = "mySampleDatabase"
 
    # The ip address range that you want to allow to access your server 
-   # (leaving at 0.0.0.0 will prevent outside-of-azure connections to your DB)
    $startIp = "0.0.0.0"
    $endIp = "0.0.0.0"
 
    # Show randomized variables
    Write-host "Resource group name is" $resourceGroupName 
-   Write-host "Password is" $password  
    Write-host "Server name is" $serverName 
 
    # Connect to Azure
@@ -147,56 +233,15 @@ PowerShell を使用して、リソース グループと単一データベー�
    $database
    ```
 
-この記事のこの部分では、次の PowerShell コマンドレットを使用します。
+前述のコードでは、次の PowerShell コマンドレットを使用しています。
 
 | command | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 単一データベースとエラスティック プールをホストする SQL Database サーバーを作成します。 |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | 論理サーバー用のファイアウォール規則を作成します。 | 
-| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Azure SQL Database の新しい単一データベースを作成します。 | 
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Azure SQL Database の単一データベースを作成します。 | 
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-AZ CLI を使用して、リソース グループと単一データベースを作成します。
-
-   ```azurecli-interactive
-   #!/bin/bash
-   # set variables
-   $subscription = "<subscriptionID>"
-   $randomIdentifier = $(Get-Random)
-
-   $resourceGroup = "resource-$randomIdentifier"
-   $location = "East US"
-   
-   $login = "sampleLogin"
-   $password = "samplePassword123!"
-
-   $server = "server-$randomIdentifier"
-   $database = "database-$randomIdentifier"
-  
-   az login # connect to Azure
-   az account set -s $subscription # set subscription context for the Azure account
-
-   echo "Creating resource group..."
-   az group create --name $resourceGroup --location $location
-
-   echo "Creating primary logical server..."
-   az sql server create --name $server --resource-group $resourceGroup --location $location --admin-user $login --admin-password $password
-
-   echo "Creating a gen5 2 vCore database..."
-   az sql db create --resource-group $resourceGroup --server $server --name $database --sample-name AdventureWorksLT --edition GeneralPurpose --family Gen5 --capacity 2
-   ```
-
-このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
-
-| command | Notes |
-|---|---|
-| [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | サブスクリプションを現在のアクティブなサブスクリプションとして設定します。 | 
-| [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | 単一データベースとエラスティック プールをホストする SQL Database サーバーを作成します。 |
-| [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule) | サーバーのファイアウォール規則を作成します。 | 
-| [az sql db create](/cli/azure/sql/db?view=azure-cli-latest) | データベースを作成します。 | 
-
+Azure SQL Database の他の PowerShell サンプルについては、[Azure PowerShell サンプル](../sql-database-powershell-samples.md) に関するページをご覧ください。
 
 ---

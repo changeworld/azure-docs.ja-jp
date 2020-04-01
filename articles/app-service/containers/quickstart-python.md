@@ -3,15 +3,15 @@ title: クイック スタート:Linux Python アプリを作成する
 description: App Service で Linux コンテナーに初めての Python アプリをデプロイして、Azure App Service での Linux アプリの使用を開始します。
 ms.topic: quickstart
 ms.date: 10/22/2019
-ms.custom: cli-validate
+ms.custom: seo-python-october2019, cli-validate
 experimental: true
 experiment_id: 01a9132f-eaab-4c
-ms.openlocfilehash: 567e87b43c3fc3d7d2fb0c894ced53c89a133978
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 9cc314edf35d6a327522ed49fcc0c7798c7dcf63
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524065"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80045664"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>クイック スタート:Azure App Service on Linux で Python アプリを作成する
 
@@ -90,7 +90,7 @@ Azure CLI には、コマンド ラインから Azure リソースをプロビ�
 
 Azure CLI で Azure コマンドを実行するには、最初に `az login` コマンドを使ってサインインする必要があります。 このコマンドを実行すると、お客様の資格情報を収集するためにブラウザーが開かれます。
 
-```terminal
+```azurecli
 az login
 ```
 
@@ -101,7 +101,7 @@ az login
 サンプル コードが含まれている *python-docs-hello-world* フォルダーで、次の `az webapp up` コマンドを実行します。 `<app-name>` を、グローバルに一意であるアプリ名に置き換えてください ("*有効な文字は、`a-z`、`0-9`、および `-` です*")。 また、`<location-name>` を、**centralus**、**eastasia**、**westeurope**、**koreasouth**、**brazilsouth**、**centralindia** などの Azure リージョンに置き換えてください。 ([`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) コマンドを実行すると、お使いの Azure アカウントで使用可能なリージョンの一覧を取得できます。)
 
 
-```terminal
+```azurecli
 az webapp up --sku F1 -n <app-name> -l <location-name>
 ```
 
@@ -157,7 +157,7 @@ return "Hello Azure!"
 
 次の `az webapp up` コマンドを使用して、アプリを再デプロイします。アプリを最初にデプロイしたときに使用したのと同じコマンドを使用し、`<app-name>` と `<location-name>` は前に使用したのと同じ名前に置き換えます。 
 
-```terminal
+```azurecli
 az webapp up --sku F1 -n <app-name> -l <location-name>
 ```
 
@@ -174,13 +174,13 @@ az webapp up --sku F1 -n <app-name> -l <location-name>
 
 まず、ターミナルで次のコマンドを実行して、コンテナーのログ記録を有効にします。`<app-name>` は使用するアプリの名前に置き換え、`<resource-group-name>` は、使用した `az webapp up` コマンドの出力に示されているリソース グループの名前 ("appsvc_rg_Linux_centralus" など) に置き換えます。
 
-```terminal
+```azurecli
 az webapp log config --name <app-name> --resource-group <resource-group-name> --docker-container-logging filesystem
 ```
 
 コンテナーのログ記録が有効になったら、次のコマンドを実行して、ログのストリームを表示します。
 
-```terminal
+```azurecli
 az webapp log tail --name <app-name> --resource-group <resource-group-name>
 ```
 
@@ -217,7 +217,7 @@ App Service のメニューには、アプリを構成するためのさまざ�
 
 今後これらのリソースを必要とする予定がない場合は、次のコマンドを実行して、リソース グループを削除します。`<resource-group-name>` は、`az webapp up` コマンドの出力に示されているリソース グループ ("appsvc_rg_Linux_centralus" など) に置き換えます。 このコマンドは、完了するまでに少し時間がかかる場合があります。
 
-```terminal
+```azurecli
 az group delete -n <resource-group-name>
 ```
 

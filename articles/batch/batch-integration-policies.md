@@ -15,10 +15,10 @@ ms.date: 02/24/2020
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: 9a306457f838fc79d12be3217d96cc8fb25c9c1b
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617867"
 ---
 # <a name="integration-with-azure-policy"></a>Azure Policy との統合

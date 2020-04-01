@@ -15,19 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 03/09/2020
 ms.author: allensu
 ms.custom: subject-armqs
-ms.openlocfilehash: 0f6a303bfa42538bf56efa7e9f669588c8bff66c
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 6b3dee698e63ed2b0a44f05b593b8840d1cd23ee
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082729"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80066414"
 ---
 # <a name="quickstart-create-a-nat-gateway---resource-manager-template"></a>クイック スタート:NAT ゲートウェイを作成する - Resource Manager テンプレート
 
-Azure Resource Manager テンプレートを使用して、Virtual Network NAT の使用を開始します。  このテンプレートでは、仮想ネットワーク、NAT ゲートウェイ、および Ubuntu 仮想マシンをデプロイします。 Ubuntu 仮想マシンは、NAT ゲートウェイに関連付けられているサブネットにデプロイされます。
-
->[!NOTE] 
->Azure Virtual Network NAT は、現時点ではパブリック プレビューとして提供され、ご利用いただける[リージョン](https://azure.microsoft.com/global-infrastructure/regions/)が限られています。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms)」をご覧ください。
+Azure Resource Manager テンプレートを使用して、Virtual Network NAT の使用を開始します。  このテンプレートは、仮想ネットワーク、NAT ゲートウェイ リソース、および Ubuntu 仮想マシンをデプロイします。 Ubuntu 仮想マシンは、NAT ゲートウェイ リソースに関連付けられているサブネットにデプロイされます。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 

@@ -4,16 +4,16 @@ titleSuffix: Azure Data Science Virtual Machine
 description: 分析と機械学習を行うために、Linux (Ubuntu) 用の Data Science Virtual Machine を構成して作成します。
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: gvashishtha
-ms.author: gopalv
+author: lobrien
+ms.author: laobri
 ms.topic: quickstart
-ms.date: 12/31/2019
-ms.openlocfilehash: 5d139cbd59b1b3e63786ae22bbd3b934de37cd49
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.date: 03/10/2020
+ms.openlocfilehash: f7629b4724e85f93a8dfe3e37ac2b2155288d235
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526112"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290510"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>クイック スタート:Linux (Ubuntu) Data Science Virtual Machine を設定する
 
@@ -29,7 +29,7 @@ Azure 無料アカウントでは、GPU 対応の仮想マシン SKU がサポ�
 Data Science Virtual Machine Ubuntu 18.04 のインスタンスを作成する手順は以下のとおりです。
 
 1. [Azure portal](https://portal.azure.com) にアクセスします。まだサインインしていない場合は、Azure アカウントへのサインインを求めるメッセージが表示される可能性があります。
-1. 「data science virtual machine」と入力して仮想マシンの一覧を検索し、[Data Science Virtual Machine - Ubuntu 18.04 Preview]\(Data Science Virtual Machine - Ubuntu 18.04 プレビュー\) を選択します。
+1. 「Data Science Virtual Machine」と入力して仮想マシンの一覧を検索し、[Data Science Virtual Machine - Ubuntu 18.04] を選択します。
 
 1. 次のウィンドウで **[作成]** を選択します。
 
@@ -60,7 +60,7 @@ Data Science Virtual Machine Ubuntu 18.04 のインスタンスを作成する�
    1. **[Review + create]\(レビュー + 作成\)** を選択します。
    1. **[レビュー + 作成]**
       * 入力したすべての情報が正しいことを確認します。 
-      * **作成** を選択します。
+      * **［作成］** を選択します
     
     プロビジョニングには 5 分くらいかかります。 この状態は Azure portal に表示されます。
 
@@ -118,13 +118,14 @@ Ubuntu DSVM は、マルチユーザーの Jupyter サーバーである [Jupyte
       ![Ubuntu マシンの IP アドレス](./media/dsvm-ubuntu-intro/ubuntu-ip-address.png)
 
    1. ローカル コンピューターから Web ブラウザーを開き、https:\//your-vm-ip:8000 に移動します。"your-vm-ip" は、前にメモした IP アドレスに置き換えます。
+   1. ブラウザーにより、証明書エラーが発生したことが報告され、ページを直接開けなくなる場合があります。 DSVM では、自己署名証明書を使用してセキュリティを提供しています。 ほとんどのブラウザーでは、この警告の後にクリック スルーすることができます。 多くのブラウザーでは、Web セッション全体の証明書に関する何らかの視覚的な警告が引き続き提供されます。
    1. VM を作成するときに使ったユーザー名とパスワードを入力してサインインしてください。 
 
       ![Jupyter ログインを入力する](./media/dsvm-ubuntu-intro/jupyter-login.png)
 
    1. 入手できる多くのサンプル ノートブックを参照します。
 
-次世代の Jupyter Notebook と JupyterHub である JupyterLab も利用できます。 これにアクセスするには、JupyterHub にサインインし、URL https:\//your-vm-ip:8000/user/your-username/lab を参照します。"your-username" は VM の構成時に選択したユーザー名に置き換えます。
+次世代の Jupyter Notebook と JupyterHub である JupyterLab も利用できます。 これにアクセスするには、JupyterHub にサインインし、URL https:\//your-vm-ip:8000/user/your-username/lab を参照します。"your-username" は VM の構成時に選択したユーザー名に置き換えます。 この場合も、証明書のエラーが原因で、最初はサイトへのアクセスがブロックされることがあります。
 
 次の行を `/etc/jupyterhub/jupyterhub_config.py` に追加すれば、JupyterLab を既定のノートブック サーバーとして設定できます。
 

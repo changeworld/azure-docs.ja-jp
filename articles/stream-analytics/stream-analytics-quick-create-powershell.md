@@ -7,12 +7,12 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 8fb4d50a4ba56efd9087a829c7d54c3010fc671e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 84c132c333e4d6ba052029350f275ebf499a906f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431522"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79536804"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Stream Analytics ジョブを作成する
 
@@ -28,7 +28,7 @@ Azure PowerShell モジュールは、PowerShell コマンドレットまたは�
 
 * このクイック スタートには、Azure PowerShell モジュールが必要です。 ローカル マシンにインストールされているバージョンを調べるには、`Get-Module -ListAvailable Az` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-Az-ps)に関するページを参照してください。
 
-* 一部の IoT Hub アクションは Azure PowerShell でサポートされていないため、Azure CLI バージョン 2.0.24 以降および Azure CLI の IoT 拡張機能を使用して実行する必要があります。 [Azure CLI をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)し、`az extension add --name azure-cli-iot-ext` を使用して IoT 拡張機能をインストールします。
+* 一部の IoT Hub アクションは Azure PowerShell でサポートされていないため、Azure CLI バージョン 2.0.70 以降および Azure CLI の IoT 拡張機能を使用して完了する必要があります。 [Azure CLI をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)し、`az extension add --name azure-iot` を使用して IoT 拡張機能をインストールします。
 
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
@@ -104,7 +104,7 @@ Stream Analytics ジョブを定義する前に、ジョブへの入力として
 
     **出力例:**
 
-    ```azurecli
+    ```output
     HostName=MyASAIoTHub.azure-devices.net;DeviceId=MyASAIoTDevice;SharedAccessKey=a2mnUsg52+NIgYudxYYUNXI67r0JmNubmfVafojG8=
     ```
 
@@ -297,6 +297,7 @@ New-AzStreamAnalyticsTransformation `
   -File $jobTransformationDefinitionFile `
   -Name $jobTransformationName -Force
 ```
+
 ## <a name="run-the-iot-simulator"></a>IoT シミュレーターを実行する
 
 1. [Raspberry Pi Azure IoT オンライン シミュレーター](https://azure-samples.github.io/raspberry-pi-web-simulator/)を開きます。

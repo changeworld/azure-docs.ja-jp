@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 10/18/2019
+ms.date: 03/17/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e928d67ba7102df3d342e77705ea895f9230ff3
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: d2b1d9748b243dcc2104ce7b8e0e8735a7b7276f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72887702"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79497679"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection とは
 
@@ -57,7 +57,7 @@ Identity Protection は、次の分類のリスクを識別します。
 
 これらのリスクとその計算方法の詳細については、「[リスクとは](concept-identity-protection-risks.md)」を説明する記事を参照してください。
 
-リスクシグナルは、Azure Multi-Factor Authentication の実行、セルフサービスのパスワード リセットを使用したパスワードのリセット、管理者がアクションを実行するまでのブロックなど、修復作業をトリガーすることができます。
+リスクシグナルは、Azure Multi-Factor Authentication の実行、セルフサービス パスワード リセットを使用したパスワードのリセット、管理者がアクションを実行するまでのブロックなど、修復作業をトリガーすることができます。
 
 ## <a name="risk-investigation"></a>リスクの調査
 
@@ -79,6 +79,15 @@ Identity Protection の情報と Azure Sentinel の統合に関する情報に�
 
 Identity Protection にユーザーがにアクセスするためには、セキュリティ閲覧者、セキュリティ オペレーター、セキュリティ管理者、グローバル閲覧者、またはグローバル管理者である必要があります。
 
+| Role | できること | できないこと |
+| --- | --- | --- |
+| 全体管理者 | Identity Protection へのフル アクセス |   |
+| セキュリティ管理者 | Identity Protection へのフル アクセス | ユーザーのパスワードをリセットする |
+| セキュリティ オペレーター | すべての Identity Protection レポートと [概要] ブレードを表示する <br><br> ユーザー リスクを無視し、安全なサインインを確認して、セキュリティ侵害を確認する | ポリシーを構成または変更する <br><br> ユーザーのパスワードをリセットする <br><br> アラートを構成する |
+| セキュリティ閲覧者 | すべての Identity Protection レポートと [概要] ブレードを表示する | ポリシーを構成または変更する <br><br> ユーザーのパスワードをリセットする <br><br> アラートを構成する <br><br> 検出に関するフィードバックを送信する |
+
+条件付きアクセス管理者は、条件としてサインイン リスクを考慮に入れるポリシーを作成することもできます。詳細については、「[条件付きアクセス: 条件](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk)」を参照してください。
+
 ## <a name="license-requirements"></a>ライセンスの要件
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
@@ -95,7 +104,7 @@ Identity Protection にユーザーがにアクセスするためには、セキ
 | 通知 | 週間ダイジェスト | はい | いいえ | いいえ |
 | | MFA 登録ポリシー | はい | いいえ | いいえ |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [セキュリティの概要](concept-identity-protection-security-overview.md)
 

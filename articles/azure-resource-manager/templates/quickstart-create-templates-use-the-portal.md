@@ -5,16 +5,16 @@ author: mumian
 ms.date: 06/12/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 66f730cae654c6c740e4224cfbb2ba1ae41d8df5
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: dd3d9caa8184b8637b509fc3318851751b211405
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689716"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80131868"
 ---
-# <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>クイック スタート:Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ
+# <a name="quickstart-create-and-deploy-arm-templates-by-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して ARM テンプレートを作成およびデプロイする
 
-Azure portal を使用して Resource Manager テンプレートを生成する方法と、ポータルでテンプレートを編集およびデプロイするプロセスについて学習します。 Resource Manager テンプレートとは、ソリューションに対してデプロイが必要なリソースを定義した JSON ファイルのことをいいます。 Azure ソリューションのデプロイと管理に関する概念について理解を深めるには、[テンプレートのデプロイの概要](overview.md)に関するページを参照してください。
+Azure portal を使用して Azure Resource Manager (ARM) テンプレートを生成する方法と、ポータルでテンプレートを編集およびデプロイするプロセスについて学習します。 ARM テンプレートとは、ソリューションに対してデプロイが必要なリソースを定義した JSON ファイルのことをいいます。 Azure ソリューションのデプロイと管理に関する概念について理解を深めるには、[テンプレートのデプロイの概要](overview.md)に関するページを参照してください。
 
 ![Resource Manager テンプレートのクイックスタート ポータル ダイアグラム](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
@@ -24,7 +24,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="generate-a-template-using-the-portal"></a>ポータルを使用したテンプレートの生成
 
-最初から Resource Manager テンプレートを作成するのは簡単な作業ではありません。Azure のデプロイと JSON 形式に慣れていない場合は特にそうです。 Azure portal を使用すると、Azure Storage アカウントなどのリソースを構成できます。 リソースをデプロイする前に、構成を Resource Manager テンプレートにエクスポートできます。 テンプレートを保存し、今後再利用できます。
+最初から ARM テンプレートを作成するのは簡単な作業ではありません。Azure のデプロイと JSON 形式に慣れていない場合は特にそうです。 Azure portal を使用すると、Azure Storage アカウントなどのリソースを構成できます。 リソースをデプロイする前に、構成をテンプレートにエクスポートできます。 テンプレートを保存し、今後再利用できます。
 
 経験豊富なテンプレート開発者の多くは、慣れていない Azure リソースをデプロイするときにこの方法を使用してテンプレートを生成しています。 ポータルを使用したテンプレートのエクスポートの詳細については、[テンプレートへのリソース グループのエクスポート](../management/manage-resource-groups-portal.md#export-resource-groups-to-templates)に関する記事を参照してください。 作業用のテンプレートを検索する他の方法は、[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)からです。
 
@@ -38,10 +38,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ![Azure のストレージ アカウントの作成](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
 1. 次の情報を入力します。
 
-    |Name|値|
+    |名前|Value|
     |----|----|
     |**リソース グループ**|**[新規作成]** を選択し、任意のリソース グループ名を指定します。 スクリーンショットでは、リソース グループ名は *mystorage1016rg* です。 リソース グループとは、Azure リソース用のコンテナーです。 リソース グループを使用すると、Azure リソースをより簡単に管理できます。 |
-    |**Name**|ストレージ アカウントに一意の名前を付けます。 ストレージ アカウントの名前は、Azure に存在するいずれの名前とも重複しないこと、また小文字と数字だけで構成されている必要があります。 名前は 3 文字から 24 文字の長さで指定する必要があります。 "ストレージ カウント名 'mystorage1016' は既に使用されています" というエラー メッセージが表示された場合は、 **&lt;自分の名前>storage&lt;MMDD形式の今日の日付>** (例: **johndolestorage1016**) の使用を試してください。 詳細については、「[名前付け規則と制約事項](/azure/architecture/best-practices/resource-naming)」を参照してください。|
+    |**名前**|ストレージ アカウントに一意の名前を付けます。 ストレージ アカウントの名前は、Azure に存在するいずれの名前とも重複しないこと、また小文字と数字だけで構成されている必要があります。 名前は 3 文字から 24 文字の長さで指定する必要があります。 "ストレージ カウント名 'mystorage1016' は既に使用されています" というエラー メッセージが表示された場合は、 **&lt;自分の名前>storage&lt;MMDD形式の今日の日付>** (例: **johndolestorage1016**) の使用を試してください。 詳細については、「[名前付け規則と制約事項](/azure/architecture/best-practices/resource-naming)」を参照してください。|
 
     残りのプロパティは既定値のままでかまいません。
 
@@ -55,7 +55,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![ポータルを使用してテンプレートを生成する](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template.png)
 
-    メイン ウィンドウにテンプレートが表示されます。 これは、6 つの最上位要素 (`schema`、`contentVersion`、`parameters`、`variables`、`resources`、および `output`) が含まれた JSON ファイルです。 詳細については、「[Azure Resource Manager テンプレートの構造と構文の詳細](./template-syntax.md)」をご覧ください。
+    メイン ウィンドウにテンプレートが表示されます。 これは、6 つの最上位要素 (`schema`、`contentVersion`、`parameters`、`variables`、`resources`、および `output`) が含まれた JSON ファイルです。 詳しくは、「[Azure Resource Manager テンプレートの構造と構文の詳細](./template-syntax.md)」をご覧ください
 
     6 個のパラメーターが定義されています。 そのうちの 1 つは、**storageAccountName** という名前です。 前のスクリーンショットの 2 番目の強調表示された部分は、テンプレートでこのパラメーターを参照する方法を示しています。 次のセクションでは、生成された名前をストレージ アカウントに使用するようにテンプレートを編集します。
 
@@ -82,7 +82,7 @@ Azure では、各 Azure サービスで一意の名前が使用される必要�
 1. **[テンプレートのデプロイ]** を選択します。
 
     ![Azure Resource Manager のテンプレート ライブラリ](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-library.png)
-1. **作成** を選択します。
+1. **［作成］** を選択します
 1. **[Build your own template in the editor] \(エディターで独自のテンプレートをビルド\)** を選択します。
 1. **[ファイルの読み込み]** を選択し、手順に従って、前のセクションでダウンロードした template.json を読み込みます。
 1. テンプレートに次の 3 つの変更を加えます。
@@ -152,10 +152,10 @@ Azure では、各 Azure サービスで一意の名前が使用される必要�
 1. **[保存]** を選択します。
 1. 次の値を入力します。
 
-    |Name|値|
+    |名前|Value|
     |----|----|
     |**リソース グループ**|前のセクションで作成したリソース グループの名前を選択します。 |
-    |**Location**|ストレージ アカウントの場所を選択します。 たとえば **[米国中部]** です。 |
+    |**場所**|ストレージ アカウントの場所を選択します。 たとえば **[米国中部]** です。 |
     |**アカウントの種類**|このクイック スタートでは、「**Standard_LRS**」と入力します。 |
     |**種類**|このクイック スタートでは、「**StorageV2**」と入力します。 |
     |**アクセス層**|このクイック スタートでは、「**ホット**」と入力します。 |

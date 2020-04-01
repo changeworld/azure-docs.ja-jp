@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b988435fc6928d52321cb427e2412e7ca81680d2
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: cfff05ed52258ee448d83a521b99dca7d356a0f9
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73126468"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80061043"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>Linux 上で Azure Files で使用するポイント対サイト (P2S) VPN を構成する
 ポイント対サイト (P2S) VPN 接続を使用すると、ポート 445 を開くことなく、Azure の外部から SMB 経由で Azure ファイル共有をマウントできます。 ポイント対サイト VPN 接続は、Azure と個々のクライアントの間の VPN 接続です。 Azure Files で P2S VPN 接続を使用するには、接続したいクライアントごとに P2S VPN 接続を構成する必要があります。 オンプレミス ネットワークから Azure ファイル共有に接続する必要のある多数のクライアントが存在する場合は、クライアントごとのポイント対サイト接続の代わりにサイト間 (S2S) VPN 接続を使用できます。 詳細については、「[Azure Files で使用するサイト間 VPN を構成する](storage-files-configure-s2s-vpn.md)」を参照してください。
@@ -24,7 +24,9 @@ ms.locfileid: "73126468"
 ## <a name="prerequisites"></a>前提条件
 - 最新バージョンの Azure CLI。 Azure CLI をインストールする方法の詳細については、[Azure PowerShell CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照し、オペレーティング システムを選択してください。 Linux 上で Azure PowerShell モジュールを使用することは可能ですが、下の手順は Azure CLI 用に提供されています。
 
-- オンプレミスにマウントする Azure ファイル共有。 ポイント対サイト VPN には [Standard](storage-how-to-create-file-share.md) または [Premium Azure ファイル共有](storage-how-to-create-premium-fileshare.md)のどちらかを使用できます。
+- オンプレミスにマウントする Azure ファイル共有。 ストレージ アカウント内にデプロイされた Azure ファイル共有は、複数のファイル共有だけでなく、BLOB コンテナーやキューなどのその他のストレージ リソースをデプロイできるストレージの共有プールを表す管理構造です。 Azure ファイル共有とストレージ アカウントをデプロイする方法の詳細については、「[Azure ファイル共有を作成する](storage-how-to-create-file-share.md)」を参照してください。
+
+- オンプレミスにマウントする Azure ファイル共有を含むストレージ アカウント用のプライベート エンドポイント。 プライベート エンドポイントを作成する方法の詳細については、「[Azure Files ネットワーク エンドポイントの構成](storage-files-networking-endpoints.md?tabs=azure-cli)」を参照してください。 
 
 ## <a name="install-required-software"></a>必要なソフトウェアのインストール
 Azure 仮想ネットワーク ゲートウェイは、IPsec と OpenVPN を含むいくつかの VPN プロトコルを使用して VPN 接続を提供できます。 このガイドでは IPsec を使用する方法を示し、Linux 上で strongSwan パッケージを使用してサポートを提供します。 
@@ -77,85 +79,6 @@ gatewaySubnet=$(az network vnet subnet create \
     --name "GatewaySubnet" \
     --address-prefixes "192.168.2.0/24" \
     --query "id" | tr -d '"')
-```
-
-## <a name="restrict-the-storage-account-to-the-virtual-network"></a>ストレージ アカウントを仮想ネットワークに制限する
-既定では、ストレージ アカウントを作成すると、要求を認証する手段 (Active Directory ID やストレージ アカウント キーの使用など) を持っている限り、世界中のどこからでもそのアカウントにアクセスできます。 このストレージ アカウントへのアクセスを今作成した仮想ネットワークに制限するには、仮想ネットワーク内のアクセスを許可し、その他のすべてのアクセスを拒否するネットワーク ルール セットを作成する必要があります。
-
-ストレージ アカウントを仮想ネットワークに制限するには、サービス エンドポイントを使用する必要があります。 サービス エンドポイントは、パブリック DNS/パブリック IP に仮想ネットワーク内からしかアクセスできないようにするためのネットワーク構造です。 パブリック IP アドレスは同じままであることが保証されないため、最終的にはストレージ アカウントのサービス エンドポイントではなく、プライベート エンドポイントを使用する必要がありますが、サービス エンドポイントも公開されない限り、ストレージ アカウントを制限することはできません。
-
-`<storage-account-name>` は、アクセスするストレージ アカウントに必ず置き換えてください。
-
-```bash
-storageAccountName="<storage-account-name>"
-
-az storage account network-rule add \
-    --resource-group $resourceGroupName \
-    --account-name $storageAccountName \
-    --subnet $serviceEndpointSubnet > /dev/null
-
-az storage account update \
-    --resource-group $resourceGroupName \
-    --name $storageAccountName \
-    --bypass "AzureServices" \
-    --default-action "Deny" > /dev/null
-```
-
-## <a name="create-a-private-endpoint-preview"></a>プライベート エンドポイントを作成する (プレビュー)
-ストレージ アカウントのプライベート エンドポイントを作成すると、そのストレージ アカウントに仮想ネットワークの IP アドレス空間内の IP アドレスが割り当てられます。 このプライベート IP アドレスを使用してオンプレミスから Azure ファイル共有をマウントすると、VPN のインストールにより自動的に定義されたルーティング規則によって、マウント要求が VPN 経由でストレージ アカウントにルーティングされます。 
-
-```bash
-zoneName="privatelink.file.core.windows.net"
-
-storageAccount=$(az storage account show \
-    --resource-group $resourceGroupName \
-    --name $storageAccountName \
-    --query "id" | tr -d '"')
-
-az resource update \
-    --ids $privateEndpointSubnet \
-    --set properties.privateEndpointNetworkPolicies=Disabled > /dev/null
-
-az network private-endpoint create \
-    --resource-group $resourceGroupName \
-    --name "$storageAccountName-PrivateEndpoint" \
-    --location $region \
-    --subnet $privateEndpointSubnet \
-    --private-connection-resource-id $storageAccount \
-    --group-ids "file" \
-    --connection-name "privateEndpointConnection" > /dev/null
-
-az network private-dns zone create \
-    --resource-group $resourceGroupName \
-    --name $zoneName > /dev/null
-
-az network private-dns link vnet create \
-    --resource-group $resourceGroupName \
-    --zone-name $zoneName \
-    --name "$virtualNetworkName-link" \
-    --virtual-network $virtualNetworkName \
-    --registration-enabled false > /dev/null
-
-networkInterfaceId=$(az network private-endpoint show \
-    --name "$storageAccountName-PrivateEndpoint" \
-    --resource-group $resourceGroupName \
-    --query 'networkInterfaces[0].id' | tr -d '"')
- 
-storageAccountPrivateIP=$(az resource show \
-    --ids $networkInterfaceId \
-    --api-version 2019-04-01 \
-    --query "properties.ipConfigurations[0].properties.privateIPAddress" | tr -d '"')
-
-fqdnQuery="properties.ipConfigurations[0].properties.privateLinkConnectionProperties.fqdns[0]"
-fqdn=$(az resource show \
-    --ids $networkInterfaceId \
-    --api-version 2019-04-01 \
-    --query $fqdnQuery | tr -d '"')
-
-az network private-dns record-set a create \
-    --name $storageAccountName \
-    --zone-name $zoneName \
-    --resource-group $resourceGroupName > /dev/null
 ```
 
 ## <a name="create-certificates-for-vpn-authentication"></a>VPN 認証用の証明書を作成する

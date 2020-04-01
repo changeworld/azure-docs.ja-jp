@@ -8,12 +8,12 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: ee50d180c579e117c16f1a956871068f0a46e976
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 537dabe09c41012b9e15998ce3af8198dcfb62d3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77498571"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80245776"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して ASP.NET Core アプリを作成する
 
@@ -31,7 +31,7 @@ ms.locfileid: "77498571"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **[構成エクスプローラー]**  >  **[作成]** の順に選択して、次のキーと値のペアを追加します。
+6. **[構成エクスプローラー]**  >  **[+ 作成]**  >  **[キー値]** の順に選択して、次のキーと値のペアを追加します。
 
     | Key | Value |
     |---|---|
@@ -40,7 +40,7 @@ ms.locfileid: "77498571"
     | TestApp:Settings:FontColor | Black |
     | TestApp:Settings:Message | Azure App Configuration からのデータ |
 
-    **[ラベル]** と **[コンテンツの種類]** は、現時点では空にしておきます。
+    **[ラベル]** と **[コンテンツの種類]** は、現時点では空にしておきます。 **[適用]** を選択します。
 
 ## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core Web アプリケーションの作成
 
@@ -58,44 +58,51 @@ dotnet new mvc --no-https
 
 シークレット マネージャーを使用するには、 *.csproj* ファイルに `UserSecretsId` 要素を追加します。
 
-*.csproj* ファイルを開きます。 ここに示すように、`UserSecretsId` 要素を追加します。 同じ GUID を使用することも、この値を独自の値に置き換えることもできます。 ファイルを保存します。
+1. *.csproj* ファイルを開きます。
 
-> [!IMPORTANT]
-> `CreateHostBuilder` により、.NET Core 3.0 の `CreateWebHostBuilder` が置き換えられます。  お使いの環境に応じて適切な構文を選択します。
+1.  ここに示すように、`UserSecretsId` 要素を追加します。 同じ GUID を使用することも、この値を独自の値に置き換えることもできます。
 
-#### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
-
-```xml
-<Project Sdk="Microsoft.NET.Sdk.Web">
-
-    <PropertyGroup>
-        <TargetFramework>netcoreapp2.1</TargetFramework>
-        <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.App" />
-        <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
-    </ItemGroup>
-
-</Project>
-```
-
-#### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
-
-```xml
-<Project Sdk="Microsoft.NET.Sdk.Web">
+    > [!IMPORTANT]
+    > `CreateHostBuilder` により、.NET Core 3.0 の `CreateWebHostBuilder` が置き換えられます。  お使いの環境に応じて適切な構文を選択します。
     
-    <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
-        <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
-    </PropertyGroup>
+    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
+    
+    ```xml
+    <Project Sdk="Microsoft.NET.Sdk.Web">
+    
+        <PropertyGroup>
+            <TargetFramework>netcoreapp2.1</TargetFramework>
+            <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
+        </PropertyGroup>
+    
+        <ItemGroup>
+            <PackageReference Include="Microsoft.AspNetCore.App" />
+            <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+        </ItemGroup>
+    
+    </Project>
+    ```
+    
+    #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
+    
+    ```xml
+    <Project Sdk="Microsoft.NET.Sdk.Web">
+        
+        <PropertyGroup>
+            <TargetFramework>netcoreapp3.1</TargetFramework>
+            <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
+        </PropertyGroup>
+    
+    </Project>
+    ```
+    ---
 
-</Project>
-```
----
+1. *.csproj* ファイルを保存します。
 
-シークレット マネージャー ツールは、開発作業の機密データをプロジェクト ツリーの外部に格納します。 これにより、ソース コード内のアプリ シークレットが偶発的に共有されるのを防止できます。 シークレット マネージャーの詳細については、「[ASP.NET Core での開発におけるアプリ シークレットの安全な格納](https://docs.microsoft.com/aspnet/core/security/app-secrets)」を参照してください。
+シークレット マネージャー ツールは、開発作業の機密データをプロジェクト ツリーの外部に格納します。 これにより、ソース コード内のアプリ シークレットが偶発的に共有されるのを防止できます。
+
+> [!TIP]
+> シークレット マネージャーの詳細については、「[ASP.NET Core での開発におけるアプリ シークレットの安全な保存](https://docs.microsoft.com/aspnet/core/security/app-secrets)」を参照してください。
 
 ## <a name="connect-to-an-app-configuration-store"></a>App Configuration ストアに接続する
 
@@ -113,7 +120,7 @@ dotnet new mvc --no-https
 
 1. シークレット マネージャーに、*ConnectionStrings:AppConfig* という名前のシークレットを追加します。
 
-    このシークレットには、App Configuration ストアにアクセスするための接続文字列が格納されます。 次のコマンドの値を、自分の App Configuration ストアの接続文字列に置き換えます。
+    このシークレットには、App Configuration ストアにアクセスするための接続文字列が格納されます。 次のコマンドの値を、自分の App Configuration ストアの接続文字列に置き換えます。 接続文字列は、Azure portal の **[アクセス キー]** で確認できます。
 
     このコマンドは、 *.csproj* ファイルと同じディレクトリで実行する必要があります。
 

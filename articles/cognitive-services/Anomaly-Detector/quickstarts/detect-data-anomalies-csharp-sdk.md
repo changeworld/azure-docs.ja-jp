@@ -1,21 +1,21 @@
 ---
 title: クイック スタート:.NET 用 Anomaly Detector クライアント ライブラリを使用して時系列データ内の異常を検出する
 titleSuffix: Azure Cognitive Services
-description: このクイックスタートでは、Anomaly Detector API を使用して、データ系列の異常をバッチとして、またはストリーミング データで検出する方法について説明します。
+description: Anomaly Detector API を使用して、お使いのデータ系列の異常を一括で、またはストリーミング データ上で検出する方法について説明します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 11/19/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: fdb35edc35e07ed4ee718281942565a8f1d061d4
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 268ceee5504e6e48b9eb8fdae18564482480e250
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78402688"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80239131"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-net"></a>クイック スタート:.NET 用 Anomaly Detector クライアント ライブラリ
 

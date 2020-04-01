@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:ポータルを使用した新しいポリシーの割り当て
 description: このクイックスタートでは、Azure portal を使用して、Azure Policy の割り当てを作成し、準拠していないリソースを特定します。
-ms.date: 11/25/2019
+ms.date: 03/24/2020
 ms.topic: quickstart
-ms.openlocfilehash: ac876b546ea3bda7541db61e0ab68842a3845541
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 3a514478f3cefa49c37c3431a80b578dff480584
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482314"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80240000"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>クイック スタート:準拠していないリソースを識別するためのポリシー割り当てを作成する
 
@@ -27,15 +27,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Azure portal 上で **[すべてのサービス]** をクリックし、 **[ポリシー]** を検索して選択し、Azure Policy サービスを起動します。
 
-   ![[すべてのサービス] で [ポリシー] を検索する](./media/assign-policy-portal/search-policy.png)
+   :::image type="content" source="./media/assign-policy-portal/search-policy.png" alt-text="[すべてのサービス] で [ポリシー] を検索する" border="false":::
 
 1. Azure Policy ページの左側にある **[割り当て]** を選択します。 割り当ては、特定のスコープ内で実行するように割り当てられたポリシーです。
 
-   ![ポリシーの概要ページから [割り当て] ページを選択する](./media/assign-policy-portal/select-assignments.png)
+   :::image type="content" source="./media/assign-policy-portal/select-assignments.png" alt-text="ポリシーの概要ページから [割り当て] ページを選択する" border="false":::
 
 1. **[ポリシー - 割り当て]** ページの上部で **[ポリシーの割り当て]** を選択します。
 
-   ![[割り当て] ページでポリシー定義を割り当てる](./media/assign-policy-portal/select-assign-policy.png)
+   :::image type="content" source="./media/assign-policy-portal/select-assign-policy.png" alt-text="[割り当て] ページでポリシー定義を割り当てる" border="false":::
 
 1. **[ポリシーの割り当て]** ページで、 **[スコープ]** を選択します。その際、省略記号をクリックし、管理グループまたはサブスクリプションを選択します。 任意でリソース グループを選択します。 スコープによって、ポリシー割り当てを強制するリソースまたはリソースのグループが決まります。 次に、 **[スコープ]** ページの下部にある **[選択]** をクリックします。
 
@@ -47,13 +47,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    - タグとその値を強制
    - タグとその値を適用
-   - SQL Server バージョン 12.0 が必要
+   - タグが存在しない場合は、リソース グループからタグを継承する
 
    使用できる組み込みポリシーの部分的な一覧については、[Azure Policy サンプル](./samples/index.md)に関する記事をご覧ください。
 
 1. ポリシー定義の一覧で、"_Audit VMs that do not use managed disks\(マネージド ディスクを使用しない VM の監査\)_ " 定義を見つけます。 そのポリシーをクリックし、 **[選択]** をクリックします。
 
-   ![適切なポリシー定義を見つける](./media/assign-policy-portal/select-available-definition.png)
+   :::image type="content" source="./media/assign-policy-portal/select-available-definition.png" alt-text="適切なポリシー定義を見つける" border="false":::
 
 1. **[割り当て名]** には選択したポリシー名が自動的に入力されますが、この名前は変更できます。 この例では、"_Audit VMs that do not use managed disks\(マネージド ディスクを使用しない VM の監査\)_ " をそのまま使用します。 必要に応じて、**説明**を追加することもできます。 説明では、このポリシーの割り当ての詳細を示します。
    **[割り当て担当者]** には、ログイン ユーザーに基づいて自動的にデータが入力されます。 このフィールドは任意です。カスタム値を入力できます。
@@ -68,7 +68,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ページの左側にある **[コンプライアンス]** を選択します。 次に、作成した "**Managed Disks を使用していない VM の監査**" ポリシー割り当てを見つけます。
 
-![ポリシーのコンプライアンスのページのコンプライアンスの詳細](./media/assign-policy-portal/policy-compliance.png)
+:::image type="content" source="./media/assign-policy-portal/policy-compliance.png" alt-text="ポリシーのコンプライアンスのページにあるコンプライアンスの詳細" border="false":::
 
 この新しい割り当てに準拠していない既存のリソースがある場合、 **[準拠していないリソース]** の下に表示されます。
 
@@ -84,7 +84,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 \* Append、DeployIfNotExist、AuditIfNotExist の各効果では、IF ステートメントが TRUE である必要があります。
 また、非準拠となるには、既存の条件が FALSE である必要があります。 TRUE のとき、IF 条件は関連するリソースの既存の条件の評価をトリガーします。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 作成した割り当てを削除するには、次の手順のようにします。
 
@@ -92,9 +92,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. "**マネージド ディスクを使用しない VM の監査**" ポリシー割り当てを右クリックし、 **[割り当ての削除]** を選択します。
 
-   ![コンプライアンスのページから割り当てを削除する](./media/assign-policy-portal/delete-assignment.png)
+   :::image type="content" source="./media/assign-policy-portal/delete-assignment.png" alt-text="コンプライアンスのページから割り当てを削除する" border="false":::
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、ポリシー定義をスコープに割り当て、コンプライアンス レポートを評価しました。
 ポリシー定義では、スコープ内のすべてのリソースが準拠していることが検証されて、準拠していないリソースが識別されます。

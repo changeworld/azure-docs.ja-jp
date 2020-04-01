@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 08/12/2019
 ms.author: curtand
 ms.openlocfilehash: b94c739abffa8792afbfab4285c54a67f3eb4b65
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77062525"
 ---
 # <a name="set-up-an-office-phone-as-your-two-factor-verification-method"></a>会社電話を 2 要素認証方法として設定する
@@ -41,7 +41,7 @@ ms.locfileid: "77062525"
     >[!Note]
     >古いアプリでアプリ パスワードを使用する方法の詳細については、「[アプリ パスワードの管理](multi-factor-authentication-end-user-app-passwords.md)」を参照してください。 2 要素認証をサポートしていない古いアプリを引き続き使用する場合のみ、アプリ パスワードを使用する必要があります。
 
-4. **[完了]** を選択します。
+4. **[Done]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

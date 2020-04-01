@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7762366f68bee2cd8c44e81bb22366c504ff1a73
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: ae3d38d92990d7a1af4146c25b017286ebd29352
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484419"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80061035"
 ---
 # <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>Azure Files で使用するサイト間 VPN を構成する
 サイト間 (S2S) VPN 接続を使用すると、ポート 445 を開くことなく、オンプレミス ネットワークから SMB 経由で Azure ファイル共有をマウントできます。 サイト間 VPN は、Azure リソース オファリングの VPN サービスであり、ストレージ アカウントまたはその他の Azure リソースと共にリソース グループにデプロイされる [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) を使用して設定できます。
@@ -24,7 +24,9 @@ ms.locfileid: "74484419"
 この記事では、Azure ファイル共有をオンプレミスに直接マウントするためにサイト間 VPN を構成する手順について詳細に説明します。 Azure File Sync の同期トラフィックをサイト間 VPN 経由でルーティングすることを検討している場合は、[Azure File Sync のプロキシとファイアウォールの設定の構成](storage-sync-files-firewall-and-proxy.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
-- オンプレミスにマウントする Azure ファイル共有。 サイト間 VPN には [Standard](storage-how-to-create-file-share.md) または [Premium Azure ファイル共有](storage-how-to-create-premium-fileshare.md)のどちらかを使用できます。
+- オンプレミスにマウントする Azure ファイル共有。 ストレージ アカウント内にデプロイされた Azure ファイル共有は、複数のファイル共有だけでなく、BLOB コンテナーやキューなどのその他のストレージ リソースをデプロイできるストレージの共有プールを表す管理構造です。 Azure ファイル共有とストレージ アカウントをデプロイする方法の詳細については、「[Azure ファイル共有を作成する](storage-how-to-create-file-share.md)」を参照してください。
+
+- オンプレミスにマウントする Azure ファイル共有を含むストレージ アカウント用のプライベート エンドポイント。 プライベート エンドポイントを作成する方法の詳細については、「[Azure Files ネットワーク エンドポイントの構成](storage-files-networking-endpoints.md?tabs=azure-portal)」を参照してください。 
 
 - Azure VPN Gateway と互換性のある、オンプレミスのデータセンター内のネットワーク アプライアンスまたはサーバー。 Azure Files は、選択されたオンプレミス ネットワーク アプライアンスに依存しませんが、Azure VPN Gateway には[テスト済みのデバイスの一覧](../../vpn-gateway/vpn-gateway-about-vpn-devices.md)が保持されています。 提供される機能、パフォーマンス特性、および管理機能はネットワーク アプライアンスによって異なるため、ネットワーク アプライアンスを選択する場合はこれらを考慮してください。
 
@@ -75,23 +77,6 @@ Azure VPN Gateway をデプロイする目的のために、次のフィール�
 
 ## <a name="configure-on-premises-network-appliance"></a>オンプレミス ネットワーク アプライアンスを構成する
 オンプレミス ネットワーク アプライアンスを構成するための具体的な手順は、組織が選択したネットワーク アプライアンスによって異なります。 組織が選択したデバイスによっては、[テスト済みのデバイスの一覧](../../vpn-gateway/vpn-gateway-about-vpn-devices.md)に、Azure VPN Gateway と共に構成するためのデバイス ベンダーの指示へのリンクが含まれている可能性があります。
-
-## <a name="create-private-endpoint-preview"></a>プライベート エンドポイントを作成する (プレビュー)
-ストレージ アカウントのプライベート エンドポイントを作成すると、そのストレージ アカウントに仮想ネットワークの IP アドレス空間内の IP アドレスが割り当てられます。 このプライベート IP アドレスを使用してオンプレミスから Azure ファイル共有をマウントすると、VPN のインストールにより自動的に定義されたルーティング規則によって、マウント要求が VPN 経由でストレージ アカウントにルーティングされます。 
-
-ストレージ アカウント ブレードで、左側の目次の **[Private endpoint connections] (プライベート エンドポイントの接続)** と **[+ Private endpoint] (+ プライベート エンドポイント)** を選択して、新しいプライベート エンドポイントを作成します。 結果のウィザードには、完了すべき複数のページがあります。
-
-![[プライベート エンドポイントの作成] セクションの [基本] セクションのスクリーンショット](media/storage-files-configure-s2s-vpn/create-private-endpoint-1.png)
-
-**[基本]** タブで、プライベート エンドポイントの目的のリソース グループ、名前、およびリージョンを選択します。 これらには任意の内容を指定でき、ストレージ アカウントと一致している必要はまったくありませんが、プライベート エンドポイントは、そのプライベート エンドポイントを作成しようとしている仮想ネットワークと同じリージョン内に作成する必要があります。
-
-**[リソース]** タブで、 **[Connect to an Azure resource in my directory] (自分のディレクトリ内の Azure リソースに接続する)** のラジオ ボタンを選択します。 **[リソースの種類]** で、リソースの種類として **[Microsoft.Storage/storageAccounts]** を選択します。 **[リソース]** フィールドは、接続先の Azure ファイル共有を含むストレージ アカウントです。 これは Azure Files 向けのため、ターゲット サブリソースは **[ファイル]** です。
-
-**[構成]** タブでは、プライベート エンドポイントを追加する特定の仮想ネットワークとサブネットを選択できます。 前に作成した仮想ネットワークを選択します。 上でサービス エンドポイントを追加したサブネットから個別のサブネットを選択する必要があります。
-
-**[構成]** タブでは、プライベート DNS ゾーンも設定できます。 これは必須ではありませんが、Azure ファイル共有をマウントするための IP アドレスを含む UNC パスの代わりに、親しみやすい UNC パス (`\\mystorageaccount.privatelink.file.core.windows.net\myshare` など) を使用できるようになります。 これはまた、仮想ネットワーク内の独自の DNS サーバーでも実行できます。
-
-**[確認および作成]** をクリックしてプライベート エンドポイントを作成します。 プライベート エンドポイントが作成されると、プライベート エンドポイント リソースと、ペアになった仮想ネットワーク インターフェイスの 2 つの新しいリソースが表示されます。 仮想ネットワーク インターフェイス リソースには、ストレージ アカウントの専用プライベート IP が割り当てられます。 
 
 ## <a name="create-the-site-to-site-connection"></a>サイト間接続を作成する
 S2S VPN のデプロイを完了するには、オンプレミス ネットワーク アプライアンス (ローカル ネットワーク ゲートウェイ リソースによって表されます) と VPN Gateway の間の接続を作成する必要があります。 これを行うには、前に作成した VPN Gateway に移動します。 VPN Gateway の目次で、 **[接続]** を選択し、 **[追加]** をクリックします。 結果の **[接続の追加]** ウィンドウには、次のフィールドが必要です。

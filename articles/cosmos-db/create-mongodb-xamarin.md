@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 06/20/2018
+ms.date: 03/16/2020
 ms.author: masoucou
-ms.openlocfilehash: a21e3705fe367e478ec02b82ec83c4ad7cfb4151
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 98b0ddf345ebd19e2cd974db3891e88c9f72530d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445461"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79481689"
 ---
 # <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>クイック スタート: .NET SDK と Azure Cosmos DB の MongoDB 用 API を使用して Xamarin.Forms アプリを構築する
 
@@ -26,7 +26,7 @@ ms.locfileid: "75445461"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。
+Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。
 
 このクイック スタートでは、Azure portal を使用して、[Azure Cosmos DB の MongoDB 用 API で構成された Cosmos アカウント](mongodb-introduction.md)、ドキュメント データベース、コレクションを作成する方法を説明します。 その後、[MongoDB .NET ドライバー](https://docs.mongodb.com/ecosystem/drivers/csharp/)を使用して、TODO Xamarin.Forms アプリを構築します。
 
@@ -52,10 +52,18 @@ Mac で作業したい場合は、[Visual Studio for Mac](https://visualstudio.m
 
 最初に、GitHub からサンプル アプリをダウンロードします。 このアプリには、MongoDB のドキュメント ストレージ モデルを使った TODO アプリが実装されています。
 
-1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
+
+
+# <a name="windows"></a>[Windows](#tab/windows)
+
+1. Windows でコマンド プロンプトを開くか、または Mac でターミナルを開いて、git-samples という名前の新しいフォルダーを作成し、ウィンドウを閉じます。
+
+    ```batch
+    md "C:\git-samples"
+    ```
 
     ```bash
-    md "C:\git-samples"
+    mkdir '$home\git-samples\
     ```
 
 2. git bash などの git ターミナル ウィンドウを開いて、`cd` コマンドを使用して、サンプル アプリをインストールする新しいフォルダーに変更します。
@@ -86,6 +94,8 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 
     settings.SslSettings =
         new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+
+    settings.RetryWrites = false;
 
     MongoClient mongoClient = new MongoClient(settings);
     ```
@@ -159,6 +169,11 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 2. **TaskList.Core** プロジェクトの **Helpers** ディレクトリにある **APIKeys.cs** ファイルを開きます。
 
 3. ポータルから (コピー ボタンを使って) **プライマリ接続文字列**の値をコピーし、**APIKeys.cs** ファイルの **ConnectionString** フィールドの値に設定します。
+
+4. 接続文字列から `&replicaSet=globaldb` を削除します。 クエリ文字列からその値を削除しないと、ランタイム エラーが発生します。
+
+> [!IMPORTANT]
+> ランタイム エラーを回避するために、接続文字列のクエリ文字列から `&replicaSet=globaldb` のキーと値のペアを削除する必要があります。
 
 これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。
 

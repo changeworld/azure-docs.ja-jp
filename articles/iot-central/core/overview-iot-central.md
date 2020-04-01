@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 71d595ecb3a6900da3df79651ee2dddda594b9de
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 6c50e5892aca37bac47e68a9ae17435611c99817
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589414"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80157468"
 ---
 # <a name="what-is-azure-iot-central"></a>Azure IoT Central とは
 
@@ -39,12 +39,10 @@ Web UI では、デバイスの状態を監視し、ルールを作成し、ラ�
 - ジョブでは複合型がサポートされていない。
 - 配列スキーマの種類はサポートされていない。
 - C デバイス SDK と Node.js のデバイス SDK、サービス SDK のみがサポートされている。
-- 北米、ヨーロッパ、アジア太平洋、およびオーストラリアの場所でのみ利用できます。
+- 現在、IoT Central は、米国、ヨーロッパ、アジア太平洋、オーストラリア、英国、日本で使用できます。
+- 場所が英国の場合および日本の場合、**カスタム アプリケーション (レガシ)** アプリケーション テンプレートは使用できません。
 - デバイス機能モデルには、すべてのインターフェイスが同じファイル内にインラインで定義されている必要があります。
 - [IoT プラグ アンド プレイ](../../iot-pnp/overview-iot-plug-and-play.md)のサポートはプレビュー段階であり、一部のリージョンでのみサポートされています。
-
-    > [!NOTE]
-    > IoT プラグ アンド プレイ デバイスをサポートするプレビュー アプリケーションの作成については、サポート チームにお問い合わせください。
 
 ## <a name="personas"></a>ペルソナ
 
@@ -76,7 +74,6 @@ Web UI では、デバイスの状態を監視し、ルールを作成し、ラ�
 - "_デバイス機能モデル_": デバイスから送信されるテレメトリやデバイスからレポートされるプロパティなど、デバイスが実装する必要がある機能を記述します
 - クラウド プロパティ: これらはデバイスには格納されません。
 - カスタマイズ、ダッシュボード、およびフォーム: ご利用の IoT Central アプリケーションの一部を成します。
-
 
 ### <a name="pricing"></a>価格
 

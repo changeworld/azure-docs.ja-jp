@@ -3,13 +3,13 @@ title: クイックスタート - Terraform を使用して完全な Linux VM �
 description: このクイックスタートでは、Terraform を使用して、完全な Linux 仮想マシン環境を Azure に作成して管理します
 keywords: Azure DevOps Terraform Linux VM 仮想マシン
 ms.topic: quickstart
-ms.date: 03/09/2020
-ms.openlocfilehash: 03974d68477855d4ff55b7179312c91ba7d0d055
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.date: 03/15/2020
+ms.openlocfilehash: f262734cc16d97e4d73af371410403a4cbb8815e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943523"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79415463"
 ---
 # <a name="quickstart-create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>クイック スタート:Terraform によって Azure に完全な Linux 仮想マシンのインフラストラクチャを作成する
 
@@ -27,7 +27,7 @@ Terraform を利用すれば、Azure で完全なインフラストラクチャ 
 
 それでは、Terraform テンプレートの各セクションに進みましょう。 [Terraform テンプレート](#complete-terraform-script)の完全版も表示できます。それをコピーし、貼り付けることができます。
 
-`provider` セクションは、Azure プロバイダーを使用するように Terraform に伝えます。 *subscription_id*、*client_id*、*client_secret*、*tenant_id* の値を取得する方法については、[Terraform のインストールと構成](terraform-install-configure.md)に関するページを参照してください。 
+`provider` セクションは、Azure プロバイダーを使用するように Terraform に伝えます。 `subscription_id`、`client_id`、`client_secret`、`tenant_id` の値を取得するには、[Terraform のインストールと構成](terraform-install-configure.md)に関するページを参照してください。 
 
 > [!TIP]
 > これらの値の環境変数を作成する場合や、[Azure Cloud Shell Bash エクスペリエンス](/azure/cloud-shell/overview)を使用している場合は、このセクションに変数の宣言を含める必要はありません。
@@ -35,7 +35,7 @@ Terraform を利用すれば、Azure で完全なインフラストラクチャ 
 ```hcl
 provider "azurerm" {
     # The "feature" block is required for AzureRM provider 2.x. 
-    # If you are using version 1.x, the "features" block is not allowed.
+    # If you're using version 1.x, the "features" block is not allowed.
     version = "~>2.0"
     features {}
     
@@ -59,10 +59,10 @@ resource "azurerm_resource_group" "myterraformgroup" {
 }
 ```
 
-追加のセクションでは、 *${azurerm_resource_group.myterraformgroup.name}* でリソース グループを参照します。
+追加のセクションでは、`${azurerm_resource_group.myterraformgroup.name}` でリソース グループを参照します。
 
 ## <a name="create-virtual-network"></a>Create virtual network
-次のセクションでは、*10.0.0.0/16* アドレス空間に、*myVnet* という名前の仮想ネットワークを作成しています。
+次のセクションでは、`10.0.0.0/16` アドレス空間に、`myVnet` という名前の仮想ネットワークを作成しています。
 
 ```hcl
 resource "azurerm_virtual_network" "myterraformnetwork" {
@@ -77,7 +77,7 @@ resource "azurerm_virtual_network" "myterraformnetwork" {
 }
 ```
 
-次のセクションでは、*myVnet* 仮想ネットワークに *mySubnet* という名前のサブネットを作成します。
+次のセクションでは、`myVnet` 仮想ネットワークに `mySubnet` という名前のサブネットを作成します。
 
 ```hcl
 resource "azurerm_subnet" "myterraformsubnet" {
@@ -90,7 +90,7 @@ resource "azurerm_subnet" "myterraformsubnet" {
 
 
 ## <a name="create-public-ip-address"></a>パブリック IP アドレスの作成
-インターネット経由でリソースにアクセスするには、パブリック IP アドレスを作成して、VM に割り当てます。 次のセクションでは、*myPublicIP* という名前のパブリック IP アドレスを作成します。
+インターネット経由でリソースにアクセスするには、パブリック IP アドレスを作成して、VM に割り当てます。 次のセクションでは、`myPublicIP` という名前のパブリック IP アドレスを作成します。
 
 ```hcl
 resource "azurerm_public_ip" "myterraformpublicip" {
@@ -107,7 +107,7 @@ resource "azurerm_public_ip" "myterraformpublicip" {
 
 
 ## <a name="create-network-security-group"></a>ネットワーク セキュリティ グループの作成
-ネットワーク セキュリティ グループは、VM から送受信されるネットワーク トラフィック フローを制御します。 次のセクションでは、*myNetworkSecurityGroup* という名前のネットワーク セキュリティ グループを作成して、TCP ポート 22 で SSH トラフィックを許可するルールを定義しています。
+ネットワーク セキュリティ グループは、VM から送受信されるネットワーク トラフィック フローを制御します。 次のセクションでは、`myNetworkSecurityGroup` という名前のネットワーク セキュリティ グループを作成して、TCP ポート 22 で SSH トラフィックを許可するルールを定義しています。
 
 ```hcl
 resource "azurerm_network_security_group" "myterraformnsg" {
@@ -135,7 +135,7 @@ resource "azurerm_network_security_group" "myterraformnsg" {
 
 
 ## <a name="create-virtual-network-interface-card"></a>仮想ネットワーク インターフェイス カードの作成
-仮想ネットワーク インターフェイス カード (NIC) は、VM を特定の仮想ネットワーク、パブリック IP アドレス、およびネットワーク セキュリティ グループに接続します。 Terraform テンプレートの次のセクションでは、作成した仮想ネットワーク リソースに接続された *myNIC* という名前の仮想 NIC を作成しています。
+仮想ネットワーク インターフェイス カード (NIC) は、VM を特定の仮想ネットワーク、パブリック IP アドレス、およびネットワーク セキュリティ グループに接続します。 Terraform テンプレートの次のセクションでは、作成した仮想ネットワーク リソースに接続された `myNIC` という名前の仮想 NIC を作成しています。
 
 ```hcl
 resource "azurerm_network_interface" "myterraformnic" {
@@ -196,9 +196,9 @@ resource "azurerm_storage_account" "mystorageaccount" {
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 
-最後の手順は、VM を作成し、作成したすべてのリソースを使用することです。 次のセクションでは、*myVM* という名前の VM を作成し、*myNIC* という名前の仮想 NIC を接続しています。 最新の *Ubuntu 16.04-LTS* イメージが使用されます。*azureuser* という名前のユーザーが作成されます。その際、パスワード認証は無効になります。
+最後の手順は、VM を作成し、作成したすべてのリソースを使用することです。 次のセクションでは、`myVM` という名前の VM を作成し、`myNIC` という名前の仮想 NIC を接続しています。 最新の `Ubuntu 16.04-LTS` イメージが使用されます。`azureuser` という名前のユーザーが作成されます。その際、パスワード認証は無効になります。
 
- SSH キー データは *ssh_keys* セクションで与えられます。 *key_data* フィールドに有効な SSH 公開キーを与えます。
+ SSH キー データは `ssh_keys` セクションで与えられます。 `key_data` フィールドに SSH の公開キーを入力します。
 
 ```hcl
 resource "azurerm_linux_virtual_machine" "myterraformvm" {
@@ -214,7 +214,7 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
         storage_account_type = "Premium_LRS"
     }
 
-    storage_image_reference {
+    source_image_reference {
         publisher = "Canonical"
         offer     = "UbuntuServer"
         sku       = "16.04.0-LTS"
@@ -242,13 +242,13 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
 
 ## <a name="complete-terraform-script"></a>完全な Terraform スクリプト
 
-以上のセクションをまとめ、Terraform の動作を確認するには、*terraform_azure.tf* という名前のファイルを作成し、次のコンテンツを貼り付けます。
+以上のセクションをまとめ、Terraform の動作を確認するには、`terraform_azure.tf` という名前のファイルを作成し、次のコンテンツを貼り付けます。
 
 ```hcl
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
     # The "feature" block is required for AzureRM provider 2.x. 
-    # If you are using version 1.x, the "features" block is not allowed.
+    # If you're using version 1.x, the "features" block is not allowed.
     version = "~>2.0"
     features {}
 
@@ -418,7 +418,7 @@ Terraform テンプレートが作成されたら、最初に Terraform を初�
 terraform init
 ```
 
-次に、Terraform にテンプレートを検証させます。 この手順では、要求されたリソースが Terraform によって保存された状態情報と比較され、予定されている実行が出力されます。 リソースは Azure では*作成されません*。
+次に、Terraform にテンプレートを検証させます。 この手順では、要求されたリソースが Terraform によって保存された状態情報と比較され、予定されている実行が出力されます。 この時点では Azure リソースは作成されていません。
 
 ```bash
 terraform plan

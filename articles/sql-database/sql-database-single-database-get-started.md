@@ -1,6 +1,6 @@
 ---
 title: 単一データベースを作成する
-description: Azure portal、PowerShell、Azure CLI を使用して Azure SQL Database で単一データベースを作成してクエリを実行します。
+description: Azure portal、PowerShell、または Azure CLI を使用して Azure SQL Database の単一データベースを作成します。 Azure portal でクエリ エディターを使用してデータベースに対してクエリを実行します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -10,48 +10,43 @@ ms.topic: quickstart
 author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein, vanto
-ms.date: 02/14/2020
-ms.openlocfilehash: 2dacdfaa5443707ab82ae53922ac439319375276
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.date: 03/10/2020
+ms.openlocfilehash: 638adaac699bb7aa2774f5cbd37dc8394a2baee3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252143"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215430"
 ---
-# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>クイック スタート:Azure portal、PowerShell、Azure CLI を使用して Azure SQL Database で単一データベースを作成します
+# <a name="quickstart-create-an-azure-sql-database-single-database"></a>クイック スタート:Azure SQL Database の単一データベースを作成する
 
-[単一データベース](sql-database-single-database.md)の作成は、Azure SQL Database でデータベースを作成する場合の最も迅速かつ簡単なデプロイ オプションです。 このクイック スタートでは、Azure portal を使用して単一データベースを作成した後、クエリを実行する方法について説明します。
+このクイックスタートでは、Azure portal、PowerShell スクリプト、または Azure CLI スクリプトを使用して Azure SQL Database の単一データベースを作成します。 次に、Azure portal で**クエリ エディター**を使用して、データベースに対してクエリを実行します。 
 
-Azure サブスクリプションをお持ちでない場合は、[無料アカウントを作成](https://azure.microsoft.com/free/)してください。 
+[単一データベース](sql-database-single-database.md)は、Azure SQL Database の最も迅速かつ簡単なデプロイ オプションです。 単一データベースは、[SQL Database サーバー](sql-database-servers.md)内で管理します。このサーバーは、指定された Azure リージョンの [Azure リソース グループ](../azure-resource-manager/management/overview.md)内にあります。 このクイックスタートでは、新しいデータベース用に新しいリソース グループと SQL サーバーを作成します。
 
-このクイック スタートのすべての手順では、[Azure portal](https://portal.azure.com/) にサインインします。
+単一データベースは、"*プロビジョニング済み*" コンピューティング レベルでも "*サーバーレス*" コンピューティング レベルでも作成できます。 プロビジョニング済みデータベースには、一定量のコンピューティング リソース (CPU やメモリなど) が事前に割り当てられており、2 つの[購入モデル](sql-database-purchase-models.md)のいずれかが使用されます。 このクイックスタートでは、[仮想コアベース](sql-database-service-tiers-vcore.md)の購入モデルを使用してプロビジョニング済みデータベースを作成しますが、[DTU ベース](sql-database-service-tiers-DTU.md)のモデルを選択することもできます。 
+
+サーバーレス コンピューティング レベルは、仮想コアベースの購入モデルでのみ使用でき、CPU やメモリなどのコンピューティング リソースの自動スケーリングされる一定範囲があります。 サーバーレス コンピューティング レベルで単一データベースを作成するには、[サーバーレス データベースの作成](sql-database-serverless.md#create-new-database-in-serverless-compute-tier)に関するページを参照してください。
+
+## <a name="prerequisite"></a>前提条件
+
+- 有効な Azure サブスクリプション アカウントがない場合は、[無料アカウントを作成](https://azure.microsoft.com/free/)してください。 
 
 ## <a name="create-a-single-database"></a>単一データベースを作成する
-
-単一データベースは、プロビジョニング済みコンピューティング レベルでも、サーバーレス コンピューティング レベルでも作成できます。
-
-- プロビジョニング済みコンピューティング レベルの単一データベースには、2 つの[購入モデル](sql-database-purchase-models.md)のうちの 1 つを使用して、一定量のコンピューティング リソース (CPU およびメモリを含む) が事前に割り当てられています。
-- サーバーレス コンピューティング レベルの単一データベースは、自動スケーリングされる一定範囲のコンピューティング リソース (CPU およびメモリを含む) を備え、[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)のみで使用できます。
-
-単一データベースを作成するときは、それを管理するための [SQL Database サーバー](sql-database-servers.md)も定義し、指定したリージョンの [Azure リソース グループ](../azure-resource-manager/management/overview.md)内にそれを配置します。
-
-> [!NOTE]
-> このクイックスタートでは、[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)を使用しますが、[DTU ベースの購入モデル](sql-database-service-tiers-DTU.md)も利用できます。
-
-Adventure Works LT サンプル データを含む単一データベースを作成するには:
 
 [!INCLUDE [sql-database-create-single-database](includes/sql-database-create-single-database.md)]
 
 ## <a name="query-the-database"></a>データベースのクエリを実行する
 
-データベースを作成したので、Azure portal に組み込まれているクエリ ツールを使用して、データベースへの接続とデータへのクエリを実行します。
+データベースを作成したら、Azure portal で組み込みの**クエリ エディター**を使用してデータベースに接続し、データに対してクエリを実行します。
 
+1. ポータルで、**SQL データベース**を検索して選択し、リストからデータベースを選択します。
 1. データベースの **[SQL Database]** ページで、左側のメニューの **[クエリ エディター (プレビュー)]** を選択します。
+1. サーバー管理者のログイン情報を入力し、 **[OK]** を選択します。
+   
+   ![クエリ エディターにサインインする](./media/sql-database-single-database-get-started/query-editor-login.png)
 
-   ![クエリ エディターにサインインする](./media/sql-database-get-started-portal/query-editor-login.png)
-
-2. ログイン情報を入力し、 **[OK]** を選択します。
-3. **[クエリ エディター]** ウィンドウに次のクエリを入力します。
+1. **[クエリ エディター]** ウィンドウに次のクエリを入力します。
 
    ```sql
    SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
@@ -60,28 +55,47 @@ Adventure Works LT サンプル データを含む単一データベースを作
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-4. **[実行]** を選択し、 **[結果]** ウィンドウでクエリの結果を確認します。
+1. **[実行]** を選択し、 **[結果]** ウィンドウでクエリの結果を確認します。
 
-   ![クエリ エディターの結果](./media/sql-database-get-started-portal/query-editor-results.png)
+   ![クエリ エディターの結果](./media/sql-database-single-database-get-started/query-editor-results.png)
 
-5. **[クエリ エディター]** ページを閉じ、未保存の編集を破棄するかどうかを確認するプロンプトが表示されたら **[OK]** をクリックします。
+1. **[クエリ エディター]** ページを閉じ、未保存の編集を破棄するかどうかを確認するプロンプトが表示されたら **[OK]** をクリックします。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-「[次の手順](#next-steps)」に進む場合は、このリソース グループ、データベース サーバー、単一データベースをそのままにしてください。 次のステップでは、データベースに接続してクエリを実行するさまざまな方法を紹介しています。
+リソース グループ、サーバー、および単一データベースを保持して、次の手順に進み、さまざまな方法でデータベースに接続してクエリを実行する方法を学習します。
 
-これらのリソースの使用が終了したら、次のように削除できます。
+これらのリソースの使用が完了したら、作成したリソース グループを削除することができます。これにより、サーバーとその中の単一データベースも削除されます。
 
-1. Azure portal の左側のメニューで、 **[リソース グループ]** 、 **[myResourceGroup]** の順に選択します。
-2. リソース グループ ページで **[リソース グループの削除]** を選択します。
-3. フィールドに「*myResourceGroup*」と入力してから、 **[削除]** を選択します。
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
+Azure portal を使用して **myResourceGroup** とそのすべてのリソースを削除するには、次の手順に従います。
+
+1. ポータルで、 **[リソース グループ]** を検索して選択し、一覧から **[myResourceGroup]** を選択します。
+1. [リソース グループ] ページで、 **[リソース グループの削除]** を選択します。
+1. **[リソース グループ名を入力してください]** に「*myResourceGroup*」を入力し、 **[削除]** を選択します。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+リソース グループとそのすべてのリソースを削除するには、自分のリソース グループの名前を使用して次の Azure CLI コマンドを実行します。
+
+```azurecli-interactive
+az group delete --name <your resource group>
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+リソース グループとそのすべてのリソースを削除するには、自分のリソース グループの名前を使用して次の PowerShell コマンドレットを実行します。
+
+ ```azurepowershell-interactive
+Remove-AzResourceGroup -Name <your resource group>
+```
+
+---
 ## <a name="next-steps"></a>次のステップ
 
-- オンプレミスまたはリモート ツールから単一データベースに接続するために、サーバー レベルのファイアウォール規則を作成します。 詳細については、「[サーバーレベルのファイアウォール規則を作成する](sql-database-server-level-firewall-rule.md)」を参照してください。
-- サーバーレベルのファイアウォール規則を作成した後に、いくつかの異なるツールと言語を使用して、データベースに[接続し、クエリを実行](sql-database-connect-query.md)します。
-  - [SQL Server Management Studio を使用して接続およびクエリを実行する](sql-database-connect-query-ssms.md)
-  - [Azure Data Studio を使用して接続およびクエリを実行する](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
-- Azure CLI を使用して、プロビジョニング済みコンピューティング レベルで単一データベースを作成するには、[Azure CLI のサンプル](sql-database-cli-samples.md)に関するページを参照してください。
-- Azure PowerShell を使用して、プロビジョニング済みコンピューティング レベルで単一データベースを作成するには、[Azure PowerShell のサンプル](sql-database-powershell-samples.md)に関するページを参照してください。
-- Azure PowerShell を使用して、サーバーレス コンピューティング レベルで単一データベースを作成するには、[サーバーレス データベースの作成](sql-database-serverless.md#create-new-database-in-serverless-compute-tier)に関するページを参照してください。
+さまざまなツールと言語を使用してデータベースを[接続してクエリを実行](sql-database-connect-query.md)します。
+> [!div class="nextstepaction"]
+> [SQL Server Management Studio を使用して接続およびクエリを実行する](sql-database-connect-query-ssms.md)
+> 
+> [Azure Data Studio を使用して接続およびクエリを実行する](/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
