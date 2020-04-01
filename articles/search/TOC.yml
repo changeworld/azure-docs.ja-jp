@@ -21,6 +21,8 @@
           href: cognitive-search-quickstart-blob.md
         - name: ナレッジ ストアの作成
           href: knowledge-store-create-portal.md
+        - name: 検索エクスプローラーを使用したクエリ実行
+          href: search-explorer.md
     - name: 'C#'
       href: search-get-started-dotnet.md
     - name: Java
@@ -231,10 +233,10 @@
           href: search-query-simple-examples.md
         - name: 完全な Lucene 構文を使用する
           href: search-query-lucene-examples.md
-        - name: Search エクスプローラーを使用する (ポータル)
-          href: search-explorer.md
         - name: 特殊文字と部分的な語句
           href: search-query-partial-matching.md
+        - name: Power Apps からのクエリ
+          href: search-howto-powerapps.md
         - name: 構文リファレンス
           items:
             - name: 単純なクエリ構文

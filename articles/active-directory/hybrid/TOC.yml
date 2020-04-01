@@ -24,6 +24,8 @@
           href: cloud-governed-management-for-on-premises.md
         - name: 強固な ID 基盤を実現するための 4 つのステップ
           href: four-steps.md
+        - name: ハイブリッド ID 認証方法の選択
+          href: choose-ad-authn.md
     - name: Azure AD Connect と Connect Health
       items:
         - name: Azure AD Connect と Connect Health とは
@@ -280,7 +282,7 @@
               href: how-to-connect-sync-service-manager-ui-mvdesigner.md
             - name: Metaverse search
               href: how-to-connect-sync-service-manager-ui-mvsearch.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: Azure AD Connect 管理エージェントとは
           href: whatis-aadc-admin-agent.md

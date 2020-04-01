@@ -1,14 +1,14 @@
 ---
 title: ポリシーのサンプルのインデックス
 description: Azure Policy のビルトインのインデックス。 カテゴリ タグ、規制コンプライアンス、Key Vault、Kubernetes、ゲスト構成など。
-ms.date: 01/31/2020
+ms.date: 03/25/2020
 ms.topic: sample
-ms.openlocfilehash: 11e36ba71e1b88f279e824948dffa809f16fd443
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: d990f911612c8e1f5ab7cdbdae7efe362aa70bb5
+ms.sourcegitcommit: 2a09565db8681cdb76607e7ed51eecf68f4ff8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/25/2020
-ms.locfileid: "77168028"
+ms.locfileid: "80257174"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy のサンプル
 
@@ -31,6 +31,10 @@ ms.locfileid: "77168028"
 - [count 演算子](./pattern-count-operator.md)
 - [イニシアティブでのポリシー定義のグループ化](./pattern-group-with-initiative.md)
 - [deployIfNotExists によるリソースのデプロイ](./pattern-deploy-resources.md)
+
+## <a name="other-samples"></a>その他のサンプル
+
+- [GitHub - コミュニティ ポリシー リポジトリ](https://github.com/Azure/Community-Policy)
 
 ## <a name="next-steps"></a>次のステップ
 

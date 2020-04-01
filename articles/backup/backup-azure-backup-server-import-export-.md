@@ -5,10 +5,10 @@ ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 1/28/2020
 ms.openlocfilehash: 080b0bc53b2058bd186e90f354b8f5bcda510414
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78197070"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>DPM と Azure Backup Server のオフライン バックアップのワークフロー
@@ -60,7 +60,7 @@ Azure Backup のオフライン シード処理機能と Azure Import/Export サ
 
   ![Resource Manager 開発によるストレージ アカウントの作成](./media/backup-azure-backup-import-export/storage-account-resource-manager.png)
 
-* ステージング場所 (ネットワーク共有、または最初のコピーを保持するのに十分なディスク領域がある内部または外部コンピューター上の追加ドライブ) が作成されていること。 ステージング場所には、初期コピーを保持するのに十分なディスク領域があることを確認します。 たとえば、500 GB のファイル サーバーをバックアップする場合は、ステージング領域が 500 GB 以上あることを確認します (圧縮処理により、使用量はこれよりも少なくなります)。
+* ステージング場所 (ネットワーク共有、または最初のコピーを保持するのに十分なディスク領域がある内部または外部コンピューター上の追加ドライブ) が作成されていること。 たとえば、500 GB のファイル サーバーをバックアップする場合は、500 GB 以上のステージング領域を確保します。 たとえば、500 GB のファイル サーバーをバックアップする場合は、ステージング領域が 500 GB 以上あることを確認します (圧縮処理により、使用量はこれよりも少なくなります)。
 * Azure に送信されるディスクに関して、2.5 インチ SSD、または 2.5 インチか 3.5 インチの SATA II/III 内蔵ハード ドライブが使用されていることを確認します。 最大 10 TB のハード ドライブを使用できます。 サービスでサポートされている最新のドライブについては、[Azure Import/Export サービスのドキュメント](../storage/common/storage-import-export-requirements.md#supported-hardware)をご覧ください。
 * SATA ドライブは、ステージング場所から SATA ドライブへのバックアップ データのコピーが行われるコンピューター ("*コピー用コンピューター*" と呼ばれます) に接続されている必要があります。 コピー用コンピューターで BitLocker が有効になっていることを確認します。
 
@@ -102,7 +102,7 @@ Azure Backup のオフライン シード処理機能と Azure Import/Export サ
 
 1. アプリケーションを選択します。 左側のウィンドウの **[管理]** で、 **[証明書とシークレット]** に移動します。
 1. 既存の証明書または公開キーを確認します。 存在しない場合は、アプリケーションの **[概要]** ページにある **[削除]** ボタンを選択して、アプリケーションを安全に削除できます。 こうれにより、[オフライン バックアップ プロセスのためのサーバーの準備](#prepare-the-server-for-the-offline-backup-process)の手順を再試行して、以下の手順をスキップすることができます。 それ以外の場合は、オフライン バックアップを構成する DPM インスタンスまたは Azure Backup サーバーから、次の手順を続行します。
-1. **[Manage computer certificate application]\(コンピューター証明書の管理\)**  >  **[Personal](個人\)** タブの順に選択します。`CB_AzureADCertforOfflineSeeding_<ResourceId>` という名前の証明書を探します。
+1. **[Manage computer certificate application]\(コンピューター証明書の管理\)**  >  **[Personal]\(個人\)** タブの順に選択します。`CB_AzureADCertforOfflineSeeding_<ResourceId>` という名前の証明書を探します。
 1. 証明書を選択し、 **[すべてのタスク]** を右クリックして、証明書を .cer 形式として秘密キーなしで **[エクスポート]** を選択します。
 1. Azure portal で Azure オフライン バックアップ アプリケーションに移動します。
 1. **[管理]**  >  **[証明書とシークレット]**  >  **[証明書のアップロード]** の順に選択します。 前の手順でエクスポートした証明書をアップロードします。
@@ -278,4 +278,4 @@ Azure インポート ジョブの各種の状態について詳しくは、「[
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Import/Export サービス ワークフローについて質問がある場合は、[Microsoft Azure Import/Export サービスを使用した Blob Storage へのデータの転送](../storage/common/storage-import-export-service.md)に関するページを参照してください。
+* Azure Import/Export サービス ワークフローについて質問がある場合は、[Microsoft Azure Import/Export サービスを使用した BLOB ストレージへのデータの転送](../storage/common/storage-import-export-service.md)に関するページを参照してください。
