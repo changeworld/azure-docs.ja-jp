@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8ec60f694000985f51db25db621e5814df62cdb3
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 13a5fa6a030d876d92651ca587e37fdc6a3ec600
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79126804"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79136144"
 ---
 # <a name="disable-email-verification-during-customer-sign-up-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して顧客のサインアップ時のメール検証を無効にする
 
@@ -28,8 +28,11 @@ ms.locfileid: "79126804"
 
 ## <a name="add-the-metadata-to-the-self-asserted-technical-profile"></a>メタデータをセルフアサート技術プロファイルに追加する
 
-**LocalAccountSignUpWithLogonEmail** 技術プロファイルは[セルフアサート](self-asserted-technical-profile.md)であり、サインアップ フローの間に呼び出されます。 メールの検証を無効にするには、`EnforceEmailVerification` メタデータを false に設定します。 拡張ファイルで LocalAccountSignUpWithLogonEmail 技術プロファイルをオーバーライドします。 `ClaimsProviders` 要素を見つけます。 次のクレーム プロバイダーを `ClaimsProviders` 要素に追加します。
+**LocalAccountSignUpWithLogonEmail** 技術プロファイルは[セルフアサート](self-asserted-technical-profile.md)であり、サインアップ フローの間に呼び出されます。 メールの検証を無効にするには、`EnforceEmailVerification` メタデータを false に設定します。 拡張ファイルで LocalAccountSignUpWithLogonEmail 技術プロファイルをオーバーライドします。 
 
+1. お使いのポリシーの拡張ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>です。
+1. `ClaimsProviders` 要素を見つけます。 要素が存在しない場合は追加します。
+1. 次のクレーム プロバイダーを `ClaimsProviders` 要素に追加します。
 
 ```XML
 <ClaimsProvider>

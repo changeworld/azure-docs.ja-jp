@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8e07d3e1815c1b47b9d37c08e8fac5359b71fe7c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: e50d6d0623e87dfa68a7cc9744c3f595ff0179c6
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189026"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396378"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする
 
@@ -30,7 +30,7 @@ ms.locfileid: "78189026"
 
 [!INCLUDE [active-directory-b2c-html-how-to](../../includes/active-directory-b2c-html-how-to.md)]
 
-## <a name="4-modify-the-extensions-file"></a>4.拡張ファイルを変更する
+### <a name="4-modify-the-extensions-file"></a>4.拡張ファイルを変更する
 
 UI のカスタマイズを構成するには、**ContentDefinition** とその子要素を基本ファイルから拡張ファイルにコピーします。
 
@@ -60,9 +60,9 @@ UI のカスタマイズを構成するには、**ContentDefinition** とその�
 
 1. 拡張ファイルを保存します。
 
-## <a name="5-upload-and-test-your-updated-custom-policy"></a>5.更新されたカスタム ポリシーをアップロードしてテストする
+### <a name="5-upload-and-test-your-updated-custom-policy"></a>5.更新されたカスタム ポリシーをアップロードしてテストする
 
-### <a name="51-upload-the-custom-policy"></a>5.1 カスタム ポリシーをアップロードする
+#### <a name="51-upload-the-custom-policy"></a>5.1 カスタム ポリシーをアップロードする
 
 1. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
 1. **Azure AD B2C** を検索して選択します。
@@ -70,7 +70,7 @@ UI のカスタマイズを構成するには、**ContentDefinition** とその�
 1. **[カスタム ポリシーのアップロード]** を選択します。
 1. 前に変更した拡張ファイルをアップロードします。
 
-### <a name="52-test-the-custom-policy-by-using-run-now"></a>5.2 **[今すぐ実行]** を使用してカスタム ポリシーをテストする
+#### <a name="52-test-the-custom-policy-by-using-run-now"></a>5.2 **[今すぐ実行]** を使用してカスタム ポリシーをテストする
 
 1. アップロードしたポリシーを選択し、 **[今すぐ実行]** を選択します。
 1. メール アドレスを使用してサインアップできることを確認します。
