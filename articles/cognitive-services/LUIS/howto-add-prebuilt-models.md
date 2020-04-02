@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: diberry
 ms.openlocfilehash: 0a733aff14b71c6378971c0b72a9ca1f3cd4cfc3
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74013560"
 ---
 # <a name="add-prebuilt-models-for-common-usage-scenarios"></a>一般的な使用シナリオ向けに事前構築済みモデルを追加する 
@@ -58,7 +58,7 @@ LUIS には一連の事前構築済みモデルが含まれており、一般的
     > [!div class="mx-imgBorder"]
     > ![[事前構築済みエンティティの追加] ダイアログ ボックス](./media/luis-prebuilt-domains/add-prebuilt-entity.png)
 
-1. **[完了]** を選択します。 エンティティを追加した後、アプリをトレーニングする必要はありません。 
+1. **[Done]** を選択します。 エンティティを追加した後、アプリをトレーニングする必要はありません。 
 
 ## <a name="publish-to-view-prebuilt-model-from-prediction-endpoint"></a>発行して予測エンドポイントからあらかじめ構築されるモデルを表示する
 
@@ -68,6 +68,6 @@ LUIS には一連の事前構築済みモデルが含まれており、一般的
  
 事前構築済みエンティティによって制約される機械学習エンティティがある場合は、機械学習エンティティにサブコンポーネントを追加し、事前構築済みエンティティの制約を追加します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [REST API を使用して .csv からモデルを構築する](./luis-tutorial-node-import-utterances-csv.md)
