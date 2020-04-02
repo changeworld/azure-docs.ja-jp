@@ -17,10 +17,10 @@ ms.custom: it-pro
 ms.reviewer: harshja
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6ca64e2de5734c567173fc735776074f4c87fbc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67108459"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行
@@ -135,7 +135,7 @@ Windows 7 または 10 のコンピューターで Internet Explorer を使用�
 1. [RD ホスト エンドポイントの発行](#publish-the-rd-host-endpoint)の手順 1 の事前認証方法を**パススルー**に設定します。
 2. [RDS トラフィックをアプリケーション プロキシに転送する](#direct-rds-traffic-to-application-proxy)手順で、手順 8 全体をスキップします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure AD アプリケーション プロキシによる SharePoint へのリモート アクセスの有効化](application-proxy-integrate-with-sharepoint-server.md)  
 [Azure AD アプリケーション プロキシを使用したアプリへのリモート アクセス時のセキュリティに関する注意事項](application-proxy-security.md)

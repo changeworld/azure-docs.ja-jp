@@ -1,19 +1,18 @@
 ---
 title: GDPR コンプライアンス | Azure Marketplace
 description: Cloud パートナー ポータルと GDPR。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: bc43a6cb3c30638d8c3904d7ca5b004e0905f1d2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: f09bc60a59ff2a6e21d0cdae1917a1faed072ea4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824301"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280288"
 ---
 <a name="cloud-partner-portal-gdpr-compliance"></a>Cloud パートナー ポータルの GDPR コンプライアンス
 ====================================
@@ -27,7 +26,7 @@ Cloud パートナー ポータルには、顧客データの処理と、その�
 
 Cloud パートナー ポータルでは、[ユーザー] タブですべてのデータにアクセスできます。そこで個人データを特定できます。 ユーザーを追加または削除する方法については、こちらの[ドキュメント](./cloud-partner-portal-manage-users.md)を参照してください。
 
-<a name="manage"></a>管理
+<a name="manage"></a>管理する
 ------
 
 [ユーザー] タブでユーザー アカウントの [削除] を押して、個人データを管理できます。**所有者**と**共同作成者**のロールがあり、個々の特定のユーザーに割り当てることができます。両方とも割り当て、コピー、更新、削除することができます。
