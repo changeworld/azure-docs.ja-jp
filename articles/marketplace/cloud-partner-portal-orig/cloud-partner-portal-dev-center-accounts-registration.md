@@ -1,19 +1,18 @@
 ---
 title: Microsoft 開発者アカウントの作成 | Azure Marketplace
 description: Microsoft 開発者アカウントの作成の要件と手順を説明します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 522caa53123ad5ccb8076839d2dfa7dc1236b022
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 161abde1ef0dfd86842fb56afe699fa632e0d9ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818425"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280373"
 ---
 <a name="create-a-microsoft-developer-account"></a>Microsoft 開発者アカウントの作成
 ====================================
@@ -215,6 +214,6 @@ Microsoft デベロッパー センターは、会社情報を登録するため
 [クラウド パートナー ポータルでユーザーを管理する手順](./cloud-partner-portal-manage-users.md)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これでアカウントの作成と登録が行われたので、Azure Marketplace での発行プロセスを開始できます。

@@ -4,16 +4,16 @@ description: Azure Portal で組織のコストを表示するときに発生し
 author: bandersmsft
 ms.reviewer: amberb
 ms.service: cost-management-billing
-ms.topic: troubleshooting
+ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 70d409eac4d87c73826bd06baf128c9eef000a45
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 625774331003754c79e1f1d33c663f8928a71ecc
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199740"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411574"
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>エンタープライズ コスト表示のトラブルシューティング
 
