@@ -24,17 +24,11 @@
           href: quickstarts/ruby.md
         - name: Go の使用
           href: quickstarts/go.md
-    - name: SDK
+    - name: クライアント ライブラリ
       expanded: true
       items:
-        - name: 'C# の使用'
-          href: visual-search-sdk-c-sharp.md
-        - name: Node.js の使用
-          href: visual-search-sdk-node.md
-        - name: Python の使用
-          href: visual-search-sdk-python.md
-        - name: Java の使用
-          href: visual-search-sdk-java.md
+        - name: Bing Visual Search クライアント ライブラリ
+          href: ./quickstarts/client-libraries.md
 - name: チュートリアル
   items:
     - name: 画像のアップロード

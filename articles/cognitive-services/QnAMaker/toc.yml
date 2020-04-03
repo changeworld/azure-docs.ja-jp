@@ -22,6 +22,8 @@
       href: Quickstarts/quickstart-sdk.md
 - name: チュートリアル
   items:
+    - name: Power 仮想エージェントとの統合
+      href: Tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
     - name: バッチ ファイルを使用したテスト
       href: Quickstarts/batch-testing.md
 - name: 概念
