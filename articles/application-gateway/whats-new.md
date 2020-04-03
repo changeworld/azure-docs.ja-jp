@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: overview
-ms.date: 4/30/2019
+ms.date: 03/24/2020
 ms.author: victorh
-ms.openlocfilehash: c6d4d290493bbd234ab048e613b88f8857513cc8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1cfa2ab1d8bf096b1821f7473d9808801b47c547
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78299557"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371181"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Azure Application Gateway の新着情報
 
@@ -27,6 +27,7 @@ Azure Application Gateway は、継続的に更新されます。 常に最新�
 
 |機能  |説明  |追加日  |
 |---------|---------|---------|
+| v2 のユーザー定義ルート (UDR) (プレビュー) |Application Gateway v2 SKU では、ユーザー定義ルートが一部のシナリオで新たにサポートされます。 詳細については、「[アプリケーション ゲートウェイ構成の概要](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)」を参照してください。 |2020 年 3 月 |
 |アフィニティ Cookie の変更 |Cookie ベースのアフィニティが有効になっている場合、Application Gateway は、既存の ApplicationGatewayAffinity Cookie に加えて、*ApplicationGatewayAffinityCORS* という別の同一の Cookie を挿入します。 *ApplicationGatewayAffinityCORS* には、クロスオリジン要求に対してもスティッキー セッションが維持されるように、2 つの属性が追加されています (*SameSite = None; Secure*)。 詳細については、[Application Gateway の Cookie ベースのアフィニティ](configuration-overview.md#cookie-based-affinity)に関するトピックを参照してください。 |2020 年 2 月 |
 |プローブの機能強化 |Application Gateway v2 SKU でのカスタム プローブの機能強化により、[プローブの構成](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal#create-probe-for-application-gateway-v2-sku)が簡素化されて[オンデマンド バックエンドの正常性テスト](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal#test-backend-health-with-the-probe)が容易になりました。さらに、バックエンドの正常性の問題のトラブルシューティングに役立てるため、[多くの診断情報](https://docs.microsoft.com/azure/application-gateway/application-gateway-backend-health-troubleshooting#error-messages)が追加されています。  |2019 年 10 月 |
 |その他のメトリック |ご利用の Application Gateway v2 SKU を監視するのに役立つ次の新しいメトリックを追加しました。[タイミング関連のメトリック](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#timing-metrics)、バックエンド応答の状態、受信バイト数、送信バイト数、クライアント TLS プロトコル、現在のコンピューティング ユニット。 「[Application Gateway V2 SKU でサポートされるメトリック](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#metrics-supported-by-application-gateway-v2-sku)」を参照してください。 |2019 年 8 月 |

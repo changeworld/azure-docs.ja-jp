@@ -1,19 +1,19 @@
 ---
-title: Azure Cosmos アカウントの既定の一貫性レベルを更新する PowerShell スクリプト
-description: Azure PowerShell サンプル スクリプト - PowerShell を使用して Azure Cosmos DB アカウントの既定の一貫性レベルを更新します
+title: Azure Cosmos アカウントのリージョンを更新する PowerShell スクリプト
+description: Azure PowerShell サンプル スクリプト - Azure Cosmos アカウントのリージョンを更新します
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 03/21/2020
 ms.author: mjbrown
-ms.openlocfilehash: d3df2e91624f9b5d82d534a1d525fa6866f1a489
+ms.openlocfilehash: 4a8e24b4445e2bf29b35e87600de260c523d4376
 ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366086"
+ms.locfileid: "80367175"
 ---
-# <a name="update-the-regions-on-an-azure-cosmos-db-account-using-powershell"></a>PowerShell を使用して Azure Cosmos DB アカウントのリージョンを更新する
+# <a name="update-an-azure-cosmos-accounts-regions-using-powershell"></a>PowerShell を使用して Azure Cosmos アカウントのリージョンを更新する
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -24,9 +24,9 @@ ms.locfileid: "80366086"
 > [!NOTE]
 > リージョンの変更とその他の Cosmos アカウントのプロパティに対する変更を同じ操作で実行することはできません。 これらは 2 つの独立した操作として行う必要があります。
 > [!NOTE]
-> このサンプルでは、SQL API アカウントの使用方法を紹介しています。 このサンプルを他の API で使用する場合は、関連するプロパティをコピーし、お使いの API 固有のスクリプトに適用してください。
+> このサンプルでは、SQL (Core) API アカウントの使用方法を紹介しています。 このサンプルを他の API で使用する場合は、関連するプロパティをコピーし、お使いの API 固有のスクリプトに適用してください。
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-update.ps1 "Update an Azure Cosmos DB account")]
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-update-region.ps1 "Update Azure Cosmos account regions")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
@@ -42,9 +42,8 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 | command | Notes |
 |---|---|
-|**Azure Cosmos DB**| |
-| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Cosmos DB アカウントを一覧表示します。または、指定された Cosmos DB アカウントを取得します。 |
-| [Update-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbaccountfailoverpriority) | Cosmos DB アカウントを更新します。 |
+|**Azure リソース**| |
+| [Set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) | リソースを更新します。 |
 |**Azure リソース グループ**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||

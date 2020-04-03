@@ -1,19 +1,19 @@
 ---
-title: Azure Cosmos アカウント用のキーと接続文字列の操作を取得する PowerShell スクリプト
-description: Azure PowerShell スクリプト サンプル - Azure Cosmos アカウントのアカウント キーと接続文字列の操作
+title: Azure Cosmos DB アカウント用のキーと接続文字列の操作を取得する PowerShell スクリプト
+description: Azure PowerShell スクリプト サンプル - Azure Cosmos DB アカウントのアカウント キーと接続文字列の操作
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 09/20/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 96be5f09cddf5eefec6b471d30cf87d0f687485d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f6dd9d1290ea9d18fc6a5f18196585926b2ab91a
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75441530"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366094"
 ---
-# <a name="connection-string-and-account-key-operations-for-an-azure-cosmos-account-using-powershell"></a>PowerShell を使用する、Azure Cosmos アカウントの接続文字列とアカウント キーの操作
+# <a name="connection-string-and-account-key-operations-for-an-azure-cosmos-db-account-using-powershell"></a>PowerShell を使用する、Azure Cosmos DB アカウントの接続文字列とアカウント キーの操作
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,7 +22,7 @@ ms.locfileid: "75441530"
 ## <a name="sample-script"></a>サンプル スクリプト
 
 > [!NOTE]
-> このサンプルでは、SQL (Core) API アカウントの使用方法を紹介しています。 このサンプルを他の API で使用する場合は、関連するプロパティをコピーし、お使いの API 固有のスクリプトに適用してください。
+> このサンプルでは、SQL API アカウントの使用方法を紹介しています。 このサンプルを他の API で使用する場合は、関連するプロパティをコピーし、お使いの API 固有のスクリプトに適用してください。
 
 [!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-keys-connection-strings.ps1 "Connection strings and account keys for Azure Cosmos account")]
 
@@ -38,10 +38,11 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
-|**Azure リソース**| |
-| [Invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction) | リソースに対するアクションを呼び出します。 |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBAccountKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccountkey) | Cosmos DB アカウントの接続文字列またはキー (読み取り/書き込みまたは読み取り専用) を取得します。 |
+| [New-AzCosmosDBAccountKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccountkey) | Cosmos DB アカウントの、指定されたキーを再生成します。 |
 |**Azure リソース グループ**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||

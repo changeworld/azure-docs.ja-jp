@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.author: tzvikei
-author: tsikiksr
+author: cartacioS
+ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 02/04/2020
-ms.openlocfilehash: 96af942ab68d4ae738df56bf94d8410ee5d8cc34
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 03/04/2020
+ms.openlocfilehash: b5a335a3f215ad5883b1b223245ca9d3f9967c3b
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79129671"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366527"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>チュートリアル:Azure Machine Learning の自動 ML で分類モデルを作成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -53,7 +53,7 @@ Azure Machine Learning ワークスペースは、機械学習モデルを実験
 
 https://ml.azure.com の Azure Machine Learning Studio で、次の実験の設定を完了し、ステップを実行します。Azure Machine Learning Studio は、あらゆるスキル レベルのデータ サイエンス実務者がデータ サイエンス シナリオを実行するための機械学習ツールを含む統合 Web インターフェイスです。 このインターフェイスは、Internet Explorer ブラウザーではサポートされていません。
 
-1. https://ml.azure.com で Azure Machine Learning にサインインします。
+1. [Azure Machine Learning](https://ml.azure.com) にサインインします。
 
 1. お使いのサブスクリプションと、作成したワークスペースを選択します。
 
@@ -177,7 +177,7 @@ https://ml.azure.com の Azure Machine Learning Studio で、次の実験の設�
 
 1. **[Deploy a model]\(モデルのデプロイ\)** ペインに次のように入力します。
 
-    フィールド| Value
+    フィールド| 値
     ----|----
     デプロイ名| my-automl-deploy
     デプロイの説明| 初めての自動機械学習実験のデプロイ
@@ -201,9 +201,9 @@ https://ml.azure.com の Azure Machine Learning Studio で、次の実験の設�
 
 ### <a name="delete-the-deployment-instance"></a>デプロイ インスタンスの削除
 
-他のチュートリアルや探索用にリソース グループとワークスペースを維持する場合は、 https://ml.azure.com/ で Azure Machine Learning からデプロイ インスタンスだけを削除します。 
+他のチュートリアルや探索用にリソース グループとワークスペースを維持する場合は、https:\//ml.azure.com/ で Azure Machine Learning からデプロイ インスタンスだけを削除します。 
 
-1. https://ml.azure.com/ の Azure Machine Learning に移動します。 お使いのワークスペースに移動し、左側の **[アセット]** ウィンドウの下の **[エンドポイント]** を選択します。 
+1. [Azure Machine Learning](https://ml.azure.com/) に移動します。 お使いのワークスペースに移動し、左側の **[アセット]** ウィンドウの下の **[エンドポイント]** を選択します。 
 
 1. 削除するデプロイを選択し、 **[削除]** を選択します。 
 

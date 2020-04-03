@@ -1,20 +1,20 @@
 ---
 title: 概要 | Microsoft Azure Maps
 description: Microsoft Azure Maps のサービスと機能、およびそれらをアプリケーションで使用する方法について説明します。
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 01/15/2020
 ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 5b1af5c728a14b29ca6e6c18b79b23db9ef010f2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: fdac12350db785e6194cd3d057f4d2adfefa5969
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80132482"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80335728"
 ---
 # <a name="what-is-azure-maps"></a>Azure Maps とは
 

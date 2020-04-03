@@ -1,18 +1,18 @@
 ---
-title: Azure Cosmos DB SQL (Core) API の操作を一覧表示および取得する PowerShell スクリプト
-description: Azure PowerShell スクリプト - Azure Cosmos DB SQL (Core) API の操作を一覧表示および取得する
+title: Azure Cosmos DB SQL API リソースを一覧表示および取得する PowerShell スクリプト
+description: Azure PowerShell スクリプト - Azure Cosmos DB SQL API の操作を一覧表示および取得する
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 03/17/2020
 ms.author: mjbrown
-ms.openlocfilehash: 1590136aa000538f6d176364fca22b353d4a48a0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 51880e12f5f422acc0df05fa40da5f40f0ede3d3
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75445004"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365971"
 ---
 # <a name="list-and-get-databases-and-containers-for-azure-cosmos-db---sql-core-api"></a>Azure Cosmos DB - SQL (Core) API のデータベースとコンテナーを一覧表示および取得する
 
@@ -22,7 +22,7 @@ ms.locfileid: "75445004"
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-list-get.ps1 "List or get databases or containers for SQL (Core) API")]
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-list-get.ps1 "List and get databases and containers for SQL API")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
@@ -36,10 +36,12 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
-|**Azure リソース**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | リソースを作成します。 |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Cosmos DB アカウントを一覧表示します。または、指定された Cosmos DB アカウントを取得します。 |
+| [Get-AzCosmosDBSqlDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqldatabase) | アカウントに存在する Cosmos DB データベースを一覧表示します。または、指定された Cosmos DB データベースをアカウントから取得します。 |
+| [Get-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainer) | データベースに存在する Cosmos DB コンテナーを一覧表示します。または、指定された Cosmos DB コンテナーをデータベースから取得します。 |
 |**Azure リソース グループ**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||

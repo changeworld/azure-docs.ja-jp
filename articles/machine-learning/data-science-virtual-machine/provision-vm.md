@@ -8,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: 1fdf8eae5d19a2d43499d1984f4dea834d8a61d8
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: afcb676f68e7be9d3ebef11ea2c6876a86bbd062
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77525874"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281784"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>クイック スタート:Windows 用データ サイエンス仮想マシンを設定する
 
@@ -29,7 +29,7 @@ Azure 無料アカウントでは、GPU 対応の仮想マシン SKU がサポ�
 DSVM インスタンスを作成するには:
 
 1. [Azure portal](https://portal.azure.com) にアクセスします。まだサインインしていない場合は、Azure アカウントへのサインインを求めるメッセージが表示される可能性があります。
-1. 「data science virtual machine」と入力して仮想マシンの一覧を検索し、[Data Science Virtual Machine - Win 2019 (Preview)]\(Data Science Virtual Machine - Win 2019 (プレビュー)\) を選択します。
+1. 「data science virtual machine」と入力して仮想マシンの一覧を検索し、[Data Science Virtual Machine - Windows 2019] を選択します。
 
 1. 下部にある **[作成]** ボタンを選択します。
 
@@ -47,7 +47,7 @@ DSVM インスタンスを作成するには:
 1. **[Review + create]\(レビュー + 作成\)** を選択します。
 1. **[レビュー + 作成]**
    * 入力したすべての情報が正しいことを確認します。 
-   * **作成** を選択します。
+   * **［作成］** を選択します
 
 
 > [!NOTE]

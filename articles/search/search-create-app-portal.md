@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 12/05/2019
-ms.openlocfilehash: 9ed62ea6fdfc0732128ed340cc0bc48481eb73ec
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 03/25/2020
+ms.openlocfilehash: 248ef093601eda7a180a6465ccb97e6fc1c9fe41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76841082"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369706"
 ---
 # <a name="quickstart-create-a-search-app-in-the-portal-azure-cognitive-search"></a>クイック スタート:ポータルで検索アプリを作成する (Azure Cognitive Search)
 
@@ -23,13 +23,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-[最新バージョンの Microsoft Edge](https://www.microsoft.com/edge) にアップグレードするか、現時点では Google の Chrome ブラウザーをこのクイックスタートに使用してください。
+[最新バージョンの Microsoft Edge](https://www.microsoft.com/edge) にアップグレードするか、Google の Chrome ブラウザーをこのクイックスタートに使用してください。
 
 [Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。 
 
 アプリケーションの基礎として使用する[インデックスを作成](search-create-index-portal.md)します。 
 
-このクイックスタートでは、縮小版画像を含んだ組み込みの不動産サンプル データとインデックスを使用します。 この演習で使用するインデックスを作成するには、**データのインポート** ウィザードを実行します。その際、データ ソースとして *realestate-us-sample* を選択してください。
+このクイックスタートでは、縮小版画像を含んだ組み込みの不動産サンプル データとインデックスを使用します (このウィザードでは、結果ページへの画像の追加がサポートされます)。 この演習で使用するインデックスを作成するには、**データのインポート** ウィザードを実行します。その際、データ ソースとして *realestate-us-sample* を選択してください。
 
 ![サンプル データのデータ ソース ページ](media/search-create-app-portal/import-data-realestate.png)
 

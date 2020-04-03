@@ -1,19 +1,19 @@
 ---
-title: Azure Cosmos アカウントのフェールオーバー優先度を変更する PowerShell スクリプト
-description: Azure PowerShell スクリプト サンプル - Azure Cosmos アカウントのフェールオーバー優先度を変更したりフェールオーバーをトリガーしたりします
+title: シングルマスター Azure Cosmos アカウントのフェールオーバー優先度を変更する PowerShell スクリプト
+description: Azure PowerShell スクリプト サンプル - Azure Cosmos DB シングルマスター アカウントのフェールオーバー優先度を変更したりフェールオーバーをトリガーしたりします
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 09/20/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 6a742486918e5134a73256ef6c7490a823f14335
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a81938675e72d9ec3a18c920121951e38580b91e
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75441503"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366118"
 ---
-# <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-account-using-powershell"></a>PowerShell を使用して Azure Cosmos アカウントのフェールオーバー優先度を変更したりフェールオーバーをトリガーしたりする
+# <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-db-single-master-account-using-powershell"></a>PowerShell を使用して Azure Cosmos DB シングルマスター アカウントのフェールオーバー優先度を変更したりフェールオーバーをトリガーしたりする
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -40,10 +40,11 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
-|**Azure リソース**| |
-| [Invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction) | リソースに対するアクションを呼び出します。 |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Cosmos DB アカウントを一覧表示します。または、指定された Cosmos DB アカウントを取得します。 |
+| [Update-AzCosmosDBAccountFailoverPriority](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbaccountfailoverpriority) | Cosmos DB アカウントのリージョンに対するフェールオーバーの優先順位を更新します。 |
 |**Azure リソース グループ**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||

@@ -1,58 +1,56 @@
 ---
 title: Azure Machine Learning と Machine Learning Studio (クラシック)
-description: Azure Machine Learning と Machine Learning Studio (クラシック) の違い
+description: Azure Machine Learning と Machine Learning Studio (classic) の違い
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: overview
 author: j-martens
 ms.author: jmartens
-ms.date: 10/29/2019
-ms.openlocfilehash: a3122a3ae1687369b87d193efc693b3b7c659aac
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 03/25/2020
+ms.openlocfilehash: 5577a9847ff405397c553028a6dfdf2df80d03fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76311463"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371834"
 ---
-# <a name="how-azure-machine-learning-differs-from-machine-learning-studio-classic"></a>Azure Machine Learning と Machine Learning Studio (クラシック) の違い
+# <a name="azure-machine-learning-vs-machine-learning-studio-classic"></a>Azure Machine Learning と Machine Learning Studio (classic) の違い
 
-この記事では、Azure Machine Learning と Machine Learning Studio (クラシック) の特徴、機能、およびインターフェイスを比較します。 
+この記事では、Azure Machine Learning と Machine Learning Studio (classic) の違いについて説明します。 
 
-## <a name="about-machine-learning-studio-classic"></a>Machine Learning Studio (クラシック) について
-[Machine Learning Studio (クラシック)](studio/what-is-ml-studio.md) は、共同作業に対応するドラッグ アンド ドロップ式の視覚的なワークスペースです。コードを記述することなく機械学習ソリューションを構築、テスト、およびデプロイすることができます。 事前に構築および構成された機械学習アルゴリズムとデータ処理モジュールが、専用コンピューティング プラットフォームと共に使用されます。
+Azure Machine Learning には、Python と R の SDK に**加え**、機械学習モデルを作成してデプロイするための "ドラッグ アンド ドロップ" 式のデザイナーが用意されています。 Studio (クラシック) に用意されているのは、スタンドアロンのドラッグ アンド ドロップ エクスペリエンスのみです。
 
-## <a name="about-azure-machine-learning"></a>Azure Machine Learning について
+新しく使い始める方には、最先端の機械学習ツールを豊富に備えた Azure Machine Learning をお勧めします。
 
-一方、[Azure Machine Learning](overview-what-is-azure-ml.md) には、デザイナー (プレビュー) と呼ばれる Web インターフェイスと、複数の SDK および CLI が**両方**用意されており、すぐにデータを準備し、機械学習モデルのトレーニングとデプロイを行うことができます。 また、Azure Machine Learning では、スケール、複数のフレームワークのサポート、高度な ML 機能 (自動機械学習、パイプライン サポートなど) を利用できます。
+## <a name="quick-comparison"></a>比較早見表
 
-Azure Machine Learning デザイナーでは、Studio (クラシック) と同様のドラッグ アンド ドロップ操作を利用できます。 ただし、Studio (クラシック) の専用コンピューティング プラットフォームとは異なり、デザイナーではユーザー独自のコンピューティング リソースが使用されています。また、スケーラブルで、Azure Machine Learning に完全に統合されています。  
+次の表は、Azure Machine Learning と Studio (クラシック) の主な違いのいくつかをまとめたものです。
 
-> [!TIP]
-> Machine Learning Studio (クラシック) を現在使用しているか評価しているお客様は、[Azure Machine Learning デザイナー](https://docs.microsoft.com/azure/machine-learning/concept-designer) (プレビュー) をぜひお試しください。これは、ドラッグ アンド ドロップ ML モジュールが備わっているのに __加え__、スケーラビリティ、バージョン コントロール、エンタープライズ セキュリティも保証されます。
-
-## <a name="comparison-azure-machine-learning-vs-machine-learning-studio-classic"></a>比較:Azure Machine Learning と Machine Learning Studio (クラシック)
-
-以下で簡単に比較します。
-
-||  Azure Machine Learning デザイナー|Studio (クラシック) |
+| | Machine Learning Studio (クラシック) | Azure Machine Learning |
 |---| --- | --- |
-||デザイナーはプレビュー段階で、Azure Machine Learning は GA です|一般提供 (GA) | 
-|ドラッグ アンド ドロップ インターフェイス| はい | はい|
-|実験| コンピューティング先に合わせてスケーリング|スケーリング (10 GB のトレーニング データの上限) | 
-|インターフェイスのモジュール| [多数の人気のあるモジュール](algorithm-module-reference/module-reference.md) | 多数 |
-|コンピューティング ターゲットのトレーニング| AML コンピューティング (GPU、CPU)|独自のコンピューティング先、CPU のみ|
-|推論コンピューティング先| リアルタイム推論用の Azure Kubernetes Service <br/>バッチ推論用の AML コンピューティング|独自の Web サービス形式 (カスタマイズ不可) | 
-|ML パイプライン| パイプラインの作成 <br/> 公開されたパイプライン <br/> パイプライン エンドポイント <br/> [ML パイプラインの詳細はこちら](concept-ml-pipelines.md)|サポートされていません | 
-|ML 操作| 構成可能なデプロイ、モデル、およびパイプラインのバージョン管理|基本的なモデル管理とデプロイ | 
-|モデル| 標準形式。トレーニング ジョブに依存|専用。ポータブル形式ではありません。| 
-|自動化されたモデルのトレーニング|デザイナーではサポート対象外ですが、インターフェイスおよび SDK でサポートされます。| いいえ | 
+| ドラッグ アンド ドロップ インターフェイス | サポートされています | サポートされています - [Azure Machine Learning デザイナー (プレビュー)](concept-designer.md) | 
+| 実験 | スケーラブル (10 GB トレーニング データの上限) | コンピューティング先に合わせてスケーリング |
+| コンピューティング ターゲットのトレーニング | 独自のコンピューティング ターゲット、CPU のサポートのみ | カスタマイズできる広範な[トレーニング コンピューティング先](concept-compute-target.md#train)。 GPU と CPU のサポートが含まれます | 
+| デプロイのコンピューティング ターゲット | 独自の Web サービス形式 (カスタマイズ不可) | カスタマイズできる広範な[デプロイ コンピューティング先](concept-compute-target.md#deploy)。 GPU と CPU のサポートが含まれます |
+| ML パイプライン | サポートされていません | ワークフローを自動化する柔軟性の高いモジュール式の[パイプライン](concept-ml-pipelines.md)を作成します |
+| MLOps | 基本的なモデル管理とデプロイ | エンティティのバージョン管理 (モデル、データ、ワークフロー)、ワークフロー オートメーション、CICD ツールとの統合、[その他](concept-model-management-and-deployment.md) |
+| モデル形式 | 専用の形式、Studio (クラシック) のみ | トレーニング ジョブの種類に応じて複数の形式がサポートされます |
+| 自動化されたモデル トレーニングとハイパーパラメーター調整 |  サポートされていません | [SDK とビジュアル ワークスペースでサポートされます](concept-automated-ml.md) | 
+| データ ドリフト検出 | サポートされていません | [SDK とビジュアル ワークスペースでサポートされます](how-to-monitor-datasets.md) |
+
+
+## <a name="migrate-from-machine-learning-studio-classic"></a>Machine Learning Studio (classic) からの移行
+
+現在、Studio (classic) の資産を Azure Machine Learning デザイナー (プレビュー) に移行する方法はありません。 現在の Studio (classic) ユーザーは、既にある機械学習の資産を引き続き使用できます。 ただし Microsoft では、すべてのユーザーにデザイナーの使用をお勧めします。デザイナーには、使い慣れたドラッグ アンド ドロップ式のエクスペリエンスと改良されたワークフローに**加え**、スケーラビリティ、バージョン コントロール、エンタープライズ セキュリティが備わっています。
 
 ## <a name="get-started-with-azure-machine-learning"></a>Azure Machine Learning の利用を開始
 
-次のリソースは、Azure Machine Learning の利用を開始するのに役立ちます
+次のリソースは、Azure Machine Learning の利用を開始するのに役立ちます。 
 
-- [Azure Machine Learning の概要](tutorial-first-experiment-automated-ml.md)に関するページをお読みください 
+- [Azure Machine Learning の概要](overview-what-is-azure-ml.md)に関するページをお読みください。
+
+- [Python SDK で初めての実験を作成](tutorial-1st-experiment-sdk-setup.md)します。
 
 - [最初のデザイナー パイプラインを作成](tutorial-designer-automobile-price-train-score.md)して、自動価格を予測します。
 
@@ -63,6 +61,6 @@ Azure Machine Learning デザイナーでは、Studio (クラシック) と同�
 Azure Machine Learning には、デザイナーのドラッグ アンド ドロップ機能のほか、他のツールも用意されています。  
   + [Python ノートブックを使用して、ML モデルをトレーニングおよびデプロイする](tutorial-1st-experiment-sdk-setup.md)
   + [R Markdown を使用して、ML モデルをトレーニングおよびデプロイする](tutorial-1st-r-experiment.md) 
-  + [自動化された機械学習を使用して、ML モデルをトレーニングおよびデプロイする](tutorial-designer-automobile-price-train-score.md) 
+  + [自動化された機械学習を使用して、ML モデルをトレーニングおよびデプロイする](tutorial-first-experiment-automated-ml.md)  
   + [Machine Learning CLI を使用して、モデルをトレーニングおよびデプロイする](tutorial-train-deploy-model-cli.md)
 

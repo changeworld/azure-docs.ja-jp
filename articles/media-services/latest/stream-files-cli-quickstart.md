@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.custom: ''
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: a51b30ad2af29871ed6998e60bb64adf91dfdbbd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 91259e10966173cb701b867f5b3ed362112beef3
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76514376"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382785"
 ---
-# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---cli"></a>チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - CLI
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---azure-cli"></a>チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - Azure CLI
 
 このチュートリアルでは、Azure Media Services と Azure CLI を使用して、さまざまなブラウザーおよびデバイスを対象とした動画のエンコードとストリーム配信を簡単に行う方法を示します。 HTTPS URL、SAS URL、または Azure Blob Storage 内のファイルのパスを使用して、入力コンテンツを指定できます。
 
@@ -40,7 +40,7 @@ Media Services アカウントおよび関連するすべてのストレージ �
 
 ### <a name="create-a-resource-group"></a>リソース グループを作成する
 
-```azurecli
+```azurecli-interactive
 az group create -n amsResourceGroup -l westus2
 ```
 
@@ -48,15 +48,15 @@ az group create -n amsResourceGroup -l westus2
 
 この例では、General Purpose v2 Standard LRS アカウントを作成します。
 
-ストレージ アカウントで実験する場合は、`--sku Standard_LRS` を使用します。 運用環境用の SKU を選択する場合は、ビジネス継続性のために地理的レプリケーションを提供する `--sku Standard_RAGRS` を検討してください。 詳細については、[ストレージ アカウント](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest)に関するページを参照してください。
- 
-```azurecli
+ストレージ アカウントで実験する場合は、`--sku Standard_LRS` を使用します。 運用環境用の SKU を選択する場合は、ビジネス継続性のために地理的レプリケーションを提供する `--sku Standard_RAGRS` を検討してください。 詳細については、[ストレージ アカウント](/cli/azure/storage/account)に関するページを参照してください。
+
+```azurecli-interactive
 az storage account create -n amsstorageaccount --kind StorageV2 --sku Standard_LRS -l westus2 -g amsResourceGroup
 ```
 
 ### <a name="create-an-azure-media-services-account"></a>Azure Media Services アカウントの作成
 
-```azurecli
+```azurecli-interactive
 az ams account create --n amsaccount -g amsResourceGroup --storage-account amsstorageaccount -l westus2
 ```
 
@@ -85,14 +85,13 @@ az ams account create --n amsaccount -g amsResourceGroup --storage-account amsst
 
 次の Azure CLI コマンドは、既定の**ストリーミング エンドポイント**を開始します。
 
-```azurecli
+```azurecli-interactive
 az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
 ```
 
 次のような応答が返されます。
 
 ```
-az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
 {
   "accessControl": null,
   "availabilitySetName": null,
@@ -129,7 +128,7 @@ az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
 
 **変換**を作成して、ビデオのエンコードや分析を行うための一般的なタスクを構成します。 この例では、アダプティブ ビットレート エンコードを実行します。 その後、作成した変換でジョブを送信します。 ジョブは、特定のビデオまたはオーディオ コンテンツの入力に変換を適用する、Media Services への要求です。
 
-```azurecli
+```azurecli-interactive
 az ams transform create --name testEncodingTransform --preset AdaptiveStreaming --description 'a simple Transform for Adaptive Bitrate Encoding' -g amsResourceGroup -a amsaccount
 ```
 
@@ -161,7 +160,7 @@ az ams transform create --name testEncodingTransform --preset AdaptiveStreaming 
 
 エンコード ジョブの出力として使用する出力**アセット**を作成します。
 
-```azurecli
+```azurecli-interactive
 az ams asset create -n testOutputAssetName -a amsaccount -g amsResourceGroup
 ```
 
@@ -195,8 +194,8 @@ az ams asset create -n testOutputAssetName -a amsaccount -g amsResourceGroup
 
   `output-assets` に "=" を追加することに注意してください。
 
-```azurecli
-az ams job start --name testJob001 --transform-name testEncodingTransform --base-uri 'https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/' --files 'Ignite-short.mp4' --output-assets testOutputAssetName= -a amsaccount -g amsResourceGroup 
+```azurecli-interactive
+az ams job start --name testJob001 --transform-name testEncodingTransform --base-uri 'https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/' --files 'Ignite-short.mp4' --output-assets testOutputAssetName= -a amsaccount -g amsResourceGroup
 ```
 
 次のような応答が返されます。
@@ -238,7 +237,7 @@ az ams job start --name testJob001 --transform-name testEncodingTransform --base
 
 5 分後、ジョブの状態を確認してください。 "Finished" になっている必要があります。 完了していない場合は、数分後にもう一度確認します。 完了したら、次の手順に進み、**ストリーミング ロケーター**を作成します。
 
-```azurecli
+```azurecli-interactive
 az ams job show -a amsaccount -g amsResourceGroup -t testEncodingTransform -n testJob001
 ```
 
@@ -248,7 +247,7 @@ az ams job show -a amsaccount -g amsResourceGroup -t testEncodingTransform -n te
 
 ### <a name="create-a-streaming-locator"></a>ストリーミング ロケーターを作成する
 
-```azurecli
+```azurecli-interactive
 az ams streaming-locator create -n testStreamingLocator --asset-name testOutputAssetName --streaming-policy-name Predefined_ClearStreamingOnly  -g amsResourceGroup -a amsaccount 
 ```
 
@@ -274,7 +273,7 @@ az ams streaming-locator create -n testStreamingLocator --asset-name testOutputA
 
 ### <a name="get-streaming-locator-paths"></a>ストリーミング ロケーターのパスを取得する
 
-```azurecli
+```azurecli-interactive
 az ams streaming-locator get-paths -a amsaccount -g amsResourceGroup -n testStreamingLocator
 ```
 
@@ -311,13 +310,14 @@ az ams streaming-locator get-paths -a amsaccount -g amsResourceGroup -n testStre
 
 HTTP ライブ ストリーミング (HLS) パスをコピーします。 このケースでは `/e01b2be1-5ea4-42ca-ae5d-7fe704a5962f/ignite.ism/manifest(format=m3u8-aapl)` です。
 
-## <a name="build-the-url"></a>URL を構築する 
+## <a name="build-the-url"></a>URL を構築する
 
 ### <a name="get-the-streaming-endpoint-host-name"></a>ストリーミング エンドポイントのホスト名を取得する
 
-```azurecli
+```azurecli-interactive
 az ams streaming-endpoint list -a amsaccount -g amsResourceGroup -n default
 ```
+
 `hostName` 値をコピーします。 このケースでは `amsaccount-usw22.streaming.media.azure.net` です。
 
 ### <a name="assemble-the-url"></a>URL を組み立てる
@@ -344,13 +344,12 @@ az ams streaming-endpoint list -a amsaccount -g amsResourceGroup -n default
 
 このチュートリアルで作成した Media Services アカウントとストレージ アカウントも含め、リソース グループ内のどのリソースも必要なくなった場合は、リソース グループを削除します。
 
-次の CLI コマンドを実行します。
+次の Azure CLI コマンドを実行します。
 
-```azurecli
+```azurecli-interactive
 az group delete --name amsResourceGroup
 ```
 
 ## <a name="next-steps"></a>次のステップ
 
 [Media Services の概要](media-services-overview.md)
-

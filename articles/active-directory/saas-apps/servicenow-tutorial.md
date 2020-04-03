@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 03/25/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c18613233d6dec59c76db120ed7f089dfbb5fbac
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8fe6c857e5b0c2f48f27c167c177dbf1f4651986
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77046721"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384111"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ServiceNow の統合
 
@@ -93,11 +93,18 @@ ServiceNow で Azure AD SSO を構成してテストするには、次の構成�
 
    ![アイコンが強調表示された [SAML でシングル サインオンをセットアップします] ページのスクリーンショット](common/edit-urls.png)
 
-4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
+1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    a. **[サインオン URL]** に、次のパターンを使用して URL を入力します。`https://<instance-name>.service-now.com/navpage.do`
+    a. **[サインオン URL]** に、次のパターンを使用して URL を入力します。`https://instance.service-now.com/login_with_sso.do?glide_sso_id=<sys_id of the sso configuration>`
 
     b. **[識別子 (エンティティ ID)]** に、次のパターンを使用して URL を入力します。`https://<instance-name>.service-now.com`
+
+    c. **[応答 URL]** に、次のいずれかの URL を入力します。
+
+    |||
+    |-|-|
+    | `https://instancename.service-now.com/navpage.do` |
+    | `https://instancename.service-now.com/customer.do` | 
 
     > [!NOTE]
     > これらは実際の値ではありません。 これらの値を、このチュートリアルの後半で説明する実際のサインオン URL と識別子に更新する必要があります。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -160,9 +167,16 @@ ServiceNow で Azure AD SSO を構成してテストするには、次の構成�
 
 4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    a. **[サインオン URL]** に、次のパターンを使用して URL を入力します。`https://<instance-name>.service-now.com/navpage.do`
+    a. **[サインオン URL]** に、次のパターンを使用して URL を入力します。`https://instance.service-now.com/login_with_sso.do?glide_sso_id=<sys_id of the sso configuration>`
 
     b. **[識別子 (エンティティ ID)]** に、次のパターンを使用して URL を入力します。`https://<instance-name>.service-now.com`
+
+    c. **[応答 URL]** に、次のいずれかの URL を入力します。
+
+    |||
+    |-|-|
+    | `https://instancename.service-now.com/navpage.do` |
+    | `https://instancename.service-now.com/customer.do` |
 
     > [!NOTE]
     > これらは実際の値ではありません。 これらの値を、このチュートリアルの後半で説明する実際のサインオン URL と識別子に更新する必要があります。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -183,7 +197,7 @@ ServiceNow で Azure AD SSO を構成してテストするには、次の構成�
 
 1. ServiceNow アプリケーションに管理者としてサインオンします。
 
-2. これらの手順に従って、**Integration - Multiple Provider single sign-on Installer (統合 - 複数プロバイダーのシングル サインオン インストーラー)** プラグインをアクティブにします。
+1. これらの手順に従って、**Integration - Multiple Provider single sign-on Installer (統合 - 複数プロバイダーのシングル サインオン インストーラー)** プラグインをアクティブにします。
 
     a. 左側のウィンドウの検索ボックスで **[System Definition]\(システム定義\)** セクションを検索し、 **[Plugins]\(プラグイン\)** を選択します。
 
@@ -201,11 +215,11 @@ ServiceNow で Azure AD SSO を構成してテストするには、次の構成�
 
      ![[Activate]\(アクティブ化\) が強調表示された [Activate Plugin]\(プラグインのアクティブ化\) ダイアログ ボックスのスクリーンショット](./media/servicenow-tutorial/tutorial_activate1.png "プラグインのアクティブ化")
 
-3. 左側のウィンドウの検索バーで **[Multi-Provider SSO]\(マルチプロバイダー SSO\)** セクションを検索し、 **[Properties]\(プロパティ\)** を選択します。
+1. 左側のウィンドウの検索バーで **[Multi-Provider SSO]\(マルチプロバイダー SSO\)** セクションを検索し、 **[Properties]\(プロパティ\)** を選択します。
 
     ![[Multi-Provider SSO]\(マルチプロバイダー SSO\) と [Properties]\(プロパティ\) が強調表示された [Multi-Provider SSO]\(マルチプロバイダー SSO\) セクションのスクリーンショット](./media/servicenow-tutorial/tutorial_servicenow_06.png "アプリケーション URL の構成")
 
-4. **[Multiple Provider SSO Properties]\(複数プロバイダー SSO のプロパティ\)** ダイアログ ボックスで、次の手順を実行します。
+1. **[Multiple Provider SSO Properties]\(複数プロバイダー SSO のプロパティ\)** ダイアログ ボックスで、次の手順を実行します。
 
     ![[Multiple Provider SSO Properties]\(複数プロバイダー SSO のプロパティ\) ダイアログ ボックスのスクリーンショット](./media/servicenow-tutorial/ic7694981.png "アプリケーション URL の構成")
 
@@ -215,11 +229,11 @@ ServiceNow で Azure AD SSO を構成してテストするには、次の構成�
 
     * **[Enable debug logging for the multiple provider SSO integration]\(複数プロバイダー SSO 統合のデバッグ ログを有効にする\)** で **[Yes]\(はい\)** を選択します。
 
-    * **[The field on the user table that...]\(ユーザー テーブルのフィールド...\)** に、「**user_name**」と入力します。
+    * **[The field on the user table that...]\(ユーザー テーブルのフィールド...\)** に、「**email**」と入力します。
   
     * **[保存]** を選択します。
 
-6. ServiceNow の構成は、自動または手動で行うことができます。 ServiceNow を自動的に構成するには、これらの手順に従います。
+1. ServiceNow の構成は、自動または手動で行うことができます。 ServiceNow を自動的に構成するには、これらの手順に従います。
 
     1. Azure portal で **ServiceNow** の [シングル サインオン] ページに戻ります。
 
@@ -274,11 +288,16 @@ ServiceNow で Azure AD SSO を構成してテストするには、次の構成�
 
              ![[Test Connection]\(テスト接続\) が強調表示されたページのスクリーンショット](./media/servicenow-tutorial/tutorial_activate2.png "プラグインのアクティブ化")
 
+             > [!NOTE]
+             > テスト接続が失敗し、この接続をアクティブにできない場合は、ServiceNow によってオーバーライド スイッチが提供されます。 **Search Navigation (検索ナビゲーション)** に「**Sys_properties.LIST**」と入力する必要があります。そうすると、[System Properties]\(システム プロパティ\) の新しいページが開きます。 ここでは、**glide.authenticate.multisso.test.connection.mandatory** という名前の新しいプロパティを作成する必要があります。これには、**データ型**を **True/False** とし、**値**を **False** として設定します。
+
+             > ![テスト結果ページのスクリーンショット](./media/servicenow-tutorial/testconnection-fail.png "Configure single sign-on")
+        
           1. 自分の資格情報の入力を求められたら、入力します。 次のページが表示されます。 **SSO Logout Test Results (SSO ログアウト テスト結果)** エラーが予期されます。 このエラーは無視して、 **[Activate]\(アクティブ化\)** を選択します。
 
              ![テスト結果ページのスクリーンショット](./media/servicenow-tutorial/servicenowactivate.png "Configure single sign-on")
   
-6. **ServiceNow** を手動で構成するには、これらの手順に従います。
+1. **ServiceNow** を手動で構成するには、これらの手順に従います。
 
     1. ServiceNow アプリケーションに管理者としてサインオンします。
 
@@ -319,12 +338,17 @@ ServiceNow で Azure AD SSO を構成してテストするには、次の構成�
 
         * **[NameID Policy]\(NameID ポリシー\)** が `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified` 値に設定されていることを確認します。
 
-        * **[Advanced] \(詳細設定)** を選択します。 実際の ServiceNow のデプロイでユーザーを一意に識別するために使用するフィールドに応じて、 **[User Field]\(ユーザー フィールド\)** に「**email**」または「**user_name**」と入力します。
+        * **[Advanced] \(詳細設定)** を選択します。 **[User Field]\(ユーザー フィールド\)** に「**email**」と入力します。
 
             > [!NOTE]
             > SAML トークンの一意の識別子として Azure AD ユーザー ID (ユーザーのプリンシパル名) かメール アドレスを出力するように Azure AD を構成できます。 そのためには、Azure portal で **[ServiceNow]**  >  **[属性]**  >  **[シングル サインオン]** セクションの順に移動し、目的のフィールドを **nameidentifier** 属性にマッピングします。 Azure AD に格納される選択した属性 (ユーザー プリンシパル名など) の値と、ServiceNow に格納される入力したフィールド (user_name など) の値が一致している必要があります。
 
         * ページの右上隅にある **[Test Connection]\(テスト接続\)** を選択します。
+
+          > [!NOTE]
+          > テスト接続が失敗し、この接続をアクティブにできない場合は、ServiceNow によってオーバーライド スイッチが提供されます。 **Search Navigation (検索ナビゲーション)** に「**Sys_properties.LIST**」と入力する必要があります。そうすると、[System Properties]\(システム プロパティ\) の新しいページが開きます。 ここでは、**glide.authenticate.multisso.test.connection.mandatory** という名前の新しいプロパティを作成する必要があります。これには、**データ型**を **True/False** とし、**値**を **False** として設定します。
+
+          > ![テスト結果ページのスクリーンショット](./media/servicenow-tutorial/testconnection-fail.png "Configure single sign-on")
 
         * 自分の資格情報の入力を求められたら、入力します。 次のページが表示されます。 **SSO Logout Test Results (SSO ログアウト テスト結果)** エラーが予期されます。 このエラーは無視して、 **[Activate]\(アクティブ化\)** を選択します。
 
@@ -420,7 +444,7 @@ ServiceNow で Azure AD SSO を構成してテストするには、次の構成�
 
     d. **[Clock Skew]\(時刻のずれ\)** に「**60**」と入力します。
 
-    e. 実際の ServiceNow のデプロイでユーザーを一意に識別するために使用するフィールドに応じて、 **[User Field]\(ユーザー フィールド\)** に「**email**」または「**user_name**」と入力します。
+    e. **[User Field]\(ユーザー フィールド\)** に「**email**」と入力します。
 
     > [!NOTE]
     > SAML トークンの一意の識別子として Azure AD ユーザー ID (ユーザーのプリンシパル名) かメール アドレスを出力するように Azure AD を構成できます。 そのためには、Azure portal で **[ServiceNow]**  >  **[属性]**  >  **[シングル サインオン]** セクションの順に移動し、目的のフィールドを **nameidentifier** 属性にマッピングします。 Azure AD に格納される選択した属性 (ユーザー プリンシパル名など) の値と、ServiceNow に格納される入力したフィールド (user_name など) の値が一致している必要があります。
@@ -450,7 +474,7 @@ ServiceNow で Azure AD SSO を構成してテストするには、次の構成�
     *  **ユーザー名** (例: B.simon@contoso.com) を入力します。
 
     *  **[Use external login]\(外部ログインの使用\)** を選択します。 サインインのために Azure AD ページにリダイレクトされます。
-    
+
     *  資格情報を入力します。 任意のサードパーティの認証またはその他の有効になっているセキュリティ機能がある場合、ユーザーはそれに対応する必要があります。 アプリケーションの**ホーム ページ**が表示されます。
 
         ![アプリケーションのホーム ページのスクリーンショット](./media/servicenow-tutorial/test02.png)
@@ -467,6 +491,6 @@ ServiceNow で Azure AD SSO を構成してテストするには、次の構成�
 
 - [Azure AD で ServiceNow を試す](https://aad.portal.azure.com)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/protect-servicenow)
 
-- [高度な可視性と制御によって ServiceNow を保護する方法](https://docs.microsoft.com/cloud-app-security/protect-servicenow)
+- [高度な可視性と制御によって ServiceNow を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

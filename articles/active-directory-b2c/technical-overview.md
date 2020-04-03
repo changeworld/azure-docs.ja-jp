@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 09/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1aed1b0a13482bc932024a9d2a131ec5f1d948ba
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: d3d6b33211f6f247d9f30c0f162b388085faabe6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78186898"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80332547"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C の技術と機能の概要
 
@@ -195,7 +195,7 @@ REST API 呼び出しに対する Azure AD B2C のサポートによって有効
 * Azure AD B2C によってディレクトリに新しいアカウントが作成された後
 * Azure AD B2C によってアクセス トークンが発行される前
 
-Azure AD B2C で RESTful API 統合に対してカスタム ポリシーを使用する方法については、[REST API 要求交換の Azure AD B2C ユーザー体験への統合](rest-api-claims-exchange-dotnet.md)に関するページをご覧をください。
+Azure AD B2C で RESTful API 統合に対してカスタム ポリシーを使用する方法については、「[REST API 要求交換を Azure AD B2C カスタム ポリシーに統合する](custom-policy-rest-api-intro.md)」を参照してください。
 
 ## <a name="protect-customer-identities"></a>顧客の ID を保護する
 

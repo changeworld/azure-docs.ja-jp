@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: 単一の AD フォレスト環境を Azure に統合する | Microsoft Docs'
+title: チュートリアル:単一の AD フォレスト環境を Azure に統合する | Microsoft Docs
 description: フェデレーションを使用してハイブリッド ID 環境を設定する方法について説明します。
 services: active-directory
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a51175d192a5afb1f84f8d0ed2de9796f198f82d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7a123a85d653415f7b067e0c144c90ed79f2d081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "60296748"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80330991"
 ---
-# <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>チュートリアル: 単一の AD フォレスト環境をクラウドに統合する
+# <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>チュートリアル:単一の AD フォレスト環境をクラウドに統合する
 
 ![作成](media/tutorial-federation/diagram.png)
 
@@ -184,7 +184,7 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 ```
 
 ## <a name="create-a-certificate-for-ad-fs"></a>AD FS の証明書を作成する
-次に、AD FS から使用される SSL 証明書を作成します。  これは自己署名証明書であり、テスト目的にのみ使用されます。  Microsoft は、運用環境で自己署名証明書を使用することをお勧めしません。 次の操作を行います。
+次に、AD FS によって使用される TLS/SSL 証明書を作成します。  これは自己署名証明書であり、テスト目的にのみ使用されます。  Microsoft は、運用環境で自己署名証明書を使用することをお勧めしません。 次の操作を行います。
 
 1. PowerShell ISE を管理者として起動します。
 2. 次のスクリプトを実行します。
@@ -204,7 +204,7 @@ New-SelfSignedCertificate -DnsName $DNSname -CertStoreLocation $Location
 1. [Azure portal](https://portal.azure.com) に移動し、Azure サブスクリプションがあるアカウントを使ってサインインします。
 2. **プラス (+) アイコン**を選択し、**Azure Active Directory** を検索します。
 3. 検索結果で **[Azure Active Directory]** を選択します。
-4. **作成** を選択します。</br>
+4. **［作成］** を選択します</br>
 ![作成](media/tutorial-password-hash-sync/create1.png)</br>
 5. **組織の名前**と**初期ドメイン名**を入力します。 **[作成]** を選択します。 これにより、ディレクトリが作成されます。
 6. これが完了したら、**こちら**のリンクをクリックし、ディレクトリを管理します。
