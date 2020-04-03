@@ -404,8 +404,6 @@
           items:
             - name: ゲスト実行可能ファイルをデプロイする
               href: service-fabric-deploy-existing-app.md
-            - name: 複数のゲスト実行可能ファイルのデプロイ
-              href: service-fabric-deploy-multiple-apps.md
         - name: コンテナー サービスの構築
           items:
             - name: Docker Compose (プレビュー)
@@ -446,7 +444,7 @@
                   href: service-fabric-reliable-services-secure-communication-java.md
                 - name: WCF 通信のセキュリティ保護
                   href: service-fabric-reliable-services-secure-communication-wcf.md
-            - name: '[構成]'
+            - name: 構成
               href: service-fabric-reliable-services-configuration.md
             - name: 通知を送信する
               href: service-fabric-reliable-services-notifications.md

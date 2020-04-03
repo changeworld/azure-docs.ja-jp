@@ -81,14 +81,10 @@
           href: howto-create-personal-dashboards.md
         - name: ジョブの実行
           href: howto-run-a-job.md
-        - name: デバイス テンプレートをバージョン管理する
-          href: howto-version-device-template.md
     - name: 変換
       items:
         - name: Azure で宛先にデータをエクスポートする
           href: howto-export-data.md
-        - name: IoT Central API を調べる
-          href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
         - name: 規則に基づいて Webhook を作成する
           href: howto-create-webhooks.md
         - name: 規則に基づいて Azure Monitor アクション グループを接続する

@@ -177,6 +177,7 @@
               href: reserved-vm-instance-size-flexibility.md
         - name: スポット VM
           href: spot-vms.md
+          displayName: 'pre-empt, preempt'
         - name: 旧世代
           href: ../sizes-previous-gen.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Isolated のサイズ

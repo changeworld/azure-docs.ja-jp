@@ -58,8 +58,6 @@
       href: sql-database-managed-instance-quickstart-guide.md
 - name: 概念
   items:
-    - name: 共通機能に関するドキュメント
-      href: sql-database-paas-index.yml
     - name: 機能の比較
       href: sql-database-features.md
     - name: ハウツー ガイド
@@ -280,8 +278,6 @@
                   href: sql-database-xevent-code-ring-buffer.md
     - name: スケーラビリティ
       items:
-        - name: スケーラビリティのドキュメント
-          href: sql-database-scalability-index.yml
         - name: スケールアップ/スケールダウン
           href: sql-database-scale-resources.md
         - name: 読み取りスケールアウト
@@ -310,8 +306,6 @@
           href: sql-database-elastic-transactions-overview.md
     - name: Database の機能
       items:
-        - name: Database の機能に関するドキュメント
-          href: sql-database-features-index.yml
         - name: マルチモデル機能
           href: sql-database-multi-model-features.md
         - name: メモリ内
@@ -685,7 +679,6 @@
         - name: コード サンプル
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: SQL マネージド インスタンス
-  href: sql-database-managed-instance-index.yml
   items:
     - name: 概要
       items:
