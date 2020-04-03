@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa14b45235f2a62f05e84efafc41b899dc531d49
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: aa612ad30ae0faa42071613be15c1d91fb96b8f6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74868679"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80332260"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>既存のフォレストと新しいフォレストを単一の Azure AD テナントに統合する
 
@@ -43,7 +43,7 @@ ms.locfileid: "74868679"
 
      | ポート番号 | 用途 |
      | --- | --- |
-     | **80** | SSL 証明書を検証する際に証明書失効リスト (CRL) をダウンロードする |
+     | **80** | TLS/SSL 証明書を検証する際に証明書失効リスト (CRL) をダウンロードします |
      | **443** | サービスを使用したすべての送信方向の通信を処理する |
      | **8080** (省略可能) | ポート 443 が使用できない場合、エージェントは、ポート 8080 経由で 10 分おきにその状態をレポートします。 この状態は Azure AD ポータルに表示されます。 |
      
