@@ -246,6 +246,8 @@
       items:
         - name: Azure portal
           href: howto-data-encryption-portal.md
+        - name: Azure CLI
+          href: howto-data-encryption-cli.md
     - name: Azure AD との統合
       items:
         - name: Azure AD の統合の構成

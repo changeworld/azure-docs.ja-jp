@@ -3,7 +3,7 @@
   items:
     - name: 概要
       items:
-        - name: Azure Dev Spaces について
+        - name: Azure Dev Spaces とは
           href: about.md
     - name: クイックスタート
       items:

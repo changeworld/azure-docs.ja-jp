@@ -334,7 +334,7 @@
           href: download-results-howto.md
         - name: 説明的なオーディオの通知
           href: signal-descriptive-audio-howto.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: よく寄せられる質問
           displayName: faqs
