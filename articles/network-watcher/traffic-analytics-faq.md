@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
 ms.openlocfilehash: 5e31ed905f05070c8715a63ef3386b0006df0a75
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840623"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Traffic Analytics についてよく寄せられる質問
@@ -66,7 +66,7 @@ Traffic Analytics では、次の前提条件が必要です。
 NSG のトラフィック分析は、次のサポートされているどのリージョンでも使用できます。
 - カナダ中部
 - 米国中西部
-- East US
+- 米国東部
 - 米国東部 2
 - 米国中北部
 - 米国中南部
@@ -88,13 +88,13 @@ NSG のトラフィック分析は、次のサポートされているどのリ�
 - インド南部
 - 東日本
 - 西日本
-- 米国政府バージニア州
+- US Gov バージニア州
 - 中国東部 2
 
 Log Analytics ワークスペースは、次のリージョンに存在する必要があります。
 - カナダ中部
 - 米国中西部
-- East US
+- 米国東部
 - 米国東部 2
 - 米国中北部
 - 米国中南部
@@ -113,7 +113,7 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 - 韓国中部
 - インド中部
 - 東日本
-- 米国政府バージニア州
+- US Gov バージニア州
 - 中国東部 2
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>フロー ログを有効化する NSG は、自分のワークスペースとは別のリージョンに存在できますか?

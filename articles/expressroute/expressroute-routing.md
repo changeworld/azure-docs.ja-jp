@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
 ms.openlocfilehash: 3eafb8aff5525f668e6fe0bddb261b1117b5e38b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356040"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233799"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute のルーティングの要件
 ExpressRoute を使用して Microsoft クラウド サービスに接続するには、ルーティングをセットアップして管理する必要があります。 一部の接続プロバイダーでは、ルーティングのセットアップと管理が管理されたサービスとして提供されています。 このサービスが提供されているかどうか、接続プロバイダーに問い合わせてください。 提供されていない場合は、次の要件に従う必要があります。
@@ -142,7 +142,7 @@ ExpressRoute をトランジット ルーターとして構成することはで
 > 
 > 
 
-## <a name="bgp"></a>BGP コミュニティのサポート
+## <a name="support-for-bgp-communities"></a><a name="bgp"></a>BGP コミュニティのサポート
 ここでは、ExpressRoute で BGP コミュニティがどのように使用されるかについて概説します。 Microsoft は、パブリックおよび Microsoft ピアリング パスのルートに適切なコミュニティ値をタグ付けしてアドバタイズします。 その理由とコミュニティ値の詳細については以降に示します。 ただし、Microsoft は、Microsoft にアドバタイズされるルートにタグ付けされたすべてのコミュニティ値を無視します。
 
 地理的リージョン内の任意の 1 つのピアリングの場所で ExpressRoute を介して Microsoft に接続する場合、地理的境界内のすべてのリージョンですべての Microsoft クラウド サービスにアクセスできます。 

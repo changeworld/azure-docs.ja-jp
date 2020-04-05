@@ -12,11 +12,11 @@ ms.date: 11/04/2019
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: a9a14056e6be62fc1c1b5e542c1a3acceb738eac
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901212"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79219065"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>ナレッジ ベースにおしゃべりを追加する
 
@@ -46,14 +46,14 @@ ms.locfileid: "74901212"
 |言語|
 |--|
 |中国語|
-|英語|
-|フランス語|
+|English|
+|French|
 |ドイツ|
-|イタリア語|
-|日本語|
-|韓国語|
-|ポルトガル語|
-|スペイン語|
+|Italian|
+|Japanese|
+|Korean|
+|Portuguese|
+|Spanish|
 
 
 ## <a name="add-chit-chat-during-kb-creation"></a>KB 作成時におしゃべりを追加する
@@ -81,11 +81,11 @@ KB を選択し、 **[設定]** ページに移動します。 選択したパ�
 
 ![KB からおしゃべりを削除する](../media/qnamaker-how-to-chit-chat/delete-chit-chat.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [ナレッジ ベースをインポートする](../Tutorials/migrate-knowledge-base.md)
 
-## <a name="see-also"></a>関連項目 
+## <a name="see-also"></a>参照 
 
 [QnA Maker の概要](../Overview/overview.md)

@@ -11,11 +11,11 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: d2f7903fa85c645357e46a753d1cb043e0893254
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647314"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218601"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Custom Translator ワークスペースとは
 
@@ -45,6 +45,6 @@ Custom Translator を使用すると、プロジェクトにプロジェクト �
 
 言語サービス プロバイダーが、同じカテゴリと言語ペアを保持する異なるモデルを複数の顧客に対して提供する場合は、プロジェクト ラベルを使用して顧客間を区別することをお勧めします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 翻訳モデルを効率的に構築する方法については、[トレーニングとモデル](training-and-model.md)に関するページを参照してください。

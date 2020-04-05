@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 8bad33f593bae2679c83d59ae4567dcab4a64809
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78304227"
 ---
 # <a name="trunc-azure-cosmos-db"></a>TRUNC (Azure Cosmos DB)

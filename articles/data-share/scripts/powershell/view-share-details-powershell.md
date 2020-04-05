@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
 ms.openlocfilehash: 6314bd348c22c901001b88eda6875181a2f69df4
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70307137"
 ---
 # <a name="use-powershell-to-view-the-details-of-a-sent-data-share"></a>PowerShell を使用して、送信されたデータ共有の詳細を表示する
@@ -43,12 +43,12 @@ Get-AzDataShare -ResourceGroupName $resourceGroupName -AccountName $dataShareAcc
 
 このスクリプトでは以下のコマンドを使用します。 
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [Get-AzDataShare](/powershell/module/az.datashare/get-azdatashare?view=azps-2.6.0) | アカウント内の共有を取得し一覧表示します。 |
 |||
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/)を参照してください。
 

@@ -1,6 +1,6 @@
 ---
 title: Azure 上で VMware を実行する場合のアプリケーション高可用性の確保
-description: AVS プライベート クラウドで実行されているアプリケーションの一般的なアプリケーション エラー シナリオに対処するための、AVS の高可用性機能について説明します。
+description: CloudSimple プライベート クラウド内で実行されているアプリケーションの一般的なアプリケーション エラー シナリオに対処するための CloudSimple 高可用性機能について説明します
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b32f7f3f38098f935382cce46d8251340784b940
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a3eed033ba6a1a6f9237116a53ec7751ae906fe4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025352"
 ---
 # <a name="ensure-application-high-availability-when-running-in-vmware-on-azure"></a>Azure 上で VMware を実行する場合のアプリケーション高可用性の確保
 
-AVS ソリューションでは、Azure 環境内の VMware 上で実行されているアプリケーションの高可用性が実現されます。 次の表に、障害のシナリオと、関連する高可用性機能を示します。
+CloudSimple ソリューションでは、Azure 環境内の VMware 上で実行されているアプリケーションの高可用性が実現されます。 次の表に、障害のシナリオと、関連する高可用性機能を示します。
 
 | 障害のシナリオ | アプリケーションが保護されているか? | プラットフォーム HA 機能 | VMware HA 機能 | Azure HA 機能 |
 ------------ | ------------- | ------------ | ------------ | ------------- |
@@ -35,15 +35,15 @@ AVS ソリューションでは、Azure 環境内の VMware 上で実行され�
 | データセンターの障害 | YES |  |  | 可用性ゾーン |
 | リージョンの障害 | YES  |  |  | Azure Azure リージョン |
 
-Azure VMware Solution by AVS には、以下の高可用性機能が用意されています。
+Azure VMware Solution by CloudSimple には、以下の高可用性機能が用意されています。
 
 ## <a name="fast-replacement-of-failed-node"></a>障害が発生したノードの高速置換
 
-AVS コントロール プレーン ソフトウェアでは、VMware クラスターの正常性が継続的に監視され、ESXi ノードで障害が発生したときに、それが検出されます。 次に、すぐに利用可能なノードのプールから、影響を受ける VMware クラスターに新しい ESXi ホストが自動的に追加され、障害が発生したノードがクラスターから除外されます。 この機能により、vSAN と VMware HA によって提供されるクラスターの回復性が復元されるように、VMware クラスター内の予備容量が迅速に復元されます。
+CloudSimple コントロール プレーン ソフトウェアでは、VMware クラスターの正常性が継続的に監視され、ESXi ノードで障害が発生したときに、それが検出されます。 次に、すぐに利用可能なノードのプールから、影響を受ける VMware クラスターに新しい ESXi ホストが自動的に追加され、障害が発生したノードがクラスターから除外されます。 この機能により、vSAN と VMware HA によって提供されるクラスターの回復性が復元されるように、VMware クラスター内の予備容量が迅速に復元されます。
 
 ## <a name="placement-groups"></a>配置グループ
 
-AVS プライベート クラウドを作成するユーザーは、Azure リージョンと、選択したリージョン内の配置グループを選択できます。 配置グループは、複数のラックに分散されているが同じスパイン ネットワーク セグメント内にあるノードのセットです。 同じ配置グループ内のノードは、最大 2 つの追加のスイッチ ホップを使用して相互に接続できます。 配置グループは、常に 1 つの Azure 可用性ゾーン内にあり、複数のラックにまたがります。 AVS コントロール プレーンでは、ベスト エフォートに基づいて、AVS プライベート クラウドのノードが複数のラックに分散されます。 異なる配置グループ内のノードは、異なるラックに配置されることが保証されます。
+プライベート クラウドを作成するユーザーは、Azure リージョンと、選択したリージョン内の配置グループを選択できます。 配置グループは、複数のラックに分散されているが同じスパイン ネットワーク セグメント内にあるノードのセットです。 同じ配置グループ内のノードは、最大 2 つの追加のスイッチ ホップを使用して相互に接続できます。 配置グループは、常に 1 つの Azure 可用性ゾーン内にあり、複数のラックにまたがります。 CloudSimple コントロール プレーンでは、ベスト エフォートに基づいて、プライベート クラウドのノードが複数のラックに分散されます。 異なる配置グループ内のノードは、異なるラックに配置されることが保証されます。
 
 ## <a name="availability-zones"></a>可用性ゾーン
 
@@ -55,7 +55,7 @@ ExpressRoute を使用した Azure vNet へのデータ センター接続には
 
 ## <a name="redundant-networking-services"></a>冗長性のあるネットワーク サービス
 
-AVS プライベート クラウド用のすべての AVS ネットワーク サービス (VLAN、ファイアウォール、パブリック IP アドレス、インターネット、VPN など) は、高可用性を実現し、サービス SLA をサポートできるように設計されています。
+プライベート クラウド用のすべての CloudSimple ネットワーク サービス (VLAN、ファイアウォール、パブリック IP アドレス、インターネット、VPN など) は、高可用性を実現し、サービス SLA をサポートできるように設計されています。
 
 ## <a name="azure-layer-7-load-balancer-for-stateless-vmware-vms"></a>ステートレス VMware VM 用の Azure Layer 7 Load Balancer
 

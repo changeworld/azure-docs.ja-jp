@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/24/2017
 ms.author: kasing
 ms.openlocfilehash: a64163da1dee2bceb567436dc18ba0fa5274cfcb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038210"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224599"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Azure Resource Manager の仮想マシンの Key Vault を設定する
 
@@ -45,7 +45,7 @@ PowerShell を使用して Key Vault を作成するには、「[PowerShell を�
     Set-AzKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
 
 ## <a name="use-cli-to-set-up-key-vault"></a>CLI を使用して Key Vault を設定する
-コマンド ライン インターフェイス (CLI) を使用して Key Vault を作成する方法については、「 [CLI を使用した Key Vault の管理](../../key-vault/key-vault-manage-with-cli2.md#create-a-key-vault)」を参照してください。
+コマンド ライン インターフェイス (CLI) を使用して Key Vault を作成するには、「 [CLI を使用した Key Vault の管理](../../key-vault/key-vault-manage-with-cli2.md#create-a-key-vault)」を参照してください。
 
 CLI の場合、デプロイ ポリシーを割り当てる前に、Key Vault を作成する必要があります。 この処理には、次のコマンドを使用できます。
 

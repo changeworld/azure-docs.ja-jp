@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 01/30/2020
 ms.openlocfilehash: 09cc9e1475616700aa77cdf92fd7ca808cd4290c
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76937836"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL Database サービス レベル

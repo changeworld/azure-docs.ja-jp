@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
 ms.openlocfilehash: c5c9ad8be8bd4cd834b01a0c67e0bbc81b8cdd4a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68881881"
 ---
 # <a name="using-the-bing-spell-check-api"></a>Bing Spell Check API の使用
@@ -44,7 +44,7 @@ API は、2 つの校正モード (`Proof` と `Spell`) をサポートします
 
 ## <a name="market-setting"></a>市場の設定
 
-要求には、`mkt` クエリ パラメーターで[市場コード](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#market-codes)を指定する必要があります。 指定しなかった場合は、要求の IP アドレスに基づく既定の市場が使用されます。
+要求には、[ クエリ パラメーターで](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#market-codes)市場コード`mkt`を指定する必要があります。 指定しなかった場合は、要求の IP アドレスに基づく既定の市場が使用されます。
 
 
 ## <a name="http-post-and-get-support"></a>HTTP POST と HTTP GET のサポート
@@ -112,7 +112,7 @@ HTTP GET を使用する場合は、URL のクエリ文字列に `text` クエ�
 }  
 ```  
   
-API が [text](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#text) 文字列内で検出したスペルと文法のエラーが、[flaggedTokens](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#flaggedtokens) フィールドに一覧表示されます。 `token` フィールドには、置換される単語が含まれます。 `offset` フィールドの 0 から始まるオフセットを使用して、`text` 文字列内のトークンを検出します。 その後、その場所にある単語を`suggestion` フィールド内の単語に置き換えます。 
+API が [text](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#flaggedtokens) 文字列内で検出したスペルと文法のエラーが、[flaggedTokens](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#text) フィールドに一覧表示されます。 `token` フィールドには、置換される単語が含まれます。 `offset` フィールドの 0 から始まるオフセットを使用して、`text` 文字列内のトークンを検出します。 その後、その場所にある単語を`suggestion` フィールド内の単語に置き換えます。 
 
 `type` フィールドが RepeatedToken の場合でも、トークンを `suggestion` に置き換えますが、おそらく末尾のスペースを削除する必要があります。
 
@@ -120,7 +120,7 @@ API が [text](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Bing Spell Check API とは](../overview.md)
 - [Bing Spell Check API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

@@ -7,12 +7,12 @@ ms.service: virtual-machines-linux
 ms.subservice: security
 ms.topic: quickstart
 ms.date: 05/17/2019
-ms.openlocfilehash: 14b6f07ead59f3d86b80489460956dd37fb7378b
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 1362844de0a6b5d8cee4555c3d24833affe71640
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970689"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80385148"
 ---
 # <a name="quickstart-create-and-encrypt-a-linux-vm-with-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Linux VM を作成、暗号化する
 
@@ -20,7 +20,7 @@ Azure CLI は、コマンドラインやスクリプトで Azure リソースを
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-CLI をローカルにインストールして使用することを選択する場合、このクイック スタートでは、Azure CLI バージョン 2.0.30 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
+Azure CLI をローカルにインストールして使用することを選択した場合、このクイックスタートでは Azure CLI バージョン 2.0.30 以降を実行していることが必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -45,7 +45,7 @@ az vm create \
 
 VM とサポートするリソースを作成するには数分かかります。 次の出力例では、成功した VM 作成操作を示します。
 
-```azurecli-interactive
+```
 {
   "fqdns": "",
   "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -85,7 +85,7 @@ az vm show --name "myVM" -g "MyResourceGroup"
 
 暗号化が有効な場合、返された出力には以下が表示されます。
 
-```azurecli-interactive
+```
 "EncryptionOperation": "EnableEncryption"
 ```
 

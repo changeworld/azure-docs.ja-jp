@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: ff2267c2d03076d3abc44d0bd1dddc64577cc7f1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428659"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237127"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Azure Logic Apps でのワークフロー定義言語のスキーマ リファレンス ガイド
 
@@ -35,7 +35,7 @@ ms.locfileid: "75428659"
 }
 ```
 
-| Attribute | 必須 | 説明 |
+| 属性 | Required | 説明 |
 |-----------|----------|-------------|
 | `definition` | はい | ワークフロー定義の開始要素 |
 | `$schema` | ワークフロー定義を外部参照する場合のみ | ワークフロー定義言語のバージョンが記述されている JSON スキーマ ファイルの場所。次の場所にあります。 <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
@@ -74,7 +74,7 @@ ms.locfileid: "75428659"
 },
 ```
 
-| Attribute | 必須 | 種類 | 説明 |
+| 属性 | 必須 | Type | 説明 |
 |-----------|----------|------|-------------|
 | <*parameter-name*> | はい | String | 定義するパラメーターの名前 |
 | <*parameter-type*> | はい | int、float、string、bool、array、object、securestring、secureobject <p><p>**注**:すべてのパスワード、キー、およびシークレットで、`securestring` 型または `secureobject` 型を使用します。`GET` 操作では、これらの型は返されません。 パラメーターのセキュリティ保護の詳細については、「[パラメーターの入力へのアクセス](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)」を参照してください。 | パラメーターの型 |
@@ -112,7 +112,7 @@ ms.locfileid: "75428659"
 }
 ```
 
-| Attribute | 必須 | 種類 | 説明 |
+| 属性 | 必須 | Type | 説明 |
 |-----------|----------|------|-------------|
 | <*static-result-definition-name*> | はい | String | アクションの定義が `runtimeConfiguration.staticResult` オブジェクトを介して参照できる、静的な結果の定義の名前。 詳細については、「[ランタイム構成の設定](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options)」を参照してください。 <p>任意の一意の名前を使用できます。 既定では、この一意の名前に数値が追加されます。この数値は必要に応じてインクリメントされます。 |
 | <*output-attributes-and-values-returned*> | はい | 場合により異なる | これらの属性の要件は、さまざまな条件によって異なります。 たとえば、`status` が `Succeeded` の場合、`outputs` 属性には、アクションによってモック出力として返される属性と値が含まれます。 `status` が `Failed` の場合は、`outputs` 属性には `errors` 属性が含まれます。これは、エラー情報が格納された、1 つ以上のエラー `message` オブジェクトの配列です。 |
@@ -275,7 +275,7 @@ Logic Apps デザイナーで視覚的に作業しているときは、式ビル
 }
 ```
 
-| Attribute | 必須 | 種類 | 説明 |
+| 属性 | 必須 | Type | 説明 |
 |-----------|----------|------|-------------|
 | <*key-name*> | はい | String | 出力戻り値のキーの名前 |
 | <*key-type*> | はい | int、float、string、securestring、bool、array、JSON オブジェクト | 出力戻り値の型 |

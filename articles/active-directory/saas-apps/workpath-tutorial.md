@@ -17,10 +17,10 @@ ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e2e9f22df8df77c3d59990d26b0f63f134f537d4
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75561798"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workpath"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Workpath の統合
@@ -104,7 +104,7 @@ Workpath で Azure AD SSO を構成してテストするには、次の構成要
 
 1. その他に、Workpath アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | Name | ソース属性|
+    | 名前 | ソース属性|
     | ------------------- | -------------------- |    
     | first_name | User.givenname |
     | last_name | User.surname |

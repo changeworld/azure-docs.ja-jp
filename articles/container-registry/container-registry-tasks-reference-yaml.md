@@ -3,14 +3,14 @@ title: YAML リファレンス - ACR タスク
 description: YAML で ACR タスク用のタスクを定義するための参照 (タスクのプロパティ、ステップの種類、ステップのプロパティ、およびビルトイン変数など)。
 ms.topic: article
 ms.date: 10/23/2019
-ms.openlocfilehash: d86eb0e24233afb536d27f5d0938d4748941e88a
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 9558f698b4a9dbca46431fc02ced6ae30de29121
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945738"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225779"
 ---
-# <a name="acr-tasks-reference-yaml"></a>ACR タスクの参照:YAML
+# <a name="acr-tasks-reference-yaml"></a>ACR タスクの参照: YAML
 
 ACR タスクでの複数ステップのタスク定義では、コンテナーのビルド、テスト、および修正プログラムの適用に重点を置いたコンテナーを中心としたコンピューティング プリミティブを提供します。 この記事では、複数ステップのタスクを定義する YAML ファイルのコマンド、パラメーター、プロパティ、および構文について説明します。
 
@@ -63,7 +63,7 @@ YAML は、ACR タスクで現在サポートされている唯一のファイ�
 az acr run -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
 ```
 
-サンプル コマンドの書式設定では、Azure CLI で既定のレジストリが構成されていることを前提としているため、`--registry` パラメーターが省略されています。 既定のレジストリを構成するには、`acr=REGISTRY_NAME` 値を受け入れる `--defaults` パラメーターを使用して、[az configure][az-configure] コマンドを使用します。
+サンプル コマンドの書式設定では、Azure CLI で既定のレジストリが構成されていることを前提としているため、`--registry` パラメーターが省略されています。 既定のレジストリを構成するには、[ 値を受け入れる ][az-configure] パラメーターを使用して、`--defaults`az configure`acr=REGISTRY_NAME` コマンドを使用します。
 
 たとえば、Azure CLI を "myregistry" という名前の既定のレジストリで構成するには、次のようにします。
 
@@ -287,7 +287,7 @@ steps:
 
 #### <a name="run-hello-world-image"></a>hello-world イメージの実行
 
-このコマンドは、Docker Hub 上の [hello-world](https://hub.docker.com/_/hello-world/) イメージを参照する `hello-world.yaml` タスク ファイルを実行します。
+このコマンドは、Docker Hub 上の `hello-world.yaml`hello-world[ イメージを参照する ](https://hub.docker.com/_/hello-world/) タスク ファイルを実行します。
 
 ```azurecli
 az acr run -f hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -298,7 +298,7 @@ az acr run -f hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
 
 #### <a name="run-bash-image-and-echo-hello-world"></a>bash イメージとエコー "hello world" の実行
 
-このコマンドは、Docker Hub 上の [bash](https://hub.docker.com/_/bash/) イメージを参照する `bash-echo.yaml` タスク ファイルを実行します。
+このコマンドは、Docker Hub 上の `bash-echo.yaml`bash[ イメージを参照する ](https://hub.docker.com/_/bash/) タスク ファイルを実行します。
 
 ```azurecli
 az acr run -f bash-echo.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -311,7 +311,7 @@ az acr run -f bash-echo.yaml https://github.com/Azure-Samples/acr-tasks.git
 
 イメージの特定のバージョンを実行するには、`cmd` でタグを指定します。
 
-このコマンドは、Docker Hub 上の [bash:3.0](https://hub.docker.com/_/bash/) イメージを参照する `bash-echo-3.yaml` タスク ファイルを実行します。
+このコマンドは、Docker Hub 上の `bash-echo-3.yaml`bash:3.0[ イメージを参照する ](https://hub.docker.com/_/bash/) タスク ファイルを実行します。
 
 ```azurecli
 az acr run -f bash-echo-3.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -363,7 +363,7 @@ steps:
 | `entryPoint` | string | はい | ステップのコンテナーの `[ENTRYPOINT]` をオーバーライドします。 | なし |
 | `env` | [string, string, ...] | はい | ステップの環境変数を定義する `key=value` 形式での文字列の配列。 | なし |
 | `expose` | [string, string, ...] | はい | コンテナーから公開されているポートの配列。 |  なし |
-| [`id`](#example-id) | string | はい | タスク内のステップを一意に識別します。 タスク内のその他のステップでは、`when` での依存関係のチェックなどのために、ステップの `id` を参照できます。<br /><br />`id` は実行中のコンテナーの名前でもあります。 タスク内のその他のコンテナーで実行されているプロセスは、その DNS ホスト名として、または docker ログ [id] などでアクセスするために `id` を参照できます。 | `acb_step_%d`。ここで、`%d` は、YAML ファイルのステップのトップダウンの 0 から始まるインデックスです |
+| [`id`](#example-id) | string | はい | タスク内のステップを一意に識別します。 タスク内のその他のステップでは、`id` での依存関係のチェックなどのために、ステップの `when` を参照できます。<br /><br />`id` は実行中のコンテナーの名前でもあります。 タスク内のその他のコンテナーで実行されているプロセスは、その DNS ホスト名として、または docker ログ [id] などでアクセスするために `id` を参照できます。 | `acb_step_%d`。ここで、`%d` は、YAML ファイルのステップのトップダウンの 0 から始まるインデックスです |
 | `ignoreErrors` | [bool] | はい | コンテナーの実行中にエラーが発生したかどうかに関係なく、ステップを成功としてマークするかどうか。 | `false` |
 | `isolation` | string | はい | コンテナーの分離レベル。 | `default` |
 | `keep` | [bool] | はい | 実行後にステップのコンテナーを保持する必要があるかどうか。 | `false` |
@@ -381,11 +381,11 @@ steps:
 | `user` | string | はい | ユーザー名またはコンテナーの UID | なし |
 | `workingDirectory` | string | はい | ステップ用の作業ディレクトリを設定します。 既定では、ACR タスクは作業ディレクトリとしてルート ディレクトリを作成します。 ただし、ビルドに複数のステップがある場合は、同じ作業ディレクトリを指定することで、前のステップは後のステップと成果物を共有することができます。 | `/workspace` |
 
-### <a name="examples-task-step-properties"></a>例 :タスク ステップ プロパティ
+### <a name="examples-task-step-properties"></a>例: タスク ステップ プロパティ
 
 #### <a name="example-id"></a>例: id
 
-機能テスト イメージをインスタンス化する 2 つのイメージをビルドします。 各ステップは、タスク内のその他のステップがその `when` プロパティ内で参照する一意の `id` で識別されます。
+機能テスト イメージをインスタンス化する 2 つのイメージをビルドします。 各ステップは、タスク内のその他のステップがその `id` プロパティ内で参照する一意の `when` で識別されます。
 
 ```azurecli
 az acr run -f when-parallel-dependent.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -528,7 +528,7 @@ ACR タスクでは、いくつかの定義済みエイリアスと、ユーザ�
 
 次の例のように、タスク ステップでは、エイリアスの前に `$` ディレクティブを付けます。
 
-```yaml
+```yml
 version: v1.1.0
 steps:
   - build: -t $Registry/hello-world:$ID -f hello-world.dockerfile .
@@ -545,9 +545,9 @@ steps:
 | `bash` | `mcr.microsoft.com/acr/bash:a80af84` |
 | `curl` | `mcr.microsoft.com/acr/curl:a80af84` |
 
-次のタスクの例では、複数のエイリアスを使用して、実行レジストリのリポジトリ `samples/hello-world` 内にある 7 日以上経過したイメージ タグを[消去](container-registry-auto-purge.md)しています。
+次のタスクの例では、複数のエイリアスを使用して、実行レジストリのリポジトリ [ 内にある 7 日以上経過したイメージ タグを](container-registry-auto-purge.md)消去`samples/hello-world`しています。
 
-```yaml
+```yml
 version: v1.1.0
 steps:
   - cmd: acr tag list --registry $RegistryName --repository samples/hello-world

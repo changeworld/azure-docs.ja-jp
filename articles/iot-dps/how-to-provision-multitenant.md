@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: e0dec0a67ed33186797ccec8066aaad89ceb8dcb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75434750"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>マルチテナント用にプロビジョニングする方法 
 
 プロビジョニング サービスによって定義されている割り当てポリシーでは、さまざまな割り当てシナリオがサポートされています。 よく使用されるシナリオは次の 2 つです。
 
-* **位置情報/geo 待機時間**: デバイスが異なる場所の間を移動するときは、各場所に最も近い IoT ハブに対してデバイスをプロビジョニングすることにより、ネットワーク待ち時間が改善されます。 このシナリオでは、異なるリージョンに広がる IoT ハブのグループを、登録対象に選択します。 これらの登録に対して、**最短待機時間**割り当てポリシーを選択します。 このポリシーを指定すると、Device Provisioning Service はデバイスの待機時間を評価して、IoT ハブのグループから最も近い IoT ハブを決定します。 
+* **位置情報/geo 待機時間**: デバイスが異なる場所の間を移動するときは、各場所に最も近い IoT ハブに対してデバイスをプロビジョニングすることにより、ネットワーク待機時間が改善されます。 このシナリオでは、異なるリージョンに広がる IoT ハブのグループを、登録対象に選択します。 これらの登録に対して、**最短待機時間**割り当てポリシーを選択します。 このポリシーを指定すると、Device Provisioning Service はデバイスの待機時間を評価して、IoT ハブのグループから最も近い IoT ハブを決定します。 
 
 * **マルチテナント**: IoT ソリューション内で使用されるデバイスは、特定の IoT ハブまたは IoT ハブのグループに割り当てることが必要な場合があります。 ソリューションでは、特定のテナントのすべてのデバイスが、IoT ハブの特定のグループと通信することが必要な場合があります。 場合によっては、テナントが IoT ハブを所有しており、デバイスを IoT ハブに割り当てることが必要なことがあります。
 
@@ -57,7 +57,7 @@ ms.locfileid: "75434750"
     az group create --name contoso-us-resource-group --location eastus
     ```
 
-2. Azure Cloud Shell で [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) コマンドを使用して、**eastus** リージョンに IoT ハブを作成します。 その IoT ハブは、*contoso-us-resource-group* に追加されます。
+2. Azure Cloud Shell で **az iot hub create** コマンドを使用して、[eastus](/cli/azure/iot/hub#az-iot-hub-create) リージョンに IoT ハブを作成します。 その IoT ハブは、*contoso-us-resource-group* に追加されます。
 
     次の例では、*contoso-east-hub* という名前の IoT ハブを場所 *eastus* に作成します。 **contoso-east-hub** の代わりに、独自の一意のハブ名を使用する必要があります。
 
@@ -67,7 +67,7 @@ ms.locfileid: "75434750"
     
     このコマンドが完了するまでに数分かかる場合があります。
 
-3. Azure Cloud Shell で [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) コマンドを使用して、**westus** リージョンに IoT ハブを作成します。 この IoT ハブも、*contoso-us-resource-group* に追加されます。
+3. Azure Cloud Shell で **az iot hub create** コマンドを使用して、[westus](/cli/azure/iot/hub#az-iot-hub-create) リージョンに IoT ハブを作成します。 この IoT ハブも、*contoso-us-resource-group* に追加されます。
 
     次の例では、*contoso-west-hub* という名前の IoT ハブを場所 *westus* に作成します。 **contoso-west-hub** の代わりに、独自の一意のハブ名を使用する必要があります。
 
@@ -93,7 +93,7 @@ ms.locfileid: "75434750"
 
     **[グループ名]** : 「**contoso-us-devices**」と入力します。
 
-    **[構成証明の種類]** : **[対称キー]** を選択します。
+    **[Attestation Type]\(構成証明の種類\)** : **[対称キー]** を選択します。
 
     **[キーの自動生成]** : このチェック ボックスは既にオンになっているはずです。
 
@@ -104,11 +104,11 @@ ms.locfileid: "75434750"
 
 4. **[登録グループの追加]** で、 **[Link a new IoT hub]\(新しい IoT ハブにリンクする\)** をクリックして両方のリージョンのハブをリンクします。
 
-    **サブスクリプション**:複数のサブスクリプションがある場合は、リージョンの IoT ハブを作成したサブスクリプションを選択します。
+    **[サブスクリプション]** : 複数のサブスクリプションがある場合は、リージョンの IoT ハブを作成したサブスクリプションを選択します。
 
     **[IoT ハブ]** : 作成したリージョン ハブのいずれかを選択します。
 
-    **[アクセス ポリシー]:** **[iothubowner]** を選択します。
+    **[アクセス ポリシー]** : **[iothubowner]** を選択します。
 
     ![リージョンの IoT ハブをプロビジョニング サービスとリンクする](./media/how-to-provision-multitenant/link-regional-hubs.png)
 
@@ -327,7 +327,7 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-1. **prov\_dev\_client\_sample.c** で、コメントになっている `prov_dev_set_symmetric_key_info()` の呼び出しを両方の VM で探します。
+1. `prov_dev_set_symmetric_key_info()`prov**dev\_client\_sample.c\_ で、コメントになっている**  の呼び出しを両方の VM で探します。
 
     ```c
     // Set the symmetric key if using they auth type

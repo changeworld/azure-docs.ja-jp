@@ -10,14 +10,16 @@ ms.subservice: anomaly-detector
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 05ed7903cafbb265f23ba74a24ee0498be0effe9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9237e670dd8d43c4036f996c477948944718e3aa
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448965"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80053715"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Anomaly Detector API とは
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Anomaly Detector API では、機械学習を利用することで、時系列データを監視し、その中の異常を検出できます。 Anomaly Detector API では、産業、シナリオ、データ量に関係なく、データに最適なモデルが自動的に特定され、適用されます。 この API では、時系列データを使用し、異常検出の境界、予想される値、異常となるデータ ポイントが判断されます。
 
@@ -25,9 +27,9 @@ Anomaly Detector API では、機械学習を利用することで、時系列�
 
 Anomaly Detector の使用にあたり、機械学習の経験は必要ありません。RESTful API によってサービスをアプリケーションやプロセスに簡単に統合できます。
 
-## <a name="features"></a>[機能]
+## <a name="features"></a>特徴
 
-Anomaly Detector を利用すると、時系列データ全体で異常を自動的に検出、あるいは、異常が発生したときにリアルタイムで検出できます。 
+Anomaly Detector を利用すると、時系列データ全体で異常を自動的に検出、あるいは、異常が発生したときにリアルタイムで検出できます。
 
 |機能  |説明  |
 |---------|---------|
@@ -52,7 +54,7 @@ Notebook を実行するには、次の手順を完了します。
 1. 複製操作を完了する前に、ダイアログ ボックスの [パブリック] オプションをオフにします。そうしないと、ノートブックはサブスクリプション キーを含めてパブリックになります。
 1. **[無料のコンピューティングで実行]** をクリックします。
 1. いずれかのノートブックを選択します。
-1. 有効な Anomaly Detector API サブスクリプション キーを `subscription_key` 変数に追加します。 
+1. 有効な Anomaly Detector API サブスクリプション キーを `subscription_key` 変数に追加します。
 1. `endpoint` 変数を自分のエンドポイントに変更します。 例: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
 1. 上部のメニュー バーで **[セル]** をクリックし、 **[すべて実行]** をクリックします。
 
@@ -88,6 +90,6 @@ Microsoft によって開発された SR-CNN アルゴリズムの詳細につ�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [クイック スタート:Anomaly Detector REST API を使用し、時系列データ内の異常を検出する](quickstarts/detect-data-anomalies-csharp.md)
+* [クイック スタート: Anomaly Detector REST API を使用し、時系列データ内の異常を検出する](quickstarts/detect-data-anomalies-csharp.md)
 * Anomaly Detector API [オンライン デモ](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector)
 * Anomaly Detector [REST API リファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect)

@@ -4,10 +4,10 @@ description: probe を構成して、Azure Container Instances のコンテナ�
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 64bb4a3e429ce820835abbf8e235600e592f7868
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76935679"
 ---
 # <a name="configure-readiness-probes"></a>readiness probe の構成
@@ -65,7 +65,7 @@ type: Microsoft.ContainerInstance/containerGroups
 
 デプロイには、コンテナーの初回の実行開始時に実行される開始コマンドを定義する `command` プロパティが含まれています。 このプロパティは、文字列の配列を受け入れます。 このコマンドは、Web アプリが実行されているがコンテナーの準備ができていない時間をシミュレートします。 
 
-まず、シェル セッションを開始し、`node` コマンドを実行して Web アプリを起動します。 また、240 秒間スリープするコマンドを開始します。その後、`/tmp` ディレクトリ内に `ready` という名前のファイルを作成します。
+まず、シェル セッションを開始し、`node` コマンドを実行して Web アプリを起動します。 また、240 秒間スリープするコマンドを開始します。その後、`ready` ディレクトリ内に `/tmp` という名前のファイルを作成します。
 
 ```console
 node /usr/src/app/index.js & (sleep 240; touch /tmp/ready); wait
@@ -73,7 +73,7 @@ node /usr/src/app/index.js & (sleep 240; touch /tmp/ready); wait
 
 ### <a name="readiness-command"></a>readiness コマンド
 
-この YAML ファイルは、readiness チェックとして機能する `exec` readiness コマンドをサポートする `readinessProbe` を定義します。 この例の readiness コマンドでは、`/tmp` ディレクトリに `ready` ファイルがあるかどうかをテストします。
+この YAML ファイルは、readiness チェックとして機能する `readinessProbe` readiness コマンドをサポートする `exec` を定義します。 この例の readiness コマンドでは、`ready` ディレクトリに `/tmp` ファイルがあるかどうかをテストします。
 
 `ready` ファイルが存在しない場合、readiness コマンドは 0 以外の値で終了します。コンテナーは実行を続行しますが、アクセスすることはできません。 コマンドが終了コード 0 で正常に終了すると、コンテナーにアクセスできるようになります。 
 

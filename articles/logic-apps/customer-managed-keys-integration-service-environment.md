@@ -7,10 +7,10 @@ ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: fa39c8f65b00283044ef31dc7577a4668b3e634b
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79127634"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Azure Logic Apps の統合サービス環境 (ISE) の保存データを暗号化するためにカスタマー マネージド キーを設定する
@@ -43,7 +43,7 @@ Azure Logic Apps は Azure Storage を利用して、データを格納し、自
 
 * キー コンテナーで、次のプロパティ値を使用して作成されたキー。
 
-  | プロパティ | Value |
+  | プロパティ | 値 |
   |----------|-------|
   | **[キーの種類]** | RSA |
   | **RSA キー サイズ** | 2048 |
@@ -67,7 +67,7 @@ Logic Apps REST API を呼び出して ISE を作成するには、この HTTPS 
 > [!IMPORTANT]
 > Logic Apps REST API 2019-05-01 バージョンでは、ISE コネクタに対して独自の HTTP PUT 要求を行う必要があります。
 
-通常、デプロイは 2 時間以内に完了します。 状況によっては、最大でデプロイに 4 時間かかる場合があります。 デプロイの状態を確認するには、[Azure portal](https://portal.azure.com) の Azure ツールバーで、通知アイコンを選択します。これで通知ペインが開きます。
+通常、デプロイは 2 時間以内に完了します。 状況によっては、最大でデプロイに 4 時間かかる場合があります。 デプロイの状態を確認するには、[Azure portal](https://portal.azure.com) の Azure ツール バーで、通知アイコンを選択します。これで通知ペインが開きます。
 
 > [!NOTE]
 > デプロイが失敗するか、ISE を削除する場合、サブネットがリリースされるまでに最長 1 時間かかる可能性があります。 この遅延のため、このようなサブネットを他の ISE で再利用できるようになるまで待たなければならない場合があります。

@@ -6,15 +6,15 @@ ms.topic: quickstart
 ms.date: 10/02/2018
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 830c7cdee247118ed24fc9b3a2a9efe8609c75d0
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75863289"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Azure Cosmos DB によってトリガーされる関数を作成する
 
-Azure Cosmos DB にデータが追加される、または変更されるときにトリガーされる関数の作成方法を説明します。 Azure Cosmos DB の詳細については、[Azure Cosmos DB: Azure Functions を使用したサーバーレス データベース コンピューティング](../cosmos-db/serverless-computing-database.md)に関するページを参照してください。
+Azure Cosmos DB にデータが追加される、または変更されるときにトリガーされる関数の作成方法を説明します。 Azure Cosmos DB の詳細については、「[Azure Cosmos DB: Azure Functions を使用したサーバーなしのデータベースのコンピューティング](../cosmos-db/serverless-computing-database.md)」をご覧ください。
 
 ![ログ内のメッセージを表示します。](./media/functions-create-cosmos-db-triggered-function/quickstart-completed.png)
 
@@ -43,7 +43,7 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
 
 ## <a name="create-azure-cosmos-db-trigger"></a>Azure Cosmos DB のトリガーの作成
 
-1. Function App を展開し、 **[関数]** の横にある **[+]** ボタンをクリックします。 これが関数アプリの初めての関数の場合は、 **[ポータル内]** 、 **[続行]** の順に選択します。 それ以外の場合は、手順 3 に進みます。
+1. Function App を展開し、 **[関数]+ の横にある** [ **]** ボタンをクリックします。 これが関数アプリの初めての関数の場合は、 **[ポータル内]** 、 **[続行]** の順に選択します。 それ以外の場合は、手順 3 に進みます。
 
    ![Azure Portal での関数のクイック スタート ページ](./media/functions-create-cosmos-db-triggered-function/function-app-quickstart-choose-portal.png)
 
@@ -63,7 +63,7 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
 
     | 設定      | 推奨値  | 説明                                |
     | ------------ | ---------------- | ------------------------------------------ |
-    | **Name** | Default | テンプレートに示されている既定の関数名を使用します。|
+    | **名前** | Default | テンプレートに示されている既定の関数名を使用します。|
     | **Azure Cosmos DB アカウント接続** | 新しい設定 | **[新規]** を選択し、使用する**サブスクリプション**、前の手順で作成した**データベース アカウント**、 **[選択]** の順に選択します。 これにより、アカウント接続のアプリケーション設定が作成されます。 この設定は、データベースへの接続へのバインディングによって使用されます。 |
     | **コンテナー名** | アイテム | 監視するコンテナーの名前。 |
     | **Create lease container if it doesn't exist (リース コンテナーが存在しない場合は作成する)** | オン | コンテナーはまだ存在していないため、作成します。 |
@@ -75,7 +75,7 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
 
     この関数テンプレートは、ドキュメント数と最初のドキュメント ID をログに書き込みます。
 
-次に、Azure Cosmos DB アカウントに接続し、`Tasks` データベースに `Items` コンテナーを作成します。
+次に、Azure Cosmos DB アカウントに接続し、`Items` データベースに `Tasks` コンテナーを作成します。
 
 ## <a name="create-the-items-container"></a>Items コンテナーの作成
 

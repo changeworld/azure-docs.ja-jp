@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: c4b2dea05b459d6e9ae4eb086fa127d88a84a768
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: e17112cbe2a494a585cd5a09c36cfe449d3d433c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249200"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79365817"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services の一般的なエラーとトラブルシューティングの手順
 
@@ -30,7 +30,7 @@ Azure AD DS の有効化で問題が発生した場合は、以下の一般的�
 
 | **サンプルのエラー メッセージ** | **解決策** |
 | --- |:--- |
-| *addscontoso.com という名前 はこのネットワーク上で既に使用されています。使用されていない名前を指定してください。* " |[仮想ネットワーク内のドメイン名の競合](troubleshoot.md#domain-name-conflict) |
+| *aaddscontoso.com という名前 はこのネットワーク上で既に使用されています。使用されていない名前を指定してください。* " |[仮想ネットワーク内のドメイン名の競合](troubleshoot.md#domain-name-conflict) |
 | *Domain Services could not be enabled in this Azure AD tenant. (この Azure AD テナントでは Domain Services を有効にできませんでした。)The service does not have adequate permissions to the application called 'Azure AD Domain Services Sync'. (アプリケーション "Azure AD Domain Services Sync" への適切なアクセス許可がサービスにありません。)Delete the application called 'Azure AD Domain Services Sync' and then try to enable Domain Services for your Azure AD tenant. (アプリケーション "Azure AD Domain Services Sync" を削除してから、Azure AD テナントの Domain Services を有効にしてください。)* ) |[Azure AD Domain Services Sync アプリケーションに対する適切な権限が Domain Services にない](troubleshoot.md#inadequate-permissions) |
 | *Domain Services could not be enabled in this Azure AD tenant. (この Azure AD テナントでは Domain Services を有効にできませんでした。)The Domain Services application in your Azure AD tenant does not have the required permissions to enable Domain Services. (Domain Services を有効にするために必要なアクセス許可が Azure AD テナントの Domain Services アプリケーションにありません。)Delete the application with the application identifier d87dcbc6-a371-462e-88e3-28ad15ec4e64 and then try to enable Domain Services for your Azure AD tenant. (アプリケーション識別子が d87dcbc6-a371-462e-88e3-28ad15ec4e64 のアプリケーションを削除してから、Azure AD テナントの Domain Services を有効にしてください。)* |[Azure AD テナント内で Domain Services アプリケーションが適切に構成されていない](troubleshoot.md#invalid-configuration) |
 | *Domain Services could not be enabled in this Azure AD tenant. (この Azure AD テナントでは Domain Services を有効にできませんでした。)The Microsoft Azure AD application is disabled in your Azure AD tenant. (Azure AD テナントで Microsoft Azure AD アプリケーションが無効になっています。)Enable the application with the application identifier 00000002-0000-0000-c000-000000000000 and then try to enable Domain Services for your Azure AD tenant. (アプリケーション識別子が 00000002-0000-0000-c000-000000000000 のアプリケーションを有効にしてから、Azure AD テナントの Domain Services を有効にしてください。)* |[Azure AD テナントで Microsoft Graph アプリケーションが無効になっている](troubleshoot.md#microsoft-graph-disabled) |

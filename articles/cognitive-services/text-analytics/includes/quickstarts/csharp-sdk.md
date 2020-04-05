@@ -6,15 +6,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 03/17/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 6adce0ed6b5b5768bd9a489fced25ce439a33e0a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 64eb19e43223c1953a7244f8fd29c48d085f1e96
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79203418"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80117136"
 ---
 <a name="HOLTop"></a>
 
@@ -32,9 +32,9 @@ ms.locfileid: "79203418"
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
 * [Visual Studio IDE](https://visualstudio.microsoft.com/vs/)
-* Azure サブスクリプションを入手したら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Text Analytics リソースを作成"  target="_blank">Text Analytics リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 
-    * アプリケーションを Text Analytics API に接続するには、作成するリソースのキーとエンドポイントが必要です。 この作業は、このクイックスタートの中で後から行います。
-    * Free 価格レベルを使ってサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Text Analytics リソースを作成"  target="_blank">Text Analytics リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。  展開されたら、 **[リソースに移動]** をクリックします。
+    * アプリケーションを Text Analytics API に接続するには、作成するリソースのキーとエンドポイントが必要です。 ご自分のキーとエンドポイントは、後でクイックスタートでコードに貼り付けます。
+    * 運用環境では、Free 価格レベル (`F0`) を使ってサービスを試用してから、後で有料レベルにアップグレードすることができます。
 
 ## <a name="setting-up"></a>設定
 
@@ -44,7 +44,7 @@ Visual Studio IDE を使用して新しい .NET Core コンソール アプリ�
 
 #### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
 
-**ソリューション エクスプローラー**でソリューションを右クリックし、 **[NuGet パッケージの管理]** を選択して、クライアント ライブラリをインストールします。 パッケージ マネージャーが開いたら、 **[参照]** を選択し、 **[プレリリースを含める]** をオンにして、`Azure.AI.TextAnalytics` を検索します。 バージョン `1.0.0-preview.2` を選択し、 **[インストール]** を選択します。 [パッケージ マネージャー コンソール](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)を使用してもかまいません。
+**ソリューション エクスプローラー**でソリューションを右クリックし、 **[NuGet パッケージの管理]** を選択して、クライアント ライブラリをインストールします。 パッケージ マネージャーが開いたら、 **[参照]** を選択し、 **[プレリリースを含める]** をオンにして、`Azure.AI.TextAnalytics` を検索します。 バージョン `1.0.0-preview.3` を選択し、 **[インストール]** を選択します。 [パッケージ マネージャー コンソール](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)を使用してもかまいません。
 
 > [!TIP]
 > クイックスタートのコード ファイル全体を一度にご覧いただけます。 これは [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/TextAnalytics/program.cs) にあり、このクイックスタートのコード例が含まれています。 

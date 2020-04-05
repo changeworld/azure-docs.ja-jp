@@ -10,10 +10,10 @@ ms.author: laobri
 author: lobrien
 ms.date: 11/12/2019
 ms.openlocfilehash: fed411ea171274513308ec3efa68da80e4d25f8a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77116762"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Azure Machine Learning SDK for Python を使用して機械学習パイプラインのスケジュールを設定する

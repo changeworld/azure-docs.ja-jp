@@ -18,11 +18,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad399fc24b2cdfbdc51e7feccba2c05786216b19
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77648427"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227703"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルの監査アクティビティ レポート 
 
@@ -33,7 +33,7 @@ ms.locfileid: "77648427"
 - **アクティビティ** 
     - **サインイン** - [サインイン レポート](concept-sign-ins.md)は、マネージド アプリケーションの使用状況とユーザー サインイン アクティビティに関する情報を提供します。
     - **監査ログ** - Azure AD 内のさまざまな機能によって行われたすべての変更についてログによる追跡可能性を提供します。 監査ログの例として、ユーザー、アプリ、グループ、ロール、ポリシーの追加や削除など、Azure AD 内のあらゆるリソースに加えられた変更があります。
-- **セキュリティ** 
+- **Security** 
     - **リスクの高いサインイン** - [リスクの高いサインイン](concept-risky-sign-ins.md)は、ユーザー アカウントの正当な所有者ではない人によって行われた可能性があるサインイン試行の指標です。 
     - **リスクのフラグ付きユーザー** - [リスクの高いユーザー](concept-user-at-risk.md)は、侵害された可能性があるユーザー アカウントの指標です。
 

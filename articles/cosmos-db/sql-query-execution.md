@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 70eb81b6d13c57a7ebc131244c7aa318cb2b2fd4
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74871263"
 ---
 # <a name="azure-cosmos-db-sql-query-execution"></a>Azure Cosmos DB SQL クエリの実行
@@ -19,7 +19,7 @@ HTTP/HTTPS 要求機能を持つ任意の言語で Cosmos DB REST API を呼び�
 
 次の例では、クエリを作成し、それを Cosmos データベース アカウントに対して送信する方法を示します。
 
-## <a id="REST-API"></a>REST API
+## <a name="rest-api"></a><a id="REST-API"></a>REST API
 
 Cosmos DB は、HTTP を介したオープンな RESTful プログラミング モデルを提供します。 リソース モデルは、Azure サブスクリプションがプロビジョニングする、データベース アカウントに従属する一連のリソースから構成されます。 データベース アカウントは一連の*データベース*で構成され、各データベースには複数の*コンテナー*が含まれています。さらにそのそれぞれに、*項目*、UDF、その他のリソースの種類が含まれます。 各 Cosmos DB リソース モデルは、不変の論理 URI を使用してアドレス指定できます。 一連のリソースは、*フィード*と呼ばれます。 
 
@@ -247,7 +247,7 @@ Cosmos DB は、HTTP を介したオープンな RESTful プログラミング �
 
 クエリを含む他の .NET サンプルについては、GitHub の [Azure Cosmos DB .NET サンプル](https://github.com/Azure/azure-cosmos-dotnet-v3)を参照してください。
 
-## <a id="JavaScript-server-side-API"></a>JavaScript のサーバー側 API
+## <a name="javascript-server-side-api"></a><a id="JavaScript-server-side-API"></a>JavaScript のサーバー側 API
 
 Azure Cosmos DB が提供するプログラミング モデルでは、ストアド プロシージャとトリガーを使用して、[JavaScript ベースのアプリケーション ロジックをコンテナーで直接実行する](stored-procedures-triggers-udfs.md)ことができます。 コンテナー レベルで登録された JavaScript ロジックは、アンビエント ACID トランザクションでラップされた特定のコンテナーの項目に対してデータベース操作を発行できます。
 
@@ -285,7 +285,7 @@ Azure Cosmos DB が提供するプログラミング モデルでは、ストア
     }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Cosmos DB の概要](introduction.md)
 - [Azure Cosmos DB .NET のサンプル](https://github.com/Azure/azure-cosmos-dotnet-v3)

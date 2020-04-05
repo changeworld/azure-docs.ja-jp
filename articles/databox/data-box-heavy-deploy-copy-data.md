@@ -10,11 +10,11 @@ ms.date: 08/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: 475e628901a96334976dbdbbaa8b362197ec3bc3
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914051"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214209"
 ---
 ::: zone target = "docs"
 
@@ -99,7 +99,7 @@ Windows Server ホスト コンピューターを使用している場合は、�
 
     ![共有の資格情報を取得する 1](media/data-box-heavy-deploy-copy-data/get-share-credentials-1.png)
 
-2. [共有にアクセスしてデータをコピーする] ダイアログ ボックスで、共有に対応する **[ユーザー名]** と **[パスワード]** をコピーします。 Click **OK**.
+2. [共有にアクセスしてデータをコピーする] ダイアログ ボックスで、共有に対応する **[ユーザー名]** と **[パスワード]** をコピーします。 **[OK]** をクリックします。
     
     ![共有の資格情報を取得する 1](media/data-box-heavy-deploy-copy-data/get-share-credentials-2.png)
 
@@ -171,7 +171,7 @@ SMB 共有に接続した後、データのコピーを開始します。
     ```
     属性については次の表で説明します。
     
-    |Attribute  |説明  |
+    |属性  |説明  |
     |---------|---------|
     |/e      |サブディレクトリをコピーします (空のディレクトリを含む)。         |
     |/r:     |失敗したコピーの再試行回数を指定します。         |
@@ -268,7 +268,7 @@ SMB 共有に接続した後、データのコピーを開始します。
 
 上記の手順を繰り返して、デバイスの第 2 のノードにデータをコピーします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Data Box Heavy に関する次のようなトピックについて説明しました。
 

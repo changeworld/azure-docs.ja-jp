@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 10/14/2019
 ms.author: kumud
 ms.openlocfilehash: fdf726fd31e8b92a04a1c136eb5cd7110e0c6d5a
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72333452"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-standard-internal-load-balancer-in-azure---powershell-preview"></a>Standard Internal Load Balancer を使用する IPv6 デュアル スタック アプリケーションを Azure 上にデプロイする - PowerShell (プレビュー)
@@ -65,7 +65,7 @@ Get-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Mi
 Register-AzResourceProvider -ProviderNamespace Microsoft.Network
 ```
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 デュアル スタック仮想ネットワークを作成する前に、[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) でリソース グループを作成する必要があります。 次の例では、*dsStd_ILB_RG* という名前のリソース グループを *east us* の場所に作成します。
 
@@ -339,7 +339,7 @@ $VM2 = New-AzVM -ResourceGroupName $rg.ResourceGroupName  -Location $rg.Location
 > [!NOTE]
 > このプレビュー リリースの場合、Azure 仮想ネットワークの IPv6 は、Azure portal で読み取り専用で使用できます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要がなくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
 
@@ -347,6 +347,6 @@ $VM2 = New-AzVM -ResourceGroupName $rg.ResourceGroupName  -Location $rg.Location
 Remove-AzResourceGroup -Name dsStd_ILB_RG
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、デュアル フロントエンド IP 構成 (IPv4 および IPv6) を持つ Standard ロード バランサーを作成しました。 また、NIC を含む 2 つの仮想マシンも作成しました。この NIC のデュアル IP 構成 (IPV4 および IPv6) は、ロード バランサーのバックエンド プールに追加されました。 Azure 仮想ネットワークでの IPv6 サポートの詳細については、[Azure Virtual Network の IPv6 の概要](ipv6-overview.md)に関するページを参照してください

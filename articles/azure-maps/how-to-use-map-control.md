@@ -1,19 +1,19 @@
 ---
 title: Web マップ コントロールの概要 | Microsoft Azure Maps
 description: Microsoft Azure マップのマップコントロールクライアント側 JavaScript ライブラリを使用して、Web アプリケーションまたはモバイルアプリケーションにマップと埋め込み Azure Maps 機能をレンダリングする方法について説明します。
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 01/15/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 535707191557142054e493d0216b713312f53953
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 6becb504671c1fa380207fda9d7d553fca8ceddf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78368653"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335245"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Azure Maps のマップ コントロールを使用する
 
@@ -67,7 +67,7 @@ ms.locfileid: "78368653"
     </style>
    ```
 
-4. ページの本文で、`<div>` 要素を追加して **myMap** の `id` を指定します。
+4. ページの本文で、`<div>` 要素を追加して `id`myMap**の** を指定します。
 
    ```HTML
     <body>
@@ -75,7 +75,7 @@ ms.locfileid: "78368653"
     </body>
    ```
 
-5. マップ コントロールを初期化するには、html 本文で新しいスクリプト タグを定義します。 `Map` クラスのインスタンスを作成するときに、最初のパラメーターとしてマップ `<div>` の `id` または `HTMLElement` (`document.getElementById('myMap')` など) を渡します。 [認証オプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)を使用してマップを認証するには、固有の Azure Maps アカウント キーまたは Azure Active Directory (AAD) 資格情報を使用します。 
+5. マップ コントロールを初期化するには、html 本文で新しいスクリプト タグを定義します。 `id` クラスのインスタンスを作成するときに、最初のパラメーターとしてマップ `<div>` の `HTMLElement` または `document.getElementById('myMap')` (`Map` など) を渡します。 [認証オプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)を使用してマップを認証するには、固有の Azure Maps アカウント キーまたは Azure Active Directory (AAD) 資格情報を使用します。 
 
    アカウントを作成するか、キーを見つける必要がある場合、[アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)手順と[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)手順に従ってください。 
 

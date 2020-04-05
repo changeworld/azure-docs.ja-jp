@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
 ms.openlocfilehash: 941a1ff23668a3202028e8b693b57d902095b3b2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78384823"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Windows Virtual Desktop 用にグラフィックス処理装置 (GPU) のアクセラレーションを構成する

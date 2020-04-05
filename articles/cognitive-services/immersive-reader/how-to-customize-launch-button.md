@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: metan
 ms.openlocfilehash: 6461cc60a237cf834226b07db5e1ea6fbbea7a92
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75946066"
 ---
 # <a name="how-to-customize-the-immersive-reader-button"></a>イマーシブ リーダーのボタンをカスタマイズする方法

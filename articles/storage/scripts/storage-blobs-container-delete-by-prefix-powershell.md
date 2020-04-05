@@ -2,25 +2,19 @@
 title: Azure PowerShell のサンプル スクリプト - プレフィックスでコンテナーを削除する | Microsoft Docs
 description: コンテナー名のプレフィックスに基づいて Azure Storage Blob コンテナーを削除します。
 services: storage
-documentationcenter: na
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: ''
-ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
+ms.subservice: blobs
+ms.devlang: powershell
 ms.topic: sample
 ms.date: 06/13/2017
 ms.author: tamram
-ms.openlocfilehash: e0c41ed1fc2cdb7559d36a7056ebb7b9a6ecc186
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 73c2f221d2ac0b3ceb76e3db0fdc6379a6dd330a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242772"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80060878"
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>コンテナー名のプレフィックスに基づいたコンテナーの削除
 
@@ -34,7 +28,7 @@ ms.locfileid: "56242772"
 
 [!code-powershell[main](../../../powershell_scripts/storage/delete-containers-by-prefix/delete-containers-by-prefix.ps1 "Delete containers by prefix")]
 
-## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
+## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
 次のコマンドを実行して、リソース グループ、残りのコンテナー、すべての関連リソースを削除します。
 
@@ -52,7 +46,7 @@ Remove-AzResourceGroup -Name containerdeletetestrg
 | [Get-AzStorageContainer](/powershell/module/az.storage/Get-AzStorageContainer) | ストレージ アカウントに関連付けられているストレージ コンテナーを一覧表示します。 |
 | [Remove-AzStorageContainer](/powershell/module/az.storage/Remove-AzStorageContainer) | 指定されたストレージ コンテナーを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

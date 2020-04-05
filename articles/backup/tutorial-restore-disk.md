@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
 ms.openlocfilehash: 8a66cee7e844f0049f2d2ca2f6841943aa267f3e
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114189"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222449"
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Azure でディスクを復元し、回復した VM を作成する
 
@@ -191,7 +191,7 @@ az backup job show \
 
 ### <a name="fetch-the-deployment-template"></a>デプロイ テンプレートをフェッチする
 
-テンプレートは、顧客のストレージ アカウントと指定されたコンテナーの下にあるため、直接アクセスすることはできません。 このテンプレートにアクセスするには (一時的な SAS トークンと共に) 完全な URL が必要です。
+このテンプレートは、顧客のストレージ アカウントと指定されたコンテナーの下にあるため、直接にはアクセスできません。 このテンプレートにアクセスするには (一時的な SAS トークンと共に) 完全な URL が必要です。
 
 最初に、ジョブの詳細からテンプレートの BLOB URI を抽出します
 

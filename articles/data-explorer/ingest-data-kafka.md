@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 03b46ff50683149a22c71ccb155480a0f08455bd
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66497275"
 ---
 # <a name="ingest-data-from-kafka-into-azure-data-explorer"></a>Kafka から Azure Data Explorer にデータを取り込む
@@ -43,7 +43,7 @@ git clone git://github.com:Azure/kafka-sink-azure-kusto.git
 cd ./kafka-sink-azure-kusto/kafka/
 ```
 
-#### <a name="build"></a>構築
+#### <a name="build"></a>Build
 
 Maven でローカルにビルドし、依存関係をすべて含んだ `.jar` を生成します。
 
@@ -57,14 +57,14 @@ Maven でローカルにビルドし、依存関係をすべて含んだ `.jar` 
 mvn clean compile assembly:single
 ```
 
-### <a name="deploy"></a>デプロイ 
+### <a name="deploy"></a>配置 
 
 Kafka にプラグインを読み込みます。 Docker を使用したデプロイ例は、[kafka-sink-azure-kusto](https://github.com/Azure/kafka-sink-azure-kusto#deploy) でご覧いただけます
  
 
 Kafka コネクタとそのデプロイ方法に関する詳細なドキュメントについては、[Kafka Connect](https://kafka.apache.org/documentation/#connect) に関するセクションをご覧ください。 
 
-### <a name="example-configuration"></a>構成の例 
+### <a name="example-configuration"></a>構成例 
  
 ```config
 name=KustoSinkConnector 
@@ -121,7 +121,7 @@ git clone git://github.com:Azure/azure-kusto-samples-dotnet.git
 cd ./azure-kusto-samples-dotnet/kafka/
 ```
 
-### <a name="run-the-app"></a>アプリの実行
+### <a name="run-the-app"></a>アプリを実行する
 
 1. Visual Studio でサンプル アプリ ソリューションを開きます。
 
@@ -160,6 +160,6 @@ cd ./azure-kusto-samples-dotnet/kafka/
  
     ![メッセージの結果セット](media/ingest-data-event-hub/message-result-set.png)
  
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
  
 * [Azure Data Explorer でデータのクエリを実行する](web-query-data.md)

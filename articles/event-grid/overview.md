@@ -10,10 +10,10 @@ ms.date: 02/20/2020
 ms.author: babanisa
 ms.custom: seodec18
 ms.openlocfilehash: 65fd9d06c8b25e0aff94429f8eb95bb922da330c
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77505906"
 ---
 # <a name="what-is-azure-event-grid"></a>Azure Event Grid とは

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
 ms.openlocfilehash: 8e256aac16bb8c2d2f1eca494981458f71cc2e4d
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620614"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229151"
 ---
 # <a name="about-migration"></a>移行について
 
@@ -26,17 +26,17 @@ Site Recovery を使用すると次の移行に対応できます。
 - **AWS の移行**: AWS Windows インスタンスを Azure IaaS VM に移行します。 
 
 > [!NOTE]
-> これで、Azure Migrate サービスを使用してオンプレミスから Azure に移行できます。 [詳細情報](../migrate/migrate-overview.md)。
+> これで、Azure Migrate サービスを使用してオンプレミスから Azure に移行できます。 詳細については、[こちら](../migrate/migrate-overview.md)をご覧ください。
 
 ## <a name="what-do-we-mean-by-migration"></a>移行が意味すること
 
-オンプレミス VM および Azure VM のディザスター リカバリーのために Site Recovery を使用する他に、Site Recovery サービスを使用してそれらの VM を移行できます。 違いは何でしょうか。
+オンプレミス VM および Azure VM のディザスター リカバリーのために Site Recovery を使用する他に、Site Recovery サービスを使用してそれらの VM を移行できます。 どのような違いがあるでしょうか。
 
 - ディザスター リカバリーでは、Azure にマシンを定期的にレプリケートします。 その後障害が発生したときは、マシンをプライマリ サイトからセカンダリ Azure サイトにフェールオーバーし、そこからこれらのマシンにアクセスします。 プライマリ サイトが再度使用可能になると、Azure からフェールバックします。
 - 移行では、オンプレミス マシンを Azure へ、または Azure VM をセカンダリ リージョンにレプリケートします。 その後、VM をプライマリ サイトからセカンダリへフェールオーバーして、移行プロセスが完了します。 フェールバックは必要ありません。  
 
 
-## <a name="migration-scenarios"></a>移行のシナリオ
+## <a name="migration-scenarios"></a>移行シナリオ
 
 **シナリオ** | **詳細**
 --- | ---
@@ -44,7 +44,7 @@ Site Recovery を使用すると次の移行に対応できます。
 **Azure リージョンの間で移行** | Azure VM を 1 つの Azure リージョンから別のリージョンに移行できます。 移行が完了した後で、移行先のセカンダリ リージョンに現在ある Azure VM のディザスター リカバリーを構成できます。
 **AWS を Azure に移行する** | AWS インスタンスを Azure VM に移行できます。 Site Recovery は、移行を目的として AWS インスタンスを物理サーバーのように扱います。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [オンプレミスのマシンを Azure に移行する](migrate-tutorial-on-premises-azure.md)
 - [VM を 1 つの Azure リージョンから別のリージョンに移行する](azure-to-azure-tutorial-migrate.md)

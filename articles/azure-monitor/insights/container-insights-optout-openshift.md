@@ -4,10 +4,10 @@ description: この記事では、コンテナー用の Azure Monitor でお使�
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.openlocfilehash: eff5203aeedd3c7ad283b55ba12f0e45a556460d
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78250736"
 ---
 # <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-cluster-with-azure-monitor-for-containers"></a>コンテナー用の Azure Monitor でお使いの Azure Red Hat OpenShift クラスターの監視を停止する方法

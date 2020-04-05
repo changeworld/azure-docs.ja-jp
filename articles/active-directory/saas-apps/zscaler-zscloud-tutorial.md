@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Zscaler ZSCloud の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Zscaler ZSCloud の統合 | Microsoft Docs'
 description: Azure Active Directory と Zscaler ZSCloud の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
 ms.openlocfilehash: 43d7e58f0c267afe8a22c217d9800abb041df8cb
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68723056"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>チュートリアル:Azure Active Directory と Zscaler ZSCloud の統合
+# <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>チュートリアル: Azure Active Directory と Zscaler ZSCloud の統合
 
 このチュートリアルでは、Zscaler ZSCloud と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Zscaler ZSCloud と Azure AD の統合には、次の利点があります。
@@ -136,7 +136,7 @@ Zscaler ZSCloud で Azure AD シングル サインオンを構成するには�
 
     e. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
     
-    f. **[Save]** をクリックします。
+    f. **[保存]** をクリックします。
 
     > [!NOTE]
     > Azure AD で役割を構成する方法については、[ここ](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)をクリックしてください
@@ -161,7 +161,7 @@ Zscaler ZSCloud で Azure AD シングル サインオンを構成するには�
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
-2. ブラウザーに拡張機能を追加した後、 **[Set up Zscaler ZSCloud]\(Zscaler ZSCloud のセットアップ\)** をクリックすると、Zscaler ZSCloud アプリケーションに移動します。 そこから、管理者資格情報を提供して Zscaler ZSCloud にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3. から手順 6. が自動化されます。
+2. ブラウザーに拡張機能を追加した後、 **[Set up Zscaler ZSCloud]\(Zscaler ZSCloud のセットアップ\)** をクリックすると、Zscaler ZSCloud アプリケーションに移動します。 そこから、管理者資格情報を提供して Zscaler ZSCloud にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 ～ 6 が自動化されます。
 
     ![SSO の設定](common/setup-sso.png)
 
@@ -193,7 +193,7 @@ Zscaler ZSCloud で Azure AD シングル サインオンを構成するには�
 
     g. department 属性に SAML 自動プロビジョニングを有効にするには、 **[Department Name Attribute]\(部署名属性\)** テキスト ボックスに **department** の値を入力します。
 
-    h. **[Save]** をクリックします。
+    h. **[保存]** をクリックします。
 
 6. **[ユーザー認証の構成]** ダイアログ ページで、次の手順に従います。
 
@@ -214,7 +214,7 @@ Zscaler ZSCloud で Azure AD シングル サインオンを構成するには�
 
 3. **[接続]** タブをクリックします。   
   
-     ![接続](./media/zscaler-zscloud-tutorial/ic769493.png "Connections")
+     ![接続](./media/zscaler-zscloud-tutorial/ic769493.png "接続")
 
 4. **[LAN の設定]** をクリックして **[LAN の設定]** ダイアログを開きます。
 

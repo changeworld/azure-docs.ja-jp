@@ -4,10 +4,10 @@ description: Azure Resource Graph を使用して Azure リソースのクエリ
 ms.date: 10/18/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: f881db4f75bcee8c13221717596442ac29a4b1ac
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74303904"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Azure Resource Graph 使用時のエラーのトラブルシューティング
@@ -20,7 +20,7 @@ Azure Resource Graph を使用して Azure リソースをクエリすると、�
 
 ## <a name="general-errors"></a>一般エラー
 
-### <a name="toomanysubscription"></a>シナリオ:サブスクリプションが多すぎる
+### <a name="scenario-too-many-subscriptions"></a><a name="toomanysubscription"></a>シナリオ:サブスクリプションが多すぎる
 
 #### <a name="issue"></a>問題
 
@@ -30,7 +30,7 @@ Azure Resource Graph を使用して Azure リソースをクエリすると、�
 
 Azure CLI と PowerShell は、最初の 1,000 サブスクリプションのみを Azure Resource Graph に転送します。 Azure Resource Graph 用の REST API は、クエリを実行するために最大数のサブスクリプションを受け付けます。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 1,000 サブスクリプションの制限を超えないよう、サブスクリプションのサブセットを使用してクエリ要求をバッチ化します。 ソリューションでは PowerShell の **Subscription** パラメーターを使用しています。
 
@@ -57,7 +57,7 @@ foreach ($batch in $subscriptionsBatch){ $response += Search-AzGraph -Query $que
 $response
 ```
 
-### <a name="rest-contenttype"></a>シナリオ:サポートされていない Content-Type REST ヘッダー
+### <a name="scenario-unsupported-content-type-rest-header"></a><a name="rest-contenttype"></a>シナリオ:サポートされていない Content-Type REST ヘッダー
 
 #### <a name="issue"></a>問題
 
@@ -67,11 +67,11 @@ Azure Resource Graph REST API クエリを実行すると、_500_ (内部サー�
 
 Azure Resource Graph REST API では、**application/json** の `Content-Type` のみがサポートされます。 一部の REST ツールまたはエージェントは、既定で **text/plain** に設定されています。これは、REST API ではサポートされていません。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 Azure Resource Graph のクエリに使用しているツールまたはエージェントの REST API ヘッダー `Content-Type` が **application/json** 用に構成されていることを検証します。
 
-### <a name="rest-403"></a>シナリオ:リスト内のすべてのサブスクリプションに対する読み取りアクセス許可がない
+### <a name="scenario-no-read-permission-to-all-subscriptions-in-list"></a><a name="rest-403"></a>シナリオ:リスト内のすべてのサブスクリプションに対する読み取りアクセス許可がない
 
 #### <a name="issue"></a>問題
 
@@ -81,11 +81,11 @@ Azure Resource Graph クエリを使用してサブスクリプションの一�
 
 指定されたすべてのサブスクリプションに対する読み取りアクセス許可を持っていない場合は、ユーザーに適切なセキュリティ権限がないため、要求は拒否されます。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 そのクエリを実行するユーザーが、少なくとも読み取りアクセス権を持っている 1 つ以上のサブスクリプションを、サブスクリプション一覧に含めます。 詳細については、「[Azure Resource Graph でのアクセス許可](../overview.md#permissions-in-azure-resource-graph)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 問題がわからなかった場合、または問題を解決できない場合は、次のいずれかのチャネルでサポートを受けてください。
 

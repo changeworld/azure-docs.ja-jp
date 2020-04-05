@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.openlocfilehash: 67cafbb7934381cd4c2936d6e6dfe7fb19d70735
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76314693"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight 上の Apache Hadoop サービスで使用されるポート

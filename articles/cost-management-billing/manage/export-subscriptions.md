@@ -1,7 +1,6 @@
 ---
-title: Azure サブスクリプションの最上位レベルの情報をエクスポートする | Microsoft Docs
+title: Azure サブスクリプションの最上位レベルの情報をエクスポートする
 description: アカウントに関連付けられたすべての Azure サブスクリプション ID を表示する方法について説明します。
-keywords: ''
 author: bandersmsft
 ms.reviewer: matrive
 tags: billing
@@ -9,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 83b6a9db0107cb35448aec491c81c2630e87ddd7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 87135b309f0406528bcada1cd906dd2f8535d1ae
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199723"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79202898"
 ---
 # <a name="export-and-view-your-top-level-subscription-information"></a>最上位レベルのサブスクリプション情報のエクスポートと表示
 ユーザーの資格情報に関連付けられたサブスクリプション ID のセットを表示する必要がある場合は、[Azure アカウント センターからサブスクリプション情報を含む .json ファイルをダウンロード](https://account.azure.com/subscriptions/download)します。

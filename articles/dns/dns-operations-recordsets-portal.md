@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/6/2018
 ms.author: rohink
 ms.openlocfilehash: 4012b32eb2684126b8dc64b9e86bf35a016e9fba
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76936833"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Azure ポータルを使用した DNS レコードとレコード セットの管理
@@ -77,7 +77,7 @@ Azure ポータルを使用して、レコード セットからレコードを�
 3. ブレードの上部にある **[保存]** をクリックして設定を保存します。
 4. レコードが削除されると、 **DNS ゾーン** ブレードのレコードの値にはレコードの削除が反映されます。
 
-## <a name="delete"></a>レコード セットを削除する
+## <a name="delete-a-record-set"></a><a name="delete"></a>レコード セットを削除する
 
 1. レコード セットの **[Record set properties (レコード セットのプロパティ)]** ブレードで、 **[削除]** をクリックします。
 

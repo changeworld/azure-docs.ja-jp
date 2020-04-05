@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/13/2019
 ms.openlocfilehash: 07ed22879180d8126711eba9af0a2cac5b7b2953
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936502"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233511"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for Eclipse を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する
 
@@ -327,7 +327,7 @@ Windows コンピューターでローカルの Spark Scala アプリケーシ�
 
 ![クラスターがビジー状態のときの Eclipse エラー YARN](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png "クラスターがビジー状態のときの Eclipse エラー YARN")
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 * [概要:Azure HDInsight での Apache Spark](apache-spark-overview.md)
 

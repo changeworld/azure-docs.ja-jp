@@ -3,12 +3,12 @@ title: ベスト プラクティス - QnA Maker
 description: 以下のベスト プラクティスを利用してナレッジ ベースを改善し、アプリケーション/チャット ボットのエンド ユーザーにより良い情報を提供します。
 ms.topic: conceptual
 ms.date: 02/15/2020
-ms.openlocfilehash: fb935aeed7b492a3a0c213d6d7166bd5d80144c1
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 9a6f7f7d6edc4544942476050a1ed3c2011af7fb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77370105"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80053129"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースのベスト プラクティス
 
@@ -39,7 +39,7 @@ QnA Maker サービスは継続的に、コンテンツから QnA を抽出す�
 
 ### <a name="good-answers"></a>優れた回答
 
-最善の回答はシンプルな回答ですが、シンプルすぎてはいけません。 `yes` や `no` などの回答は使用してはいけません。 回答を他のソースにリンクしたり、メディアとリンクを使用してリッチ エクスペリエンスを提供したりする必要がある場合は、[メタデータ タグ付け](../how-to/edit-knowledge-base.md#add-metadata)を使用して回答を識別した後、`strictFilters` プロパティにそのメタデータ タグを含む[クエリを送信](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)して、正しい回答のバージョンを取得します。
+最善の回答はシンプルな回答ですが、シンプルすぎてはいけません。 `yes` や `no` などの回答は使用してはいけません。 回答を他のソースにリンクしたり、メディアとリンクを使用してリッチ エクスペリエンスを提供したりする必要がある場合は、[メタデータ タグ付け](../how-to/edit-knowledge-base.md#add-metadata)を使用して回答を識別した後、[ プロパティにそのメタデータ タグを含む](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)クエリを送信`strictFilters`して、正しい回答のバージョンを取得します。
 
 |Answer|フォローアップ プロンプト|
 |--|--|
@@ -139,7 +139,7 @@ QnA Maker では、ユーザーはナレッジ ベースに[協力](../How-to/co
 
 ## <a name="active-learning"></a>アクティブ ラーニング
 
-[アクティブ ラーニング](../How-to/improve-knowledge-base.md)は、幅広い質と量のユーザー ベースのクエリがある場合に、代替の質問を提案するという最高の仕事をします。 クライアント アプリケーションのユーザー クエリが、検閲なしのアクティブ ラーニングのフィードバック ループに参加できるようにすることが重要です。 QnA Maker ポータルで質問が提案されたら、 **[提案によるフィルター処理](../How-To/improve-knowledge-base.md#accept-an-active-learning-suggestion-in-the-knowledge-base)** を行い、それらの提案をレビューして、承認または拒否する必要があります。
+[アクティブ ラーニング](../How-to/use-active-learning.md)は、幅広い質と量のユーザー ベースのクエリがある場合に、代替の質問を提案するという最高の仕事をします。 クライアント アプリケーションのユーザー クエリが、検閲なしのアクティブ ラーニングのフィードバック ループに参加できるようにすることが重要です。 QnA Maker ポータルで質問が提案されたら、 **[提案によるフィルター処理](../How-To/improve-knowledge-base.md#accept-an-active-learning-suggestion-in-the-knowledge-base)** を行い、それらの提案をレビューして、承認または拒否する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

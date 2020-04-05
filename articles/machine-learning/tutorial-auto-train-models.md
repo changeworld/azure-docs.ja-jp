@@ -11,10 +11,10 @@ ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
 ms.openlocfilehash: 75e61ea3f4fa6c2b346f912a9effd66ad94e7e93
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77116455"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>チュートリアル:自動機械学習を使用してタクシー料金を予測する

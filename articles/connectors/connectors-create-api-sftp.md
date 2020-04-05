@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/01/2019
 tags: connectors
 ms.openlocfilehash: d0da98070fa8da5403677e1a67bda75456c74d80
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789275"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して SFTP ファイルの監視、作成、および管理を行う
@@ -55,7 +55,7 @@ SFTP コネクタで処理されるのは "*50 MB 以下*" のファイルのみ
 
 SFTP トリガーは、SFTP ファイル システムをポーリングし、前回のポーリング以降に変更されたファイルを探すことによって動作します。 一部のツールでは、ファイルが変更されたときにタイムスタンプを保持できます。 これらの場合は、トリガーが動作できるように、この機能を無効にする必要があります。 一般的な設定をいくつか次に示します。
 
-| SFTP クライアント | Action |
+| SFTP クライアント | アクション |
 |-------------|--------|
 | Winscp | **[オプション]**  >  **[ユーザー設定]**  >  **[転送]**  >  **[編集]**  >  **[Preserve timestamp] (タイムスタンプを保持する)**  >  **[無効]** に移動する |
 | FileZilla | **[転送]**  >  **[Preserve timestamps of transferred files] (転送されたファイルのタイムスタンプを保持する)**  >  **[無効]** に移動する |
@@ -118,6 +118,6 @@ SFTP トリガーは、SFTP ファイル システムをポーリングし、前
 
 コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、コネクタの[リファレンス ページ](/connectors/sftpconnector/)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

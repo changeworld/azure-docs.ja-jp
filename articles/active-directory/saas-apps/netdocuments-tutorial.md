@@ -17,10 +17,10 @@ ms.date: 09/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 71e5e13485c4a10664d98363e8e99bfd3b4f4bcf
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72035709"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と NetDocuments の統合
@@ -29,7 +29,7 @@ ms.locfileid: "72035709"
 
 * NetDocuments にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して NetDocuments に自動的にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -145,7 +145,7 @@ NetDocuments での Azure AD SSO を構成してテストするには、次の�
 
 4. **[認証オプションの詳細な構成]** をクリックします。
     
-    ![認証オプションの詳細な構成](./media/netdocuments-tutorial/ic795048.png "認証オプションの詳細な構成")
+    ![[Configure advanced authentication options]\(認証オプションの詳細な構成\)](./media/netdocuments-tutorial/ic795048.png "[認証オプションの詳細な構成]")
 
 5. **[フェデレーション ID]** ダイアログで、次の手順に従います。
    
@@ -155,7 +155,7 @@ NetDocuments での Azure AD SSO を構成してテストするには、次の�
    
     b. **[ファイルの選択]** をクリックして、Azure Portal からダウンロードしたメタデータ ファイルをアップロードします。
    
-    c. Click **OK**.
+    c. **[OK]** をクリックします。
 
 ### <a name="create-netdocuments-test-user"></a>NetDocuments のテスト ユーザーの作成
 
@@ -168,7 +168,7 @@ NetDocuments の場合、プロビジョニングは手動で行います。
 
 2. 上部のメニューで **[Admin]** をクリックします。
    
-    ![管理](./media/netdocuments-tutorial/ic795051.png "Admin")
+    ![管理者](./media/netdocuments-tutorial/ic795051.png "[Admin]")
 
 3. **[ユーザーとグループの追加と削除]** をクリックします。
    
@@ -176,7 +176,7 @@ NetDocuments の場合、プロビジョニングは手動で行います。
 
 4. **[電子メール アドレス]** テキストボックスに、プロビジョニングする有効な Azure Active Directory アカウントの電子メール アドレスを入力して、 **[ユーザーの追加]** をクリックします。
    
-    ![電子メール アドレス](./media/netdocuments-tutorial/ic795053.png "電子メール アドレス")
+    ![メール アドレス](./media/netdocuments-tutorial/ic795053.png "電子メール アドレス")
    
     >[!NOTE]
     >Azure Active Directory のアカウント所有者には、アカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。 他の NetDocuments ユーザー アカウントの作成ツールまたは NetDocuments から提供されている API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。

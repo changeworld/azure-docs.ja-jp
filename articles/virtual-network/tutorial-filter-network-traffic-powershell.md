@@ -18,10 +18,10 @@ ms.date: 03/30/2018
 ms.author: kumud
 ms.custom: mvc
 ms.openlocfilehash: 08031bc2ac29ea77374e21c4ce6f7bcf6151bcad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66730028"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-powershell"></a>ネットワーク セキュリティ グループと PowerShell を使用してネットワーク トラフィックをフィルター処理する
@@ -292,7 +292,7 @@ Get-AzPublicIpAddress `
 
 Azure の外部から *myVmWeb* Web サーバーにアクセスできることを確認するには、コンピューターでインターネット ブラウザーを開き、`http://<public-ip-address-from-previous-step>` にアクセスします。 インターネットから、*myVmWeb* VM に接続されているネットワーク インターフェイスが含まれている *myAsgWebServers* アプリケーション セキュリティ グループに対する送信でポート 80 が許可されているため、この接続は成功します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要なくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。
 
@@ -300,7 +300,7 @@ Azure の外部から *myVmWeb* Web サーバーにアクセスできること�
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、ネットワーク セキュリティ グループを作成し、それを仮想ネットワーク サブネットに関連付けました。 ネットワーク セキュリティ グループについて詳しくは、[ネットワーク セキュリティ グループの概要](security-overview.md)と[ネットワーク セキュリティ グループの管理](manage-network-security-group.md)に関する記事を参照してください。
 

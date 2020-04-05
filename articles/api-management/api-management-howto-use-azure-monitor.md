@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: b06301ab424a29d8f0e31e8f4dee26265327896b
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028355"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79221929"
 ---
 # <a name="monitor-published-apis"></a>発行された API を監視する
 
@@ -39,8 +39,8 @@ Azure Monitor を使用すると、Azure リソースのメトリックまたは
 ## <a name="prerequisites"></a>前提条件
 
 + [Azure API Management の用語](api-management-terminology.md)について学習します。
-+ 次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)。
-+ また、次のチュートリアルを完了すること: [最初の API のインポートと発行](import-and-publish.md)。
++ [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
++ また、「[Import and publish your first API (最初の API をインポートして発行する)](import-and-publish.md)」のチュートリアルも完了します。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -190,7 +190,7 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 | callerIpAddress | string | 直接 (中間の場合もあります) のゲートウェイ呼び出し元の IP アドレス |
 | correlationId | string | API Management によって割り当てられる一意の http 要求識別子 |
 | location | string | 要求を処理したゲートウェイが存在する Azure リージョンの名前 |
-| httpStatusCodeCategory | string | HTTP 応答状態コードのカテゴリ: 成功 (301 以下または 304 または 307)、未承認 (401、403、429)、エラー (400、500 から 600)、その他 |
+| httpStatusCodeCategory | string | http 応答状態コードのカテゴリ: 成功 (301 以下または 304 または 307)、未承認 (401、403、429)、エラー (400、500 から 600)、その他 |
 | resourceId | string | API Management リソース /SUBSCRIPTIONS/\<サブスクリプション>/RESOURCEGROUPS/\<リソース グループ>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/\<名前> の ID |
 | properties | object | 現在の要求のプロパティ |
 | method | string | 受信要求の HTTP メソッド |

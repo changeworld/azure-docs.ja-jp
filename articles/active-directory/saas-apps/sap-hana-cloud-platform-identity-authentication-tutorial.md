@@ -16,10 +16,10 @@ ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 95be73bd125c124409585a478fa9707e7b6a2ac2
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76289069"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-platform-identity-authentication"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SAP Cloud Platform Identity Authentication の統合
@@ -126,7 +126,7 @@ SAP Cloud Platform Identity Authentication で Azure AD の SSO を構成して�
 
 1. 上記に加えて、SAP Cloud Platform Identity Authentication アプリケーションでは、以下に示す SAML 応答で返される属性がほとんどないことが想定されます。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | Name | ソース属性|
+    | 名前 | ソース属性|
     | ---------------| --------------- |
     | firstName | User.givenname |
 

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: pafarley
-ms.openlocfilehash: 117beca1284f28c75c1ac772425423f732b8a236
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 50e4fe1e2573c8566bbdf5697bb81b025a00935c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718623"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131732"
 ---
 # <a name="detect-popular-brands-in-images"></a>画像内の人気のブランドの検出
 
@@ -76,5 +76,5 @@ Computer Vision サービスは、与えられた画像の中にブランド ロ
 
 ブランド検出機能は [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API に含まれています。 ネイティブ SDK または REST を呼び出すことでこの API を呼び出すことができます。 `Brands` を **visualFeatures** クエリ パラメーターに追加します。 その後、完全な JSON 応答が得られたら、`"brands"` セクションのコンテンツを対象に文字列を解析します。
 
-* [クイック スタート:Computer Vision .NET SDK](./quickstarts-sdk/csharp-sdk.md)
-* [クイック スタート:画像の分析 (REST API)](./quickstarts/csharp-analyze.md)
+* [クイック スタート: Computer Vision .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [クイック スタート: 画像の分析 (REST API)](./quickstarts/csharp-analyze.md)

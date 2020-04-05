@@ -5,10 +5,10 @@ ms.date: 10/14/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: ef4bce4dfba77aafa9b86c6877c153534b54636e
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74324299"
 ---
 # <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Azure Blockchain Workbench プレビューのトラブルシューティング
@@ -35,7 +35,7 @@ git clone https://github.com/Azure-Samples/blockchain.git
 ## <a name="run-the-script"></a>スクリプトを実行する
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
-`collectBlockchainWorkbenchTroubleshooting.ps1` スクリプトを実行してログを収集し、トラブルシューティング情報のフォルダーを含む ZIP ファイルを作成します。 例:
+`collectBlockchainWorkbenchTroubleshooting.ps1` スクリプトを実行してログを収集し、トラブルシューティング情報のフォルダーを含む ZIP ファイルを作成します。 次に例を示します。
 
 ``` powershell
 collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>" -ResourceGroupName "workbench-resource-group-name"
@@ -68,7 +68,7 @@ collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>
 
 **Metrics** フォルダーには、時間の経過に伴う各種システム コンポーネントのメトリックが格納されます。 たとえば、出力ファイル `\Details\Workbench\apiMetrics.txt` には、さまざまな応答コードと収集期間全体の応答時間の概要が格納されます。 **Details** フォルダーには、Workbench または基盤のブロックチェーン ネットワークの特定の問題のトラブルシューティングのための詳細なログが格納されます。 たとえば、`\Details\Workbench\Exceptions.csv` にはシステムで発生した最新の例外の一覧が格納されますが、これはスマート コントラクトやブロックチェーンとの相互作用のエラーのトラブルシューティングに役立ちます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Blockchain Workbench Application Insights トラブルシューティング ガイド](https://aka.ms/workbenchtroubleshooting)

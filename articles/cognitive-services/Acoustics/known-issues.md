@@ -12,10 +12,10 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: b71b93f271608d946d964f70dae9eefbef77e87b
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72243039"
 ---
 # <a name="project-acoustics-known-issues"></a>Project Acoustics の既知の問題
@@ -43,5 +43,5 @@ ms.locfileid: "72243039"
 ## <a name="the-bake-tab-still-shows-deleting-after-you-cancel"></a>キャンセル後も [Bake]\(ベイク\) タブに "削除中" と表示される
 Project Acoustics では、正常な完了時またはキャンセル時にすべての Azure リソースがクリーンアップされます。 このプロセスには最大 5 分かかることがあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Unity](unity-quickstart.md) または [Unreal](unreal-quickstart.md) サンプル コンテンツを試してください。

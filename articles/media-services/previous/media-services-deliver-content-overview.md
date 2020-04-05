@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 22d98656f42f52f2fba0845fac6f1d210d2cf0bd
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76264680"
 ---
 # <a name="deliver-content-to-customers"></a>顧客へのコンテンツ配信
@@ -55,7 +55,7 @@ Media Services を使用すると、資産にフィルターを定義できま�
 
 詳細については、「 [フィルターと動的マニフェスト](media-services-dynamic-manifest-overview.md)」を参照してください。
 
-## <a name="a-idlocatorslocators"></a><a id="locators"/>ロケーター
+## <a name="locators"></a><a id="locators"/>ロケーター
 コンテンツのストリーミングやダウンロードに使用できる URL をユーザーに提供するには、まず、ロケーターを作成して資産を公開する必要があります。 ロケーターは、資産に含まれているファイルにアクセスするためのエントリ ポイントになります。 Media Services では、2 種類のロケーターがサポートされています。
 
 * OnDemandOrigin ロケーターは、 メディアのストリーミング (MPEG-DASH、HLS、Smooth Streaming など) やファイルのプログレッシブ ダウンロードに使用します。
@@ -87,7 +87,7 @@ Media Services を使用すると、資産にフィルターを定義できま�
 
 SSL 経由でのストリーミングを実行できるのは、コンテンツの配信元となるストリーミング エンドポイントが 2014 年 9 月 10 日より後に作成されている場合のみです。 ストリーミング URL の基になるストリーミング エンドポイントの作成日が 2014 年 9 月 10 日より後である場合、URL に "streaming.mediaservices.windows.net" が含まれます。 "origin.mediaservices.windows.net" (旧形式) を含んだストリーミング URL では、SSL がサポートされません。 URL が旧形式である場合、SSL ストリーミングに対応するためには、新しいストリーミング エンドポイントを作成してください。 SSL でコンテンツをストリーミングするには、新しいストリーミング エンドポイントに基づいた URL を使用する必要があります。
 
-## <a name="a-idurlsstreaming-url-formats"></a><a id="URLs"/>ストリーミング URL の形式
+## <a name="streaming-url-formats"></a><a id="URLs"/>ストリーミング URL の形式
 
 ### <a name="mpeg-dash-format"></a>MPEG-DASH 形式
 {ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=mpd-time-csf)
@@ -118,7 +118,7 @@ http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46
 
 http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
 
-### <a id="fmp4_v20"></a>Smooth Streaming 2.0 マニフェスト (レガシ マニフェスト)
+### <a name="smooth-streaming-20-manifest-legacy-manifest"></a><a id="fmp4_v20"></a>Smooth Streaming 2.0 マニフェスト (レガシ マニフェスト)
 既定では、Smooth Streaming のマニフェスト形式には、繰り返しタグ (r タグ) が含まれています。 ただし、一部のプレーヤーは、r タグをサポートしていません。 これらのプレーヤーを使用するクライアントは、r タグを無効にする形式を使用できます。
 
 {ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=fmp4-v20)

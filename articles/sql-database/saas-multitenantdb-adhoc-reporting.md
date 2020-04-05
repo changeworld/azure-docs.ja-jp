@@ -12,10 +12,10 @@ ms.author: craigg
 ms.reviewer: sstein
 ms.date: 10/30/2018
 ms.openlocfilehash: c0d1829c52041446b4feb43d8af262265e2680fc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73822181"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>複数の Azure SQL データベースにわたるアドホック分析クエリの実行
@@ -72,7 +72,7 @@ Wingtip Tickets SaaS Multi-tenant Database アプリケーションでは、テ�
 
 この演習では、*adhocreporting* データベースをデプロイします。 これは、すべてのテナント データベースに対してクエリを実行する場合に使用されるスキーマが含まれるヘッド データベースです。 このデータベースは既存のカタログ サーバーにデプロイされます。サンプル アプリのすべての管理関連データベースに使用されるサーバーです。
 
-1. *PowerShell ISE*で ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\*Demo-AdhocReporting.ps1* を開き、次の値を設定します。
+1. \\PowerShell ISE\\で ...\\Learning Modules\\Operational Analytics*Adhoc Reporting* *Demo-AdhocReporting.ps1* を開き、次の値を設定します。
    * **$DemoScenario** = 2、**アドホック分析データベースをデプロイする**。
 
 2. **F5** キーを押してスクリプトを実行し、*adhocreporting* データベースを作成します。
@@ -138,10 +138,10 @@ Wingtip Tickets SaaS Multi-tenant Database アプリケーションでは、テ�
 
    このクエリは、少しばかり複雑な結合と集計を行います。 重要な点は、処理の大半がリモートで行われるということです。再度、必要な行だけ返します。各会場で 1 日に売り上げたチケットの数を対象に 1 行だけ返します。
 
-   ![クエリ](media/saas-multitenantdb-adhoc-reporting/query3-plan.png)
+   ![query](media/saas-multitenantdb-adhoc-reporting/query3-plan.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルで学習した内容は次のとおりです。
 

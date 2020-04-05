@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d5086377b0bb7f3ca2ece643f82a4e45156f1955
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78184876"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>アクセス制御ポリシーを使用して Key Vault の認証を提供する
@@ -54,7 +54,7 @@ Key Vault のアクセス制御の詳細については、「[Azure Key Vault �
 
 アプリケーション、Azure AD グループ、またはユーザーにキー コンテナーへのアクセス権を付与するには、まず、その objectId を取得する必要があります。
 
-#### <a name="applications"></a>[アプリケーション]
+#### <a name="applications"></a>アプリケーション
 
 アプリケーションの objectId は、関連付けられているサービス プリンシパルに対応しています。 サービス プリンシパルの詳細については、 「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/app-objects-and-service-principals.md)」を参照してください。 
 

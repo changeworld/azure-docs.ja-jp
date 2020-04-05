@@ -12,10 +12,10 @@ ms.date: 11/04/2019
 ms.author: dapine
 ms.custom: seodec18
 ms.openlocfilehash: ddbee3695c2a7ef7cb63c48cccacbd2d53a8c1a9
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73718980"
 ---
 # <a name="configure-computer-vision-docker-containers"></a>Computer Vision Docker コンテナーを構成する
@@ -53,7 +53,7 @@ ms.locfileid: "73718980"
 
 |必須| 名前 | データ型 | 説明 |
 |--|------|-----------|-------------|
-|はい| `Billing` | string | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
+|はい| `Billing` | String | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
 
 ## <a name="eula-setting"></a>Eula 設定
 
@@ -81,8 +81,8 @@ Computer Vision コンテナーでは、トレーニングやサービスのデ�
 
 |省略可能| 名前 | データ型 | 説明 |
 |-------|------|-----------|-------------|
-|禁止| `Input` | string | Computer Vision コンテナーでは、これは使用されません。|
-|省略可能| `Output` | string | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
+|禁止| `Input` | String | Computer Vision コンテナーでは、これは使用されません。|
+|省略可能| `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>docker run コマンドの例
 
@@ -129,6 +129,6 @@ Computer Vision コンテナーでは、トレーニングやサービスのデ�
   Logging:Console:LogLevel:Default=Information
   ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [コンテナーのインストール方法と実行方法](computer-vision-how-to-install-containers.md)を確認します。

@@ -15,10 +15,10 @@ ms.date: 02/17/2020
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: d9f6f015c210592d5d8053b1b34d5357bb357629
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77586786"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Batch コンピューティング ノードでのジョブ準備タスクとジョブ解放タスクの実行
@@ -30,7 +30,7 @@ ms.locfileid: "77586786"
 
 ジョブの準備タスクとジョブの解放タスクは、ファイルのダウンロード ([リソース ファイル][net_job_prep_resourcefiles])、管理者特権での実行、カスタム環境変数、最大実行期間、再試行回数、ファイルのリテンション期間などの使い慣れた Batch タスク機能を提供します。
 
-以下のセクションでは、[Batch .NET][api_net] ライブラリの [JobPreparationTask][net_job_prep] クラスと [JobReleaseTask][net_job_release] クラスの使用方法について説明します。
+以下のセクションでは、[Batch .NET][net_job_prep] ライブラリの [JobPreparationTask][net_job_release] クラスと [JobReleaseTask][api_net] クラスの使用方法について説明します。
 
 > [!TIP]
 > ジョブの準備タスクと解放タスクは、"共有プール" 環境で特に役に立ちます。この環境では、コンピューティング ノードのプールが異なるジョブの実行間で維持され、多くのジョブによって使用されます。

@@ -12,10 +12,10 @@ ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 95ebfaef863a1fa05e8a5d3b46fca9659c61f6b7
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74110617"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Web Search API の応答の構造と答えの種類  
@@ -224,7 +224,7 @@ news 回答と newsarticle について詳しくは、[News Search API](../bing-
 
 単位変換クエリとは、ある単位を別の単位に変換するクエリをいいます。 たとえば、"*How many feet in 10 meters? (10 メートルは何フィート?)* " や "*How many tablespoons in a 1/4 cup? (1/4 カップは大さじ何杯?)* " といったクエリが考えられます。
 
-次に示したのは、"*How many feet in 10 meters? (10 メートルは何フィート?)* " に対する `computation` 回答です。
+次に示したのは、"`computation`How many feet in 10 meters? (10 メートルは何フィート?) *" に対する*  回答です。
 
 ```json
 "computation": {
@@ -290,13 +290,13 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 数式には、次の記号を含めることができます。
 
-|シンボル|説明|
+|Symbol|説明|
 |------------|-----------------|
 |+|加算|
 |-|減算|
 |/|除算|
 |*|乗算|
-|^|累乗|
+|^|Power|
 |!|階乗|
 |。|Decimal|
 |()|優先順位のグループ化|
@@ -304,17 +304,17 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 数式には、次の定数を含めることができます。
 
-|シンボル|説明|
+|Symbol|説明|
 |------------|-----------------|
 |Pi|3.14159...|
-|Degree|i|
-|度|虚数|
+|i|i|
+|i|虚数|
 |e|自然対数の底 (2.71828...)|
 |GoldenRatio|黄金比 (1.61803...)|
 
 数式には、次の関数を含めることができます。
 
-|シンボル|説明|
+|Symbol|説明|
 |------------|-----------------|
 |並べ替え|平方根|
 |Sin[x]、Cos[x]、Tan[x]<br />Csc[x]、Sec[x]、Cot[x]|三角関数 (引数はラジアン単位)|
@@ -445,9 +445,9 @@ Bing Web Search API からの応答には、以下のヘッダーが含まれる
 
 ただし、JavaScript から Bing Web Search API を呼び出すときに、ブラウザーの組み込みのセキュリティ機能 (CORS) によっては、これらのヘッダーの値にアクセスできないことがあります。
 
-ヘッダーにアクセスするために、CORS プロキシを介して Bing Web Search API 要求を行うことができます。 このようなプロキシからの応答には、応答ヘッダーをホワイトリストに登録して JavaScript で使用可能にする `Access-Control-Expose-Headers` ヘッダーが含まれています。
+ヘッダーにアクセスするために、CORS プロキシを介して Bing Web Search API 要求を行うことができます。 このようなプロキシからの応答には、応答ヘッダーをホワイトリストに登録して JavaScript で使用できるようにする `Access-Control-Expose-Headers` ヘッダーが含まれています。
 
-CORS プロキシをインストールして[チュートリアル アプリ](tutorial-bing-web-search-single-page-app.md)がオプションのクライアント ヘッダーにアクセスできるようにするのは簡単です。 まず、[Node.js をインストールします](https://nodejs.org/en/download/) (まだインストールしていない場合)。 次に、コマンド プロンプトで次のコマンドを入力します。
+CORS プロキシをインストールして[チュートリアル アプリ](tutorial-bing-web-search-single-page-app.md)が省略可能なクライアント ヘッダーにアクセスできるようにするのは簡単です。 まず、[Node.js をインストールします](https://nodejs.org/en/download/) (まだインストールしていない場合)。 その後、コマンド プロンプトで次のコマンドを入力します。
 
     npm install -g cors-proxy-server
 
@@ -459,7 +459,7 @@ CORS プロキシをインストールして[チュートリアル アプリ](tu
 
     cors-proxy-server
 
-チュートリアル アプリを使用している間はコマンド ウィンドウを開いたままにしておいてください。ウィンドウを閉じるとプロキシが停止します。 検索結果の下の展開可能な HTTP ヘッダー セクションに、`X-MSEdge-ClientID` ヘッダー (など) が表示され、要求ごとに同じであることを確認できます。
+チュートリアル アプリを使用している間はコマンド ウィンドウを開いたままにしておいてください。ウィンドウを閉じるとプロキシが停止します。 検索結果の下の展開可能な HTTP ヘッダー セクションに、`X-MSEdge-ClientID` ヘッダー (など) が表示され、各要求で同じであることを確認できます。
 
 ## <a name="response-headers-in-production"></a>実稼働環境での応答ヘッダー
 
@@ -473,10 +473,10 @@ Bing による修正候補の例を次に示します。
 
 ![Bing による修正候補の例](./media/cognitive-services-bing-web-api/bing-web-spellingsuggestion.GIF)  
 
-## <a name="next-steps"></a>次の手順  
+## <a name="next-steps"></a>次のステップ  
 
 * [要求のスロットル](throttling-requests.md)に関するドキュメントをご覧ください。  
 
-## <a name="see-also"></a>関連項目  
+## <a name="see-also"></a>参照  
 
 * [Bing Web Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)

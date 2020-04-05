@@ -4,7 +4,6 @@ description: PowerShell スクリプトを提供して、Azure SQL Database と 
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: conceptual
 author: rohitnayakmsft
@@ -12,16 +11,16 @@ ms.author: rohitna
 ms.reviewer: genemi, vanto
 ms.date: 03/12/2019
 tags: azure-synapse
-ms.openlocfilehash: f61403ef50af209fdc6e811191d31ccc83f8da73
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 1e8ec394eab1df0aebe394b8acebc74c7ed49e9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191862"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80124695"
 ---
 # <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell: SQL の Virtual Service エンドポイントと VNet 規則を作成する
 
-*仮想ネットワーク規則*は 1 つのファイアウォール セキュリティ機能であり、Azure [SQL Database](sql-database-technical-overview.md) 内の単一データベースおよびエラスティック プール用、または [Azure Synapse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 内のデータベース用のデータベース サーバーが、仮想ネットワーク内の特定のサブネットから送信される通信を許可するかどうかを制御します。
+*仮想ネットワーク規則*は 1 つのファイアウォール セキュリティ機能であり、Azure [SQL Database](sql-database-technical-overview.md) 内の単一データベースおよびエラスティック プール用、または [Azure Synapse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 内のデータベース用のデータベース サーバーが、仮想ネットワーク内の特定のサブネットから送信される通信を許可するかどうかを制御します。
 
 > [!IMPORTANT]
 > この記事は Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と Azure Synapse のデータ ウェアハウスの両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と Azure Synapse の両方を言い表します。 関連付けられているサービス エンドポイントがないため、この記事は Azure SQL Database の**マネージド インスタンス** デプロイには*適用されません*。

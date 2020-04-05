@@ -17,10 +17,10 @@ ms.date: 08/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3dbb21bcea978f566082e5edb8831ac044c95fd6
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68880115"
 ---
 # <a name="tutorial-integrate-securew2-joinnow-connector-with-azure-active-directory"></a>チュートリアル:SecureW2 JoinNow Connector と Azure Active Directory の統合
@@ -29,7 +29,7 @@ ms.locfileid: "68880115"
 
 * SecureW2 JoinNow Connector にアクセスする Azure AD ユーザーを制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して SecureW2 JoinNow Connector に自動的にサインインできるようにすることができます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

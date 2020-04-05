@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 0877161f8d668141c8efb7c06b10643bf209341f
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76262964"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Durable Functions での外部イベントの処理 (Azure Functions)
@@ -22,7 +22,7 @@ ms.locfileid: "76262964"
 
 [オーケストレーション トリガー バインド](durable-functions-bindings.md#orchestration-trigger)の `WaitForExternalEvent` (.NET) および `waitForExternalEvent` (JavaScript) メソッドを使うと、オーケストレーター関数では外部イベントを非同期に待機してリッスンできるようになります。 リスニング オーケストレーター関数は、受信するイベントの "*名前*" と "*データのシェイプ*" を宣言します。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("BudgetApproval")]
@@ -44,7 +44,7 @@ public static async Task Run(
 > [!NOTE]
 > 前記の C# コードは Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`IDurableOrchestrationContext` の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -65,7 +65,7 @@ module.exports = df.orchestrator(function*(context) {
 
 次の例に示すように、複数のイベントを同時にリッスンできます。この例では、発生する可能性がある 3 つのイベント通知のいずれかを待っています。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Select")]
@@ -95,7 +95,7 @@ public static async Task Run(
 > [!NOTE]
 > 前記の C# コードは Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`IDurableOrchestrationContext` の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -120,7 +120,7 @@ module.exports = df.orchestrator(function*(context) {
 
 前の例では、複数のイベントの "*いずれか*" をリッスンします。 "*すべて*" のイベントを待つこともできます。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("NewBuildingPermit")]
@@ -145,7 +145,7 @@ public static async Task Run(
 
 .NET では、イベント ペイロードを想定された型 `T` に変換できない場合、例外がスローされます。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -177,7 +177,7 @@ module.exports = df.orchestrator(function*(context) {
 
 次の例は、キューによってトリガーされる関数で、"承認" イベントをオーケストレーター関数インスタンスに送信します。 オーケストレーション インスタンス ID は、キュー メッセージの本文から取得されます。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ApprovalQueueProcessor")]
@@ -192,7 +192,7 @@ public static async Task Run(
 > [!NOTE]
 > 前記の C# コードは Durable Functions 2.x 用です。 Durable Functions 1.x では、`DurableClient` 属性の代わりに `OrchestrationClient` 属性を使用する必要があります。また、`IDurableOrchestrationClient` ではなく `DurableOrchestrationClient` パラメーター型を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");

@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: erhopf
 ms.openlocfilehash: 7a929794ffaea4f863ffaef7227e58c7ccf901f0
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74976572"
 ---
 # <a name="quickstart-get-the-list-of-text-to-speech-voices-using-nodejs"></a>クイック スタート:Node.js を使用してテキスト読み上げ音声の一覧を取得する
@@ -139,11 +139,11 @@ main()
 node get-voices.js
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 サブスクリプション キーなどの秘密情報は、サンプル アプリのソース コードからすべて確実に削除してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [GitHub で Node.js のサンプルを詳しく見てみる](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/NodeJS)

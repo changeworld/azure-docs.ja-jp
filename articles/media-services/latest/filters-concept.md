@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
 ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66225408"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227159"
 ---
 # <a name="filters"></a>フィルター
 
@@ -26,7 +26,7 @@ ms.locfileid: "66225408"
 
 フィルターは、次のような操作を顧客に許可するサーバー側のルールです。 
 
-- ビデオ全体を再生するのではなく、ビデオの 1 つのセクションのみを再生する。 例:
+- ビデオ全体を再生するのではなく、ビデオの 1 つのセクションのみを再生する。 次に例を示します。
   - マニフェストを減らして、ライブ イベントのサブクリップのみを表示する場合 (「サブクリップ フィルター処理」)、または
   - ビデオの開始をトリミングする場合 (「ビデオのトリミング」)
 - コンテンツの再生に使用するデバイスでサポートされている演奏や言語のトラックのみを指定して配信する ("演奏フィルタ―処理")。 
@@ -139,7 +139,7 @@ Media Services では、**アカウント フィルター**と、コンテンツ
 
 ## <a name="associating-filters-with-streaming-locator"></a>フィルターをストリーミング ロケーターに関連付ける
 
-[ストリーミング ロケーター](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)に対する[資産またはアカウント フィルター](filters-concept.md)の一覧を指定できます。 [ダイナミック パッケージャー](dynamic-packaging-overview.md)では、クライアントで URL に指定されるフィルターと共にこのフィルターの一覧が適用されます。 この組み合わせによって、URL 内のフィルターとストリーミング ロケーターに指定されたフィルターに基づく[動的マニフェスト](filters-dynamic-manifest-overview.md)が生成されます。 
+[ストリーミング ロケーター](filters-concept.md)に対する[資産またはアカウント フィルター](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)の一覧を指定できます。 [ダイナミック パッケージャー](dynamic-packaging-overview.md)では、クライアントで URL に指定されるフィルターと共にこのフィルターの一覧が適用されます。 この組み合わせによって、URL 内のフィルターとストリーミング ロケーターに指定されたフィルターに基づく[動的マニフェスト](filters-dynamic-manifest-overview.md)が生成されます。 
 
 次の例を参照してください。
 
@@ -154,7 +154,7 @@ CDN が有効になっている場合は特に、アクティブに公開され�
 
 フィルター定義を変更する必要がある場合は、新しいフィルターを作成してそれを**ストリーミング ロケーター**の URL に追加するか、またはフィルターを直接参照する新しい**ストリーミング ロケーター**を公開することを検討してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の記事では、プログラムを使ってフィルターを作成する方法が紹介されています。  
 

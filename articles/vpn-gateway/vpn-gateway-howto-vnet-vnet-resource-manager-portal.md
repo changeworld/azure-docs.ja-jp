@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: cherylmc
 ms.openlocfilehash: 3d91203253c08acdaa159fc70f7a34fa7fca20c8
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78674156"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Azure ポータルを使用して VNet 間 VPN ゲートウェイ接続を構成する

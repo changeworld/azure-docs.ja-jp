@@ -16,10 +16,10 @@ ms.date: 06/15/2018
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 0bc363b87a9f5b2f013c0bae75a07d79a3a7a830
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75981404"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Azure で新しい Windows VM を作成するときのデプロイに関する問題のトラブルシューティング
@@ -65,7 +65,7 @@ VM デプロイに関するその他の問題や質問については、「[Trou
 
 これらのエラーの両方を解決するには、ポータルから現在のイメージを削除し、OS と同じ設定 (一般化/特殊化) で[現在の VHD からイメージをキャプチャし直します](../windows/create-vm-specialized.md)。
 
-## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>問題点:カスタム/ギャラリー/マーケットプレース イメージ - 割り当てエラー
+## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>問題: カスタム/ギャラリー/Marketplace イメージ - 割り当てエラー
 このエラーは、新しい VM 要求が、要求されている VM サイズをサポートできないか、要求に対応するための使用可能な空き領域がないクラスターに固定されている場合に発生します。
 
 **原因 1:** クラスターが要求された VM サイズをサポートできない。

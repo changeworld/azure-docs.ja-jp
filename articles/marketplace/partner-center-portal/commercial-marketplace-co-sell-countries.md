@@ -1,19 +1,18 @@
 ---
 title: 共同販売国と地域コード | Azure Marketplace
 description: オファーの共同販売ページに連絡先情報を提供するときに、これら 2 文字の国/地域コードを使用してください。
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 925218879ce0dc1c69054f861e37e86c122d47f9
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 097fe2c394cb48a13fbc9cb253ef4df9c9959713
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934351"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277058"
 ---
 # <a name="co-sell-country-and-region-codes"></a>共同販売国とリージョン コード
 

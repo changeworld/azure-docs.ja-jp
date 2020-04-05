@@ -8,16 +8,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 1790a7806b1abbe4d537f309f33dee686e30662b
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 2631a0906a0f0886bdc106f1afef99860a6fe00b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645040"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223589"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>チュートリアル:Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する
 
-このチュートリアルでは、Azure Toolkit for IntelliJ プラグインを使用して [Scala](https://www.scala-lang.org/) で記述された Apache Spark アプリケーションを開発してから、それを IntelliJ 統合開発環境 (IDE) から直接 HDInsight Spark クラスターに送信する方法を説明します。 このプラグインには、次のような使い方があります。
+このチュートリアルでは、IntelliJ IDE 用の **Azure Toolkit** プラグインを使用して Azure HDInsight 上の Apache Spark アプリケーションを開発する方法について説明します。 [Azure HDInsight](../hdinsight-overview.md) は、Hadoop、Apache Spark、Apache Hive、Apache Kafka といったオープンソースのフレームワークをクラウドで使用できるオープンソースのマネージド分析サービスです。
+
+**Azure Toolkit** プラグインには、次のような使い方があります。
 
 * Scala Spark アプリケーションを開発して HDInsight Spark クラスターに送信する。
 * Azure HDInsight Spark クラスター リソースにアクセスする。
@@ -108,6 +110,7 @@ Scala プラグインをインストールするには、次の手順を実行�
 
    d. **myApp.scala** ファイルがメイン ビューで開きます。 既定のコードを次のコードに置き換えます。  
 
+        ```scala
         import org.apache.spark.SparkConf
         import org.apache.spark.SparkContext
     
@@ -125,10 +128,12 @@ Scala プラグインをインストールするには、次の手順を実行�
             }
     
         }
+        ```
 
     このコードは HVAC.csv (すべての HDInsight Spark クラスターで使用可能) からデータを読み取り、CSV ファイルの 7 番目の列に 1 桁の数字のみが含まれる行を取得し、出力をクラスター用の既定のストレージ コンテナーの下にある `/HVACOut` に書き込みます。
 
 ## <a name="connect-to-your-hdinsight-cluster"></a>HDInsight クラスターに接続する
+
 [Azure サブスクリプションにサインイン](#sign-in-to-your-azure-subscription)するか、[HDInsight クラスターをリンク](#link-a-cluster)して開始できます。Ambari のユーザー名/パスワードまたはドメイン参加の資格情報を使用して HDInsight クラスターに接続してください。
 
 ### <a name="sign-in-to-your-azure-subscription"></a>Azure サブスクリプションにサインインします。
@@ -183,7 +188,7 @@ Apache Ambari マネージド ユーザー名を使用して、HDInsight クラ�
 
     * **HDInsight クラスター**  
   
-        |プロパティ |値 |
+        |プロパティ |Value |
         |----|----|
         |リンクのリソースの種類|ドロップダウン リストから **[HDInsight クラスター]** を選択します。|
         |クラスター名/URL| クラスター名を入力します。|
@@ -195,7 +200,7 @@ Apache Ambari マネージド ユーザー名を使用して、HDInsight クラ�
 
     * **Livy サービス**  
   
-        |プロパティ |値 |
+        |プロパティ |Value |
         |----|----|
         |リンクのリソースの種類|ドロップダウン リストから **[Livy Service]\(Livy サービス\)** を選択します。|
         |Livy エンドポイント| Livy エンドポイントを入力します|
@@ -227,7 +232,7 @@ Scala アプリケーションを作成した後に、クラスターに送信�
 
 3. **[構成の編集]** ウィンドウで、次の値を指定して **[OK]** を選択します。
 
-    |プロパティ |値 |
+    |プロパティ |Value |
     |----|----|
     |Spark クラスター (Linux のみ)|アプリケーションを実行する HDInsight Spark クラスターを選択します。|
     |送信するアーティファクトの選択|既定の設定のままにします。|
@@ -312,7 +317,7 @@ WINUTILS.EXE の前提条件を満たしていることを確認します。
 
 4. 次の値を指定し、 **[OK]** を選択します。
 
-    |プロパティ |値 |
+    |プロパティ |Value |
     |----|----|
     |ジョブのメイン クラス|既定値は、選択したファイルのメイン クラスです。 クラスを変更するには、省略記号 ( **...** ) をクリックし、別のクラスを選択します。|
     |環境変数|HADOOP_HOME の値が正しいことを確認します。|
@@ -344,7 +349,7 @@ WINUTILS.EXE の前提条件を満たしていることを確認します。
 
 4. 次の値を指定し、 **[OK]** を選択します。
 
-    |プロパティ |値 |
+    |プロパティ |Value |
     |----|----|
     |Spark クラスター (Linux のみ)|アプリケーションを実行する HDInsight Spark クラスターを選択します。|
     |メイン クラス名|既定値は、選択したファイルのメイン クラスです。 クラスを変更するには、省略記号 ( **...** ) をクリックし、別のクラスを選択します。|
@@ -368,9 +373,11 @@ WINUTILS.EXE の前提条件を満たしていることを確認します。
 ## <a name="integrate-with-hdinsight-identity-broker-hib"></a>HDInsight Identity Broker (HIB) との統合 
 
 ### <a name="connect-to-your-hdinsight-esp-cluster-with-id-broker-hib"></a>HDInsight ESP cluster with Id Broker (HIB) に接続する
+
 HDInsight ESP cluster with Id Broker (HIB) に接続するには、通常の手順に従って Azure サブスクリプションにサインインします。 サインインすると、Azure Explorer にクラスターの一覧が表示されます。 詳細な手順については、「[HDInsight クラスターに接続する](#connect-to-your-hdinsight-cluster)」を参照してください。
 
 ### <a name="run-a-spark-scala-application-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>HDInsight ESP cluster with Id Broker (HIB) 上での Spark Scala アプリケーションの実行
+
 HDInsight ESP cluster with Id Broker (HIB) にジョブを送信するには、通常の手順に従います。 詳細な手順については、「[HDInsight Spark クラスターでの Spark Scala アプリケーションの実行](#run-a-spark-scala-application-on-an-hdinsight-spark-cluster)」を参照してください。
 
 必要なファイルは、ご利用のサインイン アカウントが名前になっているフォルダーにアップロードしてあります。アップロード パスは、構成ファイル内で確認できます。
@@ -378,11 +385,11 @@ HDInsight ESP cluster with Id Broker (HIB) にジョブを送信するには、�
    ![構成内のアップロード パス](./media/apache-spark-intellij-tool-plugin/upload-path-in-the-configuration.png)
 
 ### <a name="spark-console-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>HDInsight ESP cluster with Id Broker (HIB) 上の Spark コンソール
+
 HDInsight ESP cluster with Id Broker (HIB) 上で、Spark Local Console(Scala) を実行したり、Spark Livy Interactive Session Console(Scala) を実行したりすることができます。 詳細な手順については、「[Spark コンソール](#spark-console)」を参照してください。
 
    > [!NOTE]  
    > HDInsight ESP cluster with Id Broker (HIB) では、現在、[クラスターのリンク](#link-a-cluster)と[リモートでの Apache Spark アプリケーションのデバッグ](#debug-apache-spark-applications-locally-or-remotely-on-an-hdinsight-cluster)はサポートされていません。
-
 
 ## <a name="reader-only-role"></a>読み取り専用ロール
 
@@ -443,11 +450,15 @@ IntelliJ IDEA で作成した既存の Spark Scala アプリケーションを�
 
 2. ルート レベルに、次のような **module** 要素があります。
 
+        ```
         <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+        ```
 
    **module** 要素が次のようになるように、この要素を編集して `UniqueKey="HDInsightTool"` を追加します。
 
+        ```
         <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4" UniqueKey="HDInsightTool">
+        ```
 
 3. 変更を保存します。 これで、アプリケーションは Azure Toolkit for IntelliJ との互換性を持つようになります。 これをテストするには、[プロジェクト] でプロジェクト名を右クリックします。 これで、ポップアップ メニューで、 **[Submit Spark Application to HDInsight]\(HDInsight への Spark アプリケーションの送信\)** を選択できるようになります。
 
@@ -455,7 +466,7 @@ IntelliJ IDEA で作成した既存の Spark Scala アプリケーションを�
 
 このアプリケーションを引き続き使用しない場合は、次の手順で作成したクラスターを削除します。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. 上部の**検索**ボックスに「**HDInsight**」と入力します。
 
@@ -472,4 +483,4 @@ IntelliJ IDEA で作成した既存の Spark Scala アプリケーションを�
 このチュートリアルでは、Azure Toolkit for IntelliJ プラグインを使用して [Scala](https://www.scala-lang.org/) で記述された Apache Spark アプリケーションを開発してから、それを IntelliJ 統合開発環境 (IDE) から直接 HDInsight Spark クラスターに送信する方法を学習しました。 次の記事に進んで、Apache Spark に登録したデータを Power BI などの BI 分析ツールに取り込む方法を確認してください。
 
 > [!div class="nextstepaction"]
-> [BI ツールを使用したデータの分析](apache-spark-use-bi-tools.md)
+> [Power BI を使用して Apache Spark データを分析する](apache-spark-use-bi-tools.md)

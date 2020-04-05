@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: fb4e56a3f40573a65b679ee026c22dfc5d6e5fa2
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: ed95304807a1a03880cc824c1a58f010203d418d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769423"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79534713"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-azure-portal"></a>Azure portal を使用した Azure Database for MariaDB サーバーの再起動
 このトピックでは、Azure Database for MariaDB サーバーを再起動する方法について説明します。 メンテナンス上の理由でサーバーの再起動が必要な場合があります。これを行うと、サーバーが操作を実行しているときに短時間の停止が発生します。
@@ -46,6 +46,6 @@ ms.locfileid: "74769423"
 
    ![Azure Database for MariaDB - 再起動の成功](./media/howto-restart-server-portal/5-restart-success.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[クイック スタート:Azure portal を使用した Azure Database for MariaDB サーバーの作成](./quickstart-create-mariadb-server-database-using-azure-portal.md)
+[クイック スタート: Azure portal を使用した Azure Database for MariaDB サーバーの作成](./quickstart-create-mariadb-server-database-using-azure-portal.md)

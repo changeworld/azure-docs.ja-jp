@@ -11,10 +11,10 @@ ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 1a77a366ee8e06b2d8c47eb3b47eeaf9ae809598
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76028285"
 ---
 # <a name="configuration-data-at-scale"></a>スケーリング対応の構成データ

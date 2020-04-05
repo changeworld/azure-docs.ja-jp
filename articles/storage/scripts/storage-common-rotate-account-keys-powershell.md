@@ -4,17 +4,18 @@ titleSuffix: Azure Storage
 description: Azure Storage アカウントを作成し、そのアカウント アクセス キーの 1 つを取得してローテーションします。
 services: storage
 author: tamram
-ms.custom: mvc
 ms.service: storage
+ms.subservice: blobs
+ms.devlang: powershell
 ms.topic: sample
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 54a7a6cb89c88726853a39ab5b2a61e1f0cde0b5
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 52ebed3de093f15d8188ee5fec49d75d5a4a206d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894938"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80060809"
 ---
 # <a name="rotate-storage-account-access-keys-with-powershell"></a>PowerShell を使用してストレージ アカウントのアクセス キーをローテーションする
 
@@ -48,7 +49,7 @@ Remove-AzResourceGroup -Name rotatekeystestrg
 | [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey) | Azure ストレージ アカウントのアクセス キーを取得します。 |
 | [New-AzStorageAccountKey](/powershell/module/az.storage/new-azstorageaccountkey) | Azure Storage アカウントのアクセス キーを再生成します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

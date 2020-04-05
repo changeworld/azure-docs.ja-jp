@@ -13,10 +13,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 82802ceae8f9fdd24d1f5642d80d90ebfd8b92a3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75460672"
 ---
 # <a name="yaml-configuration-options-to-customize-the-build-tasks"></a>ビルド タスクをカスタマイズするための YAML 構成オプション
@@ -45,10 +45,10 @@ ms.locfileid: "75460672"
 |------------|---------------|-----------------------|----------|---------------------------|----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | InputType | pickList | 常時 | True | Basic | Basic、CommandLine | 
 | 引数 | string | InputType = CommandLine | True |  |  | 実行する標準の Binskim コマンド ライン引数。 出力パスが削除され、置き換えられます。<br>このツールのコマンド ライン引数の詳細を確認するには、[引数] フィールドに「**help**」と入力し、ビルド タスクを実行してください。
-| Function | pickList | InputType = Basic | True | analyze | analyze、dump、exportConfig、exportRules | 
+| 機能 | pickList | InputType = Basic | True | analyze | analyze、dump、exportConfig、exportRules | 
 | AnalyzeTarget | filePath | InputType = Basic && Function = analyze | True | $(Build.ArtifactStagingDirectory)\*.dll;<br>$(Build.ArtifactStagingDirectory)\*.exe |  | 分析対象として、特定のファイルまたはディレクトリの指定子を入力するか、1 つ以上のバイナリに解決されるフィルター パターンの指定子を入力します。指定子は複数入力することもできます。 (';' 区切りの一覧)
 | AnalyzeSymPath | string | InputType = Basic && Function = analyze | False |  |  | ターゲットのシンボル ファイルのパス。
-| AnalyzeConfigPath | string | InputType = Basic && Function = analyze | False | 既定値 (default) |  | 分析の構成に使用されるポリシー ファイルのパス。 組み込みの設定を使用するには、'default' の値を渡します。
+| AnalyzeConfigPath | string | InputType = Basic && Function = analyze | False | default |  | 分析の構成に使用されるポリシー ファイルのパス。 組み込みの設定を使用するには、'default' の値を渡します。
 | AnalyzePluginPath | string | InputType = Basic && Function = analyze | False |  |  | 分析セット内のすべてのターゲットに対して呼び出されるプラグインのパス。
 | AnalyzeRecurse | boolean | InputType = Basic && Function = analyze | False | true |  | ファイル指定子引数を評価するときにサブディレクトリに再帰します。
 | AnalyzeVerbose | boolean | InputType = Basic && Function = analyze | False | false |  | 詳細出力を生成します。 結果の包括的なレポートは、コンプライアンス シナリオに適切な証拠が提供されるように設計されています。

@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Custom Vision SDK for C# を使って画像分類プロジェクトを作成する
+title: 'クイック スタート: Custom Vision SDK for C# を使って画像分類プロジェクトを作成する'
 titleSuffix: Azure Cognitive Services
 description: NET SDK と C# を使用して、プロジェクトの作成、タグの追加、画像のアップロード、プロジェクトのトレーニング、予測を行います。
 services: cognitive-services
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: anroth
 ms.openlocfilehash: 158e4dcd07f6ba31ad0efdd88f030f8db99fcfdd
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76170028"
 ---
-# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-net-sdk"></a>クイック スタート:Custom Vision .NET SDK を使って画像分類プロジェクトを作成する
+# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-net-sdk"></a>クイック スタート: Custom Vision .NET SDK を使って画像分類プロジェクトを作成する
 
 この記事では、Custom Vision SDK と C# を使用して画像分類モデルを構築する際の足掛かりとして役立つ情報とサンプル コードを紹介します。 作成後、タグを追加し、イメージをアップロードし、プロジェクトをトレーニングし、プロジェクトの既定の予測エンドポイント URL を取得し、エンドポイントを使用してイメージをプログラミングでテストできます。 この例は、独自の .NET アプリケーションを構築するためのテンプレートとしてご利用ください。 分類モデルの構築と使用のプロセスをコード "_なし_" で行う場合は、[ブラウザーベースのガイダンス](getting-started-build-a-classifier.md)を参照してください。
 
@@ -63,7 +63,7 @@ _Program.cs_ ファイルを開いて、コードを詳しく調べます。 ト
 
 ### <a name="upload-and-tag-images"></a>画像をアップロードし、タグ付けする
 
-このプロジェクトの画像を追加します。 これらは、_Program.cs_ の **LoadImagesFromDisk** メソッドで参照します。 1 回のバッチで最大 64 個の画像をアップロードできます。
+このプロジェクトの画像を追加します。 これらは、**Program.cs** の _LoadImagesFromDisk_ メソッドで参照します。 1 回のバッチで最大 64 個の画像をアップロードできます。
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_upload)]
 

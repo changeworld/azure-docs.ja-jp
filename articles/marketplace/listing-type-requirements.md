@@ -1,20 +1,18 @@
 ---
 title: 登録リストの種類別要件 | Azure
 description: この記事では､パートナーが Azure Marketplace にアプリを公開しようとするときに理解しておく必要がある適格性条件と公開要件を説明します｡
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: jm-aditi-ms
-manager: pabutler
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/19/2018
-ms.author: ellacroi
-ms.openlocfilehash: b9a2e8b37f746eb86b2e0fe6a7304cd888a293e1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 1ff6e34936234d6636fabc6c5e17dd32416b4ac2
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823030"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387854"
 ---
 # <a name="requirements-by-listing-type"></a>登録リストの要件  
 技術要件とマーケティング コンテンツ要件は、ネットショップ、オファーの種類、登録リストの種類によって異なります。 次の仕様を再確認して、要件を満たしているか確認してください。  
@@ -61,8 +59,8 @@ ms.locfileid: "73823030"
 |:---        |:---        |:---     |  
 | コンサルティング サービス | AppSource | 要件:AppSource:リスト:コンサルティング サービス |  
 | コンサルティング サービス | Azure Marketplace | 要件:Azure Marketplace:リスト:コンサルティング サービス |  
-| 連絡する | AppSource | [](#) |  
-| 連絡する | Azure Marketplace | 要件:AppSource:リスト:連絡する |  
+| お問い合わせ | AppSource | [](#) |  
+| お問い合わせ | Azure Marketplace | 要件:AppSource:リスト:お問い合わせ |  
 
 #### <a name="requirements-appsource-list-consulting-service"></a>要件:AppSource:リスト:コンサルティング サービス  
 
@@ -161,6 +159,6 @@ ms.locfileid: "73823030"
 | 請求/メータリング | 対象の VM は、BYOL または従量課金制の月額請求をサポートしている必要があります。 |  
 | Azure と互換性がある仮想ハード ディスク (VHD) | VM は、Windows または Linux 上に構築されている必要があります。<ul> <li>Linux VHD の作成の詳細については、「[Azure で動作保証済みの Linux ディストリビューション](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)」を参照してください。</li> <li>Windows VHD の作成の詳細については、「[Azure と互換性のある VHD の作成](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md)」を参照してください。</li> </ul> |  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 *   「[Azure Marketplace と AppSource のパブリッシャー ガイド](./marketplace-publishers-guide.md)」ページを参照してください。  
 

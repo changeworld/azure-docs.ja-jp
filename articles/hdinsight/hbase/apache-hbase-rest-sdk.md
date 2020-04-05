@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
 ms.openlocfilehash: eba7d7ad009b2ef0442a916983489489eb5cceb8
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74806662"
 ---
 # <a name="use-the-net-sdk-for-apache-hbase"></a>Apache HBase 用 .NET SDK の使用
 
-[Apache HBase](apache-hbase-overview.md) では主に 2 つの方法でデータを操作できます。[Apache Hive クエリと、HBase の RESTful API への呼び出し](apache-hbase-tutorial-get-started-linux.md)です。 `curl` コマンドまたは同様のユーティリティを使用すると、REST API を直接操作できます。
+[Apache HBase](apache-hbase-overview.md) では主に 2 つの方法でデータを操作できます。[1 つは Apache Hive クエリ、もう 1 つは HBase の RESTful API への呼び出し](apache-hbase-tutorial-get-started-linux.md)です。 `curl` コマンドまたは同様のユーティリティを使用すると、REST API を直接操作できます。
 
 C# および .NET アプリケーションの場合、[.NET 用 Microsoft HBase REST クライアント ライブラリ](https://www.nuget.org/packages/Microsoft.HBase.Client/)は、HBase REST API 上にクライアント ライブラリを提供します。
 
@@ -29,7 +29,7 @@ HBase .NET SDK は NuGet パッケージとして提供され、Visual Studio �
 
 ## <a name="instantiate-a-new-hbaseclient-object"></a>新しい HBaseClient オブジェクトのインスタンス化
 
-SDK を使用するには、`Uri` で構成される `ClusterCredentials` をクラスターに渡す新しい `HBaseClient` オブジェクト、Hadoop ユーザー名、およびパスワードをインスタンス化します。
+SDK を使用するには、`HBaseClient` で構成される `ClusterCredentials` をクラスターに渡す新しい `Uri` オブジェクト、Hadoop ユーザー名、およびパスワードをインスタンス化します。
 
 ```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net"), "USERNAME", "PASSWORD");
@@ -68,7 +68,7 @@ if (!client.ListTablesAsync().Result.name.Contains("RestSDKTable"))
 await client.DeleteTableAsync("RestSDKTable");
 ```
 
-## <a name="insert-data"></a>データを挿入する
+## <a name="insert-data"></a>データの挿入
 
 データを挿入するには、一意の行キーを行識別子として指定します。 すべてのデータが `byte[]` 配列に格納されます。 `title`、`director`、および `release_date` 列は最も頻繁にアクセスされるため、次のコードで、これらの列を定義し、t1 列ファミリに追加します。 `description` と `tagline` 列は、t2 列ファミリに追加されます。 データは、必要に応じて、列ファミリにパーティション分割できます。
 
@@ -132,7 +132,7 @@ Console.WriteLine(Encoding.UTF8.GetString(cells.rows[0].values
 // With the previous insert, it should yield: "The Fifth Element"
 ```
 
-ここでは、一意キーに対して 1 つの行しか存在しないため、コードは最初の一致行のみを返します。 戻り値は、`byte[]` 配列から `string` 形式に変更されます。 映画のリリース日を示す整数型など、他の型に値を変換することもできます。
+ここでは、一意キーに対して 1 つの行しか存在しないため、コードは最初の一致行のみを返します。 戻り値は、`string` 配列から `byte[]` 形式に変更されます。 映画のリリース日を示す整数型など、他の型に値を変換することもできます。
 
 ```csharp
 var releaseDateField = cells.rows[0].values
@@ -185,7 +185,7 @@ finally
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [HDInsight で Apache HBase の例を使用する](apache-hbase-tutorial-get-started-linux.md)
 * [Apache HBase での Twitter センチメントのリアルタイム分析](../hdinsight-hbase-analyze-twitter-sentiment.md)によりエンド ツー エンド アプリケーションを構築する

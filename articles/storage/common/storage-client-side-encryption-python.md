@@ -12,10 +12,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 16e66cd762b86b27dc6703542ca7261b2300a33b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74895368"
 ---
 # <a name="client-side-encryption-with-python"></a>Python によるクライアント側の暗号化
@@ -244,6 +244,6 @@ encrypted_property_1 = EntityProperty(EdmType.STRING, value, encrypt=True)
 ## <a name="encryption-and-performance"></a>暗号化とパフォーマンス
 ストレージ データを暗号化すると、パフォーマンスのオーバーヘッドが増えることに注意してください。 コンテンツ キーと IV を生成する必要があり、コンテンツ自体を暗号化する必要があります。また、追加のメタデータをフォーマットおよびアップロードする必要もあります。 このオーバーヘッドは、暗号化されるデータの量によって異なります。 開発中に、アプリケーションのパフォーマンスを常にテストすることをお勧めします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure Storage Client Library for Java の PyPi パッケージ](https://pypi.python.org/pypi/azure-storage)
 * [Azure Storage Client Library for Python のソースコード](https://github.com/Azure/azure-storage-python)

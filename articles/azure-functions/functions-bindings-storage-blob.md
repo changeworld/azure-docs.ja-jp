@@ -6,17 +6,17 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.openlocfilehash: 6950f1dd81ef2c70f2c45fb4c547ed7676067790
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462311"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235087"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>Azure Functions における Azure Blob Storage のバインドの概要
 
-Azure Functions は[トリガーとバインド](./functions-triggers-bindings.md)を使用して [Azure Storage](https://docs.microsoft.com/azure/storage/) と統合されます。 Blob Storage との統合により、BLOB データの変更に対応し、値の読み取りと書き込も行う関数を作成することができます。
+Azure Functions は[トリガーとバインド](https://docs.microsoft.com/azure/storage/)を使用して [Azure Storage](./functions-triggers-bindings.md) と統合されます。 Blob Storage との統合により、BLOB データの変更に対応し、値の読み取りと書き込も行う関数を作成することができます。
 
-| アクション | Type |
+| アクション | 種類 |
 |---------|---------|
 | Blob Storage データが変更されたときに関数を実行する | [トリガー](./functions-bindings-storage-blob-trigger.md) |
 | 関数で Blob Storage データを読み取る | [入力バインド](./functions-bindings-storage-blob-input.md) |
@@ -28,10 +28,10 @@ Azure Functions は[トリガーとバインド](./functions-triggers-bindings.m
 
 トリガーとバインドを使用するには、適切なパッケージを参照する必要があります。 NuGet パッケージは .NET クラス ライブラリに使用されますが、他のすべてのアプリケーションの種類には拡張バンドルが使用されます。
 
-| Language                                        | 追加手段                                   | 解説 
+| 言語                                        | 追加手段                                   | 解説 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | [NuGet パッケージ] バージョン 3.x をインストールする | |
-| C# スクリプト、Java、JavaScript、Python、PowerShell | [拡張機能バンドル]を登録する          | Visual Studio Code で使用するには [Azure Tools 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) をお勧めします。 |
+| C# スクリプト、Java、JavaScript、Python、PowerShell | [拡張機能バンドル]を登録する          | Visual Studio Code で使用するには [Azure Tools 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)をお勧めします。 |
 | C# スクリプト (Azure portal ではオンラインのみ)         | バインディングを追加する                            | 関数アプリを再発行せずにポータルで既存のバインディング拡張機能を更新するには、[拡張機能の更新]に関する記事を参照してください。 |
 
 [core tools]: ./functions-run-local.md
@@ -48,6 +48,6 @@ Functions 1.x アプリでは、[Microsoft.Azure.WebJobs](https://www.nuget.org/
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Blob Storage データが変更されたときに関数を実行する](./functions-bindings-storage-blob-trigger.md)
+- [Blob Storage データの変更時に関数を実行する](./functions-bindings-storage-blob-trigger.md)
 - [関数が実行されたときに Blob Storage データを読み取る](./functions-bindings-storage-blob-input.md)
 - [関数から Blob Storage データを書き込む](./functions-bindings-storage-blob-output.md)

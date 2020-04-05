@@ -7,11 +7,11 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: a40ff50dcb0934cbf1ea5222675bd75948ac1d03
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551065"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223969"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>チュートリアル:クラスターのネットワーク設定を構成する
 

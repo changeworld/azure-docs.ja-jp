@@ -16,10 +16,10 @@ ms.date: 03/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4b469c098db4f8d90147b491bcb54bd55d326b03
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79080310"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 仮想マシンのストレージ構成

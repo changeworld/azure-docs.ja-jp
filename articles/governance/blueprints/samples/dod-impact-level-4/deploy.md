@@ -1,14 +1,14 @@
 ---
 title: DoD 影響レベル 4 ブループリント サンプル
 description: ブループリント アーティファクト パラメーターの詳細を含む DoD 影響レベル 4 ブループリント サンプルのデプロイ手順です。
-ms.date: 02/09/2020
+ms.date: 03/06/2020
 ms.topic: sample
-ms.openlocfilehash: 087b5947f86d33e44cd72754b79acd457674d545
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: c92e24327bc1879b8fea89cf85a50f845e473810
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77154700"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79415310"
 ---
 # <a name="deploy-the-dod-impact-level-4-blueprint-sample"></a>DoD 影響レベル 4 ブループリント サンプルをデプロイする
 
@@ -132,7 +132,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |\[プレビュー\]:DoD 影響レベル 4|ポリシー割り当て|サブスクリプションで所有者アクセス許可を持つアカウントに対して MFA を有効にする必要がある|ポリシーの効果の詳細については、「[Azure Policy の効果について](../../../policy/concepts/effects.md)」を参照してください。|
 |\[プレビュー\]:DoD 影響レベル 4|ポリシー割り当て|サブスクリプションに対する書き込みアクセス許可を持つアカウントに対して MFA を有効にする必要がある|ポリシーの効果の詳細については、「[Azure Policy の効果について](../../../policy/concepts/effects.md)」を参照してください。|
 |\[プレビュー\]:DoD 影響レベル 4|ポリシー割り当て|Azure SQL データベースの長期的な geo 冗長バックアップを有効にする必要がある|ポリシーの効果の詳細については、「[Azure Policy の効果について](../../../policy/concepts/effects.md)」を参照してください。|
-
+|許可される場所|ポリシーの割り当て|許可されている場所|このポリシーでは、リソースをデプロイするときに組織が指定できる場所を制限できます。 geo コンプライアンス要件を強制するために使用されます。|
+|リソース グループが許可される場所|ポリシーの割り当て |許可されている場所|このポリシーでは、組織がリソース グループを作成できる場所を制限できます。 geo コンプライアンス要件を強制するために使用されます。|
 
 ## <a name="next-steps"></a>次のステップ
 

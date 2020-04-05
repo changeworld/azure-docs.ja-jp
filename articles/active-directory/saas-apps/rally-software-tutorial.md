@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Rally Software の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Rally Software の統合 | Microsoft Docs'
 description: Azure Active Directory と Rally Software の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: de84d03c3e0e433dbe7bc24c47b1766b32ad7bc4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67093168"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-rally-software"></a>チュートリアル:Azure Active Directory と Rally Software の統合
+# <a name="tutorial-azure-active-directory-integration-with-rally-software"></a>チュートリアル: Azure Active Directory と Rally Software の統合
 
 このチュートリアルでは、Rally Software と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Rally Software と Azure AD の統合には、次の利点があります。
@@ -132,13 +132,13 @@ Rally Software で Azure AD シングル サインオンを構成するには、
 
 2. 上部にあるツールバーの **[Setup]** をクリックし、 **[Subscription]** を選択します。
    
-    ![Subscription](./media/rally-software-tutorial/ic769531.png "Subscription")
+    ![サブスクリプション](./media/rally-software-tutorial/ic769531.png "サブスクリプション")
 
 3. **[アクション]** ボタンをクリックします。 ツールバーの上部の右側にある **[サブスクリプションの編集]** を選択します。
 
 4. **[Subscription]** ダイアログ ページで次の手順に従った後、 **[Save & Close]** をクリックします。
    
-    ![Authentication](./media/rally-software-tutorial/ic769542.png "Authentication")
+    ![認証](./media/rally-software-tutorial/ic769542.png "認証")
    
     a. Authentication のドロップダウン リストから、 **[Rally or SSO authentication]** を選択します。
 
@@ -206,13 +206,13 @@ Azure AD ユーザーがサインインできるように、Azure Active Directo
 
 2. **[Setup] \> [USERS]** に移動し、 **[+ Add New]** をクリックします。
    
-    ![ユーザー](./media/rally-software-tutorial/ic781039.png "Users")
+    ![ユーザー](./media/rally-software-tutorial/ic781039.png "ユーザー")
 
 3. New User テキストボックスに名前を入力し、 **[Add with Details]** をクリックします。
 
 4. **[Create User]** セクションで、次の手順に従います。
    
-    ![Create User](./media/rally-software-tutorial/ic781040.png "Create User")
+    ![ユーザーの作成](./media/rally-software-tutorial/ic781040.png "[Create User]")
 
     a. **[User Name]\(ユーザー名\)** ボックスに、ユーザーの氏名 (**BrittSimon** など) を入力します。
    

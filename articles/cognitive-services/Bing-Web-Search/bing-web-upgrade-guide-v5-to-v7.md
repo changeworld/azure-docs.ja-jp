@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
 ms.openlocfilehash: 2133cd59c524112ae8a77c0a20cbce1d1336a38d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68881299"
 ---
 # <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>Bing Web Search API v5 から v7 へのアップグレード
@@ -56,7 +56,7 @@ RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
 ResourceAccessDenied|InsufficientAuthorization
 ExceededVolume|RateLimitExceeded
 ExceededQpsLimit|RateLimitExceeded
-Disabled|InsufficientAuthorization.AuthorizationDisabled
+無効|InsufficientAuthorization.AuthorizationDisabled
 UnexpectedError|ServerError.UnexpectedError
 DataSourceErrors|ServerError.ResourceError
 AuthorizationMissing|InvalidAuthorization.AuthorizationMissing
@@ -73,7 +73,7 @@ Blocked|InvalidRequest.Blocked
 
 ## <a name="non-breaking-changes"></a>非破壊的変更  
 
-### <a name="headers"></a>headers
+### <a name="headers"></a>ヘッダー
 
 - オプションの [Pragma](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#pragma) 要求ヘッダーが追加されました。 既定では、Bing はキャッシュされたコンテンツがある場合にそれを返します。 キャッシュされたコンテンツを Bing が返さないようにするには、Pragma ヘッダーを no-cache に設定します (例: Pragma: no-cache)。
 

@@ -10,10 +10,10 @@ ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
 ms.openlocfilehash: 718447e1dbf597af4349eab0be78a2bb544dec90
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78970165"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Azure 上の Red Hat ワークロード

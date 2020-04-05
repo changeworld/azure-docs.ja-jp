@@ -14,10 +14,10 @@ ms.topic: overview
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.openlocfilehash: bbbea0c943758c2682f7b166e461807d2914f790
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74561689"
 ---
 # <a name="introduction-to-classroom-labs"></a>クラスルーム ラボの概要
@@ -37,7 +37,7 @@ Azure Lab Services はマネージド サービスです。つまり、ラボの
 ## <a name="example-class-types"></a>各種クラスの例
 Azure Lab Services を使用すると、さまざまな種類のクラスを対象としたラボをセットアップできます。 Azure Lab Services でラボをセットアップできる各種クラスの例については、[Azure Lab Services における各種クラスの例](class-types.md)の記事を参照してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Lab Services を使用してクラスルーム ラボを作成するために必要なラボ アカウントを設定します。
 
 - [ラボ アカウントを設定する](tutorial-setup-lab-account.md)

@@ -8,10 +8,10 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: be679be91d49516bd2f6c672eb53640cfad2ae2a
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74763574"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Azure CLI を使用してサーバー ログを構成してアクセスする
@@ -44,6 +44,6 @@ az postgres server-logs list --resource-group myresourcegroup --server mydemoser
 ```azurecli-interactive
 az postgres server-logs download --name 20170414-mydemoserver-postgresql.log --resource-group myresourcegroup --server mydemoserver
 ```
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - サーバー ログの詳細については、「[Azure Database for PostgreSQL のサーバー ログ](concepts-server-logs.md)」を参照してください。
 - サーバー パラメーターの詳細については、[Azure CLI を使用したサーバー構成パラメーターのカスタマイズ](howto-configure-server-parameters-using-cli.md)に関するページを参照してください。

@@ -9,10 +9,10 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: 02247adb9852a72b386feb2ef0924b0f1b3d6277
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75895233"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Hive のトラブルシューティング
@@ -99,7 +99,7 @@ Apache Ambari で Apache Hive ペイロードを操作するときに発生す�
 
 - [Hive 構成のプロパティ](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties)
 
-## <a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>クラスターのクリティカル パスで Apache Tez DAG データを分析する方法
+## <a name="how-do-i-analyze-apache-tez-dag-data-on-a-cluster-critical-path"></a><a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>クラスターのクリティカル パスで Apache Tez DAG データを分析する方法
 
 ### <a name="resolution-steps"></a>解決手順
 
@@ -121,7 +121,7 @@ Apache Ambari で Apache Hive ペイロードを操作するときに発生す�
 
    有効なプログラム名は次のとおりです。
     - **ContainerReuseAnalyzer**: DAG のコンテナーの再利用の詳細を出力します。
-    - **CriticalPath**: DAG のクリティカル パスを検出します。
+    - **CriticalPath**: DAG のクリティカル パスを特定します。
     - **LocalityAnalyzer**: DAG の局所性の詳細を出力します。
     - **ShuffleTimeAnalyzer**: DAG のシャッフル時間の詳細を分析します。
     - **SkewAnalyzer**: DAG の傾きの詳細を分析します。
@@ -130,7 +130,7 @@ Apache Ambari で Apache Hive ペイロードを操作するときに発生す�
     - **SlowestVertexAnalyzer**: DAG の最も遅い頂点の詳細を出力します。
     - **SpillAnalyzer**: DAG の書き込みの詳細を出力します。
     - **TaskConcurrencyAnalyzer**: DAG のタスク コンカレンシーの詳細を出力します。
-    - **VertexLevelCriticalPathAnalyzer**: Dag の頂点レベルのクリティカル パスを検出します。
+    - **VertexLevelCriticalPathAnalyzer**: DAG のクリティカル パスを頂点レベルで特定します。
 
 ### <a name="additional-reading"></a>その他の情報
 
@@ -157,7 +157,7 @@ Tez DAG データは次の 2 つの方法で収集できます。
   3. 表示する DAG をクリックします。
   4. **[データのダウンロード]** を選択します。
 
-### <a name="additional-reading-end"></a>その他の情報
+### <a name="additional-reading"></a><a name="additional-reading-end"></a>その他の情報
 
 [SSH を使用して HDInsight クラスターに接続する](hdinsight-hadoop-linux-use-ssh-unix.md)
 

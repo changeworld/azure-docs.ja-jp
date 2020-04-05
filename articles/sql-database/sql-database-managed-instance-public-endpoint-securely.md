@@ -11,10 +11,10 @@ ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/08/2019
 ms.openlocfilehash: 6dfeab3530445f8f9a102f47039d15b04fdf134a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73821735"
 ---
 # <a name="use-an-azure-sql-database-managed-instance-securely-with-public-endpoints"></a>パブリック エンドポイントで安全に Azure SQL Database マネージド インスタンスを使用する
@@ -51,6 +51,6 @@ SQL Database マネージド インスタンスでは、その仮想ネットワ
 
 接続が Azure から開始される場合、トラフィックは既知で割り当て済みの[仮想 IP アドレス](../virtual-network/virtual-networks-reserved-public-ip.md) (たとえば、仮想マシン) からのものであることが推奨されます。 仮想 IP (VIP) アドレスの管理を容易にするために、[パブリック IP アドレス プレフィックス](../virtual-network/public-ip-address-prefix.md)を使用したい場合があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - マネージド インスタンスのパブリック エンドポイントの構成方法について学習します。[パブリック エンドポイントの構成](sql-database-managed-instance-public-endpoint-configure.md)

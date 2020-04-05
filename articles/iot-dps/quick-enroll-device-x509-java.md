@@ -10,10 +10,10 @@ services: iot-dps
 ms.devlang: java
 ms.custom: mvc
 ms.openlocfilehash: 534956a53615cfafeffa611127bc8c3cc4493753
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77604906"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>クイック スタート:Java を使用して X.509 デバイスを Device Provisioning Service に登録する

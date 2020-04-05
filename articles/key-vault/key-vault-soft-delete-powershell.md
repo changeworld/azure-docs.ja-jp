@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 26c309eeebd7226c6777ec41ae674587da796dd4
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78199667"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>PowerShell で Key Vault の論理的な削除を使用する方法
@@ -40,7 +40,7 @@ PowerShell における Key Vault の具体的な参照情報については、[
 
 Key Vault の操作は、次のようにロールベースのアクセス制御 (RBAC) のアクセス許可で別個に管理されます。
 
-| Operation | 説明 | ユーザーのアクセス許可 |
+| 操作 | 説明 | ユーザーのアクセス許可 |
 |:--|:--|:--|
 |List|削除されたキー コンテナーの一覧を示します。|Microsoft.KeyVault/deletedVaults/read|
 |復旧|削除されたキー コンテナーを復元します。|Microsoft.KeyVault/vaults/write|
@@ -165,7 +165,7 @@ Remove-AzKeyVaultKey -VaultName ContosoVault -Name ContosoFirstKey -InRemovedSta
 
 #### <a name="set-a-key-vault-access-policy"></a>キー コンテナーのアクセス ポリシーを設定する
 
-次のコマンドでは、*ContosoVault* のキーに対する複数の操作 (**purge** を含む) を使用するために、user@contoso.com のアクセス許可を付与しています。
+次のコマンドでは、user@contoso.comContosoVault *のキーに対する複数の操作 (* purge **を含む) を使用するために、** のアクセス許可を付与しています。
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName ContosoVault -UserPrincipalName user@contoso.com -PermissionsToKeys get,create,delete,list,update,import,backup,restore,recover,purge
@@ -217,7 +217,7 @@ Set-AzKeyVaultAccessPolicy -VaultName ContosoVault -UserPrincipalName user@conto
 
 ### <a name="purging-a-key-vault"></a>キー・コンテナーを消去する
 
-キー コンテナーを消去すると、そのすべてのコンテンツ (キー、シークレット、証明書など) が完全に削除されます。 論理的に削除されたキー コンテナーを消去するには、オプション `-InRemovedState` を指定した `Remove-AzKeyVault` コマンドを使用します。その際、`-Location location` 引数を使用して、削除されたキー コンテナーの場所を指定します。 削除されたコンテナーの場所は、`Get-AzKeyVault -InRemovedState` コマンドを使用して見つけることができます。
+キー コンテナーを消去すると、そのすべてのコンテンツ (キー、シークレット、証明書など) が完全に削除されます。 論理的に削除されたキー コンテナーを消去するには、オプション `Remove-AzKeyVault` を指定した `-InRemovedState` コマンドを使用します。その際、`-Location location` 引数を使用して、削除されたキー コンテナーの場所を指定します。 削除されたコンテナーの場所は、`Get-AzKeyVault -InRemovedState` コマンドを使用して見つけることができます。
 
 ```powershell
 Remove-AzKeyVault -VaultName ContosoVault -InRemovedState -Location westus

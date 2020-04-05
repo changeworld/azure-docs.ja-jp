@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 9f5f9e00c374b16026f22d4efdee51ec94d2902a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 55ee4c7498dcda3060d4e4221711793b80132bdf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426718"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79502290"
 ---
 # <a name="implement-service-level-features-in-your-actor-service"></a>アクター サービスでのサービス レベルの機能の実装
 
@@ -143,7 +143,7 @@ public class Program
 
 ## <a name="implement-actor-backup-and-restore"></a>アクターのバックアップと復元の実装
 
-カスタム アクター サービスは、既に `ActorService` に存在するリモート処理リスナーを活用して、アクター データをバックアップするメソッドを公開することができます。 例については、[アクターのバックアップおよび復元](service-fabric-reliable-actors-backup-and-restore.md)を参照してください。
+カスタム アクター サービスは、既に `ActorService` に存在するリモート処理リスナーを活用して、アクター データをバックアップするメソッドを公開することができます。 例については、[アクターのバックアップおよび復元](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)を参照してください。
 
 ## <a name="actor-that-uses-a-remoting-v2-interface-compatible-stack"></a>リモート処理 V2 スタック (インターフェイスとの互換性あり) を使用するアクター
 

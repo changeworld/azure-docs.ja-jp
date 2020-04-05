@@ -9,10 +9,10 @@ ms.date: 09/15/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: f30518c3bfc9876cbddaf8295ff9e8b667a70200
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74014551"
 ---
 ## <a name="overview"></a>概要
@@ -57,7 +57,7 @@ Incremental Snapshot Copy を使用すると、以下の差分をストレージ
 * BLOB が 2016 年 1 月 1 日以降に作成されている。
 * 2 つのスナップショット間で [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) または [Copy Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) により BLOB が上書きされていない。
 
-**メモ**:この機能は、Premium と Standard の Azure ページ BLOB に対して利用できます。
+**注**: この機能は、Premium と Standard の Azure ページ BLOB に対して利用できます。
 
 スナップショットを使用した独自のバックアップ方法を利用している場合、スナップショットを 2 つのストレージ アカウント間でコピーすると、ひどく時間がかかるうえに記憶域が大量に消費されます。 バックアップ ページ BLOB には、連続するスナップショットの差分だけを書き込むことができます。そうすれば、バックアップ ストレージ アカウントにスナップショット全体をコピーする必要はありません。 そうすることでコピーにかかる時間とバックアップで消費される記憶域を大幅に減らすことができます。
 
@@ -87,9 +87,9 @@ Azure VM のバックアップについて詳しくは、 [Azure での VM バ�
 
 1. *mypremiumdisk* のスナップショット (*mypremiumdisk_ss1*) を作成して、Premium Storage ディスクのバックアップ ページ BLOB を作成します。
 2. このスナップショットを mybackupstdaccount に、ページ BLOB ( *mybackupstdpageblob*) としてコピーします。
-3. [Snapshot Blob](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob) を使用して、*mybackupstdpageblob* のスナップショットを *mybackupstdpageblob_ss1* という名前で作成し、*mybackupstdaccount* に保存します。
+3. *Snapshot Blob* を使用して、*mybackupstdpageblob* のスナップショットを [mybackupstdpageblob_ss1](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob) という名前で作成し、*mybackupstdaccount* に保存します。
 4. バックアップの時間帯に、*mypremiumdisk* の別のスナップショット (例: *mypremiumdisk_ss2*) を作成して *mypremiumaccount* に保存します。
-5. *mypremiumdisk_ss2* で [GetPageRanges](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges) を使用して、2 つのスナップショット *mypremiumdisk_ss2* と *mypremiumdisk_ss1* の変更の増分を取得します。このとき、**prevsnapshot** パラメーターは *mypremiumdisk_ss1* のタイムスタンプに設定します。 これらの変更の増分を *mybackupstdaccount* のバックアップ ページ BLOB (*mybackupstdpageblob*) に書き込みます。 削除された範囲が増分に含まれている場合、バックアップ ページ BLOB からそれらを消去する必要があります。 [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) を使用して、変更の増分をバックアップ ページ BLOB に書き込みます。
+5. *mypremiumdisk_ss2* で *GetPageRanges* を使用して、2 つのスナップショット [mypremiumdisk_ss2](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges) と *mypremiumdisk_ss1* の変更の増分を取得します。このとき、**prevsnapshot** パラメーターは *mypremiumdisk_ss1* のタイムスタンプに設定します。 これらの変更の増分を *mybackupstdaccount* のバックアップ ページ BLOB (*mybackupstdpageblob*) に書き込みます。 削除された範囲が増分に含まれている場合、バックアップ ページ BLOB からそれらを消去する必要があります。 [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) を使用して、変更の増分をバックアップ ページ BLOB に書き込みます。
 6. バックアップ ページ BLOB (*mybackupstdpageblob*) のスナップショットを *mybackupstdpageblob_ss2* という名前で作成します。 Premium Storage アカウントから以前のスナップショット *mypremiumdisk_ss1* を削除します。
 7. バックアップの時間帯に毎回、この手順 4. ～ 手順 6. を繰り返します。 このようにして、*mypremiumdisk* のバックアップを Standard Storage アカウントに保存することができます。
 

@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 01/22/2020
 ms.author: spelluru
 ms.openlocfilehash: d263381667319b98a28ee6168e2de75c4041b58a
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77589662"
 ---
 # <a name="deprecation-of-azure-service-manager-support-for-azure-service-bus-relay-and-event-hubs"></a>Azure Service Bus、Relay、Event Hubs に対する Azure Service Manager のサポートの非推奨化

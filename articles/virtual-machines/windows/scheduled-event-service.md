@@ -11,10 +11,10 @@ ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: conceptual
 ms.openlocfilehash: 1cda07c18e4f5ef2a8c00b6a275f22ecc0935751
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74073313"
 ---
 # <a name="monitoring-scheduled-events"></a>スケジュールされたイベントの監視
@@ -158,7 +158,7 @@ Scheduled Event Service は、`–stop` スイッチおよび `–remove` スイ
     ![クエリの保存](./media/notifications/save-query.png)
 
 1. **[新しいアラート ルール]** を選択します。 
-1. **[ルールの作成]** ページでは、 **[リソース]** として `collectorworkspace` をそのまま使用します。
+1. **[ルールの作成]** ページでは、`collectorworkspace`[リソース]**として** をそのまま使用します。
 1. **[条件]** で、エントリ *[Whenever the customer log search is]\(顧客ログ検索がいつでも\)<login undefined>* を選択します。 **[シグナル ロジックの構成]** ページが開きます。
 1. **[しきい値]** に「*0*」を入力して、 **[完了]** を選択します。
 1. **[アクション]** で、 **[アクショングループの作成]** を選択します。 **[アクション グループの追加]** ページが開きます。
@@ -168,13 +168,13 @@ Scheduled Event Service は、`–stop` スイッチおよび `–remove` スイ
 1. [アクション] の **[アクション名]** に「**電子メール**」 と入力し、 **[電子メール/SMS/プッシュ/音声]** を選択します。 **[電子メール/SMS/プッシュ/音声]** ページが開きます。
 1. **[電子メール]** を選択し、ご自分の電子メール アドレスを入力して、 **[OK]** を選択します。
 1. **[アクション グループの追加]** ページで、 **[OK]** を選択します。 
-1. **[ルールの作成]** ページの **[アラートの詳細]** で、 **[アラート ルール名]** に「*myAlert*」と入力し、 **[説明]** に「*電子メールによるアラート ルール*」と入力します。
+1. **[ルールの作成]** ページの **[アラートの詳細]** で、 *[アラート ルール名]* に「**myAlert**」と入力し、 *[説明]* に「**電子メールによるアラート ルール**」と入力します。
 1. 完了したら、 **[アラート ルールの作成]** を選択します。
 1. 可用性セット内の VM のいずれかを再起動します。 数分以内に、アラートがトリガーされたことを知らせる電子メールが届きます。
 
 ご自分のアラート ルールを管理するには、リソース グループに移動し、左側のメニューから **[アラート]** を選択し、次にページの上部にある **[アラート ルールの管理]** を選択します。
 
      
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、GitHub の「[Scheduled events service](https://github.com/microsoft/AzureScheduledEventsService)」 (スケジュール化されたイベント サービス) ページを参照してください。

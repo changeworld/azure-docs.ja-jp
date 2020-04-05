@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.openlocfilehash: 85b1d6b532ba11819947558226291e62af6b5119
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75690924"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Azure Data Factory を視覚的に監視する
@@ -30,7 +30,7 @@ Azure Data Factory でパイプラインを作成して公開した後、それ�
 | **列名** | **説明** |
 | --- | --- |
 | Pipeline Name (パイプライン名) | パイプラインの名前 |
-| アクション | アクティビティの詳細の表示、キャンセル、またはパイプラインの再実行を可能にするアイコン |
+| Actions | アクティビティの詳細の表示、キャンセル、またはパイプラインの再実行を可能にするアイコン |
 | Run Start (実行の開始) | パイプラインの実行の開始日時 (MM/DD/YYYY, HH:MM:SS AM/PM) |
 | Duration | 実行期間 (HH:MM:SS) |
 | Triggered By (トリガー元) | パイプラインを開始したトリガーの名前 |
@@ -54,7 +54,7 @@ Azure Data Factory でパイプラインを作成して公開した後、それ�
 | --- | --- |
 | Activity Name (アクティビティ名) | パイプライン内のアクティビティの名前 |
 | Activity Type (アクティビティの種類) | アクティビティの種類 (**Copy**、**ExecuteDataFlow**、**AzureMLExecutePipeline**  など) |
-| アクション | JSON 入力情報、JSON 出力情報、またはアクティビティ固有の詳細な監視エクスペリエンスの表示を可能にするアイコン | 
+| Actions | JSON 入力情報、JSON 出力情報、またはアクティビティ固有の詳細な監視エクスペリエンスの表示を可能にするアイコン | 
 | Run Start (実行の開始) | アクティビティの実行の開始日時 (MM/DD/YYYY, HH:MM:SS AM/PM) |
 | Duration | 実行期間 (HH:MM:SS) |
 | Status | **失敗**、**成功**、**進行中**、または**キャンセル済** |

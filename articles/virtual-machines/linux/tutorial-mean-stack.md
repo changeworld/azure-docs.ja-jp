@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 50ccf0d6db5a50f7dd89732bc870ced6bcf1c2d7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9e0ed3454f11907c5f183f08fd2ec51db3384225
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034398"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80154323"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>チュートリアル:Azure 内の Linux 仮想マシンに MongoDB、Express、AngularJS、Node.js (MEAN) スタックを作成する
 
@@ -327,7 +327,7 @@ sudo apt-get install -y nodejs
 
     ![書籍のレコード](media/tutorial-mean/meanstack-init.png)
 
-3. テキストボックスにデータを入力して、 **[追加]** をクリックします。 例:
+3. テキストボックスにデータを入力して、 **[追加]** をクリックします。 次に例を示します。
 
     ![書籍のレコードの追加](media/tutorial-mean/meanstack-add.png)
 
@@ -337,9 +337,9 @@ sudo apt-get install -y nodejs
 
 5. **[削除]** をクリックして、データベースから書籍のレコードを削除することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Linux VM で MEAN スタックを使用して、書籍のレコードの記録をつける Web アプリケーションを作成しました。 以下の方法について学習しました。
+このチュートリアルでは、Linux VM で MEAN スタックを使用して、書籍のレコードの記録をつける Web アプリケーションを作成しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * Linux VM の作成
@@ -349,7 +349,7 @@ sudo apt-get install -y nodejs
 > * AngularJS によるルートへのアクセス
 > * アプリケーションの実行
 
-SSL 証明書を使用して Web サーバーをセキュリティ保護する方法については、次のチュートリアルに進んでください。
+TLS 証明書を使用して Web サーバーをセキュリティ保護する方法については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [SSL による Web サーバーのセキュリティ保護](tutorial-secure-web-server.md)
+> [TLS による Web サーバーのセキュリティ保護](tutorial-secure-web-server.md)

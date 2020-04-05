@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: vanto, carlrab
 ms.date: 11/05/2019
 ms.openlocfilehash: ddffda5229c9c0d33c563e3ae7b4a884f0f92dff
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73691393"
 ---
 # <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault"></a>Azure Key Vault の独自のキーを使用して Managed Instance で Transparent Data Encryption を管理する
@@ -40,7 +40,7 @@ PowerShell をローカルで実行している場合、`Connect-AzAccount` を�
 
 [!code-powershell-interactive[main](../../../powershell_scripts/sql-database/transparent-data-encryption/setup-tde-byok-sqlmi.ps1 "Set up BYOK TDE for SQL Managed Instance")]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

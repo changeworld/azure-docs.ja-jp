@@ -3,21 +3,25 @@ title: チュートリアル - 推奨事項に従って Azure のコストを削
 description: このチュートリアルは、最適化の推奨事項に従って対処すると、Azure のコスト削減に役立ちます。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 6f84b3fb75a3774dc14fd1ea045ab9cf1eeb5451
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: de558ddad37e1621c633d26fff51d1506c237577
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245406"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80155921"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>チュートリアル:推奨事項に従ってコストを最適化する
 
 Azure Cost Management は Azure Advisor と連携して、コストの最適化に関する推奨事項を提供します。 Azure Advisor を使用すると、活動休止状態のリソースや十分に活用されていないリソースを特定することで効率性を最適化し、改善することができます。 このチュートリアルでは、十分に活用されていない Azure リソースを特定し、コストを削減する措置を取る例を段階的に説明します。
+
+Advisor を使用してコストを最適化する方法の詳細については、ビデオ「[クラウドへの投資を Azure Cost Management で最適化する](https://www.youtube.com/watch?v=cSNPoAb-TNc)」をご覧ください。
+
+>[!VIDEO https://www.youtube.com/embed/cSNPoAb-TNc]
 
 このチュートリアルでは、以下の内容を学習します。
 

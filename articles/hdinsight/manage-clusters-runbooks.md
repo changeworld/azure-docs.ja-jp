@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/27/2019
 ms.openlocfilehash: 05c0aaf6cc33442fa4f36eb38eb0d6d593fc6c1f
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75553122"
 ---
 # <a name="tutorial-create-azure-hdinsight-clusters-with-azure-automation"></a>チュートリアル:Azure Automation で Azure HDInsight クラスターを作成する
@@ -58,15 +58,15 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 1. **[資格情報の追加]** を選択します。
 1. **[新しい資格情報]** パネルで必要な情報を入力します。 この資格情報は、クラスター パスワードを格納するためのものです。これにより、Ambari にログインできるようになります。
 
-    | プロパティ | 値 |
+    | プロパティ | Value |
     | --- | --- |
-    | Name | `cluster-password` |
+    | 名前 | `cluster-password` |
     | ユーザー名 | `admin` |
     | Password | `SECURE_PASSWORD` |
     | [パスワードの確認入力] | `SECURE_PASSWORD` |
 
-1. **作成** を選択します。
-1. 同じ手順を繰り返し、ユーザー名 `sshuser` と適当なパスワードで新しい資格情報 `ssh-password` を作成します。 **作成** を選択します。 この資格情報は、クラスター用の SSH パスワードを格納するためのものです。
+1. **［作成］** を選択します
+1. 同じ手順を繰り返し、ユーザー名 `sshuser` と適当なパスワードで新しい資格情報 `ssh-password` を作成します。 **［作成］** を選択します この資格情報は、クラスター用の SSH パスワードを格納するためのものです。
 
     ![資格情報を作成する](./media/manage-clusters-runbooks/create-credentials.png)
 
@@ -75,7 +75,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 1. **[プロセス オートメーション]** の **[Runbook]** を選択します。
 1. **[Runbook の作成]** を選択します。
 1. **[Runbook の作成]** パネルで、Runbook の名前を入力します (例: `hdinsight-cluster-create`)。 **[Runbook の種類]** ドロップダウンで **[PowerShell]** を選択します。
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
     ![Runbook を作成する](./media/manage-clusters-runbooks/create-runbook.png)
 
@@ -131,7 +131,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 1. **[プロセス オートメーション]** の **[Runbook]** を選択します。
 1. **[Runbook の作成]** を選択します。
 1. **[Runbook の作成]** パネルで、Runbook の名前を入力します (例: `hdinsight-cluster-delete`)。 **[Runbook の種類]** ドロップダウンで **[PowerShell]** を選択します。
-1. **作成** を選択します。
+1. **［作成］** を選択します
 1. **[PowerShell Runbook の編集]** 画面で次のコードを入力し、 **[発行]** を選択します。
 
     ```powershell

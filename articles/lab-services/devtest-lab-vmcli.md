@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: d3cd104e36cb407e9b1b833335869cac2c69d0ec
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76167063"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Azure CLI を使用して DevTest Labs で仮想マシンを作成して管理する

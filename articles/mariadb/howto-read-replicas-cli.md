@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: e9353bb5d472cc8dc798e7e09aed2183e48124ed
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: abf80e98881b73bed53c5a939a79bc8b3a9de2db
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74765836"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530582"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>Azure CLI と REST API を使用して Azure Database for MariaDB の読み取りレプリカを作成および管理する方法
 
@@ -38,10 +38,10 @@ az mariadb server replica create --name mydemoreplicaserver --source-server myde
 
 `az mariadb server replica create` コマンドには、次のパラメーターが必要です。
 
-| Setting | 値の例 | 説明  |
+| 設定 | 値の例 | 説明  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  レプリカ サーバーを作成するリソース グループ。  |
-| 名前 | mydemoreplicaserver | 作成する新しいレプリカ サーバーの名前。 |
+| name | mydemoreplicaserver | 作成する新しいレプリカ サーバーの名前。 |
 | source-server | mydemoserver | レプリケート元の既存のマスター サーバーの名前または ID。 |
 
 リージョンをまたがる読み取りレプリカを作成するには、`--location` パラメーターを使用します。 
@@ -71,7 +71,7 @@ az mariadb server replica list --server-name mydemoserver --resource-group myres
 
 `az mariadb server replica list` コマンドには、次のパラメーターが必要です。
 
-| Setting | 値の例 | 説明  |
+| 設定 | 値の例 | 説明  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  レプリカ サーバーを作成するリソース グループ。  |
 | server-name | mydemoserver | マスター サーバーの名前または ID。 |
@@ -89,10 +89,10 @@ az mariadb server replica stop --name mydemoreplicaserver --resource-group myres
 
 `az mariadb server replica stop` コマンドには、次のパラメーターが必要です。
 
-| Setting | 値の例 | 説明  |
+| 設定 | 値の例 | 説明  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  レプリカ サーバーが存在するリソース グループ。  |
-| 名前 | mydemoreplicaserver | レプリケーションを停止するレプリカ サーバーの名前。 |
+| name | mydemoreplicaserver | レプリケーションを停止するレプリカ サーバーの名前。 |
 
 ### <a name="delete-a-replica-server"></a>レプリカ サーバーを削除します
 
@@ -178,6 +178,6 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [レプリカの読み取り](concepts-read-replicas.md) の詳細を確認する

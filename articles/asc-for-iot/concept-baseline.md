@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/07/2019
 ms.author: mlottner
 ms.openlocfilehash: ce5a0625a16c5a02d03ee74f894c585820414fa4
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72176619"
 ---
 # <a name="azure-security-center-for-iot-baseline-and-custom-checks"></a>Azure Security Center for IoT のベースラインとカスタム チェック
@@ -72,7 +72,7 @@ ms.locfileid: "72176619"
 
 その他のベースラインの例を確認するには、[カスタム ベースラインの例 1](https://ascforiot.blob.core.windows.net/public/custom_baseline_example_hyperv_ubuntu1804.xml) と[カスタム ベースラインの例 2](https://ascforiot.blob.core.windows.net/public/oms_audits.xml) を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [生セキュリティ データ](how-to-security-data-access.md)にアクセスする
 - [デバイスを調査する](how-to-investigate-device.md)

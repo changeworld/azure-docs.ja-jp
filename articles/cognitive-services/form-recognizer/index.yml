@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Form Recognizer のドキュメント
-summary: Azure Form Recognizer は、機械学習テクノロジを使用して、フォーム ドキュメントからキーと値のペアおよびテーブル データを識別して抽出する Cognitive Services です。 Form Recognizer は、元のファイル内の関係を含む構造化データを出力します。 教師なし学習を使用すると、手動のデータ ラベル付けや大量のコーディングを行わなくても、モデルにレイアウトとフィールド データを学習させることができます。 また、手動でラベル付けされたデータを使用して、教師あり学習を行うこともできます。 ラベルの付いたデータを使用してトレーニングしたモデルは、パフォーマンスがより高くなり、より複雑なドキュメントを扱うことができます。
+summary: Azure Form Recognizer は、機械学習テクノロジを使用して、フォーム ドキュメントからキーと値のペアおよびテーブル データを識別して抽出するコグニティブ サービスです。 Form Recognizer は、元のファイル内の関係を含む構造化データを出力します。 教師なし学習を使用すると、手動のデータ ラベル付けや大量のコーディングを行わなくても、モデルにレイアウトとフィールド データを学習させることができます。 また、手動でラベル付けされたデータを使用して、教師あり学習を行うこともできます。 ラベルの付いたデータを使用してトレーニングしたモデルは、パフォーマンスがより高くなり、より複雑なドキュメントを扱うことができます。
 metadata:
   title: Form Recognizer のドキュメント - クイック スタート、チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
-  description: Azure Form Recognizer は、機械学習テクノロジを使用して、フォーム ドキュメントからキーと値のペアおよびテーブル データを識別して抽出する Cognitive Services です。 Form Recognizer は、元のファイル内の関係を含む構造化データを出力します。 教師なし学習を使用すると、手動のデータ ラベル付けや大量のコーディングを行わなくても、モデルにレイアウトとフィールド データを学習させることができます。 また、手動でラベル付けされたデータを使用して、教師あり学習を行うこともできます。 ラベルの付いたデータを使用してトレーニングしたモデルは、パフォーマンスがより高くなり、より複雑なドキュメントを扱うことができます。
+  description: Azure Form Recognizer は、機械学習テクノロジを使用して、フォーム ドキュメントからキーと値のペアおよびテーブル データを識別して抽出するコグニティブ サービスです。 Form Recognizer は、元のファイル内の関係を含む構造化データを出力します。 教師なし学習を使用すると、手動のデータ ラベル付けや大量のコーディングを行わなくても、モデルにレイアウトとフィールド データを学習させることができます。 また、手動でラベル付けされたデータを使用して、教師あり学習を行うこともできます。 ラベルの付いたデータを使用してトレーニングしたモデルは、パフォーマンスがより高くなり、より複雑なドキュメントを扱うことができます。
   services: cognitive-services
   ms.service: cognitive-services
   ms.subservice: forms-recognizer
@@ -12,10 +12,10 @@ metadata:
   ms.author: pafarley
   ms.date: 09/05/2019
   ms.openlocfilehash: de869fd9beb66a4122c1204648d17cff480e4b7f
-  ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/01/2020
+  ms.lasthandoff: 03/24/2020
   ms.locfileid: "78206488"
 landingContent:
 - title: Form Recognizer について

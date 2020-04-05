@@ -12,10 +12,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/25/2019
 ms.openlocfilehash: 759e35ba353f470ea3abc5f5d4182fa2b2ea0e73
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71212522"
 ---
 # <a name="deprecated-configure-baidu-cloud-push-settings-for-a-notification-hub-in-the-azure-portal"></a>非推奨:Azure portal で通知ハブ用に Baidu クラウド プッシュの設定を構成する
@@ -38,5 +38,5 @@ ms.locfileid: "71212522"
 
     ![Baidu (Android China) のプッシュ通知構成を示した Notification Hubs のスクリーンショット](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Notification Hubs と Baidu クラウド プッシュを使用して、Baidu にプッシュ通知を送信する詳細な手順については、「[Baidu での Notification Hubs の使用](notification-hubs-baidu-china-android-notifications-get-started.md)」を参照してください。

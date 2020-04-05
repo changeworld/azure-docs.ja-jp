@@ -4,10 +4,10 @@ description: ファイアウォールの内側から Azure コンテナー レ�
 ms.topic: article
 ms.date: 02/11/2020
 ms.openlocfilehash: 06fedea2adf5e73929f5752279f2bd7e7227e570
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77168012"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>ファイアウォールの内側から Azure コンテナー レジストリにアクセスする規則を構成する

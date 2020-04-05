@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
 ms.openlocfilehash: 78623f738285e781cb561a3844db8fbf37226929
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645023"
 ---
 # <a name="run-custom-mapreduce-programs"></a>カスタムの MapReduce プログラムを呼び出す

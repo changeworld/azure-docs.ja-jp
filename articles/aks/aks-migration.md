@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
 ms.openlocfilehash: 8315560c679f9807715af14dc315fa3000be0472
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77624526"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) に移行する

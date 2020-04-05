@@ -9,10 +9,10 @@ ms.date: 08/14/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: f322803d3484b4ec2d5449e19d67d75b35d6d92f
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75751918"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "75751918"
 
 エンタープライズ PKI ソリューション (内部 PKI)、Azure PowerShell、MakeCert、OpenSSL を使用できます。
 
-### <a name="certsettings"></a>証明書の設定およびパラメーターに関する指示はありますか。
+### <a name="are-there-instructions-for-certificate-settings-and-parameters"></a><a name="certsettings"></a>証明書の設定およびパラメーターに関する指示はありますか。
 
 * **内部 PKI/エンタープライズ PKI ソリューション:** [証明書を生成する](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert)手順を参照してください。
 

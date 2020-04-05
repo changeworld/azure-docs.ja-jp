@@ -9,10 +9,10 @@ ms.date: 02/24/2019
 ms.topic: troubleshooting
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 371cb9ade54da42af1ed75c3e9857b6d1a7a0f4f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74276986"
 ---
 # <a name="azure-spatial-anchors-support-options"></a>Azure Spatial Anchors のサポート オプション
@@ -31,7 +31,7 @@ Azure Portal 内で Azure Spatial Anchors のテクニカル サポート チケ
 
 1. 次のようにサポート チケットのフィールドを入力します。
 
-- [問題の種類]\:技術
+- 問題の種類:技術
 - サービス:Spatial Anchors
 
 ![Azure portal サポート チケットのフィールド](./media/spatial-anchor-support3.png)
@@ -48,6 +48,6 @@ Azure Portal 内で Azure Spatial Anchors のテクニカル サポート チケ
 
 フィードバックを提供するには、Azure Spatial Anchors サービスに関するアイデアや提案を共有したり、他のユーザーが送信したアイデアに投票したり、[Azure Spatial Anchors Feedback Forum](https://feedback.azure.com/forums/919252-azure-spatial-anchors) にアクセスしたりすることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Spatial Anchors についてよく寄せられる質問については、[FAQ](spatial-anchor-faq.md) のページを参照してください。

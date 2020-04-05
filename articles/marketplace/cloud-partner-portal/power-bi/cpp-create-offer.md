@@ -1,19 +1,18 @@
 ---
 title: Power BI アプリ オファーを作成する | Azure Marketplace
 description: Microsoft AppSource Marketplace 用に Power BI アプリ プランを作成する方法。
-services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.author: pabutler
-ms.openlocfilehash: e0ee26672697517556a2f639b533a1217712d03d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: ee3501e7feec77c842f3784f6c2820af05637e6b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822696"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286389"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Power BI アプリ オファーを作成する
 
@@ -38,7 +37,7 @@ Cloud パートナー ポータルにサインインしてから、左側のウ�
 > **[Power BI アプリ]** オプションが表示されない場合、または有効にならない場合は、このプランの種類を作成するためのアクセス許可がアカウントにありません。 開発者アカウントの登録など、このオファーの種類に対するすべての[前提条件](./cpp-prerequisites.md)を満たしていることを確認してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 以下の後続の記事では、Power BI アプリ オファーの種類の **[新しいプラン]** ページのタブについて説明しています。 各記事では、新しい Power BI アプリ オファーの資産グループとサポートされるサービスについて説明されています。
 

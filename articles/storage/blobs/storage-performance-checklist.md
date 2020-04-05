@@ -9,11 +9,11 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: e4103f8360f6fa80470b0f8002a61f8ac903bd8b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749220"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228379"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>BLOB ストレージのパフォーマンスとスケーラビリティのチェックリスト
 
@@ -31,7 +31,7 @@ Azure Storage には、容量、トランザクション レート、および�
 | &nbsp; |スケーラビリティ ターゲット |[容量とトランザクションの制限に近づかないようにしていますか?](#capacity-and-transaction-targets) |
 | &nbsp; |スケーラビリティ ターゲット |[1 つの BLOB に多数のクライアントが同時にアクセスしていますか?](#multiple-clients-accessing-a-single-blob-concurrently) |
 | &nbsp; |スケーラビリティ ターゲット |[アプリケーションは、1 つの BLOB のスケーラビリティ ターゲット内に収まっていますか?](#bandwidth-and-operations-per-blob) |
-| &nbsp; |[パーティション分割] |[命名規則は負荷分散を向上できるように設計されていますか?](#partitioning) |
+| &nbsp; |パーティション分割 |[命名規則は負荷分散を向上できるように設計されていますか?](#partitioning) |
 | &nbsp; |ネットワーク |[クライアント側のデバイスは、必要なパフォーマンスを達成するのに十分な高帯域幅と低遅延を備えていますか?](#throughput) |
 | &nbsp; |ネットワーク |[クライアント側のデバイスには、高品質のネットワーク リンクがありますか?](#link-quality) |
 | &nbsp; |ネットワーク |[クライアント アプリケーションは、ストレージ アカウントと同じリージョンにありますか?](#location) |
@@ -93,7 +93,7 @@ Web サイトから提供されるイメージやビデオなどのように CDN
 
 また、Azure CDN などのコンテンツ配信ネットワーク (CDN) を使用して、BLOB での操作を分散することもできます。 Azure CDN の詳細については、[Azure CDN の概要](../../cdn/cdn-overview.md)に関する記事を参照してください。  
 
-## <a name="partitioning"></a>[パーティション分割]
+## <a name="partitioning"></a>パーティション分割
 
 Azure Storage が BLOB データをどのようにパーティション分割するかを理解すると、パフォーマンスの向上に役立ちます。 Azure Storage は、複数のパーティションにまたがるデータよりも、1 つのパーティション内のデータをより迅速に提供できます。 BLOB に適切な名前を付けることで、読み取り要求の効率を向上させることができます。
 
@@ -131,7 +131,7 @@ Blob ストレージでは、範囲ベースのパーティション構成を使
 
 他のネットワーク運用と同様に、エラーやパケット損失が生じるネットワーク状態では、遅延が生じて有効なスループットが損なわれることに留意してください。  WireShark または NetMon は、この問題の診断に有用です。  
 
-### <a name="location"></a>Location
+### <a name="location"></a>場所
 
 分散型環境では、サーバーの近くにクライアントを配置すると、パフォーマンスが最大になります。 最小限の遅延で Azure Storage にアクセスするには、同じ Azure リージョン内にクライアントを配置するのが最適です。 たとえば、Azure Storage を使用する Azure Web アプリを 1 つ保有している場合は、その両方を単一のリージョン内に配置します (たとえば、米国西部や東南アジア)。 リソースを併置することにより待ち時間が短縮され、コストが低下します。1 つのリージョン内での帯域幅使用は無料であるためです。  
 
@@ -285,6 +285,6 @@ Azure Storage では、ブロック BLOB、追加 BLOB、およびページ BLOB
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Blob ストレージのスケーラビリティおよびパフォーマンス ターゲット](scalability-targets.md)
+- [BLOB ストレージのスケーラビリティとパフォーマンスのターゲット](scalability-targets.md)
 - [標準ストレージ アカウントのスケーラビリティとパフォーマンスのターゲット](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [状態コードとエラー コード](/rest/api/storageservices/Status-and-Error-Codes2)

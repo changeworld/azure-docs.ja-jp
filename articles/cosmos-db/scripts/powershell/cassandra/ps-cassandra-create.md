@@ -5,14 +5,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 8fe877760b32b33da0c1e0dd318e0bca52c2bee5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1fcded19731d412a4892e231f4445c51b330b1b4
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445141"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366134"
 ---
 # <a name="create-a-keyspace-and-table-for-azure-cosmos-db---cassandra-api"></a>Azure Cosmos DB のキースペースとテーブルを作成する - Cassandra API
 
@@ -36,10 +36,16 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 |**Azure リソース**| |
 | [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | リソースを作成します。 |
+|**Azure Cosmos DB**| |
+| [Set-AzCosmosDBCassandraKeyspace](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbcassandrakeyspace) | Cosmos DB Cassandra API キースペースを作成または更新します。 |
+| [New-AzCosmosDBCassandraClusterKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandraclusterkey) | 新しい CosmosDB Cassandra クラスター キーを作成します。 |
+| [New-AzCosmosDBCassandraColumn](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandracolumn) | 新しい CosmosDB Cassandra 列を作成します。 |
+| [New-AzCosmosDBCassandraSchema](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandraschema) | 新しい CosmosDB Cassandra スキーマを作成します。 |
+| [Set-AzCosmosDBCassandraTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbcassandratable) | Cosmos DB Cassandra API テーブルを作成または更新します。 |
 |**Azure リソース グループ**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||

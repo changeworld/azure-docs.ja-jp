@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: a1ade6e823201419c3a742a36c66a50a9dc09976
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 72c8b4d57b5064af34665cff1386179e62324938
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64728807"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235076"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>ネットワーク セキュリティ グループと Azure CLI を使用してネットワーク トラフィックをフィルター処理する
 
@@ -164,7 +164,7 @@ az vm create \
 
 VM の作成には数分かかります。 VM が作成されると、次の例のような出力が返されます。 
 
-```azurecli 
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVmWeb",
@@ -224,7 +224,7 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 ```
 
-*myVmWeb* VM は、インターネットに送信して nginx を取得することを許可されます。なぜなら、既定のセキュリティ規則では、インターネットへの送信トラフィックがすべて許可されるためです。 *myVmWeb* SSH セッションを終了すると、*myVmMgmt* VM の `username@myVmMgmt:~$` プロンプトに戻ります。 *myVmWeb* VM から nginx のようこそ画面を取得するには、次のコマンドを入力します。
+*myVmWeb* VM は、インターネットに送信して nginx を取得することを許可されます。なぜなら、既定のセキュリティ規則では、インターネットへの送信トラフィックがすべて許可されるためです。 *myVmWeb* SSH セッションを終了すると、`username@myVmMgmt:~$`myVmMgmt*VM の* プロンプトに戻ります。 *myVmWeb* VM から nginx のようこそ画面を取得するには、次のコマンドを入力します。
 
 ```bash
 curl myVmWeb
@@ -232,15 +232,15 @@ curl myVmWeb
 
 *myVmMgmt* VM からログアウトします。 Azure の外部から *myVmWeb* Web サーバーにアクセスできることを確認するには、自身のコンピューターから `curl <publicIpAddress>` と入力します。 この接続は成功します。なぜなら、*myVmWeb* VM に接続されているネットワーク インターフェイスを含む *myAsgWebServers* アプリケーション セキュリティ グループへのインターネットからの受信トラフィックが、ポート 80 で許可されているためです。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 不要になったら、[az group delete](/cli/azure/group) を使用して、リソース グループとそのグループに含まれているすべてのリソースを削除します。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、ネットワーク セキュリティ グループを作成し、それを仮想ネットワーク サブネットに関連付けました。 ネットワーク セキュリティ グループについて詳しくは、[ネットワーク セキュリティ グループの概要](security-overview.md)と[ネットワーク セキュリティ グループの管理](manage-network-security-group.md)に関する記事を参照してください。
 

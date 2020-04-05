@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 4fbb86f4fbda9b8e521f7465bb8bb3d18602ca13
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60894188"
 ---
 # <a name="aggregate-operations-on-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Spark からの Azure Cosmos DB Cassandra API テーブルに対する集計操作 
@@ -364,7 +364,7 @@ readBooksDF: org.apache.spark.sql.Dataset[org.apache.spark.sql.Row] = [book_name
 select book_name,book_price from books_vw order by book_price desc limit 3;
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 テーブル コピー操作を実行する方法については、以下を参照してください。
 

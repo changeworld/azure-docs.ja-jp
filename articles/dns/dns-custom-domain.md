@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 7/13/2019
 ms.author: rohink
 ms.openlocfilehash: d84a7a908bd3bb5cfb2958a617be437f3b6b154e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357671"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231703"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Azure DNS を使用して Azure サービス用のカスタム ドメイン設定を提供する
 
@@ -38,10 +38,10 @@ Azure Function App 用のカスタム ドメインを構成するために、Fun
 
 DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、 **[OK]** をクリックして作成します。
 
-|プロパティ  |Value  |説明  |
+|プロパティ  |値  |説明  |
 |---------|---------|---------|
-|名前     | myfunctionapp        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
-|Type     | CNAME        | CNAME レコードを別名として使用します。        |
+|Name     | myfunctionapp        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
+|種類     | CNAME        | CNAME レコードを別名として使用します。        |
 |TTL     | 1        | 1 時間には 1 を使用します        |
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
 |エイリアス     | adatumfunction.azurewebsites.net        | 別名を作成している DNS 名。この例では、既定で Function App によって提供される adatumfunction.azurewebsites.net という DNS 名です。        |
@@ -63,10 +63,10 @@ Application Gateway、Load Balancer、Cloud Service、Resource Manager VM、Clas
 DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、 **[OK]** をクリックして作成します。
 
 
-|プロパティ  |Value  |説明  |
+|プロパティ  |値  |説明  |
 |---------|---------|---------|
-|名前     | mywebserver        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
-|Type     | A        | リソースは IP アドレスなので、A レコードを使用します。        |
+|Name     | mywebserver        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
+|種類     | A        | リソースは IP アドレスなので、A レコードを使用します。        |
 |TTL     | 1        | 1 時間には 1 を使用します        |
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
 |IP アドレス     | `<your ip address>`       | パブリック IP アドレス。|
@@ -90,10 +90,10 @@ A レコードが作成されたら、`nslookup` を実行してレコードの�
 DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、 **[OK]** をクリックして作成します。
 
 
-|プロパティ  |Value  |説明  |
+|プロパティ  |値  |説明  |
 |---------|---------|---------|
-|名前     | mywebserver        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
-|Type     | CNAME        | CNAME レコードを別名として使用します。 リソースが IP アドレスを使用していた場合、A レコードが使用されます。        |
+|Name     | mywebserver        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
+|種類     | CNAME        | CNAME レコードを別名として使用します。 リソースが IP アドレスを使用していた場合、A レコードが使用されます。        |
 |TTL     | 1        | 1 時間には 1 を使用します        |
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
 |エイリアス     | webserver.azurewebsites.net        | 別名を作成している DNS 名。この例では、既定で Web アプリに与えられる webserver.azurewebsites.net という DNS 名です。        |
@@ -126,10 +126,10 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、 **[OK]** をクリックして作成します。
 
 
-|プロパティ  |Value  |説明  |
+|プロパティ  |値  |説明  |
 |---------|---------|---------|
-|名前     | asverify.mystorageaccount        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
-|Type     | CNAME        | CNAME レコードを別名として使用します。        |
+|Name     | asverify.mystorageaccount        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
+|種類     | CNAME        | CNAME レコードを別名として使用します。        |
 |TTL     | 1        | 1 時間には 1 を使用します        |
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
 |エイリアス     | asverify.adatumfunctiona9ed.blob.core.windows.net        | 別名を作成している DNS 名。この例では、既定でストレージ アカウントに与えられる asverify.adatumfunctiona9ed.blob.core.windows.net という DNS 名です。        |
@@ -154,10 +154,10 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 
 DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、 **[OK]** をクリックして作成します。
 
-|プロパティ  |Value  |説明  |
+|プロパティ  |値  |説明  |
 |---------|---------|---------|
-|名前     | cdnverify.mycdnendpoint        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
-|Type     | CNAME        | CNAME レコードを別名として使用します。        |
+|Name     | cdnverify.mycdnendpoint        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
+|種類     | CNAME        | CNAME レコードを別名として使用します。        |
 |TTL     | 1        | 1 時間には 1 を使用します        |
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
 |エイリアス     | cdnverify.adatumcdnendpoint.azureedge.net        | 別名を作成している DNS 名。この例では、既定でストレージ アカウントに与えられる cdnverify.adatumcdnendpoint.azureedge.net という DNS 名です。        |

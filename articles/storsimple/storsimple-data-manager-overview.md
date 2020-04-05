@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/21/2018
 ms.author: alkohli
 ms.openlocfilehash: 2ffe17bf7ef4f01c18d2c26f4a045add7302272d
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67876101"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>StorSimple Data Manager ソリューションの概要
@@ -96,6 +96,6 @@ StorSimple データ マネージャーは、個人情報の収集も表示も�
 - このサービスは、NTFS ボリュームに対してのみ動作します。
 - ファイル パスの長さは、256 文字未満にする必要があります。そうしないと、ジョブが失敗します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [StorSimple Data Manger UI を使用してデータを変換します](storsimple-data-manager-ui.md)。

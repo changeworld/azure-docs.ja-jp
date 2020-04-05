@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.reviewer: sdash
 ms.openlocfilehash: 0bfb60b876add70be6cbcd3d726fb3317a8dfcf9
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77669864"
 ---
 # <a name="performance-testing"></a>パフォーマンス テスト

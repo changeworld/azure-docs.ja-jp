@@ -1,19 +1,18 @@
 ---
 title: Power BI アプリ オファーを発行する | Azure Marketplace
 description: Microsoft AppSource マーケットプレースに Power BI アプリ オファーを発行します。
-services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.author: pabutler
-ms.openlocfilehash: 324be960bd2d22623763ca3e24b99be92ff04174
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 89d437fe74d209e0dc04ffc590a1e32426b28732
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826048"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275868"
 ---
 # <a name="publish-a-power-bi-app-offer"></a>Power BI アプリ オファーを発行する
 
@@ -55,6 +54,6 @@ Microsoft のオンボード チームは、このプロセスを使用して、
 何らかの問題が見つかった場合、認定チームはフィードバックを提供します。  Power BI アプリの要件の詳細については、[Power BI アプリのドキュメント](https://go.microsoft.com/fwlink/?linkid=2028636)をご覧ください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [AppSource マーケットプレース](https://appsource.microsoft.com) でアプリを定期的に監視することをお勧めします。  自分のマーケットプレースの顧客とアプリの利用状況について分析情報を取得するには、[Cloud パートナー ポータル](https://cloudpartner.azure.com/#insights)の [Seller Insights](../../cloud-partner-portal-orig/si-getting-started.md) の機能も使用する必要があります。 最後に、[オファーを更新](./cpp-update-existing-offer.md)できます。

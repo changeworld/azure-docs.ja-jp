@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fbc1baa86bb81c8975587e84427a72ccc044805e
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77916576"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect に関する FAQ

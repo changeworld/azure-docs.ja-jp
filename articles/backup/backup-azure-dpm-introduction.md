@@ -4,11 +4,11 @@ description: この記事では、Azure Backup サービスを使用して、Azu
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.openlocfilehash: 2119d46ca6102286ca879777058a49938b501ad6
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75753952"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233927"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>System Center DPM を使用して Azure にワークロードをバックアップするための準備
 
@@ -97,7 +97,7 @@ DPM サーバーをコンテナーに登録する場合、コンテナーの資�
 
 次の手順に従って、コンテナーの資格情報ファイルをローカル コンピューターにダウンロードします。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. DPM サーバーを登録するコンテナーを開きます。
 3. **[設定]** で、 **[プロパティ]** をクリックします。
 

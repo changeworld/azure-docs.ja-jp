@@ -7,10 +7,10 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/15/2019
 ms.openlocfilehash: 559c894a2212466761de820de7486ae203337802
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77538466"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>GitHub Actions を使用する Azure Spring Cloud CI/CD

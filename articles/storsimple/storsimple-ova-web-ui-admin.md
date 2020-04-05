@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 12/1/2016
 ms.author: alkohli
 ms.openlocfilehash: 92671206a4171ca838423f55b526191ef30e5c35
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60630466"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228163"
 ---
 # <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>Web UI を使用した StorSimple Virtual Array の管理
 ![セットアップ プロセス フロー](./media/storsimple-ova-web-ui-admin/manage4.png)
@@ -109,6 +109,6 @@ StorSimple Manager サービスに最初のデバイスを登録すると、サ�
    
     再起動の実行中は UI に接続できなくなります。 UI を定期的に更新することで、再起動を監視できます。 また、Hyper-V マネージャーを使用して、デバイスの再起動の状態を監視することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [StorSimple Manager サービスを使用してデバイスを管理する](storsimple-virtual-array-manager-service-administration.md)方法を確認します。
 

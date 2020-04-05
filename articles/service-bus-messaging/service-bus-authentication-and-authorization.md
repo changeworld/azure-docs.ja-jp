@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/22/2019
 ms.author: aschhab
 ms.openlocfilehash: 7234e33c04e742c77630f8d87481c7831fb00bf2
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70013242"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Service Bus の認証と承認
@@ -59,7 +59,7 @@ SAS を使用するには、名前空間、キュー、トピックで [SharedAc
 
 Service Bus の SAS 認証サポートは、Azure .NET SDK バージョン 2.0 以降に含まれています。 SAS には、 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)のサポートが含まれています。 接続文字列をパラメーターとして受け取るすべての API では、SAS 接続文字列がサポートされています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - SAS の詳細については、「[Shared Access Signature による Service Bus の認証](service-bus-sas.md)」を引き続きお読みください。
 - [Azure Active Directory Access Control (ACS) から Shared Access Signature 承認に移行](service-bus-migrate-acs-sas.md)する方法。

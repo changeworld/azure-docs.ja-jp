@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.openlocfilehash: f7cf5d245383b8a58f03e2e3610750866a2f4b5a
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74770205"
 ---
 # <a name="migrate-your-postgresql-database-using-export-and-import"></a>エクスポートとインポートを使用した PostgreSQL データベースの移行
@@ -18,7 +18,7 @@ ms.locfileid: "74770205"
 
 ## <a name="prerequisites"></a>前提条件
 このハウツー ガイドの手順を実行するには、以下が必要です。
-- 内部へのアクセスとデータベース化を許可するファイアウォール規則を備えた [Azure Database for PostgreSQL サーバー](quickstart-create-server-database-portal.md)
+- アクセスとその下のデータベースを許可するファイアウォール規則のある [Azure Database for PostgreSQL サーバー](quickstart-create-server-database-portal.md)
 - インストールされた [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) コマンド ライン ユーティリティ
 - インストールされた [psql](https://www.postgresql.org/docs/current/static/app-psql.html) コマンド ライン ユーティリティ
 
@@ -44,6 +44,6 @@ psql --file=<database>.sql --host=<server name> --port=5432 --username=<user@ser
 psql --file=testdb.sql --host=mydemoserver.database.windows.net --port=5432 --username=mylogin@mydemoserver --dbname=mypgsqldb
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - ダンプと復元を使用して PostgreSQL データベースを移行するには、「[ダンプと復元を使用した PostgreSQL データベースの移行](howto-migrate-using-dump-and-restore.md)」をご覧ください。
 - Azure Database for PostgreSQL へのデータベースの移行については、「[Database Migration Guide](https://aka.ms/datamigration)」 (データベースの移行ガイド) を参照してください。 

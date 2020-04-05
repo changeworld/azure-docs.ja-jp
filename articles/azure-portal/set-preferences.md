@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: 7bcfdeec832b14eb53c0dab6cb2f53970d85c804
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76310681"
 ---
 # <a name="set-your-azure-portal-preferences"></a>Azure portal の基本設定を設定する
@@ -29,7 +29,7 @@ ms.locfileid: "76310681"
 
 ## <a name="change-general-portal-settings"></a>ポータルの全般設定を変更する
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. グローバル ページ ヘッダーから **[設定]** を選択します。
 
     ![設定が強調表示されたグローバル ページ ヘッダー アイコンを示すスクリーンショット](./media/set-preferences/header-settings.png)

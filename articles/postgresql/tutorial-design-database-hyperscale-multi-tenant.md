@@ -10,10 +10,10 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.openlocfilehash: 17ac29de243f4abfff1cfc83fc6424799978bf0e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74978153"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>チュートリアル: Azure Database for PostgreSQL - Hyperscale (Citus) を使用して、マルチテナント データベースを設計する
@@ -118,7 +118,7 @@ CREATE TABLE impressions (
 );
 ```
 
-次を実行すると、psql のテーブルの一覧に新しく作成されたテーブルが表示されます。
+psql で次を実行すると、新しく作成されたテーブルがテーブルの一覧に表示されます。
 
 ```postgres
 \dt
@@ -150,7 +150,7 @@ for dataset in companies campaigns ads clicks impressions geo_ips; do
 done
 ```
 
-psql 内に戻って、データを一括読み込みします。 psql は必ず、データ ファイルをダウンロードしたディレクトリと同じディレクトリで実行してください。
+psql 内に戻って、データを一括読み込みします。 psql は必ず、データ ファイルをダウンロードしたところと同じディレクトリで実行してください。
 
 ```sql
 SET CLIENT_ENCODING TO 'utf8';
@@ -225,12 +225,12 @@ SELECT c.id, clicked_at, latlon
 
 ## <a name="customize-the-schema-per-tenant"></a>テナントごとにスキーマをカスタマイズする
 
-場合によっては、各テナントに他のテナントが必要としない特別な情報を保存する必要があります。 ただし、すべてのテナントは同一のデータベース スキーマを持つ共通インフラストラクチャを共有しています。 追加データはどこに移動できますか?
+場合によっては、各テナントに他のテナントが必要としない特別な情報を保存する必要があります。 しかし、すべてのテナントは同一のデータベース スキーマを持つ共通インフラストラクチャを共有しています。 その追加データはどこに入れることができるのでしょうか?
 
 コツは、PostgreSQL の JSONB のような制約のない列タイプを使用することです。  スキーマには、`clicks` に `user_data` という JSONB フィールドがあります。
 会社 (例: 会社 5) は、この列を使用して、ユーザーがモバイル デバイス上にいるかどうかを追跡できます。
 
-クリックを多く行った実行元が、デバイスであるか従来の訪問者であるかを検索するためのクエリを、以下に示します。
+より多くクリックしたのはモバイルであるか従来の訪問者であるかを検索するためのクエリを、以下に示します。
 
 ```sql
 SELECT
@@ -265,14 +265,14 @@ SELECT id
    AND company_id = 5;
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 前の手順では、サーバー グループ内に Azure リソースを作成しました。 これらのリソースが将来不要であると思われる場合は、サーバー グループを削除します。 サーバー グループの *[概要]* ページで、 *[削除]* ボタンを押します。 ポップアップ ページでメッセージが表示されたら、サーバー グループの名前を確認し、最後の *[削除]* ボタンをクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Hyperscale (Citus) サーバー グループのプロビジョニング方法を学習しました。 psql でそのサーバー グループに接続し、スキーマを作成して、データを分散しました。 テナント内とテナント間の両方でデータをクエリしたり、テナントごとにスキーマをカスタマイズしたりすることを学習しました。
+このチュートリアルでは、Hyperscale (Citus) サーバー グループのプロビジョニング方法を学習しました。 そのサーバー グループに psql で接続し、スキーマを作成して、データを分散しました。 テナント内とテナント間の両方でデータをクエリしたり、テナントごとにスキーマをカスタマイズしたりすることを学習しました。
 
-次に、ハイパースケールの概念について説明します。
+次は、ハイパースケールの概念について学習します。
 > [!div class="nextstepaction"]
 > [ハイパースケールのノードの種類](https://aka.ms/hyperscale-concepts)

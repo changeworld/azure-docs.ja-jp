@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: d7ee8ae121e3cbb9760a87c95d12109a9b05e0c5
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74951515"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - インフラストラクチャのベスト プラクティス
@@ -23,7 +23,7 @@ ms.locfileid: "74951515"
 
 HDInsight クラスターの容量計画で行うべき重要な選択内容は次のとおりです。
 
-**[リージョン]**  
+**リージョン**  
 Azure リージョンによって、クラスターを物理的にプロビジョニングする場所が決まります。 読み取りと書き込みの待機時間を最小限に抑えるには、クラスターをデータと同じリージョンに配置する必要があります。
 
 **ストレージの場所とサイズ**  
@@ -196,6 +196,6 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
 
 詳細は、「[Connect HDInsight to your on-premises network](../connect-on-premises-network.md)」(オンプレミス ネットワークへの HDInsight の接続) を参照してください
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このシリーズの次の記事をお読みください。[オンプレミスから Azure HDInsight Hadoop への移行のためのストレージのベスト プラクティス](apache-hadoop-on-premises-migration-best-practices-storage.md).

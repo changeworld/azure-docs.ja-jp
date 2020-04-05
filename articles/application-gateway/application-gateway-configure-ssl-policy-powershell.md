@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: 105b0b3e40e6e9433ee456914cd5babc1d17d036
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74075227"
 ---
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>Application Gateway で SSL ポリシーのバージョンと暗号スイートを構成する
@@ -134,7 +134,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ## <a name="create-an-application-gateway-with-a-pre-defined-ssl-policy"></a>定義済み SSL ポリシーを使用したアプリケーション ゲートウェイの作成
 
-定義済み SSL ポリシーを構成する場合は、パラメーター PolicyType、PolicyName、および ApplicationGateway を渡します。 他のパラメーターを渡そうとすると、アプリケーション ゲートウェイを作成または更新するときにエラーが発生します。
+定義済みの SSL ポリシーを構成する場合は、パラメーター PolicyType、PolicyName、および ApplicationGateway を渡します。 他のパラメーターを渡そうとすると、アプリケーション ゲートウェイを作成または更新するときにエラーが発生します。
 
 次の例では、定義済み SSL ポリシーを使用して、新しいアプリケーション ゲートウェイを作成します。
 
@@ -191,7 +191,7 @@ $appgw = New-AzApplicationGateway -Name appgwtest -ResourceGroupName $rg.Resourc
 
 ## <a name="update-an-existing-application-gateway-with-a-pre-defined-ssl-policy"></a>定義済み SSL ポリシーを使用した既存のアプリケーション ゲートウェイの更新
 
-カスタム SSL ポリシーを設定するには、パラメーター**PolicyType**、**MinProtocolVersion**、**CipherSuite**、および **ApplicationGateway** を渡します。 定義済み SSL ポリシーを設定するには、パラメーター**PolicyType**、**PolicyName**、および **ApplicationGateway** を渡します。 他のパラメーターを渡そうとすると、アプリケーション ゲートウェイを作成または更新するときにエラーが発生します。
+カスタム SSL ポリシーを設定するには、パラメーター **PolicyType**、**MinProtocolVersion**、**CipherSuite**、および **ApplicationGateway** を渡します。 定義済みの SSL ポリシーを設定するには、パラメーター **PolicyType**、**PolicyName**、および **ApplicationGateway** を渡します。 他のパラメーターを渡そうとすると、アプリケーション ゲートウェイを作成または更新するときにエラーが発生します。
 
 次の例には、カスタム ポリシーと定義済みのポリシーの両方のコード サンプルが含まれます。 使用するポリシーのコメントを解除してください。
 
@@ -215,6 +215,6 @@ $AppGw = get-Azapplicationgateway -Name $AppGWname -ResourceGroupName $RG
 $SetGW = Set-AzApplicationGateway -ApplicationGateway $AppGW
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 HTTP トラフィックを HTTPS エンドポイントにリダイレクトする方法については、「[Application Gateway のリダイレクトの概要](application-gateway-redirect-overview.md)」をご覧ください。

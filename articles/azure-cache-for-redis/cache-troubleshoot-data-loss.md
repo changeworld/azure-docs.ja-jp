@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.openlocfilehash: d54506b94f076f0a3d967f88bd4e2960a1ca6396
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75530903"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Azure Cache for Redis でのデータ損失のトラブルシューティング
@@ -50,11 +50,11 @@ expired_keys:46583
 db0:keys=3450,expires=2,avg_ttl=91861015336
 ```
 
-さらに、キャッシュの診断メトリックを参照して、キーが消失したタイミングと、有効期限が切れたキーの急増との間に相関関係があるかどうかを確認することもできます。 キースペース通知や **MONITOR** を使用してこれらの種類の問題をデバッグする方法については、[Redis キースペースの消失のデバッグ](https://gist.github.com/JonCole/4a249477142be839b904f7426ccccf82#appendix)に関する記事の付録を参照してください。
+さらに、キャッシュの診断メトリックを参照して、キーが消失したタイミングと、有効期限が切れたキーの急増との間に相関関係があるかどうかを確認することもできます。 キースペース通知や [MONITOR](https://gist.github.com/JonCole/4a249477142be839b904f7426ccccf82#appendix) を使用してこれらの種類の問題をデバッグする方法については、**Redis キースペースの消失のデバッグ**に関する記事の付録を参照してください。
 
 ### <a name="key-eviction"></a>キーの強制削除
 
-Azure Cache for Redis には、データを格納するためのメモリ領域が必要です。 必要に応じて、使用可能なメモリを解放するためにキーが消去されます。 [INFO](https://redis.io/commands/info) コマンドの **used_memory** または **used_memory_rss** の値が、構成されている **maxmemory** 設定に近づくと、Azure Cache for Redis は [キャッシュ ポリシー](https://redis.io/topics/lru-cache)に基づいて、メモリからのキーの強制削除を開始します。
+Azure Cache for Redis には、データを格納するためのメモリ領域が必要です。 必要に応じて、使用可能なメモリを解放するためにキーが消去されます。 **INFO** コマンドの **used_memory** または [used_memory_rss](https://redis.io/commands/info) の値が、構成されている **maxmemory** 設定に近づくと、Azure Cache for Redis は [キャッシュ ポリシー](https://redis.io/topics/lru-cache)に基づいて、メモリからのキーの強制削除を開始します。
 
 [INFO](https://redis.io/commands/info) コマンドを使用して、強制削除されたキーの数を監視できます。
 
@@ -64,7 +64,7 @@ Azure Cache for Redis には、データを格納するためのメモリ領域�
 evicted_keys:13224
 ```
 
-さらに、キャッシュの診断メトリックを参照して、キーが消失したタイミングと、強制削除されたキーの急増との間に相関関係があるかどうかを確認することもできます。 キースペース通知や **MONITOR** を使用してこれらの種類の問題をデバッグする方法については、[Redis キースペースの消失のデバッグ](https://gist.github.com/JonCole/4a249477142be839b904f7426ccccf82#appendix)に関する記事の付録を参照してください。
+さらに、キャッシュの診断メトリックを参照して、キーが消失したタイミングと、強制削除されたキーの急増との間に相関関係があるかどうかを確認することもできます。 キースペース通知や [MONITOR](https://gist.github.com/JonCole/4a249477142be839b904f7426ccccf82#appendix) を使用してこれらの種類の問題をデバッグする方法については、**Redis キースペースの消失のデバッグ**に関する記事の付録を参照してください。
 
 ### <a name="key-deletion"></a>キーの削除
 

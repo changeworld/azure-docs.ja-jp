@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: d635950c8b34986cd5824660166017317948cbd8
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73176910"
 ---
 # <a name="application-templates-in-azure-api-management"></a>Azure API Management のアプリケーション テンプレート
@@ -30,13 +30,13 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 -   [Application](#Application)  
   
 > [!NOTE]
->  このドキュメントには既定のテンプレートのサンプルが含まれていますが、それらは継続的な改善に伴って変更される可能性があります。 開発者ポータルで目的の個々のテンプレートに移動することで、最新の既定のテンプレートを表示できます。 テンプレートの操作方法の詳細については、「[Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)」を参照してください。  
+>  このドキュメントには既定のテンプレートのサンプルが含まれていますが、それらは継続的な改善に伴って変更される可能性があります。 開発者ポータルで目的の個々のテンプレートに移動することで、最新の既定のテンプレートを表示できます。 テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)に関するページを参照してください。  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="ProductList"></a> アプリケーション リスト  
+##  <a name="application-list"></a><a name="ProductList"></a> アプリケーション リスト  
  **アプリケーション リスト** テンプレートを使用すると、開発者ポータルでアプリケーション リスト ページの本文をカスタマイズすることができます。  
   
  ![アプリケーション リスト ページ開発者ポータル テンプレート](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM アプリケーション リスト ページ開発者ポータル テンプレート")  
@@ -137,7 +137,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }  
 ```  
   
-##  <a name="Application"></a> Application  
+##  <a name="application"></a><a name="Application"></a> Application  
  **Application** テンプレートを使用すると、開発者ポータルでアプリケーション ページの本文をカスタマイズすることができます。  
   
  ![アプリケーション ページ開発者ポータル テンプレート](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM アプリケーション ページ開発者ポータル テンプレート")  
@@ -223,5 +223,5 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }  
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](api-management-developer-portal-templates.md)に関するページを参照してください。

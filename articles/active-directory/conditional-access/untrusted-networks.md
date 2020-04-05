@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4cedec7f0bd51460796d8138f8d481d2982098f4
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74380004"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>方法:条件付きアクセスを使用して信頼されていないネットワークからのアクセスに対して MFA を必須にする   
@@ -67,6 +67,6 @@ Azure AD 条件付きアクセスを使用すると、アクセス許可を付�
 
 この記事で説明した方法を使って、信頼されていない場所に対する条件付きアクセス ポリシーを構成できるようになりました。 ポリシーが期待どおりに機能することを確実にするために推奨されるベスト プラクティスは、運用環境にロールアウトする前にポリシーをテストすることです。 テスト テナントを使用して、新しいポリシーが意図したとおりに機能するかどうかを確認するのが理想的です。 詳細については、[新しいポリシーのデプロイ方法](best-practices.md#how-should-you-deploy-a-new-policy)に関するページを参照してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 条件付きアクセスの詳細については、[Azure Active Directory の条件付きアクセスの概要](../active-directory-conditional-access-azure-portal.md)に関するページを参照してください。

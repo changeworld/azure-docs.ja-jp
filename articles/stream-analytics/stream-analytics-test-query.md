@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 3/6/2020
 ms.custom: seodec18
 ms.openlocfilehash: de2b99666dbed4eaec3db3e56800e9a7352e10e7
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898384"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>ポータルで Azure Stream Analytics ジョブをテストする

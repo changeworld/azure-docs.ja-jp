@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9b60261d63e1bcb75aea9d2e8a6b74902520f391
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77522919"
 ---
 # <a name="no-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションにユーザーがプロビジョニングされない

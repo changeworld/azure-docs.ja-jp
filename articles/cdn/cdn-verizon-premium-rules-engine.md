@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
 ms.openlocfilehash: aa0606eafb8fe4c517b0c18e0137058a120115ba
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74082948"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>Azure CDN from Verizon Premium ルール エンジンを使用して HTTP 動作をオーバーライドする
@@ -22,7 +22,7 @@ ms.locfileid: "74082948"
 
 Azure CDN ルール エンジンを使用すると、HTTP 要求を処理する方法をカスタマイズできます。 たとえば、特定の種類のコンテンツの配信のブロック、キャッシュ ポリシーの定義、HTTP ヘッダーの変更などを行うことができます。 このチュートリアルでは、CDN 資産のキャッシュ動作を変更するルールを作成する方法について説明します。 ルール エンジンの構文の詳細については、「[Azure CDN ルール エンジンのリファレンス](cdn-verizon-premium-rules-engine-reference.md)」をご覧ください。
 
-## <a name="access"></a>Access
+## <a name="access"></a>アクセス
 
 ルール エンジンにアクセスするには、まず、 **[CDN プロファイル]** ページの上部の **[管理]** を選択して、Azure CDN 管理ページにアクセスする必要があります。 エンドポイントが動的サイトの高速化 (DSA) に最適化されているかどうかに応じて、エンドポイントの種類に適したルール セットを使用してルール エンジンにアクセスします。
 

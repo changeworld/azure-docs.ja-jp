@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: bfef7eae7158a05b09a3534e8fb44335333d8cf1
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73904351"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>発話の例のセットを使用したバッチ テスト
@@ -32,11 +32,11 @@ ms.locfileid: "73904351"
 
     ![バッチ テストのリンク](./media/luis-how-to-batch-test/batch-testing-link.png)
 
-2. **[Import dataset]\(データセットのインポート\)** を選択します。 **[Import new dataset]\(新しいデータセットのインポート\)** ダイアログ ボックスが表示されます。 **[ファイルの選択]** を選択し、テスト対象の *1,000 個以下の*発話を含む、正しい [JSON 形式](luis-concept-batch-test.md#batch-file-format)を持つ JSON ファイルを見つけます。
+2. **[Import dataset]\(データセットのインポート\)** を選択します。 **[Import new dataset]\(新しいデータセットのインポート\)** ダイアログ ボックスが表示されます。 **[ファイルの選択]** を選択し、テスト対象の [1,000 個以下の](luis-concept-batch-test.md#batch-file-format)発話を含む、正しい *JSON 形式*を持つ JSON ファイルを見つけます。
 
     インポート エラーは、ブラウザーの上部にある赤い通知バーで報告されます。 インポートでエラーが発生した場合、データセットは作成されません。 詳細については、[一般的なエラー](luis-concept-batch-test.md#common-errors-importing-a-batch)に関するトピックをご覧ください。
 
-3. **[データセット名]** フィールドに、データセット ファイルの名前を入力します。 データセット ファイルには、"*ラベル付きの意図*" および "*エンティティ*" を含む**発話の配列**が含まれています。 [バッチ ファイルの例](luis-concept-batch-test.md#batch-file-format)で構文を確認します。 
+3. **[データセット名]** フィールドに、データセット ファイルの名前を入力します。 データセット ファイルには、"**ラベル付きの意図**" および "*エンティティ*" を含む*発話の配列*が含まれています。 [バッチ ファイルの例](luis-concept-batch-test.md#batch-file-format)で構文を確認します。 
 
 4. **[完了]** を選択します。 データセット ファイルが追加されます。
 
@@ -100,7 +100,7 @@ ms.locfileid: "73904351"
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ご自身の LUIS アプリで正しい意図とエンティティが認識されないことがテストによって示されている場合、LUIS アプリのパフォーマンスを向上させるには、発話にさらに多くのラベルを付けるか、機能を追加します。 
 

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: cac63aee5f9ebf3859b138e6444e40b1e2dd30f7
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588095"
 ---
 # <a name="connect-your-symantec-icdx-appliance"></a>Symantec ICDx アプライアンスを接続する 

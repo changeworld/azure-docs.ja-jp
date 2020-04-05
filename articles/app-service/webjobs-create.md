@@ -9,11 +9,11 @@ ms.author: glenga
 ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
 ms.openlocfilehash: 4c568c95a5dbc1799a765c95a2b224de53dfbe9f
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74684208"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235675"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Azure App Service で Web ジョブを使用してバックグラウンド タスクを実行する
 
@@ -42,7 +42,7 @@ Azure Functions は、プログラムとスクリプトを実行する別の方�
 
 [!INCLUDE [webjobs-always-on-note](../../includes/webjobs-always-on-note.md)]
 
-## <a name="acceptablefiles"></a>スクリプトまたはプログラムでサポートされるファイルの種類
+## <a name="supported-file-types-for-scripts-or-programs"></a><a name="acceptablefiles"></a>スクリプトまたはプログラムでサポートされるファイルの種類
 
 次のファイルの種類がサポートされます。
 
@@ -54,7 +54,7 @@ Azure Functions は、プログラムとスクリプトを実行する別の方�
 * .js (Node.js を使用)
 * .jar (Java を使用)
 
-## <a name="CreateContinuous"></a> 継続的 Web ジョブを作成する
+## <a name="create-a-continuous-webjob"></a><a name="CreateContinuous"></a> 継続的 Web ジョブを作成する
 
 <!-- 
 Several steps in the three "Create..." sections are identical; 
@@ -75,14 +75,14 @@ when making changes in one don't forget the other two.
 
    ![[Web ジョブの追加] ページ](./media/web-sites-create-web-jobs/addwjcontinuous.png)
 
-   | Setting      | 値の例   | 説明  |
+   | 設定      | 値の例   | 説明  |
    | ------------ | ----------------- | ------------ |
    | **Name** | myContinuousWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。 |
    | **ファイルのアップロード** | ConsoleApp.zip | 実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。 サポートされている実行可能ファイルまたはスクリプト ファイルの種類については、「[サポートされるファイルの種類](#acceptablefiles)」セクションを参照してください。 |
    | **Type** | 継続的 | [Web ジョブの種類](#webjob-types)については、この記事の中で既に説明しています。 |
    | **スケール** | 複数のインスタンス | 継続的 Web ジョブでのみ使用できます。 プログラムまたはスクリプトがすべてのインスタンスで実行されるか、1 つのインスタンスだけで実行されるかどうかを決定します。 複数のインスタンスで実行するオプションは、Free または Shared [価格レベル](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)には適用されません。 | 
 
-4. Click **OK**.
+4. **[OK]** をクリックします。
 
    **[Web ジョブ]** ページに新しい Web ジョブが表示されます。
 
@@ -92,7 +92,7 @@ when making changes in one don't forget the other two.
 
     ![継続的 Web ジョブを停止する](./media/web-sites-create-web-jobs/continuousstop.png)
 
-## <a name="CreateOnDemand"></a>手動でトリガーされる Web ジョブを作成する
+## <a name="create-a-manually-triggered-webjob"></a><a name="CreateOnDemand"></a>手動でトリガーされる Web ジョブを作成する
 
 <!-- 
 Several steps in the three "Create..." sections are identical; 
@@ -113,14 +113,14 @@ when making changes in one don't forget the other two.
 
    ![[Web ジョブの追加] ページ](./media/web-sites-create-web-jobs/addwjtriggered.png)
 
-   | Setting      | 値の例   | 説明  |
+   | 設定      | 値の例   | 説明  |
    | ------------ | ----------------- | ------------ |
    | **Name** | myTriggeredWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。|
    | **ファイルのアップロード** | ConsoleApp.zip | 実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。 サポートされている実行可能ファイルまたはスクリプト ファイルの種類については、「[サポートされるファイルの種類](#acceptablefiles)」セクションを参照してください。 |
    | **Type** | トリガー | [Web ジョブの種類](#webjob-types)については、この記事の中で既に説明しています。 |
    | **トリガー** | マニュアル | |
 
-4. Click **OK**.
+4. **[OK]** をクリックします。
 
    **[Web ジョブ]** ページに新しい Web ジョブが表示されます。
 
@@ -130,7 +130,7 @@ when making changes in one don't forget the other two.
    
     ![Web ジョブの実行](./media/web-sites-create-web-jobs/runondemand.png)
 
-## <a name="CreateScheduledCRON"></a>スケジュールされた Web ジョブを作成する
+## <a name="create-a-scheduled-webjob"></a><a name="CreateScheduledCRON"></a>スケジュールされた Web ジョブを作成する
 
 <!-- 
 Several steps in the three "Create..." sections are identical; 
@@ -151,7 +151,7 @@ when making changes in one don't forget the other two.
 
    ![[Web ジョブの追加] ページ](./media/web-sites-create-web-jobs/addwjscheduled.png)
 
-   | Setting      | 値の例   | 説明  |
+   | 設定      | 値の例   | 説明  |
    | ------------ | ----------------- | ------------ |
    | **Name** | myScheduledWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。 |
    | **ファイルのアップロード** | ConsoleApp.zip | 実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。 サポートされている実行可能ファイルまたはスクリプト ファイルの種類については、「[サポートされるファイルの種類](#acceptablefiles)」セクションを参照してください。 |
@@ -159,7 +159,7 @@ when making changes in one don't forget the other two.
    | **トリガー** | スケジュール | スケジュールを確実に動作させるために、Always On 機能を有効にします。 Always On 機能は、Basic、Standard、および Premium の価格レベルでのみ利用できます。|
    | **CRON 式** | 0 0/20 * * * * | [CRON 式](#ncrontab-expressions)については、次のセクションで説明します。 |
 
-4. Click **OK**.
+4. **[OK]** をクリックします。
 
    **[Web ジョブ]** ページに新しい Web ジョブが表示されます。
 
@@ -179,7 +179,7 @@ when making changes in one don't forget the other two.
 
 [!INCLUDE [webjobs-cron-timezone-note](../../includes/webjobs-cron-timezone-note.md)]
 
-## <a name="ViewJobHistory"></a>ジョブ履歴を表示する
+## <a name="view-the-job-history"></a><a name="ViewJobHistory"></a>ジョブ履歴を表示する
 
 1. 履歴を表示する Web ジョブを選択し、 **[ログ]** ボタンを選択します。
    
@@ -201,6 +201,6 @@ when making changes in one don't forget the other two.
    
     ![履歴ダッシュボードに表示された Web ジョブの一覧](./media/web-sites-create-web-jobs/webjobslist.png)
    
-## <a name="NextSteps"></a> 次のステップ
+## <a name="next-steps"></a><a name="NextSteps"></a> 次のステップ
 
 Azure WebJobs SDK と Web ジョブを使用して、多くのプログラミング タスクを単純化できます。 詳細については、「 [Azure Web ジョブ SDK とは](https://github.com/Azure/azure-webjobs-sdk/wiki)」をご覧ください。

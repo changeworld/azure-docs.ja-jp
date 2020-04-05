@@ -14,10 +14,10 @@ ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 14641e9096fa9366334e9f7460ae55cda0e6c2e8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75644888"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Azure DevTest Labs インフラストラクチャのガバナンス - アプリケーションの移行と統合
@@ -28,7 +28,7 @@ ms.locfileid: "75644888"
 
 ## <a name="azure-marketplace-images-vs-custom-images"></a>Azure Marketplace イメージとカスタム イメージ
 
-### <a name="question"></a>質問
+### <a name="question"></a>Question
 Azure Marketplace イメージと組織独自のカスタム イメージをどのように使い分ける必要がありますか。
 
 ### <a name="answer"></a>Answer
@@ -43,7 +43,7 @@ Azure Marketplace イメージと組織独自のカスタム イメージをど�
 
 ## <a name="formula-vs-custom-image"></a>定型イメージとカスタム イメージ
 
-### <a name="question"></a>質問
+### <a name="question"></a>Question
 定型イメージとカスタム イメージをどのように使い分ける必要がありますか。
 
 ### <a name="answer"></a>Answer
@@ -55,7 +55,7 @@ Azure Marketplace イメージと組織独自のカスタム イメージをど�
 
 ## <a name="use-custom-organizational-images"></a>カスタム組織イメージを使用する
 
-### <a name="question"></a>質問
+### <a name="question"></a>Question
 カスタム組織イメージを DevTest Labs 環境に展開する簡単に反復可能なプロセスをセットアップするにはどうすればよいですか。
 
 ### <a name="answer"></a>Answer
@@ -70,7 +70,7 @@ DevTest Labs を使用して、Azure Pipelines でカスタムのイメージ �
 
 ## <a name="patterns-to-set-up-network-configuration"></a>ネットワーク構成を設定するパターン
 
-### <a name="question"></a>質問
+### <a name="question"></a>Question
 開発用とテスト用の仮想マシンがパブリック インターネットに接続できないようにするにはどうすればよいですか。 ネットワーク構成の設定に推奨されるパターンはありますか。
 
 ### <a name="answer"></a>Answer
@@ -87,7 +87,7 @@ DevTest Labs を使用して、Azure Pipelines でカスタムのイメージ �
 
 ## <a name="new-vs-existing-virtual-network"></a>新規の仮想ネットワークと既存の仮想ネットワーク
 
-### <a name="question"></a>質問
+### <a name="question"></a>Question
 どのような場合に DevTest ラボ環境用の新しい仮想ネットワークを作成する必要があり、どのような場合に既存の仮想ネットワークを使用できますか。
 
 ### <a name="answer"></a>Answer
@@ -97,7 +97,7 @@ VM で既存のインフラストラクチャとやりとりする必要があ�
 
 ## <a name="shared-public-or-private-ip"></a>共有 IP アドレス、パブリック IP アドレス、プライベート IP アドレス
 
-### <a name="question"></a>質問
+### <a name="question"></a>Question
 共有 IP アドレス、パブリック IP アドレス、プライベート IP アドレスはどのように使い分ける必要がありますか。
 
 ### <a name="answer"></a>Answer
@@ -110,7 +110,7 @@ VM で既存のインフラストラクチャとやりとりする必要があ�
 
 ## <a name="limits-of-number-of-virtual-machines-per-user-or-lab"></a>ユーザー単位またはラボ単位の仮想マシンの数の制限
 
-### <a name="question"></a>質問
+### <a name="question"></a>Question
 ユーザーごと、またはラボごとに設定する必要がある仮想マシンの数に関するルールはありますか。
 
 ### <a name="answer"></a>Answer
@@ -122,7 +122,7 @@ VM で既存のインフラストラクチャとやりとりする必要があ�
 
 ## <a name="use-resource-manager-templates"></a>Resource Manager テンプレートを使用する
 
-### <a name="question"></a>質問
+### <a name="question"></a>Question
 DevTest Labs 環境で Resource Manager テンプレートを使用するにはどうすればよいですか。
 
 ### <a name="answer"></a>Answer

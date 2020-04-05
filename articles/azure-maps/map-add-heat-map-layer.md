@@ -10,10 +10,10 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 4a853871ef5f66881235e5a6ffec0886b81f5a92
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77208541"
 ---
 # <a name="add-a-heat-map-layer"></a>ヒート マップ レイヤーを追加する

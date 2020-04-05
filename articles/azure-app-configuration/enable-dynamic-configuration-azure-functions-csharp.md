@@ -16,10 +16,10 @@ ms.author: zhenlwa
 ms.custom: azure-functions
 ms.tgt_pltfrm: Azure Functions
 ms.openlocfilehash: ba70d5f186c1424b2019716ab7a87aeae85f8913
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74187296"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-azure-functions-app"></a>チュートリアル:Azure Functions アプリで動的な構成を使用する
@@ -110,11 +110,11 @@ App Configuration .NET Standard 構成プロバイダーは、アプリケーシ
 
     ![クイック スタート: ローカル環境での関数の起動](./media/quickstarts/dotnet-core-function-launch-local.png)
 
-5. [Azure Portal](https://portal.azure.com) にサインインします。 **[すべてのリソース]** を選択し、クイック スタートで作成した App Configuration ストア インスタンスを選択します。
+5. [Azure portal](https://portal.azure.com) にサインインします。 **[すべてのリソース]** を選択し、クイック スタートで作成した App Configuration ストア インスタンスを選択します。
 
 6. **[構成エクスプローラー]** を選択して次のキーの値を更新します。
 
-    | Key | 値 |
+    | Key | Value |
     |---|---|
     | TestApp:Settings:Message | Azure App Configuration からのデータ - 更新済み |
 
@@ -124,11 +124,11 @@ App Configuration .NET Standard 構成プロバイダーは、アプリケーシ
 
 このチュートリアルで使用したコード例は、[App Configuration の GitHub リポジトリ](https://github.com/Azure/AppConfiguration/tree/master/examples/DotNetCore/AzureFunction)からダウンロードできます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、App Configuration から動的に構成設定を更新できるように Azure Functions アプリを設定しました。 App Configuration へのアクセスを効率化する Azure マネージド ID を使用する方法については、次のチュートリアルに進んでください。
 

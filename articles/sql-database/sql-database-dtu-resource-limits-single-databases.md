@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
 ms.openlocfilehash: a4c435b4874301fe6fb804085c5b265954cd4f5a
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75637594"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228651"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model"></a>DTU 購入モデルを使用した単一データベースに対するリソース制限
 
@@ -40,7 +40,7 @@ ms.locfileid: "75637594"
 | 選択可能な最大ストレージ容量 (GB) | 2 |
 | 最大インメモリ OLTP ストレージ容量 (GB) |該当なし |
 | 最大同時実行ワーカー (要求) 数 | 30 |
-| 最大同時セッション数 | 300 |
+| 最大同時セッション数 | 該当なし |
 |||
 
 > [!IMPORTANT]
@@ -94,7 +94,7 @@ ms.locfileid: "75637594"
 \* 1,024 GB から最大 4,096 GB (256 GB 単位)
 
 > [!IMPORTANT]
-> 現在、1 TB を超える Premium レベルのストレージは、中国東部、中国北部、ドイツ中部、ドイツ北東部、米国中西部、米国 DoD の各リージョンと、米国政府中部を除くすべてのリージョンで利用できます。 これらのリージョンでは、Premium レベルのストレージの最大容量は 1 TB です。  詳しくは、[P11-P15 の現在の制限事項](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)に関するページをご覧ください。  
+> 現在、1 TB を超える Premium レベルのストレージは、中国東部、中国北部、ドイツ中部、ドイツ北東部、米国中西部、US DoD の各リージョンと、US Gov 中部を除くすべてのリージョンで利用できます。 これらのリージョンでは、Premium レベルのストレージの最大容量は 1 TB です。  詳しくは、[P11-P15 の現在の制限事項](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)に関するページをご覧ください。  
 > [!NOTE]
 > `tempdb` の制限については、[tempdb の制限](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database)に関する記事を参照してください。
 

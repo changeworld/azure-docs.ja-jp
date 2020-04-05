@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 08/30/2019
 ms.openlocfilehash: d568a267952a22d2e7a6b7acb6d54cf41f803367
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70913956"
 ---
 # <a name="test-your-azure-data-lake-analytics-code"></a>Azure Data Lake Analytics コードのテスト
@@ -110,7 +110,7 @@ UDO 関数を呼び出した後、C# assert 関数を使用したスキーマお
 
 プロジェクトをビルドしたら、 **[テスト]**  >  **[Windows]**  >  **[テスト エクスプローラー]** の順に選択します。 **テスト エクスプローラー**からテスト ケースを実行できます。 または、単体テスト内で .cs ファイルを右クリックし、 **[テストの実行]** を選択します。
 
-## Azure Pipelines でのテスト ケースの実行<a name="run-test-cases-in-azure-devops"></a>
+## <a name="run-test-cases-in-azure-pipelines"></a>Azure Pipelines でのテスト ケースの実行<a name="run-test-cases-in-azure-devops"></a>
 
 **U-SQL スクリプト テスト プロジェクト**と **C# UDO テスト プロジェクト**はどちらも、C# 単体テスト プロジェクトを継承します。 Azure Pipelines の [Visual Studio テスト タスク](https://docs.microsoft.com/azure/devops/pipelines/test/getting-started-with-continuous-testing?view=vsts)では、これらのテスト ケースを実行できます。
 
@@ -148,7 +148,7 @@ C# UDO テストの場合、UDO に必要な次のアセンブリを必ず参照
 
 [Nuget パッケージ Microsoft.Azure.DataLake.USQL.Interfaces](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.Interfaces/) によってこれらを参照する場合は必ず、ビルド パイプラインで NuGet Restore タスクを追加してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Data Lake Analytics の CI/CD パイプラインを設定する方法](data-lake-analytics-cicd-overview.md)
 - [ローカル コンピューターで U-SQL スクリプトを実行する](data-lake-analytics-data-lake-tools-local-run.md)

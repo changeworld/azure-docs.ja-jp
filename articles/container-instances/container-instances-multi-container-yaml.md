@@ -4,10 +4,10 @@ description: このチュートリアルでは、複数のコンテナーを含�
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: cce98ec56ee1d84c087150ba486b9482515b46f0
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74533591"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>チュートリアル:YAML ファイルを使用して複数コンテナー グループをデプロイする
@@ -166,9 +166,9 @@ Connection: keep-alive
 
 このように、サイドカーは、グループのローカル ネットワーク経由で、メインの Web アプリケーションに定期的に HTTP 要求を実行して、アプリケーションが実行中であることを確認します。 このサイドカーの例は、`200 OK` 以外の HTTP 応答コードを受け取ったときに、アラートをトリガーするように拡張できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、YAML ファイルを使用して、Azure Container Instances に複数コンテナー グループをデプロイしました。 以下の方法について学習しました。
+このチュートリアルでは、YAML ファイルを使用して、Azure Container Instances に複数コンテナー グループをデプロイしました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * マルチコンテナー グループ用の YAML ファイルを構成する

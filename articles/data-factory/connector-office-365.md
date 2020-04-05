@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/20/2019
 ms.author: jingwang
 ms.openlocfilehash: d97b3caccc92f0fdfeb229d94e30ee6499c26181
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74912407"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Azure Data Factory を使用して Office 365 から Azure にデータをコピーする
@@ -56,7 +56,7 @@ Office 365 から Azure にデータをコピーするには、前提条件と�
 
 ADF がマネージド アプリの一部として作成され、管理リソース グループ内のリソースに対して Azure ポリシーの割り当てが行われた場合は、コピー アクティビティが実行されるたびに、ポリシー割り当てが適用されるかどうかが ADF によってチェックされます。 サポートされているポリシーの一覧については、[こちら](https://docs.microsoft.com/graph/data-connect-policies#policies)をご覧ください。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 >[!TIP]
 >Office 365 コネクタの使用に関するチュートリアルについては、[Office 365 からのデータ読み込み](load-office-365-data.md)関する記事をご覧ください。
@@ -78,7 +78,7 @@ Office 365 のリンクされたサービスでは、次のプロパティがサ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります: **Office 365** | はい |
+| type | type プロパティは、次のように設定する必要があります:**Office365** | はい |
 | office365TenantId | Office 365 アカウントが属している Azure テナント ID です。 | はい |
 | servicePrincipalTenantId | Azure AD Web アプリケーションが存在するテナントの情報を指定します。 | はい |
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 | はい |
@@ -118,7 +118,7 @@ Office 365 からのデータ コピーについては、次のプロパティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは **Office365Table** に設定する必要があります。 | はい |
+| type | データセットの type プロパティは、次のように設定する必要があります:**Office365Table** に設定する必要があります。 | はい |
 | tableName | Office 365 から抽出するデータセットの名前です。 抽出に使用できる Office 365 データセットの一覧については、[こちら](https://docs.microsoft.com/graph/data-connect-datasets#datasets)をご覧ください。 | はい |
 
 データセットに `dateFilterColumn`、`startTime`、`endTime`、`userScopeFilterUri` を設定していた場合は現状のまま引き続きサポートされますが、今後のアクティビティ ソースでは新しいモデルを使用することをお勧めします。
@@ -302,5 +302,5 @@ Office 365 からデータをコピーする場合、コピー アクティビ�
 ]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

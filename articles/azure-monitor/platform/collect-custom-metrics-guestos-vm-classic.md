@@ -8,10 +8,10 @@ ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
 ms.openlocfilehash: 65bb1a3915ece384974da12b4e7a1ad0c1e08133
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77655818"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Windows 仮想マシン (クラシック) についてゲスト OS メトリックを Azure Monitor メトリック データベースに送信する

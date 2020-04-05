@@ -17,10 +17,10 @@ ms.date: 07/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ccf124c5a4160715df4e685e405dcd591c49ae7
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68496447"
 ---
 # <a name="tutorial-integrate-civic-platform-with-azure-active-directory"></a>チュートリアル:Civic Platform と Azure Active Directory の統合
@@ -29,7 +29,7 @@ ms.locfileid: "68496447"
 
 * Civic Platform にアクセスできるユーザーを Azure AD で制御する。
 * ユーザーが自分の Azure AD アカウントを使用して Civic Platform に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

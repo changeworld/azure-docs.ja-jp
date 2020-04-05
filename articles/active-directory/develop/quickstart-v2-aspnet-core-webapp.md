@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 72c363c34a3e7e01cb32917dd87237e4bbfc9490
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: c4d34a6db774712e13ea86d38ae48a543a07a8bc
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249144"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79529766"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>クイック スタート:ASP.NET Core Web アプリに Microsoft サインインを追加する
 このクイックスタートでは、ASP.NET Core Web アプリで、(hotmail.com、outlook.com などの) 個人アカウント、また職場や学校のアカウントを任意の Azure Active Directory (Azure AD) インスタンスからサインインさせる方法を、コード サンプルを使用して学びます。 (図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください)。
@@ -68,7 +68,7 @@ ms.locfileid: "78249144"
 > [!div class="sxs-lookup" renderon="portal"]
 > Visual Studio 2019 を使用してプロジェクトを実行します。
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
-> [コード サンプルをダウンロードします]()
+> [コード サンプルをダウンロードします](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>手順 3:アプリが構成され、実行準備ができる

@@ -16,10 +16,10 @@ ms.date: 01/30/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f132deb8e391ca4c8f4ed093e7cc5e0d91e595e3
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76991954"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ticketmanager"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と TicketManager の統合
@@ -102,7 +102,7 @@ TicketManager に対する Azure AD SSO を構成してテストするには、�
 
 1. その他に、TicketManager アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | Name | ソース属性|
+    | 名前 | ソース属性|
     | ------------ | --------- |
     | uid | user.userprincipalname |
 

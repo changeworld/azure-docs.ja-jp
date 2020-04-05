@@ -6,13 +6,13 @@ ms.topic: tutorial
 ms.date: 02/25/2020
 ms.custom: mvc
 ms.openlocfilehash: 4d9ef061904fb1a0fff25506eedb82158971bed5
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77622025"
 ---
-# <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) での Kubernetes のアップグレード
+# <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) での Kubernetes のアップグレード
 
 アプリケーションとクラスターのライフサイクルの一環として、使用可能な最新バージョンの Kubernetes にアップグレードし、新しい機能を使用することができます。 Azure Kubernetes Service (AKS) クラスターは、Azure CLI を使用してアップグレードできます。
 

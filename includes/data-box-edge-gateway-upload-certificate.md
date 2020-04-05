@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 06/26/2019
 ms.author: alkohli
 ms.openlocfilehash: 09d9b5bbf3f9ca7a4eef37891d03c9c865e7f74b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67448627"
 ---
 適切な SSL 証明書により、暗号化された情報が適切なサーバーに確実に送信されます。 暗号化だけでなく、証明書により認証もできます。 デバイスの PowerShell インターフェイス経由で、信頼された独自の SSL 証明書をアップロードすることができます。

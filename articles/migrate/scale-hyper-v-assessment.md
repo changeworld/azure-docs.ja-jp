@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: raynew
 ms.openlocfilehash: c1ae3a9ed8a775161aaf85ab2c91b1e43113d2e2
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70279449"
 ---
 # <a name="assess-large-numbers-of-hyper-v-vms-for-migration-to-azure"></a>Azure への移行のために多数の Hyper-V VM を評価する
@@ -36,8 +36,8 @@ ms.locfileid: "70279449"
 
 多数の Hyper-V VM の評価を計画する際には、以下についていくつかの考慮点があります。
 
-- **Azure Migrate プロジェクトの計画**:Azure Migrate プロジェクトをデプロイする方法を調べます。 たとえば、データセンターが地理的に異なる場所にある場合や、検出、評価、または移行に関連するメタデータを地理的に異なる場所に格納する必要がある場合は、複数のプロジェクトが必要になることがあります。
-- **アプライアンスの計画**:Azure Migrate では、Hyper-V VM としてデプロイされたオンプレミスの Azure Migrate アプライアンスを使用して、評価と移行のために VM を継続的に検出します。 アプライアンスは、VM、ディスク、ネットワーク アダプターなどの環境の変化を監視します。 また、これらに関するメタデータとパフォーマンス データを Azure に送信します。 デプロイするアプライアンスの数を確認する必要があります。
+- **Azure Migrate プロジェクトの計画**: Azure Migrate プロジェクトをデプロイする方法を調べます。 たとえば、データセンターが地理的に異なる場所にある場合や、検出、評価、または移行に関連するメタデータを地理的に異なる場所に格納する必要がある場合は、複数のプロジェクトが必要になることがあります。
+- **アプライアンスの計画**: Azure Migrate では、Hyper-V VM としてデプロイされたオンプレミスの Azure Migrate アプライアンスを使用して、評価と移行のために VM を継続的に検出します。 アプライアンスでは、VM、ディスク、ネットワーク アダプターなどの環境の変化が監視されます。 また、これらに関するメタデータとパフォーマンス データが Azure に送信されます。 デプロイするアプライアンスの数を確認する必要があります。
 
 
 ## <a name="planning-limits"></a>計画の制限
@@ -85,7 +85,7 @@ ms.locfileid: "70279449"
 評価の作成とレビューの[詳細を確認](tutorial-assess-hyper-v.md)します。
     
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、次の内容について説明します。
  

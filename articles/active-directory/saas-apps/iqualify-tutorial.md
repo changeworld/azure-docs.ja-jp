@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と iQualify LMS の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と iQualify LMS の統合 | Microsoft Docs'
 description: Azure Active Directory と iQualify LMS の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: a1db4784eb63df14b7e7971d0273512ba657df96
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68944985"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>チュートリアル:Azure Active Directory と iQualify LMS の統合
+# <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>チュートリアル: Azure Active Directory と iQualify LMS の統合
 
 このチュートリアルでは、iQualify LMS と Azure Active Directory (Azure AD) を統合する方法について説明します。
 iQualify LMS と Azure AD の統合には、次の利点があります。
@@ -160,7 +160,7 @@ iQualify LMS で Azure AD シングル サインオンを構成するには、�
 
     f. **[OK]** をクリックします。
 
-    g. **[Save]** をクリックします。
+    g. **[保存]** をクリックします。
 
     > [!Note]
     > **person_id** 属性は**省略可能**です。

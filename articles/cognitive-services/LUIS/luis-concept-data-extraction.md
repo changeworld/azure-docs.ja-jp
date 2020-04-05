@@ -5,11 +5,11 @@ author: diberry
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.openlocfilehash: 1c1a744c06e5347625fb96518bd809481ee797e5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716293"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79219201"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>意図とエンティティが含まれる発話テキストからデータを抽出する
 LUIS を使用すると、ユーザーの自然言語での発話から情報を取得できます。 この情報は、アクションを実行するために、プログラム、アプリケーション、またはチャットボットで使用できるような方法で抽出されます。 以降のセクションで、JSON の例を使用して、意図とエンティティから返されるデータについて説明します。
@@ -19,11 +19,11 @@ LUIS を使用すると、ユーザーの自然言語での発話から情報を
 ## <a name="data-location-and-key-usage"></a>データの場所とキー使用法
 LUIS では、公開されている[エンドポイント](luis-glossary.md#endpoint)からデータを提供しています。 **HTTPS 要求** (POST または GET) には、発話と、ステージング環境や運用環境など、オプションの構成がいくつか含まれます。
 
-#### <a name="v2-prediction-endpoint-requesttabv2"></a>[V2 予測エンドポイントの要求](#tab/V2)
+#### <a name="v2-prediction-endpoint-request"></a>[V2 予測エンドポイントの要求](#tab/V2)
 
 `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&q=book 2 tickets to paris`
 
-#### <a name="v3-prediction-endpoint-requesttabv3"></a>[V3 予測エンドポイントの要求](#tab/V3)
+#### <a name="v3-prediction-endpoint-request"></a>[V3 予測エンドポイントの要求](#tab/V3)
 
 `https://westus.api.cognitive.microsoft.com/luis/v3.0-preview/apps/<appID>/slots/<slot-type>/predict?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&query=book 2 tickets to paris`
 
@@ -38,7 +38,7 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
 ## <a name="data-from-intents"></a>意図からのデータ
 プライマリ データは、最上位スコアの**意図の名前**です。 エンドポイントの応答は次のとおりです。
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
 ```JSON
 {
@@ -51,7 +51,7 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 予測エンドポイントの応答](#tab/V3)
 
 ```JSON
 {
@@ -73,14 +73,14 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
 
 * * *
 
-|データ オブジェクト|データ型|データの場所|Value|
+|データ オブジェクト|データ型|データの場所|値|
 |--|--|--|--|
 |Intent|String|topScoringIntent.intent|"GetStoreInfo"|
 
 チャットボットまたは LUIS 呼び出し元アプリが複数の意図のスコアに基づいて決定を行う場合、すべての意図のスコアを返します。
 
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
 querystring パラメーター `verbose=true` を設定します。 エンドポイントの応答は次のとおりです。
 
@@ -105,7 +105,7 @@ querystring パラメーター `verbose=true` を設定します。 エンドポ
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 予測エンドポイントの応答](#tab/V3)
 
 querystring パラメーター `show-all-intents=true` を設定します。 エンドポイントの応答は次のとおりです。
 
@@ -135,14 +135,14 @@ querystring パラメーター `show-all-intents=true` を設定します。 エ
 
 意図は、スコアが最も高いものから最も低いものへと並べ替えられます。
 
-|データ オブジェクト|データ型|データの場所|Value|Score|
+|データ オブジェクト|データ型|データの場所|値|Score|
 |--|--|--|--|:--|
 |Intent|String|intents[0].intent|"GetStoreInfo"|0.984749258|
 |Intent|String|intents[1].intent|"None"|0.0168218873|
 
 事前構築済みのドメインを追加する場合、意図の名前は、`Utilties` や`Communication` などのドメインと、意図を表します。
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
 ```JSON
 {
@@ -168,7 +168,7 @@ querystring パラメーター `show-all-intents=true` を設定します。 エ
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 予測エンドポイントの応答](#tab/V3)
 
 ```JSON
 {
@@ -196,7 +196,7 @@ querystring パラメーター `show-all-intents=true` を設定します。 エ
 
 * * *
 
-|Domain|データ オブジェクト|データ型|データの場所|Value|
+|Domain|データ オブジェクト|データ型|データの場所|値|
 |--|--|--|--|--|
 |Utilities|Intent|String|intents[0].intent|"<b>Utilities</b>.ShowNext"|
 |Communication|Intent|String|intents[1].intent|<b>Communication</b>.StartOver"|
@@ -210,7 +210,7 @@ querystring パラメーター `show-all-intents=true` を設定します。 エ
 
 すべてのエンティティが、エンドポイントから応答の**エンティティ**配列で返されます。
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
 ```JSON
 "entities": [
@@ -233,7 +233,7 @@ querystring パラメーター `show-all-intents=true` を設定します。 エ
 ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 予測エンドポイントの応答](#tab/V3)
 
 ```JSON
 "entities": {
@@ -266,7 +266,7 @@ LUIS での [トークンのサポート](luis-language-support.md#tokenization)
 
 `Dec 5th send to +1 360-555-1212`
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
 ```JSON
 "entities": [
@@ -347,7 +347,7 @@ LUIS での [トークンのサポート](luis-language-support.md#tokenization)
   ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 予測エンドポイントの応答](#tab/V3)
 
 querystring パラメーター `verbose=true` なし。
 
@@ -556,7 +556,7 @@ querystring パラメーター `verbose=true` あり。
 役割は、エンティティのコンテキスト上の差異です。
 
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
 エンティティ名は `Location` で、2 つのロール、`Origin` と `Destination` があります。
 
@@ -589,7 +589,7 @@ querystring パラメーター `verbose=true` あり。
 ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 予測エンドポイントの応答](#tab/V3)
 
 V3 では、**ロール名**はオブジェクトのプライマリ名になります。
 
@@ -709,7 +709,7 @@ querystring パラメーター `verbose=true` あり。
 キー フレーズ抽出エンティティでは、[Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) によって提供される、発話内のキー フレーズを返します。
 
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
 ```JSON
 {
@@ -744,7 +744,7 @@ querystring パラメーター `verbose=true` あり。
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 予測エンドポイントの応答](#tab/V3)
 
 [V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
 
@@ -822,7 +822,7 @@ LUIS では、発話内で検出されたすべてのエンティティを返し
 
 LUIS エンドポイントでは、異なるエンティティ内に同じデータが見つかる場合があります。
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
 ```JSON
 {
@@ -948,7 +948,7 @@ LUIS エンドポイントでは、異なるエンティティ内に同じデー
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 予測エンドポイントの応答](#tab/V3)
 
 querystring パラメーター `verbose=true` なし。
 
@@ -1135,7 +1135,7 @@ querystring パラメーター `verbose=true` あり。
 
 クエリ `when is the best time to go to red rock?` の場合、アプリの複数のリストに単語 `red` があると、LUIS ではすべてのエンティティを認識し、JSON エンドポイントの応答の一部としてエンティティの配列を返します。
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
 ```JSON
 {
@@ -1173,7 +1173,7 @@ querystring パラメーター `verbose=true` あり。
 
 
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 予測エンドポイントの応答](#tab/V3)
 
 クエリ文字列に `verbose=true` なし。
 

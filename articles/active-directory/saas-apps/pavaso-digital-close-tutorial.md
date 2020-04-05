@@ -17,10 +17,10 @@ ms.date: 01/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1f5390c578a80f8391ba879f9e7cbe7acc1cfd8f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160232"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pavaso-digital-close"></a>チュートリアル:Azure Active Directory と Pavaso Digital Close の統合

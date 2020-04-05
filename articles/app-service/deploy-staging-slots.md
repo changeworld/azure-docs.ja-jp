@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 03/04/2020
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 21e025088e59c7f65f848b332ecb393b05918261
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78300873"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する

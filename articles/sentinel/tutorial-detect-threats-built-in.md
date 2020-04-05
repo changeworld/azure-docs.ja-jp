@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
 ms.openlocfilehash: df855aa768fdeb279482b8407259be1a644322d9
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77585205"
 ---
 # <a name="tutorial-detect-threats-out-of-the-box"></a>チュートリアル:難しい設定なしで脅威を検出する

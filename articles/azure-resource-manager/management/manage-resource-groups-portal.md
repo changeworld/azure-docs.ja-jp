@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
 ms.openlocfilehash: 8087baf7595bfd2497f97fbff4822b356cd1b146
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476725"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234267"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Azure portal を使用して Azure Resource Manager リソース グループを管理する
 
@@ -33,7 +33,7 @@ ms.locfileid: "75476725"
 
 ## <a name="create-resource-groups"></a>リソース グループを作成する
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[リソース グループ]** を選択します
 
     ![add resource group](./media/manage-resource-groups-portal/manage-resource-groups-add-group.png)
@@ -46,14 +46,14 @@ ms.locfileid: "75476725"
 
      ![リソース グループの作成](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
 5. **[確認と作成]** を選択します
-6. **作成** を選択します。 リソース グループの作成には数秒かかります。
+6. **［作成］** を選択します リソース グループの作成には数秒かかります。
 7. 上部のメニューにある **[最新の情報に更新]** を選択してリソース グループの一覧を最新の状態に更新し、新しく作成されたリソース グループを選択してこれを開きます。 または、上部にある **[通知]** (ベルのアイコン) をクリックしてから、 **[リソース グループに移動]** を選択して、新しく作成されたリソース グループを開きます
 
     ![リソース グループに移動](./media/manage-resource-groups-portal/manage-resource-groups-add-group-go-to-resource-group.png)
 
 ## <a name="list-resource-groups"></a>リソース グループの一覧を表示する
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. リソース グループを表示するには、 **[リソース グループ]** を選択します
 
     ![リソース グループの参照](./media/manage-resource-groups-portal/manage-resource-groups-list-groups.png)
@@ -62,7 +62,7 @@ ms.locfileid: "75476725"
 
 ## <a name="open-resource-groups"></a>リソース グループを開く
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[リソース グループ]** を選択します。
 3. 開くリソース グループを選択します。
 

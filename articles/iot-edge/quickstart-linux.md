@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 4a076f9e6ae67b9a4dc27fcd058945716dfebe75
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 52258a8bc287df36158ec143e4aad74c34455ea4
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264612"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80236086"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>クイック スタート:初めての IoT Edge モジュールを Linux 仮想デバイスにデプロイする
 
@@ -40,8 +40,10 @@ ms.locfileid: "76264612"
 Azure IoT の拡張機能を Cloud Shell インスタンスに追加します。
 
    ```azurecli-interactive
-   az extension add --name azure-cli-iot-ext
+   az extension add --name azure-iot
    ```
+   
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -136,7 +138,7 @@ IoT Edge をローカル コンピューター上または ARM32 あるいは AR
 
 このクイック スタートの残りのコマンドは、IoT Edge デバイス自体で実行します。これにより、デバイスの動作を実際に確認することができます。 仮想マシンを使用している場合は、creation コマンドによって出力されたパブリック IP アドレスを使って今すぐそのマシンに接続してください。 パブリック IP アドレスは、Azure portal の仮想マシンの概要ページでも確認できます。 次のコマンドを使用して、仮想マシンに接続します。 前提条件で推奨されたユーザー名とは別の名前を使用している場合は、`{azureuser}` を置き換えます。 `{publicIpAddress}` は、実際のマシンのアドレスに置き換えてください。
 
-   ```azurecli-interactive
+   ```console
    ssh azureuser@{publicIpAddress}
    ```
 

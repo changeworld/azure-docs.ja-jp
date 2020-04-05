@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 09/25/2019
 ms.custom: mvc
 ms.openlocfilehash: 07cdbfb27aaf9076e726ebda861ed24996e10135
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74533389"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Azure Container Instances における、トラブルシューティングに関する一般的問題
@@ -22,11 +22,11 @@ ms.locfileid: "74533389"
 
 コンテナーの仕様を定義するときに、特定のパラメーターは名前付けの制限に準拠している必要があります。 下記は、コンテナーグループの特性のための、特定の要件を持つテーブルです。 Azure の名前付け規則の詳細については、Azure Architecture Center 内の[名前付け規則][azure-name-restrictions]を参照してください。
 
-| Scope (スコープ) | Length | 大文字小文字の区別 | 有効な文字 | 提案されるパターン | 例 |
+| Scope | 長さ | 大文字小文字の区別 | 有効な文字 | 提案されるパターン | 例 |
 | --- | --- | --- | --- | --- | --- |
 | コンテナー グループ名 | 1 ～ 64 |大文字と小文字は区別されない |最初と最後の文字を除く任意の場所の英数字とハイフン |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | コンテナー名 | 1 ～ 64 |大文字と小文字は区別されない |最初と最後の文字を除く任意の場所の英数字とハイフン |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| コンテナーポート | 1 ～ 65535 の範囲 |整数 |1 ～ 65535 の整数 |`<port-number>` |`443` |
+| コンテナーポート | 1 ～ 65535 の範囲 |Integer |1 ～ 65535 の整数 |`<port-number>` |`443` |
 | DNS 名ラベル | 5-63 |大文字と小文字は区別されない |最初と最後の文字を除く任意の場所の英数字とハイフン |`<name>` |`frontend-site1` |
 | 環境変数 | 1 ～ 63 |大文字と小文字は区別されない |最初と最後の文字を除く任意の場所の英数字とアンダースコア (_) |`<name>` |`MY_VARIABLE` |
 | ボリューム名 | 5-63 |大文字と小文字は区別されない |最初と最後の文字を除く任意の場所の小文字のアルファベット、数字、およびハイフン。 2つの連続するハイフンを含めることはできません。 |`<name>` |`batch-output-volume` |
@@ -222,7 +222,7 @@ Azure Container Instances では、通常の Docker 構成のようなポート 
     az container delete --resource-group myResourceGroup --name mycontainer
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 コンテナーのデバッグを支援するために、[コンテナーのログとイベントを取得する](container-instances-get-logs.md)方法を学習します。
 

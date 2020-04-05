@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: b8c2ba54fcc69ba126bf5f68aed99b25f8156155
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76046177"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights エクスプローラー
@@ -71,7 +71,7 @@ Time Series Insights エクスプローラーを使用するための前提条�
 
       - **[述語]** :次の表に示されているオペランドのセットを使用してイベントをすばやくフィルター処理するには、述語を使用します。 選択またはクリックして検索を実行すると、その検索に基づいて述語が自動的に更新されます。 サポートされるオペランドの型には以下が含まれます。
 
-         |操作  |サポートされている型  |メモ  |
+         |Operation  |サポートされている型  |Notes  |
          |---------|---------|---------|
          |**<** 、 **>** 、 **<=** 、 **>=**    |  **Double**、**DateTime**、**TimeSpan**       |         |
          |**=** 、 **!=** 、 **<>**     | **String**、**Bool**、**Double**、**DateTime**、**TimeSpan**、**NULL**        |         |

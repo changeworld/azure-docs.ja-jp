@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: efa2885ce0534c5d78bb08bbf24da59850f6ea22
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74075192"
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends-such-as-app-service"></a>App Service などのマルチテナント バックエンドに対する Application Gateway のサポート
@@ -56,11 +56,11 @@ Web サーバー内がマルチテナント アーキテクチャ設計の場合
 
 App Service からの応答内のホスト名によって、エンドユーザーのブラウザーが、Application Gateway に関連付けられているドメインではなく、*.azurewebsites.net ホスト名にリダイレクトされる場合があります。 この問題が発生するのは、以下の場合です。
 
-- App Service 上でリダイレクトが構成されている。 要求の末尾にスラッシュを追加するだけでリダイレクトが実行される場合があります。
-- Azure AD 認証が構成されており、これが原因でリダイレクトが実行される。
+- App Service 上でリダイレクトが構成されています。 要求の末尾にスラッシュを追加するだけでリダイレクトが実行される場合があります。
+- Azure AD 認証が構成されており、これが原因でリダイレクトが実行されています。
 
 このような問題を解決するには、[App Service の URL にリダイレクトされる問題のトラブルシューティング](https://docs.microsoft.com/azure/application-gateway/troubleshoot-app-service-redirection-app-service-url)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 マルチテナント アプリケーション (Azure App Service の Web アプリなど) と共にアプリケーション ゲートウェイをバックエンド プール メンバーとして設定する方法については、[Application Gateway を使用する App Service の Web アプリ の構成](https://docs.microsoft.com/azure/application-gateway/configure-web-app-portal)に関するページを参照してください。

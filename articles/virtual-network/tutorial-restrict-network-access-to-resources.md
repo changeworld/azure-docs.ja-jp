@@ -17,13 +17,13 @@ ms.workload: infrastructure
 ms.date: 08/23/2018
 ms.author: kumud
 ms.openlocfilehash: 85fc5687b82947ed16bde0c30ca2b947514ba958
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74186370"
 ---
-# <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して仮想ネットワーク サービス エンドポイントで PaaS リソースへのネットワーク アクセスを制限する
+# <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>チュートリアル: Azure Portal を使用して仮想ネットワーク サービス エンドポイントで PaaS リソースへのネットワーク アクセスを制限する
 
 仮想ネットワーク サービス エンドポイントを使うと、一部の Azure サービス リソースへのネットワーク アクセスを、仮想ネットワーク サブネットに制限できます。 また、リソースに対するインターネット アクセスを排除することもできます。 サービス エンドポイントにより、使用している仮想ネットワークからサポートされている Azure サービスへの直接接続が提供されるため、ご自身の仮想ネットワークのプライベート アドレス スペースを使用して、Azure サービスにアクセスできるようになります。 サービス エンドポイントを介して Azure リソースに送信されるトラフィックは、常に Microsoft Azure のバックボーン ネットワーク上に留まります。 このチュートリアルでは、以下の内容を学習します。
 
@@ -49,11 +49,11 @@ Azure Portal (https://portal.azure.com ) にログインします。
 2. **[ネットワーク]** を選択してから、 **[仮想ネットワーク]** を選択します。
 3. 以下の情報を入力するか選んだ後、 **[作成]** を選びます。
 
-   |Setting|値|
+   |設定|値|
    |----|----|
-   |名前| myVirtualNetwork |
+   |Name| myVirtualNetwork |
    |アドレス空間| 10.0.0.0/16|
-   |Subscription| サブスクリプションを選択します。|
+   |サブスクリプション| サブスクリプションを選択します。|
    |Resource group | **[新規作成]** を選択し、「*myResourceGroup*と入力します。|
    |Location| **[米国東部]** を選択します。 |
    |サブネット名| パブリック|
@@ -75,9 +75,9 @@ Azure Portal (https://portal.azure.com ) にログインします。
 
 3. **[サブネットの追加]** で以下の情報を選ぶか入力し、 **[OK]** を選びます。
 
-    |Setting|値|
+    |設定|値|
     |----|----|
-    |名前| プライベート |
+    |Name| プライベート |
     |アドレス範囲| 10.0.1.0/24|
     |サービス エンドポイント| **[サービス]** で **Microsoft.Storage** を選びます|
 
@@ -92,58 +92,58 @@ Azure Portal (https://portal.azure.com ) にログインします。
 2. **[ネットワーク]** を選び、 **[ネットワーク セキュリティ グループ]** を選びます。
 3. **[ネットワーク セキュリティ グループの作成]** で、以下の情報を入力するか選んだ後、 **[作成]** を選びます。
 
-    |Setting|値|
+    |設定|値|
     |----|----|
-    |名前| myNsgPrivate |
-    |Subscription| サブスクリプションを選択します。|
+    |Name| myNsgPrivate |
+    |サブスクリプション| サブスクリプションを選択します。|
     |Resource group | **[既存のものを使用]** を選択し、 *[myResourceGroup]* を選択します。|
     |Location| **[米国東部]** を選択します。 |
 
-4. ネットワーク セキュリティ グループが作成された後、ポータルの上部にある **[リソース、サービス、ドキュメントの検索]** ボックスに「*myNsgPrivate*」と入力します。 検索結果に **myNsgPrivate** が表示されたら、それを選びます。
+4. ネットワーク セキュリティ グループが作成された後、ポータルの上部にある *[リソース、サービス、ドキュメントの検索]* ボックスに「**myNsgPrivate**」と入力します。 検索結果に **myNsgPrivate** が表示されたら、それを選びます。
 5. **[設定]** で **[送信セキュリティ規則]** を選びます。
 6. **[+ 追加]** を選択します。
 7. Azure Storage サービスへの送信方向の通信を許可するルールを作成します。 次の情報を入力または選択し、 **[追加]** を選択します。
 
-    |Setting|値|
+    |設定|値|
     |----|----|
     |source| **VirtualNetwork** を選びます。 |
     |Source port ranges| * |
-    |Destination | **[Service Tag]\(サービス タグ\)** を選びます|
+    |宛先 | **[Service Tag]\(サービス タグ\)** を選びます|
     |宛先サービス タグ | **[ストレージ]** を選びます|
     |宛先ポート範囲| * |
     |Protocol|Any|
-    |Action|Allow|
-    |優先順位|100|
-    |名前|Allow-Storage-All|
+    |アクション|Allow|
+    |Priority|100|
+    |Name|Allow-Storage-All|
 
 8. インターネットへの通信を拒否する別の送信セキュリティ ルールを作成します。 このルールは、送信方向のインターネット通信を許可する、すべてのネットワーク セキュリティ グループ内の既定のルールをオーバーライドします。 次の値を使用して、手順 5 から 7 をもう一度実行します。
 
-    |Setting|値|
+    |設定|値|
     |----|----|
     |source| **VirtualNetwork** を選びます。 |
     |Source port ranges| * |
-    |Destination | **[Service Tag]\(サービス タグ\)** を選びます|
+    |宛先 | **[Service Tag]\(サービス タグ\)** を選びます|
     |宛先サービス タグ| **[インターネット]** を選びます|
     |宛先ポート範囲| * |
     |Protocol|Any|
-    |Action|拒否|
+    |アクション|拒否|
     |Priority|110|
-    |名前|Deny-Internet-All|
+    |Name|Deny-Internet-All|
 
 9. **[設定]** で **[受信セキュリティ規則]** を選びます。
 10. **[+ 追加]** を選択します。
 11. 任意の場所からサブネットへのリモート デスクトップ プロトコル (RDP) トラフィックを許可する受信セキュリティ規則を作成します。 この規則は、インターネットからのすべての受信トラフィックを拒否する既定のセキュリティ規則をオーバーライドします。 後のステップで接続をテストできるように、サブネットへのリモート デスクトップ接続を許可します。 **[設定]** で **[受信セキュリティ規則]** を選択し、 **[+ 追加]** を選択し、次の値を入力して、 **[追加]** を選択します。
 
-    |Setting|値|
+    |設定|値|
     |----|----|
-    |Source| Any |
+    |source| Any |
     |Source port ranges| * |
-    |Destination | **VirtualNetwork** を選びます。|
+    |宛先 | **VirtualNetwork** を選びます。|
     |宛先ポート範囲| 3389 |
     |Protocol|Any|
-    |Action|Allow|
+    |アクション|Allow|
     |Priority|120|
-    |名前|Allow-RDP-All|
+    |Name|Allow-RDP-All|
 
 12. **[設定]** で、 **[サブネット]** を選択します。
 13. **[+ 関連付け]** を選びます
@@ -160,13 +160,13 @@ Azure Portal (https://portal.azure.com ) にログインします。
 2. **[ストレージ]** 、 **[ストレージ アカウント - Blob、File、Table、Queue]** の順に選択します。
 3. 次の情報を入力するか選び、それ以外の情報は既定値を選んで、 **[作成]** を選びます。
 
-    |Setting|値|
+    |設定|値|
     |----|----|
-    |名前| すべての Azure の場所で一意の名前 (3 ～ 24 文字で、数字と小文字のみを使用) を入力します。|
+    |Name| すべての Azure の場所で一意の名前 (3 ～ 24 文字で、数字と小文字のみを使用) を入力します。|
     |アカウントの種類|StorageV2 (汎用 v2)|
     |Location| **[米国東部]** を選択します。 |
     |レプリケーション| ローカル冗長ストレージ (LRS)|
-    |Subscription| サブスクリプションを選択します。|
+    |サブスクリプション| サブスクリプションを選択します。|
     |Resource group | **[既存のものを使用]** を選択し、 *[myResourceGroup]* を選択します。|
 
 ### <a name="create-a-file-share-in-the-storage-account"></a>ストレージ アカウントにファイル共有を作成する
@@ -177,7 +177,7 @@ Azure Portal (https://portal.azure.com ) にログインします。
    ![ストレージ アカウント](./media/tutorial-restrict-network-access-to-resources/storage-account.png) 
 
 3. **[+ ファイル共有]** を選択します。
-4. **[名前]** に「*my-file-share*」と入力し、 **[OK]** を選びます。
+4. *[名前]* に「**my-file-share**」と入力し、 **[OK]** を選びます。
 5. **[File サービス]** ボックスを閉じます。
 
 ### <a name="restrict-network-access-to-a-subnet"></a>サブネットへのネットワーク アクセスを制限する
@@ -189,9 +189,9 @@ Azure Portal (https://portal.azure.com ) にログインします。
 3. **[+ 既存の仮想ネットワークを追加]** を選択します。
 4. **[ネットワークの追加]** で次の値を選んで、 **[追加]** を選びます。
 
-    |Setting|値|
+    |設定|値|
     |----|----|
-    |Subscription| サブスクリプションを選択します。|
+    |サブスクリプション| サブスクリプションを選択します。|
     |仮想ネットワーク|**[仮想ネットワーク]** で **myVirtualNetwork** を選びます。|
     |サブネット| **[サブネット]** で **Private** を選びます|
 
@@ -207,7 +207,7 @@ Azure Portal (https://portal.azure.com ) にログインします。
 
 ## <a name="create-virtual-machines"></a>仮想マシンを作成する
 
-ストレージ アカウントへのネットワーク アクセスをテストするには、各サブネットに VM をデプロイします。
+ストレージ アカウントへのネットワーク アクセスをテストするには、各サブネットに VM を展開します。
 
 ### <a name="create-the-first-virtual-machine"></a>最初の仮想マシンを作成する
 
@@ -215,12 +215,12 @@ Azure Portal (https://portal.azure.com ) にログインします。
 2. **[コンピューティング]** 、 **[Windows Server 2016 Datacenter]** の順に選択します。
 3. 次の情報を入力または選択し、 **[OK]** を選択します。
 
-   |Setting|値|
+   |設定|値|
    |----|----|
-   |名前| myVmPublic|
+   |Name| myVmPublic|
    |ユーザー名|任意のユーザー名を入力します。|
-   |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
-   |Subscription| サブスクリプションを選択します。|
+   |Password| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
+   |サブスクリプション| サブスクリプションを選択します。|
    |Resource group| **[既存のものを使用]** を選択し、 **[myResourceGroup]** を選択します。|
    |Location| **[米国東部]** を選択します。|
 
@@ -296,15 +296,15 @@ VM のデプロイには数分かかります。 作成が完了して設定が�
 
    お使いのコンピューターは *MyVirtualNetwork* 仮想ネットワークの *Private* サブネットに含まれていないため、アクセスが拒否されます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソース グループとそれに含まれるすべてのリソースが不要になったら、それらを削除します。
 
-1. ポータル上部の **[検索]** ボックスに「*myResourceGroup*」と入力します。 検索結果に **[myResourceGroup]** が表示されたら、それを選択します。
+1. ポータル上部の *[検索]* ボックスに「**myResourceGroup**」と入力します。 検索結果に **[myResourceGroup]** が表示されたら、それを選択します。
 2. **[リソース グループの削除]** を選択します。
-3. **[TYPE THE RESOURCE GROUP NAME:]\(リソース グループ名を入力してください:\)** に「*myResourceGroup*」と入力し、 **[削除]** を選択します。
+3. *[TYPE THE RESOURCE GROUP NAME:]\(リソース グループ名を入力してください:\)* に「**myResourceGroup**」と入力し、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、仮想ネットワーク サブネットのサービス エンドポイントを有効にしました。 複数の Azure サービスからデプロイされているリソースに対して、サービス エンドポイントを有効にできることを学習しました。 Azure Storage アカウントを作成し、そのストレージ アカウントへのネットワーク アクセスを、仮想ネットワーク サブネット内のリソースのみに制限しました。 サービス エンドポイントの詳細については、[サービス エンドポイントの概要](virtual-network-service-endpoints-overview.md)と[サブネットの管理](virtual-network-manage-subnet.md)に関するページをご覧ください。
 

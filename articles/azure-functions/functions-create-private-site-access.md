@@ -7,10 +7,10 @@ ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 02/15/2020
 ms.openlocfilehash: ada08de182791c6ecb2b83ef3b924bf40975e1ee
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78852017"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>チュートリアル:Azure Functions のプライベート サイト アクセスを設定する

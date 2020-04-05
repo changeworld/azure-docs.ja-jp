@@ -15,10 +15,10 @@ ms.date: 02/24/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
 ms.openlocfilehash: 0fbe27fb5ed61cc187c679f9cb7420f0b444aa60
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77615932"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
@@ -134,7 +134,7 @@ HTTP 状態コード | 理由
 400 Bad Request | リーフ ノードのクエリ時に `Metadata: true` ヘッダーがないか、その形式になっていません。
 404 見つかりません | 要求された要素は存在しません
 405 Method Not Allowed | `GET` 要求のみがサポートされています
-410 削除 | しばらくしてからやり直してください (最長 70 秒)
+410 削除 | しばらくしてから再試行してください (最長 70 秒)
 429 Too Many Requests | 現在 API は、1 秒あたり最大 5 つのクエリをサポートしています
 500 Service Error     | しばらくしてからやり直してください
 
@@ -591,7 +591,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api
 
 ### <a name="placement-of-containers-data-partitions-based-faultupdate-domain"></a>障害/更新ドメインに基づくコンテナー、データ パーティションの配置
 
-特定のシナリオでは、異なるレプリカの配置が非常に重要です。 たとえば、[Orchestrator](https://kubernetes.io/docs/user-guide/node-selection/) を介した[ HDFS レプリカの配置](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps)またはコンテナーの配置では、VM が実行されている `platformFaultDomain` と `platformUpdateDomain` を把握しておかなければならない場合があります。
+特定のシナリオでは、異なるレプリカの配置が非常に重要です。 たとえば、[Orchestrator](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps) を介した[ HDFS レプリカの配置](https://kubernetes.io/docs/user-guide/node-selection/)またはコンテナーの配置では、VM が実行されている `platformFaultDomain` と `platformUpdateDomain` を把握しておかなければならない場合があります。
 これらの決定を行うために、インスタンスの[可用性ゾーン](../../availability-zones/az-overview.md)を使用することもできます。
 このデータは、Instance Metadata Service を使用して直接照会できます。
 
@@ -1025,7 +1025,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/storageP
 
 ### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>VM 内でさまざまな言語を使用してメタデータ サービスを呼び出す例 
 
-Language | 例
+言語 | 例
 ---------|----------------
 Ruby     | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
 Go  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go

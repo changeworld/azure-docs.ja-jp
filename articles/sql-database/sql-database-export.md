@@ -4,19 +4,17 @@ description: Azure Portal を使って BACPAC ファイルに Azure SQL デー�
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
-ms.custom: ''
-ms.devlang: ''
-ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: b96d2e69b757774afe177341caffe2f3cbf00e2b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.topic: conceptual
+ms.openlocfilehash: 0bc72f0ad58829a3ff6545b5c4741ddc20916c31
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823451"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80061631"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Azure SQL データベースを BACPAC ファイルにエクスポートする
 
@@ -52,7 +50,7 @@ ms.locfileid: "73823451"
 
     ![データベースのエクスポート](./media/sql-database-export/database-export2.png)
 
-3. Click **OK**.
+3. **[OK]** をクリックします。
 
 4. エクスポート操作の進行状況を監視するには、エクスポートされたデータベースを含む SQL Database サーバーのページを開きます。 **[設定]** の下で、 **[インポート/エクスポート履歴]** をクリックします。
 
@@ -60,7 +58,7 @@ ms.locfileid: "73823451"
 
 ## <a name="export-to-a-bacpac-file-using-the-sqlpackage-utility"></a>SQLPackage ユーティリティを使用して BACPAC ファイルにエクスポートする
 
-[SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) コマンドライン ユーティリティを使用して SQL データベースをエクスポートするには、「[エクスポートのパラメーターおよびプロパティ](https://docs.microsoft.com/sql/tools/sqlpackage#export-parameters-and-properties)」を参照してください。 SQL Package ユーティリティは、最新バージョンの [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) および [SQL Server Data Tools for Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx) に付属しています。また、Microsoft ダウンロード センターから最新バージョンの [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876) を直接ダウンロードすることもできます。
+[SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) コマンドライン ユーティリティを使用して SQL データベースをエクスポートするには、「[エクスポートのパラメーターおよびプロパティ](https://docs.microsoft.com/sql/tools/sqlpackage#export-parameters-and-properties)」を参照してください。 SQLPackage ユーティリティは、最新バージョンの [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) および [SQL Server Data Tools for Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx) に付属しています。また、Microsoft ダウンロード センターから最新バージョンの [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876) を直接ダウンロードすることもできます。
 
 ほとんどの運用環境では、スケールとパフォーマンスのために、SQLPackage ユーティリティの使用をお勧めします。 BACPAC ファイルを使用した移行に関する SQL Server Customer Advisory Team のブログについては、「[Migrating from SQL Server to Azure SQL Database using BACPAC Files (BACPAC ファイルを使用した SQL Server から Azure SQL Database への移行)](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/)」を参照してください。
 
@@ -87,7 +85,7 @@ $exportRequest = New-AzSqlDatabaseExport -ResourceGroupName $ResourceGroupName -
   -AdministratorLogin $creds.UserName -AdministratorLoginPassword $creds.Password
 ```
 
-エクスポート要求の状態を確認するには、[Get-AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) コマンドレットを使用します。 要求直後にこれを実行すると、通常は、**Status : InProgress** が返されます。 **Status:Succeeded** が表示された場合、エクスポートは完了しています。
+エクスポート要求の状態を確認するには、[Get-AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) コマンドレットを使用します。 要求直後にこれを実行すると、通常は、 **Status : InProgress**が返されます。 **Status : Succeeded** が表示された場合、エクスポートは完了しています。
 
 ```powershell
 $exportStatus = Get-AzSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink
@@ -102,7 +100,7 @@ while ($exportStatus.Status -eq "InProgress")
 $exportStatus
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - データベースをアーカイブ目的でエクスポートする方法の代わりとしての、単一データベースおよびプールされたデータベースの長期バックアップ リテンションについては、[長期バックアップ リテンション](sql-database-long-term-retention.md)に関する記事をご覧ください。 SQL エージェント ジョブを使用すれば、長期バックアップ リテンションの代替手段として、[コピーのみのデータベース バックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server)をスケジュールすることができます。
 - BACPAC ファイルを使用した移行に関する SQL Server Customer Advisory Team のブログについては、「[Migrating from SQL Server to Azure SQL Database using BACPAC Files (BACPAC ファイルを使用した SQL Server から Azure SQL Database への移行)](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/)」を参照してください。

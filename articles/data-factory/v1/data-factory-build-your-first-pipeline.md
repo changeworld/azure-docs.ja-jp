@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: 80644ed2d655544fa176a7be92aec3c01aa3bf14
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75966068"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>チュートリアル:Hadoop クラスターを使用してデータを変換する初めてのパイプラインを作成する

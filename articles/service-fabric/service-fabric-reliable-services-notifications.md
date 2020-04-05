@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 6/29/2017
 ms.author: mcoskun
 ms.openlocfilehash: 1f3239ea1da252ccd84c6572b562756c8fd1677d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75639566"
 ---
 # <a name="reliable-services-notifications"></a>Reliable Services の通知

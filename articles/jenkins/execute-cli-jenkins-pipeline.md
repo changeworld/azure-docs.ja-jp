@@ -5,10 +5,10 @@ keywords: Jenkins, Azure, 開発, App Service, CLI
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.openlocfilehash: bd9192974f6860d08d84a9028702ce2203f562e7
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158826"
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Jenkins と Azure CLI を使用して Azure App Service にデプロイする
@@ -52,7 +52,7 @@ Azure CLI を実行するには、Azure の資格情報が必要です。
 
 ## <a name="create-an-azure-app-service-for-deploying-the-java-web-app"></a>Java Web アプリをデプロイするための Azure App Service の作成
 
-[az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) CLI コマンドを使用して、**Free** 価格レベルで Azure App Service プランを作成します。 App Service プランは、アプリをホストするために使用される物理リソースを定義します。 App Service プランに割り当てられたすべてのアプリケーションは、これらのリソースを共有します。これにより、複数のアプリをホストする際にコストを節約できます。 
+**az appservice plan create** CLI コマンドを使用して、[Free](/cli/azure/appservice/plan#az-appservice-plan-create) 価格レベルで Azure App Service プランを作成します。 App Service プランは、アプリをホストするために使用される物理リソースを定義します。 App Service プランに割り当てられたすべてのアプリケーションは、これらのリソースを共有します。これにより、複数のアプリをホストする際にコストを節約できます。 
 
 ```azurecli-interactive
 az appservice plan create \
@@ -143,7 +143,7 @@ withCredentials([azureServicePrincipal('<mySrvPrincipal>')]) {
 ## <a name="create-jenkins-pipeline"></a>Jenkins パイプラインを作成する
 Web ブラウザーで Jenkins を開き、 **[新しい項目]** をクリックします。 
 
-* ジョブの名前を指定し、 **[パイプライン]** を選択します。 Click **OK**.
+* ジョブの名前を指定し、 **[パイプライン]** を選択します。 **[OK]** をクリックします。
 * **[パイプライン]** タブをクリックします。 
 * **[定義]** で、 **[Pipeline script from SCM]\(SCM からのパイプライン スクリプト\)** を選択します。
 * **[SCM]** で、 **[Git]** を選択します。
@@ -211,8 +211,8 @@ Azure Web App on Linux はデプロイを行う別の方法をサポートして
 
     http://&lt;app_name>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y> (&lt;x> と &lt;y> は任意の数字に置き換える) に移動して、x と y の合計を取得します
     
-## <a name="next-steps"></a>次の手順
-このチュートリアルでは、GitHub レポジトリのソース コードをチェックアウトする Jenkins パイプラインを構成しました。 Maven を実行して war ファイルを構築し、Azure CLI を使用して Azure App Service をデプロイしました。 以下の方法について学習しました。
+## <a name="next-steps"></a>次のステップ
+このチュートリアルでは、GitHub レポジトリのソース コードをチェックアウトする Jenkins パイプラインを構成しました。 Maven を実行して war ファイルを構築し、Azure CLI を使用して Azure App Service をデプロイしました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * Jenkins VM を作成する

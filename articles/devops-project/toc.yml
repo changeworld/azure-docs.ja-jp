@@ -4,7 +4,7 @@
   items:
     - name: Azure DevOps Projects とは
       href: overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: .NET

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
 ms.openlocfilehash: 92fc5bb88ff5efd8fe1a8cd61be833b3984b673a
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73605620"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Azure Data Lake Analytics を使用して Avro データのクエリを実行する
@@ -167,7 +167,7 @@ U-SQL には Avro 用の "エクストラクター" があります。 詳細に
 
     ![各項目に対応した列を示す出力](./media/iot-hub-query-avro-data/query-avro-data-8.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure IoT Hub から Azure サービスにメッセージを効率的にルーティングするために Avro データに対してクエリを実行する方法について説明しました。
 

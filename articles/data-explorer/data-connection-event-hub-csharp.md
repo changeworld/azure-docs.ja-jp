@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.openlocfilehash: cf2a274b4f48b31739d6abba5cf87fa2a10d4ca1
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74667690"
 ---
 # <a name="create-an-event-hub-data-connection-for-azure-data-explorer-by-using-c"></a>C# を使用して Azure Data Explorer 用にイベント ハブ データ接続を作成する

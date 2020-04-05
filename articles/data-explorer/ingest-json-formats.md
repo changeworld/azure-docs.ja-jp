@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: d293b76e004d693813a074cb8551a86cb3c0bec2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76772344"
 ---
 # <a name="ingest-json-formatted-sample-data-into-azure-data-explorer"></a>Azure Data Explorer に JSON 書式付きサンプル データを取り込む
@@ -50,7 +50,7 @@ JSON 書式付きデータを取り込むには、[インジェスト プロパ�
 
 この例では、JSON レコードを生データとして 1 列のテーブルに取り込みます。 データ操作、クエリの使用、および更新ポリシーは、データが取り込まれた後に行われます。
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[KQL](#tab/kusto-query-language)
 
 Kusto クエリ言語を使用して、未加工の JSON 形式でデータを取り込みます。
 
@@ -82,7 +82,7 @@ Kusto クエリ言語を使用して、未加工の JSON 形式でデータを�
     .ingest into table RawEvents h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=json, jsonMappingReference=RawEventMapping)
     ```
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 C# を使用して、未加工の JSON 形式でデータを取り込みます。
 
@@ -159,7 +159,7 @@ C# を使用して、未加工の JSON 形式でデータを取り込みます�
 > [!NOTE]
 > データは[バッチ処理ポリシー](/azure/kusto/concepts/batchingpolicy)に従って集約され、その結果、数分の待機時間が発生します。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Python を使用して、未加工の JSON 形式でデータを取り込みます。
 
@@ -208,7 +208,7 @@ Python を使用して、未加工の JSON 形式でデータを取り込みま�
 
 この例では、JSON レコード データを取り込みます。 各 JSON プロパティは、テーブル内の 1 つの列にマップされます。 
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[KQL](#tab/kusto-query-language)
 
 1. JSON 入力データに類似したスキーマを使用して、新しいテーブルを作成します。 このテーブルは、次のすべての例とインジェスト コマンドで使用します。 
 
@@ -232,7 +232,7 @@ Python を使用して、未加工の JSON 形式でデータを取り込みま�
 
     ファイル 'simple.json' には、行区切りの JSON レコードがいくつか含まれています。 形式は `json` であり、インジェスト コマンドで使用されるマッピングは、作成した `FlatEventMapping` です。
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 1. JSON 入力データに類似したスキーマを使用して、新しいテーブルを作成します。 このテーブルは、次のすべての例とインジェスト コマンドで使用します。 
 
@@ -291,7 +291,7 @@ Python を使用して、未加工の JSON 形式でデータを取り込みま�
 
     ファイル 'simple.json' には、行区切りの JSON レコードがいくつか含まれています。 形式は `json` であり、インジェスト コマンドで使用されるマッピングは、作成した `FlatEventMapping` です。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 1. JSON 入力データに類似したスキーマを使用して、新しいテーブルを作成します。 このテーブルは、次のすべての例とインジェスト コマンドで使用します。 
 
@@ -329,7 +329,7 @@ Python を使用して、未加工の JSON 形式でデータを取り込みま�
 
 この例では、複数行の JSON レコードを取り込みます。 各 JSON プロパティは、テーブル内の 1 つの列にマップされます。 ファイル 'multilined.json' には、インデントされた JSON レコードがいくつか含まれています。 `multijson` 形式は、JSON 構造体でレコードを読み取るようにエンジンに指示します。
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[KQL](#tab/kusto-query-language)
 
 `Events` テーブルにデータを取り込みます。
 
@@ -337,7 +337,7 @@ Python を使用して、未加工の JSON 形式でデータを取り込みま�
 .ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/multilined.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=FlatEventMapping)
 ```
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 `Events` テーブルにデータを取り込みます。
 
@@ -354,7 +354,7 @@ var properties =
 ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 `Events` テーブルにデータを取り込みます。
 
@@ -395,7 +395,7 @@ INGESTION_CLIENT.ingest_from_blob(
 }
 ```
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[KQL](#tab/kusto-query-language)
 
 1. `mv-expand` 演算子を使用して、コレクション内の各値が個別の行を受け取るように `records` のコレクションを展開する `update policy` 関数を作成します。 テーブル `RawEvents` をソース テーブルとして使用し、`Events` をターゲット テーブルとして使用します。
 
@@ -436,7 +436,7 @@ INGESTION_CLIENT.ingest_from_blob(
     Events
     ```
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 1. `mv-expand` 演算子を使用して、コレクション内の各値が個別の行を受け取るように `records` のコレクションを展開する update 関数を作成します。 テーブル `RawEvents` をソース テーブルとして使用し、`Events` をターゲット テーブルとして使用します。   
 
@@ -490,7 +490,7 @@ INGESTION_CLIENT.ingest_from_blob(
     
 1. `Events` テーブル内のデータを確認します。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 1. `mv-expand` 演算子を使用して、コレクション内の各値が個別の行を受け取るように `records` のコレクションを展開する update 関数を作成します。 テーブル `RawEvents` をソース テーブルとして使用し、`Events` をターゲット テーブルとして使用します。   
 
@@ -570,7 +570,7 @@ INGESTION_CLIENT.ingest_from_blob(
 }
 ```
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[KQL](#tab/kusto-query-language)
 
 1. JSON マッピングを作成します。
 
@@ -584,7 +584,7 @@ INGESTION_CLIENT.ingest_from_blob(
     .ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/dictionary.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=KeyValueEventMapping)
     ```
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 1. JSON マッピングを作成します。
 
@@ -621,7 +621,7 @@ INGESTION_CLIENT.ingest_from_blob(
     ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
     ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 1. JSON マッピングを作成します。
 

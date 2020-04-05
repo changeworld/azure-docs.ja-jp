@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
 ms.openlocfilehash: 09501a80d6ddcbbc9fa6cc08e36f47beb13d1663
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063224"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning-preview"></a>チュートリアル:SAP SuccessFactors から Azure AD へのユーザー プロビジョニングの構成 (プレビュー)

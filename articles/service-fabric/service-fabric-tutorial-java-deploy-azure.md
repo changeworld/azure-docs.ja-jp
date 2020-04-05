@@ -6,14 +6,14 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b7754a289c06dff37aedcf8da76d35dfac4b183d
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: df6719cad79bdb063c2d4d74892206b6e5bbd414
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252798"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80292030"
 ---
-# <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure の Service Fabric クラスターに Java アプリケーションをデプロイする
+# <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>チュートリアル: Azure の Service Fabric クラスターに Java アプリケーションをデプロイする
 
 このチュートリアルはシリーズの第 3 部です。Azure のクラスターに Service Fabric アプリケーションをデプロイする方法について説明します。
 
@@ -217,15 +217,15 @@ ms.locfileid: "78252798"
     ./install.sh
     ```
 
-5. Service Fabric Explorer にアクセスするには、任意のブラウザーを開いて「 https://testlinuxcluster.westus.cloudapp.azure.com:19080 」と入力します。 証明書ストアから、このエンドポイントに接続する際に使用する証明書を選択します。 Linux マシンを使用している場合、Service Fabric Explorer を表示するには、*new-service-fabric-cluster-certificate.sh* スクリプトによって生成された証明書を Chrome にインポートする必要があります。 Mac を使用する場合、キーチェーンに PFX ファイルをインストールする必要があります。 目的のアプリケーションがクラスターにインストールされていることがわかります。
+5. Service Fabric Explorer にアクセスするには、任意のブラウザーを開いて「 `https://testlinuxcluster.westus.cloudapp.azure.com:19080` 」と入力します。 証明書ストアから、このエンドポイントに接続する際に使用する証明書を選択します。 Linux マシンを使用している場合、Service Fabric Explorer を表示するには、*new-service-fabric-cluster-certificate.sh* スクリプトによって生成された証明書を Chrome にインポートする必要があります。 Mac を使用する場合、キーチェーンに PFX ファイルをインストールする必要があります。 目的のアプリケーションがクラスターにインストールされていることがわかります。
 
     ![SFX Java Azure](./media/service-fabric-tutorial-java-deploy-azure/sfxjavaonazure.png)
 
-6. アプリケーションにアクセスするには、「 https://testlinuxcluster.westus.cloudapp.azure.com:8080 」と入力します。
+6. アプリケーションにアクセスするには、「 `https://testlinuxcluster.westus.cloudapp.azure.com:8080` 」と入力します。
 
     ![Java Azure の投票アプリケーション](./media/service-fabric-tutorial-java-deploy-azure/votingappjavaazure.png)
 
-7. アプリケーションをクラスターからアンインストールするには、**Scripts** フォルダーの *uninstall.sh* スクリプトを実行します。
+7. アプリケーションをクラスターからアンインストールするには、*Scripts* フォルダーの **uninstall.sh** スクリプトを実行します。
 
     ```bash
     ./uninstall.sh

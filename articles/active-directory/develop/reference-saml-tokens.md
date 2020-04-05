@@ -18,10 +18,10 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: e4fcb7835c6315e8a67103883e1635f0ddab1098
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78299756"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Azure AD SAML のトークン リファレンス

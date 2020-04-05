@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
 ms.openlocfilehash: b84db69f79b1611347a4c55d929e5426141e7ac6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74791494"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Azure Logic Apps でスコープを使用してグループの状態に基づいてアクションを実行する
@@ -61,7 +61,7 @@ ms.locfileid: "74791494"
 
    1. Bing 地図の接続が存在しない場合、接続を作成するように求められます。
 
-      | Setting | 値 | 説明 |
+      | 設定 | 値 | 説明 |
       | ------- | ----- | ----------- |
       | **Connection Name** | BingMapsConnection | 接続の名前を指定します。 | 
       | **API キー** | <*your-Bing-Maps-key*> | あらかじめ取得しておいた Bing 地図のキーを入力します。 | 
@@ -73,7 +73,7 @@ ms.locfileid: "74791494"
 
       これらのパラメーターの詳細については、「[Calculate a route (ルートの計算)](https://msdn.microsoft.com/library/ff701717.aspx)」を参照してください。
 
-      | Setting | 値 | 説明 |
+      | 設定 | 値 | 説明 |
       | ------- | ----- | ----------- |
       | **通過地点 1** | <*start*> | ルートの出発地を入力します。 | 
       | **通過地点 2** | <*end*> | ルートの目的地を入力します。 | 
@@ -88,7 +88,7 @@ ms.locfileid: "74791494"
 1. 現在の交通量を加味した移動時間が指定の時間を超えるかどうかをチェックする[条件を追加](../logic-apps/logic-apps-control-flow-conditional-statement.md)します。 
    この例に対して、次の手順に従います。
 
-   1. 条件の名前を次の文言に変更します:**If traffic time is more than specified time (移動時間が指定した時間を超える場合)**
+   1. 条件の名前を次の説明に変更します: **If traffic time is more than specified time (移動時間が指定した時間を超える場合)**
 
    1. 左端の列で、 **[値の選択]** ボックス内をクリックします。動的コンテンツ リストが表示されます。 その一覧から、 **[Travel Duration Traffic]\(移動時間の交通量\)** フィールドを選択します (秒単位)。 
 
@@ -179,7 +179,7 @@ ms.locfileid: "74791494"
 
    ![スコープが追加された状態](./media/logic-apps-control-flow-run-steps-group-scopes/scope-added.png)
 
-1. スコープの下に、スコープの状態をチェックする条件を追加します。 条件の名前を次の文言に変更します:**スコープが失敗した場合**
+1. スコープの下に、スコープの状態をチェックする条件を追加します。 条件の名前を次の説明に変更します: **スコープが失敗した場合**
 
    ![スコープの状態をチェックする条件を追加する](./media/logic-apps-control-flow-run-steps-group-scopes/add-condition-check-scope-status.png)
   
@@ -391,7 +391,7 @@ ms.locfileid: "74791494"
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
 * 機能や提案について投稿や投票を行うには、[Azure Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [条件に基づいてステップを実行する (条件付きステートメント)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
 * [さまざまな値に基づいてステップを実行する (switch ステートメント)](../logic-apps/logic-apps-control-flow-switch-statement.md)

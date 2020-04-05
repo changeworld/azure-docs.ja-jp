@@ -4,10 +4,10 @@ description: CSP パートナーにとって、Azure の委任されたリソー
 ms.date: 12/18/2019
 ms.topic: conceptual
 ms.openlocfilehash: 66ea74751f12a499a1e2d9e083497da31746e3c7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75456913"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Azure Lighthouse と Cloud Solution Provider プログラム
@@ -36,7 +36,7 @@ CSP プログラムを使用して作成したサブスクリプションをオ�
 > [!NOTE]
 > [Azure portal の **[マイ カスタマー]** ページ](../how-to/view-manage-customers.md)に、 **[クラウド ソリューション プロバイダー (プレビュー)]** セクションが含まれるようになり、[Microsoft 顧客契約 (MCA) に署名](https://docs.microsoft.com/partner-center/confirm-customer-agreement)し、[Azure プランに含まれている](https://docs.microsoft.com/partner-center/azure-plan-get-started) CSP のお客様の課金情報とリソースが表示されます。 詳しくは、「[Microsoft Partner Agreement の課金アカウントの概要](../../billing/mpa-overview.md)」をご覧ください。
 >
-> CSP のお客様は、Azure の委任されたリソース管理にもオンボードされているかどうかにかかわらず、このセクションに表示されることがあります。 オンボードされている場合は、「[顧客と委任されたリソースを表示し、管理する](../how-to/view-manage-customers.md)」に説明されているように、 **[顧客]** セクションにも表示されます。 同様に、CSP のお客様は、Azure の委任されたリソース管理にオンボードされるために、 **[マイ カスタマー]** の **[クラウド ソリューション プロバイダー (プレビュー)]** セクションに表示される必要はありません。
+> CSP のお客様は、Azure の委任されたリソース管理にもオンボードされているかどうかにかかわらず、このセクションに表示されることがあります。 オンボードされている場合は、「**顧客と委任されたリソースを表示し、管理する**」に説明されているように、[[顧客]](../how-to/view-manage-customers.md) セクションにも表示されます。 同様に、CSP のお客様は、Azure の委任されたリソース管理にオンボードされるために、 **[マイ カスタマー]** の **[クラウド ソリューション プロバイダー (プレビュー)]** セクションに表示される必要はありません。
 
 ## <a name="next-steps"></a>次のステップ
 

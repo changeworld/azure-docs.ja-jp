@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: 3ad68438f5fc015b6a9150d67485b90a095f1a4a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451263"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226735"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>SysRq および NMI 呼び出しにシリアル コンソールを使用する
 
@@ -51,7 +51,7 @@ SysReq の構成を永続化するために、次の手順を実行してすべ�
 ### <a name="command-keys"></a>コマンド キー
 前記の「SysRq Admin Guide」(SysRq 管理ガイド) に示されたコマンド キーは次のとおりです。
 
-|command| Function
+|command| 機能
 | ------| ----------- |
 |``b``  |   ディスクの同期またはマウント解除を行わずに、システムをすぐに再起動します。
 |``c``  |   NULL ポインターの逆参照によってシステム クラッシュを実行します。 構成した場合は、クラッシュ ダンプが取得されます。

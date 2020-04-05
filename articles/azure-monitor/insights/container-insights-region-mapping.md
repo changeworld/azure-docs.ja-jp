@@ -4,10 +4,10 @@ description: この記事では、Azure Monitor for containers、Log Analytics �
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.openlocfilehash: a058f9cac987bb5c7130019f50370c6a176b09ac
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75403423"
 ---
 # <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>Azure Monitor for containers でサポートされるリージョン マッピング
@@ -60,7 +60,7 @@ AKS クラスター リソースまたは Log Analytics ワークスペースは
 |WestUS |WestUS |
 |WestUS2 |WestUS2 |
 |WestCentralUS<sup>1</sup>|EastUS<sup>1</sup>|
-|米国政府バージニア州 |米国政府バージニア州 |
+|US Gov バージニア州 |US Gov バージニア州 |
 
 <sup>1</sup> 容量の制約により、新しいリソースを作成するときにリージョンを使用できません。 これには Log Analytics ワークスペースが含まれます。 ただし、リージョン内のリンクされた既存のリソースは引き続き動作します。
 

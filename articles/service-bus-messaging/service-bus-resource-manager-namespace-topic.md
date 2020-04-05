@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 98ca0f95f5b2aab9651b97442f1f38651767f1df
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: c94b670a33f7640d2d6f428287b3ba0fab766bc5
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264494"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384876"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用したトピックとサブスクリプションを含んだ Service Bus 名前空間の作成
 
@@ -38,8 +38,6 @@ ms.locfileid: "76264494"
 > * [トピック、サブスクリプション、ルールを含んだ Service Bus の名前空間を作成する](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
 > 最新のテンプレートを確認する場合は、「[Azure クイックスタート テンプレート][Azure Quickstart Templates]」ギャラリーで "**Service Bus**" を検索してください。
-> 
-> 
 
 ## <a name="what-do-you-deploy"></a>デプロイ対象
 
@@ -58,6 +56,7 @@ Azure リソース マネージャーを使用して、テンプレートのデ�
 このテンプレートでは、次のパラメーターを定義します。
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
+
 作成する Service Bus 名前空間の名前。
 
 ```json
@@ -67,6 +66,7 @@ Azure リソース マネージャーを使用して、テンプレートのデ�
 ```
 
 ### <a name="servicebustopicname"></a>serviceBusTopicName
+
 Service Bus 名前空間に作成するトピックの名前。
 
 ```json
@@ -76,6 +76,7 @@ Service Bus 名前空間に作成するトピックの名前。
 ```
 
 ### <a name="servicebussubscriptionname"></a>serviceBusSubscriptionName
+
 Service Bus 名前空間に作成するサブスクリプションの名前。
 
 ```json
@@ -85,6 +86,7 @@ Service Bus 名前空間に作成するサブスクリプションの名前。
 ```
 
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
+
 テンプレートの Service Bus API バージョン。
 
 ```json
@@ -95,7 +97,9 @@ Service Bus 名前空間に作成するサブスクリプションの名前。
            "description": "Service Bus ApiVersion used by the template" 
        }
 ```
+
 ## <a name="resources-to-deploy"></a>デプロイ対象のリソース
+
 **Messaging**タイプの標準的な Service Bus 名前空間を作成し、トピックとサブスクリプションを追加します。
 
 ```json
@@ -134,21 +138,23 @@ Service Bus 名前空間に作成するサブスクリプションの名前。
 JSON の構文とプロパティについては、[namespaces](/azure/templates/microsoft.servicebus/namespaces)、[topics](/azure/templates/microsoft.servicebus/namespaces/topics)、[subscriptions](/azure/templates/microsoft.servicebus/namespaces/topics/subscriptions) のページを参照してください。
 
 ## <a name="commands-to-run-deployment"></a>デプロイを実行するコマンド
+
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ## <a name="powershell"></a>PowerShell
-```powershell
+
+```powershell-interactive
 New-AzureResourceGroupDeployment -Name \<deployment-name\> -ResourceGroupName \<resource-group-name\> -TemplateUri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-and-subscription/azuredeploy.json>
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
-```azurecli
-azure config mode arm
 
-azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-and-subscription/azuredeploy.json>
+```azurecli-interactive
+az group deployment create \<my-resource-group\> --name \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-and-subscription/azuredeploy.json>
 ```
 
 ## <a name="next-steps"></a>次のステップ
+
 Azure Resource Manager を使ってリソースを作成、デプロイしたら、それらのリソースを管理する方法を次の記事で確認しましょう。
 
 * [PowerShell で Service Bus を管理する](service-bus-manage-with-ps.md)

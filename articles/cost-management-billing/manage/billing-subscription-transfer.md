@@ -11,11 +11,11 @@ ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 84b36c1357bedfc120cec72af84fdd79f52a2f57
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245385"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238161"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure サブスクリプションの課金所有権を別のアカウントに譲渡する
 
@@ -109,7 +109,7 @@ Azure portal でのサブスクリプションの譲渡は、下記の種類の�
 - [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)
 - [開発テスト用の従量課金制プラン](https://azure.microsoft.com/offers/ms-azr-0023p/)
 - [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/)
-- [Visual Studio Enterprise:BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/)
+- [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/)
 - [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/)
 - [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/)
 - [Microsoft Azure プラン](https://azure.microsoft.com/offers/ms-azr-0017g/)\*\*
@@ -124,7 +124,7 @@ Azure portal でのサブスクリプションの譲渡は、下記の種類の�
 
 以下の FAQ は、Azure サブスクリプションの課金所有権を別のアカウントに譲渡するユーザー向けのものです。
 
-### <a name="whoisaa"></a> アカウントの課金管理者とはだれのことですか。
+### <a name="who-is-a-billing-administrator-of-an-account"></a><a name="whoisaa"></a> アカウントの課金管理者とはだれのことですか。
 
 課金管理者とは、アカウントに対する課金を管理する権限が付与されているユーザーのことです。 [Azure portal](https://portal.azure.com) で課金情報にアクセスする権限のほか、サブスクリプションの作成、請求書の表示と支払い、支払い方法の更新など、さまざまな課金関連の作業を行う権限が付与されています。
 
@@ -187,7 +187,7 @@ VM、ディスク、Web サイトなどのすべてのリソースが、新し�
 
 譲渡先でリソースへのアクセスを制限する必要がある場合、サービスに関連付けられているすべてのシークレットの更新を検討する必要があります。 ほとんどのリソースは、次の手順を使って更新できます。
 
-  1. [Azure portal](https://portal.azure.com) にサインインします。
+  1. [Azure portal](https://portal.azure.com) にサインインする
   2. ハブ メニューで、 **[すべてのリソース]** を選択します。
   3. リソースを選択します。
   4. リソースのページで **[設定]** を選択します。 ここで、既存のシークレットを表示して更新できます。
@@ -206,15 +206,15 @@ VM、ディスク、Web サイトなどのすべてのリソースが、新し�
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-### <a id="no-button"></a>[サブスクリプションの譲渡] ボタンが表示されないのはなぜですか。
+### <a name="why-dont-i-see-the-transfer-subscription-button"></a><a id="no-button"></a>[サブスクリプションの譲渡] ボタンが表示されないのはなぜですか。
 
 セルフサービスのサブスクリプションの譲渡は、ご利用の課金アカウントでは行えません。 現時点では、Azure portal で Enterprise Agreement (EA) アカウントのサブスクリプションの課金所有権の譲渡はサポートされていません。 また、Microsoft の担当者と協力して作成された Microsoft 顧客契約アカウントでも、課金所有権の譲渡はサポートされていません。
 
-### <a id="no-button"></a> 自分のサブスクリプションで譲渡がサポートされていないのはなぜですか。
+### <a name="why-doesnt-my-subscription-type-support-transfer"></a><a id="no-button"></a> 自分のサブスクリプションで譲渡がサポートされていないのはなぜですか。
 
 一部のサブスクリプションでは課金所有権の譲渡はサポートされていません。 譲渡がサポートされているサブスクリプションの種類一覧については、「[サポートされているサブスクリプションの種類](#supported-subscription-types)」を参照してください
 
-### <a id="no-button"></a> サブスクリプションの課金所有権を譲渡しようとすると、アクセス拒否エラーが発生しました。理由を教えてください。
+### <a name="why-am-i-receiving-an-access-denied-error-when-i-try-to-transfer-billing-ownership-of-a-subscription"></a><a id="no-button"></a> サブスクリプションの課金所有権を譲渡しようとすると、アクセス拒否エラーが発生しました。理由を教えてください。
 
 このエラーは、Microsoft Azure プランのサブスクリプションを譲渡しようとしたときに、必要な権限がない場合に表示されます。 Microsoft Azure プランのサブスクリプションを譲渡するには、サブスクリプションの請求先となる請求書セクションで、ご自分が所有者または共同作成者になっている必要があります。 詳細については、「[請求書セクションのサブスクリプションを管理する](understand-mca-roles.md#manage-subscriptions-for-invoice-section)」を参照してください。
 

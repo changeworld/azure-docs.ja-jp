@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
 ms.openlocfilehash: e2ba5301b81b1a6f5de696ab4587cd8ff43e3c68
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77462566"
 ---
 # <a name="adjust-capacity-in-azure-cognitive-search"></a>Azure Cognitive Search の容量を調整する

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: mamccrea
 ms.openlocfilehash: 80ec9b2bbf10d8f500e7f9e0369faca3b9663633
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74129387"
 ---
 # <a name="connect-to-data-sources-from-azure-databricks"></a>Azure Databricks からデータ ソースに接続する
@@ -52,7 +52,7 @@ ms.locfileid: "74129387"
     このリンクは、Azure SQL Data Warehouse コネクタを使用して Azure Databricks から接続する方法を示します。
     
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Databricks にデータをインポートできるソースについては、[Azure Databricks のデータ ソース](/azure/databricks/data/data-sources/index)に関するページをご覧ください。
 

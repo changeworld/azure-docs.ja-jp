@@ -9,10 +9,10 @@ ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.openlocfilehash: c9ed675dc970b093f6407d15b3db2ac2668c626b
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74327575"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>チュートリアル:Azure HDInsight を使用してデータの抽出、変換、読み込みを行う
@@ -50,7 +50,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 2. このページで、次の値を選択します。
 
-   | Name | 値 |
+   | 名前 | Value |
    | --- | --- |
    | Filter Year |2013 |
    | Filter Period |January |
@@ -335,11 +335,11 @@ Apache Hive ジョブの一環として、.csv ファイルから **delays** と
 
 5. 「`exit`」と入力して、tsql ユーティリティを終了します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルで使用されるすべてのリソースは、既存のものです。 クリーンアップは必要ありません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 HDInsight でのデータ操作の詳細については、次の記事を参照してください。
 

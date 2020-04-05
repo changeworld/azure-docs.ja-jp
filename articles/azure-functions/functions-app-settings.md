@@ -4,11 +4,11 @@ description: Azure Functions のアプリケーション設定または環境変
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.openlocfilehash: 3853ccbfd492bfaf4a82d62e6d31ab938285ee2e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357577"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235271"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
@@ -189,7 +189,7 @@ Windows で関数アプリを実行するときに使用する Node.js のバー
 
 既定では、Functions プロキシは新しい HTTP 要求を作成するのではなく、同じ Function App 内の関数にプロキシから直接 API 呼び出しを送信するためのショートカットを使用します。 この設定を使用すると、その動作を無効にすることができます。
 
-|Key|Value|説明|
+|Key|値|説明|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|ローカル Function App 内の関数を指すバックエンド URL を使用した呼び出しは、関数に直接送信されるのではなく、Function App の HTTP フロント エンドに戻されるようになります|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|これが既定値です。 ローカル Function App 内の関数を指すバックエンド URL を使用した呼び出しは、その関数に直接転送されるようになります|
@@ -199,7 +199,7 @@ Windows で関数アプリを実行するときに使用する Node.js のバー
 
 この設定は、スラッシュがバックエンド URL に挿入されたときに、%2F をルート パラメーターでスラッシュとしてデコードするかどうかを制御します。 
 
-|Key|Value|説明|
+|Key|値|説明|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|エンコードされたスラッシュがルート パラメーターに含まれている場合、それらがデコードされます。 `example.com/api%2ftest` は `example.com/api/test` になります。|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|これは既定の動作です。 すべてのルート パラメーターが、変更されることなく渡されます|

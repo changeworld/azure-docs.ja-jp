@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: cognitive-services
 ms.date: 08/01/2019
 ms.openlocfilehash: 32159b37d3d1a8609181d81dc1a73f27177adb85
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73818211"
 ---
 # <a name="use-cognitive-services-with-natural-language-processing-nlp-to-enrich-bot-conversations"></a>自然言語処理 (NLP) で Cognitive Services を使用してボットの会話を強化する
@@ -33,7 +33,7 @@ Language Understanding (LUIS) と QnA Maker では、さまざまな問題が解
 
 チャット ボットで `How do I get to the Human Resources building on the Seattle North campus?` というテキストを受け取る場合は、次のグラフを使用して、各サービスでテキストがどのように処理されるかを理解します。
 
-|Service|クライアント アプリケーションの決定|
+|サービス|クライアント アプリケーションの決定|
 |--|--|
 |LUIS|テキストの**ユーザーの意図を決定します** - サービスでは質問に対する回答は返されません。 たとえば、このテキストは `FindLocation` という意図と一致するものとして分類されます。<br>|
 |QnA Maker|カスタム ナレッジ ベースから**質問に対する回答が返されます**。 たとえば、このテキストは、`Get on the #9 bus and get off at Franklin street` という静的なテキストが回答になる質問として特定されます。|
@@ -82,12 +82,12 @@ QnA Maker のナレッジ ベースを構築しているのに、対象ドメイ
 * [LUIS](luis-concept-best-practices.md) のベスト プラクティス
 * [QnA Maker](../qnamaker/concepts/best-practices.md) のベスト プラクティス
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [Language Understanding (LUIS)](what-is-luis.md)
 * [QnA Maker](../qnamaker/overview/overview.md)
 * [Dispatch CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)
 * [Bot Framework のサンプル](https://github.com/Microsoft/BotBuilder-Samples)
 * [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
-* [Azure Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator)
+* [Azure ボット エミュレーター](https://github.com/Microsoft/BotFramework-Emulator)
 * [Bot Framework Web チャット](https://github.com/microsoft/BotFramework-WebChat)

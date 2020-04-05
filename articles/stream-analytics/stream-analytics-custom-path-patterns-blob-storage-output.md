@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
 ms.openlocfilehash: e978771eaafafe4120f9eec802525c293fb9c7c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75426380"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure Stream Analytics でのカスタム BLOB 出力のパーティション分割

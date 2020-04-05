@@ -4,10 +4,10 @@ description: Azure Service Fabric で初めての Linux コンテナー アプ�
 ms.topic: conceptual
 ms.date: 1/4/2019
 ms.openlocfilehash: f2f8c7884323667f843382b02c73a570e58617f1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75457957"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Linux で初めての Service Fabric コンテナー アプリケーションを作成する
@@ -189,7 +189,7 @@ Service Fabric コンテナー アプリケーションを作成するには、�
 
 
 ## <a name="configure-resource-governance"></a>リソース管理を構成する
-[リソース管理](service-fabric-resource-governance.md)は、コンテナーがホスト上で使用できるリソースを制限します。 `ResourceGovernancePolicy` 要素はアプリケーション マニフェストで指定され、サービス コード パッケージのリソース制限を宣言するために使用されます。 次のリソースのリソースの制限を設定できます。Memory、MemorySwap、CpuShares (CPU の相対的な重み)、MemoryReservationInMB、BlkioWeight (BlockIO の相対的な重み)。 この例では、Guest1Pkg というサービス パッケージが配置されたクラスター ノード上で 1 つのコアを取得しています。 Memory の制限は絶対的であるため、コード パッケージのメモリは両方とも 1,024 MB に制限されます (ソフト保証予約は同じです)。 コード パッケージ (コンテナーまたはプロセス) は、この制限を超えてメモリを割り当てることはできず、割り当てようとするとメモリ不足の例外が発生します。 リソース制限の強制を機能させるには、サービス パッケージ内のすべてのコード パッケージでメモリ制限を指定する必要があります。
+[リソース管理](service-fabric-resource-governance.md)は、コンテナーがホスト上で使用できるリソースを制限します。 `ResourceGovernancePolicy` 要素はアプリケーション マニフェストで指定され、サービス コード パッケージのリソース制限を宣言するために使用されます。 リソースの制限は、Memory、MemorySwap、CpuShares (CPU の相対的な重み)、MemoryReservationInMB、BlkioWeight (BlockIO の相対的な重み) の各リソースに対して設定できます。 この例では、Guest1Pkg というサービス パッケージが配置されたクラスター ノード上で 1 つのコアを取得しています。 Memory の制限は絶対的であるため、コード パッケージのメモリは両方とも 1,024 MB に制限されます (ソフト保証予約は同じです)。 コード パッケージ (コンテナーまたはプロセス) は、この制限を超えてメモリを割り当てることはできず、割り当てようとするとメモリ不足の例外が発生します。 リソース制限の強制を機能させるには、サービス パッケージ内のすべてのコード パッケージでメモリ制限を指定する必要があります。
 
 ```xml
 <ServiceManifestImport>
@@ -206,9 +206,9 @@ Service Fabric コンテナー アプリケーションを作成するには、�
 
 ## <a name="configure-docker-healthcheck"></a>Docker HEALTHCHECK を構成する 
 
-Service Fabric では、バージョン 6.1 以降、[Docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) イベントがシステム正常性レポートに自動的に統合されます。 つまり、コンテナーの **HEALTHCHECK** が有効な場合、Service Fabric は Docker によって報告されたとおりにコンテナーの正常性状態が変化するたびに正常性を報告します。 **OK** 正常性レポートは、*health_status* が "*正常*" のときに、[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) に表示され、**警告**は、*health_status* が "*異常*" のときに表示されます。 
+Service Fabric では、バージョン 6.1 以降、[Docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) イベントがシステム正常性レポートに自動的に統合されます。 つまり、コンテナーの **HEALTHCHECK** が有効な場合、Service Fabric は Docker によって報告されたとおりにコンテナーの正常性状態が変化するたびに正常性を報告します。 **OK** 正常性レポートは、[health_status](service-fabric-visualizing-your-cluster.md) が "*正常*" のときに、*Service Fabric Explorer* に表示され、**警告**は、*health_status* が "*異常*" のときに表示されます。 
 
-v6.4 の最新の更新リリース以降、Docker の HEALTHCHECK 評価をエラーとしてレポートするかどうかの選択肢ができました。 このオプションを有効にすると、*health_status* が*正常*の場合、**OK** 正常性レポートが表示され、*health_status* が*異常*の場合、**ERROR** が表示されます。
+v6.4 の最新の更新リリース以降、Docker の HEALTHCHECK 評価をエラーとしてレポートするかどうかの選択肢ができました。 このオプションを有効にすると、**health_status** が*正常*の場合、*OK* 正常性レポートが表示され、**health_status** が*異常*の場合、*ERROR* が表示されます。
 
 コンテナーの正常性の監視のために実行される実際のチェックを指す **HEALTHCHECK** 命令は、コンテナー イメージを生成するときに使用される Dockerfile に存在する必要があります。
 
@@ -236,7 +236,7 @@ ApplicationManifest の **ContainerHostPolicies** の一部として **HealthCon
 
 *RestartContainerOnUnhealthyDockerHealthStatus* を **true** に設定すると、異常を繰り返し報告するコンテナーが (おそらく他のノードで) 再起動されます。
 
-*TreatContainerUnhealthyStatusAsError* が **true** に設定されている場合、コンテナーの *health_status* が*異常*のとき、**ERROR** 正常性レポートが表示されます。
+*TreatContainerUnhealthyStatusAsError* が **true** に設定されている場合、コンテナーの **health_status** が*異常*のとき、*ERROR* 正常性レポートが表示されます。
 
 Service Fabric クラスター全体で **HEALTHCHECK** 統合を無効化する場合、[EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) を **false** に設定する必要があります。
 
@@ -249,7 +249,7 @@ Service Fabric クラスター全体で **HEALTHCHECK** 統合を無効化する
 sfctl cluster select --endpoint http://localhost:19080
 ```
 
-https://github.com/Azure-Samples/service-fabric-containers/ にあるテンプレートに用意されているインストール スクリプトを使用してクラスターのイメージ ストアにアプリケーション パッケージをコピーし、アプリケーションの種類を登録して、アプリケーションのインスタンスを作成します。
+[https://github.com/Azure-Samples/service-fabric-containers/](https://github.com/Azure-Samples/service-fabric-containers/ ) にあるテンプレートに用意されているインストール スクリプトを使用してクラスターのイメージ ストアにアプリケーション パッケージをコピーし、アプリケーションの種類を登録して、アプリケーションのインスタンスを作成します。
 
 
 ```bash
@@ -369,7 +369,7 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 
 yeoman を使用して作成したアプリケーションに別のコンテナー サービスを追加するには、次の手順を実行します。
 
-1. ディレクトリを既存アプリケーションのルートに変更します。 たとえば、Yeoman で作成したアプリケーションが `MyApplication` の場合は、`cd ~/YeomanSamples/MyApplication` です。
+1. ディレクトリを既存アプリケーションのルートに変更します。 たとえば、Yeoman で作成したアプリケーションが `cd ~/YeomanSamples/MyApplication` の場合は、`MyApplication` です。
 2. `yo azuresfcontainer:AddService` を実行します。
 
 <a id="manually"></a>

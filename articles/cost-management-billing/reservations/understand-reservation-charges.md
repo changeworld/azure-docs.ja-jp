@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: f0b093950b7f8fbbfbb0ca8ceb48cb0aa6341e10
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200284"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>Azure SQL データベースに対する予約割引の適用方法
@@ -32,7 +32,7 @@ Azure SQL Database の予約容量を購入すると、予約の属性や数量�
 
 次の例は、購入したコア数と実行する時間に応じて、SQL Database の予約容量割引がどのように適用されるかを示しています。
 
-- シナリオ 1:8 コア SQL データベース用に SQL Database の予約容量を購入します。 予約の他の属性と一致する 16 コア SQL データベースを実行しています。 SQL データベースの計算使用量のうち 8 コア分には従量課金制の料金が適用されます。 8 コア SQL データベースの計算使用量の 1 時間分には予約割引が適用されます。
+- シナリオ 1: 8 コア SQL データベース用に SQL Database の予約容量を購入します。 予約の他の属性と一致する 16 コア SQL データベースを実行しています。 SQL データベースの計算使用量のうち 8 コア分には従量課金制の料金が適用されます。 8 コア SQL データベースの計算使用量の 1 時間分には予約割引が適用されます。
 
 以降の例では、購入する SQL Database の予約容量は、16 コア SQL データベース用であり、残りの予約の属性は実行中の SQL データベースと一致するものとします。
 

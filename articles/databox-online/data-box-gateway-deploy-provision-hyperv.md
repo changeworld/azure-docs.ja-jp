@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 63d88f1b9903eaad7ed4f57f59ca2a49445e3d40
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77365308"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>チュートリアル:Hyper-V で Azure Data Box Gateway をプロビジョニングする

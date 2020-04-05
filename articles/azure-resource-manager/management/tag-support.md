@@ -4,10 +4,10 @@ description: タグをサポートしている Azure リソースの種類を示
 ms.topic: conceptual
 ms.date: 02/26/2020
 ms.openlocfilehash: 6100c667c7df0b3e1740777565d260af9fa818a3
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77657575"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure リソースでのタグのサポート
@@ -684,7 +684,7 @@ ms.locfileid: "77657575"
 > | ReservationTransactions | いいえ | いいえ |
 > | Tags | いいえ | いいえ |
 > | tenants | いいえ | いいえ |
-> | 用語 | いいえ | いいえ |
+> | Terms | いいえ | いいえ |
 > | UsageDetails | いいえ | いいえ |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance

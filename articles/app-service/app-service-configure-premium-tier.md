@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 07/25/2018
 ms.custom: seodec18
 ms.openlocfilehash: f7f9f6d5617ad0f9be69c47ce514d395534fd892
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74672211"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Azure App Service の PremiumV2 レベルの構成
@@ -68,7 +68,7 @@ App Service アプリ ページの左側のナビゲーションで、 **[スケ
 
 ![](media/app-service-configure-premium-tier/finished.png)
 
-### <a name="if-you-get-an-error"></a>エラーが発生した場合
+### <a name="if-you-get-an-error"></a>エラーが表示された場合
 
 基になる App Service デプロイが PremiumV2 をサポートしていない場合、一部の App Service プランを PremiumV2 レベルにスケール アップすることはできません。  詳細については、「[サポートされてないリソース グループとリージョンの組み合わせからスケール アップする](#unsupported)」を参照してください。
 
@@ -87,7 +87,7 @@ App Service アプリ ページの左側のナビゲーションで、 **[スケ
 
 ## <a name="automate-with-scripts"></a>スクリプトで自動化する
 
-[Azure CLI](/cli/azure/install-azure-cli) または [Azure PowerShell](/powershell/azure/overview) を使用すると、**PremiumV2** レベルでのアプリ作成をスクリプトで自動化することができます。
+**Azure CLI** または [Azure PowerShell](/cli/azure/install-azure-cli) を使用すると、[PremiumV2](/powershell/azure/overview) レベルでのアプリ作成をスクリプトで自動化することができます。
 
 ### <a name="azure-cli"></a>Azure CLI
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/09/2020
 ms.author: iainfou
 ms.openlocfilehash: a57826c79babded6e616548879a5ec0c223307d0
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78946435"
 ---
 # <a name="frequently-asked-questions-faqs"></a>よく寄せられる質問 (FAQ)

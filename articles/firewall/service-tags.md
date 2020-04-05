@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: victorh
 ms.openlocfilehash: ec9fb3c9b27d21ac65888379f59d51ecc8042eb0
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74168694"
 ---
 # <a name="azure-firewall-service-tags"></a>Azure Firewall サービス タグ
@@ -24,6 +24,6 @@ Azure Firewall サービス タグは、ネットワーク ルールの宛先フ
 
 Azure ファイアウォール ネットワーク ルール内で使用できるサービス タグの一覧については、「[セキュリティ グループ](../virtual-network/security-overview.md#service-tags)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Firewall ルールの詳細については、「[Azure Firewall ルール処理ロジック](rule-processing.md)」を参照してください。

@@ -5,10 +5,10 @@ ms.topic: overview
 ms.date: 01/07/2020
 ms.custom: sfrev
 ms.openlocfilehash: 3c8eb7ead7851c311c79c2f9e9bdc7e703c3af71
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75747486"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Azure Service Fabric の概要

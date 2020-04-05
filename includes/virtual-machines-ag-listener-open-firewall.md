@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: e128f3c67a41322d9c25a8d6941e937729760bf4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67181121"
 ---
 この手順では、ファイアウォール規則を作成して負荷分散エンドポイントのプローブ ポート (以前に指定した 59999) を開き、別の規則を作成して可用性グループ リスナー ポートを開きます。 可用性グループ レプリカを含む VM に負荷分散エンドポイントを作成したため、それぞれの VM でプローブ ポートとリスナー ポートを開く必要があります。

@@ -6,10 +6,10 @@ ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: conceptual
 ms.openlocfilehash: ecc3fb144fb4b4e27182567925199f841b1c4357
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78851545"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>クイック スタート:Node.js 用 QnA Maker REST API シリーズ

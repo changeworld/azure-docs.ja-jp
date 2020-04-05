@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/12/2019
 ms.openlocfilehash: 38010e3aaa2d0544dfbfe19135d25250d2b021a2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74929780"
 ---
 # <a name="ssis-migration-with-azure-sql-database-managed-instance-as-the-database-workload-destination"></a>データベース ワークロードの宛先として Azure SQL Database マネージド インスタンスを使用した SSIS の移行
@@ -40,7 +40,7 @@ Azure SQL Database マネージド インスタンスには、オンプレミス
 - [DMS を使用して Azure SQL Database マネージド インスタンスを移行するためのネットワーク トポロジ](https://docs.microsoft.com/azure/dms/resource-network-topologies)
 - [SSIS パッケージを Azure SQL Database マネージド インスタンスに移行する](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages-managed-instance)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure での SSISDB への接続](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)
 - [Azure にデプロイされた SSIS パッケージを実行する](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-run-packages)

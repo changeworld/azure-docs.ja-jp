@@ -1,20 +1,20 @@
 ---
-title: チュートリアル - Azure で Cloudyn を使用して支出を予測する | Microsoft Docs
+title: チュートリアル - Azure で Cloudyn を使用して支出を予測する
 description: このチュートリアルでは、使用量の履歴と支出データを使用して支出を予測する方法について説明します。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 ms.reviewer: benshy
-ms.openlocfilehash: 43b48cf96baaa01408d068de509e5be9fdf950ca
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: 455f611b57cf11e29d35e617df4fd9c09aff2906
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769925"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79463783"
 ---
 # <a name="tutorial-forecast-future-spending"></a>チュートリアル:将来の支出の予測
 
@@ -24,6 +24,8 @@ Cloudyn を使用すると、使用量の履歴と支出データを利用して
 > * 将来の支出の予測
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 

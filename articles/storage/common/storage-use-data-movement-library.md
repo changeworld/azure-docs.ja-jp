@@ -11,10 +11,10 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 5b8654500fd697685b38e4f51ba1069e0cf6ccfc
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78942902"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>データ移動ライブラリを使用してデータを転送する
@@ -44,12 +44,12 @@ Azure Storage データ移動ライブラリは、BLOB およびファイルを�
 3. Visual Studio Code でこのディレクトリを開きます。 この手順をコマンド ラインですばやく実行するには、Windows で「`code .`」と入力します。
 4. Visual Studio Code Marketplace から [C# 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) をインストールします。 Visual Studio Code を再起動します。
 5. この時点で 2 つのプロンプトが表示されます。 1 つは "ビルドとデバッグに必要なアセット" を追加するよう求めるプロンプトで、 [はい] をクリックします。 もう 1 つは、未解決の依存関係を復元するように求めるプロンプトで、 [復元] をクリックします。
-6. `.vscode` の `launch.json` を変更し、コンソールとして外部ターミナルを使用するようにします。 この設定は `"console": "externalTerminal"` のようになります。
+6. `launch.json` の `.vscode` を変更し、コンソールとして外部ターミナルを使用するようにします。 この設定は `"console": "externalTerminal"` のようになります。
 7. Visual Studio Code を使用すると、.NET Core アプリケーションをデバッグできます。 `F5` キーを押してアプリケーションを実行し、セットアップが動作していることを確認します。 "Hello World!" が コンソールに表示されます。
 
 ## <a name="add-the-data-movement-library-to-your-project"></a>プロジェクトへのデータ移動ライブラリの追加
 
-1. 最新バージョンのデータ移動ライブラリを `<project-name>.csproj` ファイルの `dependencies` セクションに追加します。 この資料の作成時点では、このバージョンは `"Microsoft.Azure.Storage.DataMovement": "0.6.2"` です
+1. 最新バージョンのデータ移動ライブラリを `dependencies` ファイルの `<project-name>.csproj` セクションに追加します。 この資料の作成時点では、このバージョンは `"Microsoft.Azure.Storage.DataMovement": "0.6.2"` です
 2. プロジェクトを復元するように求めるメッセージが表示されます。 [復元] ボタンをクリックします。 プロジェクト ディレクトリのルートで `dotnet restore` コマンドを入力して、コマンド ラインからプロジェクトを復元することもできます。
 
 `<project-name>.csproj` を変更します。
@@ -212,7 +212,7 @@ public static void SetNumberOfParallelOperations()
 }
 ```
 
-`SetNumberOfParallelOperations` を使用するように `ExecuteChoice` メソッドを変更します。
+`ExecuteChoice` を使用するように `SetNumberOfParallelOperations` メソッドを変更します。
 
 ```csharp
 public static void ExecuteChoice(CloudStorageAccount account)
@@ -289,7 +289,7 @@ public static DirectoryTransferContext GetDirectoryTransferContext(TransferCheck
 }
 ```
 
-`GetSingleTransferContext` を使用するように `TransferLocalFileToAzureBlob` メソッドを変更します。
+`TransferLocalFileToAzureBlob` を使用するように `GetSingleTransferContext` メソッドを変更します。
 
 ```csharp
 public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount account)

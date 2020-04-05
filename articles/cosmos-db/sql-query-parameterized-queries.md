@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: tisande
 ms.openlocfilehash: e15a8236723c1efd80f27f2d253e9bbc44af4b0b
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74870821"
 ---
 # <a name="parameterized-queries-in-azure-cosmos-db"></a>Azure Cosmos DB のパラメーター化されたクエリ
@@ -53,7 +53,7 @@ Cosmos DB では、使い慣れた @ 表記で表されたパラメーターを�
 パラメーターの値には、有効な任意の JSON (文字列、数値、ブール値、null、配列や入れ子になった JSON も含む) を指定できます。 Cosmos DB はスキーマレスであるため、パラメーターはどの型に対しても検証されません。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Cosmos DB .NET のサンプル](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [モデル ドキュメント データ](modeling-data.md)

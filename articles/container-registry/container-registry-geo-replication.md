@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 08/16/2019
 ms.author: stevelas
 ms.openlocfilehash: d238de30e458261a11c941c03ac127c732ca8d3d
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74456448"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry の geo レプリケーション
@@ -122,7 +122,7 @@ geo レプリカ レジストリにイメージをプッシュする Docker ク�
 
 イメージをプッシュするとき、DNS 解決を最も近くのレプリカに求めることで最適化するには、プッシュ操作のソースと同じ Azure リージョンか、Azure 外での作業となる場合、最も近くのリージョンで geo レプリカ レジストリを構成します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Container Registry の geo レプリケーション](container-registry-tutorial-prepare-registry.md)に関する 3 部構成のチュートリアル シリーズを確認します。 これらのチュートリアルでは、geo レプリケートされたレジストリを作成する方法、コンテナーをビルドする方法、1 つの `docker push` コマンドを使用してリージョンの複数の Web App for Containers インスタンスにデプロイする方法を説明します。
 

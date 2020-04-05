@@ -9,11 +9,11 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 897ae1fa474de8726ed0caa1def162a00e142dbe
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514783"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232371"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Storage Analytics のメトリック (クラシック)
 
@@ -82,7 +82,7 @@ Storage Analytics では、ストレージ サービスに対する要求に関�
 * **ServiceType**: 指定可能な値は、**Blob**、**Queue**、**Table**、**File** です。
 * **MetricsType**: 指定可能な値は **Hour** と **Minute** です。  
 * **MetricsLevel**: 指定可能な値は次のいずれかです。
-* **なし**:監視しません。
+* **なし**: 監視しません。
 * **サービス**:受信/送信、空き時間情報、遅延時間、成功のパーセンテージなどのメトリックを収集して、BLOB、テーブル、キュー、ファイルのサービスごとに集計します。
 * **ServiceAndApi**:サービス メトリックに加えて、Azure Storage サービス API のストレージ操作ごとに同じメトリックを収集します。
 
@@ -145,7 +145,7 @@ Azure Portal のストレージ アカウント メニュー ブレードの **[
 
 ||||  
 |-|-|-|  
-|**メトリック**|**テーブル名**|**メモ**|  
+|**Metrics**|**テーブル名**|**メモ**|  
 |時間単位のメトリック|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|2013-08-15 より前のバージョンでは、これらのテーブルは以下のように呼ばれていました。<br /><br /> $MetricsTransactionsBlob<br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> ファイル サービスのメトリックは、バージョン 2015-04-05 以降で利用できます。|  
 |分単位のメトリック|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|Powershell を使用するか、プログラミングによってのみ有効にできます。<br /><br /> ファイル サービスのメトリックは、バージョン 2015-04-05 以降で利用できます。|  
 |容量|$MetricsCapacityBlob|BLOB サービスのみ。|  
@@ -231,7 +231,7 @@ private static string MetricsString(MetricsEntity entity, OperationContext opCon
 -   あるサービスがそのサービスのすべての API を毎時間利用する場合、サービス レベルの概要だけを有効にしていれば、約 12 KB のデータがメトリック トランザクション テーブルに毎時間保存されます。  
 -   BLOB の容量テーブルには、毎日、2 つの行が追加されます (ユーザーがログを選択している場合)。 つまり、このテーブルのサイズは、毎日、最大約 300 バイト増えることになります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [ストレージ アカウントの監視方法](https://www.windowsazure.com/manage/services/storage/how-to-monitor-a-storage-account/)   
 * [Storage Analytics Metrics のテーブル スキーマ](/rest/api/storageservices/storage-analytics-metrics-table-schema)   
 * [Storage Analytics によって記録される操作やステータス メッセージ](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)   

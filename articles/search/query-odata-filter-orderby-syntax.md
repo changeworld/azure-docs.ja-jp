@@ -1,7 +1,7 @@
 ---
 title: OData 言語の概要
 titleSuffix: Azure Cognitive Search
-description: Azure Cognitive Search クエリでの filter、select、および order-by 用の OData 言語の概要。
+description: Azure コグニティブ検索クエリでの filter、select、および order-by 用の OData 言語の概要。
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -20,15 +20,15 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: f3a1be435e297ab4a9ba7f8bfbd5f3ce3451d8a8
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77153878"
 ---
-# <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Azure Cognitive Search での `$filter`、`$orderby`、および `$select` 用の OData 言語の概要
+# <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Azure コグニティブ検索での `$filter`、`$orderby`、および `$select` 用の OData 言語の概要
 
-Azure Cognitive Search では、 **$filter** 式、 **$orderby** 式、および **$select** 式で OData 式の構文のサブセットがサポートされています。 filter 式はクエリの構文解析中に評価され、検索が特定のフィールドに制約されるか、インデックス スキャン中に使用される一致条件が追加されます。 order-by 式は、返されたドキュメントを並べ替えるために、結果セットに対する後処理手順として適用されます。 select 式は、ドキュメントのどのフィールドが結果セットに含まれるかを決定します。 これらの式の構文は、**search** パラメーターで使用される[単純な](query-simple-syntax.md)または[完全な](query-lucene-syntax.md)クエリ構文とは異なりますが、参照フィールドの構文には多少の重複があります。
+Azure コグニティブ検索では、 **$filter** 式、 **$orderby** 式、および **$select** 式で OData 式の構文のサブセットがサポートされています。 filter 式はクエリの構文解析中に評価され、検索が特定のフィールドに制約されるか、インデックス スキャン中に使用される一致条件が追加されます。 order-by 式は、返されたドキュメントを並べ替えるために、結果セットに対する後処理手順として適用されます。 select 式は、ドキュメントのどのフィールドが結果セットに含まれるかを決定します。 これらの式の構文は、[search](query-simple-syntax.md) パラメーターで使用される[単純な](query-lucene-syntax.md)または**完全な**クエリ構文とは異なりますが、参照フィールドの構文には多少の重複があります。
 
 この記事では、filter 式、order-by 式、および select 式で使用される OData 式の言語の概要を示します。 この言語は "ボトムアップ" で提示され、最も基本的な要素から始まり、その上に構築されていきます。 各パラメーターの最上位レベルの構文は、別の記事で説明しています。
 
@@ -36,13 +36,13 @@ Azure Cognitive Search では、 **$filter** 式、 **$orderby** 式、および
 - [$orderby 構文](search-query-odata-orderby.md)
 - [$select 構文](search-query-odata-select.md)
 
-OData 式は単純なものから複雑なものまで幅がありますが、すべての式で共通の要素が共有されます。 Azure Cognitive Search での OData 式の最も基本的な部分は次のとおりです。
+OData 式は単純なものから複雑なものまで幅がありますが、すべての式で共通の要素が共有されます。 Azure コグニティブ検索での OData 式の最も基本的な部分は次のとおりです。
 
 - **フィールド パス**: インデックスの特定のフィールドを参照します。
 - **定数**: 特定のデータ型のリテラル値です。
 
 > [!NOTE]
-> Azure Cognitive Search の用語は、いくつかの点で [OData 標準](https://www.odata.org/documentation/)とは異なります。 Azure Cognitive Search で**フィールド**と呼ばれているものは、OData では**プロパティ**と呼ばれています。同様に、**フィールド パス**は**プロパティ パス**に相当します。 Azure Cognitive Search での**ドキュメント**を含む**インデックス**は、OData での**エンティティ**を含む**エンティティ セット**よりも広い意味で使用されています。 このリファレンス全体では、Azure Cognitive Search の用語が使用されます。
+> Azure コグニティブ検索の用語は、いくつかの点で [OData 標準](https://www.odata.org/documentation/)とは異なります。 Azure コグニティブ検索で**フィールド**と呼ばれているものは、OData では**プロパティ**と呼ばれています。同様に、**フィールド パス**は**プロパティ パス**に相当します。 Azure コグニティブ検索での**ドキュメント**を含む**インデックス**は、OData での**エンティティ**を含む**エンティティ セット**よりも広い意味で使用されています。 このリファレンス全体では、Azure コグニティブ検索の用語が使用されます。
 
 ## <a name="field-paths"></a>フィールド パス
 
@@ -66,7 +66,7 @@ identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 
 フィールド パスは、スラッシュで区切られた 1 つ以上の**識別子**で構成されます。 各識別子は、ASCII 文字またはアンダースコアで始まり、ASCII 文字、数字、またはアンダースコアのみを含む文字のシーケンスです。 文字には、大文字または小文字を指定できます。
 
-識別子は、フィールドの名前を参照するか、フィルター内の [コレクション式](search-query-odata-collection-operators.md) (`any` または `all`) のコンテキストで**範囲変数**を参照できます。 範囲変数は、コレクションの現在の要素を表すループ変数に似ています。 複雑なコレクションでは、その変数はオブジェクトを表します。フィールド パスを使用して変数のサブフィールドを参照できるのはこれが理由です。 これは、多くのプログラミング言語で使用されるドット表記に似ています。
+識別子は、フィールドの名前を参照するか、フィルター内の **コレクション式** ([ または ](search-query-odata-collection-operators.md)) のコンテキストで`any`範囲変数`all`を参照できます。 範囲変数は、コレクションの現在の要素を表すループ変数に似ています。 複雑なコレクションでは、その変数はオブジェクトを表します。フィールド パスを使用して変数のサブフィールドを参照できるのはこれが理由です。 これは、多くのプログラミング言語で使用されるドット表記に似ています。
 
 フィールド パスの例を次の表に示します。
 
@@ -75,13 +75,13 @@ identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 | `HotelName` | インデックスの最上位レベルのフィールドを参照します。 |
 | `Address/City` | インデックス内の複雑なフィールドの `City` サブフィールドを参照します。この例では、`Address` は `Edm.ComplexType` 型です。 |
 | `Rooms/Type` | インデックス内の複雑なコレクション フィールドの `Type` サブフィールドを参照します。この例では、`Rooms` は `Collection(Edm.ComplexType)` 型です。 |
-| `Stores/Address/Country` | インデックス内の複雑なコレクション フィールドの `Address` サブフィールドの `Country` サブフィールドを参照します。この例では、`Stores` は `Collection(Edm.ComplexType)` 型であり、`Address` は `Edm.ComplexType` 型です。 |
-| `room/Type` | `room` 範囲変数の `Type` サブフィールドを参照します。例として、フィルター式内の `Rooms/any(room: room/Type eq 'deluxe')` があります。 |
-| `store/Address/Country` | `store` 範囲変数の `Address` サブフィールドの `Country` サブフィールドを参照します。例として、フィルター式内の `Stores/any(store: store/Address/Country eq 'Canada')` があります。 |
+| `Stores/Address/Country` | インデックス内の複雑なコレクション フィールドの `Country` サブフィールドの `Address` サブフィールドを参照します。この例では、`Stores` は `Collection(Edm.ComplexType)` 型であり、`Address` は `Edm.ComplexType` 型です。 |
+| `room/Type` | `Type` 範囲変数の `room` サブフィールドを参照します。例として、フィルター式内の `Rooms/any(room: room/Type eq 'deluxe')` があります。 |
+| `store/Address/Country` | `Country` 範囲変数の `Address` サブフィールドの `store` サブフィールドを参照します。例として、フィルター式内の `Stores/any(store: store/Address/Country eq 'Canada')` があります。 |
 
 フィールド パスの意味はコンテキストによって異なります。 フィルターでは、フィールド パスは、現在のドキュメント内の 1 つのフィールドの "*単一のインスタンス*" の値を参照します。 **$orderby**、 **$select**、[完全な Lucene 構文でのフィールド検索](query-lucene-syntax.md#bkmk_fields)などの他のコンテキストでは、フィールド パスはフィールドそのものを参照します。 これらの違いは、フィルターでのフィールド パスの使用方法に多少の影響を与えます。
 
-`Address/City` というフィールド パスを検討します。 フィルターでは、これは現在のドキュメントの単一の都市、たとえば "San Francisco" (サンフランシスコ) を参照します。 一方、`Rooms/Type` は、多数の客室の `Type` サブフィールド (第 1 室は "標準"、第 2 室は "デラックス"、以下同様) を参照します。 `Rooms/Type` では、`Type` サブフィールドの "*単一のインスタンス*" は参照されないため、フィルター内で直接使用することはできません。 代わりに、客室の種類でフィルター処理するには、次のように[ラムダ式](search-query-odata-collection-operators.md)と範囲変数を使用します。
+`Address/City` というフィールド パスを検討します。 フィルターでは、これは現在のドキュメントの単一の都市、たとえば "San Francisco" (サンフランシスコ) を参照します。 一方、`Rooms/Type` は、多数の客室の `Type` サブフィールド (第 1 室は "標準"、第 2 室は "デラックス"、以下同様) を参照します。 `Rooms/Type` では、 *サブフィールドの "* 単一のインスタンス`Type`" は参照されないため、フィルター内で直接使用することはできません。 代わりに、客室の種類でフィルター処理するには、次のように[ラムダ式](search-query-odata-collection-operators.md)と範囲変数を使用します。
 
     Rooms/any(room: room/Type eq 'deluxe')
 
@@ -89,17 +89,17 @@ identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 
 ### <a name="using-field-paths"></a>フィールド パスの使用
 
-フィールド パスは、[Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/) の多数のパラメーターの中で使用されます。 次の表に、これらを使用できるすべての場所とその使用に関する制限を示します。
+フィールド パスは、[Azure コグニティブ検索 REST API](https://docs.microsoft.com/rest/api/searchservice/) の多数のパラメーターの中で使用されます。 次の表に、これらを使用できるすべての場所とその使用に関する制限を示します。
 
 | API | パラメーター名 | 制限 |
 | --- | --- | --- |
 | インデックスの[作成](https://docs.microsoft.com/rest/api/searchservice/create-index)または[更新](https://docs.microsoft.com/rest/api/searchservice/update-index) | `suggesters/sourceFields` | なし |
 | インデックスの[作成](https://docs.microsoft.com/rest/api/searchservice/create-index)または[更新](https://docs.microsoft.com/rest/api/searchservice/update-index) | `scoringProfiles/text/weights` | **検索可能**フィールドのみを参照できます |
 | インデックスの[作成](https://docs.microsoft.com/rest/api/searchservice/create-index)または[更新](https://docs.microsoft.com/rest/api/searchservice/update-index) | `scoringProfiles/functions/fieldName` | **フィルター処理できる**フィールドのみを参照できます |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `queryType` が `full` の場合の `search` | **検索可能**フィールドのみを参照できます |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `facet` | **ファセット可能**フィールドのみを参照できます |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `highlight` | **検索可能**フィールドのみを参照できます |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `searchFields` | **検索可能**フィールドのみを参照できます |
+| [検索](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `search` が `queryType` の場合の `full` | **検索可能**フィールドのみを参照できます |
+| [検索](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `facet` | **ファセット可能**フィールドのみを参照できます |
+| [検索](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `highlight` | **検索可能**フィールドのみを参照できます |
+| [検索](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `searchFields` | **検索可能**フィールドのみを参照できます |
 | [Suggest](https://docs.microsoft.com/rest/api/searchservice/suggestions) と [Autocomplete](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `searchFields` | [suggester](index-add-suggesters.md) の一部であるフィールドのみを参照できます |
 | [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents)、[Suggest](https://docs.microsoft.com/rest/api/searchservice/suggestions)、および [Autocomplete](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `$filter` | **フィルター処理できる**フィールドのみを参照できます |
 | [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) と [Suggest](https://docs.microsoft.com/rest/api/searchservice/suggestions) | `$orderby` | **並べ替え可能**フィールドのみを参照できます |
@@ -107,9 +107,9 @@ identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 
 ## <a name="constants"></a>定数
 
-OData では、定数は特定の [Entity Data Model](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) (EDM) 型のリテラル値です。 Azure Cognitive Search でサポートされる型の一覧については、「[サポートされるデータ型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)」を参照してください。 コレクション型の定数はサポートされていません。
+OData では、定数は特定の [Entity Data Model](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) (EDM) 型のリテラル値です。 Azure コグニティブ検索でサポートされる型の一覧については、「[サポートされるデータ型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)」を参照してください。 コレクション型の定数はサポートされていません。
 
-次の表に、Azure Cognitive Search でサポートされている各データ型の定数の例を示します。
+次の表に、Azure コグニティブ検索でサポートされている各データ型の定数の例を示します。
 
 | データ型 | 定数の例 |
 | --- | --- |
@@ -129,11 +129,11 @@ OData 内の文字列定数は単一引用符で区切ります。 一重引用�
 たとえば、"Alice's car" のような書式設定されていないアポストロフィを含む語句は、OData で文字列定数 `'Alice''s car'` として表現されます。
 
 > [!IMPORTANT]
-> プログラムによってフィルターを構築する場合は、ユーザー入力に含まれる文字列定数を忘れずにエスケープすることが重要です。 これは、特にフィルターを使用して[セキュリティによるトリミング](search-security-trimming-for-azure-search.md)を実装する場合に、[インジェクション攻撃](https://wikipedia.org/wiki/SQL_injection)の可能性が低減されるようにするためです。
+> プログラムによってフィルターを構築する場合は、ユーザー入力に含まれる文字列定数を忘れずにエスケープすることが重要です。 これは、特にフィルターを使用して[セキュリティによるトリミング](https://wikipedia.org/wiki/SQL_injection)を実装する場合に、[インジェクション攻撃](search-security-trimming-for-azure-search.md)の可能性が低減されるようにするためです。
 
 ### <a name="constants-syntax"></a>定数の構文
 
-次の EBNF ([拡張バッカスナウア記法フォーム](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) によって、上記の表に示されている定数の大部分に対する文法が定義されます。 地理空間型の文法については、[Azure Cognitive Search での OData 地理空間関数](search-query-odata-geo-spatial-functions.md)に関する記事を参照してください。
+次の EBNF ([拡張バッカスナウア記法フォーム](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) によって、上記の表に示されている定数の大部分に対する文法が定義されます。 地理空間型の文法については、[Azure コグニティブ検索での OData 地理空間関数](search-query-odata-geo-spatial-functions.md)に関する記事を参照してください。
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -205,7 +205,7 @@ boolean_literal ::= 'true' | 'false'
 
 ## <a name="building-expressions-from-field-paths-and-constants"></a>フィールド パスと定数からの式の構築
 
-フィールド パスと定数は OData 式の最も基本的なパーツですが、それら自体が既に完全な式です。 実際、Azure Cognitive Search での **$select** パラメーターは単なるフィールド パスのコンマ区切りの一覧であり、 **$orderby** が **$select** よりもはるかに複雑ということはありません。 インデックスに `Edm.Boolean` 型のフィールドが含まれている場合でも、そのフィールドのパスにすぎないフィルターを記述できます。 同様に、`true` 定数と `false` 定数も有効なフィルターです。
+フィールド パスと定数は OData 式の最も基本的なパーツですが、それら自体が既に完全な式です。 実際、Azure コグニティブ検索での **$select** パラメーターは単なるフィールド パスのコンマ区切りの一覧であり、 **$orderby** が **$select** よりもはるかに複雑ということはありません。 インデックスに `Edm.Boolean` 型のフィールドが含まれている場合でも、そのフィールドのパスにすぎないフィルターを記述できます。 同様に、`true` 定数と `false` 定数も有効なフィルターです。
 
 ただし、ほとんどの場合、複数のフィールドと定数を参照するより複雑な式が必要になります。 これらの式は、パラメーターに応じてさまざまな方法で構築されます。
 
@@ -233,13 +233,13 @@ select_expression ::= '*' | field_path(',' field_path)*
 
 **$filter**、 **$orderby**、および **$select** の各パラメーターの詳細を、次の記事で確認できます。
 
-- [Azure Cognitive Search での OData $filter 構文](search-query-odata-filter.md)
-- [Azure Cognitive Search での OData $orderby 構文](search-query-odata-orderby.md)
-- [Azure Cognitive Search での OData $select 構文](search-query-odata-select.md)
+- [Azure コグニティブ検索での OData $filter 構文](search-query-odata-filter.md)
+- [Azure コグニティブ検索での OData $orderby 構文](search-query-odata-orderby.md)
+- [Azure コグニティブ検索での OData $select 構文](search-query-odata-select.md)
 
 ## <a name="see-also"></a>参照  
 
-- [Azure Cognitive Search のファセット ナビゲーション](search-faceted-navigation.md)
+- [Azure コグニティブ検索のファセット ナビゲーション](search-faceted-navigation.md)
 - [Azure Cognitive Search のフィルター](search-filters.md)
 - [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 - [Lucene クエリ構文](query-lucene-syntax.md)

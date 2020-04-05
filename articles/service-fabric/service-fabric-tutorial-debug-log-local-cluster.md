@@ -7,10 +7,10 @@ ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: c664b586260957138249028e4d521c29b411d56d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75465390"
 ---
 # <a name="tutorial-debug-a-java-application-deployed-on-a-local-service-fabric-cluster"></a>チュートリアル:ローカルの Service Fabric クラスター上にデプロイされた Java アプリケーションをデバッグする

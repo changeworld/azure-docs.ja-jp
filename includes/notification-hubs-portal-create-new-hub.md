@@ -9,13 +9,13 @@ ms.date: 01/17/2019
 ms.author: jowargo
 ms.custom: include file
 ms.openlocfilehash: 5afcc8e4524a0e8353766ba239d5ab9161b29d86
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67509097"
 ---
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 1. 左側のメニューで **[すべてのサービス]** を選択し、 **[モバイル]** セクションの **[Notification Hubs]** を選択します。 サービス名の横にある星のアイコンを選択して、左側のメニューにある **[お気に入り]** セクションにサービスを追加します。 **Notification Hubs** を **[お気に入り]** に追加した後、左側のメニューでそれを選択します。
 
@@ -46,7 +46,7 @@ ms.locfileid: "67509097"
 1. リストから **[アクセス ポリシー]** を選択します。 使用可能な 2 つの接続文字列を書き留めてください。 これらは、後でプッシュ通知を処理するために必要になります。
 
       >[!IMPORTANT]
-      >**DefaultFullSharedAccessSignature** ポリシーはアプリケーションで使用 "*しない*" でください。 これの使用が意図されているのはバックエンドだけです。
+      >*DefaultFullSharedAccessSignature* ポリシーはアプリケーションで使用 "**しない**" でください。 これの使用が意図されているのはバックエンドだけです。
       >
 
       ![Azure Portal - 通知ハブの接続文字列](./media/notification-hubs-portal-create-new-hub/notification-hubs-connection-strings-portal.png)

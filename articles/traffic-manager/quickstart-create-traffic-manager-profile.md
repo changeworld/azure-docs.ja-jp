@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: rohink
 ms.openlocfilehash: 559ed0a134bb6db78d1e89634138b4025e04152b
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76934766"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>クイック スタート:Azure portal を使用した Traffic Manager プロファイルの作成
@@ -65,13 +65,13 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
 
     | 設定 | Value |
     | --------| ----- |
-    | Name | Traffic Manager プロファイルの一意の名前を入力します。|
+    | 名前 | Traffic Manager プロファイルの一意の名前を入力します。|
     | ルーティング方法 | **[優先順位]** を選択します。|
     | サブスクリプション | Traffic Manager プロファイルの適用先となるサブスクリプションを選択します。 |
     | Resource group | *myResourceGroupTM1* を選択します。|
-    | Location |この設定は、リソース グループの場所を指定するものです。 グローバルにデプロイされる Traffic Manager プロファイルには影響しません。|
+    | 場所 |この設定は、リソース グループの場所を指定するものです。 グローバルにデプロイされる Traffic Manager プロファイルには影響しません。|
 
-3. **作成** を選択します。
+3. **［作成］** を選択します
 
 ## <a name="add-traffic-manager-endpoints"></a>Traffic Manager エンドポイントの追加
 
@@ -85,7 +85,7 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
     | 設定 | Value |
     | ------- | ------|
     | Type | **[Azure エンドポイント]** を選択します。 |
-    | Name | 「*myPrimaryEndpoint*」と入力します。 |
+    | 名前 | 「*myPrimaryEndpoint*」と入力します。 |
     | ターゲット リソースの種類 | **[App Service]** を選択します。 |
     | ターゲット リソース | **[アプリ サービスの選択]**  >  **[米国東部]** を選択します。 |
     | Priority | **[1]** を選択します。 正常なトラフィックはすべてこのエンドポイントに送られます。 |
@@ -98,7 +98,7 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
     | 設定 | Value |
     | ------- | ------|
     | Type | **[Azure エンドポイント]** を選択します。 |
-    | Name | 「*myFailoverEndpoint*」と入力します。 |
+    | 名前 | 「*myFailoverEndpoint*」と入力します。 |
     | ターゲット リソースの種類 | **[App Service]** を選択します。 |
     | ターゲット リソース | **[アプリ サービスの選択]**  >  **[西ヨーロッパ]** を選択します。 |
     | Priority | **[2]** を選択します。 プライマリ エンドポイントが正常でない場合、すべてのトラフィックはこのフェールオーバー エンドポイントに送られます。 |

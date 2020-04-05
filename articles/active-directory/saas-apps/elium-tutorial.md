@@ -17,10 +17,10 @@ ms.date: 10/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0900f730c287586725722f0b8baaeb0c22f850c2
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72791221"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-elium"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Elium の統合
@@ -29,7 +29,7 @@ ms.locfileid: "72791221"
 
 * Elium にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Elium に自動的にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -155,7 +155,7 @@ Elium に対する Azure AD SSO を構成してテストするには、次の構
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
-1. ブラウザーに拡張機能を追加した後、 **[Elium のセットアップ]** をクリックすると、Elium アプリケーションに誘導されます。 そこから、管理者の資格情報を入力して Elium にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 から 6 が自動化されます。
+1. ブラウザーに拡張機能を追加した後、 **[Elium のセットアップ]** をクリックすると、Elium アプリケーションに誘導されます。 そこから、管理者の資格情報を入力して Elium にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 ～ 6 が自動化されます。
 
     ![セットアップの構成](common/setup-sso.png)
 
@@ -194,7 +194,7 @@ Elium に対する Azure AD SSO を構成してテストするには、次の構
 
     g. Azure Portal からダウンロードしたメタデータ ファイルをメモ帳で開き、内容をコピーして、 **[IdP Metadata]\(IdP メタデータ\)** テキストボックスに貼り付けます。
 
-    h. **[Save]** をクリックします。
+    h. **[保存]** をクリックします。
 
 ### <a name="create-elium-test-user"></a>Elium のテスト ユーザーの作成
 

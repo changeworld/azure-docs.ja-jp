@@ -9,10 +9,10 @@ ms.date: 09/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1c2525b352c25f470814ce909a8d10ff821d9e32
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70961616"
 ---
 キーと証明書を生成します。

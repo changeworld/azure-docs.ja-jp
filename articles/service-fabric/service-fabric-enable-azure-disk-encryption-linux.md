@@ -4,10 +4,10 @@ description: この記事では、Azure Resource Manager と Azure Key Vault を
 ms.topic: article
 ms.date: 03/22/2019
 ms.openlocfilehash: c600d822d20b0e5a0ca613935b1dfa4be838fcec
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78252825"
 ---
 # <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-linux"></a>Linux での Azure Service Fabric クラスター ノードのディスク暗号化の有効化 

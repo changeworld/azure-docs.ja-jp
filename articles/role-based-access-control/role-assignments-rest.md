@@ -12,15 +12,15 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/25/2019
+ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ae6fce5ab962637fe477ade75cf81b6ac237bdd2
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 9beda6589c03f1b14fc9756af86a9ce0711894c0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77138307"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063012"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-rest-api"></a>Azure RBAC と REST API を使用してロールの割り当てを追加または削除する
 
@@ -57,23 +57,27 @@ RBAC でアクセス権を付与するには、ロールの割り当てを追加
 
 1. URI の *{scope}* をロールの割り当てのスコープに変更します。
 
-    | Scope | Type |
-    | --- | --- |
-    | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理グループ |
-    | `subscriptions/{subscriptionId1}` | サブスクリプション |
-    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resource group |
-    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/microsoft.web/sites/mysite1` | リソース |
+    > [!div class="mx-tableFixed"]
+    > | スコープ | 種類 |
+    > | --- | --- |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理グループ |
+    > | `subscriptions/{subscriptionId1}` | サブスクリプション |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resource group |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/microsoft.web/sites/mysite1` | リソース |
+
+    前の例で、microsoft.web は App Service インスタンスを参照するリソース プロバイダーです。 同様に、他の任意のリソース プロバイダーを使用してスコープを指定できます。 詳細については、「[Azure リソース プロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md)」およびサポートされている「[Azure Resource Manager のリソース プロバイダー操作](resource-provider-operations.md)」を参照してください。  
 
 1. *{roleAssignmentName}* を、ロールの割り当ての GUID 識別子に置き換えます。
 
 1. 要求本文内で、 *{scope}* をロールの割り当てのスコープに変更します。
 
-    | Scope | Type |
-    | --- | --- |
-    | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理グループ |
-    | `subscriptions/{subscriptionId1}` | サブスクリプション |
-    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resource group |
-    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/microsoft.web/sites/mysite1` | リソース |
+    > [!div class="mx-tableFixed"]
+    > | スコープ | 種類 |
+    > | --- | --- |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理グループ |
+    > | `subscriptions/{subscriptionId1}` | サブスクリプション |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resource group |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/microsoft.web/sites/mysite1` | リソース |
 
 1. *{roleDefinitionId}* を、ロールの定義の識別子に置き換えます。
 
@@ -93,12 +97,13 @@ RBAC では、アクセス権を削除するにはロールの割り当てを削
 
 1. URI の *{scope}* を、ロールの割り当てを削除するためのスコープに変更します。
 
-    | Scope | Type |
-    | --- | --- |
-    | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理グループ |
-    | `subscriptions/{subscriptionId1}` | サブスクリプション |
-    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resource group |
-    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/microsoft.web/sites/mysite1` | リソース |
+    > [!div class="mx-tableFixed"]
+    > | スコープ | 種類 |
+    > | --- | --- |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理グループ |
+    > | `subscriptions/{subscriptionId1}` | サブスクリプション |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resource group |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/microsoft.web/sites/mysite1` | リソース |
 
 1. *{roleAssignmentName}* を、ロールの割り当ての GUID 識別子に置き換えます。
 

@@ -18,10 +18,10 @@ ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: ''
 ms.openlocfilehash: b5a636471eab188dc8648761afedd81694331953
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76834707"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-powershell"></a>仮想マシンのネットワーク ルーティングに関する問題を診断する - Azure PowerShell

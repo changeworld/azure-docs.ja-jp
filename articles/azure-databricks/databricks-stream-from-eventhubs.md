@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル:Event Hubs を使用してデータを Azure Databricks にストリーム配信する '
+title: 'チュートリアル: Event Hubs を使用してデータを Azure Databricks にストリーム配信する '
 description: Azure Databricks と Event Hubs を使用して、Twitter からストリーミング データを取り込み、ほぼリアルタイムでデータを読み取る方法について説明します。
 services: azure-databricks
 author: lenadroid
@@ -11,13 +11,13 @@ ms.workload: Active
 ms.date: 12/08/2019
 ms.author: alehall
 ms.openlocfilehash: fa5568a5af483a61b4e0854cbc7c2ade3b8dc4b1
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75889139"
 ---
-# <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>チュートリアル:Event Hubs を使用してデータを Azure Databricks にストリーム配信する
+# <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>チュートリアル: Event Hubs を使用してデータを Azure Databricks にストリーム配信する
 
 このチュートリアルでは、データ インジェスト システムを Azure Databricks に接続し、ほぼリアルタイムで Apache Spark クラスターにデータをストリーム配信します。 Azure Event Hubs を使用してデータ インジェスト システムを設定し、それを Azure Databricks に接続して、届いたメッセージを処理します。 データ ストリームにアクセスするために、Twitter API を使用してツイートを Event Hubs に取り込みます。 Azure Databricks にデータを用意したら、分析ジョブを実行してデータをさらに分析できます。
 
@@ -175,7 +175,7 @@ Twitter アプリケーションについて取得した値を保存します。
 **SendTweetsToEventHub** ノートブックで次のコードを貼り付けて、プレースホルダーを、先ほど作成した Event Hubs 名前空間と Twitter アプリケーションの値に置き換えます。 このノートブックによって、キーワード "Azure" が含まれたツイートがリアルタイムで Event Hubs にストリーム配信されます。
 
 > [!NOTE]
-> Twitter API には、特定の要求の制限と[クォータ](https://developer.twitter.com/en/docs/basics/rate-limiting.html)があります。 Twitter API の標準のレート制限では不足の場合、この例では Twitter API を使用せずにテキスト コンテンツを生成できます。 そうするには、変数 **dataSource** を `twitter` ではなく `test` に設定し、リスト **testSource** に適切なテスト入力を設定します。
+> Twitter API には、特定の要求の制限と[クォータ](https://developer.twitter.com/en/docs/basics/rate-limiting.html)があります。 Twitter API の標準のレート制限では不足の場合、この例では Twitter API を使用せずにテキスト コンテンツを生成できます。 そうするには、変数 **dataSource** を `test` ではなく `twitter` に設定し、リスト **testSource** に適切なテスト入力を設定します。
 
 ```scala
     import scala.collection.JavaConverters._

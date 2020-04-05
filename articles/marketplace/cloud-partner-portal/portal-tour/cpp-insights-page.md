@@ -1,19 +1,18 @@
 ---
 title: Azure Marketplace の Insights (分析情報) ページ
 description: Azure Marketplace の Cloud パートナー ポータルの [Insights] (分析情報) ページに関する概要です。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/14/2018
-ms.author: pabutler
-ms.openlocfilehash: b1b8d716beec17b7da82968ede8d24ced348e04a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 8002d67ebd6dbeb70282bbbae84b115a778cffaf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821518"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288871"
 ---
 # <a name="insights-page"></a>[Insights]\(インサイト\) ページ
 
@@ -25,8 +24,8 @@ ms.locfileid: "73821518"
 | **まとめ**       | 発行元のオファーに関するマーケットプレースのアクティビティをまとめて示す、集計データのグラフ、傾向、値です |
 | **Payout (支払い)**        | グラフィカルな形式とダウンロード可能な形式での、支払いおよび関連するトランザクションです |
 | **Orders & usage (注文と使用量)** | グラフィカルな形式とダウンロード可能な形式での、注文と使用量についての情報です |
-| **お客様**      | 購入のプロファイルなど、顧客についての情報です |
-| **Deployment**    | グラフィカルな形式とイベント レベルの形式両方での、デプロイの成功と失敗に関する情報です |
+| **顧客**      | 購入のプロファイルなど、顧客についての情報です |
+| **デプロイ**    | グラフィカルな形式とイベント レベルの形式両方での、デプロイの成功と失敗に関する情報です |
 | **Downloads (ダウンロード)**     | 過去 30 日間のダウンロード要求の一覧です |
 | **Analytics**     | Web 分析とキャンペーン パフォーマンスの分析の概要です |
 |  |  |
@@ -38,7 +37,7 @@ ms.locfileid: "73821518"
 ![Seller Insights ページの [Summary]\(概要\) ダッシュボード](./media/insights-page1.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Seller Insights を使用して販売を最適化する方法について詳しくは、「[Seller Insights の概要](./../../cloud-partner-portal-orig/si-getting-started.md)」セクションをご覧ください。
 

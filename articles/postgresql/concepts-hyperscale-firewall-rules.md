@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 9/12/2019
 ms.openlocfilehash: b843cd1528630a21255053f623356a0379daacf6
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74975569"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) のファイアウォール規則
@@ -51,6 +51,6 @@ Microsoft Azure Database for PostgreSQL - Hyperscale (Citus) サービスに期�
 
 * 代わりに、クライアント コンピューター用に静的 IP アドレスを取得し、ファイアウォール規則としてその静的 IP アドレス範囲を追加してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 サーバー レベルおよびデータベース レベルのファイアウォール規則の作成については、次の記事をご覧ください。
 * [Azure Portal を使用した Azure Database for PostgreSQL ファイアウォール規則の作成と管理](howto-hyperscale-manage-firewall-using-portal.md)

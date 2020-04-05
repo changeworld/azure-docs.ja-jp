@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.date: 10/24/2018
 ms.author: victorh
 ms.openlocfilehash: da46cf826da40658883d22692e5038b09d222907
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75974525"
 ---
-# <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>チュートリアル:Azure Firewall のログとメトリックを監視する
+# <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>チュートリアル: Azure Firewall のログとメトリックを監視する
 
 Azure Firewall を監視するには、ファイアウォール ログを使用できます。 また、アクティビティ ログを使用して、Azure Firewall リソースに対する操作を監査することもできます。 メトリックを使用して、ポータルにパフォーマンス カウンターを表示できます。
 
@@ -94,7 +94,7 @@ Azure Firewall を監視するには、ファイアウォール ログを使用�
 
 次のいずれかの方法を使用して、アクティビティ ログのデータを表示および分析できます。
 
-* **Azure Tools**:Azure PowerShell、Azure CLI、Azure REST API、または Azure portal を使用して、アクティビティ ログから情報を取得します。 それぞれの方法の詳細な手順については、「[リソース マネージャーの監査操作](../azure-resource-manager/management/view-activity-logs.md)」を参照してください。
+* **Azure Tools:** Azure PowerShell、Azure CLI、Azure REST API、または Azure Portal を使用して、アクティビティ ログから情報を取得します。 それぞれの方法の詳細な手順については、「[リソース マネージャーの監査操作](../azure-resource-manager/management/view-activity-logs.md)」を参照してください。
 * **Power BI**: [Power BI](https://powerbi.microsoft.com/pricing) アカウントをまだ所有していない場合は、無料で試すことができます。 [Power BI 用 Azure アクティビティ ログ コンテンツ パック](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/)を使用すると、事前に構成されたダッシュボードでデータを分析できます。ダッシュボードは、そのまま使用することも、カスタマイズすることもできます。
 
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>ネットワークおよびアプリケーション ルール ログの表示と分析

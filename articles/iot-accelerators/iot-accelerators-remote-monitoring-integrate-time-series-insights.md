@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 752529454a5b6293d9cbfdf8378b46947aed5a0e
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77564646"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Azure Time Series Insights とリモート監視の統合
@@ -49,7 +49,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
 次に、追加のリソースとして Time Series Insights をリモート監視ソリューションにデプロイし、IoT ハブに接続します。
 
-1. [Azure portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 1. **[リソースの作成]**  >  **[モノのインターネット (IoT)]**  >  **[Time Series Insights]** を選択します。
 
@@ -57,7 +57,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
 1. Time Series Insights 環境を作成するには、次の表の値を使用します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     | 環境名 | 次のスクリーン ショットでは、**contorosrmtsi** という名前を使用しています。 この手順を完了したら、独自の一意の名前を選択してください。 |
     | サブスクリプション | ドロップダウンから Azure サブスクリプションを選択します。 |
@@ -86,7 +86,7 @@ IoT Hub に接続する新しいイベント ソースを作成します。 必�
 
 1. IoT Hub を新しいイベント ソースとして構成するには、次の表の値を使用します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     | イベント ソース名 | 次のスクリーン ショットでは、**contosorm-iot-hub** という名前を使用しています。 この手順を完了したら、独自の一意の名前を使用してください。 |
     | source | **IoT Hub** |
@@ -121,7 +121,7 @@ IoT Hub に接続する新しいイベント ソースを作成します。 必�
 
 1. **[ロール]** ドロップダウン リストで、 **[閲覧者]** や **[共同作成者]** などのロールを選択します。
 
-1. **[選択]** の一覧で、ユーザー、グループ、またはアプリケーションを選択します。 [選択] 一覧で、ユーザー、グループ、サービス プリンシパル、またはマネージド ID を選択します。 一覧にセキュリティ プリンシパルが表示されない場合には、 **[選択]**  ボックスに表示名、メール アドレス、オブジェクト識別子を入力してディレクトリを検索します。
+1. **[選択]** の一覧で、ユーザー、グループ、またはアプリケーションを選択します。 一覧にセキュリティ プリンシパルが表示されない場合には、 **[選択]** ボックスに表示名、メール アドレス、オブジェクト識別子を入力してディレクトリを検索します。
 
 1. **[保存]** を選択して、ロールの割り当てを作成します。 何分か待つと、セキュリティ プリンシパルにデータ アクセス ポリシー内のロールが割り当てられます。
 

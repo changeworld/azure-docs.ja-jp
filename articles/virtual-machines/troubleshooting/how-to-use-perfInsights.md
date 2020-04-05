@@ -14,11 +14,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 783b479dd3e5f429516799d7d3ea82f363cac2ec
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058175"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226747"
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights を使用する方法
 
@@ -116,7 +116,7 @@ Windows VM、ディスクまたは記憶域プールの構成、パフォーマ�
 | Netstat 出力                    | はい                        | はい                                | はい                      | はい                  | はい                  |
 | ネットワーク構成             | はい                        | はい                                | はい                      | はい                  | はい                  |
 | ファイアウォールの構成            | はい                        | はい                                | はい                      | はい                  | はい                  |
-| SQL Server 構成          | はい                        | はい                                | はい                      | はい                  | はい                  |
+| SQL Server の構成          | はい                        | はい                                | はい                      | はい                  | はい                  |
 | パフォーマンス診断トレース *  | はい                        | はい                                | はい                      | はい                  | はい                  |
 | パフォーマンス カウンター トレース **      |                            |                                    | はい                      |                      | はい                  |
 | SMB カウンター トレース **              |                            |                                    |                          | はい                  |                      |
@@ -303,7 +303,7 @@ Diskspd は、Microsoft からのストレージ ロード ジェネレーター
 
 Xperf は、Windows パフォーマンス ツールキットからのトレースをキャプチャするためのコマンドライン ツールです。 詳細については、「[Windows Performance Toolkit – Xperf (Windows パフォーマンス ツールキット - Xperf)](https://blogs.msdn.microsoft.com/ntdebugging/2008/04/03/windows-performance-toolkit-xperf/)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 さらに詳しく調べるために、診断ログとレポートを Microsoft サポートにアップロードできます。 サポートは、トラブルシューティング プロセスを支援するために、PerfInsights によって生成された出力を送信するよう要求する可能性があります。
 

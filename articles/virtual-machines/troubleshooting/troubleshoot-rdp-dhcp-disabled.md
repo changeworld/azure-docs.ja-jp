@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
 ms.openlocfilehash: 2c5b0556554d280e57b2df51875e1b057b5fb4a8
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75749893"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>DHCP クライアント サービスが無効になっているために Azure 仮想マシンに RDP で接続できない

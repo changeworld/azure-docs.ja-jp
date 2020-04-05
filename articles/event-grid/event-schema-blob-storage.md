@@ -8,11 +8,11 @@ ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
 ms.openlocfilehash: 4a71f50a130bd9b22965d39fa942b47c70857a86
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844481"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231335"
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>Azure Event Grid の Blob Storage 用のイベント スキーマ
 
@@ -292,7 +292,7 @@ BLOB ストレージ アカウントに階層型名前空間がある場合、�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | topic | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | subject | string | 発行元が定義したイベントの対象のパス。 |
@@ -305,7 +305,7 @@ BLOB ストレージ アカウントに階層型名前空間がある場合、�
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | api | string | イベントのトリガーとなった操作。 |
 | clientRequestId | string | ストレージ API 操作に対するクライアントで提供された要求 ID です。 この ID は、ログの "client-request-id" フィールドを使って Azure Storage 診断ログに関連付けるために使うことができ、クライアント要求で "x-ms-client-request-id" ヘッダーを使って提供できます。 「[Storage Analytics のログの形式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)」をご覧ください。 |

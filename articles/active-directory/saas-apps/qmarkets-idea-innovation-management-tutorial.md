@@ -17,10 +17,10 @@ ms.date: 11/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1d3e3f86d761a686993e6ecf32718aa2e15dac92
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74534619"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-qmarkets-idea--innovation-management"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Qmarkets Idea & Innovation Management の統合

@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: 804aeee112d060c411a4e37b5d19e4766307b0a0
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 218c1c98a2ed775ae86c1657156991879708cc7a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169166"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79217930"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>機械学習モデルの再トレーニングとデプロイ
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 再トレーニングは、機械学習モデルが正確であり、利用できる最も関連性の高いデータに基づいている状態を確保するための 1 つの方法です。 この記事では、Studio (クラシック) で新しい Web サービスとして機械学習モデルを再トレーニングし、デプロイする方法について説明します。 従来の Web サービスを再トレーニングする方法については、[こちらのハウツー記事を参照](retrain-classic-web-service.md)してください。
 
@@ -59,7 +61,7 @@ ms.locfileid: "77169166"
 
 次の手順を実行して、再トレーニング API を呼び出します。
 
-1. Visual Studio で、C# コンソール アプリケーションを作成します: **[新規]**  >  **[プロジェクト]**  >  **[Visual C#]**  >  **[Windows クラシック デスクトップ]**  >  **[コンソール アプリ (.NET Framework)]** 。
+1. Visual Studio で C# コンソール アプリケーションを作成します ( **[新規作成]**  >  **[プロジェクト]**  >  **[Visual C#]**  >  **[Windows クラシック デスクトップ]**  >  **[コンソール アプリ (.NET Framework)]** )。
 1. Machine Learning Web サービス ポータルにサインインします。
 1. 使用する Web サービスをクリックします。
 1. **[Consume (使用)]** をクリックします。

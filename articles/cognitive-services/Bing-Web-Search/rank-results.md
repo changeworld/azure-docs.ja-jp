@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/17/2019
 ms.author: scottwhi
 ms.openlocfilehash: 677f6089f649aae720a6303a7e1512e3c7ebeca7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "66390136"
 ---
 # <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>ランキングを使用して Bing Web Search API の結果を表示する方法  
@@ -218,7 +218,7 @@ ID を使用するのは簡単です。必要があるのは、ランキング I
 -   すべての関連検索  
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ランク付けされない結果を昇格する方法については、「[Promoting answers that are not ranked (ランク付けされない回答を昇格する)](./filter-answers.md#promoting-answers-that-are-not-ranked)」を参照してください。
 

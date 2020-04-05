@@ -10,13 +10,13 @@ ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: cecf23d61d6a12c20aa3e64e4ee0ddacddbe7823
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183358"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "62106815"
 ---
-# <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>クイック スタート:コネクテッド デバイスの予測メンテナンス分析を実行するクラウドベースのソリューションを試す
+# <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>クイック スタート: コネクテッド デバイスの予測メンテナンス分析を実行するクラウドベースのソリューションを試す
 
 このクイック スタートでは、Azure IoT 予測メンテナンス ソリューション アクセラレータをデプロイして、予測メンテナンスをクラウドベースで行うシミュレーションの実行方法を紹介しています。 ソリューション アクセラレータのデプロイ後、シミュレートされた航空機エンジンのデータに対して、ソリューションの **[ダッシュボード]** ページを使って予測メンテナンス分析を実行します。 このソリューション アクセラレータは、独自に実装を行う際の出発点として、または学習用ツールとしてご利用ください。
 
@@ -40,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 **[Create Predictive Maintenance solution]\(予測メンテナンス ソリューションの作成\)** ページで予測メンテナンス ソリューション アクセラレータの一意の**ソリューション名**を入力します。 このクイック スタートでは、**MyPredictiveMaintenance** を使用します。
 
-ソリューション アクセラレータのデプロイに使用する**サブスクリプション**と**リージョン**を選択します。 通常は、最も近いリージョンを選択します。 このクイック スタートでは、**[Visual Studio Enterprise]** と **[米国東部]** を使用します。 サブスクリプションの[グローバル管理者またはユーザー](iot-accelerators-permissions.md)である必要があります。
+ソリューション アクセラレータのデプロイに使用する**サブスクリプション**と**リージョン**を選択します。 通常は、最も近いリージョンを選択します。 このクイック スタートでは、 **[Visual Studio Enterprise]** と **[米国東部]** を使用します。 サブスクリプションの[グローバル管理者またはユーザー](iot-accelerators-permissions.md)である必要があります。
 
 **[作成]** をクリックして、デプロイを開始します。 このプロセスを実行するには、少なくとも 5 分かかります。
 
@@ -74,17 +74,17 @@ RUL が (デモンストレーション用に選択した任意のしきい値�
 
 148 サイクルの完全なデータセットのシミュレーションが実行され、最終的な RUL とサイクル数が出されます。
 
-シミュレーションは任意のポイントで停止できますが、**[Start Simulation (シミュレーションの開始)]** をクリックすると、データセットの先頭からシミュレーションが再実行されます。
+シミュレーションは任意のポイントで停止できますが、 **[Start Simulation (シミュレーションの開始)]** をクリックすると、データセットの先頭からシミュレーションが再実行されます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 さらに調べる場合は、予測メンテナンス ソリューション アクセラレータをデプロイしたままにします。
 
-ソリューション アクセラレータが不要になった場合は、[[プロビジョニングされたソリューション]](https://www.azureiotsolutions.com/Accelerators#dashboard) ページでそれを選択し、**[ソリューションの削除]** をクリックして削除してください。
+ソリューション アクセラレータが不要になった場合は、[[プロビジョニングされたソリューション]](https://www.azureiotsolutions.com/Accelerators#dashboard) ページでそれを選択し、 **[ソリューションの削除]** をクリックして削除してください。
 
 ![ソリューションを削除する](media/quickstart-predictive-maintenance-deploy/deletesolution.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、予測メンテナンス ソリューション アクセラレータをデプロイし、シミュレーションを実行しました。
 

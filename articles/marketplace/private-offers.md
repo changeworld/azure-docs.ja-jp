@@ -1,20 +1,18 @@
 ---
 title: 非公開オファー | Azure Marketplace
 description: アプリとサービスの公開元向けの Azure Marketplace 上のプライベート オファー。
-services: Azure, Marketplace, Compute
 author: qianw211
-manager: pabutler
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/1/2018
-ms.author: pabutler
-ms.openlocfilehash: 16903d4f9b1bad8a588b1a234ac84bc9c0150c4a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 67aba077304117ad357d4e004ce7bdb25ac58352
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827839"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285046"
 ---
 # <a name="private-offers"></a>プライベート オファー
 
@@ -54,6 +52,6 @@ ms.locfileid: "73827839"
 >[!Note]
 >プライベートオファーは、クラウド ソリューション プロバイダー プログラム (CSP) のリセラーを通じて確立されたサブスクリプションではサポートされていません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 プライベート オファーの使用を開始するには、「[プライベート SKU とプラン](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)」ガイドの手順に従ってください。

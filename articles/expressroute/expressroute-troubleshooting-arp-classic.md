@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: ganesr
 ms.openlocfilehash: 7c223e3802d499e002b12580b17cb9ee3f1bea97
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74076608"
 ---
 # <a name="getting-arp-tables-in-the-classic-deployment-model"></a>クラシック デプロイ モデルでの ARP テーブルの取得
@@ -156,7 +156,7 @@ Microsoft ピアリングの ARP テーブルは、次のコマンドレット�
 * マイクロソフト側に問題がある場合は、ピアリングの ARP テーブルが表示されません。
 * [Microsoft Azure のヘルプとサポート](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)にサポート要求を申請してください。 レイヤー 2 の接続に問題がある旨をはっきりと伝えてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * ExpressRoute 回線のレイヤー 3 の構成を検証します。
   * ルートのサマリーを取得して BGP セッションの状態を調べます。
   * ExpressRoute でアドバタイズされるプレフィックスをルート テーブルを取得して調べます。

@@ -4,10 +4,10 @@ description: インクルード ファイル
 ms.topic: include
 ms.date: 01/23/2020
 ms.openlocfilehash: a7f4e0b47b3aaf9924f8c82eb6a9fa37decc0b2a
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76772418"
 ---
 ### <a name="create-an-environment-variable"></a>環境変数を作成する
@@ -26,7 +26,7 @@ ms.locfileid: "76772418"
 
 ご利用のオペレーティング システムの手順に従ってください。
 
-#### <a name="windowstabwindows"></a>[Windows](#tab/windows)
+#### <a name="windows"></a>[Windows](#tab/windows)
 
 ```console
 setx LUIS_RUNTIME_KEY <replace-with-your-resource-key>
@@ -37,7 +37,7 @@ setx LUIS_APP_SLOT_NAME <replace-with-production-or-staging>
 
 環境変数を追加したら、コンソール ウィンドウを再起動します。
 
-#### <a name="linuxtablinux"></a>[Linux](#tab/linux)
+#### <a name="linux"></a>[Linux](#tab/linux)
 
 ```bash
 export LUIS_RUNTIME_KEY= <replace-with-your-resource-key>
@@ -48,7 +48,7 @@ export LUIS_APP_SLOT_NAME= <replace-with-production-or-staging>
 
 環境変数を追加した後、変更を有効にするには、コンソール ウィンドウから `source ~/.bashrc` を実行します。
 
-#### <a name="macostabunix"></a>[macOS](#tab/unix)
+#### <a name="macos"></a>[macOS](#tab/unix)
 
 次のように `.bash_profile` を編集し、環境変数を追加します。
 

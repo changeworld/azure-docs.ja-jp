@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e93360d4045f9c97d45abe2af489804a4c3c85f0
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 619ba7cb2d99e0137fd1834096dd5b66ffcd6ec9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673491"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240382"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Azure CLI を使用して Azure IoT Edge モジュールをデプロイする
 
@@ -112,11 +112,11 @@ Azure CLI を使用してモジュールをデプロイするには、配置マ�
 
 モジュールをデバイスにデプロイするには、モジュール情報で構成されている配置マニフェストを適用します。
 
-デプロイ マニフェストが保存されているフォルダーにディレクトリを変更します。 VS Code IoT Edge テンプレートのいずれかを使用している場合は、ソリューション ディレクトリの **config** フォルダー内の `deployment.json` ファイルを使用し、`deployment.template.json` ファイルは使用しません。
+デプロイ マニフェストが保存されているフォルダーにディレクトリを変更します。 VS Code IoT Edge テンプレートのいずれかを使用している場合は、ソリューション ディレクトリの `deployment.json`config**フォルダー内の** ファイルを使用し、`deployment.template.json` ファイルは使用しません。
 
 次のコマンドを使用して、IoT Edge デバイスに構成を適用します。
 
-   ```cli
+   ```azurecli
    az iot edge set-modules --device-id [device id] --hub-name [hub name] --content [file path]
    ```
 
@@ -130,7 +130,7 @@ device ID パラメーターでは大文字と小文字が区別されます。 
 
 IoT Edge デバイス上のモジュールを参照します。
 
-   ```cli
+   ```azurecli
    az iot hub module-identity list --device-id [device id] --hub-name [hub name]
    ```
 

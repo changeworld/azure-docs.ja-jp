@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
 ms.openlocfilehash: eacbeca275192e1a68b6682c3036da2d5c09bd54
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77619889"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Video Indexer に関してよく寄せられる質問

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
 ms.openlocfilehash: d356042d65c419163de4951e64a635a22ea90e6d
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78269190"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>チュートリアル:Azure リソースからリソース ログを収集して分析する

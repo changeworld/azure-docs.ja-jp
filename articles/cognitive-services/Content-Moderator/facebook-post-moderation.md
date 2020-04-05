@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.openlocfilehash: 9f25c845302d62e3bc9e230b4a6f8f2669f4ac35
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76774279"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>チュートリアル:Azure Content Moderator で Facebook の投稿とコマンドをモデレートする
@@ -144,7 +144,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         2. [Postman 環境](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/FB%20Page%20Access%20Token%20Environment.postman_environment.json)       
     3. 以下の環境変数を更新します。
     
-        | Key | Value   | 
+        | Key | 値   | 
         | -------------------- |-------------|
         | appId   | Facebook アプリ識別子をここに挿入します  | 
         | appSecret | Facebook アプリのシークレットをここに挿入します | 

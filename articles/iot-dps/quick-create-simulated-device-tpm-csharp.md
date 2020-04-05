@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: 82bd284ede23e8880f79c614f4a6e2f588a4293c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74976997"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>クイック スタート:IoT Hub Device Provisioning Service 対応の C# デバイス SDK を使用して、シミュレートされた TPM デバイスを作成してプロビジョニングする
@@ -49,7 +49,7 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 
 ## <a name="provision-the-simulated-device"></a>シミュレーションされたデバイスをプロビジョニングする
 
-1. Azure ポータルにサインインします。 左側のメニューの **[すべてのリソース]** を選択して、Device Provisioning Service を開きます。 **[概要]** ブレードから、 **_[ID スコープ]_** の値をメモします。
+1. Azure portal にサインインします。 左側のメニューの **[すべてのリソース]** を選択して、Device Provisioning Service を開きます。 **[概要]** ブレードから、 **_[ID スコープ]_** の値をメモします。
 
     ![ポータルのブレードからプロビジョニング サービスのスコープ ID をコピーします](./media/quick-create-simulated-device-tpm-csharp/copy-scope.png) 
 
@@ -96,7 +96,7 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 
     *[Initial device twin state]\(初期のデバイス ツインの状態\)* をデバイスの登録エントリの既定値から変更した場合、デバイスはハブから目的のツインの状態をプルし、それに従って動作することができます。 詳細については、「[IoT Hub のデバイス ツインの理解と使用](../iot-hub/iot-hub-devguide-device-twins.md)」を参照してください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 引き続きデバイス クライアント サンプルを使用する場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 使用する予定がない場合は、次の手順を使用して、このクイックスタートで作成したすべてのリソースを削除してください。
 
@@ -105,7 +105,7 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 1. Azure portal の左側のメニューで **[すべてのリソース]** を選択し、Device Provisioning Service を選択します。 **[概要]** ブレードの上部で、ペインの上部にある **[削除]** をクリックします。  
 1. Azure portal の左側のメニューにある **[すべてのリソース]** を選択し、IoT ハブを選択します。 **[概要]** ブレードの上部で、ペインの上部にある **[削除]** をクリックします。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、TPM のシミュレートされたデバイスをマシン上に作成し、IoT Hub Device Provisioning Service を使用して IoT ハブにプロビジョニングしました。 TPM デバイスをプログラムで登録する方法については、プログラムによる TPM デバイスの登録のクイックスタートに進みます。 
 

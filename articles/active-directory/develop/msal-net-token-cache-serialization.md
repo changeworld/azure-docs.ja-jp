@@ -14,11 +14,11 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 1bd348ad27d892d0421b13c16ce81bc4f5dfb021
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695128"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230647"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>MSAL.NET でのトークン キャッシュのシリアル化
 [トークンは、取得](msal-acquire-cache-tokens.md)後に Microsoft Authentication Library (MSAL) でキャッシュされます。  アプリケーション コードでは、別のメソッドでトークンを取得する前に、キャッシュからトークンを取得しようとする必要があります。  この記事では、MSAL.NET でのトークン キャッシュの既定のシリアル化とカスタムのシリアル化について説明します。

@@ -12,10 +12,10 @@ manager: anansub
 ms.custom: seo-lt-2019
 ms.date: 10/31/2018
 ms.openlocfilehash: a2f24d8203ac5fb9724370cbdf4309bdc43c166a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75444099"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Azure Data Factory で共有のセルフホステッド統合ランタイムを作成する
@@ -99,7 +99,7 @@ Azure PowerShell を使用して共有のセルフホステッド IR を作成�
     > [!NOTE]  
     > この手順は省略可能です。 既にデータ ファクトリがある場合は、この手順をスキップしてください。 
 
-    [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) コマンドを使用して [Azure リソース グループ](../azure-resource-manager/management/overview.md)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。 次の例では、`myResourceGroup` という名前のリソース グループを WestEurope の場所に作成します。 
+    [New-AzResourceGroup](../azure-resource-manager/management/overview.md) コマンドを使用して [Azure リソース グループ](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。 次の例では、`myResourceGroup` という名前のリソース グループを WestEurope の場所に作成します。 
 
     ```powershell
     New-AzResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName

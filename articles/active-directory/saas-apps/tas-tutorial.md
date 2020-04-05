@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
 ms.openlocfilehash: efd64830c0d9afa83838adef96cf1c103b4485e8
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68943272"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tas"></a>チュートリアル:Azure Active Directory と TAS の統合

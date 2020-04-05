@@ -9,17 +9,18 @@ ms.topic: overview
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
-ms.date: 02/07/2020
-ms.openlocfilehash: 1ffa17bd0e35e3753cde3e915c0ee70d8000147a
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.date: 03/10/2020
+ms.openlocfilehash: dcaaf3c2f793e7148e1695cdfaa68c768db5fff6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77083126"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215460"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>データベース ジョブを使用して管理タスクを自動化する
 
-Azure SQL Database では、T-SQL クエリを実行してメンテナンス タスクを行うジョブを作成し、スケジュールして、1 つまたは多数のデータベースに対して定期的に実行することができます。 すべてのジョブでは、実行の状態が記録されます。また、エラーが発生した場合に操作が自動で再試行されます。
+Azure SQL Database では、T-SQL クエリを実行してメンテナンス タスクを行うジョブを作成し、スケジュールして、1 つまたは多数のデータベースに対して定期的に実行することができます。
+すべてのジョブでは、実行の状態が記録されます。また、エラーが発生した場合に操作が自動で再試行されます。
 ジョブの実行場所となるターゲット データベースまたは Azure SQL データベースのグループを定義できるほか、ジョブを実行するスケジュールを定義できます。
 ターゲット データベースにログインするタスクはジョブによって処理されます。 Azure SQL データベースのグループ全体に対して実行される Transact-SQL スクリプトの定義、保守、維持も行います。
 
@@ -48,10 +49,10 @@ Azure SQL Database では、次のジョブ スケジュール テクノロジ�
 
 SQL エージェント (オンプレミスでも SQL Database Managed Instance の一部としても利用可能) と Database Elastic ジョブ エージェント (Azure SQL データベース内の単一のデータベースと SQL Data Warehouse 内のデータベースで利用可能) の間には、いくつかの点で違いがあります。
 
-|  |エラスティック ジョブ  |SQL エージェント |
+| |エラスティック ジョブ |SQL エージェント |
 |---------|---------|---------|
-|Scope     |  ジョブ エージェントと同じ Azure クラウド内に存在する任意の数の Azure SQL データベースやデータ ウェアハウス。 SQL Database サーバー、サブスクリプション、またはリージョンが異なっていてもターゲットとすることができます。 <br><br>ターゲット グループを構成するメンバーには、個々のデータベースまたはデータ ウェアハウスのほか、サーバー、プール、またはシャードマップに含まれるすべてのデータベースを指定できます (ジョブの実行時に動的に列挙されます)。 | SQL エージェントと同一の SQL Server インスタンス内の個々のデータベース。 |
-|サポートされる API とツール     |  ポータル、PowerShell、T-SQL、Azure Resource Manager      |   T-SQL、SQL Server Management Studio (SSMS)     |
+|スコープ | ジョブ エージェントと同じ Azure クラウド内に存在する任意の数の Azure SQL データベースやデータ ウェアハウス。 SQL Database サーバー、サブスクリプション、またはリージョンが異なっていてもターゲットとすることができます。 <br><br>ターゲット グループを構成するメンバーには、個々のデータベースまたはデータ ウェアハウスのほか、サーバー、プール、またはシャードマップに含まれるすべてのデータベースを指定できます (ジョブの実行時に動的に列挙されます)。 | SQL エージェントと同一の SQL Server インスタンス内の個々のデータベース。 |
+|サポートされる API とツール | ポータル、PowerShell、T-SQL、Azure Resource Manager | T-SQL、SQL Server Management Studio (SSMS) |
 
 ## <a name="sql-agent-jobs"></a>SQL エージェント ジョブ
 
@@ -106,8 +107,8 @@ EXECUTE msdb.dbo.sysmail_add_account_sp
     @email_address = '$(loginEmail)',
     @display_name = 'SQL Agent Account',
     @mailserver_name = '$(mailserver)' ,
-    @username = '$(loginEmail)' ,  
-    @password = '$(password)' 
+    @username = '$(loginEmail)' ,
+    @password = '$(password)'
 
 -- Create a Database Mail profile
 EXECUTE msdb.dbo.sysmail_add_profile_sp
@@ -125,13 +126,13 @@ EXECUTE msdb.dbo.sysmail_add_profileaccount_sp
 
 ```sql
 GO
-EXEC sp_configure 'show advanced options', 1;  
-GO  
-RECONFIGURE;  
-GO  
-EXEC sp_configure 'Database Mail XPs', 1;  
-GO  
-RECONFIGURE 
+EXEC sp_configure 'show advanced options', 1;
+GO
+RECONFIGURE;
+GO
+EXEC sp_configure 'Database Mail XPs', 1;
+GO
+RECONFIGURE
 ```
 
 お客様の SQL エージェント ジョブに関する出来事をオペレーターに通知できます。 1 つまたは複数のマネージド インスタンスを保守するメンテナンス担当者の連絡先情報は、オペレーターが定義します。 オペレーターの責任が 1 人の担当者に割り当てられることもあります。
@@ -140,23 +141,24 @@ RECONFIGURE
 オペレーターは、SSMS を使用して作成できるほか、次の例のように Transact-SQL スクリプトを使用して作成することができます。
 
 ```sql
-EXEC msdb.dbo.sp_add_operator 
-    @name=N'Mihajlo Pupun', 
-        @enabled=1, 
-        @email_address=N'mihajlo.pupin@contoso.com'
+EXEC msdb.dbo.sp_add_operator
+    @name=N'Mihajlo Pupun',
+    @enabled=1,
+    @email_address=N'mihajlo.pupin@contoso.com'
 ```
 
 ジョブに対する変更のほか、ジョブが完了、失敗、成功した場合にメール経由で通知されるオペレーターの割り当ては、SSMS または次の Transact-SQL スクリプトを使用して行えます。
 
 ```sql
-EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS', 
-        @notify_level_email=3,                        -- Options are: 1 on succeed, 2 on failure, 3 on complete
-        @notify_email_operator_name=N'Mihajlo Pupun'
+EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
+    @notify_level_email=3, -- Options are: 1 on succeed, 2 on failure, 3 on complete
+    @notify_email_operator_name=N'Mihajlo Pupun'
 ```
 
 ### <a name="sql-agent-job-limitations"></a>SQL エージェント ジョブの制限
 
 Managed Instance では、SQL Server で利用できる一部の SQL エージェント機能がサポートされません。
+
 - SQL エージェントの設定は読み取り専用です。 `sp_set_agent_properties` プロシージャは、マネージド インスタンスではサポートされていません。
 - Managed Instance では現在、SQL エージェントの有効化と無効化がサポートされていません。 SQL エージェントは常に実行されています。
 - 通知は部分的にサポートされています。
@@ -180,17 +182,16 @@ SQL Server エージェントについては、「[SQL Server エージェント
 
 ### <a name="elastic-job-components"></a>エラスティック ジョブのコンポーネント
 
-|コンポーネント  | 説明 (詳しい情報は表の下に記載しています) |
+|コンポーネント | 説明 (詳しい情報は表の下に記載しています) |
 |---------|---------|
-|[**エラスティック ジョブ エージェント**](#elastic-job-agent) |  ジョブの実行と管理を目的として作成する Azure リソースです。   |
-|[**ジョブ データベース**](#job-database)    |    Azure SQL データベースの一種で、ジョブ エージェントがジョブの関連データや定義などの情報を格納するために使用するものです。      |
-|[**ターゲット グループ**](#target-group)      |  ジョブの実行の対象となるサーバー、プール、データベース、シャード マップをまとめたものを指します。       |
-|[**ジョブ**](#job)  |  ジョブは処理の 1 単位で、1 つ以上の[ジョブ ステップ](#job-step)から成ります。 ジョブ ステップでは、実行する T-SQL スクリプトのほか、スクリプトの実行に必要な詳細情報を指定します。  |
-
+|[**エラスティック ジョブ エージェント**](#elastic-job-agent) | ジョブの実行と管理を目的として作成する Azure リソースです。 |
+|[**ジョブ データベース**](#job-database) | Azure SQL データベースの一種で、ジョブ エージェントがジョブの関連データや定義などの情報を格納するために使用するものです。 |
+|[**ターゲット グループ**](#target-group) | ジョブの実行の対象となるサーバー、プール、データベース、シャード マップをまとめたものを指します。 |
+|[**ジョブ**](#job) | ジョブは処理の 1 単位で、1 つ以上の[ジョブ ステップ](#job-step)から成ります。 ジョブ ステップでは、実行する T-SQL スクリプトのほか、スクリプトの実行に必要な詳細情報を指定します。 |
 
 #### <a name="elastic-job-agent"></a>エラスティック ジョブ エージェント
 
-ジョブを作成、実行、および管理するための Azure リソースを、エラスティック ジョブ エージェントといいます。 エラスティック ジョブ エージェントは、ポータルで作成する Azure リソースです (このほか、[PowerShell](elastic-jobs-powershell.md) と REST による作成もサポートされています)。 
+ジョブを作成、実行、および管理するための Azure リソースを、エラスティック ジョブ エージェントといいます。 エラスティック ジョブ エージェントは、ポータルで作成する Azure リソースです (このほか、[PowerShell](elastic-jobs-powershell.md) と REST による作成もサポートされています)。
 
 **エラスティック ジョブ エージェント**を作成するには、既存の SQL データベースが必要です。 エージェントはこの既存のデータベースを "[*ジョブ データベース*](#job-database)" として構成することになります。
 
@@ -202,24 +203,20 @@ SQL Server エージェントについては、「[SQL Server エージェント
 
 現時点のプレビューでは、エラスティック ジョブ エージェントを作成する際に既存の Azure SQL データベース (S0 以降) が必要になります。
 
-"*ジョブ データベース*" となるデータベースは新しいものでなくてもかまいませんが、データが入っておらず、サービス目標が S0 以上であることが条件となります。 "*ジョブ データベース*" で推奨されるサービス目標は S1 以上ですが、最適な選択はジョブのパフォーマンスに関するニーズ (ジョブ ステップの数、ジョブ ターゲットの数、ジョブの実行頻度) に依存します。 たとえば、10 個未満のデータベースをターゲットとして、1 時間に 2、3 回ジョブを実行するジョブ エージェントであれば、S0 データベースでも十分でしょう。しかし、ジョブを毎分実行するのであれば、S0 データベースでは速度が十分でない可能性があるため、より上のサービス レベルの方が望ましいと考えられます。 
+"*ジョブ データベース*" となるデータベースは新しいものでなくてもかまいませんが、データが入っておらず、サービス目標が S0 以上であることが条件となります。 "*ジョブ データベース*" で推奨されるサービス目標は S1 以上ですが、最適な選択はジョブのパフォーマンスに関するニーズ (ジョブ ステップの数、ジョブ ターゲットの数、ジョブの実行頻度) に依存します。 たとえば、10 個未満のデータベースをターゲットとして、1 時間に 2、3 回ジョブを実行するジョブ エージェントであれば、S0 データベースでも十分でしょう。しかし、ジョブを毎分実行するのであれば、S0 データベースでは速度が十分でない可能性があるため、より上のサービス レベルの方が望ましいと考えられます。
 
-ジョブ データベースに対する操作が予想よりも遅い場合は、Azure portal または [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) DMV を使用して、パフォーマンスが低下している期間に、データベースのパフォーマンスと、ジョブ データベースのリソース使用率を[監視](sql-database-monitor-tune-overview.md#monitor-database-performance)します。 CPU、データ IO、ログ書き込みなどのリソースの使用率が100% に近づいており、パフォーマンス低下の期間と相関している場合は、ジョブ データベースのパフォーマンスが十分に向上するまで、([DTU モデル](sql-database-service-tiers-dtu.md)または[仮想コア モデル](sql-database-service-tiers-vcore.md)) でデータベースをより高いサービス目標に段階的にスケーリングすることを検討してください。
-
+ジョブ データベースに対する操作が予想よりも遅い場合は、Azure portal または [sys.dm_db_resource_stats](sql-database-monitor-tune-overview.md#sql-database-resource-monitoring) DMV を使用して、パフォーマンスが低下している期間に、データベースのパフォーマンスと、ジョブ データベースのリソース使用率を[監視](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)します。 CPU、データ IO、ログ書き込みなどのリソースの使用率が100% に近づいており、パフォーマンス低下の期間と相関している場合は、ジョブ データベースのパフォーマンスが十分に向上するまで、([DTU モデル](sql-database-service-tiers-dtu.md)または[仮想コア モデル](sql-database-service-tiers-vcore.md)) でデータベースをより高いサービス目標に段階的にスケーリングすることを検討してください。
 
 ##### <a name="job-database-permissions"></a>ジョブ データベースのアクセス許可
 
 ジョブ エージェントの作成時には、"*ジョブ データベース*" にスキーマとテーブルのほか、*jobs_reader* と呼ばれるロールが作成されます。 このロールには作成時に次のアクセス許可が割り当てられるので、管理者が従来よりも細かくアクセスを制御してジョブを監視できるようになっています。
 
-
-|ロール名  |"jobs" スキーマのアクセス許可  |"jobs_internal" スキーマのアクセス許可  |
+|ロール名 |"jobs" スキーマのアクセス許可 |"jobs_internal" スキーマのアクセス許可 |
 |---------|---------|---------|
-|**jobs_reader**     |    SELECT     |    なし     |
+|**jobs_reader** | SELECT | なし |
 
 > [!IMPORTANT]
 > "*ジョブ データベース*" のデータベース管理者としてのアクセス権を付与する際には、セキュリティ面の影響を考慮するようにしてください。 悪意のあるユーザーがジョブを作成または編集できるアクセス権を取得すると、保存されている資格情報を使ってそのユーザーの管理下にあるデータベースに接続するジョブを (新規に、または既存のジョブの編集により) 作成される可能性があります。そのような事態が起これば、悪意のあるユーザーが資格情報のパスワードを自由に設定できる状況が発生しかねません。
-
-
 
 #### <a name="target-group"></a>ターゲット グループ
 
@@ -247,7 +244,6 @@ SQL Server エージェントについては、「[SQL Server エージェント
 **例 4** は、エラスティック プールをターゲットとして含むターゲット グループを示しています。 "*例 2*" と同様に、プールはジョブ実行時に動的に列挙され、プール内のデータベースの一覧が判定されます。
 <br><br>
 
-
 ![ターゲット グループの例](media/elastic-jobs-overview/targetgroup-examples2.png)
 
 **例 5** と**例 6** は、包含ルールと除外ルールを使用して Azure SQL Server、エラスティック プール、およびデータベースを結合できる高度なシナリオを示しています。<br>
@@ -271,7 +267,7 @@ SQL Server エージェントについては、「[SQL Server エージェント
 
 #### <a name="job-history"></a>ジョブ履歴
 
-ジョブの実行履歴は "*ジョブ データベース*" に格納されます。 記録から 45 日が経過した実行履歴については、システムのクリーンアップ ジョブにより削除されます。 45 日が経過する前に履歴を削除する場合には、"*ジョブ データベース*" で**sp_purge_history** ストアド プロシージャを呼び出してください。
+ジョブの実行履歴は "*ジョブ データベース*" に格納されます。 記録から 45 日が経過した実行履歴については、システムのクリーンアップ ジョブにより削除されます。 45 日が経過する前に履歴を削除する場合には、"**ジョブ データベース**" で*sp_purge_history* ストアド プロシージャを呼び出してください。
 
 ### <a name="agent-performance-capacity-and-limitations"></a>エージェントのパフォーマンス、容量、および制約
 
@@ -287,7 +283,7 @@ SQL エラスティック プール内のデータベースにジョブを実行
 
 ## <a name="next-steps"></a>次のステップ
 
-- [SQL Server エージェントとは](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) 
-- [エラスティック ジョブの作成と管理の方法](elastic-jobs-overview.md) 
-- [PowerShell を使用したエラスティック ジョブの作成と管理](elastic-jobs-powershell.md) 
-- [Transact-SQL を使用したエラスティック ジョブの作成と管理](elastic-jobs-tsql.md) 
+- [SQL Server エージェントとは](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent)
+- [エラスティック ジョブの作成と管理の方法](elastic-jobs-overview.md)
+- [PowerShell を使用したエラスティック ジョブの作成と管理](elastic-jobs-powershell.md)
+- [Transact-SQL を使用したエラスティック ジョブの作成と管理](elastic-jobs-tsql.md)

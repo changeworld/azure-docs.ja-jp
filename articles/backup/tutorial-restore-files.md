@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
 ms.openlocfilehash: 338c6b642076835132b75aa4259381791378577a
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74171730"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Azure の仮想マシンにファイルを復元する
@@ -189,9 +189,9 @@ VM に回復スクリプトをコピーしたら、復旧ポイントを接続�
         --rp-name myRecoveryPointName
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、復旧ポイントを VM に接続し、Web サーバーのファイルを復元しました。 以下の方法について学習しました。
+このチュートリアルでは、復旧ポイントを VM に接続し、Web サーバーのファイルを復元しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 >

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 285d19dbd0e7b8a94eada66f837d33b787006f09
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840963"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-azure-cli"></a>Azure CLI を使用したネットワーク セキュリティ グループ フローのログの構成

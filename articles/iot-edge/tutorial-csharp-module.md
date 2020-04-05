@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: 53e1863f6f3421a6d8df9112f463f16443cff93e
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78943040"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>チュートリアル:Linux デバイス用の C# IoT Edge モジュールを開発する

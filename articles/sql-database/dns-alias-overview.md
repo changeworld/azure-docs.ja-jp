@@ -12,10 +12,10 @@ ms.author: rohitna
 ms.reviewer: genemi, jrasnick, vanto
 ms.date: 06/26/2019
 ms.openlocfilehash: 05fa542a0ad1c72f73148eefd304a9771798598d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73820622"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Azure SQL Database の DNS エイリアス
@@ -60,7 +60,7 @@ SQL Database サーバーの各 DNS エイリアスには次のプロパティ�
   - SQL Database サーバーを削除すると、そのサーバーを参照するすべての DNS エイリアスも Azure システムによって削除されます。
 - *どのリージョンにもバインドされない:* DNS エイリアスはリージョンにバインドされません。 どの DNS エイリアスも任意のリージョンに存在する Azure SQL Database サーバーを参照するよう更新できます。
   - ただし、別のサーバーを参照するようエイリアスを更新する際は、両方のサーバーが同じ Azure *サブスクリプション*に存在する必要があります。
-- *アクセス許可:* DNS エイリアスを管理するユーザーには、*サーバー共同作成者*権限以上の権限が必要です。 詳細については、「[Azure Portal でのロールベースの Access Control の基礎を確認する](../role-based-access-control/overview.md)」を参照してください。
+- *権限:* DNS エイリアスを管理するユーザーには、*サーバー共同作成者*権限以上の権限が必要です。 詳細については、「[Azure Portal でのロールベースの Access Control の基礎を確認する](../role-based-access-control/overview.md)」を参照してください。
 
 ## <a name="manage-your-dns-aliases"></a>DNS エイリアスの管理
 
@@ -112,6 +112,6 @@ DNS エイリアスには、現在、次の制限事項があります。
 
 - [Azure SQL Database によるビジネス継続性の概要](sql-database-business-continuity.md)。ディザスター リカバリーについても解説しています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure SQL Database を参照する DNS エイリアス用の PowerShell](dns-alias-powershell.md)

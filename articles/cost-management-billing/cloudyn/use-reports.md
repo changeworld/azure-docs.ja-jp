@@ -1,26 +1,28 @@
 ---
-title: Azure での Cloudyn レポートの使用 | Microsoft Docs
+title: Azure での Cloudyn レポートの使用
 description: この記事では、効率的に使用するのに役立つように、Cloudyn ポータルに含まれている Cloudyn レポートの目的について説明します。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: b3563e08963b0b32542dcbece2529c350981f557
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ROBOTS: NOINDEX
+ms.openlocfilehash: 633bf8126c1745cfd8db117966975bbf4ea2c9c8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200012"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79463545"
 ---
 # <a name="reports-available-in-the-cloudyn-portal"></a>Cloudyn ポータルで利用できるレポート
 
 この記事では、Cloudyn ポータルに含まれている Cloudyn レポートの目的について説明します。 また、レポートを効果的に使用する方法についても説明します。 ほとんどのレポートは、直感的で、統一感のある外観になっています。 あるレポートで実行できるほとんどのアクションは、他のレポートでも行うことができます。 カスタマイズして保存する方法や、レポートをスケジュールする方法など、Cloudyn レポートの全体的な使用方法については、「[コスト レポートについて](understanding-cost-reports.md)」を参照してください。
 
 Azure Cost Management には Cloudyn と同様の機能があります。 Azure Cost Management は、Azure のネイティブのコスト管理ソリューションです。 このソリューションにより、コストの分析、予算の作成と管理、データのエクスポート、最適化のための推奨事項の検討と対処を行うことで、費用を節約することができます。 詳細については、「[Azure Cost Management](../cost-management-billing-overview.md)」を参照してください。
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="report-types"></a>レポートの種類
 

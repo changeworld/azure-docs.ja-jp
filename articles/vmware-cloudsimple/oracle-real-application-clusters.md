@@ -1,5 +1,5 @@
 ---
-title: Azure VMware Solutions (AVS) - Oracle RAC 向けに AVS プライベート クラウドを最適化する
+title: Azure VMware Solution by CloudSimple - CloudSimple プライベート クラウドを Oracle RAC 用に最適化する
 description: 新しいクラスターをデプロイし、Oracle Real Application Clusters (RAC) のインストールと構成用に VM を最適化する方法について説明します
 author: sharaths-cs
 ms.author: b-shsury
@@ -8,29 +8,29 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fe4f7bf71b4836404a4f878b37c3ea7fab138588
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 733a225c66040cb2ab819f041647120c8b63b6a0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77016019"
 ---
-# <a name="optimize-your-avs-private-cloud-for-installing-oracle-rac"></a>Oracle RAC をインストールするために AVS プライベート クラウドを最適化する
+# <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Oracle RAC をインストールするために CloudSimple プライベート クラウドを最適化する
 
-AVS プライベート クラウド環境に Oracle Real Application Clusters (RAC) をデプロイできます。 このガイドでは、新しいクラスターをデプロイし、Oracle RAC ソリューション用に VM を最適化する方法について説明します。 このトピックの手順を完了すると、Oracle RAC をインストールして構成することができます。
+CloudSimple プライベート クラウド環境に Oracle Real Application Clusters (RAC) をデプロイできます。 このガイドでは、新しいクラスターをデプロイし、Oracle RAC ソリューション用に VM を最適化する方法について説明します。 このトピックの手順を完了すると、Oracle RAC をインストールして構成することができます。
 
 ## <a name="storage-policy"></a>ストレージ ポリシー
 
-Oracle RAC を正常に実装するには、クラスター内に適切な数のノードが必要です。 vSAN のストレージ ポリシーでは、データベース、ログ、および REDO ディスクの格納に使用されるデータ ディスクに許容障害数 (FTT) が適用されます。 効果的に障害を許容するために必要なノード数は 2N+1 です。ここで、N は FTT の値です。
+Oracle RAC を正常に実装するには、クラスター内に適切な数のノードが必要です。  vSAN のストレージ ポリシーでは、データベース、ログ、および REDO ディスクの格納に使用されるデータ ディスクに許容障害数 (FTT) が適用されます。  効果的に障害を許容するために必要なノード数は 2N+1 です。ここで、N は FTT の値です。
 
 例:目的の FTT が 2 の場合、クラスター内のノードの合計数は 2*2+1 = 5 である必要があります。
 
 ## <a name="overview-of-deployment"></a>デプロイの概要
 
-以降のセクションでは、Oracle RAC 用に AVS プライベート クラウド環境を設定する方法について説明します。
+以降のセクションでは、Oracle RAC 用に CloudSimple プライベート クラウド環境を設定する方法について説明します。
 
 1. ディスク構成のベスト プラクティス
-2. AVS プライベート クラウドの vSphere クラスターをデプロイする
+2. CloudSimple プライベート クラウドの vSphere クラスターをデプロイする
 3. Oracle RAC のネットワークを設定する
 4. vSAN ストレージ ポリシーを設定する
 5. Oracle VM を作成し、共有 VM ディスクを作成する
@@ -38,7 +38,7 @@ Oracle RAC を正常に実装するには、クラスター内に適切な数の
 
 ## <a name="best-practices-for-disk-configuration"></a>ディスク構成のベスト プラクティス
 
-Oracle RAC 仮想マシンには、特定の機能に使用される複数のディスクがあります。 共有ディスクは、Oracle RAC クラスターによって使用されるすべての仮想マシンにマウントされます。 オペレーティング システムとソフトウェアのインストール ディスクは、個々の仮想マシンにのみマウントされます。 
+Oracle RAC 仮想マシンには、特定の機能に使用される複数のディスクがあります。  共有ディスクは、Oracle RAC クラスターによって使用されるすべての仮想マシンにマウントされます。  オペレーティング システムとソフトウェアのインストール ディスクは、個々の仮想マシンにのみマウントされます。  
 
 ![Oracle RAC 仮想マシンのディスクの概要](media/oracle-vm-disks-overview.png)
 
@@ -68,44 +68,44 @@ Oracle RAC 仮想マシンには、特定の機能に使用される複数のデ
 
 ### <a name="operating-system-and-software-disk-configuration"></a>オペレーティング システムとソフトウェア ディスクの構成
 
-各 Oracle 仮想マシンは、ホスト オペレーティング システム、スワップ、ソフトウェア インストール、その他の OS 機能用に複数のディスクで構成されています。 これらのディスクは、仮想マシン間で共有されません。 
+各 Oracle 仮想マシンは、ホスト オペレーティング システム、スワップ、ソフトウェア インストール、その他の OS 機能用に複数のディスクで構成されています。  これらのディスクは、仮想マシン間で共有されません。  
 
 * 仮想マシンごとに 3 つのディスクが仮想ディスクとして構成され、Oracle RAC 仮想マシンにマウントされます。
     * OS ディスク
     * Oracle Grid のインストール ファイルを格納するためのディスク
     * Oracle データベースのインストール ファイルを格納するためのディスク
 * ディスクは、**仮想プロビジョニング対応**として構成できます。
-* 各ディスクは、最初の SCSI コントローラー (SCSI0) にマウントされます。 
+* 各ディスクは、最初の SCSI コントローラー (SCSI0) にマウントされます。  
 * 共有は、**共有しない**に設定されます。
-* ストレージでは、vSAN ポリシーを使用して冗長性が定義されます。 
+* ストレージでは、vSAN ポリシーを使用して冗長性が定義されます。  
 
 ![Oracle RAC データ ディスク グループの構成](media/oracle-vm-os-disks.png)
 
 ### <a name="data-disk-configuration"></a>データ ディスクの構成
 
-データ ディスクは、主にデータベース ファイルの格納に使用されます。 
+データ ディスクは、主にデータベース ファイルの格納に使用されます。  
 
 * 4 つのディスクが仮想ディスクとして構成され、すべての Oracle RAC 仮想マシンにマウントされます。
 * 各ディスクは、別々の SCSI コントローラーにマウントされます。
-* 各仮想ディスクは、**シック プロビジョニング (Eager Zeroed)** として構成されます。 
-* 共有は、**マルチ ライター**に設定されます。 
-* ディスクは、自動ストレージ管理 (ASM) ディスク グループとして構成されている必要があります。 
-* ストレージでは、vSAN ポリシーを使用して冗長性が定義されます。 
+* 各仮想ディスクは、**シック プロビジョニング (Eager Zeroed)** として構成されます。  
+* 共有は、**マルチ ライター**に設定されます。  
+* ディスクは、自動ストレージ管理 (ASM) ディスク グループとして構成されている必要があります。  
+* ストレージでは、vSAN ポリシーを使用して冗長性が定義されます。  
 * ASM の冗長性は、**外部**冗長性に設定されます。
 
 ![Oracle RAC データ ディスク グループの構成](media/oracle-vm-data-disks.png)
 
 ### <a name="redo-log-disk-configuration"></a>REDO ログ ディスクの構成
 
-REDO ログ ファイルは、データベースに加えられた変更のコピーを格納するために使用されます。 これらのログ ファイルは、エラーが発生した後にデータを復旧する必要があるときに使用されます。
+REDO ログ ファイルは、データベースに加えられた変更のコピーを格納するために使用されます。  これらのログ ファイルは、エラーが発生した後にデータを復旧する必要があるときに使用されます。
 
-* REDO ログ ディスクは、複数のディスク グループとして構成する必要があります。 
+* REDO ログ ディスクは、複数のディスク グループとして構成する必要があります。  
 * 6 つのディスクが作成され、すべての Oracle RAC 仮想マシンにマウントされます。
 * ディスクは別々の SCSI コントローラーにマウントされます。
 * 各仮想ディスクは、**シック プロビジョニング (Eager Zeroed)** として構成されます。
-* 共有は、**マルチ ライター**に設定されます。 
+* 共有は、**マルチ ライター**に設定されます。  
 * ディスクは、2 つの ASM ディスク グループとして構成する必要があります。
-* 各 ASM ディスク グループには、それぞれ異なる SCSI コントローラー上にある 3 つのディスクが含まれています。 
+* 各 ASM ディスク グループには、それぞれ異なる SCSI コントローラー上にある 3 つのディスクが含まれています。  
 * ASM の冗長性は、**標準**冗長性に設定されます。
 * 5 つの REDO ログ ファイルが、両方の ASM REDO ログ グループに作成されます。
 
@@ -139,7 +139,7 @@ SQL > alter database add logfile thread 2 ('+ORCLRAC_REDO1','+ORCLRAC_REDO2') si
 
 ### <a name="oracle-fast-recovery-area-disk-configuration-optional"></a>Oracle 高速回復領域ディスクの構成 (省略可能)
 
-高速回復領域 (FRA) は、Oracle ASM ディスク グループによって管理されるファイル システムです。 FRA は、バックアップ ファイルと回復ファイル用の共有ストレージ場所を提供します。 Oracle は、高速回復領域にアーカイブ済みログとフラッシュバック ログを作成します。 Oracle Recovery Manager (RMAN) は、必要に応じて、バックアップ セットとイメージ コピーを高速回復領域に格納して、メディアの回復中にファイルを復元するときにそれを使用します。
+高速回復領域 (FRA) は、Oracle ASM ディスク グループによって管理されるファイル システムです。  FRA は、バックアップ ファイルと回復ファイル用の共有ストレージ場所を提供します。 Oracle は、高速回復領域にアーカイブ済みログとフラッシュバック ログを作成します。 Oracle Recovery Manager (RMAN) は、必要に応じて、バックアップ セットとイメージ コピーを高速回復領域に格納して、メディアの回復中にファイルを復元するときにそれを使用します。
 
 * 2 つのディスクが作成され、すべての Oracle RAC 仮想マシンにマウントされます。
 * ディスクは別々の SCSI コントローラーにマウントされます。
@@ -150,26 +150,26 @@ SQL > alter database add logfile thread 2 ('+ORCLRAC_REDO1','+ORCLRAC_REDO2') si
 
 ![Oracle RAC 投票ディスク グループの構成](media/oracle-vm-fra-disks.png)
 
-## <a name="deploy-avs-private-cloud-vsphere-cluster"></a>AVS プライベート クラウドの vSphere クラスターをデプロイする
+## <a name="deploy-cloudsimple-private-cloud-vsphere-cluster"></a>CloudSimple プライベート クラウド vSphere クラスターをデプロイする
 
-AVS プライベート クラウドに vSphere クラスターをデプロイするには、次の処理を実行します。
+プライベート クラウドに vSphere クラスターをデプロイするには、次の処理を実行します。
 
-1. AVS ポータルから、[AVS プライベート クラウドを作成します](create-private-cloud.md)。 AVS により、新しく作成された AVS プライベート クラウド内に "cloudowner" という名前の既定の vCenter ユーザーが作成されます。 既定の AVS プライベート クラウドのユーザーとアクセス許可モデルについて詳しくは、[AVS プライベート クラウドのアクセス許可モデル](learn-private-cloud-permissions.md)に関する記事をご覧ください。 この手順では、AVS プライベート クラウドのプライマリ管理クラスターを作成します。
+1. CloudSimple ポータルから、[プライベート クラウドを作成](create-private-cloud.md)します。 CloudSimple は、新しく作成されたプライベート クラウド内に "cloudowner" という名前の既定の vCenter ユーザーを作成します。 既定のプライベート クラウドのユーザーとアクセス許可モデルについて詳しくは、[プライベート クラウドのアクセス許可モデル](learn-private-cloud-permissions.md)に関する記事をご覧ください。  この手順では、プライベート クラウドのプライマリ管理クラスターを作成します。
 
-2. AVS ポータルから、新しいクラスターで [AVS プライベート クラウドを展開](expand-private-cloud.md)します。 このクラスターは、Oracle RAC をデプロイするために使用されます。 必要なフォールト トレランス (3 ノード以上) に基づいてノードの数を選択します。
+2. CloudSimple ポータルから、新しいクラスターで[プライベート クラウドを展開](expand-private-cloud.md)します。  このクラスターは、Oracle RAC をデプロイするために使用されます。  必要なフォールト トレランス (3 ノード以上) に基づいてノードの数を選択します。
 
 ## <a name="set-up-networking-for-oracle-rac"></a>Oracle RAC のネットワークを設定する
 
-1. AVS プライベート クラウドで、[2 つの VLAN](create-vlan-subnet.md) (Oracle パブリック ネットワーク用に 1 つと Oracle プライベート ネットワーク用に 1 つ) を作成し、適切なサブネット CIDR を割り当てます。
-2. VLAN が作成されたら、[AVS プライベート クラウド vCenter に分散ポート グループ](create-vlan-subnet.md#use-vlan-information-to-set-up-a-distributed-port-group-in-vsphere)を作成します。
+1. プライベート クラウドで、[2 つの VLAN](create-vlan-subnet.md) (Oracle パブリック ネットワーク用に 1 つと Oracle プライベート ネットワーク用に 1 つ) を作成し、適切なサブネット CIDR を割り当てます。
+2. VLAN が作成されたら、[プライベート クラウド vCenter に分散ポート グループ](create-vlan-subnet.md#use-vlan-information-to-set-up-a-distributed-port-group-in-vsphere)を作成します。
 3. Oracle 環境用の管理クラスターに [DHCP および DNS サーバー仮想マシン](dns-dhcp-setup.md)を設定します。
-4. AVS プライベート クラウドにインストールされている [DNS サーバー上で DNS 転送を構成](on-premises-dns-setup.md#create-a-conditional-forwarder)します。
+4. プライベート クラウドにインストールされている [DNS サーバー上で DNS 転送を構成](on-premises-dns-setup.md#create-a-conditional-forwarder)します。
 
 ## <a name="set-up-vsan-storage-policies"></a>vSAN ストレージ ポリシーを設定する
 
-vSAN ポリシーは、VM ディスクに格納されているデータの許容障害数とディスク ストライピングを定義します。 作成されたストレージ ポリシーは、VM の作成中に VM ディスクに適用される必要があります。
+vSAN ポリシーは、VM ディスクに格納されているデータの許容障害数とディスク ストライピングを定義します。  作成されたストレージ ポリシーは、VM の作成中に VM ディスクに適用される必要があります。
 
-1. AVS プライベート クラウドの [vSphere クライアントにサインイン](https://docs.azure.cloudsimple.com/vsphere-access)します。
+1. プライベート クラウドの [vSphere クライアントにサインイン](https://docs.azure.cloudsimple.com/vsphere-access)します。
 2. 上部のメニューから、 **[Policies and Profiles]\(ポリシーとプロファイル\)** を選択します。
 3. 左側のメニューで、 **[VM Storage Policies]\(VM ストレージ ポリシー\)** を選択し、 **[Create a VM storage Policy]\(VM ストレージ ポリシーの作成\)** を選択します。
 4. ポリシー用にわかりやすい名前を入力し、 **[NEXT]\(次へ\)** をクリックします。
@@ -181,7 +181,7 @@ vSAN ポリシーは、VM ディスクに格納されているデータの許容
 
 ## <a name="create-oracle-vms-and-create-shared-vm-disks-for-oracle"></a>Oracle VM を作成し、Oracle 用の共有 VM ディスクを作成する
 
-Oracle 用の VM を作成するには、既存の VM を複製するか、新しいものを作成します。 このセクションでは、新しい VM を作成し、それを複製して、基本オペレーティング システムのインストール後に 2 つ目を作成する方法について説明します。 VM が作成されたら、ディスクを作成してそれらに追加できます。 Oracle クラスターは、共有ディスクを使用して、データ、ログ、および REDO ログを格納します。
+Oracle 用の VM を作成するには、既存の VM を複製するか、新しいものを作成します。  このセクションでは、新しい VM を作成し、それを複製して、基本オペレーティング システムのインストール後に 2 つ目を作成する方法について説明します。  VM が作成されたら、ディスクを作成してそれらに追加できます。  Oracle クラスターは、共有ディスクを使用して、データ、ログ、および REDO ログを格納します。
 
 ### <a name="create-vms"></a>VM の作成
 
@@ -205,7 +205,7 @@ Oracle 用の VM を作成するには、既存の VM を複製するか、新�
 
 ### <a name="create-shared-disks-for-vms"></a>VM 用の共有ディスクを作成する
 
-Oracle では、共有ディスクを使用して、データ、ログ、および REDO ログ ファイルを格納します。 vCenter に共有ディスクを作成し、両方の VM にマウントすることができます。 パフォーマンスを向上させるために、データ ディスクを別々の SCSI コントローラーに配置します。以下の手順では、vCenter に共有ディスクを作成し、それを仮想マシンに接続する方法を示します。 VM のプロパティを変更するには、vCenter Flash クライアントが使用されます。
+Oracle では、共有ディスクを使用して、データ、ログ、および REDO ログ ファイルを格納します。  vCenter に共有ディスクを作成し、両方の VM にマウントすることができます。  パフォーマンスを向上させるために、データ ディスクを別々の SCSI コントローラーに配置します。以下の手順では、vCenter に共有ディスクを作成し、それを仮想マシンに接続する方法を示します。 VM のプロパティを変更するには、vCenter Flash クライアントが使用されます。
 
 #### <a name="create-disks-on-the-first-vm"></a>最初の VM にディスクを作成する
 
@@ -241,10 +241,10 @@ Oracle のデータ、ログ、および REDO ログ ファイルに必要なす
 
 ## <a name="set-up-vm-host-affinity-rules"></a>VM とホスト間のアフィニティ ルールを設定する
 
-VM とホスト間のアフィニティ ルールにより、VM が目的のホストで実行されていることが確認されます。 vCenter でルールを定義し、Oracle VM が確実に適切なリソースがあるホスト上で実行され、特定のライセンス要件が満たされるようにします。
+VM とホスト間のアフィニティ ルールにより、VM が目的のホストで実行されていることが確認されます。  vCenter でルールを定義し、Oracle VM が確実に適切なリソースがあるホスト上で実行され、特定のライセンス要件が満たされるようにします。
 
-1. AVS ポータルで、cloudowner ユーザーの[特権のエスカレート](escalate-private-cloud-privileges.md)を実行します。
-2. AVS プライベート クラウドの [vSphere クライアントにログイン](https://docs.azure.cloudsimple.com/vsphere-access)します。
+1. CloudSimple ポータルで、cloudowner ユーザーの[特権のエスカレート](escalate-private-cloud-privileges.md)を実行します。
+2. プライベート クラウドの [vSphere クライアントにログイン](https://docs.azure.cloudsimple.com/vsphere-access)します。
 3. Vsphere クライアントで、Oracle VM がデプロイされているクラスターを選択し、 **[Configure]\(構成\)** をクリックします。
 4. [Configure]\(構成\) で、 **[VM/Host Groups]\(VM/ホスト グループ\)** を選択します。
 5. ページの下部にある **+** 」の説明に従って、アプリケーションにシングル サインオンできるようになります。

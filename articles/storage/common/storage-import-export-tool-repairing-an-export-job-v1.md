@@ -9,10 +9,10 @@ ms.date: 01/23/2017
 ms.author: twooley
 ms.subservice: common
 ms.openlocfilehash: b2ba30bddfc6364c79e1bb01d30cde63b261a07f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74978017"
 ---
 # <a name="repairing-an-export-job"></a>Export ジョブの修復
@@ -33,7 +33,7 @@ ms.locfileid: "74978017"
 |パラメーター|説明|  
 |---------------|-----------------|  
 |**/r:<RepairFile\>**|必須。 修復の進行状況を追跡し、中断された修復を再開できる修復ファイルへのパスです。 各ドライブには修復ファイルが 1 つのみ必要です。 特定のドライブの修復を開始する際、まだ存在していない修復ファイルへのパスに渡されます。 中断された修復を再開するには、既存の修復ファイルの名前を指定してください。 ターゲット ドライブに対応する修復ファイルを必ず指定する必要があります。|  
-|**/logdir:<LogDirectory\>**|省略可能。 ログ ディレクトリです。 詳細ログ ファイルは、このディレクトリに書き込まれます。 ログ ディレクトリが指定されていない場合、現在のディレクトリがログ ディレクトリとして使用されます。|  
+|**/logdir:<LogDirectory\>**|省略可能。 ログ ディレクトリ。 詳細ログ ファイルは、このディレクトリに書き込まれます。 ログ ディレクトリが指定されていない場合、現在のディレクトリがログ ディレクトリとして使用されます。|  
 |**/d:<TargetDirectory\>**|必須。 検証、修復するディレクトリです。 これは通常エクスポート ドライブのルート ディレクトリになりますが、エクスポートされたファイルのコピーを含むネットワーク ファイル共有にもできます。|  
 |**/bk:<BitLockerKey\>**|省略可能。 エクスポート ファイルが格納されている暗号のロックを解除する場合は BitLocker キーを指定する必要があります。|  
 |**/sn:<StorageAccountName\>**|必須。 エクスポート ジョブのストレージ アカウント名です。|  
@@ -150,7 +150,7 @@ G:\pictures\wild\canyon.jpg.properties
 
 検証に失敗したコンポーネントはすべて、ツールによってダウンロードされ、ドライブ上の同じファイルに書き換えられます。  
   
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
  
 * [Azure Import/Export ツールの設定](storage-import-export-tool-setup-v1.md)   
 * [インポート ジョブ用のハード ドライブを準備する](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   

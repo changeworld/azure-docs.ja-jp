@@ -17,10 +17,10 @@ ms.date: 10/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 15a84504efc39b901120c6584634950809f0c306
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72790981"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ipass-smartconnect"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と iPass SmartConnect の統合
@@ -29,7 +29,7 @@ ms.locfileid: "72790981"
 
 * iPass SmartConnect にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して iPass SmartConnect に自動的にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -90,7 +90,7 @@ iPass SmartConnect に対する Azure AD SSO を構成してテストするに�
 
     **[サインオン URL]** テキスト ボックスに URL として「`https://om-activation.ipass.com/ClientActivation/ssolanding.go`」と入力します。
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 1. iPass SmartConnect アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 

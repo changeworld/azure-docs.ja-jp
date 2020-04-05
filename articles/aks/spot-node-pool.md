@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/25/2020
 ms.author: zarhoads
 ms.openlocfilehash: 466ad7c88547b6676ba0ae263b74d14059322f1c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77622037"
 ---
 # <a name="preview---add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>プレビュー - Azure Kubernetes Service (AKS) クラスターにスポット ノード プールを追加する
@@ -47,7 +47,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > [!CAUTION]
 > サブスクリプションで機能を登録する場合、現時点ではその機能を登録解除することはできません。 一部のプレビュー機能を有効にした後、すべての AKS クラスターに対して既定値が使用され、サブスクリプション内に作成されます。 運用サブスクリプションではプレビュー機能を有効にしないでください。 プレビュー機能をテストし、フィードバックを集めるには、別のサブスクリプションを使用してください。
 
-次の例に示すように、[az feature register][az-feature-register] コマンドを使用して *spotpoolpreview* 機能フラグを登録します。
+次の例に示すように、*az feature register* コマンドを使用して [spotpoolpreview][az-feature-register] 機能フラグを登録します。
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.ContainerService" --name "spotpoolpreview"
@@ -59,7 +59,7 @@ az feature register --namespace "Microsoft.ContainerService" --name "spotpoolpre
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/spotpoolpreview')].{Name:name,State:properties.state}"
 ```
 
-準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
+準備ができたら、*az provider register* コマンドを使用して、[Microsoft.ContainerService][az-provider-register] リソース プロバイダーの登録を更新します。
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -67,7 +67,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
 
-スポット ノード プールを使用する AKS クラスターを作成するには、*aks-preview* CLI 拡張機能バージョン 0.4.32 以上が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールし、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムがあるかどうかを確認します。
+スポット ノード プールを使用する AKS クラスターを作成するには、*aks-preview* CLI 拡張機能バージョン 0.4.32 以上が必要です。 *az extension add* コマンドを使用して [aks-preview][az-extension-add] Azure CLI 拡張機能をインストールし、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムがあるかどうかを確認します。
 
 ```azurecli-interactive
 # Install the aks-preview extension

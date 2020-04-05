@@ -15,15 +15,15 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: e2ccce13e4ef09426d0f3a02dcbce2f330b0ead8
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895941"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227023"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard の形式とコーデック
 
-> [!div class="op_single_selector" title1="使用している Media Services のバージョンを選択してください。"]
+> [!div class="op_single_selector" title1="使用している Media Services のバージョンを選択してください:"]
 > * [Version 2](media-services-media-encoder-standard-formats.md)
 > * [Version 3](../latest/media-encoder-standard-formats.md)
 
@@ -112,7 +112,7 @@ or
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 [Azure Media Services を使用してオンデマンド コンテンツをエンコードする](media-services-encode-asset.md)
 
 [メディア エンコーダー スタンダードを使用したエンコード方法](media-services-dotnet-encode-with-media-encoder-standard.md)

@@ -13,10 +13,10 @@ ms.author: mimart
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c515fef4997720435c64bd5f3ae7b18f8921fc5d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75475273"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>アプリケーションに対してテナント全体の管理者の同意を付与する
@@ -43,7 +43,7 @@ ms.locfileid: "75475273"
 
 **[エンタープライズ アプリケーション]** に一覧表示されているアプリにテナント全体の管理者の同意を付与するには:
 
-1. [グローバル管理者](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)、[アプリケーション管理者](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)、または[クラウド アプリケーション管理者](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator)として、[Azure portal](https://portal.azure.com) にサインインします。
+1. [グローバル管理者](https://portal.azure.com)、[アプリケーション管理者](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)、または[クラウド アプリケーション管理者](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)として、[Azure portal](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator) にサインインします。
 2. **[Azure Active Directory]** を選択し、 **[エンタープライズ アプリケーション]** を選択します。
 3. テナント全体の管理者の同意を付与するアプリケーションを選択します。
 4. **[アクセス許可]** を選択し、 **[管理者の同意の付与]** をクリックします。
@@ -56,7 +56,7 @@ ms.locfileid: "75475273"
 
 **[アプリの登録]** からテナント全体の管理者の同意を付与するには:
 
-1. [グローバル管理者](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)、[アプリケーション管理者](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)、または[クラウド アプリケーション管理者](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator)として、[Azure portal](https://portal.azure.com) にサインインします。
+1. [グローバル管理者](https://portal.azure.com)、[アプリケーション管理者](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)、または[クラウド アプリケーション管理者](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)として、[Azure portal](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator) にサインインします。
 2. **[Azure Active Directory]** を選択し、 **[アプリの登録]** を選択します。
 3. テナント全体の管理者の同意を付与するアプリケーションを選択します。
 4. **[API のアクセス許可]** を選択し、 **[管理者の同意を与える]** をクリックします。
@@ -80,7 +80,7 @@ ms.locfileid: "75475273"
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Active Directory でエンド ユーザーがアプリケーションに同意する方法を構成する](configure-user-consent.md)
+[エンド ユーザーがアプリケーションに同意する方法の構成](configure-user-consent.md)
 
 [管理者の同意ワークフローの構成](configure-admin-consent-workflow.md)
 

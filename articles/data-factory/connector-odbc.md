@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: jingwang
 ms.openlocfilehash: 6513cfc5432e969fc53aa72b075af194a064d178
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75892134"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224975"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Azure Data Factory を使用して ODBC データ ストアをコピー元またはコピー先としてデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -55,11 +55,11 @@ ODBC のリンクされたサービスでは、次のプロパティがサポー
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティは、次のように設定する必要があります:**Odbc** | はい |
+| type | type プロパティは、次のように設定する必要があります:**Odbc** | はい |
 | connectionString | 資格情報部分を除外した接続文字列。 `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` のようなパターンで接続文字列を指定するか、Integration Runtime マシンに設定したシステム DSN (データ ソース名) を `"DSN=<name of the DSN on IR machine>;"` で使用することができます (その場合も、リンクされたサービスの資格情報部分をそれに応じて指定する必要があります)。<br>パスワードを Azure Key Vault に格納して、接続文字列から  `password`  構成をプルすることもできます。 詳細については、「 [Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md) 」を参照してください。| はい |
 | authenticationType | ODBC データ ストアへの接続に使用される認証の種類です。<br/>使用できる値は、以下のとおりです。**Basic** と **Anonymous**。 | はい |
 | userName | 基本認証を使用している場合は、ユーザー名を指定します。 | いいえ |
-| パスワード | userName に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ |
+| password | userName に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ |
 | 資格情報 (credential) | ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。 例: `"RefreshToken=<secret refresh token>;"`. このフィールドを SecureString とマークします。 | いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |はい |
 
@@ -118,7 +118,7 @@ ODBC 互換データ ストアとの間でデータをコピーする場合、�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは、次のように設定する必要があります:**OdbcTable** | はい |
+| type | データセットの type プロパティは、次のように設定する必要があります:**OdbcTable** | はい |
 | tableName | ODBC データ ストア内のテーブルの名前。 | ソースの場合はいいえ (アクティビティ ソースの "query" が指定されている場合)、<br/>シンクの場合ははい |
 
 **例**
@@ -152,7 +152,7 @@ ODBC 互換データ ストアからデータをコピーする場合、コピ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**OdbcSource** | はい |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**OdbcSource** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
@@ -195,7 +195,7 @@ ODBC 対応データ ストアにデータをコピーするには、コピー �
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのシンクの type プロパティは、次のように設定する必要があります: **OdbcSink** | はい |
+| type | コピー アクティビティのシンクの type プロパティは、次のように設定する必要があります: **OdbcSink** | はい |
 | writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/>使用可能な値: 期間。 例:"00:30:00" (30 分)。 |いいえ |
 | writeBatchSize |バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。<br/>使用可能な値: 整数 (行数)。 |いいえ (既定値は 0 - 自動検出) |
 | preCopyScript |コピー アクティビティの毎回の実行で、データをデータ ストアに書き込む前に実行する SQL クエリを指定します。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 |いいえ |

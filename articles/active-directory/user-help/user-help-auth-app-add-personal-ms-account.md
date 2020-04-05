@@ -12,10 +12,10 @@ ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: 289c00e28fd82b78b321732628ff85d22c64cabf
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77062304"
 ---
 # <a name="add-personal-microsoft-accounts-to-the-microsoft-authenticator-app"></a>個人の Microsoft アカウントを Microsoft Authenticator アプリに追加する
@@ -69,6 +69,6 @@ ms.locfileid: "77062304"
 
 - アプリにアカウントを追加すると、デバイスで Authenticator アプリを使用してサインインできます。 詳細については、[アプリを使用したサインイン](user-help-auth-app-sign-in.md)に関するページを参照してください。
 
-- 個人用 Microsoft アカウントの確認コードの取得に問題がある場合は、「[Microsoft アカウントのセキュリティ情報と確認コード](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes)」の記事の「**確認コードの問題のトラブルシューティング**」セクションを参照してください。
+- 個人用 Microsoft アカウントの確認コードの取得に問題がある場合は、「**Microsoft アカウントのセキュリティ情報と確認コード**」の記事の「[確認コードの問題のトラブルシューティング](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes)」セクションを参照してください。
 
 - iOS を実行しているデバイスの場合、アカウント資格情報と、アカウントの順序などの関連アプリ設定を、クラウドにバックアップすることもできます。 詳細については、[Microsoft Authenticator アプリを使用したバックアップと復旧](user-help-auth-app-backup-recovery.md)に関するページを参照してください。

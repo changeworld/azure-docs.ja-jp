@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 984b03288b8dae644fc04a2cd78fb03a2e027f62
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e69a03cd142fdbcc5864ee38a4843e1c2e44a124
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722205"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477155"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>データ サイエンス タスクの実行: 探索、モデリング、およびデプロイ
 
@@ -26,7 +26,7 @@ ms.locfileid: "76722205"
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 
 
-## 1.<a name='DataQualityReportUtility-1'></a> 探索 
+## <a name="1--exploration"></a>1.<a name='DataQualityReportUtility-1'></a> 探索 
 
 データ サイエンティストは、Python で利用可能なライブラリとパッケージ (matplotlib など) の使用や、R (ggplot や lattice など) の使用など、さまざまな方法で探索およびレポート作成を実行できます。 データ サイエンティストは、特定のシナリオでのデータ探索のニーズに合うように、これらのコードをカスタマイズできます。 構造化データを処理する場合のニーズは、テキストやイメージなどの非構造化データの場合とは異なります。 
 
@@ -41,7 +41,7 @@ Azure Machine Learning などの製品では、機能作成を含め、データ
 現時点では、ツールはメモリ内のデータ フレームでのみ機能します。 調査するデータ セットのパラメーターを指定するには YAML ファイルが必要です。 詳細については、[TDSP データ サイエンス ユーティリティの IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/DataReport-Utils) に関するページをご覧ください。
 
 
-## 2.<a name='ModelingUtility-2'></a> モデリング
+## <a name="2--modeling"></a>2.<a name='ModelingUtility-2'></a> モデリング
 
 さまざまな言語でモデルをトレーニングするための、多数のツールキットとパッケージがあります。 精度と待機時間に関するパフォーマンスの考慮事項が、対応するビジネスのユース ケースや生産シナリオを満たしていれば、データ サイエンティストがそれらのうち自分に適したものを自由に使用できる必要があります。
 
@@ -74,11 +74,11 @@ YAML ファイルを使用して以下を指定します。
 複数のモデルが構築されたら、一般的には、モデルを登録して管理するためのシステムが必要になります。 通常は、スクリプトまたは API とバックエンド データベースまたはバージョン管理システムを組み合わせる必要があります。 これらの管理タスクで検討できるいくつかの選択肢は、次のとおりです。
 
 1. [Azure Machine Learning - モデル管理サービス](../index.yml)
-2. [MIT からの ModelDB](https://mitdbg.github.io/modeldb/) 
+2. [MIT からの ModelDB](http://modeldb.csail.mit.edu:3000/projects) 
 3. [モデル管理システムとしての SQL サーバー](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
 4. [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
-## 3.<a name='Deployment-3'></a> デプロイ
+## <a name="3--deployment"></a>3.<a name='Deployment-3'></a> デプロイ
 
 運用環境へのデプロイによって、モデルがビジネスのアクティブな役割を担うことが可能になります。 デプロイされたモデルからの予測は、ビジネス上の決定に使用できます。
 

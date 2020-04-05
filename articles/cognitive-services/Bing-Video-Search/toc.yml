@@ -8,7 +8,7 @@
     - name: Bing Search API を比較する
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: REST API のクイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: REST API
@@ -27,14 +27,8 @@
           href: quickstarts/ruby.md
     - name: SDK
       items:
-        - name: 'C# の使用'
-          href: quickstarts/sdk-csharp-quickstart.md
-        - name: Node.js の使用
-          href: quickstarts/sdk-node-quickstart.md
-        - name: Python の使用
-          href: quickstarts/sdk-python-quickstart.md
-        - name: Java の使用
-          href: quickstarts/sdk-java-quickstart.md
+        - name: Bing Video Search クライアント ライブラリ
+          href: ./quickstarts/client-libraries.md
 - name: チュートリアル
   items:
     - name: シングルページ Web アプリの作成
@@ -43,7 +37,7 @@
   items:
     - name: コード サンプル
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Video+Search'
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: ビデオの分析情報の取得
       href: video-insights.md

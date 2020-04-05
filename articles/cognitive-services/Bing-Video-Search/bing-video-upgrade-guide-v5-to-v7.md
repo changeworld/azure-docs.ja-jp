@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
 ms.openlocfilehash: 5dc4c870ae8dbe9f082456d738836aced1271732
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68500723"
 ---
 # <a name="video-search-api-upgrade-guide"></a>Video Search API のアップグレード ガイド
@@ -55,7 +55,7 @@ RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
 ResourceAccessDenied|InsufficientAuthorization
 ExceededVolume|RateLimitExceeded
 ExceededQpsLimit|RateLimitExceeded
-Disabled|InsufficientAuthorization.AuthorizationDisabled
+無効|InsufficientAuthorization.AuthorizationDisabled
 UnexpectedError|ServerError.UnexpectedError
 DataSourceErrors|ServerError.ResourceError
 AuthorizationMissing|InvalidAuthorization.AuthorizationMissing
@@ -75,7 +75,7 @@ Blocked|InvalidRequest.Blocked
 
 ### <a name="object-changes"></a>オブジェクトの変更
 
-- [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) の `nextOffsetAddCount` フィールドの名前が `nextOffset` に変更されました。 オフセットを使用する方法も変更されています。 以前は、[オフセット](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) クエリ パラメーターを値 `nextOffset` と、前のオフセット値と、結果のビデオの数に設定していました。 現在は、`offset` クエリ パラメーターを値 `nextOffset` に設定するだけです。  
+- `nextOffsetAddCount`Videos[ の ](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) フィールドの名前が `nextOffset` に変更されました。 オフセットの使用方法も変更されています。 以前は、[オフセット](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) クエリ パラメーターを値 `nextOffset` と、前のオフセット値と、結果のビデオの数に設定していました。 現在は、`offset` クエリ パラメーターを値 `nextOffset` に設定するだけです。  
   
 - `relatedVideos` フィールドのデータ型を `Video[]` から [VideosModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videosmodule) に変更しました ([VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails) を参照)。
 

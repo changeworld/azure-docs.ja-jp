@@ -9,10 +9,10 @@ ms.date: 01/15/2020
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: a0a4a10797109cb3363027e2445259d06d9aa071
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76118116"
 ---
 ## <a name="about-the-user-delegation-sas"></a>ユーザー委任 SAS について

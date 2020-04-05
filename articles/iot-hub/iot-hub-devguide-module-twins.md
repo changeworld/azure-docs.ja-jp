@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/01/2020
 ms.author: menchi
 ms.openlocfilehash: 5ef6c4de288a764abbe434c5d84fc99e154f7492
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303598"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>IoT Hub のモジュール ツインの理解と使用
@@ -176,7 +176,7 @@ ms.locfileid: "78303598"
 
   - Properties
 
-    | 名前 | Value |
+    | 名前 | 値 |
     | --- | --- |
     $content-type | application/json |
     $iothub-enqueuedtime |  通知が送信された時刻 |

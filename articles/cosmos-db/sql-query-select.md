@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: girobins
 ms.openlocfilehash: 013ebdcdbac41825c10a1362f73ab4c94052400d
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77469937"
 ---
 # <a name="select-clause-in-azure-cosmos-db"></a>Azure Cosmos DB での SELECT 句
@@ -78,7 +78,7 @@ SELECT <select_specification>
   
 ## <a name="examples"></a>例
 
-次の SELECT クエリの例は、`id` が `AndersenFamily` と一致する `Families` から `address` を返します。
+次の SELECT クエリの例は、`address` が `Families` と一致する `id` から `AndersenFamily` を返します。
 
 ```sql
     SELECT f.address

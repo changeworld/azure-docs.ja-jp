@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: d8f63984a5ad3717b470657aba02224794122cd5
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930831"
 ---
 # <a name="copy-data-from-phoenix-using-azure-data-factory"></a>Azure Data Factory を使用して Phoenix からデータをコピーする 
@@ -37,7 +37,7 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -49,7 +49,7 @@ Phoenix のリンクされたサービスでは、次のプロパティがサポ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります: **Phoenix** | はい |
+| type | type プロパティは、次のように設定する必要があります:**Phoenix** | はい |
 | host | Phoenix サーバーの IP アドレスまたはホスト名。 (つまり、192.168.222.160)  | はい |
 | port | Phoenix サーバーがクライアント接続のリッスンに使用する TCP ポート。 既定値は 8765 です。 Azure HDInsights に接続する場合は、port を 443 と指定します。 | いいえ |
 | httpPath | Phoenix サーバーに対応する部分的な URL。 (つまり、/gateway/sandbox/phoenix/version)。 Hdinsight クラスターを使用する場合は `/hbasephoenix0` を指定します。  | いいえ |
@@ -96,7 +96,7 @@ Phoenix からデータをコピーするには、データセットの type プ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります: **PhoenixObject** | はい |
+| type | データセットの type プロパティは、次のように設定する必要があります:**PhoenixObject** | はい |
 | schema | スキーマの名前。 |いいえ (アクティビティ ソースの "query" が指定されている場合)  |
 | table | テーブルの名前。 |いいえ (アクティビティ ソースの "query" が指定されている場合)  |
 | tableName | スキーマがあるテーブルの名前。 このプロパティは下位互換性のためにサポートされています。 新しいワークロードでは、`schema` と `table` を使用します。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
@@ -128,7 +128,7 @@ Phoenix からデータをコピーするには、コピー アクティビテ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります: **PhoenixSource** | はい |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**PhoenixSource** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
@@ -163,9 +163,9 @@ Phoenix からデータをコピーするには、コピー アクティビテ�
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
+## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
+プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

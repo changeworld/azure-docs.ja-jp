@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/28/2019
 ms.author: ramamill
 ms.openlocfilehash: 00b0c1b1a40ad16db177916c57dba6e9d5a187a7
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67181703"
 ---
 特定の状況に応じた手順に従います。
@@ -32,7 +32,7 @@ ms.locfileid: "67181703"
     ```
     perl Unregister-ASRComponent.pl -IPAddress <IP_of_Process_Server> -Component PS
     ```
-    - 連続 No: プロセス サーバーのシリアル番号。
+    - S. No: プロセス サーバーのシリアル番号。
     - IP/Name:プロセス サーバーを実行しているマシンの IP アドレスと名前。
     - Heartbeat:プロセス サーバー マシンからの最後のハートビート。
     ![登録解除コマンド](media/site-recovery-vmware-unregister-process-server/Unregister-cmd.PNG)

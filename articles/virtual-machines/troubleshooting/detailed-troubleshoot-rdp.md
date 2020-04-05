@@ -16,10 +16,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: ea448b87f9e6954abecead2934bfb7f4ed04a9c5
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77920146"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Azure 上の Windows VM へのリモート デスクトップ接続に関する問題の詳細なトラブルシューティング手順
@@ -100,7 +100,7 @@ RDP 接続には以下のコンポーネントが関連しています。
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_3.png)
 
 > [!NOTE]
-> Resource Manager で作成された仮想マシンの場合は、「[ソース 4:ネットワーク セキュリティ グループ](#source-4-network-security-groups)」に進んでください。
+> リソース マネージャーで作成された仮想マシンについては、「 [ソース 4: ネットワーク セキュリティ グループ](#source-4-network-security-groups)」はスキップしてください。
 
 同じクラウド サービスまたは仮想ネットワーク内に別の仮想マシンがない場合、作成します。 「[Azure 上で Windows を実行する仮想マシンの作成](../virtual-machines-windows-hero-tutorial.md)」の手順に従ってください。 テストが完了した後は、テスト用の仮想マシンを削除します。
 

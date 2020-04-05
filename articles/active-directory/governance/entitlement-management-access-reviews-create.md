@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a862bbb1f574e4adab2f7d8e59a1abe8e5a5fa2a
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73608371"
 ---
 # <a name="create-an-access-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージのアクセス レビューを作成する
@@ -33,7 +33,7 @@ ms.locfileid: "73608371"
 - Azure AD Premium P2
 - グローバル管理者、ユーザー管理者、カタログ所有者、またはアクセス パッケージ マネージャー
 
-詳細については、「[ライセンスの要件](entitlement-management-overview.md#license-requirements)」を参照してください。
+詳細については、「[License requirements ライセンスの要件](entitlement-management-overview.md#license-requirements)」を参照してください。
 
 
 ## <a name="create-an-access-review-of-an-access-package"></a>アクセス パッケージのアクセス レビューを作成する
@@ -92,7 +92,7 @@ ms.locfileid: "73608371"
   
 ゲスト ユーザーをレビュー担当者として割り当てて、彼らが Azure AD のゲスト招待を承諾していない場合、彼らは Azure AD アクセス レビューからのメールを受信しません。 電子メールを受信する前に、まず招待を受け入れて、Azure AD でアカウントを作成する必要があります。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [アクセス パッケージのアクセスを確認する](entitlement-management-access-reviews-review-access.md)
 - [アクセス パッケージのセルフレビュー](entitlement-management-access-reviews-self-review.md)

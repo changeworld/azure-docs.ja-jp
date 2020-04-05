@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.openlocfilehash: e7b8f8a33b741a8dcf2d1a68ae3cf86d6e3687eb
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950409"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237355"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る
 
@@ -50,17 +50,17 @@ IoT Hub を認識しない Event Hubs SDK や製品統合を使用している�
 
 ポータルの [イベント ハブ互換エンドポイント] フィールドには、Event Hubs の完全な接続文字列 (例: **Endpoint=sb://abcd1234namespace.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=keykeykeykeykeykey=;EntityPath=iothub-ehub-abcd-1234-123456**) が含まれています。 使用している SDK で他の値が必要な場合、値は次のようになります。
 
-| EnableAdfsAuthentication | 値 |
+| 名前 | 値 |
 | ---- | ----- |
 | エンドポイント | sb://abcd1234namespace.servicebus.windows.net/ |
-| ホスト名 | abcd1234namespace.servicebus.windows.net |
+| hostname | abcd1234namespace.servicebus.windows.net |
 | 名前空間 | abcd1234namespace |
 
 この場合、指定したイベント ハブに接続するための **ServiceConnect** のアクセス許可を持つ、共有アクセス ポリシーを使用できます。
 
 IoT Hub が公開している組み込みのイベント ハブ互換エンドポイントに接続する際に使用できる SDK は次のとおりです。
 
-| 言語 | SDK | 例 | メモ |
+| Language | SDK | 例 | Notes |
 | -------- | --- | ------ | ----- |
 | .NET | https://github.com/Azure/azure-event-hubs-dotnet | [クイックスタート](quickstart-send-telemetry-dotnet.md) | Event Hubs 互換情報を使用 |
  Java | https://github.com/Azure/azure-event-hubs-java | [クイックスタート](quickstart-send-telemetry-java.md) | Event Hubs 互換情報を使用 |
@@ -76,7 +76,7 @@ IoT Hub が公開している組み込みのイベント ハブ互換エンド�
 * [Apache Spark 統合](../hdinsight/spark/apache-spark-eventhub-streaming.md)。
 * [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * IoT Hub のエンドポイントの詳細については、[IoT Hub エンドポイント](iot-hub-devguide-endpoints.md)に関するページをご覧ください。
 

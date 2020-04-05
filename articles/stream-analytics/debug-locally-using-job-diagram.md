@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.openlocfilehash: 106b1f0b765700803d2cd55b5e049fae5be3dfad
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76850542"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Visual Studio のジョブ ダイアグラムを使用して Azure Stream Analytics のクエリをローカルでデバッグする
@@ -123,6 +123,6 @@ Azure Stream Analytics スクリプトは、入力データを出力データに
 
 ## <a name="next-steps"></a>次のステップ
 
-* [クイック スタート: Visual Studio を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-vs.md)
+* [クイック スタート: Visual Studio の Azure Stream Analytics ツールを使用した Stream Analytics ジョブの作成](stream-analytics-quick-create-vs.md)
 * [Visual Studio を使用して Azure Stream Analytics ジョブを表示する](stream-analytics-vs-tools.md)
 * [Visual Studio の Azure Stream Analytics ツールを使用してライブ データをローカルにテストする (プレビュー)](stream-analytics-live-data-local-testing.md)

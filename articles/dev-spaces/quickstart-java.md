@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: このクイックスタートでは、Azure Dev Spaces と Visual Studio Code を使用し、Azure Kubernetes Service 上で Java アプリケーションのデバッグと迅速な反復型開発を行う方法について説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Java, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 5dcfff94d3a5296ed4462360ce85732c07b21cf5
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: ac7a1b37b565f3589b7c049a3c1ed2a84972ded0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245095"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80239731"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-java---azure-dev-spaces"></a>クイック スタート:Visual Studio Code と Java を使用して Kubernetes 上でデバッグと反復処理を行う - Azure Dev Spaces
 
@@ -94,7 +94,7 @@ Visual Studio Code でコマンド パレットを開くには、 **[表示]** �
 このコマンドでは、Dockerfile および Helm チャートを生成することで、ご利用のプロジェクトを Azure Dev Spaces で実行するための準備が行われます。 また、デバッグ構成が含まれた *.vscode* ディレクトリが、お客様のプロジェクトのルートに生成されます。
 
 > [!TIP]
-> プロジェクトの [Dockerfile と Helm チャート](how-dev-spaces-works.md#prepare-your-code)は、対象のコードをビルドして実行するために Azure Dev Spaces によって使用されますが、プロジェクトのビルドおよび実行方法を変更する場合は、これらのファイルを変更することができます。
+> プロジェクトの [Dockerfile と Helm チャート](how-dev-spaces-works-prep.md#prepare-your-code)は、対象のコードをビルドして実行するために Azure Dev Spaces によって使用されますが、プロジェクトのビルドおよび実行方法を変更する場合は、これらのファイルを変更することができます。
 
 ## <a name="build-and-run-code-in-kubernetes-from-visual-studio-code"></a>Visual Studio Code で Kubernetes のコードをビルドして実行する
 

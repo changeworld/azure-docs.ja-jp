@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: yushwang
 ms.openlocfilehash: 93e13592d9c434b159ad4f4c10ef30328941c64e
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75902821"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>暗号化要件と Azure VPN ゲートウェイについて

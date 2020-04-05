@@ -1,5 +1,5 @@
 ---
-title: Azure Billing Enterprise API |Microsoft Docs
+title: Azure Billing Enterprise API
 description: Enterprise Azure の顧客がプログラムで消費データを取り出せるようにする Reporting API について説明します。
 author: mumami
 tags: billing
@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: banders
-ms.openlocfilehash: 9f9552c134fa7653e4100cae3c731e4c670d44e3
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 10275bac8cd9363939f9b6f298c49d7ef08ab7bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560543"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79202915"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>企業ユーザー向けの Reporting API の概要
 Reporting API を使用すると、Enterprise Azure の顧客はプログラムで消費量および課金データを希望のデータ分析ツールに取り出すことができます。 Enterprise 顧客は、Azure の [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) を締結し、交渉によって年額コミットメントを決定しています。Azure リソースのカスタム価格が提示されます。

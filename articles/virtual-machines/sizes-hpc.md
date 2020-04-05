@@ -16,10 +16,10 @@ ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jonbeck
 ms.openlocfilehash: b900a95df00ccdd0ad9b5bee3887364195c7d1c2
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78226735"
 ---
 # <a name="high-performance-compute-vm-sizes"></a>ハイ パフォーマンス コンピューティング VM のサイズ

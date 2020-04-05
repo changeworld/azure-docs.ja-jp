@@ -1,6 +1,6 @@
 ---
 title: テンプレートの例 - Azure SQL Database にマネージド インスタンスを作成する
-description: Azure SQL Database にマネージド インスタンスを作成する Azure PowerShell スクリプトの例です
+description: この Azure PowerShell サンプル スクリプトを使用して、Azure SQL Database にマネージド インスタンスを作成します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: be6aa73fe72568e9762e5b7249bedc2e8c7d3bf7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a349be9ada756742f5fd5ba4819caa1d2a2d3268
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691443"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80373163"
 ---
 # <a name="use-powershell-with-azure-resource-manager-template-to-create-a-managed-instance-in-azure-sql-database"></a>PowerShell と Azure Resource Manager テンプレートを使用して Azure SQL Database にマネージド インスタンスを作成する
 
@@ -131,7 +131,7 @@ New-AzResourceGroupDeployment  -Name MyDeployment -ResourceGroupName $resourceGr
 
 スクリプトが正常に実行されると、すべての Azure サービスおよび構成済み IP アドレスから SQL Database へアクセスできるようになります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

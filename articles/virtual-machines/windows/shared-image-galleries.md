@@ -17,10 +17,10 @@ ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: ''
 ms.openlocfilehash: 839ef8d32e9a84005dc47ad90b957bb780090589
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74065612"
 ---
 # <a name="shared-image-gallery-overview"></a>共有イメージ ギャラリーの概要
@@ -29,6 +29,6 @@ ms.locfileid: "74065612"
 [!INCLUDE [virtual-machines-common-shared-image-galleries](../../../includes/virtual-machines-common-shared-image-galleries.md)]
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure PowerShell を使用して共有イメージをデプロイ](shared-images.md)する方法を学習します。

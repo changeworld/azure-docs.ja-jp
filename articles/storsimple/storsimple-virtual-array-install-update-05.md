@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/10/2017
 ms.author: alkohli
 ms.openlocfilehash: e09ff4bcbc141b1a1f80bc278918a291639c1885
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61445422"
 ---
 # <a name="install-update-05-on-your-storsimple-virtual-array"></a>StorSimple Virtual Array に Update 0.5 をインストールする
@@ -94,7 +94,7 @@ Update 0.2 以降を実行している場合は、Azure Portal から更新プ�
    
     ![デバイスの更新](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
-2. **[Update file path (更新プログラムのファイル パス)]** に、更新プログラムまたは修正プログラムのファイル名を入力します。 更新プログラムまたは修正プログラムのインストール ファイルがネットワーク共有にある場合は、ファイルを参照することもできます。 **[適用]** をクリックします。
+2. **[Update file path (更新プログラムのファイル パス)]** に、更新プログラムまたは修正プログラムのファイル名を入力します。 更新プログラムまたは修正プログラムのインストール ファイルがネットワーク共有にある場合は、ファイルを参照することもできます。 **[Apply]** をクリックします。
    
     ![デバイスの更新](./media/storsimple-virtual-array-install-update-05/update2m.png)
 
@@ -117,7 +117,7 @@ Update 0.2 以降を実行している場合は、Azure Portal から更新プ�
 
 これで更新が完成しました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)の詳細を確認します。
 

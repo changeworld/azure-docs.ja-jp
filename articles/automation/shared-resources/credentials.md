@@ -10,11 +10,11 @@ ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 767c1fddbc3d1f46d4341a70c990c2b57ad40e54
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76930410"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227539"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Azure Automation での資格情報資産
 

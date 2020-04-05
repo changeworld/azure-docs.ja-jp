@@ -8,10 +8,10 @@ ms.topic: sample
 ms.date: 9/25/2019
 ms.author: mjbrown
 ms.openlocfilehash: 8edeb6b0c64057f892fa8af4ed1680d5371805a1
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71274979"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 用の Azure CLI サンプル

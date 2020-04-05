@@ -5,10 +5,10 @@ keywords: Ansible, Azure, DevOps, Bash, Cloud Shell, 動的インベントリ
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.openlocfilehash: cd225dcf8a0c307d49e985817b71c491559edb14
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78247848"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>チュートリアル:Ansible を使用して Azure リソースの動的インベントリを構成する

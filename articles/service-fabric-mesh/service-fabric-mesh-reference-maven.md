@@ -6,10 +6,10 @@ ms.author: suhuruli
 ms.date: 11/26/2018
 ms.topic: reference
 ms.openlocfilehash: bcc3fb7c6c3adce0997d0960c4d98227089b048b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75459021"
 ---
 # <a name="maven-plugin-for-service-fabric-mesh"></a>Service Fabric Mesh 用の Maven プラグイン
@@ -24,7 +24,7 @@ ms.locfileid: "75459021"
 ## <a name="goals"></a>目標
 
 ### `azure-sfmesh:init`
-- `application.yaml` ファイルを含めた `appresources` フォルダーを含む `servicefabric` フォルダーを作成します。 
+- `servicefabric` ファイルを含めた `appresources` フォルダーを含む `application.yaml` フォルダーを作成します。 
 
 ### `azure-sfmesh:addservice`
 - サービス名を付けたフォルダーを `servicefabric` フォルダー内に作成し、サービスの YAML ファイルを作成します。 
@@ -87,7 +87,7 @@ Maven プラグインでは現在、Azure 用の Maven プラグインの一般�
 mvn azure-sfmesh:init -DapplicationName=helloworldserver
 ```
 
-- `app_helloworldserver` という名前のアプリケーション YAML を含むルート フォルダーに、`servicefabric->appresources` という名前のフォルダーを作成します。
+- `servicefabric->appresources` という名前のアプリケーション YAML を含むルート フォルダーに、`app_helloworldserver` という名前のフォルダーを作成します。
 
 ### <a name="add-resource-to-your-application"></a>アプリケーションにリソースを追加する
 
@@ -98,7 +98,7 @@ mvn azure-sfmesh:init -DapplicationName=helloworldserver
 mvn azure-sfmesh:addnetwork -DnetworkName=helloworldservicenetwork -DnetworkAddressPrefix=10.0.0.0/22
 ```
 
-- `network_helloworldservicenetwork` という名前のフォルダー `servicefabric->appresources` にネットワーク YAML を作成します。
+- `servicefabric->appresources` という名前のフォルダー `network_helloworldservicenetwork` にネットワーク YAML を作成します。
 
 #### <a name="add-a-new-service-to-your-application"></a>新しいサービスをアプリケーションに追加する
 次のコマンドを実行して、サービス YAML を作成します。 
@@ -107,7 +107,7 @@ mvn azure-sfmesh:addnetwork -DnetworkName=helloworldservicenetwork -DnetworkAddr
 mvn azure-sfmesh:addservice -DapplicationName=helloworldserver -DserviceName=helloworldservice -DimageName=helloworldserver:latest -DlistenerPort=8080 -DnetworkRef=helloworldservicenetwork
 ```
 
-- `helloworldservicenetwork` と `helloworldserver` アプリを参照する `service_helloworldservice` という名前のフォルダー `servicefabric->helloworldservice` 内にサービス YAML を作成します。
+- `servicefabric->helloworldservice` と `service_helloworldservice` アプリを参照する `helloworldservicenetwork` という名前のフォルダー `helloworldserver` 内にサービス YAML を作成します。
 - サービスはポート 8080 でリッスンします。
 - サービスでは、***helloworldserver:latest*** がコンテナー イメージとして使用されます。
 
@@ -118,7 +118,7 @@ mvn azure-sfmesh:addservice -DapplicationName=helloworldserver -DserviceName=hel
 mvn azure-sfmesh:addgateway -DapplicationName=helloworldserver -DdestinationNetwork=helloworldservicenetwork -DgatewayName=helloworldgateway -DlistenerName=helloworldserviceListener -DserviceName=helloworldservice -DsourceNetwork=open -DtcpPort=80
 ```
 
-- `gateway_helloworldgateway` という名前のフォルダー `servicefabric->appresources` に新しいゲートウェイ YAML を作成します。
+- `servicefabric->appresources` という名前のフォルダー `gateway_helloworldgateway` に新しいゲートウェイ YAML を作成します。
 - このゲートウェイからの呼び出しをリッスンしているサービス リスナーとして `helloworldservicelistener` を参照します。 また、`helloworldservice` をサービスとして、`helloworldservicenetwork` をネットワークとして、`helloworldserver` をアプリケーションとして参照します。 
 - 要求をポート 80 でリッスンします。
 
@@ -129,7 +129,7 @@ mvn azure-sfmesh:addgateway -DapplicationName=helloworldserver -DdestinationNetw
 mvn azure-sfmesh:addvolume -DvolumeAccountKey=key -DvolumeAccountName=name -DvolumeName=vol1 -DvolumeShareName=share
 ```
 
-- `volume_vol1` という名前のフォルダー `servicefabric->appresources` にボリューム YAML を作成します。
+- `servicefabric->appresources` という名前のフォルダー `volume_vol1` にボリューム YAML を作成します。
 - 上記のように、必要なパラメーター、`volumeAccountKey`、および `volumeShareName` のプロパティを設定します。
 - 作成したこのボリュームを参照する方法については、[Azure Files ボリュームを使用したアプリのデプロイ](service-fabric-mesh-howto-deploy-app-azurefiles-volume.md)に関するページをご覧ください。
 
@@ -140,7 +140,7 @@ mvn azure-sfmesh:addvolume -DvolumeAccountKey=key -DvolumeAccountName=name -Dvol
 mvn azure-sfmesh:addsecret -DsecretName=secret1
 ```
 
-- `secret_secret1` という名前のフォルダー `servicefabric->appresources` にシークレット YAML を作成します。
+- `servicefabric->appresources` という名前のフォルダー `secret_secret1` にシークレット YAML を作成します。
 - 作成したこのシークレットを参照する方法については、[シークレットの管理](service-fabric-mesh-howto-manage-secrets.md)に関するページをご覧ください。
 
 #### <a name="add-a-new-secretvalue-resource-to-your-application"></a>アプリケーションに新しい secretvalue リソースを追加する
@@ -150,7 +150,7 @@ mvn azure-sfmesh:addsecret -DsecretName=secret1
 mvn azure-sfmesh:addsecretvalue -DsecretValue=someVal -DsecretValueName=secret1/v1
 ```
 
-- `secretvalue_secret1_v1` という名前のフォルダー `servicefabric->appresources` に secretvalue YAML を作成します。
+- `servicefabric->appresources` という名前のフォルダー `secretvalue_secret1_v1` に secretvalue YAML を作成します。
 
 ### <a name="run-the-application-locally"></a>ローカルでアプリケーションを実行する
 

@@ -17,10 +17,10 @@ ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 40c1e9d493b0fb7bbf1e484799d56e91da1d0833
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73156314"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fidelity-netbenefits"></a>チュートリアル:Azure Active Directory と Fidelity NetBenefits の統合

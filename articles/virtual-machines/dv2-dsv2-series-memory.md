@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: 66e415070e60676df5602078aff50c7b68920f1e
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77914043"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>メモリが最適化された Dv2 と Dsv2 シリーズ
@@ -49,7 +49,7 @@ Premium Storage: サポートされています
 
 Premium Storage キャッシュ:サポートされています
 
-| サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (MBps) |
+| サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループットIOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (MBps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS11_v2 <sup>3</sup> | 2  | 14  | 28  | 8  | 8000/64 (72)    | 6400/96   | 2/1500  |
 | Standard_DS12_v2 <sup>3</sup> | 4  | 28  | 56  | 16 | 16000/128 (144) | 12800/192 | 4/3000  |

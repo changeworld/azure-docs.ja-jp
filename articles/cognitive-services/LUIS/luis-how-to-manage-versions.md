@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
 ms.openlocfilehash: 138b84a9b7f54782fd6254304a3fdcf4dba83182
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74221935"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79219133"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>バージョンを使用してステージング アプリまたは運用環境アプリに影響を与えることなく編集とテストを行う
 
@@ -69,7 +69,7 @@ ms.locfileid: "74221935"
 
 ## <a name="other-actions"></a>その他のアクション
 
-* バージョンを**削除**するには、一覧からバージョンを選択し、ツール バーから **[削除]** を選択します。 **[OK]** を選びます。 
+* バージョンを**削除**するには、一覧からバージョンを選択し、ツール バーから **[削除]** を選択します。 **[OK]** を選択します。 
 * バージョンの**名前を変更**するには、一覧からバージョンを選択し、ツール バーから **[名前の変更]** を選択します。 新しい名前を入力して **[完了]** を選択します。 
 * バージョンを**エクスポート**するには、一覧からバージョンを選択し、ツール バーから **[Export app]\(アプリのエクスポート\)** を選択します。 [このアプリを LUIS コンテナーで使用](luis-container-howto.md)するには、バックアップ用にエクスポートする JSON を選択し、 **[Export for container]\(コンテナー用にエクスポート\)** を選択します。  
 

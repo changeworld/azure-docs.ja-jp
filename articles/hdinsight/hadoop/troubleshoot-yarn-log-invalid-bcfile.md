@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/23/2020
 ms.openlocfilehash: f7861ae4980f13fbd87780ab2d26fa3376f33532
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76776040"
 ---
 # <a name="scenario-unable-to-read-apache-yarn-log-in-azure-hdinsight"></a>シナリオ:Azure HDInsight で Apache Yarn ログを読み取ることができない
@@ -30,7 +30,7 @@ java.io.IOException: Not a valid BCFile.
 
 Apache Yarn ログは `IndexFile` 形式に集約されますが、これはファイル パーサーでサポートされていません。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
 1. Web ブラウザーから、`https://CLUSTERNAME.azurehdinsight.net` に移動します。ここで、`CLUSTERNAME` はクラスターの名前です。
 

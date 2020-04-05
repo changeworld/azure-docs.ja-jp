@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: d7c38a44e3111a319e4146b3c9b71a22b0d31bfd
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72675466"
 ---
 # <a name="what-are-parallel-documents"></a>並列ドキュメントとは
@@ -44,6 +44,6 @@ Microsoft では、Custom Translator にアップロードするドキュメン�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Custom Translator で[辞書](what-is-dictionary.md)を使用する方法について説明します。

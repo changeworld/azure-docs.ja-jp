@@ -7,10 +7,10 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.openlocfilehash: 6c35189e7c841fa2724f1cfe84afc689d5510676
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77459006"
 ---
 # <a name="create-a-xamarinios-app"></a>Xamarin.iOS アプリを作成する

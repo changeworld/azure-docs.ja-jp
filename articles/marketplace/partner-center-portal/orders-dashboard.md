@@ -1,19 +1,18 @@
 ---
 title: コマーシャル マーケットプレース分析でのパートナー センターの [注文] ダッシュボード
 description: マーケットプレース オファーの注文に関するグラフィカルでダウンロード可能な形式の分析レポートにアクセスする方法について説明します。
-author: ChJenk
-manager: evansma
-ms.author: v-chjen
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: bf4b48fafa5b877053abe653b569cf27eb50d57b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d0db6553a774a69bb8a55538cbd2b4a333be9316
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475317"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281410"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析での [注文] ダッシュボード
 

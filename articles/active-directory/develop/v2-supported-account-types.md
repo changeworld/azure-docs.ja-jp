@@ -17,11 +17,11 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: de90c81f56b6017b2d53ecbfb2c400a4c9f05d81
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700058"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230487"
 ---
 # <a name="supported-account-types"></a>サポートされているアカウントの種類
 

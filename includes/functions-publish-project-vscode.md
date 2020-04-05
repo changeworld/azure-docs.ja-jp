@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
 ms.openlocfilehash: 256510f855256e648ae9203f46eb9f66c9ffaed6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77029200"
 ---
 ## <a name="publish-the-project-to-azure"></a>Azure にプロジェクトを発行する

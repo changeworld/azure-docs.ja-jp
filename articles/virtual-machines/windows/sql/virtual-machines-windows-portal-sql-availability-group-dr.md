@@ -9,18 +9,18 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 388c464e-a16e-4c9d-a0d5-bb7cf5974689
 ms.service: virtual-machines-sql
-ms.custom: seo-lt-2019
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: cd27e581aaca241fc15886f9f72546f92391b744
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 8ca871a6f525d4e68ce70060e6faddbcfc8e1f3f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772648"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060111"
 ---
 # <a name="configure-an-availability-group-on-azure-sql-server-virtual-machines-in-different-regions"></a>さまざまなリージョンに存在する Azure SQL Server 仮想マシンに可用性グループを構成する
 
@@ -182,7 +182,7 @@ ms.locfileid: "76772648"
 
 接続をテストした後は、プライマリ レプリカをプライマリ データ センターに戻し、可用性モードを通常の動作設定に戻します。 次の表では、このドキュメントで説明されているアーキテクチャの通常の動作設定を示します。
 
-| Location | サーバー インスタンス | Role | 可用性モード | フェールオーバー モード
+| 場所 | サーバー インスタンス | Role | 可用性モード | フェールオーバー モード
 | ----- | ----- | ----- | ----- | -----
 | プライマリ データ センター | SQL-1 | プライマリ | 同期 | 自動
 | プライマリ データ センター | SQL-2 | セカンダリ | 同期 | 自動

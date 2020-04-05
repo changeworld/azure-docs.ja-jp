@@ -4,12 +4,12 @@ description: ポータルから Azure の新しい関数アプリを作成しま
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.custom: mvc
-ms.openlocfilehash: 74eaa6837f362c849277a761da3ae79c3a8ac353
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 086a543e75d083094d4dfa789e71afaba5da6d6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230784"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79368759"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Azure Portal から Function App を作成する
 
@@ -18,10 +18,6 @@ ms.locfileid: "74230784"
 ## <a name="create-a-function-app"></a>Function App を作成する
 
 [!INCLUDE [functions-create-function-app-portal](../../includes/functions-create-function-app-portal.md)]
-
-Function App を作成するときに、有効な **アプリ名** を入力します。名前に使用できるのは文字、数字、およびハイフンだけです。 アンダースコア ( **_** ) は使用できません。
-
-ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。 ストレージ アカウント名は Azure 内で一意である必要があります。 
 
 Function App を作成したら、1 つ以上の言語で個々の関数を作成できます。 関数を作成するには、[ポータルを使用](functions-create-first-azure-function.md#create-function) するか、[継続的なデプロイ](functions-continuous-deployment.md) を使用するか、[FTP でアップロード](https://github.com/projectkudu/kudu/wiki/Accessing-files-via-ftp) します。
 
@@ -42,7 +38,7 @@ Azure Functions には、次の 3 つの異なるサービス プランが用意
 
 ストレージ アカウントの種類の詳細については、「[Azure Storage サービスの概要](../storage/common/storage-introduction.md#azure-storage-services)」を参照してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure portal を使用すると関数を簡単に作成したり試したりできますが、[ローカル開発](functions-develop-local.md) をお勧めします。 ポータルで Function App を作成した後、さらに関数を追加する必要があります。 
 

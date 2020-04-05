@@ -1,6 +1,6 @@
 ---
 title: Azure の VM のサイズ - 汎用 | Microsoft Docs
-description: Azure の仮想マシンで使用できるさまざまな汎用サイズを一覧表示します。 このシリーズの各サイズにおけるストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を一覧表示します。
+description: Azure の仮想マシンで使用できるさまざまな汎用サイズを一覧表示します。 このシリーズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を一覧表示します。
 services: virtual-machines
 documentationcenter: ''
 author: jonbeck7
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
 ms.openlocfilehash: 4b36f456f70eb79cff1f615c7c136b8fe4b1b3d4
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78226716"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>汎用仮想マシンのサイズ

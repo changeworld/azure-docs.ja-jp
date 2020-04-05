@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
 ms.openlocfilehash: 66676c90e73d1886c86d8afda8cbbecce239a005
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596030"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229639"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でリソースを管理するアプリケーション開発者のベスト プラクティス
 

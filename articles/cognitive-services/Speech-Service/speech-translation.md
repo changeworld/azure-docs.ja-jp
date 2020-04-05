@@ -8,16 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: a05a2bf81a278322bc4e07ed959aedb828c39b73
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: f51288da6af3580ba7592950cde4f17d7adad529
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815463"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80052618"
 ---
 # <a name="what-is-speech-translation"></a>音声翻訳とは何か
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Speech Service の音声翻訳では、オーディオ ストリームをリアルタイムに処理し、複数言語の音声間翻訳や音声テキスト翻訳を実行することができます。 Speech SDK を使用すると、アプリケーション、ツール、およびデバイスから、提供されたオーディオのソース トランスクリプションや翻訳出力にアクセスすることができます。 音声の検出中には中間トランスクリプションと翻訳結果が返され、最終的な結果は、合成された音声に変換することができます。
 
@@ -29,7 +31,7 @@ Microsoft の翻訳エンジンは、統計的機械翻訳 (SMT) とニューラ
 
 Speech SDK および REST API を通じて使用可能な機能を以下に示します。
 
-| ユース ケース | SDK | REST |
+| 使用事例 | SDK | REST |
 |----------|-----|------|
 | 認識結果を使用した音声テキスト翻訳。 | はい | いいえ |
 | 音声間翻訳。 | はい | いいえ |
@@ -41,11 +43,11 @@ Speech SDK および REST API を通じて使用可能な機能を以下に示�
 
 | クイック スタート | プラットフォーム | API リファレンス |
 |------------|----------|---------------|
-| [C#、.NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnetcore) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C#、.NET Framework](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C#、UWP](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=uwp) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-cpp&tabs=windows) | Windows | [Browse](https://aka.ms/csspeech/cppref)|
-| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-java&tabs=jre) | Windows、Linux、macOS | [Browse](https://aka.ms/csspeech/javaref) |
+| [C#、.NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnetcore) | Windows | [[参照]](https://aka.ms/csspeech/csharpref) |
+| [C#、.NET Framework](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [[参照]](https://aka.ms/csspeech/csharpref) |
+| [C#、UWP](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=uwp) | Windows | [[参照]](https://aka.ms/csspeech/csharpref) |
+| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-cpp&tabs=windows) | Windows | [[参照]](https://aka.ms/csspeech/cppref)|
+| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-java&tabs=jre) | Windows、Linux、macOS | [[参照]](https://aka.ms/csspeech/javaref) |
 
 ## <a name="sample-code"></a>サンプル コード
 
@@ -67,7 +69,7 @@ Speech SDK のサンプル コードは、GitHub 上で入手できます。 こ
 * [REST API: テキスト読み上げ](rest-text-to-speech.md)
 * [REST API: 一括文字起こしとカスタマイズ](https://westus.cris.ai/swagger/ui/index)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Speech サービスのサブスクリプション キーを無料で取得する](get-started.md)
 * [Speech SDK を取得する](speech-sdk.md)

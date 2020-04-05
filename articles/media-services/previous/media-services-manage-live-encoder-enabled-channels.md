@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
 ms.openlocfilehash: a32624c37cd8ca7fbef9e38ca61de9369791dd25
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162533"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する
@@ -57,7 +57,7 @@ Media Services 2.10 リリース以降、チャネルを作成するときに、
 チャネルへの課金を停止するには、API を通じて、または Azure Portal で、チャネルを停止する必要があります。
 ライブ エンコード チャネルが終了したら、自分でチャネルを停止する必要があります。  エンコード チャネルの停止に失敗すると、課金が継続されます。
 
-### <a id="states"></a>チャネルの状態と、どのように課金モードにマッピングされているか
+### <a name="channel-states-and-how-they-map-to-the-billing-mode"></a><a id="states"></a>チャネルの状態と、どのように課金モードにマッピングされているか
 現在のチャネルの状態。 指定できる値は、次のとおりです。
 
 * **停止済み**。 これは、チャネル作成後の初期状態です (ポータルで自動開始が選択されなかった場合)。この状態では、課金は行われません。 この状態で、チャネルのプロパティを更新できますが、ストリーミングは許可されていません。
@@ -85,7 +85,7 @@ Media Services 2.10 リリース以降、チャネルを作成するときに、
 
 ![ライブ ワークフロー][live-overview]
 
-## <a id="scenario"></a>一般的なライブ ストリーミング シナリオ
+## <a name="common-live-streaming-scenario"></a><a id="scenario"></a>一般的なライブ ストリーミング シナリオ
 以下に、一般的なライブ ストリーミング アプリケーションを作成する場合に関係する標準的な手順を示します。
 
 > [!NOTE]
@@ -123,14 +123,14 @@ Media Services 2.10 リリース以降、チャネルを作成するときに、
 > 
 > 
 
-## <a id="channel"></a>チャネル入力 (取り込み) の構成
-### <a id="Ingest_Protocols"></a>取り込みストリーミング プロトコル
+## <a name="channels-input-ingest-configurations"></a><a id="channel"></a>チャネル入力 (取り込み) の構成
+### <a name="ingest-streaming-protocol"></a><a id="Ingest_Protocols"></a>取り込みストリーミング プロトコル
 **[Encoder Type (エンコーダーの種類)]** が **[Standard]** に設定されている場合の有効なオプションは次のとおりです。
 
 * シングル ビットレート **RTMP**
 * シングル ビットレート **Fragmented MP4** (スムーズ ストリーミング)
 
-#### <a id="single_bitrate_RTMP"></a>シングル ビットレート RTMP
+#### <a name="single-bitrate-rtmp"></a><a id="single_bitrate_RTMP"></a>シングル ビットレート RTMP
 考慮事項:
 
 * 受信ストリームには、マルチ ビットレート ビデオを含めることはできません。
@@ -210,7 +210,7 @@ Ad マーカーの信号ソースを指定できます。 既定値は **Api** �
 #### <a name="language"></a>Language
 ISO 639-2 に準拠している、オーディオ ストリームの言語識別子 (例: ENG)。 存在しない場合の既定値は UND (未定義) です。
 
-### <a id="preset"></a>システム プリセット
+### <a name="system-preset"></a><a id="preset"></a>システム プリセット
 このチャネル内のライブ エンコーダーが使用するプリセットを指定します。 現在、唯一の許容されている値は **Default720p** (既定値) です。
 
 **Default720p** では、次の 6 つのレイヤーにビデオがエンコードされます。
@@ -262,7 +262,7 @@ Live Encoding が有効なチャネルがある場合、パイプライン内の
 ### <a name="insert-slate-on-ad-marker"></a>Ad マーカーへのスレートの挿入
 この設定を true にすると、広告による中断期間中にライブ エンコーダーがスレート イメージを挿入するように構成されます。 既定値は、true です。 
 
-### <a id="default_slate"></a>既定のスレート アセット ID
+### <a name="default-slate-asset-id"></a><a id="default_slate"></a>既定のスレート アセット ID
 
 省略可能。 スレート イメージが含まれる Media Services 資産の資産 ID を指定します。 既定値は Null です。 
 
@@ -299,7 +299,7 @@ Live Encoding が有効なチャネルがある場合、パイプライン内の
 ## <a name="getting-a-thumbnail-preview-of-a-live-feed"></a>ライブ フィードの縮小表示プレビューを取得する
 Live Encoding が有効な場合は、ライブ フィードがチャネルに到達するとそのプレビューを取得できます。 これは、ライブ フィードがチャネルに実際に到達しているかどうかを確認するための重要なツールとなります。 
 
-## <a id="states"></a>チャネルの状態と課金モードとの対応
+## <a name="channel-states-and-how-states-map-to-the-billing-mode"></a><a id="states"></a>チャネルの状態と課金モードとの対応
 現在のチャネルの状態。 指定できる値は、次のとおりです。
 
 * **停止済み**。 これは、チャネル作成後の初期状態です。 この状態で、チャネルのプロパティを更新できますが、ストリーミングは許可されていません。
@@ -322,7 +322,7 @@ Live Encoding が有効な場合は、ライブ フィードがチャネルに�
 > 
 > 
 
-## <a id="Considerations"></a>考慮事項
+## <a name="considerations"></a><a id="Considerations"></a>考慮事項
 * **標準** エンコーディング タイプのチャネルで入力ソース/投稿フィードが失われるとき、ソース ビデオ/オーディオをエラー スレートと無音で置換し、補います。 入力/投稿フィードが再開するまで、チャネルはスレートの送信を続けます。 ライブ チャネルを 2 時間以上このような状態にしないことをお勧めします。 2 時間を超えると、入力再接続時のチャネルの動作が保証されず、リセット コマンドに対する応答の動作も保証されません。 チャネルを停止し、削除し、新しいものを作成する必要があります。
 * チャネルやチャネルに関連付けられたプログラムの実行中は、入力プロトコルを変更できません。 別のプロトコルが必要な場合は、入力プロトコルごとに別のチャネルを作成します。
 * ライブ エンコーダーを再構成する際は、毎回チャネルで **Reset** メソッドを呼び出します。 チャネルをリセットする前に、プログラムを停止する必要があります。 チャネルをリセットしたら、プログラムを再起動します。

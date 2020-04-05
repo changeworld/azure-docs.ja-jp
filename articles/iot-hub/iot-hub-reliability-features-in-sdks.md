@@ -8,11 +8,11 @@ ms.date: 07/07/2018
 ms.topic: article
 ms.service: iot-hub
 ms.openlocfilehash: 1ca7219824a00a5af0bed7d42da75fc06ce2010d
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045080"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237307"
 ---
 # <a name="manage-connectivity-and-reliable-messaging-by-using-azure-iot-hub-device-sdks"></a>Azure IoT Hub device SDK を使用して、接続と信頼できるメッセージングを管理する
 

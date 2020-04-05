@@ -5,10 +5,10 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: 34de38e91d47457d215c7ebf65d04ed2dbae5324
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74224359"
 ---
 次の表には、各サービス レベル (S1、S2、S3、F1) に関連付けられている制限がリストされています。 各レベルのそれぞれの *ユニット* のコストについては、「 [Azure IoT Hub の価格](https://azure.microsoft.com/pricing/details/iot-hub/)」を参照してください。
@@ -33,7 +33,7 @@ ms.locfileid: "74224359"
 | 1 回の呼び出しで返される<br/> デバイス ID の最大数 |1,000 |
 | デバイスからクラウドへのメッセージの IoT Hub メッセージの最大リテンション期間 |7 日 |
 | デバイスからクラウドへのメッセージの最大サイズ |256 KB |
-| デバイスからクラウドへのバッチの最大サイズ |AMQP および HTTP:バッチ全体で 256 KB <br/>MQTT:各メッセージで 256 KB |
+| デバイスからクラウドへのバッチの最大サイズ |AMQP および HTTP: バッチ全体で 256 KB <br/>MQTT: 各メッセージで 256 KB |
 | デバイスからクラウドへのバッチの最大メッセージ数 |500 |
 | クラウドからデバイスへのメッセージの最大サイズ |64 KB |
 | クラウドからデバイスへのメッセージの最大 TTL |2 日 |

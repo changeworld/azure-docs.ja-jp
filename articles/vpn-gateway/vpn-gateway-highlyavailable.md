@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 09/24/2016
 ms.author: yushwang
 ms.openlocfilehash: 91fb0896238881130bd02916f8fd579eee9bd16b
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75779622"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>高可用性のクロスプレミス接続および VNet 間接続
 この記事では、Azure VPN Gateway を使用したクロスプレミス接続と VNet 間接続の高可用性構成オプションの概要を説明します。
 
-## <a name = "activestandby"></a>Azure VPN Gateway の冗長性について
+## <a name="about-azure-vpn-gateway-redundancy"></a><a name = "activestandby"></a>Azure VPN Gateway の冗長性について
 すべての Azure VPN Gateway は、アクティブ/スタンバイ構成の 2 つのインスタンスから成ります。 アクティブなインスタンスに対して計画的なメンテナンスまたは計画外の中断が発生すると、スタンバイ インスタンスが自動的に引き継ぎ (フェールオーバーし)、S2S VPN または VNet 間接続が再開されます。 切り替わる際に、短い中断が発生します。 計画的なメンテナンスの場合は、10 ～ 15 秒以内に接続が復元されます。 予期しない問題の場合は、接続の復旧にかかる時間は長くなり、約 1 分から最悪の場合は 1 分 30 秒かかります。 ゲートウェイへの P2S VPN クライアント接続の場合、P2S 接続が切断されるため、ユーザーがクライアント コンピューターから再接続する必要があります。
 
 ![Active-Standby](./media/vpn-gateway-highlyavailable/active-standby.png)
@@ -29,7 +29,7 @@ ms.locfileid: "75779622"
 * アクティブ/アクティブの Azure VPN Gateway
 * 両方の組み合わせ
 
-### <a name = "activeactiveonprem"></a>複数のオンプレミスの VPN デバイス
+### <a name="multiple-on-premises-vpn-devices"></a><a name = "activeactiveonprem"></a>複数のオンプレミスの VPN デバイス
 次の図に示すように、オンプレミス ネットワークの複数の VPN デバイスを使用して、Azure VPN Gateway に接続できます。
 
 ![Multiple On-Premises VPN](./media/vpn-gateway-highlyavailable/multiple-onprem-vpns.png)

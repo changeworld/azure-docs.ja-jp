@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
 ms.openlocfilehash: b76ef431e4c0ad63929378c1f48c6ab06776cb25
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616035"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233203"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT Hub メッセージ ルーティングのクエリ構文
 
@@ -50,7 +50,7 @@ IoT ハブでは、各種プロトコルにおける相互運用性を確保す�
 
 システム プロパティは、メッセージのコンテンツとソースを特定するのに役立ちます。 
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | contentType | string | ユーザーはメッセージのコンテンツの種類を指定します。 メッセージ本文に基づいてクエリを実行するには、この値を application/json に設定する必要があります。 |
 | contentEncoding | string | ユーザーはメッセージのエンコードの種類を指定します。 contentType が application/json に設定されている場合に使用できる値は、UTF-8、UTF-16、UTF-32 です。 |

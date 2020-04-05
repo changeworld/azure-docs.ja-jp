@@ -9,10 +9,10 @@ ms.date: 10/29/2019
 ms.author: jaredro
 ms.custom: include file
 ms.openlocfilehash: 1f6c65d6d8da275d6c52ac2802092dbb5e4e507d
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73182238"
 ---
 ### <a name="what-is-expressroute-direct"></a>ExpressRoute Direct とは何ですか?
@@ -33,7 +33,7 @@ ExpressRoute Direct は同じ [ExpressRoute のエンタープライズ グレ�
 
 ### <a name="what-scenarios-should-customers-consider-with-expressroute-direct"></a>ExpressRoute Direct ではどのようなシナリオを検討する必要がありますか?  
 
-ExpressRoute Direct では、お客様に、Microsoft グローバル バックボーンへの直接 100 または 10 Gbps ポート ペアが提供されます。 最大のメリットをお客様に提供するシナリオは次のとおりです: レンダリングのような、大量のデータ インジェスト、規制市場向けの物理的な分離、バースト シナリオ専用の容量。 
+ExpressRoute Direct では、お客様に、Microsoft グローバル バックボーンへの直接 100 または 10 Gbps ポート ペアが提供されます。 最大のメリットをお客様に提供するシナリオとしては、大量のデータ インジェスト、規制市場向けの物理的な分離、バースト シナリオ専用の容量などがあります。 
 
 ### <a name="what-is-the-billing-model-for-expressroute-direct"></a>ExpressRoute Direct の請求モデルは何ですか? 
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/08/2020
 ms.openlocfilehash: 71fb9f1ba9952be0e6b3910dd1079aa6d3c0482d
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75834496"
 ---
 # <a name="creating-a-new-branch-in-mapping-data-flow"></a>マッピング データ フローでの新しい分岐の作成

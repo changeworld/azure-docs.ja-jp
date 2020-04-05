@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 45dbaea4e2c6f8cdbe3d33df5d3b82b9df519ff2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61463652"
 ---
 # <a name="h264-multiple-bitrate-4x3-for-ios"></a>H264 Multiple Bitrate 4x3 for iOS
@@ -29,7 +29,7 @@ ms.locfileid: "61463652"
  このプリセットにより、GOP 単位でアラインメントされた 8,500 kbps から 200 kbps までの一連の MP4 ファイル 8 個と、ステレオ AAC オーディオが生成されます。 このプリセットのプロファイル、ビットレート、サンプリング レートなどの詳細については、下に定義されている XML または JSON を確認してください。 これらのプリセット内の各要素の意味と各要素に有効な値の説明については、「[Media Encoder Standard スキーマ](media-services-mes-schema.md)」を参照してください。  
   
 > [!NOTE]
->  レイヤー間で `Width` と `Height` の値を変更する際は、縦横比が変わらないようにしてください。 例: 1920x1080、1280x720、1080x576、640x360。 1280x720、720x480、640x360 などの縦横比を混在させて使用しないでください。  
+>  レイヤー間で `Width` と `Height` の値を変更する際は、縦横比が変わらないようにしてください。 次に例を示します。1920x1080、1280x720、1080x576、640x360。 1280x720、720x480、640x360 などの縦横比を混在させて使用しないでください。  
   
  XML  
   

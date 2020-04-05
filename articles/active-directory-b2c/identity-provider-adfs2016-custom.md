@@ -12,10 +12,10 @@ ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: bfe39d9528927f995d14772e07e02b2a0528e5e0
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78188530"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して SAML ID プロバイダーとして ADFS を追加する
@@ -34,7 +34,7 @@ ms.locfileid: "78188530"
 
 証明書を Azure AD B2C テナントに格納する必要があります。
 
-1. [Azure portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 2. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用のテナントが含まれるディレクトリを選択します。
 3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 4. [概要] ページで、 **[Identity Experience Framework]** を選択します。
@@ -132,7 +132,7 @@ ADFS アカウントをクレーム プロバイダーとして定義するに�
 この時点で、ID プロバイダーは設定されていますが、まだどのサインアップまたはサインイン画面でも使用できません。 これを使用できるようにするには、既存のテンプレート ユーザー体験の複製を作成してから、それを ADFS ID プロバイダーも含まれるように変更します。
 
 1. スターター パックから *TrustFrameworkBase.xml* ファイルを開きます。
-2. `Id="SignUpOrSignIn"` を含む **UserJourney** 要素を見つけ、その内容全体をコピーします。
+2. **を含む**UserJourney`Id="SignUpOrSignIn"` 要素を見つけ、その内容全体をコピーします。
 3. *TrustFrameworkExtensions.xml* を開き、**UserJourneys** 要素を見つけます。 要素が存在しない場合は追加します。
 4. コピーした **UserJourney** 要素の内容全体を **UserJourneys** 要素の子として貼り付けます。
 5. ユーザー体験の ID の名前を変更します。 たとえば、「 `SignUpSignInADFS` 」のように入力します。
@@ -141,7 +141,7 @@ ADFS アカウントをクレーム プロバイダーとして定義するに�
 
 **ClaimsProviderSelection** 要素は、サインアップまたはサインイン画面の ID プロバイダーのボタンに類似しています。 ADFS アカウントのために **ClaimsProviderSelection** 要素を追加すると、ユーザーがこのページにアクセスしたときに新しいボタンが表示されます。
 
-1. 作成したユーザー体験内で、`Order="1"` を含む **OrchestrationStep** 要素を見つけます。
+1. 作成したユーザー体験内で、**を含む**OrchestrationStep`Order="1"` 要素を見つけます。
 2. **ClaimsProviderSelections** の下に、次の要素を追加します。 **TargetClaimsExchangeId** の値を適切な値 (`ContosoExchange` など) に設定します。
 
     ```XML
@@ -152,7 +152,7 @@ ADFS アカウントをクレーム プロバイダーとして定義するに�
 
 ボタンが所定の位置に配置されたので、ボタンをアクションにリンクする必要があります。 この場合のアクションは、Azure AD B2C がトークンを受信するために ADFS アカウントと通信することです。
 
-1. ユーザー体験内で、`Order="2"` を含む **OrchestrationStep** を見つけます。
+1. ユーザー体験内で、**を含む**OrchestrationStep`Order="2"` を見つけます。
 2. 次の **ClaimsExchange** 要素を追加します。ID には、**TargetClaimsExchangeId** に使用したのと同じ値を使用するようにしてください。
 
     ```XML

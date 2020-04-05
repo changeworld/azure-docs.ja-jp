@@ -17,10 +17,10 @@ ms.date: 1/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6dab2fd0ee2f25e835b4bd07a3534475d3d93b5e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160929"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signagelive"></a>チュートリアル:Azure Active Directory と Signagelive の統合
@@ -128,7 +128,7 @@ Signagelive での Azure AD シングル サインオンを構成するには、
 
 ### <a name="configure-signagelive-single-sign-on"></a>Signagelive のシングル サインオンの構成
 
-Signagelive 側でシングル サインオンを構成するには、ダウンロードした**証明書 (未加工)** と Azure portal からコピーした URL を [Signagelive サポート チーム](mailto:support@signagelive.com)に送信します。 SAML シングル サインオン接続が両方の側で確実に正しく設定されます。
+Signagelive 側でシングル サインオンを構成するには、ダウンロードした**証明書 (未加工)** と Azure portal からコピーした URL を [Signagelive サポート チーム](mailto:support@signagelive.com)に送信します。 サポート チームにより、SAML シングル サインオン接続が両方の側で確実に正しく設定されます。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -152,7 +152,7 @@ Signagelive 側でシングル サインオンを構成するには、ダウン�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 
-    d. **作成** を選択します。
+    d. **［作成］** を選択します
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

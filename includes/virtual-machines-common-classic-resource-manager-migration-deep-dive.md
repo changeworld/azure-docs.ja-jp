@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tanmaygore
 ms.openlocfilehash: 215057640dd08d9ea524d8f6b3bed8b03a8b5b8c
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77068438"
 ---
 ## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>クラシック デプロイ モデルから Azure Resource Manager への IaaS リソースの移行
@@ -136,7 +136,7 @@ ms.locfileid: "77068438"
 ## <a name="translation-of-the-classic-deployment-model-to-resource-manager-resources"></a>クラシック デプロイ モデル リソースから Resource Manager リソースへの変換
 次の表では、リソースはクラシック デプロイ モデルと Resource Manager で呼称が異なる場合があります。 その他の機能とリソースは現在サポートされていません。
 
-| クラシック表示 | Resource Manager の表示 | Notes |
+| クラシック表示 | Resource Manager の表示 | メモ |
 | --- | --- | --- |
 | クラウド サービス名 |DNS name |移行中、 `<cloudservicename>-migrated`の命名パターンで、すべてのクラウド サービスに新しいリソース グループが作成されます。 このリソース グループには、すべてのリソースが含まれています。 クラウド サービス名は、パブリック IP アドレスが関連付けられた DNS 名になります。 |
 | 仮想マシン |仮想マシン |VM 固有のプロパティはそのまま移行されます。 コンピューター名など、一部の osProfile 情報はクラシック デプロイ モデルに格納されておらず、移行後も空のままです。 |

@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/11/2019
 ms.openlocfilehash: 7096b429145a54b5a09fe38eb8099c4ff24ac452
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460962"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224743"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Cosmos DB (SQL API) のデータをコピーおよび変換する
 
@@ -58,7 +58,7 @@ Data Factory は、Azure Cosmos DB に書き込むときに最適なパフォー
 
 Azure Cosmos DB (SQL API) のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | Required |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | **type** プロパティは **CosmosDb** に設定する必要があります。 | はい |
 | connectionString |Azure Cosmos DB データベースに接続するために必要な情報を指定します。<br />**注**:後の例で示すように、接続文字列でデータベース情報を指定する必要があります。 <br/> アカウント キーを Azure Key Vault に格納して、接続文字列から `accountKey` 構成をプルすることもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 |はい |
@@ -114,7 +114,7 @@ Azure Cosmos DB (SQL API) のリンクされたサービスでは、次のプロ
 
 Azure Cosmos DB (SQL API) データセットでは、次のプロパティがサポートされます。 
 
-| プロパティ | 説明 | Required |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | データセットの **type** プロパティは、**CosmosDbSqlApiCollection** に設定する必要があります. |はい |
 | collectionName |Azure Cosmos DB ドキュメント コレクションの名前です。 |はい |
@@ -150,7 +150,7 @@ Azure Cosmos DB (SQL API) からデータをコピーするには、コピー �
 
 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | Required |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの **type** プロパティを **CosmosDbSqlApiSource** に設定する必要があります。 |はい |
 | query |データを読み取る Azure Cosmos DB クエリを指定します。<br/><br/>例:<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |いいえ <br/><br/>指定しないと、SQL ステートメント `select <columns defined in structure> from mycollection` が実行されます |
@@ -202,7 +202,7 @@ Azure Cosmos DB (SQL API) にデータをコピーするには、コピー ア�
 
 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | Required |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのシンクの **type** プロパティは **CosmosDbSqlApiSink** に設定する必要があります。 |はい |
 | writeBehavior |Azure Cosmos DB にデータを書き込む方法を示します。 使用可能な値は、**Insert**、**Upsert** です。<br/><br/>**upsert** の動作は、同じ ID を持つドキュメントが既に存在する場合に、そのドキュメントを置き換えることです。それ以外の場合はドキュメントを挿入します。<br /><br />**注**:元のドキュメントまたは列のマッピングで ID が指定されていない場合、Data Factory によってドキュメントの ID が自動的に生成されます。 つまり、**upsert** が期待どおりに動作するには、ドキュメントに ID があることを確認する必要があります。 |いいえ<br />(既定値は **insert** です) |

@@ -13,11 +13,11 @@ ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e1735c2d2ed107f7ec65d68a6826267ee83a93f8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918714"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236367"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Azure Data Factory を使用して ODBC データ ストアからデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -44,10 +44,10 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 > [!NOTE]
 > 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、 [ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) に関するセクションをご覧ください。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 さまざまなツールや API を使用して、ODBC データ ストアからデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
+パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
 また、次のツールを使用してパイプラインを作成することもできます。**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
@@ -68,7 +68,7 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 | --- | --- | --- |
 | type |type プロパティは、次のように設定する必要があります:**OnPremisesOdbc** |はい |
 | connectionString |接続文字列の非アクセス資格情報部分と省略可能な暗号化された資格情報。 次のセクションの例を参照してください。 <br/><br/>`"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` のようなパターンで接続文字列を指定するか、ゲートウェイ マシンに設定したシステム DSN (データ ソース名) を `"DSN=<name of the DSN>;"` で使用することができます (その場合も、リンクされたサービスの資格情報部分をそれに応じて指定する必要があります)。 |はい |
-| credential |ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。 例: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |いいえ |
+| 資格情報 (credential) |ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。 例: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |いいえ |
 | authenticationType |ODBC データ ストアへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous および Basic。 |はい |
 | userName |基本認証を使用している場合は、ユーザー名を指定します。 |いいえ |
 | password |userName に指定したユーザー アカウントのパスワードを指定します。 |いいえ |

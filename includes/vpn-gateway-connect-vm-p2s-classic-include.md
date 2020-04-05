@@ -9,10 +9,10 @@ ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 6d0737a7300b2a6025f776c1ed65a05cacf2141a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67181041"
 ---
 VNet にデプロイされた VM に接続するためのリモート デスクトップ接続を作成します。 VM に接続できることを確認する最善の方法は、その VM のコンピューター名ではなく、プライベート IP アドレスで接続してみることです。 この方法であれば、名前の解決が適切に構成されているかではなく、VM に接続できるかどうかをテストすることができます。 

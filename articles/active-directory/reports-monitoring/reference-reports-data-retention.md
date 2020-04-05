@@ -3,7 +3,7 @@ title: Azure AD にレポート データが保存される期間 | Microsoft Do
 description: Azure でさまざまな種類のレポート データが保存される期間について説明します。
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 183e53b0-0647-42e7-8abe-3e9ff424de12
@@ -13,18 +13,19 @@ ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
-ms.author: chadam
+ms.date: 03/24/2020
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c52f8873527d92e621ef032f5bc3e82d3364a691
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 54636600c208f8f5df9fa2e25460c63dd9f46e85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989578"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239541"
 ---
 # <a name="how-long-does-azure-ad-store-reporting-data"></a>Azure AD にレポート データが保存される期間
+
 
 この記事では、Azure Active Directory のさまざまなアクティビティ レポートのデータ保持ポリシーについて説明します。 
 
@@ -33,7 +34,7 @@ ms.locfileid: "68989578"
 | Azure AD のエディション | コレクションの開始 |
 | :--              | :--   |
 | Azure AD Premium P1 <br /> Azure AD Premium P2 | サブスクリプションにサインアップしたとき |
-| Azure AD Free <br /> Azure AD Basic | [Azure Active Directory ブレード](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)を初めて開いたとき、または [Reporting API](https://aka.ms/aadreports) を初めて使用したとき  |
+| Azure AD Free| [Azure Active Directory ブレード](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)を初めて開いたとき、または [Reporting API](https://aka.ms/aadreports) を初めて使用したとき  |
 
 ---
 
@@ -66,19 +67,19 @@ ms.locfileid: "68989578"
 
 **アクティビティ レポート**    
 
-| レポート                 | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
-| :--                    | :--           | :--            | :--                 | :--                 |
-| 監査ログ             | 7 日        |  7 日        | 30 日             | 30 日             |
-| サインイン               | 該当なし           |  該当なし           | 30 日             | 30 日             |
-| Azure MFA の使用状況        | 30 日       |  30 日       | 30 日             | 30 日             |
+| レポート                 | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| :--                    | :--           | :--                 | :--                 |
+| 監査ログ             | 7 日        | 30 日             | 30 日             |
+| サインイン               | 7 日        | 30 日             | 30 日             |
+| Azure MFA の使用状況        | 30 日       | 30 日             | 30 日             |
 
 監査およびサインイン アクティビティ データは、Azure Monitor を使用して Azure ストレージ アカウントにルーティングすることで、上記で説明した既定の保有期間よりも長く保持することができます。 詳細については、「[Azure AD のログを Azure ストレージ アカウントにアーカイブする](quickstart-azure-monitor-route-logs-to-storage-account.md)」をご覧ください。
 
 **セキュリティ シグナル**
 
-| レポート         | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
-| :--            | :--           | :--            | :--                 | :--                 |
-| リスクのあるユーザー  | 7 日        | 7 日         | 30 日             | 90 日間             |
-| リスクの高いサインイン | 7 日        | 7 日         |  30 日            | 90 日間             |
+| レポート         | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| :--            | :--           | :--                 | :--                 |
+| リスクのあるユーザー  | 7 日        | 30 日             | 90 日間             |
+| リスクの高いサインイン | 7 日        | 30 日             | 90 日間             |
 
 ---

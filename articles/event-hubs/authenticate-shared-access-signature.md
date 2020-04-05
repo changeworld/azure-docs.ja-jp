@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.openlocfilehash: d17026dba26b3c1cb846d60967180c29563c425d
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74545584"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Shared Access Signature (SAS) を使用して Event Hubs リソースへのアクセスを認証する
@@ -222,8 +222,8 @@ private static string createToken(string resourceUri, string keyName, string key
 ## <a name="authenticating-event-hubs-consumers-with-sas"></a>SAS を使用する Event Hubs コンシューマーの認証 
 Event Hubs プロデューサーによって生成されたデータから消費するバックエンド アプリケーションを認証する場合、Event Hubs トークン認証では、クライアントに**管理**権限、または Event Hubs 名前空間あるいはイベント ハブ インスタンスまたはトピックに割り当てられる**リッスン**特権が求められます。 データは、コンシューマー グループを使用して Event Hubs から消費されます。 SAS ポリシーで詳細なスコープが提供されますが、このスコープは、コンシューマー レベルではなく、エンティティ レベルでのみ定義されます。 これは、名前空間レベルあるいはイベント ハブ インスタンス レベルまたはトピック レベルで定義された特権が、そのエンティティのコンシューマー グループに適用されることを意味します。
 
-## <a name="next-steps"></a>次の手順
-次の記事を参照してください。
+## <a name="next-steps"></a>次のステップ
+次の記事をご覧ください。
 
 - [SAS を使用して承認する](authenticate-shared-access-signature.md)
 - [ロールベースのアクセス制御 (RBAC) を使用して承認する](authenticate-shared-access-signature.md)

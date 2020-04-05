@@ -7,13 +7,13 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/12/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 320f293073ce0a97cf4b73b420f38d91c5206013
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: ccef4443661f9227163b2bbe9cd8a6475f856caa
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688358"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80044889"
 ---
 # <a name="create-an-app-service-app-and-deploy-files-with-ftp-using-azure-cli"></a>Azure CLI を使用して App Service アプリを作成し、FTP を使用してファイルをデプロイする
 
@@ -35,14 +35,14 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | App Service プランを作成します。 |
 | [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | App Service アプリを作成します。 |
 | [`az webapp deployment list-publishing-profiles`](/cli/azure/webapp/deployment?view=azure-cli-latest#az-webapp-deployment-list-publishing-profiles) | 使用可能なアプリ デプロイ プロファイルの詳細を取得します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

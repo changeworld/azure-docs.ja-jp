@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4cb832f8fe11ac2581e97d9cdcc777eaff702ee9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231469"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235383"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Azure での Durable Functions における診断
 
@@ -38,7 +38,7 @@ Azure Functions の診断と監視には、[Application Insights](../../azure-mo
   * **Awaited**: オーケストレーターが何らかの作業をスケジュールし、その完了を待っています。
   * **Listening**: オーケストレーターが外部のイベント通知をリッスンしています。
   * **Completed**: 関数が正常に完了しました。
-  * **Failed**: 関数がエラーで失敗しました。
+  * **[失敗]** : 関数がエラーで失敗しました。
 * **reason**: 追跡イベントに関連付けられている追加のデータ。 たとえば外部イベントの通知をインスタンスが待機している場合、待機しているイベントの名前がこのフィールドによって表されます。 関数が失敗した場合、このフィールドにはエラーの詳細が格納されます。
 * **isReplay**: 追跡イベントが再生された実行に対するものであるかどうかを示すブール値。
 * **extensionVersion**: Durable Task 拡張機能のバージョン。 このバージョン情報は、拡張機能にバグの可能性があることを報告するときに特に重要です。 長時間実行されるインスタンスでは、実行中に更新が生じた場合、複数のバージョンが報告されます。
@@ -150,7 +150,7 @@ traces
 
 ![Application Insights クエリ](./media/durable-functions-diagnostics/app-insights-single-summary-query.png)
 
-## <a name="logging"></a>ログの記録
+## <a name="logging"></a>ログ記録
 
 オーケストレーター関数から直接ログを書き込む際には、常にオーケストレーターの再生動作を考慮することが大切です。 たとえば次のオーケストレーター関数について考えてみます。
 
@@ -309,7 +309,7 @@ Done!
 
 ## <a name="custom-status"></a>カスタム状態
 
-オーケストレーションのカスタム状態を使用すると、オーケストレーター関数のカスタム状態値を設定できます。 この状態は、HTTP status query API または `IDurableOrchestrationClient.GetStatusAsync` API によって提供されます。 オーケストレーションのカスタム状態により、オーケストレーター関数のより充実した監視が可能になります。 たとえば、オーケストレーター関数コードに `IDurableOrchestrationContext.SetCustomStatus` 呼び出しを含めて、実行時間の長い操作の進行状況を更新できます。 クライアント (Web ページや他の外部システムなど) は、HTTP status query API に定期的に照会して豊富な進行状況情報を取得できます。 `IDurableOrchestrationContext.SetCustomStatus` を使用したサンプルを次に示します。
+カスタムオーケストレーションの状態を使用すると、オーケストレーター関数のカスタム状態値を設定できます。 この状態は、HTTP status query API または `IDurableOrchestrationClient.GetStatusAsync` API によって提供されます。 オーケストレーションのカスタム状態により、オーケストレーター関数のより充実した監視が可能になります。 たとえば、オーケストレーター関数コードに `IDurableOrchestrationContext.SetCustomStatus` 呼び出しを含めて、実行時間の長い操作の進行状況を更新できます。 クライアント (Web ページや他の外部システムなど) は、HTTP status query API に定期的に照会して豊富な進行状況情報を取得できます。 `IDurableOrchestrationContext.SetCustomStatus` を使用したサンプルを次に示します。
 
 ### <a name="precompiled-c"></a>プリコンパイル済み C#
 
@@ -328,7 +328,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrat
 ```
 
 > [!NOTE]
-> 前記の C# の例は Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`IDurableOrchestrationContext`の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
+> 前記の C# の例は Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`IDurableOrchestrationContext` の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
 ### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
 
@@ -381,7 +381,7 @@ Azure Functions ではデバッグ関数コードが直接サポートされて�
 > [!TIP]
 > オーケストレーター関数にブレークポイントを設定するとき、再生以外の実行でのみ停止させる必要がある場合は、`IsReplaying` が `false` の場合にのみ停止させる条件付きブレークポイントを設定できます。
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>ストレージ
 
 既定では、Durable Functions の状態が Azure Storage に格納されます。 この動作は、[Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) などのツールを使用してご自分のオーケストレーションの状態を調査することができることを意味します。
 
@@ -392,7 +392,7 @@ Azure Functions ではデバッグ関数コードが直接サポートされて�
 > [!WARNING]
 > テーブル ストレージ内の実行履歴を確認できるのは便利ですが、このテーブルに依存することは避けてください。 Durable Functions 拡張機能の刷新に伴って変更される可能性があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Functions での監視の詳細を学習する](../functions-monitoring.md)

@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 07/25/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 1fc63dc53d61a8b2e26f97cc09a359b3f2c7665c
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: d1402bcc0c46003429e1809e8d09e9662218cd82
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75901649"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334799"
 ---
-| リソース | 既定/上限 |
+| リソース | 制限 |
 | --- | --- |
 | サブスクリプションあたりの ExpressRoute 回線数 |10 |
 | サブスクリプションあたりのリージョンごとの ExpressRoute 回線数 (Azure Resource Manager) |10 |
@@ -28,7 +28,7 @@ ms.locfileid: "75901649"
 | さまざまなピアリング場所で同じ仮想ネットワークにリンクされる ExpressRoute の最大数 |4 |
 | ExpressRoute 回線あたりで許可される仮想ネットワークのリンク数 |「[ExpressRoute 回線あたりの仮想ネットワーク数](#vnetpercircuit)」の表を参照してください。  |
 
-#### <a name="vnetpercircuit"></a>ExpressRoute 回線あたりの仮想ネットワーク数
+#### <a name="number-of-virtual-networks-per-expressroute-circuit"></a><a name="vnetpercircuit"></a>ExpressRoute 回線あたりの仮想ネットワーク数
 | **回線のサイズ** | **Standard での仮想ネットワークのリンク数** | **Premium アドオンでの仮想ネットワークのリンク数** |
 | --- | --- | --- |
 | 50 Mbps |10 |20 |

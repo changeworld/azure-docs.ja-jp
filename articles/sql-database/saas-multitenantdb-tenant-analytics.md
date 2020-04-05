@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 ms.date: 09/19/2018
 ms.openlocfilehash: 067afd09f942b8062825553a3cf90f715e8d3938
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73822148"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>抽出されたデータを使用したクロステナント分析 - マルチテナント アプリ
@@ -118,7 +118,7 @@ SSMS オブジェクト エクスプローラーで分析ストア ノードを�
 
 先に進む前に、ジョブ アカウントと jobaccount データベースがデプロイされていることを確認します。 次の一連の手順では、エラスティック ジョブを使用してシャードされたテナント データベースからデータを抽出し、データを分析ストアに保存します。 次に、2 番目のジョブでデータを細分化し、スター スキーマの各テーブルに格納します。 この 2 つのジョブは、それぞれ **TenantGroup**、**AnalyticsGroup** という名前の 2 つの異なるターゲット グループに対して実行されます。 抽出ジョブは、すべてのテナント データベースが含まれた TenantGroup に対して実行されます。 細分化ジョブは、分析ストアだけが含まれた AnalyticsGroup に対して実行されます。 次の手順に従って、ターゲット グループを作成します。
 
-1. SSMS で、catalog-mt-\<User\> の **jobaccount** データベースに接続します。
+1. SSMS で、catalog-mt-**User** の \<jobaccount\> データベースに接続します。
 2. SSMS で *…\Learning Modules\Operational Analytics\Tenant Analytics\TargetGroups.sql* を開きます。 
 3. スクリプトの先頭の @User 変数を変更し、`<User>` を Wingtip Tickets SaaS マルチテナント データベース アプリケーションのデプロイ時に使用したユーザー値に置き換えます。
 4. **F5** キーを押してスクリプトを実行し、2 つのターゲット グループを作成します。
@@ -132,7 +132,7 @@ SSMS オブジェクト エクスプローラーで分析ストア ノードを�
 
 各ジョブでは、データを抽出して分析ストアに送信します。 別のジョブで、抽出されたデータを分析スター スキーマに細分化します。
 
-1. SSMS で、catalog-mt-\<User\> サーバーの **jobaccount** データベースに接続します。
+1. SSMS で、catalog-mt-**User** サーバーの \<jobaccount\> データベースに接続します。
 2. SSMS で *...\Learning Modules\Operational Analytics\Tenant Analytics\ExtractTickets.sql* を開きます。
 3. スクリプトの先頭の @User を変更し、`<User>` を Wingtip Tickets SaaS マルチテナント データベース アプリケーションのデプロイ時に使用したユーザー名に置き換えます。 
 4. **F5** キーを押してスクリプトを実行します。このスクリプトにより、各テナント データベースからチケット データと顧客データを抽出するジョブが作成され、実行されます。 このジョブはデータを分析ストアに保存します。
@@ -152,7 +152,7 @@ SSMS オブジェクト エクスプローラーで分析ストア ノードを�
 
 このセクションでは、抽出された生データをスター スキーマ テーブルのデータとマージするジョブを定義して実行します。 マージ ジョブが完了すると、生データが削除され、テーブルは次回のテナント データ抽出ジョブで設定できる状態になります。
 
-1. SSMS で、catalog-mt-\<User\> の **jobaccount** データベースに接続します。
+1. SSMS で、catalog-mt-**User** の \<jobaccount\> データベースに接続します。
 2. SSMS で *…\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.sql* を開きます。
 3. **F5** キーを押してスクリプトを実行します。このスクリプトにより、分析ストアで sp_ShredRawExtractedData ストアド プロシージャを呼び出すジョブが定義されます。
 4. ジョブを正常に実行するための十分な時間を確保します。
@@ -160,7 +160,7 @@ SSMS オブジェクト エクスプローラーで分析ストア ノードを�
 
 ![shreddingJob](media/saas-multitenantdb-tenant-analytics/shreddingJob.PNG)
 
-## <a name="data-exploration"></a>データ探索
+## <a name="data-exploration"></a>データの探索
 
 ### <a name="visualize-tenant-data"></a>テナント データを視覚化する
 
@@ -225,7 +225,7 @@ AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[V
 
 Wingtip Tickets SaaS マルチテナント データベース アプリケーションのテナント データの傾向を確認しました。 アプリケーションが SaaS アプリケーション ベンダーのビジネス上の意思決定に役立つ情報を提供する他の方法を検討することができます。 ベンダーは、テナントのニーズに適切に応えることができます。 このチュートリアルでは、テナント データで分析を実行するために必要なツールを活用して、企業がデータ ドリブンの意思決定を行うことができるようにしました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

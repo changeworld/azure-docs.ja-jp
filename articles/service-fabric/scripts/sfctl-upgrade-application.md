@@ -15,10 +15,10 @@ ms.date: 12/06/2017
 ms.author: atsenthi
 ms.custom: ''
 ms.openlocfilehash: 34f2ae6f3a2ff3adc35794d6e7dfd682640c646b
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75614725"
 ---
 # <a name="update-an-application-using-the-service-fabric-cli"></a>Service Fabric CLI を使用してアプリケーションを更新する

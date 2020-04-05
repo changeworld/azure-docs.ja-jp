@@ -17,10 +17,10 @@ ms.date: 10/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4238033f94fe8bfdc677c9eb623a2eab3cdf371c
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72532922"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-surveymonkey-enterprise"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SurveyMonkey Enterprise の統合
@@ -29,7 +29,7 @@ ms.locfileid: "72532922"
 
 * SurveyMonkey Enterprise にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して SurveyMonkey Enterprise に自動的にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

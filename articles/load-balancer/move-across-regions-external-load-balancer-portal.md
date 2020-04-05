@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.author: allensu
 ms.openlocfilehash: 5cd5ce2635ce05c4d5962f12ddc3945342897ecd
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75638529"
 ---
 # <a name="move-an-external-load-balancer-to-another-region-by-using-the-azure-portal"></a>Azure portal を使用して外部ロード バランサーを別のリージョンに移動する

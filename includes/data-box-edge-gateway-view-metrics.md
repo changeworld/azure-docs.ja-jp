@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: e02c0b86cd542b3ea12914e35a6577cf4e9b43d8
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67181626"
 ---
 メトリックも表示することで、デバイスのパフォーマンスを監視したり、場合によっては、デバイスの問題のトラブルシューティングを行ったりできます。

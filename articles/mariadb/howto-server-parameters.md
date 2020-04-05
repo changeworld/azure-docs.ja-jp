@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/9/2019
-ms.openlocfilehash: ba091d05aa243fab08138c96827d2f657d9755de
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 3/18/2020
+ms.openlocfilehash: 243530b4badb9b19d288a91f247eefbcf622fb87
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976300"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536413"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MariaDB のサーバー パラメーターを構成する方法
 
@@ -41,12 +41,12 @@ InnoDB バッファー プールと最大接続数は構成できず、[価格�
 |---|---|---|
 |Basic| 1| 1024|
 |Basic| 2| 2560|
-|汎用| 2| 3584|
-|汎用| 4| 7680|
-|汎用| 8| 15360|
-|汎用| 16| 31232|
-|汎用| 32| 62976|
-|汎用| 64| 125952|
+|General Purpose| 2| 3584|
+|General Purpose| 4| 7680|
+|General Purpose| 8| 15360|
+|General Purpose| 16| 31232|
+|General Purpose| 32| 62976|
+|General Purpose| 64| 125952|
 |メモリ最適化| 2| 7168|
 |メモリ最適化| 4| 15360|
 |メモリ最適化| 8| 30720|

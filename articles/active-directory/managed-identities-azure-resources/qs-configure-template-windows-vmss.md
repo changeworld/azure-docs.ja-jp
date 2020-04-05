@@ -16,10 +16,10 @@ ms.date: 02/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2d5e324ea20b2ea82fac5b5132893d3558bd3b41
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77425563"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-virtual-machine-scale-using-a-template"></a>テンプレートを使用して Azure 仮想マシン スケール セットで Azure リソースのマネージド ID を構成する
@@ -63,7 +63,7 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
 ### <a name="enable-system-assigned-managed-identity-during-creation-the-creation-of-a-virtual-machines-scale-set-or-an-existing-virtual-machine-scale-set"></a>仮想マシン スケール セットの作成時に、または既存の仮想マシン スケール セットでシステム割り当てマネージド ID を有効にする
 
 1. Azure にローカルでサインインする場合も、Azure Portal を使用してサインインする場合も、仮想マシン スケール セットが含まれる Azure サブスクリプションに関連付けられているアカウントを使用します。
-2. システム割り当てマネージド ID を有効にするには、テンプレートをエディターに読み込み、resources セクション内で対象の `Microsoft.Compute/virtualMachinesScaleSets` リソースを探し、`"type": "Microsoft.Compute/virtualMachinesScaleSets"` プロパティと同じレベルに `identity` プロパティを追加します。 次の構文を使用します。
+2. システム割り当てマネージド ID を有効にするには、テンプレートをエディターに読み込み、resources セクション内で対象の `Microsoft.Compute/virtualMachinesScaleSets` リソースを探し、`identity` プロパティと同じレベルに `"type": "Microsoft.Compute/virtualMachinesScaleSets"` プロパティを追加します。 次の構文を使用します。
 
    ```JSON
    "identity": {
@@ -121,7 +121,7 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
 
 1. Azure にローカルでサインインする場合も、Azure Portal を使用してサインインする場合も、仮想マシン スケール セットが含まれる Azure サブスクリプションに関連付けられているアカウントを使用します。
 
-2. テンプレートを[エディター](#azure-resource-manager-templates)に読み込み、`resources` セクション内で関心のある `Microsoft.Compute/virtualMachineScaleSets` リソースを探します。 システム割り当てマネージド ID のみが割り当てられた VM がある場合は、ID の種類を `None` に変更することで無効にすることができます。
+2. テンプレートを[エディター](#azure-resource-manager-templates)に読み込み、`Microsoft.Compute/virtualMachineScaleSets` セクション内で関心のある `resources` リソースを探します。 システム割り当てマネージド ID のみが割り当てられた VM がある場合は、ID の種類を `None` に変更することで無効にすることができます。
 
    **Microsoft.Compute/virtualMachineScaleSets API バージョン 2018-06-01**
 
@@ -129,7 +129,7 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
 
    **Microsoft.Compute/virtualMachineScaleSets API バージョン 2018-06-01**
 
-   お使いの apiVersion が `2017-12-01` であり、仮想マシン スケール セットにシステム割り当てマネージド ID とユーザー割り当てマネージド ID の両方が割り当てられている場合は、ID の種類から `SystemAssigned` を削除し、ユーザー割り当てマネージド ID の `identityIds` 配列と共に `UserAssigned` を保持します。
+   お使いの apiVersion が `2017-12-01` であり、仮想マシン スケール セットにシステム割り当てマネージド ID とユーザー割り当てマネージド ID の両方が割り当てられている場合は、ID の種類から `SystemAssigned` を削除し、ユーザー割り当てマネージド ID の `UserAssigned` 配列と共に `identityIds` を保持します。
 
 
 
@@ -291,7 +291,7 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
 
 1. Azure にローカルでサインインする場合も、Azure Portal を使用してサインインする場合も、仮想マシン スケール セットが含まれる Azure サブスクリプションに関連付けられているアカウントを使用します。
 
-2. テンプレートを[エディター](#azure-resource-manager-templates)に読み込み、`resources` セクション内で関心のある `Microsoft.Compute/virtualMachineScaleSets` リソースを探します。 ユーザー割り当てマネージド ID しか存在しない仮想マシン スケール セットがある場合は、ID の種類を `None` に変更することによってそれを無効にすることができます。
+2. テンプレートを[エディター](#azure-resource-manager-templates)に読み込み、`Microsoft.Compute/virtualMachineScaleSets` セクション内で関心のある `resources` リソースを探します。 ユーザー割り当てマネージド ID しか存在しない仮想マシン スケール セットがある場合は、ID の種類を `None` に変更することによってそれを無効にすることができます。
 
    次の例は、システム割り当てマネージド ID が割り当てられていない VM からユーザー割り当てマネージド ID をすべて削除する方法を示しています。
 
@@ -310,13 +310,13 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
 
    仮想マシン スケール セットから 1 つのユーザー割り当てマネージド ID を削除するには、`userAssignedIdentities` ディクショナリからそれを削除します。
 
-   システム割り当て ID がある場合は、`identity` 値の `type` 値でそれを保持します。
+   システム割り当て ID がある場合は、`type` 値の `identity` 値でそれを保持します。
 
    **Microsoft.Compute/virtualMachineScaleSets API バージョン 2017-12-01**
 
    仮想マシン スケール セットから 1 つのユーザー割り当てマネージド ID を削除するには、`identityIds` 配列からそれを削除します。
 
-   システム割り当てマネージド ID がある場合は、`identity` 値の `type` 値でそれを保持します。
+   システム割り当てマネージド ID がある場合は、`type` 値の `identity` 値でそれを保持します。
 
 ## <a name="next-steps"></a>次のステップ
 

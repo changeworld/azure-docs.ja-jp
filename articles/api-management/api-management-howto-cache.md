@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
 ms.openlocfilehash: bf8d8a2c11962467300ae8d65fe5bbbe9a65cf92
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75708357"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>キャッシュを追加して Azure API Management のパフォーマンスを向上させる
@@ -46,7 +46,7 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 + [Azure API Management インスタンスを作成する](get-started-create-service-instance.md)
 + [API をインポートおよび発行する](import-and-publish.md)
 
-## <a name="caching-policies"> </a>キャッシュ ポリシーを追加する
+## <a name="add-the-caching-policies"></a><a name="caching-policies"> </a>キャッシュ ポリシーを追加する
 
 この例に示すキャッシュ ポリシーでは、**GetSpeakers** 操作に対する最初の要求は、バックエンド サービスからの応答を返します。 この応答はキャッシュされ、指定されたヘッダーとクエリ文字列パラメーターによってキーが設定されます。 パラメーターが一致する後続の操作の呼び出しに対しては、キャッシュの有効期間が超過するまで、キャッシュに格納された応答が返されます。
 
@@ -77,7 +77,7 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 > [!TIP]
 > 外部キャッシュを使用している場合は、「[Azure API Management で外部の Azure Cache for Redis を使用する](api-management-howto-cache-external.md)」の説明に従って、キャッシュ ポリシーの `caching-type` 属性を指定する必要がある場合があります。 詳しくは、「[API Management のキャッシュ ポリシー](api-management-caching-policies.md)」をご覧ください。
 
-## <a name="test-operation"> </a>操作を呼び出してキャッシュをテストする
+## <a name="call-an-operation-and-test-the-caching"></a><a name="test-operation"> </a>操作を呼び出してキャッシュをテストする
 動作中のキャッシュを確認するには、開発者ポータルから操作を呼び出します。
 
 1. Azure Portal で、APIM インスタンスに移動します。
@@ -87,7 +87,7 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 5. 右上のメニューの **[テスト]** タブをクリックします。
 6. **[送信]** をクリックします。
 
-## <a name="next-steps"> </a>次のステップ
+## <a name="next-steps"></a><a name="next-steps"> </a>次のステップ
 * キャッシュ ポリシーの詳細については、[Azure API Management ポリシー リファレンス][Caching policies]の「[Caching policies (キャッシュ ポリシー)][API Management policy reference]」を参照してください。
 * ポリシー式を使ってキーごとにアイテムをキャッシュする方法については、「 [Azure API Management のカスタム キャッシュ](api-management-sample-cache-by-key.md)」を参照してください。
 * 外部の Azure Cache for Redis の使用方法について詳しくは、「[Azure API Management で外部の Azure Cache for Redis を使用する](api-management-howto-cache-external.md)」をご覧ください。

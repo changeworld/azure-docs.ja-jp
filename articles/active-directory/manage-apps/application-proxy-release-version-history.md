@@ -17,10 +17,10 @@ ms.subservice: app-mgmt
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b9ecd193282ed9b7333df44689530b4d057ad7f8
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68693895"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD アプリケーション プロキシは:バージョンのリリース履歴
@@ -30,7 +30,7 @@ ms.locfileid: "68693895"
 
 以下は、関連リソースの一覧です。
 
-Resource |  詳細
+リソース |  詳細
 --------- | --------- |
 アプリケーション プロキシを有効にする方法 | この[チュートリアル](application-proxy-add-on-premises-application.md)では、アプリケーション プロキシを有効にし、コネクタをインストールして登録するための前提条件について説明します。
 Azure AD アプリケーション プロキシ コネクタを理解する | [コネクタ管理](application-proxy-connectors.md)とコネクタの[自動アップグレード](application-proxy-connectors.md#automatic-updates)について詳しく説明します。
@@ -90,6 +90,6 @@ Azure AD アプリケーション プロキシ コネクタのダウンロード
 
 使用するアプリケーション プロキシ コネクタのバージョンが 1.5.36.0 より前である場合は、最新バージョンに更新して、完全にサポートされている最新機能を使用できるようにしておいてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure AD アプリケーション プロキシからのオンプレミス アプリケーションへのリモート アクセス](application-proxy.md)の詳細を確認します。
 - アプリケーション プロキシの使用を開始するには、[アプリケーション プロキシを使用したリモート アクセスを行うためのオンプレミス アプリケーションの追加に関するチュートリアル](application-proxy-add-on-premises-application.md)を参照してください。

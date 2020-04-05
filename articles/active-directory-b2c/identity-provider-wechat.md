@@ -12,10 +12,10 @@ ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c53210939358255b20d0e976df9c4bff88580a80
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78184437"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-wechat-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して WeChat アカウントでのサインアップおよびサインインを設定する
@@ -31,7 +31,7 @@ Azure Active Directory B2C (Azure AD B2C) で ID プロバイダーとして WeC
 1. WeChat 資格情報を使用して、[https://open.weixin.qq.com/](https://open.weixin.qq.com/) にサインインします。
 1. **[管理中心 (管理センター)]** を選択します。
 1. 新しいアプリケーションを登録するための手順に従います。
-1. **[授权回调域 (コールバック URL)]** に、「`https://your-tenant_name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 たとえば、テナント名が contoso の場合、URL を`https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`に設定します。
+1. `https://your-tenant_name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`[授权回调域 (コールバック URL)] **に、「** 」と入力します。 たとえば、テナント名が contoso の場合、URL を`https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`に設定します。
 1. **アプリ ID** と**アプリ キー**をコピーします。 ID プロバイダーをテナントに追加するには、これらが必要です。
 
 ## <a name="configure-wechat-as-an-identity-provider-in-your-tenant"></a>テナントで ID プロバイダーとして WeChat を構成する

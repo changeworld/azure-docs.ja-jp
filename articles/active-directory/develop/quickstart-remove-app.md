@@ -13,11 +13,11 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.openlocfilehash: 3cc9e4458f14a63bad7f484bc16683248895ede9
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704087"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215900"
 ---
 # <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform"></a>クイック スタート:Microsoft ID プラットフォームに登録されたアプリケーションを削除する
 

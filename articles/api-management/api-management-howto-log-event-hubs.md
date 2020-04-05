@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
 ms.openlocfilehash: 2f07f6a27e78ee4df8c64a09918758d02c28c6d4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76898791"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Azure API Management で Azure Event Hubs にイベントを記録する方法

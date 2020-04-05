@@ -9,10 +9,10 @@ ms.date: 01/15/2020
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 8ca4b1ce6e0470476e9f16ed338b8707d3faf90f
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79128582"
 ---
 ## <a name="resources-for-development-with-net"></a>.NET で開発するためのリソース

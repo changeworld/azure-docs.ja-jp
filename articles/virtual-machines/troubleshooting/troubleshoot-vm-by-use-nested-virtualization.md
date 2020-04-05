@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: genli
 ms.openlocfilehash: e1acfc3216ccfaeac035f1ff31e82c7b67c17daf
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76119620"
 ---
 # <a name="troubleshoot-a-faulty-azure-vm-by-using-nested-virtualization-in-azure"></a>Azure で入れ子になった仮想化を使用して問題のある Azure VM のトラブルシューティングを行う

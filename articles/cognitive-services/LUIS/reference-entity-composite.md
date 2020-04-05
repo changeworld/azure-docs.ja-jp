@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
 ms.openlocfilehash: a5a1ad467074ee0aa55d14d50ae153ac68304e6f
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71695166"
 ---
 # <a name="composite-entity"></a>複合エンティティ 
@@ -41,7 +41,7 @@ number の `2` と ToLocation `cairo` の間には、どのエンティティに
 
 ![複合エンティティ](./media/luis-concept-data-extraction/composite-entity.png)
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
 複合エンティティは、`compositeEntities` 配列で返され、その複合内のすべてのエンティティも、`entities` 配列で返されます。
 
@@ -89,7 +89,7 @@ number の `2` と ToLocation `cairo` の間には、どのエンティティに
   ]
 ```    
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 予測エンドポイントの応答](#tab/V3)
 
 これは、クエリ文字列で `verbose=false` が設定されている場合の JSON です。
 
@@ -177,6 +177,6 @@ number の `2` と ToLocation `cairo` の間には、どのエンティティに
 |事前構築済みのエンティティ - number|"builtin.number"|"2"|
 |事前構築済みエンティティ - GeographyV2|"Location::ToLocation"|"cairo"|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この[チュートリアル](luis-tutorial-composite-entity.md)では、さまざまな種類の抽出されたデータを、1 つの包含するエンティティにバンドルするための**複合エンティティ**を追加します。 データをバンドルすることにより、クライアント アプリケーションはさまざまなデータ型で関連データを簡単に抽出できます。

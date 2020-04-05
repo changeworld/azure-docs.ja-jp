@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
 ms.openlocfilehash: c21a16d043f972042949d6340985774741b3df6a
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74888617"
 ---
-# <a name="cli-example-create-a-transform"></a>CLI の例:Transform を作成します。
+# <a name="cli-example-create-a-transform"></a>CLI の例: 変換の作成
 
-この記事の Azure CLI スクリプトは、変換の作成方法を示しています。 変換では、ビデオまたはオーディオ ファイルを処理するためのタスクの単純なワークフローを記述します (多くの場合、"レシピ" と呼ばれます)。 必要な名前と "レシピ" を持つ変換が既に存在するかどうかを必ず確認する必要があります。 その場合は再利用する必要があります。
+この記事の Azure CLI スクリプトは、変換の作成方法を示しています。 トランスフォームは、ビデオまたはオーディオ ファイルを処理するためのタスクの単純なワークフローを記述します (多くの場合、"レシピ" と呼ばれます)。 必要な名前と "レシピ" を持つトランスフォームが既に存在するかどうかを必ず確認する必要があります。 その場合は再利用する必要があります。
 
 ## <a name="prerequisites"></a>前提条件 
 
@@ -40,6 +40,6 @@ ms.locfileid: "74888617"
 
 [!code-azurecli-interactive[main](../../../cli_scripts/media-services/create-transform/Create-Transform.sh "Create a transform")]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [az ams transform (CLI)](https://docs.microsoft.com/cli/azure/ams/transform?view=azure-cli-latest)

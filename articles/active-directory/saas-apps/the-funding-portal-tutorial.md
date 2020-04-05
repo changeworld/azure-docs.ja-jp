@@ -17,10 +17,10 @@ ms.date: 08/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f707e9e56ea5386f1ccb438aa06aac066784e7cc
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70174288"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-the-funding-portal"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と The Funding Portal の統合
@@ -29,7 +29,7 @@ ms.locfileid: "70174288"
 
 * The Funding Portal にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して The Funding Portal に自動的にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

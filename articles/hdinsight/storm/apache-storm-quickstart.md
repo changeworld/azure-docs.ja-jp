@@ -9,10 +9,10 @@ ms.date: 06/14/2019
 ms.author: hrasheed
 ms.custom: mvc
 ms.openlocfilehash: 24173b553f30f652caf20b1ec7500fd9c4d2f7a0
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73241227"
 ---
 # <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>クイック スタート:Azure HDInsight で Apache Storm トポロジを作成、監視する
@@ -78,7 +78,7 @@ Storm には、トポロジの実行を操作する Web インターフェイス
     |入力の統計 (ボルトのみ)|ボルトによって使用されるデータを生成するコンポーネントに関する情報。|
     |出力の統計|このボルトによって出力されるデータに関する情報。|
     |エグゼキュータ|このコンポーネントのインスタンスに関する情報。|
-    |Errors|このコンポーネントで生成されたエラー。|
+    |エラー|このコンポーネントで生成されたエラー。|
 
 4. スパウトまたはボルトの詳細を表示したら、 **[エグゼキュータ]** セクションの **[ポート]** 列でエントリを選択して、コンポーネントの特定のインスタンスの詳細を表示します。
 
@@ -97,13 +97,13 @@ Storm には、トポロジの実行を操作する Web インターフェイス
 
 ワードカウント トポロジの **[トポロジの概要]** ページに戻り、 **[トポロジのアクション]** セクションで **[強制終了]** ボタンを選択します。 メッセージが表示されたら、トポロジを停止するまでの待機秒数として「10」を入力します。 タイムアウト期間後は、ダッシュボードの **[Storm UI]** セクションにアクセスしても、トポロジは表示されません。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このクイックスタートを完了したら、必要に応じてクラスターを削除できます。 HDInsight を使用すると、データは Azure Storage に格納されるため、クラスターは、使用されていない場合に安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。
 
 クラスターを削除するには、「[ブラウザー、PowerShell、または Azure CLI を使用して HDInsight クラスターを削除する](../hdinsight-delete-cluster.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Apache [storm-starter](https://github.com/apache/storm/tree/v2.0.0/examples/storm-starter) プロジェクトの例を使用して、既存の Apache Storm クラスターに対して Apache Storm トポロジーを作成し監視しました。 Apache Storm トポロジの管理や監視の基礎を習得するには、次の記事に進みます。
 

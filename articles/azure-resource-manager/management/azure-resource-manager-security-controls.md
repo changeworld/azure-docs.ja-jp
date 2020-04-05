@@ -4,10 +4,10 @@ description: Azure Resource Manager サービスを評価するための組み�
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.openlocfilehash: d0a0625153e428a0d261e52d40b31ef5142eddfd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75476721"
 ---
 # <a name="security-controls-for-azure-resource-manager"></a>Azure Resource Manager のセキュリティ コントロール
@@ -18,7 +18,7 @@ ms.locfileid: "75476721"
 
 ## <a name="data-protection"></a>データ保護
 
-| セキュリティ コントロール | はい/いいえ | メモ |
+| セキュリティ コントロール | はい/いいえ | Notes |
 |---|---|--|
 | 保存時のサーバー側の暗号化: Microsoft のマネージド キー | はい |  |
 | 転送中の暗号化 (ExpressRoute 暗号化、VNet 内の暗号化、および VNet 間暗号化など)| はい | HTTPS/TLS。 |
@@ -28,7 +28,7 @@ ms.locfileid: "75476721"
 
 ## <a name="network"></a>ネットワーク
 
-| セキュリティ コントロール | はい/いいえ | メモ |
+| セキュリティ コントロール | はい/いいえ | Notes |
 |---|---|--|
 | サービス エンドポイントのサポート| いいえ | |
 | VNet インジェクションのサポート| はい | |
@@ -37,7 +37,7 @@ ms.locfileid: "75476721"
 
 ## <a name="monitoring--logging"></a>監視およびログ記録
 
-| セキュリティ コントロール | はい/いいえ | メモ|
+| セキュリティ コントロール | はい/いいえ | Notes|
 |---|---|--|
 | Azure 監視サポート (Log analytics や App Insights など)| いいえ | |
 | コントロールと管理プレーンのログ記録と監査| はい | アクティビティ ログでは、リソースに対して実行された書き込み操作 (PUT、POST、DELETE) がすべて公開されます。「[リソースのアクションを監査するアクティビティ ログの表示](view-activity-logs.md)」を参照してください。 |
@@ -45,14 +45,14 @@ ms.locfileid: "75476721"
 
 ## <a name="identity"></a>ID
 
-| セキュリティ コントロール | はい/いいえ | メモ|
+| セキュリティ コントロール | はい/いいえ | Notes|
 |---|---|--|
 | 認証| はい | [Azure Active Directory](/azure/active-directory) ベース。|
 | 承認| はい | |
 
 ## <a name="configuration-management"></a>構成管理
 
-| セキュリティ コントロール | はい/いいえ | メモ|
+| セキュリティ コントロール | はい/いいえ | Notes|
 |---|---|--|
 | 構成管理のサポート (構成のバージョン管理など)| はい |  |
 

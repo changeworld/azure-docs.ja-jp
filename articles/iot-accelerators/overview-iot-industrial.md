@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: c5d70e5a8784e88d3f2906d500768735dced1ee0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73828136"
 ---
 # <a name="what-is-industrial-iot-iiot"></a>Industrial IoT (IIoT) とは
@@ -41,11 +41,11 @@ Azure IoT Edge モジュールの動作に詳しくない場合は、最初に�
 
 OPC Twin は IIoT コンポーネントの 1 つで、デバイスの検出と登録を自動化すると共に、REST API による産業用デバイスのリモート制御を実現します。 OPC Twin では、Azure IoT Edge と IoT Hub を使用して、クラウドと工場のネットワークとを接続します。 OPC Twin を使用すると、IIoT の開発者はオンプレミスのマシンに安全にアクセスする方法について頭を悩ませることなく、IIoT アプリケーションの構築に専念できます。
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 
 OPC Vault は、OPC UA サーバーとクライアント アプリケーションの証明書ライフサイクルの構成、登録、管理をクラウドで行える OPC UA Global Discovery Server (GDS) の実装です。 産業空間における資産の安全な接続の実装と維持が OPC Vault によって簡素化されます。 証明書の管理が OPC Vault によって自動化されることで、工場のオペレーターは、接続性と証明書の管理に伴う手動による複雑なプロセスから解放されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、Industrial IoT とそのコンポーネントについて説明しました。次に以下の記事を読むことをお勧めします。
 

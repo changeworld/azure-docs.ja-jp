@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 04/25/2017
 ms.author: kumud
 ms.openlocfilehash: 21d8896e4f87b432908a2ccf6a994a5c29d4b293
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840521"
 ---
 # <a name="azure-cli-samples-for-networking"></a>ネットワーク用の Azure CLI サンプル

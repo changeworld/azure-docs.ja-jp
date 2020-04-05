@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
 ms.openlocfilehash: 2149b8410104b39652b176895a31b42e094265f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67100087"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>チュートリアル:Azure Active Directory と InsideView の統合
@@ -175,7 +175,7 @@ InsideView に対する Azure AD シングル サインオンを構成するに�
 
     1. **[パスワードを表示]** を選択し、 **[パスワード]** ボックス内の値を書き留めます。
 
-    1. **作成** を選択します。
+    1. **［作成］** を選択します
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

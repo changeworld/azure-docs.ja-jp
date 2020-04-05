@@ -9,10 +9,10 @@ ms.date: 09/26/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 0cf30666ab9950459f2a48f8fe271fd770f4efe1
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71839242"
 ---
 | リソース |  制限 |

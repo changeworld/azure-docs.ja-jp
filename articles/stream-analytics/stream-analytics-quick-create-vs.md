@@ -7,10 +7,10 @@ ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.openlocfilehash: 21dbd4128cad7df11aeb713286d868879a58519b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75431541"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>クイック スタート:Visual Studio を使用して Azure Stream Analytics ジョブを作成する
@@ -21,7 +21,7 @@ ms.locfileid: "75431541"
 
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
 
-* [Azure portal](https://portal.azure.com/) にサインインする
+* [Azure portal](https://portal.azure.com/) にサインインします。
 
 * Visual Studio 2019、Visual Studio 2015、または Visual Studio 2013 Update 4 をインストールします。 Enterprise (Ultimate/Premium)、Professional、Community の各エディションがサポートされています。 Express エディションはサポートされていません。
 
@@ -31,7 +31,7 @@ ms.locfileid: "75431541"
 
 Stream Analytics ジョブを定義する前に、後でジョブの入力として構成されるデータを準備する必要があります。 ジョブで必要な入力データを準備するには、次の手順を完了します。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 2. **[リソースの作成]**  >  **[モノのインターネット]**  >  **[IoT Hub]** を選択します。
 
@@ -46,7 +46,7 @@ Stream Analytics ジョブを定義する前に、後でジョブの入力とし
 
    ![IoT Hub の作成](./media/stream-analytics-quick-create-vs/create-iot-hub.png)
 
-4. **[次へ:Set size and scale]\(次へ: サイズとスケールの設定\)** を選択します。
+4. **Set size and scale\(次へ: サイズとスケールの設定\)** を選択します。
 
 5. **[価格とスケールティア]** を選択します。 このクイック スタートでは、 **[F1 - Free tier]\(F1 - Free レベル\)** を選択します (お客様のサブスクリプションでまだ使用可能な場合)。 Free レベルを使用できない場合は、使用可能な最も低いレベルを選択します。 詳細については、「[IoT Hub の価格](https://azure.microsoft.com/pricing/details/iot-hub/)」を参照してください。
 
@@ -128,7 +128,7 @@ Azure Stream Analytics プロジェクトに含まれる要素に注目してく
 
    |**設定**  |**推奨値**  |**説明**   |
    |---------|---------|---------|
-   |出力のエイリアス  |  Output   |  ジョブの出力を識別する名前を入力します。   |
+   |出力のエイリアス  |  出力   |  ジョブの出力を識別する名前を入力します。   |
    |シンク   |  Blob Storage |  適切なシンクを選択します。    |
    |リソース  |  データ ソース設定を手動で提供します |  手動でデータを入力するか、既存のアカウントを選択するかを選択します。   |
    |サブスクリプション  |  \<該当するサブスクリプション\>   | 作成したストレージ アカウントを持っている Azure サブスクリプションを選択します。 ストレージ アカウントは、同じサブスクリプションにある場合も、別のサブスクリプションにある場合もあります。 この例では、同じサブスクリプションにストレージ アカウントを作成したと想定しています。   |

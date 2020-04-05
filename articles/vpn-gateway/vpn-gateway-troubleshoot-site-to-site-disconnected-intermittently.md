@@ -9,13 +9,13 @@ ms.topic: troubleshooting
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 82054099a5a496e99c49135ab98ee1163af19784
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75862562"
 ---
-# <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>トラブルシューティング:Azure サイト間 VPN 接続が断続的に切断される
+# <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>トラブルシューティング: サイト間 VPN 接続が断続的に切断される
 
 新規または既存の Microsoft Azure サイト間 VPN 接続が不安定になったり頻繁に切断されたりする問題に遭遇することがあります。 この記事では、問題の原因の特定と解決に役立つトラブルシューティング手順について説明します。 
 

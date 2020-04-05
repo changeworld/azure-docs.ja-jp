@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 05ba1d97d4eba92f492289375f85425f8920510b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 0f13f297facedceb50920c0f6afca63fe1df0b48
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749754"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231687"
 ---
 # <a name="setup-diagnostic-logging"></a>診断ログのセットアップ
 
-Analysis Services ソリューションの重要な部分は、サーバーのパフォーマンスを監視することです。 [Azure リソースの診断ログ](../azure-monitor/platform/platform-logs-overview.md)を使用すると、ログを監視して [Azure Storage](https://azure.microsoft.com/services/storage/) に送信したり、ログを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信したり、[Azure Monitor ログ](../azure-monitor/azure-monitor-log-hub.md)にエクスポートしたりすることができます。
+Analysis Services ソリューションの重要な部分は、サーバーのパフォーマンスを監視することです。 [Azure リソースのログ](../azure-monitor/platform/platform-logs-overview.md)を使用すると、ログを監視して [Azure Storage](https://azure.microsoft.com/services/storage/) に送信したり、ログを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信したり、[Azure Monitor ログ](../azure-monitor/azure-monitor-log-hub.md)にエクスポートしたりすることができます。
 
 ![Storage、Event Hubs、または Azure Monitor ログに対する診断ログ記録](./media/analysis-services-logging/aas-logging-overview.png)
 

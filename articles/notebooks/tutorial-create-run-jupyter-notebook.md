@@ -4,10 +4,10 @@ description: データ サイエンスの線形回帰のプロセスを示す Ju
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.openlocfilehash: 8a1c13f41ef1588b040b3540b852d83764c6ce79
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75660819"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>チュートリアル: Python で Jupyter ノートブックを作成して実行する
@@ -161,7 +161,7 @@ Jupyter では、主な UI 要素の組み込みツアーが提供されてい�
 | カーネル | カーネルでのコードの実行方法を管理するコマンドです。 **[Change kernel]\(カーネルの変更\)** では、ノートブックの実行に使用される言語または Python バージョンを変更します。 |
 | Data | プロジェクトまたはセッションからファイルをアップロードおよびダウンロードするコマンドです。 [プロジェクト データ ファイルの操作](work-with-project-data-files.md)に関する記事をご覧ください |
 | Widgets (ウィジェット) | [Jupyter のウィジェット](https://ipywidgets.readthedocs.io/en/stable/examples/Widget%20Basics.html)を管理するコマンドです。視覚化、マッピング、プロットに関する追加機能が提供されます。|
-| ヘルプ | Jupyter インターフェイスのヘルプとドキュメントを提供するコマンドです。 |
+| Help | Jupyter インターフェイスのヘルプとドキュメントを提供するコマンドです。 |
 
 ツール バーのほとんどのコマンドには、対応するメニュー コマンドがあります。 1 つの例外は **[Enter/Edit RISE Slideshow]\(RISE スライドショーの入力/編集\)** で、[ノートブックの共有と提供](present-jupyter-notebooks-slideshow.md)に関するページで説明されています。
 

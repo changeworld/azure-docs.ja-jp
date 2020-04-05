@@ -7,10 +7,10 @@ ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: e3a6ee382208119e46a816790c15ae47f16be57e
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75495191"
 ---
 # <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>チュートリアル:マルチサービス Service Fabric Mesh アプリを作成、デバッグ、デプロイ、およびアップグレードする

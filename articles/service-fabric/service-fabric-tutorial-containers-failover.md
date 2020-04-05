@@ -7,13 +7,13 @@ ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: bef1c42712c881296c5ab7b8096deb50fe94ee55
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75614096"
 ---
-# <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>チュートリアル:Service Fabric でのコンテナー サービスのフェールオーバーとスケーリングのデモンストレーション
+# <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>チュートリアル: Service Fabric でのコンテナー サービスのフェールオーバーとスケーリングをデモンストレーションする
 
 このチュートリアルは、シリーズの第 3 部です。 このチュートリアルでは、Service Fabric コンテナー アプリケーションでのフェールオーバーの処理方法について説明します。 さらに、コンテナーのスケーリング方法を説明します。 このチュートリアルでは、次のことを行いました。
 

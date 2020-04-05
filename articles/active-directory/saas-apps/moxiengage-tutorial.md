@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Moxi Engage の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Moxi Engage の統合 | Microsoft Docs'
 description: Azure Active Directory と Moxi Engage の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 85e025355d914f95c2be221341b5eff08d1378e5
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160491"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-moxi-engage"></a>チュートリアル:Azure Active Directory と Moxi Engage の統合
+# <a name="tutorial-azure-active-directory-integration-with-moxi-engage"></a>チュートリアル: Azure Active Directory と Moxi Engage の統合
 
 このチュートリアルでは、Moxi Engage と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Moxi Engage と Azure AD の統合には、次の利点があります。

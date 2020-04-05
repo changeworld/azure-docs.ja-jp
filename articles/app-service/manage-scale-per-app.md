@@ -8,10 +8,10 @@ ms.date: 05/13/2019
 ms.author: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: f1ca4958fe2608d0c040ef5b93827a7e71a4151c
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74672349"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>アプリごとのスケーリングを使って Azure App Service で高密度ホスティングを実現する
@@ -32,7 +32,7 @@ App Service プラン レベルで*アプリごとのスケーリング*を有�
 
 ## <a name="per-app-scaling-using-powershell"></a>PowerShell を使用したアプリごとのスケーリング
 
-プランの作成時にアプリごとのスケーリングを有効にする場合には、```New-AzAppServicePlan``` コマンドレットに ```-PerSiteScaling $true``` パラメーターを渡します。
+プランの作成時にアプリごとのスケーリングを有効にする場合には、```-PerSiteScaling $true``` コマンドレットに ```New-AzAppServicePlan``` パラメーターを渡します。
 
 ```powershell
 New-AzAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
@@ -41,7 +41,7 @@ New-AzAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
                             -NumberofWorkers 5 -PerSiteScaling $true
 ```
 
-```Set-AzAppServicePlan```コマンドレットに `-PerSiteScaling $true` パラメーターを渡すことで、既存の App Service プランによるアプリごとのスケーリングを有効にします。
+`-PerSiteScaling $true`コマンドレットに ```Set-AzAppServicePlan``` パラメーターを渡すことで、既存の App Service プランによるアプリごとのスケーリングを有効にします。
 
 ```powershell
 # Enable per-app scaling for the App Service Plan using the "PerSiteScaling" parameter.
@@ -133,11 +133,11 @@ App Service プランは、**PerSiteScaling** プロパティを true に設定�
 1. App Service プランの `PerSiteScaling` フラグを true に設定します。
 1. 新しいアプリが作成され、その App Service プランに **1** に設定された **numberOfWorkers** プロパティが割り当てられます。
    - この構成を使用すると、可能な最高の密度が得られます。
-1. ワーカーの数はアプリごとに個別に構成でき、必要に応じて追加リソースを許可できます。 例:
+1. ワーカーの数はアプリごとに個別に構成でき、必要に応じて追加リソースを許可できます。 次に例を示します。
    - 使用率が高いアプリでは、**numberOfWorkers** を **3** に設定してそのアプリの処理能力を上げます。
    - 使用率の低いアプリでは、**numberOfWorkers** を **1** に設定します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure App Service プランの詳細な概要](overview-hosting-plans.md)
 - [App Service 環境の概要](environment/app-service-app-service-environment-intro.md)

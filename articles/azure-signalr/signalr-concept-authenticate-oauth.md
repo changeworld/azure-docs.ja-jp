@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: cc955adffbe7df5809f9c4c860877ad22df3e99b
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74158284"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR Service の認証
@@ -25,9 +25,9 @@ ms.locfileid: "74158284"
 
 GitHub を通じて提供される OAuth 認証 API の詳細については、「[Basics of Authentication (認証の基礎)](https://developer.github.com/v3/guides/basics-of-authentication/)」を参照してください。
 
-このクイック スタートの手順の実行には、任意のコード エディターを使用することができます。 ただし、推奨のエディターは [Visual Studio Code](https://code.visualstudio.com/) です (Windows、macOS、および Linux プラットフォームで使用できます)。
+このクイック スタートの手順は、任意のコード エディターを使用して実行できます。 ただし、推奨のエディターは [Visual Studio Code](https://code.visualstudio.com/) です (Windows、macOS、および Linux プラットフォームで使用できます)。
 
-このチュートリアルのコードは、[AzureSignalR-samples の GitHub リポジトリ](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/GitHubChat)でダウンロードすることができます。
+このチュートリアルのコードは、[GitHub リポジトリの AzureSignalR-samples](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/GitHubChat) からダウンロードできます。
 
 ![Azure でホストされている OAuth Complete](media/signalr-concept-authenticate-oauth/signalr-oauth-complete-azure.png)
 
@@ -48,13 +48,13 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
 * [Git](https://git-scm.com/)
 * [.NET Core SDK](https://www.microsoft.com/net/download/windows)
 * [構成済みの Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart)
-* GitHub リポジトリの [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) をダウンロードまたは複製する
+* GitHub リポジトリの [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) をダウンロードまたは複製する。
 
 ## <a name="create-an-oauth-app"></a>OAuth アプリを作成する
 
 1. Web ブラウザーを開き、`https://github.com` に移動してアカウントにサインインします。
 
-2. アカウントで **[Settings]\(設定\)**  >  **[Developer settings]\(開発者向け設定\)** に移動し、 *[OAuth Apps]\(OAuth アプリ\)* の下の **[Register a new application]\(新しいアプリケーションの登録\)** または **[New OAuth App]\(新しい OAuth アプリ\)** をクリックします。
+2. アカウントで **[Settings]\(設定\)**  >  **[Developer settings]\(開発者向け設定\)** に移動し、 **[OAuth Apps]\(OAuth アプリ\)** の下の **[Register a new application]\(新しいアプリケーションの登録\)** または *[New OAuth App]\(新しい OAuth アプリ\)* をクリックします。
 
 3. 新しい OAuth アプリには次の設定を使用し、 **[アプリケーションの登録]** をクリックします。
 
@@ -416,7 +416,7 @@ az webapp create --name $WebAppName --resource-group $ResourceGroupName \
 | -------------------- | --------------- |
 | ResourceGroupName | このリソース グループ名は、前のチュートリアルで指定されたものです。 すべてのチュートリアル リソースをまとめてグループ化しておくことをお勧めします。 前のチュートリアルで使用したのと同じリソース グループを使用します。 |
 | WebAppPlan | 新しい一意の App Service プラン名を入力します。 |
-| WebAppName | これが新しい Web アプリの名前になり、URL の一部になります。 一意の名前を使用してください。 たとえば、signalrtestwebapp22665120 です。   |
+| WebAppName | これが新しい Web アプリの名前になり、URL の一部になります。 一意な名前を使用してください。 たとえば、signalrtestwebapp22665120 です。   |
 
 ### <a name="add-app-settings-to-the-web-app"></a>アプリ設定を Web アプリに追加する
 
@@ -543,7 +543,7 @@ az webapp deployment source config-local-git --name $WebAppName \
 
 2. 認証アプリをクリックし、 **[Homepage URL]\(ホームページ URL\)** と **[Authorization callback URL]\(認証コールバックの URL\)** を次のように更新します。
 
-    | Setting | 例 |
+    | 設定 | 例 |
     | ------- | ------- |
     | ホームページ URL | https://signalrtestwebapp22665120.azurewebsites.net/home |
     | 認証コールバックの URL | https://signalrtestwebapp22665120.azurewebsites.net/signin-github |
@@ -552,7 +552,7 @@ az webapp deployment source config-local-git --name $WebAppName \
 
     ![Azure でホストされている OAuth Complete](media/signalr-concept-authenticate-oauth/signalr-oauth-complete-azure.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 次のチュートリアルに進む場合は、このクイック スタートで作成したリソースを維持して、次のチュートリアルで再利用することができます。
 
@@ -571,7 +571,7 @@ az webapp deployment source config-local-git --name $WebAppName \
 
 しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure SignalR Service を使用してより良い認証方法を提供するために、OAuth による認証を追加しました。 Azure SignalR Server の使用方法の詳細については、SignalR Service の Azure CLI サンプルを参照してください。
 

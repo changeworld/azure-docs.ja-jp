@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/21/2020
 ms.author: juliako
-ms.openlocfilehash: 58b5b749e81aab4d8563d09cbfd139629520531c
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 1257bf4dfb0d5b2c4995cac760290f97293a0c0f
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310572"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382972"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Azure Media Services v3 が存在するクラウドとリージョン
 
@@ -37,11 +37,11 @@ Azure Media Services v3 は、Azure Resource Manager マニフェストを通し
 
 [Azure Media Services サービスがデプロイされているリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
 
-### <a name="region-code-name"></a>リージョン コード名 
+### <a name="region-code-name"></a>リージョン コード名
 
 **location** パラメーターを指定する必要がある場合は、**location** 値としてリージョンのコード名を指定する必要があります。 お使いのアカウントが存在し、呼び出しがルーティングされるリージョンのコード名を取得するには、次の行を [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) で実行できます
 
-```bash
+```azurecli-interactive
 az account list-locations
 ```
 
@@ -66,18 +66,18 @@ az account list-locations
 
 ### <a name="global-azure"></a>グローバル Azure
 
-|エンドポイント ||
-| --- | --- | 
+|エンドポイント||
+| --- | --- |
 | Azure Resource Manager |  `https://management.azure.com/` |
-| 認証 | `https://login.microsoftonline.com/` | 
+| 認証 | `https://login.microsoftonline.com/` |
 | トークン対象ユーザー | `https://management.core.windows.net/` |
 
 ### <a name="azure-government"></a>Azure Government
 
 |エンドポイント||
-| --- | --- | 
+| --- | --- |
 | Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
-| 認証 | `https://login.microsoftonline.us/` | 
+| 認証 | `https://login.microsoftonline.us/` |
 | トークン対象ユーザー | `https://management.core.usgovcloudapi.net/` |
 
 ### <a name="azure-germany"></a>Azure Germany
@@ -91,12 +91,12 @@ az account list-locations
 ### <a name="azure-china-21vianet"></a>Azure China 21Vianet
 
 |エンドポイント||
-| --- | --- | 
+| --- | --- |
 | Azure Resource Manager | `https://management.chinacloudapi.cn/` |
 | 認証 | `https://login.chinacloudapi.cn/` |
 | トークン対象ユーザー |  `https://management.core.chinacloudapi.cn/` |
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 * [Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)
 * [Azure の地域](https://azure.microsoft.com/global-infrastructure/geographies/)

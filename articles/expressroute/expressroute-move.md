@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: ganesr
 ms.openlocfilehash: c4fed30f7f4b723f04cd59b2a987b498e3d614a5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645907"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線の移行

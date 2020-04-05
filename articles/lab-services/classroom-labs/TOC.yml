@@ -30,12 +30,16 @@
   items:
     - name: 管理者ガイド
       href: administrator-guide.md
+    - name: 高速ラボ アカウントの設定ガイド
+      href: account-setup-guide.md
+    - name: 高速ラボの設定ガイド
+      href: setup-guide.md
     - name: クラスルーム ラボ - クラスの種類
       items:
         - name: クラスの種類の概要
           href: class-types.md
-        - name: 自然処理でのディープ ラーニング
-          href: class-type-deep-learning-natural-processing.md
+        - name: 自然言語処理でのディープ ラーニング
+          href: class-type-deep-learning-natural-language-processing.md
         - name: Linux でのシェル スクリプト
           href: class-type-shell-scripting-linux.md
         - name: 倫理的ハッキング
@@ -66,6 +70,8 @@
           href: how-to-configure-firewall-settings.md
         - name: ラボの Marketplace イメージを指定する
           href: specify-marketplace-images.md
+        - name: サポート情報を指定する (ラボ アカウント オーナー)
+          href: lab-account-owner-support-information.md
     - name: クラスルーム ラボを作成して構成する (講師)
       items:
         - name: クラスルーム ラボを作成して管理する
@@ -87,17 +93,29 @@
         - name: 切断時の自動シャットダウンを有効にする
           href: how-to-enable-shutdown-disconnect.md
         - name: テンプレート VM で入れ子になった仮想化を有効にする
-          href: how-to-enable-nested-virtualization-template-vm.md
+          items:
+            - name: テンプレート VM で入れ子になった仮想化の有効化の概要
+              href: how-to-enable-nested-virtualization-template-vm.md
+            - name: テンプレート VM で入れ子になった仮想化を UI を使用して有効にする
+              href: how-to-enable-nested-virtualization-template-vm-ui.md
+            - name: テンプレート VM で入れ子になった仮想化をスクリプトを使用して有効にする
+              href: how-to-enable-nested-virtualization-template-vm-using-script.md
         - name: Windows テンプレート VM の準備
           href: how-to-prepare-windows-template.md
+        - name: サポート情報の表示 (講師)
+          href: lab-creator-support-information.md
     - name: クラスルーム ラボの VM に接続する (学生)
       items:
         - name: クラスルーム ラボへのアクセス
           href: how-to-use-classroom-lab.md
         - name: Linux VM にリモート デスクトップ接続を使用する
           href: how-to-use-remote-desktop-linux-student.md
+        - name: RDP を使用して Mac から VM に接続する
+          href: connect-virtual-machine-mac-rdp.md
         - name: 仮想マシンのパスワードを設定またはリセットする
           href: how-to-set-virtual-machine-passwords-student.md
+        - name: サポート情報の表示 (学生)
+          href: lab-user-support-information.md
 - name: リファレンス
   items:
     - name: REST API

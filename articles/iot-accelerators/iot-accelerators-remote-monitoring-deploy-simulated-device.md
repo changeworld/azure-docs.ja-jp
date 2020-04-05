@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 08/15/2018
 ms.topic: conceptual
 ms.openlocfilehash: 7cbab38db859935c9f4490d79a131d6c9a7e302b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66427569"
 ---
 # <a name="deploy-a-new-simulated-device"></a>新しいシミュレートされたデバイスをデプロイする
@@ -40,7 +40,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 このハウツー ガイドに従うには、次のものが必要です。
 
 - [リモート監視ソリューション アクセラレータ](https://www.azureiotsolutions.com/Accelerators#solutions/types/RM2)のデプロイ済みインスタンス。
-- `ssh` および `scp` コマンドを実行するローカルの **bash** シェル。 Windows の場合、[git](https://git-scm.com/download/win) をインストールするには、**bash** をインストールする方法が簡単です。
+- **および** コマンドを実行するローカルの `ssh`bash`scp` シェル。 Windows の場合、**git** をインストールするには、[bash](https://git-scm.com/download/win) をインストールする方法が簡単です。
 - カスタム デバイス モデル ファイル (「[Create and test a new simulated device](iot-accelerators-remote-monitoring-create-simulated-device.md)」(新しいシミュレーションされたデバイスの作成とテスト) で説明されているファイルなど)。
 
 [!INCLUDE [iot-solution-accelerators-access-vm](../../includes/iot-solution-accelerators-access-vm.md)]
@@ -136,12 +136,12 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. ダッシュボードを使用すると、デバイスのテレメトリを表示し、デバイス メソッドを呼び出すことができます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 さらに調べる場合は、リモート監視ソリューション アクセラレータをデプロイしたままにします。
 
 ソリューション アクセラレータが不要になった場合は、[[プロビジョニングされたソリューション]](https://www.azureiotsolutions.com/Accelerators#dashboard) ページでそれを選択し、 **[ソリューションの削除]** をクリックして削除してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このガイドでは、カスタム デバイス モデルをリモート監視ソリューション アクセラレータに展開する方法について説明しました。 次は、[実際のデバイスをご利用のリモート監視ソリューションに接続する](iot-accelerators-connecting-devices-node.md)方法について学習することをお勧めします。

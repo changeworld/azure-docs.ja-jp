@@ -6,22 +6,22 @@ ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
-ms.custom: fasttrack-edit
-ms.openlocfilehash: ffc5ee32541cfbbda2ae54fd229c1436f133d730
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.custom: seodec18, fasttrack-edit
+ms.openlocfilehash: ec842530f3cae26b869a649617f279d204b98fcc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671524"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80047771"
 ---
-# <a name="azure-app-service-hybrid-connections"></a>Azure App Services からのハイブリッド接続 #
+# <a name="azure-app-service-hybrid-connections"></a>Azure App Services からのハイブリッド接続
 
 ハイブリッド接続は、Azure のサービスであり、Azure App Service の機能でもあります。 サービスとして使用した場合、その用途と機能は、Azure App Service の用途と機能を上回ります。 ハイブリッド接続の詳細と Azure App Service では提供されない使用方法については、[Azure Relay ハイブリッド接続][HCService]に関するページを参照してください。
 
 Azure App Service 内では、ハイブリッド接続を使用して、他のネットワークのアプリケーション リソースにアクセスできます。 アプリからアプリケーション エンドポイントにアクセスできます。 アプリケーションにアクセスするために別の機能を有効にすることはありません。 App Service で使用されるとき、各ハイブリッド接続は、単一の TCP ホストとポートの組み合わせに相互に関連付けられます。 つまり、TCP リッスン ポートにアクセスしている限り、任意のオペレーティング システムの任意のアプリケーションがハイブリッド接続エンドポイントになることができます。 ハイブリッド接続では、アプリケーション プロトコルやアクセス先は認識されません。 それは、ネットワーク アクセスを提供するだけです。  
 
 
-## <a name="how-it-works"></a>動作のしくみ ##
+## <a name="how-it-works"></a>しくみ ##
 ハイブリッド接続機能は、Service Bus Relay に対する 2 つの発信呼び出しで構成されます。 App Service でアプリが実行されているホストにライブラリから接続されます。 また、ハイブリッド接続マネージャー (HCM) から Service Bus Relay へも接続します。 HCM は、アクセスしようとしているネットワーク ホスト内にデプロイされるリレー サービスです。 
 
 この 2 つの結合された接続を通して、HCM の他方の側の固定されたホストとポートの組み合わせに至るアプリの TCP トンネルが設定されます。 接続では、セキュリティには TLS 1.2 が、認証/承認には Shared Access Signature (SAS) キーが使用されます。    

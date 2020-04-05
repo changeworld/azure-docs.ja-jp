@@ -20,7 +20,7 @@
       items:
         - name: 実行プランの作成
           href: example-terraform-bash.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: Windows ユーザー向けの PowerShell Cloud Shell
       href: cloud-shell-windows-users.md

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
 ms.openlocfilehash: a37fd886e1bc70226b2e54750540dfcb79ee5973
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75768879"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Azure Functions のコードをテストするための戦略

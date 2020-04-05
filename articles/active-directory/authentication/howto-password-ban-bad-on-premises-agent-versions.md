@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 71fd33388cb1bdf7c87c44fb3273c6850122a0cc
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74847851"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Azure AD パスワード保護エージェントのバージョン履歴
@@ -56,7 +56,7 @@ ms.locfileid: "74847851"
 
 * DC エージェントとプロキシ サービスが Server Core でサポートされるようになりました。 OS の最小要件は前から変更されておらず、DC エージェントには Windows Server 2012、プロキシには Windows Server 2012 R2 です。
 * Register-AzureADPasswordProtectionProxy と Register-AzureADPasswordProtectionForest コマンドレットでは、デバイス コード ベースの Azure 認証モードがサポートされるようになりました。
-* Get-AzureADPasswordProtectionDCAgent コマンドレットは、壊れた、または無効なサービス接続ポイントを無視します。 これにより、ドメイン コントローラーが出力に複数回表示されることがあるバグが解決されます。
+* Get-AzureADPasswordProtectionDCAgent コマンドレットは、壊れた、または無効なサービス接続ポイントを無視します。 これにより、ドメイン コントローラーが出力に複数回表示されることがあるというバグが解決されます。
 * Get-AzureADPasswordProtectionSummaryReport コマンドレットは、壊れた、または無効なサービス接続ポイントを無視します。 これにより、ドメイン コントローラーが出力に複数回表示されることがあるというバグが解決されます。
 * プロキシの PowerShell モジュールが %ProgramFiles%\WindowsPowerShell\Modules から登録されるようになりました。 コンピューターの PSModulePath 環境変数は変更されなくなりました。
 * フォレストまたはドメイン内の登録されたプロキシの検出を支援するために、新しい Get-AzureADPasswordProtectionProxy コマンドレットが追加されました。
@@ -134,6 +134,6 @@ ms.locfileid: "74847851"
 
 初期パブリック プレビュー リリース
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure AD のパスワード保護をデプロイする](howto-password-ban-bad-on-premises-deploy.md)

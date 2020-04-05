@@ -4,17 +4,17 @@ description: Visual Studio から既定の C# ASP.NET Web アプリ テンプレ
 ms.assetid: 04a1becf-7756-4d4e-92d8-d9471c263d23
 ms.topic: quickstart
 ms.date: 10/21/2019
-ms.custom: seodec18
-ms.openlocfilehash: f2e31723dc2761007994f652d9d6c28ab3f7d47d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.custom: mvc, devcenter, seodec18
+ms.openlocfilehash: 4688cc358ec6ff792be58254b0607f5416422a21
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671404"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80047653"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Azure に ASP.NET Framework Web アプリを作成する
 
-[Azure App Service](overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。
+[Azure App Service](overview.md) は、非常にスケーラブルな、自己適用型の Web ホスティング サービスを提供します。
 
 このクイック スタートでは、Azure App Service に初めての ASP.NET Web アプリをデプロイする方法を示します。 完了すると、App Service プランが作成されます。 また、App Service アプリが作成され、Web アプリケーションがデプロイされます。
 
@@ -29,7 +29,7 @@ Visual Studio 2019 を既にインストールしている場合:
 - **[ヘルプ]**  >  **[更新プログラムの確認]** の順に選択して、Visual Studio に最新の更新プログラムをインストールします。
 - **[ツール]**  >  **[ツールと機能を取得]** の順に選択し、ワークロードを追加します。
 
-## ASP.NET Web アプリを作成する<a name="create-and-publish-the-web-app"></a>
+## <a name="create-an-aspnet-web-app"></a>ASP.NET Web アプリを作成する<a name="create-and-publish-the-web-app"></a>
 
 次の手順に従って ASP.NET Web アプリを作成します。
 
@@ -43,7 +43,7 @@ Visual Studio 2019 を既にインストールしている場合:
 
 4. 任意の種類の ASP.NET Web アプリを Azure にデプロイできます。 このクイックスタートでは、 **[MVC]** テンプレートを選択します。
 
-5. 認証が **[認証なし]** に設定されていることを確認します **作成** を選択します。
+5. 認証が **[認証なし]** に設定されていることを確認します **［作成］** を選択します
 
    ![ASP.NET Web アプリケーションを作成する](./media/app-service-web-get-started-dotnet-framework/select-mvc-template-vs2019.png)
 
@@ -51,7 +51,7 @@ Visual Studio 2019 を既にインストールしている場合:
 
    ![アプリをローカルで実行する](./media/app-service-web-get-started-dotnet-framework/local-web-app.png)
 
-## Web アプリを発行する<a name="launch-the-publish-wizard"></a>
+## <a name="publish-your-web-app"></a>Web アプリを発行する<a name="launch-the-publish-wizard"></a>
 
 1. **ソリューション エクスプローラー**で **myFirstAzureWebApp** プロジェクトを右クリックし、 **[発行]** を選択します。
 
@@ -80,11 +80,11 @@ Visual Studio 2019 を既にインストールしている場合:
 
 1. **[ホスティング プランの構成]** ダイアログで、次の表の値を入力し、 **[OK]** を選択します。
 
-   | Setting | 推奨値 | 説明 |
+   | 設定 | 推奨値 | 説明 |
    |-|-|-|
    |App Service プラン| myAppServicePlan | App Service プランの名前です。 |
-   | Location | 西ヨーロッパ | Web アプリがホストされているデータ センターです。 |
-   | Size | 無料 | [価格レベル](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)によって、ホスティング機能が決まります。 |
+   | 場所 | 西ヨーロッパ | Web アプリがホストされているデータ センターです。 |
+   | サイズ | Free | [価格レベル](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)によって、ホスティング機能が決まります。 |
 
    ![Create App Service plan](./media/app-service-web-get-started-dotnet-framework/app-service-plan-framework-vs2019.png)
 
@@ -111,7 +111,7 @@ Visual Studio 2019 を既にインストールしている場合:
    ```HTML
    <div class="jumbotron">
        <h1>ASP.NET in Azure!</h1>
-       <p class="lead">This is a simple app that we’ve built that demonstrates how to deploy a .NET app to Azure App Service.</p>
+       <p class="lead">This is a simple app that we've built that demonstrates how to deploy a .NET app to Azure App Service.</p>
    </div>
    ```
 
@@ -123,7 +123,7 @@ Visual Studio 2019 を既にインストールしている場合:
 
 ## <a name="manage-the-azure-app"></a>Azure アプリの管理
 
-1. Web アプリを管理するには、[Azure portal](https://portal.azure.com) にアクセスし、**App Services** を検索して選択します。
+1. Web アプリを管理するには、[Azure portal](https://portal.azure.com) にアクセスし、「**App Services**」を検索して選択します。
 
    ![App Services を選択する](./media/app-service-web-get-started-dotnet-framework/app-services.png)
 
@@ -137,7 +137,7 @@ Visual Studio 2019 を既にインストールしている場合:
 
    左側のメニューは、アプリを構成するためのさまざまなページを示しています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [ASP.NET と SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md)

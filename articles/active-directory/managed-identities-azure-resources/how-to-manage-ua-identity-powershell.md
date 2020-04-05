@@ -16,10 +16,10 @@ ms.date: 04/16/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c512a867685b4480c7b31ac582e2cee069ee2447
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74547403"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-azure-powershell"></a>Azure PowerShell を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除する
@@ -40,7 +40,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で管理�
 - PowerShell をローカルで実行している場合は、次の操作を行う必要もあります。 
     - `Connect-AzAccount` を実行して、Azure との接続を作成します。
     - [PowerShellGet の最新バージョン](/powershell/scripting/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget)をインストールします。
-    - `Install-Module -Name PowerShellGet -AllowPrerelease` を実行して `PowerShellGet` モジュールのプレリリース バージョンを取得します (`Az.ManagedServiceIdentity` モジュールをインストールするには、このコマンドを実行した後に現在の PowerShell セッションから `Exit` することが必要になる場合があります)。
+    - `Install-Module -Name PowerShellGet -AllowPrerelease` を実行して `PowerShellGet` モジュールのプレリリース バージョンを取得します (`Exit` モジュールをインストールするには、このコマンドを実行した後に現在の PowerShell セッションから `Az.ManagedServiceIdentity` することが必要になる場合があります)。
     - `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` を実行して `Az.ManagedServiceIdentity` モジュールのプレリリース バージョンをインストールして、この記事のユーザー割り当てマネージド ID 操作を実行します。
 
 ## <a name="create-a-user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID を作成する
@@ -63,7 +63,7 @@ New-AzUserAssignedIdentity -ResourceGroupName <RESOURCEGROUP> -Name <USER ASSIGN
 ```azurepowershell-interactive
 Get-AzUserAssignedIdentity -ResourceGroupName <RESOURCE GROUP>
 ```
-応答内のユーザー割り当てマネージド ID には、キー `Type` に対して返された `"Microsoft.ManagedIdentity/userAssignedIdentities"` の値が含まれます。
+応答内のユーザー割り当てマネージド ID には、キー `"Microsoft.ManagedIdentity/userAssignedIdentities"` に対して返された `Type` の値が含まれます。
 
 `Type :Microsoft.ManagedIdentity/userAssignedIdentities`
 
@@ -79,6 +79,6 @@ Remove-AzUserAssignedIdentity -ResourceGroupName <RESOURCE GROUP> -Name <USER AS
 > [!NOTE]
 > ユーザー割り当てマネージド ID を削除しても、それが割り当てられていたリソースから参照が削除されることはありません。 ID の割り当ては、別に削除する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure リソースの Azure PowerShell マネージド ID コマンドの詳細については、「[Az.ManagedServiceIdentity](/powershell/module/az.managedserviceidentity#managed_service_identity)」を参照してください。

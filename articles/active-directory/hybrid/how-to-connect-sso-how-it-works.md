@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect:シームレス シングル サインオン - しくみ | Microsoft Docs
+title: 'Azure AD Connect: シームレス シングル サインオン - しくみ | Microsoft Docs'
 description: この記事では、Azure Active Directory シームレス シングル サインオン機能のしくみについて説明します。
 services: active-directory
 keywords: Azure AD Connect とは, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン
@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bd4743bc38c3b2b4b9495b33535b4b73f48d1372
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71176678"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory シームレス シングル サインオン:技術的な詳細情報
+# <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory シームレス シングル サインオン: 技術的な詳細
 
 この記事では、Azure Active Directory シームレス シングル サインオン (シームレス SSO) 機能の技術的なしくみについて説明します。
 
@@ -44,7 +44,7 @@ ms.locfileid: "71176678"
 - コンピューター アカウントの Kerberos の復号化キーは、Azure AD と安全に共有されます。 複数の AD フォレストがある場合は、各コンピューター アカウントに、固有の Kerberos 復号化キーが割り当てられます。
 
 >[!IMPORTANT]
-> `AZUREADSSOACC` コンピューター アカウントは、セキュリティ上の理由から強固に保護する必要があります。 ドメイン管理者だけがこのコンピューター アカウントを管理できるようにしてください。 コンピューター アカウント上で Kerberos 委任が無効になっていること、および Active Directory 内の他のどのアカウントにも、`AZUREADSSOACC` コンピューター アカウント上の委任のアクセス許可がないことを確認してください。 このコンピューター アカウントは、不注意で削除されるおそれがなく、ドメイン管理者のみがアクセスできる組織単位 (OU) に格納してください。 このコンピューター アカウントの Kerberos の復号化キーも機密として扱う必要があります。 少なくとも 30 日ごとに、`AZUREADSSOACC` コンピューター アカウントの [Kerberos の復号化キーをロールオーバーする](how-to-connect-sso-faq.md)ことを強くお勧めします。
+> `AZUREADSSOACC` コンピューター アカウントは、セキュリティ上の理由から強固に保護する必要があります。 ドメイン管理者だけがこのコンピューター アカウントを管理できるようにしてください。 コンピューター アカウント上で Kerberos 委任が無効になっていること、および Active Directory 内の他のどのアカウントにも、`AZUREADSSOACC` コンピューター アカウント上の委任のアクセス許可がないことを確認してください。 このコンピューター アカウントは、不注意で削除されるおそれがなく、ドメイン管理者のみがアクセスできる組織単位 (OU) に格納してください。 このコンピューター アカウントの Kerberos の復号化キーも機密として扱う必要があります。 少なくとも 30 日ごとに、[ コンピューター アカウントの ](how-to-connect-sso-faq.md)Kerberos の復号化キーをロールオーバーする`AZUREADSSOACC`ことを強くお勧めします。
 
 このセットアップが完了すると、シームレス SSO は、統合 Windows 認証 (IWA) を使用するその他のサインインと同様に機能します。
 
@@ -93,7 +93,7 @@ Web ブラウザーでのサインインのフローは次のとおりです。
 
 ![シームレス シングル サインオン - ネイティブ アプリ フロー](./media/how-to-connect-sso-how-it-works/sso14.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [**クイック スタート**](how-to-connect-sso-quick-start.md) - Azure AD シームレス SSO を動作させます。
 - [**よく寄せられる質問**](how-to-connect-sso-faq.md) - よく寄せられる質問と回答です。

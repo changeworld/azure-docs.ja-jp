@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: pakunapa
 ms.openlocfilehash: adefeadf939d398268624343d82c18cbf5ec87cd
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75609640"
 ---
 # <a name="secure-service-remoting-communications-in-a-java-service"></a>Java サービスでのサービス リモート処理通信をセキュリティで保護する
@@ -23,7 +23,7 @@ ms.locfileid: "75609640"
 
 Java サービスでリモート処理を使用している場合、サービスのセキュリティを確保するには、次の手順を実行します。
 
-1. サービスのリモート プロシージャ コールで使用できるメソッドを定義するインターフェイス ( `HelloWorldStateless`) を作成します。 実際のサービスでは、`microsoft.serviceFabric.services.remoting.fabricTransport.runtime` パッケージに宣言されている `FabricTransportServiceRemotingListener` を使用します。 これは、リモート処理機能を提供する `CommunicationListener` の実装です。
+1. サービスのリモート プロシージャ コールで使用できるメソッドを定義するインターフェイス ( `HelloWorldStateless`) を作成します。 実際のサービスでは、`FabricTransportServiceRemotingListener` パッケージに宣言されている `microsoft.serviceFabric.services.remoting.fabricTransport.runtime` を使用します。 これは、リモート処理機能を提供する `CommunicationListener` の実装です。
 
     ```java
     public interface HelloWorldStateless extends Service {

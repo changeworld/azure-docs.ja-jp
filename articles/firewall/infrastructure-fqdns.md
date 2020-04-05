@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: victorh
 ms.openlocfilehash: d4de81bad1ddda2f5b54f47c1be78925ad4cdbf3
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74168978"
 ---
 # <a name="infrastructure-fqdns"></a>インフラストラクチャ FQDN
@@ -28,6 +28,6 @@ Azure Firewall には、既定で許可されるインフラストラクチャ F
 
 この組み込みのインフラストラクチャ ルール コレクションをオーバーライドするには、最後に処理される "すべて拒否" アプリケーション ルール コレクションを作成します。 このコレクションは、常にインフラストラクチャ ルール コレクションより先に処理されます。 インフラストラクチャ ルール コレクションに含まれていないものは既定で拒否されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Firewall のデプロイおよび構成](tutorial-firewall-deploy-portal.md)方法について説明します。

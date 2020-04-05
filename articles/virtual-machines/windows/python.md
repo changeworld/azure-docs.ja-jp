@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
 ms.openlocfilehash: a85a9c28acd2d50d95159883a01b27c8ed1d2f1a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75461097"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Python を使用して Azure で Windows VM を作成および管理する

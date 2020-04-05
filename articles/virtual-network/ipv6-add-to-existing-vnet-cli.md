@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/23/2019
 ms.author: kumud
-ms.openlocfilehash: 0631ea51894e7e0642a55cedee54422fddab623b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5dc231febc2e9b605b9e7f603f5d036b8a2c62eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72942076"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240758"
 ---
 # <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli-preview"></a>Azure 仮想ネットワーク内の IPv4 アプリケーションに IPv6 を追加する - Azure CLI (プレビュー)
 
@@ -41,15 +41,17 @@ Azure でデュアル スタック アプリケーションをデプロイする
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
+
 機能の登録が完了するまで、最長で 30 分かかります。 次の Azure CLI コマンドを実行することで、登録状態を確認できます。
 
-```azurelci
+```azurecli
 az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
+
 登録が完了した後、次のコマンドを実行します。
 
-```azurelci
+```azurecli
 az provider register --namespace Microsoft.Network
 ```
 
@@ -174,7 +176,7 @@ az network nic ip-config create \
 > [!NOTE]
 > このプレビュー リリースの場合、Azure 仮想ネットワークの IPv6 は、Azure portal で読み取り専用で使用できます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要がなくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
 
@@ -182,6 +184,6 @@ az network nic ip-config create \
 Remove-AzResourceGroup -Name MyAzureResourceGroupSLB
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、IPv4 フロントエンド IP 構成を持つ既存の Standard Load Balancer をデュアル スタック (IPv4 および IPv6) 構成に更新しました。 また、バックエンド プール内の VM の NIC に IPv6 構成も追加しました。 Azure 仮想ネットワークでの IPv6 サポートの詳細については、[Azure Virtual Network の IPv6 の概要](ipv6-overview.md)に関するページを参照してください

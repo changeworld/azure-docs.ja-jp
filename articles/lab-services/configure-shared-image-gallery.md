@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/05/2019
 ms.author: spelluru
 ms.openlocfilehash: 9593d60f76802cd515ca85616bce028cf3aa0d49
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77589319"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Azure DevTest Labs での共有イメージ ギャラリーの構成

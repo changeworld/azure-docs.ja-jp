@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 06/25/2018
 ms.author: menchi
 ms.openlocfilehash: 095f6c6ab8395c4ab314fbe948cbc1fbd32cd510
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76719145"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>IoT Hub モジュール ID とモジュール ツイン (C) の概要

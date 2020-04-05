@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e2024bd14241184338195ed635039bae774da816
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78161784"
 ---
 # <a name="view-activity-logs-for-azure-rbac-changes"></a>Azure RBAC の変更のアクティビティ ログを表示する
@@ -43,10 +43,10 @@ ms.locfileid: "78161784"
 
 ポータルのアクティビティ ログには複数のフィルターがあります。 Azure RBAC 関連のフィルターを次に示します。
 
-| Assert | Value |
+| Assert | 値 |
 | --------- | --------- |
 | イベント カテゴリ | <ul><li>管理</li></ul> |
-| Operation | <ul><li>ロール割り当ての作成</li><li>ロール割り当ての削除</li><li>カスタムのロール定義の作成または更新</li><li>カスタムのロール定義の削除</li></ul> |
+| 操作 | <ul><li>ロール割り当ての作成</li><li>ロール割り当ての削除</li><li>カスタムのロール定義の作成または更新</li><li>カスタムのロール定義の削除</li></ul> |
 
 アクティビティ ログの詳細については、「[リソースのアクションを監査するアクティビティ ログの表示](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)」を参照してください。
 

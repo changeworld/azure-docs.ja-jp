@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 474000d1d4d7e1358682d1421125d482e3782049
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60381411"
 ---
 # <a name="using-the-sync-service-manager-operations-tab"></a>Sync Service Manager の [操作] タブの使用
@@ -35,19 +35,19 @@ ms.locfileid: "60381411"
 
 **[Status]** (ステータス) 列は最も重要な情報であり、実行関連で最も深刻な問題を示します。 最も一般的なステータスを調査の優先度に基づいて簡単にまとめると次のようになります (* はエラー文字列が入ることを意味します)。
 
-| Status | Comment (コメント) |
+| Status | 解説 |
 | --- | --- |
 | stopped-\* |実行を完了できませんでした。 たとえば、リモート システムがダウンし、連絡できない場合などです。 |
 | stopped-error-limit |エラーの数が 5,000 を超えています。 大量のエラーに起因し、実行が自動的に停止しました。 |
 | completed-\*-errors |実行は完了しましたが、エラーが発生し (5,000 件未満)、調査が必要です。 |
 | completed-\*-warnings |実行は完了しましたが、一部のデータが予想と異なります。 エラーがある場合には通常、このメッセージは単なる症状の 1 つにすぎません。 エラーを解決するまでは、警告を調査しないでください。 |
-| 成功 |問題ありません。 |
+| success |問題ありません。 |
 
 行を選択すると、下の領域が更新され、実行の詳細が表示されます。 下の領域の左端には、 **Step #** (# は番号) という一覧が表示されることがあります。 これは、フォレストに複数のドメインがあり、手順が各ドメインを表す場合にのみ表示されます。 ドメイン名は **[Partition]** (パーティション) という見出しにあります。 **[Synchronization Statistics (同期統計)]** には、処理された変更の数に関する詳細が表示されます。 リンクをクリックすると、変更されたオブジェクトの一覧を取得できます。 オブジェクトにエラーがある場合、 **[Synchronization Errors (同期エラー)]** の下に表示されます。
 
 詳しくは、[同期していないオブジェクトのトラブルシューティング](tshoot-connect-object-not-syncing.md)に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure AD Connect Sync](how-to-connect-sync-whatis.md) の構成に関するページをご覧ください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

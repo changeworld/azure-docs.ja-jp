@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
 ms.openlocfilehash: ce49dcaa06288ba9e7a4d232338c727064d59685
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894839"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232175"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>StorSimple デバイス コントローラーを管理する
 
@@ -117,7 +117,7 @@ Microsoft Azure StorSimple デバイスを出荷時の設定にリセットす�
    
     `Reset-HcsFactoryDefault`
    
-    代わりに、1 つのコントローラーだけをリセットするには、`-scope` パラメーターを指定して [Reset-HcsFactoryDefault](https://technet.microsoft.com/library/dn688132.aspx) コマンドレットを使用します。
+    代わりに、1 つのコントローラーだけをリセットするには、[ パラメーターを指定して ](https://technet.microsoft.com/library/dn688132.aspx)Reset-HcsFactoryDefault`-scope` コマンドレットを使用します。
    
     システムが何度か再起動されます。 リセットが正常に完了すると、その旨通知されます。 このプロセスの所要時間はシステムのモデルによって異なります。8100 デバイスの場合は 45 ～ 60 分、8600 の場合は 60 ～ 90 分かかります。
    

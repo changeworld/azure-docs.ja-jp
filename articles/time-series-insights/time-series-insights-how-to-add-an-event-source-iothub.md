@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 01/30/2020
 ms.custom: seodec18
 ms.openlocfilehash: 3ea73e2ca20faea30294bc5d5e1788415095c39f
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76905373"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>Time Series Insights 環境に IoT Hub イベント ソースを追加する
@@ -102,7 +102,7 @@ ms.locfileid: "76905373"
 
 1. IoT Hub に追加した、専用の Time Series Insights コンシューマー グループ名を追加します。
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 1. イベント ソースの作成後、Time Series Insights は自動的に環境へのデータのストリーミングを開始します。
 

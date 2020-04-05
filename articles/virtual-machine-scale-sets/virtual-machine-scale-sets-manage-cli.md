@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: cynthn
 ms.openlocfilehash: d8f40708cf5a9989146a72e2093de7bad47ffde9
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76275748"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLI を使用した仮想マシン スケール セットの管理

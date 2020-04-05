@@ -18,14 +18,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 510e2648db3076a0e3ee2535c6058f7ed212f558
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 9f8697332d34fc044c805db6c6595fdf067ed054
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387497"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80127201"
 ---
-# <a name="tutorial-send-location-based-push-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>チュートリアル:Azure Notification Hubs と Bing Spatial Data を使用して場所に基づいたプッシュ通知を送信する
+# <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>チュートリアル:Notification Hubs と Bing Spatial Data を使用して場所に基づいたプッシュ通知を送信する
 
 このチュートリアルでは、Azure Notification Hubs と Bing Spatial Data を使用して場所に基づいたプッシュ通知を送信する方法について学習します。
 
@@ -389,7 +389,7 @@ ms.locfileid: "72387497"
 
     ![](./media/notification-hubs-geofence/notification-hubs-test-notification.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このソリューションを運用環境に対応させるには、いくつかの手順を実行する必要があります。
 

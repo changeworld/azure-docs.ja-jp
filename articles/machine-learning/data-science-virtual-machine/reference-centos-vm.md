@@ -9,10 +9,10 @@ ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
 ms.openlocfilehash: db49a9f5e0e6675d93cb58d6af9c92fac21e8b74
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77525840"
 ---
 # <a name="reference-centos-linux-data-science-virtual-machine"></a>リファレンス: CentOS (Linux) Data Science Virtual Machine
@@ -236,7 +236,7 @@ R と Python のモデルを Azure Machine Learning にデプロイする方法�
 
 ## <a name="machine-learning-tools"></a>機械学習ツール
 
-DSVM には、プリコンパイルされてローカルにプレインストールされたいくつかの機械学習ツールとアルゴリズムが付属しています。 チェックの内容は次のとおりです
+DSVM には、プリコンパイルされてローカルにプレインストールされたいくつかの機械学習ツールとアルゴリズムが付属しています。 これには以下が含まれます。
 
 * **Microsoft Cognitive Toolkit**: ディープ ラーニングのツールキット。
 * **Vowpal Wabbit**: 高速オンライン学習アルゴリズム。

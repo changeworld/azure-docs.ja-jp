@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: cynthn
 ms.openlocfilehash: 6bc319ea50da4ff6a654b2c9ab09bbe218695533
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76278102"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>仮想マシン スケール セットへのアプリケーションのデプロイ
@@ -29,7 +29,7 @@ Azure プラットフォーム イメージの 1 つを使用してスケール 
 - [Azure PowerShell](tutorial-use-custom-image-powershell.md)
 
 
-## <a name="already-provisioned"></a>カスタム スクリプト拡張機能を使用してアプリケーションをインストールする
+## <a name="install-an-app-with-the-custom-script-extension"></a><a name="already-provisioned"></a>カスタム スクリプト拡張機能を使用してアプリケーションをインストールする
 カスタム スクリプト拡張機能は、Azure VM でスクリプトをダウンロードし、実行します。 この拡張機能は、デプロイ後の構成、ソフトウェアのインストール、その他の構成や管理タスクに役立ちます。 スクリプトは、Azure ストレージや GitHub からダウンロードできます。また、拡張機能の実行時に Azure Portal に提供することもできます。 カスタム スクリプト拡張機能を使用してアプリをインストールする方法の詳細については、次のチュートリアルを参照してください。
 
 - [Azure CLI](tutorial-install-apps-cli.md)
@@ -91,7 +91,7 @@ cloud-init はディストリビューション全体でも有効です。 た�
 
 詳細については、*cloud-init.txt* ファイルの例を含む「[Use cloud-init to customize Azure VMs](../virtual-machines/linux/using-cloud-init.md)」(cloud-init を使用して Azure VM をカスタマイズする) を参照してください。
 
-スケール セットを作成して cloud-init ファイルを使用するには、[az vmss create](/cli/azure/vmss) コマンドに `--custom-data` パラメーターを追加し、cloud-init ファイルの名前を指定します。 次の例では、*myScaleSet* という名前のスケール セットを *myResourceGroup* に作成し、*cloud-init.txt* という名前のファイルを使用して VM インスタンスを構成します。 独自の名前を次のように入力します。
+スケール セットを作成して cloud-init ファイルを使用するには、`--custom-data`az vmss create[ コマンドに ](/cli/azure/vmss) パラメーターを追加し、cloud-init ファイルの名前を指定します。 次の例では、*myScaleSet* という名前のスケール セットを *myResourceGroup* に作成し、*cloud-init.txt* という名前のファイルを使用して VM インスタンスを構成します。 独自の名前を次のように入力します。
 
 ```azurecli
 az vmss create \

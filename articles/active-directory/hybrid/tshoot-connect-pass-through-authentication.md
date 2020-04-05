@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae83cea866367fa6a6596caa683d0287bea96c29
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60456181"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Azure Active Directory パススルー認証のトラブルシューティング
@@ -44,7 +44,7 @@ ms.locfileid: "60456181"
 
 ユーザーがパススルー認証を使用してサインインできない場合、Azure AD のサインイン画面に、次のようなユーザー向けエラーの 1 つが表示されることがあります。 
 
-|Error|説明|解決策
+|エラー|説明|解像度
 | --- | --- | ---
 |AADSTS80001|Unable to connect to Active Directory (Active Directory に接続できません)|エージェント サーバーが、パスワードを検証する必要のあるユーザーと同じ AD フォレストのメンバーであり、Active Directory に接続できることを確認します。  
 |AADSTS8002|A timeout occurred connecting to Active Directory (Active Directory への接続中にタイムアウトが発生しました)|Active Directory が使用可能で、エージェントからの要求に応答していることを確認します。
@@ -60,14 +60,14 @@ ms.locfileid: "60456181"
 
 [Azure Active Directory 管理センター](https://aad.portal.azure.com/)で **[Azure Active Directory]**  ->  **[サインイン]** に移動し、特定のユーザーのサインイン アクティビティをクリックします。 **[サインインのエラー コード]** フィールドを探します。 次の表を使用して、そのフィールドの値を、失敗の理由と解決策にマップします。
 
-|サインイン エラー コード|サインインが失敗した理由|解決策
+|サインイン エラー コード|サインインが失敗した理由|解像度
 | --- | --- | ---
 | 50144 | ユーザーの Active Directory パスワードの有効期限が切れています。 | オンプレミスの Active Directory でユーザーのパスワードをリセットします。
 | 80001 | 利用できる認証エージェントがありません。 | 認証エージェントをインストールして登録します。
 | 80002 | 認証エージェントのパスワード検証要求がタイムアウトしました。 | 認証エージェントから Active Directory に到達可能かどうかを調べます。
 | 80003 | 認証エージェントが無効な応答を受信しました。 | 複数のユーザーにわたって問題が一貫して再現される場合は、Active Directory の構成を確認します。
 | 80004 | サインイン要求で使用されたユーザー プリンシパル名 (UPN) が正しくありません。 | 正しいユーザー名でサインインするようユーザーに求めます。
-| 80005 | 認証エージェント:エラーが発生しました。 | 一時的なエラーです。 後でもう一度やり直してください。
+| 80005 | 認証エージェント: エラーが発生しました。 | 一時的なエラーです。 後で再試行してください。
 | 80007 | 認証エージェントが Active Directory に接続できません。 | 認証エージェントから Active Directory に到達可能かどうかを調べます。
 | 80010 | 認証エージェントはパスワードを復号化できません。 | 一貫して問題を再現できる場合は、新しい認証エージェントをインストールして登録します。 また、現在のものはアンインストールします。 
 | 80011 | 認証エージェントは復号化キーを取得できません。 | 一貫して問題を再現できる場合は、新しい認証エージェントをインストールして登録します。 また、現在のものはアンインストールします。

@@ -11,11 +11,11 @@ ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
 ms.openlocfilehash: aa90655ecb14abe38ec8fdfc6c18e7d292abbef3
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116541"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222369"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>チュートリアル:最初の ML モデルをトレーニングする
 
@@ -133,7 +133,7 @@ for alpha in alphas:
 experiment
 ```
 
-<table style="width:100%"><tr><th>Name</th><th>ワークスペース</th><th>レポート ページ</th><th>ドキュメント ページ</th></tr><tr><td>diabetes-experiment</td><td><自分のワークスペースの名前></td><td>Azure portal へのリンク</td><td>ドキュメントへのリンク</td></tr></table>
+<table style="width:100%"><tr><th>名前</th><th>ワークスペース</th><th>レポート ページ</th><th>ドキュメント ページ</th></tr><tr><td>diabetes-experiment</td><td><自分のワークスペースの名前></td><td>Azure portal へのリンク</td><td>ドキュメントへのリンク</td></tr></table>
 
 ## <a name="view-training-results-in-portal"></a>ポータルでトレーニング結果を表示する
 

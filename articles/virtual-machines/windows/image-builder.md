@@ -7,14 +7,14 @@ ms.date: 07/31/2019
 ms.topic: article
 ms.service: virtual-machines-windows
 manager: gwallace
-ms.openlocfilehash: 9dc4909db5560be6eb082dbad85d4b2d42113bdd
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: e82d82dac833f7455e3d83d7e11c0c57c4eea816
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828699"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80238803"
 ---
-# <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>更新:Azure Image Builder で Windows VM を作成する
+# <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>プレビュー:Azure Image Builder で Windows VM を作成する
 
 この記事では、Azure VM Image Builder を使用して、カスタマイズされた Windows イメージを作成する方法について説明します。 この記事の例では、イメージのカスタマイズに[カスタマイザー](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#properties-customize)を使用します。
 - PowerShell (ScriptUri) - [PowerShell スクリプト](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1)をダウンロードし、実行します。
@@ -85,7 +85,7 @@ imageName=aibWinImage
 ```azurecli-interactive
 subscriptionID=<Your subscription ID>
 ```
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 このリソース グループは、イメージ構成テンプレート成果物およびイメージを格納するために使用されます。
 
 
@@ -210,6 +210,7 @@ dir c:\
 完了したら、リソースを削除します。
 
 ### <a name="delete-the-image-builder-template"></a>Image Builder テンプレートを削除する
+
 ```azurecli-interactive
 az resource delete \
     --resource-group $imageResourceGroup \
@@ -218,11 +219,12 @@ az resource delete \
 ```
 
 ### <a name="delete-the-image-resource-group"></a>イメージ リソース グループを削除する
+
 ```azurecli-interactive
 az group delete -n $imageResourceGroup
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事で使用されている .json ファイルのコンポーネントの詳細については、[Image Builder テンプレートのリファレンス](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。

@@ -13,10 +13,10 @@ ms.topic: conceptual
 robots: noindex
 ms.date: 01/22/2018
 ms.openlocfilehash: dbbbdebdcf1db7afe485166f5744f2291b757d50
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74979004"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory - .NET API の変更ログ
@@ -62,7 +62,7 @@ ms.locfileid: "74979004"
 * [EnableStaging](https://msdn.microsoft.com/library/mt767916.aspx) プロパティと [StagingSettings](https://msdn.microsoft.com/library/mt767918.aspx) プロパティを CopyActivity に追加しました。 機能の詳細については、「 [ステージング コピー](data-factory-copy-activity-performance.md#staged-copy) 」を参照してください。
 
 ### <a name="bug-fix"></a>バグの修正
-* [ActivityWindowsByActivityListParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.activitywindowsbyactivitylistparameters.aspx) インスタンスを受け取る [ActivityWindowOperationExtensions.List](https://msdn.microsoft.com/library/mt767915.aspx) メソッドのオーバーロードを導入しました。
+* [ActivityWindowsByActivityListParameters](https://msdn.microsoft.com/library/mt767915.aspx) インスタンスを受け取る [ActivityWindowOperationExtensions.List](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.activitywindowsbyactivitylistparameters.aspx) メソッドのオーバーロードを導入しました。
 * CopySink で [WriteBatchSize](https://msdn.microsoft.com/library/dn884293.aspx) と [WriteBatchTimeout](https://msdn.microsoft.com/library/dn884245.aspx) が、省略可能としてマークされました。
 
 ## <a name="version-480"></a>バージョン 4.8.0
@@ -116,7 +116,7 @@ ms.locfileid: "74979004"
 
 ## <a name="version-420"></a>バージョン 4.2.0
 ### <a name="feature-additions"></a>機能の追加
-* 新しいアクティビティの種類 [AzureMLUpdateResourceActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremlupdateresourceactivity.aspx) が追加されました。 アクティビティの詳細については、「[更新リソース アクティビティを使用して Azure ML モデルを更新する](data-factory-azure-ml-batch-execution-activity.md)」を参照してください。
+* 次の新しいアクティビティの種類が追加されました。[AzureMLUpdateResourceActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremlupdateresourceactivity.aspx) です。 アクティビティの詳細については、「[更新リソース アクティビティを使用して Azure ML モデルを更新する](data-factory-azure-ml-batch-execution-activity.md)」を参照してください。
 * 新しい省略可能なプロパティ [updateResourceEndpoint](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.updateresourceendpoint.aspx) が [AzureMLLinkedService クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.aspx)に追加されました。
 * [LongRunningOperationInitialTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationinitialtimeout.aspx) プロパティと [LongRunningOperationRetryTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationretrytimeout.aspx) プロパティが [DataFactoryManagementClient](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.aspx) クラスに追加されました。
 * Data Factory サービスへのクライアントの呼び出しのタイムアウトの構成が許可されました。
@@ -154,7 +154,7 @@ ms.locfileid: "74979004"
 | 以前の名前 | 新しい名前 |
 |:--- |:--- |
 | ITableOperations |[IDatasetOperations](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.idatasetoperations.aspx) |
-| テーブル |[Dataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.dataset.aspx) |
+| テーブル |[データセット](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.dataset.aspx) |
 | TableProperties |[DatasetProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetproperties.aspx) |
 | TableTypeProprerties |[DatasetTypeProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasettypeproperties.aspx) |
 | TableCreateOrUpdateParameters |[DatasetCreateOrUpdateParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdateparameters.aspx) |
@@ -182,4 +182,4 @@ ms.locfileid: "74979004"
 
 ### <a name="feature-additions"></a>機能の追加
 * [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx) クラスでは、Azure SQL Data Warehouse へのべき等コピーをサポートするために、**SliceIdentifierColumnName** と **SqlWriterCleanupScript** の 2 つの新しいプロパティがサポートされるようになりました。 これらのプロパティの詳細については、[Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md) に関する記事をご覧ください。
-* コピー アクティビティの一環として、Azure SQL Database ソースと Azure SQL Data Warehouse ソースに対するストアド プロシージャの実行がサポートされるようになりました。 [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) および [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) クラスには、プロパティ **SqlReaderStoredProcedureName** および **StoredProcedureParameters** があります。 これらのプロパティの詳細については、Azure.com の [Azure SQL Database](data-factory-azure-sql-connector.md#sqlsource) と [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) に関する記事をご覧ください。  
+* コピー アクティビティの一環として、Azure SQL Database ソースと Azure SQL Data Warehouse ソースに対するストアド プロシージャの実行がサポートされるようになりました。 [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) クラスと [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) クラスには、**SqlReaderStoredProcedureName** プロパティと **StoredProcedureParameters** プロパティがあります。 これらのプロパティの詳細については、Azure.com の [Azure SQL Database](data-factory-azure-sql-connector.md#sqlsource) と [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) に関する記事をご覧ください。  

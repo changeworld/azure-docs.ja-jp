@@ -7,10 +7,10 @@ ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc
 ms.openlocfilehash: 1dfcbec9530a66570244e8168faa84bfe0759038
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74685090"
 ---
 # <a name="upload-files-to-a-web-app-using-ftp"></a>FTP を使用して Web アプリにファイルをアップロードする
@@ -37,14 +37,14 @@ Remove-AzResourceGroup -Name $webappname -Force
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | App Service プランを作成します。 |
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Web アプリを作成します。 |
 | [Get-AzWebAppPublishingProfile](/powershell/module/az.websites/get-azwebapppublishingprofile) | Web アプリの発行プロファイルを取得します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

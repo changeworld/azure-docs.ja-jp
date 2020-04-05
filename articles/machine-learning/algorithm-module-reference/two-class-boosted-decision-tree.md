@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: 1d144a48f79e59b35c88c5b338747d3186ebceda
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77920741"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>2 クラス ブースト デシジョン ツリー モジュール
@@ -65,7 +65,7 @@ ms.locfileid: "77920741"
   
     + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、タグ付けされたデータセットと[モデルのトレーニング](./train-model.md) モジュールを接続します。  
    
-## <a name="results"></a>[結果]
+## <a name="results"></a>結果
 
 トレーニングの完了後:
 

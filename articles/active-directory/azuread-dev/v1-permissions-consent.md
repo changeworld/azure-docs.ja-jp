@@ -5,24 +5,21 @@ services: active-directory
 documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: 6c0dc122-2cd8-4d70-be5a-3943459d308e
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ryanwi
-ms.reviewer: jesakowi, justhu
+ms.reviewer: jesakowi
 ms.custom: aaddev
-ms.openlocfilehash: cde2d286be7180458d997f6db06e4ff16a993dff
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: 08def16f53cb0f544513c39a85f26e97c3606a42
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163356"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154476"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Azure Active Directory v1.0 エンドポイントでのアクセス許可と同意
 

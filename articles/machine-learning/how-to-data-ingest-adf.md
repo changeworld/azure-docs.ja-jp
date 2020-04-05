@@ -12,10 +12,10 @@ manager: davete
 ms.reviewer: larryfr
 ms.date: 03/01/2020
 ms.openlocfilehash: 5b4ed40048aab815397c9726098880b2125b732c
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78274571"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>Azure Data Factory を使用したデータ インジェスト

@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 09/16/2019
 ms.openlocfilehash: 88e42fd9626276f6c77b46b33c138407f91d06ca
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75649291"
 ---
 # <a name="custom-role-definition-artifact-in-azure-managed-applications"></a>Azure Managed Applications のカスタム ロールの定義アーティファクト

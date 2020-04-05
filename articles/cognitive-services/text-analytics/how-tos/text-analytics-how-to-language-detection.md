@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 07/30/2019
 ms.author: aahi
 ms.openlocfilehash: d34f3a03e1bcd35c270d13c4dda57d0394a36e4b
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70387784"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>例:Text Analytics を使用して言語を検出する
@@ -159,7 +159,7 @@ JSON ドキュメントは、次の形式である必要があります: ID と�
 
 たとえば、英語とフランス語の両方に共通の "Impossible" が限られたコンテキストで与えられた場合、応答は "US" の国ヒントに基づきます。 テキストがフランスに由来することがわかっている場合は、それをヒントとして指定することができます。
 
-**Input (入力)**
+**入力**
 
 ```json
     {
@@ -179,7 +179,7 @@ JSON ドキュメントは、次の形式である必要があります: ID と�
 
 これで、サービスでより適切な判断を行うための追加のコンテキストが追加されました。 
 
-**Output**
+**出力**
 
 ```json
     {
@@ -228,7 +228,7 @@ JSON ドキュメントは、次の形式である必要があります: ID と�
 
 同じドキュメント内に混合言語のコンテンツが含まれている場合は、コンテンツの最大の表現で言語が返されますが、評価の肯定度は低くなります。 評価には、評価の限界強度が反映されます。 次の例では、入力は英語、スペイン語、フランス語の混在です。 アナライザーは各セグメント内の文字をカウントして、主要な言語を特定します。
 
-**Input (入力)**
+**入力**
 
 ```json
     {
@@ -241,7 +241,7 @@ JSON ドキュメントは、次の形式である必要があります: ID と�
     }
 ```
 
-**Output**
+**出力**
 
 結果の出力は主要な言語で構成され、スコアは 1.0 未満となります。この数値が小さいほど、信頼度レベルは低くなります。
 
@@ -277,7 +277,7 @@ JSON ドキュメントは、次の形式である必要があります: ID と�
  [Text Analytics の概要](../overview.md) [よく寄せられる質問 (FAQ)](../text-analytics-resource-faq.md)</br>
  [Text Analytics 製品ページ](//go.microsoft.com/fwlink/?LinkID=759712)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [感情を分析する](text-analytics-how-to-sentiment-analysis.md)

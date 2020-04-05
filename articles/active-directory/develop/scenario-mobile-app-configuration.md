@@ -16,10 +16,10 @@ ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: fc25f13d0b0b8a264dcd47a5fdebb0533e93fb55
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77132486"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Web API を呼び出すモバイル アプリを構成する

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: a037ddc5a43b288349b17dc7d954991a2c634aa3
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931720"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228151"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>StorSimple Snapshot Manager を使用した StorSimple デバイスの接続と管理
 ## <a name="overview"></a>概要
@@ -27,7 +27,7 @@ StorSimple Snapshot Manager の **[スコープ]** ウィンドウのノード�
 
 ![接続されているデバイス](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_connect_devices.png)
 
-"**図 1:StorSimple Snapshot Manager が接続されたデバイス** 
+**図 1: StorSimple Snapshot Manager が接続されたデバイス** 
 
 **[表示]** での選択内容に従って、 **[結果]** ウィンドウには各デバイスに関する次の情報が表示されます (表示の構成の詳細については、「[[表示] メニュー](storsimple-use-snapshot-manager.md#view-menu)」を確認してください)。
 
@@ -182,7 +182,7 @@ StorSimple デバイスを追加または置き換えるには、以下の手順
 StorSimple device に障害が発生し、スタンバイ (フェールオーバー) デバイスによって置き換えられている場合は、次の手順に従って新しいデバイスに接続し、関連するバックアップを表示します。
 
 #### <a name="to-connect-to-a-new-device-after-failover"></a>フェールオーバー後に新しいデバイスに接続するには
-1. 新しいデバイスへの iSCSI 接続を再構成します。 手順については、「手順 7:ボリュームをマウント、初期化、フォーマットする」(「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-8000-deployment-walkthrough-u2.md)」) を参照してください。
+1. 新しいデバイスへの iSCSI 接続を再構成します。 手順については、「 [オンプレミスの StorSimple デバイスのデプロイ](storsimple-8000-deployment-walkthrough-u2.md)」にある「手順 7: ボリュームをマウント、初期化、フォーマットする」をご覧ください。
 
 > [!NOTE]
 > 新しい StorSimple デバイスの IP アドレスが古いものと同じ IP アドレスである場合は、古い構成を接続できる可能性があります。
@@ -204,7 +204,7 @@ StorSimple device に障害が発生し、スタンバイ (フェールオーバ
    2. **[サービス]** ウィンドウで、 **[Microsoft StorSimple Management Service]** を選択します。
    3. 右側のウィンドウで、 **[Microsoft StorSimple Management Service]** の下にある **[サービスを再起動する]** をクリックします。
 4. StorSimple Snapshot Manager を開始します。
-5. 新しい StorSimple デバイスを構成するには、手順 2 のStorSimple デバイスの接続に関するセクション (「[StorSimple Snapshot Manager MMC スナップインのデプロイ](storsimple-snapshot-manager-deployment.md)」) を実行します。
+5. 新しい StorSimple デバイスを構成するには、「 [StorSimple Snapshot Manager のデプロイ](storsimple-snapshot-manager-deployment.md)」にある「手順 2: StorSimple Snapshot Manager をデバイスに接続します」の手順に従ってください。
 6. **[スコープ]** ウィンドウの最上位ノード (StorSimple Snapshot Manager など) を右クリックし、 **[インポートの表示の切り替え]** をクリックします。 
 7. インポートされたボリューム グループとバックアップが StorSimple Snapshot Manager に表示されると、メッセージが表示されます。 **[OK]** をクリックします。
 

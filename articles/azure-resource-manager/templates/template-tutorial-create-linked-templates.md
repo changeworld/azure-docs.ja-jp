@@ -5,16 +5,16 @@ author: mumian
 ms.date: 12/03/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: dab69c32f7277cd5d746e001b36118e673401bca
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: e1cce566fb7aab286c57f32d9348e51dd0a7c1ee
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250127"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239333"
 ---
-# <a name="tutorial-create-linked-azure-resource-manager-templates"></a>チュートリアル:リンクされた Azure Resource Manager テンプレートの作成
+# <a name="tutorial-create-linked-arm-templates"></a>チュートリアル:リンクされた ARM テンプレートの作成
 
-リンクされた Azure Resource Manager テンプレートを作成する方法について説明します。 リンクされたテンプレートを使用すると、あるテンプレートから別のテンプレートを呼び出すことができます。 これは、テンプレートをモジュール化する場合に役立ちます。 このチュートリアルでは、「[チュートリアル: 依存リソースを含む Azure Resource Manager テンプレートを作成する](./template-tutorial-create-templates-with-dependent-resources.md)」で使用したものと同じテンプレートを使用し、仮想マシン、仮想ネットワーク、その他の依存リソース (ストレージ アカウントを含む) を作成します。 リンクされたテンプレートにストレージ アカウントのリソース作成を分離します。
+リンクされた Azure Resource Manager (ARM) テンプレートを作成する方法について説明します。 リンクされたテンプレートを使用すると、あるテンプレートから別のテンプレートを呼び出すことができます。 これは、テンプレートをモジュール化する場合に役立ちます。 このチュートリアルでは、「[チュートリアル: 依存リソースを含む ARM テンプレートを作成する](./template-tutorial-create-templates-with-dependent-resources.md)」で使用したものと同じテンプレートを使用し、仮想マシン、仮想ネットワーク、その他の依存リソース (ストレージ アカウントを含む) を作成します。 リンクされたテンプレートにストレージ アカウントのリソース作成を分離します。
 
 リンクされたテンプレートの呼び出しは、関数の呼び出しと似ています。  また、リンクされたテンプレートにパラメーター値を渡す方法と、リンクされたテンプレートから "戻り値" を取得する方法についても説明します。
 
@@ -39,18 +39,18 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-* Visual Studio Code と Resource Manager ツール拡張機能。 「[Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](use-vs-code-to-create-template.md)」を参照してください。
+* Visual Studio Code と Resource Manager ツール拡張機能。 [Visual Studio Code を使って ARM テンプレートを作成する方法](use-vs-code-to-create-template.md)に関するページを参照してください。
 * セキュリティを向上させるには、生成されたパスワードを仮想マシンの管理者アカウントに対して使用します。 パスワードを生成するためのサンプルを次に示します。
 
     ```console
     openssl rand -base64 32
     ```
 
-    Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、「[チュートリアル:Resource Manager テンプレートのデプロイで Azure Key Vault を統合する](./template-tutorial-use-key-vault.md)」を参照してください。 パスワードは 3 か月ごとに更新することをお勧めします。
+    Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、「[チュートリアル:ARM テンプレートのデプロイで Azure Key Vault を統合する](./template-tutorial-use-key-vault.md)」を参照してください。 パスワードは 3 か月ごとに更新することをお勧めします。
 
 ## <a name="open-a-quickstart-template"></a>クイック スタート テンプレートを開く
 
-Azure クイック スタート テンプレートは、Resource Manager テンプレートのリポジトリです。 テンプレートを最初から作成しなくても、サンプル テンプレートを探してカスタマイズすることができます。 このチュートリアルで使用するテンプレートは、「[Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)」(単純な Windows VM をデプロイする) と呼ばれます。 これは「[チュートリアル: 依存リソースを含む Azure Resource Manager テンプレートを作成する](./template-tutorial-create-templates-with-dependent-resources.md)」で使用されたものと同じテンプレートです。 以下と同じ使用するテンプレートの 2 つのコピーを保存します。
+Azure クイックスタート テンプレートは、ARM テンプレートのリポジトリです。 テンプレートを最初から作成しなくても、サンプル テンプレートを探してカスタマイズすることができます。 このチュートリアルで使用するテンプレートは、「[Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)」(単純な Windows VM をデプロイする) と呼ばれます。 これは「[チュートリアル: 依存リソースを含む ARM テンプレートを作成する](./template-tutorial-create-templates-with-dependent-resources.md)」で使用したテンプレートと同じです。 以下と同じ使用するテンプレートの 2 つのコピーを保存します。
 
 * **メイン テンプレート**: ストレージ アカウントを除くすべてのリソースを作成します。
 * **リンクされたテンプレート**: ストレージ アカウントを作成します。
@@ -165,7 +165,7 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 
 ## <a name="upload-the-linked-template"></a>リンクされたテンプレートをアップロードする
 
-メイン テンプレートとリンクされたテンプレートには、デプロイを実行する場所からアクセス可能にする必要があります。 このチュートリアルでは、「[チュートリアル: 依存リソースを含む Azure Resource Manager テンプレートを作成する](./template-tutorial-create-templates-with-dependent-resources.md)」で使用されたものと同じテンプレートです。 メイン テンプレート (azuredeploy.json) は、シェルにアップロードされます。 リンクされたテンプレート (linkedTemplate.json) は、別の場所で安全に共有する必要があります。 次の PowerShell スクリプトでは、Azure Storage アカウントが作成され、ストレージ アカウントにテンプレートがアップロードされ、テンプレート ファイルへの制限付きアクセスを付与する目的で SAS トークンが生成されます。 チュートリアルを簡単にするために、スクリプトによって、リンクされたテンプレートが完全な形で GitHub リポジトリからダウンロードされます。 自分で作成したリンク済みテンプレートを使用する場合、[Cloud Shell](https://shell.azure.com) を使用してリンク済みテンプレートをアップロードし、独自のリンク済みテンプレートを使用するようにスクリプトを変更します。
+メイン テンプレートとリンクされたテンプレートには、デプロイを実行する場所からアクセス可能にする必要があります。 このチュートリアルでは、「[チュートリアル: 依存リソースを含む ARM テンプレートを作成する](./template-tutorial-create-templates-with-dependent-resources.md)」で使用した、Cloud シェル デプロイ方法を使用します。 メイン テンプレート (azuredeploy.json) は、シェルにアップロードされます。 リンクされたテンプレート (linkedTemplate.json) は、別の場所で安全に共有する必要があります。 次の PowerShell スクリプトでは、Azure Storage アカウントが作成され、ストレージ アカウントにテンプレートがアップロードされ、テンプレート ファイルへの制限付きアクセスを付与する目的で SAS トークンが生成されます。 チュートリアルを簡単にするために、スクリプトによって、リンクされたテンプレートが完全な形で GitHub リポジトリからダウンロードされます。 自分で作成したリンク済みテンプレートを使用する場合、[Cloud Shell](https://shell.azure.com) を使用してリンク済みテンプレートをアップロードし、独自のリンク済みテンプレートを使用するようにスクリプトを変更します。
 
 > [!NOTE]
 > スクリプトによって、8 時間以内に使用するように SAS トークンに制限が与えられます。 このチュートリアルを完了するためにもっと時間が必要な場合、有効期限を延ばしてください。
@@ -266,7 +266,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="configure-dependency"></a>依存関係を構成する
 
-「[チュートリアル: 依存リソースを含む Azure Resource Manager テンプレートを作成する](./template-tutorial-create-templates-with-dependent-resources.md)」の内容を思い出してください。仮想マシンのリソースはストレージ アカウントに依存します。
+「[チュートリアル: 依存リソースを含む ARM テンプレートを作成する](./template-tutorial-create-templates-with-dependent-resources.md)」の内容を思い出してください。仮想マシンのリソースはストレージ アカウントに依存します。
 
 ![Azure Resource Manager テンプレートの依存関係図](./media/template-tutorial-create-linked-templates/resource-manager-template-visual-studio-code-dependency-diagram.png)
 

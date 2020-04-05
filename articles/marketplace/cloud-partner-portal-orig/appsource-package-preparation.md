@@ -1,20 +1,18 @@
 ---
 title: AppSource パッケージの準備 | Azure Marketplace
 description: AppSource パッケージを準備しビルドする方法の説明。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
-manager: Ricardo.Villalobos
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 2c6b78e62afb43562910c872d31e2c9f564040da
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 76f8cbd6cb16b585a7dbda7b2ffa5eeeeb1b68d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73806096"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280611"
 ---
 # <a name="appsource-package-preparation"></a>AppSource パッケージの準備
 
@@ -34,8 +32,8 @@ Package Deployer 用のパッケージは AppSource パッケージの一部に�
 
 Package Deployer 用パッケージを作成するには、次の手順を使用します: [https://msdn.microsoft.com/library/dn688182.aspx](https://msdn.microsoft.com/library/dn688182.aspx)。 完了すると、パッケージは次のアセットから構成されます。
 
-1. パッケージ フォルダー: すべてのソリューション、構成データ、フラット ファイル、およびパッケージの内容が含まれています。 _注:以下の例では、パッケージ フォルダーを "PkgFolder" と想定しています。_
-2. dll:アセンブリには、ご自分のパッケージ用のカスタム コードが含まれています。 _注:以下の例では、このファイルを "MicrosoftSample.dll" と想定しています。_
+1. パッケージ フォルダー: すべてのソリューション、構成データ、フラット ファイル、およびパッケージの内容が含まれています。 _注: 以下の例では、パッケージ フォルダーを "PkgFolder" と想定しています_
+2. dll: アセンブリには、パッケージのカスタム コードが含まれています。 _注: 以下の例では、このファイルを "MicrosoftSample.dll" と想定しています。_
 
 ここで、"**Content_Types.xml**" というファイルを作成する必要があります。このファイルには、パッケージの一部であるアセット拡張子のすべてが一覧表示されます。 ファイルのコード例を次に示します。
 
@@ -112,13 +110,13 @@ input.xml のコード例を次に示します。 下の表の定義を参照し
 |SolutionAnchorName |ソリューション アセットの表示名と説明に使用される Package Deployer におけるソリューション zip ファイルの名前。|
 | StartDate| これは、ソリューション パッケージが利用可能になる日付です。 形式は、MM/DD/YYYY です|
 |EndDate|これは、ソリューション パッケージが利用できなくなる日付です。 形式は、MM/DD/YYYY です |
-|SupportedCountries |これは、このパッケージを参照する必要がある国/地域のコンマ区切りの一覧です。 現在のすべての国番号の一覧については、オンライン サービスにお問い合わせください。 この記事の作成時点では、一覧は次のとおりでした。AE、AL、AM、AO、AR、AT、AU、AZ、BA、BB、BD、BE、BG、BH、BM、BN、BO、BR、BY、CA、CH、CI、CL、CM、CO、CR、CV、CW、CY、CZ、DE、DK、DO、DZ、EC、EE、EG、ES、FI、FR、GB、GE、GH、GR、GT、HK、HN、HR、HU、ID、IE、IL、IN、IQ、IS、IT、JM、JO、JP、KE、KG、KN、KR、KW、KY、KZ、LB、LK、LT、LU、LV、LY、MA、MC、MD、ME、MK、MN、MO、MT、MU、MX、MY、NG、NI、NL、NO、NZ、OM、PA、PE、PH、PK、PL、PR、PS、PT、PY、QA、RO、RS、RU、RW、SA、SE、SG、SI、SK、SN、SV、TH、TM、TN、TR、TT、TW、UA、US、UY、UZ、VE、VI、VN、ZA、ZW |
+|SupportedCountries |これは、このパッケージを参照する必要がある国/地域のコンマ区切りの一覧です。 現在のすべての国番号の一覧については、オンライン サービスにお問い合わせください。 このドキュメントの作成時点では、リストは次のとおりでした: AE、AL、AM、AO、AR、AT、AU、AZ、BA、BB、BD、BE、BG、BH、BM、BN、BO、BR、BY、CA、CH、CI、CL、CM、CO、CR、CV、CW、CY、CZ、DE、DK、DO、DZ、EC、EE、EG、ES、FI、FR、GB、GE、GH、GR、GT、HK、HN、HR、HU、ID、IE、IL、IN、IQ、IS、IT、JM、JO、JP、KE、KG、KN、KR、KW、KY、KZ、LB、LK、LT、LU、LV、LY、MA、MC、MD、ME、MK、MN、MO、MT、MU、MX、MY、NG、NI、NL、NO、NZ、OM、PA、PE、PH、PK、PL、PR、PS、PT、PY、QA、RO、RS、RU、RW、SA、SE、SG、SI、SK、SN、SV、TH、TM、TN、TR、TT、TW、UA、US、UY、UZ、VE、VI、VN、ZA、ZW |
 |LearnMoreLink | このパッケージの詳細情報ページの URL。 |
 |Locales|優先ソリューション UX でサポートする UX 言語ごとの、このノードの 1 つのインスタンス。 このノードには、各言語のロケール、ロゴ、および用語について説明する子ノードが含まれます|
-|Locales:PackageLocale.Code|このノードの言語の LCID。 例:英語 (米国) は 1033|
-|Locales:PackageLocale.IsDefault|これが既定の言語であることを示します。 顧客が選択した UX 言語が利用できない場合、これは、フォールバック言語として使用されます。|
-|Locales:ロゴ|これは、このパッケージに使用するログです。 アイコンのサイズは 32 x 32 です。 許可されている形式は PNG と JPG です|
-|Locales:Terms:PackageTerm.File|これは、ライセンス条項を含む HTML ドキュメントのファイル名です。|
+|Locales: PackageLocale.Code|このノードの言語の LCID。 例: 英語 (米国) は 1033|
+|Locales: PackageLocale.IsDefault|これが既定の言語であることを示します。 顧客が選択した UX 言語が利用できない場合、これは、フォールバック言語として使用されます。|
+|Locales: Logo|これは、このパッケージに使用するログです。 アイコンのサイズは 32 x 32 です。 許可されている形式は PNG と JPG です|
+|Locales:Terms: PackageTerm.File|これは、ライセンス条項を含む HTML ドキュメントのファイル名です。|
 
 ログが表示される位置は次のとおりです。
 

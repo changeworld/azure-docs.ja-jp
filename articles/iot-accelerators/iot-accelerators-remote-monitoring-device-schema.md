@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 12/18/2018
 ms.topic: conceptual
 ms.openlocfilehash: 0f9669d491648ecc621aab27d0908dcc3dc84438
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65823325"
 ---
 # <a name="understand-the-device-model-schema"></a>デバイス モデル スキーマについて
@@ -116,7 +116,7 @@ ms.locfileid: "65823325"
 
 ## <a name="properties"></a>Properties
 
-スキーマの `Properties` セクションでは、デバイスがソリューションに報告するプロパティ値を定義します。 例:
+スキーマの `Properties` セクションでは、デバイスがソリューションに報告するプロパティ値を定義します。 次に例を示します。
 
 ```json
 "Properties": {
@@ -233,7 +233,7 @@ ms.locfileid: "65823325"
 
 既定のシミュレートされたデバイスの JavaScript ファイルは、GitHub 上の [scripts フォルダー](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels/scripts)に表示されます。 慣例により、これらの JavaScript ファイルには、状態の動作を実装するファイルから区別するために **-method** というサフィックスが付いています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、独自のシミュレートされたカスタム デバイス モデルを作成する方法について説明しました。 この記事では、次の方法について説明しました。
 

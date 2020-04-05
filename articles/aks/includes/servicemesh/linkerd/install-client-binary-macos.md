@@ -4,10 +4,10 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 876e05d7b18ac193edbc9cf842ea2c1bf0555d54
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77593730"
 ---
 ## <a name="download-and-install-the-linkerd-linkerd-client-binary"></a>Linkerd の linkerd クライアント バイナリをダウンロードしてインストールする

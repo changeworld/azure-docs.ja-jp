@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
 ms.openlocfilehash: 6ab54e56368e7e26e807e4d1dc0592536dc9374a
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588761"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225695"
 ---
 # <a name="manage-azure-cosmos-db-table-api-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Azure Cosmos DB Table API リソースを管理する
 
 この記事では、Azure Resource Manager テンプレートを使用して Azure Cosmos DB のアカウント、データベース、コンテナーの管理を自動化するさまざまな操作の実行方法について説明します。 この記事に含まれているのは、Table API アカウントの例のみです。他の種類の API アカウントでの例については、[Cassandra](manage-cassandra-with-resource-manager.md)、[Gremlin](manage-gremlin-with-resource-manager.md)、[MongoDB](manage-mongodb-with-resource-manager.md)、[SQL](manage-sql-with-resource-manager.md) 用の Azure Cosmos DB の API での Azure Resource Manager テンプレートの使用に関する記事を参照してください。
 
-## Azure Cosmos アカウントとテーブルを作成する <a id="create-resource"></a>
+## <a name="create-azure-cosmos-account-and-table"></a>Azure Cosmos アカウントとテーブルを作成する <a id="create-resource"></a>
 
 Azure Resource Manager テンプレートを使用して Azure Cosmos DB リソースを作成します。 このテンプレートは、400 RU/秒のスループットで 1 つのテーブルを含む Table API の Azure Cosmos アカウントを作成します。 テンプレートをコピーして次に示すようにデプロイするか、[Azure クイック スタート ギャラリー](https://azure.microsoft.com/resources/templates/101-cosmosdb-table/)にアクセスして Azure portal からデプロイします。 テンプレートをローカル コンピューターにダウンロードするか、新しいテンプレートを作成して、`--template-file` パラメーターでローカル パスを指定することもできます。
 

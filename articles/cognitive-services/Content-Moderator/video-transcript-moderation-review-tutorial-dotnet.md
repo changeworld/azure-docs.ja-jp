@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 2fbd4270221cb23a4f99a0f8155bb1de76472f31
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74976980"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>チュートリアル:ビデオとトランスクリプトのモデレーション
@@ -60,7 +60,7 @@ ms.locfileid: "74976980"
 
 ### <a name="methods-of-program-class"></a>Program クラスのメソッド
 
-|方法|説明|
+|Method|説明|
 |-|-|
 |`Main`|コマンド ラインを解析し、ユーザー入力を収集し、処理を開始します。|
 |`ProcessVideo`|圧縮、アップロード、モデレーションを行って、ビデオ レビューを作成します。|
@@ -121,7 +121,7 @@ ms.locfileid: "74976980"
 
 [!code-csharp[CompressVideo](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/AMSComponent.cs?range=31-59)]
 
-このコードは、次の手順を実行します。
+このコードでは、次の手順を実行します。
 
 - `App.config` 内の構成に必要なデータがすべて含まれていることを確認する
 - `ffmpeg` バイナリが存在することを確認する
@@ -357,7 +357,7 @@ Video review successfully completed...
 Total Elapsed Time: 00:05:56.8420355
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、ビデオ コンテンツ (トランスクリプト コンテンツを含む) をモデレートするアプリケーションを設定し、レビュー ツールでレビューを作成しました。 次は、ビデオのモデレーションについてもっと詳しく学習しましょう。
 

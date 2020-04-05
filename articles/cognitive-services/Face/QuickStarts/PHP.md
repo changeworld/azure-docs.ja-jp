@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:REST API と PHP を使用して画像内の顔を検出する
+title: 'クイック スタート: REST API と PHP を使用して画像内の顔を検出する'
 titleSuffix: Azure Cognitive Services
 description: このクイックスタートでは、PHP で Face REST API を使って画像から顔を検出します。
 services: cognitive-services
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 0f76ec4ce1072b247be7f46610d37190cd282a22
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169738"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>クイック スタート:REST API と PHP を使用して画像内の顔を検出する
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>クイック スタート: REST API と PHP を使用して画像内の顔を検出する
 
 このクイック スタートでは、Azure Face REST API と PHP を使用して、画像から人の顔を検出します。
 

@@ -4,11 +4,11 @@ description: この記事では、コンテナーに対する Azure Monitor に�
 ms.topic: conceptual
 ms.date: 01/24/2020
 ms.openlocfilehash: 1a1f8d690979a846dbf5041999180221752acc0b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843958"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234499"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>コンテナーに対する Azure Monitor エージェントを管理する方法
 

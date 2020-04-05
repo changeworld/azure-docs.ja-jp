@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
 ms.openlocfilehash: de6953b6648613595bc9975b17941b3a453a6d60
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74185976"
 ---
 # <a name="best-practices-for-creating-assessments"></a>評価を作成するためのベスト プラクティス
@@ -96,7 +96,7 @@ CSV ファイル経由で Azure Migrate にインポートされたサーバー�
 - Server Assessment で検出が開始された後で、いくつかの VM が作成されました。 たとえば、過去 1 か月間のパフォーマンス履歴の評価を作成しているのに、ほんの 1 週間前にいくつかの VM が環境内に作成されたとします。 この場合、新しい VM のパフォーマンス データは期間全体を通しては利用できず、信頼度レーティングが低くなります。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 評価の計算方法を[確認](concepts-assessment-calculation.md)します。
 - 評価のカスタマイズ方法を[確認](how-to-modify-assessment.md)します。

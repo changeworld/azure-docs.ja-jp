@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/05/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 5512e44ab52a3c3d957bbc0d0a07a7a1e7b6f50e
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: f60b26756c0affffbd45c8596fdf73d11ffa8e81
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78399581"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80239509"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>クイック スタート:Azure Application Gateway による Web トラフィックの転送 - Azure CLI
 
@@ -171,7 +171,7 @@ Azure によってアプリケーション ゲートウェイが作成される�
 
 Azure はアプリケーション ゲートウェイを作成するために NGINX Web サーバーを必要としませんが、このクイック スタートでは、Azure によってアプリケーション ゲートウェイが正常に作成されたかどうかを確認するために、NGINX をインストールしました。 新しいアプリケーション ゲートウェイのパブリック IP アドレスを取得するには、`az network public-ip show` を使用します。 
 
-```azurepowershell-interactive
+```azurecli-interactive
 az network public-ip show \
   --resource-group myResourceGroupAG \
   --name myAGPublicIPAddress \

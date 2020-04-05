@@ -7,18 +7,18 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: cherylmc
-ms.openlocfilehash: 47ee05113d46f66efd02978fed09cf72edc5ac1c
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: dcca1417aec52fb4bf99d5c480d81995154a68b0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049939"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481978"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Azure CLI の使用による ExpressRoute Direct の構成
 
 Azure ExpressRoute Direct を使用すると、世界中に戦略的に分散されたピアリングの場所で Microsoft のグローバル ネットワークに直接接続できます。 詳しくは、[ExpressRoute Direct の接続](expressroute-erdirect-about.md)に関する記事をご覧ください。
 
-## <a name="resources"></a>リソースを作成する
+## <a name="create-the-resource"></a><a name="resources"></a>リソースを作成する
 
 1. Azure にサインインして、ExpressRoute を含むサブスクリプションを選択します。 ExpressRoute Direct リソースおよび ExpressRoute 回線は、同じサブスクリプション内にある必要があります。 Azure CLI で、次のコマンドを実行します。
 
@@ -51,7 +51,7 @@ Azure ExpressRoute Direct を使用すると、世界中に戦略的に分散さ
 
    **出力例**
   
-   ```azurecli
+   ```output
    [
    {
     "address": "21715 Filigree Court, DC2, Building F, Ashburn, VA 20147",
@@ -118,7 +118,7 @@ Azure ExpressRoute Direct を使用すると、世界中に戦略的に分散さ
 
    **出力例**
 
-   ```azurecli
+   ```output
    {
    "address": "21715 Filigree Court, DC2, Building F, Ashburn, VA 20147",
    "availableBandwidths": [
@@ -156,7 +156,7 @@ Azure ExpressRoute Direct を使用すると、世界中に戦略的に分散さ
 
    **出力例**
 
-   ```azurecli
+   ```output
    {
    "allocationDate": "Wednesday, October 17, 2018",
    "bandwidthInGbps": 100,
@@ -208,7 +208,7 @@ Azure ExpressRoute Direct を使用すると、世界中に戦略的に分散さ
    }  
    ```
 
-## <a name="state"></a>リンクの AdminState を変更する
+## <a name="change-adminstate-for-links"></a><a name="state"></a>リンクの AdminState を変更する
 
 このプロセスは、レイヤー 1 のテストを実行するために使用します。 各交差接続が適切にパッチされ、各ルーター内のプライマリおよびセカンダリのポートに入力されていることを確認してください。
 
@@ -224,7 +224,7 @@ Azure ExpressRoute Direct を使用すると、世界中に戦略的に分散さ
    ```
    **出力例**
 
-   ```azurecli
+   ```output
    {
    "allocationDate": "Wednesday, October 17, 2018",
    "bandwidthInGbps": 100,
@@ -278,7 +278,7 @@ Azure ExpressRoute Direct を使用すると、世界中に戦略的に分散さ
 
    `AdminState = "Disabled"` を使用して、同じ手順でポートを停止させます。
 
-## <a name="circuit"></a>回線を作成する
+## <a name="create-a-circuit"></a><a name="circuit"></a>回線を作成する
 
 既定では、ExpressRoute Direct リソースを含むサブスクリプション内に 10 個の回線を作成できます。 この既定の制限は、Microsoft サポートが増やすことができます。 プロビジョニングされる帯域幅と使用される帯域幅を追跡してください。 プロビジョニングされる帯域幅は、ExpressRoute Direct リソース上のすべての回線の帯域幅の合計です。 使用される帯域幅は、基礎となる物理インターフェイスの実際の使用量です。
 
@@ -297,7 +297,7 @@ ExpressRoute Direct リソース上に回線を作成します。
 
   **出力例**
 
-  ```azurecli
+  ```output
   {
   "allowClassicOperations": false,
   "allowGlobalReach": false,

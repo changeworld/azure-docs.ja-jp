@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: b2d763454b86570b57a16fb9ae2107a2a2bcd23d
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73744377"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>.NET を使用してビデオ トランスクリプト レビューを作成する
@@ -44,7 +44,7 @@ SDK サンプルで、Azure から提供される API キーを使用する予�
 
 ![ビデオ デモのサムネイル](images/ams-video-demo-view.PNG)
 
-- マニフェスト **URL** にはこの [Azure Media Services デモ](https://aka.ms/azuremediaplayer?url=https%3A%2F%2Famssamples.streaming.mediaservices.windows.net%2F91492735-c523-432b-ba01-faba6c2206a2%2FAzureMediaServicesPromo.ism%2Fmanifest) ページの URL をコピーします。
+- マニフェスト URL にはこの **Azure Media Services デモ** ページの [URL](https://aka.ms/azuremediaplayer?url=https%3A%2F%2Famssamples.streaming.mediaservices.windows.net%2F91492735-c523-432b-ba01-faba6c2206a2%2FAzureMediaServicesPromo.ism%2Fmanifest) をコピーします。
 
 ## <a name="create-your-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
@@ -139,7 +139,7 @@ public static ContentModeratorClient NewClient()
 
 ## <a name="create-a-video-review"></a>ビデオ レビューを作成する
 
-**ContentModeratorClient.Reviews.CreateVideoReviews** でビデオ レビューを作成します。 詳細については、[API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)に関するページをご覧ください。
+**ContentModeratorClient.Reviews.CreateVideoReviews** でビデオ レビューを作成します。 詳細については、[API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)に関するページを参照してください。
 
 **CreateVideoReviews** では、次のパラメーターが必要です。
 1. MIME の種類が含まれる文字列。"application/json" にしてください。 
@@ -154,7 +154,7 @@ public static ContentModeratorClient NewClient()
 > [!NOTE]
 > **CreateVideoReviews** により IList\<string> が返されます。 これらの文字列には、それぞれビデオ レビューの ID が含まれています。 これらの ID は GUID であり、**ContentId** プロパティの値とは異なります。
 
-名前空間 VideoReviews、クラス Program に次のメソッドの定義を追加します。
+名前空間 VideoReviews、クラス Program に次のメソッド定義を追加します。
 
 ```csharp
 /// <summary>
@@ -190,9 +190,9 @@ private static string CreateReview(ContentModeratorClient client, string id, str
 ```
 
 > [!NOTE]
-> お使いの Content Moderator サービス キーには、Requests per Second (RPS) の速度制限があります。 この制限を超えた場合、SDK は 429 エラー コードを使用して例外をスローします。
+> Content Moderator サービス キーには、秒単位の要求数 (RPS) の制限があります。 この制限を超えた場合、SDK は 429 エラー コードを使用して例外をスローします。
 >
-> 階層なしのキーの RPS は 1 に制限されています。
+> 無料レベルのキーの RPS は 1 に制限されています。
 
 ## <a name="add-transcript-to-video-review"></a>トランスクリプトをビデオ レビューに追加する
 
@@ -201,7 +201,7 @@ private static string CreateReview(ContentModeratorClient client, string id, str
 1. **CreateVideoReviews** によって返されるビデオ レビュー ID。
 1. トランスクリプトを含む**ストリーム** オブジェクト。
 
-トランスクリプトは、WebVTT 形式である必要があります。 詳細については、[WebVTT (Web ビデオ テキスト トラック) 形式に関するページを参照してください](https://www.w3.org/TR/webvtt1/)。
+トランスクリプトは、WebVTT 形式である必要があります。 詳細については、[WebVTT: Web ビデオ テキスト トラック形式](https://www.w3.org/TR/webvtt1/)に関するページをご覧ください。
 
 > [!NOTE]
 > プログラムは、VTT 形式でサンプル トランスクリプトを使用します。 実際のソリューションでは、Azure Media Indexer サービスを使用してビデオから[トランスクリプトを生成](https://docs.microsoft.com/azure/media-services/media-services-index-content)します。
@@ -228,7 +228,7 @@ static void AddTranscript(ContentModeratorClient client, string review_id, strin
 
 ## <a name="add-a-transcript-moderation-result-to-video-review"></a>レビューのビデオ トランスクリプト モデレーション結果を追加する
 
-ビデオ レビューにトランスクリプトを追加するだけでなく、そのトランスクリプトをモデレートした結果も追加します。 これを行うには、**ContentModeratorClient.Reviews.AddVideoTranscriptModerationResult** を使用します。 詳細については、[API リファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b93ce7151f0b10d451ff)に関するページをご覧ください。
+ビデオ レビューにトランスクリプトを追加するだけでなく、そのトランスクリプトをモデレートした結果も追加します。 これを行うには、**ContentModeratorClient.Reviews.AddVideoTranscriptModerationResult** を使用します。 詳細については、[API リファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b93ce7151f0b10d451ff)に関するページを参照してください。
 
 **AddVideoTranscriptModerationResult** では、次のパラメーターが必要です。
 1. MIME の種類が含まれる文字列。"application/json" にしてください。 
@@ -240,7 +240,7 @@ static void AddTranscript(ContentModeratorClient client, string review_id, strin
 1. **Term**。 用語を含む文字列です。
 1. **Timestamp**。 用語が見つかったトランスクリプトの時間 (秒単位) を含む文字列です。
 
-トランスクリプトは、WebVTT 形式である必要があります。 詳細については、[WebVTT (Web ビデオ テキスト トラック) 形式に関するページを参照してください](https://www.w3.org/TR/webvtt1/)。
+トランスクリプトは、WebVTT 形式である必要があります。 詳細については、[WebVTT: Web ビデオ テキスト トラック形式](https://www.w3.org/TR/webvtt1/)に関するページをご覧ください。
 
 名前空間 VideotranscriptReviews、クラス Program に次のメソッドの定義を追加します。 このメソッドは、**ContentModeratorClient.TextModeration.ScreenText** メソッドにトランスクリプトを送信します。 また、IList\<TranscriptModerationBodyItem> に結果を変換し、**AddVideoTranscriptModerationResult** に送信します。
 
@@ -351,7 +351,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="run-the-program-and-review-the-output"></a>プログラムを実行して出力を確認する
+## <a name="run-the-program-and-review-the-output"></a>プログラムを実行して出力をレビューする
 
 アプリケーションを実行すると、次の行に出力が表示されます。
 
@@ -375,7 +375,7 @@ Press any key to close the application.
 
 ![ヒューマン モデレーター用のビデオ トランスクリプト レビュー](images/ams-video-transcript-review.PNG)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) と、.NET 用のこのクイック スタートや他の Content Moderator のクイックスタートのための [Visual Studio ソリューション](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)をダウンロードする。
 

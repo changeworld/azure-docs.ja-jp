@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 6a470979ce4276d510f1a89bc9bc192d609c2083
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 02c86e5a4c1a04b98ebba73653980e8e5e00f645
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973511"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80238892"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>クイック スタート:Java を使用して Bing Custom Search エンドポイントを呼び出す
 
@@ -129,7 +129,7 @@ ms.locfileid: "74973511"
 
 4. プログラムを実行します。
     
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Custom Search Web アプリの作成](./tutorials/custom-search-web-page.md)

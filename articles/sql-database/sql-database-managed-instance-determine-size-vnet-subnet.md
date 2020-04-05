@@ -12,10 +12,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 02/22/2019
 ms.openlocfilehash: 7f0ef26343284b7b668e71676114586f4bec8b9e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73825752"
 ---
 # <a name="determine-vnet-subnet-size-for-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance に使用する VNet のサブネット サイズを決める
@@ -39,12 +39,12 @@ VNet のサブネットにデプロイできる Managed Instance の数は、そ
 - 汎用インスタンスにはそれぞれ 2 つのアドレスが必要です。
 - 各 Business Critical インスタンスには 4 つのアドレスが必要です
 
-**例**:3 つの General Purpose と 2 つの Business Critical マネージド インスタンスを予定しています。 これは、5 + 3 * 2 + 2 * 4 = 19 の IP アドレスが必要であることを意味します。 IP 範囲は 2 のべき乗で定義されているため、32 (2^5) の IP アドレスの IP 範囲が必要です。 したがって、/27 サブネット マスクのサブネットを予約する必要があります。
+**例**: 3 つの General Purpose と 2 つの Business Critical マネージド インスタンスを予定しています。 これは、5 + 3 * 2 + 2 * 4 = 19 の IP アドレスが必要であることを意味します。 IP 範囲は 2 のべき乗で定義されているため、32 (2^5) の IP アドレスの IP 範囲が必要です。 したがって、/27 サブネット マスクのサブネットを予約する必要があります。
 
 > [!IMPORTANT]
 > 今後の改善に伴い、上記の計算は古くなっていきます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 概要については、[マネージド インスタンス](sql-database-managed-instance.md)に関するページを参照してください。
 - [Managed Instance の接続アーキテクチャ](sql-database-managed-instance-connectivity-architecture.md)の詳細を確認します。

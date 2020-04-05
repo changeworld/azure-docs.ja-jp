@@ -4,17 +4,16 @@ description: Secure Shell (SSH) を使用して HDInsight にアクセスでき�
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-keywords: Linux での Hadoop コマンド, Hadoop Linux コマンド, Hadoop macOS, ssh Hadoop, ssh Hadoop クラスター
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/02/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: f4ca521e13ac51d7df4917e75fdf1c21b1e9cfa2
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/28/2020
+ms.openlocfilehash: 31e85876d60ae6fcd8f3b29633506d698a323acb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751098"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233611"
 ---
 # <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>SSH を使用して HDInsight (Apache Hadoop) に接続する
 
@@ -29,7 +28,7 @@ ms.locfileid: "75751098"
 | `<clustername>-ed-ssh.azurehdinsight.net` | 22 | エッジ ノード (HDInsight の ML サービス) |
 | `<edgenodename>.<clustername>-ssh.azurehdinsight.net` | 22 | エッジ ノード (エッジ ノードが存在する場合はその他のクラスターの種類) |
 
-`<clustername>` をクラスターの名前に置き換えます。 `<edgenodename>` をエッジ ノードの名前に置き換えます。 
+`<clustername>` をクラスターの名前に置き換えます。 `<edgenodename>` をエッジ ノードの名前に置き換えます。
 
 クラスターにエッジ ノードが含まれている場合は、SSH を使用して __常にエッジ ノードに接続する__ ことをお勧めします。 ヘッド ノードは、Hadoop の正常な稼働に不可欠なサービスをホストします。 エッジ ノードは、配置されたもののみを実行します。 エッジ ノードの使用の詳細については、[HDInsight でのエッジ ノードの使用](hdinsight-apps-use-edge-node.md#access-an-edge-node)に関する記事を参照してください。
 
@@ -44,17 +43,17 @@ Linux、Unix、および macOS システムでは、`ssh` コマンドと `scp` 
 
 Microsoft Windows には、既定では SSH クライアントがインストールされていません。 Windows 用の `ssh` クライアントと `scp` クライアントは、次の各パッケージで入手できます。
 
-* [OpenSSH クライアント](https://docs.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse)。 Windows 10 Fall Creators Update で導入されるオプション機能です。
+* [OpenSSH クライアント](https://docs.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse)。 このクライアントは、Windows 10 Fall Creators Update で導入されるオプション機能です。
 
 * [Bash on Ubuntu on Windows 10](https://docs.microsoft.com/windows/wsl/about)。
 
 * [Azure Cloud Shell](../cloud-shell/quickstart.md)。 Cloud Shell は、ブラウザー内で Bash 環境を提供します。
 
-* [Git](https://git-scm.com/)。
+* [Git](https://git-scm.com/).
 
 [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/) や [MobaXterm](https://mobaxterm.mobatek.net/) などのグラフィカルな SSH クライアントもいくつか存在します。 これらのクライアントは HDInsight への接続に使用できますが、接続するプロセスは、`ssh` ユーティリティを使用する場合とは異なります。 詳細については、お使いのグラフィカル クライアントに関するドキュメントを参照してください。
 
-## <a id="sshkey"></a>認証:SSH キー
+## <a name="authentication-ssh-keys"></a><a id="sshkey"></a>認証:SSH キー
 
 SSH キーでは、[公開キー暗号化](https://en.wikipedia.org/wiki/Public-key_cryptography)を使用して SSH セッションを認証します。 SSH キーは、パスワードよりも安全性が高く、Hadoop クラスターへのアクセスをセキュリティで保護する簡単な方法を提供します。
 
@@ -93,7 +92,7 @@ SSH アカウントがキーを使用してセキュリティ保護されてい�
 | Azure CLI | [az hdinsight create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) コマンドの `--sshPublicKey` パラメーターを使用し、公開キーの内容を文字列として渡します。 |
 | Resource Manager テンプレート | テンプレートでの SSH キーの使用例については、[SSH キーを使用した Linux での HDInsight のデプロイ](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-publickey/)に関する記事を参照してください。 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-publickey/azuredeploy.json) ファイルの `publicKeys` 要素は、クラスターの作成時にキーを Azure に渡すために使用されます。 |
 
-## <a id="sshpassword"></a>認証:Password
+## <a name="authentication-password"></a>認証: Password
 
 SSH アカウントは、パスワードを使用してセキュリティ保護することができます。 SSH を使用して HDInsight に接続すると、パスワードの入力を求められます。
 
@@ -116,11 +115,11 @@ SSH アカウントは、パスワードを使用してセキュリティ保護�
 
 SSH ユーザー アカウントのパスワード変更に関する詳細については、[HDInsight の管理](hdinsight-administer-use-portal-linux.md#change-passwords)に関するドキュメントの「__パスワードの変更__」セクションを参照してください。
 
-## <a id="domainjoined"></a>認証:ドメイン参加済み HDInsight
+## <a name="authentication-domain-joined-hdinsight"></a>認証ドメイン参加済み HDInsight
 
 __ドメイン参加済み HDInsight クラスター__ を使用している場合は、SSH ローカル ユーザーと接続した後で `kinit` コマンドを使用する必要があります。 このコマンドを実行すると、ドメイン ユーザーとパスワードの入力が求められ、クラスターに関連付けられた Azure Active Directory ドメインによってセッションが認証されます。
 
-また、ドメイン アカウントを使用して SSH 接続するために、各ドメイン参加ノード (たとえば、ヘッド ノード、エッジ ノード) で Kerberos 認証を有効にすることができます。 これを行うには、sshd 構成ファイルを編集します。
+また、ドメイン アカウントを使用して SSH 接続するために、各ドメイン参加済みノード (たとえば、ヘッド ノード、エッジ ノード) で Kerberos 認証を有効にすることができます。 これを行うには、sshd 構成ファイルを編集します。
 
 ```bash
 sudo vi /etc/ssh/sshd_config
@@ -132,7 +131,7 @@ sudo vi /etc/ssh/sshd_config
 sudo service sshd restart
 ```
 
-Kerberos 認証が成功したかどうかを確認するには、常に `klist` コマンドを使用します。
+`klist` コマンドを使用して、Kerberos 認証が成功したかどうか検証します。
 
 詳細については、[ドメイン参加済み HDInsight の構成](./domain-joined/apache-domain-joined-configure.md)に関する記事を参照してください。
 

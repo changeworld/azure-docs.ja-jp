@@ -15,11 +15,11 @@ ms.date: 08/29/2019
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: 4d6c4ff06783489ea7b6c3488cf6746d579b4c6a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360426"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225995"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Batch を使って大規模な並列コンピューティング ソリューションを開発する
 

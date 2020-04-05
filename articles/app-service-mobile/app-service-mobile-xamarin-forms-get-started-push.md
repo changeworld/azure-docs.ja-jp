@@ -7,10 +7,10 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: f23ac2d693492695c398893c103d5a77a0e93129
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461472"
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>Xamarin.Forms アプリにプッシュ通知を追加する
@@ -27,7 +27,7 @@ ms.locfileid: "77461472"
 
 iOS については、[Apple Developer Program メンバーシップ](https://developer.apple.com/programs/ios/)と物理 iOS デバイスが必要です。 [iOS シミュレーターでは、プッシュ通知はサポートされていません](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html)。
 
-## <a name="configure-hub"></a>通知ハブを構成する
+## <a name="configure-a-notification-hub"></a><a name="configure-hub"></a>通知ハブを構成する
 
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
 ms.openlocfilehash: e01fb23bbf1720f7d8df9c269373c1b8dc3ec75c
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74034801"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Azure 上の Windows で SSH キーを使用する方法
@@ -123,7 +123,7 @@ VM が Just-In-Time アクセス ポリシーを使用している場合、VM �
 
 4. **[Open]\(開く\)** をクリックして、VM に接続します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * SSH キーの使用に関する詳細な手順、オプション、および高度な例については、[SSH キー ペアの詳細な作成手順](create-ssh-keys-detailed.md)に関するページを参照してください。
 

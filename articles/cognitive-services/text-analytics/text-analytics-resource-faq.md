@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
 ms.openlocfilehash: aca3b0bea65923cee1bae25020058666c973922c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73837121"
 ---
 # <a name="frequently-asked-questions-faq-about-the-text-analytics-cognitive-service"></a>Text Analytics Cognitive Service に関してよく寄せられる質問 (FAQ)
@@ -47,11 +47,11 @@ ms.locfileid: "73837121"
 
 大きな変更が行われる場合、モデルとアルゴリズムの改良が告知されます。あるいは、重大な更新でなければ、告知されずにサービスに組み込まれます。 ある程度の時間が経過すると、同じテキストを入力したのに、感情スコアやキー フレーズ出力が異なることがあります。 クラウドで管理されている機械学習リソースを利用している結果であり、異常ではありません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 不足している機能について質問がある場合は、 [UserVoice Web サイト](https://cognitive.uservoice.com/forums/555922-text-analytics)でご要望またはご投票ください。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
- [StackOverflow:Text Analytics API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
- [StackOverflow:Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
+ [StackOverflow: Text Analytics API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ [StackOverflow: Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

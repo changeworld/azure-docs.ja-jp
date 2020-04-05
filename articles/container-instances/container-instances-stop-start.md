@@ -4,10 +4,10 @@ description: Azure Container Instances のコンテナー グループを手動�
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: c9f8afea33c65df940d02823ec394697d2786d6a
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74533424"
 ---
 # <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Azure Container Instances のコンテナーの手動での停止または開始
@@ -24,7 +24,7 @@ ms.locfileid: "74533424"
 
 コンテナー グループがすでに終了している (成功または失敗のいずれかの状態にある) 場合、停止アクションでは何も起こりません。 たとえば、一度だけ実行されるコンテナー タスクを含むコンテナー グループが正常に実行され、成功状態で終了するとします。 この状態のグループを停止しようとしても、状態は変わりません。 
 
-## <a name="start"></a>start
+## <a name="start"></a>[開始]
 
 コンテナー グループが独自に終了したか、手動でグループを停止させたためにコンテナー グループが停止しているときに、コンテナーを開始できます。 たとえば、[az container start][az-container-start] コマンドまたは Azure portal を使用して、グループ内のコンテナーを手動で開始します。 いずれかのコンテナーのコンテナー イメージが更新されると、新しいイメージがプルされます。 
 
@@ -44,7 +44,7 @@ ms.locfileid: "74533424"
 
 コンテナー グループを手動で再起動した後、コンテナー グループは、構成された再起動ポリシーに従って実行されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、Azure Container Instances の[再起動ポリシー設定](container-instances-restart-policy.md)に関する記事を参照してください。
 

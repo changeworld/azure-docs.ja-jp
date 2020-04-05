@@ -1,19 +1,18 @@
 ---
 title: 特定のプランの取得 API | Azure Marketplace
 description: API によって、発行元の名前空間内で指定のプランが取得されます。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 030fb221b9227acf9c5dcda8797b106e51f56d64
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: a83b664bb770a88f3c4c13a672655e736a46ca75
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827344"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280458"
 ---
 <a name="retrieve-a-specific-offer"></a>特定のプランを取得する
 =========================
@@ -41,8 +40,8 @@ ms.locfileid: "73827344"
 
 | **Name**    | **説明**                                                                          | **データの種類** |
 |-------------|------------------------------------------------------------------------------------------|---------------|
-| publisherId | 発行元の ID。 たとえば、Contoso です。                                                        | string        |
-| offerId     | プランを一意に識別する GUID。                                                 | string        |
+| publisherId | 発行元の ID。 たとえば、Contoso です。                                                        | String        |
+| offerId     | プランを一意に識別する GUID。                                                 | String        |
 | version     | 取得されるプランのバージョン。 既定では、最新版のプランが取得されます。 | 整数       |
 | slotId      | プランが取得されるスロット。次のいずれかになります。      <br/>  - `Draft` (既定) の場合、現在ドラフトの状態にあるプランが取得されます。  <br/>  -  `Preview` の場合、現在プレビューの状態にあるプランが取得されます。     <br/>  -  `Production` の場合、現在運用の状態にあるプランが取得されます。          |      enum |
 | api-version | API の最新バージョン                                                                    | Date          |
@@ -52,10 +51,10 @@ ms.locfileid: "73827344"
 <a name="header"></a>ヘッダー
 ------
 
-|  **Name**          |   **値**            |
+|  **Name**          |   **Value**            |
 |  ---------------   |  --------------        |
 |  Content-Type      | `application/json`     |
-|  Authorization     | `Bearer YOUR_TOKEN`    |
+|  承認     | `Bearer YOUR_TOKEN`    |
 |  |  |
 
 

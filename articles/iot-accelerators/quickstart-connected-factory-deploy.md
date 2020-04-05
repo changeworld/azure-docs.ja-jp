@@ -10,13 +10,13 @@ ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 6338403818259c7263fe66af7d8c8840d98efbcd
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "62127465"
 ---
-# <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>クイック スタート:工業用 IoT デバイスを管理するクラウドベースのソリューションを試す
+# <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>クイック スタート: 工業用 IoT デバイスを管理するクラウドベースのソリューションを試す
 
 このクイック スタートでは、Azure IoT 接続済みファクトリ ソリューション アクセラレータをデプロイして、工業用 IoT デバイスの監視と管理をクラウドベースで行うシミュレーションの実行方法を紹介しています。 デプロイが終わった接続済みファクトリ ソリューション アクセラレータには、IoT の代表的な産業シナリオに順を追って対処できるシミュレーション リソースが事前に入力されています。 シミュレーションの対象としてソリューションに接続された複数の工場から、総合設備効率 (OEE) と主要業績評価指標 (KPI) を計算するために必要なデータ値が報告されます。 このクイック スタートでは、ソリューション ダッシュボードを使用して次のことを行います。
 
@@ -40,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 **[Create Connected Factory solution]\(接続済みファクトリ ソリューションの作成\)** ページで、接続済みファクトリ ソリューション アクセラレータに使用する一意の**ソリューション名**を入力します。 この名前は、すべてのソリューション アクセラレータ リソースを含む Azure リソース グループの名前です。 このクイック スタートでは、**MyDemoConnectedFactory** という名前を使用します。
 
-ソリューション アクセラレータのデプロイに使用する**サブスクリプション**と**リージョン**を選択します。 通常は、最も近いリージョンを選択します。 このクイック スタートでは、**[Visual Studio Enterprise]** と **[米国東部]** を使用します。 サブスクリプションの[グローバル管理者またはユーザー](iot-accelerators-permissions.md)である必要があります。
+ソリューション アクセラレータのデプロイに使用する**サブスクリプション**と**リージョン**を選択します。 通常は、最も近いリージョンを選択します。 このクイック スタートでは、 **[Visual Studio Enterprise]** と **[米国東部]** を使用します。 サブスクリプションの[グローバル管理者またはユーザー](iot-accelerators-permissions.md)である必要があります。
 
 **[作成]** をクリックしてデプロイを開始します。 このプロセスを実行するには、少なくとも 5 分かかります。
 
@@ -131,7 +131,7 @@ Azure サブスクリプションへのデプロイが完了すると、ソリ�
 * アラームを閉じる。
 * アラームを確認する。
 
-**[アクションの選択]** ボックスの一覧でいずれかのアラームをクリックし、**[アラートを確認する]** を選択して、**[適用]** をクリックします。
+**[アクションの選択]** ボックスの一覧でいずれかのアラームをクリックし、 **[アラートを確認する]** を選択して、 **[適用]** をクリックします。
 
 [![アラートを確認する](./media/quickstart-connected-factory-deploy/acknowledge-inline.png)](./media/quickstart-connected-factory-deploy/acknowledge-expanded.png#lightbox)
 
@@ -139,15 +139,15 @@ Azure サブスクリプションへのデプロイが完了すると、ソリ�
 
 これらのアラームは、ソリューション アクセラレータ内の構成ファイルで指定されたルールに基づいて生成されます。 このルールを使用して、OEE/KPI の数値または OPC UA ノードの値がしきい値を超えた場合にアラームを生成できます。 このしきい値は、ご自身で設定することができます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 さらに調べる場合は、接続済みファクトリ ソリューション アクセラレータをデプロイしたままにします。
 
-ソリューション アクセラレータが不要になった場合は、[[プロビジョニングされたソリューション]](https://www.azureiotsolutions.com/Accelerators#dashboard) ページでそれを選択し、**[ソリューションの削除]** をクリックして削除してください。
+ソリューション アクセラレータが不要になった場合は、[[プロビジョニングされたソリューション]](https://www.azureiotsolutions.com/Accelerators#dashboard) ページでそれを選択し、 **[ソリューションの削除]** をクリックして削除してください。
 
 ![ソリューションを削除する](media/quickstart-connected-factory-deploy/deletesolution.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、接続済みファクトリ ソリューション アクセラレータをデプロイし、工場、生産ライン、ステーション間を移動する方法について説明しました。 階層の各レベルの OEE 値や KPI 値を確認する方法やアラームに対応する方法についても見てきました。
 

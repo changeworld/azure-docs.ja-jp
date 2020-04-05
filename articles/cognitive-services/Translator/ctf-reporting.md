@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
 ms.openlocfilehash: 6a197095d97e67f7548e60375148cff57e47b797
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68595940"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>コラボレーション翻訳フレームワーク (CTF) レポートを使用する方法
 
 > [!NOTE]
-> このメソッドは非推奨です。 これは Translator Text API の V3.0 では使用できません。
+> このメソッドは非推奨とされます。 これは Translator Text API の V3.0 では使用できません。
 > 
 > コラボレーション翻訳フレームワーク (CTF) は、以前 Translator Text API の V2.0 で利用可能でしたが、2018 年 2 月 1 日をもって廃止されました。 AddTranslation と AddTranslationArray 関数により、ユーザーは、コラボレーション翻訳フレームワークによる修正を有効にできます。 2018 年 1 月 31 日以降、これら 2 つの関数は、新しい文の送信を受け付けなくなり、ユーザーにはエラー メッセージが表示されます。 これらの関数は廃止されており、置き換えられることはありません。
 
@@ -85,7 +85,7 @@ CTF Reporting API のエンドポイントは https://api.microsofttranslator.co
 | minDateUtc| **省略可能**: 翻訳の取得の開始日の日付。 日付は UTC 形式でなければなりません。 |
 | maxDateUtc| **省略可能**: 翻訳の取得の終了日の日付。 日付は UTC 形式でなければなりません。 |
 | skip| **省略可能**: ページでスキップする結果の数。 たとえば、結果の最初の 20 行をスキップして、21 行目の結果レコードから表示する場合、このパラメーターに 20 を指定します。 パラメーターの既定値は 0 です。|
-| take | **省略可能**: 取得する結果の数。 各要求の最大数は 100 です。 既定値は 100 です。|
+| take | **省略可能**: 取得する結果の数。 各要求の最大数は 100 です。 既定値は、100 です。|
 
 > [!NOTE]
 > skip および take 要求パラメーターは、多数の結果レコードの改ページ位置の自動修正を有効にします。
@@ -103,7 +103,7 @@ CTF Reporting API のエンドポイントは https://api.microsofttranslator.co
 | Uri| AddTranslation() メソッド呼び出しで適用される URI|
 | User| ユーザー名|
 
-**Exceptions**
+**例外**
 
 | 例外 | Message | 条件 |
 |:---|:---|:---|
@@ -176,7 +176,7 @@ CTF Reporting API のエンドポイントは https://api.microsofttranslator.co
 |Uri|   AddTranslation() メソッド呼び出しで適用される URI|
 |User   |ユーザー名|
 
-**Exceptions**
+**例外**
 
 | 例外 | Message | 条件 |
 |:---|:---|:---|

@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: sample
 ms.date: 12/06/2019
 ms.openlocfilehash: 097323b4566daeda737428121bee4d64e9f7248b
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74951566"
 ---
 # <a name="azure-hdinsight-net-samples"></a>Azure HDInsight: .NET サンプル
@@ -27,7 +27,7 @@ ms.locfileid: "74951566"
 * クラスター作成タスクのサンプルへのリンク
 * その他の管理タスクのリファレンス コンテンツへのリンク
 
-[Visual Studio サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)ことができます。Visual Studio サブスクリプションにより、有料の Azure サービスで使用できるクレジットが毎月提供されます。
+[Visual Studio サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)こともできます: Visual Studio サブスクリプションにより、有料の Azure サービスで使用できるクレジットが毎月提供されます。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

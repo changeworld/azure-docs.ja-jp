@@ -6,15 +6,15 @@ ms.author: andrela
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 12/02/2019
-ms.openlocfilehash: 16218dcac2f0a4301b52b0efc54fc04ae39d5e22
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 9b6b4143ea2eeefcf0d0afbe281f7e27ca7794a1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770681"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067858"
 ---
-# <a name="azure-database-for-mysql-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MySQL: MySQL Workbench を使った接続とデータの照会
+# <a name="azure-database-for-mysql-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MySQL: MySQL Workbench を使用した接続とデータの照会
 このクイックスタートでは、MySQL Workbench アプリケーションを使用して Azure Database for MySQL に接続する方法を紹介します。 
 
 ## <a name="prerequisites"></a>前提条件
@@ -40,20 +40,20 @@ Azure Database for MySQL に接続するために必要な接続情報を取得�
 ## <a name="connect-to-the-server-by-using-mysql-workbench"></a>MySQL Workbench を使用したサーバーへの接続 
 GUI ツール MySQL Workbench を使用して Azure MySQL サーバーに接続する手順は次のとおりです。
 
-1.  コンピューター上で MySQL Workbench アプリケーションを起動します。 
+1.    コンピューター上で MySQL Workbench アプリケーションを起動します。 
 
-2.  **[Setup New Connection]\(新しい接続のセットアップ\)** ダイアログ ボックスで、次の情報を **[Parameters]\(パラメーター\)** タブに入力します。
+2.    **[Setup New Connection]\(新しい接続のセットアップ\)** ダイアログ ボックスで、次の情報を **[Parameters]\(パラメーター\)** タブに入力します。
 
     ![新しい接続のセットアップ](./media/connect-workbench/2-setup-new-connection.png)
 
     | **設定** | **推奨値** | **フィールドの説明** |
     |---|---|---|
-    |   接続名 | Demo Connection | この接続のラベルを指定します。 |
+    |    接続名 | Demo Connection | この接続のラベルを指定します。 |
     | 接続方法 | Standard (TCP/IP) | Standard (TCP/IP) で十分です。 |
-    | ホスト名 | *サーバー名* | 前に Azure Database for MySQL を作成したときに使用したサーバー名の値を指定します。 この例におけるサーバーは、mydemoserver.mysql.database.azure.com です。 例で示されているように、完全修飾ドメイン名 (\*.mysql.database.azure.com) を使用します。 サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得します。  |
+    | hostname | *サーバー名* | 前に Azure Database for MySQL を作成したときに使用したサーバー名の値を指定します。 この例におけるサーバーは、mydemoserver.mysql.database.azure.com です。 例で示されているように、完全修飾ドメイン名 (\*.mysql.database.azure.com) を使用します。 サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得します。  |
     | Port | 3306 | Azure Database for MySQL に接続する場合は、常にポート 3306 を使用します。 |
     | ユーザー名 |  *サーバー管理者ログイン名* | 前に Azure Database for MySQL を作成したときに指定したサーバー管理者ログイン ユーザー名を入力します。 この例のユーザー名は myadmin@mydemoserver です。 ユーザー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得します。 形式は *username\@servername* です。
-    | パスワード | パスワード | **[Store in Vault]\(コンテナーに保存\)** ボタンをクリックしてパスワードを保存します。 |
+    | Password | パスワード | **[Store in Vault]\(コンテナーに保存\)** ボタンをクリックしてパスワードを保存します。 |
 
 3.   **[Test Connection] \(接続のテスト)** をクリックして、すべてのパラメーターが正しく構成されているかをテストします。 
 
@@ -106,6 +106,6 @@ GUI ツール MySQL Workbench を使用して Azure MySQL サーバーに接続�
 
 これで、MySQL Workbench を使用して Azure Database for MySQL に接続し、SQL 言語を使用してデータを照会できました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [エクスポートとインポートを使用したデータベースの移行](./concepts-migrate-import-export.md)

@@ -8,11 +8,11 @@ ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: fb931c309b5f85902d8abc9cc6da45576bff4041
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358095"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229731"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment のネットワークの考慮事項 #
 

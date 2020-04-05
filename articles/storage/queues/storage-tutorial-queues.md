@@ -9,10 +9,10 @@ ms.subservice: queues
 ms.topic: tutorial
 ms.reviewer: cbrooks
 ms.openlocfilehash: 9cbdc5231fdc9f836f300b1a3a81a237a9efc123
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75968194"
 ---
 # <a name="tutorial-work-with-azure-storage-queues"></a>チュートリアル:Azure ストレージ キューの操作

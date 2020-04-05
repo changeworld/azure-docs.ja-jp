@@ -15,10 +15,10 @@ ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: f1e0bf44515aab18019b19b4f0a6f84183e5aac3
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77160085"
 ---
 # <a name="single-page-application-code-configuration"></a>シングルページ アプリケーション：コード構成
@@ -38,7 +38,7 @@ Microsoft ID プラットフォームは、次の Microsoft Authentication Libra
 
 MSAL ライブラリでは、ライブラリの初期化中にアプリケーションの登録情報が構成として渡されます。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 // Configuration object constructed.
@@ -55,7 +55,7 @@ const userAgentApplication = new UserAgentApplication(config);
 
 構成可能なオプションの詳細については、[MSAL.js を使用したアプリケーションの初期化](msal-js-initializing-client-applications.md)に関する記事を参照してください。
 
-# <a name="angulartabangular"></a>[Angular](#tab/angular)
+# <a name="angular"></a>[Angular](#tab/angular)
 
 ```javascript
 //In app.module.ts

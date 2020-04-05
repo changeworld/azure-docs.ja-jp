@@ -13,10 +13,10 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 92496fa572c5c1cae4588f82ac61c18de3024045
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76512829"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>シングル サインオンのデプロイを計画する

@@ -16,10 +16,10 @@ ms.date: 06/26/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 39e108451e4c19e77e01b5bcc5d8dd21e86ad73a
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74547426"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>REST API 呼び出しを使用して、ユーザー割り当てマネージド ID を作成、一覧表示、削除する
@@ -67,7 +67,7 @@ s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<U
 
 **要求本文**
 
-|名前  |説明  |
+|Name  |説明  |
 |---------|---------|
 |location     | 必須。 リソースの場所。        |
 
@@ -108,6 +108,6 @@ DELETE https://management.azure.com/subscriptions/80c696ff-5efa-4909-a64d-f1b616
 |*Content-Type*     | 必須。 `application/json` を設定します。        |
 |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 CURL を使用して Azure VM/VMSS にユーザー割り当てマネージド ID を割り当てる方法については、[REST API 呼び出しを使用する Azure VM での Azure リソースのマネージド ID の構成](qs-configure-rest-vm.md#user-assigned-managed-identity)と [REST API 呼び出しを使用する仮想マシン スケール セットでの Azure リソースのマネージド ID の構成](qs-configure-rest-vmss.md#user-assigned-managed-identity)に関するページを参照してください。

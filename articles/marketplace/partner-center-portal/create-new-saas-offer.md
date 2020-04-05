@@ -1,19 +1,18 @@
 ---
 title: 商業マーケットプレースで新しい SaaS オファーを作成する
 description: Microsoft パートナー センターの商業マーケットプレース ポータルを使用して、Azure Marketplace、AppSource、クラウド ソリューション プロバイダー (CSP) プログラムでリスト登録または販売を行うために新しいサービスとしてのソフトウェア (SaaS) オファーを作成する方法。
-author: ChJenk
-manager: evansma
-ms.author: v-chjen
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 9d06b34b459bf1d48aa293a889af57fb6192015d
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: 3f2201db4b78ba61ba15608a676a8b9f8f5e612a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78208867"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286202"
 ---
 # <a name="create-a-new-saas-offer"></a>新しい SaaS オファーを作成する
 

@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 03/19/2018
 ms.custom: sfrev
 ms.openlocfilehash: b3d922cb5a7cdf34e63731ab32f21c94d7b6bca0
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76025004"
 ---
 # <a name="update-the-rdp-port-range-values"></a>RDP ポート範囲の値の更新

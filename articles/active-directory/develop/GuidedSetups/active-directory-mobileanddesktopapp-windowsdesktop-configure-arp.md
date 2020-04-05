@@ -17,10 +17,10 @@ ms.date: 01/29/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.openlocfilehash: 4c757b52e7378bffe4a4954022b131b772a337cf
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76897691"
 ---
 # <a name="add-the-applications-registration-information-to-your-app"></a>アプリへのアプリケーション登録情報の追加

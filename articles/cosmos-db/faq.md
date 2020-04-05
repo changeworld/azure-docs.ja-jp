@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 322d1c9ead1e7591c359c35c445fa32529db22ef
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 75cef47c1ed2b6da054442a4a1215141e67ad1b0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462481"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79498581"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB のさまざまな API についてよく寄せられる質問
 
@@ -77,7 +77,7 @@ Azure を初めてお使いの場合は、[Azure の無料アカウント](https
 
 アカウントを使用して問題を修正するには、Azure Portal で[サポート要求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を提出します。
 
-## <a id="try-cosmos-db"></a>Azure Cosmos DB サブスクリプションを試す
+## <a name="try-azure-cosmos-db-subscriptions"></a><a id="try-cosmos-db"></a>Azure Cosmos DB サブスクリプションを試す
 
 現在、一定期間に限り、サブスクリプション不要で、課金も契約もなしで Azure Cosmos DB をご利用いただけます。 Try Azure Cosmos DB サブスクリプションにサインアップするには、「[Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)」にアクセスし、個人用 Microsoft アカウント (MSA) を使用してください。 このサブスクリプションは [Azure 無料試用版](https://azure.microsoft.com/free/)とは別のものであり、Azure 無料試用版または Azure 有料サブスクリプションと併用できます。
 
@@ -236,7 +236,7 @@ Azure Cosmos DB の MongoDB 用 API には、一般的な MongoDB エラー コ�
 
 はい。Simba の Mongo ODBC ドライバーは Azure Cosmos DB の MongoDB 用 API で使用できます。
 
-## <a id="table"></a>Table API
+## <a name="table-api"></a><a id="table"></a>Table API
 
 ### <a name="how-can-i-use-the-table-api-offering"></a>Table API を使うにはどうすればよいですか?
 
@@ -404,7 +404,7 @@ Table API は、Azure Cosmos DB のグローバルに分散されたプラット
 
 ### <a name="is-the-table-api-enabled-for-backups"></a>Table API ではバックアップは有効になっていますか?
 
-はい。Table API は、バックアップに Azure Cosmos DB のプラットフォームを利用します。 バックアップは自動的に作成されます。 詳細については、[Azure Cosmos DB でのオンライン バックアップと復元](online-backup-and-restore.md)に関する記事をご覧ください。
+はい。Table API は、バックアップに Azure Cosmos DB のプラットフォームを利用します。 バックアップは自動的に作成されます。 詳細については、[Azure Cosmos DB でのオンライン バックアップと復元](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)に関する記事をご覧ください。
 
 ### <a name="does-the-table-api-index-all-attributes-of-an-entity-by-default"></a>Table API では、既定でエンティティのすべての属性のインデックスが作成されますか?
 
@@ -638,7 +638,7 @@ g.V('mary').out('knows').executionProfile()
 
 上記プロファイルの出力には、頂点オブジェクト、端オブジェクト、および作業データ セットのサイズの取得にかかった時間が表示されます。 これは Azure Cosmos DB クエリの標準コスト測定に関連します。
 
-## <a id="cassandra"></a> Cassandra API
+## <a name="cassandra-api"></a><a id="cassandra"></a> Cassandra API
 
 ### <a name="what-is-the-protocol-version-supported-by-azure-cosmso-db-cassandra-api-is-there-a-plan-to-support-other-protocols"></a>Azure Cosmso DB の Cassandra API でサポートされているプロトコル バージョンは何ですか? 他のプロトコルをサポートする予定はありますか?
 
@@ -761,7 +761,7 @@ CQLv3 を使用する Apache Cassandra SDK のクライアント ドライバー
 ### <a name="does-cassandra-api-provide-full-backups"></a>Cassandra API に完全バックアップ機能はありますか?
 
 現在、Azure Cosmos DB では、すべての API について 4 時間間隔で 2 つの無料の完全バックアップが提供されています。 そのため、バックアップ スケジュールなどを設定する必要はありません。
-リテンション期間と頻度を変更したい場合は、[askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) まで電子メールでお問い合わせいただくか、サポート ケースを作成してください。 バックアップ機能については、「[Azure Cosmos DB での自動オンライン バックアップと復元](online-backup-and-restore.md)」の記事を参照してください。
+リテンション期間と頻度を変更したい場合は、[askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) まで電子メールでお問い合わせいただくか、サポート ケースを作成してください。 バックアップ機能については、「[Azure Cosmos DB での自動オンライン バックアップと復元](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)」の記事を参照してください。
 
 ### <a name="how-does-the-cassandra-api-account-handle-failover-if-a-region-goes-down"></a>リージョンがダウンした場合、Cassandra API アカウントはフェールオーバーをどのように処理しますか?
 

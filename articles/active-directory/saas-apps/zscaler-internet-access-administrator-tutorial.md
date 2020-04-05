@@ -17,10 +17,10 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a149527c6e00972991bf0b18e6f7c599799a0c91
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73161027"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>チュートリアル:Azure Active Directory と Zscaler Internet Access Administrator の統合
@@ -134,7 +134,7 @@ Zscaler Internet Access Administrator で Azure AD シングル サインオン�
 
 6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
 
-    | Name  | ソース属性  |
+    | 名前  | ソース属性  |
     | ---------| ------------ |
     | Role     | user.assignedroles |
 
@@ -148,7 +148,7 @@ Zscaler Internet Access Administrator で Azure AD シングル サインオン�
 
     c. **[OK]** をクリックします。
 
-    d. **[Save]** をクリックします。
+    d. **[保存]** をクリックします。
 
     > [!NOTE]
     > Azure AD で役割を構成する方法については、[ここ](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)をクリックしてください

@@ -18,10 +18,10 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: b935ad2491ca486a3bc6878f0332e5390600b1bc
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76700687"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft ID プラットフォームと OAuth 2.0 リソース所有者のパスワード資格情報
@@ -70,11 +70,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | パラメーター | 条件 | 説明 |
 | --- | --- | --- |
-| `tenant` | Required | ユーザーをログインさせるディレクトリ テナント。 これは GUID またはフレンドリ名の形式で指定できます。 このパラメーターは `common` と `consumers` に設定できませんが、`organizations` には設定できます。 |
-| `client_id` | Required | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページでアプリに割り当てられたアプリケーション (クライアント) ID。 | 
-| `grant_type` | Required | `password` に設定する必要があります。 |
-| `username` | Required | ユーザーの電子メール アドレス。 |
-| `password` | Required | ユーザーのパスワード。 |
+| `tenant` | 必須 | ユーザーをログインさせるディレクトリ テナント。 これは GUID またはフレンドリ名の形式で指定できます。 このパラメーターは `common` と `consumers` に設定できませんが、`organizations` には設定できます。 |
+| `client_id` | 必須 | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページでアプリに割り当てられたアプリケーション (クライアント) ID。 | 
+| `grant_type` | 必須 | `password` に設定する必要があります。 |
+| `username` | 必須 | ユーザーの電子メール アドレス。 |
+| `password` | 必須 | ユーザーのパスワード。 |
 | `scope` | 推奨 | アプリで必要となる[スコープ](v2-permissions-and-consent.md) (アクセス許可) をスペースで区切った一覧。 対話型のフローでは、管理者またはユーザーが事前にこれらのスコープに同意する必要があります。 |
 | `client_secret`| 必要な場合あり | アプリがパブリック クライアントである場合、`client_secret` または `client_assertion` を含めることはできません。  アプリが機密クライアントである場合は、それを含める必要があります。 | 
 | `client_assertion` | 必要な場合あり | 証明書を使用して生成された、`client_secret` の別の形式。  詳細については、[証明書の資格情報](active-directory-certificate-credentials.md)に関する記事を参照してください。 | 

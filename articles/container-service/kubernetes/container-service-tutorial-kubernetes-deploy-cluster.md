@@ -8,10 +8,10 @@ ms.date: 09/14/2017
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: b8821f3bb3d48786697cbc4137baf530856774fd
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78274002"
 ---
 # <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>(非推奨) Azure Container Service で Kubernetes クラスターをデプロイする

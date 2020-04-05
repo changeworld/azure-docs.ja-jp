@@ -13,11 +13,11 @@ ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: genli
 ms.openlocfilehash: beb1562738699bbcede58d8214e69342abbb7c93
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921472"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231919"
 ---
 # <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Azure VM の起動時に Windows でブルー スクリーン エラーが表示される
 この記事では、Microsoft Azure で Windows 仮想マシン (VM) を起動するときに発生する可能性のあるブルー スクリーン エラーについて説明します。 また、サポート チケットのためのデータを収集する手順について説明します。 

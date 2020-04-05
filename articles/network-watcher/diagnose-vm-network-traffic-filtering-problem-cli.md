@@ -18,12 +18,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 251f72ab4f4d53fc2c836f06c78a1faa291b3a8a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: b3919a016613da2470c14995663acc9c5415e483
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276073"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382853"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>クイック スタート:仮想マシン ネットワーク トラフィック フィルターの問題を診断する - Azure CLI
 
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用することを選択する場合、このクイック スタートでは、Azure CLI バージョン 2.0.28 以降を実行している必要があります。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 CLI のバージョンを確認した後、`az login` を実行して Azure との接続を作成します。 このクイック スタートの CLI コマンドは、Bash シェルで実行するように書式設定されています。
+Azure CLI をローカルにインストールして使用することを選択した場合、このクイックスタートでは Azure CLI バージョン 2.0.28 以降を実行していることが必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 Azure CLI のバージョンを確認した後、`az login` を実行して Azure との接続を作成します。 このクイックスタートの Azure CLI コマンドは、Bash シェルで実行するように書式設定されています。
 
 ## <a name="create-a-vm"></a>VM の作成
 
@@ -53,7 +53,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-VM の作成には数分かかります。 VM が作成されて、CLI から出力が返されるまでは、次の手順に進まないでください。
+VM の作成には数分かかります。 VM が作成されて、Azure CLI から出力が返されるまでは、次の手順に進まないでください。
 
 ## <a name="test-network-communication"></a>ネットワーク通信をテストする
 
@@ -74,7 +74,7 @@ az network watcher configure \
 
 VM を作成すると、Azure は既定に従って、VM との間でやり取りされるネットワーク トラフィックを許可および拒否します。 後で Azure の既定値をオーバーライドして、他の種類のトラフィックを許可または拒否する場合があります。 さまざまな送信先へのトラフィックまたは送信元 IP アドレスからのトラフィックが許可または拒否されるかどうかをテストするには、[az network watcher test-ip-flow](/cli/azure/network/watcher#az-network-watcher-test-ip-flow) コマンドを使います。
 
-VM から www.bing.com の IP アドレスの 1 つへの送信通信をテストします。
+VM から www.bing.com のいずれかの IP アドレスへの送信通信をテストします。
 
 ```azurecli-interactive
 az network watcher test-ip-flow \
@@ -134,7 +134,7 @@ az network nic list-effective-nsg \
 
 返される出力には、前の「[IP フローの確認を使用する](#use-ip-flow-verify)」の手順で www.bing.com への送信アクセスを許可した **AllowInternetOutbound** 規則に関する次のテキストが含まれます。
 
-```azurecli
+```
 {
  "access": "Allow",
  "additionalProperties": {},
@@ -175,7 +175,7 @@ az network nic list-effective-nsg \
 
 「[IP フローの確認を使用する](#use-ip-flow-verify)」で `az network watcher test-ip-flow` コマンドを実行して 172.131.0.100 への送信通信をテストしたとき、出力では **DefaultOutboundDenyAll** 規則が通信を拒否したことが示されました. **DefaultOutboundDenyAll** 規則は、`az network nic list-effective-nsg` コマンドからの次の出力で示されている **DenyAllOutBound** 規則と同じです。
 
-```azurecli
+```
 {
  "access": "Deny",
  "additionalProperties": {},
@@ -208,7 +208,7 @@ az network nic list-effective-nsg \
 
 「[IP フローの確認を使用する](#use-ip-flow-verify)」で `az network watcher test-ip-flow` コマンドを実行して 172.131.0.100 からの受信通信をテストしたとき、出力では **DefaultInboundDenyAll** 規則が通信を拒否したことが示されました. **DefaultInboundDenyAll** 規則は、`az network nic list-effective-nsg` コマンドからの次の出力で示されている **DenyAllInBound** 規則と同じです。
 
-```azurecli
+```
 {
  "access": "Deny",
  "additionalProperties": {},
@@ -241,7 +241,7 @@ az network nic list-effective-nsg \
 
 このクイック スタートのチェックでは、Azure の構成をテストしました。 チェックから予想どおりの結果が返ったにもかかわらず、まだネットワークの問題がある場合は、VM と通信対象のエンドポイントとの間にファイアウォールが存在しないこと、および VM のオペレーティング システムに通信を許可または拒否するファイアウォールが含まれないことを確認します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 不要になったら、[az group delete](/cli/azure/group) を使用して、リソース グループとそのグループに含まれているすべてのリソースを削除できます。
 
@@ -249,7 +249,7 @@ az network nic list-effective-nsg \
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、VM を作成し、受信および送信ネットワーク トラフィック フィルターを診断しました。 ネットワーク セキュリティ グループの規則が、VM との間でやり取りされるトラフィックを許可または拒否することを学習しました。 [セキュリティ規則](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)および[セキュリティ規則を作成する](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule)方法について、さらに詳しく学習してください。
 

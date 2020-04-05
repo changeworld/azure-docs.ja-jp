@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: 5fe9fe8ced675f68161f0df9f2665b47f9d47ac5
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67181686"
 ---
-### <a name="server-auth"></a>方法: プロバイダーでの認証 (サーバー フロー)
+### <a name="how-to-authenticate-with-a-provider-server-flow"></a><a name="server-auth"></a>方法: プロバイダーでの認証 (サーバー フロー)
 Mobile Apps によってアプリの認証プロセスを管理するには、アプリを ID プロバイダーに登録する必要があります。 その後、Azure App Service 内で、プロバイダーから提供されたアプリケーション ID とシークレットを構成する必要があります。
 詳細については、チュートリアル「 [アプリへの認証の追加](../articles/app-service-mobile/app-service-mobile-cordova-get-started-users.md)」を参照してください。
 
@@ -32,7 +32,7 @@ client.login("facebook").done(function (results) {
 
 この場合は、Azure App Service が OAuth 2.0 認証フローを管理します。  選択されたプロバイダーのサインイン ページを表示し、ID プロバイダーでのサインインが成功した後で App Service 認証トークンを生成します。 login 関数は、完了すると、userId フィールドのユーザー ID と authenticationToken フィールドの App Service 認証トークンの両方を公開する JSON オブジェクトを返します。 このトークンをキャッシュし、有効期限が切れるまで再利用できます。
 
-### <a name="client-auth"></a>方法: プロバイダーでの認証 (クライアント フロー)
+### <a name="how-to-authenticate-with-a-provider-client-flow"></a><a name="client-auth"></a>方法: プロバイダーでの認証 (クライアント フロー)
 
 アプリケーションは個別に ID プロバイダーにアクセスして、返されたトークンを認証のために App Service に提供することもできます。 このクライアント フローでは、ユーザーにシングル サインイン エクスペリエンスを提供したり、ID プロバイダーから追加のユーザー データを取得したりすることができます。
 
@@ -53,7 +53,7 @@ client.login(
 ```
 この例では、それぞれのプロバイダー SDK で提供されるトークンが変数 token に格納されるとします。
 
-### <a name="auth-getinfo"></a>方法: 認証されたユーザーに関する情報の取得
+### <a name="how-to-obtain-information-about-the-authenticated-user"></a><a name="auth-getinfo"></a>方法: 認証されたユーザーに関する情報の取得
 
 認証情報は、AJAX ライブラリによる HTTP 呼び出しを使用して `/.auth/me` エンドポイントから取得できます。  `X-ZUMO-AUTH` ヘッダーを認証トークンに設定していることを確認してください。  認証トークンは `client.currentUser.mobileServiceAuthenticationToken`に格納されています。  たとえば、次のフェッチ API を使用します。
 

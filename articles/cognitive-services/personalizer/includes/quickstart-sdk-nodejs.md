@@ -11,10 +11,10 @@ ms.custom: include file
 ms.date: 01/15/2020
 ms.author: diberry
 ms.openlocfilehash: 786efcb712557da4363384c9d05c33f4f16d6731
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76122730"
 ---
 [リファレンスのドキュメント](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest) |[ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer) | [パッケージ (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer) | [サンプル](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js)
@@ -134,7 +134,7 @@ rank 呼び出しと reward 呼び出しについて、以降の各セクショ�
 
 Rank 要求を実行するために、このプログラムは、ユーザーの好みをたずねてコンテンツの選択肢を作成します。 このプロセスで、アクションから除外するコンテンツ (`excludeActions`) を作成することもできます。 優先度付けされた応答を取得するためには、Rank 要求に[アクション](../concepts-features.md#actions-represent-a-list-of-options)とそのフィーチャー、currentContext フィーチャー、excludeActions、一意の Rank イベント ID が必要です。
 
-このクイックスタートにおけるコンテキストのフィーチャーは、時間帯と食べ物に対するユーザーの好みという単純なものです。 実稼働システムでは、[アクションとフィーチャー](../concepts-features.md)を決定し、[評価](../concept-feature-evaluation.md)することが、決して簡単ではない場合もあります。
+このクイックスタートにおけるコンテキストのフィーチャーは、時間帯と食べ物に対するユーザーの好みという単純なものです。 実稼働システムでは、[アクションとフィーチャー](../concept-feature-evaluation.md)を決定し、[評価](../concepts-features.md)することが、決して簡単ではない場合もあります。
 
 [!code-javascript[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/node/sample.js?name=rank)]
 

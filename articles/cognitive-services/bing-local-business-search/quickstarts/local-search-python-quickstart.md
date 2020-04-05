@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.date: 11/29/2019
 ms.author: aahi
 ms.openlocfilehash: c7e7ef7f052fccfea18b246f41109d5fa7528b4b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75379745"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>クイック スタート:Python で Bing Local Business Search API にクエリを送信する
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>クイック スタート - Python で Bing Local Business Search API にクエリを送信する
 
 このクイック スタートを利用して、Azure Cognitive Service である Bing Local Business Search API への要求の送信を開始します。 このシンプルなアプリケーションは Python で記述されていますが、API は、HTTP 要求の発行と JSON の解析が可能な任意のプログラミング言語と互換性がある RESTful Web サービスです。
 

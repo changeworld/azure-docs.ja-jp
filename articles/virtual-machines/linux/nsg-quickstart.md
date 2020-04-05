@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: d9488b7a466dfc67edbf2dcbee966fc1fc72e8b7
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: c29fb075fc2d8b512070d7a6cf3fef949def5894
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944543"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066626"
 ---
 # <a name="open-ports-and-endpoints-to-a-vm-with-the-azure-cli"></a>Azure CLI 使用した VM へのポートの開放とエンドポイント
 
@@ -29,7 +29,7 @@ ms.locfileid: "78944543"
 ## <a name="quickly-open-a-port-for-a-vm"></a>VM 用のポートを簡単に開く
 開発/テスト シナリオで VM 用のポートを簡単に開く必要がある場合は、[az vm open-port](/cli/azure/vm) コマンドを使用できます。 このコマンドは、ネットワーク セキュリティ グループを作成して規則を追加し、これを VM またはサブネットに適用します。 次の例では、*myResourceGroup* というリソース グループ内の *myVM* という VM に、ポート *80* を開きます。
 
-```azure-cli
+```azurecli
 az vm open-port --resource-group myResourceGroup --name myVM --port 80
 ```
 

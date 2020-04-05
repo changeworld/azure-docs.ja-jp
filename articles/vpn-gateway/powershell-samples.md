@@ -8,10 +8,10 @@ ms.topic: sample
 ms.date: 01/10/2020
 ms.author: cherylmc
 ms.openlocfilehash: 7510b0243db25752a61d3711c88a250b7ae3b576
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75867228"
 ---
 # <a name="azure-powershell-samples-for-vpn-gateway"></a>VPN Gateway に関する Azure PowerShell のサンプル

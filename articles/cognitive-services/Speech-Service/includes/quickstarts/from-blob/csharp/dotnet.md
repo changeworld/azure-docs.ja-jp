@@ -2,14 +2,14 @@
 author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/13/2020
+ms.date: 03/12/2020
 ms.author: dapine
-ms.openlocfilehash: 9404818142fdde109bfa89d54b9287108352f132
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.openlocfilehash: 230a2328a2d03d2167cb1312eb2f02d4b2cedd64
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78932629"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "79296324"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,8 +63,9 @@ class Program
  
     static async Task Main()
     {
-        // For non-Windows 10 users.
-        ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+        // Cognitive Services follows security best practices.
+        // If you experience connectivity issues, see:
+        // https://docs.microsoft.com/en-us/dotnet/framework/network-programming/tls
  
         await TranscribeAsync();
     }

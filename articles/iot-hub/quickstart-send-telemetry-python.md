@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/17/2019
 ms.openlocfilehash: 73722a7e5581d5e6275ec23f31351c2e4d4561ff
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78675371"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>クイック スタート:デバイスから IoT ハブに利用統計情報を送信してバックエンド アプリケーションで読み取る (Python)

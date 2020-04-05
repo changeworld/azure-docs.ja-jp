@@ -3,7 +3,7 @@ title: 処理と通知を要求する - Azure AD エンタイトルメント管�
 description: Azure Active Directory エンタイトルメント管理におけるアクセス パッケージの要求プロセスと電子メール通知が送信されるタイミングについて説明します。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: mamtakumar
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 11/11/2019
-ms.author: ajburnle
+ms.date: 03/22/2020
+ms.author: barclayn
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b86e4019b26eebb8b805a4846e583c68acb53ad6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e4ff270977449bb80f97073342dc0c726a3f2316
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422601"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128518"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理における要求プロセスと電子メール通知
 

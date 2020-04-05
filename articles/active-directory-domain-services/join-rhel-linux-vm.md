@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: iainfou
 ms.openlocfilehash: d12dd0c79f2e9c1d2b0cc17956a0bb8d8fa35865
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78299144"
 ---
 # <a name="join-a-red-hat-enterprise-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Red Hat Enterprise Linux 仮想マシンを Azure AD Domain Services のマネージド ドメインに参加させる

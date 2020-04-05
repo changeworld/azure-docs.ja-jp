@@ -10,11 +10,11 @@ ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 8a6b7cb3fd45e17b84519efcaa826b569083e156
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839479"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231539"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Azure portal を使用した Azure Data Lake Analytics の管理
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -27,14 +27,14 @@ ms.locfileid: "73839479"
 
 ## <a name="manage-data-lake-analytics-accounts"></a>Data Lake Analytics アカウントの管理
 
-### <a name="create-an-account"></a>アカウントの作成
+### <a name="create-an-account"></a>アカウントを作成する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[リソースの作成]**  >  **[インテリジェンス + 分析]**  > **Data Lake Analytics** をクリックします。
 3. 次の項目の値を選択します。 
-   1. **[名前]** :Data Lake Analytics アカウントの名前。
+   1. **Name**:Data Lake Analytics アカウントの名前。
    2. **サブスクリプション**:アカウントに使用する Azure サブスクリプション。
-   3. **[リソース グループ]** :アカウントの作成先の Azure リソース グループ。 
+   3. **リソース グループ**:アカウントの作成先の Azure リソース グループ。 
    4. **[場所]** :Data Lake Analytics アカウントの Azure データセンター。 
    5. **[Data Lake Store]** :Data Lake Analytics アカウントのために使用される既定のストア。 Azure Data Lake Store アカウントと Data Lake Analytics アカウントは、同じ場所にある必要があります。
 4. **Create** をクリックしてください。 
@@ -114,7 +114,7 @@ U-SQL 開発者が Data Lake Analytics サービスを使用できるように�
 2. **[アクセス制御 (IAM)]**  >  **[ロールの割り当ての追加]** の順にクリックします。
 3. ロールを選択します。
 4. ユーザーを追加します。
-5. Click **OK**.
+5. **[OK]** をクリックします。
 
 >[!NOTE]
 >ユーザーまたはセキュリティ グループがジョブを送信する必要がある場合は、ストア アカウントに対するアクセス許可も必要です。 詳細については、[Data Lake Store に格納されているデータのセキュリティ保護](../data-lake-store/data-lake-store-secure-data.md)に関する記事を参照してください。
@@ -161,7 +161,7 @@ U-SQL 開発者が Data Lake Analytics サービスを使用できるように�
 2. **[ジョブ洞察]** をクリックします。 既定では [すべてのジョブ] タブに移動し、実行中のジョブ、キューに登録済みのジョブ、終了したジョブの一覧が表示されます。
 3. **[定期的なジョブ]** タブをクリックします。定期的なジョブの一覧が、それぞれのジョブの集計された統計と共に表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
 * [Azure PowerShell を使用して Azure Data Lake Analytics を管理する](data-lake-analytics-manage-use-powershell.md)

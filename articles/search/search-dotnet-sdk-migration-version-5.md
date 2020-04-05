@@ -10,10 +10,10 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: bb0cd191ba7e5939c55d11b484ed7a2c422f8c6d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72793035"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-5"></a>Azure Search .NET SDK バージョン 5 へのアップグレード
@@ -35,7 +35,7 @@ Azure Search .NET SDK のバージョン 5 には、以前のバージョンか�
 Azure Search .NET SDK のバージョン 5 は、Azure Search REST API の最新の一般公開バージョン (2017-11-11) を対象としています。 これにより、次のような Azure Search の新機能を .NET アプリケーションから使用することが可能になります。
 
 * [シノニム](search-synonyms.md)。
-* インデクサーの実行履歴内の警告に、プログラムからアクセスできるようになりました (詳細については、[.NET リファレンス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet)で、`IndexerExecutionResult` の `Warning` プロパティをご覧ください)。
+* インデクサーの実行履歴内の警告に、プログラムからアクセスできるようになりました (詳細については、`Warning`.NET リファレンス`IndexerExecutionResult`で、[ の ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet) プロパティをご覧ください)。
 * .NET Core 2 のサポート。
 * 新しいパッケージ構造により、SDK の必要な一部のみを使用できるようになっています (詳細については、「[バージョン 5 における重大な変更](#ListOfChanges)」をご覧ください)。
 
@@ -66,10 +66,10 @@ Azure Search .NET SDK のパッケージにおける変更のため、バージ�
 
 バージョン 5 における最も重大な変更は、`Microsoft.Azure.Search` アセンブリとその内容が 4 つの別個のアセンブリに分割されたことです。これらは 4 つの別個の NuGet パッケージとして配布されるようになりました。
 
- - `Microsoft.Azure.Search`:依存関係がある Azure Search の他のパッケージをすべて含むメタパッケージです。 以前のバージョンの SDK からアップグレードする場合は、単純にこのパッケージをアップグレードしてリビルドすれば、新しいバージョンの使用を開始するのに十分です。
- - `Microsoft.Azure.Search.Data`:Azure Search を使用して .NET アプリケーションを開発していて、インデックス内のドキュメントのクエリまたは更新のみを行う必要がある場合は、このパッケージを使用します。 インデックス、シノニム マップ､またはサービス レベルのその他のリソースの作成や更新も行う必要がある場合は､代わりに `Microsoft.Azure.Search` パッケージを使用します｡
- - `Microsoft.Azure.Search.Service`:.NET で、Azure Search インデックス、シノニム マップ、インデクサー、データ ソース、またはサービスレベルのその他のリソースを管理するための自動化を開発する場合は、このパッケージを使用します。 インデックス内のドキュメントのクエリまたは更新のみを行う場合は､代わりに `Microsoft.Azure.Search.Data` パッケージを使用します｡ Azure Search のすべての機能が必要な場合は､代わりに `Microsoft.Azure.Search` パッケージを使用します｡
- - `Microsoft.Azure.Search.Common`:Azure Search .NET ライブラリに必要な共通の型です。 このパッケージは、アプリケーションで直接使用する必要はないはずで、依存関係としての使用のみが想定されています｡
+ - `Microsoft.Azure.Search`: これは､依存関係がある Azure Search の他のパッケージをすべて含むメタパッケージです｡ 以前のバージョンの SDK からアップグレードする場合は、単純にこのパッケージをアップグレードしてリビルドすれば、新しいバージョンの使用を開始するのに十分です。
+ - `Microsoft.Azure.Search.Data`: Azure Search を使用して .NET アプリケーションを開発していて､インデックス内のドキュメントのクエリまたは更新のみを行う必要がある場合は、このパッケージを使用します｡ インデックス、シノニム マップ､またはサービス レベルのその他のリソースの作成や更新も行う必要がある場合は､代わりに `Microsoft.Azure.Search` パッケージを使用します｡
+ - `Microsoft.Azure.Search.Service`: .NET で、Azure Search インデックス、シノニム マップ､インデクサー､データ ソース､またはサービスレベルのその他のリソースを管理するための自動化を開発する場合は、このパッケージを使用します｡ インデックス内のドキュメントのクエリまたは更新のみを行う場合は､代わりに `Microsoft.Azure.Search.Data` パッケージを使用します｡ Azure Search のすべての機能が必要な場合は､代わりに `Microsoft.Azure.Search` パッケージを使用します｡
+ - `Microsoft.Azure.Search.Common`: Azure Search .NET ライブラリに必要な共通の型です｡ このパッケージは、アプリケーションで直接使用する必要はないはずで、依存関係としての使用のみが想定されています｡
  
 この変更が技術的に重要なのは、多くの型がアセンブリ間で移動されたためです。 バージョン 5 の SDK にアップグレードするためにアプリケーションのリビルドが必要なのは、このためです。
 
@@ -77,7 +77,7 @@ Azure Search .NET SDK のパッケージにおける変更のため、バージ�
 
 ### <a name="change-to-suggesters"></a>サジェスターに対する変更点 
 
-`Suggester` コンストラクターで、`SuggesterSearchMode` に対する `enum` パラメーターはなくなりました。 この列挙型の値は 1 つだけであり、そのため冗長でした。 この結果としてビルド エラーが発生する場合は、単純に `SuggesterSearchMode` パラメーターの参照を削除してください。
+`Suggester` コンストラクターで、`enum` に対する `SuggesterSearchMode` パラメーターはなくなりました。 この列挙型の値は 1 つだけであり、そのため冗長でした。 この結果としてビルド エラーが発生する場合は、単純に `SuggesterSearchMode` パラメーターの参照を削除してください。
 
 ### <a name="removed-obsolete-members"></a>古い形式のメンバーの削除
 

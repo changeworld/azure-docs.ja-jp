@@ -7,10 +7,10 @@ ms.author: sngun
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: 92fa35fbe8e5eef4dbdc8b6c47a9055affd449a5
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273184"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Azure Cosmos DB で日付を扱う
@@ -30,7 +30,7 @@ Azure Cosmos DB は、string、number、boolean、null、array、object など�
 * JSON に格納されている日付を人間が判読できます。
 * この方法では、高速クエリ パフォーマンスのために Azure Cosmos DB のインデックスを利用できます。
 
-たとえば、次のスニペットは、.NET SDK を使用して 2 つの DateTime プロパティ (`ShipDate` と `OrderDate`) を含む`Order` オブジェクトをドキュメントとして格納します。
+たとえば、次のスニペットは、.NET SDK を使用して 2 つの DateTime プロパティ (`Order` と `ShipDate`) を含む`OrderDate` オブジェクトをドキュメントとして格納します。
 
 ```csharp
     public class Order

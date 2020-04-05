@@ -9,10 +9,10 @@ ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: 2f920e29fafdc55478e0e2c16d683bd1c3bc81d8
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78942929"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 の概要

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 8989acc6d21a3c53be9d97c74ed7fbf03ba54819
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76773678"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>REST を使用したオンデマンド コンテンツ配信の概要  
@@ -79,11 +79,11 @@ REST API を使用して Media Services での開発を始めるには、次の�
 4. [開始] アイコンをクリックします。
 5. [保存] をクリックして、変更を保存します。
 
-## <a id="connect"></a>REST API で Media Services アカウントに接続する
+## <a name="connect-to-the-media-services-account-with-rest-api"></a><a id="connect"></a>REST API で Media Services アカウントに接続する
 
 AMS API に接続する方法については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。 
 
-## <a id="upload"></a>新しいアセットを作成し、REST API を使用してビデオのファイルをアップロードする
+## <a name="create-a-new-asset-and-upload-a-video-file-with-rest-api"></a><a id="upload"></a>新しいアセットを作成し、REST API を使用してビデオのファイルをアップロードする
 
 Media Services で、デジタル ファイルを資産にアップロードします。 **Asset** エンティティには、ビデオ、オーディオ、画像、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。ファイルを資産にアップロードすると、コンテンツがクラウドに安全に保存され、処理したりストリーミングしたりできるようになります。
 
@@ -405,7 +405,7 @@ Azure ストレージ BLOB の使用の詳細については、 [BLOB サービ�
     HTTP/1.1 204 No Content
     ...
 
-## <a id="encode"></a>一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードする
+## <a name="encode-the-source-file-into-a-set-of-adaptive-bitrate-mp4-files"></a><a id="encode"></a>一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードする
 
 Media Services に取り込んだ資産には、メディアのエンコード、再パッケージ化、透かしの追加などをクライアントへの配信前に適用できます。 高いパフォーマンスと可用性を確保するために、これらの作業は、複数のバックグラウンド ロール インスタンスに対してスケジューリングされて実行されます。 これらのアクティビティはジョブと呼ばれ、各ジョブは、資産ファイルの実際の作業を実行するアトミック タスクで構成されます (詳細については、[ジョブ](https://docs.microsoft.com/rest/api/media/operations/job)と[タスク](https://docs.microsoft.com/rest/api/media/operations/task)の説明を参照してください)。
 
@@ -692,7 +692,7 @@ Media Services では、CancelJob 関数を使用して実行中のジョブを�
        ]
     }
 
-## <a id="publish_get_urls"></a>REST API でアセットを発行してストリーミング URL とプログレッシブ ダウンロード URL を取得する
+## <a name="publish-the-asset-and-get-streaming-and-progressive-download-urls-with-rest-api"></a><a id="publish_get_urls"></a>REST API でアセットを発行してストリーミング URL とプログレッシブ ダウンロード URL を取得する
 
 アセットをストリーミングまたはダウンロードするにはまず、ロケーターを作成してアセットを「発行」する必要があります。 アセットに含まれているファイルには、ロケーターを通じてアクセスできます。 Media Services では、2 種類のロケーターがサポートされています。メディアをストリーミングする (MPEG DASH、HLS、Smooth Streaming など) ために使用される OnDemandOrigin ロケーター、およびメディア ファイルをダウンロードするために使用される Access Signature (SAS) ロケーター。 
 
@@ -910,7 +910,7 @@ MPEG DASH をストリーミングするには、"/manifest" の後に (format=m
     http://amstestaccount001.streaming.mediaservices.windows.net/ebf733c4-3e2e-4a68-b67b-cc5159d1d7f2/BigBuckBunny.ism/manifest(format=mpd-time-csf)
 
 
-## <a id="play"></a>コンテンツの再生
+## <a name="play-your-content"></a><a id="play"></a>コンテンツの再生
 ビデオをストリーミングするには、 [Azure Media Services Player](https://aka.ms/azuremediaplayer)を使用します。
 
 プログレッシブ ダウンロードをテストするには、ブラウザー (IE、Chrome、Safari など) に URL を貼り付けます。

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/29/2017
 tags: connectors
 ms.openlocfilehash: 99abd48bde97c2a2e085688cdfbb365e5e4cfd56
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789428"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle Database コネクタの概要
@@ -91,19 +91,19 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 
 ## <a name="common-errors"></a>一般的なエラー
 
-#### <a name="error-cannot-reach-the-gateway"></a>**エラー**: ゲートウェイに到達できません
+#### <a name="error-cannot-reach-the-gateway"></a>**Error**: ゲートウェイに到達できません
 
 **原因**:オンプレミスのデータ ゲートウェイがクラウドに接続できません。 
 
 **対応策**:ゲートウェイをインストールしたオンプレミスのコンピューターで、そのゲートウェイが実行されていること、およびインターネットに接続できることを確認します。  オフまたはスリープ状態のコンピューターにはゲートウェイをインストールしないことをお勧めします。 オンプレミスのデータ ゲートウェイ サービス (PBIEgwService) を再起動することもできます。
 
-#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**エラー**: 使用中のプロバイダーは非推奨です: System.Data.OracleClient には Oracle クライアント ソフトウェア version 8.1.7 以降が必要です。 [https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376) を参照して、公式のプロバイダーをインストールしてください。
+#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Error**: 使用中のプロバイダーは非推奨です: System.Data.OracleClient には Oracle クライアント ソフトウェア version 8.1.7 以降が必要です。 [https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376) を参照して、公式のプロバイダーをインストールしてください。
 
 **原因**:オンプレミスのデータ ゲートウェイが実行されているコンピューターに Oracle クライアント SDK がインストールされていません。  
 
 **解決方法**:Oracle クライアント SDK をダウンロードして、オンプレミスのデータ ゲートウェイと同じコンピューターにインストールします。
 
-#### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**エラー**: テーブル '[Tablename]' には、キー列が定義されていません
+#### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**Error**: テーブル '[Tablename]' には、キー列が定義されていません
 
 **原因**:テーブルに主キーがありません。  
 
@@ -126,5 +126,5 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 [https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish) では、Logic Apps やコネクタの機能向上に役立つ皆様の投票や提案をお待ちしています。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [ロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)し、[API の一覧](apis-list.md)で Logic Apps で使用できるコネクタを確認します。

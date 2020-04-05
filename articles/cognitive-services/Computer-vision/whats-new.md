@@ -10,16 +10,20 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 02/28/2020
 ms.author: pafarley
-ms.openlocfilehash: c154b75fc8f8a177ab73682fc2af77d1702ae075
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 82e9c9a6dd8dc18f186a21e72a1a3d205094b707
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78207820"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80155190"
 ---
 # <a name="whats-new-in-computer-vision"></a>Computer Vision の新機能
 
 サービス内の新機能について説明します。 以下の項目には、リリース ノート、ビデオ、ブログの投稿、およびその他の種類の情報が含まれる可能性があります。 このページをブックマークして、常にサービスの最新情報を確認してください。
+
+## <a name="march-2020"></a>2020 年 3 月
+
+* TLS 1.2 は現在、このサービスへのすべての HTTP 要求に適用されるようになりました。 詳細については、[Azure Cognitive Services のセキュリティ](../cognitive-services-security.md)に関するページを参照してください。
 
 ## <a name="january-2020"></a>2020 年 1 月
 
@@ -33,6 +37,6 @@ Read API のバージョン3.0 では、印刷されたテキストまたは手�
 
 3\.0 API の使用を開始するには、[テキストの抽出に関するクイックスタート](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text?tabs=version-3)に従ってください。
 
-## <a name="cognitive-service-updates"></a>コグニティブ サービスの更新プログラム
+## <a name="cognitive-service-updates"></a>Cognitive Services の更新プログラム
 
 [Cognitive Services に対する Azure 更新プログラムのお知らせ](https://azure.microsoft.com/updates/?product=cognitive-services)

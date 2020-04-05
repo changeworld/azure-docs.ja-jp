@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: lbosq
 ms.openlocfilehash: dc9a5616aa2bb1f7e09045b9cfe4f4d7e9c69be2
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898320"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API のグラフ データのモデリング

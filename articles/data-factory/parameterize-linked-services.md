@@ -11,10 +11,10 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: acc7284eb607d20ca1d62b478d802be56048bc6c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75440092"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Azure Data Factory のリンクされたサービスのパラメーター化

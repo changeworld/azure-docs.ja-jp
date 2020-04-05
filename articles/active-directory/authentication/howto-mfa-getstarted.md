@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b6da67589b15b4ab043510c0375c26c12f645adb
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155148"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230979"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>クラウド ベースの Azure Multi-Factor Authentication のデプロイの計画
 
@@ -233,8 +233,8 @@ MFA やその他の制御がいつ必要になるかを決定する条件付き�
    * オプション: **[Exclude]\(除外\)** タブで、組織において MFA の必要がないクラウド アプリを選択します。
    * **[Done]** をクリックします。
 1. **[条件]** セクションで次の手順を実行します。
-   * オプション:Azure Identity Protection を有効にしてある場合は、ポリシーの一部としてサインイン リスクを評価することを選択できます。
-   * オプション:信頼できる場所またはネームド ロケーションを構成してある場合は、これらの場所をポリシーに追加するか、ポリシーから除外するよう指定できます。
+   * オプション: Azure Identity Protection を有効にしてある場合は、ポリシーの一部としてのサインイン リスクの評価を選択できます。
+   * オプション: 信頼できる場所またはネームド ロケーションを構成してある場合は、これらの場所をポリシーに追加するか、ポリシーから除外するよう指定できます。
 1. **[許可]** で、 **[アクセス権の付与]** ラジオ ボタンが選択されていることを確認します。
     * **[多要素認証を要求する]** のボックスをオンにします。
     * **[選択]** をクリックします。
@@ -275,7 +275,7 @@ NPS 拡張機能は、RADIUS とクラウドベースの Azure MFA の間のア�
 
 #### <a name="prepare-nps-for-users-that-arent-enrolled-for-mfa"></a>MFA に登録されていないユーザーのために NPS を準備する
 
-MFA に登録されていないユーザーが認証を試みたときの処理を選択します。 レジストリ パス `HKLM\Software\Microsoft\AzureMFA` のレジストリ設定 `REQUIRE_USER_MATCH` を使用して、機能の動作を制御します。 この設定の構成オプションは 1 つだけです。
+MFA に登録されていないユーザーが認証を試みたときの処理を選択します。 レジストリ パス `REQUIRE_USER_MATCH` のレジストリ設定 `HKLM\Software\Microsoft\AzureMFA` を使用して、機能の動作を制御します。 この設定の構成オプションは 1 つだけです。
 
 | Key | 値 | Default |
 | --- | --- | --- |

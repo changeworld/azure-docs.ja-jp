@@ -9,10 +9,10 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: tables
 ms.openlocfilehash: 89581c8ae2fbdbb55a2abfbd527c8fdcf4b65761
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75749553"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Table Storage のパフォーマンスとスケーラビリティのチェックリスト
@@ -105,7 +105,7 @@ Table service のスケーラビリティ ターゲットの詳細について�
 
 他のネットワーク運用と同様に、エラーやパケット損失が生じるネットワーク状態では、遅延が生じて有効なスループットが損なわれることに留意してください。  WireShark または NetMon は、この問題の診断に有用です。  
 
-### <a name="location"></a>Location
+### <a name="location"></a>場所
 
 分散型環境では、サーバーの近くにクライアントを配置すると、パフォーマンスが最大になります。 最小限の遅延で Azure Storage にアクセスするには、同じ Azure リージョン内にクライアントを配置するのが最適です。 たとえば、Azure Storage を使用する Azure Web アプリを 1 つ保有している場合は、その両方を単一のリージョン内に配置します (たとえば、米国西部や東南アジア)。 リソースを併置することにより待ち時間が短縮され、コストが低下します。1 つのリージョン内での帯域幅使用は無料であるためです。  
 

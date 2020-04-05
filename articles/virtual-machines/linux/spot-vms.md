@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/14/2019
 ms.author: cynthn
 ms.openlocfilehash: 9a9989f7b8e75be09a72d76f84d664504b3af474
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74790142"
 ---
 # <a name="preview-use-spot-vms-in-azure"></a>プレビュー:Azure でスポット VM を使用する
@@ -28,7 +28,7 @@ ms.locfileid: "74790142"
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [CLI](spot-cli.md)、[ポータル](../windows/spot-portal.md) または [PowerShell](../windows/spot-powershell.md) を使用して、スポット VM をデプロイします。
 
-また、[スポット VM インスタンスを使用してスケールセットを](../../virtual-machine-scale-sets/use-spot.md) デプロイすることもできます。
+また、[スポット VM インスタンスを使用したスケール セット](../../virtual-machine-scale-sets/use-spot.md)をデプロイすることもできます。

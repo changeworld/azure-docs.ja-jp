@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/23/2018
 ms.author: alkohli
 ms.openlocfilehash: 116ac5c4efda87b5d16336dd326d516299f6955d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61481937"
 ---
 # <a name="deactivate-and-delete-a-storsimple-device"></a>StorSimple デバイスの非アクティブ化と削除
@@ -116,7 +116,7 @@ StorSimple Cloud Appliance の場合、ポータルから非アクティブ化�
 
 クラウド アプライアンスが非アクティブ化された後、デバイスの一覧から削除できます。 非アクティブ化されたデバイスを選択します。右クリックして **[削除]** をクリックします。 デバイスが削除されると StorSimple による通知が表示され、デバイスの一覧が更新されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 非アクティブ化されたデバイスを出荷時の既定値に復元するには、「 [デバイスの出荷時設定へのリセット](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings)」をご覧ください。
 * 技術的な詳細については、 [Microsoft サポートに問い合わせ](storsimple-8000-contact-microsoft-support.md)てください。

@@ -12,10 +12,10 @@ ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 34d9af03b42df4a2806e82bb1e1fa376f099ae4c
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78271061"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>クイック スタート:Windows デスクトップ アプリからトークンを取得し、Microsoft Graph API を呼び出す

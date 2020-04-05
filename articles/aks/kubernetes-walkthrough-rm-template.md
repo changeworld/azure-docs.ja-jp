@@ -4,19 +4,21 @@ description: Azure Resource Manager テンプレートを使用して Kubernetes
 services: container-service
 ms.topic: quickstart
 ms.date: 04/19/2019
-ms.custom: mvc
-ms.openlocfilehash: 9c4a79f196cc0737ddc9490f2fedda99961289f4
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.custom: mvc,subject-armqs
+ms.openlocfilehash: e8117eb1b521dc2e3fa9eaca1316e0b9c14f0e98
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273793"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80129451"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して Azure Kubernetes Service (AKS) クラスターをデプロイする
 
 Azure Kubernetes Service (AKS) は、クラスターをすばやくデプロイおよび管理することができる、マネージド Kubernetes サービスです。 このクイック スタートでは、Azure Resource Manager テンプレートを使用して AKS クラスターをデプロイします。 このクラスターで、Web フロント エンドと Redis インスタンスが含まれている複数コンテナー アプリケーションが実行されます。
 
 ![Azure Vote にブラウザーでアクセスしたところ](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
+
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 このクイックスタートは、Kubernetes の基本的な概念を理解していることを前提としています。 詳細については、「[Azure Kubernetes Services (AKS) における Kubernetes の中心概念][kubernetes-concepts]」を参照してください。
 
@@ -68,13 +70,21 @@ az ad sp create-for-rbac --skip-assignment
 
 ## <a name="create-an-aks-cluster"></a>AKS クラスターを作成する
 
-このクイック スタートで使用されるテンプレートは、[Azure Kubernetes Service クラスターをデプロイする](https://azure.microsoft.com/resources/templates/101-aks/)ためのものです。 他の AKS サンプルについては、[AKS クイック スタートのテンプレート][aks-quickstart-templates]に関するサイトを参照してください。
+### <a name="review-the-template"></a>テンプレートを確認する
+
+このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-aks/)からのものです。
+
+:::code language="json" source="~/quickstart-templates/101-aks/azuredeploy.json" range="1-126" highlight="86-118":::
+
+他の AKS サンプルについては、[AKS クイック スタートのテンプレート][aks-quickstart-templates]に関するサイトを参照してください。
+
+### <a name="deploy-the-template"></a>テンプレートのデプロイ
 
 1. Azure にサインインし、テンプレートを開くには次のイメージを選択します。
 
     [![Azure へのデプロイ](./media/kubernetes-walkthrough-rm-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aks%2Fazuredeploy.json)
 
-2. 次の値を選択または入力します。  
+2. 次の値を選択または入力します。
 
     このクイック スタートでは、 *[OS ディスク サイズ GB]* 、 *[エージェント数]* 、 *[エージェント VM のサイズ]* 、 *[OS の種類]* 、および *[Kubernetes バージョン]* を既定値のままにしておいてください。 以下のテンプレート パラメーターに、独自の値を指定します。
 
@@ -95,7 +105,9 @@ az ad sp create-for-rbac --skip-assignment
 
 AKS クラスターの作成には数分かかります。 クラスターが正常にデプロイされるのを待ってから、次の手順に進みます。
 
-## <a name="connect-to-the-cluster"></a>クラスターに接続する
+## <a name="validate-the-deployment"></a>デプロイの検証
+
+### <a name="connect-to-the-cluster"></a>クラスターに接続する
 
 Kubernetes クラスターを管理するには、Kubernetes のコマンドライン クライアントである [kubectl][kubectl] を使用します。 Azure Cloud Shell を使用している場合、`kubectl` は既にインストールされています。 `kubectl` をローカルにインストールするには、[az aks install-cli][az-aks-install-cli] コマンドを使用します。
 
@@ -124,7 +136,7 @@ aks-agentpool-41324942-1   Ready    agent   6m46s   v1.12.6
 aks-agentpool-41324942-2   Ready    agent   6m45s   v1.12.6
 ```
 
-## <a name="run-the-application"></a>アプリケーションの実行
+### <a name="run-the-application"></a>アプリケーションの実行
 
 Kubernetes のマニフェスト ファイルでは、どのコンテナー イメージを実行するかなど、クラスターの望ましい状態を定義します。 このクイック スタートでは、マニフェストを使用して、Azure Vote アプリケーションを実行するために必要なすべてのオブジェクトを作成します。 このマニフェストには、 [Kubernetes デプロイ][kubernetes-deployment] が 2 つ含まれます。サンプル Azure Vote Python アプリケーション用と Redis インスタンス用です。 さらに、 [Kubernetes サービス][kubernetes-service] が 2 つ作成されます。Redis インスタンスに使用される内部サービスと、Azure Vote アプリケーションにインターネットからアクセスするための外部サービスです。
 
@@ -233,7 +245,7 @@ deployment "azure-vote-front" created
 service "azure-vote-front" created
 ```
 
-## <a name="test-the-application"></a>アプリケーションをテストする
+### <a name="test-the-application"></a>アプリケーションをテストする
 
 アプリケーションが実行されると、Kubernetes サービスによってアプリケーション フロント エンドがインターネットに公開されます。 このプロセスが完了するまでに数分かかることがあります。
 
@@ -260,7 +272,7 @@ Azure Vote アプリが動作していることを確認するには、Web ブ�
 
 ![Azure Vote にブラウザーでアクセスしたところ](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
-## <a name="delete-cluster"></a>クラスターを削除する
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 クラスターが必要なくなったら、[az group delete][az-group-delete] コマンドを使って、リソース グループ、コンテナー サービス、およびすべての関連リソースを削除してください。
 

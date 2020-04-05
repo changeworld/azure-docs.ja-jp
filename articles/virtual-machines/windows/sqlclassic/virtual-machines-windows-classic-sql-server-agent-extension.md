@@ -16,10 +16,10 @@ ms.date: 07/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: b76ade40db1e85abc0fb42af2e6f4ab88cb092c4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75982281"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>SQL Server Agent 拡張機能 (クラシック) による Azure Virtual Machines での管理タスクの自動化
@@ -32,7 +32,7 @@ ms.locfileid: "75982281"
 SQL Server IaaS Agent 拡張機能 (SQLIaaSAgent) は、管理タスクを自動化するために Azure 仮想マシン上で実行されます。 このトピックでは、この拡張機能によってサポートされるサービスの概要と、インストール、状態、および削除のための手順について説明します。
 
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../../../azure-resource-manager/management/deployment-models.md)です。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 この記事の Resource Manager バージョンを確認するには、[Resource Manager バージョンの SQL Server VM 用 SQL Server Agent 拡張機能](../sql/virtual-machines-windows-sql-server-agent-extension.md)に関する記事をご覧ください。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/management/deployment-models.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 この記事の Resource Manager バージョンを確認するには、[Resource Manager バージョンの SQL Server VM 用 SQL Server Agent 拡張機能](../sql/virtual-machines-windows-sql-server-agent-extension.md)に関する記事をご覧ください。
 
 ## <a name="supported-services"></a>サポートされているサービス
 SQL Server IaaS Agent 拡張機能は、次の管理タスクをサポートします。

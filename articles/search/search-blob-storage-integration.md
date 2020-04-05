@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: af7d04bd74ada296b9f0e0f7c149c2a781cec579
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73496495"
 ---
 # <a name="add-full-text-search-to-azure-blob-data-using-azure-cognitive-search"></a>Azure Cognitive Search を使用して Azure BLOB データにフル テキスト検索を追加する
@@ -45,7 +45,7 @@ Azure Cognitive Search と Azure Blob Storage が必要です。 BLOB ストレ�
 
 Azure Storage 内の BLOB は、[Azure Cognitive Search Blob Storage インデクサー](search-howto-indexing-azure-blob-storage.md)を使用してインデックス作成されます。 このインデクサーを呼び出すには、 **[データのインポート]** ウィザード、REST API、または .NET SDK を使用します。 コード内でこのインデクサーを使用するには、種類を設定してから、Azure Storage アカウントおよび BLOB コンテナーを含む接続情報を指定します。 ご利用の BLOB のサブセットを作成するには、パラメーターとして渡すことができる仮想ディレクトリを作成するか、ファイルの種類の拡張子に基づいてフィルター処理を行います。
 
-インデクサーでは、"ドキュメント解析" を行い、BLOB を開いてコンテンツが検査されます。 データソースに接続したら、それがパイプラインでの最初のステップとなります。 BLOB データの場合は、ここで、PDF、Office ドキュメント、およびその他のコンテンツの種類が検出されます。 テキストの抽出によるドキュメントの解読は課金の対象外です。 ご利用の BLOB に画像コンテンツが含まれている場合、[AI エンリッチメントを追加](search-blob-ai-integration.md)しない限り、画像は無視されます。 標準のインデックス作成は、テキスト コンテンツのみに適用されます。
+インデクサーでは、"ドキュメント解析" を行い、BLOB を開いてコンテンツが検査されます。 データソースに接続したら、それがパイプラインでの最初のステップとなります。 BLOB データの場合は、ここで、PDF、Office ドキュメント、およびその他のコンテンツの種類が検出されます。 テキストの抽出によるドキュメント解析は課金の対象外です。 ご利用の BLOB に画像コンテンツが含まれている場合、[AI エンリッチメントを追加](search-blob-ai-integration.md)しない限り、画像は無視されます。 標準のインデックス作成は、テキスト コンテンツのみに適用されます。
 
 BLOB インデクサーでは、構成パラメーターが用意されているほか、基になるデータが十分な情報を提供している場合は、変更の追跡がサポートされます。 コア機能の詳細については、[Azure Cognitive Search Blob Storage インデクサー](search-howto-indexing-azure-blob-storage.md)に関するページを参照してください。
 
@@ -68,7 +68,7 @@ BLOB インデクサーでは、構成パラメーターが用意されている
 
 より永続的な解決策は、クエリ入力を収集し、クライアント アプリケーションでの検索結果として応答を提示することです。 次 C# のチュートリアルでは、検索アプリケーションを構築する方法について説明します。[Azure Cognitive Search で初めてのアプリを作成する](tutorial-csharp-create-first-app.md)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 + [Azure portal を使用して BLOB をアップロード、ダウンロード、および一覧表示する (Azure Blob Storage)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 + [BLOB インデクサーを設定する (Azure Cognitive Search)](search-howto-indexing-azure-blob-storage.md) 

@@ -16,10 +16,10 @@ ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: efc6d0c25c5186b391deb08ee0e41dcb8ae6edf0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75978074"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>Azure Virtual Machines での SQL Server の自動修正 (クラシック)
@@ -37,7 +37,7 @@ ms.locfileid: "75978074"
 自動修正は、 [SQL Server IaaS Agent 拡張機能](../classic/sql-server-agent-extension.md)に依存します。
 
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../../../azure-resource-manager/management/deployment-models.md)です。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 この記事の Resource Manager バージョンを確認するには、[Resource Manager バージョンの Azure Virtual Machines での SQL Server の自動修正](../sql/virtual-machines-windows-sql-automated-patching.md)に関する記事をご覧ください。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/management/deployment-models.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 この記事の Resource Manager バージョンを確認するには、[Resource Manager バージョンの Azure Virtual Machines での SQL Server の自動修正](../sql/virtual-machines-windows-sql-automated-patching.md)に関する記事をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 自動修正を使用するには、次の前提条件を検討してください。

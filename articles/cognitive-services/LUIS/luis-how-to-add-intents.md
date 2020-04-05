@@ -12,10 +12,10 @@ ms.date: 11/08/2019
 ms.author: diberry
 ms.service: cognitive-services
 ms.openlocfilehash: 66a3350dee60772ce706af8995179dcd8c485b64
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73904314"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>ユーザーの発話意図を判断する意図を追加する
@@ -82,6 +82,6 @@ ms.locfileid: "73904314"
 
 意図を追加、編集、または削除したら、その変更がエンドポイントのクエリに反映されるように、アプリを[トレーニング](luis-how-to-train.md)して[発行](luis-how-to-publish-app.md)します。 1 つ変更するたびにトレーニングすることはしないでください。 ひとまとまりの変更後にトレーニングしてください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [発話の例](luis-how-to-add-example-utterances.md)にエンティティを追加する方法について学習する。 

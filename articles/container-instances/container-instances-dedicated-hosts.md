@@ -6,10 +6,10 @@ ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
 ms.openlocfilehash: adad0ddfc78530b3a3a7c139d9a95ec4790c8053
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76934145"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>専用ホストへのデプロイ
@@ -28,7 +28,7 @@ Dedicated SKU は、物理サーバーの観点からワークロードの分離
 > Dedicated SKU の使用は、現在ロールアウトされている最新の API バージョン (2019-12-01) でのみ使用できます。デプロイ テンプレートでこの API バージョンを指定してください。
 >
 
-API バージョン 2019-12-01 以降、デプロイ テンプレートのコンテナー グループのプロパティのセクションに、ACI のデプロイに必要な `sku` プロパティが存在します。 現在、このプロパティは、ACI 用の Azure Resource Manager デプロイ テンプレートの一部として使用できます。 テンプレートを使用した ACI リソースのデプロイについて詳しくは、「[チュートリアル: Resource Manager テンプレートを使用してマルチコンテナー グループをデプロイする](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)」をご覧ください。 
+API バージョン 2019-12-01 以降、デプロイ テンプレートのコンテナー グループのプロパティのセクションに、ACI のデプロイに必要な `sku` プロパティが存在します。 現在、このプロパティは、ACI 用の Azure Resource Manager デプロイ テンプレートの一部として使用できます。 テンプレートを使用した ACI リソースのデプロイについて詳しくは、「[チュートリアル: Resource Manager テンプレートを使用してマルチコンテナー グループをデプロイする](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)」のテンプレートを編集した完全なテンプレートです。 
 
 `sku` プロパティの値は、次のいずれかが可能です。
 * `Standard` - ACI の標準的なデプロイのための選択肢。ハイパーバイザー レベルのセキュリティが引き続き保証されます。 

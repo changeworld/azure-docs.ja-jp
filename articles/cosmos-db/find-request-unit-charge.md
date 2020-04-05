@@ -6,11 +6,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: thweiss
-ms.openlocfilehash: 86e9854cb5a522a56cca09a6e1ea155fd8a62f14
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: c5699bb851bd0a818a987228155c62683e93f51a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77585902"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>Azure Cosmos DB の要求ユニット使用量を確認する
@@ -79,7 +79,7 @@ while (query.HasMoreResults)
 
 [.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) から返されたオブジェクトにより `RequestCharge` プロパティが公開されます。
 
-:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/CustomDocsSampleCode.cs" id="GetRequestCharge":::
+[!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/CustomDocsSampleCode.cs?name=GetRequestCharge)]
 
 詳細については、「[クイック スタート: Azure Cosmos DB の SQL API アカウントを使用して .NET Web アプリをビルドする](create-sql-api-dotnet.md)」を参照してください。
 

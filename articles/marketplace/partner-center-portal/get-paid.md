@@ -1,18 +1,17 @@
 ---
 title: コマーシャル マーケットプレース内の支払いを受ける | Azure Marketplace
 description: コマーシャル マーケットプレースにおける収益の支払いを受ける方法について説明します。
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 7f539d4165df04ddca198385f9eef4f90ed15189
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 3c75d5ccdd2d632fbc31d1be3faf6cbc6d3fb223
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933596"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275834"
 ---
 # <a name="getting-paid"></a>支払いを受ける
 ここでは、オファー、アドオン、広告の収益の支払いの受け取りに関する重要な情報を示します。
@@ -46,7 +45,7 @@ Microsoft Store 料金は、アドオンを含む、コマーシャル マーケ
 
 ## <a name="payout-reporting"></a>支払いレポート
 
-[パートナー センター](https://partner.microsoft.com/dashboard)の**支払いの概要**で、支払い情報に関する詳細にアクセスし、レポートをダウンロードすることができます。 ここに表示される情報と、収益を分類する方法の詳細については、[支払いの概要](payout-summary.md)に関するページを参照してください。
+**パートナー センター**の[支払いの概要](https://partner.microsoft.com/dashboard)で、支払い情報に関する詳細にアクセスし、レポートをダウンロードすることができます。 ここに表示される情報と、収益を分類する方法の詳細については、[支払いの概要](payout-summary.md)に関するページを参照してください。
 
 
 ## <a name="payout-timeframe"></a>支払い期間

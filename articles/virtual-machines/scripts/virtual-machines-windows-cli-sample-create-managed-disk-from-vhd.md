@@ -1,5 +1,5 @@
 ---
-title: 同じサブスクリプションのストレージ アカウントに VHD ファイルからマネージド ディスクを作成する - CLI のサンプル
+title: 同じサブスクリプションのストレージ アカウントに VHD ファイルからマネージド ディスクを作成する - CLI サンプル
 description: Azure CLI サンプル スクリプト - 同じサブスクリプションのストレージ アカウントに VHD ファイルからマネージド ディスクを作成する
 services: virtual-machines-windows
 documentationcenter: storage
@@ -17,10 +17,10 @@ ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
 ms.openlocfilehash: 9f7126d98b5b769ecf87608861b43af8af9dcaa4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75375833"
 ---
 # <a name="create-a-managed-disk-from-a-vhd-file-in-a-storage-account-in-the-same-subscription-with-cli"></a>CLI で同じサブスクリプションのストレージ アカウントに VHD ファイルからマネージド ディスクを作成する

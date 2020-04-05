@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: twooley
 ms.openlocfilehash: b33977ca5184ea07b5651be18e3a132d30ce4b39
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75966065"
 ---
 # <a name="disaster-recovery-guidance-for-data-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 内のデータに対するディザスター リカバリーのガイダンス

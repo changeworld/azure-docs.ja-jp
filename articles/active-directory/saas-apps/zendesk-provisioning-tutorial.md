@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Zendesk を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
+title: 'チュートリアル: Zendesk を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
 description: Azure Active Directory を構成して、ユーザー アカウントを Zendesk に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
 documentationcenter: ''
@@ -17,13 +17,13 @@ ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a480119ee88521b920be88669f6d80e3754d24d3
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77062748"
 ---
-# <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>チュートリアル:Zendesk を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>チュートリアル: Zendesk を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルでは、Zendesk に対するユーザーとグループのプロビジョニングとプロビジョニング解除を自動的に実行するように Azure AD を構成するために、Zendesk と Azure Active Directory (Azure AD) で実行する手順を示します。
 
@@ -83,7 +83,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="configure-automatic-user-provisioning-for-zendesk-in-azure-ad"></a>Azure AD で Zendesk の自動ユーザー プロビジョニングを構成する
 
-1. [Azure portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]**  >  **[Zendesk]** の順に選択します。
+1. [Azure portal](https://portal.azure.com) にサインインする **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]**  >  **[Zendesk]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: c80c667cb281168de6f11bbb6a536c01fefb7935
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: fdd809bcba703dbd8f9ee1e7c18185fd20e4586f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206964"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476136"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>CLI を使用して仮想ネットワークを ExpressRoute 回線に接続する
 
@@ -85,7 +85,7 @@ az network express-route auth create --circuit-name MyCircuit -g ExpressRouteRes
 
 このコマンドレットの応答に、承認キーと状態が含まれます。
 
-```azurecli
+```output
 "authorizationKey": "0a7f3020-541f-4b4b-844a-5fb43472e3d7",
 "authorizationUseStatus": "Available",
 "etag": "W/\"010353d4-8955-4984-807a-585c21a22ae0\"",
@@ -123,7 +123,7 @@ az network express-route auth delete --circuit-name MyCircuit -g ExpressRouteRes
 
 回線ユーザーは、ピア ID と回線所有者が作成した承認キーを必要とします。 承認キーは GUID です。
 
-```azurecli
+```powershell
 Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
 ```
 

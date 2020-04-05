@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: kgremban
 ms.openlocfilehash: 544b1108a3c79da50969f7fdd33cfb9af373d854
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110869"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>IoT Hub (iOS) を使用した cloud-to-device メッセージの送信

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
 ms.openlocfilehash: 8f23b5e61e1aee83172a12466fac8d5b5003fea8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930285"
 ---
 # <a name="azure-data-factory-pivot-transformation"></a>Azure Data Factory のピボット変換
@@ -74,6 +74,6 @@ ADF Data Flow のピボットを集計として使用します。この場合、
 ### <a name="how-to-rejoin-original-fields"></a>元のフィールドを再結合する方法
 ピボット変換では、集計、グループ化、およびピボット操作で使用された列のみが出力されます。 フロー内に前の手順の別の列を含めたい場合は、前の手順からの新しい分岐を使用し、自己結合パターンを使ってフローを元のメタデータと接続します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 列の値を行の値に変換する[ピボット解除変換](data-flow-unpivot.md)を試します。 

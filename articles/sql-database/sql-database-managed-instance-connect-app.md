@@ -12,10 +12,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
 ms.openlocfilehash: 9f592c345b7cfcf5f21d816fde1fae6b8e6b98c7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823393"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Azure SQL Database マネージド インスタンスにアプリケーションを接続する
@@ -148,7 +148,7 @@ Azure App Service をマネージド インスタンスに接続する場合の�
 |SSMS| 18.0 [以降](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
 |[SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) 以降 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - マネージド インスタンスについては、「[What is a Managed Instance? (マネージド インスタンスとは)](sql-database-managed-instance.md)」をご覧ください。
 - 新しいマネージド インスタンスの作成方法を紹介するチュートリアルが必要な場合、「[マネージド インスタンスを作成する](sql-database-managed-instance-get-started.md)」を参照してください。

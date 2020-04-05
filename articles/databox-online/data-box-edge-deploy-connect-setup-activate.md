@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: cf2aa9bc1234f8bc92829b107d1a788b75d56a6b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 144c59c8bc24e8e10584702ec6cd48f7aa8c15c1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075085"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222909"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>チュートリアル:Azure Data Box Edge を接続、設定、およびアクティブ化する 
 
@@ -59,7 +59,7 @@ Data Box Edge デバイスを構成および設定する前に、次のことを
     ![Data Box Edge デバイスのサインイン ページ](./media/data-box-edge-deploy-connect-setup-activate/image3.png)
 
 6. プロンプトで、デバイス管理者のパスワードを変更します。  
-    新しいパスワードは 8 ～ 16 文字にする必要があります。 さらに、大文字、小文字、数字、および特殊文字のうちの 3 種類の文字を含める必要があります。
+    新しいパスワードは 8 から 16 文字にする必要があります。 さらに、大文字、小文字、数字、および特殊文字のうちの 3 種類の文字を含める必要があります。
 
 これで、デバイスのダッシュボードが表示されます。
 
@@ -101,6 +101,11 @@ Data Box Edge デバイスを構成および設定する前に、次のことを
    c. 認証を使用している場合は、ユーザー名とパスワードを入力します。
 
    d. 構成された Web プロキシ設定を検証して適用するには、 **[Apply settings] (設定を適用)** を選択します。
+   
+   > [!NOTE]
+   > プロキシ自動構成 (PAC) ファイルはサポートされていません。 PAC ファイルは、Web ブラウザーやその他のユーザー エージェントが、特定の URL をフェッチするための適切なプロキシ サーバー (アクセス方法) を自動的に選択する方法を定義します。
+   > プロキシの証明書は信頼されていないため、すべてのトラフィックをインターセプトして読み取る (その後、独自の証明書を使用してすべてに再署名する) プロキシは互換性がありません。
+   > 通常、透過プロキシは、Azure Data Box Edge で適切に動作します。
 
 4. (省略可能) 左側のウィンドウで **[時刻の設定]** を選択し、タイム ゾーンとデバイスのプライマリおよびセカンダリ NTP サーバーを構成します。  
     デバイスは時刻を同期してクラウド サービス プロバイダーに対して認証できるようにする必要があるため、NTP サーバーが必要になります。
@@ -145,7 +150,7 @@ Data Box Edge デバイスを構成および設定する前に、次のことを
 
 デバイスの設定が完了しました。 これで、デバイスで共有を追加できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

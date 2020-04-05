@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 113736198f40510981c80909c862282fa07ac68d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3c660f7e05af43c2aad6f7283e32cfc1d85571ab
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073772"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066826"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Azure Policy を使用して Linux VM への拡張機能のインストールを制限する
 
@@ -34,7 +34,7 @@ ms.locfileid: "74073772"
 
 [Bash Cloud Shell](https://shell.azure.com/bash) で、次のように入力します。
 
-```azurecli-interactive 
+```bash
 vim ~/clouddrive/azurepolicy.rules.json
 ```
 
@@ -75,7 +75,7 @@ vim ~/clouddrive/azurepolicy.rules.json
 
 [Bash Cloud Shell](https://shell.azure.com/bash) で、次のように入力します。
 
-```azurecli-interactive
+```bash
 vim ~/clouddrive/azurepolicy.parameters.json
 ```
 
@@ -171,6 +171,6 @@ az policy assignment delete --name 'not-allowed-vmextension-linux' --resource-gr
 az policy definition delete --name 'not-allowed-vmextension-linux'
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、[Azure Policy](../../governance/policy/overview.md) に関するページをご覧ください。

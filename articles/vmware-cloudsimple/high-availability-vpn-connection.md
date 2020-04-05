@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Solutions (AVS) - オンプレミスから AVS VPN ゲートウェイへの高可用性を構成する
-description: オンプレミス環境から、高可用性に対応した AVS VPN ゲートウェイへの高可用性接続を構成する方法について説明します
+title: Azure VMware Solution by CloudSimple - オンプレミスから CloudSimple VPN ゲートウェイへの高可用性の構成
+description: 高可用性のために、オンプレミス環境から CloudSimple VPN ゲートウェイへの高可用接続を構成する方法について説明します。
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b6dc309c1405a07cf192301208a97975ca9ce256
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 6e3118814eacc6cc63b5db59bd7f1877c1d347dc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025267"
 ---
-# <a name="configure-a-high-availability-connection-from-on-premises-to-an-avs-vpn-gateway"></a>オンプレミスから AVS VPN ゲートウェイへの高可用性接続を構成する
+# <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>オンプレミスから CloudSimple VPN ゲートウェイへの高可用接続を構成する
 
-ネットワーク管理者は、オンプレミス環境から AVS VPN ゲートウェイへの IPsec サイト間 VPN 高可用性接続を構成できます。
+ネットワーク管理者は、オンプレミス環境から CloudSimple VPN ゲートウェイへの高可用 IPsec サイト間 VPN 接続を構成できます。
 
 このガイドでは、IPsec サイト間 VPN 高可用接続のためにオンプレミスのファイアウォールを構成する手順について説明します。 詳細な手順は、オンプレミスのファイアウォールの種類によって異なります。 このガイドでは、例として、2 種類のファイアウォールについて手順を示します。Cisco ASA と Palo Alto Networks です。
 
@@ -25,8 +25,8 @@ ms.locfileid: "77025267"
 
 オンプレミスのファイアウォールを構成する前に、次のタスクを実行します。
 
-1. お客様の組織が必要なノードを[プロビジョニング](create-nodes.md)し、少なくとも 1 つの AVS プライベート クラウドを作成していることを確認します。
-2. オンプレミス ネットワークと AVS プライベート クラウドの間に[サイト間 VPN ゲートウェイを構成](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)します。
+1. お客様の組織が必要なノードを[プロビジョニング](create-nodes.md)し、少なくとも 1 つの CloudSimple Private Cloud を作成していることを確認します。
+2. オンプレミス ネットワークと CloudSimple Private Cloud の間に[サイト間 VPN ゲートウェイを構成](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)します。
 
 サポートされているフェーズ 1 とフェーズ 2 の提案については、「[VPN ゲートウェイの概要](cloudsimple-vpn-gateways.md)」を参照してください。
 
@@ -34,7 +34,7 @@ ms.locfileid: "77025267"
 
 このセクションの手順は、Cisco ASA バージョン 8.4 以降に適用されます。 この構成の例では、Cisco Adaptive Security Appliance Software バージョン 9.10 がデプロイされ、IKEv1 モードで構成されています。
 
-サイト間 VPN を機能させるには、オンプレミスの Cisco ASA VPN ゲートウェイの外部インターフェイス上で、AVS のプライマリおよびセカンダリ パブリック IP (ピア IP) から UDP 500/4500 と ESP (IP プロトコル 50) を許可する必要があります。
+サイト間 VPN を機能させるには、オンプレミスの Cisco ASA VPN ゲートウェイの外部インターフェイス上で、CloudSimple のプライマリおよびセカンダリ パブリック IP (ピア IP) から UDP 500/4500 と ESP (IP プロトコル 50) を許可する必要があります。
 
 ### <a name="1-configure-phase-1-ikev1"></a>1.フェーズ 1 (IKEv1) を構成する
 
@@ -71,7 +71,7 @@ ikev1 pre-shared-key *****
 
 ### <a name="4-configure-phase-2-ipsec"></a>4.フェーズ 2 (IPsec) を構成する
 
-フェーズ 2 (IPsec) を構成するには、暗号化およびトンネリングするトラフィックを定義するアクセス制御リスト (ACL) を作成します。 次の例で、対象のトラフィックは、オンプレミスのローカル サブネット (10.16.1.0/24) から AVS プライベート クラウドのリモート サブネット (192.168.0.0/24) までのトンネルを経由します。 サイト間に複数のサブネットがある場合は、ACL に複数のエントリを含めることができます。
+フェーズ 2 (IPsec) を構成するには、暗号化およびトンネリングするトラフィックを定義するアクセス制御リスト (ACL) を作成します。 次の例では、オンプレミスのローカル サブネット (10.16.1.0/24) から Private Cloud のリモート サブネット (192.168.0.0/24) までがソースのトラフィックが対象です。 サイト間に複数のサブネットがある場合は、ACL に複数のエントリを含めることができます。
 
 Cisco ASA バージョン8.4 以降では、ネットワーク、サブネット、ホスト IP アドレス、または複数のオブジェクトのコンテナーとして機能するオブジェクトまたはオブジェクト グループを作成できます。 ローカルのオブジェクトとリモート サブネットのオブジェクトを作成し、それらを暗号化 ACL および NAT ステートメントに使用します。
 
@@ -82,7 +82,7 @@ object network AZ_inside
 subnet 10.16.1.0 255.255.255.0
 ```
 
-#### <a name="define-the-avs-remote-subnet-as-an-object"></a>AVS リモート サブネットをオブジェクトとして定義する
+#### <a name="define-the-cloudsimple-remote-subnet-as-an-object"></a>CloudSimple リモート サブネットをオブジェクトとして定義する
 
 ```
 object network CS_inside
@@ -97,7 +97,7 @@ access-list ipsec-acl extended permit ip object AZ_inside object CS_inside
 
 ### <a name="5-configure-the-transform-set"></a>5.変換セットを構成する
 
-変換セット (TS) を構成します。これにはキーワード ```ikev1``` を使用する必要があります。 TS に指定された暗号化属性とハッシュ属性は、[AVS VPN ゲートウェイの既定の構成](cloudsimple-vpn-gateways.md#cryptographic-parameters)に関連するページに記載されているパラメーターと一致する必要があります。
+変換セット (TS) を構成します。これにはキーワード ```ikev1``` を使用する必要があります。 TS に指定された暗号化属性とハッシュ属性は、「[CloudSimple VPN ゲートウェイの既定の構成](cloudsimple-vpn-gateways.md)」に記載されているパラメーターと一致する必要があります。
 
 ```
 crypto ipsec ikev1 transform-set devtest39 esp-aes-256 esp-sha-hmac 
@@ -143,13 +143,13 @@ crypto map mymap 1 set ikev1 transform-set devtest39
 
 このセクションの手順は、Palo Alto Networks バージョン 7.1 以降に適用されます。 この構成例では、Palo Alto Networks VM シリーズ ソフトウェア バージョン 8.1.0 が IKEv1 モードでデプロイおよび構成されます。
 
-サイト間 VPN を機能させるには、オンプレミスの Palo Alto Networks ゲートウェイの外部インターフェイス上で、AVS のプライマリおよびセカンダリ パブリック IP (ピア IP) から UDP 500/4500 と ESP (IP プロトコル 50) を許可する必要があります。
+サイト間 VPN を機能させるには、オンプレミスの Palo Alto Networks ゲートウェイの外部インターフェイス上で、CloudSimple のプライマリおよびセカンダリ パブリック IP (ピア IP) から UDP 500/4500 と ESP (IP プロトコル 50) を許可する必要があります。
 
 ### <a name="1-create-primary-and-secondary-tunnel-interfaces"></a>1.プライマリおよびセカンダリ トンネル インターフェイスを作成する
 
 Palo Alto ファイアウォールにサインインし、 **[Network]\(ネットワーク\)**  >  **[Interfaces]\(インターフェイス\)**  >  **[Tunnel]\(トンネル\)**  >  **[Add]\(追加\)** を選択し、次のフィールドを構成し、 **[OK]** をクリックします。
 
-* [Interface Name]\(インターフェイス名\)。 最初のフィールドには、キーワード "tunnel" が自動入力されます。 隣接するフィールドに、1 から 9999 の任意の数を入力します。 このインターフェイスは、オンプレミスのデータセンターと AVS プライベート クラウドの間でサイト間トラフィックを伝送するプライマリ トンネル インターフェイスとして使用されます。
+* [Interface Name]\(インターフェイス名\)。 最初のフィールドには、キーワード "tunnel" が自動入力されます。 隣接するフィールドに、1 から 9999 の任意の数を入力します。 このインターフェイスは、オンプレミスのデータセンターと Private Cloud の間でサイト間トラフィックを伝送するプライマリ トンネル インターフェイスとして使用されます。
 * [Comment]\(コメント\)。 トンネルの目的を簡単に識別できるように、コメントを入力します
 * [Netflow Profile]\(Netflow プロファイル\)。 既定値のままにします。
 * [Config]\(構成\)。[Assign Interface To]\(インターフェイスの割り当て先\):[Virtual Router]\(仮想ルーター\): **[default]\(既定値\)** を選択します。 
@@ -158,16 +158,14 @@ Palo Alto ファイアウォールにサインインし、 **[Network]\(ネッ�
 
 この構成は高可用性 VPN 用なので、2 つのトンネル インターフェイスが必要です。1 つのプライマリと 1 つのセカンダリです。 前の手順を繰り返して、セカンダリ トンネル インターフェイスを作成します。 別のトンネル ID と、別の使用されていない /32 IP アドレスを選択します。
 
-### <a name="2-set-up-static-routes-for-avs-private-cloud-subnets-to-be-reached-over-the-site-to-site-vpn"></a>2.サイト間 VPN 経由で AVS プライベート クラウドのサブネットに到達するように静的ルートを設定する
+### <a name="2-set-up-static-routes-for-private-cloud-subnets-to-be-reached-over-the-site-to-site-vpn"></a>2.サイト間 VPN 経由で Private Cloud のサブネットに到達するように静的ルートを設定する
 
-オンプレミスのサブネットが AVS プライベート クラウドのサブネットに接続するためのルートが必要です。
+オンプレミスのサブネットが CloudSimple プライベート クラウドのサブネットに接続するためのルートが必要です。
 
 **[Network]\(ネットワーク\)**  >  **[Virtual Routers]\(仮想ルート\)**  >  *[default]\(既定値\)*  >  **[Static Routes]\(静的ルート\)**  >  **[Add]\(追加\)** を選択し、次のフィールドを構成して、 **[OK]** をクリックします。
 
 * [Name]\(名前\)。 ルートの目的を簡単に識別できるように、任意の名前を入力します。
-
-* 宛先。 オンプレミスから S2S トンネル インターフェイス経由で到達できる AVS プライベート クラウドのサブネットを指定します
-
+* 宛先。 オンプレミスから S2S トンネル インターフェイス経由で到達できる CloudSimple プライベート クラウドのサブネットを指定します
 * [Interface]\(インターフェイス\)。 ドロップダウンから、手順 1 (セクション 2) で作成したプライマリ トンネル インターフェイスを選択します。 この例では、tunnel.20 です。
 * [Next Hop]\(次ホップ\)。 **[なし]** を選択します。
 * [Admin Distance]\(アドミニストレーティブ ディスタンス\)。 既定値のままにします。
@@ -176,7 +174,7 @@ Palo Alto ファイアウォールにサインインし、 **[Network]\(ネッ�
 * [BFD Profile]\(BFD プロファイル\)。 既定値のままにします。
 * [Path monitoring]\(パスの監視\)。 オフのままにします。
 
-前の手順を繰り返して、セカンダリ トンネル インターフェイス経由でセカンダリ/バックアップ ルートとして使用する AVS プライベート クラウドのサブネット用に別のルートを作成します。 今回は、プライマリ ルートとは異なるトンネル ID とより高いメトリックを選択します。
+前の手順を繰り返して、セカンダリ トンネル インターフェイス経由でセカンダリ/バックアップ ルートとして使用する Private Cloud のサブネットに別のルートを作成します。 今回は、プライマリ ルートとは異なるトンネル ID とより高いメトリックを選択します。
 
 ### <a name="3-define-the-cryptographic-profile"></a>3.暗号化プロファイルを定義する
 
@@ -199,17 +197,17 @@ VPN トンネルの両端にわたるピア間の通信を確立するには、I
 
 [General]\(全般\) タブ:
 
-* [Name]\(名前\)。 プライマリ AVS VPN ピアとピアリングされる IKE ゲートウェイの名前を入力します。
+* [Name]\(名前\)。 プライマリ CloudSimple VPN ピアとピアリングされる IKE ゲートウェイの名前を入力します。
 * バージョン。 **[IKEv1 only mode]\(IKEv1 のみモード\)** を選択します。
 * [Address Type]\(アドレスの種類\)。 **[IPv4]** を選択します。
 * [Interface]\(インターフェイス\)。 パブリック向けまたは外部インターフェイスを選択します。
 * [Local IP Address]\(ローカル IP アドレス\)。 既定値のままにします。
 * [Peer IP Address Type]\(ピア IP アドレスの種類\)。 **[IP]** を選択します。
-* [Peer Address]\(ピア アドレス\)。 プライマリの AVS VPN ピア IP アドレスを入力します。
+* [Peer Address]\(ピア アドレス\)。 プライマリ CloudSimple VPN ピアの IP アドレスを入力します。
 * 認証 **[Pre-Shared Key]\(事前共有キー\)** を選択します。
-* [Pre-shared Key]\(事前共有キー\)、[Confirm Pre-shared Key]\(事前共有キーの確認入力\)。 AVS VPN ゲートウェイ キーと一致する事前共有キーを入力します。
+* [Pre-shared Key]\(事前共有キー\)、[Confirm Pre-shared Key]\(事前共有キーの確認入力\)。 CloudSimple VPN ゲートウェイ キーと一致する事前共有キーを入力します。
 * [Local Identification]\(ローカル ID\)。 オンプレミスの Palo Alto ファイアウォールのパブリック IP アドレスを入力します。
-* [Peer Identification]\(ピア ID\)。 プライマリの AVS VPN ピア IP アドレスを入力します。
+* [Peer Identification]\(ピア ID\)。 プライマリ CloudSimple VPN ピアの IP アドレスを入力します。
 
 [Advanced Options]\(詳細オプション\) タブ:
 
@@ -236,7 +234,7 @@ VPN トンネルの両端にわたるピア間の通信を確立するには、I
 * [Lifetime]\(有効期間\)。 30 分に設定します。
 * [Enable]\(有効にする\)。 チェックボックスをオフのままにします。
 
-前の手順を繰り返して、別の IPsec 暗号化プロファイルを作成します。これは、セカンダリ AVS VPN ピアとして使用されます。 同じ IPSEC 暗号化プロファイルをプライマリとセカンダリの両方の IPsec トンネルに使用することもできます (次の手順を参照してください)。
+前の手順を繰り返して、別の IPsec 暗号化プロファイルを作成します。これは、セカンダリ CloudSimple VPN ピアとして使用されます。 同じ IPSEC 暗号化プロファイルをプライマリとセカンダリの両方の IPsec トンネルに使用することもできます (次の手順を参照してください)。
 
 ### <a name="6-define-monitor-profiles-for-tunnel-monitoring"></a>6.トンネル監視の監視プロファイルを定義する
 
@@ -253,7 +251,7 @@ VPN トンネルの両端にわたるピア間の通信を確立するには、I
 
 [General]\(全般\) タブ:
 
-* [Name]\(名前\)。 プライマリ AVS VPN ピアとピアリングされるプライマリ IPSEC トンネルの名前を入力します。
+* [Name]\(名前\)。 プライマリ CloudSimple VPN ピアとピアリングされるプライマリ IPSEC トンネルの名前を入力します。
 * [Tunnel Interface]\(トンネル インターフェイス\)。 プライマリ トンネル インターフェイスを選択します。
 * [Type]\(種類\)。 既定値のままにします。
 * [Address Type]\(アドレスの種類\)。 **[IPv4]** を選択します。
@@ -262,17 +260,17 @@ VPN トンネルの両端にわたるピア間の通信を確立するには、I
 * [Enable Replay Protection]\(再生保護を有効にする\)。 既定値のままにします。
 * [Copy TOS Header]\(TOS ヘッダーをコピーする\)。 チェックボックスをオフのままにします。
 * [Tunnel Monitor]\(トンネル モニター\)。 チェックボックスをオンにします。
-* [Destination IP]\(宛先 IP\)。 サイト間接続で許可されている AVS プライベート クラウドのサブネットに属する任意の IP アドレスを入力します。 Palo Alto 上のトンネル インターフェイス (tunnel.20 - 10.64.5.2/32 や tunnel.30 - 10.64.6.2/32 など) が、サイト間 VPN を介して AVS プライベート クラウドの IP アドレスに到達できることを確認しておきます。 プロキシ ID については、次の構成を参照してください。
+* [Destination IP]\(宛先 IP\)。 サイト間接続で許可されている CloudSimple Private Cloud サブネットに属する任意の IP アドレスを入力します。 Palo Alto 上のトンネル インターフェイス (tunnel.20 - 10.64.5.2/32 や tunnel.30 - 10.64.6.2/32 など) が、サイト間 VPN を介して CloudSimple Private Cloud の IP アドレスに到達できることを確認しておきます。 プロキシ ID については、次の構成を参照してください。
 * [プロファイル]。 モニター プロファイルを選択します。
 
 [Proxy IDs]\(プロキシ ID\) タブ: **[IPv4]**  >  **[Add]\(追加\)** の順にクリックし、次のように構成します。
 
 * [Proxy ID]\(プロキシ ID\)。 対象のトラフィックの名前を入力します。 1 つの IPsec トンネル内に複数のプロキシ ID が存在する可能性があります。
-* Local。 サイト間 VPN 経由で AVS プライベート クラウドのサブネットと通信することが許可されているオンプレミスのローカル サブネットを指定します。
-* [Remote]\(リモート\)。 ローカル サブネットとの通信が許可されている AVS プライベート クラウドのリモート サブネットを指定します。
+* Local。 サイト間 VPN 経由で Private Cloud のサブネットと通信することが許可されているオンプレミスのローカル サブネットを指定します。
+* [Remote]\(リモート\)。 ローカル サブネットとの通信が許可されている Private Cloud のリモート サブネットを指定します。
 * [Protocol]\(プロトコル\)。 **[any]\(すべて\)** を選択します。
 
-前の手順を繰り返して、セカンダリ AVS VPN ピアに使用する別の IPsec トンネルを作成します。
+前の手順を繰り返して、セカンダリ CloudSimple VPN ピアに使用する別の IPsec トンネルを作成します。
 
 ## <a name="references"></a>References
 

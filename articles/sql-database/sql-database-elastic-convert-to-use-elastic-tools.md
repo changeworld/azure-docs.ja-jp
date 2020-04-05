@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: c776f4ac09626f0abd1eb754cde391a1c5447627
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74421223"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>既存のデータベースを移行してスケール アウト
@@ -100,7 +100,7 @@ $ShardMap = New-ListShardMap -KeyType $([int]) -ListShardMapName 'ListShardMap' 
 $ShardMap = New-RangeShardMap -KeyType $([int]) -RangeShardMapName 'RangeShardMap' -ShardMapManager $ShardMapManager
 ```
 
-### <a name="option-3-list-mappings-on-an-individual-database"></a>オプション 3: 単一データベースでのリスト マッピング
+### <a name="option-3-list-mappings-on-an-individual-database"></a>オプション 3:単一データベースでのリスト マッピング
 
 このパターンを設定するには、手順 2、オプション 1 で示したようなリスト マップも作成する必要があります。
 
@@ -153,7 +153,7 @@ Get-Mappings -ShardMap $ShardMap
 
 セットアップが完了すると、Elastic Database クライアント ライブラリの使用を開始できます。 [データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)および[マルチシャード クエリ](sql-database-elastic-scale-multishard-querying.md)を使用することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 「[Azure SQL DB - Elastic Database tools scripts (Azure SQL DB - エラスティック データベース ツール スクリプト)](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)」から PowerShell スクリプトを取得します。
 
@@ -163,7 +163,7 @@ Get-Mappings -ShardMap $ShardMap
 
 ## <a name="additional-resources"></a>その他のリソース
 
-マルチテナント SaaS (サービスとしてのソフトウェア) データベース アプリケーションの一般的なデータ アーキテクチャ パターンについては、 [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)に関する記事を参照してください。
+マルチテナント SaaS (サービスとしてのソフトウェア) データベース アプリケーションの一般的なデータ アーキテクチャ パターンについては、[Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)に関する記事を参照してください。
 
 ## <a name="questions-and-feature-requests"></a>質問と機能に関する要望
 

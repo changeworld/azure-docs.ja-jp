@@ -4,10 +4,10 @@ description: ブループリント アーティファクト パラメーター�
 ms.date: 12/03/2019
 ms.topic: sample
 ms.openlocfilehash: a4277dbbf40a9ab8651598203e9279bca00eb164
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75470737"
 ---
 # <a name="deploy-the-hipaa-hitrust-blueprint-sample"></a>HIPAA HITRUST ブループリント サンプルをデプロイする
@@ -91,7 +91,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 以下の表は、ブループリント アーティファクトのパラメーターの一覧を示しています。
 
-アーティファクト名|アーティファクトの種類|パラメーター名|[説明]|
+アーティファクト名|アーティファクトの種類|パラメーター名|説明|
 |-|-|-|-|
 |\[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ |ポリシー割り当て |Linux VM 用の Log Analytics ワークスペース |詳細については、「[Azure ポータルで Log Analytics ワークスペースを作成する](../../../../azure-monitor/learn/quick-create-workspace.md)」を参照してください。 |
 |\[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ |ポリシー割り当て |省略可能:スコープに追加するため、サポートされている Linux OS を持つ VM イメージの一覧 |空の配列 (`[]`) を使用して、オプションのパラメーターがないことを示すことができます。 |

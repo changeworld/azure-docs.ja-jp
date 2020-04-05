@@ -9,13 +9,13 @@ ms.reviewer: jasonh
 ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/12/2019
-ms.openlocfilehash: 857cfb4587d7b73a59fafac83dadbef3ad920ebf
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 03/23/2020
+ms.openlocfilehash: c94ac0c27d747da1a98cd9d67ced91a5913147e6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971441"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80132683"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して Azure Databricks で Spark ジョブを実行する
 
@@ -27,7 +27,7 @@ ms.locfileid: "75971441"
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure portal](https://portal.azure.com) にサインインする
+[Azure portal](https://portal.azure.com) にサインインします。
 
 > [!Note]
 > **Azure 無料試用版サブスクリプション**を使用してこのチュートリアルを実行することはできません。
@@ -60,6 +60,8 @@ ms.locfileid: "75971441"
 4. ワークスペースの作成には数分かかります。 ワークスペース作成時に、ポータルの右側に **[Submitting deployment for Azure Databricks]\(Azure Databricks のデプロイを送信しています\)** タイルが表示されます。 このタイルを表示するために、ダッシュボードを右へスクロールしなければならない場合があります。 スクリーンの上部に進行状況バーも表示されます。 いずれかの領域で進行状況を確認できます。
 
    ![Databricks のデプロイのタイル](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-deployment-tile.png "Databricks のデプロイのタイル")
+
+   ワークスペースのデプロイが失敗した場合でも、ワークスペースはエラー状態で作成されます。 失敗したワークスペースを削除し、デプロイ エラーのない新しいワークスペースを作成します。 失敗したワークスペースを削除すると、管理対象リソース グループと、正常にデプロイされたリソースもすべて削除されます。
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Databricks に Spark クラスターを作成する
 

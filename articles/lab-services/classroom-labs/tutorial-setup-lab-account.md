@@ -15,13 +15,13 @@ ms.custom: mvc
 ms.date: 02/10/2020
 ms.author: spelluru
 ms.openlocfilehash: dba6a4c07691f3d7ec88d8b889e68d6ac7116f07
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133938"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223469"
 ---
-# <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>チュートリアル:Azure Lab Services でラボ アカウントを設定する
+# <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>チュートリアル: Azure Lab Services でラボ アカウントを設定する
 Azure Lab Services では、ラボ アカウントは、それによって組織のラボが管理される中心的なアカウントとして機能します。 ラボ アカウントでは、ラボを作成する権限を他のユーザーに付与し、ラボ アカウントの管理下にあるすべてのラボに適用されるポリシーを設定します。 このチュートリアルでは、ラボ アカウントを作成する方法について説明します。 
 
 このチュートリアルでは、次のアクションを実行します。
@@ -35,8 +35,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="create-a-lab-account"></a>ラボ アカウントを作成する
 次の手順では、Azure portal を使って Azure Lab Services でラボ アカウントを作成する方法を示します。 
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
-2. 左側のメニューから、 **[すべてのサービス]** を選択します。 **[カテゴリ]** から **[DevOps]** を選択します。 次に、 **[Lab Services]** を選択します。 **[ラボ サービス]** の横にある星印 (`*`) を選択した場合は、左側のメニューの **[お気に入り]** セクションに追加されます。 次回以降は、 **[お気に入り]** の下で **[ラボ サービス]** を選択します。
+1. [Azure portal](https://portal.azure.com) にサインインする
+2. 左側のメニューから、 **[すべてのサービス]** を選択します。 **[カテゴリ]** から **[DevOps]** を選択します。 次に、 **[Lab Services]** を選択します。 `*`[ラボ サービス] **の横にある星印 (** ) を選択した場合は、左側のメニューの **[お気に入り]** セクションに追加されます。 次回以降は、 **[お気に入り]** の下で **[ラボ サービス]** を選択します。
 
     ![[すべてのサービス] -> [ラボ サービス]](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
 3. **[Lab Services]** ページでツール バーの **[追加]** を選択するか、またはそのページにある **[Create lab account]\(ラボ アカウントの作成\)** ボタンを選択します。 

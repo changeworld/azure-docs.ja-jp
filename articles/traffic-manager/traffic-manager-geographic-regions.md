@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: rohink
 ms.openlocfilehash: 19445c06ccf08d2d7916545ad495c56883616c7a
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938639"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>地理的トラフィック ルーティング方法で Azure Traffic Manager によって使用される国/リージョン階層

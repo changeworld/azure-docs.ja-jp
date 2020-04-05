@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 6ba6f189f4290bb2751adf9b44135eeda7266ca0
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: c91b38fcbfb9b517651adead010408425e519a82
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892755"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382751"
 ---
 # <a name="azure-regions-in-which-video-indexer-exists"></a>Video Indexer が存在する Azure リージョン
 
@@ -23,9 +23,9 @@ Video Indexer API には、呼び出しがルーティングされる Azure リ�
 
 ## <a name="locations"></a>場所
 
-**Azure** パラメーターには、その値として Azure リージョンのコード名を指定する必要があります。 Video Indexer をプレビュー モードで使用する場合は、値として *"trial"* を指定する必要があります。 それ以外の場合は、お使いのアカウントが存在し、呼び出しがルーティングされる Azure リージョンのコード名を取得するために、次の行を [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) で実行できます。
+**Azure** パラメーターには、その値として Azure リージョンのコード名を指定する必要があります。 Video Indexer をプレビュー モードで使用する場合は、値として *"trial"* を指定する必要があります。 それ以外の場合は、お使いのアカウントが存在し、呼び出しがルーティングされる Azure リージョンのコード名を取得するために、次の行を [Azure CLI](/cli/azure) で実行できます。
 
-```bash
+```azurecli-interactive
 az account list-locations
 ```
 
@@ -44,7 +44,7 @@ az account list-locations
     }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [API を使用して言語モデルをカスタマイズする](customize-language-model-with-api.md)
 - [API を使用してブランド モデルをカスタマイズする](customize-brands-model-with-api.md)

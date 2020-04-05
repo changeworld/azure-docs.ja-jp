@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: vlvinogr
 ms.openlocfilehash: ace11adbaaeebd3101ac621f44408e27ba7d18ab
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67849590"
 ---
 ## <a name="related-topics"></a>関連トピック

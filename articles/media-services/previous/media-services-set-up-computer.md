@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 5ef9b3d6f13de70cdf2fff87d9aed0a8efc2b782
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74895794"
 ---
 # <a name="set-up-your-media-services-development-environment"></a>Media Services 開発環境の設定  
@@ -45,7 +45,7 @@ REST 開発環境を設定するには、[こちら](media-services-rest-how-to-
 
 Azure Media Services API に接続するには、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 **Azure のコード サンプル** ギャラリーで、[Azure Media Services のコード サンプル](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0)を検索すると、複数のコード サンプルが見つかります。
 

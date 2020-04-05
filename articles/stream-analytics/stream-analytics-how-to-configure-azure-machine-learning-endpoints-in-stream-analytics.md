@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.openlocfilehash: 239955025f21d8679cbcf0bbfe68f9070f0217c6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75426194"
 ---
 # <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>Stream Analytics (プレビュー) への Azure Machine Learning Studio (クラシック) の統合

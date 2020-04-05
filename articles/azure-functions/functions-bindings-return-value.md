@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 01/14/2019
 ms.author: cshoe
 ms.openlocfilehash: 7ba104e288204dfbf3d24f5783bf69682a286553
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74480578"
 ---
 # <a name="using-the-azure-function-return-value"></a>Azure 関数の戻り値の使用
@@ -26,7 +26,7 @@ ms.locfileid: "74480578"
 
 C# と C# スクリプトでは、`out` パラメーターや[コレクター オブジェクト](functions-reference-csharp.md#writing-multiple-output-values)を使用してデータを出力バインディングに送信できます。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 出力バインディングに戻り値を使用する C# コードと非同期の例を次に示します。
 
@@ -52,7 +52,7 @@ public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, ILogg
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
+# <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
 *function.json* ファイル内の出力バインディングを次に示します。
 
@@ -85,7 +85,7 @@ public static Task<string> Run(WorkItem input, ILogger log)
 }
 ```
 
-# <a name="ftabfsharp"></a>[F#](#tab/fsharp)
+# <a name="f"></a>[F#](#tab/fsharp)
 
 *function.json* ファイル内の出力バインディングを次に示します。
 
@@ -107,7 +107,7 @@ let Run(input: WorkItem, log: ILogger) =
     json
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 *function.json* ファイル内の出力バインディングを次に示します。
 
@@ -130,7 +130,7 @@ module.exports = function (context, input) {
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 *function.json* ファイル内の出力バインディングを次に示します。
 
@@ -153,7 +153,7 @@ def main(input: azure.functions.InputStream) -> str:
     })
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 出力バインディングに戻り値を使用する Java コードを次に示します。
 
@@ -173,7 +173,7 @@ public static String run(
 
 ---
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Functions のバインド エラーの処理](./functions-bindings-errors.md)

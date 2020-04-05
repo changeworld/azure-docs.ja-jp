@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4e29aacb1357509e2b000a9d05c5ced8f9a30dce
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72517163"
 ---
 # <a name="bulk-download-members-of-a-group-preview-in-azure-active-directory"></a>Azure Active Directory のグループのメンバーの一括ダウンロード (プレビュー)
@@ -43,7 +43,7 @@ Azure Active Directory (Azure AD) ポータルを利用し、組織のグルー�
 
 グループ メンバーの一覧をダウンロードする各一括アクティビティは、最大 1 時間実行できます。 これにより、少なくとも 50 万人のメンバーの一覧をダウンロードできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [グループ メンバーを一括インポートする](groups-bulk-import-members.md)
-- [グループ メンバーの一括削除](groups-bulk-download-members.md)
+- [グループ メンバーを一括削除する](groups-bulk-download-members.md)

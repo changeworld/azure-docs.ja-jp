@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: dapine
 ms.openlocfilehash: f7e04a16fa35d492b8e5e6c53a05220e8b96a38a
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73795842"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Anomaly Detector コンテナーを構成する
@@ -25,14 +25,14 @@ ms.locfileid: "73795842"
 
 このコンテナーには、次の構成設定があります。
 
-|必須|Setting|目的|
+|必須|設定|目的|
 |--|--|--|
 |はい|[ApiKey](#apikey-configuration-setting)|課金情報の追跡に使用されます。|
 |いいえ|[ApplicationInsights](#applicationinsights-setting)|[Azure Application Insights](https://docs.microsoft.com/azure/application-insights) テレメトリ サポートをお客様のコンテナーに追加できます。|
 |はい|[Billing](#billing-configuration-setting)|Azure 上のサービス リソースのエンドポイント URI を指定します。|
 |はい|[Eula](#eula-setting)| コンテナーのライセンスに同意していることを示します。|
 |いいえ|[Fluentd](#fluentd-settings)|ログと (必要に応じて) メトリック データを Fluentd サーバーに書き込みます。|
-|いいえ|[HTTP プロキシ](#http-proxy-credentials-settings)|送信要求を行うために、HTTP プロキシを構成します。|
+|いいえ|[Http Proxy](#http-proxy-credentials-settings)|送信要求を行うために、HTTP プロキシを構成します。|
 |いいえ|[Logging](#logging-settings)|ASP.NET Core のログ サポートをお客様のコンテナーに提供します。 |
 |いいえ|[Mounts](#mount-settings)|ホスト コンピューターからコンテナーに、またコンテナーからホスト コンピューターにデータを読み取ったり書き込んだりします。|
 
@@ -61,7 +61,7 @@ ms.locfileid: "73795842"
 
 |必須| 名前 | データ型 | 説明 |
 |--|------|-----------|-------------|
-|はい| `Billing` | string | 課金エンドポイント URI。 課金 URI の取得の詳細については、「[必須パラメーターの収集](anomaly-detector-container-howto.md#gathering-required-parameters)」を参照してください。 リージョンのエンドポイントの詳細および全一覧については、「[Cognitive Services のカスタム サブドメイン名](../cognitive-services-custom-subdomains.md)」を参照してください。 |
+|はい| `Billing` | String | 課金エンドポイント URI。 課金 URI の取得の詳細については、「[必須パラメーターの収集](anomaly-detector-container-howto.md#gathering-required-parameters)」を参照してください。 リージョンのエンドポイントの詳細および全一覧については、「[Cognitive Services のカスタム サブドメイン名](../cognitive-services-custom-subdomains.md)」を参照してください。 |
 
 ## <a name="eula-setting"></a>Eula 設定
 
@@ -90,8 +90,8 @@ Anomaly Detector コンテナーでは、トレーニングやサービスのデ
 
 |省略可能| 名前 | データ型 | 説明 |
 |-------|------|-----------|-------------|
-|禁止| `Input` | string | Anomaly Detector コンテナーでは、これは使用されません。|
-|省略可能| `Output` | string | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
+|禁止| `Input` | String | Anomaly Detector コンテナーでは、これは使用されません。|
+|省略可能| `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>docker run コマンドの例 
 
@@ -137,7 +137,7 @@ Anomaly Detector コンテナーでは、トレーニングやサービスのデ
   Logging:Console:LogLevel:Default=Information
   ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Anomaly Detector コンテナーを Azure Container Instances にデプロイする](how-to/deploy-anomaly-detection-on-container-instances.md)
 * [Anomaly Detector API サービスの詳細情報](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

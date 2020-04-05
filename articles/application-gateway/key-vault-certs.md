@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault 証明書での SSL 終端
+title: Azure Key Vault 証明書での SSL 終了
 description: HTTPS 対応リスナーにアタッチされているサーバー証明書の Key Vault と Azure Application Gateway を統合する方法について説明します。
 services: application-gateway
 author: vhorne
@@ -8,19 +8,19 @@ ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
 ms.openlocfilehash: 5633dd7b72f4de22cd34b7d093e8ec4d9cb411f1
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77137699"
 ---
-# <a name="ssl-termination-with-key-vault-certificates"></a>Key Vault 証明書での SSL 終端
+# <a name="ssl-termination-with-key-vault-certificates"></a>Key Vault 証明書での SSL 終了
 
 [Azure Key Vault](../key-vault/key-vault-overview.md) はプラットフォームマネージド シークレット ストアです。シークレット、キー、SSL 証明書を保護するために使用できます。 Azure Application Gateway では、HTTPS 対応リスナーにアタッチされているサーバー証明書用の Key Vault との統合をサポートします。 このサポートは、Application Gateway の v2 SKU に制限されます。
 
-Key Vault 統合では、SSL 終端に次の 2 つのモデルが提供されています。
+Key Vault 統合では、SSL 終了に次の 2 つのモデルが提供されています。
 
-- リスナーにアタッチされている SSL 証明書を明示的に提供できます。 このモデルは、SSL 終端のために SSL 証明書を Application Gateway に渡す従来の方法を示しています。
+- リスナーにアタッチされている SSL 証明書を明示的に提供できます。 このモデルは、SSL 終了のために SSL 証明書を Application Gateway に渡す従来の方法を示しています。
 - HTTPS 対応リスナーの作成時に、必要に応じて、既存の Key Vault 証明書またはシークレットへの参照を指定できます。
 
 Application Gateway と Key Vault の統合には、次のようにさまざまな利点があります。

@@ -4,10 +4,10 @@ description: Docker のパフォーマンス カウンター、イベント、�
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 5ff3d6a2b31425a3fb6857c8c6aed45f7ef18d64
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77669609"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>Application Insights で Docker アプリケーションを監視する (非推奨)
@@ -90,7 +90,7 @@ AI SDK でインストルメント化されたアプリケーションから送�
 
 *アプリ自体からテレメトリを取得するにはどうすればよいですか*
 
-* Application Insights SDK をアプリにインストールします。 詳細情報:[Java Web アプリ](../../azure-monitor/app/java-get-started.md)、[Windows Web アプリ](../../azure-monitor/app/asp-net.md)。
+* Application Insights SDK をアプリにインストールします。 詳細情報: [Java Web アプリ](../../azure-monitor/app/java-get-started.md)、[Windows Web アプリ](../../azure-monitor/app/asp-net.md)。
 
 ## <a name="video"></a>ビデオ
 

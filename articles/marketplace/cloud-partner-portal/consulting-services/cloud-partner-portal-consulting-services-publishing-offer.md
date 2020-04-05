@@ -1,19 +1,18 @@
 ---
 title: Azure と Dynamics 365 のコンサルティング サービス オファー | Azure Marketplace
 description: Cloud パートナー ポータルで Azure または Dynamics 365 コンサルティング サービス プランを定義および発行するためのガイド。
-services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/27/2020
-ms.author: evansma
-ms.openlocfilehash: d744c0bdcae177ca5cee5617622f04da7312e15f
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.author: dsindona
+ms.openlocfilehash: 1015734ac0da6b4641c0bf32049146e3820f4616
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268312"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278537"
 ---
 # <a name="azure-and-dynamics-365-consulting-service-offer"></a>Azure と Dynamics 365 のコンサルティング サービス プラン
 

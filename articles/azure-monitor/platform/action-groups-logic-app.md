@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
 ms.openlocfilehash: 655a3acc44a1418778b37fbef85e5df75d042317
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78206238"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Azure Monitor アラートによって複雑なアクションをトリガーする方法

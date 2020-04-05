@@ -5,10 +5,10 @@ ms.date: 09/05/2019
 ms.topic: conceptual
 ms.reviewer: brendal
 ms.openlocfilehash: aa972e8ae486d181f0c48df72ec89c925c940451
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74324894"
 ---
 # <a name="azure-blockchain-workbench-architecture"></a>Azure Blockchain Workbench アーキテクチャ
@@ -113,7 +113,7 @@ Workbench には、Application Insights および Azure Monitor を使用した�
 
 Azure Monitor は、ブロックチェーン ネットワークの正常性に関する情報を提供します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Blockchain Workbench のデプロイ](../../blockchain-workbench/blockchain-workbench-deploy.md)

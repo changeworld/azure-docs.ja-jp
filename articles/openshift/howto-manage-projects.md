@@ -4,16 +4,16 @@ description: Azure Red Hat OpenShift クラスター内でプロジェクト、�
 services: openshift
 keywords: Red Hat OpenShift プロジェクト要求セルフプロビジョナー
 author: mjudeikis
-ms.author: b-majude
+ms.author: gwallace
 ms.date: 07/19/2019
 ms.topic: conceptual
 ms.service: container-service
-ms.openlocfilehash: d88be50468f55a848b43613e1f7851621202052d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d4f53238951784a74e6e3fc8a73d1f112ce75608
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75378230"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79139115"
 ---
 # <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Azure Red Hat OpenShift クラスター内でプロジェクト、テンプレート、イメージ ストリームを管理する 
 
@@ -102,7 +102,7 @@ API へのアクセスは、セルフプロビジョナー クラスター ロ�
 ## <a name="manage-default-templates-and-imagestreams"></a>既定のテンプレートと imageStreams の管理
 
 Azure Red Hat OpenShift では、`openshift` 名前空間内の既定のテンプレートとイメージ ストリームの更新を無効にすることができます。
-`openshift` 名前空間のすべての `Templates` および `ImageStreams` に対する更新を無効にするには、次のようにします。
+`Templates` 名前空間のすべての `ImageStreams` および `openshift` に対する更新を無効にするには、次のようにします。
 
 1. `customer-admin` 特権を持つユーザーとしてログインします。
 
@@ -112,7 +112,7 @@ Azure Red Hat OpenShift では、`openshift` 名前空間内の既定のテン�
    oc edit namespace openshift
    ```
 
-3. 注釈 `openshift.io/reconcile-protect: "true"` を追加して、ARO の更新プロセスから `openshift` 名前空間を削除します。
+3. 注釈 `openshift` を追加して、ARO の更新プロセスから `openshift.io/reconcile-protect: "true"` 名前空間を削除します。
 
    ```
    ...

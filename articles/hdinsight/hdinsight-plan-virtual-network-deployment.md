@@ -5,25 +5,25 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: 1e6a21e8bf9c284c83af09885aa66b612b52ad7c
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.custom: hdinsightactive
+ms.date: 02/25/2020
+ms.openlocfilehash: 30664d533215cb49fa6f436ec4cf88fa319c3300
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044716"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233559"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Azure HDInsight 用の仮想ネットワークを計画する
 
-この記事では、[Azure Virtual Networks](../virtual-network/virtual-networks-overview.md) と Azure HDInsight の使用に関する背景情報を提供します。 また、HDInsight クラスター用の仮想ネットワークを実装する前に行う必要がある設計および実装上の決定についても説明します。 計画段階が完了したら、[Azure HDInsight クラスター用の仮想ネットワークの作成](hdinsight-create-virtual-network.md)に進むことができます。 ネットワーク セキュリティ グループとユーザー定義ルートを適切に構成するために必要な HDInsight 管理 IP アドレスの詳細については、[HDInsight 管理 IP アドレス](hdinsight-management-ip-addresses.md)に関する記事を参照してください。
+この記事では、[Azure Virtual Network](../virtual-network/virtual-networks-overview.md) (VNet) と Azure HDInsight の使用に関する背景情報を提供します。 また、HDInsight クラスター用の仮想ネットワークを実装する前に行う必要がある設計および実装上の決定についても説明します。 計画段階が完了したら、[Azure HDInsight クラスター用の仮想ネットワークの作成](hdinsight-create-virtual-network.md)に進むことができます。 ネットワーク セキュリティ グループ (NSG) とユーザー定義ルートを適切に構成するために必要な HDInsight 管理 IP アドレスの詳細については、「[HDInsight の管理 IP アドレス](hdinsight-management-ip-addresses.md)」を参照してください。
 
 Azure Virtual Network を使用すると、次のシナリオが可能になります。
 
 * オンプレミス ネットワークから HDInsight へ直接接続する。
 * HDInsight を Azure Virtual Network 内のデータ ストアに接続する。
-* インターネットで公開されていない [Apache Hadoop](https://hadoop.apache.org/) サービスに直接アクセスする。 たとえば、[Apache Kafka](https://kafka.apache.org/) API や [Apache HBase](https://hbase.apache.org/) Java API にアクセスできます。
+* インターネットで公開されていない Apache Hadoop サービスに直接アクセスする。 たとえば、Apache Kafka API や Apache HBase Java API などです。
 
 > [!IMPORTANT]
 > VNET で HDInsight クラスターを作成すると、NIC やロード バランサーなど、いくつかのネットワーク リソースが作成されます。 これらのネットワーク リソースは、クラスターが VNET で正常に機能するために必要なため、削除**しないでください**。
@@ -36,7 +36,7 @@ Azure Virtual Network を使用すると、次のシナリオが可能になり�
 
 * HDInsight を既存の仮想ネットワークにインストールする必要がありますか。 または、新しいネットワークを作成しますか。
 
-    既存の仮想ネットワークを使用している場合は、HDInsight をインストールする前に、ネットワークの構成を変更する必要があります。 詳細については、 「[既存の仮想ネットワークへの HDInsight の追加](#existingvnet)」のセクションをご覧ください。
+    既存の仮想ネットワークを使用している場合は、HDInsight をインストールする前に、ネットワーク構成の変更が必要な場合があります。 詳細については、 「[既存の仮想ネットワークへの HDInsight の追加](#existingvnet)」のセクションをご覧ください。
 
 * HDInsight を含む仮想ネットワークを別の仮想ネットワークまたはオンプレミス ネットワークに接続しますか。
 
@@ -46,7 +46,7 @@ Azure Virtual Network を使用すると、次のシナリオが可能になり�
 
     HDInsight は、Azure データ センター内の特定の IP アドレスとの制限のない通信を必要とします。 クライアントとの通信用に、ファイアウォールの通過が許可されているポートも複数必要です。 詳細については、「[ネットワーク トラフィックのコントロール](#networktraffic)」のセクションをご覧ください。
 
-## <a id="existingvnet"></a>既存の仮想ネットワークへの HDInsight の追加
+## <a name="add-hdinsight-to-an-existing-virtual-network"></a><a id="existingvnet"></a>既存の仮想ネットワークへの HDInsight の追加
 
 このセクションの手順を使用して、新しい HDInsight を既存の Azure Virtual Network に追加する方法をご確認ください。
 
@@ -64,19 +64,19 @@ Azure Virtual Network を使用すると、次のシナリオが可能になり�
 2. 仮想ネットワークの送受信トラフィックを制限するために、ネットワーク セキュリティ グループ、ユーザー定義のルート、Virtual Network Appliances を使用していますか。
 
     マネージド サービスとして、HDInsight は Azure データ センターの複数の IP アドレスに制限なくアクセスできる必要があります。 これらの IP アドレスとの通信を可能にするために、既存のネットワーク セキュリティ グループやユーザー定義のルートを更新してください。
-    
+
     HDInsight では、さまざまなポートを使用する複数のサービスをホストします。 これらのポートへのトラフィックはブロックしないでください。 仮想アプライアンスのファイアウォールの通過を許可するポートの一覧については、「セキュリティ」のセクションをご覧ください。
-    
+
     既存のセキュリティ構成を検索するには、次の Azure PowerShell または Azure CLI コマンドを使用します。
 
     * ネットワーク セキュリティ グループ
 
         `RESOURCEGROUP` を仮想ネットワークが含まれるリソース グループの名前に置き換えてから、コマンドを入力します。
-    
+
         ```powershell
         Get-AzNetworkSecurityGroup -ResourceGroupName  "RESOURCEGROUP"
         ```
-    
+
         ```azurecli
         az network nsg list --resource-group RESOURCEGROUP
         ```
@@ -110,7 +110,7 @@ Azure Virtual Network を使用すると、次のシナリオが可能になり�
    > [!IMPORTANT]  
    > 仮想ネットワークへの HDInsight の追加はオプションの構成手順です。 必ず、クラスターを構成するときに仮想ネットワークを選択してください。
 
-## <a id="multinet"></a>複数のネットワークの接続
+## <a name="connecting-multiple-networks"></a><a id="multinet"></a>複数のネットワークの接続
 
 複数のネットワークを構成する際の最大の課題は、ネットワーク間の名前解決です。
 
@@ -125,7 +125,7 @@ Azure には、仮想ネットワークにインストールされている Azur
 
     これら両方のノードは、内部 DNS 名を使用して、互いに直接通信でき、また HDInsight 内の他のノードとも直接通信できます。
 
-既定の名前解決では、仮想ネットワークに結合されているネットワーク内のリソースの名前解決を HDInsight が行うことは __できません__。 よくある例として、オンプレミス ネットワークと仮想ネットワークの結合があります。 既定の名前解決のみ使用している場合、 HDInsight は名前で、オンプレミス ネットワーク内のリソースにアクセスすることはできません。 逆の場合も同様で、オンプレミス ネットワーク内のリソースは、仮想ネットワーク内のリソースに名前でアクセスすることはできません。
+既定の名前解決では、仮想ネットワークに結合されているネットワーク内のリソースの名前解決を HDInsight が行うことは __できません__。 よくある例として、オンプレミス ネットワークと仮想ネットワークの結合があります。 既定の名前解決のみを使用している場合、HDInsight はオンプレミス ネットワーク内のリソースに名前でアクセスすることはできません。 逆の場合も同様で、オンプレミス ネットワーク内のリソースは、仮想ネットワーク内のリソースに名前でアクセスすることはできません。
 
 > [!WARNING]  
 > HDInsight クラスターを作成する前に、カスタムの DNS サーバーを作成し、これを使用するように仮想ネットワークを構成する必要があります。
@@ -141,7 +141,7 @@ Azure には、仮想ネットワークにインストールされている Azur
 4. DNS サーバー間の転送を構成します。 構成は、リモート ネットワークの種類によって異なります。
 
    * リモート ネットワークがオンプレミス ネットワークの場合は、次のように DNS を構成します。
-        
+
      * __カスタム DNS__ (仮想ネットワーク内):
 
          * Azure の再帰リゾルバー (168.63.129.16) に仮想ネットワークの DNS サフィックスの要求を転送します。 Azure が、仮想ネットワーク内のリソースへの要求を処理します。
@@ -201,7 +201,7 @@ Azure には、仮想ネットワークにインストールされている Azur
 
 2. サービスを使用できるノードとポートを特定するには、「[HDInsight 上の Hadoop サービスで使用されるポート](./hdinsight-hadoop-port-settings-for-services.md)」をご覧ください。
 
-## <a id="networktraffic"></a>ネットワーク トラフィックのコントロール
+## <a name="controlling-network-traffic"></a><a id="networktraffic"></a>ネットワーク トラフィックのコントロール
 
 ### <a name="techniques-for-controlling-inbound-and-outbound-traffic-to-hdinsight-clusters"></a>HDInsight クラスターへの受信および送信トラフィックを制御するための手法
 
@@ -235,13 +235,13 @@ HDInsight クラスターからの送信トラフィックを制御する方法�
 
 #### <a name="forced-tunneling-to-on-premises"></a>オンプレミスへの強制トンネリング
 
-強制トンネリングは、サブネットからのすべてのトラフィックを強制的に、特定のネットワークまたは場所に送るユーザー定義のルーティングの構成です。 HDInsight では、オンプレミス ネットワークへのトラフィックの強制トンネリングはサポートされて __いません__。 
+強制トンネリングは、サブネットからのすべてのトラフィックを強制的に、特定のネットワークまたは場所に送るユーザー定義のルーティングの構成です。 HDInsight では、オンプレミス ネットワークへのトラフィックの強制トンネリングはサポートされて__いません__。
 
-## <a id="hdinsight-ip"></a>必須 IP アドレス
+## <a name="required-ip-addresses"></a><a id="hdinsight-ip"></a>必須 IP アドレス
 
-ネットワーク セキュリティ グループまたはユーザー定義ルートを使用してトラフィックを制御する場合は、[HDInsight 管理 IP アドレス](hdinsight-management-ip-addresses.md)に関する記事を参照してください。
-    
-## <a id="hdinsight-ports"></a>必須ポート
+ネットワーク セキュリティ グループまたはユーザー定義ルートを使用してトラフィックを制御する場合は、「[HDInsight の管理 IP アドレス](hdinsight-management-ip-addresses.md)」を参照してください。
+
+## <a name="required-ports"></a><a id="hdinsight-ports"></a>必須ポート
 
 **ファイアウォール**を使用して、特定のポートで外部からクラスターにアクセスすることを計画している場合、シナリオに必要なポートでトラフィックを許可することが必要な可能性があります。 既定では、前のセクションで説明した Azure 管理トラフィックがポート 443 でクラスターに到達することを許可されている限り、ポートの特別なホワイトリスト登録は必要ありません。
 
@@ -257,7 +257,10 @@ HDInsight クラスターを作成すると、ロード バランサーも作成
 
 パブリック クラスター エンドポイント `https://<clustername>.azurehdinsight.net` 経由でのクラスターへの接続は、クラスター ゲートウェイ ノードを介してプロキシされます。 これらの接続は、TLS と呼ばれるプロトコルを使用してセキュリティ保護されます。 ゲートウェイでより高いバージョンの TLS を適用すると、これらの接続のセキュリティが向上します。 新しいバージョンの TLS を使用する必要がある理由について詳しくは、「[TLS 1.0 の問題の解決](https://docs.microsoft.com/security/solving-tls1-problem)」をご覧ください。
 
-HDInsight クラスターのゲートウェイ ノードでサポートされる TLS の最小バージョンは、デプロイ時に Resource Manager テンプレートで *minSupportedTlsVersion* プロパティを使用して制御できます。 サンプル テンプレートについては、[HDInsight の最小 TLS 1.2 クイックスタートのテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls)を参照してください。 このプロパティでは、次の 3 つの値がサポートされています: "1.0"、"1.1"、"1.2"。それぞれ、TLS 1.0+、TLS 1.1+、TLS 1.2+ に対応します。 このプロパティを指定しないと、既定の Azure HDInsight クラスターのパブリック HTTPS エンドポイントでは、TLS 1.2 接続だけでなく、下位互換性のために古いバージョンも受け入れられます。 最終的には、HDInsight のすべてのゲートウェイ ノード接続で、TLS 1.2 以降が適用されるようになります。
+既定では、Azure HDInsight クラスターのパブリック HTTPS エンドポイントで、TLS 1.2 接続だけでなく、下位互換性のために古いバージョンも受け入れられます。 クラスターの作成時に、Azure portal またはリソース マネージャー テンプレートを使用して、ゲートウェイ ノードでサポートされる最小 TLS バージョンを制御できます。 ポータルでは、クラスターの作成時に **[セキュリティとネットワーク]** タブから TLS バージョンを選択します。 リソース マネージャー テンプレートでは、デプロイ時に **minSupportedTlsVersion** プロパティを使用します。 サンプル テンプレートについては、[HDInsight の最小 TLS 1.2 クイックスタートのテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls)を参照してください。 このプロパティでは、次の 3 つの値がサポートされています: "1.0"、"1.1"、"1.2"。それぞれ、TLS 1.0+、TLS 1.1+、TLS 1.2+ に対応します。
+
+> [!IMPORTANT]
+> 2020 年 6 月 30 日以降、Azure HDInsight ではすべての HTTPS 接続で TLS 1.2 以降のバージョンが適用されます。 すべてのクライアントで確実に TLS 1.2 以降のバージョンに対応できるようにすることをお勧めします。 詳細については、「[Azure HDInsight での TLS 1.2 の適用](https://azure.microsoft.com/updates/azure-hdinsight-tls-12-enforcement/)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

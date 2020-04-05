@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 6bb976b8b310fb3eb4d0247a8d745599f688d7b5
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77122643"
 ---
 # <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>ロジック アプリから Machine Learning パイプラインの実行をトリガーする
@@ -66,7 +66,7 @@ ms.locfileid: "77122643"
 
   以下の設定を使用してアクションを構成します。
 
-  | 設定 | Value | 
+  | 設定 | 値 | 
   |---|---|
   | HTTP アクション | POST |
   | URI |[前提条件](#prerequisites)として確認した、発行されたパイプラインへのエンドポイント |

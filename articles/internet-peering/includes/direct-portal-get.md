@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 2e8938f270ed175c687d975b0b248275ad92f8e4
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75773906"
 ---
 1. **[リソース グループ]** に移動し、**ピアリング** リソースの作成時に選択したリソース グループをクリックします。 リソース グループが多すぎる場合は、 *[フィルター]* フィールドを使用できます。

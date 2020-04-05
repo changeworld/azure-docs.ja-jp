@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: f957459cf20a018ae53ba6ec90fb478dd0c69044
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: c7779d82ddd6e5fd1bf7fcd983937ea6c10dab1c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770902"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79537076"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mysql"></a>Azure Database for MySQL のパフォーマンスの推奨事項
 
@@ -47,5 +47,5 @@ Azure portal の MySQL サーバーに関するページで、メニュー バ�
 
 "*インデックスの作成*" 推奨事項は、ワークロード内で特に頻繁に実行されるクエリまたは時間のかかるクエリを高速化するために、新しいインデックスを提案します。 この推奨事項の種類では、[クエリ ストア](concepts-query-store.md)を有効にする必要があります。 クエリ ストアは、クエリ情報を収集し、クエリの実行時間や頻度に関する詳細な統計情報を提供します。この情報は、分析で推奨事項を作成するために使用されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Azure Database for MySQL での[監視とチューニング](concepts-monitoring.md)の詳細を確認する。

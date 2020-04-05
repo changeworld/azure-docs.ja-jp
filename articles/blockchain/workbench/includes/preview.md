@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/09/2019
 ms.author: patricka
 ms.openlocfilehash: a7cf35a03d0ccac09b3b101bc5ba8e784a4e98bf
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "70844019"
 ---
 > [!IMPORTANT]

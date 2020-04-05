@@ -17,10 +17,10 @@ ms.date: 07/24/2019
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 545bcd1fa521b945d822b7eb69945cf381bf480a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77918667"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533

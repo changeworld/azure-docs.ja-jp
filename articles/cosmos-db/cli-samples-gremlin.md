@@ -8,10 +8,10 @@ ms.topic: sample
 ms.date: 9/25/2019
 ms.author: mjbrown
 ms.openlocfilehash: 09c474e914128597c4e9bbf7fa649b652e60b476
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71275219"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 用の Azure CLI サンプル

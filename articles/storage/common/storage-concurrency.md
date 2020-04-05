@@ -11,11 +11,11 @@ ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 9879f98e72e22fc0745a9e91f29216cbe74ab8fe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460473"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228339"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Microsoft Azure Storage でのコンカレンシー制御の管理
 
@@ -49,7 +49,7 @@ Storage サービスでは、格納されているすべてのオブジェクト
 4. BLOB の現在の ETag の値が、要求の **If-Match** 条件ヘッダーの ETag の値と異なっている場合、サービスはクライアントに 412 エラーを返します。 これは、クライアントがこの BLOB を取得した後に、別のプロセスがこれを更新したことを示しています。
 5. BLOB の現在の ETag の値が、要求の **If-Match** 条件ヘッダーの ETag と同じバージョンである場合、サービスは要求された処理を実行し、この BLOB の新しいバージョンが作成されたことを示すために現在の ETag の値を更新します。  
 
-次に示す C# スニペット (Client Storage Library 4.2.0 を使用) は、事前に取得または挿入された BLOB のプロパティからアクセスされる ETag の値に基づいて **If-Match AccessCondition** を構築する簡単な例です。 BLOB を更新するときには **AccessCondition** オブジェクトを使用します。**AccessCondition** オブジェクトは **If-Match** ヘッダーを要求に追加します。 別のプロセスが BLOB を更新した場合、BLOB のサービスによって HTTP 412 (Precondition Failed) のステータス メッセージが返されます。 以下で完全なサンプルをダウンロードできます。[Azure Storage でのコンカレンシー制御の管理](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)  
+次に示す C# スニペット (Client Storage Library 4.2.0 を使用) は、事前に取得または挿入された BLOB のプロパティからアクセスされる ETag の値に基づいて **If-Match AccessCondition** を構築する簡単な例です。 BLOB を更新するときには **AccessCondition** オブジェクトを使用します。**AccessCondition** オブジェクトは **If-Match** ヘッダーを要求に追加します。 別のプロセスが BLOB を更新した場合、BLOB のサービスによって HTTP 412 (Precondition Failed) のステータス メッセージが返されます。 完全なサンプルは、[Azure Storage でのコンカレンシー制御の管理](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)からダウンロードできます。  
 
 ```csharp
 // Retrieve the ETag from the newly created blob
@@ -131,7 +131,7 @@ BLOB をロックして排他的に使用する場合は、[リース](https://m
 
 リースでは、排他的書き込みと共有読み取り、排他的書き込みと排他的読み取り、共有書き込みと排他的読み取りなど、さまざまな同期戦略がサポートされています。 リースが存在する場合、Storage サービスは排他的書き込み (put、set、delete の各操作) を強制的に実行しますが、読み込み操作の排他性を確保するために、開発者はすべてのクライアント アプリケーションがリース ID を使用し、また有効なリース ID は同時に 1 つのクライアントのみが保持するようにする必要があります。 読み込み操作にリース ID を使用しない場合、共有読み取りになります。  
 
-次の C# スニペットの例では、ある BLOB で 30 秒間の排他的リースを取得し、BLOB の内容を更新します。その後でリースを解放します。 BLOB が既に有効なリースを保持している場合、新しいリースを取得しようとすると、BLOB サービスは "HTTP (409) Conflict" 状態を結果として返します。 また、下記のスニペットでは、Storage サービスに BLOB の更新を要求するときに、**AccessCondition** オブジェクトを使用してリースの情報をカプセル化します。  以下で完全なサンプルをダウンロードできます。[Azure Storage でのコンカレンシー制御の管理](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)
+次の C# スニペットの例では、ある BLOB で 30 秒間の排他的リースを取得し、BLOB の内容を更新します。その後でリースを解放します。 BLOB が既に有効なリースを保持している場合、新しいリースを取得しようとすると、BLOB サービスは "HTTP (409) Conflict" 状態を結果として返します。 また、下記のスニペットでは、Storage サービスに BLOB の更新を要求するときに、**AccessCondition** オブジェクトを使用してリースの情報をカプセル化します。  完全なサンプルは、[Azure Storage でのコンカレンシー制御の管理](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)からダウンロードできます。
 
 ```csharp
 // Acquire lease for 15 seconds
@@ -215,7 +215,7 @@ catch (StorageException ex)
 
 BLOB サービスとは異なり、Table サービスではクライアントが更新要求に必ず **If-Match** ヘッダーを含める必要があります。 ただし、クライアントが要求の **If-Match** ヘッダーにワイルドカード文字 (*) を設定していた場合、無条件の更新 (最終書き込み者優先戦略) を実行し、コンカレンシー制御の確認を省略することができます。  
 
-次の C# スニペットは、前に電子メール アドレスが更新されたときに作成または取得された顧客エンティティを示しています。 最初の挿入操作または取得操作で、顧客のオブジェクトに ETag の値が格納されます。このサンプルでは置換操作を実行するときに同じオブジェクトのインスタンスを使用するため、ETag の値が自動的に Table サービスに返され、サービスがコンカレンシー制御の違反を確認できるようになっています。 別のプロセスが Table ストレージ内のエンティティを更新した場合、サービスから HTTP 412 (Precondition Failed) のステータス メッセージが返されます。  以下で完全なサンプルをダウンロードできます。[Azure Storage でのコンカレンシー制御の管理](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)
+次の C# スニペットは、前に電子メール アドレスが更新されたときに作成または取得された顧客エンティティを示しています。 最初の挿入操作または取得操作で、顧客のオブジェクトに ETag の値が格納されます。このサンプルでは置換操作を実行するときに同じオブジェクトのインスタンスを使用するため、ETag の値が自動的に Table サービスに返され、サービスがコンカレンシー制御の違反を確認できるようになっています。 別のプロセスが Table ストレージ内のエンティティを更新した場合、サービスから HTTP 412 (Precondition Failed) のステータス メッセージが返されます。  完全なサンプルは、[Azure Storage でのコンカレンシー制御の管理](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)からダウンロードできます。
 
 ```csharp
 try
@@ -292,5 +292,5 @@ Azure Storage の詳細については、以下を参照してください。
 * [Microsoft Azure Storage のホーム ページ](https://azure.microsoft.com/services/storage/)
 * [Azure ストレージの概要](storage-introduction.md)
 * Storage Getting Started for [Blob](../blobs/storage-dotnet-how-to-use-blobs.md), [Table](../../cosmos-db/table-storage-how-to-use-dotnet.md), [Queues](../storage-dotnet-how-to-use-queues.md), and [Files](../storage-dotnet-how-to-use-files.md) (Storage の入門ガイド: .NET から BLOB ストレージを使用する方法、.NET からテーブル ストレージを使用する方法、.NET からキュー ストレージを使用する方法、.NET から ファイル ストレージを使用する方法)
-* ストレージ アーキテクチャ – [Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx) (Azure Storage: 強力な一貫性を備えた高可用性クラウド ストレージ サービス)
+* Storage のアーキテクチャ – [Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency (Azure Storage: 高い整合性を持つ高可用クラウド ストレージ サービス)](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 

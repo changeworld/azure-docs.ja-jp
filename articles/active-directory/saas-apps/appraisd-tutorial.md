@@ -17,10 +17,10 @@ ms.date: 05/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 08453928ab000cf906c451fa6c1cd619a00ee4ca
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67561195"
 ---
 # <a name="tutorial-integrate-appraisd-with-azure-active-directory"></a>チュートリアル:Appraisd と Azure Active Directory の統合
@@ -29,7 +29,7 @@ ms.locfileid: "67561195"
 
 * Appraisd にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Appraisd に自動的にサインインするように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

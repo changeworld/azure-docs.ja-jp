@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: pepogors
 ms.openlocfilehash: 5efdbd17db20e69ace33b379ddbb99b2c4a20e69
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722562"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229291"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>複数コンテナーのアプリケーション マニフェストとサービス マニフェストの例
 複数コンテナーの Service Fabric アプリケーションのアプリケーションとサービス マニフェストの例を次に示します。 これらの例の目的は、利用できる設定とその使用方法を示すことです。 これらのアプリケーションとサービス マニフェストは、[Windows Server 2016 コンテナー サンプル](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows) のマニフェストに基づいています。
 
 次の機能が示されます。
 
-|Manifest|[機能]|
+|Manifest|特徴|
 |---|---|
 |[アプリケーション マニフェスト](#application-manifest)| [環境変数のオーバーライド](service-fabric-get-started-containers.md#configure-and-set-environment-variables)、[コンテナー ポートからホストへのマッピングの構成](service-fabric-get-started-containers.md#configure-container-port-to-host-port-mapping-and-container-to-container-discovery)、[コンテナー レジストリ認証の構成](service-fabric-get-started-containers.md#configure-container-repository-authentication)、[リソース ガバナンス](service-fabric-resource-governance.md)、[分離モードの設定](service-fabric-get-started-containers.md#configure-isolation-mode)、[OS ビルド固有のコンテナー イメージの指定](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)| 
 |[FrontEndService サービス マニフェスト](#frontendservice-service-manifest)| [環境変数の設定](service-fabric-get-started-containers.md#configure-and-set-environment-variables)、[エンドポイントの構成](service-fabric-get-started-containers.md#configure-communication)、コマンドをコンテナーに渡す、[証明書のコンテナーへのインポート](service-fabric-securing-containers.md)| 

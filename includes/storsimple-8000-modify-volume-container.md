@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 4cffbb1aaa438bac08ec77f576b32a901abacabd
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67181221"
 ---
 > [!NOTE] 
@@ -30,7 +30,7 @@ ms.locfileid: "67181221"
       
        ![帯域幅の設定の変更](./media/storsimple-8000-modify-volume-container/modify-vol-container2.png)
 
-   2.  Click **OK**.
+   2.  **[OK]** をクリックします。
 4. **[ボリューム コンテナーの変更]** ダイアログ ボックスの次のページで、次の操作を行います。
    
    1. ドロップダウン リストから、既存の帯域幅テンプレートを選択します。

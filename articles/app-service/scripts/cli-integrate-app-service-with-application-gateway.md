@@ -17,10 +17,10 @@ ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18
 ms.openlocfilehash: ee5e50bdba0a798d335641dc8a0c7ae69832d8f6
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74979508"
 ---
 # <a name="integrate-app-service-with-application-gateway-using-cli"></a>CLI を使用して App Service を Application Gateway に統合する
@@ -56,7 +56,7 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 | [`az network application-gateway create`](https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest#az-network-application-gateway-create) | アプリケーション ゲートウェイを作成します。 |
 | [`az network application-gateway http-settings update`](https://docs.microsoft.com/cli/azure/network/application-gateway/http-settings?view=azure-cli-latest#az-network-application-gateway-http-settings-update) | Application Gateway の HTTP 設定を更新します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

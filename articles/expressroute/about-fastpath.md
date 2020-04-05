@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/16/2019
+ms.date: 03/25/2020
 ms.author: cherylmc
-ms.openlocfilehash: c03be46207e7698d0557729c546488412c0cc5dd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 265004b1171d1df95b3090676d5836b951c28a28
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437094"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282853"
 ---
 # <a name="about-expressroute-fastpath"></a>ExpressRoute FastPath について
 
@@ -32,16 +32,6 @@ FastPath を構成するには、仮想ネットワーク ゲートウェイを�
 
 * Ultra Performance
 * ErGw3AZ
-
-#### <a name="aggthroughput"></a>ゲートウェイ SKU の推定パフォーマンス
-次の表は、ゲートウェイの種類と、予測されるパフォーマンスを示したものです。 この表は、リソース マネージャーとクラシック デプロイ モデルの両方に適用されます。
-
-[!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
-
-> [!IMPORTANT]
-> アプリケーションのパフォーマンスは複数の要因によって異なります。これらの要因には、エンド ツー エンドの待機時間、アプリケーションが起動するトラフィック フローの数などがあります。 テーブルの数値は、アプリケーションが理想的な環境で理論上達成できる上限を表しています。
->
->
 
 ## <a name="supported-features"></a>サポートされている機能
 

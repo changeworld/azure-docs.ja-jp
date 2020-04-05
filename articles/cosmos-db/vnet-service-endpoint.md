@@ -8,10 +8,10 @@ ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
 ms.openlocfilehash: af1032de9aabac45ad7a86cfe1f36ed2c04c0f71
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75444614"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>仮想ネットワーク (VNet) から Azure Cosmos DB にアクセスする

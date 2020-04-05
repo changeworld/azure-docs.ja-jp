@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/05/2020
 ms.openlocfilehash: 4e0c1626582297aa7d80cbbd4241b6f81e314f8f
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78927455"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>HDInsight Spark クラスターを使用して Azure SQL Database のデータを読み書きする
@@ -85,7 +85,7 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL Database と接続
        connectionProperties.put("user", s"${jdbcUsername}")
        connectionProperties.put("password", s"${jdbcPassword}")         
 
-1. 下のスニペットを使用して、Azure SQL Database のテーブルのデータでデータフレームを作成します。 このスニペットでは、**AdventureWorksLT** データベースの一部として利用可能な `SalesLT.Address` テーブルを使います。 次のスニペットをコード セルに貼り付け、**Shift + Enter** キーを押して実行します。
+1. 下のスニペットを使用して、Azure SQL Database のテーブルのデータでデータフレームを作成します。 このスニペットでは、`SalesLT.Address`AdventureWorksLT**データベースの一部として利用可能な** テーブルを使います。 次のスニペットをコード セルに貼り付け、**Shift + Enter** キーを押して実行します。
 
        val sqlTableDF = spark.read.jdbc(jdbc_url, "SalesLT.Address", connectionProperties)
 
@@ -107,7 +107,7 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL Database と接続
 
 ## <a name="write-data-into-azure-sql-database"></a>Azure SQL Database にデータを書き込む
 
-このセクションでは、クラスターで利用可能なサンプル CSV ファイルを使って Azure SQL Database にテーブルを作成し、データを設定します。 `HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv` にあるサンプルの CSV ファイル (**HVAC.csv**) は、すべての HDInsight クラスターで使うことができます。
+このセクションでは、クラスターで利用可能なサンプル CSV ファイルを使って Azure SQL Database にテーブルを作成し、データを設定します。 **にあるサンプルの CSV ファイル (** HVAC.csv`HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv`) は、すべての HDInsight クラスターで使うことができます。
 
 1. 新しい Jupyter Notebook で、コード セルに次のスニペットを貼り付け、プレースホルダーの値をお使いの Azure SQL Database の値に置き換えます。
 

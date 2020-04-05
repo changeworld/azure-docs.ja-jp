@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
 ms.openlocfilehash: 2daf17ccef1bca363fe92f71a332fbfa78637135
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76844780"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>クイック スタート:Azure portal で Blob Storage のイベントを Web エンドポイントにルーティングする

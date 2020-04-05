@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.author: alzam
 ms.openlocfilehash: a0f996ff2805da4dd5af400642eef2506c228d33
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75779758"
 ---
 # <a name="generate-and-export-certificates"></a>証明書を生成してエクスポートする

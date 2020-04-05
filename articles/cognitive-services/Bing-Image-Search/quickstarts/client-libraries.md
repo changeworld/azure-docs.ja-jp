@@ -12,10 +12,10 @@ ms.topic: quickstart
 ms.date: 03/04/2020
 ms.author: aahi
 ms.openlocfilehash: 4fa00a3f218276804c80229affb23e99e7994cb3
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78899372"
 ---
 # <a name="quickstart-use-the-bing-image-search-client-library"></a>クイック スタート:Bing Image Search クライアント ライブラリを使用する

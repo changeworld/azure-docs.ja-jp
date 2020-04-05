@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: e87f8d648a617aab24008bd63596db31dd24ab68
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74926436"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>ソース データ ストアからターゲット データ ストアにデータを増分読み込みする
@@ -60,7 +60,7 @@ LastModifiedDate を使用して、新しいファイルと変更されたファ
 具体的な手順については、次のチュートリアルを参照してください。 <br/>
 - [時間でパーティション分割されたフォルダー名またはファイル名に基づく新しいファイルを Azure Blob Storage から Azure Blob Storage に増分コピーする](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次のチュートリアルに進みます。 
 
 > [!div class="nextstepaction"]

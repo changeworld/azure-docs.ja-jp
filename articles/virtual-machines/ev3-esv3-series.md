@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: aad4610a44c59ed95cf1ad9777329097886c5bed
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78164374"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 および Esv3 シリーズ
@@ -32,9 +32,9 @@ Premium Storage: サポートされていません
 
 Premium Storage キャッシュ:サポートされていません
 
-ライブ マイグレーション:サポートされています
+ライブ マイグレーション: サポートされています
 
-メモリ保持更新:サポートされています
+メモリ保持更新: サポートされています
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大 NIC/ネットワーク帯域幅 |
 |---|---|---|---|---|---|---|
@@ -66,9 +66,9 @@ Premium Storage キャッシュ:サポートされています
 
 ライブ マイグレーション:サポートされています
 
-メモリ保持更新:サポートされています
+メモリ保持更新: サポートされています
 
-| サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
+| サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループットIOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 |---|---|---|---|---|---|---|---|
 | Standard_E2s_v3 | 2 | 16 | 32 | 4 | 4000/32 (50) | 3200/48 | 2/1000 |
 | Standard_E4s_v3 <sup>1</sup>  | 4  | 32  | 64  | 8  | 8000/64 (100)   | 6400/96   | 2/2000 |

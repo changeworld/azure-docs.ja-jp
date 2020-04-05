@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/23/2020
 ms.author: irenehua
 ms.openlocfilehash: c2c909d8ef2be982d4dd4a70b5f35d03e8e71418
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77659970"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Azure Internal Load Balancer のアップグレード - 送信接続は不要

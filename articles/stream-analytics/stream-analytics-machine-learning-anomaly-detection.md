@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.openlocfilehash: 51b9c827d453eef2e2e75e1aa5222204eaa38d0e
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77525534"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure Stream Analytics での異常検出

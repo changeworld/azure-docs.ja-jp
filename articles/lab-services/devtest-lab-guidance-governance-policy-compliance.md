@@ -14,10 +14,10 @@ ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 81ca2a90b1940d70e170cab3f8d18144a5d5e5a8
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74560503"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Azure DevTest Labs インフラストラクチャのガバナンス - 会社のポリシーとコンプライアンス
@@ -25,7 +25,7 @@ ms.locfileid: "74560503"
 
 ## <a name="public-vs-private-artifact-repository"></a>パブリックとプライベートの成果物リポジトリ
 
-### <a name="question"></a>質問
+### <a name="question"></a>Question
 DevTest Labs でのパブリック成果物リポジトリとプライベート成果物リポジトリはどのように使い分ける必要がありますか。
 
 ### <a name="answer"></a>Answer
@@ -37,7 +37,7 @@ DevTest Labs でのパブリック成果物リポジトリとプライベート�
 
 ### <a name="single-repository-or-multiple-repositories"></a>単一のリポジトリか複数のリポジトリか 
 
-### <a name="question"></a>質問
+### <a name="question"></a>Question
 組織では単一のリポジトリを計画する必要がありますか、または複数のリポジトリでもかまいませんか。
 
 ### <a name="answer"></a>Answer
@@ -50,7 +50,7 @@ DevTest Labs でのパブリック成果物リポジトリとプライベート�
 
 ## <a name="corporate-security-policies"></a>企業のセキュリティ ポリシー
 
-### <a name="question"></a>質問
+### <a name="question"></a>Question
 組織で企業のセキュリティ ポリシーを適用するにはどうすればよいですか。
 
 ### <a name="answer"></a>Answer
@@ -61,7 +61,7 @@ DevTest Labs でのパブリック成果物リポジトリとプライベート�
 
 ## <a name="data-integrity"></a>データ整合性
 
-### <a name="question"></a>質問
+### <a name="question"></a>Question
 リモート開発者がコードを削除したり、マルウェアや未承認のソフトウェアを導入したりできないようにするデータ整合性を確保するにはどうすればよいですか。
 
 ### <a name="answer"></a>Answer
@@ -76,5 +76,5 @@ DevTest Labs を使用してリモートで共同作業する外部のコンサ�
 最終的には、同じ種類の制限を組織全体に適用する必要があります。それには、コンテンツの送信を受け入れる可能性があるリムーバブル メディアまたは外部 URL のすべての可能な方法についても考慮する必要があります。 セキュリティ担当者とセキュリティ ポリシーを検討して実装してください。 詳しい推奨事項については、[Microsoft のサイバー セキュリティ](https://www.microsoft.com/security/default.aspx?&WT.srch=1&wt.mc_id=AID623240_SEM_sNYnsZDs)に関するページをご覧ください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 「[Application migration and integration](devtest-lab-guidance-governance-application-migration-integration.md)」(アプリケーションの移行と統合) をご覧ください。

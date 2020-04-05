@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.openlocfilehash: cd515bfd1dc57e78a041ed96686e1ba692bf6d3f
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79082865"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Azure HDInsight で Grafana にアクセスする
@@ -40,7 +40,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 このアプリケーションを引き続き使用しない場合は、次の手順で作成したクラスターを削除します。
 
-1. [Azure portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 1. 上部の**検索**ボックスに「**HDInsight**」と入力します。
 

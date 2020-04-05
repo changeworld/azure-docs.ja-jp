@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 95e8a30eaa59762ad7cf5b388326c9d3c9723d8e
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925641"
 ---
 ## <a name="prerequisites"></a>前提条件
@@ -34,7 +34,7 @@ ms.locfileid: "78925641"
 
 1. 文字列 `YourSubscriptionKey` をサブスクリプション キーに置き換えます。
 
-1. 文字列 `YourServiceRegion` を、サブスクリプションに関連付けられた[リージョン](https://aka.ms/speech/sdkregion)の**リージョン識別子** (たとえば、無料試用版サブスクリプションでは `westus`) に置き換えます。
+1. 文字列 `YourServiceRegion` を、サブスクリプションに関連付けられた**リージョン**の[リージョン識別子](https://aka.ms/speech/sdkregion) (たとえば、無料試用版サブスクリプションでは `westus`) に置き換えます。
 
 1. プロジェクトへの変更内容を保存します。
 

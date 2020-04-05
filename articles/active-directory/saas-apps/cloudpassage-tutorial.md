@@ -17,10 +17,10 @@ ms.date: 10/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e0bcf0b4781e7ecb4301672f511a9f01f7fd2082
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75561227"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cloudpassage"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と CloudPassage の統合
@@ -101,7 +101,7 @@ CloudPassage に対する Azure AD SSO を構成してテストするには、�
 
 1. その他に、CloudPassage アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | Name | ソース属性|
+    | 名前 | ソース属性|
     | ---------------| --------------- |
     | firstname |User.givenname |
     | lastname |User.surname |

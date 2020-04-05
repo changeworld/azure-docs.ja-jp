@@ -10,24 +10,25 @@ ms.date: 02/14/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.author: diberry
-ms.openlocfilehash: c10065707aa3bdf27cb20ab9c03d1cd22e6db050
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 3b18e185480cc5275b97bba474f1c054c7bd1276
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77279481"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80286712"
 ---
 チャットボットや他のクライアント アプリケーションで LUIS の予測を受け取るには、アプリをエンドポイントに公開する必要があります。
 
-1. 右上のナビゲーションで **[Publish]\(公開\)** を選択します。
+1. 右上のナビゲーションで **[公開]** を選択します。
 
     ![LUIS の右上のメニューにあるエンドポイントへの公開ボタン](../media/howto-publish/publish-button.png)
 
-2. **[Production]\(運用\)** スロットを選択し、 **[Publish]\(公開\)** ボタンを選択します。
+2. **[運用]** スロットを選択し、 **[完了]** を選択します。
 
-    ![LUIS のエンドポイントへの公開](../media/howto-publish/publish-app-popup.png)
+    > [!div class="mx-imgBorder"]
+    > ![LUIS のエンドポイントへの公開](../media/howto-publish/publish-app-popup.png)
 
-3. 成功したことを示すステータス バーがページの上部に表示されたら、公開は完了しています。
+3. 成功を示す通知が表示されると、公開は完了です。
 
     ![LUIS のエンドポイントへの公開](../media/howto-publish/publish-endpoint-success.png)
 

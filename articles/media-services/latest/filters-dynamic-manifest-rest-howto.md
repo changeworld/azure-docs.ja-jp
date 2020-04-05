@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
 ms.openlocfilehash: f9134dd3bc926e6e2f454e5187e03365e91ed22a
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75780336"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Media Services REST API を使用したフィルターの作成

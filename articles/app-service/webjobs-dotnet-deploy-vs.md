@@ -9,10 +9,10 @@ ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
 ms.openlocfilehash: feacd463a10bae66dc8fa88a99b9ea60f399e9ec
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74684167"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Visual Studio を使用して Web ジョブを開発してデプロイする - Azure App Service
@@ -85,7 +85,7 @@ Visual Studio 2015 を使用している場合は、[Azure SDK for .NET (Visual 
 
 Visual Studio 2017 を使用している場合は、[Azure 開発ワークロード](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---choose-workloads)をインストールします。
 
-### <a id="convert"></a>既存のコンソール アプリケーション プロジェクトに対する Web ジョブのデプロイを有効にする
+### <a name="enable-webjobs-deployment-for-an-existing-console-application-project"></a><a id="convert"></a>既存のコンソール アプリケーション プロジェクトに対する Web ジョブのデプロイを有効にする
 
 2 つのオプションがあります。
 
@@ -97,7 +97,7 @@ Visual Studio 2017 を使用している場合は、[Azure 開発ワークロー
 
   Web プロジェクトへリンクせず、既存のコンソール アプリケーション プロジェクトがそれ自身で Web ジョブとしてデプロイされるように構成します。 Web アプリケーションで Web アプリケーションを実行せずに、Web ジョブ自身によって Web アプリケーション内で実行されようにする場合に、このオプションを使用します。 このオプションは、Web アプリケーション リソースとは関係なく Web ジョブ リソースを拡張する必要がある場合などに使用できます。
 
-#### <a id="convertlink"></a> Web プロジェクトを使用した Web ジョブの自動デプロイメントを有効にする
+#### <a name="enable-automatic-webjobs-deployment-with-a-web-project"></a><a id="convertlink"></a> Web プロジェクトを使用した Web ジョブの自動デプロイメントを有効にする
 
 1. **ソリューション エクスプローラー**で Web プロジェクトを右クリックし、 **[追加]**  >  **[既存のプロジェクトを Azure Web ジョブとして]** をクリックします。
    
@@ -109,7 +109,7 @@ Visual Studio 2017 を使用している場合は、[Azure 開発ワークロー
     ![Selecting project in Add Azure WebJob dialog](./media/webjobs-dotnet-deploy-vs/aaw1.png)
 3. [[Azure Web ジョブの追加]](#configure) ダイアログで必要な設定を完了し、 **[OK]** をクリックします。 
 
-#### <a id="convertnolink"></a> Web プロジェクトなしで Web ジョブ デプロイメントを有効にする
+#### <a name="enable-webjobs-deployment-without-a-web-project"></a><a id="convertnolink"></a> Web プロジェクトなしで Web ジョブ デプロイメントを有効にする
 1. **ソリューション エクスプローラー**でコンソール アプリケーション プロジェクトを右クリックし、 **[Azure WebJob として発行する]** をクリックします。 
    
     ![[Azure Web ジョブとして発行]](./media/webjobs-dotnet-deploy-vs/paw.png)
@@ -119,7 +119,7 @@ Visual Studio 2017 を使用している場合は、[Azure 開発ワークロー
    
    **Web の発行** ウィザードが表示されます。  すぐに発行しない場合は、ウィザードを閉じます。 [プロジェクトをデプロイする](#deploy)ときのために、入力した設定値は保存されます。
 
-### <a id="create"></a>新しい Web ジョブ対応のプロジェクトを作成する
+### <a name="create-a-new-webjobs-enabled-project"></a><a id="create"></a>新しい Web ジョブ対応のプロジェクトを作成する
 新しい Web ジョブ対応のプロジェクトを作成するために、 [前のセクション](#convert)で説明したように、コンソール アプリケーション プロジェクト テンプレートを使用して、Web ジョブのデプロイメントを有効にすることができます。 または、次のように Web ジョブの新しいプロジェクト テンプレートを使用できます。
 
 * [独立した Web ジョブ用に Web ジョブの新しいプロジェクト テンプレートを使用する](#createnolink)
@@ -134,13 +134,13 @@ Visual Studio 2017 を使用している場合は、[Azure 開発ワークロー
 > 
 > 
 
-#### <a id="createnolink"></a> 独立した Web ジョブ用に Web ジョブの新しいプロジェクト テンプレートを使用する
+#### <a name="use-the-webjobs-new-project-template-for-an-independent-webjob"></a><a id="createnolink"></a> 独立した Web ジョブ用に Web ジョブの新しいプロジェクト テンプレートを使用する
 1. **[ファイル]**  >  **[新しいプロジェクト]** の順にクリックし、 **[新しいプロジェクト]** ダイアログ ボックスで **[クラウド]**  >  **[Azure WebJob (.NET Framework)]** の順にクリックします。
    
     ![New Project dialog showing WebJob template](./media/webjobs-dotnet-deploy-vs/np.png)
 2. 前に示された指示に従い、 [コンソール アプリケーション プロジェクトを独立した Web ジョブ プロジェクトにします](#convertnolink)。
 
-#### <a id="createlink"></a> Web プロジェクトにリンクされた Web ジョブ用に Web ジョブの新しいプロジェクト テンプレートを使用する
+#### <a name="use-the-webjobs-new-project-template-for-a-webjob-linked-to-a-web-project"></a><a id="createlink"></a> Web プロジェクトにリンクされた Web ジョブ用に Web ジョブの新しいプロジェクト テンプレートを使用する
 1. **ソリューション エクスプローラー**で Web プロジェクトを右クリックし、 **[追加]**  >  **[新しい Azure Web ジョブ プロジェクト]** をクリックします。
    
     ![New Azure WebJob Project menu entry](./media/webjobs-dotnet-deploy-vs/nawj.png)
@@ -148,7 +148,7 @@ Visual Studio 2017 を使用している場合は、[Azure 開発ワークロー
     [[Azure Web ジョブの追加]](#configure) ダイアログ ボックスが表示されます。
 2. [[Azure Web ジョブの追加]](#configure) ダイアログ ボックスで必要な設定を完了し、 **[OK]** をクリックします。
 
-### <a id="configure"></a>[Azure Web ジョブの追加] ダイアログ ボックス
+### <a name="the-add-azure-webjob-dialog"></a><a id="configure"></a>[Azure Web ジョブの追加] ダイアログ ボックス
 **[Azure WebJob の追加]** ダイアログを使用して、Web ジョブの Web ジョブ名と実行モード設定を入力できます。 
 
 ![Add Azure WebJob dialog](./media/webjobs-dotnet-deploy-vs/aaw2.png)
@@ -162,7 +162,7 @@ Visual Studio 2017 を使用している場合は、[Azure 開発ワークロー
 > 
 > 
 
-### <a id="publishsettings"></a>webjob-publish-settings.json
+### <a name="webjob-publish-settingsjson"></a><a id="publishsettings"></a>webjob-publish-settings.json
 Web ジョブのデプロイメント用にコンソール アプリケーションを構成すると、Visual Studio によって [Microsoft.Web.WebJobs.Publish](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet パッケージがインストールされ、Web ジョブ プロジェクトの *Properties* フォルダーにある *webjob-publish-settings.json* ファイルにスケジュール情報が格納されます。 次にこのファイルの例を示します。
 
         {
@@ -177,7 +177,7 @@ Web ジョブのデプロイメント用にコンソール アプリケーショ
 
 このファイルは直接編集でき、Visual Studio で IntelliSense を使用できます。 ファイル スキーマは [https://schemastore.org](https://schemastore.org/schemas/json/webjob-publish-settings.json) に格納され、そこで表示できます。  
 
-### <a id="webjobslist"></a>webjobs-list.json
+### <a name="webjobs-listjson"></a><a id="webjobslist"></a>webjobs-list.json
 Web ジョブ対応のプロジェクトを Web プロジェクトにリンクすると、Visual Studio は Web ジョブ プロジェクトの名前を Web プロジェクトの *Properties* フォルダー内の *webjobs-list.json* ファイルに格納します。 次の例に示すように、一覧には複数の WebJobs プロジェクトが含まれる場合があります。
 
         {
@@ -194,7 +194,7 @@ Web ジョブ対応のプロジェクトを Web プロジェクトにリンク�
 
 このファイルは直接編集でき、Visual Studio で IntelliSense を使用できます。 ファイル スキーマは [https://schemastore.org](https://schemastore.org/schemas/json/webjobs-list.json) に格納され、そこで表示できます。
 
-### <a id="deploy"></a>Web ジョブ プロジェクトをデプロイする
+### <a name="deploy-a-webjobs-project"></a><a id="deploy"></a>Web ジョブ プロジェクトをデプロイする
 Web プロジェクトにリンクされた Web ジョブ プロジェクトは、Web プロジェクトと共に自動的にデプロイされます。 Web プロジェクトのデプロイメントについては、左のナビゲーションにある **[How-to guides]\(ハウツー ガイド\)** の  >  **[Deploy app]\(アプリをデプロイする\)** を参照してください。
 
 WebJobs プロジェクトがそれ自身でデプロイされるように指定するには、**ソリューション エクスプローラー**でプロジェクトを右クリックし、 **[Azure WebJob として発行する]** をクリックします。 
@@ -236,7 +236,7 @@ WebJobs では、次の設定がサポートされています。
 | `schedule` | トリガー | CRON ベースのスケジュールに従って、Web ジョブを実行します。 詳細については、[タイマー トリガーのリファレンス記事](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)を参照してください。 |
 | `stopping_wait_time`| All | シャットダウン動作の制御を許可します。 詳細については、「[Graceful shutdown](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown)」 (正常なシャットダウン) を参照してください。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [WebJobs SDK の詳細を確認してください](webjobs-sdk-how-to.md)

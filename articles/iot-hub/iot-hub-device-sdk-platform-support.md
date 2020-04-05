@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
 ms.openlocfilehash: 496b890cc49b6b6b9f15213a48472447f801b1c9
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76045123"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT device SDK プラットフォームのサポート

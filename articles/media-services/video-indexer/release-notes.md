@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/07/2020
 ms.author: juliako
 ms.openlocfilehash: f1387273f9736fea70682177d5d48dc2f141bbad
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76933859"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer リリース ノート
@@ -82,7 +82,7 @@ Video Indexer ポータルを使用して、有料アカウントで Custom Visi
 
 ### <a name="error-handling-improvement"></a>エラー処理の改善
 
-現在のインデックスの再作成の変更が誤って上書きされるのを防ぐために、ビデオにアクティブにインデックスが作成された場合は、[ビデオのインデックスを再作成](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video? https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video?) API と[ビデオ インデックス](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?) API から状態コード 409 が返されるようになりました。
+現在のインデックスの再作成の変更が誤って上書きされるのを防ぐために、ビデオにアクティブにインデックスが作成された場合は、[ビデオのインデックスを再作成](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video?https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video?) API と[ビデオ インデックス](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?) API から状態コード 409 が返されるようになりました。
 
 ## <a name="november-2019"></a>2019 年 11 月
  

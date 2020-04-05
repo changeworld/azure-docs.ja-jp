@@ -9,10 +9,10 @@ ms.service: site-recovery
 ms.date: 12/03/2018
 ms.author: rajanaki
 ms.openlocfilehash: 1d94935db542a0e64754ab8769996fe906f88b46
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73954415"
 ---
 # <a name="upgrade-windows-server-serversystem-center-2012-r2-vmm-to-windows-servervmm-2016"></a>Windows Server Server/System Center 2012 R2 VMM を Windows Server/VMM 2016 にアップグレードする 
@@ -108,6 +108,6 @@ Site Recovery は、事業継続とディザスター リカバリー (BCDR) 戦
 3. *Update-VMVersion* を実行して、仮想マシンの VM バージョンを更新します。 
 4.  Azure portal に移動し、[Recovery Services コンテナー] で仮想マシンのレプリケートされた正常性状態を確認します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ホストのアップグレードが実行されたら、[テスト フェールオーバー](tutorial-dr-drill-azure.md)を実行して、レプリケーションの正常性とディザスター リカバリーの状態をテストできます。
 

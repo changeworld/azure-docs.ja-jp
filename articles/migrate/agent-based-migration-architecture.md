@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: raynew
 ms.openlocfilehash: d345d707cbf58f48466c3bd830d93250d13397c6
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77425861"
 ---
 # <a name="agent-based-migration-architecture"></a>エージェントベースの移行アーキテクチャ
@@ -73,7 +73,7 @@ Azure Migrate: Server Migration を使用して VMware VM をレプリケート�
 
 ## <a name="ports"></a>Port
 
-**[デバイス]** | **[接続]**
+**[デバイス]** | **接続**
 --- | --- 
 **マシンのレプリケート** | VM で実行されるモビリティ サービスは、レプリケーション管理のために、受信ポート HTTPS 443 でオンプレミスのレプリケーション アプライアンスと通信します。<br/><br/> マシンでは、受信ポート HTTPS 9443 でレプリケーション データをプロセス サーバーに送信します。 このポートは変更可能です。
 **レプリケーション アプライアンス** | レプリケーション アプライアンスは、アウトバウンド ポート HTTPS 443 経由で Azure によるレプリケーションを調整します。

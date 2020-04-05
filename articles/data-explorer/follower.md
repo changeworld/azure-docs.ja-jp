@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 447e8a67cedbb8f78e4db9602f603fefd382693c
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: f6dbdb54c1c5a5d477c3ccb988963758faab83b0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162941"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79140016"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>フォロワー データベースを使用して Azure Data Explorer にデータベースをアタッチする
 
@@ -164,7 +164,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
         },
         "defaultPrincipalsModificationKind": {
             "type": "string",
-            "defaultValue": "",
+            "defaultValue": "Union",
             "metadata": {
                 "description": "The default principal modification kind."
             }
@@ -180,13 +180,10 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
     "variables": {},
     "resources": [
         {
-            "name": "[parameters('attachedDatabaseConfigurationsName')]",
+            "name": "[concat(parameters('followerClusterName'), '/', parameters('attachedDatabaseConfigurationsName'))]",
             "type": "Microsoft.Kusto/clusters/attachedDatabaseConfigurations",
             "apiVersion": "2019-09-07",
             "location": "[parameters('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Kusto/clusters', parameters('followerClusterName'))]"
-            ],
             "properties": {
                 "databaseName": "[parameters('databaseName')]",
                 "clusterResourceId": "[parameters('leaderClusterResourceId')]",
@@ -211,7 +208,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 |データベース名     |      フォローするデータベースの名前。 リーダーのデータベースをすべてフォローする場合は、'*' を使用します。   |
 |Leader Cluster Resource ID (リーダー クラスターのリソース ID)    |   リーダー クラスターのリソース ID。      |
 |Default Principals Modification Kind (既定のプリンシパル変更の種類)    |   既定のプリンシパル変更の種類。 `Union`、`Replace`、または `None` を指定できます。 既定のプリンシパル変更の種類について詳しくは、「[プリンシパル変更の種類の管理コマンド](/azure/kusto/management/cluster-follower?branch=master#alter-follower-database-principals-modification-kind)」をご覧ください。      |
-|Location   |   すべてのリソースの場所。 リーダーとフォロワーは同じ場所にある必要があります。       |
+|場所   |   すべてのリソースの場所。 リーダーとフォロワーは同じ場所にある必要があります。       |
  
 ### <a name="verify-that-the-database-was-successfully-attached"></a>データベースが正常にアタッチされたことを確認する
 

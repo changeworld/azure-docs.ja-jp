@@ -1,5 +1,5 @@
 ---
-title: Azure Notification Hubs を使用して Xamarin.iOS にプッシュ通知を送信する | Microsoft Docs
+title: Azure Notification Hubs を使用して Xamarin にプッシュ通知を送信する | Microsoft Docs
 description: このチュートリアルでは、Azure Notification Hubs を使用して Xamarin.iOS アプリケーションにプッシュ通知を送信する方法について学習します。
 services: notification-hubs
 keywords: ios push notifications、プッシュ メッセージ、プッシュ通知、プッシュ メッセージ
@@ -18,12 +18,12 @@ ms.date: 12/05/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 05/23/2019
-ms.openlocfilehash: e693d771d9a4726a1a9d698b5b7ed61d19197bdb
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 07417427385806e61db0d7d83624d923e92eb693
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895028"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80127010"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して Xamarin.iOS アプリにプッシュ通知を送信する
 
@@ -212,7 +212,7 @@ ms.locfileid: "74895028"
 
 プッシュ通知は通常、互換性のあるライブラリを使用して Mobile Apps などのバックエンド サービスや ASP.NET に送信されます。 ライブラリがバックエンドに使用できない場合は、REST API を直接使用して通知メッセージを送信することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、バックエンドに登録されているすべての iOS デバイスにブロードキャスト通知を送信しました。 特定の iOS デバイスにプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。
 

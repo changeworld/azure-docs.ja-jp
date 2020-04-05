@@ -16,11 +16,11 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 54f9bd1afeebedf4cbf37d75d9c57f3d8be0f288
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522681"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231055"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Azure Portal でエンタープライズ アプリのユーザー アカウント プロビジョニングを管理する
 

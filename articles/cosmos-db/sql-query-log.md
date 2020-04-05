@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 9213ef03f383dec7109652246411fac154b4a7f9
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302510"
 ---
 # <a name="log-azure-cosmos-db"></a>LOG (Azure Cosmos DB)
@@ -41,7 +41,7 @@ LOG (<numeric_expr> [, <base>])
   
   自然対数は **e** を底とする対数です。ここで、**e** は 2.718281828 にほぼ等しい無理定数です。  
   
-  数値の指数の自然対数は、その数値自体になります。LOG( EXP( n ) ) = n。 また、数値の自然対数の指数は、その数値自体になります。EXP( LOG( n ) ) = n。  
+  数値の指数の自然対数は数自体です: LOG( EXP( n ) ) = n。 数値の自然対数の指数は数自体です: EXP( LOG( n ) ) = n。  
   
 ## <a name="examples"></a>例
   

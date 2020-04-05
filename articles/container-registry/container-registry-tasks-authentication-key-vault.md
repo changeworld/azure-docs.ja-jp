@@ -4,10 +4,10 @@ description: Azure リソースのマネージド ID を使用して、Azure キ
 ms.topic: article
 ms.date: 01/14/2020
 ms.openlocfilehash: 47d3d643ee1287ef4f444095a2c6cfe6dcab294b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76842522"
 ---
 # <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Azure マネージド ID を使用した、ACR タスクでの外部認証 

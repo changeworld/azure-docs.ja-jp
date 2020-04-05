@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/28/2019
 ms.author: rambala
 ms.openlocfilehash: 4c3c6ae5fbdd91e6e44438be7fef2a3a91564a34
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74076675"
 ---
 # <a name="designing-for-high-availability-with-expressroute"></a>ExpressRoute を使用した高可用性のための設計
@@ -77,7 +77,7 @@ Azure リージョン内の可用性ゾーンは、障害ドメインと更新�
 
 ExpressRoute はプライベート ピアリングを介した BFD をサポートします。 Microsoft Enterprise Edge (MSEE) とオンプレミス側の BGP ネイバーの間で、BFD により、レイヤー 2 ネットワークでの障害検出時間が約 3 分 (既定) から 1 秒未満に短縮されます。 高速な障害検出時間は、障害復旧の迅速化に寄与します。 詳細については、「[ExpressRoute 経由の BFD の構成][BFD]」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、ExpressRoute 回線接続の高可用性を設計する方法について説明しました。 ExpressRoute 回線のピアリング ポイントは地理的位置に固定されるため、位置全体に影響を及ぼす壊滅的な障害の影響を受ける可能性があります。 
 

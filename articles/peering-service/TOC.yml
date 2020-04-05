@@ -8,17 +8,17 @@
   items:
     - name: 場所とパートナー
       href: location-partners.md
-    - name: 接続
+    - name: Connection
       href: connection.md
     - name: 接続テレメトリ
       href: connection-telemetry.md
     - name: モデルのオンボード
       href: onboarding-model.md
-- name: ハウツーガイド
+- name: ハウツー ガイド
   items:
     - name: Peering Service の登録
       items:
-        - name: Azure ポータル
+        - name: Azure portal
           href: azure-portal.md
         - name: Azure PowerShell
           href: powershell.md
@@ -26,7 +26,7 @@
           href: cli.md
     - name: 接続テレメトリの計測
       href: measure-connection-telemetry.md
-- name: 参照
+- name: References
   items:
     - name: Azure PowerShell
       href: /powershell/module/az.peering

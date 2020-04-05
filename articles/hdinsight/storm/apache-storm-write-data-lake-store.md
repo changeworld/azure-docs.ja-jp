@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.openlocfilehash: 579163180f6c7ba19927ca66d20bd92d1b2de52e
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73241214"
 ---
 # <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>チュートリアル:Azure HDInsight 上の Apache Storm から Apache Hadoop HDFS に書き込む
@@ -40,7 +40,7 @@ Apache Storm を使用して、HDInsight 上の Apache Storm によって使用�
 
 * クラスターのプライマリ ストレージの [URI スキーム](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 Azure Storage では `wasb://`、Azure Data Lake Storage Gen2 では `abfs://`、Azure Data Lake Storage Gen1 では `adl://` です。 Azure Storage で安全な転送が有効になっている場合、URI は `wasbs://` になります。  [安全な転送](../../storage/common/storage-require-secure-transfer.md)に関するページも参照してください。
 
-### <a name="example-configuration"></a>構成の例
+### <a name="example-configuration"></a>構成例
 
 次の YAML は、この例に含まれている `resources/writetohdfs.yaml` ファイルからの抜粋です。 このファイルは、Apache Storm の [Flux](https://storm.apache.org/releases/current/flux.html) フレームワークを使用して Storm トポロジを定義します。
 
@@ -112,12 +112,12 @@ Flux フレームワークの詳細については、「[https://storm.apache.or
 
 既定では、HDInsight 上の Storm には、`HdfsBolt` が Storm のクラスパス内の Azure Storage または Data Lake Storage と通信するために使用するコンポーネントは含まれていません。 これらのコンポーネントをクラスター上の Storm 用の `extlib` ディレクトリに追加するには、次のスクリプト アクションを使用します。
 
-| プロパティ | 値 |
+| プロパティ | Value |
 |---|---|
 |スクリプトの種類 |- Custom|
 |Bash スクリプト URI |`https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh`|
 |ノードの種類 |Nimbus、Supervisor|
-|parameters |なし|
+|パラメーター |なし|
 
 このスクリプトのクラスターでの使用については、「[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする](./../hdinsight-hadoop-customize-cluster-linux.md)」のドキュメントを参照してください。
 
@@ -199,7 +199,7 @@ Storm トポロジは、停止されるか、またはクラスターが削除�
 storm kill hdfswriter
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルで作成したリソースをクリーンアップするために、リソース グループを削除することができます。 リソース グループを削除すると、関連付けられている HDInsight クラスター、およびリソース グループに関連付けられているその他のリソースも削除されます。
 
@@ -209,7 +209,7 @@ Azure Portal を使用してリソース グループを削除するには:
 2. 削除するリソース グループを見つけて、一覧の右側にある __[詳細]__ ボタン ([...]) を右クリックします。
 3. __[リソース グループの削除]__ を選択し、確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Apache Storm を使用して、HDInsight 上の Apache Storm によって使用される HDFS と互換性のあるストレージにデータを書き込む方法について説明します。
 

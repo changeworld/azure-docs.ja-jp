@@ -9,10 +9,10 @@ ms.date: 03/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
 ms.openlocfilehash: 0807b535adc45093b439dba5ab8a0ea26b2a0721
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78402937"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>NVA 用の Virtual WAN ハブ ルート テーブルを作成する:Azure portal
@@ -40,11 +40,11 @@ ms.locfileid: "78402937"
 
     * VNet では、ゲートウェイ サブネットは必要ありません。
 
-## <a name="signin"></a>1.サインイン
+## <a name="1-sign-in"></a><a name="signin"></a>1.サインイン
 
 ブラウザーから [Azure ポータル](https://portal.azure.com) に移動し、Azure アカウントでサインインします。
 
-## <a name="vwan"></a>2.仮想 WAN を作成する
+## <a name="2-create-a-virtual-wan"></a><a name="vwan"></a>2.仮想 WAN を作成する
 
 仮想 WAN を作成します。 次に示す値の例を使用してください。
 
@@ -54,7 +54,7 @@ ms.locfileid: "78402937"
 
 [!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
 
-## <a name="hub"></a>3.ハブを作成する
+## <a name="3-create-a-hub"></a><a name="hub"></a>3.ハブを作成する
 
 ハブを作成します。 次に示す値の例を使用してください。
 
@@ -64,7 +64,7 @@ ms.locfileid: "78402937"
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-hub-include.md)]
 
-## <a name="route"></a>4.ハブのルート テーブルの作成および適用
+## <a name="4-create-and-apply-a-hub-route-table"></a><a name="route"></a>4.ハブのルート テーブルの作成および適用
 
 ハブ ルート テーブルを使用して、ハブを更新します。 次に示す値の例を使用してください。
 
@@ -78,7 +78,7 @@ ms.locfileid: "78402937"
 5. **[次の宛先プレフィックスの場合]** 列にアドレス空間を追加します。 **[次ホップ アドレスに送信する]** 列で DMZ NVA ネットワーク インターフェイスのプライベート IP アドレスを追加します。
 6. **[確認]** をクリックして、ルート テーブルの設定を使用してハブ リソースを更新します。
 
-## <a name="connections"></a>5.VNet 接続を作成する
+## <a name="5-create-the-vnet-connections"></a><a name="connections"></a>5.VNet 接続を作成する
 
 それぞれの間接スポーク VNet (VNet1 と VNet2) からハブに仮想ネットワーク接続を作成します。 これらの仮想ネットワーク接続は、上の図の青い矢印で示されています。 次に、NVA VNet からハブへの VNet 接続 (図の黒い矢印) を作成します。
 

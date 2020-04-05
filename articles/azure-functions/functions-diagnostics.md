@@ -7,10 +7,10 @@ ms.date: 11/01/2019
 ms.author: yunjchoi
 ms.custom: na
 ms.openlocfilehash: 41acc5703f6b6e5cdeedf2afd0dc61b23bc579c6
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75834042"
 ---
 # <a name="azure-functions-diagnostics-overview"></a>Azure Functions 診断の概要

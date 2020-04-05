@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
 ms.openlocfilehash: c2a26f2f40e0312fbfa0962e69ddfd0cfdabad5f
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77191293"
 ---
 # <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>クイック スタート:Azure Logic Apps を使用して初めてのワークフローを作成する - Azure portal
@@ -44,7 +44,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    | プロパティ | Value | 説明 |
    |----------|-------|-------------|
-   | **Name** | <*ロジック アプリ名*> | ロジック アプリの名前。文字、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`(`、`)`)、およびピリオド (`.`) のみを含めることができます。 この例では、"My-First-Logic-App" を使用します。 |
+   | **名前** | <*ロジック アプリ名*> | ロジック アプリの名前。文字、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`(`、`)`)、およびピリオド (`.`) のみを含めることができます。 この例では、"My-First-Logic-App" を使用します。 |
    | **サブスクリプション** | <*Azure サブスクリプション名*> | お使いの Azure サブスクリプション名 |
    | **リソース グループ** | <*Azure-resource-group-name*> | 関連するリソースの整理に使用する[Azure リソース グループ](../azure-resource-manager/management/overview.md)の名前。 この例では、"My-First-LA-RG" を使用します。 |
    | **場所** | <*Azure-region*> | ロジック アプリの情報の保存先となるリージョン。 この例では "米国西部" を使用します。 |

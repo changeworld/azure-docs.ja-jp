@@ -1,26 +1,25 @@
 ---
 title: Azure Marketplace に出品する仮想マシンの技術資産を作成する
 description: Azure Marketplace に出品する仮想マシンの技術資産を作成する方法について説明します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/20/2018
-ms.author: pabutler
-ms.openlocfilehash: 45d0ff5b7b3fea1566b13b61bd01cc17da61e4b3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 57f56a341cfc3db6a5f0664503809e6ab6cf3d3d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824508"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278026"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>出品する仮想マシンの技術資産を作成する
 
 このセクションでは､Azure Marketplace に出品する仮想マシン (VM) の技術資産を作成､構成する手順を説明します｡  1 つの VM は､ソリューション用の仮想ハード ディスク (VHD) と関連するデータ ディスク オプションの 2 つのコンポーネントで構成されてます｡  
 
 - *仮想ハード ディスク (VHD)* - オペレーティング システムとソリューションで構成されるディスクで､Azure Marketplace に出品する機能を使ってデプロイします｡ VHD の準備プロセスは､その仮想マシンが Linux､Windows､またはカスタム ベースであるかによって異なります｡
-- *データ ディスク* - 仮想マシンに対する専用の永続的なストレージです｡ 永続的な情報の格納にソリューション用 VHD (`C:` ドライブなど) を*使用してはいけません*｡
+- *データ ディスク* - 仮想マシンに対する専用の永続的なストレージです｡ 永続的な情報の格納にソリューション用 VHD ( *ドライブなど) を*使用してはいけません`C:`｡
 
 VM イメージには、1 個のオペレーティング システム ディスクと 0 個以上のデータ ディスクが含まれます。 ディスクごとに 1 つの VHD が必要です。 空のデータ ディスクにも VHD を作成する必要があります。
 接続したデータ ディスク （最大 15 のディスク） を開くには､VM の OS、サイズ､ポートを構成する必要があります｡
@@ -51,16 +50,16 @@ VHD と VM の管理に役立つ次のスクリプト環境のいずれか一方
 
 また､開発環境には次にツールを加えることを推奨します｡ 
 
--   [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+-   [Azure 記憶域エクスプローラー](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 -   [Visual Studio Code](https://code.visualstudio.com/)
-    *   拡張機能: [Azure リソース マネージャー ツール](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+    *   拡張機能: [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     *   拡張機能: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
     *   拡張機能: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
 また､[Azure Developer Tools](https://azure.microsoft.com/tools/) ページの記載されている利用可能なツールもご覧になることをお勧めします｡Visual Studio を使用する場合は､[Visual Studio Marketplace](https://marketplace.visualstudio.com/) もご覧ください｡
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このセクションに以降の記事では､これらの VM 資産を作成して登録する手順を説明します｡
 

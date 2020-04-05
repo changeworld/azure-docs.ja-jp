@@ -8,10 +8,10 @@ author: cjgronlund
 ms.author: cgronlun
 ms.date: 11/04/2019
 ms.openlocfilehash: 8b96a35db91a282be1fb5e4c6143e6bd0a0203f2
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73606139"
 ---
 # <a name="example-jupyter-notebooks-show-how-to-enrich-data-with-open-datasets"></a>サンプル Jupyter Notebooks は、オープン データセットを使用してデータをエンリッチする方法を示します。 
@@ -38,7 +38,7 @@ Azure オープン データセット用のサンプル Jupyter Notebooks は、
 |[気象データによってエンリッチされたタクシー乗車データ - Pandas](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/04-nyc-taxi-join-weather-in-pandas.ipynb) | ニューヨーク市のグリーン タクシー データ (1 か月分) を読み込み、気象データによって Pandas データフレームでエンリッチします。 この例は、メソッド `get_pandas_limit` をオーバーライドして、データ読み込みパフォーマンスとデータ容量のバランスを調整します。|
 |[気象データによってエンリッチされたタクシー乗車データ - Spark](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/03-nyc-taxi-join-weather-in-spark.ipynb) | ニューヨーク市のグリーン タクシー データを読み込み、気象データによって Spark データフレームでエンリッチします。  |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [チュートリアル:自動機械学習とオープン データセットを使う回帰モデル](/azure/machine-learning/service/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
 * [オープン データセット用 Python SDK](/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py)

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Alcumus Info Exchange の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Alcumus Info Exchange の統合 | Microsoft Docs'
 description: Azure Active Directory と Alcumus Info Exchange の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8c0a79596afc9b47fd5f024aa4198c9bea754d8b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73153794"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-alcumus-info-exchange"></a>チュートリアル:Azure Active Directory と Alcumus Info Exchange の統合
+# <a name="tutorial-azure-active-directory-integration-with-alcumus-info-exchange"></a>チュートリアル: Azure Active Directory と Alcumus Info Exchange の統合
 
 このチュートリアルでは、Alcumus Info Exchange と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Alcumus Info Exchange と Azure AD の統合には、次の利点があります。

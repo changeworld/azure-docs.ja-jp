@@ -7,11 +7,11 @@ ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
 ms.openlocfilehash: 7fdb7c980a278e2dcd4b64a4b70de50721d0b72a
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75728754"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236043"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>App Service と Azure Functions の Key Vault 参照を使用する
 

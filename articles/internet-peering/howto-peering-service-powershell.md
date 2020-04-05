@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: ac843fa5440f7ba085d33cd897bcd4a1722f77ac
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75773630"
 ---
 # <a name="enable-peering-service-on-a-direct-peering-using-powershell"></a>PowerShell を使用し、Direct ピアリングで Peering Service を有効にする
@@ -32,17 +32,17 @@ ms.locfileid: "75773630"
 
 ## <a name="enable-peering-service-on-a-direct-peering"></a>Direct ピアリングで Peering Service を有効にする
 
-### <a name= get></a>Direct ピアリングを表示する
+### <a name="view-direct-peering"></a><a name= get></a>Direct ピアリングを表示する
 [!INCLUDE [peering-direct-get](./includes/direct-powershell-get.md)]
 
-### <a name= get></a>Peering Service 向けに Direct ピアリングを有効にする
+### <a name="enable-the-direct-peering-for-peering-service"></a><a name= get></a>Peering Service 向けに Direct ピアリングを有効にする
 
 前のステップで Direct ピアリングを取得した後、これを Peering Service 向けに有効にします。
 [!INCLUDE [peering-direct-modify](./includes/peering-service-direct-powershell.md)]
 
 ## <a name="modify-a-direct-peering-connection"></a>Direct ピアリング接続を変更する
 
-接続設定を変更する必要がある場合は、[「PowerShel を使用してDirect ピアリングを作成または変更する」](howto-direct-powershell.md)の中の **「Direct ピアリングを変更する」** のセクションを参照してください。
+接続設定を変更する必要がある場合は、 **「PowerShel を使用してDirect ピアリングを作成または変更する」** の中の[「Direct ピアリングを変更する」](howto-direct-powershell.md)のセクションを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

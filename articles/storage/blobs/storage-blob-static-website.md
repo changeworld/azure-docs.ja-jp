@@ -8,16 +8,18 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: e9e2fe92939088420f973c5ca112b5f59d07f212
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 848fd89444281d82d6d0d1bfc4df15d499c09ee0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252680"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79370493"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure Storage での静的 Web サイト ホスティング
 
 *$web* という名前のストレージ コンテナーから直接に、静的コンテンツ (HTML、CSS、JavaScript、画像ファイル) を提供できます。 Azure Storage でコンテンツをホスティングすることで、[Azure Functions](/azure/azure-functions/functions-overview) やその他のサービスとしてのプラットフォーム (PaaS) サービスなど、サーバーレス アーキテクチャを使用できます。
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE]
 > サイトでサーバー側コードに依存している場合は、代わりに [Azure App Service](/azure/app-service/overview) を使用します。
@@ -115,4 +117,4 @@ ms.locfileid: "78252680"
 * [Azure Functions](/azure/azure-functions/functions-overview)
 * [Azure App Service](/azure/app-service/overview)
 * [最初のサーバーレス Web アプリを作成する](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
-* [チュートリアル:Azure DNS でドメインをホストする](../../dns/dns-delegate-domain-azure-dns.md)
+* [チュートリアル: Azure DNS でドメインをホストする](../../dns/dns-delegate-domain-azure-dns.md)

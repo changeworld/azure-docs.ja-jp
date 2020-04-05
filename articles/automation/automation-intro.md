@@ -8,10 +8,10 @@ ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
 ms.openlocfilehash: 3359d99d7e20bbced8950171fa34592fd2612500
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76930394"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure Automation の概要
@@ -37,7 +37,7 @@ Azure Automation [Desired State Configuration](automation-dsc-overview.md) は P
 
 Azure Automation を使用して、ハイブリッド環境で Windows システムと Linux システムを更新します。 Azure、オンプレミス、および他のクラウド間での更新プログラムの準拠を可視化できます。 展開スケジュールを作成して、定義済みのメンテナンス期間中に更新プログラムがインストールされるように調整できます。 更新プログラムをコンピューターにインストールする必要がない場合は、それらの更新プログラムを展開から除外できます。
 
-### <a name="shared-resources"></a>共有リソース
+### <a name="shared-resources"></a><a name="shared-resources"></a>共有リソース
 
 Azure Automation は、環境を大きな規模で容易に自動化して構成できるようにする一連の共有リソースで構成されます。
 

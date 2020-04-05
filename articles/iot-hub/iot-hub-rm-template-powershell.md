@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.openlocfilehash: a1f878361a96c5584f43b31135d79ff799f66efa
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75976617"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Azure Resource Manager テンプレートを使用した IoT ハブの作成 (PowerShell)

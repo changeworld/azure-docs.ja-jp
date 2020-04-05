@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Gremlin API と PHP - Azure Cosmos DB'
+title: クイック スタート:Gremlin API と PHP - Azure Cosmos DB
 description: このクイック スタートでは、Azure portal および PHP で Azure Cosmos DB Gremlin API を使ってコンソール アプリケーションを作成する方法を説明します
 author: luisbosquez
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 01/05/2019
 ms.author: lbosq
 ms.openlocfilehash: e38f3e2029bdc8dc8c13ce330e37053d491317f3
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68736643"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>クイック スタート:PHP と Azure portal を使用して Azure Cosmos DB にグラフ データベースを作成する
@@ -34,7 +34,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]または、Azure サブスクリプションを使わず、課金も契約もなしで [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。
 
-加えて次の作業を行います。
+さらに:
 * [PHP](https://php.net/) 5.6 以降
 * [[[Composer]]](https://getcomposer.org/download/)
 
@@ -206,7 +206,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 5. **[プロパティの追加]** をクリックして、次の各プロパティを追加します。 グラフ内の person ごとに一意のプロパティを作成できることに注目してください。 必須のキーは **id** のみです。
 
-    キー | 値 | メモ
+    Key | Value | Notes
     ----|----|----
     **id** | ashley | 頂点の一意の識別子。 id を指定しなかった場合は、自動的に生成されます。
     **gender** | female | 
@@ -215,7 +215,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
     > [!NOTE]
     > このクイック スタートでは、パーティション分割されていないコレクションを作成します。 ただし、コレクションの作成段階でパーティション キーを指定することによって、パーティション分割されたコレクションを作成した場合は、新たに作成する各頂点のキーとして、パーティション キーを追加する必要があります。 
 
-6. Click **OK**. 画面サイズを大きくしないと、画面下部の **[OK]** が見えない場合があります。
+6. **[OK]** をクリックします。 画面サイズを大きくしないと、画面下部の **[OK]** が見えない場合があります。
 
 7. もう一度 **[New Vertex]\(新しい頂点\)** をクリックして、新しいユーザーを追加します。 
 
@@ -223,13 +223,13 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 9. **[プロパティの追加]** をクリックして、次の各プロパティを追加します。
     
-    キー | 値 | メモ
+    Key | Value | Notes
     ----|----|----
     **id** | rakesh | 頂点の一意の識別子。 id を指定しなかった場合は、自動的に生成されます。
     **gender** | male | 
     **school** | MIT | 
 
-10. Click **OK**. 
+10. **[OK]** をクリックします。 
 
 11. 既定の `g.V()` フィルターで **[フィルターの適用]** ボタンをクリックして、グラフ内のすべての値を表示します。 すると、 **[結果]** リストにすべてのユーザーが表示されます。 
 
@@ -253,11 +253,11 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してグラフを作成し、アプリを実行する方法を説明しました。 これで Gremlin を使用して、さらに複雑なクエリを作成し、強力なグラフ トラバーサル ロジックを実装できます。 
 

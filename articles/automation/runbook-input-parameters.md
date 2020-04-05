@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
 ms.openlocfilehash: 17be351d4af3d277242af70ea96e8735a5f68bc9
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78329087"
 ---
 # <a name="runbook-input-parameters"></a>Runbook の入力パラメーター

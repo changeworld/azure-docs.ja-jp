@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: 01741ea56b9e6f55c1393e88fc7991d410c33119
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934995"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228055"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>マネージド ID を使用して Azure Data Lake Storage Gen1 に対して Stream Analytics を認証する
 
@@ -22,7 +22,7 @@ Azure Stream Analytics では、Azure Data Lake Storage (ADLS) Gen1 出力での
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="azure-portal"></a>Azure ポータル
+## <a name="azure-portal"></a>Azure portal
 
 1. Azure portal で、新しい Stream Analytics ジョブを作成するか既存のジョブを開くことから始めます。 画面の左側にあるメニュー バーで、 **[構成]** の下にある **[マネージド ID]** を選択します。
 
@@ -182,7 +182,7 @@ Azure Stream Analytics では、Azure Data Lake Storage (ADLS) Gen1 出力での
 
 2. **[ユーザー割り当て ID](../active-directory/managed-identities-azure-resources/overview.md)** : サポートされていません。 つまりユーザーは、Stream Analytics ジョブで使用される、独自のサービス プリンシパルを入力することはできません。 サービス プリンシパルは、Azure Stream Analytics によって生成されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Stream Analytics を使用して Data Lake Store 出力を作成する](../data-lake-store/data-lake-store-stream-analytics.md)
 * [Visual Studio で Stream Analytics クエリをローカルでテストする](stream-analytics-vs-tools-local-run.md)

@@ -4,11 +4,11 @@ description: 学習の設定では、モデル トレーニングの "*ハイパ
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: abe6a2a2ec9b9978230d894c69193469f6e932e6
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623789"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218569"
 ---
 # <a name="learning-policy-and-settings"></a>学習ポリシーと設定
 

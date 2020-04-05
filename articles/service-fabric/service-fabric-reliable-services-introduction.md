@@ -7,10 +7,10 @@ ms.date: 3/9/2018
 ms.author: masnider
 ms.custom: sfrev
 ms.openlocfilehash: 58259b0d19d68c468779a579bd9c86e77106c18d
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77083507"
 ---
 # <a name="reliable-services-overview"></a>Reliable Services の概要

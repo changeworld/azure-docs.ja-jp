@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/25/2019
 ms.openlocfilehash: 3e72a2f6754ad8e9c5bcfabe7eeee299468fa8f3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73691646"
 ---
 # <a name="use-powershell-to-create-an-azure-sql-database-managed-instance"></a>PowerShell を使用して Azure SQL Database マネージド インスタンスを作成する
@@ -61,7 +61,7 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

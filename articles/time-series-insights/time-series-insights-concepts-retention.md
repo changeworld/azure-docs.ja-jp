@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 01/10/2020
 ms.custom: seodec18
 ms.openlocfilehash: 34cf1e91b1fe5aae516c77bf2c280dfe70000611
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75894750"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Azure Time Series Insights のデータ保有について
@@ -44,7 +44,7 @@ ms.locfileid: "75894750"
 ## <a name="purge-old-data"></a>古いデータを消去
 
 - **[古いデータを消去]** は、Azure Time Series Insights 環境の既定の設定です。  
-- ユーザーが使用する Time Series Insights 環境に "*最も新しいデータ*" が常に表示されるようにする場合は、 **[古いデータを消去]** を選択します。
+- ユーザーが使用する Time Series Insights 環境に "**最も新しいデータ**" が常に表示されるようにする場合は、 *[古いデータを消去]* を選択します。
 - **[古いデータを消去]** 設定では、環境の上限に到達したとき (保有期間、サイズ、カウントのいずれかが上限に達した時点で)、データが "*消去*" されます。 リテンション期間は既定で 30 日間に設定されます。
 - 取り込まれた日が最も古いデータが先に消去されます ("先入れ先出し" 手法)。
 

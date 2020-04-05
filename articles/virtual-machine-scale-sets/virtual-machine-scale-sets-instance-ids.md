@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: manayar
-ms.openlocfilehash: aa2b0013818f897f01945d394266a57016ecb0bb
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 99ad4249a4134bcc1b1cf5aba92b8a95a034db33
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275846"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79534424"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Azure VM スケール セット VM のインスタンス ID を理解する
 この記事では、スケール セットのインスタンス ID と、さまざまな使用方法について説明します。
@@ -40,8 +40,11 @@ CLI: `az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` (詳し
 
 出力の正確な表示はコマンドに指定したオプションによって異なりますが、CLI からのサンプル出力を次に示します。
 
+```azurecli
+az vmss show -g {resourceGroupName} -n {vmScaleSetName}
 ```
-$ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
+
+```output
 [
   {
     "instanceId": "85",
@@ -70,7 +73,7 @@ $ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
 
 スケール セット VM 内から[インスタンス メタデータ](../virtual-machines/windows/instance-metadata-service.md)を問い合わせると、出力に "name" が含まれます。
 
-```
+```output
 {
   "compute": {
     "location": "westus",

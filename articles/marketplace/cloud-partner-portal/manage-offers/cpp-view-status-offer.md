@@ -1,19 +1,18 @@
 ---
 title: Marketplace のオファーの状態を表示する | Azure Marketplace
 description: Cloud パートナー ポータルを使用して Azure Marketplace および AppSource Marketplace でオファーの状態を表示する
-services: Azure, AppSource, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/11/2019
-ms.author: pabutler
-ms.openlocfilehash: e58670d37e01bb6e453b73e42a87e42e890d10d8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 0cbe6a45ba205f32a764bdadb021dc0dcf5bf0cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826701"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275970"
 ---
 # <a name="view-the-publishing-status-of-azure-marketplace-and-appsource-offers"></a>Azure Marketplace オファーと AppSource オファーの発行状態を表示する
 
@@ -45,6 +44,6 @@ Azure アプリケーションの状態の最後の例は、Microsoft の重大�
 ![レビューの問題が表示されている Azure アプリの [状態] タブ](../azure-applications/media/status-tab-ms-review.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 未解決の問題を修正する場合、オファーの設定を更新する場合は、[オファーを更新する](./cpp-update-offer.md)必要があります。 

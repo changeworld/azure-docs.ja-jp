@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/21/2019
-ms.openlocfilehash: 0546464b4d1bcc9eaa4fbffe265486985d9c58f3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/27/2020
+ms.openlocfilehash: 5457308d577b95201fa31bfad0a6634a7a79eda3
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465034"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398132"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Azure Stream Analytics データ エラー
 

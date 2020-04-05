@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 027876e3d8d669d2ab41d37e24f4171c2349adaa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67095006"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panopto"></a>チュートリアル:Azure Active Directory と Panopto の統合
@@ -136,7 +136,7 @@ Panopto で Azure AD シングル サインオンを構成するには、次の�
 
 3. **[プロバイダーを追加する]** を追加します。
    
-    ![ID プロバイダー](./media/panopto-tutorial/ic777671.png "ID プロバイダー")
+    ![[Identity Providers]\(ID プロバイダー\)](./media/panopto-tutorial/ic777671.png "[ID プロバイダー]")
    
 4. [SAML プロバイダー] セクションで、次の手順に従います。
    
@@ -154,7 +154,7 @@ Panopto で Azure AD シングル サインオンを構成するには、次の�
 
     f. Azure Portal からダウンロードした base-64 でエンコードされた証明書を開き、その内容をクリップボードにコピーして **[公開キー]** テキストボックスに貼り付けます。
 
-5. **[Save]** をクリックします。
+5. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 

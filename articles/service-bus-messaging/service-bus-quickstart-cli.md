@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 04/10/2019
 ms.author: spelluru
 ms.openlocfilehash: e34599b12b8b0c487c6813038951b051d1eaf425
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "66400259"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>クイック スタート:Azure CLI を使用して Service Bus キューを作成する
@@ -22,7 +22,7 @@ ms.locfileid: "66400259"
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
 ## <a name="prerequisites"></a>前提条件
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント][free account]を作成できます。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント][free account]を作成できます。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -185,7 +185,7 @@ connectionString=$(az servicebus namespace authorization-rule keys list --resour
                                                     Content: [ firstName = Isaac, name = Newton ]
     ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Azure Cloud Shell で次のコマンドを実行して、リソース グループ、名前空間、およびすべての関連リソースを削除します。
 
@@ -370,7 +370,7 @@ void registerReceiver(QueueClient queueClient, ExecutorService executorService) 
 > [!NOTE]
 > Service Bus リソースは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus Explorer を使用すると、ユーザーは Service Bus 名前空間に接続し、簡単な方法でメッセージング エンティティを管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が用意されています。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、キューでメッセージを送受信するために必要な Service Bus 名前空間と他のリソースを作成しました。 メッセージを送受信するコードの作成についてさらに詳しく学習するには、「**メッセージを送受信する**」セクションのチュートリアルに進んでください。 
 

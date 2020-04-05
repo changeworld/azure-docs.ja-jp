@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 04ac6c2bf0137289221a4ae6ed58d5a71ad21739
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68950218"
 ---
 # <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でデータ ソースをデータ プロファイリングする方法
@@ -73,7 +73,7 @@ ms.locfileid: "68950218"
 
 ### <a name="object-data-profile"></a>オブジェクト データ プロファイル
 
-* 行数
+* [行数]
 * テーブルのサイズ
 * オブジェクトが最後に更新されたのはいつか
 
@@ -88,7 +88,7 @@ ms.locfileid: "68950218"
 
 登録されているデータ資産についての統計と情報は、データのプロファイリングを通じて得ることができます。ユーザーはそれを基に、ビジネス上の問題解決に向けたデータの適合性を判断することができます。 データ プロファイルは、データ ソースの注釈付けや文書化と共に、データについての理解を深める手段となります。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [データ ソースの登録方法](data-catalog-how-to-register.md)
 * [Azure Data Catalog の概要](data-catalog-get-started.md)

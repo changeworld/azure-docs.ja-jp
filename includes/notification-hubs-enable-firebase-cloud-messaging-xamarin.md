@@ -9,10 +9,10 @@ ms.date: 08/01/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 45bdd569741dc13181bcaf9e8587a02b3d02c621
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68728853"
 ---
 1. [Firebase コンソール](https://firebase.google.com/console/)にサインインします。 Firebase プロジェクトがまだない場合は、新しく作成します。

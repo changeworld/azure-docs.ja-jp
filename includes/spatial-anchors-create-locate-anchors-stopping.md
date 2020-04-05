@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 6d6886996d926ce778600dfa1d69caaa1c7ac004
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67180896"
 ---
 ## <a name="pause-reset-or-stop-the-session"></a>セッションの一時停止、リセット、停止

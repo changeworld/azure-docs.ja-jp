@@ -17,10 +17,10 @@ ms.date: 10/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1748c6945dc50554c84fa8c178cece02baf9d840
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74075257"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-euromonitor-passport"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Euromonitor Passport の統合
@@ -29,7 +29,7 @@ ms.locfileid: "74075257"
 
 * Euromonitor Passport にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Euromonitor Passport に自動的にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -89,7 +89,7 @@ Euromonitor Passport に対する Azure AD SSO を構成してテストするに
 
     Euromonitor Passport サポート チームから入手したサインオン URL の値を [サインオン URL] ボックスに貼り付けます。
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 1. Euromonitor Passport アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 

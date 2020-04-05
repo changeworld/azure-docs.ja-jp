@@ -10,10 +10,10 @@ author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
 ms.openlocfilehash: 7994b478321c925b3eab73291a109d50b9066fef
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76770872"
 ---
 # <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>Ruby から Azure Table Storage と Azure Cosmos DB Table API を使用する方法
@@ -94,9 +94,9 @@ azure_table_service.insert_entity("testtable", entity)
 ## <a name="update-an-entity"></a>エンティティを更新する
 既存のエンティティを更新するには、複数のメソッドがあります。
 
-* **update_entity():** 既存のエンティティを置換することで更新します。
+* **update_entity():** 既存のエンティティを、置換することで更新します。
 * **merge_entity():** 新しいプロパティ値を既存のエンティティにマージすることで既存のエンティティを更新します。
-* **insert_or_merge_entity():** 既存のエンティティを置換することで更新します。 エンティティが存在しない場合は、新しいエンティティが挿入されます。
+* **insert_or_merge_entity():** 既存のエンティティを、置換することで更新します。 エンティティが存在しない場合は、新しいエンティティが挿入されます。
 * **insert_or_replace_entity():** 新しいプロパティ値を既存のエンティティにマージすることで既存のエンティティを更新します。 エンティティが存在しない場合は、新しいエンティティが挿入されます。
 
 次の例は、**update_entity()** を使用してエンティティを更新する方法を示しています。

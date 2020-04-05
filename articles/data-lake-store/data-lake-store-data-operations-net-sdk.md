@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/03/2020
 ms.author: twooley
 ms.openlocfilehash: 7e33ecbbb49fc2b0683d0757da36deec72796806
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75638903"
 ---
 # <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>.NET SDK を使用した Data Lake Storage Gen1 に対するファイルシステム操作
@@ -198,7 +198,7 @@ Data Lake Storage Gen1 ファイルシステム SDK の使用方法を示すい�
 * [GitHub の基本サンプル](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)
 * [GitHub の上級サンプル](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-samples)
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 * [.NET SDK を使用した Data Lake Storage Gen1 に対するアカウント管理操作](data-lake-store-get-started-net-sdk.md)
 * [Data Lake Storage Gen1 .NET SDK リファレンス](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)

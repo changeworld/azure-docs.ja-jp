@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/30/2019
 ms.openlocfilehash: afccbdbbfd5b8ddeefa621448d6170d937b518f0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74931448"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>Azure Data Factory を使用してオンプレミスの Hadoop クラスターから Azure Storage にデータを移行する 
@@ -151,6 +151,6 @@ HDFS から Azure Blob Storage にデータを移行するために、次のパ�
 - [LastModifiedDate に基づいて新しいファイルと変更されたファイルをコピーする](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-lastmodified-copy-data-tool)
 - [Data Factory の価格ページ](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Data Factory を使用して複数のコンテナーからファイルをコピーする](solution-template-copy-files-multiple-containers.md)

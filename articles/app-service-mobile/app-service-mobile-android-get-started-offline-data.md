@@ -7,10 +7,10 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: c215105af5fe1ef8056b0d816cf2c2a6b96f2038
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461625"
 ---
 # <a name="enable-offline-sync-for-your-android-mobile-app"></a>Android モバイル アプリのオフライン同期の有効化

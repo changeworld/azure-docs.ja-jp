@@ -11,10 +11,10 @@ ms.custom: ''
 manager: mtillman
 ms.author: mblythe
 ms.openlocfilehash: accdfbd939fad73ca7d008450c358d366e7f8b70
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76900756"
 ---
 # <a name="export-or-delete-user-settings"></a>ユーザー設定のエクスポートまたは削除
@@ -31,7 +31,7 @@ Azure portal の設定と機能を使って、カスタム エクスペリエン
 
 ## <a name="export-or-delete-your-portal-settings"></a>ポータル設定をエクスポートまたは削除する
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 1. ポータルのヘッダーで、![設定アイコン](media/azure-portal-export-delete-settings/settings-icon.png) **設定**を選択します。
 

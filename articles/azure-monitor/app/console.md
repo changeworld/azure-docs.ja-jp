@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.reviewer: lmolkova
 ms.openlocfilehash: baaea0f8055eeff0314fcf5fde00729ea8091d12
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77655431"
 ---
 # <a name="application-insights-for-net-console-applications"></a>.NET コンソール アプリケーション用の Application Insights
@@ -36,7 +36,7 @@ telemetryClient.TrackTrace("Hello World!");
 ```
 
 > [!NOTE]
-> テレメトリはすぐには送信されません。 テレメトリ項目はバッチ処理され、ApplicationInsights SDK によって送信されます。 `Track()` メソッドを呼び出した直後に終了するコンソールアプリでは、この記事で後述する[完全な例](#full-example)に示すように、アプリが終了する前に `Flush()` と `Sleep` が完了しない限り、テレメトリが送信されない場合があります。
+> テレメトリはすぐには送信されません。 テレメトリ項目はバッチ処理され、ApplicationInsights SDK によって送信されます。 `Track()` メソッドを呼び出した直後に終了するコンソールアプリでは、この記事で後述する`Flush()`完全な例`Sleep`に示すように、アプリが終了する前に [ と ](#full-example) が完了しない限り、テレメトリが送信されない場合があります。
 
 
 * [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) パッケージの最新バージョンをインストールします。このパッケージにより、HTTP、SQL、またはその他の外部の依存関係呼び出しが自動的に追跡されます。
@@ -48,7 +48,7 @@ telemetryClient.TrackTrace("Hello World!");
 
 ### <a name="using-config-file"></a>構成ファイルを使用する
 
-既定では、`TelemetryConfiguration` が作成されると、Application Insights SDK は作業ディレクトリで `ApplicationInsights.config` ファイルを検索します。
+既定では、`ApplicationInsights.config` が作成されると、Application Insights SDK は作業ディレクトリで `TelemetryConfiguration` ファイルを検索します。
 
 ```csharp
 TelemetryConfiguration config = TelemetryConfiguration.Active; // Reads ApplicationInsights.config file if present
@@ -125,7 +125,7 @@ module.Initialize(configuration);
 configuration.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 ```
 
-プレーンな `TelemetryConfiguration()` コンストラクターを使用して構成を作成した場合は、さらに相関関係のサポートを有効にする必要があります。 ファイルから構成を読み取り、`TelemetryConfiguration.CreateDefault()` または `TelemetryConfiguration.Active` を使用した場合は、**不要です**。
+プレーンな `TelemetryConfiguration()` コンストラクターを使用して構成を作成した場合は、さらに相関関係のサポートを有効にする必要があります。 ファイルから構成を読み取り、**または** を使用した場合は、`TelemetryConfiguration.CreateDefault()`不要です`TelemetryConfiguration.Active`。
 
 ```csharp
 configuration.TelemetryInitializers.Add(new OperationCorrelationTelemetryInitializer());

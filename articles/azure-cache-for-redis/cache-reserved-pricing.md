@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: aded023c9f4c045f612e33d32c1e3ac71afddf02
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77530208"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>予約容量を使用した計算リソースの Azure Cache for RedisRedis を使用した前払い

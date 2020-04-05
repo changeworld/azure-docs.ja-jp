@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
 ms.openlocfilehash: ccfbb92c27e4508595f19c2ea6900730cde609b9
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74666377"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Traffic Analytics のスキーマとデータ集計
@@ -96,7 +96,7 @@ Traffic Analytics は Log Analytics をベースに構築されています。�
 
 以下に示すのは、このスキーマで使用されるフィールドとその内容です
 
-| フィールド | 形式 | 説明 |
+| フィールド | Format | 説明 |
 |:---   |:---    |:---  |
 | TableName | AzureNetworkAnalytics_CL | Traffic Analytics データのテーブル
 | SubType_s | FlowLog | フロー ログのサブタイプ。 "FlowLog" のみを使用します。SubType_s の他の値は製品の内部動作用です。 |
@@ -161,7 +161,7 @@ Traffic Analytics は Log Analytics をベースに構築されています。�
 | SrcPublicIPs_s | <SOURCE_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | バーで区切られたエントリ |
 | DestPublicIPs_s | <DESTINATION_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | バーで区切られたエントリ |
 
-### <a name="notes"></a>メモ
+### <a name="notes"></a>Notes
 
 1. フローが AzurePublic または ExternalPublic の場合は、VMIP_s にはお客様所有の Azure VM IP が入力され、PublicIPs_s フィールドにはパブリック IP アドレスが入力されます。 これらの 2 種類のフローについては、SrcIP_s フィールドと DestIP_s フィールドではなく、VMIP_s と PublicIPs_s が使用されます。 AzurePublic と ExternalPublicIP のアドレスについては、さらなる集計を実行して、お客様のログ分析ワークスペースに取り込まれるレコード数が最小限に抑えられるようにします。(このフィールドは間もなく非推奨になります。それ以降は、Azure VM がそのフローでソースであったか宛先であったかに応じて、SrcIP_ と DestIP_s が使用されるようになります)
 1. フローの種類の詳細:フローは、関連している IP アドレスに基づいて、以下のフロー タイプに分類されます。

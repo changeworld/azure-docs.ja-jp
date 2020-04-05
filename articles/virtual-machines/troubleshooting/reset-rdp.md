@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 03/25/2019
 ms.author: genli
 ms.openlocfilehash: 580ec443dc087f270e30856c336a5699bbf1ae71
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71058438"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Windows VM でリモート デスクトップ サービスまたはその管理者パスワードをリセットする
@@ -77,7 +77,7 @@ PowerShell を使用する場合は、[最新の PowerShell モジュールの�
 
 ### <a name="reset-the-remote-desktop-services-configuration"></a>**リモート デスクトップ サービスの構成のリセット**
 
-1. [Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) PowerShell コマンドレットを使用して、VM へのリモート アクセスをリセットします。 次の例では、`myResourceGroup` リソース グループの `myVM` という名前の VM で、`myVMAccess` という名前のアクセス拡張機能をリセットします。
+1. [Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) PowerShell コマンドレットを使用して、VM へのリモート アクセスをリセットします。 次の例では、`myVMAccess` リソース グループの `myVM` という名前の VM で、`myResourceGroup` という名前のアクセス拡張機能をリセットします。
 
     ```powershell
     Set-AzVMAccessExtension -ResourceGroupName "myResoureGroup" -VMName "myVM" -Name "myVMAccess" -Location WestUS -typeHandlerVersion "2.0" -ForceRerun
@@ -88,7 +88,7 @@ PowerShell を使用する場合は、[最新の PowerShell モジュールの�
 
 1. それでも仮想マシンにリモート接続できない場合は、[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。 Windows ドメイン コントローラーへの接続を失った場合は、ドメイン コントローラーのバックアップから復元する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure VM アクセス拡張機能が応答せず、パスワードをリセットできない場合は、[オフラインのローカル Windows パスワードをリセット](reset-local-password-without-agent.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)できます。 この方法はより高度であり、問題のある VM の仮想ハード ディスクを別の VM に接続する必要があります。 最初に、この記事に記載されている手順を実行し、これらの手順でうまくいかない場合にのみ、オフラインのパスワードをリセットする方法をお試しください。
 

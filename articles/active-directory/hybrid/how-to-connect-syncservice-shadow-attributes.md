@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 10a4078f49abbdf431f42c6cde7cf882112e5848
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60384709"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Azure AD Connect 同期サービスのシャドウ属性
@@ -74,6 +74,6 @@ ProxyCalc は、ユーザーの変更処理に時間がかかる場合がある�
 ### <a name="quarantined-attribute-values"></a>検疫済みの属性値
 シャドウ属性は、属性値が重複している場合にも使用されます。 詳細については、[重複属性の回復性](how-to-connect-syncservice-duplicate-attribute-resiliency.md)に関するページを参照してください。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 * [Azure AD Connect Sync](how-to-connect-sync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)

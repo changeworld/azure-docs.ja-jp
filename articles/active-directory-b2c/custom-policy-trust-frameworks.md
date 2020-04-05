@@ -11,10 +11,10 @@ ms.date: 08/04/2017
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ffa25eec9c4b668f428d8e8b5a780a5fe4625a2c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78188887"
 ---
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Azure AD B2C Identity Experience Framework で信頼フレームワークを定義する

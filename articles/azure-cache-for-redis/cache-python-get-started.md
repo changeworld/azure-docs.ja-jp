@@ -11,10 +11,10 @@ ms.custom:
 - seo-python-october2019
 ms.date: 11/05/2019
 ms.openlocfilehash: 7b05f12ad3fd3a0f56605d708bbbf06df7e341ed
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75433468"
 ---
 # <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>クイック スタート:Azure Cache for Redis を使用する Python アプリを作成する

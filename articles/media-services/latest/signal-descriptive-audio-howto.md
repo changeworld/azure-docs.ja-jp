@@ -13,15 +13,15 @@ ms.custom: ''
 ms.date: 09/25/2019
 ms.author: juliako
 ms.openlocfilehash: 0d8f88e6c2fe273efa969278146de67ba18eaecf
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72391926"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>説明オーディオ トラックの通知
 
-ナレーション トラックをビデオに追加することで、目が不自由なクライアントはナレーションを聞いて動画の内容に従うことができます。 Media Services v3 では、マニフェスト ファイルのオーディオ トラックに注釈を付けることによって、説明オーディオ トラックを通知します。
+ナレーション トラックをビデオに追加することで、目が不自由なクライアントがナレーションを聞いて動画の内容を追うことができます。 Media Services v3 では、マニフェスト ファイルのオーディオ トラックに注釈を付けることによって、説明オーディオ トラックを通知します。
 
 この記事では、ビデオをエンコードし、説明オーディオを含む音声のみの MP4 ファイル (AAC コーデック) を出力アセットにアップロードし、.ism ファイルを編集して説明オーディオを含める方法について説明します。
 
@@ -142,7 +142,7 @@ await UpoadAudioIntoOutputAsset(client, config.ResourceGroup, config.AccountName
 1. コンテナーで .ism ファイルを見つけ、 **[BLOB の編集]** (右側のウィンドウ) をクリックします。 
 1. 説明オーディオを含むアップロードされたオーディオのみの MP4 ファイル (AAC コーデック) に関する情報を追加して .ism ファイルを編集し、完了したら **[保存]** を押します。
 
-    説明用オーディオ トラックを通知するには、.ism ファイルに "accessibility" パラメーターと "role" パラメーターを追加する必要があります。 オーディオ トラックを説明用オーディオとして通知するよう、パラメーターを正しく設定する必要があります。 たとえば、次の例に示すように、特定のオーディオ トラックの .ism ファイルに `<param name="accessibility" value="description" />` と `<param name="role" value="alternate" />` を追加します。
+    説明用オーディオ トラックを通知するには、.ism ファイルに "accessibility" パラメーターと "role" パラメーターを追加する必要があります。 オーディオ トラックをオーディオ説明としてシグナル通知するためには、これらのパラメーターを正しく設定する必要があります。 たとえば、次の例に示すように、特定のオーディオ トラックの .ism ファイルに `<param name="accessibility" value="description" />` と `<param name="role" value="alternate" />` を追加します。
  
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -219,7 +219,7 @@ await UpoadAudioIntoOutputAsset(client, config.ResourceGroup, config.AccountName
 
 ### <a name="get-streaming-urls"></a>ストリーミング URL を取得する
 
-[ストリーミング ロケーター](https://docs.microsoft.com/rest/api/media/streaminglocators)が作成されたので、**GetStreamingURLs** で示されているように、ストリーミング URL を取得できます。 URL を作成するには、[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints)のホスト名と**ストリーミング ロケーター** パスを連結する必要があります。 このサンプルでは、"*既定の*" **ストリーミング エンドポイント**を使っています。 最初に Media Service アカウントを作成したとき、この "*既定の*" **ストリーミング エンドポイント**は停止状態になっているので、**Start** を呼び出す必要があります。
+[ストリーミング ロケーター](https://docs.microsoft.com/rest/api/media/streaminglocators)が作成されたので、**GetStreamingURLs** で示されているように、ストリーミング URL を取得できます。 URL を作成するには、[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints)のホスト名と**ストリーミング ロケーター** パスを連結する必要があります。 このサンプルでは、*既定の***ストリーミング エンドポイント**を使っています。 最初に Media Service アカウントを作成したとき、この*既定の***ストリーミング エンドポイント**は停止状態になっているので、**Start** を呼び出す必要があります。
 
 > [!NOTE]
 > このメソッドでは、出力アセットの**ストリーミング ロケーター**を作成するときに使った locatorName が必要です。
@@ -241,6 +241,6 @@ await UpoadAudioIntoOutputAsset(client, config.ResourceGroup, config.AccountName
 
 Azure Media Player はテストには使用できますが、運用環境では使わないでください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [ビデオを分析する](analyze-videos-tutorial-with-api.md)

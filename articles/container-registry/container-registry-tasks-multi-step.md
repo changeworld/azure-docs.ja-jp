@@ -4,10 +4,10 @@ description: Azure Container Registry の ACR タスクの機能である、複�
 ms.topic: article
 ms.date: 03/28/2019
 ms.openlocfilehash: 0dcd38559d3f50715f982de4c9c80bfe9c6c8433
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78399702"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>ACR タスクでビルド、テスト、および修正プログラムの適用を行うマルチ ステップ タスクを実行する

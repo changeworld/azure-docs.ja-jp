@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 05/18/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9ede78933e6b9e6933b0c5dabce395eb10713c88
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 0506c7fcb4e3734414fdc3b868aca84450ad8d07
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278454"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067041"
 ---
-# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用して仮想マシン スケール セットを自動的にスケールする
+# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>チュートリアル: Azure CLI を使用して仮想マシン スケール セットを自動的にスケーリングする
 
 スケール セットを作成するときに、実行する VM インスタンスの数を定義します。 アプリケーションの需要の変化に応じて、VM インスタンスの数を自動的に増減することができます。 自動スケールにより、顧客のニーズに対応したり、アプリのライフサイクル全体でアプリケーション パフォーマンスの変化に対応したりできます。 このチュートリアルで学習する内容は次のとおりです。
 
@@ -118,13 +118,13 @@ az vmss list-instance-connection-info \
 
 最初の VM インスタンスに SSH 接続します。 `-p` パラメーターを使用して、独自のパブリック IP アドレスとポート番号を、前のコマンドで示されたとおりに指定します。
 
-```azurecli-interactive
+```console
 ssh azureuser@13.92.224.66 -p 50001
 ```
 
 ログインしたら、**stress** ユーティリティをインストールします。 最初は *10* 個の **stress** worker を使用して CPU 負荷を生成します。 これらの worker は、*420* 秒間実行されます。これは、自動スケール ルールで目的のアクションを実行するのに十分な値です。
 
-```azurecli-interactive
+```console
 sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
@@ -133,26 +133,26 @@ sudo stress --cpu 10 --timeout 420 &
 
 **stress** によって CPU 負荷が生成されていることを確認するために、**top** ユーティリティを使用してアクティブなシステム負荷を調べます。
 
-```azurecli-interactive
+```console
 top
 ```
 
 **top** を終了し、VM インスタンスへの接続を閉じます。 **stress** は、VM インスタンスで実行され続けます。
 
-```azurecli-interactive
+```console
 Ctrl-c
 exit
 ```
 
 前の [az vmss list-instance-connection-info](/cli/azure/vmss) によって一覧表示されたポート番号を使用して、2 番目の VM インスタンスに接続します。
 
-```azurecli-interactive
+```console
 ssh azureuser@13.92.224.66 -p 50003
 ```
 
 **stress** をインストールして実行し、この 2 番目の VM インスタンスで 10 個の worker を起動します。
 
-```azurecli-interactive
+```console
 sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
@@ -161,7 +161,7 @@ sudo stress --cpu 10 --timeout 420 &
 
 2 番目の VM インスタンスへの接続を閉じます。 **stress** は、VM インスタンスで実行され続けます。
 
-```azurecli-interactive
+```console
 exit
 ```
 
@@ -178,7 +178,7 @@ watch az vmss list-instances \
 
 CPU しきい値に達すると、自動スケール ルールによってスケール セット内の VM インスタンスの数が増えます。 次の出力には、スケール セットの自動スケールアウトによって作成された 3 つの VM が示されています。
 
-```bash
+```output
 Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name myScaleSet --output table
 
   InstanceId  LatestModelApplied    Location    Name          ProvisioningState    ResourceGroup    VmId
@@ -192,11 +192,11 @@ Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name mySca
 
 **stress** が最初の VM インスタンスで停止すると、平均 CPU 負荷は正常に戻ります。 その 5 分後、自動スケール ルールによって VM インスタンスの数がスケールインされます。 スケールイン アクションでは、ID が最も大きな VM インスタンスが最初に削除されます。 スケール セットが可用性セットまたは可用性ゾーンを使用する場合、スケールイン アクションはこれらの VM インスタンスに均等に分散されます。 次の出力例には、スケール セットの自動スケールインによって削除された 1 つの VM インスタンスが示されています。
 
-```bash
+```output
            6  True                  eastus      myScaleSet_6  Deleting             myResourceGroup  9e4133dd-2c57-490e-ae45-90513ce3b336
 ```
 
-`Ctrl-c` キーを押して *watch* を終了します。 スケール セットは、引き続き 5 分ごとにスケールインされ、その都度 VM インスタンスが 1 つ削除されます。この操作は、VM インスタンスの数が最小数の 2 になるまで繰り返されます。
+*キーを押して*watch`Ctrl-c` を終了します。 スケール セットは、引き続き 5 分ごとにスケールインされ、その都度 VM インスタンスが 1 つ削除されます。この操作は、VM インスタンスの数が最小数の 2 になるまで繰り返されます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

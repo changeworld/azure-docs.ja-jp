@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 720256416ca77b40ca0075f5b227212355dda040
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71213332"
 ---
 # <a name="azure-powershell-samples-for-azure-notification-hubs"></a>Azure Notification Hubs の Azure PowerShell サンプル

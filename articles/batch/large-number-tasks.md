@@ -15,10 +15,10 @@ ms.date: 08/24/2018
 ms.author: labrenne
 ms.custom: ''
 ms.openlocfilehash: c3857e512da5fe4fceefa5f735ddc65f73e11623
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77026049"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>1 つの Batch ジョブに多数のタスクを送信する

@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: dc8a870d692108f3a33b89a1c3826d421dfd1f63
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 147f43148c0f804adf70f1a792ba1b8a772fdae4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824398"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294487"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows データ サイエンス仮想マシンでできる 10 のこと
 
@@ -134,7 +134,7 @@ IrisPredictor(3,2,3,4)
 > 
 
 ### <a name="build-and-operationalize-r-models"></a>R モデルを構築して運用可能な状態にする
-Data Science Virtual Machine やその他の環境で構築された R のモデルは、Python の場合と同様の方法で Azure Machine Learning にデプロイすることができます。 手順は次のようになります。
+Data Science Virtual Machine やその他の環境で構築された R のモデルは、Python の場合と同様の方法で Azure Machine Learning にデプロイすることができます。 次に手順を示します。
 
 1. ワークスペース ID と認証トークンを提供する settings.json ファイルを作成します。 
 2. モデルの予測関数のラッパーを作成します。
@@ -142,7 +142,7 @@ Data Science Virtual Machine やその他の環境で構築された R のモデ
 
 次の手順とコード スニペットを使用して、Azure Machine Learning でモデルを Web サービスとして設定、ビルド、公開、および利用します。
 
-#### <a name="set-up"></a>セットアップ
+#### <a name="set-up"></a>設定
 
 ホーム ディレクトリの下にある ```.azureml``` という名前のディレクトリに settings.json ファイルを作成します。 ご利用の Azure Machine Learning ワークスペースからのパラメーターを入力します。
 
@@ -836,7 +836,7 @@ Azure Cosmos DB は、クラウドにおける NoSQL データベースです。
 ## <a name="use-power-bi-reports-and-dashboards"></a>Power BI レポートとダッシュボードを使用する 
 先ほど示した Azure Cosmos DB の例での Volcano JSON ファイルを Power BI Desktop で視覚化することで、データの本質を視覚的に把握することができます。 詳しい手順については、[Power BI の記事](../../cosmos-db/powerbi-visualize.md)を参照してください。 手順の概要は次のとおりです。
 
-1. Power BI Desktop を開いて、 **[データの取得]** を選びます。 URL に https://cahandson.blob.core.windows.net/samples/volcano.json を指定します。
+1. Power BI Desktop を開いて、 **[データの取得]** を選びます。 URL に `https://cahandson.blob.core.windows.net/samples/volcano.json` を指定します。
 2. リストとしてインポートされた JSON レコードが表示されます。 そのリストをテーブルに変換して、Power BI で処理できるようにします。
 4. [展開] (矢印) アイコンを選択して、列を展開します。
 5. その位置が **[レコード]** フィールドであることに注目します。 そのレコードを展開し、coordinates のみを選択してください。 **[座標]** はリスト列です。

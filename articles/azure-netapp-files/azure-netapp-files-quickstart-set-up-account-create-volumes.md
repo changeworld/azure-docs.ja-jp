@@ -8,10 +8,10 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 12/01/2019
 ms.openlocfilehash: fc7f13fb7ffe1667aaeaa4a3cc1916c6049a98c1
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75551643"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>クイック スタート:Azure NetApp Files を設定し、NFS ボリュームを作成する 
@@ -42,13 +42,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > 登録プロセスは、完了するまでに時間がかかることがあります。
 >
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 ポータルを使用して登録手順を行う場合は、前述のように Cloud Shell セッションを開き、次の Azure CLI の手順を実行します。
 
 [!INCLUDE [azure-netapp-files-cloudshell-include](../../includes/azure-netapp-files-azure-cloud-shell-window.md)]
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 このハウツー記事には、Azure PowerShell モジュール Az バージョン 2.6.0 以降が必要です。 現在のバージョンを調べるには、`Get-Module -ListAvailable Az` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 必要に応じて、PowerShell セッションで Cloud Shell コンソールを使用することもできます。
 
@@ -62,7 +62,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     Register-AzResourceProvider -ProviderNamespace Microsoft.NetApp
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 [!INCLUDE [azure-netapp-files-cloudshell-include](../../includes/azure-netapp-files-azure-cloud-shell-window.md)]
 
@@ -70,7 +70,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-netapp-account"></a>NetApp アカウントを作成する
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 1. Azure portal の [検索] ボックスに「**Azure NetApp Files**」と入力し、表示された一覧から **[Azure NetApp Files]** を選択します。
 
@@ -92,7 +92,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 4. **[作成]** をクリックし、新しい NetApp アカウントを作成します。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. 他の例でも参照できるように、いくつかの変数を定義します。
 
@@ -119,7 +119,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $location -Name $anfAccountName
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. 他の例でも参照できるように、いくつかの変数を定義します。
 
@@ -154,7 +154,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="set-up-a-capacity-pool"></a>容量プールを設定する
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 1. Azure NetApp Files 管理ブレードで、自分の NetApp アカウント (**myaccount1**) を選択します。
 
@@ -175,7 +175,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 5. **[OK]** をクリックします。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. 今後の参照用に新しい変数を定義する
 
@@ -191,7 +191,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     New-AzNetAppFilesPool -ResourceGroupName $resourceGroup -Location $location -AccountName $anfAccountName -Name $poolName -PoolSize $poolSizeBytes -ServiceLevel $serviceLevel
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. 今後の参照用に新しい変数を定義する
 
@@ -217,7 +217,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-nfs-volume-for-azure-netapp-files"></a>Azure NetApp Files の NFS ボリュームを作成する
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 1. 自分の NetApp アカウントの Azure NetApp Files 管理ブレードで、 **[ボリューム]** をクリックします。
 
@@ -261,7 +261,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![ボリュームが作成されました](../media/azure-netapp-files/azure-netapp-files-create-volume-created.png)  
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. [New-AzDelegation](/powershell/module/az.network/new-azdelegation) コマンドを使用して、"Microsoft.NetApp/volumes" へのサブネットの委任を作成します。
 
@@ -299,7 +299,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         -ProtocolType NFSv3
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. 後で使用するために、いくつかの変数を定義します。
     
@@ -356,7 +356,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 手順が終了していて必要な場合、リソース グループを削除することができます。 リソース グループの削除操作は、元に戻すことができません。  
 
@@ -380,7 +380,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![リソース グループの削除](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 手順が終了していて必要な場合、リソース グループを削除することができます。 リソース グループの削除操作は、元に戻すことができません。  
 
@@ -393,7 +393,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     Remove-AzResourceGroup -Name $resourceGroup
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 手順が終了していて必要な場合、リソース グループを削除することができます。 リソース グループの削除操作は、元に戻すことができません。  
 

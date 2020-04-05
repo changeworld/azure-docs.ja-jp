@@ -16,13 +16,13 @@ ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9648c714ddbac93bcc76d84e7f6d8f2fcfaed992
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78248233"
 ---
-# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure Cosmos DB にアクセスする
+# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>チュートリアル: Windows VM のシステム割り当てマネージド ID を使用して Azure Cosmos DB にアクセスする
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -41,7 +41,7 @@ ms.locfileid: "78248233"
 - 最新バージョンの [Azure PowerShell](/powershell/azure/install-az-ps) をインストールします
 
 
-## <a name="enable"></a>有効化
+## <a name="enable"></a>[有効化]
 
 [!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
 
@@ -126,7 +126,7 @@ Invoke-WebRequest -Uri 'https://management.azure.com/subscriptions/<SUBSCRIPTION
 {"primaryReadonlyMasterKey":"bWpDxS...dzQ==",
 "secondaryReadonlyMasterKey":"38v5ns...7bA=="}
 ```
-これで Cosmos DB アカウントのアクセス キーが取得できました。これを Cosmos DB SDK に渡して、アカウントにアクセスするための呼び出しを行うことができます。  簡単な例として、アクセス キーを Azure CLI に渡す場合があります。  Azure Portal の Cosmos DB アカウント ブレードの **[概要]** タブから `<COSMOS DB CONNECTION URL>` を取得できます。  `<ACCESS KEY>` を前述の手順で取得した値に置き換えます。
+これで Cosmos DB アカウントのアクセス キーが取得できました。これを Cosmos DB SDK に渡して、アカウントにアクセスするための呼び出しを行うことができます。  簡単な例として、アクセス キーを Azure CLI に渡す場合があります。  Azure Portal の Cosmos DB アカウント ブレードの `<COSMOS DB CONNECTION URL>`[概要]**タブから** を取得できます。  `<ACCESS KEY>` を前述の手順で取得した値に置き換えます。
 
 ```azurecli
 az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection "<COSMOS DB CONNECTION URL>" --key <ACCESS KEY>

@@ -7,10 +7,10 @@ ms.topic: include
 ms.date: 01/21/2020
 ms.author: dapine
 ms.openlocfilehash: 9b4317064196c4ea3d761fd1a0bd43a764054fe6
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77563311"
 ---
 ### <a name="speech-to-text-or-custom-speech-to-text"></a>音声変換またはカスタム音声変換

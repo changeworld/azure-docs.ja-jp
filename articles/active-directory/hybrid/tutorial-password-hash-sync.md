@@ -15,15 +15,15 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b17300fa69b61c7713c860e2a35e63fcb6584bc4
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "66474004"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>チュートリアル:パスワード ハッシュの同期 (PHS) を使用して単一 AD フォレストを統合する
 
-![Create](media/tutorial-password-hash-sync/diagram.png)
+![作成](media/tutorial-password-hash-sync/diagram.png)
 
 以下のチュートリアルでは、パスワード ハッシュの同期を使用してハイブリッド ID 環境を作成する手順を説明します。この環境は、テストを行うためや、ハイブリッド ID のしくみを詳しく理解するために使用できます。
 
@@ -35,14 +35,14 @@ ms.locfileid: "66474004"
 - Windows Server 2016 のコピー
 
 > [!NOTE]
-> このチュートリアルでは、チュートリアル環境を最短時間で作成できるように PowerShell スクリプトを使用します。  各スクリプトでは、その先頭で宣言された変数が使用されます。  変数はお客様の環境に合わせて変更することができ、そうする必要があります。
+> 最短時間でチュートリアル環境を作成できるよう、このチュートリアルでは PowerShell スクリプトを使用します。  各スクリプトでは、その先頭で宣言された変数が使用されます。  変数はお客様の環境に合わせて変更することができ、そうする必要があります。
 >
 >使用されるスクリプトでは、Azure AD Connect のインストール前に一般的な Active Directory 環境が作成されます。  これらはすべてのチュートリアルに関連しています。
 >
 > このチュートリアルで使用される PowerShell スクリプトのコピーは、[こちら](https://github.com/billmath/tutorial-phs)の GitHub で入手できます。
 
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成
-ハイブリッド ID 環境を稼働させるには、まず、オンプレミスの Active Directory サーバーとして使用される仮想マシンを作成する必要があります。  以下の手順を実行します。
+ハイブリッド ID 環境を稼働させるには、まず、オンプレミスの Active Directory サーバーとして使用される仮想マシンを作成する必要があります。  次の操作を行います。
 
 1. PowerShell ISE を管理者として起動します。
 2. 次のスクリプトを実行します。
@@ -83,11 +83,11 @@ Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive
 6. ライセンス キーを入力し、 **[次へ]** をクリックします。
 7. [ライセンス条項に同意します] をオンにし、 **[次へ]** をクリックします。
 8. **[カスタム: Windows のみをインストールする (詳細設定)]** を選択します。
-9. **[次へ]** をクリックします
+9. **[次へ]** をクリックします。
 10. インストールが完了したら、仮想マシンを再起動してサインインし、Windows の更新プログラムを実行して VM を最新の状態にします。  最新の更新プログラムをインストールします。
 
 ## <a name="install-active-directory-prerequisites"></a>Active Directory の前提条件をインストールする
-仮想マシンを稼働させたところで、Active Directory のインストール前にいくつかの作業を行う必要があります。  言い換えると、仮想マシンの名前を変更し、静的 IP アドレスと DNS 情報を設定して、リモート サーバー管理ツールをインストールする必要があります。   以下の手順を実行します。
+仮想マシンを稼働させたところで、Active Directory のインストール前にいくつかの作業を行う必要があります。  言い換えると、仮想マシンの名前を変更し、静的 IP アドレスと DNS 情報を設定して、リモート サーバー管理ツールをインストールする必要があります。   次の操作を行います。
 
 1. PowerShell ISE を管理者として起動します。
 2. 次のスクリプトを実行します。
@@ -123,7 +123,7 @@ Restart-Computer
 ```
 
 ## <a name="create-a-windows-server-ad-environment"></a>Windows Server AD 環境を作成する
-VM を作成して、名前の変更と静的 IP アドレスの設定を行いました。これで、Active Directory Domain Services のインストールと構成に進むことができます。  以下の手順を実行します。
+VM を作成して、名前の変更と静的 IP アドレスの設定を行いました。これで、Active Directory Domain Services のインストールと構成に進むことができます。  次の操作を行います。
 
 1. PowerShell ISE を管理者として起動します。
 2. 次のスクリプトを実行します。
@@ -154,7 +154,7 @@ Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath $DatabasePath -Doma
 ```
 
 ## <a name="create-a-windows-server-ad-user"></a>Windows Server AD ユーザーを作成する
-Active Directory 環境を作成したところで、テスト アカウントが必要になります。  このアカウントは、オンプレミスの AD 環境で作成されて Azure AD に同期されます。  以下の手順を実行します。
+Active Directory 環境を作成したところで、テスト アカウントが必要になります。  このアカウントは、オンプレミスの AD 環境で作成されて Azure AD に同期されます。  次の操作を行います。
 
 1. PowerShell ISE を管理者として起動します。
 2. 次のスクリプトを実行します。
@@ -183,7 +183,7 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 1. [Azure portal](https://portal.azure.com) に移動し、Azure サブスクリプションがあるアカウントを使ってサインインします。
 2. **プラス (+) アイコン**を選択し、**Azure Active Directory** を検索します。
 3. 検索結果で **[Azure Active Directory]** を選択します。
-4. **作成** を選択します。</br>
+4. **［作成］** を選択します</br>
 ![作成](media/tutorial-password-hash-sync/create1.png)</br>
 5. **組織の名前**と**初期ドメイン名**を入力します。 **[作成]** を選択します。 これにより、ディレクトリが作成されます。
 6. これが完了したら、**こちら**のリンクをクリックし、ディレクトリを管理します。
@@ -197,10 +197,10 @@ Azure AD テナントを作成したので、次は全体管理者アカウン�
 3.  このユーザーの名前およびユーザー名を入力します。 これがテナントのグローバル管理者になります。 また、 **[ディレクトリ ロール]** を **[全体管理者]** に変更してください。 一時パスワードを表示することもできます。 完了したら、 **[作成]** を選択します。</br>
 ![作成](media/tutorial-password-hash-sync/gadmin2.png)</br>
 4. これが完了したら、新しい Web ブラウザーを開き、新しい全体管理者アカウントと一時パスワードを使用して myapps.microsoft.com にサインインします。
-5. グローバル管理者のパスワードを覚えやすいものに変更します。
+5. 全体管理者のパスワードを覚えやすいものに変更します。
 
 ## <a name="download-and-install-azure-ad-connect"></a>Azure AD Connect をダウンロードしてインストールする
-次に、Azure AD Connect をダウンロードしてインストールします。  インストールが完了したら、高速インストールを実行します。  以下の手順を実行します。
+次に、Azure AD Connect をダウンロードしてインストールします。  インストールが完了したら、高速インストールを実行します。  次の操作を行います。
 
 1. [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) をダウンロードします。
 2. **AzureADConnect.msi**を検索し、ダブルクリックします。

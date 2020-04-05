@@ -4,16 +4,16 @@ description: Azure Analysis Services のサーバー管理者ロールに自動�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1370f65405963ebf825e986e6801607a0d96156e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 925fbbb51ac240b96486a2c0aa09c850a8d164bc
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78298090"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408644"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>サーバー管理者ロールへのサービス プリンシパルの追加 
 
@@ -41,7 +41,7 @@ ms.locfileid: "78298090"
 
 ## <a name="using-a-resource-manager-template"></a>Resource Manager テンプレートの使用
 
-Azure Resource Manager テンプレートを使用して Analysis Services サーバーを展開して、サーバー管理者を構成することも可能です。 この展開を実行する ID は、[Azure ロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) の**共同作成者**ロールに属している必要があります。
+Azure Resource Manager テンプレートを使用して Analysis Services サーバーを展開して、サーバー管理者を構成することも可能です。 この展開を実行する ID は、**Azure ロールベースのアクセス制御 (RBAC)** の[共同作成者](../role-based-access-control/overview.md)ロールに属している必要があります。
 
 > [!IMPORTANT]
 > サービス プリンシパルは `app:{service-principal-client-id}@{azure-ad-tenant-id}` の書式を使用して追加します。

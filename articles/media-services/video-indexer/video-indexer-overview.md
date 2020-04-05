@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 02/02/2020
 ms.author: juliako
 ms.openlocfilehash: efd8386f464bfdf2ac27d3be07e6572dc27952e1
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78163592"
 ---
 # <a name="what-is-video-indexer"></a>Video Indexer とは
@@ -47,7 +47,7 @@ Video Indexer の分析情報は、次のような多くのシナリオに適用
 * *コンテンツ モデレーション*: テキストとビジュアルのコンテンツ モデレーション モデルを使用して、不適切なコンテンツからユーザーの安全を維持し、公開したコンテンツが組織の値と一致することを検証します。 コンテンツに関して、特定のビデオを自動的にブロックしたり、ユーザーに通知したりすることができます。
 * *推奨事項*:ビデオの分析情報は、ユーザーに関連のあるビデオ モーメントを強調表示することで、ユーザー エンゲージメントを向上させるために使用できます。 各ビデオに追加のメタデータをタグ付けすることで、ユーザーに最も関連性の高いビデオをお勧めし、ニーズに合うビデオの部分を強調表示することができます。
 
-## <a name="features"></a>機能
+## <a name="features"></a>特徴
 
 次の一覧は、Video Indexer のビデオとオーディオ モデルを使用して、ビデオから取得できる分析情報を示しています。
 

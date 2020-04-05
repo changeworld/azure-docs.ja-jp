@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 5a08ee7f5ea3d5e8c393ea4c1a64c353e24777e0
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74072693"
 ---
 # <a name="share-your-custom-search-instance"></a>カスタム検索インスタンスの共有
@@ -34,6 +34,6 @@ ms.locfileid: "74072693"
 
 他のユーザーとのインスタンスの共有を停止するには、削除アイコンを使用して一覧から電子メール アドレスを削除します。 これは、インスタンスはインスタンスの一覧からも削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [カスタム自動提案エクスペリエンスの構成](define-custom-suggestions.md)

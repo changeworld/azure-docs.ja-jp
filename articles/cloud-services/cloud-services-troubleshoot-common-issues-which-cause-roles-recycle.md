@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: 554508b1bf784e306cd12a4a601f908e06320933
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71154976"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>ロールのリサイクルを引き起こす一般的な問題
@@ -60,7 +60,7 @@ Azure は 64 ビット環境です。 そのため、32 ビット ターゲッ�
 ## <a name="exported-certificate-does-not-include-private-key"></a>エクスポートした証明書に秘密キーが含まれていない
 Web ロールを SSL で実行する場合は、エクスポートした管理証明書に秘密キーが含まれていることを確認してください。 *Windows 証明書マネージャー*を使用して証明書をエクスポートする場合は必ず、 **[Export the private key (秘密キーをエクスポートします)]** オプションに **[はい]** を選択してください。 証明書は PFX 形式でエクスポートする必要があります。現在サポートされている形式はこれだけです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 クラウド サービスの他の [トラブルシューティングに関する記事](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) を参照します。
 
 他のロール リサイクル シナリオを確認するには、 [Kevin Williamson によるブログ シリーズ](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)をご覧ください。

@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: df62dbd8db7d41eb11207c7741aed76cec0ac7a8
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75894379"
 ---
 # <a name="scenario-illegalargumentexception-for-apache-spark-activity-in-azure-hdinsight"></a>シナリオ:Azure HDInsight での Apache Spark アクティビティのための IllegalArgumentException
@@ -35,7 +35,7 @@ Wrong FS: wasbs://additional@xxx.blob.core.windows.net/spark-examples_2.11-2.1.0
 
 この問題は Spark 2.3.0 で解決されました。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
 アプリケーション jar が、HDInsight クラスターの既定のストレージまたはプライマリ ストレージに格納されていることを確認します。 Azure Data Factory 場合は、ADF のリンクされたサービスが、HDInsight の既定のコンテナー (セカンダリ コンテナーではなく) を指していることを確認します。
 

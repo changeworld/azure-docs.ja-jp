@@ -17,10 +17,10 @@ ms.date: 06/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: faa23f61e5a213c492a7fb51bfc5b108e5c77946
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67310400"
 ---
 # <a name="tutorial-integrate-way-we-do-with-azure-active-directory"></a>チュートリアル:Way We Do と Azure Active Directory の統合
@@ -29,7 +29,7 @@ ms.locfileid: "67310400"
 
 * Way We Do にアクセスできる Azure AD ユーザーを制御する。
 * ユーザーが自分の Azure AD アカウントを使用して Way We Do に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -104,7 +104,7 @@ Way We Do で Azure AD SSO を構成してテストするには、次の構成�
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
-1. ブラウザーに拡張機能を追加した後、 **[Way We Do のセットアップ]** をクリックすると、Way We Do アプリケーションに移動します。 そこから、管理者の資格情報を入力して Way We Do にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 から 6 が自動化されます。
+1. ブラウザーに拡張機能を追加した後、 **[Way We Do のセットアップ]** をクリックすると、Way We Do アプリケーションに移動します。 そこから、管理者の資格情報を入力して Way We Do にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 ～ 6 が自動化されます。
 
     ![セットアップの構成](common/setup-sso.png)
 
@@ -145,7 +145,7 @@ Way We Do で Azure AD SSO を構成してテストするには、次の構成�
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-このセクションでは、Azure portal で B.Simon というテスト ユーザーを作成します。
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
 1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 1. 画面の上部にある **[新しいユーザー]** を選択します。

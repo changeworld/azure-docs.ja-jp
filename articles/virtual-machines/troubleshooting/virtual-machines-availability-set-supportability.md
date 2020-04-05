@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.openlocfilehash: a9ca8f219bef787de04b51600209bfd3a24dd166
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77122663"
 ---
 # <a name="supportability-of-adding-azure-vms-to-an-existing-availability-set"></a>既存の可用性セットへの Azure VM の追加のサポート

@@ -7,10 +7,10 @@ ms.date: 12/03/2019
 author: markjbrown
 ms.author: mjbrown
 ms.openlocfilehash: e8786c2d6e93c18a5bf9856a5555d6b528f842c5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75441215"
 ---
 # <a name="create-a-synthetic-partition-key"></a>合成パーティション キーの作成

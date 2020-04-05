@@ -17,10 +17,10 @@ ms.date: 07/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 090e0a8488bb4f79de544774b08c847ea1524ad9
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67798590"
 ---
 # <a name="tutorial-integrate-hype-with-azure-active-directory"></a>チュートリアル:Hype と Azure Active Directory の統合
@@ -29,7 +29,7 @@ ms.locfileid: "67798590"
 
 * Hype にアクセスする Azure AD ユーザーを制御する。
 * ユーザーが自分の Azure AD アカウントを使用して Hype に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

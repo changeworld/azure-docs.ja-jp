@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 7465f8eb4357fcb6faa1d0fee0173837b6cb019b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 4b3248cb9ab61a158f70b5a2d6ae9dd846501816
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593651"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473627"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>AKS での Apache Spark ジョブの実行
 
@@ -186,7 +186,7 @@ export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-strin
 
 次のコマンドを使用して、Azure ストレージ アカウントに jar ファイルをアップロードします。
 
-```bash
+```azurecli
 CONTAINER_NAME=jars
 BLOB_NAME=SparkPi-assembly-0.1.0-SNAPSHOT.jar
 FILE_TO_UPLOAD=target/scala-2.11/SparkPi-assembly-0.1.0-SNAPSHOT.jar
@@ -241,8 +241,10 @@ kubectl create clusterrolebinding spark-role --clusterrole=edit --serviceaccount
 この操作によって、シェル セッションにジョブの状態をストリーミングする Spark ジョブが開始されます。 ジョブの実行中に、kubectl get pods コマンドを使用して、Spark ドライバー ポッドと Executor ポッドを確認できます。 これらのコマンドを実行するには、2 つ目のターミナル セッションを開きます。
 
 ```console
-$ kubectl get pods
+kubectl get pods
+```
 
+```output
 NAME                                               READY     STATUS     RESTARTS   AGE
 spark-pi-2232778d0f663768ab27edc35cb73040-driver   1/1       Running    0          16s
 spark-pi-2232778d0f663768ab27edc35cb73040-exec-1   0/1       Init:0/1   0          4s
@@ -270,7 +272,7 @@ kubectl get pods --show-all
 
 出力:
 
-```bash
+```output
 NAME                                               READY     STATUS      RESTARTS   AGE
 spark-pi-2232778d0f663768ab27edc35cb73040-driver   0/1       Completed   0          1m
 ```
@@ -283,7 +285,7 @@ kubectl logs spark-pi-2232778d0f663768ab27edc35cb73040-driver
 
 これらのログの中で、Pi の値である Spark ジョブの結果を確認できます。
 
-```bash
+```output
 Pi is roughly 3.152155760778804
 ```
 

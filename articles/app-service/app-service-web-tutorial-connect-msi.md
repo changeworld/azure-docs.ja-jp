@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: mvc, cli-validate
 ms.openlocfilehash: af44f4a96567cc86c9f884cdfe5e28ff6b7bd8f3
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78897686"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>チュートリアル:マネージド ID を使用した App Service からの Azure SQL Database 接続のセキュリティ保護

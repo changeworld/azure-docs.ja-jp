@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 02/13/2020
 ms.author: lahugh
 ms.openlocfilehash: 0134e7d92ddca9bd3b45abaf642f33de9d209b33
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78192304"
 ---
 # <a name="securely-access-key-vault-with-batch"></a>Batch で Key Vault に安全にアクセスする
@@ -43,7 +43,7 @@ cd C:\Program Files (x86)\Windows Kits\10\bin\x64
 makecert -sv batchcertificate.pvk -n "cn=batch.cert.mydomain.org" batchcertificate.cer -b 09/23/2019 -e 09/23/2019 -r -pe -a sha256 -len 2048
 ```
 
-Batch には `.pfx` ファイルが必要です。 [pvk2pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) ツールを使用して、`makecert` で作成した `.cer` および `.pvk` ファイルを単一の `.pfx` ファイルに変換します。
+Batch には `.pfx` ファイルが必要です。 [pvk2pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) ツールを使用して、`.cer` で作成した `.pvk` および `makecert` ファイルを単一の `.pfx` ファイルに変換します。
 
 ```console
 pvk2pfx -pvk batchcertificate.pvk -spc batchcertificate.cer -pfx batchcertificate.pfx -po
@@ -87,7 +87,7 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"
 
 Batch プールを作成し、プールの [証明書] タブに移動して、作成した証明書を割り当てます。 これで、すべての Batch ノードに証明書が存在することになります。
 
-次に、証明書を Batch アカウントに割り当てる必要があります。 証明書をアカウントに割り当てると、その証明書をプールに割り当てることができ、次に各ノードに割り当てることができます。 最も簡単にこれを行うには、ポータルで Batch アカウントに移動し、 **[証明書]** に移動して、 **[追加]** を選択します。 「[証明書を取得する](#obtain-a-certificate)」で生成した `.pfx` ファイルをアップロードし、パスワードを指定します。 完了すると、証明書が一覧に追加され、拇印を確認できるようになります。
+次に、証明書を Batch アカウントに割り当てる必要があります。 証明書をアカウントに割り当てると、その証明書をプールに割り当てることができ、次に各ノードに割り当てることができます。 最も簡単にこれを行うには、ポータルで Batch アカウントに移動し、 **[証明書]** に移動して、 **[追加]** を選択します。 「`.pfx`証明書を取得する[」で生成した ](#obtain-a-certificate) ファイルをアップロードし、パスワードを指定します。 完了すると、証明書が一覧に追加され、拇印を確認できるようになります。
 
 これで、Batch プールを作成する際に、プール内で **[証明書]** に移動し、作成した証明書をそのプールに割り当てることができます。 これを行う場合は、ストアの場所として **[LocalMachine]** を選択してください。 証明書が、プール内のすべての Batch ノードに読み込まれます。
 

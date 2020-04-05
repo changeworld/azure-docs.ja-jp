@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
 ms.openlocfilehash: 5a6dbda59495fccb6b9d53440f408fd4750925b5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75421669"
 ---
 # <a name="create-an-azure-automation-runbook"></a>Azure Automation Runbook を作成する

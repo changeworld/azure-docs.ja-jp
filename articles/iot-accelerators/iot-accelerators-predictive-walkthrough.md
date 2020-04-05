@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 0661503dce7ac2707065f60c3952da866ce9dcf3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73827409"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>予測メンテナンスのソリューション アクセラレータの概要
@@ -79,7 +79,7 @@ Azure IoT 予測メンテナンスのソリューション アクセラレータ
 
 *\[1\] A. Saxena と K. Goebel (2008 年)。「Turbofan Engine Degradation Simulation Data Set (ターボファン エンジンの劣化シミュレーション データ セット)」、NASA Ames Prognostics Data Repository (https://c3.nasa.gov/dashlink/resources/139/) )、NASA Ames Research Center、カリフォルニア州モフェット フィールド*
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 予測メンテナンスのソリューション アクセラレータの主要コンポーネントは確認しました。次は、それをカスタマイズします。
 
 IoT ソリューション アクセラレータの他の機能についても学習できます。

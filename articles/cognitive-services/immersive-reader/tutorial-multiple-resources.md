@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: skamal
 ms.openlocfilehash: 3912d55b13f3977818e8d898efa651ffeb1a798a
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76046477"
 ---
 # <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>チュートリアル:複数のイマーシブ リーダー リソースを統合する

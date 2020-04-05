@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
 ms.openlocfilehash: 0046b7fcad663187f660d6a65652eab5884eee23
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67181339"
 ---
 > [!NOTE]

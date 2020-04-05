@@ -9,10 +9,10 @@ ms.date: 1/31/2020
 ms.author: lcozzens
 ms.custom: include file
 ms.openlocfilehash: 3eb77799b1845112e9f7e5ca0b65d790625fd529
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76961496"
 ---
 次のチュートリアルに進む場合は、このクイックスタートで作成したリソースを再利用できるよう残しておいてください。

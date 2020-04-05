@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: sngun
 ms.openlocfilehash: 184fc65dae57292243be9abdca71a129512b3d0b
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78252053"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Azure の診断設定を使用して Azure Cosmos DB データを監視する
@@ -65,7 +65,7 @@ Azure の診断設定は、リソース ログの収集に使用されます。 
 Azure portal、CLI、または PowerShell を使用して診断設定を作成する方法の詳細については、「[Azure でプラットフォーム ログとメトリックを収集するための診断設定を作成する](../azure-monitor/platform/diagnostic-settings.md)」を参照してください。
 
 
-## <a id="diagnostic-queries"></a> 診断クエリに関する問題のトラブルシューティング
+## <a name="troubleshoot-issues-with-diagnostics-queries"></a><a id="diagnostic-queries"></a> 診断クエリに関する問題のトラブルシューティング
 
 1. コストの高いクエリについて要求の使用量を取得する方法
 

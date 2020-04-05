@@ -16,10 +16,10 @@ ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a0fbed1f4dd62b2d75d39f475d2fe124c55a2b97
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645805"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver のための SQL Server Azure Virtual Machines DBMS のデプロイ
@@ -27,7 +27,7 @@ ms.locfileid: "75645805"
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
 [826037]:https://launchpad.support.sap.com/#/notes/826037
-[965908]: https://launchpad.support.sap.com/#/notes/965908
+[965908]:https://launchpad.support.sap.com/#/notes/965908
 [1031096]:https://launchpad.support.sap.com/#/notes/1031096
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
 [1139904]:https://launchpad.support.sap.com/#/notes/1139904
@@ -49,12 +49,12 @@ ms.locfileid: "75645805"
 [1757928]:https://launchpad.support.sap.com/#/notes/1757928
 [1758182]:https://launchpad.support.sap.com/#/notes/1758182
 [1758496]:https://launchpad.support.sap.com/#/notes/1758496
-[1772688]: https://launchpad.support.sap.com/#/notes/1772688
+[1772688]:https://launchpad.support.sap.com/#/notes/1772688
 [1814258]:https://launchpad.support.sap.com/#/notes/1814258
 [1882376]:https://launchpad.support.sap.com/#/notes/1882376
 [1909114]:https://launchpad.support.sap.com/#/notes/1909114
 [1922555]:https://launchpad.support.sap.com/#/notes/1922555
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1941500]:https://launchpad.support.sap.com/#/notes/1941500
 [1956005]:https://launchpad.support.sap.com/#/notes/1956005
 [1973241]:https://launchpad.support.sap.com/#/notes/1973241
@@ -436,7 +436,7 @@ Azure でのさまざまな SQL Server のバックアップ方法について�
 非常に多数の SAP ユーザーにとって、Azure 上で実行されていた SAP ランドスケープの部分に、完全に新しいバックアップ ソリューションを一から導入することはできませんでした。 その結果、既存のバックアップ ソリューションを使用して Azure に拡張する必要がありました。 通常、この分野の主要ベンダーの大部分では、既存のバックアップ ソリューションを Azure に拡張できました。 
 
 
-## <a name="1b353e38-21b3-4310-aeb6-a77e7c8e81c8"></a>Microsoft Azure Marketplace からの SQL Server イメージの使用
+## <a name="using-a-sql-server-image-out-of-the-microsoft-azure-marketplace"></a><a name="1b353e38-21b3-4310-aeb6-a77e7c8e81c8"></a>Microsoft Azure Marketplace からの SQL Server イメージの使用
 マイクロソフトは Azure Marketplace で VM を提供しています。VM には SQL Server のバージョンがすでに含まれています。 SQL Server および Windows のライセンスが必要な SAP ユーザーの場合、これらのイメージを使用すると、SQL Server が既にインストールされている VM をスピン アップしてライセンスの必要性に対応できる可能性があります。 SAP でそのようなイメージを使用するためには、次の事項を考慮する必要があります。
 
 * SQL Server 評価版以外のバージョンでは、Azure Marketplace から "Windows のみ" の VM をデプロイする場合よりもコストがかかります。 価格を比較する場合は、<https://azure.microsoft.com/pricing/details/virtual-machines/windows/> および <https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/> を参照してください。 
@@ -546,7 +546,7 @@ Azure Key Vault を SQL Server TDE に使用する方法の詳細については
 >SQL Server TDE を使用する場合、特に Azure Key Vault と共に使用する場合は、SQL Server 2014、SQL Server 2016、および SQL Server 2017 の最新のパッチを使用することをお勧めします。 その理由は、ユーザーのフィードバックに基づいて、最適化と修正がコードに適用されているためです。 例については、[KBA #4058175](https://support.microsoft.com/help/4058175/tde-enabled-backup-and-restore-slow-if-encryption-key-is-stored-in-ekm) を参照してください。
 >  
 
-## <a name="9053f720-6f3b-4483-904d-15dc54141e30"></a>Azure での一般的な SAP 用 SQL Server の概要
+## <a name="general-sql-server-for-sap-on-azure-summary"></a><a name="9053f720-6f3b-4483-904d-15dc54141e30"></a>Azure での一般的な SAP 用 SQL Server の概要
 このガイドには多くの推奨事項が記載されているため、Azure デプロイを計画する前に 2 回以上読むことをお勧めします。 ただし、Azure 上の DBMS に固有の主な一般的な推奨事項に従ってください。
 
 1. Azure で多くのメリットのある SQL Server 2017 のように、最新の DBMS リリースを使用する。 

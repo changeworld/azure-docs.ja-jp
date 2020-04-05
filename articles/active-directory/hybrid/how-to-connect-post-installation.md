@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect:次のステップと Azure AD Connect の管理方法 | Microsoft Docs
+title: 'Azure AD Connect: 次のステップと Azure AD Connect の管理方法 | Microsoft Docs'
 description: Azure AD Connect の既定の構成と運用タスクを拡張する方法について説明します。
 services: active-directory
 documentationcenter: ''
@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c204029557a73dc3f02015afb92c0fdbf0d4d50e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64571322"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230183"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>次のステップと Azure AD Connect の管理方法
 この記事の操作手順を使用して、組織のニーズや要件を満たすように Azure Active Directory (Azure AD) Connect をカスタマイズします。  
@@ -82,7 +82,7 @@ Azure AD Connect の初回インストール後は、Azure AD Connect のスタ�
 |**ステージング モードの構成** |すぐには同期されず、Azure AD やオンプレミスの Active Directory にエクスポートされない情報をステージングします。  この機能では、事前に同期のプレビューを表示できます。 |
 |**ユーザー サインインの変更**|ユーザーがサインインを使用している認証方法を変更します。|
 |**フェデレーションの管理**|AD FS インフラストラクチャの管理、証明書の更新および AD FS サーバーの追加|
-|**トラブルシューティング**|Azure AD Connect の問題のトラブルシューティングに役立ちます。|
+|**[トラブルシューティング]**|Azure AD Connect の問題のトラブルシューティングに役立ちます。|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)に関する記事をご覧ください。

@@ -1,19 +1,18 @@
 ---
 title: Azure アプリケーション オファーの [Marketplace] タブ
 description: '[Marketplace] タブを使用し、Azure アプリケーション オファーのマーケティング資産を識別します。'
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: pabutler
-ms.openlocfilehash: 967b66a67d51b3a79bcf930ce977af48acc3dd63
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 94bbfb16a967a97b1ee6f6d51a5f55bc8ba13227
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827577"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281767"
 ---
 # <a name="azure-application-marketplace-tab"></a>Azure アプリケーションの [Marketplace] タブ
 
@@ -29,9 +28,9 @@ ms.locfileid: "73827577"
 
 |      フィールド         |    説明    |
 |  ---------------   |  ---------------  |
-| **[Title]\(タイトル\)\***        | プランのタイトル。 マーケットプレースで目立つように表示されます。 最大長は 50 文字です。 |
-| **[Summary]\(概要\)\***      | プランの短い要約。 最大長は 100 文字です。           |
-| **[Long Summary]\(長い概要\)\*** | オファーの長めの要約 (まとめと同じでもかまいません)。 最大長は 256 文字です。           |
+| **タイトル\***        | プランのタイトル。 マーケットプレースで目立つように表示されます。 最大長は 50 文字です。 |
+| **要約\***      | プランの短い要約。 最大長は 100 文字です。           |
+| **[Long Summary]\(長い要約\)\*** | オファーの長めの要約 (まとめと同じでもかまいません)。 最大長は 256 文字です。           |
 | **説明\***  | プランの説明。 最大長は 3000 文字です。 単純な HTML 書式設定を使用可能 (&lt;p&gt;、&lt;em&gt;、&lt;ul&gt;、&lt;li&gt;、&lt;ol&gt;、ヘッダー タグなど)。  |
 | **[Marketing Identifier]\(マーケティング識別子\)\*** | このプランに関連付ける一意の URL。通常、組織およびソリューションの名前が含まれ、最大長は 50 文字です。 サービスに短くてわかりやすいマーケティング識別子を選択します。 これはこのオファーの URL で使用されます。 たとえば、発行元 ID が "contoso" で、マーケティング識別子が "sampleApp" の場合、Azure Marketplace では、オファーの URL は https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp になります。  
 | **[Preview Subscription IDs]\(プレビュー サブスクリプション ID\)\*** | プレビューアーのサブスクリプション識別子を追加します (1 - 100 個)。 ホワイトリストに登録されたこれらのサブスクリプションには、オファーの発行後、運用が開始される前にオファーにアクセスする許可が与えられます。          |
@@ -132,6 +131,6 @@ Hero ロゴはオプションです。
 ![[法的情報] フォーム](./media/azureapp-marketplace-legal.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [[サポート] タブ](./cpp-support-tab.md)

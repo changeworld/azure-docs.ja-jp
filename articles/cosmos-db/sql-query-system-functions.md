@@ -8,10 +8,10 @@ ms.date: 12/02/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 6f41adbb726313ef095084d079dc7852736e0c06
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74870532"
 ---
 # <a name="system-functions-azure-cosmos-db"></a>システム関数 (Azure Cosmos DB)
@@ -35,7 +35,7 @@ ms.locfileid: "74870532"
 
 Cosmos DB 関数と ANSI SQL 関数の主な違いとして、Cosmos DB 関数はスキーマレス データやスキーマが混在するデータとうまく機能するように設計されています。 たとえば、プロパティがない場合や `unknown` のような数値以外の値を持つ場合、エラーを返す代わりに、項目がスキップされます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Cosmos DB の概要](introduction.md)
 - [配列関数](sql-query-array-functions.md)

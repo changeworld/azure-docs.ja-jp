@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: 59b9e734526c56016e2ddf59c2afb5b8f7b4ad09
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76514903"
 ---
 # <a name="azure-relay---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure Relay - Azure Active Directory Access Control Service から Shared Access Signature 承認への移行
@@ -34,7 +34,7 @@ ACS に依存しているすべての既存アプリケーションに対して�
 
 ACS とリレーは、共に認識している*署名キー*を利用して統合されます。 署名キーは、ACS 名前空間では認証トークンの署名に使用され、Azure Relay ではペアの ACS 名前空間によってトークンが発行されていることの確認に使用されます。 ACS 名前空間は、サービス ID と承認規則を保持します。 承認規則では、外部 ID プロバイダーによって発行されたサービス ID またはトークンが、リレー名前空間のグラフの一部に対して、どの種類のアクセスを許可されるかを定義します。定義には最長プレフィックス一致の形式が使用されます。
 
-たとえば ACS ルールでは、パス プレフィックス `/` への**送信**要求をサービス ID に付与できます。つまり、そのルールに基づいて ACS により発行されたトークンは、名前空間内のすべてのエンティティに対して送信する権限をクライアントに付与します。 パス プレフィックスが `/abc` の場合、ID による送信は `abc` という名前のエンティティか、またはそのプレフィックスの下に編成されたエンティティに制限されます。 この移行ガイドの読者は、すでにこれらの概念についてよく知っていることを前提としています。
+たとえば ACS ルールでは、パス プレフィックス  **への**送信`/`要求をサービス ID に付与できます。つまり、そのルールに基づいて ACS により発行されたトークンは、名前空間内のすべてのエンティティに対して送信する権限をクライアントに付与します。 パス プレフィックスが `/abc` の場合、ID による送信は `abc` という名前のエンティティか、またはそのプレフィックスの下に編成されたエンティティに制限されます。 この移行ガイドの読者は、すでにこれらの概念についてよく知っていることを前提としています。
 
 移行シナリオは、大きく分けて 3 つのカテゴリに分類されます。
 
@@ -54,7 +54,7 @@ ACS とリレーは、共に認識している*署名キー*を利用して統�
 
 単純なルールを含むカスタムのサービス ID をアプリケーションで使用する場合、ACS サービス ID を作成して特定のリレーのアクセスを制御していたのであれば、移行は簡単です。 このシナリオは、SaaS スタイル ソリューションのケースで多く見られます。このケースでは、各リレーがテナント サイトやブランチ オフィスへのブリッジとして使用され、その特定のサイトに対してサービス ID が作成されます。 ここでは、それぞれのサービス ID は、リレーで直接、Shared Access Signature 規則に移行できます。 サービス ID の名前を SAS ルールの名前にして、サービス ID キーを SAS ルール キーにすることができます。 そうすることで、SAS ルールの権限は、エンティティに対しそれぞれ該当する ACS ルールと同等に構成されます。
 
-この新しい追加の SAS 構成を ACS と統合された既存の名前空間に配置し、その後、ACS からの移行を [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) ではなく [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) を使用して実行します。 名前空間では ACS からのリンクを解除する必要はありません。
+この新しい追加の SAS 構成を ACS と統合された既存の名前空間に配置し、その後、ACS からの移行を [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) ではなく [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) を使用して実行します。 名前空間では ACS からのリンクを解除する必要はありません。
 
 ### <a name="complex-rules"></a>複雑なルール
 

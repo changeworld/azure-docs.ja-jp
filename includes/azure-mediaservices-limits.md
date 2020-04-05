@@ -4,17 +4,17 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 49150daa783280f47cb9401434ebfab8f6204090
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 2fe091a4ff0295ecadfd69ba3f2d4ca59e9612e5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224423"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334706"
 ---
 >[!NOTE]
 >固定されないリソースの場合は、サポート チケットを開いてクォータの増加を要求してください。 上限を高くするために追加の Azure Media Services アカウントを作成することはしないでください。
 
-| リソース | 既定の制限 | 
+| リソース | 制限 | 
 | --- | --- | 
 | 1 つのサブスクリプション内の Azure Media Services アカウント | 25 (固定) |
 | Media Services アカウントあたりのメディア占有ユニット数 |25 (S1)<br/>10 (S2、S3)<sup>1</sup> | 
@@ -23,7 +23,7 @@ ms.locfileid: "74224423"
 | Media Services アカウントあたりのアセット数 | 1,000,000|
 | タスクあたりのアセット数 | 50 |
 | ジョブあたりのアセット数 | 100 |
-| 一度に 1 つの資産に関連付けられる一意のロケーター数 | 5<sup>4</sup> |
+| 一度に 1 つのアセットに関連付けられる一意のロケーター数 | 5<sup>4</sup> |
 | Media Services アカウントあたりのライブ チャンネル数 |5|
 | チャネルあたりの停止状態のプログラム数 |50|
 | チャネルあたりの実行状態のプログラム数 |3|
@@ -54,8 +54,8 @@ ms.locfileid: "74224423"
 
 以下の表では、メディア占有ユニット S1、S2、S3 での制限を示します。 ソース ファイルがこの表に定義されている上限を超える場合、エンコード ジョブは失敗します。 4K 解像度の長時間ソースをエンコードする場合、必要なパフォーマンスを確保するためには、S3 メディア占有ユニットを使用する必要があります。 S3 メディア占有ユニットに関する 260 GB の制限を超える 4K コンテンツがある場合は、サポート チケットを開きます。
 
-|メディア占有ユニットの種類   |最大入力サイズ (GB)|
+|メディア占有ユニットの種類    |最大入力サイズ (GB)|
 |---|---|
-|S1 |   26|
-|S2 | 60|
-|S3 |260|
+|S1 |    26|
+|S2    | 60|
+|S3    |260|

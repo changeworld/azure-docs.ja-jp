@@ -4,23 +4,23 @@ description: ソリューション開発者は、デバイスがテレメトリ�
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/02/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 541cbc0c34a691f51c1a3a53f71920379c447f5d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 0e161cf83662df671b8cfb100ddc12c3b3e7359f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022445"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80158148"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Stream Analytics、Azure Functions、SendGrid を使用してカスタム ルールで Azure IoT Central を拡張する
 
 
 
-この攻略ガイドでは、ソリューション開発者が、カスタム ルールと通知を使用して IoT Central アプリケーションを拡張する方法を説明します。 この例では、デバイスがテレメトリの送信を停止したときのオペレーターへの通知の送信を示します。 このソリューションでは、[Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) クエリを使用して、デバイスが利用統計情報の送信をいつ停止したかを検出します。 Stream Analytics ジョブは、[SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/) を使用して通知メールを送信するために、[Azure Functions](https://docs.microsoft.com/azure/azure-functions/) を使用します。
+この攻略ガイドでは、ソリューション開発者が、カスタム ルールと通知を使用して IoT Central アプリケーションを拡張する方法を説明します。 この例では、デバイスがテレメトリの送信を停止したときのオペレーターへの通知の送信を示します。 このソリューションでは、[Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) クエリを使用して、デバイスが利用統計情報の送信をいつ停止したかを検出します。 Stream Analytics ジョブは、[SendGrid](https://docs.microsoft.com/azure/azure-functions/) を使用して通知メールを送信するために、[Azure Functions](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/) を使用します。
 
 この攻略ガイドでは、既に組み込みのルールとアクションを使用して実行できることを超えて IoT Central を拡張する方法を示します。
 
@@ -40,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [Azure IoT Central アプリケーション マネージャー](https://aka.ms/iotcentral) Web サイト上で、次の設定を使用して IoT Central アプリケーションを作成します。
 
-| 設定 | Value |
+| 設定 | 値 |
 | ------- | ----- |
 | 料金プラン | Standard |
 | アプリケーション テンプレート | ストア内分析 – 条件監視 |
@@ -56,13 +56,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="resource-group"></a>Resource group
 
-作成するその他のリソースを格納するため、**DetectStoppedDevices** という [リソース グループを Azure portal で作成](https://portal.azure.com/#create/Microsoft.ResourceGroup)します。 Azure リソースは IoT Central アプリケーションと同じ場所に作成してください。
+作成するその他のリソースを格納するため、[DetectStoppedDevices](https://portal.azure.com/#create/Microsoft.ResourceGroup) という **リソース グループを Azure portal で作成**します。 Azure リソースは IoT Central アプリケーションと同じ場所に作成してください。
 
 ### <a name="event-hubs-namespace"></a>Event Hubs 名前空間
 
 以下の設定を使用して、[Azure portal で Event Hubs 名前空間を作成](https://portal.azure.com/#create/Microsoft.EventHub)します。
 
-| 設定 | Value |
+| 設定 | 値 |
 | ------- | ----- |
 | Name    | 名前空間名を選択します |
 | Pricing tier | Basic |
@@ -75,7 +75,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 以下の設定を使用して、[Azure portal で Stream Analytics ジョブを作成](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob)します。
 
-| 設定 | Value |
+| 設定 | 値 |
 | ------- | ----- |
 | Name    | ジョブ名を選択します |
 | サブスクリプション | 該当するサブスクリプション |
@@ -88,7 +88,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 以下の設定を使用して、[Azure portal で関数アプリを作成](https://portal.azure.com/#create/Microsoft.FunctionApp)します。
 
-| 設定 | Value |
+| 設定 | 値 |
 | ------- | ----- |
 | アプリの名前    | 関数アプリ名を選択します |
 | サブスクリプション | 該当するサブスクリプション |
@@ -103,7 +103,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 以下の設定を使用して、[Azure portal で SendGrid アカウントを作成](https://portal.azure.com/#create/Sendgrid.sendgrid)します。
 
-| 設定 | Value |
+| 設定 | 値 |
 | ------- | ----- |
 | Name    | SendGrid アカウント名を選択します |
 | Password | パスワードを作成します |
@@ -231,10 +231,10 @@ SendGrid を使用してメールを送信するには、次のように関数�
 ```txt
 The following device(s) have stopped sending telemetry:
 
-Device ID   Time
-test-device-1   2019-05-02T14:23:39.527Z
-test-device-2   2019-05-02T14:23:50.717Z
-test-device-3   2019-05-02T14:24:28.919Z
+Device ID    Time
+test-device-1    2019-05-02T14:23:39.527Z
+test-device-2    2019-05-02T14:23:50.717Z
+test-device-3    2019-05-02T14:24:28.919Z
 ```
 
 ## <a name="add-stream-analytics-query"></a>Stream Analytics クエリを追加する
@@ -244,7 +244,7 @@ test-device-3   2019-05-02T14:24:28.919Z
 1. Azure portal で Stream Analytics ジョブに移動し、 **[ジョブ トポロジ]** で **[入力]** を選択し、 **[+ ストリーム入力の追加]** を選択してから、 **[イベント ハブ]** を選択します。
 1. 次の表の情報を使用して、以前に作成したイベント ハブを使用して入力を構成してから、 **[保存]** を選択します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     | 入力のエイリアス | centraltelemetry |
     | サブスクリプション | 該当するサブスクリプション |
@@ -254,7 +254,7 @@ test-device-3   2019-05-02T14:24:28.919Z
 1. **[ジョブ トポロジ]** で **[出力]** を選択し、 **[+ 追加]** を選択してから、 **[Azure 関数]** を選択します。
 1. 次の表の情報を使用して出力を構成してから、 **[保存]** を選択します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     | 出力エイリアス | emailnotification |
     | サブスクリプション | 該当するサブスクリプション |
@@ -314,10 +314,10 @@ test-device-3   2019-05-02T14:24:28.919Z
 1. **[データのエクスポート]** ページに移動し、 **[+ 新規]** を選択してから、 **[Azure Event Hubs]** を選択します。
 1. 以下の設定を使用してエクスポートを構成してから、 **[保存]** を選択します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     | 表示名 | Event Hubs へのエクスポート |
-    | Enabled | On |
+    | 有効 | On |
     | Event Hubs 名前空間 | Event Hubs 名前空間の名前 |
     | イベント ハブ | centralexport |
     | 測定 | On |

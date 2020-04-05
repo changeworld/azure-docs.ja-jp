@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: sngun
 ms.openlocfilehash: 9dbbc914580d8d80a3f9b7d730574e24b44827c1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70093722"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>Azure Cosmos DB (プレビュー) で Azure Kubernetes を使用する方法
@@ -179,7 +179,7 @@ INFO[0587] Finished ARM Deployment (aks-sg-test-546247491). Succeeded
 
 Azure Cosmos アカウントの名前は、k8s が付加された、指定した DNS プレフィックスに一致します。 Azure Cosmos アカウントは、**EtcdDB** という名前のデータベースと **EtcdData** という名前のコンテナーで自動的にプロビジョニングされます。 コンテナーにはすべての etcd 関連データが格納されます。 コンテナーは、特定数の要求ユニットでプロビジョニングされ、ワークロードに基づいて、[スループットを拡大縮小 (増減)](scaling-throughput.md)できます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Cosmos のデータベース、コンテナー、およびアイテムの操作](databases-containers-items.md)方法について学習する
 * [プロビジョニング スループット コストの最適化](optimize-cost-throughput.md)方法について学習する

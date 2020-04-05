@@ -1,19 +1,18 @@
 ---
 title: Go-To-Market サービス - Microsoft を利用したビジネスのプロモーション | Azure
 description: Go-To-Market サービス - パブリッシャーはこのセクションで、Microsoft を利用してビジネスのプロモーションを行う方法を学習できます。
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/12/2019
-ms.author: ellacroi
-ms.openlocfilehash: d1ac8963e673044e1d3ca3a0163df065097e12be
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 8e5165d000ee98212b3fd76091ffbd030b6b787f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825951"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281546"
 ---
 # <a name="promote-your-business-with-microsoft"></a>Microsoft を利用したビジネスのプロモーション
 
@@ -33,7 +32,7 @@ Marketplace パートナーは、Microsoft Partner Network (MPN) のメンバー
 | クラウド プラットフォーム コンピテンシーを獲得する | コンピテンシーの獲得は、以下に役立ちます。 <ul> <li> 他の Microsoft パートナー間で自社を差別化する。 </li> <li> 技術的な専門知識や、顧客の市場での成功事例を説明する。 </li> </ul> コンピテンシーは、Co-Sell など、多くの重要なパートナー プログラムの前提条件となっています。 詳細については、[クラウド プラットフォーム コンピテンシー](https://partner.microsoft.com/reach-customers/selling-with-microsoft)に関するページを参照してください。 |
 | IP Co-Sell の準備が整う | IP Co-Sell Ready プログラムの対象となっている可能性があります。  このプログラムでは、次のことができます。 <ul> <li> 対象顧客の営業案件およびアカウント計画で Microsoft の販売者および他のパートナーと直接連携する。 </li> <li> 販売者のソリューション カタログで、Microsoft 販売者に向けて自社のソリューションを表示する。 </li> <li> Microsoft 販売者は、パートナーとコラボレートし、ビジネスを連携的に成功させることで報酬を得ます。 </li> </ul> 利用条件についての要件を含む詳細については、[Co-Sell 準備プログラムとビジネスのプロモーション](https://partner.microsoft.com/reach-customers/selling-with-microsoft)に関するページを参照してください。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 マーケットプレース GTM サービスの詳細については、「[Go-to-Market サービス](https://partner.microsoft.com/reach-customers/gtm)」を参照してください。
 

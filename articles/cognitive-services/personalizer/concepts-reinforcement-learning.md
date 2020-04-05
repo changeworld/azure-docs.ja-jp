@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
 ms.openlocfilehash: 36071cdee25cfa99fc54b0e5c0c0aa822cb5fe2f
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68662837"
 ---
 # <a name="what-is-reinforcement-learning"></a>強化学習とは
@@ -59,7 +59,7 @@ Contextual Bandits は、強化学習の扱いやすいサブセットを記述�
 
 Personalizer では、現在、機械学習の基盤として [Vowpal Wabbit](https://github.com/VowpalWabbit/vowpal_wabbit/wiki) を使用しています。 このフレームワークは、パーソナル化の順位付けを行い、すべてのイベントでモデルをトレーニングするときに、最大のスループットと最小の待ち時間を実現します。
 
-## <a name="references"></a>参照
+## <a name="references"></a>References
 
 * [Making Contextual Decisions with Low Technical Debt (少ない技術的負債でコンテキストに応じた判断を下す)](https://arxiv.org/abs/1606.03966)
 * [A Reductions Approach to Fair Classification (公正な分類への削減アプローチ)](https://arxiv.org/abs/1803.02453)
@@ -68,6 +68,6 @@ Personalizer では、現在、機械学習の基盤として [Vowpal Wabbit](ht
 * [Mapping Instructions and Visual Observations to Actions with Reinforcement Learning (強化学習による手順と視覚的観察のアクションへのマッピング)](https://arxiv.org/abs/1704.08795)
 * [Learning to Search Better Than Your Teacher (教師よりも優れた検索を行うための学習)](https://arxiv.org/abs/1502.02206)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [オフライン評価](concepts-offline-evaluation.md) 

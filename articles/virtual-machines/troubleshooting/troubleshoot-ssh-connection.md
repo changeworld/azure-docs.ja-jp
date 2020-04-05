@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: 1194b2d90e5a12b1ecf3664a48055ca763f31a4f
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: f221a0bdf579dbbf42ecf64e18803decfb718456
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919449"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060657"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Azure Linux VM に対する SSH 接続の失敗、エラー、拒否のトラブルシューティング
 この記事は、Linux 仮想マシン (VM) に接続しようとしたときに、Secure Shell (SSH) エラー、SSH 接続エラー、または SSH の拒否により発生する問題を見つけて修正するために役立ちます。 Azure Portal、Azure CLI、または Linux 用の VM アクセス拡張機能を使用して、接続の問題を解決できます。
@@ -59,15 +59,15 @@ Azure Portal では、ローカル コンピューターへのツールのイン
 
 ![Azure Portal で SSH 構成または資格情報をリセットする](./media/troubleshoot-ssh-connection/reset-credentials-using-portal.png)
 
-### <a name="a-idreset-config-reset-the-ssh-configuration"></a><a id="reset-config" />SSH 構成をリセットする
+### <a name="reset-the-ssh-configuration"></a><a id="reset-config" />SSH 構成をリセットする
 SSH 構成をリセットするには、上のスクリーンショットのように **[モード]** セクションで `Reset configuration only` を選択してから **[更新]** を選択します。 この操作を完了したら、VM にもう一度アクセスしてみます。
 
-### <a name="a-idreset-credentials-reset-ssh-credentials-for-a-user"></a><a id="reset-credentials" />ユーザーの SSH 資格情報をリセットする
+### <a name="reset-ssh-credentials-for-a-user"></a><a id="reset-credentials" />ユーザーの SSH 資格情報をリセットする
 既存のユーザーの資格情報をリセットするには、上のスクリーンショットのように **[モード]** セクションで `Reset SSH public key` または `Reset password` を選択します。 ユーザー名と、SSH キーまたは新しいパスワードを指定し、 **[更新]** を選択します。
 
 このメニューから、VM に対して sudo 特権を持つユーザーを作成することもできます。 新しいユーザー名と、関連付けられているパスワードまたは SSH キーを入力し、 **[更新]** を選択します。
 
-### <a name="a-idsecurity-rules-check-security-rules"></a><a id="security-rules" />セキュリティ規則を確認する
+### <a name="check-security-rules"></a><a id="security-rules" />セキュリティ規則を確認する
 
 [IP フロー検証](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md)を使用して、ネットワーク セキュリティ グループ規則によって、仮想マシンから送受信されるトラフィックがブロックされていないかどうかを確認します。 有効なセキュリティ グループ規則を確認して、SSH ポート (既定では 22) に対して受信 "許可" NSG 規則が存在し、優先されていることを確認することもできます。 詳細については、「[有効なセキュリティ規則を使用した VM トラフィック フローのトラブルシューティング](../../virtual-network/diagnose-network-traffic-filter-problem.md)」を参照してください。
 
@@ -80,18 +80,24 @@ Network Watcher の[次ホップ](../../network-watcher/network-watcher-check-ne
 
 ### <a name="check-that-ssh-is-running"></a>SSH が実行されていることを確認する
 次のコマンドを使用して、VM 上で SSH が実行されているかどうかを確認できます。
+
+```console
+ps -aux | grep ssh
 ```
-$ ps -aux | grep ssh
-```
+
 出力がある場合は、SSH が稼働しています。
 
 ### <a name="check-which-port-ssh-is-running-on"></a>SSH が実行されているポートの確認
+
 次のコマンドを使用して、SSH が実行されているポートを確認できます。
+
+```console
+sudo grep Port /etc/ssh/sshd_config
 ```
-$ sudo grep Port /etc/ssh/sshd_config
-```
+
 出力は次のようになります。
-```
+
+```output
 Port 22
 ```
 
@@ -200,7 +206,7 @@ azure vm reset-access --resource-group myResourceGroup --name myVM \
     --user-name myUsername --ssh-key-file ~/.ssh/id_rsa.pub
 ```
 
-## <a name="a-idrestart-vm-restart-a-vm"></a><a id="restart-vm" />VM を再起動する
+## <a name="restart-a-vm"></a><a id="restart-vm" />VM を再起動する
 SSH 構成とユーザーの資格情報をリセットした場合、またはその際にエラーが発生した場合は、根本的なコンピューティングの問題に対処するために VM の再起動を試すことができます。
 
 ### <a name="azure-portal"></a>Azure portal
@@ -221,11 +227,11 @@ az vm restart --resource-group myResourceGroup --name myVM
 
 次の例では、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM を再起動します。 実際の値を次のように使用します。
 
-```azurecli
+```console
 azure vm restart --resource-group myResourceGroup --name myVM
 ```
 
-## <a name="a-idredeploy-vm-redeploy-a-vm"></a><a id="redeploy-vm" />VM を再デプロイする
+## <a name="redeploy-a-vm"></a><a id="redeploy-vm" />VM を再デプロイする
 Azure 内で VM を別のノードに再デプロイすると、基になるネットワーク問題を修正する場合があります。 VM の再デプロイについては、「[新しい Azure ノードへの仮想マシンの再デプロイ](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
 > [!NOTE]
@@ -249,7 +255,7 @@ az vm redeploy --resource-group myResourceGroup --name myVM
 
 次の例では、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM を再デプロイします。 実際の値を次のように使用します。
 
-```azurecli
+```console
 azure vm redeploy --resource-group myResourceGroup --name myVM
 ```
 

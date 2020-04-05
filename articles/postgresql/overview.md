@@ -8,10 +8,10 @@ ms.service: postgresql
 ms.topic: overview
 ms.date: 11/25/2019
 ms.openlocfilehash: 9ea0610811f6906526afe55d577e04a8decd5f49
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74481661"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Azure Database for PostgreSQL とは
@@ -51,7 +51,7 @@ Azure Database for PostgreSQL についての質問やご提案は、Azure Datab
 - Azure サポートに問い合わせるか、アカウントに関する問題を修正するには、[Azure portal からチケットを申請します](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 - フィードバックを提供したり、新しい機能を要求したりするには、[UserVoice](https://feedback.azure.com/forums/597976-azure-database-for-postgresql) でエントリを作成します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - コストの比較と計算については、[価格のページ](https://azure.microsoft.com/pricing/details/postgresql/)を参照してください。
 - まず、最初の Azure Database for PostgreSQL [Single Server](./quickstart-create-server-database-portal.md) または [Hyperscale (Citus)](./quickstart-create-hyperscale-portal.md) を作成してください。
 - 初めてのアプリを Python、PHP、Ruby、C\#、Java、Node.js で作成します:[接続ライブラリ](./concepts-connection-libraries.md)

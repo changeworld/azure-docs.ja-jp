@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 316c3ef3c5bd16b52291029924d04fc159375bc8
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 0f2e0257c5bf855b0d9be61c43b68b4e30b3d80d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943656"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80125102"
 ---
 # <a name="azure-database-security-best-practices"></a>Azure のデータベース セキュリティに関するベスト プラクティス
 この記事では、データベース セキュリティに関するベスト プラクティスについて説明します。
@@ -72,10 +72,10 @@ SQL Server 認証を使用する場合は、次のことを行う必要があり
 
 - 強力な資格情報を自分で管理します。
 - 接続文字列で資格情報を保護します。
-- (場合により) Web サーバーからデータベースにネットワーク経由で渡される資格情報を保護します。 詳細については、「[ASP.NET 2.0 で SQL 認証を使用して SQL Server へ接続する方法](/previous-versions/msp-n-p/ff648340(v=pandp.10))をご覧ください。
+- (場合により) Web サーバーからデータベースにネットワーク経由で渡される資格情報を保護します。 詳しくは、「[How To: ASP.NET 2.0 で SQL 認証を使用して SQL Server へ接続する方法](/previous-versions/msp-n-p/ff648340(v=pandp.10))」をご覧ください。
 
 ### <a name="azure-active-directory-ad-authentication"></a>*Azure Active Directory (AD) 認証*
-Azure AD 認証は、Azure AD の ID を使用して Azure SQL Database と [SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に接続するメカニズムです。 Azure AD 認証を使用すると、データベース ユーザーの ID や他の Microsoft サービスを一元管理できます。 ID の一元管理では、1 か所でデータベース ユーザーを管理できるようになるため、アクセス許可の管理が容易になります。
+Azure AD 認証は、Azure AD の ID を使用して Azure SQL Database と [SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に接続するメカニズムです。 Azure AD 認証を使用すると、データベース ユーザーの ID や他の Microsoft サービスを一元管理できます。 ID の一元管理では、1 か所でデータベース ユーザーを管理できるようになるため、アクセス許可の管理が容易になります。
 
 > [!NOTE]
 > SQL Server 認証の使用よりも Azure AD 認証の使用をお勧めします。
@@ -95,7 +95,7 @@ Azure AD 認証は、Azure AD の ID を使用して Azure SQL Database と [SQL
 構成の手順には、Azure AD 認証を構成して使用する次の手順が含まれます。
 
 - Azure AD を作成して設定します。
-- 省略可能:Active Directory インスタンスを関連付けるか、現在 Azure サブスクリプションに関連付けられている Active Directory インスタンスを変更します。
+- 省略可能: Active Directory インスタンスを関連付けるか、現在 Azure サブスクリプションに関連付けられている Active Directory インスタンスを変更します。
 - Azure SQL Database または [Azure SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/) の Azure Active Directory 管理者を作成します。
 - クライアント コンピューターを構成します。
 - Azure AD の ID にマップされている包含データベース ユーザーをデータベースに作成します。
@@ -153,7 +153,7 @@ SQL Server データベース エンジンまたは個々のデータベース�
 
 ルールは Microsoft のベスト プラクティスに基づき、データベースとその貴重なデータに最も大きなリスクとなるセキュリティの問題に注目します。 これらのルールは、データベース レベルの問題およびサーバーのファイアウォール設定やサーバー レベルの権限など、サーバー レベルのセキュリティ問題もカバーしたものとなっています。 また、これらの規則は、規制機関によるコンプライアンス基準を満たすための多くの要件も表しています。
 
-**ベスト プラクティス**: 脅威の検出を有効にします。  
+**ベスト プラクティス**: 脅威の検出を有効にする。  
 **詳細**: Azure SQL Database の[脅威の検出](/azure/sql-database/sql-database-threat-detection)を有効にし、セキュリティ アラートと、脅威を調査して軽減する方法の推奨事項を取得します。 不審なデータベース アクティビティ、潜在的な脆弱性、SQL インジェクション攻撃や、異常なデータベース アクセスやクエリのパターンが見つかった場合に、アラートを受信します。
 
 [Advanced Threat Protection](/azure/sql-database/sql-advanced-threat-protection) は、高度な SQL セキュリティ機能のための統合パッケージです。 これには前に説明したサービス (データの検出と分類、脆弱性の評価、脅威の検出) が含まれています。 これらの機能を 1 つの場所で有効にして管理できます。

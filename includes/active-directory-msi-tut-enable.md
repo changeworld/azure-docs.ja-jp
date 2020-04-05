@@ -9,10 +9,10 @@ ms.date: 01/14/2020
 ms.author: markvi
 ms.custom: include file
 ms.openlocfilehash: ab6e3426096f6fbaf7dfa44984a26c939f3b91fc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75971835"
 ---
 システム割り当てマネージド ID の有効化は、1 クリックで行うことができます。 VM の作成中に有効にするか、既存の VM のプロパティで有効にすることができます。

@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: 1263e93b1e316cab4afb51cd828737a5bd087fed
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: bad0ef849af7c94e63f1dfbebda7f47caef9947d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423851"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294376"
 ---
 # <a name="news-search-api-upgrade-guide"></a>News Search API のアップグレード ガイド
 
@@ -25,7 +25,7 @@ ms.locfileid: "68423851"
 
 ### <a name="endpoints"></a>エンドポイント
 
-- エンドポイントのバージョン番号は、v5 から v7 に変更されました。 たとえば、 https://api.cognitive.microsoft.com/bing/**v7.0**/news/search となります。
+- エンドポイントのバージョン番号は、v5 から v7 に変更されました。 たとえば、「 `https://api.cognitive.microsoft.com/bing/v7.0/news/search` 」のように入力します。
 
 ### <a name="error-response-objects-and-error-codes"></a>エラー応答オブジェクトとエラー コード
 
@@ -54,7 +54,7 @@ RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
 ResourceAccessDenied|InsufficientAuthorization
 ExceededVolume|RateLimitExceeded
 ExceededQpsLimit|RateLimitExceeded
-Disabled|InsufficientAuthorization.AuthorizationDisabled
+無効|InsufficientAuthorization.AuthorizationDisabled
 UnexpectedError|ServerError.UnexpectedError
 DataSourceErrors|ServerError.ResourceError
 AuthorizationMissing|InvalidAuthorization.AuthorizationMissing
@@ -70,7 +70,7 @@ Blocked|InvalidRequest.Blocked
 
 ### <a name="object-changes"></a>オブジェクトの変更
 
-- `contractualRules` フィールドが [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) オブジェクトに追加されました。 `contractualRules` フィールドには、従う必要があるルールのリストが含まれています (たとえば、記事の属性)。 `provider` を使用するのではなく、`contractualRules` に指定されている属性を適用する必要があります。 この記事には、[Web Search API](../bing-web-search/search-the-web.md) 応答に News の回答が含まれている場合にのみ `contractualRules`が含まれます。
+- `contractualRules` フィールドが [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) オブジェクトに追加されました。 `contractualRules` フィールドには、従う必要があるルールのリストが含まれています (たとえば、記事の属性)。 `contractualRules` を使用するのではなく、`provider` に指定されている属性を適用する必要があります。 この記事には、`contractualRules`Web Search API[ 応答に News の回答が含まれている場合にのみ ](../bing-web-search/search-the-web.md)が含まれます。
 
 ## <a name="non-breaking-changes"></a>非破壊的変更
 

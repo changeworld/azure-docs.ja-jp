@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
 ms.openlocfilehash: e4e15d1c6554fc567f668b2033bff5b5664db918
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75972790"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Azure 仮想ネットワーク内の HDInsight 上に Apache HBase クラスターを作成する
@@ -59,7 +59,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
     |---|---|
     |サブスクリプション|HDInsight クラスター、依存するストレージ アカウント、Azure 仮想ネットワークの作成に使用した Azure サブスクリプションを選択します。|
     Resource group|**[新規作成]** を選択し、新しいリソース グループの名前を指定します。|
-    |Location|リソース グループの場所を選びます。|
+    |場所|リソース グループの場所を選びます。|
     |クラスター名|作成される Hadoop クラスターの名前を入力します。|
     |クラスター ログイン ユーザー名とパスワード|既定のユーザー名は **admin** です。パスワードを指定します。|
     |SSH のユーザー名とパスワード|既定のユーザー名は **sshuser** です。  パスワードを指定します。|
@@ -92,11 +92,11 @@ Java アプリケーションを使用して HBase にリモートで接続す�
 
 * Web ブラウザーを使用した [Apache Ambari](https://ambari.apache.org/) の呼び出し:
 
-    [https://www.microsoft.com]\(`https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts?minimal_response=true`) を参照します。 DNS サフィックスが付いた JSON ファイルが返されます。
+    `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts?minimal_response=true` を参照します。 DNS サフィックスが付いた JSON ファイルが返されます。
 
 * Ambari Web サイトの使用
 
-    1. [https://www.microsoft.com]\(`https://CLUSTERNAME.azurehdinsight.net`) を参照します。
+    1. `https://CLUSTERNAME.azurehdinsight.net` を参照します。
     2. 上部のメニューで **[ホスト]** を選択します。
 
 * Curl を使用した REST の呼び出し:

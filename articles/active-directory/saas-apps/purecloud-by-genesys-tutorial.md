@@ -17,10 +17,10 @@ ms.date: 10/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dac8e0f2e10906f2cc56ecf86e0cc70947cb7e85
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78897777"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purecloud-by-genesys"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と PureCloud by Genesys の統合

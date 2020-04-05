@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 86ef8f3730fe7ae3ab3428956aaafb86331c5cf5
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906478"
 ---
 [!INCLUDE [Prerequisites](prerequisites-python.md)]
@@ -52,7 +52,7 @@ Translator Text のグローバル エンドポイントは、`endpoint` とし�
 入力言語、入力スクリプト、出力スクリプトは、`params` を使用して設定します。 このサンプルでは、日本語からラテン アルファベットへの表記変換を実行します。
 
 >[!NOTE]
-> エンドポイント、ルート、および要求パラメーターの詳細については、「[Translator Text API 3.0: Transliterate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate)」をご覧ください。
+> エンドポイント、ルート、要求パラメーターの詳細については、「[Translator Text API 3.0: Transliterate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate)」を参照してください。
 
 ```python
 path = '/transliterate?api-version=3.0'
@@ -125,11 +125,11 @@ python transliterate-text.py
 ]
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 サブスクリプション キーをプログラムにハードコーディングしている場合は、このクイック スタートを終了するときにサブスクリプション キーを必ず削除してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 API のリファレンスを見て、Translator Text API でできるすべてのことを理解してください。
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: tamram
 ms.openlocfilehash: 27617da97ced9ac775beae71e4c25202944b2aba
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78941044"
 ---
 次の表では、Table Storage の容量、スケーラビリティ、パフォーマンスについて説明しています。
@@ -21,7 +21,7 @@ ms.locfileid: "78941044"
 | 1 つのテーブルの最大サイズ | 500 TiB |
 | 単一のエンティティの最大サイズ (すべてのプロパティを含む) | 1 MiB |
 | テーブル エンティティの最大プロパティ数 | 255 (**PartitionKey**、**RowKey**、および **Timestamp** の 3 つのシステム プロパティも含む) |
-| エンティティ内の個々のプロパティの最大合計サイズ | プロパティの型によって異なります。 詳細については、「[Table サービス データ モデルについて](/rest/api/storageservices/understanding-the-table-service-data-model)」の「**プロパティの型**」を参照してください。 |
+| エンティティ内の個々のプロパティの最大合計サイズ | プロパティの型によって異なります。 詳細については、「**Table サービス データ モデルについて**」の「[プロパティの型](/rest/api/storageservices/understanding-the-table-service-data-model)」を参照してください。 |
 | **PartitionKey** のサイズ | 最大 1 KiB の文字列 |
 | **RowKey**のサイズ | 最大 1 KiB の文字列 |
 | エンティティ グループ トランザクションのサイズ | トランザクションには最大で 100 個のエンティティを含めることができ、ペイロードは 4 MiB 未満にする必要があります。 エンティティ グループのトランザクションには、エンティティへの更新を 1 回だけ含めることができます。 |

@@ -1,19 +1,18 @@
 ---
 title: Power BI アプリ オファーの [ネットショップの詳細] | Azure Marketplace
 description: Microsoft AppSource Marketplace 用に Power BI アプリ オファーの [ネットショップの詳細] のフィールドを構成します。
-services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: 309b2eb33c594b5233c547e3bf45a49aa3a25678
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: b69ef8aa57393c5be8d23aaf4af1821697295235
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817662"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281682"
 ---
 # <a name="power-bi-app-storefront-details-tab"></a>Power BI アプリの [ネットショップの詳細] タブ
 
@@ -67,14 +66,14 @@ ms.locfileid: "73817662"
 | **Offer logo (png format, 48x48) (オファーのロゴ (png 形式、48 x 48))\***   | アプリの概要やアプリの検索結果に表示されるロゴをアップロードします。 AppSource では、解像度が 48 x 48 ピクセルの PNG 形式のみサポートします。  |
 | **Offer logo (png format, 216x216) (オファーのロゴ (png 形式、216 x 216))\*** | アプリの詳細ページに表示するロゴをアップロードします。  AppSource では、解像度が 216 x 216 ピクセルの PNG 形式のみサポートします。  |
 | *ビデオ*                             |                                                                   |
-| **Name**                             | アプリの名前かタイトルを入力します。                                          |
+| **名前**                             | アプリの名前かタイトルを入力します。                                          |
 | **URL**                              | YouTube や Vimeo でホストされているビデオの URL を入力します。                              |
 | **サムネイル**                        | アプリのサムネイル画像を追加します。  AppSource では、解像度が 1280 x 720 ピクセルの PNG 形式のみサポートします。   |
 | *ドキュメント*                          | AppSource の **[詳細情報]** の見出しの下に表示されるドキュメントを、最大 3 つ追加します。  |
-| **Name**                             | サポート ドキュメントの名前またはタイトルを入力します。                              |
-| **ファイル**                             | PDF ファイルをアップロードします。                             |
+| **名前**                             | サポート ドキュメントの名前またはタイトルを入力します。                              |
+| **[最近使ったファイル]**                             | PDF ファイルをアップロードします。                             |
 | *Screenshots (スクリーンショット)\**                      | スクリーンショットを最大 5 つ追加します。                        |
-| **Name**                             | スクリーンショットの名前またはタイトルを入力します。                                       |
+| **名前**                             | スクリーンショットの名前またはタイトルを入力します。                                       |
 | **Image**                            | PNG スクリーンショットをアップロードします。 解像度は、1280 x 720 ピクセルである必要があります。  | 
 |   |   |
 
@@ -110,7 +109,7 @@ ms.locfileid: "73817662"
 
 |    フィールド               |   リードの宛先                               |
 |------------------------|--------------------------------------            |
-|  **なし**              | リードを収集しません。 これが既定のオプションです。  |
+|  **なし**              | リードを収集しません。 既定のオプションです。  |
 | **Azure Blob (deprecated) (Azure Blob (非推奨))** | コンテナー名と接続文字列を使用して [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) を指定します。  この選択肢は推奨されていません。 代わりに、**Azure テーブル**を使用してください。  |
 | **Azure テーブル**        | 接続文字列を使用して [Azure Table Storage](https://docs.microsoft.com/azure/cosmos-db/table-storage-overview) を指定します。  |
 | **Dynamics CRM Online** | URL と認証資格情報を使用して [Dynamics 365](https://dynamics.microsoft.com/) を指定します。 |
@@ -122,6 +121,6 @@ ms.locfileid: "73817662"
 オファーを発行した後は、リードの接続が検証され、指定した格納先にテスト リードが自動的に送信されます。 現在の顧客管理アーキテクチャを反映するには、リード情報を継続的に管理し、設定をすぐに更新する必要があります。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [[連絡先]](./cpp-contacts-tab.md) タブで、オファーに対するテクニカル サポートとユーザー サポートのリソースを指定します。

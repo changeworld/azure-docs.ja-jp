@@ -10,10 +10,10 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: conceptual
 ms.date: 02/09/2018
 ms.openlocfilehash: 5042d89f1cb5e928444e4b3c9a23db7bb1d66585
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60509099"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Azure Data Lake Tools for Visual Studio Code の使用
@@ -94,7 +94,7 @@ U-SQL を操作するには、U-SQL ファイルまたはフォルダーを開�
 **U-SQL スクリプトを送信するには**
 
 1. Ctrl + Shift + P キーを押してコマンド パレットを開きます。 
-2. 「**ADL:Submit Job**」と入力します。 スクリプト ファイルを右クリックし、 **[ADL:Submit Job]** を選択することもできます。 
+2. 「**ADL:Submit Job** を選択して、ジョブを送信します。 スクリプト ファイルを右クリックし、 **[ADL:Submit Job]** を選択して、ジョブを送信します。 
 
 U-SQL ジョブの送信後、VS Code の **[出力]** ウィンドウに送信ログが表示されます。 右側のウィンドウで、ジョブ ビューが表示されます。 送信が成功した場合は、ジョブの URL も表示されます。 ジョブの URL を Web ブラウザーで開くと、リアルタイムのジョブの状態を追跡できます。 
 
@@ -109,7 +109,7 @@ U-SQL ジョブの送信後、VS Code の **[出力]** ウィンドウに送信�
 ファイルのパラメーターを個々に設定していない場合、この設定をすべてのスクリプトファイルに適用する既定のコンテキストを設定することができます。
 
 1. Ctrl + Shift + P キーを押してコマンド パレットを開きます。 
-2. 「**ADL:Set Default Context**」と入力します。 または、スクリプト エディターを右クリックし、 **[ADL:Set Default Context]** を選択します。
+2. 「**ADL:Set Default Context** を選択します。 または、スクリプト エディターを右クリックし、 **[ADL:Set Default Context]** を選択します。
 3. 使用するアカウント、データベース、およびスキーマを選択します。 この設定は xxx_settings.json 構成ファイルに保存されます。
 
    ![既定のコンテキストとして設定されたアカウント、データベース、およびスキーマ](./media/data-lake-analytics-data-lake-tools-for-vscode/default-context-sequence.png)
@@ -226,7 +226,7 @@ U-SQL ローカル実行は、Data Lake Analytics にコードを発行する前
 ローカル実行とローカル デバッグの手順については、「[Visual Studio Code を使用した U-SQL ローカル実行とローカル デバッグ](data-lake-tools-for-vscode-local-run-and-debug.md)」を参照してください。
 
 
-## <a name="connect-to-azure"></a>Azure への接続
+## <a name="connect-to-azure"></a>Azure に接続する
 
 Data Lake Analytics で U-SQL スクリプトをコンパイルして実行するには、まず Azure アカウントに接続する必要があります。
 
@@ -489,7 +489,7 @@ Data Lake Tools for VS Code では、以下の各機能がサポートされて�
 > [!NOTE]
 > Azure Data Lake Tools for Visual Studio バージョン 2.3.3000.4 以降にアップグレードすることをお勧めしています。 以前のバージョンはダウンロードできなくなり、非推奨になっています。  
    
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [VS Code で Azure Data Lake Analytics の Python、R、および C　Sharp を使用した U-SQL の開発](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
 - [Visual Studio Code を使用した U-SQL ローカル実行とローカル デバッグ](data-lake-tools-for-vscode-local-run-and-debug.md)
 - [チュートリアル:Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)

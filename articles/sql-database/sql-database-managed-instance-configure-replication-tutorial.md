@@ -10,10 +10,10 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 11/21/2019
 ms.openlocfilehash: fa6e393500e9deeb91ee84aa5255320003817f08
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76719893"
 ---
 # <a name="tutorial-configure-transactional-replication-between-two-managed-instances-and-sql-server"></a>チュートリアル:2 つのマネージド インスタンスと SQL Server の間にトランザクション レプリケーションを構成する

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: cb6095f1579334b9fe35a02a3006de32ff551989
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 0b6667965ddd1fce30bb2da2593e2a9274b595ed
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268171"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79472018"
 ---
 # <a name="tutorial-stream-live-with-media-services"></a>チュートリアル:Media Services によるライブ ストリーム配信
 
@@ -34,7 +34,7 @@ Azure Media Services では、[ライブ イベント](https://docs.microsoft.co
 > [!div class="checklist"]
 > * このトピックで説明されているサンプル アプリをダウンロードする。
 > * ライブ ストリーミングを実行するコードを確認する。
-> * [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) (https://ampdemo.azureedge.net ) でイベントを視聴する。
+> * [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) ([https://ampdemo.azureedge.net](https://ampdemo.azureedge.net)) でイベントを視聴する。
 > * リソースをクリーンアップする。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]

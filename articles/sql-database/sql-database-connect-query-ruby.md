@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
 ms.openlocfilehash: 4bef55b049ee542efdb9d72d13fa196c989c75ec
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73826921"
 ---
 # <a name="quickstart-use-ruby-to-query-an-azure-sql-database"></a>クイック スタート:Ruby を使用して Azure SQL データベースに照会する
@@ -35,7 +35,7 @@ ms.locfileid: "73826921"
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | 構成 | [サーバーレベルの IP ファイアウォール規則](sql-database-server-level-firewall-rule.md)| [VM からの接続](sql-database-managed-instance-configure-vm.md)|
   |||[オンサイトからの接続](sql-database-managed-instance-configure-p2s.md)
-  |データを読み込む|クイック スタートごとに読み込まれる Adventure Works|[Wide World Importers を復元する](sql-database-managed-instance-get-started-restore.md)
+  |データの読み込み|クイック スタートごとに読み込まれる Adventure Works|[Wide World Importers を復元する](sql-database-managed-instance-get-started-restore.md)
   |||[GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) の [BACPAC](sql-database-import.md) ファイルから Adventure Works を復元またはインポートする|
   |||
 
@@ -54,7 +54,7 @@ ms.locfileid: "73826921"
 
 Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名またはホスト名、データベース名、およびログイン情報が必要になります。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 2. **[SQL データベース]** または **[SQL マネージド インスタンス]** ページに移動します。
 
@@ -99,7 +99,7 @@ Azure SQL データベースに接続するために必要な接続情報を取�
    
 1. データベースの上位 20 のカテゴリ/製品行が返されていることを確認します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [最初の Azure SQL データベースの設計](sql-database-design-first-database.md)。
 - [TinyTDS の GitHub リポジトリ](https://github.com/rails-sqlserver/tiny_tds)。
 - [TinyTDS についての問題の報告と質問](https://github.com/rails-sqlserver/tiny_tds/issues)。

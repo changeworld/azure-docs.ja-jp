@@ -5,10 +5,10 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: a53d2b259bc4ece12c4ccb1cf47409cd2f0af86f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67181860"
 ---
 **Objective-C**:
@@ -20,7 +20,7 @@ ms.locfileid: "67181860"
     #import "QSTodoService.h"
     ```
 
-2. **QSAppDelegate.m** の `didFinishLaunchingWithOptions` で、`return YES;` の直前に次の行を挿入します。
+2. `didFinishLaunchingWithOptions`QSAppDelegate.m**の** で、`return YES;` の直前に次の行を挿入します。
 
     ```objc
     UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
@@ -107,7 +107,7 @@ ms.locfileid: "67181860"
     }
     ```
 
-2. **ToDoTableViewController.swift** で、`MSClient` を初期化する `let client` 行を次の行に置き換えます。
+2. **ToDoTableViewController.swift** で、`let client` を初期化する `MSClient` 行を次の行に置き換えます。
 
     ```swift
     let client = ClientManager.sharedClient

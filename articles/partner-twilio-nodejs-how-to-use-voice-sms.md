@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: 164bedffcf9a1aca9f1fa46dea254fb928abcf04
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69637265"
 ---
 # <a name="using-twilio-for-voice-voip-and-sms-messaging-in-azure"></a>Azure での音声、VoIP、および SMS メッセージングのための Twilio の使用
@@ -67,7 +67,7 @@ node.js Web サイトを選択し、[構成] リンクをクリックします�
 これらの変数を構成したら、Azure コンソールでアプリケーションを再起動します。
 
 ### <a name="declaring-the-twilio-module-in-packagejson"></a>package.json での Twilio モジュールの宣言
-次に、package.json を作成して、 [npm]を通じてノード モジュールの依存関係を管理する必要があります。 *Azure/node.js* のチュートリアルで作成した `server.js` ファイルと同じレベルで、`package.json` という名前のファイルを作成します。  このファイル内に、次のコードを追加します。
+次に、package.json を作成して、 [npm]を通じてノード モジュールの依存関係を管理する必要があります。 `server.js`Azure/node.js*のチュートリアルで作成した* ファイルと同じレベルで、`package.json` という名前のファイルを作成します。  このファイル内に、次のコードを追加します。
 
 ```json
 {

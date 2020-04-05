@@ -13,17 +13,17 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: c8ef481fe277d6451923da828f0e7473354c24cf
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903021"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231683"
 ---
 # <a name="api-management-advanced-policies"></a>API Management の高度なポリシー
 
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。
 
-## <a name="AdvancedPolicies"></a> 高度なポリシー
+## <a name="advanced-policies"></a><a name="AdvancedPolicies"></a> 高度なポリシー
 
 -   [制御フロー](api-management-advanced-policies.md#choose) - ブール[式](api-management-policy-expressions.md)の評価の結果に基づいてポリシー ステートメントを条件付きで適用します。
 -   [要求を転送する](#ForwardRequest) - バックエンド サービスに要求を転送します。
@@ -41,11 +41,11 @@ ms.locfileid: "75903021"
 -   [トレース](#Trace) - [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) 出力、Application Insights テレメトリ、診断ログにカスタム トレースを追加します。
 -   [待機](#Wait) - 含まれている[要求を送信する](api-management-advanced-policies.md#SendRequest)、[キャッシュからの値の取得](api-management-caching-policies.md#GetFromCacheByKey)、または[制御フロー](api-management-advanced-policies.md#choose) ポリシーが完了するまで待機してから次に進みます。
 
-## <a name="choose"></a> 制御フロー
+## <a name="control-flow"></a><a name="choose"></a> 制御フロー
 
 `choose` ポリシーは、プログラミング言語の if-then-else や switch 構造のように、ブール式の評価結果に基づいて、含まれているポリシー ステートメントを適用します。
 
-### <a name="ChoosePolicyStatement"></a> ポリシー ステートメント
+### <a name="policy-statement"></a><a name="ChoosePolicyStatement"></a> ポリシー ステートメント
 
 ```xml
 <choose>
@@ -61,19 +61,19 @@ ms.locfileid: "75903021"
 </choose>
 ```
 
-制御フロー ポリシーには、1 つ以上の `<when/>` 要素が含まれている必要があります。 `<otherwise/>` 要素は省略可能です。 `<when/>` 要素内の条件は、ポリシーに記述されている順序で評価されます。 条件属性が `true` と等しい最初の `<when/>` 要素に含まれているポリシー ステートメントが適用されます。 `<otherwise/>` 要素 (存在する場合) に含まれているポリシーは、`<when/>` 要素の条件属性がすべて `false` の場合に適用されます。
+制御フロー ポリシーには、1 つ以上の `<when/>` 要素が含まれている必要があります。 `<otherwise/>` 要素は省略可能です。 `<when/>` 要素内の条件は、ポリシーに記述されている順序で評価されます。 条件属性が `<when/>` と等しい最初の `true` 要素に含まれているポリシー ステートメントが適用されます。 `<otherwise/>` 要素 (存在する場合) に含まれているポリシーは、`<when/>` 要素の条件属性がすべて `false` の場合に適用されます。
 
 ### <a name="examples"></a>例
 
-#### <a name="ChooseExample"></a> 例
+#### <a name="example"></a><a name="ChooseExample"></a> 例
 
 次の例は、[set-variable](api-management-advanced-policies.md#set-variable) ポリシーと 2 つの制御フロー ポリシーを示しています。
 
-変数の設定ポリシーは inbound セクションにあり、`User-Agent` 要求ヘッダーにテキスト `iPad` または `iPhone` が含まれる場合に true に設定される `isMobile` ブール型[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数を作成します。
+変数の設定ポリシーは inbound セクションにあり、`isMobile` 要求ヘッダーにテキスト [ または ](api-management-policy-expressions.md#ContextVariables) が含まれる場合に true に設定される `User-Agent` ブール型`iPad`コンテキスト`iPhone`変数を作成します。
 
-最初の制御フロー ポリシーも inbound セクションにあり、`isMobile` コンテキスト変数の値に応じて 2 つの[クエリ文字列パラメーターの設定](api-management-transformation-policies.md#SetQueryStringParameter)ポリシーのうち 1 つを条件付きで適用します。
+最初の制御フロー ポリシーも inbound セクションにあり、[ コンテキスト変数の値に応じて 2 つの](api-management-transformation-policies.md#SetQueryStringParameter)クエリ文字列パラメーターの設定`isMobile`ポリシーのうち 1 つを条件付きで適用します。
 
-2 番目の制御フロー ポリシーは outbound セクションにあり、`isMobile` が `true` に設定されている場合に [XML から JSON への変換](api-management-transformation-policies.md#ConvertXMLtoJSON)ポリシーを条件付きで適用します。
+2 番目の制御フロー ポリシーは outbound セクションにあり、[ が ](api-management-transformation-policies.md#ConvertXMLtoJSON) に設定されている場合に `isMobile`XML から JSON への変換`true`ポリシーを条件付きで適用します。
 
 ```xml
 <policies>
@@ -106,7 +106,7 @@ ms.locfileid: "75903021"
 
 #### <a name="example"></a>例
 
-次の例に、バックエンド サービスから受信した応答で `Starter` 製品が使用されている場合にデータ要素を削除して、内容のフィルター処理を行う方法を示します。 このポリシーの構成と使用についてのデモは、「[Cloud Cover Episode 177:More API Management Features](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」(クラウド カバー エピソード 177: その他の API Management 機能の紹介) を 34:30 まで早送りしてご覧ください。 このデモで使用されている [Dark Sky Forecast API](https://developer.forecast.io/) の概要について確認する場合は、31:50 から再生してください。
+次の例に、バックエンド サービスから受信した応答で `Starter` 製品が使用されている場合にデータ要素を削除して、内容のフィルター処理を行う方法を示します。 このポリシーの構成と使用についてのデモは、「[Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」(クラウド カバー エピソード 177: Vlad Vinogradsky によるその他の API Management 機能の紹介) を 34:30 まで早送りしてご覧ください。 このデモで使用されている [Dark Sky Forecast API](https://developer.forecast.io/) の概要について確認する場合は、31:50 から再生してください。
 
 ```xml
 <!-- Copy this snippet into the outbound section to remove a number of data elements from the response received from the backend service based on the name of the api product -->
@@ -129,7 +129,7 @@ ms.locfileid: "75903021"
 | 要素   | 説明                                                                                                                                                                                                                                                               | 必須 |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | choose    | ルート要素。                                                                                                                                                                                                                                                             | はい      |
-| when      | `choose` ポリシーの `if` または `ifelse` の部分に使用する条件。 `choose` ポリシーに複数の `when` セクションがある場合、これらのセクションは順番に評価されます。 when 要素のいずれかの `condition` が `true` に評価されると、それ以降の `when` 条件は評価されません。 | はい      |
+| when      | `if` ポリシーの `ifelse` または `choose` の部分に使用する条件。 `choose` ポリシーに複数の `when` セクションがある場合、これらのセクションは順番に評価されます。 when 要素のいずれかの `condition` が `true` に評価されると、それ以降の `when` 条件は評価されません。 | はい      |
 | otherwise | `when` 条件のいずれも `true` に評価されない場合に使用されるポリシー スニペットが含まれます。                                                                                                                                                                               | いいえ       |
 
 ### <a name="attributes"></a>属性
@@ -138,7 +138,7 @@ ms.locfileid: "75903021"
 | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- | -------- |
 | condition="ブール式 &#124; ブール型定数" | 含んでいる `when` ポリシー ステートメントが評価されるときに評価されるブール式または定数。 | はい      |
 
-### <a name="ChooseUsage"></a> 使用法
+### <a name="usage"></a><a name="ChooseUsage"></a> 使用法
 
 このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
 
@@ -146,7 +146,7 @@ ms.locfileid: "75903021"
 
 -   **ポリシー スコープ:** すべてのスコープ
 
-## <a name="ForwardRequest"></a> 要求を転送する
+## <a name="forward-request"></a><a name="ForwardRequest"></a> 要求を転送する
 
 `forward-request` ポリシーは、要求[コンテキスト](api-management-policy-expressions.md#ContextVariables)に指定されたバックエンド サービスに要求を転送します。 バックエンド サービスの URL は API [設定](https://azure.microsoft.com/documentation/articles/api-management-howto-create-apis/#configure-api-settings)で指定され、[バックエンド サービスの設定](api-management-transformation-policies.md)ポリシーを使用して変更できます。
 
@@ -264,11 +264,11 @@ ms.locfileid: "75903021"
 -   **ポリシー セクション:** backend
 -   **ポリシー スコープ:** すべてのスコープ
 
-## <a name="LimitConcurrency"></a>コンカレンシーを制限する
+## <a name="limit-concurrency"></a><a name="LimitConcurrency"></a>コンカレンシーを制限する
 
 `limit-concurrency` ポリシーは、含まれているポリシーがいずれかの時点で指定された数を超える要求によって実行されないようにします。 その数を超えた場合は、新しい要求は 429 Too Many Requests (要求が多すぎます) のステータス コードですぐに失敗します。
 
-### <a name="LimitConcurrencyStatement"></a> ポリシー ステートメント
+### <a name="policy-statement"></a><a name="LimitConcurrencyStatement"></a> ポリシー ステートメント
 
 ```xml
 <limit-concurrency key="expression" max-count="number">
@@ -315,7 +315,7 @@ ms.locfileid: "75903021"
 
 -   **ポリシー スコープ:** すべてのスコープ
 
-## <a name="log-to-eventhub"></a> イベント ハブにログを記録する
+## <a name="log-to-event-hub"></a><a name="log-to-eventhub"></a> イベント ハブにログを記録する
 
 `log-to-eventhub` ポリシーは、指定された形式のメッセージを Logger エンティティによって定義されたイベント ハブに送信します。 その名前が示すように、このポリシーは、オンラインまたはオフライン分析のために、選択された要求または応答コンテキスト情報を保存するために使用します。
 
@@ -369,7 +369,7 @@ ms.locfileid: "75903021"
 
 -   **ポリシー スコープ:** すべてのスコープ
 
-## <a name="mock-response"></a> モック応答
+## <a name="mock-response"></a><a name="mock-response"></a> モック応答
 
 `mock-response` は名前が示すとおり、API と操作の模擬テストを実行するために使用します。 通常のパイプライン実行を中止し、モック応答を呼び出し元に返します。 ポリシーは常に、再現性が最も高い応答を返そうとします。 使用可能な場合は常に、応答コンテキストの例が優先されます。 スキーマが提供され、例が提供されていない場合、ポリシーはスキーマからサンプルの応答を生成します。 例もスキーマも見つからない場合、コンテキストなしの応答が返されます。
 
@@ -413,7 +413,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 -   **ポリシー スコープ:** すべてのスコープ
 
-## <a name="Retry"></a> 再試行
+## <a name="retry"></a><a name="Retry"></a> 再試行
 
 `retry` ポリシーは子ポリシーを 1 回実行し、再試行 `condition` が `false` になるか再試行 `count` に達するまで、実行を再試行します。
 
@@ -461,7 +461,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 | Attribute        | 説明                                                                                                                                           | 必須 | Default |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| condition        | 再試行を停止する (`false`) か続行する (`true`) かを指定するブール型リテラルまたは[式](api-management-policy-expressions.md)。      | はい      | 該当なし     |
+| condition        | 再試行を停止する ([) か続行する (](api-management-policy-expressions.md)) かを指定するブール型リテラルまたは`false`式`true`。      | はい      | 該当なし     |
 | count            | 最大再試行回数を指定する正の数。                                                                                | はい      | 該当なし     |
 | interval         | 再試行の間の待機間隔を指定する正の数 (秒単位)。                                                                 | はい      | 該当なし     |
 | max-interval     | 再試行の間の最大待機間隔を指定する正の数 (秒単位)。 指数再試行アルゴリズムを実装するために使用されます。 | いいえ       | 該当なし     |
@@ -481,7 +481,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 -   **ポリシー スコープ:** すべてのスコープ
 
-## <a name="ReturnResponse"></a> 応答を返す
+## <a name="return-response"></a><a name="ReturnResponse"></a> 応答を返す
 
 `return-response` ポリシーは、パイプラインの実行を中止し、既定またはカスタムの応答を呼び出し元に返します。 既定の応答は、本文のない `200 OK` です。 コンテキスト変数またはポリシー ステートメントを使用して、カスタムの応答を指定できます。 その両方を指定した場合、コンテキスト変数に含まれる応答が、呼び出し元に返される前にポリシー ステートメントによって変更されます。
 
@@ -531,7 +531,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 -   **ポリシー スコープ:** すべてのスコープ
 
-## <a name="SendOneWayRequest"></a> 1 方向の要求を送信する
+## <a name="send-one-way-request"></a><a name="SendOneWayRequest"></a> 1 方向の要求を送信する
 
 `send-one-way-request` ポリシーは、指定された URL に指定された要求を送信します。応答は待機しません。
 
@@ -605,7 +605,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 -   **ポリシー スコープ:** すべてのスコープ
 
-## <a name="SendRequest"></a> 要求を送信する
+## <a name="send-request"></a><a name="SendRequest"></a> 要求を送信する
 
 `send-request` ポリシーは、設定されたタイムアウト値以内の待機時間で、指定された要求を指定された URL に送信します。
 
@@ -692,7 +692,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 -   **ポリシー スコープ:** すべてのスコープ
 
-## <a name="SetHttpProxy"></a> HTTP プロキシの設定
+## <a name="set-http-proxy"></a><a name="SetHttpProxy"></a> HTTP プロキシの設定
 
 `proxy` ポリシーにより、HTTP プロキシ経由でバックエンドに転送されるように要求をルーティングできます。 ゲートウェイとプロキシ間は、HTTP (HTTPS ではなく) のみがサポートされます。 基本認証と NTLM 認証のみ。
 
@@ -734,7 +734,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 -   **ポリシー スコープ:** すべてのスコープ
 
-## <a name="SetRequestMethod"></a> 要求メソッドを設定する
+## <a name="set-request-method"></a><a name="SetRequestMethod"></a> 要求メソッドを設定する
 
 `set-method` ポリシーでは、要求の HTTP 要求メソッドを変更できます。
 
@@ -789,7 +789,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 -   **ポリシー スコープ:** すべてのスコープ
 
-## <a name="SetStatus"></a> 状態コードを設定する
+## <a name="set-status-code"></a><a name="SetStatus"></a> 状態コードを設定する
 
 `set-status` ポリシーは、HTTP 状態コードを指定された値に変更します。
 
@@ -838,19 +838,19 @@ status code and media type. If no example or schema found, the content is empty.
 -   **ポリシー セクション:** outbound、backend、on-error
 -   **ポリシー スコープ:** すべてのスコープ
 
-## <a name="set-variable"></a> 変数の設定
+## <a name="set-variable"></a><a name="set-variable"></a> 変数の設定
 
 `set-variable` ポリシーは、[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数を宣言し、[式](api-management-policy-expressions.md)または文字列リテラルによって指定された値をこの変数に割り当てます。 リテラルが含まれている式は文字列に変換され、値の型は `System.String` になります。
 
-### <a name="set-variablePolicyStatement"></a> ポリシー ステートメント
+### <a name="policy-statement"></a><a name="set-variablePolicyStatement"></a> ポリシー ステートメント
 
 ```xml
 <set-variable name="variable name" value="Expression | String literal" />
 ```
 
-### <a name="set-variableExample"></a> 例
+### <a name="example"></a><a name="set-variableExample"></a> 例
 
-次の例は、inbound セクションの変数の設定ポリシーを示しています。 この変数の設定ポリシーは、`User-Agent` 要求ヘッダーにテキスト `iPad` または `iPhone` が含まれる場合に true に設定される `isMobile` ブール型[コンテキスト](api-management-policy-expressions.md#ContextVariables)引数を作成します。
+次の例は、inbound セクションの変数の設定ポリシーを示しています。 この変数の設定ポリシーは、`isMobile` 要求ヘッダーにテキスト [ または ](api-management-policy-expressions.md#ContextVariables) が含まれる場合に true に設定される `User-Agent` ブール型`iPad`コンテキスト`iPhone`引数を作成します。
 
 ```xml
 <set-variable name="IsMobile" value="@(context.Request.Headers["User-Agent"].Contains("iPad") || context.Request.Headers["User-Agent"].Contains("iPhone"))" />
@@ -876,7 +876,7 @@ status code and media type. If no example or schema found, the content is empty.
 -   **ポリシー セクション:** inbound、outbound、backend、on-error
 -   **ポリシー スコープ:** すべてのスコープ
 
-### <a name="set-variableAllowedTypes"></a> 使用できる型
+### <a name="allowed-types"></a><a name="set-variableAllowedTypes"></a> 使用できる型
 
 `set-variable` ポリシーで使用する式は、次の基本的な型のいずれかを返す必要があります。
 
@@ -912,12 +912,12 @@ status code and media type. If no example or schema found, the content is empty.
 -   System.Char?
 -   System.DateTime?
 
-## <a name="Trace"></a> トレース
+## <a name="trace"></a><a name="Trace"></a> トレース
 
 `trace` ポリシーによって、API Inspector の出力、Application Insights テレメトリ、診断ログにカスタム トレースが追加されます。
 
 -   トレースがトリガーされたときに、ポリシーによって [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) の出力にカスタム トレースが追加されます。つまり、`Ocp-Apim-Trace` 要求ヘッダーが存在し、true に設定され、`Ocp-Apim-Subscription-Key` 要求ヘッダーが存在し、トレースを許可する有効なキーが保持されます。
--   [Application Insights の統合](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights)が有効で、ポリシーに指定されている `severity` のレベルが診断設定に指定されている `verbosity` レベル以上である場合、このポリシーによって Application Insights に[トレース](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry) テレメトリが作成されます。
+-   [Application Insights の統合](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry)が有効で、ポリシーに指定されている [ のレベルが診断設定に指定されている ](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights) レベル以上である場合、このポリシーによって Application Insights に`severity`トレース`verbosity` テレメトリが作成されます。
 -   [診断ログ](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs)が有効で、ポリシーに指定されている重大度レベルが診断設定に指定されている詳細レベル以上である場合、このポリシーによってログ エントリにプロパティが追加されます。
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
@@ -931,7 +931,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ```
 
-### <a name="traceExample"></a> 例
+### <a name="example"></a><a name="traceExample"></a> 例
 
 ```xml
 <trace source="PetStore API" severity="verbose">
@@ -965,7 +965,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 -   **ポリシー スコープ:** すべてのスコープ
 
-## <a name="Wait"></a> 待機
+## <a name="wait"></a><a name="Wait"></a> 待機
 
 `wait` ポリシーは、直接の子ポリシーを並列で実行し、その直接の子ポリシーのすべてまたはいずれかが完了するまで完了を待機します。 待機ポリシーには、[要求を送信する](api-management-advanced-policies.md#SendRequest)、[キャッシュからの値の取得](api-management-caching-policies.md#GetFromCacheByKey)、および[制御フロー](api-management-advanced-policies.md#choose)のポリシーを直接の子ポリシーとして含めることができます。
 
@@ -981,7 +981,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="example"></a>例
 
-次の例では、`wait` ポリシーの直接の子ポリシーとして 2 つの `choose` ポリシーがあります。 これらの `choose` ポリシーはそれぞれ並列に実行されます。 各 `choose` ポリシーは、キャッシュされた値を取得しようとします。 キャッシュ ミスがある場合は、バックエンド サービスが呼び出されて値を提供します。 この例では、`for` 属性が `all` に設定されているため、すべての直接の子ポリシーが完了するまで、`wait` ポリシーは完了しません。 この例のコンテキスト変数 (`execute-branch-one`、`value-one`、`execute-branch-two`、および `value-two`) は、このサンプル ポリシーのスコープ外で宣言されています。
+次の例では、`choose` ポリシーの直接の子ポリシーとして 2 つの `wait` ポリシーがあります。 これらの `choose` ポリシーはそれぞれ並列に実行されます。 各 `choose` ポリシーは、キャッシュされた値を取得しようとします。 キャッシュ ミスがある場合は、バックエンド サービスが呼び出されて値を提供します。 この例では、`wait` 属性が `for` に設定されているため、すべての直接の子ポリシーが完了するまで、`all` ポリシーは完了しません。 この例のコンテキスト変数 (`execute-branch-one`、`value-one`、`execute-branch-two`、および `value-two`) は、このサンプル ポリシーのスコープ外で宣言されています。
 
 ```xml
 <wait for="all">

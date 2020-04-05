@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/13/2017
 ms.author: barclayn
 ms.openlocfilehash: 5635a9e1403731eabc20a04be880fd0aeb24d729
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68727338"
 ---
 # <a name="how-to-log-a-security-event-support-ticket"></a>セキュリティ イベント サポート チケットをログに記録する方法

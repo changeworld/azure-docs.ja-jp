@@ -8,18 +8,18 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 02/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 2283f4f3cf1d31f0d67e01e1a63ee20557ef5633
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: c5f65adfe401f2f6e99234d08b8e8dabeff7d5db
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591576"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231051"
 ---
-# <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する
+# <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>方法: リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する
 
 この記事では、ロール ベースのアクセス制御で使用できる、新しい Azure Active Directory (Azure AD) のアプリケーションとサービス プリンシパルを作成する方法について説明します。 リソースへのアクセスや変更を行う必要があるコードがある場合は、そのアプリの ID を作成できます。 この ID は、サービス プリンシパルと呼ばれます。 その後、サービス プリンシパルに必要なアクセス許可を割り当てることができます。 この記事では、ポータルを使用してサービス プリンシパルを作成する方法について説明します。 ここでは、シングル テナント アプリケーション (1 つの組織内でのみ実行することを目的としたアプリケーション) に焦点を絞って説明します。 一般に、組織内で実行される基幹業務アプリケーションには、シングル テナント アプリケーションが使用されます。
 
@@ -42,7 +42,7 @@ Azure AD アプリケーションとサービス プリンシパルが作成さ�
 
 ## <a name="assign-a-role-to-the-application"></a>アプリケーションにロールを割り当てる
 
-サブスクリプション内のリソースにアクセスするには、アプリケーションにロールを割り当てる必要があります。 どのロールがそのアプリケーションに適切なアクセス許可を提供するかを判断します。 利用可能なロールについては、「[RBAC: 組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
+サブスクリプション内のリソースにアクセスするには、アプリケーションにロールを割り当てる必要があります。 どのロールがそのアプリケーションに適切なアクセス許可を提供するかを判断します。 利用可能なロールについては、「[RBAC: 組み込みのロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
 
 スコープは、サブスクリプション、リソース グループ、またはリソースのレベルで設定できます。 アクセス許可は、スコープの下位レベルに継承されます。 たとえば、アプリケーションをリソース グループの閲覧者ロールに追加すると、アプリケーションではリソース グループとそれに含まれているすべてのリソースを読み取ることができます。
 
@@ -85,7 +85,7 @@ Azure AD アプリケーションとサービス プリンシパルが作成さ�
 
 ### <a name="upload-a-certificate"></a>証明書のアップロード
 
-既存の証明書がある場合は、それを使用できます。  必要に応じて、テスト目的で自己署名証明書を作成することもできます。 PowerShell を開き、次のパラメーターを使用して [New-selfsignedcertificate](/powershell/module/pkiclient/new-selfsignedcertificate) を実行して、コンピューター上のユーザー証明書ストアに自己署名証明書を作成します。 
+既存の証明書がある場合は、それを使用できます。  必要に応じて、*テスト目的でのみ*自己署名証明書を作成できます。 PowerShell を開き、次のパラメーターを使用して [New-selfsignedcertificate](/powershell/module/pkiclient/new-selfsignedcertificate) を実行して、コンピューター上のユーザー証明書ストアに自己署名証明書を作成します。 
 
 ```powershell
 $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature
@@ -93,8 +93,18 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
 Windows コントロール パネルからアクセスできる [[Manage User Certificate]\(ユーザー証明書の管理)](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) MMC スナップインを使用して、この証明書をファイルにエクスポートします。
 
+1. **[スタート]** メニューから **[ファイル名を指定して実行]** メニューを選択し、「**certmgr.msc**」と入力します。
+
+   現在のユーザーの証明書マネージャー ツールが表示されます。
+
+1. 証明書を表示するには、左ペインの **[証明書 - 現在のユーザー]** の下の **[個人]** ディレクトリを展開します。
+1. 作成した証明書を右クリックし、 **[すべてのタスク] -> [エクスポート]** を選択します。
+1. 証明書のエクスポート ウィザードに従います。  秘密キーをエクスポートし、証明書ファイルのパスワードを指定したら、ファイルにエクスポートします。
+
 証明書をアップロードするには、次の手順に従います。
 
+1. **[Azure Active Directory]** を選択します。
+1. Azure AD の **[アプリの登録]** から、アプリケーションを選択します。
 1. **[証明書とシークレット]** を選択します。
 1. **[証明書のアップロード]** を選択し、証明書 (既存の証明書、またはエクスポートした自己署名証明書) を選択します。
 
@@ -119,7 +129,7 @@ Windows コントロール パネルからアクセスできる [[Manage User Ce
 ## <a name="configure-access-policies-on-resources"></a>リソースに対するアクセス ポリシーを構成する
 アプリケーションからアクセスする必要があるリソースに対する追加のアクセス許可の構成が必要になる場合があることに注意してください。 たとえば、キー、シークレット、または証明書へのアクセス権をアプリケーションに付与するには、[キー コンテナーのアクセス ポリシーも更新する](/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies)必要があります。  
 
-1. **Azure portal** で、キー コンテナーに移動し、[[アクセス ポリシー]](https://portal.azure.com) を選択します。  
+1. [Azure portal](https://portal.azure.com) で、キー コンテナーに移動し、 **[アクセス ポリシー]** を選択します。  
 1. **[アクセス ポリシーの追加]** を選択し、アプリケーションに付与するキー、シークレット、証明書のアクセス許可を選択します。  以前に作成したサービス プリンシパルを選択します。
 1. **[追加]** を選択してアクセス ポリシーを追加し、 **[保存]** を選択して変更をコミットします。
     ![アクセス ポリシーの追加](./media/howto-create-service-principal-portal/add-access-policy.png)
@@ -146,15 +156,21 @@ Azure サブスクリプションで AD アプリにロールを割り当てる�
 
 サブスクリプションのアクセス許可を確認するには、次の手順に従います。
 
-1. 右上隅にあるアカウントを選択し、 **[...] -> [アクセス許可]** を選択します。
+1. **[サブスクリプション]** を検索して選択するか、**ホーム** ページの **[サブスクリプション]** を選択します。
 
-   ![自分のアカウントとユーザーのアクセス許可を選択する](./media/howto-create-service-principal-portal/select-my-permissions.png)
+   ![検索](./media/howto-create-service-principal-portal/select-subscription.png)
 
-1. ドロップダウン リストから、サービス プリンシパルを作成するサブスクリプションを選択します。 次に、 **[Click here to view complete access details for this subscription] (このサブスクリプションの完全なアクセスの詳細を表示するにはここをクリック)** を選択します。
+1. サービス プリンシパルを作成するサブスクリプションを選択します。
+
+   ![割り当てのためのサブスクリプションを選択する](./media/howto-create-service-principal-portal/select-one-subscription.png)
+
+   探しているサブスクリプションが表示されない場合は、**グローバル サブスクリプション フィルター**を選択します。 必要なサブスクリプションがポータルで選択されていることを確認してください。
+
+1. **[アクセス許可]** を選択します。 次に、 **[Click here to view complete access details for this subscription] (このサブスクリプションの完全なアクセスの詳細を表示するにはここをクリック)** を選択します。
 
    ![サービス プリンシパルを作成するサブスクリプションを選択する](./media/howto-create-service-principal-portal/view-details.png)
 
-1. **[ロールの割り当て]** を選択して割り当て済みのロールを表示し、AD アプリにロールを割り当てるための適切なアクセス許可があるかどうかを確認します。 ない場合は、サブスクリプション管理者に連絡して、ユーザー アクセス管理者ロールに追加してもらいます。 次の図では、ユーザーには所有者ロールが割り当てられているので、このユーザーには適切なアクセス許可があります。
+1. **[ロールの割り当て]** で **[表示]** を選択して割り当て済みのロールを表示し、AD アプリにロールを割り当てるための適切なアクセス許可があるかどうかを確認します。 ない場合は、サブスクリプション管理者に連絡して、ユーザー アクセス管理者ロールに追加してもらいます。 次の図では、ユーザーには所有者ロールが割り当てられているので、このユーザーには適切なアクセス許可があります。
 
    ![この例では、ユーザーには所有者ロールが割り当てられています](./media/howto-create-service-principal-portal/view-user-role.png)
 

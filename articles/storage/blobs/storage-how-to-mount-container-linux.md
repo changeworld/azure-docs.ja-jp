@@ -3,16 +3,17 @@ title: Linux 上で Azure Blob Storage をファイル システムとしてマ�
 description: Linux 上で FUSE を使用して Azure Blob Storage コンテナーをマウントする
 author: rishabpoh
 ms.service: storage
+ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 2/1/2019
 ms.author: ripohane
 ms.reviewer: dineshm
-ms.openlocfilehash: 35a4313d10231aec74685069a67d803ea32e68b1
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: a0a03df59bc6ecffcb4f0a701616297f2da78fdb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847560"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80061426"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法
 
@@ -139,7 +140,7 @@ mkdir test
 echo "hello world" > test/blob.txt
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [blobfuse ホーム ページ](https://github.com/Azure/azure-storage-fuse#blobfuse)
 * [blobfuse の問題を報告する](https://github.com/Azure/azure-storage-fuse/issues) 

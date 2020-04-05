@@ -9,11 +9,11 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 986f4b0da7254ebac3725a704f32af785c72fbcc
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565028"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225067"
 ---
 # <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>プライベート クラウドのファイアウォールのテーブルとルールの設定
 
@@ -68,7 +68,7 @@ ms.locfileid: "77565028"
 > [!IMPORTANT]
 > 各ファイアウォール テーブルには、最大 10 個の受信ルールと 20 個の送信ルールを含めることができます。 これらの制限は、[サポートに連絡](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)することによって増やすことができます。
 
-## <a name="attach-vlans-subnet"></a>VLAN またはサブネットの接続
+## <a name="attach-vlanssubnets"></a><a name="attach-vlans-subnet"></a>VLAN またはサブネットの接続
 
 ファイアウォール テーブルを定義したら、そのテーブルでルールの対象となるサブネットを指定できます。
 

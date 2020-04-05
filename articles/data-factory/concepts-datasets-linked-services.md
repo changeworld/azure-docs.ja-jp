@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/25/2019
 ms.openlocfilehash: 878ad98b118fa02a6659584ac60e3343a948cd20
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928475"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225559"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure Data Factory のデータセット
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-create-datasets.md)
 > * [現在のバージョン](concepts-datasets-linked-services.md)
 
@@ -33,7 +33,7 @@ Azure Data Factory を初めて使用する場合は、[Azure Data Factory の�
 
 データセットを作成する前に、[**リンクされたサービス**](concepts-linked-services.md)を作成して、データ ストアとデータ ファクトリをリンクする必要があります。 リンクされたサービスは、接続文字列によく似ており、Data Factory が外部リソースに接続するために必要な接続情報を定義します。 データセットはリンクされたデータ ストア内のデータの構造を表すもので、リンクされたサービスはデータ ソースへの接続を定義するもの、と捉えることができます。 たとえば、Azure Storage のリンクされたサービスは、ストレージ アカウントをデータ ファクトリにリンクします。 Azure Blob データセットは、処理対象の入力 BLOB を含む Azure ストレージ アカウント内の BLOB コンテナーとフォルダーを表します。
 
-シナリオの例を次に示します。 Blob Storage のデータを Azure SQL Database にコピーするために、2 つのリンクされたサービスを作成します Azure Storage、Azure SQL Database)。 次に、2 つのデータセットを作成します。Azure Blob データセット (Azure Storage リンクされたサービスを参照するデータセット) と、Azure SQL Table データセット (Azure SQL Database リンクされたサービスを参照するデータセット) です。 Azure Storage と Azure SQL Database の各リンクされたサービスに含まれる接続文字列を、Data Factory が実行時に使用して、Azure Storage と Azure SQL Database それぞれに接続します。 Azure Blob データセットは、Blob Storage 内の入力 BLOB が含まれた BLOB コンテナーと BLOB フォルダーを示しています。 Azure SQL Table データセットは、データのコピー先である SQL Database 内の SQL テーブルを示しています。
+シナリオの例を次に示します。 Blob Storage のデータを Azure SQL Database にコピーするために、Azure Storage と Azure SQL Database という 2 つのリンクされたサービスを作成します。 次に、2 つのデータセットを作成します。Azure Blob データセット (Azure Storage リンクされたサービスを参照するデータセット) と、Azure SQL Table データセット (Azure SQL Database リンクされたサービスを参照するデータセット) です。 Azure Storage と Azure SQL Database の各リンクされたサービスに含まれる接続文字列を、Data Factory が実行時に使用して、Azure Storage と Azure SQL Database それぞれに接続します。 Azure Blob データセットは、Blob Storage 内の入力 BLOB が含まれた BLOB コンテナーと BLOB フォルダーを示しています。 Azure SQL Table データセットは、データのコピー先である SQL Database 内の SQL テーブルを示しています。
 
 次の図は、Data Factory でのパイプライン、アクティビティ、データセット、リンクされたサービスの関係を示しています。
 
@@ -69,16 +69,16 @@ Data Factory のデータセットは JSON 形式では次のように定義さ�
 
 プロパティ | 説明 | 必須 |
 -------- | ----------- | -------- |
-名前 | データセットの名前。 [Azure Data Factory - 名前付け規則](naming-rules.md)を参照してください。 |  はい |
-type | データセットの型。 Data Factory でサポートされている型のいずれかを指定します (たとえば、AzureBlob、AzureSqlTable)。 <br/><br/>詳細については、[データセットの型](#dataset-type)を参照してください。 | はい |
+name | データセットの名前。 [Azure Data Factory - 名前付け規則](naming-rules.md)を参照してください。 |  はい |
+type | データセットの型。 Data Factory でサポートされている型のいずれかを指定します (例: AzureBlob、AzureSqlTable)。 <br/><br/>詳細については、[データセットの型](#dataset-type)を参照してください。 | はい |
 structure | データセットのスキーマ。 詳細については、「[データセット スキーマ](#dataset-structure-or-schema)」を参照してください。 | いいえ |
-typeProperties | 型のプロパティは型によって異なります (たとえば、Azure Blob、Azure SQL テーブル)。 サポートされている型とそのプロパティの詳細については、「[データセットの型](#dataset-type)」セクションを参照してください。 | はい |
+typeProperties | typeProperties は型 (Azure Blob、Azure SQL テーブルなど) によって異なります。 サポートされている型とそのプロパティの詳細については、「[データセットの型](#dataset-type)」セクションを参照してください。 | はい |
 
 ### <a name="data-flow-compatible-dataset"></a>Data Flow の互換性のあるデータセット
 
 
 
-[データ フロー](concepts-data-flow-overview.md)が互換性のあるデータセット型のリストについて、「[サポートされているデータセットの型](#dataset-type)」を参照してください。 データ フローの互換性があるデータセットでは、変換にあたり詳細なデータセットの定義が必要です。 そのため、JSON 定義は若干異なります。 _構造体_ プロパティの代わりに、データ フローと互換性のあるデータセットには _スキーマ_ プロパティがあります。
+[データ フロー](#dataset-type)が互換性のあるデータセット型のリストについて、「[サポートされているデータセットの型](concepts-data-flow-overview.md)」を参照してください。 データ フローの互換性があるデータセットでは、変換にあたり詳細なデータセットの定義が必要です。 そのため、JSON 定義は若干異なります。 _構造体_プロパティの代わりに、データ フローと互換性のあるデータセットには_スキーマ_プロパティがあります。
 
 データ フロー内のデータセットは、ソースとシンクの変換で使用されます。 データセットは、基本的なデータ スキーマを定義します。 データがスキーマを持たない場合は、ソースとシンクのスキーマ ドリフトを使用できます。 データセット内のスキーマは、実際のデータ型と形状を表します。
 
@@ -114,10 +114,10 @@ typeProperties | 型のプロパティは型によって異なります (たと�
 
 プロパティ | 説明 | 必須 |
 -------- | ----------- | -------- |
-名前 | データセットの名前。 [Azure Data Factory - 名前付け規則](naming-rules.md)を参照してください。 |  はい |
-type | データセットの型。 Data Factory でサポートされている型のいずれかを指定します (たとえば、AzureBlob、AzureSqlTable)。 <br/><br/>詳細については、[データセットの型](#dataset-type)を参照してください。 | はい |
+name | データセットの名前。 [Azure Data Factory - 名前付け規則](naming-rules.md)を参照してください。 |  はい |
+type | データセットの型。 Data Factory でサポートされている型のいずれかを指定します (例: AzureBlob、AzureSqlTable)。 <br/><br/>詳細については、[データセットの型](#dataset-type)を参照してください。 | はい |
 schema | データセットのスキーマ。 詳細は、「[Data Flow の互換性のあるデータセット](#dataset-type)」を参照してください。 | いいえ |
-typeProperties | 型のプロパティは型によって異なります (たとえば、Azure Blob、Azure SQL テーブル)。 サポートされている型とそのプロパティの詳細については、「[データセットの型](#dataset-type)」セクションを参照してください。 | はい |
+typeProperties | typeProperties は型 (Azure Blob、Azure SQL テーブルなど) によって異なります。 サポートされている型とそのプロパティの詳細については、「[データセットの型](#dataset-type)」セクションを参照してください。 | はい |
 
 
 ## <a name="dataset-example"></a>データセットの例
@@ -180,8 +180,8 @@ structure の各列には次のプロパティが含まれます。
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-名前 | 列の名前です。 | はい
-type | 列のデータ型です。 Data Factory は次の中間データ型を許容値としてサポートしています。**Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Boolean、String、Guid、Datetime、Datetimeoffset、および Timespan** | いいえ
+name | 列の名前です。 | はい
+type | 列のデータ型です。 Data Factory は、使用できる値として、中間データ型の **Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Boolean、String、Guid、Datetime、Datetimeoffset、および Timespan** をサポートしています。 | いいえ
 culture | .NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される .NET ベースのカルチャ。 既定では、 `en-us`です。 | いいえ
 format | .NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される書式設定文字列。 日時の書式を設定する方法については、「[カスタム日時書式指定文字列](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)」を参照してください。 | いいえ
 
@@ -217,10 +217,10 @@ Data Factory と Data Factory バージョン 1 のデータセット間の相�
 - ポリシーと可用性のプロパティは、最新バージョンではサポートされません。 パイプラインの開始時刻は、[トリガー](concepts-pipeline-execution-triggers.md)によって異なります。
 - 範囲指定されたデータセット (パイプラインで定義されたデータセット) は、最新バージョンではサポートされません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 これらのツールや SDK のいずれかを使用してパイプラインとデータセットを作成する詳しい手順については、次のチュートリアルを参照してください。
 
-- [クイック スタート: .NET を使用してデータ ファクトリを作成する](quickstart-create-data-factory-dot-net.md)
+- [Quickstart: create a data factory using .NET (クイック スタート: .NET を使用してデータ ファクトリを作成する)](quickstart-create-data-factory-dot-net.md)
 - [クイック スタート: PowerShell を使用してデータ ファクトリを作成する](quickstart-create-data-factory-powershell.md)
 - [クイック スタート: REST API を使用してデータ ファクトリを作成する](quickstart-create-data-factory-rest-api.md)
 - [クイック スタート: Azure portal を使用したデータ ファクトリの作成](quickstart-create-data-factory-portal.md)

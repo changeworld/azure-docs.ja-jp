@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: 1028443eaaf6c483cd7cd57289b0dcf2a9f11902
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68595906"
 ---
 # <a name="data-filtering"></a>データのフィルタリング
@@ -56,6 +56,6 @@ ms.locfileid: "68595906"
 ## <a name="invalid-characters"></a>無効な文字
 カスタム トランスレーターでは、Unicode 文字 U+FFFD を含む文が削除されます。 文字 U+FFFD は、エンコード変換が失敗したことを示します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - カスタム トランスレーターで[モデルをトレーニング](how-to-train-model.md)します。

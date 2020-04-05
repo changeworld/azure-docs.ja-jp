@@ -5,24 +5,21 @@ services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: a242a5ff-7300-40c2-ba83-fb6035707433
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 74da5b84fafd7f7c60d07fc90b05c051c1fa2a3e
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: ae283529abb3b71ee50fc710dd1ebe0d17a12be0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163476"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154833"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory のコード サンプル (v1.0 エンドポイント)
 
@@ -54,7 +51,7 @@ GitHub でサンプルに協力することもできます。 その方法につ
 
 次のサンプルでは、ユーザーがサインインする Web アプリケーションを示しています。 これらのアプリケーションの中には、サインインしたユーザーの名前で Microsoft Graph または独自の Web API も呼び出すものがあります。
 
- プラットフォーム | ユーザーのサインインのみ | Microsoft Graph または AAD Graph の呼び出し| 別の ASP.NET または ASP.NET Core 2.0 Web API の呼び出し
+ プラットフォーム | ユーザーのサインインのみ | Microsoft Graph の呼び出し | 別の ASP.NET または ASP.NET Core 2.0 Web API の呼び出し
  -------- | ------------------- | --------------------- | -------------------------
 ![ASP.NET のロゴを示す画像](media/sample-v2-code/logo-netcore.png)</p>ASP.NET Core 2.0 | [dotnet-webapp-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [webapp-webapi-multitenant-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) </p>(AAD Graph) | [dotnet-webapp-webapi-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore)
 ![ASP.NET のロゴを示す画像](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 |  </p> [webapp-WSFederation-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [dotnet-webapp-webapi-oauth2-useridentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [dotnet-webapp-multitenant-openidconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (AAD Graph) |
@@ -81,7 +78,7 @@ GitHub でサンプルに協力することもできます。 その方法につ
 クライアント アプリケーション | プラットフォーム | フロー/許可 | Microsoft Graph の呼び出し | ASP.NET または ASP.NET Core 2.x Web API の呼び出し
 ------------------ | -------- | ---------- | -------------------- | -------------------------
 デスクトップ (WPF)           | ![.NET/C# のロゴを示す画像](media/sample-v2-code/logo-net.png)  | Interactive | [dotnet-native-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) の一部 | [Dotnet-native-desktop](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [dotnet-native-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore/)</p> [dotnet-webapi-manual-jwt-validation](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation)
-モバイル (UWP)            | 。![.NET/C#/UWP を示す画像](media/sample-v2-code/logo-windows.png)   | Interactive | [dotnet-native-uwp-wam](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) </p> このサンプルでは、[ADAL.NET](https://aka.ms/adalnet) ではなく [WAM](/windows/uwp/security/web-account-manager) を使用します|  [dotnet-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-windows-store) (ADAL.NET を使用してシングル テナント Web API を呼び出す UWP アプリケーション) </p> [dotnet-webapi-multitenant-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store) (ADAL.NET を使用してマルチテナント Web API を呼び出す UWP アプリケーション)|
+モバイル (UWP)            | 。![.NET/C#/UWP を示す画像](media/sample-v2-code/logo-windows.png)   | Interactive | [dotnet-native-uwp-wam](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) </p> このサンプルでは、[ADAL.NET](/windows/uwp/security/web-account-manager) ではなく [WAM](https://aka.ms/adalnet) を使用します|  [dotnet-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-windows-store) (ADAL.NET を使用してシングル テナント Web API を呼び出す UWP アプリケーション) </p> [dotnet-webapi-multitenant-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store) (ADAL.NET を使用してマルチテナント Web API を呼び出す UWP アプリケーション)|
 モバイル (Android、iOS、UWP)   | ![.NET/C# (Xamarin) を示す画像](media/sample-v2-code/logo-xamarin.png) | Interactive | [dotnet-native-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) |
 モバイル (Android)           | ![Android のロゴを示す画像](media/sample-v2-code/logo-android.png) | Interactive |   [android](https://github.com/Azure-Samples/active-directory-android) |
 モバイル (iOS)           | ![iOS/Objective C または Swift を示す画像](media/sample-v2-code/logo-ios.png) | Interactive |   [nativeClient-iOS](https://github.com/azureadquickstarts/nativeclient-ios) |
@@ -125,10 +122,6 @@ Azure AD での認証を含む、Microsoft Graph API のさまざまな使用パ
 
 ## <a name="see-also"></a>参照
 
-[Azure Active Directory 開発者ガイド](v1-overview.md)
-
-[Azure Active Directory 認証ライブラリ](active-directory-authentication-libraries.md)
-
-[Active Directory Graph API の概念とリファレンス](https://msdn.microsoft.com/library/azure/hh974476.aspx)
-
-[Azure AD Graph API Helper Library](https://www.nuget.org/packages/Microsoft.Azure.ActiveDirectory.GraphClient)
+- [Azure Active Directory 開発者ガイド](v1-overview.md)
+- [Azure Active Directory 認証ライブラリ](active-directory-authentication-libraries.md)
+- [Microsoft Graph API の概念とリファレンス](https://docs.microsoft.com/graph/use-the-api)

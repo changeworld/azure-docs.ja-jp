@@ -10,14 +10,16 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc seodec18
 ms.date: 01/10/2020
-ms.openlocfilehash: 6c9c5df27f4a361e534bac2fe21b2c470f8d0186
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: de8611e53339d38a03836bc9272ad42ff88a59b8
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895580"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79371428"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>クイック スタート:Azure Digital Twins を使用して空き部屋を探す
+
+[!INCLUDE [digital-twins-preview-limit-alert](../../includes/digital-twins-preview-limit-alert.md)]
 
 Azure Digital Twins サービスを使用すると、物理環境のデジタル イメージを再作成できます。 その後、環境内のイベントによって通知を受け取り、それらのイベントへの応答をカスタマイズすることができます。
 
@@ -137,7 +139,7 @@ Azure Digital Twins サービスを使用すると、物理環境のデジタル
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Name | 置換後の文字列 |
+| 名前 | 置換後の文字列 |
 | --- | --- |
 | YOUR_INSTANCE_NAME | お客様の Digital Twins インスタンスの名前 |
 | YOUR_LOCATION | インスタンスをホストするサーバーのリージョン |

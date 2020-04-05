@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Azure で SSL 証明書を使用して Windows Web サーバーをセキュリティで保護する
-description: このチュートリアルでは、Azure PowerShell を使用して、Azure Key Vault に格納されている SSL 証明書を使って IIS Web サーバーを実行する Windows 仮想マシンをセキュリティで保護する方法について説明します。
+title: チュートリアル:Azure で TLS/SSL 証明書を使用して Windows Web サーバーをセキュリティで保護する
+description: このチュートリアルでは、Azure PowerShell を使用して、Azure Key Vault に格納されている TLS/SSL 証明書を使って IIS Web サーバーを実行する Windows 仮想マシンをセキュリティで保護する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -15,25 +15,25 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6185ad4f0e043329c4e833b97a09922ba0238a82
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 5b084f8a226d1cfd5bab2cc81512fb51fa6bf41c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264239"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80154289"
 ---
-# <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>チュートリアル:Key Vault に格納されている SSL 証明書を使用して Azure 内の Windows 仮想マシン上の Web サーバーをセキュリティで保護する
+# <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>チュートリアル:Key Vault に格納されている TLS/SSL 証明書を使用して、Azure 内の Windows 仮想マシン上の Web サーバーをセキュリティで保護します
 
 > [!NOTE]
 > 現在、このドキュメントは一般化されたイメージにのみ適用できます。 特殊化されたディスクを使用してこのチュートリアルを実行しようとすると、エラーが発生します。 
 
-Web サーバーをセキュリティ保護するには、Secure Sockets Layer (SSL) 証明書を使用した Web トラフィックの暗号化が利用できます。 これらの SSL 証明書は Azure Key Vault に格納できるため、Azure 上の Windows 仮想マシン (VM) に、セキュリティで保護された証明書のデプロイが可能になります。 このチュートリアルで学習する内容は次のとおりです。
+Web サーバーをセキュリティ保護するには、従来より SSL (Secure Sockets Layer) として知られていたトランスポート層セキュリティ (TLS) 証明書を使用した Web トラフィックの暗号化が利用できます。 これらの TLS/SSL 証明書は Azure Key Vault に格納できるため、Azure 上の Windows 仮想マシン (VM) に、セキュリティで保護された証明書のデプロイが可能になります。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
 > * Azure Key Vault を作成する
 > * 証明書を生成したり、Key Vault にアップロードしたりする
 > * VM の作成と IIS Web サーバーのインストール
-> * VM への証明書の取り込みと IIS のSSL バインドの構成
+> * VM への証明書の取り込みと IIS の TLS バインドの構成
 
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
@@ -172,13 +172,13 @@ Web ブラウザーを開き、アドレス バーに「`https://<myPublicIP>`�
 
 
 ## <a name="next-steps"></a>次のステップ
-このチュートリアルでは、Azure Key Vault に格納されている SSL 証明書を使用して IIS Web サーバーをセキュリティ保護しました。 以下の方法を学習しました。
+このチュートリアルでは、Azure Key Vault に格納されている TLS/SSL 証明書を使用して IIS Web サーバーをセキュリティ保護しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * Azure Key Vault を作成する
 > * 証明書を生成したり、Key Vault にアップロードしたりする
 > * VM の作成と IIS Web サーバーのインストール
-> * VM への証明書の取り込みと IIS のSSL バインドの構成
+> * VM への証明書の取り込みと IIS の TLS バインドの構成
 
 次のリンクをクリックして、あらかじめ用意されている仮想マシン スクリプト サンプルをご覧ください。
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/07/2020
 ms.author: radeltch
-ms.openlocfilehash: e0bb959429786bf83be23b1374ef43ce553bf2c7
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 4fd01764c183098a8bd78d502eea7ab173fa22cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598682"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80293913"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続
 
@@ -102,7 +102,7 @@ VM からの発信呼び出しにアクセスできるパブリック エンド�
    1. VM とその IP アドレスを選択し、バックエンド プールにそれらを追加します  
 3. [アウトバウンド規則を作成します](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-cli#create-outbound-rule)。 現在、Azure portal からアウトバウンド規則を作成することはできません。 アウトバウンド規則は [Azure CLI](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) で作成できます。  
 
-   ```
+   ```azurecli
     az network lb outbound-rule create --address-pool MyBackendPoolOfPublicILB --frontend-ip-configs MyPublicILBFrondEndIP --idle-timeout 30 --lb-name MyPublicILB --name MyOutBoundRules  --outbound-ports 10000 --enable-tcp-reset true --protocol All --resource-group MyResourceGroup
    ```
 
@@ -176,7 +176,7 @@ Azure Firewall をデプロイする方法について詳しくは、[Azure Fire
 ### <a name="important-considerations"></a>重要な考慮事項
 
   - 企業プロキシが既に存在する場合は、それを通してパブリック エンドポイントに送信呼び出しをルーティングできます。 パブリック エンドポイントへの送信呼び出しは、企業の制御ポイントを経由します。  
-  - プロキシ構成で、Azure 管理 API への送信接続が許可されていることを確認します: https://management.azure.com  
+  - プロキシ構成で、Azure 管理 API への送信接続が許可されていることを確認します: `https://management.azure.com`  
   - VM からプロキシへのルートがあることを確認します  
   - プロキシでは、HTTP/HTTPS 呼び出しのみが処理されます。 別のプロトコル (RFC など) でパブリック エンドポイントへの送信呼び出しを行う必要がある場合は、代わりのソリューションが必要になります  
   - Pacemaker クラスターが不安定になるのを防ぐため、プロキシ ソリューションは高可用性である必要があります  
@@ -188,8 +188,9 @@ Azure Firewall をデプロイする方法について詳しくは、[Azure Fire
 業界では、さまざまなプロキシ オプションを利用できます。 プロキシをデプロイする詳細な手順については、このドキュメントでは説明しません。 次の例では、プロキシが **MyProxyService** に応答し、ポート **MyProxyPort** をリッスンしているものとします。  
 Pacemaker が Azure 管理 API と通信できるようにするには、すべてのクラスター ノードで次の手順を実行します。  
 
-1. Pacemaker の構成ファイル /etc/sysconfig/pacemaker を編集し、次の行を追加します (すべてのクラスター ノードで)。  
-   ```
+1. Pacemaker の構成ファイル /etc/sysconfig/pacemaker を編集し、次の行を追加します (すべてのクラスター ノードで)。
+
+   ```console
    sudo vi /etc/sysconfig/pacemaker
    # Add the following lines
    http_proxy=http://MyProxyService:MyProxyPort
@@ -197,8 +198,9 @@ Pacemaker が Azure 管理 API と通信できるようにするには、すべ�
    ```
 
 2. **すべての**クラスター ノード で Pacemaker サービスを再起動します。  
-  - SUSE  
-     ```
+  - SUSE
+ 
+     ```console
      # Place the cluster in maintenance mode
      sudo crm configure property maintenance-mode=true
      #Restart on all nodes
@@ -208,7 +210,8 @@ Pacemaker が Azure 管理 API と通信できるようにするには、すべ�
      ```
 
   - Red Hat  
-     ```
+
+     ```console
      # Place the cluster in maintenance mode
      sudo pcs property set maintenance-mode=true
      #Restart on all nodes

@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cd4feeb83acc3842874e7a2e4bbd32dacabcc00d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75422652"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>チュートリアル:Azure AD エンタイトルメント管理で最初のアクセス パッケージを作成する
@@ -65,7 +65,7 @@ Azure AD エンタイトルメント管理を使用するには、次のいず�
 
 1. 次の 2 人のユーザーを作成または構成します。 以下の名前を使用することも、別の名前を使用することもできます。 **Admin1** は、現在サインイン済みのユーザーで構いません。
 
-    | Name | ディレクトリ ロール |
+    | 名前 | ディレクトリ ロール |
     | --- | --- |
     | **Admin1** | 全体管理者<br/>または<br/>ユーザー管理者 |
     | **Requestor1** | User |

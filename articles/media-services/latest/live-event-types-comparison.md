@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
 ms.openlocfilehash: a28d4d96f643c12eeb6aa542db2c6af06f4fd954
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78244637"
 ---
 # <a name="live-event-types-comparison"></a>ライブ イベントの種類の比較

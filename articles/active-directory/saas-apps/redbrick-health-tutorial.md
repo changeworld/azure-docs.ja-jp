@@ -17,10 +17,10 @@ ms.date: 09/09/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9a4326287eb8c7ae89e3167f72aaf25e0ed89124
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71123885"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-redbrick-health"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と RedBrick Health の統合
@@ -29,7 +29,7 @@ ms.locfileid: "71123885"
 
 * RedBrick Health にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントで自動的に RedBrick Health にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -104,7 +104,7 @@ RedBrick Health で Azure AD SSO を構成してテストするには、次の�
 
 1. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
 
-    | Name | ソース属性|
+    | 名前 | ソース属性|
     | ----------- | --------- |
     | プリンシパル名 | ********** |
     | [クライアント ID] | ********** |
@@ -129,7 +129,7 @@ RedBrick Health で Azure AD SSO を構成してテストするには、次の�
 
     f. **[OK]** をクリックします。
 
-    g. **[Save]** をクリックします。
+    g. **[保存]** をクリックします。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 

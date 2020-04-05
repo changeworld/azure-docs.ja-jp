@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a61dcca1f78b6ba444a2deefcf6b8bb4fd5c5087
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60581397"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>StorSimple Virtual Array 上の共有またはボリュームをバックアップする
@@ -32,7 +32,7 @@ StorSimple Virtual Array は、ファイル サーバーまたは iSCSI サー�
 
 ## <a name="back-up-shares-and-volumes"></a>共有やボリュームをバックアップする
 
-バックアップにより、特定の時点の共有やボリュームを保護し、回復性を向上させながら、復元時間を最小限に抑えることができます。 StorSimple デバイスでの共有またはボリュームのバックアップは 2 つの方法で実行できます (**スケジュール**または**手動**)。 これらの各方法について、以下のセクションで説明します。
+バックアップにより、特定の時点の共有やボリュームを保護し、回復性を向上させながら、復元時間を最小限に抑えることができます。 StorSimple デバイスでの共有またはボリュームのバックアップは 2 つの方法、つまり、**スケジュールされた**バックアップまたは**手動**バックアップのいずれかを使用して実行できます。 これらの各方法について、以下のセクションで説明します。
 
 ## <a name="change-the-backup-start-time"></a>バックアップの開始時刻を変更する
 
@@ -58,7 +58,7 @@ StorSimple Virtual Array の既定のバックアップ ポリシーは、1 日�
    
     ![バックアップ ポリシーに移動](./media/storsimple-virtual-array-backup/changebuschedule5.png)
 
-4. **[Save]** をクリックします。
+4. **[保存]** をクリックします。
 
 ### <a name="take-a-manual-backup"></a>手動バックアップの取得
 
@@ -112,7 +112,7 @@ StorSimple Virtual Array の既定のバックアップ ポリシーは、1 日�
    
     ![更新されたバックアップ カタログ](./media/storsimple-virtual-array-backup/viewbackups3.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)の詳細を確認します。
 

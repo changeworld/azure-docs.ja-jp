@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 061194422a8c1bc449dbef0c4f04bb8e1db10dea
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68965283"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>StorSimple デバイスの技術的仕様とコンプライアンス
@@ -43,7 +43,7 @@ EBOD エンクロージャは 580 W PCM を使用し、主エンクロージャ�
 | 最大突入電流 |20 A |20 A |
 | 力率補正 |>95% の公称入力電圧 |>95% の公称入力電圧 |
 | 高調波 |EN61000-3-2 に準拠 |EN61000-3-2 に準拠 |
-| Output |5V スタンバイ電圧 \@ 2.0 A |5V スタンバイ電圧 \@ 2.7 A |
+| 出力 |5V スタンバイ電圧 \@ 2.0 A |5V スタンバイ電圧 \@ 2.7 A |
 | +5V \@ 42 A |+5V \@ 40 A | |
 | +12V \@ 38 A |+12V \@ 38 A | |
 | ホット プラグ可能 |はい |はい |
@@ -95,7 +95,7 @@ StorSimple デバイスには、8100 と 8600 のどちらにもハード ディ
 
 | エンクロージャ | mm | インチ |
 | --- | --- | --- |
-| 高さ |87.9 |3.46 |
+| [高さ] |87.9 |3.46 |
 | 取り付け用フランジを含む幅 |483 |19.02 |
 | エンクロージャ本体の幅 |443 |17.44 |
 | 前面の取り付け用フランジからエンクロージャ本体末端までの奥行 |577 |22.72 |
@@ -106,7 +106,7 @@ StorSimple デバイスには、8100 と 8600 のどちらにもハード ディ
 
 フル装備の主エンクロージャの重量は構成に応じて 21 ～ 33 kg になり、2 人で取り扱う必要があります。
 
-| エンクロージャ | 重量 |
+| エンクロージャ | Weight |
 | --- | --- |
 | 最大重量 (構成によって異なる) |30 ～ 33 kg |
 | 空 (ドライブ未搭載) |21 ～ 23 kg |
@@ -196,7 +196,7 @@ Microsoft Azure StorSimple デバイスは次の EMC 規格を満たしていま
 
 10 GbE ネットワーク インターフェイス、DATA 2、DATA 3 については、 [サポートされるネットワーク ケーブルとモジュールの一覧](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 StorSimple デバイスをデータセンターにデプロイする準備ができました。 詳細については、「 [オンプレミスの StorSimple デバイス (Update 2) のデプロイ](storsimple-8000-deployment-walkthrough-u2.md)」を参照してください。
 

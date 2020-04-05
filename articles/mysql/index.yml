@@ -8,12 +8,12 @@ metadata:
   ms.date: 09/03/2019
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 6ccf544b524ad1ccd45b0aa814610902d54c0fd9
-  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+  ms.openlocfilehash: 27da8c70dc64312506269cd1a15aa5b669842dfd
+  ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/04/2019
-  ms.locfileid: "70309301"
+  ms.lasthandoff: 03/27/2020
+  ms.locfileid: "80365437"
 landingContent:
 - title: Azure Database for MySQL について
   linkLists:
@@ -59,7 +59,7 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: バックアップおよび復元
+    - text: バックアップと復元
       url: concepts-backup.md
     - text: ダンプと復元を使用して移行する
       url: concepts-migrate-dump-restore.md
@@ -138,8 +138,8 @@ landingContent:
   - linkListType: reference
     links:
     - text: Azure CLI の開発者用リファレンス
-      url: /rest/api/mysql/
-    - text: REST API の開発者用リファレンス
       url: /cli/azure/mysql
+    - text: REST API の開発者用リファレンス
+      url: /rest/api/mysql/
     - text: Azure Resource Manager のテンプレート
       url: /azure/templates/microsoft.dbformysql/allversions

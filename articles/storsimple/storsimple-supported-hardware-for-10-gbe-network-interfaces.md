@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 09/21/2016
 ms.author: alkohli
 ms.openlocfilehash: 7fafe177ea0c6c618dc4ab0727ba14c83cbb0102
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68965015"
 ---
 # <a name="supported-hardware-for-the-10-gbe-network-interfaces-on-your-storsimple-device"></a>StorSimple デバイス上の 10 GbE ネットワーク インターフェイスでサポートされているハードウェア
@@ -32,12 +32,12 @@ ms.locfileid: "68965015"
 Microsoft では、テストの結果、次の小型フォーム ファクターのプラグ可能な (SFP) トランシーバー、ケーブル、およびスイッチがデバイスで最適に動作することを確認しています (次の表は、新しいハードウェアがテストされるたびに更新されます)。
 
 ### <a name="sfp-transceivers"></a>SFP+ トランシーバー
-| 保存する | モデル |
+| Make | モデル |
 | --- | --- |
 | Cisco |SFP-10G-SR |
 
 ### <a name="cables"></a>ケーブル
-| 連続 いいえ。 | Make | モデル |
+| S. いいえ。 | Make | モデル |
 | --- | --- | --- |
 | 1. |Cisco |SFP-H10GB-CU1M |
 | 2. |Cisco |SFP-H10GB-CU2M |
@@ -45,7 +45,7 @@ Microsoft では、テストの結果、次の小型フォーム ファクター
 | 4. |Tripp-Lite |N820-05M (OM3) |
 
 ### <a name="switches"></a>スイッチ
-| 連続 いいえ。 | Make | モデル |
+| S. いいえ。 | Make | モデル |
 | --- | --- | --- |
 | 1. |Cisco |N3K-C3172PQ-10GE |
 | 2. |Cisco |N3K-C3048-ZM-F |
@@ -73,7 +73,7 @@ Mellanox では、テストの結果、次の小型フォーム ファクター�
 ### <a name="cables-and-modules-supported-by-mellanox"></a>Mellanox でサポートされているケーブルとモジュール
 次の表に、Mellanox でサポートされているケーブルとモジュールを示します。 これらは Microsoft でテストされていませんが、StorSimple デバイスで動作することが見込まれています。
 
-| 連続 いいえ。 | 速度 | モデル | 説明 | Make |
+| S. いいえ。 | 速度 | モデル | 説明 | Make |
 | --- | --- | --- | --- | --- |
 | 1. |10 GbE |CAB-SFP-SFP-1M |パッシブ銅線ケーブル SFP+ 10 Gb/秒、1 m |Arista |
 | 2. |10 GbE |CAB-SFP-SFP-2M |パッシブ銅線ケーブル SFP+ 10 Gb/秒、2 m |Arista |
@@ -114,7 +114,7 @@ Mellanox では、テストの結果、次の小型フォーム ファクター�
 ### <a name="switches-supported-by-mellanox"></a>Mellanox でサポートされているスイッチ
 次の表に、Mellanox でサポートされているスイッチの一覧を示します。 これらは Microsoft でテストされていませんが、StorSimple デバイスで動作することが見込まれています。
 
-| 連続 いいえ。 | 速度 | モデル | 説明 | Make |
+| S. いいえ。 | 速度 | モデル | 説明 | Make |
 | --- | --- | --- | --- | --- |
 | 1. |10 GbE |516733-B21 |HP ProCurve 6120XG 10 GbE イーサネット ブレード スイッチ |HP |
 | 2. |10 GbE |538113-B21 |HP 10 GbE パススルー モジュール (PTM) |HP |
@@ -124,6 +124,6 @@ Mellanox では、テストの結果、次の小型フォーム ファクター�
 | 6. |1 GbE |438030-B21 |HP 1 GbE スイッチ モジュール - GbE2c レイヤー 2/3 イーサネット ブレード スイッチ |HP |
 | 7. |1 GbE |6120G |HP ProCurve 6120G/XG 1 GbE スイッチ ブレード |HP |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [StorSimple ハードウェア コンポーネントと状態の詳細](storsimple-monitor-hardware-status.md)
 

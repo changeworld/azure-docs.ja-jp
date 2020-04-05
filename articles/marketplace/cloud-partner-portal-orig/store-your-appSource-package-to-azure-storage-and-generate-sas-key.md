@@ -1,19 +1,18 @@
 ---
 title: AppSource パッケージを Azure Storage に保存し、SAS キーで URL を生成する
 description: AppSource パッケージをアップロードし、セキュリティで保護するために必要な手順について説明します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.author: pabutler
-ms.openlocfilehash: 5f1a09244697a6771ad1b499f3d7c36eb7297067
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 57bc370fd160b8b3d6d7941ea28cd460c99f3d96
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827660"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285369"
 ---
 <a name="store-your-appsource-package-to-azure-storage-and-generate-a-url-with-sas-key"></a>AppSource パッケージを Azure Storage に保存し、SAS キーで URL を生成する
 =============================================================================

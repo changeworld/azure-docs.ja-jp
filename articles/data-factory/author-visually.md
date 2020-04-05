@@ -11,10 +11,10 @@ ms.reviewer: ''
 manager: anandsub
 ms.date: 12/19/2019
 ms.openlocfilehash: 09d4055ba98da2dd87efc9421402f2827a87ba16
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75440932"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure Data Factory でのビジュアルの作成

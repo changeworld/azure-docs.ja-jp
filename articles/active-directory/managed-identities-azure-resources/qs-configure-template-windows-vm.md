@@ -16,10 +16,10 @@ ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e5540697e8e64586d73e34d253fb95e549fc0301
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75972147"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>テンプレートを使用して Azure VM で Azure リソースのマネージド ID を構成する
@@ -56,7 +56,7 @@ VM でシステム割り当てマネージド ID を有効にするには、お�
 
 1. Azure にローカルでサインインする場合も、Azure Portal を使用してサインインする場合も、VM が含まれる Azure サブスクリプションに関連付けられているアカウントを使用します。
 
-2. システム割り当てマネージド ID を有効にするには、テンプレートをエディターに読み込み、`resources` セクション内で対象の `Microsoft.Compute/virtualMachines` リソースを探し、`"type": "Microsoft.Compute/virtualMachines"` プロパティと同じレベルに `"identity"` プロパティを追加します。 次の構文を使用します。
+2. システム割り当てマネージド ID を有効にするには、テンプレートをエディターに読み込み、`Microsoft.Compute/virtualMachines` セクション内で対象の `resources` リソースを探し、`"identity"` プロパティと同じレベルに `"type": "Microsoft.Compute/virtualMachines"` プロパティを追加します。 次の構文を使用します。
 
    ```JSON
    "identity": {
@@ -155,15 +155,15 @@ VM からシステム割り当てマネージド ID を削除するには、お�
 
 1. Azure にローカルでサインインする場合も、Azure Portal を使用してサインインする場合も、VM が含まれる Azure サブスクリプションに関連付けられているアカウントを使用します。
 
-2. テンプレートを[エディター](#azure-resource-manager-templates)に読み込み、`resources` セクション内で関心のある `Microsoft.Compute/virtualMachines` リソースを探します。 システム割り当てマネージド ID のみが割り当てられた VM がある場合は、ID の種類を `None` に変更することで無効にすることができます。  
+2. テンプレートを[エディター](#azure-resource-manager-templates)に読み込み、`Microsoft.Compute/virtualMachines` セクション内で関心のある `resources` リソースを探します。 システム割り当てマネージド ID のみが割り当てられた VM がある場合は、ID の種類を `None` に変更することで無効にすることができます。  
 
    **Microsoft.Compute/virtualMachines API バージョン 2018-06-01**
 
-   VM にシステム割り当てマネージド ID とユーザー割り当てマネージド ID の両方が割り当てられている場合は、ID の種類から `SystemAssigned` を削除し、`userAssignedIdentities` ディクショナリ値と共に `UserAssigned` を保持します。
+   VM にシステム割り当てマネージド ID とユーザー割り当てマネージド ID の両方が割り当てられている場合は、ID の種類から `SystemAssigned` を削除し、`UserAssigned` ディクショナリ値と共に `userAssignedIdentities` を保持します。
 
    **Microsoft.Compute/virtualMachines API バージョン 2018-06-01**
 
-   `apiVersion` が `2017-12-01` であり、VM にシステム割り当てマネージド ID とユーザー割り当てマネージド ID の両方が割り当てられている場合は、ID の種類から `SystemAssigned` を削除し、ユーザー割り当てマネージド ID の `identityIds` 配列と共に `UserAssigned` を保持します。  
+   `apiVersion` が `2017-12-01` であり、VM にシステム割り当てマネージド ID とユーザー割り当てマネージド ID の両方が割り当てられている場合は、ID の種類から `SystemAssigned` を削除し、ユーザー割り当てマネージド ID の `UserAssigned` 配列と共に `identityIds` を保持します。  
 
 次の例は、ユーザー割り当てマネージド ID が割り当てられていない VM からシステム割り当てマネージド ID を削除する方法を示しています。
 
@@ -316,7 +316,7 @@ VM からユーザー割り当て ID を削除するには、お使いのアカ�
 
 1. Azure にローカルでサインインする場合も、Azure Portal を使用してサインインする場合も、VM が含まれる Azure サブスクリプションに関連付けられているアカウントを使用します。
 
-2. テンプレートを[エディター](#azure-resource-manager-templates)に読み込み、`resources` セクション内で関心のある `Microsoft.Compute/virtualMachines` リソースを探します。 ユーザー割り当てマネージド ID しか存在しない VM がある場合は、ID の種類を `None` に変更することによってそれを無効にすることができます。
+2. テンプレートを[エディター](#azure-resource-manager-templates)に読み込み、`Microsoft.Compute/virtualMachines` セクション内で関心のある `resources` リソースを探します。 ユーザー割り当てマネージド ID しか存在しない VM がある場合は、ID の種類を `None` に変更することによってそれを無効にすることができます。
 
    次の例は、システム割り当てマネージド ID が割り当てられていない VM からユーザー割り当てマネージド ID をすべて削除する方法を示しています。
 
@@ -336,13 +336,13 @@ VM からユーザー割り当て ID を削除するには、お使いのアカ�
 
    VM から 1 つのユーザー割り当てマネージド ID を削除するには、`useraAssignedIdentities` ディクショナリからそれを削除します。
 
-   システム割り当てマネージド ID がある場合は、`identity` 値の `type` 値でそれを保持します。
+   システム割り当てマネージド ID がある場合は、`type` 値の `identity` 値でそれを保持します。
 
    **Microsoft.Compute/virtualMachines API バージョン 2017-12-01**
 
    VM から 1 つのユーザー割り当てマネージド ID を削除するには、`identityIds` 配列からそれを削除します。
 
-   システム割り当てマネージド ID がある場合は、`identity` 値の `type` 値でそれを保持します。
+   システム割り当てマネージド ID がある場合は、`type` 値の `identity` 値でそれを保持します。
 
 ## <a name="next-steps"></a>次のステップ
 

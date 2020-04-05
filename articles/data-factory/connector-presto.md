@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: 71bff5e3761d72236e6896733b96bd6e01460e52
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74927801"
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Presto からデータをコピーする (プレビュー)
@@ -36,7 +36,7 @@ Presto から、サポートされている任意のシンク データ スト�
 
 Azure Data Factory では接続を有効にする組み込みのドライバーが提供されるので、このコネクタを使用してドライバーを手動でインストールする必要はありません。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -162,10 +162,10 @@ Presto からデータをコピーするには、コピー アクティビティ
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
+## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
+プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

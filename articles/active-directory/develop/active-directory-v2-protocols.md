@@ -14,11 +14,11 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: d7ed4dbbc3fddb2e21ed3cf5292ebd80fe1e3e23
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375783"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230743"
 ---
 # <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>Microsoft ID プラットフォームにおける OAuth 2.0 プロトコルと OpenID Connect プロトコル
 
@@ -40,7 +40,7 @@ OAuth 2.0 と OpenID Connect におけるフローはほぼすべて、情報の
 
 ## <a name="app-registration"></a>アプリの登録
 
-個人用アカウントと職場や学校のアカウントの両方を受け付けるアプリはすべて、[Azure portal](https://aka.ms/appregistrations) の**アプリの登録** エクスペリエンスを通じて登録する必要があります。登録後、OAuth 2.0 または OpenID Connect を使用して、それらのユーザーをサインインさせることができます。 アプリの登録プロセスでは、いくつかの値が収集され、対象のアプリに割り当てられます。
+個人用アカウントと職場や学校のアカウントの両方を受け付けるアプリはすべて、**Azure portal** の[アプリの登録](https://aka.ms/appregistrations) エクスペリエンスを通じて登録する必要があります。登録後、OAuth 2.0 または OpenID Connect を使用して、それらのユーザーをサインインさせることができます。 アプリの登録プロセスでは、いくつかの値が収集され、対象のアプリに割り当てられます。
 
 * アプリを一意に識別する**アプリケーション ID**。
 * 応答をアプリにリダイレクトして戻すために使用できる**リダイレクト URI** (オプション)
@@ -59,7 +59,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 
 ここで、 `{tenant}` は次の 4 つの値のいずれかになります。
 
-| Value | 説明 |
+| 値 | 説明 |
 | --- | --- |
 | `common` | 個人の Microsoft アカウントと Azure AD の職場/学校アカウントのどちらでもアプリケーションにサインインできます。 |
 | `organizations` | Azure AD の職場/学校アカウントを持つユーザーのみがアプリケーションにサインインできます。 |

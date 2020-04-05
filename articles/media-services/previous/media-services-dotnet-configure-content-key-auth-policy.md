@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 58d52cd194ca4391c61f2477189984273df1198a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705702"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227079"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>コンテンツ キー承認ポリシーを構成する
 
@@ -392,8 +392,8 @@ PlayReady および Widevine でコンテンツを暗号化する方法につい
 
 キー承認ポリシーに使用されたトークン制限に基づいてテスト トークンを取得するには、「[テスト トークン](#test-token)」のセクションをご覧ください。 
 
-## <a id="types"></a>ContentKeyAuthorizationPolicy を定義するときに使用される種類
-### <a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
+## <a name="types-used-when-you-define-contentkeyauthorizationpolicy"></a><a id="types"></a>ContentKeyAuthorizationPolicy を定義するときに使用される種類
+### <a name="contentkeyrestrictiontype"></a><a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
 
 ```csharp
     public enum ContentKeyRestrictionType
@@ -404,7 +404,7 @@ PlayReady および Widevine でコンテンツを暗号化する方法につい
     }
 ```
 
-### <a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
+### <a name="contentkeydeliverytype"></a><a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
 
 ```csharp 
     public enum ContentKeyDeliveryType
@@ -416,7 +416,7 @@ PlayReady および Widevine でコンテンツを暗号化する方法につい
     }
 ```
 
-### <a id="TokenType"></a>TokenType
+### <a name="tokentype"></a><a id="TokenType"></a>TokenType
 
 ```csharp
     public enum TokenType

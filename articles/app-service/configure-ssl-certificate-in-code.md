@@ -6,10 +6,10 @@ ms.date: 11/04/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
 ms.openlocfilehash: d783b61c372c7d0f8cca13106bf297ab9b55c424
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74671887"
 ---
 # <a name="use-an-ssl-certificate-in-your-code-in-azure-app-service"></a>Azure App Service のコード内から SSL 証明書を使用する
@@ -39,7 +39,7 @@ App Service の SSL 証明書の管理機能を使用すれば、証明書とア
 
 ## <a name="make-the-certificate-accessible"></a>証明書をアクセス可能にする
 
-アプリ コードで証明書にアクセスするには、<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a> で次のコマンドを実行して、`WEBSITE_LOAD_CERTIFICATES` アプリ設定に拇印を追加します。
+アプリ コードで証明書にアクセスするには、`WEBSITE_LOAD_CERTIFICATES`Cloud Shell<a target="_blank" href="https://shell.azure.com" > で次のコマンドを実行して、</a> アプリ設定に拇印を追加します。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_CERTIFICATES=<comma-separated-certificate-thumbprints>
@@ -124,7 +124,7 @@ Node.js、PHP、Python、Java、Ruby で SSL 証明書をファイルから読�
 
 ## <a name="load-certificate-from-file"></a>ファイルから証明書を読み込む
 
-読み込む必要のある証明書ファイルを手動でアップロードする場合は、[Git](deploy-local-git.md) などではなく [FTPS](deploy-ftp.md) を使用して証明書をアップロードすることをお勧めします。 プライベート証明書などの機密データは、ソース管理から分離しておく必要があります。
+読み込む必要のある証明書ファイルを手動でアップロードする場合は、[Git](deploy-ftp.md) などではなく [FTPS](deploy-local-git.md) を使用して証明書をアップロードすることをお勧めします。 プライベート証明書などの機密データは、ソース管理から分離しておく必要があります。
 
 > [!NOTE]
 > Windows 上の ASP.NET および ASP.NET Core は、証明書をファイルから読み込む場合であっても、証明書ストアにアクセスする必要があります。 Windows .NET アプリで証明書ファイルを読み込むには、<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a> から次のコマンドを使用して、現在のユーザー プロファイルを読み込みます。
@@ -155,4 +155,4 @@ Node.js、PHP、Python、Java、Ruby で SSL 証明書をファイルから読�
 * [SSL バインディングを使用してカスタム DNS 名のセキュリティを確保する](configure-ssl-bindings.md)
 * [HTTPS の適用](configure-ssl-bindings.md#enforce-https)
 * [TLS 1.1/1.2 の適用](configure-ssl-bindings.md#enforce-tls-versions)
-* [FAQ:App Service 証明書](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)
+* [FAQ: App Service 証明書](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

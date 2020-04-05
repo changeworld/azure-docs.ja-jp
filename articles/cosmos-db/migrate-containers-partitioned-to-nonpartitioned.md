@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: mjbrown
 ms.openlocfilehash: 742ef62895f3ef64e8fa22ab21d2947bee57776b
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77623351"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>非パーティション分割コンテナーをパーティション分割コンテナーに移行する

@@ -9,10 +9,10 @@ ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: ca4bd3d3b40934323bab8036f3ce72e9281f1de4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67181611"
 ---
 > [!div class="op_single_selector"]
@@ -23,7 +23,7 @@ ms.locfileid: "67181611"
 > * [Raspberry Pi の Node.js](../articles/iot-accelerators/iot-accelerators-connecting-pi-node.md)
 > * [MXChip IoT DevKit](../articles/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md)
 
-このチュートリアルでは、次のテレメトリを、リモート監視の[ソリューション アクセラレータ](../articles/iot-accelerators/about-iot-accelerators.md)に送信する **Chiller** デバイスを実装します。
+このチュートリアルでは、次のテレメトリを、リモート監視の**ソリューション アクセラレータ**に送信する [Chiller](../articles/iot-accelerators/about-iot-accelerators.md) デバイスを実装します。
 
 * 気温
 * 圧力
@@ -37,7 +37,7 @@ ms.locfileid: "67181611"
 * ソリューションの **[デバイス]** ページからトリガーされたアクションに応答する。
 * ソリューションの **[デバイス]** ページから送信された構成変更に応答する。
 
-このチュートリアルを完了するには、アクティブな Azure アカウントが必要になります。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+このチュートリアルを完了するには、アクティブな Azure アカウントが必要になります。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
 
 ## <a name="before-you-start"></a>開始する前に
 

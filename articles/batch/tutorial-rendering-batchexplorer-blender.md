@@ -8,13 +8,13 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
 ms.openlocfilehash: 8a512676ab0e56f51c0fb9c59f2e530cfcf73333
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791428"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "60617627"
 ---
-# <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>チュートリアル:Batch Explorer を使って Blender のシーンをレンダリングする
+# <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>チュートリアル: Batch Explorer を使って Blender のシーンをレンダリングする
 
 このチュートリアルでは、Blender のデモ シーンから複数のフレームをレンダリングする方法について説明します。 このチュートリアルでは、クライアント VM とレンダリング VM のどちらにも無料で利用できる Blender を使っていますが、仮に他のアプリケーション (Maya、3ds Max など) を使った場合でも手順はほぼ同じです。
 
@@ -109,7 +109,7 @@ Blender アプリケーションを含んだレンダリング用 Azure Marketpl
 
 ![Blender のジョブ テンプレート](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_job_template.png)
 
-ジョブとすべてのタスクが作成されると、ジョブがそのタスクと共に表示されます。![ジョブ タスクの一覧](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_task_list.png)
+ジョブとすべてのタスクが作成されると、ジョブがそのタスクと共に表示されます。![ジョブ タスク一覧](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_task_list.png)
 
 プールの VM 上でタスクの初回実行が開始されるとき、バッチ ジョブの準備タスクが実行されます。この準備タスクは、Blender でシーン ファイルにアクセスできるようストレージ ファイル グループから VM にシーン ファイルをコピーするものです。
 レンダーの状態は、Blender によって生成される stdout.txt ログ ファイルを見て確認できます。  いずれかのタスクを選択すると、"Task Outputs (タスクの出力)" が既定で表示され、"stdout.txt" ファイルを選択して表示することができます。
@@ -123,13 +123,13 @@ Blender アプリケーションを含んだレンダリング用 Azure Marketpl
 
 フレームのレンダリングが完了すると、そのタスクが完了済みとして表示されます。![タスクの完了](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_tasks_complete.png)
 
-レンダリングされた画像はまず VM に書き込まれ、"wd" フォルダーを選択することによって表示できます。![プールのノード上でレンダリングされた画像](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_output_image.png)
+レンダリングされた画像はまず VM に書き込まれ、"wd" フォルダーを選択することによって表示できます。![プールのノードでレンダリングされた画像](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_output_image.png)
 
 出力フレームとログ ファイルについても、ジョブの作成時に指定した Azure Storage アカウントのファイル グループに書き戻すように、ジョブ テンプレートで指定されています。  出力ファイルとログは "データ" という UI を使用して表示できます。また、それらのファイルをダウンロードすることもできます。![ストレージ ファイル グループ内のレンダリング済み画像](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_output_image_storage.png)
 
 すべてのタスクが完了すると、ジョブが完了済みとしてマークされます。![ジョブとすべてのタスクが完了](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_job_alltasks_complete.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 > [!WARNING]
 > Azure サブスクリプションに課される VM の料金請求を停止するには、プールを削除する必要があります (サイズ変更でノード数をゼロにしてもかまいません)。
@@ -138,7 +138,7 @@ Blender アプリケーションを含んだレンダリング用 Azure Marketpl
 * [blender-windows] プールを選択します。
 * 右クリックして [削除] を選択するか、プールの上に表示されるごみ箱アイコンを選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Batch Explorer で利用できるレンダリング アプリケーションを [ギャラリー] セクションで探します。
 * アプリケーションごとにいくつかのテンプレートが用意され、今後も拡充されていく予定です。  たとえば Blender については、単一の画像を複数のタイルに分割することで 1 つの画像を構成する各部分を並列にレンダリングできるテンプレートが存在します。
 * レンダリング機能の包括的な説明については、[こちら](https://docs.microsoft.com/azure/batch/batch-rendering-service)にある一連の記事を参照してください。

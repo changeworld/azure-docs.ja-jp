@@ -16,10 +16,10 @@ ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 670ae329943610ba16411da3782bc1da079c6490
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74183208"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-identity-to-access-azure-storage-via-a-sas-credential"></a>チュートリアル:Linux VM のシステム割り当て ID を使用して SAS 資格情報で Azure Storage にアクセスする
@@ -226,7 +226,7 @@ az storage blob download --container-name
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Linux VM のシステム割り当てマネージド ID を使用して SAS 資格情報で Azure Storage にアクセスする方法について説明しました。  Azure Storage SAS の詳細については、以下を参照してください。
 

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
 ms.openlocfilehash: a6c7639cb4988eb13dfaa1c151085cda6e53b5d3
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68611358"
 ---
 # <a name="remediate-non-compliant-dsc-servers"></a>準拠していない DSC サーバーを修復する
@@ -44,7 +44,7 @@ Azure ノードの場合、ドリフト補正は、ポータルから、また�
 ハイブリッド ノードの場合は、含まれている Python スクリプトを使用して、ドリフト補正を行うことができます。
 [Linux リポジトリ用の PowerShell DSC](https://github.com/Microsoft/PowerShell-DSC-for-Linux#performing-dsc-operations-from-the-linux-computer) のドキュメントを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - PowerShell コマンドレットのリファレンスについては、[Azure Automation State Configuration のコマンドレット](/powershell/module/azurerm.automation/#automation)に関するページをご覧ください。
 - 継続的なデプロイ パイプラインで Azure Automation State Configuration を使う例については、「[Automation State Configuration と Chocolatey を使用した仮想マシンへの継続的なデプロイ](automation-dsc-cd-chocolatey.md)」をご覧ください。

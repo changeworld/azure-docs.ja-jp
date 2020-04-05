@@ -9,11 +9,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/05/2020
 ms.openlocfilehash: bc7e77cc498958b2f8f0c5b2d5ab2d59db97a235
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560832"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215270"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Cosmos のアカウント、データベース、コンテナー、および項目を作成する
 
@@ -59,7 +59,7 @@ Azure portal のデータ エクスプローラーを使用してデータベー
     |---|---|---|
     |**データベース ID**|ToDoList|新しいデータベースの名前として *ToDoList* を入力します。 データベース名は 1 文字以上 255 文字以内にする必要があります。`/, \\, #, ?` は使えず、末尾にスペースを入れることもできません。 **[Provision database throughput]\(データベース スループットをプロビジョニングする\)** オプションをオンにすると、データベースにプロビジョニングされたスループットをデータベース内のすべてのコンテナーにわたって共有できます。 このオプションは、コストの削減にも役立ちます。 |
     |**スループット**|400|スループットを 400 要求ユニット/秒 (RU/秒) のままにします。 待ち時間を短縮する場合、後でスループットをスケールアップできます。| 
-    |**コンテナー ID**|アイテム|新しいコンテナーの名前として「*アイテム*」と入力します。 コンテナー ID には、データベース名と同じ文字要件があります。|
+    |**コンテナー ID**|アイテム|新しいコンテナーの名前として「*項目*」と入力します。 コンテナー ID には、データベース名と同じ文字要件があります。|
     |**パーティション キー**| /category| この記事で説明するサンプルでは、 */category* をパーティション キーとして使用します。|
 
     

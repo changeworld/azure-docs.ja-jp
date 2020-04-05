@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 8254d121c62a20de0a1593920b7793195f8eb50e
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78926707"
 ---
 # <a name="import-the-postman-environment"></a>Postman 環境のインポート  

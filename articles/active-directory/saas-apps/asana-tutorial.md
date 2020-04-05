@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Asana の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Asana の統合 | Microsoft Docs'
 description: Azure Active Directory と Asana の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5531a7c1a95e472239c639e3307623fc4ccedd37
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73157870"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-asana"></a>チュートリアル:Azure Active Directory と Asana の統合
+# <a name="tutorial-azure-active-directory-integration-with-asana"></a>チュートリアル: Azure Active Directory と Asana の統合
 
 このチュートリアルでは、Asana と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Asana と Azure AD の統合には、次の利点があります。
@@ -140,7 +140,7 @@ Asana を使用して Azure AD シングル サインオンを構成するには
 
     b. Azure Portal からダウンロードした証明書を右クリックし、メモ帳またはお好きなテキスト エディターを使って証明書ファイルを開きます。 証明書タイトルの内容を最初から最後までコピーし、 **[X.509 Certificate]** (X.509 証明書) ボックスに貼り付けます。
 
-3. **[Save]** をクリックします。 さらにサポートが必要な場合は、 [SSO の設定に関する Asana ガイド](https://asana.com/guide/help/premium/authentication#gl-saml) をご覧ください。
+3. **[保存]** をクリックします。 さらにサポートが必要な場合は、 [SSO の設定に関する Asana ガイド](https://asana.com/guide/help/premium/authentication#gl-saml) をご覧ください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

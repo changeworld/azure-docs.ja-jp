@@ -5,10 +5,10 @@ services: service-fabric
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.openlocfilehash: 972700dded1841994de9252b4aa4bbc8eaefeaf8
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76024700"
 ---
 # <a name="service-fabric-architecture"></a>Service Fabric のアーキテクチャ

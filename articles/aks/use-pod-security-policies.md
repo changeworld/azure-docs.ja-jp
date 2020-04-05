@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 04/17/2019
 ms.openlocfilehash: 74177136a7a61186ab1d273b57dbfce550a18ecf
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77914536"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>プレビュー - Azure Kubernetes Service (AKS) でポッド セキュリティ ポリシーを使用してクラスターのセキュリティを保護する

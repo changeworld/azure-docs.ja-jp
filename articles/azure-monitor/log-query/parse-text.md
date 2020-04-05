@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 12/04/2018
 ms.openlocfilehash: d7a37d51c411488231205fd036f9a287f5206ce5
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77672448"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Azure Monitor ログのテキスト データの解析
@@ -139,7 +139,7 @@ MyCustomCSVLog_CL
 - [JSON](/azure/kusto/query/parsejsonfunction)
 - [XML](/azure/kusto/query/parse-xmlfunction)
 - [IPv4](/azure/kusto/query/parse-ipv4function)
-- [[URL]](/azure/kusto/query/parseurlfunction)
+- [URL](/azure/kusto/query/parseurlfunction)
 - [URL query](/azure/kusto/query/parseurlqueryfunction)
 - [[ファイル パス]](/azure/kusto/query/parsepathfunction)
 - [User agent](/azure/kusto/query/parse-useragentfunction)

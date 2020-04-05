@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
 ms.openlocfilehash: 1737102ee652cc2263bd0a908c1336bc93a6757b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75377907"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Azure Service Fabric でのバックアップの復元

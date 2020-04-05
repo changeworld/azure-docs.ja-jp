@@ -10,10 +10,10 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.openlocfilehash: bf80925a2dc5c6d06ba14fe1c0d72a2fc1f88d51
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73953862"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>IoT Hub モジュール ID とモジュール ツイン (Node.js) の概要
@@ -210,7 +210,7 @@ ms.locfileid: "73953862"
    twin state reported
    ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 引き続き IoT Hub の使用方法を確認すると共に、他の IoT のシナリオについて調べるには、次のページを参照してください。
 

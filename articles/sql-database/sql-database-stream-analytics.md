@@ -12,10 +12,10 @@ ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
 ms.openlocfilehash: d233d3c98cc495e4b9e84142781f5eb9faa7eec8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73820838"
 ---
 # <a name="stream-data-by-using-azure-sql-database-stream-analytics-integration-preview"></a>Azure SQL Database Stream Analytics 統合を使用してデータをストリーム配信する (プレビュー)
@@ -42,7 +42,7 @@ ms.locfileid: "73820838"
 
 ## <a name="configure-stream-analytics-integration"></a>Stream Analytics 統合を構成する
 
-1. Azure ポータルにサインインします。 
+1. Azure portal にサインインします。 
 2. ストリーミング データを取り込む SQL データベースに移動します。 **[Stream analytics (preview)]\(Stream Analytics (プレビュー)\)** を選択します。 
 
     ![Stream Analytics](media/sql-database-stream-analytics/stream-analytics.png)
@@ -126,7 +126,7 @@ ms.locfileid: "73820838"
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Stream Analytics のドキュメント](https://docs.microsoft.com/azure/stream-analytics/)
 - [Azure Stream Analytics のソリューション パターン](../stream-analytics/stream-analytics-solution-patterns.md)

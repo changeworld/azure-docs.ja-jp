@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/17/2020
 ms.openlocfilehash: fa165c21622110bb18476efdebf3264a11e26ad7
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77431104"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231595"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Azure Data Factory を使用して SAP HANA からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -64,12 +64,12 @@ SAP HANA データベースから、サポートされている任意のシン�
 
 SAP HANA のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | Required |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**SapHana** | はい |
 | connectionString | **基本認証**または **Windows 認証**のいずれかを使用して SAP HANA に接続するために必要な情報を指定します。 以下のサンプルを参照してください。<br>接続文字列には、サーバー/ポートが必要です (既定のポートは 30015)。基本認証を使用する場合は、ユーザー名とパスワードが必要です。 詳細設定については、[SAP HANA ODBC の接続プロパティ](<https://help.sap.com/viewer/0eec0d68141541d1b07893a39944924e/2.0.02/en-US/7cab593774474f2f8db335710b2f5c50.html>)に関する記事を参照してください。<br/>パスワードを Azure Key Vault に格納し、接続文字列からパスワード構成を引き出すこともできます。 詳細については、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 | はい |
 | userName | Windows 認証を使用する場合は、ユーザー名を指定します。 例: `user@domain.com` | いいえ |
-| パスワード | ユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ |
+| password | ユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |はい |
 
 **例: 基本認証を使用する**
@@ -145,7 +145,7 @@ SAP HANA のリンクされたサービスでは、次のプロパティがサ�
 
 SAP HANA からのデータ コピーについては、次のプロパティがサポートされています。
 
-| プロパティ | 説明 | Required |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | データセットの type プロパティは、次のように設定する必要があります:**SapHanaTable** | はい |
 | schema | SAP HANA データベース内のスキーマの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
@@ -184,7 +184,7 @@ SAP HANA からのデータ コピーについては、次のプロパティが�
 
 SAP HANA からデータをコピーするために、コピー アクティビティの **source** セクションでは次のプロパティがサポートされています。
 
-| プロパティ | 説明 | Required |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**SapHanaSource** | はい |
 | query | SAP HANA インスタンスからデータを読み取る SQL クエリを指定します。 | はい |

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Rollbar の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Rollbar の統合 | Microsoft Docs'
 description: Azure Active Directory と Rollbar の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
 ms.openlocfilehash: d76f4e9d61d8fd210fe9332084f9f44d19e54eed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67092672"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>チュートリアル:Azure Active Directory と Rollbar の統合
+# <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>チュートリアル: Azure Active Directory と Rollbar の統合
 
 このチュートリアルでは、Rollbar と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Rollbar と Azure AD の統合には、次の利点があります。
@@ -152,7 +152,7 @@ Rollbar で Azure AD シングル サインオンを構成するには、次の�
 
     b. メタデータ ファイルをメモ帳で開き、その内容をクリップボードにコピーし、 **[SAML Metadata]\(SAML メタデータ\)** テキストボックスに貼りつけます。
 
-    c. **[Save]** をクリックします。
+    c. **[保存]** をクリックします。
 
 1. 保存ボタンをクリックすると、次のような画面が表示されます。
 
@@ -166,7 +166,7 @@ Rollbar で Azure AD シングル サインオンを構成するには、次の�
 
     b.  画面に戻った後、 **[Require login via SAML Identity Provider]\(SAML ID プロバイダーによるログインを要求する\)** チェック ボックスをオンにします。
 
-    b. **[Save]** をクリックします。
+    b. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

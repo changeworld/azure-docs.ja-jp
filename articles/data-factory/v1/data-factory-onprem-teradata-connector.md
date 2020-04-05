@@ -13,14 +13,14 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: ecde5784e759ef5259b8c67ed574cef6cae98f30
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929050"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236307"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Azure Data Factory を使用して Teradata からデータを移動する
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-onprem-teradata-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-teradata.md)
 
@@ -42,10 +42,10 @@ Teradata が Azure IaaS VM でホストされている場合でも、ゲート�
 ## <a name="supported-versions-and-installation"></a>サポートされているバージョンとインストール
 Data Management Gateway で Teradata データベースに接続するには、[.NET Data Provider for Teradata](https://go.microsoft.com/fwlink/?LinkId=278886) バージョン 14 以降を Data Management Gateway と同じシステムにインストールする必要があります。 Teradata バージョン 12 以降がサポートされています。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 さまざまなツールまたは API を使用して、オンプレミスの Cassandra データ ストアからデータを移動するコピー アクティビティでパイプラインを作成できます。
 
-- パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
+- パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 - また、次のツールを使用してパイプラインを作成することもできます。**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
@@ -65,7 +65,7 @@ Data Management Gateway で Teradata データベースに接続するには、[
 | --- | --- | --- |
 | type |type プロパティは、次のように設定する必要があります:**OnPremisesTeradata** |はい |
 | server |Teradata のサーバーの名前です。 |はい |
-| authenticationType |Teradata データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |はい |
+| authenticationType |Teradata データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows です。 |はい |
 | username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
 | gatewayName |Data Factory サービスが、オンプレミスの Teradata データベースへの接続に使用するゲートウェイの名前です。 |はい |
@@ -284,12 +284,12 @@ Teradata にデータを移動する場合、Teradata 型から .NET 型に対�
 
 | Teradata データベース型 | .NET Framework 型 |
 | --- | --- |
-| Char |string |
-| Clob |string |
-| Graphic |string |
-| VarChar |string |
-| VarGraphic |string |
-| Blob |Byte[] |
+| Char |String |
+| Clob |String |
+| Graphic |String |
+| VarChar |String |
+| VarGraphic |String |
+| BLOB |Byte[] |
 | Byte |Byte[] |
 | VarByte |Byte[] |
 | BigInt |Int64 |
@@ -301,7 +301,7 @@ Teradata にデータを移動する場合、Teradata 型から .NET 型に対�
 | SmallInt |Int16 |
 | Date |DateTime |
 | Time |TimeSpan |
-| Time With Time Zone |string |
+| Time With Time Zone |String |
 | Timestamp |DateTime |
 | Timestamp With Time Zone |DateTimeOffset |
 | Interval Day |TimeSpan |
@@ -314,15 +314,15 @@ Teradata にデータを移動する場合、Teradata 型から .NET 型に対�
 | Interval Minute |TimeSpan |
 | Interval Minute To Second |TimeSpan |
 | Interval Second |TimeSpan |
-| Interval Year |string |
-| Interval Year To Month |string |
-| Interval Month |string |
-| Period(Date) |string |
-| Period(Time) |string |
-| Period(Time With Time Zone) |string |
-| Period(Timestamp) |string |
-| Period(Timestamp With Time Zone) |string |
-| Xml |string |
+| Interval Year |String |
+| Interval Year To Month |String |
+| Interval Month |String |
+| Period(Date) |String |
+| Period(Time) |String |
+| Period(Time With Time Zone) |String |
+| Period(Timestamp) |String |
+| Period(Timestamp With Time Zone) |String |
+| xml |String |
 
 ## <a name="map-source-to-sink-columns"></a>ソース列からシンク列へのマップ
 ソース データセット列のシンク データセット列へのマッピングの詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。

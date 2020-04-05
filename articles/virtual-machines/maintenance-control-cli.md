@@ -8,11 +8,11 @@ ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: cynthn
 ms.openlocfilehash: 58c0964d170f49066802b955f09dab01eaf998a7
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252197"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226763"
 ---
 # <a name="preview-control-updates-with-maintenance-control-and-the-azure-cli"></a>プレビュー:メンテナンス コントロールと Azure CLI を使用して更新を制御する
 
@@ -244,7 +244,7 @@ ute/virtualMachines/DXT-test-04-iso/providers/Microsoft.Maintenance/applyUpdates
 Name           : default
 Type           : Microsoft.Maintenance/applyUpdates
 ```
-LastUpdateTime は、更新が完了した時刻になります。これは、ユーザーによって開始されたか、またはセルフ メンテナンス ウィンドウが使用されなかった場合にプラットフォームによって開始されました。 メンテナンス制御によって更新プログラムが適用されたことがない場合は、既定値が表示されます。
+LastUpdateTime は、更新が完了した時刻になります。これは、ユーザーによって開始されたか、またはセルフ メンテナンス ウィンドウが使用されなかった場合にプラットフォームによって開始されました。 今までメンテナンス コントロールによって更新プログラムが適用されたことがない場合は、既定値が表示されます。
 
 ### <a name="isolated-vm"></a>分離された VM
 

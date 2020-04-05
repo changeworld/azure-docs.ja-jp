@@ -35,6 +35,10 @@
     - name: 概念
       expanded: false
       items:
+        - name: Security
+          items:
+            - name: セキュリティ ベースライン
+              href: security-baseline.md
         - name: Container Registry の SKU と制限
           href: container-registry-skus.md
         - name: レジストリ、リポジトリ、イメージ
@@ -120,7 +124,7 @@
         - name: モニター
           expanded: false
           items:
-            - name: 診断と監査ログ (プレビュー)
+            - name: 診断と監査ログ
               href: container-registry-diagnostics-audit-logs.md
             - name: Azure Policy を使用したコンプライアンスの監査 (プレビュー)
               href: container-registry-azure-policy.md

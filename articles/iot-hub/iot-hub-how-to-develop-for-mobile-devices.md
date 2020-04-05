@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: robinsh
 ms.openlocfilehash: 945b02003a443c04e692fdc06ca5714de362d074
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68883095"
 ---
 # <a name="develop-for-mobile-devices-using-azure-iot-sdks"></a>Azure IoT SDK を利用したモバイル デバイス向け開発
@@ -29,7 +29,7 @@ Azure IoT Hub SDK は､Azure IoT Hub C SDK を介してネイティブ iOS プ�
 
 iOS デバイス上でデバイス アプリケーションやサービス アプリケーションを開発する手順については､以下の文書で順を追って説明しています｡
 
-* [クイック スタート:デバイスから IoT ハブへの利用統計情報の送信](quickstart-send-telemetry-ios.md)  
+* [クイック スタート: デバイスから IoT ハブへの利用統計情報の送信](quickstart-send-telemetry-ios.md)  
 * [IoT ハブを利用したクラウドからデバイスへのメッセージの送信](iot-hub-ios-swift-c2d.md) 
 
 ### <a name="develop-with-azure-iot-hub-cocoapod-libraries"></a>Azure IoT Hub の CocoaPod ライブラリを利用した開発
@@ -47,10 +47,10 @@ Azure IoT Hub Java SDK では、Android プラットフォームをサポート�
 
 Gradle および Android Studio を使用して Android デバイス上でデバイス アプリケーションやサービス アプリケーションを開発する手順については､以下の文書で順を追って説明しています。
 
-* [クイック スタート:デバイスから IoT ハブへの利用統計情報の送信](quickstart-send-telemetry-android.md)  
-* [クイック スタート:IoT ハブに接続されたデバイスを制御する](quickstart-control-device-android.md) 
+* [クイック スタート: デバイスから IoT ハブへの利用統計情報の送信](quickstart-send-telemetry-android.md)  
+* [クイック スタート: IoT ハブに接続されたデバイスを制御する](quickstart-control-device-android.md) 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [IoT Hub REST API リファレンス](https://docs.microsoft.com/rest/api/iothub/)
 * [Azure IoT C SDK ソース コード](https://github.com/Azure/azure-iot-sdk-c)

@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, bash, cloudshell, プレイブック, aks, コ
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: e3667ad7a561f56d5fddaacad705c53d1de9ac36
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156905"
 ---
 # <a name="tutorial-configure-azure-cni-networking-in-azure-kubernetes-service-aks-using-ansible"></a>チュートリアル:Ansible を使用して Azure Kubernetes Service (AKS) で Azure CNI ネットワークを構成する
@@ -28,7 +28,7 @@ AKS のアプリケーションに対するネットワークの詳細につい�
 
 > [!div class="checklist"]
 >
-> * AKS クラスターの作成
+> * AKS クラスターを作成する
 > * Azure CNI ネットワークの構成
 
 ## <a name="prerequisites"></a>前提条件
@@ -39,10 +39,10 @@ AKS のアプリケーションに対するネットワークの詳細につい�
 
 ## <a name="create-a-virtual-network-and-subnet"></a>仮想ネットワークとサブネットの作成
 
-このセクションのプレイブックのサンプル コードは、次の目的で使用します。
+このセクションのサンプル プレイブック コードは、次の目的で使用します。
 
 - 仮想ネットワークの作成
-- 仮想ネットワーク内にサブネットを作成する
+- 仮想ネットワーク内のサブネットを作成する
 
 次のプレイブックを `vnet.yml` という名前で保存します。
 
@@ -65,7 +65,7 @@ AKS のアプリケーションに対するネットワークの詳細につい�
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>仮想ネットワークに AKS クラスターを作成する
 
-このセクションのプレイブックのサンプル コードは、次の目的で使用します。
+このセクションのサンプル プレイブック コードは、次の目的で使用します。
 
 - 仮想ネットワーク内に AKS クラスターを作成する。
 
@@ -102,7 +102,7 @@ AKS のアプリケーションに対するネットワークの詳細につい�
   register: aks
 ```
 
-以下に、サンプルのプレイブックを使用する際に考慮すべき重要な点をいくつか示します。
+以下に、サンプル プレイブックを使用する際に考慮すべき重要な点をいくつか示します。
 
 - `azure_rm_aks_version` モジュールを使用して、サポートされているバージョンを見つけます。
 - `vnet_subnet_id` は、前のセクションで作成したサブネットです。
@@ -116,7 +116,7 @@ AKS のアプリケーションに対するネットワークの詳細につい�
 
 ## <a name="run-the-sample-playbook"></a>サンプル プレイブックを実行する
 
-このセクションのプレイブックのサンプル コードは、このチュートリアル全体を通して示されるさまざまな機能をテストするために使用します。
+このセクションのサンプル プレイブック コードは、このチュートリアル全体を通して示されるさまざまな機能をテストするために使用します。
 
 次のプレイブックを `aks-azure-cni.yml` という名前で保存します。
 
@@ -146,7 +146,7 @@ AKS のアプリケーションに対するネットワークの詳細につい�
            var: aks
 ```
 
-以下に、サンプルのプレイブックを使用する際に考慮すべき重要な点をいくつか示します。
+以下に、サンプル プレイブックを使用する際に考慮すべき重要な点をいくつか示します。
 
 - `aksansibletest` 値は実際のリソース グループ名に変更します。
 - `aksansibletest` 値は実際の AKS 名に変更します。
@@ -242,11 +242,11 @@ PLAY RECAP
 localhost                  : ok=9    changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この記事で作成したリソースが不要になったら、削除してください。 
 
-このセクションのプレイブックのサンプル コードは、次の目的で使用します。
+このセクションのサンプル プレイブック コードは、次の目的で使用します。
 
 - `vars` セクションで参照されているリソース グループを削除する。
 
@@ -265,7 +265,7 @@ localhost                  : ok=9    changed=4    unreachable=0    failed=0    s
             force: yes
 ```
 
-以下に、サンプルのプレイブックを使用する際に考慮すべき重要な点をいくつか示します。
+以下に、サンプル プレイブックを使用する際に考慮すべき重要な点をいくつか示します。
 
 - `{{ resource_group_name }}` プレースホルダーは実際のリソース グループの名前に置き換えます。
 - 指定したリソース グループ内のすべてのリソースが削除されます。
@@ -276,7 +276,7 @@ ansible-playbook コマンドを使用してプレイブックを実行します
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [チュートリアル:Ansible を使用して AKS で Azure Active Directory を構成する](./ansible-aks-configure-rbac.md)

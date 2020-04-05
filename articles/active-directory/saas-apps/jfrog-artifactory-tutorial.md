@@ -17,10 +17,10 @@ ms.date: 07/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 78daf578647e087fcc673d612ce24814a53ee331
-ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70213561"
 ---
 # <a name="tutorial-integrate-jfrog-artifactory-with-azure-active-directory"></a>チュートリアル:JFrog Artifactory と Azure Active Directory の統合
@@ -29,7 +29,7 @@ ms.locfileid: "70213561"
 
 * JFrog Artifactory にアクセスできるユーザーを Azure AD で制御する。
 * ユーザーが自分の Azure AD アカウントを使用して JFrog Artifactory に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -109,7 +109,7 @@ JFrog Artifactory に対する Azure AD SSO を構成してテストするには
 
     b. ラジオ ボタンのリストから **[すべてのグループ]** を選択します。
 
-    c. **[Save]** をクリックします。
+    c. **[保存]** をクリックします。
 
 4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (未加工)]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 

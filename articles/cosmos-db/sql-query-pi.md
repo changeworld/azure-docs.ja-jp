@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 27832008e8922e339a648985192a58b111555bc9
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71349654"
 ---
 # <a name="pi-azure-cosmos-db"></a>PI (Azure Cosmos DB)
- 円周率の定数値を返します。  
+ PI の定数値を返します。  
   
 ## <a name="syntax"></a>構文
   
@@ -41,8 +41,8 @@ SELECT PI() AS pi
 [{"pi": 3.1415926535897931}]  
 ```  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [数学関数 (Azure Cosmos DB)](sql-query-mathematical-functions.md)
-- [システム関数 (Azure Cosmos DB)](sql-query-system-functions.md)
+- [Azure Cosmos DB の数学関数](sql-query-mathematical-functions.md)
+- [Azure Cosmos DB のシステム関数](sql-query-system-functions.md)
 - [Azure Cosmos DB の概要](introduction.md)

@@ -10,10 +10,10 @@ services: iot-dps
 manager: eliotgra
 ms.custom: mvc
 ms.openlocfilehash: aaa1a4423363255536db7d53a1f8f8fa9ba686ff
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76961189"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>クイック スタート:対称キーを使用してシミュレートされたデバイスをプロビジョニングする

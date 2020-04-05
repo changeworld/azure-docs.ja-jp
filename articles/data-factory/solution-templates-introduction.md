@@ -12,10 +12,10 @@ manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 01/04/2019
 ms.openlocfilehash: f150234ecd3446858e8a6aa7d224eb3ad3d0efd3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74927342"
 ---
 # <a name="templates"></a>テンプレート

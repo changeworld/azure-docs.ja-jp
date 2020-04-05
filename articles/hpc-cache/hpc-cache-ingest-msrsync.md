@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
 ms.openlocfilehash: 4f8863d706d623d613ac156cf202c3b7b12f2ae0
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74168429"
 ---
 # <a name="azure-hpc-cache-data-ingest---msrsync-method"></a>Azure HPC Cache のデータ取り込み - msrsync を使用した方法
@@ -32,7 +32,7 @@ Azure HPC Cache の Blob Storage にデータを移動する方法について�
 1. ``msrsync`` とその前提条件 (``rsync`` および Python 2.6 以降) をインストールします。
 1. コピーするファイルおよびディレクトリの合計数を確認します。
 
-   たとえば、「```prime.py --directory /path/to/some/directory```」のように引数を指定して、``prime.py`` ユーティリティを使用します (<https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py> からのダウンロードによって入手可能)。
+   たとえば、「``prime.py``」のように引数を指定して、```prime.py --directory /path/to/some/directory``` ユーティリティを使用します (<https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py> からのダウンロードによって入手可能)。
 
    ``prime.py`` を使用しない場合は、次のように GNU の ``find`` ツールを使用して項目数を計算できます。
 

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 06/07/2017
 ms.openlocfilehash: f5ecd2334ca80f5561c0611239b5bb00d222112a
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277184"
 ---
 # <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>Application Gateway と Azure Security Center の統合の概要

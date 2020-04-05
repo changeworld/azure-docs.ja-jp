@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: e5b218efd9c8cfaad99d76d8118d181390a977c3
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789105"
 ---
 # <a name="manage-messages-in-twilio-with-azure-logic-apps"></a>Azure Logic Apps で Twilio のメッセージを管理する
@@ -72,6 +72,6 @@ Azure Logic Apps と Twilio コネクタを使用すると、Twilio のメッセ
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
 * 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

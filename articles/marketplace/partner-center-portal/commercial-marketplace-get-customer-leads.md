@@ -1,19 +1,18 @@
 ---
 title: 潜在顧客の構成 | Azure Marketplace
 description: 商業マーケットプレースで潜在顧客を構成します。
-services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.author: evansma
-ms.openlocfilehash: 7ead8dee12d4376e6e1058b84a25b91c021a937c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: ce576d9825819770486197a6c39425adf6ac3208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812642"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275902"
 ---
 # <a name="customer-leads-from-your-marketplace-offer"></a>マーケットプレース オファーからの潜在顧客
 
@@ -78,8 +77,8 @@ ms.locfileid: "73812642"
 - FirstName: John
 - LastName: Smith
 - Email: jsmith\@microsoft.com
-- Phone: 1234567890
-- Country: US
+- Phone:1234567890
+- 国: US
 - Company: Microsoft
 - タイトル:CTO
 
@@ -158,6 +157,6 @@ PII (個人を特定できる情報) ポリシーがあるため、セキュリ�
 
 質問の回答がまだない場合は、aka.ms/marketplacepublishersupport からサポートに連絡し、 **[offer creation]\(オファーの作成\)** → **自分のオファーの種類** → **[lead management configuration]\(リード管理構成\)** を選択できます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 技術的な設定が完了したら、これらのリードを現在の販売/マーケティング戦略と運用プロセスに組み込む必要があります。 Microsoft は、パートナーの販売プロセス全体について理解を深めることに関心を持っており、パートナーを成功に導くために、パートナーと緊密に連携して質の高いリードと十分なデータを提供していきたいと考えてます。 顧客を成功に導く上で役立つ追加情報と共に送信されるリードを最適化し、強化する方法についてフィードバックをお待ちしています。 Marketplace Leads によって販売チームがより大きな成果を挙げることができるようにするための[フィードバック](mailto:AzureMarketOnboard@microsoft.com)や提案に関心がある場合は、ぜひお知らせください。

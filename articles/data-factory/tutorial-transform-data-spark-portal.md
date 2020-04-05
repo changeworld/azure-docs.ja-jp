@@ -11,10 +11,10 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.openlocfilehash: ddc5032da415ebee9920556d3168d30bdae4a158
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75439209"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Azure Data Factory で Spark アクティビティを使用してクラウドのデータを変換する
@@ -105,7 +105,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください。[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) Data Factory で使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 1. 作成が完了すると、 **[データ ファクトリ]** ページが表示されます。 **[作成と監視]** タイルを選択して、別のタブで Data Factory UI アプリケーションを起動します。
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
 ms.openlocfilehash: cffd2eab3a616b4d16d847d0f2e1a26655f40459
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77919925"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法

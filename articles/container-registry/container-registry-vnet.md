@@ -4,10 +4,10 @@ description: Azure コンテナー レジストリへは、Azure 仮想ネット
 ms.topic: article
 ms.date: 07/01/2019
 ms.openlocfilehash: a6b89b074c25ea0948597ede7e5681b100c7f429
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74454332"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Azure 仮想ネットワークまたはファイアウォール規則を使用して Azure コンテナー レジストリへのアクセスを制限する
@@ -39,7 +39,7 @@ ms.locfileid: "74454332"
 
 * コンテナー レジストリがまだない場合は、1 つ作成し (Premium SKU が必要)、Docker Hub から `hello-world` などのサンプル イメージをプッシュします。 たとえば、[Azure portal][quickstart-portal] または [Azure CLI][quickstart-cli] を使用してレジストリを作成します。 
 
-* 別の Azure サブスクリプションの仮想ネットワークを使用してレジストリ アクセスを制限する場合、そのサブスクリプションで Azure Container Registry のリソース プロバイダーを登録する必要があります。 例:
+* 別の Azure サブスクリプションの仮想ネットワークを使用してレジストリ アクセスを制限する場合、そのサブスクリプションで Azure Container Registry のリソース プロバイダーを登録する必要があります。 次に例を示します。
 
   ```azurecli
   az account set --subscription <Name or ID of subscription of virtual network>
@@ -333,7 +333,7 @@ Error response from daemon: login attempt to https://xxxxxxx.azurecr.io/v2/ fail
 az acr network-rule list--name mycontainerregistry 
 ```
 
-構成されている規則ごとに [az acr network-rule remove][az-acr-network-rule-remove] コマンドを実行して、各規則を削除します。 例:
+構成されている規則ごとに [az acr network-rule remove][az-acr-network-rule-remove] コマンドを実行して、各規則を削除します。 次に例を示します。
 
 ```azurecli
 # Remove a rule that allows access for a subnet. Substitute the subnet resource ID.
@@ -366,7 +366,7 @@ az acr update --name myContainerRegistry --default-action Allow
 1. **[許可するアクセス元]** で **[すべてのネットワーク]** を選択します。 
 1. **[保存]** を選択します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 すべての Azure リソースを同じリソース グループ内に作成し、それらが不要になった場合は、1 つの [az group delete](/cli/azure/group) コマンドを使用してリソースを削除することもできます。
 
@@ -376,7 +376,7 @@ az group delete --name myResourceGroup
 
 ポータル上でリソースをクリーンアップするには、myResourceGroup リソース グループに移動します。 リソース グループが読み込まれたら、 **[リソース グループの削除]** をクリックして、リソース グループとそこに格納されているリソースを削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、仮想ネットワークのいくつかのリソースと機能について簡潔に説明しました。 これらのトピックについては、Azure Virtual Network のドキュメントで詳しく説明しています。
 

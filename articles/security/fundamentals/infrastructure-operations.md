@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 05/30/2019
 ms.author: terrylan
 ms.openlocfilehash: d41fe409b4a44a4c2af3670d76dd3a83a300feae
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68727129"
 ---
 # <a name="management-and-operation-of-the-azure-production-network"></a>Azure 実稼働ネットワークの管理と運用    
@@ -50,10 +50,10 @@ Azure 実稼働環境のネットワークの管理と運用は、Azure と Azur
 
 内部の Azure アプリケーションへのアクセスは、Active Directory フェデレーション サービス (AD FS) による認証を経由して、制御されています。 AD FS は、安全なトークンとユーザー要求を適用することで企業ネットワーク ユーザーの認証を提供している、Microsoft Information Technology でホストされているサービスです。 AD FS を利用することで、内部の Azure アプリケーションは、Microsoft の企業の Active Directory ドメインに対してユーザーを認証できます。 企業ネットワーク環境から実稼働環境のネットワークにアクセスするには、ユーザーは多要素認証を使用して、認証する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Microsoft が提供する Azure アーキテクチャの保護の詳細については、以下を参照してください。
 
-- [Azure ファシリティ、プレミス、および物理的なセキュリティ](physical-security.md)
+- [Azure の施設、建物、および物理上のセキュリティ](physical-security.md)
 - [Azure インフラストラクチャの可用性](infrastructure-availability.md)
 - [Azure 情報システムのコンポーネントと境界](infrastructure-components.md)
 - [Azure ネットワーク アーキテクチャ](infrastructure-network.md)

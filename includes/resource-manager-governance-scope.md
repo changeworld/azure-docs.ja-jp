@@ -9,15 +9,15 @@ ms.date: 02/21/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: dc4281c17b92e1720625764a52a34a94d6f296ab
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67181106"
 ---
 項目を作成する前に、スコープの概念について確認しましょう。 Azure には、管理グループ、サブスクリプション、リソース グループ、およびリソースという 4 つのレベルの管理が用意されています。 現在、[管理グループ](../articles/billing/billing-enterprise-mgmt-group-overview.md)はプレビュー リリースです。 次の図に、これらのレイヤーの例を示します。
 
-![Scope (スコープ)](./media/resource-manager-governance-scope/scope-levels.png)
+![スコープ](./media/resource-manager-governance-scope/scope-levels.png)
 
 これらのスコープ レベルのいずれかに管理設定を適用します。 選択するレベルで、設定の適用範囲が決まります。 上位レベルの設定が下位レベルに継承されます。 サブスクリプションに設定を適用すると、その設定はサブスクリプション内のすべてのリソース グループとリソースに適用されます。 リソース グループに設定を適用すると、その設定はリソース グループとそのすべてのリソースに適用されます。 ただし、別のリソース グループにその設定はありません。
 

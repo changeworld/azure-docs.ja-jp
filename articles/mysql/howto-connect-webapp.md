@@ -5,19 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 63ef9ac55fcfaebfd58ae1ccdb34107d41900be5
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: ba75daa47ca1f77cd5828d13877238a64deeeb41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770545"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062454"
 ---
 # <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>既存の Azure App Service と Azure Database for MySQL サーバーの接続
 このトピックでは、既存の Azure App Service を Azure Database for MySQL サーバーに接続する方法について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
-[Azure Portal](https://portal.azure.com) にサインインします。 Azure Database for MySQL サーバーを作成します。 詳細については、[Azure Portal を使用した Azure Database for MySQL サーバーの作成方法](quickstart-create-mysql-server-database-using-azure-portal.md)に関するページ、または[Azure CLI を使用した Azure Database for MySQL サーバーの作成方法](quickstart-create-mysql-server-database-using-azure-cli.md)に関するページをご覧ください。
+[Azure portal](https://portal.azure.com) にサインインする Azure Database for MySQL サーバーを作成します。 詳細については、[Azure Portal を使用した Azure Database for MySQL サーバーの作成方法](quickstart-create-mysql-server-database-using-azure-portal.md)に関するページ、または[Azure CLI を使用した Azure Database for MySQL サーバーの作成方法](quickstart-create-mysql-server-database-using-azure-cli.md)に関するページをご覧ください。
 
 現在、Azure App Service から Azure Database for MySQL へのアクセスを有効にする方法は 2 つあります。 どちらの方法でも、サーバー レベルのファイアウォール ルールの設定を行います。
 
@@ -66,5 +66,5 @@ DATABASES = {
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 接続文字列の詳細については、[接続文字列](howto-connection-string.md)に関するページをご覧ください。

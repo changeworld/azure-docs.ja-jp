@@ -4,10 +4,10 @@ description: Azure Application Insights とスマート検出を使用してア�
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.openlocfilehash: b23ada6fe4596a2eee242cc9145789521caf697f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77669728"
 ---
 # <a name="application-security-detection-pack-preview"></a>アプリケーション セキュリティ検出パック (プレビュー)

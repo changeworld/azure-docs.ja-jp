@@ -3,23 +3,23 @@ title: インクルード ファイル
 description: インクルード ファイル
 services: search
 author: HeidiSteen
-ms.service: search
+ms.service: cognitive-search
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: heidist
 ms.custom: include file
-ms.openlocfilehash: b298c87d802314bd865bd6f38c35e4361eb69f3f
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 179f525b7b6a7e51889b14b66df6c537ca56bd75
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67181555"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80272818"
 ---
 ストレージは、ディスク容量、またはインデックス、ドキュメント、その他の高水準リソースの "*最大数*" のハード制限のうち、先に達したものによって制約されます。 次の表では、ストレージの制限についてまとめています。 インデックス、ドキュメント、その他のオブジェクトの上限については、[リソースごとの制限](../articles/search/search-limits-quotas-capacity.md#index-limits)に関するページを参照してください。
 
 | リソース | 無料 | Basic<sup>1</sup> | S1 | S2 | S3 | S3&nbsp;HD<sup>2</sup> | L1 | L2 |
 | -------- | --- | --- | --- | --- | --- | --- | --- | --- |
-| サービス レベル アグリーメント (SLA)<sup>3</sup>  |いいえ |可能 |はい |はい |はい |はい |はい |はい |
+| サービス レベル アグリーメント (SLA)<sup>3</sup>  |いいえ |はい |はい |はい |はい |はい |はい |はい |
 | パーティションあたりのストレージ容量 |50 MB |2 GB |25 GB |100 GB |200 GB |200 GB |1 TB (テラバイト) |2 TB |
 | サービスあたりのパーティション数 |該当なし |1 |12 |12 |12 |3 |12 |12 |
 | パーティション サイズ |該当なし |2 GB |25 GB |100 GB |200 GB |200 GB |1 TB (テラバイト) |2 TB |

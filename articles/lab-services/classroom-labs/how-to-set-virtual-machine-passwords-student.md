@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: spelluru
 ms.openlocfilehash: 7c757ef8508f9364a46116e6ddf19207f23a4b6f
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73583681"
 ---
 # <a name="set-or-reset-password-for-virtual-machines-in-classroom-labs-students"></a>クラスルーム ラボの仮想マシンに対するパスワードを設定またはリセットする (学生)
@@ -39,5 +39,5 @@ ms.locfileid: "73583681"
 ![パスワードを後からリセットする](../media/how-to-set-virtual-machine-passwords/student-set-password-2.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ラボ所有者として構成できる他の学生の使用オプションの詳細については、次の記事を参照してください。[学生の使用の構成](how-to-configure-student-usage.md)

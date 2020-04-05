@@ -9,10 +9,10 @@ ms.assetid: b7066d81-3142-474f-8a34-32b0b39656dc
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 7fb85f179f1e1e1ac873fc7d6d937b34c1d48ada
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71316585"
 ---
 # <a name="monitor-jobs-in-azure-data-lake-analytics-using-the-azure-portal"></a>Azure Portal を使用して Azure Data Lake Analytics でジョブを監視する
@@ -44,7 +44,7 @@ ms.locfileid: "71316585"
     "/Samples/Data/SearchLog.tsv"
 8. **[ジョブの送信]** をクリックします。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 * [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
 * [Azure PowerShell で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-powershell.md)
 * [Azure  Portal を使用して Azure Data Lake Analytics を管理する](data-lake-analytics-manage-use-portal.md)

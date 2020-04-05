@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/02/2020
 keywords: ARO, OpenShift, プライベート クラスター, Rad Hat
 ms.openlocfilehash: b34b5d622527742447847102526eba9ee6ca220d
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78399268"
 ---
 # <a name="create-a-private-cluster-with-azure-red-hat-openshift-311"></a>Azure Red Hat OpenShift 3.11 を使用してプライベート クラスターを作成する

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 1929e78b1787e4e5d50908fd3cfc0292de8ea92b
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: ed477e3c1431048d60e4a696f59aa0593e1b3f1f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226348"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79136331"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>クイック スタート:Azure App Service on Windows で Java アプリを作成する
 
@@ -59,7 +59,7 @@ code pom.xml
     <plugin>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.8.0</version>
+        <version>1.9.0</version>
         <configuration>
             <!-- Specify v2 schema -->
             <schemaVersion>v2</schemaVersion>

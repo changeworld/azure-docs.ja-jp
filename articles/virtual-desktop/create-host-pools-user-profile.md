@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: helohr
-ms.openlocfilehash: a6bc8546a4047e921d62953e39eaddf546f38229
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+manager: lizross
+ms.openlocfilehash: 96b593f544aa4bbf126c06747a01902581f5ffb4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367444"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226991"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>ファイル共有を使用してホスト プール用のプロファイル コンテナーを作成する
 
@@ -65,9 +66,9 @@ FSLogix ソフトウェアで仮想マシンを構成するには、ホスト �
 6. **Profiles** という名前のキーを作成します。
 7. Profiles キーに以下の値を作成します。
 
-| 名前                | Type               | データ/値                        |
+| Name                | 種類               | データ/値                        |
 |---------------------|--------------------|-----------------------------------|
-| Enabled             | DWORD              | 1                                 |
+| 有効             | DWORD              | 1                                 |
 | VHDLocations        | 複数行文字列値 | "ファイル共有のネットワーク パス"     |
 
 >[!IMPORTANT]

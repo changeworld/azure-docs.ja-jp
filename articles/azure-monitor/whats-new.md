@@ -6,19 +6,19 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 03/05/2020
-ms.openlocfilehash: b42acdf64612da6837bc67752f7a22169ddef7e2
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: c29790035ec4e971957784e826a1e8bd8e0c9329
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673316"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79500501"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor のドキュメントの最新情報
 この記事では、Azure Monitor に関して新たに執筆された記事または大幅に更新された記事を一覧で紹介しています。 毎月第 1 週目に更新され、前月から更新された記事が掲載されます。
 
-## <a name="march-2020"></a>2020 年 3 月
+## <a name="february-2020"></a>2020 年 2 月
 
-### <a name="agents"></a>エージェント
+### <a name="agents"></a>[エージェント]
 診断拡張機能のコンテンツの書き直しの一環としての複数の更新。
 
 - [Azure Monitor エージェントの概要](platform/agents-overview.md) - 各エージェントの固有の機能をより明確にするために表を再構築しました。
@@ -27,7 +27,7 @@ ms.locfileid: "78673316"
 - [Windows Azure Diagnostics 拡張機能 (WAD) のインストールと構成](platform/diagnostics-extension-windows-install.md) - 新しい記事。 
 - [Windows Diagnostics 拡張機能のスキーマ](platform/diagnostics-extension-schema-windows.md) - 再構成。
 - [Windows Azure Diagnostics 拡張機能から Azure Event Hubs にデータを送信する](platform/diagnostics-extension-stream-event-hubs.md) - 完全な書き直しおよび更新。
-- [Azure Storage への診断データの保存と表示](platform/diagnostics-extension-to-storage.md) - 完全な書き直しおよび更新。
+- [Azure Storage への診断データの保存と表示](/azure/cloud-services/diagnostics-extension-to-storage) - 完全な書き直しおよび更新。
 - [Windows 用の仮想マシン拡張機能](../virtual-machines/extensions/oms-windows.md) - Log Analytics エージェントとの関係をより明確にします。
 - [Linux 用の Azure Monitor 仮想マシン拡張機能](../virtual-machines/extensions/oms-linux.md) - Log Analytics エージェントとの関係をより明確にします。
 
@@ -75,7 +75,7 @@ ms.locfileid: "78673316"
 ### <a name="general"></a>全般
 - [Azure Monitor によって監視される内容](monitor-reference.md) - 新しい記事。
 
-### <a name="agents"></a>エージェント
+### <a name="agents"></a>[エージェント]
 - [Azure Log Analytics エージェントを使用してログ データを収集する](platform/log-analytics-agent.md) - ネットワーク ファイアウォールの要件に関する表が更新されています。
 
 
@@ -131,7 +131,7 @@ ms.locfileid: "78673316"
 
 ## <a name="december-2019"></a>2019 年 12 月
 
-### <a name="agents"></a>エージェント
+### <a name="agents"></a>[エージェント]
 - [Linux コンピューターを Azure Monitor に接続する](platform/agent-linux.md) - 新しい記事。
 
 ### <a name="alerts"></a>警告

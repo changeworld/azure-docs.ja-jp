@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: diberry
 ms.openlocfilehash: f3c99856eaffc454754618a1eac34630b985a77e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73499473"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>リスト エンティティを使用してエンティティの検出を向上する 
@@ -220,6 +220,6 @@ node train.js
 |2|turn up the heat (暖房の電源を入れて)|heat (暖房)| DevicesList |Thermostat|
 |3|make it colder (寒くして)|colder (寒く)|DevicesList|Thermostat|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 別のリスト エンティティを作成して、デバイスの場所を部屋、階、または建物に拡張することができます。 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: 83ee8e0c0583cba72da8702e196f0f38128f8d8a
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72935934"
 ---
 # <a name="define-and-use-moderation-jobs-rest"></a>モデレーション ジョブ (REST) を定義して使用する
@@ -23,10 +23,10 @@ ms.locfileid: "72935934"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Content Moderator [レビュー ツール](https://contentmoderator.cognitive.microsoft.com/) サイトにサインインするか、またはアカウントを作成します。
+- Content Moderator [レビュー ツール](https://contentmoderator.cognitive.microsoft.com/) サイトにサインインするか、アカウントを作成します。
 - (省略可能) ジョブで使用するための[カスタム ワークフローを定義](./Review-Tool-User-Guide/Workflows.md)します。既定のワークフローを使用することもできます。
 
-## <a name="create-a-job"></a>ジョブを作成する
+## <a name="create-a-job"></a>ジョブの作成
 
 モデレーション ジョブを作成するには、「[Job - Create](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5)」API リファレンス ページに移動し、ご自分のサブスクリプション リージョンのボタン ([レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)の **[資格情報]** ページのエンドポイント URL 内にあります) を選択します。 これにより API コンソールが開始されます。ここで REST API 呼び出しを簡単に構築し実行することができます。
 
@@ -117,6 +117,6 @@ REST 呼び出しの本文には、1 つのフィールド **[ContentValue]** �
 
 コンテンツ ジョブの結果、レビューが作成された場合は、これを[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)で確認することができます。 **[レビュー]**  >  **[Image]** / **[Text]** / **[Video]** を (使用したコンテンツに応じて) 選択します。 コンテンツが表示され、人によるレビューが可能な状態になります。 人間のモデレーターが自動割り当てタグと予測データをレビューして、最終的なモデレーション意思決定を送信した後で、ジョブ API がすべての情報を指定されたコールバック エンドポイントに送信します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このガイドでは、REST API を使用してコンテンツ モデレーション ジョブの作成とクエリを行う方法について説明しました。 次は、ジョブを [eコマース モデレーション](./ecommerce-retail-catalog-moderation.md) チュートリアルのようなエンドツーエンドのモデレーション シナリオに統合します。

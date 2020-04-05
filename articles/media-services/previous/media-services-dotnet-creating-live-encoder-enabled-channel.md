@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
 ms.openlocfilehash: 37969986b1d015ed08113da42a309eef42df569c
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69015521"
 ---
 # <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-net"></a>Azure Media Services を使用してライブ ストリーミングを実行し、.NET でマルチビットレートのストリームを作成する方法
@@ -29,7 +29,7 @@ ms.locfileid: "69015521"
 > * [REST API](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > [!NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。
+> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)」を参照してください。
 > 
 > 
 
@@ -90,7 +90,7 @@ ms.locfileid: "69015521"
 ## <a name="prerequisites"></a>前提条件
 チュートリアルを完了するには次のものが必要です。
 
-* Azure アカウント。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。 Azure の有料サービスを試用できるクレジットが提供されます。 このクレジットを使い切ってもアカウントは維持されるため、Azure App Service の Web Apps 機能など、無料の Azure サービスと機能を利用できます。
+* Azure アカウント。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)」を参照してください。 Azure の有料サービスを試用できるクレジットが提供されます。 このクレジットを使い切ってもアカウントは維持されるため、Azure App Service の Web Apps 機能など、無料の Azure サービスと機能を利用できます。
 * Media Services アカウント。 Media Services アカウントを作成するには、「[アカウントの作成](media-services-portal-create-account.md)」を参照してください。
 * Visual Studio 2010 SP1 (Professional、Premium、Ultimate、または Express) 以降のバージョン。
 * Media Services .NET SDK バージョン 3.2.0.0 以降を使用する必要があります。
@@ -108,7 +108,7 @@ ms.locfileid: "69015521"
 
 「[.NET を使用した Media Services 開発](media-services-dotnet-how-to-use.md)」の説明に従って、開発環境をセットアップし、app.config ファイルに接続情報を指定します。 
 
-## <a name="code-example"></a>コード例
+## <a name="code-example"></a>コードの例
 
 ```csharp
 using System;

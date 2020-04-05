@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: 58a63c9e11cf86318f0e9f051d034cbbaf7c40a9
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76772246"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>チュートリアル:Windows デバイス用の IoT Edge モジュールを開発する
@@ -262,7 +262,7 @@ IoT Edge ランタイムでは、コンテナー イメージを IoT Edge デバ
 
     ![コンテナー レジストリ内の両方のイメージのバージョンを表示する](./media/tutorial-develop-for-windows/view-repository-versions.png)
 
-### <a name="troubleshoot"></a>[トラブルシューティング]
+### <a name="troubleshoot"></a>トラブルシューティング
 
 モジュール イメージをビルドおよびプッシュしているときにエラーが発生する場合は、開発マシン上の Docker 構成に関連していることがよくあります。 次のチェックを使用して構成を確認してください。
 

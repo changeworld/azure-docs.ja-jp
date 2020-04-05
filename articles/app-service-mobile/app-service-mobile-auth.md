@@ -4,10 +4,10 @@ description: 。、特にモバイル アプリを対象とした Azure App Serv
 ms.topic: article
 ms.date: 10/01/2016
 ms.openlocfilehash: 4a9ef62178b9a58fa8703413a09114a617d1d239
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77459465"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>モバイル アプリを対象とした Azure App Service での認証および承認

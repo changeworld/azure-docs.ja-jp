@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
 ms.openlocfilehash: ca1d1a5761e62b2838a474dcb83f450987972998
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73928969"
 ---
 # <a name="azure-security-center-for-iot-event-aggregation"></a>Azure Security Center for IoT イベント集計
@@ -62,15 +62,15 @@ Azure Security Center for IoT セキュリティ エージェントにより、�
 各集計イベントは、収集されたアラートの 24 時間分を表します。 各イベントの左上にある [イベント オプション] メニューを使用すると、集計された個々のイベントを**無視**できます。    
 
 ## <a name="event-aggregation-twin-configuration"></a>イベント集計のツイン構成
-**azureiotsecurity** モジュールのモジュール ツイン ID の [エージェント構成オブジェクト](how-to-agent-configuration.md)内で Azure Security Center for IoT イベント集計の構成を変更します。
+[azureiotsecurity](how-to-agent-configuration.md) モジュールのモジュール ツイン ID の **エージェント構成オブジェクト**内で Azure Security Center for IoT イベント集計の構成を変更します。
 
 | 構成名 | 指定できる値 | 詳細 | 解説 |
 |:-----------|:---------------|:--------|:--------|
-| aggregationEnabledProcessCreate | ブール値 | プロセス作成イベントのイベント集計を有効/無効にします |
+| aggregationEnabledProcessCreate | boolean | プロセス作成イベントのイベント集計を有効/無効にします |
 | aggregationIntervalProcessCreate | ISO8601 Timespan 文字列 | プロセス作成イベントの集計間隔 |
-| aggregationEnabledConnectionCreate | ブール値| 接続作成イベントのイベント集計を有効/無効にします |
+| aggregationEnabledConnectionCreate | boolean| 接続作成イベントのイベント集計を有効/無効にします |
 | aggregationIntervalConnectionCreate | ISO8601 Timespan 文字列 | 接続作成イベントの集計間隔 |
-| aggregationEnabledProcessTerminate | ブール値 | プロセス終了イベントのイベント集計を有効/無効にします | Windows のみ|
+| aggregationEnabledProcessTerminate | boolean | プロセス終了イベントのイベント集計を有効/無効にします | Windows のみ|
 | aggregationIntervalProcessTerminate | ISO8601 Timespan 文字列 | プロセス終了イベントの集計間隔 | Windows のみ|
 |
 
@@ -86,7 +86,7 @@ Azure Security Center for IoT セキュリティ エージェントにより、�
 | aggregationIntervalProcessTerminate | "PT1H"|
 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Azure Security Center for IoT セキュリティ エージェントと、使用可能なイベント構成オプションについて説明しました。
 
@@ -95,5 +95,5 @@ Azure Security Center for IoT のデプロイの概要について引き続き�
 - [セキュリティ エージェントの認証方法](concept-security-agent-authentication-methods.md)を理解する
 - [セキュリティ エージェント](how-to-deploy-agent.md)を選択してデプロイする
 - Azure Security Center for IoT [サービスの前提条件](service-prerequisites.md)を確認する
-- [IoT Hub で Azure Security Center for IoT サービスを有効にする](quickstart-onboard-iot-hub.md)方法について学習する
+- [IoT Hub で Azure Security Center for IoT サービスを有効にする](quickstart-onboard-iot-hub.md)方法を学習する
 - [Azure Security Center for IoT に関してよく寄せられる質問](resources-frequently-asked-questions.md)から、サービスについて確認する

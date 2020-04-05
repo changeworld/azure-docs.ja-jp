@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
 ms.openlocfilehash: 890fc381afe0146e721e084e2dcd7eae9215d004
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77083205"
 ---
 # <a name="quickstart-use-java-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>クイック スタート:Java を使用した Azure Functions と SignalR Service によるチャット ルームの作成

@@ -7,10 +7,10 @@ ms.date: 10/14/2019
 ms.topic: quickstart
 zone_pivot_groups: java-build-tools-set
 ms.openlocfilehash: 8ae69bfa7ed00e310205332e05c071158c5fc9a3
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78272803"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>Java 関数を Azure Storage に接続する
@@ -97,7 +97,7 @@ public HttpResponseMessage run(
 
 ## <a name="update-the-tests"></a>テストを更新する
 
-アーキタイプはテストのセットも作成するため、`run` メソッド シグネチャ内の新しい `msg` パラメーターを処理するためにこれらのテストを更新する必要があります。  
+アーキタイプはテストのセットも作成するため、`msg` メソッド シグネチャ内の新しい `run` パラメーターを処理するためにこれらのテストを更新する必要があります。  
 
 _src/main/java_ の下の対象のテスト コードの場所を参照し、*Function.java* プロジェクト ファイルを開きます。`//Invoke` の下のコード行を次のコードに置き換えます。
 

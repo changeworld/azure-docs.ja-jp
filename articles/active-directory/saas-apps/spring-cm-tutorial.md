@@ -17,10 +17,10 @@ ms.date: 04/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9bd9ea5565ea64415c00a458236456bed04b6c38
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74233378"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>チュートリアル: Azure Active Directory と SpringCM の統合
@@ -145,7 +145,7 @@ SpringCM で Azure AD シングル サインオンを構成するには、次の
             
     d. **[SAML Enabled]\(SAML の有効化\)** で **[Enable]\(有効\)** を選びます。
 
-    e. **[Save]** をクリックします。
+    e. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -222,7 +222,7 @@ Azure Active Directory ユーザーが SpringCM にサインインできるよ�
 
 1. ユーザーを **[Security group]** に追加します。
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
    > [!NOTE]
    > 他の SpringCM ユーザー アカウント作成ツールや、SpringCM から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。

@@ -14,11 +14,11 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f04bd7788a9cc9657e14aedfb153182d6e53eb95
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562243"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229695"
 ---
 # <a name="view-custom-role-assignments-in-azure-active-directory"></a>Azure Active Directory でカスタム ロールの割り当てを表示する
 

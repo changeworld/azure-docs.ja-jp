@@ -16,13 +16,13 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 64d8481200359b4a4421e3f3c99e4fc5a32ef23f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.custom: aaddev, fasttrack-edit
+ms.openlocfilehash: f4b51641ed6bd7317060b567cf839775be426ac8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159543"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050047"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意
 
@@ -37,11 +37,10 @@ Microsoft ID プラットフォームでは、[OAuth 2.0](active-directory-v2-pr
 
 * Microsoft Graph: `https://graph.microsoft.com`
 * Office 365 メール API: `https://outlook.office.com`
-* Azure AD Graph: `https://graph.windows.net`
 * Azure Key Vault: `https://vault.azure.net`
 
 > [!NOTE]
-> Azure AD Graph、Office 365 メール API などではなく、Microsoft Graph を使用することを強くお勧めします。
+> Office 365 メール API などではなく、Microsoft Graph を使用することを強くお勧めします。
 
 Microsoft ID プラットフォームと統合されたサードパーティのリソースも同様です。 これらのリソースのいずれでも、機能をより小さいまとまりに分割するために使用できるアクセス許可のセットを定義できます。 たとえば、[Microsoft Graph](https://graph.microsoft.com) では、特に次のタスクを実行するアクセス許可が定義されています。
 
@@ -123,7 +122,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 ユーザーが資格情報を入力すると、Microsoft ID プラットフォーム エンドポイントは、*ユーザーの同意*の一致するレコードがないか確認します。 ユーザーが過去に要求されたどのアクセス許可にも同意しておらず、管理者も組織全体の代わりにそれらのアクセス許可に同意していない場合、Microsoft ID プラットフォーム エンドポイントは要求されたアクセス許可の付与をユーザーに求めます。
 
 > [!NOTE]
-> この時点で、`offline_access` ("アクセス権を与えたデータへのアクセスを管理する") と `user.read` ("サインインとプロファイルの読み取り") のアクセス許可が、アプリケーションへの初期同意に自動的に組み込まれます。  一般に、これらのアクセス許可は、適切なアプリの機能に必要です。`offline_access` は、ネイティブおよび Web のアプリに不可欠の更新トークンへのアクセスをアプリに提供し、`user.read` は、クライアントまたはアプリが長期間にわたってユーザーを適切に識別し、基本的なユーザー情報にアクセスできるようにする `sub` 要求へのアクセスを提供します。  
+>この時点で、`offline_access` ("アクセス権を与えたデータへのアクセスを管理する") と `user.read` ("サインインとプロファイルの読み取り") のアクセス許可が、アプリケーションへの初期同意に自動的に組み込まれます。  一般に、これらのアクセス許可は、適切なアプリの機能に必要です。`offline_access` は、ネイティブおよび Web のアプリに不可欠の更新トークンへのアクセスをアプリに提供し、`user.read` は、クライアントまたはアプリが長期間にわたってユーザーを適切に識別し、基本的なユーザー情報にアクセスできるようにする `sub` 要求へのアクセスを提供します。  
 
 ![作業アカウントの同意を示すスクリーンショットの例](./media/v2-permissions-and-consent/work_account_consent.png)
 
@@ -166,16 +165,16 @@ Microsoft のエコシステムにおける高い権限には、*管理者によ
 
 ### <a name="request-the-permissions-in-the-app-registration-portal"></a>アプリケーション登録ポータルでアクセス許可を要求する
 
-アプリケーションは、アプリ登録ポータルで必要なアクセス許可 (委任されたアクセス許可とアプリケーションのアクセス許可の両方) を確認できます。  これにより、`/.default` スコープと Azure Portal の "管理者の同意を付与" オプションを使用できるようになります。  一般に、特定のアプリケーションに対して静的に定義するアクセス許可を、動的/増分的に将来要求するアクセス許可のスーパーセットにすることが、最善の方法です。
+アプリケーションは、アプリ登録ポータルで必要なアクセス許可 (委任されたアクセス許可とアプリケーションのアクセス許可の両方) を確認できます。  これにより、`/.default` スコープと Azure portal の "管理者の同意を与える" オプションを使用できるようになります。  一般に、特定のアプリケーションに対して静的に定義するアクセス許可を、動的/増分的に将来要求するアクセス許可のスーパーセットにすることが、最善の方法です。
 
 > [!NOTE]
-アプリケーションのアクセス許可は、[`/.default`](#the-default-scope) を使用することによってのみ要求できます。アプリでアプリケーションのアクセス許可が必要な場合は、アプリの登録ポータルに一覧表示されていることを確認してください。  
+>アプリケーションのアクセス許可は、[`/.default`](#the-default-scope) を使用することによってのみ要求できます。アプリでアプリケーションのアクセス許可が必要な場合は、アプリの登録ポータルに一覧表示されていることを確認してください。
 
 #### <a name="to-configure-the-list-of-statically-requested-permissions-for-an-application"></a>アプリケーションに対して静的に要求されるアクセス許可のリストを構成するには
 
 1. [Azure portal - アプリの登録](https://go.microsoft.com/fwlink/?linkid=2083908)エクスペリエンスでアプリケーションに移動するか、まだ[アプリを作成](quickstart-register-app.md)していない場合は作成します。
 2. **[API のアクセス許可]** セクションを見つけ、API のアクセス許可内で [アクセス許可の追加] をクリックします。
-3. 利用可能な API の一覧から優先的に使用するリソース (**Microsoft Graph** など) を選択し、アプリに必要なアクセス許可を追加します。
+3. 使用可能な API の一覧から **[Microsoft Graph]** を選択し、アプリに必要なアクセス許可を追加します。
 3. アプリの登録を**保存**します。
 
 ### <a name="recommended-sign-the-user-into-your-app"></a>推奨:ユーザーをアプリにサインインさせる
@@ -200,13 +199,13 @@ Microsoft のエコシステムにおける高い権限には、*管理者によ
 ```
 
 
-| パラメーター     | 条件     | 説明                                                                               |
+| パラメーター        | 条件        | 説明                                                                                |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
-| `tenant` | Required | アクセス許可を要求するディレクトリ テナント。 GUID またはフレンドリ名の形式で指定できます。または、例に示すように、組織によって総称的に参照できます。 'Common' は使用しないでください。個人のアカウントは、テナントのコンテキスト以外で管理者の同意を提供することはできません。 テナントを管理する個人用アカウントとの最善の互換性を確保するには、可能であればテナント ID を使用します。 |
-| `client_id` | Required | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた**アプリケーション (クライアント) ID**。 |
-| `redirect_uri` | Required |処理するアプリの応答の送信先となるリダイレクト URI。 アプリケーション登録ポータルで登録したリダイレクト URI のいずれかと完全に一致させる必要があります。 |
+| `tenant` | 必須 | アクセス許可を要求するディレクトリ テナント。 GUID またはフレンドリ名の形式で指定できます。または、例に示すように、組織によって総称的に参照できます。 'Common' は使用しないでください。個人のアカウントは、テナントのコンテキスト以外で管理者の同意を提供することはできません。 テナントを管理する個人用アカウントとの最善の互換性を確保するには、可能であればテナント ID を使用します。 |
+| `client_id` | 必須 | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた**アプリケーション (クライアント) ID**。 |
+| `redirect_uri` | 必須 |処理するアプリの応答の送信先となるリダイレクト URI。 アプリケーション登録ポータルで登録したリダイレクト URI のいずれかと完全に一致させる必要があります。 |
 | `state` | 推奨 | 要求に含まれ、かつトークンの応答として返される値。 任意のコンテンツの文字列を指定することができます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的に使用します。 |
-|`scope`        | Required      | アプリケーションによって要求されるアクセス許可のセットを定義します。 これは静的スコープ ([`/.default`](#the-default-scope) を使用) か動的スコープになります。  これには OIDC スコープ (`openid`、`profile`、`email`) が含まれることもあります。 アプリケーションのアクセス許可が必要な場合は、`/.default` を使用して、静的に構成されたアクセス許可の一覧を要求する必要があります。  | 
+|`scope`        | 必須        | アプリケーションによって要求されるアクセス許可のセットを定義します。 これは静的スコープ ([`/.default`](#the-default-scope) を使用) か動的スコープになります。  これには OIDC スコープ (`openid`、`profile`、`email`) が含まれることもあります。 アプリケーションのアクセス許可が必要な場合は、`/.default` を使用して、静的に構成されたアクセス許可の一覧を要求する必要があります。  | 
 
 
 現在 Azure AD では、テナント管理者がサインインして、要求を完了する必要があります。 管理者は、ユーザーが `scope` パラメーターで要求したすべてのアクセス許可を承認するように求められます。  静的な (`/.default`) 値を使用した場合、それは v1.0 管理者の同意エンドポイントのように機能し、アプリに必要なアクセス許可で見つかったすべてのスコープに対する同意を要求します。
@@ -265,7 +264,7 @@ OAuth 2.0 プロトコルとアクセス トークンの取得方法の詳細に
 
 ## <a name="the-default-scope"></a>/.default スコープ
 
-`/.default` スコープを使用すると、v1.0 エンドポイントから Microsoft ID プラットフォーム エンドポイントにアプリを移行するのに役立ちます。 これは、アプリケーション登録で構成されたアクセス許可の静的一覧を参照するすべてのアプリケーションの組み込みスコープです。 `https://graph.microsoft.com/.default` の `scope` 値は、v1.0 エンドポイント `resource=https://graph.microsoft.com` と機能的に同じです。つまり、これは、アプリケーションが Azure portal で登録した Microsoft Graph のスコープでトークンを要求します。  これは、リソース URI と `/.default` を使用して作成されます (たとえば、リソース URI が `https://contosoApp.com` の場合、要求されたスコープは `https://contosoApp.com/.default` になります)。  トークンを正しく要求するために 2 つ目のスラッシュを含める必要がある場合は、[末尾のスラッシュに関するセクション](#trailing-slash-and-default)を参照してください。  
+`/.default` スコープを使用すると、v1.0 エンドポイントから Microsoft ID プラットフォーム エンドポイントにアプリを移行するのに役立ちます。 これは、アプリケーション登録で構成されたアクセス許可の静的一覧を参照するすべてのアプリケーションの組み込みスコープです。 `https://graph.microsoft.com/.default` の `scope` 値は、v1.0 エンドポイント `resource=https://graph.microsoft.com` と機能的に同じです。つまり、これは、アプリケーションが Azure portal で登録した Microsoft Graph のスコープでトークンを要求します。  これは、リソース URI と `/.default` を使用して作成されます (たとえば、リソース URI が `https://contosoApp.com` の場合、要求されたスコープは `https://contosoApp.com/.default` になります)。  トークンを正しく要求するために 2 つ目のスラッシュを含める必要がある場合は、[末尾のスラッシュに関するセクション](#trailing-slash-and-default)を参照してください。
 
 /.default スコープは、任意の OAuth 2.0 フローで使用できますが、[On-Behalf-Of フロー](v2-oauth2-on-behalf-of-flow.md) と [クライアント資格情報フロー](v2-oauth2-client-creds-grant-flow.md)、および v2 管理者の同意エンドポイントを使用してアプリケーションのアクセス許可を要求するときに必要になります。  
 
@@ -286,7 +285,7 @@ OAuth 2.0 プロトコルとアクセス トークンの取得方法の詳細に
 
 #### <a name="example-2-the-user-hasnt-granted-permissions-between-the-client-and-the-resource"></a>例 2:ユーザーがクライアントとリソース間のアクセス許可を付与していない
 
-この例では、クライアントと Microsoft Graph 間のユーザーの同意は存在しません。 クライアントは `user.read` と `contacts.read` のアクセス許可、および Azure Key Vault スコープ `https://vault.azure.net/user_impersonation` を登録しています。 クライアントが `scope=https://graph.microsoft.com/.default` のトークンを要求すると、`user.read`、`contacts.read`、および Key Vault `user_impersonation` のスコープの同意画面がユーザーに表示されます。 返されるトークンには、`user.read` と `contacts.read` スコープだけが含まれ、Microsoft Graph に対してのみ使用できます。 
+この例では、クライアントと Microsoft Graph 間のユーザーの同意は存在しません。 クライアントは `user.read` と `contacts.read` のアクセス許可、および Azure Key Vault スコープ `https://vault.azure.net/user_impersonation` を登録しています。 クライアントが `scope=https://graph.microsoft.com/.default` のトークンを要求すると、`user.read`、`contacts.read`、および Key Vault `user_impersonation` のスコープの同意画面がユーザーに表示されます。 返されるトークンには、`user.read` と `contacts.read` スコープだけが含まれ、Microsoft Graph に対してのみ使用できます。
 
 #### <a name="example-3-the-user-has-consented-and-the-client-requests-additional-scopes"></a>例 3: ユーザーは同意済みで、クライアントが追加のスコープを要求する
 
@@ -313,7 +312,7 @@ response_type=token            //code or a hybrid flow is also possible here
 
 一部のリソース URI には、末尾のスラッシュ (`https://contoso.com` ではなく `https://contoso.com/`) があるため、トークンの検証で問題が発生する可能性があります。  これは主に、リソース URI の末尾にスラッシュがあり、トークンが要求されたときに存在している必要がある Azure Resource Management (`https://management.azure.com/`) のトークンを要求するときに発生します。  したがって、`https://management.azure.com/` のトークンを要求し、`/.default` を使用する場合は、`https://management.azure.com//.default` を要求する必要があります。二重スラッシュに注意してください。 
 
-一般的に、トークンが発行されていることを検証し、それを受け入れるべき API がトークンを拒否している場合は、2 番目のスラッシュを追加して再試行することを検討してください。 これは、ログイン サーバーが、`/.default` が末尾から削除された `scope` パラメーターの URI に一致する対象ユーザーと共にトークンを出力したために発生します。  これにより末尾のスラッシュが削除されて一致しなくなった場合でも、ログイン サーバーは要求を処理し、リソース URI に対して検証します。これは、非標準であり、アプリケーションが依存しないようにする必要があります。 
+一般的に、トークンが発行されていることを検証し、それを受け入れるべき API がトークンを拒否している場合は、2 番目のスラッシュを追加して再試行することを検討してください。 これは、ログイン サーバーが、`/.default` が末尾から削除された `scope` パラメーターの URI に一致する対象ユーザーと共にトークンを出力したために発生します。  これにより末尾のスラッシュが削除されて一致しなくなった場合でも、ログイン サーバーは要求を処理し、リソース URI に対して検証します。これは、非標準であり、アプリケーションが依存しないようにする必要があります。  
 
 ## <a name="troubleshooting-permissions-and-consent"></a>アクセス許可と同意のトラブルシューティング
 

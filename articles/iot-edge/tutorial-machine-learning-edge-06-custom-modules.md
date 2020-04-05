@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 3cba7781ac80ae567b2bfd54c4131429ed94b90f
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75772365"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>チュートリアル:カスタム IoT Edge モジュールの作成とデプロイ

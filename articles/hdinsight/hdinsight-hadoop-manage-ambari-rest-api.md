@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/07/2019
 ms.openlocfilehash: 1d684957939c5cb83aae05962c1694f7a8d8da23
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498221"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233599"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Apache Ambari REST API を使用した HDInsight クラスターの管理
 
@@ -21,17 +21,17 @@ ms.locfileid: "73498221"
 
 Apache Ambari REST API を使用して Azure HDInsight の Apache Hadoop クラスターを管理および監視する方法を説明します。
 
-## <a id="whatis"></a>Apache Ambari とは
+## <a name="what-is-apache-ambari"></a><a id="whatis"></a>Apache Ambari とは
 
 [Apache Ambari](https://ambari.apache.org) は、[REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md) に支えられた使いやすい Web UI を提供することで、Hadoop クラスターの管理と監視を簡素化します。  Ambari は既定で Linux ベースの HDInsight クラスターに付属しています。
 
 ## <a name="prerequisites"></a>前提条件
 
-* **HDInsight 上の Hadoop クラスター**。 [Linux 上の HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)に関する記事をご覧ください。
+* **HDInsight 上の Hadoop クラスター**。 [Linux での HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 
 * **Bash on Ubuntu on Windows 10**。  この記事の例では、Windows 10 上で Bash シェルを使用しています。 インストール手順については、「[Windows Subsystem for Linux Installation Guide for Windows 10 (Windows 10 用 Windows Subsystem for Linux インストール ガイド)](https://docs.microsoft.com/windows/wsl/install-win10)」をご覧ください。  他の [Unix シェル](https://www.gnu.org/software/bash/)も動作します。  各例は、少し変更を加えることで、Windows コマンド プロンプトでも使用できます。  代わりに、Windows PowerShell を使用することもできます。
 
-* **jq**。コマンド ライン JSON プロセッサです。  [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) をご覧ください。
+* **jq**。コマンド ライン JSON プロセッサです。  [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)に関するページを参照してください。
 
 * **Windows PowerShell**。  代わりに、[Bash](https://www.gnu.org/software/bash/) を使用することもできます。
 
@@ -99,7 +99,7 @@ $respObj = ConvertFrom-Json $resp.Content
 $respObj.Clusters.health_report
 ```
 
-### <a name="example-get-the-fqdn-of-cluster-nodes"></a> クラスター ノードの FQDN を取得する
+### <a name="get-the-fqdn-of-cluster-nodes"></a><a name="example-get-the-fqdn-of-cluster-nodes"></a> クラスター ノードの FQDN を取得する
 
 HDInsight を使用する際は、クラスター ノードの完全修飾ドメイン名 (FQDN) を知ることが必要になる場合があります。 次の例を使用して、クラスター内のさまざまなノードの FQDN を簡単に取得できます。
 
@@ -131,7 +131,7 @@ $respObj = ConvertFrom-Json $resp.Content
 $respObj.host_components.HostRoles.host_name
 ```
 
-**ワーカー ノード**  
+**[Worker nodes]\(ワーカー ノード\)**  
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/HDFS/components/DATANODE" \
@@ -159,7 +159,7 @@ $respObj = ConvertFrom-Json $resp.Content
 $respObj.host_components.HostRoles.host_name
 ```
 
-### <a name="example-get-the-internal-ip-address-of-cluster-nodes"></a> クラスター ノードの内部 IP アドレスを取得する
+### <a name="get-the-internal-ip-address-of-cluster-nodes"></a><a name="example-get-the-internal-ip-address-of-cluster-nodes"></a> クラスター ノードの内部 IP アドレスを取得する
 
 このセクションの例によって返される IP アドレスは、インターネット経由で直接アクセスすることはできません。 HDInsight クラスターが含まれている Azure Virtual Network 内からだけアクセスできます。
 
@@ -253,7 +253,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 > [!NOTE]  
 > [Azure PowerShell](/powershell/azure/overview) に用意されている [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) コマンドレットも、クラスターのストレージ情報を返します。
 
-### <a name="get-all-configurations"></a> すべての構成を取得する
+### <a name="get-all-configurations"></a><a name="get-all-configurations"></a> すべての構成を取得する
 
 クラスターに使用できる構成を取得します。
 
@@ -508,6 +508,6 @@ $resp.Content
         -Body '{"RequestInfo": {"context": "turning off maintenance mode for SPARK2"},"Body": {"ServiceInfo": {"maintenance_state":"OFF"}}}'
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 REST API の完全なリファレンスについては、「[Apache Ambari API リファレンス V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)」をご覧ください。  「[Apache Ambari ビューに対してユーザーを承認する](./hdinsight-authorize-users-to-ambari.md)」も参照してください。

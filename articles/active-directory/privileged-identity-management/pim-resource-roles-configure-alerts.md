@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f0b938dc808d9b02ad4105d85a5b3125135c51d6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74023078"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure リソース ロールに対するセキュリティ アラートを構成する
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) 組織内で疑わしいアクティビティ�
 
 ![最終スキャン時刻、説明、軽減手順、タイプ、重大度、セキュリティへの影響、および次回の防止方法を示すアラート レポート](media/pim-resource-roles-configure-alerts/rbac-alert-info.png)
 
-## <a name="alerts"></a>アラート
+## <a name="alerts"></a>警告
 
 | アラート: | 重大度 | トリガー | 推奨 |
 | --- | --- | --- | --- |
@@ -45,7 +45,7 @@ Azure Active Directory (Azure AD) 組織内で疑わしいアクティビティ�
 ### <a name="severity"></a>重大度
 
 - **高**: ポリシー違反のため直ちに対処が必要です。 
-- **中**: 早急の対処は必要ありませんが、ポリシー違反の可能性が通知されています。
+- **Medium**:早急の対処は必要ありませんが、ポリシー違反の可能性が通知されています。
 - **低**: 早急な対処は必要ありませんが、望ましいポリシー変更が提案されています。
 
 ## <a name="configure-security-alert-settings"></a>セキュリティ アラート設定の構成
@@ -58,6 +58,6 @@ Azure Active Directory (Azure AD) 組織内で疑わしいアクティビティ�
 
 ![設定を有効化および構成するための、アラートの [設定] ページ](media/pim-resource-roles-configure-alerts/rbac-alert-settings.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Privileged Identity Management で Azure リソース ロールの設定を構成する](pim-resource-roles-configure-role-settings.md)

@@ -4,12 +4,12 @@ ms.service: jenkins
 ms.topic: include
 ms.date: 03/03/2020
 ms.author: tarcher
-ms.openlocfilehash: 2468dc72881755a2990e8ddf8112d7fe27f64f4d
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: e9b8ad7a7fcc499f8760b56e6a737be8a6a9e06c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78274451"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79199853"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Jenkins コンソールから **[Create new jobs]\(新しいジョブの作成\)
 
 ![Git リポジトリの定義](./media/jenkins-install-solution-template-steps/jenkins-job-git-configuration.png) 
 
-**[ビルド]** タブを選択し、 **[ビルド ステップの追加]** 、 **[Invoke Gradle script]\(Gradle スクリプトの呼び出し\)** の順に選択します。 **[Use Gradle Wrapper]\(Gradle ラッパーの使用\)** を選択して、 **[Wrapper location]\(ラッパーの場所\)** に「`complete`」、 **[タスク]** に「`build`」と入力します。
+**[ビルド]** タブを選択し、 **[ビルド ステップの追加]** 、 **[Invoke Gradle script]\(Gradle スクリプトの呼び出し\)** の順に選択します。 **[Use Gradle Wrapper]\(Gradle ラッパーの使用\)** を選択して、`complete`[Wrapper location]\(ラッパーの場所\) **に「** 」、`build`[タスク] **に「** 」と入力します。
 
 ![Gradle ラッパーを使用したビルド](./media/jenkins-install-solution-template-steps/jenkins-job-gradle-config.png) 
 
-**[詳細]** を選択し、 **[Root Build script]\(ルート ビルド スクリプト\)** フィールドに `complete` と入力します。 **[保存]** を選択します。
+**[詳細]** を選択し、`complete`[Root Build script]\(ルート ビルド スクリプト\)**フィールドに** と入力します。 **[保存]** を選択します。
 
 ![Gradle ラッパー ビルド ステップの詳細設定](./media/jenkins-install-solution-template-steps/jenkins-job-gradle-advances.png) 
 
@@ -86,4 +86,4 @@ Jenkins ソリューション テンプレートに関するバグを見つけ�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Azure VM を Jenkins エージェントとして追加する](/azure/jenkins-azure-vm-agents)
+> [Azure VM を Jenkins エージェントとして追加する](/azure/jenkins/jenkins-azure-vm-agents)

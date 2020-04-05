@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/02/2017
 ms.author: sumukhs
 ms.openlocfilehash: 9743213394b59af701b25b8be9dd48cf4310b499
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645516"
 ---
 # <a name="configure-stateful-reliable-services"></a>ステートフル Reliable Services の構成
@@ -19,7 +19,7 @@ Reliable Services の構成設定には 2 つのセットがあります。 1 �
 Reliable Services のグローバル構成は、クラスターのクラスター マニフェストの KtlLogger セクションで指定されています。 この構成を使用すると、共有ログの場所とサイズに加えて、ロガーによって使用されるグローバル メモリ制限を構成できます。 クラスター マニフェストは、クラスター内のすべてのノードとサービスに適用される設定と構成を保持する単一の XML ファイルです。 通常、このファイルは ClusterManifest.xml という名前です。 Get-ServiceFabricClusterManifest PowerShell コマンドを使用して、クラスターのクラスター マニフェストを確認できます。
 
 ### <a name="configuration-names"></a>構成名
-| Name | ユニット | 既定値 | 解説 |
+| 名前 | ユニット | 既定値 | 解説 |
 | --- | --- | --- | --- |
 | WriteBufferMemoryPoolMinimumInKB |キロバイト |8388608 |ロガー書き込みバッファー メモリ プールに対してカーネル モードで割り当てる最小 KB 数。 このメモリ プールは、ディスクに書き込む前の状態情報のキャッシュに使用されます。 |
 | WriteBufferMemoryPoolMaximumInKB |キロバイト |制限なし |ロガー書き込みバッファー メモリ プールを拡張できる最大サイズ。 |
@@ -100,7 +100,7 @@ ReplicatorConfig
 > 
 
 ### <a name="configuration-names"></a>構成名
-| Name | ユニット | 既定値 | 解説 |
+| 名前 | ユニット | 既定値 | 解説 |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Seconds |0.015 |操作を受信してからプライマリに受信確認を返すまで、セカンダリでレプリケーターが待機する期間です。 この期間内で処理された操作に対して送信される他の受信確認は、1 つの応答として送信されます。 |
 | ReplicatorEndpoint |該当なし |既定値なし - 必須パラメーター |プライマリとセカンダリのレプリケーターがレプリカ セットの他のレプリケーターと通信するために使用する IP アドレスとポートです。 これは、サービス マニフェストの TCP リソース エンドポイントを参照する必要があります。 サービス マニフェストでのエンドポイント リソース定義の詳細については、 [サービス マニフェストのリソース](service-fabric-service-manifest-resources.md) に関する記事を参照してください。 |
@@ -114,7 +114,7 @@ ReplicatorConfig
 | MaxAccumulatedBackupLogSizeInMB |MB |800 |1 つのバックアップ ログ チェーンに含まれるバックアップ ログの最大累積サイズ (MB)。 増分バックアップを実行してバックアップ ログが生成されると関連する完全バックアップ以降の累積バックアップ ログがこのサイズを超える場合は、増分バックアップ要求が失敗します。 そのような場合には、ユーザーは完全バックアップを取得する必要があります。 |
 | SharedLogId |GUID |"" |このレプリカで使用される共有ログ ファイルの識別に使用する一意の GUID を指定します。 通常、サービスではこの設定を使用しないはずですが、 SharedLogId を指定した場合は、SharedLogPath も指定する必要があります。 |
 | SharedLogPath |完全修飾パス名 |"" |このレプリカの共有ログ ファイルが作成される完全修飾パスを指定します。 通常、サービスではこの設定を使用しないはずですが、 SharedLogPath を指定した場合は、SharedLogId も指定する必要があります。 |
-| SlowApiMonitoringDuration |Seconds |300 |マネージド API 呼び出しの監視間隔を設定します。 たとえば、バックアップのコールバック関数を用意しておき、 一定時間が経過したときに、警告の状態レポートを Health Manager に送信します。 |
+| SlowApiMonitoringDuration |Seconds |該当なし |マネージド API 呼び出しの監視間隔を設定します。 たとえば、バックアップのコールバック関数を用意しておき、 一定時間が経過したときに、警告の状態レポートを Health Manager に送信します。 |
 | LogTruncationIntervalSeconds |Seconds |0 |各レプリカでログの切り捨てが開始される、構成可能な間隔です。 ログのサイズだけでなく時間に基づいてログが切り捨てられるようにする場合にも使用されます。 この設定により、リライアブル ディクショナリの削除済みエントリも強制的に消去されます。 そのため、この設定を使用すると、削除済みの項目を適切なタイミングで消去できます。 |
 | EnableStableReads |Boolean |False |安定した読み取りを有効にすると、セカンダリ レプリカは、クォーラムで確認された戻り値に限定されます。 |
 

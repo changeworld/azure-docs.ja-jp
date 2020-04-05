@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 02/19/2020
 ms.author: danlep
 ms.openlocfilehash: f429a165fe26cc9fc7aa973231f5a77163feef4a
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77525305"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225827"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure リージョンの Azure Container Instances のリソースの可用性
 

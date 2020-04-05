@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, bash, プレイブック, スケール, 自動
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: fb8d2a4bfca32be4575ca8f11018e5cab17cd9a2
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156819"
 ---
 # <a name="tutorial-autoscale-virtual-machine-scale-sets-in-azure-using-ansible"></a>チュートリアル:Ansible を使用して Azure の仮想マシン スケール セットを自動的にスケーリングする
@@ -232,7 +232,7 @@ ansible-playbook vmss-auto-scale-get-settings.yml
 vmss-auto-scale-delete-setting.yml
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"] 
 > [チュートリアル:Ansible を使用して Azure Virtual Machine Scale Sets のカスタム イメージを更新する](./ansible-vmss-update-image.md)

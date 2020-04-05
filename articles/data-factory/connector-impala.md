@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: f465fe4bb69bc5ae81db6c78df51bf5133de1b60
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74929296"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory"></a>Azure Data Factory を使用して Impala からデータをコピーする
@@ -37,7 +37,7 @@ Data Factory では、接続を可能にする組み込みのドライバーが�
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -95,7 +95,7 @@ Impala からデータをコピーするには、データセットの type プ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります。**ImpalaObject** | はい |
+| type | データセットの type プロパティは、次のように設定する必要があります:**ImpalaObject** | はい |
 | schema | スキーマの名前。 |いいえ (アクティビティ ソースの "query" が指定されている場合)  |
 | table | テーブルの名前。 |いいえ (アクティビティ ソースの "query" が指定されている場合)  |
 | tableName | スキーマがあるテーブルの名前。 このプロパティは下位互換性のためにサポートされています。 新しいワークロードでは、`schema` と `table` を使用します。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
@@ -128,7 +128,7 @@ Impala からデータをコピーするには、コピー アクティビティ
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティは **ImpalaSource** に設定する必要があります。 | はい |
-| query | カスタム SQL クエリを使用してデータを読み取ります。 例: `"SELECT * FROM MyTable"`。 | いいえ (データセットの "tableName" が指定されている場合) |
+| query | カスタム SQL クエリを使用してデータを読み取ります。 たとえば `"SELECT * FROM MyTable"` です。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
 
@@ -162,10 +162,10 @@ Impala からデータをコピーするには、コピー アクティビティ
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
+## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
+プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

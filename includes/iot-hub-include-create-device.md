@@ -9,10 +9,10 @@ ms.date: 11/06/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 7b022f71e197c5695876f2049ee376c3616afc6d
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70049062"
 ---
 <!-- put the ## header in the file that includes this file -->

@@ -4,10 +4,10 @@ description: ブループリント アーティファクトのパラメーター
 ms.date: 06/26/2019
 ms.topic: sample
 ms.openlocfilehash: 3d69f4477163618aa225150ac6352a16e901f826
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74546394"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK OFFICIAL および UK NHS のブループリント サンプルのデプロイ
@@ -97,7 +97,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |\[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ |ポリシー割り当て |省略可能:スコープに追加するため、サポートされている Linux OS を持つ VM イメージの一覧 (ポリシー: \[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ) |(省略可能) 既定値は "_なし_" です。 詳細については、「[Azure ポータルで Log Analytics ワークスペースを作成する](../../../../azure-monitor/learn/quick-create-workspace.md)」を参照してください。 |
 |\[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ |ポリシー割り当て |省略可能:スコープに追加するため、サポートされている Windows OS を持つ VM イメージの一覧 (ポリシー: \[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ) |(省略可能) 既定値は "_なし_" です。 詳細については、「[Azure ポータルで Log Analytics ワークスペースを作成する](../../../../azure-monitor/learn/quick-create-workspace.md)」を参照してください。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 UK OFFICIAL および UK NHS のブループリント サンプルをデプロイする手順を確認したので、以下の記事に進み、概要およびコントロールのマッピングの詳細を確認します。
 

@@ -4,10 +4,10 @@ description: ユーザー割り当てまたはシステム割り当て Azure マ
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: 9b8bed78629d3a9739ec00772ad5c8216a04c122
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74456497"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Azure マネージド ID を使用して Azure コンテナー レジストリに対して認証する 
@@ -230,7 +230,7 @@ az acr login --name myContainerRegistry
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Azure Container Registry でのマネージド ID の使用および次の操作を行う方法について学習しました。
 

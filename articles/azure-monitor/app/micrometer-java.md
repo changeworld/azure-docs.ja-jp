@@ -6,10 +6,10 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 11/01/2018
 ms.openlocfilehash: dd04087db32f0bbfa75dafa7e12c355e5ab7b515
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670068"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Azure Application Insights Java SDK で Micrometer を使用する方法

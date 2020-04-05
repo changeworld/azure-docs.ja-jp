@@ -1,19 +1,18 @@
 ---
 title: Azure と Dynamics 365 のコンサルティング サービス オファーを発行する | Azure Marketplace
 description: Azure Marketplace または AppSource の Cloud パートナー ポータルで Azure または Dynamics 365 コンサルティング サービスのオファーを発行します。
-services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: pabutler
-ms.openlocfilehash: 3d2daf68bae5e24dd8ec3501befd186a50c2cb16
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 1b00e177ed45762d10d0603b1d0a1fb2c1807416
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818098"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278503"
 ---
 # <a name="publish-a-consulting-service-offer"></a>コンサルティング サービス プランの発行
 
@@ -32,6 +31,6 @@ ms.locfileid: "73818098"
 * [Microsoft Dynamics CRM](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)
 * [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 オファーを発行する方法の学習に進みます。

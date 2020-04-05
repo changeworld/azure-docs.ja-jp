@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/24/2020
 ms.custom: seodec18
 ms.openlocfilehash: 99a2f32c3f76d7fec475c9b299f7208b4db29cfe
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77650925"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューでのイベントの調整

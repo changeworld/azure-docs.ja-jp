@@ -9,10 +9,10 @@ ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: b59b45de04ebb717dfe55eb17c9dbd92f7523976
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67181656"
 ---
 [!INCLUDE [resource group intro text](resource-group.md)]

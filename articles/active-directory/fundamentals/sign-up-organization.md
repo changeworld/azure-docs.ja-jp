@@ -14,10 +14,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eb306e1ecbbdf2142d88b837b9750bbd2166cfda
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68561630"
 ---
 # <a name="sign-up-your-organization-to-use-azure-active-directory"></a>Azure Active Directory を使用するように組織をサインアップする
@@ -30,7 +30,7 @@ ms.locfileid: "68561630"
   > [!Note]
   >   Azure AD に既にアクセスできる場合は、ご自身の職場または学校アカウントを使用することをお勧めします。 ただし、ご自身の Azure サブスクリプションに関連付けられているアカウントの種類を使用する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure の購入方法](https://azure.microsoft.com/pricing/purchase-options/)
 

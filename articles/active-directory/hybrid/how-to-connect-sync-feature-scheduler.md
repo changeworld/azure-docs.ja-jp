@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 309adfbebd4f4b615ac1f4061823ca01f3d3ee15
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65139285"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230115"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect 同期: Scheduler
 このトピックでは、Azure AD Connect 同期の組み込みのスケジューラ (同期エンジン) について説明します。
@@ -204,7 +204,7 @@ Get-ADSyncConnectorRunStatus
 ## <a name="scheduler-and-installation-wizard"></a>スケジューラとインストール ウィザード
 インストール ウィザードを開始すると、スケジューラは一時的に中断されます。 この動作は、構成が変更されても、同期エンジンがアクティブに実行されていると、この設定を適用できないためです。 このようなしくみになっているので、インストール ウィザードを開いたままにしないでください。開いたままにすると、同期エンジンが同期操作を実行できません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure AD Connect Sync](how-to-connect-sync-whatis.md) の構成に関するページをご覧ください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

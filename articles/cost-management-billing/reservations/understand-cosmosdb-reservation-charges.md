@@ -1,18 +1,18 @@
 ---
-title: Azure Cosmos DB に予約割引が適用されるしくみについて | Microsoft Docs
+title: Azure Cosmos DB における予約割引について
 description: Azure Cosmos DB でプロビジョニングされるスループット (RU/秒) に予約割引を適用するしくみについて説明します。
 author: bandersmsft
+ms.author: banders
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.author: banders
-ms.openlocfilehash: 2477e1074ab90d36f92b647dd74513e3fa9ae70f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 81818cc5ba2af1f9f0f70f7aa27fe62ed2c90c77
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200301"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065679"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>Azure Cosmos DB に予約割引が適用されるしくみについて
 

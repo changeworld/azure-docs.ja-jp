@@ -7,10 +7,10 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: e9ba5a516293eb72a715dc9d0df7db4d5a4ea3c5
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76907286"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-b2b-messages-in-azure-logic-apps"></a>Azure Monitor ログを設定し、Azure Logic Apps で B2B メッセージの診断データを収集する

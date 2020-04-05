@@ -1,5 +1,5 @@
 ---
-title: Azure の使用制限 | Microsoft Docs
+title: Azure の使用制限
 description: この記事では、Azure の使用制限のしくみと削除方法を説明します。
 author: bandersmsft
 ms.reviewer: judupont
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: ef1ed399f2ed3401612543b3dcaf94dfbafb6715
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6feac116c92f8dac7bd1dde2084f9b25f5e559f8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200556"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238059"
 ---
 # <a name="azure-spending-limit"></a>Azure の使用制限
 

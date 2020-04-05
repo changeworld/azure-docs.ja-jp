@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: fe099dcb49d176d27466c08749a5873904d1ae2f
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74766839"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---single-server"></a>Azure portal を使用して Azure Database for PostgreSQL - Single Server のメトリックのアラートを設定する
@@ -83,6 +83,6 @@ ms.locfileid: "74766839"
 * アラート ルールを**編集**または**削除**する。
 * アラートを**無効**にしてアラートを一時的に停止する、または**有効**にして通知の受け取りを再開する。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [アラートでの webhook の構成](../azure-monitor/platform/alerts-webhooks.md)に関する詳細情報を確認します。
 * [メトリック収集の概要](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) 情報を入手して、サービスの可用性と応答性を確認します。

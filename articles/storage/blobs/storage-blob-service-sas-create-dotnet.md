@@ -10,18 +10,18 @@ ms.date: 12/20/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 0d911d67eeaeae4b48198e95dc3df01e4740dc00
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 10045a760d7e0fcb02a754bc9bb52a5ebca970f4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372076"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79137213"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>.NET を使用してコンテナーまたは BLOB のサービス SAS を作成する
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-この記事では、ストレージ アカウント キーを使用して、[.NET 用の Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage/client)でコンテナーまたは BLOB のサービス SAS を作成する方法を示します。
+この記事では、ストレージ アカウント キーを使用して、[.NET 用の Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage?view=azure-dotnet)でコンテナーまたは BLOB のサービス SAS を作成する方法を示します。
 
 ## <a name="create-a-service-sas-for-a-blob-container"></a>BLOB コンテナーのサービス SAS を作成する
 

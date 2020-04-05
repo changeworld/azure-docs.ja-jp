@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 72c18e48c27942c7bea47931ec79a31af941064e
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79126657"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google を B2B ゲスト ユーザーの ID プロバイダーとして追加する
@@ -48,9 +48,9 @@ Teams では、すべてのデバイスで Google ゲスト ユーザーを完�
 
 `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>` のように、テナント情報がこのリンクに含まれている限り、アプリケーションまたはリソースへの直接リンクを Google ゲスト ユーザーに提供することもできます。 
 
-## <a name="step-1-configure-a-google-developer-project"></a>手順 1:Google 開発者プロジェクトを構成する
+## <a name="step-1-configure-a-google-developer-project"></a>手順 1: Google 開発者プロジェクトを構成する
 最初に、Google Developers Console で新しいプロジェクトを作成して、Azure AD に後で追加するクライアント ID とクライアント シークレットを取得します。 
-1. https://console.developers.google.com で Google API に移動し、Google アカウントでサインインします。 共有のチーム Google アカウントを使用することをお勧めします。
+1. [https://console.developers.google.com](https://console.developers.google.com ) で Google API に移動し、Google アカウントでサインインします。 共有のチーム Google アカウントを使用することをお勧めします。
 2. 新しいプロジェクトを作成します。ダッシュボードで **[プロジェクトを作成]** 、 **[作成]** の順に選択します。 [新しいプロジェクト] ページで、 **[プロジェクト名]** に入力を行ってから **[作成]** を選択します。
    
    ![Google の [New project] ページを示すスクリーンショット](media/google-federation/google-new-project.png)
@@ -81,11 +81,11 @@ Teams では、すべてのデバイスで Google ゲスト ユーザーを完�
 
    ![[Authorized redirect URIs] セクションを示すスクリーンショット](media/google-federation/google-create-oauth-client-id.png)
 
-10. **［作成］** を選択します クライアント ID とクライアント シークレットをコピーします。これらは、Azure AD ポータルで ID プロバイダーを追加する際に使用します。
+10. **作成** を選択します。 クライアント ID とクライアント シークレットをコピーします。これらは、Azure AD ポータルで ID プロバイダーを追加する際に使用します。
 
    ![OAuth クライアント ID とクライアント シークレットを示すスクリーンショット](media/google-federation/google-auth-client-id-secret.png)
 
-## <a name="step-2-configure-google-federation-in-azure-ad"></a>手順 2:Azure AD で Google フェデレーションを構成する 
+## <a name="step-2-configure-google-federation-in-azure-ad"></a>手順 2: Azure AD で Google フェデレーションを構成する 
 次に、Google クライアント ID とクライアント シークレットを設定します。Azure AD ポータルで入力するか、または PowerShell を使用します。 Gmail アドレスを使って自分自身を招待したうえで、招待した Google アカウントを使って招待を利用してみて、Google フェデレーション構成をテストするようにしてください。 
 
 #### <a name="to-configure-google-federation-in-the-azure-ad-portal"></a>Azure AD ポータルで Google フェデレーションを構成するには 
@@ -105,7 +105,7 @@ Teams では、すべてのデバイスで Google ゲスト ユーザーを完�
    `New-AzureADMSIdentityProvider -Type Google -Name Google -ClientId [Client ID] -ClientSecret [Client secret]`
  
    > [!NOTE]
-   > クライアント ID とクライアント シークレットは、「手順 1:Google 開発者プロジェクトを構成する」で作成したアプリのものを使用します。 詳細については、記事「[New-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview)」を参照してください。 
+   > 「手順 1: Google 開発者プロジェクトを構成する」で作成したアプリのクライアント ID とクライアント シークレットを使用します。 詳細については、記事「[New-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview)」を参照してください。 
  
 ## <a name="how-do-i-remove-google-federation"></a>Google フェデレーションを削除する方法
 Google フェデレーション セットアップは削除できます。 これを行うと、招待を既に利用している Google ゲスト ユーザーはサインインできなくなります。しかし、ディレクトリからこれらのユーザーを削除して招待し直すことで、もう一度リソースへのアクセス権を付与できます。 

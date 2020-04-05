@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8a1f774aae071a561bdda2d8c349861d640cb287
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 68994f9b79af55b32527eed52bbc4e5866c89538
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572473"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79205158"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>クイック スタート:サーバーのファイアウォールの構成 - ポータル
 
@@ -22,7 +22,8 @@ ms.locfileid: "73572473"
 
 - サブスクリプションの Analysis Services サーバー。 詳しくは、「[クイック スタート: サーバーの作成 - ポータル](analysis-services-create-server.md)」または「[クイック スタート: サーバーの作成 - PowerShell](analysis-services-create-powershell.md)」をご覧ください。
 - クライアント コンピューターの 1 つまたは複数の IP アドレス範囲 (必要な場合)。
-- Power BI Premium からインポートするシナリオは現在サポートされていないことに注意してください。
+- [Power BI サービスからのアクセスを許可する] が有効になっている場合でも、Power BI Premium を Azure Analysis Services に接続する一部のシナリオ (データのインポート (更新)、レポートのページ割り付けなど) は現在サポートされていません。 Power BI Premium から Live Connect を使用する一般的なシナリオはサポートされています。 Power BI Pro シナリオはすべてサポートされています。
+
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする 
 
@@ -34,16 +35,16 @@ ms.locfileid: "73572473"
 2. **[設定]**  >  **[ファイアウォール]**  >  **[ファイアウォールを有効にする]** で、 **[オン]** をクリックします。
 3. Power BI サービスからの DirectQuery アクセスを許可するには、 **[Allow access from Power BI]\(Power BI からのアクセスを許可する\)** で **[オン]** をクリックします。  
 4. (省略可能) 1 つまたは複数の IP アドレス範囲を指定します。 各範囲の名前、開始 IP アドレス、終了 IP アドレスを入力します。 ファイアウォール規則の名前は 128 文字に制限され、大文字、小文字、数値、アンダースコア、およびハイフンのみを使用できます。 ホワイトスペースとその他の特殊文字は使用できません。
-5. **[Save]** をクリックします。
+5. **[保存]** をクリックします。
 
      ![ファイアウォールの設定](./media/analysis-services-qs-firewall/aas-qs-firewall.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 不要になった場合は、IP アドレス範囲を削除するか、ファイアウォールを無効にします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このクイック スタートでは、サーバーのファイアウォールを構成する方法を説明しました。 サーバーが存在し、ファイアウォールで保護されたので、ポータルからそれに基本的なサンプル データ モデルを追加できます。 サンプル モデルがあると、モデル データベース ロールの構成とクライアント接続のテストについて理解するのに役立ちます。 詳しくは、サンプル モデルの追加のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: サーバーにサンプル モデルを追加する](analysis-services-create-sample-model.md)
+> [チュートリアル:サーバーにサンプル モデルを追加する](analysis-services-create-sample-model.md)

@@ -12,10 +12,10 @@ ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 08/20/2019
 ms.openlocfilehash: 1ee2efbb8aebfc2f1a94c89edef6166898946d8a
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74422529"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>複数のクラウドおよびオンプレミス データベースにわたるデータを SQL データ同期で同期します
@@ -112,7 +112,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 
 同期グループの作成、更新、および削除中のプロビジョニングとプロビジョニング解除は、データベースのパフォーマンスにも影響を与える可能性があります。
 
-## <a name="sync-req-lim"></a> 要件と制限
+## <a name="requirements-and-limitations"></a><a name="sync-req-lim"></a> 要件と制限
 
 ### <a name="general-requirements"></a>一般的な要件
 
@@ -144,14 +144,14 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 
 #### <a name="unsupported-column-types"></a>サポートされていない列の種類
 
-データ同期では、読み取り専用の列またはシステムで生成された列は同期できません。 例:
+データ同期では、読み取り専用の列またはシステムで生成された列は同期できません。 次に例を示します。
 
 - 計算列。
 - テンポラル テーブル用にシステムで生成された列。
 
 #### <a name="limitations-on-service-and-database-dimensions"></a>サービスとデータベースの数量に関する制限
 
-| **数量**                                                  | **制限**              | **対処法**              |
+| **Dimensions**                                                  | **制限**              | **回避策**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
 | データベースが属することができる同期グループの最大数。       | 5                      |                             |
 | 1 つの同期グループ内のエンドポイントの最大数              | 30                     |                             |
@@ -220,7 +220,7 @@ SQL データ同期を使ってデータのバックアップを作成するこ�
 
 フェデレーション ルート データベースは、SQL データ同期サービスで制限なしに使うことができます。 現在のバージョンの SQL データ同期には、フェデレーション データベースのエンドポイントを追加できません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ### <a name="update-the-schema-of-a-synced-database"></a>同期されたデータベースのスキーマの更新
 

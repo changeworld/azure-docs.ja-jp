@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: yelevin
 ms.openlocfilehash: 396fd7c4289c9d02d451b26f5fb6299acd31e2a4
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588554"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>Azure Information Protection からデータを接続する

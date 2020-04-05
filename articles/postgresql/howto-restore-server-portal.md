@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.openlocfilehash: fb13e4f062976e39c3cec607001e6982db228873
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74765632"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Azure portal を使用して Azure Database for PostgreSQL - Single Server のサーバーをバックアップおよび復元する方法
@@ -58,10 +58,10 @@ Azure Database for PostgreSQL では、サーバーの過去の特定時点ま�
 3. [復元] フォームに必要な情報を入力します。
 
    ![Azure Database for PostgreSQL - 情報の復元](./media/howto-restore-server-portal/3-restore.png)
-   - **復元ポイント**:復元先の特定の時点を選択します。
-   - **対象サーバー**:新しいサーバーの名前を指定します。
-   - **場所**:リージョンを選択することはできません。 既定では、ソース サーバーと同じになります。
-   - **価格レベル**:ポイントインタイム リストアを行うときは、これらのパラメーターを変更することはできません。 ソース サーバーと同じレベルになります。 
+   - **復元ポイント**: 復元先の特定の時点を選択します。
+   - **対象サーバー**: 新しいサーバーの名前を指定します。
+   - **場所**: リージョンを選択することはできません。 既定では、ソース サーバーと同じになります。
+   - **価格レベル**: ポイントインタイム リストアを行うときは、これらのパラメーターを変更することはできません。 ソース サーバーと同じレベルになります。 
 
 4. **[OK]** をクリックして、特定の時点までサーバーを復元します。 
 
@@ -81,7 +81,7 @@ Azure Database for PostgreSQL では、サーバーの過去の特定時点ま�
    ![[Azure Database for PostgreSQL] オプション](./media/howto-restore-server-portal/1-navigate-to-postgres.png)
 
 2. フォームの **[ソースの選択]** ドロップダウンで **[バックアップ]** を選択します。 この操作により、geo 冗長バックアップが有効になっているサーバーの一覧が読み込まれます。 これらのバックアップの中から、新しいサーバーのソースとして使用するものを選択します。
-   ![ソースの選択:バックアップと geo 冗長バックアップの一覧](./media/howto-restore-server-portal/2-georestore.png)
+   ![ソースの選択: バックアップと geo 冗長バックアップの一覧](./media/howto-restore-server-portal/2-georestore.png)
 
    > [!NOTE]
    > サーバーが最初に作成された時点では、すぐには geo リストアで使用できない可能性があります。 必要なメタデータが設定されるまで数時間かかる場合があります。
@@ -95,6 +95,6 @@ geo リストアによって作成された新しいサーバーには、復元�
 復元中に作成される新しいサーバーには、元のサーバーに存在するファイアウォール規則または VNet サービス エンドポイントはありません。 この新しいサーバー用に、これらの規則を個別に設定する必要があります。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - サービスの[バックアップ](concepts-backup.md)の詳細を確認します。
 - [ビジネス継続性](concepts-business-continuity.md)オプションについて確認します。

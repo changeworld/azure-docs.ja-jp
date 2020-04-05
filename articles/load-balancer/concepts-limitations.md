@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/14/2020
 ms.author: allensu
-ms.openlocfilehash: aab6a4de7be57df1f691861533a4528a0bcae571
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: a94b51e49951948974b8f42f6c89cd3c84f95d65
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605649"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80064277"
 ---
 # <a name="load-balancer-components-and-limitations"></a>Load Balancer のコンポーネントと制限事項
 Azure Load Balancer には、その操作に必要な重要なコンポーネントがいくつか含まれています。  これらのコンポーネントは、サブスクリプションで、Azure portal、Azure CLI、または Azure PowerShell を使用して構成できます。  
@@ -50,10 +50,13 @@ Basic Load Balancer ではスコープ (可用性セット) が制限されて�
 * **負荷分散規則**: 負荷分散規則は、いつ何を行うべきかをロード バランサーに伝える規則です。 
 * **受信 NAT 規則**:インバウンド NAT 規則により、特定のフロントエンド IP アドレスの特定のポートから、仮想ネットワーク内の特定のバックエンド インスタンスの特定のポートにトラフィックを転送することができます。 **[ポート フォワーディング](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-port-forwarding-portal)** も、負荷分散と同じハッシュベースの分散によって実行されます。 この機能の一般的なシナリオは、Azure Virtual Network 内の個別の VM インスタンスへのリモート デスクトップ プロトコル (RDP) または Secure Shell (SSH) セッションです。 複数の内部エンドポイントを、同じフロントエンド IP アドレスのポートにマップできます。 フロントエンド IP アドレスを使用すると、ジャンプ ボックスを追加しなくても VM をリモート管理できます。
 * **アウトバウンド規則**: **[アウトバウンド規則](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)** では、Standard Load Balancer のバックエンド プールによって特定されるすべての仮想マシンまたはインスタンスがフロントエンドに変換されるように、アウトバウンド ネットワーク アドレス変換 (NAT) が構成されます。
-Basic Load Balancer では、アウトバウンド規則がサポートされていません。
-![Azure Load Balancer](./media/load-balancer-overview/load-balancer-overview.png)
 
-## <a name = "load-balancer-concepts"></a>Load Balancer の概念
+  Basic Load Balancer では、アウトバウンド規則がサポートされていません。
+
+  ![Azure Load Balancer](./media/load-balancer-overview/load-balancer-overview.png)
+* **トランスポート プロトコル**:Load Balancer では、ICMP がサポートされていません。公開されているロード バランサーに対する ICMP ping はタイムアウトします。お使いの公開されているロード バランサーに対して ping を行うには、TCP Ping を使用します。
+
+## <a name="load-balancer-concepts"></a><a name = "load-balancer-concepts"></a>Load Balancer の概念
 
 ロード バランサーは、TCP および UDP アプリケーションに対して次の基本機能を提供します。
 
@@ -88,7 +91,7 @@ Basic Load Balancer では、アウトバウンド規則がサポートされて
   * フロントエンドを別のサービス インスタンスに動的にマップできるため、サービスのアップグレードやディザスター リカバリーが簡単にできます。
   * 容易なアクセス制御リスト (ACL) の管理。 フロントエンド IP として表される ACL は、サービスをスケールアップ、スケールダウン、または再デプロイしても変更されません。 送信接続をマシンより少ない数の IP アドレスに変換すると、安全な受信者リストの実装負荷を軽減できます。
 
-  Standard Load Balancer では、[堅牢でスケーラブルで予測可能な SNAT アルゴリズム](load-balancer-outbound-connections.md#snat)が利用されています。Standard Load Balancer を操作するときに覚えておくとよい重要な原則は、次のとおりです。
+  Standard Load Balancer では、[堅牢でスケーラブルで予測可能な SNAT のアルゴリズム](load-balancer-outbound-connections.md#snat)が使用されています。 以下は、Standard Load Balancer を使うときの重要な原則です。
 
     - 負荷分散ルールでは、SNAT のプログラミング方法が推測されます。 負荷分散ルールはプロトコルに固有です。 SNAT はプロトコルに固有であり、構成は副作用を作成するのではなくプロトコルを反映する必要があります。
 
@@ -96,13 +99,13 @@ Basic Load Balancer では、アウトバウンド規則がサポートされて
 
     - **アウトバウンドに使用されるフロントエンドを制御する** アウトバウンド接続に特定のフロントエンドを使用したくない場合は、フロントエンドを選択して制御できます。 アウトバウンド接続を、特定のフロントエンド IP アドレスからの発信のみに制限したい場合は、必要に応じて、アウトバウンド マッピングを表すルールで送信 SNAT を無効にすることができます。
 
-    - **アウトバウンド接続を制御する** アウトバウンド シナリオは明示的であり、アウトバウンド接続は指定されるまで存在しません。 Standard Load Balancer は、仮想ネットワークのコンテキスト内に存在します。  仮想ネットワークは、分離されたプライベート ネットワークです。  パブリック IP アドレスとの関連付けが存在しない場合、パブリック接続は許可されません。  [VNET サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)は、仮想ネットワークの内側にあり、仮想ネットワークに対してローカルであるため、VNET サービス エンドポイントには到達できます。  仮想ネットワークの外部にある宛先への送信接続を確立したい場合は、次の 2 つのオプションがあります。
+    - **アウトバウンド接続を制御する** アウトバウンド シナリオは明示的であり、アウトバウンド接続は指定されるまで存在しません。 Standard Load Balancer は、仮想ネットワークのコンテキスト内に存在します。  仮想ネットワークは、分離されたプライベート ネットワークです。  パブリック IP アドレスとの関連付けが存在しない場合、パブリック接続は許可されません。  [仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)は、お使いの仮想ネットワークの内側にあり、仮想ネットワークに対してローカルであるため、到達可能です。  仮想ネットワークの外部にある宛先への送信接続を確立したい場合は、次の 2 つのオプションがあります。
         - Standard SKU のパブリック IP アドレスを、インスタンスレベル パブリック IP アドレスとして、仮想マシン リソースに割り当てます
         - または、仮想マシン リソースを、パブリック Standard Load Balancer のバックエンド プールに配置します。
 
         どちらの方法でも、仮想ネットワークから、仮想ネットワークの外部に、送信接続できます。 
 
-        仮想マシン リソースが配置されているバックエンド プールに関連付けられている内部 Standard Load Balancer "_のみ_" がある場合、仮想マシンは仮想ネットワーク リソースと [VNET サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)に対してだけ到達できます。  前の段落で説明されている手順に従って、送信接続を作成できます。
+        お使いの仮想マシン リソースが配置されているバックエンド プールに関連付けられている内部 Standard Load Balancer _のみ_がある場合、お使いの仮想マシンでは仮想ネットワーク リソースと[仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)のみに到達できます。  前の段落で説明されている手順に従って、送信接続を作成できます。
 
         Standard SKU に関連付けられていない仮想マシン リソースの送信接続は前に説明したままです。
 
@@ -125,7 +128,7 @@ Basic Load Balancer では、ゾーンがサポートされていません。
 これに対し、Basic Load Balancer は単一のフロントエンドをランダムに選び、選ばれるものを制御する機能はありません。
 ## <a name="load-balancer-types"></a>Load Balancer の種類
 
-### <a name = "publicloadbalancer"></a>パブリック ロード バランサー
+### <a name="public-load-balancer"></a><a name = "publicloadbalancer"></a>パブリック ロード バランサー
 
 パブリック ロード バランサーは、受信トラフィックパブリック IP アドレスおよびポートを、VM のプライベート IP アドレスおよびポートにマップします。 ロード バランサーは、VM からの応答トラフィックについてはその逆にマップします。 負荷分散規則を適用することで、特定の種類のトラフィックを複数の VM やサービスに分散できます。 たとえば、複数の Web サーバー間で Web 要求のトラフィックの負荷を分散できます。
 
@@ -144,7 +147,7 @@ Basic Load Balancer では、ゾーンがサポートされていません。
 
 Azure Load Balancer は、ネットワーク トラフィックを複数の VM インスタンスに均等に分散させます。 セッション アフィニティを構成することもできます。 詳細については、「[Azure Load Balancer の分散モードを構成する](load-balancer-distribution-mode.md)」を参照してください。
 
-### <a name = "internalloadbalancer"></a> 内部ロード バランサー
+### <a name="internal-load-balancer"></a><a name = "internalloadbalancer"></a> 内部ロード バランサー
 
 パブリック ロード バランサーとは対照的に、内部ロード バランサーは、仮想ネットワーク内のリソースまたは VPN を使って Azure インフラストラクチャにアクセスするリソースにのみトラフィックを送信します。 Azure インフラストラクチャでは、仮想ネットワークの負荷分散フロントエンド IP アドレスへのアクセスが制限されます。 フロントエンド IP アドレスと仮想ネットワークは、インターネット エンドポイントに直接公開されることはありません。 社内の基幹業務アプリケーションは Azure で実行され、Azure 内またはオンプレミス リソースからアクセスされます。
 
@@ -162,7 +165,7 @@ Azure Load Balancer は、ネットワーク トラフィックを複数の VM �
 
 *図:パブリック ロード バランサーと内部ロード バランサーの両方を使った、多層アプリケーションの負荷分散*
 
-## <a name="skus"></a> Load Balancer の SKU の比較
+## <a name="load-balancer-sku-comparison"></a><a name="skus"></a> Load Balancer の SKU の比較
 
 Load Balancer は、Basic SKU と Standard SKU の両方をサポートしています。 これらの SKU の間には、シナリオのスケール、機能、および料金の違いがあります。 Basic Load Balancer で可能なシナリオをすべて、Standard Load Balancer でも作成できます。 両方の SKU の API は似ており、SKU を指定することによって呼び出されます。 Load Balancer の SKU とパブリック IP をサポートするための API は、`2017-08-01` API から使用できるようになりました。 一般的な API と構造は、どちらの SKU でも同じです。
 
@@ -176,7 +179,7 @@ SKU によって、完全なシナリオ構成が若干異なる場合があり�
 
 詳細については、「[Load Balancer の制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer)」を参照してください。 Standard Load Balancer について詳しくは、[概要](load-balancer-standard-overview.md)、[価格](https://aka.ms/lbpricing)、[SLA](https://aka.ms/lbsla) に関するページもご覧ください。
 
-## <a name = "limitations"></a>制限事項
+## <a name="limitations"></a><a name = "limitations"></a>制限事項
 
 - SKU は変更不可です。 既存のリソースの SKU を変更することはできません。
 - スタンドアロン仮想マシン リソース、可用性セット リソース、または仮想マシン スケール セット リソースは、1 つの SKU でのみ参照でき、両方では参照できません。

@@ -11,14 +11,14 @@ metadata:
   manager: nitinme
   ms.service: speech-service
   ms.topic: hub-page
-  ms.date: 03/04/2020
+  ms.date: 03/24/2020
   ms.author: dapine
-  ms.openlocfilehash: 0071d4da31e4739ccf53e9570bc7d0ed61c01bc4
-  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.openlocfilehash: f047af5d14ed6b18c559f814b35d730ba7ce0f6a
+  ms.sourcegitcommit: 940e16ff194d5163f277f98d038833b1055a1a3e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/09/2020
-  ms.locfileid: "78943315"
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "80244326"
 highlightedContent:
   items:
   - title: 音声サービスとは
@@ -37,15 +37,15 @@ conceptualContent:
   items:
   - title: 音声テキスト変換
     links:
+    - itemType: how-to-guide
+      text: 音声認識の基礎
+      url: speech-to-text-basics.md
     - itemType: quickstart
       text: マイクから音声を認識する
       url: quickstarts/speech-to-text-from-microphone.md
     - itemType: quickstart
-      text: バッチ モードで音声を認識する
-      url: batch-transcription.md
-    - itemType: how-to-guide
-      text: アプリの音声認識をカスタマイズする
-      url: how-to-custom-speech.md
+      text: オーディオ ファイルから音声を認識する
+      url: quickstarts/speech-to-text-from-file.md
     footerLink:
       text: 詳細情報
       url: index-speech-to-text.yml
@@ -94,10 +94,10 @@ conceptualContent:
   - title: 会話のシナリオ
     links:
     - itemType: overview
-      text: 会話の文字起こしについて
+      text: 会話の文字起こし (会議) について
       url: conversation-transcription.md
     - itemType: overview
-      text: マルチデバイスの会話について
+      text: マルチデバイスの会話 (会議) について
       url: multi-device-conversation.md
     - itemType: how-to-guide
       text: コール センターの文字起こし
@@ -152,9 +152,6 @@ conceptualContent:
     - itemType: how-to-guide
       text: Bing Speech から移行する
       url: how-to-migrate-from-bing-speech.md
-    - itemType: how-to-guide
-      text: Custom Speech Service から移行する
-      url: how-to-migrate-from-custom-speech-service.md
     - itemType: how-to-guide
       text: Translator Speech API から移行する
       url: how-to-migrate-from-translator-speech-api.md

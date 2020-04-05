@@ -9,10 +9,10 @@ ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: 1ebd645b740ab0f454d006d003518fbb8cb5e9e7
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68854681"
 ---
 これで、データ エクスプローラーを使用して、新しいテーブルにデータを追加できます。

@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/23/2019
 ms.author: chlandsi
 ms.openlocfilehash: c2f0fbe66b26c6eca6e0c0b2530efacba9bae958
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75380594"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-by-using-the-speech-sdk"></a>クイック スタート:macOS で Objective-C と Speech SDK を使用して音声を認識する

@@ -5,15 +5,15 @@ ms.author: robinsh
 ms.topic: include
 ms.date: 05/20/2019
 ms.openlocfilehash: c164433efc6a34a3a06676a3145feb18d3de80b9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66249061"
 ---
 ## <a name="add-a-consumer-group-to-your-iot-hub"></a>IoT ハブへのコンシューマー グループの追加
 
-[コンシューマー グループ](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#event-consumers)では、イベント ストリームに個別のビューを提供します。これにより、アプリと Azure サービスで同じイベント ハブのエンドポイントからデータを個別に使用することができます。 このセクションでは、エンドポイントからデータを取得するためにこのチュートリアルの後半で使用される、IoT ハブの組み込みのエンドポイントにコンシューマー グループを追加します。
+[コンシューマー グループ](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#event-consumers)は、イベント ストリームへの独立したビューを提供します。これにより、アプリと Azure サービスは、同じイベント ハブのエンドポイントからデータを別々に使用することができます。 このセクションでは、エンドポイントからデータを取得するためにこのチュートリアルの後半で使用される、IoT ハブの組み込みのエンドポイントにコンシューマー グループを追加します。
 
 コンシューマー グループを IoT ハブに追加するには、次の手順に従います。
 

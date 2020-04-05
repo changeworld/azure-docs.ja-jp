@@ -8,10 +8,10 @@ ms.service: web-application-firewall
 ms.date: 01/31/2020
 ms.author: victorh
 ms.openlocfilehash: 6725e1de21dbd103850071f7511e2800c6bd7b69
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76960384"
 ---
 # <a name="geomatch-custom-rules-preview"></a>Geomatch カスタム規則 (プレビュー)

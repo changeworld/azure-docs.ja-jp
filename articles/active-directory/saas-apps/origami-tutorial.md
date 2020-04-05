@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Origami の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Origami の統合 | Microsoft Docs'
 description: Azure Active Directory と Origami の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: fd347f4eb5f77dacc3c9fd61d0e885e9b3ee7959
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67095633"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-origami"></a>チュートリアル:Azure Active Directory と Origami の統合
+# <a name="tutorial-azure-active-directory-integration-with-origami"></a>チュートリアル: Azure Active Directory と Origami の統合
 
 このチュートリアルでは、Origami と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Origami と Azure AD の統合には、次の利点があります。
@@ -229,7 +229,7 @@ Origami で Azure AD シングル サインオンを構成するには、次の�
 
     e. **[姓]** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
 
-    f. **[Save]** をクリックします。
+    f. **[保存]** をクリックします。
    
     ![Configure single sign-on](./media/origami-tutorial/tutorial_origami_57.png)
 

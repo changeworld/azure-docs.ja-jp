@@ -7,11 +7,11 @@ ms.date: 08/23/2019
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: d58eb333c930d2ffac4eb57340ea776338325181
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680981"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231643"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Azure App Service への継続的デプロイ
 

@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
 ms.date: 04/25/2019
 ms.openlocfilehash: 0f6e379287323d9353acd887cf30d5c9c0065959
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74555383"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>TDE で保護されたデータベースの証明書を Azure SQL Database Managed Instance に移行する
@@ -39,7 +39,7 @@ TDE で保護されたデータベースと対応する証明書の両方を円�
 - ファイルとしてエクスポートされた証明書にアクセス可能なオンプレミス サーバーまたは他のコンピューターへの [Pvk2Pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) コマンドライン ツールのインストール。 Pvk2Pfx ツールは、スタンドアロンの自己完結型コマンドライン環境、[Enterprise Windows Driver Kit](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk) に含まれています。
 - [Windows PowerShell](/powershell/scripting/install/installing-windows-powershell) バージョン 5.0 以上のインストール。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 次のものを用意してください。
 
@@ -58,7 +58,7 @@ Install-Module -Name Az.Sql
 Update-Module -Name Az.Sql
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
@@ -129,7 +129,7 @@ SQL Server Management Studio で証明書をエクスポートして .pfx 形式
 
 ## <a name="upload-certificate-to-azure-sql-database-managed-instance-using-azure-powershell-cmdlet"></a>Azure PowerShell コマンドレットを使用して証明書を Azure SQL Database Managed Instance にアップロードする
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. PowerShell で準備手順を開始します。
 
@@ -156,9 +156,9 @@ SQL Server Management Studio で証明書をエクスポートして .pfx 形式
        -ManagedInstanceName "<managedInstanceName>" -PrivateBlob $securePrivateBlob -Password $securePassword
    ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-最初に、 *.pfx* ファイルを使用して [Azure Key Vault をセットアップ](/azure/key-vault/key-vault-manage-with-cli2)する必要があります。
+最初に、[.pfx](/azure/key-vault/key-vault-manage-with-cli2) ファイルを使用して *Azure Key Vault をセットアップ*する必要があります。
 
 1. PowerShell で準備手順を開始します。
 
@@ -184,7 +184,7 @@ SQL Server Management Studio で証明書をエクスポートして .pfx 形式
 
 これで、指定したマネージド インスタンスで証明書が使用できるようになりました。TDE で保護された対応するデータベースのバックアップを正常に復元できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Transparent Data Encryption が有効なデータベースの暗号化キーを保護する証明書を、オンプレミスまたは IaaS の SQL Server から Azure SQL Database Managed Instance に移行する方法について説明しました。
 

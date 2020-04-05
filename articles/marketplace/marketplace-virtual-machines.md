@@ -2,18 +2,18 @@
 title: Azure Marketplace 用の仮想マシンのオファー発行ガイド
 description: この記事では、Marketplace からデプロイされる仮想マシンとソフトウェアの無料試用版を発行するための要件について説明します。
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: ellacroi
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/09/2018
-ms.author: ellacroi
-ms.openlocfilehash: 0f2047501b6c57b2bb98ff7e3c56498417644324
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 34de5f59e96a37282063741a1664f512697c167b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818993"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288718"
 ---
 # <a name="virtual-machine-offer-publishing-guide"></a>仮想マシンのオファー発行ガイド
 
@@ -23,14 +23,7 @@ ms.locfileid: "73818993"
 
 ## <a name="free-trial"></a>無料試用版 
 
-ライセンス持ち込み (BYOL) 課金モデルを使用するときに、期限付きのソフトウェア ライセンスにアクセスすることで、オファーをテストするユーザー向けに手配できます。 このオファーをデプロイする要件は以下のとおりです。 
-
-|必要条件  |詳細  |
-|---------|---------|
-|無料試用期間および試用エクスペリエンス     |   顧客は、期間限定で、アプリを無料で試用することができます。 オファーに関して、顧客にはライセンス料金やサブスクリプション料金の支払いを一切要求しません。 基本となる Microsoft のファーストパーティ製品またはサービスの対価を顧客には一切要求しません。 すべての試用版オプションは、公開元の Azure サブスクリプションにデプロイされます。 コストの最適化と管理は、公開元によってのみ決められます。 無料試用版または対話型デモを選ぶことができます。 何を選んでも、無料試用版では、追加コストなしでオファーを試す期間を事前に設定して顧客に提供する必要があります。|
-|簡単に構成できてすぐに使用できるソリューション    |  アプリは、短時間で簡単に構成およびセットアップできる必要があります。       |
-|可用性/アップタイム    |    SaaS アプリまたはプラットフォームのアップタイムは 99.9% 以上である必要があります。     |
-|Azure Active Directory     |    オファーでは、同意が有効な Azure Active Directory (Azure AD) フェデレーション シングル サインオン (SSO) (Azure AD フェデレーション SSO) を許可する必要があります。     |
+ライセンス持ち込み (BYOL) 課金モデルを使用するときに、期限付きのソフトウェア ライセンスにアクセスすることで、オファーをテストするユーザー向けに手配できます。 
 
 ## <a name="test-drive"></a>体験版
 
@@ -65,7 +58,7 @@ IaaS (サービスとしてのインフラストラクチャ) アプリまたは
 >[!Note]
 >クラウド ソリューション プロバイダー (CSP) のパートナー チャネル オプトインが利用できるようになりました。  Microsoft CSP パートナー チャネルを通じたオファーのマーケティングの詳細については、「[Cloud Solution Providers (クラウド ソリューション プロバイダー)](./cloud-solution-providers.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 まだ行っていない場合は、 
 

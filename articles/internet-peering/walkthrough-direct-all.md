@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: d88fcfc4d3e073bf544f2ca0f4d01dbe305b45da
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774038"
 ---
 # <a name="direct-peering-walkthrough"></a>Direct ピアリングのチュートリアル

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: kumud
 ms.openlocfilehash: f1d4b02731f9e0f22fb1eaba03e55e49f84cd87a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76845098"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>Azure REST API を使用した Azure Network Watcher との接続のトラブルシューティング
@@ -132,7 +132,7 @@ null
 
 ### <a name="response"></a>Response
 
-次の応答は、以前の例からのものです。  この応答で、`ConnectionStatus` は **Unreachable** (到達不能) です。 送信されたすべてのプローブが失敗したことがわかります。 接続は、ポート 80 の受信トラフィックをブロックするように構成された、**UserRule_Port80** というユーザーが構成した `NetworkSecurityRule` のために、仮想アプライアンスで失敗しています。 この情報は、接続の問題を調査するために使用できます。
+次の応答は、以前の例からのものです。  この応答で、`ConnectionStatus` は **Unreachable** (到達不能) です。 送信されたすべてのプローブが失敗したことがわかります。 接続は、ポート 80 の受信トラフィックをブロックするように構成された、`NetworkSecurityRule`UserRule_Port80**というユーザーが構成した** のために、仮想アプライアンスで失敗しています。 この情報は、接続の問題を調査するために使用できます。
 
 ```json
 {
@@ -248,7 +248,7 @@ null
 
 ### <a name="response"></a>Response
 
-次の例では、`connectionStatus` は **Unreachable** (到達不能) として示されます。 `hops` の詳細では、トラフィックが `UserDefinedRoute` のためにブロックされた、`issues` で確認できます。
+次の例では、`connectionStatus` は **Unreachable** (到達不能) として示されます。 `hops` の詳細では、トラフィックが `issues` のためにブロックされた、`UserDefinedRoute` で確認できます。
 
 ```json
 {

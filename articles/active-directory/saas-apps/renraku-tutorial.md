@@ -17,10 +17,10 @@ ms.date: 09/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b43a811ed09545357bdc7f7fac652a69ef06b532
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71106817"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-renraku"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と RENRAKU の統合
@@ -29,7 +29,7 @@ ms.locfileid: "71106817"
 
 * RENRAKU にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して RENRAKU に自動的にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

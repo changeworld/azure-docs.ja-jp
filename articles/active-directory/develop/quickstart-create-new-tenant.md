@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: quickstart
-ms.date: 02/05/2019
+ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 74747e1bc5247e2a95a180b7361eafe8ca795bc2
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 1d2140ca0064e2eb6b12726bcee7bf5362de8fbe
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160708"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79408285"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>クイック スタート:テナントを設定する
 
@@ -72,6 +72,6 @@ Azure AD テナントがない場合、または開発用の新しいテナン�
 
 ## <a name="next-steps"></a>次のステップ
 
-* コーディングのクイック スタートを試して、ユーザーの認証を開始します。 
-* 詳細なコード サンプルについては、ドキュメントの**チュートリアル**セクションを確認してください。
-* アプリをクラウドにデプロイしたい場合。 [コンテナーを Azure にデプロイする](https://docs.microsoft.com/azure/index#pivot=products&panel=containers)を確認してください。 
+* [アプリを登録](quickstart-register-app.md)し、Microsoft ID プラットフォームと統合します。 
+* [認証の基本](authentication-scenarios.md)について説明します。
+* サブスクリプションと Azure AD テナントの関係について詳しくは、[Azure サブスクリプションを Azure Active Directory に関連付ける方法](../fundamentals/active-directory-how-subscriptions-associated-directory.md)に関するページを参照してください。

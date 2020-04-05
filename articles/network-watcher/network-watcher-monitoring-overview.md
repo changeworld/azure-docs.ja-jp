@@ -15,10 +15,10 @@ ms.date: 04/24/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 81621a2b63eec804aaa7c74e1d77b06ef1adb79a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76844991"
 ---
 # <a name="what-is-azure-network-watcher"></a>Azure Network Watcher とは
@@ -27,7 +27,7 @@ Azure Network Watcher は、Azure 仮想ネットワーク内のリソースの�
 
 ## <a name="monitoring"></a>監視
 
-### <a name = "connection-monitor"></a>仮想マシンとエンドポイントの間の通信を監視する
+### <a name="monitor-communication-between-a-virtual-machine-and-an-endpoint"></a><a name = "connection-monitor"></a>仮想マシンとエンドポイントの間の通信を監視する
 
 エンドポイントは、別の仮想マシン (VM)、完全修飾ドメイン名 (FQDN)、Uniform Resource Identifier (URI)、または IPv4 アドレスの場合があります。 "*接続監視*" 機能を使用すると、通信を定期的に監視できるほか、VM とエンドポイントの間の到達可能性、待ち時間、ネットワーク トポロジの変更について通知を受け取ることができます。 たとえば、データベース サーバー VM と通信する Web サーバー VM がある場合があります。 組織の他のユーザーが、自分の知らない間に Web サーバー、データベース サーバー VM またはサブネットにカスタム ルートまたはネットワーク セキュリティ規則を適用するかもしれません。
 
@@ -55,7 +55,7 @@ VM をデプロイすると、VM との間のトラフィックを許可また�
 
 仮想ネットワークを作成すると、ネットワーク トラフィックの送信ルートが既定でいくつか作成されます。 仮想ネットワーク内にデプロイされたすべてのリソース (VM など) からの送信トラフィックは、Azure の既定のルートに基づいてルーティングされます。 Azure の既定のルートをオーバーライドしたり、追加のルートを作成したりできます。 特定のルートが原因となって VM が他のリソースと通信できなくなる場合があります。 "*次ホップ*" 機能を使用すると、送信元および宛先 IPv4 アドレスを指定できます。 その後、次ホップによって通信のテストが行われ、トラフィックのルーティングに使用される次ホップの種類が通知されます。 ルートを削除、変更、または追加して、ルーティングの問題を解決できます。 次ホップ機能の詳細については、[こちら](diagnose-vm-network-routing-problem.md)を参照してください。
 
-### <a name="connection-troubleshoot"></a>VM からの送信接続を診断する
+### <a name="diagnose-outbound-connections-from-a-vm"></a><a name="connection-troubleshoot"></a>VM からの送信接続を診断する
 
 "*接続のトラブルシューティング*" 機能を使用すると、ある VM と別の VM、FQDN、URI、または IPv4 アドレスとの間の接続をテストできます。 テストは、[接続監視](#connection-monitor)機能を使用した場合に返されるのと同様の情報を返します。しかし、接続監視による経時的な監視とは異なり、テストされるのはある時点の接続です。 接続のトラブルシューティングを使用して接続のトラブルシューティングを行う方法については、[こちら](network-watcher-connectivity-overview.md)を参照してください。
 

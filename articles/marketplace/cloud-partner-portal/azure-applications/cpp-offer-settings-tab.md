@@ -1,19 +1,18 @@
 ---
 title: Azure アプリケーションの [オファーの設定] | Azure Marketplace
 description: Azure アプリケーション オファー用にオファーの設定を構成します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: pabutler
-ms.openlocfilehash: c5e00f77ffeec61fb4fee4b4e8eb72b7c7ed1077
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: d111471e909a091d8c887f13ad89d1da50cf72b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827535"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280118"
 ---
 # <a name="azure-application-offer-settings-tab"></a>Azure アプリケーションの [プランの設定] タブ
 
@@ -36,6 +35,6 @@ ms.locfileid: "73827535"
 
 **[保存]** を選択してオファーの設定を保存します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [[SKU]](./cpp-skus-tab.md) タブを使用して、オファーの SKU を構成します。

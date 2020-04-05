@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 03/12/2019
 ms.author: spelluru
 ms.openlocfilehash: c5998ff428c4b6f4c1f7a4087c6ccb27d93773eb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60345466"
 ---
 # <a name="azure-event-grid-event-schema-for-container-registry"></a>Container Registry 用の Azure Event Grid イベント スキーマ
@@ -173,7 +173,7 @@ Azure Container Registry では、次の種類のイベントが生成されま�
 | id | string | イベント ID。 |
 | timestamp | string | イベントが発生した時刻。 |
 | action | string | 指定されたイベントを引き起こすアクション。 |
-| target | object | イベントのターゲット。 |
+| ターゲット (target) | object | イベントのターゲット。 |
 | request | object | イベントを生成した要求。 |
 
 ターゲット オブジェクトには、次のプロパティがあります。
@@ -181,9 +181,9 @@ Azure Container Registry では、次の種類のイベントが生成されま�
 | プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | mediaType | string | 参照されているオブジェクトの MIME の種類。 |
-| size | integer | コンテンツのバイト数。 length フィールドと同じです。 |
+| size | 整数 (integer) | コンテンツのバイト数。 length フィールドと同じです。 |
 | digest | string | コンテンツのダイジェスト。Registry V2 HTTP API 仕様で定義されています。 |
-| length | integer | コンテンツのバイト数。 size フィールドと同じです。 |
+| length | 整数 (integer) | コンテンツのバイト数。 size フィールドと同じです。 |
 | repository | string | リポジトリの名前。 |
 | tag | string | タグ名。 |
 | name | string | チャートの名前。 |
@@ -199,7 +199,7 @@ Azure Container Registry では、次の種類のイベントが生成されま�
 | method | string | イベントを生成した要求メソッド。 |
 | useragent | string | 要求のユーザー エージェント ヘッダー。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
 * Azure Event Grid サブスクリプションの作成の詳細については、[Event Grid サブスクリプション スキーマ](subscription-creation-schema.md)に関する記事を参照してください。

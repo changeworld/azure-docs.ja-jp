@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: d4d599063f727510cbf504ea3d121bdabfe001c9
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76261519"
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) でのサブオーケストレーション
@@ -22,7 +22,7 @@ ms.locfileid: "76261519"
 
 次の例では、プロビジョニングが必要な複数のデバイスがある IoT ("モノのインターネット") シナリオについて説明しています。 次の関数は、各デバイスに対して実行する必要があるプロビジョニング ワークフローを表します。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 public static async Task DeviceProvisioningOrchestration(
@@ -43,7 +43,7 @@ public static async Task DeviceProvisioningOrchestration(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -70,7 +70,7 @@ module.exports = df.orchestrator(function*(context) {
 
 複数のオーケストレーター関数を並列で実行する方法を次に示します。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ProvisionNewDevices")]
@@ -96,7 +96,7 @@ public static async Task ProvisionNewDevices(
 > [!NOTE]
 > 前述の C# の例は Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`IDurableOrchestrationContext` の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");

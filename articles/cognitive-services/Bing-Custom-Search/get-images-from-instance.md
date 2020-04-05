@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: scottwhi
 ms.openlocfilehash: 5fa71c62969e0f1ff7e98f374eca63efa051c041
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "66390329"
 ---
 # <a name="get-images-from-your-custom-view"></a>カスタム ビューから画像を取得する

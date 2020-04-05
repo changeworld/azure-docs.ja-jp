@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 5/03/2019
 ms.author: terrylan
 ms.openlocfilehash: 0bf9b4d3aa1926343ad25000a05762a31d49617d
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73889851"
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Azure セキュリティのベスト プラクティスとパターン

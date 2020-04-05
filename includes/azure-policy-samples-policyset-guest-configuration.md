@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/05/2020
+ms.date: 03/12/2020
 ms.author: dacoulte
-ms.openlocfilehash: 3f20533316049568d24a613322c63f1a888866df
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 2876acd62e573b746b8c0abf671aa6472cec3104
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78669130"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79381899"
 ---
-|名前 |説明 |ポリシー |Version |
+|Name |説明 |ポリシー |Version |
 |---|---|---|---|
 |[指定されたアプリケーションがインストールされていない Linux VM を監査する](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_InstalledApplicationLinux.json) |このイニシアティブはポリシー要件を展開し、指定されたアプリケーションがインストールされていない Linux 仮想マシンを監査します。 ゲスト構成ポリシーの詳細については、 https://aka.ms/gcpol にアクセスしてください |2 |1.1.0 |
 |[指定されたアプリケーションがインストールされている Linux VM を監査する](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_NotInstalledApplicationLinux.json) |このイニシアティブはポリシー要件を展開し、指定されたアプリケーションがインストールされている Linux 仮想マシンを監査します。 ゲスト構成ポリシーの詳細については、 https://aka.ms/gcpol にアクセスしてください |2 |1.1.0 |

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.openlocfilehash: 78bc629598c0635b7760285d0507b7a85a4ab551
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79126870"
 ---
 # <a name="refresh-with-logic-apps"></a>Logic Apps を使用した更新
@@ -62,7 +62,7 @@ Azure Analysis Services での REST API の使用に関する詳細について�
 
 次のように、HTTP アクティビティを構成します。
 
-|プロパティ  |Value  |
+|プロパティ  |値  |
 |---------|---------|
 |**方法**     |POST         |
 |**URI**     | https://*サーバーのリージョン*/servers/*aas サーバー名*/models/*データベース名*/refreshes <br /> <br /> 例:  https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes|

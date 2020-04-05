@@ -1,19 +1,18 @@
 ---
 title: パートナー センターでのコマーシャル マーケットプレース分析の [Marketplace の分析情報] ダッシュボード
 description: マーケットプレース Web 分析の概要にアクセスすることにより、公開元は AppSource と Azure Marketplace のネットショップでの顧客エンゲージメントを測定できます。
-author: ChJenk
-manager: evansma
-ms.author: v-chjen
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: edfdf7bbfaa5fa5abb00aa7efcb35bfbcd6e68a4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a547ced9df98298361360ecab88036599cd86027
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475157"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275851"
 ---
 # <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析の [Marketplace の分析情報] ダッシュボード
 
@@ -138,7 +137,7 @@ Marketplace の分析情報の概要セクションには、選択した日付�
 - パートナー センターのコマーシャル マーケットプレースで利用可能な分析レポートの概要については、「[パートナー センターでの商用マーケットプレース向け分析](./analytics.md)」を参照してください。
 - オファーのマーケットプレース アクティビティを要約した集計データのグラフ、傾向、値については、「[コマーシャル マーケットプレース分析の概要ダッシュボード](./summary-dashboard.md)」を参照してください。
 - グラフィカルでダウンロード可能な形式での注文の詳細については、「[コマーシャル マーケットプレース分析の注文ダッシュボード](./orders-dashboard.md)」を参照してください。
-- 仮想マシン (VM) オファーの使用量と従量制課金メトリックについては、「[コマーシャル マーケットプレース分析の使用量ダッシュボード](./usage-dashboard.md)」を参照してください。
+- 仮想マシン (VM) プランの使用量と従量制課金メトリックについては、「[コマーシャル マーケットプレース分析の使用量ダッシュボード](./usage-dashboard.md)」を参照してください。
 - 成長傾向など、顧客の詳細については、「[コマーシャル マーケットプレース分析の顧客ダッシュボード](./customer-dashboard.md)」を参照してください。
 - 過去 30 日間のダウンロード要求の一覧については、「[コマーシャル マーケットプレース分析のダウンロード ダッシュボード](./downloads-dashboard.md)」を参照してください。
 - Azure Marketplace と AppSource でのオファーに関する顧客からのフィードバックを統合して表示する方法については、「[コマーシャル マーケットプレース分析の [評価とレビュー] ダッシュボード](./ratings-reviews.md)」を参照してください。

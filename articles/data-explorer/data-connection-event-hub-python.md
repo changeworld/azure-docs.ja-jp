@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.openlocfilehash: c08271286373ab8c3e621ee6fa59782ba2d16fb4
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77444181"
 ---
 # <a name="create-an-event-hub-data-connection-for-azure-data-explorer-by-using-python"></a>Python を使用して Azure Data Explorer 用にイベント ハブ データ接続を作成する

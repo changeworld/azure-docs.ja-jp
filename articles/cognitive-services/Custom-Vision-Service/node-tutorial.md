@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: areddish
-ms.openlocfilehash: 7490e1261262ff26eec48a691e22ec177954dcf3
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: f1c0d8f72fe59ff9a8c0fdba86d97ea588a9a808
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169446"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366635"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-nodejs-sdk"></a>クイック スタート:Custom Vision Node.js SDK を使用して画像分類プロジェクトを作成する
 
@@ -51,8 +51,8 @@ npm install @azure/cognitiveservices-customvision-prediction
 ```javascript
 const util = require('util');
 const fs = require('fs');
-const TrainingApiClient = require("@azure/cognitiveservices-customvision-training");
-const PredictionApiClient = require("@azure/cognitiveservices-customvision-prediction");
+const TrainingApi = require("@azure/cognitiveservices-customvision-training");
+const PredictionApi = require("@azure/cognitiveservices-customvision-prediction");
 
 const setTimeoutPromise = util.promisify(setTimeout);
 
@@ -65,7 +65,7 @@ const endPoint = "https://<my-resource-name>.cognitiveservices.azure.com/"
 
 const publishIterationName = "classifyModel";
 
-const trainer = new TrainingApiClient(trainingKey, endPoint);
+const trainer = new TrainingApi.TrainingAPIClient(trainingKey, endPoint);
 
 (async () => {
     console.log("Creating project...");
@@ -133,7 +133,7 @@ await trainer.publishIteration(sampleProject.id, trainingIteration.id, publishIt
 画像を予測エンドポイントに送信し、予測を取得するには、ファイルの末尾に以下のコードを追加します。
 
 ```javascript
-    const predictor = new PredictionApiClient(predictionKey, endPoint);
+    const predictor = new PredictionApi.PredictionAPIClient(predictionKey, endPoint);
     const testFile = fs.readFileSync(`${sampleDataRoot}/Test/test_image.jpg`);
 
     const results = await predictor.classifyImage(sampleProject.id, publishIterationName, testFile);

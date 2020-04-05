@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7241c8dfbedb24f95c29ea9e1c3f763218a5668d
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72025678"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory シームレス シングル サインオン:よく寄せられる質問
@@ -37,7 +37,7 @@ ms.locfileid: "72025678"
 
 **Q:シームレス SSO は [Microsoft Azure Germany クラウド](https://www.microsoft.de/cloud-deutschland)および [Microsoft Azure Government クラウド](https://azure.microsoft.com/features/gov/)で使用できますか。**
 
-No. シームレス SSO は、Azure AD のワールドワイド インスタンスでのみご利用いただけます。
+いいえ。 シームレス SSO は、Azure AD のワールドワイド インスタンスでのみご利用いただけます。
 
 **Q:どのアプリケーションがシームレス SSO の `domain_hint` または `login_hint` パラメーター機能を利用していますか。**
 
@@ -54,7 +54,7 @@ Azure AD にこれらのパラメーターを送信でき、その結果、シ�
 | アプリケーション名 | 使用するアプリケーションの URL |
 | -- | -- |
 | SharePoint Online | https:\//contoso.sharepoint.com |
-| Azure ポータル | https:\//portal.azure.com/contoso.com |
+| Azure portal | https:\//portal.azure.com/contoso.com |
 
 テナントの適切なアプリケーションの URL を取得するには、上記の表の "contoso.com" をご利用のドメイン名で置き換えます。
 
@@ -99,7 +99,7 @@ Azure AD Connect が実行されているオンプレミス サーバーで次�
    >ドメイン管理者の資格情報ユーザー名は、SAM アカウント名の形式 (contoso\johndoe または contoso.com\johndoe) で入力する必要があります。 Microsoft はユーザー名のドメイン部分を使用して、DNS を使用してドメイン管理者のドメイン コントローラーを検索します。
 
    >[!NOTE]
-   >使用するドメイン管理者アカウントは、Protected Users (保護されているユーザー) グループのメンバーであってはなりません。 そうである場合、操作は失敗します。
+   >使用するドメイン管理者アカウントは、保護されているユーザー グループのメンバーであってはなりません。 そうである場合、操作は失敗します。
 
    2. `Update-AzureADSSOForest -OnPremCredentials $creds` を呼び出します。 このコマンドは、この特定の AD フォレスト内で `AZUREADSSOACC` コンピューター アカウントの Kerberos 復号化キーを更新し、Azure AD 内でこのキーを更新します。
    3. 機能が有効に設定されている AD フォレストごとに、上記の手順を繰り返します。
@@ -147,7 +147,7 @@ Azure AD Connect が実行されているオンプレミス サーバーで次�
 
    **手順 3.表示されている各 AD フォレストから `AZUREADSSOACCT` コンピューター アカウントを手動で削除します。**
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [**クイック スタート**](how-to-connect-sso-quick-start.md) - Azure AD シームレス SSO を動作させます。
 - [**技術的な詳細**](how-to-connect-sso-how-it-works.md) - この機能のしくみを確認します。

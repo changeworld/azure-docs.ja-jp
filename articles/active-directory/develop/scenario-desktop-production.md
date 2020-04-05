@@ -17,11 +17,11 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: c8a9cf0c05d8af14d52bb1efb536dc8bbe7db84d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365267"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230575"
 ---
 # <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Web API を呼び出すデスクトップ アプリ:運用環境に移行する
 

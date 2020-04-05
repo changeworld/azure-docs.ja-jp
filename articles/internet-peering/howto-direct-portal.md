@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 67a4944082d3ebc14fd564eedee0310afe6e3ff5
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75773982"
 ---
 # <a name="create-or-modify-a-direct-peering-using-the-portal"></a>ポータルを使用して Direct ピアリングを作成または変更する
@@ -22,7 +22,7 @@ ms.locfileid: "75773982"
 必要に応じて、[PowerShell](howto-direct-powershell.md) を使用してこのガイドを完了することもできます。
 
 ## <a name="before-you-begin"></a>開始する前に
-* 構成を開始する前に、[前提条件](prerequisites.md)と [Direct ピアリングのチュートリアル](walkthrough-direct-all.md)に関する記事を確認してください。
+* 構成を開始する前に、[前提条件](prerequisites.md)に関する記事と「[Direct ピアリングのチュートリアル](walkthrough-direct-all.md)」を確認してください。
 * Microsoft との Direct ピアリングが既にあり、Azure リソースに変換されていない場合は、「[ポータルを使用して従来の Direct ピアリングを Azure リソースに変換する](howto-legacy-direct-portal.md)」を参照してください
 
 ## <a name="create-and-provision-a-direct-peering"></a>Direct ピアリングを作成およびプロビジョニングする
@@ -30,7 +30,7 @@ ms.locfileid: "75773982"
 ### <a name="sign-in-to-portal-and-select-your-subscription"></a>ポータルにサインインしてサブスクリプションを選択する
 [!INCLUDE [Account](./includes/account-portal.md)]
 
-### <a name=create></a>Direct ピアリングを作成する
+### <a name="create-a-direct-peering"></a><a name=create></a>Direct ピアリングを作成する
 
 **[ピアリング]** リソースを使用して、新しいピアリング要求を作成できます。
 
@@ -40,13 +40,13 @@ ms.locfileid: "75773982"
 #### <a name="configure-connections-and-submit"></a>接続を構成して送信する
 [!INCLUDE [direct-peering-configuration](./includes/direct-portal-configuration.md)]
 
-### <a name=get></a>Direct ピアリングを確認する
+### <a name="verify-direct-peering"></a><a name=get></a>Direct ピアリングを確認する
 [!INCLUDE [peering-direct-get-portal](./includes/direct-portal-get.md)]
 
-## <a name="modify"></a>Direct ピアリングを変更する
+## <a name="modify-a-direct-peering"></a><a name="modify"></a>Direct ピアリングを変更する
 [!INCLUDE [peering-direct-modify-portal](./includes/direct-portal-modify.md)]
 
-## <a name="delete"></a>Direct ピアリングをプロビジョニング解除する
+## <a name="deprovision-a-direct-peering"></a><a name="delete"></a>Direct ピアリングをプロビジョニング解除する
 [!INCLUDE [peering-direct-delete-portal](./includes/delete.md)]
 
 ## <a name="next-steps"></a>次のステップ
@@ -56,4 +56,4 @@ ms.locfileid: "75773982"
 
 ## <a name="additional-resources"></a>その他のリソース
 
-詳細については、「[インターネット ピアリングのよくあるご質問](faqs.md)」を参照してください
+詳細については、「[インターネット ピアリングのよくあるご質問](faqs.md)」を参照してください。

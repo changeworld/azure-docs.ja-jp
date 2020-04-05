@@ -8,17 +8,17 @@ ms.subservice: cosmosdb-graph
 ms.topic: sample
 ms.date: 9/25/2019
 ms.openlocfilehash: 0ef01a50e4827ec2ba96ce5d370bc2386e0dbfd6
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71275069"
 ---
 # <a name="update-rus-for-a-gremlin-database-and-graph-for-azure-cosmos-db-using-azure-cli"></a>Azure CLI を使用して Azure Cosmos DB 用の Gremlin のデータベースとグラフの RU/秒を更新する
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用することを選択した場合、このトピックでは、Azure CLI バージョン 2.0.73 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+CLI をローカルにインストールして使用することを選択した場合、このトピックでは、Azure CLI バージョン 2.0.73 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -48,7 +48,7 @@ az group delete --name $resourceGroupName
 | [az cosmosdb gremlin graph throughput update](/cli/azure/cosmosdb/gremlin/graph/throughput#az-cosmosdb-gremlin-graph-throughput-update) | Azure Cosmos Gremlin グラフの RU/秒を更新します。 |
 | [az group delete](/cli/azure/resource#az-resource-delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Cosmos DB CLI の詳細については、[Azure Cosmos DB CLI のドキュメント](/cli/azure/cosmosdb)を参照してください。
 

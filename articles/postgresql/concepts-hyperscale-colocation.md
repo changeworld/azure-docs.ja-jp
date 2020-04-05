@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 7e4073ec45f4c21f33d20924a9948e72f961c7f8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74967339"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL – Hyperscale (Citus) でのテーブル コロケーション
@@ -68,7 +68,7 @@ GROUP BY page_id;
 
 単一サーバーのクエリは、テナント数と各テナントに格納されているデータが増えると同時に、速度低下が始まります。 ワーキング セットがメモリに収まらなくなり、CPU がボトルネックになります。
 
-この場合、Hyperscale (Citus) を使用して、多数のノード間でデータをシャード化できます。 シャード化することになった場合に行う必要がある最初の最も重要な選択は、ディストリビューション列です。 イベント テーブルに `event_id` を使用し、`page` テーブルに `page_id` を使用した単純な選択から始めましょう。
+この場合、Hyperscale (Citus) を使用して、多数のノード間でデータをシャード化できます。 シャード化することになった場合に行う必要がある最初の最も重要な選択は、ディストリビューション列です。 イベント テーブルに `event_id` を使用し、`page_id` テーブルに `page` を使用した単純な選択から始めましょう。
 
 ```sql
 -- naively use event_id and page_id as distribution columns
@@ -138,6 +138,6 @@ tenant_id でのフィルターと結合のため、Hyperscale (Citus) は、そ
 
 場合によっては、クエリとテーブル スキーマを変更して、一意の制約にテナント ID を含めて、条件を結合する必要があります。 通常これは簡単な変更で済みます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [マルチテナントのチュートリアル](tutorial-design-database-hyperscale-multi-tenant.md)で、テナント データを併置する方法について参照してください

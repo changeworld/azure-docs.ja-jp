@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: 8317a13b9ef87679836f55627268deefa4500dce
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599676"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225315"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>FAQ - データ収集、エージェント、およびワークスペースに関する質問
 
@@ -85,7 +85,7 @@ Security Center によって収集されたデータを保存する既存の Log
 
     - 操作を取り消すには、 **[キャンセル]** を選択します。
 
-## Microsoft Monitoring Agent が拡張機能として VM に既にインストールされている場合はどうなりますか?<a name="mmaextensioninstalled"></a>
+## <a name="what-if-the-microsoft-monitoring-agent-was-already-installed-as-an-extension-on-the-vm"></a>Microsoft Monitoring Agent が拡張機能として VM に既にインストールされている場合はどうなりますか?<a name="mmaextensioninstalled"></a>
 
 Monitoring Agent が拡張機能としてインストールされている場合、拡張機能の構成では 1 つのワークスペースにのみレポートできます。 Security Center は、ユーザー ワークスペースへの既存の接続をオーバーライドしません。 Security Center では、"Security" または "SecurityCenterFree" ソリューションがインストールされている場合は、既に接続されているワークスペースに VM からのセキュリティ データが保存されます。 Security Center では、このプロセスで拡張機能のバージョンを最新バージョンにアップグレードする可能性があります。
 
@@ -93,7 +93,7 @@ Monitoring Agent が拡張機能としてインストールされている場合
 
 
 
-## マシンに Microsoft Monitoring Agent が拡張機能 (直接エージェント) としてではなく、直接インストールされている場合はどうなりますか?<a name="directagentinstalled"></a>
+## <a name="what-if-a-microsoft-monitoring-agent-is-directly-installed-on-the-machine-but-not-as-an-extension-direct-agent"></a>マシンに Microsoft Monitoring Agent が拡張機能 (直接エージェント) としてではなく、直接インストールされている場合はどうなりますか?<a name="directagentinstalled"></a>
 
 Microsoft Monitoring Agent が VM に (Azure 拡張機能としてではなく) 直接インストールされている場合、Security Center によって Microsoft Monitoring Agent 拡張機能がインストールされ、Microsoft Monitoring Agent が最新バージョンにアップグレードされる可能性があります。
 
@@ -107,7 +107,7 @@ Linux マシンでは、エージェントのマルチ ホームはまだサポ�
 
 詳細については、次のセクションの「[System Center Operations Manager または OMS のダイレクト エージェントが既に VM にインストールされている場合、どうなりますか?](#scomomsinstalled)」をご覧ください
 
-## VM に System Center Operations Manager エージェントが既にインストールされている場合はどうなりますか?<a name="scomomsinstalled"></a>
+## <a name="what-if-a-system-center-operations-manager-agent-is-already-installed-on-my-vm"></a>VM に System Center Operations Manager エージェントが既にインストールされている場合はどうなりますか?<a name="scomomsinstalled"></a>
 
 Security Center によって、Microsoft Monitoring Agent 拡張機能は、既存の System Center Operations Manager エージェントと並行してインストールされます。 既存のエージェントは、引き続き通常どおり System Center Operations Manager サーバーに報告します。 Operations Manager エージェントと Microsoft Monitoring Agent は、このプロセス中に最新バージョンに更新される、共通のランタイム ライブラリを共有することに注意してください。 注 - Operations Manager エージェントのバージョン 2012 がインストールされている場合は、自動プロビジョニングを有効にしないでください (Operations Manager サーバーもバージョン 2012 である場合、管理容易性機能が失われる可能性があり)。
 
@@ -162,7 +162,7 @@ Security Center がお使いの VM からセキュリティ データを収集�
 Security Center は、選択された価格レベルに基づいて、ワークスペース上で適切なソリューションを有効にします。
 
 
-## Security Center にインストールされている OMS 拡張機能を削除するにはどうすればよいですか?<a name="remove-oms"></a>
+## <a name="how-do-i-remove-oms-extensions-installed-by-security-center"></a>Security Center にインストールされている OMS 拡張機能を削除するにはどうすればよいですか?<a name="remove-oms"></a>
 
 Microsoft Monitoring Agent は手動で削除することができます。 ただし、Security Center の推奨とアラートが制限されるため、削除は推奨されません。
 

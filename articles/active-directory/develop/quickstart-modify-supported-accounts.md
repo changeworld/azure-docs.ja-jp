@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 56771658380e0a5b946c3acc70df98a262561b5c
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 94fed6f4aa62c7e649cf7d644e571b30561e0da4
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160691"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80050238"
 ---
 # <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>クイック スタート:アプリケーションによってサポートされるアカウントを変更する
 
@@ -49,7 +49,7 @@ Microsoft ID プラットフォームにアプリケーションを登録する�
 組織の外部の顧客やパートナーが利用できるアプリケーションを作成する場合には、Azure Portal でアプリケーションの定義を更新する必要があります。
 
 > [!IMPORTANT]
-> Azure AD では、マルチテナント アプリケーションのアプリケーション ID URI がグローバルで一意になっている必要があります。 アプリ ID URI は、プロトコル メッセージでアプリケーションを識別する手段の 1 つです。 シングル テナント アプリケーションの場合、アプリ ID URI はそのテナント内で一意であれば十分です。 これに対してマルチテナント アプリケーションの場合、Azure AD が全テナントから該当するアプリケーションを特定できるように、アプリ ID URI がグローバルで一意になっている必要があります。 グローバルな一意性を確保するため、アプリ ID URI には Azure AD テナントの検証済みドメインと一致するホスト名が含まれていなければならないという条件が存在します。 たとえば、テナントの名前が contoso.onmicrosoft.com の場合、有効なアプリ ID URI は https://contoso.onmicrosoft.com/myapp のようになります。 また、テナントの検証済みドメインが contoso.com の場合、有効なアプリ ID URI は https://contoso.com/myapp のようになります。 アプリ ID URI がこのパターンに従っていないと、アプリケーションのマルチテナントとしての設定が失敗します。
+> Azure AD では、マルチテナント アプリケーションのアプリケーション ID URI がグローバルで一意になっている必要があります。 アプリ ID URI は、プロトコル メッセージでアプリケーションを識別する手段の 1 つです。 シングル テナント アプリケーションの場合、アプリ ID URI はそのテナント内で一意であれば十分です。 これに対してマルチテナント アプリケーションの場合、Azure AD が全テナントから該当するアプリケーションを特定できるように、アプリ ID URI がグローバルで一意になっている必要があります。 グローバルな一意性を確保するため、アプリ ID URI には Azure AD テナントの検証済みドメインと一致するホスト名が含まれていなければならないという条件が存在します。 たとえば、テナントの名前が contoso.onmicrosoft.com の場合、有効なアプリ ID URI は `https://contoso.onmicrosoft.com/myapp` のようになります。 また、テナントの検証済みドメインが contoso.com の場合、有効なアプリ ID URI は `https://contoso.com/myapp` のようになります。 アプリ ID URI がこのパターンに従っていないと、アプリケーションのマルチテナントとしての設定が失敗します。
 
 ### <a name="to-change-who-can-access-your-application"></a>アプリケーションにアクセスできるユーザーを変更する
 

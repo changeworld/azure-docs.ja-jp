@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
 ms.openlocfilehash: 31243b5e9da55aafbc376fa416c1b00a4499c116
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70242413"
 ---
 # <a name="feature-evaluation"></a>特徴の評価
@@ -79,7 +79,7 @@ Personalizer には、一緒に考慮したときに、より高い報酬が生�
 * ユーザーの数が多い場合、各ユーザーの操作が、ユーザー全体の操作よりも重みが高くなることはほとんどありません。そのため、ユーザー ID を送信すると (PII 以外でも)、価値よりもノイズの方がモデルに追加される可能性が高くなるのです。
 * 特徴付けされた時刻値ではなく、厳密なタイムスタンプとして日付/時刻フィールドを送信する。 Context.TimeStamp.Day=Monday または "Context.TimeStamp.Hour"="13" のようなフィーチャーがあると、さらに有用です。 それぞれ、フィーチャーの最大は 7 または 24 になります。 しかし、"Context.TimeStamp":"1985-04-12T23:20:50.52Z" は厳密な時間を指しており、将来再度生じることはないため、ここから学習する方法がありません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Personalizer を使用した[スケーラビリティとパフォーマンス](concepts-scalability-performance.md)を理解します。
 

@@ -6,17 +6,17 @@ ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: abhisram
 ms.openlocfilehash: e6e9fb66368461e0d3ebdd2709f4ced0e796bea5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75376734"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236655"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Reliable Actors の診断とパフォーマンス監視
 Reliable Actors ランタイムは、[EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) イベントおよび[パフォーマンス カウンター](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)を出力します。 これらは、ランタイムがどのように動作するかを示し、トラブルシューティングとパフォーマンス監視に役立ちます。
 
 ## <a name="eventsource-events"></a>EventSource イベント
-Reliable Actors ランタイムの EventSource プロバイダー名は "Microsoft-ServiceFabric-Actors" です。 このイベント ソースのイベントは、アクター アプリケーションが [Visual Studio でデバッグ](service-fabric-debugging-your-application.md)されているときに、[[診断イベント](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio)] ウィンドウに表示されます。
+Reliable Actors ランタイムの EventSource プロバイダー名は "Microsoft-ServiceFabric-Actors" です。 このイベント ソースのイベントは、アクター アプリケーションが [Visual Studio でデバッグ](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio)されているときに、[[診断イベント](service-fabric-debugging-your-application.md)] ウィンドウに表示されます。
 
 EventSource イベントの収集または表示に役立つツールとテクノロジの例には、[PerfView](https://www.microsoft.com/download/details.aspx?id=28567)、[Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md)、[セマンティック ログ記録](https://msdn.microsoft.com/library/dn774980.aspx)、[Microsoft TraceEvent ライブラリ](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent)があります。
 

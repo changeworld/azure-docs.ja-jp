@@ -16,10 +16,10 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 89b16a8479f8975d101b8a4e26dcb1885d9730bd
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063382"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Azure Active Directory とアプリケーションの統合のファースト ステップ ガイド
@@ -95,7 +95,7 @@ Microsoft Azure AD アプリケーション プロキシを使用すると、プ
 
 デプロイ計画を Azure portal からダウンロードするには。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. **エンタープライズ アプリケーション** | **を選択し、**  | **デプロイ計画**アプリケーションを使用します。
 
 [デプロイ計画の調査](https://aka.ms/DeploymentPlanFeedback)を実施し、デプロイ計画に関するフィードバックを提供してください。

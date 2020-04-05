@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 5a8a58a3935b7cd5efb8565f7e3278ccaae4f4de
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77921438"
 ---
 # <a name="troubleshoot-deploying-linux-virtual-machine-issues-in-azure"></a>Azure での Linux 仮想マシンのデプロイに関する問題のトラブルシューティング

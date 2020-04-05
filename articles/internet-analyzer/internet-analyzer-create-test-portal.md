@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: 64bbed9b558d4c20889b28a5247e2113d20daa77
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73509836"
 ---
 # <a name="create-an-internet-analyzer-test-using-portal-preview"></a>ポータルを使用して Internet Analyzer テストを作成する (プレビュー)
@@ -29,7 +29,7 @@ Internet Analyzer リソースを作成する方法は 2 つあります。Azure
 ## <a name="basics"></a>基本
 
 1. [Azure Internet Analyzer の FAQ](internet-analyzer-faq.md) に記載されている「**プレビューに参加するにはどうすればよいですか?** 」の指示に従って、Internet Analyzer プレビュー版へのアクセスを取得します。
-2. [Azure portal](https://preview.portal.azure.com) のホーム ページから **[+ リソースの作成]** をクリックします。 Internet Analyzer は現在、Azure portal のプレビュー バージョンからのみ使用できます。
+2. [Azure portal](https://preview.portal.azure.com) 内のホーム ページから **[+ リソースの作成]** をクリックします。 Internet Analyzer は現在、Azure portal のプレビュー バージョンからのみ使用できます。
 3. **[新規]** ページの *[マーケットプレースを検索]* フィールドで "Internet Analyzer" を検索します。
 4. **[Internet Analyzer (プレビュー)]** をクリックします。 公開元が *Microsoft* で、カテゴリが*ネットワーク*であることを確認してください。
 5. **[Internet Analyzer (プレビュー)** ] ページで **[作成]** をクリックし、 **[Create an Internet Analyzer] (Internet Analyzer の作成)** ページを開きます。
@@ -72,7 +72,7 @@ Internet Analyzer リソースを作成する方法は 2 つあります。Azure
 
 どのテストを開始する場合でも、Web アプリケーションに JavaScript クライアントが埋め込まれている必要があります。 少なくとも 1 つのテストを構成した後、 **[確認と作成]** をクリックし、 **[設定]、[構成]** と移動して、JavaScript クライアントをコピーします。 具体的な手順は、「[Internet Analyzer クライアントの埋め込み](internet-analyzer-embed-client.md)」ページに記載されています。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Internet Analyzer の FAQ](internet-analyzer-faq.md) を読む
 * [Internet Analyzer クライアント](internet-analyzer-embed-client.md)の埋め込みと[カスタム エンドポイント](internet-analyzer-custom-endpoint.md)の作成の詳細を確認する。

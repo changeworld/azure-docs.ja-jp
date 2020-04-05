@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: d94bf7ffe955c9ec9ee2a2e7f7c4dbaaa28df270
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77085850"
 ---
 # <a name="configure-keychain"></a>キーチェーンの構成
@@ -46,7 +46,7 @@ macOS 10.15 以降 (macOS Catalina) では、MSAL ではキーチェーン ア�
 
 別のキーチェーン アクセス グループを使用する場合は、次のように、`MSALPublicClientApplication` の作成前に `MSALPublicClientApplicationConfig` を作成するときにカスタム グループを渡すことができます。
 
-# <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
+# <a name="objective-c"></a>[Objective-C](#tab/objc)
 
 ```objc
 MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"your-client-id"
@@ -62,7 +62,7 @@ MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] 
 // and only shared with other applications declaring the same access group
 ```
 
-# <a name="swifttabswift"></a>[Swift](#tab/swift)
+# <a name="swift"></a>[Swift](#tab/swift)
 
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "your-client-id",
@@ -84,13 +84,13 @@ do {
 
 複数のアプリ間で SSO 状態を共有したくない場合、または任意のキーチェーン アクセス グループを使用する場合は、keychainGroup としてアプリケーション バンドル ID を渡すことで、キーチェーンの共有を無効にします。
 
-# <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
+# <a name="objective-c"></a>[Objective-C](#tab/objc)
 
 ```objc
 config.cacheConfig.keychainSharingGroup = [[NSBundle mainBundle] bundleIdentifier];
 ```
 
-# <a name="swifttabswift"></a>[Swift](#tab/swift)
+# <a name="swift"></a>[Swift](#tab/swift)
 
 ```swift
 if let bundleIdentifier = Bundle.main.bundleIdentifier {

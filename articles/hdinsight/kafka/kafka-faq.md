@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.openlocfilehash: ff4079263fd7afb02e132a798997687fad7e9961
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78206981"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight での Apache Kafka に関してよく寄せられる質問

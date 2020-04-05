@@ -1,5 +1,5 @@
 ---
-title: 診断ログの記録
+title: 診断ログ
 titleSuffix: Azure Cognitive Services
 description: このガイドでは、Azure Cognitive Service の診断ログを有効にするための詳細な手順について説明します。 これらのログでは、問題の識別やデバッグに使用されるリソースの操作に関する豊富で頻繁なデータが提供されます。
 services: cognitive-services
@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 06/14/2019
 ms.author: erhopf
 ms.openlocfilehash: 539a35f170b2ee0c94762a30ed9376ca4a416210
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71827896"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Azure Cognitive Services の診断ログを有効にする
@@ -41,9 +41,9 @@ ms.locfileid: "71827896"
 2. 次に、左側のナビゲーション メニューから、 **[監視]** を見つけて **[診断設定]** を選択します。 この画面には、このリソースに対して前に作成したすべての診断設定が含まれています。
 3. 前に作成したリソースで使用したいものが存在する場合は、ここでそれを選択できます。 それ以外の場合は、 **[+ Add diagnostic setting] (+ 診断設定の追加)** を選択します。
 4. 設定の名前を入力します。 次に、 **[ストレージ アカウントへのアーカイブ]** および **[Log Analytics への送信]** を選択します。
-5. 構成するよう求めるメッセージが表示されたら、診断ログを格納するために使用するストレージ アカウントと OMS ワークスペースを選択します。 **メモ**:ストレージ アカウントまたは OMS ワークスペースがない場合は、プロンプトに従って作成してください。
+5. 構成するよう求めるメッセージが表示されたら、診断ログを格納するために使用するストレージ アカウントと OMS ワークスペースを選択します。 **注**:ストレージ アカウントまたは OMS ワークスペースがない場合は、プロンプトに従って作成してください。
 6. **[Audit]** 、 **[RequestResponse]** 、および **[AllMetrics]** を選択します。 次に、診断ログ データの保持期間を設定します。 保持ポリシーが 0 に設定されていると、そのログ カテゴリのイベントは無期限に格納されます。
-7. **[Save]** をクリックします。
+7. **[保存]** をクリックします。
 
 ログ データがクエリや分析に使用できるようになるまでに最大 2 時間かかることがあります。 そのため、すぐには何も表示されなくても気にしないでください。
 
@@ -111,7 +111,7 @@ by bin(TimeGenerated, 10s), OperationName
 | render areachart kind=unstacked
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * ログ記録を有効にする方法、および各種の Azure サービスでサポートされているメトリックやログのカテゴリを理解するには、Microsoft Azure での[メトリックの概要](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)に関するページと「[Azure 診断ログの概要](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)」の記事の両方を参照してください。
 * Event Hubs については次の記事をご覧ください。

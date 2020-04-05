@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
 ms.openlocfilehash: b646b1a14d6cedcafa662192229daa570a0d2441
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77616423"
 ---
 # <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>Azure で Windows 仮想マシンにタグを付ける方法
@@ -46,7 +46,7 @@ PowerShell でタグの作成、追加、および削除を行うには、まず
 
 PowerShell でタグを追加する場合、 `Set-AzResource` コマンドを使用できます。 PowerShell でタグを更新すると、タグ全体が更新されます。 そのため、既にタグが設定されているリソースに 1 つのタグを追加する場合、リソースに設定するすべてのタグを含める必要があります。 次に、PowerShell コマンドレットでリソースにタグを追加する例を示します。
 
-この最初のコマンドレットでは、`Get-AzResource` と `Tags` プロパティを使用して、*MyTestVM* に追加されているすべてのタグを *$tags* 変数に設定します。
+この最初のコマンドレットでは、*と* プロパティを使用して、*MyTestVM* に追加されているすべてのタグを `Get-AzResource`$tags`Tags` 変数に設定します。
 
         PS C:\> $tags = (Get-AzResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
 

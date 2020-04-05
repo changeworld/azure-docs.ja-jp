@@ -16,10 +16,10 @@ ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 18409f93ab50f7d031ec78a55b9eaf8ad1b85a49
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70101410"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SAP Business One

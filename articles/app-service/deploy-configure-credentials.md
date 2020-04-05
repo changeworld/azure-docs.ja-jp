@@ -6,11 +6,11 @@ ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: a9d875e2c3899fa91b9cc41c0ee3b5a93ec5b8c8
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843788"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231655"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Azure App Service のデプロイ資格情報の構成
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) では、[ローカル Git デプロイ](deploy-local-git.md)と [FTP/S デプロイ](deploy-ftp.md)デプロイ用の 2 種類の資格情報をサポートしています。 これらの資格情報は Azure サブスクリプションの資格情報とは異なります。
@@ -19,7 +19,7 @@ ms.locfileid: "76843788"
 
 * **アプリ レベルの資格情報**: アプリごとの資格情報セットです。 そのアプリのみにデプロイするために使用できます。 各アプリの資格情報は、アプリの作成時に自動的に生成されます。 これらは手動で構成できませんが、いつでもリセットできます。 RBAC を使用してアプリ レベルの資格情報へのアクセス権がユーザーに付与される場合、そのユーザーはアプリに対して共同作成者以上の権限 (Web サイトの共同作成者の組み込みロールを含む) を持つ必要があります。 閲覧者は発行を許可されていないため、この資格情報にアクセスできません。
 
-## <a name="userscope"></a>ユーザーレベルの資格情報を構成する
+## <a name="configure-user-level-credentials"></a><a name="userscope"></a>ユーザーレベルの資格情報を構成する
 
 ユーザー レベルの資格情報は、任意のアプリの[リソース ページ](../azure-resource-manager/management/manage-resources-portal.md#manage-resources)で構成できます。 どのアプリで構成した場合でも、これらの資格情報は、Azure アカウント内のすべてのアプリのすべてのサブスクリプションに適用されます。 
 
@@ -67,7 +67,7 @@ Git デプロイが構成されている場合、ページに **Git/デプロイ
 
 ユーザーレベルの資格情報は、特定のリソースではなく、ユーザーにリンクされているため、適切なアプリのエンドポイントに対してサインイン アクションを実行するには、ユーザー名はこの形式でなければなりません。
 
-## <a name="appscope"></a>アプリ レベルの資格情報の設定とリセット
+## <a name="get-and-reset-app-level-credentials"></a><a name="appscope"></a>アプリ レベルの資格情報の設定とリセット
 アプリ レベルの資格情報を取得するには:
 
 1. [Azure portal](https://portal.azure.com) の左側のメニューで、 **[App Services]** 、 **[&lt;任意のアプリ>]** 、 **[デプロイ センター]** 、 **[FTP/資格情報]** を選択します。

@@ -12,10 +12,10 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
 ms.openlocfilehash: 7315f747fb7319521b25e2eb6e7af72449867888
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73691774"
 ---
 # <a name="use-powershell-to-add-an-azure-sql-database-single-database-to-a-failover-group"></a>PowerShell を使用して Azure SQL Database の単一データベースをフェールオーバー グループに追加します 
@@ -57,7 +57,7 @@ Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 | [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Azure SQL Databese のフェールオーバー グループのフェールオーバーを実行します。 |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | リソース グループを削除します | 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 02/11/2020
 ms.author: cynthn
 ms.openlocfilehash: 17186d1d7b50ea872dc47eca8c2c4491787d2a38
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77158946"
 ---
 # <a name="preview-deploy-spot-vms-using-azure-powershell"></a>プレビュー:Azure PowerShell を使用してスポット VM をデプロイする

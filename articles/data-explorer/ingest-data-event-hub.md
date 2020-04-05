@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: bb9357ca4388bd1fb7ae3e3704cf4112d07c1105
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: bce92eeed669628fa1b6318abd6b0c13f7e84848
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188183"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411214"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>イベント ハブから Azure Data Explorer にデータを取り込む
 
@@ -61,7 +61,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
     |---|---|---|
     | サブスクリプション | 該当するサブスクリプション | イベント ハブに使用する Azure サブスクリプションを選択します。|
     | Resource group | *test-hub-rg* | 新しいリソース グループを作成します。 |
-    | Location | *[米国西部]* | この記事では *[米国西部]* を選択します。 運用システムでは、ニーズに最も適したリージョンを選択します。 最良のパフォーマンスを得るためには、Kusto クラスターと同じ場所にイベント ハブの名前空間を作成します (高スループットのイベント ハブの名前空間に最も重要です)。
+    | 場所 | *米国西部* | この記事では *[米国西部]* を選択します。 運用システムでは、ニーズに最も適したリージョンを選択します。 最良のパフォーマンスを得るためには、Kusto クラスターと同じ場所にイベント ハブの名前空間を作成します (高スループットのイベント ハブの名前空間に最も重要です)。
     | 名前空間名 | 一意の名前空間名 | 名前空間を識別する一意の名前を選択します。 たとえば、*mytestnamespace* と指定します。 指定した名前にドメイン名 *servicebus.windows.net* が付加されます。 この名前には、文字、数字、ハイフンのみを含めることができます。 名前の先頭は英字、末尾は英字または数字にする必要があります。 値の長さは 6 から 50 文字にする必要があります。
     | イベント ハブ名 | *test-hub* | イベント ハブは、固有のスコープ コンテナーを提供する名前空間以下にあります。 イベント ハブ名は、名前空間内で一意にする必要があります。 |
     | コンシューマー グループ名 | *test-group* | コンシューマー グループを使用すると、複数の使用アプリケーションがそれぞれイベント ストリーム ビューを持つことができるようになります。 |
@@ -92,7 +92,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 1. 次のコマンドをウィンドウにコピーし、 **[実行]** を選択して、テーブル (TestTable) の列名とデータ型に受信 JSON データをマップします。
 
     ```Kusto
-    .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.timeStamp","datatype":"datetime"},{"column":"Name","path":"$.name","datatype":"string"},{"column":"Metric","path":"$.metric","datatype":"int"},{"column":"Source","path":"$.source","datatype":"string"}]'
+    .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp", "Properties": {"Path": "$.timeStamp"}},{"column":"Name", "Properties": {"Path":"$.name"}} ,{"column":"Metric", "Properties": {"Path":"$.metric"}}, {"column":"Source", "Properties": {"Path":"$.source"}}]'
     ```
 
 ## <a name="connect-to-the-event-hub"></a>イベント ハブへの接続

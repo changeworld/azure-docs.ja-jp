@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: cherylmc
 ms.openlocfilehash: 8a4bb9d2ac7b8124fa9b1e00f3ecceda4f4a4cdf
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77152960"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-powershell"></a>PowerShell を使用してルートベースの VPN ゲートウェイを作成します
@@ -34,7 +34,7 @@ ms.locfileid: "77152960"
 New-AzResourceGroup -Name TestRG1 -Location EastUS
 ```
 
-## <a name="vnet"></a>仮想ネットワークの作成
+## <a name="create-a-virtual-network"></a><a name="vnet"></a>仮想ネットワークの作成
 
 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) を使用して仮想ネットワークを作成します。 次の例では、**EastUS** の場所に、**VNet1** という名前の仮想ネットワークを作成します。
 
@@ -62,7 +62,7 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
 $virtualNetwork | Set-AzVirtualNetwork
 ```
 
-## <a name="gwsubnet"></a>ゲートウェイ サブネットの追加
+## <a name="add-a-gateway-subnet"></a><a name="gwsubnet"></a>ゲートウェイ サブネットの追加
 
 ゲートウェイ サブネットには、仮想ネットワーク ゲートウェイ サービスが使用する予約済み IP アドレスが含まれます。 次の例を使用してゲートウェイ サブネットを追加します。
 
@@ -84,7 +84,7 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0
 $vnet | Set-AzVirtualNetwork
 ```
 
-## <a name="PublicIP"></a>パブリック IP アドレスの要求
+## <a name="request-a-public-ip-address"></a><a name="PublicIP"></a>パブリック IP アドレスの要求
 
 VPN ゲートウェイには、動的に割り当てられるパブリック IP アドレスが必要です。 VPN ゲートウェイへの接続を作成するときは、これが、ユーザーが指定する IP アドレスです。 次の例を使用して、パブリック IP アドレスを要求します。
 
@@ -92,7 +92,7 @@ VPN ゲートウェイには、動的に割り当てられるパブリック IP 
 $gwpip= New-AzPublicIpAddress -Name VNet1GWIP -ResourceGroupName TestRG1 -Location 'East US' -AllocationMethod Dynamic
 ```
 
-## <a name="GatewayIPConfig"></a>ゲートウェイ IP アドレスの構成の作成
+## <a name="create-the-gateway-ip-address-configuration"></a><a name="GatewayIPConfig"></a>ゲートウェイ IP アドレスの構成の作成
 
 ゲートウェイの構成で、使用するサブネットとパブリック IP アドレスを定義します。 次の例を使用して、ゲートウェイの構成を作成します。
 
@@ -101,7 +101,7 @@ $vnet = Get-AzVirtualNetwork -Name VNet1 -ResourceGroupName TestRG1
 $subnet = Get-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
 $gwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $gwpip.Id
 ```
-## <a name="CreateGateway"></a>VPN ゲートウェイの作成
+## <a name="create-the-vpn-gateway"></a><a name="CreateGateway"></a>VPN ゲートウェイの作成
 
 VPN ゲートウェイの作成には 45 分以上かかる場合があります。 ゲートウェイが完成したら、自分の仮想ネットワークと別の VNet の間の接続を作成できます。 または、自分の仮想ネットワークとオンプレミスの場所の間の接続を作成します。 [New-AzVirtualNetworkGateway](/powershell/module/az.network/New-azVirtualNetworkGateway) コマンドレットを使用して VPN ゲートウェイを作成します。
 
@@ -111,7 +111,7 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 -VpnType RouteBased -GatewaySku VpnGw1
 ```
 
-## <a name="viewgw"></a>VPN ゲートウェイの表示
+## <a name="view-the-vpn-gateway"></a><a name="viewgw"></a>VPN ゲートウェイの表示
 
 [Get-AzVirtualNetworkGateway](/powershell/module/az.network/Get-azVirtualNetworkGateway) コマンドレットを使用して VPN ゲートウェイを表示できます。
 
@@ -164,7 +164,7 @@ BgpSettings            : {
      
 ```
 
-## <a name="viewgwpip"></a>パブリック IP アドレスの表示
+## <a name="view-the-public-ip-address"></a><a name="viewgwpip"></a>パブリック IP アドレスの表示
 
 VPN ゲートウェイのパブリック IP アドレスを表示するには、[Get-AzPublicIpAddress](/powershell/module/az.network/Get-azPublicIpAddress) コマンドレットを使用します。
 

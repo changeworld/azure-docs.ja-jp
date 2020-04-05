@@ -5,11 +5,11 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 2/14/2018
 ms.openlocfilehash: 9f039f71954998ef561d1efd1e559318740c86ab
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77659300"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234191"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure Monitor の PowerShell クイック スタート サンプル
 この記事では、Azure Monitor の機能にアクセスするために役立つ PowerShell のサンプル コマンドを紹介します。
@@ -148,8 +148,8 @@ Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resou
 
 | パラメーター (parameter) | value |
 | --- | --- |
-| 名前 |simpletestdiskwrite |
-| このアラート ルールの場所 |米国東部 |
+| Name |simpletestdiskwrite |
+| このアラート ルールの場所 |East US |
 | ResourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
 | 作成されたアラートの MetricName |\PhysicalDisk(_Total)\Disk Writes/sec。正確なメトリック名を取得する方法については、`Get-MetricDefinitions` コマンドレットを参照してください。 |
@@ -225,7 +225,7 @@ Set-AzActivityLogAlert -Location 'Global' -Name 'alert on VM create' -ResourceGr
 
 1. ルールを作成します。
 2. 前の手順で作成したルールをプロファイルにマッピングしてプロファイルを作成します。
-3. 省略可能:Webhook プロパティと電子メール プロパティを構成して、自動スケールの通知を作成します。
+3. 省略可能: Webhook プロパティと電子メール プロパティを構成して、自動スケールの通知を作成します。
 4. これまでの手順で作成したプロファイルと通知をマッピングし、ターゲット リソースでの名前を指定して自動スケール設定を作成します。
 
 以下の例は、CPU 使用率メトリックを使用して、Windows オペレーティング システム ベースの仮想マシン スケール セットの自動スケール設定を作成する方法を示しています。

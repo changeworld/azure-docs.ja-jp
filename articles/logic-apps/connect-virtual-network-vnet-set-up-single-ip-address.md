@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.openlocfilehash: 619c68b84291bc35b8216194ac4534393fde454c
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77191491"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Azure Logic Apps で 1 つまたは複数の統合サービス環境に対して単一の IP アドレスを設定する
@@ -49,7 +49,7 @@ Azure Logic Apps を使用する場合は、[Azure 仮想ネットワーク](../
 
    ![送信トラフィックの送信用ルールを設定する](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-rule-to-route-table.png)
 
-   | プロパティ | Value | 説明 |
+   | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
    | **ルート名** | <*一意のルート名*> | ルート テーブル内のルートの一意の名前 |
    | **アドレス プレフィックス** | <*送信先アドレス*> | トラフィックを送る送信先システムのアドレス。 このアドレスに必ず、[クラスレス ドメイン間ルーティング (CIDR) 表記](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)を使用してください。 |
@@ -71,18 +71,18 @@ Azure Logic Apps を使用する場合は、[Azure 仮想ネットワーク](../
 
    **ネットワーク ルール コレクションのプロパティ**
 
-   | プロパティ | Value | 説明 |
+   | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
-   | **Name** | <*ネットワーク ルール コレクション名*> | ネットワーク ルール コレクションの名前 |
+   | **名前** | <*ネットワーク ルール コレクション名*> | ネットワーク ルール コレクションの名前 |
    | **優先順位** | <*優先順位のレベル*> | ルール コレクションを実行するために使用する優先順位。 詳細については、「[Azure Firewall の概念をいくつか教えてください。](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts)」を参照してください。 |
    | **操作** | **許可** | このルールのために実行するアクションの種類 |
    |||
 
    **ネットワーク ルールのプロパティ**
 
-   | プロパティ | Value | 説明 |
+   | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
-   | **Name** | <*ネットワーク ルール名*> | ネットワーク ルールの名前 |
+   | **名前** | <*ネットワーク ルール名*> | ネットワーク ルールの名前 |
    | **プロトコル** | <*接続プロトコル*> | 使用する接続プロトコル。 たとえば、NSG ルールを使用している場合は、 **[TCP]** だけではなく、 **[TCP]** と **[UDP]** の両方を選択します。 |
    | **ソース アドレス** | <*ISE サブネット アドレス*> | ISE が実行されているサブネットの IP アドレスと、ロジック アプリからのトラフィックの発生元 |
    | **送信先アドレス** | <*送信先 IP アドレス*> | トラフィックを送る送信先システムの IP アドレス |

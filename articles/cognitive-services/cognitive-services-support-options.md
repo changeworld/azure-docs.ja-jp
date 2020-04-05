@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
 ms.openlocfilehash: 2cdf34bb7df121665548be98f9f2098cc5cfe99b
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76169082"
 ---
 # <a name="azure-cognitive-services-support-and-help-options"></a>Azure Cognitive Services のサポート オプションとヘルプ オプション
@@ -118,7 +118,7 @@ Cognitive Services に関するニュースは、[Azure ブログ](https://azure
 
 ### <a name="scoped-search"></a>範囲指定の検索
 
-より迅速な結果を得るには、Stack Overflow、Microsoft Docs、GitHub のコード サンプルなど、関連するサイトに検索範囲を絞ります。 [お気に入りの検索エンジン](https://bing.com)で `site:` クエリ表記を使用します。
+より迅速な結果を得るには、Stack Overflow、Microsoft Docs、GitHub のコード サンプルなど、関連するサイトに検索範囲を絞ります。 `site:`お気に入りの検索エンジン[で ](https://bing.com) クエリ表記を使用します。
 
 ```
 {search keywords} site:stackoverflow.com

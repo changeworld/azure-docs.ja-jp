@@ -16,11 +16,11 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9d3f4f4ab6cc1c928761fce740d39f3f73426e62
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516788"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232103"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>StorSimple Virtual Array をデプロイする - Hyper-V でプロビジョニングする
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/hyperv4.png)
@@ -217,6 +217,6 @@ ms.locfileid: "68516788"
 * 診断テストを実行して [Web UI のセットアップのトラブルシューティング](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors)を行う。
 * [ログ パッケージを生成してログ ファイルを表示する](storsimple-ova-web-ui-admin.md#generate-a-log-package)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [StorSimple Virtual Array をファイル サーバーとして設定する](storsimple-virtual-array-deploy3-fs-setup.md)
 * [StorSimple Virtual Array を iSCSI サーバーとして設定する](storsimple-virtual-array-deploy3-iscsi-setup.md)

@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 864a9243a9f737506fd4d8cbc3940d7a86711f20
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67091660"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screensteps"></a>チュートリアル:Azure Active Directory と ScreenSteps の統合
@@ -130,19 +130,19 @@ ScreenSteps で Azure AD シングル サインオンを構成するには、次
 
 1. **[Account Settings]\(アカウント設定\)** をクリックします。
 
-    ![Account management](./media/screensteps-tutorial/ic778523.png "Account management")
+    ![アカウント管理](./media/screensteps-tutorial/ic778523.png "アカウント管理")
 
 1. **[Single Sign-on]** をクリックします。
 
-    ![Remote authentication](./media/screensteps-tutorial/ic778524.png "Remote authentication")
+    ![リモート認証](./media/screensteps-tutorial/ic778524.png "[Remote Authentication]")
 
 1. **[シングル サインオン エンドポイントの作成]** をクリックします。
 
-    ![Remote authentication](./media/screensteps-tutorial/ic778525.png "Remote authentication")
+    ![リモート認証](./media/screensteps-tutorial/ic778525.png "[Remote Authentication]")
 
 1. **[シングル サインオン エンドポイントの作成]** セクションで、次の手順に従います。
 
-    ![Create an authentication endpoint](./media/screensteps-tutorial/ic778526.png "Create an authentication endpoint")
+    ![認証エンドポイントの作成](./media/screensteps-tutorial/ic778526.png "[Create an Authentication Endpoint]")
 
     a. **[Title]** テキスト ボックスに、タイトルを入力します。
 
@@ -152,11 +152,11 @@ ScreenSteps で Azure AD シングル サインオンを構成するには、次
 
 1. 新しいエンドポイントを**編集**します。
 
-    ![エンドポイントの編集](./media/screensteps-tutorial/ic778528.png "Edit endpoint")
+    ![エンドポイントの編集](./media/screensteps-tutorial/ic778528.png "エンドポイントを編集する")
 
 1. **[シングル サインオン エンドポイントの編集]** セクションで、次の手順に従います。
 
-    ![Remote authentication endpoint](./media/screensteps-tutorial/ic778527.png "Remote authentication endpoint")
+    ![リモート認証エンドポイント](./media/screensteps-tutorial/ic778527.png "[Remote Authentication Endpoint]")
 
     a. **[Upload new SAML Certificate file]\(新しい SAML 証明書のアップロード\)** をクリックし、Azure Portal からダウンロードした証明書をアップロードします。
 

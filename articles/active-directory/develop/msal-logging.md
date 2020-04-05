@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 58697cc535357710c6889f05060b5e04e129ae7d
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77084882"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL アプリケーションでのログ記録
@@ -39,7 +39,7 @@ MSAL では、いくつかのレベルのログ記録の詳細が提供されま
 
 特定の言語での MSAL ログの詳細については、使用する言語に一致するタブを選択してください。
 
-## <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+## <a name="net"></a>[.NET](#tab/dotnet)
 
 ## <a name="logging-in-msalnet"></a>MSAL.NET でのログ
 
@@ -80,7 +80,7 @@ class Program
  }
  ```
 
-## <a name="androidtabandroid"></a>[Android](#tab/android)
+## <a name="android"></a>[Android](#tab/android)
 
 ## <a name="logging-in-msal-for-android-using-java"></a>Java を使用した MSAL for Android でのログ記録
 
@@ -124,7 +124,7 @@ Logger.getInstance().setEnablePII(false);
 Logger.getInstance().setEnableLogcatLog(true);
 ```
 
-## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
  `UserAgentApplication` インスタンスを作成するための構成中にロガー オブジェクトを渡すことによって、MSAL.js (JavaScript) でのログ記録を有効にします。 このロガー オブジェクトには、次のプロパティがあります。
 
@@ -156,7 +156,7 @@ var msalConfig = {
 var UserAgentApplication = new Msal.UserAgentApplication(msalConfig);
 ```
 
-## <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
+## <a name="objective-c"></a>[Objective-C](#tab/objc)
 
 ## <a name="msal-for-ios-and-macos-logging-objc"></a>iOS および macOS 用の MSAL でのログ記録 - ObjC
 
@@ -234,7 +234,7 @@ MSAL ログ メッセージのメッセージ部分は、次の形式となり�
 
 関連付け ID とタイム スタンプを指定することは、問題を追跡する場合に役立ちます。 タイムスタンプと関連付け ID に関する情報は、ログ メッセージで確認できます。 それらの取得元として唯一信頼できるのは MSAL ログ メッセ ージです。
 
-## <a name="swifttabswift"></a>[Swift](#tab/swift)
+## <a name="swift"></a>[Swift](#tab/swift)
 
 ## <a name="msal-for-ios-and-macos-logging-swift"></a>iOS および macOS 用の MSAL でのログ記録 - Swift
 
@@ -311,7 +311,7 @@ MSAL ログ メッセージのメッセージ部分は、次の形式となり�
 
 関連付け ID とタイム スタンプを指定することは、問題を追跡する場合に役立ちます。 タイムスタンプと関連付け ID に関する情報は、ログ メッセージで確認できます。 それらの取得元として唯一信頼できるのは MSAL ログ メッセ ージです。
 
-## <a name="javatabjava"></a>[Java](#tab/java)
+## <a name="java"></a>[Java](#tab/java)
 
 ## <a name="msal-for-java-logging"></a>MSAL for Java でのログ記録
 
@@ -361,7 +361,7 @@ PublicClientApplication app2 = PublicClientApplication.builder(PUBLIC_CLIENT_ID)
         .build();
 ```
 
-## <a name="pythontabpython"></a>[Python](#tab/python)
+## <a name="python"></a>[Python](#tab/python)
 
 ## <a name="msal-for-python-logging"></a>MSAL for Python でのログ記録
 

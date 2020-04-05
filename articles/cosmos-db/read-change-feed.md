@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/25/2019
 ms.openlocfilehash: fc7e78a44d03af8952c1e178a3e92b1ee0c6fe66
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74688130"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Azure Cosmos DB の変更フィードの読み取り
@@ -39,10 +39,10 @@ SDK を使用すると、変更フィードを低レベルで制御できます�
 
 ネイティブ Apache Cassandra には、変更データ キャプチャ (CDC) が用意されています。CDC は、特定のテーブルに対してアーカイブのフラグを設定し、CDC ログ用に構成可能なディスク上のサイズに達すると、そのテーブルへの書き込みを拒否するメカニズムです。 Azure Cosmos DB API for Cassandra の変更フィード機能により、CQL を介して述語を使用して変更をクエリする機能が向上します。 実装の詳細については、[Cassandra 用の Azure Cosmos DB API の変更フィード](cassandra-change-feed.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 以下の記事で、変更フィードに関してさらに詳しく知ることができます。
 
 * [変更フィードの概要](change-feed.md)
-* [Azure Functions を活用した変更フィードの使用](change-feed-functions.md)
+* [変更フィードと Azure Functions の併用](change-feed-functions.md)
 * [Change Feed Processor ライブラリの使用](change-feed-processor.md)

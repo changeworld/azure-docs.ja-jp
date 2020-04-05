@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と FilesAnywhere の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と FilesAnywhere の統合 | Microsoft Docs'
 description: Azure Active Directory と FilesAnywhere の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 02/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f26311a6c9a1b751243c0571ce9a3417af891959
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73158202"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-filesanywhere"></a>チュートリアル:Azure Active Directory と FilesAnywhere の統合
+# <a name="tutorial-azure-active-directory-integration-with-filesanywhere"></a>チュートリアル: Azure Active Directory と FilesAnywhere の統合
 
 このチュートリアルでは、FilesAnywhere と Azure Active Directory (Azure AD) を統合する方法について説明します。
 FilesAnywhere と Azure AD の統合には、次の利点があります。
@@ -123,7 +123,7 @@ FilesAnywhere で Azure AD シングル サインオンを構成するには、�
 
     ![image](common/edit-attribute.png)
 
-    ユーザーが FilesAnywhere にサインアップすると、[FilesAnywhere チーム](mailto:support@FilesAnywhere.com)から **clientid** 属性の値を取得します。 "クライアント Id" 属性を FilesAnywhere によって提供される一意の値で追加する必要があります。
+    ユーザーが FilesAnywhere にサインアップすると、**FilesAnywhere チーム**から [clientid](mailto:support@FilesAnywhere.com) 属性の値を取得します。 "クライアント Id" 属性を FilesAnywhere によって提供される一意の値で追加する必要があります。
 
 7. その他に、FilesAnywhere アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
@@ -147,7 +147,7 @@ FilesAnywhere で Azure AD シングル サインオンを構成するには、�
 
     f. **[OK]** をクリックします。
 
-    g. **[Save]** をクリックします。
+    g. **[保存]** をクリックします。
 
 8. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 

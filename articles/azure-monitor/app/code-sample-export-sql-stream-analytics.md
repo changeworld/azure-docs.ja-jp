@@ -4,14 +4,14 @@ description: Stream Analytics を使用して Application Insights データを 
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.openlocfilehash: 3ef0420cdab64f11b699fd4031ed2b0134f18609
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77663677"
 ---
-# <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>チュートリアル:Stream Analytics を使用した Application Insights から SQL へのエクスポート
-この記事では、[連続エクスポート][export]と [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) を使用して、テレメトリ データを [Azure Application Insights][start] から Azure SQL データベースに移動する方法について説明します。 
+# <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>チュートリアル: Stream Analytics を使用した Application Insights から SQL へのエクスポート
+この記事では、[連続エクスポート][start]と [Azure Stream Analytics][export] を使用して、テレメトリ データを [Azure Application Insights](https://azure.microsoft.com/services/stream-analytics/) から Azure SQL データベースに移動する方法について説明します。 
 
 連続エクスポートにより、JSON 形式でテレメトリ データが Azure Storage に移動されます。 Azure Stream Analytics を使って JSON オブジェクトを解析し、データベース テーブルに行を作成します。
 
@@ -64,7 +64,7 @@ ms.locfileid: "77663677"
 1. データを蓄積します。 しばらく待機し、ユーザーにアプリケーションを使用してもらいます。 テレメトリが開始し、統計グラフが[メトリックス エクスプローラー](../../azure-monitor/app/metrics-explorer.md)に表示され、個々のイベントが[診断検索](../../azure-monitor/app/diagnostic-search.md)に表示されます。 
    
     また、データはストレージにもエクスポートされます。 
-2. エクスポートされたデータを、ポータルまたは Visual Studio で調べます。ポータルの場合は、 **[参照]** 、ストレージ アカウント、 **[コンテナー]** の順に選択します。 Visual Studio で、 **[表示]、[Cloud Explorer]** の順に選びます。[Azure]、[Storage] の順に開きます (このメニュー オプションがない場合は、Azure SDK をインストールする必要があります:[新しいプロジェクト] ダイアログを開き、[Visual C#]、[クラウド]、[Microsoft Azure SDK for .NET の取得] の順に開きます)。
+2. エクスポートされたデータを、ポータルまたは Visual Studio で調べます。ポータルの場合は、 **[参照]** 、ストレージ アカウント、 **[コンテナー]** の順に選択します。 Visual Studio で、 **[表示]、[Cloud Explorer]** の順に選びます。[Azure]、[Storage] の順に開きます (このメニュー オプションがない場合は、Azure SDK をインストールする必要があります。[新しいプロジェクト] ダイアログを開き、[Visual c#]、[クラウド]、[Microsoft Azure SDK for .NET の取得] の順に開きます)。
    
     ![Visual Studio で次の順に開きます。[サーバー ブラウザー]、[Azure]、[Storage]](./media/code-sample-export-sql-stream-analytics/087-explorer.png)
    
@@ -169,7 +169,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 Application Insights リソースの名前と iKey を取得するには、概要ページの [Essentials] を開くか、[設定] を開きます。
 
 > [!TIP]
-> 入力パスが正しく設定されていることを確認するには、Sample 関数を使用します。 失敗した場合:選択したサンプルの時間範囲でストレージにデータがあることを確認します。 入力定義を編集し、ストレージ アカウント、パスのプレフィックス、日付形式が正しく設定されていることを確認します。
+> 入力パスが正しく設定されていることを確認するには、Sample 関数を使用します。 失敗した場合: 選択したサンプルの時間範囲でストレージにデータがあることを確認します。 入力定義を編集し、ストレージ アカウント、パスのプレフィックス、日付形式が正しく設定されていることを確認します。
 
  
 ## <a name="set-query"></a>クエリの設定

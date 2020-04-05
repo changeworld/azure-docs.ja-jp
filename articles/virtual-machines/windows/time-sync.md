@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
 ms.openlocfilehash: dd2ae2159c43da6a049d67cae739f111eba682c9
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74534469"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Azure での Windows VM の時刻同期
@@ -174,7 +174,7 @@ w32time で新しいポーリング間隔を使用するには、それを使用
 w32tm /dumpreg /subkey:Parameters | findstr /i "ntpserver"
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 以下は、時刻同期に関する詳細のリンクです。
 

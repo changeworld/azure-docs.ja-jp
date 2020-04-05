@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: 3010c1d597907e7d5c7f82c8b42721dc1f934f6f
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74781859"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>HDInsight クラスター管理のベスト プラクティス
@@ -27,7 +27,7 @@ HDInsight クラスターを管理するためのベストプラクティスを�
 | カスタム Resource Manager テンプレート | [Resource Manager テンプレートを使用して、HDInsight で Apache Hadoop クラスターを作成する](./hdinsight-hadoop-create-linux-clusters-arm-templates.md) |
 | クイック スタート テンプレート | [HDInsight クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?term=hdinsight) |
 | Azure サンプル | [HDInsight Azure のサンプル](https://docs.microsoft.com/samples/browse/?products=azure-hdinsight) |
-| Azure ポータル | [Azure portal を使用して、HDInsight で Linux ベースのクラスターを作成する](./spark/apache-spark-intellij-tool-plugin.md) |
+| Azure portal | [Azure portal を使用して、HDInsight で Linux ベースのクラスターを作成する](./spark/apache-spark-intellij-tool-plugin.md) |
 | Azure CLI | [Azure CLI を使用した HDInsight クラスターを作成する](./hdinsight-hadoop-create-linux-clusters-azure-cli.md) |
 | Azure PowerShell | [Azure PowerShell を使用した HDInsight の Linux ベースのクラスターを作成する](./hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |
 | cURL | [Azure REST API を使用して Apache Hadoop クラスターを作成する](./hdinsight-hadoop-create-linux-clusters-curl-rest.md) |
@@ -47,7 +47,7 @@ HDInsight クラスターを管理するためのベストプラクティスを�
 
 ## <a name="what-are-some-errors-i-might-face-when-creating-clusters"></a>クラスターを作成時に遭遇する可能性のあるエラーは何ですか？
 
-| Error | 詳細情報 |
+| エラー | 詳細情報 |
 |---|---|
 | クォータなし | 各リージョンのサブスクリプションに対して作成できるクォータの数には割り当てがあります。 詳細については、「[容量計画：割り当て](./hdinsight-capacity-planning.md)」を参照してください。 |
 | 使用可能な IP アドレスがこれ以上ありません | 各 VNet には、IP アドレスの数の制限があります。 HDInsightクラスターを作成すると、各ノード（zookeeper およびゲートウェイノードを含む）は、これらの割り当てられた IP アドレスの一部を使用します。 すべての IP アドレスが使用されている場合は、次のエラーが発生します。  |
@@ -74,7 +74,7 @@ AzureActivity
 | where ResourceProvider == "Microsoft.HDInsight" and (OperationName == "Create or Update Cluster" or OperationName == "Delete Cluster") and ActivityStatus == "Succeeded"
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [HDInsight クラスターの容量計画](./hdinsight-capacity-planning.md)
 * [Azure HDInsight のデフォルトおよび推奨ノード構成は何ですか?](./hdinsight-supported-node-configuration.md)

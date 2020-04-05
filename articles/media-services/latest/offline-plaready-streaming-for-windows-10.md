@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
 ms.openlocfilehash: ceb6de6556968385d88ac799c11bdb6393072864
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76513118"
 ---
 # <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>Media Services v3 を使用した Windows 10 用のオフラインの PlayReady ストリーミング

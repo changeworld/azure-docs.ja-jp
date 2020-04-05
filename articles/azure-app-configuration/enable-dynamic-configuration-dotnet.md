@@ -8,12 +8,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 7ba3eae4ea5557b4bb1b1be4e2c79eab8f6e7988
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 7780bdbc92868f62e8d066d171b2a04fe06a981d
+ms.sourcegitcommit: 940e16ff194d5163f277f98d038833b1055a1a3e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484878"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80245805"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>チュートリアル:.NET Framework アプリで動的な構成を使用する
 
@@ -38,13 +38,15 @@ App Configuration .NET クライアント ライブラリでは、アプリケ�
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **[Configuration Explorer]\(構成エクスプローラー)**  >  **[+ 作成]** の順に選択して、次のキーと値のペアを追加します。
+6. **[Configuration Explorer]\(構成エクスプローラー)**  >  **[+ 作成]**  >  **[キー値]** の順に選択して、次のキーと値のペアを追加します。
 
     | Key | Value |
     |---|---|
     | TestApp:Settings:Message | Azure App Configuration からのデータ |
 
     **[ラベル]** と **[コンテンツの種類]** は、現時点では空にしておきます。
+
+7. **[適用]** を選択します。
 
 ## <a name="create-a-net-framework-console-app"></a>.NET Framework コンソール アプリを作成する
 

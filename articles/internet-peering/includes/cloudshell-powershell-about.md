@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 49212cb9ffdf1f3593acd32a02de11961e673fb7
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75773626"
 ---
 コマンドレットを実行するには、無料のインタラクティブ シェルである Azure Cloud Shell を使用できます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 **[コピー]** をクリックしてコードをコピーし、Cloud Shell に貼り付けて Enter キーを押すだけで、コードを実行することができます。 Cloud Shell は、次のようにいくつかの方法で起動することができます。

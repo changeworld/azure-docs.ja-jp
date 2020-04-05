@@ -17,10 +17,10 @@ ms.date: 10/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 52a53735ebf8e0e4affa7daf6c345de6bf467228
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72373453"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-braze"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Braze の統合
@@ -29,7 +29,7 @@ ms.locfileid: "72373453"
 
 * Braze にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Braze に自動的にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

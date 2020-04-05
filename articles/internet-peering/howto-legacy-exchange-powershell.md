@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: aa11f329cf0a0cb27d58b940b42731a2ec41c272
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774002"
 ---
 # <a name="convert-a-legacy-exchange-peering-to-azure-resource-using-powershell"></a>PowerShell を使用して従来の Exchange ピアリングを Azure リソースに変換する
 
 この記事では、PowerShell コマンドレットを使用して既存の従来の Exchange ピアリングを Azure リソースに変換する方法について説明します。
 
-好みに応じて、[ポータル](howto-legacy-exchange-portal.md)を使用してこのガイドを実行することもできます。
+必要に応じて、[ポータル](howto-legacy-exchange-portal.md)を使用してこのガイドを完了することもできます。
 
 ## <a name="before-you-begin"></a>開始する前に
 * 構成を開始する前に、[前提条件](prerequisites.md)に関するページと「[Exchange ピアリングのチュートリアル](walkthrough-exchange-all.md)」を確認してください。
@@ -32,7 +32,7 @@ ms.locfileid: "75774002"
 ### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Azure アカウントにサインインしてサブスクリプションを選択する
 [!INCLUDE [Account](./includes/account-powershell.md)]
 
-### <a name= get></a>変換のための従来の Exchange ピアリングを取得する
+### <a name="get-legacy-exchange-peering-for-conversion"></a><a name= get></a>変換のための従来の Exchange ピアリングを取得する
 シアトルのピアリングの場所で従来の Exchange ピアリングを取得する例を次に示します。
 
 ```powershell
@@ -96,7 +96,7 @@ $legacyPeering[0] | New-AzPeering `
 ```powershell
 Get-Help Get-AzPeering -detailed
 ```
-詳細については、「[インターネット ピアリングのよくあるご質問](faqs.md)」にアクセスしてください
+詳細については、「[インターネット ピアリングのよくあるご質問](faqs.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

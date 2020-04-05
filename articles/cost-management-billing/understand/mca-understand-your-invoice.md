@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: banders
 ms.openlocfilehash: 4c4b105bb4b67e855de27b6a57d2080fde068421
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200216"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237906"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>Microsoft 顧客契約の請求書の用語
 
@@ -23,7 +23,7 @@ ms.locfileid: "77200216"
 
 ## <a name="billing-period"></a>請求期間
 
-ユーザーへの請求は月単位で行われます。 [Azure portal](https://portal.azure.com/) の課金プロファイルのプロパティで*請求日*を調べることで、その月の何日に請求書を受け取るかを確認できます。 請求期間の終わりと請求日の間に発生する料金は、次の請求期間内にあるため、次月の請求書に含められます。 各請求書の請求期間開始日と終了日は、上記の **[課金の要約]** の請求書 PDF に記載されています。
+ユーザーへの請求は月単位で行われます。 *Azure portal* の課金プロファイルのプロパティで[請求日](https://portal.azure.com/)を調べることで、その月の何日に請求書を受け取るかを確認できます。 請求期間の終わりと請求日の間に発生する料金は、次の請求期間内にあるため、次月の請求書に含められます。 各請求書の請求期間開始日と終了日は、上記の **[課金の要約]** の請求書 PDF に記載されています。
 
 ## <a name="invoice-terms-and-descriptions"></a>請求書の用語と説明
 

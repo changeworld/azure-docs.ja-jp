@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a9550684ad154f28a02ee347fd0a79c1ec286beb
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74382199"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection - セキュリティの概要
@@ -62,7 +62,7 @@ Azure portal の [[セキュリティの概要]](https://aka.ms/IdentityProtecti
 
 ID セキュリティ スコアでは、セキュリティの状態が測定され、業界のパターンと比較されます。 [ID セキュリティ スコア (プレビュー)] タイルをクリックすると、[ID セキュリティ スコア] ブレードにリダイレクトされます。ここで、セキュリティ体制の改善について詳細を確認することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [リスクとは](concept-identity-protection-risks.md)
 

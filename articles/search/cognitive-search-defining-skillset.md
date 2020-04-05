@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 43251783cbcd6501562913b7b9cafb4f9f7cb3f1
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75754556"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Azure Cognitive Search で AI エンリッチメント パイプラインにスキルセットを作成する方法 
@@ -45,7 +45,7 @@ AI エンリッチメントは、データを抽出して強化し、Azure Cogni
 ![仮定のエンリッチメント パイプライン](media/cognitive-search-defining-skillset/sample-skillset.png "仮定のエンリッチメント パイプライン")
 
 
-このパイプラインで行うことをきちんと把握できたら、これらのステップを提供するスキルセットを表現できます。機能上、このスキルセットは、Azure Cognitive Search にインデクサー定義をアップロードするときに表現されます。インデクサーのアップロード方法の詳細については、[インデクサーに関するドキュメント](https://docs.microsoft.com/rest/api/searchservice/create-indexer)を参照してください。
+このパイプラインで行うことをきちんと把握できたら、これらのステップを提供するスキルセットを表現できます。 機能上、このスキルセットは、Azure Cognitive Search にインデクサー定義をアップロードするときに表現されます。 インデクサーのアップロード方法の詳細については、[インデクサーに関するドキュメント](https://docs.microsoft.com/rest/api/searchservice/create-indexer)を参照してください。
 
 
 この図で、"*ドキュメント クラッキング*" のステップは自動的に行われます。 基本的に、Azure Cognitive Search では、よく知られているファイルを開く方法を把握しており、各ドキュメントから抽出されたテキストを含む "*content*" フィールドが作成されます。 白いボックスは組み込みエンリッチャーで、ドットのある "Bing Entity Search" ボックスは、作成するカスタム エンリッチャーを表します。 図に示すように、スキルセットには、3 つのスキルが含まれています。

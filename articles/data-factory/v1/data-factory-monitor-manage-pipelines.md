@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.openlocfilehash: 44aadecfa80524345932c03abb51e8ebd040a902
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73666977"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Azure Portal および PowerShell を使用した Azure Data Factory パイプラインの監視と管理
@@ -46,7 +46,7 @@ Azure Portal を使用すると、次の操作を行うことができます。
 このセクションでは、データセット スライスの状態がどのように移行するかについても説明します。   
 
 ### <a name="navigate-to-your-data-factory"></a>Data Factory に移動する
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 左側のメニューで、 **[データ ファクトリ]** をクリックします。 表示されない場合は、 **[その他のサービス >]** をクリックし、 **[インテリジェンス + 分析]** カテゴリの下にある **[データ ファクトリ]** をクリックします。
 
    ![[すべて参照] > [データ ファクトリ]](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
@@ -105,7 +105,7 @@ Azure Portal を使用すると、次の操作を行うことができます。
 <td>ActivityResume</td><td>アクティビティは一時停止されており、再開されるまでスライスを実行できません。</td>
 </tr>
 <tr>
-<td>Retry</td><td>アクティビティの実行が再試行されています。</td>
+<td>[再試行]</td><td>アクティビティの実行が再試行されています。</td>
 </tr>
 <tr>
 <td>検証</td><td>検証がまだ開始されていません。</td>
@@ -135,7 +135,7 @@ Azure Portal を使用すると、次の操作を行うことができます。
 <td>Ready</td><td>-</td><td>スライスは使用可能な状態です。</td>
 </tr>
 <tr>
-<td>Skipped</td><td>なし</td><td>スライスは処理中ではありません。</td>
+<td>スキップ</td><td>なし</td><td>スライスは処理中ではありません。</td>
 </tr>
 <tr>
 <td>なし</td><td>-</td><td>スライスは別のステータスで存在していましたが、リセットされました。</td>
@@ -178,7 +178,7 @@ Azure PowerShell を使用してパイプラインを管理できます。 た�
 ```powershell
 Suspend-AzDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 ```
-例:
+次に例を示します。
 
 ```powershell
 Suspend-AzDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
@@ -189,7 +189,7 @@ Suspend-AzDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrec
 ```powershell
 Resume-AzDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 ```
-例:
+次に例を示します。
 
 ```powershell
 Resume-AzDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
@@ -222,7 +222,7 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
     ```powershell   
     Get-AzDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
     ```   
-   例:
+   次に例を示します。
 
     ```powershell   
     Get-AzDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
@@ -236,7 +236,7 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
     <DateTime> [-Profile <AzureProfile> ] [ <CommonParameters>]
     ```
 
-    例:
+    次に例を示します。
 
     ```powershell   
     Get-AzDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
 ms.openlocfilehash: f8b4063d87fa9a89dccd42eddea644609bd6ff27
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77921251"
 ---
 # <a name="azure-security-center-threat-intelligence-report"></a>Azure Security Center の脅威インテリジェンス レポート
@@ -65,7 +65,7 @@ Security Center には、攻撃の種類に応じて 3 種類の脅威レポー�
 
 ここでは、このレポートの PDF のダウンロードのほか、検出されたセキュリティ面の問題の詳細を確認したり、入手した情報を基に各種の措置を講じたりできます。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 このドキュメントでは、セキュリティ アラートに関する調査にあたり Azure Security Center の脅威のインテリジェント レポートがどのような点で有用であるかを学習しました。 Azure セキュリティ センターの詳細については、次を参照してください。
 
 * [Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)。 Azure Security Center を導入するための設計上の考慮事項を計画し、理解する方法について説明しています。

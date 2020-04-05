@@ -15,10 +15,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d356f8c10ae3770d9f4ade100ab0496ee58d772f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74008208"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Azure Portal でアクティビティ レポートを見つける
@@ -56,7 +56,7 @@ ms.locfileid: "74008208"
 - AdministrativeUnit
 - ApplicationManagement
 - 認証
-- Authorization
+- 承認
 - Contact
 - Device
 - DeviceConfiguration
@@ -134,7 +134,7 @@ ms.locfileid: "74008208"
 
 ### <a name="detected-risk-detections"></a>検出されたリスク検出
 
-[Azure portal](https://portal.azure.com) では、 **[Azure Active Directory]** ブレードの **[セキュリティ]** セクションで、検出されたリスク検出に関するレポートにアクセスできます。 検出されたリスク検出は、次のレポートで追跡されます。   
+**Azure portal** では、 **[Azure Active Directory]** ブレードの [[セキュリティ]](https://portal.azure.com) セクションで、検出されたリスク検出に関するレポートにアクセスできます。 検出されたリスク検出は、次のレポートで追跡されます。   
 
 - [危険な状態のユーザー](concept-user-at-risk.md)
 - [リスクの高いサインイン](concept-risky-sign-ins.md)
@@ -149,7 +149,7 @@ ms.locfileid: "74008208"
 
 アクティビティ ログ (監査またはサインイン) をダウンロードしましたが、選択した期間のレコードがまったく表示されません。 なぜですか? 
 
- ![レポート](./media/troubleshoot-missing-data-download/01.png)
+ ![レポーティング](./media/troubleshoot-missing-data-download/01.png)
  
 #### <a name="cause"></a>原因
 
@@ -165,7 +165,7 @@ Azure portal でアクティビティ ログをダウンロードする場合は
 
 Azure Portal でいくつかの操作を実行したので、`Activity logs > Audit Logs` ブレードでこれらの操作の監査ログが表示されるはずですが、見つかりません。
 
- ![レポート](./media/troubleshoot-missing-audit-data/01.png)
+ ![レポーティング](./media/troubleshoot-missing-audit-data/01.png)
  
 #### <a name="cause"></a>原因
 
@@ -186,7 +186,7 @@ Azure Portal でいくつかの操作を実行したので、`Activity logs > Au
 
 最近 Azure portal にサインインしたので `Activity logs > Sign-ins` ブレードにこれらの操作のサインイン ログが表示されるはずですが、見つかりません。
 
- ![レポート](./media/troubleshoot-missing-audit-data/02.png)
+ ![レポーティング](./media/troubleshoot-missing-audit-data/02.png)
  
 #### <a name="cause"></a>原因
 
@@ -207,7 +207,7 @@ Azure Portal でいくつかの操作を実行したので、`Activity logs > Au
 
 Azure portal で 30 日より前のサインイン データおよび監査データを表示できません。 なぜですか? 
 
- ![レポート](./media/troubleshoot-missing-audit-data/03.png)
+ ![レポーティング](./media/troubleshoot-missing-audit-data/03.png)
 
 #### <a name="cause"></a>原因
 
@@ -224,7 +224,7 @@ Azure Active Directory Actions には、ライセンスに応じて次の期間�
 
 30 日を超えてデータを保持するには、2 つの方法があります。 [Azure AD レポート API](concept-reporting-api.md) を使用してデータをプログラムで取得し、データベースに保存することができます。 また、監査ログを Splunk や SumoLogic などのサード パーティの SIEM システムに統合することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [監査ログの概要](concept-audit-logs.md)
 * [サインインの概要](concept-sign-ins.md)

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
 ms.openlocfilehash: be9c06d45da4d83c26f82343c9cb7b19ba19b4ae
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71257622"
 ---
 # <a name="customize-your-text-translations"></a>テキスト変換をカスタマイズする
@@ -61,7 +61,7 @@ Custom Translator を使用すると、独自のビジネスや業界で使用�
 > [!NOTE]
 > 2018 年 2 月 1 日の時点で、AddTranslation() と AddTranslationArray() は Translator Text API V2.0 では使用できなくなっています。 これらのメソッドは失敗し、何も書き込まれません。 Translator Text API V3.0 はこれらのメソッドをサポートしません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Custom Translator を使用してカスタマイズされた言語システムを設定します](https://aka.ms/CustomTranslatorDocs)

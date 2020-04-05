@@ -8,10 +8,10 @@ services: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
 ms.openlocfilehash: 08b21ccd7f7958f00546583f680ecb8cde4a20c8
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75932613"
 ---
 # <a name="policy-settings-for-web-application-firewall-on-azure-front-door"></a>Azure Front Door での Web アプリケーション ファイアウォールのポリシーの設定

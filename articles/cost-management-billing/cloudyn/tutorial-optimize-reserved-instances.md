@@ -1,20 +1,20 @@
 ---
 title: チュートリアル - Cloudyn を使用して予約インスタンスのコストを最適化する - Azure
 description: このチュートリアルでは、Azure およびアマゾン ウェブ サービス (AWS) の予約インスタンスのコストを最適化する方法について説明します。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/13/2020
+ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 ms.reviewer: benshy
-ms.openlocfilehash: b37ef5b6fe92538986a267b53c821bf616ba77fb
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ROBOTS: NOINDEX
+ms.openlocfilehash: 22a435a63c4ff649fe428e031bca7beecdbc46d1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201120"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79463715"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
@@ -36,6 +36,8 @@ ms.locfileid: "77201120"
 > * 未使用の予約に変更を加える
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 

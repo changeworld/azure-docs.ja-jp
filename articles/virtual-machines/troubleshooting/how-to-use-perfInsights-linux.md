@@ -14,11 +14,11 @@ ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
 ms.openlocfilehash: 19b2fcaed2c80d4ca52ada9f9f0898479e73bcf2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080514"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231935"
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights を使用する方法
 
@@ -83,7 +83,7 @@ Linux 仮想マシン、オペレーティング システム、ブロック デ
   - ネットワーク ルーティング テーブル
   - 開いているポートと状態
 
-- Storage
+- ストレージ
   - ブロック デバイスの一覧
   - パーティションの一覧
   - マウント ポイントの一覧
@@ -125,7 +125,7 @@ Linux 仮想マシン、オペレーティング システム、ブロック デ
 
 - 現在、次のディストリビューションがサポートされています。
 
-    | ディストリビューション               | Version                                         |
+    | Distribution               | Version                                         |
     |----------------------------|-------------------------------------------------|
     | Oracle Linux Server        | 6.10 [`*`]、7.3、7.6、7.5 (Oracle-Database-Ee 13.8 マーケットプレース イメージ)|
     | CentOS                     | 6.5 [`*`]、7.6                                    |
@@ -244,7 +244,7 @@ PerfInsights ツールを実行するには、次の手順に従います。
 
 ![[Linux] タブのスクリーンショット](media/how-to-use-perfinsights-linux/perfinsights-linux-tab.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 さらに詳しく調べるために、診断ログとレポートを Microsoft サポートにアップロードできます。 Microsoft サポートに連絡すると、トラブルシューティング プロセスのために、担当者から PerfInsights で生成された出力を送信するように求められることがあります。
 

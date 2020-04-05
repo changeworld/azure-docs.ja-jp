@@ -1,24 +1,26 @@
 ---
-title: Azure での Cloudyn のトレーニング ビデオ | Microsoft Docs
+title: Azure の Cloudyn に関するトレーニング ビデオ
 description: Cloudyn のトレーニング ビデオでは、概要と機能の使用方法について説明されています。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/13/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 3344dfb1518eeb495b019138c72d566ce4064017
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9acad813914614fd2cdaad4fd348e9e19225c67e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201103"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79463766"
 ---
 # <a name="cloudyn-walk-through-training-videos"></a>Cloudyn のチュートリアル トレーニング ビデオ
 
 以下のビデオでは、Cloudyn の概要とその機能の使用方法について説明されています。 Cloudyn では、Microsoft Azure、アマゾン ウェブ サービス、Google Cloud Platform など、マルチクラウドのコストの追跡と最適化がサポートされています。
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="overview-video"></a>概要ビデオ
 

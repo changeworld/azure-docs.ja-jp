@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
 ms.openlocfilehash: 80d3eaaf7e588766d62f5e5885d75e61c590970e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68881196"
 ---
 # <a name="write-queries-for-azure-data-explorer"></a>Azure データ エクスプローラーのクエリを記述する
@@ -915,7 +915,7 @@ StormEvents
 | evaluate funnel_sequence_completion(EpisodeId, StartTime, _start, _end, _windowSize, EventType, _sequence, _periods)
 ```
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>関数
 
 このセクションでは、[**関数**](https://docs.microsoft.com/azure/kusto/query/functions)を扱います。サーバー上に保管される再利用可能なクエリです。 関数はクエリや他の関数で呼び出すことができます (再帰関数はサポートされていません)。
 
@@ -946,6 +946,6 @@ MyFunction ("Texas")
 .drop function MyFunction
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Kusto クエリ言語リファレンス](https://aka.ms/kustolangref)

@@ -1,19 +1,19 @@
 ---
 title: Android マップへの図形の追加 | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps Android SDK を使用して、マップにさまざまな図形をレンダリングする方法について説明します。
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6c59aadf89190f796134e22eb155eebb8579f3f0
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 7a793ff35675c876dc429976ebee96887b12735a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210040"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335607"
 ---
 # <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Azure Maps Android SDK を使用したマップへの図形の追加
 
@@ -51,7 +51,7 @@ ms.locfileid: "77210040"
     </FrameLayout>
     ```
 
-2. 次のコード スニペットを `MainActivity.java` クラスの **onCreate()** メソッドにコピーします。
+2. 次のコード スニペットを **クラスの**onCreate()`MainActivity.java` メソッドにコピーします。
 
     ```Java
     mapControl.onReady(map -> {

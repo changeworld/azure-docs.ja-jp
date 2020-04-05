@@ -12,13 +12,13 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 39948214f5bd080be417ed515bea6bff87d3b303
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77484062"
 ---
-# <a name="how-it-works-azure-multi-factor-authentication"></a>動作のしくみ: Azure Multi-Factor Authentication
+# <a name="how-it-works-azure-multi-factor-authentication"></a>しくみ: Azure Multi-Factor Authentication
 
 2 段階認証のセキュリティは、レイヤー アプローチによってもたらされます。 攻撃者にとって、多要素認証を侵害することはかなり困難です。 攻撃者がユーザーのパスワードを手に入れても、付加的な認証方法がなければ役に立ちません。 多要素認証は次の認証方法のうち 2 つ以上を要求することで機能します。
 

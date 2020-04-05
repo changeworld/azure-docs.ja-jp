@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: dapine
 ms.openlocfilehash: bf4e8f06642a4a764794a75e2b49f15958796c61
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73465910"
 ---
 ## <a name="gathering-required-parameters"></a>必須パラメーターの収集
@@ -21,7 +21,7 @@ ms.locfileid: "73465910"
 
 ### <a name="endpoint-uri-endpoint_uri"></a>エンドポイント URL `{ENDPOINT_URI}`
 
-**エンドポイント** URI の値は、Azure portal で、対応する Cognitive Service リソースの *[概要]* ページで入手できます。 *[概要]* ページに移動してエンドポイントの上にマウス ポインターを移動すると、`Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> アイコンが表示されます。 必要に応じてコピーして使用します。
+**エンドポイント** URI の値は、Azure portal で、対応する Cognitive Service リソースの *[概要]* ページで入手できます。 *[概要]* ページに移動して、エンドポイントの上にマウス ポインターを移動すると、`Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> アイコンが表示されます。 必要に応じてコピーして使用します。
 
 ![後で使用するためにエンドポイント URI を収集する](../media/overview-endpoint-uri.png)
 

@@ -1,19 +1,18 @@
 ---
 title: Azure Marketplace の [すべてのオファー] ページ
 description: Azure Marketplace の Cloud パートナー ポータルの [すべてのオファー] ページに関する概要です。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.author: pabutler
-ms.openlocfilehash: cb67ac44ee73d4d8074b577b2157f5846f451210
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: e4001651d422d9197a849be5e7985107f9bf43dd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821585"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288990"
 ---
 # <a name="all-offers-page"></a>[すべてのプラン] ページ
 
@@ -22,11 +21,11 @@ ms.locfileid: "73821585"
 
 ## <a name="example-page"></a>ページの例
 
-次の画像は、`Contoso` でフィルター処理した **[すべてのプラン]** ページを示しています。
+次の画像は、**でフィルター処理した**[すべてのプラン]`Contoso` ページを示しています。
 
 ![[すべてのプラン] ページ](./media/all-offers-page1.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のナビゲーション メニュー バー項目は、承認されたオファーが一覧表示される [[承認] ページ](./cpp-approvals-page.md) に表示されます。  承認されたオファーは既に公開済み、または公開途中のいずれかです。

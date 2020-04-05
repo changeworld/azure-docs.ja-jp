@@ -4,10 +4,10 @@ description: 既存のアプリケーションを Service Fabric クラスター
 ms.topic: conceptual
 ms.date: 07/02/2017
 ms.openlocfilehash: cdbc965d0e8ec4a8f42fbe438b8ac6ddfe05a1b3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75377108"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>既存の実行可能ファイルのパッケージ化と Service Fabric へのデプロイ
@@ -132,7 +132,7 @@ CodePackage 要素には、サービスのコードの場所 (およびバージ
 
 `Name` 要素は、サービスのコードが含まれるアプリケーション パッケージ内のディレクトリ名を指定するために使用されます。 `CodePackage` にも `version` 属性があります。 この属性を使用すると、コードのバージョンを指定できます。また、Service Fabric のアプリケーション ライフサイクル管理インフラストラクチャを使用してサービスのコードをアップグレードするためにも使用できます。
 
-#### <a name="optional-update-setupentrypoint"></a>省略可能:SetupEntrypoint の更新
+#### <a name="optional-update-setupentrypoint"></a>省略可能: SetupEntrypoint の更新
 ```xml
 <SetupEntryPoint>
    <ExeHost>
@@ -144,7 +144,7 @@ SetupEntryPoint 要素を使用して、サービスのコードが起動され�
 
 SetupEntryPoint は 1 つしかないため、アプリケーションのセットアップに複数のスクリプトが必要な場合は、セットアップ スクリプトを 1 つのバッチ ファイルにグループ化する必要があります。 SetupEntryPoint は、あらゆる種類のファイル (実行可能ファイル、バッチ ファイル、PowerShell コマンドレット) を実行できます。 詳細については、 [SetupEntryPoint の構成](service-fabric-application-runas-security.md)に関するページをご覧ください。
 
-上の例では、SetupEntryPoint は code ディレクトリの `scripts` サブディレクトリにある `LaunchConfig.cmd` という名前のバッチ ファイルを実行します (WorkingFolder 要素が CodeBase に設定されている場合)。
+上の例では、SetupEntryPoint は code ディレクトリの `LaunchConfig.cmd` サブディレクトリにある `scripts` という名前のバッチ ファイルを実行します (WorkingFolder 要素が CodeBase に設定されている場合)。
 
 #### <a name="update-entrypoint"></a>EntryPoint の更新
 ```xml
@@ -204,7 +204,7 @@ WorkingFolder は、アプリケーション スクリプトと初期化スク�
 ```
 
 #### <a name="servicemanifestimport"></a>ServiceManifestImport
-`ServiceManifestImport` 要素では、アプリに追加する 1 つ以上のサービスを指定できます。 サービスは、`ServiceManifest.xml` ファイルが配置されているディレクトリの名前を指定する `ServiceManifestName` で参照されます。
+`ServiceManifestImport` 要素では、アプリに追加する 1 つ以上のサービスを指定できます。 サービスは、`ServiceManifestName` ファイルが配置されているディレクトリの名前を指定する `ServiceManifest.xml` で参照されます。
 
 ```xml
 <ServiceManifestImport>
@@ -265,7 +265,7 @@ New-ServiceFabricService -ApplicationName 'fabric:/nodeapp' -ServiceName 'fabric
 
 Service Fabric サービスは、さまざまな "構成" にデプロイできます。 たとえば、単一または複数のインスタンスとしてデプロイしたり、Service Fabric クラスターの各ノードに 1 つのサービス インスタンスが配置されるようにデプロイしたりできます。
 
-`New-ServiceFabricService` コマンドレットの `InstanceCount` パラメーターは、Service Fabric クラスターで開始するサービス インスタンスの数を指定するために使用します。 `InstanceCount` 値は、デプロイするアプリケーションの種類に応じて設定できます。 よく使用されるシナリオは 2 つあります。
+`InstanceCount` コマンドレットの `New-ServiceFabricService` パラメーターは、Service Fabric クラスターで開始するサービス インスタンスの数を指定するために使用します。 `InstanceCount` 値は、デプロイするアプリケーションの種類に応じて設定できます。 よく使用されるシナリオは 2 つあります。
 
 * [https://login.microsoftonline.com/consumers/](`InstanceCount = "1"`) 1 つのサービス インスタンスのみがクラスターにデプロイされます。 サービスがデプロイされるノードは、Service Fabric スケジューラによって決まります。
 * [https://login.microsoftonline.com/consumers/](`InstanceCount ="-1"`) 1 つのサービス インスタンスが、Service Fabric クラスターのすべてのノードにデプロイされます。 結果として、1 つ (のみ) のサービス インスタンスがクラスターの各ノードに存在することになります。

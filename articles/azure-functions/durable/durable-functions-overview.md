@@ -7,17 +7,17 @@ ms.date: 08/07/2019
 ms.author: cgillum
 ms.reviewer: azfuncdf
 ms.openlocfilehash: 5d454aefaba89bef9dc9009ff442fa5543dae2ef
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756145"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290090"
 ---
 # <a name="what-are-durable-functions"></a>Durable Functions とは
 
 *Durable Functions* は、サーバーレス コンピューティング環境でステートフル関数を記述できる [Azure Functions](../functions-overview.md) の拡張機能です。 この拡張機能では、Azure Functions プログラミング モデルを使用して、[*オーケストレーター関数*](durable-functions-orchestrations.md)を記述することでステートフル ワークフローを定義でき、[*エンティティ関数*](durable-functions-entities.md)を記述することでステートフル エンティティを定義できます。 拡張機能によって状態、チェックポイント、再起動がバックグラウンドで管理されるため、ユーザーはビジネス ロジックに専念できます。
 
-## <a name="language-support"></a>サポートされている言語
+## <a name="supported-languages"></a><a name="language-support"></a>サポートされている言語
 
 Durable Functions では、現在次の言語をサポートしています。
 
@@ -40,7 +40,7 @@ Durable Functions の主なユース ケースは、サーバーレス アプリ
 * [人による操作](#human)
 * [アグリゲーター (ステートフル エンティティ)](#aggregator)
 
-### <a name="chaining"></a>パターン #1: 関数チェーン
+### <a name="pattern-1-function-chaining"></a><a name="chaining"></a>パターン #1: 関数チェーン
 
 関数チェーン パターンでは、一連の関数が特定の順序で実行されます。 このパターンでは、ある関数の出力が、別の関数の入力に適用されます。
 
@@ -50,7 +50,7 @@ Durable Functions の主なユース ケースは、サーバーレス アプリ
 
 この例では、`F1`、`F2`、`F3`、および `F4` という値が、同じ関数アプリ内の他の関数の名前です。 通常の命令型のコーディング構造を使用して、制御フローを実装できます。 コードは、上から下に実行されます。 コードに条件文やループなどの既存言語の制御フロー セマンティクスを含めることができます。 `try`/`catch`/`finally` ブロックに、エラー処理ロジックを含めることができます。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Chaining")]
@@ -73,7 +73,7 @@ public static async Task<object> Run(
 
 `context` パラメーターを使用して、他の関数を名前で呼び出し、パラメーターを渡して、関数の出力を返すことができます。 コードが `await` を呼び出すたびに Durable Functions フレームワークは、現在の関数インスタンスの進行状況にチェックポイントを設定します。 プロセスまたは仮想マシンが実行途中でリサイクルされる場合、関数インスタンスは直前の `await` 呼び出しから再開されます。 詳細については、次のセクション (パターン #2: ファンアウト/ファンイン) を参照してください。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -97,7 +97,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-### <a name="fan-in-out"></a>パターン #2: ファンアウト/ファンイン
+### <a name="pattern-2-fan-outfan-in"></a><a name="fan-in-out"></a>パターン #2: ファンアウト/ファンイン
 
 ファンアウト/ファンイン パターンでは、複数の関数を並列で実行し、すべての関数が完了するまで待機します。 複数の関数から返される結果に基づいて集計作業が行われることは、よくあることです。
 
@@ -107,7 +107,7 @@ module.exports = df.orchestrator(function*(context) {
 
 Durable Functions 拡張機能では、比較的単純なコードでこのパターンを処理します。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("FanOutFanIn")]
@@ -136,7 +136,7 @@ public static async Task Run(
 
 `Task.WhenAll` の `await` 呼び出しの際に設定される自動チェックポイントによって、実行途中でクラッシュや再起動が発生した場合でも、既に完了したすべてのタスクをやり直す必要がなくなります。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -167,7 +167,7 @@ module.exports = df.orchestrator(function*(context) {
 > [!NOTE]
 > まれな状況ですが、アクティビティ関数の完了後、完了がオーケストレーション履歴に保存される前の時間帯にクラッシュが発生する可能性があります。 この場合、アクティビティ関数は、プロセス復旧後に最初から再実行されます。
 
-### <a name="async-http"></a>パターン #3: 非同期 HTTP API
+### <a name="pattern-3-async-http-apis"></a><a name="async-http"></a>パターン #3: 非同期 HTTP API
 
 非同期 HTTP API パターンでは、外部クライアントとの間の実行時間の長い操作の状態を調整するという問題に対処します。 このパターンを実装する一般的な方法は、HTTP エンドポイントによって実行時間の長いアクションをトリガーすることです。 その後、ポーリングによって操作が完了したことを認識できる状態エンドポイントにクライアントをリダイレクトします。
 
@@ -206,7 +206,7 @@ Durable Functions 拡張機能には、長時間実行されるオーケスト�
 
 詳細については、[HTTP 機能](durable-functions-http-features.md)の記事を参照してください。その記事では、Durable Functions 拡張機能を使用して、非同期の長時間プロセスを HTTP 経由で公開する方法について説明しています。
 
-### <a name="monitoring"></a>パターン #4: モニター
+### <a name="pattern-4-monitor"></a><a name="monitoring"></a>パターン #4: モニター
 
 監視パターンは、ワークフロー内の柔軟な繰り返しプロセスを指します。 一例は、特定の条件が満たされるまでポーリングすることです。 通常の[タイマー トリガー](../functions-bindings-timer.md)を使用して、定期的なクリーンアップ ジョブなどの基本的なシナリオに対処できますが、その間隔は静的であり、インスタンスの有効期間の管理は複雑になります。 Durable Functions を使用して、柔軟な繰り返し間隔の作成、タスクの有効期間の管理、単一のオーケストレーションからの複数の監視プロセスの作成を実行できます。
 
@@ -218,7 +218,7 @@ Durable Functions 拡張機能には、長時間実行されるオーケスト�
 
 次のコードでは、基本的なモニターが実装されます。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("MonitorJobStatus")]
@@ -248,7 +248,7 @@ public static async Task Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -280,7 +280,7 @@ module.exports = df.orchestrator(function*(context) {
 
 要求が受信されると、そのジョブ ID 用の新しいオーケストレーション インスタンスが作成されます。 インスタンスは、条件が満たされてループが終了するまで、状態をポーリングします。 ポーリング間隔は、永続タイマーによって制御されます。 その後、さらに作業を実行するか、オーケストレーションを終了できます。 `nextCheck` が `expiryTime` を超えると、モニターが終了します。
 
-### <a name="human"></a>パターン #5: 人による操作
+### <a name="pattern-5-human-interaction"></a><a name="human"></a>パターン #5: 人による操作
 
 多くの自動化されたプロセスには、何らかの人による操作が含まれます。 自動化されたプロセスに人による操作が含まれる場合に問題になるのが、人は必ずしもクラウド サービスのように可用性と応答性が高くないということです。 自動化されたプロセスでは、タイムアウトと補正ロジックを使用して、この操作を許容する必要があります。
 
@@ -292,7 +292,7 @@ module.exports = df.orchestrator(function*(context) {
 
 次の例では、人による操作パターンを示すための承認プロセスを作成しています。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ApprovalWorkflow")]
@@ -321,7 +321,7 @@ public static async Task Run(
 
 永続タイマーを作成するために、`context.CreateTimer` が呼び出されます。 通知は `context.WaitForExternalEvent` が受け取ります。 その後、エスカレーションする (タイムアウトが先に発生した場合) か承認を処理する (タイムアウト前に承認を得た場合) かを決定するために、`Task.WhenAny` が呼び出されます。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -355,7 +355,7 @@ curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{ins
 
 同じ関数アプリ内の別の関数から持続的オーケストレーション クライアントを使用してイベントを発生させることもできます。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RaiseEventToOrchestration")]
@@ -368,7 +368,7 @@ public static async Task Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -382,7 +382,7 @@ module.exports = async function (context) {
 
 ---
 
-### <a name="aggregator"></a>パターン #6:アグリゲーター (ステートフル エンティティ)
+### <a name="pattern-6-aggregator-stateful-entities"></a><a name="aggregator"></a>パターン #6:アグリゲーター (ステートフル エンティティ)
 
 6 番目のパターンは、ある期間のイベント データを 1 つのアドレス可能な*エンティティ* に集計することに関連しています。 このパターンでは、集計されるデータは、複数のソースから取得されるか、バッチで配信されるか、または長期間にわたって分散される可能性があります。 アグリゲーターがイベント データの到着時にイベント データに対してアクションを行ったり、外部クライアントが集計されたデータをクエリする必要が生じたりする場合があります。
 
@@ -392,7 +392,7 @@ module.exports = async function (context) {
 
 [持続エンティティ](durable-functions-entities.md)を使用すると、このパターンを単一の関数として簡単に実装できます。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Counter")]
@@ -435,7 +435,7 @@ public class Counter
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -461,7 +461,7 @@ module.exports = df.entity(function(context) {
 
 クライアントは、[エンティティ クライアント バインディング](durable-functions-bindings.md#entity-client)を使用して、エンティティ関数の*操作*をエンキューすることができます ("シグナル通知" とも呼ばれる)。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -481,7 +481,7 @@ public static async Task Run(
 > [!NOTE]
 > 動的に生成されたプロキシは、.NET においてタイプセーフな方法でシグナル通知エンティティに対して使用することもできます。 シグナル通知に加えて、クライアントは、オーケストレーション クライアント バインディングで[タイプ セーフのメソッド](durable-functions-bindings.md#entity-client-usage)を使用して、エンティティ関数の状態をクエリすることもできます。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");

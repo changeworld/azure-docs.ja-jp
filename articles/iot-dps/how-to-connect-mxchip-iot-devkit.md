@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: jeffya
 ms.openlocfilehash: f05e92f0452b1cfff23e2094354203fd7eaea48b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74975654"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Azure IoT Hub Device Provisioning Service の自動プロビジョニングを使用して MXChip IoT DevKit を IoT Hub に登録します
@@ -85,7 +85,7 @@ UDS を DevKit に保存するには、次の手順を実行します。
 1. コードの `registrationId` 変数を入力します。 最大 128 文字で、英数字、小文字、ハイフンの組み合わせが許可されています。 また、値を書き留めます。
   ![登録 ID](media/how-to-connect-mxchip-iot-devkit/registration-id.png)
 
-1. `F1` をクリックし、 **[Azure IoT Device Workbench:Upload Device Code]\(Azure IoT Device Workbench: デバイス コードのアップロード\)** を入力して選択します。 コンパイルが開始され、コードが DevKit にアップロードされます。
+1. `F1` をクリックし、 **[Azure IoT Device Workbench:Upload Device Code]\(デバイス コードのアップロード\)** を入力して選択します。 コンパイルが開始され、コードが DevKit にアップロードされます。
   ![デバイスのアップロード](media/how-to-connect-mxchip-iot-devkit/device-upload.png)
 
 ## <a name="generate-x509-certificate"></a>X.509 証明書を生成する
@@ -128,7 +128,7 @@ DevKit の**リセット** ボタンを押します。 DevKit 画面に **"DPS C
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、デバイスが Azure IoT Hub に自動的に登録できるように、Device Identity Composition Engine を使って Device Provisioning Service に安全にデバイスを登録する方法を学習しました。 
 

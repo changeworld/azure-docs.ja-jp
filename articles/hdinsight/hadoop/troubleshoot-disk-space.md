@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/17/2020
 ms.openlocfilehash: 577bed7ce342be14a50077a3ffd841cd901b5b31
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77473319"
 ---
 # <a name="manage-disk-space-in-azure-hdinsight"></a>Azure HDInsight でディスク領域を管理する
@@ -24,11 +24,11 @@ ms.locfileid: "77473319"
 
 1. **[Hive]**  >  **[構成]**  >  **[詳細]**  >  **[Advanced hive-log4j]\(詳細な hive-log4j\)** の順に移動します。 以下の設定を確認します。
 
-    * `hive.root.logger=DEBUG,RFA` これは既定値です。[ログ レベル](https://logging.apache.org/log4j/2.x/log4j-api/apidocs/org/apache/logging/log4j/Level.html)を `INFO` に変更して、より少ないログ エントリを印刷するようにします。
+    * [https://login.microsoftonline.com/consumers/](`hive.root.logger=DEBUG,RFA`) これは既定値です。[ログ レベル](https://logging.apache.org/log4j/2.x/log4j-api/apidocs/org/apache/logging/log4j/Level.html)を `INFO` に変更して、より少ないログ エントリを印刷するようにします。
 
-    * `log4jhive.log.maxfilesize=1024MB` これは既定値です。必要に応じて変更します。
+    * [https://login.microsoftonline.com/consumers/](`log4jhive.log.maxfilesize=1024MB`) これは既定値です。必要に応じて変更します。
 
-    * `log4jhive.log.maxbackupindex=10` これは既定値です。必要に応じて変更します。 パラメーターが省略されている場合、生成されるログ ファイルは無限になります。
+    * [https://login.microsoftonline.com/consumers/](`log4jhive.log.maxbackupindex=10`) これは既定値です。必要に応じて変更します。 パラメーターが省略されている場合、生成されるログ ファイルは無限になります。
 
 ## <a name="yarn-log-configurations"></a>Yarn ログ構成
 

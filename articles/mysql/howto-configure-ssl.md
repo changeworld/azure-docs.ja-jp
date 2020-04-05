@@ -5,22 +5,22 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.openlocfilehash: 3a1c7f6542ebdf1617982fbb50a239b66a6675ba
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 3/18/2020
+ms.openlocfilehash: 557986560eb27beddf939bcab7f4d72a66781e53
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926716"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062451"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>Azure Database for MySQL に安全に接続するためにアプリケーションで SSL 接続を構成する
 Azure Database for MySQL は、Secure Sockets Layer (SSL) を使用した、クライアント アプリケーションへの Azure Database for MySQL サーバーへの接続をサポートします。 データベース サーバーとクライアント アプリケーション間に SSL 接続を適用すると、サーバーとアプリケーション間のデータ ストリームが暗号化されて、"man in the middle" 攻撃から保護されます。
 
-## <a name="step-1-obtain-ssl-certificate"></a>手順 1:SSL 証明書を取得する
+## <a name="step-1-obtain-ssl-certificate"></a>手順 1: SSL 証明書を取得する
 Azure Database for MySQL サーバーで SSL 経由で通信するために必要な証明書を [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) からダウンロードし、その証明書ファイルをローカル ドライブ (このチュートリアルでは例として c:\ssl を使用) に保存します。
 **Microsoft Internet Explorer と Microsoft Edge の場合:** ダウンロードが完了したら、証明書の名前を BaltimoreCyberTrustRoot.crt.pem に変更します。
 
-## <a name="step-2-bind-ssl"></a>手順 2:SSL をバインドする
+## <a name="step-2-bind-ssl"></a>手順 2: SSL をバインドする
 
 特定プログラミング言語の接続文字列については、下記の[サンプル コード](howto-configure-ssl.md#sample-code)を参照してください。
 
@@ -47,7 +47,7 @@ mysql.exe -h mydemoserver.mysql.database.azure.com -u Username@mydemoserver -p -
 > [!NOTE]
 > Windows 上で MySQL コマンド ライン インターフェイスを使用しているときに、エラー `SSL connection error: Certificate signature check failed` が表示されることがあります。 この場合、`--ssl-mode=REQUIRED --ssl-ca={filepath}` パラメーターを `--ssl` で置き換えます。
 
-## <a name="step-3--enforcing-ssl-connections-in-azure"></a>手順 3:Azure 内で SSL 接続を適用する 
+## <a name="step-3--enforcing-ssl-connections-in-azure"></a>手順 3: Azure で SSL 接続を適用する 
 ### <a name="using-the-azure-portal"></a>Azure ポータルの使用
 Azure Portal から Azure Database for MySQL サーバーにアクセスし、 **[接続のセキュリティ]** をクリックします。 トグル ボタンを使用して、 **[SSL 接続を強制する]** 設定を有効または無効にし、 **[保存]** をクリックします。 Microsoft では、セキュリティ強化のため **[SSL 接続を強制する]** 設定を常に有効にしておくことをお勧めします。
 ![SSL の有効化](./media/howto-configure-ssl/enable-ssl.png)
@@ -58,12 +58,12 @@ Azure Portal から Azure Database for MySQL サーバーにアクセスし、 *
 az mysql server update --resource-group myresource --name mydemoserver --ssl-enforcement Enabled
 ```
 
-## <a name="step-4-verify-the-ssl-connection"></a>手順 4:SSL 接続を確認する
+## <a name="step-4-verify-the-ssl-connection"></a>手順 4: SSL 接続を確認する
 MySQL の **status** コマンドを実行して、SSL 経由で MySQL サーバーに接続していることを確認します。
 ```dos
 mysql> status
 ```
-出力を確認することで、接続が暗号化されていることを確認します。次のように表示されます:**SSL:Cipher in use is AES256-SHA (SSL: 使用中の暗号は AES256 SHA です)** 
+接続が暗号化されていることを確認します。そのためには、出力に "**SSL: Cipher in use is AES256-SHA**" (SSL: 使用中の暗号は AES256-SHA) と表示されていることを確認します。 
 
 ## <a name="sample-code"></a>サンプル コード
 アプリケーションから Azure Database for MySQL へのセキュリティで保護された接続を SSL 経由で確立するためには、次のコード サンプルを参照してください。
@@ -219,5 +219,5 @@ using (var connection = new MySqlConnection(builder.ConnectionString))
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure Database for MySQL の接続ライブラリ](concepts-connection-libraries.md)に従って、さまざまなアプリケーション接続オプションを確認する

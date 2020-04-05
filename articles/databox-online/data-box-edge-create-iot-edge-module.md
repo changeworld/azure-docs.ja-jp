@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/06/2019
 ms.author: alkohli
 ms.openlocfilehash: 3aa1190fb713c2fbdedcb1ce84a65d4263693827
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78942551"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Data Box Edge 上のファイルを移動する C# IoT Edge モジュールを開発する

@@ -9,18 +9,18 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 08a00342-fee2-4afe-8824-0db1ed4b8fca
 ms.service: virtual-machines-sql
-ms.custom: seo-lt-2019
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: ed5fc923c82fb0d0e4004e18159d943564c6f55e
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 426ba4c0ac84799b4d0e6bf9330508f928437fd8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045822"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060189"
 ---
 # <a name="tutorial-configure-availability-group-on-azure-sql-server-vm-manually"></a>チュートリアル:Azure SQL Server VM での可用性グループの手動構成
 
@@ -55,7 +55,7 @@ ms.locfileid: "76045822"
   > このチュートリアルで説明する手順の多くは、[Azure SQL VM CLI](virtual-machines-windows-sql-availability-group-cli.md) と [Azure クイック スタート テンプレート](virtual-machines-windows-sql-availability-group-quickstart-template.md)で自動化できるようになりました。
 
 
-<!--**Procedure**: *This is the first “step”. Make titles H2’s and short and clear – H2’s appear in the right pane on the web page and are important for navigation.*-->
+<!--**Procedure**: *This is the first "step". Make titles H2's and short and clear – H2's appear in the right pane on the web page and are important for navigation.*-->
 
 <a name="CreateCluster"></a>
 ## <a name="create-the-cluster"></a>クラスターを作成する
@@ -95,7 +95,7 @@ ms.locfileid: "76045822"
 
 4. **[クラスター コア リソース]** セクションで、クラスター名を右クリックして、 **[オンラインにする]** をクリックします。 両方のリソースがオンラインになるまで待ちます。 クラスター名リソースがオンラインになると、新しい AD コンピューター アカウントで DC サーバーが更新されます。 この AD アカウントは、後で可用性グループのクラスター化サービスを実行するときに使います。
 
-### <a name="addNode"></a>他の SQL Server をクラスターに追加する
+### <a name="add-the-other-sql-server-to-cluster"></a><a name="addNode"></a>他の SQL Server をクラスターに追加する
 
 他の SQL Server をクラスターに追加します。
 
@@ -228,7 +228,7 @@ Repeat these steps on the second SQL Server.
 7. **オブジェクト エクスプローラー**で、 **[データベース]** を右クリックし、 **[新しいデータベース]** をクリックします。
 8. **[データベース名]** に「**MyDB1**」と入力し、 **[OK]** をクリックします。
 
-### <a name="backupshare"></a>バックアップ共有を作成する
+### <a name="create-a-backup-share"></a><a name="backupshare"></a>バックアップ共有を作成する
 
 1. **サーバー マネージャー**の 1 番目の SQL Server で、 **[ツール]** をクリックします。 **[コンピューターの管理]** を開きます。
 
@@ -291,7 +291,7 @@ Repeat these steps on the second SQL Server.
 4. **[レプリカの指定]** ページで **[レプリカの追加]** をクリックします。
 
    ![新しい AG ウィザード、レプリカの指定](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/62-newagaddreplica.png)
-5. **[サーバーに接続]** ダイアログが表示されます。 2 番目のサーバーの名前を **[サーバー名]** に入力します。 **[接続]** をクリックします。
+5. **[サーバーに接続]** ダイアログが表示されます。 2 番目のサーバーの名前を **[サーバー名]** に入力します。 **[Connect]** をクリックします。
 
    **[レプリカの指定]** ページに戻ると、 **[可用性レプリカ]** の一覧に 2 番目のサーバーが表示されていることがわかります。 次に示すようにレプリカを構成します。
 
@@ -360,14 +360,14 @@ Azure Load Balancer には、Standard Load Balancer または Basic Load Balance
 
    | 設定 | フィールド |
    | --- | --- |
-   | **Name** |ロード バランサーのテキスト名を使います (例: **sqlLB**)。 |
+   | **名前** |ロード バランサーのテキスト名を使います (例: **sqlLB**)。 |
    | **Type** |内部 |
    | **Virtual Network** |Azure 仮想ネットワークの名前を使います。 |
    | **サブネット** |仮想マシンが存在するサブネットの名前を使います。  |
    | **IP アドレスの割り当て** |静的 |
    | **IP アドレス (IP address)** |サブネットで利用できるアドレスを使います。 可用性グループ リスナーにはこのアドレスを使用します。 これはクラスター IP アドレスと異なることに注意してください。  |
    | **サブスクリプション** |仮想マシンと同じサブスクリプションを使います。 |
-   | **Location** |仮想マシンと同じ場所を使います。 |
+   | **場所** |仮想マシンと同じ場所を使います。 |
 
    Azure Portal のブレードは次のようになります。
 
@@ -404,7 +404,7 @@ Azure Load Balancer には、Standard Load Balancer または Basic Load Balance
 
    | 設定 | 説明 | 例
    | --- | --- |---
-   | **Name** | Text | SQLAlwaysOnEndPointProbe |
+   | **名前** | Text | SQLAlwaysOnEndPointProbe |
    | **プロトコル** | TCP を選びます | TCP |
    | **[ポート]** | 未使用の任意のポート | 59999 |
    | **間隔**  | プローブの試行の間隔 (秒単位) |5 |
@@ -420,7 +420,7 @@ Azure Load Balancer には、Standard Load Balancer または Basic Load Balance
 
    | 設定 | 説明 | 例
    | --- | --- |---
-   | **Name** | Text | SQLAlwaysOnEndPointListener |
+   | **名前** | Text | SQLAlwaysOnEndPointListener |
    | **フロントエンド IP アドレス** | アドレスを選びます |ロード バランサーの作成時に作成したアドレスを使います。 |
    | **プロトコル** | TCP を選びます |TCP |
    | **[ポート]** | 可用性グループ リスナーのポートを使用する | 1433 |
@@ -428,7 +428,7 @@ Azure Load Balancer には、Standard Load Balancer または Basic Load Balance
    | **プローブ** |プローブに指定した名前 | SQLAlwaysOnEndPointProbe |
    | **セッション永続化** | ドロップダウン リスト | **なし** |
    | **アイドル タイムアウト** | TCP 接続を開いたままにしておく時間 (分) | 4 |
-   | **フローティング IP (ダイレクト サーバー リターン)** | |有効 |
+   | **フローティング IP (ダイレクト サーバー リターン)** | |Enabled |
 
    > [!WARNING]
    > Direct Server Return は作成の間に設定されます。 この値は変更しないでください。
@@ -447,7 +447,7 @@ WSFC の IP アドレスもロード バランサー上に存在する必要が�
 
    | 設定 | 説明 | 例
    | --- | --- |---
-   | **Name** | Text | WSFCEndPointProbe |
+   | **名前** | Text | WSFCEndPointProbe |
    | **プロトコル** | TCP を選びます | TCP |
    | **[ポート]** | 未使用の任意のポート | 58888 |
    | **間隔**  | プローブの試行の間隔 (秒単位) |5 |
@@ -461,7 +461,7 @@ WSFC の IP アドレスもロード バランサー上に存在する必要が�
 
    | 設定 | 説明 | 例
    | --- | --- |---
-   | **Name** | Text | WSFCEndPoint |
+   | **名前** | Text | WSFCEndPoint |
    | **フロントエンド IP アドレス** | アドレスを選びます |WSFC の IP アドレスの構成時に作成したアドレスを使用します。 これはリスナーの IP アドレスとは異なります |
    | **プロトコル** | TCP を選びます |TCP |
    | **[ポート]** | クラスター IP アドレスのポートを使用します。 これは、リスナー プローブ ポートには使用されない使用可能なポートです。 | 58888 |
@@ -469,14 +469,14 @@ WSFC の IP アドレスもロード バランサー上に存在する必要が�
    | **プローブ** |プローブに指定した名前 | WSFCEndPointProbe |
    | **セッション永続化** | ドロップダウン リスト | **なし** |
    | **アイドル タイムアウト** | TCP 接続を開いたままにしておく時間 (分) | 4 |
-   | **フローティング IP (ダイレクト サーバー リターン)** | |有効 |
+   | **フローティング IP (ダイレクト サーバー リターン)** | |Enabled |
 
    > [!WARNING]
    > Direct Server Return は作成の間に設定されます。 この値は変更しないでください。
 
 1. **[OK]** をクリックして、負荷分散規則を設定します。
 
-## <a name="configure-listener"></a> リスナーを構成する
+## <a name="configure-the-listener"></a><a name="configure-listener"></a> リスナーを構成する
 
 次の手順は、フェールオーバー クラスター上の可用性グループ リスナーの構成です。
 

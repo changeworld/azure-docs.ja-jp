@@ -11,10 +11,10 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 ms.openlocfilehash: d2e7ce959edffdb2e8c929c81837e0ac3fc3da9e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75444682"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API を使用して Angular アプリを作成する

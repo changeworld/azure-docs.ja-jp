@@ -7,11 +7,11 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: 3f736942627d088e3a639f89bef5438714c2608b
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551966"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223139"
 ---
 # <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>チュートリアル:バックエンド ストレージを追加して仮想名前空間を構成する 
 

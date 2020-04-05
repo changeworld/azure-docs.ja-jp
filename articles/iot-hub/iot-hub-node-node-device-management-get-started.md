@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: 5b2e4c03347020b5d5fc67927165403f06854e0b
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110920"
 ---
 # <a name="get-started-with-device-management-nodejs"></a>デバイス管理の開始 (Node.js)

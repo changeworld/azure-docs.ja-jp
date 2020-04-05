@@ -7,13 +7,13 @@ ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
 ms.openlocfilehash: bfb23ca5f5eb9540491fbd05efdfd6997db15e6b
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75639022"
 ---
-# <a name="tutorial-clean-up-your-standalone-cluster"></a>チュートリアル:スタンドアロン クラスターのクリーンアップ
+# <a name="tutorial-clean-up-your-standalone-cluster"></a>チュートリアル: スタンドアロン クラスターのクリーンアップ
 
 Service Fabric で採用されている "すべての OS、すべてのクラウド" のアプローチの一環として、Service Fabric スタンドアロン クラスターには、独自の環境を選んでクラスターを作成する選択肢が用意されています。 このチュートリアル シリーズでは、AWS または Azure 上でホストされるスタンドアロンのクラスターを作成し、そこにアプリケーションをインストールします。
 

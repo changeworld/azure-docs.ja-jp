@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/04/2017
 ms.openlocfilehash: 2fd148dbb85a4fd60fe63d4fb73128bf92dea1d8
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670561"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Azure Monitor で Linux アプリケーションのパフォーマンス カウンターを収集する 

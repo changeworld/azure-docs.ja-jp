@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.openlocfilehash: 60ec2b86e0205060f907f1fe39d084dca3aac1cd
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68608233"
 ---
 # <a name="handle-duplicate-data-in-azure-data-explorer"></a>Azure Data Explorer で重複データを処理する
@@ -119,7 +119,7 @@ DeviceEventsAll
 
 データの重複に対処する方法には、さまざまなものがあります。 アカウントの価格とパフォーマンスを考慮しつつ、各種の選択肢を慎重に検討し、ビジネスに最も適した方法を判断するようにしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Data Explorer のクエリを記述する](write-queries.md)

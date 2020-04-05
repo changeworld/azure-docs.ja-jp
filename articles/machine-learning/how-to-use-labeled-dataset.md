@@ -8,10 +8,10 @@ ms.service: machine-learning
 ms.topic: how-to
 ms.date: 01/21/2020
 ms.openlocfilehash: 5138109de3f80d405ce95b605714b511480563f5
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76549347"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>ラベル付き Azure Machine Learning データセットを作成して探索する

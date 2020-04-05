@@ -15,11 +15,11 @@ ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: deb337d989a3658e909cefa7a9ab028e37792562
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77918378"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224607"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Azure での SQL Server 仮想マシンへの接続
 
@@ -91,7 +91,7 @@ Server=sqlvmlabel.eastus.cloudapp.azure.com,1500;Integrated Security=false;User 
 Server=mysqlvm;Integrated Security=true
 ```
 
-## <a id="change"></a>SQL 接続の設定を変更する
+## <a name="change-sql-connectivity-settings"></a><a id="change"></a>SQL 接続の設定を変更する
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
@@ -111,7 +111,7 @@ Azure Portal で、SQL Server 仮想マシンの接続設定を変更できま�
 
    ![SQL VM 更新通知](./media/virtual-machines-windows-sql-connect/sql-vm-updating-notification.png)
 
-## <a id="manualtcp"></a>Developer および Express エディションの TCP/IP を有効にする
+## <a name="enable-tcpip-for-developer-and-express-editions"></a><a id="manualtcp"></a>Developer および Express エディションの TCP/IP を有効にする
 
 SQL Server 接続の設定を変更するとき、Azure は SQL Server Developer および Express エディション の TCP/IP プロトコルを自動的に有効にしません。 TCP/IP を手動で有効にして IP アドレスでリモート接続できるようにするための手順を次に示します。
 
@@ -129,7 +129,7 @@ SQL Server 接続の設定を変更するとき、Azure は SQL Server Developer
 
 [!INCLUDE [Connect to SQL Server in a VM Resource Manager](../../../../includes/virtual-machines-sql-server-connection-steps-resource-manager.md)]
 
-## <a id="manual"></a>手動構成とトラブルシューティング
+## <a name="manual-configuration-and-troubleshooting"></a><a id="manual"></a>手動構成とトラブルシューティング
 
 ポータルには接続を自動的に構成するオプションが用意されていますが、接続を手動で構成する方法も知っておくと便利です。 要件を把握しておくと、トラブルシューティングにも役立ちます。
 

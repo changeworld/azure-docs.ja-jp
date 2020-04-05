@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 95d8d819aa1b418b4a7ec736cef64cb989f7e37b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74885638"
 ---
 # <a name="streaming-endpoints-overview"></a>ストリーミング エンドポイントの概要  
@@ -26,7 +26,7 @@ ms.locfileid: "74885638"
 > [!NOTE]
 > Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
-Microsoft Azure Media Services (AMS) では、**ストリーミング エンドポイント**は、コンテンツをクライアント プレーヤー アプリケーションや、再配布のための Content Delivery Network (CDN) に直接配信するストリーミング サービスを表します。 Media Services は、シームレスな Azure CDN 統合もサポートしています。 StreamingEndpoint サービスからの送信ストリームには、ライブ ストリーム、ビデオ オンデマンド、または Media Services アカウントの資産のプログレッシブ ダウンロードを使用します。 各 Azure Media Services アカウントには、既定の StreamingEndpoint が含まれています。 追加の StreamingEndpoint をアカウントで作成できます。 StreamingEndpoint には、1.0 および 2.0 の 2 つのバージョンがあります。 2017 年 1 月 10 日から、新しく作成された AMS アカウントには、バージョン 2.0 が**既定**の StreamingEndpoint として含まれます。 このアカウントに追加する追加のストリーミング エンドポイントも、バージョン 2.0 になります。 この変更は、既存のアカウントに影響しません。既存の StreamingEndpoint はバージョン 1.0 になり、バージョン 2.0 にアップグレードすることができます。 この変更により、動作、課金および機能が変更されます (詳細については、以下で説明する「**ストリーミングのタイプとバージョン**」のセクションを参照してください)。
+Microsoft Azure Media Services (AMS) では、**ストリーミング エンドポイント**は、コンテンツをクライアント プレーヤー アプリケーションや、再配布のための Content Delivery Network (CDN) に直接配信するストリーミング サービスを表します。 Media Services は、シームレスな Azure CDN 統合もサポートしています。 StreamingEndpoint サービスからの送信ストリームには、ライブ ストリーム、ビデオ オンデマンド、または Media Services アカウントの資産のプログレッシブ ダウンロードを使用します。 各 Azure Media Services アカウントには、既定の StreamingEndpoint が含まれています。 追加の StreamingEndpoint をアカウントで作成できます。 StreamingEndpoint には、1.0 および 2.0 の 2 つのバージョンがあります。 2017 年 1 月 10 日から、新しく作成された AMS アカウントには、バージョン 2.0 が**既定**の StreamingEndpoint として含まれます。 このアカウントに追加する追加のストリーミング エンドポイントも、バージョン 2.0 になります。 この変更は、既存のアカウントに影響しません。既存の Streamingendpoint はバージョン 1.0 になり、バージョン 2.0 にアップグレードすることができます。 この変更により、動作、課金および機能が変更されます (詳細については、以下で説明する「**ストリーミングのタイプとバージョン**」のセクションを参照してください)。
 
 Azure Media Services では、ストリーミング エンドポイントのエンティティに次のプロパティが追加されました。**CdnProvider**、**CdnProfile**、**StreamingEndpointVersion**。 これらのプロパティについて詳しくは、[こちら](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)をご覧ください。 
 
@@ -50,7 +50,7 @@ Azure Media Services アカウントを作成すると、既定の標準スト�
 2017 年 1 月リリース以降の Media Services には、ストリーミング タイプ **Standard** (プレビュー) と **Premium** の 2 つの型があります。 これらのタイプは、ストリーミング エンドポイントのバージョン「2.0」の一部です。
 
 
-|種類|説明|
+|Type|説明|
 |--------|--------|  
 |**Standard**|既定のストリーミング エンドポイントは **Standard** 型ですが、ストリーミング ユニットを調整することで Premium 型に変更できます。|
 |**Premium** |このオプションは、より高度なスケールやコントロールを必要とするプロフェッショナルなシナリオに適しています。 **Premium** 型には、ストリーミング ユニットを調整することで移行します。<br/>専用のストリーミング エンドポイントは、分離環境で存在し、リソースの競合はありません。|
@@ -75,14 +75,14 @@ Azure Media Services アカウントを作成すると、既定の標準スト�
 
 ### <a name="versions"></a>バージョン
 
-|種類|StreamingEndpointVersion|ScaleUnits|CDN|課金|
+|Type|StreamingEndpointVersion|ScaleUnits|CDN|課金|
 |--------------|----------|-----------------|-----------------|-----------------|
-|クラシック|1.0|0|NA|無料|
+|クラシック|1.0|0|NA|Free|
 |Standard ストリーミング エンドポイント (プレビュー)|2.0|0|はい|有料|
 |Premium ストリーミング ユニット|1.0|>0|はい|有料|
 |Premium ストリーミング ユニット|2.0|>0|はい|有料|
 
-### <a name="features"></a>機能
+### <a name="features"></a>特徴
 
 機能|Standard|Premium
 ---|---|---
@@ -102,7 +102,7 @@ SLA については、[価格と SLA](https://azure.microsoft.com/pricing/detail
 
 ## <a name="migration-between-types"></a>タイプの移行
 
-ソース | ターゲット | Action
+ソース | ターゲット | アクション
 ---|---|---
 クラシック|Standard|オプトインが必要
 クラシック|Premium| スケール (追加のストリーミング ユニット)
@@ -115,7 +115,7 @@ Premium (CDN あり/なし)|別の構成の Standard|**停止**状態で可能 (
 バージョン 1.0、SU > = 1、CDN あり|Standard、CDN あり/なし|**停止**状態で可能。 **開始済み**状態では不可。 バージョン 1.0 の CDN は削除し、新しい CDN を作成して起動。
 バージョン 1.0、SU > = 1、CDN あり|Premium、CDN あり/なし|**停止**状態で可能。 **開始済み**状態では不可。 クラシック CDN は削除し、新しい CDN を作成して起動。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Media Services のラーニング パスを確認します。
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

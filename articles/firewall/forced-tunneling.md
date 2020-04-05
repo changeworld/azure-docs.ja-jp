@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/24/2020
 ms.author: victorh
 ms.openlocfilehash: e51f6de370a5340082f64a0ca15c61583f75962b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77597280"
 ---
 # <a name="azure-firewall-forced-tunneling-preview"></a>Azure Firewall の強制トンネリング (プレビュー)

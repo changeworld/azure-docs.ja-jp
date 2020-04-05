@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 2/27/2020
 ms.openlocfilehash: 72735e83af97fde8377e27daa45501704ef5a3c8
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78164544"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>ダンプと復元を使用した Azure Database for MariaDB への MariaDB データベースの移行

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
 ms.openlocfilehash: 0c4c26ba163f83483b3eb48e51d91f9a919a887c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75439841"
 ---
 # <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>Azure Data Factory を使用して複数のコンテナーからファイルをコピーする

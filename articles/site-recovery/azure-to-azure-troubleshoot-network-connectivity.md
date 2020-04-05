@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 08/05/2019
-ms.openlocfilehash: d55f06669a538c2f26f3a1d2da0d96a73529f76e
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: b082e1aca094dcb335a7268e4c116376d756fd3b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941465"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80292027"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Azure 間の VM ネットワーク接続の問題のトラブルシューティング
 
@@ -18,7 +18,7 @@ ms.locfileid: "75941465"
 
 Site Recovery レプリケーションを動作させるには、VM から特定の URL または IP 範囲への送信接続が必要です。 VM がファイアウォールの内側にあるか、ネットワーク セキュリティ グループ (NSG) ルールを使用して送信接続を制御している場合は、次のいずれかの問題に直面することがあります。
 
-**[URL]** | **詳細**  
+**URL** | **詳細**  
 --- | ---
 *.blob.core.windows.net | VM からソース リージョンのキャッシュ ストレージ アカウントにデータを書き込むことができるようにするために必要です。 お使いの VM のすべてのキャッシュ ストレージ アカウントを把握している場合、*.blob.core.windows.net の代わりに、特定のストレージ アカウントの URL (たとえば、cache1.blob.core.windows.net および cache2.blob.core.windows.net) を許可リストに登録できます。
 login.microsoftonline.com | Site Recovery サービス URL に対する承認と認証に必要です。
@@ -27,7 +27,7 @@ login.microsoftonline.com | Site Recovery サービス URL に対する承認と
 
 ## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Site Recovery URL または IP 範囲の送信接続 (エラー コード 151037 または 151072)
 
-## <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>問題 1: Azure 仮想マシンを Site Recovery に登録できませんでした (151195) </br>
+## <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a><a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>問題 1: Azure 仮想マシンを Site Recovery に登録できませんでした (151195) </br>
 - **考えられる原因** </br>
   - DNS を解決できないため、Site Recovery エンドポイントへの接続を確立できません。
   - これが頻繁に発生するのは、仮想マシンをフェールオーバーして再保護を行っているときに、DR リージョンから DNS サーバーに到達できない場合です。
@@ -56,7 +56,7 @@ login.microsoftonline.com | Site Recovery サービス URL に対する承認と
 この例は、レプリケートする VM に対して NSG ルールを構成する方法を示しています。
 
 - NSG ルールを使用して送信接続を制御している場合は、必要なすべての IP アドレス範囲のポート 443 に対して "HTTPS 送信を許可" ルールを使用します。
-- この例では、VM ソースの場所は "米国東部" で、ターゲットの場所は "米国中央部" であると仮定します。
+- この例では、VM ソースの場所は "米国東部" で、ターゲットの場所は "米国中部" であると仮定します。
 
 ### <a name="nsg-rules---east-us"></a>NSG ルール - 米国東部
 
@@ -70,11 +70,11 @@ login.microsoftonline.com | Site Recovery サービス URL に対する承認と
 
 3. ターゲットの場所に対応する Site Recovery IP に対して、送信方向の HTTPS (443) ルールを作成します。
 
-   **Location** | **Site Recovery IP アドレス** |  **Site Recovery 監視 IP アドレス**
+   **場所** | **Site Recovery IP アドレス** |  **Site Recovery 監視 IP アドレス**
     --- | --- | ---
    米国中部 | 40.69.144.231 | 52.165.34.144
 
-### <a name="nsg-rules---central-us"></a>NSG ルール - 米国中央部
+### <a name="nsg-rules---central-us"></a>NSG ルール - 米国中部
 
 フェールオーバー後にターゲット リージョンからソース リージョンへのレプリケーションが有効になるようにするには、次のルールが必要です。
 
@@ -84,7 +84,7 @@ login.microsoftonline.com | Site Recovery サービス URL に対する承認と
 
 3. ソースの場所に対応する Site Recovery IP に対して、送信方向の HTTPS (443) ルールを作成します。
 
-   **Location** | **Site Recovery IP アドレス** |  **Site Recovery 監視 IP アドレス**
+   **場所** | **Site Recovery IP アドレス** |  **Site Recovery 監視 IP アドレス**
     --- | --- | ---
    米国中部 | 13.82.88.226 | 104.45.147.24
 ## <a name="issue-3-site-recovery-configuration-failed-151197"></a>問題 3:Site Recovery の構成に失敗しました (151197)
@@ -92,7 +92,7 @@ login.microsoftonline.com | Site Recovery サービス URL に対する承認と
   - Azure Site Recovery サービスのエンドポイントに対する接続を確立できません。
 
 - **解決策**
-  - Azure Site Recovery では、リージョンに基づいて [Site Recovery の IP 範囲](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)にアクセスする必要がありました。 必要な IP 範囲に仮想マシンからアクセスできることを確認します。
+  - Azure Site Recovery では、リージョンに基づいて [Site Recovery の IP 範囲](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-using-service-tags)にアクセスする必要がありました。 必要な IP 範囲に仮想マシンからアクセスできることを確認します。
 
 
 ## <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>問題 4:ネットワーク トラフィックがオンプレミス プロキシ サーバーを経由するときに A2A レプリケーションが失敗しました (151072)
@@ -112,7 +112,7 @@ login.microsoftonline.com | Site Recovery サービス URL に対する承認と
   4. Azure Site Recovery Mobility Service エージェントは、"***認証されていないプロキシ***" のみをサポートします。
 
 ### <a name="fix-the-problem"></a>問題の解決
-[必要な URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) または[必要な IP 範囲](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)を許可するには、[ネットワーク ガイダンスのドキュメント](site-recovery-azure-to-azure-networking-guidance.md)の次の手順に従ってください。
+[必要な URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) または[必要な IP 範囲](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)を許可するには、[ネットワーク ガイダンスのドキュメント](site-recovery-azure-to-azure-networking-guidance.md)の次の手順に従ってください。
 
 
 ## <a name="next-steps"></a>次のステップ

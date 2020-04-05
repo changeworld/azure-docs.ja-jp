@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.openlocfilehash: 15089dd99de0471c244a6c0d93931438442599a7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73490508"
 ---
 # <a name="monitor-azure-data-share"></a>Azure Data Share の監視  

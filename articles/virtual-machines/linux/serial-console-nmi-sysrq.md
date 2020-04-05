@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: 5eba50e7cfc00c081622972ca09f305b34c19c47
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74034995"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>SysRq および NMI 呼び出しにシリアル コンソールを使用する
@@ -25,7 +25,7 @@ ms.locfileid: "74034995"
 ## <a name="system-request-sysrq"></a>システム要求 (SysRq)
 SysRq は Linux オペレーション システム カーネルによって解釈されるキーのシーケンスであり、事前定義済みの一連のアクションをトリガーできます。 これらのコマンドは通常、仮想マシンのトラブルシューティングまたは復旧が従来の管理では実行できない場合 (たとえば、VM が応答していない場合など) に使用されます。 Azure Serial Console の SysRq 機能を使用することは、SysRq キーを押すことや物理キーボード上に文字が入力されることと、同等の動作になります。
 
-SysRq シーケンスが配信されると、以降は、カーネル構成によってシステムの応答方法が制御されます。 SysRq の有効化および無効化に関する情報については、「*SysRq Admin Guide*」(SysRq 管理ガイド) の "[テキスト](https://aka.ms/kernelorgsysreqdoc) | [マークダウン](https://aka.ms/linuxsysrq)" を参照してください。  
+SysRq シーケンスが配信されると、以降は、カーネル構成によってシステムの応答方法が制御されます。 SysRq の有効化および無効化に関する情報については、「*SysRq Admin Guide*」(SysRq 管理ガイド) の「[テキスト](https://aka.ms/kernelorgsysreqdoc) | [マークダウン](https://aka.ms/linuxsysrq)」を参照してください。  
 
 Azure Serial Console は、以下に示すコマンド バーのキーボード アイコンを使用して、SysRq を Azure 仮想マシンに送信するために使用できます。
 
@@ -51,7 +51,7 @@ SysReq の構成を永続化するために、次の手順を実行してすべ�
 ### <a name="command-keys"></a>コマンド キー 
 前記の「SysRq Admin Guide」(SysRq 管理ガイド) に示されたコマンド キーは次のとおりです。
 
-|command| Function
+|command| 機能
 | ------| ----------- |
 |``b``  |   ディスクの同期またはマウント解除を行わずに、システムをすぐに再起動します。
 |``c``  |   NULL ポインターの逆参照によってシステム クラッシュを実行します。 構成した場合は、クラッシュ ダンプが取得されます。
@@ -126,8 +126,8 @@ SysRq に関するディストリビューション固有のドキュメント�
 ### <a name="coreos"></a>CoreOS 
 - [クラッシュ ログの収集](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * 主要なシリアル コンソールの Linux ドキュメントのページについては、[こちら](serial-console.md)を参照してください。
 * シリアル コンソールを使用して、[GRUB を起動し、シングル ユーザー モードに入る](serial-console-grub-single-user-mode.md)
-* シリアル コンソールは、[Windows](../windows/serial-console.md) VM でも使用できます。
+* シリアル コンソールは、[Windows](../windows/serial-console.md) VM でも使用可能
 * [ブート診断](boot-diagnostics.md)の詳細を表示する

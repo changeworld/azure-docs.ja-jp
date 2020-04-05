@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
 ms.openlocfilehash: 0650fcc5023ac57b193fa23b0dedf65113fd64e6
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71672889"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>SQL Server Integration Services (SSIS) を使用した U-SQL ジョブのスケジュール設定
@@ -106,7 +106,7 @@ Azure Data Lake Store ファイル システム タスクの詳細について�
 
 3. **[AzureDataLakeAnalyticsConnection]** を、ジョブの送信先となる Azure Data Lake Analytics アカウントに設定します。 Azure Data Lake Analytics 接続マネージャーの詳細については、[こちら](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017)を参照してください。
 
-4. その他のジョブ構成を設定します。 [詳細情報](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017)
+4. その他のジョブ構成を設定します。 [詳細については、こちらを参照してください](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017)。
 
 5. **[式]** を使用して、U-SQL ジョブの名前を動的に設定します。
 
@@ -166,7 +166,7 @@ U-SQL スクリプト内の U-SQL 変数の値を動的に設定する必要が�
 
 U-SQL スクリプトのパラメーターの設定方法については、[こちら](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017#parameter-mapping-page-configuration)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure での SSIS パッケージの実行](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
 - [Integration Services (SSIS) 用の Azure Feature Pack](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud)

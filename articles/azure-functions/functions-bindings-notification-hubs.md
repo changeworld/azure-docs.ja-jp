@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
 ms.openlocfilehash: 211f8c8a203b81a4df6a8e9515b403f99cec572a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926329"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235103"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Azure Functions における Notification Hubs の出力バインド
 
@@ -48,7 +48,7 @@ Notification Hubs バインディングは [Microsoft.Azure.WebJobs.Extensions.N
 
 ### <a name="c-script-template-example---out-parameter"></a>C# スクリプト テンプレートの例 - out パラメーター
 
-次の例では、テンプレートに `message` プレースホルダーを含む[テンプレート登録](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)の通知を送信します。
+次の例では、テンプレートに [ プレースホルダーを含む](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)テンプレート登録`message`の通知を送信します。
 
 ```cs
 using System;
@@ -96,7 +96,7 @@ private static IDictionary<string, string> GetTemplateProperties(string message)
 
 ### <a name="c-script-template-example---json"></a>C# スクリプト テンプレートの例 - JSON
 
-次の例では、有効な JSON 文字列を使用して、テンプレートに `message` プレースホルダーを含む[テンプレート登録](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)の通知を送信します。
+次の例では、有効な JSON 文字列を使用して、テンプレートに [ プレースホルダーを含む](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)テンプレート登録`message`の通知を送信します。
 
 ```cs
 using System;
@@ -135,7 +135,7 @@ private static TemplateNotification GetTemplateNotification(string message)
 
 ### <a name="f-template-example"></a>F# テンプレートの例
 
-次の例では、`location` と `message` を含む[テンプレート登録](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)の通知を送信します。
+次の例では、[ と ](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) を含む`location`テンプレート登録`message`の通知を送信します。
 
 ```fsharp
 let Run(myTimer: TimerInfo, notification: byref<IDictionary<string, string>>) =
@@ -144,7 +144,7 @@ let Run(myTimer: TimerInfo, notification: byref<IDictionary<string, string>>) =
 
 ### <a name="javascript-template-example"></a>JavaScript テンプレートの例
 
-次の例では、`location` と `message` を含む[テンプレート登録](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)の通知を送信します。
+次の例では、[ と ](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) を含む`location`テンプレート登録`message`の通知を送信します。
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -300,7 +300,7 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 |---|---|
 | Notification Hub | [運用ガイド](https://docs.microsoft.com/rest/api/notificationhubs/) |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)

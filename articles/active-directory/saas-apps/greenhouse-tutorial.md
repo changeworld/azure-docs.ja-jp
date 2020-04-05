@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Greenhouse の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Greenhouse の統合 | Microsoft Docs'
 description: Azure Active Directory と Greenhouse の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 1cf60e13f7b3ad13d204d67cb7c538d1d11a5dbe
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74227542"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>チュートリアル:Azure Active Directory と Greenhouse の統合
+# <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>チュートリアル: Azure Active Directory と Greenhouse の統合
 
 このチュートリアルでは、Greenhouse と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Greenhouse と Azure AD の統合には、次の利点があります。
@@ -206,7 +206,7 @@ Azure AD ユーザーが Greenhouse にログインできるようにするに�
 
     a. **[ユーザー電子メールの入力]** テキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの電子メール アドレスを入力します。
 
-    b. **[Save]** をクリックします。    
+    b. **[保存]** をクリックします。    
    
       >[!NOTE]
       >Azure Active Directory のアカウント所有者には、アカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: victorh
 ms.openlocfilehash: bcea9a8674e4b1979698b7d28eb4192172b0dc11
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73931316"
 ---
 # <a name="deploy-a-trusted-security-partner-preview"></a>信頼されたセキュリティ パートナー (プレビュー) のデプロイ
@@ -46,7 +46,7 @@ Register-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace M
 3. **[はじめに]** に移動します。 **[Create a Secured Virtual Hub]\(セキュリティ保護付き仮想ハブを作成\)** を選択します。 
 4. サブスクリプションとリソース グループを入力し、サポートされているリージョンを選択して、ハブと仮想 WAN の情報を追加します。 
 5. **[Deploy VPN gateway]\(VPN ゲートウェイのデプロイ\)** は既定で有効になっています。 信頼されたセキュリティ パートナーをハブにデプロイするには、VPN Gateway が必要です。 
-6. **[次へ:Azure Firewall]** を選択します。
+6. **Azure Firewall** を選択します。
    > [!NOTE]
    > 信頼されたセキュリティ パートナーは、VPN Gateway トンネルを使用してハブに接続します。 VPN Gateway を削除すると、信頼されたセキュリティ パートナーへの接続が失われます。
 7. プライベート トラフィックをフィルター処理するための Azure Firewall をサード パーティのサービス プロバイダーと一緒にデプロイし、インターネット トラフィックをフィルター処理する場合は、Azure Firewall のポリシーを選択します。 [サポートされているシナリオ](trusted-security-partners.md#key-scenarios)を参照してください。
@@ -113,7 +113,7 @@ VPN ゲートウェイのデプロイには 30 分以上かかることがあり
 
 ルート設定の手順が完了すると、VNet の仮想マシンとブランチサイトの両方で、サード パーティのサービス ルートに 0/0 が送信されます。 これらの仮想マシンに RDP または SSH 接続することはできません。 サインインするには、ピアリングされた VNet に [Azure Bastion](../bastion/bastion-overview.md) サービスをデプロイします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [チュートリアル:Azure portal を使用して Azure Firewall Manager Preview でクラウド ネットワークをセキュリティで保護する](secure-cloud-network.md)
 

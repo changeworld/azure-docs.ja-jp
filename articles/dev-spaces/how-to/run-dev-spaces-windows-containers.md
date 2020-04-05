@@ -5,12 +5,12 @@ ms.date: 01/16/2020
 ms.topic: conceptual
 description: Windows コンテナーを持つ既存のクラスターでの Azure Dev Spaces の実行方法について説明します
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Windows コンテナー
-ms.openlocfilehash: d376aca45778060c8913924fd2a44031109390d2
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 0b3f221c9e62343a02ba8742e4cf988c7cf26c12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77538791"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240485"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Azure Dev Spaces を使用した Windows コンテナーの操作
 
@@ -91,9 +91,9 @@ az aks use-dev-spaces -g myResourceGroup -n myAKSCluster --space dev --yes
 
 ## <a name="update-your-windows-service-for-dev-spaces"></a>Dev Spaces 向けに Windows サービスを更新
 
-コンテナーが既に実行されている既存の名前空間で Dev Spaces を有効にすると、既定では Dev Spaces がその名前空間で実行される新しいコンテナーをすべてインストルメント化しようとします。 また Dev Spaces は、名前空間で既に実行されているサービス用に作成された新しいコンテナーもすべてインストルメント化しようとします。 名前空間で実行されているコンテナーが Dev Spaces によってインストルメント化されないようにするには、`deployment.yaml` に *no-proxy* ヘッダーを追加します。
+コンテナーが既に実行されている既存の名前空間で Dev Spaces を有効にすると、既定では Dev Spaces がその名前空間で実行される新しいコンテナーをすべてインストルメント化しようとします。 また Dev Spaces は、名前空間で既に実行されているサービス用に作成された新しいコンテナーもすべてインストルメント化しようとします。 名前空間で実行されているコンテナーが Dev Spaces によってインストルメント化されないようにするには、*に*no-proxy`deployment.yaml` ヘッダーを追加します。
 
-`existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml` ファイルに `azds.io/no-proxy: "true"` を追加します。
+`azds.io/no-proxy: "true"` ファイルに `existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml` を追加します。
 
 ```yaml
 apiVersion: apps/v1
@@ -141,7 +141,7 @@ azds up
 `azds prep --enable-ingress` コマンドでは、アプリケーションの Helm チャートと Dockerfile が生成されます。
 
 > [!TIP]
-> プロジェクトの [Dockerfile と Helm チャート](../how-dev-spaces-works.md#prepare-your-code)は、コードをビルドして実行するために Azure Dev Spaces によって使用されますが、プロジェクトのビルドおよび実行方法を変更する場合は、これらのファイルを変更することができます。
+> プロジェクトの [Dockerfile と Helm チャート](../how-dev-spaces-works-prep.md#prepare-your-code)は、コードをビルドして実行するために Azure Dev Spaces によって使用されますが、プロジェクトのビルドおよび実行方法を変更する場合は、これらのファイルを変更することができます。
 
 `azds up` コマンドでは、名前空間でサービスが実行されます。
 

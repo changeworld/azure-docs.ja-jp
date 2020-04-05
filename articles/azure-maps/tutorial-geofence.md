@@ -1,20 +1,20 @@
 ---
 title: チュートリアル:マップにジオフェンスを作成してデバイスを追跡する |Microsoft Azure Maps
 description: Microsoft Azure Maps 空間サービスを使用して、ジオフェンスを設定し、そのジオフェンスを基準にしてデバイスを追跡する方法について説明します。
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 1/15/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e0e918a2508bb65de176b030a73598e221aff676
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 126829f12d71e40511c26e781cb191988c1d031e
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77370184"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80333858"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用してジオフェンスを設定する
 
@@ -150,13 +150,13 @@ Postman アプリがインストールされたら、次の手順に従い、Azu
    }
    ```
 
-5. [send]\(送信\) をクリックして、応答ヘッダーを確認します。 要求が成功すると、**Location** ヘッダーには、状態 URI が格納されます。 この状態 URI は次の形式になります。 
+5. [send]\(送信\) をクリックして、応答ヘッダーを確認します。 要求が成功すると、**Location** ヘッダーには、状態 URI が格納されます。 この状態 URI は次の形式になります。 uploadStatusId の値を { } で囲まないでください。 一般に、{ } は、ユーザーが入力すべき値、つまりユーザーごとに異なる値を示す目的で使用します。
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-6. 自分の状態 URI をコピーし、サブスクリプション キーを追加します。 状態 URI の形式は次のようになります。 以下の形式では、{subscription-key} ({ } を含む) を実際のサブスクリプション キーで変更することに注意してください。
+6. 自分の状態 URI をコピーし、サブスクリプション キーを追加します。 状態 URI の形式は次のようになります。 以下の形式では、{subscription-key} ({ } は不要) を実際のサブスクリプション キーで変更することに注意してください。
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
@@ -166,7 +166,8 @@ Postman アプリがインストールされたら、次の手順に従い、Azu
 
    ```JSON
    {
-    "udid" : "{udId}"
+    "status": "Succeeded",
+    "resourceLocation": "https://atlas.microsoft.com/mapData/metadata/{udId}?api-version=1.0"
    }
    ```
 

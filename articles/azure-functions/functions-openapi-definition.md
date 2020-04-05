@@ -6,10 +6,10 @@ ms.date: 05/08/2019
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 9465209467c83f7de075d16e724459c307d55bd3
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77210210"
 ---
 # <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>Azure API Management を使用してサーバーレス API の OpenAPI 定義を作成する
@@ -137,7 +137,7 @@ OpenAPI 定義を生成する準備ができています。
 
     | 設定      | 推奨値  | 説明                                        |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Name** | グローバルに一意の名前 | お使いの関数アプリの名前に基づいて名前が生成されます。 |
+    | **名前** | グローバルに一意の名前 | お使いの関数アプリの名前に基づいて名前が生成されます。 |
     | **サブスクリプション** | 該当するサブスクリプション | この新しいリソースが作成されるサブスクリプション。 |  
     | **[リソース グループ](../azure-resource-manager/management/overview.md)** |  myResourceGroup | お使いの関数アプリと同じリソース。自動的に設定されます。 |
     | **場所** | 米国西部 | 場所には [米国西部] を選びます。 |

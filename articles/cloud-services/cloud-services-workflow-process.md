@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 04/08/2019
 ms.author: kwill
 ms.openlocfilehash: 5dd57a87658554bf59acf5cee1b6daf67b8692b8
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71162157"
 ---
 #    <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Windows Azure クラシック VM のアーキテクチャのワークフロー 

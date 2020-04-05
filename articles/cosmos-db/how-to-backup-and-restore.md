@@ -8,10 +8,10 @@ ms.date: 09/01/2019
 ms.author: govindk
 ms.reviewer: sngun
 ms.openlocfilehash: 19ca835ca8211202cd358ac2ec3695675183a372
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70240760"
 ---
 # <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>Azure Cosmos DB でバックアップからデータを復元する 
@@ -53,7 +53,7 @@ ms.locfileid: "70240760"
 
 データの移行後は、コンテナーやデータベースをすぐに削除することをお勧めします。 復元されたデータベースまたはコンテナーを削除しなかった場合は、要求ユニット、ストレージ、およびエグレスに対するコストが発生します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次に、以下の記事を利用して、元のアカウントにデータを移行して戻す方法について学習できます。
 

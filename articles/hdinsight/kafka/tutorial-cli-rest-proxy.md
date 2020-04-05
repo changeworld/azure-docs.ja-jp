@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.openlocfilehash: 6ba5e433839d1f27c9522749fd7a8831c7243aae
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78201709"
 ---
 # <a name="tutorial-create-an-apache-kafka-rest-proxy-enabled-cluster-in-hdinsight-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Apache Kafka REST プロキシ対応のクラスターを HDInsight に作成する

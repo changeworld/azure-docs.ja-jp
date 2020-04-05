@@ -8,13 +8,13 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: f4016349e354c84e9e096ac6d5072a4870e9ef29
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68726453"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-go"></a>クイック スタート:Go を使用して BLOB をアップロード、ダウンロード、および一覧表示する
+# <a name="quickstart-upload-download-and-list-blobs-using-go"></a>クイック スタート: Go を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
 このクイックスタートでは、Go プログラミング言語を使って、Azure Blob Storage 内のコンテナーでブロック BLOB のアップロード、ダウンロード、一覧取得を行う方法を説明します。 
 
@@ -50,14 +50,14 @@ git clone https://github.com/Azure-Samples/storage-blobs-go-quickstart
 ## <a name="configure-your-storage-connection-string"></a>ストレージ接続文字列の構成
 このソリューションでは、サンプルを実行するマシンに対してローカルな環境変数に、ストレージ アカウントの名前とキーが安全に格納される必要があります。 環境変数を作成するオペレーティング システムに応じて、以下のいずれかの例に従います。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 ```
 export AZURE_STORAGE_ACCOUNT="<youraccountname>"
 export AZURE_STORAGE_ACCESS_KEY="<youraccountkey>"
 ```
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 ```
 setx AZURE_STORAGE_ACCOUNT "<youraccountname>"
@@ -147,7 +147,7 @@ handleErrors(err)
 
 Blob Storage は、ブロック BLOB、追加 BLOB、およびページ BLOB をサポートします。 最もよく使われるのはブロック BLOB であり、このクイックスタートでもそれを使います。  
 
-ファイルを BLOB にアップロードするには、**os.Open** を使用してファイルを開きます。 次に、REST API(Upload (PutBlob)、StageBlock/CommitBlockList (PutBlock/PutBlockList)) のいずれかを使用して、指定したパスにファイルをアップロードします。 
+ファイルを BLOB にアップロードするには、**os.Open** を使用してファイルを開きます。 Upload (PutBlob)、StageBlock/CommitBlockList (PutBlock/PutBlockList) のいずれかの REST API を使用して、指定したパスにファイルをアップロードできます。 
 
 別の方法として、低レベルの REST API の上に構築された[高レベルの API](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go) が SDK に用意されています。 たとえば ***UploadFileToBlockBlob*** 関数では、スループットを最適化するために、StageBlock (PutBlock) 操作を使用してチャンクにしたファイルを同時にアップロードします。 ファイルが 256 MB 未満の場合、代わりに Upload (PutBlob) を使用して単一のトランザクションで転送を完了します。
 
@@ -224,7 +224,7 @@ _, err = downloadedData.ReadFrom(bodyStream)
 handleErrors(err)
 ```
 
-### <a name="clean-up-resources"></a>リソースのクリーンアップ
+### <a name="clean-up-resources"></a>リソースをクリーンアップする
 このクイックスタートでアップロードした BLOB が不要になった場合は、**Delete** メソッドを使ってコンテナー全体を削除できます。 
 
 ```go
@@ -244,6 +244,6 @@ Blob Storage を使用する Go 開発については、以下の追加リソー
 - GitHub で Azure Storage 用の [Go クライアント ライブラリ ソース コード](https://github.com/Azure/azure-storage-blob-go)を確認し、インストールします。
 - Go クライアント ライブラリを使用して記述された [Blob Storage のサンプル](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#pkg-examples)を確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
  
 このクイックスタートでは、Go を使ってローカル ディスクと Azure Blob Storage との間でファイルを転送する方法について学習しました。 Azure Storage Blob SDK の詳細については、[ソース コード](https://github.com/Azure/azure-storage-blob-go/)と [API リファレンス](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob)をご覧ください。

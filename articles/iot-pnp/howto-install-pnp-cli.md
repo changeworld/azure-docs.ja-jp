@@ -4,16 +4,16 @@ description: Azure CLI 用 Azure IoT 拡張機能をインストールし、IoT 
 author: ChrisGMsft
 ms.author: chrisgre
 ms.date: 12/26/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 8dead08017f15a7429655b4bf17b6e8c8e481114
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: b5907c0fb127947e90352e68b2726a22f5afea0d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251025"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80234681"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Azure CLI 用 Azure IoT 拡張機能をインストールして使用する
 
@@ -48,7 +48,7 @@ Azure CLI の Azure IoT 拡張機能は、IoT プラグ アンド プレイ プ�
 
 Azure サブスクリプションにサインインするには、次のコマンドを実行します。
 
-```cmd/sh
+```azurecli
 az login
 ```
 
@@ -59,12 +59,9 @@ Azure CLI 用 Azure IoT 拡張機能を使用するには、以下が必要で�
 
 - Azure IoT Hub。 お使いの Azure サブスクリプションに IoT ハブを追加する方法にはさまざまなものがあります。一例を挙げると、[Azure CLI を使用して IoT ハブを作成する](../iot-hub/iot-hub-create-using-cli.md)という方法があります。 Azure IoT 拡張機能コマンドを実行するには、IoT ハブの接続文字列が必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-    > [!NOTE]
-    > パブリック プレビュー中、IoT プラグ アンド プレイ機能は、**米国中部**、**北ヨーロッパ**、および**東日本**の各リージョンで作成された IoT ハブでのみご利用いただけます。
-
 - お使いの IoT ハブに登録されているデバイス。 次の Azure CLI コマンドを使用してデバイスを登録することができます。`{YourIoTHubName}` と `{YourDeviceID}` のプレースホルダーは必ず実際の値に置き換えてください。
 
-    ```cmd/sh
+    ```azurecli
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
     ```
 
@@ -78,13 +75,13 @@ Azure CLI 用 Azure IoT 拡張機能を使用するには、以下が必要で�
 
 IoT ハブ上のすべてのデバイスの一覧を表示します。
 
-```cmd/sh
+```azurecli
 az iot hub device-identity list --hub-name {YourIoTHubName}
 ```
 
 IoT プラグ アンド プレイ デバイスによって登録されたすべてのインターフェイスを一覧表示します。
 
-```cmd/sh
+```azurecli
 az iot dt list-interfaces --hub-name {YourIoTHubName} --device-id {YourDeviceID}
 ```
 
@@ -92,13 +89,13 @@ az iot dt list-interfaces --hub-name {YourIoTHubName} --device-id {YourDeviceID}
 
 デバイス上のインターフェイスのすべてのプロパティとプロパティ値を一覧表示します。
 
-```cmd/sh
+```azurecli
 az iot dt list-properties --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login "{YourCompanyModelRepoConnectionString}"
 ```
 
 読み取りおよび書き込みプロパティの値を設定します。
 
-```cmd/sh
+```azurecli
 az iot dt update-property --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface-payload {JSONPayload or FilePath}
 ```
 
@@ -122,7 +119,7 @@ az iot dt update-property --hub-name {YourIoTHubName} --device-id {YourDeviceID}
 
 デバイス上のインターフェイスのすべてのコマンドを一覧表示します。
 
-```cmd/sh
+```azurecli
 az iot dt list-commands --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login {YourCompanyModelRepoConnectionString}
 ```
 
@@ -130,7 +127,7 @@ az iot dt list-commands --hub-name {YourIoTHubName} --device-id {YourDeviceID} -
 
 コマンドを呼び出します。
 
-```cmd/sh
+```azurecli
 az iot dt invoke-command --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --cn {CommandName} --command-payload {CommandPayload or FilePath}
 ```
 
@@ -138,13 +135,13 @@ az iot dt invoke-command --hub-name {YourIoTHubName} --device-id {YourDeviceID} 
 
 **$Default** イベント ハブ コンシューマー グループにアクセスする特定のデバイスとインターフェイスからのすべての IoT プラグ アンド プレイ デジタル ツイン イベントを監視します。
 
-```cmd/sh
+```azurecli
 az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID}
 ```
 
 特定のコンシューマー グループにアクセスする特定のデバイスとインターフェイスからのすべての IoT プラグ アンド プレイ デジタル ツイン イベントを監視します。
 
-```cmd/sh
+```azurecli
 az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --consumer-group {YourConsumerGroup}
 ```
 
@@ -154,19 +151,19 @@ az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} 
 
 パブリック IoT プラグ アンド プレイ モデル リポジトリ内のインターフェイスを一覧表示します。
 
-```cmd/sh
+```azurecli
 az iot pnp interface list
 ```
 
 パブリック IoT プラグ アンド プレイ モデル リポジトリ内のインターフェイスを表示します。
 
-```cmd/sh
+```azurecli
 az iot pnp interface show --interface {YourInterfaceId}
 ```
 
 IoT プラグ アンド プレイの会社モデル リポジトリ内にインターフェイスを作成します。
 
-```cmd/sh
+```azurecli
 az iot pnp interface create --definition {JSONPayload or FilePath} --login {YourCompanyModelRepoConnectionString}
 ```
 
@@ -174,7 +171,7 @@ az iot pnp interface create --definition {JSONPayload or FilePath} --login {Your
 
 IoT プラグ アンド プレイの会社モデル リポジトリ内のインターフェイスを更新します。
 
-```cmd/sh
+```azurecli
 az iot pnp interface update --definition {JSONPayload or FilePath} --login {YourCompanyModelRepoConnectionString}
 ```
 
@@ -182,7 +179,7 @@ az iot pnp interface update --definition {JSONPayload or FilePath} --login {Your
 
 IoT プラグ アンド プレイの会社モデル リポジトリからパブリック モデル リポジトリにインターフェイスを発行します。 この操作により、インターフェイスは変更できなくなります。
 
-```cmd/sh
+```azurecli
 az iot pnp interface publish --interface {YourInterfaceID} --login {YourCompanyModelRepoConnectionString}
 ```
 
@@ -194,19 +191,19 @@ az iot pnp interface publish --interface {YourInterfaceID} --login {YourCompanyM
 
 IoT プラグ アンド プレイ パブリック モデル リポジトリ内のデバイス機能モデルを一覧表示します。
 
-```cmd/sh
+```azurecli
 az iot pnp capability-model list
 ```
 
 IoT プラグ アンド プレイ パブリック モデル リポジトリ内のデバイス機能モデルを表示します。
 
-```cmd/sh
+```azurecli
 az iot pnp capability-model show --model {YourModelID}
 ```
 
 IoT プラグ アンド プレイの会社モデル リポジトリ内にデバイス機能モデルを作成します。
 
-```cmd/sh
+```azurecli
 az iot pnp capability-model create --definition {JSONPayload or FilePath} --login {YourCompanyModelRepoConnectionString}
 ```
 
@@ -214,7 +211,7 @@ az iot pnp capability-model create --definition {JSONPayload or FilePath} --logi
 
 IoT プラグ アンド プレイの会社モデル リポジトリ内のデバイス機能モデルを更新します。
 
-```cmd/sh
+```azurecli
 az iot pnp capability-model update --definition {JSONPayload or FilePath} --login {YourCompanyModelRepoConnectionString}
 ```
 
@@ -222,7 +219,7 @@ az iot pnp capability-model update --definition {JSONPayload or FilePath} --logi
 
 IoT プラグ アンド プレイの会社モデル リポジトリからパブリック モデル リポジトリにデバイス機能モデルを発行します。 この操作により、モデルは変更できなくなります。
 
-```cmd/sh
+```azurecli
 az iot pnp capability-model publish --model {YourModelID} --login {YourCompanyModelRepoConnectionString}
 ```
 

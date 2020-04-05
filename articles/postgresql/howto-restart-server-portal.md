@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 52ffb3943e6e3f209fd236216cc44026dff59dad
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74770086"
 ---
 # <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Azure portal を使用して Azure Database for PostgreSQL - 単一サーバーを再起動する
@@ -46,6 +46,6 @@ ms.locfileid: "74770086"
 
    ![Azure Database for PostgreSQL - 再起動成功](./media/howto-restart-server-portal/5-restart-success.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Database for PostgreSQL でパラメーターを設定する方法](howto-configure-server-parameters-using-portal.md)について確認する

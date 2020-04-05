@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 94e326a2c8f75f2b498ddc603d5a0895baf71b3d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67103463"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-empactis"></a>チュートリアル:Azure Active Directory と Empactis の統合
@@ -27,7 +27,7 @@ ms.locfileid: "67103463"
 このチュートリアルでは、Empactis と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Empactis と Azure AD の統合には、次の利点があります。
 
-* Empactis にアクセスする Azure AD ユーザーを制御できます。
+* Empactis にアクセスするユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して自動的に Empactis にサインイン (シングル サインオン) するよう指定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
@@ -49,7 +49,7 @@ Empactis と Azure AD の統合を構成するには、次のものが必要で�
 
 ## <a name="adding-empactis-from-the-gallery"></a>ギャラリーからの Empactis の追加
 
-Azure AD への Empactis の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Empactis を追加する必要があります。
+Azure AD への Empactis の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Empactis を追加する必要があります。
 
 **ギャラリーから Empactis を追加するには、次の手順に従います。**
 

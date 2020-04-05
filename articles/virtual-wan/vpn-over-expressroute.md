@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: article
-ms.date: 02/18/2020
+ms.date: 03/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: c74f703927999bf35dd2d8292b8fa0a6d3c55065
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: b1e6305d142530ab19849f61f12a122d0c6434aa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77459788"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80059297"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute の暗号化:Virtual WAN 向けの ExpressRoute 経由の IPsec
 
@@ -58,7 +58,7 @@ Azure からオンプレミス ネットワークへのトラフィックにも�
 
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
 
-## <a name="openvwan"></a>1.ゲートウェイを使用して仮想 WAN とハブを作成する
+## <a name="1-create-a-virtual-wan-and-hub-with-gateways"></a><a name="openvwan"></a>1.ゲートウェイを使用して仮想 WAN とハブを作成する
 
 次に進む前に、以下の Azure リソースと、対応するオンプレミス構成が揃っている必要があります。
 
@@ -67,7 +67,7 @@ Azure からオンプレミス ネットワークへのトラフィックにも�
 
 ExpressRoute の関連付けを使用して Azure 仮想 WAN とハブを作成する手順については、「[Azure Virtual WAN を使用して ExpressRoute の関連付けを作成する](virtual-wan-expressroute-portal.md)」を参照してください。 仮想 WAN に VPN ゲートウェイを作成する手順については、「[Azure Virtual WAN を使用してサイト間接続を作成する](virtual-wan-site-to-site-portal.md)」を参照してください。
 
-## <a name="site"></a>2.オンプレミス ネットワーク用のサイトを作成する
+## <a name="2-create-a-site-for-the-on-premises-network"></a><a name="site"></a>2.オンプレミス ネットワーク用のサイトを作成する
 
 サイト リソースは、仮想 WAN 用の非 ExpressRoute VPN サイトと同じです。 この時点で、オンプレミス VPN デバイスの IP アドレスは、プライベート IP アドレスになる可能性もあれば、手順 1 で作成した、ExpressRoute プライベート ピアリング経由で到達可能なオンプレミス ネットワーク内のパブリック IP アドレスになる可能性もあります。
 
@@ -99,7 +99,7 @@ ExpressRoute の関連付けを使用して Azure 仮想 WAN とハブを作成�
 
 1. **確認および作成 >** をクリックして設定値を確認し、VPN サイトを作成します。 接続する **[ハブ]** を選択した場合、接続はオンプレミス ネットワークとハブ VPN ゲートウェイの間で確立されます。
 
-## <a name="hub"></a>3.ExpressRoute を使用するように VPN 接続設定を更新する
+## <a name="3-update-the-vpn-connection-setting-to-use-expressroute"></a><a name="hub"></a>3.ExpressRoute を使用するように VPN 接続設定を更新する
 
 VPN サイトを作成してハブに接続したら、次の手順を使用して、ExpressRoute プライベート ピアリングを使用するように接続を構成します。
 
@@ -114,7 +114,7 @@ VPN サイトを作成してハブに接続したら、次の手順を使用し�
 
 変更を保存すると、ハブ VPN ゲートウェイによって、VPN ゲートウェイ上のプライベート IP アドレスが使用され、ExpressRoute 経由でオンプレミス VPN デバイスとの IPsec/IKE 接続が確立されます。
 
-## <a name="associate"></a>4.ハブ VPN ゲートウェイのプライベート IP アドレスを取得する
+## <a name="4-get-the-private-ip-addresses-for-the-hub-vpn-gateway"></a><a name="associate"></a>4.ハブ VPN ゲートウェイのプライベート IP アドレスを取得する
 
 VPN デバイス構成をダウンロードして、ハブ VPN ゲートウェイのプライベート IP アドレスを取得します。 オンプレミスの VPN デバイスを構成するには、これらのアドレスが必要です。
 
@@ -219,22 +219,17 @@ VPN デバイス構成をダウンロードして、ハブ VPN ゲートウェ�
 * 新しい仮想 WAN は、IKEv1 と IKEv2 の両方をサポートできます。
 * 仮想 WAN では、ルートベースの VPN デバイスとデバイスの手順のみを使用できます。
 
-## <a name="viewwan"></a>5.仮想 WAN を表示する
+## <a name="5-view-your-virtual-wan"></a><a name="viewwan"></a>5.仮想 WAN を表示する
 
 1. 仮想 WAN に移動します。
-1. **[概要]** ページで、マップ上の各ポイントはハブを表します。 任意のポイントにカーソルを置くと、ハブの正常性の概要が表示されます。
+1. **[概要]** ページで、マップ上の各ポイントはハブを表します。
 1. **[ハブと接続]** セクションでは、ハブ、サイト、リージョン、および VPN 接続の状態を確認できます。 また、入力と出力のバイト数を確認することもできます。
 
-## <a name="viewhealth"></a>6.リソースの正常性を表示する
-
-1. WAN に移動します。
-1. **[サポート + トラブルシューティング]** セクションで **[正常性]** を選択してリソースを確認します。
-
-## <a name="connectmon"></a>7.接続を監視する
+## <a name="7-monitor-a-connection"></a><a name="connectmon"></a>7.接続を監視する
 
 Azure 仮想マシン (VM) とリモート サイト間の通信を監視するための接続を作成します。 接続モニターを設定する方法については、[ネットワーク通信の監視](~/articles/network-watcher/connection-monitor.md)に関するページを参照してください。 ソース フィールドは Azure の VM IP で、宛先 IP はサイト IP です。
 
-## <a name="cleanup"></a>8.リソースをクリーンアップする
+## <a name="8-clean-up-resources"></a><a name="cleanup"></a>8.リソースをクリーンアップする
 
 これらのリソースが不要になったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。 次の PowerShell コマンドを実行し、`myResourceGroup` を実際のリソース グループの名前に置き換えます。
 

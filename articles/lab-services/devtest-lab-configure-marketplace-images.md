@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 2dc3aa000cefc0e65305b58f8fdce93b94bfd35f
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169553"
 ---
 # <a name="configure-azure-marketplace-image-settings-in-azure-devtest-labs"></a>Azure DevTest Labs で Azure Marketplace イメージの設定を構成する
 DevTest Labs では、実際のラボで使用する Azure Marketplace イメージの構成方法に応じて、Azure Marketplace イメージに基づく VM を作成することができます。 この記事では、ラボで VM を作成する際に使用できるようにする Azure Marketplace イメージ (該当するものがある場合) を指定する方法を説明します。 これにより、チームだけが必要な Marketplace イメージにアクセスできるようになります。 
 
 ## <a name="select-which-azure-marketplace-images-are-allowed-when-creating-a-vm"></a>VM を作成する際に使用できるようにする Azure Marketplace イメージを選択する
-1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインする
 2. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 3. ラボの一覧で目的のラボを選択します。 
 4. ラボのブレードで、 **[構成とポリシー]** を選択します。

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: adsasine
 ms.openlocfilehash: 6ff33bd594181aabc4fd7d55ce33f780a0d06086
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74122194"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Azure Cache for Redis のフェールオーバーと修正プログラムの適用
@@ -59,7 +59,7 @@ Azure Cache for Redis サービスでは、お使いのキャッシュを最新�
 
 ## <a name="additional-cache-load"></a>追加のキャッシュの負荷
 
-フェールオーバーが発生するたびに、Standard および Premium キャッシュでは、ノード間でデータをレプリケートする必要があります。 このレプリケーションによって、サーバーのメモリと CPU の両方で負荷が増加します。 キャッシュ インスタンスに既に大きな負荷がかかっている場合は、クライアント アプリケーションの待機時間が長くなることがあります。 極端な場合、クライアント アプリケーションがタイムアウト例外を受け取ることがあります。 このさらなる負荷の影響を軽減するには、キャッシュの `maxmemory-reserved` 設定を[構成](cache-configure.md#memory-policies)します。
+フェールオーバーが発生するたびに、Standard および Premium キャッシュでは、ノード間でデータをレプリケートする必要があります。 このレプリケーションによって、サーバーのメモリと CPU の両方で負荷が増加します。 キャッシュ インスタンスに既に大きな負荷がかかっている場合は、クライアント アプリケーションの待機時間が長くなることがあります。 極端な場合、クライアント アプリケーションがタイムアウト例外を受け取ることがあります。 このさらなる負荷の影響を軽減するには、キャッシュの [ 設定を](cache-configure.md#memory-policies)構成`maxmemory-reserved`します。
 
 ## <a name="how-does-a-failover-affect-my-client-application"></a>フェールオーバーはクライアント アプリケーションにどのような影響を与えますか?
 
@@ -82,7 +82,7 @@ Azure Cache for Redis サービスでは、お使いのキャッシュを最新�
 
 このような変更では、1 分未満の接続の問題が発生する可能性があります。 お使いのクライアント アプリケーションからは、Azure Cache for Redis サービスに加え、他の外部のネットワークのリソースにも接続できなくなる場合があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - キャッシュの[更新をスケジュールする](cache-administration.md#schedule-updates)。
 - [再起動](cache-administration.md#reboot)を使用して、アプリケーションの回復性をテストする。

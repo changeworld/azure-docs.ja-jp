@@ -7,10 +7,10 @@ ms.topic: include
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: 4f8fe92a0a36bae2d5e7595bee7bf71fcd926da9
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925132"
 ---
 ## <a name="prerequisites"></a>前提条件
@@ -45,7 +45,7 @@ ms.locfileid: "78925132"
 このコードを `RecognizeIntentAsync()` メソッドに挿入します。 次の値を必ず更新してください。
 
 * `"YourLanguageUnderstandingSubscriptionKey"` を LUIS 予測キーで置き換えます。
-* `"YourLanguageUnderstandingServiceRegion"` を LUIS の場所で置き換えます。 [リージョン](https://aka.ms/speech/sdkregion)の**リージョン識別子**を使用してください。
+* `"YourLanguageUnderstandingServiceRegion"` を LUIS の場所で置き換えます。 **リージョン**の[リージョン識別子](https://aka.ms/speech/sdkregion)を使用してください。
 
 >[!TIP]
 > これらの値を見つける方法については、「[意図認識用の LUIS アプリを作成する](#create-a-luis-app-for-intent-recognition)」を参照してください。

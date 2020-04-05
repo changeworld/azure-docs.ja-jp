@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.openlocfilehash: 03963f60cc364dd36ad55c0a28e92e3b585bb38d
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78255072"
 ---
 # <a name="create-an-event-grid-data-connection-for-azure-data-explorer-by-using-c"></a>C# を使用して Azure Data Explorer 用に Event Grid データ接続を作成する

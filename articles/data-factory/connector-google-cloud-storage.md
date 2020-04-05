@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.openlocfilehash: d811076e0d78ed2812681447bebe8e6e07aa33e2
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75892664"
 ---
 # <a name="copy-data-from-google-cloud-storage-using-azure-data-factory"></a>Azure Data Factory を使用して Google Cloud Storage からデータをコピーする
@@ -64,7 +64,7 @@ Google Cloud Storage のリンクされたサービスでは、次のプロパ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティは、**GoogleCloudStorage** に設定する必要があります。 | はい |
+| type | type プロパティは、**GoogleCloudStorage** に設定する必要があります。 | はい |
 | accessKeyId | シークレット アクセス キーの ID。 アクセス キーとシークレットの見つけ方については、「[前提条件](#prerequisites)」を参照してください。 |はい |
 | secretAccessKey | シークレット アクセス キー自体。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
 | serviceUrl | カスタムの S3 エンドポイントを **`https://storage.googleapis.com`** として指定します。 | はい |
@@ -101,7 +101,7 @@ Google Cloud Storage では、形式ベースのデータセットの `location`
 
 | プロパティ   | 説明                                                  | 必須 |
 | ---------- | ------------------------------------------------------------ | -------- |
-| 型       | データセットの `location` の type プロパティは、**AmazonS3Location** に設定する必要があります。 | はい      |
+| type       | データセットの `location` の type プロパティは、**AmazonS3Location** に設定する必要があります。 | はい      |
 | bucketName | S3 バケットの名前。                                          | はい      |
 | folderPath | 特定のバケットの下のフォルダーへのパス。 フォルダーをフィルター処理するためにワイルドカードを使用する場合は、この設定をスキップし、アクティビティのソースの設定で指定します。 | いいえ       |
 | fileName   | 特定のバケット + folderPath の下のファイル名。 ファイルをフィルター処理するためにワイルドカードを使用する場合は、この設定をスキップし、アクティビティのソースの設定で指定します。 | いいえ       |
@@ -145,7 +145,7 @@ Google Cloud Storage では、形式ベースのコピー ソースの `storeSet
 
 | プロパティ                 | 説明                                                  | 必須                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
-| 型                     | `storeSettings` の type プロパティは **AmazonS3ReadSettings** に設定する必要があります。 | はい                                                         |
+| type                     | `storeSettings` の type プロパティは **AmazonS3ReadSettings** に設定する必要があります。 | はい                                                         |
 | recursive                | データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 recursive が true に設定され、シンクがファイル ベースのストアである場合、空のフォルダーおよびサブフォルダーはシンクでコピーも作成もされないことに注意してください。 使用可能な値: **true** (既定値) および **false**。 | いいえ                                                          |
 | prefix                   | ソース オブジェクトをフィルター処理するためにデータセットで構成されている、特定のバケットの下の S3 オブジェクト キーのプレフィックス。 キーがこのプレフィックスで始まるオブジェクトが選択されます。 `wildcardFolderPath` および `wildcardFileName` プロパティが指定されていないときにのみ適用されます。 |                                                             |
 | wildcardFolderPath       | ソース フォルダーをフィルター処理するためにデータセットで構成されている、特定のバケットの下のワイルドカード文字を含むフォルダーのパス。 <br>使用できるワイルドカーは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。実際のフォルダー名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 <br>「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 | いいえ                                                          |
@@ -227,7 +227,7 @@ Google Cloud Storage では、形式ベースのコピー ソースの `storeSet
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは、次のように設定する必要があります:**AmazonS3Object** |はい |
+| type | データセットの type プロパティは、次のように設定する必要があります:**AmazonS3Object** |はい |
 | bucketName | S3 バケットの名前。 ワイルドカード フィルターはサポートされていません。 |はい (Copy/Lookup アクティビティの場合)、いいえ (GetMetadata アクティビティの場合) |
 | key | 指定されたバケットの下にある S3 オブジェクト キーの**名前またはワイルドカード フィルター**です。 "prefix" プロパティが指定されていないときにのみ適用されます。 <br/><br/>ワイルドカード フィルターは、フォルダー部分とファイル名部分の両方に対してサポートされます。 使用できるワイルドカードは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。<br/>- 例 1: `"key": "rootfolder/subfolder/*.csv"`<br/>- 例 2: `"key": "rootfolder/subfolder/???20180427.txt"`<br/>「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 実際のフォルダー/ファイル名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 |いいえ |
 | prefix | S3 オブジェクト キーのプレフィックス。 キーがこのプレフィックスで始まるオブジェクトが選択されます。 "key" プロパティが指定されていないときにのみ適用されます。 |いいえ |
@@ -274,7 +274,7 @@ Google Cloud Storage では、形式ベースのコピー ソースの `storeSet
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**FileSystemSource** |はい |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**FileSystemSource** |はい |
 | recursive | データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 recursive が true に設定され、シンクがファイル ベースのストアである場合、空のフォルダー/サブフォルダーはシンクでコピー/作成されないことに注意してください。<br/>使用可能な値: **true** (既定値)、**false** | いいえ |
 | maxConcurrentConnections | 同時にストレージ ストアに接続する接続の数。 データ ストアへのコンカレント接続を制限する場合にのみ指定します。 | いいえ |
 

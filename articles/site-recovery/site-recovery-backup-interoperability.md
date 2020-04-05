@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: sideeksh
 ms.openlocfilehash: d8c896bc655339fbd7d51f738fb629450e8c12ae
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72376211"
 ---
 # <a name="support-for-using-site-recovery-with-azure-backup"></a>Azure Site Recovery と Azure Backup の使用
 
 この記事では、[Site Recovery サービス](site-recovery-overview.md)と [Azure Backup サービス](https://docs.microsoft.com/azure/backup/backup-overview)を一緒に使用するためのサポートについて説明します。
 
-**アクション** | **Site Recovery のサポート** | **詳細**
+**操作** | **Site Recovery のサポート** | **詳細**
 --- | --- | ---
 **サービスを一緒にデプロイする** | サポートされています | サービスは相互運用可能であり、一緒に構成できます。
 **ファイルのバックアップ/復元** | サポートされています | VM のバックアップとレプリケーションが有効になっていて、バックアップが取られる場合、ソース側の VM または VM グループでのファイルの復元には何の問題もありません。 レプリケーションは通常どおり続行され、レプリケーションの正常性に変化はありません。

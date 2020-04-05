@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 06/11/2019
 ms.author: chenyl
 ms.openlocfilehash: 3b072ff2b680ad6d144c7441190ab2df9870f5d0
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67788514"
 ---
 # <a name="azure-event-grid-event-schema-for-signalr-service"></a>SignalR Service 用の Azure Event Grid イベント スキーマ
@@ -96,7 +96,7 @@ SignalR Service から出力されるイベントの種類は次のとおりで�
 | userId | string | 要求で定義されているユーザーの識別子です。 |
 | errorMessage | string | 接続解除の原因となったエラーです。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
 * Azure Event Grid サブスクリプションの作成の詳細については、[Event Grid サブスクリプション スキーマ](subscription-creation-schema.md)に関する記事を参照してください。

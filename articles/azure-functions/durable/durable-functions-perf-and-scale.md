@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ee35f26f9433f6ab342c7dce105638122b9d7717
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 260811c4ae15b45de6f7bc1b22e3ed6dcea44259
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486262"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235295"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions のパフォーマンスとスケーリング (Azure Functions)
 
@@ -220,7 +220,7 @@ Azure Functions では、1 つのアプリ インスタンス内での複数の�
 
 ### <a name="orchestrator-function-replay"></a>オーケストレーター関数の再生
 
-前述のように、オーケストレーター関数は**履歴**テーブルの内容を使用して再生されます。 既定では、メッセージのバッチがコントロール キューからデキューされるたびに、オーケストレーター関数コードが再生されます。 延長セッションを有効にすると、オーケストレーター関数インスタンスがメモリに保持される期間が長くなり、履歴全体を再生することなく新しいメッセージを処理できます。
+前述のように、オーケストレーター関数は**履歴**テーブルの内容を使用して再生されます。 既定では、メッセージのバッチがコントロール キューからデキューされるたびに、オーケストレーター関数コードが再生されます。 ファンアウト、ファンイン パターンを使用していて、すべてのタスクが完了するまで待機している場合 (たとえば、.NET で `Task.WhenAll` や、JavaScript で `context.df.Task.all` を使用している場合) でも、タスク応答のバッチが時間の経過と共に処理されるため、再生が発生します。 延長セッションを有効にすると、オーケストレーター関数インスタンスがメモリに保持される期間が長くなり、履歴全体を再生することなく新しいメッセージを処理できます。
 
 延長セッションのパフォーマンス向上は、次のような場合によく見られます。
 

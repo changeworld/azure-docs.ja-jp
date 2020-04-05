@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: 637efdfe31d1f2eb0eaa5dd532dd9e9e67de5ce2
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76965320"
 ---
 # <a name="add-cluster-principals-for-azure-data-explorer-by-using-python"></a>Python を使用して Azure Data Explorer 用のクラスター プリンシパルを追加する
@@ -88,9 +88,9 @@ poller = kusto_management_client.cluster_principal_assignments.create_or_update(
 | cluster_name | *mykustocluster* | ご利用のクラスターの名前。|
 | principal_assignment_name | *clusterPrincipalAssignment1* | クラスター プリンシパル リソースの名前。|
 | principal_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | プリンシパル ID。ユーザーの電子メール、アプリケーション ID、またはセキュリティ グループ名を指定できます。|
-| role | *AllDatabasesAdmin* | クラスター プリンシパルのロール。'AllDatabasesAdmin' または 'AllDatabasesViewer' を指定できます。|
+| ロール (role) | *AllDatabasesAdmin* | クラスター プリンシパルのロール。'AllDatabasesAdmin' または 'AllDatabasesViewer' を指定できます。|
 | tenant_id_for_principal | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | プリンシパルのテナント ID。|
-| principal_type | *App* | プリンシパルの種類。'User'、'App'、または 'Group' を指定できます。|
+| principal_type | *アプリ* | プリンシパルの種類。'User'、'App'、または 'Group' を指定できます。|
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: cynthn
 ms.openlocfilehash: 353a266b647c299515c15889c302ba4409aa511b
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73171057"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>Azure CLI を使用して近接通信配置グループに VM をデプロイする
@@ -72,6 +72,6 @@ az ppg show --name myppg --resource-group myppggroup --query "virtualMachines"
 
 近接通信配置グループ内にスケール セットを作成することもできます。 [az vmss create](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create) で同じ `--ppg` パラメーターを使用してスケール セットを作成すると、すべてのインスタンスが同じ近接通信配置グループ内に作成されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 近接通信配置グループのための [Azure CLI](/cli/azure/ppg) コマンドについて学習します。

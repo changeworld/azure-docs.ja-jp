@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 493ba6396a7ceb11b917fbda5dd6c37c070f2fee
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76897617"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230379"
 ---
 # <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージの要求と承認の設定を変更する
 

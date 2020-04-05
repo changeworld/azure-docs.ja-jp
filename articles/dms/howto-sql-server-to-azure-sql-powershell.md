@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: f63f79402b457017257f1762c6ddc7e04c0ee1af
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77650692"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-database-using-azure-powershell"></a>Azure PowerShell を使用してオンプレミスの SQL Server を Azure SQL Database に移行する

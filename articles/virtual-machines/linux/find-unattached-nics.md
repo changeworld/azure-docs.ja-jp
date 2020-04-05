@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/10/2018
 ms.author: cynthn
 ms.openlocfilehash: 8142b95ee666e205a8328eafd5930f1f386e49af
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78945130"
 ---
 # <a name="how-to-find-and-delete-unattached-network-interface-cards-nics-for-azure-vms"></a>Azure VM の接続されていないネットワーク インターフェイス カード (NIC) を検索して削除する方法

@@ -8,10 +8,10 @@ ms.date: 09/10/2019
 author: luisbosquez
 ms.author: lbosq
 ms.openlocfilehash: 4ed7e67ae0ef027b260d0e0f0407e4e05ed5a8f4
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898304"
 ---
 # <a name="system-document-properties"></a>システム ドキュメントのプロパティ

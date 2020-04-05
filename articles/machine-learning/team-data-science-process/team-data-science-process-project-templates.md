@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c003145acd423fd96dd0ac6c054884024c2ce4a0
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75864232"
 ---
 # <a name="team-data-science-process-project-planning"></a>Team Data Science Process のプロジェクト計画
@@ -35,7 +35,7 @@ Team Data Science Process (TDSP) には、データ サイエンス プロジェ
  
 ## <a name="microsoft-project-template"></a>Microsoft Project テンプレート
 
-Team Data Science Process 用の Microsoft Project テンプレートは、ここから入手できます:[Microsoft Project テンプレート](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.mpp) 
+Team Data Science Process 用の Microsoft Project テンプレートは、ここから入手できます: [Microsoft Project テンプレート](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.mpp) 
 
 計画を開く際は、TDSP の左端にあるリンクをクリックします。 名前と説明を変更し、その他の必要なチーム リソースを追加します。 経験から必要な日付を見積もります。
 
@@ -48,7 +48,7 @@ Team Data Science Process 用の Microsoft Project テンプレートは、こ�
 
 ## <a name="excel-template"></a>Excel テンプレート
 
-Microsoft Project へのアクセス権がない場合は、同じデータすべてを含む Excel ワークシートもこちらからダウンロードできます:[Excel テンプレート](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.xlsx)。これは、どのツールを使用しても取り込むことができます。
+Microsoft Project へのアクセス権がない場合は、同じデータすべてを含む Excel ワークシートもこちらからダウンロードできます: [Excel テンプレート](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.xlsx)。これは、どのツールを使用しても取り込むことができます。
 
 これらのテンプレートは、ご自身の責任でご利用ください。 [通常の免責事項](https://www.gnu.org/licenses/gpl-3.0.en.html)が適用されます。
 

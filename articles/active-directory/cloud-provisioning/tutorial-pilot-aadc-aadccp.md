@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aba42e6bd9b11e47d793219c0ff06b9177d609f5
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78298821"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>既存の同期済み AD フォレストに対してクラウド プロビジョニングのパイロットを実施する 

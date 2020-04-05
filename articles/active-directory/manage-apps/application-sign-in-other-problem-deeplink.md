@@ -17,21 +17,21 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 44825f32a13db0a221252c042dc9f23ec43a9c8f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65825427"
 ---
 # <a name="problems-signing-in-to-an-application-using-a-deeplink"></a>ディープ リンクを使用したアプリケーションへのサインインに関する問題
 
 Web ベースのポータルであるアクセス パネルを使用すると、Azure Active Directory (Azure AD) の職場または学校アカウントを持つユーザーは、Azure AD 管理者によってアクセスを許可されたクラウドベースのアプリケーションを表示および起動することができます。 
 
-これらのアプリケーションは、Azure AD ポータルでユーザーのために構成されます。 アクセス パネルでアプリケーションを表示するには、アプリケーションが正しく構成され、ユーザーまたはユーザーがメンバーであるグループに割り当てられている必要があります。
+これらのアプリケーションは、Azure AD ポータルでユーザーに代わって構成されます。 アクセス パネルでアプリケーションを表示するには、アプリケーションが正しく構成され、ユーザーまたはユーザーがメンバーであるグループに割り当てられている必要があります。
 
 ディープ リンクまたはユーザー アクセス URL は、ユーザーがブラウザーの URL バーから直接自分のパスワード SSO アプリケーションにアクセスするために使用する可能性のあるリンクです。 このリンクに移動すると、ユーザーは最初にアクセス パネルに移動しなくても、アプリケーションに自動的にサインインされます。 これは、ユーザーが Office 365 アプリケーション起動プログラムからこれらのアプリケーションにアクセスするために使用するのと同じリンクです。
 
-## <a name="general-issues-to-check-first"></a>最初に確認すべき一般的な問題
+## <a name="general-issues-to-check-first"></a>最初にチェックすべき一般的な問題
 
 -   アクセス パネルの最小要件を満たす**ブラウザー**を使用していることを確認します。
 
@@ -135,7 +135,7 @@ Azure AD ギャラリーからアプリケーションを追加するには、�
 
 7.  シングル サインオンを構成するアプリケーションを選択します。
 
-8.  アプリケーションを追加する前に、 **[名前]** テキストボックスから名前を変更できます。
+8.  アプリケーションを追加する前に、 **[名前]** ボックスで名前を変更できます。
 
 9.  アプリケーションを追加するには、 **[追加]** をクリックします。
 
@@ -277,5 +277,5 @@ Azure AD ギャラリーからアプリケーションを追加するには、�
 
 -   Fiddler のトレース
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [アプリケーション プロキシを使用してアプリにシングル サインオンを提供](application-proxy-configure-single-sign-on-with-kcd.md)

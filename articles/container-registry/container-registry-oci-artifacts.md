@@ -4,14 +4,14 @@ description: Azure のプライベート コンテナー レジストリを使�
 author: SteveLasker
 manager: gwallace
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 03/11/2020
 ms.author: stevelas
-ms.openlocfilehash: cb58a7ed51ae15d33ffdbb616c9b32ef03bcbfb7
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 2c6b66b635a2513ccc19e0352414d18d8389fef1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456265"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79371054"
 ---
 # <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>Azure コンテナー レジストリを使用して OCI 成果物をプッシュおよびプルする
 
@@ -64,12 +64,22 @@ az acr login --name myregistry
 echo "Here is an artifact!" > artifact.txt
 ```
 
-`oras push` コマンドを使用して、このテキスト ファイルをレジストリにプッシュします。 次の例では、サンプルのテキスト ファイルを `samples/artifact` リポジトリにプッシュします。 レジストリは、レジストリの完全修飾名 "*myregistry.azurecr.io*" (すべて小文字) で識別されます。 成果物にはタグ `1.0` が付けられます。 成果物の型は既定では未定義で、ファイル名 `artifact.txt` に続く "*メディアの種類*" の文字列によって識別されます。 追加の型については、「[OCI Artifacts](https://github.com/opencontainers/artifacts)」 (OCI 成果物) を参照してください。 
+`oras push` コマンドを使用して、このテキスト ファイルをレジストリにプッシュします。 次の例では、サンプルのテキスト ファイルを `samples/artifact` リポジトリにプッシュします。 レジストリは、レジストリの完全修飾名 "*myregistry.azurecr.io*" (すべて小文字) で識別されます。 成果物にはタグ `1.0` が付けられます。 成果物の型は既定では未定義で、ファイル名  *に続く "* メディアの種類`artifact.txt`" の文字列によって識別されます。 追加の型については、「[OCI Artifacts](https://github.com/opencontainers/artifacts)」 (OCI 成果物) を参照してください。 
+
+**Linux**
 
 ```bash
 oras push myregistry.azurecr.io/samples/artifact:1.0 \
     --manifest-config /dev/null:application/vnd.unknown.config.v1+json \
     ./artifact.txt:application/vnd.unknown.layer.v1+txt
+```
+
+**Windows**
+
+```cmd
+.\oras.exe push myregistry.azurecr.io/samples/artifact:1.0 ^
+    --manifest-config NUL:application/vnd.unknown.config.v1+json ^
+    .\artifact.txt:application/vnd.unknown.layer.v1+txt
 ```
 
 プッシュが成功した場合の出力は次のようになります。
@@ -140,7 +150,7 @@ az acr repository delete \
     --image samples/artifact:1.0
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 成果物のマニフェストを構成する方法など、[ORAS ライブラリ](https://github.com/deislabs/oras/tree/master/docs)の詳細について確認する
 * [OCI 成果物](https://github.com/opencontainers/artifacts)リポジトリを参照して、新しい成果物の型に関するリファレンス情報を確認する

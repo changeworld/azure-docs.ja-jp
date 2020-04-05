@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: dylankil
 ms.openlocfilehash: a252afae0a007ee0b791b56d19ffb0685848d30a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76844362"
 ---
 # <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>チュートリアル:Python サンプル プロジェクトを使用してイマーシブ リーダーを起動する

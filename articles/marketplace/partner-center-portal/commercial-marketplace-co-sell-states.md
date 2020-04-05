@@ -1,19 +1,18 @@
 ---
 title: 共同販売の州コード | Azure Marketplace
 description: オファーの [共同販売] ページに連絡先情報を指定するときに、これらの州/都道府県コードを使用します。
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: c64fc161108560e893ef7b207782d79b6c3c01d4
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: f87014a599afd6d1c56d175b92d4da1ea49d9470
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934358"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277041"
 ---
 # <a name="co-sell-state-codes"></a>共同販売の州コード
 

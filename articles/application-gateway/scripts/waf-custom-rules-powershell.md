@@ -7,10 +7,10 @@ ms.topic: sample
 ms.date: 6/7/2019
 ms.author: victorh
 ms.openlocfilehash: ffdde80598322222e2a8f000eee8be269becdd11
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "66743329"
 ---
 # <a name="create-waf-custom-rules-with-azure-powershell"></a>Azure PowerShell での WAF カスタム ルールの作成
@@ -67,7 +67,7 @@ Remove-AzResourceGroup -Name CustomRulesTest
 |[New-AzApplicationGatewayFirewallPolicy](/powershell/module/az.network/New-AzApplicationGatewayFirewallPolicy)|アプリケーション ゲートウェイのファイアウォール ポリシーを作成します。|
 |[New-AzApplicationGatewayWebApplicationFirewallConfiguration](/powershell/module/az.network/New-AzApplicationGatewayWebApplicationFirewallConfiguration)|アプリケーション ゲートウェイの WAF 構成を作成します。|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - WAF のカスタム ルールの詳細については、[Web アプリケーション ファイアウォールのカスタム ルール](../custom-waf-rules-overview.md)に関するページを参照してください。
 - Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。

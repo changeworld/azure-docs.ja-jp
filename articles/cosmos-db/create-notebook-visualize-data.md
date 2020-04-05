@@ -8,10 +8,10 @@ ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
 ms.openlocfilehash: 45dd4e8dcfd74cdb5d96b935e239b9f4b5094a7c
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73720931"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>チュートリアル:Azure Cosmos DB でデータを分析して視覚化するノートブックを作成する
@@ -288,6 +288,6 @@ df_cosmos.head(10)
 
    ![購入のコンバージョン率を視覚化する](./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * ノートブック コマンドについて詳しくは、[Azure Cosmos DB の組み込みのノートブック コマンドと機能](use-notebook-features-and-commands.md)に関する記事を参照してください。

@@ -13,11 +13,11 @@ ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 05cee60fb1f4d43d1b4ce371aa9f22650b4782da
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931820"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236339"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの Cassandra データベースからデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -44,10 +44,10 @@ Cassandra データベースが Azure IaaS VM などのクラウドでホスト�
 > [!NOTE]
 > 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、 [ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) に関するセクションをご覧ください。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 さまざまなツールまたは API を使用して、オンプレミスの Cassandra データ ストアからデータを移動するコピー アクティビティでパイプラインを作成できます。
 
-- パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
+- パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 - また、次のツールを使用してパイプラインを作成することもできます。**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
@@ -97,7 +97,7 @@ Cassandra データベースが Azure IaaS VM などのクラウドでホスト�
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | query |カスタム クエリを使用してデータを読み取ります。 |SQL-92 クエリまたはCQL クエリ。 「 [CQL reference (CQL リファレンス)](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)」をご覧ください。 <br/><br/>SQL クエリを使用する場合は、クエリを実行するテーブルを表す **keyspace name.table name** を指定します。 |いいえ (データセットの tableName と keyspace が定義されていない場合)。 |
-| consistencyLevel |一貫性レベルは、データがクライアント アプリケーションに返される前に、読み取り要求に応答する必要があるレプリカの数を指定します。 Cassandra は読み取り要求を満たすために、データの指定された数のレプリカを確認します。 |ONE、TWO、THREE、QUORUM、ALL、 LOCAL_QUORUM、EACH_QUORUM、 LOCAL_ONE。 詳細については、「 [Configuring data consistency (データ整合性の構成)](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) 」をご覧ください。 |No. 既定値は ONE です。 |
+| consistencyLevel |一貫性レベルは、データがクライアント アプリケーションに返される前に、読み取り要求に応答する必要があるレプリカの数を指定します。 Cassandra は読み取り要求を満たすために、データの指定された数のレプリカを確認します。 |ONE、TWO、THREE、QUORUM、ALL、 LOCAL_QUORUM、EACH_QUORUM、 LOCAL_ONE。 詳細については、「 [Configuring data consistency (データ整合性の構成)](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) 」をご覧ください。 |いいえ。 既定値は ONE です。 |
 
 ## <a name="json-example-copy-data-from-cassandra-to-azure-blob"></a>JSON の使用例:Cassandra から Azure BLOB にデータをコピーする
 次の例は、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 ここでは、オンプレミスの Cassandra データベースから Azure Blob Storage にデータをコピーする方法を示します。 ただし、Azure Data Factory のコピー アクティビティを使用して、 [こちら](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に記載されているシンクのいずれかにデータをコピーすることができます。
@@ -261,21 +261,21 @@ RelationalSource でサポートされるプロパティの一覧については
 ### <a name="type-mapping-for-cassandra"></a>Cassandra の型マッピング
 | Cassandra の型 | .NET ベースの型 |
 | --- | --- |
-| ASCII |string |
-| BIGINT |Int64 |
+| ASCII |String |
+| bigint |Int64 |
 | BLOB |Byte[] |
-| BOOLEAN |BOOLEAN |
+| BOOLEAN |Boolean |
 | DECIMAL |Decimal |
-| DOUBLE |DOUBLE |
+| DOUBLE |Double |
 | FLOAT |Single |
-| INET |string |
+| INET |String |
 | INT |Int32 |
-| TEXT |string |
-| TIMESTAMP |DateTime |
+| [TEXT] |String |
+| timestamp |DateTime |
 | TIMEUUID |Guid |
 | UUID |Guid |
-| VARCHAR |string |
-| VARINT |DECIMAL |
+| VARCHAR |String |
+| VARINT |Decimal |
 
 > [!NOTE]
 > コレクションの種類 (マップ、セット、リストなど) については、 [仮想テーブルを使用した Cassandra コレクションの種類の取り扱い](#work-with-collections-using-virtual-table) に関するセクションをご覧ください。
@@ -299,7 +299,7 @@ Azure Data Factory では、ビルトインの ODBC ドライバーを使用し�
 ### <a name="example"></a>例
 たとえば、次の "ExampleTable" は、整数の主キー列 ("pk_int" という名前)、テキスト列 (値という名前)、リスト列、 マップ列、 およびセット列 ("StringSet" という名前) で構成された、Cassandra データベース テーブルです。
 
-| pk_int | 値 | 一覧表示 | マップ | StringSet |
+| pk_int | 値 | List | マップ | StringSet |
 | --- | --- | --- | --- | --- |
 | 1 |"サンプル値 1" |["1", "2", "3"] |{"S1": "a", "S2": "b"} |{"A", "B", "C"} |
 | 3 |"サンプル値 3" |["100", "101", "102", "105"] |{"S1": "t"} |{"A", "E"} |
@@ -337,7 +337,7 @@ Azure Data Factory では、ビルトインの ODBC ドライバーを使用し�
 | pk_int | StringSet_value |
 | --- | --- |
 | 1 |A |
-| 1 |b |
+| 1 |B |
 | 1 |C |
 | 3 |A |
 | 3 |E |

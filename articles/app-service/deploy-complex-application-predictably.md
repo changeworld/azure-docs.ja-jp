@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: 62d0bf776b2d0c97d95b992ed6a1fd2a356e467a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75967393"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Azure でマイクロサービスを予測どおりにデプロイする

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: 9ff961638aa170948d51793a21e86d18dd7e1d80
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69016786"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>スムーズ ストリーミング用の Windows ストア アプリケーションを作成する方法  
@@ -47,7 +47,7 @@ Windows 8 用 Smooth Streaming Client SDK を使用すると、オンデマン�
 * [レッスン 3](https://code.msdn.microsoft.com/A-Windows-8-Smooth-883c3b44) - Windows 8 スムーズ ストリーミング用のメディア プレーヤーとストリーム選択  
 * [レッスン 4](https://code.msdn.microsoft.com/A-Windows-8-Smooth-aa9e4907) - Windows 8 スムーズ ストリーミング用のメディア プレーヤーとトラック選択
 
-## <a name="lesson-1-create-a-basic-smooth-streaming-store-application"></a>レッスン 1: 基本的なスムーズ ストリーミング ストア アプリケーションの作成
+## <a name="lesson-1-create-a-basic-smooth-streaming-store-application"></a>レッスン 1:基本的なスムーズ ストリーミング ストア アプリケーションの作成
 
 このレッスンでは、スムーズ ストリーミング コンテンツを再生するための MediaElement コントロールを備えた Windows ストア アプリケーションを作成します。  実行中のアプリケーションは次のような外観になります。
 
@@ -66,28 +66,28 @@ Windows ストア アプリケーションの開発の詳細については、�
 1. **[ファイル]** メニューの **[新規作成]** をクリックし、 **[プロジェクト]** をクリックします。
 1. [新しいプロジェクト] ダイアログ ボックスで、次の値を入力または選択します。
 
-    | Name | 値 |
+    | 名前 | 値 |
     | --- | --- |
     | テンプレート グループ |インストール済み/テンプレート/Visual C#/Windows ストア |
     | Template |新しいアプリケーション (XAML) |
-    | Name |SSPlayer |
-    | Location |C:\SSTutorials |
-    | ソリューション名 |SSPlayer |
+    | 名前 |SSPlayer |
+    | 場所 |C:\SSTutorials |
+    | [ソリューション名] |SSPlayer |
     | ソリューションのディレクトリを作成 |(オン) |
 
-1. Click **OK**.
+1. **[OK]** をクリックします。
 
 ### <a name="to-add-a-reference-to-the-smooth-streaming-client-sdk"></a>スムーズ ストリーミング クライアント SDK への参照を追加するには
 
 1. ソリューション エクスプローラーで **[SSPlayer]** を右クリックし、 **[参照の追加]** をクリックします。
 1. 次の値を入力または選択します。
 
-    | Name | 値 |
+    | 名前 | 値 |
     | --- | --- |
     | 参照グループ |Windows/拡張 |
     | リファレンス |Windows 8 用 Microsoft Smooth Streaming Client SDK と Microsoft Visual C++ ランタイム パッケージを選択 |
 
-1. Click **OK**. 
+1. **[OK]** をクリックします。 
 
 参照を追加した後、対象プラットフォーム (x64 または x86) を選択します。[任意の CPU] プラットフォーム構成では参照の追加が機能しません。  この場合は、ソリューション エクスプローラーで、追加した参照に黄色の警告マークが表示されます。
 
@@ -507,7 +507,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
    ```
 
    > [!NOTE]
-   > CoreDispatcher は、非 UI スレッドから UI スレッドへの変更を行うために使用します。 開発者は、ディスパッチャー スレッドでボトルネックが発生した場合に備えて、更新する UI 要素によって提供されるディスパッチャーの使用を選択できます。  例:
+   > CoreDispatcher は、非 UI スレッドから UI スレッドへの変更を行うために使用します。 開発者は、ディスパッチャー スレッドでボトルネックが発生した場合に備えて、更新する UI 要素によって提供されるディスパッチャーの使用を選択できます。  次に例を示します。
 
    ```csharp
          await sliderProgress.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { TimeSpan 
@@ -542,7 +542,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 
 これでレッスン 2 が完了しました。  このレッスンでは、アプリケーションにスライダー コントロールを追加しました。 
 
-## <a name="lesson-3-select-smooth-streaming-streams"></a>レッスン 3: スムーズ ストリーミング ストリームの選択
+## <a name="lesson-3-select-smooth-streaming-streams"></a>レッスン 3:スムーズ ストリーミング ストリームの選択
 スムーズ ストリーミングでは、複数の言語オーディオ トラックを使用したコンテンツのストリーミングが可能あり、ユーザーがストリームを選択することができます。  このレッスンでは、ユーザーによるストリーム選択を有効にします。 このレッスンは、次の工程で構成されています。
 
 1. XAML ファイルの変更
@@ -819,7 +819,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 
 これでレッスン 3 が完了しました。  このレッスンでは、ストリームを選択する機能を追加しました。
 
-## <a name="lesson-4-select-smooth-streaming-tracks"></a>レッスン 4: スムーズ ストリーミング トラックの選択
+## <a name="lesson-4-select-smooth-streaming-tracks"></a>レッスン 4:スムーズ ストリーミング トラックの選択
 
 スムーズ ストリーミング プレゼンテーションには、別々の品質レベル (ビット レート) と解像度でエンコードされた複数のビデオ ファイルが含まれていることがあります。 このレッスンでは、ユーザーによるトラック選択を有効にします。 このレッスンは、次の工程で構成されています。
 

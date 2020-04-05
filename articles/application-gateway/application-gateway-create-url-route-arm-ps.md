@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: e7934ba0b33bff7ffb8e89e7b56c5b998a232289
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74048049"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-azure-powershell"></a>Azure PowerShell を使用して URL パス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する
 
-[アプリケーション ゲートウェイ](application-gateway-introduction.md)を作成するときに、Azure PowerShell を使用して [URL パス ベースのルーティング規則](application-gateway-url-route-overview.md)を構成できます。 このチュートリアルでは、[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使用してバックエンド プールを作成します。 その後、Web トラフィックがプール内の適切なサーバーに確実に到着するようにルーティング規則を作成します。
+[アプリケーション ゲートウェイ](application-gateway-url-route-overview.md)を作成するときに、Azure PowerShell を使用して [URL パス ベースのルーティング規則](application-gateway-introduction.md)を構成できます。 このチュートリアルでは、[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使用してバックエンド プールを作成します。 その後、Web トラフィックがプール内の適切なサーバーに確実に到着するようにルーティング規則を作成します。
 
 この記事では、次のことについて説明します。
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 PowerShell をローカル環境にインストールして使用する場合、このチュートリアルでは Azure PowerShell モジュールが必要です。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。  
 
@@ -46,7 +46,7 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>ネットワーク リソースを作成する
 
-[New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) を使用して、サブネット構成 *myAGSubnet* および *myBackendSubnet* を作成します。 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) とサブネット構成を使用して、*myVNet* という名前の仮想ネットワークを作成します。 最後に、[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用して *myAGPublicIPAddress* という名前のパブリック IP アドレスを作成します。 こうしたリソースは、アプリケーション ゲートウェイとその関連リソースにネットワーク接続を提供するために使用されます。
+*New-AzVirtualNetworkSubnetConfig* を使用して、サブネット構成 *myAGSubnet* および [myBackendSubnet](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) を作成します。 *New-AzVirtualNetwork* とサブネット構成を使用して、[myVNet](/powershell/module/az.network/new-azvirtualnetwork) という名前の仮想ネットワークを作成します。 最後に、*New-AzPublicIpAddress* を使用して [myAGPublicIPAddress](/powershell/module/az.network/new-azpublicipaddress) という名前のパブリック IP アドレスを作成します。 こうしたリソースは、アプリケーション ゲートウェイとその関連リソースにネットワーク接続を提供するために使用されます。
 
 ```azurepowershell-interactive
 $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -72,7 +72,7 @@ $pip = New-AzPublicIpAddress `
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>IP 構成とフロントエンド ポートの作成
 
-[New-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration) を使用して、前に作成した *myAGSubnet* をアプリケーション ゲートウェイに関連付けます。 [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig) を使用して、*myAGPublicIPAddress* をアプリケーション ゲートウェイに割り当てます。
+*New-AzApplicationGatewayIPConfiguration* を使用して、前に作成した [myAGSubnet](/powershell/module/az.network/new-azapplicationgatewayipconfiguration) をアプリケーション ゲートウェイに関連付けます。 *New-AzApplicationGatewayFrontendIPConfig* を使用して、[myAGPublicIPAddress](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig) をアプリケーション ゲートウェイに割り当てます。
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -95,7 +95,7 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-default-pool-and-settings"></a>既定のプールと設定の作成
 
-[New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool) を使用して、アプリケーション ゲートウェイに対して *appGatewayBackendPool* という名前の既定のバックエンド プールを作成します。 [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting) を使用して、バックエンド プールの設定を構成します。
+*New-AzApplicationGatewayBackendAddressPool* を使用して、アプリケーション ゲートウェイに対して [appGatewayBackendPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool) という名前の既定のバックエンド プールを作成します。 [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting) を使用して、バックエンド プールの設定を構成します。
 
 ```azurepowershell-interactive
 $defaultPool = New-AzApplicationGatewayBackendAddressPool `
@@ -110,9 +110,9 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-the-default-listener-and-rule"></a>既定のリスナーとルールの作成
 
-アプリケーション ゲートウェイがバックエンド プールへのトラフィックを適切にルーティングできるようにするにはリスナーが必要です。 このチュートリアルでは、2 つのリスナーを作成します。 最初に作成する基本的なリスナーは、ルート URL でトラフィックをリッスンします。 2 番目に作成するリスナーは、特定の URL でトラフィックをリッスンします。
+アプリケーション ゲートウェイがバックエンド プールに対して適切にトラフィックをルーティングするためにはリスナーが必要です。 このチュートリアルでは、2 つのリスナーを作成します。 最初に作成する基本的なリスナーは、ルート URL でトラフィックをリッスンします。 2 番目に作成するリスナーは、特定の URL でトラフィックをリッスンします。
 
-[New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) と、前に作成したフロントエンド構成およびフロントエンド ポートを使用して、*myDefaultListener* という名前の既定のリスナーを作成します。 着信トラフィックに使用するバックエンド プールをリスナーが判断するには、ルールが必要です。 [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) を使用して、*rule1* という名前の基本ルールを作成します。
+*New-AzApplicationGatewayHttpListener* と、前に作成したフロントエンド構成およびフロントエンド ポートを使用して、[myDefaultListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) という名前の既定のリスナーを作成します。 着信トラフィックに使用するバックエンド プールをリスナーが判断するには、ルールが必要です。 *New-AzApplicationGatewayRequestRoutingRule* を使用して、[rule1](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) という名前の基本ルールを作成します。
 
 ```azurepowershell-interactive
 $defaultlistener = New-AzApplicationGatewayHttpListener `
@@ -130,7 +130,7 @@ $frontendRule = New-AzApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway"></a>アプリケーション ゲートウェイの作成
 
-必要な関連リソースを作成したら、[New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku) を使用して *myAppGateway* という名前のアプリケーション ゲートウェイのパラメーターを指定し、[New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) を使用してそれを作成します。
+必要な関連リソースを作成したら、*New-AzApplicationGatewaySku* を使用して [myAppGateway](/powershell/module/az.network/new-azapplicationgatewaysku) という名前のアプリケーション ゲートウェイのパラメーターを指定し、[New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) を使用してそれを作成します。
 
 ```azurepowershell-interactive
 $sku = New-AzApplicationGatewaySku `
@@ -174,7 +174,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ### <a name="add-backend-listener"></a>バックエンド リスナーの追加
 
-[Add-AzApplicationGatewayHttpListener](/powershell/module/az.network/add-azapplicationgatewayhttplistener) を使用して、トラフィックのルーティングに必要な *backendListener* という名前のバックエンド リスナーを追加します。
+*Add-AzApplicationGatewayHttpListener* を使用して、トラフィックのルーティングに必要な [backendListener](/powershell/module/az.network/add-azapplicationgatewayhttplistener) という名前のバックエンド リスナーを追加します。
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -196,7 +196,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ### <a name="add-url-path-map"></a>URL パス マップの追加
 
-URL パス マップにより、特定の URL が特定のバックエンド プールに確実にルーティングされます。 [New-AzApplicationGatewayPathRuleConfig](/powershell/module/az.network/new-azapplicationgatewaypathruleconfig) および [Add-AzApplicationGatewayUrlPathMapConfig](/powershell/module/az.network/add-azapplicationgatewayurlpathmapconfig) を使用して、*imagePathRule* および *videoPathRule* という名前の URL パス マップを作成できます。
+URL パス マップにより、特定の URL が特定のバックエンド プールに確実にルーティングされます。 *New-AzApplicationGatewayPathRuleConfig* および *Add-AzApplicationGatewayUrlPathMapConfig* を使用して、[imagePathRule](/powershell/module/az.network/new-azapplicationgatewaypathruleconfig) および [videoPathRule](/powershell/module/az.network/add-azapplicationgatewayurlpathmapconfig) という名前の URL パス マップを作成できます。
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -235,7 +235,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ### <a name="add-routing-rule"></a>ルーティング規則の追加
 
-ルーティング規則は、URL マップを、作成したリスナーに関連付けます。 [Add-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/add-azapplicationgatewayrequestroutingrule) を使用して、*rule2* という名前のルールを追加できます。
+ルーティング規則は、URL マップを、作成したリスナーに関連付けます。 *Add-AzApplicationGatewayRequestRoutingRule* を使用して、[rule2](/powershell/module/az.network/add-azapplicationgatewayrequestroutingrule) という名前のルールを追加できます。
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -362,7 +362,7 @@ URL を `http://<ip-address>:8080/video/test.htm` に変更します。次のよ
 
 ![アプリケーション ゲートウェイでのビデオ URL のテスト](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-video.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事で学習した内容は次のとおりです。
 

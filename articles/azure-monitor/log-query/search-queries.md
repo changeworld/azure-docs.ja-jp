@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/06/2018
 ms.openlocfilehash: e13f4abc37e348759e7d0b8a2f7d890c82fe0d15
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77660242"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Azure Monitor ログでの検索クエリ
@@ -29,7 +29,7 @@ search "error"
 使いやすいクエリですが、上記のような範囲が指定されていないクエリは効率的ではなく、無関係の結果が多数返される可能性があります。 関連するテーブル内、さらには列を指定して検索することをお勧めします。
 
 ### <a name="table-scoping"></a>テーブルの範囲指定
-特定のテーブルの用語を検索するには、**search** 演算子の直後に `in (table-name)` を追加します。
+特定のテーブルの用語を検索するには、`in (table-name)`search**演算子の直後に** を追加します。
 
 ```Kusto
 search in (Event) "error"
@@ -51,7 +51,7 @@ search in (Event) Source:"error"
 ```
 
 > [!TIP]
-> `:` ではなく `==` を使用すると、大文字と小文字の区別を含め、*Source* 列の値が "error" と完全一致するレコードが結果に含まれます。 ':' を使用すると、*Source* の値が "error code 404" や "Error" などのレコードが含まれます。
+> `==` ではなく `:` を使用すると、大文字と小文字の区別を含め、*Source* 列の値が "error" と完全一致するレコードが結果に含まれます。 ':' を使用すると、*Source* の値が "error code 404" や "Error" などのレコードが含まれます。
 
 ## <a name="case-sensitivity"></a>大文字と小文字の区別
 既定で、用語の検索では大文字と小文字が区別されないため、"dns" を検索すると、"DNS"、"dns"、"Dns" などの結果が返されます。 大文字と小文字を区別して検索するには、`kind` オプションを使用します。

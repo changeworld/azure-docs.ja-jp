@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: c77b700cab4afd411c3a2df824ee8335cb394cda
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64868309"
 ---
 # <a name="upload-files-into-an-azure-media-services-account-from-azure-storsimple"></a>Azure StorSimple から Azure Media Services アカウントへのファイルのアップロード  
@@ -36,7 +36,7 @@ Media Services で、デジタル ファイルを資産にアップロードし�
 
 [Azure StorSimple](https://docs.microsoft.com/azure/storsimple/) では、クラウド ストレージがオンプレミス ソリューションの拡張機能として使用され、オンプレミス ストレージとクラウド ストレージをまたがってデータが自動的に階層化されます。 StorSimple デバイスは、データをクラウドに送信する前にデータの重複排除と圧縮を行うため、大きいファイルを非常に効率的にクラウドに送信できるようになります。 [StorSimple Data Manager](../../storsimple/storsimple-data-manager-overview.md) サービスで提供される API を使用すると、StorSimple からデータを抽出し、そのデータを AMS 資産として表示することができます。
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 1. 資産の移行先となる [Media Services アカウントを作成](media-services-portal-create-account.md)します。
 2. [StorSimple Data Manager](../../storsimple/storsimple-data-manager-overview.md) に関する記事の説明に従って、Data Manager プレビューにサインアップします。
@@ -55,6 +55,6 @@ Media Services で、デジタル ファイルを資産にアップロードし�
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、アップロードした資産をエンコードできます。 詳細については、 [資産のエンコード](media-services-portal-encode.md)に関するページをご覧ください。

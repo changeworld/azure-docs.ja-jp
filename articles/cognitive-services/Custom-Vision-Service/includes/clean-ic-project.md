@@ -6,13 +6,13 @@ ms.topic: include
 ms.date: 03/21/2019
 ms.author: pafarley
 ms.openlocfilehash: e478c005ade1320a7a45449c59a1fca49ba7f147
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73519100"
 ---
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 独自の画像分類プロジェクトを実装したい (または[物体検出](../csharp-tutorial-od.md)プロジェクトを試したい) 場合、この例で使用した木の識別プロジェクトは削除してかまいません。 無料試用版では、2 つの Custom Vision プロジェクトを利用できます。
 

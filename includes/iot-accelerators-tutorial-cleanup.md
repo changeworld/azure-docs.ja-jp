@@ -9,13 +9,13 @@ ms.date: 07/18/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 078d9548b4fd7e2a73fc4b71cd4774986ccceaee
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67181606"
 ---
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 次のチュートリアルに進む場合は、リモート監視ソリューション アクセラレータをデプロイしたままにしておきます。 ソリューション アクセラレータを使用していないときの実行コストを削減するには、設定パネルでシミュレートされたデバイスを停止します。
 

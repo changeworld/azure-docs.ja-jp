@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 8dbb4ff0c9f8df6609d8447e84dcfe878a954fff
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 045f3ccdc8dc09bf657ab39ce15a0d0524c73fcb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443960"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235199"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions の HTTP トリガー
 
@@ -749,7 +749,7 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 ## <a name="authorization-keys"></a>承認キー
 
-関数を使用すると、開発中に HTTP 関数のエンドポイントにアクセスするのをより困難にするようにキーを使用できます。  標準の HTTP トリガーでは、そのような API キーが要求内に存在する必要があります。 
+関数を使用すると、開発中に HTTP 関数のエンドポイントにアクセスするのをより困難にするようにキーを使用できます。  HTTP によってトリガーされる関数で HTTP 承認レベルが `anonymous` に設定されている場合を除いて、要求には API キーが含まれている必要があります。 
 
 > [!IMPORTANT]
 > キーは開発中に HTTP エンドポイントを難読化するのに役立つかもしれませんが、運用環境で HTTP トリガーを確保する方法としては意図されていません。 詳細については、[運用環境で HTTP エンドポイントを保護する](#secure-an-http-endpoint-in-production)を参照してください。
@@ -757,14 +757,19 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 > [!NOTE]
 > Functions 1.x ランタイムでは、Webhook プロバイダーは、プロバイダーがサポートするものに応じて、さまざまな方法で要求を認可するためにキーを使用することがあります。 これについては、[Webhook とキー](#webhooks-and-keys)を参照してください。 バージョン 2.x 以降の Functions ランタイムには、Webhook プロバイダーの組み込みサポートは含まれていません。
 
-キーには、次の 2 つの種類があります。
+#### <a name="authorization-scopes-function-level"></a>承認スコープ (関数レベル)
 
-* **ホスト キー**:これらのキーは、関数アプリ内のすべての関数で共有されます。 API キーとして使用した場合は、関数アプリ内のすべての関数がアクセスできます。
-* **関数キー**:これらのキーは、それらが定義されている特定の関数にのみ適用されます。 API キーとして使用した場合は、その関数だけがアクセスできます。
+関数レベルのキーには、2 つの承認スコープがあります。
+
+* **関数**:これらのキーは、それらが定義されている特定の関数にのみ適用されます。 API キーとして使用した場合は、その関数だけがアクセスできます。
+
+* **[Host]\(ホスト\)** : ホスト スコープのキーは、関数アプリ内のすべての関数にアクセスするために使用できます。 API キーとして使用した場合は、関数アプリ内のすべての関数がアクセスできます。 
 
 各キーには、参照用に名前が付けられており、関数レベルおよびホスト レベルで "default" という名前の既定のキーがあります。 関数キーが、ホスト キーよりも優先されます。 2 つのキーが同じ名前で定義されている場合は、関数キーが使用されます。
 
-各関数アプリには特別な**マスター キー**もあります。 このキーは`_master`という名前のホスト キーで、ランタイム API への管理アクセスを提供します。 このキーを取り消すことはできません。 認可レベルを`admin`に設定すると、要求でマスター キーを使用する必要があります。 その他のキーを使用すると認可エラーになります。
+#### <a name="master-key-admin-level"></a>マスターキー (管理レベル) 
+
+各関数アプリには、`_master`という管理レベルのホスト キーもあります。 マスター キーは、アプリ内のすべての関数へのホスト レベルのアクセスを提供するだけでなく、ランタイム REST API への管理アクセスも提供します。 このキーを取り消すことはできません。 認可レベルを`admin`に設定すると、要求でマスター キーを使用する必要があります。 その他のキーを使用すると認可エラーになります。
 
 > [!CAUTION]  
 > マスター キーによって付与された関数 app の権限が昇格しているため、このキーを第三者と共有したり、ネイティブ クライアント アプリケーションに配布したりしないでください。 管理者承認レベルを選択する場合は注意が必要です。
@@ -829,7 +834,7 @@ webhook の承認は、HTTP トリガーの一部である webhook レシーバ�
 
 ## <a name="limits"></a>制限
 
-HTTP 要求の長さは 100 MB (104,857,600 バイト) に、URL の長さは 4 KB (4,096 バイト) バイトに制限されています。 これらの制限は、ランタイムの [Web.config ファイル](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config)の `httpRuntime` 要素で指定されています。
+HTTP 要求の長さは 100 MB (104,857,600 バイト) に、URL の長さは 4 KB (4,096 バイト) バイトに制限されています。 これらの制限は、ランタイムの [Web.config ファイル](https://github.com/Azure/azure-functions-host/blob/3.x/src/WebJobs.Script.WebHost/web.config)の `httpRuntime` 要素で指定されています。
 
 HTTP トリガーを使用する関数が 230 秒以内に完了しない場合、[Azure Load Balancer](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds) でタイムアウトが発生し、HTTP 502 エラーが返されます。 この関数は実行を継続しますが、HTTP 応答を返すことはできません。 実行時間が長い関数の場合は、非同期パターンに従い、要求の状態について ping で確認できる場所を返すことをお勧めします。 関数を実行できる時間については、[スケールとホスティングに関するページの「従量課金プラン」](functions-scale.md#timeout)を参照してください。
 

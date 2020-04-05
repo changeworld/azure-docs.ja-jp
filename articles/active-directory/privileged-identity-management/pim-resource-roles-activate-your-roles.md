@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d35c81f7bb478d91bd207327ea37c80aa1778142
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74023149"
 ---
 # <a name="activate-my-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management で自分の Azure リソース ロールをアクティブ化する
@@ -32,7 +32,7 @@ Azure リソースの適格なロール メンバーは、Privileged Identity Ma
 
 Azure リソース ロールを引き受ける必要がある場合は、Privileged Identity Management の **[自分のロール]** ナビゲーション オプションを使用してアクティブ化を要求できます。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. **[Azure AD Privileged Identity Management]** を開きます。 ダッシュボードに [Privileged Identity Management] タイルを追加する方法については、「[Privileged Identity Management の使用開始](pim-getting-started.md)」を参照してください。
 
@@ -70,7 +70,7 @@ Azure リソース ロールを引き受ける必要がある場合は、Privile
 
     ![スコープ、開始時刻、期間、理由が入力された [アクティブ化] ウィンドウ](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-done.png)
 
-1. **[アクティブ化]** を選択します。
+1. **[アクティブ化]** を選びます。
 
     承認が必要ないロールは、アクティブ化され、アクティブなロールの一覧に追加されます。 ロールを使用する場合は、次のセクションの手順に従います。
 
@@ -132,7 +132,7 @@ Privileged Identity Management でロールをアクティブ化しても、ア�
 
 1. Privileged Identity Management で、自分がそのロールのメンバーとして一覧表示されていることを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Privileged Identity Management で Azure リソース ロールを延長または更新する](pim-resource-roles-renew-extend.md)
 - [Privileged Identity Management で自分の Azure AD ロールをアクティブ化する](pim-how-to-activate-role.md)

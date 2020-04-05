@@ -17,10 +17,10 @@ ms.date: 09/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b29405ebc620736a4318c2c3a875e8864c1eafb6
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70846907"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workboard"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と WorkBoard の統合
@@ -29,7 +29,7 @@ ms.locfileid: "70846907"
 
 * WorkBoard にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して WorkBoard に自動的にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

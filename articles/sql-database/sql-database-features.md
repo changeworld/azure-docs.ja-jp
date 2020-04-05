@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
 ms.openlocfilehash: 33ecef4dde3787546afd28e5f5b31e8dd535fc7c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75646366"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL Database の機能

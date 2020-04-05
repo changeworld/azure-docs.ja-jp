@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
 ms.openlocfilehash: 3e58be4b94457d95d28cf6528b9151e4be1802cf
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72754185"
 ---
 # <a name="define-and-use-moderation-workflows-rest"></a>モデレーション ワークフローを定義して使用する (REST)
@@ -35,7 +35,7 @@ ms.locfileid: "72754185"
 
 **[team]** 、 **[workflowname]** 、 **[Ocp-Apim-Subscription-Key]** に値を入力します。
 
-- **team**: [レビュー ツール](https://contentmoderator.cognitive.microsoft.com/) アカウントの設定時に作成したチーム ID (レビュー ツールの [資格情報] 画面の **[ID]** フィールドにあります)。
+- **team**: [レビュー ツール](https://contentmoderator.cognitive.microsoft.com/) アカウントの設定時に作成したチーム ID (レビュー ツールの [資格情報] 画面の **[ID]** フィールド内にあります)。
 - **workflowname**: 追加する新しいワークフローの名前 (または、既存のワークフローを更新する場合は、既存の名前)。
 - **Ocp-Apim-Subscription-Key**: ご自分の Content Moderator キー。 [レビュー ツール](https://contentmoderator.cognitive.microsoft.com)の **[設定]** タブ内にあります。
 
@@ -137,6 +137,6 @@ ms.locfileid: "72754185"
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [コンテンツ モデレーション ジョブ](try-review-api-job.md) でワークフローを使用する方法について学習します。

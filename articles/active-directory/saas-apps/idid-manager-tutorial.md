@@ -17,10 +17,10 @@ ms.date: 1/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 348baa046f31d945ba54a9d49a12ff3ff328551f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73155220"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-idid-manager"></a>チュートリアル:Azure Active Directory と iDiD Manager の統合

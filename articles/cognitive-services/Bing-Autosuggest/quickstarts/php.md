@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 64874791be62ec1ed5c1c5874fb055efa4b44dc3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0aa309ba34abdfbe91493498ae6ec49785e0e0d4
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75384723"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80238995"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-php"></a>クイック スタート:Bing Autosuggest REST API と PHP で検索クエリの候補を表示する
 
@@ -153,7 +153,7 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 > [!div class="nextstepaction"]
 > [Bing Autosuggest チュートリアル](../tutorials/autosuggest.md)
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - [Bing Autosuggest とは](../get-suggested-search-terms.md)
 - [Bing Autosuggest API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

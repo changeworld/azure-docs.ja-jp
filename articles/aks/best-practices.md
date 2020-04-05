@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 12/07/2018
 ms.openlocfilehash: 627eeffd18a479486e5a682da06bf89cd5f8f0e1
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77596319"
 ---
 # <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションの構築および管理のためのクラスター オペレーターと開発者のベスト プラクティス
@@ -32,7 +32,7 @@ Azure Kubernetes Service (AKS) でのアプリケーションを構築して実�
 * [認証と認可に関するベスト プラクティス](operator-best-practices-identity.md)
     * Azure Active Directory との統合、ロールベースのアクセス制御 (RBAC) の使用、およびポッド ID が含まれます。
 
-**セキュリティ**
+**Security**
 
 * [クラスターのセキュリティとアップグレードに関するベスト プラクティス](operator-best-practices-cluster-security.md)
     * API サーバーへのアクセスのセキュリティ保護、コンテナーへのアクセスの制限、アップグレードとノードの再起動の管理が含まれます。

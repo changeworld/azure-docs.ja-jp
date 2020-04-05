@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 02/10/2020
 ms.openlocfilehash: a77771880da962298f6e80782e5f3e251f5f4641
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77122371"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Azure HDInsight での ML Services とは

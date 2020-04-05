@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 26f41a7fd88a3c2018592e89ae95e3b962c1a9e9
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75911688"
 ---
 # <a name="display-feature-information"></a>機能情報を表示する

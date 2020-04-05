@@ -20,11 +20,11 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 516637b812afece1966006ce6d894dd1e32e6293
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666309"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225311"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>スコアリング プロファイルを Azure Cognitive Search のインデックスに追加する
 
@@ -87,7 +87,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 
  関連性に基づく順序付けも、スコアリング プロファイルを通して実装されます。 価格、日付、評価、または関連性での並べ替えが可能な、以前に使用した検索結果ページを検討してしてください。 Azure Cognitive Search では、スコアリング プロファイルによって「関連性」オプションが開始されます。 関連性の定義は、ビジネス目標および提供する検索機能の種類に基づいて、ユーザーによって制御されます。  
 
-##  <a name="bkmk_ex"></a> 例  
+##  <a name="example"></a><a name="bkmk_ex"></a> 例  
  前述のように、カスタマイズされたスコアリングは、インデックス スキーマで定義された 1 つ以上のスコアリング プロファイルを介して実装されます。  
 
  次の例では、2 つのスコアリング プロファイル (`boostGenre`、`newAndHighlyRated`) を使用するインデックス スキーマを示します。 いずれかのプロファイルをクエリ パラメーターとして指定したクエリを、このインデックスに対して実行すると、該当するプロファイルを使用して結果セットのスコアリングが行われます。  
@@ -169,11 +169,11 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 |||  
 |-|-|  
 |**Weights**|相対的な重みをフィールドに割り当てる名前と値のペアを指定します。 [例](#bkmk_ex)では、albumTitle、genre、および artistName のフィールドはそれぞれ 1.5、5、および 2 でブーストされます。 なぜ genre は他のものよりも大幅に高くブーストされるのでしょうか? ある程度同じようなデータに対して検索を実行する場合 (`musicstoreindex` での "genre" の場合のように)、相対的な重みをより分散することが必要になる可能性があります。 たとえば、 `musicstoreindex`では、「ロック」はジャンルとして表示されると共に、言葉で表現されるジャンルの説明の中にも表示されます。 ジャンルがジャンルの説明を上回るようにする場合は、genre フィールドの相対的な重みをより高くする必要があります。|  
-|**関数**|特定のコンテキストに対して追加の計算が必要な場合に使用されます。 有効な値は、`freshness`、`magnitude`、`distance`、`tag` です。 各関数には、固有のパラメーターがあります。<br /><br /> -   `freshness` を使用してください。 この関数は、`datetime` フィールドでのみ使用できます (edm.DataTimeOffset)。 `boostingDuration` 属性は `freshness` 関数のみで使用されることに注意してください。<br />-   `magnitude` を使用してください。 この関数を呼び出すシナリオとしては、利益率、最高価格、最低価格、またはダウンロード回数に基づくブーストがあります。 この関数は、倍精度浮動小数点フィールドと整数フィールドでのみ使用できます。<br />     `magnitude` 関数では、逆のパターンが必要な場合 (たとえば、価格がより高い項目より価格がより低い項目をブーストする場合) に、高範囲から低範囲に反転することができます。 たとえば、価格の範囲が 100 ～ 1 ドルである場合、`boostingRangeStart` を 100 に、`boostingRangeEnd` を 1 に設定して、より低い価格の項目をブーストします。<br />-   `distance` を使用してください。 この関数は、 `Edm.GeographyPoint` フィールドでのみ使用できます。<br />-   `tag` を使用してください。 この関数は、`Edm.String` フィールドと `Collection(Edm.String)` フィールドでのみ使用できます。<br /><br /> **関数の使用に関する規則**<br /><br /> 関数の型 (`freshness`、`magnitude`、`distance`、`tag`) は、小文字にする必要があります。<br /><br /> 関数に null または空の値を含めることはできません。 具体的には、フィールド名を含めた場合、それを何かに設定する必要があります。<br /><br /> 関数はフィルターの適用が可能なフィールドにのみ適用できます。 フィルター可能フィールドについて詳しくは、[インデックスの作成 &#40;Azure Cognitive Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index) をご覧ください。<br /><br /> 関数は、インデックスのフィールド コレクションで定義されているフィールドにのみ適用できます。|  
+|**関数**|特定のコンテキストに対して追加の計算が必要な場合に使用されます。 有効な値は `freshness`、`magnitude`、`distance`、および `tag` です。 各関数には、固有のパラメーターがあります。<br /><br /> -   `freshness` を使用してください。 この関数は、`datetime` フィールドでのみ使用できます (edm.DataTimeOffset)。 `boostingDuration` 属性は `freshness` 関数のみで使用されることに注意してください。<br />-   `magnitude` を使用してください。 この関数を呼び出すシナリオとしては、利益率、最高価格、最低価格、またはダウンロード回数に基づくブーストがあります。 この関数は、倍精度浮動小数点フィールドと整数フィールドでのみ使用できます。<br />     `magnitude` 関数では、逆のパターンが必要な場合 (たとえば、価格がより高い項目より価格がより低い項目をブーストする場合) に、高範囲から低範囲に反転することができます。 たとえば、価格の範囲が 100 ～ 1 ドルである場合、`boostingRangeStart` を 100 に、`boostingRangeEnd` を 1 に設定して、より低い価格の項目をブーストします。<br />-   `distance` を使用してください。 この関数は、 `Edm.GeographyPoint` フィールドでのみ使用できます。<br />-   `tag` を使用してください。 この関数は、`Edm.String` フィールドと `Collection(Edm.String)` フィールドでのみ使用できます。<br /><br /> **関数の使用に関する規則**<br /><br /> 関数の型 (`freshness`、`magnitude`、`distance`、`tag`) は、小文字にする必要があります。<br /><br /> 関数に null または空の値を含めることはできません。 具体的には、フィールド名を含めた場合、それを何かに設定する必要があります。<br /><br /> 関数はフィルターの適用が可能なフィールドにのみ適用できます。 フィルター可能フィールドについて詳しくは、[インデックスの作成 &#40;Azure Cognitive Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index) をご覧ください。<br /><br /> 関数は、インデックスのフィールド コレクションで定義されているフィールドにのみ適用できます。|  
 
  インデックスが定義されたら、インデックス スキーマをアップロードし、ドキュメントをアップロードして、インデックスを構築します。 これらの操作の手順については、「[インデックスの作成 &#40;Azure Cognitive Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)」と[ドキュメントの追加、更新、削除 &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) に関する記事をご覧ください。 インデックスが構築されると、検索データと連携する機能的なスコアリング プロファイルが使用できるようになります。  
 
-##  <a name="bkmk_template"></a> テンプレート  
+##  <a name="template"></a><a name="bkmk_template"></a> テンプレート  
  このセクションでは、スコアリング プロファイルの構文とテンプレートを示します。 属性の説明については、次のセクションの「[インデックスの属性のリファレンス](#bkmk_indexref)」をご覧ください。  
 
 ```  
@@ -227,12 +227,12 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 . . .  
 ```  
 
-##  <a name="bkmk_indexref"></a> インデックスの属性のリファレンス  
+##  <a name="index-attributes-reference"></a><a name="bkmk_indexref"></a> インデックスの属性のリファレンス  
 
 > [!NOTE]  
 >  スコアリング関数はフィルターの適用が可能なフィールドにのみ適用できます。  
 
-|Attribute|説明|  
+|属性|説明|  
 |---------------|-----------------|  
 |`name`|必須。 これは、スコアリング プロファイルの名前です。 これは、フィールドの場合と同じ名前付け規則に従います。 先頭は英文字にする必要があります。ドット、コロン、または @ 記号を含めることはできません。さらに、"azureSearch" (大文字小文字の区別あり) という句で開始することはできません。|  
 |`text`|重みプロパティが含まれます。|  
@@ -256,7 +256,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 |`functionAggregation`|省略可能。 関数を指定した場合にのみ適用されます。 有効な値は、sum (既定値)、average、minimum、maximum、firstMatching です。 検索スコアは、複数の変数 (複数の関数など) から計算される単一の値です。 この属性では、すべての関数のブーストを、基本ドキュメント スコアに適用される 1 つの集計ブーストに集約する方法が示されます。 基本スコアは、ドキュメントと検索クエリから算出される [tf-idf](http://www.tfidf.com/) 値に基づいています。|  
 |`defaultScoringProfile`|検索要求の実行時に、スコアリング プロファイルが指定されていない場合は、既定のスコアリングが使用されます ([tf-idf](http://www.tfidf.com/) のみ)。<br /><br /> ここでは既定のスコアリング プロファイル名を設定できます。Azure Cognitive Search は検索要求に特定のプロファイルが指定されていない場合、そのプロファイルを使用します。|  
 
-##  <a name="bkmk_interpolation"></a> 補間の設定  
+##  <a name="set-interpolations"></a><a name="bkmk_interpolation"></a> 補間の設定  
  補間を使用することにより、スコアリングに使用される傾きの形状を設定できます。 スコアリングは高から低なので、傾きは常に減少ですが、補間により下向きの傾きの曲線が決まります。 次の補間を使用できます。  
 
 |||  
@@ -268,7 +268,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 
  ![グラフでの定数、線形、二次方程式、log10 の線](media/scoring-profiles/azuresearch_scorefunctioninterpolationgrapht.png "AzureSearch_ScoreFunctionInterpolationGrapht")  
 
-##  <a name="bkmk_boostdur"></a> boostingDuration の設定  
+##  <a name="set-boostingduration"></a><a name="bkmk_boostdur"></a> boostingDuration の設定  
  `boostingDuration` は `freshness` 関数の属性です。 これを使用して特定のドキュメントに対して有効期限を設定します。この期限が過ぎるとブースティングは停止します。 たとえば、10 日のプロモーション期間中に製品ラインまたはブランドをブーストするには、該当するドキュメントに対して 10 日の期間を "P10D" で指定します。  
 
  `boostingDuration` は、XSD "dayTimeDuration" 値 (ISO 8601 期間値の制限されたサブセット) としてフォーマットする必要があります。 これのパターンは次のとおりです:"P[nD][T[nH][nM][nS]]"。  

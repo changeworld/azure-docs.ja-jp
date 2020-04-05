@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: scottwhi
 ms.openlocfilehash: a6d394fec6e7cf0a230f61ad05c236a1f84dad9d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68854051"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>装飾マーカーを使用してテキストを強調表示する
@@ -43,7 +43,7 @@ Bing には、マーカーとして Unicode 文字または HTML タグのいず
 
 ## <a name="additional-text-decorations"></a>その他の文字の装飾
 
-Bing はいくつかの異なる文字装飾を返すことができます。 たとえば、`Computation` の結果には、`expression` フィールド内の検索語 `log(2)` の下付き文字マーカーを含めることができます。
+Bing はいくつかの異なる文字装飾を返すことができます。 たとえば、`Computation` の結果には、`log(2)` フィールド内の検索語 `expression` の下付き文字マーカーを含めることができます。
 
 ![計算のマーカー](./media/cognitive-services-bing-web-api/bing-markers-computation.png) 
 
@@ -76,7 +76,7 @@ Bing はいくつかの異なる文字装飾を返すことができます。 �
 |U+E018|\<sup>|上付き文字のコンテンツの開始をマークします
 |U+E019|\</sup>|上付き文字のコンテンツの終了をマークします
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Bing Web Search API とは](overview.md) 
 * [サムネイルのサイズ変更とトリミング](resize-and-crop-thumbnails.md)

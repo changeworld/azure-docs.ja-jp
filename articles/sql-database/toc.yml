@@ -58,8 +58,6 @@
       href: sql-database-managed-instance-quickstart-guide.md
 - name: 概念
   items:
-    - name: 共通機能に関するドキュメント
-      href: sql-database-paas-index.yml
     - name: 機能の比較
       href: sql-database-features.md
     - name: ハウツー ガイド
@@ -108,8 +106,10 @@
                   href: sql-database-always-encrypted-azure-key-vault.md
         - name: 監査
           items:
-            - name: SQL Database 監査の概要
+            - name: Azure SQL 監査
               href: sql-database-auditing.md
+            - name: VNet またはファイアウォールの内側にあるストレージへ
+              href: create-auditing-storage-account-vnet-firewall.md
             - name: 監査ログの形式
               href: sql-database-audit-log-format.md
         - name: セキュリティ管理
@@ -144,6 +144,8 @@
               href: sql-database-managed-instance-public-endpoint-securely.md
             - name: マネージド インスタンスの監査
               href: sql-database-managed-instance-auditing.md
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: 接続とクエリ
       href: sql-database-connect-query.md
       items:
@@ -276,8 +278,6 @@
                   href: sql-database-xevent-code-ring-buffer.md
     - name: スケーラビリティ
       items:
-        - name: スケーラビリティのドキュメント
-          href: sql-database-scalability-index.yml
         - name: スケールアップ/スケールダウン
           href: sql-database-scale-resources.md
         - name: 読み取りスケールアウト
@@ -306,8 +306,6 @@
           href: sql-database-elastic-transactions-overview.md
     - name: Database の機能
       items:
-        - name: Database の機能に関するドキュメント
-          href: sql-database-features-index.yml
         - name: マルチモデル機能
           href: sql-database-multi-model-features.md
         - name: メモリ内
@@ -477,8 +475,8 @@
           items:
             - name: Azure Portal の使用
               href: sql-database-single-database-get-started.md
-            - name: テンプレートの使用
-              displayName: 'Azure Resource Manager template, ARM'
+            - name: ARM テンプレートの使用
+              displayName: Resource Manager
               href: sql-database-single-database-get-started-template.md
         - name: 構成
           items:
@@ -530,6 +528,8 @@
               href: sql-database-resource-limits-database-server.md
             - name: 接続のアーキテクチャ
               href: sql-database-connectivity-architecture.md
+            - name: 接続の設定
+              href: sql-database-connectivity-settings.md
         - name: データ同期
           items:
             - name: データ同期エージェント
@@ -679,7 +679,6 @@
         - name: コード サンプル
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: SQL マネージド インスタンス
-  href: sql-database-managed-instance-index.yml
   items:
     - name: 概要
       items:
@@ -701,6 +700,8 @@
               href: sql-database-instance-pools-how-to.md
         - name: 構成
           items:
+            - name: サービス支援サブネット構成
+              href: sql-database-managed-instance-enabling-service-aided-subnet-configuration.md
             - name: パブリック エンドポイント
               href: sql-database-managed-instance-public-endpoint-configure.md
             - name: クライアント VM の接続
@@ -779,6 +780,8 @@
           href: sql-database-managed-instance-threat-detection.md
         - name: アプリケーションの接続
           href: sql-database-managed-instance-connect-app.md
+        - name: アラートを作成する
+          href: sql-database-managed-instance-alerts.md
     - name: サンプル
       items:
         - name: Azure CLI

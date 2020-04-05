@@ -8,10 +8,10 @@ services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1552c54afe2195d58a032e9cc7bfa5aa70c844b1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61447626"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>マイクロサービスをカスタマイズして再展開する
@@ -45,7 +45,7 @@ ms.locfileid: "61447626"
 1. お使いのコンピューターでリモート監視ソリューションがローカルに実行していることを確認してください。
 2. ダウンロードした Postman を探して開きます。
 3. Postman で、[GET] に「`http://localhost:8080/iothubmanager/v1/status`」と入力します。
-4. 返される値では、"Status":"OK:Alive and Well" と表示されます。
+4. 返される値では、"Status": "OK:Alive and Well" と表示されます。
 
     ![Postman に表示された Alive and Well メッセージ](./media/iot-accelerators-microservices-example/postman-alive-well.png)
 
@@ -144,11 +144,11 @@ Iot Hub Manager マイクロサービスの状態メッセージを "New Edits M
     ```
 
 3. ダウンロードした Postman を探して開きます。
-4. Postman で、[GET] に「`http://localhost:8080/iothubmanager/v1/status`」という要求を入力します。 ここで、"Status":"OK:New Edits Made Here!" と表示されます。
+4. Postman で、[GET] に「`http://localhost:8080/iothubmanager/v1/status`」という要求を入力します。 今度は、"Status": "OK: New Edits Made Here!" と表示されます。
 
 ![Postman に表示された New Edits Made Here メッセージ](./media/iot-accelerators-microservices-example/new-postman-message.png)
 
-## <a name="Troubleshoot"></a>トラブルシューティング
+## <a name="troubleshoot"></a><a name="Troubleshoot"></a>トラブルシューティング
 
 問題が発生する場合は、ローカル コンピューター上の Docker イメージとコンテナーを削除してみてください。
 
@@ -171,7 +171,7 @@ Iot Hub Manager マイクロサービスの状態メッセージを "New Edits M
     docker ps -aq 
     ```
 
-    すべてのコンテナーが正常に削除されている場合は、何も表示されません。
+    すべてのイメージが正常に削除されている場合は、何も表示されません。
 
 4. コンピューター上にイメージがあるかどうかは、次のように入力して確認できます。
 
@@ -181,7 +181,7 @@ Iot Hub Manager マイクロサービスの状態メッセージを "New Edits M
 
     すべてのイメージが正常に削除されている場合は、何も表示されません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルで説明する内容は次のとおりです。
 

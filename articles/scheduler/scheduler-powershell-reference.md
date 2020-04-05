@@ -9,10 +9,10 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
 ms.openlocfilehash: 577e2128cf7e4e9f914ec5504917053acb3c19d5
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898499"
 ---
 # <a name="powershell-cmdlets-reference-for-azure-scheduler"></a>Azure Scheduler の PowerShell コマンドレット リファレンス

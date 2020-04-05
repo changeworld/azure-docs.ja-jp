@@ -7,17 +7,17 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: 543b566300ce56bc2d765087f9a9e269c5b0cc99
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77586174"
 ---
 # <a name="azure-event-hubs-trigger-and-bindings-for-azure-functions"></a>Azure Functions における Azure Event Hubs のトリガーとバインド
 
 この記事では、Azure Functions で [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) のバインドを使用する方法について説明します。 Azure Functions は、イベント ハブのトリガーおよび出力バインドをサポートしています。
 
-| アクション | Type |
+| アクション | 種類 |
 |--------|------|
 | イベント ハブのイベント ストリームに送信されたイベントに応答する | [トリガー](./functions-bindings-event-hubs-trigger.md) |
 | イベント ストリームにイベントを書き込む | [出力バインド](./functions-bindings-event-hubs-output.md) |

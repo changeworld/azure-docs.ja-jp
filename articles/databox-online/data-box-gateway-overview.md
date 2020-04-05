@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 08/21/2019
 ms.author: alkohli
 ms.openlocfilehash: b8c6b4085f56bc12b67bf87177ba33b82c6a6db9
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "69900582"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>Azure Data Box Gateway とは
@@ -69,13 +69,13 @@ Data Box Gateway 仮想デバイスの仕様は次のとおりです。
 | 仮想プロセッサ (コア)   | 最低 4 |
 | メモリ  |8 GB 以上|
 | 可用性|単一ノード|
-| ディスク|OS ディスク:250 GB <br> データ ディスク:最小 2 TB、シン プロビジョニング、SSD を使用する必要があります|
+| ディスク|OS ディスク: 250 GB <br> データ ディスク: 最小 2 TB、シン プロビジョニング、SSD を使用する必要があります|
 | ネットワーク インターフェイス |1 つ以上の仮想ネットワーク インターフェイス|
 | ネイティブのファイル共有プロトコル|SMB および NFS  |
-| セキュリティ|デバイスとデータへのアクセスのロックを解除する認証 <br> AES 256 ビット暗号化を使用した移動中のデータの暗号化|
+| Security|デバイスとデータへのアクセスのロックを解除する認証 <br> AES 256 ビット暗号化を使用した移動中のデータの暗号化|
 | 管理|ローカル Web UI - 初期セットアップ、診断、およびデバイスの電源管理 <br> Azure portal - Data Box Gateway デバイスの日々 の管理       |
 
-## <a name="components"></a>コンポーネント
+## <a name="components"></a>Components
 
 Data Box Gateway ソリューションは、Data Box Gateway リソース、Data Box Gateway 仮想デバイス、ローカル Web UI で構成されています。
 
@@ -96,7 +96,7 @@ Data Box Gateway 物理デバイス、Azure リソース、データ転送先の
     最適なパフォーマンスを得るには、ストレージ アカウントが Data Box データを格納する地域は、デバイスが配置されている場所の近くでなければなりません。 デバイスから離れた場所にあるストレージ アカウントは、待ち時間が長くなり、パフォーマンスが低下します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Data Box Gateway のシステム要件](data-box-gateway-system-requirements.md)を確認する。
 - [Data Box Gateway の制限事項](data-box-gateway-limits.md)を理解する。

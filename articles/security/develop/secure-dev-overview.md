@@ -14,10 +14,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: c4314a0dcbbcb907ef4d6de0a2788cf04dfe1641
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68934864"
 ---
 # <a name="secure-development-best-practices-on-azure"></a>Azure での安全な開発のベスト プラクティス
@@ -43,9 +43,9 @@ SDL フェーズは次のとおりです。
 
   - トレーニング
   - 必要条件
-  - 設計
+  - デザイン
   - 実装
-  - 確認
+  - 検証
   - Release
   - Response
 
@@ -75,7 +75,7 @@ SDL フェーズは次のとおりです。
 
 [Azure のセキュリティとコンプライアンスのブループリント](https://servicetrust.microsoft.com/ViewPage/BlueprintOverview) – Azure のセキュリティとコンプライアンスのブループリントは、厳重な規制と基準に準拠するクラウドの機能を活用したアプリケーションの構築と起動に役立ちます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次の記事では、セキュリティで保護されたアプリケーションを設計、開発、およびデプロイするのに役立つセキュリティ制御とアクティビティが推奨されています。
 
 - [セキュリティで保護されたアプリケーションを設計する](secure-design.md)

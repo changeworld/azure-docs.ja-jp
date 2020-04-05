@@ -15,10 +15,10 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 81b55253d757f641979c6f72001803d7d38d9af3
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77132513"
 ---
 # <a name="considerations-for-using-xamarin-android-with-msalnet"></a>MSAL.NET と共に Xamarin Android を使用する際の考慮事項
@@ -130,7 +130,7 @@ var authResult = AcquireTokenInteractive(scopes)
 詳細については、「[MSAL.NET で Web ブラウザーを使用する](msal-net-web-browsers.md)」と「[Xamarin Android のシステム ブラウザーに関する考慮事項](msal-net-system-browser-android-considerations.md)」を参照してください。
 
 
-## <a name="troubleshoot"></a>[トラブルシューティング]
+## <a name="troubleshoot"></a>トラブルシューティング
 新しい Xamarin.Forms アプリケーションを作成し、MSAL.NET NuGet パッケージに参照を追加できます。
 ただし、既存の Xamarin.Forms アプリケーションを MSAL.NET プレビュー 1.1.2 以降にアップグレードすると、ビルドの問題が発生する可能性があります。
 

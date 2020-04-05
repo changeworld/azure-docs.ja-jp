@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Meta Networks Connector の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Meta Networks Connector の統合 | Microsoft Docs'
 description: Azure Active Directory と Meta Networks Connector の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.openlocfilehash: a09eda25e8c7cc087770210cdfbe7e2bc9832acf
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160641"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>チュートリアル:Azure Active Directory と Meta Networks Connector の統合
+# <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>チュートリアル: Azure Active Directory と Meta Networks Connector の統合
 
 このチュートリアルでは、Meta Networks Connector と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Meta Networks Connector と Azure AD の統合には、次の利点があります。
@@ -133,7 +133,7 @@ Meta Networks Connector で Azure AD シングル サインオンを構成する
     | firstname | User.givenname | |
     | lastname | User.surname | |
     | emailaddress| User.mail| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
-    | 名前 | user.userprincipalname| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
+    | name | user.userprincipalname| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
     | phone | user.telephonenumber | |
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
@@ -152,7 +152,7 @@ Meta Networks Connector で Azure AD シングル サインオンを構成する
 
     f. **[OK]** をクリックします。
 
-    g. **[Save]** をクリックします。
+    g. **[保存]** をクリックします。
 
 8. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 

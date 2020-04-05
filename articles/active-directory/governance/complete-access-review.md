@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 266234f2872cfe99509d564c9460bfba4a0e2bf2
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75932544"
 ---
 # <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>グループとアプリケーションのアクセス レビューを Azure AD アクセス レビューに入力する

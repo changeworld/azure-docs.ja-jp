@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
 ms.openlocfilehash: a368f5c66d5a44faa23a726343d74489024185e6
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72177735"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK for SQL API: ダウンロードおよびリリース ノート
@@ -21,7 +21,7 @@ ms.locfileid: "72177735"
 > * [.NET Standard](sql-api-sdk-dotnet-standard.md)
 > * [.NET Change Feed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
-> * [Node.JS](sql-api-sdk-node.md)
+> * [Node.js](sql-api-sdk-node.md)
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
@@ -36,7 +36,7 @@ ms.locfileid: "72177735"
 |**SDK のダウンロード**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)|
 |**API ドキュメント**|[.NET API リファレンス ドキュメント](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
 |**サンプル**|[.NET コード サンプル](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples)|
-|**作業開始**|[Azure Cosmos DB .NET SDK を開始する](sql-api-get-started.md)|
+|**開始するには**|[Azure Cosmos DB .NET SDK を開始する](sql-api-get-started.md)|
 |**Web アプリ チュートリアル**|[Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-dotnet-application.md)|
 |**現在サポートされているフレームワーク**|[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)|
 
@@ -48,9 +48,9 @@ ms.locfileid: "72177735"
 [!INCLUDE[Release notes](~/samples-cosmosdb-dotnet-v2/changelog.md)]
 
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>関連項目
-Cosmos DB の詳細については、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) サービス ページをご覧ください。 
+Cosmos DB の詳細については、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) サービス ページを参照してください。 
 

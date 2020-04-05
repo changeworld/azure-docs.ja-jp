@@ -10,14 +10,14 @@
           tocHref: /azure/storage/
           topicHref: /azure/machine-learning/team-data-science-process/index
           items:
-            - name: Storage
+            - name: ストレージ
               tocHref: /azure/storage/blobs/
               topicHref: /azure/storage/index
               items:
                 - name: BLOB
                   tocHref: /azure/storage/blobs/
                   topicHref: /azure/storage/blobs/index
-            - name: Storage
+            - name: ストレージ
               tocHref: /azure/storage/common/
               topicHref: /azure/storage/index
               items:

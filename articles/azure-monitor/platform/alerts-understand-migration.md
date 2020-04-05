@@ -7,11 +7,11 @@ ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
 ms.openlocfilehash: 8cc77d13567910797cd519ac193b848f3ea434da
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77665274"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234343"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>移行ツールの動作の理解
 

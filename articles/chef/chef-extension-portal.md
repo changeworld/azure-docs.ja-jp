@@ -5,10 +5,10 @@ keywords: azure、chef、devops、クライアント、インストール、ポ�
 ms.date: 02/22/2020
 ms.topic: article
 ms.openlocfilehash: 6e46133c598c44b314077f2d020852416d3d2745
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77586361"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>Azure portal から Chef クライアントをインストールする

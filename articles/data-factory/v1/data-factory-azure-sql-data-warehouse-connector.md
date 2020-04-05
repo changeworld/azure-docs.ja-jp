@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 18f30af4595a7679d5c3ef56763e992d54fae536
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2df49e65603573e4a3adcdda0635982252e70b18
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928064"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80130817"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Azure Data Factory を使用した Azure SQL Data Warehouse との間でのデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -47,10 +47,10 @@ ms.locfileid: "74928064"
 ## <a name="supported-authentication-type"></a>サポートされている認証の種類
 Azure SQL Data Warehouse コネクタは基本認証をサポートしています。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 さまざまなツールや API を使用して、Azure SQL Data Warehouse との間でデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-Azure SQL Data Warehouse との間でデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。 手順については、「[チュートリアル: Azure Data Factory を使用した Azure SQL Data Warehouse へのデータの読み込み](../../sql-data-warehouse/sql-data-warehouse-load-with-data-factory.md)」を参照して、データのコピー ウィザードを使用してパイプラインを作成する簡単な手順を確認してください。
+Azure SQL Data Warehouse との間でデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。 「[チュートリアル:Azure Data Factory を使用した Azure SQL Data Warehouse へのデータの読み込み](../../sql-data-warehouse/sql-data-warehouse-load-with-data-factory.md)」を参照して、データのコピー ウィザードを使用してパイプラインを作成する簡単な手順を確認してください。
 
 また、次のツールを使用してパイプラインを作成することもできます。**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
@@ -150,8 +150,8 @@ GO
 | rejectValue |クエリが失敗するまでに拒否できる行の数または割合を指定します。 <br/><br/>PolyBase の拒否オプションの詳細については、「 **CREATE EXTERNAL TABLE (Transact-SQL)** 」の「 [Arguments (引数)](https://msdn.microsoft.com/library/dn935021.aspx) 」をご覧ください。 |0 (既定値)、1、2、… |いいえ |
 | rejectType |rejectValue オプションをリテラル値と割合のどちらで指定するかを指定します。 |Value (既定値)、Percentage |いいえ |
 | rejectSampleValue |拒否された行の割合が PolyBase で再計算されるまでに取得する行数を決定します。 |1、2、… |はい (**rejectType** が **percentage** の場合) |
-| useTypeDefault |PolyBase がテキスト ファイルからデータを取得する場合にどのように区切りテキスト ファイル内の不足値を処理するかを、指定します。<br/><br/>このプロパティの詳細については、[CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx) Arguments セクションをご覧ください。 |True、False (既定値) |いいえ |
-| writeBatchSize |バッファー サイズが writeBatchSize に到達したときに SQL テーブルにデータを挿入します。 |整数 (行数) |いいえ (既定値:10000) |
+| useTypeDefault |PolyBase によってテキスト ファイルからデータが取得されるときに、区切りテキスト ファイル内の不足値を処理する方法を指定します。<br/><br/>このプロパティの詳細については、[CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx) Arguments セクションをご覧ください。 |True、False (既定値) |いいえ |
+| writeBatchSize |バッファー サイズが writeBatchSize に到達したときに SQL テーブルにデータを挿入します。 |整数 (行数) |いいえ (既定値: 10000) |
 | writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。 |TimeSpan<br/><br/> 例:"00:30:00" (30 分)。 |いいえ |
 
 #### <a name="sqldwsink-example"></a>SqlDWSink の例
@@ -257,13 +257,13 @@ SQL Data Warehouse の PolyBase は (サービス プリンシパルを使用し
 ```
 
 ## <a name="best-practices-when-using-polybase"></a>PolyBase を使用する際のベスト プラクティス
-次のセクションでは、「[Azure SQL Data Warehouse のベスト プラクティス](../../sql-data-warehouse/sql-data-warehouse-best-practices.md)」に記載されている内容に追加するベスト プラクティスを説明します。
+次のセクションでは、「[Azure SQL Data Warehouse のベスト プラクティス](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md)」に記載されている内容に追加するベスト プラクティスを説明します。
 
 ### <a name="required-database-permission"></a>必要なデータベース アクセス許可
-PolyBase を使用するには、データを SQL Data Warehouse に読み込むために使用されるユーザーが、ターゲット データベースでの ["CONTROL" アクセス許可](https://msdn.microsoft.com/library/ms191291.aspx)を持っている必要があります。 これを実現する方法の 1 つに、ユーザーを "db_owner" ロールのメンバーとして追加するという方法があります。 具体的な手順については、[こちらのセクション](../../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization)に従ってください。
+PolyBase を使用するには、データを SQL Data Warehouse に読み込むために使用されるユーザーが、ターゲット データベースでの ["CONTROL" アクセス許可](https://msdn.microsoft.com/library/ms191291.aspx)を持っている必要があります。 これを実現する方法の 1 つに、ユーザーを "db_owner" ロールのメンバーとして追加するという方法があります。 具体的な手順については、[こちらのセクション](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization)に従ってください。
 
 ### <a name="row-size-and-data-type-limitation"></a>行のサイズとデータ型の制限
-Polybase 読み込みは両方が **1 MB** 未満の行の読み込みに制限され、VARCHR(MAX)、NVARCHAR(MAX)、VARBINARY(MAX) に読み込むことはできません。 [こちら](../../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads)を参照してください。
+Polybase 読み込みは両方が **1 MB** 未満の行の読み込みに制限され、VARCHR(MAX)、NVARCHAR(MAX)、VARBINARY(MAX) に読み込むことはできません。 [こちら](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads)を参照してください。
 
 ソース データの行のサイズが 1 MB を超える場合は、ソース テーブルを垂直方向に複数の小さいテーブルに分割し、各テーブルの行の最大サイズが制限を超えないようにすることができます。 その後、この分割した小さいテーブルは、PolyBase を使用して Azure SQL Data Warehouse に読み込み、マージすることができます。
 
@@ -305,9 +305,9 @@ Data Factory は、コピー元データ ストアのテーブルと同じ名前
 | BigInt | BigInt |
 | SmallInt | SmallInt |
 | TinyInt | TinyInt |
-| Bit | Bit |
+| bit | bit |
 | Decimal | Decimal |
-| Numeric | Decimal |
+| 数値 | Decimal |
 | Float | Float |
 | Money | Money |
 | Real | Real |
@@ -348,15 +348,15 @@ Azure SQL Data Warehouse との間でデータを移動するとき、SQL 型か
 | binary |Byte[] |
 | bit |Boolean |
 | char |String, Char[] |
-| date |Datetime |
-| Datetime |Datetime |
-| datetime2 |Datetime |
+| date |DateTime |
+| Datetime |DateTime |
+| datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
 | image |Byte[] |
-| int |Int32 |
+| INT |Int32 |
 | money |Decimal |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
@@ -364,7 +364,7 @@ Azure SQL Data Warehouse との間でデータを移動するとき、SQL 型か
 | nvarchar |String, Char[] |
 | real |Single |
 | rowversion |Byte[] |
-| smalldatetime |Datetime |
+| smalldatetime |DateTime |
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object * |
@@ -372,7 +372,7 @@ Azure SQL Data Warehouse との間でデータを移動するとき、SQL 型か
 | time |TimeSpan |
 | timestamp |Byte[] |
 | tinyint |Byte |
-| uniqueidentifier |Guid |
+| UNIQUEIDENTIFIER |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |xml |
@@ -607,7 +607,7 @@ Azure SQL Data Warehouse との間でデータを移動するとき、SQL 型か
 ```
 **Azure BLOB の入力データセット:**
 
-データは新しい BLOB から 1 時間おきに取得されます (頻度: 時間、間隔:1)。 BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日の部分を利用し、ファイル名は開始時間の時刻部分を使用します。 "external": "true" 設定は Data Factory サービスにこのテーブルが Data Factory の外部にあり、Data Factory のアクティビティでは生成されないことを通知します。
+データは新しい BLOB から 1 時間おきに取得されます (頻度: 時間、間隔:1)。 BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスでは開始時間の年、月、日の部分を使用し、ファイル名では開始時間の時刻部分を使用します。 "external": "true" 設定は Data Factory サービスにこのテーブルが Data Factory の外部にあり、Data Factory のアクティビティでは生成されないことを通知します。
 
 ```JSON
 {

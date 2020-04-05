@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: rajanaki
 ms.openlocfilehash: a411fc9a95bef595a8fc49cad77189bb88fb7661
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875795"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229055"
 ---
 # <a name="remove-servers-and-disable-protection"></a>サーバーの削除と保護の無効化
 

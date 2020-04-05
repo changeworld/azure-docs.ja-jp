@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 3cc811c7ebf952818bad68ab57659ec99afd2104
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76276535"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-powershell"></a>PowerShell を使用して仮想マシン スケール セットを自動的にスケールする

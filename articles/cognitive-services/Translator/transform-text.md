@@ -11,26 +11,26 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
 ms.openlocfilehash: 533f09b09b7f5899833669b5f0ad4ffa5efa3a43
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68594897"
 ---
 # <a name="how-to-use-the-transformtext-method"></a>TransformText メソッドの使用方法
 
 > [!NOTE]
-> このメソッドは非推奨です。 これは Translator Text API の V3.0 では使用できません。
+> このメソッドは非推奨とされます。 これは Translator Text API の V3.0 では使用できません。
 
 TransformText メソッドは、ソーシャル メディア用のテキスト正規化関数で、入力を正規化した形式で返します。 このメソッドは、ソーシャル メディアやユーザーが生成したコンテンツでは通常あまり見られないクリーンな入力テキストを必要とする、機械翻訳やその他のアプリケーションの前処理ステップとして使用できます。 この機能は現在、英語入力でのみ動作します。
 
 このメソッドは、HTTP 上で GET を使用する RESTful サービスです。 単純な XML と JSON のシリアル化をサポートしています。
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>パラメーター
 
 | パラメーター | 説明 |
 |:---|:---|
-| Authorization header (Authorization ヘッダー) | **必須**: アプリケーションを識別するために使用される HTTP ヘッダー。 次のキーを使用:“Authorization” と値:"Bearer" + " " + アクセス トークン。 詳細については、ここを参照してください。|
+| Authorization header (Authorization ヘッダー) | **必須**: アプリケーションを識別するために使用される HTTP ヘッダー。 キーとして "Authorization" を、値として "Bearer" + " " + アクセス トークンを使用します。 詳細については、ここを参照してください。|
 | language | **必須**: 言語コードを表す文字列。 このパラメーターは、言語名として **en** を指定する英語のみをサポートしています。|
 | category | **省略可能**: 翻訳のカテゴリまたは領域を含む文字列。 このパラメーターは、既定のオプション **general** のみをサポートしています。|
 | sentence | **必須**: 修正する文。 |

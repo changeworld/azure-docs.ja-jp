@@ -8,21 +8,18 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: e22a9ae2888187dc877876ee5d4d4ec4ecb7c6e5
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: 42098d54725cc12691839b63c508efbecf042aa0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78329444"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80064410"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-and-connect-it-to-your-iot-central-application"></a>チュートリアル:デバイス機能モデルを使用して IoT プラグ アンド プレイ (プレビュー) デバイスを作成し、IoT Central アプリケーションに接続する
 
 "_デバイス機能モデル_" (DCM) には、[IoT プラグ アンド プレイ (プレビュー)](../../iot-pnp/overview-iot-plug-and-play.md) デバイスの機能が記述されています。 IoT Central では、デバイスが初めて接続されるときに、DCM の使用によりデバイスのテンプレートとデバイス用の視覚化を作成することができます。
 
 [IoT プラグ アンド プレイ](../../iot-pnp/overview-iot-plug-and-play.md)のサポートはプレビュー段階であり、一部のリージョンでのみサポートされています。
-
-> [!NOTE]
-> IoT プラグ アンド プレイ デバイスをサポートするプレビュー アプリケーションの作成については、サポート チームにお問い合わせください。
 
 このチュートリアルでは、以下の内容を学習します。
 

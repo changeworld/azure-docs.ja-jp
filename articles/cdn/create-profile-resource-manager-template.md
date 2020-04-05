@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 03/05/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: b711a12161bc134bdcbb8c1f3e74f2e5ae06e701
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 3cda4db558210ecbfcfc8ce2aaed8c6f69f5e026
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083137"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79458785"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint-using-resource-manager-template"></a>クイック スタート:Resource Manager テンプレートを使用して Azure CDN のプロファイルとエンドポイントを作成する
 
@@ -36,13 +36,13 @@ ms.locfileid: "74083137"
 
 詳細については、「[Azure で静的 HTML Web アプリを作成する](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html)」を参照してください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 すべてのリソースを同じリソース グループ内にデプロイする必要があります。
 
 選択した場所にリソース グループを作成します。 この例では、米国東部に cdn という名前のリソース グループを作成します。
 
-```bash
+```azurecli-interactive
 az group create --name cdn --location eastus
 ```
 
@@ -189,7 +189,7 @@ Azure CLI を使用してテンプレートをデプロイします。 以下の
 
 **endpointOriginHostName** - CDN を通じてサービスが提供されるエンドポイント (cdndemo.azurewebsites.net など)。
 
-```bash
+```azurecli-interactive
 az group deployment create --resource-group cdn --template-file arm-cdn.json
 ```
 
@@ -197,7 +197,7 @@ az group deployment create --resource-group cdn --template-file arm-cdn.json
 
 ## <a name="view-the-cdn-profile"></a>CDN プロファイルの表示
 
-```bash
+```azurecli-interactive
 az cdn profile list --resource-group cdn -o table
 ```
 
@@ -205,7 +205,7 @@ az cdn profile list --resource-group cdn -o table
 
 ## <a name="view-the-cdn-endpoint-for-the-profile-standard-microsoft"></a>プロファイル standard-microsoft の CDN エンドポイントの表示
 
-```bash
+```azurecli-interactive
 az cdn endpoint list --profile-name standard-microsoft --resource-group cdn -o table
 ```
 
@@ -217,18 +217,18 @@ az cdn endpoint list --profile-name standard-microsoft --resource-group cdn -o t
 
 リソース グループを削除すると、リソース グループ内にデプロイされたすべてのリソースが削除されます。
 
-```bash
+```azurecli-interactive
 az group delete --name cdn
 ```
 
 ![リソース グループの削除](./media/create-profile-resource-manager-template/cdn-delete-resource-group.png)
 
-## <a name="references"></a>参照
+## <a name="references"></a>References
 
 * CDN プロファイル - [Azure Resource Manager テンプレート参照](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles)に関するページ
 * CDN エンドポイント - [Azure Resource Manager テンプレート参照のドキュメント](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 カスタム ドメインを CDN エンドポイントに追加する方法については、次のチュートリアルを参照してください。
 

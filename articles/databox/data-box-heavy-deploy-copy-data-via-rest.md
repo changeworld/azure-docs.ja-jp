@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 43f6404a483cad8377e70591f5454180f0dd07a6
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 9f3ba0a7e9f7cf72b0eade16679d980fe2207f98
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560339"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80297219"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>チュートリアル:REST API 経由で Azure Data Box BLOB ストレージにデータをコピーする  
 
@@ -98,7 +98,7 @@ Azure portal を使用して証明書をダウンロードします。
  
 ### <a name="import-certificate"></a>証明書のインポート 
 
-HTTPS 経由で Data Box BLOB ストレージにアクセスするには、デバイスの SSL 証明書が必要です。 この証明書をクライアント アプリケーションで利用できるようにする方法は、アプリケーション、オペレーティング システム、およびディストリビューションによって異なります。 システムの証明書ストアにインポートされた証明書にアクセスできるアプリケーションもあれば、そのメカニズムを利用しないアプリケーションもあります。
+HTTPS 経由で Data Box BLOB ストレージにアクセスするには、デバイスの TLS/SSL 証明書が必要です。 この証明書をクライアント アプリケーションで利用できるようにする方法は、アプリケーション、オペレーティング システム、およびディストリビューションによって異なります。 システムの証明書ストアにインポートされた証明書にアクセスできるアプリケーションもあれば、そのメカニズムを利用しないアプリケーションもあります。
 
 このセクションでは、いくつかのアプリケーションに固有の情報を説明しています。 他のアプリケーションの詳細については、使用しているアプリケーションとオペレーティング システムのドキュメントを参照してください。
 

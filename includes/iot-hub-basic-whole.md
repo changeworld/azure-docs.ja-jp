@@ -9,10 +9,10 @@ ms.date: 04/01/2018
 ms.author: kgremban
 ms.custom: include file
 ms.openlocfilehash: ce74966cab3469d59693c59831bb3d4ce625f90e
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76159543"
 ---
 >[!NOTE]

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: bc6e0718cdc4ccb18480dc760279da9c177db4cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60877466"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>Java SDK を使用した Azure Data Lake Storage Gen1 に対するファイルシステム操作
@@ -73,7 +73,7 @@ Azure Data Lake Storage Gen1 Java SDK を使用して、フォルダーの作成
         import java.util.Arrays;
         import java.util.List;
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 
 * アプリケーションのエンドユーザー認証については、[Data Lake Storage Gen1 による Java を使用したエンドユーザー認証](data-lake-store-end-user-authenticate-java-sdk.md)に関する記事をご覧ください。
 * アプリケーションのサービス間認証については、[Data Lake Storage Gen1 による Java を使用したサービス間認証](data-lake-store-service-to-service-authenticate-java.md)に関する記事をご覧ください。
@@ -208,7 +208,7 @@ Azure Data Lake Storage Gen1 Java SDK を使用して、フォルダーの作成
 1. IDE 内から実行するには、 **[実行]** ボタンを見つけてクリックします。 Maven から実行するには、[exec:exec](https://www.mojohaus.org/exec-maven-plugin/exec-mojo.html) を使用します。
 2. コマンド ラインから実行できるスタンドアロン jar を生成するには、[Maven アセンブリ プラグイン](https://maven.apache.org/plugins/maven-assembly-plugin/usage.html)を使用して、すべての依存関係を含めて jar をビルドします。 [GitHub のサンプル ソース コード](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml)の pom.xml に例が含まれています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Java SDK の JavaDoc を確認する](https://azure.github.io/azure-data-lake-store-java/javadoc/)
 * [Data Lake Storage Gen1 でのデータのセキュリティ保護](data-lake-store-secure-data.md)
 

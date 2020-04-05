@@ -8,15 +8,15 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 384f4c2ee3021678c530aa5c98eaf4dbfd661e95
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73572277"
 ---
 # <a name="use-gateway-for-data-sources-on-an-azure-virtual-network-vnet"></a>Azure Virtual Network (VNet) 上のデータソースに対してゲートウェイを使用する
 
-この記事では、データソースが [Azure Virtual Network (VNet)](../virtual-network/virtual-networks-overview.md) 上に存在する場合に使用する Azure Analysis Services の **AlwaysUseGateway** サーバー プロパティについて説明します。
+この記事では、データソースが **Azure Virtual Network (VNet)** 上に存在する場合に使用する Azure Analysis Services の [AlwaysUseGateway](../virtual-network/virtual-networks-overview.md) サーバー プロパティについて説明します。
 
 ## <a name="server-access-to-vnet-data-sources"></a>VNet データソースへのサーバー アクセス
 
@@ -35,7 +35,7 @@ Azure SQL Database Managed Instance データ ソースは、プライベート 
     ![AlwaysUseGateway プロパティ](media/analysis-services-vnet-gateway/aas-ssms-always-property.png)
 
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 [オンプレミス データソースへの接続](analysis-services-gateway.md)   
 [オンプレミス データ ゲートウェイをインストールして構成する](analysis-services-gateway-install.md)   
 [Azure Virtual Network (VNET)](../virtual-network/virtual-networks-overview.md)   

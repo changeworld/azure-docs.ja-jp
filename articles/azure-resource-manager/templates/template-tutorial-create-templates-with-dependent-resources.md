@@ -5,18 +5,18 @@ author: mumian
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f60f248ec3fbbe5adfb61bf361546d1d5e238f54
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 5db2fb34a6d9330e745a9b4d1f5fed538e96c557
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250200"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239318"
 ---
-# <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>チュートリアル:依存リソースを含む Azure Resource Manager テンプレートを作成する
+# <a name="tutorial-create-arm-templates-with-dependent-resources"></a>チュートリアル:依存リソースを含む ARM テンプレートを作成する
 
-Azure Resource Manager テンプレートを作成して、複数のリソースをデプロイしたりデプロイ順序を構成したりする方法を説明します。 テンプレートを作成したら、Azure Portal から Cloud Shell を使用してテンプレートをデプロイします。
+Azure Resource Manager (ARM) テンプレートを作成して、複数のリソースをデプロイしたりデプロイ順序を構成したりする方法を説明します。 テンプレートを作成したら、Azure Portal から Cloud Shell を使用してテンプレートをデプロイします。
 
-このチュートリアルでは、ストレージ アカウント、仮想マシン、仮想ネットワーク、およびその他の依存リソースを作成します。 別のリソースが存在するまではデプロイできないリソースもあります。 たとえば、仮想マシンを作成するには、そのストレージ アカウントとネットワーク インターフェイスが存在している必要があります。 このリレーションシップは、一方のリソースと他方のリソースに依存関係を持たせることにより定義します。 Resource Manager により、リソース間の依存関係が評価され、リソースは依存する順にデプロイされます。 相互依存していないリソースは、平行してデプロイされます。 詳細については、「[Define the order for deploying resources in Azure Resource Manager Templates](./define-resource-dependency.md)」 (Azure Resource Manager テンプレートでリソースをデプロイする順序を定義する) を参照してください。
+このチュートリアルでは、ストレージ アカウント、仮想マシン、仮想ネットワーク、およびその他の依存リソースを作成します。 別のリソースが存在するまではデプロイできないリソースもあります。 たとえば、仮想マシンを作成するには、そのストレージ アカウントとネットワーク インターフェイスが存在している必要があります。 このリレーションシップは、一方のリソースと他方のリソースに依存関係を持たせることにより定義します。 Resource Manager により、リソース間の依存関係が評価され、リソースは依存する順にデプロイされます。 相互依存していないリソースは、平行してデプロイされます。 詳細については、「[Azure Resource Manager テンプレートでのリソース デプロイ順序の定義](./define-resource-dependency.md)」を参照してください。
 
 ![Resource Manager テンプレートの依存リソースのデプロイ順序を示す図](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-dependent-resources-diagram.png)
 
@@ -33,17 +33,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-* Visual Studio Code と Resource Manager ツール拡張機能。 「[Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](use-vs-code-to-create-template.md)」を参照してください。
+* Visual Studio Code と Resource Manager ツール拡張機能。 [Visual Studio Code を使って ARM テンプレートを作成する方法](use-vs-code-to-create-template.md)に関するページを参照してください。
 * セキュリティを向上させるには、生成されたパスワードを仮想マシンの管理者アカウントに対して使用します。 パスワードを生成するためのサンプルを次に示します。
 
     ```console
     openssl rand -base64 32
     ```
-    Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、「[チュートリアル:Resource Manager テンプレートのデプロイで Azure Key Vault を統合する](./template-tutorial-use-key-vault.md)」を参照してください。 パスワードは 3 か月ごとに更新することをお勧めします。
+    Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、「[チュートリアル:ARM テンプレートのデプロイで Azure Key Vault を統合する](./template-tutorial-use-key-vault.md)」を参照してください。 パスワードは 3 か月ごとに更新することをお勧めします。
 
 ## <a name="open-a-quickstart-template"></a>クイック スタート テンプレートを開く
 
-Azure クイック スタート テンプレートは、Resource Manager テンプレートのリポジトリです。 テンプレートを最初から作成しなくても、サンプル テンプレートを探してカスタマイズすることができます。 このチュートリアルで使用するテンプレートは、「[Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)」(単純な Windows VM をデプロイする) と呼ばれます。
+Azure クイックスタート テンプレートは、ARM テンプレートのリポジトリです。 テンプレートを最初から作成しなくても、サンプル テンプレートを探してカスタマイズすることができます。 このチュートリアルで使用するテンプレートは、「[Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)」(単純な Windows VM をデプロイする) と呼ばれます。
 
 1. Visual Studio Code から、 **[ファイル]** > **[ファイルを開く]** を選択します。
 2. **[ファイル名]** に以下の URL を貼り付けます。

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
 ms.openlocfilehash: 9d4f7faa18ee7fae158afb42b8c42287e61dd103
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67181762"
 ---
 ### <a name="create-a-nodejs-application"></a>Node.js アプリケーションの作成
@@ -21,7 +21,7 @@ ms.locfileid: "67181762"
 
 ### <a name="write-some-code-to-send-messages"></a>メッセージを送信するコードを記述する
 
-1. `sender.js` ファイルの先頭に次の `constants` を追加します。
+1. `constants` ファイルの先頭に次の `sender.js` を追加します。
    
     ```js
     const WebSocket = require('hyco-ws');

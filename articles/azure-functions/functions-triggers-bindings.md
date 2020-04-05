@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: d41fd7f66ecef3a563345424d7dc4366e47d3f0e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356106"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234863"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions でのトリガーとバインドの概念
 

@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 10/30/2018
 ms.author: cynthn
 ms.openlocfilehash: 096fe779c077424b01df3ead5965cb799866a03b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74033540"
 ---
 # <a name="encrypt-virtual-disks-on-a-windows-vm"></a>Windows VM の仮想ディスクを暗号化する
@@ -38,7 +38,7 @@ VM 暗号化のプロセスは次のとおりです。
 1. 提供された暗号化キーを使って仮想ディスクが暗号化されます。
 
 
-## <a name="requirements-and-limitations"></a>要件と制限
+## <a name="requirements-and-limitations"></a>要件と制限事項
 
 ディスク暗号化のサポートされるシナリオと要件:
 
@@ -144,6 +144,6 @@ OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncry
 ProgressMessage            : OsVolume: Encrypted, DataVolumes: Encrypted
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Azure Key Vault の管理の詳細については、[仮想マシンの Key Vault の設定](key-vault-setup.md)に関するページを参照してください。
 * 暗号化されたカスタム VM を Azure にアップロードするための準備など、ディスクの暗号化について詳しくは、「[Azure Disk Encryption](../../security/fundamentals/encryption-overview.md)」をご覧ください。

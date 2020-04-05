@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/11/2019
+ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2ef528438591006be6e4cdec508dd15a7fb0a143
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6e3313e3ae201d0b730d8582fed9659d89f0d0c1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75357683"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80063043"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Azure リソースのロールベースのアクセス制御 (RBAC) の概要
 
@@ -46,7 +46,7 @@ RBAC を使用して、チーム内で職務を分離し、職務に必要なア
 
 ## <a name="how-rbac-works"></a>RBAC のしくみ
 
-RBAC を使用してリソースへのアクセスを制御するには、ロールの割り当てを作成します。 これは、アクセス許可が適用される方法であり、理解する必要のある重要な概念です。 ロールの割り当ては、セキュリティ プリンシパル、ロールの定義、スコープの 3 つの要素で構成されています。
+RBAC を使用してリソースへのアクセスを制御するには、ロールの割り当てを作成します。 これは理解する必要のある重要な概念です。これではアクセス許可を適用できます。 ロールの割り当ては、セキュリティ プリンシパル、ロールの定義、スコープの 3 つの要素で構成されています。
 
 ### <a name="security-principal"></a>セキュリティ プリンシパル
 
@@ -68,7 +68,7 @@ RBAC を使用してリソースへのアクセスを制御するには、ロー
 Azure には複数の[組み込みロール](built-in-roles.md)があり、使用することができます。 4 つの基本的な組み込みロールを次に示します。 最初の 3 つは、すべてのリソースの種類に適用されます。
 
 - [所有者](built-in-roles.md#owner) - 他のユーザーへアクセス権を委任する権限を含め、すべてのリソースへのフル アクセス権を持ちます。
-- [共同作成者](built-in-roles.md#contributor) - Azure リソースのすべての種類を作成および管理できますが、他のユーザーへアクセス権を付与することはできません。
+- [共同作成者](built-in-roles.md#contributor) - すべての種類の Azure リソースを作成および管理できます。他のユーザーにアクセス権を付与することはできません。
 - [閲覧者](built-in-roles.md#reader) - 既存の Azure リソースを表示できます。
 - [ユーザー アクセス管理者](built-in-roles.md#user-access-administrator) - Azure リソースへのユーザー アクセスを管理できます。
 
@@ -76,7 +76,7 @@ Azure には複数の[組み込みロール](built-in-roles.md)があり、使�
 
 Azure には、オブジェクト内のデータへのアクセスを許可できるようにするデータ操作が用意されています。 たとえば、ユーザーがあるストレージ アカウントへのデータの読み取りアクセス許可を持っている場合、そのユーザーはそのストレージ アカウント内の BLOB またはメッセージを読み取ることができます。 詳しくは、[Azure リソースのロール定義](role-definitions.md)に関する記事をご覧ください。
 
-### <a name="scope"></a>スコープ
+### <a name="scope"></a>Scope
 
 "*スコープ*" は、アクセスが適用されるリソースのセットです。 ロールを割り当てるときに、スコープを定義することによって、許可される操作をさらに制限できます。 これは、1 つのリソース グループについてのみ、あるユーザーを [Web サイトの共同作業者](built-in-roles.md#website-contributor)として指定する場合に便利です。
 
@@ -102,7 +102,7 @@ Azure では、複数のレベル ([管理グループ](../governance/management
 
 ## <a name="multiple-role-assignments"></a>複数のロールの割り当て
 
-複数のロールの割り当てが重複しているとどうなるでしょうか。 RBAC は加算方式のモデルであるため、ロール割り当てを足し算した結果が有効なアクセス許可になります。 ここで、ユーザーにサブスクリプション スコープの共同作成者ロールとリソース グループの閲覧者ロールが付与されている例を考えてみましょう。 共同作成者アクセス許可と閲覧者アクセス許可を足すと、事実上、リソース グループに対する共同作成者ロールになります。 そのため、この場合、閲覧者ロールの割り当ては効果がありません。
+複数のロールの割り当てが重複しているとどうなるでしょうか。 RBAC は加算方式のモデルであるため、自分で行ったロール割り当ての合計が自分の実際のアクセス許可になります。 ここで、ユーザーにサブスクリプション スコープの共同作成者ロールとリソース グループの閲覧者ロールが付与されている例を考えてみましょう。 共同作成者アクセス許可と閲覧者アクセス許可を足すと、実質的にリソース グループの共同作成者ロールになります。 そのため、この場合、閲覧者ロールの割り当ては効果がありません。
 
 ![複数のロールの割り当て](./media/overview/rbac-multiple-roles.png)
 
@@ -136,7 +136,7 @@ Azure では、複数のレベル ([管理グループ](../governance/management
 
 ## <a name="next-steps"></a>次のステップ
 
-- [クイック スタート:Azure portal を使用して Azure リソースに対するユーザーのアクセス権を表示する](check-access.md)
+- [クイック スタート: Azure portal を使用して Azure リソースに対するユーザーのアクセス権を表示する](check-access.md)
 - [RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する](role-assignments-portal.md)
 - [Azure での各種ロールについて](rbac-and-directory-admin-roles.md)
 - [エンタープライズ クラウドの導入: Azure でのリソース アクセス管理](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

@@ -10,15 +10,15 @@ ms.service: lab-services
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: ac990141ccc694ed7460763e84126d9fefdbb609
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: cc937589b2fc4f394b44cf6890a352d770751d15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539452"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79502023"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボを管理する 
 この記事では、クラスルーム ラボの作成および削除方法について説明します。 また、ラボ アカウントのすべてのクラスルーム ラボを表示する方法についても説明します。 
@@ -97,7 +97,7 @@ ms.locfileid: "77539452"
 
 ### <a name="vm-sizes"></a>VM サイズ  
 
-| Size | コア | RAM | 説明 | 
+| サイズ | コア | RAM | 説明 | 
 | ---- | ----- | --- | ----------- | 
 | Small | 2 | 3.5 GB | このサイズは、コマンド ライン、Web ブラウザーの起動、トラフィックが少ない Web サーバー、中小規模のデータベースに最適です。 |
 | Medium | 4 | 7 GB | このサイズは、リレーショナル データベース、メモリ内 Caching、および分析に最適です。 | 

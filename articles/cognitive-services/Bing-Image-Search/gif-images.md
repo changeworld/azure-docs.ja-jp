@@ -12,10 +12,10 @@ ms.date: 04/24/2018
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: ad33b5a28728a8e7f9c0a70ff81ea5a9e65624bd
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74072656"
 ---
 # <a name="search-for-gif-images"></a>GIF 画像を検索する 
@@ -207,6 +207,6 @@ class SearchResults{
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [C# のクイック スタート](quickstarts/csharp.md)
 - [Image Search の単一ページ アプリケーションのチュートリアル](tutorial-bing-image-search-single-page-app.md)

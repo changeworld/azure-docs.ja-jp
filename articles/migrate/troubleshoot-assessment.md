@@ -7,16 +7,16 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: fb1e32d9f67febb09eadfb5d31221db33504eb05
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 205b52201edb849abab02809b58ff9dc77a32a29
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289477"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80127675"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>評価と依存関係の視覚化のトラブルシューティング
 
-この記事は、[Azure Migrate: Server Assessment]](migrate-services-overview.md#azure-migrate-server-assessment-tool) を使用した評価と依存関係の視覚化に関する問題のトラブルシューティングに役立ちます。
+この記事は、[Azure Migrate: Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) を使用した評価と依存関係の視覚化に関する問題のトラブルシューティングに役立ちます。
 
 
 ## <a name="assessment-readiness-issues"></a>アセスメントの準備状態
@@ -74,7 +74,7 @@ Azure Migrate Server Assessment では、評価の種類に基づいて、現在
 
 -  評価が**オンプレミス**の場合は、4 コアと 8 GB のメモリを備えた Azure VM SKU が推奨されます。
 - 評価がパフォーマンスベースの場合は、CPU およびメモリの有効な使用率 (4 コアの 50% * 1.3 = 2.6 コア、8 GB メモリの 50% * 1.3 = 5.3 GB メモリ) に基づき、4 コア (最も近いサポートされるコア数) と 8 GB メモリ (最も近いサポートされるメモリ サイズ) の最も安価な VM SKU が推奨されます。
-- 評価のサイズ決定に関する[詳細を参照](concepts-assessment-calculation.md#assessments-in-server-assessment)してください。
+- 評価のサイズ決定に関する[詳細を参照](concepts-assessment-calculation.md#types-of-assessments)してください。
 
 ## <a name="azure-disk-skus-bigger-than-on-premises"></a>オンプレミスより大きい Azure ディスク SKU
 
@@ -113,7 +113,7 @@ Azure Migrate の依存関係視覚化機能は Service Map に依存してい�
 
 Windows VM の場合:
 1. コントロール パネルで MMA を開始します。
-2. **[Microsoft Monitoring Agent のプロパティ]** > **[Azure Log Analytics (OMS)]** で、ワークスペースの **[状態]** が緑色になっていることを確認します。
+2. **[Microsoft Monitoring Agent のプロパティ]**  >  **[Azure Log Analytics (OMS)]** で、ワークスペースの **[状態]** が緑色になっていることを確認します。
 3. 状態が緑色でない場合は、ワークスペースを削除して、再度 MMA に追加してみてください。
 
     ![MMA のステータス](./media/troubleshoot-assessment/mma-properties.png)
@@ -153,14 +153,14 @@ Azure Migrate Server Assessment では、最大 10 個の VM を含む[グルー
 次のようにネットワーク トラフィック ログを収集します。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-2. F12 キーを押して開発者ツールを起動します。 必要な場合は、**[ナビゲーション時にエントリをクリア]** の設定をオフにします。
+2. F12 キーを押して開発者ツールを起動します。 必要な場合は、 **[ナビゲーション時にエントリをクリア]** の設定をオフにします。
 3. **[ネットワーク]** タブを選択し、ネットワーク トラフィックのキャプチャを開始します。
-   - Chrome では、**[Preserve log]\(ログの保持\)** を選択します。 自動で記録が開始されるはずです。 赤い円は、トラフィックがキャプチャされていることを示しています。 赤い円が表示されない場合は、黒い円を選択して開始します。
+   - Chrome では、 **[Preserve log]\(ログの保持\)** を選択します。 自動で記録が開始されるはずです。 赤い円は、トラフィックがキャプチャされていることを示しています。 赤い円が表示されない場合は、黒い円を選択して開始します。
    - Microsoft Edge または Internet Explorer では、自動で記録が開始されるはずです。 開始されない場合は、緑色の再生ボタンを選択します。
 4. エラーを再現してみます。
 5. 記録中にエラーが発生したら、記録を停止し、記録されたアクティビティのコピーを保存します。
    - Chrome では、右クリックして **[Save as HAR with content]\(内容を HAR ファイルに保存する\)** を選択します。 この操作により、ログが .har ファイルとして圧縮されエクスポートされます。
-   - Microsoft Edge または Internet Explorer で、**[キャプチャしたトラフィックのエクスポート]** オプションを選択します。 この操作により、ログが圧縮されてエクスポートされます。
+   - Microsoft Edge または Internet Explorer で、 **[キャプチャしたトラフィックのエクスポート]** オプションを選択します。 この操作により、ログが圧縮されてエクスポートされます。
 6. **[コンソール]** タブを選択し、いずれかの警告またはエラーを確認します。 コンソール ログを保存するには次の操作を行います。
    - Chrome では、コンソール ログのどこかを右クリックします。 **[名前を付けて保存]** を選択し、ログをエクスポートして zip 圧縮します。
    - Microsoft Edge または Internet Explorer では、エラーを右クリックして **[すべてコピー]** を選択します。

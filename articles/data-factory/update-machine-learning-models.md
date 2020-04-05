@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.openlocfilehash: 3313c9c362a9b82cf7ed8db63479aaa5cf0c777e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73683248"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>更新リソース アクティビティを使って Azure Machine Learning モデルを更新する
@@ -58,7 +58,7 @@ Machine Learning を使って作成するモデルは、通常、静的ではあ
 
 | プロパティ                      | 説明                              | 必須 |
 | :---------------------------- | :--------------------------------------- | :------- |
-| 名前                          | パイプラインのアクティビティの名前。     | はい      |
+| name                          | パイプラインのアクティビティの名前。     | はい      |
 | description                   | アクティビティの動作を説明するテキスト。  | いいえ       |
 | type                          | Azure Machine Learning 更新リソース アクティビティの場合、アクティビティの種類は **AzureMLUpdateResource** です。 | はい      |
 | linkedServiceName             | updateResourceEndpoint プロパティが含まれる Azure Machine Learning のリンクされたサービス。 | はい      |
@@ -127,7 +127,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 次のシナリオで詳細を説明します。 このシナリオでは、Azure Data Factory パイプラインから Azure Machine Learning Studio モデルの再トレーニングと更新を行う例を示します。
 
 
-## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>サンプル:Azure Machine Learning モデルの再トレーニングと更新
+## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>サンプル: Azure Machine Learning モデルの再トレーニングと更新
 
 このセクションでは、**Azure Machine Learning Studio バッチ実行アクティビティ**を使用してモデルの再トレーニングを行うサンプル パイプラインを示します。 このパイプラインでは、**Azure Machine Learning Studio 更新リソース アクティビティ**を使用したスコア付け Web サービスのモデルの更新も行います。 このセクションでは、すべてのリンクされたサービス、データ セット、およびパイプラインの JSON スニペットも提供されます。
 
@@ -266,7 +266,7 @@ Azure Storage には次のデータが格納されています。
     }
 }
 ```
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 別の手段でデータを変換する方法を説明している次の記事を参照してください。
 
 * [U-SQL アクティビティ](transform-data-using-data-lake-analytics.md)

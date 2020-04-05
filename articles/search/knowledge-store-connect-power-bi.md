@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.openlocfilehash: 4fd71a7f322cb2672eb485f17e4de2619a7c2d2c
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270028"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Power BI を使用してナレッジ ストアに接続する
@@ -28,7 +28,7 @@ ms.locfileid: "78270028"
 
 ## <a name="sample-power-bi-template---azure-portal-only"></a>サンプル Power BI テンプレート - Azure portal のみ
 
-[Azure portal を使用してナレッジ ストア](knowledge-store-create-portal.md)を作成するときは、**データのインポート** ウィザードの 2 ページ目で、[Power BI テンプレート](https://github.com/Azure-Samples/cognitive-search-templates)をダウンロードすることもできます。 このテンプレートでは、WordCloud や Network Navigator など、テキスト ベースのコンテンツ用の視覚エフェクトがいくつか提供されます。 
+[Azure portal を使用してナレッジ ストア](knowledge-store-create-portal.md)を作成するときは、[データのインポート](https://github.com/Azure-Samples/cognitive-search-templates) ウィザードの 2 ページ目で、**Power BI テンプレート**をダウンロードすることもできます。 このテンプレートでは、WordCloud や Network Navigator など、テキスト ベースのコンテンツ用の視覚エフェクトがいくつか提供されます。 
 
 **[認知技術を追加します]** ページの **[Power BI テンプレートを取得する]** をクリックして、そのパブリックな GitHub の場所からテンプレートを取得してダウンロードします。 ウィザードでは、ウィザードで指定されたナレッジ ストアの予測でキャプチャされたデータの構造に合わせてテンプレートが変更されます。 このため、データ入力とスキルの選択が異なるとすると、ダウンロードしたテンプレートは、ウィザードを実行するたびに変化します。
 
@@ -43,7 +43,7 @@ ms.locfileid: "78270028"
 
 1. **[データの取得]** ウィンドウで **[Azure]** を選択し、 **[Azure Table Storage]** を選択します。
 
-1. **[Connect]** をクリックします。
+1. **[接続]** をクリックします。
 
 1. **[アカウント名または URL]** に、Azure Storage アカウントの名前を入力します (完全な URL が自動的に作成されます)。
 

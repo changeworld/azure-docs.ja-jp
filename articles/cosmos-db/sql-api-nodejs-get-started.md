@@ -10,10 +10,10 @@ ms.date: 08/06/2019
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
 ms.openlocfilehash: 67f0d79c6b074a822917829eee94c5fd3f6a1ef2
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78274034"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>チュートリアル:JavaScript SDK を使用して、Azure Cosmos DB SQL API データを管理するための Node.js コンソール アプリを構築する
@@ -53,7 +53,7 @@ ms.locfileid: "78274034"
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a id="SetupNode"></a>Node.js アプリケーションを設定する
+## <a name="set-up-your-nodejs-application"></a><a id="SetupNode"></a>Node.js アプリケーションを設定する
 
 アプリケーションを構築するコードを書く前に、アプリケーションのフレームワークを構築することができます。 次の手順を実行して、フレームワーク コードを含む Node.js アプリケーションを設定します。
 
@@ -75,7 +75,7 @@ ms.locfileid: "78274034"
 5. npm で @azure/cosmos モジュールをインストールします。 次のコマンドを使用します。
    * ```npm install @azure/cosmos --save```
 
-## <a id="Config"></a>アプリの構成を設定する
+## <a name="set-your-apps-configurations"></a><a id="Config"></a>アプリの構成を設定する
 
 アプリができたら、Azure Cosmos DB と対話できることを確認する必要があります。 次の手順のようにいくつかの構成設定を更新することで、Azure Cosmos DB と対話するようにアプリを設定できます。
 
@@ -101,7 +101,7 @@ ms.locfileid: "78274034"
    
    ```app.js``` ファイル内で参照できるように ```config``` オブジェクトをエクスポートするために、`module.exports = config;` コードが使用されます。
 
-## <a id="Connect"></a>Azure Cosmos DB アカウントに接続する
+## <a name="connect-to-an-azure-cosmos-db-account"></a><a id="Connect"></a>Azure Cosmos DB アカウントに接続する
 
 1. テキスト エディターで、空の ```app.js``` ファイルを開きます。 ```@azure/cosmos``` モジュールと新たに作成した ```config``` モジュールをインポートするために、以下のコードをコピーして貼り付けます。
 
@@ -250,7 +250,7 @@ Azure Cosmos DB クライアントを初期化するためのコードは以上�
    node app.js
    ```
 
-## <a id="CreateContainer"></a>コンテナーを作成する
+## <a name="create-a-container"></a><a id="CreateContainer"></a>コンテナーを作成する
 
 次に、データの保存とクエリに使用できるように、Azure Cosmos DB アカウント内にコンテナーを作成します。 
 
@@ -374,7 +374,7 @@ Azure Cosmos DB クライアントを初期化するためのコードは以上�
    node app.js
    ```
 
-## <a id="CreateItem"></a>項目を作成する
+## <a name="create-an-item"></a><a id="CreateItem"></a>項目を作成する
 
 項目は、**Items** クラスの create 関数を使用して作成できます。 SQL API を使用している場合、項目はドキュメントとして投影されます。これは、ユーザー定義の (任意の) JSON コンテンツです。 これで、Azure Cosmos DB に項目を挿入できます。
 
@@ -414,7 +414,7 @@ Azure Cosmos DB クライアントを初期化するためのコードは以上�
    ```
 
 
-## <a id="Query"></a>Azure Cosmos DB リソースにクエリを実行する
+## <a name="query-azure-cosmos-db-resources"></a><a id="Query"></a>Azure Cosmos DB リソースにクエリを実行する
 
 Azure Cosmos DB では、各コンテナーに格納された JSON ドキュメントに対する豊富なクエリがサポートされています。 次のサンプル コードは、コンテナー内のドキュメントに対して実行できるクエリを示しています。
 
@@ -471,7 +471,7 @@ Azure Cosmos DB では、各コンテナーに格納された JSON ドキュメ�
    ```
 
 
-## <a id="ReplaceItem"></a>項目を置換する
+## <a name="replace-an-item"></a><a id="ReplaceItem"></a>項目を置換する
 Azure Cosmos DB は、項目の内容の置換をサポートします。
 
 1. app.js ファイルの **queryContainer** 関数の下に、**replaceFamilyItem** 関数をコピーして貼り付けます。 子のプロパティ "grade" が以前の 5 から 6 に変更されていることに注意してください。
@@ -516,7 +516,7 @@ Azure Cosmos DB は、項目の内容の置換をサポートします。
    ```
 
 
-## <a id="DeleteItem"></a>項目を削除する
+## <a name="delete-an-item"></a><a id="DeleteItem"></a>項目を削除する
 
 Azure Cosmos DB は、JSON 項目の削除をサポートします。
 
@@ -561,7 +561,7 @@ Azure Cosmos DB は、JSON 項目の削除をサポートします。
    ```
 
 
-## <a id="DeleteDatabase"></a>データベースを削除する
+## <a name="delete-the-database"></a><a id="DeleteDatabase"></a>データベースを削除する
 
 作成したデータベースを削除すると、データベースとすべての子リソース (コンテナー、項目など) が削除されます。
 
@@ -598,7 +598,7 @@ Azure Cosmos DB は、JSON 項目の削除をサポートします。
       .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
    ```
 
-## <a id="Run"></a>Node.js アプリケーションを実行する
+## <a name="run-your-nodejs-application"></a><a id="Run"></a>Node.js アプリケーションを実行する
 
 全体的なコードは次のようになります。
 
@@ -649,7 +649,7 @@ node app.js
     Press any key to exit
    ```
 
-## <a id="GetSolution"></a>完全な Node.js チュートリアル ソリューションを入手する 
+## <a name="get-the-complete-nodejs-tutorial-solution"></a><a id="GetSolution"></a>完全な Node.js チュートリアル ソリューションを入手する 
 
 このチュートリアルの手順を実行する時間がない場合や、コードをダウンロードするだけの場合は、[GitHub](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started ) から入手できます。 
 

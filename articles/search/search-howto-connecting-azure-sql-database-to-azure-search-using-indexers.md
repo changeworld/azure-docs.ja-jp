@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: c09727e8d92a449b41124eae6ad8381d66cb2619
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74113307"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-an-azure-cognitive-search-indexer"></a>Azure SQL Database に接続し、Azure Cognitive Search インデクサーを使用してコンテンツのインデックスを作成する
@@ -269,7 +269,7 @@ SQL 統合変更追跡ポリシーを使用するときは、個別のデータ�
 <a name="TypeMapping"></a>
 
 ## <a name="mapping-between-sql-and-azure-cognitive-search-data-types"></a>SQL データ型と Azure Cognitive Search データ型間のマッピング
-| SQL データ型 | ターゲット インデックス フィールドに許可される型 | メモ |
+| SQL データ型 | ターゲット インデックス フィールドに許可される型 | Notes |
 | --- | --- | --- |
 | bit |Edm.Boolean、Edm.String | |
 | int、smallint、tinyint |Edm.Int32、Edm.Int64、Edm.String | |
@@ -286,10 +286,10 @@ SQL 統合変更追跡ポリシーを使用するときは、個別のデータ�
 ## <a name="configuration-settings"></a>構成設定
 SQL インデクサーが公開している構成設定をいくつか次に示します。
 
-| Setting | データ型 | 目的 | 既定値 |
+| 設定 | データ型 | 目的 | 既定値 |
 | --- | --- | --- | --- |
 | queryTimeout |string |SQL クエリ実行のタイムアウトを設定します |5 分 ("00:05:00") |
-| disableOrderByHighWaterMarkColumn |bool |高基準ポリシーが使用する SQL クエリで ORDER BY 句が省略されます。 [高基準値ポリシー](#HighWaterMarkPolicy)に関するセクションをご覧ください |false |
+| disableOrderByHighWaterMarkColumn |[bool] |高基準ポリシーが使用する SQL クエリで ORDER BY 句が省略されます。 [高基準値ポリシー](#HighWaterMarkPolicy)に関するセクションをご覧ください |false |
 
 こうした設定は、インデクサー定義の `parameters.configuration` オブジェクトで使用されます。 たとえば、クエリのタイムアウトを 10 分に設定するには、次の構成でインデクサーを作成または更新します。
 
@@ -299,9 +299,9 @@ SQL インデクサーが公開している構成設定をいくつか次に示�
             "configuration" : { "queryTimeout" : "00:10:00" } }
     }
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 
-**Q: Azure 上の IaaS VM で実行される SQL データベースで Azure SQL インデクサーを使用できますか?**
+**Q:Azure 上の IaaS VM で実行される SQL データベースで Azure SQL インデクサーを使用できますか?**
 
 はい。 ただし、Search サービスに対してデータベースへの接続を許可する必要があります。 詳細については、[Azure VM での Azure Cognitive Search インデクサーから SQL Server への接続の構成](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)に関する記事を参照してください。
 
@@ -311,17 +311,17 @@ SQL インデクサーが公開している構成設定をいくつか次に示�
 
 **Q:Azure 上の IaaS で実行される SQL Server 以外のデータベースで Azure SQL インデクサーを使用できますか?**
 
-No. SQL Server 以外のデータベースではインデクサーをテストしていないので、このシナリオはサポートされません。  
+いいえ。 SQL Server 以外のデータベースではインデクサーをテストしていないので、このシナリオはサポートされません。  
 
-**Q: スケジュールに従って実行される複数のインデクサーを作成できますか?**
+**Q:スケジュールに従って実行される複数のインデクサーを作成できますか?**
 
 はい。 ただし、1 つのノードで一度に実行できるインデクサーは 1 つだけです。 複数のインデクサーを同時に実行する必要がある場合は、複数の検索単位に検索サービスを拡大することを検討してください。
 
-**Q: インデクサーを実行するとクエリのワークロードに影響しますか?**
+**Q:インデクサーを実行するとクエリのワークロードに影響しますか?**
 
 はい。 インデクサーは検索サービス内のノードの 1 つで実行し、そのノードのリソースは、インデックスの作成、クエリ トラフィックの提供、およびその他の API 要求で共有されます。 大量のインデックス作成とクエリ ワークロードを実行し、503 エラーが高率で発生するか、または応答時間が長くなる場合は、[検索サービスのスケールアップ](search-capacity-planning.md)を検討してください。
 
-**Q: [フェールオーバー クラスター](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview)でデータ ソースとしてセカンダリ レプリカを使用できますか?**
+**Q:[フェールオーバー クラスター](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview)でデータ ソースとしてセカンダリ レプリカを使用できますか?**
 
 一概には言えません。 テーブルまたはビューのインデックスの完全作成の場合、セカンダリ レプリカを使用できます。 
 
@@ -335,7 +335,7 @@ Azure Cognitive Searchでは、増分インデックス作成用に、SQL 統合
 
     "Using a rowversion column for change tracking is not supported on secondary (read-only) availability replicas. Please update the datasource and specify a connection to the primary availability replica.Current database 'Updateability' property is 'READ_ONLY'".
 
-**Q: 高基準変更追跡に代替の非 rowversion 列を使用することはできますか?**
+**Q:高基準変更追跡に代替の非 rowversion 列を使用することはできますか?**
 
 それはお勧めしません。 信頼性の高いデータ同期を実行できるのは、**rowversion** のみです。 ただし、アプリケーション ロジックによっては、次の条件を満たせば、その信頼性が高まる可能性があります。
 

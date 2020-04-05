@@ -8,11 +8,11 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: f2c4e762ebf10a5ca2120c13a52750a7781d60b9
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598427"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232267"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure File Sync のデプロイ
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。

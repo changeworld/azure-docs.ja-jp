@@ -7,13 +7,13 @@ ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
 ms.openlocfilehash: b6348d9fdcd4133a4fa69aac3ccf5494e904094e
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75613977"
 ---
-# <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>チュートリアル:Service Fabric クラスターをホストする AWS インフラストラクチャを作成する
+# <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>チュートリアル: Service Fabric クラスターをホストする AWS インフラストラクチャを作成する
 
 Service Fabric で採用されている "すべての OS、すべてのクラウド" のアプローチの一環として、Service Fabric スタンドアロン クラスターには、独自の環境を選んでクラスターを作成する選択肢が用意されています。 このチュートリアル シリーズでは、AWS をホストとするスタンドアロン クラスターを作成し、そこにアプリケーションをインストールします。
 
@@ -101,7 +101,7 @@ Service Fabric の最後の 2 つの規則については、世界中に対し�
 
 インスタンスに正常に接続したら、それらを接続してファイルを共有できることを確認します。  すべてのインスタンスの IP アドレスを収集してあるので、現在接続していないインスタンスを選択します。 **[スタート]** で「`cmd`」と入力し、 **[コマンド プロンプト]** を選択します。
 
-これらの例では、次の IP アドレスへの RDP 接続が確立されました: 172.31.21.141。 次に、すべての接続テストがもう 1 つの IP アドレスに対して行われます: 172.31.20.163。
+これらの例では、172.31.21.141 という IP アドレスへの RDP 接続が確立されました。 次に、すべての接続テストが他の IP アドレス (172.31.20.163) に対して行われます。
 
 基本的な接続が機能することを検証するには、ping コマンドを使用します。
 

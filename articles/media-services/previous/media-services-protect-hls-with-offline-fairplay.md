@@ -16,15 +16,15 @@ ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
 ms.openlocfilehash: 1644c00aea8eefa78550c8d0238dbedab0378492
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74968700"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>オフラインの iOS 用 FairPlay Streaming 
 
-> [!div class="op_single_selector" title1="使用している Media Services のバージョンを選択してください。"]
+> [!div class="op_single_selector" title1="使用している Media Services のバージョンを選択してください:"]
 > * [Version 3](../latest/offline-fairplay-for-ios.md)
 > * [Version 2](media-services-protect-hls-with-offline-fairplay.md)
 
@@ -201,7 +201,7 @@ Media Services の 3 つのテスト サンプルには、次の 3 つのシナ�
 これらのサンプルはこちらの[デモ サイト](https://aka.ms/poc#22)にあり、対応するアプリケーション証明書は Azure Web アプリでホストされています。
 FPS Server SDK のバージョン 3 またはバージョン 4 サンプルでは、マスター再生リストに代替オーディオが含まれる場合、オフライン モードのときに、オーディオのみが再生されます。 そのため、代替オーディオを削除する必要があります。 つまり、前述の 2 番目と 3 番目のサンプルは、オンライン モードとオフライン モードで動作します。 最初のサンプルは、オフライン モードでのみオーディオが再生され、オンライン ストリーミングは正常に動作します。
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 次のよく寄せられる質問は、トラブルシューティングに役立ちます。
 
 - **オフライン モードの間は、オーディオのみが再生されて、ビデオは再生されないのはなぜですか。** この動作は、サンプル アプリの本来の設計のようです。 代替オーディオ トラックがある場合 (HLS の場合)、オフライン モードでは、iOS 10 と iOS 11 の両方が、既定で代替オーディオ トラックになります。FPS オフライン モードでこの動作を補正するには、ストリームから代替オーディオ トラックを削除します。 Media Services 側でこれを行うには、動的マニフェスト フィルター "audio-only=false" を追加します。 つまり、HLS URL の最後が .ism/manifest(format=m3u8-aapl,audio-only=false) になります。 
@@ -247,7 +247,7 @@ boot.xml ファイルのサンプル:
 
 ## <a name="additional-notes"></a>その他のメモ
 
-* Widevine は Google Inc. が提供するサービスで、Google Inc. のサービス利用規約とプライバシーポリシーが適用されます。
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
 ## <a name="summary"></a>まとめ
 このドキュメントには、FPS オフライン モードを実装するために使用できる以下の手順と情報が含まれています。
@@ -257,6 +257,6 @@ boot.xml ファイルのサンプル:
 * サンプル FPS ビデオは、オフライン モードとオンライン ストリーミングのテストに使用されます。
 * FAQ では、FPS オフライン モードに関する質問の回答を確認できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

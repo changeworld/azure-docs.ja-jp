@@ -5,10 +5,10 @@ ms.date: 12/18/2019
 ms.topic: article
 ms.reviewer: coborn
 ms.openlocfilehash: 7e9af5c501b58f6828360ee280440ea85698bf16
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75387683"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Azure 上に Ethereum Proof-of-Authority Consortium ソリューションをデプロイする
@@ -93,7 +93,7 @@ VM ユーザー名 | デプロイされた各 VM の管理者ユーザー名 | 1
 Password | デプロイされた各仮想マシンの管理者アカウントのパスワード。 すべての VM に最初は同じパスワードが設定されます。 パスワードはプロビジョニング後に変更できます。 | 12 - 72 文字 
 サブスクリプション | コンソーシアム ネットワークをデプロイするサブスクリプション |
 リソース グループ| コンソーシアム ネットワークをデプロイするリソース グループ | myResourceGroup
-Location | リソース グループの Azure リージョン。 | 米国西部 2
+場所 | リソース グループの Azure リージョン。 | 米国西部 2
 
 **[OK]** を選択します。
 
@@ -144,7 +144,7 @@ F16s|Premium SSD|high|high|low
 Consortium Member ID (コンソーシアム メンバー ID) | コンソーシアム ネットワークに参加する各メンバーに関連付けられている ID。 競合を回避するように IP アドレス空間を構成するために使用されます。 プライベート ネットワークの場合、メンバー ID は同じネットワーク内のさまざまな組織間で一意である必要があります。  同じ組織が複数のリージョンにデプロイする場合でも、一意のメンバー ID が必要です。 競合が発生しないように他の参加メンバーと共有する必要があるため、このパラメーターの値を書き留めておきます。 有効な範囲は 0 から 255 です。 | 0
 ネットワーク ID | デプロイされているコンソーシアム Ethereum ネットワークのネットワーク ID。 各 Ethereum ネットワークには独自のネットワーク ID があり、1 はパブリック ネットワークの ID を示します。 有効な範囲は 5 から 999,999,999 です。 | 10101010
 Admin Ethereum Address (管理者 Ethereum アドレス) | PoA ガバナンスに参加するために使用される Ethereum アカウントのアドレス。 MetaMask を使用して Ethereum アドレスを生成できます。 |
-詳細オプション | Ethereum 設定の詳細オプション | [有効化]
+詳細オプション | Ethereum 設定の詳細オプション | 有効化
 Deploy using Public IP?\(パブリック IP を使用してデプロイ\) | [Private VNet]\(プライベート VNet\) を選択した場合、ネットワークは VNet ゲートウェイの背後にデプロイされ、ピアリング アクセスが削除されます。 プライベート VNet では、接続に互換性を持たせるために、すべてのメンバーが VNet ゲートウェイを使用する必要があります。 | パブリック IP
 Block Gas Limit\(ブロック ガスの制限\) | ネットワークの開始ブロック ガスの制限。 | 50000000
 ブロック再シール期間 (秒) | ネットワーク上のトランザクションがない場合に空のブロックが作成される頻度。 頻度が高いとパフォーマンスが向上しますが、ストレージ コストが増加します。 | 15
@@ -160,9 +160,9 @@ Transaction Permission Contract\(トランザクションのアクセス許可�
 
 パラメーター | 説明 | 値の例
 ----------|-------------|--------------
-監視 | 監視を有効にするオプション | [有効化]
+監視 | 監視を有効にするオプション | 有効化
 既存の Azure Monitor ログへの接続 | 新しい Azure Monitor ログ インスタンスを作成するか、既存のインスタンスに参加するオプション | 新規作成
-Location | 新しいインスタンスがデプロイされるリージョン | East US
+場所 | 新しいインスタンスがデプロイされるリージョン | 米国東部
 既存のログ分析ワークスペース ID (既存の Azure Monitor ログへの接続 = 既存に参加)|既存の Azure Monitor ログ インスタンスのワークスペース ID||NA
 既存のログ分析主キー (既存の Azure Monitor ログへの接続 = 既存に参加)|既存の Azure Monitor ログ インスタンスへの接続に使用される主キー||NA
 
@@ -545,7 +545,7 @@ MetaMask をインストールした後、ブラウザーのガバナンス DApp
 
 ![Account](./media/ethereum-poa-deployment/governance-dapp-account.png)
 
-## Ethereum の開発<a id="tutorials"></a>
+## <a name="ethereum-development"></a>Ethereum の開発<a id="tutorials"></a>
 
 スマート コントラクトをコンパイル、デプロイ、テストするために、Ethereum の開発で検討できるオプションを次に示します。
 * [Truffle Suite](https://www.trufflesuite.com/docs/truffle/overview) - クライアントベースの Ethereum 開発環境

@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d392ae97a8325dd4a56acd807ebfb2b951216eae
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72174240"
 ---
 # <a name="bulk-restore-deleted-users-preview-in-azure-active-directory"></a>Azure Active Directory で削除済みユーザーを一括復元する (プレビュー)
@@ -41,7 +41,7 @@ Azure Active Directory (Azure AD) では、ユーザーの一括作成および�
 1. ファイルの検証に合格したら、 **[送信]** を選択して、ユーザーを復元する Azure 一括操作を開始します。
 1. 復元操作が完了すると、一括操作が成功したという通知が表示されます。
 
-エラーが発生した場合は、 **[一括操作の結果]** ページで結果ファイルをダウンロードして表示できます。 このファイルには、各エラーの理由が含まれています。
+エラーがある場合は、 **[一括操作の結果]** ページで結果ファイルをダウンロードして表示できます。 このファイルには、各エラーの理由が含まれています。
 
 ## <a name="check-status"></a>状態の確認
 
@@ -68,7 +68,7 @@ Get-AzureADUser -Filter "UserType eq 'Member'"
 
 復元したユーザーがリストされていることがわかります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ユーザーを一括インポートする](users-bulk-add.md)
 - [ユーザーの一括削除](users-bulk-delete.md)

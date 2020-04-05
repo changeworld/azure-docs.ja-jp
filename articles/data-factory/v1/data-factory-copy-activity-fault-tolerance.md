@@ -12,15 +12,15 @@ ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8ffaee75154fd5fe025bdb683c89f16799d6e86b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74926148"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>互換性のない行をスキップすることによるコピー アクティビティへのフォールト トレランスの追加
 
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-copy-activity-fault-tolerance.md)
 > * [バージョン 2 (最新バージョン)](../copy-activity-fault-tolerance.md)
 
@@ -37,11 +37,11 @@ Azure Data Factory の[コピー アクティビティ](data-factory-data-moveme
 
 - **ソース データ型とシンク ネイティブ型の間に互換性がない**
 
-    例: Blob Storage 内の CSV ファイルから、**INT** 型の 3 つの列を含むスキーマ定義を持つ SQL データベースにデータをコピーします。 `123,456,789` のような数値データを含む CSV ファイルの行が、シンク ストアに正常にコピーされます。 ただし、`123,456,abc` のような数値以外の値を含む行は、互換性のないものとして検出され、スキップされます。
+    例: 3 つの **INT** 型の列を含むスキーマ定義とともに、Blob ストレージ内の CSV ファイルから SQL データベースにデータをコピーします。 `123,456,789` のような数値データを含む CSV ファイルの行が、シンク ストアに正常にコピーされます。 ただし、`123,456,abc` のような数値以外の値を含む行は、互換性のないものとして検出され、スキップされます。
 
 - **ソースとシンクとの間で列の数が一致しない**
 
-    例: Blob Storage 内の CSV ファイルから、6 つの列を含むスキーマ定義を持つ SQL データベースにデータをコピーします。 6 つの列を含む CSV ファイルの行が、シンク ストアに正常にコピーされます。 含まれる列の数が 6 つでない CSV ファイルの行は、互換性のないものとして検出され、スキップされます。
+    例: 6 つの列を含むスキーマ定義とともに、Blob Storage 内の CSV ファイルから SQL データベースにデータをコピーします。 6 つの列を含む CSV ファイルの行が、シンク ストアに正常にコピーされます。 含まれる列の数が 6 つでない CSV ファイルの行は、互換性のないものとして検出され、スキップされます。
 
 - **SQL Server/Azure SQL Database/Azure Cosmos DB への書き込み時の主キー違反**
 
@@ -81,7 +81,7 @@ Azure Data Factory の[コピー アクティビティ](data-factory-data-moveme
 
 ![スキップされた互換性のない行の監視](./media/data-factory-copy-activity-fault-tolerance/skip-incompatible-rows-monitoring.png)
 
-互換性のない行をログに記録するように構成した場合は、パス `https://[your-blob-account].blob.core.windows.net/[path-if-configured]/[copy-activity-run-id]/[auto-generated-GUID].csv` でログ ファイルを見つけることができます。ログ ファイルでは、スキップされた行および非互換性の原因を確認できます。
+互換性のない行をログに記録するように構成した場合、ログ ファイルは `https://[your-blob-account].blob.core.windows.net/[path-if-configured]/[copy-activity-run-id]/[auto-generated-GUID].csv` のパスにあります。ログ ファイルでは、スキップされた行と互換性がないことの根本原因を確認できます。
 
 ログ ファイルには元のデータと対応するエラーが記録されています。 ログ ファイルの内容の例は次のとおりです。
 ```
@@ -89,5 +89,5 @@ data1, data2, data3, UserErrorInvalidDataValue,Column 'Prop_2' contains an inval
 data4, data5, data6, Violation of PRIMARY KEY constraint 'PK_tblintstrdatetimewithpk'. Cannot insert duplicate key in object 'dbo.tblintstrdatetimewithpk'. The duplicate key value is (data4).
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Data Factory のコピー アクティビティについて詳しくは、「[コピー アクティビティを使用したデータの移動](data-factory-data-movement-activities.md)」をご覧ください。

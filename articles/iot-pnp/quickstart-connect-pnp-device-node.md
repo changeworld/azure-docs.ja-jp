@@ -9,10 +9,10 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: c5d69ae21cd240b0c68b9694a55de2cf879a1966
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76964789"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-nodejs"></a>クイック スタート:サンプルの IoT プラグ アンド プレイ プレビュー デバイス アプリケーションを IoT Hub に接続する (Node.js)
@@ -39,7 +39,7 @@ node --version
 
 [!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
-次のコマンドを実行して、ご使用のハブに対する "_IoT ハブ接続文字列_" を取得します (後で使用するためにメモします)。
+次のコマンドを実行して、ご使用のハブに対する _IoT ハブ接続文字列_ を取得します (後で使用するためにメモします)。
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
@@ -66,7 +66,7 @@ git clone https://github.com/Azure/azure-iot-sdk-node --recursive -b digitaltwin
     ```cmd/sh
     npm install
     ```
-1. "_デバイス接続文字列_" を構成します。
+1. _デバイス接続文字列_ を構成します。
 
     ```cmd/sh
     set DEVICE_CONNECTION_STRING=<YourDeviceConnectionString>

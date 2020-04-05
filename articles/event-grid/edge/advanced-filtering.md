@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: d7fdc5074f3c92eea4f236a9b1f7c823b930f391
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72991856"
 ---
 # <a name="advanced-filtering"></a>高度なフィルター処理

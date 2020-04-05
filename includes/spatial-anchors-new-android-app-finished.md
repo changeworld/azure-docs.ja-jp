@@ -7,10 +7,10 @@ ms.topic: include
 ms.author: rgarcia
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 8bef7b12f4d9d9a63e41441ef22b029b2ee5afd1
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74276943"
 ---
 ## <a name="putting-everything-together"></a>すべてをまとめる
@@ -242,7 +242,7 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、ARCore 機能を Azure Spatial Anchors と統合する新しい Android アプリの作成方法を説明しました。 Azure Spatial Anchors ライブラリの詳細については、アンカーの作成と配置方法に関するガイドを引き続き参照してください。
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: 6c77cd43231d4596535c11564313a0fe90633cdb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60947808"
 ---
 # <a name="azure-traffic-manager-with-azure-site-recovery"></a>Azure Traffic Manager と Azure Site Recovery
@@ -115,7 +115,7 @@ Traffic Manager プロファイルの DNS Time to Live (TTL) 値をさらにカ�
 
 また、クライアントと権限のある DNS サーバーの間の DNS リゾルバーの数が増えた場合、クライアントが検出する TTL は大きくなりません。 DNS リゾルバーは TTL を "カウント ダウン" し、レコードがキャッシュされてからの経過時間を反映する TTL 値だけを渡します。 これにより、チェーン内の DNS リゾルバーの数に関係なく、DNS レコードは TTL の後でクライアントにおいて更新されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Traffic Manager の[ルーティング方法](../traffic-manager/traffic-manager-routing-methods.md)の詳細を確認する。
 - [入れ子になった Traffic Manager プロファイル](../traffic-manager/traffic-manager-nested-profiles.md)の詳細を確認する。
 - [エンドポイントの監視](../traffic-manager/traffic-manager-monitoring.md)の詳細について学習します。

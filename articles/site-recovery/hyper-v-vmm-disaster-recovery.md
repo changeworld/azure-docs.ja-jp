@@ -9,10 +9,10 @@ ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 8d89c7eda845f0e5ed9bc8ccc7b6b3812ba275f9
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74132991"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>セカンダリのオンプレミスのサイトに対して Hyper-V VM のディザスター リカバリーを設定する
@@ -116,7 +116,7 @@ Azure Site Recovery プロバイダーを VMM サーバーにインストール�
 1. **[インフラストラクチャの準備]**  >  **[ターゲット]** の順にクリックし、ターゲット VMM サーバーを選択します。
 2. Site Recovery と同期されている VMM クラウドが表示されます。 ターゲット クラウドを選択します。
 
-   ![ターゲット](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
+   ![移行先](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
 
 
 ## <a name="set-up-a-replication-policy"></a>レプリケーション ポリシーを設定する
@@ -154,6 +154,6 @@ Azure Site Recovery プロバイダーを VMM サーバーにインストール�
 
 **[ジョブ]**  >  **[Site Recovery ジョブ]** の順にクリックして、 **[保護を有効にする]** アクションの進行状況を追跡できます。 **[保護の最終処理]** ジョブが完了すると、初期レプリケーションが完了し、VM がフェールオーバーを実行できる状態になります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [ディザスター リカバリーのテストを実行する](hyper-v-vmm-test-failover.md)

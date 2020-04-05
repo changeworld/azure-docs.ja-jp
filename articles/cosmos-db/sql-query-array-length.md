@@ -8,10 +8,10 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 3596ce4bc702d5e54225d8c90db2f9563feab670
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303989"
 ---
 # <a name="array_length-azure-cosmos-db"></a>ARRAY_LENGTH (Azure Cosmos DB)

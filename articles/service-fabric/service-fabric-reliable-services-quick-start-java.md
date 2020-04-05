@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: suhuruli
 ms.openlocfilehash: c3b301a7a9039f1fe8095950f0a5a4e23eb52a9b
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75614215"
 ---
 # <a name="get-started-with-reliable-services-in-java"></a>Java で Reliable Services の使用を開始する

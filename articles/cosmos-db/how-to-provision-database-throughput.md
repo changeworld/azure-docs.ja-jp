@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
 ms.openlocfilehash: ef7d06dfb074a3453f5589284cbdaf079c48d111
-ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78933771"
 ---
 # <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>Azure Cosmos DB のデータベースのスループットをプロビジョニングする
@@ -19,9 +19,9 @@ ms.locfileid: "78933771"
 
 ## <a name="provision-throughput-using-azure-portal"></a>Azure portal を使用してスループットをプロビジョニングする
 
-### <a id="portal-sql"></a>SQL (Core) API
+### <a name="sql-core-api"></a><a id="portal-sql"></a>SQL (Core) API
 
-1. [Azure portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 1. [新しい Azure Cosmos アカウントを作成する](create-sql-api-dotnet.md#create-account)か、既存の Azure Cosmos アカウントを選択します。
 
@@ -46,7 +46,7 @@ ms.locfileid: "78933771"
 > [!Note]
 > SQL API 用の Cosmos SDK を使用して、すべての API のスループットをプロビジョニングできます。 Cassandra API では、必要に応じて以下の例を使用することもできます。
 
-### <a id="dotnet-all"></a>すべての API
+### <a name="all-apis"></a><a id="dotnet-all"></a>すべての API
 
 ### <a name="net-v2-sdk"></a>.Net V2 SDK
 
@@ -67,7 +67,7 @@ await client.CreateDatabaseIfNotExistsAsync(
 
 [!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/DatabaseDocsSampleCode.cs?name=DatabaseCreateWithThroughput)]
 
-### <a id="dotnet-cassandra"></a>Cassandra API
+### <a name="cassandra-api"></a><a id="dotnet-cassandra"></a>Cassandra API
 同様のコマンドは、CQL に準拠している任意のドライバーを使用して実行できます。 
 ```csharp
 // Create a Cassandra keyspace and provision throughput of 400 RU/s

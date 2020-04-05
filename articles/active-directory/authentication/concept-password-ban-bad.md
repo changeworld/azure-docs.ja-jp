@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ef127d120b32f5344bce0f68d79f48401087f0ce
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848614"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231015"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>組織内の不適切なパスワードを排除する
 
@@ -52,7 +52,7 @@ Azure AD のいずれかのテナントのいずれかのユーザーが新し�
 カスタム禁止パスワード リストに用語を追加すると、パスワードを検証するときにグローバル禁止パスワード リストの用語と組み合わせられます。
 
 > [!NOTE]
-> カスタムの禁止パスワードの一覧に含まれる用語の数は、最大 1000 個に制限されています。 非常に大きなパスワード リストをブロックできるようには設計されていません。 カスタムの禁止パスワードの一覧の利点を十分に活用するためには、新しい用語をカスタム禁止リストに追加する前に、まずパスワード評価アルゴリズム (「[パスワードの評価方法](concept-password-ban-bad.md#how-are-passwords-evaluated)」を参照) を確認し、理解することをお勧めします。 企業がアルゴリズムの動作を理解することで、多数の脆弱なパスワードとそのバリエーションを効率的に検出してブロックできるようになります。
+> カスタムの禁止パスワードの一覧に含まれる用語の数は、最大 1000 個に制限されています。 膨大な数のパスワードをブロックできるようには設計されていません。 カスタムの禁止パスワードの一覧の利点を十分に活用するためには、新しい用語をカスタム禁止リストに追加する前に、まずパスワード評価アルゴリズム (「[パスワードの評価方法](concept-password-ban-bad.md#how-are-passwords-evaluated)」を参照) を確認し、理解することをお勧めします。 企業がアルゴリズムの動作を理解することで、多数の脆弱なパスワードとそのバリエーションを効率的に検出してブロックできるようになります。
 
 例: ロンドンを拠点とする "Contoso" という名前の顧客が、"Widget" と名前の製品を作っているとします。 このような顧客では、以下のような用語やそのバリエーションをブロックしようとするのは、無駄であるだけでなく安全性も低くなります。
 
@@ -174,7 +174,7 @@ Microsoft のグローバル禁止リストは一部のサード パーティ製
 
 残念ながら、パスワードを簡単に推測できる単語、語句、またはパターンが含まれています。 別のパスワードで再実行してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [カスタムの禁止パスワード リストを構成する](howto-password-ban-bad.md)
 - [オンプレミスで Azure AD パスワード保護エージェントを有効にする](howto-password-ban-bad-on-premises-deploy.md)

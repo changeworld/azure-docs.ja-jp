@@ -15,10 +15,10 @@ ms.date: 10/22/2019
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: cd06838abbb69af5684fdea18c42f6a8f95ffe2f
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77371259"
 ---
 # <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>Azure Service Bus と AMQP 1.0 で Java Message Service (JMS) を使用する

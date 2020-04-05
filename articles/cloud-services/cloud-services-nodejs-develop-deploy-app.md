@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
 ms.openlocfilehash: 23fbb0b4c506b2f72000add9704618337b8b24cf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75386189"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ
@@ -55,8 +55,8 @@ Cloud Services の詳細と Azure の Web サイトおよび仮想マシンと�
 
     このコマンドレットによって作成されるファイルは、次のとおりです。
 
-   * **ServiceConfiguration.Cloud.cscfg**、**ServiceConfiguration.Local.cscfg**、および **ServiceDefinition.csdef**:アプリケーションの発行に必要な、Azure 固有のファイルです。 詳細については、「 [Overview of Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成の概要)]」を参照してください。
-   * **deploymentSettings.json**:Azure PowerShell デプロイ コマンドレットによって使用されるローカル設定が格納されます。
+   * **ServiceConfiguration.Cloud.cscfg**、**ServiceConfiguration.Local.cscfg**、および **ServiceDefinition.csdef**: アプリケーションの発行に必要な Azure 固有のファイルです。 詳細については、「 [Overview of Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成の概要)]」を参照してください。
+   * **deploymentSettings.json**: Azure PowerShell デプロイ コマンドレットによって使用されるローカル設定が格納されます。
 4. 次のコマンドを入力して、新しい Web ロールを追加します。
 
        Add-AzureNodeWebRole

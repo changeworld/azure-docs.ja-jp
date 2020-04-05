@@ -11,10 +11,10 @@ ms.custom: mvc
 ms.date: 12/20/2019
 ms.author: femila
 ms.openlocfilehash: 5b1574eaac8771043e09500225b65e4835c8e627
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77157484"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>クイック スタート:Azure portal を使用して専用の Event Hubs クラスターを作成する 
@@ -67,7 +67,7 @@ Azure portal を使用して自分のリソース グループにクラスター
     2. 名前空間は次のプロパティを継承します。
         1. サブスクリプション ID
         2. リソース グループ
-        3. Location
+        3. 場所
         4. クラスター名
     3. **[作成]** をクリックして、名前空間を作成します。 これで、ご自分のクラスターを管理できるようになりました。  
 

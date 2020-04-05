@@ -1,19 +1,18 @@
 ---
 title: プランの状態の取得 | Azure Marketplace
 description: API によって、プランの現在の状態が取得されます。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 5ce546d79497f462f6c262de738036d7e3a30226
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 2f5211716145d6c05bbfb0132c4a6ba2f9cceabe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819661"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280509"
 ---
 <a name="retrieve-offer-status"></a>プランの状態の取得 
 =====================
@@ -27,8 +26,8 @@ ms.locfileid: "73819661"
 
 |  **Name**       |   **説明**                            |  **データの種類** |
 |  -------------  |  ------------------------------------------  |  ------------  |
-|  publisherId    | パブリッシャー ID。たとえば、`Contoso`  |     string     |
-|  offerId        | プランを一意に識別する GUID      |     string     |
+|  publisherId    | パブリッシャー ID。たとえば、`Contoso`  |     String     |
+|  offerId        | プランを一意に識別する GUID      |     String     |
 |  api-version    | API の最新バージョン                        |     Date       |
 |  |  |
 
@@ -36,10 +35,10 @@ ms.locfileid: "73819661"
 <a name="header"></a>ヘッダー
 ------
 
-|  名前           |  値               |
+|  Name           |  値               |
 |  -------------  | -------------------  |
 |  Content-Type   |  `application/json`  |
-|  Authorization  | `Bearer YOUR_TOKEN`  |
+|  承認  | `Bearer YOUR_TOKEN`  |
 |  |  |
 
 

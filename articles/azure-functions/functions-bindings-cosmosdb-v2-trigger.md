@@ -5,18 +5,18 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
-ms.openlocfilehash: c006aa8c46864b78ae46aa9c351605cca1d1e425
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: de8ad39ef731af3dc272d700eeee346acda64b53
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77606527"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235191"
 ---
 # <a name="azure-cosmos-db-trigger-for-azure-functions-2x"></a>Azure Functions 2.x での Azure Cosmos DB のトリガー
 
 Azure Cosmos DB のトリガーは [Azure Cosmos DB 変更フィード](../cosmos-db/change-feed.md)を使用して、パーティション間の挿入と更新をリッスンします。 変更フィードは、削除ではなく挿入と更新を発行します。
 
-セットアップと構成の詳細については、[概要](./functions-bindings-cosmosdb-v2.md)に関するページをご覧ください。
+セットアップと構成の詳細については、[概要](./functions-bindings-cosmosdb-v2.md)を参照してください。
 
 <a id="example" name="example"></a>
 
@@ -236,7 +236,8 @@ Python コードを次に示します。
 |**leaseRenewInterval**| **LeaseRenewInterval**| (省略可能) 設定すると、インスタンスが現在保持しているパーティションのすべてのリースの更新間隔がミリ秒単位で定義されます。 既定値は 17,000 (17 秒) です。
 |**checkpointFrequency**| **CheckpointFrequency**| (省略可能) 設定すると、リース チェックポイントの間隔がミリ秒単位で定義されます。 既定値は、常に各関数呼び出しの後です。
 |**maxItemsPerInvocation**| **MaxItemsPerInvocation**| (省略可能) 設定すると、関数呼び出しごとに、受信するアイテムの最大数がこのプロパティによって設定されます。 監視対象のコレクションでストアド プロシージャによって操作が実行されると、変更フィードから項目が読み取られるとき、[トランザクション スコープ](../cosmos-db/stored-procedures-triggers-udfs.md#transactions)が保持されます。 その結果、受信した項目数が指定した値よりも多くなり、同じトランザクションで変更された項目が 1 つのアトミック バッチの一部として返される可能性があります。
-|**startFromBeginning**| **StartFromBeginning**| (省略可能) このオプションを指定すると、現在の時刻から開始するのではなく、コレクションの変更履歴の先頭から変更を読み取るようにトリガーに指示できます。 以降の実行ではチェックポイントが既に保存されているため、先頭からの読み取りが機能するのは、トリガーが初めて開始されたときのみです。 既にリースが作成されているときにこのオプションを `true` に設定しても効果はありません。
+|**startFromBeginning**| **StartFromBeginning**| (省略可能) このオプションを指定すると、現在の時刻から開始するのではなく、コレクションの変更履歴の先頭から変更を読み取るようにトリガーに指示できます。 以降の実行ではチェックポイントが既に保存されているため、先頭からの読み取りが機能するのは、トリガーが初めて開始されたときのみです。 既にリースが作成されているときにこのオプションを `true` に設定しても効果はありません。 |
+|**preferredLocations**| **PreferredLocations**| (省略可能) Azure Cosmos DB サービスの geo レプリケートされたデータベース アカウントの優先される場所 (リージョン) を定義します。 複数の値はコンマで区切る必要があります。 たとえば、"East US,South Central US,North Europe" などです。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

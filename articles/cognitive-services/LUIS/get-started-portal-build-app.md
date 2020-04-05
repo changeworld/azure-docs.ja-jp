@@ -1,41 +1,33 @@
 ---
 title: クイック スタート:LUIS ポータルで新しいアプリを作成する
-titleSuffix: Azure Cognitive Services
 description: このクイックスタートでは、アプリの基本パーツ、意図、エンティティを作成すると共に、LUIS ポータルからサンプル発話を使ってテストを行います。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 55ba025b9174f727a54ce0cd63da11c8661af91c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.openlocfilehash: f0c8f0c77f832e049dfc494f82e90edb61a8cb2a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381989"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80244616"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>クイック スタート:LUIS ポータルで新しいアプリを作成する
 
-このクイック スタートでは、LUIS ポータルで新しいアプリを構築します。 最初に、アプリ、**意図**、**エンティティ**の基本パーツを作成します。 その後インタラクティブ テスト パネルでユーザーの発話の例を入力し、予測意図を取得することにより、アプリをテストします。
-
-アプリの構築は無料で行うことができます。Azure のサブスクリプションは不要です。 アプリをデプロイする準備ができたら、[アプリをデプロイするためのクイック スタート](get-started-portal-deploy-app.md)を参照します。 この記事では、Azure Cognitive Services リソースを作成し、アプリに割り当てる方法が説明されています。
+このクイック スタートでは、LUIS ポータルで新しいアプリを構築します。 まず、アプリ、**意図**、および**エンティティ**の基本パーツを作成します。 次いで、インタラクティブ テスト パネルにユーザーの発話例を入力し、予測される意図を取得して、アプリをテストします。
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
 ## <a name="create-an-app"></a>アプリを作成する
 
-1. コンテキスト ツール バーの **[+ 作成]** を選択します。
+1. コンテキスト ツールバーの **[+ New app for conversation]** \(+ 会話用の新しいアプリ\) を選択し、 **[New app for conversation]** \(会話用の新しいアプリ\) を選択します。
 
-   [![LUIS ポータルで新しいアプリを作成する](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
+    > [!div class="mx-imgBorder"]
+    > [![LUIS ポータルで新しいアプリを作成する](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
 
 1. ポップアップ ウィンドウで、以下の設定を使用してアプリを構成した後、 **[完了]** を選択します。
 
    |設定名| 値 | 目的|
    |--|--|--|
-   |Name|`myEnglishApp`|LUIS アプリの一意の名前<br>required|
+   |名前|`myEnglishApp`|LUIS アプリの一意の名前<br>required|
    |カルチャ|**英語**|ユーザーの発話の言語、**en-us**<br>required|
    |説明 (省略可能)|`App made with LUIS Portal`|アプリの説明<br>省略可能|
    |予測リソース (省略可能) |-  |選択しないでください。 作成と 1,000 件の予測エンドポイント要求に無料で使用できるスターター キーが LUIS から提供されます。 |
@@ -58,7 +50,7 @@ LUIS アプリを作成したら、意図を作成する必要があります。
 
 意図を作成するには、次の手順を実行します。
 
-1. アプリの作成が完了すると、 **[ビルド]** セクションに **[意図]** ページが表示されます。 **作成** を選択します。
+1. アプリの作成が完了すると、 **[ビルド]** セクションに **[意図]** ページが表示されます。 **［作成］** を選択します
 
    [![[作成] を選択して新しい意図を作成する](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
@@ -70,7 +62,8 @@ LUIS アプリを作成したら、意図を作成する必要があります。
 
 このアプリケーション例の `FindForm` 意図では、発話の例にフォーム番号を含めます。 ユーザーの要求を実行するためにクライアント アプリケーションはフォーム番号が必要なので、発話にそれを含めることは重要です。
 
-[![FindForm 意図に発話の例を入力する](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
+> [!div class="mx-imgBorder"]
+> [![FindForm 意図に発話の例を入力する](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
 
 `FindForm` 意図に次の 15 の発話の例を追加します。
 
@@ -147,7 +140,8 @@ LUIS アプリを作成したら、意図を作成する必要があります。
 
    エンティティは、発話の例の中の出現箇所でマークされます。 エンティティ名ではなく、元のテキストを表示する場合は、ツールバーから **[エンティティ ビュー]** を切り替えます。
 
-   [![エンティティによってマークが付けられたすべての発話の例](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
+   > [!div class="mx-imgBorder"]
+   > [![エンティティによってマークが付けられたすべての発話の例](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
 
 ## <a name="test-your-new-app-with-the-interactive-test-pane"></a>インタラクティブな [テスト] ウィンドウを使用して新しいアプリをテストする
 
@@ -159,7 +153,10 @@ LUIS ポータル内のインタラクティブな **[テスト]** ウィンド�
 
    ```Is there a form named hrf-234098```
 
-   ![[テスト] ウィンドウで新しい発話をテストする](./media/get-started-portal-build-app/test-new-utterance.png)
+    **[検査]** を選択してエンティティの予測を表示します。
+
+   > [!div class="mx-imgBorder"]
+   > ![テスト ウィンドウで新しい発話をテストする](./media/get-started-portal-build-app/test-new-utterance.png)
 
    予測意図の上位は正しく **FindForm** になっており、信頼度は 90% を超えています (0.977)。 抽出された **Human Resources Form Number** エンティティの値は hrf-234098 です。
 

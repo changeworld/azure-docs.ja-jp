@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: cpp
 ms.topic: quickstart
-ms.date: 12/02/2019
-ms.openlocfilehash: 1cec92631208b446f5621c9010d8cb7b86ae38e9
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: c09327e208719d31b1ae1587c14d0223269abfa9
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770800"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80062578"
 ---
 # <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>Azure Database for MySQL: Connector/C++ を使った接続とデータの照会
 このクイックスタートでは、C++ アプリケーションを使用して Azure Database for MySQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 このトピックでは、C++ を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであることを前提としています。
@@ -48,7 +48,7 @@ ms.locfileid: "74770800"
 ## <a name="get-connection-information"></a>接続情報の取得
 Azure Database for MySQL に接続するために必要な接続情報を取得します。 完全修飾サーバー名とログイン資格情報が必要です。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、作成したサーバー (例: **mydemoserver**) を検索します。
 3. サーバー名をクリックします。
 4. サーバーの **[概要]** パネルから、 **[サーバー名]** と **[サーバー管理者ログイン名]** を書き留めます。 パスワードを忘れた場合も、このパネルからパスワードをリセットすることができます。
@@ -303,6 +303,6 @@ int main()
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [ダンプと復元を使用した Azure Database for MySQL への MySQL データベースの移行](concepts-migrate-dump-restore.md)

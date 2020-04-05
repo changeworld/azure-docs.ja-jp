@@ -5,23 +5,21 @@ services: active-directory
 documentationcenter: .net
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: bc303dc62892f8fac67bb6869e72db0e40f19779
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3ec7cf5a45ce31cde923dce521636589cfcda786
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163364"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154459"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>OAuth 2.0 コード付与フローを使用して Azure Active Directory Web アプリケーションへアクセスを承認する
 
@@ -87,7 +85,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | response_type |required |承認コード フローでは `code` を指定する必要があります。 |
 | redirect_uri |推奨 |アプリ の redirect_uri。アプリは、この URI で認証応答を送受信することができます。 ポータルで登録したいずれかの redirect_uri と完全に一致させる必要があります (ただし、URL エンコードが必要)。 ネイティブ アプリとモバイル アプリでは、`https://login.microsoftonline.com/common/oauth2/nativeclient` の既定値を使用します。 |
 | response_mode |省略可能 |結果として得られたトークンをアプリに返す際に使用するメソッドを指定します。 `query`、`fragment`、または `form_post` を指定できます。 `query` はリダイレクト URI でクエリ文字列パラメーターとしてコードを提供します。 暗黙的フローを使って ID トークンを要求する場合、[OpenID 仕様](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)で規定された `query` を使用することはできません。コードのみを要求する場合は、`query`、`fragment`、`form_post` のいずれかを使用できます。 `form_post` は、リダイレクト URI に対するコードを含んだ POST を実行します。 コード フローの既定値は `query` です。  |
-| 状態 |推奨 |要求に含まれ、トークンの応答としても返される値。 [クロスサイト リクエスト フォージェリ攻撃を防ぐ](https://tools.ietf.org/html/rfc6749#section-10.12)ために通常、ランダムに生成された一意の値が使用されます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的にも使用されます。 |
+| state |推奨 |要求に含まれ、トークンの応答としても返される値。 [クロスサイト リクエスト フォージェリ攻撃を防ぐ](https://tools.ietf.org/html/rfc6749#section-10.12)ために通常、ランダムに生成された一意の値が使用されます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的にも使用されます。 |
 | resource | 推奨 |対象となる Web API のアプリケーション ID/URI (セキュリティで保護されたリソース)。 アプリケーション ID/URI を調べるには、Azure Portal で **[Azure Active Directory]** 、 **[アプリの登録]** の順にクリックして、アプリケーションの **[設定]** ページを開きます。その後、 **[プロパティ]** をクリックします。 `https://graph.microsoft.com` のような外部リソースである場合もあります。 認証またはトークン要求でこれが必要です。 認証プロンプトの回数を少なくするには、認証要求に配置して、ユーザーから同意を受信できるようにします。 |
 | scope | **ignored** | v1 Azure AD アプリでは、Azure Portal のアプリケーションの **[設定]** の **[必要なアクセス許可]** で、スコープを静的に構成する必要があります。 |
 | prompt |省略可能 |ユーザーとの必要な対話の種類を指定します。<p> 有効な値は次のとおりです。 <p> *login*:再認証を求めるメッセージがユーザーに表示されます。 <p> *select_account*:アカウントの選択を求めるメッセージがユーザーに表示され、シングル サインオンが中断されます。 ユーザーでは、既存サインイン アカウントを選択して、記憶されているアカウントの資格情報を入力、またはまったく別のアカウントを一緒に、使用する可能性があります。 <p> *consent*:ユーザーの同意は得られていますが、更新する必要があります。 同意を求めるメッセージがユーザーに表示されます。 <p> *admin_consent*:組織内のすべてのユーザーを代表して同意するよう求めるメッセージが管理者に表示されます |
@@ -116,7 +114,7 @@ Location: http://localhost:12345/?code= AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLE
 | admin_consent |管理者が同意要求プロンプトに同意した場合、値は True です。 |
 | code |アプリケーションが要求した承認コード。 アプリケーションは承認コードを使用して、対象リソースのアクセス トークンを要求します。 |
 | session_state |現在のユーザー セッションを識別する一意の値。 この値は GUID ですが、検査なしで渡される不透明な値として扱う必要があります。 |
-| 状態 |要求に state パラメーターが含まれている場合、同じ値が応答にも含まれることになります。 応答を使用する前に、要求と応答に含まれる state の値が同一であることをアプリケーション側で確認することをお勧めします。 クライアントに対する [クロスサイト リクエスト フォージェリ (CSRF) 攻撃](https://tools.ietf.org/html/rfc6749#section-10.12) を検出するのに役立ちます。 |
+| state |要求に state パラメーターが含まれている場合、同じ値が応答にも含まれることになります。 応答を使用する前に、要求と応答に含まれる state の値が同一であることをアプリケーション側で確認することをお勧めします。 クライアントに対する [クロスサイト リクエスト フォージェリ (CSRF) 攻撃](https://tools.ietf.org/html/rfc6749#section-10.12) を検出するのに役立ちます。 |
 
 ### <a name="error-response"></a>エラー応答
 アプリケーション側でエラーを適切に処理できるよう、 `redirect_uri` にもエラー応答が送信される場合があります。
@@ -131,7 +129,7 @@ error=access_denied
 | --- | --- |
 | error |「 [OAuth 2.0 Authorization Framework (OAuth 2.0 承認フレームワーク)](https://tools.ietf.org/html/rfc6749)」のセクション 5.2 で定義されているエラー コード値。 次の表で、Azure AD が返すエラー コードについて説明します。 |
 | error_description |エラーの詳しい説明。 このメッセージはエンドユーザー向けではありません。 |
-| 状態 |state 値は、ランダムに生成された再利用されない値で、クロスサイト リクエスト フォージェリ (CSRF) 攻撃を防ぐために、要求で送信され、応答で返されます。 |
+| state |state 値は、ランダムに生成された再利用されない値で、クロスサイト リクエスト フォージェリ (CSRF) 攻撃を防ぐために、要求で送信され、応答で返されます。 |
 
 #### <a name="error-codes-for-authorization-endpoint-errors"></a>承認エンドポイント エラーのエラー コード
 次の表で、エラー応答の `error` パラメーターで返される可能性のあるさまざまなエラー コードを説明します。
@@ -284,10 +282,10 @@ WWW-Authenticate: Bearer authorization_uri="https://login.microsoftonline.com/co
 #### <a name="error-parameters"></a>エラーのパラメーター
 | パラメーター | 説明 |
 | --- | --- |
-| authorization_uri |承認サーバーの URI (物理エンドポイント)。 この値は、探索エンドポイントからサーバーの詳細を取得するための、ルックアップ キーとしても使用します。 <p><p> クライアントは、承認サーバーが信頼されていることを検証する必要があります。 リソースが Azure AD によって保護されている場合は、URL が https://login.microsoftonline.com または Azure AD によってサポートされる別のホスト名で始まることを確認するだけで十分です。 テナント固有のリソースは、テナント固有の承認 URI を常に返すはずです。 |
+| authorization_uri |承認サーバーの URI (物理エンドポイント)。 この値は、探索エンドポイントからサーバーの詳細を取得するための、ルックアップ キーとしても使用します。 <p><p> クライアントは、承認サーバーが信頼されていることを検証する必要があります。 リソースが Azure AD によって保護されている場合は、URL が `https://login.microsoftonline.com` または Azure AD によってサポートされる別のホスト名で始まることを確認するだけで十分です。 テナント固有のリソースは、テナント固有の承認 URI を常に返すはずです。 |
 | error |「 [OAuth 2.0 Authorization Framework (OAuth 2.0 承認フレームワーク)](https://tools.ietf.org/html/rfc6749)」のセクション 5.2 で定義されているエラー コード値。 |
 | error_description |エラーの詳しい説明。 このメッセージはエンドユーザー向けではありません。 |
-| resource_id |リソースの一意の識別子を返します。 クライアント アプリケーションは、リソースのトークンを要求するときに、この識別子を `resource` パラメーターの値として使用できます。 <p><p> クライアント アプリケーションがこの値を確認することは重要です。確認を行わない場合、悪意のあるサービスから**権限昇格**攻撃を受ける可能性があります。 <p><p> 攻撃を防止するための推奨方法として、 `resource_id` と、アクセスしている Web API URL のベースが一致していることを確認します。 たとえば、 https://service.contoso.com/data にアクセスしている場合、`resource_id` は https://service.contoso.com/ になります。 クライアント アプリケーションは、ID を検証する信頼性の高い代替方法がない限り、ベース URL ではじまらない `resource_id` を拒否する必要があります。 |
+| resource_id |リソースの一意の識別子を返します。 クライアント アプリケーションは、リソースのトークンを要求するときに、この識別子を `resource` パラメーターの値として使用できます。 <p><p> クライアント アプリケーションがこの値を確認することは重要です。確認を行わない場合、悪意のあるサービスから**権限昇格**攻撃を受ける可能性があります。 <p><p> 攻撃を防止するための推奨方法として、 `resource_id` と、アクセスしている Web API URL のベースが一致していることを確認します。 たとえば、`https://service.contoso.com/data` にアクセスしている場合、`resource_id` は `https://service.contoso.com/` になります。 クライアント アプリケーションは、ID を検証する信頼性の高い代替方法がない限り、ベース URL ではじまらない `resource_id` を拒否する必要があります。 |
 
 #### <a name="bearer-scheme-error-codes"></a>ベアラー スキームのエラー コード
 RFC 6750 仕様では、応答で WWW-Authenticate ヘッダーとベアラー スキームを使用するリソースのために、次のエラーが定義されています。

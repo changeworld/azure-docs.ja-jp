@@ -4,10 +4,10 @@ description: 開発、テスト、および運用スタンプのテレメトリ�
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.openlocfilehash: 3580d162f4b3955a04ffcd0f13933221bfef3b65
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671462"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>開発、テスト、および運用のテレメトリの分離
@@ -28,7 +28,7 @@ Web アプリに対する Application Insights の監視を設定するときは
 * A |B テスト - 単一のリソースを使用します。 TelemetryInitializer を作成して、バリアント型を識別するプロパティをテレメトリに追加します。
 
 
-## <a name="dynamic-ikey"></a> 動的なインストルメンテーション キー
+## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> 動的なインストルメンテーション キー
 
 運用の次の段階のコードを開発するときに変更しやすくするために、ikey を構成ファイルではなくコード内に設定します。
 

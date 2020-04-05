@@ -7,13 +7,13 @@ ms.assetid: ebcadb49-755d-4202-a5eb-f211827a9168
 ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: b8d3175b4266e132d94f6f2dde163cb60fb11396
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 93b53bedef291b9aa740f5bbe9c492185f035f89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74685798"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80044829"
 ---
 # <a name="delete-a-backup-for-a-web-using-azure-powershell"></a>Azure PowerShell を使用して Web のバックアップを削除する
 
@@ -39,12 +39,12 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | Web アプリのバックアップの一覧を取得します。 |
 | [Remove-AzWebAppBackup](/powershell/module/az.websites/remove-azwebappbackup) | Web アプリの指定したバックアップを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

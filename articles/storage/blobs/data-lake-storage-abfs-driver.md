@@ -9,17 +9,17 @@ ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: 3db039d39ef532ea51143dc9cbdb6bd5f29d6225
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75970272"
 ---
-# <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Azure BLOB ファイルシステム ドライバー (ABFS):Hadoop 専用の Azure Storage ドライバー
+# <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Azure BLOB ファイルシステム ドライバー (ABFS): Hadoop 専用の Azure Storage ドライバー
 
 Azure Data Lake Storage Gen2 内のデータの主要なアクセス方法の 1 つは、[Hadoop FileSystem](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html) です。 Data Lake Storage Gen2 により、Azure Blob Storage のユーザーは、新しいドライバーである Azure BLOB ファイル システム ドライバー (`ABFS`) にアクセスできます。 ABFS は、Apache Hadoop の一部であり、Hadoop の商用ディストリビューションの多くに含まれています。 このドライバーを使用すると、多くのアプリケーションとフレームワークは、Data Lake Storage Gen2 を明示的に参照するコードがなくても Azure Blob Storage 内のデータにアクセスできます。
 
-## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>以前の機能:Windows Azure Storage Blob ドライバー
+## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>以前の機能: Windows Azure Storage Blob ドライバー
 
 Windows Azure Storage Blob ドライバー ([WASB ドライバー](https://hadoop.apache.org/docs/current/hadoop-azure/index.html)) は、Azure Blob Storage のオリジナル サポートを提供しました。 このドライバーは、(Hadoop FileSystem インターフェイスでの必要に応じて) Azure Blob Storage によって公開されているオブジェクト ストア スタイルのインターフェイスのセマンティクスへのファイル システム セマンティクスのマッピングの複雑なタスクを実行しました。 このドライバーは引き続きこのモデルをサポートし、BLOB に格納されたデータへの高パフォーマンス アクセスを実現しますが、このマッピングを実行するコードが大量に含まれているため、メンテナンスが困難になります。 さらに、[FileSystem.rename()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) や [FileSystem.delete()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) などの一部の操作がディレクトリに適用される場合、(オブジェクト ストアにディレクトリのサポートがないため) ドライバーが膨大な数の操作を実行する必要があり、多くの場合にパフォーマンスの低下につながります。 ABFS ドライバーは、WASB の本質的な弱点を克服するために設計されました。
 
@@ -48,7 +48,7 @@ Hadoop アプリケーションが Data Lake Storage Gen2 対応アカウント�
 
 - **共有キー:** このキーを使用すると、ユーザーはアカウント内のすべてのリソースにアクセスできます。 キーが暗号化され、Hadoop 構成に格納されます。
 
-- **Azure Active Directory OAuth ベアラー トークン:** Azure AD ベアラー トークンは、エンド ユーザーの ID または構成されているサービス プリンシパルのいずれかを使用してドライバーによって取得および更新されます。 この認証モデルを使用すると、すべてのアクセスは、指定したトークンに関連付けられた ID を使用して呼び出しごとに承認され、割り当てられた POSIX アクセス制御リスト (ACL) に対して評価されます。
+- **Azure Active Directory OAuth ベアラー トークン:**  Azure AD ベアラー トークンは、エンド ユーザーの ID または構成されているサービス プリンシパルのいずれかを使用してドライバーによって取得および更新されます。 この認証モデルを使用すると、すべてのアクセスは、指定したトークンに関連付けられた ID を使用して呼び出しごとに承認され、割り当てられた POSIX アクセス制御リスト (ACL) に対して評価されます。
 
    > [!NOTE]
    > Azure Data Lake Storage Gen2 は、Azure AD v1.0 エンドポイントのみをサポートします。

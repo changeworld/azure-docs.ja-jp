@@ -3,19 +3,19 @@ title: Azure IoT Central で Rigado Cascade 500 を接続する | Microsoft Docs
 description: Rigado Cascade 500 ゲートウェイ デバイスを IoT Central アプリケーションに接続する方法について説明します。
 services: iot-central
 ms.service: iot-central
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
 - iot-storeAnalytics-conditionMonitor
 - iot-p0-scenario
 ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
-ms.openlocfilehash: bd96d2b9f2220c4eecb653e0764c381235c62157
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d52366684d772f91b53a1ab385b51ae4f11f0a5b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026463"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80158368"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>Rigado Cascade 500 ゲートウェイ デバイスを Azure IoT Central アプリケーションに接続する
 

@@ -9,10 +9,10 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
 ms.openlocfilehash: ff82986b27d038c536872b07e1308b0d48fadaef
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74270219"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>ブロック BLOB ストレージのパフォーマンス レベル
@@ -78,7 +78,7 @@ Blob ストレージのライフサイクル管理には、ルールベースの
 
 Premium のブロック BLOB ストレージ アカウントに格納されているデータは、ホット、クール、およびアーカイブ層間で移動することはできません。 ただし、ブロック BLOB ストレージ アカウントから*別の*アカウントのホット アクセス層に BLOB をコピーすることは可能です。 別にアカウントにデータをコピーするには、[Put Block From URL](/rest/api/storageservices/put-block-from-url) API または [AzCopy v10](../common/storage-use-azcopy-v10.md) を使用します。 **Put Block From URL** API では、サーバー上のデータを同期的にコピーします。 この呼び出しは、すべてのデータが、元のサーバー上の場所からコピー先の場所に移動された後でのみ完了します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 GPv2 および BLOB ストレージ アカウントでホット、クール、アーカイブを評価します。
 

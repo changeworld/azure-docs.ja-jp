@@ -13,11 +13,11 @@ ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d298c83c0c1a0f33f28644e2e467ad5035300221
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895673"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231611"
 ---
 # <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスのファイル システムとの間でデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -72,10 +72,10 @@ Linux ファイル共有を使用するには、Linux サーバーの場合は [
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| 型 |type プロパティが **OnPremisesFileServer** に設定されていることを確認します。 |はい |
+| type |type プロパティが **OnPremisesFileServer** に設定されていることを確認します。 |はい |
 | host |コピーするフォルダーのルート パスを指定します。 文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例については、「 [サンプルのリンクされたサービスとデータセットの定義](#sample-linked-service-and-dataset-definitions) 」ご覧ください。 |はい |
 | userid |サーバーにアクセスするユーザーの ID を指定します。 |No (encryptedCredential を選択する場合) |
-| パスワード |ユーザー (userid) のパスワードを指定します。 |いいえ (encryptedCredential を選択する場合) |
+| password |ユーザー (userid) のパスワードを指定します。 |いいえ (encryptedCredential を選択する場合) |
 | encryptedCredential |New-AzDataFactoryEncryptValue コマンドレットを実行して取得できる暗号化された資格情報を指定します。 |いいえ (プレーン テキストでユーザー ID とパスワードを指定する場合) |
 | gatewayName |Data Factory が、オンプレミスのファイル サーバーへの接続に使用するゲートウェイの名前を指定します。 |はい |
 

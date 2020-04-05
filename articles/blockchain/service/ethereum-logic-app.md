@@ -5,10 +5,10 @@ ms.date: 10/14/2019
 ms.topic: article
 ms.reviewer: chrisseg
 ms.openlocfilehash: 4a9acfd6098ed45fd92c7e3047b5d1446eeddbd6
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74325220"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>Azure Logic Apps で Ethereum ブロックチェーン コネクタを使用する
@@ -176,7 +176,7 @@ Azure Blockchain Service メンバーに対する接続を設定できるよう�
 
 **Azure portal を使用するには:**
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. Azure Blockchain Service メンバーに移動します。 **[Transaction nodes]\(トランザクション ノード\)** と既定のトランザクション ノード リンクを選択します。
 
     ![既定のノードが選択されている [Transaction nodes]\(トランザクション ノード\) ページ](./media/ethereum-logic-app/transaction-nodes.png)
@@ -282,6 +282,6 @@ Truffle により、スマート コントラクトのデプロイ後に、コ�
 
 ![Visual Studio Code でのアドレス値を含むメタデータ](./media/ethereum-logic-app/contract-address-metadata.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 「[Logic Apps を有効活用する方法](https://channel9.msdn.com/Shows/Blocktalk/Doing-more-with-Logic-Apps?term=logic%20apps%20blockchain&lang-en=true)」の動画で一般的なシナリオをご覧ください。

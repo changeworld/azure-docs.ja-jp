@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
-ms.date: 01/15/2019
-ms.openlocfilehash: 6dfc0a59ab4150173196fae82d90eca4880d5364
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 03/17/2020
+ms.openlocfilehash: 50b832baa9253f47b5f10980ae1764c9425ed4d7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818890"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476951"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance の既存の仮想ネットワークを構成する
 
@@ -38,7 +38,7 @@ Azure SQL Database Managed Instance は、Azure [仮想ネットワーク](../vi
 既存のサブネット内にマネージド インスタンスを作成する場合は、次の PowerShell スクリプトでサブネットを準備することをお勧めします。
 
 ```powershell
-$scriptUrlBase = 'https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/manage/azure-sql-db-managed-instance/prepare-subnet'
+$scriptUrlBase = 'https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/manage/azure-sql-db-managed-instance/delegate-subnet'
 
 $parameters = @{
     subscriptionId = '<subscriptionId>'
@@ -47,7 +47,7 @@ $parameters = @{
     subnetName = '<subnetName>'
     }
 
-Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/prepareSubnet.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters
+Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/delegateSubnet.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters
 ```
 
 このスクリプトでは、3 つの手順でサブネットを準備します。
@@ -56,7 +56,7 @@ Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/prepar
 2. 確認:Managed Instance のデプロイに備えてサブネットを準備するために必要な一連の変更がユーザーに示されます。 また、同意も求められます。
 3. 準備:仮想ネットワークとサブネットが適切に構成されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 概要については、[マネージド インスタンス](sql-database-managed-instance.md)に関するページを参照してください。
 - 仮想ネットワークを作成し、マネージド インスタンスを作成して、データベース バックアップからデータベースを復元する方法を示すチュートリアルについては、[Azure SQL Database マネージド インスタンスの作成](sql-database-managed-instance-get-started.md)に関するページを参照してください。

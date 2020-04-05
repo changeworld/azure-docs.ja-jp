@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 513a0f28fc03cbf24e35112245c9756d5ce00783
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73954661"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>多層 IIS ベース Web アプリケーションのディザスター リカバリーの設定
@@ -74,7 +74,7 @@ Azure|NA|はい
 ![Site Recovery の [コンピューティングとネットワーク] ウィンドウでターゲット IP を設定する方法を示したスクリーン ショット](./media/site-recovery-active-directory/dns-target-ip.png)
 
 ## <a name="create-a-recovery-plan"></a>復旧計画の作成
-復旧計画では、フェールオーバー時における多層アプリケーション内の各種階層の順序付けがサポートされます。 順序付けは、アプリケーションの一貫性の保守に役立ちます。 多層 Web アプリケーションの復旧計画を作成する際には、「[復旧計画の作成](site-recovery-create-recovery-plans.md)」で説明されている手順を完了します。
+復旧計画では、フェールオーバー時における多層アプリケーション内の各種階層の順序付けがサポートされます。 順序付けは、アプリケーションの一貫性の保守に役立ちます。 多層 Web アプリケーションの復旧計画を作成する際には、[復旧計画の作成](site-recovery-create-recovery-plans.md)に関するページで説明されている手順を完了します。
 
 ### <a name="add-virtual-machines-to-failover-groups"></a>フェールオーバー グループへの仮想マシンの追加
 一般的な多層 IIS Web アプリケーションは、次のコンポーネントで構成されます。
@@ -158,5 +158,5 @@ SSL 証明書は、次のコンポーネントに対して発行できます。
 
 詳しくは、「[Site Recovery でのフェールオーバー](site-recovery-failover.md)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Site Recovery を利用した[他のアプリケーションのレプリケーション](site-recovery-workload.md)に関する記事をご覧ください。

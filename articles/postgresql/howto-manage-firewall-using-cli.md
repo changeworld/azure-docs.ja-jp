@@ -8,10 +8,10 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 4af0fb288961689fb051bab8091c838f793cfcc3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74765649"
 ---
 # <a name="create-and-manage-firewall-rules-in-azure-database-for-postgresql---single-server-using-azure-cli"></a>Azure CLI を使用して Azure Database for PostgreSQL - Single Server のファイアウォール規則を作成および管理する
@@ -78,7 +78,7 @@ az postgres server firewall-rule delete --resource-group myresourcegroup --serve
 ```
 正常に完了すると、出力はありません。 失敗した場合は、エラー メッセージ テキストが返されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - 同様に、Web ブラウザー上で [Azure Portal を使用して Azure Database for PostgreSQL ファイアウォール規則の作成と管理](howto-manage-firewall-using-portal.md)を行うことができます。
 - [Azure Database for PostgreSQL サーバーのファイアウォール規則](concepts-firewall-rules.md)について理解を深めます。
 - [Azure CLI を使用して仮想ネットワーク サービス エンドポイントと規則を作成および管理](howto-manage-vnet-using-cli.md)して、サーバーへのアクセスのセキュリティ保護を強化します。

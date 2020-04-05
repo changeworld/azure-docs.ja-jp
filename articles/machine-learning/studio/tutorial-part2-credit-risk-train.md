@@ -10,14 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 9aeaed6565e69409bc55a71985296b2393226ba4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8feca17f10bb891f0ca5577b2363f95901da4a46
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427486"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79217863"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>チュートリアル 2:信用リスク モデルをトレーニングする - Azure Machine Learning Studio (クラシック)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 このチュートリアルでは、予測分析ソリューションを開発するプロセスについて詳しく説明します。 Machine Learning Studio (クラシック) で単純なモデルを開発します。  その後、そのモデルを Azure Machine Learning Web サービスとしてデプロイします。  このデプロイ モデルは、新しいデータを使用して予測を行うことができます。 このチュートリアルは、**3 部構成のチュートリアル シリーズのパート 2** です。
 
@@ -42,7 +44,7 @@ ms.locfileid: "75427486"
 
 [このチュートリアルのパート 1](tutorial-part1-credit-risk.md) を完了しました。
 
-## <a name="train"></a>複数のモデルをトレーニングする
+## <a name="train-multiple-models"></a><a name="train"></a>複数のモデルをトレーニングする
 
 Azure Machine Learning Studio (クラシック) を使用して機械学習モデルを作成することの利点の 1 つは、1 つの実験で複数種類のモデルを同時に試してそれらの結果を比較できることです。 このような実験は、問題の最善の解決策を見つけるのに役立ちます。
 

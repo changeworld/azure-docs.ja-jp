@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: 69e2c053c9fb874889bc3d5b08be6e0c7ce875a5
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162907"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services の概念 
@@ -27,7 +27,7 @@ ms.locfileid: "77162907"
 
 このトピックでは、Media Services の最も重要な概念の概要を説明します。
 
-## <a name="a-idassetsassets-and-storage"></a><a id="assets"/>資産とストレージ
+## <a name="assets-and-storage"></a><a id="assets"/>資産とストレージ
 ### <a name="assets"></a>アセット
 [アセット](https://docs.microsoft.com/rest/api/media/operations/asset) には、デジタル ファイル (ビデオ、オーディオ、画像、サムネイルのコレクション、テキスト トラック、クローズド キャプション ファイルなど) と、それらのファイルに関するメタデータが含まれます。 デジタル ファイルがアセットにアップロードされた後は、Media Services エンコードおよびストリーミング ワークフローで使用できます。
 
@@ -75,7 +75,7 @@ BLOB コンテナーは、BLOB のセットをグループ化します。 BLOB �
 > 
 > 
 
-### <a name="a-idlocatorslocators"></a><a id="locators"/>ロケーター
+### <a name="locators"></a><a id="locators"/>ロケーター
 [ロケーター](https://docs.microsoft.com/rest/api/media/operations/locator)は、資産に含まれているファイルにアクセスするためのエントリ ポイントになります。 アクセス ポリシーは、指定された資産に対してクライアントが保持するアクセス許可およびアクセス許可の期間を定義するために使用されます。 ロケーターはアクセス ポリシーに対して多対 1 の関係を持つことができるので、同じアクセス許可とアクセス期間の設定を使用しながら、複数のロケーターが複数のクライアントに対して異なる開始時間や接続の種類を提供できます。ただし、Azure Storage サービスで設定されている共有アクセス ポリシーの制限により、特定の資産に対して、5 つを超える一意のロケーターを一度に関連付けることはできません。 
 
 Media Services では、2 種類のロケーターがサポートされています。メディアをストリーミングしたり (MPEG DASH、HLS、Smooth Streaming など)、メディアを徐々にダウンロードしたりするために使用される OnDemandOrigin ロケーター、およびメディア ファイルを Azure ストレージとの間でアップロードまたはダウンロードするために使用される SAS URL ロケーター。 
@@ -91,7 +91,7 @@ Azure のストレージにアクセスする場合には必ず、ストレー�
 
 ジョブには、実行する処理に関するメタデータが含まれます。 ジョブ内の複数の [タスク](https://docs.microsoft.com/rest/api/media/operations/task)は、1 つのタスクの出力アセットを次のタスクの入力アセットとして指定した場合、連結できます。 ジョブ内の複数のタスクは、1 つのタスクの出力資産を次のタスクの入力資産として指定した場合、連結できます。 この方法では、1 つのジョブにメディア表現に必要なすべての処理を含めることができます。
 
-## <a id="encoding"></a>エンコード
+## <a name="encoding"></a><a id="encoding"></a>エンコード
 Azure Media Services には、クラウド内のメディア エンコーディングに使用できる複数のオプションが用意されています。
 
 Media Services を使い始める場合、コーデックとファイル形式の違いを理解することが重要です。
@@ -160,7 +160,7 @@ Media Services で資産を暗号化する場合は、暗号化キー (CommonEnc
 - [PlayReady/Widevine による保護](media-services-protect-with-playready-widevine.md)
 
 ## <a name="delivering"></a>配信
-### <a name="a-iddynamic_packagingdynamic-packaging"></a><a id="dynamic_packaging"/>ダイナミック パッケージ
+### <a name="dynamic-packaging"></a><a id="dynamic_packaging"/>ダイナミック パッケージ
 Media Services を使用する際、中間ファイルをアダプティブ ビットレート MP4 セットにエンコードして、その後、[ダイナミック パッケージ](media-services-dynamic-packaging-overview.md)を使用して目的の形式に変換することをお勧めします。
 
 ### <a name="streaming-endpoint"></a>ストリーミング エンドポイント

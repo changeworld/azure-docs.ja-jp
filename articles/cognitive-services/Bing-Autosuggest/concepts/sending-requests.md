@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: scottwhi
 ms.openlocfilehash: d479548e682e814345e13d9416d08ec453f90304
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74072860"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>Bing Autosuggest API への要求の送信
@@ -167,7 +167,7 @@ BingAPIs-Market: en-US
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Bing Autosuggest とは](../get-suggested-search-terms.md)
 - [Bing Autosuggest API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

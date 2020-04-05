@@ -17,10 +17,10 @@ ms.date: 08/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1185217d6b12d3efd5dedc9faf903f1b365481db
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70013837"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eab-navigate-strategic-care"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と EAB Navigate Strategic Care の統合
@@ -29,7 +29,7 @@ ms.locfileid: "70013837"
 
 * EAB Navigate Strategic Care にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して EAB Navigate Strategic Care に自動的にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

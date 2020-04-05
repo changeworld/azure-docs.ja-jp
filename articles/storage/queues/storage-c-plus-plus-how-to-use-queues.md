@@ -9,10 +9,10 @@ ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
 ms.openlocfilehash: 4fe543010df9514cb2b22c56482a4b592574e917
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75941774"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>C++ から Queue ストレージを使用する方法

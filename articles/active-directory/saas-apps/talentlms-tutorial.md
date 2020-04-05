@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と TalentLMS の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と TalentLMS の統合 | Microsoft Docs'
 description: Azure Active Directory と TalentLMS の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 970ab9de270b1227884a13ac578d4c439043b20c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74233361"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>チュートリアル:Azure Active Directory と TalentLMS の統合
+# <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>チュートリアル: Azure Active Directory と TalentLMS の統合
 
 このチュートリアルでは、TalentLMS と Azure Active Directory (Azure AD) を統合する方法について説明します。
 TalentLMS と Azure AD の統合には、次の利点があります。
@@ -165,7 +165,7 @@ TalentLMS で Azure AD シングル サインオンを構成するには、次�
 
     * **[Email]\(電子メール\)** ボックスに「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」と入力します。
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

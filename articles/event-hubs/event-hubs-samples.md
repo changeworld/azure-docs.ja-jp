@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 01/15/2020
 ms.author: shvija
 ms.openlocfilehash: da950c2219d3faf679953690d207372b64913ba8
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162060"
 ---
 # <a name="git-repositories-with-samples-for-azure-event-hubs"></a>Azure Event Hubs のサンプルが含まれる Git リポジトリ 

@@ -8,10 +8,10 @@ ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
 ms.openlocfilehash: 7b7ad470b3330224e80a7160fc1a37bb5ee1cde8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76901826"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Azure Cosmos DB の JavaScript クエリ API

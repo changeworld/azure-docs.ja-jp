@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: d6c73b8cd33aa85793a2ce839410065e03b97be7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74035547"
 ---
 # <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>Azure Stack で OpenShift Container Platform または OKD をデプロイする
@@ -68,7 +68,7 @@ Resource Manager テンプレートを使用してデプロイするには、パ
 
 Azure CLI を使用したデプロイの手順については、[OpenShift Container Platform](./openshift-container-platform-3x.md) に関するセクションまたは [OKD](./openshift-okd.md) に関するセクションの該当セクションに従ってください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [デプロイ後タスク](./openshift-container-platform-3x-post-deployment.md)
 - [Azure での OpenShift デプロイのトラブルシューティング](./openshift-container-platform-3x-troubleshooting.md)

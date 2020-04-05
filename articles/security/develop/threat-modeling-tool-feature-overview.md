@@ -8,10 +8,10 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
 ms.openlocfilehash: 88eea0eb2bceb0f6322381a94d4339cbdfa662c0
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75552119"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Threat Modeling Tool 機能の概要

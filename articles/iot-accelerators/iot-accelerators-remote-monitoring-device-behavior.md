@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
 ms.openlocfilehash: c39ca0a018bd22844cf7e5350e6d3586319aac16
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73890861"
 ---
 # <a name="implement-the-device-model-behavior"></a>デバイス モデルの動作の実装
@@ -61,7 +61,7 @@ ms.locfileid: "73890861"
 }
 ```
 
-`InitialState` セクションで定義されているように、シミュレートされたデバイスの状態は、シミュレーション サービスによってメモリに保持されます。 状態情報は、**chiller-01-state.js** で定義された `main` 関数に入力として渡されます。 この例では、シミュレーション サービスが 5 秒ごとに **chiller-01-state.js** ファイルを実行します。 このスクリプトでは、シミュレートされたデバイスの状態を変更できます。
+`InitialState` セクションで定義されているように、シミュレートされたデバイスの状態は、シミュレーション サービスによってメモリに保持されます。 状態情報は、`main`chiller-01-state.js**で定義された** 関数に入力として渡されます。 この例では、シミュレーション サービスが 5 秒ごとに **chiller-01-state.js** ファイルを実行します。 このスクリプトでは、シミュレートされたデバイスの状態を変更できます。
 
 以下に、一般的な `main` 関数の概要を示します。
 
@@ -82,7 +82,7 @@ function main(context, previousState, previousProperties) {
 - `deviceId` (例: `Simulated.Chiller.123`)
 - `deviceModel` (例: `Chiller`)
 
-`state` パラメーターには、デバイス シミュレーション サービスによって保持されるデバイスの状態が含まれます。 この値は、前回の `main` の呼び出しによって返された `state` オブジェクトです。
+`state` パラメーターには、デバイス シミュレーション サービスによって保持されるデバイスの状態が含まれます。 この値は、前回の `state` の呼び出しによって返された `main` オブジェクトです。
 
 次の例では、シミュレーション サービスによって保持されているデバイス状態を処理するための `main` メソッドの一般的な実装を示します。
 
@@ -256,7 +256,7 @@ function main(context, previousState, previousProperties) {
 
 GitHub 上の[ローカルでのサービスの実行](https://github.com/Azure/device-simulation-dotnet#running-the-service-locally-eg-for-development-tasks)に関する記事では、デバイス シミュレーション サービスをローカルで実行する方法を示しています。 サービスをローカルで実行すると、シミュレートされたデバイスをクラウドにデプロイする前に簡単にデバッグすることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、独自のシミュレートされたカスタム デバイス モデルの動作を定義する方法について説明しました。 この記事では、次の方法について説明しました。
 

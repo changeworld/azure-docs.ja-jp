@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 27fa0567eefbb50907c0ed6952333230e874c21d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67099032"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-confluence"></a>チュートリアル:Azure Active Directory と Kantega SSO for Confluence の統合
@@ -224,7 +224,7 @@ Kantega SSO for Confluence で Azure AD のシングル サインオンを構成
 
     b. **[Known domains]\(既知のドメイン\)** ボックスにドメイン名を入力します。
 
-    c. **[Save]** をクリックします。
+    c. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

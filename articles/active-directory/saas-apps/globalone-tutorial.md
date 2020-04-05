@@ -17,10 +17,10 @@ ms.date: 06/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 14eac7240c183911fba763bf21c37077107cc275
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68944917"
 ---
 # <a name="tutorial-integrate-globalone-with-azure-active-directory"></a>チュートリアル:GlobalOne と Azure Active Directory との統合
@@ -29,7 +29,7 @@ ms.locfileid: "68944917"
 
 * GlobalOne にアクセスできるユーザーを Azure AD で制御する。
 * ユーザーが自分の Azure AD アカウントを使用して GlobalOne に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -86,7 +86,7 @@ GlobalOne に対する Azure AD SSO を構成してテストするには、次�
 
 1. その他に、GlobalOne アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | Name | ソース属性|
+    | 名前 | ソース属性|
     | ---------------| --------------- |
     | FirstName | User.givenname |
     | LastName | User.surname |
@@ -109,7 +109,7 @@ GlobalOne に対する Azure AD SSO を構成してテストするには、次�
 
     f. **[OK]** をクリックします。
 
-    g. **[Save]** をクリックします。
+    g. **[保存]** をクリックします。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (未加工)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 

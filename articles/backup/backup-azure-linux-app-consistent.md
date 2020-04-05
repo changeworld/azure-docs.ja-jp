@@ -5,10 +5,10 @@ ms.reviewer: anuragm
 ms.topic: conceptual
 ms.date: 01/12/2018
 ms.openlocfilehash: 36eeb9f63c67a01bf37412101e23be035596de94
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74173004"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Azure Linux VM のアプリケーション整合性バックアップ
@@ -71,7 +71,7 @@ VM のバックアップ スナップショットを作成すると、アプリ�
 
 事前スクリプトまたは事後スクリプトを作成する際は、必ず適切なログ機構を追加してください。スクリプトに問題があれば、そのログを調べて修正します。 それでもスクリプトの実行中に問題が発生する場合は、さらに詳しい情報を以下の表で確認してください。
 
-| Error | エラー メッセージ | 推奨される操作 |
+| エラー | エラー メッセージ | 推奨される操作 |
 | ------------------------ | -------------- | ------------------ |
 | Pre-ScriptExecutionFailed |Pre-Script returned an error so backup may not be application consistent. (事前スクリプトからエラーが返されました。バックアップのアプリケーション整合性は確保されていない可能性があります。)| スクリプトのエラー ログを参照して問題を解決してください。|  
 |Post-ScriptExecutionFailed |The post-script returned an error that might impact application state. (アプリケーションの状態に影響する可能性のあるエラーが事後スクリプトから返されました。) |スクリプトのエラー ログを参照して問題を解決し、アプリケーションの状態をチェックしてください。 |
@@ -84,6 +84,6 @@ VM のバックアップ スナップショットを作成すると、アプリ�
 | Pre-ScriptTimeout | The execution of the application-consistent backup pre-script timed-out. (アプリケーション整合性バックアップの事前スクリプトの実行がタイムアウトしました。) | スクリプトをチェックし、 **/etc/azure** にある **VMSnapshotScriptPluginConfig.json** ファイルでタイムアウト値を増やしてください。 |
 | Post-ScriptTimeout | The execution of the application-consistent backup post-script timed out. (アプリケーション整合性バックアップの事後スクリプトの実行がタイムアウトしました。) | スクリプトをチェックし、 **/etc/azure** にある **VMSnapshotScriptPluginConfig.json** ファイルでタイムアウト値を増やしてください。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Recovery Services コンテナーへの VM バックアップの構成](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms)

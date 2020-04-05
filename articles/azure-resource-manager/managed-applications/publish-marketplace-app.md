@@ -5,14 +5,14 @@ author: tfitzmac
 ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: 73d4ccbda854d631248daef439aa3bd232d42e06
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: a42ee5d6f7f40d391acb743ef85f671f25804749
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75649069"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79472998"
 ---
-# <a name="azure-managed-applications-in-the-marketplace"></a>Marketplace の Azure マネージド アプリケーション
+# <a name="tutorial-publish-azure-managed-applications-in-the-marketplace"></a>チュートリアル:Azure マネージド アプリケーションを Marketplace で公開する
 
 ベンダーは、Azure マネージド アプリケーションを使用して、各自のソリューションを、すべての Azure Marketplace ユーザーに提供できます。 これらのベンダーには、マネージド サービス プロバイダー (MSP)、独立系ソフトウェア ベンダー (ISV)、およびシステム インテグレーター (SI) を含めることができます。 マネージド アプリケーションは、顧客のメンテナンスとサービスのオーバーヘッドを削減します。 ベンダーは Marketplace を通じてインフラストラクチャとソフトウェアを販売できます。 また、サービスと運用サポートをマネージド アプリケーションに付加できます。 詳細については、[マネージド アプリケーションの概要](overview.md)に関するページをご覧ください。
 

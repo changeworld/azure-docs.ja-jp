@@ -17,10 +17,10 @@ ms.date: 09/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 837787d375a7570b7daf0a149960ca0020bcdced
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72263992"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-for-customer"></a>チュートリアル:SAP Cloud for Customer と Azure Active Directory のシングル サインオン (SSO) 統合
@@ -29,7 +29,7 @@ ms.locfileid: "72263992"
 
 * SAP Cloud for Customer にアクセスする Azure AD ユーザーを制御する。
 * ユーザーが自分の Azure AD アカウントを使用して SAP Cloud for Customer に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -108,7 +108,7 @@ SAP Cloud for Customer に対する Azure AD SSO を構成してテストする�
     d. **[パラメーター 1]** 一覧から、実装で使用するユーザー属性を選択します。
     たとえば、一意のユーザー識別子として EmployeeID を使用し、その属性値を ExtensionAttribute2 に保存している場合、[user.extensionattribute2] を選択します。
 
-    e. **[Save]** をクリックします。
+    e. **[保存]** をクリックします。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 

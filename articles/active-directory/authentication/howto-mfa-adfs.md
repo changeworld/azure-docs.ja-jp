@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 00200436784eca970f736c4a7f2afebd652c9577
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76155215"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Azure Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護
@@ -64,7 +64,7 @@ ms.locfileid: "76155215"
    ![要求規則の追加](./media/howto-mfa-adfs/trustedip2.png)
 5. 変換要求規則追加ウィザードで、ドロップダウンから **[入力方向の要求をパス スルーまたはフィルター処理]** を選択し、 **[次へ]** をクリックします。
    ![変換要求規則の追加ウィザード](./media/howto-mfa-adfs/trustedip3.png)
-6. [要求規則名] の横にあるボックスに、規則の名前を入力します。 次に例を示します。InsideCorpNet。
+6. [要求規則名] の横にあるボックスに、規則の名前を入力します。 例: InsideCorpNet。
 7. [入力方向の要求の種類] の横にあるドロップダウンから、 **[企業ネットワーク内]** を選択します。
    ![企業ネットワーク内要求の追加](./media/howto-mfa-adfs/trustedip4.png)
 8. **[完了]** をクリックします。
@@ -85,7 +85,7 @@ ms.locfileid: "76155215"
 
 これで要求が準備できたので、信頼できる IP を構成できます。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[条件付きアクセス]**  >  **[ネームド ロケーション]** を選択します。
 3. **[条件付きアクセス - ネームド ロケーション]** ブレードから **[MFA の信頼できる IP の構成]** を選択します。
 

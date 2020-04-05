@@ -15,10 +15,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: bd9622d3e34198402bc45e5d855d05b0c8e35eb8
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77605448"
 ---
 # <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>Azure VM での SQL Server エディションのインプレース変更
@@ -34,7 +34,7 @@ SQL Server のエディションが内部で SQL Server VM に変更された後
 SQL Server のエディションのインプレース変更を行うには、以下のものが必要です。 
 
 - [Azure サブスクリプション](https://azure.microsoft.com/free/)。
-- [SQL VM リソース プロバイダー](virtual-machines-windows-sql-register-with-resource-provider.md)に登録された [Windows 上の SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。
+- [SQL VM リソース プロバイダー](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)に登録された [Windows 上の SQL Server VM](virtual-machines-windows-sql-register-with-resource-provider.md)。
 - SQL Server の**目的のエディション**が収められたセットアップ メディア。 [ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)をお持ちのお客様は、[ボリューム ライセンス サービス センター](https://www.microsoft.com/Licensing/servicecenter/default.aspx)からインストール メディアを入手できます。 ソフトウェア アシュアランスをお持ちでないお客様は、目的のエディション (通常、`C:\SQLServerFull` にある) を含む Azure Marketplace の SQL Server VM イメージから、セットアップ メディアを使用できます。 
 
 
@@ -77,7 +77,7 @@ SQL Server のエディションをダウングレードした後、Azure portal
 
 インストール メディアを使用して SQL Server のエディションを変更し、[SQL VM リソース プロバイダー](virtual-machines-windows-sql-register-with-resource-provider.md)に SQL Server VM を登録した後、Azure portal を使用して、課金のために SQL Server VM のエディション プロパティを変更できます。 これを行うには、次のステップに従います。 
 
-1. [Azure portal](https://portal.azure.com) にサインインします。 
+1. [Azure portal](https://portal.azure.com) にサインインする 
 1. SQL Server の仮想マシン リソースに移動します。 
 1. **[設定]** の **[構成]** を選択します。 次に、 **[エディション]** のドロップダウン リストから、必要な SQL Server のエディションを選択します。 
 

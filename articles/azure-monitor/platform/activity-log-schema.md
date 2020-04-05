@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 12/04/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: ccbb4175701c3535b790f25c9ed522911dda6707
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: c2f171c79423e0cfe8b57c05b8248679f9ada9f1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668844"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79472743"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure アクティビティ ログのイベント スキーマ
 [Azure アクティビティ ログ](platform-logs-overview.md)により、Azure で発生したサブスクリプションレベルのイベントの分析が得られます。 この記事では、カテゴリごとにイベント スキーマを説明します。 
@@ -38,7 +38,7 @@ ms.locfileid: "77668844"
         "nbf": "1234567890",
         "exp": "1234567890",
         "_claim_names": "{\"groups\":\"src1\"}",
-        "_claim_sources": "{\"src1\":{\"endpoint\":\"https://graph.windows.net/1114444b-7467-4144-a616-e3a5d63e147b/users/f409edeb-4d29-44b5-9763-ee9348ad91bb/getMemberObjects\"}}",
+        "_claim_sources": "{\"src1\":{\"endpoint\":\"https://graph.microsoft.com/1114444b-7467-4144-a616-e3a5d63e147b/users/f409edeb-4d29-44b5-9763-ee9348ad91bb/getMemberObjects\"}}",
         "http://schemas.microsoft.com/claims/authnclassreference": "1",
         "aio": "A3GgTJdwK4vy7Fa7l6DgJC2mI0GX44tML385OpU1Q+z+jaPnFMwB",
         "http://schemas.microsoft.com/claims/authnmethodsreferences": "rsa,mfa",

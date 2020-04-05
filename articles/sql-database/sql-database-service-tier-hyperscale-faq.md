@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
-ms.date: 10/12/2019
-ms.openlocfilehash: 6a25d5197746e04ffa25ee397e6d8451e24ae176
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.date: 03/03/2020
+ms.openlocfilehash: 9f518df02b1923513fd014be53646a9a1be8465e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615000"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232439"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database ハイパースケールに関する FAQ
 
@@ -274,7 +274,7 @@ RPO は 0 分です。RTO はデータベース サイズにかかわらず 10 �
 
 ### <a name="can-i-perform-geo-restore-with-a-hyperscale-database"></a>ハイパースケール データベースを使用して geo リストアを実行できるか
 
-はい。  geo リストアは完全にサポートされています。 ポイントインタイム リストアとは異なり、geo リストアでは、実行時間の長い、データ サイズに左右される操作が必要になる場合があります。
+はい。 geo リストアは完全にサポートされています。 ポイントインタイム リストアとは異なり、geo リストアでは、データ サイズに応じた操作が必要です。 データ ファイルは並行してコピーされるため、この操作の実行時間は、データベースの合計サイズではなく、データベース内の最大ファイルのサイズによって主に決まります。 ソース データベースのリージョンと[ペアリングされた](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) Azure リージョンでデータベースを復元した場合、Geo リストアの時間は大幅に短くなります。
 
 ### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>ハイパースケール データベースを使用して geo レプリケーションを設定できるか
 

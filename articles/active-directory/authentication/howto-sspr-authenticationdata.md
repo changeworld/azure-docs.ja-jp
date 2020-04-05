@@ -1,6 +1,6 @@
 ---
 title: Azure AD SSPR データ要件 - Azure Active Directory
-description: Azure AD のセルフ サービスによるパスワード リセットのデータ要件とそれらを満たす方法
+description: Azure AD のセルフサービス パスワード リセットのデータ要件とそれらを満たす方法
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,15 +12,15 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a14338e552250ac63c344365099a16f20616ea9a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74964032"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>エンド ユーザーによる登録を必要としないパスワード リセットをデプロイする
 
-Azure Active Directory (Azure AD) のセルフサービスによるパスワードのリセット (SSPR) をデプロイするには、認証データが存在する必要があります。 ユーザーに自分で認証データを入力させている組織もあります。 他の組織では Active Directory に既に存在するデータと同期する方法が採用されています。 次の条件が満たされていれば、ユーザーが介入しなくても、この同期されたデータは Azure AD と SSPR で利用できるようになります。
+Azure Active Directory (Azure AD) のセルフサービス パスワード リセット (SSPR) をデプロイするには、認証データが存在する必要があります。 ユーザーに自分で認証データを入力させている組織もあります。 他の組織では Active Directory に既に存在するデータと同期する方法が採用されています。 次の条件が満たされていれば、ユーザーが介入しなくても、この同期されたデータは Azure AD と SSPR で利用できるようになります。
 
 * オンプレミスのディレクトリ内のデータが正しい形式になっていること。
 * [簡単設定を使って Azure AD Connect](../hybrid/how-to-connect-install-express.md) が構成されていること。
@@ -150,11 +150,11 @@ Get-AzureADUser -ObjectID user@domain.com | select TelephoneNumber
 Get-AzureADUser | select DisplayName,UserPrincipalName,otherMails,Mobile,TelephoneNumber | Format-Table
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [SSPR のロールアウトを正常に完了する方法](howto-sspr-deployment.md)
 * [パスワードのリセットまたは変更](../user-help/active-directory-passwords-update-your-own-password.md)
-* [セルフサービスのパスワード リセットのための登録](../user-help/active-directory-passwords-reset-register.md)
+* [セルフサービス パスワード リセットのための登録](../user-help/active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](concept-sspr-licensing.md)
 * [ユーザーが使用できる認証方法](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR のポリシー オプション](concept-sspr-policy.md)

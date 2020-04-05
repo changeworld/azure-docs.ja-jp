@@ -15,12 +15,12 @@
       href: quick-backup-vm-powershell.md
     - name: VM のバックアップ - CLI
       href: quick-backup-vm-cli.md
-    - name: VM のバックアップ - Resource Manager テンプレート
-      displayName: ARM
+    - name: VM のバックアップ - ARM テンプレート
+      displayName: Resource Manager
       href: quick-backup-vm-template.md
 - name: チュートリアル
   items:
-    - name: Azure VM の大規模なバックアップ
+    - name: 複数の Azure VM をバックアップする
       href: tutorial-backup-vm-at-scale.md
     - name: PowerShell を使用して Azure VM をバックアップする
       href: tutorial-backup-azure-vm.md
@@ -58,6 +58,8 @@
           href: backup-support-matrix-mabs-dpm.md
         - name: MARS エージェントのサポート マトリックス
           href: backup-support-matrix-mars-agent.md
+        - name: SQL Server バックアップのサポート マトリックス
+          href: sql-support-matrix.md
         - name: SAP HANA バックアップのサポート マトリックス
           href: sap-hana-backup-support-matrix.md
         - name: Azure Policy 向けにサポートされる VM SKU
@@ -164,10 +166,10 @@
           href: backup-azure-manage-mars.md
     - name: Azure ファイル共有のバックアップ
       items:
+        - name: 概要
+          href: azure-file-share-backup-overview.md
         - name: Azure portal から
           items:
-            - name: 概要
-              href: azure-file-share-backup-overview.md
             - name: バックアップ
               href: backup-afs.md
             - name: 復元
@@ -298,7 +300,7 @@
               href: backup-azure-reports-data-model.md
             - name: Azure Backup の Log Analytics データ モデル (Azure Diagnostics モード)
               href: backup-azure-diagnostics-mode-data-model.md
-    - name: Automation
+    - name: オートメーション
       items:
         - name: Azure Backup 用に組み込まれた Azure Policy
           items:
@@ -336,6 +338,8 @@
           href: backup-rm-template-samples.md
     - name: Security
       items:
+        - name: 概要
+          href: security-overview.md
         - name: ロールベースのアクセス制御
           href: backup-rbac-rs-vault.md
         - name: クラウド ワークロードのセキュリティ
@@ -382,6 +386,8 @@
       href: /azure/templates/microsoft.recoveryservices/allversions
 - name: リソース
   items:
+    - name: コンプライアンス
+      href: compliance-offerings.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: MSDN フォーラム

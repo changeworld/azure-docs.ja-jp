@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: manayar
 ms.openlocfilehash: fa1dda2907e8400491c8d18897bb41fb9cff49fd
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76274429"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>仮想マシン スケール セットを使用した垂直方向の自動スケール
 
 この記事では、再プロビジョニングありまたはなしで Azure [仮想マシン スケール セット](https://azure.microsoft.com/services/virtual-machine-scale-sets/) を垂直方向にスケーリングする方法について説明します。 
 
-*スケール アップ*および*スケール ダウン*とも呼ばれる垂直スケーリングとは、ワークロードに応じて仮想マシン (VM) のサイズを増減させることを意味します。 この動作を、*スケール アウト*および*スケール イン*とも呼ばれる、VM の数がワークロードに応じて変更される[水平方向のスケーリング](virtual-machine-scale-sets-autoscale-overview.md)と比較してください。
+*スケール アップ*および*スケール ダウン*とも呼ばれる垂直スケーリングとは、ワークロードに応じて仮想マシン (VM) のサイズを増減させることを意味します。 この動作を、[スケール アウト](virtual-machine-scale-sets-autoscale-overview.md)および*スケール イン*とも呼ばれる、VM の数がワークロードに応じて変更される*水平方向のスケーリング*と比較してください。
 
 再プロビジョニングとは、既存の仮想マシンを削除して、新しい仮想マシンで置き換えることを意味します。 仮想マシン スケール セットの VM のサイズを増減する場合、既存の VM のサイズを変更してデータを保持することも、新しいサイズの新しい VM をデプロイする必要があることもあります。 このドキュメントでは、どちらの場合についても説明します。
 
@@ -119,7 +119,7 @@ Runbook をインポートしたら、仮想マシン スケール セットか�
 
 ## <a name="add-an-alert-to-your-virtual-machine-scale-set"></a>仮想マシン スケール セットにアラートを追加する
 
-仮想マシン スケール セットにアラートを追加する方法を説明する PowerShell スクリプトを以下に示します。 アラートを発生させるメトリックの名前を取得するには、「[Azure Monitor の自動スケールの一般的なメトリック](../azure-monitor/platform/autoscale-common-metrics.md)」をご覧ください。
+仮想マシン スケール セットにアラートを追加する方法を説明する PowerShell スクリプトを以下に示します。 アラートを発生させるメトリックの名前を取得するには、「[Azure Insights の自動スケールの一般的なメトリック](../azure-monitor/platform/autoscale-common-metrics.md)」をご覧ください。
 
 ```powershell
 $actionEmail = New-AzAlertRuleEmail -CustomEmail user@contoso.com

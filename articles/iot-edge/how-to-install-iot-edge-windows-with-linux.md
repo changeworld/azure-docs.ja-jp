@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
-ms.openlocfilehash: 40e6f850a00a8f77e846d9574caedc345aa94cef
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 8a4579e092bbc4fd58954f1ce1f1dad3a8ddbbba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509990"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80133159"
 ---
 # <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>Windows で IoT Edge を使用し、Linux コンテナーを実行する
 
@@ -24,6 +24,8 @@ Windows コンピューターを使用し、Linux デバイス向けの IoT Edge
 
 この記事では、Linux コンテナーと共に Windows x64 (AMD/Intel) システムに Azure IoT Edge ランタイムをインストールする手順を示します。 全インストール パラメーターの詳細など、IoT Edge ランタイム インストーラーの詳細については、「[Windows に Azure IoT Edge ランタイムをインストールする](how-to-install-iot-edge-windows.md)」を参照してください。
 
+IoT Edge の最新バージョンの内容については、[Azure IoT Edge リリース](https://github.com/Azure/azure-iotedge/releases)に関する記事を参照してください。
+
 ## <a name="prerequisites"></a>前提条件
 
 このセクションを使用して、使用する Windows デバイスが IoT Edge をサポートできるかどうかを確認し、インストールする前に Windows デバイスをコンテナー エンジン用に準備します。
@@ -31,8 +33,6 @@ Windows コンピューターを使用し、Linux デバイス向けの IoT Edge
 ### <a name="supported-windows-versions"></a>サポートされている Windows バージョン
 
 Linux コンテナーを使用する Azure IoT Edge は、[Docker Desktop の要件](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)を満たす任意のバージョンの Windows で実行できます。
-
-IoT Edge の最新バージョンの内容の詳細については、 [Azure IoT Edge リリース](https://github.com/Azure/azure-iotedge/releases)に関する記事を参照してください。
 
 IoT Edge を仮想マシンに インストールする場合は、入れ子になった仮想化を有効にし、2 GB 以上のメモリを割り当てます。 入れ子になった仮想化を有効にする方法は、使用しているハイパーバイザーによって異なります。 Hyper-V の場合、第 2 世代仮想マシンでは入れ子になった仮想化が既定で有効になっています。 VMWare の場合、仮想マシンでこの機能を有効に切り替えます。
 

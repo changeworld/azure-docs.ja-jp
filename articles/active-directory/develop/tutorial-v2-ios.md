@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: abf083aacbdc643d780a8061b405752f36e27e45
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79129942"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>iOS または macOS アプリからユーザーのサインインを行い、Microsoft Graph を呼び出す

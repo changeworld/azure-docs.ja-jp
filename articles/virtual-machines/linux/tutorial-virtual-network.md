@@ -16,15 +16,15 @@ ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: d6624b9d5d77a8552584049463b63738bbf17627
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034343"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222259"
 ---
-# <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用して Linux 仮想マシン用の Azure 仮想ネットワークの作成と管理を行う
+# <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>チュートリアル - Azure CLI を使用して Linux 仮想マシン用の Azure 仮想ネットワークの作成と管理を行う
 
-Azure 仮想マシンでは、内部と外部のネットワーク通信に Azure ネットワークが使用されます。 このチュートリアルでは、2 台の仮想マシンをデプロイし、それらの VM に使用する Azure ネットワークを構成する手順について説明します。 このチュートリアルの例では、これらの VM が、データベース バックエンドを持つ Web アプリケーションのホストになっていることを想定していますが、アプリケーションのデプロイは、このチュートリアルでは行いません。 このチュートリアルで学習する内容は次のとおりです。
+Azure 仮想マシンでは、内部と外部のネットワーク通信に Azure ネットワークが使用されます。 このチュートリアルでは、2 台の仮想マシンをデプロイし、それらの VM に使用する Azure ネットワークを構成する手順について説明します。 このチュートリアルの例では、これらの VM が、データベース バックエンドを持つ Web アプリケーションのホストになっていることを想定していますが、アプリケーションのデプロイは、このチュートリアルでは行いません。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * 仮想ネットワークとサブネットの作成
@@ -292,7 +292,7 @@ az network nsg rule list --resource-group myRGNetwork --nsg-name myBackendNSG --
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、仮想マシンとの関連で Azure ネットワークを作成し、セキュリティで保護しました。 以下の方法について学習しました。
+このチュートリアルでは、仮想マシンとの関連で Azure ネットワークを作成し、セキュリティで保護しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * 仮想ネットワークとサブネットの作成

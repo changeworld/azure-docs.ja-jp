@@ -1,21 +1,21 @@
 ---
 title: クイック スタート:Python 用 Anomaly Detector クライアント ライブラリを使用してデータの異常を検出する
 titleSuffix: Azure Cognitive Services
-description: このクイックスタートでは、Anomaly Detector API を使用して、データ系列の異常をバッチとして、またはストリーミング データで検出します。
+description: Anomaly Detector API を使用して、お使いのデータ系列の異常を一括で、またはストリーミング データ上で検出する方法について説明します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 11/19/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 17ca1a7671718b5b96df0add7775fb82d4d97303
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: c13657b8f2dae3868c1b9820236585aa930c6be4
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770443"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80239096"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-nodejs"></a>クイック スタート:Node.js 用 Anomaly Detector クライアント ライブラリ
 

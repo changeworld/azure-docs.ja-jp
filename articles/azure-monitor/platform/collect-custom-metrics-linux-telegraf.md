@@ -8,10 +8,10 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 0ed9144116c1d716124025ef0aae39e7783c5934
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77655465"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Linux VM のカスタム メトリックを InfluxData Telegraf エージェントを使用して収集する

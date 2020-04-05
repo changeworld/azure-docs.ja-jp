@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: 3d9d1240e31d40a3d9c75d56314acc1721d90b99
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73488138"
 ---
 # <a name="what-is-internet-analyzer-preview"></a>Internet Analyzer とは (プレビュー)
@@ -40,7 +40,7 @@ Internet Analyzer で作成する各テストは、エンドポイント A と�
     * インド中部
     * 米国中部
     * 東アジア
-    * East US
+    * 米国東部
     * 西日本
     * 北ヨーロッパ
     * 南アフリカ北部
@@ -84,7 +84,7 @@ Internet Analyzer は多くの質問に答えることができますが、特�
 * 各リージョンの自分のエンドユーザーのグループに最適なクラウドは何か。 
     *  *推奨されるテスト: カスタム (他のクラウドサービス) vs. Azure (事前構成済みの任意のエンドポイント)*
 
-## <a name="how-it-works"></a>動作のしくみ
+## <a name="how-it-works"></a>しくみ
 
 Internet Analyzer を使用するには、Microsoft Azure portal で Internet Analyzer のリソースを設定し、アプリケーションに小規模な JavaScript クライアントをインストールします。 クライアントは、HTTPS 経由で 1 ピクセルのイメージをダウンロードすることにより、エンドユーザーから選択したエンドポイントまでの待機時間を測定します。 待機時間の測定値を収集すると、クライアントはその測定データを Internet Analyzer に送信します。
 
@@ -104,7 +104,7 @@ Internet Analyzer を使用するには、Microsoft Azure portal で Internet An
 スコアカードの詳細については、「[スコアカードの解釈](internet-analyzer-scorecard.md)」のページを参照してください。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Internet Analyzer の最初のリソースを作成する](internet-analyzer-create-test-portal.md)方法を学習する。
 * [Internet Analyzer の FAQ](internet-analyzer-faq.md) を読む。 

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
 ms.openlocfilehash: bcaf45af4c02dad22e2cc611fa7ea5a32ad3a853
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75443880"
 ---
 # <a name="azure-operational-security-overview"></a>Azure で運用可能なセキュリティの概要
@@ -140,21 +140,21 @@ Network Watcher を使用すると、Azure ネットワークの監視と診断�
 
 現在、Network Watcher が備える機能は次のとおりです。
 
-- [トポロジ](/azure/network-watcher/network-watcher-topology-overview):リソース グループ内のネットワーク リソース間のさまざまな相互接続および関係を確認できます。
-- [可変パケット キャプチャ](/azure/network-watcher/network-watcher-packet-capture-overview):仮想マシンで送受信されるパケット データをキャプチャします。 時間やサイズの制限を設定する機能など、詳細なフィルター オプションときめ細やかなコントロールにより、多様なキャプチャを行えます。 パケット データは、.cap 形式で BLOB ストアまたはローカル ディスクに保管できます。
-- [IP フロー検証](/azure/network-watcher/network-watcher-ip-flow-verify-overview):フロー情報の 5 タプル パケット パラメーター (宛先 IP、発信元 IP、宛先ポート、発信元ポート、プロトコル) に基づいてパケットが許可されたか拒否されたかを確認します。 パケットがセキュリティ グループによって拒否された場合は、そのパケットを拒否した規則とグループが返されます。
-- [次ホップ](/azure/network-watcher/network-watcher-next-hop-overview):Azure ネットワーク ファブリックにおけるルーティング対象パケットの次のホップを特定します。これにより、誤って構成されたユーザー定義のルーティングがあるかどうかを診断できます。
-- [セキュリティ グループ ビュー](/azure/network-watcher/network-watcher-security-group-view-overview):VM に適用されている有効な適用セキュリティ規則を確認できます。
-- [ネットワーク セキュリティ グループの NSG フロー ログ](/azure/network-watcher/network-watcher-nsg-flow-logging-overview):そのグループのセキュリティ規則で許可または拒否されるトラフィックに関係するログを記録できます。 フローは 5 タプル情報 (送信元 IP、宛先 IP送信元ポート、宛先ポート、プロトコル) で定義されます。
-- [Virtual Network ゲートウェイと接続のトラブルシューティング](/azure/network-watcher/network-watcher-troubleshoot-manage-rest):仮想ネットワーク ゲートウェイと接続のトラブルシューティングを行う機能を提供します。
-- [ネットワーク サブスクリプションの制限](/azure/network-watcher/network-watcher-monitoring-overview):ネットワーク リソースの使用状況を制限と照らし合わせて確認できます。
-- [診断ログ](/azure/network-watcher/network-watcher-monitoring-overview):1 つのウィンドウで、リソース グループ内のネットワーク リソースの診断ログを有効化または無効化することができます。
+- [トポロジ](/azure/network-watcher/network-watcher-topology-overview): リソース グループ内のネットワーク リソース間のさまざまな相互接続および関係を確認できます。
+- [可変パケット キャプチャ](/azure/network-watcher/network-watcher-packet-capture-overview): 仮想マシンで送受信されるパケット データをキャプチャします。 時間やサイズの制限を設定する機能など、詳細なフィルター オプションときめ細やかなコントロールにより、多様なキャプチャを行えます。 パケット データは、.cap 形式で BLOB ストアまたはローカル ディスクに保管できます。
+- [IP フロー検証](/azure/network-watcher/network-watcher-ip-flow-verify-overview): フロー情報の 5 タプル パケット パラメーター (宛先 IP、発信元 IP、宛先ポート、発信元ポート、プロトコル) に基づいてパケットが許可されたか拒否されたかを確認します。 パケットがセキュリティ グループによって拒否された場合は、そのパケットを拒否した規則とグループが返されます。
+- [次のホップ](/azure/network-watcher/network-watcher-next-hop-overview): Azure ネットワーク ファブリックにおけるルーティング対象パケットの次のホップを特定します。これにより、誤って構成されたユーザー定義のルーティングがあるかどうかを診断できます。
+- [セキュリティ グループ ビュー](/azure/network-watcher/network-watcher-security-group-view-overview) - VM に適用されている有効な適用セキュリティ規則を確認できます。
+- [ネットワーク セキュリティ グループの NSG フロー ログ](/azure/network-watcher/network-watcher-nsg-flow-logging-overview): そのグループのセキュリティ規則で許可または拒否されるトラフィックに関係するログを記録できます。 フローは 5 タプル情報 (送信元 IP、宛先 IP送信元ポート、宛先ポート、プロトコル) で定義されます。
+- [仮想ネットワーク ゲートウェイと接続のトラブルシューティング](/azure/network-watcher/network-watcher-troubleshoot-manage-rest): 仮想ネットワーク ゲートウェイと接続に関する問題をトラブルシューティングできます。
+- [ネットワーク サブスクリプションの制限](/azure/network-watcher/network-watcher-monitoring-overview): ネットワーク リソースの使用状況を制限と照らし合わせて確認できます。
+- [診断ログ](/azure/network-watcher/network-watcher-monitoring-overview): 1 つのウィンドウで、リソース グループ内のネットワーク リソースの診断ログを有効化または無効化することができます。
 
 詳しくは、[Network Watcher の構成](/azure/network-watcher/network-watcher-create)に関する記事をご覧ください。
 
 ## <a name="cloud-service-provider-access-transparency"></a>クラウド サービス プロバイダーのアクセスの透過性
 
-[Microsoft Azure 用のカスタマー ロックボックス](customer-lockbox-overview.md)は Azure portal に統合されたサービスです。このサービスを使用することでお客様は、Microsoft サポート エンジニアが問題解決のためにご利用のデータにアクセスすることを必要とする可能性があるまれな事例で明示的な制御を行うことができます。
+[Microsoft Azure 用のカスタマー ロックボックス](customer-lockbox-overview.md)は Azure portal に統合されたサービスです。このサービスを使用することでお客様は、Microsoft サポート エンジニアが問題解決のためにご利用のデータにアクセスするとこを必要とする可能性があるまれな事例で明示的な制御を行うことができます。
 リモート アクセスの問題をデバッグするなどの事例は、非常にまれであり、Microsoft サポート エンジニアは問題解決のために管理者特権のアクセス許可を必要とします。 そのようなケースでは、Microsoft サポート エンジニアは、Just-In-Time アクセス サービスを使用し、それによってアクセスがそのサービスに制限された、期限付きの制限された承認を取得します。  
 Microsoft ではアクセスするにあたり、常にお客様の同意を得てきましたが、カスタマー ロックボックスによってお客様は Azure portal からそのような要求を確認し、承認または拒否することができるようになりました。 お客様が要求を承認するまで、Microsoft サポート エンジニアにはアクセス権は付与されません。
 

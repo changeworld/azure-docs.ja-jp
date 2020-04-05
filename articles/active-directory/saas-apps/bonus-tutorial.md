@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Bonusly の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Bonusly の統合 | Microsoft Docs'
 description: Azure Active Directory と Bonusly の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ea9c88f8eb8ac7b72f11ff286d2294df8cb70860
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74232056"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>チュートリアル:Azure Active Directory と Bonusly の統合
+# <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>チュートリアル: Azure Active Directory と Bonusly の統合
 
 このチュートリアルでは、Bonusly と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Bonusly と Azure AD の統合には、次の利点があります。
@@ -150,7 +150,7 @@ Bonusly で Azure AD シングル サインオンを構成するには、次の�
     
     d. Azure Portal からコピーした**拇印**の値を、 **[Cert Fingerprint]\(証明書の指紋\)** ボックスに貼り付けます。
     
-    e. **[Save]** をクリックします。
+    e. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -215,7 +215,7 @@ Azure AD ユーザーが Bonusly にサインインできるようにするに�
 
 1. **[設定]** をクリックします。
 
-    ![設定](./media/bonus-tutorial/ic781041.png "設定")
+    ![[設定]](./media/bonus-tutorial/ic781041.png "設定")
 
 1. **[Users and bonuses]** タブをクリックします。
 
@@ -239,7 +239,7 @@ Azure AD ユーザーが Bonusly にサインインできるようにするに�
 
     c. **[メール]** ボックスに、ユーザーのメール (`brittasimon\@contoso.com` など) を入力します。
 
-    d. **[Save]** をクリックします。
+    d. **[保存]** をクリックします。
 
     > [!NOTE]
     > アカウントがアクティブになる前に、Azure AD アカウント所有者に、アカウント確認用のリンクを含む電子メールが送信されます。  

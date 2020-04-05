@@ -13,10 +13,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 35fc4e1d64fa7df392fa878db14c0464da7dccf4
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78188309"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で特定の Azure Active Directory 組織用のサインインを設定する
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) B2C で [ID プロバイダー](authorization-
 
 特定の Azure AD 組織のユーザーのサインインを有効にするには、組織の Azure AD テナント内でアプリケーションを登録する必要があります。このテナントは、お使いの Azure AD B2C テナントと同じではありません。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. ご自分の Azure AD テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリ + サブスクリプション] フィルター**を選択し、ご利用の Azure AD テナントが含まれるディレクトリを選択します。 これは、Azure AD B2C テナントと同じテナントではありません。
 3. Azure portal の左上隅にある **[すべてのサービス]** を選択し、 **[アプリの登録]** を検索して選択します。
 4. **[新規登録]** を選択します。
@@ -61,7 +61,7 @@ Azure Active Directory (Azure AD) B2C で [ID プロバイダー](authorization-
 
     たとえば、「 `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration` 」のように入力します。
 
-    `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration` などの Azure AD v2.0 メタデータ エンドポイント使用**しないでください**。 これを行うと、サインインを試みたときに `AADB2C: A claim with id 'UserId' was not found, which is required by ClaimsTransformation 'CreateAlternativeSecurityId' with id 'CreateAlternativeSecurityId' in policy 'B2C_1_SignUpOrIn' of tenant 'contoso.onmicrosoft.com'` のようなエラーが発生します。
+    **などの Azure AD v2.0 メタデータ エンドポイント使用**しないでください`https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`。 これを行うと、サインインを試みたときに `AADB2C: A claim with id 'UserId' was not found, which is required by ClaimsTransformation 'CreateAlternativeSecurityId' with id 'CreateAlternativeSecurityId' in policy 'B2C_1_SignUpOrIn' of tenant 'contoso.onmicrosoft.com'` のようなエラーが発生します。
 
 1. **[クライアント ID]** には、前に記録したアプリケーション ID を入力します。
 1. **[クライアント シークレット]** には、前に記録したクライアント シークレットを入力します。

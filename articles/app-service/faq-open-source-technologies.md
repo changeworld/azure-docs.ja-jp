@@ -10,10 +10,10 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: 33590f9fc7e6c4d46123cbc7088086a3197d52ae
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74672440"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Azure の Web アプリのオープン ソース テクノロジに関する FAQ

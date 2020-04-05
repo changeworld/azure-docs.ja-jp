@@ -13,10 +13,10 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 40a9f7ce86981d6f03b25237a7a73869fd5fd4ba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75476029"
 ---
 # <a name="get-all-application-proxy-apps-using-default-domains-msappproxynet"></a>既定のドメイン (.msappproxy.net) を使用するすべてのアプリケーション プロキシ アプリを取得する
@@ -29,7 +29,7 @@ ms.locfileid: "75476029"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-このサンプルには、[Graph 用 AzureAD V2 PowerShell モジュール](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) (AzureAD) または [Graph 用 AzureAD V2 PowerShell モジュール プレビュー バージョン](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview) が必要です。
+このサンプルでは、[AzureAD V2 PowerShell for Graph モジュール](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) (AzureAD)、または[AzureAD V2 PowerShell for Graph モジュール プレビュー バージョン](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview) が必要です。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -41,7 +41,7 @@ ms.locfileid: "75476029"
 |---|---|
 |[Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) | サービス プリンシパルを取得します。 |
 |[Get-AzureADApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0) | Azure AD アプリケーションを取得します。 |
-|[Get-AzureADApplicationProxyApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplicationproxyapplication?view=azureadps-2.0) | Azure AD 内のアプリケーション プロキシに対して構成されたアプリケーションを取得します。 |
+|[Get-AzureADApplicationProxyApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplicationproxyapplication?view=azureadps-2.0) | Azure AD でアプリケーション プロキシ用に構成されたアプリケーションを取得します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

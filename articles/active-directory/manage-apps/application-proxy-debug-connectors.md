@@ -12,10 +12,10 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.openlocfilehash: c041578932bd33eb0a2d3afc18a35c2c0458dc8b
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72311855"
 ---
 # <a name="debug-application-proxy-connector-issues"></a>アプリケーション プロキシ コネクタの問題をデバッグする 
@@ -40,7 +40,7 @@ ms.locfileid: "72311855"
 
 ![コネクタをデバッグする手順を示すフローチャート](media/application-proxy-debug-connectors/application-proxy-connector-debugging-flowchart.png)
 
-|  | Action | 説明 | 
+|  | アクション | 説明 | 
 |---------|---------|---------|
 |1 | アプリに割り当てられたコネクタ グループを検索する | 複数のサーバーにインストールされているコネクタがある場合があります。その場合、コネクタは[コネクタ グループに割り当てられている](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups)必要があります。 コネクタ グループの詳細については、「[コネクタ グループを使用して別のネットワークや場所にアプリケーションを発行する](application-proxy-connector-groups.md)」をご覧ください。 |
 |2 | コネクタをインストールして、グループを割り当てる | コネクタをインストールしていない場合は、「[コネクタのインストールと登録](application-proxy-add-on-premises-application.md#install-and-register-a-connector)」を参照してください。<br></br> コネクタをインストールできない場合、[コネクタのインストール問題](application-proxy-connector-installation-problem.md)ページを参照してください。<br></br> コネクタがグループに割り当てられていない場合は、[コネクタをグループに割り当てる](application-proxy-connector-groups.md#create-connector-groups)に関するセクションを参照してください。<br></br>アプリケーションがコネクタ グループに割り当てられていない場合は、「[コネクタ グループにアプリケーションを割り当てる](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups)」を参照してください。|
@@ -53,7 +53,7 @@ ms.locfileid: "72311855"
 |9 | バックエンドでタイムアウト値を延長する | アプリケーションの **[追加設定]** で、 **[バックエンド アプリケーションのタイムアウト]** 設定を **[長い]** に変更します。 「[オンプレミス アプリを Azure AD に追加する](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)」を参照してください。 |
 |10 | 問題が解決しない場合は、特定のフローの問題をターゲットにして、アプリと SSO デバッグのフローを確認する | [アプリケーション プロキシ アプリケーションの問題のデバッグ](application-proxy-debug-apps.md)のトラブルシューティング フローを使用します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 
 * [コネクタ グループを使用して別のネットワークや場所にアプリケーションを発行する](application-proxy-connector-groups.md)

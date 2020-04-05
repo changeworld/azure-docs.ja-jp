@@ -8,10 +8,10 @@ ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
 ms.openlocfilehash: ea2a66a6b012664a9596a02ea32c1a0b677ee3ea
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74384262"
 ---
 # <a name="azure-disk-encryption-for-windows-vms-faq"></a>Windows VM 用の Azure Disk Encryption に関する FAQ
@@ -121,7 +121,7 @@ Azure Backup には、同じサブスクリプションおよびリージョン�
 
 [Azure Disk Encryption フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDiskEncryption)で質問したり、フィードバックを提供したりできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Azure Disk Encryption に関して最もよく寄せられるご質問について説明しました。 このサービスの詳細については、以下の記事を参照してください。
 
 - [Azure Disk Encryption の概要](disk-encryption-overview.md)

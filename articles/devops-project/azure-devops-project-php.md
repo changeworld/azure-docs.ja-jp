@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Azure DevOps Projects を使用して PHP 用の CI/CD パイプラインを作成する
+title: 'クイック スタート: Azure DevOps Projects を使用して PHP 用の CI/CD パイプラインを作成する'
 description: DevOps Projects を利用すると、Azure を使い始めるのが簡単になります。 いくつかの簡単な手順により、選択した Azure サービス上でアプリを稼働させることができます。
 ms.prod: devops
 ms.technology: devops-cicd
@@ -17,10 +17,10 @@ ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
 ms.openlocfilehash: 7c097c2a7247c9cad6cdce8a89059ee8d90d159e
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "70899593"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-projects"></a>Azure DevOps Projects を使用して PHP 用の CI/CD パイプラインを作成する
@@ -139,11 +139,11 @@ Azure サブスクリプションをお持ちでない場合は、[Visual Studio
 1. **[ログ]** を選択します。  
         ログには、デプロイ プロセスに関する有用な情報が含まれます。 これらは、デプロイ中とデプロイ後の両方に表示できます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Azure App Service とその他の関連リソースが必要なくなったら、削除してかまいません。 DevOps Projects ダッシュボードで**削除**機能を使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 CI/CD プロセスを構成したときに、ビルドとリリース パイプラインが自動的に作成されました。 チームのニーズを満たすようにこれらのビルドおよびリリース パイプラインを変更できます。 CI/CD パイプラインの詳細については、次のチュートリアルを参照してください。
 

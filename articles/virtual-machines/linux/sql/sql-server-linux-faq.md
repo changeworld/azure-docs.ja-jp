@@ -13,10 +13,10 @@ ms.date: 12/13/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 1e729c608a2cad28c810f8d5236360c909a496b0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70082030"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-azure-virtual-machines"></a>Linux Azure Virtual Machines における SQL Server についてよく寄せられる質問
@@ -32,7 +32,7 @@ ms.locfileid: "70082030"
 
 [!INCLUDE [support-disclaimer](../../../../includes/support-disclaimer.md)]
 
-## <a id="images"></a>イメージ
+## <a name="images"></a><a id="images"></a>イメージ
 
 1. **どのような SQL Server 仮想マシン ギャラリーのイメージを使用できますか?**
 

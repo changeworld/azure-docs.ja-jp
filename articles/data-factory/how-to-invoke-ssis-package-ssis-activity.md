@@ -15,11 +15,11 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 11/14/2019
 ms.openlocfilehash: 6027c2d94535ca2ef5c41e7027fe070c6ccb21a0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926489"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229979"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Azure Data Factory の SSIS パッケージの実行アクティビティを使用して SSIS パッケージを実行する
 この記事では、SSIS パッケージの実行アクティビティを使用して、SQL Server Integration Services (SSIS) パッケージを Azure Data Factory パイプラインで実行する方法を説明します。 
@@ -513,6 +513,6 @@ Azure portal を使用してパイプラインを監視することもできま�
    select * from catalog.executions
    ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次のブログ記事を参照してください。
 - [Azure Data Factory パイプラインでの SSIS アクティビティを含む ETL/ELT ワークフローの最新化と拡張](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Modernize-and-Extend-Your-ETL-ELT-Workflows-with-SSIS-Activities/ba-p/388370)

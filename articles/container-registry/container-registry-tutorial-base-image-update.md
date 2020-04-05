@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 01/22/2020
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 4797dd1f1fe19b98ab94c4743ad4af3c43ce0627
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78402859"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>チュートリアル:Azure コンテナー レジストリで基本イメージの更新時にコンテナー イメージ ビルドを自動化する 

@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: kgremban
 ms.openlocfilehash: cfbd46ad961bd1dc914bae98e761cd83d445ff88
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76513033"
 ---
 # <a name="azure-event-grid-event-schema-for-iot-hub"></a>IoT Hub 用の Azure Event Grid イベント スキーマ

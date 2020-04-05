@@ -13,10 +13,10 @@ ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0d2f284fddfc49632e467adbf5877856b40a81dd
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77522412"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>自動ユーザー プロビジョニングのデプロイを計画する
@@ -51,7 +51,7 @@ Azure AD は、アプリケーション ギャラリー メニューに用意さ
 
 自動的にプロビジョニングするアプリケーションの適切なライセンスが必要になります。 アプリケーションに割り当てられたユーザーがアプリケーション ロールに適したライセンスを持っているかどうかを、アプリケーション所有者と話し合ってください。 Azure AD がロールに基づいて自動プロビジョニングを管理している場合、Azure AD で割り当てられるロールは、アプリケーション ライセンスに合わせる必要があります。 アプリケーションで所有されているライセンスが正しくないと、ユーザーのプロビジョニングまたは更新中にエラーが発生する可能性があります。
 
-### <a name="terms"></a>Terms
+### <a name="terms"></a>用語
 
 この記事では、次の用語を使用しています。
 
@@ -293,7 +293,7 @@ Azure AD は、監査ログとレポートによって組織のユーザーの�
 
 これらのレポートの所有権を引き受け、組織の要件が満たされる頻度で使用することをお勧めします。 Azure AD は、ほとんどの監査データを 30 日間保持します。
 
-### <a name="troubleshoot"></a>[トラブルシューティング]
+### <a name="troubleshoot"></a>トラブルシューティング
 
 プロビジョニング中に発生する可能性がある問題のトラブルシューティングについては、次のリンクを参照してください。
 

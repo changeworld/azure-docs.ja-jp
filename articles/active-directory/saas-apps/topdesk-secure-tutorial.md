@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と TOPdesk - Secure の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と TOPdesk - Secure の統合 | Microsoft Docs'
 description: Azure Active Directory と TOPdesk - Secure の間のシングル サインオンの設定方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 393557531fe69a494a16e0f4c49ac07891e490ec
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74233399"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>チュートリアル:Azure Active Directory と TOPdesk - Secure の統合
+# <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>チュートリアル: Azure Active Directory と TOPdesk - Secure の統合
 
 このチュートリアルでは、TOPdesk - Secure と Azure Active Directory (Azure AD) を統合する方法について説明します。
 TOPdesk - Secure と Azure AD を統合すると、次の利点があります。
@@ -135,7 +135,7 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
 
 2. **[TOPdesk]** メニューで **[Settings]** をクリックします。
 
-    ![設定](./media/topdesk-secure-tutorial/ic790598.png "設定")
+    ![[設定]](./media/topdesk-secure-tutorial/ic790598.png "設定")
 
 3. **[Login Settings]** をクリックします。
 
@@ -143,7 +143,7 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
 
 4. **[Login Settings]** メニューを展開し、 **[General]** をクリックします。
 
-    ![全般](./media/topdesk-secure-tutorial/ic790600.png "[General]")
+    ![全般](./media/topdesk-secure-tutorial/ic790600.png "全般")
 
 5. **[SAML login]** 構成セクションの **[Secure]** セクションで、次の手順に従います。
 
@@ -159,7 +159,7 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
 
 6. 証明書ファイルを作成するには、次の手順を実行します。
 
-    ![証明書](./media/topdesk-secure-tutorial/ic790606.png "証明書")
+    ![[MSSQLSERVER のプロトコルのプロパティ]](./media/topdesk-secure-tutorial/ic790606.png "Certificate")
 
     a. Azure Portal からダウンロードしたメタデータ ファイルを開きます。
 
@@ -189,7 +189,7 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
 
     f. **[Display name]** テキスト ボックスに、構成の名前を入力します。
 
-    g. **[Save]** をクリックします。
+    g. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -253,7 +253,7 @@ TOPdesk - Secure の場合、プロビジョニングは手動で行います。
 
 2. 上部のメニューで、 **[TOPdesk]\>[New]\>[Support Files]\>[Operator]** の順にクリックします。
 
-    ![演算子](./media/topdesk-secure-tutorial/ic790610.png "Operator")
+    ![[オペレーター]](./media/topdesk-secure-tutorial/ic790610.png "演算子")
 
 3. **[New Operator]** ダイアログで、次の手順を実行します。
 
@@ -267,7 +267,7 @@ TOPdesk - Secure の場合、プロビジョニングは手動で行います。
 
     d. **[TOPdesk Login]** セクションの **[Login Name]** テキストボックスに、ユーザーのログイン名を入力します。
 
-    e. **[Save]** をクリックします。
+    e. **[保存]** をクリックします。
 
 > [!NOTE]
 > 他の TOPdesk - Secure ユーザー アカウント作成ツールや、TOPdesk - Secure から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。

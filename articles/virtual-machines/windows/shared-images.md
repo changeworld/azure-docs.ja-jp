@@ -16,10 +16,10 @@ ms.date: 05/06/2019
 ms.author: cynthn
 ms.custom: ''
 ms.openlocfilehash: db877c96167fc011c1a8bd52cc1d0b63260007c9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74066253"
 ---
 # <a name="create-a-shared-image-gallery-with-azure-powershell"></a>Azure PowerShell を使用して共有イメージ ギャラリーを作成する 
@@ -43,7 +43,7 @@ ms.locfileid: "74066253"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事の例を実際に行うには、既存のマネージド イメージが必要です。 お持ちでない場合は、[Azure PowerShell で Azure VM のカスタム イメージを作成する方法に関するチュートリアル](tutorial-custom-images.md)に従って作成してください。 マネージド イメージにデータ ディスクが含まれている場合、データ ディスクのサイズが 1 TB を超えることはできません。
+この記事の例を実際に行うには、既存のマネージド イメージが必要です。 お持ちでない場合は、「[チュートリアル: Azure PowerShell で Azure VM のカスタム イメージを作成する方法に関するチュートリアル](tutorial-custom-images.md)に従って作成してください。 マネージド イメージにデータ ディスクが含まれている場合、データ ディスクのサイズが 1 TB を超えることはできません。
 
 この記事の作業に出現するリソース グループと VM の名前は適宜置き換えてください。
 
@@ -96,7 +96,7 @@ New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 
 [!INCLUDE [virtual-machines-common-shared-images-update-delete-ps](../../../includes/virtual-machines-common-shared-images-update-delete-ps.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure Image Builder (プレビュー)](image-builder-overview.md) は、イメージ バージョンの作成の自動化に役立ちます。イメージ バージョンの更新や、[既存のイメージ バージョンからの新しいイメージ バージョンの作成](image-builder-gallery-update-image-version.md)に使用することさえできます。 
 
 共有イメージ ギャラリー リソースは、テンプレートを使用して作成することもできます。 いくつかの Azure クイック スタート テンプレートが用意されています。 

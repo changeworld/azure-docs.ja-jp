@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: twooley
 ms.openlocfilehash: 99384374226fd89cfd672c6b4f851a1743db0764
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67118800"
 ---
 # <a name="what-is-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 とは
@@ -54,13 +54,13 @@ Data Lake Storage Gen1 では、任意のデータをネイティブ形式で格
 
 Data Lake Storage Gen1 のデータ コンテナーは、本質的にはフォルダーとファイルです。 格納されたデータを SDK、Azure portal、および Azure PowerShell を使用して操作します。 これらのインターフェイスと適切なコンテナーを使用してストアにデータを配置すれば、あらゆる種類のデータを格納できます。 Data Lake Storage Gen1 では、格納されているデータの種類に基づくデータの特別な処理は行われません。
 
-## <a name="DataLakeStoreSecurity"></a>データのセキュリティ保護
+## <a name="securing-data"></a><a name="DataLakeStoreSecurity"></a>データのセキュリティ保護
 
 Data Lake Storage Gen1 では、Azure Active Directory (Azure AD) を使用し、認証およびアクセス制御リスト (ACL) によってデータへのアクセスを管理します。
 
 | 機能 | 説明 |
 | --- | --- |
-| Authentication |Data Lake Storage Gen1 では、Azure AD と統合することで、Data Lake Storage Gen1 に格納されたすべてのデータの ID およびアクセスの管理を行います。 この統合により、Data Lake Storage Gen1 では、Azure AD のすべての機能 (多要素認証、条件付きアクセス、ロールベースのアクセス制御、アプリケーション使用状況の監視、セキュリティの監視とアラート通知など) の利点が得られます。 Data Lake Storage Gen1 では、REST インターフェイスでの認証に対応する OAuth 2.0 プロトコルがサポートされます。 [Data Lake Storage Gen1 の認証](data-lakes-store-authentication-using-azure-active-directory.md)に関するページを参照してください。|
+| 認証 |Data Lake Storage Gen1 では、Azure AD と統合することで、Data Lake Storage Gen1 に格納されたすべてのデータの ID およびアクセスの管理を行います。 この統合により、Data Lake Storage Gen1 では、Azure AD のすべての機能 (多要素認証、条件付きアクセス、ロールベースのアクセス制御、アプリケーション使用状況の監視、セキュリティの監視とアラート通知など) の利点が得られます。 Data Lake Storage Gen1 では、REST インターフェイスでの認証に対応する OAuth 2.0 プロトコルがサポートされます。 [Data Lake Storage Gen1 の認証](data-lakes-store-authentication-using-azure-active-directory.md)に関するページを参照してください。|
 | アクセス制御 |Data Lake Storage Gen1 では、WebHDFS プロトコルで公開された POSIX 形式のアクセス許可をサポートすることにより、アクセス制御が提供されます。 ルート フォルダー、サブフォルダー、個々のファイルで ACL を有効にすることができます。 Data Lake Storage Gen1 のコンテキストにおける ACL のしくみの詳細については、[Data Lake Storage Gen1 でのアクセス制御](data-lake-store-access-control.md)に関するページを参照してください。 |
 | 暗号化 |Data Lake Storage Gen1 では、アカウントに格納されているデータを暗号化することもできます。 暗号化設定は、Data Lake Storage Gen1 アカウントの作成時に指定します。 データを暗号化するかどうかを選択できます。 詳細については、[Data Lake Storage Gen1 での暗号化](data-lake-store-encryption.md)に関するページを参照してください。 暗号化関連の構成を提供する方法については、[Azure portal で Data Lake Storage Gen1 の使用を開始する方法](data-lake-store-get-started-portal.md)に関するページを参照してください。 |
 
@@ -80,7 +80,7 @@ Hadoop 環境 (HDInsight クラスターで使用可能) では、ファイル �
 
 Data Lake Storage Gen1 内のデータには、`adl://<data_lake_storage_gen1_name>.azuredatalakestore.net` を使用してアクセスすることができます。 Data Lake Storage Gen1 内のデータへのアクセス方法の詳細については、[格納データのプロパティの表示](data-lake-store-get-started-portal.md#properties)に関する記述を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure portal で Data Lake Storage Gen1 の使用を開始する](data-lake-store-get-started-portal.md)
 - [.NET SDK で Data Lake Storage Gen1 の使用を開始する](data-lake-store-get-started-net-sdk.md)

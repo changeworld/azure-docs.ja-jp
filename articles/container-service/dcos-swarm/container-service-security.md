@@ -8,10 +8,10 @@ ms.date: 03/28/2017
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: d90d872175febf775e7d0892e133883f1a8ff8a2
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75552388"
 ---
 # <a name="deprecated-securing-docker-containers-in-azure-container-service"></a>(非推奨) Azure Container Service での Docker コンテナーのセキュリティ保護
@@ -63,7 +63,7 @@ Azure Container Service で使用できる各 Orchestrator に、セキュリテ
 
 * **Kubernetes**: [Kubernetes デプロイのセキュリティのベスト プラクティス](https://kubernetes.io/blog/2016/08/security-best-practices-kubernetes-deployment/)
 
-* **DC/OS**: [クラスターのセキュリティ保護](https://docs.mesosphere.com/1.12/administering-clusters/securing-your-cluster)
+* **DC OS/** : [クラスターのセキュリティ保護](https://docs.mesosphere.com/1.12/administering-clusters/securing-your-cluster)
 
 * **Docker Swarm**: [Docker のセキュリティ](https://www.docker.com/docker-security)
 

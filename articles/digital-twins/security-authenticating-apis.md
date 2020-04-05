@@ -9,10 +9,10 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: d950d41186d578702343645875dd7c565002d5a5
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76513003"
 ---
 # <a name="connect-to-and-authenticate-with-apis"></a>API に接続して認証を行う
@@ -28,9 +28,9 @@ Azure AD の概要については、[基礎ページ](https://docs.microsoft.com
 
 Azure AD でサポートされる [5 つの主要なアプリケーション シナリオ](../active-directory/develop/v2-app-types.md)は、次のとおりです。
 
-* シングルページ アプリケーション (SPA): ユーザーは、Azure AD によって保護されたシングルページ アプリケーションにサインインする必要があります。
+* シングル ページ アプリケーション (SPA): ユーザーは、Azure AD によって保護されたシングル ページ アプリケーションにサインインする必要があります。
 * Web ブラウザー対 Web アプリケーション: ユーザーは、Azure AD によって保護された Web アプリケーションにサインインする必要があります。
-* ネイティブ アプリケーション対 Web API: 電話、タブレット、または PC 上で実行されるネイティブ アプリケーションは、Azure AD によって保護された Web API からリソースを取得するためにユーザーを認証する必要があります。
+* ネイティブ アプリケーション対 Web API: スマートフォン、タブレット、または PC で実行されるネイティブ アプリケーションは、Azure AD によって保護された Web API からリソースを取得するために、ユーザーを認証する必要があります。
 * Web アプリケーション対 Web API: Web アプリケーションは、Azure AD によって保護された Web API からリソースを取得する必要があります。
 * デーモンまたはサーバー アプリケーション対 Web API: Web UI を備えていないデーモン アプリケーションまたはサーバー アプリケーションは、Azure AD によって保護された Web API からリソースを取得する必要があります。
 

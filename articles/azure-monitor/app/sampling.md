@@ -6,11 +6,11 @@ ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
 ms.openlocfilehash: fc9db23f7733f97ca207e834d4543fbdb1b9db5c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77671496"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234655"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights におけるサンプリング
 

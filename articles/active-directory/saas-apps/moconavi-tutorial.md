@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と moconavi の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と moconavi の統合 | Microsoft Docs'
 description: Azure Active Directory と moconavi の間のシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 038520e662a205bc173035fd19656cbaf4800239
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160525"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-moconavi"></a>チュートリアル:Azure Active Directory と moconavi の統合
+# <a name="tutorial-azure-active-directory-integration-with-moconavi"></a>チュートリアル: Azure Active Directory と moconavi の統合
 
 このチュートリアルでは、moconavi と Azure Active Directory (Azure AD) を統合する方法について説明します。
 moconavi と Azure AD の統合には、次の利点があります。
@@ -197,7 +197,7 @@ moconavi で Azure AD シングル サインオンを構成するには、次の
 
     ![シングル サインオンのテスト](./media/moconavi-tutorial/testing1.png)
 
-4. **[Connect to URL]\(URL への接続\)** ボックスに「`https://mcs-admin.moconavi.biz/gateway`」と入力し、 **[Done]\(完了\)** をクリックします。
+4. `https://mcs-admin.moconavi.biz/gateway`[Connect to URL]\(URL への接続\) **ボックスに「** 」と入力し、 **[Done]\(完了\)** をクリックします。
 
     ![シングル サインオンのテスト](./media/moconavi-tutorial/testing2.png)
 
@@ -205,9 +205,9 @@ moconavi で Azure AD シングル サインオンを構成するには、次の
 
     ![シングル サインオンのテスト](./media/moconavi-tutorial/testing3.png)
 
-    a. **[Input Authentication Key]\(認証キーを入力\)** : **[Input Authentication Key]\(認証キーを入力\)** ボックスに「`azureAD`」と入力します。
+    a. **[Input Authentication Key]\(認証キーを入力\)** : `azureAD`[Input Authentication Key]\(認証キーを入力\) **ボックスに「** 」と入力します。
 
-    b. **[Input User ID]\(ユーザー ID を入力\)** : **[Input User ID]\(ユーザー ID を入力\)** ボックスに `your ad account` を入力します。
+    b. **[Input User ID]\(ユーザー ID を入力\)** : `your ad account`[Input User ID]\(ユーザー ID を入力\)**ボックスに** を入力します。
 
     c. **[LOGIN]\(ログイン\)** をクリックします。
 

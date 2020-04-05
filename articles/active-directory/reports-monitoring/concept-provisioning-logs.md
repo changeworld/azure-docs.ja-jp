@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c6e0c697f9ab9796feade9b4d5c2a64794f3980b
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73612795"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Azure Active Directory ポータルのプロビジョニング レポート (プレビュー)
@@ -58,7 +58,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 * アマゾン ウェブ サービスからロールがインポートされた方法
 * DropBox で作成に失敗したユーザー
 
-[Azure portal](https://portal.azure.com) の **[Azure Active Directory]** ブレードの **[監視]** セクションで **[プロビジョニング ログ]** を選択して、プロビジョニング レポートにアクセスできます。 プロビジョニング レコードによっては、ポータルに表示されるまでに最大 2 時間かかるものもあります。
+**Azure portal** の **[Azure Active Directory]** ブレードの **[監視]** セクションで [[プロビジョニング ログ]](https://portal.azure.com) を選択して、プロビジョニング レポートにアクセスできます。 プロビジョニング レコードによっては、ポータルに表示されるまでに最大 2 時間かかるものもあります。
 
 ![プロビジョニング ログ](./media/concept-provisioning-logs/access-provisioning-logs.png "プロビジョニング ログ")
 
@@ -85,7 +85,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 詳細な情報を取得するには、リスト ビューで項目を選択します。
 
-![詳細情報](./media/concept-provisioning-logs/steps.png "filter")
+![詳細情報](./media/concept-provisioning-logs/steps.png "Assert")
 
 
 ## <a name="filter-provisioning-activities"></a>プロビジョニング アクティビティのフィルター処理
@@ -93,14 +93,14 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 報告されるデータを有用なものだけに絞り込むために、次の既定のフィールドを使用してプロビジョニング データをフィルター処理できます。 フィルターの値は、テナントに基づいて動的に設定されることに注意してください。 たとえば、テナントに作成イベントがない場合は、作成のフィルター オプションはありません。
 
 - ID
-- Action
+- アクション
 - ソース システム
 - ターゲット システム
 - Status
 - Date
 
 
-![Filter](./media/concept-provisioning-logs/filter.png "filter")
+![Assert](./media/concept-provisioning-logs/filter.png "Assert")
 
 **ID** フィルターを使用すると、関心のある名前または ID を指定できます。 この ID には、ユーザー、グループ、ロール、またはその他のオブジェクトを指定できます。 オブジェクトの名前または ID で検索できます。 ID はシナリオによって異なります。 たとえば、Azure AD から SalesForce にオブジェクトをプロビジョニングする場合、ソース ID は Azure AD 内のユーザーのオブジェクト ID であり、ターゲット ID は Salesforce のユーザーの ID です。 Workday から Active Directory にプロビジョニングする場合、ソース ID は Workday ワーカーの従業員 ID です。 ユーザーの名前が必ずしも ID 列に存在するとは限らないことに注意してください。 常に 1 つの ID が存在します。 
 
@@ -112,13 +112,13 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 - All
 - Success
-- 失敗
-- Skipped
+- 障害
+- スキップ
 
 **[アクション]** フィルターでは、次のものをフィルター処理できます。
 
 - 作成 
-- アップデート
+- 更新
 - 削除
 - Disable
 - その他
@@ -161,7 +161,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 - まとめ
 
 
-![Filter](./media/concept-provisioning-logs/provisioning-tabs.png "タブ")
+![Assert](./media/concept-provisioning-logs/provisioning-tabs.png "タブ")
 
 
 
@@ -176,7 +176,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 
 
-![Filter](./media/concept-provisioning-logs/steps.png "filter")
+![Assert](./media/concept-provisioning-logs/steps.png "Assert")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>トラブルシューティングと推奨事項
@@ -229,7 +229,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 |DuplicateTargetEntries  |ターゲット アプリケーションの複数のユーザーに、構成済みの一致する属性があると検出されたため、操作を完了できませんでした。 重複しているユーザーをターゲット アプリケーションから削除するか、[ここ](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)で説明されているように、属性マッピングを再構成します。|
 |DuplicateSourceEntries | 複数のユーザーに、構成済みの一致する属性があると検出されたため、操作を完了できませんでした。 重複しているユーザーを削除するか、[ここ](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)で説明されているように、属性マッピングを再構成します。|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ユーザー プロビジョニングの状態を確認する](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)
 * [Azure AD ギャラリー アプリケーションへのユーザー プロビジョニングの構成に関する問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem)

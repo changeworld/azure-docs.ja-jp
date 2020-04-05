@@ -7,10 +7,10 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 236d4c199a13b02bcd82ae02657bbd35e45f729b
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77458819"
 ---
 # <a name="enable-offline-sync-for-your-windows-app"></a>Windows アプリのオフライン同期を有効にする
@@ -43,7 +43,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 4. MainPage.xaml.cs ファイルを開き、`#define OFFLINE_SYNC_ENABLED`の定義をコメント解除します。
 5. Visual Studio で、 **F5** キーを押してクライアント アプリをリビルドして実行します。 アプリは、オフライン同期を有効にする前と同じように動作します。ただし今度は、オフライン シナリオで使用できるデータがローカル データベースに格納されます。
 
-## <a name="update-sync"></a>アプリを更新してバックエンドから切断する
+## <a name="update-the-app-to-disconnect-from-the-backend"></a><a name="update-sync"></a>アプリを更新してバックエンドから切断する
 ここでは、オフライン状況をシミュレートするために、モバイル アプリ バックエンドへの接続を解除します。 データ項目を追加すると、例外ハンドラーによって、アプリがオフライン モードであることが通知されます。 この状態では、新しい項目はローカル ストアに追加され、プッシュが次に接続状態で実行したときに、モバイル アプリ バックエンドに同期されます。
 
 1. 共有プロジェクトで App.xaml.cs を編集します。 **MobileServiceClient** の初期化をコメント アウトし、無効なモバイル アプリ URL を使用する次の行を追加します。
@@ -57,7 +57,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 5. (省略可能) Visual Studio で、 **サーバー エクスプローラー**を開きます。 **[Azure]** -> **[SQL Databases]** を選択して、データベースに移動します。 データベースを右クリックし、 **[SQL Server オブジェクト エクスプローラーで開く]** を選択します。 これで SQL データベースのテーブルとその内容を参照できます。 バックエンド データベース内のデータが変更されていないことを確認します。
 6. (省略可能) Fiddler や Postman などの REST ツールを使用して、モバイルのバックエンドをクエリします。その際、`https://<your-mobile-app-backend-name>.azurewebsites.net/tables/TodoItem` の形式で、GET クエリを使用します。
 
-## <a name="update-online-app"></a>モバイル アプリ バックエンドに再接続するようにアプリケーションを更新する
+## <a name="update-the-app-to-reconnect-your-mobile-app-backend"></a><a name="update-online-app"></a>モバイル アプリ バックエンドに再接続するようにアプリケーションを更新する
 ここでは、アプリをモバイル アプリ バックエンドに再接続します。 これらの変更は、アプリでのネットワークの再接続をシミュレートしています。
 
 初めてアプリケーションを実行すると、`OnNavigatedTo` イベント ハンドラーが `InitLocalStoreAsync` を呼び出します。 このメソッドが次に `SyncAsync` を呼び出し、ローカル ストアとバックエンドのデータベースを同期します。 アプリは起動時に同期しようとします。

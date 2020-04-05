@@ -16,10 +16,10 @@ ms.date: 08/22/2019
 ms.author: magattus
 ms.custom: ''
 ms.openlocfilehash: 95b85aa11d99ddd48c90c8d9fa28789e79ee979f
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72299237"
 ---
 # <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>Azure CDN の現在の POP IP リストの取得
@@ -46,6 +46,6 @@ Microsoft サービスに対する IP 範囲とサービス タグについて�
 
 セキュリティ上の目的で、この IP リストを使用して、配信元サーバーへの要求が有効な Verizon POP からのみ行われるようにすることができます。 たとえば、CDN エンドポイントの配信元サーバーのホスト名または IP アドレスを発見しただれかが、Azure CDN によって提供されるスケーリングおよびセキュリティ機能をバイパスして配信元サーバーに直接要求を行う可能性があります。 返されるリスト内の IP アドレスを配信元サーバー上の唯一の許可される IP アドレスとして設定することで、このシナリオを回避できます。 確実に最新の POP リストを使用するためには、POP リストを少なくとも 1 日に 1 回取得します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 REST API の詳細については、「[Azure CDN REST API](https://docs.microsoft.com/rest/api/cdn/)」を参照してください。

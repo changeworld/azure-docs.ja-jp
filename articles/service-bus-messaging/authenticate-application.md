@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: aschhab
 ms.openlocfilehash: 6a78e4d81921fae8dcb325e9d72df1eee7b99a3b
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997005"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229567"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Azure Service Bus エンティティにアクセスするために Azure Active Directory を使用してアプリケーションを認証および承認する
-Azure Service Bus では、Azure Active Directory (Azure AD) を使用して Service Bus エンティティ (キュー、トピック、サブスクリプション、またはフィルター) への要求を承認することがサポートされています。 Azure AD では、ロールベースのアクセス制御 (RBAC) を使用して、サービス プリンシパル (ユーザー、グループ、またはアプリケーションのサービス プリンシパルである可能性があります) にアクセス許可を付与します。 ロールとロールの割り当ての詳細については、[各種ロール](../role-based-access-control/overview.md)に関するページを参照してください。
+Azure Service Bus では、Azure Active Directory (Azure AD) を使用して Service Bus エンティティ (キュー、トピック、サブスクリプション、またはフィルター) への要求を承認することがサポートされています。 Azure AD では、ロールベースのアクセス制御 (RBAC) を使用して、サービス プリンシパル (ユーザー、グループ、またはアプリケーションのサービス プリンシパルである可能性があります) にアクセス許可を付与します。 ロールとロールの割り当ての詳細については、[各種ロールの理解](../role-based-access-control/overview.md)に関するページを参照してください。
 
 ## <a name="overview"></a>概要
 セキュリティ プリンシパル (ユーザー、グループ、またはアプリケーション) で Service Bus エンティティへのアクセスが試行された場合、要求が承認される必要があります。 Azure AD では、リソースへのアクセスは 2 段階のプロセスです。 
@@ -154,7 +154,7 @@ GitHub の次のサンプルを参照してください: [Service Bus のロー�
 コンソール アプリケーションを実行すると、シナリオを選択するように求められます。 数値を入力し、Enter キーを押して、 **[Interactive User Login]\(対話型のユーザー ログイン\)** を選択します。 アプリケーションはログイン ウィンドウを表示し、Service Bus へのアクセスの同意を求めた後、サービスを使ってログイン ID を用いた送信/受信シナリオを実行します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - RBAC の詳細については、[ロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) に関する記事を参照してください。
 - Azure PowerShell、Azure CLI、または REST API で RBAC ロールを割り当てて管理する方法については、次の記事を参照してください。
     - [Azure PowerShell を使用してロールベースのアクセス制御 (RBAC) を管理する](../role-based-access-control/role-assignments-powershell.md)  

@@ -4,10 +4,10 @@ description: この記事では、Azure Backup Server によって保護され�
 ms.date: 11/13/2018
 ms.topic: conceptual
 ms.openlocfilehash: c7aa8823ca2bf638c6b726c504cddf8c5217fa19
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77444045"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Azure Backup Server の保護マトリックス

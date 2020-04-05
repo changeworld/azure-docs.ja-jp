@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: 97515b308323452e88cf6fd8a517c1f169c9ba6f
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 2cc6c577abdb3698ef6aca1f1f04d239f09d119c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587415"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236071"
 ---
 # <a name="what-is-azure-private-link-service"></a>Azure Private Link サービスとは
 
@@ -108,11 +108,11 @@ Private Link サービスの公開対象 (可視性設定により制御) のコ
 |---------|---------|----------|
 |Type  |1        |PP2_TYPE_AZURE (0xEE)|
 |長さ  |2      |値の長さ|
-|Value  |1     |PP2_SUBTYPE_AZURE_PRIVATEENDPOINT_LINKID (0x01)|
+|値  |1     |PP2_SUBTYPE_AZURE_PRIVATEENDPOINT_LINKID (0x01)|
 |  |4        |プライベート エンドポイントの LINKID を表す UINT32 (4 バイト)。 リトル エンディアン形式でエンコードされます。|
 
  > [!NOTE]
- > サービス プロバイダーは、プロキシ プロトコルが非公開リンク サービスで有効になっている場合 [仕様](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) に従って、プロキシ プロトコル ヘッダーを解析するように、標準のロード バランサーの背後にあるサービスが構成されていることを確認します。 プロキシ プロトコル設定が非公開リンク サービスで有効になっていて、サービスがヘッダーを解析するように構成されていない場合、要求は失敗します。 同様に、設定が非公開リンク サービスで有効になっていない場合に、サービスがプロキシ プロトコル ヘッダーを必要とすると、要求は失敗します。 プロキシ プロトコル設定を有効にすると、ヘッダーにクライアント情報が存在しなくても、プロキシ プロトコル ヘッダーは、ホストからバックエンド仮想マシンへの HTTP/TCP 正常性プローブにも含まれます。 
+ > サービス プロバイダーは、プロキシ プロトコルが非公開リンク サービスで有効になっている場合 [仕様](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) に従って、プロキシ プロトコル ヘッダーを解析するように、標準のロード バランサーの背後にあるサービスが構成されていることを確認します。 プロキシ プロトコル設定がプライベート リンク サービスで有効になっていても、サービス プロバイダーのサービスがヘッダーを解析するように構成されていない場合、要求は失敗します。 同様に、設定がプライベート リンク サービスで有効になっていない場合に、サービス プロバイダーのサービスがプロキシ プロトコル ヘッダーを必要とすると、要求は失敗します。 プロキシ プロトコル設定を有効にすると、ヘッダーにクライアント情報が存在しなくても、プロキシ プロトコル ヘッダーは、ホストからバックエンド仮想マシンへの HTTP/TCP 正常性プローブにも含まれます。 
 
 ## <a name="limitations"></a>制限事項
 

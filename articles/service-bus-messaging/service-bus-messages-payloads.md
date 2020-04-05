@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 11e56ae2483a254fb00e3593da7841f3f3d844f3
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76759399"
 ---
 # <a name="messages-payloads-and-serialization"></a>メッセージ、ペイロード、およびシリアル化

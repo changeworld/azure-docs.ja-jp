@@ -16,10 +16,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/13/2019
 ms.openlocfilehash: 448b5c38371024c2eae900f4f87b343ee0a3b36a
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76263814"
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>APNS のトークンベース (HTTP/2) 認証

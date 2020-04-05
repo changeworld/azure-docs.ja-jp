@@ -7,10 +7,10 @@ ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 15543f7f761c707e8eff8e0cc0a0e4532475ddf8
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671003"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Azure Monitor ブックを使用した対話型レポートの作成

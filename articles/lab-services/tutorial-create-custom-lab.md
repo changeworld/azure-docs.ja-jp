@@ -15,13 +15,13 @@ ms.custom: mvc
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 44539c6779afaece6d955a907819ef82d8cd7d5a
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759535"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79224129"
 ---
-# <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>チュートリアル:Azure DevTest Labs を使用してラボを設定する
+# <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>チュートリアル: Azure DevTest Labs を使用してラボを設定する
 このチュートリアルでは、Azure portal を使ってラボを作成します。 ラボの管理者は、組織のラボを設定し、ラボに VM を作成して、ポリシーを構成します。 ラボのユーザー (開発者やテスト担当者など) は、ラボの VM を要求し、VM に接続して使用します。 
 
 このチュートリアルでは、次のアクションを実行します。
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="create-a-lab"></a>ラボを作成する
 次の手順は、Azure Portal を使用して Azure DevTest Labs でラボを作成する方法を示しています。 
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. 左側のメイン メニューから、 **[リソースの作成]** (一覧の先頭にあります) を選択し、 **[Developer tools]** をポイントし、 **[DevTest Labs]** をクリックします。 
 
     ![新しい DevTest Lab メニュー](./media/tutorial-create-custom-lab/new-custom-lab-menu.png)
@@ -113,5 +113,5 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 このチュートリアルでは、VM を含むラボを作成し、ユーザーにラボへのアクセス許可を与えました。 ラボ ユーザーとしてラボにアクセスする方法を学習するには、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:ラボにアクセスする](tutorial-use-custom-lab.md)
+> [チュートリアル: ラボにアクセスする](tutorial-use-custom-lab.md)
 

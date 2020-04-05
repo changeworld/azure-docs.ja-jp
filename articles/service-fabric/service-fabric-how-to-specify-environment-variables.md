@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 12/06/2017
 ms.author: mikhegn
 ms.openlocfilehash: f4c4f2a1c140e3d0f181c4fd55482056f9f91b62
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75614317"
 ---
 # <a name="how-to-specify-environment-variables-for-services-in-service-fabric"></a>Service Fabric のサービス用に環境変数を指定する方法

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
 ms.openlocfilehash: fa1cba2d791cd40a46f8ad182c123a726143faec
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77614244"
 ---
 # <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services マネージド ドメインの正常性を確認する

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: sample
 ms.date: 02/28/2018
 ms.openlocfilehash: 78b936b21aeeed1db69ac52b2c21e3c41708f62d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72599745"
 ---
 # <a name="java-sample-to-illustrate-connection-pooling"></a>接続プールを説明するための Java サンプル

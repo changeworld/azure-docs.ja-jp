@@ -14,11 +14,11 @@ ms.date: 08/13/2019
 ms.author: curtand
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: 5f81181ac3107307a352cdbcd0b5cc4a555deacb
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062627"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227699"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>2 段階認証のアプリ パスワードを管理する
 

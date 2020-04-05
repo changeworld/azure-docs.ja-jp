@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/04/2019
 ms.author: alkohli
 ms.openlocfilehash: 92ec0cd0c39a515b15da88bb7c638edba2f57714
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67181619"
 ---
 |    URL パターン                                                                                                                                                                                                                                                                                                                                                                                                                                                      |    コンポーネントまたは機能                                                                           |

@@ -1,0 +1,99 @@
+### YamlMime:Landing
+title: Azure Synapse Analytics (旧称 Azure SQL Data Warehouse)
+summary: Azure Synapse は、エンタープライズ データ ウェアハウスとビッグ データ分析がまとめられた無制限の分析サービスです。 サーバーレスのオンデマンド リソースまたはプロビジョニング済みのリソースを使用しながら大規模に、各自の条件で自由にデータを照会することができます。
+metadata:
+  title: Azure Synapse Analytics
+  description: Azure Synapse は、エンタープライズ データ ウェアハウスとビッグ データ分析がまとめられた無制限の分析サービスです。 サーバーレスのオンデマンド リソースまたはプロビジョニング済みのリソースを使用しながら大規模に、各自の条件で自由にデータを照会することができます。
+  services: synapse-analytics
+  ms.service: synapse-analytics
+  ms.subservice: 
+  ms.topic: landing-page
+  ms.collection: collection
+  author: julieMSFT
+  ms.author: jrasnick
+  ms.date: 10/03/2019
+  ms.openlocfilehash: 498c507c6a72020e30f1e96a23a58017ca14280a
+  ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 04/03/2020
+  ms.locfileid: "80632484"
+landingContent:
+- title: Azure Synapse Analytics について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Synapse とは
+      url: sql-data-warehouse-overview-what-is.md
+  - linkListType: architecture
+    links:
+    - text: Azure Synapse アーキテクチャ
+      url: massively-parallel-processing-mpp-architecture.md
+    - text: ヒントとベスト プラクティス
+      url: cheat-sheet.md
+    - text: 参照アーキテクチャ
+      url: /azure/architecture/reference-architectures/data/enterprise-bi-synapse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+- title: 作業の開始
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: SQL プール (データ ウェアハウス) を作成する
+      url: create-data-warehouse-portal.md
+- title: データの読み込み
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: データの読み込み戦略を設計する
+      url: design-elt-data-loading.md
+    - text: ベスト プラクティス
+      url: guidance-for-loading-data.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Data Lake Storage からデータを読み込む
+      url: sql-data-warehouse-load-from-azure-data-lake-store.md
+  - linkListType: tutorial
+    links:
+    - text: Azure Blob Storage からデータを読み込む
+      url: load-data-from-azure-blob-storage-using-polybase.md
+- title: パフォーマンスのチューニング
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: ベスト プラクティス
+      url: sql-data-warehouse-best-practices.md
+    - text: 順序指定クラスター化列ストア インデックスのチューニング
+      url: performance-tuning-ordered-cci.md
+    - text: ワークロードのチューニングに具体化されたビューを使用する
+      url: performance-tuning-materialized-views.md
+  - linkListType: how-to-guide
+    links:
+    - text: ワークロードの分析
+      url: analyze-your-workload.md
+- title: 管理および監視
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: データ ウェアハウスの管理と監視について学ぶ
+      url: sql-data-warehouse-overview-manageability-monitoring.md
+  - linkListType: how-to-guide
+    links:
+    - text: DMV を利用してワークロードを監視する
+      url: sql-data-warehouse-manage-monitor.md
+    - text: ワークロードの重要度の管理と監視
+      url: sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md
+- title: データ ウェアハウスをセキュリティで保護する
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: データ ウェアハウスのセキュリティ保護の基本を学ぶ
+      url: sql-data-warehouse-overview-manage-security.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Active Directory 認証を構成する
+      url: /azure/sql-database/sql-database-aad-authentication-configure?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+- title: リソース
+  linkLists:
+  - linkListType: video
+    links:
+    - text: データ ウェアハウスに関する最新のビデオを見る
+      url: sql-data-warehouse-videos.md

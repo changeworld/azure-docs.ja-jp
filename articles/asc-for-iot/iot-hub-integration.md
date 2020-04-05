@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: ef2affcd0cf7f6bd0a8ef0ec2dbc0244a971a57e
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68600302"
 ---
 # <a name="get-started-with-built-in-iot-hub-integration"></a>組み込み IoT Hub 統合での作業を開始する 
@@ -35,7 +35,7 @@ ms.locfileid: "68600302"
 
 お疲れさまでした。 IoT Hub 上での Azure Security Center for IoT サービスの有効化が完了しました。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 
 - [ソリューションを構成する](quickstart-configure-your-solution.md)

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 5867c4ba7fa1447cbd5d40e15237ae50c24c7168
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199264"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>従量課金制料金のサブスクリプションの個別サブスクリプションの Azure 予約の使用状況について
@@ -27,7 +27,7 @@ Enterprise Agreement をご利用のお客様は、[エンタープライズ加�
 
 以降のセクションでは、Standard_DS1_v2 Windows VM が米国東部リージョンで実行され、予約 VM インスタンス情報が次の表のようになっていることを想定して説明します。
 
-| フィールド | Value |
+| フィールド | 値 |
 |---| :---: |
 |ReservationId |8117adfb-1d94-4675-be2b-f3c1bca808b6|
 |Quantity |1|
@@ -62,7 +62,7 @@ CSV ファイルのこのセクションには、予約の合計使用量が表�
 
 SQL Database Gen 4 を米国東部リージョンで実行していて、その予約情報が次の表のようになっていると想定します。
 
-| フィールド | Value |
+| フィールド | 値 |
 |---| --- |
 |ReservationId |446ec809-423d-467c-8c5c-bbd5d22906b1|
 |Quantity |2|

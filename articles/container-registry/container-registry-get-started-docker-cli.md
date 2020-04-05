@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.custom: seodec18, H1Hack27Feb2017
 ms.openlocfilehash: 6751a04c3c1bfe826334161704c20c1ba2e5a6d2
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74456360"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Docker CLI を使用してプライベート Docker コンテナー レジストリに最初のイメージをプッシュする
@@ -117,7 +117,7 @@ Azure コンテナー レジストリからイメージを削除するには、A
 az acr repository delete --name myregistry --image samples/nginx:latest
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 基本を理解したので、レジストリの使用を開始する準備ができました。 たとえば、レジストリから次の宛先にコンテナー イメージをデプロイします。
 

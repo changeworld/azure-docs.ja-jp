@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
 ms.openlocfilehash: 08579f7ba952bb4ebcba1595508612affb852528
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75980377"
 ---
 # <a name="manage-azure-media-services-v3-accounts"></a>Azure Media Services v3 アカウントの管理
@@ -37,7 +37,7 @@ Media Services アカウントを新しいサブスクリプションに移動�
 > [!IMPORTANT]
 > 移動が正常に完了するまで、ストリーミング エンドポイントを開始しないでください。
 
-### <a name="troubleshoot"></a>[トラブルシューティング] 
+### <a name="troubleshoot"></a>トラブルシューティング 
 
 リソース グループの移動後に、Media Services アカウントまたは関連付けられた Azure Storage アカウントが "切断" される場合、ストレージ アカウント キーの交換を試してください。 ストレージ アカウント キーの交換で Media Services アカウントの "切断" 状態が解決されない場合は、Media Services アカウントの [サポート + トラブルシューティング] メニューから新しいサポート リクエストを提出してください。  
 

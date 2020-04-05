@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 10/22/2019
 ms.author: diberry
 ms.openlocfilehash: dee07859da97f76d9a2db3ccbb71ae74d8ff4846
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270420"
 ---
 # <a name="sentiment-analysis"></a>センチメント分析

@@ -13,11 +13,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d77882817934d5ad98f16965aeb9dc246931c495
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919071"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230143"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect 同期: 既定の構成に変更を加える
 この記事の目的は、Azure Active Directory (Azure AD) Connect Sync の既定の構成を変更する方法について説明することです。ここでは、いくつかの一般的なシナリオの手順を紹介します。 この知識があれば、独自のビジネス ルールに基づき独自の構成に対して簡単な変更を加えることができます。
@@ -56,7 +56,7 @@ ms.locfileid: "74919071"
 1. **Add new rule (新しい規則の追加)** をクリックします。
 2. **[説明]** ページで、次のように入力します。  
    ![Inbound rule filtering](./media/how-to-connect-sync-change-the-configuration/description2.png)  
-   * **名前**: 規則にわかりやすい名前を付けます。
+   * **Name**:規則にわかりやすい名前を付けます。
    * **説明**:規則の目的が他のユーザーにもわかるように説明します。
    * **接続されたシステム**: これはオブジェクトを検出できるシステムです。 この場合、**Active Directory コネクタ**を選択します。
    * **Connected System/Metaverse Object Type (接続されたシステム/メタバース オブジェクトの種類)** : それぞれ **[ユーザー]** と **[人]** を選択します。
@@ -136,19 +136,19 @@ ms.locfileid: "74919071"
 
 ### <a name="length-of-attributes"></a>属性の長さ
 文字列属性は、既定ではインデックス可能であり、最大長は 448 文字です。 それより多い文字を含む可能性がある文字列属性を使用する場合は、属性フローに次の式を含めるようにします。  
-`attributeName` <- `Left([attributeName],448)`。
+`attributeName` <- `Left([attributeName],448)`」を参照してください。
 
 ### <a name="changing-the-userprincipalsuffix"></a>userPrincipalSuffix の変更
 Active Directory の userPrincipalName 属性は、常にユーザーに認識されるわけではなく、サインイン ID として適切でない場合があります。 Azure AD Connect Sync のインストール ウィザードを使用すると、*mail* など別の属性を選択できます。 ただし、場合によっては、属性を計算する必要があります。
 
 たとえば、Contoso 社に 2 つの Azure AD ディレクトリがあり、一方は運用環境用、もう一方はテスト用であるとします。 テスト テナント内のユーザーについて、サインイン ID に含まれる別のサフィックスを使用することを検討しています。  
-`userPrincipalName` <- `Word([userPrincipalName],1,"@") & "@contosotest.com"`。
+`userPrincipalName` <- `Word([userPrincipalName],1,"@") & "@contosotest.com"`」を参照してください。
 
 この式では、最初の @-sign の左側のすべて (Word) を使用し、固定文字列をそこに連結します。
 
 ### <a name="convert-a-multi-value-attribute-to-single-value"></a>複数値属性から単一値への変換
 Active Directory の一部の属性は、Active Directory ユーザーとコンピューターでは単一値に見えますが、スキーマでは複数値になっています。 例として挙げられるのが、説明属性です。  
-`description` <- `IIF(IsNullOrEmpty([description]),NULL,Left(Trim(Item([description],1)),448))`。
+`description` <- `IIF(IsNullOrEmpty([description]),NULL,Left(Trim(Item([description],1)),448))`」を参照してください。
 
 この式で属性が値を持つ場合は、属性の最初のアイテムを使用し (*Item*)、先頭と末尾のスペースを削除して (*Trim*)、文字列の最初の 448 文字を維持します (*Left*)。
 
@@ -225,7 +225,7 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 >[!NOTE]
 > 以降このセクションでは、この手順について説明します。 これらの説明では、単一フォレスト トポロジの Azure AD デプロイを想定しており、また、カスタム同期規則は使用しません。 複数フォレスト トポロジを使用していて、カスタム同期規則が構成されているか、またはステージング サーバーが存在する場合は、適宜これらの手順を調整する必要があります。
 
-### <a name="step-1-disable-the-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>手順 1: 同期スケジューラを無効にし、進行中の同期がないことを確認する
+### <a name="step-1-disable-the-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>手順 1:同期スケジューラを無効にし、進行中の同期がないことを確認する
 意図しない変更が Azure AD にエクスポートされるのを防ぐために、同期規則の更新中は、同期が実行されないように注意してください。 組み込みスケジューラを無効にするには、以下のようにします。
 
  1. Azure AD Connect サーバーで PowerShell セッションを開始します。
@@ -233,7 +233,7 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
  3. **[スタート]**  >  **[Synchronization Service]** の順に移動して、Sychronization Service Manager を起動します。
  4. **[操作]** タブに移動し、状態が "*進行中*" の操作がないことを確認します。
 
-### <a name="step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema"></a>手順 2: オンプレミス AD コネクタのスキーマにソース属性を追加する
+### <a name="step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema"></a>手順 2:オンプレミス AD コネクタのスキーマにソース属性を追加する
 オンプレミス AD のコネクタ スペースには、一部の Azure AD 属性がインポートされません。 インポート対象の属性のリストにソース属性を追加するには、次の手順を実行します。
 
  1. Synchronization Service Manager の **[コネクタ]** タブに進みます。
@@ -243,7 +243,7 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
  5. **[OK]** をクリックして保存します。
 ![オンプレミス AD コネクタのスキーマへのソース属性の追加](./media/how-to-connect-sync-change-the-configuration/usertype1.png)
 
-### <a name="step-3-add-the-usertype-to-the-azure-ad-connector-schema"></a>手順 3: Azure AD コネクタのスキーマに UserType を追加する
+### <a name="step-3-add-the-usertype-to-the-azure-ad-connector-schema"></a>手順 3:Azure AD コネクタのスキーマに UserType を追加する
 既定では、Azure AD のコネクタ スペースに UserType 属性がインポートされません。 インポート対象の属性のリストに UserType 属性を追加するには、次の手順を実行します。
 
  1. Synchronization Service Manager の **[コネクタ]** タブに進みます。
@@ -254,7 +254,7 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 
 ![Azure AD コネクタのスキーマへのソース属性の追加](./media/how-to-connect-sync-change-the-configuration/usertype2.png)
 
-### <a name="step-4-create-an-inbound-synchronization-rule-to-flow-the-attribute-value-from-on-premises-active-directory"></a>手順 4: オンプレミス Active Directory から属性値を誘導する受信方向の同期規則を作成する
+### <a name="step-4-create-an-inbound-synchronization-rule-to-flow-the-attribute-value-from-on-premises-active-directory"></a>手順 4:オンプレミス Active Directory から属性値を誘導する受信方向の同期規則を作成する
 受信方向の同期規則によって、属性値をオンプレミス Active Directory のソース属性からメタバースに誘導することができます。
 
 1. **[スタート]**  >  **[Synchronization Rules Editor]** の順に移動して、Synchronization Rules Editor を起動します。
@@ -262,7 +262,7 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 3. **[新しいルールの追加]** ボタンをクリックして受信方向の規則を新規作成します。
 4. **[説明]** タブで次の構成を指定します。
 
-    | Attribute | 値 | 詳細 |
+    | 属性 | 値 | 詳細 |
     | --- | --- | --- |
     | 名前 | *名前を入力します* | 例: *In from AD – User UserType* |
     | 説明 | *説明を入力します* |  |
@@ -274,7 +274,7 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 
 5. **[スコープ フィルター]** タブに移動し、次の句を使って**単一のスコープ フィルター グループ**を追加します。
 
-    | Attribute | 演算子 | 値 |
+    | 属性 | 演算子 | 値 |
     | --- | --- | --- |
     | adminDescription | NOTSTARTWITH | ユーザー\_ |
 
@@ -290,13 +290,13 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 
     | フローの種類 | ターゲット属性 | source | 1 度だけ適用する | マージの種類 |
     | --- | --- | --- | --- | --- |
-    | 式 | UserType | IIF(IsPresent([userPrincipalName]),IIF(CBool(InStr(LCase([userPrincipalName]),"@partners.fabrikam123.org")=0),"Member","Guest"),Error("UserPrincipalName is not present to determine UserType")) | オフ | プライマリの |
+    | 式 | UserType | IIF(IsPresent([userPrincipalName]),IIF(CBool(InStr(LCase([userPrincipalName]),"@partners.fabrikam123.org")=0),"Member","Guest"),Error("UserPrincipalName is not present to determine UserType")) | オフ | 更新 |
 
 7. **[追加]** をクリックして受信方向の規則を作成します。
 
 ![受信方向の同期規則の作成](./media/how-to-connect-sync-change-the-configuration/usertype3.png)
 
-### <a name="step-5-create-an-outbound-synchronization-rule-to-flow-the-attribute-value-to-azure-ad"></a>手順 5: Azure AD に属性値を誘導する送信方向の同期規則を作成する
+### <a name="step-5-create-an-outbound-synchronization-rule-to-flow-the-attribute-value-to-azure-ad"></a>手順 5:Azure AD に属性値を誘導する送信方向の同期規則を作成する
 送信方向の同期規則によって、メタバースから Azure AD の UserType 属性に属性値が流れるのを許可します。
 
 1. Synchronization Rules Editor に移動します。
@@ -304,7 +304,7 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 3. **[新しいルールの追加]** ボタンをクリックします。
 4. **[説明]** タブで次の構成を指定します。
 
-    | Attribute | 値 | 詳細 |
+    | 属性 | 値 | 詳細 |
     | ----- | ------ | --- |
     | 名前 | *名前を入力します* | 例: *Out to AAD – User UserType* |
     | 説明 | *説明を入力します* ||
@@ -316,7 +316,7 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 
 5. **[スコープ フィルター]** タブに移動し、次の 2 つの句を使って**単一のスコープ フィルター グループ**を追加します。
 
-    | Attribute | 演算子 | 値 |
+    | 属性 | 演算子 | 値 |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | User |
     | cloudMastered | NOTEQUAL | True |
@@ -333,7 +333,7 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 
 ![送信方向の同期規則の作成](./media/how-to-connect-sync-change-the-configuration/usertype4.png)
 
-### <a name="step-6-run-a-full-synchronization-cycle"></a>手順 6: 完全同期サイクルを実行する
+### <a name="step-6-run-a-full-synchronization-cycle"></a>手順 6:完全同期サイクルを実行する
 Active Directory のスキーマと Azure AD コネクタのスキーマに新しい属性を追加し、カスタム同期規則を導入したので、一般に完全同期サイクルが必要です。 Azure AD にエクスポートする前に、これらの変更を検証することができます。 
 
 完全同期サイクルの手順を手動で実行する過程で、次の手順に従って変更を検証できます。
@@ -385,14 +385,14 @@ Active Directory のスキーマと Azure AD コネクタのスキーマに新�
 > [!NOTE]
 > 以上の手順には、Azure AD コネクタでの完全同期とエクスポートの手順が含まれていません。 属性値の流れはオンプレミス Active Directory から Azure AD への一方向であるため、これらの手順は必要ありません。
 
-### <a name="step-7-re-enable-the-sync-scheduler"></a>手順 7: 同期スケジューラを有効にする
+### <a name="step-7-re-enable-the-sync-scheduler"></a>手順 7:同期スケジューラを有効にする
 次の手順で組み込みの同期スケジューラを再度有効にします。
 
 1. PowerShell セッションを開始します。
 2. `Set-ADSyncScheduler -SyncCycleEnabled $true` コマンドレットを実行して、スケジュールされた同期を再度有効にします。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * この構成モデルについて詳しくは、「 [Understanding Declarative Provisioning (宣言型のプロビジョニングについて)](concept-azure-ad-connect-sync-declarative-provisioning.md)」をご覧ください。
 * 式言語について詳しくは、「 [宣言型のプロビジョニングの式について](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)」をご覧ください。
 

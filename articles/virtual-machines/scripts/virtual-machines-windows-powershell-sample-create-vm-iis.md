@@ -16,10 +16,10 @@ ms.date: 12/12/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 287325e246c7bafe5cfdcb0e574bb9eda4a869d0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74038967"
 ---
 # <a name="create-an-iis-vm-with-powershell"></a>PowerShell を使用して IIS VM を作成する
@@ -53,7 +53,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 | [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) | 仮想マシンに VM 拡張機能を追加します。 このサンプルでは、カスタム スクリプト拡張機能を使用して IIS をインストールします。 |
 |[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | リソース グループと、それに含まれているすべてのリソースを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

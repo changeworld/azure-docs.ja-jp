@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f24a984a4b3e13039f1f9dcf0be459425c048c41
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 84fcb9076bbc1e75d46d9a6682c96035576ae09e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565725"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475444"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service 環境をロックする
 
@@ -139,7 +139,7 @@ Azure Firewall を使用すると、FQDN タグで構成された以下のもの
 
 | エンドポイント |
 |----------|
-|graph.windows.net:443 |
+|graph.microsoft.com:443 |
 |login.live.com:443 |
 |login.windows.com:443 |
 |login.windows.net:443 |

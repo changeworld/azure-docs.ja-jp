@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: c109f5309837de8c9b4bd3e4bc5a5da0a6da534e
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 8fe9e551a4ca7dea8f53e0f8c2975ca3d88c48f7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806866"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79366259"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight にカスタム Apache Hadoop アプリケーションをインストールする
 
@@ -23,7 +23,7 @@ HDInsight アプリケーションは、ユーザーが HDInsight クラスタ�
 
 ## <a name="prerequisites"></a>前提条件
 
-既存の HDInsight クラスターに HDInsight アプリケーションをインストールする場合は、対象となる HDInsight クラスターが必要です。 新たに作成する場合は、「 [クラスターの作成](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)」を参照してください。 HDInsight クラスターを作成するときに HDInsight アプリケーションをインストールすることもできます。
+既存の HDInsight クラスターに HDInsight アプリケーションをインストールする場合は、対象となる HDInsight クラスターが必要です。 新たに作成する場合は、「 [クラスターの作成](hadoop/apache-hadoop-linux-tutorial-get-started.md)」を参照してください。 HDInsight クラスターを作成するときに HDInsight アプリケーションをインストールすることもできます。
 
 ## <a name="install-hdinsight-applications"></a>HDInsight アプリケーションをインストールする
 
@@ -75,9 +75,9 @@ Azure ポータルでアプリケーションのステータスを確認し、�
 
 **Hue** では、次の手順を使用できます。
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. アプリケーションをインストールしたクラスターを選択します。
 1. **[設定]** メニューで **[アプリケーション]** を選択します。
 1. 一覧から **[hue]** を選択して、プロパティを表示します。  
@@ -123,9 +123,9 @@ Azure ポータルでアプリケーションのステータスを確認し、�
 
 ## <a name="remove-hdinsight-applications"></a>HDInsight アプリケーションの削除
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. アプリケーションをインストールしたクラスターを選択します。
 1. **[設定]** メニューで **[アプリケーション]** を選択します。
 1. 削除するアプリケーションを右クリックし、 **[削除]** を選択します。
@@ -139,11 +139,11 @@ Azure ポータルでアプリケーションのステータスを確認し、�
 az hdinsight application delete --name NAME --cluster-name CLUSTERNAME --resource-group RESOURCEGROUP
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [MSDN:Install an HDInsight application (HDInsight アプリケーションのインストール)](https://msdn.microsoft.com/library/mt706515.aspx): HDInsight アプリケーションをデプロイするための Resource Manager テンプレートの作成方法について確認します。
-* [HDInsight アプリケーションのインストール](hdinsight-apps-install-applications.md)に関する記事:HDInsight アプリケーションをクラスターにインストールする方法について確認します。
-* [HDInsight アプリケーションの発行](hdinsight-apps-publish-applications.md)に関する記事:カスタム HDInsight アプリケーションを Azure Marketplace に発行する方法を確認します。
+* [HDInsight アプリケーションをインストールする](hdinsight-apps-install-applications.md):HDInsight アプリケーションをクラスターにインストールする方法について確認します。
+* [HDInsight アプリケーションを発行する](hdinsight-apps-publish-applications.md):カスタム HDInsight アプリケーションを Azure Marketplace に発行する方法について確認します。
 * [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md): スクリプト アクションを使用してアプリケーションを追加インストールする方法を確認します。
 * [Resource Manager テンプレートを使用して HDInsight で Linux ベースの Apache Hadoop クラスターを作成する](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Resource Manager テンプレートを呼び出して HDInsight クラスターを作成する方法を確認します。
 * [HDInsight で空のエッジ ノードを使用する](hdinsight-apps-use-edge-node.md): HDInsight クラスター、テスト HDInsight アプリケーション、およびホスティング HDInsight アプリケーションにアクセスするために空のエッジ ノードを使用する方法を確認します。

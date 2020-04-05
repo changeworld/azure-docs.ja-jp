@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
 ms.openlocfilehash: 90d7da9c8ddd8c9c595f2209dcc34e2f595acfd2
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78196928"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用して HDInsight 上に Hive ポリシーを構成する
@@ -52,10 +52,10 @@ hiveruser1 と hiveuser2 を作成する方法については、「[ESP の HDIn
 2. **[Hive]** で **[CLUSTERNAME_Hive]** を選択します。 構成済みの 2 つのポリシーが表示されます。
 3. **[新しいポリシーの追加]** を選択し、次の値を入力します。
 
-    |プロパティ |Value |
+    |プロパティ |値 |
     |---|---|
     |ポリシー名|read-hivesampletable-all|
-    |Hive Database|既定値 (default)|
+    |Hive Database|default|
     |table|hivesampletable|
     |Hive Column|*|
     |ユーザーの選択|hiveuser1|
@@ -70,10 +70,10 @@ hiveruser1 と hiveuser2 を作成する方法については、「[ESP の HDIn
 
 5. 最後の 2 つの手順を繰り返して、次のプロパティを設定したもう 1 つのポリシーを作成します。
 
-    |プロパティ |Value |
+    |プロパティ |値 |
     |---|---|
     |ポリシー名|read-hivesampletable-devicemake|
-    |Hive Database|既定値 (default)|
+    |Hive Database|default|
     |table|hivesampletable|
     |Hive column|clientid、devicemake|
     |ユーザーの選択|hiveuser2|

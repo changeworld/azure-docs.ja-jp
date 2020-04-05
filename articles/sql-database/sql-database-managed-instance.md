@@ -12,11 +12,11 @@ ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 01/21/2020
 ms.openlocfilehash: b9fdd1b25e53e1cdc8aa76564304a61adaa8d804
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360527"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232487"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance とは
 
@@ -320,7 +320,7 @@ Azure Database Migration Service は、複数のデータベース ソースか�
 
 次の表には、Transact SQL を介してアクセスできるプロパティをいくつか示します。これらのプロパティを使用することで、目的のアプリケーションがマネージド インスタンスで動作していることを検出し、重要なプロパティを取得することができます。
 
-|プロパティ|Value|解説|
+|プロパティ|値|解説|
 |---|---|---|
 |`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation|この値は SQL Database の値と同じです。 これは、SQL エンジンのバージョン 12 (SQL Server 2014) を示しているわけでは**ありません**。 マネージド インスタンスでは、常に最新の安定した SQL エンジン バージョンが実行されます。これは、SQL Server の使用可能な最新の RTM バージョン以上です。  |
 |`SERVERPROPERTY ('Edition')`|SQL Azure|この値は SQL Database の値と同じです。|

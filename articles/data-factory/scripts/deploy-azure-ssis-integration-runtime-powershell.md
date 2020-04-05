@@ -11,10 +11,10 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 09/12/2017
 ms.openlocfilehash: c6d9a9299fa25013a440ee6ac45f5eae407225b8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74929819"
 ---
 # <a name="powershell-script---deploy-azure-ssis-integration-runtime"></a>PowerShell スクリプト - Azure-SSIS 統合ランタイムのデプロイ
@@ -56,7 +56,7 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/)を参照してください。
 

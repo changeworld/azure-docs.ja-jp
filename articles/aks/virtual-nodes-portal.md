@@ -4,12 +4,12 @@ description: Azure portal を使用して、仮想ノードを使用する Azure
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 664bbdc94963b84e4fed6845dfd23d2407ca3898
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: ea93ea4a68fad213fe5bd1dc61abcb2deaef2c9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592562"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473593"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Azure portal で仮想ノードを使用する Azure Kubernetes Service (AKS) クラスターを作成して構成する
 
@@ -29,7 +29,7 @@ az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" 
 
 *Microsoft.ContainerInstance* プロバイダーは、次の出力の例で示すように *Registered* としてレポートします。
 
-```
+```output
 Namespace                    RegistrationState
 ---------------------------  -------------------
 Microsoft.ContainerInstance  Registered
@@ -111,15 +111,13 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 クラスターへの接続を確認するには、クラスター ノードの一覧を返す [kubectl get][kubectl-get] コマンドを使用します。
 
-```azurecli-interactive
+```console
 kubectl get nodes
 ```
 
 次の出力例は、単一の VM ノードが作成されてから、Linux 用の仮想ノード、*virtual-node-aci-linux*が作成されることを示しています。
 
-```
-$ kubectl get nodes
-
+```output
 NAME                           STATUS    ROLES     AGE       VERSION
 virtual-node-aci-linux         Ready     agent     28m       v1.11.2
 aks-agentpool-14693408-0       Ready     agent     32m       v1.11.2
@@ -168,9 +166,11 @@ kubectl apply -f virtual-node.yaml
 
 `-o wide` 引数を指定して [kubectl get pods][kubectl-get] コマンドを使用し、ポッドの一覧とスケジュールされたノードを出力します。 `virtual-node-helloworld` ポッドは `virtual-node-linux` ノードでスケジュールされています。
 
+```console
+kubectl get pods -o wide
 ```
-$ kubectl get pods -o wide
 
+```output
 NAME                                     READY     STATUS    RESTARTS   AGE       IP           NODE
 virtual-node-helloworld-9b55975f-bnmfl   1/1       Running   0          4m        10.241.0.4   virtual-node-aci-linux
 ```
@@ -184,27 +184,25 @@ virtual-node-helloworld-9b55975f-bnmfl   1/1       Running   0          4m      
 
 仮想ノードで実行されているポッドをテストするには、Web クライアントでデモ アプリケーションを参照します。 ポッドには内部 IP アドレスが割り当てられているため、AKS クラスターの別のポッドからこの接続をすばやくテストできます。 テスト ポッドを作成し、それにターミナル セッションをアタッチします。
 
-```azurecli-interactive
+```console
 kubectl run -it --rm virtual-node-test --image=debian
 ```
 
 `apt-get` を使用して、`curl` をポッドにインストールします。
 
-```azurecli-interactive
+```console
 apt-get update && apt-get install -y curl
 ```
 
 次に、`curl` ( *http://10.241.0.4* など) を使用して、ポッドのアドレスにアクセスします。 前の `kubectl get pods` コマンドで示された独自の内部 IP アドレスを入力します。
 
-```azurecli-interactive
+```console
 curl -L http://10.241.0.4
 ```
 
 次の簡約された出力例に示されているように、デモ アプリケーションが表示されます。
 
-```
-$ curl -L 10.241.0.4
-
+```output
 <html>
 <head>
   <title>Welcome to Azure Container Instances!</title>

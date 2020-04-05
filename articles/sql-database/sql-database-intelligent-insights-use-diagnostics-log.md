@@ -10,17 +10,17 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 12/19/2018
-ms.openlocfilehash: 8272867f5b6144b92dbffcf96cc539eb82f75801
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 03/10/2020
+ms.openlocfilehash: bb62b087451140261aee7aaa2fab0de14ea36283
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587353"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79209459"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Intelligent Insights Azure SQL Database パフォーマンス診断ログの使用
 
-このページでは、[Intelligent Insights](sql-database-intelligent-insights.md) によって生成される Azure SQL Database パフォーマンス診断ログの使用方法、その形式、およびカスタム開発ニーズに対応するために含まれるデータについて説明します。 この診断ログは、[Azure Monitor ログ](../azure-monitor/insights/azure-sql.md)、[Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md)、[Azure Storage](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティ製ソリューションに送信できます。
+このページでは、[Intelligent Insights](sql-database-intelligent-insights.md) によって生成される Azure SQL Database パフォーマンス診断ログの使用方法、その形式、およびカスタム開発ニーズに対応するために含まれるデータについて説明します。 この診断ログは、[Azure Monitor ログ](../azure-monitor/insights/azure-sql.md)、[Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md)、[Azure Storage](sql-database-metrics-diag-logging.md#stream-into-azure-storage)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティ製ソリューションに送信できます。
 
 ## <a name="log-header"></a>ログ ヘッダー
 
@@ -47,8 +47,8 @@ ms.locfileid: "77587353"
 ```json
 "intervalStartTime_t": "2017-9-25 11:00", // start of the issue reported time stamp
 "intervalEndTme_t":"2017-9-25 12:00", // end of the issue reported time stamp
-"elasticPoolName_s" : "", // resource elastic pool (if applicable) 
-"databaseName_s" : "db_name",  // database name
+"elasticPoolName_s" : "", // resource elastic pool (if applicable)
+"databaseName_s" : "db_name", // database name
 "issueId_d" : 1525, // unique ID of the issue detected
 "status_s" : "Active" // status of the issue – possible values: "Active", "Verifying", and "Complete"
 ```
@@ -64,7 +64,7 @@ Intelligent Insights パフォーマンス ログの次のセクションには�
 "impact" : 1 to 3, // impact of the issue detected, possible values 1-3 (1 low, 2 moderate, 3 high impact)
 "category" : "Detectable performance pattern", // performance issue detected, see the table
 "details": <Details outputted> // details of an issue (see the table)
-}] 
+}]
 ```
 
 検出可能なパフォーマンス パターンと、診断ログに出力される詳細を次の表に示します。
@@ -105,7 +105,7 @@ Intelligent Insights ログの次のセクションでは、検出されたパ�
 
 ```json
 "impact" : [{
-"entity" : { 
+"entity" : {
 "Type" : "Query", // type of entity - query
 "Value" : "query hash value", // for example "0x9102EXZ4" query hash value },
 "Metric" : "DurationIncreaseSeconds", // measured metric and the measurement unit (in this case seconds)
@@ -137,10 +137,8 @@ Intelligent Insights パフォーマンス ログの最後の部分には、識�
 Intelligent Insights パフォーマンス ログは、[Azure Monitor ログ]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティ製ソリューションで使用できます。
 
 ## <a name="next-steps"></a>次のステップ
+
 - [Intelligent Insights](sql-database-intelligent-insights.md) の概念の習得
 - [Intelligent Insights を使用した Azure SQL Database のパフォーマンスに関する問題のトラブルシューティング](sql-database-intelligent-insights-troubleshoot-performance.md)の習得
 - [Azure SQL Analytics を使用した Azure SQL Database の監視](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)の習得
 - [Azure リソースからのログ データの収集と使用](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)の習得
-
-
-

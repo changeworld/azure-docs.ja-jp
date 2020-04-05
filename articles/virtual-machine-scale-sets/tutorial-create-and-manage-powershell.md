@@ -9,13 +9,13 @@ ms.date: 05/18/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 14616fcc9fd63731c50c5977c88b5030f60664ff
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76271410"
 ---
-# <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用した仮想マシン スケール セットの作成および管理
+# <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用した仮想マシン スケール セットの作成および管理
 
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 仮想マシン スケール セットのライフサイクルを通して、1 つ以上の管理タスクを実行することが必要になる場合があります。 このチュートリアルで学習する内容は次のとおりです。
 
@@ -83,7 +83,7 @@ MYRESOURCEGROUP   myScaleSet_0   eastus Standard_DS1_v2          0         Succe
 MYRESOURCEGROUP   myScaleSet_1   eastus Standard_DS1_v2          1         Succeeded
 ```
 
-特定の VM インスタンスに関する追加情報を表示するには、[Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) に `-InstanceId` パラメーターを追加します。 次の例では、VM インスタンス *1* に関する情報を表示しています。
+特定の VM インスタンスに関する追加情報を表示するには、`-InstanceId`Get-AzVmssVM[ に ](/powershell/module/az.compute/get-azvmssvm) パラメーターを追加します。 次の例では、VM インスタンス *1* に関する情報を表示しています。
 
 ```azurepowershell-interactive
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "1"

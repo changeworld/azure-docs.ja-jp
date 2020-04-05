@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: diberry
 ms.openlocfilehash: f5197ae79670e4543c58224a33838706edae6218
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78194642"
 ---
 # <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>Azure オーサリング リソースに移行するための手順

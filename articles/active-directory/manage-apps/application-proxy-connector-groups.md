@@ -15,10 +15,10 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 22fa1de0a0e3bb91480212381e07b17875bf0bf4
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74275563"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>コネクタ グループを使用して別のネットワークや場所にアプリケーションを発行する
@@ -40,7 +40,7 @@ Azure AD のアプリケーション プロキシは、ますます多くのシ�
 
 次の手順を使用して、コネクタ グループを必要な数だけ作成します。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 1. **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]**  >  **[アプリケーション プロキシ]** を選択します。
 1. **[新しいコネクタ グループ]** を選択します。 [New Connector Group (新しいコネクタ グループ)] ブレードが表示されます。
 
@@ -126,7 +126,7 @@ Azure AD アプリケーション プロキシ コネクタ グループを使�
 
 ![2 つのデータセンターがあり、2 つのコネクタを使用している企業の例](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure AD アプリケーション プロキシ コネクタについて](application-proxy-connectors.md)
 * [シングル サインオンを有効にする](what-is-single-sign-on.md)

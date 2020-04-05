@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 876c4f5f45ff6c81a53274cf32e8bebecc1acfce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75349302"
 ---
 # <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Service Fabric Reliable Actors 型のシリアル化に関する留意事項

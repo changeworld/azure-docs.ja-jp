@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: allensu
 ms.openlocfilehash: da94c9aa97483ab5792e917d6a8f60f846b0722e
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77473335"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>プライベート DNS ゾーンとレコードを保護する方法

@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 30a4dcbd15d8a47d99b3a61879a7e61938d3b133
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160540"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect"></a>チュートリアル:Azure Active Directory と Mitel MiCloud Connect の統合
@@ -110,40 +110,40 @@ MiCloud Connect に Azure AD による SSO を構成する際は、Azure portal 
     [Connect Single Sign-On Settings]\(Connect シングル サインオン設定\) ダイアログ ボックスが開きます。
     
 3. **[Enable Single Sign-On]\(シングル サインオンを有効にする\)** チェック ボックスをオンにします。
-    ![画像](./media/mitel-connect-tutorial/Mitel_Connect_Enable.png)
+    ![image](./media/mitel-connect-tutorial/Mitel_Connect_Enable.png)
 
 
 4. Azure portal で、 **[基本的な SAML 構成]** セクションの **[編集]** アイコンをクリックします。
-    ![画像](common/edit-urls.png)
+    ![image](common/edit-urls.png)
 
     [基本的な SAML 構成] ダイアログ ボックスが開きます。
 
 5.  Mitel アカウント ポータル内の **[Mitel Identifier (Entity ID)]\(Mitel 識別子 (エンティティ ID)\)** フィールドから URL をコピーし、Azure portal の **[識別子 (エンティティ ID)]** フィールドに貼り付けます。
 
 6. Mitel アカウント ポータル内の **[Reply URL (Assertion Consumer Service URL)]\(応答 URL (Assertion Consumer Service URL)\)** フィールドから URL をコピーし、Azure portal の **[応答 URL (Assertion Consumer Service URL)]** フィールドに貼り付けます。  
-   ![画像](./media/mitel-connect-tutorial/Mitel_Azure_BasicConfig.png)
+   ![image](./media/mitel-connect-tutorial/Mitel_Azure_BasicConfig.png)
 
 7. **[サインオン URL]** ボックスに、次のいずれかの URL を入力します。
 
     * **https://portal.shoretelsky.com** - 既定の Mitel アプリケーションとして Mitel アカウント ポータルを使用する場合
     * **https://teamwork.shoretel.com** - 既定の Mitel アプリケーションとして Teamwork を使用する場合
 
-    **注**: 既定の Mitel アプリケーションとは、ユーザーがアクセス パネルの [Mitel Connect] タイルをクリックしたときにアクセスされるアプリケーションです。 また、Azure AD からテスト セットアップを実行した場合にアクセスされるアプリケーションでもあります。
+    **注**:既定の Mitel アプリケーションとは、ユーザーがアクセス パネルの [Mitel Connect] タイルをクリックしたときにアクセスされるアプリケーションです。 また、Azure AD からテスト セットアップを実行した場合にアクセスされるアプリケーションでもあります。
 
 8. Azure portal 内の **[基本的な SAML 構成]** ダイアログ ボックスで、 **[保存]** をクリックします。
 
 9. Azure portal 内の **[SAML ベースのサインオン]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** の横にある **[ダウンロード]** をクリックして**署名証明書**をダウンロードし、コンピューターに保存します。
-    ![画像](./media/mitel-connect-tutorial/Azure_SigningCert.png)
+    ![image](./media/mitel-connect-tutorial/Azure_SigningCert.png)
 
 10. テキスト エディターで署名証明書ファイルを開き、ファイル内のデータをすべてコピーして、Mitel アカウント ポータルの **[Signing Certificate]\(署名証明書\)** フィールドに貼り付けます。 
-    ![画像](./media/mitel-connect-tutorial/Mitel_Connect_SigningCert.png)
+    ![image](./media/mitel-connect-tutorial/Mitel_Connect_SigningCert.png)
 
 11. Azure portal の **[SAML ベースのサインオン]** ページの **[Setup Mitel Connect]\(Mitel Connect のセットアップ\)** セクションで、次の手順を実行します。
 
     a. **[ログイン URL]** フィールドから URL をコピーして、Mitel アカウント ポータルの **[Sign-in URL]\(サインイン URL\)** フィールドに貼り付けます。
 
     b. **[Azure AD 識別子]** フィールドから URL をコピーして、Mitel アカウント ポータルの **[Entity ID]\(エンティティ ID\)** フィールドに貼り付けます。
-    ![画像](./media/mitel-connect-tutorial/Mitel_Azure_SetupConnect.png)
+    ![image](./media/mitel-connect-tutorial/Mitel_Azure_SetupConnect.png)
 
 12. Mitel アカウント ポータル内の **[Connect Single Sign-On Settings]\(Connect シングル サインオンの設定\)** ダイアログ ボックスで、 **[Save]\(保存\)** をクリックします。
 

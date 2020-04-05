@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: dapine
 ms.openlocfilehash: 33b99d50db4384c7de818a7dd0bb8492c86bef97
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73961889"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure Cognitive Services コンテナーについてよくあるご質問 (FAQ)

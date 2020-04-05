@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 2/18/2020
 ms.openlocfilehash: 1c9b4b1099bda69764aa7a1a5a984a6316e1047d
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77462413"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-performance-options"></a>Azure Database for PostgreSQL – Hyperscale (Citus) パフォーマンス オプション
@@ -35,7 +35,7 @@ Hyperscale (Citus) サーバー グループは次の Azure リージョンで�
 * アメリカ合衆国:
     * カナダ中部
     * 米国中部
-    * 米国東部
+    * East US
     * 米国東部 2
     * 米国中北部
     * 米国西部 2

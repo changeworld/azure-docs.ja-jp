@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: a028a0b5d79b2c79f1da336f033d3e8cac21a2e2
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: a477114bda7d138a6860d21f2fad75e27d968833
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77474243"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80117108"
 ---
 共有イメージ ギャラリーは、マネージド イメージに関連する構造および組織を構築できるサービスです。 共有イメージ ギャラリーでは以下のことが提供されます。
 
@@ -231,7 +231,7 @@ ms.locfileid: "77474243"
  
    アクセス可能なサブスクリプション全体の共有イメージ ギャラリー リソースをすべて一覧表示するために、Azure CLI で次のコマンドを使用します。
 
-   ```bash
+   ```azurecli
    az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
    ```
 

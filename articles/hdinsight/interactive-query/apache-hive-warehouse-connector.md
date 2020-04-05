@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/02/2020
 ms.openlocfilehash: f386530ffb3a074a5c1db1d9f28535d28c8b1284
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78252415"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Hive Warehouse Connector を使用して Apache Spark と Apache Hive を統合する
@@ -74,7 +74,7 @@ Spark Ambari Web UI から、 **[Spark2]**  >  **[CONFIGS]**  >  **[Custom spark
 
 必要に応じて **[Add Property]\(プロパティの追加\)** を選択し、次のものを追加または更新します。
 
-| Key | Value |
+| Key | 値 |
 |----|----|
 |`spark.hadoop.hive.llap.daemon.service.hosts`|**hive.llap.daemon.service.hosts** から先ほど取得した値。|
 |`spark.sql.hive.hiveserver2.jdbc.url`|`jdbc:hive2://LLAPCLUSTERNAME.azurehdinsight.net:443/;user=admin;password=PWD;ssl=true;transportMode=http;httpPath=/hive2` JDBC 接続文字列に設定します。これにより、対話型クエリ クラスター上の Hiveserver2 に接続されます。 `LLAPCLUSTERNAME` を対話型クエリ クラスターの名前に置き換えます。 `PWD` を実際のパスワードで置き換えます。|

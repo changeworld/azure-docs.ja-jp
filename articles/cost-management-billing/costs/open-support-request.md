@@ -1,18 +1,18 @@
 ---
-title: Azure で Cloudyn のサポート リクエストを作成する | Microsoft Docs
+title: Azure で Cloudyn のサポート リクエストを作成する
 description: この記事では、Cloudyn のサポート リクエストを作成するために必要な手順について説明します。
 author: bandersmsft
 ms.author: banders
 ms.date: 02/12/2020
-ms.topic: troubleshooting
+ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: 683fe2be0e93945d03fb8ee8218ab11e7a1ee624
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 38efc86d1bdc185f39d3ea502a64d0f3cf7edcc0
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199910"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408247"
 ---
 # <a name="create-a-support-request-for-cloudyn"></a>Cloudyn のサポート リクエストを作成する
 

@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/22/2019
 ms.openlocfilehash: e642454807511e8e0bc0b6b6ca7af837e03de2cf
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73821348"
 ---
 # <a name="choose-the-right-deployment-option-in-azure-sql"></a>Azure SQL で適切なデプロイ オプションを選択する
@@ -45,7 +45,7 @@ Azure では、ホストされるサービス ([PaaS](https://azure.microsoft.co
   - "[***エラスティック プール***](sql-database-elastic-pool.md)"。データベースのコレクションで、各種の共有リソースをデータベース サーバーを介して管理します。 単一データベースはエラスティック プールの内外に移動できます。 このオプションは、マルチテナント SaaS アプリケ―ション パターンを使用して、クラウド生まれの新しいアプリケーションの最新のアプリケーション開発用に最適化されています。 エラスティック プールは、多様な使用パターンを持つ複数のデータベースのパフォーマンスを管理するための、コスト効率に優れたソリューションを提供します。
   - "[***データベース サーバー***](sql-database-servers.md)"。単一データベースとエラスティック プールのグループを管理するために使用されます。 データベース サーバーは、複数の単一データベース、またはプールされたデータベース、[ログイン](sql-database-manage-logins.md)、[ファイアウォール規則](sql-database-firewall-configure.md)、[監査規則](sql-database-auditing.md)、[脅威検出ポリシー](sql-database-threat-detection.md)、[フェールオーバー グループ](sql-database-auto-failover-group.md)などの中央管理ポイントとして機能します。
 
-- [**SQL マネージド インスタンス**](sql-database-managed-instance.md):クラウドへの移行に最適です。 マネージド インスタンスは、各種の共有リソースを格納するシステムおよびユーザー データベースのコレクションで、リフトアンドシフトする準備ができています。 最新の新しい SQL Server 機能を使用する必要があり、最小限の変更でクラウドに移行する新しいアプリケーションまたは既存のオンプレミス アプリケーションに最も適しています。 マネージド インスタンスは、[Microsoft SQL Server データベース エンジン](https://docs.microsoft.com/sql/database-engine/sql-server-database-engine-overview)のインスタンスに似ており、データベース用の共有リソースおよびインスタンス スコープの追加機能を提供します。 マネージド インスタンスでは、データベースの最小限の変更または変更なしでのオンプレミスからのデータベースの移行がサポートされます。 このオプションは Azure SQL Database の PaaS のすべての利点を提供しますが、以前は SQL VM でのみ使用できた機能を追加します。 これには、ネイティブ仮想ネットワーク (VNet) およびオンプレミス SQL Server との 100% に近い互換性が含まれます。 マネージド インスタンスは、SQL Server を Azure に移行するための SQL Server のフル アクセスと機能の互換性を提供します。
+- [**SQL マネージド インスタンス**](sql-database-managed-instance.md):クラウドへの移行に最適です。 マネージド インスタンスは、各種の共有リソースを格納するシステムおよびユーザー データベースのコレクションで、リフトアンドシフトする準備ができています。 最新の新しい SQL Server 機能を使用する必要があり、最小限の変更でクラウドに移行する新しいアプリケーションまたは既存のオンプレミス アプリケーションに最も適しています。 マネージド インスタンスは、[Microsoft SQL Server データベース エンジン](https://docs.microsoft.com/sql/database-engine/sql-server-database-engine-overview)のインスタンスに似ており、データベース用の共有リソースおよびインスタンス スコープの追加機能を提供します。 マネージド インスタンスでは、オンプレミスからのデータベースの移行がサポートされ、データベースの変更は発生しないか最小限に抑えられます。 このオプションは Azure SQL Database の PaaS のすべての利点を提供しますが、以前は SQL VM でのみ使用できた機能を追加します。 これには、ネイティブ仮想ネットワーク (VNet) およびオンプレミス SQL Server との 100% に近い互換性が含まれます。 マネージド インスタンスは、SQL Server を Azure に移行するための SQL Server のフル アクセスと機能の互換性を提供します。
 
 
 - [**SQL 仮想マシン**](../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md):移行と、OS レベルのアクセスを必要とするアプリケーションに最適です。 SQL 仮想マシンは、最小限の変更または変更なしでクラウドに迅速に移行する必要がある既存のアプリケーションに対して、リフトアンドシフトする準備ができています。 SQL 仮想マシンは、Azure に移行するための SQL Server インスタンスと基になる OS に対する完全な管理制御を提供します。 運用環境以外のオンプレミス SQL Server のハードウェアを購入しない場合の迅速な開発およびテスト シナリオ。 SQL 仮想マシンは、業界内のカテゴリとしては "*サービスとしてのインフラストラクチャ (IaaS)* " に分類され、Azure クラウド上のフルマネージドの仮想マシン (VM) 内で SQL Server を実行できます。 SQL 仮想マシンは、Microsoft が所有、ホスト、保守する標準的なハードウェア上でも実行できます。 SQL 仮想マシンを使用する場合は、SQL Server イメージに含まれている SQL Server ライセンスを使用して従量課金で支払いを行うか、単に既存のライセンスを使用することができます。 必要に応じて、VM を停止または再開することもできます。 クラウド上にインストールされてホストされている SQL Server は、Azure 上で実行されている Windows Server または Linux 仮想マシンで実行され、サービスとしてのインフラストラクチャ (IaaS) とも呼ばれます。 SQL 仮想マシンは、データベースの変更を行わずにオンプレミスの SQL Server データベースとアプリケーションを移行する場合に適したオプションです。 SQL Server のすべての最新バージョンとエディションは、IaaS 仮想マシンでのインストールに使用できます。 SQL データベースと SQL マネージド インスタンスとの最も大きな違いは、SQL Server VM が、データベース エンジンを完全に制御できることです。 メンテナンスまたは修正プログラムの適用を開始するタイミングを選択したり、復旧モデルを単純なログまたは一括ログに変更したりできます。また、必要に応じてサービスを一時停止または開始することができるほか、SQL Server データベース エンジンを完全にカスタマイズすることができます。 この制御を追加する場合、仮想マシンを管理する責任も追加で伴います。
@@ -53,14 +53,14 @@ Azure では、ホストされるサービス ([PaaS](https://azure.microsoft.co
   既存のアプリケーションを Azure に移行したり、ハイブリッド デプロイで既存のオンプレミス アプリケーションをクラウドに拡張したりできるように最適化されています。 さらに、仮想マシン上の SQL Server は従来の SQL Server アプリケーションを開発、テストするためにも使用できます。 SQL 仮想マシンでは、専用の SQL Server インスタンスとクラウドベースの VM に対して完全な管理者権限があります。 仮想マシンの維持に使用できる IT リソースが組織に既にある場合は、Azure VM 内の SQL Server を選択することをお勧めします。 これらの機能を使用すると、高度にカスタマイズされたシステムを構築して、アプリケーション固有のパフォーマンスや可用性の要件に対処できます。
 
 
-次の表にその他の違いを示しますが、"***データベースとマネージド インスタンスは両方とも、多くのデータベースをプロビジョニングおよび管理するための全体的な管理コストを最小限に抑えるように最適化されています。***" 仮想マシン、オペレーティング システム、データベース ソフトウェアを管理する必要がないため、継続的な管理コストが軽減されます。 アップグレード、高可用性、 [バックアップ](sql-database-automated-backups.md)を管理する必要はありません。 一般的には、Azure SQL Database を使用すると、単一の IT または開発リソースが管理するデータベースの数を大幅に増やすことができます。 [エラスティック プール](sql-database-elastic-pool.md)は、テナントの分離、データベース間でリソースを共有することでコストを削減するように拡大縮小する機能などの機能を備えた SaaS マルチ テナント アプリケーション アーキテクチャもサポートします。 [マネージド インスタンス](sql-database-managed-instance.md)は、既存のアプリケーションの簡単な移行およびデータベース間でのリソースの共有を可能にするインスタンス スコープの機能のサポートを提供します。
+次の表にその他の違いを示しますが、"***データベースとマネージド インスタンスは両方とも、多くのデータベースをプロビジョニングおよび管理するための全体的な管理コストを最小限に抑えるように最適化されています。***" 仮想マシン、オペレーティング システム、データベース ソフトウェアを管理する必要がないため、継続的な管理コストが軽減されます。 アップグレード、高可用性、 [バックアップ](sql-database-automated-backups.md)を管理する必要はありません。 一般的には、Azure SQL Database を使用すると、単一の IT または開発リソースが管理するデータベースの数を大幅に増やすことができます。 [エラスティック プール](sql-database-elastic-pool.md)では、SaaS マルチ テナント アプリケーション アーキテクチャもサポートします。これにはテナントの分離や、データベース間でリソースを共有することでコストを削減するようにスケーリングする機能などが含まれます。 [マネージド インスタンス](sql-database-managed-instance.md)は、既存のアプリケーションの簡単な移行およびデータベース間でのリソースの共有を可能にするインスタンス スコープの機能のサポートを提供します。
 
 | SQL データベース | SQL マネージド インスタンス | SQL 仮想マシン |
 | :--- | :--- | :--- |
 |ほとんどのオンプレミス データベース レベルの機能をサポートしています。 最もよく使用される SQL Server 機能を利用できます。<br/>99.995% の可用性を保証。<br/>組み込みのバックアップ、修正プログラムの適用、回復。<br/>最新の安定版データベース エンジン バージョン。<br/>個々のデータベースに必要なリソース (CPU/ストレージ) を割り当てる機能。<br/>組み込みの高度なインテリジェンスとセキュリティ。<br/>オンラインでのリソース (CPU/ストレージ) の変更。| ほとんどすべてのオンプレミス インスタンス レベルおよびデータベース レベルの機能をサポートしています。 オンプレミスの SQL Server との高い互換性。<br/>99.99% の可用性を保証。<br/>組み込みのバックアップ、修正プログラムの適用、回復。<br/>最新の安定版データベース エンジン バージョン。<br/>SQL Server からの移行が簡単。<br/>Azure VNet 内のプライベート IP アドレス。<br/>組み込みの高度なインテリジェンスとセキュリティ。<br/>オンラインでのリソース (CPU/ストレージ) の変更。| SQL Server エンジンを完全に制御できます。 すべてのオンプレミス機能をサポートしています。<br/>最大 99.99% の可用性。<br/>オンプレミスの SQL Server の対応するバージョンと完全に一致。<br/>固定で既知のデータベース エンジン バージョン。<br/>オンプレミスの SQL Server からの移行が簡単。<br/>Azure VNet 内のプライベート IP アドレス。<br/>SQL Server が配置されているホスト上にアプリケーションまたはサービスをデプロイできます。|
 |SQL Server からの移行が難しい可能性があります。<br/>一部の SQL Server 機能は使用できません。<br/>正確なメンテナンス時間の保証はありません (ただし、ほぼ透過的です)。<br/>データベース互換性レベルをのみを使用して、SQL Server バージョンとの互換性を実現できます。<br/>プライベート IP アドレスを割り当てることができません (ファイアウォール規則を使用してアクセスを制限できます)。|利用できない最小限の数の SQL Server 機能がまだあります。<br/>正確なメンテナンス時間の保証はありません (ただし、ほぼ透過的です)。<br/>データベース互換性レベルをのみを使用して、SQL Server バージョンとの互換性を実現できます。|バックアップと修正プログラムを管理する必要があります。<br>高可用性ソリューションを独自に実装する必要があります。<br/>リソース (CPU/ストレージ) の変更中にダウンタイムが発生|
 | 最大 100 TB のデータベース。 | 最大 8 TB。 | 記憶域が 256 TB までの SQL Server インスタンス。 インスタンスでは必要な数のデータベースがサポートされます。 |
-| オンプレミス アプリケーションから Azure SQL Database 内のデータにアクセスできます。 | Azure Express Route または VPN Gateway を使った、オンプレミス環境への[ネイティブ仮想ネットの実装](sql-database-managed-instance-vnet-configuration.md)と接続。 | SQL 仮想マシンを使用して、アプリケーションの一部をクラウド上で実行し、一部をオンプレミスで実行することができます。 たとえば、 [Azure Virtual Network](../virtual-network/virtual-networks-overview.md)を介してオンプレミス ネットワークと Active Directory ドメインをクラウドに拡張できます。 ハイブリッド クラウド ソリューションについて詳しくは、「[オンプレミス データ ソリューションのクラウドへの拡張](https://docs.microsoft.com/azure/architecture/data-guide/scenarios/hybrid-on-premises-and-cloud)」をご覧ください。 |
+| オンプレミス アプリケーションから Azure SQL Database 内のデータにアクセスできます。 | Azure Express Route または VPN Gateway を使った、オンプレミス環境への[ネイティブ仮想ネットワークの実装](sql-database-managed-instance-vnet-configuration.md)と接続。 | SQL 仮想マシンを使用して、アプリケーションの一部をクラウド上で実行し、一部をオンプレミスで実行することができます。 たとえば、 [Azure Virtual Network](../virtual-network/virtual-networks-overview.md)を介してオンプレミス ネットワークと Active Directory ドメインをクラウドに拡張できます。 ハイブリッド クラウド ソリューションについて詳しくは、「[オンプレミス データ ソリューションのクラウドへの拡張](https://docs.microsoft.com/azure/architecture/data-guide/scenarios/hybrid-on-premises-and-cloud)」をご覧ください。 |
 
 
 
@@ -92,7 +92,7 @@ Azure では、ホストされるサービス ([PaaS](https://azure.microsoft.co
 
 **SQL データベースと SQL マネージド インスタンス**では、データベース ソフトウェアの自動的な構成、修正プログラムの適用、およびアップグレードが Microsoft によって行われるため、管理コストが軽減されます。 また、 [組み込みのバックアップ](sql-database-automated-backups.md) 機能は、特に、多数のデータベースがある場合の大幅なコスト削減に役立ちます。
 
-**SQL 仮想マシン**では、プラットフォームによって提供される、いずれかの SQL Server イメージ (ライセンスが付属) を使用するか、所有している SQL Server ライセンスを移行することができます。 サポートされている SQL Server のバージョン (2008R2、2012、2014、2016) とエディション (Developer、Express、Web、Standard、Enterprise) はすべて利用できます。 さらに、ライセンス持ち込み (BYOL) バージョンのイメージも利用できます。 Azure によって提供されるイメージを使用する場合、運用コストは、VM のサイズと選択する SQL Server のエディションによって決まります。 VM のサイズや SQL Server のエディションにかかわらず、SQL Server および Windows Server または Linux Server の  1 分あたりのライセンス費用と VM ディスクの Azure Storage コストをお支払いいただきます。 1 分あたりの課金のオプションでは、SQL Server の追加ライセンスを購入することなく、必要なだけ SQL Server を使用することができます。 Azure に SQL Server のライセンスを持ち込む場合は、サーバー コストとストレージ コストのみに対して課金されます。 現在所有しているライセンスの移行の詳細については、「 [Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility/)」を参照してください。 さらに、インターネット トラフィックの送信も通常の [データ転送料金](https://azure.microsoft.com/pricing/details/data-transfers/)で課金されます。
+**SQL 仮想マシン**では、プラットフォームによって提供される、いずれかの SQL Server イメージ (ライセンスが付属) を使用するか、所有している SQL Server ライセンスを移行することができます。 サポートされている SQL Server のバージョン (2008R2、2012、2014、2016) とエディション (Developer、Express、Web、Standard、Enterprise) はすべて利用できます。 さらに、ライセンス持ち込み (BYOL) バージョンのイメージも利用できます。 Azure によって提供されるイメージを使用する場合、運用コストは、VM のサイズと選択する SQL Server のエディションによって決まります。 VM のサイズや SQL Server のエディションにかかわらず、ユーザーは、SQL Server および Windows Server または Linux Server の 1 分あたりのライセンス費用と VM ディスクの Azure Storage コストを支払います。 1 分あたりの課金のオプションでは、SQL Server の追加ライセンスを購入することなく、必要なだけ SQL Server を使用することができます。 Azure に SQL Server のライセンスを移行する場合は、サーバー コストとストレージ コストのみに対して課金されます。 現在所有しているライセンスの移行の詳細については、「 [Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility/)」を参照してください。 さらに、インターネット トラフィックの送信も通常の [データ転送料金](https://azure.microsoft.com/pricing/details/data-transfers/)で課金されます。
 
 #### <a name="calculating-the-total-application-cost"></a>アプリケーションの総コストの計算
 
@@ -104,9 +104,9 @@ Azure では、ホストされるサービス ([PaaS](https://azure.microsoft.co
 - [SQL](https://azure.microsoft.com/pricing/details/virtual-machines/#sql) および [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#windows) 向けの[仮想マシンの価格](https://azure.microsoft.com/pricing/details/virtual-machines/)
 - [Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 
-### <a name="administration"></a>[管理]
+### <a name="administration"></a>管理
 
-多くの企業にとって、クラウド サービスに切り替えるかどうかの決定には、コストだけでなく、管理の複雑さの軽減も重要な要素です。 IaaS および PaaS では、マイクロソフトが、基盤となるインフラストラクチャを管理して、すべてのデータを自動的にレプリケートし、ディザスター リカバリーを提供し、さらにデータベース ソフトウェアの構成とアップグレード、負荷分散の管理、データ センター内のサーバーに障害が発生した場合の透過的なフェールオーバーを実行します。
+多くの企業にとって、クラウド サービスに切り替えるかどうかの決定には、コストだけでなく、管理の複雑さの軽減も重要な要素です。 IaaS および PaaS では、基盤となるインフラストラクチャをマイクロソフトが管理します。すべてのデータを自動的にレプリケートしてディザスター リカバリーを提供し、データベース ソフトウェアの構成とアップグレードを行い、負荷分散を管理します。データ センター内のサーバーに障害が発生した場合は、透過的なフェールオーバーを実行します。
 
 - **SQL データベースおよび SQL マネージド インスタンス**を使用すると、ユーザーは引き続きデータベースを管理できますが、データベース エンジン、オペレーティング システム、ハードウェアを管理する必要はありません。 引き続き管理できるアイテムの例として、データベースとログイン、インデックスとクエリのチューニング、監査とセキュリティなどがあります。 さらに、別のデータ センターへの高可用性を構成するには、最小限の構成と管理が必要です。
 - **SQL 仮想マシン**では、オペレーティング システムと SQL Server インスタンスの構成を全面的に制御できます。 VM を使用する場合、オペレーティング システムとデータベース ソフトウェアの更新やアップグレードのタイミングに加えて、ウイルス対策などの追加ソフトウェアのインストールのタイミングは、ユーザーが決定します。 修正プログラムの適用、バックアップ、高可用性の実現を大幅に簡素化するために、自動化された機能がいくつか用意されています。 また、VM のサイズ、ディスクの数、ストレージの構成を制御できます。 Azure では、必要に応じて VM のサイズを変更できます。 詳細については、「 [Azure の仮想マシンおよびクラウド サービスのサイズ](../virtual-machines/windows/sizes.md)」を参照してください。
@@ -119,7 +119,7 @@ Azure では、ホストされるサービス ([PaaS](https://azure.microsoft.co
 
 **SQL 仮想マシン**では、仮想マシンのみを対象に、可用性 99.95% の SLA が提供されます。 この SLA は VM 上で実行される (SQL Server などの) プロセスは対象としておらず、可用性セットに少なくとも 2 つの VM インスタンスをホストしている必要があります。 最新情報については、 [VM の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)に関するページを参照してください。 VM 内のデータベース高可用性 (HA) を実現するには、[Always On 可用性グループ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)など、SQL Server でサポートされているいずれかの高可用性オプションを構成する必要があります。 サポートされている高可用性オプションを使用した場合、SLA を追加することはできないものの、ほぼ 99.99% のデータベース可用性が実現されます。
 
-### <a name="market"></a>Azure へ移行するタイミング
+### <a name="time-to-move-to-azure"></a><a name="market"></a>Azure へ移行するタイミング
 
 **SQL データベース** (単一データベースまたはエラスティック プール) は、開発者の生産性と新しいソリューションの製品化に要する時間の短縮が重要な、クラウド用に設計されたアプリケーションに最適なソリューションです。 プログラムによる DBA のような機能を備えることで、基になるオペレーティング システムとデータベースを管理する必要性が減少するため、クラウドの設計者と開発者に最適です。
 
@@ -129,7 +129,7 @@ Azure では、ホストされるサービス ([PaaS](https://azure.microsoft.co
 
 [!INCLUDE [sql-database-create-manage-portal](includes/sql-database-create-manage-portal.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - SQL Database の使用を開始するには、「[初めての Azure SQL Database](sql-database-single-database-get-started.md)」を参照してください。
 - 「 [SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。

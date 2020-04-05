@@ -12,10 +12,10 @@ ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 55b4750d2c601a4d3c66bcd8235a9718d6daaf9d
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78187003"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>カスタム ポリシーを使用して Azure Active Directory B2C でリソース所有者パスワード資格情報フローを構成する
@@ -251,7 +251,7 @@ Azure Active Directory B2C (Azure AD B2C) では、リソース所有者パス�
 - `your-tenant-name`を Azure AD B2C テナントの名前に置き換えます。
 - `B2C_1A_ROPC_Auth` は実際のリソース所有者のパスワード資格情報ポリシーのフル ネームに置き換えます。
 
-| Key | Value |
+| Key | 値 |
 | --- | ----- |
 | username | `user-account` |
 | password | `password1` |
@@ -296,7 +296,7 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
 - `your-tenant-name`を Azure AD B2C テナントの名前に置き換えます。
 - `B2C_1A_ROPC_Auth` は実際のリソース所有者のパスワード資格情報ポリシーのフル ネームに置き換えます。
 
-| Key | Value |
+| Key | 値 |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |

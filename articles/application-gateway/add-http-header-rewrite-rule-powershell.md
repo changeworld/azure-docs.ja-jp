@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: absha
 ms.openlocfilehash: 47fe6a5247622e3ad3b3720955068580e0329913
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64947202"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-powershell"></a>Azure Application Gateway で HTTP の要求および応答ヘッダーを書き換える - Azure PowerShell
@@ -102,6 +102,6 @@ $requestroutingrule.RewriteRuleSet= $null
 set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 一般的なユース ケースの設定方法の詳細については、[共通ヘッダーの書き換えシナリオ](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)に関する記事をご覧ください。

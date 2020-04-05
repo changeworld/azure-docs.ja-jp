@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/10/2019
 ms.author: spelluru
 ms.openlocfilehash: 62c44bfea28d47d7c32aa7ef440a40d45c314683
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67081612"
 ---
 # <a name="integration-of-azure-devtest-labs-and-azure-devops"></a>Azure DevTest Labs と Azure DevOps の統合
@@ -42,7 +42,7 @@ CI/CD パイプラインにラボを設定することにより、非同期テ�
 ## <a name="cicd-pipeline"></a>CI/CD パイプライン 
 CI/CD パイプラインは、開発者のプル要求からコードを移動し、それを既存のコードと統合して、運用エコシステムにデプロイする DevOps の重要なコンポーネントの 1 つです。 すべてのリソースがラボ内にある必要はありません。 たとえば、Jenkins ホストは、より永続的なリソースとしてラボの外部に設定できます。 以下に、ラボをパイプラインに統合する具体的な例をいくつか示します。 
 
-### <a name="build"></a>構築 
+### <a name="build"></a>Build 
 ビルド パイプラインでは、リリース パイプラインに渡すために一緒にテストされるコンポーネントのパッケージの作成に重点が置かれています。 ラボは、ビルド エージェントとその他のサポート リソース用の場所として、ビルド パイプラインに含めることができます。 インフラストラクチャを動的に構築できることにより、より細かい制御が可能になります。 ラボ内に複数の環境を用意することができるため、各ビルドを非同期に実行できると同時に、環境情報の一部としてビルド ID を使用して、特定のビルドに対してリソースを一意に識別できます。   
 
 ビルド エージェントの場合は、ラボのアクセス制限機能によりセキュリティが強化され、偶発的な破損の可能性が減少します。  

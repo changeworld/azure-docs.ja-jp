@@ -10,10 +10,10 @@ ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
 ms.openlocfilehash: e23268d21b01435aa71d4f471afc6d37ee9e9c1d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73672697"
 ---
 # <a name="what-is-azure-data-factory"></a>Azure Data Factory とは何ですか。
@@ -56,7 +56,7 @@ Data Factory を使用すれば、データ パイプラインの[コピー ア�
 ### <a name="cicd-and-publish"></a>CI/CD と公開
 Data Factory では、Azure DevOps と GitHub を使用したデータ パイプラインの CI/CD が完全にサポートされています。 ETL プロセスの開発とデリバリを段階的に進めたうえで、完成した製品を公開することが可能です。 生データが変換されてビジネスに即応して利用できる形態になったら、このデータを、ビジネス ユーザーがビジネス インテリジェンス ツールから参照できる Azure Data Warehouse、Azure SQL Database、Azure CosmosDB、またはその他の分析エンジンに読み込みます。
 
-### <a name="monitor"></a>監視
+### <a name="monitor"></a>モニター
 データ統合パイプラインを正常に構築してデプロイし、変換したデータからビジネス価値を生み出せるようになったなら、スケジュール化したアクティビティとパイプラインを監視して、成功率と失敗率を確認することができます。 Azure Data Factory には、Azure Monitor、API、PowerShell、Azure Monitor ログ、Azure portal の正常性パネルを利用してパイプラインを監視する、ビルトイン サポートが用意されています。
 
 ## <a name="top-level-concepts"></a>トップレベルの概念
@@ -91,7 +91,7 @@ Data Factory ではリンクされたサービスは 2 つの目的に使用さ�
 ### <a name="pipeline-runs"></a>パイプライン実行
 パイプライン実行は、パイプラインを実行するインスタンスです。 パイプライン実行は、通常、パイプラインで定義されたパラメーターに引数を渡してインスタンス化されます。 引数は、手動で渡すか、トリガー定義内で渡すことができます。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 パラメーターは、読み取り専用の構成のキーと値のペアです。  パラメーターはパイプラインで定義されます。 定義済みパラメーターの引数は、実行時に、トリガーが作成した実行コンテキストか、手動で実行されるパイプラインから渡されます。 パイプライン内のアクティビティは、パラメーターの値を使用します。
 
 データセットとは、厳密に型指定されたパラメーターと、再利用または参照可能なエンティティのことです。 アクティビティは、データセットを参照でき、データセットの定義で定義されたプロパティを使用できます。
@@ -104,7 +104,7 @@ Data Factory ではリンクされたサービスは 2 つの目的に使用さ�
 ### <a name="variables"></a>変数
 変数は、パイプライン内で一時的な値を格納するときに使用できるほか、パラメーターと組み合わせて、パイプラインやデータ フローなどのアクティビティ間で値を受け渡しする際にも使用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次のステップとして重要なドキュメントを次に示します。ぜひご覧ください。
 
 - [データセットとリンクされたサービス](concepts-datasets-linked-services.md)

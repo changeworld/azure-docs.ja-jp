@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/2/2017
 ms.author: sumukhs
 ms.openlocfilehash: fbd6f7cd3ade753c659464522408aa715cce48f9
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75609742"
 ---
 # <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>Reliable Actors の構成 -- ReliableDictionaryActorStateProvider
@@ -30,7 +30,7 @@ ReliableDictionaryActorStateProvider の構成に影響を与えるグローバ�
 クラスター マニフェストは、クラスター内のすべてのノードとサービスに適用される設定と構成を保持する単一の XML ファイルです。 通常、このファイルは ClusterManifest.xml という名前です。 Get-ServiceFabricClusterManifest PowerShell コマンドを使用して、クラスターのクラスター マニフェストを確認できます。
 
 ### <a name="configuration-names"></a>構成名
-| Name | ユニット | 既定値 | 解説 |
+| 名前 | ユニット | 既定値 | 解説 |
 | --- | --- | --- | --- |
 | WriteBufferMemoryPoolMinimumInKB |キロバイト |8388608 |ロガー書き込みバッファー メモリ プールに対してカーネル モードで割り当てる最小 KB 数。 このメモリ プールは、ディスクに書き込む前の状態情報のキャッシュに使用されます。 |
 | WriteBufferMemoryPoolMaximumInKB |キロバイト |制限なし |ロガー書き込みバッファー メモリ プールを拡張できる最大サイズ。 |
@@ -75,7 +75,7 @@ SharedLogSizeInMB では、すべてのノードで既定の共有ログに前�
 &lt;ActorName&gt;ServiceReplicatorConfig
 
 ### <a name="configuration-names"></a>構成名
-| Name | ユニット | 既定値 | 解説 |
+| 名前 | ユニット | 既定値 | 解説 |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Seconds |0.015 |操作を受信してからプライマリに受信確認を返すまで、セカンダリでレプリケーターが待機する期間です。 この期間内で処理された操作に対して送信される他の受信確認は、1 つの応答として送信されます。 |
 | ReplicatorEndpoint |該当なし |既定値なし - 必須パラメーター |プライマリとセカンダリのレプリケーターがレプリカ セットの他のレプリケーターと通信するために使用する IP アドレスとポートです。 これは、サービス マニフェストの TCP リソース エンドポイントを参照する必要があります。 サービス マニフェストでのエンドポイント リソース定義の詳細については、「 [サービス マニフェストにリソースを指定する](service-fabric-service-manifest-resources.md) 」を参照してください。 |

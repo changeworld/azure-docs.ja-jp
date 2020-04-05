@@ -254,6 +254,7 @@
               href: reserved-vm-instance-size-flexibility.md
         - name: スポット VM
           href: spot-vms.md
+          displayName: 'pre-empt, preempt'
         - name: 旧世代
           href: ../sizes-previous-gen.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
           displayName: D-series Ds-series A-series Basic
@@ -585,6 +586,8 @@
               href: create-portal-availability-zone.md
     - name: 自動化ツールの使用
       items:
+        - name: カスタム データ
+          href: ../custom-data.md
         - name: Chef
           href: chef-automation.md
         - name: Visual Studio から Web アプリを発行する

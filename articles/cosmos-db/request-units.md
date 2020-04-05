@@ -7,11 +7,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.openlocfilehash: a0058bf309e0ff4fbe687731d676e907d1c3fd82
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383109"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225659"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB の要求ユニット
 
@@ -64,7 +64,7 @@ Azure Cosmos DB では、多くの API (SQL、MongoDB、Cassandra、Gremlin、Ta
 
 * **スクリプトの使用**:クエリと同様に、ストアド プロシージャとトリガーは、実行される操作の複雑さに基づいて RU を消費します。 アプリケーションを開発する場合は、[要求使用量ヘッダー](optimize-cost-queries.md#evaluate-request-unit-charge-for-a-query)を調べて、各操作で消費される RU 量をより深く理解してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Cosmos のコンテナーとデータベースのスループットをプロビジョニングする](set-throughput.md)方法の詳細を確認する。
 * [論理パーティション](partition-data.md)の詳細を確認する。

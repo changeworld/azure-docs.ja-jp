@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3bc0f0dbcd08df887b2484be6ca8c92a85962c1c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74848291"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Azure Multi-Factor Authentication によるユーザー データの収集
@@ -56,7 +56,7 @@ MFA Server、NPS 拡張機能、および Windows Server 2016 Azure MFA AD FS �
 - 予備の電話番号の呼び出し結果
 - 全体の認証
 - 全体の結果
-- 結果
+- [結果]
 - 認証済み
 - 結果
 - 発信 IP アドレス
@@ -188,6 +188,6 @@ MFA Server のコマンド ラインから次のコマンドを実行して、�
 
 - データが完全に削除されるまでには最大で 30 日かかる場合があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [MFA Server のレポート](howto-mfa-reporting.md)

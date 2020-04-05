@@ -7,14 +7,14 @@ manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 02/06/2019
+ms.date: 02/06/2020
 ms.author: aschhab
-ms.openlocfilehash: 699581c7ccd3f36da0cd0c1def623607b7c0a13b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 671368993acb43c0d55eca73119effa934e3cff8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60589673"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230075"
 ---
 # <a name="partitioned-queues-and-topics"></a>パーティション分割されたキューとトピック
 
@@ -25,7 +25,7 @@ Azure Service Bus では、メッセージを処理する複数のメッセー�
  
 既存のキューまたはトピックでパーティション分割のオプションを変更することはできません。このオプションを設定できるのはエンティティの作成時のみです。
 
-## <a name="how-it-works"></a>動作のしくみ
+## <a name="how-it-works"></a>しくみ
 
 パーティション分割されたキューまたはトピックはそれぞれ、複数のパーティションで構成されます。 パーティションはそれぞれ別々のメッセージング ストアに格納され、別々のメッセージ ブローカーで処理されます。 パーティション分割されたキューまたはトピックにメッセージが送信されると、Service Bus はそのメッセージをいずれかのパーティションに割り当てます。 対象のフラグメントは、Service Bus によってランダムに選択されるか、送信側で指定できるパーティション キーによって選択されます。
 
@@ -39,15 +39,15 @@ Azure Service Bus でパーティション分割されたキューとトピッ�
 
 ### <a name="standard"></a>Standard
 
-Standard メッセージング レベルでは、Service Bus キューおよびトピックは、1 GB、2 GB、3 GB、4 GB、5 GB で作成できます (既定値は 1 GB)。 パーティション分割が有効な場合、Service Bus は指定されたサイズごとにエンティティの 16 個のコピー (16 個のパーティション) を作成します。 そのため、サイズが 5 GB のキューを作成すると、パーティションが 16 個であるため、最大キュー サイズは 5 \* 16 = 80 GB になります。 パーティション分割したキューまたはトピックの最大サイズは、[Azure Portal][Azure portal] のそのエンティティの **[概要]** ブレードで確認できます。
+Standard メッセージング レベルでは、Service Bus キューおよびトピックは、1 GB、2 GB、3 GB、4 GB、5 GB で作成できます (既定値は 1 GB)。 パーティション分割が有効な場合、Service Bus は指定されたサイズごとにエンティティの 16 個のコピー (16 個のパーティション) を作成します。 そのため、サイズが 5 GB のキューを作成すると、パーティションが 16 個であるため、最大キュー サイズは 5 \* 16 = 80 GB になります。 パーティション分割したキューまたはトピックの最大サイズは、[Azure portal][Azure portal] のそのエンティティの **[概要]** ブレードでエントリを調べることによって確認できます。
 
 ### <a name="premium"></a>Premium
 
-Premium レベルの名前空間では、エンティティのパーティション分割はサポートされていません。 ただし、Service Bus のキューとトピックは、1 GB、2 GB、3 GB、4 GB、5 GB、10 GB、20 GB、40 GB、80 GB で引き続き作成できます (既定値は 1 GB)。 キューまたはトピックのサイズは、[Azure portal][Azure portal] のそのエンティティの **[概要]** ブレードで確認できます。
+Premium レベルの名前空間では、エンティティのパーティション分割はサポートされていません。 ただし、Service Bus のキューとトピックは、1 GB、2 GB、3 GB、4 GB、5 GB、10 GB、20 GB、40 GB、80 GB で引き続き作成できます (既定値は 1 GB)。 キューまたはトピックのサイズは、[Azure portal][Azure portal] のそのエンティティの **[概要]** ブレードでエントリを調べることによって確認できます。
 
 ### <a name="create-a-partitioned-entity"></a>パーティション分割されたエンティティを作成する
 
-パーティション分割されたキューまたはトピックを作成する方法は複数あります。 ご使用のアプリケーションからキューまたはトピックを作成する際に、[QueueDescription.EnablePartitioning][QueueDescription.EnablePartitioning] プロパティまたは [TopicDescription.EnablePartitioning][TopicDescription.EnablePartitioning] プロパティをそれぞれ **true** に設定することで、キューまたはトピックのパーティション分割を有効にできます。 これらのプロパティは、キューまたはトピックが作成された時点で設定される必要があり、従来の [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) ライブラリのみで使用できます。 既に説明したように、既存のキューまたはトピックでこれらのプロパティを変更することはできません。 例:
+パーティション分割されたキューまたはトピックを作成する方法は複数あります。 ご使用のアプリケーションからキューまたはトピックを作成する際に、[QueueDescription.EnablePartitioning][QueueDescription.EnablePartitioning] プロパティまたは [TopicDescription.EnablePartitioning][TopicDescription.EnablePartitioning] プロパティをそれぞれ **true** に設定することで、キューまたはトピックのパーティション分割を有効にできます。 これらのプロパティは、キューまたはトピックが作成された時点で設定される必要があり、従来の [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) ライブラリのみで使用できます。 既に説明したように、既存のキューまたはトピックでこれらのプロパティを変更することはできません。 次に例を示します。
 
 ```csharp
 // Create partitioned topic
@@ -87,7 +87,7 @@ Service Bus が別のパーティションにメッセージをエンキュー�
 
 ## <a name="advanced-topics-use-transactions-with-partitioned-entities"></a>高度なトピック: パーティション分割されたエンティティでのトランザクションの使用
 
-トランザクションの一部として送信されるメッセージでは、パーティション キーを指定する必要があります。 キーは次のプロパティのいずれかです: [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid)、[PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey)、または [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid)。 同じトランザクションの一部として送信されるすべてのメッセージで、同じパーティション キーを指定する必要があります。 トランザクション内でパーティション キーなしのメッセージを送信しようとすると、Service Bus は無効操作例外を返します。 同じトランザクション内で異なるパーティション キーを持つ複数のメッセージを送信しようとすると、Service Bus は無効操作例外を返します。 例:
+トランザクションの一部として送信されるメッセージでは、パーティション キーを指定する必要があります。 キーは次のプロパティのいずれかです: [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid)、[PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey)、または [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid)。 同じトランザクションの一部として送信されるすべてのメッセージで、同じパーティション キーを指定する必要があります。 トランザクション内でパーティション キーなしのメッセージを送信しようとすると、Service Bus は無効操作例外を返します。 同じトランザクション内で異なるパーティション キーを持つ複数のメッセージを送信しようとすると、Service Bus は無効操作例外を返します。 次に例を示します。
 
 ```csharp
 CommittableTransaction committableTransaction = new CommittableTransaction();
@@ -107,7 +107,7 @@ committableTransaction.Commit();
 
 トランザクション メッセージを、セッションを認識するトピックまたはキューに送信するには、メッセージに [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) プロパティが設定されている必要があります。 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) プロパティも指定されている場合は、このプロパティの値が [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) プロパティの値と同じである必要があります。 これらが異なる場合、Service Bus は無効操作例外を返します。
 
-通常の (パーティション分割されていない) キューまたはトピックと異なり、単一のトランザクションを使用して複数のメッセージを別々のセッションに送信することはできません。 これを試みると、Service Bus は無効操作例外を返します。 例:
+通常の (パーティション分割されていない) キューまたはトピックと異なり、単一のトランザクションを使用して複数のメッセージを別々のセッションに送信することはできません。 これを試みると、Service Bus は無効操作例外を返します。 次に例を示します。
 
 ```csharp
 CommittableTransaction committableTransaction = new CommittableTransaction();
@@ -128,7 +128,7 @@ Service Bus では、パーティション分割されたエンティティを�
 ## <a name="considerations-and-guidelines"></a>考慮事項とガイドライン
 * **高い整合性機能**: パーティション キーの明示的制御、重複データ検出、セッションといった機能が使用されるエンティティの場合、メッセージング操作は常に特定のパーティションにルーティングされます。 いずれかのパーティションにトラフィックが集中した場合や、基になるストアに異常が生じた場合、それらの操作は失敗し、可用性が低下します。 それでも全体として堅牢性は、パーティション分割されていないエンティティと比べれば、はるかに高くなります。問題が発生するのはトラフィックの一部だけです。すべてのトラフィックで問題が発生するわけではありません。 詳細については、「[Event Hubs における可用性と一貫性](../event-hubs/event-hubs-availability-and-consistency.md)」を参照してください。
 * **管理**: 作成、更新、削除といった操作は、エンティティのすべてのパーティションに対して実行する必要があります。 異常のあるパーティションが 1 つでもあると、それらの操作は失敗します。 Get 操作に関して言えば、メッセージ数などの情報は、全パーティションから集計する必要があります。 いずれかのパーティションに異常があった場合、そのエンティティの可用性ステータスは "制限あり" として報告されます。
-* **低量メッセージのシナリオ**: このようなシナリオの場合、特に HTTP プロトコルの使用時には、すべてのメッセージを取得するために、複数の受信操作を実行する必要が生じることがあります。 受信要求の場合、フロント エンドは、すべてのパーティションを受信し、返されたすべての応答をキャッシュします。 以降、同じ接続上で行われる受信要求でこのキャッシュを利用できるため、受信で発生する遅延は小さくなります。 ただし複数の接続が存在する場合や、HTTP を使用している場合は、要求ごとに新しい接続が確立されます。 そのため、要求元と同じノードに応答が届く保証はありません。 既存のメッセージがすべてロックされ、別のフロント エンドでキャッシュされている場合は、受信操作から **null**が返されます。 最終的にはメッセージの有効期限が切れ、再度受信できる状態になります。 HTTP キープアライブの使用をお勧めします。
+* **低量メッセージのシナリオ**: このようなシナリオの場合、特に HTTP プロトコルの使用時には、すべてのメッセージを取得するために、複数の受信操作を実行する必要が生じることがあります。 受信要求の場合、フロント エンドは、すべてのパーティションを受信し、返されたすべての応答をキャッシュします。 以降、同じ接続上で行われる受信要求でこのキャッシュを利用できるため、受信で発生する遅延は小さくなります。 ただし複数の接続が存在する場合や、HTTP を使用している場合は、要求ごとに新しい接続が確立されます。 そのため、要求元と同じノードに応答が届く保証はありません。 既存のメッセージがすべてロックされ、別のフロント エンドでキャッシュされている場合は、受信操作から **null**が返されます。 最終的にはメッセージの有効期限が切れ、再度受信できる状態になります。 HTTP キープアライブの使用をお勧めします。 低量のシナリオでパーティション分割を使用する場合、受信操作に予想以上の時間がかかることがあります。 そのため、このようなシナリオではパーティション分割を使用しないことをお勧めします。 パーティション分割された既存のエンティティをすべて削除し、パフォーマンスを向上させるためにパーティション分割を無効にして再作成してください。
 * **メッセージの参照/ピーク**: 従来の [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) ライブラリでのみ使用可能です。 [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) は、必ずしも [MessageCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.messagecount) プロパティに指定された数のメッセージを返すとは限りません。 一般に、この動作には 2 つの理由があります。 1 つ目は、メッセージのコレクションの総サイズが、最大サイズである 256 KB を超えていることです。 2 つ目は、キューまたはトピックの [EnablePartitioning プロパティ](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning)が **true** に設定されている場合に、要求されたメッセージ数を満たすだけのメッセージがパーティションにない可能性があります。 通常、アプリケーションは、決まった数のメッセージを受信する必要がある場合、そのメッセージ数に達するまで、または読み取るメッセージがなくなるまで、[PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) を繰り返し呼び出す必要があります。 コード サンプルを含む詳細については、[QueueClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) または [SubscriptionClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient.peekbatch) に関する API ドキュメントをご覧ください。
 
 ## <a name="latest-added-features"></a>最近追加された機能
@@ -145,7 +145,7 @@ Service Bus では、パーティション分割されたエンティティを�
 * パーティション分割されたキューまたはトピックは、単一のトランザクションの別々のセッションに属するメッセージの送信はサポートしていません。
 * Service Bus は、現在、名前空間あたり最大 100 のパーティション分割されたキューまたはトピックをサポートします。 パーティション分割された各キューまたはトピックは、名前空間あたり 10,000 エンティティのクォータに対してカウントされます (Premium レベルには適用されません)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [AMQP 1.0 プロトコル ガイド](service-bus-amqp-protocol-guide.md)で、AMQP 1.0 メッセージング仕様の核となる概念を確認します。
 

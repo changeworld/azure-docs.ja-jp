@@ -5,10 +5,10 @@ ms.date: 11/04/2019
 ms.topic: article
 ms.reviewer: chroyal
 ms.openlocfilehash: a8061aad6d6a1513de70e7c2bc57aa109c666611
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74455930"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>Azure CLI を使用してブロックチェーン データ マネージャーを構成する
@@ -38,9 +38,9 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 CLI をローカルにインストールして使用する場合、このクイックスタートでは、Azure CLI バージョン 2.0.51 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[az group create](https://docs.microsoft.com/cli/azure/group) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+[az group create](https://docs.microsoft.com/cli/azure/group) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive
 az group create --name myRG --location eastus
@@ -180,7 +180,7 @@ az resource create \
 
 ## <a name="create-output"></a>出力を作成する
 
-送信接続により、ブロックチェーン データを Azure Event Grid に送信します。 1 つの宛先にブロックチェーン データを送信することも、複数の宛先にブロックチェーン データを送信することもできます。 ブロックチェーン データ マネージャーは、特定のどのブロックチェーン データ マネージャー インスタンスに対しても、複数の Event Grid トピック送信接続をサポートしています。
+送信接続により、ブロックチェーン データを Azure Event Grid に送信します。 1 つの宛先にブロックチェーン データを送信することも、複数の宛先にブロックチェーン データを送信することもできます。 ブロックチェーン データ マネージャーでは、すべてのブロックチェーン データ マネージャー インスタンスに対して複数の Event Grid トピック送信接続がサポートされています。
 
 ``` azurecli
 az resource create \
@@ -413,7 +413,7 @@ az resource delete \
                    --resource-type Microsoft.blockchain/watchers
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のチュートリアルで、ブロックチェーン データ マネージャーと Azure Cosmos DB を使用してブロックチェーン トランザクション メッセージ エクスプローラーの作成を試みます。
 

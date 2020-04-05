@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 02373da114b6dc4663cd3ffc9a0780ac6a7a9e23
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75475909"
 ---
 # <a name="configure-rules-and-manage-alerts"></a>ルールの構成とアラートの管理

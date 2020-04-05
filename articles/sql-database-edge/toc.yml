@@ -4,7 +4,7 @@
   items:
     - name: SQL Database Edge とは
       href: overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: SQL Database Edge のデプロイ

@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.openlocfilehash: 6f4efd9a316b92f17f89cea66a7c81e84ac3cf06
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72991347"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>SSH トンネリングを使用して Apache Ambari Web UI、JobHistory、NameNode、Apache Oozie、およびその他の UI にアクセスする
@@ -54,7 +54,7 @@ Ambari のメニューのいくつかは、SSH トンネル経由でのみ機能
     >
     > Google Chrome も Windows のプロキシ設定に依存します。 ただし、SOCKS5 をサポートする拡張機能をインストールできます。 [FoxyProxy Standard](https://chrome.google.com/webstore/detail/foxyproxy-standard/gcknhkkoolaabfmlnjonogaaifnjlfnp) をお勧めします。
 
-## <a name="usessh"></a>SSH コマンドを使用してトンネルを作成する
+## <a name="create-a-tunnel-using-the-ssh-command"></a><a name="usessh"></a>SSH コマンドを使用してトンネルを作成する
 
 次のように `ssh` コマンドを使用して、SSH トンネルを作成します。 `sshuser` は、実際の HDInsight クラスターの SSH ユーザーに置き換えます。また、`CLUSTERNAME` は、HDInsight クラスターの名前に置き換えます。
 
@@ -75,7 +75,7 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 
 コマンドが完了すると、ローカル コンピューターのポート 9876 に送信されるトラフィックは、クラスターのヘッド ノードにルーティングされるようになります。
 
-## <a name="useputty"></a>PuTTY を使用してトンネルを作成する
+## <a name="create-a-tunnel-using-putty"></a><a name="useputty"></a>PuTTY を使用してトンネルを作成する
 
 [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty) は、Windows 用のグラフィカル SSH クライアントです。 PuTTY に慣れていない場合は、[PuTTY のドキュメント](https://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)を参照してください。 PuTTY を使って SSH トンネルを作成するには、次の手順のようにします。
 
@@ -102,7 +102,7 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     |プロパティ |値 |
     |---|---|
     |発信元ポート|転送するクライアント上のポート。 (**9876** など)。|
-    |Destination|HDInsight クラスターの SSH アドレス。 (**mycluster-ssh.azurehdinsight.net** など)。|
+    |宛先|HDInsight クラスターの SSH アドレス。 (**mycluster-ssh.azurehdinsight.net** など)。|
     |動的|動的な SOCKS プロキシ ルーティングを有効にします。|
 
     ![PuTTY の構成トンネリング オプション](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-putty-tunnel.png)
@@ -154,7 +154,7 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     > [!NOTE]  
     > このページの URL に注意してください。`http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster` に類似しています。 この URI は、ノードの内部の完全修飾ドメイン名 (FQDN) を使っているので、SSH トンネルを使うことによってのみアクセスできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 SSH トンネルを作成して使用する方法を学習したので、Ambari を使う他の方法を以下のドキュメントで参照してください。
 

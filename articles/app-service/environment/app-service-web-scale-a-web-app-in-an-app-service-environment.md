@@ -8,10 +8,10 @@ ms.date: 10/17/2016
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 43849ca7084f2237c37ad537c50f4e94ac4ea7c0
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74688675"
 ---
 # <a name="scaling-apps-in-an-app-service-environment-v1"></a>App Service Environment v1 内でのアプリのスケーリング
@@ -57,8 +57,8 @@ ASE の ASP 用の自動スケール ルールは、通常と同じように機�
 > 
 > 
 
-## <a name="getting-started"></a>使用の開始
-App Service Environment の使用を開始するには、[App Service Environment を作成する方法][HowtoCreateASE]に関するページを参照してください。
+## <a name="getting-started"></a>作業の開始
+App Service 環境の使用を開始するには、「[App Service Environment を作成する方法][HowtoCreateASE]」を参照してください。
 
 <!--Image references-->
 [1]: ./media/app-service-web-scale-a-web-app-in-an-app-service-environment/aseappscale-aspblade.png

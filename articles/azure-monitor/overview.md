@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: cec437929e2f7ccd94cf4cf94ec81f87dac2678a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: cfdd0beac7d257a424d327df71602b4612c3da3b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669167"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79536855"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor の概要
 
@@ -25,11 +25,14 @@ Azure Monitor でできることの例を次に示します。
 - [スマート アラート](platform/alerts-smartgroups-overview.md)や[自動化されたアクション](platform/alerts-action-rules.md)により、大規模な運用をサポートします。
 - Azure の[ダッシュボード](learn/tutorial-logs-dashboards.md)と[ブック](app/usage-workbooks.md)により視覚化を作成します。
 
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4qXeL]
+
+
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="overview"></a>概要
 
-次の図は、Azure Monitor の概要を示します。 図の中央には、Azure Monitor が使用するデータの 2 つの基本的な型であるメトリックとログを格納するデータ ストアがあります。 左側には、これらの[データ ストア](platform/data-platform.md)に投入される[監視データのソース](platform/data-sources.md)があります。 右側には、Azure Monitor が収集したデータを使って実行するさまざまな機能があります。たとえば、分析、アラート、および外部システムへのストリーミングなどです。
+次の図は、Azure Monitor の概要を示します。 図の中央には、Azure Monitor が使用するデータの 2 つの基本的な型であるメトリックとログを格納するデータ ストアがあります。 左側には、これらの[データ ストア](platform/data-sources.md)に投入される[監視データのソース](platform/data-platform.md)があります。 右側には、Azure Monitor が収集したデータを使って実行するさまざまな機能があります。たとえば、分析、アラート、および外部システムへのストリーミングなどです。
 
 ![Azure Monitor の概要](media/overview/overview.png)
 
@@ -51,11 +54,11 @@ Azure Monitor では、Azure Data Explorer で使用される [Kusto クエリ�
 
 Azure Monitor はさまざまなソースからデータを収集できます。 アプリケーションやそれが依存するオペレーティング システムやサービスから、プラットフォーム自体に至るまで、アプリケーションのさまざまな階層のデータ監視を検討することができます。 Azure Monitor は、以下のそれぞれの層からデータを収集します。
 
-- **アプリケーション監視データ**:プラットフォームを問わず、記述したコードのパフォーマンスと機能に関するデータ。
-- **ゲスト OS 監視データ**:アプリケーションが実行されているオペレーティング システムに関するデータ。 これは Azure、別のクラウド、またはオンプレミスで実行できます。 
-- **Azure リソース監視データ**:Azure リソースの操作に関するデータ。
-- **Azure サブスクリプション監視データ**:Azure サブスクリプションの操作および管理に関するデータと、Azure 自体の正常性および操作に関するデータ。 
-- **Azure テナントの監視データ**:Azure Active Directory など、テナント レベルの Azure サービスの操作に関するデータ。
+- **アプリケーション監視データ:** プラットフォームを問わず、記述したコードのパフォーマンスと機能に関するデータ。
+- **ゲスト OS 監視データ:** アプリケーションが実行されているオペレーティング システムに関するデータ。 これは Azure、別のクラウド、またはオンプレミスで実行できます。 
+- **Azure リソース監視データ:** Azure リソースの操作に関するデータ。
+- **Azure サブスクリプション監視データ:** Azure サブスクリプションの操作および管理に関するデータと、Azure 自体の正常性および操作に関するデータ。 
+- **Azure テナントの監視データ:** Azure Active Directory など、テナント レベルの Azure サービスの操作に関するデータ。
 
 Azure サブスクリプションを作成して仮想マシンや Web アプリなどのリソースを追加すると、Azure Monitor は即座にデータの収集を開始します。  リソースが作成または変更されると、[アクティビティ ログ](platform/platform-logs-overview.md)が記録されます。 リソースの状況や消費しているリソースは、[メトリック](platform/data-platform.md)からわかります。 
 
@@ -68,7 +71,7 @@ Azure サブスクリプションを作成して仮想マシンや Web アプリ
 Azure Monitor では、[Data Collector API](platform/data-collector-api.md) を使用して任意の REST クライアントからログ データを収集できます。 これにより、カスタム監視シナリオを作成し、他のソースを通じてテレメトリが公開されないリソースも監視対象に含めることができます。
 
 ## <a name="insights"></a>洞察
-データの監視が役立つのは、コンピューティング環境の運用の可視性が高まる場合のみです。 Azure Monitor には、アプリケーションやそれが依存するリソースに対する貴重な洞察を提供するいくつかの機能やツールが含まれています。 [Application Insights](app/app-insights-overview.md) や[コンテナーに対する Azure Monitor](insights/container-insights-overview.md) などの[監視ソリューション](insights/solutions.md)と機能では、アプリケーションや特定の Azure サービスのさまざまな側面に対する詳細な分析情報が提供されます。 
+データの監視が役立つのは、コンピューティング環境の運用の可視性が高まる場合のみです。 Azure Monitor には、アプリケーションやそれが依存するリソースに対する貴重な洞察を提供するいくつかの機能やツールが含まれています。 [Application Insights](insights/solutions.md) や[コンテナーに対する Azure Monitor](app/app-insights-overview.md) などの[監視ソリューション](insights/container-insights-overview.md)と機能では、アプリケーションや特定の Azure サービスのさまざまな側面に対する詳細な分析情報が提供されます。 
 
 ### <a name="application-insights"></a>Application Insights
 [Application Insights](app/app-insights-overview.md) は、クラウドとオンプレミスのどちらにホストされているかにかかわらず、Web アプリケーションの可用性、パフォーマンス、使用状況を監視します。 Azure Monitor の強力なデータ分析プラットフォームを利用し、ユーザーの報告を待つことなく、アプリケーション運用やエラー診断に対する深い洞察を提供します。 Application Insights にはさまざまな開発ツールへの接続ポイントが含まれており、DevOps プロセスをサポートする Visual Studio とも統合されています。

@@ -11,11 +11,11 @@ ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
 ms.openlocfilehash: a6f977c0cdca670b40ccdc01db64a493962e3dda
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77165978"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79224099"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>チュートリアル:Python SDK で初めての ML 実験を作成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,7 +43,7 @@ Azure Machine Learning ワークスペースは、機械学習モデルを実験
 >[!IMPORTANT] 
 > お使いの**ワークスペース**と**サブスクリプション**をメモしておきます。 これらは、適切な場所に実験を作成するために必要になります。 
 
-## <a name="azure"></a>ワークスペースでノートブックを実行する
+## <a name="run-notebook-in-your-workspace"></a><a name="azure"></a>ワークスペースでノートブックを実行する
 
 このチュートリアルでは、インストール不要であらかじめ構成されているエクスペリエンスを実現するために、お使いのワークスペースでクラウド ノートブック サーバーを使用します。 お使いの環境、パッケージ、および依存関係を制御したい場合は、[独自の環境](how-to-configure-environment.md#local)を使用してください。
 

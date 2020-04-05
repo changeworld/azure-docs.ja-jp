@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/23/2019
 ms.openlocfilehash: 67660e3e98f5a12236798d74cc61f71616e6751d
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76934761"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Azure Toolkit for IntelliJ を使用して HDInsight クラスター上で SSH により Apache Spark アプリケーションをデバッグする

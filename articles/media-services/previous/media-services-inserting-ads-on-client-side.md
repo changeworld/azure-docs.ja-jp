@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 274ee09ae98dd229b255e58261f462e322be9f89
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77565742"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>クライアント側での広告の挿入
@@ -31,7 +31,7 @@ ms.locfileid: "77565742"
 > 
 > 
 
-## <a id="insert_ads_into_media"></a>メディアへの広告の挿入
+## <a name="inserting-ads-into-your-media"></a><a id="insert_ads_into_media"></a>メディアへの広告の挿入
 Azure Media Services では、Windows メディア プラットフォームのプレーヤー フレームワークを通じて広告の挿入がサポートされています。 広告がサポートされるプレーヤー フレームワークは、Windows 8、Silverlight、Windows Phone 8、iOS デバイスで使用できます。 各プレーヤー フレームワークには、プレーヤー アプリケーションの実装方法を示すサンプル コードが含まれています。 media:list には、3 種類の広告を挿入できます。
 
 * **線形** – メイン ビデオを一時停止するフル フレーム広告

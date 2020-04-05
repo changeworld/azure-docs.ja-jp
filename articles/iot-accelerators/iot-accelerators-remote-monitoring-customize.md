@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 11/09/2018
 ms.topic: conceptual
 ms.openlocfilehash: eb3d5fea68b5b1b6e648943cb3dbaab5857e9e07
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68608003"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>リモート監視ソリューション アクセラレータをカスタマイズする
@@ -31,7 +31,7 @@ UI を変更するために、そのコピーをローカルで実行できま�
 
 1. **pcs** CLI を使用して、ソリューション アクセラレータの**基本**インスタンスをデプロイします。 デプロイの名前と仮想マシンに提供した資格情報をメモしておきます。 詳しくは、[CLI を使用したデプロイ](iot-accelerators-remote-monitoring-deploy-cli.md)に関するページをご覧ください。
 
-1. ソリューションでマイクロサービスをホストする仮想マシンへの SSH アクセスを有効にするには、Azure portal または Azure Cloud Shell を使用します。 例:
+1. ソリューションでマイクロサービスをホストする仮想マシンへの SSH アクセスを有効にするには、Azure portal または Azure Cloud Shell を使用します。 次に例を示します。
 
     ```azurecli-interactive
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
@@ -39,7 +39,7 @@ UI を変更するために、そのコピーをローカルで実行できま�
 
     SSH アクセスを有効にするのはテストおよび開発中のみにしてください。 SSH を有効にした場合、[使用し終えたらできるだけ早く無効にする必要があります](../security/fundamentals/network-best-practices.md#disable-rdpssh-access-to-virtual-machines)。
 
-1. Azure Portal または Azure Cloud Shell を使用して、仮想マシンの名前とパブリック IP アドレスを検索します。 例:
+1. Azure Portal または Azure Cloud Shell を使用して、仮想マシンの名前とパブリック IP アドレスを検索します。 次に例を示します。
 
     ```azurecli-interactive
     az resource list --resource-group {your solution name} -o table
@@ -492,7 +492,7 @@ See the [Connect an external visualization tool](https://github.com/Azure/azure-
 * [Azure IoT ソリューションの構成マイクロサービス (Java)](https://github.com/Azure/remote-monitoring-services-java/tree/master/config)
 * [Azure IoT PCS リモート監視 Web UI](https://github.com/Azure/pcs-remote-monitoring-webui)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、リモート監視ソリューション アクセラレータの Web UI のカスタマイズに役立つように使用できるリソースについて説明します。 UI のカスタマイズに関する詳細については、次の記事を参照してください。
 

@@ -16,10 +16,10 @@ ms.date: 02/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 76c13a649e1c1888a11e02b83d969255615cdc67
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77561360"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-saba-talentspace"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Saba TalentSpace の統合

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/13/2019
 ms.author: yelevin
 ms.openlocfilehash: ee2c917d02a442ebabc0e1b40bc245982af794f8
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588214"
 ---
 # <a name="connect-alerts-from-microsoft-defender-advanced-threat-protection"></a>Microsoft Defender Advanced Threat Protection からアラートを接続する 
@@ -44,7 +44,7 @@ Microsoft Defender Advanced Threat Protection がデプロイされ、データ�
 
 
 1. Azure Sentinel で、 **[Data connectors]\(データ コネクタ\)** を選択し、 **[Microsoft Defender Advanced Threat Protection]** タイルをクリックし、 **[Open connector page]\(コネクタ ページを開く\)** を選択します。
-1. **[Connect]** をクリックします。 
+1. **[接続]** をクリックします。 
 1. Defender ATP のアラートで Log Analytics の関連スキーマを使用するには、**SecurityAlert** を検索します。**プロバイダ名**は **MDATP** です。
 
 

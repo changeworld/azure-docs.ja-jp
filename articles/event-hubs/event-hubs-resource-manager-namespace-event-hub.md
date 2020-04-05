@@ -13,28 +13,42 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 88cd29af75239f0ad79eb78b5ff8e106c3b2ee56
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.custom: subject-armqs
+ms.openlocfilehash: c2221fe5b5ab38afbdde167e5bcbf6b47ed4f861
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163077"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79528083"
 ---
 # <a name="quickstart-create-an-event-hub-by-using-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用してイベント ハブを作成する
 
-Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
+Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。 このクイック スタートでは、[Azure Resource Manager テンプレート](../azure-resource-manager/management/overview.md)を使用してイベント ハブを作成します。 Azure Resource Manager テンプレートをデプロイして、イベント ハブを 1 つ含む [Event Hubs](event-hubs-what-is-event-hubs.md) 型の名前空間を作成します。
 
-このクイック スタートでは、[Azure Resource Manager テンプレート](../azure-resource-manager/management/overview.md)を使用してイベント ハブを作成します。 Azure Resource Manager テンプレートをデプロイして、イベント ハブを 1 つ含む [Event Hubs](event-hubs-what-is-event-hubs.md) 型の名前空間を作成します。 記事では、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法を説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。 テンプレートの作成については、[Azure Resource Manager テンプレートのオーサリング][Authoring Azure Resource Manager templates]に関する記事をご覧ください。 テンプレートで使用する JSON の構文とプロパティについては、「[Microsoft.EventHub resource types (Microsoft.EventHub のリソースの種類)](/azure/templates/microsoft.eventhub/allversions)」を参照してください。
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
+## <a name="prerequisites"></a>前提条件
+
+[なし] :
+
 ## <a name="create-an-event-hub"></a>イベント ハブの作成
 
-このクイック スタートでは、[既存のクイック スタート テンプレート](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json)を使用します。
+### <a name="review-the-template"></a>テンプレートを確認する
 
-[!code-json[create-azure-event-hub-namespace](~/quickstart-templates/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json)]
+このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-eventhubs-create-namespace-and-eventhub/)からのものです。
+
+:::code language="json" source="~/quickstart-templates/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json" range="1-61" highlight="32-59":::
+
+テンプレートに定義されているリソースは次のとおりです。
+
+- [**Microsoft.EventHub/namespaces**](/azure/templates/microsoft.eventhub/namespaces)
+- [**Microsoft.EventHub/namespaces/eventhubs**](/azure/templates/microsoft.eventhub/namespaces/eventhubs)
 
 テンプレートのその他のサンプルについては、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?term=eventhub&pageNumber=1&sort=Popular)」をご覧ください。
+
+### <a name="deploy-the-template"></a>テンプレートのデプロイ
 
 テンプレートをデプロイするには、次の手順に従います。
 

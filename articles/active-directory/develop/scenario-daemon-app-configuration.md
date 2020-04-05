@@ -16,10 +16,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: fc441ef64f98ace04b7b847c03d575215656f9db
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77611842"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Web API を呼び出すデーモン アプリ - コードの構成

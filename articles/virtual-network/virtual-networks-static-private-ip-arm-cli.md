@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: kumud
 ms.openlocfilehash: f4643aae0b28861f4ddb99d8dace749e62f930b8
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78199480"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Azure CLI を使用して仮想マシンのプライベート IP アドレスを構成する
@@ -65,9 +65,9 @@ ms.locfileid: "78199480"
     }
     ```
 
-   * `--resource-group`:パブリック IP の作成場所となるリソース グループの名前。
-   * `--name`:パブリック IP の名前です。
-   * `--location`:パブリック IP を作成する Azure リージョン。
+   * `--resource-group`: パブリック IP の作成場所となるリソース グループの名前。
+   * `--name`: パブリック IP の名前。
+   * `--location`: パブリック IP を作成する Azure リージョン。
 
 3. [az network nic create](/cli/azure/network/nic) コマンドを実行し、静的プライベート IP を使用して NIC を作成します。 出力の後に表示される一覧では、使用されたパラメーターについて説明されています。 
    
@@ -117,9 +117,9 @@ ms.locfileid: "78199480"
     
     パラメーター:
 
-    * `--private-ip-address`:NIC の静的プライベート IP アドレスです。
-    * `--vnet-name`:NIC を作成する VNet の名前です。
-    * `--subnet`:NIC を作成するためのサブネットの名前です。
+    * `--private-ip-address`: NIC の静的プライベート IP アドレスです。
+    * `--vnet-name`: NIC を作成する VNet の名前です。
+    * `--subnet`: NIC を作成するためのサブネットの名前です。
 
 4. [azure vm create](/cli/azure/vm/nic) コマンドを実行し、パブリック IP および上記で作成した NIC を使用して VM を作成します。 出力の後に表示される一覧では、使用されたパラメーターについて説明されています。
    
@@ -151,7 +151,7 @@ ms.locfileid: "78199480"
    
    基本的な [az vm create](/cli/azure/vm) パラメーター以外のパラメーター。
 
-   * `--nics`:VM が接続されている NIC の名前です。
+   * `--nics`: VM が接続されている NIC の名前。
    
 VM のオペレーティング システム内で Azure 仮想マシンに割り当てられるプライベート IP は、[Windows VM に複数の IP アドレスを割り当てる](virtual-network-multiple-ip-addresses-cli.md)場合など、必要でない限り静的に割り当てないことをお勧めします。 実際にオペレーティング システム内でプライベート IP アドレスを手動で設定する場合は、それが Azure [ネットワーク インターフェイス](virtual-network-network-interface-addresses.md#change-ip-address-settings)に割り当てられているプライベート IP アドレスと同じアドレスであるようにしてください。そうしないと、仮想マシンへの接続が失われる可能性があります。 詳細については、[プライベート IP アドレス](virtual-network-network-interface-addresses.md#private)設定に関するページを参照してください。
 

@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 01/01/2020
 ms.custom: mvc
 ms.openlocfilehash: 1d327f558806e0205540c183c56b92ba31e33cb7
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77031222"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Hyper-V VM の評価および Azure への移行を準備する
@@ -79,13 +79,13 @@ Azure Migrate プロジェクトを作成するためのアクセス許可があ
     ![Azure AD のアクセス許可](./media/tutorial-prepare-hyper-v/aad.png)
 
 > [!NOTE]
-> これは、重要ではない既定の設定です。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
+> これは、重要ではない既定の設定です。 詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)をご覧ください。
 
 
 
 #### <a name="assign-application-developer-role"></a>アプリケーション開発者ロールの割り当て
 
-テナントおよびグローバル管理者は、アプリケーション開発者ロールをアカウントに割り当てることができます。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
+テナントおよびグローバル管理者は、アプリケーション開発者ロールをアカウントに割り当てることができます。 詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)をご覧ください。
 
 
 ## <a name="prepare-hyper-v-for-assessment"></a>Hyper-V の評価の準備

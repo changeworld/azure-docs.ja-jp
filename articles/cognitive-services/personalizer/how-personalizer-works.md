@@ -4,10 +4,10 @@ description: Personalizer の "_ループ_" は、機械学習を使用して、
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: 836c207213ac52a60e27da6fc957418187059023
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77623745"
 ---
 # <a name="how-personalizer-works"></a>Personalizer のしくみ

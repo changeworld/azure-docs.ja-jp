@@ -5,10 +5,10 @@ ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: v-umha
 ms.openlocfilehash: 6f2a91a8ffce67d3c4008a7587f2787f6446c341
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76293251"
 ---
 # <a name="monitor-azure-blockchain-service-through-azure-monitor"></a>Azure Monitor を使用して Azure Blockchain Service を監視する  
@@ -158,12 +158,12 @@ Azure Blockchain メンバー リソースの各ノードについて収集さ�
 
 | メトリックの名前 | ユニット  |  集計の種類| 説明   |
 |---|---|---|---|
-| CPU 使用率 (%)   | [パーセント]  |  Max | CPU 使用率の割合。     |
+| CPU 使用率 (%)   | パーセント  |  Max | CPU 使用率の割合。     |
 | IO 読み取りバイト数   | キロバイト   | SUM  |  ブロックチェーン メンバー リソースのすべてのノード全体の IO 読み取りバイト数。      |
 |IO 書き込みバイト数     | キロバイト   | SUM  | ブロックチェーン メンバー リソースのノード全体の IO 書き込みバイト数。     |
 |メモリの制限       |  GB (ギガバイト)   | Average    | ブロックチェーン プロセスで使用可能なノードあたりの最大メモリ。 |
 |メモリ使用量     | GB (ギガバイト)  |  Average | すべてのノード全体で使用されている平均のメモリ量。  |
-| メモリ使用率 (%)     | [パーセント]   | Average  |  すべてのノード全体で使用されている平均のメモリの割合。       |
+| メモリ使用率 (%)     | パーセント   | Average  |  すべてのノード全体で使用されている平均のメモリの割合。       |
 |ストレージの使用状況      | GB (ギガバイト)   | Average  | すべてのノード全体で使用されている平均のストレージ サイズ (GB)。       |
 
 

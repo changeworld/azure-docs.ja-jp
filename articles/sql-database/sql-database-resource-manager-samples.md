@@ -11,18 +11,18 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
-ms.openlocfilehash: 16091286aecc6dfdbcfa833a76920ff4bc9c64de
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b254621cc414fb9b2b76263957adc80da6e9c22d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821126"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79214000"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database"></a>Azure SQL Database 用 Azure Resource Manager テンプレート
 
 Azure Resource Manager テンプレートを使用すると、インフラストラクチャをコードとして定義し、ソリューションを Azure クラウドにデプロイできます。
 
-## <a name="single-database--elastic-pooltabsingle-database"></a>[単一データベースとエラスティック プール](#tab/single-database)
+## <a name="single-database--elastic-pool"></a>[単一データベースとエラスティック プール](#tab/single-database)
 
 次の表は、Azure SQL Database 用の Azure Resource Manager テンプレートのリンク一覧です。
 
@@ -34,14 +34,14 @@ Azure Resource Manager テンプレートを使用すると、インフラスト
 | [フェールオーバー グループ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-with-failover-group) | このテンプレートでは、2 つの Azure SQL 論理サーバー、1 つの SQL データベース、および 1 つのフェールオーバー グループを作成します。|
 | [脅威の検出](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-threat-detection-db-policy-multiple-databases) | このテンプレートを使用すると、Azure SQL 論理サーバーと、脅威検出が有効になっている Azure SQL データベースのセット、および各データベースのアラート用のメール アドレスをデプロイできます。 脅威検出は、SQL Advanced Threat Protection (ATP) サービスの一部であり、SQL サーバーおよびデータベースに対する潜在的な脅威に対応するためのセキュリティ層を提供します。|
 | [Azure Blob Storage の監査](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage) | このテンプレートを使用すると、監査を有効にした Azure SQL 論理サーバーをデプロイして、監査ログを BLOB ストレージに書き込むことができます。 Azure SQL Database を監査すると、データベース イベントが追跡され、監査ログに書き込まれます。監査ログは、Azure ストレージ アカウント、OMS ワークスペース、または Event Hubs に表示できます。|
-| [Azure イベント ハブの監査](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub) | このテンプレートを使用すると、監査を有効にした Azure SQL サーバーをデプロイして、監査ログを既存のイベント ハブに書き込むことができます。 監査イベントをイベント ハブに送信するには、`Enabled` `State` で監査設定を設定し、`IsAzureMonitorTargetEnabled` を `true` に設定します。 また、`master` データベースの `SQLSecurityAuditEvents` 診断ログ カテゴリで診断設定を構成します (サーバー レベルの監査用)。 Azure SQL Database と SQL Data Warehouse を監査すると、データベース イベントが追跡され、監査ログに書き込まれます。監査ログは、Azure ストレージ アカウント、OMS ワークスペース、または Event Hubs に表示できます。|
+| [Azure イベント ハブの監査](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub) | このテンプレートを使用すると、監査を有効にした Azure SQL サーバーをデプロイして、監査ログを既存のイベント ハブに書き込むことができます。 監査イベントをイベント ハブに送信するには、`Enabled` `State` で監査設定を設定し、`IsAzureMonitorTargetEnabled` を `true` に設定します。 また、`master` データベースの `SQLSecurityAuditEvents` ログ カテゴリで診断設定を構成します (サーバー レベルの監査用)。 Azure SQL Database と SQL Data Warehouse を監査すると、データベース イベントが追跡され、監査ログに書き込まれます。監査ログは、Azure ストレージ アカウント、OMS ワークスペース、または Event Hubs に表示できます。|
 | [Azure Web アプリと SQL データベース](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database) | このサンプルでは、無料の Azure Web アプリと SQL データベースを "Basic" サービス レベルで作成します。|
 | [Azure Web アプリおよび Redis Cache と SQL データベース](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-redis-cache-sql-database) | このテンプレートでは、同じリソース グループ内に Web アプリ、Redis Cache、および SQL データベースを作成し、Web アプリ内に SQL Database と Redis Cache 用の 2 つの接続文字列を作成します。|
 | [ADF V2 を使用した BLOB ストレージからのデータのインポート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-v2-blob-to-sql-copy) | この Azure Resource Manager テンプレートでは、Azure Blob Storage から SQL Database にデータをコピーする Azure Data Factory V2 を作成します。|
 | [HDInsight クラスターと SQL データベース](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | このテンプレートを使用すると、HDInsight クラスター、SQL Database サーバー、SQL データベース、および 2 つのテーブルを作成できます。 このテンプレートは、[HDInsight の Hadoop での Sqoop の使用](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-use-sqoop)に関する記事で使用されています。 |
 | [スケジュールに従って SQL ストアド プロシージャを実行する Azure ロジック アプリ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sql-proc) | このテンプレートを使用すると、スケジュールに従って SQL ストアド プロシージャを実行するロジック アプリを作成できます。 プロシージャの引数は、テンプレートの body セクションに配置できます。|
 
-## <a name="managed-instancetabmanaged-instance"></a>[Managed Instance](#tab/managed-instance)
+## <a name="managed-instance"></a>[Managed Instance](#tab/managed-instance)
 
 次の表は、Azure SQL Database - マネージド インスタンス用の Azure Resource Manager テンプレートのリンク一覧です。
 

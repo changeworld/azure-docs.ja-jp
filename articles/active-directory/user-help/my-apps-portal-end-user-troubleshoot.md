@@ -13,11 +13,11 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: f72dd5595d67ae989cec5681d22def9a2f929adf
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022343"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227679"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>My Apps ポータルに関する問題を解決する
 
@@ -47,7 +47,7 @@ My Apps によるセキュリティで保護されたサインイン拡張機能
 
 **My Apps** ポータルにサインインできない場合、次をお試しください。
 
-- 使用している URL が正しいことを確認します。 https://myapps.microsoft.com のようになるか、 https://myapps.microsoft.com/contoso.com のような組織向けにカスタマイズされたページになるはずです。
+- 使用している URL が正しいことを確認します。 [https://myapps.microsoft.com](https://myapps.microsoft.com ) のようになるか、 https://myapps.microsoft.com/contoso.com のような組織向けにカスタマイズされたページになるはずです。
 
 - パスワードが正しいことと有効期限が切れていないことを確認します。 詳細については、「[職場または学校のパスワードをリセットする](active-directory-passwords-update-your-own-password.md)」を参照してください。
 

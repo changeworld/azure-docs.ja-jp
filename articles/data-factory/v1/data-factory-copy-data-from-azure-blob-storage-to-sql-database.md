@@ -14,13 +14,13 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: cc2f0a513219a671dd8a75ee00af4fc9d4c6a68a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75979738"
 ---
-# <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>チュートリアル:Data Factory を使用した Blob Storage から SQL Database へのデータのコピー
+# <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>チュートリアル: Data Factory を使用した Blob Storage から SQL Database へのデータのコピー
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
@@ -122,6 +122,6 @@ Data Factory サービスから Azure SQL サーバーにアクセスできる�
 * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
-> このチュートリアルのデータ パイプラインでは、ソース データ ストアからターゲット データ ストアにデータをコピーします。 入力データを変換して出力データを生成するのではありません。 Azure Data Factory を使用してデータを変換する方法のチュートリアルについては、[Hadoop クラスターを使用してデータを変換する初めてのパイプラインを作成する方法のチュートリアル](data-factory-build-your-first-pipeline.md)を参照してください。
+> このチュートリアルのデータ パイプラインでは、ソース データ ストアからターゲット データ ストアにデータをコピーします。 入力データを変換して出力データを生成するのではありません。 Azure Data Factory を使用してデータを変換する方法のチュートリアルについては、「[チュートリアル: Hadoop クラスターを使用してデータを処理する最初のパイプラインを作成する](data-factory-build-your-first-pipeline.md)」を参照してください。
 >
 > 2 つのアクティビティを連鎖させる (アクティビティを連続的に実行する) には、一方のアクティビティの出力データセットを、もう一方のアクティビティの入力データセットとして指定します。 詳細については、[Data Factory でのスケジュールと実行](data-factory-scheduling-and-execution.md)に関するページを参照してください。

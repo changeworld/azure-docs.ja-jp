@@ -9,10 +9,10 @@ ms.date: 12/11/2019
 ms.author: charwen
 ms.custom: seodec18
 ms.openlocfilehash: 5a7ac1b6a9f75655f7e07cc8af89b676ec611421
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76905462"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>PowerShell を使用して ExpressRoute およびサイト間の共存接続を構成する
@@ -83,7 +83,7 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 [!INCLUDE [working with cloud shell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
 
-## <a name="new"></a>新しい仮想ネットワークおよび共存する接続を作成するには
+## <a name="to-create-a-new-virtual-network-and-coexisting-connections"></a><a name="new"></a>新しい仮想ネットワークおよび共存する接続を作成するには
 この手順では、VNet を作成し、共存するサイト間接続と ExpressRoute 接続を作成します。 この構成に使用するコマンドレットは、使い慣れたコマンドレットとは少し異なる場合があります。 必ず、これらの手順で指定されているコマンドレットを使用してください。
 
 1. サインインして、使用するサブスクリプションを選択します。
@@ -185,7 +185,7 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
     New-AzVirtualNetworkGatewayConnection -Name "ERConnection" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -VirtualNetworkGateway1 $gw -PeerId $ckt.Id -ConnectionType ExpressRoute
     ```
 
-## <a name="add"></a>既存の VNet で共存する接続を構成するには
+## <a name="to-configure-coexisting-connections-for-an-already-existing-vnet"></a><a name="add"></a>既存の VNet で共存する接続を構成するには
 仮想ネットワーク ゲートウェイが 1 つしかない仮想ネットワークを所有していて (サイト間 VPN ゲートウェイなど)、なおかつ種類が異なる別のゲートウェイ (ExpressRoute ゲートウェイなど) を追加する場合は、ゲートウェイ サブネットのサイズを確認してください。 ゲートウェイ サブネットが /27 以上である場合は、以降の手順をスキップして、前のセクションの手順に従って、サイト間 VPN ゲートウェイまたは ExpressRoute ゲートウェイを追加することができます。 ゲートウェイ サブネットが /28 または /29 の場合、まず仮想ネットワーク ゲートウェイを削除してから、ゲートウェイ サブネットのサイズを増やす必要があります。 このセクションの手順では、その方法を説明します。
 
 この構成に使用するコマンドレットは、使い慣れたコマンドレットとは少し異なる場合があります。 必ず、これらの手順で指定されているコマンドレットを使用してください。

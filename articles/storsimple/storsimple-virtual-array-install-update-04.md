@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 02/07/2017
 ms.author: alkohli
 ms.openlocfilehash: b67fcb82bdcc94d7faeceedb7420a869e6578cad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61436394"
 ---
 # <a name="install-update-04-on-your-storsimple-virtual-array"></a>StorSimple Virtual Array への Update 0.4 のインストール
@@ -78,7 +78,7 @@ ms.locfileid: "61436394"
    
     ![デバイスの更新](./media/storsimple-virtual-array-install-update/update1m.png)
 
-2. **[Update file path (更新プログラムのファイル パス)]** に、更新プログラムまたは修正プログラムのファイル名を入力します。 更新プログラムまたは修正プログラムのインストール ファイルがネットワーク共有にある場合は、ファイルを参照することもできます。 **[適用]** をクリックします。
+2. **[Update file path (更新プログラムのファイル パス)]** に、更新プログラムまたは修正プログラムのファイル名を入力します。 更新プログラムまたは修正プログラムのインストール ファイルがネットワーク共有にある場合は、ファイルを参照することもできます。 **[Apply]** をクリックします。
    
     ![デバイスの更新](./media/storsimple-virtual-array-install-update/update2m.png)
 
@@ -106,7 +106,7 @@ Update 0.2 以降を実行している場合は、Azure Portal から更新プ�
 インストールが完了したら (ジョブの状態が 100% と示されます)、StorSimple デバイス マネージャー サービスに移動します。 **[デバイス]** を選択し、このサービスに接続されているデバイスの一覧から、更新するデバイスを選択してクリックします。 **[設定]** ブレードで、 **[管理]** セクションに移動し、 **[デバイスの更新プログラム]** を選択します。 表示されるソフトウェアのバージョンは **10.0.10289.0** です。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)の詳細を確認します。
 

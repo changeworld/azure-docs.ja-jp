@@ -16,10 +16,10 @@ ms.date: 03/28/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa0a26eaeac431ed2c78c5bd938bbbe7dff14e0e
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77057415"
 ---
 # <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>チュートリアル:LinkedIn Elevate を構成し、自動ユーザー プロビジョニングに対応させる

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: e8a91647d7532a9904901c247bb0b4096ffa0a1c
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 9b3af6a6cee4375a110c894b6b72655605ad077d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161700"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80372252"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs - ビッグ データのストリーミング プラットフォームとなるイベント インジェスト サービス
 Azure Event Hubs は、ビッグ データのストリーミング プラットフォームとなるイベント インジェスト サービスです。 1 秒間に何百万ものイベントを受信して処理することができます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。
@@ -49,7 +49,7 @@ Event Hubs は構成または管理のオーバーヘッドがほとんどない
 
 ストリームの取り込み、バッファー、格納、処理をリアルタイムで行い、アクションにつながる分析情報を取得します。 Event Hubs は[パーティション分割されたコンシューマー モデル](event-hubs-scalability.md#partitions)を使用して、複数のアプリケーションがストリームを同時に処理し、処理の速度を制御できるようにします。
 
-長期保有またはマイクロ バッチ処理のために、ほぼリアルタイムでデータを [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) または [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/)  に[キャプチャ](event-hubs-capture-overview.md)します。 この動作は、リアルタイム分析の派生に使用するものと同じストリームで実現できます。 イベント データをキャプチャするための設定に時間はかかりません。 実行に伴う管理コストは生じず、また、Event Hubs の [スループット単位](event-hubs-scalability.md#throughput-units)に応じて自動的にスケーリングされます。 Event Hubs を使用することで、ユーザーはデータ キャプチャではなくデータ処理に専念できます。
+長期保有またはマイクロ バッチ処理のために、ほぼリアルタイムでデータを [Azure Blob Storage](event-hubs-capture-overview.md) または [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/blobs/)[ に](https://azure.microsoft.com/services/data-lake-store/)キャプチャ します。 この動作は、リアルタイム分析の派生に使用するものと同じストリームで実現できます。 イベント データをキャプチャするための設定に時間はかかりません。 実行に伴う管理コストは生じず、また、Event Hubs の [スループット単位](event-hubs-scalability.md#throughput-units)に応じて自動的にスケーリングされます。 Event Hubs を使用することで、ユーザーはデータ キャプチャではなくデータ処理に専念できます。
 
 また、Azure Event Hubs は サーバーレス アーキテクチャ用の [Azure Functions](/azure/azure-functions/) と統合します。
 
@@ -84,7 +84,7 @@ Event Hubs を使い始めるには、以下の**イベントの送受信**の�
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](get-started-java-send-v2.md)
 - [Python](get-started-python-send-v2.md)
-- [JavaScript](get-started-java-send-v2.md)
+- [JavaScript](get-started-node-send-v2.md)
 - [Go](event-hubs-go-get-started-send.md)
 - [C (送信のみ)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (受信のみ)](event-hubs-storm-getstarted-receive.md)

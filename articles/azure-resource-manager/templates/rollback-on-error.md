@@ -3,12 +3,12 @@ title: エラー発生時に正常なデプロイにロールバックする
 description: 失敗したデプロイを、正常なデプロイにロールバックすることを指定します。
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 32ba5485e1980eb819bf5429fbfbb597dfe75c2a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 206c794996f58a4c5b6982c551ae50128ed4f5eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476313"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460145"
 ---
 # <a name="rollback-on-error-to-successful-deployment"></a>エラー発生時に正常なデプロイにロールバックする
 
@@ -47,7 +47,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment02 `
 最後に成功したデプロイを再デプロイするには、`--rollback-on-error` パラメーターをフラグとして追加します。
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --name ExampleDeployment \
   --resource-group ExampleGroup \
   --template-file storage.json \
@@ -58,7 +58,7 @@ az group deployment create \
 特定のデプロイを再デプロイするには、`--rollback-on-error` パラメーターを使用してデプロイの名前を指定します。 指定したデプロイは成功している必要があります。
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --name ExampleDeployment02 \
   --resource-group ExampleGroup \
   --template-file storage.json \

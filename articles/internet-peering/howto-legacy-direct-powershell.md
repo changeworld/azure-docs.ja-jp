@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: ba41f4ad8014ba3e85174b7c32e11394f0068643
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75773886"
 ---
 # <a name="convert-a-legacy-direct-peering-to-azure-resource-using-powershell"></a>PowerShell を使用して、レガシの Direct ピアリングを Azure リソースに変換する
@@ -22,7 +22,7 @@ ms.locfileid: "75773886"
 必要に応じて、[ポータル](howto-legacy-direct-portal.md)を使用してこのガイドを完了することもできます。
 
 ## <a name="before-you-begin"></a>開始する前に
-* 構成を開始する前に、[前提条件](prerequisites.md)に関する記事と[ Direct ピアリングのウォークスルー](walkthrough-direct-all.md)を確認してください。
+* 構成を開始する前に、[前提条件](prerequisites.md)に関する記事と「[Direct ピアリングのチュートリアル](walkthrough-direct-all.md)」を確認してください。
 
 ### <a name="working-with-azure-powershell"></a>Azure PowerShell を使用する
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "75773886"
 ### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Azure アカウントにサインインしてサブスクリプションを選択する
 [!INCLUDE [Account](./includes/account-powershell.md)]
 
-### <a name= get></a>変換のため、レガシの Direct ピアリングを取得する
+### <a name="get-legacy-direct-peering-for-conversion"></a><a name= get></a>変換のため、レガシの Direct ピアリングを取得する
 シアトルをピアリングの場所として、レガシの Direct ピアリングを取得する例を次に示します。
 
 ```powershell
@@ -83,7 +83,7 @@ ProvisioningState          : Succeeded
 
 &nbsp;
 > [!IMPORTANT]
-> レガシのピアリングを Azure リソースに変換する場合は、変更がサポートされないことに注意してください。 [https://github.com/mysqljs/mysql/](&nbsp;)
+> レガシのピアリングを Azure リソースに変換する場合は、変更がサポートされないことに注意してください。 &nbsp;
 
 次のコマンドを使用して、レガシの Direct ピアリングを Azure リソースに変換します。
 

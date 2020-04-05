@@ -16,28 +16,28 @@ ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a852ddc68a6f51e677e5ff2e641ada25f4bf0105
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70101360"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項
-[1114181]: https://launchpad.support.sap.com/#/notes/1114181
-[1409604]: https://launchpad.support.sap.com/#/notes/1409604
-[1597355]: https://launchpad.support.sap.com/#/notes/1597355
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
-[1984787]: https://launchpad.support.sap.com/#/notes/1984787
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
-[2002167]: https://launchpad.support.sap.com/#/notes/2002167
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
-[2039619]: https://launchpad.support.sap.com/#/notes/2039619
-[2069760]: https://launchpad.support.sap.com/#/notes/2069760
-[2171857]: https://launchpad.support.sap.com/#/notes/2171857
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
-[2233094]: https://launchpad.support.sap.com/#/notes/2233094
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
+[1114181]:https://launchpad.support.sap.com/#/notes/1114181
+[1409604]:https://launchpad.support.sap.com/#/notes/1409604
+[1597355]:https://launchpad.support.sap.com/#/notes/1597355
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[1984787]:https://launchpad.support.sap.com/#/notes/1984787
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[2002167]:https://launchpad.support.sap.com/#/notes/2002167
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2039619]:https://launchpad.support.sap.com/#/notes/2039619
+[2069760]:https://launchpad.support.sap.com/#/notes/2069760
+[2171857]:https://launchpad.support.sap.com/#/notes/2171857
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2233094]:https://launchpad.support.sap.com/#/notes/2233094
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
 [deployment-guide]:deployment-guide.md
 [deployment-guide-3]:deployment-guide.md#b3253ee3-d63b-4d74-a49b-185e76c4088e
 [planning-guide]:planning-guide.md
@@ -91,13 +91,13 @@ Azure 上の SAP ワークロードに関するさまざまな記事がありま
 | [1409604] |Virtualization on Windows:Enhanced monitoring (Azure を使用した Linux 上の SAP: 拡張された監視機能) |
 | [2191498] |SAP on Linux with Azure:Enhanced monitoring (Azure を使用した Linux 上の SAP: 拡張された監視機能) |
 | [2039619] |SAP applications on Microsoft Azure using the Oracle database:Supported products and versions (Oracle データベースを使用した Microsoft Azure 上の SAP アプリケーション: サポートされている製品とバージョン) |
-| [2233094] |DB6:SAP applications on Azure using IBM DB2 for Linux, UNIX, and Windows: 追加情報 |
+| [2233094] |DB6:SAP applications on Azure using IBM DB2 for Linux, UNIX, and Windows: 関連情報 |
 | [2243692] |Linux on Microsoft Azure (IaaS) VM:SAP license issues (Microsoft Azure (IaaS) VM 上の Linux: SAP ライセンスの問題) |
 | [1984787] |SUSE LINUX Enterprise Server 12:インストールに関する注記 |
 | [2002167] |Red Hat Enterprise Linux 7.x:インストールとアップグレード |
 | [2069760] |Oracle Linux 7.x SAP installation and upgrade (Oracle Linux 7.x SAP のインストールとアップグレード) |
 | [1597355] |Linux のスワップ領域に関する推奨事項 |
-| [2171857] |Oracle Database 12c: File system support on Linux (Oracle Database 12c: Linux でのファイル システムのサポート) |
+| [2171857] |Oracle Database 12c: File system support on Linux (Oracle Database 11g: Linux でのファイル システムのサポート) |
 | [1114181] |Oracle Database 11g: File system support on Linux (Oracle Database 11g: Linux でのファイル システムのサポート) |
 
 
@@ -108,7 +108,7 @@ Microsoft Azure のアーキテクチャと Microsoft Azure 仮想マシンの�
 一般的に、Windows、Linux、および DBMS のインストールと構成は、オンプレミスに設置する仮想マシンまたはベア メタル マシンと本質的に同じです。 Azure IaaS を使用する場合、アーキテクチャおよびシステム管理の実装の決定については異なる部分があります。 このドキュメントでは、Azure IaaS を使用する場合に知っておくべき特定のアーキテクチャおよびシステム管理の相違について説明します。
 
 
-## <a name="65fa79d6-a85f-47ee-890b-22e794f51a64"></a>RDBMS デプロイ用の VM のストレージ構造
+## <a name="storage-structure-of-a-vm-for-rdbms-deployments"></a><a name="65fa79d6-a85f-47ee-890b-22e794f51a64"></a>RDBMS デプロイ用の VM のストレージ構造
 この章に進むにあたって、[デプロイ ガイド][deployment-guide]の[こちらの章][deployment-guide-3]に記載されている情報を読んで理解しておいてください。 この章を読む前に、別の VM シリーズについて把握し、Standard Storage と Premium Storage の違いについて理解しておく必要があります。 
 
 Azure VM 用の Azure Storage については、以下を参照してください。
@@ -192,7 +192,7 @@ DBMS デプロイ用の Standard Storage を SAP ワークロードと組み合�
 - [Linux 仮想マシンをアンマネージド ディスクからマネージド ディスクに変換する](https://docs.microsoft.com/azure/virtual-machines/linux/convert-unmanaged-to-managed-disks)。
 
 
-### <a name="c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f"></a>VM とデータ ディスクのキャッシュ
+### <a name="caching-for-vms-and-data-disks"></a><a name="c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f"></a>VM とデータ ディスクのキャッシュ
 ディスクを VM にマウントする場合、Azure ストレージに配置されたこれらのディスクと VM 間の I/O トラフィックをキャッシュするかどうかを選択できます。 Standard Storage および Premium Storage は、この種類のキャッシュに 2 つの異なるテクノロジを使用します。
 
 以下に示す推奨事項は、次のような標準 DBMS の I/O 特性を前提にしています。
@@ -206,7 +206,7 @@ DBMS デプロイ用の Standard Storage を SAP ワークロードと組み合�
 Standard Storage で可能なキャッシュの種類は次のとおりです。
 
 * なし
-* 読み取り
+* Read
 * 読み取り/書き込み
 
 一定の決まったパフォーマンスを得られるようにするには、DBMS 関連のデータ ファイル、ログおよび redo ファイル、およびテーブル スペースを含むすべてのディスクに対する Standard Storage のキャッシュを "**なし**" に設定します。 ベース VHD のキャッシュは既定のままにしておくことができます。
@@ -214,7 +214,7 @@ Standard Storage で可能なキャッシュの種類は次のとおりです。
 Premium Storage については、次のキャッシュ オプションが存在します。
 
 * なし
-* 読み取り
+* Read
 * 読み取り/書き込み
 * なし + 書き込みアクセラレータ (Azure M シリーズ VM の場合のみ)
 * 読み取り + 書き込みアクセラレータ (Azure M シリーズ VM の場合のみ)
@@ -244,7 +244,7 @@ Azure VM は、VM がデプロイされた後に非永続ディスクを提供�
 
 
 
-### <a name="10b041ef-c177-498a-93ed-44b3441ab152"></a>Microsoft Azure Storage の回復性
+### <a name="microsoft-azure-storage-resiliency"></a><a name="10b041ef-c177-498a-93ed-44b3441ab152"></a>Microsoft Azure Storage の回復性
 Microsoft Azure Storage は、ベース VHD を、OS のほか、接続されているディスクまたは BLOB と共に、3 つ以上の別個のストレージ ノードに格納します。 この種類のストレージは、ローカル冗長ストレージ (LRS) と呼ばれます。 LRS は、Azure 内のすべての種類のストレージの既定値です。
 
 これ以外にも冗長化の方法があります。 詳細については、「[Azure Storage のレプリケーション](https://docs.microsoft.com/azure/storage/common/storage-redundancy?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)」をご覧ください。
@@ -362,7 +362,7 @@ Azure 仮想マシンの運用環境で SAP アプリケーションを使用す
 ホストのデータを SAPOSCOL および SAP Host Agent に配信するコンポーネントのデプロイと、それらのコンポーネントのライフサイクル管理の詳細については、[デプロイ ガイド][deployment-guide]を参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 特定の DBMS については、以下を参照してください。
 
 - [SAP ワークロードのための SQL Server Azure Virtual Machines DBMS のデプロイ](dbms_guide_sqlserver.md)

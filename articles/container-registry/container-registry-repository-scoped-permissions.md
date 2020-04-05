@@ -4,10 +4,10 @@ description: レジストリ内の特定のリポジトリをスコープとし�
 ms.topic: article
 ms.date: 02/13/2020
 ms.openlocfilehash: 7d390bf4d97561e374c70f184534ac4f98a40611
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77444305"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>リポジトリ スコープのアクセス許可を持つトークンを作成する

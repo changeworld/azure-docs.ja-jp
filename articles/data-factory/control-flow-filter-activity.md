@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.openlocfilehash: 5794a2c754e2082fdf45ad689bdb89ea494541c2
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73679852"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Azure Data Factory のフィルター アクティビティ
@@ -38,14 +38,14 @@ ms.locfileid: "73679852"
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-名前 | `Filter` アクティビティの名前。 | string | はい
+name | `Filter` アクティビティの名前。 | String | はい
 type | **filter** に設定する必要があります。 | String | はい
 condition | 入力のフィルター処理に使用する条件。 | 式 | はい
 items | フィルターを適用する必要がある入力配列。 | 式 | はい
 
 ## <a name="example"></a>例
 
-この例では、パイプラインに 2 つのアクティビティ **Filter** および **ForEach** が含まれています。 フィルター アクティビティは、3 より大きい値を持つ項目の入力配列をフィルター処理するように構成されています。 ForEach アクティビティは、フィルター処理された値を反復処理し、変数 **test** を現在の値に設定します。
+この例では、パイプラインに **Filter** および **ForEach** という 2 つのアクティビティが含まれています。 フィルター アクティビティは、3 より大きい値を持つ項目の入力配列をフィルター処理するように構成されています。 ForEach アクティビティは、フィルター処理された値を反復処理し、変数 **test** を現在の値に設定します。
 
 ```json
 {
@@ -111,13 +111,13 @@ items | フィルターを適用する必要がある入力配列。 | 式 | は
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Data Factory でサポートされている他の制御フロー アクティビティを参照してください。 
 
 - [If Condition アクティビティ](control-flow-if-condition-activity.md)
 - [ExecutePipeline アクティビティ](control-flow-execute-pipeline-activity.md)
 - [ForEach アクティビティ](control-flow-for-each-activity.md)
-- [GetMetadata アクティビティ](control-flow-get-metadata-activity.md)
+- [メタデータの取得アクティビティ](control-flow-get-metadata-activity.md)
 - [ルックアップ アクティビティ](control-flow-lookup-activity.md)
 - [Web アクティビティ](control-flow-web-activity.md)
 - [Until アクティビティ](control-flow-until-activity.md)

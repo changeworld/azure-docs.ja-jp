@@ -11,10 +11,10 @@ ms.workload: big-data
 ms.date: 02/04/2020
 ms.custom: seodec18
 ms.openlocfilehash: 9dfe499a7d6084a23fd71ab98db472befe71fc04
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024366"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>パラメーター化 URL を使用してカスタム ビューを共有する
@@ -77,7 +77,7 @@ Time Series Insights Explorer では、そのエクスペリエンスのビュ�
 | **useSum** | `true` | メジャーの合計を使用することを指定する省略可能なパラメーター。 |
 
 > [!NOTE]
-> 選択された **useSum** メジャーが `Events` である場合、既定で count が選択されます。  
+> 選択された `Events`useSum**メジャーが** である場合、既定で count が選択されます。  
 > `Events` が選択されていない場合、既定で average が選択されます。 |
 
 * `multiChartStack=<true/false>` キー/値ペアでは、グラフの積み重ねが有効になります。

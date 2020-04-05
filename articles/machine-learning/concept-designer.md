@@ -10,10 +10,10 @@ ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
 ms.openlocfilehash: 78a6e7fa8d030185f537136a3a2124d8bc59d808
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79037621"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナー (プレビュー) とは 
@@ -84,7 +84,7 @@ Azure Machine Learning デザイナーを使用すると、対話型キャンバ
 
 利用できる機械学習アルゴリズムのライブラリ内の移動に関するヘルプについては、「[アルゴリズムとモジュールのリファレンスの概要](algorithm-module-reference/module-reference.md)」を参照してください。
 
-## <a name="compute"></a> コンピューティング リソース
+## <a name="compute-resources"></a><a name="compute"></a> コンピューティング リソース
 
 自分のワークスペースからコンピューティング リソースを使用して、パイプラインを実行し、デプロイ済みのモデルをリアルタイム エンドポイントまたはパイプライン エンドポイント (バッチ推論用) としてホストします。 サポートされているコンピューティング ターゲットを次に示します。
 
@@ -135,5 +135,5 @@ Azure Machine Learning デザイナーを使用すると、対話型キャンバ
 ## <a name="next-steps"></a>次のステップ
 
 * 予測分析と機械学習の基本について学習する: [チュートリアル: デザイナーを使用して自動車の価格を予測する](tutorial-designer-automobile-price-train-score.md)
-* 既存の [デザイナーのサンプル](samples-designer.md) を変更して、ニーズに合わせて調整する方法について説明します。
+* 既存の[デザイナーのサンプル](samples-designer.md)を変更して、ニーズに合わせて調整する方法について説明します。
 

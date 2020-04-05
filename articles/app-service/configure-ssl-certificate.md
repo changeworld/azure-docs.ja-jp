@@ -6,16 +6,16 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 310bf168b701ba6c37f71bc968da8e9114458e6f
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 120caf459a7a8ca4e60d5e447a1e4130c0bce389
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425309"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223919"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Azure App Service で SSL 証明書を追加する
 
-[Azure App Service](overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 この記事では、App Service にプライベート証明書またはパブリック証明書を作成、アップロード、またはインポートする方法について説明します。 
+[Azure App Service](overview.md) は、非常にスケーラブルな、自己適用型の Web ホスティング サービスを提供します。 この記事では、App Service にプライベート証明書またはパブリック証明書を作成、アップロード、またはインポートする方法について説明します。 
 
 証明書が App Service アプリまたは[関数アプリ](https://docs.microsoft.com/azure/azure-functions/)に追加されたら、[その証明書を使用してカスタム DNS 名をセキュリティで保護](configure-ssl-bindings.md)したり、[その証明書をアプリケーション コードで使用](configure-ssl-certificate-in-code.md)したりできます。
 
@@ -138,7 +138,7 @@ App Service 証明書を購入するには、「[証明書の注文を開始す�
 |-|-|
 | 名前 | 英数字とダッシュで構成される一意の名前。 |
 | Resource group | 推奨事項として、App Service 証明書と同じリソース グループを選択します。 |
-| Location | App Service アプリと同じ場所を選択します。 |
+| 場所 | App Service アプリと同じ場所を選択します。 |
 | Pricing tier | 詳しくは、[Azure Key Vault の価格の詳細](https://azure.microsoft.com/pricing/details/key-vault/)に関するページをご覧ください。 |
 | アクセス ポリシー| コンテナー リソースに対するアプリケーションと許可されるアクセス権を定義します。 後で「[さまざまなアプリケーションにキー コンテナーへのアクセス許可を付与する](../key-vault/key-vault-group-permissions-for-apps.md)」の手順に従って構成できます。 |
 | 仮想ネットワーク アクセス | 特定の Azure 仮想ネットワークへのコンテナー アクセスを制限します。 後で「[Azure Key Vault のファイアウォールと仮想ネットワークを構成する](../key-vault/key-vault-network-security.md)」の手順に従って構成できます |
@@ -349,7 +349,7 @@ az keyvault secret download \
 
 ### <a name="delete-certificate"></a>証明書の削除 
 
-App Service 証明書の削除は最終的なものであり、元に戻すことができません。 この証明書との App Service のバインディングは無効になります。 誤って削除されないようにするために、Azure により証明書にロックが設定されます。 App Service 証明書を削除するには、最初に証明書の削除ロックを削除する必要があります。
+App Service 証明書の削除は最終的なものであり、元に戻すことができません。 App Service 証明書リソースを削除すると、証明書が失効します。 この証明書との App Service のバインディングは無効になります。 誤って削除されないようにするために、Azure により証明書にロックが設定されます。 App Service 証明書を削除するには、最初に証明書の削除ロックを削除する必要があります。
 
 [[App Service 証明書]](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) ページで証明書を選択し、左側のナビゲーションから **[ロック]** を選択します。
 

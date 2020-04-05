@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/28/2020
 ms.author: spelluru
 ms.openlocfilehash: 3f18425408e6526904db85eae1c3a4db41d11a58
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78198818"
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Azure DevTest Labs でデータ ディスクを仮想マシンにアタッチまたはデタッチする
@@ -35,7 +35,7 @@ ms.locfileid: "78198818"
 ### <a name="attach-a-new-disk"></a>新しいディスクの接続
 Azure DevTest Labs で新しいマネージド データ ディスクを作成して VM にアタッチするには、次の手順に従います。
 
-1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインする
 1. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 1. ラボの一覧で目的のラボを選択します。 
 1. **[自分の仮想マシン]** の一覧で、実行中の VM を選択します。

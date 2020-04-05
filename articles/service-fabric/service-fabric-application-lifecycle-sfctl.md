@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: bikang
 ms.openlocfilehash: 7d361d44c349bc7a6e3c041f78d00ad66182fa15
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589149"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229499"
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Azure Service Fabric CLI (sfctl) を使用した Azure Service Fabric アプリケーションの管理
 

@@ -15,10 +15,10 @@ ms.date: 01/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 0ec3153e5b1bfbe04a079d1cfc44e8e8709784d4
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75931150"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-azure-powershell"></a>Azure RBAC と Azure PowerShell を使用してロールの割り当てを一覧表示する

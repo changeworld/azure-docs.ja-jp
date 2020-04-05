@@ -17,10 +17,10 @@ ms.date: 09/17/2018
 ms.author: ramankum
 ms.custom: mvc,seodec18
 ms.openlocfilehash: 92c752c56c37b854bc793d897c664337cf8bfccd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75463621"
 ---
 # <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>Azure CLI を使用してストレージ アカウントにマネージド ディスクをエクスポート/コピーする

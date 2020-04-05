@@ -16,10 +16,10 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 82b5e1d9753fbb65fd81f24b06016d302457144e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76834095"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Web API を呼び出す Web API:コード構成
@@ -28,7 +28,7 @@ Web API を登録した後は、アプリケーションのコードを構成す
 
 ダウンストリーム Web API を呼び出すように Web API を構成するために使用するコードは、Web API を保護するために使用されるコードの上に構築されます。 詳細については、[保護された Web API: アプリ構成](scenario-protected-web-api-app-configuration.md)に関するページを参照してください。
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 ## <a name="code-subscribed-to-ontokenvalidated"></a>OnTokenValidated をサブスクライブするコード
 
@@ -144,7 +144,7 @@ private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityTok
      }
 }
 ```
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 On-Behalf-Of (OBO) フローは、ダウンストリーム Web API を呼び出すトークンを取得するために使用されます。 このフローでは、Web API は、ユーザーが委任したアクセス許可を持つベアラー トークンをクライアント アプリケーションから受信し、このトークンを別のアクセス トークンと交換してダウンストリーム Web API を呼び出します。
 
@@ -213,7 +213,7 @@ class MsalAuthHelper {
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 On-Behalf-Of (OBO) フローは、ダウンストリーム Web API を呼び出すトークンを取得するために使用されます。 このフローでは、Web API は、ユーザーが委任したアクセス許可を持つベアラー トークンをクライアント アプリケーションから受信し、このトークンを別のアクセス トークンと交換してダウンストリーム Web API を呼び出します。
 

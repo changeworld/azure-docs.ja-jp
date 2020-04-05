@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 01/20/2020
 ms.author: ilayr
 ms.openlocfilehash: d9e23e74cd980ecf44cd04ad2b6f89dc6a4cf868
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76548215"
 ---
 次の表では、Azure Data Explorer クラスターの上限について説明します。

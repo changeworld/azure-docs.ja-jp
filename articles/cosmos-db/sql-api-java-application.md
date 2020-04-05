@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: ramkris
 ms.openlocfilehash: 4a7c307e8a4d4088fe4d2f7800398fda4704219c
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73720837"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>チュートリアル:Azure Cosmos DB および SQL API を使用した Java Web アプリケーションの作成
@@ -39,7 +39,7 @@ ms.locfileid: "73720837"
 > 
 > 
 
-## <a id="Prerequisites"></a>この Java Web アプリケーション チュートリアルの前提条件
+## <a name="prerequisites-for-this-java-web-application-tutorial"></a><a id="Prerequisites"></a>この Java Web アプリケーション チュートリアルの前提条件
 このアプリケーション開発チュートリアルを読み始める前に、次の項目を用意する必要があります。
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
@@ -52,14 +52,14 @@ ms.locfileid: "73720837"
 
 これらのツールを初めてインストールする場合は、coreservlets.com の「[Tutorial: Installing TomCat7 and Using it with Eclipse](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html)」 (チュートリアル: TomCat7 のインストールと Eclipse での使用) の「Quick Start」 (クイック スタート) セクションで、インストール プロセスの手順を参照してください。
 
-## <a id="CreateDB"></a>手順 1:Azure Cosmos DB アカウントを作成する
-まず最初に、Azure Cosmos DB アカウントを作成します。 アカウントが既にある場合や、このチュートリアルで Azure Cosmos DB Emulator を使用する場合は、「[手順 2: Java JSP アプリケーションを作成する](#CreateJSP)」に進むことができます。
+## <a name="step-1-create-an-azure-cosmos-db-account"></a><a id="CreateDB"></a>手順 1:Azure Cosmos DB アカウントを作成する
+まず最初に、Azure Cosmos DB アカウントを作成します。 アカウントが既にある場合、またはこのチュートリアルで Azure Cosmos DB Emulator を使用する場合は、「[手順 2: Java JSP アプリケーションを作成する](#CreateJSP)」に進むことができます。
 
 [!INCLUDE [create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 [!INCLUDE [keys](../../includes/cosmos-db-keys.md)]
 
-## <a id="CreateJSP"></a>手順 2:Java JSP アプリケーションを作成する
+## <a name="step-2-create-the-java-jsp-application"></a><a id="CreateJSP"></a>手順 2:Java JSP アプリケーションを作成する
 JSP アプリケーションを作成するには:
 
 1. 最初に、Java プロジェクトを作成します。 Eclipse を起動し、 **[File]** 、 **[New]** 、 **[Dynamic Web Project]** の順にクリックします。 使用可能なプロジェクトとして **[Dynamic Web Project]** が表示されない場合は、 **[File]** 、 **[New]** 、 **[Project]** 、の順にクリックし、 **[Web]** を展開します。さらに、 **[Dynamic Web Project]** をクリックし、 **[Next]** をクリックします。
@@ -81,7 +81,7 @@ JSP アプリケーションを作成するには:
    
     ![Hello World – Java アプリケーションのチュートリアル](./media/sql-api-java-application/image12.png)
 
-## <a id="InstallSDK"></a>手順 3:SQL Java SDK をインストールする
+## <a name="step-3-install-the-sql-java-sdk"></a><a id="InstallSDK"></a>手順 3:SQL Java SDK をインストールする
 SQL Java SDK とその依存関係をインストールするには、[Apache Maven](https://maven.apache.org/) を使うのが最も簡単です。
 
 そのためには、次の手順に従ってプロジェクトを maven プロジェクトに変換する必要があります。
@@ -109,7 +109,7 @@ SQL Java SDK とその依存関係をインストールするには、[Apache Ma
 6. **[OK]** をクリックします。Maven によって SQL Java SDK がインストールされます。
 7. pom.xml ファイルを保存します。
 
-## <a id="UseService"></a>手順 4:Java アプリケーションで Azure Cosmos DB サービスを使用する
+## <a name="step-4-using-the-azure-cosmos-db-service-in-a-java-application"></a><a id="UseService"></a>手順 4:Java アプリケーションで Azure Cosmos DB サービスを使用する
 1. まず、TodoItem.java で TodoItem オブジェクトを定義します。
    
         @Data
@@ -343,7 +343,7 @@ SQL Java SDK とその依存関係をインストールするには、[Apache Ma
             return true;
         }
 
-## <a id="Wire"></a>手順 5:Java アプリケーション開発プロジェクトの残りの部分を接続する
+## <a name="step-5-wiring-the-rest-of-the-of-java-application-development-project-together"></a><a id="Wire"></a>手順 5: Java アプリケーション開発プロジェクトの残りの部分を接続する
 これで、楽しい作業が終わりました。残っているのは簡単なユーザー インターフェイスの作成と DAO への連結です。
 
 1. まず、DAO を呼び出すためのコントローラーの作成から始めましょう。
@@ -715,7 +715,7 @@ SQL Java SDK とその依存関係をインストールするには、[Apache Ma
 5. これで完成です。 後はアプリケーションをテストするだけです。 アプリケーションをローカルで実行し、項目の名前とカテゴリを入力して、 **[Add Task]** をクリックして、いくつかの Todo 項目を追加します。
 6. 項目が表示されたら、チェック ボックスを切り替え、 **[Update Tasks]** をクリックすることで、その項目が完了しているかどうかを確認できます。
 
-## <a id="Deploy"></a>手順 6:Azure Web Sites に Java アプリケーションをデプロイする
+## <a name="step-6-deploy-your-java-application-to-azure-web-sites"></a><a id="Deploy"></a>手順 6: Azure Web Sites に Java アプリケーションをデプロイする
 Azure Web Sites での Java アプリケーションのデプロイは簡単です。アプリケーションを WAR ファイルとしてエクスポートし、ソース管理 (例: Git) または FTP を使用してアップロードするだけです。
 
 1. アプリケーションを WAR ファイルとしてエクスポートするには、**Project Explorer** でプロジェクトを右クリックし、 **[Export]\(エクスポート\)** 、 **[WAR File]\(WAR ファイル\)** の順にクリックします。
@@ -729,7 +729,7 @@ Azure Web Sites での Java アプリケーションのデプロイは簡単で�
     WAR ファイルを webapps ディレクトリにアップロードすると、ランタイム環境により WAR ファイルの追加が検出され、WAR ファイルが自動的に読み込まれます。
 4. 完成した製品を表示するには、`http://YOUR\_SITE\_NAME.azurewebsites.net/azure-java-sample/` に移動し、タスクの追加を開始します。
 
-## <a id="GetProject"></a>GitHub からのプロジェクトの入手
+## <a name="get-the-project-from-github"></a><a id="GetProject"></a>GitHub からのプロジェクトの入手
 このチュートリアルのサンプルはすべて、GitHub の [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) プロジェクトに含まれています。 todo プロジェクトを Eclipse にインポートするには、「 [前提条件](#Prerequisites) 」セクションに記載されているソフトウェアおよびリソースがあることを確認したうえで、以下の手順に従います。
 
 1. [Project Lombok](https://projectlombok.org/)をインストールします。 Lombok は、プロジェクトのコンストラクター、getter、setter の生成に使用します。 lombok.jar ファイルをダウンロードしたら、ファイルをダブルクリックしてコマンド ラインからインストールします。

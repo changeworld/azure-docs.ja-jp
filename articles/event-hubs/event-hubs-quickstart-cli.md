@@ -11,13 +11,13 @@ ms.custom: seodec18
 ms.date: 02/11/2020
 ms.author: spelluru
 ms.openlocfilehash: 92fd7d15ee5bc54cc41b78f4ba0d078d3f8fac6b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77162635"
 ---
-# <a name="quickstart-create-an-event-hub-using-azure-cli"></a>クイック スタート:Azure CLI を使用したイベント ハブの作成
+# <a name="quickstart-create-an-event-hub-using-azure-cli"></a>クイック スタート: Azure CLI を使用したイベント ハブの作成
 
 Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
 

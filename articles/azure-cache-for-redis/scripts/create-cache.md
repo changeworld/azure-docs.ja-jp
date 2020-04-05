@@ -9,10 +9,10 @@ ms.topic: sample
 ms.date: 08/30/2017
 ms.author: yegu
 ms.openlocfilehash: 79b749c0d02a21c1225ee0d046d73ed3fdd98904
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75411316"
 ---
 # <a name="create-an-azure-cache-for-redis"></a>Azure Cache for Redis を作成する

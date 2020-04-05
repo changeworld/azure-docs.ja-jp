@@ -12,10 +12,10 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: anandsub
 ms.openlocfilehash: be2e389a0f103983a566a3f74d201e5589d84586
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74926734"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Azure Databricks で Python アクティビティを実行してデータを変換する
@@ -63,7 +63,7 @@ Databricks Python アクティビティのサンプルの JSON 定義を次に�
 
 |プロパティ|説明|必須|
 |---|---|---|
-|名前|パイプラインのアクティビティの名前。|はい|
+|name|パイプラインのアクティビティの名前。|はい|
 |description|アクティビティの動作を説明するテキスト。|いいえ|
 |type|Databricks Python アクティビティでは、アクティビティの種類は DatabricksSparkPython です。|はい|
 |linkedServiceName|Python アクティビティが実行されている Databricks リンク サービスの名前です。 このリンクされたサービスの詳細については、 [コンピューティングのリンクされたサービス](compute-linked-services.md) に関する記事をご覧ください。|はい|
@@ -111,7 +111,7 @@ Databricks Python アクティビティのサンプルの JSON 定義を次に�
 
 ## <a name="how-to-upload-a-library-in-databricks"></a>Databricks でライブラリをアップロードする方法
 
-#### <a name="using-databricks-workspace-uihttpsdocsazuredatabricksnetuser-guidelibrarieshtmlcreate-a-library"></a>[Databricks ワークスペース UI の使用](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)。
+#### <a name="using-databricks-workspace-ui"></a>[Databricks ワークスペース UI の使用](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)
 
 UI を使用して追加されたライブラリの dbfs パスを取得するには、[Databricks CLI (インストール)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli) を使用します。 
 
@@ -119,6 +119,6 @@ UI を使用する場合、通常、Jar ライブラリは dbfs:/FileStore/jars 
 
 
 
-#### <a name="copy-library-using-databricks-clihttpsdocsazuredatabricksnetuser-guidedev-toolsdatabricks-clihtmlcopy-a-file-to-dbfs"></a>[Databricks CLI を使用したライブラリのコピー](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
+#### <a name="copy-library-using-databricks-cli"></a>[Databricks CLI を使用したライブラリのコピー](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
 
 例: *databricks fs cp SparkPi-assembly-0.1.jar dbfs:/FileStore/jars*

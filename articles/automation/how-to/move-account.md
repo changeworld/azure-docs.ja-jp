@@ -10,10 +10,10 @@ ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 1aa759a2984764169eb28935e095d0f7c0f90c08
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75969840"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Azure Automation アカウントを別のサブスクリプションに移動する

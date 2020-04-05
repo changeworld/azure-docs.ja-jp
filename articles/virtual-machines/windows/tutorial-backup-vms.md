@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 603bffe3d28214dbdcd51888925c3c653d0759e7
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 89ed0bad2729a9e0983d4ef7f8a53faa4f5426ac
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74068181"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79415653"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>チュートリアル:Azure 内の Windows 仮想マシンのファイルをバックアップおよび復元する
 
@@ -33,7 +33,7 @@ ms.locfileid: "74068181"
 
 ## <a name="backup-overview"></a>Backup の概要
 
-Azure Backup サービスによってバックアップが開始されると、バックアップ拡張機能がトリガーされて特定時点のスナップショットが作成されます。 Azure Backup サービスは、 _VMSnapshot_ 拡張機能を利用します｡ この拡張機能は、VM の初回バックアップ中、VM が実行されている場合にインストールされます。 VM が実行されていない場合、Backup サービスは基盤となるストレージのスナップショットを取ります (VM が停止している間はアプリケーション書き込みが行われないため)。
+Azure Backup サービスによってバックアップが開始されると、バックアップ拡張機能がトリガーされて特定時点のスナップショットが作成されます。 Azure Backup サービスは、[VMSnapshot 拡張機能](https://docs.microsoft.com/azure/virtual-machines/extensions/vmsnapshot-windows)を利用します。 この拡張機能は、VM の初回バックアップ中、VM が実行されている場合にインストールされます。 VM が実行されていない場合、Backup サービスは基盤となるストレージのスナップショットを取ります (VM が停止している間はアプリケーション書き込みが行われないため)。
 
 Windows VM のスナップショットを取るとき、Backup サービスは Volume Shadow Copy Service (VSS) と連携して仮想マシンのディスクの一貫したスナップショットを取得します。 Azure Backup サービスがスナップショットを取ると、データはバックアップコンテナーに転送されます。 効率を最大に高めるために、前回のバックアップ以降に変更されたデータ ブロックが特定され、そのデータのみが転送されます。
 
@@ -42,7 +42,7 @@ Windows VM のスナップショットを取るとき、Backup サービスは V
 ## <a name="create-a-backup"></a>バックアップの作成
 Recovery Services コンテナーに対するバックアップを 1 日 1 回の単純なスケジュールで作成します。 
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 1. 左側のメニューから **[仮想マシン]** を選択します。 
 1. バックアップする VM を一覧から選択します。
 1. その VM のブレードの **[操作]** セクションで **[バックアップ]** をクリックします。 **[バックアップの有効化]** ブレードが開きます。
@@ -91,7 +91,7 @@ Recovery Services コンテナーに対するバックアップを 1 日 1 回�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

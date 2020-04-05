@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 758ac13530752df481d27e7e253f025f5c8d6430
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302204"
 ---
 # <a name="replace-azure-cosmos-db"></a>REPLACE (Azure Cosmos DB)

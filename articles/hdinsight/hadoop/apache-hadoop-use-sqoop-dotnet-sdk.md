@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/14/2020
 ms.openlocfilehash: f0f767273a40bc91b1d49477c896b0b157623106
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76157068"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>HDInsight で .NET SDK for Apache Hadoop を使用して Apache Sqoop ジョブを実行する
@@ -135,7 +135,7 @@ SQL Server から Azure Storage へ。 この例は、上記のエクスポー�
 
 Linux ベースの HDInsight には次の制限事項があります。
 
-* 一括エクスポート:Microsoft SQL Server または Azure SQL Database にデータをエクスポートするために使用する Sqoop コネクタは、一括挿入を現在サポートしていません。
+* 一括エクスポート:Microsoft SQL Server または Azure SQL Database にデータをエクスポートするために使用する Sqoop コネクタでは、一括挿入は現在サポートされていません。
 
 * バッチ処理:`-batch` スイッチを使用すると、Sqoop では挿入操作がバッチ処理されず、複数の挿入が実行されます。
 

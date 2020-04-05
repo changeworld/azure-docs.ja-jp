@@ -11,10 +11,10 @@ ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 4c3b3318e941723ec333597c7e4b3e48710152d1
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78397806"
 ---
 # <a name="claimsschema"></a>ClaimsSchema

@@ -11,11 +11,11 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: d86858f8d7f09628457b718ca3c481934d720081
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612631"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232879"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>データ サイエンス仮想マシンのデータ取り込みツール
 

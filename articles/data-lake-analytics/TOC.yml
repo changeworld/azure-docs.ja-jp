@@ -4,11 +4,11 @@
   items:
     - name: Data Lake Analytics とは
       href: data-lake-analytics-overview.md
-- name: 作業開始
+- name: はじめに
   items:
-    - name: Azure ポータル
+    - name: Azure portal
       href: data-lake-analytics-get-started-portal.md
-    - name: Visual Studio
+    - name: "Visual\_Studio"
       href: data-lake-analytics-data-lake-tools-get-started.md
     - name: Visual Studio Code
       href: data-lake-analytics-data-lake-tools-for-vscode.md
@@ -20,7 +20,7 @@
   items:
     - name: Data Lake Analytics の管理
       items:
-        - name: Azure ポータル
+        - name: Azure portal
           href: data-lake-analytics-manage-use-portal.md
         - name: コマンド ライン
           items:
@@ -58,7 +58,7 @@
               href: data-lake-analytics-u-sql-get-started.md
             - name: 言語のリファレンス
               href: 'https://msdn.microsoft.com/library/azure/mt591959'
-            - name: カタログ
+            - name: Catalog
               href: data-lake-analytics-u-sql-catalog.md
             - name: ユーザー定義演算子
               href: data-lake-analytics-u-sql-develop-user-defined-operators.md
@@ -70,9 +70,9 @@
               href: data-lake-analytics-u-sql-cognitive.md
             - name: プログラミング ガイド
               href: data-lake-analytics-u-sql-programmability-guide.md
-        - name: Visual Studio
+        - name: "Visual\_Studio"
           items:
-            - name: Install
+            - name: インストール
               href: data-lake-analytics-data-lake-tools-install.md
             - name: ローカルの実行
               href: data-lake-analytics-data-lake-tools-local-run.md

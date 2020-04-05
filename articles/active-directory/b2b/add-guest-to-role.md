@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 703e68994a9d156ccf3e74a5df4a2f4ee2f062cd
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74268548"
 ---
 # <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Azure Active Directory テナントでパートナー組織からユーザーにアクセス許可を付与する
@@ -35,7 +35,7 @@ Azure Active Directory (Azure AD) B2B コラボレーション ユーザーは�
 
 ![制限付き管理者ロールを示すスクリーンショット](./media/add-guest-to-role/limited-admin-role.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure AD B2B コラボレーションとは](what-is-b2b.md)
 - [B2B コラボレーション ユーザーのプロパティ](user-properties.md)

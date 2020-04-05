@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: bba459be4408f4a4bc438bb33b0570a91e84f2cd
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75563362"
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Service Fabric のメトリックと負荷の最適化

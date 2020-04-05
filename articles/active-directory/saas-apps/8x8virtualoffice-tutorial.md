@@ -16,10 +16,10 @@ ms.date: 02/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c598222978a1c831be6f5e9db9eb87b2d6b6b96
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78968647"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-8x8"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と 8x8 の統合

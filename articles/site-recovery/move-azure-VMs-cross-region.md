@@ -9,10 +9,10 @@ ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
 ms.openlocfilehash: dc37cb6fa05a2be56de7bf5536d7274190257d85
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78303921"
 ---
 # <a name="move-azure-vms-to-another-azure-region"></a>Azure VM を別の Azure リージョンに移動する

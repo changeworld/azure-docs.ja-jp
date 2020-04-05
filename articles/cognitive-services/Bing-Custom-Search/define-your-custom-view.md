@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.openlocfilehash: c14376cc80373371ec5fcb8f22a00584a6b2f714
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072815"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218885"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Bing Custom Search エクスペリエンスを構成する
 
@@ -131,8 +131,8 @@ Web ページを一番上にピン留めする方法は 2 つあります。
 
 | 値 | 説明                                                                          |
 |---------------|----------------------------------------------------------------------------------|
-| 次の値で始まる | ユーザーのクエリ文字列がピンのクエリ文字列で始まる場合、ピンは一致します。 |
-| 次の値で終わる   | ユーザーのクエリ文字列がピンのクエリ文字列で終わる場合、ピンは一致します。  |
+| 次で始まる | ユーザーのクエリ文字列がピンのクエリ文字列で始まる場合、ピンは一致します。 |
+| [次で終わる]   | ユーザーのクエリ文字列がピンのクエリ文字列で終わる場合、ピンは一致します。  |
 | Contains    | ユーザーのクエリ文字列にピンのクエリ文字列が含まれる場合、ピンは一致します。   |
 
 
@@ -155,7 +155,7 @@ Web ページを一番上にピン留めする方法は 2 つあります。
 - 昇格および降格を行うと、2 回のランク付け調整としてカウントされます。
 - カスタム検索インスタンスごとに、設定できるピンの最大数は 200 に制限されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [カスタム検索の呼び出し](./search-your-custom-view.md)
 - [ホストされている UI エクスペリエンスの構成](./hosted-ui.md)

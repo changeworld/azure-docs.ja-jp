@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: alzam
 ms.openlocfilehash: f4092f651a3058c8a2e738c81d9db7e296386bfa
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78402901"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>P2S OpenVPN プロトコル接続用の Azure Active Directory テナントを作成する
@@ -23,7 +23,7 @@ VNet に接続する際には、証明書ベースの認証か、 RADIUS 認証�
 >
 
 
-## <a name="tenant"></a>1.Azure AD テナントを確認する
+## <a name="1-verify-azure-ad-tenant"></a><a name="tenant"></a>1.Azure AD テナントを確認する
 
 Azure AD テナントがあることを確認します。 Azure AD テナントがない場合、[新しいテナントの作成](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)に関する記事の手順に従って作成できます。
 
@@ -34,7 +34,7 @@ Azure AD テナントがあることを確認します。 Azure AD テナント�
 
    ![新しい Azure AD テナント](./media/openvpn-create-azure-ad-tenant/newtenant.png)
 
-## <a name="users"></a>2.Azure AD テナント ユーザーを作成する
+## <a name="2-create-azure-ad-tenant-users"></a><a name="users"></a>2.Azure AD テナント ユーザーを作成する
 
 Azure AD テナントには、全体管理者アカウントとマスター ユーザー アカウントが必要です。 マスター ユーザー アカウントは、マスター埋め込みアカウント (サービス アカウント) として使用されます。 Azure AD テナント ユーザー アカウントを作成する際には、作成するユーザーの種類に応じてディレクトリ ロールを調整します。
 
@@ -43,7 +43,7 @@ Azure AD テナントには、全体管理者アカウントとマスター ユ�
 * 全体管理者
 * User
 
-## <a name="enable-authentication"></a>3.VPN ゲートウェイでの Azure AD 認証を有効にする
+## <a name="3-enable-azure-ad-authentication-on-the-vpn-gateway"></a><a name="enable-authentication"></a>3.VPN ゲートウェイでの Azure AD 認証を有効にする
 
 1. 認証に使用するディレクトリのディレクトリ ID を特定します。 これは、[Active Directory] ページの [プロパティ] セクションに表示されます。
 

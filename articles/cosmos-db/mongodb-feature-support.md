@@ -8,10 +8,10 @@ ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
 ms.openlocfilehash: 12e5dba0339b6092564e5d35c1a6250b0c47f50f
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "72755001"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>Azure Cosmos DB の MongoDB (3.2 バージョン) 用 API: サポートされる機能と構文
@@ -38,7 +38,7 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 ### <a name="query-and-write-operation-commands"></a>クエリおよび書き込み操作コマンド
 
 - delete
-- find
+- 検索
 - findAndModify
 - getLastError
 - getMore
@@ -56,7 +56,7 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 - dropDatabase
 - listCollections
 - drop
-- create
+- 作成
 - filemd5
 - createIndexes
 - listIndexes
@@ -81,7 +81,7 @@ Cosmos DB では、パブリック プレビューで MongoDB 3.2 の集計パ�
 
 ### <a name="aggregation-commands"></a>集計コマンド
 
-- aggregate
+- 集計 (aggregate)
 - count
 - distinct
 
@@ -205,7 +205,7 @@ Cosmos DB では、パブリック プレビューで MongoDB 3.2 の集計パ�
 - $push
 - $addToSet
 
-## <a name="operators"></a>演算子
+## <a name="operators"></a>オペレーター
 
 以下の演算子が、対応するそれらの使用例でサポートされています。 下記のクエリで使用されているこのサンプル ドキュメントを考慮に入れてください。
 
@@ -228,7 +228,7 @@ Cosmos DB では、パブリック プレビューで MongoDB 3.2 の集計パ�
 }
 ```
 
-operator | 例 |
+演算子 | 例 |
 --- | --- |
 $eq | `{ "Volcano Name": { $eq: "Rainier" } }` |  | -
 $gt | `{ "Elevation": { $gt: 4000 } }` |  | -
@@ -247,7 +247,7 @@ $type | `{ "Status": { $type: "string" } }`|  | -
 $mod | `{ "Elevation": { $mod: [ 4, 0 ] } }` |  | -
 $regex | `{ "Volcano Name": { $regex: "^Rain"} }`|  | -
 
-### <a name="notes"></a>メモ
+### <a name="notes"></a>Notes
 
 $regex クエリでは、左固定の式でインデックス検索が可能です。 ただし、'i' 修飾子 (大文字と小文字の区別なし) や 'm' 修飾子 (複数行) を使用すると、すべての式でコレクション スキャンが発生します。
 '$' または '|' を含める必要がある場合、2 つ (以上) の正規表現クエリを作成することをお勧めします。
@@ -288,7 +288,7 @@ $regex クエリでは、左固定の式でインデックス検索が可能で�
 
 ### <a name="geospatial-operators"></a>地理空間演算子
 
-operator | 例 | |
+演算子 | 例 | |
 --- | --- | --- |
 $geoWithin | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | はい |
 $geoIntersects |  ```{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | はい |
@@ -308,7 +308,7 @@ $polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon",
 
 ## <a name="additional-operators"></a>その他の演算子
 
-operator | 例 | メモ
+演算子 | 例 | Notes
 --- | --- | --- |
 $all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` |
 $elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |
@@ -326,7 +326,7 @@ $text |  | サポートされていません。 代わりに $regex を使用し
 
 #### <a name="cursor-methods"></a>カーソル メソッド
 
-方法 | 例 | メモ
+Method | 例 | Notes
 --- | --- | --- |
 cursor.sort() | ```cursor.sort({ "Elevation": -1 })``` | 並べ替えキーを持たないドキュメントは返されない
 
@@ -356,10 +356,10 @@ Cosmos DB では、最下位のレイヤーで、自動のネイティブ レプ
 
 Azure Cosmos DB は、自動のサーバー側シャーディングをサポートしています。 シャードの作成、配置、バランシングが自動的に管理されます。 Azure Cosmos DB では、手動のシャーディング コマンドはサポートされていません。つまり、shardCollection、addShard、balancerStart、moveChunk などのコマンドを呼び出す必要はありません。必要なことは、コンテナーの作成時やデータの照会時にシャード キーを指定するだけです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure Cosmos DB の MongoDB 用 API と共に [Studio 3T を使用する](mongodb-mongochef.md)方法を学習します。
-- Azure Cosmos DB の MongoDB 用 API と共に [Robo 3T を使用する](mongodb-robomongo.md)方法を学習します。
-- Azure Cosmos DB の MongoDB 用 API が使用されている MongoDB の[サンプル](mongodb-samples.md)を調べます。
+- Azure Cosmos DB の MongoDB 用 API と共に [Robo 3T を使用する](mongodb-robomongo.md)方法を学びます。
+- Azure Cosmos DB の MongoDB 用 API を使用した MongoDB の[サンプル](mongodb-samples.md)を調査します。
 
-<sup>注:この記事では、MongoDB データベースとのワイヤ プロトコルの互換性を提供する Azure Cosmos DB の機能について説明します。Microsoft は、このサービスを提供するための MongoDB データベースの運営は行いません。Azure Cosmos DB は MongoDB, Inc. には所属していません。</sup>
+<sup>注意事項: この記事では、MongoDB データベースとのワイヤ プロトコルの互換性を提供する Azure Cosmos DB の機能について説明します。Microsoft は、このサービスを提供するための MongoDB データベースの運営は行いません。Azure Cosmos DB は MongoDB, Inc. には所属していません。</sup>

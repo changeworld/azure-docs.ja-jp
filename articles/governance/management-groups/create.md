@@ -4,10 +4,10 @@ description: ポータル、Azure PowerShell、および Azure CLI を使用し�
 ms.date: 12/18/2019
 ms.topic: conceptual
 ms.openlocfilehash: d9bb2e82404c0188094298f40da3346ee132eec3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75436528"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>リソースの整理と管理のための管理グループを作成する

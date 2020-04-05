@@ -5,10 +5,10 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 7/5/2019
 ms.openlocfilehash: 993b0e8cc5b1ec482b2f6041dfc970dc7e7409dd
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68229291"
 ---
 [Cognitive Services Vision Containers Request フォーム](https://aka.ms/VisionContainersPreview)に入力して送信し、コンテナーへのアクセスを要求する必要があります。 このフォームでは、ユーザー、会社、コンテナーを使用するユーザー シナリオに関する情報が要求されます。 フォームを送信すると、Azure Cognitive Services チームがそれをレビューして、プライベート コンテナー レジストリにアクセスするための条件を満たしていることを確認します。

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 10/08/2019
-ms.openlocfilehash: f256adfd1fc970512cad5fb93ec235fc27a50373
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.custom: hdinsightactive
+ms.date: 03/20/2020
+ms.openlocfilehash: 2885fccd95d09149ae496b80a658f34e5b697d0b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817751"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80064493"
 ---
 # <a name="tutorial-use-apache-kafka-streams-api-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で Apache Kafka Streams API を使用する
 
@@ -166,6 +166,7 @@ public class Stream
     ```
 
 4. 大文字と小文字が正しく区別されたクラスター名を抽出します。 クラスターの作成方法によっては、クラスター名の実際の大文字小文字の区別が予想と異なる場合があります。 このコマンドは、実際の大文字小文字の区別を取得し、変数に格納します。 次のコマンドを入力します。
+
     ```bash
     export clusterName=$(curl -u admin:$password -sS -G "http://headnodehost:8080/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
     ```
@@ -173,7 +174,7 @@ public class Stream
     > [!Note]  
     > クラスターの外部からこのプロセスを実行している場合は、クラスター名を格納するための別の手順があります。 Azure portal からクラスター名を小文字で取得します。 その後、次のコマンドの `<clustername>` をクラスター名に置き換えて、`export clusterName='<clustername>'` を実行します。  
 
-5. Kafka ブローカー ホストと Apache Zookeeper ホストを取得するには、次のコマンドを使用します。 プロンプトが表示されたら、クラスターのログイン (管理者) アカウントのパスワードを入力します。 パスワードを 2 回入力するように求められます。
+5. Kafka ブローカー ホストと Apache Zookeeper ホストを取得するには、次のコマンドを使用します。 プロンプトが表示されたら、クラスターのログイン (管理者) アカウントのパスワードを入力します。
 
     ```bash
     export KAFKAZKHOSTS=$(curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2);
@@ -181,8 +182,8 @@ public class Stream
     export KAFKABROKERS=$(curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2);
     ```
 
-> [!Note]  
-> これらのコマンドには、Ambari のアクセスが必要です。 クラスターが NSG の背後にある場合は、Ambari にアクセスできるコンピューターからこれらのコマンドを実行します。 
+    > [!Note]  
+    > これらのコマンドには、Ambari のアクセスが必要です。 クラスターが NSG の背後にある場合は、Ambari にアクセスできるコンピューターからこれらのコマンドを実行します。
 
 6. ストリーミング操作で使用するトピックを作成するには、次のコマンドを使用します。
 
@@ -257,7 +258,7 @@ public class Stream
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --delete --topic wordcount-example-Counts-changelog --zookeeper $KAFKAZKHOSTS
     ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルで作成したリソースをクリーンアップするために、リソース グループを削除することができます。 リソース グループを削除すると、関連付けられている HDInsight クラスター、およびリソース グループに関連付けられているその他のリソースも削除されます。
 
@@ -267,7 +268,7 @@ Azure Portal を使用してリソース グループを削除するには:
 2. 削除するリソース グループを見つけて、一覧の右側にある __[詳細]__ ボタン ([...]) を右クリックします。
 3. __[リソース グループの削除]__ を選択し、確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このドキュメントでは、HDInsight 上の Kafka で Apache Kafka Streams API を使用する方法について説明しました。 次の各ドキュメントを参考に、Kafka の使用の詳細を確認してください。
 

@@ -14,10 +14,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8b872cc30ae66e83274f189138dad6d609e3f536
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74927047"
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Azure Data Factory コピー ウィザードでデータを簡単にコピーまたは移動する
@@ -91,6 +91,6 @@ Azure Data Factory コピー ウィザードを使用すると、通常エンド
 
 ![スケジュール プロパティ](./media/data-factory-copy-wizard/scheduling-properties.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Data Factory コピー ウィザードを使用して、コピー アクティビティを含むパイプラインを作成する簡単なチュートリアルについては、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。
 

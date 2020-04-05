@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 4e3e430874f9d5b64f717b6ebb1cacb0eae46b1f
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176762"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224847"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Azure API Management のユーザー プロファイル テンプレート
 Azure API Management には、開発者ポータルの各ページの内容を、内容を構成するテンプレート セットを使用してカスタマイズする機能があります。 [DotLiquid](http://dotliquidmarkup.org/) 構文、好みのエディター ([DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)など)、および用意されているローカライズされた[文字列リソース](api-management-template-resources.md#strings)、[グリフ リソース](api-management-template-resources.md#glyphs)、および[ページ コントロール](api-management-page-controls.md)のセットをテンプレートで使用して、表示されるページの内容を自由に構成できます。  
@@ -40,7 +40,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="Profile"></a> プロファイル  
+##  <a name="profile"></a><a name="Profile"></a> プロファイル  
  **プロファイル** テンプレートを使用して、開発者ポータルのユーザー プロファイル ページの[ユーザー プロファイル] セクションをカスタマイズできます。  
   
  ![ユーザー プロファイル ページ](./media/api-management-user-profile-templates/APIM-User-Profile-Page.png "APIM ユーザー プロファイル ページ")  
@@ -116,8 +116,8 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 |`applications`|[アプリケーション](api-management-template-data-model-reference.md#Application) エンティティのコレクション。|現在のユーザーのアプリケーション。|  
 |`changePasswordUrl`|string|現在のユーザーのパスワードを変更するための相対 URL。|  
 |`changeNameOrEmailUrl`|string|現在のユーザーの電子メール アドレスと名前を変更するための相対 URL。|  
-|`canChangePassword`|ブール値|現在のユーザーがパスワードを変更できるかどうか。|  
-|`isSystemUser`|ブール値|現在のユーザーが、いずれかの組み込み[グループ](api-management-key-concepts.md#groups)のメンバーであるかどうか。|  
+|`canChangePassword`|boolean|現在のユーザーがパスワードを変更できるかどうか。|  
+|`isSystemUser`|boolean|現在のユーザーが、いずれかの組み込み[グループ](api-management-key-concepts.md#groups)のメンバーであるかどうか。|  
   
 ### <a name="sample-template-data"></a>サンプル テンプレート データ  
   
@@ -185,7 +185,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }  
 ```  
   
-##  <a name="Subscriptions"></a>サブスクリプション  
+##  <a name="subscriptions"></a><a name="Subscriptions"></a>サブスクリプション  
  **サブスクリプション** テンプレートを使用して、開発者ポータルのユーザー プロファイル ページの [サブスクリプション] セクションをカスタマイズできます。  
   
  ![ユーザー サブスクリプション ページ](./media/api-management-user-profile-templates/APIM-User-Subscription-Page.png "APIM ユーザー サブスクリプション ページ")  
@@ -337,8 +337,8 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 |`applications`|[アプリケーション](api-management-template-data-model-reference.md#Application) エンティティのコレクション。|現在のユーザーのアプリケーション。|  
 |`changePasswordUrl`|string|現在のユーザーのパスワードを変更するための相対 URL。|  
 |`changeNameOrEmailUrl`|string|現在のユーザーの電子メール アドレスと名前を変更するための相対 URL。|  
-|`canChangePassword`|ブール値|現在のユーザーがパスワードを変更できるかどうか。|  
-|`isSystemUser`|ブール値|現在のユーザーが、いずれかの組み込み[グループ](api-management-key-concepts.md#groups)のメンバーであるかどうか。|  
+|`canChangePassword`|boolean|現在のユーザーがパスワードを変更できるかどうか。|  
+|`isSystemUser`|boolean|現在のユーザーが、いずれかの組み込み[グループ](api-management-key-concepts.md#groups)のメンバーであるかどうか。|  
   
 ### <a name="sample-template-data"></a>サンプル テンプレート データ  
   
@@ -406,7 +406,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }  
 ```  
   
-##  <a name="Applications"></a>アプリケーション  
+##  <a name="applications"></a><a name="Applications"></a>アプリケーション  
  **アプリケーション** テンプレートを使用して、開発者ポータルのユーザー プロファイル ページの [アプリケーション] セクションをカスタマイズできます。  
   
  ![ユーザー アカウント アプリケーション ページ](./media/api-management-user-profile-templates/APIM-User-Account-Applications-Page.png "APIM ユーザー アカウント アプリケーション ページ")  
@@ -500,8 +500,8 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 |`applications`|[アプリケーション](api-management-template-data-model-reference.md#Application) エンティティのコレクション。|現在のユーザーのアプリケーション。|  
 |`changePasswordUrl`|string|現在のユーザーのパスワードを変更するための相対 URL。|  
 |`changeNameOrEmailUrl`|string|現在のユーザーの電子メール アドレスと名前を変更するための相対 URL。|  
-|`canChangePassword`|ブール値|現在のユーザーがパスワードを変更できるかどうか。|  
-|`isSystemUser`|ブール値|現在のユーザーが、いずれかの組み込み[グループ](api-management-key-concepts.md#groups)のメンバーであるかどうか。|  
+|`canChangePassword`|boolean|現在のユーザーがパスワードを変更できるかどうか。|  
+|`isSystemUser`|boolean|現在のユーザーが、いずれかの組み込み[グループ](api-management-key-concepts.md#groups)のメンバーであるかどうか。|  
   
 ### <a name="sample-template-data"></a>サンプル テンプレート データ  
   
@@ -569,7 +569,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }  
 ```  
   
-##  <a name="UpdateAccountInfo"></a> アカウント情報の更新  
+##  <a name="update-account-info"></a><a name="UpdateAccountInfo"></a> アカウント情報の更新  
  **[アカウント情報の更新]** テンプレートを使用すると、開発者ポータルの **[アカウント情報の更新]** ページをカスタマイズできます。  
   
  ![ユーザー アカウント情報ページ開発者ポータル テンプレート](./media/api-management-user-profile-templates/APIM-User-Account-Info-Page-Developer-Portal-Templates.png "APIM ユーザー アカウント情報ページ開発者ポータル テンプレート")  
@@ -626,5 +626,5 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }  
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](api-management-developer-portal-templates.md)に関するページを参照してください。

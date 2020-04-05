@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b878c9e26a1f1f0e1e71e79d8f52b81f12924ef3
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: ec9349d8ed330a00a64922a44f99910f9eeeb0df
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78968407"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79136450"
 ---
 # <a name="tutorial-integrate-qlik-sense-enterprise-with-azure-active-directory"></a>チュートリアル:Qlik Sense Enterprise と Azure Active Directory の統合
 
@@ -30,7 +30,7 @@ ms.locfileid: "78968407"
 * ユーザーが自分の Azure AD アカウントを使用して Qlik Sense Enterprise に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -263,7 +263,7 @@ Qlik Sense Enterprise は**ジャストインタイム プロビジョニング*
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

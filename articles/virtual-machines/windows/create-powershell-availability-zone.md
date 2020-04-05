@@ -16,10 +16,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: ''
 ms.openlocfilehash: 5cecc6e43dfeda3838ae52fdd0c028a7739ff227
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75497949"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-powershell"></a>PowerShell を使用して可用性ゾーン内に Windows 仮想マシンを作成する

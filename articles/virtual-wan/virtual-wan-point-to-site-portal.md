@@ -5,14 +5,14 @@ services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 03/18/2020
 ms.author: alzam
-ms.openlocfilehash: 02c8bf24d4ddb6408160da7a4c517d6c8c82de5f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fd415e1da00f52a9a3b55c946a07a30cf841cf4a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450896"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80060310"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>チュートリアル:Azure Virtual WAN を使用してユーザー VPN 接続を作成する
 
@@ -29,7 +29,6 @@ ms.locfileid: "75450896"
 > * VNet をハブに接続する
 > * VPN クライアント構成をダウンロードして適用する
 > * 仮想 WAN を表示する
-> * リソースの正常性を表示する
 
 ![Virtual WAN のダイアグラム](./media/virtual-wan-about/virtualwanp2s.png)
 
@@ -45,7 +44,7 @@ ms.locfileid: "75450896"
 
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-## <a name="wan"></a>仮想 WAN を作成する
+## <a name="create-a-virtual-wan"></a><a name="wan"></a>仮想 WAN を作成する
 
 ブラウザーから [Azure ポータル](https://portal.azure.com) に移動し、Azure アカウントでサインインします。
 
@@ -63,7 +62,7 @@ ms.locfileid: "75450896"
 4. フィールドへの入力を完了したら、 **[確認および作成]** を選択します。
 5. 検証に合格したら、 **[作成]** を選択して仮想 WAN を作成します。
 
-## <a name="site"></a>空の仮想ハブを作成する
+## <a name="create-an-empty-virtual-hub"></a><a name="hub"></a>空の仮想ハブを作成する
 
 1. 仮想 WAN で [ハブ] を選択し、 **[+ 新しいハブ]** をクリックします。
 
@@ -80,7 +79,7 @@ ms.locfileid: "75450896"
 3. **[確認と作成]** をクリックします。
 4. **[検証に成功しました]** ページで **[作成]** をクリックします。
 
-## <a name="site"></a>P2S の構成を作成する
+## <a name="create-a-p2s-configuration"></a><a name="p2sconfig"></a>P2S の構成を作成する
 
 P2S 構成には、リモート クライアントを接続するためのパラメーターが定義されています。
 
@@ -99,10 +98,9 @@ P2S 構成には、リモート クライアントを接続するためのパラ
 
    **公開証明書データ**: Base-64 でエンコードされた X.509 証明書データです。
   
-   ![新しいサイト](media/virtual-wan-point-to-site-portal/p2s2.jpg)
 5. **[作成]** をクリックして構成を作成します。
 
-## <a name="hub"></a>ハブの割り当てを編集する
+## <a name="edit-hub-assignment"></a><a name="edit"></a>ハブの割り当てを編集する
 
 1. 仮想 WAN の下にある **[ハブ]** ブレードに移動します
 2. VPN サーバーの構成を関連付けるハブを選択し、 **[...]** をクリックします
@@ -116,7 +114,7 @@ P2S 構成には、リモート クライアントを接続するためのパラ
 6. **[確認]** をクリックします
 7. この操作は、完了するまで最大 30 分かかることがあります。
 
-## <a name="device"></a>VPN プロファイルをダウンロードする
+## <a name="download-vpn-profile"></a><a name="download"></a>VPN プロファイルをダウンロードする
 
 VPN プロファイルを使用してクライアントを構成します。
 
@@ -134,8 +132,8 @@ VPN プロファイルを使用してクライアントを構成します。
 1. 公式 Web サイトから OpenVPN クライアントをダウンロードしてインストールします。
 2. ゲートウェイの VPN プロファイルをダウンロードします。 この操作は、Azure portal の [User VPN configurations]\(ユーザー VPN の構成\) タブまたは PowerShell の New-AzureRmVpnClientConfiguration で実行できます。
 3. プロファイルを展開します。 メモ帳で OpenVPN フォルダーの vpnconfig.ovpn 構成ファイルを開きます。
-4. P2S クライアント証明書セクションに、base64 の P2S クライアント証明書の公開キーを指定します。 PEM 形式の証明書の場合、.cer ファイルを開き、証明書ヘッダー間にある base64 キーを上書きしてコピーします。 こちらの[証明書をエクスポートしてエンコードされた公開キーを取得する方法](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site)に関するページを参照してください。
-5. 秘密キー セクションに、base64 の P2S クライアント証明書の秘密キーを指定します。 [秘密キーを抽出する方法については、こちら](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-openvpn-clients#windows)を参照してください。
+4. P2S クライアント証明書セクションに、base64 の P2S クライアント証明書の公開キーを指定します。 PEM 形式の証明書の場合、.cer ファイルを開き、証明書ヘッダー間にある base64 キーを上書きしてコピーします。 手順については、[証明書をエクスポートしてエンコードされた公開キーを取得する方法](certificates-point-to-site.md)に関するページを参照してください。
+5. 秘密キー セクションに、base64 の P2S クライアント証明書の秘密キーを指定します。 手順については、[秘密キーを抽出する方法](howto-openvpn-clients.md#windows)に関するセクションを参照してください。
 6. その他のフィールドは変更しないでください。 クライアント入力に入力された構成を使用して VPN に接続します。
 7. vpnconfig.ovpn ファイルを C:\Program Files\OpenVPN\config フォルダーにコピーします。
 8. システム トレイの OpenVPN アイコンを右クリックし、[接続] をクリックします。
@@ -145,21 +143,16 @@ VPN プロファイルを使用してクライアントを構成します。
 1. Windows コンピューターのアーキテクチャに対応する VPN クライアント構成ファイルを選択します。 64 ビットのプロセッサ アーキテクチャの場合は、"VpnClientSetupAmd64" インストーラー パッケージを選択します。 32 ビットのプロセッサ アーキテクチャの場合は、"VpnClientSetupX86" インストーラー パッケージを選択します。
 2. パッケージをダブルクリックしてインストールします。 SmartScreen ポップアップが表示された場合は、[詳細]、[実行] の順にクリックします。
 3. クライアント コンピューターで [ネットワークの設定] に移動し、[VPN] をクリックします。 VPN 接続により、その接続先の仮想ネットワークの名前が表示されます。
-4. 接続を試行する前に、クライアント コンピューターにクライアント証明書をインストール済みであることを確認します。 ネイティブ Azure 証明書の認証タイプを使用する場合、認証にはクライアント証明書が必要です。 証明書の生成の詳細については、「[証明書の生成](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site)」をご覧ください。 クライアント証明書のインストール方法については、クライアント証明書のインストールに関するページを参照してください。
+4. 接続を試行する前に、クライアント コンピューターにクライアント証明書をインストール済みであることを確認します。 ネイティブ Azure 証明書の認証タイプを使用する場合、認証にはクライアント証明書が必要です。 証明書の生成の詳細については、「[証明書の生成](certificates-point-to-site.md)」をご覧ください。 クライアント証明書のインストール方法については、[クライアント証明書のインストール](../vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md)に関するページをご覧ください。
 
-## <a name="viewwan"></a>仮想 WAN を表示する
+## <a name="view-your-virtual-wan"></a><a name="viewwan"></a>仮想 WAN を表示する
 
 1. 仮想 WAN に移動します。
-2. [概要] ページのマップ上の各ポイントは、ハブを表します。 任意のポイントにカーソルを置くと、ハブの正常性の概要が表示されます。
+2. [概要] ページのマップ上の各ポイントは、ハブを表します。
 3. ハブと接続のセクションでは、ハブの状態、サイト、リージョン、VPN 接続の状態、および入出力バイト数を表示できます。
 
-## <a name="viewhealth"></a>リソースの正常性を表示する
 
-1. WAN に移動します。
-2. WAN のページの **[サポート + トラブルシューティング]** セクションで、 **[正常性]** をクリックしてリソースを表示します。
-
-
-## <a name="cleanup"></a>リソースをクリーンアップする
+## <a name="clean-up-resources"></a><a name="cleanup"></a>リソースをクリーンアップする
 
 これらのリソースが不要になったら、[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。 "myResourceGroup" をリソース グループの名前に置き換えて、次の PowerShell コマンドを実行します。
 

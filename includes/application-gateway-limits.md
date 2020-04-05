@@ -4,14 +4,14 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: 48f4c7497583e872c89e4d8cd92dab52ab4f9239
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: a3fb3dbf026a696b9d472efcba139c371ff1e587
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304999"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334927"
 ---
-| リソース | 既定/上限 | Note |
+| リソース | 制限 | Note |
 | --- | --- | --- |
 | Azure Application Gateway |サブスクリプションあたり 1,000 | |
 | フロントエンド IP 構成 |2 |パブリック 1、プライベート 1 |

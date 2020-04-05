@@ -7,11 +7,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.openlocfilehash: ddf7999153e9d9722e627d148b116750fe3aaecf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433446"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235543"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis に関する FAQ
 Azure Cache for Redis についてよく寄せられる質問に対する回答、パターン、ベスト プラクティスについて説明します。
@@ -125,7 +125,7 @@ Cache のオプションを選択するときの考慮事項を次に示しま�
 * Redis クラスタリングでは、クラスターのシャード (ノード) の数を増やすと、スループットもそれに比例して増加する。 たとえば、10 個のシャードから成る P4 クラスターを作成すると、利用可能なスループットは 400,000 * 10 = 4 百万 RPS になります。
 * キー サイズを大きくしたときのスループットは、Standard レベルより Premium レベルのほうが高い。
 
-| Pricing tier | Size | CPU コア数 | 使用可能な帯域幅 | 1 KB 値サイズ | 1 KB 値サイズ |
+| Pricing tier | サイズ | CPU コア数 | 使用可能な帯域幅 | 1 KB 値サイズ | 1 KB 値サイズ |
 | --- | --- | --- | --- | --- | --- |
 | **Standard のキャッシュ サイズ** | | |**メガビット/秒 (Mb/s) / メガバイト/秒 (MB/s)** |**1 秒あたりの要求数 (RPS) 非 SSL** |**1 秒あたりの要求数 (RPS) SSL** |
 | C0 | 250 MB | 共有 | 100 / 12.5  |  15,000 |   7,500 |

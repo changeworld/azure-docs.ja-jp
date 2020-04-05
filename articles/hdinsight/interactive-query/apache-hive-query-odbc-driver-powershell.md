@@ -9,10 +9,10 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.openlocfilehash: f6139bb98fa0272e43c8e180d4ec029f7a7538bb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73494332"
 ---
 # <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>チュートリアル:ODBC と PowerShell による Apache Hive のクエリの実行
@@ -55,12 +55,12 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    | プロパティ | 説明 |
    | --- | --- |
    |  データ ソース名 |データ ソースに名前を付けます。 |
-   |  ホスト |「 `CLUSTERNAME.azurehdinsight.net` 」を入力します。 たとえば、`myHDICluster.azurehdinsight.net` のように指定します。 |
+   |  ホスト |「`CLUSTERNAME.azurehdinsight.net`」と入力します。 たとえば、`myHDICluster.azurehdinsight.net` のように指定します。 |
    |  Port |**443** を使用します。|
-   |  Database |**既定値**を使用します。 |
+   |  データベース |**既定値**を使用します。 |
    |  メカニズム |**[Microsoft Azure HDInsight Service]** を選択します |
-   |  ユーザー名 |HDInsight クラスター ユーザーの HTTP ユーザー名を入力します。 既定のユーザー名は **admin**です。 |
-   |  パスワード |HDInsight クラスター ユーザーのパスワードを入力します。 **[Save Password (Encrypted)]\(パスワードの保存 (暗号化済み)\)** チェック ボックスをオンにします。|
+   |  [ユーザー名] |HDInsight クラスター ユーザーの HTTP ユーザー名を入力します。 既定のユーザー名は **admin**です。 |
+   |  Password |HDInsight クラスター ユーザーのパスワードを入力します。 **[Save Password (Encrypted)]\(パスワードの保存 (暗号化済み)\)** チェック ボックスをオンにします。|
 
 1. 省略可能: **[詳細オプション]** を選択します。  
 
@@ -120,11 +120,11 @@ $query = "select count(distinct clientid) AS total_clients from hivesampletable"
 Get-ODBC-Data -query $query -dsn $dsn
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソース グループ、HDInsight クラスター、ストレージ アカウントは、不要になったら削除します。 これを行うには、クラスターが作成されたリソース グループを選択し、 **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Microsoft Hive ODBC ドライバーと PowerShell を使用して、Azure HDInsight 対話型クエリ クラスターからデータを取得する方法について説明しました。
 

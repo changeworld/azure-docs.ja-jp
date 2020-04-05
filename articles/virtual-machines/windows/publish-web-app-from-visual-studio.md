@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: ghogen
 ms.openlocfilehash: 6e5db9b4e46019aa386057d51d956ff11d90f498
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71970876"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Visual Studio から Azure 仮想マシンへ ASP.NET Web アプリケーションを発行する
@@ -68,7 +68,7 @@ Azure VM へ ASP.NET プロジェクトを発行するには、Visual Studio を
 
 10. 発行操作の進行状況を確認するには、出力ウィンドウをご覧ください。
 
-    ![Output Window]
+    ![[出力ウィンドウ]]
 
 11. 発行が成功した場合は、新たに発行されたサイトの URL がブラウザーで開かれます。
 
@@ -110,7 +110,7 @@ Web アプリケーションに更新内容を発行するには、[発行] ペ�
 
 ![発行設定 - 設定 ページ]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ### <a name="set-up-cicd-for-automated-deployment-to-azure-vm"></a>Azure VM への自動展開の CI/CD を設定する
 

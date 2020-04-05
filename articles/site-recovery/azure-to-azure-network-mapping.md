@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: mayg
 ms.openlocfilehash: b8f0512f978f25ca196ad6e9a7a03243c47f0662
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954155"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229195"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>VNet のネットワーク マッピングと IP アドレス指定を設定する
 
@@ -67,8 +67,8 @@ Azure VM のディザスター リカバリーを構成する前にネットワ�
 
 ターゲット仮想マシンの各 NIC の IP アドレスは、次のように構成されます。
 
-- **DHCP**:ソース VM の NIC が DHCP を使用する場合は、ターゲット VM の NIC も DHCP を使用するように設定されます。
-- **静的 IP アドレス**:ソース VM の NIC が静的 IP アドレス指定を使用する場合は、ターゲット VM の NIC も静的 IP アドレスを使用します。
+- **DHCP**: ソース VM の NIC が DHCP を使用する場合は、ターゲット VM の NIC も DHCP を使用するように設定されます。
+- **静的 IP アドレス**: ソース VM の NIC が静的 IP アドレス指定を使用する場合は、ターゲット VM の NIC も静的 IP アドレスを使用します。
 
 
 ## <a name="ip-address-assignment-during-failover"></a>フェールオーバー時の IP アドレスの割り当て
@@ -92,7 +92,7 @@ Azure VM のディザスター リカバリーを構成する前にネットワ�
 - VM の **[コンピューティングとネットワーク]** の設定でターゲット IP アドレスを変更できます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure VM ディザスター リカバリーについては、[ネットワーク ガイダンス](site-recovery-azure-to-azure-networking-guidance.md)をご確認ください。
 - フェールオーバー後の IP アドレスの保持について[ご確認ください](site-recovery-retain-ip-azure-vm-failover.md)。

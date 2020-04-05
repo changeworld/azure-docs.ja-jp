@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 12/19/2019
 ms.author: kumud
 ms.openlocfilehash: 9214886f468a4a052328a99289845361a059b650
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75780081"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>Azure Virtual Network の IPv6 の概要 (プレビュー)
@@ -69,7 +69,7 @@ Azure VNet の IPv6 には、以下の機能が含まれています。
 - [仮想ネットワーク (VNET) ピアリング](virtual-network-peering-overview.md) - リージョン内ピアリングとグローバル ピアリングの両方。デュアル スタック VNET をシームレスに接続できます。ピアリングされたネットワーク内の VM 上の IPv4 エンドポイントと IPv6 エンドポイントの両方が、相互に通信できるようになります。 デプロイをデュアル スタックに移行するときに、IPv4 のみの VNET でデュアル スタックをピアリングすることもできます。 
 - IPv6 のトラブルシューティングと診断は、ロード バランサーのメトリック/アラート、およびパケット キャプチャ、NSG フロー ログ、接続のトラブルシューティング、接続の監視などの Network Watcher の機能を利用して、行うことができます。   
 
-## <a name="scope"></a>スコープ
+## <a name="scope"></a>Scope
 Azure VNET の IPv6 は、お客様が Azure でデュアル スタック (IPv4 + IPv6) アプリケーションをホストできるようにするための基本機能セットです。  時間をかけてより多くの Azure ネットワーク機能に IPv6 のサポートを追加し、最終的には Azure PaaS サービスのデュアル スタック バージョンを提供する予定ですが、それまでの間は、デュアル スタック仮想マシンの IPv4 エンドポイント経由で、すべての Azure PaaS サービスにアクセスできます。   
 
 ## <a name="limitations"></a>制限事項

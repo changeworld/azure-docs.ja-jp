@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.author: cynthn
 ms.openlocfilehash: 1594c030839cccdd48c4b032c6ad92f746f78e26
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78970273"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>SSH 認証を使用する Linux 仮想マシンを REST API で作成する

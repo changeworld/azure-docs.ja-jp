@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: rohink
 ms.openlocfilehash: fcc9c5333b37c041342c2d20a53cf5d3908d1a26
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938555"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager エンドポイントの監視

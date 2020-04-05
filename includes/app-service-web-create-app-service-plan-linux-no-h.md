@@ -9,10 +9,10 @@ ms.date: 12/20/2019
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: c2711d102c9dfeb00394fa5b5b69065115ce235e
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75681043"
 ---
 Cloud Shell で [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) コマンドを使用して、リソース グループに App Service プランを作成します。

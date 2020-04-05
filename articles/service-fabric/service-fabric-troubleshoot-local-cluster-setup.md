@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: mikhegn
 ms.openlocfilehash: ea313adb43f8d91ec9e57dd1d0b8d3447a8075f2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75465507"
 ---
 # <a name="troubleshoot-your-local-development-cluster-setup"></a>ローカル開発クラスターのセットアップをトラブルシューティングする

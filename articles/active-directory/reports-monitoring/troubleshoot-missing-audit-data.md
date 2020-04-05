@@ -18,13 +18,13 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c335a4d30846f7c1b4dbd6b6aedc4d100a9b43a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74014284"
 ---
-# <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>トラブルシューティング:Azure Active Directory アクティビティ ログにデータが見つからない 
+# <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>トラブルシューティング: Azure Active Directory アクティビティ ログにデータが見つからない 
 
 ## <a name="i-cant-find-audit-logs-for-recent-actions-in-the-azure-portal"></a>Azure portal での最近の操作の監査ログが見つかりません
 
@@ -32,7 +32,7 @@ ms.locfileid: "74014284"
 
 Azure Portal でいくつかの操作を実行したので、`Activity logs > Audit Logs` ブレードでこれらの操作の監査ログが表示されるはずですが、見つかりません。
 
- ![レポート](./media/troubleshoot-missing-audit-data/01.png)
+ ![レポーティング](./media/troubleshoot-missing-audit-data/01.png)
  
 ### <a name="cause"></a>原因
 
@@ -53,7 +53,7 @@ Azure Portal でいくつかの操作を実行したので、`Activity logs > Au
 
 最近 Azure portal にサインインしたので `Activity logs > Sign-ins` ブレードにこれらの操作のサインイン ログが表示されるはずですが、見つかりません。
 
- ![レポート](./media/troubleshoot-missing-audit-data/02.png)
+ ![レポーティング](./media/troubleshoot-missing-audit-data/02.png)
  
 ### <a name="cause"></a>原因
 
@@ -74,7 +74,7 @@ Azure Portal でいくつかの操作を実行したので、`Activity logs > Au
 
 Azure portal で 30 日より前のサインイン データおよび監査データを表示できません。 なぜですか? 
 
- ![レポート](./media/troubleshoot-missing-audit-data/03.png)
+ ![レポーティング](./media/troubleshoot-missing-audit-data/03.png)
 
 ### <a name="cause"></a>原因
 
@@ -91,7 +91,7 @@ Azure Active Directory Actions には、ライセンスに応じて次の期間�
 
 30 日を超えてデータを保持するには、2 つの方法があります。 [Azure AD レポート API](concept-reporting-api.md) を使用してデータをプログラムで取得し、データベースに保存することができます。 また、監査ログを Splunk や SumoLogic などのサード パーティの SIEM システムに統合することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure AD のレポートの保持](reference-reports-data-retention.md)。
 * [Azure Active Directory レポートの待ち時間](reference-reports-latencies.md)。

@@ -12,17 +12,19 @@ metadata:
   ms.author: markvi
   ms.date: 08/29/2019
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 2b29aaf88f0a7659fd3ceb58ddf3b762ee7646d3
-  ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+  ms.openlocfilehash: 3d7248a09c0e9acc792bb0be80217f11a78ba73f
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/29/2019
-  ms.locfileid: "70162503"
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "80048790"
 landingContent:
 - title: Azure Active Directory のレポートと監視について
   linkLists:
   - linkListType: overview
     links:
+    - text: Azure Active Directory レポートの概要
+      url: overview-reports.md
     - text: Azure Active Directory 監視とは
       url: overview-monitoring.md
   - linkListType: concept

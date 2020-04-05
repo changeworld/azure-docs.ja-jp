@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 57ec22cb02512577f8737718cae9175403fb5603
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74900878"
 ---
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Azure ポータルを使用したストリーミング エンドポイントの管理 
@@ -60,7 +60,7 @@ Azure ポータルを使用してストリーミング エンドポイントを�
     ![ストリーミング エンドポイント](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints2.png)
 
 
-## <a id="configure_streaming_endpoints"></a>ストリーミング エンドポイントの構成
+## <a name="configuring-the-streaming-endpoint"></a><a id="configure_streaming_endpoints"></a>ストリーミング エンドポイントの構成
 ストリーミング エンドポイントでは、次のプロパティを構成できます。
 
 * アクセス制御
@@ -89,7 +89,7 @@ Azure ポータルを使用してストリーミング エンドポイントを�
 
 詳細については、[こちらの記事](media-services-portal-scale-streaming-endpoints.md)を参照してください。
 
-## <a id="enable_cdn"></a>Azure CDN 統合を有効にする
+## <a name="enable-azure-cdn-integration"></a><a id="enable_cdn"></a>Azure CDN 統合を有効にする
 
 新しいアカウントを作成すると、既定のストリーミング エンドポイント Azure CDN 統合が既定で有効になります。
 
@@ -102,7 +102,7 @@ CDN 統合は、中国および連邦政府地域を除くすべての Azure デ
 > [!IMPORTANT]
 > Azure CDN との Azure Media Services 統合は、Standard ストリーミング エンドポイント用の **Azure CDN from Verizon** で実装されます。 Premium ストリーミング エンドポイントは、すべての **Azure CDN 価格レベルとプロバイダー**を使用して構成できます。 Azure CDN 機能の詳細については、「 [CDN の概要](../../cdn/cdn-overview.md)」を参照してください。
  
-### <a name="additional-considerations"></a>追加の考慮事項
+### <a name="additional-considerations"></a>その他の注意点
 
 * CDN がストリーミング エンドポイントで有効になっている場合、クライアントは配信元から直接コンテンツを要求することはできません。 CDN の有無にかかわらずコンテンツをテストする必要がある場合は、CDN が有効になっていない別のストリーミング エンドポイントを作成できます。
 * ストリーミング エンドポイントのホスト名は、CDN を有効にした後も変化しません。 CDN を有効にした後、Media Services のワークフローを変更する必要はありません。 たとえば、ストリーミング エンドポイントのホスト名が strasbourg.streaming.mediaservices.windows.net の場合、CDN を有効にした後も同じホスト名が使用されます。
@@ -115,7 +115,7 @@ CDN プロファイルは、上部にある **[CDN の管理]** ボタンを選�
 
 ![ストリーミング エンドポイント](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints6.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Media Services のラーニング パスを確認します。
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

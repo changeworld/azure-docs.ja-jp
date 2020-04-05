@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 676c6d15c4f439543a3ed74627001725632fecfa
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: c91a3ca73d70dd5fd2848bed0f43f14a817087d7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554843"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80053431"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>アクティブでトレーニング済みのアプリをステージング エンドポイントまたは運用環境エンドポイントに発行する
 
@@ -91,7 +91,7 @@ Text Analytics キーを指定する必要はなく、Azure アカウントに�
 
 音声認識の準備は、テキストを音声に変換する前に、音声サービスに LUIS モデルを送信するプロセスです。 これにより、音声サービスはモデルに対してより正確に音声変換を行うことができます。 これにより、1 回の音声通話で LUIS 応答を取得することで、ボットの音声と LUIS の要求と応答を 1 回の呼び出しで行うことができます。 そのため、全体的な待機時間が短くなります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * LUIS に対する Azure サブスクリプションにキーを追加する方法と、Bing Spell Check キーを設定し、結果にすべての意図を含めるする方法については、[キーの管理](./luis-how-to-azure-subscription.md)に関するページを参照してください。
 * テスト コンソールでの発行済みアプリのテスト方法については、[アプリのトレーニングとテスト](luis-interactive-test.md)に関するページをご覧ください。

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 532cb62c371718a59adf2877517fcdb8f7047bcf
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: a793de35ffff84009d362f005e599b4419f0763f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770970"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79532775"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql"></a>Azure Database for MySQL での高可用性の概念
 Azure Database for MySQL サービスは、保証された高いレベルの可用性を提供します。 財務的な裏付けのあるサービス レベル アグリーメント (SLA) は、一般公開時に 99.99% です。 このサービスを使用すると、アプリケーション ダウンタイムはほぼ存在しません。
@@ -31,6 +31,6 @@ HA モデルと同様に、Azure Database for MySQL がスケールアップま�
 
 スケール操作中、データベース接続の中断が発生します。 クライアント アプリケーションは切断され、未処理のコミットされていないトランザクションは取り消されます。 クライアント アプリケーションが接続を再試行するか、または新しい接続を作成すると、ゲートウェイはその接続を新しくサイズ設定されたインスタンスに転送します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [一時的な接続エラーへの対処](concepts-connectivity.md)について学習する
 - [読み取りレプリカを使用してデータをレプリケートする](howto-read-replicas-portal.md)方法を学習する

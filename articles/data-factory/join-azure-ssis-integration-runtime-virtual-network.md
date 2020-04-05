@@ -12,10 +12,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.openlocfilehash: 7e8a1793a329a863c9df97ae5ddcbee6cef10e8e
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76964342"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる
@@ -103,7 +103,7 @@ SSIS パッケージで、特定の静的パブリック IP アドレスのみ�
 
 ![Azure-SSIS IR](media/join-azure-ssis-integration-runtime-virtual-network/azure-ssis-ir.png)
 
-### <a name="perms"></a> アクセス許可を設定する
+### <a name="set-up-permissions"></a><a name="perms"></a> アクセス許可を設定する
 
 Azure-SSIS IR を作成するユーザーは、次のアクセス許可を持っている必要があります。
 
@@ -115,7 +115,7 @@ Azure-SSIS IR を作成するユーザーは、次のアクセス許可を持っ
 
 - SSIS IR を従来の仮想ネットワークに参加させる場合は、組み込みの従来の仮想マシン共同作成者ロールを使用することをお勧めします。 そうしない場合は、仮想ネットワークに参加するためのアクセス許可を含むカスタム ロールを定義する必要があります。
 
-### <a name="subnet"></a> サブネットを選択する
+### <a name="select-the-subnet"></a><a name="subnet"></a> サブネットを選択する
 
 サブネットを選択するとき: 
 
@@ -125,7 +125,7 @@ Azure-SSIS IR を作成するユーザーは、次のアクセス許可を持っ
 
 - (SQL Database マネージド インスタンス、App Service など) 他の Azure サービスによって排他的に専有されているサブネットを使用しないでください。 
 
-### <a name="publicIP"></a>静的パブリック IP アドレスの選択
+### <a name="select-the-static-public-ip-addresses"></a><a name="publicIP"></a>静的パブリック IP アドレスの選択
 
 Azure-SSIS IR を仮想ネットワークに参加させながら、独自の静的パブリック IP アドレスを使用する場合は、以下の要件を満たしていることを確認してください。
 
@@ -139,7 +139,7 @@ Azure-SSIS IR を仮想ネットワークに参加させながら、独自の静
 
 - これらと仮想ネットワークは、同じサブスクリプションと同じリージョンにある必要があります。
 
-### <a name="dns_server"></a> DNS サーバーを設定する 
+### <a name="set-up-the-dns-server"></a><a name="dns_server"></a> DNS サーバーを設定する 
 プライベート ホスト名を解決するために Azure-SSIS IR が参加している仮想ネットワークで独自の DNS サーバーを使用する必要がある場合は、グローバルな Azure ホスト名 (たとえば、`<your storage account>.blob.core.windows.net` という名前の Azure Storage Blob) を解決できることも確認してください。 
 
 推奨される方法の 1 つを以下に示します。 
@@ -151,7 +151,7 @@ Azure-SSIS IR を仮想ネットワークに参加させながら、独自の静
 > [!NOTE]
 > プライベート ホスト名には完全修飾ドメイン名 (FQDN) を使用してください。たとえば、`<your_private_server>` ではなく、`<your_private_server>.contoso.com` を使用します。これは、独自の DNS サフィックスが Azure-SSIS IR によって自動的に追加されないためです。
 
-### <a name="nsg"></a> NSG を設定する
+### <a name="set-up-an-nsg"></a><a name="nsg"></a> NSG を設定する
 Azure-SSIS IR によって使用されるサブネットに NSG を実装する必要がある場合は、次のポートを経由する受信および送信トラフィックを許可します。 
 
 -   **Azure-SSIS IR の受信要件**
@@ -173,7 +173,7 @@ Azure-SSIS IR によって使用されるサブネットに NSG を実装する�
 | 送信 | TCP | VirtualNetwork | * | ストレージ | 445 | (省略可能) この規則は、Azure Files に格納されている SSIS パッケージを実行する場合にのみ必要です。 |
 ||||||||
 
-### <a name="route"></a> Azure ExpressRoute または UDR を使用する
+### <a name="use-azure-expressroute-or-udr"></a><a name="route"></a> Azure ExpressRoute または UDR を使用する
 Azure-SSIS IR からの送信トラフィックを検査する場合は、Azure-SSIS IR から開始されたトラフィックを、[Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) 強制トンネリングを使用して (仮想ネットワークへの、BGP ルート、0.0.0.0/0、をアドバタイズする) オンプレミス ファイアウォール アプライアンスに、あるいは [UDR](../virtual-network/virtual-networks-udr-overview.md) 経由で [Azure Firewall](https://docs.microsoft.com/azure/firewall/) またはファイアウォールとしてのネットワーク仮想アプライアンス (NVA) にルーティングできます。 
 
 ![Azure-SSIS IR の NVA シナリオ](media/join-azure-ssis-integration-runtime-virtual-network/azure-ssis-ir-nva.png)
@@ -231,7 +231,7 @@ Azure-SSIS IR の送信トラフィックを検査する機能が必要でない
 > [!NOTE]
 > 次ホップの種類が **[インターネット]** であるルートを指定することは、すべてのトラフィックがインターネットを経由するようになることを意味するわけではありません。 送信先アドレスが Azure のいずれかのサービスに対するものである限り、Azure では、トラフィックをインターネットにルーティングするのではなく、Azure のバックボーン ネットワーク経由でサービスに直接トラフィックをルーティングします。
 
-### <a name="resource-group"></a> リソース グループを設定する
+### <a name="set-up-the-resource-group"></a><a name="resource-group"></a> リソース グループを設定する
 
 Azure SSIS IR では、仮想ネットワークと同じリソース グループ下に特定のネットワーク リソースを作成する必要があります。 これらのリソースには次が含まれます。
 - Azure ロード バランサー。 *\<Guid>-azurebatch-cloudserviceloadbalancer* という名前で使用される。
@@ -250,7 +250,7 @@ Azure SSIS IR では、仮想ネットワークと同じリソース グルー�
 - Microsoft.Network/NetworkSecurityGroups 
 - Microsoft.Network/PublicIPAddresses 
 
-### <a name="faq"></a> FAQ
+### <a name="faq"></a><a name="faq"></a> FAQ
 
 - 受信接続用に Azure-SSIS IR で公開されるパブリック IP アドレスを保護するにはどうすればよいですか。 パブリック IP アドレスを削除することはできますか。
  

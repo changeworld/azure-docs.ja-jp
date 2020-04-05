@@ -8,10 +8,10 @@ ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
 ms.openlocfilehash: 81309f0b5781e6302887a5b079ed359e70659834
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658984"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Azure Monitor でのロール、アクセス許可、セキュリティ
@@ -70,7 +70,7 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 ## <a name="monitoring-permissions-and-custom-rbac-roles"></a>アクセス許可とカスタムの RBAC 役割の監視
 上記の組み込みの役割がチームの正確なニーズに対応していない場合は、 [カスタム RBAC 役割を作成](../../role-based-access-control/custom-roles.md) して、さらに細かくアクセス許可を指定できます。 一般的な Azure Monitor RBAC 操作とその説明を次に示します。
 
-| Operation | 説明 |
+| 操作 | 説明 |
 | --- | --- |
 | Microsoft.Insights/ActionGroups/[Read, Write, Delete] |アクション グループの読み取り/書き込み/削除を実行します。 |
 | Microsoft.Insights/ActivityLogAlerts/[Read, Write, Delete] |アクティビティ ログ アラートの読み取り/書き込み/削除を実行します。 |

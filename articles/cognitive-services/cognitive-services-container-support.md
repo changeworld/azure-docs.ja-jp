@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: dapine
 ms.openlocfilehash: d75962b98543991a065f6b165279215614175925
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75866943"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218593"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Azure Cognitive Services でのコンテナーのサポート
 

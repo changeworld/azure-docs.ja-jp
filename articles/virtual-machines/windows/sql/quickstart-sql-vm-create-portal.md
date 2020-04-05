@@ -14,10 +14,10 @@ ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 801a6fc0602882d1af49c06bafcfd51942e6da2e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75965646"
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>クイック スタート:Azure ポータルで SQL Server 2017 Windows 仮想マシンを作成する
@@ -33,11 +33,11 @@ ms.locfileid: "75965646"
   > - このクイック スタートでは、SQL VM を迅速にプロビジョニングしてそこに接続する方法について説明します。 その他の SQL VM プロビジョニング オプションについては、[Azure Portal での Windows SQL Server VM のプロビジョニング ガイド](virtual-machines-windows-portal-sql-server-provision.md)を参照してください。
   > - SQL Server の仮想マシンに関するご質問については、[よくあるご質問](virtual-machines-windows-sql-server-iaas-faq.md)に関するページをご覧ください。
 
-## <a id="subscription"></a>Azure サブスクリプションを取得する
+## <a name="get-an-azure-subscription"></a><a id="subscription"></a>Azure サブスクリプションを取得する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a id="select"></a>SQL Server VM イメージを選択する
+## <a name="select-a-sql-server-vm-image"></a><a id="select"></a>SQL Server VM イメージを選択する
 
 1. アカウントを使用して [Azure portal](https://portal.azure.com) にサインインします。
 
@@ -47,11 +47,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![新規検索ウィンドウ](./media/quickstart-sql-vm-create-portal/select-sql-2017-vm-image.png)
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
    ![新規検索ウィンドウ](./media/quickstart-sql-vm-create-portal/create-sql-2017-vm-image.png)
 
-## <a id="configure"></a>基本的な詳細を指定する
+## <a name="provide-basic-details"></a><a id="configure"></a>基本的な詳細を指定する
 
 **[基本]** タブで次の情報を指定します。
 
@@ -116,7 +116,7 @@ Azure Portal でデプロイを監視できます。 画面の上部にある **
 
     ![SSMS 接続](./media/quickstart-sql-vm-create-portal/ssms-connect.png)
 
-## <a id="remotedesktop"></a>VM にリモート ログインする
+## <a name="log-in-to-the-vm-remotely"></a><a id="remotedesktop"></a>VM にリモート ログインする
 
 リモート デスクトップを使用して SQL Server 仮想マシンに接続するには、次の手順に従います。
 

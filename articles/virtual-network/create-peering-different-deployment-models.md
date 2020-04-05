@@ -17,10 +17,10 @@ ms.date: 11/15/2018
 ms.author: kumud
 ms.reviewer: anavin
 ms.openlocfilehash: 61df13e78dc7115d4f4d45ab18b9ffdae107dc96
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77023261"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>仮想ネットワーク ピアリングの作成 - 異なるデプロイメント モデル、同じサブスクリプション
@@ -80,7 +80,7 @@ ms.locfileid: "77023261"
 13. **省略可能**:このチュートリアルでは仮想マシンの作成について説明していませんが、それぞれの仮想ネットワークに仮想マシンを作成し、一方の仮想マシンからもう一方の仮想マシンに接続することで接続を検証することができます。
 14. **省略可能**:このチュートリアルで作成したリソースを削除するには、この記事の「[リソースの削除](#delete-portal)」セクションの手順を実行してください。
 
-## <a name="cli"></a>ピアリングの作成 - Azure CLI
+## <a name="create-peering---azure-cli"></a><a name="cli"></a>ピアリングの作成 - Azure CLI
 
 Azure クラシック CLI と Azure CLI を使用して、次の手順を完了します。 次の手順のいずれかで **[試してみる]** ボタンを選択するだけで、または[クラシック CLI](/cli/azure/install-cli-version-1.0?toc=%2fazure%2fvirtual-network%2ftoc.json) と [CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json) をインストールし、ローカル コンピューター上のコマンドを実行すると、Azure Cloud Shell からの手順を行うことができます。
 
@@ -143,7 +143,7 @@ Azure クラシック CLI と Azure CLI を使用して、次の手順を完了�
 7. **省略可能**:このチュートリアルでは仮想マシンの作成について説明していませんが、それぞれの仮想ネットワークに仮想マシンを作成し、一方の仮想マシンからもう一方の仮想マシンに接続することで接続を検証することができます。
 8. **省略可能**:このチュートリアルで作成したリソースを削除するには、この記事の「[リソースの削除](#delete-cli)」の手順を実行してください。
 
-## <a name="powershell"></a>ピアリングの作成 - PowerShell
+## <a name="create-peering---powershell"></a><a name="powershell"></a>ピアリングの作成 - PowerShell
 
 1. PowerShell [Azure](https://www.powershellgallery.com/packages/Azure) および [Az](https://www.powershellgallery.com/packages/Az/) モジュールの最新バージョンをインストールします。 Azure PowerShell を初めてお使いの方は、[Azure PowerShell の概要](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事を参照してください。
 2. PowerShell セッションを開始します。
@@ -206,17 +206,17 @@ Azure クラシック CLI と Azure CLI を使用して、次の手順を完了�
 9. **省略可能**:このチュートリアルでは仮想マシンの作成について説明していませんが、それぞれの仮想ネットワークに仮想マシンを作成し、一方の仮想マシンからもう一方の仮想マシンに接続することで接続を検証することができます。
 10. **省略可能**:このチュートリアルで作成したリソースを削除するには、この記事の「[リソースの削除](#delete-powershell)」の手順を実行してください。
 
-## <a name="delete"></a>リソースの削除
+## <a name="delete-resources"></a><a name="delete"></a>リソースの削除
 
 このチュートリアルが完了したら、使用料がかからないように、チュートリアルで作成したリソースを削除することをお勧めします。 リソース グループを削除すると、リソース グループ内にあるリソースもすべて削除されます。
 
-### <a name="delete-portal"></a>Azure Portal
+### <a name="azure-portal"></a><a name="delete-portal"></a>Azure Portal
 
 1. ポータルの検索ボックスに、「**myResourceGroup**」と入力します。 検索結果で、 **[myResourceGroup]** をクリックします。
 2. **myResourceGroup** ブレードで **[削除]** アイコンをクリックします。
 3. 削除を確定するには、 **[リソース グループ名を入力してください]** ボックスに「**myResourceGroup**」と入力し、 **[削除]** をクリックします。
 
-### <a name="delete-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a name="delete-cli"></a>Azure CLI
 
 1. 次のコマンドで、Azure CLI を使用して仮想ネットワーク (Resource Manager) を削除します。
 
@@ -232,7 +232,7 @@ Azure クラシック CLI と Azure CLI を使用して、次の手順を完了�
     azure network vnet delete --vnet myVnet2 --quiet
     ```
 
-### <a name="delete-powershell"></a>PowerShell
+### <a name="powershell"></a><a name="delete-powershell"></a>PowerShell
 
 1. 次のコマンドを入力して、仮想ネットワーク (Resource Manager) を削除します。
 

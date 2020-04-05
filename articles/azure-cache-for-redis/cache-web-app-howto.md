@@ -7,11 +7,11 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 3da1902906c4fb12bf5eef473ee39e721e4efe3a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 155993bb3da781e698398ed8ddffa626e8f6cb2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74927065"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>クイック スタート:ASP.NET Web アプリで Azure Cache for Redis を使用する 
@@ -47,7 +47,7 @@ ms.locfileid: "74927065"
 
 4. **[認証]** の設定で **[認証なし]** が指定されていることを確認します。 Visual Studio のバージョンによっては、既定の **[認証]** が別の設定になっている場合があります。 これを変更するには、 **[認証の変更]** 、 **[認証なし]** の順に選択します。
 
-5. **[OK]** を選択してプロジェクトを作成します。
+5. **[OK]** を選択すると、プロジェクトが作成されます。
 
 ## <a name="create-a-cache"></a>キャッシュの作成
 
@@ -143,7 +143,7 @@ ms.locfileid: "74927065"
 
             // Connection refers to a property that returns a ConnectionMultiplexer
             // as shown in the previous example.
-            IDatabase cache = lazyConnection.GetDatabase();
+            IDatabase cache = lazyConnection.Value.GetDatabase();
 
             // Perform cache operations using the cache object...
 
@@ -166,7 +166,7 @@ ms.locfileid: "74927065"
             ViewBag.command5 = "CLIENT LIST";
             ViewBag.command5Result = cache.Execute("CLIENT", "LIST").ToString().Replace(" id=", "\rid=");
 
-            lazyConnection.Dispose();
+            lazyConnection.Value.Dispose();
 
             return View();
         }
@@ -180,7 +180,7 @@ ms.locfileid: "74927065"
     @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
     ```
 
-    を以下に置き換えます。
+    with:
 
     ```csharp
     @Html.ActionLink("Azure Cache for Redis Test", "RedisCache", "Home", new { area = "" }, new { @class = "navbar-brand" })
@@ -259,7 +259,7 @@ ms.locfileid: "74927065"
 
 3. **[App Service の作成]** ダイアログ ボックスで、次のように変更します。
 
-    | Setting | 推奨値 | 説明 |
+    | 設定 | 推奨値 | 説明 |
     | ------- | :---------------: | ----------- |
     | **アプリ名** | 既定値を使用します。 | アプリ名は、Azure へのデプロイ時にアプリのホスト名になります。 必要に応じて、名前を一意にするためにタイムスタンプのサフィックスが追加される場合があります。 |
     | **サブスクリプション** | Azure サブスクリプションを選択します。 | 関連するホスティング料金は、このサブスクリプションに請求されます。 複数の Azure サブスクリプションがある場合は、適切なサブスクリプションを選択したことを確認します。|
@@ -296,7 +296,7 @@ ms.locfileid: "74927065"
 
 ![簡単なテストが完了した Azure](./media/cache-web-app-howto/cache-simple-test-complete-azure.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 次のチュートリアルに進む場合は、このクイック スタートで作成したリソースを維持して、再利用することができます。
 
@@ -317,7 +317,7 @@ ms.locfileid: "74927065"
 
 しばらくすると、リソース グループとそのリソースのすべてが削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のチュートリアルでは、より現実的なシナリオで Azure Cache for Redis を使って、アプリのパフォーマンスを向上させます。 このアプリケーションを更新し、ASP.NET とデータベースでキャッシュ アサイド パターンを使ってスコアボードの結果をキャッシュします。
 

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Getabstract の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Getabstract の統合 | Microsoft Docs'
 description: Azure Active Directory と Getabstract の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
 ms.openlocfilehash: ad338ce3758c9c8387cc74cc55f9a905b1e5cd73
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73155269"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-getabstract"></a>チュートリアル:Azure Active Directory と Getabstract の統合
+# <a name="tutorial-azure-active-directory-integration-with-getabstract"></a>チュートリアル: Azure Active Directory と Getabstract の統合
 
 このチュートリアルでは、Getabstract と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Getabstract と Azure AD の統合には、次の利点があります。

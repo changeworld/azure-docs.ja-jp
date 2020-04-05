@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
 ms.openlocfilehash: fcfc86a3aca4aae042ce3589988aa91d821dce98
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76842213"
 ---
 1. Visual Studio Code で、F1 キーを押してコマンド パレットを開きます。 コマンド パレットで、`Azure Functions: Open in portal` を検索して選択します。

@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a10dfffa69652ee2b75053c04b97f6492c46811e
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72174307"
 ---
 # <a name="bulk-create-users-preview-in-azure-active-directory"></a>Azure Active Directory でユーザーを一括作成する (プレビュー)
@@ -57,7 +57,7 @@ Azure Active Directory (Azure AD) では、ユーザーの一括作成および�
 
 ## <a name="verify-users-in-the-azure-portal"></a>Azure portal でユーザーを確認する
 
-1. 組織のユーザー管理者アカウントで、[Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+1. 組織のユーザー管理者アカウントで、[Azure AD 管理センターにサインイン](https://aad.portal.azure.com)します。
 1. ナビゲーション ペインで、 **[Azure Active Directory]** を選択します。
 1. **[管理]** にある **[ユーザー]** を選択します。
 1. **[表示]** で **[すべてのユーザー]** を選択し、作成したユーザーが一覧に表示されていることを確認します。
@@ -76,7 +76,7 @@ Get-AzureADUser -Filter "UserType eq 'Member'"
 
 ユーザー作成の一括操作は、それぞれ最大 1 時間かかる場合があります。 これにより、最小で 5 万ユーザーを一括作成できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ユーザーの一括削除](users-bulk-delete.md)
 - [ユーザーの一覧のダウンロード](users-bulk-download.md)

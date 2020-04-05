@@ -11,10 +11,10 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
 ms.openlocfilehash: 6b1c671d2079c7d8ab59e9afe981ccef3f58ef27
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79086880"
 ---
 # <a name="data-ingestion-in-azure-machine-learning"></a>Azure Machine Learning のデータ インジェスト

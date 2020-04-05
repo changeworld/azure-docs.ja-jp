@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
 ms.openlocfilehash: 25e2b488d3b6e7e5cabd1a71d1489efaf01231b3
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73748555"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>構成サーバーの問題のトラブルシューティング
@@ -95,7 +95,7 @@ Site Recovery の認証に必要な証明書を作成できません。 ロー�
   UnifiedAgentConfigurator.exe  /CSEndPoint <configuration server IP address> /PassphraseFilePath <passphrase file path>
 ```
 
-Setting | 詳細
+設定 | 詳細
 --- | ---
 使用法 | UnifiedAgentConfigurator.exe  /CSEndPoint <configuration server IP address\> /PassphraseFilePath <passphrase file path\>
 エージェント構成ログ | %ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log の下にあります。
@@ -110,7 +110,7 @@ Setting | 詳細
   /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <configuration server IP address> -P /var/passphrase.txt
   ```
 
-Setting | 詳細
+設定 | 詳細
 --- | ---
 使用法 | cd /usr/local/ASR/Vx/bin<br /><br /> UnifiedAgentConfigurator.sh -i <configuration server IP address\> -P <passphrase file path\>
 -i | 必須パラメーターです。 構成サーバーの IP アドレスを指定します。 任意の有効な IP アドレスを使用します。
@@ -191,7 +191,7 @@ Setting | 詳細
 この問題を解決するには、Azure portal にサインインし、次のいずれかを行います。
 
 - AAD でアプリケーション開発者ロールを要求します。 アプリケーション開発者ロールの詳細については、「[Azure Active Directory での管理者ロールのアクセス許可](../active-directory/users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
-- AAD で **[User can create application]\(ユーザーがアプリケーションを作成できる\)** フラグが *true* に設定されていることを確認します。 詳細については、[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)」のガイダンスに従って、サービス プリンシパルを作成します。
+- AAD で **[User can create application]\(ユーザーがアプリケーションを作成できる\)** フラグが *true* に設定されていることを確認します。 詳細については、「[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)」のガイダンスに従って、サービス プリンシパルを作成します。
 
 ## <a name="process-servermaster-target-are-unable-to-communicate-with-the-configuration-server"></a>プロセス サーバー/マスター ターゲットが構成サーバーと通信できない 
 

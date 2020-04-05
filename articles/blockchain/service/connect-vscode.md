@@ -1,15 +1,15 @@
 ---
 title: Visual Studio Code を使用して Azure Blockchain Service に接続する
 description: Visual Studio Code で Azure Blockchain Development Kit for Ethereum 拡張機能を使用して、Azure Blockchain Service コンソーシアム ネットワークに接続します
-ms.date: 12/05/2019
+ms.date: 03/26/2020
 ms.topic: quickstart
-ms.reviewer: chrisseg
-ms.openlocfilehash: 1bcdfdafa9253fc4dc20ccb7cc237cb794b0af53
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.reviewer: caleteet
+ms.openlocfilehash: 269a3e419186daddf1e6a41a54e52e688f4bc7e3
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977077"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80348575"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>クイック スタート:Visual Studio Code を使用して Azure Blockchain Service コンソーシアム ネットワークに接続する
 
@@ -22,7 +22,7 @@ ms.locfileid: "74977077"
 * 「[Quickstart: Azure portal を使用したブロックチェーン メンバーの作成](create-member.md)に関するページと、「[クイック スタート: Azure CLI を使用して Azure Blockchain Service ブロックチェーン メンバーを作成する](create-member-cli.md)」を完了していること
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 * [Azure Blockchain Development Kit for Ethereum 拡張機能](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
-* [Node.js 10.15.x 以降](https://nodejs.org/download)
+* [Node.js 10.15.x 以降](https://nodejs.org)
 * [Git 2.10.x 以降](https://git-scm.com)
 * [Python 2.7.15](https://www.python.org/downloads/release/python-2715/)。python.exe をパスに追加します。 Azure Blockchain 開発キットでは、パス内に Python バージョン 2.7.15 が必要です。
 * [Truffle 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
@@ -72,7 +72,7 @@ Azure Blockchain Service コンソーシアム メンバーにアクセスでき
 
 ![エクスプローラーに表示されているコンソーシアム](./media/connect-vscode/consortium-node.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、Azure Blockchain Development Kit for Ethereum VS Code 拡張機能を使用して、Azure Blockchain Service 上のコンソーシアムに接続しました。 次は、Azure Blockchain Development Kit for Ethereum を使用してトランザクションを介したスマート コントラクト関数を作成、ビルド、デプロイ、実行するチュートリアルに挑戦してみてください。
 

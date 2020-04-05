@@ -1,19 +1,18 @@
 ---
 title: オファーの取得 API | Azure Marketplace
 description: この API は、パブリッシャーの名前空間に含まれるオファーを要約した一覧を取得します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 5c94c03a63936be2b086085a1e52064dedf214b0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: a1f15e269481b9706f81fd02f19effc9ad37df32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819616"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280492"
 ---
 <a name="retrieve-offers"></a>オファーを取得する
 ===============
@@ -28,7 +27,7 @@ ms.locfileid: "73819616"
 
 | **Name**         |  **説明**                         |  **データの種類** |
 | -------------    |  ------------------------------------    |  -----------   |
-|  publisherId     | パブリッシャー ID。たとえば、`contoso` |   string    |
+|  publisherId     | パブリッシャー ID。たとえば、`contoso` |   String    |
 |  api-version     | API の最新バージョン                    |    Date        |
 |  |  |
 
@@ -36,10 +35,10 @@ ms.locfileid: "73819616"
 <a name="header"></a>ヘッダー
 ------
 
-|  **Name**        |         **値**       |
+|  **Name**        |         **Value**       |
 |  --------------- |       ----------------  |
 |  Content-Type    | `application/json`      |
-|  Authorization   | `Bearer YOUR_TOKEN`     |
+|  承認   | `Bearer YOUR_TOKEN`     |
 |  |  |
 
 

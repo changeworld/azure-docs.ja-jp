@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 7386932f19eee064926184eb17f5e92e30add98e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76760387"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>メッセージ エンティティの一時停止と再アクティブ化 (無効化)
@@ -40,7 +40,7 @@ ms.locfileid: "76760387"
 
 キューに設定可能な状態は次のとおりです。
 
--   **[アクティブ]** : キューはアクティブです。
+-   **Active**: キューはアクティブです。
 -   **Disabled**: キューは一時停止状態です。
 -   **SendDisabled**: キューは、受信は許可されていますが、部分的に一時停止状態です。
 -   **ReceiveDisabled**: キューは、送信は許可されていますが、部分的に一時停止状態です。

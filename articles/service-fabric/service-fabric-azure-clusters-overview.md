@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: dekapur
 ms.openlocfilehash: b6942c2a0647401df0d88b83e1b144ca3207a6db
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75614674"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Azure 上での Service Fabric クラスターの概要
@@ -48,7 +48,7 @@ Azure 上の Service Fabric クラスターは、次の他の Azure リソース
 詳細については、[Service Fabric のノード タイプと仮想マシン スケール セット](service-fabric-cluster-nodetypes.md)に関するページを参照してください。
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
-VM インスタンスは、[パブリック IP アドレス](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)と DNS ラベルが関連付けられている [Azure Load Balancer](/azure/load-balancer/load-balancer-overview) の背後で結合されます。  *&lt;clustername&gt;* でクラスターをプロビジョニングする場合、DNS 名 *&lt;clustername&gt;.&lt;location&gt;.cloudapp.azure.com* が、スケール セットの前のロード バランサーに関連付けられた DNS ラベルになります。
+VM インスタンスは、[パブリック IP アドレス](/azure/load-balancer/load-balancer-overview)と DNS ラベルが関連付けられている [Azure Load Balancer](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses) の背後で結合されます。  *&lt;clustername&gt;* でクラスターをプロビジョニングする場合、DNS 名 *&lt;clustername&gt;.&lt;location&gt;.cloudapp.azure.com* が、スケール セットの前のロード バランサーに関連付けられた DNS ラベルになります。
 
 クラスター内の VM には[プライベート IP アドレス](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses)しかありません。  管理トラフィックとサービス トラフィックは、パブリック ロード バランサーを介してルーティングされます。  ネットワーク トラフィックは、NAT 規則 (クライアントは特定のノード/インスタンスに接続します)、または負荷分散規則 (トラフィックは VM ラウンド ロビンに送られます) を介してこれらのコンピューターにルーティングされます。  ロード バランサーには、 *&lt;clustername&gt;.&lt;location&gt;.cloudapp.azure.com* という形式の DNS 名を持つパブリック IP が関連付けられています。  パブリック IP は、リソース グループ内の別の Azure リソースです。  クラスターで複数のノード タイプを定義する場合、ノード タイプ/スケール セットごとにロード バランサーが作成されます。 または、複数のノード タイプに対して 1 つのロード バランサーをセットアップできます。  プライマリ ノード タイプには、DNS ラベル *&lt;clustername&gt;.&lt;location&gt;.cloudapp.azure.com* があり、他のノード タイプには、DNS ラベル *&lt;clustername&gt;-&lt;nodetype&gt;.&lt;location&gt;.cloudapp.azure.com* があります。
 

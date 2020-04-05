@@ -10,10 +10,10 @@ ms.author: gopalv
 ms.topic: reference
 ms.date: 10/10/2019
 ms.openlocfilehash: b83effa95b17d712d4019f8ab5bf13c4f02a7d2b
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78206522"
 ---
 # <a name="known-issues-and-troubleshooting-the-azure-data-science-virtual-machine"></a>Azure Data Science Virtual Machine の既知の問題とトラブルシューティング

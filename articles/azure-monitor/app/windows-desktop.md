@@ -4,10 +4,10 @@ description: Application Insights を使用して、Windows デスクトップ �
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.openlocfilehash: 8234b9ba2c92fc64cfa8f598db99954e00caab45
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670833"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>従来の Windows デスクトップ アプリケーションでの使用状況とパフォーマンスの監視
@@ -30,7 +30,7 @@ Application Insights は、オンプレミスや Azure、その他各種クラ�
 5. [API を使用して](../../azure-monitor/app/api-custom-events-metrics.md) テレメトリを送信します。
 6. アプリケーションを実行し、Azure portal で作成したリソースのテレメトリを表示します。
 
-## <a name="telemetry"></a>コード例
+## <a name="example-code"></a><a name="telemetry"></a>コード例
 ```csharp
 using Microsoft.ApplicationInsights;
 

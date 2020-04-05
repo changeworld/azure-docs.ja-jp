@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 09/24/2018
 ms.custom: seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: 5a21f36136c6f1d77a2e9cb9108f539c9fb39334
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77134893"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data"></a>クイック スタート:Azure Cosmos DB Cassandra API データを管理する Java アプリを作成する

@@ -3,7 +3,7 @@
   items:
     - name: 概要
       items:
-        - name: Azure Dev Spaces について
+        - name: Azure Dev Spaces とは
           href: about.md
     - name: クイックスタート
       items:
@@ -58,7 +58,21 @@
     - name: 概念
       items:
         - name: Dev Spaces のしくみ
-          href: how-dev-spaces-works.md
+          items:
+            - name: 概要
+              href: how-dev-spaces-works.md
+            - name: クラスターの設定
+              href: how-dev-spaces-works-cluster-setup.md
+            - name: プロジェクトの準備
+              href: how-dev-spaces-works-prep.md
+            - name: コードの実行
+              href: how-dev-spaces-works-up.md
+            - name: 開発スペース間のルーティング
+              href: how-dev-spaces-works-routing.md
+            - name: リモート デバッグ
+              href: how-dev-spaces-works-remote-debugging.md
+            - name: 開発用コンピューターを AKS に接続する
+              href: how-dev-spaces-works-connect.md
         - name: VS Code と Dev Spaces を連携させるしくみ
           href: how-vs-code-works-with-dev-spaces.md
         - name: さまざまなネットワーク トポロジでのネットワーク構成
@@ -95,7 +109,7 @@
           href: how-to/ingress-https-traefik.md
         - name: カスタムのイングレスと HTTPS に NGINX を使用する
           href: how-to/ingress-https-nginx.md
-        - name: 開発用マシンを AKS クラスターに接続する (プレビュー)
+        - name: 開発用コンピューターを AKS クラスターに接続する (プレビュー)
           href: how-to/connect.md
         - name: Helm 3 を使用するように Azure Dev Spaces クラスターを構成する (プレビュー)
           href: how-to/helm-3.md

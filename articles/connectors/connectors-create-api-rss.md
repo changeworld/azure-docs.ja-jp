@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/24/2018
 tags: connectors
 ms.openlocfilehash: 3f1e092c2ff325cdcbc32c617af316d6fbe6dd74
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789343"
 ---
 # <a name="manage-rss-feeds-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して RSS フィードを管理する
@@ -58,6 +58,6 @@ RSS トリガーを使用すると、RSS フィードからの応答を取得し
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
 * 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

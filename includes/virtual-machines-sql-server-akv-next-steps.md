@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: 22f16a7382cb0fe1f3fe2a6ef5e7c00a6989623c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67181125"
 ---
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Key Vault 統合を有効にしたら、SQL VM で SQL Server 暗号化を有効にできます。 最初に、Key Vault 内で非対称鍵を作成し、VM の SQL Server 内で対称鍵を作成する必要があります。 これでデータベースとバックアップの暗号化を有効にする T-SQL ステートメントを実行できます。
 
@@ -50,7 +50,7 @@ WITH PROVIDER_KEY_NAME = 'KeyName_in_KeyVault',  --The key name here requires th
 CREATION_DISPOSITION = OPEN_EXISTING;
 ```
 
-### <a name="transparent-data-encryption-tde"></a>透過的なデータ暗号化 (TDE)
+### <a name="transparent-data-encryption-tde"></a>Transparent Data Encryption (TDE)
 
 1. TDE のためにデータベース エンジンで使用される SQL Server を作成し、それに資格情報を追加します。
 

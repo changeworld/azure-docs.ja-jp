@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 554260f403104d815b9b63c576c7ba0a2f3cf1e1
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76761034"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>非同期メッセージング パターンと高可用性

@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/17/2020
 ms.openlocfilehash: fe006cebe9aab30a6aaa0bdf2bf3362a494f64d7
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77426277"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>アクティブ geo レプリケーションの作成と使用

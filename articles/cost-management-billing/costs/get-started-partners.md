@@ -1,7 +1,6 @@
 ---
 title: パートナー向け Azure Cost Management の利用を開始する
 description: この記事では、パートナーが Azure Cost Management の機能を使用する方法と、パートナーの顧客のために Cost Management アクセスを有効にする方法について説明します。
-keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 03/02/2020
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: f81ec71ffe5cdf7f70e309282307a1c4bb293219
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: d1425407b9d451a8c35e736c38b8fac059a7c9d8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245473"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79204887"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>パートナー向け Azure Cost Management の利用を開始する
 

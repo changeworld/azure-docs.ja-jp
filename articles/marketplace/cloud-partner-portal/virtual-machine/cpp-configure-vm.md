@@ -1,19 +1,18 @@
 ---
 title: Azure Marketplace 向けの Microsoft Azure でホストされる VM の構成
 description: Azure でホストされている VM をサイズ指定、更新、および一般化する方法について説明します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.author: pabutler
-ms.openlocfilehash: ce7fe49b07dc250a9f56ff73229e347b997f0cc0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: b0ed430098203c5c1a0d00eb7bf17da1be0000cb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824491"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278094"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Azure でホストされる VM を構成する
 
@@ -94,6 +93,6 @@ VM のコピーを作成すると、ソリューションのさまざまな構�
 - Windows VM:[Azure から Windows VHD をダウンロードする](../../../virtual-machines/windows/download-vhd.md)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 VM が一般化されて、割り当てが解除され、VM のイメージを作成したので、[仮想ハード ディスクから仮想マシンをデプロイ](./cpp-deploy-vm-vhd.md)する準備が整いました。

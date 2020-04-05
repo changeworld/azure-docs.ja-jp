@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.openlocfilehash: 8a1c91c8a8a59af26386e70e68e7c4fd93f5eaa9
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68726338"
 ---
 # <a name="how-to-use-blob-storage-from-xamarin"></a>Xamarin から BLOB ストレージを使用する方法
@@ -29,7 +29,7 @@ Xamarin を利用すれば、開発者は共有 C# コードベースを利用�
 次の手順でアプリケーションを作成します。
 
 1. [Xamarin for Visual Studio](https://www.xamarin.com/download)をダウンロードしてインストールします (まだ、インストールしていない場合)。
-2. Visual Studio を開き、空のアプリ (ネイティブ ポータブル) を作成します ( **[ファイル]、[新規]、[プロジェクト]、[クロス プラットフォーム]、[空のアプリ (ネイティブ ポータブル)]** の順に移動)。
+2. Visual Studio を開き、空のアプリ (ネイティブ ポータブル) を作成します ( **[ファイル] > [新規] > [プロジェクト] > [クロス プラットフォーム] > [空のアプリ (ネイティブ ポータブル)]** )。
 3. [ソリューション エクスプローラー] ウィンドウでソリューションを右クリックし、 **[ソリューションの NuGet パッケージの管理]** を選択します。 **WindowsAzure.Storage** を検索し、最新の安定バージョンを、ソリューション内のすべてのプロジェクトにインストールします。
 4. プロジェクトをビルドして実行します。
 
@@ -233,9 +233,9 @@ namespace XamarinApp.WinPhone
 
 これで、このアプリケーションを、Android または Windows Phone エミュレーターで実行できます。 iOS エミュレーターで、このアプリケーションを実行することもできますが、それには Mac が必要です。 これを行う具体的な手順については、 [Mac への Visual Studio の接続](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/connecting-to-mac/)
 
-アプリケーションを実行すると、コンテナー `mycontainer` がストレージ アカウントに作成されます。 これには、テキスト `Hello, world!` が示された BLOB `myblob` が含まれています。 これを確認するには、 [Microsoft Azure ストレージ エクスプ ローラー](https://storageexplorer.com/)を使用します。
+アプリケーションを実行すると、コンテナー `mycontainer` がストレージ アカウントに作成されます。 これには、テキスト `myblob` が示された BLOB `Hello, world!` が含まれています。 これを確認するには、 [Microsoft Azure ストレージ エクスプ ローラー](https://storageexplorer.com/)を使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Blob Storage の 1 つのシナリオに焦点を当て、Xamarin で Azure Storage を使用するクロスプラットフォームのアプリケーションを作成する方法を学習しました。 ただし、Blob Storage だけでなく、Table Storage、File Storage、および Queue Storage を使用すると、さらに多くのことを行うことができます。 詳細については、次の記事を確認してください。
 

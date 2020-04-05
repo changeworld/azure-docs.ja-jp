@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 95e22b40b56d3ac3129573958c77b8643c0e72dc
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 6d9f625bf425a33b690fd303a4f13d032bd59fa0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276142"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80062715"
 ---
-# <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用した仮想マシン スケール セットのカスタム イメージの作成および使用
+# <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>チュートリアル: Azure CLI を使用した仮想マシン スケール セットのカスタム イメージの作成および使用
 スケール セットを作成するときは、VM インスタンスのデプロイ時に使用するイメージを指定します。 VM インスタンスをデプロイした後のタスクの数を減らすには、カスタム VM イメージを使用できます。 このカスタム VM イメージには、すべての必要なアプリケーション インストールまたは構成が含まれます。 スケール セットで作成されたすべての VM インスタンスは、カスタム VM イメージを使用し、アプリケーション トラフィックを処理できる状態になります。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
@@ -51,7 +51,7 @@ az vm create \
 
 VM のパブリック IP アドレスは、[az vm create](/cli/azure/vm) コマンドの出力に示されます。 次に示すように、VM のパブリック IP アドレスに SSH 接続します。
 
-```azurecli-interactive
+```console
 ssh azureuser@<publicIpAddress>
 ```
 

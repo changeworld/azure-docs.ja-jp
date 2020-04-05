@@ -17,10 +17,10 @@ ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
 ms.openlocfilehash: 5146675b6eefd11fc1e6875ed9009ece92753ffb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "72028094"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>Azure Virtual Network コンテナー ネットワーク インターフェイス プラグインのデプロイ
@@ -31,7 +31,7 @@ Azure Virtual Network コンテナー ネットワーク インターフェイ�
 
 ACS エンジンは、Azure Resource Manager テンプレートを使用して Kubernetes クラスターをデプロイします。 クラスターの構成は、テンプレートを生成するときにツールに渡される JSON ファイルで指定されます。 サポートされているクラスターの設定とその説明の完全なリストについては、「[Microsoft Azure Container Service Engine - Cluster Definition](https://github.com/Azure/acs-engine/blob/master/docs/clusterdefinition.md)」 (Microsoft Azure Container Service エンジン - クラスター定義) を参照してください。 このプラグインは、ACS エンジンを使用して作成されたクラスターの既定のネットワーク プラグインです。 プラグインを構成するときには、次のネットワーク構成設定が重要です。
 
-  | Setting                              | 説明                                                                                                           |
+  | 設定                              | 説明                                                                                                           |
   |--------------------------------------|------------------------------------------------------------------------------------------------------                 |
   | firstConsecutiveStaticIP             | マスター ノードに割り当てられる IP アドレス。 これは必須の設定です。                                     |
   | kubernetesConfig の下の clusterSubnet | クラスターのデプロイ先で、ポッドへの IP アドレスの割り当て元の仮想ネットワーク サブネットの CIDR   |
@@ -39,7 +39,7 @@ ACS エンジンは、Azure Resource Manager テンプレートを使用して K
   | vnetCidr                             | クラスターのデプロイ先の仮想ネットワークの CIDR                                                             |
   | kubeletConfig 下の max-Pods         | すべてのエージェント仮想マシン上のポッドの最大数。 プラグインの場合、既定値は 30 です。 最大 250 を指定できます。  |
 
-### <a name="example-configuration"></a>構成の例
+### <a name="example-configuration"></a>構成例
 
 次の json の例は、次のプロパティを持つクラスター用です。
 -   1 つのマスター ノードと 2 つのエージェント ノード 

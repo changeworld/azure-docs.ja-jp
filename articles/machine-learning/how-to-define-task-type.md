@@ -11,10 +11,10 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 11/04/2019
 ms.openlocfilehash: a58959904559cd3b2cec27762f2df93cfea72abd
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75535323"
 ---
 # <a name="how-to-define-a-machine-learning-task"></a>機械学習タスクを定義する方法 
@@ -23,7 +23,7 @@ ms.locfileid: "75535323"
 この記事では、サポートされている機械学習タスクと、それらを自動機械学習 (自動 ML) の実験の実行用に定義する方法について説明します。
 
 
-## <a name="What is a machine learning task?"></a> 機械学習タスクとは
+## <a name="what-is-a-machine-learning-task"></a><a name="What is a machine learning task?"></a> 機械学習タスクとは
 
 機械学習タスクは、予測モデルを作成することによって解決される問題の種類を表します。 自動 ML では、分類、回帰、時系列予測を含む 3 つの異なる種類のタスクがサポートされています。
 
@@ -56,7 +56,7 @@ ms.locfileid: "75535323"
 ### <a name="set-the-task-type"></a>タスクの種類を設定する
 SDK または Azure Machine Learning Studio を使用して、自動 ML 実験のタスクの種類を設定できます。
 
-`AutoMLConfig` コンストラクターで `task` パラメーターを使用して、実験の種類を指定します。
+`task` コンストラクターで `AutoMLConfig` パラメーターを使用して、実験の種類を指定します。
 
 ```python
 from azureml.train.automl import AutoMLConfig

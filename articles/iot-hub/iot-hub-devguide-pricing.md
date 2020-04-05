@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.openlocfilehash: 9b6db1b7171652ea5ace4db370b72dc22b6bdc90
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60626232"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233239"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Azure IoT Hub の価格情報
 
@@ -23,7 +23,7 @@ ms.locfileid: "60626232"
 
 ## <a name="charges-per-operation"></a>操作ごとの料金
 
-| Operation | 課金情報 | 
+| 操作 | 課金情報 | 
 | --------- | ------------------- |
 | ID レジストリの操作 <br/> (作成、取得、一覧表示、更新、削除) | 課金されません。 |
 | デバイスからクラウドへのメッセージ | 正常に送信されたメッセージは、IoT Hub に入った時点で 4 KB のチャンク単位で課金されます (たとえば、6 KB のメッセージは 2 メッセージとして課金されます)。 |

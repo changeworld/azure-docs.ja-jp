@@ -5,18 +5,18 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 70e6611cc3006424bcd1bc3a0f0838ad40c09634
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 8be8e948595cfb93049c0d6c93f421e4902e771d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766023"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530667"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-portal"></a>Azure portal を使用した Azure Database for MariaDB ファイアウォール規則の作成と管理
 サーバーレベルのファイアウォール規則を使用して、指定した IP アドレスまたは IP アドレス範囲からの Azure Database for MariaDB サーバーへのアクセスを管理できます。
 
-仮想ネットワーク (VNet) 規則を使用して、サーバーへのアクセスをセキュリティ保護することもできます。 [Azure portal を使用して仮想ネットワーク サービス エンドポイントと規則の作成および管理](howto-manage-vnet-portal.md)する方法を確認してください。
+仮想ネットワーク (VNet) 規則を使用して、サーバーへのアクセスをセキュリティで保護することもできます。 [Azure portal を使用して仮想ネットワーク サービス エンドポイントと規則の作成および管理](howto-manage-vnet-portal.md)する方法を確認してください。
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Azure Portal でサーバーレベルのファイアウォール規則を作成する
 
@@ -54,6 +54,6 @@ Azure からアプリケーションが Azure Database for MariaDB サーバー�
 * 既存の規則を変更するには、規則内の任意のフィールドをクリックしてから、変更します。 **[保存]** をクリックして変更を保存します。
 * 既存の規則を削除するには、省略記号 [...] をクリックして、**削除** をクリックします。 **[保存]** をクリックして変更を保存します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
  - 同様に、[Azure CLI を使用して Azure Database for MariaDB ファイアウォール規則を作成および管理する](howto-manage-firewall-cli.md)スクリプトを作成できます。
  - [Azure portal を使用して仮想ネットワーク サービス エンドポイントと規則を作成および管理](howto-manage-vnet-portal.md)し、サーバーへのアクセスのセキュリティ保護を強化します。

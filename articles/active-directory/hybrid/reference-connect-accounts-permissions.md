@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect:アカウントとアクセス許可 | Microsoft Docs
+title: 'Azure AD Connect: アカウントとアクセス許可 | Microsoft Docs'
 description: このトピックでは、使用および作成されるアカウントと、必要なアクセス許可について説明します。
 services: active-directory
 documentationcenter: ''
@@ -17,14 +17,14 @@ ms.date: 10/03/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72ae1301be4a3a3c086961aae72fb9eeb12aeda2
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 6071e6553fb1275fea63a37b4897aef2685bd509
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960226"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227867"
 ---
-# <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect:アカウントとアクセス許可
+# <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: アカウントとアクセス許可
 
 ## <a name="accounts-used-for-azure-ad-connect"></a>Azure AD Connect に使用されるアカウント
 
@@ -55,8 +55,7 @@ Azure AD Connect を実行するためのこれら 3 つのアカウントに加
 > [!NOTE]
 > ESAE 管理フォレスト ("Red Forest" とも呼ばれます) からの Azure AD Connect で使用される管理アカウントの管理がサポートされています。
 > 専用管理フォレストを使用すると、組織は、運用環境よりもセキュリティ制御が強化された環境で、管理アカウント、ワークステーション、およびグループをホストできます。
-> 専用管理フォレストの詳細については、[ESAE 管理フォレスト設計のアプローチ](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach)に関する記事を参照してください
->>>>>>> e683a61b0ed62ae739941410f658a127534e2481
+> 専用管理フォレストの詳細については、[ESAE 管理フォレスト設計のアプローチ](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach)に関する記事を参照してください。
 
 > [!NOTE]
 > 最初のセットアップの後、グローバル管理者ロールは必要ありません。必要なアカウントは、**ディレクトリ同期アカウント** ロール アカウントのみとなります。 これは必ずしも、グローバル管理者ロールを持つアカウントを削除した方がいいという意味ではありません。 ロールをより弱いロールに変更することをお勧めします。アカウントを完全に削除すると、ウィザードを再実行する必要がある場合に問題が発生する可能性があるためです。 ロールの権限を減らすことによって、Azure AD Connect ウィザードを再び使用する必要がある場合に、常に権限を再昇格させることができます。 
@@ -86,7 +85,7 @@ DirSync からアップグレードする場合は、AD DS エンタープライ
 ### <a name="ad-ds-connector-account-required-permissions-for-express-settings"></a>AD DS コネクタ アカウントの必須のアクセス許可 (簡単設定の場合)
 AD DS コネクタ アカウントは、Windows Server AD の読み取りと書き込みを目的に作成され、簡単設定によって作成された場合、以下のアクセス許可を持ちます。
 
-| アクセス許可 | 使用対象 |
+| 権限 | 使用目的 |
 | --- | --- |
 | <li>ディレクトリの変更のレプリケート</li><li>ディレクトリの変更をすべてにレプリケート |パスワード ハッシュの同期 |
 | すべてのプロパティの読み取り/書き込み (ユーザー) |インポートおよび Exchange ハイブリッド |
@@ -134,7 +133,7 @@ AD DS コネクタ アカウントは、Windows Server AD の読み取りと書�
 >[!IMPORTANT]
 >ADSyncConfig.psm1 という名前の新しい PowerShell モジュールがビルド **1.1.880.0** (2018 年 8 月にリリース) に導入されました。これには、Azure AD DS コネクタ アカウント用の適切な Active Directory アクセス許可を構成するのに役立つコマンドレットのコレクションが含まれています。
 >
->詳しくは、「[Azure AD Connect: AD DS コネクタ アカウントのアクセス許可の構成](how-to-connect-configure-ad-ds-connector-account.md)」を参照してください。
+>詳しくは、「[Azure AD Connect: Configure AD DS Connector Account Permission](how-to-connect-configure-ad-ds-connector-account.md)」(Azure AD Connect: AD DS コネクタ アカウントのアクセス許可を構成する) をご覧ください
 
 **[ディレクトリの接続]** ページで指定するアカウントは、インストールの前に Active Directory に存在している必要があります。  Azure AD Connect バージョン 1.1.524.0 以降には、Azure AD Connect ウィザードが Active Directory への接続に使う **AD DS コネクタ アカウント**を作成できるオプションがあります。  
 
@@ -159,7 +158,7 @@ Azure AD Connect のいずれかのバージョンから新しいリリースに
 >ビルド 1.1.484 以降の Azure AD Connect には回帰バグがあり、SQL データベースのアップグレードに sysadmin アクセス許可が必要です。  このバグはビルド 1.1.647 で修正されています。  このビルドにアップグレードする場合は、sysadmin アクセス許可が必要です。  dbo アクセス許可では不十分です。  sysadmin アクセス許可がないユーザーが Azure AD Connect をアップグレードしようとすると、アップグレードは失敗し、Azure AD Connect が正しく機能しなくなります。  Microsoft はこの問題を認識しており、解決に取り組んでいます。
 
 
-| プリンシパル | 必要なアクセス許可 | 使用対象 |
+| プリンシパル | 必要なアクセス許可 | 使用目的 |
 | --- | --- | --- |
 | インストール ウィザードを実行するユーザー |ローカル サーバーの管理者 |バイナリを更新します。 |
 | インストール ウィザードを実行するユーザー |ADSyncAdmins のメンバー |同期規則などの構成を変更します。 |
@@ -201,7 +200,7 @@ Azure AD Connect のいずれかのバージョンから新しいリリースに
 - sMSA - [スタンドアロンの管理されたサービス アカウント](https://technet.microsoft.com/library/dd548356.aspx)
 - gMSA - [グループの管理されたサービス アカウント](https://technet.microsoft.com/library/hh831782.aspx)
 
-| | LocalDB</br>Express | LocalDB/LocalSQL</br>カスタム | リモート SQL</br>カスタム |
+| | LocalDB</br>Express | LocalDB/LocalSQL</br>Custom | リモート SQL</br>Custom |
 | --- | --- | --- | --- |
 | **スタンドアロン/ワークグループ コンピューター** | サポートされていません | **VSA**</br>ローカル アカウント (2008)</br>ローカル アカウント |  サポートされていません |
 | **ドメインに参加しているコンピューター** | **VSA**</br>ローカル アカウント (2008) | **VSA**</br>ローカル アカウント (2008)</br>ローカル アカウント</br>ドメイン アカウント</br>sMSA、gMSA | **gMSA**</br>ドメイン アカウント |
@@ -269,5 +268,5 @@ Azure AD コネクタ アカウントのパスワードの管理またはリセ�
 |DirSync からのアップグレード | [Azure AD 同期ツール (DirSync) からのアップグレード](how-to-dirsync-upgrade-get-started.md)|
 |インストール後に | [インストールの確認とライセンスの割り当て](how-to-connect-post-installation.md)|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

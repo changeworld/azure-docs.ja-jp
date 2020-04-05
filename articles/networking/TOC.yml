@@ -2,7 +2,7 @@
   items:
     - name: Azure のネットワークについて
       href: networking-overview.md
-    - name: アーキテクチャ
+    - name: Architecture
       items:
         - name: 仮想データセンター
           href: /azure/architecture/vdc/networking-virtual-datacenter
@@ -22,6 +22,8 @@
           href: disaster-recovery-dns-traffic-manager.md
     - name: 計画と設計
       items:
+        - name: リモートでの作業のサポート
+          href: working-remotely-support.md
         - name: 仮想ネットワーク
           href: ../virtual-network/virtual-network-vnet-plan-design-arm.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: クロスプレミス接続 - VPN

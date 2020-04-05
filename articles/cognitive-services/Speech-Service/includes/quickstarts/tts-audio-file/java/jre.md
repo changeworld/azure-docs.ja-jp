@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: c8de61d88417a19680b606be5e06583c36c94fbc
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925189"
 ---
 ## <a name="prerequisites"></a>前提条件
@@ -123,7 +123,7 @@ F11 キーを押すか、 **[Run]**  >  **[Debug]** の順に選択します。
 
 [!INCLUDE [footer](./footer.md)]
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [Custom Voice を作成する](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
 - [カスタム音声サンプルを録音する](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

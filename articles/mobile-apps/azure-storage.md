@@ -1,37 +1,37 @@
 ---
 title: 高度なセキュリティで保護され、耐久性に優れたスケーラブルなアプリを Azure Storage で構築するためのクラウド ストレージ
 description: モバイル アプリケーションの大規模な構造化データおよび非構造化データをクラウドに格納するためのサービスについて説明します。
-author: elamalani
+author: codemillmatt
 ms.assetid: 12bbb070-9b3c-4faf-8588-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: 53754976a6e1f6d893cf7d6ab73d57c95dae193f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: 682f06936480d9018d759b4df3bed80be1206faf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453263"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240985"
 ---
 # <a name="cloud-storage-for-highly-secure-durable-scalable-apps-with-azure-storage"></a>高度なセキュリティで保護され、耐久性に優れたスケーラブルなアプリを Azure Storage で実現するためのクラウド ストレージ
 [Azure Storage](https://azure.microsoft.com/services/storage/) は、データ オブジェクトのための高度にスケーラブルなオブジェクト ストア、クラウドのためのファイル システム サービス、信頼性の高いメッセージングのためのメッセージング ストア、および NoSQL ストアを提供する、最新のアプリケーション向けの Microsoft のクラウド ストレージ ソリューションです。 Azure Storage の特徴を次に示します。
 - **持続性と高可用性:** 冗長性により、一時的なハードウェア障害が発生した場合でも、データが安全に保たれます。 地域的な災害または自然災害から保護するために、データセンターまたは地理的リージョンにまたがってデータをレプリケートすることもできます。 この方法でレプリケートされたデータは、予期しない停止が発生した場合でも高可用性を維持します。
 - **セキュリティ保護:** Azure Storage に書き込まれたすべてのデータは、サービスによって暗号化されます。 Azure Storage では、データにアクセスできるユーザーをきめ細かく制御できます。
 - **スケーラブル:** サービスは、今日のアプリケーションのデータ ストレージとパフォーマンスに関するニーズを満たすために、高度にスケーラブルな設計となっています。
-- **マネージド:** Azure では、お客様に代わって、ハードウェアのメンテナンス、更新プログラム、および重大な問題への対処が行われます。
-- **アクセス可能:** 世界中のどこからでも、HTTP または HTTPS 経由でデータにアクセスできます。 Microsoft ではクライアント ライブラリを .NET、Java、Node.js、Python、PHP、Ruby、Go などのさまざまな言語で提供し、また実績のある REST API を提供しています。 スクリプトは Azure PowerShell または Azure CLI でサポートされています。 Azure portal と Azure Storage Explorer により、データを操作するための使いやすい視覚的ソリューションが提供されます。
+- **マネージド:** Microsoft Azure では、ユーザーに代わって、ハードウェアのメンテナンス、更新、および重大な問題が処理されます。
+- **アクセス可能:** 世界中のどこからでも、HTTP または HTTPS 経由でデータにアクセスできます。 Microsoft では、.NET、Java、Node.js、Python、PHP、Ruby、Go などのさまざまな言語のクライアント ライブラリと、成熟した REST API を提供しています。 スクリプトは Azure PowerShell または Azure CLI でサポートされています。 Azure portal と Azure Storage Explorer により、データを操作するための使いやすい視覚的ソリューションが提供されます。
 
 ご利用のモバイル アプリ内でクラウド ストレージを有効にするには、次のサービスを使用します。
 
 ## <a name="azure-blob-storage"></a>Azure BLOB ストレージ
-[Azure BLOB ストレージ](https://azure.microsoft.com/services/storage/blobs/)は、クラウド用のオブジェクト ストレージ ソリューションを提供します。 BLOB ストレージは、テキストやバイナリなどの特定のデータ モデルまたは定義に準拠していない非構造化データを大量に格納するために最適化されています。 クライアント ライブラリで使用される各種言語がサポートされています。 BLOB ストレージは、次の用途向けに設計されています。
+[Azure BLOB ストレージ](https://azure.microsoft.com/services/storage/blobs/)は、クラウド用のオブジェクト ストレージ ソリューションを提供します。 BLOB ストレージは、テキストやバイナリなどの特定のデータ モデルまたは定義に準拠していない非構造化データを大量に格納するために最適化されています。 クライアント ライブラリが使用するさまざまな言語がサポートされています。 BLOB ストレージは、次の用途向けに設計されています。
 - 画像またはドキュメントをブラウザーに直接配信する。
 - 分散アクセス用にファイルを格納する。
 - ビデオおよびオーディオをストリーミング配信する。
 - ログ ファイルに書き込む。
 - バックアップと復元、ディザスター リカバリー、アーカイブのためのデータを格納する。
-- オンプレミスまたは Azure ホステッド サービスで分析するデータを格納する。
+- オンプレミス サービスまたは Azure ホステッド サービスで分析するデータを格納する。
 
 **参照**
 - [Azure Portal](https://portal.azure.com)

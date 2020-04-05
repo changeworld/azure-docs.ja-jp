@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.openlocfilehash: 00d260a74807774d5bf226c3ec00a6b84f93b8d1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474621"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226199"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>Azure portal を使用した Azure リソース の管理
 
@@ -33,7 +33,7 @@ Azure のリソースは、Azure のサービスとリソース グループで�
 
 サービスの種類によってリソースを開くには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 左側のウィンドウで、Azure のサービスを選択します。 この場合は、 **[ストレージ アカウント]** です。  該当するサービスが表示されない場合は、 **[すべてのサービス]** を選択し、サービスの種類を選択します。
 
     ![ポータルで Azure リソースを開く](./media/manage-resources-portal/manage-azure-resources-portal-open-service.png)
@@ -48,7 +48,7 @@ Azure のリソースは、Azure のサービスとリソース グループで�
 
 リソース グループによってリソースを開くには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 左側のウィンドウで、 **[リソース グループ]** を選択し、グループ内のリソースを一覧表示します。
 3. 開くリソースを選択します。 
 

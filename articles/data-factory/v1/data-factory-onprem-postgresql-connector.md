@@ -13,14 +13,14 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929062"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236319"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Azure Data Factory を使用して PostgreSQL からデータを移動する
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-onprem-postgresql-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-postgresql.md)
 
@@ -30,7 +30,7 @@ ms.locfileid: "74929062"
 
 この記事では、Azure Data Factory のコピー アクティビティを使って、オンプレミスの PostgreSQL データベースからデータを移動させる方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
 
-オンプレミスの PostgreSQL データ ストアから、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関するセクションを参照してください。 Data Factory は、現時点では PostgreSQL データベースから他のデータ ストアへのデータ移動をサポートしていますが、他のデータ ストアから PostgreSQL データベースへのデータ移動に関してはサポートしていません。
+オンプレミスの PostgreSQL データ ストアから、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関するセクションをご覧ください。 Data Factory は、現時点では PostgreSQL データベースから他のデータ ストアへのデータ移動をサポートしていますが、他のデータ ストアから PostgreSQL データベースへのデータ移動に関してはサポートしていません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,12 +44,12 @@ PostgreSQL データベースが Azure IaaS VM でホストされている場合
 ## <a name="supported-versions-and-installation"></a>サポートされているバージョンとインストール
 Data Management Gateway で PostgreSQL Databases に接続するには、Data Management Gateway と同じシステムに 2.0.12 ～ 3.1.9 バージョンの [PostgreSQL の Ngpsql データ プロバイダー](https://go.microsoft.com/fwlink/?linkid=282716)をインストールしてください。 PostgreSQL バージョン 7.4 以降がサポートされています。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 さまざまなツールまたは API を使用して、オンプレミスの PostgreSQL データ ストアからデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-- パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
+- パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
 - また、次のツールを使用してパイプラインを作成することもできます。
-  - Visual Studio
+  - Visual Studio
   - Azure PowerShell
   - Azure Resource Manager テンプレート
   - .NET API
@@ -63,7 +63,7 @@ Data Management Gateway で PostgreSQL Databases に接続するには、Data Ma
 2. コピー操作用の入力データと出力データを表す**データセット**を作成します。
 3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 オンプレミスの PostgreSQL データ ストアからデータをコピーするために使用される Data Factory エンティティに関する JSON 定義のサンプルについては、この記事の「[JSON サンプル: PostgreSQL から Azure BLOB にデータをコピーする](#json-example-copy-data-from-postgresql-to-azure-blob)」のセクションを参照してください。
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 オンプレミスの PostgreSQL データ ストアからデータをコピーするために使用する Data Factory エンティティに関する JSON 定義のサンプルについては、この記事のセクション、「[JSON の使用例: PostgreSQL から Azure BLOB へのデータのコピー](#json-example-copy-data-from-postgresql-to-azure-blob)」をご覧ください。
 
 次のセクションでは、PostgreSQL データ ストアに固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。
 
@@ -72,13 +72,13 @@ Data Management Gateway で PostgreSQL Databases に接続するには、Data Ma
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは、次のように設定する必要があります:**OnPremisesPostgreSql** |はい |
+| type |type プロパティを **OnPremisesPostgreSql** |はい |
 | server |PostgreSQL サーバーの名前です。 |はい |
-| database |PostgreSQL データベースの名前です。 |はい |
+| [データベース] |PostgreSQL データベースの名前です。 |はい |
 | schema |データベース内のスキーマの名前です。 スキーマ名は、大文字と小文字が区別されます。 |いいえ |
-| authenticationType |PostgreSQL データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |はい |
+| authenticationType |PostgreSQL データベースへの接続に使用される認証の種類です。 Anonymous、Basic、Windows のいずれかの値になります。 |はい |
 | username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ |
-| password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
+| パスワード |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
 | gatewayName |Data Factory サービスが、オンプレミスの PostgreSQL データベースへの接続に使用するゲートウェイの名前です。 |はい |
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
@@ -108,7 +108,7 @@ source の種類が **RelationalSource** (PostgreSQL を含む) である場合�
 
  `"query": "select * from \"MySchema\".\"MyTable\""`
 
-## <a name="json-example-copy-data-from-postgresql-to-azure-blob"></a>JSON の使用例:PostgreSQL から Azure BLOB にデータをコピーする
+## <a name="json-example-copy-data-from-postgresql-to-azure-blob"></a>JSON の使用例: PostgreSQL から Azure BLOB へのデータのコピー
 次の例は、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、PostgreSQL データベースから Azure BLOB ストレージにデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、 [こちら](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に記載されているシンクのいずれかにデータをコピーすることができます。
 
 > [!IMPORTANT]
@@ -118,9 +118,9 @@ source の種類が **RelationalSource** (PostgreSQL を含む) である場合�
 
 1. [OnPremisesPostgreSql](data-factory-onprem-postgresql-connector.md#linked-service-properties)型のリンクされたサービス。
 2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)型のリンクされたサービス。
-3. [RelationalTable](data-factory-onprem-postgresql-connector.md#dataset-properties) 型の入力[データセット](data-factory-create-datasets.md)。
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 型の出力[データセット](data-factory-create-datasets.md)。
-5. [RelationalSource](data-factory-onprem-postgresql-connector.md#copy-activity-properties) と [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
+3. [RelationalTable](data-factory-create-datasets.md) 型の入力[データセット](data-factory-onprem-postgresql-connector.md#dataset-properties)。
+4. [AzureBlob](data-factory-create-datasets.md) 型の出力[データセット](data-factory-azure-blob-connector.md#dataset-properties)。
+5. [RelationalSource](data-factory-create-pipelines.md) と [BlobSink](data-factory-onprem-postgresql-connector.md#copy-activity-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
 このサンプルは PostgreSQL データベースのクエリ結果のデータを BLOB に 1 時間ごとにコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
@@ -189,7 +189,7 @@ source の種類が **RelationalSource** (PostgreSQL を含む) である場合�
 
 **Azure BLOB の出力データセット:**
 
-データは新しい BLOB に 1 時間おきに書き込まれます (frequency: hour、interval: 1)。 BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
+データは新しい BLOB に 1 時間おきに書き込まれます (頻度: 時間、間隔: 1)。 BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
 
 ```json
 {
@@ -309,31 +309,31 @@ PostgreSQL にデータを移動する場合、PostgreSQL 型から .NET 型に�
 | bigserial |serial8 |Int64 |
 | bit [(n)] | |Byte[], String |
 | bit varying [ (n) ] |varbit |Byte[], String |
-| Boolean |bool |Boolean |
+| boolean |[bool] |Boolean |
 | box | |Byte[], String |
 | bytea | |Byte[], String |
-| character [(n)] |char [(n)] |string |
-| character varying [(n)] |varchar [(n)] |string |
-| cid | |string |
-| cidr | |string |
+| character [(n)] |char [(n)] |String |
+| character varying [(n)] |varchar [(n)] |String |
+| cid | |String |
+| cidr | |String |
 | circle | |Byte[], String |
 | date | |Datetime |
-| daterange | |string |
+| daterange | |String |
 | double precision |float8 |Double |
 | inet | |Byte[], String |
-| intarry | |string |
-| int4range | |string |
-| int8range | |string |
-| integer |int, int4 |Int32 |
+| intarry | |String |
+| int4range | |String |
+| int8range | |String |
+| 整数 (integer) |int, int4 |Int32 |
 | interval [fields] [(p)] | |Timespan |
-| json | |string |
+| json | |String |
 | jsonb | |Byte[] |
 | line | |Byte[], String |
 | lseg | |Byte[], String |
 | macaddr | |Byte[], String |
 | money | |Decimal |
 | numeric [(p, s)] |decimal [(p, s)] |Decimal |
-| numrange | |string |
+| numrange | |String |
 | oid | |Int32 |
 | path | |Byte[], String |
 | pg_lsn | |Int64 |
@@ -343,7 +343,7 @@ PostgreSQL にデータを移動する場合、PostgreSQL 型から .NET 型に�
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | serial |serial4 |Int32 |
-| text | |string |
+| text | |String |
 
 ## <a name="map-source-to-sink-columns"></a>ソース列からシンク列へのマップ
 ソース データセット列のシンク データセット列へのマッピングの詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。

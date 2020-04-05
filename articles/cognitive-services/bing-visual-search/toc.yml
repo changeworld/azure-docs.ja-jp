@@ -7,7 +7,7 @@
     - name: Bing Search API を比較する
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: REST API
       expanded: true
@@ -24,23 +24,21 @@
           href: quickstarts/ruby.md
         - name: Go の使用
           href: quickstarts/go.md
-    - name: SDK
+    - name: クライアント ライブラリ
       expanded: true
       items:
-        - name: 'C# の使用'
-          href: visual-search-sdk-c-sharp.md
-        - name: Node.js の使用
-          href: visual-search-sdk-node.md
-        - name: Python の使用
-          href: visual-search-sdk-python.md
-        - name: Java の使用
-          href: visual-search-sdk-java.md
+        - name: Bing Visual Search クライアント ライブラリ
+          href: ./quickstarts/client-libraries.md
 - name: チュートリアル
   items:
     - name: 画像のアップロード
       href: tutorial-visual-search-image-upload.md
     - name: 画像の領域のトリミングと検索
       href: tutorial-visual-search-crop-area-results.md
+    - name: 以前の検索から類似の画像を見つける
+      href: tutorial-visual-search-insights-token.md
+    - name: 単一ページの Web アプリを作成する
+      href: tutorial-bing-visual-search-single-page-app.md
 - name: サンプル
   items:
     - name: コード サンプル
@@ -56,17 +54,13 @@
     - name: Visual Search API 用の分析
       maintainContext: true
       href: ../bing-web-search/bing-web-stats.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: トークンを使用した分析情報の取得
       href: use-insights-token.md
     - name: サムネイルのサイズ変更とトリミング
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md
-    - name: 画像の分析情報トークンを使用して画像を検索する
-      href: tutorial-visual-search-insights-token.md
-    - name: 単一ページの Web アプリを作成する
-      href: tutorial-bing-visual-search-single-page-app.md
 - name: リファレンス
   items:
     - name: REST v7 API

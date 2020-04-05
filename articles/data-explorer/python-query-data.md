@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.openlocfilehash: ebd65f2dcbb0040b764290627bbfd2901aa9a7d3
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77443977"
 ---
 # <a name="query-data-using-the-azure-data-explorer-python-library"></a>Azure Data Explorer の Python ライブラリを使用してデータのクエリを実行する
@@ -77,7 +77,7 @@ KCSB.authority_id = AAD_TENANT_ID
 
 ## <a name="connect-to-azure-data-explorer-and-execute-a-query"></a>Azure データ エクスプローラーに接続し、クエリを実行する
 
-クラスターに対してクエリを実行し、データ フレームに出力を格納します。 このコードを実行すると、次のようなメッセージが返されます。"*サインインするには、Web ブラウザーを使用して https://microsoft.com/devicelogin ページを開き、認証するためのコード F3W4VWZDM を入力します*。" この手順に従ってサインインし、元のページに戻って次のコード ブロックを実行します。
+クラスターに対してクエリを実行し、データ フレームに出力を格納します。 このコードを実行すると、次のようなメッセージが返されます: *サインインするには、Web ブラウザーを使用してページ https://microsoft.com/devicelogin を開き、コード F3W4VWZDM を入力して認証します*。 この手順に従ってサインインし、元のページに戻って次のコード ブロックを実行します。
 
 ```python
 KUSTO_CLIENT = KustoClient(KCSB)

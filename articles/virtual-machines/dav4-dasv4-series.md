@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: 809843bddc4216df4dab44330172d36778248b1a
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78162181"
 ---
 # <a name="dav4-and-dasv4-series"></a>Dav4 および Dasv4 シリーズ
@@ -53,13 +53,13 @@ Premium Storage: サポートされています
 
 Premium Storage キャッシュ:サポートされています
 
-ライブ マイグレーション: サポートされています
+ライブ マイグレーション:サポートされています
 
 メモリ保持更新: サポートされています
 
 Easv4 シリーズのサイズは、2.35Ghz AMD EPYC<sup>TM</sup> 7452 プロセッサをベースにしています。このプロセッサでは 3.35 GHz のブースト最大周波数を達成し、Premium SSD を使用できます。 Dasv4 シリーズのサイズでは、ほとんどの運用環境のワークロードに適した vCPU、メモリ、および一時ストレージの組み合わせが提供されます。
 
-| サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (MBps) |
+| サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループットIOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (MBps) |
 |-----|-----|-----|-----|-----|-----|-----|-----|
 | Standard_D2as_v4|2|8|16|4|4000 / 32 (50)|3200 / 48|2/1,000 |
 | Standard_D4as_v4|4|16|32|8|8000 / 64 (100)|6400 / 96|2/2,000 |

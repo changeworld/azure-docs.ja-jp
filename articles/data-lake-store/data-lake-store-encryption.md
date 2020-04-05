@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
 ms.openlocfilehash: a009f212bd8baaa353d602dc6090aeeccddd4936
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60878444"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 でのデータの暗号化
@@ -74,7 +74,7 @@ MEK とそれが格納される Key Vault インスタンスの管理者が 2 �
 
 データ暗号化の設計で使用されるキーの種類は 3 つあります。 次の表で簡単に説明します。
 
-| キー                   | 省略形 | 関連付け先 | 保存先                             | Type       | メモ                                                                                                   |
+| Key                   | 省略形 | 関連付け先 | 保存先                             | 種類       | メモ                                                                                                   |
 |-----------------------|--------------|-----------------|----------------------------------------------|------------|---------------------------------------------------------------------------------------------------------|
 | マスター暗号化キー | MEK          | Data Lake Storage Gen1 アカウント | Key Vault                              | 非対称 | Data Lake Storage Gen1 側で管理するか、ユーザー側で管理できます。                                                              |
 | データ暗号化キー   | DEK          | Data Lake Storage Gen1 アカウント | Data Lake Storage Gen1 サービスによって管理される永続的ストレージ | 対称  | DEK は MEK で暗号化されます。 その暗号化された DEK が永続メディアに格納されます。 |
@@ -115,7 +115,7 @@ Data Lake Storage Gen1 アカウントを設定するときに、独自キーの
 
 ### <a name="how-to-rotate-the-mek-in-data-lake-storage-gen1"></a>Data Lake Storage Gen1 の MEK を交換する方法
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 2. ご利用の Data Lake Storage Gen1 アカウントに関連付けられているキーの格納場所となっている Key Vault インスタンスに移動します。 **[キー]** を選択します。
 
     ![Key Vault のスクリーンショット](./media/data-lake-store-encryption/keyvault.png)

@@ -8,10 +8,10 @@ ms.date: 02/07/2019
 ms.author: cherylmc
 ms.topic: conceptual
 ms.openlocfilehash: f351f14796ec736bd5525f139a518c9a0dd3d19f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162108"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>PowerShell を使用して仮想ネットワーク ゲートウェイを削除する
@@ -56,7 +56,7 @@ Get-AzSubscription
 Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
 ```
 
-## <a name="S2S"></a>サイト間 VPN ゲートウェイを削除する
+## <a name="delete-a-site-to-site-vpn-gateway"></a><a name="S2S"></a>サイト間 VPN ゲートウェイを削除する
 
 S2S 構成の仮想ネットワーク ゲートウェイを削除するには、まず、仮想ネットワーク ゲートウェイに関連する各リソースを削除する必要があります。 リソースは、依存関係に応じた特定の順序で削除する必要があります。 以下の例を使用する場合、一部の値は指定する必要がありますが、その他の値は出力結果です。 デモンストレーション用に、この例では次の特定の値を使用します。
 
@@ -139,7 +139,7 @@ $GWSub = Get-AzVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-Az
 Set-AzVirtualNetwork -VirtualNetwork $GWSub
 ```
 
-## <a name="v2v"></a>VNet 間 VPN ゲートウェイを削除する
+## <a name="delete-a-vnet-to-vnet-vpn-gateway"></a><a name="v2v"></a>VNet 間 VPN ゲートウェイを削除する
 
 V2V 構成の仮想ネットワーク ゲートウェイを削除するには、まず、仮想ネットワーク ゲートウェイに関連する各リソースを削除する必要があります。 リソースは、依存関係に応じた特定の順序で削除する必要があります。 以下の例を使用する場合、一部の値は指定する必要がありますが、その他の値は出力結果です。 デモンストレーション用に、この例では次の特定の値を使用します。
 
@@ -227,7 +227,7 @@ $GWSub = Get-AzVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-Az
 Set-AzVirtualNetwork -VirtualNetwork $GWSub
 ```
 
-## <a name="deletep2s"></a>ポイント対サイト VPN ゲートウェイを削除する
+## <a name="delete-a-point-to-site-vpn-gateway"></a><a name="deletep2s"></a>ポイント対サイト VPN ゲートウェイを削除する
 
 P2S 構成の仮想ネットワーク ゲートウェイを削除するには、まず、仮想ネットワーク ゲートウェイに関連する各リソースを削除する必要があります。 リソースは、依存関係に応じた特定の順序で削除する必要があります。 以下の例を使用する場合、一部の値は指定する必要がありますが、その他の値は出力結果です。 デモンストレーション用に、この例では次の特定の値を使用します。
 
@@ -286,7 +286,7 @@ $GWSub = Get-AzVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-Az
 Set-AzVirtualNetwork -VirtualNetwork $GWSub
 ```
 
-## <a name="delete"></a>リソース グループを削除して VPN ゲートウェイを削除する
+## <a name="delete-a-vpn-gateway-by-deleting-the-resource-group"></a><a name="delete"></a>リソース グループを削除して VPN ゲートウェイを削除する
 
 リソース グループにどのリソースも保持する必要がなく、単に最初からやり直したい場合は、リソース グループ全体を削除できます。 すべてを削除するには、これが簡単な方法です。 次の手順は、Resource Manager デプロイ モデルに該当します。
 

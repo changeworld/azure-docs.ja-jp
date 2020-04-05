@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 01/22/2020
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 92c2e79910e40721a0ef62d44825bd1f3e19fc79
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 0df38533afe97f010d1050c3ee2a4a69a54d4cc7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548217"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335092"
 ---
-| リソース | 既定の制限 |
+| リソース | 制限 |
 | --- | --- |
 | データ スループット |30 Gbps<sup>1</sup> |
 |ルール|10,000。 すべての規則の種類が結合されます。|

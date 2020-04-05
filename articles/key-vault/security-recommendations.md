@@ -11,10 +11,10 @@ ms.date: 09/30/2019
 ms.author: barclayn
 ms.custom: security-recommendations
 ms.openlocfilehash: 9fd41ae9b61a9c74fd5d99dd71199cfde06f5cb2
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78192372"
 ---
 # <a name="security-recommendations-for-azure-key-vault"></a>Azure Key Vault のセキュリティに関する推奨事項

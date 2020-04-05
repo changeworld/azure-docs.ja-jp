@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/10/2020
 ms.openlocfilehash: f8737f645df2aefbf9ce544199f0cc45ce6a3d60
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162805"
 ---
 # <a name="run-apache-spark-from-the-spark-shell"></a>Spark Shell から Apache Spark を実行する
 
-対話型の [Apache Spark](https://spark.apache.org/) シェルは、一度に 1 つずつ Spark コマンドを実行し、結果を表示する REPL (read-execute-print loop) 環境を提供します。 このプロセスは、開発およびデバッグに役立ちます。 Spark では、シェルが 1 つサポートしている言語 (Scala、Python、R) ごとに用意されていまます。
+対話型の [Apache Spark](https://spark.apache.org/) シェルは、一度に 1 つずつ Spark コマンドを実行し、結果を表示する REPL (read-execute-print loop) 環境を提供します。 このプロセスは、開発およびデバッグに役立ちます。 Spark は、そのサポートされている言語 (Scala、Python、R) ごとに 1 つのシェルを提供します。
 
 ## <a name="run-an-apache-spark-shell"></a>Apache Spark シェルの実行
 

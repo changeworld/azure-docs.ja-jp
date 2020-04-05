@@ -8,11 +8,11 @@ ms.author: bwren
 ms.date: 08/19/2019
 ms.custom: mvc, sec-javascript-october2019
 ms.openlocfilehash: 2e63b2ca0ee7246009068e6a2875795a14aeddb3
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77660191"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215170"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Azure Monitor を使用して Azure 仮想マシンからデータを収集する
 
@@ -22,7 +22,7 @@ ms.locfileid: "77660191"
 
 ## <a name="sign-in-to-azure-portal"></a>Azure Portal にサインインする
 
-Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。 
+Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。 
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
 

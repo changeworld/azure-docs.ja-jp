@@ -1,19 +1,19 @@
 ---
 title: モビリティ (輸送) の対象範囲 | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps のモビリティの対象範囲について説明します
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 06/05/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 04804f28b2b0b5c45ed8f523d2f465f81b6ab151
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 85988d74d21c411586a368e12972450116259a45
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208252"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334400"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Azure Maps のモビリティ範囲
 

@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 9883256fc801d37acd4ea10226bd9e541f9135f7
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 9857de0470baa35dcc8005e1622e5e593da95751
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268654"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128345"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Azure での Linux Data Science Virtual Machine を使用したデータ サイエンス
 
@@ -537,7 +537,7 @@ PostgreSQL データベースに格納されたデータを使用して機械学
 
 ### <a name="sql-data-warehouse"></a>SQL Data Warehouse
 
-Azure SQL Data Warehouse は、クラウドベースのスケールアウト データベースであり、リレーショナルか非リレーショナルかを問わず、大規模なデータを処理できます。 詳しくは、「 [Azure SQL Data Warehouse の概要](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+Azure SQL Data Warehouse は、クラウドベースのスケールアウト データベースであり、リレーショナルか非リレーショナルかを問わず、大規模なデータを処理できます。 詳しくは、「 [Azure SQL Data Warehouse の概要](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
 データ ウェアハウスに接続し、テーブルを作成するには、コマンド プロンプトから次のコマンドを実行します。
 

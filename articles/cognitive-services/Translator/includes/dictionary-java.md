@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 63c524880a47c6e519649bd871a6216d6faeefce
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69907084"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
@@ -88,7 +88,7 @@ public class AltTranslation {
 }
 ```
 
-次の行を `AltTranslation` クラスに追加します。 まず、サブスクリプション キーとエンドポイントが環境変数から読み取られます。 `url` には、`api-version` と共に別途 2 つのパラメーターが追加されていることがわかります。 翻訳の入力と出力は、これらのパラメーターを使用して設定します。 このサンプルでは、英語 (`en`) とスペイン語 (`es`) です。
+次の行を `AltTranslation` クラスに追加します。 まず、サブスクリプション キーとエンドポイントが環境変数から読み取られます。 `api-version` には、`url` と共に別途 2 つのパラメーターが追加されていることがわかります。 翻訳の入力と出力は、これらのパラメーターを使用して設定します。 このサンプルでは、英語 (`en`) とスペイン語 (`es`) です。
 
 ```java
 private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
@@ -229,7 +229,7 @@ gradle run
 ]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 API のリファレンスを見て、Translator Text API でできるすべてのことを理解してください。
 

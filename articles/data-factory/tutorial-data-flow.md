@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/07/2019
 ms.openlocfilehash: e6ca8007a96cc63b51b4f79b69029cbf0799e71c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75979192"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>マッピング データ フローを使用してデータを変換する
@@ -60,7 +60,7 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
     リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。 
 6. **[バージョン]** で、 **[V2]** を選択します。
 7. **[場所]** で、データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストア (Azure Storage、SQL Database など) やコンピューティング (Azure HDInsight など) は、他のリージョンに存在していてもかまいません。
-8. **作成** を選択します。
+8. **［作成］** を選択します
 9. 作成が完了すると、その旨が通知センターに表示されます。 **[リソースに移動]** を選択して、Data factory ページに移動します。
 10. **[Author & Monitor]\(作成と監視\)** を選択して、別のタブで Data Factory (UI) を起動します。
 

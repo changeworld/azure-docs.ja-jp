@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: pepogors
 ms.openlocfilehash: 46601fd91fccb5bd0866bd999cc7643c37c6d582
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75551779"
 ---
 # <a name="azure-service-fabric-application-and-cluster-best-practices"></a>Azure Service Fabric のアプリケーションとクラスターに関するベスト プラクティス

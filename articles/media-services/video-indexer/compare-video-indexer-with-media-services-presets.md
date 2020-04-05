@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/24/2020
 ms.author: juliako
 ms.openlocfilehash: dcfc6ea4afe23424e72c625518356be52f62bc81
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77602197"
 ---
 # <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>Azure Media Services v3 プリセットと Video Indexer の比較 

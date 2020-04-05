@@ -25,7 +25,7 @@ Azure Form Recognizer では、機械学習テクノロジを適用して、フ�
 > [!IMPORTANT]
 > Form Recognizer コンテナーでは、現在、Form Recognizer API バージョン 1.0 が使用されています。 API の最新バージョンにアクセスするには、代わりにマネージド サービスを使用できます。
 
-|Function|[機能]|
+|機能|特徴|
 |-|-|
 |Form Recognizer| <li>PDF、PNG、JPG ファイルを処理する<li>同じレイアウトのフォームを少なくとも 5 つ使用してカスタム モデルをトレーニングする <li>キーと値のペアおよびテーブル情報を抽出する <li>Azure Cognitive Service の Computer Vision API のテキスト認識機能を使用して、フォーム内の画像から印刷されたテキストを検出し、抽出する<li>注釈またはラベル付けを必要としない|
 
@@ -35,7 +35,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Form Recognizer コンテナーを使用する前に、次の前提条件を満たす必要があります。
 
-|Required|目的|
+|必須|目的|
 |--|--|
 |Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> Windows では、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。|

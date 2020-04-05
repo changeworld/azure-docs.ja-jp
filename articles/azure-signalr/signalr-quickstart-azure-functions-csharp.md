@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
 ms.openlocfilehash: 75d9977546c2a085765310a5654897f739a271ae
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "65595397"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-c"></a>クイック スタート:C\# を使用した Azure Functions と SignalR Service によるチャット ルームの作成
@@ -20,7 +20,7 @@ Azure SignalR Service を使用すると、アプリケーションにリアル�
 
 ## <a name="prerequisites"></a>前提条件
 
-まだ Visual Studio 2019 をインストールしていない場合は、**無料**の [Visual Studio 2019 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
+Visual Studio 2019 をまだインストールしていない場合は、**無料**の [Visual Studio 2019 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
 
 [Azure Functions Core Tools (v2)](https://github.com/Azure/azure-functions-core-tools#installing)、[.NET Core SDK](https://dotnet.microsoft.com/download)、お好みのコード エディターを使用して、このチュートリアルをコマンド ライン (macOS、Windows、または Linux) で実行することもできます。
 
@@ -71,7 +71,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Visual Studio でリアルタイムのサーバーレス アプリケーションを構築して実行しました。 次に、Visual Studio で Azure Functions を開発およびデプロイする方法の詳細を学習してください。
 

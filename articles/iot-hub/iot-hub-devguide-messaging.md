@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.openlocfilehash: f56332fa7f53c729ffaa28ea375f043d1b4a3678
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60626249"
 ---
 # <a name="send-device-to-cloud-and-cloud-to-device-messages-with-iot-hub"></a>IoT Hub で device-to-cloud および cloud-to-device メッセージを送信する
@@ -41,7 +41,7 @@ IoT Hub のメッセージング機能の中心となる特性は、メッセー
 
 * cloud-to-device メッセージ、必要とされるプロパティ、ダイレクト メソッドのどれを選択するかについては、「[cloud-to-device 通信に関するガイダンス](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-c2d-guidance)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * IoT Hub の[メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)について学習する。
 

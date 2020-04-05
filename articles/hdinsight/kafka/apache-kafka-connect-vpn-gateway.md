@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
 ms.openlocfilehash: 36ff0d5f1fc96b2013555d37a869ebf629a22be7
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78302136"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233515"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Azure Virtual Network 経由で HDInsight 上の Apache Kafka に接続する
 
@@ -58,7 +58,7 @@ HDInsight では、パブリック インターネット経由で Kafka に直�
 
 仮想ネットワークにおける HDInsight の使用方法の詳細については、[Azure HDInsight クラスター用の仮想ネットワークの計画](../hdinsight-plan-virtual-network-deployment.md)に関するページを参照してください。
 
-## <a id="on-premises"></a> オンプレミス ネットワークから Apache Kafka に接続する
+## <a name="connect-to-apache-kafka-from-an-on-premises-network"></a><a id="on-premises"></a> オンプレミス ネットワークから Apache Kafka に接続する
 
 「[Connect HDInsight to your on-premises network (オンプレミス ネットワークに HDInsight を接続する)](./../connect-on-premises-network.md)」の手順に従って、オンプレミス ネットワークと通信する Kafka クラスターを作成します。
 
@@ -72,9 +72,9 @@ HDInsight では、パブリック インターネット経由で Kafka に直�
 * Azure Storage アカウント (HDInsight で使用します)
 * HDInsight 上の Kafka
 
-Kafka クライアントがオンプレミスからクラスターへ接続できることを確認するには、「[例:Python クライアント](#python-client)」セクションの手順を実行します。
+Kafka クライアントがオンプレミスからクラスターへ接続できることを確認するには、「[例: Python クライアント](#python-client)」セクションの手順を実行します。
 
-## <a id="vpnclient"></a> VPN クライアントを使用して Apache Kafka に接続する
+## <a name="connect-to-apache-kafka-with-a-vpn-client"></a><a id="vpnclient"></a> VPN クライアントを使用して Apache Kafka に接続する
 
 このセクションの手順では、次の構成を作成します。
 
@@ -254,7 +254,7 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
 
     ![Apache Ambari サービスの構成](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
 
-4. __kafka-env__ 構成を検索するには、右上の __[Filter (フィルター)]__ フィールドに「`kafka-env`」と入力します。
+4. __kafka-env__ 構成を検索するには、右上の `kafka-env`[Filter (フィルター)]__フィールドに「__ 」と入力します。
 
     ![kafka-env の Kafka 構成](./media/apache-kafka-connect-vpn-gateway/search-for-kafka-env.png)
 
@@ -268,7 +268,7 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-6. Kafka がリッスンするインターフェイスを構成するには、右上の __[Filter (フィルター)]__ フィールドに「`listeners`」と入力します。
+6. Kafka がリッスンするインターフェイスを構成するには、右上の `listeners`[Filter (フィルター)] __フィールドに「__ 」と入力します。
 
 7. すべてのネットワーク インターフェイスをリッスンするように Kafka を構成するには、 __[listeners (リスナー)]__ フィールドの値を `PLAINTEXT://0.0.0.0:9092`に変更します。
 
@@ -288,9 +288,9 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
 
 ### <a name="connect-to-the-vpn-gateway"></a>VPN ゲートウェイに接続する
 
-VPN ゲートウェイに接続するには、[ポイント対サイト接続の構成](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect)に関するドキュメントの「__Azure への接続__」セクションに従います。
+VPN ゲートウェイに接続するには、__ポイント対サイト接続の構成__に関するドキュメントの「[Azure への接続](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect)」セクションに従います。
 
-## <a id="python-client"></a> 例: Python クライアント
+## <a name="example-python-client"></a><a id="python-client"></a>例: Python クライアント
 
 Kafka への接続を検証するには、次の手順に従って Python プロデューサーとコンシューマーを作成します。
 

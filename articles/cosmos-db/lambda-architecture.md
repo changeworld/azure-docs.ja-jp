@@ -7,13 +7,13 @@ ms.author: ramkris
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 68ce06d8a2904bf99f58a53817444b2992b23501
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76719740"
 ---
-# <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Azure Cosmos DB:Azure プラットフォームでラムダ アーキテクチャを実装する 
+# <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Azure Cosmos DB: Azure プラットフォームでラムダ アーキテクチャを実装する 
 
 ラムダ アーキテクチャを使うと、大規模なデータ セットのデータ処理を効率よく行うことができます。 ラムダ アーキテクチャは、バッチ処理、ストリーム処理、およびサービス レイヤーを使って、ビッグ データのクエリに伴う待機時間を最小限にします。 
 
@@ -59,7 +59,7 @@ Azure にラムダ アーキテクチャを実装するには、以下のテク�
  4. **スピード レイヤー**は HDInsight (Apache Spark) を利用して、Azure Cosmos DB の変更フィードを読み取ります。 これにより、データを永続化しながら、データを同時にクエリおよび処理できます。
  5. すべてのクエリの応答は、バッチ ビューとリアルタイム ビューの結果をマージすることで、またはそれらを個別に ping することで得られます。
  
-### <a name="code-example-spark-structured-streaming-to-an-azure-cosmos-db-change-feed"></a>コード例:Azure Cosmos DB 変更フィードへの Spark 構造化ストリーム
+### <a name="code-example-spark-structured-streaming-to-an-azure-cosmos-db-change-feed"></a>コードの例: Azure Cosmos DB 変更フィードへの Spark 構造化ストリーム
 **スピード レイヤー**の一部としての Azure Cosmos DB 変更フィードの簡単なプロトタイプを実行するには、「[Stream Processing Changes using Azure Cosmos DB Change Feed and Apache Spark](https://github.com/Azure/azure-cosmosdb-spark/wiki/Stream-Processing-Changes-using-Azure-Cosmos-DB-Change-Feed-and-Apache-Spark)」(Azure Cosmos DB 変更フィードと Apache Spark を使用したストリーム処理の変更) の例の一部として Twitter データを使ってテストできます。 Twitter の出力をすぐに始めるには、「[Stream feed from Twitter to Cosmos DB](https://github.com/tknandu/TwitterCosmosDBFeed)」(Twitter から Cosmos DB へのストリーム フィード) のコード サンプルをご覧ください。 前の例では、Twitter のデータを Azure Cosmos DB に読み込んでおり、変更フィードに接続するように HDInsight (Apache Spark) クラスターを設定することができます。 この構成を設定する方法について詳しくは、「[Apache Spark to Azure Cosmos DB Connector Setup](https://github.com/Azure/azure-cosmosdb-spark/wiki/Spark-to-Cosmos-DB-Connector-Setup)」(Apache Spark から Azure Cosmos DB へのコネクタのセットアップ) をご覧ください。  
 
 次のコード スニペットでは、構造化ストリーミング ジョブを実行して Azure Cosmos DB 変更フィード (リアルタイムの Twitter データ ストリームをレビューします) に接続し、実行間隔のカウントを実行するように、`spark-shell` を構成する方法を示します。
@@ -103,7 +103,7 @@ Azure Cosmos DB 変更フィードについて詳しくは、以下をご覧く�
 
 * [Azure Cosmos DB での Change Feed サポートの使用](change-feed.md)
 * [Azure Cosmos DB 変更フィード プロセッサ ライブラリの概要](https://azure.microsoft.com/blog/introducing-the-azure-cosmosdb-change-feed-processor-library/)
-* [ストリーム処理の変更: Azure CosmosDB 変更フィード + Apache Spark](https://azure.microsoft.com/blog/stream-processing-changes-azure-cosmosdb-change-feed-apache-spark/)
+* [ストリーム処理の変更: Azure Cosmos DB 変更フィード + Apache Spark](https://azure.microsoft.com/blog/stream-processing-changes-azure-cosmosdb-change-feed-apache-spark/)
 
 ## <a name="batch-and-serving-layers"></a>バッチ レイヤーとサービス レイヤー
 新しいデータは Azure Cosmos DB に読み込まれるので (ここでは、スピード レイヤーに対して変更フィードが使われています)、**マスター データセット** (生データの変更不能な追加専用のセット) はここに存在します。 ここからは、次の図に示すように、HDInsight (Apache Spark) を使って、**バッチ レイヤー**から**サービス レイヤー**までの事前計算機能を実行します。
@@ -118,7 +118,7 @@ Azure Cosmos DB 変更フィードについて詳しくは、以下をご覧く�
  4. **スピード レイヤー**については後で説明します。
  5. すべてのクエリの応答は、バッチ ビューとリアルタイム ビューの結果をマージすることで、またはそれらを個別に ping することで得られます。
 
-### <a name="code-example-pre-computing-batch-views"></a>コード例:バッチ ビューの事前計算
+### <a name="code-example-pre-computing-batch-views"></a>コードの例: バッチ ビューの事前計算
 Apache Spark から Azure Cosmos DB への**マスター データセット**に対して事前計算ビューを実行する方法を示すため、「[Lambda Architecture Rearchitected - Batch Layer](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb)」(ラムダ アーキテクチャの再設計 - バッチ レイヤー) および「[Lambda Architecture Rearchitected - Batch to Serving Layer](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.ipynb)」(ラムダ アーキテクチャの再設計 - バッチからサービス レイヤー) ノートブックの以下のコード スニペットを使います。 このシナリオでは、Azure Cosmos DB に格納されている Twitter データを使います。
 
 最初に、次の PySpark コードを使って Azure Cosmos DB 内の Twitter データへの構成接続を作成します。
@@ -179,7 +179,7 @@ val writeConfig = Config(writeConfigMap)
 
 ```
 
-`SaveMode` (ドキュメントの `Overwrite` か `Append` かを示します) を指定した後、前の例の Spark SQL クエリと似ている `tweets_bytags` データ フレームを作成します。  `tweets_bytags` データ フレームが作成されたら、前に指定した `writeConfig` を使って `write` メソッドでそれを保存できます。
+`SaveMode` (ドキュメントの `Overwrite` か `Append` かを示します) を指定した後、前の例の Spark SQL クエリと似ている `tweets_bytags` データ フレームを作成します。  `tweets_bytags` データ フレームが作成されたら、前に指定した `write` を使って `writeConfig` メソッドでそれを保存できます。
 
 ```
 // Import SaveMode so you can Overwrite, Append, ErrorIfExists, Ignore
@@ -240,7 +240,7 @@ var streamingQuery = streamingQueryWriter.start()
 
 ```
 
-## <a name="lambda-architecture-rearchitected"></a>ラムダ アーキテクチャ: 再設計済み
+## <a name="lambda-architecture-rearchitected"></a>ラムダ アーキテクチャ: 再設計
 前のセクションで説明したように、次のコンポーネントを使うことで、元のラムダ アーキテクチャを簡略化できます。
 * Azure Cosmos DB
 * バッチ レイヤーとスピード レイヤーの間でデータをマルチキャストする必要がないようにする、Azure Cosmos DB 変更フィード ライブラリ
@@ -259,11 +259,11 @@ var streamingQuery = streamingQueryWriter.start()
 ### <a name="resources"></a>リソース
 
 * **新しいデータ**: [Twitter から CosmosDB へのストリーム フィード](https://github.com/tknandu/TwitterCosmosDBFeed)は、新しいデータを Azure Cosmos DB にプッシュするためのメカニズムです。
-* **バッチ レイヤー:** バッチ レイヤーは、"*マスター データセット*" (生データの変更不能な追加専用のセット) と、**サービス レイヤー**にプッシュされるデータのバッチ ビューを事前計算する機能で構成されます。
+* **バッチ レイヤー**: バッチ レイヤーは、"*マスター データセット*" (生データの変更不能な追加専用のセット) と、**サービス レイヤー**にプッシュされるデータのバッチ ビューを事前計算する機能で構成されます。
    * 「**Lambda Architecture Rearchitected - Batch Layer**」(ラムダ アーキテクチャの再設計 - バッチ レイヤー) ノートブック ([ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.html)) は、バッチのビューの "*マスター データセット*" セットをクエリします。
-* **サービス レイヤー:** **サービス レイヤー**は、高速クエリのために事前計算されたデータによるバッチ ビュー (集計、特定のスライサーなど) で構成されます。
+* **サービス レイヤー**: **サービス レイヤー**は、高速クエリのために事前計算されたデータによるバッチ ビュー (集計、特定のスライサーなど) で構成されます。
   * 「**Lambda Architecture Rearchitected - Batch to Serving Layer**」(ラムダ アーキテクチャの再設計 - バッチからサービス レイヤー) ノートブック ([ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.html)) では、サービス レイヤーにバッチ データをプッシュしています。つまり、Spark はツイートのバッチ コレクションをクエリし、処理して、別のコレクション (計算済みバッチ) に格納します。
-    * **スピード レイヤー:** **スピード レイヤー**は、Azure Cosmos DB の変更フィードを利用して読み取ってすぐに処理する Spark で構成されます。 他のシステムがリアルタイム クエリを自分で実行するのではなく処理済みのリアルタイム データをクエリできるように、データを "*計算済み RT*" に保存することもできます。
+    * **スピード レイヤー**: **スピード レイヤー**は、Azure Cosmos DB の変更フィードを利用して読み取ってすぐに処理する Spark で構成されます。 他のシステムがリアルタイム クエリを自分で実行するのではなく処理済みのリアルタイム データをクエリできるように、データを "*計算済み RT*" に保存することもできます。
   * [Streaming Query from Cosmos DB Change Feed](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Query%20from%20Cosmos%20DB%20Change%20Feed.scala) (Cosmos DB 変更フィードからのストリーミング クエリ) Scala スクリプトは、Azure Cosmos DB 変更フィードからストリーミング クエリを実行し、spark-shell から間隔カウントを計算します。
   * [Streaming Tags Query from Cosmos DB Change Feed](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Tags%20Query%20from%20Cosmos%20DB%20Change%20Feed%20.scala) (Cosmos DB 変更フィードからのストリーミング タグ クエリ) Scala スクリプトは、Azure Cosmos DB 変更フィードからストリーミング クエリを実行し、spark-shell からのタグの間隔カウントを計算します。
   

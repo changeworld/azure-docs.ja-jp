@@ -9,10 +9,10 @@ ms.date: 11/29/2018
 ms.author: jinzh
 ms.custom: include file
 ms.openlocfilehash: 2bf9f75442ccf57aa28e6a12f415fb6e4ede78ec
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67181569"
 ---
 Azure Maps S0 価格レベルの使用制限を次の表に示します。 使用制限は、価格レベルによって異なります。 

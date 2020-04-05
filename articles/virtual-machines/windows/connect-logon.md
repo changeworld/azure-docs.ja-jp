@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 152df830f11cd5a73235559c5c5d65ced44f22fa
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842120"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231867"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Windows が実行されている Azure 仮想マシンに接続してサインオンする方法
 Azure Portal の **[接続]** ボタンを使用して、Windows デスクトップからリモート デスクトップ (RDP) セッションを開始します。 まず、仮想マシンに接続して、サインオンします。
@@ -36,11 +36,11 @@ Mac から Windows VM に接続するには、[Microsoft リモート デスク�
     ![Screenshot of a warning about an unknown publisher.](./media/connect-logon/rdp-warn.png)
 3. **[Windows セキュリティ]** ウィンドウで、 **[その他]** 、 **[別のアカウントを使用する]** の順に選択します。 仮想マシンのアカウントの資格情報を入力し、 **[OK]** を選択します。
    
-     **ローカル アカウント**:通常は、仮想マシンの作成時に指定したローカル アカウントのユーザー名とパスワードです。 この場合、ドメインは仮想マシンの名前です。これを *vmname*&#92;*username* の形式で入力します。  
+     **ローカル アカウント**: 通常は、仮想マシンの作成時に指定したローカル アカウントのユーザー名とパスワードです。 この場合、ドメインは仮想マシンの名前です。これを *vmname*&#92;*username* の形式で入力します。  
    
-    **ドメインに参加している VM**:VM がドメインに属している場合は、*Domain*&#92;*Username* の形式でユーザー名を入力します。 また、アカウントは管理者グループに属しているか、VM へのリモート アクセス特権が付与されている必要があります。
+    **ドメインに参加している VM**: VM がドメインに属している場合は、*Domain*&#92;*Username* の形式でユーザー名を入力します。 また、アカウントは管理者グループに属しているか、VM へのリモート アクセス特権が付与されている必要があります。
    
-    **ドメイン コントローラー**:VM がドメイン コントローラーである場合は、そのドメインのドメイン管理者アカウントのユーザー名とパスワードを入力します。
+    **ドメイン コントローラー**: VM がドメイン コントローラーである場合は、そのドメインのドメイン管理者アカウントのユーザー名とパスワードを入力します。
 4. **[はい]** を選択して、目的の仮想マシンであることを確認し、ログオンを完了します。
    
    ![VM の ID の検証に関するメッセージが表示されているスクリーンショット。](./media/connect-logon/cert-warning.png)
@@ -69,6 +69,6 @@ Get-AzRemoteDesktopFile -ResourceGroupName "RgName" -Name "VmName" -Launch
 Get-AzRemoteDesktopFile -ResourceGroupName "RgName" -Name "VmName" -LocalPath "C:\Path\to\folder"
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 接続に問題がある場合は、[リモート デスクトップ接続に関するトラブルシューティング](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)のページを参照してください。 
 

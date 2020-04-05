@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
 ms.openlocfilehash: 5164bf55ef8233cf34a470524da3bc852678d79a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75979174"
 ---
 # <a name="patternany-entity"></a>Pattern.any エンティティ
@@ -53,7 +53,7 @@ Pattern.any として抽出する埋め込みフォーム名を使用します�
 
 `Understand your responsibilities as a member of the community`
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
 ```JSON
 "entities": [
@@ -67,7 +67,7 @@ Pattern.any として抽出する埋め込みフォーム名を使用します�
 ```
 
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 予測エンドポイントの応答](#tab/V3)
 
 これは、クエリ文字列で `verbose=false` が設定されている場合の JSON です。
 

@@ -14,10 +14,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 889897cfd4dc8714ae3aea556f0924c9dbcd7825
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78299416"
 ---
 # <a name="design-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上で設計する

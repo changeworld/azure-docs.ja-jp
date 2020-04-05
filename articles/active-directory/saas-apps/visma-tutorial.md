@@ -17,10 +17,10 @@ ms.date: 11/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ff4c4e71da2a0e736c989e52d2fcb6f9f8636551
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74485381"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-visma"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Visma の統合

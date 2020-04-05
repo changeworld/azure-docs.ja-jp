@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: f9043ae1414b63f25583d52100774f3e87754a74
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77661841"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>FAQ - Azure Security Center に関する一般的な質問
@@ -86,7 +86,7 @@ Azure Security Center は、Azure のリソース、ネットワーク、パー�
 * マルウェア対策や Web アプリケーション ファイアウォールなどのセキュリティ ソリューションの統合パートナーからのセキュリティの警告
 
 
-## セキュリティ スコア値が変わったのはなぜですか? <a name="secure-score-faq"></a>
+## <a name="why-did-secure-score-values-change"></a>セキュリティ スコア値が変わったのはなぜですか? <a name="secure-score-faq"></a>
 2019 年 2 月の時点で、Security Center では、推奨事項の重大度に合わせて一部の推奨事項のスコアを調整しました。 この調整により、全体的なセキュリティ スコア値が変わる可能性があります。  セキュリティ スコアの詳細については、[セキュリティ スコアの計算](security-center-secure-score.md)に関する記事をご覧ください。
 
 

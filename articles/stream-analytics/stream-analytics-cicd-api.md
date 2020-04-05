@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.openlocfilehash: 78f2e06947c2b81ffe5e6cd8a88438db4dabf158
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 328ca7cd2c6f76095c8334ae6fdb4aa75fbb867d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426411"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80292000"
 ---
 # <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>API を使用して IoT Edge 上に Stream Analytics 向けの CI/CD を実装する
 
@@ -57,7 +57,7 @@ Stream Analytics ジョブを作成するには、Stream Analytics API を使用
 
 |方法|要求 URL|
 |------|-----------|
-|PUT|https://management.azure.com/subscriptions/{**subscription-id**}/resourcegroups/{**resource-group-name**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**job-name**}?api-version=2017-04-01-preview|
+|PUT|`https://management.azure.com/subscriptions/{\**subscription-id**}/resourcegroups/{**resource-group-name**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**job-name**}?api-version=2017-04-01-preview`|
  
 **curl** を使用するコマンドの例:
 
@@ -144,7 +144,7 @@ IoT Edge で Stream Analytics ジョブを発行するには、Edge Package Publ
 
 |方法|要求 URL|
 |------|-----------|
-|POST|https://management.azure.com/subscriptions/{**subscriptionid**}/resourceGroups/{**resourcegroupname**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**jobname**}/publishedgepackage?api-version=2017-04-01-preview|
+|POST|`https://management.azure.com/subscriptions/{\**subscriptionid**}/resourceGroups/{**resourcegroupname**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**jobname**}/publishedgepackage?api-version=2017-04-01-preview`|
 
 ジョブが正常に発行されるまで、この非同期操作からは状態 202 が返されます。 場所応答ヘッダーには、プロセスの状態を取得するために使用する URI が含まれます。 プロセスが実行されている間、場所ヘッダーの URI を呼び出すと 202 の状態が返されます。 プロセスが完了すると、場所ヘッダーの URI の呼び出しからは状態 200 が返されます。 
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/30/2019
 ms.author: spelluru
 ms.openlocfilehash: 69b83590fb9b25c68d231b732b985ba633bb6884
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66399199"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>DevTest Labs 仮想マシンのカスタム アーティファクトの作成
@@ -90,7 +90,7 @@ ms.locfileid: "66399199"
 * array (有効な JSON 配列)
 
 ## <a name="secrets-as-secure-strings"></a>セキュリティで保護された文字列としてのシークレット
-シークレットをセキュリティで保護された文字列として宣言します。 **artifactfile.json** ファイルの `parameters` セクション内に、セキュリティで保護された文字列パラメーターを宣言するための構文を次に示します。
+シークレットをセキュリティで保護された文字列として宣言します。 `parameters`artifactfile.json**ファイルの** セクション内に、セキュリティで保護された文字列パラメーターを宣言するための構文を次に示します。
 
 ```json
 
@@ -121,8 +121,8 @@ artifactfile.json と artifact.ps1 (PowerShell スクリプト) の完全な例�
 
 次の一覧に、一般的な関数を示します。
 
-* **parameters(parameterName)** :アーティファクト コマンドの実行時に指定されるパラメーター値を返します。
-* **concat(arg1, arg2, arg3,….. )** :複数の文字列値を結合します。 この関数は、さまざまな引数を受け取ることができます。
+* **parameters(parameterName)** : アーティファクト コマンドの実行時に指定するパラメーター値を返します。
+* **concat(arg1, arg2, arg3,…..)** : 複数の文字列値を結合します。 この関数は、さまざまな引数を受け取ることができます。
 
 次の例は、式と関数を使用して値を構成する方法を示しています。
 
@@ -147,11 +147,11 @@ artifactfile.json と artifact.ps1 (PowerShell スクリプト) の完全な例�
       アーティファクト フォルダーの例を次に示します。
       
       ![アーティファクト フォルダーの例](./media/devtest-lab-artifact-author/git-repo.png)
-5. 独自のリポジトリを使用してアーティファクトを格納する場合は、[アーティファクトとテンプレート用の Git リポジトリの追加](devtest-lab-add-artifact-repo.md)に関する記事の手順に従って、リポジトリをラボに追加します。
+5. 独自のリポジトリを使用してアーティファクトを格納する場合は、[アーティファクトとテンプレート用の Git リポジトリの追加](devtest-lab-add-artifact-repo.md)に関する記事の手順に従って、そのリポジトリをラボに追加します。
 
 ## <a name="related-articles"></a>関連記事
 * [DevTest Labs でアーティファクトのエラーを診断する方法](devtest-lab-troubleshoot-artifact-failure.md)
 * [DevTest Labs で Resource Manager テンプレートを使用して既存の Active Directory ドメインに VM を参加させる](https://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [ラボへの Git アーティファクト リポジトリの追加](devtest-lab-add-artifact-repo.md)方法を学習します。

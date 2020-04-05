@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
 ms.openlocfilehash: ec66892804f3c2d1f831168a2955f2498462cbf3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74033025"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>PowerShell を使用して Azure VM で使用される OS ディスクを変更する
@@ -60,6 +60,6 @@ Start-AzVM -Name $vm.Name -ResourceGroupName myResourceGroup
 
 ```
 
-**次のステップ**
+**次の手順**
 
 ディスクのコピーを作成する方法については、「[スナップショットの作成](snapshot-copy-managed-disk.md)」を参照してください。

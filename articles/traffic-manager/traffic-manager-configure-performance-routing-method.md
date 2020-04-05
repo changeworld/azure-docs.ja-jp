@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: rohink
 ms.openlocfilehash: f5e9b7690c28793a35c692a6125a6b11c7a140a4
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938753"
 ---
 # <a name="configure-the-performance-traffic-routing-method"></a>パフォーマンスによるトラフィック ルーティング方法の構成

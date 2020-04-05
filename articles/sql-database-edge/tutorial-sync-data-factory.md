@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
 ms.openlocfilehash: e6fd9e6431137708ba93328a8ed1359b93b4ee1f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74851691"
 ---
 # <a name="tutorial-sync-data-from-sql-database-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>チュートリアル:Azure Data Factory を使用して SQL Database Edge から Azure Blob Storage にデータを同期する
@@ -103,7 +103,7 @@ SQL Database Edge インスタンスで次のコマンドを実行します。
 
     5. SQL Database Edge インスタンスへの接続をテストするために、 **[Test connection]\(テスト接続\)** を選択します。
 
-    6. **作成** を選択します。
+    6. **［作成］** を選択します
 
     ![リンクされたサービスを作成する](media/tutorial-sync-data-factory/create-linked-service.png)
 
@@ -195,10 +195,10 @@ SQL Database Edge インスタンスで次のコマンドを実行します。
 
     2. ストアド プロシージャのパラメーターの値を指定するには、 **[Import parameter]\(インポート パラメーター\)** を選択し、各パラメーターに次の値を入力します。
 
-    |名前|種類|値|
+    |名前|Type|Value|
     |-----|----|-----|
     |LastModifiedtime|DateTime|@{activity('NewWaterMark').output.firstRow.NewWatermarkvalue}|
-    |TableName|string|@{activity('OldWaterMark').output.firstRow.TableName}|
+    |TableName|String|@{activity('OldWaterMark').output.firstRow.TableName}|
 
 33. パイプライン設定を検証するには、ツール バーの **[検証]** を選択します。 検証エラーがないことを確認します。 **[Pipeline Validation Report]\(パイプライン検証レポート\)** ウィンドウを閉じるには、 **[>>]** を選択します。
 
@@ -218,6 +218,6 @@ SQL Database Edge インスタンスで次のコマンドを実行します。
 
 6. 左側で **[監視]** タブに切り替えます。 手動トリガーによってトリガーされたパイプラインの実行の状態を確認できます。 **[最新の情報に更新]** を選択して、一覧を更新します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルの Azure Data Factory パイプラインでは、SQL Database Edge インスタンス上のテーブルから Azure Blob Storage 内のある場所に 1 時間ごとにデータがコピーされます。 他のシナリオでの Data Factory の使用については、これらの[チュートリアル](../data-factory/tutorial-copy-data-portal.md)を参照してください。

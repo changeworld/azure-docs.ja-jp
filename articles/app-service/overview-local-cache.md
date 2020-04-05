@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
 ms.openlocfilehash: 1945730acaddb0c1c7ee1b28eeb926635efad643
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78227888"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service のローカル キャッシュの概要

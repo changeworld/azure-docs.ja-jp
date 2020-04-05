@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.openlocfilehash: 48f19e5da8c7703cc597518246c2f62ebce3ae17
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003170"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233483"
 ---
 # <a name="configure-apache-spark-settings"></a>Apache Spark の設定を構成する
 
@@ -144,7 +144,7 @@ Jupyter Notebook で実行するアプリケーションについては、`%%con
 
 Spark ジョブの実行が予測可能で高パフォーマンスになるように、複数のコア構成設定を監視して調整する必要があります。 これらの設定は、特定のワークロードに対する Spark クラスターの最善の構成を決定するのに役立ちます。  また、実行時間の長い、またはリソース消費の多い Spark ジョブの実行を監視する必要があります。  最もよくある課題は、不適切な構成 (特に不適切なサイズの実行プログラム)、実行時間の長い操作、およびデカルト演算を生じるタスクが原因の、メモリ不足に関するものです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [HDInsight で使用可能な Apache Hadoop コンポーネントおよびバージョン](../hdinsight-component-versioning.md)
 * [HDInsight 上の Apache Spark クラスターのリソースを管理する](apache-spark-resource-manager.md)

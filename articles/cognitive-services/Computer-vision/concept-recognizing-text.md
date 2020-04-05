@@ -12,11 +12,11 @@ ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: a4c90ed12c8023e0b9ebc509b20d8d9224b49f1b
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566252"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218865"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>印刷されたテキストと手書きのテキストの認識
 

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Recognize の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Recognize の統合 | Microsoft Docs'
 description: Azure Active Directory と Recognize の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: c0a513ad8fe772839813615d065616f2c911a031
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68943333"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-recognize"></a>チュートリアル:Azure Active Directory と Recognize の統合
+# <a name="tutorial-azure-active-directory-integration-with-recognize"></a>チュートリアル: Azure Active Directory と Recognize の統合
 
 このチュートリアルでは、Recognize と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Recognize と Azure AD の統合には、次の利点があります。
@@ -239,7 +239,7 @@ Azure AD ユーザーが Recognize にログインできるようにするには
 
 4. **[User Sync (ユーザー同期)]** セクションで、次の手順に従います。
    
-    ![New User](./media/recognize-tutorial/tutorial_recognize_005.png "New User")
+    ![[New User]\(新しいユーザー\)](./media/recognize-tutorial/tutorial_recognize_005.png "[新しいユーザー]")
    
     a. **[Sync Enabled (同期の有効化)]** で **[ON]** を選択します。
    

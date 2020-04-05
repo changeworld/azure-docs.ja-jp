@@ -14,10 +14,10 @@ ms.date: 03/02/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ec825a562b57f081305af20ee6a6ce078d5c0505
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77159014"
 ---
 # <a name="move-applications-from-ad-fs-to-azure-ad"></a>アプリケーションを AD FS から Azure AD に移動する 

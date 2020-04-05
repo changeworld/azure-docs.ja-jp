@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 86c8acedb230989fa7a7f28690bd4be9c51ead9e
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 5f5856a89a04b58b138ee23a5f289ceff0915acf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201341"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235051"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-using-standard-load-balancerpreview"></a>Standard Load Balancer を使用して仮想ネットワーク スクリプトのサンプルで IPv6 エンドポイントを構成する (プレビュー)
 
@@ -34,15 +34,17 @@ Azure 仮想ネットワーク機能に IPv6 を使用するには、次のよ�
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
+
 機能の登録が完了するまで、最長で 30 分かかります。 次の Azure CLI コマンドを実行することで、登録状態を確認できます。
 
-```azurelci
+```azurecli
 az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
+
 登録が完了した後、次のコマンドを実行します。
 
-```azurelci
+```azurecli
 az provider register --namespace Microsoft.Network
 ```
 
@@ -279,10 +281,11 @@ az vm create \
 --availability-set dsAVset \
 --image MicrosoftWindowsServer:WindowsServer:2019-Datacenter:latest 
 ```
+
 ## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>Azure portal で IPv6 デュアル スタック仮想ネットワークを表示する
 次のようにして、Azure portal で IPv6 デュアル スタック仮想ネットワークを表示することができます。
 1. ポータルの検索バーで、「*dsVnet*」と入力します。
-2. 検索結果に **[myVirtualNetwork]** が表示されたら、それを選択します。 これにより、*dsVnet* という名前のデュアル スタック仮想ネットワークの **[概要]** ページが起動します。 デュアル スタック仮想ネットワークには、*dsSubnet* という名前のデュアル スタック サブネットにある、IPv4 と IPv6 の両方の構成を持つ 2 つの NIC が表示されます。 
+2. 検索結果に **[myVirtualNetwork]** が表示されたら、それを選択します。 これにより、**dsVnet** という名前のデュアル スタック仮想ネットワークの *[概要]* ページが起動します。 デュアル スタック仮想ネットワークには、*dsSubnet* という名前のデュアル スタック サブネットにある、IPv4 と IPv6 の両方の構成を持つ 2 つの NIC が表示されます。 
 
 > [!NOTE]
 > このプレビュー リリースの場合、Azure 仮想ネットワークの IPv6 は、Azure portal で読み取り専用で使用できます。
@@ -299,7 +302,7 @@ az group delete --name <resourcegroupname> --yes
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、仮想マシン、可用性セット、ロード バランサー、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | Notes |
+| command | メモ |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az-network-vnet-create) | Azure 仮想ネットワークとサブネットを作成します。 |

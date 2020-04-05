@@ -17,10 +17,10 @@ ms.date: 12/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0d8293b23559860e70191576db13c3cd14f520e6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75430879"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-sales-navigator"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と LinkedIn Sales Navigator の統合
@@ -98,7 +98,7 @@ LinkedIn Sales Navigator で Azure AD SSO を構成してテストするには�
 
 1. その他に、LinkedIn Sales Navigator アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | Name | ソース属性|
+    | 名前 | ソース属性|
     | --- | --- |
     | email| User.mail |
     | department| user.department |

@@ -14,10 +14,10 @@ ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
 ms.openlocfilehash: 775ef92a0ca486d1f8a6c44c78a4df04cd5ef467
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78274547"
 ---
 # <a name="application-security-groups"></a>アプリケーション セキュリティ グループ

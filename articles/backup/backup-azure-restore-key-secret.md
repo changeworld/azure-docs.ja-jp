@@ -4,10 +4,10 @@ description: Azure Backup で PowerShell を使用して Key Vault のキーと�
 ms.topic: conceptual
 ms.date: 08/28/2017
 ms.openlocfilehash: 35bcb919cadd46c603b1f2ad49742c5435f873d2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75450066"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Azure Backup を使用して暗号化された VM の Key Vault のキーとシークレットを復元

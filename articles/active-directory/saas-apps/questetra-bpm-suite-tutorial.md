@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Questetra BPM Suite の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Questetra BPM Suite の統合 | Microsoft Docs'
 description: Azure Active Directory と Questetra BPM Suite の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: f58d6cbc6ec04e51e105662dff31c60ff502584c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67093352"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>チュートリアル:Azure Active Directory と Questetra BPM Suite の統合
+# <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>チュートリアル: Azure Active Directory と Questetra BPM Suite の統合
 
 このチュートリアルでは、Questetra BPM Suite と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Questetra BPM Suite と Azure AD の統合には、次の利点があります。
@@ -160,7 +160,7 @@ Questetra BPM Suite で Azure AD シングル サインオンを構成するに�
 
     f. Azure Portal からダウンロードした **Base-64** でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[Validation certificate]\(検証証明書\)** ボックスに貼り付けます。 
 
-    g. **[Save]** をクリックします。
+    g. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 

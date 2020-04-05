@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
 ms.openlocfilehash: 8b92aa6057c81ec9442372c5b85918cb92196d61
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74894753"
 ---
 # <a name="simple-entity"></a>シンプル エンティティ
@@ -35,7 +35,7 @@ ms.locfileid: "74894753"
 
 エンドポイントから返されるデータには、エンティティ名、発話から検出されたテキスト、検出されたテキストの場所、およびスコアが含まれます。
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
 ```JSON
 "entities": [
@@ -49,7 +49,7 @@ ms.locfileid: "74894753"
 ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 予測エンドポイントの応答](#tab/V3)
 
 これは、クエリ文字列で `verbose=false` が設定されている場合の JSON です。
 
@@ -92,7 +92,7 @@ This is the JSON if `verbose=true` is set in the query string:
 |--|--|--|
 |シンプル エンティティ|`Customer`|`bob jones`|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [パターンの構文について学習する](reference-pattern-syntax.md)

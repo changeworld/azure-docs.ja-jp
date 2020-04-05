@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.openlocfilehash: 78455c90bab694b77a5e4a56d0b40518867d8d8c
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77188360"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer"></a>IoT Hub から Azure Data Explorer にデータを取り込む 
@@ -27,7 +27,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
-* *testdb* というデータベース名の[テスト クラスターとデータベース](create-cluster-database-portal.md)を作成します。
+* [testdb](create-cluster-database-portal.md) というデータベース名の*テスト クラスターとデータベース*を作成します。
 * デバイスをシミュレートする[サンプル アプリ](https://github.com/Azure-Samples/azure-iot-samples-csharp)とドキュメントです。
 * サンプル アプリを実行するための [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)。
 
@@ -83,7 +83,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
     | IoT Hub | IoT Hub 名 |
     | 共有アクセス ポリシー | 共有アクセス ポリシーの名前。 読み取りアクセス許可が必要 |
     | コンシューマー グループ |  IoT Hub の組み込みのエンドポイントに定義されているコンシューマー グループ |
-    | イベント システム プロパティ | [IoT Hub イベントのシステム プロパティ](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages)。 システム プロパティを追加する場合は、テーブル スキーマと[マッピング](/azure/kusto/management/mappings)を[作成](/azure/kusto/management/create-table-command)または[更新](/azure/kusto/management/alter-table-command)して、選択したプロパティを含めます。 | | | 
+    | イベント システム プロパティ | [IoT Hub イベントのシステム プロパティ](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages)。 システム プロパティを追加する場合は、テーブル スキーマと[マッピング](/azure/kusto/management/create-table-command)を[作成](/azure/kusto/management/alter-table-command)または[更新](/azure/kusto/management/mappings)して、選択したプロパティを含めます。 | | | 
 
     > [!NOTE]
     > [手動フェールオーバー](/azure/iot-hub/iot-hub-ha-dr#manual-failover)が発生した場合は、データ接続を再作成する必要があります。
@@ -97,7 +97,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
     |---|---|---|
     | テーブル | *TestTable* | **testdb** に作成したテーブル。 |
     | データ形式 | *JSON* | サポートされている形式は、Avro、CSV、JSON、MULTILINE JSON、PSV、SOHSV、SCSV、TSV、TSVE、TXT です。 |
-    | 列マッピング | *TestMapping* | **testdb** に作成した[マッピング](/azure/kusto/management/mappings)。これにより、受信 JSON データを **testdb** の列名とデータ型にマッピングします。 JSON、MULTILINE JSON、AVRO では必須。その他の形式では省略可能。|
+    | 列マッピング | *TestMapping* | [testdb](/azure/kusto/management/mappings) に作成した**マッピング**。これにより、受信 JSON データを **testdb** の列名とデータ型にマッピングします。 JSON、MULTILINE JSON、AVRO では必須。その他の形式では省略可能。|
     | | |
 
     > [!NOTE]

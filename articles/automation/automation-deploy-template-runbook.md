@@ -7,15 +7,15 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 keywords: powershell, runbook, json, azure automation
 ms.openlocfilehash: d4adbea42cda54380ad32dce40cfa0d8391ee490
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75366636"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>Azure Automation PowerShell Runbook に Azure Resource Manager テンプレートをデプロイする
 
-[Azure Resource Management テンプレート](../azure-resource-manager/resource-manager-create-first-template.md)を使用して、Azure リソースをデプロイする [Azure Automation PowerShell Runbook](automation-first-runbook-textual-powershell.md) を記述できます。
+[Azure Resource Management テンプレート](automation-first-runbook-textual-powershell.md)を使用して、Azure リソースをデプロイする [Azure Automation PowerShell Runbook](../azure-resource-manager/resource-manager-create-first-template.md) を記述できます。
 
 これにより、Azure リソースのデプロイを自動化できます。 Azure Storage など、セキュリティで保護された一元的な場所に Resource Manager テンプレートを維持することができます。
 

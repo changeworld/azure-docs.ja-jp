@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.openlocfilehash: eabcf40e28927919215979ccc46fa029d19adbfe
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943423"
 ---
 # <a name="azure-cosmos-db-input-binding-for-azure-functions-2x"></a>Azure Functions 2.x での Azure Cosmos DB の入力バインド

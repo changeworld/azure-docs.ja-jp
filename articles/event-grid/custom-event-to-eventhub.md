@@ -10,23 +10,23 @@ ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
 ms.openlocfilehash: 832c4e453befc9e54051c968e0c364d22afd2bc2
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73721412"
 ---
-# <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>クイック スタート: Azure CLI と Event Grid を使用してカスタム イベントを Azure Event Hubs にルーティングする
+# <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>クイック スタート:Azure CLI と Event Grid を使用してカスタム イベントを Azure Event Hubs にルーティングする
 
 Azure Event Grid は、クラウドのイベント処理サービスです。 Azure Event Hubs は、サポートされているイベント ハンドラーの 1 つです。 この記事では、Azure CLI からカスタム トピックを作成してカスタム トピックにサブスクライブし、イベントをトリガーして結果を表示します。 イベント ハブにイベントを送信します。
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 Event Grid のトピックは Azure リソースであり、Azure リソース グループに配置する必要があります。 リソース グループは、Azure リソースをまとめてデプロイして管理するための論理上のコレクションです。
 
-[az group create](/cli/azure/group#az-group-create) コマンドでリソース グループを作成します。 
+[az group create](/cli/azure/group#az-group-create) コマンドを使用して、リソース グループを作成します。 
 
 次の例では、*gridResourceGroup* という名前のリソース グループを *westus2* の場所に作成します。
 
@@ -107,14 +107,14 @@ done
 * [Java を使用して Azure Event Hubs からイベントを受信する](../event-hubs/event-hubs-java-get-started-receive-eph.md)
 * [Apache Storm を使用して Azure Event Hubs からイベントを受信する](../event-hubs/event-hubs-storm-getstarted-receive.md)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 引き続きこのイベントを使用する場合は、この記事で作成したリソースをクリーンアップしないでください。 それ以外の場合は、次のコマンドを使用して、この記事で作成したリソースを削除します。
 
 ```azurecli-interactive
 az group delete --name gridResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 トピックを作成し、イベントをサブスクライブする方法がわかったら、Event Grid でできることについて、さらに情報を収集しましょう。
 

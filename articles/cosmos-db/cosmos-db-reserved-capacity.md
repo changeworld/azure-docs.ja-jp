@@ -8,10 +8,10 @@ ms.date: 02/18/2020
 ms.author: tisande
 ms.reviewer: sngun
 ms.openlocfilehash: 16e8f770445218e10ab7e7645a81325d11be55da
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77505969"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Azure Cosmos DB の予約容量でコストを最適化する

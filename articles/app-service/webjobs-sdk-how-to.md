@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
 ms.openlocfilehash: c606f6e60b1c906a0d5c29992287d126aaa37b7b
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77602941"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理に Azure WebJobs SDK を使用する方法
@@ -119,7 +119,7 @@ static void Main()
 }
 ```
 
-### <a name="jobhost-servicepointmanager-settings"></a>コンカレント接続の管理 (バージョン 2.*x*)
+### <a name="managing-concurrent-connections-version-2x"></a><a name="jobhost-servicepointmanager-settings"></a>コンカレント接続の管理 (バージョン 2.*x*)
 
 バージョン 3.*x* では、接続制限は既定で無限接続に設定されます。 何らかの理由でこの制限を変更する必要がある場合は、[`WinHttpHandler`](/dotnet/api/system.net.http.winhttphandler) クラス の [`MaxConnectionsPerServer`](/dotnet/api/system.net.http.winhttphandler.maxconnectionsperserver) プロパティを使用できます。
 
@@ -993,7 +993,7 @@ config.LoggerFactory = new LoggerFactory()
     .AddApplicationInsights(clientFactory);
 ```
 
-## <a id="nextsteps"></a> 次のステップ
+## <a name="next-steps"></a><a id="nextsteps"></a> 次のステップ
 
 この記事では、WebJobs SDK を操作するための一般的なシナリオの処理方法を示すコード スニペットを提供しました。 完全なサンプルは、[azure-webjobs-sdk-samples](https://github.com/Azure/azure-webjobs-sdk/tree/dev/sample/SampleHost) を参照してください。
 

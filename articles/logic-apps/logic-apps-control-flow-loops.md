@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
 ms.openlocfilehash: 5f6c04c9a57dc8c250d99f2fa944203d2d73c404
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791752"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233039"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Azure Logic Apps 内のワークフロー アクションを繰り返す、または配列を処理するループを作成する
 
@@ -75,7 +75,7 @@ ms.locfileid: "74791752"
 
    !["Foreach"ループにステップを追加する](media/logic-apps-control-flow-loops/for-each-loop-with-step.png)
 
-5. ロジック アプリを保存し、 ロジック アプリを手動でテストするには、デザイナーのツール バーで **[実行]** を選択します。
+5. ロジック アプリを保存します。 ロジック アプリを手動でテストするには、デザイナーのツール バーで **[実行]** を選択します。
 
 <a name="for-each-json"></a>
 
@@ -192,8 +192,8 @@ ms.locfileid: "74791752"
    | プロパティ | 値 | 説明 |
    | -------- | ----- | ----------- |
    | **名前** | 制限 | 変数の名前 | 
-   | **種類** | 整数 | 変数のデータ型 | 
-   | **値** | 0 | 変数の開始値 | 
+   | **Type** | Integer | 変数のデータ型 | 
+   | **Value** | 0 | 変数の開始値 | 
    |||| 
 
 1. **[変数を初期化する]** アクションの下で、 **[新しいステップ]** を選択します。 
@@ -233,11 +233,11 @@ ms.locfileid: "74791752"
       | プロパティ | 値 | 説明 |
       | -------- | ----- | ----------- | 
       | **To** | *\<email-address\@domain>* | 受信者の電子メール アドレス。 テストのために、自分の電子メール アドレスを使用します。 | 
-      | **[件名]** | "Limit" の現在の値は **Limit** | 電子メールの件名を指定します。 この例では、**Limit** 変数が含まれていることを確認してください。 | 
+      | **件名** | "Limit" の現在の値は **Limit** | 電子メールの件名を指定します。 この例では、**Limit** 変数が含まれていることを確認してください。 | 
       | **本文** | <*email-content*> | 送信する電子メール メッセージの内容を指定します。 この例では、任意のテキストを入力してください。 | 
       |||| 
 
-1. ロジック アプリを保存し、 ロジック アプリを手動でテストするには、デザイナーのツール バーで **[実行]** を選択します。
+1. ロジック アプリを保存します。 ロジック アプリを手動でテストするには、デザイナーのツール バーで **[実行]** を選択します。
 
       ロジックの実行が開始された後に、指定した内容の電子メールを受け取ります。
 
@@ -249,7 +249,7 @@ ms.locfileid: "74791752"
 
 | プロパティ | 既定値 | 説明 | 
 | -------- | ------------- | ----------- | 
-| **カウント** | 60 | ループが終了するまでに実行されるループの最大数。 既定値は、60 サイクルです。 | 
+| **Count** | 60 | ループが終了するまでに実行されるループの最大数。 既定値は、60 サイクルです。 | 
 | **タイムアウト** | PT1H | ループが終了するまでにループが実行される最大時間数。 既定値は 1 時間で、ISO 8601 形式で指定されます。 <p>タイムアウト値は、ループのサイクルごとに評価されます。 ループ内のアクションがタイムアウト制限より長くなる場合、現在のサイクルは停止しません。 ただし、制限の条件が満たされていないため、次のサイクルは開始しません。 | 
 |||| 
 
@@ -338,7 +338,7 @@ ms.locfileid: "74791752"
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
 * 機能や提案について投稿や投票を行うには、[Azure Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [条件に基づいてステップを実行する (条件付きステートメント)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
 * [さまざまな値に基づいてステップを実行する (switch ステートメント)](../logic-apps/logic-apps-control-flow-switch-statement.md)

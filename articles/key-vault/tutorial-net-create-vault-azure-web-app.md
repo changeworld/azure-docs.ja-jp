@@ -11,10 +11,10 @@ ms.date: 12/21/2018
 ms.author: mbaldwin
 ms.custom: mvc
 ms.openlocfilehash: e636ab843a9801097bf770ca12c9d1e512750c91
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78198118"
 ---
 # <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>チュートリアル:.NET で Azure Web アプリを使用して Azure Key Vault を使用する
@@ -86,7 +86,7 @@ Azure リソース グループとは、Azure リソースのデプロイと管�
 
 * キー コンテナー名: 数字 (0-9)、文字 (a-z、A-Z)、ハイフン (-) のみを含んだ 3 から 24 文字の文字列
 * リソース グループ名
-* 場所: **[米国西部]**
+* 場所:**米国西部**
 
 Azure CLI で、次のコマンドを入力します。
 

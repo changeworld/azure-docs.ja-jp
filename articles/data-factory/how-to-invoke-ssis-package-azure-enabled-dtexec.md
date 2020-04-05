@@ -12,10 +12,10 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.openlocfilehash: a5540eea91937319a6ac947b50698ccaa8b25847
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74931697"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>Azure 対応の dtexec ユーティリティを使用して SQL Server Integration Services パッケージを実行する
@@ -90,7 +90,7 @@ AzureDTExec の呼び出しでは、dtexec の呼び出しと同様のオプシ�
 > [!NOTE]
 > オプションに新しい値を指定して AzureDTExec を呼び出すと、新しいパイプラインが生成されます (オプション **/De[cript]** を除く)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 AzureDTExec を呼び出した後に、SSIS パッケージの実行アクティビティを含む一意のパイプラインが生成され、実行されたら、Data Factory ポータルで監視できます。 詳細については、[Data Factory アクティビティとしての SSIS パッケージの実行](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)に関する記事を参照してください。
 

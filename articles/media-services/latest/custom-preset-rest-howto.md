@@ -13,10 +13,10 @@ ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
 ms.openlocfilehash: 30e22cb786e5dc2a667fe41ca8edf398cf0b7613
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65761790"
 ---
 # <a name="how-to-encode-with-a-custom-transform---rest"></a>カスタム変換を使用してエンコードする方法 - REST
@@ -149,6 +149,6 @@ PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:r
 
 Media Services が、指定されたビデオまたはオーディオに変換を適用するためには、その変換に基づいてジョブを送信する必要があります。 変換に基づいてジョブを送信する方法を示す完全な例については、[ビデオ ファイルのストリーム配信 (REST) に関するチュートリアル](stream-files-tutorial-with-rest.md)をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [他の REST 操作](https://docs.microsoft.com/rest/api/media/)を参照する

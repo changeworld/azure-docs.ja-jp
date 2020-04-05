@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 38416f6a580d270aefc287de0c198bd418a44db9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74072623"
 ---
 # <a name="endpoints-for-the-bing-image-search-api"></a>Bing Image Search API のエンドポイント
@@ -50,7 +50,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/images/trending
 ## <a name="response-json"></a>応答 JSON
 画像検索要求に対する応答には、結果が JSON オブジェクトとして含まれます。 結果の解析例については、[チュートリアル](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app)と[ソース コード](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app-source)をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 **Bing** API では、種類に応じた結果を返す検索アクションがサポートされます。 すべての検索エンドポイントは、結果を JSON 応答オブジェクトとして返します。  すべてのエンドポイントは、特定の言語や場所を経度、緯度、検索半径によって返すクエリをサポートします。
 
 各エンドポイントでサポートされるパラメーターについて詳しくは、各種類のリファレンス ページをご覧ください。

@@ -11,10 +11,10 @@ ms.date: 09/19/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 61b6d5ea903d00519c58556bc99da7065741a6e3
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78184062"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Azure Active Directory B2C とは

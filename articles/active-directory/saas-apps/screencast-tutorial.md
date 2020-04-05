@@ -17,10 +17,10 @@ ms.date: 11/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bc887e95b6fa6f8b17fbbb3dbaae5105385a07fa
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74132146"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-screencast-o-matic"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Screencast-O-Matic の統合
@@ -29,7 +29,7 @@ ms.locfileid: "74132146"
 
 * Screencast-O-Matic にアクセスする Azure AD ユーザーを制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Screencast-O-Matic に自動的にサインイン (シングル サインオン) できるようにすることが可能です。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -156,7 +156,7 @@ Screencast-O-Matic で Azure AD SSO を構成してテストするには、次�
 
 1. **[Upload IDP Metadata XML File]\(IDP メタデータ XML ファイルのアップロード\)** で、 **[ファイルの選択]** をクリックして、Azure portal からダウンロードしたメタデータをアップロードします。
 
-1. Click **OK**.
+1. **[OK]** をクリックします。
 
     ![アクセス](./media/screencast-tutorial/tutorial_screencast_save.png)
 

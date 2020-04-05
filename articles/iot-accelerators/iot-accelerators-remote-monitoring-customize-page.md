@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: ec0b9fbdfdb96317e1e7f6fe00384ba4f8c42bcc
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 0228f317e2d3380f2387dd557a27203eb3abc4ad
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68607955"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240258"
 ---
 # <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>リモート監視ソリューション アクセラレータの Web UI にカスタム ページを追加する
 
@@ -29,7 +29,7 @@ ms.locfileid: "68607955"
 このハウツー ガイドの手順を最後まで行うには、ローカル開発マシンに次のソフトウェアがインストールされている必要があります。
 
 - [Git](https://git-scm.com/downloads)
-- [Node.JS](https://nodejs.org/download/)
+- [Node.js](https://nodejs.org/download/)
 
 ## <a name="prepare-a-local-development-environment-for-the-ui"></a>UI のローカル開発環境を準備する
 
@@ -154,17 +154,17 @@ Web UI のローカル インスタンスをソリューション アクセラ�
 
 1. **pcs** CLI を使用して、ソリューション アクセラレータの**基本**インスタンスをデプロイします。 デプロイの名前と仮想マシンに提供した資格情報をメモしておきます。 詳しくは、[CLI を使用したデプロイ](iot-accelerators-remote-monitoring-deploy-cli.md)に関するページをご覧ください。
 
-1. Azure portal または [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用して、ソリューションでマイクロサービスをホストする仮想マシンへの SSH アクセスを有効にします。 例:
+1. Azure portal または [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用して、ソリューションでマイクロサービスをホストする仮想マシンへの SSH アクセスを有効にします。 次に例を示します。
 
-    ```sh
+    ```azurecli
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
     ```
 
     テストと開発時にのみ、SSH アクセスを有効にします。 SSH を有効にした場合、[できるだけ早く無効にする必要があります](../security/fundamentals/network-best-practices.md)。
 
-1. Azure Portal または [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用して、仮想マシンの名前とパブリック IP アドレスを検索します。 例:
+1. Azure Portal または [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用して、仮想マシンの名前とパブリック IP アドレスを検索します。 次に例を示します。
 
-    ```sh
+    ```azurecli
     az resource list --resource-group {your solution name} -o table
     az vm list-ip-addresses --name {your vm name from previous command} --resource-group {your solution name} -o table
     ```
@@ -187,7 +187,7 @@ Web UI のローカル インスタンスをソリューション アクセラ�
     REACT_APP_BASE_SERVICE_URL=https://{your solution name}.azurewebsites.net/
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、リモート監視ソリューション アクセラレータの Web UI のカスタマイズに役立つように使用できるリソースについて説明します。
 

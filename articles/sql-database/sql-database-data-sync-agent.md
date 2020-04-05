@@ -12,10 +12,10 @@ ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
 ms.openlocfilehash: 6d0a728401ac9f0156cc8fa913ce486bb577c6dd
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73825170"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Azure SQL データ同期のデータ同期エージェント
@@ -25,7 +25,7 @@ Azure SQL データ同期のデータ同期エージェントをインストー�
 > [!IMPORTANT]
 > 現時点では、Azure SQL データ同期で Azure SQL Database Managed Instance はサポート**されていません**。
 
-## <a name="download-and-install"></a>ダウンロードとインストール
+## <a name="download-and-install"></a>ダウンロードしてインストールする
 
 データ同期エージェントをダウンロードするには、[SQL Azure データ同期エージェント](https://www.microsoft.com/download/details.aspx?id=27693)のページに移動します。
 
@@ -47,7 +47,7 @@ msiexec /i "SQLDataSyncAgent-2.0-x86-ENU.msi" TARGETDIR="C:\Program Files (x86)\
 
 1 つ以上のオンプレミスの SQL Server データベースとデータを同期できるよう、データ同期エージェントを構成するには、[オンプレミスの SQL Server データベースの追加](sql-database-get-started-sql-data-sync.md#add-on-prem)に関するページを参照してください。
 
-## <a name="agent-faq"></a>データ同期エージェントの FAQ
+## <a name="data-sync-agent-faq"></a><a name="agent-faq"></a>データ同期エージェントの FAQ
 
 ### <a name="why-do-i-need-a-client-agent"></a>なぜクライアント エージェントが必要ですか
 
@@ -79,7 +79,7 @@ SQL データ同期サービスは、クライアント エージェントを使
 4. 以前に登録されたオンプレミスのデータベースのリストをクライアント エージェントがダウンロードするまで待ちます。
 5. 到達不能と表示されるすべてのデータベースに対し、データベースの資格情報を指定します。 これらのデータベースには、エージェントをインストールした新しいコンピューターから到達可能でなければなりません。
 
-## <a name="agent-tshoot"></a> データ同期エージェントの問題のトラブルシューティング
+## <a name="troubleshoot-data-sync-agent-issues"></a><a name="agent-tshoot"></a> データ同期エージェントの問題のトラブルシューティング
 
 - [クライアント エージェントのインストール、アンインストール、または修復に失敗する](#agent-install)
 
@@ -95,7 +95,7 @@ SQL データ同期サービスは、クライアント エージェントを使
 
 - [ローカル同期エージェント アプリでローカル同期サービスに接続できない](#agent-connect)
 
-### <a name="agent-install"></a> クライアント エージェントのインストール、アンインストール、または修復に失敗する
+### <a name="the-client-agent-install-uninstall-or-repair-fails"></a><a name="agent-install"></a> クライアント エージェントのインストール、アンインストール、または修復に失敗する
 
 - **原因**。 このエラーはさまざまなシナリオで発生します。 このエラーの具体的な原因を特定するには、ログを調べます。
 
@@ -106,7 +106,7 @@ SQL データ同期サービスは、クライアント エージェントを使
 
     Windows インストーラーによって実行されるすべてのインストールについて、ログ記録を有効にすることもできます。 Microsoft サポート技術情報の記事「[Windows インストーラーのログの記録を有効にする方法](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging)」には、Windows インストーラーのログの記録を有効にするワンクリック ソリューションが用意されています。 また、ログの場所も示されています。
 
-### <a name="agent-uninstall"></a> アンインストールを取り消した後、クライアント エージェントが動作しない
+### <a name="the-client-agent-doesnt-work-after-i-cancel-the-uninstall"></a><a name="agent-uninstall"></a> アンインストールを取り消した後、クライアント エージェントが動作しない
 
 クライアント エージェントのアンインストールを取り消した後でも、クライアント エージェントが動作しません。
 
@@ -117,7 +117,7 @@ SQL データ同期サービスは、クライアント エージェントを使
     -   services.msc を使用してクライアント エージェントの資格情報を再入力します。
     -   今のクライアント エージェントをアンインストールした後、新規にクライアント エージェントをインストールします。 [ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=27693)から最新のクライアント エージェントをダウンロードしてインストールします。
 
-### <a name="agent-list"></a> データベースがエージェントの一覧に表示されない
+### <a name="my-database-isnt-listed-in-the-agent-list"></a><a name="agent-list"></a> データベースがエージェントの一覧に表示されない
 
 既存の SQL Server データベースを同期グループに追加しようとしたときに、対象のデータベースがエージェントの一覧に表示されません。
 
@@ -136,7 +136,7 @@ SQL データ同期サービスは、クライアント エージェントを使
 
     関連付けられているデータベースの一覧をローカル エージェントがダウンロードするのは、エージェント キーの最初の送信時のみです。 それ以降のエージェント キーの送信時には、関連付けられているデータベースの一覧はダウンロードされません。 したがって、エージェントの移動中に登録されたデータベースは、元のエージェント インスタンスに表示されません。
 
-### <a name="agent-start"></a> クライアント エージェントが起動しない (エラー 1069)
+### <a name="client-agent-doesnt-start-error-1069"></a><a name="agent-start"></a> クライアント エージェントが起動しない (エラー 1069)
 
 SQL Server をホストしているコンピューターで、エージェントが実行されていませんでした。 エージェントを手動で起動しようとすると、"エラー 1069:ログオンに失敗したため、サービスを開始できませんでした。" というメッセージを示すダイアログ ボックスが表示されます。
 
@@ -147,7 +147,7 @@ SQL Server をホストしているコンピューターで、エージェント
 - **解決策**。 エージェントのパスワードを現在のサーバー パスワードに更新します。
 
   1. SQL データ同期クライアント エージェント サービスを見つけます。  
-    a. **[開始]** を選択します。  
+    a. **[スタート]** を選択します。  
     b. 検索ボックスに「**services.msc**」と入力します。  
     c. 検索結果で、 **[サービス]** を選択します。  
     d. **[サービス]** ウィンドウで、 **[SQL Data Sync Agent]\(SQL データ同期エージェント\)** のエントリまでスクロールします。  
@@ -160,7 +160,7 @@ SQL Server をホストしているコンピューターで、エージェント
   1. **[サービス]** ウィンドウで、 **[SQL Data Sync Agent]\(SQL データ同期エージェント\)** サービスを右クリックし、 **[開始]** をクリックします。
   1. **[サービス]** ウィンドウを閉じます。
 
-### <a name="agent-key"></a> エージェント キーを送信できない
+### <a name="i-cant-submit-the-agent-key"></a><a name="agent-key"></a> エージェント キーを送信できない
 
 エージェントのキーを作成または再作成した後、そのキーを SqlAzureDataSyncAgent アプリケーションで送信しようとしました。 しかし、送信が完了しませんでした。
 
@@ -196,7 +196,7 @@ SQL Server をホストしているコンピューターで、エージェント
   1. **[OK]** を選択します。
   1. プログラムを閉じます。
 
-### <a name="agent-delete"></a> 関連付けられているオンプレミス データベースにアクセスできない場合、クライアント エージェントをポータルから削除できない
+### <a name="the-client-agent-cant-be-deleted-from-the-portal-if-its-associated-on-premises-database-is-unreachable"></a><a name="agent-delete"></a> 関連付けられているオンプレミス データベースにアクセスできない場合、クライアント エージェントをポータルから削除できない
 
 SQL データ同期クライアント エージェントに登録されているローカル エンドポイント (つまり、データベース) にアクセスできない場合、クライアント エージェントを削除できません。
 
@@ -207,7 +207,7 @@ SQL データ同期クライアント エージェントに登録されている
 > [!NOTE]
 > "強制削除" の後に同期メタデータ テーブルが残っている場合は、`deprovisioningutil.exe` を使用してクリーンアップします。
 
-### <a name="agent-connect"></a> ローカル同期エージェント アプリでローカル同期サービスに接続できない
+### <a name="local-sync-agent-app-cant-connect-to-the-local-sync-service"></a><a name="agent-connect"></a> ローカル同期エージェント アプリでローカル同期サービスに接続できない
 
 - **解決策**。 次の手順を試してみてください。
 
@@ -314,7 +314,7 @@ SqlDataSyncAgentCommand.exe -action "updatecredential" -serverName localhost -da
 SqlDataSyncAgentCommand.exe -action "updatecredential" -serverName localhost -databaseName testdb -authentication windows -encryption true
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 SQL データ同期の詳細については、次の記事を参照してください。
 

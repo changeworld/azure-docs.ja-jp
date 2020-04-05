@@ -4,10 +4,10 @@ description: マネージド サービス オファーにより、サービス �
 ms.date: 01/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: 15814b1ca3b1b78de521033836e3614d18fd0c71
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76904321"
 ---
 # <a name="azure-delegated-resource-management"></a>Azure の委任されたリソース管理
@@ -33,7 +33,7 @@ Azure の委任されたリソース管理を使用すると、承認された�
 
 大まかに言えば、Azure の委任されたリソース管理のしくみは次のとおりです。
 
-1. サービス プロバイダーは、顧客の Azure リソースを管理するためにグループ、サービス プリンシパル、またはユーザーが必要とするアクセス権 (ロール) を明らかにします。 アクセスの定義には、サービス プロバイダーのテナント ID と、オファーに必要なアクセスが含まれます。これは、[組み込みの **roleDefinition** の値](../../role-based-access-control/built-in-roles.md) (共同作成者、VM 共同作成者、閲覧者など) にマップされるテナントの **principalId** id を使用して定義されます。
+1. サービス プロバイダーは、顧客の Azure リソースを管理するためにグループ、サービス プリンシパル、またはユーザーが必要とするアクセス権 (ロール) を明らかにします。 アクセスの定義には、サービス プロバイダーのテナント ID と、オファーに必要なアクセスが含まれます。これは、**組み込みの** roleDefinition[ の値 **(共同作成者、VM 共同作成者、閲覧者など) にマップされるテナントの**principalId](../../role-based-access-control/built-in-roles.md) id を使用して定義されます。
 2. このアクセスを指定し、次の 2 つの方法のいずれかで Azure の委任されたリソース管理に顧客をオンボードします。
    - 顧客が受け入れる [Azure Marketplace の管理されたサービス オファーを発行する](../how-to/publish-managed-services-offers.md) (プライベートまたはパブリック)
    - 1 つ以上の特定のサブスクリプションまたはリソース グループについて、[顧客のテナントに Azure Resource Manager テンプレートをデプロイする](../how-to/onboard-customer.md)

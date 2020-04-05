@@ -9,13 +9,13 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1199819d274590cc81d0234680f8765f9cc36c0a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67181011"
 ---
-### <a name="noconnection"></a>ローカル ネットワーク ゲートウェイ IP アドレスのプレフィックスを変更するには (ゲートウェイに接続していない場合)
+### <a name="to-modify-local-network-gateway-ip-address-prefixes---no-gateway-connection"></a><a name="noconnection"></a>ローカル ネットワーク ゲートウェイ IP アドレスのプレフィックスを変更するには (ゲートウェイに接続していない場合)
 
 #### <a name="to-add-additional-address-prefixes"></a>アドレス プレフィックスを追加するには:
 
@@ -30,7 +30,7 @@ ms.locfileid: "67181011"
 3. **[削除]** をクリックします。
 4. **[Save]** をクリックして設定を保存します。
 
-### <a name="withconnection"></a>ローカル ネットワーク ゲートウェイ IP アドレスのプレフィックスを変更するには (ゲートウェイに接続している場合)
+### <a name="to-modify-local-network-gateway-ip-address-prefixes---existing-gateway-connection"></a><a name="withconnection"></a>ローカル ネットワーク ゲートウェイ IP アドレスのプレフィックスを変更するには (ゲートウェイに接続している場合)
 
 ゲートウェイ接続がある場合に、ローカル ネットワーク ゲートウェイに含まれている IP アドレスのプレフィックスを追加または削除するには、次の手順を順番に実行する必要があります。 これに伴い、VPN 接続のためにある程度のダウンタイムが発生します。 IP アドレスのプレフィックスを変更するときに、VPN ゲートウェイを削除する必要はありません。 削除が必要になるのは、接続のみです。
 
@@ -55,7 +55,7 @@ ms.locfileid: "67181011"
 3. **[削除]** をクリックします。
 4. **[Save]** をクリックして設定を保存します。
 
-#### <a name="3-recreate-the-connection"></a>手順 3.接続を再作成します。
+#### <a name="3-recreate-the-connection"></a>3.接続を再作成します。
 
 1. VNet の仮想ネットワーク ゲートウェイに移動します (ローカル ネットワーク ゲートウェイではありません)。
 2. 仮想ネットワーク ゲートウェイの **[設定]** セクションで、 **[接続]** をクリックします。

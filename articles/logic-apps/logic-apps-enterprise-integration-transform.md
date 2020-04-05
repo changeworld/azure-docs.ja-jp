@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/08/2016
 ms.openlocfilehash: 500769a39ba7658b35c1abb80101f6234170c941
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74792382"
 ---
 # <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack でデータ形式間の XML 変換マップを作成する

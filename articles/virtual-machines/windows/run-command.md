@@ -9,10 +9,10 @@ ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
 ms.openlocfilehash: fa7f72989d47499127714eddfa6b5e98aa80178c
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73749233"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>実行コマンドを使用して Windows VM で PowerShell スクリプトを実行する
@@ -77,7 +77,7 @@ az vm run-command invoke  --command-id RunPowerShellScript --name win-vm -g my-r
     --scripts @script.ps1 --parameters "arg1=somefoo" "arg2=somebar"
 ```
 
-## <a name="azure-portal"></a>Azure ポータル
+## <a name="azure-portal"></a>Azure portal
 
 [Azure portal](https://portal.azure.com) 内の VM に移動し、 **[操作]** で **[実行コマンド]** を選択します。 VM 上で実行できるコマンドの一覧が表示されます。
 
@@ -108,6 +108,6 @@ Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' 
 
 実行コマンドを使用するには、いずれかの[組み込みロール](../../role-based-access-control/built-in-roles.md)を使用するか、[カスタム ロール](../../role-based-access-control/custom-roles.md)を作成します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 VM 内でスクリプトやコマンドをリモートで実行するその他の方法については、「[Windows VM でスクリプトを実行する](run-scripts-in-vm.md)」を参照してください。

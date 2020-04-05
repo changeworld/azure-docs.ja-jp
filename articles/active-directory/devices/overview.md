@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: overview
-ms.date: 06/27/2019
+ms.date: 03/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d593e5f27dbcd676e2b42975251778a6c48a7d79
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c895a13eb9b2bed9e3a8a5a250c4e925dfa834c5
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76511877"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80331806"
 ---
 # <a name="what-is-a-device-identity"></a>デバイス ID とは
 
@@ -45,6 +45,7 @@ Azure AD にデバイスを追加する場合、次の複数のオプション�
 - **Azure AD 参加済み**
    - Azure AD 参加済みのデバイスは、組織所有であり、その組織に属する Azure AD アカウントを使用してサインインします。 これらはクラウド内にのみ存在します。
       - Windows 10 
+      - Windows Server 2019 (サーバー コアはサポート対象外)
 - **ハイブリッド Azure AD 参加済み**
    - ハイブリッド Azure AD 参加済みのデバイスは、組織所有であり、その組織に属する Azure AD アカウントを使用してサインインします。 これらはクラウド内とオンプレミスに存在します。
       - Windows 7、8.1、または 10

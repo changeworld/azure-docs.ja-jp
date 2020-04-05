@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: fee74cb6ec5acd5fa0f171eab9769a833f04ad66
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72792911"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Azure Cognitive Search - よく寄せられる質問 (FAQ)
@@ -63,7 +63,7 @@ Azure Cognitive Search は、複数のデータ ソース、[多数の言語の�
 
 別の方法として、こちらの [Azure Cognitive Search .NET サンプル リポジトリ](https://github.com/Azure-Samples/azure-search-dotnet-samples)の **index-backup-restore** サンプル コードを使用して、インデックス定義とインデックス スナップショットを一連の JSON ファイルにバックアップすることができます。 後で、必要に応じてツールとファイルを使用してインデックスを復元できます。  
 
-### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexershttpsdocsmicrosoftcomazuresearchsearch-howto-connecting-azure-sql-database-to-azure-search-using-indexers"></a>SQL データベース レプリカからインデックスを作成することはできますか (対象: [Azure SQL Database インデクサー](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers))
+### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexers"></a>SQL データベース レプリカからインデックスを作成することはできますか (対象: [Azure SQL Database インデクサー](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers))
 
 最初からインデックスを構築するときに、データ ソースとしてのプライマリまたはセカンダリ レプリカの使用に制限はありません。 ただし、(レコードの変更に基づく) 増分更新によるインデックスの更新には、プライマリ レプリカが必要です。 この要件は SQL Database に由来するものです。SQL Database は変更追跡をプライマリ レプリカでのみ保証しています。 インデックス更新ワークロードにセカンダリ レプリカを使用しても、すべてのデータを取得する保証はありません。
 
@@ -99,7 +99,7 @@ Azure Cognitive Search は、複数のデータ ソース、[多数の言語の�
 
 多くのお客様は、同じインデックスで複数のロケール (言語) をサポートすることになったときに、コレクションよりも専用フィールドを選択しています。 ロケール固有のフィールドがあると、適切なアナライザーを割り当てることができます。 たとえば、フランス語の文字列を含むフィールドに Microsoft French Analyzer を割り当てることができます。 また、フィルター処理も簡単になります。 フランス語のページに対してクエリが開始されたことがわかっている場合は、検索結果をこのフィールドに制限することができます。 また、[スコアリング プロファイル](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)を作成して、フィールドにより多くの相対的な重み付けを与えます。 Azure Cognitive Search では、[50 を超える言語アナライザー](https://docs.microsoft.com/azure/search/search-language-support)を選ぶことができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 不足している機能について質問がある場合は、 [ユーザーの声 Web サイト](https://feedback.azure.com/forums/263029-azure-search)で機能のリクエストをお送りください。
 

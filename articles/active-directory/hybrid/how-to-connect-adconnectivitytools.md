@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect:ADConnectivityTool PowerShell モジュールとは | Microsoft Docs
+title: 'Azure AD Connect: ADConnectivityTool PowerShell モジュールとは | Microsoft Docs'
 description: このドキュメントでは、新しい ADConnectivity PowerShell モジュールとトラブルシューティングのための使用方法について説明します。
 services: active-directory
 author: billmath
@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cd5340cd8c802df4ffbe0207b5401d2fee4e207e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64571122"
 ---
 # <a name="troubleshoot-azure-ad-connectivity-with-the-adconnectivitytool-powershell-module"></a>ADConnectivityTool PowerShell モジュールを使用した Azure AD 接続性のトラブルシューティング
@@ -25,7 +25,7 @@ ADConnectivity ツールは、次のいずれかの場合に使用される Powe
 - インストール時、ネットワーク接続に問題があるために、ユーザーがウィザード上で入力した Active Directory 資格情報を検証できません。
 - インストール後、ユーザーが PowerShell セッションから関数を呼び出した場合。
 
-このツールの場所は**C:\Program Files\Microsoft Azure Active Directory Connect\Tools\ ADConnectivityTool.psm1** です 
+ツールは次の場所にあります: **C:\Program Files\Microsoft Azure Active Directory Connect\Tools\ ADConnectivityTool.psm1** 
 
 ## <a name="adconnectivitytool-during-installation"></a>インストール時の ADConnectivityTool
 
@@ -41,7 +41,7 @@ Azure AD Connect ウィザードの **[ディレクトリの接続]** ページ�
 これらのいずれかの問題がある場合は、関連するエラー メッセージが AADConnect ウィザードに表示されます。
 
 
-![Error](media/how-to-connect-adconnectivitytools/error1.png)
+![エラー](media/how-to-connect-adconnectivitytools/error1.png)
 
 たとえば、 **[ディレクトリの接続]** 画面でディレクトリを追加しようとしているとき、Azure AD Connect による確認が必要であり、ポート 389 経由で Azure AD Connect とドメイン コントローラーの通信が可能である必要があります。  それができない場合、上記のスクリーンショットに示されているエラーが表示されます。  
 
@@ -74,7 +74,7 @@ Azure AD Connect がインストールされた後、ADConnectivityTools PowerSh
 
 
 ## <a name="next-steps"></a>次の手順
-- [Azure AD Connect:アカウントとアクセス許可](reference-connect-accounts-permissions.md)
+- [Azure AD Connect: アカウントとアクセス許可](reference-connect-accounts-permissions.md)
 - [高速インストール](how-to-connect-install-express.md)
 - [カスタム インストール](how-to-connect-install-custom.md)
 - [ADConnectivityTools リファレンス](reference-connect-adconnectivitytools.md)

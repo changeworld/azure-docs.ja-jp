@@ -1,20 +1,20 @@
 ---
 title: チュートリアル:IoT 空間分析を実装する | Microsoft Azure Maps
 description: IoT ハブを Microsoft Azure Maps サービスの API と統合します。
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: f0367a195ca0aa5f26ff0819b00c50fabae1d271
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: cfea9aa7bfcc9a9698bb93bdf54797481b8539ce
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505821"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80333975"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>チュートリアル:Azure Maps を使用した IoT 空間分析の実装
 

@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 3cd4e69481fb452391e6dc027cb41fd6dae71b7e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76760251"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus - よく寄せられる質問 (FAQ)

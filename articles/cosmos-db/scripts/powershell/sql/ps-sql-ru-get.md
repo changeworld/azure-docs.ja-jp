@@ -1,20 +1,20 @@
 ---
-title: Azure Cosmos DB の SQL (Core) API に対するプロビジョニングされたスループット (RU/秒) を取得する PowerShell スクリプト
-description: Azure PowerShell スクリプト - Azure Cosmos DB の SQL (Core) API に対するプロビジョニングされたスループットの取得 (RU/秒)
+title: Azure Cosmos DB SQL API のデータベースまたはコンテナーに対するスループット (RU/秒) を取得する PowerShell スクリプト
+description: Azure Cosmos DB SQL API のデータベースまたはコンテナーに対するスループット (RU/秒) を取得する Azure PowerShell スクリプト
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 07/03/2019
+ms.date: 03/17/2020
 ms.author: mjbrown
-ms.openlocfilehash: 9b4450e18aa2666806faf2c0baed8af2285e69dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f471b1d41314728a6c6f0c5d2ab981891e2caa87
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441347"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365607"
 ---
-# <a name="get-the-provisioned-throughput-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>Azure Cosmos DB - SQL (Core) API のデータベースまたはコンテナーのプロビジョニングされたスループットを取得する (RU/秒)
+# <a name="get-throughput-rus-for-azure-cosmos-db-sql-api-database-or-container"></a>Azure Cosmos DB SQL API のデータベースまたはコンテナーに対するスループット (RU/秒) を取得する
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,7 +22,7 @@ ms.locfileid: "75441347"
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-ru-get.ps1 "Get throughput for a database or container for SQL (Core) API")]
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-ru-get.ps1 "Get throughput (RU/s) for Azure Cosmos DB SQL API database or container")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
@@ -36,10 +36,11 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
-|**Azure リソース**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | リソースを作成します。 |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBSqlDatabaseThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqldatabasethroughput) | Azure Cosmos DB SQL API データベースに対してプロビジョニングされたスループットを取得します。 |
+| [Get-AzCosmosDBSqlContainerThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainerthroughput) | Azure Cosmos DB SQL API コンテナーに対してプロビジョニングされたスループットを取得します。 |
 |**Azure リソース グループ**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||

@@ -16,10 +16,10 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c1d49ec5ef80b284aa6b1a305b037d19dae34870
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74274590"
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>ギャラリー以外のアプリケーションのフェデレーション シングル サインオンを構成する方法
@@ -63,11 +63,11 @@ Azure AD ギャラリーに含まれていないアプリケーションのシ�
 
 10. **[モード]** ボックスの一覧から、 **[SAML ベースのサインオン]** を選択します。
 
-11. **[ドメインおよび URL]** に必要な値を入力します。 これらの値は、アプリケーション ベンダーから取得する必要があります。
+11. **[ドメインと URL]** に必要な値を入力します。 これらの値は、アプリケーション ベンダーから取得する必要があります。
 
     1. IdP によって開始された SSO としてアプリケーションを構成するには、応答 URL と識別子を入力します。
 
-    2. **省略可能:** SP によって開始された SSO としてアプリケーションを構成するには、サインオン URL が必要な値になります。
+    2. **省略可能:** SP によって開始された SSO としてアプリケーションを構成するには、サインオン URL が必要な値です。
 
 12. **[ユーザー属性]** で、 **[ユーザー識別子]** ボックスの一覧からユーザーの一意の識別子を選択します。
 
@@ -184,5 +184,5 @@ Azure AD では、メタデータを取得するための URL も提供されま
 
 アプリケーションに送信される SAML 属性要求をカスタマイズする方法については、「[Azure Active Directory での要求マッピング](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [アプリケーション プロキシを使用してアプリにシングル サインオンを提供](application-proxy-configure-single-sign-on-with-kcd.md)

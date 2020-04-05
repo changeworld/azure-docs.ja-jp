@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: ef6f342ec2308897d8c2221250ce92f81ce66863
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 1fbd99e8233b068efda4d0fb87e87788f49835cf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514104"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214362"
 ---
 ::: zone target="docs"
 
@@ -54,49 +54,49 @@ ms.locfileid: "76514104"
 
  次の手順に従ってディスクを開梱します。
 
-1. Data Box Disk は、小さな梱包箱に入って郵送されます。 箱を開けて内容物を取り出します。 1 台から 5 台の SSD (Solid State Disk) と各ディスクにつき 1 本の USB 接続ケーブルが同梱されていることを確認してください。 箱を調べて、改ざんの痕跡や、その他明らかな損傷がないか確認します。 
+1. Data Box Disk は、小さな梱包箱に入って郵送されます。 箱を開けて内容物を取り出します。 1 台から 5 台の SSD (Solid State Disk) と各ディスクにつき 1 本の USB 接続ケーブルが同梱されていることを確認してください。 箱を調べて、改ざんの痕跡や、その他明らかな損傷がないか確認します。
 
     ![Data Box Disk の発送パッケージ](media/data-box-disk-deploy-set-up/data-box-disk-ship-package1.png)
 
 2. 梱包箱が改ざんされていたり、ひどく破損している場合は、箱を開けないでください。 Microsoft サポートに問い合わせて、ディスクが正常に使用できる状態にあるかどうか、また交換ディスクを発送してもらう必要があるかどうかを評価してください。
-3. 返送用の配送先住所ラベルが入った透明な袋が (現在のラベルの下に) 同梱されていることを確認します。 このラベルが紛失するか破損した場合は、いつでも Azure portal から新しいラベルをダウンロードして印刷することができます。 
+3. 返送用の配送先住所ラベルが入った透明な袋が (現在のラベルの下に) 同梱されていることを確認します。 このラベルが紛失するか破損した場合は、いつでも Azure portal から新しいラベルをダウンロードして印刷することができます。
 
     ![Data Box Disk の配送先住所ラベル](media/data-box-disk-deploy-set-up/data-box-disk-package-ship-label.png)
 
 4. 箱と梱包材は、ディスクを返送するときのために保管しておいてください。
 
-## <a name="connect-to-disks-and-get-the-passkey"></a>ディスクに接続してパスキーを取得する 
+## <a name="connect-to-disks-and-get-the-passkey"></a>ディスクに接続してパスキーを取得する
 
-1. 前提条件に記載したサポート対象 OS が実行されているクライアント コンピューターに、同梱されているケーブルを使用してディスクを接続します。 
+1. 前提条件に記載したサポート対象 OS が実行されているクライアント コンピューターに、同梱されているケーブルを使用してディスクを接続します。
 
-    ![Data Box Disk の接続](media/data-box-disk-deploy-set-up/data-box-disk-connect-unlock.png)    
-    
-2. Azure portal で **[全般] > [デバイスの詳細]** に移動します。 コピー アイコンを使用してパスキーをコピーします。 このパスキーは、ディスクのロック解除に使用されます。
+    ![Data Box Disk の接続](media/data-box-disk-deploy-set-up/data-box-disk-connect-unlock.png)
 
-    ![Data Box Disk のロック解除パスキー](media/data-box-disk-deploy-set-up/data-box-disk-get-passkey.png) 
+2. Azure portal で [Data Box Disk の注文] に移動します。 **[全般] > [すべてのリソース]** の順に移動して Data Box Disk を検索し、[Data Box Disk の注文] を選択します。 コピー アイコンを使用してパスキーをコピーします。 このパスキーは、ディスクのロック解除に使用されます。
+
+    ![Data Box Disk のロック解除パスキー](media/data-box-disk-deploy-set-up/data-box-disk-get-passkey.png)
 
 接続先が Windows クライアントまたは Linux クライアントのどちらであるかに応じて、ディスクのロックを解除する手順は異なります。
 
 ## <a name="unlock-disks-on-windows-client"></a>Windows クライアントでディスクのロックを解除する
 
 ディスクを接続し、ロックを解除するには、次の手順を実行します。
-     
-1. Azure portal で **[全般] > [デバイスの詳細]** に移動します。 
-2. Windows クライアントに対応する Data Box Disk ツールセットをダウンロードします。 このツールセットには、Data Box Disk ロック解除ツール、Data Box Disk 検証ツール、および Data Box Disk 分割コピー ツールの 3 つが含まれています。 
+
+1. Azure portal で [Data Box Disk の注文] に移動します。 **[全般] > [すべてのリソース]** の順に移動して Data Box Disk を検索し、[Data Box Disk の注文] を選択します。
+2. Windows クライアントに対応する Data Box Disk ツールセットをダウンロードします。 このツールセットには、Data Box Disk ロック解除ツール、Data Box Disk 検証ツール、および Data Box Disk 分割コピー ツールの 3 つが含まれています。
 
     この手順では、Data Box Disk ロック解除ツールのみを使用します。 他の 2 つのツールは後で使用されます。
 
     > [!div class="nextstepaction"]
-    > [Windows 用 Data Box Disk ツールセットをダウンロードする](https://aka.ms/databoxdisktoolswin)         
+    > [Windows 用 Data Box Disk ツールセットをダウンロードする](https://aka.ms/databoxdisktoolswin)
 
-3. データのコピーに使用するのと同じコンピューターでツールセットを抽出します。 
+3. データのコピーに使用するのと同じコンピューターでツールセットを抽出します。
 4. 同じコンピューターで、管理者として Windows PowerShell を実行するかコマンド プロンプト ウィンドウを開きます。
-5. (省略可) ディスクのロック解除に使用しているコンピューターがオペレーティング システムの要件を満たしていることを確認するために、システム チェック コマンドを実行します。 サンプル出力を次に示します。 
+5. (省略可) ディスクのロック解除に使用しているコンピューターがオペレーティング システムの要件を満たしていることを確認するために、システム チェック コマンドを実行します。 サンプル出力を次に示します。
 
     ```powershell
     Windows PowerShell
     Copyright (C) Microsoft Corporation. All rights reserved.
-    
+
     PS C:\DataBoxDiskUnlockTool\DiskUnlock> .\DataBoxDiskUnlock.exe /SystemCheck
     Successfully verified that the system can run the tool.
     PS C:\DataBoxDiskUnlockTool\DiskUnlock>
@@ -109,50 +109,51 @@ ms.locfileid: "76514104"
     PS C:\DataBoxDiskUnlockTool\DiskUnlock> .\DataBoxDiskUnlock.exe
     Enter the passkey :
     testpasskey1
-    
+
     Following volumes are unlocked and verified.
     Volume drive letters: D:
-    
+
     PS C:\DataBoxDiskUnlockTool\DiskUnlock>
     ```
 
-7. 今後ディスクを再挿入するたびにロック解除の手順を繰り返します。 Data Box Disk ロック解除ツールでわからないことがある場合は、`help` コマンドを使用してください。   
+7. 今後ディスクを再挿入するたびにロック解除の手順を繰り返します。 Data Box Disk ロック解除ツールでわからないことがある場合は、`help` コマンドを使用してください。
 
     ```powershell
     PS C:\DataBoxDiskUnlockTool\DiskUnlock> .\DataBoxDiskUnlock.exe /help
     USAGE:
     DataBoxUnlock /PassKey:<passkey_from_Azure_portal>
-    
+
     Example: DataBoxUnlock /PassKey:<your passkey>
     Example: DataBoxUnlock /SystemCheck
     Example: DataBoxUnlock /Help
-    
+
     /PassKey:        Get this passkey from Azure DataBox Disk order. The passkey unlocks your disks.
     /SystemCheck:    This option checks if your system meets the requirements to run the tool.
     /Help:           This option provides help on cmdlet usage and examples.
-    
+
     PS C:\DataBoxDiskUnlockTool\DiskUnlock>
     ```  
-8. ディスクのロックが解除されたら、ディスクの内容を表示することができます。    
+
+8. ディスクのロックが解除されたら、ディスクの内容を表示することができます。
 
     ![Data Box Disk の内容](media/data-box-disk-deploy-set-up/data-box-disk-content.png)
 
-ディスクのロックを解除中に問題が発生した場合は、[ロック解除に関する問題のトラブルシューティングを行う](data-box-disk-troubleshoot-unlock.md)方法をご覧ください。 
+ディスクのロックを解除中に問題が発生した場合は、[ロック解除に関する問題のトラブルシューティングを行う](data-box-disk-troubleshoot-unlock.md)方法をご覧ください。
 
 ## <a name="unlock-disks-on-linux-client"></a>Linux クライアントでディスクのロックを解除する
 
-1. Azure portal で **[全般] > [デバイスの詳細]** に移動します。 
+1. Azure portal で **[全般] > [デバイスの詳細]** に移動します。
 2. Linux クライアントに対応する Data Box Disk ツールセットをダウンロードします。  
 
     > [!div class="nextstepaction"]
-    > [Linux 用 Data Box Disk ツールセットをダウンロードする](https://aka.ms/databoxdisktoolslinux) 
+    > [Linux 用 Data Box Disk ツールセットをダウンロードする](https://aka.ms/databoxdisktoolslinux)
 
-3. Linux クライアントで、ターミナルを開きます。 ソフトウェアをダウンロードしたフォルダーに移動します。 これらのファイルを実行できるように、ファイルのアクセス許可を変更します。 次のコマンドを入力します。 
+3. Linux クライアントで、ターミナルを開きます。 ソフトウェアをダウンロードしたフォルダーに移動します。 これらのファイルを実行できるように、ファイルのアクセス許可を変更します。 次のコマンドを入力します。
 
     `chmod +x DataBoxDiskUnlock_x86_64` 
-    
+
     `chmod +x DataBoxDiskUnlock_Prep.sh` 
- 
+
     サンプル出力を次に示します。 chmod コマンドが実行されたら、`ls` コマンドを実行することで、ファイルのアクセス許可が変更されたことを確認できます。 
  
     ```
@@ -162,6 +163,7 @@ ms.locfileid: "76514104"
         -rwxrwxr-x. 1 user user 1152664 Aug 10 17:26 DataBoxDiskUnlock_x86_64  
         -rwxrwxr-x. 1 user user 795 Aug 5 23:26 DataBoxDiskUnlock_Prep.sh
     ```
+
 4. Data Box Disk ロック解除ソフトウェアに必要なすべてのバイナリがインストールされるように、スクリプトを実行します。 `sudo` を使用して、root としてコマンドを実行します。 バイナリが正常にインストールされると、ターミナルに、その効果に対するメモが表示されます。
 
     `sudo ./DataBoxDiskUnlock_Prep.sh`
@@ -173,7 +175,7 @@ ms.locfileid: "76514104"
         OS = CentOS Version = 6.9 
         Release = CentOS release 6.9 (Final) 
         Architecture = x64 
-    
+
         The script will install the following packages and dependencies. 
         epel-release 
         dislocker 
@@ -181,7 +183,7 @@ ms.locfileid: "76514104"
         fuse-dislocker 
         Do you wish to continue? y|n :|
     ```
-    
+
  
 5. 「`y`」を入力してインストールを続行します。 スクリプトによってインストールされるパッケージは次のとおりです。 
    - **epel リリース** - 次の 3 つのパッケージを含むリポジトリ。 
@@ -222,12 +224,12 @@ ms.locfileid: "76514104"
 
     次のコマンドを入力します。
  
-    `sudo ./DataBoxDiskUnlock_x86_64 /PassKey:’<Your passkey from Azure portal>’          
+    `sudo ./DataBoxDiskUnlock_x86_64 /PassKey:'<Your passkey from Azure portal>'          
 
     サンプル出力を次に示します。 
  
     ```
-    [user@localhost Downloads]$ sudo ./DataBoxDiskUnlock_x86_64 /Passkey:’qwerqwerqwer’  
+    [user@localhost Downloads]$ sudo ./DataBoxDiskUnlock_x86_64 /Passkey:'qwerqwerqwer'  
     
     START: Mon Aug 13 14:25:49 2018 
     Volumes: /dev/sdbl 
@@ -249,10 +251,10 @@ ms.locfileid: "76514104"
     [user@localhost Downloads]$ sudo ./DataBoxDiskUnlock_x86_64 /Help  
     START: Mon Aug 13 14:29:20 2018 
     USAGE: 
-    sudo DataBoxDiskUnlock /PassKey:’<passkey from Azure_portal>’ 
+    sudo DataBoxDiskUnlock /PassKey:'<passkey from Azure_portal>' 
     
-    Example: sudo DataBoxDiskUnlock /PassKey:’passkey’ 
-    Example: sudo DataBoxDiskUnlock /PassKey:’passkey’ /Volumes:’/dev/sdbl’ 
+    Example: sudo DataBoxDiskUnlock /PassKey:'passkey' 
+    Example: sudo DataBoxDiskUnlock /PassKey:'passkey' /Volumes:'/dev/sdbl' 
     Example: sudo DataBoxDiskUnlock /Help Example: sudo DataBoxDiskUnlock /Clean 
     
     /PassKey: This option takes a passkey as input and unlocks all of your disks. 
@@ -307,7 +309,7 @@ ms.locfileid: "76514104"
     Data Box Disk ロック解除ツールを実行します。 Azure portal の **[全般] > [デバイスの詳細]** でパスキーを取得し、ここで指定します。 オプションで、ロックを解除する、BitLocker で暗号化されたボリュームの一覧を単一引用符で囲んで指定します。
 
     ```
-    sudo ./DataBoxDiskUnlock_x86_64 /PassKey:’<Your passkey from Azure portal>’
+    sudo ./DataBoxDiskUnlock_x86_64 /PassKey:'<Your passkey from Azure portal>'
     ```      
 5. 今後ディスクを再挿入するたびにロック解除の手順を繰り返します。 Data Box Disk ロック解除ツールでわからないことがある場合は、help コマンドを使用してください。
 

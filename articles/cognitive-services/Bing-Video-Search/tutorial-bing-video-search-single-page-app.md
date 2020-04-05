@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:シングルページ Bing Video Search アプリを構築する
+title: 'チュートリアル: シングルページ Bing Video Search アプリを構築する'
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、シングルページ Web アプリケーションで Bing Video Search API を使用する方法を説明します。
 services: cognitive-services
@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: aahi
 ms.openlocfilehash: fb989825ed27cc83c14c36e6394e37ae2db2c12a
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76988262"
 ---
-# <a name="tutorial-single-page-video-search-app"></a>チュートリアル:シングルページ Video Search アプリ
+# <a name="tutorial-single-page-video-search-app"></a>チュートリアル: 単一ページ Video Search アプリ
 Bing Video Search API を使うと、Web を検索して、検索クエリに関連するビデオの結果を取得できます。 このチュートリアルでは、Bing Search API を使用して検索結果をページに表示する単一ページの Web アプリケーションを構築します。 このアプリケーションには、HTML、CSS、JavaScript のコンポーネントが含まれます。
 
 <!-- Remove until it can be replaced with a sanitized version.
@@ -51,7 +51,7 @@ Bing Video Search API を使うと、Web を検索して、検索クエリに関
 > * CSS - ページの外観を定義します
 > * JavaScript - ページの動作を定義します
 
-ほとんどの HTML と CSS は決まりきったものなので、このチュートリアルでは説明しません。 HTML には検索フォームが含まれ、ユーザーはこれにクエリを入力して検索オプションを選択します。 フォームは、`<form>` タグの `onsubmit` 属性を使って検索を行う JavaScript に接続されています。
+ほとんどの HTML と CSS は決まりきったものなので、このチュートリアルでは説明しません。 HTML には検索フォームが含まれ、ユーザーはこれにクエリを入力して検索オプションを選択します。 フォームは、`onsubmit` タグの `<form>` 属性を使って検索を行う JavaScript に接続されています。
 
 ```html
 <form name="bing" onsubmit="return bingWebSearch(this)">
@@ -64,7 +64,7 @@ HTML には、検索結果が表示される区分 (HTML `<div>` タグ) も含�
 
 コードに Bing Search API サブスクリプション キーを含めなくてもよいように、ブラウザーの永続的ストレージを使用してキーを格納します。 キーを格納する前に、ユーザーにキーの入力を求めます。 後でキーが API によって拒否された場合は、格納されたキーを無効にし、ユーザーに再度操作を求めます。
 
-`localStorage` オブジェクト (サポートしていないブラウザーもあります) または Cookie のいずれかを使用する `storeValue` 関数と `retrieveValue` 関数を定義します。 `getSubscriptionKey()` 関数は、これらの関数を使用してユーザーのキーを格納、取得します。
+`storeValue` オブジェクト (サポートしていないブラウザーもあります) または Cookie のいずれかを使用する `retrieveValue` 関数と `localStorage` 関数を定義します。 `getSubscriptionKey()` 関数は、これらの関数を使用してユーザーのキーを格納、取得します。
 
 ``` javascript
 // Cookie names for data we store

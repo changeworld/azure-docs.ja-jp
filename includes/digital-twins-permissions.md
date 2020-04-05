@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 02/03/2020
 ms.custom: include file
 ms.openlocfilehash: cfe3eb4c0ac1378b7c519b3b34094945612d8508
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77029075"
 ---
 >[!NOTE]
@@ -71,7 +71,7 @@ ms.locfileid: "77029075"
 
 1. アプリの登録の **[API アクセス許可]** ウィンドウを開きます。 **[+ アクセス許可の追加]** ボタンを選択します。 **[API アクセス許可の要求]** ペインで、 **[所属する組織で使用している API]** タブを選択し、次のいずれかを選択します。
     
-    1. `Azure Digital Twins` **Azure Digital Twins** API を選択します。
+    1. [https://login.microsoftonline.com/consumers/](`Azure Digital Twins`) **Azure Digital Twins** API を選択します。
 
         [![API または Azure Digital Twins を検索する](./media/digital-twins-permissions/aad-aap-search-api-dt.png)](./media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
 

@@ -9,14 +9,17 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 10/27/2016
-ms.openlocfilehash: 1b76147ac48d0bfb7b7bb1302e33b21e5ababb77
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 3f22ce3b1fb750e33e35d35ee1fe5ad1893abcfd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169079"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79204138"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) でのアプリケーション ライフサイクル管理
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 Azure Machine Learning Studio (クラシック) は、Azure クラウド プラットフォームで運用できる機械学習の実験を開発するツールです。 Visual Studio IDE に似ており、1 つのプラットフォームにマージされているスケーラブルなクラウド サービスです。 さまざまな資産のバージョン管理から、自動化された実行とデプロイまで、標準的なアプリケーション ライフサイクル管理 (ALM) プラクティスを Azure Machine Learning Studio (クラシック) に組み込むことができます。 この記事では、一部のオプションとアプローチについて説明します。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -83,7 +86,7 @@ WSD ファイルをエクスポートしてそれをバージョン管理した�
 ALM の重要な側面は、アプリケーションの実行とデプロイのプロセスを自動化できるようにすることです。 Azure Machine Learning Studio (クラシック) では、[PowerShell モジュール](https://aka.ms/amlps)を使用してこれを実現できます。 ここでは、[Azure Machine Learning Studio (クラシック) PowerShell モジュール](https://aka.ms/amlps)を使用することによる、標準的な ALM 自動化実行/デプロイ プロセスに関連するエンド ツー エンドの手順の例を示します。 各手順は、その手順の実行に使用できる 1 つまたは複数の PowerShell コマンドレットにリンクされています。
 
 1. [データセットをアップロード](https://github.com/hning86/azuremlps#upload-amldataset)します。
-2. [ワークスペース](https://github.com/hning86/azuremlps#copy-amlexperiment)または[ギャラリー](https://github.com/hning86/azuremlps#copy-amlexperimentfromgallery)からワークスペースにトレーニング実験をコピーするか、[エクスポート](https://github.com/hning86/azuremlps#export-amlexperimentgraph)された実験をローカル ディスクから[インポート](https://github.com/hning86/azuremlps#import-amlexperimentgraph)します。
+2. [ワークスペース](https://github.com/hning86/azuremlps#copy-amlexperiment)または[ギャラリー](https://github.com/hning86/azuremlps#copy-amlexperimentfromgallery)からワークスペースにトレーニング実験をコピーするか、[エクスポート](https://github.com/hning86/azuremlps#import-amlexperimentgraph)された実験をローカル ディスクから[インポート](https://github.com/hning86/azuremlps#export-amlexperimentgraph)します。
 3. トレーニング実験で[データセットを更新](https://github.com/hning86/azuremlps#update-amlexperimentuserasset)します。
 4. [トレーニング実験を実行](https://github.com/hning86/azuremlps#start-amlexperiment)します。
 5. [トレーニング済みのモデルを昇格](https://github.com/hning86/azuremlps#promote-amltrainedmodel)させます。

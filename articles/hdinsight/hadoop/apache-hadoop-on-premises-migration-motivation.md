@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.openlocfilehash: 2440b93629416ea73fcf211cbe7bf5a3b72ab2e7
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74267320"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - 動機と利点
@@ -61,7 +61,7 @@ Azure HDInsight は、Hadoop コンポーネントのクラウド ディスト�
     - Azure Blob Storage
     - Azure Data Lake Storage Gen2
     - Azure Cosmos DB
-    - Azure SQL Database
+    - Azure SQL データベース
     - Azure Analysis Services
 
 - **プロセスとコンポーネントを自動修復** - HDInsight は常に独自の監視インフラストラクチャを使用して、インフラストラクチャとオープン ソース コンポーネントを継続的に確認しています。 また、オープン ソース コンポーネントやノードが利用できないなどの重大な障害も自動的に回復します。 いずれかの OSS コンポーネントに障害が発生した場合、Ambari でアラートがトリガーされます。
@@ -129,7 +129,7 @@ Azure HDInsight は、Hadoop コンポーネントのクラウド ディスト�
 |Structured Streaming ジョブ|1 分ごとに 5 個のジョブ||
 |ML モデルのトレーニング ジョブ|1 週間に 1 回 2 個ジョブ||
 |プログラミング言語|Python、Scala、Java||
-|スクリプト|Shell、Python||
+|スクリプトの作成|Shell、Python||
 |**トピック**:**データ**|||
 |データ ソース|フラット ファイル、Json、Kafka、RDBMS||
 |データのオーケストレーション|Oozie ワークフロー、エアフロー||
@@ -158,7 +158,7 @@ Azure HDInsight は、Hadoop コンポーネントのクラウド ディスト�
 |スキル|Hadoop、Spark||
 |移行作業に使用可能なリソース数|2||
 |**トピック**:**制限事項**|||
-|現時点での制限事項|待機時間が長い||
+|現在の制限|待機時間が長い||
 |現在の課題|コンカレンシーの問題||
 
 ### <a name="azure-requirements-questionnaire"></a>Azure の要件のアンケート
@@ -199,7 +199,7 @@ Azure HDInsight は、Hadoop コンポーネントのクラウド ディスト�
 |ワークロードを分解するか?|Hive ジョブを Spark ジョブに置き換える||
 |データのオーケストレーションに ADF を使用するか?|いいえ||
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このシリーズの次の記事をお読みください。
 

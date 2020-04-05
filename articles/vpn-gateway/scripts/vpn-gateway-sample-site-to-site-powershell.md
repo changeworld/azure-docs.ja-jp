@@ -10,10 +10,10 @@ ms.topic: sample
 ms.date: 04/30/2018
 ms.author: alzam
 ms.openlocfilehash: 33a79461e1373657c366623e7ef5dbaf6aecf78f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "66113697"
 ---
 # <a name="create-a-vpn-gateway-and-add-a-site-to-site-connection-using-powershell"></a>PowerShell を使用して、VPN Gateway を作成し、サイト間接続を追加する
@@ -81,7 +81,7 @@ New-AzVirtualNetworkGatewayConnection -Name VNet1toSite1 -ResourceGroupName Test
  -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 作成したリソースが不要になったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使用してリソース グループを削除します。 これでリソース グループとそれに含まれるすべてのリソースが削除されます。
 
@@ -112,6 +112,6 @@ Remove-AzResourceGroup -Name TestRG1
 | [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | 仮想ネットワークのサブネット構成を設定します。 |
 | [Set-AzVirtualNetworkGateway](/powershell/module/az.network/set-azvirtualnetworkgateway) | VPN ゲートウェイの構成を設定します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
 ms.openlocfilehash: 953121a9a15d4fef56d381e3aab85329fadacce2
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77604970"
 ---
 # <a name="how-to-configure-the-connection-policy-used-by-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB 用 Azure Functions トリガーで使用される接続ポリシーを構成する方法
@@ -36,7 +36,7 @@ ms.locfileid: "77604970"
 
 `connectionMode` には目的の接続モード (Direct または Gateway)、`protocol` には目的の接続プロトコル (Tcp または Https) が設定されている必要があります。 
 
-自分の Azure Functions プロジェクトで Azure Functions V1 ランタイムを使用している場合、構成の名前はわずかに異なり、`cosmosDB` ではなく `documentDB` を使用する必要があります。
+自分の Azure Functions プロジェクトで Azure Functions V1 ランタイムを使用している場合、構成の名前はわずかに異なり、`documentDB` ではなく `cosmosDB` を使用する必要があります。
 
 ```js
 {

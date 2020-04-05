@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.openlocfilehash: 38fb45fd339b5e2c7cab6f66a1ed6c0df73fb29e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74069625"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Azure HDInsight でサポートされている高可用性サービス
@@ -48,7 +48,7 @@ HDInsight では、次の 4 つのプライマリ サービスが、自動フェ
 
 Microsoft では、HDInsight クラスターの次の表に示す 4 つの Apache サービスのサポートを提供しています。 Apache のコンポーネントでサポートされている高可用性サービスと区別するために、これらは "*HDInsight HA サービス*" と呼ばれます。
 
-| Service | クラスター ノード | クラスターの種類 | 目的 |
+| サービス | クラスター ノード | クラスターの種類 | 目的 |
 |---|---|---|---|
 | Apache Ambari サーバー| アクティブなヘッドノード | All | クラスターを監視および管理します。|
 | Apache YARN 用アプリケーション タイムライン サーバー | アクティブなヘッドノード | Kafka を除くすべて | クラスターで実行されている YARN ジョブに関するデバッグ情報を保持します。|
@@ -58,7 +58,7 @@ Microsoft では、HDInsight クラスターの次の表に示す 4 つの Apach
 >[!Note]
 > 現在、HDInsight Enterprise セキュリティ パッケージ (ESP) クラスターでは、Ambari サーバーの高可用性のみが提供されています。
 
-### <a name="architecture"></a>アーキテクチャ
+### <a name="architecture"></a>Architecture
 
 各 HDInsight クラスターには、アクティブ モードとスタンバイ モードそれぞれに 2 つのヘッドノードがあります。 HDInsight HA サービスはヘッドノードでのみ実行されます。 これらのサービスは、常にアクティブなヘッドノードで実行され、スタンバイ ヘッドノードで停止されメンテナンス モードにされる必要があります。
 
@@ -131,7 +131,7 @@ YARN ResourceManager の高可用性は、NameNode やその他の HDInsight HA 
 
 HDInsight HBase クラスターでは、HBase Master 高可用性がサポートされます。 ヘッドノードで実行される他の HA サービスとは異なり、HBase Master は 3 つの ZooKeeper ノードで実行されます。そのうちの 1 つがアクティブなマスター、他の 2 つがスタンバイです。 NameNode と同様に、HBase Master では、リーダー選択のために Apache ZooKeeper との調整が行われ、現在のアクティブなマスターに問題がある場合は自動フェールオーバーが行われます。 アクティブな HBase Master は、常に 1 つだけ存在します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [HDInsight における Apache Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md)
 - [Azure HDInsight 仮想ネットワーク アーキテクチャ](hdinsight-virtual-network-architecture.md)

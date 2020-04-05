@@ -1,5 +1,5 @@
 ---
-title: パフォーマンスの調整:MapReduce、HDInsight & Azure Data Lake Storage Gen2 | Microsoft Docs
+title: 'パフォーマンスをチューニングする: MapReduce、HDInsight & Azure Data Lake Storage Gen2 | Microsoft Docs'
 description: Azure Data Lake Storage Gen2 の MapReduce パフォーマンス チューニング ガイドライン
 author: normesta
 ms.subservice: data-lake-storage-gen2
@@ -9,25 +9,25 @@ ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: a3ea6858355d6cb921f629bf36134d96371f6244
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74327922"
 ---
-# <a name="tune-performance-mapreduce-hdinsight--azure-data-lake-storage-gen2"></a>パフォーマンスの調整:MapReduce、HDInsight & Azure Data Lake Storage Gen2
+# <a name="tune-performance-mapreduce-hdinsight--azure-data-lake-storage-gen2"></a>パフォーマンスをチューニングする: MapReduce、HDInsight & Azure Data Lake Storage Gen2
 
 Map Reduce ジョブのパフォーマンスを調整する際に考慮すべき要素について説明します。 この記事では、さまざまなパフォーマンス チューニング ガイドラインについて説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-* **Azure Data Lake Storage Gen2 アカウント**。 アカウントの作成手順については、[クイック スタート: Azure Data Lake Storage Gen2 ストレージ アカウントを作成する](data-lake-storage-quickstart-create-account.md)」を参照してください。
+* **Azure Data Lake Storage Gen2 アカウント**。 アカウントの作成手順については、[クイック スタート:Azure Data Lake Storage Gen2 ストレージ アカウントを作成する](data-lake-storage-quickstart-create-account.md)」を参照してください。
 * Data Lake Storage Gen2 アカウントにアクセスできる **Azure HDInsight クラスター**。 「[Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)」をご覧ください
 * **HDInsight での MapReduce の使用**。  詳細については、「[HDInsight での MapReduce と Hadoop の使用](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce)」を参照してください。
 * **Data Lake Storage Gen2 のパフォーマンス チューニング ガイドライン**。  一般的なパフォーマンスの概念については、[Data Lake Storage Gen2 のパフォーマンス チューニング ガイダンス](data-lake-storage-performance-tuning-guidance.md)を参照してください。
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>パラメーター
 
 MapReduce ジョブの実行時に、Data Lake Storage Gen2 のパフォーマンスを向上させるために構成できるパラメーターは次のとおりです。
 
@@ -45,15 +45,15 @@ MapReduce ジョブの実行時に、Data Lake Storage Gen2 のパフォーマ�
 > [!NOTE]
 > このドキュメントのガイダンスでは、お使いのアプリケーションがクラスターで唯一実行されているアプリケーションであると想定しています。
 
-**手順 1: 実行するジョブの数を決定する**
+**ステップ 1:実行するジョブの数を決定する**
 
 既定では、MapReduce はジョブにクラスター全体を使用します。  クラスターの使用を抑えるには、使用可能なコンテナーの数よりも少ない Mapper を使用します。        
 
-**手順 2: mapreduce.map.memory/mapreduce.reduce.memory を設定する**
+**手順 2:mapreduce.map.memory/mapreduce.reduce.memory を設定する**
 
 Map タスクと Reduce タスクのメモリ サイズは、特定のジョブに依存します。  コンカレンシーを向上させるには、メモリ サイズを小さくします。  同時に実行できるタスクの数は、コンテナー数によって異なります。  Mapper や Reducer ごとのメモリの量を減らすことで、より多くのコンテナーを作成できるため、より多くの Mapper や Reducer を同時に実行できます。  メモリの量を減らし過ぎると、一部のプロセスでメモリが不足する場合があります。  ジョブの実行時にヒープ エラーが発生する場合は、Mapper や Reducer ごとのメモリを増やす必要があります。  コンテナーをさらに追加すると、追加された各コンテナーに余分なオーバーヘッドが加わり、パフォーマンスを低下させる可能性がある点を考慮する必要があります。  別の方法としては、メモリ容量が大きいクラスターを使用してメモリ量を増やすか、クラスター内のノード数を増やすことが挙げられます。  メモリの量が増えると使用できるコンテナーの数も増えて、コンカレンシーが向上されます。  
 
-**手順 3: 合計 YARN メモリを決定する**
+**ステップ 3:合計 YARN メモリを決定する**
 
 mapreduce.job.maps/mapreduce.job.reduces をチューニングするには、使用可能な合計 YARN メモリの量を考慮する必要があります。  この情報は Ambari で利用できます。  YARN に移動し、[Configs] \(構成) タブを表示します。YARN メモリは、このウィンドウに表示されます。  合計 YARN メモリを取得するには、YARN メモリと、クラスター内のノードの数を掛けます。
 
@@ -61,13 +61,13 @@ mapreduce.job.maps/mapreduce.job.reduces をチューニングするには、使
 
 空のクラスターを使用している場合、メモリはクラスターの合計 YARN メモリになります。  ほかのアプリケーションでメモリを使用している場合は、Mapper や Reducer の数を使用するコンテナーの数に減らすことで、クラスターのメモリの一部のみを使用するように選択できます。  
 
-**手順 4: YARN コンテナーの数を計算する**
+**手順 4:YARN コンテナーの数を計算する**
 
 YARN コンテナーによって、ジョブのコンカレンシーがどの程度可能かが決まります。  合計 YARN メモリを、mapreduce.map.memory で割ります。  
 
     # of YARN containers = total YARN memory / mapreduce.map.memory
 
-**手順 5: mapreduce.job.maps/mapreduce.job.reduces を設定する**
+**手順 5:mapreduce.job.maps/mapreduce.job.reduces を設定する**
 
 mapreduce.job.maps/mapreduce.job.reduces を、少なくとも、使用可能なコンテナーの数に設定します。  さらに、Mapper や Reducer の数を増やして、パフォーマンスが向上するかを確認することができます。  Mapper の数を増やすとオーバーヘッドが追加されるため、Mapper の数が多すぎるとパフォーマンスが低下する可能性がある点にご注意ください。  
 
@@ -77,24 +77,24 @@ CPU スケジューリングと CPU の分離は既定ではオフになって�
 
 8 つの D14 ノードから成るクラスターがあり、I/O 集約型ジョブを実行するとします。  次の計算を行う必要があります。
 
-**手順 1: 実行するジョブの数を決定する**
+**ステップ 1:実行するジョブの数を決定する**
 
 この例では、実行するジョブは 1 つだけであると想定しています。  
 
-**手順 2: mapreduce.map.memory/mapreduce.reduce.memory を設定する**
+**手順 2:mapreduce.map.memory/mapreduce.reduce.memory を設定する**
 
 この例では、I/O 集約型ジョブを実行し、マップ タスクには 3 GB のメモリで十分であると判断しています。
 
     mapreduce.map.memory = 3GB
 
-**手順 3: 合計 YARN メモリを決定する**
+**ステップ 3:合計 YARN メモリを決定する**
 
     Total memory from the cluster is 8 nodes * 96GB of YARN memory for a D14 = 768GB
-**手順 4: YARN コンテナーの数を計算する**
+**手順 4:YARN コンテナーの数を計算する**
 
     # of YARN containers = 768GB of available memory / 3 GB of memory =   256
 
-**手順 5: mapreduce.job.maps/mapreduce.job.reduces を設定する**
+**手順 5:mapreduce.job.maps/mapreduce.job.reduces を設定する**
 
     mapreduce.map.jobs = 256
 

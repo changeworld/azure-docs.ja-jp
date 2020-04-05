@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 8cc085fd27004928babd7df305a4452d1b068f6e
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72794232"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>例:C# で Azure Cognitive Search にシノニムを追加する
@@ -167,11 +167,11 @@ Name: Roach Motel       Category: Budget        Tags: [motel, budget]
 ## <a name="sample-application-source-code"></a>サンプル アプリケーションのソース コード
 このチュートリアルで使用したサンプル アプリケーションの完全なソース コードが [GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms) にあります。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 例の後で最も速くクリーンアップする方法は、Azure Cognitive Search サービスが含まれているリソース グループを削除することです。 リソース グループを削除することで、そのすべての内容を完全に削除することができます。 ポータルでは、リソース グループ名は Azure Cognitive Search サービスの [概要] ページに表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この例では、マッピング規則を作成、ポストしてからクエリでシノニム マップを呼び出す C# コードのシノニム機能を示します。 さらに詳しい情報については、[.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) と [REST API](https://docs.microsoft.com/rest/api/searchservice/) のリファレンス ドキュメントをご覧ください。
 

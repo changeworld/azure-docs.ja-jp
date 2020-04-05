@@ -9,10 +9,10 @@ ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 03/01/2017
 ms.openlocfilehash: 51d9060eaf4b30c696ef2a3b5f798a31e2f2a98a
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71309694"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Azure Data Lake U-SQL SDK を使用して U-SQL の実行およびテストする
@@ -332,13 +332,13 @@ LocalRunHelper.exe は、U-SQL のローカル コンパイルや実行などの
 
 public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 
-|パラメーター|種類|説明|
+|パラメーター|Type|説明|
 |---------|----|-----------|
 |messageOutput|System.IO.TextWriter|出力メッセージ用。コンソールで使用するには null に設定します|
 
-**プロパティ**
+**Properties**
 
-|プロパティ|種類|説明|
+|プロパティ|Type|説明|
 |--------|----|-----------|
 |AlgebraPath|string|代数ファイルへのパス (代数ファイルは、コンパイル結果の 1 つです)|
 |CodeBehindReferences|string|スクリプトに分離コード参照がある場合は、パスを ';' で区切って指定します|
@@ -346,25 +346,25 @@ public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 |CurrentDir|string|現在のディレクトリ|
 |DataRoot|string|データ ルート パス|
 |DebuggerMailPath|string|デバッガーのメール スロットのパス|
-|GenerateUdoRedirect|bool|アセンブリ読み込みリダイレクトのオーバーライド構成を生成するかどうかを示します|
-|HasCodeBehind|bool|スクリプトに分離コードがあるかどうか|
+|GenerateUdoRedirect|[bool]|アセンブリ読み込みリダイレクトのオーバーライド構成を生成するかどうかを示します|
+|HasCodeBehind|[bool]|スクリプトに分離コードがあるかどうか|
 |InputDir|string|入力データ用のディレクトリ|
 |MessagePath|string|メッセージ ダンプ ファイルのパス|
 |OutputDir|string|出力データ用のディレクトリ|
-|Parallelism|int|代数を実行する並列処理|
-|ParentPid|int|サービスの監視が終了する親の PID。無視する場合は 0 または負数を設定します|
+|Parallelism|INT|代数を実行する並列処理|
+|ParentPid|INT|サービスの監視が終了する親の PID。無視する場合は 0 または負数を設定します|
 |ResultPath|string|結果ダンプ ファイルのパス|
 |RuntimeDir|string|ランタイム ディレクトリ|
 |ScriptPath|string|スクリプトの検出場所|
-|Shallow|bool|簡易コンパイルかどうか|
-|TempDir|string|一時ディレクトリ|
+|Shallow|[bool]|簡易コンパイルかどうか|
+|TempDir|string|Temp ディレクトリ|
 |UseDataBase|string|分離コードの一時アセンブリ登録に使用するデータベース。既定では master|
 |WorkDir|string|任意の作業ディレクトリ|
 
 
-**メソッド**
+**方法**
 
-|方法|説明|戻り値|パラメーター|
+|Method|説明|戻り値|パラメーター|
 |------|-----------|------|---------|
 |public bool DoCompile()|U-SQL スクリプトをコンパイルします|成功時に True| |
 |public bool DoExec()|コンパイル結果を実行します|成功時に True| |
@@ -383,7 +383,7 @@ E_CSC_SYSTEM_INTERNAL:内部エラーです。 ファイルを読み込めない
 - NugetPackage\build\runtime\ 内のすべての依存関係ファイルがプロジェクトの作業ディレクトリにコピーされていることを確認します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * U-SQL の詳細については、「 [Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」を参照してください。
 * 診断情報のログについては、「[Azure Data Lake Analytics の診断ログへのアクセス](data-lake-analytics-diagnostic-logs.md)」を参照してください。

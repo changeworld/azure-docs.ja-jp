@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/26/2016
 ms.openlocfilehash: 3ada12a0cde122fb78815a1d3241d8acb9da2580
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77651459"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack で B2B エンタープライズ統合用の EDIFACT メッセージを交換する

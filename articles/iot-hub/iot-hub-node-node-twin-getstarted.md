@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: elioda
 ms.openlocfilehash: 55dc7f73a3e5bbff2e6e331ba0bd7d4088a86536
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110831"
 ---
 # <a name="get-started-with-device-twins-nodejs"></a>デバイス ツインの使用 (Node.js)
@@ -166,7 +166,7 @@ ms.locfileid: "77110831"
 
 3. テキスト エディターを使用して、**reportconnectivity** フォルダーに新しい**ReportConnectivity.js** ファイルを作成します。
 
-4. 次のコードを **ReportConnectivity.js** ファイルに追加します。 `{device connection string}` を、「[IoT ハブに新しいデバイスを登録する](#register-a-new-device-in-the-iot-hub)」で **myDeviceId** デバイス ID を作成するときにコピーしておいたデバイス接続文字列に置き換えます。
+4. 次のコードを **ReportConnectivity.js** ファイルに追加します。 `{device connection string}` を、「**IoT ハブに新しいデバイスを登録する**」で [myDeviceId](#register-a-new-device-in-the-iot-hub) デバイス ID を作成するときにコピーしておいたデバイス接続文字列に置き換えます。
 
     ```javascript
         'use strict';

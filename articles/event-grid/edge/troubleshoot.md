@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 95181d0eb23d5956b2c6af52c77f85714b107345
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73100155"
 ---
 # <a name="common-issues"></a>一般的な問題
@@ -106,6 +106,6 @@ Event Grid モジュールは、既定で、IoT Edge セキュリティ デー�
 
 * **metrics:reportertype=console** を設定してメトリックを有効にし、Event Grid モジュールを再デプロイします。 それ以降の操作のメトリックが Event Grid モジュールのコンソールに記録されるため、これを使用してさらにデバッグすることができます。 メトリックは、デバッグ時にのみオンにし、完了後は **metrics:reportertype=none** を設定し、Event Grid モジュールを再デプロイすることで、オフにすることをお勧めします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Event Grid on IoT Edge の使用に関する問題や提案を [https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues) でレポートします。

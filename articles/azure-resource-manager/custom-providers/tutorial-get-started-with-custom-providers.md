@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: 45f18727b53b802ba746da41b47fe955543ed9d0
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75648549"
 ---
 # <a name="create-custom-actions-and-resources-in-azure"></a>Azure でカスタム アクションとカスタム リソースを作成する
@@ -44,6 +44,6 @@ ms.locfileid: "75648549"
 
 リファレンスやクイックスタートを探している場合に役に立つリンクをいくつか次に示します。
 
-- [クイック スタート:Azure カスタム リソースプロバイダーの作成とカスタム リソースのデプロイ](./create-custom-provider.md)
+- [クイック スタート: Azure カスタム リソースプロバイダーの作成とカスタム リソースのデプロイ](./create-custom-provider.md)
 - [方法: カスタム アクションを Azure REST API に追加する](./custom-providers-action-endpoint-how-to.md)
 - [方法: カスタム リソースを Azure REST API に追加する](./custom-providers-resources-endpoint-how-to.md)

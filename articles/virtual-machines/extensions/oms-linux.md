@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
 ms.openlocfilehash: 9ddac229fc38a91a8b97b24dc2807080b2295758
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468781"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226879"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Linux 用の Log Analytics 仮想マシン拡張機能
 
@@ -185,7 +185,7 @@ az vm extension set \
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート
 
-### <a name="troubleshoot"></a>[トラブルシューティング]
+### <a name="troubleshoot"></a>トラブルシューティング
 
 拡張機能のデプロイ状態に関するデータを取得するには、Azure Portal か Azure CLI を使用します。 特定の VM の拡張機能のデプロイ状態を確認するには、Azure CLI を使用して次のコマンドを実行します。
 

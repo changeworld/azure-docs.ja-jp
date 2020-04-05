@@ -4,10 +4,10 @@ description: Auzre Application Insights にデータが表示されない場合�
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.openlocfilehash: 2627fde55f4177798d04aab02db169f3117d32dd
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77665903"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>データが存在しない場合のトラブルシューティング - Application Insights for .NET、Application Insights for .NET Core
@@ -38,7 +38,7 @@ ms.locfileid: "77665903"
 
 * 「 [Status Monitor のトラブルシューティング](../../azure-monitor/app/monitor-performance-live-website-now.md#troubleshoot)」を参照してください。
 
-## <a name="q01"></a>Visual Studio に [Application Insights の追加] オプションが表示されない
+## <a name="no-add-application-insights-option-in-visual-studio"></a><a name="q01"></a>Visual Studio に [Application Insights の追加] オプションが表示されない
 *ソリューション エクスプローラーで既存のプロジェクトを右クリックしたときに、Application Insights のオプションが表示されません。*
 
 * このツールでは、一部の種類の .NET プロジェクトがサポートされません。 Web プロジェクトと WCF プロジェクトはサポートされます。 その他の種類のプロジェクト (デスクトップ アプリケーション、サービス アプリケーションなど) では、 [Application Insights SDK を手動でプロジェクトに追加](../../azure-monitor/app/windows-desktop.md)できます。
@@ -46,7 +46,7 @@ ms.locfileid: "77665903"
 * **[ツール]** 、 **[拡張機能と更新プログラム]** の順に選択し、**Developer Analytics Tools** がインストールされ、有効になっていることを確認します。 有効な場合は、 **[更新プログラム]** をクリックして更新プログラムが存在するかどうかを確認します。
 * [新しいプロジェクト] ダイアログを開いて [ASP.NET Web アプリケーション] を選択します。 そこに Application Insights オプションが表示された場合、Application Insights Tools はインストールされています。 それ以外の場合は、Developer Analytics Tools をアンインストールしてから再インストールしてみてください。
 
-## <a name="q02"></a>Application Insights の追加に失敗する
+## <a name="adding-application-insights-failed"></a><a name="q02"></a>Application Insights の追加に失敗する
 *Application Insights を既存のプロジェクトに追加しようとしたときに、エラー メッセージが表示されます。*
 
 考えられる原因:
@@ -61,12 +61,12 @@ ms.locfileid: "77665903"
 * ブラウザーで、 [Azure ポータル](https://portal.azure.com)に対するアクセス権があることを確認してください。 設定を開き、制限がないかどうか確認してください。
 * [Application Insights をご自身の既存のプロジェクトに追加する](../../azure-monitor/app/asp-net.md):ソリューション エクスプローラーでご自身のプロジェクトを右クリックし、[Application Insights の追加] を選択します。
 
-## <a name="emptykey"></a>エラー「インストルメンテーション キーは空にできません」が発生しました
+## <a name="i-get-an-error-instrumentation-key-cannot-be-empty"></a><a name="emptykey"></a>エラー「インストルメンテーション キーは空にできません」が発生しました
 Application Insights をインストールしているとき、またはログ アダプターをインストールしているときに、何かの問題が発生した可能性があります。
 
 ソリューション エクスプローラーでプロジェクトを右クリックし、 **[Application Insights]、[Application Insights の構成]** の順に選択します。 Azure へのサインインを促すダイアログが表示されます。または、Application Insights のリソースを作成するか、既存のリソースを再利用します。
 
-## <a name="NuGetBuild"></a> ビルド サーバーに NuGet パッケージが見つからない
+## <a name="nuget-packages-are-missing-on-my-build-server"></a><a name="NuGetBuild"></a> ビルド サーバーに NuGet パッケージが見つからない
 *開発コンピューターでデバッグするときはすべて問題なくビルドされるのに、ビルド サーバーでは NuGet エラーが発生します。*
 
 [NuGet パッケージの復元](https://docs.nuget.org/Consume/Package-Restore)に関するページと[自動パッケージの復元](https://docs.nuget.org/Consume/package-restore/migrating-to-automatic-package-restore)に関するページをご覧ください。
@@ -120,7 +120,7 @@ Application Insights をインストールしているとき、またはログ �
   いくつかのサマリー グラフが表示されます。 それらをクリックしていくと、詳しい情報が表示されます。
 * Visual Studio でアプリをデバッグしているときに、[Application Insights] ボタンをクリックします。
 
-## <a name="q03"></a> サーバー データが表示されない (またはデータが一切表示されない)
+## <a name="no-server-data-or-no-data-at-all"></a><a name="q03"></a> サーバー データが表示されない (またはデータが一切表示されない)
 *アプリを実行し、Microsoft Azure の Application Insights サービスを開きましたが、どのグラフでも、データの収集方法についての説明か、必要な構成が行われていないという内容のメッセージしか表示されません。* または、*ページ ビューとユーザー データだけが表示され、サーバー データが表示されません。*
 
 * Visual Studio で F5 キーを押し、アプリケーションをデバッグ モードで実行します。 ある程度テレメトリを生成するために、アプリケーションを使用します。 記録されたイベントが Visual Studio の出力ウィンドウに表示されていることを確認します。  
@@ -136,7 +136,7 @@ Application Insights をインストールしているとき、またはログ �
 * [サーバー側 SDK](../../azure-monitor/app/api-custom-events-metrics.md) で作成したコードによって、`TelemetryClient` インスタンス内または `TelemetryContext` 内のインストルメンテーション キーが変更されていないか確認します。 自分が記述した [フィルターやサンプリング構成](../../azure-monitor/app/api-filtering-sampling.md) によって、必要なデータまで排除されていないかも確認してください。
 * ApplicationInsights.config を編集した場合は、 [TelemetryInitializers と TelemetryProcessors](../../azure-monitor/app/api-filtering-sampling.md)の構成を慎重に確認します。 不適切な名前が付けられた型またはパラメーターがあると、SDK によってデータが送信されない場合があります。
 
-## <a name="q04"></a>ページ ビュー、ブラウザー、利用状況にデータが表示されない
+## <a name="no-data-on-page-views-browsers-usage"></a><a name="q04"></a>ページ ビュー、ブラウザー、利用状況にデータが表示されない
 *サーバー応答時間グラフとサーバー要求グラフにはデータが表示されますが、[ページ ビューの読み込み時間]、[ブラウザー] ブレードまたは [利用状況] ブレードにはデータが表示されません。*
 
 データは、Web ページのスクリプトによって取得されます。 
@@ -228,7 +228,7 @@ Microsoft.ApplicationInsights.AspNetCore の最新バージョンは 2.8.2 で�
 4. 完了したら、これらの変更を元に戻します。
 
 
-## <a name="PerfView"></a> PerfView でログを収集する
+## <a name="collect-logs-with-perfview"></a><a name="PerfView"></a> PerfView でログを収集する
 [PerfView](https://github.com/Microsoft/perfview) は、多くのソースから診断情報を収集して視覚化することによって、CPU、メモリ、およびその他の問題を特定するために役立つ、無料の診断およびパフォーマンス分析ツールです。
 
 Application Insights SDK は、PerfView でキャプチャできる EventSource の自己トラブルシューティング ログを記録します。

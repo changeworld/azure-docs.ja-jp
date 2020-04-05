@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
-ms.openlocfilehash: f59b688b2ce41985d69e800d6d1f6c6d7ce5e0d4
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: cffa5677c5531f3887639c049998523d7d07586a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278329"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455564"
 ---
 # <a name="check-resource-usage-against-limits"></a>制限に照らしたリソース使用量の確認
 
@@ -27,7 +27,7 @@ ms.locfileid: "76278329"
 
 1. Azure [portal](https://portal.azure.com) にログインします。
 2. Azure portal の左上にある **[すべてのサービス]** を選択します。
-3. **[フィルター]** ボックスに「*Subscriptions*」と入力します。 検索結果に **Subscriptions** が表示されたら、それを選びます。
+3. *[フィルター]* ボックスに「**Subscriptions**」と入力します。 検索結果に **Subscriptions** が表示されたら、それを選びます。
 4. 使用状況を確認するサブスクリプションの名前を選択します。
 5. **[設定]** で、 **[使用量 + クォータ]** を選択します。
 6. 次のオプションを選択できます。
@@ -59,7 +59,7 @@ Get-AzNetworkUsage `
 
 次の出力例のような形式の出力が返されます。
 
-```powershell
+```output
 ResourceType            CurrentValue Limit
 ------------            ------------ -----
 Virtual Networks                   1    50
@@ -83,7 +83,7 @@ az network list-usages \
 
 次の出力例のような形式の出力が返されます。
 
-```azurecli
+```output
 Name                    CurrentValue Limit
 ------------            ------------ -----
 Virtual Networks                   1    50

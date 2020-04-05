@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 281286eb497e52d4553ac539d647625e49f3df9d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6c60516a87dbdc51e19bac5ee9b30f2f1a8b0254
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448815"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80239015"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-c"></a>クイック スタート:Bing Autosuggest REST API と C# で検索クエリの候補を表示する
 
@@ -163,7 +163,7 @@ ms.locfileid: "75448815"
 > [!div class="nextstepaction"]
 > [Bing Autosuggest チュートリアル](../tutorials/autosuggest.md)
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - [Bing Autosuggest とは](../get-suggested-search-terms.md)
 - [Bing Autosuggest API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

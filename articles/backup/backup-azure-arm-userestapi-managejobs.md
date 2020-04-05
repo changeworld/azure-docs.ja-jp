@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
 ms.openlocfilehash: 628569c547aa776ec2fbb7ec7e32edad7c1fe7dd
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173390"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233947"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>REST API を使用してバックアップ ジョブと復元ジョブを追跡する
 
@@ -17,7 +17,7 @@ Azure Backup サービスは、バックアップのトリガー、復元操作�
 
 ## <a name="fetch-job-information-from-operations"></a>操作からジョブの情報を取得する
 
-バックアップのトリガーといった操作では常に、jobID が返されます。 例: [バックアップのトリガー REST API 操作](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3)の最終的な応答は次のとおりです。
+バックアップのトリガーといった操作では常に、jobID が返されます。 次に例を示します。[バックアップのトリガー REST API 操作](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3)の最終的な応答は次のとおりです。
 
 ```http
 {
@@ -47,7 +47,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 |名前  |Type  |説明  |
 |---------|---------|---------|
-|200 OK     | [JobResource](https://docs.microsoft.com/rest/api/backup/jobdetails/get#jobresource)        | OK        |
+|200 OK     | [JobResource](https://docs.microsoft.com/rest/api/backup/jobdetails/get#jobresource)        | [OK]        |
 
 #### <a name="example-response"></a>応答の例
 

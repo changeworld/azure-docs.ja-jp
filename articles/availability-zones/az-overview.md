@@ -6,13 +6,13 @@ ms.service: azure
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: c9f4a418ac05b2618b4641c857e182e73c35d34c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.custom: fasttrack-edit, mvc
+ms.openlocfilehash: 9f1b0f1885019c75252a4c5b8333f342660fac0c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356594"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80057280"
 ---
 # <a name="what-are-availability-zones-in-azure"></a>Azure の Availability Zones の概要
 Availability Zones は高可用性を備えたサービスで、アプリケーションとデータをデータセンターの障害から保護します。 Availability Zones は、Azure リージョン内の一意の物理的な場所です。 それぞれのゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 回復性を確保するため、有効になっているリージョンにはいずれも最低 3 つのゾーンが別個に存在しています。 Availability Zones は 1 リージョン内で物理的に分離されているため、データセンターで障害が発生した場合でもアプリケーションとデータを保護できます。 ゾーン冗長サービスによって、単一障害点から保護されるように Availability Zones 全体でアプリケーションとデータがレプリケートされます。 Availability Zones では、Azure によって業界最高の 99.99% VM アップタイム SLA が実現されます。 完全な [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) では、全体としての Azure の可用性の確保について説明します。
@@ -38,7 +38,7 @@ Availability Zones がサポートされている Azure サービスとリージ
 
 |                                 |アメリカ |              |           |           | ヨーロッパ |              |          |              | アジア太平洋 |                 |
 |----------------------------|----------|----------|---------|---------|--------------|------------|--------|----------|----------|-------------|
-|          |米国中部|米国東部|米国東部 2|米国西部 2|フランス中部|北ヨーロッパ|英国南部|西ヨーロッパ|東日本|東南アジア|
+|          |米国中部|East US|米国東部 2|米国西部 2|フランス中部|北ヨーロッパ|英国南部|西ヨーロッパ|東日本|東南アジア|
 | **Compute**                         |            |              |           |           |                |              |          |             |            |                |
 | Linux Virtual Machines          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | Windows Virtual Machines        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
@@ -65,7 +65,7 @@ Availability Zones がサポートされている Azure サービスとリージ
 | **統合**                     |            |              |           |           |                |              |          |             |            |                |
 | Service Bus (Premium レベルのみ) | &#10003;   |  &#10003;  | &#10003;  | &#10003;  | &#10003;  | &#10003;     |&#10003;   | &#10003;    |&#10003;      | &#10003;       |
 | Event Grid | &#10003;   |  &#10003;  | &#10003;  | &#10003;  | &#10003;  | &#10003;     |&#10003;   | &#10003;    |&#10003;      | &#10003;       |
-| **ID**                     |            |              |           |           |                |              |          |             |            |                |
+| **[ID]**                     |            |              |           |           |                |              |          |             |            |                |
 | Azure AD Domain Services | &#10003;   |  &#10003;  | &#10003;  | &#10003;  | &#10003;  | &#10003;     |&#10003;   | &#10003;    |&#10003;      | &#10003;       |
 
 ## <a name="services-resiliency"></a>サービスの回復性

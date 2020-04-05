@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 4f5d57bab51d537b64ce4b800737219663c3d7a7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77198788"
 ---
 # <a name="run-opc-publisher"></a>OPC Publisher の実行

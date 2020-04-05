@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と SAP Cloud Platform の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と SAP Cloud Platform の統合 | Microsoft Docs'
 description: Azure Active Directory と SAP Cloud Platform の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 12/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 89ea2c45e16dfeb63801f70fa4480c0d865a890f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160072"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>チュートリアル:Azure Active Directory と SAP Cloud Platform の統合
+# <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>チュートリアル: Azure Active Directory と SAP Cloud Platform の統合
 
 このチュートリアルでは、SAP Cloud Platform と Azure Active Directory (Azure AD) を統合する方法について説明します。
 SAP Cloud Platform と Azure AD の統合には、次の利点があります。
@@ -175,7 +175,7 @@ SAP Cloud Platform で Azure AD シングル サインオンを構成するに�
 
     f. **[Force Authentication (強制認証)]** で **[無効]** を選択します。
 
-    g. **[Save]** をクリックします。
+    g. **[保存]** をクリックします。
 
 4. **[Local Service Provider]\(ローカル サービス プロバイダー\)** の設定を保存したら、次を実行して応答 URL を取得します。
    
@@ -307,7 +307,7 @@ Azure AD ユーザーが SAP Cloud Platform にログインできるようにす
 
     d. **[Assign]** をクリックしてユーザーをロールに割り当てます。
 
-    e. **[Save]** をクリックします。
+    e. **[保存]** をクリックします。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

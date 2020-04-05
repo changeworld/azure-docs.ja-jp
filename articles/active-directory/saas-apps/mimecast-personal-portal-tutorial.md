@@ -17,10 +17,10 @@ ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 259635613855e4d7687cf569c94bbd3dd04027fe
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160631"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>チュートリアル: Azure Active Directory と Mimecast Personal Portal の統合
@@ -111,7 +111,7 @@ Mimecast Personal Portal で Azure AD シングル サインオンを構成す�
     | リージョン  |  値 | 
     | --------------- | --------------- | 
     | ヨーロッパ          | `https://eu-api.mimecast.com/login/saml`|
-    | 米国   | `https://us-api.mimecast.com/login/saml`|
+    | United States   | `https://us-api.mimecast.com/login/saml`|
     | 南アフリカ    | `https://za-api.mimecast.com/login/saml`|
     | オーストラリア       | `https://au-api.mimecast.com/login/saml`|
     | オフショア        | `https://jer-api.mimecast.com/login/saml`|
@@ -121,7 +121,7 @@ Mimecast Personal Portal で Azure AD シングル サインオンを構成す�
     | リージョン  |  値 | 
     | --------------- | --------------- |
     | ヨーロッパ          | `https://eu-api.mimecast.com/sso/<accountcode>`|
-    | 米国   | `https://us-api.mimecast.com/sso/<accountcode>`|    
+    | United States   | `https://us-api.mimecast.com/sso/<accountcode>`|    
     | 南アフリカ    | `https://za-api.mimecast.com/sso/<accountcode>`|
     | オーストラリア       | `https://au-api.mimecast.com/sso/<accountcode>`|
     | オフショア        | `https://jer-api.mimecast.com/sso/<accountcode>`|
@@ -131,7 +131,7 @@ Mimecast Personal Portal で Azure AD シングル サインオンを構成す�
     | リージョン  |  値 | 
     | --------------- | --------------- | 
     | ヨーロッパ          | `https://eu-api.mimecast.com/login/saml`|
-    | 米国   | `https://us-api.mimecast.com/login/saml`|
+    | United States   | `https://us-api.mimecast.com/login/saml`|
     | 南アフリカ    | `https://za-api.mimecast.com/login/saml`|
     | オーストラリア       | `https://au-api.mimecast.com/login/saml`|
     | オフショア        | `https://jer-api.mimecast.com/login/saml`|
@@ -189,7 +189,7 @@ Mimecast Personal Portal で Azure AD シングル サインオンを構成す�
 
     h. **[シングル サインオンの許可]** を選択します。
    
-    i. **[Save]** をクリックします。
+    i. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -266,7 +266,7 @@ Azure AD ユーザーが Mimecast Personal Portal にログインできるよう
 
 5. 新規アドレス ダイアログで、プロビジョニングする有効な Azure AD アカウントを次の手順で設定します。
    
-    ![[[Save]]](./media/mimecast-personal-portal-tutorial/ic795006.png "保存")
+    ![および](./media/mimecast-personal-portal-tutorial/ic795006.png "保存")
    
     a. **[Email Address]\(メール アドレス\)** ボックスに、ユーザーの**メール アドレス** (**BrittaSimon\@contoso.com** など) を入力します。
     
@@ -274,7 +274,7 @@ Azure AD ユーザーが Mimecast Personal Portal にログインできるよう
 
     c. **[Password]\(パスワード\)** および **[Confirm Password]\(確認パスワード\)** ボックスに、ユーザーの**パスワード**を入力します。
    
-    b. **[Save]** をクリックします。
+    b. **[保存]** をクリックします。
 
 >[!NOTE]
 >Mimecast Personal Portal から提供されている他の IdeaScale ユーザー アカウント作成ツールや API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。

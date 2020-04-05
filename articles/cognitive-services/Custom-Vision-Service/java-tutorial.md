@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Custom Vision SDK for Java を使用して画像分類プロジェクトを作成する
+title: 'クイック スタート: Custom Vision SDK for Java を使って画像分類プロジェクトを作成する'
 titleSuffix: Azure Cognitive Services
 description: Java SDK を使用して、プロジェクトの作成、タグの追加、画像のアップロード、プロジェクトのトレーニング、予測を行います。
 services: cognitive-services
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.date: 02/25/2020
 ms.author: areddish
 ms.openlocfilehash: a0cfa49dfe247a71e5c2d546e2bb7e9d9b2efc18
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77616344"
 ---
-# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-sdk-for-java"></a>クイック スタート:Custom Vision SDK for Java を使用して画像分類プロジェクトを作成する
+# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-sdk-for-java"></a>クイック スタート: Custom Vision SDK for Java を使って画像分類プロジェクトを作成する
 
 この記事では、Custom Vision Java SDK を使用して画像分類モデルを構築する基本的な方法について説明します。 作成後、タグを追加し、イメージをアップロードし、プロジェクトをトレーニングし、プロジェクトの既定の予測エンドポイント URL を取得し、エンドポイントを使用してイメージをプログラミングでテストできます。 この例は、独自の Java アプリケーションを構築するためのテンプレートとしてご利用ください。 分類モデルの構築と使用のプロセスをコード "_なし_" で行う場合は、[ブラウザー ベースのガイダンス](getting-started-build-a-classifier.md)を参照してください。
 

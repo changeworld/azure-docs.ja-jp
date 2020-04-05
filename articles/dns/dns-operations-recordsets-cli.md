@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 05/15/2018
 ms.author: rohink
 ms.openlocfilehash: 4e017dc940e1d32888ff279904e44d34db1fd5c3
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76936886"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>Azure CLI を使用して Azure DNS の DNS レコードおよびレコードセットを管理する

@@ -16,10 +16,10 @@ ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
 ms.openlocfilehash: fd094e35ceaa718ec1b258d74106b39744cbd16f
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79087828"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services v2 対 v3

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
 ms.openlocfilehash: 6f767abdf8673e3adffc6c4e3748733054ba723d
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77201868"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>サブネットの委任を追加または削除する
@@ -36,13 +36,13 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[仮想ネットワーク]** の順に選択します。
 1. **[仮想ネットワークの作成]** に次の情報を入力または選択します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     | 名前 | 「*MyVirtualNetwork*」と入力します。 |
     | アドレス空間 | 「*10.0.0.0/16*」と入力します。 |
     | サブスクリプション | サブスクリプションを選択します。|
     | Resource group | **[新規作成]** を選択し、「*myResourceGroup*」と入力して、 **[OK]** を選択します。 |
-    | Location | **[EastUS]** を選択します。|
+    | 場所 | **[EastUS]** を選択します。|
     | サブネット - 名前 | 「*mySubnet*」と入力します。 |
     | サブネット アドレス範囲 | 「*10.0.0.0/24*」と入力します。 |
     |||

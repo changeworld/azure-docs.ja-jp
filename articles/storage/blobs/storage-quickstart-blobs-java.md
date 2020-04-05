@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: c883653754e1f69d3b2d79b256d57a036c70b58e
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78330143"
 ---
 # <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>クイック スタート:Java v12 SDK で BLOB を管理する

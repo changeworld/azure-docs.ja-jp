@@ -12,17 +12,17 @@ ms.topic: reference
 ms.date: 11/12/2019
 ms.author: diberry
 ms.openlocfilehash: d1ead09f6248a6ad14646371aa70b42b57cf8e3f
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270817"
 ---
 # <a name="application-settings"></a>アプリケーションの設定
 
 これらのアプリケーション設定は、REST API を使用して [exported](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) アプリと [updated](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) に格納されます。 アプリのバージョン設定を変更すると、アプリのトレーニング状態がトレーニングなしにリセットされます。
 
-|設定|既定値|Notes|
+|設定|既定値|メモ|
 |--|--|--|
 |NormalizePunctuation|True|句読点を削除します。|
 |NormalizeDiacritics|True|分音文字を削除します。|

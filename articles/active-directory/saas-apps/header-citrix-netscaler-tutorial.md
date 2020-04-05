@@ -17,10 +17,10 @@ ms.date: 12/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 87f1c884edf6841b65495cd31ed4c7d6e63aedd9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75977929"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-header-based-authentication"></a>チュートリアル:Azure Active Directory シングル サインオンと Citrix NetScaler の統合 (ヘッダーベースの認証)
@@ -122,7 +122,7 @@ Azure portal を使用して Azure AD SSO を有効にするには、これら�
 
 1. Citrix NetScaler アプリケーションでは、さらにいくつかの属性も SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログ ボックスの **[ユーザー要求]** で、次の手順に従って、表に示すように SAML トークン属性を追加します。
 
-    | Name | ソース属性|
+    | 名前 | ソース属性|
     | ---------------| --------------- |
     | mySecretID  | user.userprincipalname |
     
@@ -160,7 +160,7 @@ Azure portal を使用して Azure AD SSO を有効にするには、これら�
 
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** に表示された値を書き留めるか、コピーします。
 
-   1. **作成** を選択します。
+   1. **［作成］** を選択します
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -221,7 +221,7 @@ Azure portal を使用して Azure AD SSO を有効にするには、これら�
 
 1. 下のスクリーンショットに示すように、次の値を設定します。
 
-    * **Name**
+    * **名前**
     * **プロトコル**
     * **IP アドレス**
     * **[ポート]**
@@ -274,7 +274,7 @@ Citrix ADC SAML プロファイルを構成するには、次のセクション�
     
     ![Citrix NetScaler の構成 - [Create Authentication Policy]\(認証ポリシーの作成\) ペイン](./media/header-citrix-netscaler-tutorial/policy01.png)
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 ### <a name="create-an-authentication-saml-server"></a>認証 SAML サーバーを作成する
 
@@ -290,7 +290,7 @@ Citrix ADC SAML プロファイルを構成するには、次のセクション�
     
 1. **[Issuer Name]\(発行者名\)** には、関連する URL を入力します。
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 ![Citrix NetScaler の構成 - [Create Authentication SAML Server]\(認証 SAML サーバーの作成\) ペイン](./media/header-citrix-netscaler-tutorial/server01.png)
 
@@ -365,7 +365,7 @@ Citrix ADC SAML プロファイルを構成するには、次のセクション�
 
     1. **[Expression]\(式\)** には、「**aaa.USER.ATTRIBUTE("mySecretID")** 」と入力します。ここで、**mySecretID** は Citrix ADC に送信された Azure AD SAML 要求です。
 
-    1. **作成** を選択します。
+    1. **［作成］** を選択します
 
     ![Citrix NetScaler の構成 - [Create Rewrite Actions]\(書き換えアクションの作成\) ペイン](./media/header-citrix-netscaler-tutorial/header02.png)
  
@@ -383,7 +383,7 @@ Citrix ADC SAML プロファイルを構成するには、次のセクション�
 
     1. **[Expression]\(式\)** には、「**true**」と入力します。
 
-    1. **作成** を選択します。
+    1. **［作成］** を選択します
 
     ![Citrix NetScaler の構成 - [Create Rewrite Policy]\(書き換えポリシーの作成\) ペイン](./media/header-citrix-netscaler-tutorial/header04.png)
 

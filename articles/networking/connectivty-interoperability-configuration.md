@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 9c4a57111566248d3537cab0d9d85c0c3be874a1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68335931"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Azure バックエンド接続機能の相互運用性: テスト構成の詳細
@@ -190,7 +190,7 @@ ExpressRoute とサイト間 VPN が共存する接続を構成する方法の�
 
 詳細については、「[VPN ゲートウェイとは][VPN]」および[高可用性 NVA のデプロイ][Deploy-NVA]に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 テスト セットアップの[コントロール プレーン分析][Control-Analysis]と、トポロジ内のさまざまな VNet や VLAN のビューを確認します。
 

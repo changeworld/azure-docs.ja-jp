@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: ARO, OpenShift, aquasec, Twistlock, Red Hat
 ms.openlocfilehash: e1c1dd9f27a207f78dd22e271f6b070c7f92f622
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78271373"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>Azure Red Hat OpenShift クラスター内で特権コンテナーを実行する
@@ -111,7 +111,7 @@ oc get route aqua-web -n aqua-security
 ### <a name="step-4-deploy-aqua-enforcers"></a>手順 4:Aqua Enforcer をデプロイする
 Enforcer のデプロイ時に、次のフィールドを設定します。
 
-| フィールド          | Value         |
+| フィールド          | 値         |
 | -------------- | ------------- |
 | オーケストレーター   | OpenShift     |
 | ServiceAccount | aqua-account  |

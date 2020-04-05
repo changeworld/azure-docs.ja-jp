@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.openlocfilehash: 340017a121d12c95c7c04bbfe67b336638209e9c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75439008"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>チュートリアル:Azure portal を使用した初めてのデータ ファクトリの作成
@@ -52,7 +52,7 @@ ms.locfileid: "75439008"
 
 データ ファクトリを作成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. **[新規]**  >  **[データ + 分析]**  >  **[データ ファクトリ]** を選択します。
 
@@ -76,7 +76,7 @@ ms.locfileid: "75439008"
 
 1. **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
    > [!IMPORTANT]
    > Data Factory インスタンスを作成するには、サブスクリプション/リソース グループ レベルで [Data Factory の共同作業者](../../role-based-access-control/built-in-roles.md#data-factory-contributor) ロールのメンバーである必要があります。
@@ -110,7 +110,7 @@ ms.locfileid: "75439008"
 
    ![Storage のリンクされたサービス](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
 
-1. **accountname** をストレージ アカウントの名前に置き換えます。 **accountkey** をストレージ アカウントのアクセス キーに置き換えます。 ストレージ アクセス キーを取得する方法については、「[Manage storage account access keys (ストレージ アカウントのアクセス キーの管理)](../../storage/common/storage-account-keys-manage.md)」をご覧ください。
+1. **accountname** をストレージ アカウントの名前に置き換えます。 **accountkey** をストレージ アカウントのアクセス キーに置き換えます。 ストレージ アクセス キーを取得する方法については、「[ストレージ アカウントのアクセス キーの管理](../../storage/common/storage-account-keys-manage.md)」を参照してください。
 
 1. コマンド バーの **[デプロイ]** を選択して、リンクされたサービスをデプロイします。
 
@@ -210,11 +210,11 @@ ms.locfileid: "75439008"
 
    | プロパティ | 入れ子先 | 説明 |
    |:--- |:--- |:--- |
-   | 型 | properties |データは BLOB ストレージに存在するため、type プロパティを **AzureBlob** に設定しています。 |
+   | type | properties |データは BLOB ストレージに存在するため、type プロパティを **AzureBlob** に設定しています。 |
    | linkedServiceName | format |前に作成した AzureStorageLinkedService を参照します。 |
    | folderPath | typeProperties | BLOB コンテナーと、入力 BLOB を格納するフォルダーを指定します。 | 
    | fileName | typeProperties |このプロパティは省略可能です。 このプロパティを省略した場合は、folderPath のすべてのファイルが取得されます。 このチュートリアルでは、input.log ファイルのみが処理されます。 |
-   | 型 | format |ログ ファイルはテキスト形式です。そのため、**TextFormat** を使用します。 |
+   | type | format |ログ ファイルはテキスト形式です。そのため、**TextFormat** を使用します。 |
    | columnDelimiter | format |ログ ファイル内の列はコンマ (`,`) で区切られています。 |
    | frequency/interval | availability |frequency を **Month** に設定し、interval を **1** に設定しています。そのため、入力スライスは 1 か月ごとになります。 |
    | external | properties | このパイプラインによって入力データが生成されない場合は、このプロパティを **true** に設定します。 このチュートリアルでは、input.log ファイルはこのパイプラインで生成されないため、プロパティを **true** に設定します。 |
@@ -434,7 +434,7 @@ ms.locfileid: "75439008"
 ## <a name="next-steps"></a>次のステップ
 この記事では、オンデマンド HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。 コピー アクティビティを使用して BLOB ストレージから SQL データベースにデータをコピーする方法については、[Blob Storage から SQL Database にデータをコピーする方法のチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 | トピック | 説明 |
 |:--- |:--- |
 | [パイプライン](data-factory-create-pipelines.md) |この記事は、Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法について理解するのに役立ちます。 |

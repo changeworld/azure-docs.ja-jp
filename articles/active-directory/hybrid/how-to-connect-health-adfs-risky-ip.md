@@ -17,10 +17,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: defdf8118f1b07f8d6ddc4d232cda0fc423ef9f6
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76897255"
 ---
 # <a name="risky-ip-report-public-preview"></a>危険な IP のレポート (パブリック プレビュー)
@@ -39,7 +39,7 @@ AD FS のお客様は、エンド ユーザーが Office 365 などの SaaS ア�
 > 
 
 ## <a name="what-is-in-the-report"></a>レポートの内容
-失敗したサインイン アクティビティのクライアント IP アドレスは、Web アプリケーション プロキシ サーバーを介して集計されます。 危険な IP のレポートの各項目は、指定されたしきい値を超える、失敗した AD FS サインイン アクティビティに関する集計情報を示します。 次の情報が表示されます。![Azure AD Connect Health ポータル](./media/how-to-connect-health-adfs/report4a.png)
+失敗したサインイン アクティビティのクライアント IP アドレスは、Web アプリケーション プロキシ サーバーを介して集計されます。 危険な IP のレポートの各項目は、指定されたしきい値を超える、失敗した AD FS サインイン アクティビティに関する集計情報を示します。 次の情報が提供されます。![Azure AD Connect Health ポータル](./media/how-to-connect-health-adfs/report4a.png)
 
 | レポート アイテム | 説明 |
 | ------- | ----------- |

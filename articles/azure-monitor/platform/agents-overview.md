@@ -8,11 +8,11 @@ author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: a7e6a3a299df8112fe4fbcf457516894c1766b8c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668521"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226427"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor エージェントの概要
 
@@ -59,7 +59,7 @@ ms.locfileid: "77668521"
 Log Analytics エージェントは、次のような場合に使用します。
 
 * Azure の外部の仮想または物理マシンからログとパフォーマンス データを収集する。 
-* データを Log Analytics ワークスペースに送信して、[ログ クエリ](../log-query/log-query-overview.md)など、[Azure Monitor ログ](data-platform-logs.md#what-can-you-do-with-azure-monitor-logs)でサポートされている機能を活用する。
+* データを Log Analytics ワークスペースに送信して、[ログ クエリ](data-platform-logs.md#what-can-you-do-with-azure-monitor-logs)など、[Azure Monitor ログ](../log-query/log-query-overview.md)でサポートされている機能を活用する。
 * 仮想マシンを大規模に監視し、そのプロセスや他のリソースおよび外部プロセスに対する依存関係を監視できる [Azure Monitor for VMs](../insights/vminsights-overview.md) を使用する。  
 * [Azure Security Center](../../security-center/security-center-intro.md) または [Azure Sentinel](../../sentinel/overview.md) を使用して、ご利用の仮想マシンのセキュリティを管理する。
 * [Azure Automation Update Management](../../automation/automation-update-management.md)、[Azure Automation State Configuration](../../automation/automation-dsc-overview.md)、または [Azure Automation Change Tracking および Inventory](../../automation/change-tracking.md) を使用して、Azure VM の包括的な管理を提供する

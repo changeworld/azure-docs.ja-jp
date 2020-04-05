@@ -107,6 +107,8 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: 暗号化
+      href: personalizer-encryption-of-data-at-rest.md
     - name: Azure のロードマップ
       href: 'https://go.microsoft.com/fwlink/?linkid=2092153'
     - name: 価格

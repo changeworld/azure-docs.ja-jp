@@ -8,10 +8,10 @@ ms.date: 05/27/2017
 ms.author: dimart
 ms.custom: mvc
 ms.openlocfilehash: 1ec7ece6f5afd1bbd2613ae08af04b82e8a156b2
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277927"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>(非推奨) Azure DevOps で ACS エンジンと Docker Swarm Mode を使用して Azure Container Service に複数コンテナー アプリケーションをデプロイする完全な CI/CD パイプライン
@@ -54,10 +54,10 @@ ms.locfileid: "76277927"
 - [GitHub アカウントに GitHub リポジトリをフォークする](https://github.com/jcorioland/MyShop/tree/docker-linux)
 
 >[!NOTE]
-> Azure Container Service の Docker Swarm オーケストレーターは、従来のスタンドアロンの Swarm を使用します。 現時点では、(Docker 1.12 以降の) 統合された [Swarm モード](https://docs.docker.com/engine/swarm/)は、Azure Container Service でサポートされているオーケストレーターではありません。 このため、コミュニティに投稿されている[クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-acsengine-swarmmode/)である [ACS エンジン](https://github.com/Azure/acs-engine/blob/master/docs/swarmmode.md)または [Azure Marketplace](https://azuremarketplace.microsoft.com) の Docker ソリューションを使用します。
+> Azure Container Service の Docker Swarm オーケストレーターは、従来のスタンドアロンの Swarm を使用します。 現時点では、(Docker 1.12 以降の) 統合された [Swarm モード](https://docs.docker.com/engine/swarm/)は、Azure Container Service でサポートされているオーケストレーターではありません。 このため、コミュニティに投稿されている[クイックスタート テンプレート](https://github.com/Azure/acs-engine/blob/master/docs/swarmmode.md)である [ACS エンジン](https://azure.microsoft.com/resources/templates/101-acsengine-swarmmode/)または [Azure Marketplace](https://azuremarketplace.microsoft.com) の Docker ソリューションを使用します。
 >
 
-## <a name="step-1-configure-your-azure-devops-organization"></a>手順 1:Azure DevOps 組織の構成 
+## <a name="step-1-configure-your-azure-devops-organization"></a>手順 1: Azure DevOps 組織の構成 
 
 このセクションでは、Azure DevOps 組織を構成します。 Azure DevOps サービス エンドポイントを構成するには、Azure DevOps プロジェクトで、ツールバーの **[設定]** アイコンをクリックし、 **[サービス]** を選択します。
 
@@ -91,7 +91,7 @@ CI/CD パイプラインに進む前の最後の手順は、Azure 内の Docker 
 
 これで、すべての構成は完了です。 次の手順では、アプリケーションをビルドし、Docker Swarm クラスターにデプロイする CI/CD パイプラインを作成します。 
 
-## <a name="step-2-create-the-build-pipeline"></a>手順 2:ビルド パイプラインを作成する
+## <a name="step-2-create-the-build-pipeline"></a>手順 2: ビルド パイプラインの作成
 
 この手順では、Azure DevOps プロジェクトのビルド パイプラインを設定し、コンテナー イメージのビルド ワークフローを定義します
 
@@ -105,11 +105,11 @@ CI/CD パイプラインに進む前の最後の手順は、Azure 内の Docker 
 
     ![Azure DevOps - 新しい空のビルド パイプライン](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/create-empty-build-vsts.PNG)
 
-4. 次に、 **[変数]** タブをクリックし、2 つの新しい変数(**RegistryURL**  と **AgentURL**) を作成します。 レジストリとクラスター エージェントの DNS の値を貼り付けます。
+4. 次に、 **[変数]** タブをクリックし、2 つの新しい変数 (**RegistryURL**  と **AgentURL**) を作成します。 レジストリとクラスター エージェントの DNS の値を貼り付けます。
 
     ![Azure DevOps - ビルド変数の構成](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-variables.png)
 
-5. **[ビルド定義]** ページで、 **[トリガー]** タブを開き、前提条件で作成した MyShop プロジェクトのフォークを使用するように、継続的インテグレーションで使用するビルドを構成します。 次に、 **[バッチ変更]** を選択します。 **[ブランチ仕様]** として "*docker-linux*" が選択されていることを確認します。
+5. **[ビルド定義]** ページで、 **[トリガー]** タブを開き、前提条件で作成した MyShop プロジェクトのフォークを使用するように、継続的インテグレーションで使用するビルドを構成します。 次に、 **[バッチ変更]** を選択します。 *[ブランチ仕様]* として "**docker-linux**" が選択されていることを確認します。
 
     ![Azure DevOps - ビルド リポジトリの構成](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-github-repo-conf.PNG)
 
@@ -186,7 +186,7 @@ CI/CD パイプラインに進む前の最後の手順は、Azure 内の Docker 
 
    ![Azure DevOps - ビルド成功](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-succeeded.png) 
 
-## <a name="step-3-create-the-release-pipeline"></a>手順 3:リリース パイプラインの作成
+## <a name="step-3-create-the-release-pipeline"></a>手順 3: リリース パイプラインの作成
 
 Azure DevOps を使用すると、[複数の環境のリリースを管理](https://www.visualstudio.com/team-services/release-management/)できます。 継続的なデプロイを有効にして、さまざまな環境 (開発、テスト、運用前、運用など) にアプリケーションをスムーズにデプロイすることができます。 Azure Container Service の Docker Swarm Mode クラスターを表す環境を作成できます。
 
@@ -242,7 +242,7 @@ Azure DevOps を使用すると、[複数の環境のリリースを管理](http
      >
 3. この新しいリリース パイプラインを保存します。
 
-## <a name="step-4-test-the-cicd-pipeline"></a>手順 4:CI/CD パイプラインのテスト
+## <a name="step-4-test-the-cicd-pipeline"></a>手順 4: CI/CD パイプラインのテスト
 
 構成が完了したので、この新しい CI/CD パイプラインをテストしてみましょう。 テストする最も簡単な方法は、ソース コードを更新し、変更を GitHub リポジトリにコミットすることです。 コードをプッシュしてから数秒経つと、Azure DevOps に実行中の新しいビルドが表示されます。 正常に完了すると、新しいリリースがトリガーされ、アプリケーションの新しいバージョンが Azure Container Service クラスターにデプロイされます。
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
 ms.openlocfilehash: 29fbe5389da924a2ecc660aa5ce5c4bb0a0902b6
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74084550"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>多層 XenApp および Citrix XenDesktop デプロイのディザスター リカバリーを設定する
@@ -106,7 +106,7 @@ SQL サーバーの推奨保護オプションに関する詳細な技術ガイ�
 [コンピューティングとネットワーク] > [コンピューティングのプロパティ] で、Azure VM の名前とターゲットのサイズを指定できます。
 必要に応じて、Azure の要件に準拠するように名前を変更します。 Azure VM に割り当てられるターゲット ネットワーク、サブネット、および IP アドレスに関する情報を表示および追加することもできます。
 
-以下の点に注意してください。
+次のことを考慮してください。
 
 * ターゲット IP アドレスを設定できます。 アドレスを指定しなかった場合、フェールオーバーされたマシンで DHCP が使用されます。 フェールオーバーで使用できないアドレスを設定した場合、フェールオーバーは機能しません。 テスト フェールオーバー ネットワークのアドレスを利用できる場合、テスト フェールオーバーに同じターゲット IP アドレスを使用できます。
 
@@ -190,6 +190,6 @@ XenApp コンポーネント VM のレプリケーションを有効にしたら
 
 [このガイダンス](site-recovery-failover.md)に従って、フェールオーバーを実行します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このホワイト ペーパーで Citrix XenApp と XenDesktop デプロイのレプリケートの[詳細を確認](https://aka.ms/citrix-xenapp-xendesktop-with-asr)する。 Site Recovery を使用した[他のアプリケーションのレプリケート](site-recovery-workload.md)に関するガイダンスを確認する。

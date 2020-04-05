@@ -9,13 +9,13 @@ ms.date: 02/02/2018
 ms.author: msangapu
 ms.custom: include file
 ms.openlocfilehash: 9236ac2c48443157e736e4b7e0a11c65a3191308
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78202470"
 ---
-`myAppServicePlan` App Service プランで [Web アプリ](../articles/app-service/containers/app-service-linux-intro.md)を作成します。 
+[ App Service プランで ](../articles/app-service/containers/app-service-linux-intro.md)Web アプリ`myAppServicePlan`を作成します。 
 
 Cloud Shell で、[`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) コマンドを使用することができます。 次の例では、`<app-name>` をグローバルに一意のアプリ名に置き換えてください (有効な文字は `a-z`、`0-9`、`-`)。 ランタイムは `PHP|7.3` に設定されています。 サポートされているすべてのランタイムを確認するには、[`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) を実行します。 
 

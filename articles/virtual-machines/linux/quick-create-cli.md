@@ -20,10 +20,10 @@ ms.custom:
 - seo-javascript-october2019
 - seo-python-october2019
 ms.openlocfilehash: 7732320e987e6397dde2aff0f6c4328d551d99b1
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "72427929"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>クイック スタート:Azure CLI で Linux 仮想マシンを作成する
@@ -42,9 +42,9 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 CLI をローカルにインストールして使用する場合、このクイック スタートでは、Azure CLI バージョン 2.0.30 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[az group create](/cli/azure/group) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+[az group create](/cli/azure/group) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -115,7 +115,7 @@ sudo apt-get -y install nginx
 
 ![NGINX のようこそページの表示](./media/quick-create-cli/view-the-nginx-welcome-page.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要がなくなったら、[az group delete](/cli/azure/group) コマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。 
 
@@ -123,7 +123,7 @@ sudo apt-get -y install nginx
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、単純な仮想マシンをデプロイし、Web トラフィック用のネットワーク ポートを開き、基本的な Web サーバーをインストールしました。 Azure 仮想マシンの詳細については、Linux VM のチュートリアルを参照してください。
 

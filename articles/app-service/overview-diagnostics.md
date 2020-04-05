@@ -8,10 +8,10 @@ ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
 ms.openlocfilehash: e06e71d4436ac6c64ff2edc876d7849d084482f8
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74671633"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Azure App Service 診断の概要

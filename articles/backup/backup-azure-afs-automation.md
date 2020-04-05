@@ -4,11 +4,11 @@ description: この記事では、Azure Backup サービスと PowerShell を使
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: f85451e0da6458de34aea936836b46781f4c4a21
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120509"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233951"
 ---
 # <a name="back-up-azure-files-with-powershell"></a>PowerShell を使用して Azure Files をバックアップする
 

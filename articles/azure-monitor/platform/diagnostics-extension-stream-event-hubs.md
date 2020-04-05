@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
 ms.openlocfilehash: 5e5034e99d37d3681192c2ad066f28acd1c4aeeb
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77672533"
 ---
 # <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Windows Azure Diagnostics 拡張機能から Azure Event Hubs にデータを送信する

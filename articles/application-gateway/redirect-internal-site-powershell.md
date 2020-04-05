@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/03/2020
 ms.author: victorh
 ms.openlocfilehash: 92fed35c828398c048d704e1ec9b537904939967
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78272942"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Azure PowerShell を使用して内部リダイレクトと共にアプリケーション ゲートウェイを作成する
 
-[アプリケーション ゲートウェイ](overview.md)を作成するときに、Azure PowerShell を使用して [Web トラフィック リダイレクト](multiple-site-overview.md)を構成できます。 このチュートリアルでは、仮想マシン スケール セットを使用してバックエンド プールを定義します。 その後、Web トラフィックが適切なプールに確実に到着するように、所有するドメインに基づいてリスナーと規則を構成します。 このチュートリアルでは、複数のドメインを所有していることを前提として、*www\.contoso.com* と *www\.contoso.org* の例を使用します。
+[アプリケーション ゲートウェイ](multiple-site-overview.md)を作成するときに、Azure PowerShell を使用して [Web トラフィック リダイレクト](overview.md)を構成できます。 このチュートリアルでは、仮想マシン スケール セットを使用してバックエンド プールを定義します。 その後、Web トラフィックが適切なプールに確実に到着するように、所有するドメインに基づいてリスナーと規則を構成します。 このチュートリアルでは、複数のドメインを所有していることを前提として、*www\.contoso.com* と *www\.contoso.org* の例を使用します。
 
 この記事では、次のことについて説明します。
 
@@ -46,7 +46,7 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>ネットワーク リソースを作成する
 
-[New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) を使用して、サブネット構成 *myBackendSubnet* および *myAGSubnet* を作成します。 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) とサブネット構成を使用して、*myVNet* という名前の仮想ネットワークを作成します。 最後に、[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用して *myAGPublicIPAddress* という名前のパブリック IP アドレスを作成します。 こうしたリソースは、アプリケーション ゲートウェイとその関連リソースにネットワーク接続を提供するために使用されます。
+*New-AzVirtualNetworkSubnetConfig* を使用して、サブネット構成 *myBackendSubnet* および [myAGSubnet](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) を作成します。 *New-AzVirtualNetwork* とサブネット構成を使用して、[myVNet](/powershell/module/az.network/new-azvirtualnetwork) という名前の仮想ネットワークを作成します。 最後に、*New-AzPublicIpAddress* を使用して [myAGPublicIPAddress](/powershell/module/az.network/new-azpublicipaddress) という名前のパブリック IP アドレスを作成します。 こうしたリソースは、アプリケーション ゲートウェイとその関連リソースにネットワーク接続を提供するために使用されます。
 
 ```azurepowershell-interactive
 $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -72,7 +72,7 @@ $pip = New-AzPublicIpAddress `
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>IP 構成とフロントエンド ポートの作成
 
-[New-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration) を使用して、前に作成した *myAGSubnet* をアプリケーション ゲートウェイに関連付けます。 [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig) を使用して、*myAGPublicIPAddress* をアプリケーション ゲートウェイに割り当てます。 これで、[New-AzApplicationGatewayFrontendPort](/powershell/module/az.network/new-azapplicationgatewayfrontendport) を使用して HTTP ポートを作成できます。
+*New-AzApplicationGatewayIPConfiguration* を使用して、前に作成した [myAGSubnet](/powershell/module/az.network/new-azapplicationgatewayipconfiguration) をアプリケーション ゲートウェイに関連付けます。 *New-AzApplicationGatewayFrontendIPConfig* を使用して、[myAGPublicIPAddress](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig) をアプリケーション ゲートウェイに割り当てます。 これで、[New-AzApplicationGatewayFrontendPort](/powershell/module/az.network/new-azapplicationgatewayfrontendport) を使用して HTTP ポートを作成できます。
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -92,7 +92,7 @@ $frontendPort = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-backend-pool-and-settings"></a>バックエンド プールと設定の作成
 
-[New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool) を使用して、アプリケーション ゲートウェイに対して *contosoPool* という名前のバックエンド プールを作成します。 [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting) を使用して、バックエンド プールの設定を構成します。
+*New-AzApplicationGatewayBackendAddressPool* を使用して、アプリケーション ゲートウェイに対して [contosoPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool) という名前のバックエンド プールを作成します。 [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting) を使用して、バックエンド プールの設定を構成します。
 
 ```azurepowershell-interactive
 $contosoPool = New-AzApplicationGatewayBackendAddressPool `
@@ -109,7 +109,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 アプリケーション ゲートウェイがバックエンド プールに対して適切にトラフィックをルーティングするためにはリスナーが必要です。 このチュートリアルでは、2 つのドメインに対して 2 つのリスナーを作成します。 この例では、*www\.contoso.com* と *www\.contoso.org* のドメインに対してリスナーを作成しています。
 
-[New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) と、前に作成したフロントエンド構成およびフロントエンド ポートを使用して、*contosoComListener* という名前の最初のリスナーを作成します。 着信トラフィックに使用するバックエンド プールをリスナーが判断するには、ルールが必要です。 [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) を使用して、*contosoComRule* という名前の基本ルールを作成します。
+*New-AzApplicationGatewayHttpListener* と、前に作成したフロントエンド構成およびフロントエンド ポートを使用して、[contosoComListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) という名前の最初のリスナーを作成します。 着信トラフィックに使用するバックエンド プールをリスナーが判断するには、ルールが必要です。 *New-AzApplicationGatewayRequestRoutingRule* を使用して、[contosoComRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) という名前の基本ルールを作成します。
 
 ```azurepowershell-interactive
 $contosoComlistener = New-AzApplicationGatewayHttpListener `
@@ -128,7 +128,7 @@ $frontendRule = New-AzApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway"></a>アプリケーション ゲートウェイの作成
 
-必要な関連リソースを作成したら、[New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku) を使用して *myAppGateway* という名前のアプリケーション ゲートウェイのパラメーターを指定し、[New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) を使用してそれを作成します。
+必要な関連リソースを作成したら、*New-AzApplicationGatewaySku* を使用して [myAppGateway](/powershell/module/az.network/new-azapplicationgatewaysku) という名前のアプリケーション ゲートウェイのパラメーターを指定し、[New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) を使用してそれを作成します。
 
 ```azurepowershell-interactive
 $sku = New-AzApplicationGatewaySku `
@@ -151,7 +151,7 @@ $appgw = New-AzApplicationGateway `
 
 ### <a name="add-the-second-listener"></a>2 つ目のリスナーの追加
 
-[Add-AzApplicationGatewayHttpListener](/powershell/module/az.network/add-azapplicationgatewayhttplistener) を使用して、トラフィックのリダイレクトに必要な *contosoOrgListener* という名前のリスナーを追加します。
+*Add-AzApplicationGatewayHttpListener* を使用して、トラフィックのリダイレクトに必要な [contosoOrgListener](/powershell/module/az.network/add-azapplicationgatewayhttplistener) という名前のリスナーを追加します。
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -199,7 +199,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ### <a name="add-the-second-routing-rule"></a>2 つ目のルーティング規則の追加
 
-次に、[Add-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/add-azapplicationgatewayrequestroutingrule) を使用して、*contosoOrgRule* という名前の新しい規則にリダイレクト構成を関連付けることができます。
+次に、*Add-AzApplicationGatewayRequestRoutingRule* を使用して、[contosoOrgRule](/powershell/module/az.network/add-azapplicationgatewayrequestroutingrule) という名前の新しい規則にリダイレクト構成を関連付けることができます。
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `

@@ -5,15 +5,15 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 01/10/2020
+ms.date: 03/11/2020
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: 1f4687a6af9cae7172a70527f336b98c75d0e9cd
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: c42d164647d608fc45e1135cd4111ff3900a733c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903386"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79137162"
 ---
 # <a name="tutorial-create-and-manage-s2s-vpn-connections-using-powershell"></a>チュートリアル:PowerShell を使用して S2S VPN 接続を作成および管理する
 
@@ -25,13 +25,13 @@ Azure S2S VPN 接続は、顧客構内と Azure との間の安全なクロス�
 > * VPN 接続をさらに追加する
 > * VPN 接続を削除する
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 次の図に、このチュートリアルのトポロジを示します。
 
 ![サイト間 VPN 接続の図](./media/vpn-gateway-tutorial-vpnconnection-powershell/site-to-site-diagram.png)
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+### <a name="working-with-azure-cloud-shell-and-azure-powershell"></a>Azure Cloud Shell および Azure PowerShell の操作
+
+[!INCLUDE [working with cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
 
 ## <a name="requirements"></a>必要条件
 

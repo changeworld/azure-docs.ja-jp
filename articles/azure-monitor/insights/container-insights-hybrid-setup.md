@@ -4,10 +4,10 @@ description: この記事では、Azure Stack などの環境でホストして�
 ms.topic: conceptual
 ms.date: 01/24/2020
 ms.openlocfilehash: 6d03716b988b1139e01d41120f48ea9a9bf34be1
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77198056"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>ハイブリッド Kubernetes クラスターに Azure Monitor for containers を構成する

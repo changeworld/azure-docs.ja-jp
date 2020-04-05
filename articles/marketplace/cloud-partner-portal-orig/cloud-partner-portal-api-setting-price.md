@@ -1,19 +1,18 @@
 ---
 title: 仮想マシン プランの価格 | Azure Marketplace
 description: 仮想マシン プランの価格を指定する 3 つの方法について説明します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: c7ea5afeb46c30837c2ae53e871bb64f5d8cf292
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: b96dcfa6a140d5c16208fd8183003a7462b1aa56
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827331"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280441"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>仮想マシン プランの価格
 ==================================
@@ -123,7 +122,7 @@ ms.locfileid: "73827331"
 | BE         | ベルギー              | EUR               |
 | BR         | ブラジル               | USD               |
 | BG         | ブルガリア             | BGN               |
-| CA         | カナダ               | CAD               |
+| CA         | Canada               | CAD               |
 | CL         | チリ                | CLP               |
 | CO         | コロンビア             | COP               |
 | CR         | コスタリカ           | CRC               |
@@ -199,7 +198,7 @@ ms.locfileid: "73827331"
 | UA         | ウクライナ              | UAH               |
 | AE         | アラブ首長国連邦 | EUR               |
 | GB         | イギリス       | GBP               |
-| US         | 米国        | USD               |
+| US         | United States        | USD               |
 | UY         | ウルグアイ              | UYU               |
 | VE         | ベネズエラ            | USD               |
 |  |  |  |

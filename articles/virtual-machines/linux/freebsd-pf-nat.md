@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
 ms.openlocfilehash: 9b78c0d93b57a3e3f4963088d0b93f121f57483c
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78945107"
 ---
 # <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>FreeBSD のパケット フィルターを使用してAzure 内にセキュア ファイアウォールを作成する方法
@@ -34,7 +34,7 @@ Azure Resource Manager テンプレートは、PF を使用して NAT/リダイ�
 az group create --name myResourceGroup --location westus
 ```
 
-次に、[az group deployment create](/cli/azure/group/deployment) を使用して [pf-freebsd-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup) テンプレートをデプロイします。 [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/pf-freebsd-setup/azuredeploy.parameters.json) を同じパスにダウンロードし、独自のリソース値 (`adminPassword`、`networkPrefix``domainNamePrefix` など) を定義します。 
+次に、[az group deployment create](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup) を使用して [pf-freebsd-setup](/cli/azure/group/deployment) テンプレートをデプロイします。 [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/pf-freebsd-setup/azuredeploy.parameters.json) を同じパスにダウンロードし、独自のリソース値 (`adminPassword`、`networkPrefix``domainNamePrefix` など) を定義します。 
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup --name myDeploymentName \

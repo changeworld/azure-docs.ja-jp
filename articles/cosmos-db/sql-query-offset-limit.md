@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
 ms.openlocfilehash: 3d23676885323e370cee1e9cc9e98c7128faf2e0
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76771566"
 ---
 # <a name="offset-limit-clause-in-azure-cosmos-db"></a>Azure Cosmos DB での OFFSET LIMIT 句
@@ -37,7 +37,7 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 
 ## <a name="remarks"></a>解説
   
-  `OFFSET LIMIT` 句には、`OFFSET` 数と `LIMIT` 数の両方が必要です。 省略可能な `ORDER BY` 句を使用すると、順序付けられた値に対してスキップを実行することで結果セットが生成されます。 そうでない場合、クエリでは、決められた順序の値が返されます。
+  `OFFSET` 句には、`LIMIT` 数と `OFFSET LIMIT` 数の両方が必要です。 省略可能な `ORDER BY` 句を使用すると、順序付けられた値に対してスキップを実行することで結果セットが生成されます。 そうでない場合、クエリでは、決められた順序の値が返されます。
 
   `OFFSET LIMIT` を使用するクエリの RU 料金は、オフセットされる用語の数が増えるにつれて増加します。 複数の結果ページがあるクエリの場合は、通常、継続トークンを使用することをお勧めします。 継続トークンとは、後でクエリを再開できる場所の "ブックマーク" です。 `OFFSET LIMIT` を使用する場合、"ブックマーク" はありません。 クエリの次のページを返す場合は、最初から開始する必要があります。
   

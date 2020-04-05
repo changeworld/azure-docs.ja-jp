@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: cherylmc
 ms.openlocfilehash: ad2ab31e6771efc54238d5747863fa2a9bb2f356
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75833968"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>MakeCert を使用したポイント対サイト接続の証明書の生成とエクスポート
@@ -22,7 +22,7 @@ ms.locfileid: "75833968"
 
 * MakeCert は非推奨となっています。 これは、任意の時点でこのツールが削除される可能性があることを意味します。 MakeCert が利用できなくなった場合も、MakeCert を使用してすでに生成されたすべての証明書に影響はありません。 MakeCert は、検証メカニズムとしてではなく、証明書の生成にのみ使用されます。
 
-## <a name="rootcert"></a>自己署名ルート証明書の作成
+## <a name="create-a-self-signed-root-certificate"></a><a name="rootcert"></a>自己署名ルート証明書の作成
 
 次の手順では、MakeCert を使用して自己署名証明書を作成する方法を説明します。 これらの手順は、デプロイ モデル固有のものではありません。 リソース マネージャーとクラシックの両方で有効です。
 
@@ -38,7 +38,7 @@ ms.locfileid: "75833968"
    makecert -sky exchange -r -n "CN=P2SRootCert" -pe -a sha256 -len 2048 -ss My
    ```
 
-## <a name="cer"></a>公開キー (.cer) のエクスポート
+## <a name="export-the-public-key-cer"></a><a name="cer"></a>公開キー (.cer) のエクスポート
 
 [!INCLUDE [Export public key](../../includes/vpn-gateway-certificates-export-public-key-include.md)]
 
@@ -52,7 +52,7 @@ ms.locfileid: "75833968"
 
 自己署名証明書をクライアント コンピューターに直接インストールすることはしません。 自己署名証明書からクライアント証明書を生成し、 生成したクライアント証明書をエクスポートして、クライアント コンピューターにインストールします。 これらの手順は、デプロイ モデル固有のものではありません。 リソース マネージャーとクラシックの両方で有効です。
 
-### <a name="clientcert"></a>クライアント証明書の生成
+### <a name="generate-a-client-certificate"></a><a name="clientcert"></a>クライアント証明書の生成
 
 ポイント対サイトで VNet に接続するすべてのクライアント コンピューターには、クライアント証明書がインストールされている必要があります。 自己署名ルート証明書からクライアント証明書を生成し、そのクライアント証明書をエクスポートしてインストールします。 クライアント証明書がインストールされていない場合は、認証が失敗します。 
 
@@ -69,11 +69,11 @@ ms.locfileid: "75833968"
    makecert.exe -n "CN=P2SChildCert" -pe -sky exchange -m 96 -ss My -in "P2SRootCert" -is my -a sha256
    ```
 
-### <a name="clientexport"></a>クライアント証明書のエクスポート
+### <a name="export-a-client-certificate"></a><a name="clientexport"></a>クライアント証明書のエクスポート
 
 [!INCLUDE [Export client certificate](../../includes/vpn-gateway-certificates-export-client-cert-include.md)]
 
-### <a name="install"></a>エクスポートしたクライアント証明書のインストール
+### <a name="install-an-exported-client-certificate"></a><a name="install"></a>エクスポートしたクライアント証明書のインストール
 
 クライアント証明書をインストールするには、[クライアント証明書のインストール](point-to-site-how-to-vpn-client-install-azure-cert.md)に関するページを参照してください。
 

@@ -1,18 +1,18 @@
 ---
 title: インポートでサポートされている URL の種類 ‐ QnA Maker
-description: QnA セットのインポートおよび作成に、URL の種類がどのように使用されるかについて理解します。
+description: URL の種類を使用して、QnA セットをインポートおよび作成する方法について説明します。
 ms.topic: reference
 ms.date: 01/02/2020
 ms.openlocfilehash: cf2a02f55d7c95ff9b3f0231ea07a783d18b73cf
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77651793"
 ---
 # <a name="urls-supported-for-importing-documents"></a>ドキュメントのインポートでサポートされている URL
 
-QnA セットのインポートおよび作成に、URL の種類がどのように使用されるかについて理解します。
+URL の種類を使用して、QnA セットをインポートおよび作成する方法について説明します。
 
 ## <a name="faq-urls"></a>FAQ URL
 

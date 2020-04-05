@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 3e915c26e9469b37ac8bc345c4d5cd1712e7acdb
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 00dbef7b4453ffcb54020340bde51f55827759a0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597730"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237267"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Azure Lab Services で共有イメージ ギャラリーをアタッチまたはデタッチする
 教師/ラボ管理者は、テンプレート VM イメージを他のユーザーが再利用できるよう、Azure [共有イメージ ギャラリー](../../virtual-machines/windows/shared-image-galleries.md)に保存することができます。 最初の手順として、ラボ管理者は、ラボ アカウントに既存の共有イメージ ギャラリーをアタッチします。 共有イメージ ギャラリーがアタッチされたら、ラボ アカウントで作成されたラボは、共有イメージ ギャラリーにイメージを保存できます。 その他の教師は、共有イメージ ギャラリーからこのイメージを選択して、そのクラスのテンプレートを作成できます。 
@@ -28,7 +28,7 @@ ms.locfileid: "77597730"
 この記事では、共有イメージ ギャラリーをラボ アカウントにアタッチしたり、ラボ アカウントからデタッチしたりする方法について説明します。 
 
 > [!NOTE]
-> 現在、Azure Lab Services は、共有イメージギャラリーにある **汎用の** VM イメージ (特化されていないイメージ) のみに基づいて VM ファイルの作成をサポートしています。 
+> 現在、Azure Lab Services は、共有イメージギャラリーにある**汎用の** VM イメージ (特化されていないイメージ) のみに基づいてテンプレート VM の作成をサポートしています。 
 
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>ラボ アカウントの作成時に構成する
@@ -44,8 +44,8 @@ ms.locfileid: "77597730"
 - ラボ アカウントから共有イメージ ギャラリーをデタッチする
 
 ## <a name="create-and-attach-a-shared-image-gallery"></a>共有イメージ ギャラリーを作成してアタッチする
-1. [Azure portal](https://portal.azure.com) にサインインします。
-2. 左側のメニューから、 **[すべてのサービス]** を選択します。 **[DevOps]** セクションで、 **[ラボ サービス]** を選択します。 **[ラボ サービス]** の横にある星印 (`*`) を選択した場合は、左側のメニューの **[お気に入り]** セクションに追加されます。 次回以降は、 **[お気に入り]** の下で **[ラボ サービス]** を選択します。
+1. [Azure portal](https://portal.azure.com) にサインインする
+2. 左側のメニューから、 **[すべてのサービス]** を選択します。 **[DevOps]** セクションで、 **[ラボ サービス]** を選択します。 `*`[ラボ サービス] **の横にある星印 (** ) を選択した場合は、左側のメニューの **[お気に入り]** セクションに追加されます。 次回以降は、 **[お気に入り]** の下で **[ラボ サービス]** を選択します。
 
     ![[すべてのサービス] -> [ラボ サービス]](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
 3. ラボ アカウントを選択して、 **[ラボ アカウント]** ページを表示します。 

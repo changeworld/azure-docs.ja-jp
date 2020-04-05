@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 10/14/2019
 ms.author: diberry
 ms.openlocfilehash: 3c7bebb38d0331c76eeaaa1d9d6464c568a61b83
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270645"
 ---
 # <a name="dimension-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの dimension 作成済みエンティティ

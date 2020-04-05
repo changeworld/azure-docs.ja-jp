@@ -1,26 +1,28 @@
 ---
-title: Azure サブスクリプションとアカウントをアクティブ化する | Microsoft Docs
+title: Azure サブスクリプションとアカウントのアクティブ化
 description: Azure Resource Manager API による新規アカウントおよび既存アカウントへのアクセスを有効にし、アカウントに関する一般的な問題を解決します。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: 2467ee65b3f7090e5854bdd7848abab667ccfe55
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ROBOTS: NOINDEX
+ms.openlocfilehash: 62138163b3c3f94d60c55cf93d84db5dff446823
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78301371"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474664"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Cloudyn で Azure サブスクリプションとアカウントをアクティブ化する
 
 Azure Resource Manager の資格情報を追加または更新すると、Cloudyn は Azure テナント内のすべてのアカウントとサブスクリプションを検出できるようになります。 仮想マシンで Azure Diagnostics 拡張機能も有効になっていると、Cloudyn は CPU やメモリなどの拡張メトリックを収集できます。 この記事では、Azure Resource Manager API を使って新規アカウントおよび既存アカウントに対するアクセスを有効にする方法を説明します。 また、アカウントに関する一般的な問題を解決する方法についても説明します。
 
 サブスクリプションが _アクティブ化されていない_ 場合、Cloudyn はほとんどの Azure サブスクリプション データにアクセスできません。 Cloudyn がこれらのデータにアクセスできるように、_アクティブ化されていない_ アカウントを編集する必要があります。
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="required-azure-permissions"></a>必要な Azure アクセス許可
 

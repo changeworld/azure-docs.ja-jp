@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
 ms.openlocfilehash: f4af3c202d4f00c4ac3041921175c92226f0db7c
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76964131"
 ---
 ## <a name="run-the-function-locally"></a>関数をローカルで実行する

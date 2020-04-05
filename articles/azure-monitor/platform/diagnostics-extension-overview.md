@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: 6cb514312db525ffd2ccf9f7b70968daaa94f322
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77672380"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Azure Diagnostics 拡張機能の概要

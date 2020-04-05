@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: 2b122a34cfd382a58f7680743d3a1cb1ae598fd1
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76939246"
 ---
 # <a name="tutorial-create-an-alias-record-to-refer-to-a-zone-resource-record"></a>チュートリアル:ゾーン内のリソース レコードを参照するエイリアス レコードを作成する

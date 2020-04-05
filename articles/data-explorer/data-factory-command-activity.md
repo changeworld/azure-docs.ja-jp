@@ -9,10 +9,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/15/2019
 ms.openlocfilehash: 20da2d54ea54674656b2c1006d094c63133baf79
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72264494"
 ---
 # <a name="use-azure-data-factory-command-activity-to-run-azure-data-explorer-control-commands"></a>Azure Data Factory コマンド アクティビティを使用して Azure Data Explorer 制御コマンドを実行する
@@ -23,7 +23,7 @@ ms.locfileid: "72264494"
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
 * [Azure Data Explorer クラスターとデータベース](create-cluster-database-portal.md)
-* データのソースです。
+* データのソース。
 * [Data Factory](data-factory-load-data.md#create-a-data-factory)
 
 ## <a name="create-a-new-pipeline"></a>新しいパイプラインを作成する
@@ -217,7 +217,7 @@ ms.locfileid: "72264494"
 }
 ``` 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Data Factory を使用して Azure Data Explorer にデータをコピーする](data-factory-load-data.md)方法について確認する。
 * [データベースから Azure Data Explorer への一括コピーに Azure Data Factory テンプレートを使用する](data-factory-template.md)方法について学習する。

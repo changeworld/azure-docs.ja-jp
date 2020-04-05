@@ -17,10 +17,10 @@ ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 4e3e24565375f68b4b5bdf1dfb0b16bb280aa417
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74039484"
 ---
 # <a name="create-a-vm-with-nginx"></a>NGINX がインストールされた VM の作成
@@ -69,7 +69,7 @@ az group delete --name myResourceGroup
 | [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | VM に仮想マシン拡張機能を追加して実行します。 このサンプルでは、カスタム スクリプト拡張機能を使用して NGINX をインストールします。|
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

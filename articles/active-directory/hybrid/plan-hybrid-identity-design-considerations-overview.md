@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7f8dd49f3668b8f68753681123a04d21edac46c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60381467"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Azure Active Directory ハイブリッド ID の設計上の考慮事項
@@ -50,7 +50,7 @@ Microsoft の ID ソリューションでは、オンプレミスとクラウド
 
 このガイドでは、組織の固有要件を満たすハイブリッド ID ソリューションを設計するための一連の手順と作業を紹介します。 次の手順と作業を通して、機能面とサービス面における組織の品質レベル要件を満たすために利用できる技術と機能の選択肢を提示します。
 
-**前提条件**:Windows Server、Active Directory Domain Services、Azure Active Directory の利用経験があること。 本書では、ソリューションが単独または統合ソリューションの形式でビジネス ニーズを満たす方法を読者が探しているものと想定しています。
+**前提条件**: Windows Server、Active Directory Domain Services、Azure Active Directory の利用経験があること。 本書では、ソリューションが単独または統合ソリューションの形式でビジネス ニーズを満たす方法を読者が探しているものと想定しています。
 
 ## <a name="design-considerations-overview"></a>設計上の考慮事項の概要
 本書では、要件を満たすハイブリッド ID ソリューションを設計するための一連の手順と作業を紹介します。 手順には連続番号が付き、その順番で実行します。 ただし、選択した設計の競合に起因し、後の手順で学習する設計上の考慮事項により先の手順で行った決定を変更しなければならなくなることもあります。 本書全体で、設計上の競合が潜在する場合、可能な限り警告されます。 
@@ -59,7 +59,7 @@ Microsoft の ID ソリューションでは、オンプレミスとクラウド
 
 | ハイブリッド ID フェーズ | トピックの一覧 |
 | --- | --- |
-| ID 要件を決定する |[ビジネス ニーズの決定](plan-hybrid-identity-design-considerations-business-needs.md)<br> [ディレクトリ同期要件の決定](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)<br> [多要素認証要件の決定](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)<br> [ハイブリッド ID 導入戦略の正義](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md) |
+| ID 要件を決定する |[ビジネス ニーズの決定](plan-hybrid-identity-design-considerations-business-needs.md)<br> [ディレクトリ同期要件の決定](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)<br> [多要素認証要件の決定](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)<br> [ハイブリッド ID 導入戦略の定義](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md) |
 | 強力な ID ソリューションによりデータ セキュリティを強化するための計画を立てる |[データ保護要件の決定](plan-hybrid-identity-design-considerations-dataprotection-requirements.md) <br> [コンテンツ管理要件の決定](plan-hybrid-identity-design-considerations-contentmgt-requirements.md)<br> [アクセス制御要件の決定](plan-hybrid-identity-design-considerations-accesscontrol-requirements.md)<br> [インシデント対応要件の決定](plan-hybrid-identity-design-considerations-incident-response-requirements.md) <br> [データ保護戦略の定義](plan-hybrid-identity-design-considerations-data-protection-strategy.md) |
 | ハイブリッド ID ライフサイクルの計画を立てる |[ハイブリッド ID 管理タスクの決定](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) <br> [同期管理](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)<br> [ハイブリッド ID 管理の導入戦略の決定](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md) |
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
 ms.openlocfilehash: cdbf7364a275eb246615f398044456645a96d1a5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76843669"
 ---
 # <a name="quota-increase-requests"></a>クォータの引き上げのリクエスト

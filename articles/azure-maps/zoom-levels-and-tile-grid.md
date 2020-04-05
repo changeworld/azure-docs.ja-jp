@@ -1,19 +1,19 @@
 ---
 title: ズーム レベルとタイル グリッド | Microsoft Azure Maps
 description: この記事では、 Microsoft Azure Maps のズームレベルとタイルグリッドについて説明します。
-author: jingjing-z
+author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 01/22/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 6ee697ac9b7849a0231d9916c6fa8bc73ef7f9b7
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: d58c9f6940dceefdc25211f4540b34522aec935d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765836"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530293"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>ズーム レベルとタイル グリッド
 
@@ -167,7 +167,7 @@ quadkey = 100111 (base 2) = 213 (base 4) = "213"
 
 次のサンプル コードでは、このドキュメントで説明されている関数を実装する方法が示されています。 これらの関数は、必要に応じて、他のプログラミング言語に簡単に変換できます。
 
-#### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+#### <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 using System;
@@ -566,7 +566,7 @@ namespace AzureMaps
 }
 ```
 
-#### <a name="typescripttabtypescript"></a>[TypeScript](#tab/typescript)
+#### <a name="typescript"></a>[TypeScript](#tab/typescript)
 
 ```typescript
 module AzureMaps {

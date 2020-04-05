@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: b9ff80275cc89dde0db215856c2e134c4b273020
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78199735"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>証明書作成の監視と管理
-適用先:Azure
+適用対象: Azure
 
 以下 
 
@@ -38,7 +38,7 @@ ms.locfileid: "78199735"
 
 ## <a name="request-a-kv-certificate-with-a-supported-issuer"></a>サポートされている発行者への KV 証明書の要求 
 
-|Method|要求 URI|
+|方法|要求 URI|
 |------------|-----------------|
 |POST|`https://mykeyvault.vault.azure.net/certificates/mycert1/create?api-version={api-version}`|
 
@@ -81,7 +81,7 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 ## <a name="get-pending-request---request-status-is-inprogress"></a>保留中の要求の取得 - 要求の状態は "処理中"
 
-|Method|要求 URI|
+|方法|要求 URI|
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
@@ -117,7 +117,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 
 ### <a name="request"></a>Request
 
-|Method|要求 URI|
+|方法|要求 URI|
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
@@ -149,7 +149,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 
 ### <a name="request"></a>Request
 
-|Method|要求 URI|
+|方法|要求 URI|
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
@@ -187,7 +187,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 ## <a name="get-pending-request---pending-request-status-is-deleted-or-overwritten"></a>保留中の要求の取得 - 保留中の要求の状態は "削除済み" または "上書き済"
 保留中のオブジェクトは、状態が "処理中" のときに、作成/インポート操作によって削除または上書きできます。
 
-|Method|要求 URI|
+|方法|要求 URI|
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
@@ -225,7 +225,7 @@ StatusCode: 404, ReasonPhrase: 'Not Found'
 > [!NOTE]
 > 保留中のオブジェクトを削除した場合、プロバイダーへの x509 証明書の要求はキャンセルされる場合とキャンセルされない場合があります。
 
-|Method|要求 URI|
+|方法|要求 URI|
 |------------|-----------------|
 |POST|`https://mykeyvault.vault.azure.net/certificates/mycert1/create?api-version={api-version}`|
 
@@ -262,7 +262,7 @@ StatusCode: 409, ReasonPhrase: 'Conflict'
 
 x509 証明書の作成要求がなんらかの理由で失敗したかキャンセルされ、x509 証明書を帯域外の方法で取得できる場合、マージ操作を実行して KV 証明書を完了できます。
 
-|Method|要求 URI|
+|方法|要求 URI|
 |------------|-----------------|
 |POST|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending/merge?api-version={api-version}`|
 
@@ -291,7 +291,7 @@ StatusCode: 403, ReasonPhrase: 'Forbidden'
 ## <a name="request-a-cancellation-while-the-pending-request-status-is-inprogress"></a>保留中の要求の状態が "処理中" のときにキャンセルを要求
 キャンセルのみを要求できます。 要求は、キャンセルできる場合とキャンセルできない場合があります。 要求が "処理中" でない場合は、400 (正しくない要求) の http 状態が返されます。
 
-|Method|要求 URI|
+|方法|要求 URI|
 |------------|-----------------|
 |PATCH|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
@@ -331,7 +331,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 > [!NOTE]
 > 保留中のオブジェクトを削除した場合、プロバイダーへの x509 証明書の要求はキャンセルされる場合とキャンセルされない場合があります。
 
-|Method|要求 URI|
+|方法|要求 URI|
 |------------|-----------------|
 |DELETE|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
@@ -361,7 +361,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 ## <a name="create-a-kv-certificate-manually"></a>KV 証明書の手動作成
 手動の作成プロセスによって、選択した CA によって発行される証明書を作成できます。 発行者の名前を "不明" に設定するか、発行者フィールドを指定しません。
 
-|Method|要求 URI|
+|方法|要求 URI|
 |------------|-----------------|
 |POST|`https://mykeyvault.vault.azure.net/certificates/mycert1/create?api-version={api-version}`|
 
@@ -401,7 +401,7 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 ## <a name="merge-when-a-pending-request-is-created---manual-certificate-creation"></a>保留中の要求が作成されたときにマージ - 証明書の手動作成
 
-|Method|要求 URI|
+|方法|要求 URI|
 |------------|-----------------|
 |POST|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending/merge?api-version={api-version}`|
 
@@ -414,7 +414,7 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 ```
 
-|要素名|必須|Type|Version|説明|
+|要素名|必須|種類|Version|説明|
 |------------------|--------------|----------|-------------|-----------------|
 |x5c|はい|array|\<導入バージョン>|base 64 文字列配列としての X509 証明書チェーン。|
 

@@ -3,12 +3,12 @@ title: チュートリアル - Terratest を使用して Azure で Terraform モ
 description: Terratest を使用して Terraform モジュールをテストする方法を学習します。
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 41f7f9c00f626cf622ea781f01da6db1f46cd805
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 687a793af2b9b75efe463b042d121c32f18974d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158964"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79370799"
 ---
 # <a name="tutorial-test-terraform-modules-in-azure-using-terratest"></a>チュートリアル:Terratest を使用して Azure で Terraform モジュールをテストする
 
@@ -248,14 +248,17 @@ func TestUT_StorageAccountName(t *testing.T) {
 
 単体テストを実行するには、コマンド ラインで次の手順を完了します。
 
+```azurecli
+az login    # Required when no service principal environment variables are present
+```
+
 ```shell
-$ cd [Your GoPath]/src/staticwebpage
-GoPath/src/staticwebpage$ dep init    # Run only once for this folder
-GoPath/src/staticwebpage$ dep ensure  # Required to run if you imported new packages in test cases
-GoPath/src/staticwebpage$ cd test
-GoPath/src/staticwebpage/test$ go fmt
-GoPath/src/staticwebpage/test$ az login    # Required when no service principal environment variables are present
-GoPath/src/staticwebpage/test$ go test -run TestUT_StorageAccountName
+cd [Your GoPath]/src/staticwebpage
+dep init    # Run only once for this folder
+dep ensure  # Required to run if you imported new packages in test cases
+cd test
+go fmt
+go test -run TestUT_StorageAccountName
 ```
 
 従来の Go テストの結果は、1 分程度で返ります。
@@ -369,21 +372,24 @@ func TestIT_HelloWorldExample(t *testing.T) {
 
 統合テストを実行するには、コマンド ラインで次の手順を完了します。
 
+```azurecli
+az login    # Required when no service principal environment variables are present
+```
+
 ```shell
-$ cd [Your GoPath]/src/staticwebpage
-GoPath/src/staticwebpage$ dep init    # Run only once for this folder
-GoPath/src/staticwebpage$ dep ensure  # Required to run if you imported new packages in test cases
-GoPath/src/staticwebpage$ cd test
-GoPath/src/staticwebpage/test$ go fmt
-GoPath/src/staticwebpage/test$ az login    # Required when no service principal environment variables are present
-GoPath/src/staticwebpage/test$ go test -run TestIT_HelloWorldExample
+cd [Your GoPath]/src/staticwebpage
+dep init    # Run only once for this folder
+dep ensure  # Required to run if you imported new packages in test cases
+cd test
+go fmt
+go test -run TestIT_HelloWorldExample
 ```
 
 従来の Go テストの結果は、2 分程度で返ります。 以下のコマンドを実行して、単体テストと統合テストの両方を実行することもできます。
 
 ```shell
-GoPath/src/staticwebpage/test$ go fmt
-GoPath/src/staticwebpage/test$ go test
+go fmt
+go test
 ```
 
 統合テストは単体テストよりはるかに時間がかかります (1 つの統合ケースに 2 分に対し、5 つの単体ケースに 1 分)。 ただし、シナリオで単体テストまたは統合テストを使用するかどうかは、開発者が決定します。 Microsoft では通常、複雑なロジックには Terraform HCL 関数を使用する単体テストを使用するのが好まれます。 ユーザーのエンド ツー エンドの観点には、通常、統合テストを使用します。
@@ -496,13 +502,16 @@ func Clean() error {
 
 次のコマンドを使用して、完全なテスト スイートを実行できます。 そのコードは、前のセクションで使用した実行手順に似ています。 
 
+```azurecli
+az login    # Required when no service principal environment variables are present
+```
+
 ```shell
-$ cd [Your GoPath]/src/staticwebpage
-GoPath/src/staticwebpage$ dep init    # Run only once for this folder
-GoPath/src/staticwebpage$ dep ensure  # Required to run if you imported new packages in magefile or test cases
-GoPath/src/staticwebpage$ go fmt      # Only required when you change the magefile
-GoPath/src/staticwebpage$ az login    # Required when no service principal environment variables are present
-GoPath/src/staticwebpage$ mage
+cd [Your GoPath]/src/staticwebpage
+dep init    # Run only once for this folder
+dep ensure  # Required to run if you imported new packages in magefile or test cases
+go fmt      # Only required when you change the magefile
+mage
 ```
 
 最後のコマンド ラインは、追加の mage ステップで置き換えることができます。 たとえば、`mage unit` や `mage clean` を使用できます。 `dep` コマンドと`az login` を magefile に埋め込むのはよい考えです。 ここではコードは示しません。 
@@ -513,7 +522,7 @@ mage では、Go パッケージ システムを使用して、ステップを�
  
 テストの前に `az login` を実行する代わりに、サービス プリンシパル環境変数を設定して Azure 認証を完了できます。 Terraform から、[環境変数名の一覧](https://www.terraform.io/docs/providers/azurerm/index.html#testing)が公開されています。 (必要になるのは、これらの環境変数のうち最初の 4 つのみです)。[これらの環境変数の値を取得する](https://www.terraform.io/docs/providers/azurerm/authenticating_via_service_principal.html)方法が説明された詳しい手順も Terraform から公開されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"] 
 > [Terratest GitHub ページ](https://github.com/gruntwork-io/terratest)。

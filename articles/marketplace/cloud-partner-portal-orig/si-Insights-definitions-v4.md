@@ -1,19 +1,18 @@
 ---
 title: Seller Insights 定義
 description: Seller Insights に含まれる多くの用語の定義を示します
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 2571f916f6efc61772b2734119e197996e2ffe3c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 082e5f13ae44a58088b7728103415dbfa5a969f1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73809109"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280135"
 ---
 <a name="seller-insights-definitions"></a>Seller Insights 定義
 =======================
@@ -98,7 +97,7 @@ ms.locfileid: "73809109"
 | **使用日**                                       | 顧客が使用を開始した日付。                                                                                                             |
 | **使用数量**                                       | この SKU について報告された顧客の使用。 VM イメージの場合、報告された期間について、該当する VM のサイズと SKU の使用を表す使用記録。                                               |
 | **使用の参照**                                       | 支払いレポートのエントリに関連付けられた、特定の SKU に対して顧客使用の 1 日または複数の日数の識別子。                                               |
-| **使用法の種類**                                       | 測定されている使用の説明。 (正規化した使用または生の使用)                                                              |
+| **[使用法の種類]**                                       | 測定されている使用の説明。 (正規化した使用または生の使用)                                                              |
 | **使用の種類:** 正規化した使用                | 使用に関連した VM コアの数をアカウントに対して正規化した使用時間: [VM コアの数] x [生の使用時間]。 VM は "SHAREDCORE" として指定され、[VM コアの数] の乗数として 1/6 (または 0.1666) を使用します。                                        |
 | **使用の種類:生の使用**                        | Marketplace プランの使用時間。  "カレンダー" 時間の単位で表示されます。  これは仮想マシンが実行されていた時間です。                           |
 | **使用の単位**                                   | 記録されている使用の測定単位。 VM は常に時間単位で測定されます。                               |

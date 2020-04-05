@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 2b5b95349b8a84cc8294dbcf9ab80eff8c7b86b9
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78247838"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services のサンプル

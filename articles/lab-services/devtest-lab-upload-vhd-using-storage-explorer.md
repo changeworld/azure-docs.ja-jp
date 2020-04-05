@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: defafdd5809b7e537b3b9abb78f8cb63d0033c16
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76170367"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Microsoft Azure ストレージ エクスプローラーを使用して、ラボのストレージ アカウントに VHD ファイルをアップロードします
@@ -35,7 +35,7 @@ Azure DevTest Labs では、VHD ファイルを使用してカスタム イメ�
 
 1. Azure Portal を使用して、ラボのストレージ アカウントを取得します。
 
-    1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+    1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインする
     
     1. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
     

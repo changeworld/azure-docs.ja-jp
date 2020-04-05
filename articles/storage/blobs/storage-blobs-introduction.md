@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: overview
-ms.date: 11/04/2019
+ms.date: 03/18/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 8c2bbd3aff8c2c10864fb2fa8937c9159ecd3606
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ff1d34462680ddd6be7f1a47d9a27594bcce4ff6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972448"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80061498"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob Storage の概要
 
@@ -23,13 +23,13 @@ ms.locfileid: "75972448"
 
 Blob Storage には、3 種類のリソースがあります。
 
-- **ストレージ アカウント** 
+- **ストレージ アカウント**
 - ストレージ アカウント内の**コンテナー**
-- コンテナー内の **BLOB** 
+- コンテナー内の **BLOB**
 
 次の図に、これらのリソースの関係を示します。
 
-![アカウントの BLOB とコンテナー リソース間の関係](./media/storage-blob-introduction/blob1.png)
+![ストレージ アカウント、コンテナー、BLOB の関係を示す図](./media/storage-blobs-introduction/blob1.png)
 
 ### <a name="storage-accounts"></a>ストレージ アカウント
 
@@ -54,9 +54,9 @@ http://mystorageaccount.blob.core.windows.net
  
 Azure Storage では、3 種類の BLOB がサポートされています。
 
-* **ブロック BLOB** には、約 4.7 TB までのテキストとバイナリ データが格納されます。 ブロック BLOB は、個別に管理できるデータ ブロックで構成されます。
-* **追加 BLOB** は、ブロック BLOB と同様にブロックで構成されますが、追加操作用に最適化されています。 追加 BLOB は、仮想マシンのデータのログ記録などのシナリオに最適です。
-* **ページ BLOB** には、最大 8 TB のランダム アクセス ファイルが格納されます。 ページ BLOB は、仮想ハード ドライブ (VHD) ファイルを格納し、Azure 仮想マシン用のディスクとして機能します。 ページ BLOB について詳しくは、「[Azure ページ BLOB の概要](storage-blob-pageblob-overview.md)」をご覧ください
+- **ブロック BLOB** には、約 4.7 TB までのテキストとバイナリ データが格納されます。 ブロック BLOB は、個別に管理できるデータ ブロックで構成されます。
+- **追加 BLOB** は、ブロック BLOB と同様にブロックで構成されますが、追加操作用に最適化されています。 追加 BLOB は、仮想マシンのデータのログ記録などのシナリオに最適です。
+- **ページ BLOB** には、最大 8 TB のランダム アクセス ファイルが格納されます。 ページ BLOB は、仮想ハード ドライブ (VHD) ファイルを格納し、Azure 仮想マシン用のディスクとして機能します。 ページ BLOB について詳しくは、「[Azure ページ BLOB の概要](storage-blob-pageblob-overview.md)」をご覧ください
 
 異なる種類の BLOB の詳細については、「[Understanding Block Blobs, Append Blobs, and Page Blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)」(ブロック BLOB、追加 BLOB、ページ BLOB について) をご覧ください。
 

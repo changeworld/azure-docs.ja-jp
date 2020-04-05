@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/06/2017
 ms.author: yegu
 ms.openlocfilehash: 11c854491ab030394eb61964979cb04a5a4b489b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75433391"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>テンプレートを使用して Web アプリと Azure Cache for Redis を作成する

@@ -9,11 +9,11 @@ ms.date: 07/24/2018
 ms.author: yushwang
 ms.reviewer: cherylmc
 ms.openlocfilehash: ec3697208434eb971e47136416f2c2cc541b5cea
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152076"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225059"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Azure VPN ゲートウェイで、アクティブ/アクティブ S2S VPN 接続を構成する
 
@@ -40,7 +40,7 @@ ms.locfileid: "77152076"
 >   * VpnGw1、VpnGw2、VpnGw3
 >   * HighPerformance (古いレガシ SKU 向け)
 
-## <a name ="aagateway"></a>パート 1 - アクティブ/アクティブの VPN ゲートウェイを作成、構成する
+## <a name="part-1---create-and-configure-active-active-vpn-gateways"></a><a name ="aagateway"></a>パート 1 - アクティブ/アクティブの VPN ゲートウェイを作成、構成する
 次の手順では、Azure VPN ゲートウェイをアクティブ/アクティブ モードで構成します。 アクティブ/アクティブ ゲートウェイとアクティブ/スタンバイ ゲートウェイの主な違い:
 
 * 2 つのパブリック IP アドレスを使用して 2 つのゲートウェイ IP 構成を作成する必要がある
@@ -157,7 +157,7 @@ PS D:\> $vnet1gw.BgpSettingsText
 
 ゲートウェイが作成されたら、このゲートウェイを使用して、アクティブ/アクティブのクロスプレミス接続または VNet 間接続を確立できます。 以降のセクションでは、手順を確認して演習を完了します。
 
-## <a name ="aacrossprem"></a>パート 2 - アクティブ/アクティブのクロスプレミス接続を確立する
+## <a name="part-2---establish-an-active-active-cross-premises-connection"></a><a name ="aacrossprem"></a>パート 2 - アクティブ/アクティブのクロスプレミス接続を確立する
 クロスプレミス接続を確立するには、オンプレミス VPN デバイスを表すローカル ネットワーク ゲートウェイと、Azure VPN ゲートウェイをローカル ネットワーク ゲートウェイにつなげる接続を作成する必要があります。 この例では、Azure VPN ゲートウェイがアクティブ/アクティブ モードになっています。 その結果、オンプレミス デバイスが 1 つだけで (ローカル ネットワーク ゲートウェイ)、接続リソースが 1 つの場合であっても、両方の Azure VPN ゲートウェイ インスタンスによって、オンプレミス デバイスで S2S VPN トンネルが構築されます。
 
 次に進む前に、この演習の [パート 1](#aagateway) を完了していることを確認してください。
@@ -272,7 +272,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection152 -ResourceGroupName $R
 
 ![dual-redundancy-crossprem](./media/vpn-gateway-activeactive-rm-powershell/dual-redundancy.png)
 
-## <a name ="aav2v"></a>パート 3 - アクティブ/アクティブの VNet 間接続を確立する
+## <a name="part-3---establish-an-active-active-vnet-to-vnet-connection"></a><a name ="aav2v"></a>パート 3 - アクティブ/アクティブの VNet 間接続を確立する
 このセクションでは、BGP でアクティブ/アクティブの VNet 間接続を作成します。 
 
 以下の指示は、前の手順からの続きになります。 BGP で TestVNet1 と VPN ゲートウェイを作成して構成するには、 [パート 1](#aagateway) を完了している必要があります。 
@@ -368,7 +368,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection21 -ResourceGroupName $RG
 
 ![active-active-v2v](./media/vpn-gateway-activeactive-rm-powershell/vnet-to-vnet.png)
 
-## <a name ="aaupdate"></a>既存の VPN Gateway を更新する
+## <a name="update-an-existing-vpn-gateway"></a><a name ="aaupdate"></a>既存の VPN Gateway を更新する
 
 このセクションでは、既存の Azure VPN Gateway をアクティブ/スタンバイ モードからアクティブ/アクティブ モード (またはその逆) に変更する方法を説明します。
 

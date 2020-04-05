@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
 ms.openlocfilehash: 06cb3fe5d551ddfc95fcbd37cd9620adebd825c5
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70883927"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>シリアル コンソールを使用して GRUB とシングル ユーザー モードにアクセスする
@@ -238,7 +238,7 @@ Oracle Linux には GRUB が付属しており、すぐに使用できます。 
 ### <a name="single-user-mode-in-oracle-linux"></a>Oracle Linux でのシングル ユーザー モード
 Oracle Linux でシングル ユーザー モードを有効にするには、前述の RHEL の手順を行います。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 シリアル コンソールの詳細については、以下を参照してください。
 * [Linux シリアル コンソールのドキュメント](serial-console-linux.md)
 * [シリアル コンソールを使用してさまざまなディストリビューションで GRUB を有効にする](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)

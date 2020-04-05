@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/18/2018
 ms.author: barclayn
 ms.openlocfilehash: 8d3fc809999508bf3d49c3765c90017e89e80fa7
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77624052"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS Protection - 回復性の高いソリューションの設計

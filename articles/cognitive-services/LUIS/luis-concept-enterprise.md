@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
 ms.openlocfilehash: efef3faf3cc4ff04235254f0ff6538d92a831196
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619940"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79219193"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>LUIS アプリのエンタープライズ戦略
 エンタープライズ アプリについて以下の設計戦略を確認してください。
 
-## <a name="when-you-expect-luis-requests-beyond-the-quota"></a>クォータを超える LUIS リクエストが予想される場合
+## <a name="when-you-expect-luis-requests-beyond-the-quota"></a>クォータを超える LUIS 要求が予想される場合
 
 LUIS には、Azure リソースの価格レベルに基づいて、月間クォータと 1 秒あたりのクォータがあります。 
 
-お使いの LUIS アプリのリクエストレートが許可されている[クォータ レート](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)を超えると、次のことができます。
+お使いの LUIS アプリの要求レートが許可されている[クォータ レート](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)を超えると、次のことができます。
 
 * [同じアプリ定義](#use-multiple-apps-with-same-app-definition)を使用して、より多くの LUIS アプリに負荷を分散します。 これには、必要に応じて、[コンテナー](luis-container-howto.md)から LUIS を実行することが含まれます。 
 * [複数のキーを作成してアプリに割り当てます](#assign-multiple-luis-keys-to-same-app)。 
@@ -37,7 +37,7 @@ LUIS には、Azure リソースの価格レベルに基づいて、月間クォ
 
 これらの兄弟アプリをトレーニングするときは、必ず[すべてのデータを使用してトレーニング](luis-how-to-train.md#train-with-all-data)してください。
 
-1 つのアプリをマスターとして指定します。 確認用として推奨される発話をマスター アプリに追加してから、その他のすべてのアプリに移動する必要があります。 これは、アプリを完全にエクスポートするか、ラベル付き発話をマスターから子に読み込むことで行います。 読み込みは、[単一の発話](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c08)または[バッチ](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09)に対して、[LUIS](luis-reference-regions.md) Web サイトまたはオーサリング API のどちらからでも実行できます。 
+1 つのアプリをマスターとして指定します。 確認用として推奨される発話をマスター アプリに追加してから、その他のすべてのアプリに移動する必要があります。 これは、アプリを完全にエクスポートするか、ラベル付き発話をマスターから子に読み込むことで行います。 読み込みは、[単一の発話](luis-reference-regions.md)または[バッチ](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c08)に対して、[LUIS](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) Web サイトまたはオーサリング API のどちらからでも実行できます。 
 
 アクティブ ラーニングのために定期的な (2 週間ごとなど) [エンドポイントの発話](luis-how-to-review-endpoint-utterances.md)の確認をスケジュール設定し、再トレーニングして再公開します。 
 
@@ -56,7 +56,7 @@ LUIS アプリで、1 つのキーのクォータで許可されているより�
 ボットに応答する必要がある LUIS アプリと QnA Maker アプリが複数ある場合、[ディスパッチ モデル](#dispatch-tool-and-model)を使用してトップ レベルのアプリを構築します。  [ディスパッチ モデルのチュートリアル](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs)で示されているように、カスケード型の呼び出しを使用するようにボットを変更します。 
 
 ## <a name="dispatch-tool-and-model"></a>ディスパッチ ツールとモデル
-[BotBuilder ツール](https://github.com/Microsoft/botbuilder-tools)内にある[ディスパッチ][dispatch-tool] コマンドライン ツールを使用して、複数の LUIS アプリや QnA Maker アプリを親 LUIS アプリに結合します。 この方法を使用すると、すべてのサブジェクトを含む親ドメインと、さまざまな子サブジェクト ドメインを、別々のアプリに指定できます。 
+[BotBuilder ツール][dispatch-tool]内にある[ディスパッチ](https://github.com/Microsoft/botbuilder-tools) コマンドライン ツールを使用して、複数の LUIS アプリや QnA Maker アプリを親 LUIS アプリに結合します。 この方法を使用すると、すべてのサブジェクトを含む親ドメインと、さまざまな子サブジェクト ドメインを、別々のアプリに指定できます。 
 
 ![ディスパッチ アーキテクチャの概念図](./media/luis-concept-enterprise/dispatch-architecture.png)
 
@@ -73,10 +73,10 @@ LUIS では、親ドメインはアプリ一覧で `Dispatch` という名前の
 
 * [Bot Framework SDK](https://github.com/Microsoft/botframework)
 * [ディスパッチ モデルのチュートリアル](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs)
-* [ディスパッチ CLI](https://github.com/Microsoft/botbuilder-tools)
+* [Dispatch CLI](https://github.com/Microsoft/botbuilder-tools)
 * ディスパッチ モデル ボットのサンプル - [.NET](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch)、[Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [バッチをテストする](luis-how-to-batch-test.md)方法を学習します。
 

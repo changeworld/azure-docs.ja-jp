@@ -16,10 +16,10 @@ ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f85e25601b4b591896c5d43f0df7209d4ea01893
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75659612"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-certent-equity-management"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Certent Equity Management の統合
@@ -95,7 +95,7 @@ Certent Equity Management に対する Azure AD SSO を構成してテストす�
 
 1. その他に、Certent Equity Management アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | Name | ソース属性|
+    | 名前 | ソース属性|
     | ---------------| --------------- |
     | COMPANY | user.companyname |
     | User | user.userprincipalname |

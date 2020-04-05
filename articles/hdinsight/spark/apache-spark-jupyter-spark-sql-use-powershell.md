@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 06/12/2019
 ms.custom: mvc
 ms.openlocfilehash: 7416c25128da8dcaf803a9f03144110941200ab2
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77049159"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-powershell"></a>クイック スタート:PowerShell を使用して Azure HDInsight 内に Apache Spark クラスターを作成する
@@ -46,7 +46,7 @@ PowerShell スクリプトを実行すると、次の値の入力を求められ
 |パラメーター|Value|
 |------|------|
 |Azure リソース グループ名 | リソース グループの一意名を指定します。|
-|Location| Azure リージョンを指定します (例: "米国中部")。 |
+|場所| Azure リージョンを指定します (例: "米国中部")。 |
 |既定のストレージ アカウント名 | ストレージ アカウントに一意の名前を指定してください。 |
 |クラスター名 | HDInsight クラスターの一意の名前を指定します。|
 |クラスター ログイン資格情報 | このクイック スタートでは後で、このアカウントを使ってクラスター ダッシュボードに接続します。|
@@ -187,7 +187,7 @@ SQL (構造化照会言語) は、データ照会とデータ定義のための�
 
     画面が更新され、クエリ出力が表示されます。
 
-    ![HDInsight における Hive クエリの出力](./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-get-started-hive-query-output.png "HDInsight における Hive クエリの出力")
+    ![HDInsight での Hive クエリの出力](./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-get-started-hive-query-output.png "HDInsight における Hive クエリの出力")
 
 1. ノートブックの **[File]\(ファイル\)** メニューの **[Close and Halt]\(閉じて停止\)** を選びます。 Notebook をシャットダウンすると、クラスターのリソースが解放されます。
 

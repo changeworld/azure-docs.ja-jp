@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f0db35e188aeca4de7b74d6c3e4dfc45b349279a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 4deae235ed15d02874ab5cb3470c62e934324364
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972721"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80234287"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Azure Storage Blob の論理的な削除
 
 Azure Storage では、BLOB オブジェクトの論理的な削除が提供されるようになり、アプリケーションまたは他のストレージ アカウント ユーザーによってデータが誤って変更または削除されたときに、いっそう簡単にデータを復旧できるようになりました。
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="how-soft-delete-works"></a>論理的な削除のしくみ
 
@@ -204,7 +206,8 @@ $MatchingAccounts | Enable-AzStorageDeleteRetentionPolicy -RetentionDays 7
 次のコマンドを使用して、ソフト削除が有効にされたことを確認します。
 
 ```powershell
-$MatchingAccounts | Get-AzStorageServiceProperty -ServiceType Blob
+$MatchingAccounts | $account = Get-AzStorageAccount -ResourceGroupName myresourcegroup -Name storageaccount
+   Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context | Select-Object -ExpandProperty DeleteRetentionPolicy
 ```
 
 誤って削除された BLOB を復旧するには、それらの BLOB で Undelete を呼び出します。 アクティブな BLOB と論理的に削除された BLOB の両方で **Undelete Blob** を呼び出すと、関連付けられているすべての論理的に削除されたスナップショットがアクティブとして復元されることに注意してください。 次の例では、コンテナー内にあるすべての論理的に削除された BLOB とアクティブな BLOB で Undelete を呼び出しています。

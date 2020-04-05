@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
 ms.openlocfilehash: f5ebb8874b7e277d15ef89aa419c4d26560a6e76
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75386733"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure Cloud Services と ASP.NET を使ってみる

@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 1413035c879198cf333aeeb5d8fe993162939172
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75460589"
 ---
 # <a name="use-powershell-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>PowerShell を使用して、BLOB およびキュー データへのアクセスのための RBAC ロールを割り当てる
@@ -67,7 +67,7 @@ RBAC ロールをセキュリティ プリンシパルに割り当てるには�
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container-name>
 ```
 
-次の例では、*sample-container* という名前のコンテナーにスコープが指定された**ストレージ BLOB データ共同作成者**ロールをユーザーに割り当てます。 サンプルの値とブラケット内のプレースホルダーの値は、実際の値に置き換えてください。 
+次の例では、**sample-container** という名前のコンテナーにスコープが指定された*ストレージ BLOB データ共同作成者*ロールをユーザーに割り当てます。 サンプルの値とブラケット内のプレースホルダーの値は、実際の値に置き換えてください。 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `
@@ -83,7 +83,7 @@ New-AzRoleAssignment -SignInName <email> `
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/queueServices/default/queues/<queue-name>
 ```
 
-次の例では、*sample-queue* という名前のキューに対してスコープが指定された**ストレージ キュー データ共同作成者**ロールをユーザーに割り当てます。 サンプルの値とブラケット内のプレースホルダーの値は、実際の値に置き換えてください。 
+次の例では、**sample-queue** という名前のキューに対してスコープが指定された*ストレージ キュー データ共同作成者*ロールをユーザーに割り当てます。 サンプルの値とブラケット内のプレースホルダーの値は、実際の値に置き換えてください。 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `

@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: 15aa21c2ec2c11bb251f7208fd22c92ceb859d6d
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76960304"
 ---
 # <a name="404001-devicenotfound"></a>404001 DeviceNotFound

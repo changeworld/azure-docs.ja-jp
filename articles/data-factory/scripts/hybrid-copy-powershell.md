@@ -11,10 +11,10 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
 ms.openlocfilehash: 10555defc4888af66bb88d19190b6543aa8ae0c9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75974704"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-on-premises-to-azure"></a>PowerShell を使用して、オンプレミスから Azure にデータをコピーするための Data Factory パイプラインを作成する

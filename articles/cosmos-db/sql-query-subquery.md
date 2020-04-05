@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 42d9e8b190747a3ffaf0e46ea1eddda33d09bb24
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74870566"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Azure Cosmos DB の SQL サブクエリの例
@@ -47,7 +47,7 @@ Azure Cosmos DB の SQL クエリは常に 1 つの列 (単純な値または複
 
 複数値サブクエリは、WHERE 句内のすべてのクロス結合の後ではなく、それぞれの select-many 式の後に述語をプッシュすることによって JOIN 式を最適化できます。
 
-次のクエリについて考えてみましょう。
+次のクエリを考えてみます。
 
 ```sql
 SELECT Count(1) AS Count
@@ -124,7 +124,7 @@ WHERE AvgNutritionValue > 80
 
 たとえば、次のような参照データのセットを考えます。
 
-| **単位** | **Name**            | **乗数** | **基本単位** |
+| **単位** | **名前**            | **乗数** | **基本単位** |
 | -------- | ------------------- | -------------- | ------------- |
 | ng       | ナノグラム            | 1.00E-09       | グラム          |
 | µg       | マイクログラム           | 1.00E-06       | グラム          |
@@ -517,7 +517,7 @@ JOIN n IN (SELECT VALUE ARRAY(SELECT t FROM t in c.tags WHERE t.name != 'infant 
 ]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Cosmos DB .NET のサンプル](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [モデル ドキュメント データ](modeling-data.md)

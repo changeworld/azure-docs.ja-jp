@@ -9,10 +9,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: 30d99c3f4767eb50361f7074c0d508fcf309faca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61488462"
 ---
 # <a name="run-micro-focus-enterprise-server-40-in-a-docker-container-on-azure"></a>Azure 上の Docker コンテナーで Micro Focus Enterprise Server 4.0 を実行する
@@ -29,7 +29,7 @@ Docker により、移植性と分離性がアプリケーションに追加さ�
 
 - Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-- Micro Focus ソフトウェアおよび有効なライセンス (または評価版ライセンス)。 Micro Focus の既存の顧客である場合は、Micro Focus の担当者に問い合わせてください。 そうでない場合は、[評価版を要求](https://www.microfocus.com/products/enterprise-suite/enterprise-server/trial/)してください。
+- Micro Focus ソフトウェアおよび有効なライセンス (または試用版ライセンス)。 Micro Focus の既存の顧客である場合は、Micro Focus の担当者に問い合わせてください。 そうでない場合は、[試用版を要求](https://www.microfocus.com/products/enterprise-suite/enterprise-server/trial/)してください。
 
      > [!NOTE]
      > Docker のデモ ファイルは、Enterprise Server 4.0 に含まれています。 このチュートリアルでは、ent\_server\_dockerfiles\_4.0\_windows.zip を使用します。 Enterprise Server のインストール ファイルにアクセスしたのと同じ場所からそれにアクセスするか、*Micro Focus* に移動して、開始します。
@@ -137,7 +137,7 @@ Docker により、移植性と分離性がアプリケーションに追加さ�
        docker inspect <containerID> --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
     ```
 
-       例:
+       次に例を示します。
 
     ```   
         docker inspect 22a0fe3159d0 --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
@@ -168,7 +168,7 @@ Docker により、移植性と分離性がアプリケーションに追加さ�
 
 これで完了です。 今は、Docker コンテナーで CICS アプリケーションを実行し、管理しています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure で Micro Focus Enterprise Server 4.0 および Enterprise Developer 4.0 をインストールする](./set-up-micro-focus-azure.md)
 - [メインフレーム アプリケーションの移行](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)

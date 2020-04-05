@@ -1,7 +1,7 @@
 ---
 title: マップに検索結果を表示する | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps Web SDK を使用して検索要求を実行し、結果を地図上に表示する方法について説明します。
-author: jingjing-z
+author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 07/29/2019
 ms.topic: conceptual
@@ -9,22 +9,22 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 13daf20e364b1e629b3ae13be2c9406da3702211
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: e82a1daee381c7bad19c83fa735d0028bef2010e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209649"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371391"
 ---
 # <a name="show-search-results-on-the-map"></a>マップに検索結果を表示する
 
 この記事では、目的地を検索し、地図上に検索結果を表示する方法について説明します。
 
-目的地の検索には、2 つ方法があります。 1 つは、サービス モジュールを使用して検索要求を行う方法です。 もう 1 つの方法は、[Fetch API](https://fetch.spec.whatwg.org/) から [Azure Maps Fuzzy search API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) に対して検索要求を行うという方法です。 以下で両方の方法を説明します。
+目的地の検索には、2 つ方法があります。 1 つは、サービス モジュールを使用して検索要求を行う方法です。 もう 1 つの方法は、[Fetch API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) から [Azure Maps Fuzzy search API](https://fetch.spec.whatwg.org/) に対して検索要求を行うという方法です。 以下で両方の方法を説明します。
 
 ## <a name="make-a-search-request-via-service-module"></a>サービス モジュールを使用して検索要求を行う
 
-<iframe height='500' scrolling='no' title='マップに検索結果を表示する (サービス モジュール)' src='//codepen.io/azuremaps/embed/zLdYEB/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/zLdYEB/'>Show search results on a map (Service Module)</a>」Pen を表示します。
+<iframe height='500' scrolling='no' title='マップに検索結果を表示する (サービス モジュール)' src='//codepen.io/azuremaps/embed/zLdYEB/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io/azuremaps/pen/zLdYEB/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>Show search results on a map (Service Module)</a>」Pen を表示します。
 </iframe>
 
 上記のコードでは、最初のブロックでマップ オブジェクトが構築され、アクセス トークンを使用するための認証メカニズムが設定されます。 作成方法については、[マップの作成](./map-create.md)に関する記事を参照してください。
@@ -33,7 +33,7 @@ ms.locfileid: "77209649"
 
 2 つ目のコード ブロックでは、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) クラスを使用してデータ ソース オブジェクトが作成され、検索結果がそこに追加されます。 [シンボル レイヤー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)は、テキストまたはアイコンを使用して、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) にラップされたポイントベースのデータをシンボルとしてマップにレンダリングします。  シンボル レイヤーが作成されます。 データ ソースがシンボル レイヤーに追加され、それがマップに追加されます。
 
-4 番目のコード ブロックでは、[サーチ モジュール](how-to-use-services-module.md)で [SearchFuzzy](/javascript/api/azure-maps-rest/atlas.service.models.searchgetsearchfuzzyoptionalparams) メソッドが使用されます。 それにより、[Get Search Fuzzy rest API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) を介して自由形式のテキスト検索を実行して、POI を検索できます。 Get requests to the Search Fuzzy API では、どの組み合わせのあいまい入力も処理できます。 次に、`geojson.getFeatures()` メソッドを使用して応答から GeoJSON のフィーチャー コレクションが抽出されて、データ ソースに追加されます。それにより、シンボル レイヤーを介してマップ上でデータが自動的にレンダリングされます。
+4 番目のコード ブロックでは、[サーチ モジュール](/javascript/api/azure-maps-rest/atlas.service.models.searchgetsearchfuzzyoptionalparams)で [SearchFuzzy](how-to-use-services-module.md) メソッドが使用されます。 それにより、[Get Search Fuzzy rest API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) を介して自由形式のテキスト検索を実行して、POI を検索できます。 Get requests to the Search Fuzzy API では、どの組み合わせのあいまい入力も処理できます。 次に、`geojson.getFeatures()` メソッドを使用して応答から GeoJSON のフィーチャー コレクションが抽出されて、データ ソースに追加されます。それにより、シンボル レイヤーを介してマップ上でデータが自動的にレンダリングされます。
 
 最後のコード ブロックでは、マップの [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) プロパティを使用してマップのカメラ境界が調整されます。
 
@@ -42,7 +42,7 @@ ms.locfileid: "77209649"
 
 ## <a name="make-a-search-request-via-fetch-api"></a>Fetch API を使用して検索要求を行う
 
-<iframe height='500' scrolling='no' title='マップに検索結果を表示する' src='//codepen.io/azuremaps/embed/KQbaeM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/KQbaeM/'>Show search results on a map</a>」Pen を表示します。
+<iframe height='500' scrolling='no' title='マップに検索結果を表示する' src='//codepen.io/azuremaps/embed/KQbaeM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io/azuremaps/pen/KQbaeM/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>Show search results on a map</a>」Pen を表示します。
 </iframe>
 
 上記のコードの最初のコード ブロックでは、マップ オブジェクトが作成されます。 アクセス トークンを使用する認証メカニズムを設定します。 作成方法については、[マップの作成](./map-create.md)に関する記事を参照してください。
@@ -59,6 +59,9 @@ ms.locfileid: "77209649"
 
 ## <a name="next-steps"></a>次のステップ
 
+> [!div class="nextstepaction"]
+> [検索サービスを使用するためのベスト プラクティス](how-to-use-best-practices-for-search.md)
+
 あいまい検索の詳細については、**こちら**を参照してください。
 
 > [!div class="nextstepaction"]
@@ -72,7 +75,7 @@ ms.locfileid: "77209649"
 完全なコードの例については、次の記事を参照してください。
 
 > [!div class="nextstepaction"]
-> [座標から情報を取得する](./map-get-information-from-coordinate.md)
+> [座標から情報を取得する](map-get-information-from-coordinate.md)
 <!-- Comment added to suppress false positive warning -->
 > [!div class="nextstepaction"]
-> [A から B までのルートを表示する ](./map-route.md)
+> [A から B までのルートを表示する ](map-route.md)

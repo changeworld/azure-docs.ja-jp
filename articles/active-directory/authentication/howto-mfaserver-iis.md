@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 87c96eae9361306ea821f9b654dfef14f6d8f298
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74848036"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>IIS Web アプリの Azure Multi-Factor Authentication Server の構成
@@ -23,7 +23,7 @@ ms.locfileid: "74848036"
 Azure Multi-Factor Authentication (MFA) Server の [IIS 認証] セクションを使用して、IIS 認証を有効にし、Microsoft IIS Web アプリケーションと統合するように構成できます。 Azure MFA Server では、Azure Multi-Factor Authentication を追加するために、IIS Web サーバーに対して行われる要求をフィルター処理できるプラグインがインストールされます。 IIS プラグインは、フォームベースの認証と統合 Windows HTTP 認証のサポートを提供します。 さらに、信頼できる IP を構成して、内部 IP アドレスを 2 要素認証から除外できます。
 
 > [!IMPORTANT]
-> 2019 年 7 月 1 日より、Microsoft では新しいデプロイの MFA Server が提供されなくなります。 ユーザーからの多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication を使用していただく必要があります。 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。
+> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなります。 ユーザーからの多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication を使用していただく必要があります。 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。
 
 ![MFA Server での IIS 認証](./media/howto-mfaserver-iis/iis.png)
 
@@ -48,7 +48,7 @@ Azure Multi-Factor Authentication (MFA) Server の [IIS 認証] セクション�
     - Windows ドメイン、LDAP ディレクトリ、または RADIUS サーバーに対してプライマリ資格情報を認証するかどうかを 選択します。
 
 12. **[OK]** をクリックして、[フォームベースの Web サイトの追加] ダイアログ ボックスに戻ります。
-13. Click **OK**.
+13. **[OK]** をクリックします。
 14. URL とページの変数が検出または入力されたら、フォームベースのパネルにその Web サイトのデータが表示されます。
 
 ## <a name="using-integrated-windows-authentication-with-azure-multi-factor-authentication-server"></a>統合 Windows 認証と Azure Multi-Factor Authentication Server を使用する
@@ -62,7 +62,7 @@ Azure Multi-Factor Authentication (MFA) Server の [IIS 認証] セクション�
 5. 既定値では不十分な場合は、アイドル状態のタイムアウトと最大セッション時間を調整します。
 6. すべてのユーザーを Server にインポート済みであるか、インポートする予定であり、多要素認証の対象となる場合は、 **[Multi-Factor Authentication のユーザー照合が必要]** チェック ボックスをオンにします。 多数のユーザーがまだサーバーにインポートされていない、および/または多要素認証から除外される場合、ボックスのチェック マークを外したままにします。
 7. 必要に応じて、 **[Cookie のキャッシュ]** チェック ボックスをオンにします。
-8. Click **OK**.
+8. **[OK]** をクリックします。
 
 ## <a name="enable-iis-plug-ins-for-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server の IIS プラグインを有効にする
 

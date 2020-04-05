@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
 ms.openlocfilehash: 21866bb7dab3d5a093ffc4655161b80853eadfc5
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77084058"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>Android 用の ADAL から MSAL への移行に関するガイド

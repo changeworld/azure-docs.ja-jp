@@ -145,6 +145,8 @@
       href: functions-networking-options.md
     - name: IP アドレス
       href: ip-addresses.md
+    - name: カスタム ハンドラー
+      href: functions-custom-handlers.md
 - name: 操作方法ガイド
   items:
     - name: 開発
@@ -288,6 +290,8 @@
           href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: キー コンテナーからのシークレットの参照
           href: ../app-service/app-service-key-vault-references.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        - name: サイト データの暗号化
+          href: configure-encrypt-at-rest-using-cmk.md
     - name: 統合
       items:
         - name: バインドの追加

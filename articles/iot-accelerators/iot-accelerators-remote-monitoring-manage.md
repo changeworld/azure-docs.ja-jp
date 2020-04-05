@@ -10,13 +10,13 @@ ms.date: 03/08/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: e4236952bd41c4955e337813ff6d706263b8ef47
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73890900"
 ---
-# <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>チュートリアル:監視ソリューションに接続されているデバイスを構成する
+# <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>チュートリアル: 監視ソリューションに接続されているデバイスを構成する
 
 このチュートリアルでは、リモート監視ソリューション アクセラレータを使用して、接続されている IoT デバイスを構成および管理します。 ソリューション アクセラレータに新しいデバイスを追加し、デバイスを構成します。
 
@@ -121,7 +121,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、リモート監視ソリューション アクセラレータに接続されているデバイスを構成および管理する方法を示しました。 ソリューション アクセラレータを使用して予期しないアラートの根本原因分析を実行する方法については、次のチュートリアルに進んでください。
 

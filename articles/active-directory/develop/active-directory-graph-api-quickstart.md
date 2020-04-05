@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: sureshja
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 9fd5fa943468924c289587285fe7986a73c21dba
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77161343"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>方法:Azure AD Graph API を使用する

@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect 同期: 誤って削除されないように保護する | Microsoft Docs'
+title: 'Azure AD Connect sync: 誤って削除されないように保護する | Microsoft Docs'
 description: このトピックでは、Azure AD Connect の "誤って削除されないように保護する" 機能について説明します。
 services: active-directory
 documentationcenter: ''
@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48f3109b4c87e25444629ca25411894eab8a9d56
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71827141"
 ---
-# <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Azure AD Connect 同期: 誤って削除されないように保護する
+# <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Azure AD Connect Sync: 誤って削除されないように保護する
 このトピックでは、Azure AD Connect の "誤って削除されないように保護する" 機能について説明します。
 
 Azure AD Connect のインストール中は、誤った削除操作を防止する機能が既定で有効になり、500 個を超える削除を行うエクスポートを許可しないように構成されます。 この機能は、構成を誤って変更することと、たくさんのユーザーや各種オブジェクトに影響を与える可能性があるオンプレミス ディレクトリを変更することを防ぐように設計されています。
@@ -31,7 +31,7 @@ Azure AD Connect のインストール中は、誤った削除操作を防止す
 ## <a name="what-is-prevent-accidental-deletes"></a>誤って削除されないように保護する機能
 たとえば、次のような大量の削除を行う状況でこの機能が作用します。
 
-* [OU](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering) 全体または[ドメイン](how-to-connect-sync-configure-filtering.md#domain-based-filtering)全体を除外していた[フィルター処理](how-to-connect-sync-configure-filtering.md)に変更を加えた場合。
+* [OU](how-to-connect-sync-configure-filtering.md) 全体または[ドメイン](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)全体を除外していた[フィルター処理](how-to-connect-sync-configure-filtering.md#domain-based-filtering)に変更を加えた場合。
 * OU 内のすべてのオブジェクトを削除した場合。
 * OU の名前を変更したことでその OU 内のすべてのオブジェクトが同期の対象外と見なされる場合。
 
@@ -45,7 +45,7 @@ Azure AD にエクスポートするようにステージングされた削除�
 >
 > 
 
-また、**Synchronization Service Manager** UI でエクスポート プロファイルのステータスが `stopped-deletion-threshold-exceeded` となっていることを確認できます。
+また、`stopped-deletion-threshold-exceeded`Synchronization Service Manager**UI でエクスポート プロファイルのステータスが** となっていることを確認できます。
 ![誤って削除されないように保護する Sync Service Manager UI](./media/how-to-connect-sync-feature-prevent-accidental-deletes/syncservicemanager.png)
 
 これを予想していなかった場合は、調査し、修正のアクションを実行します。 削除されようとしているオブジェクトを表示するには、次の操作を行います。
@@ -54,7 +54,7 @@ Azure AD にエクスポートするようにステージングされた削除�
 2. **[コネクタ]** に進みます。
 3. 種類が「 **Azure Active Directory**」のコネクタを選択します。
 4. 右にある **[アクション]** で、 **[コネクタの検索領域]** を選択します。
-5. ポップアップ ウィンドウの **[Scope (範囲)]** で、 **[Disconnected Since (切断時刻)]** を選択し、過去の時間を選択します。 **[Search (検索)]** をクリックします。 このページには、削除されようとしているすべてのオブジェクトが表示されます。 各項目をクリックすると、そのオブジェクトに関する追加情報を取得できます。 また、 **[Column Setting (列設定)]** をクリックして、グリッドに表示する属性を追加することもできます。
+5. ポップアップ ウィンドウの **[Scope (範囲)]** で、 **[Disconnected Since (切断時刻)]** を選択し、過去の時間を選択します。 **[検索]** をクリックします。 このページには、削除されようとしているすべてのオブジェクトが表示されます。 各項目をクリックすると、そのオブジェクトに関する追加情報を取得できます。 また、 **[Column Setting (列設定)]** をクリックして、グリッドに表示する属性を追加することもできます。
 
 ![コネクタ スペースの検索](./media/how-to-connect-sync-feature-prevent-accidental-deletes/searchcs.png)
 
@@ -69,8 +69,8 @@ Azure AD にエクスポートするようにステージングされた削除�
 3. Azure Active Directory Connector が選択されている状態で、 **[実行]** アクションを選択し、 **[エクスポート]** を選択します。
 4. 保護を再度有効にするには、PowerShell コマンドレットの `Enable-ADSyncExportDeletionThreshold -DeletionThreshold 500`を実行します。 現在の削除のしきい値を取得する場合、500 を通知する値に置き換えます。 Azure AD グローバル管理者のアカウントとパスワードを入力します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 **概要トピック**
 
-* [Azure AD Connect 同期:同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
+* [Azure AD Connect sync: 同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: b1f8b158c511919a72e72629d72b0e5ff73ff7db
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78268112"
 ---
 # <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Media Services を使用して DRM ライセンスまたは AES キーを配信する 

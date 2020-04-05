@@ -3,12 +3,12 @@ title: Key Vault のシークレットとテンプレート
 description: デプロイメント時にパラメーターとして Key Vault からシークレットを渡す方法について説明します。
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 56fa2def49f6d98abf1c939ed87456c4bf353eb9
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 08b4042c6bad83f13ebaea0f46046ea7707fd868
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154025"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460196"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す
 
@@ -235,7 +235,7 @@ Set-AzKeyVaultAccessPolicy `
 
 ```azurecli-interactive
 az group create --name SqlGroup --location westus2
-az group deployment create \
+az deployment group create \
   --resource-group SqlGroup \
   --template-uri <template-file-URI> \
   --parameters <parameter-file>

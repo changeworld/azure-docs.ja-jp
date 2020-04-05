@@ -7,10 +7,10 @@ ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 247a1de4d00668371337295616d31caf101f0cc5
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75498150"
 ---
 # <a name="monitoring-and-diagnostics"></a>監視と診断

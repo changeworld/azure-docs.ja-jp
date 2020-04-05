@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 1065abecb1f0ef57eb13b1ec3f194f07ae01eaee
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68976793"
 ---
 # <a name="set-up-the-business-glossary-for-governed-tagging"></a>管理タグ付け用のビジネス用語集を設定する
@@ -80,6 +80,6 @@ Data Catalog ポータルでは、2 種類のタグは区別して表示され�
 
 Azure Data Catalog のビジネス用語集と、それで有効になる管理タグ付けを使用すると、データ資産の識別、管理、検出を一貫した方法で行うことができます。 ビジネス用語集は、組織のメンバーによるビジネス語彙の学習を推進できます。 用語集は、資産の検出と把握を容易にする、意味のあるメタデータのキャプチャもサポートしています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ビジネス用語集操作の REST API ドキュメント](/rest/api/datacatalog/data-catalog-glossary)

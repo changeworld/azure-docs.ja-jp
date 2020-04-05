@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: db941152186127302680b5e659e43cd2d82a8908
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162278"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Azure Cognitive Search のプレビュー機能
@@ -33,7 +33,7 @@ ms.locfileid: "77162278"
 
 |||
 |-|-|
-| [カスタム エンティティの参照スキル (プレビュー)](cognitive-search-skill-custom-entity-lookup.md ) | ユーザーが定義したカスタムの単語と語句のリストからテキストを検索するコグニティブ スキル。 この一覧を使用して、エンティティが一致するすべての文書がラベル付けされます。 このスキルでは、ある程度のあいまい一致もサポートされており、類似しているが完全一致ではない一致を見つけるために適用できます。 | 
+| [カスタム エンティティの参照スキル (プレビュー)](cognitive-search-skill-custom-entity-lookup.md ) | ユーザーが定義したカスタムの単語と語句のリストからテキストを検索するコグニティブ スキル。 この一覧を使用して、エンティティが一致するすべての文書がラベル付けされます。 このスキルは、ある程度のあいまい一致もサポートしており、類似しているが完全一致ではない一致を見つけるために適用できます。 | 
 | [PII 検出スキル (プレビュー)](cognitive-search-skill-pii-detection.md) | 入力テキストから個人を特定できる情報を抽出する、インデックス作成中に使用されるコグニティブ スキルです。ユーザーには、さまざまな方法でそれをそのテキストからマスクするためのオプションが提供されます。| 
 | [インクリメンタル エンリッチメント (プレビュー)](cognitive-search-incremental-indexing-conceptual.md) | エンリッチメント パイプラインにキャッシュが追加され、スキルセットや別のオブジェクトに対する更新など、目的の変更によってコンテンツが変更されない場合に既存の出力を再利用できます。 キャッシュは、スキルセットによって生成されるエンリッチされたドキュメントにのみ適用されます。| 
 | [ナレッジ ストア (プレビュー)](knowledge-store-concept-intro.md) | AI ベースのエンリッチメント パイプラインの新しい宛先。 その物理データ構造は Azure Blob Storage と Azure Table Storage に存在し、コグニティブ スキルセットがアタッチされているインデクサーを実行した時点で作成され、データが挿入されます。 ナレッジ ストア自体の定義は、スキルセットの定義の中で指定されます。 ナレッジ ストアの定義では、"*プロジェクション*" 要素によってデータの物理構造 (データの形状をどのようにするか、データの保存先をテーブル ストレージと BLOB ストレージのどちらにするか、ビューが複数存在するかどうか) を制御できます。| 

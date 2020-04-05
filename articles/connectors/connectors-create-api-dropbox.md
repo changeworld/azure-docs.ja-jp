@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 tags: connectors
 ms.openlocfilehash: 8f54f832884b172761f62b16db29d2f0abd0dd46
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75665753"
 ---
 # <a name="upload-and-manage-files-in-dropbox-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Dropbox 内のファイルをアップロードおよび管理する

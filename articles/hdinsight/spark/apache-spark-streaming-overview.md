@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/20/2019
 ms.openlocfilehash: 521d72642a27995d096402a4ca0e4af632b0788c
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74406291"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Apache Spark ストリーミングの概要
@@ -251,7 +251,7 @@ Spark Streaming API で使用できるスライディング ウィンドウ関�
 
 GET 要求を使用して、LIVY エンドポイントに対してすべてのアプリケーションの状態をチェックすることもできます。 最後に、LIVY エンドポイントに対して DELETE 要求を発行することによって、実行中のアプリケーションを終了できます。 LIVY API の詳細については、[Apache LIVY を使用したリモート ジョブ](apache-spark-livy-rest-interface.md)に関するページを参照してください
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [HDInsight での Apache Spark クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)
 * [Apache Spark ストリーミング プログラミング ガイド](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html)

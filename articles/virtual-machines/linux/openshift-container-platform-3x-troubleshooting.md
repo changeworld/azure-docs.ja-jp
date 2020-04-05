@@ -14,19 +14,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 1915cce1878b9b7ec058c13167e03c3c318f3668
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: bd83a1ca731d81edb76a3c1bc07113ce96adb9ec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035486"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066602"
 ---
 # <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>Azure での OpenShift Container Platform 3.11 デプロイのトラブルシューティング
 
 OpenShift クラスターが正常にデプロイされない場合は、Azure portal にエラーが出力されます。 この出力が読みにくく、問題を簡単に識別できない場合があります。 この出力にざっと目を通して、終了コード 3、4、または 5 を探してください。 これら 3 つの終了コードの情報を次に示します。
 
 - 終了コード 3: Red Hat サブスクリプション ユーザー名/パスワードまたは組織 ID/ライセンス認証キーが正しくありません
-- 終了コード 4: Red Hat のプール ID が正しくないか、エンタイトルメントがありません
+- 終了コード 4: Red Hat のプール ID が正しくないか、使用権利がありません
 - 終了コード 5: Docker シン プールのボリュームをプロビジョニングできません
 
 他のすべての終了コードについては、ssh 経由でホストに接続して、ログ ファイルを表示してください。
@@ -102,7 +102,7 @@ Ansible プレイブック ホストに秘密キーがコピーされていま�
 
 テンプレートまたは Marketplace オファーへの入力時に、不適切な情報が指定されました。 サービス プリンシパルの適切な appId (clientId) とパスワード (clientSecret) を使用していることを確認します。 次の azure cli コマンドを実行して確認します。
 
-```bash
+```azurecli
 az login --service-principal -u <client id> -p <client secret> -t <tenant id>
 ```
 
@@ -110,7 +110,7 @@ az login --service-principal -u <client id> -p <client secret> -t <tenant id>
 
 Azure クラウド プロバイダーが有効になっている場合、使用するサービス プリンシパルは、リソース グループへの共同作成者アクセス権が必要です。 次の azure cli コマンドを実行して確認します。
 
-```bash
+```azurecli
 az group update -g <openshift resource group> --set tags.sptest=test
 ```
 

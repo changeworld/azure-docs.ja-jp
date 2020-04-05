@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と E Sales Manager Remix の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と E Sales Manager Remix の統合 | Microsoft Docs'
 description: Azure Active Directory と E Sales Manager Remix の間のシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,10 +17,10 @@ ms.date: 06/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 895fb0d83e383618818325263ac80c5919a0ee7b
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65406952"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Azure Active Directory と E Sales Manager Remix の統合
@@ -258,7 +258,7 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
 
 1. **[ユーザーとグループ]** ウィンドウの **[ユーザー]** 一覧で、**Britta Simon** を選択します。
 
-1. **[Select]\(選択\)** ボタンをクリックします。
+1. **[選択]** ボタンを選択します。
 
 1. **[割り当ての追加]** ウィンドウで **[割り当て]** を選択します。
     

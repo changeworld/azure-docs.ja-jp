@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: b-juche
 ms.openlocfilehash: 8f50b2ad34c705c8d3831d8243f136c41d750dc0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60691100"
 ---
 # <a name="set-up-a-capacity-pool"></a>容量プールを設定する
@@ -41,7 +41,7 @@ ms.locfileid: "60691100"
     [New Capacity Pool]\(新しい容量プール\) ウィンドウが表示されます。
 
 3. 新しい容量プールに関して、次の情報を入力します。  
-   * **Name**  
+   * **名前**  
      容量プールの名前を指定します。  
      容量プールの名前は、NetApp アカウントごとに一意であることが必要です。
 
@@ -55,9 +55,9 @@ ms.locfileid: "60691100"
       
      ![新しい容量プール](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 
-4. Click **OK**.
+4. **[OK]** をクリックします。
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 
 - [Azure NetApp Files のサービス レベル](azure-netapp-files-service-levels.md)
 - さまざまなサービス レベルの価格については、[Azure NetApp Files の価格ページ](https://azure.microsoft.com/pricing/details/storage/netapp/)を参照してください

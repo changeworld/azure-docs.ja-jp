@@ -4,12 +4,12 @@ description: Azure Backup Server を使用して Exchange サーバーを Azure 
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 9e623b1bdce93c340ccd0e61f9f5145e7154beff
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: b9c8cfb32adce39dab47159c7d644b92e0ced46e
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78295846"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397956"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Azure Backup Server を使用して Exchange サーバーを Azure にバックアップする
 
@@ -34,7 +34,7 @@ Exchange サーバーに MABS 保護エージェントをインストールす�
 4. 保護する Exchange サーバー データベースを選択し、 **[次へ]** をクリックします。
 
    > [!NOTE]
-   > Exchange 2013 を保護する場合は、「 [Exchange 2013 の前提条件](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/dn751029(v=sc.12))」を確認してください。
+   > Exchange 2013 を保護する場合は、「 [Exchange 2013 の前提条件](https://docs.microsoft.com/system-center/dpm/back-up-exchange?view=sc-dpm-2016)」を確認してください。
    >
    >
 
@@ -100,7 +100,7 @@ Exchange サーバーに MABS 保護エージェントをインストールす�
 * **元の Exchange Server の場所に回復する:** データは元の Exchange サーバーに回復します。
 * **Exchange Server 上の別のデータベースに回復する:** データは別の Exchange サーバー上の別のデータベースに回復します。
 * **回復用データベースに回復する:** データは Exchange 回復データベース (RDB) に回復します。
-* **回復用データベースに回復する:** データはネットワーク フォルダーに回復します。
+* **ネットワーク フォルダーにコピーする:** データはネットワーク フォルダーに回復します。
 * **テープにコピーする:** テープ ライブラリまたはスタンドアロンのテープ ドライブが MABS に接続され、そこで構成されている場合、復旧ポイントは空きテープにコピーされます。
 
     ![オンライン レプリケーションの選択](./media/backup-azure-backup-exchange-server/choose-online-replication.png)

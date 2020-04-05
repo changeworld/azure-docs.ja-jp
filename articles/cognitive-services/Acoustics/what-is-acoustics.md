@@ -12,10 +12,10 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: 65678f08399f378b8580eed79e49197dd4d84c64
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71351136"
 ---
 # <a name="what-is-project-acoustics"></a>Project Acoustics とは
@@ -63,7 +63,7 @@ Project Acoustics エディター プラグインは、次のプラットフォ�
 ## <a name="contact-us"></a>お問い合わせ
 * [Project Acoustics のディスカッションと問題報告](https://github.com/microsoft/ProjectAcoustics/issues)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Project Acoustics のクイック スタート (Unity 用](unity-quickstart.md) または [Unreal 用)](unreal-quickstart.md) を試す
 * [Project Acoustics のサウンド設計理念](design-process.md)を確認する
 

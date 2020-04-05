@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: 60acd128495176cd0a90418c61edf53bdcd88e5a
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77647571"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>Azure Logic Apps を使用して SMTP アカウントから電子メールを送信する
@@ -49,7 +49,7 @@ Azure Logic Apps と簡易メール転送プロトコル (SMTP) コネクタを�
 
 1. メッセージが表示されたら、次の接続情報を指定します。
 
-   | プロパティ | Required | 説明 |
+   | プロパティ | 必須 | 説明 |
    |----------|----------|-------------|
    | **Connection Name** | はい | SMTP サーバーへの接続の名前 | 
    | **SMTP サーバー アドレス** | はい | SMTP サーバーのアドレス | 

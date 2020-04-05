@@ -6,10 +6,10 @@ ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: conceptual
 ms.openlocfilehash: 9031c320b055c0a7191655d6531eaa31d9cc8bb8
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78851565"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>クイック スタート:Node.js を使用してナレッジ ベースから質問の回答を取得する

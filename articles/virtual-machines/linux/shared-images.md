@@ -17,10 +17,10 @@ ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: ''
 ms.openlocfilehash: de1afa2367afcb78e8ca68e518acc93e33f61c43
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74034959"
 ---
 # <a name="create-a-shared-image-gallery-with-the-azure-cli"></a>Azure CLI を使用して共有イメージ ギャラリーを作成する
@@ -62,7 +62,7 @@ az vm create\
 
 [!INCLUDE [virtual-machines-common-shared-images-update-delete-cli](../../../includes/virtual-machines-common-shared-images-update-delete-cli.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure Image Builder (プレビュー)](image-builder-overview.md) は、イメージ バージョンの作成の自動化に役立ちます。イメージ バージョンの更新や、[既存のイメージ バージョンからの新しいイメージ バージョンの作成](image-builder-gallery-update-image-version.md)に使用することさえできます。 
 
 テンプレートを使用して共有イメージ ギャラリー リソースを作成することもできます。 いくつかの Azure クイック スタート テンプレートが用意されています。 

@@ -6,11 +6,11 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: cd5ca5039b537859d5b31c901ed1f93877ecb629
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77671207"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234623"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights Agent (旧称 Status Monitor v2): 詳しい手順
 

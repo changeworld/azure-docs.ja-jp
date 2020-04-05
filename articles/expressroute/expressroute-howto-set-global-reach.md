@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: jaredro
 ms.openlocfilehash: 76de7a8854a58deb924cbbe3177ad5a7b5fd57a2
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74083458"
 ---
 # <a name="configure-expressroute-global-reach"></a>ExpressRoute Global Reach を構成する
@@ -124,7 +124,7 @@ Get 操作を実行して状態を確認できます。
 
 前の操作が完了すると、ExpressRoute 回線を経由したオンプレミス ネットワーク間の接続は存在しなくなります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 1. [ExpressRoute Global Reach について詳しく学習する](expressroute-global-reach.md)
 2. [ExpressRoute 接続を確認する](expressroute-troubleshooting-expressroute-overview.md)
 3. [ExpressRoute 回線を Azure 仮想ネットワークにリンクする](expressroute-howto-linkvnet-arm.md)

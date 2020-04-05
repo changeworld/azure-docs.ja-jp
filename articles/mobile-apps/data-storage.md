@@ -1,18 +1,18 @@
 ---
 title: Visual Studio App Center と Azure サービスを使用して、クラウドでアプリケーション データを格納、管理、保持する
 description: Visual Studio App Center など、クラウドでモバイル アプリケーション データを格納、管理、保持するためのサービスについて説明します。
-author: elamalani
+author: codemillmatt
 ms.assetid: 12344321-0123-4678-8588-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: 04de01e1fd3dba88145c7f3748ca30b31ab1740a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: 166847325fa9094136f1c2a143f1751420f05f66
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454443"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240912"
 ---
 # <a name="store-sync-and-query-mobile-application-data-from-the-cloud"></a>クラウドからモバイル アプリケーション データを格納、同期、照会する
 どのような種類のアプリケーションをビルドする場合でも、お客様はおそらくデータを生成して処理することになります。 お客様のアプリケーションのユーザーは高い期待を寄せています。 彼らはあらゆる状況でアプリケーションが迅速かつシームレスに動作することを望んでいます。 また、ほとんどのアプリケーションは、複数のデバイスで機能します。 お客様は自分のアプリケーションに、デスクトップまたはモバイル デバイスからアクセスできます。 複数のユーザーが同時にアプリケーションを使用し、瞬時にリアルタイムでデータにアクセスできることを期待してデータを共有する可能性があります。

@@ -12,11 +12,11 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/21/2019
 ms.openlocfilehash: d28edd28dcbe31bfe63c2d0a9c3e975967efef04
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826581"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228671"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Azure SQL Database を復元する、またはセカンダリにフェールオーバーする
 
@@ -97,7 +97,7 @@ geo リストアを使用して障害から復旧する場合は、通常のア�
 
 ### <a name="configure-firewall-rules"></a>ファイアウォール規則を構成する
 
-サーバーおよびデータベースで構成されているファイアウォール規則が、プライマリ サーバーとプライマリ データベースで構成されている規則と一致することを確認する必要があります。 詳しくは、「[ファイアウォール設定の構成方法 (Azure SQL Database)](sql-database-configure-firewall-settings.md) に関する記事をご覧ください。
+サーバーおよびデータベースで構成されているファイアウォール規則が、プライマリ サーバーとプライマリ データベースで構成されている規則と一致することを確認する必要があります。 詳細については、「 [方法: ファイアウォール設定を構成する (Azure SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
 
 ### <a name="configure-logins-and-database-users"></a>ログインとデータベース ユーザーを構成する
 
@@ -116,7 +116,7 @@ geo リストアを使用して障害から復旧する場合は、通常のア�
 
 データベースにアクセスするために監査が必要な場合は、データベースの復旧後に監査を有効にする必要があります。 詳しくは、「[SQL Database の監査](sql-database-auditing.md)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure SQL Database 自動バックアップの詳細については、「 [SQL Database 自動バックアップ](sql-database-automated-backups.md) 」を参照してください。
 - ビジネス継続性の設計および復旧シナリオについては、 [継続性のシナリオ](sql-database-business-continuity.md)

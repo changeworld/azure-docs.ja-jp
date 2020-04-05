@@ -11,10 +11,10 @@ ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 1401cbe1920c7c6df804aadbba1751612ba9cf06
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79126798"
 ---
 # <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをローカライズする

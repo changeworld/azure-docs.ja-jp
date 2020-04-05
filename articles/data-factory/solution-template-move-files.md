@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
 ms.openlocfilehash: b3165daa06ed975df9ccb677699d3ceb449327ab
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74941930"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Azure Data Factory でファイルを移動する
@@ -66,7 +66,7 @@ ms.locfileid: "74941930"
 
     ![結果を確認する](media/solution-template-move-files/move-files6.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Data Factory で LastModifiedDate に基づいて新規および変更済みのファイルをコピーする](solution-template-copy-new-files-lastmodifieddate.md)
 

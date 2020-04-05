@@ -10,10 +10,10 @@ ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 9fce9a769dd6d88c9926913d22716666284938c1
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74850960"
 ---
 # <a name="getting-started-with-azure-automation-state-configuration"></a>Azure Automation State Configuration の使用開始
@@ -59,7 +59,7 @@ ms.locfileid: "74850960"
         }
     }
     ```
-1. ファイルを `TestConfig.ps1`という名前で保存します。
+1. このファイルを `TestConfig.ps1` として保存します。
 
 この構成は、各ノード ブロックで 1 つのリソース ([WindowsFeature リソース](/powershell/scripting/dsc/reference/resources/windows/windowsfeatureresource)) を呼び出します。このリソースが、**Web-Server** 機能が存在するかどうかを確認します。
 
@@ -67,7 +67,7 @@ ms.locfileid: "74850960"
 
 次に、この構成を Automation アカウントにインポートします。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
 1. **[Automation アカウント]** ページで、 **[構成管理]** の **[状態の構成 (DSC)]** を選択します。
 1. **[状態の構成 (DSC)]** ページで **[構成]** タブをクリックし、 **[+ 追加]** をクリックします。
@@ -75,13 +75,13 @@ ms.locfileid: "74850960"
 
    ![**[構成のインポート]** ブレードのスクリーンショット](./media/automation-dsc-getting-started/AddConfig.png)
 
-1. Click **OK**.
+1. **[OK]** をクリックします。
 
 ## <a name="viewing-a-configuration-in-azure-automation"></a>Azure Automation で構成を表示する
 
 インポートした構成は、Azure ポータルで表示できます。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
 1. **[Automation アカウント]** ページで、 **[構成管理]** の **[状態の構成 (DSC)]** を選択します。
 1. **[状態の構成 (DSC)]** ページで、 **[構成]** タブをクリックし、 **[TestConfig]** (前の手順でインポートした構成の名前) をクリックします。
@@ -96,7 +96,7 @@ ms.locfileid: "74850960"
 目的の状態をノードに適用する前に、その状態を定義する DSC 構成を 1 つ以上のノード構成 (MOF ドキュメント) にコンパイルし、Automation DSC プル サーバーに配置する必要があります。 Azure Automation State Configuration での構成のコンパイルの詳細については、[Azure Automation State Configuration での構成のコンパイル](automation-dsc-compile.md)に関するページをご覧ください。
 構成のコンパイルの詳細については、「 [DSC 構成](/powershell/scripting/dsc/configurations/configurations)」を参照してください。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
 1. **[Automation アカウント]** ページで、 **[構成管理]** の **[状態の構成 (DSC)]** をクリックします。
 1. **[状態の構成 (DSC)]** ページで、 **[構成]** タブをクリックし、 **[TestConfig]** (前にインポートした構成の名前) をクリックします。
@@ -111,7 +111,7 @@ ms.locfileid: "74850960"
 
 コンパイルを開始すると、 **[構成]** ページの **[コンパイル ジョブ]** タイルでコンパイル ジョブを確認できます。 **[コンパイル ジョブ]** タイルには、現在実行中のジョブ、完了したジョブ、失敗したジョブが表示されます。 コンパイル ジョブのページを開くと、ジョブに関する情報が表示されます。これには、発生したエラーと警告、構成で使用されている入力パラメーター、コンパイル ログが含まれています。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
 1. **[Automation アカウント]** ページで、 **[構成管理]** の **[状態の構成 (DSC)]** をクリックします。
 1. **[状態の構成 (DSC)]** ページで、 **[構成]** タブをクリックし、 **[TestConfig]** (前にインポートした構成の名前) をクリックします。
@@ -125,7 +125,7 @@ ms.locfileid: "74850960"
 
 コンパイル ジョブが正常に完了すると、1 つ以上の新しいノード構成が作成されます。 ノード構成とは、プル サーバーにデプロイされ、1 つ以上のノードがプルして適用できるようになる MOF ドキュメントです。 **[状態の構成 (DSC)]** ページでは、Automation アカウントのノード構成を確認できます。 ノード構成の名前は、*ConfigurationName*.*NodeName* という形式です。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
 1. **[Automation アカウント]** ブレードで、 **[構成管理]** の **[状態の構成 (DSC)]** をクリックします。
 1. **[状態の構成 (DSC)]** ページで **[コンパイル済み構成]** タブをクリックします。
@@ -138,7 +138,7 @@ Azure Automation State Configuration を使用すると、Azure VM (クラシッ
 
 ### <a name="to-onboard-an-azure-resource-manager-vm-for-management-by-azure-automation-state-configuration"></a>Azure Automation State Configuration を使用して管理のために Azure Resource Manager VM をオンボードするには
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
 1. **[Automation アカウント]** ブレードで、 **[構成管理]** の **[状態の構成 (DSC)]** をクリックします。
 1. **[状態の構成 (DSC)]** ページで、 **[ノード]** タブの **[+ 追加]** をクリックします。
@@ -164,7 +164,7 @@ Azure によって VM のオンボード処理が開始されます。 処理が
 
 Automation アカウントの **[状態の構成 (DSC)]** ページの **[ノード]** タブで、管理のためにオンボードされたマシンの一覧を表示できます。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
 1. **[Automation アカウント]** ブレードで、 **[構成管理]** の **[状態の構成 (DSC)]** をクリックします。
 1. **[状態の構成 (DSC)]** ページで、 **[ノード]** タブをクリックします。
@@ -173,7 +173,7 @@ Automation アカウントの **[状態の構成 (DSC)]** ページの **[ノー
 
 Azure Automation State Configuration でマネージド ノードの整合性チェックが実行されるたびに、そのノードから状態レポートがプル サーバーに送信されます。 これらのレポートは、そのノードのページに表示できます。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
 1. **[Automation アカウント]** ブレードで、 **[構成管理]** の **[状態の構成 (DSC)]** をクリックします。
 1. **[状態の構成 (DSC)]** ページで、 **[ノード]** タブをクリックします。ここでは、構成の状態の概要と各ノードの詳細を確認できます。
@@ -203,7 +203,7 @@ Azure Automation State Configuration でマネージド ノードの整合性チ
 
 最初に割り当てたものとは別のノード構成を使用するようにノードを割り当てることができます。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
 1. **[Automation アカウント]** ブレードで、 **[構成管理]** の **[状態の構成 (DSC)]** をクリックします。
 1. **[状態の構成 (DSC)]** ページで、 **[ノード]** タブをクリックします。
@@ -220,7 +220,7 @@ Azure Automation State Configuration でマネージド ノードの整合性チ
 
 ノードを Azure Automation DSC で管理する必要がなくなった場合は、ノードの登録を解除することができます。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
 1. **[Automation アカウント]** ブレードで、 **[構成管理]** の **[状態の構成 (DSC)]** をクリックします。
 1. **[状態の構成 (DSC)]** ページで、 **[ノード]** タブをクリックします。

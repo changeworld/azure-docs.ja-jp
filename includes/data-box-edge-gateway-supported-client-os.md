@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 674ca630aa41d930ad7d7cfebccbe9b44351b68c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67181620"
 ---
 デバイスに接続されるクライアントまたはホストでサポートされているオペレーティング システムの一覧を次に示します。 これらのオペレーティング システム バージョンは社内でテストされました。

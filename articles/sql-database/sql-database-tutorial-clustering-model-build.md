@@ -13,18 +13,20 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
-ms.openlocfilehash: 9f16ebc5acff7bbccc9de28e2fab0d223c6e244b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 0a73a2bc3fa76c945cf699133a41b38a9983a234
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640010"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80345813"
 ---
 # <a name="tutorial-build-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>チュートリアル:Azure SQL Database Machine Learning Services (プレビュー) を使用して R でクラスタリング モデルを作成する
 
 この 3 部構成のチュートリアル シリーズのパート 2 では、クラスタリングを実行する K-Means モデルを R で作成します。 このシリーズの次のパートでは、Azure SQL Database Machine Learning Services (プレビュー) を使用して、このモデルを SQL データベースにデプロイします。
 
-この記事では、以下の方法について説明します。
+[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
+
+この記事では、次の方法について学習します。
 
 > [!div class="checklist"]
 > * K-Means アルゴリズムのクラスター数を定義する
@@ -43,13 +45,13 @@ ms.locfileid: "68640010"
 
 ## <a name="define-the-number-of-clusters"></a>クラスターの数を定義する
 
-顧客データをクラスタリングするには、**K-Means** クラスタリング アルゴリズムを使用します。これは、もっとも簡単でよく知られたデータのグループ化の方法です。
-K-Means の詳細については、「[A complete guide to K-means clustering algorithm](https://www.kdnuggets.com/2019/05/guide-k-means-clustering-algorithm.html)」を参照してください。
+顧客データのクラスター化には、データをグループ化する最も単純かつ有名な方法の 1 つ、**K-Means** クラスタリング アルゴリズムを使用します。
+K-Means の詳細については、[K-means クラスタリング アルゴリズムの詳細ガイド](https://www.kdnuggets.com/2019/05/guide-k-means-clustering-algorithm.html)に関するページを参照してください。
 
-このアルゴリズムは、データそのものと、事前に定義された数値 "*k*" の 2 つの入力を受け入れます。この数値は、生成するクラスターの数を表します。
-出力は、入力データがクラスター間でパーティション分割された *k* 個のクラスターです。
+このアルゴリズムでは、次の 2 つの入力を受け取ります。データ自体、および定義済みの数値 "*k*" は、生成するクラスターの数を表します。
+出力は、クラスター間でパーティション分割された入力データを持つ *k* クラスターとなっています。
 
-アルゴリズムで使用するクラスターの数を決定するには、抽出されるクラスターの数による、グループ内の平方和のプロットを使用します。 使用するクラスターの適切な数は、プロットの "エルボ" (肘のように屈曲している部分) です。
+アルゴリズムで使用するクラスターの数を決定するには、抽出されたクラスターの数によって、グループ内の平方和のプロットを使用します。 使用するクラスターの数は、プロットの曲がっている部分または "カギ" の部分になります。
 
 ```r
 # Determine number of clusters by using a plot of the within groups sum of squares,
@@ -60,9 +62,9 @@ for (i in 2:20)
 plot(1:20, wss, type = "b", xlab = "Number of Clusters", ylab = "Within groups sum of squares")
 ```
 
-![エルボ グラフ](./media/sql-database-tutorial-clustering-model-build/elbow-graph.png)
+![カギ線グラフ](./media/sql-database-tutorial-clustering-model-build/elbow-graph.png)
 
-グラフに基づくと、*k = 4* という値を試すのが適切であると思われます。 *k* 値により、顧客は 4 つのクラスターにグループ化されます。
+グラフに基づいて、*k = 4* の値をまず試します。 *k* 値は、顧客を 4 つのクラスターにグループ化します。
 
 ## <a name="perform-clustering"></a>クラスタリングを実行する
 
@@ -122,20 +124,20 @@ Within cluster sum of squares by cluster:
     0.0000  1329.0160 18561.3157   363.2188
 ```
 
-[パート 1](sql-database-tutorial-clustering-model-prepare-data.md#separate-customers) で定義した変数を使用して、4 つのクラスター方法が提供されます。
+4 つのクラスターは、[パート 1 ](sql-database-tutorial-clustering-model-prepare-data.md#separate-customers)で定義した変数を使用して指定されます。
 
-* *orderRatio* = 返品注文の割合 (注文の合計数に対する一部または全部が返品された注文の合計数)
-* *itemsRatio* = 返品品目の割合 (購入された品目の数に対する返品された品目の合計数)
-* *monetaryRatio* = 返品金額の割合 (購入金額に対する返品品目の合計金額)
+* *orderRatio* = 注文返品率 (注文の総数に対する部分的または完全に返品された注文の総数)
+* *itemsRatio* = アイテム返品率 (購入されたアイテムの総数に対する返品されたアイテムの総数)
+* *monetaryRatio* = 返品金額率 (合計購入金額に対する返されたアイテムの合計金額)
 * *frequency* = 返品の頻度
 
-多くの場合、K-Means を使用したデータ マイニングでは、各クラスターを解釈するために結果をさらに分析し、さらなる手順を実行する必要がありますが、これにより、良いてがかりが得られる場合があります。
-これらの結果を解釈する方法を次にいくつか示します。
+多くの場合、K-Means を使用したデータ マイニングでは結果をさらに詳しく分析し、各クラスターについて理解を深めるためにさらに手順を進める必要がありますが、これにより良いスタートを切ることができるようになります。
+これらの結果を解釈するいくつかの方法を次に示します。
 
 * クラスター 1 (もっとも大きいクラスター) はアクティブでない顧客グループであると考えられます (すべての値が 0)。
-* クラスター 3 は、返品に関して突出するグループであると考えられます。
+* クラスター 3 は、戻り値の動作の観点では目立つグループであるように見えます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 ***このチュートリアルを続行しない場合は***、Azure SQL Database サーバーから tpcxbb_1gb データベースを削除します。
 
@@ -146,9 +148,9 @@ Azure portal から次の手順を実行します。
 1. **tpcxbb_1gb** データベースを選択します。
 1. **[概要]** ページで **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアル シリーズのパート 2 では、これらの手順を完了しました。
+このチュートリアル シリーズの第 2 部では、次の手順を完了しました。
 
 * K-Means アルゴリズムのクラスター数を定義する
 * クラスタリングを実行する

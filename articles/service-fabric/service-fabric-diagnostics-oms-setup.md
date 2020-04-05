@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: srrengar
 ms.openlocfilehash: cf0fab9942dcbb7ee09e554f2c9ba8738f208009
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75609929"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>クラスターに Azure Monitor ログを設定する
@@ -32,7 +32,7 @@ ms.locfileid: "75609929"
 
 2. 「**Service Fabric Analytics**」を検索します。 表示されるリソースを選択します。
 
-3. **作成** を選択します。
+3. **［作成］** を選択します
 
     ![Marketplace の Service Fabric Analytics](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 

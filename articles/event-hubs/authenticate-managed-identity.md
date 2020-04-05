@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
 ms.openlocfilehash: 672b663a9cab72d465ea00e0a5ade364eadbf64e
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78251527"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Azure Active Directory を使用して Event Hubs リソースにアクセスするためのマネージド ID を認証する

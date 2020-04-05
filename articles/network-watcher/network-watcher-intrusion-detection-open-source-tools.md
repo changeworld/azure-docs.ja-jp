@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 781f3788c9001276315a2baed7060450fa00d77a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76845025"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Network Watcher とオープン ソース ツールを使用したネットワーク不正侵入検出の実行

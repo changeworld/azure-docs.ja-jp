@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: 87eb04b7323186175195babf6a602fa12d25176f
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78206709"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>HDInsight にストレージ アカウントを追加する
@@ -48,7 +48,7 @@ HDInsight に Azure Storage "*アカウント*" を追加するためにスク�
 
 [スクリプトアクション](hdinsight-hadoop-customize-cluster-linux.md#script-action-to-a-running-cluster) を使用して、次の点を考慮して変更を適用します。
 
-|プロパティ | Value |
+|プロパティ | 値 |
 |---|---|
 |Bash スクリプト URI|`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`|
 |ノードの種類|Head|

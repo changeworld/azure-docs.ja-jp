@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: 968241eff1bcab449f9a4def7a394a508461ec95
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457012"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233223"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Azure IoT Hub での X.509 セキュリティの設定
 
@@ -97,7 +97,7 @@ X.509 デバイスを認証するには、最初に CA 証明書を使用して�
 
     この手順により、Azure IoT device SDK NuGet パッケージのダウンロードとインストールが実行され、それとその依存関係への参照が追加されます。
 
-1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
+1. `using`Program.cs**ファイルの先頭に次の** ステートメントを追加します。
 
     ```csharp
         using Microsoft.Azure.Devices.Client;

@@ -4,11 +4,11 @@ description: Azure Policy 定義ルールを使用して、配列パラメータ
 ms.date: 11/26/2019
 ms.topic: how-to
 ms.openlocfilehash: 991d159f6444133d902382bc9ca43bc2acd201e2
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050078"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236143"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Azure リソースの配列プロパティのポリシーを作成する
 

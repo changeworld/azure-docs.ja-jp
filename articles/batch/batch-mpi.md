@@ -14,10 +14,10 @@ ms.date: 03/13/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1896fea3c401299b4f77235ab3c02d85708b7041
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77023669"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Batch でのマルチインスタンス タスクを使用した Message Passing Interface (MPI) アプリケーションの実行

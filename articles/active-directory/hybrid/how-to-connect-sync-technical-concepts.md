@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b8ec4a6100cfbb4419d7e30f4b97589113b88939
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60347578"
 ---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Azure AD Connect 同期: 技術的概念
@@ -87,7 +87,7 @@ ID が一緒にリンクされ、インポート フローのマッピングを�
 新しいコネクタ スペース オブジェクトを作成する必要があるとルールによって判断された場合は常に、それをプロビジョニングと呼びます。 ただし、この操作はコネクタ スペース内でのみ行われるため、エクスポートが実行されるまでは、接続されたデータ ソースに引き継がれません。
 
 ## <a name="additional-resources"></a>その他のリソース
-* [Azure AD Connect 同期:同期オプションをカスタマイズする](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同期: 同期オプションをカスタマイズする](how-to-connect-sync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)
 
 <!--Image references-->

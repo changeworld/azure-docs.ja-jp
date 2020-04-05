@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 09/20/2019
 ms.author: rohink
 ms.openlocfilehash: b5e1624bf852256f6e8fb0b616258f932c5a8998
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76939027"
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS トラブルシューティング ガイド

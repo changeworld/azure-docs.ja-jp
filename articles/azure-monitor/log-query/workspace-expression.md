@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
 ms.openlocfilehash: 255888acf5da6149b6a964b23ed038b99715481c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75364953"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>Azure Monitor ログ クエリの workspace() 式
@@ -24,9 +24,9 @@ ms.locfileid: "75364953"
 
 ## <a name="arguments"></a>引数
 
-- *識別子*:次の表のいずれかの形式を使用してワークスペースを識別します。
+- *識別子*: 次の表のいずれかの形式を使用してワークスペースを識別します。
 
-| 識別子 | 説明 | 例
+| [Identifier] | 説明 | 例
 |:---|:---|:---|
 | リソース名 | 人間が判読できるワークスペースの名前 (別名 "コンポーネント名") | workspace("contosoretail") |
 | 修飾名 | "subscriptionName/resourceGroup/componentName" の形式のワークスペースのフルネーム | workspace('Contoso/ContosoResource/ContosoWorkspace') |

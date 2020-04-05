@@ -17,10 +17,10 @@ ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b28390dba009226d493f5bfc6a5270b067f5bba0
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73570578"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>チュートリアル:Sage Intacct と Azure Active Directory を統合する
@@ -29,7 +29,7 @@ ms.locfileid: "73570578"
 
 * Azure AD で Sage Intacct にアクセスできるユーザーを制御する。
 * ユーザーが自分の Azure AD アカウントを使用して Sage Intacct に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -90,10 +90,10 @@ Sage Intacct で Azure AD SSO を構成してテストするには、次の構�
 
 1. その他に、Sage Intacct アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | Name  |  ソース属性|
+    | 名前  |  ソース属性|
     | ---------------| --------------- |
     | 会社名 | **Sage Intacct の会社 ID** |
-    | 名前 | 値は、Sage Intacct の **[User ID]\(ユーザー ID\)** と同じにするようにします。これは、このチュートリアルの後半で説明する「**Sage Intacct のテスト ユーザーの作成**」セクションで入力するものです。 |
+    | name | 値は、Sage Intacct の **[User ID]\(ユーザー ID\)** と同じにするようにします。これは、このチュートリアルの後半で説明する「**Sage Intacct のテスト ユーザーの作成**」セクションで入力するものです。 |
     | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier | 値は、Sage Intacct の **[Federated SSO User ID]\(フェデレーション SSO のユーザー ID\)** と同じにするようにします。これは、このチュートリアルの後半で説明する「**Sage Intacct のテスト ユーザーの作成**」セクションで入力するものです。 |
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
@@ -108,7 +108,7 @@ Sage Intacct で Azure AD SSO を構成してテストするには、次の構�
 
     f. **[OK]** をクリックします。
 
-    g. **[Save]** をクリックします。
+    g. **[保存]** をクリックします。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -154,11 +154,11 @@ Sage Intacct で Azure AD SSO を構成してテストするには、次の構�
 
 1. **[会社]** タブをクリックし、 **[会社情報]** をクリックします。
 
-    ![Company](./media/intacct-tutorial/ic790037.png "Company")
+    ![Company](./media/intacct-tutorial/ic790037.png "[会社]")
 
 1. **[セキュリティ]** タブをクリックし、 **[編集]** をクリックします。
 
-    ![Security (セキュリティ)](./media/intacct-tutorial/ic790038.png "Security")
+    ![Security](./media/intacct-tutorial/ic790038.png "Security")
 
 1. **[シングル サインオン (SSO)]** セクションで、次の手順を実行します。
 
@@ -174,7 +174,7 @@ Sage Intacct で Azure AD SSO を構成してテストするには、次の構�
 
     e. **base-64** でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、 **[証明書]** ボックスに貼り付けます。
 
-    f. **[Save]** をクリックします。
+    f. **[保存]** をクリックします。
 
 ### <a name="create-sage-intacct-test-user"></a>Sage Intacct のテスト ユーザーの作成
 
@@ -186,15 +186,15 @@ Azure AD ユーザーが Sage Intacct にサインインできるように設定
 
 1. **[会社]** タブをクリックし、 **[ユーザー]** をクリックします。
 
-    ![ユーザー](./media/intacct-tutorial/ic790041.png "Users")
+    ![ユーザー](./media/intacct-tutorial/ic790041.png "ユーザー")
 
 1. **[Add (追加)]** タブをクリックします。
 
-    ![Add](./media/intacct-tutorial/ic790042.png "Add")
+    ![追加](./media/intacct-tutorial/ic790042.png "追加")
 
 1. **[ユーザー情報]** セクションで、次の手順を実行します。
 
-    ![User Information](./media/intacct-tutorial/ic790043.png "User Information")
+    ![[User Information]\(ユーザー情報\)](./media/intacct-tutorial/ic790043.png "[ユーザー情報]")
 
     a. プロビジョニングする Azure AD アカウントの**ユーザー ID**、**姓**、**名**、**電子メール アドレス**、**役職**、**電話番号**を、 **[User Information (ユーザー情報)]** セクションに入力します。
 
@@ -203,13 +203,13 @@ Azure AD ユーザーが Sage Intacct にサインインできるように設定
 
     b. プロビジョニングする Azure AD アカウントの**管理者特権**を選択します。
 
-    c. **[Save]** をクリックします。 
+    c. **[保存]** をクリックします。 
     
     d. Azure AD アカウント所有者が電子メールを受信し、リンクに従ってアカウントを確認するとそのアカウントがアクティブになります。
 
 1. **[Single sign-on]\(シングル サインオン\)** タブをクリックし、下のスクリーンショットの **[Federated SSO User ID]\(フェデレーション SSO のユーザー ID\)** と、Azure portal の **[ユーザー属性]** セクションの `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` にマップされている **[Source Attribute]\(ソース属性\)** の値が同じになるようにします。
 
-    ![User Information](./media/intacct-tutorial/ic790044.png "User Information")
+    ![[User Information]\(ユーザー情報\)](./media/intacct-tutorial/ic790044.png "[ユーザー情報]")
 
 > [!NOTE]
 > Azure AD ユーザー アカウントをプロビジョニングするには、Sage Intacct から提供されているその他の Sage Intacct ユーザー アカウント作成ツールまたは API を使用できます。

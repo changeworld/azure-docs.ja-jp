@@ -7,12 +7,12 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: be76a274671b0112ca0a5e326f6bb6bb8852842b
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: fd2373eb1c5cd5b48651c9215b5d6ad85c7acd68
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197557"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79457272"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-java"></a>クイック スタート:Java 用 Azure Key Vault クライアント ライブラリ
 
@@ -132,7 +132,6 @@ az ad sp create-for-rbac -n "http://mySP" --sdk-auth
   "tenantId": "35ad10f1-7799-4766-9acf-f2d946161b77",
   "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
   "resourceManagerEndpointUrl": "https://management.azure.com/",
-  "activeDirectoryGraphResourceId": "https://graph.windows.net/",
   "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
   "galleryEndpointUrl": "https://gallery.azure.com/",
   "managementEndpointUrl": "https://management.core.windows.net/"

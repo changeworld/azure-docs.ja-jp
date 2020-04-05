@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
 ms.openlocfilehash: 28c97e1cb5dd329269a822be6b0b1f6f120a6b13
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75463727"
 ---
 # <a name="create-a-snapshot-from-a-vhd-to-create-multiple-identical-managed-disks-in-small-amount-of-time-with-powershell"></a>PowerShell で VHD からスナップショットを作成してまったく同じ複数のマネージド ディスクを短時間で作成する

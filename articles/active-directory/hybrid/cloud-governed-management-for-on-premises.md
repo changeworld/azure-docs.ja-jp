@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 510a5562740260eb2946ded074a5c37804c55375
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67109517"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>Azure AD がオンプレミスのワークロードに対してクラウド ガバナンス管理を提供する方法
@@ -115,6 +115,6 @@ Azure AD では、必要に応じて[ゲスト ユーザー用のアカウント
 
 ![Azure AD のアーキテクチャ](media/cloud-governed-management-for-on-premises/image6.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この体験の始め方の詳細については、<https://aka.ms/deploymentplans> にある Azure AD のデプロイ計画を参照してください。 Azure Active Directory (Azure AD) の機能をデプロイする方法についてのエンド ツー エンドのガイダンスが紹介されています。 各計画では、Azure AD の一般的な機能について、そのビジネス上の価値や、正しく展開するうえで必要な計画の考慮事項、設計、運用手順が説明されています。 Microsoft は、Azure AD を使用したクラウドからの管理に新機能を追加する際は、お客様のデプロイやその他のフィードバックから学んだベスト プラクティスを取り入れてデプロイ計画を継続的に更新します。

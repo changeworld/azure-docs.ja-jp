@@ -59,6 +59,8 @@
           href: container-instances-vnet.md
         - name: Azure Container Registry からのデプロイ
           href: container-instances-using-azure-container-registry.md
+        - name: GitHub Actions を使用したデプロイ (プレビュー)
+          href: container-instances-github-action.md
         - name: デプロイ データの暗号化
           href: container-instances-encrypt-data.md
         - name: 専用ホストへのデプロイ
@@ -83,6 +85,8 @@
           href: container-instances-gpu.md
         - name: サイドカーでの SSL エンドポイントの有効化
           href: container-instances-container-group-ssl.md
+        - name: 静的 IP アドレスの公開
+          href: container-instances-application-gateway.md
     - name: データ ボリュームのマウント
       items:
         - name: Azure ファイル共有

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: kumud
 ms.reviewer: anavin
-ms.openlocfilehash: 0429bf4968f457e201491db3df16f0004f216f30
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 6823514e284f75f0580578dcabaa1b1bdcbe2f59
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023278"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239834"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>仮想ネットワーク ピアリングの作成 - 異なるデプロイメント モデルとサブスクリプション
 
@@ -38,7 +38,7 @@ ms.locfileid: "77023278"
 
 仮想ネットワーク ピアリングは、[Azure Portal](#portal)、Azure [コマンド ライン インターフェイス](#cli) (CLI)、Azure [PowerShell](#powershell) のいずれかを使って作成できます。 いずれかのリンクをクリックすると、そのツールを使って仮想ネットワーク ピアリングを作成するための手順に直接移動します。
 
-## <a name="portal"></a>ピアリングの作成 - Azure Portal
+## <a name="create-peering---azure-portal"></a><a name="portal"></a>ピアリングの作成 - Azure Portal
 
 このチュートリアルでは、サブスクリプションごとに異なるアカウントを使用します。 両方のサブスクリプションへのアクセス許可を持つアカウントを使用している場合は、すべての手順で同じアカウントを使用し、ポータルからログアウトする手順と、他のユーザーのアクセス許可を仮想ネットワークに割り当てる手順はスキップできます。
 
@@ -93,7 +93,7 @@ ms.locfileid: "77023278"
 24. **省略可能**:このチュートリアルでは仮想マシンの作成について説明していませんが、それぞれの仮想ネットワークに仮想マシンを作成し、一方の仮想マシンからもう一方の仮想マシンに接続することで接続を検証することができます。
 25. **省略可能**:このチュートリアルで作成したリソースを削除するには、この記事の「[リソースの削除](#delete-portal)」セクションの手順を実行してください。
 
-## <a name="cli"></a>ピアリングの作成 - Azure CLI
+## <a name="create-peering---azure-cli"></a><a name="cli"></a>ピアリングの作成 - Azure CLI
 
 このチュートリアルでは、サブスクリプションごとに異なるアカウントを使用します。 両方のサブスクリプションへのアクセス許可を持つアカウントを使用している場合は、すべての手順で同じアカウントを使用し、Azure からログアウトする手順をスキップして、ユーザー ロールの割り当てを作成するスクリプト行を削除できます。 次のすべてのスクリプトの UserA@azure.com と UserB@azure.com を、UserA と UserB で使用しているユーザー名に置き換えます。 Azure クラシック CLI と Azure CLI を使用して、次の手順を完了します。 次の手順のいずれかで **[試してみる]** ボタンを選択するだけで、または[クラシック CLI](/cli/azure/install-classic-cli) と [CLI](/cli/azure/install-azure-cli) をインストールし、ローカル コンピューター上のコマンドを実行すると、Azure Cloud Shell からの手順を行うことができます。
 
@@ -101,9 +101,10 @@ ms.locfileid: "77023278"
 2. `azure config mode asm` コマンドを入力して、サービス管理モードでクラシック CLI を実行します。
 3. 次のクラシック CLI コマンドを入力して、仮想ネットワーク (クラシック) を作成します。
 
-    ```azurecli
+    ```console
     azure network vnet create --vnet myVnetB --address-space 10.1.0.0 --cidr 16 --location "East US"
     ```
+
 4. 残りの手順は、bash シェルと (クラシック CLI ではなく) Azure CLI を使用して、行う必要があります。
 5. PC で次のスクリプトをテキスト エディターにコピーします。 `<SubscriptionB-Id>` は、サブスクリプション ID で置き換えてください。 サブスクリプション ID がわからない場合は、`az account show` コマンドを入力します。 出力された **id** の値がサブスクリプション ID です。変更後のスクリプトをコピーし、CLI セッションに貼り付けて、`Enter` キーを押します。
 
@@ -170,6 +171,7 @@ ms.locfileid: "77023278"
       --vnet-name myVnetA \
       --output table
     ```
+
     出力の **PeeringState** 列に **Connected** と表示されます。
 
     2 つの仮想ネットワークに作成した Azure リソースが、その IP アドレスを使用して相互に通信できるようになりました。 仮想ネットワークに Azure の既定の名前解決を使用する場合、そのネットワーク内のリソースは、通信相手の仮想ネットワークに対して名前を解決することができません。 ピアリングされた仮想ネットワークの間で名前を解決する必要がある場合は、独自の DNS サーバーを作成する必要があります。 その方法については、「[独自 DNS サーバー使用の名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)」を参照してください。
@@ -177,7 +179,7 @@ ms.locfileid: "77023278"
 10. **省略可能**:このチュートリアルでは仮想マシンの作成について説明していませんが、それぞれの仮想ネットワークに仮想マシンを作成し、一方の仮想マシンからもう一方の仮想マシンに接続することで接続を検証することができます。
 11. **省略可能**:このチュートリアルで作成したリソースを削除するには、この記事の「[リソースの削除](#delete-cli)」の手順を実行してください。
 
-## <a name="powershell"></a>ピアリングの作成 - PowerShell
+## <a name="create-peering---powershell"></a><a name="powershell"></a>ピアリングの作成 - PowerShell
 
 このチュートリアルでは、サブスクリプションごとに異なるアカウントを使用します。 両方のサブスクリプションへのアクセス許可を持つアカウントを使用している場合は、すべての手順で同じアカウントを使用し、Azure からログアウトする手順をスキップして、ユーザー ロールの割り当てを作成するスクリプト行を削除できます。 次のすべてのスクリプトの UserA@azure.com と UserB@azure.com を、UserA と UserB で使用しているユーザー名に置き換えます。 
 
@@ -204,8 +206,8 @@ ms.locfileid: "77023278"
 
 5. Resource Manager コマンドを使用するために、`Connect-AzAccount` コマンドを入力して、UserB のサブスクリプションに UserB としてログインします。
 6. UserA のアクセス許可を仮想ネットワーク B に割り当てます。PC で次のスクリプトをテキスト エディターにコピーして、`<SubscriptionB-id>` をサブスクリプション B の ID で置き換えます。サブスクリプション ID がわからない場合は、`Get-AzSubscription` コマンドを入力して確認します。 返された出力の **id** の値がサブスクリプション ID です。 手順 4. で作成した仮想ネットワーク (クラシック) は、*Default-Networking* という名前のリソース グループに作成されました。 スクリプトを実行するには、変更後のスクリプトをコピーし、PowerShell に貼り付けて、`Enter` キーを押します。
-    
-    ```powershell 
+
+    ```powershell
     New-AzRoleAssignment `
       -SignInName UserA@azure.com `
       -RoleDefinitionName "Classic Network Contributor" `
@@ -267,10 +269,10 @@ ms.locfileid: "77023278"
 12. **省略可能**:このチュートリアルでは仮想マシンの作成について説明していませんが、それぞれの仮想ネットワークに仮想マシンを作成し、一方の仮想マシンからもう一方の仮想マシンに接続することで接続を検証することができます。
 13. **省略可能**:このチュートリアルで作成したリソースを削除するには、この記事の「[リソースの削除](#delete-powershell)」の手順を実行してください。
 
-## <a name="delete"></a>リソースの削除
+## <a name="delete-resources"></a><a name="delete"></a>リソースの削除
 このチュートリアルが完了したら、使用料がかからないように、チュートリアルで作成したリソースを削除することをお勧めします。 リソース グループを削除すると、リソース グループ内にあるリソースもすべて削除されます。
 
-### <a name="delete-portal"></a>Azure Portal
+### <a name="azure-portal"></a><a name="delete-portal"></a>Azure Portal
 
 1. ポータルの検索ボックスに、「**myResourceGroupA**」と入力します。 検索結果で、**myResourceGroupA** をクリックします。
 2. **myResourceGroupA** のブレードで、 **[削除]** アイコンをクリックします。
@@ -279,7 +281,7 @@ ms.locfileid: "77023278"
 5. **[myVnetB]** ブレードで、 **[削除]** をクリックします。
 6. 削除を確定するには、 **[仮想ネットワークの削除]** ボックスで **[はい]** をクリックします。
 
-### <a name="delete-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a name="delete-cli"></a>Azure CLI
 
 1. CLI を使用して Azure にログインし、次のコマンドで仮想ネットワーク (Resource Manager) を削除します。
 
@@ -289,13 +291,13 @@ ms.locfileid: "77023278"
 
 2. クラシック CLI を使用して Azure にサインインし、次のコマンドで仮想ネットワーク (クラシック) を削除します。
 
-   ```azurecli-interactive
+   ```console
    azure config mode asm
 
    azure network vnet delete --vnet myVnetB --quiet
    ```
 
-### <a name="delete-powershell"></a>PowerShell
+### <a name="powershell"></a><a name="delete-powershell"></a>PowerShell
 
 1. PowerShell コマンド プロンプトで、次のコマンドを入力して、仮想ネットワーク (Resource Manager) を削除します。
 

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 2f0b8cac2cc26b2fab7255a7e7587985a5425485
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: fafc5234da3e6dfecdae2c8b2e2ba80cbed20b5c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566201"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80244803"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-python"></a>クイック スタート:Computer Vision 2.0 および 2.1 の REST API と Python を使用して、印刷されたテキストと手書きテキストを抽出する
 
@@ -65,6 +65,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. プロンプトで、`python` コマンドを使用してサンプルを実行します。 たとえば、「 `python get-text.py` 」のように入力します。
 
 ```python
+import os
+import sys
 import requests
 import time
 # If you are using a Jupyter notebook, uncomment the following line.

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: ef5180aae04f71f3bbe6fbcd7d3df393b107be35
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: eac1f53d35f8175da814dba6172edc12f9e1a063
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448808"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80238940"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-ruby"></a>クイック スタート:Bing Autosuggest REST API と Ruby で検索クエリの候補を表示する
 
@@ -151,7 +151,7 @@ ms.locfileid: "75448808"
 > [!div class="nextstepaction"]
 > [単一ページの Web アプリの作成](../tutorials/autosuggest.md)
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - [Bing Autosuggest とは](../get-suggested-search-terms.md)
 - [Bing Autosuggest API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

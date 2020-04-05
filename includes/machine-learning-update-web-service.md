@@ -2,14 +2,14 @@
 author: Blackmist
 ms.service: machine-learning
 ms.topic: include
-ms.date: 01/10/2019
+ms.date: 03/16/2020
 ms.author: larryfr
-ms.openlocfilehash: 469d87a828df19ca30260cada9dcea43859be9e0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: d36bf2db05113656a77e76ff900d95910f313c73
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75901676"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477257"
 ---
 Web サービスを更新するには、`update` メソッドを使用します。 推論の構成で指定できる新しいモデル、新しいエントリ スクリプト、または新しい依存関係を使用するように Web サービスを更新することができます。 詳細については、[Webservice.update](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#update--args-) のドキュメントを参照してください。
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/9/2019
 ms.author: tvoellm
 ms.openlocfilehash: 03cad9e4c3752b5f35be785a6280bf18aaa14860
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74980020"
 ---
 # <a name="restrict-user-access-to-data-operations-only"></a>ユーザー アクセスをデータ操作のみに制限する
@@ -92,7 +92,7 @@ $cdba.Properties.disableKeyBasedMetadataWriteAccess="True"
 $cdba | Set-AzResource -Force
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Cosmos DB のロールベースのアクセス制御](role-based-access-control.md)に関する詳細情報
 - [Cosmos DB 内のデータへのセキュリティで保護されたアクセス](secure-access-to-data.md)の概要

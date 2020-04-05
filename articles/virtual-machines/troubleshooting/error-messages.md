@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
 ms.openlocfilehash: f5639d1cf94c77d699dc6de9841698b045ac1f96
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76543020"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>Azure で仮想マシンを管理するときに発生する一般的なエラー メッセージについて説明します
@@ -69,7 +69,7 @@ Azure VM では、エラー応答に次の JSON 形式を使用します。
 |  BadRequest  |  操作 '{0}' はマネージド ディスクを使用するリソース '{1}' ではサポートされていません。  |
 |  CertificateImproperlyFormatted  |  {0} から取得したシークレットの JSON 表現には、適切にフォーマットされた PFX ファイルではないデータ フィールドが含まれているか、指定されたパスワードでは PFX ファイルを正しくデコードできません。  |
 |  CertificateImproperlyFormatted  |  {0} から取得したデータは JSON に逆シリアル化できません。  |
-|  競合  |  ディスクのサイズ変更が許可されているのは、VM の作成時と VM の割り当て解除時のみです。  |
+|  Conflict  |  ディスクのサイズ変更が許可されているのは、VM の作成時と VM の割り当て解除時のみです。  |
 |  ConflictingUserInput  |  ディスク '{0}' は VM '{1}' に既に所有されているのでアタッチできません。  |
 |  ConflictingUserInput  |  ソースとターゲットのリソース グループが同じです。  |
 |  ConflictingUserInput  |  ディスク {0} のソースとターゲットのストレージ アカウントが異なります。  |

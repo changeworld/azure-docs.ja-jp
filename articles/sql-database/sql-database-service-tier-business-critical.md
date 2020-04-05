@@ -12,11 +12,11 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 12/04/2018
 ms.openlocfilehash: fc328c34c1543a75fdc885087d44b28e24c0850a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818244"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232455"
 ---
 # <a name="business-critical-tier---azure-sql-database"></a>Business Critical レベル - Azure SQL Database
 
@@ -57,7 +57,7 @@ General Purpose レベルではなく、Business Critical サービス レベル
 - 高可用性。Multi-AZ 構成の Business Critical レベルでは、General Purpose レベルの 99.99% と比較して、99.995% の高可用性が保証されます。
 - 高速 geo リカバリー。geo レプリケーションが構成された Business Critical レベルには、展開されている時間、5 秒の回復ポイントの目標 (RPO) と 30 秒の回復時刻の目標 (RTO) が 100% 保証されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Managed Instance](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) の Business Critical レベル、[仮想コア モデル](sql-database-vcore-resource-limits-single-databases.md#business-critical---provisioned-compute---gen4)または [DTU モデル](sql-database-dtu-resource-limits-single-databases.md#premium-service-tier)の単一データベース、[仮想コア モデル](sql-database-vcore-resource-limits-elastic-pools.md#business-critical---provisioned-compute---gen4)および [DTU モデル](sql-database-dtu-resource-limits-elastic-pools.md#premium-elastic-pool-limits)のエラスティック プールのリソース特性 (コア数、IO、メモリ) を確認します。
 - [General Purpose](sql-database-service-tier-general-purpose.md) レベルと [Hyperscale](sql-database-service-tier-hyperscale.md) レベルについて学びます。

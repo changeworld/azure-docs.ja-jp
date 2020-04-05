@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: ab3c40ee408498453bb137c63c440d980b0b7255
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74974514"
 ---
 # <a name="configure-asset-delivery-policies-with-net-sdk"></a>.NET SDK を使用して資産配信ポリシーを構成する
@@ -199,9 +199,9 @@ AssetDeliveryPolicy を作成する際に指定できる値については、 [A
     }
 ```
 
-## <a id="types"></a>AssetDeliveryPolicy の定義に使用する種類
+## <a name="types-used-when-defining-assetdeliverypolicy"></a><a id="types"></a>AssetDeliveryPolicy の定義に使用する種類
 
-### <a id="AssetDeliveryProtocol"></a>AssetDeliveryProtocol
+### <a name="assetdeliveryprotocol"></a><a id="AssetDeliveryProtocol"></a>AssetDeliveryProtocol
 
 次の enum は、資産配信プロトコルに対して設定できる値を表しています。
 
@@ -237,7 +237,7 @@ AssetDeliveryPolicy を作成する際に指定できる値については、 [A
         All = 0xFFFF
     }
 ```
-### <a id="AssetDeliveryPolicyType"></a>AssetDeliveryPolicyType
+### <a name="assetdeliverypolicytype"></a><a id="AssetDeliveryPolicyType"></a>AssetDeliveryPolicyType
 
 次の enum は、資産配信ポリシーに対して設定できる値を表しています。  
 ```csharp
@@ -270,7 +270,7 @@ AssetDeliveryPolicy を作成する際に指定できる値については、 [A
         DynamicCommonEncryption
         }
 ```
-### <a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
+### <a name="contentkeydeliverytype"></a><a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
 
 次の enum は、クライアントへのコンテンツ キーの配信方法を構成するときに使用できる値を表しています。
   ```csharp  
@@ -302,7 +302,7 @@ AssetDeliveryPolicy を作成する際に指定できる値については、 [A
 
     }
 ```
-### <a id="AssetDeliveryPolicyConfigurationKey"></a>AssetDeliveryPolicyConfigurationKey
+### <a name="assetdeliverypolicyconfigurationkey"></a><a id="AssetDeliveryPolicyConfigurationKey"></a>AssetDeliveryPolicyConfigurationKey
 
 次の enum は、資産配信ポリシーの特定の構成を取得するためのキーを構成するときに設定できる値を表しています。
 ```csharp
@@ -352,7 +352,7 @@ AssetDeliveryPolicy を作成する際に指定できる値については、 [A
 
 ## <a name="additional-notes"></a>その他のメモ
 
-* Widevine は Google Inc. が提供するサービスで、Google Inc. のサービス利用規約とプライバシー ポリシーが適用されます。
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

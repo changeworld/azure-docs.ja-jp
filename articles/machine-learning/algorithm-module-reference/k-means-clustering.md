@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/19/2020
 ms.openlocfilehash: 9606768288cc74afc24491149eb471944f45e2dc
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77921166"
 ---
 # <a name="module-k-means-clustering"></a>モジュール:K-Means クラスタリング
@@ -107,7 +107,7 @@ K-Means は、最も単純であり、よく知られている "*教師なし*" 
   
     -   **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合、[Train Clustering Model (クラスタリング モデルのトレーニング)](train-clustering-model.md) モジュールを使用することで、タグ付けしたデータセットを追加してモデルをトレーニングします。  
   
-## <a name="results"></a>[結果]
+## <a name="results"></a>結果
 
 モデルの構成とトレーニングが完了したら、スコアの生成に使用できるモデルは完成です。 しかし、モデルのトレーニングには複数の方法があり、結果を表示して使用するには複数の方法があります。 
 

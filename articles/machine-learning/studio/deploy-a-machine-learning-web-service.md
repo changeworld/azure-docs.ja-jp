@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 482dc0ab549ec6b9f05bc9f74a3d31ac13646ce5
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 6c81e50560de69f7702e852d4602680fde7f01f3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169199"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218141"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (クラシック) Web サービスをデプロイする
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Azure Machine Learning Studio (クラシック) を使用すると、予測分析ソリューションを構築してテストできます。 その後、Web サービスとしてソリューションをデプロイできます。
 
@@ -123,7 +125,7 @@ Machine Learning Studio (クラシック) Web サービスへのアクセスの�
 
 Machine Learning Studio (クラシック) Web サービス ポータルを使用して新しい Web サービスを管理できます。 [メイン ポータル ページ](https://services.azureml.net/) で **[Web サービス]** をクリックします。 Web サービスのページでは、サービスを削除したり、コピーしたりすることができます。 特定のサービスを監視するには、サービスをクリックし、 **[ダッシュボード]** をクリックします。 Web サービスに関連付けられたバッチ ジョブを監視するには、 **[Batch Request Log (バッチ要求ログ)]** をクリックします。
 
-### <a id="multi-region"></a>複数のリージョンへの新しい Web サービスのデプロイ
+### <a name="deploy-your-new-web-service-to-multiple-regions"></a><a id="multi-region"></a>複数のリージョンへの新しい Web サービスのデプロイ
 
 複数のサブスクリプションやワークスペースがなくても、複数のリージョンに新しい Web サービスを簡単にデプロイできます。
 

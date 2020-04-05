@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: diberry
 ms.openlocfilehash: cd646ef061a0be06a9b1a56b72a4f35d9796aa63
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75447829"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>チュートリアル:コンテキストが関連するデータを発話から抽出する
@@ -53,7 +53,7 @@ ms.locfileid: "75447829"
 
 1. **[新しいアプリの作成]** を選択し、名前に「`HumanResources`」を入力して、既定のカルチャである **[英語]** はそのままにします。 説明は空のままにします。
 
-1. **[完了]** を選択します。
+1. **[Done]** を選択します。
 
 ## <a name="create-an-intent-to-move-employees-between-cities"></a>従業員を都市間で移動させる意図を作成する
 

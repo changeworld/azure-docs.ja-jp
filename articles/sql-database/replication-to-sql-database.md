@@ -12,11 +12,11 @@ ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 01/25/2019
 ms.openlocfilehash: f718bc17b987926f4324635f096d5983acdb63fc
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997277"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228699"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>SQL Database の単一およびプールされたデータベースへのレプリケーション
 
@@ -28,7 +28,7 @@ Azure SQL Database の [SQL Database サーバー](sql-database-servers.md)で�
 - Azure SQL データベースは、SQL Server パブリッシャーのプッシュ サブスクライバーである必要があります。  
 - ディストリビューション データベースとレプリケーション エージェントは、Azure SQL データベースに配置できません。  
 - スナップショットおよび一方向のトランザクション レプリケーションがサポートされています。 ピア ツー ピア トランザクション レプリケーションおよびマージ レプリケーションはサポートされていません。
-- Azure SQL Database Managed Instance のパブリック プレビューでレプリケーションを使用できます。 マネージド インスタンスでは、パブリッシャー、ディストリビューター、およびサブスクライバー データベースをホストできます。 詳細については、「[Replication with SQL Database Managed Instance (SQL Database Managed Instance でのレプリケーション)](replication-with-sql-database-managed-instance.md)」を参照してください。
+- レプリケーションは、Azure SQL Database Managed Instance のパブリック プレビューで使用できます。 マネージド インスタンスでは、パブリッシャー、ディストリビューター、およびサブスクライバー データベースをホストできます。 詳細については、「[Replication with SQL Database Managed Instance (SQL Database Managed Instance でのレプリケーション)](replication-with-sql-database-managed-instance.md)」を参照してください。
 
 ## <a name="versions"></a>バージョン  
 
@@ -54,7 +54,7 @@ Azure SQL Database のすべての機能を使用するには、最新バージ�
 - SQL Server 上の単一パブリケーションで、Azure SQL Database と、SQL Server (オンプレミスの SQL Server と Azure 仮想マシンの SQL Server) の両方のサブスクライバーをサポートできます。  
 - レプリケーションの管理、監視、およびトラブルシューティングは、オンプレミスの SQL Server から実行する必要があります。  
 - Azure SQL Database へのプッシュ サブスクリプションのみがサポートされています。  
-- SQL Database については、**sp_addsubscription** で `@subscriber_type = 0` のみがサポートされています。  
+- SQL Database については、`@subscriber_type = 0`sp_addsubscription**で** のみがサポートされています。  
 - Azure SQL Database では、双方向、即時、更新可能、またはピア ツー ピアのレプリケーションはサポートされていません。
 
 ## <a name="replication-architecture"></a>レプリケーション アーキテクチャ  
@@ -111,7 +111,7 @@ Azure SQL Database のすべての機能を使用するには、最新バージ�
 - [パブリケーションを作成する](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [プッシュ サブスクリプションを作成する](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)。Azure SQL Database サーバー名をサブスクライバーとして (**N'azuresqldbdns.database.windows.net'** など)、また、Azure SQL データベース名を宛先データベースとして (**AdventureWorks** など) 使用します。  
 
-## <a name="see-also"></a>関連項目  
+## <a name="see-also"></a>参照  
 
 - [トランザクション レプリケーション](sql-database-managed-instance-transactional-replication.md)
 - [パブリケーションを作成する](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)

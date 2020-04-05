@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
 ms.openlocfilehash: ba516a548fc8385ca86526a7f2dd082b27e53208
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77211448"
 ---
 ## <a name="general-entity-types"></a>一般エンティティの種類:

@@ -17,10 +17,10 @@ ms.date: 09/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fae7b80fd4d2fcec32bbef5e4cdf18e576412a86
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74231973"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sugar-crm"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Sugar CRM の統合
@@ -159,7 +159,7 @@ Sugar CRM に対する Azure AD SSO を構成してテストするには、次�
 
 1. **[SAML Authentication]** セクションで、次の手順に従います。
 
-    ![SAML 認証](./media/sugarcrm-tutorial/ic795891.png "SAML 認証")  
+    ![SAML 認証](./media/sugarcrm-tutorial/ic795891.png "[SAML 認証]")  
 
     a. **[ログイン URL]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
   
@@ -167,7 +167,7 @@ Sugar CRM に対する Azure AD SSO を構成してテストするには、次�
   
     c. base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、証明書全体を **[X.509 Certificate]** テキスト ボックスに貼り付けます。
   
-    d. **[Save]** をクリックします。
+    d. **[保存]** をクリックします。
 
 ### <a name="create-sugar-crm-test-user"></a>Sugar CRM テスト ユーザーの作成
 
@@ -203,7 +203,7 @@ Azure AD ユーザーが Sugar CRM にサインインできるようにするに
 
     a. 該当するテキスト ボックスにパスワードを入力します。
 
-    b. **[Save]** をクリックします。
+    b. **[保存]** をクリックします。
 
 > [!NOTE]
 > 他の Sugar CRM ユーザー アカウント作成ツールや、Sugar CRM から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。

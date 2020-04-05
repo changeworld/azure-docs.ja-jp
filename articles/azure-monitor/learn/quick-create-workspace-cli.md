@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2019
 ms.openlocfilehash: 89d397574c423e28bcbb0fec5ddd45959a737a93
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77659885"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Azure CLI 2.0 を使用して Log Analytics ワークスペースを作成する

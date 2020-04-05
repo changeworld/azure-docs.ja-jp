@@ -16,10 +16,10 @@ ms.date: 02/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 007e8d87c670376ad334c1c4e58fd93995930b78
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77616262"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための SAP ASE Azure Virtual Machines DBMS のデプロイ
@@ -83,7 +83,7 @@ SAP ソリューション マネージャーなど、データベース サイ�
 | 構成 | Windows | Linux | 説明 |
 | --- | --- | --- | --- |
 | VM の種類 | E4s_v3 (4 vCPU/32 GB RAM) | E4s_v3 (4 vCPU/32 GB RAM) | --- |
-| 高速ネットワーク | [有効化] | [有効化] | ---|
+| 高速ネットワーク | 有効化 | 有効化 | ---|
 | SAP ASE のバージョン | 16.3 PL 7 以降 | 16.3 PL 7 以降 | --- |
 | データ デバイスの数 | 4 | 4 | ---|
 | ログ デバイスの数 | 1 | 1 | --- |
@@ -104,7 +104,7 @@ SAP ソリューション マネージャーなど、データベース サイ�
 | 構成 | Windows | Linux | 説明 |
 | --- | --- | --- | --- |
 | VM の種類 | E16s_v3 (16 vCPU/128 GB RAM) | E16s_v3 (16 vCPU/128 GB RAM) | --- |
-| 高速ネットワーク | [有効化] | [有効化] | ---|
+| 高速ネットワーク | 有効化 | 有効化 | ---|
 | SAP ASE のバージョン | 16.3 PL 7 以降 | 16.3 PL 7 以降 | --- |
 | データ デバイスの数 | 8 | 8 | ---|
 | ログ デバイスの数 | 1 | 1 | --- |
@@ -124,7 +124,7 @@ SAP ソリューション マネージャーなど、データベース サイ�
 | 構成 | Windows | Linux | 説明 |
 | --- | --- | --- | --- |
 | VM の種類 | E64s_v3 (64 vCPU/432 GB RAM) | E64s_v3 (64 vCPU/432 GB RAM) | --- |
-| 高速ネットワーク | [有効化] | [有効化] | ---|
+| 高速ネットワーク | 有効化 | 有効化 | ---|
 | SAP ASE のバージョン | 16.3 PL 7 以降 | 16.3 PL 7 以降 | --- |
 | データ デバイスの数 | 16 | 16 | ---|
 | ログ デバイスの数 | 1 | 1 | --- |
@@ -145,7 +145,7 @@ SAP ソリューション マネージャーなど、データベース サイ�
 | 構成 | Windows | Linux | 説明 |
 | --- | --- | --- | --- |
 | VM の種類 | M-Series (1.0 - 4.0 TB の RAM)  | M-Series (1.0 - 4.0 TB の RAM) | --- |
-| 高速ネットワーク | [有効化] | [有効化] | ---|
+| 高速ネットワーク | 有効化 | 有効化 | ---|
 | SAP ASE のバージョン | 16.3 PL 7 以降 | 16.3 PL 7 以降 | --- |
 | データ デバイスの数 | 32 | 32 | ---|
 | ログ デバイスの数 | 1 | 1 | --- |

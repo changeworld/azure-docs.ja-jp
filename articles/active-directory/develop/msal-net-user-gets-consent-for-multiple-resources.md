@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 94c9a2b6a46262ad293da9ca3ba493d6f898c870
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77085843"
 ---
 # <a name="user-gets-consent-for-several-resources-using-msalnet"></a>ユーザーによる MSAL.NET を使用した複数リソースの承認の取得
@@ -31,7 +31,7 @@ Microsoft ID プラットフォーム エンドポイントは、ユーザーが
 - https:\//mytenant.onmicrosoft.com/customerapi (2 つのスコープ: `customer.read` と `customer.write`)
 - https:\//mytenant.onmicrosoft.com/vendorapi (2 つのスコープ: `vendor.read` と `vendor.write`)
 
-次の例に示すように、*extraScopesToConsent* パラメーターを指定した `.WithExtraScopeToConsent` 修飾子を使用する必要があります。
+次の例に示すように、`.WithExtraScopeToConsent`extraScopesToConsent*パラメーターを指定した* 修飾子を使用する必要があります。
 
 ```csharp
 string[] scopesForCustomerApi = new string[]

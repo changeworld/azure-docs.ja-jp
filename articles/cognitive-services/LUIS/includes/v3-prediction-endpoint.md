@@ -8,18 +8,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: bc6e43faca47e360daa8214e6b9f6e9df4a2f130
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 23e7f88b23ac7af7470183877eeb1be89e79779c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495352"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80287749"
 ---
-1. LUIS ポータルで、[Manage]\(管理\) セクション (右上のメニュー) の [Keys and endpoints]\(キーとエンドポイント\) ページ (左側のメニュー) で、ページの下部にあるエンドポイント URL を選択します。
+1. LUIS ポータルの **[管理]** セクション (右上メニュー) の **[Azure リソース]** ページ (左メニュー) の **[Prediction Resources]** \(予測リソース\) タブのページ下部の **example Query**\(サンプル クエリ\) をコピーします。
 
-    ブラウザー タブが開き、アドレス バーにエンドポイント URL が表示されます。
+    この URL を新しいブラウザー タブに貼り付けます。
 
     URL には、アプリ ID、キー、およびスロット名が含まれます。 V3 予測エンドポイント URL は次のようになります。
 
-    `https://REGION.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/APP-ID/slots/SLOT-NAME/predict?subscription-key=YOUR-KEY&<optional-name-value-pairs>&query=UTTERANCE-TEXT.`
+    `https://REGION.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/APP-ID/slots/SLOT-NAME/predict?subscription-key=YOUR-KEY&<optional-name-value-pairs>&query=YOUR_QUERY_HERE`
 

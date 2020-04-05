@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 1c05956f83ad3a6491627be8916fac2c8be2b7ff
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77084939"
 ---
 # <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>MSAL.js を使用して認証要求内でカスタムの状態を渡す

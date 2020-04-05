@@ -7,10 +7,10 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 495877f1c839de2cf3583a37180054c91bd9f139
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76907222"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Azure Logic Apps での実行状態の監視、トリガー履歴の確認、アラートの設定

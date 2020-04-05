@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: ef8acf1c3c9211168ebacc8d62647f6789c745a2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60630611"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>StorSimple モニタリング インジケーターを使用してデバイスを管理する
@@ -56,12 +56,12 @@ StorSimple デバイスには、StorSimple デバイスの各モジュールお�
 | システム電源 | モジュール障害 | 論理的な障害 | アラーム | Status |
 | --- | --- | --- | --- | --- |
 | レッドアンバー |OFF |OFF |該当なし |AC 電源が喪失し、バックアップ電源で動作しているか、または AC 電源がオンで、コントローラー モジュールが取り外されています。 |
-| 緑 |ON |ON |該当なし |OPS パネル パワー オン (5s) テスト状態 |
-| 緑 |OFF |OFF |該当なし |電源オン、すべての機能が正常 |
-| 緑 |ON |該当なし |PCM 障害 LED、ファン障害 LED |PCM 障害、ファン障害、温度の上限または下限を超過 |
-| 緑 |ON |該当なし |I/O モジュール LED |コントローラー モジュールの障害 |
-| 緑 |ON |該当なし |該当なし |エンクロージャ ロジック障害 |
-| 緑 |点滅 |該当なし |モジュール状態 LED (コントローラー モジュール上)。 PCM 障害 LED、ファン障害 LED |不明なタイプのコントローラー モジュールの設置、I2C バス障害、コントローラー モジュールの重要製品データ (VPD) の構成エラー |
+| [緑] |ON |ON |該当なし |OPS パネル パワー オン (5s) テスト状態 |
+| [緑] |OFF |OFF |該当なし |電源オン、すべての機能が正常 |
+| [緑] |ON |該当なし |PCM 障害 LED、ファン障害 LED |PCM 障害、ファン障害、温度の上限または下限を超過 |
+| [緑] |ON |該当なし |I/O モジュール LED |コントローラー モジュールの障害 |
+| [緑] |ON |該当なし |該当なし |エンクロージャ ロジック障害 |
+| [緑] |点滅 |該当なし |モジュール状態 LED (コントローラー モジュール上)。 PCM 障害 LED、ファン障害 LED |不明なタイプのコントローラー モジュールの設置、I2C バス障害、コントローラー モジュールの重要製品データ (VPD) の構成エラー |
 
 ## <a name="power-cooling-module-pcm-indicator-leds"></a>電源冷却モジュール (PCM) インジケーター LED
 電源冷却モジュール (PCM) インジケーターの LED は、各 PCM モジュール上の主エンクロージャまたは EBOD エンクロージャの背面にあります。 このトピックでは、次の LED を使用して、StorSimple デバイスの状態を監視する方法について説明します。  
@@ -200,7 +200,7 @@ StorSimple デバイスは、主エンクロージャと EBOD エンクロージ
 次の表に、各種のアラーム状態を説明します。  
 
 ### <a name="alarm-states"></a>アラーム状態
-| アラーム状態 | Action | ミュート ボタンが押された場合のアクション |
+| アラーム状態 | アクション | ミュート ボタンが押された場合のアクション |
 | --- | --- | --- |
 | S0 |通常モード: サイレント |ビープ音が 2 度鳴る |
 | S1 |障害モード: 1 秒点灯、1 秒消灯 |S2 または S3 への移行 (注を参照) |
@@ -241,7 +241,7 @@ StorSimple デバイスは、主エンクロージャと EBOD エンクロージ
 | ドライブが取り外されている |警告 |なし |モジュール障害 |
 | 電力供給が不十分である |警告 |なし |モジュール障害 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [StorSimple ハードウェア コンポーネントと状態](storsimple-8000-monitor-hardware-status.md)の詳細を確認します。
 
 [1]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE01.png

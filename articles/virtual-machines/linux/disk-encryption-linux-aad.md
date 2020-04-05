@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: ee365d37a957350fa8a68da0f34149d3210d6238
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78970619"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Linux VM で Azure AD を使用して Azure Disk Encryption を有効にする (以前のリリース)
@@ -36,7 +36,7 @@ Azure Disk Encryption の新しいリリースでは、VM ディスク暗号化�
 
  
 
-## <a name="bkmk_RunningLinux"> </a> 既存または実行中の IaaS Linux VM で暗号化を有効にする
+## <a name="enable-encryption-on-an-existing-or-running-iaas-linux-vm"></a><a name="bkmk_RunningLinux"> </a> 既存または実行中の IaaS Linux VM で暗号化を有効にする
 
 このシナリオでは、Azure Resource Manager テンプレート、PowerShell コマンドレット、または Azure CLI コマンドを使用して、暗号化を有効にすることができます。 
 
@@ -46,7 +46,7 @@ Azure Disk Encryption の新しいリリースでは、VM ディスク暗号化�
 >暗号化を有効または無効にすると、VM が再起動する場合があります。 
 >
 
-### <a name="bkmk_RunningLinuxCLI"> </a>Azure CLI を使用して既存または実行中の Linux VM で暗号化を有効にする 
+### <a name="enable-encryption-on-an-existing-or-running-linux-vm-by-using-the-azure-cli"></a><a name="bkmk_RunningLinuxCLI"> </a>Azure CLI を使用して既存または実行中の Linux VM で暗号化を有効にする 
 暗号化された VHD でのディスク暗号化は、[Azure CLI 2.0](/cli/azure) コマンドライン ツールをインストールして使用することで有効化できます。 これは、[Azure Cloud Shell](../../cloud-shell/overview.md) を使用してブラウザーで使用することも、ローカル コンピューターにインストールして PowerShell セッションで使用することもできます。 Azure 内にある既存または実行中の IaaS Linux VM で暗号化を有効にするには、次の CLI コマンドを使用します。
 
 [az vm encryption enable](/cli/azure/vm/encryption#az-vm-encryption-enable) コマンドを使用して、Azure で実行中の IaaS 仮想マシンで暗号化を有効にします。
@@ -78,7 +78,7 @@ Azure Disk Encryption の新しいリリースでは、VM ディスク暗号化�
          az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type DATA
      ```
 
-### <a name="bkmk_RunningLinuxPSH"> </a> PowerShell を使用して既存または実行中の Linux VM で暗号化を有効にする
+### <a name="enable-encryption-on-an-existing-or-running-linux-vm-by-using-powershell"></a><a name="bkmk_RunningLinuxPSH"> </a> PowerShell を使用して既存または実行中の Linux VM で暗号化を有効にする
 [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) コマンドレットを使用して、Azure で実行中の IaaS 仮想マシンで暗号化を有効にします。 ディスクを暗号化する前に、[スナップショット](snapshot-copy-managed-disk.md)の作成または [Azure Backup](../../backup/backup-azure-vms-encryption.md) で VM のバックアップの作成、あるいはその両方を行います。 実行中の Linux VM を暗号化するために、PowerShell スクリプトで -skipVmBackup パラメーターが既に指定されています。
 
 - **クライアント シークレットを使用して実行中の VM を暗号化する:** 以下のスクリプトでは変数を初期化し、Set-AzVMDiskEncryptionExtension コマンドレットを実行します。 前提条件として、リソース グループ、VM、キー コンテナー、Azure AD アプリ、およびクライアント シークレットが既に作成されている必要があります。 MyVirtualMachineResourceGroup、MyKeyVaultResourceGroup、MySecureVM、MySecureVault、My-AAD-client-ID、My-AAD-client-secret をそれぞれ実際の値に置き換えます。 -VolumeType parameter を変更し、暗号化するディスクを指定します。
@@ -132,7 +132,7 @@ Azure Disk Encryption の新しいリリースでは、VM ディスク暗号化�
      ```
 
 
-### <a name="bkmk_RunningLinux"> </a> テンプレートを使用して既存または実行中の IaaS Linux VM で暗号化を有効にする
+### <a name="enable-encryption-on-an-existing-or-running-iaas-linux-vm-with-a-template"></a><a name="bkmk_RunningLinux"> </a> テンプレートを使用して既存または実行中の IaaS Linux VM で暗号化を有効にする
 
 Azure 内にある既存または実行中の IaaS Linux VM でのディスク暗号化は、[Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm)を使用して有効化できます。
 
@@ -155,7 +155,7 @@ Azure 内にある既存または実行中の IaaS Linux VM でのディスク�
 
 
 
-## <a name="bkmk_EFA"> </a>Linux IaaS VM 上のデータ ディスクに対して EncryptFormatAll 機能を使用する
+## <a name="use-the-encryptformatall-feature-for-data-disks-on-linux-iaas-vms"></a><a name="bkmk_EFA"> </a>Linux IaaS VM 上のデータ ディスクに対して EncryptFormatAll 機能を使用する
 EncryptFormatAll パラメーターを使用すると、Linux データ ディスクを暗号化する時間が短縮されます。 特定の条件を満たすパーティションが (現在のファイル システムで) フォーマットされます。 続いて、コマンドの実行前にそれらが元の場所に再マウントされます。 条件を満たすデータ ディスクを除外する場合は、コマンドの実行前にそのディスクをマウント解除できます。
 
  このコマンドを実行すると、あらかじめマウントされたドライブがフォーマットされます。 その後、空になったドライブ上で暗号化レイヤーが開始されます。 このオプションを選択すると、VM に接続されている一時的なリソース ディスクも暗号化されます。 リセットされた一時的なドライブは、次の機会に Azure Disk Encryption ソリューションによって、VM 用に再フォーマットおよび再暗号化されます。
@@ -164,7 +164,7 @@ EncryptFormatAll パラメーターを使用すると、Linux データ ディ�
 > VM のデータ ボリュームに必要なデータがある場合は、EncryptFormatAll を使用しないでください。 ディスクをマウント解除することで、そのディスクを暗号化の対象から除外できます。 運用環境の VM で EncryptFormatAll を使用する前に、EncryptFormatAll をテスト用 VM で試し、機能パラメーターとその意味について理解してください。 EncryptFormatAll オプションはデータ ディスクをフォーマットするため、ディスク上のデータはすべて失われます。 手順を進める前に、除外するディスクが確実にマウント解除されていることを確認してください。 </br></br>
  >暗号化の設定の更新中にこのパラメーターを設定すると、実際の暗号化の前に再起動が行われる可能性があります。 その場合、フォーマットしたくないディスクを fstab ファイルから削除する必要があります。 同様に、暗号化操作を開始する前に、暗号化フォーマットしたいパーティションを fstab ファイルに追加する必要があります。 
 
-### <a name="bkmk_EFACriteria"> </a> EncryptFormatAll 条件
+### <a name="encryptformatall-criteria"></a><a name="bkmk_EFACriteria"> </a> EncryptFormatAll 条件
 パーティションが以下の条件を*すべて*満たしている場合に限り、このパラメーターはすべてのパーティションを確認して暗号化します。 
 - ルート/OS/ブート パーティションではない
 - まだ暗号化されていない
@@ -175,7 +175,7 @@ EncryptFormatAll パラメーターを使用すると、Linux データ ディ�
 
 RAID または LVM ボリュームではなく RAID または LVM ボリュームを構成するディスクを暗号化します。
 
-### <a name="bkmk_EFATemplate"> </a> EncryptFormatAll パラメーターをテンプレートで使用する
+### <a name="use-the-encryptformatall-parameter-with-a-template"></a><a name="bkmk_EFATemplate"> </a> EncryptFormatAll パラメーターをテンプレートで使用する
 EncryptFormatAll オプションを使用するには、Linux VM を暗号化する既存の Azure Resource Manager テンプレートを使用して、AzureDiskEncryption リソースの **EncryptionOperation** フィールドを変更します。
 
 1. たとえば、[実行中の Linux IaaS VM を暗号化する Resource Manager テンプレート](https://github.com/vermashi/azure-quickstart-templates/tree/encrypt-format-running-linux-vm/201-encrypt-running-linux-vm)を使用します。 
@@ -184,7 +184,7 @@ EncryptFormatAll オプションを使用するには、Linux VM を暗号化す
 4. サブスクリプション、リソース グループ、リソース グループの場所、その他のパラメーター、法律条項、および契約を選択します。 **[作成]** を選択して、既存または実行中の IaaS VM で暗号化を有効にします。
 
 
-### <a name="bkmk_EFAPSH"> </a> EncryptFormatAll パラメーターを PowerShell コマンドレットで使用する
+### <a name="use-the-encryptformatall-parameter-with-a-powershell-cmdlet"></a><a name="bkmk_EFAPSH"> </a> EncryptFormatAll パラメーターを PowerShell コマンドレットで使用する
 [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) コマンドレットを EncryptFormatAll パラメーターと共に使用します。
 
 **クライアント シークレットと EncryptFormatAll を使用して、実行中の VM を暗号化する:** たとえば、以下のスクリプトでは変数を初期化し、EncryptFormatAll パラメーターを指定して Set-AzVMDiskEncryptionExtension コマンドレットを実行します。 前提条件として、リソース グループ、VM、キー コンテナー、Azure AD アプリ、およびクライアント シークレットが既に作成されている必要があります。 MyKeyVaultResourceGroup、MyVirtualMachineResourceGroup、MySecureVM、MySecureVault、My-AAD-client-ID、My-AAD-client-secret をそれぞれ実際の値に置き換えます。
@@ -203,7 +203,7 @@ EncryptFormatAll オプションを使用するには、Linux VM を暗号化す
    ```
 
 
-### <a name="bkmk_EFALVM"> </a> EncryptFormatAll パラメーターを論理ボリューム マネージャー (LVM) で使用する 
+### <a name="use-the-encryptformatall-parameter-with-logical-volume-manager-lvm"></a><a name="bkmk_EFALVM"> </a> EncryptFormatAll パラメーターを論理ボリューム マネージャー (LVM) で使用する 
 LVM-on-crypt のセットアップをお勧めします。 以下に示すすべての例では、デバイス パスとマウント ポイントをユース ケースに適したものに置き換えてください。 このセットアップは次の手順で行うことができます。
 
 - VM を構成するデータ ディスクを追加します。
@@ -230,7 +230,7 @@ LVM-on-crypt のセットアップをお勧めします。 以下に示すすべ
 
 
 
-## <a name="bkmk_VHDpre"> </a> お客様が暗号化した VHD と暗号化キーから作成された新しい IaaS VM
+## <a name="new-iaas-vms-created-from-customer-encrypted-vhd-and-encryption-keys"></a><a name="bkmk_VHDpre"> </a> お客様が暗号化した VHD と暗号化キーから作成された新しい IaaS VM
 このシナリオでは、Resource Manager テンプレート、PowerShell コマンドレット、または CLI コマンドを使用して、暗号化を有効にすることができます。 以下のセクションでは、Resource Manager テンプレートと CLI コマンドについて詳しく説明します。 
 
 付録の手順を使用して、Azure で使用できる事前に暗号化されたイメージを準備します。 イメージを作成したら、次のセクションの手順に従って、暗号化された Azure VM を作成できます。
@@ -244,7 +244,7 @@ LVM-on-crypt のセットアップをお勧めします。 以下に示すすべ
 
 
 
-### <a name="bkmk_VHDprePSH"> </a> Azure PowerShell を使用して事前に暗号化された VHD で IaaS VM を暗号化する 
+### <a name="use-azure-powershell-to-encrypt-iaas-vms-with-pre-encrypted-vhds"></a><a name="bkmk_VHDprePSH"> </a> Azure PowerShell を使用して事前に暗号化された VHD で IaaS VM を暗号化する 
 PowerShell コマンドレット [Set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk#examples) を使用して、暗号化された VHD でディスク暗号化を有効にすることができます。 次の例では、一般的ないくつかのパラメーターを示します。 
 
 ```powershell

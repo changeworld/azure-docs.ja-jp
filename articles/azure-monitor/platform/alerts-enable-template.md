@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/09/2020
 ms.subservice: alerts
 ms.openlocfilehash: 4f840d3771c2520e239d8ff3416722429f9502f3
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79037222"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートを使用してクラシック メトリック アラートを作成する

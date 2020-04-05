@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74931782"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Azure Data Factory のコピー アクティビティを使用した DB2 からのデータ移動
@@ -59,7 +59,7 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 > - DB2 for i (AS400):標準ユーザーの代わりにパワー ユーザーにコレクションを作成してもらったうえで、コピー アクティビティを実行します。 コレクションを作成するには、`create collection <username>` コマンドを使用します。
 > - DB2 for z/OS または LUW:高い権限があるアカウント (パッケージの権限および BIND、BINDADD、GRANT EXECUTE TO PUBLIC アクセス許可を付与されたパワー ユーザーまたは管理者) を使用して、コピー アクティビティを 1 回実行します。 するとコピー時に必要なパッケージが自動作成されます。 その後、通常のユーザーに切り替えて後続のコピー操作を実行することができます。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 さまざまなツールと API を使用して、オンプレミスの DB2 データ ストアからデータを移動するコピー アクティビティを含むパイプラインを作成できます。 
 
 - パイプラインを作成する最も簡単な方法は、Azure Data Factory コピー ウィザードを使うことです。 コピー ウィザードを使用してパイプラインを作成する簡単な手順については、[コピー ウィザードを使用したパイプラインの作成のチュートリアル](data-factory-copy-data-wizard-tutorial.md)に関するページを参照してください。 
@@ -105,7 +105,7 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| **query** |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 次に例を示します。`"query": "select * from "MySchema"."MyTable""` |いいえ (データセットの **tableName** プロパティが指定されている場合) |
+| **query** |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: `"query": "select * from "MySchema"."MyTable""` |いいえ (データセットの **tableName** プロパティが指定されている場合) |
 
 > [!NOTE]
 > スキーマ名とテーブル名は、大文字と小文字が区別されます。 query ステートメントでは、プロパティ名を "" (二重引用符) で囲んでください。
@@ -308,45 +308,45 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 | DB2 データベース型 | .NET Framework 型 |
 | --- | --- |
 | SmallInt |Int16 |
-| 整数 |Int32 |
+| Integer |Int32 |
 | BigInt |Int64 |
 | Real |Single |
 | Double |Double |
 | Float |Double |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
-| Numeric |Decimal |
+| 数値 |Decimal |
 | Date |DateTime |
 | Time |TimeSpan |
-| Timestamp |Datetime |
+| Timestamp |DateTime |
 | xml |Byte[] |
-| Char |string |
-| VarChar |string |
-| LongVarChar |string |
-| DB2DynArray |string |
+| Char |String |
+| VarChar |String |
+| LongVarChar |String |
+| DB2DynArray |String |
 | Binary |Byte[] |
 | VarBinary |Byte[] |
 | LongVarBinary |Byte[] |
-| Graphic |string |
-| VarGraphic |string |
-| LongVarGraphic |string |
-| Clob |string |
-| Blob |Byte[] |
-| DbClob |string |
+| Graphic |String |
+| VarGraphic |String |
+| LongVarGraphic |String |
+| Clob |String |
+| BLOB |Byte[] |
+| DbClob |String |
 | SmallInt |Int16 |
-| 整数 |Int32 |
+| Integer |Int32 |
 | BigInt |Int64 |
 | Real |Single |
 | Double |Double |
 | Float |Double |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
-| Numeric |Decimal |
+| 数値 |Decimal |
 | Date |DateTime |
 | Time |TimeSpan |
-| Timestamp |Datetime |
+| Timestamp |DateTime |
 | xml |Byte[] |
-| Char |string |
+| Char |String |
 
 ## <a name="map-source-to-sink-columns"></a>ソース列からシンク列へのマップ
 ソース データセット列のシンク データセット列へのマッピング方法の詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページを参照してください。

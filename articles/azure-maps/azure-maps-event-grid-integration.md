@@ -1,20 +1,20 @@
 ---
 title: Event Grid を使用してマップ イベントに対応する | Microsoft Azure Maps
 description: この記事では、Event Grid を使用して Microsoft Azure Maps イベントに対応する方法について説明します。
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 02/08/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f7e5be8d4aca85c9574db18ec9df8a7f30850d06
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 9c9483af191e5439af0c0b5e433187d6475c178c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210108"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335714"
 ---
 # <a name="react-to-azure-maps-events-by-using-event-grid"></a>Event Grid を使用して Azure Maps イベントに反応する 
 

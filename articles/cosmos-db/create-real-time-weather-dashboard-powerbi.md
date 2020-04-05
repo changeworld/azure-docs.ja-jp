@@ -8,10 +8,10 @@ ms.date: 09/04/2019
 ms.author: bharathb
 ms.reviewer: sngun
 ms.openlocfilehash: d225a14edddcad58c08094dbc758d67df8f834e6
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70376484"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>Azure Cosmos DB と Power BI を使用してリアルタイム ダッシュボードを作成する
@@ -68,11 +68,11 @@ Azure Analysis Services は、エンタープライズ レベルのデータ モ
    ソース データセットに存在する列とデータ型に応じて、RangeStart フィールドと Rangestart フィールドを適宜変更できます。
 
    
-   |プロパティ  |データ型  |filter  |
+   |プロパティ  |データ型  |Assert  |
    |---------|---------|---------|
-   |_ts     |   Numeric      |  [_ts] > Duration.TotalSeconds(RangeStart - #datetime(1970, 1, 1, 0, 0, 0)) と [_ts] < Duration.TotalSeconds(RangeEnd - #datetime(1970, 1, 1, 0, 0, 0)))       |
-   |Date (例:- 2019-08-19)     |   string      | [Document.date]> DateTime.ToText(RangeStart,"yyyy-MM-dd") と [Document.date] < DateTime.ToText(RangeEnd,"yyyy-MM-dd")        |
-   |Date (例:- 2019-08-11 12:00:00)   |  string       |  [Document.date]> DateTime.ToText(RangeStart," yyyy-mm-dd HH:mm:ss") と [Document.date] < DateTime.ToText(RangeEnd,"yyyy-mm-dd HH:mm:ss")       |
+   |_ts     |   数値      |  [_ts] > Duration.TotalSeconds(RangeStart - #datetime(1970, 1, 1, 0, 0, 0)) と [_ts] < Duration.TotalSeconds(RangeEnd - #datetime(1970, 1, 1, 0, 0, 0)))       |
+   |Date (例:- 2019-08-19)     |   String      | [Document.date]> DateTime.ToText(RangeStart,"yyyy-MM-dd") と [Document.date] < DateTime.ToText(RangeEnd,"yyyy-MM-dd")        |
+   |Date (例:- 2019-08-11 12:00:00)   |  String       |  [Document.date]> DateTime.ToText(RangeStart," yyyy-mm-dd HH:mm:ss") と [Document.date] < DateTime.ToText(RangeEnd,"yyyy-mm-dd HH:mm:ss")       |
 
 
 1. **更新ポリシーを定義する** - テーブルの**コンテキスト** メニューの **[増分更新]** タブに移動して、更新ポリシーを定義します。 **毎日**更新され、前月のデータが格納されるように更新ポリシーを設定します。
@@ -166,7 +166,7 @@ Azure Analysis Services は、エンタープライズ レベルのデータ モ
 
    ![データを読み込んでレポートを生成する](./media/create-real-time-weather-dashboard-powerbi/load-data-generate-report.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Power BI の詳細については、「 [Power BI の概要](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/)」を参照してください。
 

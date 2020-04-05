@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 99efe375fad142963214b09df24be70bc3bc9d99
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77131614"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Media Services を使用したライブ ストリーミングの概要
@@ -137,7 +137,7 @@ Media Services においてライブ ストリーミング コンテンツの処
 >
 >
 
-### <a id="states"></a>チャネルの状態と、どのように課金モードにマッピングされているか
+### <a name="channel-states-and-how-they-map-to-the-billing-mode"></a><a id="states"></a>チャネルの状態と、どのように課金モードにマッピングされているか
 現在のチャネルの状態。 指定できる値は、次のとおりです。
 
 * **停止済み**。 これは、チャネル作成後の初期状態です (ポータルで自動開始が選択されなかった場合)。この状態では、課金は行われません。 この状態で、チャネルのプロパティを更新できますが、ストリーミングは許可されていません。

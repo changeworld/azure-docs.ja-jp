@@ -8,10 +8,10 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/02/2020
 ms.openlocfilehash: ce58aae3b1db1f0f338d353025d4f277aeb6944f
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77137498"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Azure Monitor で複数の Application Insights リソースを統合する 

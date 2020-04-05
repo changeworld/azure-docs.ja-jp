@@ -18,14 +18,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 7f026dd5953dd233b0183d8ce7978f647fb8c6af
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 9cad4bfc474ef23492858ed3b0a6447932b589b4
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213456"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80127079"
 ---
-# <a name="tutorial-push-notifications-to-windows-phone-apps-by-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して Windows Phone アプリにプッシュ通知を送信する
+# <a name="tutorial-send-push-notifications-to-windows-phone-apps-using-notification-hubs"></a>チュートリアル:Notification Hubs を使用して Windows Phone アプリにプッシュ通知を送信する
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -149,7 +149,7 @@ ms.locfileid: "71213456"
 
     ![Windows Phone 上の通知](./media/notification-hubs-windows-phone-get-started/notification-on-windows-phone.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この簡単な例では、すべての Windows Phone 8 デバイスにプッシュ通知をブロードキャストしました。 特定のデバイスにプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。
 

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: cynthn
 ms.openlocfilehash: acfdfd4edf90b90998a913fa0c6479bedf0028b7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74034739"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>仮想ネットワーク インターフェイス カードを作成して Azure での VM の名前解決に内部 DNS を使用する
@@ -34,7 +34,7 @@ ms.locfileid: "74034739"
 ## <a name="quick-commands"></a>クイック コマンド
 タスクをすばやく実行する必要がある場合のために、次のセクションでは、必要なコマンドの詳細について説明します。 詳細な情報と各手順のコンテキストが、ドキュメントの残りの部分に記載されています。[ここからお読みください](#detailed-walkthrough)。 これらの手順を実行するには、[Azure CLI](/cli/azure/install-az-cli2) の最新版をインストールし、[az login](/cli/azure/reference-index) を使用して Azure アカウントにログインする必要があります。
 
-前提条件:リソース グループ、仮想ネットワークおよびサブネット、SSH 受信が設定されたネットワーク セキュリティ グループ。
+前提条件: リソース グループ、仮想ネットワークおよびサブネット、SSH 受信が設定されたネットワーク セキュリティ グループ。
 
 ### <a name="create-a-virtual-network-interface-card-with-a-static-internal-dns-name"></a>静的な内部 DNS 名を使用して仮想ネットワーク インターフェイス カードを作成する
 [az network nic create](/cli/azure/network/nic) を使用して vNIC を作成します。 `--internal-dns-name` CLI フラグは DNS のラベルを設定するためのものです。このラベルにより、仮想ネットワーク インターフェイス カード (vNIC) の静的 DNS 名が提供されます。 次の例では、`myNic` という名前の vNIC を作成して `myVnet` 仮想ネットワークに接続し、`jenkins` という名前の内部 DNS 名レコードを作成します。
@@ -163,6 +163,6 @@ az vm create \
 
 CLI フラグを使用して既存のリソースを呼び出すことで、既存のネットワーク内に VM をデプロイするよう Azure に指示します。 繰り返しますが、VNet とサブネットをデプロイしたら、Azure リージョン内でこれらを静的または永続的なリソースにしておくことができます。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure CLI コマンドを直接使用して Linux VM 用の独自のカスタム環境を作成する](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [テンプレートを使用して Azure に Linux VM を作成する](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

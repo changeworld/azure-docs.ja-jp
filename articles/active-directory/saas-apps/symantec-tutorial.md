@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Symantec Web Security Service (WSS) の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Symantec Web Security Service (WSS) の統合 | Microsoft Docs'
 description: Azure Active Directory と Symantec Web Security Service (WSS) の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 12/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d496015440deb80a0159ed0ec234ae60c2c64a66
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73159947"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>チュートリアル:Azure Active Directory と Symantec Web Security Service (WSS) の統合
+# <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>チュートリアル: Azure Active Directory と Symantec Web Security Service (WSS) の統合
 
 このチュートリアルでは、Symantec Web Security Service (WSS) アカウントを Azure Active Directory (Azure AD) アカウントに統合して、WSS で Azure AD にプロビジョニングされたエンド ユーザーを SAML 認証を使用して認証し、ユーザー レベルまたはグループ レベルのポリシー ルールを適用できるようにする方法について説明します。
 
@@ -114,7 +114,7 @@ Symantec Web Security Service (WSS) で Azure AD シングル サインオンを
     b. **[応答 URL]** ボックスに、`https://saml.threatpulse.net:8443/saml/saml_realm/bcsamlpost` という URL を入力します。
 
     > [!NOTE]
-    > **ID** と**応答 URL** の値がなんらかの理由で有効でない場合には、[Symantec Web Security Service (WSS) クライアント サポート チーム](https://www.symantec.com/contact-us)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > [ID](https://www.symantec.com/contact-us) と**応答 URL** の値がなんらかの理由で有効でない場合には、**Symantec Web Security Service (WSS) クライアント サポート チーム**に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 

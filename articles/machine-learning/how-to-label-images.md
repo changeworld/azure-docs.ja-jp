@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 6d0a9bf172039adcaa756660d38acc1547e91b49
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 2e14b669aadeec4c6a7245be8940051ec604059b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78898696"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79409560"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>ラベル付けプロジェクトで画像にタグを付ける
 
@@ -126,4 +126,4 @@ Azure では、各画像に少なくとも 1 つのタグを適用した後に�
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure で画像分類モデルをトレーニングする](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml)方法を確認します
-* [Azure と "Faster R-CNN" 手法を使用したオブジェクト検出](https://www.microsoft.com/developerblog/2017/10/24/bird-detection-with-azure-ml-workbench/)について確認します
+

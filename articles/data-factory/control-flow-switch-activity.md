@@ -10,10 +10,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.openlocfilehash: fd0e6d526f0c47304e7bf53f91d08f42b924ff23
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75440394"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Azure Data Factory の Switch アクティビティ
@@ -68,7 +68,7 @@ Switch アクティビティは、プログラミング言語における switch
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
 name | switch アクティビティの名前。 | String | はい
-型 | *Switch** に設定する必要があります | String | はい
+type | *Switch** に設定する必要があります | String | はい
 expression | 文字列値に評価される式であることが必要です | 結果の型が文字列の式 | はい
 cases | 値と値が式の評価に一致するときに実行される一連のアクティビティが含まれるケースのセット。 ケースを少なくとも 1 つ指定する必要があります。 ケースには 25 件という上限があります。 | ケース オブジェクトの配列 | はい
 defaultActivities | 式の評価が満たされなかったときに実行される一連のアクティビティ。 | アクティビティの配列 | はい

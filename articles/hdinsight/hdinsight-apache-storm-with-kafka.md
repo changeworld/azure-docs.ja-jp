@@ -9,13 +9,13 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
 ms.openlocfilehash: eac9bee6992520492b846e3b579d8a05c327e749
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73494366"
 ---
-# <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>チュートリアル: HDInsight 上の Apache Kafka で Apache Storm を使用する
+# <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>チュートリアル:HDInsight 上の Apache Kafka で Apache Storm を使用する
 
 このチュートリアルでは、[Apache Storm](https://storm.apache.org/) トポロジを使用して、HDInsight の [Apache Kafka](https://kafka.apache.org/) でデータを読み書きする方法について説明します。 また、Storm クラスター上の [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) 互換ストレージにデータを保持する方法についても説明します。
 
@@ -30,7 +30,7 @@ ms.locfileid: "73494366"
 > * Kafka トピックの作成
 > * トポロジの開始
 > * トポロジの停止
-> * リソースのクリーンアップ
+> * リソースをクリーンアップする
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -68,7 +68,7 @@ Apache Storm には、Apache Kafka を操作するためのコンポーネント
 
     * `org.apache.storm.kafka.SpoutConfig`:スパウト コンポーネントの構成を提供します。
 
-    * `org.apache.storm.spout.SchemeAsMultiScheme` と `org.apache.storm.kafka.StringScheme`: Kafka のデータを Storm のタプルに変換します。
+    * `org.apache.storm.spout.SchemeAsMultiScheme` および `org.apache.storm.kafka.StringScheme`:Kafka のデータを Storm のタプルに変換します。
 
 * `org.apache.storm.kafka.bolt.KafkaBolt`:このコンポーネントはデータを Kafka に書き込みます。 このコンポーネントは、次のコンポーネントに依存します。
 
@@ -406,11 +406,11 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
 
    1. 次の情報に従って、 **[カスタマイズされたテンプレート]** セクションの各エントリに入力します。
 
-      | Setting | 値 |
+      | 設定 | Value |
       | --- | --- |
-      | Subscription | お使いの Azure サブスクリプション |
+      | サブスクリプション | お使いの Azure サブスクリプション |
       | Resource group | リソースが含まれるリソース グループ。 |
-      | Location | リソースが作成される Azure リージョン。 |
+      | 場所 | リソースが作成される Azure リージョン。 |
       | [Kafka Cluster Name]\(Kafka クラスター名\) | Kafka クラスターの名前。 |
       | [Storm Cluster Name]\(Storm クラスター名\) | Storm クラスターの名前。 |
       | [Cluster Login User Name]\(クラスター ログイン ユーザー名\) | クラスターの管理者ユーザー名。 |
@@ -621,7 +621,7 @@ Storm クラスターへの SSH セッションで、次のコマンドを使用
   storm kill kafka-reader
   ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルで作成したリソースをクリーンアップするために、リソース グループを削除することができます。 リソース グループを削除すると、関連付けられている HDInsight クラスター、およびリソース グループに関連付けられているその他のリソースも削除されます。
 
@@ -631,7 +631,7 @@ Azure Portal を使用してリソース グループを削除するには:
 2. 削除するリソース グループを見つけて、一覧の右側にある __[詳細]__ ボタン ([...]) を右クリックします。
 3. __[リソース グループの削除]__ を選択し、確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、[Apache Storm](https://storm.apache.org/) トポロジを使用して、HDInsight の [Apache Kafka](https://kafka.apache.org/) に対して書き込み/読み取りを実行する方法を説明しました。 また、HDInsight で使用される [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) 互換ストレージにデータを格納する方法も説明しました。
 

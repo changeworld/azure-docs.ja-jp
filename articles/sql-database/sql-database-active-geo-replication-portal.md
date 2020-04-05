@@ -12,11 +12,11 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
 ms.openlocfilehash: 601c537a51e29ae1f107127e1b83c07448eee9ab
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348878"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228687"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Azure Portal を使用して Azure SQL Database のアクティブ geo レプリケーションを構成してフェールオーバーを開始する
 

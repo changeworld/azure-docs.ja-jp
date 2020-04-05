@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: af03223e8b007cbd2a00d54c3076056cd110ecc9
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75551818"
 ---
 # <a name="monitoring-and-diagnostics"></a>監視と診断

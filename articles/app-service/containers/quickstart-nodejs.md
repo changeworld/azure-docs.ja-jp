@@ -7,10 +7,10 @@ ms.date: 08/12/2019
 ms.topic: quickstart
 ms.devlang: javascript
 ms.openlocfilehash: fb79f4b87d8ddc5303fea834c81329315401464a
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74688968"
 ---
 # <a name="create-a-nodejs-app-in-azure"></a>Azure で Node.js アプリを作成する
@@ -169,7 +169,7 @@ code .
 > [!div class="nextstepaction"]
 > [問題が発生しました](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=tailing-logs)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 おめでとうございます。このクイックスタートを正常に完了できました。
 

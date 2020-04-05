@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 8631b05bc42df86ef6865bf2a07c0e3deaaad2fe
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 2b1b708618c60153b8dbce69b26d832fa18b25aa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034276"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476605"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>リモート デスクトップをインストールして Azure の Linux VM に接続するように構成する
 Azure の Linux 仮想マシン (VM) は、通常、セキュリティで保護された shell (SSH) 接続を使用してコマンド ラインから管理します。 Linux にまだ慣れていない場合や、簡単にトラブルシューティングする場合などは、リモート デスクトップを使用する方が操作が簡単なことがあります。 この記事では、Resource Manager デプロイ モデルを使用して、Linux VM のデスクトップ環境 ([xfce](https://www.xfce.org)) とリモート デスクトップ ([xrdp](https://www.xrdp.org)) をインストールして構成する方法を詳しく説明します。
@@ -48,7 +48,7 @@ Windows を使用し、SSH の使用に関する詳細が必要な場合は、[W
 
 ```bash
 sudo apt-get update
-sudo apt-get install xfce4
+sudo apt-get -y install xfce4
 ```
 
 ## <a name="install-and-configure-a-remote-desktop-server"></a>リモート デスクトップ サーバーをインストールして構成する
@@ -136,7 +136,7 @@ Red Hat Enterprise Linux SUSE など他の Linux ディストリビューショ�
 リモート デスクトップ クライアントから応答がなく、システム ログにもイベントが表示されない場合は、リモート デスクトップ トラフィックが VM に到達できないことを示しています。 ネットワーク セキュリティ グループ ルールを確認し、ポート 3389 で TCP を許可するルールが設定されていることをご確認ください。 詳細については、[アプリケーションの接続の問題のトラブルシューティング](../windows/troubleshoot-app-connection.md)に関するページをご覧ください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Linux VM で SSH キーを作成、使用する方法の詳細については、[Azure での Linux VM の SSH キーの作成](mac-create-ssh-keys.md)に関するページをご覧ください。
 
 Windows から SSH を使用する方法の詳細については、[Windows での SSH キーの使用方法](ssh-from-windows.md)に関するページをご覧ください。

@@ -7,10 +7,10 @@ ms.reviewer: deli, logicappspm
 ms.topic: article
 ms.date: 05/14/2019
 ms.openlocfilehash: f7a134fd026b42d1666b8310b3fb0c10642c7bb0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75453493"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Azure Logic Apps 内でインライン コードを使用してコード スニペットを追加および実行する
@@ -128,7 +128,7 @@ ms.locfileid: "75453493"
 
 これらのサブプロパティの詳細を次の表に示します。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 |----------|------|-------|
 | `actions` | オブジェクト コレクション | コード スニペットを実行する前に実行したアクションの結果オブジェクトです。 各オブジェクトには、*key-value* ペアが含まれています。ここで、key はアクション名、value は `@actions('<action-name>')` を含む [actions() 関数](../logic-apps/workflow-definition-language-functions-reference.md#actions)の呼び出しに相当します。 アクションの名前で使用されるアクション名は、基盤となるワークフロー定義で使用されるアクション名と同じです。アクション名内のスペース (" ") がアンダー スコア (_) で置き換えられています。 このオブジェクトにより、現在実行されているワークフロー インスタンスからアクション プロパティの値にアクセスできます。 |
 | `trigger` | Object | トリガーの結果オブジェクトで、 [trigger() 関数](../logic-apps/workflow-definition-language-functions-reference.md#trigger)の呼び出しと同じです。 このオブジェクトにより、現在実行されているワークフロー インスタンスからトリガー プロパティの値にアクセスできます。 |

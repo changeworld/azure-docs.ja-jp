@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: raynew
 ms.openlocfilehash: 22d8bcee96b4ac52641d4f0841267195f44fe15a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75476593"
 ---
 # <a name="moving-azure-resources-across-regions"></a>リージョン間の Azure リソースの移動

@@ -9,10 +9,10 @@ ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 9a9d92ea525c6b5a64fdf7cc74babdce6a97f923
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79127814"
 ---
 # <a name="tutorial-manage-app-groups-for-windows-virtual-desktop"></a>チュートリアル:Windows Virtual Desktop のアプリ グループを管理する

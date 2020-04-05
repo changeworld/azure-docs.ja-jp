@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: fa8b2da683d68a337df38e13726f22c5af43540a
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77565929"
 ---
 # <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>VMware Site Recovery Manager を使用して、プライベート クラウドをディザスター リカバリー ターゲットとして設定する

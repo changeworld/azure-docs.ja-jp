@@ -17,14 +17,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: aa2aa7b77bf174f4a2ca89408ee037b398a32e4d
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 57a11eac47baace0ad9fa7dcae82dca6eeee0988
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387446"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80127300"
 ---
-# <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>チュートリアル:Azure Notification Hubs と Google Cloud Messaging を使用して特定の Android デバイスにプッシュ通知を送信する (非推奨)
+# <a name="tutorial-send-push-notifications-to-specific-android-devices-using-google-cloud-messaging-deprecated"></a>チュートリアル:Google Cloud Messaging (非推奨) を使用して特定の Android デバイスにプッシュ通知を送信する
 
 > [!WARNING]
 > 2018 年 4 月 10 日に、Google は Google Cloud Messaging (GCM) を非推奨としました。 GCM サーバーおよびクライアント API は非推奨となり、早ければ 2019 年 5 月 29日に削除されます。 詳しくは、[GCM and FCM Frequently Asked Questions](https://developers.google.com/cloud-messaging/faq) を参照してください。
@@ -323,7 +323,7 @@ ms.locfileid: "72387446"
 
     ![テクノロジのニュース通知](./media/notification-hubs-aspnet-backend-android-breaking-news/technolgy-news-notification.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、カテゴリに登録している特定の Android デバイスにブロードキャスト通知を送信しました。 特定のユーザーにプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。
 

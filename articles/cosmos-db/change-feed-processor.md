@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
 ms.openlocfilehash: e71b2807595aebeb1f0c8682fde119f4e267e55d
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273304"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB の変更フィード プロセッサ 

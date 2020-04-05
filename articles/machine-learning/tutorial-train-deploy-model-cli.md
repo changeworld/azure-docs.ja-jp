@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 01/08/2019
-ms.openlocfilehash: 70fa17e3e6f91bf393865cc979a8e47e4bf8687b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/26/2020
+ms.openlocfilehash: 401ce2aed2c783169592f0dc664a3a7baea415b6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393336"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336623"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>チュートリアル:CLI からのモデルのトレーニングとデプロイ
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -68,7 +68,7 @@ git clone https://github.com/microsoft/MLOps.git
 リポジトリには、トレーニング済みのモデルを Web サービスとしてデプロイするために使用される以下のファイルが含まれています。
 
 * `aciDeploymentConfig.yml`:__デプロイ構成__ ファイル。 このファイルでは、モデルに必要なホスティング環境を定義します。
-* `inferenceConfig.yml`:__推論構成__ファイル。 このファイルでは、モデルを使用してデータをスコア付けするためにサービスによって使用されるソフトウェア環境を定義します。
+* `inferenceConfig.json`:__推論構成__ファイル。 このファイルでは、モデルを使用してデータをスコア付けするためにサービスによって使用されるソフトウェア環境を定義します。
 * `score.py`:受信データを受け取り、モデルを使用してスコア付けした後、応答を返す python スクリプト。
 * `scoring-env.yml`:モデルと `score.py` スクリプトの実行に必要な conda の依存関係。
 * `testdata.json`:デプロイ済み Web サービスのテストに使用できるデータ ファイル。
@@ -82,6 +82,8 @@ az login
 ```
 
 CLI で既定のブラウザーを開くことができる場合、開いたブラウザにサインイン ページが読み込まれます。 それ以外の場合は、ブラウザーを開き、コマンド ラインの指示に従う必要があります。 この手順では、[https://aka.ms/devicelogin](https://aka.ms/devicelogin) にアクセスして認証コードを入力する必要があります。
+
+[!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
 
 ## <a name="install-the-machine-learning-extension"></a>機械学習拡張機能をインストールする
 
@@ -201,10 +203,10 @@ az ml computetarget create amlcompute -n cpu-cluster --max-nodes 4 --vm-size Sta
 }
 ```
 
-このコマンドでは、最大 4 つのノードを使用して、`cpu` という名前の新しいコンピューティング先が作成されます。 選択した VM サイズによって、VM に GPU リソースが提供されます。 VM サイズについて詳しくは、[VM の種類とサイズ] を参照してください。
+このコマンドでは、最大 4 つのノードを使用して、`cpu-cluster` という名前の新しいコンピューティング先が作成されます。 選択した VM サイズによって、VM に GPU リソースが提供されます。 VM サイズについて詳しくは、[VM の種類とサイズ] を参照してください。
 
 > [!IMPORTANT]
-> コンピューティング先の名前 (この例では `cpu`) は重要です。これは、次のセクションで使用する `.azureml/mnist.runconfig` ファイルによって参照されます。
+> コンピューティング先の名前 (この例では `cpu-cluster`) は重要です。これは、次のセクションで使用する `.azureml/mnist.runconfig` ファイルによって参照されます。
 
 ## <a name="define-the-dataset"></a>データセットを定義する
 
@@ -242,11 +244,11 @@ az ml dataset register -f dataset.json --skip-validation
 }
 ```
 
-
 > [!IMPORTANT]
 > `id` エントリの値をコピーします。これは次のセクションで使用します。
 
 データセット用のより包括的なテンプレートを確認するには、次のコマンドを使用します。
+
 ```azurecli-interactive
 az ml dataset register --show-template
 ```
@@ -302,7 +304,7 @@ runconfig ファイルには、トレーニングの実行で使用される環�
 
 ## <a name="submit-the-training-run"></a>トレーニングの実行の送信
 
-`cpu-compute` コンピューティング先でトレーニングの実行を開始するには、次のコマンドを使用します。
+`cpu-cluster` コンピューティング先でトレーニングの実行を開始するには、次のコマンドを使用します。
 
 ```azurecli-interactive
 az ml run submit-script -c mnist -e myexperiment --source-directory scripts -t runoutput.json
@@ -316,7 +318,7 @@ az ml run submit-script -c mnist -e myexperiment --source-directory scripts -t r
 
 トレーニングの実行プロセスでは、リモート コンピューティング リソース上のトレーニング セッションから情報をストリーム配信します。 情報の一部は次のテキストのようになります。
 
-```text
+```output
 Predict the test set
 Accuracy is 0.9185
 ```
@@ -371,7 +373,7 @@ az ml model register -n mymodel -p "sklearn_mnist_model.pkl"
 モデルをデプロイするには、次のコマンドを使用します。
 
 ```azurecli-interactive
-az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.yml --dc aciDeploymentConfig.yml
+az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.json --dc aciDeploymentConfig.yml
 ```
 
 > [!NOTE]
@@ -379,7 +381,7 @@ az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.yml --dc aci
 
 このコマンドでは、以前に登録したモデルのバージョン 1 を使用して、`myservice` という名前の新しいサービスをデプロイします。
 
-`inferenceConfig.yml` ファイルでは、推論にモデルを使用する方法に関する情報が提供されます。 たとえば、これはエントリ スクリプト (`score.py`) とソフトウェアの依存関係を参照します。 
+`inferenceConfig.yml` ファイルでは、推論にモデルを使用する方法に関する情報が提供されます。 たとえば、これはエントリ スクリプト (`score.py`) とソフトウェアの依存関係を参照します。
 
 このファイルの構造について詳しくは、「[推論構成スキーマ](reference-azure-machine-learning-cli.md#inference-configuration-schema)」を参照してください。 エントリ スクリプトの詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md#prepare-to-deploy)」を参照してください。
 
@@ -428,7 +430,7 @@ az ml service run -n myservice -d @testdata.json
 > [!TIP]
 > PowerShell を使用している場合は、代わりに次のコマンドを使用します。
 >
-> ```powershell
+> ```azurecli-interactive
 > az ml service run -n myservice -d `@testdata.json
 > ```
 
@@ -451,10 +453,10 @@ az ml service delete -n myservice
 
 ### <a name="delete-the-training-compute"></a>トレーニング コンピューティングを削除する
 
-Azure Machine Learning ワークスペースの使用を継続する予定で、トレーニング用に作成された `cpu-compute` コンピューティング先を削除する場合は、次のコマンドを使用します。
+Azure Machine Learning ワークスペースの使用を継続する予定で、トレーニング用に作成された `cpu-cluster` コンピューティング先を削除する場合は、次のコマンドを使用します。
 
 ```azurecli-interactive
-az ml computetarget delete -n cpu
+az ml computetarget delete -n cpu-cluster
 ```
 
 このコマンドでは、削除されたコンピューティング先の ID を含む JSON ドキュメントが返されます。 コンピューティング先が削除されるまで数分かかる場合があります。

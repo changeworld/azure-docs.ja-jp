@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/27/2020
 ms.author: juliako
 ms.openlocfilehash: 94a70a1234d902787f248890f0cb538a4ba9c2f9
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77921081"
 ---
 # <a name="azure-media-services-legacy-components"></a>Azure Media Services のレガシ コンポーネント

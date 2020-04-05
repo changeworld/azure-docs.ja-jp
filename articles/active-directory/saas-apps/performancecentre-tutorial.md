@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と PerformanceCentre の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と PerformanceCentre の統合 | Microsoft Docs'
 description: Azure Active Directory と PerformanceCentre の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 08f0f1c1e9bbfcd27f97cd58fa6c6e40f448f9f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67094629"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-performancecentre"></a>チュートリアル:Azure Active Directory と PerformanceCentre の統合
+# <a name="tutorial-azure-active-directory-integration-with-performancecentre"></a>チュートリアル: Azure Active Directory と PerformanceCentre の統合
 
 このチュートリアルでは、PerformanceCentre と Azure Active Directory (Azure AD) を統合する方法について説明します。
 PerformanceCentre と Azure AD の統合には、次の利点があります。
@@ -224,7 +224,7 @@ PerformanceCentre で Azure AD シングル サインオンを構成するには
     
     b. **[ロールの選択]** で **[クライアント管理者]** を選択します。
     
-    c. **[Save]** をクリックします。 
+    c. **[保存]** をクリックします。 
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

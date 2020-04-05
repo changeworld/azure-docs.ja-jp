@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
 ms.openlocfilehash: 00d5b86c8cae01d342d55b7ad20ec59c3f7530bd
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67707837"
 ---
 # <a name="scaling-hpc-applications"></a>HPC アプリケーションのスケール
@@ -84,6 +84,6 @@ gcc $(OPTIMIZATIONS) $(OMP) $(STACK) $(STREAM_PARAMETERS) stream.c -o stream.gcc
 * メモリ帯域幅の影響を非常に受けやすいアプリケーションでは、CCX あたりのコア数を減らしてメリットが得られる場合があります。 これらのアプリケーションでは、CCX あたり 3 コアまたは 2 コアを使用してメモリ帯域幅の競合を減らし、実際の環境でより高いパフォーマンスや、より一貫したスケーラビリティを実現できます。 特に、MPI Allreduce はここからメリットが得られる可能性があります。
 * 非常に大規模な実行の場合、UD またはハイブリッド RC + UD トランスポートを使用することをお勧めします。 多くの MPI ライブラリ/ランタイム ライブラリでは、これが内部的に実行されます (UCX や MVAPICH2 など)。 大規模な実行の場合は、トランスポート構成を確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure での [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) の詳細を確認する。

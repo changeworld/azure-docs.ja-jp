@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: eab7dfe79aa5cdf234c8bc9472387214f7df3563
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78164527"
 ---
 # <a name="nc-series"></a>NC シリーズ
@@ -24,7 +24,7 @@ Premium Storage キャッシュ:サポートされていません
 
 ライブ マイグレーション:サポートされていません
 
-メモリ保持更新:サポートされていません
+メモリ保持更新: サポートされていません
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | GPU | GPU メモリ: GiB | 最大データ ディスク数 | 最大 NIC 数 |
 |---|---|---|---|---|---|---|---|

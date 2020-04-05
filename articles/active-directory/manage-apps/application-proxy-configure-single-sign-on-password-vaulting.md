@@ -15,10 +15,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b0259a8d9fcb4c9c513ab2c31103c9a8488e90ae
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025743"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>アプリケーション プロキシを使用したシングル サインオン用のパスワードの保管

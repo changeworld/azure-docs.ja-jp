@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5fe7d3ea7d4f6d648438efc1a484d5909ade2f23
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60382897"
 ---
 # <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Azure AD Connect 同期: AD のごみ箱の有効化
@@ -34,16 +34,16 @@ Azure AD に同期される、オンプレミスの Active Directory 向けの A
 
 * オンプレミスの AD ユーザー オブジェクトを誤って削除した場合、対応する Azure AD ユーザー オブジェクトは次回の同期サイクルで削除されます。 既定では、Azure AD は論理削除済み状態で 30 日間、削除された Azure AD ユーザー オブジェクトを保持します。
 
-* オンプレミスの AD ごみ箱機能を有効にしていれば、そのソース アンカーの値を変更することなく、削除されたオンプレミスの AD ユーザー オブジェクトを復元できます。 回復したオンプレミスの AD ユーザー オブジェクトが Azure AD と同期されたときに、Azure AD により対応する論理削除された Azure AD ユーザー オブジェクトが復元されます。 ソース アンカー属性について詳しくは、「[Azure AD Connect:設計概念](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#sourceanchor)」をご覧ください。
+* オンプレミスの AD ごみ箱機能を有効にしていれば、そのソース アンカーの値を変更することなく、削除されたオンプレミスの AD ユーザー オブジェクトを復元できます。 回復したオンプレミスの AD ユーザー オブジェクトが Azure AD と同期されたときに、Azure AD により対応する論理削除された Azure AD ユーザー オブジェクトが復元されます。 ソース アンカー属性について詳しくは、「[Azure AD Connect: 設計概念](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#sourceanchor)」をご覧ください。
 
 * オンプレミスの AD ごみ箱機能を有効にしていない場合、AD ユーザー オブジェクトを作成して、削除されたオブジェクトを置き換える必要があります。 ソース アンカー属性について、システムで生成される AD 属性 (ObjectGuid など) を使用するように Azure AD Connect 同期サービスを構成した場合、新しく作成される AD ユーザー オブジェクトのソース アンカー値は、削除された AD ユーザー オブジェクトの値とは同じになりません。 新たに作成した AD ユーザー オブジェクトが Azure AD と同期されると、削除された Azure AD ユーザー オブジェクトが復元されるのではなく、新しい Azure AD ユーザー オブジェクトが自動的に作成されます。
 
 > [!NOTE]
 > 既定では、削除された Azure AD ユーザー オブジェクトは、論理削除済み状態で 30 日間保持された後、完全に削除されます。 ただし、管理者は、このようなオブジェクトの削除までの時間を短縮できます。 完全に削除されたオブジェクトは、オンプレミスの AD ごみ箱機能を有効にしていても、回復することはできません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 **概要トピック**
 
-* [Azure AD Connect 同期:同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
+* [Azure AD Connect sync: 同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
 
 * [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)

@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: jaredro
 ms.openlocfilehash: 2722a852b1119ef619bc414bce5cb3a8ff6f8f00
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77031614"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>ExpressRoute Direct を構成する方法
 
 ExpressRoute Direct を使用すると、世界中に戦略的に分散されたピアリングの場所で Microsoft のグローバル ネットワークに直接接続できます。 詳細については、[ExpressRoute Direct](expressroute-erdirect-about.md) に関するページを参照してください。
 
-## <a name="resources"></a>リソースを作成する
+## <a name="create-the-resource"></a><a name="resources"></a>リソースを作成する
 
 1. Azure にサインインしてサブスクリプションを選択します。 ExpressRoute Direct リソースおよび ExpressRoute 回線は、同じサブスクリプション内にある必要があります。
 
@@ -155,7 +155,7 @@ ExpressRoute Direct を使用すると、世界中に戦略的に分散された
    Circuits                   : []
    ```
 
-## <a name="state"></a>リンクの管理状態を変更する
+## <a name="change-admin-state-of-links"></a><a name="state"></a>リンクの管理状態を変更する
 
   このプロセスは、レイヤー 1 のテストを実施して、各相互接続がプライマリとセカンダリの各ルーターに適切に接続されていることを確認するために使用する必要があります。
 1. ExpressRoute Direct の詳細を取得します。
@@ -225,7 +225,7 @@ ExpressRoute Direct を使用すると、世界中に戦略的に分散された
 
    同じ手順を `AdminState = "Disabled"` について使用して、ポートを停止します。
 
-## <a name="circuit"></a>回線を作成する
+## <a name="create-a-circuit"></a><a name="circuit"></a>回線を作成する
 
 既定では、ExpressRoute Direct リソースがあるサブスクリプション内に 10 個の回線を作成できます。 これはサポートによって増やすことができます。 プロビジョニング済みの帯域幅と使用済みの帯域幅の両方を追跡してください。 プロビジョニング済み帯域幅は、ExpressRoute Direct リソース上のすべての回線の帯域幅の合計です。使用済み帯域幅は、基になる物理インターフェイスの物理的な使用量です。
 

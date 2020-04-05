@@ -8,14 +8,14 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.workload: big-data
 ms.topic: quickstart
-ms.date: 05/08/2019
+ms.date: 03/23/2020
 ms.custom: mvc
-ms.openlocfilehash: 46bad14978957ab474cfc0eda3e523874246d3f3
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: d6af521238a034bc22612335119f08284b87eb4b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586225"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80132701"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Databricks 上で Spark ジョブを実行する
 
@@ -59,6 +59,8 @@ ms.locfileid: "77586225"
 
     ![Databricks のデプロイのタイル](./media/quickstart-create-databricks-workspace-portal/databricks-deployment-tile.png "Databricks のデプロイのタイル")
 
+    ワークスペースのデプロイが失敗した場合でも、ワークスペースはエラー状態で作成されます。 失敗したワークスペースを削除し、デプロイ エラーのない新しいワークスペースを作成します。 失敗したワークスペースを削除すると、管理対象リソース グループと、正常にデプロイされたリソースもすべて削除されます。
+
 ## <a name="create-a-spark-cluster-in-databricks"></a>Databricks に Spark クラスターを作成する
 
 > [!NOTE]
@@ -96,7 +98,7 @@ ms.locfileid: "77586225"
 
     ![Databricks でノートブックを作成する](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-details.png "Databricks でノートブックを作成する")
 
-    **作成** を選択します。
+    **［作成］** を選択します
 
 3. この手順では、[Azure オープン データセット](https://azure.microsoft.com/services/open-datasets/catalog/boston-safety-data/#AzureDatabricks)からボストンの安全に関するデータを含む Spark データフレームを作成し、SQL を使用してそのデータにクエリを実行します。
 

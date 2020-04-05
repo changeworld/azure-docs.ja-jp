@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: ce8ae7f2f4de3659dc8dde98dc71d39886341498
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 2853b1567618127866a4e9c61d81e599d3100823
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602162"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80064262"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer の概要
 
@@ -40,7 +40,7 @@ Azure Load Balancer は、開放型システム間相互接続 (OSI) モデル�
 個々のロード バランサー コンポーネントの詳細については、[Azure Load Balancer のコンポーネントと制限](./concepts-limitations.md)に関するページを参照してください
 
 >[!NOTE]
-> Azure では、ユーザーのシナリオのためにフル マネージドの負荷分散ソリューションのスイートが提供されます。 高パフォーマンス、低遅延のレイヤー 4 負荷分散機能が必要な場合は、「[Azure Application Gateway とは](../application-gateway/overview.md)」を参照してください。 グローバル DNS の負荷分散が必要な場合は、「[Traffic Manager とは](../traffic-manager/traffic-manager-overview.md)」を参照してください。 実際のエンド ツー エンドのシナリオでは、これらのソリューションを組み合わせると役に立つことがあります。
+> Azure では、ユーザーのシナリオのためにフル マネージドの負荷分散ソリューションのスイートが提供されます。 高パフォーマンス、低遅延のレイヤー 7 負荷分散機能が必要な場合は、「[Azure Application Gateway とは](../application-gateway/overview.md)」を参照してください。 グローバル DNS の負荷分散が必要な場合は、「[Traffic Manager とは](../traffic-manager/traffic-manager-overview.md)」を参照してください。 実際のエンド ツー エンドのシナリオでは、これらのソリューションを組み合わせると役に立つことがあります。
 >
 > Azure の負荷分散オプションの比較については、「[Azure の負荷分散オプションの概要](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)」を参照してください。
 
@@ -69,7 +69,7 @@ Standard Load Balancer を使用して実現できる主なシナリオは、次
 
 - **[HA ポート](https://docs.microsoft.com/azure/load-balancer/load-balancer-ha-ports-overview)** を使用して、TCP と UDP のフローをすべてのポートに同時に負荷分散する。
 
-### <a name="securebydefault"></a>既定でのセキュリティ保護
+### <a name="secure-by-default"></a><a name="securebydefault"></a>既定でのセキュリティ保護
 
 Standard Load Balancer は、ゼロ トラスト ネットワーク セキュリティ モデルを中核として構築されています。 既定では Standard Load Balancer はセキュリティで保護され、仮想ネットワークの一部です。 仮想ネットワークは、プライベートの分離されたネットワークです。  つまり、Standard Load Balancer と Standard パブリック IP アドレスは、ネットワーク セキュリティ グループによって開かれない限り、インバウンド フローに閉じられています。 NSG は、トラフィックを明示的に許可するために使用されます。  お使いの仮想マシン リソースのサブネットまたは NIC に NSG がない場合、トラフィックはこのリソースに到達することを許可されません。 NSG と、ネットワーク セキュリティ グループをシナリオに適用する方法の詳細については、[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)に関する記事をご覧ください。
 Basic Load Balancer は、既定ではインターネットに対して公開されています。

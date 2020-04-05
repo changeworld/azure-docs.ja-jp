@@ -11,10 +11,10 @@ ms.date: 12/11/2019
 ms.author: komammas
 ms.custom: mvc
 ms.openlocfilehash: 2995c5da4491f14471d9ed03022a144a02beab5a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78201639"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>チュートリアル:Azure Batch を使用して Azure Data Factory から Python スクリプトを実行する

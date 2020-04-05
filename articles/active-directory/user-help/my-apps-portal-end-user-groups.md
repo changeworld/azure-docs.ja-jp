@@ -13,10 +13,10 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: 00639462fce4e67561b8e50609264d4423872c82
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77022298"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>マイ アプリ ポータルでグループ情報を更新する
@@ -90,7 +90,7 @@ Web ベースの**マイ アプリ** ポータルでは、職場または学校�
 
     - **[グループ ポリシー]。** 全員をグループに参加できるようにするか、グループの所有者だけがメンバーを追加できるようにするかを選択します。
 
-3. **作成** を選択します。
+3. **［作成］** を選択します
 
     自身を所有者として新しいグループが作成され、 **[所有しているグループ]** リストに表示されます。 自身が所有者なので、このグループも **[参加しているグループ]** リストに表示されます。
 

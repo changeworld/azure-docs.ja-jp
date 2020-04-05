@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 9e4025d040783bff1cd85fb46d571e3a89967892
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67089658"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>チュートリアル:Azure Active Directory と Sprinklr の統合
@@ -132,19 +132,19 @@ Sprinklr で Azure AD シングル サインオンを構成するには、次の
 
 1. **[管理] \> [設定]** の順に選択します。
 
-    ![Administration](./media/sprinklr-tutorial/ic782907.png "Administration")
+    ![管理](./media/sprinklr-tutorial/ic782907.png "管理")
 
 1. 左側のパネルで、 **[Manage Partner] \> [Single Sign on]** の順に選択します。
 
-    ![Manage Partner](./media/sprinklr-tutorial/ic782908.png "Manage Partner")
+    ![[Manage Partner]\(パートナーの管理\)](./media/sprinklr-tutorial/ic782908.png "パートナーの管理")
 
 1. **[+Add Single Sign Ons]** をクリックします。
 
-    ![Single Sign-Ons](./media/sprinklr-tutorial/ic782909.png "Single Sign-Ons")
+    ![シングル サインオン](./media/sprinklr-tutorial/ic782909.png "シングル サインオン")
 
 1. **[Single Sign on]** ページで、次の手順に従います。
 
-    ![Single Sign-Ons](./media/sprinklr-tutorial/ic782910.png "Single Sign-Ons")
+    ![シングル サインオン](./media/sprinklr-tutorial/ic782910.png "シングル サインオン")
 
     a. **[Name]\(名前\)** ボックスに、構成の名前を入力します (例:*WAADSSOTest*)。
 
@@ -164,7 +164,7 @@ Sprinklr で Azure AD シングル サインオンを構成するには、次の
 
     i. **[SAML User ID Location]** として **[User ID is in the Name Identifier element of the Subject statement]** を選択します。
 
-    j. **[Save]** をクリックします。
+    j. **[保存]** をクリックします。
 
     ![SAML](./media/sprinklr-tutorial/ic782911.png "SAML")
 
@@ -225,19 +225,19 @@ Sprinklr で Azure AD シングル サインオンを構成するには、次の
 
 1. **[管理] \> [設定]** の順に選択します。
 
-    ![Administration](./media/sprinklr-tutorial/ic782907.png "Administration")
+    ![管理](./media/sprinklr-tutorial/ic782907.png "管理")
 
 1. 左側のパネルで、 **[クライアントの管理] \> [ユーザー]** の順に選択します。
 
-    ![設定](./media/sprinklr-tutorial/ic782914.png "Settings")
+    ![設定](./media/sprinklr-tutorial/ic782914.png "設定")
 
 1. **[ユーザーの追加]** をクリックします。
 
-    ![設定](./media/sprinklr-tutorial/ic782915.png "Settings")
+    ![設定](./media/sprinklr-tutorial/ic782915.png "設定")
 
 1. **[Edit user]** ダイアログで、次の手順に従います。
 
-    ![Edit user](./media/sprinklr-tutorial/ic782916.png "Edit user")
+    ![[Edit user]\(ユーザーの編集\)](./media/sprinklr-tutorial/ic782916.png "[Edit user]")
 
     a. **[Email]** 、 **[First Name]** 、および **[Last Name]** テキスト ボックスに、プロビジョニングする Azure AD のユーザー アカウントの情報を入力します。
 
@@ -254,7 +254,7 @@ Sprinklr で Azure AD シングル サインオンを構成するには、次の
 
 1. **[Role]** に移動して、次の手順に従います。
 
-    ![Partner Roles](./media/sprinklr-tutorial/ic782917.png "Partner Roles")
+    ![パートナーのロール](./media/sprinklr-tutorial/ic782917.png "パートナーのロール")
 
     a. **[Global]** ボックスの一覧から、 **[ALL_Permissions]** を選択します。  
 

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 857b50a04466f43a25cf80d7930cfb4639dc9d65
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78301952"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224995"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Azure Portal でサイト間接続を作成する
 
@@ -39,7 +39,7 @@ ms.locfileid: "78301952"
 * VPN デバイスの外部接続用パブリック IPv4 アドレスがあることを確認します。
 * オンプレミス ネットワーク構成の IP アドレス範囲を把握していない場合は、詳細な情報を把握している担当者と協力して作業を行ってください。 この構成を作成する場合は、Azure がオンプレミスの場所にルーティングする IP アドレス範囲のプレフィックスを指定する必要があります。 オンプレミス ネットワークのサブネットと接続先の仮想ネットワーク サブネットが重複しないようにしなければなりません。 
 
-### <a name="values"></a>値の例
+### <a name="example-values"></a><a name="values"></a>値の例
 
 この記事の例では、次の値を使用します。 この値を使用して、テスト環境を作成できます。また、この値を参考にしながら、この記事の例を確認していくこともできます。 VPN ゲートウェイの一般的な設定の詳細については、[VPN Gateway の設定](vpn-gateway-about-vpn-gateway-settings.md)に関するページを参照してください。
 
@@ -59,11 +59,11 @@ ms.locfileid: "78301952"
 * **接続名:** VNet1toSite1
 * **共有キー:** この例では、abc123 を使用します。 ただし、お使いの VPN ハードウェアと互換性があれば何を使用してもかまいません。 重要なことは、接続の両側で値が一致していることです。
 
-## <a name="CreatVNet"></a>1.仮想ネットワークの作成
+## <a name="1-create-a-virtual-network"></a><a name="CreatVNet"></a>1.仮想ネットワークの作成
 
 [!INCLUDE [Create a virtual network](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
-## <a name="VNetGateway"></a>2.VPN ゲートウェイを作成する
+## <a name="2-create-the-vpn-gateway"></a><a name="VNetGateway"></a>2.VPN ゲートウェイを作成する
 
 この手順では、VNet の仮想ネットワーク ゲートウェイを作成します。 選択したゲートウェイ SKU によっては、ゲートウェイの作成に 45 分以上かかる場合も少なくありません。
 
@@ -84,7 +84,7 @@ ms.locfileid: "78301952"
 [!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
 
-## <a name="LocalNetworkGateway"></a>3.ローカル ネットワーク ゲートウェイを作成する
+## <a name="3-create-the-local-network-gateway"></a><a name="LocalNetworkGateway"></a>3.ローカル ネットワーク ゲートウェイを作成する
 
 ローカル ネットワーク ゲートウェイは通常、オンプレミスの場所を指します。 サイトに Azure が参照できる名前を付け、接続を作成するオンプレミス VPN デバイスの IP アドレスを指定します。 また、VPN ゲートウェイを介して VPN デバイスにルーティングされる IP アドレスのプレフィックスも指定します。 指定するアドレスのプレフィックスは、オンプレミス ネットワークのプレフィックスです。 オンプレミスのネットワークが変更された場合、または VPN デバイスのパブリック IP アドレスを変更する必要がある場合、これらの値を後で簡単に更新できます。
 
@@ -97,7 +97,7 @@ ms.locfileid: "78301952"
 
 [!INCLUDE [Add a local network gateway](../../includes/vpn-gateway-add-local-network-gateway-portal-include.md)]
 
-## <a name="VPNDevice"></a>4.VPN デバイスの構成
+## <a name="4-configure-your-vpn-device"></a><a name="VPNDevice"></a>4.VPN デバイスの構成
 
 オンプレミス ネットワークとのサイト間接続には VPN デバイスが必要です。 この手順では、VPN デバイスを構成します。 VPN デバイスを構成する際に、次の情報が必要になります。
 
@@ -106,29 +106,29 @@ ms.locfileid: "78301952"
 
 [!INCLUDE [Configure a VPN device](../../includes/vpn-gateway-configure-vpn-device-include.md)]
 
-## <a name="CreateConnection"></a>5.VPN 接続を作成する
+## <a name="5-create-the-vpn-connection"></a><a name="CreateConnection"></a>5.VPN 接続を作成する
 
 仮想ネットワーク ゲートウェイとオンプレミス VPN デバイスとの間にサイト間 VPN 接続を作成します。
 
 [!INCLUDE [Add a site-to-site connection](../../includes/vpn-gateway-add-site-to-site-connection-portal-include.md)]
 
-## <a name="VerifyConnection"></a>6.VPN 接続の確認
+## <a name="6-verify-the-vpn-connection"></a><a name="VerifyConnection"></a>6.VPN 接続の確認
 
 [!INCLUDE [Verify the connection](../../includes/vpn-gateway-verify-connection-portal-include.md)]
 
-## <a name="connectVM"></a>仮想マシンに接続するには
+## <a name="to-connect-to-a-virtual-machine"></a><a name="connectVM"></a>仮想マシンに接続するには
 
 [!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm-s2s-include.md)]
 
-## <a name="reset"></a>VPN ゲートウェイをリセットする方法
+## <a name="how-to-reset-a-vpn-gateway"></a><a name="reset"></a>VPN ゲートウェイをリセットする方法
 
 1 つ以上のサイト間 VPN トンネルのクロスプレミス VPN 接続が失われた場合、Azure VPN Gateway をリセットすることによって解決できる場合があります。 この状況では、オンプレミスの VPN デバイスがすべて正しく機能していても、Azure VPN Gateway との間で IPsec トンネルを確立することができません。 手順については、「[VPN Gateway のリセット](vpn-gateway-resetgw-classic.md)」を参照してください。
 
-## <a name="resize"></a>ゲートウェイ SKU を変更する方法 (ゲートウェイのサイズ変更)
+## <a name="how-to-change-a-gateway-sku-resize-a-gateway"></a><a name="resize"></a>ゲートウェイ SKU を変更する方法 (ゲートウェイのサイズ変更)
 
 ゲートウェイ SKU を変更する手順については、「[ゲートウェイの SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)」を参照してください。
 
-## <a name="addconnect"></a>VPN ゲートウェイに新しい接続を追加する方法
+## <a name="how-to-add-an-additional-connection-to-a-vpn-gateway"></a><a name="addconnect"></a>VPN ゲートウェイに新しい接続を追加する方法
 
 他の接続とアドレス空間が重複しなければ、新たに接続を追加することができます。
 

@@ -9,10 +9,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.openlocfilehash: c7e98c31c0db1db3051ad66df6526dcbddb265c5
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77560424"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Azure Data Explorer を使用して Azure Monitor でデータのクエリを実行する (プレビュー)

@@ -1,20 +1,18 @@
 ---
 title: 体験版とは | Azure Marketplace
 description: Marketplace 体験版機能の説明
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
-manager: Ricardo.Villalobos
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: a6826657a4af74276e363acd585e80d101cc1459
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: bdfadf359195464c4024b28c5e597c571305481a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828156"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278231"
 ---
 <a name="what-is-test-drive"></a>体験版とは
 ===================
@@ -60,7 +58,7 @@ ms.locfileid: "73828156"
 
 これは、体験版用に構成を設定した後、各体験版は、顧客の要求に応じてオンデマンドでデプロイされるマネージド インスタンスになるからです。 体験版インスタンスが割り当てられると、体験版は、設定された分量の時間を使用でき、その後、別の顧客のための余地を作成するために削除されます。
 
-<a name="next-steps"></a>次の手順
+<a name="next-steps"></a>次のステップ
 ----------
 
 体験版についてすべて理解したので、発行する特定の種類の体験版にアクセスし、必要なフィールドに関するすべてを学習します。
@@ -68,4 +66,4 @@ ms.locfileid: "73828156"
 - **[Azure Resource Manager](./azure-resource-manager-test-drive.md)**
 - **[ロジック アプリ](./logic-app-test-drive.md)**
 
-さらに質問がある場合やトラブルシューティングに関するアドバイスが必要な場合、あるいは体験版をより成功させたい場合は、「[FAQ, Troubleshooting, & Best Practices (FAQ、トラブルシューティング、およびベスト プラクティス)](./marketing-and-best-practices.md)」をご覧ください。
+さらに質問がある場合やトラブルシューティングに関するアドバイスが必要な場合、あるいは体験版をより成功させたい場合は、「[FAQ, Troubleshooting, & Best Practices](./marketing-and-best-practices.md)」(FAQ、トラブルシューティング、およびベスト プラクティス) をご覧ください。

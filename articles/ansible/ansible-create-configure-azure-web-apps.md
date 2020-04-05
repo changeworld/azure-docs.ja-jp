@@ -5,10 +5,10 @@ keywords: ansible、azure、devops、bash、プレイブック、Azure App Servi
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 2891ff47b17900c4c1c8e1c21f22495b65108fd5
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156558"
 ---
 # <a name="tutorial-configure-apps-in-azure-app-service-using-ansible"></a>チュートリアル:Ansible を使用して Azure App Service のアプリを構成する
@@ -32,7 +32,7 @@ ms.locfileid: "74156558"
 
 ## <a name="create-a-basic-app-service"></a>基本的な App Service の作成
 
-このセクションのプレイブック コードでは、次のリソースを定義します。
+このセクションのプレイブック コードは、次のリソースを定義します。
 
 * App Service プランとアプリがデプロイされる Azure リソース グループ
 * Java 8 と Tomcat コンテナー ランタイムを使用する Linux 上の App Service
@@ -103,7 +103,7 @@ localhost                  : ok=3    changed=2    unreachable=0    failed=0
 
 App Service では、アプリは "[App Service プラン](/azure/app-service/overview-hosting-plans)" で実行されます。 App Service プランでは、アプリを実行するための一連のコンピューティング リソースを定義します。 App Service プランと Web アプリを別のグループで管理できます。
 
-このセクションのプレイブック コードでは、次のリソースを定義します。
+このセクションのプレイブック コードは、次のリソースを定義します。
 
 * App Service プランがデプロイされる Azure リソース グループ
 * App Service プラン
@@ -241,7 +241,7 @@ PLAY RECAP
 localhost                  : ok=9    changed=6    unreachable=0    failed=0
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"] 
 > [チュートリアル:Ansible を使用して Azure App Service のアプリをスケーリングする](/azure/ansible/ansible-scale-azure-web-apps)

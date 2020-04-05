@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 02/01/2018
 ms.author: cherylmc
 ms.openlocfilehash: fc35654403bbe1375d4188476b11fd0453f74345
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153147"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225055"
 ---
 # <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>Azure Resource Manager デプロイ モデルを使用した強制トンネリングの構成
 
@@ -47,7 +47,7 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 * 各仮想ネットワーク サブネットには、システム ルーティング テーブルが組み込まれています。 システム ルーティング テーブルには、次の 3 つのグループがあります。
   
-  * **ローカル VNet ルーティング:** 直接、同じ仮想ネットワーク内の宛先 VM へ。
+  * **ローカル VNet ルート:** 直接、同じ仮想ネットワーク内の宛先 VM へ。
   * **オンプレミス ルート:** Azure VPN ゲートウェイへ。
   * **既定のルート:** 直接、インターネットへ。 前の 2 つのルートが網羅していないプライベート IP アドレスへ送信されるパケットは削除されます。
 * この手順ではユーザー定義ルート (UDR) を使用して、既定のルートを追加するルーティング テーブルを作成し、そのルーティング テーブルを VNet サブネットに関連付け、それらのサブネットでの強制トンネリングを有効にします。
@@ -56,11 +56,11 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 ## <a name="configuration-overview"></a>構成の概要
 
-次の手順は、リソース グループと VNet の作成に役立ちます。 その後、VPN Gateway を作成し、強制トンネリングを構成します。 この手順では、仮想ネットワーク 'MultiTier-VNet' には 3 つのサブネット ('Frontend'、'Midtier'、'Backend') があり、クロスプレミス接続は 4 つ ('DefaultSiteHQ' および 3 つの分岐) 用意されています。
+次の手順は、リソース グループと VNet の作成に役立ちます。 その後、VPN Gateway を作成し、強制トンネリングを構成します。 この手順では、仮想ネットワークである "MultiTier-VNet" には "Frontend"、"Midtier"、"Backend" という 3 つのサブネットがあり、"DefaultSiteHQ" と 3 つの Branch の計 4 つのクロスプレミス接続があります。
 
 以下の手順で "DefaultSiteHQ" を強制トンネリングの既定のサイト接続として設定し、強制トンネリングが使用されるように "Midtier" と "Backend" サブネットを構成します。
 
-## <a name="before"></a>開始する前に
+## <a name="before-you-begin"></a><a name="before"></a>開始する前に
 
 Azure Resource Manager PowerShell コマンドレットの最新版をインストールしてください。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview) 」を参照してください。
 

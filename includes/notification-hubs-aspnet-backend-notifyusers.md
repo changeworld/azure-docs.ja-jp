@@ -9,10 +9,10 @@ ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 6911f769b95967aac933dd9762263e7506aef4b5
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77192590"
 ---
 ## <a name="create-the-webapi-project"></a>Web API プロジェクトを作成する
@@ -141,7 +141,7 @@ ms.locfileid: "77192590"
 
     > [!NOTE]
     > セキュリティに関する注意: `AuthenticationTestHandler` クラスは、本当の認証を提供するわけではありません。 基本認証を模倣するためだけに使用されるため、安全ではありません。 実稼働のアプリケーションとサービスでは、セキュリティで保護された認証メカニズムを実装する必要があります。
-5. メッセージ ハンドラーを登録するには、**App_Start/WebApiConfig.cs** クラスの `Register` メソッドの末尾に次のコードを追加します。
+5. メッセージ ハンドラーを登録するには、`Register`App_Start/WebApiConfig.cs**クラスの** メソッドの末尾に次のコードを追加します。
 
     ```csharp
     config.MessageHandlers.Add(new AuthenticationTestHandler());

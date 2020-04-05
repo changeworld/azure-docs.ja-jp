@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 03/09/2020
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 7a872e955db46b76d3b12f8ffc38d4a8e497ea63
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79087963"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>クイック スタート:Azure portal を使用してコンテナー インスタンスを Azure 内にデプロイする

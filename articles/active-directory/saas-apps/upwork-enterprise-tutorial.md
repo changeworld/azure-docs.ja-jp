@@ -16,10 +16,10 @@ ms.date: 12/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 421f799d7f4c76992794684379f3bb0088602ac0
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75532705"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-upwork-enterprise"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Upwork Enterprise の統合
@@ -97,7 +97,7 @@ Upwork Enterprise に対する Azure AD SSO を構成してテストするには
 
 1. その他に、Upwork Enterprise アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | Name |   ソース属性|
+    | 名前 |   ソース属性|
     | ------------ | --------- |
     | FirstName | User.givenname |
     | LastName | User.surname |

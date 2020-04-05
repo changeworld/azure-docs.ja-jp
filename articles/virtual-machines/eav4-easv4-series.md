@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: e05a2b97a25ce4cab7d619f4b62d405765cb08db
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78164391"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4 および Easv4 シリーズ
@@ -26,9 +26,9 @@ Premium Storage: サポートされていません
 
 Premium Storage キャッシュ:サポートされていません
 
-ライブ マイグレーション:サポートされています
+ライブ マイグレーション: サポートされています
 
-メモリ保持更新:サポートされています
+メモリ保持更新: サポートされています
 
 Eav4 シリーズのサイズは、2.35 Ghz AMD EPYC<sup>TM</sup> 7452 プロセッサをベースにしています。このプロセッサでは 3.35 GHz のブースト最大周波数を達成し、Premium SSD を使用できます。 Eav4 シリーズのサイズは、メモリへの負荷が高いエンタープライズ アプリケーションに最適です。 データ ディスク ストレージは、仮想マシンとは別に課金されます。 Premium SSD を使用するには、Easv4 シリーズのサイズを使用します。 Easv4 サイズの料金および課金の計算方法は、Eav3 シリーズと同じです。
 
@@ -56,11 +56,11 @@ Premium Storage キャッシュ:サポートされています
 
 ライブ マイグレーション:サポートされています
 
-メモリ保持更新:サポートされています
+メモリ保持更新: サポートされています
 
 Easv4 シリーズのサイズは、2.35 Ghz AMD EPYC<sup>TM</sup> 7452 プロセッサをベースにしています。このプロセッサでは 3.35 GHz のブースト最大周波数を達成し、Premium SSD を使用できます。 Easv4 シリーズのサイズは、メモリへの負荷が高いエンタープライズ アプリケーションに最適です。
 
-| サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (MBps) |
+| サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループットIOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (MBps) |
 |-----|-----|-----|-----|-----|-----|-----|-----|
 | Standard_E2as_v4|2|16|32|4|4000 / 32 (50)|3200 / 48|2/1,000 |
 | Standard_E4as_v4|4|32|64|8|8000 / 64 (100)|6400 / 96|2/2,000 |

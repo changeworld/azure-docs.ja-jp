@@ -4,17 +4,17 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: cynthn
-ms.openlocfilehash: 083d59a2d8720a08abc7ea8998c1fbe048db3f28
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 2cfd376f595ae70daf9ab468d464dd9c8ff13d74
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67181533"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335018"
 ---
-| リソース | 既定の制限 | 上限 |
-| --- | --- | --- |
-| クラウド サービスあたりの[仮想マシン数](../articles/virtual-machines/virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)<sup>1</sup> |50 |50 |
-| クラウド サービスあたりの入力エンドポイント数 <sup>2</sup> |150 |150 |
+| リソース | 制限 |
+| --- | --- |
+| クラウド サービスあたりの[仮想マシン数](../articles/virtual-machines/virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)<sup>1</sup> |50 |
+| クラウド サービスあたりの入力エンドポイント数 <sup>2</sup> |150 |
 
 <sup>1</sup>Azure Resource Manager ではなく、クラシック デプロイ モデルを使用して作成された仮想マシンは自動的にクラウド サービスに格納されます。 より多くの仮想マシンをそのクラウド サービスに追加することで、負荷分散と可用性を実現できます。 
 

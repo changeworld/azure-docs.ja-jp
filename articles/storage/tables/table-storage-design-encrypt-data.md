@@ -9,14 +9,14 @@ ms.date: 04/11/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: f56946702011968a0fcb31f6fbecbaacdc89ea42
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60326005"
 ---
 # <a name="encrypt-table-data"></a>テーブル データを暗号化する
-.NET Azure Storage クライアント ライブラリでは、挿入および置換操作の文字列エンティティ プロパティの暗号化がサポートされます。 暗号化された文字列はバイナリ プロパティとしてサービスで保存され、復号化された後、文字列に変換されて戻されます。    
+.NET Azure Storage クライアント ライブラリでは、挿入および置換操作の文字列エンティティ プロパティの暗号化がサポートされます。 暗号化された文字列はバイナリ プロパティとしてサービスで保存され、復号化された後、解読された後、文字列に再度変換されます。    
 
 テーブルの場合、暗号化ポリシーに加え、ユーザーは暗号化するプロパティを指定する必要があります。 これを実行するには、[EncryptProperty] 属性を指定するか (TableEntity から派生した POCO エンティティ用)、または要求オプションで暗号化リゾルバーを指定します。 暗号化リゾルバーは、パーティション キー、行キー、プロパティ名を取得するデリゲートで、プロパティを暗号化するかどうかを示すブール値を返します。 暗号化時、クライアント ライブラリはこの情報を使用して、ネットワークへの書き込み時にプロパティを暗号化するかどうかを決定します。 また、デリゲートは、プロパティの暗号化方法に関するロジックを使用する可能性にも備えます。 (X の場合、プロパティ A を暗号化し、それ以外の場合はプロパティ A および B を暗号化するなど。)エンティティの読み込み中、またはクエリの実行中は、この情報を指定する必要はありません。
 
@@ -26,7 +26,7 @@ ms.locfileid: "60326005"
 
 テーブル データの暗号化については、「 [Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault](../common/storage-client-side-encryption.md)」を参照してください。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [テーブルの設計パターン](table-storage-design-patterns.md)
 - [リレーションシップのモデル化](table-storage-design-modeling.md)

@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 2167a17d5d388c97ad357398c4ac2676e43be5a4
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76989452"
 ---
 # <a name="enable-and-work-with-bastion-diagnostic-logs"></a>Bastion 診断ログを有効にして使用する
 
 ユーザーが Azure Bastion を使用してワークロードに接続すると、Bastion ではリモート セッションの診断をログに記録できます。 その後、その診断を使用して、どのユーザーが、どのワークロードに、いつ、どこから接続したかということや、他のそのような関連ログ情報を確認できます。 診断を使用するには、Azure Bastion で診断ログを有効にする必要があります。 この記事では、診断ログを有効にし、ログを表示する方法について説明します。
 
-## <a name="enable"></a>診断ログを有効にする
+## <a name="enable-the-diagnostics-log"></a><a name="enable"></a>診断ログを有効にする
 
 1. [Azure portal](https://portal.azure.com) で、Azure Bastion リソースに移動し、Azure Bastion のページから **[診断設定]** を選択します。
 
@@ -33,7 +33,7 @@ ms.locfileid: "76989452"
 
    ![設定の例](./media/diagnostic-logs/4example-settings.png)
 
-## <a name="view"></a>診断ログを表示する
+## <a name="view-diagnostics-log"></a><a name="view"></a>診断ログを表示する
 
 診断ログにアクセスするには、診断設定を有効にするときに指定したストレージ アカウントを直接使用できます。
 

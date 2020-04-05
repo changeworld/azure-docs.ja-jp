@@ -16,11 +16,11 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ef908429d359020282920d73480a472bfde0aa60
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76897156"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230251"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health の操作
 このトピックでは、Azure Active Directory (Azure AD) Connect Health を使用して実行できるさまざまな操作について説明します。
@@ -120,17 +120,17 @@ Azure AD Connect Health では、次の組み込みのロールがサポート�
 ### <a name="access-scope"></a>アクセス スコープ
 Azure AD Connect Health では、2 つのレベルのアクセス管理をサポートします。
 
-* **すべてのサービス インスタンス**:これはほとんどの場合の推奨パスです。 Azure AD Connect Health によって監視されるすべてのロールの種類のすべてのサービス インスタンス (たとえば、AD FS ファーム) のアクセスを制御します。
-* **サービス インスタンス**:場合によっては、ロールの種類またはサービス インスタンスに基づいてアクセスを分離する必要があります。 この場合は、サービス インスタンス レベルでアクセスを管理できます。  
+* **すべてのサービス インスタンス**: これはほとんどの場合の推奨パスです。 Azure AD Connect Health によって監視されるすべてのロールの種類のすべてのサービス インスタンス (たとえば、AD FS ファーム) のアクセスを制御します。
+* **サービス インスタンス**: 場合によっては、ロールの種類またはサービス インスタンスに基づいてアクセスを分離する必要があります。 この場合は、サービス インスタンス レベルでアクセスを管理できます。  
 
 アクセス許可は、エンド ユーザーがディレクトリ レベルまたはサービス インスタンス レベルのいずれかでアクセス権がある場合に与えられます。
 
 ### <a name="allow-users-or-groups-access-to-azure-ad-connect-health"></a>ユーザーまたはグループに Azure AD Connect Health へのアクセスを許可する
 次の手順では、アクセスを許可する方法を説明します。
-#### <a name="step-1-select-the-appropriate-access-scope"></a>手順 1:適切なアクセス スコープを選択する
+#### <a name="step-1-select-the-appropriate-access-scope"></a>手順 1: 適切なアクセス スコープを選択する
 Azure AD Connect Health 内で "*すべてのサービス インスタンス*" レベルのユーザーにアクセスを許可するには、Azure AD Connect Health でメイン ブレードを開きます。<br>
 
-#### <a name="step-2-add-users-and-groups-and-assign-roles"></a>手順 2:ユーザーおよびグループを追加し、ロールを割り当てる
+#### <a name="step-2-add-users-and-groups-and-assign-roles"></a>手順 2: ユーザーおよびグループを追加し、ロールを割り当てる
 1. **[構成]** セクションで、 **[ユーザー]** をクリックします。<br>
    ![Azure AD Connect Health リソースのサイドバーのスクリーンショット](./media/how-to-connect-health-operations/startRBAC.png)
 2. **[追加]** を選択します。
@@ -150,7 +150,7 @@ Azure AD Connect Health 内で "*すべてのサービス インスタンス*" �
 >
 >
 
-#### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>手順 3:ブレードの場所をユーザーまたはグループと共有する
+#### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>手順 3: ブレードの場所をユーザーまたはグループと共有する
 1. アクセス許可が割り当てられた後、ユーザーは[ここ](https://aka.ms/aadconnecthealth)に移動することで Azure AD Connect Health にアクセスできます。
 2. ブレードで、ブレードやブレードのさまざまな部分をダッシュボードにピン留めできます。 **[ダッシュボードにピン留めする]** アイコンをクリックするだけです。<br>
    ![ピン アイコンが強調表示されている Azure AD Connect Health RBAC のピン ブレードのスクリーンショット](./media/how-to-connect-health-operations/RBAC_pin_blade.png)

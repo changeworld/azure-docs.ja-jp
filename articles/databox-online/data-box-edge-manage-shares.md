@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 73bff460db8428332a92d8deb68bf062ca4134ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b25409c63806e203bd841b0373543b7cc2b96d9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60759191"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79212940"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-edge"></a>Azure portal を使用して Azure Data Box Edge の共有を管理する
 
@@ -53,6 +53,9 @@ ms.locfileid: "60759191"
 
 5. ドロップダウン リストのブロック BLOB、ページ BLOB、またはファイルから **[ストレージ サービス]** を選択します。 選択されるサービスの種類は、Azure に存在するデータの形式によって変わります。 たとえば、このインスタンスでは、ブロック BLOB として Azure にデータを配置するため、 **[ブロック BLOB]** を選択します。 **[ページ BLOB]** を選択する場合は、データに 512 バイトが確実に割り当てられているようにする必要があります。 常に 512 バイトが割り当てられる VHD または VHDX には **[ページ BLOB]** を使用します。
 
+   > [!IMPORTANT]
+   > Azure Stack Edge または Data Box Gateway デバイスで Azure Storage アカウントをご使用の場合、その Azure Storage アカウントで不変ポリシーが有効になっていないことを確認してください。 詳細については、「[BLOB ストレージの不変ポリシーを設定および管理する](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)」を参照してください。
+
 6. この手順は、SMB 共有と NFS 共有のどちらを作成するかに応じて変わります。
     - **SMB 共有を作成する場合** - **[すべての権限を持つローカル ユーザー]** フィールドで、 **[新規作成]** または **[既存のものを使用]** を選択します。 新しいローカル ユーザーを作成する場合は、**ユーザー名**、**パスワード**を指定し、パスワードの確認を入力します。 これで、ローカル ユーザーにアクセス許可が割り当てられます。 ここで割り当てたアクセス許可は、ファイル エクスプローラーを使用して変更できます。
 
@@ -85,7 +88,7 @@ ms.locfileid: "60759191"
 
 6. **[すべての権限を持つローカル ユーザー]** フィールドで、 **[新規作成]** または **[既存のものを使用]** を選択します。
 
-7. **作成** を選択します。 
+7. **［作成］** を選択します 
 
     ![ローカル共有の作成](media/data-box-edge-manage-shares/add-local-share-2.png)
 
@@ -171,21 +174,21 @@ Data Box Edge デバイス上でコンピューティングを構成する前に
 
 共有を更新するには、Azure portal で次の手順を実行します。
 
-1.  Azure portal で **[共有]** に移動します。 更新したい共有を選択してクリックします。
+1.   Azure portal で **[共有]** に移動します。 更新したい共有を選択してクリックします。
 
     ![共有を選択する](media/data-box-edge-manage-shares/refresh-share-1.png)
 
-2.  **[最新の情報に更新]** をクリックします。 
+2.   **[最新の情報に更新]** をクリックします。 
 
     ![[最新の情報に更新] をクリックする](media/data-box-edge-manage-shares/refresh-share-2.png)
  
-3.  確認を求められたら、 **[はい]** をクリックします。 オンプレミスの共有の内容を更新するジョブが開始されます。
+3.   確認を求められたら、 **[はい]** をクリックします。 オンプレミスの共有の内容を更新するジョブが開始されます。
 
     ![更新を確認する](media/data-box-edge-manage-shares/refresh-share-3.png)
  
-4.  更新の進行中は、コンテキスト メニューで更新オプションが淡色表示になります。 更新ジョブの状態を表示するには、ジョブの通知をクリックします。
+4.   更新の進行中は、コンテキスト メニューで更新オプションが淡色表示になります。 更新ジョブの状態を表示するには、ジョブの通知をクリックします。
 
-5.  更新の時間は、Azure コンテナー内のファイルの数と、デバイス上のファイルの数によって異なります。 更新が正常に完了すると、共有のタイムスタンプが更新されます。 更新が部分的に失敗しても、操作は成功したと見なされ、タイムスタンプが更新されます。 更新エラー ログも更新されます。
+5.   更新の時間は、Azure コンテナー内のファイルの数と、デバイス上のファイルの数によって異なります。 更新が正常に完了すると、共有のタイムスタンプが更新されます。 更新が部分的に失敗しても、操作は成功したと見なされ、タイムスタンプが更新されます。 更新エラー ログも更新されます。
 
     ![更新されたタイムスタンプ](media/data-box-edge-manage-shares/refresh-share-4.png)
  
@@ -212,6 +215,6 @@ Data Box Edge デバイス上でコンピューティングを構成する前に
 > 指定のストレージ アカウントに対してこれを実行しなければならないのは 1 回だけです。 同じストレージ アカウントに関連付けられているすべての共有に対して、この操作を繰り返す必要はありません。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure portal を使用してユーザーを管理する](data-box-edge-manage-users.md)方法について学習します。

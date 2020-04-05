@@ -7,10 +7,10 @@ ms.date: 12/07/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: fb72806dd7ba838ba7170bda409715bc074e1d99
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75461977"
 ---
 # <a name="create-autoscale-policies-for-a-service-fabric-mesh-application"></a>Service Fabric Mesh アプリケーションに対する自動スケーリング ポリシーを作成する

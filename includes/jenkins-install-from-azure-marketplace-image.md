@@ -10,10 +10,10 @@ ms.date: 03/12/2018
 ms.author: tarcher
 ms.custom: Jenkins
 ms.openlocfilehash: 5439de30b02b0ce05853c8112f9e29239743ef98
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67181795"
 ---
 1. ブラウザーで、[Jenkins 用の Azure Marketplace イメージ](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview)を開きます。
@@ -62,7 +62,7 @@ ms.locfileid: "67181795"
 1. **[統合設定]** タブで、次の値を指定します。
 
     - **サービス プリンシパル** - サービス プリンシパルは、Azure で認証されるための資格情報として Jenkins に追加されます。 `Auto` は、プリンシパルが MSI (管理対象サービス ID) によって作成されることを意味します。 `Manual` は、プリンシパルを自分で作成する必要があることを意味します。 
-        - **アプリケーション ID** と**シークレット** - **[サービス プリンシパル]** オプションで `Manual` オプションを選択した場合は、サービス プリンシパルの `Application ID` と `Secret` を指定する必要があります。 [サービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli)ときは、既定のロールが**共同作成者**であることに注意してください。これは Azure リソースを操作するのに十分なロールです。
+        - **アプリケーション ID** と**シークレット** - `Manual`[サービス プリンシパル]**オプションで** オプションを選択した場合は、サービス プリンシパルの `Application ID` と `Secret` を指定する必要があります。 [サービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli)ときは、既定のロールが**共同作成者**であることに注意してください。これは Azure リソースを操作するのに十分なロールです。
     - **[Enable Cloud Agents]\(クラウド エージェントの有効化\)** - エージェントの既定のクラウド テンプレートを指定します。`ACI` は Azure コンテナー インスタンスを、`VM` は仮想マシンを参照します。 クラウド エージェントを有効にしない場合は、`No` を指定できます。
 
 1. **[OK]** を選択して、 **[概要]** タブに進みます。

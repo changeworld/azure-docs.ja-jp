@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: b-juche
 ms.openlocfilehash: 48055a774808aea86452e8410b7e717f5019d172
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78267901"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Azure NetApp Files を使用して、スナップショットを管理する

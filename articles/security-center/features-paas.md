@@ -14,13 +14,13 @@ ms.workload: na
 ms.date: 03/01/2020
 ms.author: memildin
 ms.openlocfilehash: 85460724071347a768a924f34290a75d2383b4c0
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78209262"
 ---
-# <a name="paas-services">Azure PaaS サービスを対象とする機能</a>
+# <a name="feature-coverage-for-azure-paas-services"></a><a name="paas-services">Azure PaaS サービスを対象とする機能</a>
 
 次の表に、サポートされている Azure PaaS リソース用の Azure Security Center 機能の可用性を示します。
 

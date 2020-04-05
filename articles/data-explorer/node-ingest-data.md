@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 19da42437cfe1d7b63dfed4bd2b30716d691a0e3
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66494496"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-node-library"></a>Azure Data Explorer の Node ライブラリを使用してデータを取り込む
@@ -88,7 +88,7 @@ const blobPath = `https://${account}.blob.core.windows.net/${container}/${filePa
 
 ## <a name="create-a-table-on-your-test-cluster"></a>テスト クラスターにテーブルを作成する
 
-`StormEvents.csv` ファイル内のデータのスキーマと一致するテーブルを作成します。 このコードを実行すると、次のようなメッセージが返されます。"*サインインするには、Web ブラウザーを使用して https://microsoft.com/devicelogin ページを開き、認証するためのコード XXXXXXXXX を入力します*"。 この手順に従ってサインインし、元のページに戻って次のコード ブロックを実行します。 接続を行う後続のコード ブロックでは、再びサインインする必要があります。
+`StormEvents.csv` ファイル内のデータのスキーマと一致するテーブルを作成します。 このコードを実行すると、次のようなメッセージが返されます: "*サインインするには、Web ブラウザーを使用してページ https://microsoft.com/devicelogin を開き、コード XXXXXXXXX を入力して認証します*"。 この手順に従ってサインインし、元のページに戻って次のコード ブロックを実行します。 接続を行う後続のコード ブロックでは、再びサインインする必要があります。
 
 ```javascript
 const kustoClient = new KustoClient(kcsbData);
@@ -156,7 +156,7 @@ kustoClient.execute(kustoDatabase, query, (err, results) => {
 | summarize arg_max(LastUpdatedOn, *) by OperationId
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 他の記事に進む場合は、作成したリソースをそのままにします。 行わない場合は、データベースで次のコマンドを実行して、`StormEvents` テーブルをクリーンアップします。
 
@@ -164,6 +164,6 @@ kustoClient.execute(kustoDatabase, query, (err, results) => {
 .drop table StormEvents
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [クエリを作成する](write-queries.md)

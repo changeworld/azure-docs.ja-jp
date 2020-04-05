@@ -10,10 +10,10 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.author: lcozzens
 ms.openlocfilehash: 1a4edabe666a554ccd01d110f0f71226221dfc67
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77523651"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Azure App Configuration ストアに格納されているキー/値を操作する
@@ -81,7 +81,7 @@ az appconfig kv list --name $appConfigName
 
 次の表に、サンプル スクリプトに使用されているコマンドの一覧を示します。 
 
-| command | Notes |
+| command | メモ |
 |---|---|
 | [az appconfig kv set](/cli/azure/appconfig/kv#az-appconfig-kv-set) | キーと値のペアを作成または更新します。 |
 | [az appconfig kv list](/cli/azure/appconfig/kv#az-appconfig-kv-list) | App Configuration ストア内のキーと値のペアを一覧表示します。 |

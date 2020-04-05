@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/31/2020
 ms.openlocfilehash: 1f83f13564a64a0d9d8a5e0144ca95af6a769d6c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76904990"
 ---
 # <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Azure Logic Apps でのワークフローの問題のトラブルシューティングと診断

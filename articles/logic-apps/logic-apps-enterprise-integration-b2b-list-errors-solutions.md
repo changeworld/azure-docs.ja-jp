@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/02/2017
 ms.openlocfilehash: 38e281ce3d8117bff719b1bb572f09acbbb89669
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75666688"
 ---
 # <a name="b2b-errors-and-solutions-for-azure-logic-apps"></a>Azure Logic Apps における B2B のエラーと解決策
@@ -33,7 +33,7 @@ ms.locfileid: "75666688"
 
 |   |   | 
 |---|---|
-| エラーの説明 | 次の ID の契約が見つかりません。'AS2Identity'::'Partner1' and'AS2Identity'::'Partner3' | 
+| エラーの説明 | ID が 'AS2Identity'::'Partner1' および 'AS2Identity'::'Partner3' の契約が見つかりません | 
 | ユーザー アクション | 契約に構成されている AS2-From または AS2-To が無効です。 </br>契約の構成で AS2 メッセージ ヘッダーの AS2 ID と一致するように、AS2 メッセージの "AS2-From" または "AS2-To" ヘッダーまたは契約を修正します。 |
 |   |   |     
 
@@ -144,7 +144,7 @@ ms.locfileid: "75666688"
 
 |   |   | 
 |---|---|
-| エラーの説明 | InvalidTemplate。 行 '1'、列 '1902' のアクション 'Flat_File_Decoding' 入力でテンプレート言語式を処理できません。'Required property 'content' expects a value but got null. Path ''.' (必須のプロパティ 'content' に値を指定する必要がありますが null です。パス ''。)。 |
+| エラーの説明 | InvalidTemplate。 行 '1'、列 '1902' のアクション 'Flat_File_Decoding' 入力でテンプレート言語式を処理できません: 'Required property 'content' expects a value but got null. Path ''.' (必須のプロパティ 'content' に値を指定する必要がありますが null です。パス ''。)。 |
 | ユーザー アクション | このエラーは、入力メッセージに本文が含まれていないことを示します。 |
 |   |   | 
 

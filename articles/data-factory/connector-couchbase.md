@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
 ms.openlocfilehash: ac2426bbfa074e58aa5c4a213f3ecbee20052358
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75444363"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Couchbase からデータをコピーする (プレビュー)
@@ -52,7 +52,7 @@ Couchbase のリンクされたサービスでは、次のプロパティがサ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティは、次のように設定する必要があります:**Couchbase** | はい |
+| type | type プロパティは、次のように設定する必要があります:**Couchbase** | はい |
 | connectionString | Couchbase に接続するための ODBC 接続文字列。 <br/>資格証明文字列を Azure Key Vault に格納して、接続文字列から `credString` 構成をプルすることもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
@@ -108,7 +108,7 @@ Couchbase からデータをコピーするには、データセットの type �
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは、次のように設定する必要があります:**CouchbaseTable** | はい |
+| type | データセットの type プロパティは、次のように設定する必要があります:**CouchbaseTable** | はい |
 | tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 
@@ -139,7 +139,7 @@ Couchbase からデータをコピーするには、コピー アクティビテ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**CouchbaseSource** | はい |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**CouchbaseSource** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**

@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 03/11/2020
 ms.author: dapine
-ms.openlocfilehash: 230fbd14ce33b52b1e7a1f9cc9cd530ccdec169a
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 714cdefa7100160a510d1922a2547ae53692d76c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562532"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79367807"
 ---
-# <a name="about-direct-line-speech"></a>Direct Line Speech について
+# <a name="what-is-direct-line-speech"></a>Direct Line Speech とは
 
 **Direct Line Speech** は、柔軟で拡張可能な音声アシスタントを作成するための堅牢なエンドツーエンドのソリューションです。 これは、Bot Framework とその Direct Line Speech チャネル (音声によるボットとの対話のために最適化されています) を利用しています。
 

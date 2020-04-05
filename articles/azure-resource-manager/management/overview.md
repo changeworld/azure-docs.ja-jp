@@ -2,15 +2,15 @@
 title: 概要
 description: Azure Resource Manager を使用して、Azure のリソースをデプロイ、管理、およびのアクセス制御する方法について説明します。
 ms.topic: overview
-ms.date: 08/29/2019
-ms.openlocfilehash: f7e11ada8bf10baa99faf08d2b4b401e3bea2d9e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/25/2020
+ms.openlocfilehash: 1e2a6959117749b4e7d08a9768b4189b97ef08bd
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78344626"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80258143"
 ---
-# <a name="azure-resource-manager-overview"></a>Azure Resource Manager の概要
+# <a name="what-is-azure-resource-manager"></a>Azure Resource Manager とは
 
 Azure Resource Manager は、Azure のデプロイおよび管理サービスです。 Azure サブスクリプション内のリソースを作成、更新、および削除できる管理レイヤーを提供します。 アクセス制御、ロック、タグなどの管理機能を使用して、デプロイ後にリソースを保護および整理します。
 
@@ -20,7 +20,7 @@ Azure Resource Manager テンプレートについては、[テンプレート�
 
 ユーザーが Azure ツール、API、SDK のいずれかから要求を送信すると、Resource Manager は要求を受信します。 その要求の認証と承認が行われます。 Resource Manager は、要求されたアクションを行う Azure サービスに要求を送信します。 すべての要求は同じ API を介して処理されるため、すべての異なるツールで一貫した結果と機能が得られます。
 
-次の図は、Azure 要求の処理において Azure Resource Manager が果たす役割を示しています。 
+次の図は、Azure 要求の処理において Azure Resource Manager が果たす役割を示しています。
 
 ![Resource Manager の要求モデル](./media/overview/consistent-management-layer.png)
 
@@ -58,7 +58,7 @@ Resource Manager を使用すると、以下のことができます。
 
 Azure には、[管理グループ](../../governance/management-groups/overview.md)、サブスクリプション、[リソース グループ](#resource-groups)、およびリソースという 4 つのレベルのスコープが用意されています。 次の図に、これらのレイヤーの例を示します。
 
-![Scope](./media/overview/scope-levels.png)
+![スコープ](./media/overview/scope-levels.png)
 
 これらのスコープ レベルのいずれかに管理設定を適用します。 選択するレベルで、設定の適用範囲が決まります。 上位レベルの設定が下位レベルに継承されます。 たとえば、サブスクリプションに[ポリシー](../../governance/policy/overview.md)を適用すると、そのポリシーはサブスクリプション内のすべてのリソース グループとリソースに適用されます。 リソース グループにポリシーを適用すると、そのポリシーはリソース グループとそのすべてのリソースに適用されます。 ただし、別のリソース グループにそのポリシー割り当てはありません。
 
@@ -102,12 +102,8 @@ Azure Resource Manager サービスは、回復性と継続的な可用性を実
 
 ## <a name="next-steps"></a>次のステップ
 
-* リソース プロバイダーによって提供されるすべての操作については、[Azure REST API シリーズ](/rest/api/azure/)に関するページを参照してください。
-
 * リソースの移動の詳細については、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](move-resource-group-and-subscription.md)」を参照してください。
 
 * リソースにタグを付ける方法については、「[タグを使用した Azure リソースの整理](tag-resources.md)」を参照してください。
 
 * リソースのロックについては、「[意図しない変更を防ぐためのリソースのロック](lock-resources.md)」を参照してください。
-
-* デプロイ用のテンプレートの作成については、[テンプレートのデプロイの概要](../templates/overview.md)に関するページを参照してください。

@@ -11,10 +11,10 @@ author: shivp950
 ms.reviewer: larryfr
 ms.date: 03/11/2020
 ms.openlocfilehash: fe6125682f669e453100488b7e0afc4c49409588
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79129740"
 ---
 # <a name="create-event-driven-machine-learning-workflows-preview"></a>イベント ドリブン Machine Learning ワークフローを作成する (プレビュー)

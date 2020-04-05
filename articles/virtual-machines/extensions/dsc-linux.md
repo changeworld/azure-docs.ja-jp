@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
 ms.openlocfilehash: 2f04b5ecb2019a77bbb38e97c3869cc0a9447955
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921523"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226899"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Linux 用の DSC 拡張機能 (Microsoft.OSTCExtensions.DSCForLinux)
 

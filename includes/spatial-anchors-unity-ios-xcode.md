@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
 ms.openlocfilehash: b052772bbfe9d69e430d9f722d8db56b48db7610
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "72933467"
 ---
 **[Build]\(ビルド\)** を選択します。 開かれたダイアログ ボックスで、Xcode プロジェクトをエクスポートするフォルダーを選択します。
@@ -41,7 +41,7 @@ open ./Unity-iPhone.xcworkspace
 
 **[Deployment Info]\(展開情報\)** で、 **[Deployment Target]\(展開ターゲット\)** が `11.0` に設定されていることを確認します。
 
-### <a name="deploy-the-app-to-your-ios-device"></a>アプリを iOS デバイスに展開する
+### <a name="deploy-the-app-to-your-ios-device"></a>アプリを iOS デバイスにデプロイする
 
 iOS デバイスを Mac に接続し、**アクティブ スキーム**を iOS デバイスに設定します。
 

@@ -8,10 +8,10 @@ ms.date: 04/29/2019
 ms.author: msangapu
 ms.custom: cli-validate
 ms.openlocfilehash: 92a9368bf6aa4f2cf043b3aabd443b37cdcde390
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77523953"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>チュートリアル:Web App for Containers でマルチコンテナー (プレビュー) アプリを作成する

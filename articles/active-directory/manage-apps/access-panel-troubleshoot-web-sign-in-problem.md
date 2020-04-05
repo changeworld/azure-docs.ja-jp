@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviwer: japere,asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a7c6a9c3f26c8939176197a2ecf2fcd6026e9928
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65784303"
 ---
 # <a name="problem-signing-in-to-the-access-panel-website"></a>アクセス パネルの Web サイトにサインインできない問題
@@ -82,7 +82,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 -   [ユーザーのパスワードをリセットする](#reset-a-users-password)
 
--   [セルフ サービスのパスワード リセットを有効にする](#enable-self-service-password-reset)
+-   [セルフサービス パスワード リセットを有効にする](#enable-self-service-password-reset)
 
 -   [ユーザーの多要素認証の状態を確認する](#check-a-users-multi-factor-authentication-status)
 
@@ -156,9 +156,9 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 10. この新しいパスワードをユーザーに知らせます。ユーザーは次の Azure Active Directory サインイン時にこのパスワードを変更する必要があります。
 
-### <a name="enable-self-service-password-reset"></a>セルフ サービスのパスワード リセットを有効にする
+### <a name="enable-self-service-password-reset"></a>セルフサービス パスワード リセットを有効にする
 
-セルフ サービスのパスワード リセットを有効にするには、次のデプロイ手順に従います。
+セルフサービス パスワード リセットを有効にするには、次のデプロイ手順に従います。
 
 -   [Azure Active Directory パスワードをユーザーがリセットできるようにする](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
@@ -247,7 +247,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 6.  対象のユーザーを**検索**し、**行をクリック**して選択します。
 
-7.  **[ライセンス]** をクリックして、ユーザーに現在割り当てられているライセンスを確認します。
+7.  **[ライセンス]** をクリックして、ユーザーが現在割り当てられているライセンスを確認します。
 
 ### <a name="assign-a-user-a-license"></a>ユーザーにライセンスを割り当てる 
 
@@ -275,7 +275,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 11. **[割り当て]** ボタンをクリックしてこれらのライセンスをこのユーザーに割り当てます。
 
-## <a name="if-these-troubleshooting-steps-do-not-resolve-the-issue"></a>これらのトラブルシューティング手順で問題が解決しない場合、
+## <a name="if-these-troubleshooting-steps-do-not-resolve-the-issue"></a>これらのトラブルシューティング手順で問題が解決しない場合
 
 使用可能な場合は、次の情報を含むサポート チケットを開きます。
 
@@ -291,5 +291,5 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 -   Fiddler のトレース
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [アプリケーション プロキシを使用してアプリにシングル サインオンを提供](application-proxy-configure-single-sign-on-with-kcd.md)

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
 ms.openlocfilehash: 467d9cee74567fc0d19031773415675ae7c51818
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71066767"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>Azure API Management を使用した高度な要求スロットル
@@ -78,6 +78,6 @@ ms.locfileid: "71066767"
 ## <a name="summary"></a>まとめ
 Azure API Management では、レートとクォータのスロットルを通じて、API サービスの保護と API サービスへの付加価値の両方を実現します。 新しいスロットル ポリシーをカスタムの範囲設定規則と組み合わせて使用することで、ポリシーをきめ細かく制御でき、顧客はさらに高品質なアプリケーションを構築できるようになります。 この記事の例では、クライアントの IP アドレス、ユーザー ID、クライアントを用いて生成された値を使用してレート制限キーを作成して、新しいポリシーの使用方法の例を示しましたが、 ユーザー エージェント、URL パス フラグメント、メッセージ サイズなど、使用可能なメッセージ要素は他にも多数あります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このトピックに関する GitHub イシューとしてフィードバックをお寄せください。 上記以外で、お客様のシナリオに適した選択肢となりそうなキーの値がありましたら、ぜひお聞かせください。
 

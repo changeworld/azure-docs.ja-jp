@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/05/2020
+ms.date: 03/12/2020
 ms.author: dacoulte
-ms.openlocfilehash: 47489c6adc398065940038091ccf45e59c8207e5
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 1acbcdf1aeed383591626c083f3335d9d7cf61c1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78669181"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79381812"
 ---
-|名前 |説明 |効果 |Version |GitHub |
+|Name |説明 |効果 |Version |GitHub |
 |---|---|---|---|---|
 |[許可されている仮想マシン SKU](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcccc23c7-8427-4f53-ad12-b6a63eb452b3) |このポリシーを使用して、組織でデプロイできる仮想マシン SKU のセットを指定できます。 |拒否 |1.0.0 |[リンク](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMSkusAllowed_Deny.json)
 |[ディザスター リカバリーを構成されていない仮想マシンの監査](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0015ea4d-51ff-4ce3-8d8c-f3f8f0179a56) |ディザスター リカバリーが構成されていない仮想マシンを監査します。 ディザスター リカバリーの詳細については、 https://aka.ms/asr-doc にアクセスしてください。 |auditIfNotExists |1.0.0 |[リンク](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/RecoveryServices_DisasterRecovery_Audit.json)

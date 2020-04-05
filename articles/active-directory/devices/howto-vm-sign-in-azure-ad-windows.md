@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffb0f7cdb320d009eb1549efabac60d7710b9b0e
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 88ae3c45126403161e35ec46e5ccc2666c3edb55
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79080085"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050076"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure Active Directory 認証 (プレビュー) を使用して Azure 内の Windows 仮想マシンにサインインする
 
@@ -177,7 +177,7 @@ Azure AD を有効にした Windows Server 2019 Datacenter VM のロールの割
 
 次の例では、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) を使用し、現在の Azure ユーザーに対して、VM に対する仮想マシンの管理者ログイン ロールを割り当てます。 アクティブな Azure アカウントのユーザー名は [az account show](/cli/azure/account#az-account-show) で取得され、スコープは、[az vm show](/cli/azure/vm#az-vm-show) により、前の手順で作成された VM に設定されます。 スコープは、リソース グループまたはサブスクリプション レベルで割り当てることもでき、通常の RBAC 継承のアクセス許可が適用されます。 詳細については、[ロールベースのアクセス制御](../../virtual-machines/linux/login-using-aad.md)に関するページを参照してください。
 
-```   zureCLI
+```   AzureCLI
 username=$(az account show --query user.name --output tsv)
 vm=$(az vm show --resource-group myResourceGroup --name myVM --query id -o tsv)
 
@@ -278,7 +278,7 @@ AADLoginForWindows 拡張機能が特定のエラー コードで失敗した場
 
 #### <a name="issue-2-aadloginforwindows-extension-fails-to-install-with-exit-code--2145648607"></a>問題 2:AADLoginForWindows 拡張機能のインストールは、終了コード -2145648607 で失敗しました。
 
-拡張機能は https://enterpriseregistration.windows.net エンドポイントに到達できないため、この終了コードは DSREG_AUTOJOIN_DISC_FAILED に変換されます。
+拡張機能は `https://enterpriseregistration.windows.net` エンドポイントに到達できないため、この終了コードは DSREG_AUTOJOIN_DISC_FAILED に変換されます。
 
 1. 次のコマンド ラインを使用して、必要なエンドポイントに VM からアクセスできることを確認します。
 

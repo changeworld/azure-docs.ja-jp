@@ -8,11 +8,11 @@ ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
 ms.openlocfilehash: 05db717f5d3adc2429431503f588f2cc7f79aef6
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72435739"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231871"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Windows VM 用の Azure Disk Encryption 
 
@@ -36,7 +36,7 @@ Windows VM は、[さまざまなサイズ](sizes-general.md)で利用できま�
 
 Azure Disk Encryption は、Premium Storage を使用した VM でも利用できます。
 
-### <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
+### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
 - Windows クライアント: Windows 8 以降
 - Windows Server: Windows Server 2008 R2 以降  
@@ -69,10 +69,10 @@ Azure Disk Encryption では、ディスク暗号化キーとシークレット�
 
 詳細については、「[Azure Disk Encryption 用のキー コンテナーの作成と構成](disk-encryption-key-vault.md)」をご覧ください。
 
-## <a name="terminology"></a>用語集
+## <a name="terminology"></a>用語
 次の表では、Azure Disk Encryption のドキュメントで使用される一般的な用語の一部を定義します。
 
-| 用語集 | 定義 |
+| 用語 | 定義 |
 | --- | --- |
 | Azure Key Vault | Key Vault は、Federal Information Processing Standards (FIPS) に照らして検証されたハードウェア セキュリティ モジュールに基づく、暗号化キー管理サービスです。 これらの標準は、暗号化キーと機密性の高いシークレットを保護するために役立ちます。 詳細については、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) のドキュメントと「[Azure Disk Encryption 用のキー コンテナーの作成と構成](disk-encryption-key-vault.md)」をご覧ください。 |
 | Azure CLI | [Azure CLI](/cli/azure/install-azure-cli) は、コマンド ラインから Azure リソースを管理できるように最適化されています。|
@@ -81,7 +81,7 @@ Azure Disk Encryption では、ディスク暗号化キーとシークレット�
 | PowerShell コマンドレット | 詳しくは、[Azure PowerShell コマンドレット](/powershell/azure/overview)に関するページをご覧ください。 |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [クイックスタート - Azure CLI を使用して Windows VM を作成、暗号化する](disk-encryption-cli-quickstart.md)
 - [クイック スタート - Azure PowerShell を使用して Windows VM を作成、暗号化する](disk-encryption-powershell-quickstart.md)

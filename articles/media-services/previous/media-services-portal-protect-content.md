@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 0c2a9612fab6c685cbc690aa9bbc12d1c7b7b746
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74978204"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Azure Portal を使用したコンテンツ保護ポリシーの構成
 
 > [!NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。   > Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。   > Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 >
 
  Azure Media Services を使用すると、メディアがコンピューターから離れてから、保存、処理、配信されるまでのセキュリティ保護が可能になります。 Media Services では、Advanced Encryption Standard (AES) 128 ビット暗号化キーを使用して、動的に暗号化されたコンテンツを配信できます。 また、PlayReady や Widevine デジタル著作権管理 (DRM) と Apple FairPlay を使用した共通暗号化 (CENC) と共に使用することもできます。 
@@ -40,7 +40,7 @@ Media Services は、承認されたクライアントに DRM ライセンスと
 
 1. **[設定]**  >  **[コンテンツ保護]** の順に選択します。
 
-    ![コンテンツ保護](./media/media-services-portal-content-protection/media-services-content-protection001.png)
+    ![コンテンツの保護](./media/media-services-portal-content-protection/media-services-content-protection001.png)
 
 ## <a name="keylicense-authorization-policy"></a>キー/ライセンス承認ポリシー
 Media Services では、キーまたはライセンスを要求するユーザーを承認する複数の方法がサポートされています。 コンテンツ キー承認ポリシーを構成する必要があります。 キー/ライセンスをクライアントに配信するには、クライアントがポリシーを満たしている必要があります。 コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (オープンまたはトークン制限) を指定できます。
@@ -76,7 +76,7 @@ Widevine ライセンス テンプレートは、Widevine ライセンスで有�
 ### <a name="basic"></a>Basic
 **[Basic]** を選択すると、テンプレートはすべて既定値で作成されます。
 
-### <a name="advanced"></a>詳細
+### <a name="advanced"></a>詳細設定
 Widevine 権利テンプレートの詳細については、「[Widevine ライセンス テンプレートの概要](media-services-widevine-license-template-overview.md)」を参照してください。
 
 ![高度なコンテンツの保護](./media/media-services-portal-content-protection/media-services-content-protection005.png)
@@ -126,9 +126,9 @@ AES クリア キー暗号化は、Smooth Streaming、HLS、および MPEG-DASH 
 
 ## <a name="additional-notes"></a>その他のメモ
 
-* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. のサービス使用条件とプライバシー ポリシーが適用されます。
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>フィードバックの提供

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: cde24657cc8ed78b91e72df16d51df4077a6e030
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75463081"
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>EventFlow を使用したイベントの集計と収集
@@ -34,7 +34,7 @@ EventFlow バイナリは、一連の NuGet パッケージとして入手でき
 すべてのパッケージをインストールした後は、サービスで EventFlow を構成して有効にします。
 
 ## <a name="configure-and-enable-log-collection"></a>ログの収集の構成と有効化
-ログの送信を行う EventFlow パイプラインは、構成ファイルに格納されている仕様から作成されます。 `Microsoft.Diagnostics.EventFlow.ServiceFabric` パッケージは、初期の EventFlow 構成ファイルを `eventFlowConfig.json` という名前の `PackageRoot\Config` ソリューション フォルダーにインストールします。 サービスの既定の `EventSource` クラスおよび構成する任意の他の入力からデータをキャプチャして適切な場所にデータを送信するように、この構成ファイルを変更する必要があります。
+ログの送信を行う EventFlow パイプラインは、構成ファイルに格納されている仕様から作成されます。 `Microsoft.Diagnostics.EventFlow.ServiceFabric` パッケージは、初期の EventFlow 構成ファイルを `PackageRoot\Config` という名前の `eventFlowConfig.json` ソリューション フォルダーにインストールします。 サービスの既定の `EventSource` クラスおよび構成する任意の他の入力からデータをキャプチャして適切な場所にデータを送信するように、この構成ファイルを変更する必要があります。
 
 >[!NOTE]
 >プロジェクト ファイルで Visual Studio 2017 形式を使用している場合、`eventFlowConfig.json` ファイルは自動的に追加されません。 これを修正するには、そのファイルを `Config` フォルダーに作成し、ビルド アクションを `Copy if newer` に設定します。 
@@ -129,7 +129,7 @@ namespace Stateless1
 }
 ```
 
-`ServiceFabricDiagnosticsPipelineFactory` の `CreatePipeline` メソッドのパラメーターとして渡される名前は、EventFlow ログ収集パイプラインを表す "*正常性エンティティ*" の名前です。 この名前は、EventFlow でエラーが発生し、Service Fabric 正常性サブシステムでそれが報告される場合に使われます。
+`CreatePipeline` の `ServiceFabricDiagnosticsPipelineFactory` メソッドのパラメーターとして渡される名前は、EventFlow ログ収集パイプラインを表す "*正常性エンティティ*" の名前です。 この名前は、EventFlow でエラーが発生し、Service Fabric 正常性サブシステムでそれが報告される場合に使われます。
 
 ### <a name="use-service-fabric-settings-and-application-parameters-in-eventflowconfig"></a>eventFlowConfig で Service Fabric の設定とアプリケーション パラメーターを使用する
 

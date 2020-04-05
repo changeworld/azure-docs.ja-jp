@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: diberry
 ms.openlocfilehash: a2472064720af0a25568a2f173b971898b1f2e25
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123117"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218701"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding についてよくあるご質問 (FAQ)
 
@@ -204,7 +204,7 @@ Azure では、テナントはサービスに関連付けられているクラ�
 ### <a name="why-are-there-more-endpoint-keys-assigned-to-my-app-than-i-assigned"></a>割り当てた数より多くのエンドポイント キーがアプリに割り当てられているのはなぜですか?
 利便性のため、それぞれの LUIS アプリには、オーサリング/スターター キーがエンドポイント リストにあります。 このキーでは、LUIS を試用できるよう、数個のエンドポイント ヒットのみが許可されます。  
 
-LUIS の一般公開 (GA) よりも前からアプリが存在していた場合、お使いのサブスクリプション内のエンドポイント キーが自動的に割り当てられます。 これは、GA の移行を容易にするために行われました。 Azure portal 内の新しい LUIS エンドポイント キーが自動的に LUIS に割り当てられることは _ありません_。
+LUIS の一般公開 (GA) よりも前からアプリが存在していた場合、お使いのサブスクリプション内のエンドポイント キーが自動的に割り当てられます。 これは、GA の移行を容易にするために行われました。 Azure portal 内の新しい LUIS エンドポイント キーが自動的に LUIS に割り当てられることは_ありません_。
 
 ## <a name="key-management"></a>キー管理
 
@@ -241,7 +241,7 @@ LUIS の一般公開 (GA) よりも前からアプリが存在していた場合
 
 ### <a name="can-i-delete-data-from-luis"></a>LUIS からデータを削除できますか?
 
-* LUIS のトレーニングに使用した発話例はいつでも削除できます。 LUIS アプリから発話例を削除すると、LUIS Web サービスから削除されて、エクスポートに使用できなくなります。
+* LUIS のトレーニングに使用した発話例はいつでも削除できます。 LUIS アプリから発話の例を削除すると、LUIS Web サービスから削除されて、エクスポートに使用できなくなります。
 * **[Review endpoint utterances]\(エンドポイントの発話の確認\)** ページで LUIS が提案するユーザー発話のリストから、発話を削除できます。 このリストから削除した発話は提案されなくなりますが、ログからは削除されません。
 * アカウントを削除すると、発話例およびログと共に、すべてのアプリが削除されます。 データは、サーバーに 60 日間保持された後、完全に削除されます。
 
@@ -333,7 +333,7 @@ Build 2019 Conference では、次の機能が公開されました。
 
 * [How to use Azure Conversational AI to scale your business for the next generation (Azure の対話型 AI を使用して次世代のビジネスを拡大する方法)](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 LUIS の詳細については、次のリソースを参照してください。
 * [LUIS のタグが付いた Stack Overflow での質問](https://stackoverflow.com/questions/tagged/luis)

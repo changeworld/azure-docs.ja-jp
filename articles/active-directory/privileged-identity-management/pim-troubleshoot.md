@@ -14,10 +14,10 @@ ms.date: 10/18/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 474f2634e6f7ddc1840548c39ae86cb54c3bf08e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78299671"
 ---
 # <a name="troubleshoot-a-problem-with-privileged-identity-management"></a>Privileged Identity Management に関する問題のトラブルシューティング
@@ -34,7 +34,7 @@ Azure リソースのアクティブな所有者またはユーザー アクセ�
 
 この問題は、PIM サービス プリンシパルのユーザー アクセス管理者ロールが、誤ってサブスクリプションから削除された場合に発生する可能性があります。 Privileged Identity Management サービスから Azure リソースへのアクセスができるようにするには、Azure サブスクリプションで MS-PIM サービス プリンシパルに[ユーザー アクセス管理者ロール](../../role-based-access-control/built-in-roles.md#user-access-administrator)が常に割り当てられている必要があります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 Privileged identity Management サービス プリンシパル名 (MS-PIM) にサブスクリプション レベルでユーザー アクセス管理者ロールを割り当てます。 この割り当てにより、Privileged identity Management サービスから Azure リソースにアクセスできるようになります。 そのロールは、実際の要件に応じて、管理グループ レベルまたはサブスクリプション レベルで割り当てることができます。 サービス プリンシパルの詳細については、「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)」を参照してください。
 

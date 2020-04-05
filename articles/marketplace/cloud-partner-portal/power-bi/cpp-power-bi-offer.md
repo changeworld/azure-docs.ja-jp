@@ -1,19 +1,18 @@
 ---
 title: Power BI アプリ オファー | Azure Marketplace
 description: Microsoft AppSource マーケットプレースに Power BI アプリを発行する方法を示します。
-services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.author: pabutler
-ms.openlocfilehash: d1974133562c0bb8b8006ea2ef323e6797643b67
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: e0f8440686fc36d2cfcb493d97abaf44f81dd287
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826066"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275919"
 ---
 # <a name="power-bi-app-offer"></a>Power BI アプリ オファー
 
@@ -47,6 +46,6 @@ Power BI アプリ オファーの発行プロセスを次に示します。
 8. Power BI で、実稼働前パッケージを運用に昇格させます。 詳細については、「[テンプレート アプリのリリースを管理する](https://docs.microsoft.com/power-bi/service-template-apps-create#manage-the-template-app-release)」をご覧ください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Power BI アプリ オファーを作成して AppSource に発行するには、その前に、Power BI アプリを AppSource に発行するための[要件](./cpp-prerequisites.md)を満たしている必要があります。

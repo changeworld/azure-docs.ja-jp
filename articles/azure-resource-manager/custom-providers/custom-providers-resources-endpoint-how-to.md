@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: b6c5f5b8e437ad2dc2e8a3be3f3f2ed03a613b44
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75649219"
 ---
 # <a name="adding-custom-resources-to-azure-rest-api"></a>カスタム リソースを Azure REST API に追加する
@@ -183,7 +183,7 @@ customResourceName | *はい* | カスタム リソースの名前。
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure カスタム リソースプロバイダーの概要](overview.md)
-- [クイック スタート:Azure カスタム リソースプロバイダーの作成とカスタム リソースのデプロイ](./create-custom-provider.md)
+- [クイック スタート: Azure カスタム リソースプロバイダーの作成とカスタム リソースのデプロイ](./create-custom-provider.md)
 - [チュートリアル:Azure でカスタム アクションとカスタム リソースを作成する](./tutorial-get-started-with-custom-providers.md)
 - [方法: カスタム アクションを Azure REST API に追加する](./custom-providers-action-endpoint-how-to.md)
 - [リファレンス: カスタム リソースのプロキシのリファレンス](proxy-resource-endpoint-reference.md)

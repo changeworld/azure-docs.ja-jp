@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 01/09/2019
 ms.custom: mvc
 ms.openlocfilehash: acf5f3cdf761e1773d6e9384a4ceb99a645ed7cc
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74773519"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>クイック スタート:Azure CLI を使用した Azure Database for MySQL サーバーの作成
@@ -33,10 +33,10 @@ CLI をローカルにインストールして使用する場合、この記事�
 az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 [az group create](/cli/azure/group#az-group-create) コマンドで [Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。
 
-次の例では、`myresourcegroup` という名前のリソース グループを `westus` の場所に作成します。
+次の例では、`westus` の場所に `myresourcegroup` という名前のリソース グループを作成します。
 
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
@@ -47,13 +47,13 @@ az group create --name myresourcegroup --location westus
 
 **設定** | **値の例** | **説明**
 ---|---|---
-名前 | mydemoserver | Azure Database for MySQL サーバーを識別する一意の名前を選択します。 サーバー名に含めることができるのは、英小文字、数字、およびハイフン (-) のみであり、 3 ～ 63 文字にする必要があります。
+name | mydemoserver | Azure Database for MySQL サーバーを識別する一意の名前を選択します。 サーバー名に含めることができるのは、英小文字、数字、およびハイフン (-) のみであり、 3 ～ 63 文字にする必要があります。
 resource-group | myresourcegroup | Azure リソース グループの名前を指定します。
 sku-name | GP_Gen5_2 | SKU の名前。 省略表現の {価格レベル}\_{コンピューティング世代}\_{仮想コア} という規則に従います。 sku-name パラメーターの詳細については、この表の下方を参照してください。
 backup-retention | 7 | バックアップを保持する必要のある時間。 単位は日数です。 範囲は 7 ～ 35 です。 
 geo-redundant-backup | 無効 | このサーバーに対して geo 冗長バックアップを有効にする必要があるかどうかどうか。 使用できる値は以下の通りです。Enabled、Disabled
 location | westus | サーバーの Azure の場所。
-ssl-enforcement | 有効 | このサーバーに対して ssl を有効にする必要があるかどうかどうか。 使用できる値は以下の通りです。Enabled、Disabled
+ssl-enforcement | Enabled | このサーバーに対して ssl を有効にする必要があるかどうかどうか。 使用できる値は以下の通りです。Enabled、Disabled
 storage-size | 51200 | サーバーのストレージ容量 (単位はメガバイト)。 有効な storage-size は最小 5,120 MB で、1,024 MB ずつ増加します。 ストレージ サイズの制限の詳細については、[価格レベル](./concepts-pricing-tiers.md)についてのドキュメントを参照してください。 
 version | 5.7 | MySQL のメジャー バージョン。
 admin-user | myadmin | 管理者ログインのユーザー名。 これを **azure_superuser**、**admin**、**administrator**、**root**、**guest**、**public** にすることはできません。
@@ -67,7 +67,7 @@ sku-name パラメーターの値は、次の例のように、{価格レベル}
 
 リージョンごとおよびレベルごとに有効な値を理解するには、[価格レベル](./concepts-pricing-tiers.md)のドキュメントを参照してください。
 
-次の例では、サーバー管理者ログイン `myadmin` を使用して、リソース グループ `myresourcegroup` の `mydemoserver` という名前の MySQL 5.7 サーバーを米国西部に作成します。 これは、2 つの**仮想コア**を備えた **Gen 4** **汎用**サーバーです。 `<server_admin_password>` は独自の値に置き換えます。
+次の例では、サーバー管理者ログイン `myadmin` を使用して、リソース グループ `myresourcegroup` の `mydemoserver` という名前の MySQL 5.7 サーバーを米国西部に作成します。 これは、**2 つの仮想コア**を備えた **Gen 4** **汎用**サーバーです。 `<server_admin_password>` は独自の値に置き換えます。
 
 ```azurecli-interactive
 az mysql server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 5.7
@@ -208,15 +208,15 @@ mysql>
 |---|---|---|
 |   接続名 | My Connection | この接続のラベルを指定します (任意に指定できます) |
 | 接続方法 | Standard (TCP/IP) を選択します | TCP/IP プロトコルを使用して Azure Database for MySQL に接続します |
-| ホスト名 | mydemoserver.mysql.database.azure.com | 前にメモしておいたサーバー名です。 |
+| hostname | mydemoserver.mysql.database.azure.com | 前にメモしておいたサーバー名です。 |
 | Port | 3306 | MySQL の既定のポートが使用されます。 |
 | ユーザー名 | myadmin@mydemoserver | 前にメモしておいたサーバーの管理者ログインです。 |
-| パスワード | **** | 前に構成した管理者アカウントのパスワードを使用します。 |
+| Password | **** | 前に構成した管理者アカウントのパスワードを使用します。 |
 
 **[Test Connection] \(接続のテスト)** をクリックして、すべてのパラメーターが正しく構成されているかをテストします。
 これで、接続をクリックしてサーバーに正常に接続できます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 これらのリソースが別のクイック スタート/チュートリアルで不要である場合、次のコマンドで削除することができます。 
 
 ```azurecli-interactive
@@ -228,7 +228,7 @@ az group delete --name myresourcegroup
 az mysql server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure CLI での MySQL データベースの設計](./tutorial-design-database-using-cli.md)

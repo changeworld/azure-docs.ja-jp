@@ -9,14 +9,16 @@ ms.topic: conceptual
 author: peterclu
 ms.author: amlstudiodocs
 ms.date: 01/18/2019
-ms.openlocfilehash: ee4ef451888638c0ba33d7938c88b836b28f3fe5
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 5529d09d71eb9f4ef1d9b4d8185cafb11f644bc8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894643"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79501309"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) のサポートとトレーニングを利用する
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 この記事では、Azure Machine Learning Studio (クラシック) の詳細と、お客様の問題や疑問点を解決するためのサポートを受ける方法について説明します。
 
@@ -25,7 +27,7 @@ ms.locfileid: "75894643"
 以下の学習リソースを参照してください。
 + [チュートリアルと使い方の記事](../studio/index.yml) 
 + [初級者向けのデータ サイエンスのビデオ](../studio/data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) 
-+ [アルゴリズム チート シート](../studio/algorithm-cheat-sheet.md) 
++ [アルゴリズム チート シート](../../synapse-analytics/sql-data-warehouse/cheat-sheet.md) 
 
 ## <a name="submit-doc-feedback"></a>ドキュメントのフィードバックを送信する
 

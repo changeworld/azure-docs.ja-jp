@@ -16,10 +16,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: b7a8f7136d0899ab3afe04bce2d25bc2e7f8d3e2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75981725"
 ---
 # <a name="pricing-guidance-for-azure-sql-server-vms"></a>Azure SQL Server VM の価格ガイダンス
@@ -84,7 +84,7 @@ ms.locfileid: "75981725"
 | Ubuntu | [SQL Server 2017 Web Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonUbuntuServer1604LTS)<br/>[SQL Server 2017 Standard Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonUbuntuServer1604LTS)<br/>[SQL Server 2017 Enterprise Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseonUbuntuServer1604LTS) |
 
 > [!IMPORTANT]
-> ポータルで SQL Server 仮想マシンを作成するとき、 **[サイズの選択]** ウィンドウには見積もりコストが表示されます。 この見積もりに含まれるのは、VM を実行するためのコンピューティング コストと、OS (Windows または他社製 Linux オペレーティング システム) のライセンス コストのみであることに注意してください。
+> ポータルで SQL Server 仮想マシンを作成するとき、 **[サイズの選択]** ウィンドウには見積もりコストが表示されます。 この見積もりに含まれるのは、VM を実行するためのコンピューティング コストと、OS (Windows または他社製 Linx オペレーティング システム) のライセンス コストのみであることに注意してください。
 >
 > ![VM サイズを選択するブレード](./media/virtual-machines-windows-sql-server-pricing-guidance/sql-vm-choose-size-pricing-estimate.png)
 >
@@ -93,7 +93,7 @@ ms.locfileid: "75981725"
 > [!NOTE]
 > ライセンス モデルを従量課金制のライセンスとライセンス持ち込み (BYOL) の間で切り替えられるようになりました。 詳細については、[SQL VM のライセンス モデルを変更する方法](virtual-machines-windows-sql-ahb.md)に関するページを参照してください。 
 
-## <a id="byol"></a> ライセンスを持ち込む (BYOL)
+## <a name="bring-your-own-license-byol"></a><a id="byol"></a> ライセンスを持ち込む (BYOL)
 
 **ライセンス モビリティを使用した自分の SQL Server ライセンスの持ち込み** (**BYOL**) は、Azure VM のソフトウェア アシュアランスで既存の SQL Server ボリューム ライセンスを使用することです。 BYOL を使用した SQL Server VM の料金は、SQL Server のライセンスではなく、VM を実行するコストに対してのみ発生します。これは、ボリューム ライセンス プログラムを介して既にライセンスとソフトウェア アシュアランスを取得している場合が対象になります。
 
@@ -133,7 +133,7 @@ BYOL を SQL Server VM で利用するには、SQL Server Standard または Ent
 
 不要なコストがかからないようにするには、最適な仮想マシンのサイズを選択し、ワークロードが継続して実行されないよう断続的にシャットダウンすることを検討してください。
 
-### <a id="machinesize"></a> VM の適切なサイズ設定
+### <a name="correctly-size-your-vm"></a><a id="machinesize"></a> VM の適切なサイズ設定
 
 SQL Server のライセンス コストは vCPU の数に直接関連します。 CPU、メモリ、記憶域、および I/O 帯域幅の予想されるニーズに合った VM サイズを選択してください。 マシンのサイズ オプションの一覧については、[Windows VM のサイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)と [Linux VM のサイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページをそれぞれご覧ください。
 

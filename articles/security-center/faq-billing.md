@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: 214b5eea6f8de2d59869f7279aa17bcd786d8742
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77913839"
 ---
 # <a name="billing-questions"></a>課金に関する質問

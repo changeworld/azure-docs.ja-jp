@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/12/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f7c73d7d07bdfaa4fbbd7eeca4f00895c5add354
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 2766ea87544f2a21fb654f687eb62dee3c0714ab
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548216"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334996"
 ---
 **Standard HDD マネージド ディスク**  
 [!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "76548216"
 
 **Premium SSD マネージド ディスク:VM あたりの制限**
 
-| リソース | 既定の制限 |
+| リソース | 制限 |
 | --- | --- |
 | VM あたりの最大 IOPS |GS5 VM で 80,000 IOPS |
 | VM あたりの最大スループット |GS5 VM で 2,000 MB/秒 |

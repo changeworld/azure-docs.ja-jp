@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/02/2018
 ms.author: shvija
 ms.openlocfilehash: 08e10996f633d35ffbf946b61937a0e9a76f7227
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162227"
 ---
 # <a name="available-event-hubs-apis"></a>使用可能な Event Hubs API
@@ -36,7 +36,7 @@ ms.locfileid: "77162227"
 | .NET Standard | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/) | [GitHub](https://github.com/azure/azure-event-hubs-dotnet) |
 | .NET Framework | [NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) | 該当なし |
 | Java | [Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22) | [Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22) | [GitHub](https://github.com/Azure/azure-event-hubs-java) |
-| Node | [NPM](https://www.npmjs.com/package/azure-event-hubs) | 該当なし | [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) |
+| ノード | [NPM](https://www.npmjs.com/package/azure-event-hubs) | 該当なし | [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) |
 | C | 該当なし | 該当なし | [GitHub](https://github.com/Azure/azure-event-hubs-c) |
 
 ### <a name="additional-information"></a>関連情報
@@ -45,7 +45,7 @@ ms.locfileid: "77162227"
 
 .NET エコシステムには複数のランタイムがあるため、Event Hubs に対して複数の .NET ライブラリがあります。 .NET Standard ライブラリは、.NET Core または .NET Framework のいずれかを使用して実行できますが、.NET Framework ライブラリについては、.NET Framework 環境でのみ実行できます。 .NET Framework バージョンの詳細については、「[フレームワークのバージョン](https://docs.microsoft.com/dotnet/articles/standard/frameworks)」を参照してください。
 
-#### <a name="node"></a>Node
+#### <a name="node"></a>ノード
 
 [JavaScript ライブラリ](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs)は現在プレビュー段階で、Microsoft 従業員と外部の共同作成者によってサイド プロジェクトとして管理されています。 ソース コードなど、お寄せいただいた投稿はすべて確認いたします。
 

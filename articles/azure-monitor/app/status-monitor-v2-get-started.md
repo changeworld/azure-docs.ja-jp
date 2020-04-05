@@ -6,10 +6,10 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 7819de1f3dfab7f934421de86c0481d2e063f7a4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671190"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>オンプレミス サーバー向け Azure Monitor Application Insights Agent の概要

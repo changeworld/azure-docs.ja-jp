@@ -4,12 +4,12 @@ description: Azure API Management をすぐに使い始め、Service Fabric の�
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: mvc
-ms.openlocfilehash: 201d617ce15216ba168bc484f644e165d5ae0e71
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7bd781a21a32ca29fe3f5dd2f4432dbf1e5ca411
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465344"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80292142"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Azure で API Management と Service Fabric を統合する
 
@@ -160,7 +160,7 @@ Service Fabric のバックエンドの場合は、特定の Service Fabric サ�
 * ステートフル サービスのレプリカの選択。
 * 解決の再試行の条件。サービスの場所を再解決して要求を再送信するための条件を指定できます。
 
-**policyContent** は、ポリシーの JSON エスケープ XML コンテンツです。  この記事では、前にデプロイした .NET または Java ステートレス サービスに直接要求をルーティングするバックエンド ポリシーを作成します。 受信ポリシーの下に `set-backend-service` ポリシーを追加します。  *sf-service-instance-name* の値を `fabric:/ApiApplication/WebApiService` (前に .NET バックエンド サービスをデプロイした場合) または `fabric:/EchoServerApplication/EchoServerService` (Java サービスをデプロイした場合) に置き換えます。  *backend-id* は、バックエンド リソース (この場合は、*apim.json* テンプレートで定義されている `Microsoft.ApiManagement/service/backends` リソース) を参照します。 *backend-id* を使用して、API Management API を使用して作成された別のバックエンド リソースを参照することもできます。 この記事では、*backend-id* を *service_fabric_backend_name* パラメーターの値に設定します。
+**policyContent** は、ポリシーの JSON エスケープ XML コンテンツです。  この記事では、前にデプロイした .NET または Java ステートレス サービスに直接要求をルーティングするバックエンド ポリシーを作成します。 受信ポリシーの下に `set-backend-service` ポリシーを追加します。  *sf-service-instance-name* の値を `fabric:/ApiApplication/WebApiService` (前に .NET バックエンド サービスをデプロイした場合) または `fabric:/EchoServerApplication/EchoServerService` (Java サービスをデプロイした場合) に置き換えます。  *backend-id* は、バックエンド リソース (この場合は、`Microsoft.ApiManagement/service/backends`apim.json*テンプレートで定義されている* リソース) を参照します。 *backend-id* を使用して、API Management API を使用して作成された別のバックエンド リソースを参照することもできます。 この記事では、*backend-id* を *service_fabric_backend_name* パラメーターの値に設定します。
 
 ```xml
 <policies>
@@ -196,7 +196,7 @@ Service Fabric バックエンド ポリシーの全属性については、[API
 |serviceFabricCertificateThumbprint|C4C1E541AD512B8065280292A8BA6079C3F26F10 |
 |serviceFabricCertificate|&lt;base-64 エンコード文字列&gt;|
 |url_path|/api/values|
-|clusterHttpManagementEndpoint|https://mysfcluster.southcentralus.cloudapp.azure.com:19080|
+|clusterHttpManagementEndpoint|`https://mysfcluster.southcentralus.cloudapp.azure.com:19080`|
 |inbound_policy|&lt;XML 文字列&gt;|
 
 *certificatePassword* と *serviceFabricCertificateThumbprint* は、クラスターの設定に使用するクラスター証明書と一致する必要があります。
@@ -209,7 +209,7 @@ $b64 = [System.Convert]::ToBase64String($bytes);
 [System.Io.File]::WriteAllText("C:\mycertificates\sfclustertutorialgroup220171109113527.txt", $b64);
 ```
 
-*inbound_policy* で、*sf-service-instance-name* の値を `fabric:/ApiApplication/WebApiService` (前に .NET バックエンド サービスをデプロイした場合) または `fabric:/EchoServerApplication/EchoServerService` (Java サービスをデプロイした場合) に置き換えます。 *backend-id* は、バックエンド リソース (この場合は、*apim.json* テンプレートで定義されている `Microsoft.ApiManagement/service/backends` リソース) を参照します。 *backend-id* を使用して、API Management API を使用して作成された別のバックエンド リソースを参照することもできます。 この記事では、*backend-id* を *service_fabric_backend_name* パラメーターの値に設定します。
+*inbound_policy* で、*sf-service-instance-name* の値を `fabric:/ApiApplication/WebApiService` (前に .NET バックエンド サービスをデプロイした場合) または `fabric:/EchoServerApplication/EchoServerService` (Java サービスをデプロイした場合) に置き換えます。 *backend-id* は、バックエンド リソース (この場合は、`Microsoft.ApiManagement/service/backends`apim.json*テンプレートで定義されている* リソース) を参照します。 *backend-id* を使用して、API Management API を使用して作成された別のバックエンド リソースを参照することもできます。 この記事では、*backend-id* を *service_fabric_backend_name* パラメーターの値に設定します。
 
 ```xml
 <policies>

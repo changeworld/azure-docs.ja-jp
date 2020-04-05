@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.openlocfilehash: 03dee0570faa863ca411ed91f2a6ec85a1e38380
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76985681"
 ---
 # <a name="connect-to-azure-data-explorer-from-azure-databricks-by-using-python"></a>Azure Databricks から Python を使用して Azure Data Explorer に接続する
@@ -38,7 +38,7 @@ Azure Databricks クラスター上に [Python ライブラリ](/azure/kusto/api
 
 ## <a name="connect-to-azure-data-explorer-by-using-a-device-login"></a>デバイスのログインを使用して Azure Data Explorer に接続する
 
-[Query-ADX-device-login](https://github.com/Azure/azure-kusto-docs-samples/blob/master/Databricks_notebooks/Query-ADX-device-login.ipynb) ノートブックを使用して、[ノートブックをインポート](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-a-notebook)します。 その後、ご自身の資格情報を使用して Azure Data Explorer に接続できます。
+[Query-ADX-device-login](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-a-notebook) ノートブックを使用して、[ノートブックをインポート](https://github.com/Azure/azure-kusto-docs-samples/blob/master/Databricks_notebooks/Query-ADX-device-login.ipynb)します。 その後、ご自身の資格情報を使用して Azure Data Explorer に接続できます。
 
 ## <a name="connect-to-adx-by-using-an-azure-ad-app"></a>Azure AD アプリを使用して ADX に接続する
 
@@ -87,4 +87,4 @@ https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
     ```databricks secrets list --scope adx```
 
 ### <a name="import-a-notebook"></a>ノートブックをインポートする
-[Query-ADX-AAD-App](https://github.com/Azure/azure-kusto-docs-samples/blob/master/Databricks_notebooks/Query-ADX-AAD-App.ipynb) ノートブックを使用して Azure Data Explorer に接続することで、[ノートブックをインポートします](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-a-notebook)。 プレースホルダーの値は、ご利用のクラスター名、データベース名、および Azure AD テナント ID で更新してください。
+[Query-ADX-AAD-App](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-a-notebook) ノートブックを使用して Azure Data Explorer に接続することで、[ノートブックをインポートします](https://github.com/Azure/azure-kusto-docs-samples/blob/master/Databricks_notebooks/Query-ADX-AAD-App.ipynb)。 プレースホルダーの値は、ご利用のクラスター名、データベース名、および Azure AD テナント ID で更新してください。

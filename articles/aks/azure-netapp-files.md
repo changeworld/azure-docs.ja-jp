@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 09/26/2019
 ms.author: zarhoads
 ms.openlocfilehash: 1c4996df66d475c63110e3d2797f55598fd85b8d
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273746"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Azure NetApp Files と Azure Kubernetes Service を統合する
@@ -59,7 +59,7 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeRes
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-[az netappfiles account create][az-netappfiles-account-create] を使用して、その**ノード** リソース グループ (AKS クラスターと同じリージョン) に Azure NetApp Files アカウントを作成します。 次の例では、*MC_myResourceGroup_myAKSCluster_eastus* リソース グループと *eastus* リージョンに *myaccount1* という名前のアカウントを作成します。
+**az netappfiles account create** を使用して、その[ノード][az-netappfiles-account-create] リソース グループ (AKS クラスターと同じリージョン) に Azure NetApp Files アカウントを作成します。 次の例では、*MC_myResourceGroup_myAKSCluster_eastus* リソース グループと *eastus* リージョンに *myaccount1* という名前のアカウントを作成します。
 
 ```azurecli
 az netappfiles account create \
@@ -80,7 +80,7 @@ az netappfiles pool create \
     --service-level Premium
 ```
 
-[az network vnet subnet create][az-network-vnet-subnet-create] を使用して、[Azure NetApp Files に委任][anf-delegate-subnet]するサブネットを作成します。 *このサブネットは、AKS クラスターと同じ仮想ネットワーク内に存在する必要があります。*
+[az network vnet subnet create][anf-delegate-subnet] を使用して、[Azure NetApp Files に委任][az-network-vnet-subnet-create]するサブネットを作成します。 *このサブネットは、AKS クラスターと同じ仮想ネットワーク内に存在する必要があります。*
 
 ```azurecli
 RESOURCE_GROUP=MC_myResourceGroup_myAKSCluster_eastus
@@ -172,7 +172,7 @@ spec:
 kubectl apply -f pv-nfs.yaml
 ```
 
-[kubectl describe][kubectl-describe] コマンドを使用して、PersistentVolume の "*状態*" が "*使用可能*" であることを確認します。
+*kubectl describe* コマンドを使用して、PersistentVolume の "*状態*" が "[使用可能][kubectl-describe]" であることを確認します。
 
 ```console
 kubectl describe pv pv-nfs
@@ -202,7 +202,7 @@ spec:
 kubectl apply -f pvc-nfs.yaml
 ```
 
-[kubectl describe][kubectl-describe] コマンドを使用して、PersistentVolumeClaim の "*状態*" が "*使用可能*" であることを確認します。
+*kubectl describe* コマンドを使用して、PersistentVolumeClaim の "*状態*" が "[使用可能][kubectl-describe]" であることを確認します。
 
 ```console
 kubectl describe pvc pvc-nfs
@@ -240,7 +240,7 @@ spec:
 kubectl apply -f nginx-nfs.yaml
 ```
 
-[kubectl describe][kubectl-describe] コマンドを使用して、ポッドが "*実行中*" であることを確認します。
+*kubectl describe* コマンドを使用して、ポッドが "[実行中][kubectl-describe]" であることを確認します。
 
 ```console
 kubectl describe pod nginx-nfs

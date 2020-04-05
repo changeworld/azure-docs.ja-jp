@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 139d1a470c67d5dab310c4fa2a9171f433df2061
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 5d6ba2bd52d8f4af4244e8ce1babeb7bc9d37fe4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912378"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235674"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166 を Azure IoT Hub に接続する
 
@@ -144,7 +144,7 @@ DevKit は、IoT ハブ上のデバイス固有のエンドポイントに接続
 
 1. Azure に送信されたテレメトリ データを確認するには、Azure Cloud Shell で次のコマンドを実行します。
 
-    ```bash
+    ```azurecli
     az iot hub monitor-events --hub-name YourIoTHubName --output table
     ```
 

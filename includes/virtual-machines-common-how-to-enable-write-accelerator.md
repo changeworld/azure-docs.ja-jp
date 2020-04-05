@@ -9,10 +9,10 @@ ms.date: 11/27/2019
 ms.author: raiye
 ms.custom: include file
 ms.openlocfilehash: 456d550659c04b2272c048fcd64fe73b1a11522a
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74566302"
 ---
 書き込みアクセラレータは、専用の Azure Managed Disks がある Premium Storage 上の M シリーズ仮想マシン (VM) 用のディスク機能です。 名前が示すように、この機能の目的は、Azure Premium Storage に対する書き込みの I/O 待機時間を短縮することです。 書き込みアクセラレータは、最新のデータベース用のパフォーマンスの高い方法でログ ファイルの更新をディスクに永続化する必要がある場合に最適です。

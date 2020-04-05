@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 ms.openlocfilehash: cef0fcb990cd2c5c6583822d4dc4c6993c52eac2
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75666790"
 ---
 # <a name="migrate-logic-apps-to-latest-schema-version"></a>ロジック アプリを最新のスキーマ バージョンに移行する

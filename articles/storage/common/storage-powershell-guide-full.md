@@ -9,10 +9,10 @@ ms.date: 08/16/2018
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: d2404ee58f5f44fbe5625f267e6d1c504d0bd237
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75465095"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Azure Storage での Azure PowerShell の使用
@@ -139,7 +139,7 @@ SKU 名は、LRS (ローカル冗長ストレージ) など、ストレージ �
 
 ### <a name="manage-the-access-keys"></a>アクセス キーの管理
 
-Azure Storage アカウントには 2 つのアカウント キーがあります。 キーを取得するには、[Get-AzStorageAccountKey](/powershell/module/az.Storage/Get-azStorageAccountKey) を使用します。 この例では、最初のキーを取得します。 もう 1 つのキーを取得するには、`Value[0]` の代わりに `Value[1]` を使用します。
+Azure Storage アカウントには 2 つのアカウント キーがあります。 キーを取得するには、[Get-AzStorageAccountKey](/powershell/module/az.Storage/Get-azStorageAccountKey) を使用します。 この例では、最初のキーを取得します。 もう 1 つのキーを取得するには、`Value[1]` の代わりに `Value[0]` を使用します。
 
 ```powershell
 $storageAccountKey = `
@@ -156,7 +156,7 @@ New-AzStorageAccountKey -ResourceGroupName $resourceGroup `
   -KeyName key1
 ```
 
-もう 1 つのキーを再生成するには、キー名として `key1` の代わりに `key2` を使用します。
+もう 1 つのキーを再生成するには、キー名として `key2` の代わりに `key1` を使用します。
 
 いずれかのキーを再生成してもう一度取得し、新しい値を確認します。
 

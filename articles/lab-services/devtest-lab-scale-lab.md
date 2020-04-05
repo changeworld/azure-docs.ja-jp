@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: f3299c24bc751263ccd284a4fddb492fba5dd1e0
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76761187"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>DevTest Labs でのクォータと制限のスケール
@@ -35,7 +35,7 @@ Azure リソースの最も一般的な一部のクォータについては、[A
 ## <a name="view-your-usage-and-quotas"></a>使用量とクォータの表示
 次の手順では、特定の Azure リソースのサブスクリプションの現在のクォータや、使用した各クォータの割合を表示する方法を説明します。
 
-1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインする
 1. **[その他のサービス]** を選択し、一覧の **[課金]** を選択します。
 1. [課金] ブレードでサブスクリプションを選択します。
 4. **[使用量 + クォータ]** を選択します。

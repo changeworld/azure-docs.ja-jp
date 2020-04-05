@@ -9,10 +9,10 @@ ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: ef623b95e104b485c6bfc8b2f489afeca436d81e
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74084174"
 ---
 # <a name="prepare-azure-resources-for-hyper-v-disaster-recovery"></a>Hyper-V のディザスター リカバリーのために Azure リソースを準備する
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in"></a>サインイン
 
-[Azure Portal](https://portal.azure.com) にサインインします。
+[Azure portal](https://portal.azure.com) にサインインする
 
 ## <a name="verify-account-permissions"></a>アカウントのアクセス許可を確認する
 
@@ -82,7 +82,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 フェールオーバー後にストレージから作成された Azure VM は、このネットワークに参加します。
 
-1. [Azure Portal](https://portal.azure.com) で、 **[リソースの作成]**  >  **[ネットワーク]**  >  **[仮想ネットワーク]** の順に選択します。 デプロイ モデルとして [Resource Manager] を選択したままにします。
+1. [Azure portal](https://portal.azure.com) で、 **[リソースの作成]**  >  **[ネットワーク]**  >  **[仮想ネットワーク]** の順に選択します。 デプロイ モデルとして [Resource Manager] を選択したままにします。
 2. **[名前]** で、ネットワーク名を入力します。 Azure リソース グループ内で一意となる名前を使用してください。 このチュートリアルでは **ContosoASRnet** を使用します。
 3. ネットワークを作成するリソース グループを指定します。 このチュートリアルでは、既存のリソース グループ **contosoRG** を使用します。
 4. **[アドレス範囲]** で、ネットワークの範囲として **10.0.0.0/24** を入力します。 このネットワークにはサブネットがありません。
@@ -103,7 +103,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure へのディザスター リカバリーのためにオンプレミス Hyper-V インフラストラクチャを準備する](hyper-v-prepare-on-premises-tutorial.md)

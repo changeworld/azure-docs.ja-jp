@@ -17,10 +17,10 @@ ms.date: 10/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e14d5adec7c58c69b07d1f6894a427d86e87a915
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72271832"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-juno-journey"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Juno Journey の統合
@@ -29,7 +29,7 @@ ms.locfileid: "72271832"
 
 * Juno Journey にアクセスできるユーザーを Azure AD で制御する。
 * ユーザーが自分の Azure AD アカウントを使用して Juno Journey に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

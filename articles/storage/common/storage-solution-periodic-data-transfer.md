@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/24/2019
 ms.author: alkohli
 ms.openlocfilehash: fb49802adf6242f445b700d06622d7e6aa336b4d
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67357034"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>定期的なデータの転送用のソリューション
@@ -38,7 +38,7 @@ ms.locfileid: "67357034"
 
 ## <a name="comparison-of-key-capabilities"></a>主な機能の比較
 
-次の表は、機能の主な相違点をまとめたものです。
+次の表は、主な機能における相違点をまとめたものです。
 
 ### <a name="scriptedprogrammatic-network-data-transfer"></a>スクリプト/プログラムによるネットワーク データ転送
 
@@ -63,7 +63,7 @@ ms.locfileid: "67357034"
 | その他のクラウドからの転送                    | いいえ                         | いいえ                       | はい                                                           |
 | 価格                                       | [料金](https://azure.microsoft.com/pricing/details/storage/databox/gateway/)                    | [料金](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                  | [料金](https://azure.microsoft.com/pricing/details/data-factory/)                                                       |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [AzCopy を使用してデータを転送する](/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)。
 - [Storage REST API を使用したデータ転送の詳細](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet)。

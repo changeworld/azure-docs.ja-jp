@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB のメトリックを使用した監視とデバッグ
 description: Azure Cosmos DB のメトリックを使用して、一般的な問題をデバッグし、データベースを監視します。
-ms.service: cosmos-db
 author: kanshiG
-ms.author: sngun
+ms.author: govindk
+ms.reviewer: sngun
+ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.reviewer: sngun
-ms.openlocfilehash: ef457fe8c21bc7e62f910a78913069df32bea1a3
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: b65bc6097d4841c79a68d4313ac7a3f89f6d1dbb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275696"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065927"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB のメトリックを使用した監視とデバッグ
 
@@ -54,7 +54,7 @@ Azure Cosmos DB には、スループット、ストレージ、整合性、可�
 
 ## <a name="determine-the-throughput-distribution-across-partitions"></a>パーティション全体のスループットの分散を決める
 
-適切なカーディナリティのパーティション キーを持つことは、スケーラブルなアプリケーションのために重要です。 パーティションごとに分けられたパーティション コンテナーのスループットの分散を決めるには、[Azure Portal](https://portal.azure.com) の **[メトリック]** ブレードに移動します。 **[スループット]** タブの **[各物理パーティションによる 1 秒あたりの最大消費 RU]** グラフにストレージの内訳が表示されます。 次の図は、パーティションが左端に偏っていることでわかるように、データの分散が不適切な例です。
+適切なカーディナリティのパーティション キーを持つことは、スケーラブルなアプリケーションのために重要です。 パーティションごとに分けられたパーティション コンテナーのスループットの分散を決めるには、**Azure Portal** の [[メトリック]](https://portal.azure.com) ブレードに移動します。 **[スループット]** タブの **[各物理パーティションによる 1 秒あたりの最大消費 RU]** グラフにストレージの内訳が表示されます。 次の図は、パーティションが左端に偏っていることでわかるように、データの分散が不適切な例です。
 
 ![3:05 PM に 1 つのパーティションの使用量が高い](media/use-metrics/metrics-17.png)
 
@@ -107,7 +107,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 *QueryMetrics* は、クエリの各コンポーネントが実行にかかった時間について詳細情報を提供します。 クエリの時間が長くなる最も一般的な根本原因はスキャンです。つまり、クエリがインデックスを利用できなかったことを示します。 この問題は、フィルター条件を修正することで解決できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure portal で提供されているメトリックを使用して、問題の監視とデバッグを行う方法について説明しました。 データベースのパフォーマンスを改善する方法については、次の記事を参照してください。
 

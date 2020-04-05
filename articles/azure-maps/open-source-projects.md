@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 5782f07167f72be2ea7b148ad1b0a61d8cb710e2
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77048905"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps コミュニティ - オープンソース プロジェクト

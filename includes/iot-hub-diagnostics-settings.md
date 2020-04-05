@@ -9,10 +9,10 @@ ms.date: 02/20/2019
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 3778ec2fac13aee29ce361402a535ca70fd56c33
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75750682"
 ---
 ### <a name="enable-logging-with-diagnostics-settings"></a>診断設定を使用してログ記録を有効にする

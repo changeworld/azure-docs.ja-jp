@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
 ms.openlocfilehash: 91689a32a128584aade8081905e3d1aa3ecb0a97
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823574"
 ---
 # <a name="credentials-used-to-access-the-elastic-database-client-library"></a>Elastic Database クライアント ライブラリへのアクセスに使用する資格情報
@@ -72,7 +72,7 @@ using (SqlConnection conn = rangeMap.OpenConnectionForKey<int>(targetWarehouse, 
 
 管理者の資格情報と同じように、"username@server" という形式の値は使わないでください。 代わりに "username" のみを使用します。  接続文字列にはサーバー名とデータベース名が含まれていないことにも注意してください。 これは、**OpenConnectionForKey** の呼び出しによって接続がキーに基づいた正しいシャードに自動的に転送されるためです。 そのため、データベース名とサーバー名を指定しないでください。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 [Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)
 

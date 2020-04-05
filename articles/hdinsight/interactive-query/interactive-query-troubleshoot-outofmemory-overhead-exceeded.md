@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/30/2019
 ms.openlocfilehash: ab334dfb15044fd0734a107c12003ca2c1f86906
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75895185"
 ---
 # <a name="scenario-joins-in-apache-hive-leads-to-an-outofmemory-error-in-azure-hdinsight"></a>シナリオ:Apache Hive での結合により Azure HDInsight で OutOfMemory エラーが発生する
@@ -30,7 +30,7 @@ Apache Hive 結合の既定の動作では、Map/Reduce 手順を行うことな
 Caused by: java.lang.OutOfMemoryError: GC overhead limit exceeded error.
 ```
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
 次の Hive 構成値を設定することにより、結合時に Hive で (Map/Reduce 手順を行う代わりに) テーブルがメモリに読み込まれないようにします。
 

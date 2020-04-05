@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: f4949816f516c6a6b60cfda0602f458256370d40
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76960212"
 ---
 # <a name="400027-connectionforcefullyclosedonnewconnection"></a>400027 ConnectionForcefullyClosedOnNewConnection

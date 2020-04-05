@@ -9,10 +9,10 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: 9962763e647faddc5a2179f304aeb3fa8ca256e8
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75550742"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-nodejs"></a>クイック スタート:ご利用のソリューションに接続されている IoT プラグ アンド プレイ プレビュー デバイスとやりとりする (Node.js)
@@ -35,7 +35,7 @@ node --version
 
 [!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
-次のコマンドを実行して、ご使用のハブに対する "_IoT ハブ接続文字列_" を取得します (後で使用するためにメモします)。
+次のコマンドを実行して、ご使用のハブに対する _IoT ハブ接続文字列_ を取得します (後で使用するためにメモします)。
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
@@ -57,7 +57,7 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
     npm install
     ```
 
-1. "_デバイス接続文字列_" を構成します。
+1. _デバイス接続文字列_ を構成します。
 
     ```cmd/sh
     set DEVICE_CONNECTION_STRING=<YourDeviceConnectionString>
@@ -156,7 +156,7 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
     }
     ```
 
-1. "_デバイス_" ターミナルにアクセスして、デバイスが更新プログラムを受信済みであることを確認します。
+1. _デバイス_ ターミナルにアクセスして、デバイスが更新プログラムを受信済みであることを確認します。
 
     ```cmd/sh
     Received an update for brightness: 42
@@ -226,7 +226,7 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
     }
     ```
 
-1. "_デバイス_" ターミナルにアクセスすると、コマンドが確認済みであることがわかります。
+1. _デバイス_ ターミナルにアクセスすると、コマンドが確認済みであることがわかります。
 
     ```cmd/sh
     received command: blink for interfaceInstance: environmentalSensor

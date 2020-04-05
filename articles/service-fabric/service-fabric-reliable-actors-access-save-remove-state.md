@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
 ms.openlocfilehash: 788c337a37ec66c5aa1521c5cd9f2816ed7a8bf9
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645635"
 ---
 # <a name="access-save-and-remove-reliable-actors-state"></a>Reliable Actors の状態のアクセス、保存、および削除

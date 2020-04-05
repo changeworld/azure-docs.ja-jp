@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
 ms.openlocfilehash: 9236989f7bbb4695db24f86a2a049f5bb58f302a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76843686"
 ---
 # <a name="standard-quota-increase-limits-by-region"></a>標準クォータ: リージョンごとの制限の引き上げ
@@ -26,7 +26,7 @@ Azure Resource Manager は、仮想マシンの次の 2 種類の vCPU クォー
 * 1 つ目のレベルは、すべての VM シリーズ全体の "*リージョンの vCPU の合計の制限*" です。
 * 2 つ目のレベルは、D シリーズの vCPU など、"*VM シリーズあたりの vCPU の制限*" です。
 
-新しいスポット VM をデプロイする場合、その VM シリーズの新規および既存の vCPU 使用量の合計が、その特定の VM シリーズの承認されたスポット vCPU クォータを超えることできません。 さらに、すべての VM シリーズにわたってデプロイされる新規および既存の vCPU の合計数が、サブスクリプションに対して承認されているリージョンの vCPU の合計のクォータを超えることはできません。 これらのクォータのいずれかを超えている場合には、VM のデプロイは許可されません。
+新しいスポット VM をデプロイする場合、その VM シリーズの新規および既存の vCPU 使用量の合計が、その特定の VM シリーズの承認されたスポット vCPU クォータを超えることはできません。 さらに、すべての VM シリーズにわたってデプロイされる新規および既存の vCPU の合計数が、サブスクリプションに対して承認されているリージョンの vCPU の合計のクォータを超えることはできません。 これらのクォータのいずれかを超えている場合には、VM のデプロイは許可されません。
 
 VM シリーズの vCPU クォータ制限の引き上げは、Azure portal を使用して要求できます。 VM シリーズのクォータを増やすと、リージョンの vCPU の合計の制限が同じ量だけ自動的に増えます。
 

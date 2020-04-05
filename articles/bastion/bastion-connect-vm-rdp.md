@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/24/2020
 ms.author: cherylmc
 ms.openlocfilehash: 6ec60dc313c8a4374637adf38ea0e5a7d4ed964b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77597348"
 ---
 # <a name="connect-to-a-windows-virtual-machine-using-azure-bastion"></a>Azure Bastion を使用して Windows 仮想マシンに接続する
@@ -38,7 +38,7 @@ Windows VM に接続するには、お使いの Windows VM で次のポートを
 
 * 受信ポート:RDP (3389)
 
-## <a name="rdp"></a>接続
+## <a name="connect"></a><a name="rdp"></a>接続
 
 1. [Azure Portal](https://portal.azure.com)を開きます。 接続先の仮想マシンに移動して **[接続]** をクリックし、ドロップダウンから **[Bastion]** をクリックします。
 

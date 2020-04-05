@@ -16,10 +16,10 @@ ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a2f39b6f58b250d68a3b2ce962f158c7df36d812
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77046611"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Workday の統合

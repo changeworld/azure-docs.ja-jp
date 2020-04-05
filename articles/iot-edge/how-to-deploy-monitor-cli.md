@@ -9,12 +9,12 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fffe1ebda0103b3ed2cd8f76642ecb2967d23069
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 9152b38a0155b610f39f7de239bcc377ad96be5d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510296"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233315"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Azure CLI を使用した大規模な IoT Edge モジュールの展開と監視
 
@@ -28,7 +28,7 @@ Azure コマンドライン インターフェイスを使用して **IoT Edge �
 
 * Azure サブスクリプション内の [IoT ハブ](../iot-hub/iot-hub-create-using-cli.md)。
 * IoT Edge ランタイムがインストールされた [IoT Edge デバイス](how-to-register-device.md#prerequisites-for-the-azure-cli)。
-* ご使用の環境内の [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI のバージョンは、少なくとも 2.0.24 以降である必要があります。 検証するには、`az --version` を使用します。 このバージョンでは、az 拡張機能のコマンドがサポートされ、Knack コマンド フレームワークが導入されています。
+* ご使用の環境内の [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI のバージョンは、少なくとも 2.0.70 以降である必要があります。 検証するには、`az --version` を使用します。 このバージョンでは、az 拡張機能のコマンドがサポートされ、Knack コマンド フレームワークが導入されています。
 * [Azure CLI 向け IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)。
 
 ## <a name="configure-a-deployment-manifest"></a>配置マニフェストを構成する

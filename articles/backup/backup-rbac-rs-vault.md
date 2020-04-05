@@ -5,11 +5,11 @@ ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.openlocfilehash: e2e32ac6981635e3b9885119fdf397783ac32cc9
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156388"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233847"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>ロール ベースのアクセス制御を使用した Azure Backup の回復ポイントの管理
 
@@ -77,9 +77,9 @@ Azure Backup では、バックアップの管理操作を制御する 3 つの�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [ロール ベースのアクセス制御](../role-based-access-control/role-assignments-portal.md): Azure portal での RBAC の基本について説明します。
+* [ロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md): Azure ポータルでの RBAC の基本について説明します。
 * 次の要素を使用したアクセス管理方法の詳細
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)
   * [REST API](../role-based-access-control/role-assignments-rest.md)
-* [ロールベースのアクセス制御のトラブルシューティング](../role-based-access-control/troubleshooting.md):一般的な問題の修正に関する推奨事項を紹介します。
+* [ロールベースのアクセス制御のトラブルシューティング](../role-based-access-control/troubleshooting.md): 一般的な問題の修正に関する推奨事項を紹介します。

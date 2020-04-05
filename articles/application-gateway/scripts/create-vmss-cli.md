@@ -14,10 +14,10 @@ ms.date: 01/29/2018
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: f1815d3dbf70e5599aa53633b43029b16cf94037
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76273854"
 ---
 # <a name="manage-web-traffic-using-the-azure-cli"></a>Azure CLI を使用して Web トラフィックを管理する

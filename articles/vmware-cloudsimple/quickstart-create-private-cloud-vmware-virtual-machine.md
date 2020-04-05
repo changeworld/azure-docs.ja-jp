@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 4ac818cfd267b781366c0e32c9f93cc885dff99c
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77566150"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>プライベート クラウドに VMware 仮想マシンを作成する

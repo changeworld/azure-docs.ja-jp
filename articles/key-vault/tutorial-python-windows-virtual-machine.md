@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 3b965ab7dfafd6c78c801cf3692463efe366c852
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: c0bb391348548ecca595fd1a6472bafcb22ed4ee
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78198084"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79472658"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-python"></a>チュートリアル:Python で Windows 仮想マシンを使用して Azure Key Vault を使用する
 
@@ -41,7 +41,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 Windows、Mac、Linux:
   * [Git](https://git-scm.com/downloads)
-  * このチュートリアルでは、Azure CLI をローカルで実行する必要があります。 Azure CLI バージョン 2.0.4 以降がインストールされている必要があります。 バージョンを確認するには、`az --version` を実行します。 CLI をインストールまたはアップグレードする必要がある場合は、「[Install Azure CLI 2.0 (Azure CLI 2.0 のインストール)](https://review.docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+  * このチュートリアルでは、Azure CLI をローカルで実行する必要があります。 Azure CLI バージョン 2.0.4 以降がインストールされている必要があります。 バージョンを確認するには、`az --version` を実行します。 CLI をインストールまたはアップグレードする必要がある場合は、「[Install Azure CLI 2.0 (Azure CLI 2.0 のインストール)](/cli/azure/install-azure-cli)」を参照してください。
 
 ## <a name="about-managed-service-identity"></a>マネージド サービス ID について
 
@@ -82,7 +82,7 @@ az group create --name "<YourResourceGroupName>" --location "West US"
 
 * キー コンテナー名: 数字 (0-9)、文字 (a-z、A-Z)、ハイフン (-) のみを含んだ 3 から 24 文字の文字列
 * リソース グループ名
-* 場所: **[米国西部]**
+* 場所:**米国西部**
 
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
@@ -117,7 +117,7 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 
 システムによって割り当てられた ID が次のコードに表示されていることにご注意ください。 上記のコマンドの出力は次のようになります。 
 
-```azurecli
+```output
 {
   "systemAssignedIdentity": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "userAssignedIdentities": {}
@@ -148,7 +148,7 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssigned
   それにより、Azure AD からもトークンがフェッチされます。
 1. トークンをキー コンテナーに渡し、シークレットをフェッチします。 
 
-```
+```python
     # importing the requests library 
     import requests 
 
@@ -170,7 +170,7 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssigned
 
 次のコードを実行して、シークレット値を表示できます。 
 
-```
+```console
 python Sample.py
 ```
 

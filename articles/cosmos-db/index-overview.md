@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: thweiss
 ms.openlocfilehash: 65186262095560d7ae54d32b218d1c01f1fb921d
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873626"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB のインデックス作成 - 概要
@@ -182,7 +182,7 @@ Azure Cosmos DB が項目をツリーに変換する理由は、そのような�
 > [!NOTE]
 > 1 つのプロパティで並べ替える `ORDER BY` 句には*常に*範囲インデックスが必要であり、その句が参照するパスにこのインデックスが存在しない場合は失敗します。 同様に、複数のプロパティで並べ替える `ORDER BY` クエリには、*常に*複合インデックスが必要です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 以下の記事で、インデックス作成についての詳細を参照してください。
 

@@ -12,14 +12,14 @@ ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
 ms.openlocfilehash: 53be1b13f1e2744e143a4be0777e3a8e3135460e
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270529"
 ---
 # <a name="keyphrase-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの keyPhrase 作成済みエンティティ
-keyPhrase エンティティは、発話からさまざまなキー フレーズを抽出します。 keyPhrase が含まれている発話例をアプリケーションに追加する必要はありません。 keyPhrase エンティティは、[テキスト分析](../text-analytics/overview.md)フィーチャーの一環として[多くのカルチャ](luis-language-support.md#languages-supported)でサポートされています。
+keyPhrase エンティティは、発話からさまざまなキー フレーズを抽出します。 keyPhrase が含まれている発話例をアプリケーションに追加する必要はありません。 keyPhrase エンティティは、[テキスト分析](luis-language-support.md#languages-supported)フィーチャーの一環として[多くのカルチャ](../text-analytics/overview.md)でサポートされています。
 
 ## <a name="resolution-for-prebuilt-keyphrase-entity"></a>作成済み keyPhrase エンティティの解決
 

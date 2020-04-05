@@ -16,11 +16,11 @@ ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 130ce05e332f4705feb4acd54cbeb25d25a82532
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900837"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227651"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Azure Active Directory でのグループ メンバーシップによるユーザーへのライセンスの割り当て
 
@@ -33,7 +33,7 @@ ms.locfileid: "74900837"
 >
 > グループ ライセンスの割り当ての際、利用場所が指定されていないユーザーは、ディレクトリの場所を継承します。 ユーザーが複数の場所にいる場合は、Azure AD でのユーザー作成フローの一環として利用場所を常に設定することをお勧めします (AAD Connect 構成など)。これにより、ライセンス割り当ての結果が常に正しいことが保証され、ユーザーは許可されていない場所でサービスを受けられなくなります。
 
-## <a name="step-1-assign-the-required-licenses"></a>手順 1:必要なライセンスを割り当てる
+## <a name="step-1-assign-the-required-licenses"></a>手順 1. 必要なライセンスの割り当て
 
 1. ユーザー管理者アカウントを使用して [**Azure AD 管理センター**](https://aad.portal.azure.com)にサインインします。 ライセンスを管理するアカウントは、ライセンス管理者、ユーザー アカウント管理者、またはグローバル管理者である必要があります。
 
@@ -57,7 +57,7 @@ ms.locfileid: "74900837"
 
 グループにライセンスを割り当てると、Azure AD によりそのグループのすべての既存メンバーが処理されます。 グループのサイズにより、この処理には時間がかかる場合があります。 次の手順では、プロセスの終了を確認する方法と、問題の解決にさらなる注意が必要かどうかを確認する方法について説明します。
 
-## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>手順 2:最初の割り当てが終了したことを確認する
+## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>手順 2. 最初の割り当てが終了したことの確認
 
 1. **[Azure Active Directory]**  >  **[グループ]** の順に移動します。 ライセンスが割り当てられていたグループを選択します。
 
@@ -79,7 +79,7 @@ ms.locfileid: "74900837"
 
    [このセクション](licensing-group-advanced.md#use-audit-logs-to-monitor-group-based-licensing-activity)では、グループ ベースのライセンスによって行われた変更を、監査ログを使用して分析する方法を説明しています。
 
-## <a name="step-3-check-for-license-problems-and-resolve-them"></a>手順 3:ライセンスに関する問題をチェックして解決する
+## <a name="step-3-check-for-license-problems-and-resolve-them"></a>手順 3. ライセンスに関する問題のチェックと解決
 
 1. **[Azure Active Directory]**  >  **[グループ]** の順に移動して、ライセンスが割り当てられていたグループを見つけます。
 1. そのグループのページで、 **[ライセンス]** を選択します。 ページの上部の通知で、ライセンスを割り当てられなかったユーザーが 10 人いることが示されます。 それを開くと、このグループでライセンスがエラー状態である全ユーザーの一覧が表示されます。
@@ -93,7 +93,7 @@ ms.locfileid: "74900837"
 
 1. この競合を解消するには、**キオスク ユーザー** グループからこのユーザーを削除します。 Azure AD によって変更が処理された後、**人事部**のライセンスは正常に割り当てられます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 グループを使用したライセンス割り当ての機能セットについては、以下の記事をご覧ください。
 

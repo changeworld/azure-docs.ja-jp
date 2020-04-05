@@ -1,18 +1,18 @@
 ---
 title: Azure Content Delivery Network を使用した安全で信頼性の高いグローバル コンテンツ配信と高速化
 description: モバイル アプリケーションに対して、安全で信頼性の高いグローバル コンテンツ配信を作成するためのサービスについて説明します。
-author: elamalani
+author: codemillmatt
 ms.assetid: 34a8a070-0123-4678-8588-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: e72118ea0f90cfbb08d81ebded6ca7edf08a06c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: 1daff5c610092b009b122d05655ea637d5da5c3b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454516"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80241021"
 ---
 # <a name="content-delivery-network-on-azure-with-azure-content-delivery-network"></a>Azure Content Delivery Network を使用した Azure 上でのコンテンツ配信ネットワーク
 [Azure Content Delivery Network](https://azure.microsoft.com/services/cdn/) では、コンテンツを世界中の数百のポイント オブ プレゼンスにキャッシュすることにより、動画、画像、静的ファイルなどの高帯域幅コンテンツをユーザーに迅速に配信するためのグローバル ソリューションが開発者に提供されます。 さらに、Content Delivery Network では、キャッシュできない動的コンテンツを高速化することで、読み込み時間を短縮し、帯域幅を節約し、応答性を向上させることができます。 Web サイトやモバイル アプリケーションの開発や管理でも、ストリーミング メディア、ゲーム ソフトウェア、ファームウェアの更新プログラム、または IoT エンドポイントのエンコードと配布でも、これらの利益を得ることができます。

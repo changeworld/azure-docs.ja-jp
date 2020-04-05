@@ -5,12 +5,12 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: 5d8b45137ff82db6b23b5bf31eb3e8063de343bb
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: f83faf05eb7099557d5b653e0b24591062c44d11
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191335"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79368453"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Azure Kubernetes Service から Azure Container Registry の認証を受ける
 
@@ -41,6 +41,7 @@ az acr create -n $MYACR -g myContainerRegistryResourceGroup --sku basic
 # Create an AKS cluster with ACR integration
 az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-acr $MYACR
 ```
+
 または、ACR リソース ID を使用して ACR の名前を指定することもできます。その形式は次のようになります。
 
 `/subscriptions/\<subscription-id\>/resourceGroups/\<resource-group-name\>/providers/Microsoft.ContainerRegistry/registries/\<name\>` 
@@ -58,17 +59,22 @@ az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-ac
 ```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acrName>
 ```
+
 または、
-```
+
+```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-resource-id>
 ```
 
 次を使用して、ACR と AKS クラスター間の統合を削除することもできます。
+
 ```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acrName>
 ```
+
 or
-```
+
+```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acr-resource-id>
 ```
 
@@ -93,7 +99,7 @@ az aks get-credentials -g myResourceGroup -n myAKSCluster
 
 次を含む **acr-nginx.yaml** という名前のファイルを作成します。
 
-```
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -118,16 +124,20 @@ spec:
 ```
 
 次に、AKS クラスターでこのデプロイを実行します。
-```
+
+```console
 kubectl apply -f acr-nginx.yaml
 ```
 
 次を実行して、デプロイを監視できます。
-```
+
+```console
 kubectl get pods
 ```
+
 2 つのポッドが実行されているはずです。
-```
+
+```output
 NAME                                 READY   STATUS    RESTARTS   AGE
 nginx0-deployment-669dfc4d4b-x74kr   1/1     Running   0          20s
 nginx0-deployment-669dfc4d4b-xdpd6   1/1     Running   0          20s

@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
 ms.openlocfilehash: 455cb1e0067217be6edcf665e8c07e8fcd684ab5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76842403"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>ファイル システム エラーによる Linux VM の起動に関する問題のトラブルシューティング
@@ -73,7 +73,7 @@ Checking all file systems.
 
 Linux には、いくつかのファイル システム チェッカーが用意されています。 Azure でのディストリビューションで最も一般的なものは次のとおりです。[FSCK](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/fsck-fs-specific)、[E2FSCK](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/fsck-fs-specific)、および [Xfs_repair](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/xfsrepair)。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
 この問題を解決するには、[シリアル コンソール](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)を使用して、VM を緊急モードで起動し、該当するツールを使用してファイル システムを修復します。 ご利用の VM 上でシリアル コンソールが有効になっていない場合または機能していない場合は、この記事のセクション「[VM をオフライン修復する](#repair-the-vm-offline)」を参照してください。
 

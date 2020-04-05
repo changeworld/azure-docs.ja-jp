@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: anroth
 ms.openlocfilehash: dcb12da680d70e1f0ce4cd763bee340bb3416c6b
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76169947"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Prediction API でモデルを使用する

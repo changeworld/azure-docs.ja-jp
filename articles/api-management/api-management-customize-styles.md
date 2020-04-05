@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 664686511df8f310295a9f6ed6bc689b3a999544
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75430730"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>開発者ポータル ページのスタイルをカスタマイズする
@@ -40,8 +40,8 @@ Azure API Management で開発者ポータルをカスタマイズする最も�
 ## <a name="prerequisites"></a>前提条件
 
 + [Azure API Management の用語](api-management-terminology.md)について学習します。
-+ 次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)。
-+ また、次のチュートリアルを完了すること: [最初の API のインポートと発行](import-and-publish.md)。
++ [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
++ また、「[Import and publish your first API (最初の API をインポートして発行する)](import-and-publish.md)」のチュートリアルも完了します。
 
 ## <a name="customize-the-developer-portal"></a>開発者ポータルをカスタマイズする
 

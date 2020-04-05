@@ -9,10 +9,10 @@ ms.date: 02/18/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: a14ae76e15c1adb59917e61fbcbdaa34a7efa2d8
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77472020"
 ---
 Azure 共有ディスク (プレビュー) は、Azure マネージド ディスクを複数の仮想マシン (VM) に同時に接続できるようにする Azure マネージド ディスクの新機能です。 マネージド ディスクを複数の VM に接続すると、新規にデプロイするか、既存のクラスター化されたアプリケーションを Azure に移行することができます。

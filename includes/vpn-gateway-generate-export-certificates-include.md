@@ -5,17 +5,17 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 10/10/2019
+ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 1e18223736964b0327a4c8f6ddb73ddb4f58889a
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: e85dc8c079205484db9b7b7c43a0086f69feb3be
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78305017"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80059907"
 ---
-## <a name="rootcert"></a>自己署名ルート証明書の作成
+## <a name="create-a-self-signed-root-certificate"></a><a name="rootcert"></a>自己署名ルート証明書の作成
 
 New-SelfSignedCertificate コマンドレットを使用して、自己署名ルート証明書を作成します。 追加のパラメーターについては、「[New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate)」を参照してください。
 
@@ -30,7 +30,7 @@ New-SelfSignedCertificate コマンドレットを使用して、自己署名ル
    ```
  3. このルート証明書を作成した直後にクライアント証明書を作成する場合は、PowerShell コンソールを開いたままにしておきます。
 
-## <a name="clientcert"></a>クライアント証明書の生成
+## <a name="generate-a-client-certificate"></a><a name="clientcert"></a>クライアント証明書の生成
 
 ポイント対サイトで VNet に接続するすべてのクライアント コンピューターには、クライアント証明書がインストールされている必要があります。 自己署名ルート証明書からクライアント証明書を生成し、そのクライアント証明書をエクスポートしてインストールします。 クライアント証明書がインストールされていない場合は、認証が失敗します。 
 
@@ -52,7 +52,7 @@ New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature 
 -Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
 ```
 
-### <a name="ex2"></a>例 2 - 新しい PowerShell コンソール セッション
+### <a name="example-2---new-powershell-console-session"></a><a name="ex2"></a>例 2 - 新しい PowerShell コンソール セッション
 
 追加のクライアント証明書を作成している場合、または自己署名ルート証明書の作成に使用したのと同じ PowerShell セッションを使用していない場合は、次の手順を使用してください。
 
@@ -90,7 +90,7 @@ New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature 
    -Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
    ```
 
-## <a name="cer"></a>ルート証明書の公開キー (.cer) のエクスポート
+## <a name="export-the-root-certificate-public-key-cer"></a><a name="cer"></a>ルート証明書の公開キー (.cer) のエクスポート
 
 [!INCLUDE [Export public key](vpn-gateway-certificates-export-public-key-include.md)]
 
@@ -98,6 +98,6 @@ New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature 
 
 自己署名ルート証明書は、エクスポートし、バックアップとして安全に保管することができます。 必要に応じて、後から別のコンピューターにインストールして、さらにクライアント証明書を生成することもできます。 自己署名ルート証明書を .pfx としてエクスポートするには、ルート証明書を選択し、「[クライアント証明書をエクスポートする](#clientexport)」と同じ手順を実行します。
 
-## <a name="clientexport"></a>クライアント証明書のエクスポート
+## <a name="export-the-client-certificate"></a><a name="clientexport"></a>クライアント証明書のエクスポート
 
 [!INCLUDE [Export client certificate](vpn-gateway-certificates-export-client-cert-include.md)]

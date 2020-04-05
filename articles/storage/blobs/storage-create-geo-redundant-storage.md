@@ -12,10 +12,10 @@ ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
 ms.openlocfilehash: 0eabd918b5f8f52049792ceb28ef8055945d6475
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77162176"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>チュートリアル:Blob Storage を使用して高可用性アプリケーションを作成する
@@ -39,18 +39,18 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このチュートリアルを完了するには、以下が必要です。
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 * **Azure 開発**ワークロードと共に [Visual Studio 2019](https://www.visualstudio.com/downloads/) をインストールします。
 
   ![Azure 開発 ([Web & Cloud]\(Web とクラウド\) 以下)](media/storage-create-geo-redundant-storage/workloads.png)
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 * [Python](https://www.python.org/downloads/) のインストール
 * [Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python) をダウンロードしてインストールします。
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 * [Node.js](https://nodejs.org) をインストールします。
 
@@ -73,20 +73,20 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    | 設定       | 推奨値 | 説明 |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Name** | mystorageaccount | ストレージ アカウント用の一意の値 |
+   | **名前** | mystorageaccount | ストレージ アカウント用の一意の値 |
    | **デプロイ モデル** | リソース マネージャー  | Resource Manager には最新の機能が含まれています。|
    | **アカウントの種類** | StorageV2 | アカウントの種類の詳細については、「[ストレージ アカウントの種類](../common/storage-introduction.md#types-of-storage-accounts)」を参照してください |
    | **パフォーマンス** | Standard | このサンプル シナリオでは、標準で十分です。 |
    | **レプリケーション**| 読み取りアクセス geo 冗長ストレージ (RA-GRS) | サンプルが動作するには、この設定が必要です。 |
    |**サブスクリプション** | 該当するサブスクリプション |サブスクリプションの詳細については、[サブスクリプション](https://account.azure.com/Subscriptions)に関するページを参照してください。 |
    |**ResourceGroup** | myResourceGroup |有効なリソース グループ名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 |
-   |**場所** | East US | 場所を選択します。 |
+   |**場所** | 米国東部 | 場所を選択します。 |
 
 ![ストレージ アカウントの作成](media/storage-create-geo-redundant-storage/createragrsstracct.png)
 
 ## <a name="download-the-sample"></a>サンプルのダウンロード
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 [サンプル プロジェクトをダウンロード](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs/archive/master.zip)し、storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.zip ファイルを抽出 (解凍) します。 [git](https://git-scm.com/) を使って、アプリケーションのコピーを開発環境にダウンロードすることもできます。 サンプル プロジェクトにはコンソール アプリケーションが含まれています。
 
@@ -94,7 +94,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 [サンプル プロジェクトをダウンロード](https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs/archive/master.zip)し、storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.zip ファイルを抽出 (解凍) します。 [git](https://git-scm.com/) を使って、アプリケーションのコピーを開発環境にダウンロードすることもできます。 サンプル プロジェクトには基本的な Python アプリケーションが含まれています。
 
@@ -102,7 +102,7 @@ git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-patter
 git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 [サンプル プロジェクトをダウンロード](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs)して、ファイルを解凍します。 [git](https://git-scm.com/) を使って、アプリケーションのコピーを開発環境にダウンロードすることもできます。 サンプル プロジェクトには基本的な Node.js アプリケーションが含まれています。
 
@@ -114,7 +114,7 @@ git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
 
 ## <a name="configure-the-sample"></a>サンプルの構成
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 アプリケーションでは、ストレージ アカウントの接続文字列を指定する必要があります。 アプリケーションが実行されているローカル コンピューターの環境変数内に、この接続文字列を格納することができます。 環境変数を作成するオペレーティング システムに応じて、以下の例のいずれかに従います。
 
@@ -132,7 +132,7 @@ export storageconnectionstring=<yourconnectionstring>
 setx storageconnectionstring "<yourconnectionstring>"
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 アプリケーションには、実際のストレージ アカウントの資格情報を指定する必要があります。 この情報は、アプリケーションが実行されているローカル コンピューターの環境変数に格納することができます。 環境変数を作成するオペレーティング システムに応じて、以下のいずれかの例に従います。
 
@@ -152,7 +152,7 @@ setx accountname "<youraccountname>"
 setx accountkey "<youraccountkey>"
 ```
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 このサンプルを実行するには、実際のストレージ アカウントの資格情報を `.env.example` ファイルに追加し、その名前を `.env` に変更する必要があります。
 
@@ -169,7 +169,7 @@ AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
 
 ## <a name="run-the-console-application"></a>コンソール アプリケーションを実行する
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 Visual Studio で **F5** キーを押すか **[スタート]** を選択してアプリケーションのデバッグを開始します。 構成に応じて、不足している NuGet パッケージが Visual Studio で自動的に復元されます。詳細については、[パッケージの復元によるパッケージのインストールと再インストール](https://docs.microsoft.com/nuget/consume-packages/package-restore#package-restore-overview)に関するセクションを参照してください。
 
@@ -179,7 +179,7 @@ Visual Studio で **F5** キーを押すか **[スタート]** を選択して�
 
 このサンプル コードで、`Program.cs` ファイルの `RunCircuitBreakerAsync` タスクは、[DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) メソッドを使用してストレージ アカウントからイメージをダウンロードするために使用されます。 そのダウンロードの前に、[OperationContext](/dotnet/api/microsoft.azure.cosmos.table.operationcontext) が定義されています。 操作コンテキストにイベント ハンドラーが定義され、ダウンロードが正常に完了したとき、またはダウンロードが失敗して再試行する場合に呼び出されます。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ターミナルまたはコマンド プロンプトでアプリケーションを実行するには、**circuitbreaker.py** ディレクトリに移動して「`python circuitbreaker.py`」と入力します。 アプリケーションは、ソリューションの **HelloWorld.png** イメージをストレージ アカウントにアップロードします。 アプリケーションは、イメージがセカンダリ RA-GRS エンドポイントにレプリケートされたことを確認します。 次に、イメージのダウンロードを開始し、最大 999 回試行します。 各読み取りは **P** または **S** で表されます。この **P** はプライマリ エンドポイント、**S** はセカンダリ エンドポイントを示します。
 
@@ -191,7 +191,7 @@ Visual Studio で **F5** キーを押すか **[スタート]** を選択して�
 
 ダウンロードの前に、サービス オブジェクトの [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) と [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) 関数が定義されています。 これらの関数に定義されているイベント ハンドラーが、ダウンロードが正常に完了したとき、またはダウンロードが失敗して再試行する場合に呼び出されます。
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 サンプルを実行するには、コマンド プロンプトを開いてサンプル フォルダーに移動し、「`node index.js`」と入力します。
 
@@ -222,7 +222,7 @@ Deleted container newcontainer1550799840726
 
 ## <a name="understand-the-sample-code"></a>サンプル コードを理解する
 
-### <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+### <a name="net"></a>[.NET](#tab/dotnet)
 
 ### <a name="retry-event-handler"></a>イベント ハンドラーを再試行する
 
@@ -273,7 +273,7 @@ private static void OperationContextRequestCompleted(object sender, RequestEvent
 }
 ```
 
-### <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 ### <a name="retry-event-handler"></a>イベント ハンドラーを再試行する
 
@@ -316,7 +316,7 @@ def response_callback(response):
             secondary_read_count = 0
 ```
 
-### <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+### <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 Node.js V10 SDK では、コールバック ハンドラーは不要です。 代わりにこのサンプルでは、再試行オプションとセカンダリ エンドポイントを含むパイプラインを作成しています。 これによりアプリケーションは、プライマリ パイプラインで必要なデータに到達できなかった場合でも、自動的にセカンダリ パイプラインに切り替えることができます。
 

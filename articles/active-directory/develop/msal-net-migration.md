@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 737b25fd4c83c459f033bd7b07f6362909e38056
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: cccb886e13482292e8ab9afa2b34bd9dd2c3229b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78299885"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050301"
 ---
 # <a name="migrating-applications-to-msalnet"></a>MSAL.NET へのアプリケーションの移行
 
@@ -143,9 +143,9 @@ MSAL.NET では、トークン キャッシュがシールド クラスとなり
 
 ## <a name="signification-of-the-common-authority"></a>一般的な機関の意味
 
-V1.0 では、 https://login.microsoftonline.com/common 機関を使用する場合、ユーザーが (組織用の) AAD アカウントでサインインできるようにします。 [ADAL.NET での機関の検証](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD#authority-validation)に関するページを参照してください
+V1.0 では、`https://login.microsoftonline.com/common` 機関を使用する場合、ユーザーが (組織用の) AAD アカウントでサインインできるようにします。 [ADAL.NET での機関の検証](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD#authority-validation)に関するページを参照してください
 
-v2.0 で https://login.microsoftonline.com/common 機関を使用する場合、ユーザーが AAD 組織または Microsoft の個人用アカウント (MSA) でサインインできるようにします。 MSAL.NET では、AAD アカウントへのログインを制限する場合 (ADAL.NET の動作と同じ)、 https://login.microsoftonline.com/organizations を使用する必要があります。 詳細については、[パブリック クライアント アプリケーション](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication)に関するページの `authority` パラメーターについての記事を参照してください。
+v2.0 で `https://login.microsoftonline.com/common` 機関を使用する場合、ユーザーが AAD 組織または Microsoft の個人用アカウント (MSA) でサインインできるようにします。 MSAL.NET では、AAD アカウントへのログインを制限する場合 (ADAL.NET の動作と同じ)、`https://login.microsoftonline.com/organizations` を使用する必要があります。 詳細については、[パブリック クライアント アプリケーション](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication)に関するページの `authority` パラメーターについての記事を参照してください。
 
 ## <a name="v10-and-v20-tokens"></a>v1.0 トークンと v2.0 トークン
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: mikhegn
 ms.openlocfilehash: ef88a528dbb6d326e5cc742d14c27218eb7502f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75464081"
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Visual Studio での Service Fabric アプリケーションのアップグレードの構成
@@ -22,7 +22,7 @@ Visual Studio Service Fabric ツールは、ローカルまたはリモート �
 ## <a name="parameters-needed-to-upgrade"></a>アップグレードに必要なパラメーター
 標準とアップグレードの 2 種類のデプロイメントから選択できます。 標準デプロイメントではクラスター上の以前のデプロイメント情報とデータが消去され、アップグレード デプロイメントではこれらが保持されます。 Visual Studio で Service Fabric アプリケーションをアップグレードするときには、アプリケーション アップグレード パラメーターと正常性チェック ポリシーを提供する必要があります。 アプリケーション アップグレード パラメーターによってアップグレードが制御され、正常性チェック ポリシーによってアップグレードが成功したかどうかが判断されます。 詳細については、「 [アプリケーション アップグレードのパラメーター](service-fabric-application-upgrade-parameters.md) 」を参照してください。
 
-3 種類のアップグレード モードがあります。*Monitored*、*UnmonitoredAuto*、*UnmonitoredManual* です。
+*Monitored*、*UnmonitoredAuto*、*UnmonitoredManual* の 3 種類のアップグレード モードがあります。
 
 * Monitored アップグレードでは、アップグレードとアプリケーションの正常性チェックが自動化されます。
 * UnmonitoredAuto アップグレードでは、アップグレードは自動化されますが、アプリケーションの正常性チェックは省略されます。

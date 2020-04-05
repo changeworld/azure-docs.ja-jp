@@ -17,10 +17,10 @@ ms.date: 11/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e33af932e405552cf9d8f5aaf6d42cbd095607b0
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74085015"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-user-authentication"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Netskope User Authentication の統合
@@ -29,7 +29,7 @@ ms.locfileid: "74085015"
 
 * Netskope User Authentication にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントで Netskope User Authentication に自動的にサインインするように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -139,7 +139,7 @@ Netskope User Authentication で Azure AD SSO を構成してテストするに�
 
 1. ブラウザーで新しいタブを開き、Netskope User Authentication の会社のサイトに管理者としてサインインします。
 
-1. **[Active Platform]\(アクティブ プラットフォーム\)** タブをクリックします。
+1. **[Active Platform]\(アクティブなプラットフォーム\)** タブをクリックします。
 
     ![Netskope User Authentication の構成](./media/netskope-user-authentication-tutorial/user1.png)
 
@@ -165,9 +165,9 @@ Netskope User Authentication で Azure AD SSO を構成してテストするに�
 
     a. **[NAME]\(名前\)** ボックスに、Azure AD のような名前を入力します。
 
-    b. **[IDP URL]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    b. **[IDP URL]** テキスト ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
-    c. **[IDP ENTITY ID]\(IDP エンティティ ID\)** ボックスに、Azure portal からコピーした **Azure AD ID** の値を貼り付けます。
+    c. **[IDP ENTITY ID]\(IDP エンティティ ID\)** テキスト ボックスに、Azure portal からコピーした **Azure AD ID** の値を貼り付けます。
 
     d. ダウンロードしたメタデータ ファイルをメモ帳で開き、その内容をクリップボードにコピーし、 **[IDP CERTIFICATE]\(IDP 証明書\)** テキストボックスに貼り付けます。
 
@@ -181,7 +181,7 @@ Netskope User Authentication で Azure AD SSO を構成してテストするに�
 
     ![Netskope User Authentication ユーザーの作成](./media/netskope-user-authentication-tutorial/config-settings.png)
 
-1. **[Active Platform]\(アクティブ プラットフォーム\)** タブをクリックします。
+1. **[Active Platform]\(アクティブなプラットフォーム\)** タブをクリックします。
 
     ![Netskope User Authentication ユーザーの作成](./media/netskope-user-authentication-tutorial/user1.png)
 

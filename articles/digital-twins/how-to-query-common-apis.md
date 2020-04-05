@@ -9,10 +9,10 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.openlocfilehash: 133c0e0dcc07afb85a0f3af9ae51d2207abac293
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77589115"
 ---
 # <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>一般的なタスクについて Azure Digital Twins API をクエリする方法

@@ -3,19 +3,19 @@ title: Azure Red Hat OpenShift のドキュメント
 summary: Azure Red Hat OpenShift では、Red Hat と Microsoft によってサポートされる、Azure 上のシングルテナントの高可用性 Kubernetes クラスターを提供します。
 metadata:
   title: Azure Red Hat OpenShift のドキュメント
-  description: Microsoft Azure Red Hat OpenShift では、運用の準備が整った Red Hat OpenShift クラスターを Azure に迅速にデプロイできます。 これらのチュートリアルと攻略ガイドを使用して、Azure Red Hat OpenShift の使用方法をご確認ください。
+  description: Microsoft Azure Red Hat OpenShift を使用すると、運用開始準備の整った Red Hat OpenShift クラスターを Azure にデプロイできます。 これらのチュートリアルや操作方法ガイドを使用して方法を確認してください。
   ms.service: container-service
   services: container-service
   ms.topic: landing-page
   author: jimzim
   ms.author: jzim
   ms.date: 03/06/2020
-  ms.openlocfilehash: ec40ff9af0b2c09db32e40536009cd0db684f030
-  ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+  ms.openlocfilehash: f35419d63375ae8fca5f9458505b96b6ddfd3890
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/10/2020
-  ms.locfileid: "79037052"
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "80062286"
 landingContent:
 - title: Azure Red Hat OpenShift について
   linkLists:

@@ -6,10 +6,10 @@ ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: conceptual
 ms.openlocfilehash: 78608d3acdfea07f21ccc42e8d530ff502fbb0b4
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78851637"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c-with-rest"></a>クイック スタート:C# と REST を使用して QnA Maker のナレッジ ベースを作成する

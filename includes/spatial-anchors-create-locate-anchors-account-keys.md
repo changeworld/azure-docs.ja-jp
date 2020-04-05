@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/21/2019
 ms.author: rgarcia
 ms.openlocfilehash: 9bd213b63b69a25fb2530cd8f6659abf5357616a
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76694416"
 ---
 ## <a name="set-up-authentication"></a>認証の設定

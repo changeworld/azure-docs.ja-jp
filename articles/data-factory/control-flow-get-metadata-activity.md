@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/02/2020
 ms.author: jingwang
 ms.openlocfilehash: a0c07aaf27825254f776a03b9b9ca2cbeddca02d
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78250268"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure Data Factory のメタデータの取得アクティビティ

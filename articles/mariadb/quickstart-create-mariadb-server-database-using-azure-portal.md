@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 12/02/2019
-ms.openlocfilehash: 9ba02f53ba5765d90e8bba80e4d99922d7eb7c46
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 3/19/2020
+ms.openlocfilehash: 698220a7f81dc5fb9d70d2aa65e96dfa199af444
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432048"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80063838"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>Azure portal を使用した Azure Database for MariaDB サーバーの作成
 
@@ -37,7 +37,7 @@ Azure Database for MariaDB サーバーを作成するには、次の手順に�
    ![Azure Database for MariaDB のオプション](./media/quickstart-create-mariadb-server-database-using-azure-portal/2_navigate-to-mariadb.png)
 
 3. サーバーについての次の情報を入力または選択します。
-   
+
    ![サーバー フォームの作成](./media/quickstart-create-mariadb-server-database-using-azure-portal/4-create-form.png)
 
     設定 | 推奨値 | 説明
@@ -49,24 +49,22 @@ Azure Database for MariaDB サーバーを作成するには、次の手順に�
     サーバー管理者のログイン | **myadmin** | サーバーに接続するときに使用するサインイン アカウント。 管理者のサインイン名に **azure_superuser**、**admin**、**administrator**、**root**、**guest**、**public** は使用できません。
     Password | *任意* | サーバー管理者アカウントの新しいパスワードを入力します。 8 ～ 128 文字にする必要があります。 パスワードには、英大文字、英小文字、数字 (0 から 9)、英数字以外の文字 (!、$、#、% など) のうち、3 つのカテゴリの文字が含まれている必要があります。
     [パスワードの確認入力] | *任意*| 管理者アカウントのパスワードを確認します。
-    Location | *ユーザーに最も近いリージョン*| ユーザーや他の Azure アプリケーションに最も近い場所を選択します。
+    場所 | *ユーザーに最も近いリージョン*| ユーザーや他の Azure アプリケーションに最も近い場所を選択します。
     Version | *最新バージョン*| 最新バージョン (別のバージョンを使用する特別な要件がある場合を除く)。
     Pricing tier | 説明を参照してください。 | 新しいサーバーのコンピューティング、ストレージ、およびバックアップ構成。 **[価格レベル]**  >  **[General Purpose]** を選択します。 次の設定は既定値のままにしてください。<br><ul><li>**[コンピューティング世代]** (Gen 5)</li><li>**[仮想コア]** (4 仮想コア)</li><li>**ストレージ** (100 GB)</li><li>**[バックアップの保有期間]** (7 日間)</li></ul><br>サーバー バックアップを geo 冗長ストレージで有効にするには、 **[バックアップ冗長オプション]** で **[地理冗長]** を選択します。 <br><br>この価格レベルの選択を保存するには、 **[OK]** を選択します。 次のスクリーンショットは、これらの選択を示しています。
   
    > [!NOTE]
    > 低負荷なコンピューティングと I/O がワークロードに適している場合は、Basic 価格レベルの使用を検討してください。 Basic 価格レベルで作成されたサーバーは後で General Purpose またはメモリ最適化にスケーリングできないことに注意してください。 詳細については、[価格に関するページ](https://azure.microsoft.com/pricing/details/mariadb/)を参照してください。
-   > 
 
    ![サーバーの作成 - [価格レベル] ウィンドウ](./media/quickstart-create-mariadb-server-database-using-azure-portal/3-pricing-tier.png)
 
-4.  **[作成]** を選択して、サーバーをプロビジョニングします。 プロビジョニングには、最大 20 分かかる場合があります。
-   
-5.  デプロイ プロセスを監視するには、ツール バーの **[通知]** (ベル アイコン) を選択します。
-   
+4. **[確認および作成]** を選択して、サーバーをプロビジョニングします。 プロビジョニングには、最大 20 分かかる場合があります。
+
+5. デプロイ プロセスを監視するには、ツール バーの **[通知]** (ベル アイコン) を選択します。
+
 既定では、データベース **information_schema**、**mysql**、**performance_schema**、および **sys** は、ご利用のサーバーに作成されます。
 
-
-## <a name="configure-firewall-rule"></a>サーバーレベルのファイアウォール規則の構成
+## <a name="configure-a-server-level-firewall-rule"></a><a name="configure-firewall-rule"></a>サーバーレベルのファイアウォール規則の構成
 
 Azure Database for MariaDB サービスでは、サーバー レベルでファイアウォールが作成されます。 このファイアウォールにより、外部のアプリケーションやツールから、サーバーまたはサーバー上のすべてのデータベースへの接続が禁止されます。接続を許可するためには、特定の IP アドレスに対して、ファイアウォールを開放するファイアウォール規則を作成する必要があります。 
 
@@ -77,20 +75,19 @@ Azure Database for MariaDB サービスでは、サーバー レベルでファ�
 2. サーバーの概要ページで、 **[接続のセキュリティ]** を選択します。
 
 3. **[ファイアウォール規則]** で、 **[規則名]** 列の空白のテキスト ボックスを選択し、ファイアウォール規則の作成を開始します。 このサーバーに接続するクライアントの正確な IP 範囲を指定します。
-   
+
    ![[接続のセキュリティ] - [ファイアウォール規則]](./media/quickstart-create-mariadb-server-database-using-azure-portal/5-firewall-2.png)
 
-4. **[接続のセキュリティ]** ページの上部のツール バーで、 **[保存]** を選択します。 更新が正常に完了したことを示す通知が表示されるまで待ってから次に進んでください。 
+4. **[接続のセキュリティ]** ページの上部のツール バーで、 **[保存]** を選択します。 更新が正常に完了したことを示す通知が表示されるまで待ってから次に進んでください。
 
    > [!NOTE]
    > Azure Database for MariaDB との接続では、ポート 3306 が通信に使用されます。 企業ネットワーク内から接続しようとしても、ポート 3306 でのアウトバウンド トラフィックが許可されていない場合があります。 その場合、サーバーに接続するためには、IT 部門がポート 3306 を開放する必要があります。
-   > 
 
 ## <a name="get-connection-information"></a>接続情報の取得
 
 データベース サーバーに接続するには、サーバーの完全な名前と管理者サインイン資格情報が必要となります。 これらの値は、この記事の前の手順でメモしてあるはずです。 メモしていなかった場合、Azure portal で、サーバーの **[概要]** ページまたは **[プロパティ]** ページでサーバー名とサインイン情報を簡単に確認できます。
 
-1. サーバーの **[概要]** ページに移動します。 **[サーバー名]** と **[サーバー管理者ログイン名]** の値を書き留めておきます。 
+1. サーバーの **[概要]** ページに移動します。 **[サーバー名]** と **[サーバー管理者ログイン名]** の値を書き留めておきます。
 
 2. これらの値をコピーするには、コピーしたいフィールドにカーソルを合わせます。 テキストの右側にコピー アイコンが表示されます。 必要に応じてコピー アイコンを選択して値をコピーします。
 
@@ -113,13 +110,13 @@ Azure Database for MariaDB サーバーには、さまざまなアプリケー�
 
     mysql ユーティリティを使用して Azure Database for MariaDB サーバーに接続するには、次の形式を使用します。
 
-    ```bash
+    ```cmd
     mysql --host <fully qualified server name> --user <server admin login name>@<server name> -p
     ```
 
     たとえば、次のコマンドは、サンプル サーバーに接続します。
 
-    ```azurecli-interactive
+    ```cmd
     mysql --host mydemoserver.mariadb.database.azure.com --user myadmin@mydemoserver -p
     ```
 
@@ -129,11 +126,11 @@ Azure Database for MariaDB サーバーには、さまざまなアプリケー�
     --user | *サーバー管理者ログイン名* |Azure Database for MariaDB サーバーを作成するときに使用したサーバー管理者のログイン ユーザー名。 このユーザー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 形式は *username\@servername* です。
     -p | *<お使いのパスワード>*<br>(プロンプトが表示されるまで待つ) |メッセージが表示されたら、サーバーの作成に使用したパスワードを入力します。 入力したパスワードの文字は bash プロンプトには表示されません。 パスワードを入力したら、Enter キーを押します。
 
-   mysql ユーティリティが接続されると、`mysql>` プロンプトが表示されます。 このプロンプトでコマンドを入力することができます。 
+   mysql ユーティリティが接続されると、`mysql>` プロンプトが表示されます。 このプロンプトでコマンドを入力することができます。
 
    mysql の出力例を次に示します。
 
-    ```bash
+    ```output
     Welcome to the MySQL monitor.  Commands end with ; or \g.
     Your MySQL connection id is 65505
     Server version: 5.6.39.0 MariaDB Server
@@ -209,7 +206,6 @@ MySQL Workbench を使用してサーバーに接続するには、次の手順�
 
     > [!NOTE]
     > ご使用のサーバーには SSL が既定で適用されます。 正常に接続するためには追加の構成が必要です。 詳細については、「[Azure Database for MariaDB に安全に接続するためにご利用のアプリケーション内で SSL 接続を構成する](./howto-configure-ssl.md)」を参照してください。 このクイック スタートに関して SSL を無効にするのであれば、Azure portal で、サーバーの概要ページにあるメニューから **[接続のセキュリティ]** を選択してください。 **[SSL 接続を強制する]** で **[無効]** を選択します。
-    >
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -217,19 +213,18 @@ MySQL Workbench を使用してサーバーに接続するには、次の手順�
 
 > [!TIP]
 > このコレクションの他のクイック スタートは、このクイック スタートに基づいています。 引き続き Azure Database for MariaDB のクイック スタートの作業を行う場合は、このクイック スタートで作成したリソースをクリーンアップしないでください。 これ以上作業を行わない場合は、以下の手順に従い、このクイック スタートで作成したすべてのリソースを削除してください。
->
 
 新しく作成したサーバーを含むリソース グループ全体を削除する手順は次のとおりです。
 
-1.  Azure portal で目的のリソース グループを探します。 左側のメニューで **[リソース グループ]** を選択し、目的のリソース グループの名前 (この例では **myresourcegroup**) を選択します。
+1. Azure portal で目的のリソース グループを探します。 左側のメニューで **[リソース グループ]** を選択し、目的のリソース グループの名前 (この例では **myresourcegroup**) を選択します。
 
-2.  リソース グループ ページで **[削除]** を選択します。 次に、リソース グループの名前 (この例では **myresourcegroup**) を入力して、削除の確認を行います。 **[削除]** を選択します。
+2. リソース グループ ページで **[削除]** を選択します。 次に、リソース グループの名前 (この例では **myresourcegroup**) を入力して、削除の確認を行います。 **[削除]** を選択します。
 
 新しく作成したサーバーを削除するには、次の手順に従います。
 
 1. Azure portal で目的のサーバーを探します (まだ開いていない場合)。 左側のメニューで、 **[すべてのリソース]** を選びます。 次に、作成したサーバーを検索します。
 
-2. **[概要]** ページで **[削除]** を選択します。 
+2. **[概要]** ページで **[削除]** を選択します。
 
    ![Azure Database for MariaDB - サーバーの削除](./media/quickstart-create-mariadb-server-database-using-azure-portal/delete-server.png)
 

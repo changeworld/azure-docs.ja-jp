@@ -6,11 +6,11 @@ ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
 ms.openlocfilehash: 6e4c8057322b6208ea3b447b264e2bde1344540c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421549"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235535"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Automation Runbook 向けの Windows PowerShell ワークフローの基本的な概念の説明
 

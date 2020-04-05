@@ -4,10 +4,10 @@ description: QnA Maker のナレッジ ベースは、一連の質問と回答 (
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: cb71de0f6a3e372d8c1c1fede67ba0c0354532ca
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76844322"
 ---
 # <a name="question-and-answer-set-concepts"></a>質問と回答セットの概念

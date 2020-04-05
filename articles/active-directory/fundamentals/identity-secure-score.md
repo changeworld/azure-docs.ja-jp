@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0f75dea2cffbe710bf2778ceab5eacc91ffcca9c
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77523112"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Azure Active Directory の ID セキュリティ スコアとは

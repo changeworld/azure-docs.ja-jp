@@ -4,10 +4,10 @@ description: SWIFT CSP-CSCF v2020 ブループリント サンプルのコント
 ms.date: 09/24/2019
 ms.topic: sample
 ms.openlocfilehash: 1826e4820f06fc3a858ce6cd5f8906baaa9808cc
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74546525"
 ---
 # <a name="control-mapping-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>SWIFT CSP-CSCF v2020 ブループリント サンプルのコントロール マッピング
@@ -292,7 +292,7 @@ Advanced Threat Protection for Azure Storage では、ストレージ アカウ�
 > [!NOTE]
 > 特定の Azure Policy 定義を利用できるかどうかは、Azure Government とその他の National Clouds で異なる場合があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 SWIFT CSP-CSCF v2020 のブループリントのコントロール マッピングを確認しました。次に、以下の記事でブループリントおよびこのサンプルをデプロイする方法を確認します。
 

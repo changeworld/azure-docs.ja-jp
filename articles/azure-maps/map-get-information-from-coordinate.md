@@ -1,7 +1,7 @@
 ---
 title: マップの座標に関する情報を表示する | Microsoft Azure Maps
 description: ユーザーが座標を選択したときにマップ上の住所に関する情報を表示する方法について説明します。
-author: jingjing-z
+author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 07/29/2019
 ms.topic: conceptual
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 1a6b3b4665e6141fb4c95508a8d8405268de6d19
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 174bdc496e52a6ac8f2a2d631db92e0f21a819be
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208524"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371436"
 ---
 # <a name="get-information-from-a-coordinate"></a>座標から情報を取得する
 
@@ -24,7 +24,7 @@ ms.locfileid: "77208524"
 
 ## <a name="make-a-reverse-search-request-via-service-module"></a>サービス モジュールを使用して逆方向の検索要求を行う
 
-<iframe height='500' scrolling='no' title='座標から情報を取得する (サービス モジュール)' src='//codepen.io/azuremaps/embed/ejEYMZ/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上で、Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による<a href='https://codepen.io/azuremaps/pen/ejEYMZ/'>座標から情報を取得する (サービス モジュール)</a> ペンを表示します。
+<iframe height='500' scrolling='no' title='座標から情報を取得する (サービス モジュール)' src='//codepen.io/azuremaps/embed/ejEYMZ/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io/azuremaps/pen/ejEYMZ/'>CodePen</a> 上で、Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による<a href='https://codepen.io'>座標から情報を取得する (サービス モジュール)</a> ペンを表示します。
 </iframe>
 
 上記のコードでは、最初のブロックでマップ オブジェクトが構築され、アクセス トークンを使用するための認証メカニズムが設定されます。 作成方法については、[マップの作成](./map-create.md)に関する記事を参照してください。
@@ -43,7 +43,7 @@ ms.locfileid: "77208524"
 
 マップをクリックし、Fetch を使用してその場所に対する逆ジオコーディング要求を行います。
 
-<iframe height='500' scrolling='no' title='座標から情報を取得する' src='//codepen.io/azuremaps/embed/ddXzoB/?height=516&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>ペンを参照してください <a href='https://codepen.io'>CodePen</a> の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) によって<a href='https://codepen.io/azuremaps/pen/ddXzoB/'>座標の情報を取得</a>します。
+<iframe height='500' scrolling='no' title='座標から情報を取得する' src='//codepen.io/azuremaps/embed/ddXzoB/?height=516&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>ペンを参照してください <a href='https://codepen.io/azuremaps/pen/ddXzoB/'>CodePen</a> の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) によって<a href='https://codepen.io'>座標の情報を取得</a>します。
 </iframe>
 
 上記のコードでは、最初のコード ブロックでマップ オブジェクトが構築され、アクセス トークンを使用するための認証メカニズムが設定されます。 作成方法については、[マップの作成](./map-create.md)に関する記事を参照してください。
@@ -55,6 +55,9 @@ ms.locfileid: "77208524"
 カーソルの変更、ポップアップ オブジェクト、およびクリック イベントは、いずれもマップの[ロード イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)で作成されます。 このコード構造により、座標情報を取得する前にマップ全体が確実に読み込まれます。
 
 ## <a name="next-steps"></a>次のステップ
+
+> [!div class="nextstepaction"]
+> [検索サービスを使用するためのベスト プラクティス](how-to-use-best-practices-for-search.md)
 
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 

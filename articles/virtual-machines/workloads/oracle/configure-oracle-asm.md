@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: ace19f17f5d7a5e920808b76258459c0eba62890
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: a27d4c1712e9d65afcfc8792eac88be468829f6f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750533"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536379"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Azure Linux 仮想マシンで Oracle ASM をセットアップする  
 
@@ -62,7 +62,7 @@ Oracle データベース イメージに基づいて仮想マシンを作成し
 
 VM を作成すると、Azure CLI によって次の例のような情報が表示されます。 `publicIpAddress` の値をメモします。 このアドレスは、VM へのアクセスに使用します。
 
-   ```azurecli
+   ```output
    {
      "fqdns": "",
      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -79,7 +79,7 @@ VM を作成すると、Azure CLI によって次の例のような情報が表�
 
 VM との SSH セッションを作成し、追加の設定を構成するには、次のコマンドを使用します。 IP アドレスを、VM の `publicIpAddress` 値に置き換えます。
 
-```bash 
+```bash
 ssh <publicIpAddress>
 ```
 
@@ -161,7 +161,7 @@ Oracle ASM のインストールの詳細については、「[Oracle ASMLib Dow
 
    このコマンドの出力は次のようになります。回答するべきプロンプトで停止します。
 
-    ```bash
+    ```output
    Configuring the Oracle ASM library driver.
 
    This will configure the on-boot properties of the Oracle ASM library
@@ -178,13 +178,14 @@ Oracle ASM のインストールの詳細については、「[Oracle ASMLib Dow
    ```
 
 2. ディスク構成を表示します。
+
    ```bash
    cat /proc/partitions
    ```
 
    このコマンドの出力は、次のようなディスクの一覧になります。
 
-   ```bash
+   ```output
    8       16   14680064 sdb
    8       17   14678976 sdb1
    8        0   52428800 sda
@@ -211,7 +212,7 @@ Oracle ASM のインストールの詳細については、「[Oracle ASMLib Dow
    
    上の回答を利用した場合、`fdisk` コマンドの出力は次のようになります。
 
-   ```bash
+   ```output
    Device contains not a valid DOS partition table, or Sun, SGI or OSF disklabel
    Building a new DOS disklabel with disk identifier 0xf865c6ca.
    Changes will remain in memory only, until you decide to write them.
@@ -255,7 +256,7 @@ Oracle ASM のインストールの詳細については、「[Oracle ASMLib Dow
 
    コマンドの出力は次のようになります。
 
-   ```bash
+   ```output
    major minor  #blocks  name
 
      8       16   14680064 sdb
@@ -282,8 +283,8 @@ Oracle ASM のインストールの詳細については、「[Oracle ASMLib Dow
    ```
 
    コマンドの出力は次のようになります。
-   
-   ```bash
+
+   ```output
    Checking if ASM is loaded: no
    Checking if /dev/oracleasm is mounted: no
    Initializing the Oracle ASMLib driver:                     [  OK  ]
@@ -297,11 +298,11 @@ Oracle ASM のインストールの詳細については、「[Oracle ASMLib Dow
    service oracleasm createdisk DATA /dev/sdd1 
    service oracleasm createdisk DATA1 /dev/sde1 
    service oracleasm createdisk FRA /dev/sdf1
-   ```    
+   ```
 
    コマンドの出力は次のようになります。
 
-   ```bash
+   ```output
    Marking disk "ASMSP" as an ASM disk:                       [  OK  ]
    Marking disk "DATA" as an ASM disk:                        [  OK  ]
    Marking disk "DATA1" as an ASM disk:                       [  OK  ]
@@ -312,11 +313,11 @@ Oracle ASM のインストールの詳細については、「[Oracle ASMLib Dow
 
    ```bash
    service oracleasm listdisks
-   ```   
+   ```
 
    コマンドの出力には、次のような Oracle ASM ディスクが一覧表示されます。
 
-   ```bash
+   ```output
     ASMSP
     DATA
     DATA1
@@ -371,7 +372,7 @@ Oracle Grid Infrastructure ソフトウェアをダウンロードして準備�
    ```
 
 4. .zip ファイルを解凍します (Linux のファイル解凍ツールがまだインストールされていない場合はインストールします)。
-   
+
    ```bash
    sudo yum install unzip
    sudo unzip linuxamd64_12102_grid_1of2.zip
@@ -379,7 +380,7 @@ Oracle Grid Infrastructure ソフトウェアをダウンロードして準備�
    ```
 
 5. アクセス許可を変更します。
-   
+
    ```bash
    sudo chown -R grid:oinstall /opt/grid
    ```
@@ -390,7 +391,7 @@ Oracle Grid Infrastructure ソフトウェアをダウンロードして準備�
    sudo chmod 777 /etc/waagent.conf  
    vi /etc/waagent.conf
    ```
-   
+
    `ResourceDisk.SwapSizeMB` を検索し、値を **8192** に変更します。 `insert` を押して挿入モードに入り、値として **8192** を入力し、`esc` を押してコマンド モードに戻ります。 変更を書き込み、ファイルを終了するには、`:wq` を入力し、`enter` を押します。
    
    > [!NOTE]
@@ -550,6 +551,7 @@ Oracle データベース ソフトウェアは既に Azure Marketplace イメ�
    cd /u01/app/oracle/product/12.1.0/dbhome_1/bin
    ./dbca
    ```
+
    Database Configuration Assistant が開きます。
 
 2. **[データベース操作]** ページで、`Create Database` をクリックします。

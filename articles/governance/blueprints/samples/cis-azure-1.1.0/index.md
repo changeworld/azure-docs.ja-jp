@@ -4,10 +4,10 @@ description: CIS Microsoft Azure Foundations Benchmark ブループリント サ
 ms.date: 08/09/2019
 ms.topic: sample
 ms.openlocfilehash: 414c6d5a38821767dd43e62aa9f42edd8633dbe2
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "74544574"
 ---
 # <a name="overview-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure Foundations Benchmark ブループリント サンプルの概要
@@ -18,7 +18,7 @@ CIS Microsoft Azure Foundations Benchmark ブループリント サンプルで�
 
 「推奨マッピング」セクションでは、このブループリント内に含まれるポリシーとこれらのポリシーが CIS Microsoft Azure Foundations Benchmark v1.1.0 のさまざまな推奨事項にどのように対処しているかについて詳しく説明します。 リソースはアーキテクチャに割り当てられると、割り当て済みのポリシーに違反していないかどうかを Azure Policy によって評価されます。 詳細については、[Azure Policy](../../../policy/overview.md) に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 CIS Microsoft Azure Foundations Benchmark ブループリント サンプルの概要の確認が完了しました。
 次は、以下の記事を参照して推奨マッピングについて学習します。

@@ -8,10 +8,10 @@ ms.workload: storage
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.openlocfilehash: 3457adf67fa067a154eef008b08d8cfcc1d9eaa0
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75551541"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Windows または Linux 仮想マシンのボリュームをマウント/マウント解除する 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: diberry
 ms.openlocfilehash: 5499e8362e1107a18b997a6a485e11343c328d0d
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898369"
 ---
 # <a name="label-machine-learned-entity-in-an-example-utterance"></a>発話例内の機械学習エンティティにラベルを付ける

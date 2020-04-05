@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/07/2019
 ms.author: dech
 ms.openlocfilehash: 61d46bbf0ccdeb5cd2e95e36e19f1aa81cfeeb48
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76513401"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-preview"></a>Azure Cosmos DB の組み込みノートブックのコマンドと機能を使用する (プレビュー)
@@ -51,7 +51,7 @@ SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c
 
 ## <a name="run-a-sql-query-and-output-to-a-pandas-dataframe"></a>SQL クエリを実行し、Pandas DataFrame に出力する
 
-[Pandas DataFrame](https://pandas.pydata.org/pandas-docs/stable/getting_started/dsintro.html#dataframe) に ``%%sql`` クエリの結果を出力できます。 次の構文を使用します。 
+``%%sql``Pandas DataFrame[ に ](https://pandas.pydata.org/pandas-docs/stable/getting_started/dsintro.html#dataframe) クエリの結果を出力できます。 次の構文を使用します。 
 
 ```bash
 %%sql --database {database_id} --container {container_id} --output {outputDataFrameVar}

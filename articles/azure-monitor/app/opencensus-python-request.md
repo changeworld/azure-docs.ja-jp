@@ -6,10 +6,10 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.openlocfilehash: 0396bd8d150c6145a39f36e7be9e6e2dcacef2c4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77669949"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>OpenCensus Python を使用した受信要求の追跡
@@ -20,9 +20,9 @@ ms.locfileid: "77669949"
 
 ## <a name="tracking-django-applications"></a>Django アプリケーションの追跡
 
-1. [PyPI](https://pypi.org/project/opencensus-ext-django/) から `opencensus-ext-django` をダウンロードしてインストールし、`django` ミドルウェアでアプリケーションをインストルメント化します。 `django` アプリケーションに送信された受信要求が追跡されます。
+1. `opencensus-ext-django`PyPI[ から ](https://pypi.org/project/opencensus-ext-django/) をダウンロードしてインストールし、`django` ミドルウェアでアプリケーションをインストルメント化します。 `django` アプリケーションに送信された受信要求が追跡されます。
 
-2. `settings.py` ファイルの `MIDDLEWARE` に `opencensus.ext.django.middleware.OpencensusMiddleware` を含めます。
+2. `opencensus.ext.django.middleware.OpencensusMiddleware` ファイルの `settings.py` に `MIDDLEWARE` を含めます。
 
     ```python
     MIDDLEWARE = (
@@ -61,7 +61,7 @@ ms.locfileid: "77669949"
 
 ## <a name="tracking-flask-applications"></a>Flask アプリケーションの追跡
 
-1. [PyPI](https://pypi.org/project/opencensus-ext-flask/) から `opencensus-ext-flask` をダウンロードしてインストールし、`flask` ミドルウェアでアプリケーションをインストルメント化します。 `flask` アプリケーションに送信された受信要求が追跡されます。
+1. `opencensus-ext-flask`PyPI[ から ](https://pypi.org/project/opencensus-ext-flask/) をダウンロードしてインストールし、`flask` ミドルウェアでアプリケーションをインストルメント化します。 `flask` アプリケーションに送信された受信要求が追跡されます。
 
     ```python
     
@@ -102,7 +102,7 @@ ms.locfileid: "77669949"
 
 ## <a name="tracking-pyramid-applications"></a>Pyramid アプリケーションの追跡
 
-1. [PyPI](https://pypi.org/project/opencensus-ext-pyramid/) から `opencensus-ext-django` をダウンロードしてインストールし、`pyramid` tween でアプリケーションをインストルメント化します。 `pyramid` アプリケーションに送信された受信要求が追跡されます。
+1. `opencensus-ext-django`PyPI[ から ](https://pypi.org/project/opencensus-ext-pyramid/) をダウンロードしてインストールし、`pyramid` tween でアプリケーションをインストルメント化します。 `pyramid` アプリケーションに送信された受信要求が追跡されます。
 
     ```python
     def main(global_config, **settings):
@@ -133,6 +133,6 @@ ms.locfileid: "77669949"
 
 * [アプリケーション マップ](../../azure-monitor/app/app-map.md)
 * [可用性](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Search](../../azure-monitor/app/diagnostic-search.md)
+* [検索](../../azure-monitor/app/diagnostic-search.md)
 * [Log (Analytics) のクエリ](../../azure-monitor/log-query/log-query-overview.md)
 * [トランザクションの診断](../../azure-monitor/app/transaction-diagnostics.md)

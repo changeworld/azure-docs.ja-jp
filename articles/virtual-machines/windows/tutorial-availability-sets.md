@@ -16,13 +16,13 @@ ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 0f94f4d312cefec80a0f294e256ee1ad908b903c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74068133"
 ---
-# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して高可用性仮想マシンを作成してデプロイする
+# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用して高可用性仮想マシンを作成してデプロイする
 
 このチュートリアルでは、可用性セットを使用して、仮想マシン (VM) の可用性と信頼性を向上させる方法を学習します。 可用性セットを使うことで、Azure にデプロイする VM は、クラスター内で切り離された複数のハードウェア ノードに確実に分散されます。 
 
@@ -63,7 +63,7 @@ New-AzResourceGroup `
    -Location EastUS
 ```
 
-`-sku aligned` パラメーターを指定した [New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset) を使用して、マネージド可用性セットを作成します。
+[ パラメーターを指定した ](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset)New-AzAvailabilitySet`-sku aligned` を使用して、マネージド可用性セットを作成します。
 
 ```azurepowershell-interactive
 New-AzAvailabilitySet `
@@ -128,7 +128,7 @@ Azure Advisor を使用して、VM の可用性を向上させる方法につい
 [Azure Portal](https://portal.azure.com) にサインインし、 **[すべてのサービス]** を選択して、「**Advisor**」と入力します。 Advisor ダッシュボードに、選択したサブスクリプションの個人向けの推奨事項が表示されます。 詳細については、「[Azure Advisor の使用を開始する](../../advisor/advisor-get-started.md)」を参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: rohogue
 ms.openlocfilehash: c88ffb9e87bc0688cc87b816efaa8e101e23407c
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77651957"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>NAS 構成および NFS ストレージ ターゲットに関する問題のトラブルシューティング
@@ -58,7 +58,7 @@ rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+t
 
 各種のストレージ システムでは、それぞれ異なる方法を使用してこのアクセスが有効にされます。
 
-* Linux サーバーでは、通常、``/etc/exports`` 内のエクスポートされたパスに ``no_root_squash`` が追加されます。
+* Linux サーバーでは、通常、``no_root_squash`` 内のエクスポートされたパスに ``/etc/exports`` が追加されます。
 * NetApp および EMC システムでは、通常、特定の IP アドレスまたはネットワークに関連付けられたエクスポート ルールを使用してアクセスが制御されます。
 
 エクスポート ルールを使用する場合は、キャッシュではキャッシュ サブネットからの複数の異なる IP アドレスを使用できることに注意してください。 すべての使用可能なサブネット IP アドレスからのアクセスを許可します。
@@ -78,7 +78,7 @@ NAS ストレージ ベンダーと協力して、適切なレベルのアクセ
 
 エクスポート ``/ifs/accounting/payroll`` は ``/ifs/accounting`` の子であり、``/ifs/accounting`` 自体は ``/ifs`` の子です。
 
-``payroll`` エクスポートを HPC キャッシュ ストレージ ターゲットとして追加した場合、キャッシュでは実際には ``/ifs/`` がマウントされ、そこから payroll ディレクトリへのアクセスが行われます。 よって、Azure HPC Cache では、``/ifs/accounting/payroll`` エクスポートにアクセスするために、``/ifs`` へのルート アクセスが必要です。
+``payroll`` エクスポートを HPC キャッシュ ストレージ ターゲットとして追加した場合、キャッシュでは実際には ``/ifs/`` がマウントされ、そこから payroll ディレクトリへのアクセスが行われます。 よって、Azure HPC Cache では、``/ifs`` エクスポートにアクセスするために、``/ifs/accounting/payroll`` へのルート アクセスが必要です。
 
 この要件は、ストレージ システムから提供されるファイル ハンドルを使用して、キャッシュでファイルにインデックスを付け、ファイルの競合を回避する方法に関連しています。
 

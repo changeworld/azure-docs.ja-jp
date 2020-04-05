@@ -5,13 +5,13 @@ ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 03/27/2019
-ms.custom: seodec18
-ms.openlocfilehash: a68392d003e4e2a81801a903302badd99c1e9e87
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 940b49d29707a55bc5d63d6f49cdef19ba3f28e5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77523970"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80045725"
 ---
 # <a name="build-a-nodejs-and-mongodb-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で Node.js および MongoDB のアプリを構築する
 

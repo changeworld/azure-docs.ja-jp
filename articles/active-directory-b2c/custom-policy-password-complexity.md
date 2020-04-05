@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: af6a7611381cbf7a251e65969d156f4c40d71843
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: b16790e288f6569f08ce14e5a7c751bbd8083faf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79126779"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79138436"
 ---
 # <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してパスワードの複雑さを構成する
 
@@ -153,4 +153,4 @@ Azure Active Directory B2C (Azure AD B2C) では、アカウントの作成時�
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Active Directory B2C でカスタム ポリシーを使用してパスワードの変更を構成する](custom-policy-password-change.md)方法について学習します。
-- - IEF リファレンスの [Predicates](predicates.md) と [PredicateValidations](predicates.md#predicatevalidations) 要素について学習します。
+- IEF リファレンスの [Predicates](predicates.md) と [PredicateValidations](predicates.md#predicatevalidations) 要素について学習します。

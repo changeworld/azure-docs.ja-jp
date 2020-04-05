@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Bime の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Bime の統合 | Microsoft Docs'
 description: Azure Active Directory と Bime の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7774fd55a64df198a9b025a67ce377deebefe8fe
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74232068"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bime"></a>チュートリアル:Azure Active Directory と Bime の統合
+# <a name="tutorial-azure-active-directory-integration-with-bime"></a>チュートリアル: Azure Active Directory と Bime の統合
 
 このチュートリアルでは、Bime と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Bime と Azure AD の統合には、次の利点があります。
@@ -141,7 +141,7 @@ Bime で Azure AD シングル サインオンを構成するには、次の手�
 
 3. アカウント構成ページで、次の手順に従います。
   
-    ![[シングル サインオンの構成]](./media/bime-tutorial/ic775559.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/bime-tutorial/ic775559.png "Configure single sign-on")
 
     a. **[SAML 認証を有効にする]** を選択します。
 
@@ -149,7 +149,7 @@ Bime で Azure AD シングル サインオンを構成するには、次の手�
 
     c. **[Certificate Fingerprint]\(証明書のフィンガープリント\)** ボックスに、Azure portal からコピーした **THUMBPRINT (拇印)** 値を貼り付けます。
 
-    d. **[Save]** をクリックします。
+    d. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -226,9 +226,9 @@ Azure AD ユーザーが Bime にログインできるようにするには、�
 
     b. **[Last name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
 
-    c. **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (例: **brittasimon\@contoso.com**) を入力します。
+    c. **[Email]\(電子メール\)** テキスト ボックスに、ユーザーのメール アドレス (**brittasimon\@contoso.com** など) を入力します。
 
-    d. **[Save]** をクリックします。
+    d. **[保存]** をクリックします。
 
 > [!NOTE]
 > 他の Bime ユーザー アカウント作成ツールや、Bime から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。

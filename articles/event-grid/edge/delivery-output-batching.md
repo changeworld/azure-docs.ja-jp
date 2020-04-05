@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: a6f033af34088081090251f2e5e7cd4a07ce43cc
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76841749"
 ---
 # <a name="output-batching"></a>出力のバッチ処理

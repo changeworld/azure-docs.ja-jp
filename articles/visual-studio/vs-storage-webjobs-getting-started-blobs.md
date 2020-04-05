@@ -14,10 +14,10 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 90aa824b7df575eb2783ece5bd88322f0b55f0a2
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72299969"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>Azure BLOB ストレージと Visual Studio 接続済みサービスの概要 (Web ジョブ プロジェクト)
@@ -208,7 +208,7 @@ BLOB を強制的に再処理する場合は、 *azure-webjobs-hosts* コンテ�
 その記事では、以下のような関連トピックが紹介されています。
 
 * Async 関数
-* 複数のインスタンス
+* 複数インスタンス
 * グレースフル シャットダウン
 * 関数本体での Web ジョブ SDK 属性の使用
 * コード内で SDK の接続文字列を設定する。
@@ -217,6 +217,6 @@ BLOB を強制的に再処理する場合は、 *azure-webjobs-hosts* コンテ�
 * 手動での関数のトリガー
 * ログの書き込み
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、Azure BLOB を操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。 Azure WebJobs および WebJobs SDK の使用方法の詳細については、「 [Azure WebJobs のドキュメント リソース](https://go.microsoft.com/fwlink/?linkid=390226)」をご覧ください。
 

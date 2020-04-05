@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: d474442086e2a114f26df279ab2682cd7628a5f5
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74184279"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>CLI を使用した Internet Analyzer テストの作成 (プレビュー)
@@ -36,7 +36,7 @@ Internet Analyzer CLI では、次の種類のリソースが公開されます�
 * **時系列** - 時系列には、一定期間におけるメトリックの変化が表示されます。
 
 ## <a name="profile-and-test-creation"></a>プロファイルとテストの作成
-1. [Azure Internet Analyzer の FAQ](internet-analyzer-faq.md) に記載されている「**プレビューに参加するにはどうすればよいですか?** 」の指示に従って、Internet Analyzer プレビュー版へのアクセスを取得します。
+1. **Azure Internet Analyzer の FAQ** に記載されている「[プレビューに参加するにはどうすればよいですか?](internet-analyzer-faq.md)」の指示に従って、Internet Analyzer プレビュー版へのアクセスを取得します。
 2. [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)を実行します。
 3. `login` コマンドを実行して CLI セッションを開始します。
     ```azurecli-interactive
@@ -113,7 +113,7 @@ Internet Analyzer CLI では、次の種類のリソースが公開されます�
     ]
     ````
 
-12. 測定生成を開始するには、テストの **scriptFileUri** で指示される JavaScript ファイルを Web アプリケーションに組み込む必要があります。 具体的な手順は [Internet Analyzer Client の組み込み](internet-analyzer-embed-client.md)ページにあります。
+12. 測定生成を開始するには、テストの **scriptFileUri** で指示される JavaScript ファイルを Web アプリケーションに組み込む必要があります。 具体的な手順は、「[Internet Analyzer クライアントの埋め込み](internet-analyzer-embed-client.md)」ページに記載されています。
 
 13. その "状態" 値を追跡することでテストの進捗状況を監視できます。
     ```azurecli-interactive
@@ -130,7 +130,7 @@ Internet Analyzer CLI では、次の種類のリソースが公開されます�
     ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * サポートされているコマンドと使用例の完全な一覧については、[Internet Analyzer の CLI リファレンス](https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest)を参照してください。
 * [Internet Analyzer の FAQ](internet-analyzer-faq.md) を読む。

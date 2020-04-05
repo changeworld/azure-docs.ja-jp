@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 15d4cbc372f5d5ec0d323170189329152ed436e3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73684941"
 ---
 # <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>クライアントが Azure Media Services キー配信サービスにトークンを渡す方法
@@ -54,6 +54,6 @@ ms.locfileid: "73684941"
 
 - 代替 HTTP ライブ ストリーミング (HLS) 再生リストを使います。 iOS/Safari での AES + HLS 再生用にトークン認証を構成する必要がある場合は、トークンで直接送信する方法はありません。 代わりに再生リストを使ってこのシナリオを有効にする方法について詳しくは、こちらの[ブログ投稿](https://azure.microsoft.com/blog/2015/03/06/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

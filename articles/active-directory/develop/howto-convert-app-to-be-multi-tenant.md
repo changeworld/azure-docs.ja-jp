@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 02/19/2020
+ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: b3338edf644aee8409cfca05d4ac801594cbf66b
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: e15fb60ec339eae45f9f14a3333e8afe51fc05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467761"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480863"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>方法:すべての Azure Active Directory ユーザーがマルチテナント アプリケーション パターンを使用してサインインする
 
@@ -115,7 +115,7 @@ Azure AD のアプリケーションにユーザーがサインインするに�
 
 アプリケーション専用アクセス許可では、常にテナント管理者の同意が必要になります。 アプリケーションがアプリケーション専用アクセス許可を要求する場合に、ユーザーがそのアプリケーションにサインインしようとすると、このユーザーは同意できないことを示すエラー メッセージが表示されます。
 
-一部の委任アクセス許可でも、テナント管理者の同意が必要になります。 たとえば、サインイン済みユーザーとして Azure AD に書き戻しを行うアクセス許可には、テナント管理者の同意が必要です。 アプリケーション専用アクセス許可と同様に、管理者の同意が必要な委任アクセス許可を要求するアプリケーションに通常のユーザーがサインインしようとすると、アプリケーションでエラーが発生します。 アクセス許可に管理者の同意が必要かどうかは、リソースを公開した開発者により決定されており、リソースのドキュメントに記載されています。 [Azure AD Graph API][AAD-Graph-Perm-Scopes] と [Microsoft Graph API][MSFT-Graph-permission-scopes] のアクセス許可に関するドキュメントには、管理者の同意が必要なアクセス許可が記載されています。
+一部の委任アクセス許可でも、テナント管理者の同意が必要になります。 たとえば、サインイン済みユーザーとして Azure AD に書き戻しを行うアクセス許可には、テナント管理者の同意が必要です。 アプリケーション専用アクセス許可と同様に、管理者の同意が必要な委任アクセス許可を要求するアプリケーションに通常のユーザーがサインインしようとすると、アプリケーションでエラーが発生します。 アクセス許可に管理者の同意が必要かどうかは、リソースを公開した開発者により決定されており、リソースのドキュメントに記載されています。 [Microsoft Graph API][MSFT-Graph-permission-scopes] のアクセス許可に関するドキュメントには、管理者の同意が必要なアクセス許可が示されています。
 
 アプリケーションで管理者の同意が必要なアクセス許可を使用する場合、ジェスチャ (管理者がアクションを開始できるボタンやリンク) を設定する必要があります。 通常、この操作に対してアプリケーションから送信される要求は OAuth2/OpenID Connect 承認要求ですが、この要求には `prompt=admin_consent` クエリ文字列パラメーターも含まれています。 管理者が同意し、ユーザーのテナントにサービス プリンシパルが作成されると、以降のサインイン要求では `prompt=admin_consent` パラメーターは不要になります。 管理者は要求されたアクセス許可を許容可能と判断しているため、その時点からは、テナント内の他のユーザーが同意を求められることはありません。
 
@@ -176,13 +176,12 @@ API が Microsoft 以外の組織によって作成されている場合、こ�
 
 ## <a name="related-content"></a>関連コンテンツ
 
-* [マルチテナント アプリケーションのサンプル](https://github.com/mspnp/multitenant-saas-guidance)
+* [マルチテナント アプリケーションのサンプル](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/2-WebApp-graph-user/2-3-Multi-Tenant/README.md)
 * [アプリケーションのブランド化ガイドライン][AAD-App-Branding]
 * [アプリケーション オブジェクトとサービス プリンシパル オブジェクト][AAD-App-SP-Objects]
 * [Azure Active Directory とアプリケーションの統合][AAD-Integrating-Apps]
 * [同意フレームワークの概要][AAD-Consent-Overview]
 * [Microsoft Graph API のアクセス許可のスコープ][MSFT-Graph-permission-scopes]
-* [Azure AD Graph API のアクセス許可のスコープ][AAD-Graph-Perm-Scopes]
 
 <!--Reference style links IN USE -->
 [AAD-Access-Panel]:  https://myapps.microsoft.com
@@ -192,8 +191,6 @@ API が Microsoft 以外の組織によって作成されている場合、こ�
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Consent-Overview]:consent-framework.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
-[AAD-Graph-Overview]: https://azure.microsoft.com/documentation/articles/active-directory-graph-api/
-[AAD-Graph-Perm-Scopes]: https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes
 [AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md
 [AAD-Samples-MT]: https://docs.microsoft.com/samples/browse/?products=azure-active-directory
 [AAD-Why-To-Integrate]: ./active-directory-how-to-integrate.md
@@ -213,10 +210,6 @@ API が Microsoft 以外の組織によって作成されている場合、こ�
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
-[AAD-Graph-Perm-Scopes]: https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes
-[AAD-Graph-App-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity
-[AAD-Graph-Sp-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity
-[AAD-Graph-User-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity
 [AAD-How-To-Integrate]: ./active-directory-how-to-integrate.md
 [AAD-Security-Token-Claims]: ./active-directory-authentication-scenarios/#claims-in-azure-ad-security-tokens
 [AAD-Tokens-Claims]:access-tokens.md

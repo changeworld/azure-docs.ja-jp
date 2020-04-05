@@ -16,10 +16,10 @@ ms.date: 02/26/2019
 ms.author: allensu
 ms.custom: seodec18
 ms.openlocfilehash: e740a65d453a69a987e938a5170ae8e04c7bfe40
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78249876"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>チュートリアル:ポータルを使用して Azure Load Balancer のポート フォワーディングを構成する

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: 812e6d251943d4418666f221ad8b5d2b6e501736
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74039498"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Azure で Windows クライアントを開発/テスト シナリオに使用する
@@ -62,6 +62,6 @@ ms.locfileid: "74039498"
 
 ![Azure アカウント ポータルからのプラン ID の詳細](./media/client-images/offer-id-azure-account-portal.png) 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 これで、[PowerShell](quick-create-powershell.md)、[Resource Manager テンプレート](ps-template.md)、または [Visual Studio](../../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) を使用して VM をデプロイすることができます。
 

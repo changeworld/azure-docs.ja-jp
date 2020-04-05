@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/09/2020
 ms.openlocfilehash: 75ac5a7fc352f877573d79a004d8da761c6f1cef
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79082882"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Azure HDInsight でクラスター パフォーマンスを監視する

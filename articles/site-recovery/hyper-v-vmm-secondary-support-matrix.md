@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
 ms.openlocfilehash: 1126a85ed22ee17879767a93ca75dc76dd04b747
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74132955"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Hyper-V VM のセカンダリ サイトへのディザスター リカバリーのサポート マトリックス
@@ -64,7 +64,7 @@ Guest VM - Windows/Linux - 静的 IP アドレス | はい
 ゲスト VM - マルチ NIC | はい
 
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>ストレージ
 
 ### <a name="host-storage"></a>ホスト ストレージ
 
@@ -97,7 +97,7 @@ RDM | 該当なし
 
 ## <a name="vaults"></a>資格情報コンテナー
 
-**アクション** | **サポートされています**
+**操作** | **サポートされています**
 --- | --- 
 リソース グループ間 (サブスクリプション内またはサブスクリプション間) での資格情報コンテナーの移動 |  いいえ
 リソース グループ間 (サブスクリプション内またはサブスクリプション間) でのストレージ、ネットワーク、Azure VM の移動 | いいえ
@@ -112,7 +112,7 @@ RDM | 該当なし
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [VMM クラウドの Hyper-V VM をセカンダリ サイトにレプリケートする](tutorial-vmm-to-vmm.md)
 

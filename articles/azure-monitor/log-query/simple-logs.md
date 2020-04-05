@@ -7,20 +7,20 @@ author: bwren
 ms.author: bwren
 ms.date: 09/12/2019
 ms.openlocfilehash: 59bcb42edaf7d46498a3514b4f1c919c6e8cc0c4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77660259"
 ---
 # <a name="simple-logs-experience-in-azure-monitor-preview"></a>Azure Monitor の簡易ログ エクスペリエンス (プレビュー)
-Azure Monitor には、KQL 言語を使用して[ログ クエリ](log-query-overview.md)を作成するための[充実したエクスペリエンス](get-started-portal.md)が備わっています。 ただし、基本的なクエリ要件には、KQL の機能が全部揃っている必要はなく、簡素化されたエクスペリエンスの方が好ましい場合もあります。 簡易ログ エクスペリエンスを使用すると、KQL を直接扱うことなく基本的なクエリを作成できます。 簡易ログは、必要なクエリが高度化していく中で、KQL の学習ツールとしても使用できます。
+Azure Monitor には、KQL 言語を使用して[ログ クエリ](get-started-portal.md)を作成するための[充実したエクスペリエンス](log-query-overview.md)が備わっています。 ただし、基本的なクエリ要件には、KQL の機能が全部揃っている必要はなく、簡素化されたエクスペリエンスの方が好ましい場合もあります。 簡易ログ エクスペリエンスを使用すると、KQL を直接扱うことなく基本的なクエリを作成できます。 簡易ログは、必要なクエリが高度化していく中で、KQL の学習ツールとしても使用できます。
 
 > [!NOTE]
 > 現在、簡易ログは、Cosmos DB と Key Vault のみを対象に、テストとして導入されています。 お使いになった感想を [User Voice](https://feedback.azure.com/forums/913690-azure-monitor) を通じて Microsoft に共有してください。この機能を拡張してリリースするかどうかの判断に役立てさせていただきます。
 
 
-## <a name="scope"></a>Scope
+## <a name="scope"></a>スコープ
 簡易ログ エクスペリエンスは、選択されたリソースについてのデータを *AzureDiagnostics*、*AzureMetrics*、*AzureActivity* の各テーブルから取得します。 
 
 ## <a name="using-simple-logs"></a>簡易ログを使用する

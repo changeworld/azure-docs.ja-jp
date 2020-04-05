@@ -13,14 +13,14 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 108bdf057cd375e28b10a6838ec5c8c6f57749a8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929227"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236263"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Azure Data Factory を使用した SAP Business Warehouse からのデータ移動
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-sap-business-warehouse-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-sap-business-warehouse.md)
 
@@ -42,10 +42,10 @@ SAP BW への接続を有効にするには、次のコンポーネントをイ�
 > [!TIP]
 > NetWeaver RFC SDK から抽出した dll を system32 フォルダーに格納します。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 さまざまなツールまたは API を使用して、オンプレミスの Cassandra データ ストアからデータを移動するコピー アクティビティでパイプラインを作成できます。 
 
-- パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。 
+- パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。 
 - また、次のツールを使用してパイプラインを作成することもできます。**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
@@ -170,7 +170,7 @@ external プロパティを true に設定すると、このテーブルが Data
 
 
 ### <a name="azure-blob-output-dataset"></a>Azure BLOB の出力データセット
-このデータセットでは、出力 Azure BLOB データセットを定義します。 type プロパティは AzureBlob に設定されます。 typeProperties セクションは、SAP BW インスタンスからコピーしたデータの格納場所を示しています。 データは、1 時間おきに新しい BLOB に書き込まれます (頻度: 時間、間隔: 1)。 BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
+このデータセットでは、出力 Azure BLOB データセットを定義します。 type プロパティは AzureBlob に設定されます。 typeProperties セクションは、SAP BW インスタンスからコピーしたデータの格納場所を示しています。 データは新しい BLOB に 1 時間おきに書き込まれます (frequency: hour、interval: 1)。 BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
 
 ```json
 {
@@ -291,27 +291,27 @@ SAP BW からデータを移動する場合、SAP BW 型から .NET 型に対す
 ABAP ディクショナリのデータ型 | .NET データ型
 -------------------------------- | --------------
 ACCP |  int
-CHAR | string
-CLNT | string
+CHAR | String
+CLNT | String
 CURR | Decimal
-CUKY | string
+CUKY | String
 DEC | Decimal
 FLTP | Double
 INT1 | Byte
 INT2 | Int16
 INT4 | int
-LANG | string
-LCHR | string
+LANG | String
+LCHR | String
 LRAW | Byte[]
 PREC | Int16
 QUAN | Decimal
 RAW | Byte[]
 RAWSTRING | Byte[]
-STRING | string
-UNIT | string
-DATS | string
-NUMC | string
-TIMS | string
+STRING | String
+UNIT | String
+DATS | String
+NUMC | String
+TIMS | String
 
 > [!NOTE]
 > ソース データセット列からシンク データセット列へのマッピングについては、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。
@@ -321,7 +321,7 @@ TIMS | string
 ソース データセット列のシンク データセット列へのマッピングの詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。
 
 ## <a name="repeatable-read-from-relational-sources"></a>リレーショナル ソースからの反復可能読み取り
-リレーショナル データ ストアからデータをコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。 Azure Data Factory では、スライスを手動で再実行できます。 障害が発生したときにスライスを再実行できるように、データセットの再試行ポリシーを構成することもできます。 いずれかの方法でスライスが再実行された際は、何度スライスが実行されても同じデータが読み取られることを確認する必要があります。 [リレーショナル ソースからの反復可能読み取り](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)に関するページをご覧ください。
+リレーショナル データ ストアからデータをコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。 Azure Data Factory では、スライスを手動で再実行できます。 障害が発生したときにスライスを再実行できるように、データセットの再試行ポリシーを構成することもできます。 いずれかの方法でスライスが再実行された際は、何度スライスが実行されても同じデータが読み込まれることを確認する必要があります。 [リレーショナル ソースからの反復可能読み取り](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)に関するページをご覧ください。
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。

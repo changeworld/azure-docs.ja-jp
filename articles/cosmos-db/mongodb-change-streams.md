@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: srchi
 ms.openlocfilehash: ec1ec1a8a80953f8988355341ee7128bd29b982d
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77467779"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API での変更ストリーム

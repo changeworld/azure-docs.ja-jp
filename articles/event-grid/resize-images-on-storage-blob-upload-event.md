@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 6b3375ea8c82ce916f3d6a5e0e29f2845400cc76
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: d01d749300c6ad07e498c75c9487b554810e68cd
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79117767"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79454076"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>チュートリアル:Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する
 
@@ -54,17 +54,17 @@ ms.locfileid: "79117767"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-以前サブスクリプションに Event Grid リソース プロバイダーを登録していない場合は、それが登録されるようにします。
-
-```azurecli-interactive
-az provider register --namespace Microsoft.EventGrid
-```
-
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.14 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 Cloud Shell を使用していない場合は、先に `az login` でサインインする必要があります。
+
+以前サブスクリプションに Event Grid リソース プロバイダーを登録していない場合は、それが登録されるようにします。
+
+```azurecli-interactive
+az provider register --namespace Microsoft.EventGrid
+```
 
 ## <a name="create-an-azure-storage-account"></a>Azure Storage アカウントの作成
 

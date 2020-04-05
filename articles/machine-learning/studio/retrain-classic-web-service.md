@@ -10,14 +10,16 @@ author: peterclu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: caf2437b4a4853bc29f094d082a4ea15d2f7a3c9
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 8094d64eab1a4b25a76554bf9eb6848c2e4d3493
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388471"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79204241"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>従来の Studio (クラシック) Web サービスの再トレーニングとデプロイ
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 機械学習モデルの再トレーニングは、モデルが正確であり、利用できる最も関連性のあるデータに基づいていることを確認するための 1 つの方法です。 この記事では、従来の Studio (クラシック) Web サービスを再トレーニングする方法を示します。 新しい Studio (クラシック) Web サービスを再トレーニングする方法のガイドについては、[こちらのハウツー記事を参照](retrain-machine-learning-model.md)してください。
 

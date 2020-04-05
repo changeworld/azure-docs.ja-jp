@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 74c9f44ff5fbbbb50bba1594d371633fd49857eb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76845046"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>Network Watcher のトラブルシューティングを使用した VPN ゲートウェイの監視

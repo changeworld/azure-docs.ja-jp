@@ -1,5 +1,5 @@
 ---
-title: Azure の Enterprise 管理者ロールを理解する | Microsoft Docs
+title: Azure の Enterprise 管理者ロールを理解する
 description: Azure の Enterprise 管理者ロールについて説明します。
 author: bandersmsft
 ms.reviewer: adwise
@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: banders
-ms.openlocfilehash: 7b3b3e96f9e065614e8acc5305658c2e1d0abd4a
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: f31d8638e8672feafc1ab822acecb78ec0a48b11
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78270216"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79202775"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Azure の Azure Enterprise Agreement 管理者ロールを理解する
 
@@ -46,7 +46,7 @@ ms.locfileid: "78270216"
 
 ## <a name="organization-structure-and-permissions-by-role"></a>組織の構造とロール別のアクセス許可
 
-|処理手順| エンタープライズ管理者|エンタープライズ管理者 (読み取り専用)|部門管理者|部門管理者 (読み取り専用)|アカウント所有者|
+|タスク| エンタープライズ管理者|エンタープライズ管理者 (読み取り専用)|部門管理者|部門管理者 (読み取り専用)|アカウント所有者|
 |---|---|---|---|---|---|
 |エンタープライズ管理者を表示する|✔|✔|✘|✘|✘|
 |エンタープライズ管理者を追加または削除する|✔|✘|✘|✘|✘|
@@ -65,7 +65,7 @@ ms.locfileid: "78270216"
 
 ## <a name="usage-and-costs-access-by-role"></a>ロール別の使用量/コスト アクセス
 
-|処理手順| エンタープライズ管理者|エンタープライズ管理者 (読み取り専用)|部門管理者|部門管理者 (読み取り専用) |アカウント所有者|
+|タスク| エンタープライズ管理者|エンタープライズ管理者 (読み取り専用)|部門管理者|部門管理者 (読み取り専用) |アカウント所有者|
 |---|---|---|---|---|---|
 |年額コミットメントを含む、与信残高を表示する|✔|✔|✘|✘|✘|
 |部門の支出クォータを表示する|✔|✔|✘|✘|✘|

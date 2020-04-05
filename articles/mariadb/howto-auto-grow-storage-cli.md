@@ -5,13 +5,13 @@ author: ambhatna
 ms.author: ambhatna
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 4c9677f31128076a80ec168151e74247bdc8bc51
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 4be84c750f6a3ca7a0d48aa2b98d75272c1cbadf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74771850"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79529086"
 ---
 # <a name="auto-grow-azure-database-for-mariadb-storage-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for MariaDB のストレージの自動拡張
 この記事では、ワークロードに影響を与えることなく拡張されるように Azure Database for MariaDB サーバーのストレージを構成する方法について説明します。
@@ -41,6 +41,6 @@ az mariadb server update --name mydemoserver --resource-group myresourcegroup --
 az mariadb server create --resource-group myresourcegroup --name mydemoserver  --auto-grow Enabled --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 10.3
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [メトリックに関するアラートを作成する方法](howto-alert-metric.md)について学習します。

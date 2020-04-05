@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
 ms.openlocfilehash: c0c6a8637223727a9b0c88245d939605f6a8530e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302002"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Azure Data Box を使用してオンプレミスの HDFS ストアから Azure Storage に移行する

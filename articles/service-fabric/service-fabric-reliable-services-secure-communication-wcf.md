@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
 ms.openlocfilehash: ca5eafa4612503a13f80b7f238e4827979c0358b
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75614164"
 ---
 # <a name="secure-wcf-based-communications-for-a-service"></a>サービスの WCF ベースの通信をセキュリティで保護する

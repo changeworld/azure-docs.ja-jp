@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
 ms.openlocfilehash: e5c8bc2fe64d489c9e8490a63f4d7c4680f21ce0
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71846395"
 ---
 # <a name="support-for-32-bit-operating-systems-in-azure-virtual-machines"></a>Azure 仮想マシンでの 32 ビット オペレーティング システムのサポート
@@ -31,7 +31,7 @@ Azure 仮想マシンでサポートされているオペレーティング シ�
 * [Microsoft Azure 仮想マシンのマイクロソフト サーバー ソフトウェアのサポート](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)
 * [Azure での Linux とオープン ソース テクノロジのサポート](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)
 
-## <a name="references"></a>参照
+## <a name="references"></a>References
 
 * [Azure の Windows Server 2008/R2のセキュリティ更新プログラムを無料で延長する方法に関する詳細情報](https://www.microsoft.com/cloud-platform/windows-server-2008)
 * [Azure の Windows Server 2008 SP2 32 ビットに特化したイメージのサポートに関する詳細情報](https://docs.microsoft.com/windows-server/get-started/uploading-specialized-ws08-image-to-azure)
@@ -39,7 +39,7 @@ Azure 仮想マシンでサポートされているオペレーティング シ�
 * [Azure の拡張機能がサポートされるオペレーティング システムに関する詳細情報](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems)
 * [Microsoft Azure で Windows Server 2003 を実行する方法に関する詳細情報](https://support.microsoft.com/help/3206074/running-windows-server-2003-on-microsoft-azure)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事についてさらにヘルプが必要な場合は、[MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートにお問い合わせください。
 

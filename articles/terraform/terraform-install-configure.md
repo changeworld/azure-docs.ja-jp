@@ -5,10 +5,10 @@ keywords: Azure DevOps Terraform インストール構成
 ms.topic: quickstart
 ms.date: 03/09/2020
 ms.openlocfilehash: 82635f59ec8165add2046a230a040b06f89d9898
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78943503"
 ---
 # <a name="quickstart-install-and-configure-terraform-to-provision-azure-resources"></a>クイック スタート:Azure リソースを作成するために Terraform をインストールして構成する

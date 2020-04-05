@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.openlocfilehash: 47eae55493c5db281ee1be0f9d32f8f8190fc286
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546947"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233495"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub へのアクセスの制御
 
@@ -441,7 +441,7 @@ IoT Hub でカスタム ID レジストリ/認証スキームを実装する場�
 
 次の表は、IoT hub へのアクセス制御に使用できるアクセス許可の一覧です。
 
-| 権限 | メモ |
+| 権限 | Notes |
 | --- | --- |
 | **RegistryRead** |ID レジストリへの読み取りアクセスを許可します。 詳細については、「[Identity registry](iot-hub-devguide-identity-registry.md)」(ID レジストリ) を参照してください。 <br/>このアクセス許可はバックエンドのクラウド サービスによって使用されます。 |
 | **RegistryReadWrite** |ID レジストリへの読み取りと書き込みアクセスを許可します。 詳細については、「[Identity registry](iot-hub-devguide-identity-registry.md)」(ID レジストリ) を参照してください。 <br/>このアクセス許可はバックエンドのクラウド サービスによって使用されます。 |

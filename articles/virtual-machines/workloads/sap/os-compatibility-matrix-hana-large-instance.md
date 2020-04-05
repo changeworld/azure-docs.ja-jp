@@ -14,10 +14,10 @@ ms.date: 03/03/2020
 ms.author: sasarava
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: aa19433ef6446932da3509694ccccd08538b964f
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78675641"
 ---
 # <a name="compatible-operating-systems-for-hana-large-instances"></a>HANA L インスタンスと互換性があるオペレーティング システム

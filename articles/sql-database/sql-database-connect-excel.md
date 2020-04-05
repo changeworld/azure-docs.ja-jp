@@ -12,10 +12,10 @@ ms.author: craigg
 ms.reviewer: ''
 ms.date: 02/12/2019
 ms.openlocfilehash: de5f23bf1e8acd8a5fcd0cf8e1526f88667800c1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73827129"
 ---
 # <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>Excel を Azure SQL データベースの単一データベースに接続してレポートを作成する
@@ -33,7 +33,7 @@ Excel を Azure SQL Database の単一データベースに接続し、データ
 1. Excel を SQL データベースに接続するには、Excel を開き、新しいブックを作成するか、既存の Excel ブックを開きます。
 2. ページ上部のメニュー バーで **データ** タブを選択し、**データの取得**、[Azure から]、**Azure SQL データベースから** の順に選択します。 
 
-   ![データ ソースを選択します。Excel を SQL データベースに接続します。](./media/sql-database-connect-excel/excel_data_source.png)
+   ![データ ソースの選択: SQL データベースに Excel を接続します。](./media/sql-database-connect-excel/excel_data_source.png)
 
    データ接続ウィザードが開きます。
 3. **[データベース サーバーに接続]** ダイアログ ボックスで、接続する SQL データベースの**サーバー名**を <*servername*> **.database.windows.net** 形式で入力します。 たとえば、**msftestserver.database.windows.net** のようにします。 必要に応じて、データベースの名前を入力します。 **[OK]** を選択して資格情報ウィンドウを開きます。 
@@ -98,7 +98,7 @@ Excel を Azure SQL Database の単一データベースに接続し、データ
 
     ![既存の接続](media/sql-database-connect-excel/existing-connection.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 高度なクエリと分析に関して、 [SQL Server Management Studio を使用して SQL Database に接続する](sql-database-connect-query-ssms.md) 方法を学習します。
 * [エラスティック プール](sql-database-elastic-pool.md)の利点について学習します。

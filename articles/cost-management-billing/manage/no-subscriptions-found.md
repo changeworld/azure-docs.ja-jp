@@ -1,20 +1,20 @@
 ---
-title: 「サブスクリプションが見つかりません」エラー - Azure portal へのサインイン | Microsoft Docs
+title: "\"サブスクリプションが見つかりません\" エラー - Azure portal へのサインイン"
 description: Azure Portal または Azure アカウント センターにサインインしようとすると「サブスクリプションが見つかりません」エラーになるという問題の解決策を示します。
 author: genlin
 ms.reviewer: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
-ms.topic: troubleshooting
+ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 5011f0a09e33221650cf050578db5ab1d6b0a033
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 76f109645e4a27e712066cec7010f2ac7eb6b507
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200624"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411660"
 ---
 # <a name="no-subscriptions-found-sign-in-error-for-azure-portal-or-azure-account-center"></a>Azure portal または Azure アカウント センターにおける「サブスクリプションが見つかりません」のサインイン エラー
 

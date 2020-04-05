@@ -17,10 +17,10 @@ ms.date: 07/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ed5370fda9be2573f773bd2fe653feb74defeb7d
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68248860"
 ---
 # <a name="tutorial-integrate-hyperanna-with-azure-active-directory"></a>チュートリアル:HyperAnna を Azure Active Directory と統合する
@@ -29,7 +29,7 @@ ms.locfileid: "68248860"
 
 * HyperAnna にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して HyperAnna に自動的にサインインするように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

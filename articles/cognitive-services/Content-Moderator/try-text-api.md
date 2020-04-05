@@ -11,10 +11,10 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.openlocfilehash: e0930558f31b27a77fa2cd6b44fcea2fe9091086
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74538820"
 ---
 # <a name="moderate-text-from-the-api-console"></a>API コンソールからテキストをモデレートする
@@ -23,7 +23,7 @@ Azure Content Moderator の [Text Moderation API](https://westus.dev.cognitive.m
 
 ## <a name="get-your-api-key"></a>API キーを取得する
 
-オンライン コンソールで API を試すには、サブスクリプション キーが必要です。 これは、 **[設定]** タブの **[Ocp-Apim-Subscription-Key]** ボックス内にあります。 詳細については、[概要](overview.md)に関するページをご覧ください。
+オンライン コンソールで API を試すには、サブスクリプション キーが必要です。 これは、 **[設定]** タブの **[Ocp-Apim-Subscription-Key]** ボックス内にあります。 詳細については、[概要](overview.md)に関するページを参照してください。
 
 ## <a name="navigate-to-the-api-reference"></a>API リファレンスに移動する
 
@@ -37,11 +37,11 @@ Azure Content Moderator の [Text Moderation API](https://westus.dev.cognitive.m
 
   ![(テキスト - 選別) ページでのリージョンの選択](images/test-drive-region.png)
 
-  **[Text - Screen]** (テキスト - 選別) API コンソールが開きます。
+  **[Text - Screen]** \(テキスト - 選別) API コンソールが開きます。
 
 ## <a name="select-the-inputs"></a>入力を選択する
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 
 テキスト画面で使用するクエリ パラメーターを選択します。 この例の場合、**language** には既定値を使用します。 この操作では実行の一環として、可能性の高い言語が自動的に検出されるため、これは空白のままにしておくこともできます。
 
@@ -169,6 +169,6 @@ Is this a grabage or crap email abcdef@abcd.com, phone: 4255550111, IP: 255.255.
 
 JSON 応答に含まれるすべてのセクションの詳細説明については、[テキスト モデレート](text-moderation-api.md)に関する概念ガイドを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 コードで REST API を使用するか、[.NET SDK のクイックスタート](dotnet-sdk-quickstart.md)に従って、アプリケーションと統合します。

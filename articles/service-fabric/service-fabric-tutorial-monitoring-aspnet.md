@@ -7,10 +7,10 @@ ms.date: 07/10/2019
 ms.author: dekapur
 ms.custom: mvc
 ms.openlocfilehash: b226c37c36da033862377860be4c413229651fb6
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75614045"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>チュートリアル:Application Insights を使用して Service Fabric 上の ASP.NET Core アプリケーションを監視および診断する

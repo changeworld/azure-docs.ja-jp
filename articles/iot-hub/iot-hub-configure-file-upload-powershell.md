@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
 ms.openlocfilehash: c8fc0393e0961b46fbb8031d735f27e9ad785031
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60318462"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>PowerShell を使用して IoT Hub ファイルのアップロードを構成する
@@ -99,15 +99,15 @@ Get-AzStorageAccountKey `
 
 構成するには次の値が必要です。
 
-* **ストレージ コンテナー**:お使いの IoT ハブに関連付ける、現在の Azure サブスクリプション内の Azure ストレージ アカウントの BLOB コンテナー。 必要なストレージ アカウント情報は、前のセクションで取得しました。 IoT Hub により、ファイルをアップロードするときにデバイスで使用する、この BLOB コンテナーへの書き込みアクセス許可を含む SAS URI が自動的に生成します。
+* **ストレージ コンテナー**: IoT Hub に関連付ける、現在の Azure サブスクリプションの Azure ストレージ アカウントの BLOB コンテナー。 必要なストレージ アカウント情報は、前のセクションで取得しました。 IoT Hub により、ファイルをアップロードするときにデバイスで使用する、この BLOB コンテナーへの書き込みアクセス許可を含む SAS URI が自動的に生成します。
 
-* **アップロードされたファイルに関する通知を受け取る**:ファイルのアップロード通知を有効にするか無効にします。
+* **Receive notifications for uploaded files (アップロードされたファイルに関する通知を受け取る)** : ファイルのアップロードに関する通知を有効または無効にします。
 
-* **SAS TTL**:IoT Hub によりデバイスに返される SAS URI の有効期間を設定します。 既定では 1 時間に設定されています。
+* **SAS TTL**: IoT Hub によりデバイスに返される SAS URI の有効期間を設定します。 既定では 1 時間に設定されています。
 
-* **File notification settings default TTL (ファイル通知設定の既定の TTL)** :有効期限が切れるまでのファイルのアップロード通知の有効期間です。 既定では 1 日に設定されています。
+* **File notification settings default TTL (ファイルの通知設定 既定の TTL)** : 有効期限が切れるまでのファイルのアップロード通知の有効期間です。 既定では 1 日に設定されています。
 
-* **File notification maximum delivery count (ファイル通知設定の最大配信回数)** :IoT Hub がファイルのアップロード通知の配信を試行する回数です。 既定では 10 に設定されています。
+* **File notification maximum delivery count (ファイルの通知設定 最大配信回数)** : IoT Hub がファイルのアップロード通知の配信を試行する回数です。 既定では 10 に設定されています。
 
 IoT Hub でファイルのアップロード設定を構成するには、次の PowerShell コマンドレットを使用します。
 
@@ -123,7 +123,7 @@ Set-AzIotHub `
     -FileUploadNotificationMaxDeliveryCount 10
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 IoT Hub のファイル アップロード機能について詳しくは、[デバイスからのファイルのアップロード](iot-hub-devguide-file-upload.md)に関するページをご覧ください。
 

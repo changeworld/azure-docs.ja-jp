@@ -12,13 +12,13 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d3eb4d2faf58d1861fda9d04437f9f9530c77672
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76718482"
 ---
-# <a name="heading"></a>Azure の SQL Server 仮想マシンでデータを処理する
+# <a name="process-data-in-sql-server-virtual-machine-on-azure"></a><a name="heading"></a>Azure の SQL Server 仮想マシンでデータを処理する
 このドキュメントでは、Azure の SQL Server VM に保存されたデータを探索し、データの特徴を生成する方法について説明します。 この目標は、SQL を使用してデータをラングリングするか、Python などのプログラミング言語を使用して達成できます。
 
 > [!NOTE]
@@ -26,13 +26,13 @@ ms.locfileid: "76718482"
 > 
 > 
 
-## <a name="SQL"></a>SQL の使用
+## <a name="using-sql"></a><a name="SQL"></a>SQL の使用
 このセクションでは、SQL を使用した次のデータ処理タスクについて説明します。
 
 1. [データの探索](#sql-dataexploration)
 2. [特徴の生成](#sql-featuregen)
 
-### <a name="sql-dataexploration"></a>データの探索
+### <a name="data-exploration"></a><a name="sql-dataexploration"></a>データの探索
 SQL Server のデータ ストアの探索に使用できるいくつかのサンプル SQL スクリプトを次に示します。
 
 > [!NOTE]
@@ -53,7 +53,7 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
    
     `select <column_name>, count(*) from <tablename> group by <column_name>`
 
-### <a name="sql-featuregen"></a>特徴の生成
+### <a name="feature-generation"></a><a name="sql-featuregen"></a>特徴の生成
 このセクションでは SQL を使用して特徴を生成する方法について説明します。  
 
 1. [カウント ベースの特徴の生成](#sql-countfeature)
@@ -65,7 +65,7 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
 > 
 > 
 
-### <a name="sql-countfeature"></a>カウント ベースの特徴の生成
+### <a name="count-based-feature-generation"></a><a name="sql-countfeature"></a>カウント ベースの特徴の生成
 次の例では、カウント特徴を生成する 2 つの方法を示します。 最初の方法は、条件付きの合計を使用します。2 番目の方法は、Where 句を使用します。 その後、これらの結果を (主キーの列を使用することで) 元のテーブルと結合して、カウント特徴と元のデータを一緒にすることができます。
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3> 
@@ -73,13 +73,13 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
     select <column_name1>,<column_name2> , sum(1) as Count_Features from <tablename> 
     where <column_name3> = '<some_value>' group by <column_name1>,<column_name2> 
 
-### <a name="sql-binningfeature"></a>ビン分割特徴の生成
+### <a name="binning-feature-generation"></a><a name="sql-binningfeature"></a>ビン分割特徴の生成
 次の例は、数値型の列をビン分割 (5 つの箱を使用) して、特徴として代わりに使用できる、ビン分割特徴を生成する方法を示しています。
 
     `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
 
 
-### <a name="sql-featurerollout"></a>1 つの列からの特徴の展開
+### <a name="rolling-out-the-features-from-a-single-column"></a><a name="sql-featurerollout"></a>1 つの列からの特徴の展開
 このセクションでは、テーブル内の 1 つの列を展開して追加の特徴を生成する方法を示します。 この例は、特徴を生成しようとするテーブルに、緯度や経度の列があることを前提としています。
 
 緯度と経度の位置データ (リソースは stackoverflow の「 [How to measure the accuracy of latitude and longitude? (緯度と経度の精度を測定する方法)](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)」) の簡単な概要を次に示します。 このガイダンスは、位置を 1 つまたは複数の特徴として含める前に理解するのに役立ちます。
@@ -115,12 +115,12 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
 > 
 > 
 
-### <a name="sql-aml"></a>Azure Machine Learning への接続
+### <a name="connecting-to-azure-machine-learning"></a><a name="sql-aml"></a>Azure Machine Learning への接続
 新しく生成された特徴は、既存のテーブルに列として追加するか、新しいテーブルに格納して機械学習の元のテーブルと結合することができます。 特徴は生成できるほか、作成済みであれば、次に示すように、Azure Machine Learning の[データのインポート][import-data] モジュールを使用してアクセスできます。
 
 ![Azure ML リーダー][1] 
 
-## <a name="python"></a>Python などのプログラミング言語の使用
+## <a name="using-a-programming-language-like-python"></a><a name="python"></a>Python などのプログラミング言語の使用
 データが SQL Server に格納されている場合に、Python を使用してデータを探索し、特徴を生成する手順は、[データ サイエンス環境での Azure BLOB データの処理](data-blob.md)に関する記事で説明されているように、Python を使用して Azure BLOB のデータを処理する手順と似ています。 データをさらに処理するには、データベースから pandas データ フレームに読み込みます。 このセクションでは、データベースに接続して、データ フレームにデータを読み込むプロセスについて記載します。
 
 次の接続文字列形式を使用して pyodbc を使用し Python から SQL Server データベースに接続することができます (サーバー名、データベース名、ユーザー名およびパスワードは使用する特定の値に置き換えてください)。

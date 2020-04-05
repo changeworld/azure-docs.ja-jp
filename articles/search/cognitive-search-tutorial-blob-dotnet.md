@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.openlocfilehash: 169a33d12e98235dcb4e4f317dbb8d91eb7446a4
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78851140"
 ---
 # <a name="tutorial-use-c-and-ai-to-generate-searchable-content-from-azure-blobs"></a>チュートリアル:C# と AI を使用して Azure Blob から検索可能なコンテンツを生成する

@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/30/2019
 ms.openlocfilehash: 8a9c7ed9f6b5b8ec89bfca6dd59034b11f05f9a3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75895160"
 ---
 # <a name="scenario-reducer-is-slow-in-azure-hdinsight"></a>シナリオ:Azure HDInsight でレジューサーが遅い
@@ -32,11 +32,11 @@ ms.locfileid: "75895160"
 
 `true` の値は、パーティション数が多く、データ スキューが発生していない場合に意味があります。 このような場合、1 つのレジューサーで各パーティションが処理され、後続のクエリのパフォーマンスが向上するように、マップ フェーズの結果が書き出されます。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
 1. 複数のパーティションに正規化するようにデータのパーティションを再分割してみます。
 
-1. 1 の手順を実行できない場合は、beeline セッションで config の値を false に設定してから、クエリを再試行します。 `set hive.optimize.sort.dynamic.partition=false`. クラスター レベルで値を false に設定することは推奨されません。 `true` の値が最適なので、データとクエリの性質に基づいて必要に応じてこのパラメーターを設定します。
+1. 1 の手順を実行できない場合は、beeline セッションで config の値を false に設定してから、クエリを再試行します。 `set hive.optimize.sort.dynamic.partition=false` クラスター レベルで値を false に設定することは推奨されません。 `true` の値が最適なので、データとクエリの性質に基づいて必要に応じてこのパラメーターを設定します。
 
 ## <a name="next-steps"></a>次のステップ
 

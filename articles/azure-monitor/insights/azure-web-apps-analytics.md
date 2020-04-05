@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/02/2018
 ms.openlocfilehash: 93d378e334d2f6443ac8a59c9022501d3023a2a4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77666915"
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>すべての Azure Web App リソースのメトリック分析データの表示

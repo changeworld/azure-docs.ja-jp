@@ -1,15 +1,15 @@
 ---
 title: Blockchain Data Manager を使用して Azure Cosmos DB を更新する - Azure Blockchain Service
 description: Azure Blockchain Service の Blockchain Data Manager を使用して、Azure Cosmos DB にブロックチェーン データを送信します
-ms.date: 12/04/2019
+ms.date: 03/08/2020
 ms.topic: tutorial
 ms.reviewer: chroyal
-ms.openlocfilehash: 79c39d9883b5ba618e368b0ff6d3e95f1af5bd96
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 483a5246274f63549dfb2914361ede6aa001e02e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977398"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79533183"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>チュートリアル:Blockchain Data Manager を使用して Azure Cosmos DB にデータを送信する
 
@@ -41,7 +41,7 @@ ms.locfileid: "74977398"
 
 Blockchain Data Manager インスタンスは、Azure Blockchain Service トランザクション ノードに接続して監視します。 インスタンスは、トランザクション ノードから生のブロックと生のトランザクション データをすべてキャプチャします。 送信接続により、ブロックチェーン データを Azure Event Grid に送信します。 インスタンスを作成するときに、1 つの送信接続を構成します。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 前提条件で作成した Azure Blockchain Service メンバーに移動します (「[クイックスタート:Azure portal を使用してブロックチェーン メンバーを作成する](create-member.md)」)。 **[Blockchain Data Manager]** を選択します。
 1. **[追加]** を選択します。
 
@@ -49,11 +49,11 @@ Blockchain Data Manager インスタンスは、Azure Blockchain Service トラ�
 
     次の詳細を入力します。
 
-    Setting | 例 | 説明
+    設定 | 例 | 説明
     --------|---------|------------
     名前 | mywatcher | 接続されている Blockchain Data Manager の一意の名前を入力します。
     トランザクション ノード | myblockchainmember | 前提条件で作成した Azure Blockchain Service メンバーの既定のトランザクション ノードを選択します。
-    接続名 | cosmosdb | ブロックチェーン トランザクション データが送信される送信接続の一意の名前を入力します。
+    [接続名] | cosmosdb | ブロックチェーン トランザクション データが送信される送信接続の一意の名前を入力します。
     イベント グリッドのエンドポイント | myTopic | 前提条件で作成した Event Grid トピックを選択します。 注:Blockchain Data Manager インスタンスと Event Grid トピックは同じサブスクリプション内に存在する必要があります。
 
 1. **[OK]** を選択します。
@@ -78,13 +78,13 @@ Blockchain Data Manager インスタンスは、Azure Blockchain Service トラ�
 
 1. **abi** 配列を JSON ファイルとして保存します。 たとえば、*abi.json* です。 このファイルは、後の手順で使用します。
 
-Blockchain Data Manager には、スマート コントラクトのデプロイ済みバイトコードが必要です。 デプロイ済みバイトコードは、スマート コントラクトのバイトコードとは異なります。 Azure Blockchain 開発キット拡張機能を使用してバイトコードをクリップボードにコピーします。
+Blockchain Data Manager には、スマート コントラクトのデプロイ済みバイトコードが必要です。 デプロイ済みバイトコードは、スマート コントラクトのバイトコードとは異なります。 Azure ブロックチェーン開発キット拡張機能を使用して、バイトコードをクリップボードにコピーします。
 
 1. Visual Studio Code のエクスプローラー ウィンドウで、自分の Solidity プロジェクトの **build/contracts** フォルダーを展開します。
 1. コントラクト メタデータの JSON ファイルを右クリックします。 ファイル名は、スマート コントラクト名に **.json** 拡張子を付けたものです。
-1. **[Copy Transaction Bytecode]\(トランザクションのバイトコードのコピー\)** を選択します。
+1. **[Copy Transaction Bytecode] (トランザクション バイトコードのコピー)** を選択します。
 
-    ![[Copy Transaction Bytecode]\(トランザクションのバイトコードのコピー\) が選択されている Visual Studio Code のペイン](./media/data-manager-cosmosdb/bytecode-devkit.png)
+    ![[Copy Transaction Bytecode] (トランザクション バイトコードのコピー) が選択されている Visual Studio Code のウィンドウ](./media/data-manager-cosmosdb/bytecode-devkit.png)
 
     バイトコードがクリップボードにコピーされます。
 
@@ -108,7 +108,7 @@ Blockchain Data Manager では、アプリケーションの追加時に、コ�
 
     ![ストレージ アカウント コンテナーの作成](./media/data-manager-cosmosdb/create-container.png)
 
-    | Setting | 説明 |
+    | 設定 | 説明 |
     |---------|-------------|
     | 名前  | コンテナーに名前を付けます。 たとえば、*smartcontract* です。 |
     | パブリック アクセス レベル | *[Private (no anonymous access)]\(プライベート (匿名アクセスなし)\)* を選択します |
@@ -144,7 +144,7 @@ Blockchain Data Manager では、アプリケーションの追加時に、コ�
 
     ブロックチェーン アプリケーションの名前と、スマート コントラクト ABI およびバイトコードの URL を入力します。
 
-    Setting | 説明
+    設定 | 説明
     --------|------------
     名前 | 追跡するブロックチェーン アプリケーションの一意の名前を入力します。
     コントラクト ABI | コントラクト ABI ファイルへの URL パス。 詳細については、「[コントラクト ABI とバイトコード URL の作成](#create-contract-abi-and-bytecode-url)」を参照してください。
@@ -171,7 +171,7 @@ Azure portal のデータ エクスプローラーを使用してデータベー
 
     ![コンテナー設定を追加する](./media/data-manager-cosmosdb/add-container.png)
 
-    | Setting | 説明
+    | 設定 | 説明
     |---------|-------------|
     | データベース ID | 新しいデータベースの名前として「**blockchain-data**」を入力します。 |
     | スループット | スループットを **400** 要求ユニット/秒 (RU/秒) のままにします。 待ち時間を短縮する場合、後でスループットをスケールアップできます。|
@@ -202,7 +202,7 @@ Azure Logic Apps は、システムとサービスを統合する必要がある
 
     ![イベント グリッド トリガーの設定](./media/data-manager-cosmosdb/event-grid-trigger.png)
 
-    | Setting | 説明
+    | 設定 | 説明
     |---------|-------------|
     | サブスクリプション | Event Grid トピックが含まれているサブスクリプションを選択します。 |
     | リソースの種類 | **Microsoft.EventGrid.Topics** を選択します。 |
@@ -219,7 +219,7 @@ Azure Logic Apps は、システムとサービスを統合する必要がある
 
     ![Cosmos DB 接続の設定](./media/data-manager-cosmosdb/cosmosdb-connection.png)
 
-    | Setting | 説明
+    | 設定 | 説明
     |---------|-------------|
     | 接続名 | Event Grid トピックが含まれているサブスクリプションを選択します。 |
     | DocumentDB アカウント | [Azure Cosmos DB アカウントの作成](#create-azure-cosmos-db)のセクションで作成した DocumentDB アカウントを選択します。 |
@@ -247,17 +247,17 @@ Azure Logic Apps は、システムとサービスを統合する必要がある
 
 ## <a name="send-a-transaction"></a>トランザクションを開始する
 
-次に、トランザクションをブロックチェーン台帳に送信して、作成した内容をテストします。 前提条件で作成した **sendrequest.js** スクリプトを使用します (「[チュートリアル:Visual Studio Code を使用してスマート コントラクトを作成、ビルド、デプロイする](send-transaction.md)」)。
+次に、トランザクションをブロックチェーン台帳に送信して、作成した内容をテストします。 前提条件のチュートリアルで作成した **HelloBlockchain** コントラクトの **SendRequest** 関数を使用します (「[チュートリアル: Visual Studio Code を使用してスマート コントラクトを作成、ビルド、デプロイする](send-transaction.md)」)。
 
-VS Code のターミナル ウィンドウで Truffle を使用して、コンソーシアムのブロックチェーン ネットワーク上でスクリプトを実行します。 ターミナル ウィンドウのメニュー バーで **[ターミナル]** タブを選択し、ドロップダウンで **[PowerShell]** を選択します。
+1. Azure Blockchain 開発キットのスマート コントラクト インタラクション ページを使用すると、**SendRequest** 関数を呼び出すことができます。 **HelloBlockchain.sol** を右クリックし、メニューから **[Show Smart Contract Interaction Page]\(スマート コントラクト インタラクション ページの表示\)** を選択します。
 
-``` PowerShell
-truffle exec sendrequest.js --network <blockchain network>
-```
+    ![メニューから [Show Smart Contract Interaction Page]\(スマート コントラクト インタラクション ページの表示\) を選択する](./media/data-manager-cosmosdb/contract-interaction.png)
 
-\<blockchain network\> を、**truffle-config.js** 内で定義されているブロックチェーン ネットワークの名前に置き換えます。
+1. **[SendRequest]** コントラクト アクションを選択し、 **[requestMessage]** パラメーターに「**Hello, Blockchain!** 」と入力します。 **[実行]** を選択すると、トランザクションを介して **SendRequest** 関数が呼び出されます。
 
-![トランザクションを送信する](./media/data-manager-cosmosdb/send-request.png)
+    ![SendRequest アクションを実行する](./media/data-manager-cosmosdb/sendrequest-action.png)
+
+SendRequest 関数によって **RequestMessage** フィールドと **State** フィールドが設定されています。 **RequestMessage** の最新の状態は、引数として渡した **Hello, Blockchain** です。 **[State]\(状態\)** フィールドの値は **[Request]\(要求\)** のままです。
 
 ## <a name="view-transaction-data"></a>トランザクション データを表示する
 
@@ -285,14 +285,14 @@ Blockchain Data Manager を Azure Cosmos DB に接続したので、Cosmos DB Da
 
 お疲れさまでした。 Blockchain Data Manager と Azure Cosmos DB を使用して、トランザクション メッセージ エクスプローラーを正常に作成しました。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 不要になったら、このチュートリアルで使用したリソースとリソース グループを削除できます。 リソース グループを削除するには、以下の手順を実行します。
 
 1. Azure Portal で、左側のナビゲーション ウィンドウの **[リソース グループ]** に移動し、削除するリソース グループを選択します。
 1. **[リソース グループの削除]** を選択します。 リソース グループ名を入力して削除を確認し、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ブロックチェーン台帳との統合の詳細を確認します。
 

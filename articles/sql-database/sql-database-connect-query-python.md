@@ -12,13 +12,13 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
 ms.openlocfilehash: e82f8feae0096202e48a58296dd2e9d21bb61885
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76768572"
 ---
-# <a name="quickstart-use-python-to-query-an-azure-sql-database"></a>クイック スタート:Python を使用して Azure SQL データベースのクエリを実行する
+# <a name="quickstart-use-python-to-query-an-azure-sql-database"></a>クイック スタート: Python を使用して Azure SQL データベースに照会する
 
 このクイックスタートでは、Python を使用して Azure SQL データベースに接続し、T-SQL ステートメントを使用してデータを照会します。
 
@@ -28,13 +28,13 @@ ms.locfileid: "76768572"
 - [Azure SQL データベース](sql-database-single-database-get-started.md)
 - [Python](https://python.org/downloads) 3 および関連するソフトウェア
 
-  # <a name="macostabmacos"></a>[macOS](#tab/macos)
+  # <a name="macos"></a>[macOS](#tab/macos)
 
-  Homebrew と Python、ODBC ドライバーと SQLCMD、および SQL Server 用の Python ドライバーをインストールするには、[macOS での SQL Server を使用した Python アプリの作成](https://www.microsoft.com/sql-server/developer-get-started/python/mac/)に関するページの手順 **1.2**、**1.3**、および **2.1** を使用します。
+  Homebrew と Python、ODBC ドライバーと SQLCMD、および SQL Server 用の Python ドライバーをインストールするには、**macOS での SQL Server を使用した Python アプリの作成**に関するページの手順 **1.2**、**1.3**、および [2.1](https://www.microsoft.com/sql-server/developer-get-started/python/mac/) を使用します。
 
   詳細については、[macOS の Microsoft ODBC ドライバー](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)に関するページを参照してください。
 
-  # <a name="ubuntutabubuntu"></a>[Ubuntu](#tab/ubuntu)
+  # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
 
   Python とその他の必要なパッケージをインストールするには、`sudo apt-get install python python-pip gcc g++ build-essential` を使用します。
 
@@ -42,7 +42,7 @@ ms.locfileid: "76768572"
 
   詳細については、[Linux の Microsoft ODBC ドライバー](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)に関するページを参照してください。
 
-  # <a name="windowstabwindows"></a>[Windows](#tab/windows)
+  # <a name="windows"></a>[Windows](#tab/windows)
 
   Python、ODBC ドライバー、SQLCMD、および SQL Server 用の Python ドライバーをインストールするには、[pyodbc Python 開発用の環境の構成](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#windows)に関するページを参照してください。
 
@@ -58,7 +58,7 @@ ms.locfileid: "76768572"
 >
 > 作成して構成するには、[Azure portal](sql-database-managed-instance-get-started.md)、[PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md)、または [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) を使用して、[オンサイト](sql-database-managed-instance-configure-p2s.md)または [VM](sql-database-managed-instance-configure-vm.md) 接続を設定します。
 >
-> データを読み込む方法については、[Adventure Works](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) ファイルの [BACPAC を使用した復元](sql-database-import.md)に関するページを参照するか、[Wide World Importers データベースの復元](sql-database-managed-instance-get-started-restore.md)に関するページを参照してください。
+> データを読み込む方法については、[Adventure Works](sql-database-import.md) ファイルの [BACPAC を使用した復元](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)に関するページを参照するか、[Wide World Importers データベースの復元](sql-database-managed-instance-get-started-restore.md)に関するページを参照してください。
 
 Python と Azure SQL データベースの詳細については、「[Python 用 Azure SQL Database ライブラリ](/python/api/overview/azure/sql)」、[pyodbc リポジトリ](https://github.com/mkleehammer/pyodbc/wiki/)、および [pyodbc のサンプル](https://github.com/mkleehammer/pyodbc/wiki/Getting-started)を参照してください。
 
@@ -66,7 +66,7 @@ Python と Azure SQL データベースの詳細については、「[Python 用
 
 Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名またはホスト名、データベース名、およびログイン情報が必要になります。
 
-1. [Azure portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 2. **[SQL データベース]** または **[SQL マネージド インスタンス]** ページに移動します。
 

@@ -9,10 +9,10 @@ ms.date: 11/06/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 72b6c1f86b18df172994827ec78eb109fe82454e
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75913770"
 ---
 ## <a name="benefits-of-managed-disks"></a>マネージド ディスクの利点

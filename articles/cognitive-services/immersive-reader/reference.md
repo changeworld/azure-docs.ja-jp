@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
 ms.openlocfilehash: b20a3e6dd3b32b183bbf34dbefd76f0e4cd56b99
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76156405"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>Immersive Reader SDK リファレンス ガイド
@@ -41,7 +41,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="parameters"></a>パラメーター
 
-| Name | 種類 | 説明 |
+| 名前 | Type | 説明 |
 | ---- | ---- |------------ |
 | `token` | string | Azure AD 認証トークン。 |
 | `subdomain` | string | Azure 内のイマーシブ リーダー リソースのカスタム サブドメイン。 |
@@ -80,7 +80,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ### <a name="parameters"></a>パラメーター
 
-| Name | 種類 | 説明 |
+| 名前 | Type | 説明 |
 | ---- | ---- |------------ |
 | `options` | [RenderButtonsOptions](#renderbuttonsoptions) | renderButtons 関数の特定の動作を構成するためのオプション。 省略可能。 |
 
@@ -148,7 +148,7 @@ enum CookiePolicy { Disable, Enable }
 
 サポートされていないタグが同等にレンダリングされます。 イメージとテーブルは現在サポートされていません。
 
-### <a name="options"></a>オプション
+### <a name="options"></a>Options
 
 イマーシブ リーダーの特定の動作を構成するプロパティを含みます。
 
@@ -208,7 +208,7 @@ SDK は、イマーシブ リーダーの起動用ボタンに既定のスタイ
 
 ボタンのルック アンド フィールを構成するには、次の属性を使用します。
 
-| Attribute | 説明 |
+| 属性 | 説明 |
 | --------- | ----------- |
 | `data-button-style` | ボタンのスタイルを設定します。 `icon`、`text`、または `iconAndText` を指定できます。 既定値は `icon` です。 |
 | `data-locale` | ロケールを設定します。 たとえば、`en-US` または `fr-FR` です。 既定値は英語 `en` です。 |

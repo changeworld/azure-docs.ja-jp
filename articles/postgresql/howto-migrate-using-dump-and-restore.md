@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.openlocfilehash: 4365338efa56593e80edcc19cba5944b213d2b72
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74770239"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>ダンプと復元を使用した PostgreSQL データベースの移行
@@ -61,7 +61,7 @@ pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=
 >
 
 ### <a name="for-the-backup"></a>バックアップ
-- バックアップと平行して復元を行うことで処理をスピードアップできるよう､バックアップには -FC スイッチを使用します｡ 例:
+- バックアップと平行して復元を行うことで処理をスピードアップできるよう､バックアップには -FC スイッチを使用します｡ 次に例を示します。
 
     ```
     pg_dump -h MySourceServerName -U MySourceUserName -Fc -d MySourceDatabaseName -f Z:\Data\Backups\MyDatabaseBackup.dump
@@ -72,7 +72,7 @@ pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=
 
 - 既定では、すでにその設定になっているはずですが､ダンプ ファイルを開いて､データの insert 後に create index ステートメントがあることを確認してください｡ そのようになっていない場合は、データの insert の後に create index ステートメントを移動します。
 
-- -fc および -j *#* スイッチを付けて復元することで､復元を並列処理します。 *#* ターゲット サーバーのコアの数です。 *#* をターゲット サーバーのコア数の 2 倍に設定することで､その影響を確認することもできます｡ 例:
+- -fc および -j *#* スイッチを付けて復元することで､復元を並列処理します。 *#* ターゲット サーバーのコアの数です。 *#* をターゲット サーバーのコア数の 2 倍に設定することで､その影響を確認することもできます｡ 次に例を示します。
 
     ```
     pg_restore -h MyTargetServer.postgres.database.azure.com -U MyAzurePostgreSQLUserName -Fc -j 4 -d MyTargetDatabase Z:\Data\Backups\MyDatabaseBackup.dump
@@ -89,6 +89,6 @@ pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=
 
 これらのコマンドは､運用環境で使用する前にテスト環境でテスト､検証してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - エクスポートとインポートを使用して PostgreSQL データベースを移行するには、「[エクスポートとインポートを使用した PostgreSQL の移行](howto-migrate-using-export-and-import.md)」を参照してください。
 - Azure Database for PostgreSQL へのデータベースの移行については、「[Database Migration Guide](https://aka.ms/datamigration)」 (データベースの移行ガイド) を参照してください。

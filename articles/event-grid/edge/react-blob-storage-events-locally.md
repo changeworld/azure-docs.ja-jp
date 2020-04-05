@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 3360b92a1b71adcbf0364a16c197aecdab5700db
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77086611"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>チュートリアル:IoT Edge で Blob Storage イベントに対応する (プレビュー)

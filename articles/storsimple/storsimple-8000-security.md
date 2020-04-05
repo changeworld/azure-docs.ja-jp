@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
 ms.openlocfilehash: 4598f71f9b611e68f8eb00676138784833c39f32
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75891513"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple のセキュリティとデータの保護

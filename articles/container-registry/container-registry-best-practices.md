@@ -3,12 +3,12 @@ title: レジストリのベスト プラクティス
 description: ベスト プラクティスに従って Azure Container Registry を効果的に使う方法を説明します。
 ms.topic: article
 ms.date: 09/27/2018
-ms.openlocfilehash: 7efea468a6c5c042f709d8a5bb493516458ce52b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 233d84b8bfa6f3d8c800e76032ef74a643db11ca
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445799"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225807"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Azure Container Registry のベスト プラクティス
 
@@ -35,12 +35,10 @@ Geo レプリケーションの使用方法については、[Azure Container Re
 
 たとえば、以下のようなコンテナー イメージ タグを考えてみましょう。 ルート名前空間には全社的に使用されるイメージ (`aspnetcore` など) を置き、Products グループと Marketing グループが所有するコンテナー イメージには、それぞれ固有の名前空間を使用します。
 
-```
-contoso.azurecr.io/aspnetcore:2.0
-contoso.azurecr.io/products/widget/web:1
-contoso.azurecr.io/products/bettermousetrap/refundapi:12.3
-contoso.azurecr.io/marketing/2017-fall/concertpromotions/campaign:218.42
-```
+- *contoso.azurecr.io/aspnetcore:2.0*
+- *contoso.azurecr.io/products/widget/web:1*
+- *contoso.azurecr.io/products/bettermousetrap/refundapi:12.3*
+- *contoso.azurecr.io/marketing/2017-fall/concertpromotions/campaign:218.42*
 
 ## <a name="dedicated-resource-group"></a>専用のリソース グループ
 
@@ -52,7 +50,7 @@ contoso.azurecr.io/marketing/2017-fall/concertpromotions/campaign:218.42
 
 Azure Container Registry に対して認証を行うときのシナリオは、個人の認証とサービス ("ヘッドレス") 認証の 2 つに大別されます。 次の表は、それらのシナリオの概要とそれぞれに推奨される認証方法をまとめたものです。
 
-| 種類 | サンプル シナリオ | 推奨される方法 |
+| Type | サンプル シナリオ | 推奨される方法 |
 |---|---|---|
 | 個人 ID | 開発者が、その開発マシンにイメージをプルしたり、開発マシンからイメージをプッシュしたりする。 | [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) |
 | ヘッドレス/サービス ID | ユーザーの直接介入を伴わないビルドとデプロイのパイプライン。 | [サービス プリンシパル](container-registry-authentication.md#service-principal) |
@@ -65,8 +63,11 @@ Azure Container Registry の認証について詳しくは、「[Azure コンテ
 
 Azure CLI コマンド [az acr show-usage][az-acr-show-usage] を使用して、レジストリの現在のサイズを表示します。
 
-```console
-$ az acr show-usage --resource-group myResourceGroup --name myregistry --output table
+```azurecli
+az acr show-usage --resource-group myResourceGroup --name myregistry --output table
+```
+
+```output
 NAME      LIMIT         CURRENT VALUE    UNIT
 --------  ------------  ---------------  ------
 Size      536870912000  185444288        Bytes

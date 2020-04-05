@@ -9,10 +9,10 @@ ms.date: 06/11/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 2834ba924fa9c29d955c38fbaeb45ab23e5c4e9b
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79127714"
 ---
 # <a name="tutorial-set-up-service-alerts"></a>チュートリアル:サービス アラートを設定する

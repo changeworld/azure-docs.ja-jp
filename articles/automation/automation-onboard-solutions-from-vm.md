@@ -6,10 +6,10 @@ ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: 621b429f5dc3a6b6620e4d41ad46763e1d4fa226
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78299530"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Azure 仮想マシンから Update Management、Change Tracking、および Inventory ソリューションをオンボードする

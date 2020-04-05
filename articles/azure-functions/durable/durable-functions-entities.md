@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: d469d52a6db6c3640d07b46422ffe669a898dde8
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 6ecf3bb5999296b2f5f8f5c25616fac8e0278cda
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76262998"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80132523"
 ---
 # <a name="entity-functions"></a>エンティティ関数
 
@@ -41,7 +41,7 @@ ms.locfileid: "76262998"
 * ターゲット エンティティの**エンティティ ID**。
 * **操作名**: 実行する操作を指定する文字列です。 たとえば、`Counter` エンティティでは、`add`、`get`、または `reset` 操作をサポートする場合があります。
 * **操作の入力**: 操作のオプションの入力パラメーターです。 たとえば、add 操作では入力として整数値を受け取ることができます。
-* "**スケジュール時刻*": 操作の配信時刻を指定するためのオプション パラメーターです。 たとえば、将来、数日間にわたって操作を実行するよう確実にスケジュールすることができます。
+* **スケジュール時刻**: 操作の配信時刻を指定するためのオプション パラメーターです。 たとえば、将来、数日間にわたって操作を実行するよう確実にスケジュールすることができます。
 
 操作では、結果値またはエラー結果 (JavaScript エラーや .NET 例外など) を返すことができます。 この結果またはエラーは、操作を呼び出したオーケストレーションによって確認できます。
 
@@ -321,7 +321,7 @@ module.exports = df.orchestrator(function*(context){
 
 ---
 
-## <a name="entity-coordination"></a>エンティティの調整 (現在 .NET のみ)
+## <a name="entity-coordination-currently-net-only"></a><a name="entity-coordination"></a>エンティティの調整 (現在 .NET のみ)
 
 複数のエンティティ間で操作を調整することが必要になる場合があります。 たとえば、銀行のアプリケーションでは、個々の銀行口座を表すエンティティがある場合があります。 口座間で送金を行う場合は、送金元口座に十分な資金があることを確認する必要があります。 さらに、送金元口座と送金先口座の両方に対する更新がトランザクション的に一貫した方法で実行されることを確認する必要もあります。
 

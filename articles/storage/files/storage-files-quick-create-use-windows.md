@@ -8,10 +8,10 @@ ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 6bbab0ee2eefe6e86c150d5bddab4f8e91a7c92d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75463901"
 ---
 # <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>クイック スタート:Windows Virtual Machines で Azure Files 共有を作成して管理する
@@ -22,7 +22,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure portal](https://portal.azure.com) にサインインする
+[Azure portal](https://portal.azure.com) にサインインします。
 
 ## <a name="prepare-your-environment"></a>環境を準備する
 
@@ -73,7 +73,7 @@ Azure ファイル共有を使用するためには、あらかじめ Azure ス�
 1. **[管理者アカウント]** で、 **[ユーザー名]** として *VMadmin* を追加し、VM の**パスワード**を入力します。
 1. **[受信ポートの規則]** で、 **[Allow selected ports] (選択されたポートを許可する)** を選択してから、ドロップダウンから **[RDP (3389)]** と **[HTTP]** を選択します。
 1. **[Review + create]\(レビュー + 作成\)** を選択します。
-1. **作成** を選択します。 新しい VM の作成が完了するまでに数分かかります。
+1. **［作成］** を選択します 新しい VM の作成が完了するまでに数分かかります。
 
 1. VM のデプロイが完了したら、 **[リソースに移動]** を選択します。
 

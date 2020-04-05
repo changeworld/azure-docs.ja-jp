@@ -4,10 +4,10 @@ description: Service Fabric クラスターに対して新しい証明書を追�
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: a3c92e1b39261af32085e4d9b6cb2462d5c0eb64
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75458352"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Azure Service Fabric クラスターの証明書の追加と削除
@@ -106,7 +106,7 @@ Azure Portal では、セカンダリのクラスター証明書を追加でき�
          }
     ``` 
 
-4. **すべて**の **Microsoft.Compute/virtualMachineScaleSets** リソース定義を変更します。Microsoft.Compute/virtualMachineScaleSets リソース定義を探します。 "virtualMachineProfile" の下の "publisher": "Microsoft.Azure.ServiceFabric" までスクロールします。
+4. **すべて**の **Microsoft.Compute/virtualMachineScaleSets** リソース定義を変更します。Microsoft.Compute/virtualMachineScaleSets リソース定義を探します。 "virtualMachineProfile" の下の "publisher": "Microsoft.Azure.ServiceFabric" にスクロールします。
 
     Service Fabric のパブリッシャーの設定は、次のように表示されます。
     

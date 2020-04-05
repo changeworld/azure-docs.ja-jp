@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: d0c837ac376f9d496baaf1ed67d0ec80c996804a
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73176822"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>API の複数のバージョンを発行する 
@@ -37,8 +37,8 @@ API のすべての呼び出し元がまったく同じバージョンを使用�
 ## <a name="prerequisites"></a>前提条件
 
 + [Azure API Management の用語](api-management-terminology.md)について学習します。
-+ 次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)。
-+ また、次のチュートリアルを完了すること: [最初の API のインポートと発行](import-and-publish.md)。
++ [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
++ また、「[Import and publish your first API (最初の API をインポートして発行する)](import-and-publish.md)」のチュートリアルも完了します。
 
 ## <a name="add-a-new-version"></a>新しいバージョンを追加する
 
@@ -99,7 +99,7 @@ Azure API Management では、呼び出し元が API の必要なバージョン
 4. **[v1]** を選択します。
 5. 一覧で最初の操作の **[要求 URL]** を確認します。 API の URL パスに "**v1**" が含まれています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習します。
 

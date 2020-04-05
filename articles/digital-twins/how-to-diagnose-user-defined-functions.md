@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.custom: seodec18
 ms.openlocfilehash: 518383488aa878dab75aec7ad5da664332b62ad0
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76511639"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Azure Digital Twins でユーザー定義関数をデバッグする方法

@@ -15,10 +15,10 @@ ms.workload: ''
 ms.date: 05/03/2018
 ms.author: mlearned
 ms.openlocfilehash: d39702f8e30046dd3cf634fc67ed7095471cd629
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "71971485"
 ---
 # <a name="overview-of-azure-devops-projects"></a>Azure DevOps Projects の概要

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: 87f16ec615c8b47c93745b33be12d3acd6d9177a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74035053"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>シリアル コンソール を使用して GRUB とシングル ユーザー モードにアクセスする
@@ -120,7 +120,7 @@ Ubuntu イメージの場合、root のパスワードは必要ありません�
 ### <a name="grub-access-in-ubuntu"></a>Ubuntu での GRUB アクセス
 GRUB にアクセスするには、VM の起動中に Enter キーを長押しします。 
 
-既定では、Ubuntu イメージは GRUB 画面に自動的に表示されません。 これは、以下の手順で変更できます。
+既定では、Ubuntu イメージは GRUB 画面に自動的に表示されません。 これは、以下の手順を使用して変更できます。
 1. お好みのテキスト エディターで `/etc/default/grub.d/50-cloudimg-settings.cfg` を開きます
 1. `GRUB_TIMEOUT` 値を 0 以外の値に変更します
 1. お好みのテキスト エディターで `/etc/default/grub` を開きます
@@ -182,7 +182,7 @@ Oracle Linux には GRUB が付属しており、すぐに使用できます。 
 ### <a name="single-user-mode-in-oracle-linux"></a>Oracle Linux でのシングル ユーザー モード
 Oracle Linux でシングル ユーザー モードを有効にするには、前述の RHEL の手順を実行します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * 主要なシリアル コンソールの Linux ドキュメントのページについては、[こちら](serial-console.md)を参照してください。
 * [NMI および SysRq 呼び出し](serial-console-nmi-sysrq.md)のためにシリアル コンソールを使用する
 * シリアル コンソールは、[Windows](../windows/serial-console.md) VM でも使用可能

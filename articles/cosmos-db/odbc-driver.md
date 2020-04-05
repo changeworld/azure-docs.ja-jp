@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: sngun
 ms.openlocfilehash: 8be17f0b624c5c34709fb420adb434b77dbc0d91
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721083"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>BI 分析ツールと ODBC ドライバーを使用して Azure Cosmos DB に接続する
@@ -29,7 +29,7 @@ Azure Cosmos DB はスキーマレス データベースであり、厳格なス
 
 それでは、ODBC ドライバーを使ってみましょう。
 
-## <a id="install"></a>手順 1:Azure Cosmos DB ODBC ドライバーをインストールする
+## <a name="step-1-install-the-azure-cosmos-db-odbc-driver"></a><a id="install"></a>手順 1:Azure Cosmos DB ODBC ドライバーをインストールする
 
 1. お使いの環境用のドライバーをダウンロードします。
 
@@ -48,7 +48,7 @@ Azure Cosmos DB はスキーマレス データベースであり、厳格なス
 
     ![Azure Cosmos DB ODBC データ ソース管理者](./media/odbc-driver/odbc-driver.png)
 
-## <a id="connect"></a>手順 2:Azure Cosmos データベースに接続する
+## <a name="step-2-connect-to-your-azure-cosmos-database"></a><a id="connect"></a>手順 2:Azure Cosmos データベースに接続する
 
 1. [Azure Cosmos DB ODBC ドライバーをインストール](#install)したら、 **[ODBC データ ソース管理者]** ウィンドウで **[追加]** をクリックします。 ユーザー DSN またはシステム DSN を作成できます。 この例では、ユーザー DSN を作成します。
 
@@ -88,7 +88,7 @@ Azure Cosmos DB はスキーマレス データベースであり、厳格なス
 
     ![[ユーザー DSN] タブの新しい Azure Cosmos DB ODBC DSN](./media/odbc-driver/odbc-driver-user-dsn.png)
 
-## <a id="#container-mapping"></a>手順 3:コンテナー マッピングの方法を使ってスキーマ定義を作成する
+## <a name="step-3-create-a-schema-definition-using-the-container-mapping-method"></a><a id="#container-mapping"></a>手順 3:コンテナー マッピングの方法を使ってスキーマ定義を作成する
 
 使用できるサンプリング方法は、**コンテナー マッピング**と**テーブル区切り記号**の 2 種類です。 サンプリング セッションではどちらのサンプリング方法も利用できますが、各コンテナーが使用できるのは特定のサンプリング方法のみになります。 次の手順では、コンテナー マッピングの方法を使って 1 つまた複数のコンテナー内のデータのスキーマを作成します。 このサンプリング方法では、コンテナーのページのデータを取得して、データの構造を判定します。 それにより、ODBC 側のテーブルにコンテナーを入れ替えます。 このサンプリング方法は、コンテナーのデータの種類が同じ場合は効率的で迅速です。 コンテナーに異なる型のデータが含まれる場合は、[テーブル区切り記号のマッピング方法](#table-mapping)を使用することをお勧めします。この方法は、コンテナー内のデータ構造を判定するより堅牢なサンプリング方法を提供します。 
 
@@ -109,7 +109,7 @@ Azure Cosmos DB はスキーマレス データベースであり、厳格なス
 
 1. このスキーマを DSN と共に使用する場合は、 **[Azure Cosmos DB ODBC Driver DSN Setup\(Azure Cosmos DB ODBC ドライバーの DSN セットアップ\)]** ウィンドウを (ODBC データ ソース管理者経由で) 開き、 **[詳細オプション]** をクリックして、 **[スキーマ ファイル]** ボックスの保存されたスキーマに移動します。 スキーマ ファイルを既存の DSN に保存すると、DNS 接続のスコープが、スキーマによって定義されたデータと構造に変更されます。
 
-## <a id="table-mapping"></a>手順 4:テーブル区切り記号のマッピング方法を使ってスキーマ定義を作成する
+## <a name="step-4-create-a-schema-definition-using-the-table-delimiters-mapping-method"></a><a id="table-mapping"></a>手順 4:テーブル区切り記号のマッピング方法を使ってスキーマ定義を作成する
 
 使用できるサンプリング方法は、**コンテナー マッピング**と**テーブル区切り記号**の 2 種類です。 サンプリング セッションではどちらのサンプリング方法も利用できますが、各コンテナーが使用できるのは特定のサンプリング方法のみになります。 
 

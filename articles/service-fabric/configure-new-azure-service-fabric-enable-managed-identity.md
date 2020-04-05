@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.custom: sfrev
 ms.openlocfilehash: 0e35d2192fdcdb294b349105f3f0158564cec86b
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76930457"
 ---
 # <a name="configure-managed-identity-support-for-a-new-service-fabric-cluster-preview"></a>新しい Service Fabric クラスターのマネージド ID のサポートを構成する (プレビュー)

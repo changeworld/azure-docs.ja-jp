@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: eb006482b851e9094b82ec3d0753b74c05296994
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68727843"
 ---
 # <a name="microsoft-threat-modeling-tool-threats"></a>Microsoft Threat Modeling Tool の脅威
@@ -47,6 +47,6 @@ Threat Modeling Tool を使用すると、以下のような特定の質問に�
 | **サービス拒否** | サービス拒否 (DoS) 攻撃では、有効なユーザーへのサービスが拒否されます。たとえば、Web サーバーを一時的に使用できなくする行為です。 システムの可用性と信頼性を向上させるために、特定の種類の DoS 脅威からシステムを保護する必要があります |
 | **特権の昇格** | 特権のないユーザーが特権的なアクセスを取得すると、システム全体を侵害したり破壊したりできるようになります。 特権の昇格の脅威には、攻撃者が効果的にすべてのシステム防御を破り、信頼されているシステム自体の一部となる、本当に危険な状況が含まれます |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 「 **[Threat Modeling Tool Mitigations](threat-modeling-tool-mitigations.md)** 」(Threat Modeling Tool の軽減策) に進み、これらの脅威 Azure で軽減する方法について学びます。

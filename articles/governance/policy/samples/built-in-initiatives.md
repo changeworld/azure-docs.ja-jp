@@ -4,17 +4,17 @@ description: Azure Policy の組み込みのポリシー　イニシアチブの
 ms.date: 01/31/2020
 ms.topic: sample
 ms.openlocfilehash: f98a5d611e807875390102d67efd1b0f0f262628
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77170430"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223899"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Azure Policy の組み込みイニシアチブの定義
 
 このページは、Azure Policy の組み込みイニシアチブの定義のインデックスです。
 
-各組み込みの名前は、[Azure Policy GitHub リポジトリ](https://github.com/Azure/azure-policy)のイニシアチブ定義ソースにリンクされています。 組み込みは、**metadata** 内の **category** プロパティごとにグループ化されています。 特定の**カテゴリ**にジャンプするには、ページの右側にあるメニューを使用します。 それ以外では、<kbd>Ctrl</kbd>-<kbd>F</kbd> キーを押して、ブラウザーの検索機能を使用してください。
+各組み込みの名前は、[Azure Policy GitHub リポジトリ](https://github.com/Azure/azure-policy)のイニシアチブ定義ソースにリンクされています。 組み込みは、**メタデータ**内の**カテゴリ** プロパティによってグループ化されます。 特定の**カテゴリ**にジャンプするには、ページの右側にあるメニューを使用します。 それ以外では、<kbd>Ctrl</kbd>-<kbd>F</kbd> キーを押して、ブラウザーの検索機能を使用してください。
 
 [!INCLUDE [azure-policy-samples-policyset-index](../../../../includes/azure-policy-samples-policyset-index.md)]
 

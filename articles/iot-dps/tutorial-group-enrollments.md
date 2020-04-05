@@ -10,10 +10,10 @@ services: iot-dps
 ms.devlang: java
 ms.custom: mvc
 ms.openlocfilehash: d6cb3af134ff272d79cfc440047a3d90733ee9e8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74976810"
 ---
 # <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>チュートリアル:シミュレートされた X.509 デバイスを IoT Hub Device Provisioning Service 対応の Java device and service SDK と登録グループを使用して作成、プロビジョニングする
@@ -246,7 +246,7 @@ ms.locfileid: "74976810"
     ![IoT ハブに登録されたデバイス](./media/tutorial-group-enrollments/hub-registration.png) 
 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 引き続きデバイス クライアント サンプルを使用する場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 使用する予定がない場合は、次の手順を使用して、このクイックスタートで作成したすべてのリソースを削除してください。
 
@@ -255,7 +255,7 @@ ms.locfileid: "74976810"
 1. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、IoT ハブを選択します。 ハブの **[IoT Devices]\(IoT デバイス\)** ブレードを開き、このクイックスタートで登録したデバイスの "*デバイス ID*" を選択し、一番上の **[削除]** ボタンをクリックします。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、シミュレートされた X.509 デバイスを Windows コンピューター上に作成し、Azure IoT Hub Device Provisioning Service と登録グループを使用して IoT Hub にプロビジョニングしました。 X.509 デバイスの詳細については、引き続きデバイスの概念に進んでください。 
 

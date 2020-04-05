@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.openlocfilehash: fc69761a05ea381d39d58d5ebf0046e0d9874961
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77210467"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>例:Python を使用してカスタム スキルを作成する

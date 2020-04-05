@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5bdc51f47a170922d4fc33e8538695af29e5159c
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 61b5017609d99f2f0074c67d3838cf351ea38bea
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128120"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79365425"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>チュートリアル:PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する
 
@@ -113,4 +113,4 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com" -Credential $
 サービス プリンシパルを作成して Windows Virtual Desktop テナント内のロールに割り当てたら、それを使用してホスト プールを作成できます。 ホスト プールについて詳しく確認するために、Windows Virtual Desktop でホスト プールを作成するためのチュートリアルに進んでください。
 
  > [!div class="nextstepaction"]
- > [Windows Virtual Desktop のホスト プールのチュートリアル](./create-host-pools-azure-marketplace.md)
+ > [Azure Marketplace を使用してホスト プールを作成する](./create-host-pools-azure-marketplace.md)

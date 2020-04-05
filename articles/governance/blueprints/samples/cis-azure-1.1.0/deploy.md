@@ -4,10 +4,10 @@ description: ブループリントのアーティファクト パラメーター
 ms.date: 10/14/2019
 ms.topic: sample
 ms.openlocfilehash: 7476addee3d31ec355c793ab7fbe1fbb732b8013
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74544523"
 ---
 # <a name="deploy-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure Foundations Benchmark ブループリント サンプルをデプロイする
@@ -96,7 +96,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |\[プレビュー\]:CIS Microsoft Azure Foundations Benchmark 1.1.0 の推奨事項を監査し、特定のサポート VM 拡張機能をデプロイします|ポリシー割り当て|Network Watcher を有効にする必要があるリージョンの一覧|セミコロンで区切られたリージョンの一覧。 リージョンの完全な一覧を確認するには、Get-AzLocation を使用します。 例: eastus; eastus2|
 |\[プレビュー\]:CIS Microsoft Azure Foundations Benchmark 1.1.0 の推奨事項を監査し、特定のサポート VM 拡張機能をデプロイします|ポリシー割り当て|使用が承認されている仮想マシン拡張機能の一覧|セミコロンで区切られた拡張機能の一覧。仮想マシンの拡張機能の完全な一覧を確認するには、Get-AzVMExtensionImage を使用します。 例:AzureDiskEncryption; IaaSAntimalware|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは CIS Microsoft Azure Foundations Benchmark ブループリント サンプルをデプロイする手順を確認したので、次の記事を参照してブループリントとコントロール マッピングについて学習します。
 

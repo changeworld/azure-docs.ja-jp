@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: b37708e27887b20604a1fe921f14e51387793737
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74687255"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>App Service Environment v1 の構成
@@ -24,7 +24,7 @@ ms.locfileid: "74687255"
 大まかに言えば、Azure App Service Environment は次に挙げるいくつかの主要なコンポーネントで構成されます。
 
 * App Service Environment ホステッド サービスで実行されるコンピューティング リソース
-* Storage
+* ストレージ
 * データベース
 * V1 (クラシック) または V2 (Resource Manager) Azure Virtual Network (VNet) 
 * App Service Environment ホステッド サービスが実行されるサブネット
@@ -65,7 +65,7 @@ ms.locfileid: "74687255"
 
 コンピューティング リソース プールのメトリックに基づいて自動スケール規則を設定する場合は、プロビジョニングの所要時間に注意してください。 App Service 環境の自動スケーリングの詳細については、[App Service 環境で自動スケーリングを構成する方法][ASEAutoscale]に関するページを参照してください。
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>ストレージ
 各 ASE には、500 GB の記憶域が構成されています。 この領域は、ASE 内のすべてのアプリケーションに使用されます。 この記憶域は ASE の一部であり、ユーザーの記憶域を使用するように切り替えることはできません。 仮想ネットワーク ルーティングまたはセキュリティを調整する場合も、Azure Storage へのアクセスを許可する必要があります。そうしないと、ASE が機能しません。
 
 ### <a name="database"></a>データベース
@@ -184,7 +184,7 @@ App Service 環境を削除する必要がある場合は、単に [App Service 
 
 ![Delete an App Service Environment UI][9]  
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 App Service 環境の使用を開始するには、 [App Service 環境の作成方法](app-service-web-how-to-create-an-app-service-environment.md)に関するページを参照してください。
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]

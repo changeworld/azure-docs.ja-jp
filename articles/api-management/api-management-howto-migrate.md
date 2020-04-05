@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
 ms.openlocfilehash: 3294a7b2112e9527041ef343f4452aedb7a2a272
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70073462"
 ---
 # <a name="how-to-migrate-azure-api-management-across-regions"></a>Azure API Management をリージョン間で移行する方法
@@ -25,7 +25,7 @@ API Management インスタンスを 1 つの Azure リージョンから別の�
 > [!NOTE]
 > 種類が異なるクラウド間で移行を行う場合、バックアップと復元は機能しません。 そのため、リソースを[テンプレートとして](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-portal#export-resource-groups-to-templates)エクスポートする必要があります。 次に、エクスポートしたテンプレートをターゲットの Azure リージョンに合わせて調整し、リソースを再作成します。 
 
-## <a name="option-1-use-a-different-api-management-instance-name"></a>オプション 1:別の API Management インスタンス名を使用する
+## <a name="option-1-use-a-different-api-management-instance-name"></a>オプション 1: 別の API Management インスタンス名を使用する
 
 1. ターゲット リージョンで、ソース API Management インスタンスと同じ価格レベルで新しい API Management インスタンスを作成します。 新しいインスタンスには別の名前を付ける必要があります。 
 1. 既存の API Management インスタンスをストレージ アカウントにバックアップします。
@@ -44,6 +44,6 @@ API Management インスタンスを 1 つの Azure リージョンから別の�
 1. 手順 1 で作成したバックアップを、ターゲット リージョンの新しい API Management インスタンスに復元します。  
 
 
-## <a name="next-steps"> </a>次のステップ
+## <a name="next-steps"></a><a name="next-steps"> </a>次の手順
 * バックアップと復元機能の詳細については、[ディザスター リカバリーを実装する方法](api-management-howto-disaster-recovery-backup-restore.md)に関するページを参照してください。
 * Azure リソースの移行の詳細については、[Azure のリージョン間の移行に関するガイダンス](https://github.com/Azure/Azure-Migration-Guidance)を参照してください。

@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
 ms.openlocfilehash: ef9d3c7c479df9c71a855f0a243b5b9d0da947d7
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68359507"
 ---
 # <a name="use-an-azure-powershell-command-to-create-an-empty-cloud-service-container"></a>Azure PowerShell コマンドを使用して空のクラウド サービス コンテナーを作成する
@@ -49,7 +49,7 @@ Azure クラウド サービスの作成方法については、次のコマン�
 Get-help New-AzureService
 ```
 
-### <a name="next-steps"></a>次の手順
+### <a name="next-steps"></a>次のステップ
 
 * クラウド サービス デプロイの管理については、[Get-AzureService](/powershell/module/servicemanagement/azure/Get-AzureService?view=azuresmps-4.0.0)、[Remove-AzureService](/powershell/module/servicemanagement/azure/Remove-AzureService?view=azuresmps-4.0.0)、[Set-AzureService](/powershell/module/servicemanagement/azure/set-azureservice?view=azuresmps-4.0.0) の各コマンドの説明を参照してください。 詳細については、 [クラウド サービスを構成する方法](cloud-services-how-to-configure-portal.md) に関するページも参考になります。
-* Azure にクラウド サービス プロジェクトを発行する方法については、[アーカイブ済みのクラウド サービス リポジトリ](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Scripts/cloud-services-continuous-delivery)に関するページの **PublishCloudService.ps1** コード サンプルを参照してください。
+* Azure にクラウド サービス プロジェクトを発行する方法については、**アーカイブ済みのクラウド サービス リポジトリ**に関するページの [PublishCloudService.ps1](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Scripts/cloud-services-continuous-delivery) コード サンプルを参照してください。

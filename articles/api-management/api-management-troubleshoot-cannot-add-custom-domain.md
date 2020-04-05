@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/19/2019
 ms.author: tehnoonr
 ms.openlocfilehash: a09c15466a4a9f62b2696b087cb7ab23cc767379
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75430585"
 ---
 # <a name="failed-to-update-api-management-service-hostnames"></a>API Management サービスのホスト名を更新できなかった

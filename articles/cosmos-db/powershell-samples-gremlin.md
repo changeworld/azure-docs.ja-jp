@@ -6,16 +6,19 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 23ede06274f6e929bd04bf9ced60f349ae06caa9
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: d0deef4df6cfdcfdb2d549cee35892620cf6b791
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871943"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365722"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB 用 Azure PowerShell サンプル: Gremlin API
 
 次の表には、Azure Cosmos DB for Gremlin API の Azure PowerShell スクリプトのサンプルへのリンクが含まれています。
+
+> [!NOTE]
+> このサンプルでは、[Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) 管理コマンドレットを使用します。 `Az.CosmosDB` のコマンドレットはまだプレビュー段階であり、リリースまでに変更される可能性があります。 `Az.CosmosDB` の更新プログラムを定期的にチェックしてください。
 
 | | |
 |---|---|

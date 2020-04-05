@@ -5,13 +5,12 @@ ms.author: puagarw
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
-monikerRange: vsts
-ms.openlocfilehash: eecb4dba39ff847515a4a312b7cb74698867c693
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: b0a9597e370648faab3787218c7d038798dbd455
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78247904"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048105"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Azure Kubernetes のデプロイ センター
 

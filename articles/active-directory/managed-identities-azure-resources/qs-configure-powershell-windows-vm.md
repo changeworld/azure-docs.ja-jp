@@ -16,10 +16,10 @@ ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f24c89477d71df3f497590b49841403576343bd4
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74547211"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>PowerShell を使用して Azure VM 上の Azure リソースのマネージド ID を構成する
@@ -69,7 +69,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    Connect-AzAccount
    ```
 
-2. 最初に、`Get-AzVM` コマンドレットを使用して VM プロパティを取得します。 システム割り当てマネージド ID を有効にするには、[Update-AzVM](/powershell/module/az.compute/update-azvm) コマンドレットで `-AssignIdentity` スイッチを使用します。
+2. 最初に、`Get-AzVM` コマンドレットを使用して VM プロパティを取得します。 システム割り当てマネージド ID を有効にするには、`-AssignIdentity`Update-AzVM[ コマンドレットで ](/powershell/module/az.compute/update-azvm) スイッチを使用します。
 
    ```powershell
    $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
@@ -144,7 +144,7 @@ Update-AzVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
 
 1. 次のいずれかの Azure VM クイック スタートを参照して、必要なセクション (「Azure へのサインイン」、「リソース グループの作成」、「ネットワーク グループの作成」、「VM の作成」) のみを実行してください。 
   
-    「VM の作成」セクションに到達したときに、[`New-AzVMConfig`](/powershell/module/az.compute/new-azvm) コマンドレットの構文にわずかな変更を加えます。 `-IdentityType UserAssigned` および `-IdentityID` パラメーターを追加し、ユーザー割り当て ID を使用して VM のプロビジョニングを行います。  `<VM NAME>`、`<SUBSCRIPTION ID>`、`<RESROURCE GROUP>`、および `<USER ASSIGNED IDENTITY NAME>` を独自の値に置き換えます。  例:
+    「VM の作成」セクションに到達したときに、[`New-AzVMConfig`](/powershell/module/az.compute/new-azvm) コマンドレットの構文にわずかな変更を加えます。 `-IdentityType UserAssigned` および `-IdentityID` パラメーターを追加し、ユーザー割り当て ID を使用して VM のプロビジョニングを行います。  `<VM NAME>`、`<SUBSCRIPTION ID>`、`<RESROURCE GROUP>`、および `<USER ASSIGNED IDENTITY NAME>` を独自の値に置き換えます。  次に例を示します。
     
     ```powershell 
     $vmConfig = New-AzVMConfig -VMName <VM NAME> -IdentityType UserAssigned -IdentityID "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESROURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>..."
@@ -173,10 +173,10 @@ Update-AzVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
    ```powershell
    New-AzUserAssignedIdentity -ResourceGroupName <RESOURCEGROUP> -Name <USER ASSIGNED IDENTITY NAME>
    ```
-3. `Get-AzVM` コマンドレットを使用して VM プロパティを取得します。 次に、ユーザー割り当てマネージド ID を Azure VM に割り当てるため、[Update-AzVM](/powershell/module/az.compute/update-azvm) コマンドレットで `-IdentityType` および `-IdentityID` スイッチを使用します。  `-IdentityId` パラメーターの値は、前の手順で書き留めた `Id` です。  `<VM NAME>`、`<SUBSCRIPTION ID>`、`<RESROURCE GROUP>`、および `<USER ASSIGNED IDENTITY NAME>` を独自の値に置き換えます。
+3. `Get-AzVM` コマンドレットを使用して VM プロパティを取得します。 次に、ユーザー割り当てマネージド ID を Azure VM に割り当てるため、`-IdentityType`Update-AzVM`-IdentityID` コマンドレットで [ および ](/powershell/module/az.compute/update-azvm) スイッチを使用します。  `-IdentityId` パラメーターの値は、前の手順で書き留めた `Id` です。  `<VM NAME>`、`<SUBSCRIPTION ID>`、`<RESROURCE GROUP>`、および `<USER ASSIGNED IDENTITY NAME>` を独自の値に置き換えます。
 
    > [!WARNING]
-   > 以前のユーザー割り当てマネージド ID を VM に割り当てておくには、VM オブジェクト (たとえば `$vm.Identity`) の `Identity` プロパティのクエリを実行します。  ユーザー割り当てマネージド ID が返された場合、VM に割り当てる新しいユーザー割り当てマネージド ID とともにこれらを次のコマンドに含めます。
+   > 以前のユーザー割り当てマネージド ID を VM に割り当てておくには、VM オブジェクト (たとえば `Identity`) の `$vm.Identity` プロパティのクエリを実行します。  ユーザー割り当てマネージド ID が返された場合、VM に割り当てる新しいユーザー割り当てマネージド ID とともにこれらを次のコマンドに含めます。
 
    ```powershell
    $vm = Get-AzVM -ResourceGroupName <RESOURCE GROUP> -Name <VM NAME>
@@ -208,7 +208,7 @@ $vm = Get-AzVm -ResourceGroupName myResourceGroup -Name myVm
 Update-AzVm -ResourceGroupName myResourceGroup -VirtualMachine $vm -IdentityType "SystemAssigned"
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure リソースのマネージド ID の概要](overview.md)
 - 完全な Azure VM 作成のクイックスタートについては、次を参照してください。

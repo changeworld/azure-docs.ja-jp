@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/30/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 1c2b79f8d0641b1a1386329a2add14ded766bf5a
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77623394"
 ---
 # <a name="globally-distributed-transactional-and-analytical-storage-for-azure-cosmos-containers"></a>Azure Cosmos コンテナー用のグローバルに分散されたトランザクション ストレージと分析ストレージ

@@ -13,11 +13,11 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 915675af1e646f2cb77e36c0018ed372ff9496fc
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74380290"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230779"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスの場所の条件の概要 
 
@@ -146,7 +146,7 @@ Azure AD を使用すると、パブリック インターネットに接続で�
 
 ネームド ロケーションや条件付きアクセス ポリシーでは、API と PowerShell はまだサポートされていません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 条件付きアクセス ポリシーの構成方法を把握するには、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](app-based-mfa.md)」を参照してください。
 - 環境に適用する条件付きアクセス ポリシーを構成する準備ができたら、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](best-practices.md)」を参照してください。

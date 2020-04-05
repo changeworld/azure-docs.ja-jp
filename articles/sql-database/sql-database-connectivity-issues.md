@@ -14,11 +14,11 @@ ms.author: ninarn
 ms.reviewer: carlrab, vanto
 ms.date: 01/14/2020
 ms.openlocfilehash: d2b56e259f551f7655936c975a7a864a27a1df79
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027799"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232579"
 ---
 # <a name="troubleshooting-transient-connection-errors-to-sql-database"></a>SQL Database への一時的な接続エラーのトラブルシューティング
 
@@ -91,7 +91,7 @@ ADO.NET を使用するクライアントのブロック期間については、
 再試行ロジックをテストする手段として、プログラムの実行中にクライアント コンピューターをネットワークから切断する方法が挙げられます。 エラーは次のとおりです。
 
 - **SqlException.Number** = 11001
-- メッセージ:"そのようなホストは不明です"
+- メッセージ: "そのようなホストは不明です"
 
 最初の再試行の一環として、クライアント コンピューターをネットワークに再接続してから接続を試行することができます。
 
@@ -109,7 +109,7 @@ ADO.NET を使用するクライアントのブロック期間については、
 意図的に間違ったユーザー名を使って初回接続を試みます。 エラーは次のとおりです。
 
 - **SqlException.Number** = 18456
-- メッセージ:"ユーザー WRONG_MyUserName はログインできませんでした"
+- メッセージ: "ユーザー WRONG_MyUserName はログインできませんでした"
 
 最初の再試行のときに、プログラムでスペルミスを修正してから接続を試みてください。
 
@@ -137,7 +137,7 @@ ADO.NET を使用するクライアントのブロック期間については、
 - **ConnectRetryInterval**:&nbsp;&nbsp;既定値は 10 秒です。 範囲は 1 ～ 60 です。
 - **Connection Timeout**:&nbsp;&nbsp;既定値は 15 秒です。 範囲は 0 ～ 2147483647 です。
 
-具体的には、選択した値で次の等式が成り立つ必要があります。Connection Timeout = ConnectRetryCount * ConnectionRetryInterval
+具体的には、次の等式を満たす値を選択する必要があります。Connection Timeout = ConnectRetryCount * ConnectionRetryInterval
 
 たとえば、回数が 3、間隔が 10 秒、タイムアウトが 29 秒のみの場合、29 < 3 * 10 となり、3 回目の最後の接続の試行には十分な時間が与えらません。
 
@@ -162,7 +162,7 @@ ADO.NET を使用するクライアントのブロック期間については、
 
 <a id="c-connection-string" name="c-connection-string"></a>
 
-### <a name="connection-connection-string"></a>接続:接続文字列
+### <a name="connection-connection-string"></a>接続: 接続文字列
 
 SQL Database に接続するために必要な接続文字列は、SQL Server への接続に使用される文字列とは若干異なります。 データベースの接続文字列は [Azure ポータル](https://portal.azure.com/)からコピーすることができます。
 
@@ -170,7 +170,7 @@ SQL Database に接続するために必要な接続文字列は、SQL Server �
 
 <a id="b-connection-ip-address" name="b-connection-ip-address"></a>
 
-### <a name="connection-ip-address"></a>接続:IP アドレス
+### <a name="connection-ip-address"></a>接続: IP アドレス
 
 SQL Database サーバーは、クライアント プログラムのホストとなるコンピューターの IP アドレスからの通信を許可するように構成する必要があります。 この構成を設定するには、[Azure Portal](https://portal.azure.com/) を通じてファイアウォール設定を編集します。
 
@@ -181,7 +181,7 @@ IP アドレスの構成を怠った場合、必要な IP アドレスを示し�
 詳細については、[SQL Database のファイアウォール設定の構成](sql-database-configure-firewall-settings.md)に関するページを参照してください。
 <a id="c-connection-ports" name="c-connection-ports"></a>
 
-### <a name="connection-ports"></a>接続:Port
+### <a name="connection-ports"></a>接続: ポート
 
 通常、必要な設定は、クライアント プログラムのホストとなるコンピューターのポート 1433 の送信方向を開放するだけです。
 
@@ -196,7 +196,7 @@ IP アドレスの構成を怠った場合、必要な IP アドレスを示し�
 
 <a id="d-connection-ado-net-4-5" name="d-connection-ado-net-4-5"></a>
 
-### <a name="connection-adonet-462-or-later"></a>接続:ADO.NET 4.6.2 以降
+### <a name="connection-adonet-462-or-later"></a>接続: ADO.NET 4.6.2 以降
 
 プログラムで **System.Data.SqlClient.SqlConnection** などの ADO.NET クラスを使用して SQL Database に接続する場合は、.NET Framework バージョン 4.6.2 以降を使用することをお勧めします。
 
@@ -219,7 +219,7 @@ ADO.NET 4.0 以前のバージョンを使用する場合、最新の ADO.NET. �
 
 <a id="d-test-whether-utilities-can-connect" name="d-test-whether-utilities-can-connect"></a>
 
-### <a name="diagnostics-test-whether-utilities-can-connect"></a>診断:ユーティリティから接続できるかどうかをテストする
+### <a name="diagnostics-test-whether-utilities-can-connect"></a>診断: ユーティリティから接続できるかどうかをテストする
 
 プログラムから SQL Database に接続できないときの診断方法として 1 つ考えられるのは、ユーティリティ プログラムを使用して接続する方法です。 プログラムで使用しているのと同じライブラリを使用して接続するユーティリティがあれば理想的です。
 
@@ -232,14 +232,14 @@ ADO.NET 4.0 以前のバージョンを使用する場合、最新の ADO.NET. �
 
 <a id="f-diagnostics-check-open-ports" name="f-diagnostics-check-open-ports"></a>
 
-### <a name="diagnostics-check-the-open-ports"></a>診断:開放ポートを確認する
+### <a name="diagnostics-check-the-open-ports"></a>診断: 開放ポートを確認する
 
 ポートの問題が原因で接続に失敗している可能性がある場合は、ポートの構成に関するレポート作成に対応したユーティリティをご使用のコンピューターで実行してください。
 
 Linux では、次のユーティリティが役に立つ場合があります。
 
 - `netstat -nap`
-- `nmap -sS -O 127.0.0.1`:例の値を実際の IP アドレスに変更してください。
+- `nmap -sS -O 127.0.0.1`: 例の値を実際の IP アドレスに変更してください。
 
 Windows では [PortQry.exe](https://www.microsoft.com/download/details.aspx?id=17148) ユーティリティが利用できます。 以下は、SQL Database サーバーのポートの状況の照会をノート PC 上で実行する例を示しています。
 
@@ -261,7 +261,7 @@ TCP port 1433 (ms-sql-s service): LISTENING
 
 <a id="g-diagnostics-log-your-errors" name="g-diagnostics-log-your-errors"></a>
 
-### <a name="diagnostics-log-your-errors"></a>診断:エラーのログを記録する
+### <a name="diagnostics-log-your-errors"></a>診断: エラーのログを記録する
 
 断続的な問題は、過去数日から数週間にわたる一般的なパターンを検出することによって診断できる場合が多々あります。
 
@@ -271,7 +271,7 @@ Enterprise Library 6 (EntLib60) には、ログ記録をサポートする .NET 
 
 <a id="h-diagnostics-examine-logs-errors" name="h-diagnostics-examine-logs-errors"></a>
 
-### <a name="diagnostics-examine-system-logs-for-errors"></a>診断:エラーの発生をシステム ログで調べる
+### <a name="diagnostics-examine-system-logs-for-errors"></a>診断: エラーの発生をシステム ログで調べる
 
 以下に示したのは、エラー ログや各種情報を照会する Transact-SQL SELECT ステートメントの例です。
 
@@ -282,7 +282,7 @@ Enterprise Library 6 (EntLib60) には、ログ記録をサポートする .NET 
 
 <a id="d-search-for-problem-events-in-the-sql-database-log" name="d-search-for-problem-events-in-the-sql-database-log"></a>
 
-### <a name="diagnostics-search-for-problem-events-in-the-sql-database-log"></a>診断:SQL Database のログから問題のイベントを検索する
+### <a name="diagnostics-search-for-problem-events-in-the-sql-database-log"></a>診断: SQL Database のログから問題のイベントを検索する
 
 SQL Database のログで問題のイベントに関するエントリを検索することができます。 *master* データベースで次の Transact-SQL SELECT ステートメントを試してみてください。
 
@@ -327,7 +327,7 @@ database_xml_deadlock_report  2015-10-16 20:28:01.0090000  NULL   NULL   NULL   
 
 Enterprise Library 6 (EntLib60) は、.NET クラスのフレームワークです。クラウド サービス (SQL Database サービスもその 1 つ) に対する堅牢なクライアントをこのフレームワークを使って実装することができます。 EntLib60 の利便性が発揮される個々の領域の説明については、「[Enterprise Library 6 - April 2013 (Enterprise Library 6 – 2013 年 4 月)](https://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx)」を参照してください。
 
-一時エラーを処理するための再試行ロジックは、EntLib60 を利用できる 1 つの領域です。 詳細については、「[4 - Perseverance, Secret of All Triumphs:Use the Transient Fault Handling Application Block](https://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx)」をご覧ください。
+一時エラーを処理するための再試行ロジックは、EntLib60 を利用できる 1 つの領域です。 詳細については、「[4 - Perseverance, Secret of All Triumphs: Using the Transient Fault Handling Application Block (4 - 成功のための耐力と秘密: 一時的な障害処理アプリケーション ブロック)](https://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx)」をご覧ください。
 
 > [!NOTE]
 > EntLib60 のソース コードは、[ダウンロード センター](https://go.microsoft.com/fwlink/p/?LinkID=290898)から入手できます。 EntLib に対して機能の更新や保守目的での更新を行う予定はありません。
@@ -354,13 +354,13 @@ Enterprise Library 6 (EntLib60) は、.NET クラスのフレームワークで�
 
 EntLib60 に関する情報は以下のリンクから入手できます。
 
-- 無料の電子ブック ダウンロード:[Microsoft Enterprise Library 開発者ガイド、第 2 版](https://www.microsoft.com/download/details.aspx?id=41145)。
-- ベスト プラクティス:[再試行全般のガイダンス](../best-practices-retry-general.md) には、再試行のロジックが詳しく解説されていてお勧めです。
-- NuGet ダウンロード:[Enterprise Library - Transient Fault Handling Application Block 6.0](https://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/)
+- 無料の電子ブック ダウンロード: [Microsoft Enterprise Library 開発者ガイド、第 2 版](https://www.microsoft.com/download/details.aspx?id=41145)
+- ベスト プラクティス: [再試行全般のガイダンス](../best-practices-retry-general.md) には、再試行のロジックが詳しく解説されていてお勧めです。
+- NuGet ダウンロード: [Enterprise Library - Transient Fault Handling Application Block 6.0](https://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/)
 
 <a id="entlib60-the-logging-block" name="entlib60-the-logging-block"></a>
 
-### <a name="entlib60-the-logging-block"></a>EntLib60:Logging ブロック
+### <a name="entlib60-the-logging-block"></a>EntLib60: Logging ブロック
 
 - Logging ブロックは、きわめて柔軟性に優れた構成可能なソリューションであり、次の目的で使用できます。
   - ログ メッセージをさまざまな場所に作成して保存する。

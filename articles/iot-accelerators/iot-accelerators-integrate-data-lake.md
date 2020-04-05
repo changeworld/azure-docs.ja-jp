@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 0a684151e01b298c60ff17ef1470e0648a425850
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73889234"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>リモート監視ソリューションを Azure Data Lake Store と統合する
@@ -38,7 +38,7 @@ ms.locfileid: "73889234"
 > [!NOTE]
 > コンシューマー グループは、Azure IoT Hub からデータをプルするアプリケーションによって使用されます。 5 つの出力コンシューマーのすべてに対して、新しいコンシューマー グループを作成する必要があります。 最大 32 のコンシューマー グループを作成できます。
 
-1. Azure ポータルにサインインします。
+1. Azure portal にサインインします。
 
 1. Azure Portal で **[クラウド シェル]** ボタンをクリックします。
 
@@ -89,7 +89,7 @@ IoT Hub から Azure Data Lake Store にデータをストリーミングする 
 
     ![入力の選択](./media/iot-accelerators-integrate-data-lake/stream-analytics-new-input.png)
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 1. [概要] ページで、 **[出力]** をクリックします。
 
@@ -118,7 +118,7 @@ IoT Hub から Azure Data Lake Store にデータをストリーミングする 
     > [!NOTE]
     > ポップアップ ウィンドウにエラーが表示された場合は、新しいブラウザー ウィンドウを Incognito モードで開いてやり直してください。
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 ## <a name="edit-the-stream-analytics-query"></a>Stream Analytics クエリを編集する
 
@@ -126,7 +126,7 @@ Azure Stream Analytics では、SQL に似たクエリ言語を使用して、�
 
 1. [概要] タブで、 **[クエリの編集]** をクリックします。
 
-    ![クエリの編集](./media/iot-accelerators-integrate-data-lake/stream-analytics-edit-query.png)
+    ![[クエリの編集]](./media/iot-accelerators-integrate-data-lake/stream-analytics-edit-query.png)
 
 1. クエリ エディターで、プレースホルダー の [YourOutputAlias] と [YourInputAlias] を、先ほど定義した値に置き換えます。
 
@@ -141,7 +141,7 @@ Azure Stream Analytics では、SQL に似たクエリ言語を使用して、�
 
     ![Stream Analytics クエリ](./media/iot-accelerators-integrate-data-lake/stream-analytics-query.png)
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 1. **[はい]** をクリックして変更を適用します。
 
 ## <a name="start-the-stream-analytics-job"></a>Stream Analytics ジョブの開始

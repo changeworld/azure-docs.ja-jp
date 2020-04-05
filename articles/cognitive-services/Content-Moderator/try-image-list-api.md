@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 27d9b12d9e1a0237050243c2b5f07edaa8d8857a
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72757187"
 ---
 # <a name="moderate-with-custom-image-lists-in-the-api-console"></a>API コンソールでカスタム イメージ リストを使用してモデレートする
@@ -22,7 +22,7 @@ ms.locfileid: "72757187"
 カスタム イメージ リストを作成するには、Azure Content Moderator の [List Management API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672) を使用します。 カスタム イメージ リストは、Image Moderation API で使用します。 イメージ モデレーション操作では、イメージが表示されます。 カスタム リストを作成すると、この操作で、イメージとカスタム リスト内のイメージとの比較も行われます。 カスタム リストを使用して、イメージをブロックしたり許可したりできます。
 
 > [!NOTE]
-> **イメージ リストの数は 5 個**まで、各リスト内の**イメージの数は 10,000 個**までに制限されています。
+> **画像リスト数は 5 個**、各リストの**画像数は 10,000 個**という上限があります。
 >
 
 List Management API を使用して、次のタスクを実行できます。
@@ -46,13 +46,13 @@ List Management API を使用して、次のタスクを実行できます。
 
    **[Image Lists - Refresh Search Index]\(イメージ リスト - インデックスを最新の情報に更新\)** ページが開きます。
 
-2. **[Open API testing console]\(API テスト コンソールを開く\)** で、お住まいの場所に最も近いリージョンを選択します。 
+2. **API テスト コンソールを開く場合**、実際の場所を最もよく表しているリージョンを選択します。 
  
     ![[Image Lists - Refresh Search Index]\(イメージ リスト - インデックスを最新の情報に更新\) ページでのリージョンの選択](images/test-drive-region.png)
 
     **[Image Lists - Refresh Search Index]\(イメージ リスト - インデックスを最新の情報に更新\)** API コンソールが開きます。
 
-3. **[listId]** ボックスに、リスト ID を入力します。 サブスクリプション キーを入力し、 **[送信]** を選択します。
+3. **[listId]** ボックスに、リスト ID を入力します。 サブスクリプション キーを入力して、 **[送信]** を選択します。
 
    ![[Image Lists - Refresh Search Index]\(イメージ リスト - インデックスを最新の情報に更新\) コンソールの [応答のコンテンツ] ボックス](images/try-image-list-refresh-1.png)
 
@@ -63,7 +63,7 @@ List Management API を使用して、次のタスクを実行できます。
 
    **[Image Lists - Create]\(イメージ リスト - 作成\)** ページが開きます。 
 
-3. **[Open API testing console]\(API テスト コンソールを開く\)** で、お住まいの場所に最も近いリージョンを選択します。
+3. **API テスト コンソールを開く場合**、実際の場所を最もよく表しているリージョンを選択します。
 
    ![[Image Lists - Create]\(イメージ リスト - 作成\) ページでのリージョンの選択](images/test-drive-region.png)
 
@@ -97,13 +97,13 @@ List Management API を使用して、次のタスクを実行できます。
 
    **[Image - Add Image]\(イメージ - イメージの追加\)** ページが開きます。 
 
-9. **[Open API testing console]\(API テスト コンソールを開く\)** で、お住まいの場所に最も近いリージョンを選択します。
+9. **API テスト コンソールを開く場合**、実際の場所を最もよく表しているリージョンを選択します。
 
    ![[Image - Add Image]\(イメージ - イメージの追加\) ページでのリージョンの選択](images/test-drive-region.png)
 
    **[Image - Add Image]\(イメージ - イメージの追加\)** API コンソールが開きます。
  
-10. **[listId]** ボックスに生成されたリスト ID を入力し、追加するイメージの URL を入力します。 サブスクリプション キーを入力し、 **[送信]** を選択します。
+10. **[listId]** ボックスに生成されたリスト ID を入力し、追加するイメージの URL を入力します。 サブスクリプション キーを入力して、 **[送信]** を選択します。
 
 11. イメージがリストに追加されたことを確認するには、左側のメニューで **[イメージ]** を選択し、 **[Get All Image Ids]\(すべてのイメージ ID を取得\)** を選択します。
 
@@ -129,7 +129,7 @@ List Management API を使用して、次のタスクを実行できます。
 
    **[Image - Delete]\(イメージ - 削除\)** ページが開きます。
 
-2. **[Open API testing console]\(API テスト コンソールを開く\)** で、お住まいの場所に最も近いリージョンを選択します。 
+2. **API テスト コンソールを開く場合**、実際の場所を最もよく表しているリージョンを選択します。 
 
    ![[Image - Delete]\(イメージ - 削除\) ページでのリージョンの選択](images/test-drive-region.png)
  
@@ -139,7 +139,7 @@ List Management API を使用して、次のタスクを実行できます。
 
 この例では、リスト ID は **ContentSource** の値である **58953** です。 イメージ ID は **ContentIds** の値である **59021** です。
 
-1. サブスクリプション キーを入力し、 **[送信]** を選択します。
+1. サブスクリプション キーを入力して、 **[送信]** を選択します。
 
 1. イメージが削除されたことを確認するには、 **[Image - Get All Image Ids]\(イメージ - すべてのイメージ ID を取得\)** コンソールを使用します。
  
@@ -151,7 +151,7 @@ List Management API を使用して、次のタスクを実行できます。
 
    **[Image Lists - Update Details]\(イメージ リスト - 詳細の更新\)** ページが開きます。
 
-2. **[Open API testing console]\(API テスト コンソールを開く\)** で、お住まいの場所に最も近いリージョンを選択します。  
+2. **API テスト コンソールを開く場合**、実際の場所を最もよく表しているリージョンを選択します。  
 
     ![[Image Lists - Update Details]\(イメージ リスト - 詳細の更新\) ページでのリージョンの選択](images/test-drive-region.png)
 
@@ -164,6 +164,6 @@ List Management API を使用して、次のタスクを実行できます。
    ![[Image Lists - Update Details]\(イメージ リスト - 詳細の更新\) コンソールの [要求本文] の編集](images/try-terms-list-change-1.png)
  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 コード内で REST API を使用するか、[イメージ リストに関する .NET のクイック スタート](image-lists-quickstart-dotnet.md)から開始して、アプリケーションと統合します。

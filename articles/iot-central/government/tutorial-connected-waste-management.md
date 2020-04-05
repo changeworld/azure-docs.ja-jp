@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 274d725a0e7987c8cb15363ba276aec7ebc541d5
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77426362"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>チュートリアル:IoT Central で接続された廃棄物管理アプリケーションを作成する

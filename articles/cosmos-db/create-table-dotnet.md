@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: .NET での Table API の使用 - Azure Cosmos DB'
+title: クイック スタート:.NET での Table API の使用 - Azure Cosmos DB
 description: このクイックスタートでは、Azure Cosmos DB Table API を使用して Azure Portal と .NET でアプリケーションを作成する方法を示します。
 author: SnehaGunda
 ms.service: cosmos-db
@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
 ms.openlocfilehash: 629adfe558aec71e156e50c75aa0891eac5a8bcf
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "65979043"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214930"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>クイック スタート:.NET SDK と Azure Cosmos DB で Table API アプリをビルドする 
 
@@ -28,7 +28,7 @@ ms.locfileid: "65979043"
 
 ## <a name="prerequisites"></a>前提条件
 
-まだ Visual Studio 2019 をインストールしていない場合は、**無料**の [Visual Studio 2019 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
+Visual Studio 2019 をまだインストールしていない場合は、**無料**の [Visual Studio 2019 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -147,11 +147,11 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してテーブルを作成し、アプリを実行する方法を説明しました。  これで、Table API を使用して、データをクエリできます。  
 

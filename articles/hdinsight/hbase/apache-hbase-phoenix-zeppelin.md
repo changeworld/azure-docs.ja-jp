@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.openlocfilehash: 28eeb446e55213f1ffa0a638878f6432fd15a05a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72391942"
 ---
 # <a name="use-apache-zeppelin-to-run-apache-phoenix-queries-over-apache-hbase-in-azure-hdinsight"></a>Apache Zeppelin を使用して Azure HDInsight で Apache HBase に対して Apache Phoenix クエリを実行する
@@ -44,7 +44,7 @@ HDInsight 内の Apache HBase クラスター 「[Apache HBase の使用](./apac
 
 1. Notebook のヘッダーに [接続] というステータスが表示されることを確認します。 これは、右上隅の緑色の点で示されます。
 
-    ![Zeppelin Notebook のステータス](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-connected.png "Zeppelin Notebook のステータス")
+    ![Zeppelin ノートブック のステータス](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-connected.png "Zeppelin Notebook のステータス")
 
 1. HBase テーブルを作成します。 次のコマンドを入力して、**Shift + Enter** キーを押します。
 
@@ -96,7 +96,7 @@ HDInsight 内の Apache HBase クラスター 「[Apache HBase の使用](./apac
     DROP TABLE dbo.Company;
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Apache Phoenix now supports Zeppelin in Azure HDInsight](https://blogs.msdn.microsoft.com/ashish/2018/08/17/apache-phoenix-now-supports-zeppelin-in-azure-hdinsight/) (Azure HDInsight で Apache Phoenix が Zeppelin を新しくサポート)
 - [Apache Phoenix grammar](https://phoenix.apache.org/language/index.html) (Apache Phoenix の文法)

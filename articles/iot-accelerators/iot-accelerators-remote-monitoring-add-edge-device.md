@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/09/2018
 ms.topic: conceptual
 ms.openlocfilehash: 0a42763ff47cccfa506acbbbd95d20d41eb0827f
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72965383"
 ---
 # <a name="add-an-iot-edge-device-to-your-remote-monitoring-solution-accelerator"></a>IoT Edge デバイスをリモート監視ソリューション アクセラレータに追加する
@@ -50,6 +50,6 @@ Edge デバイスにモジュールをデプロイする前に、IoT Edge ラン
 - [Windows に Azure IoT Edge をインストールして Linux コンテナーと共に使用する](../iot-edge/how-to-install-iot-edge-windows-with-linux.md)
 - [IoT Edge ランタイムを Windows IoT Core にインストールする](../iot-edge/how-to-install-iot-core.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 IoT Edge デバイスの準備が完了したら、次はモジュールを IoT Edge デバイスに配置します。 「[リモート監視ソリューション アクセラレータに IoT Edge パッケージをインポートする](iot-accelerators-remote-monitoring-import-edge-package.md)」を参照してください。

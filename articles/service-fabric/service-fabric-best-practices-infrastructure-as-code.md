@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: 1c044d5fd973d3c577088a887f2fac413d2ab79d
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75551830"
 ---
 # <a name="infrastructure-as-code"></a>コードとしてのインフラストラクチャ

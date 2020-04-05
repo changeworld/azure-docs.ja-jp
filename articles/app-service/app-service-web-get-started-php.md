@@ -4,13 +4,13 @@ description: Azure App Service に、初めての PHP の Hello World を数分�
 ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
 ms.date: 08/24/2018
-ms.custom: seodec18
-ms.openlocfilehash: 59e59fdf7fc6207a77bbe9923899570eeaa06a87
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 2813d96fdd9fcd588b78cbfb58fe57bf58a4fe68
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500137"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80047350"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Azure に PHP Web アプリを作成する
 
@@ -18,7 +18,7 @@ ms.locfileid: "77500137"
 > この記事では、Windows 上の App Service にアプリをデプロイします。 _Linux_ 上の App Service に展開するには、「[App Service on Linux での PHP Web アプリの作成](./containers/quickstart-php.md)」をご覧ください。
 >
 
-[Azure App Service](overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。  このクイック スタート チュートリアルでは、Azure App Service に PHP アプリをデプロイする方法を説明します。 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使って Cloud Shell で Web アプリを作成し、Git を使用して Web アプリに PHP のサンプル コードをデプロイします。
+[Azure App Service](overview.md) は、非常にスケーラブルな、自己適用型の Web ホスティング サービスを提供します。  このクイック スタート チュートリアルでは、Azure App Service に PHP アプリをデプロイする方法を説明します。 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使って Cloud Shell で Web アプリを作成し、Git を使用して Web アプリに PHP のサンプル コードをデプロイします。
 
 ![Azure で実行されるサンプル アプリ](media/app-service-web-get-started-php/hello-world-in-browser.png)
 

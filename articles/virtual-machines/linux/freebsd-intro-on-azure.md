@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: huishao
 ms.openlocfilehash: fe64418e254289a29aafd155b92396082bff5b6a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78945082"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Azure の FreeBSD の概要
@@ -52,7 +52,7 @@ sudo rm /usr/local/bin/python 
 sudo ln -s /usr/local/bin/python3.5 /usr/local/bin/python
 ```
 
-インストール中に、`Modify profile to update your $PATH and enable shell/tab completion now? (Y/n)` が表示されます。 `y` と回答し、`a path to an rc file to update` として `/etc/rc.conf` を入力した場合、`ERROR: [Errno 13] Permission denied` が発生することがあります。 この問題を解決するには、`etc/rc.conf` ファイルに対する書き込み権限を現在のユーザーに与える必要があります。
+インストール中に、`Modify profile to update your $PATH and enable shell/tab completion now? (Y/n)` が表示されます。 `y` と回答し、`/etc/rc.conf` として `a path to an rc file to update` を入力した場合、`ERROR: [Errno 13] Permission denied` が発生することがあります。 この問題を解決するには、`etc/rc.conf` ファイルに対する書き込み権限を現在のユーザーに与える必要があります。
 
 これで、Azure にサインインし、FreeBSD VM を作成できます。 FreeBSD 11.0 VM を作成する例を以下に示します。 `--public-ip-address-dns-name` パラメーターを追加して、新しく作成されるパブリック IP に対するグローバルに一意な DNS 名を指定することもできます。 
 

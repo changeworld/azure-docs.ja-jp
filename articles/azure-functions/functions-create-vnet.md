@@ -7,10 +7,10 @@ ms.date: 5/03/2019
 ms.author: alkarche
 ms.reviewer: glenga
 ms.openlocfilehash: 0c70c69f547405eb8ebdcf6dcc6ae597db151e53
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75433213"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>チュートリアル: Functions を Azure 仮想ネットワークに統合する
@@ -75,7 +75,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
     | 設定      | 推奨値  | 説明      |
     | ------------ | ---------------- | ---------------- |
-    | **Name** | myResourceGroup-vnet | 仮想ネットワークに対して生成される既定の名前を使用できます。 |
+    | **名前** | myResourceGroup-vnet | 仮想ネットワークに対して生成される既定の名前を使用できます。 |
     | **アドレス範囲** | 10.10.0.0/16 | 仮想ネットワークの単一のアドレス範囲を使用します。 |
     | **サブネット名** | Tutorial-Net | サブネットの名前です。 |
     | **アドレス範囲** (サブネット) | 10.10.1.0/24   | サブネット サイズは、サブネットに追加できるインターフェイスの数を定義します。 このサブネットは、WordPress サイトで使用されます。  `/24` サブネットは、254 のホスト アドレスを提供します。 |
@@ -138,7 +138,7 @@ VNet 統合を有効にすると、仮想ネットワークで実行している
 
     | 設定  | 推奨値  | 説明      |
     | -------- | ---------------- | ---------------- |
-    | **Name** | Plant (植物) | 名前には任意の値を指定できます。 プロキシを識別するために使用されます。 |
+    | **名前** | Plant (植物) | 名前には任意の値を指定できます。 プロキシを識別するために使用されます。 |
     | **ルート テンプレート** | /plant | VM リソースにマップするルート。 |
     | **バックエンド URL** | http://<YOUR_VM_IP>/wp-content/themes/twentyseventeen/assets/images/header.jpg | `<YOUR_VM_IP>` を、以前に作成した WordPress VM の IP アドレスに置き換えます。 このマッピングは、サイトから 1 つのファイルを返します。 |
 

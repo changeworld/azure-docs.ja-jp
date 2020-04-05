@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Cassandra API と .NET - Azure Cosmos DB'
+title: クイック スタート:Cassandra API と .NET - Azure Cosmos DB
 description: このクイックスタートでは、Azure Cosmos DB の Cassandra API を使用して、Azure Portal と .NET でプロファイル アプリケーションを作成する方法を示します。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
@@ -9,11 +9,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.openlocfilehash: 1afdc0319ae26fcd6c8cb3ada0b4aa8c31fe1fbb
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65861306"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215010"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>クイック スタート:.NET SDK と Azure Cosmos DB を使用して Cassandra アプリを構築する
 
@@ -33,7 +33,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]または、Azure サブスクリプションを使わず、課金も契約もなしで [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。
 
 さらに、次のものが必要です。 
-* Visual Studio 2019 がまだインストールされていない場合は、**無料の** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
+* まだ Visual Studio 2019 をインストールしていない場合は、**無料**の [Visual Studio 2019 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
 * [Git](https://www.git-scm.com/) をインストールして例を複製します。
 
 <a id="create-account"></a>
@@ -130,7 +130,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
     `private const string UserName = "cosmos-db-quickstart";`
 
-3. ポータルに戻り、パスワードの値をコピーします。 14 行目の `<FILLME>` にポータルのパスワードの値を貼り付けます。
+3. ポータルに戻り、[パスワード] の値をコピーします。 14 行目の `<FILLME>` にポータルのパスワードの値を貼り付けます。
 
     Program.cs の 14 行目は次のようになります。 
 
@@ -167,11 +167,11 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してコンテナーを作成し、Web アプリを実行する方法を説明しました。 これで、Cosmos DB アカウントに追加のデータをインポートできます。 
 

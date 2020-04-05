@@ -1,19 +1,18 @@
 ---
 title: Seller Insights の概要
 description: Cloud パートナー ポータルの Seller Insights 機能の概要です。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pabutler
-ms.openlocfilehash: d335525a23ca2e1442ae009dcfbc062bff8cc77d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: b86c2c8b8d0e44adffa0411799b9be01b9f54a9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824761"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285352"
 ---
 <a name="getting-started-with-seller-insights"></a>Seller Insights の概要
 ====================================
@@ -44,7 +43,7 @@ Cloud パートナー ポータルでは、Azure と VS Marketplace の顧客と
 6.  **[Downloads]\(ダウンロード\)** - 新しいダウンロード エクスペリエンスでは、大きいデータ セットのダウンロードを、より簡単に、少ない影響で実行できます。
 
 上記のモジュールのうち限られたものしか表示されない場合があります。
-**[Payout]\(支払い\)** モジュールと **[Customer]\(顧客\)** モジュールは、顧客および会社の機密情報のため、"*所有者*" アクセス許可を持つユーザーだけが表示できます。 これらのモジュールへのアクセスが必要な場合は、組織内の所有者ロールを持つユーザーに、アクセス許可の変更を依頼してください。
+*[Payout]\(支払い\)* モジュールと **[Customer]\(顧客\)** モジュールは、顧客および会社の機密情報のため、"**所有者**" アクセス許可を持つユーザーだけが表示できます。 これらのモジュールへのアクセスが必要な場合は、組織内の所有者ロールを持つユーザーに、アクセス許可の変更を依頼してください。
 
 
 <a name="tips"></a>ヒント:
@@ -58,7 +57,7 @@ Cloud パートナー ポータルでは、Azure と VS Marketplace の顧客と
 <a name="finding-more-help"></a>関連情報
 -----------------
 
-- [Seller Insights 定義](./si-insights-definitions-v4.md) - メトリックとデータの定義を確認できます
+- [Seller Insights の定義](./si-insights-definitions-v4.md) - メトリックとデータの定義を確認できます
 
 - [Seller Insights の概要](./si-getting-started.md) - Seller Insights の機能の紹介。
 

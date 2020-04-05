@@ -10,11 +10,11 @@ ms.service: automation
 ms.subservice: update-management
 manager: carmonm
 ms.openlocfilehash: e60ba71607b99f0ea97e0725ffdd0740f3e9c579
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769831"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235415"
 ---
 # <a name="understand-and-resolve-linux-hybrid-runbook-worker-health-for-update-management"></a>Update Management 用の Linux Hybrid Runbook Worker の正常性を理解して解決する
 
@@ -122,7 +122,7 @@ Hybrid Runbook Worker エージェントが Job Runtime Data Service と通信�
 
 このチェックでは、Log Analytics エージェントで必要なエンドポイントにマシンがアクセスできることが確認されます。
 
-## <a name="troubleshoot-offline"></a>オフライン トラブルシューティング
+## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>オフライン トラブルシューティング
 
 スクリプトをローカルに実行することで、Hybrid Runbook Worker のトラブルシューティング ツールをオフラインで使用できます。 python スクリプト [update_mgmt_health_check.py](https://gallery.technet.microsoft.com/scriptcenter/Troubleshooting-utility-3bcbefe6) は、スクリプト センターにあります。 このスクリプトの出力例を次に示します。
 

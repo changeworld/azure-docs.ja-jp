@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: dapine
-ms.openlocfilehash: 63e6a2a47265eae08a653f3eadaf6bad86dd0635
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 79562049f48ba90a4f9a123919185521a82d7be6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119718"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80365793"
 ---
 # <a name="convert-text-to-speech-using-python"></a>Python を使用してテキストを音声に変換する
 
@@ -99,7 +99,7 @@ def get_token(self):
 次に、音声合成マークアップ言語 (SSML) を使用して要求本文を構成します。 このサンプルでは、その構造を定義し、先ほど作成した `tts` 入力を使用しています。
 
 >[!NOTE]
-> このサンプルでは、`Guy24KRUS` の音声フォントを使用しています。 Microsoft から提供されている音声/言語の全一覧については、[言語のサポート](language-support.md)に関するページを参照してください。
+> このサンプルでは、`Guy24kRUS` の音声フォントを使用しています。 Microsoft から提供されている音声/言語の全一覧については、[言語のサポート](language-support.md)に関するページを参照してください。
 > 認識できる独自の音声を自社ブランド用に作成することを検討している場合は、「[カスタム音声フォントの作成](how-to-customize-voice-font.md)」を参照してください。
 
 最後に、サービスに対して要求を実行します。 要求が成功して状態コード 200 が返された場合、タイムスタンプの付いたファイルに音声応答が書き込まれます。
@@ -122,7 +122,7 @@ def save_audio(self):
     voice = ElementTree.SubElement(xml_body, 'voice')
     voice.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-US')
     voice.set(
-        'name', 'Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)')
+        'name', 'Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)')
     voice.text = self.tts
     body = ElementTree.tostring(xml_body)
 

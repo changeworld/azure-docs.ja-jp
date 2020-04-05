@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
 ms.openlocfilehash: de59edc2e2c702993efd6187a590264d9aac16a7
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74841933"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>管理イメージから VM を作成する
@@ -64,6 +64,6 @@ New-AzVm `
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure PowerShell モジュールを使用して Windows VM を作成および管理する](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

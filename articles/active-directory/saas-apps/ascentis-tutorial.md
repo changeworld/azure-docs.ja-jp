@@ -17,10 +17,10 @@ ms.date: 07/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4fd6c18e3a3af763a2f4404e6b9c808e1bd8a4a5
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71129936"
 ---
 # <a name="tutorial-integrate-ascentis-with-azure-active-directory"></a>チュートリアル:Ascentis の Azure Active Directory との統合

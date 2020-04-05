@@ -7,10 +7,10 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: f468cb294d79c44f92ef95437c0d88639a78b9a1
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77619502"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift に関する FAQ

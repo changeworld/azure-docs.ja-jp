@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 63db1810cbdd2133bc0577530325351997b31f30
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70139261"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory - サンプル
@@ -80,7 +80,7 @@ GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレ
 
 * Visual Studio 2013 または Visual Studio 2015
 * Azure SDK for Visual Studio 2013 または Visual Studio 2015 をダウンロードします。 [Azure ダウンロード ページ](https://azure.microsoft.com/downloads/)に移動し、 **.NET** セクションの **[VS 2013]** または **[VS 2015]** をクリックします。
-* Visual Studio 用の最新の Azure Data Factory プラグイン ([VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) または [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)) をダウンロードします。 Visual Studio 2013 を使用している場合は、次の手順を実行してプラグインを更新することもできます。メニューで **[ツール]**  ->  **[拡張機能と更新プログラム]**  ->  **[オンライン]**  ->  **[Visual Studio ギャラリー]**  ->  **[Microsoft Azure Data Factory Tools for Visual Studio]**  ->  **[更新]** の順にクリックします。
+* Visual Studio 用の最新の Azure Data Factory プラグイン ([VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) または [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)) をダウンロードします。 Visual Studio 2013 をお使いの場合は、メニューで **[ツール]**  ->  **[拡張機能と更新プログラム]**  ->  **[オンライン]**  ->  **[Visual Studio ギャラリー]**  ->  **[Microsoft Azure Data Factory Tools for Visual Studio]**  ->  **[更新]** の順にクリックして、プラグインを更新することもできます。
 
 ### <a name="use-data-factory-templates"></a>Data Factory テンプレートの使用
 1. メニューの **[ファイル]** をクリックし、 **[新規作成]** をポイントして、 **[プロジェクト]** をクリックします。
@@ -90,7 +90,7 @@ GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレ
    2. 右側のウィンドウで **[Data Factory テンプレート]** を選択します。
    3. プロジェクトの **名前** を入力します。
    4. プロジェクトの **場所** を選択します。
-   5. Click **OK**.
+   5. **[OK]** をクリックします。
 
       ![[新しいプロジェクト] ダイアログ ボックス](./media/data-factory-samples/vs-new-project-adf-templates.png)
 3. **[Data Factory Templates]** (Data Factory テンプレート) ダイアログ ボックスで、 **[Use-Case Templates]** (ユースケース テンプレート) セクションからサンプル テンプレートを選択し、 **[次へ]** をクリックします。 この後の手順では、 **顧客プロファイリング** テンプレートの使用方法について説明します。 他のサンプルでも手順は同じです。

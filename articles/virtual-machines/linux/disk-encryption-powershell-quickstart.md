@@ -8,10 +8,10 @@ ms.subservice: security
 ms.topic: quickstart
 ms.date: 05/17/2019
 ms.openlocfilehash: a2cb8919ac0752c42f22e064d6201c7120fbc9b6
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78970550"
 ---
 # <a name="quickstart-create-and-encrypt-a-linux-vm-in-azure-with-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Azure で Linux VM を作成、暗号化する

@@ -1,18 +1,18 @@
 ---
 title: スクリプト アクションを使用して Azure HDInsight クラスターをカスタマイズする
-description: スクリプト アクションを使用して Linux ベースの HDInsight クラスターにカスタム コンポーネントを追加します。 スクリプト アクションは、クラスター ノード上の Bash スクリプトであり、クラスター構成のカスタマイズや、サービスとユーティリティ (Hue、Solr、R など) の追加に使用できます。
+description: スクリプト アクションを使用して HDInsight クラスターにカスタム コンポーネントを追加します。 スクリプト アクションは、クラスター ノード上の Bash スクリプトであり、クラスター構成のカスタマイズや、サービスとユーティリティ (Hue、Solr、R など) の追加に使用できます。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/03/2019
-ms.openlocfilehash: 0930bbcfff41a667f08f5dfc5744c16476ddd8a1
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.date: 02/26/2020
+ms.openlocfilehash: 12e6892930afe8ba9c7bad9b05fd39eeaf8835fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031452"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233631"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>スクリプト アクションを使用して Azure HDInsight クラスターをカスタマイズする
 
@@ -55,35 +55,23 @@ HDInsight クラスターを作成する場合は、Azure サブスクリプシ�
         > [!IMPORTANT]  
         > この Azure ストレージ アカウントでは、ストレージ キーのローテーションを行わないでください。そこにスクリプトが格納されている後続のスクリプト アクションが失敗します。
 
-      * http:// パスを介してアクセス可能なパブリック ファイル共有サービス。 たとえば、Azure Blob、GitHub、OneDrive などです。
+      * http:// パスを介してアクセス可能なパブリック ファイル共有サービス。 たとえば、Azure Blob、GitHub、OneDrive などです。 URI の例については、「[スクリプト アクションのサンプル スクリプト](#example-script-action-scripts)」をご覧ください。
 
-        URI の例については、「[スクリプト アクションのサンプル スクリプト](#example-script-action-scripts)」をご覧ください。
-
-     * ESP を使用するクラスターの場合:
-
-         * wasb://、wasbs://、または http[s]:// の URI がサポートされます。
+     * ESP を使用するクラスターの場合、wasb://、wasbs://、または http[s]:// の URI がサポートされます。
 
 * 特定の種類のノードのみで実行するように制限できます。 たとえば、ヘッド ノードやワーカー ノードなどです。
 
 * 保存することも、アドホックに使うこともできます。
 
-    保存済みスクリプトは、スケーリング操作でクラスターに追加される新しいワーカー ノードをカスタマイズするために使われます。 スケーリング操作が発生したとき、保存済みスクリプトによって、別の種類のノードに変更が適用されることもあります。 たとえば、ヘッド ノードなどです。
+    保存済みスクリプト アクションには一意の名前が必要です。 保存済みスクリプトは、スケーリング操作でクラスターに追加される新しいワーカー ノードをカスタマイズするために使われます。 スケーリング操作が発生したとき、保存済みスクリプトによって、別の種類のノードに変更が適用されることもあります。 たとえば、ヘッド ノードなどです。
 
-  > [!IMPORTANT]  
-  > 保存済みスクリプト アクションには一意の名前が必要です。
-
-    アドホック スクリプトは保存されません。 スクリプトの実行後にクラスターに追加された worker ノードには適用されません。 後でアドホック スクリプトを保存済みスクリプトに昇格したり、保存済みスクリプトをアドホック スクリプトに降格したりできます。
-
-  > [!IMPORTANT]  
-  > クラスターの作成時に使用されるスクリプト アクションは自動的に保存されます。
-  >
-  > 失敗したスクリプトは、保存するように指定した場合でも保存されません。
+    アドホック スクリプトは保存されません。 クラスターの作成時に使用されるスクリプト アクションは自動的に保存されます。 スクリプトの実行後にクラスターに追加された worker ノードには適用されません。 後でアドホック スクリプトを保存済みスクリプトに昇格したり、保存済みスクリプトをアドホック スクリプトに降格したりできます。 失敗したスクリプトは、保存するように指定した場合でも保存されません。
 
 * 実行中にスクリプトによって使用されるパラメーターを受け取ることができます。
 
 * クラスター ノードでルート レベルの権限を使用して実行されます。
 
-* Azure portal、Azure PowerShell、Azure クラシック CLI、または HDInsight .NET SDK で使用できます。
+* Azure portal、Azure PowerShell、Azure CLI、または HDInsight .NET SDK で使用できます。
 
 クラスターには、実行されたすべてのスクリプトの履歴が保持されます。 履歴は、昇格または降格の操作のためスクリプトの ID を検索する必要がある場合に便利です。
 
@@ -104,8 +92,7 @@ HDInsight クラスターを作成する場合は、Azure サブスクリプシ�
 
 スクリプトは HDInsight の構成中に実行されます。 スクリプトは、クラスター内の指定されたすべてのノードで並列して実行されます。 ノードのルート権限で実行されます。
 
-> [!NOTE]  
-> サービスの停止と開始などの操作も行うことができます (Apache Hadoop 関連のサービスも含みます)。 サービスを停止する場合は、スクリプトが完了する前に Ambari サービスや他の Hadoop 関連のサービスが実行していることを確認します。 これらのサービスでは、クラスターの作成時にクラスターが正常に稼動しているかどうかを確認する必要があります。
+サービスの停止と開始などの操作も行うことができます (Apache Hadoop 関連のサービスも含みます)。 サービスを停止する場合は、スクリプトが完了する前に Ambari サービスや他の Hadoop 関連のサービスが実行していることを確認します。 これらのサービスでは、クラスターの作成時にクラスターが正常に稼動しているかどうかを確認する必要があります。
 
 クラスターの作成時に、指定された順序で呼び出される。 複数のスクリプト アクションを指定できます。
 
@@ -116,12 +103,9 @@ HDInsight クラスターを作成する場合は、Azure サブスクリプシ�
 
 ### <a name="script-action-on-a-running-cluster"></a>実行中のクラスターでのスクリプト アクション
 
-既に実行中のクラスターで実行されたスクリプトのエラーによって、クラスターの状態が自動的に失敗に変更されることはありません。 スクリプトが完了した後、クラスターは実行中状態に戻ります。
+既に実行中のクラスターで実行されたスクリプトのエラーによって、クラスターの状態が自動的に失敗に変更されることはありません。 スクリプトが完了した後、クラスターは実行中状態に戻ります。 クラスターが実行中状態であっても、失敗したスクリプトによって何かが破壊されている可能性があります。 たとえば、スクリプトによって、クラスターに必要なファイルが削除されることがあります。
 
-> [!IMPORTANT]  
-> クラスターが実行中状態であっても、失敗したスクリプトによって何かが破壊されている可能性があります。 たとえば、スクリプトによって、クラスターに必要なファイルが削除されることがあります。
->
-> スクリプト アクションは、ルート権限で実行されます。 スクリプトをクラスターに適用する前に、そのスクリプトによる処理を必ず理解しておく必要があります。
+スクリプト アクションは、ルート権限で実行されます。 スクリプトをクラスターに適用する前に、そのスクリプトによる処理を理解しておく必要があります。
 
 クラスターにスクリプトを適用すると、クラスターの状態は**実行中**から**承認済み**に変わります。 その後、**HDInsight 構成**に変化し、最後に、正常なスクリプトは**実行中**に戻ります。 スクリプトの状態はスクリプト アクションの履歴に記録されます。 この情報は、スクリプトが成功したか失敗したかを示します。 たとえば、`Get-AzHDInsightScriptActionHistory` PowerShell コマンドレットでは、スクリプトの状態が示されます。 次のテキストのような情報が返されます。
 
@@ -137,20 +121,20 @@ HDInsight クラスターを作成する場合は、Azure サブスクリプシ�
 
 スクリプト アクションのスクリプトは、次のユーティリティで使用できます。
 
-* Azure ポータル
+* Azure portal
 * Azure PowerShell
-* Azure クラシック CLI
-* An HDInsight .NET SDK
+* Azure CLI
+* HDInsight .NET SDK
 
 HDInsight は、HDInsight クラスターで次のコンポーネントをインストールするためのスクリプトを提供します。
 
-| Name | スクリプト |
+| 名前 | スクリプト |
 | --- | --- |
 | Azure Storage アカウントの追加 |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh` 「[HDInsight にストレージ アカウントを追加する](hdinsight-hadoop-add-storage.md)」をご覧ください。 |
 | Hue のインストール |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh` 「[HDInsight Hadoop クラスターに Hue をインストールして使用する](hdinsight-hadoop-hue-linux.md)」をご覧ください。 |
 | Hive ライブラリの事前読み込み |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh` 「[HDInsight クラスターを作成するときにカスタム Apache Hive ライブラリを追加する](hdinsight-hadoop-add-hive-libraries.md)」をご覧ください。 |
 
-## <a name="use-a-script-action-during-cluster-creation"></a>クラスターの作成時にスクリプト アクションを使用する
+## <a name="script-action-during-cluster-creation"></a>クラスターの作成時のスクリプト アクション
 
 このセクションでは、HDInsight クラスターの作成時にスクリプト アクションを使用するさまざまな方法について説明します。
 
@@ -166,10 +150,10 @@ HDInsight は、HDInsight クラスターで次のコンポーネントをイン
 
     スクリプト形式の要素を次の表に示します。
 
-    | プロパティ | Value |
+    | プロパティ | 値 |
     | --- | --- |
     | スクリプトの選択 | 独自のスクリプトを使用するには、 __[カスタム]__ を選択します。 それ以外の場合は、用意されているスクリプトのいずれかを選択します。 |
-    | Name |スクリプト アクションの名前を指定します。 |
+    | 名前 |スクリプト アクションの名前を指定します。 |
     | Bash スクリプト URI |スクリプトの URI を指定します。 |
     | Head/Worker/ZooKeeper |スクリプトを実行するノードを指定します: **[ヘッド]** 、 **[ワーカー]** 、または **[ZooKeeper]** 。 |
     | パラメーター |スクリプトで必要な場合は、パラメーターを指定します。 |
@@ -210,8 +194,6 @@ HDInsight は、HDInsight クラスターで次のコンポーネントをイン
 
 このセクションでは、[Add-AzHDInsightScriptAction](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightscriptaction) コマンドレットを使用して、クラスターのカスタマイズを行うスクリプトを呼び出します。 始める前に、Azure PowerShell をインストールして構成します。 これらの PowerShell コマンドを使用するには、[Az モジュール](https://docs.microsoft.com/powershell/azure/overview)が必要です。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 次のスクリプトでは、PowerShell を使用してクラスターを作成するときに、スクリプト アクションを適用する方法を示します。
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/use-script-action/use-script-action.ps1?range=5-90)]
@@ -222,17 +204,13 @@ HDInsight は、HDInsight クラスターで次のコンポーネントをイン
 
 HDInsight .NET SDK では、.NET アプリケーションから HDInsight を簡単に操作できるクライアント ライブラリが提供されています。 コード サンプルについては、「[スクリプト操作](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#script-actions)」を参照してください。
 
-## <a name="apply-a-script-action-to-a-running-cluster"></a>実行中のクラスターにスクリプト アクションを適用する
+## <a name="script-action-to-a-running-cluster"></a>実行中のクラスターに対するスクリプト アクション
 
 このセクションでは、実行中のクラスターにスクリプト アクションを適用する方法を説明します。
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-azure-portal"></a>実行中のクラスターに Azure Portal からスクリプト アクションを適用する
 
-[Azure portal](https://portal.azure.com) に移動します。
-
-1. 左側のメニューで、 **[すべてのサービス]**  >   **[分析]**  >  **[HDInsight クラスター]** に移動します。
-
-1. 一覧からクラスターを選択します。これにより、既定のビューが開きます。
+1. [Azure portal](https://portal.azure.com) にサインインし、自分のクラスターを見つけます。
 
 1. 既定のビューの **[設定]** で、 **[スクリプト アクション]** を選択します。
 
@@ -246,10 +224,10 @@ HDInsight .NET SDK では、.NET アプリケーションから HDInsight を簡
 
     スクリプト形式の要素を次の表に示します。
 
-    | プロパティ | Value |
+    | プロパティ | 値 |
     | --- | --- |
     | スクリプトの選択 | 独自のスクリプトを使用するには、 __[カスタム]__ を選択します。 それ以外の場合、提供されているスクリプトを選択します。 |
-    | Name |スクリプト アクションの名前を指定します。 |
+    | 名前 |スクリプト アクションの名前を指定します。 |
     | Bash スクリプト URI |スクリプトの URI を指定します。 |
     | ヘッド/ワーカー/Zookeeper |スクリプトを実行するノードを指定します: **[ヘッド]** 、 **[ワーカー]** 、または **[ZooKeeper]** 。 |
     | パラメーター |スクリプトで必要な場合は、パラメーターを指定します。 |
@@ -260,9 +238,7 @@ HDInsight .NET SDK では、.NET アプリケーションから HDInsight を簡
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-azure-powershell"></a>実行中のクラスターに Azure PowerShell からスクリプト アクションを適用する
 
-これらの PowerShell コマンドを使用するには、[Az モジュール](https://docs.microsoft.com/powershell/azure/overview)が必要です。
-
-次の例では、実行中のクラスターにスクリプト アクションを適用する方法を示します。
+これらの PowerShell コマンドを使用するには、[Az モジュール](https://docs.microsoft.com/powershell/azure/overview)が必要です。 次の例では、実行中のクラスターにスクリプト アクションを適用する方法を示します。
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/use-script-action/use-script-action.ps1?range=105-117)]
 
@@ -277,43 +253,23 @@ HDInsight .NET SDK では、.NET アプリケーションから HDInsight を簡
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-azure-cli"></a>実行中のクラスターに Azure CLI からスクリプト アクションを適用する
 
-始める前に、Azure CLI をインストールして構成します。 詳しくは、「[Azure クラシック CLI のインストール](https://docs.microsoft.com/cli/azure/install-classic-cli?view=azure-cli-latest)」をご覧ください。
+始める前に、Azure CLI をインストールして構成します。 最新バージョンを使用していることを確認します。 詳細については、「 [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 
-[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
+1. Azure サブスクリプションに対して認証を行います。
 
-1. Azure Resource Manager モードに切り替えます。
-
-    ```bash
-    azure config mode arm
+    ```azurecli
+    az login
     ```
 
-2. Azure サブスクリプションに対して認証を行います。
+1. 実行中のクラスターにスクリプト アクションを適用します。
 
-    ```bash
-    azure login
+    ```azurecli
+    az hdinsight script-action execute --cluster-name CLUSTERNAME --name SCRIPTNAME --resource-group RESOURCEGROUP --roles ROLES
     ```
 
-3. 実行中のクラスターにスクリプト アクションを適用します。
+    有効なロールは、`headnode`、`workernode`、`zookeepernode`、`edgenode` です。 スクリプトを複数のノードの種類に適用する必要がある場合は、ロールをスペースで区切ります。 たとえば、「 `--roles headnode workernode` 」のように入力します。
 
-    ```bash
-    azure hdinsight script-action create <clustername> -g <resourcegroupname> -n <scriptname> -u <scriptURI> -t <nodetypes>
-    ```
-
-    このコマンドのパラメーターを省略した場合は、それを要求するメッセージが表示されます。 `-u` で指定したスクリプトがパラメーターを受け取る場合は、`-p` パラメーターを使用してそれらを指定できます。
-
-    有効なノード タイプは、`headnode`、`workernode`、および `zookeeper` です。 スクリプトを複数のノード タイプに適用する必要がある場合、タイプをセミコロン `;` で区切って指定します。 たとえば、「 `-n headnode;workernode` 」のように入力します。
-
-    スクリプトを保存するには、`--persistOnSuccess` を追加します。 また、`azure hdinsight script-action persisted set` を使用して、スクリプトを後日保存することもできます。
-
-    ジョブが終了した後、次のようなテキストが出力されます。
-
-        info:    Executing command hdinsight script-action create
-        + Executing Script Action on HDInsight cluster
-        data:    Operation Info
-        data:    ---------------
-        data:    Operation status:
-        data:    Operation ID:  b707b10e-e633-45c0-baa9-8aed3d348c13
-        info:    hdinsight script-action create command OK
+    スクリプトを保存するには、`--persist-on-success` を追加します。 また、`az hdinsight script-action promote` を使用して、スクリプトを後日保存することもできます。
 
 ### <a name="apply-a-script-action-to-a-running-cluster-by-using-rest-api"></a>REST API を使用して実行中のクラスターにスクリプト アクションを適用する
 
@@ -327,11 +283,7 @@ HDInsight .NET SDK では、.NET アプリケーションから HDInsight を簡
 
 ### <a name="the-azure-portal"></a>Azure ポータル
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
-
-1. 左側のメニューで、 **[すべてのサービス]**  >  **[分析]**  >  **[HDInsight クラスター]** に移動します。
-
-1. 一覧からクラスターを選択します。これにより、既定のビューが開きます。
+1. [Azure portal](https://portal.azure.com) にサインインし、自分のクラスターを見つけます。
 
 1. 既定のビューの **[設定]** で、 **[スクリプト アクション]** を選択します。
 
@@ -349,42 +301,36 @@ HDInsight .NET SDK では、.NET アプリケーションから HDInsight を簡
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-| コマンドレット | Function |
+| コマンドレット | 機能 |
 | --- | --- |
-| `Get-AzHDInsightPersistedScriptAction` |保存済みスクリプト アクションの情報を取得します。 |
+| `Get-AzHDInsightPersistedScriptAction` |保存済みスクリプト アクションの情報を取得します。 このコマンドレットは、スクリプトによって実行された操作を元に戻すのではなく、永続化されたフラグだけを削除します。|
 | `Get-AzHDInsightScriptActionHistory` |クラスターに適用されたスクリプト アクションの履歴、または特定のスクリプトの詳細を取得します。 |
 | `Set-AzHDInsightPersistedScriptAction` |アドホック スクリプト アクションを保存済みスクリプト アクションに昇格します。 |
 | `Remove-AzHDInsightPersistedScriptAction` |保存済みスクリプト アクションをアドホック アクションに降格します。 |
-
-> [!IMPORTANT]  
-> `Remove-AzHDInsightPersistedScriptAction` では、スクリプトによって実行されたアクションは元に戻りません。 このコマンドレットは、保存済みフラグが削除されるだけです。
 
 次のスクリプトの例では、昇格のコマンドレットを使用してから、スクリプトを降格しています。
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/use-script-action/use-script-action.ps1?range=123-140)]
 
-### <a name="the-azure-classic-cli"></a>Azure クラシック CLI
+### <a name="azure-cli"></a>Azure CLI
 
-| コマンドレット | Function |
+| command | 説明 |
 | --- | --- |
-| `azure hdinsight script-action persisted list <clustername>` |保存済みスクリプト アクションの一覧を取得します。 |
-| `azure hdinsight script-action persisted show <clustername> <scriptname>` |特定の保存済みスクリプト アクションに関する情報を取得します。 |
-| `azure hdinsight script-action history list <clustername>` |クラスターに適用されたスクリプト アクションの履歴を取得します。 |
-| `azure hdinsight script-action history show <clustername> <scriptname>` |特定のスクリプト アクションに関する情報を取得します。 |
-| `azure hdinsight script action persisted set <clustername> <scriptexecutionid>` |アドホック スクリプト アクションを保存済みスクリプト アクションに昇格します。 |
-| `azure hdinsight script-action persisted delete <clustername> <scriptname>` |保存済みスクリプト アクションをアドホック アクションに降格します。 |
+| [az hdinsight script-action delete](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-delete) |クラスターの指定した永続化されたスクリプト アクションを削除します。 このコマンドは、スクリプトによって実行された操作を元に戻すのではなく、永続化されたフラグだけを削除します。|
+|[az hdinsight script-action execute](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-execute)|指定した HDInsight クラスター上でスクリプト アクションを実行します。|
+| [az hdinsight script-action list](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-list) |指定したクラスターに対する永続化されたスクリプト アクションを一覧表示します。 |
+|[az hdinsight script-action list-execution-history](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-list-execution-history)|指定したクラスターに対するスクリプトの実行履歴をすべて一覧表示します。|
+|[az hdinsight script-action promote](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-promote)|指定したアドホック スクリプトの実行を、永続化されたスクリプトに昇格します。|
+|[az hdinsight script-action show-execution-details](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-show-execution-details)|指定されたスクリプト実行 ID のスクリプト実行の詳細を取得します。|
 
-> [!IMPORTANT]  
-> `azure hdinsight script-action persisted delete` では、スクリプトによって実行されたアクションは元に戻りません。 このコマンドレットは、保存済みフラグが削除されるだけです。
-
-### <a name="the-hdinsight-net-sdk"></a>HDInsight .NET SDK
+### <a name="hdinsight-net-sdk"></a>HDInsight .NET SDK
 
 .NET SDK を使用してクラスターからスクリプトの履歴を取得し、スクリプトを昇格または降格する例については、「[Apply a Script Action against a running Linux-based HDInsight cluster (実行中の Linux ベースの HDInsight クラスターに対してスクリプト アクションを適用する)](https://github.com/Azure-Samples/hdinsight-dotnet-script-action)」をご覧ください。
 
 > [!NOTE]  
 > この例では、.NET SDK を使用して HDInsight アプリケーションをインストールする方法も示します。
 
-## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>HDInsight クラスターで使用するオープン ソース ソフトウェアのサポート
+## <a name="support-for-open-source-software"></a>オープンソース ソフトウェアのサポート
 
 Microsoft Azure HDInsight サービスは Apache Hadoop を中心に形成されたオープン ソース テクノロジのエコシステムを利用します。 Microsoft Azure は、オープン ソース テクノロジの一般的なレベルのサポートを提供します。 詳しくは、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」の**サポート範囲**に関するセクションを参照してください。 HDInsight サービスでは、組み込みのコンポーネントに対してさらに高いレベルのサポートを提供しています。
 
@@ -421,15 +367,13 @@ Ambari の Web UI を使用すると、スクリプト アクションによっ�
 
 ### <a name="the-apache-ambari-web-ui"></a>Apache Ambari Web UI
 
-1. ブラウザーで `https://CLUSTERNAME.azurehdinsight.net` に移動します。 **CLUSTERNAME** を、使用する HDInsight クラスターの名前に置き換えます。
+1. Web ブラウザーから、`https://CLUSTERNAME.azurehdinsight.net` に移動します。ここで、`CLUSTERNAME` はクラスターの名前です。
 
-    プロンプトが表示されたら、クラスターの管理者アカウント名 **admin** とパスワードを入力します。 Web フォームで管理者の資格情報の再入力が必要な場合があります。
-
-2. ページ上部のバーから **[OPS]** エントリを選択します。 これにより、Ambari を使用してクラスターで実行される、現在と過去の操作の一覧が表示されます。
+1. ページ上部のバーから **[OPS]** エントリを選択します。 これにより、Ambari を使用してクラスターで実行される、現在と過去の操作の一覧が表示されます。
 
     ![Ambari Web UI バーで OPS を選択](./media/hdinsight-hadoop-customize-cluster-linux/hdi-apache-ambari-nav.png)
 
-3. **[Operations]** 列で **run\_customscriptaction** エントリを探します。 これらのエントリは、スクリプト アクションの実行時に作成されます。
+1. **[Operations]** 列で **run\_customscriptaction** エントリを探します。 これらのエントリは、スクリプト アクションの実行時に作成されます。
 
     ![Apache Ambari スクリプト アクションの操作](./media/hdinsight-hadoop-customize-cluster-linux/ambari-script-action.png)
 

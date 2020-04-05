@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/16/2019
 ms.openlocfilehash: 1cdee99378feb381d75edef0d150089132d1bbc2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75435690"
 ---
 # <a name="submit-apache-hadoop-jobs-in-hdinsight"></a>HDInsight で Apache Hadoop ジョブを送信する

@@ -10,11 +10,11 @@ ms.date: 04/10/2019
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: bbe38a9dc7be749b8e138ff3ca9ec4f06255b389
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022768"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226015"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>仮想ネットワーク内に Azure Batch プールを作成する
 

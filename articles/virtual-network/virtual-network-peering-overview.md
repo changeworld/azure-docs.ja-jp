@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: anavin
-ms.openlocfilehash: e47c7d7c4e982604814b227544a98bb301a20105
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 5fb54e812e72b9393ffdf632085d0f32ab8b1988
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980100"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235799"
 ---
 # <a name="virtual-network-peering"></a>仮想ネットワーク ピアリング
 
@@ -76,7 +76,7 @@ Azure では、次の種類のピアリングがサポートされています�
 
 1 つの Azure ExpressRoute 接続を共有する仮想ネットワークをピアリングする場合、間のトラフィックは、ピアリング関係を通過します。 トラフィックは、Azure のバックボーン ネットワークを使用します。 それでも、各仮想ネットワークのローカル ゲートウェイを使用してオンプレミス回線に接続できます。 また、共有ゲートウェイを使用して、オンプレミス接続用のトランジットを構成することもできます。
 
-## <a name="troubleshoot"></a>[トラブルシューティング]
+## <a name="troubleshoot"></a>トラブルシューティング
 
 仮想ネットワークがピアリングされていることを確認するには、有効なルートを確認します。 仮想ネットワーク内の任意のサブネット内のネットワーク インターフェイスのルートを確認します。 仮想ネットワークのピアリングが存在する場合、仮想ネットワーク内のすべてのサブネットは、ピアリングされている各仮想ネットワークのアドレス空間ごとに、*VNet ピアリング*という種類の次ホップとのルートがあります。 詳しくは、「[仮想マシンのルーティングに関する問題を診断する](diagnose-network-routing-problem.md)」をご覧ください。
 
@@ -84,7 +84,7 @@ Azure Network Watcher を使って、ピアリングされた仮想ネットワ�
 
 また、「[仮想ネットワーク ピアリングの問題をトラブルシューティングする](virtual-network-troubleshoot-peering-issues.md)」もお試しください。
 
-## ピアリングした仮想ネットワークの制約<a name="requirements-and-constraints"></a>
+## <a name="constraints-for-peered-virtual-networks"></a>ピアリングした仮想ネットワークの制約<a name="requirements-and-constraints"></a>
 
 仮想ネットワークがグローバルにピアリングされている場合のみ、次の制約が適用されます。
 
@@ -101,10 +101,10 @@ Azure Network Watcher を使って、ピアリングされた仮想ネットワ�
 
 仮想ネットワーク ピアリング接続を利用するイングレスとエグレス トラフィックには少額の料金が発生します。 詳細については、「[Virtual Network の価格](https://azure.microsoft.com/pricing/details/virtual-network)」を参照してください。
 
-ゲートウェイ転送は、1 つの仮想ネットワークがピアリングされた仮想ネットワーク内の VPN/ExpressRoute ゲートウェイを活用できるようにするピアリング プロパティです。 ゲートウェイの転送は、クロス プレミスとネットワーク間接続の両方で機能します。 ピアリングされた仮想ネットワークでのゲートウェイ (イングレスまたはエグレス) へのトラフィックには、仮想ネットワークのピアリングの料金が発生します。 VPN gateway の料金については、「[VPN Gateway の価格](https://azure.microsoft.com/pricing/details/vpn-gateway/)」、ExpressRoute ゲートウェイの料金については、ExpressRoute ゲートウェイの料金についてのページを参照してください。
+ゲートウェイ転送は、1 つの仮想ネットワークがピアリングされた仮想ネットワーク内の VPN/ExpressRoute ゲートウェイを活用できるようにするピアリング プロパティです。 ゲートウェイの転送は、クロス プレミスとネットワーク間接続の両方で機能します。 ピアリングされた仮想ネットワークでのゲートウェイ (イングレスまたはエグレス) へのトラフィックには、スポーク VNet (または非ゲートウェイ VNet) で仮想ネットワークのピアリングの料金が発生します。 VPN gateway の料金については、「[VPN Gateway の価格](https://azure.microsoft.com/pricing/details/vpn-gateway/)」、ExpressRoute ゲートウェイの料金については、ExpressRoute ゲートウェイの料金についてのページを参照してください。
 
 >[!NOTE]
-> このドキュメントの以前のバージョンでは、仮想ネットワークのピアリングの料金はゲートウェイ転送には適用されないことが規定されていました。 価格のページごとの価格が正確に反映されるようになりました。
+> このドキュメントの以前のバージョンでは、仮想ネットワークのピアリングの料金は、スポーク VNet (または非ゲートウェイ VNet) のゲートウェイ転送には適用されないことが規定されていました。 価格のページごとの価格が正確に反映されるようになりました。
 
 ## <a name="next-steps"></a>次のステップ
 

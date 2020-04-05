@@ -17,10 +17,10 @@ ms.date: 08/26/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6dfe4a81a86ff6eb36f3b5eb164b3183193c86d
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70163421"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-getthere"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と GetThere の統合
@@ -29,7 +29,7 @@ ms.locfileid: "70163421"
 
 * GetThere にアクセスできる Azure AD ユーザーを制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して GetThere に自動的にサインインできるようにすることができます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

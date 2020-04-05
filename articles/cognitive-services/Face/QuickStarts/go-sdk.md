@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.openlocfilehash: 2db40150167a8f16242b2feb15b77820fa1970a9
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76961229"
 ---
 # <a name="quickstart-face-client-library-for-go"></a>クイック スタート:Go 用 Face クライアント ライブラリ
@@ -63,7 +63,7 @@ Azure リソースを作成して、Face サービスの使用を開始します
 
 ご利用のオペレーティング システムの手順に従ってください。
 <!-- replace the below endpoint and key examples -->
-#### <a name="windowstabwindows"></a>[Windows](#tab/windows)
+#### <a name="windows"></a>[Windows](#tab/windows)
 
 ```console
 setx FACE_SUBSCRIPTION_KEY <replace-with-your-product-name-key>
@@ -72,7 +72,7 @@ setx FACE_ENDPOINT <replace-with-your-product-name-endpoint>
 
 環境変数を追加したら、コンソール ウィンドウを再起動します。
 
-#### <a name="linuxtablinux"></a>[Linux](#tab/linux)
+#### <a name="linux"></a>[Linux](#tab/linux)
 
 ```bash
 export FACE_SUBSCRIPTION_KEY=<replace-with-your-product-name-key>
@@ -81,7 +81,7 @@ export FACE_ENDPOINT=<replace-with-your-product-name-endpoint>
 
 環境変数を追加した後、変更を有効にするには、コンソール ウィンドウから `source ~/.bashrc` を実行します。
 
-#### <a name="macostabunix"></a>[macOS](#tab/unix)
+#### <a name="macos"></a>[macOS](#tab/unix)
 
 次のように `.bash_profile` を編集し、環境変数を追加します。
 
@@ -144,7 +144,7 @@ touch sample-app.go
 
 以下のクラスとインターフェイスにより、Face サービス Go SDK の主要な機能の一部が処理されます。
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |[BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#BaseClient) | このクラスは、Face サービスを使用するための承認を表し、すべての Face 機能に必要です。 サブスクリプション情報を使用してこれをインスタンス化し、他のクラスのインスタンスを生成するために使用します。 |
 |[Client](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client)|このクラスは、人間の顔に対して実行できる基本的な検出と認識のタスクを処理します。 |

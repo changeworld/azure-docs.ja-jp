@@ -9,10 +9,10 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 06/26/2019
 ms.openlocfilehash: 6e46d7403e251bccd69467cfcdaa1d5073b4e454
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73494558"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で Apache Spark 機械学習アプリケーションを作成する
@@ -186,13 +186,13 @@ ms.locfileid: "73494558"
 
 ## <a name="use-anaconda-scikit-learn-library-for-spark-machine-learning"></a>Spark Machine Learning での Anaconda scikit-learn ライブラリの使用
 
-HDInsight の Apache Spark クラスターには、Anaconda ライブラリが含まれます。 これには、機械学習用の **scikit-learn** ライブラリも含まれます。 ライブラリには、Jupyter Notebook からサンプル アプリケーションを直接作成するために使用できるさまざまなデータ セットも含まれます。 scikit-learn ライブラリの使用例については、「[ https://scikit-learn.org/stable/auto_examples/index.html](https://scikit-learn.org/stable/auto_examples/index.html)」を参照してください。
+HDInsight の Apache Spark クラスターには、Anaconda ライブラリが含まれます。 これには、機械学習用の **scikit-learn** ライブラリも含まれます。 ライブラリには、Jupyter Notebook からサンプル アプリケーションを直接作成するために使用できるさまざまなデータ セットも含まれます。 scikit-learn ライブラリの使用例については、「[https://scikit-learn.org/stable/auto_examples/index.html](https://scikit-learn.org/stable/auto_examples/index.html)」を参照してください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このアプリケーションを引き続き使用しない場合は、次の手順で作成したクラスターを削除します。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. 上部の**検索**ボックスに「**HDInsight**」と入力します。
 
@@ -204,7 +204,7 @@ HDInsight の Apache Spark クラスターには、Anaconda ライブラリが�
 
 ![Azure portal で HDInsight クラスターを削除する](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "HDInsight クラスターの削除")
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Jupyter Notebook を使用して、Azure HDInsight 用の Apache Spark 機械学習アプリケーションを作成する方法について説明しました。 次のチュートリアルに進み、Spark ジョブに IntelliJ IDEA を使用する方法を学習してください。
 

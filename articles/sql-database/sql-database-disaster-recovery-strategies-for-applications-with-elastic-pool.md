@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 01/25/2019
 ms.openlocfilehash: 4eeaa187142a6d0d97b12f685ebc455f3844606f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73825872"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>SQL Database エラスティック プールを使用したアプリケーションの障害復旧戦略
@@ -79,7 +79,7 @@ ms.locfileid: "73825872"
 
 プライマリ リージョンで障害が発生した場合にアプリケーションをオンラインにするための復旧手順を、次の図に示します。
 
-![Figure 5](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-5.png)
+![図 5](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-5.png)
 
 * すぐに管理データベースを DR リージョンにフェールオーバーします (3)。
 * アプリケーションの接続文字列を、DR リージョンを示す文字列に変更します。 これで、新しいアカウントとテナント データベースがすべて DR リージョンに作成されるようになります。 既存の試用版の顧客は、一時的にデータを使用できなくなります。
@@ -123,7 +123,7 @@ DR リージョンでアプリケーションを復元した *後* で、Azure �
 
 次の図は、リージョン A で障害が発生した場合に実行する復旧手順を示しています。
 
-![Figure 5](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-8.png)
+![図 5](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-8.png)
 
 * すぐに管理データベースをリージョン B にフェールオーバーします (3)。
 * アプリケーションの接続文字列を、リージョン B 内の管理データベースを示す文字列に変更します。管理データベースに変更を施し、新しいアカウントとテナント データベースがリージョン B に作成されるようにすると共に、既存のテナント データベースもそこで見つかるようにします。 既存の試用版の顧客は、一時的にデータを使用できなくなります。
@@ -166,7 +166,7 @@ DR リージョンでアプリケーションを復元した *後* で、Azure �
 
 この記事では、SaaS ISV マルチテナント アプリケーションで使用されるデータベース層のディザスター リカバリー戦略に焦点を当てています。 戦略は、ビジネス モデル、顧客に提供する SLA、予算の制約など、アプリケーションのニーズに基づいて選択する必要があります。各戦略のメリットとトレードオフの概要が説明されているため、それを参考にして判断できます。 また、アプリケーションによっては、他の Azure コンポーネントが含まれることがあります。 したがって、ビジネス継続性ガイダンスを確認し、こうしたコンポーネントとデータベース層の復旧を調整する必要があります。 Azure でデータベース アプリケーションの復旧を管理する方法の詳細については、[ディザスター リカバリーのためのクラウド ソリューションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)に関するページをご覧ください。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure SQL Database 自動バックアップの詳細については、「 [SQL Database 自動バックアップ](sql-database-automated-backups.md)」を参照してください
 * ビジネス継続性の概要およびシナリオについては、 [ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。

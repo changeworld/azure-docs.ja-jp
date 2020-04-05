@@ -1,19 +1,18 @@
 ---
 title: コンサルティング オファーのネットショップ詳細を入力する | Azure Marketplace
 description: Cloud パートナー ポータルで Azure または Dynamics 365 コンサルティング サービス オファーに含まれるネットショップの詳細を定義します。
-services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: pabutler
-ms.openlocfilehash: 557cfeb66301650e932e5ce271080e9fc8a256d6
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.author: dsindona
+ms.openlocfilehash: 7e1989ee5fcc428bc7d29c17432ded8dab24ecee
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191164"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281699"
 ---
 # <a name="storefront-details-tab"></a>[ネットショップの詳細] タブ
 

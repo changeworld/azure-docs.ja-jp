@@ -9,10 +9,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
 ms.openlocfilehash: 6bebe8ac6b9869466938600d6267fd0062c84477
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75977295"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>ドア モニター -- Azure Functions と SendGrid を使用して、ドアが開いたときに電子メールを送信する           

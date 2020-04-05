@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: 8a2e3296643b13a54c4fceb11f044a2808cf2877
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671865"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>テレメトリ コンテキスト:Application Insights データ モデル

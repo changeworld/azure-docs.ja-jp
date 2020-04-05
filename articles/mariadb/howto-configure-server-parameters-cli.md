@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.openlocfilehash: 707f4eca440c0e8461420ff0bbc5e67f8e5ad69d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 3/18/2020
+ms.openlocfilehash: 56975c52b22b90840fb1534187e99f6efa19469e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888514"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79527675"
 ---
 # <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Azure CLI を使用したサーバー構成パラメーターのカスタマイズ
 Azure コマンド ライン ユーティリティ である Azure CLI を使用して、Azure Database for MariaDB サーバーの構成パラメーターを一覧表示、表示、および更新できます。 エンジン構成のサブセットは、サーバー レベルで公開され、変更が可能です。
@@ -35,7 +35,7 @@ az mariadb server configuration list --resource-group myresourcegroup --server m
 ## <a name="show-server-configuration-parameter-details"></a>サーバー構成パラメーター詳細を表示する
 サーバーの特定の構成パラメーターに関する詳細を表示するには、[az mariadb server configuration show](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-show) コマンドを実行します。
 
-この例は、リソース グループ **myresourcegroup** にあるサーバー **mydemoserver.mariadb.database.azure.com** の **slow\_query\_log** サーバー構成パラメーターの詳細を示します。
+この例は、リソース グループ **myresourcegroup\_ にあるサーバー \_mydemoserver.mariadb.database.azure.com** の **slow**query**log** サーバー構成パラメーターの詳細を示します。
 ```azurecli-interactive
 az mariadb server configuration show --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
@@ -43,7 +43,7 @@ az mariadb server configuration show --name slow_query_log --resource-group myre
 ## <a name="modify-a-server-configuration-parameter-value"></a>サーバー構成パラメーターの値を変更する
 特定のサーバー構成パラメーターの値を変更することもでき、MariaDB サーバー エンジンの基盤となる構成値が更新されます。 構成を更新するには、[az mariadb server configuration set](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) コマンドを使用します。 
 
-リソース グループ **myresourcegroup** にあるサーバー **mydemoserver.mariadb.database.azure.com** の **slow\_query\_log** サーバー構成パラメーターを更新するには、次のコマンドを実行します。
+リソース グループ **myresourcegroup\_ にあるサーバー \_mydemoserver.mariadb.database.azure.com** の **slow**query**log** サーバー構成パラメーターを更新するには、次のコマンドを実行します。
 ```azurecli-interactive
 az mariadb server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver --value ON
 ```
@@ -81,7 +81,7 @@ SELECT name FROM mysql.time_zone_name;
 
 グローバル レベルのタイム ゾーンは、[az mariadb server configuration set](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) コマンドを利用して設定できます。
 
-次のコマンドでは、リソース グループ **myresourcegroup** のサーバー **mydemoserver.mariadb.database.azure.com** のサーバー構成パラメーター **time\_zone** が **US/Pacific** に更新されます。
+次のコマンドでは、リソース グループ **myresourcegroup\_ のサーバー** mydemoserver.mariadb.database.azure.com**のサーバー構成パラメーター**time**zone** が **US/Pacific** に更新されます。
 
 ```azurecli-interactive
 az mariadb server configuration set --name time_zone --resource-group myresourcegroup --server mydemoserver --value "US/Pacific"
@@ -97,6 +97,6 @@ SET time_zone = 'US/Pacific';
 
 [日付と時刻関数](https://mariadb.com/kb/en/library/date-time-functions/)については MariaDB ドキュメントを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure ポータルでサーバー パラメーター](howto-server-parameters.md)を構成する方法

@@ -5,13 +5,13 @@ ms.assetid: 14feb4f3-5095-496e-9a40-690e1414bd73
 ms.devlang: php
 ms.topic: tutorial
 ms.date: 11/25/2019
-ms.custom: seodec18
-ms.openlocfilehash: 9375a59fedcd134a64cfa3bf8b92e33d326ee925
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 2dcf1bef27b5d9e1a740f136361b756f59293b00
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500051"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80046751"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure"></a>チュートリアル:Azure で PHP と MySQL アプリを構築する
 
@@ -19,7 +19,7 @@ ms.locfileid: "77500051"
 > この記事では、Windows 上の App Service にアプリをデプロイします。 _Linux_ 上の App Service にデプロイするには、「[Azure App Service on Linux で PHP と MySQL アプリを構築する](./containers/tutorial-php-mysql-app.md)」を参照してください。
 >
 
-[Azure App Service](overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このチュートリアルでは、Azure で PHP アプリを作成し、MySQL データベースに接続する方法について説明します。 このチュートリアルを終了すると、Azure App Service で実行される [Laravel](https://laravel.com/) アプリが完成します。
+[Azure App Service](overview.md) は、非常にスケーラブルな、自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、Azure で PHP アプリを作成し、MySQL データベースに接続する方法について説明します。 このチュートリアルを終了すると、Azure App Service で実行される [Laravel](https://laravel.com/) アプリが完成します。
 
 ![Azure App Service で実行される PHP アプリ](./media/app-service-web-tutorial-php-mysql/complete-checkbox-published.png)
 
@@ -183,7 +183,7 @@ MySQL サーバーが作成されると、Azure CLI によって、次の例の�
     "tier": "GeneralPurpose"
   },
   "sslEnforcement": "Enabled",
-  ...   +  
+  ...    +  
   -  < Output has been truncated for readability >
 }
 ```
@@ -211,7 +211,8 @@ az mysql server firewall-rule create --name AllowLocalClient --server <mysql_ser
 ローカルのターミナル ウィンドウで、Azure の MySQL サーバーに接続します。 _&lt;mysql_server_name>_ に指定した値を使用します。 パスワードの入力を求められたら、Azure でデータベースの作成時に指定したパスワードを使用します。
 
 ```bash
-mysql -u <admin_user>@<mysql_server_name> -h <mysql_server_name>.mysql.database.azure.com -P 3306 -p
+mysql -u <admin_user>@<mysql_server_name> -h <mysql_server_name>.mysql.database.azure.com -P 3306 -p<PASSWORD> --ssl-mode=REQUIRED --ssl-ca=<PATH_TO_PEM>
+
 ```
 
 ### <a name="create-a-production-database"></a>運用データベースを作成する

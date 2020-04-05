@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/11/2018
 ms.openlocfilehash: a908b44f596e6ca1ecd2960110a35661448c2e1a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75982649"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Azure portal を使用して Azure SQL データベースから Azure Blob Storage にデータを増分読み込みする
@@ -270,7 +270,7 @@ END
     1. **[ストアド プロシージャ名]** に **[usp_write_watermark]** を選択します。
     2. ストアド プロシージャのパラメーターの値を指定するには、 **[Import parameter]\(インポート パラメーター\)** をクリックし、各パラメーターに次の値を入力します。
 
-        | Name | 種類 | 値 |
+        | 名前 | Type | Value |
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | String | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |

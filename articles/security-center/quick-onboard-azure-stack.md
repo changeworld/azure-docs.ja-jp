@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/02/2019
 ms.author: fiseraci
 ms.openlocfilehash: c186dcb2d7d7d423f5c001bdb4d3f3503beebd9c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73686529"
 ---
 # <a name="quickstart-onboard-your-azure-stack-virtual-machines-to-security-center"></a>クイック スタート:Azure Stack 仮想マシンを Security Center にオンボードする
@@ -39,9 +39,9 @@ Azure サブスクリプションをオンボードした後、Azure Stack Marke
    ![Security Center の概要][2]
 
 3. Security Center メイン メニューの **[使用の開始]** を選択します。
-4. **[Get started] (使用の開始)** タブを選択します。
+4. **[作業の開始]** タブを選択します。
 
-   ![作業開始][3]
+   ![はじめに][3]
 
 5. **[Azure 以外のコンピューターの新規追加]** で **[構成]** をクリックします。 Log Analytics ワークスペースの一覧が表示されます。 該当する場合、一覧には、自動プロビジョニングが有効になっているときに Security Center によって作成された既定のワークスペースが含まれます。 このワークスペースを選択するか、Azure Stack VM によるセキュリティ データのレポート先となる別のワークスペースを選択します。
 
@@ -86,7 +86,7 @@ Windows 用エージェントのインストールと構成の詳細について
 
 ![アイコン 2](./media/quick-onboard-windows-computer/security-center-monitoring-icon2.png) Azure VM (Azure Stack VM は、このグループに表示されます)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 不要になったら、拡張機能は Azure Stack ポータルを使用して仮想マシンから削除できます。
 
 拡張機能を削除するには:
@@ -96,7 +96,7 @@ Windows 用エージェントのインストールと構成の詳細について
 3. **[拡張機能]** を選択し、拡張機能 **Microsoft.EnterpriseCloud.Monitoring** を選択します。
 4. **[アンインストール]** をクリックし、選択を確認するために **[はい]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このクイック スタートでは、Azure Stack で動作している仮想マシンに Azure Monitor, Update and Configuration Management 拡張機能をプロビジョニングしました。 Security Center の使用方法について学習するには、セキュリティ ポリシーの構成とリソースのセキュリティの評価に関するチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]

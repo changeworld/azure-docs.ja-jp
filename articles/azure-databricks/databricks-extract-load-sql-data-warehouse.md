@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: 8c7c9c2e3a1195422db30ba913b1cea3a1a360e4
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 8819b79a105b7a654a34e47c5ba9b3d351a1d926
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78301694"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239411"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>チュートリアル:Azure Databricks を使用してデータの抽出、変換、読み込みを行う
 
@@ -47,7 +47,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 このチュートリアルを始める前に、以下のタスクを完了します。
 
-* Azure SQL データ ウェアハウスを作成し、サーバーレベルのファイアウォール規則を作成して、サーバー管理者としてサーバーに接続します。「[クイック スタート:Azure Portal で Azure SQL データ ウェアハウスを作成し、クエリを実行する](../sql-data-warehouse/create-data-warehouse-portal.md)」を参照してください。
+* Azure SQL データ ウェアハウスを作成し、サーバーレベルのファイアウォール規則を作成して、サーバー管理者としてサーバーに接続します。「[クイック スタート:Azure Portal で Azure SQL データ ウェアハウスを作成し、クエリを実行する](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)」を参照してください。
 
 * Azure SQL データ ウェアハウスに使用するマスター キーを作成します。 「[データベース マスター キーの作成](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key)」を参照してください。
 
@@ -155,13 +155,13 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
    ```scala
    val appID = "<appID>"
-   val password = "<password>"
+   val secret = "<secret>"
    val tenantID = "<tenant-id>"
 
    spark.conf.set("fs.azure.account.auth.type", "OAuth")
    spark.conf.set("fs.azure.account.oauth.provider.type", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
    spark.conf.set("fs.azure.account.oauth2.client.id", "<appID>")
-   spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")
+   spark.conf.set("fs.azure.account.oauth2.client.secret", "<secret>")
    spark.conf.set("fs.azure.account.oauth2.client.endpoint", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
    ```

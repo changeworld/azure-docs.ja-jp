@@ -8,13 +8,13 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: a72236843c13e139f33a669b54f108e91679c8c6
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74326577"
 ---
-# <a name="tutorial-add-a-sample-model-from-the-portal"></a>チュートリアル: ポータルからサンプル モデルを追加する
+# <a name="tutorial-add-a-sample-model-from-the-portal"></a>チュートリアル - ポータルからサンプル モデルを追加する
 
 このチュートリアルでは、サンプルの Adventure Works の表形式モデル データベースをサーバーに追加します。 このサンプル モデルは、Adventure Works Internet Sales (1200) サンプル データ モデルの完成版です。 サンプル モデルは、モデル管理のテスト、ツールおよびクライアント アプリケーションとの接続、モデル データのクエリなどに便利です。 このチュートリアルでは、[Azure portal](https://portal.azure.com) と [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) を使って、次のことを行います。 
 
@@ -52,7 +52,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ![サンプル データを選択する](./media/analysis-services-create-sample-model/aas-create-sample-verify.png)
 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 サンプル モデルはキャッシュ メモリ リソースを使っています。 テスト用にサンプル モデルを使っていない場合は、サーバーからモデルを削除する必要があります。
 
@@ -68,7 +68,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![サンプル データベースを削除する](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-delete.png)
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 
 このチュートリアルでは、基本的なサンプル モデルをサーバーに追加する方法を学習しました。 モデル データベースが追加されたので、SQL Server Management Studio からこのデータベースに接続し、ユーザー ロールを追加できます。 さらに学習するには、次のチュートリアルに進んでください。
 

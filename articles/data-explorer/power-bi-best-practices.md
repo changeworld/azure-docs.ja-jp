@@ -8,11 +8,11 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
 ms.openlocfilehash: db1d530c9cab77ae612c83a0d4f52478fb9ee270
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024028"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227243"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>Power BI を使用して Azure Data Explorer データのクエリと視覚化を行う場合のベスト プラクティス
 
@@ -98,7 +98,7 @@ Kusto クエリからは、既定で最大 500,000 行または 64 MB が返さ�
     Source = Kusto.Contents("<Cluster>", "<Database>", "<Query>", [])
     ```
    
-   例:
+   次に例を示します。
 
     ```powerquery-m
     Source = Kusto.Contents("Help", "Samples", "StormEvents | where State == 'ALABAMA' | take 100", [])
@@ -144,7 +144,7 @@ Power BI には、データ ソースに対して定期的にクエリを発行�
 
 Power BI でクエリを実行すると、次のエラーが発生します。 _"DataSource.Error:Web.Contents は ... からコンテンツを取得できませんでした"_ 。このクエリは 2000 文字を超えている可能性があります。 Power BI では、取得する URI の一部としてクエリをエンコードする HTTP GET 要求を発行して、Kusto に対してクエリを実行するために **PowerQuery** を使用します。 そのため、Power BI によって発行された Kusto クエリは、要求 URI の最大長 (2000 文字から小さなオフセットを引いたもの) に制限されます。 回避策として、Kusto で[ストアド関数](/azure/kusto/query/schema-entities/stored-functions)を定義し、Power BI でその関数をクエリに使用する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Power BI 用 Azure Data Explorer コネクタを使用してデータを視覚化する](power-bi-connector.md)
 

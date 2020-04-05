@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.openlocfilehash: de6f24ea66ef41b5ee4bfdda5948de9639f10a51
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75476653"
 ---
 # <a name="manage-azure-resources-by-using-azure-powershell"></a>Azure PowerShell を使用した Azure リソースの管理

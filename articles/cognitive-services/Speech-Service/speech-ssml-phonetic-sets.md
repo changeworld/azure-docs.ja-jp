@@ -1,7 +1,7 @@
 ---
-title: Speech 音声セット - Speech サービス
+title: Speech 発音設定 - Speech サービス
 titleSuffix: Azure Cognitive Services
-description: Speech サービス音声アルファベットを国際音標文字 (IPA) にマップする方法と、どのセットをいつ使用するかについて説明します。
+description: Speech サービス発音アルファベットを国際音標文字 (IPA) にマップする方法と、どのような設定をいつ使用するかについて説明します。
 services: cognitive-services
 author: zhaoyunED
 manager: junwg
@@ -11,24 +11,24 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: jiajzhan
 ms.openlocfilehash: 770e97ad126f66efb43bf8cf7eb12f7510858192
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78675342"
 ---
-# <a name="speech-service-phonetic-sets"></a>Speech サービス音声セット
+# <a name="speech-service-phonetic-sets"></a>Speech サービス発音設定
 
 Speech サービスでは、次の 7 つの言語で構成される音声アルファベット (略語の"音声セット") を定義します。`en-US`、`fr-FR`、`de-DE`、`es-ES`、`ja-JP`、`zh-CN`、および `zh-TW`。 Speech サービス音声セットは通常、<a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">国際音標文字 (IPA) <span class="docon docon-navigate-external x-hidden-focus"></span></a>にマップされます。 Speech サービス音声セットでは、[Speech 合成マークアップ言語 (SSML)](speech-synthesis-markup.md)と共に、テキスト音声変換サービスオファリングの一部として使用されます。 この記事では、これらの音声セットがどのようにマップされているか、およびどのような音声セットをどのようなタイミングで使用するかについて説明します。
 
-# <a name="en-us"></a>[en-US](#tab/en-US)
+# <a name="en-us"></a>[ja-JP](#tab/en-US)
 
 ### <a name="english-suprasegmentals"></a>英語の超分節音素
 
 | 例 1          (頭子音、語頭母音) | 例 2          (母音間子音、介音) | 例 3     (尾子音、語末母音) | 説明 |
 |--|--|--|--|
-| burger  /b er **1** r - g ax r/ | falafel  /f ax - l aa **1** - f ax  l/ | guitar  /g ih - t aa **1** r/ | Speech サービス音声セットでは、強勢音節の母音の後に強勢が置かれます |
-| inopportune /ih **2** - n aa - p ax r - t uw 1 n/ | dissimilarity  /d ih - s ih **2**- m ax -  l eh 1 - r ax - t iy/ | workforce /w er 1 r k - f ao **2** r s/ | Speech サービス音声セットでは、副強勢音節の母音の後に強勢が置かれます |
+| burger  /b er **1** r - g ax r/ | falafel  /f ax - l aa **1** - f ax  l/ | guitar  /g ih - t aa **1** r/ | Speech サービス電話設定では、強勢音節の母音の後に強勢が置かれます |
+| inopportune /ih **2** - n aa - p ax r - t uw 1 n/ | dissimilarity  /d ih - s ih **2**- m ax -  l eh 1 - r ax - t iy/ | workforce /w er 1 r k - f ao **2** r s/ | Speech サービス電話設定では、副強勢音節の母音の後に強勢が置かれます |
 
 ### <a name="english-vowels"></a>英語の母音
 
@@ -123,7 +123,7 @@ Speech サービスでは、次の 7 つの言語で構成される音声アル�
 
 ### <a name="french-suprasegmentals"></a>フランス語の超分節音素
 
-Speech サービス音声セットでは、強制音節の母音の後に強勢が置かれますが、`fr-FR` Speech サービス音声セットは IPA 副強勢 ' ˌ ' をサポートしていません。 IPA 副強勢が必要な場合は、IPA を直接使用する必要があります。
+Speech サービス電話設定では、強制音節の母音の後に強勢が置かれますが、`fr-FR` Speech サービス電話設定は IPA 副強勢 ' ˌ ' をサポートしていません。 IPA 副強勢が必要な場合は、IPA を直接使用する必要があります。
 
 ### <a name="french-vowels"></a>フランス語の母音
 
@@ -179,7 +179,7 @@ Speech サービス音声セットでは、強制音節の母音の後に強勢�
 **1** *一部の外国語のみに適用されます。*
 
 > [!TIP]
-> `fr-FR` Speech サービス音声セットは、次のフランス語のリエゾン、`n‿`、`t‿`、および `z‿` をサポートしていません。 必要に応じて、IPA を直接使用することを検討してください。
+> `fr-FR` Speech サービス電話設定は、次のフランス語のリエゾン、`n‿`、`t‿`、および `z‿` をサポートしていません。 必要に応じて、IPA を直接使用することを検討してください。
 
 # <a name="de-de"></a>[de-DE](#tab/de-DE)
 
@@ -187,8 +187,8 @@ Speech サービス音声セットでは、強制音節の母音の後に強勢�
 
 | 例 1          (頭子音、語頭母音) | 例 2          (母音間子音、介音) | 例 3     (尾子音、語末母音) | 説明 |
 |--|--|--|--|
-| anders /a **1** n - d ax r s/ | Multiplikationszeichen /m uh l - t iy - p l iy - k a - ts y ow **1** n s - ts ay - c n/ | Biologie /b iy - ow - l ow - g iy **1**/ | Speech サービス音声セットでは、強勢音節の母音の後に強勢が置かれます |
-| Allgemeinwissen /a **2** l - g ax - m ay 1 n - v ih - s n/ | Abfallentsorgungsfirma /a 1 p - f a l - ^ eh n t - z oh **2** ax r - g uh ng s - f ih ax r - m  a/ | Computertomographie /k oh m - p y uw 1 - t ax r - t ow - m ow - g r a - f iy **2**/ | Speech サービス音声セットでは、副強勢音節の母音の後に強勢が置かれます |
+| anders /a **1** n - d ax r s/ | Multiplikationszeichen /m uh l - t iy - p l iy - k a - ts y ow **1** n s - ts ay - c n/ | Biologie /b iy - ow - l ow - g iy **1**/ | Speech サービス電話設定では、強勢音節の母音の後に強勢が置かれます |
+| Allgemeinwissen /a **2** l - g ax - m ay 1 n - v ih - s n/ | Abfallentsorgungsfirma /a 1 p - f a l - ^ eh n t - z oh **2** ax r - g uh ng s - f ih ax r - m  a/ | Computertomographie /k oh m - p y uw 1 - t ax r - t ow - m ow - g r a - f iy **2**/ | Speech サービス電話設定では、副強勢音節の母音の後に強勢が置かれます |
 
 ### <a name="german-vowels"></a>ドイツ語の母音
 
@@ -342,9 +342,9 @@ Speech サービス音声セットでは、強制音節の母音の後に強勢�
 
 `zh-CN` 用の Speech サービス音声セットは、ネイティブ音声 <a href="https://en.wikipedia.org/wiki/Pinyin" target="_blank">Pinyin <span class="docon docon-navigate-external x-hidden-focus"></span></a> セットに基づいています。
 
-### <a name="tone"></a>声調
+### <a name="tone"></a>トーン
 
-| Pinyin 声調 | `sapi` | 文字の例 |
+| Pinyin トーン | `sapi` | 文字の例 |
 |-------------|--------|-------------------|
 | mā          | ma  1  | 妈                 |
 | má          | ma  2  | 麻                 |
@@ -364,9 +364,9 @@ Speech サービス音声セットでは、強制音節の母音の後に強勢�
 
 `zh-TW` 用の Speech サービス音声セットは、ネイティブ音声 <a href="https://en.wikipedia.org/wiki/Bopomofo" target="_blank">Bopomofo <span class="docon docon-navigate-external x-hidden-focus"></span></a> セットに基づいています。
 
-### <a name="tone"></a>声調
+### <a name="tone"></a>トーン
 
-| Speech サービスの声調 | Bopomofo 声調 | 例     (語) | Speech サービスの音声 | Bopomofo | Pinyin （拼音） |
+| Speech サービスのトーン | Bopomofo トーン | 例     (語) | Speech サービスの電話 | Bopomofo | Pinyin （拼音） |
 |---------------------|---------------|----------------|-----------------------|----------|-------------|
 | ˉ                   | empty         | 偵              | ㄓㄣˉ                   | ㄓㄣ       | zhēn        |
 | ˊ                   | ˊ             | 察              | ㄔㄚˊ                   | ㄔㄚˊ      | chá         |

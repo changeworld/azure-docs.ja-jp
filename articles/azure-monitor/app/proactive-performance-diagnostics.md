@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.openlocfilehash: 3d8de08605d3dd693eb74a84a29c2efa6cad669a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671734"
 ---
 # <a name="smart-detection---performance-anomalies"></a>スマート検出 - パフォーマンスの異常

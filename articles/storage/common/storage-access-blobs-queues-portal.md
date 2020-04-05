@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 602be49ef0c60274f1cd016c4f8e870cf033ec7b
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75866906"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Azure portal を使用した BLOB またはキュー データへのアクセス
@@ -60,7 +60,7 @@ BLOB またはキュー データへのアクセスをサポートする組み�
 従来のサブスクリプション管理者ロールでキューを一覧表示することはサポートされていません。 キューを一覧表示するには、ユーザーには Azure Resource Manager **リーダー** ロール、**ストレージ キュー データ閲覧者**ロール、または**ストレージ キュー データ共同作成者**ロールが割り当てられている必要があります。
 
 > [!IMPORTANT]
-> Azure portal の Storage Explorer のプレビュー バージョンでは、BLOB またはキュー データを表示および変更するための Azure AD 資格情報の使用はサポートされていません。 Azure portal の Storage Explorer は、常にアカウント キーを使用してデータにアクセスします。 Azure portal で Storage Explorer を使用するには、**Microsoft. Storage/storageAccounts/listkeys/action** を含むロールが割り当てられている必要があります。
+> Azure portal の Storage Explorer のプレビュー バージョンでは、BLOB またはキュー データを表示および変更するための Azure AD 資格情報の使用はサポートされていません。 Azure portal の Storage Explorer では、データは常にアカウント キーを使用してアクセスされます。 Azure portal で Storage Explorer を使用するには、**Microsoft. Storage/storageAccounts/listkeys/action** を含むロールが割り当てられている必要があります。
 
 ## <a name="navigate-to-blobs-or-queues-in-the-portal"></a>ポータルでの blob またはキューへの移動
 

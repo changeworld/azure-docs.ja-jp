@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: lbosq
 ms.openlocfilehash: 5705ef4fb6aa895009d554617c968543cc3fcd63
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75441851"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>実行プロファイル ステップを使用して Gremlin のクエリを評価する方法

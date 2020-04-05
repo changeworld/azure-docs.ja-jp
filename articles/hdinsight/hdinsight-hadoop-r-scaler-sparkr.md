@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/26/2019
 ms.openlocfilehash: 5989692aeb59c7394299b4cb2474b244818895b2
-ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75500077"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>HDInsight で ScaleR と SparkR を組み合わせる

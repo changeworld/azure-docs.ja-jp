@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
 ms.openlocfilehash: 14946a05f021a9b155fd9a9621f73bde980970fa
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75750472"
 ---
 # <a name="deployment-best-practices"></a>デプロイのベスト プラクティス
@@ -69,7 +69,7 @@ App Service プランで、使用可能な CPU またはメモリの 90% 以上�
 
 ベスト プラクティスの詳細については、[App Service 診断](https://docs.microsoft.com/azure/app-service/overview-diagnostics)にアクセスして、リソース専用の実行可能なベスト プラクティスを確認してください。
 
-- [Azure portal](https://portal.azure.com) で Web アプリに移動します。
+- [Azure portal](https://portal.azure.com) で Web App に移動します。
 - 左側のナビゲーションで **[問題の診断と解決]** をクリックすると、App Service 診断が開きます。
 - **[ベスト プラクティス]** ホームページ タイルを選択します。
 - **[Best Practices for Availability & Performance]\(可用性 & パフォーマンスのベスト プラクティス\)** または **[Best Practices for Optimal Configuration]\(最適な構成のベスト プラクティス\)** をクリックして、これらのベスト プラクティスに関するアプリの現在の状態を表示します。

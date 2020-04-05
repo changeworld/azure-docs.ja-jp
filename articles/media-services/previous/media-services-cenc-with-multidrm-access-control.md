@@ -15,10 +15,10 @@ ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
 ms.openlocfilehash: 68f42aa13288c2416257f3ba6c0b6072c1572977
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162992"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Azure Media Services のアクセス制御を使用したコンテンツ保護システムの設計 

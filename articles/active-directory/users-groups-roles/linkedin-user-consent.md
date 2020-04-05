@@ -14,10 +14,10 @@ ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a21c986ccfe96bae5d341e0ba2ee6622d998d076
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74025384"
 ---
 # <a name="linkedin-account-connections-data-sharing-and-consent"></a>LinkedIn アカウント接続のデータ共有と同意
@@ -78,6 +78,6 @@ Microsoft のアカウントと LinkedIn のアカウントを接続するとき
 
 LinkedIn での個人データの使用に関して詳しくは、[LinkedIn のプライバシー ポリシー](https://www.linkedin.com/legal/privacy-policy)をご覧ください。 LinkedIn のサービス、データ転送、およびストレージの場合、データを欧州連合と米国の間で双方向に伝送でき、プライバシーは[欧州連合のデータ転送](https://www.linkedin.com/help/linkedin/answer/62533)に従って保護されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [職場または学校アカウントを使用する Microsoft アプリケーションでの LinkedIn](https://www.linkedin.com/help/linkedin/answer/84077)

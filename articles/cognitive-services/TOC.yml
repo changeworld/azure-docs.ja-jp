@@ -7,12 +7,28 @@
       href: Welcome.md
     - name: Cognitive Services と機械学習
       href: cognitive-services-and-machine-learning.md
-    - name: Cognitive Services の仮想ネットワーク
-      href: cognitive-services-virtual-networks.md
     - name: Cognitive Services のカスタム サブドメイン
       href: cognitive-services-custom-subdomains.md
     - name: 言語のサポート
       href: language-support.md
+- name: クイックスタート
+  items:
+    - name: Azure portal を使用して新しいリソースを作成する
+      href: cognitive-services-apis-create-account.md
+    - name: Azure CLI を使用して新しいリソースを作成する
+      href: cognitive-services-apis-create-account-cli.md
+    - name: 診断ログ
+      href: diagnostic-logging.md
+- name: Security
+  items:
+    - name: Cognitive Services のセキュリティ
+      href: cognitive-services-security.md
+    - name: Cognitive Services の仮想ネットワーク
+      href: cognitive-services-virtual-networks.md
+    - name: 顧客管理キーの構成
+      href: ./encryption/cognitive-services-encryption-keys-portal.md
+    - name: Cognitive Services に対する要求の認証
+      href: authentication.md
 - name: コンテナー サポート
   items:
     - name: コンテナー サポート
@@ -39,16 +55,6 @@
           href: ../container-registry/container-registry-get-started-azure-cli.md
         - name: Azure Kubernetes Service (AKS)
           href: ../aks/tutorial-kubernetes-prepare-app.md
-- name: クイック スタート
-  items:
-    - name: Azure portal を使用して新しいリソースを作成する
-      href: cognitive-services-apis-create-account.md
-    - name: Azure CLI を使用して新しいリソースを作成する
-      href: cognitive-services-apis-create-account-cli.md
-    - name: 認証
-      href: authentication.md
-    - name: 診断ログの記録
-      href: diagnostic-logging.md
 - name: リソース
   items:
     - name: Azure のロードマップ

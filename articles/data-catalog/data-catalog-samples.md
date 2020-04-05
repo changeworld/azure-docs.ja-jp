@@ -7,10 +7,10 @@ ms.author: jasonh
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 7d0e27802745dda62f87e412053650907e9b812c
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68950152"
 ---
 # <a name="azure-data-catalog-developer-samples"></a>Azure Data Catalog 開発者向けサンプル
@@ -47,5 +47,5 @@ Data Catalog REST API を使用して Azure Data Catalog アプリの開発を�
 
    このサンプルでは、プログラムによってデータ カタログにリレーションシップ情報を発行する方法を紹介しています。
    
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure Data Catalog REST API リファレンス](/rest/api/datacatalog/)

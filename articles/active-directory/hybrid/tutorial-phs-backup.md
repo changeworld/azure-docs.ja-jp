@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3e5ad7badfa44a006fd7e71d3b0e42ee95ac698d
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "64919004"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>チュートリアル:Azure AD Connect で AD FS のバックアップとして PHS を設定する
@@ -38,7 +38,7 @@ ms.locfileid: "64919004"
 ## <a name="enable-phs-in-azure-ad-connect"></a>Azure AD Connect で PHS を有効にする
 フェデレーションを使用する Azure AD Connect 環境を準備した後の最初の手順は、Azure AD Connect がハッシュを同期できるようにパスワード ハッシュの同期をオンにすることです。
 
-以下の手順を実行します。
+次の操作を行います。
 
 1.  デスクトップに作成された Azure AD Connect アイコンをダブルクリックします
 2.  **[構成]** をクリックします。
@@ -114,7 +114,7 @@ ms.locfileid: "64919004"
 
 これでハイブリッド ID 環境を正常に設定できました。この環境は、Azure で提供されるサービスをテストしたり理解したりするために使用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 
 - [ハードウェアおよび前提条件](how-to-connect-install-prerequisites.md) 

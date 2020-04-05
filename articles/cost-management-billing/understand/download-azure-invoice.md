@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 691d27acebf238e84265870e8c01976bfc2412b2
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200267"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Microsoft Azure の請求書の表示とダウンロード
@@ -33,7 +33,7 @@ Microsoft Partner Agreement (MPA) を結んでいる場合、Azure の請求書�
 
 <!-- For more information about billing roles for Microsoft Customer Agreements, see [Billing profile roles and tasks](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks). -->
 
-## <a name="noinvoice"></a> 請求書が表示されない理由
+## <a name="why-you-might-not-get-an-invoice"></a><a name="noinvoice"></a> 請求書が表示されない理由
 
 請求書が表示されない理由はいくつか考えられます。
 

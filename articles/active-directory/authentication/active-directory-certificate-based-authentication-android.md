@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f9f38c160a72b6c414cdde7d29e4056a4068cdc6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74848818"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Android での Azure Active Directory の証明書ベースの認証
@@ -46,7 +46,7 @@ Office 365 US Government Defense プランと Federal プランでは、この�
 | Word/Excel/PowerPoint |![このアプリケーションのサポートを示すチェック マーク][1] |
 | Yammer |![このアプリケーションのサポートを示すチェック マーク][1] |
 
-### <a name="implementation-requirements"></a>実装要件
+### <a name="implementation-requirements"></a>実装の要件
 
 デバイスの OS バージョンは、Android 5.0 (Lollipop) 以降である必要があります。
 
@@ -75,7 +75,7 @@ Azure Active Directory は、ADFS トークン (またはその他の SAML ト�
 
 Android 5.0 (Lollipop) 以降の特定の Exchange ActiveSync アプリケーションがサポートされています。 電子メール アプリケーションがこの機能をサポートしているかどうかを確認するには、アプリケーション開発者に問い合わせてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ご自分の環境で証明書ベースの認証を構成しようとする場合は、[Android での証明書ベースの認証の概要](active-directory-certificate-based-authentication-get-started.md)に関するページで手順を参照してください。
 

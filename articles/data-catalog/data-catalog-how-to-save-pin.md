@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: a8545939fd027989519e0f7a161f750ec676749a
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68976810"
 ---
 # <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>Azure Data Catalog での検索条件の保存とデータ資産のピン留め

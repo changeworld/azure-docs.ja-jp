@@ -8,10 +8,10 @@ ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
 ms.openlocfilehash: ef46b86186d1f5e26360de891b3a090ab0ece66b
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78894824"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>ASP.NET Core Web アプリケーションの監視を開始する

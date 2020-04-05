@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.openlocfilehash: b0af19ec740e96cd572ffe37285d7e58ead83b25
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76774859"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の接続アーキテクチャ
@@ -36,9 +36,9 @@ Azure Database for PostgreSQL への接続は、受信接続を Microsoft のク
 | カナダ中部 |40.85.224.249  |
 | カナダ東部 | 40.86.226.166    |
 | 米国中部 | 23.99.160.139、13.67.215.62   |
-| 中国 (東部) | 139.219.130.35    |
+| 中国東部 | 139.219.130.35    |
 | 中国東部 2 | 40.73.82.1  |
-| 中国 (北部) | 139.219.15.17    |
+| 中国北部 | 139.219.15.17    |
 | 中国北部 2 | 40.73.50.0     |
 | 東アジア | 191.234.2.139、52.175.33.150、13.75.33.20、13.75.33.21     |
 | East US | 40.121.158.30、191.238.6.43  |

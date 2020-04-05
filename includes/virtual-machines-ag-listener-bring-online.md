@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 760bb5b62e9bba9b7a83f99760f7fe5d8c399dfb
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67181126"
 ---
 1. フェールオーバー クラスター マネージャーで、 **[ロール]** を展開し、可用性グループを強調表示します。  
@@ -17,7 +17,7 @@ ms.locfileid: "67181126"
 
 3. **[依存関係]** タブをクリックします。複数のリソースが一覧表示される場合は、IP アドレスに (AND ではなく) OR 依存関係があることを確認します。  
 
-4. Click **OK**.
+4. **[OK]** をクリックします。
 
 5. リスナー名を右クリックし、 **[オンラインにする]** をクリックします。
 

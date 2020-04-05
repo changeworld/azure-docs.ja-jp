@@ -18,11 +18,11 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 0ed1cb6a080a35fa81c6a859f88d987020c8504c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375794"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230491"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft ID プラットフォームと OpenID Connect プロトコル
 
@@ -51,7 +51,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 
 `{tenant}` は、4 つの値のいずれかを使用できます。
 
-| Value | 説明 |
+| 値 | 説明 |
 | --- | --- |
 | `common` |個人の Microsoft アカウントを持つユーザーと Azure AD の職場/学校アカウントを持つユーザーのどちらもアプリケーションにサインインできます。 |
 | `organizations` |Azure AD の職場/学校アカウントを持つユーザーのみがアプリケーションにサインインできます。 |

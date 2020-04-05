@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cc10fb4f9894a355c9eed024ae9f87747214999b
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72886714"
 ---
 # <a name="user-experiences-with-azure-ad-identity-protection"></a>Azure AD Identity Protection を使用したユーザー エクスペリエンス
@@ -25,7 +25,7 @@ Azure Active Directory Identity Protection を使用すると、次の操作を�
 * ユーザーに対して Azure Multi-Factor Authentication (MFA) への登録を必須にする
 * 危険なサインインと侵害されたユーザーを自動的に修復する
 
-すべての Identity Protection 保護ポリシーは、ユーザーのサインイン エクスペリエンスに影響を与えます。 ユーザーが Azure MFA やパスワード リセットのセルフサービスなどのツールに登録して使用できるようにすると、影響が軽減される可能性があります。 これらのツールと適切なポリシーを選択することで、ユーザーが必要に応じて自己修復オプションを使用できるようになります。
+すべての Identity Protection 保護ポリシーは、ユーザーのサインイン エクスペリエンスに影響を与えます。 ユーザーが Azure MFA やセルフサービス パスワード リセット などのツールに登録して使用できるようにすると、影響が軽減される可能性があります。 これらのツールと適切なポリシーを選択することで、ユーザーが必要に応じて自己修復オプションを使用できるようになります。
 
 ## <a name="multi-factor-authentication-registration"></a>多要素認証の登録
 
@@ -70,17 +70,17 @@ IT スタッフは、「[ユーザーのブロック解除](howto-identity-prote
     ![Remediation](./media/concept-identity-protection-user-experience/101.png)
 
 1. ユーザーは、前に登録した方法のいずれかを使用して Azure MFA を完了することで、本人であることを証明する必要があります。 
-1. 最後に、誰かがアカウントにアクセスした可能性があるため、ユーザーは、パスワード リセットのセルフサービスを使用して、パスワードを変更することを強制されます。
+1. 最後に、誰かがアカウントにアクセスした可能性があるため、ユーザーは、セルフサービス パスワード リセット を使用して、パスワードを変更することを強制されます。
 
 ## <a name="risky-sign-in-administrator-unblock"></a>危険なサインインの管理者によるブロック解除
 
-管理者は、ユーザーのリスク レベルに応じて、サインイン時にユーザーをブロックすることを選択できます。 ブロック解除するには、エンドユーザーは IT スタッフに連絡する必要があります。 この場合、多要素認証の実行による自己修復とパスワード リセットのセルフサービスは利用できません。
+管理者は、ユーザーのリスク レベルに応じて、サインイン時にユーザーをブロックすることを選択できます。 ブロック解除するには、エンドユーザーは IT スタッフに連絡する必要があります。 この場合、多要素認証の実行による自己修復とセルフサービス パスワード リセット は利用できません。
 
 ![ユーザー リスク ポリシーによるブロック](./media/concept-identity-protection-user-experience/104.png)
 
 IT スタッフは、「[ユーザーのブロック解除](howto-identity-protection-remediate-unblock.md#unblocking-based-on-user-risk)」セクションの手順に従って、ユーザーによるサインインが再び許可されるようにすることができます。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [リスクを修復してユーザーをブロック解除する](howto-identity-protection-remediate-unblock.md)
 

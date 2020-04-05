@@ -12,10 +12,10 @@ ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: efcbdb2ebd7f4830214dbd0f2ea2ea1cfe36c3de
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75893514"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシン

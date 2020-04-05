@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/10/2020
 ms.openlocfilehash: a72753d5553e79a8ed28c3afcc7e54af6c2d230c
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79117240"
 ---
 # <a name="network-security-group-nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight で使用されるネットワーク セキュリティ グループ (NSG) サービス タグ
 
-ネットワーク セキュリティ グループ (NSG) 用の HDInsight サービス タグは、正常性および管理サービスのための IP アドレスのグループです。 これらのグループを使用すると、セキュリティ規則の作成の複雑さを最小限に抑えることができます。 特定の IP アドレスからの受信トラフィックを許可するために、ネットワーク セキュリティ グループで[管理 IP アドレス](hdinsight-management-ip-addresses.md)を個別に入力する代わりの方法として、[サービス タグ](../virtual-network/security-overview.md#service-tags)を使用できます。
+ネットワーク セキュリティ グループ (NSG) 用の HDInsight サービス タグは、正常性および管理サービスのための IP アドレスのグループです。 これらのグループを使用すると、セキュリティ規則の作成の複雑さを最小限に抑えることができます。 特定の IP アドレスからの受信トラフィックを許可するために、ネットワーク セキュリティ グループで[管理 IP アドレス](../virtual-network/security-overview.md#service-tags)を個別に入力する代わりの方法として、[サービス タグ](hdinsight-management-ip-addresses.md)を使用できます。
 
 これらのサービス タグは、HDInsight サービスによって作成および管理されます。 独自のサービス タグを作成したり、既存のタグを変更したりすることはできません。 サービス タグと一致するアドレス プレフィックスの管理は Microsoft によって行われ、アドレスが変化するとサービス タグは自動的に更新されます。
 
@@ -100,12 +100,12 @@ HDInsight クラスターでサービス タグを使い始める最も簡単な
 | &nbsp; | 米国中部 | HDInsight.CentralUS |
 | &nbsp; | 米国中北部 | HDInsight. NorthCentralUS |
 | &nbsp; | 米国中南部 | HDInsight.SouthCentralUS |
-| &nbsp; | 米国東部 | HDInsight.EastUS |
+| &nbsp; | East US | HDInsight.EastUS |
 | &nbsp; | 米国西部 | HDInsight.WestUS |
 | 日本 | 東日本 | HDInsight.JapanEast |
 | ヨーロッパ | 北ヨーロッパ | HDInsight.NorthEurope |
 | &nbsp; | 西ヨーロッパ| HDInsight.WestEurope |
-| Asia | 東アジア | HDInsight.EastAsia |
+| アジア | 東アジア | HDInsight.EastAsia |
 | &nbsp; | 東南アジア | HDInsight.SoutheastAsia |
 | オーストラリア | オーストラリア東部 | HDInsight.AustraliaEast |
 

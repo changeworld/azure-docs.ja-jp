@@ -4,7 +4,7 @@
   items:
     - name: Azure Analysis Services とは
       href: analysis-services-overview.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: サーバーの作成 - ポータル
       href: analysis-services-create-server.md
@@ -66,7 +66,7 @@
           href: analysis-services-addservprinc-admins.md
     - name: モデル
       items:
-        - name: 表形式のモデリング
+        - name: テーブル モデリング
           href: 'https://docs.microsoft.com/analysis-services/tabular-models/tabular-models-ssas'
         - name: Visual Studio からのデプロイ
           href: analysis-services-deploy.md
@@ -76,13 +76,13 @@
           href: analysis-services-refresh-logic-app.md
         - name: Azure Automation を使用した更新
           href: analysis-services-refresh-azure-automation.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: データベース ユーザーの管理
           href: analysis-services-database-users.md
         - name: サーバー管理者の管理
           href: analysis-services-server-admins.md
-    - name: 接続
+    - name: 接続する
       items:
         - name: Excel を使用した接続
           href: analysis-services-connect-excel.md

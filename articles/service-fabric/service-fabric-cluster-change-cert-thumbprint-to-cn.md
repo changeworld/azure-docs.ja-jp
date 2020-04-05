@@ -4,10 +4,10 @@ description: 証明書の拇印の使用から証明書共通名の使用へと 
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: 66c49ccb7b7633d0eff392b676bb381118eb64a2
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75610201"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>証明書の拇印から共通名へとクラスターを変更する

@@ -17,10 +17,10 @@ ms.date: 12/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ef28b95e779e2b814b0ae91059c3edd12644d7c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75430934"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-leapsome"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Leapsome の統合
@@ -99,7 +99,7 @@ Leapsome に対する Azure AD SSO を構成してテストするには、次の
 
 1. その他に、Leapsome アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | Name | ソース属性 | 名前空間 |
+    | 名前 | ソース属性 | 名前空間 |
     | ---------------| --------------- | --------- |  
     | firstname | User.givenname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | lastname | User.surname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |

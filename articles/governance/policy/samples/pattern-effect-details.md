@@ -3,12 +3,12 @@ title: パターン:ポリシー定義の効果
 description: この Azure Policy パターンでは、ポリシー定義のさまざまな効果を使用する方法の例を示します。
 ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: b86a24bc0af6c9bdd7b29bb0a931d6c78865218b
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 1a9aec50bd328b76271d54f7830c75e0848d3cde
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77170460"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80372628"
 ---
 # <a name="azure-policy-pattern-effects"></a>Azure Policy パターン: 効果
 
@@ -22,7 +22,7 @@ Azure Policy には、準拠していないリソースにサービスがどの�
 
 ### <a name="sample-1-explanation"></a>サンプル 1:説明
 
-:::code language="json" source="~/policy-templates/patterns/pattern-effect-details-1.json" range="30-34":::
+:::code language="json" source="~/policy-templates/patterns/pattern-effect-details-1.json" range="40-50":::
 
 **modify** 効果には、**roleDefinitionIds** および **operations** を定義する **policyRule.then.details** ブロックが必要です。 これらのパラメーターによって、タグを追加してリソースを修復するために必要なロールと、実行するするべき**変更**操作が Azure Policy に通知されます。 この例では、**操作**が "_追加_" され、パラメーターを使用してタグとその値が設定されます。
 

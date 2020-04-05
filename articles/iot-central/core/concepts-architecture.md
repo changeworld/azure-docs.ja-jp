@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 12ad231d81b6c134ebb8d4902b3f95c978e9622d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77014523"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233367"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central のアーキテクチャ
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 9d222097f9fb99a24f6213584a3419ed777f4a22
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61408440"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-troubleshoot-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャー サービスを使用して、StorSimple Virtual Array のトラブルシューティングを行います
@@ -42,6 +42,6 @@ StorSimple デバイス マネージャー サービスの概要ブレードで�
 
 3. 問題への参照が見つからない場合、または問題を解決できない場合は、Microsoft サポートにお問い合わせください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [サポート チケットを記録](storsimple-virtual-array-log-support-ticket.md)する方法を確認します
 

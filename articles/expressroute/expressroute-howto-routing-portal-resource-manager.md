@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: mialdrid
 ms.openlocfilehash: 18d2db18e9880028c60b4b545c3628f4a9cb4703
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436969"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231259"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>ExpressRoute 回線のピアリングの作成と変更を行う
 
@@ -28,7 +28,7 @@ ms.locfileid: "75436969"
 > * [PowerShell (クラシック)](expressroute-howto-routing-classic.md)
 > 
 
-ExpressRoute 回線にプライベート ピアリングおよび Microsoft ピアリングを構成できます (Azure パブリック ピアリングは新しい回線では非推奨です)。 ピアリングは任意の順序で構成できます。 ただし、各ピアリングの構成は必ず一度に 1 つずつ完了するようにしてください。 ルーティング ドメインとピアリングの詳細については、[ExpressRoute のルーティング ドメイン](expressroute-circuit-peerings.md)に関する記事をご覧ください。 パブリック ピアリングについては、[ExpressRoute のパブリック ピアリング](about-public-peering.md)に関する記事をご覧ください。
+ExpressRoute 回線にプライベート ピアリングおよび Microsoft ピアリングを構成できます (Azure パブリック ピアリングは新しい回線では非推奨です)。 ピアリングは、任意の順序で構成できます。 ただし、各ピアリングの構成は必ず一度に 1 つずつ完了するようにしてください。 ルーティング ドメインとピアリングの詳細については、[ExpressRoute のルーティング ドメイン](expressroute-circuit-peerings.md)に関する記事をご覧ください。 パブリック ピアリングについては、[ExpressRoute のパブリック ピアリング](about-public-peering.md)に関する記事をご覧ください。
 
 ## <a name="configuration-prerequisites"></a>構成の前提条件
 
@@ -43,7 +43,7 @@ ExpressRoute 回線にプライベート ピアリングおよび Microsoft ピ�
 > 
 > 
 
-## <a name="msft"></a>Microsoft ピアリング
+## <a name="microsoft-peering"></a><a name="msft"></a>Microsoft ピアリング
 
 このセクションでは、ExpressRoute 回線用の Microsoft ピアリング構成を作成、取得、更新、および削除します。
 
@@ -83,7 +83,7 @@ ExpressRoute 回線にプライベート ピアリングおよび Microsoft ピ�
    ![Microsoft ピアリングを構成する](./media/expressroute-howto-routing-portal-resource-manager/configuration-m.png)
 
 > [!IMPORTANT]
-> Microsoft は、指定された 'アドバタイズされたパブリック プレフィックス' と 'ピア ASN' (または '顧客 ASN') がインターネット ルーティング レジストリでユーザーに割り当てられているかどうかを確認します。 別のエンティティからパブリック プレフィックスを取得している場合、およびルーティング レジストリに割り当てが記録されていない場合、自動検証は完了せず、手動検証が必要になります。 自動検証が失敗した場合は、「検証が必要です」というメッセージが表示されます。 
+> Microsoft は、指定された 'アドバタイズされたパブリック プレフィックス' と 'ピア ASN' (または '顧客 ASN') がインターネット ルーティング レジストリでユーザーに割り当てられているかどうかを確認します。 別のエンティティからパブリック プレフィックスを取得している場合、およびルーティング レジストリに割り当てが記録されていない場合、自動検証は完了せず、手動検証が必要になります。 自動検証が失敗した場合は、[検証が必要です] というメッセージが表示されます。 
 >
 > '検証が必要です' というメッセージが表示された場合は、ルーティング レジストリにプレフィックスの所有者として一覧表示されているエンティティによって組織にパブリック プレフィックスが割り当てられていることを示すドキュメントを収集し、下に示すようにサポート チケットを開くことにより、これらのドキュメントを手動検証のために送信してください。 
 >
@@ -96,24 +96,24 @@ ExpressRoute 回線にプライベート ピアリングおよび Microsoft ピ�
 
    ![ピアリングの状態: 構成済み](./media/expressroute-howto-routing-portal-resource-manager/configured-m.png "ピアリングの状態: 構成済み")]
 
-### <a name="getmsft"></a>Microsoft ピアリングの詳細を表示するには
+### <a name="to-view-microsoft-peering-details"></a><a name="getmsft"></a>Microsoft ピアリングの詳細を表示するには
 
 Microsoft ピアリングの行を選択して、そのピアリングのプロパティを表示できます。
 
 [![Microsoft ピアリングのプロパティの表示](./media/expressroute-howto-routing-portal-resource-manager/view-peering-m.png "プロパティの表示")](./media/expressroute-howto-routing-portal-resource-manager/view-peering-m-lightbox.png#lightbox)
-### <a name="updatemsft"></a>Microsoft ピアリング構成を更新するには
+### <a name="to-update-microsoft-peering-configuration"></a><a name="updatemsft"></a>Microsoft ピアリング構成を更新するには
 
 変更するピアリングの行を選択し、次にピアリング プロパティを変更して変更内容を保存できます。
 
 ![ピアリングの行を選択する](./media/expressroute-howto-routing-portal-resource-manager/update-peering-m.png)
 
-### <a name="deletemsft"></a>Microsoft ピアリングを削除するには
+### <a name="to-delete-microsoft-peering"></a><a name="deletemsft"></a>Microsoft ピアリングを削除するには
 
 次の図のように削除アイコンをクリックして、ピアリングの構成を削除できます。
 
 ![ピアリングを削除する](./media/expressroute-howto-routing-portal-resource-manager/delete-peering-m.png)
 
-## <a name="private"></a>Azure プライベート ピアリング
+## <a name="azure-private-peering"></a><a name="private"></a>Azure プライベート ピアリング
 
 このセクションでは、ExpressRoute 回線用の Azure プライベート ピアリング構成を作成、取得、更新、および削除します。
 
@@ -149,19 +149,19 @@ Microsoft ピアリングの行を選択して、そのピアリングのプロ�
 
    ![保存されたプライベート ピアリング](./media/expressroute-howto-routing-portal-resource-manager/save-p.png)
 
-### <a name="getprivate"></a>Azure プライベート ピアリングの詳細を表示するには
+### <a name="to-view-azure-private-peering-details"></a><a name="getprivate"></a>Azure プライベート ピアリングの詳細を表示するには
 
 ピアリングを選択して、Azure プライベート ピアリングのプロパティを表示することができます。
 
 [![プライベート ピアリングのプロパティの表示](./media/expressroute-howto-routing-portal-resource-manager/view-p.png "プライベート ピアリングのプロパティの表示")](./media/expressroute-howto-routing-portal-resource-manager/view-p-lightbox.png#lightbox)
 
-### <a name="updateprivate"></a>Azure プライベート ピアリングの構成を更新するには
+### <a name="to-update-azure-private-peering-configuration"></a><a name="updateprivate"></a>Azure プライベート ピアリングの構成を更新するには
 
 ピアリングの行を選択し、ピアリングのプロパティを変更できます。 更新後、変更を保存します。
 
 ![プライベート ピアリングを更新する](./media/expressroute-howto-routing-portal-resource-manager/update-peering-p.png)
 
-### <a name="deleteprivate"></a>Azure プライベート ピアリングを削除するには
+### <a name="to-delete-azure-private-peering"></a><a name="deleteprivate"></a>Azure プライベート ピアリングを削除するには
 
 ピアリングの構成を削除するには、次の図ように削除アイコンを選びます。
 

@@ -4,12 +4,12 @@
   items:
     - name: Microsoft Genomics とは
       href: overview-what-is-genomics.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: サンプル Genomics ワークフローの実行
       href: quickstart-run-genomics-workflow-portal.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: 各種入力ファイル形式の使用
       items:

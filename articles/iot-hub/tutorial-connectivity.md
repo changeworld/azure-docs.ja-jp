@@ -10,13 +10,13 @@ ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
 ms.openlocfilehash: 78b9d81e20013db41693c24aa8c4a649c724c8b8
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78674406"
 ---
-# <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>チュートリアル:シミュレートされたデバイスを使用して IoT ハブとの接続をテストする
+# <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>チュートリアル: シミュレートされたデバイスを使用して IoT ハブとの接続をテストする
 
 このチュートリアルでは、Azure IoT Hub ポータル ツールと Azure CLI コマンドを使用してデバイスの接続をテストします。 このチュートリアルでは、デスクトップ マシンで実行する単純なデバイス シミュレーターも使用します。
 

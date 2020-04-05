@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 955e13b88037aa42b59707698549b1c980720990
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840606"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>ネットワーク セキュリティ グループのフロー ログを Power BI で視覚化する
@@ -44,7 +44,7 @@ ms.locfileid: "76840606"
 
 ## <a name="setup"></a>セットアップ
 
-最初に、アカウント内の少なくとも 1 つのネットワーク セキュリティ グループで、そのフローのログ記録を有効にする必要があります。 ネットワーク セキュリティのフローのログ記録を有効にする手順については、「[ネットワーク セキュリティ グループのフローのログ記録の概要](network-watcher-nsg-flow-logging-overview.md)」の記事を参照してください。
+最初に、アカウント内の少なくとも 1 つのネットワーク セキュリティ グループで、そのフローのログ記録を有効にする必要があります。 ネットワーク セキュリティのフローのログ記録を有効にする手順については、「[Introduction to flow logging for Network Security Groups (ネットワーク セキュリティ グループのフローをログに記録する方法)](network-watcher-nsg-flow-logging-overview.md)」の記事をご覧ください。
 
 また、ご利用のコンピューターに Power BI Desktop クライアントがインストールされていること、そしてストレージ アカウントに存在するログ データをダウンロードして読み込めるだけの空き領域がそのコンピューターにあることが必要です。
 

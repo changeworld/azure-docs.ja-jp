@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: 4ad5e961e390b60784355ff3bc72aca4a2f73e11
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77190954"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Azure Cognitive Search で大容量のデータ セットのインデックスを作成する方法
@@ -99,7 +99,7 @@ ms.locfileid: "77190954"
 > [!Note]
 > レプリカを増やす際、インデックスのサイズが大幅に増加することが予想される場合は、パーティション数を増やすことを検討してください。 パーティションにはインデックスのコンテンツのスライスが格納され、パーティション数が多いほど、各パーティションに格納されるスライスも小さくなります。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 + [インデクサーの概要](search-indexer-overview.md)
 + [ポータル内でのインデックス作成](search-import-data-portal.md)

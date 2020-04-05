@@ -10,10 +10,10 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
 ms.openlocfilehash: 0a7012d9daa808933a51ac05862a8a9aa4cfcf77
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77614798"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>アーカイブ層から BLOB データをリハイドレートする
@@ -52,13 +52,13 @@ BLOB はアーカイブ アクセス層に含まれていますが、オフラ�
 
 ### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>アーカイブ BLOB をオンライン層にリハイドレートする
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
-1. Azure portal で、 **[すべてのリソース]** を検索して選択します。
+1. Azure portal で、 **[すべてのリソース]** を探して選択します。
 
 1. 使うストレージ アカウントを選びます。
 
-1. コンテナーを選択し、お使いのBLOB を選択します。
+1. コンテナーを選択し、お使いの BLOB を選択します。
 
 1. **[BLOB のプロパティ]** で、 **[層の変更]** を選択します。
 

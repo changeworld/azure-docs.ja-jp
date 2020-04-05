@@ -10,12 +10,12 @@ ms.date: 02/25/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 6b36694c2fe1bf264c876944b054d39371db616c
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 7ae5f59a1bd96362d5466b2f6363185ba168d942
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77614292"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228327"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage の冗長性
 
@@ -61,14 +61,14 @@ ZRS をサポートしているストレージ アカウントの種類とリー
 
 |    ストレージ アカウントの種類    |    サポートされているリージョン    |    サポートされているサービス    |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-|    汎用 v2<sup>1</sup>    | 東南アジア<br /> 北ヨーロッパ<br />  西ヨーロッパ<br /> フランス中部<br /> 東日本<br /> 英国南部<br /> 米国中部<br /> 米国東部<br /> 米国東部 2<br /> 米国西部 2    |    ブロック blob<br /> ページ BLOB<sup>2</sup><br /> ファイル共有 (標準)<br /> テーブル<br /> キュー<br /> |
+|    汎用 v2<sup>1</sup>    | 東南アジア<br /> オーストラリア東部<br /> 北ヨーロッパ<br />  西ヨーロッパ<br /> フランス中部<br /> 東日本<br /> 南アフリカ北部<br /> 英国南部<br /> 米国中部<br /> 米国東部<br /> 米国東部 2<br /> 米国西部 2    |    ブロック blob<br /> ページ BLOB<sup>2</sup><br /> ファイル共有 (標準)<br /> テーブル<br /> キュー<br /> |
 |    BlockBlobStorage<sup>1</sup>    | 西ヨーロッパ<br /> 米国東部    |    ブロック BLOB のみ    |
 |    FileStorage    | 西ヨーロッパ<br /> 米国東部    |    Azure Files のみ    |
 
 <sup>1</sup> アーカイブ層は、ZRS アカウントでは現在サポートされていません。<br />
 <sup>2</sup> 仮想マシン用の Azure マネージド ディスクを含むストレージ アカウントは、常に LRS を使用します。 Azure のアンマネージド ディスクでは、LRS も使用する必要があります。 GRS を使用する Azure アンマネージド ディスクのストレージ アカウントを作成することはできますが、非同期 geo レプリケーションの整合性に関する潜在的な問題のため、推奨されません。 マネージドとアンマネージド ディスクのどちらも ZRS または GZRS をサポートしていません。 マネージド ディスクの詳細については、[Azure マネージド ディスクの価格](https://azure.microsoft.com/pricing/details/managed-disks/)に関するページをご覧ください。
 
-ZRS をサポートしているリージョンの詳細については、「[Azure の Availability Zones の概要](../../availability-zones/az-overview.md)」の「**リージョン別のサービスのサポート**」を参照してください。
+ZRS をサポートしているリージョンの詳細については、「**Azure の Availability Zones の概要**」の「[リージョン別のサービスのサポート](../../availability-zones/az-overview.md)」を参照してください。
 
 ## <a name="redundancy-in-a-secondary-region"></a>セカンダリ リージョンでの冗長性
 
@@ -109,10 +109,12 @@ GZRS と RA-GZRS は現在、次のリージョンにおいてプレビューで
 - 東南アジア
 - 北ヨーロッパ
 - 西ヨーロッパ
+- 東日本
 - 英国南部
 - 米国東部
 - 米国東部 2
 - 米国中部
+- 米国西部 2
 
 Microsoft では引き続き、他の Azure リージョンでも GZRS と RA-GZRS を有効にしていきます。 サポートされているリージョンの情報については、[Azure サービスの更新情報](https://azure.microsoft.com/updates/)に関するページを定期的に参照してください。
 
@@ -169,7 +171,7 @@ geo 冗長ストレージ (GRS または GZRS を使用) は、リージョン�
 
 Azure Storage では、巡回冗長検査 (CRCs) を使用して、格納データの整合性を定期的に検証します。 データの破損が検出された場合は、冗長データを使用して修復されます。 また Azure Storage では、データの格納時または取得時にデータ パケットの破損を検出する目的ですべてのネットワーク トラフィックのチェックサムを計算します。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [ストレージ アカウントの最終同期時刻プロパティを確認する](last-sync-time-get.md)
 - [ストレージ アカウントの冗長オプションを変更する](redundancy-migration.md)

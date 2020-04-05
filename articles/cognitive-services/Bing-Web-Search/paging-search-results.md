@@ -12,17 +12,17 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: aahi
 ms.openlocfilehash: ea883bb294a8769b3c9be1e0eafc2e3e7c811b48
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73481742"
 ---
 # <a name="how-to-page-through-results-from-the-bing-search-apis"></a>Bing Search API から結果をページングする方法
 
 Bing Web、Custom、Image、News または Video Search API の呼び出しを送信すると、Bing からは、クエリに関連する可能性のある結果の合計数のサブセットが返されます。 利用可能な結果の推定総数を取得するには、回答オブジェクトの `totalEstimatedMatches` フィールドにアクセスします。 
 
-例: 
+次に例を示します。 
 
 ```json
 {
@@ -72,7 +72,7 @@ Bing Image API と Video API を使用する場合は、`nextOffset` の値を�
 >
 > フィルター値を指定せずに `responseFilter` クエリ パラメーターを使用する場合、`count` パラメーターと `offset` パラメーターを使用しないでください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Bing Web Search API とは](bing-api-comparison.md)
 * [Bing Web Search API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)

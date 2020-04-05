@@ -12,10 +12,10 @@ ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 6cb9dadc107c6907f1ccb28a876270e577f10395
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74977303"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-curl"></a>クイック スタート:Computer Vision の REST API と cURL を使用したサムネイルを生成する
@@ -68,7 +68,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 成功応答では、`<thumbnailFile>` で指定されたファイルにサムネイル画像が書き込まれます。 要求が失敗した場合は、原因の特定につながるエラー コードとメッセージが応答に格納されます。 要求が成功したように見えても、作成されたサムネイルが有効な画像ファイルではない場合は、サブスクリプション キーが有効でない可能性があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 画像の分析、著名人やランドマークの検出、サムネイルの作成、印刷されたテキストや手書きテキストの抽出を実行する方法の Computer Vision API の詳細を確認します。 Computer Vision API を簡単に試す場合は、[Open API テスト コンソール](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)をお試しください。
 

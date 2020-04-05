@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 09/18/2019
 ms.author: mialdrid
 ms.openlocfilehash: d2f31be5e7ece32fb1e0f6d9a2e482688d46eeb3
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75770953"
 ---
 # <a name="expressroute-overview"></a>ExpressRoute の概要
@@ -33,7 +33,7 @@ ExpressRoute を利用すると、接続プロバイダーが提供するプラ�
 
 詳しくは、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 
-## <a name="features"></a>[機能]
+## <a name="features"></a>機能
 
 ### <a name="layer-3-connectivity"></a>レイヤー 3 接続
 Microsoft は業界標準の動的ルーティング プロトコル (BGP) を利用し、オンプレミス ネットワーク、Azure のインスタンス、および Microsoft パブリック アドレスの間でルートを交換します。 さまざまなトラフィック プロファイルに合わせ、ネットワークとさまざまな BGP セッションを確立します。 詳しくは、 [ExpressRoute の回線とルーティング ドメイン](expressroute-circuit-peerings.md) に関する記事を参照してください。

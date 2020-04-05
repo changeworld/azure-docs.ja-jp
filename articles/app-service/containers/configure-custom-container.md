@@ -4,11 +4,11 @@ description: Azure App Service のカスタム Linux コンテナーを構成す
 ms.topic: article
 ms.date: 03/28/2019
 ms.openlocfilehash: 6baa1fbd4932aa83a54081ff166dcae7f258fff9
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255882"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235983"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Azure App Service のカスタム Linux コンテナーを構成する
 

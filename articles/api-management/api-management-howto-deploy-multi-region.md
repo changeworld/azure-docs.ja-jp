@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.author: apimpm
 ms.openlocfilehash: 5c71f37741de06b8633e7eafaae2f29823214f74
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75442665"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法
@@ -31,7 +31,7 @@ Azure API Management では複数リージョンのデプロイがサポート�
 
 [!INCLUDE [premium.md](../../includes/api-management-availability-premium.md)]
 
-## <a name="add-region">新しいリージョンに API Management サービス インスタンスをデプロイする</a>
+## <a name="deploy-an-api-management-service-instance-to-a-new-region"></a><a name="add-region">新しいリージョンに API Management サービス インスタンスをデプロイする</a>
 
 > [!NOTE]
 > API Management サービス インスタンスをまだ作成していない場合は、[API Management サービス インスタンスの作成][create an api management service instance]に関するページを参照してください。
@@ -52,7 +52,7 @@ Azure Portal で API Management サービス インスタンスの **[スケー�
 
 すべての場所が構成されるまでこのプロセスを繰り返したら、ツールバーの **[保存]** をクリックして、デプロイ プロセスを開始します。
 
-## <a name="remove-region"> </a>場所から API Management サービス インスタンスを削除する
+## <a name="delete-an-api-management-service-instance-from-a-location"></a><a name="remove-region"> </a>場所から API Management サービス インスタンスを削除する
 
 Azure Portal で API Management サービス インスタンスの **[スケールと料金]** ページに移動します。
 
@@ -62,7 +62,7 @@ Azure Portal で API Management サービス インスタンスの **[スケー�
 
 削除されたことを確認したら、 **[保存]** をクリックして変更を適用します。
 
-## <a name="route-backend"> </a>リージョンのバックエンド サービスに API 呼び出しをルーティングする
+## <a name="route-api-calls-to-regional-backend-services"></a><a name="route-backend"> </a>リージョンのバックエンド サービスに API 呼び出しをルーティングする
 
 Azure API Management は、バックエンド サービスの URL が 1 つだけであることを特徴としています。 複数のリージョンに Azure API Management インスタンスがある場合でも、API ゲートウェイは、1 つのリージョンのみにデプロイされる同じバックエンド サービスに要求を転送します。 この場合、要求に固有のリージョンで Azure API Management 内にキャッシュされた応答でのみパフォーマンスが向上し、グローバルなバックエンドへの接続では引き続き長い待ち時間が発生します。
 
@@ -109,9 +109,9 @@ Azure API Management は、バックエンド サービスの URL が 1 つだ�
 > [!TIP]
 > バックエンド サービスの正面に [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) を置き、API 呼び出しを Traffic Manager に誘導して、そこでルーティングを自動的に解決させることもできます。
 
-## <a name="custom-routing"> </a>API Management リージョン ゲートウェイへのカスタム ルーティングを使用する
+## <a name="use-custom-routing-to-api-management-regional-gateways"></a><a name="custom-routing"> </a>API Management リージョン ゲートウェイへのカスタム ルーティングを使用する
 
-API Management は、[最短の待ち時間](../traffic-manager/traffic-manager-routing-methods.md#performance)に基づいてリージョン "_ゲートウェイ_" に要求をルーティングします。 API Management でこの設定をオーバーライドすることはできませんが、カスタム ルーティング規則を持った独自の Traffic Manager を使用することはできます。
+API Management は、_最短の待ち時間_に基づいてリージョン "[ゲートウェイ](../traffic-manager/traffic-manager-routing-methods.md#performance)" に要求をルーティングします。 API Management でこの設定をオーバーライドすることはできませんが、カスタム ルーティング規則を持った独自の Traffic Manager を使用することはできます。
 
 1. 独自の [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) を作成します。
 1. カスタム ドメインを使用している場合、API Management サービスではなく、[Traffic Manager と共に使用](../traffic-manager/traffic-manager-point-internet-domain.md)します。

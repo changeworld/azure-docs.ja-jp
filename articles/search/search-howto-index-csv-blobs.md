@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: bf600890bfed570e712a159005b8ef5267298cc0
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76122323"
 ---
 # <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>Azure Cognitive Search で delimitedText 解析モードと BLOB インデクサーを使用して CSV BLOB のインデックスを作成する方法
@@ -30,7 +30,7 @@ ms.locfileid: "76122323"
 > 1 つの Azure BLOB から複数の検索ドキュメントを出力するには、[一対多のインデックス作成](search-howto-index-one-to-many-blobs.md)に関するページにあるインデクサー構成の推奨事項に従ってください。
 
 ## <a name="setting-up-csv-indexing"></a>CSV インデックス作成の設定
-CSV BLOB のインデックスを作成するには、[インデクサーの作成](https://docs.microsoft.com/rest/api/searchservice/create-indexer)要求で `delimitedText` 解析モードを使用してインデクサーの定義を作成または更新します。
+CSV BLOB のインデックスを作成するには、`delimitedText`インデクサーの作成[要求で ](https://docs.microsoft.com/rest/api/searchservice/create-indexer) 解析モードを使用してインデクサーの定義を作成または更新します。
 
     {
       "name" : "my-csv-indexer",
@@ -84,6 +84,6 @@ BLOB に最初のヘッダー行が含まれていない場合は、インデク
       "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } }
     }
 
-## <a name="help-us-make-azure-cognitive-search-better"></a>Azure Cognitive Search 検索の品質向上にご協力ください
+## <a name="help-us-make-azure-cognitive-search-better"></a>Azure コグニティブ検索の品質向上にご協力ください
 ご希望の機能や品質向上のアイデアがありましたら、[UserVoice](https://feedback.azure.com/forums/263029-azure-search/) までお寄せください。
 

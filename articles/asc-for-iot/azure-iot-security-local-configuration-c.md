@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
 ms.openlocfilehash: 2725a824da26dafcbc215e4c302ec38ad4b5a699
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68600310"
 ---
 # <a name="understanding-the-localconfigurationjson-file---c-agent"></a>LocalConfiguration.json ファイルについて - C エージェント
@@ -39,7 +39,7 @@ Azure Security Center for IoT セキュリティ エージェントでは、ロ�
 | AgentId | GUID | エージェントの一意識別子 |
 | TriggerdEventsInterval | ISO8601 文字列 | トリガーされたイベント収集のスケジューラ間隔 |
 | ConnectionTimeout | ISO8601 文字列 | IoThub への接続がタイムアウトになるまでの期間 |
-| Authentication | JsonObject | 認証の構成。 このオブジェクトには、IoTHub に対する認証に必要なすべての情報が含まれます |
+| 認証 | JsonObject | 認証の構成。 このオブジェクトには、IoTHub に対する認証に必要なすべての情報が含まれます |
 | ID | "DPS"、"SecurityModule"、"Device" | 認証 ID - 認証が DPS を使用して行われる場合は DPS、認証がセキュリティ モジュールの資格情報を使用して行われる場合は SecurityModule、認証がデバイスの資格情報を使用して行われる場合は Device |
 | AuthenticationMethod | "SasToken"、"SelfSignedCertificate" | 認証用のユーザー シークレット - ユーザー シークレットが対称キーの場合は SasToken を選択します。シークレットが自己署名証明書の場合は SelfSignedCertificate を選択します  |
 | FilePath | ファイルへのパス (文字列) | 認証シークレットを含むファイルへのパス |
@@ -48,7 +48,7 @@ Azure Security Center for IoT セキュリティ エージェントでは、ロ�
 | DPS | JsonObject | DPS 関連の構成 |
 | IDScope | string | DPS の ID スコープ |
 | RegistrationId | string  | DPS のデバイス登録 ID |
-| ログの記録 | JsonObject | エージェントのロガー関連の構成 |
+| ログ記録 | JsonObject | エージェントのロガー関連の構成 |
 | SystemLoggerMinimumSeverity | 0 <= 数値 <= 4 | この重大度以上のログ メッセージは、/var/log/syslog に記録されます (0 は最も低い重大度です) |
 | DiagnosticEventMinimumSeverity | 0 <= 数値 <= 4 | この重大度以上のログ メッセージは、診断イベントとして送信されます (0 は最も低い重大度です) |
 
@@ -78,9 +78,9 @@ Azure Security Center for IoT セキュリティ エージェントでは、ロ�
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Azure Security Center for IoT サービスの[概要](overview.md)を読みます
-- Azure Security Center for IoT の[アーキテクチャ](architecture.md)について詳しく学習します
+- Azure Security Center for IoT の[アーキテクチャ](architecture.md)の詳細を確認します
 - Azure Security Center for IoT の[サービス](quickstart-onboard-iot-hub.md)を有効にします
 - Azure Security Center for IoT サービスの [FAQ](resources-frequently-asked-questions.md) を読みます
 - [未加工のセキュリティ データ](how-to-security-data-access.md)にアクセスする方法を学習します

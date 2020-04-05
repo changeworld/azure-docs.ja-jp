@@ -16,10 +16,10 @@ ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ddfc4bf7ed3bdf214a44a5dfe03259d32b2f3f94
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74025697"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azure Active Directory のグループのライセンスに関する問題を特定して解決する
@@ -173,7 +173,7 @@ Microsoft Workplace Analytics はアドオン製品です。 同じ名前の単�
 
 たとえば、影響を受けるユーザーの重複したプロキシ アドレスの問題を解決した後に、ユーザーの処理をトリガーする必要があります。 ユーザーを再処理するには、ユーザー ウィンドウに移動して **[ライセンス]** を開き、ツール バーの **[再処理]** ボタンを選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 グループによるライセンス管理の他のシナリオについては、以下を参照してください。
 

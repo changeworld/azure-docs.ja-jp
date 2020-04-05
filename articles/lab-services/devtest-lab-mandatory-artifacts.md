@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: spelluru
 ms.openlocfilehash: 090236ec3647c7c3e38eb862780a615f854e952b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60562207"
 ---
 # <a name="specify-mandatory-artifacts-for-your-lab-in-azure-devtest-labs"></a>Azure DevTest Labs のラボに対する必須成果物を指定する
@@ -84,6 +84,6 @@ Windows マシンと Linux マシン用の必須成果物を個別に選択で�
 
     ![VM の作成 - 必須成果物](media/devtest-lab-mandatory-artifacts/create-vm-artifacts.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [ラボへの Git アーティファクト リポジトリの追加](devtest-lab-add-artifact-repo.md)方法を学習します。
 

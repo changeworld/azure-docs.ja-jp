@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/13/2018
 ms.author: barclayn
 ms.openlocfilehash: 3a2addce83862ef109089f1474330f3821daaed7
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68726711"
 ---
 # <a name="penetration-testing"></a>侵入テスト
@@ -44,6 +44,6 @@ Microsoft が [Azure 環境の侵入テスト](https://gallery.technet.microsoft
 
 実行できないテストの種類の 1 つは、 [サービス拒否 (DoS)](https://en.wikipedia.org/wiki/Denial-of-service_attack) 攻撃です。 これには、Dos 攻撃自体を開始したり、DoS 攻撃の種類の判断、デモンストレーション、またはシミュレートを実行する可能性がある関連テストを実行したりすることも含まれます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Microsoft Azure でホストされているアプリケーションに対して今後実行する予定の侵入テストを正式に文書化したい場合は、[エンゲージメントの侵入テスト ルール](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=2)に関するページに進み、テスト通知フォームに情報を入力してください。

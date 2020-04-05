@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 57a66f73a2c0c37426c23c7274853148fd976ac8
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 49860504da8dd2a1b994a23a24df95f59c959c90
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699072"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230767"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>方法:テナントの特定のアプリケーションに対するトークンに出力された要求のカスタマイズ (プレビュー)
 
@@ -415,7 +415,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 ### <a name="custom-signing-key"></a>カスタム署名キー
 
-要求のマッピング ポリシーを有効にするには、カスタム署名キーをサービス プリンシパル オブジェクトに割り当てる必要があります。 これにより、要求のマッピング ポリシーの作成者によってトークンが変更されたことを示す受信確認が確実にアプリケーションに届くため、アプリケーションは悪意のあるアクターによって作成された要求のマッピング ポリシーから保護されます。 カスタム署名キーを追加するには、Azure Powershell コマンドレット `new-azureadapplicationkeycredential` を使用して、ご自身のアプリケーション オブジェクトの対称キー資格情報を作成します。 この Azure PowerShell コマンドレットの詳細については、[こちら](https://docs.microsoft.com/powershell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)をクリックしてください。
+要求のマッピング ポリシーを有効にするには、カスタム署名キーをサービス プリンシパル オブジェクトに割り当てる必要があります。 これにより、要求のマッピング ポリシーの作成者によってトークンが変更されたことを示す受信確認が確実にアプリケーションに届くため、アプリケーションは悪意のあるアクターによって作成された要求のマッピング ポリシーから保護されます。 カスタム署名キーを追加するには、Azure PowerShell コマンドレット `new-azureadapplicationkeycredential` を使用して、ご自身のアプリケーション オブジェクトの対称キー資格情報を作成します。 この Azure PowerShell コマンドレットの詳細については、「[New-AzureADApplicationKeyCredential](https://docs.microsoft.com/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)」を参照してください。
 
 要求のマッピングが有効なアプリでは、[OpenID Connect メタデータ要求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)に `appid={client_id}` を追加して、トークン署名キーを検証する必要があります。 使用する必要がある OpenID Connect メタデータ ドキュメントのフォーマットは次のとおりです。 
 
@@ -469,7 +469,7 @@ Azure AD では、特定のサービス プリンシパルに対するトーク�
       Get-AzureADPolicy
       ```
 1. サービス プリンシパルにポリシーを割り当てます。 サービス プリンシパルの ObjectId も取得する必要があります。
-   1. 組織のすべてのサービス プリンシパルを表示するには、[Microsoft Graph にクエリ](/graph/traverse-the-graph)を実行します。 または、[Graph エクスプローラー](https://developer.microsoft.com/graph/graph-explorer)で、Azure AD アカウントにサインインします。
+   1. 組織のすべてのサービス プリンシパルを表示するには、[Microsoft Graph API にクエリを実行](/graph/traverse-the-graph)します。 または、[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) で、Azure AD アカウントにサインインします。
    2. サービス プリンシパルの ObjectId がある場合は、次のコマンドを実行します。  
      
       ``` powershell
@@ -493,7 +493,7 @@ Azure AD では、特定のサービス プリンシパルに対するトーク�
       Get-AzureADPolicy
       ```
 1. サービス プリンシパルにポリシーを割り当てます。 サービス プリンシパルの ObjectId も取得する必要があります。 
-   1. 組織のすべてのサービス プリンシパルを表示するには、[Microsoft Graph にクエリ](/graph/traverse-the-graph)を実行します。 または、[Graph エクスプローラー](https://developer.microsoft.com/graph/graph-explorer)で、Azure AD アカウントにサインインします。
+   1. 組織のすべてのサービス プリンシパルを表示するには、[Microsoft Graph API にクエリを実行](/graph/traverse-the-graph)します。 または、[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) で、Azure AD アカウントにサインインします。
    2. サービス プリンシパルの ObjectId がある場合は、次のコマンドを実行します。  
      
       ``` powershell
@@ -517,13 +517,13 @@ Azure AD では、特定のサービス プリンシパルに対するトーク�
       Get-AzureADPolicy
       ```
 1. サービス プリンシパルにポリシーを割り当てます。 サービス プリンシパルの ObjectId も取得する必要があります。 
-   1. 組織のすべてのサービス プリンシパルを表示するには、[Microsoft Graph にクエリ](/graph/traverse-the-graph)を実行します。 または、[Graph エクスプローラー](https://developer.microsoft.com/graph/graph-explorer)で、Azure AD アカウントにサインインします。
+   1. 組織のすべてのサービス プリンシパルを表示するには、[Microsoft Graph API にクエリを実行](/graph/traverse-the-graph)します。 または、[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) で、Azure AD アカウントにサインインします。
    2. サービス プリンシパルの ObjectId がある場合は、次のコマンドを実行します。 
      
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 SAML トークンで発行された要求を Azure portal でカスタマイズする方法については、「[方法: エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ](active-directory-saml-claims-customization.md)」を参照してください。

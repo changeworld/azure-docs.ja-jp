@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: 2912777c001a36ec913e2cfd618091ada5aa107a
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74807138"
 ---
 # <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-the-azure-cli"></a>ブラウザー、PowerShell、または Azure CLI を使用して HDInsight クラスターを削除する
@@ -22,9 +22,9 @@ HDInsight クラスターの課金は、クラスターが作成されると開�
 > [!IMPORTANT]  
 > HDInsight クラスターを削除しても、そのクラスターに関連付けられている Azure Storage アカウントまたは Data Lake Storage は削除されません。 これらのサービスに格納されているデータは、将来再利用できます。
 
-## <a name="azure-portal"></a>Azure ポータル
+## <a name="azure-portal"></a>Azure portal
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 2. 左側メニューから、 **[すべてのサービス]**  >  **[分析]**  >  **[HDInsight クラスター]** に移動し、クラスターを選択します。
 

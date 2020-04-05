@@ -17,10 +17,10 @@ ms.date: 10/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bcec326ddab1e74f43e1bb7ef446998a40799fd0
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73043554"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-veracode"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Veracode の統合
@@ -151,7 +151,7 @@ Veracode に対する Azure AD SSO を構成してテストするには、次の
    1. **名前**には、`B.Simon`を入力します。  
    1. **[ユーザー名]** に「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
    1. **[パスワードを表示]** を選び、表示された値を書き留めます。
-   1. **作成** を選択します。
+   1. **［作成］** を選択します
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

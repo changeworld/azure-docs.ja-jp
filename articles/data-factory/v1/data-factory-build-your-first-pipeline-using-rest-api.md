@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/01/2017
 ms.openlocfilehash: 9d8b05a2268a122289c529050c75fd27dd73245b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75438962"
 ---
-# <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>チュートリアル:Data Factory REST API を使用した初めての Azure データ ファクトリの作成
+# <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>チュートリアル: Data Factory REST API を使用した初めての Azure データ ファクトリの作成
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-build-your-first-pipeline.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
@@ -30,7 +30,7 @@ ms.locfileid: "75438962"
 
 
 > [!NOTE]
-> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[Azure Data Factory を使用してデータ ファクトリを作成する方法のクイック スタート](../quickstart-create-data-factory-rest-api.md)に関するページを参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[Azure Data Factory を使用したデータ ファクトリの作成に関するクイック スタート](../quickstart-create-data-factory-rest-api.md)に関するページを参照してください。
 
 この記事では、Data Factory REST API を使用して最初の Azure データ ファクトリを作成します。 その他のツールや SDK を使用してチュートリアルを行うには、ドロップダウン リストでいずれかのオプションを選択します。
 
@@ -168,10 +168,10 @@ curl.exe があるフォルダーに、以下の JSON ファイルを作成し�
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| 型 |データは Azure Blob Storage に存在するため、type プロパティを AzureBlob に設定しています。 |
+| type |データは Azure Blob Storage に存在するため、type プロパティを AzureBlob に設定しています。 |
 | linkedServiceName |前に作成した StorageLinkedService を参照します。 |
 | fileName |このプロパティは省略可能です。 このプロパティを省略した場合は、folderPath のすべてのファイルが取得されます。 このチュートリアルでは、input.log のみが処理されます。 |
-| 型 |ログ ファイルはテキスト形式です。そのため、TextFormat を使用します。 |
+| type |ログ ファイルはテキスト形式です。そのため、TextFormat を使用します。 |
 | columnDelimiter |ログ ファイル内の列はコンマ (,) で区切られています。 |
 | frequency/interval |frequency を Month に設定し、interval を 1 に設定しています。そのため、入力スライスは 1 か月ごとになります。 |
 | external |Data Factory サービスによって入力データが生成されない場合は、このプロパティを true に設定します。 |
@@ -314,13 +314,13 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 
 以下の点に注意してください。
 
-* Azure Data Factory の名前はグローバルに一意にする必要があります。 results に"**データ ファクトリ名 "FirstDataFactoryREST" は使用できません**" というエラーが表示される場合は、次の手順に従います。
+* Azure Data Factory の名前はグローバルに一意にする必要があります。 results に " **データ ファクトリ名 "FirstDataFactoryREST" は利用できません**" というエラーが表示される場合は、次の手順に従います。
   1. **datafactory.json** ファイルで名前を変更します (例: yournameFirstDataFactoryREST)。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。
   2. **$cmd** 変数に値が割り当てられる最初のコマンドで、FirstDataFactoryREST を新しい名前に置き換え、コマンドを実行します。
   3. REST API を呼び出す次の 2 つのコマンドを実行して、データ ファクトリを作成し、操作の結果を出力します。
 * Data Factory インスタンスを作成するには、Azure サブスクリプションの共同作成者または管理者である必要があります。
 * データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
-* エラー "**This subscription is not registered to use namespace Microsoft.DataFactory (このサブスクリプションは、名前空間 Microsoft.DataFactory を使用するように登録されていません)** " が表示された場合は、以下のいずれかの操作を行ってから、もう一度発行してみます。
+* "**サブスクリプションが名前空間 Microsoft.DataFactory を使用するように登録されていません**" というエラー メッセージが表示されたら、以下のいずれかの操作をしてから、もう一度発行してみます。
 
   * Azure PowerShell で次のコマンドを実行して、Data Factory プロバイダーを登録します。
 
@@ -419,7 +419,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
     ```
 
 ## <a name="create-pipeline"></a>パイプラインの作成
-この手順では、 **HDInsightHive** アクティビティを含む最初のパイプラインを作成します。 入力スライスは 1 か月ごと (frequency:Month、interval:1) に使用可能であり、出力スライスは 1 か月ごとに生成されるため、アクティビティの scheduler プロパティも 1 か月ごとに設定します。 出力データセットとアクティビティの scheduler の設定は一致している必要があります。 現在、スケジュールは出力データセットによって開始されるため、アクティビティが出力を生成しない場合でも、出力データセットを作成する必要があります。 アクティビティが入力を受け取らない場合は、入力データセットの作成を省略できます。
+この手順では、 **HDInsightHive** アクティビティを含む最初のパイプラインを作成します。 入力スライスは 1 か月ごと (frequency: Month、interval: 1) に使用可能であり、出力スライスは 1 か月ごとに生成されるため、アクティビティの scheduler プロパティも 1 か月ごとに設定します。 出力データセットとアクティビティの scheduler の設定は一致している必要があります。 現在、スケジュールは出力データセットによって開始されるため、アクティビティが出力を生成しない場合でも、出力データセットを作成する必要があります。 アクティビティが入力を受け取らない場合は、入力データセットの作成を省略できます。
 
 Azure Blob Storage の **adfgetstarted/inputdata** フォルダーに **input.log** ファイルがあることを確認し、次のコマンドを実行してパイプラインをデプロイします。 **start** と **end** が過去の日時に設定され、**isPaused** が false に設定されているため、パイプライン (パイプラインのアクティビティ) はデプロイするとすぐに実行されます。
 
@@ -484,7 +484,7 @@ Azure ポータルを使用して、スライスを監視し、問題のトラ�
 4. **HDInsight Hive** アクティビティを持つ**パイプライン**を作成しました。
 
 ## <a name="next-steps"></a>次のステップ
-この記事では、オンデマンド Azure HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。 コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、[Azure BLOB から Azure SQL にデータをコピーする方法のチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
+この記事では、オンデマンド Azure HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。 コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、「 [チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」を参照してください。
 
 ## <a name="see-also"></a>参照
 | トピック | 説明 |

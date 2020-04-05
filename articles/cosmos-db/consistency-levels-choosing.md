@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
 ms.openlocfilehash: cea157e272a2bf464141e592b8e742f314a83233
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75441915"
 ---
 # <a name="choose-the-right-consistency-level"></a>適切な整合性レベルの選択 

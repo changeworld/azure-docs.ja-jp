@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: cherylmc
 ms.openlocfilehash: e833e20085d7cfd8f727acb394851e96e7e19368
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75864368"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>回線のプロビジョニングと回線の状態の ExpressRoute ワークフロー

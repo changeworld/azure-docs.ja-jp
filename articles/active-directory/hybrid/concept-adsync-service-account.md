@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f228da5afc5998d8fa59ce2d720cec4c9f955b67
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67479048"
 ---
 # <a name="adsync-service-account"></a>ADSync サービス アカウント
@@ -81,5 +81,5 @@ Failure Code = 0x80004005
 Minor Number = 0 
 Description  = 'A network-related or instance-specific error has occurred while establishing a connection to SQL Server. Server is not found or not accessible. Check if instance name is correct and if SQL Server is configured to allow remote connections. For more information see SQL Server Books Online.'
 ```
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

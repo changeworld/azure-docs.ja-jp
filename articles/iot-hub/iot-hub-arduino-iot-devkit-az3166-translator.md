@@ -9,10 +9,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 12/19/2018
 ms.author: liydu
 ms.openlocfilehash: 8e840a1ae7161ea3e7b370889a1f0fb648ca120e
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73953352"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>IoT DevKit AZ3166 と Azure Functions および Cognitive Services を使用して言語翻訳ツールを作成する
@@ -90,7 +90,7 @@ ms.locfileid: "73953352"
 
    ![DevKit 構成モード](media/iot-hub-arduino-iot-devkit-az3166-translator/devkit-configuration-mode.png)
 
-1. `F1` をクリックし、 **[Azure IoT Device Workbench: デバイス設定の構成...] > [Config Device Connection String]\(デバイス接続文字列の構成\)** を入力して選択します。 **[Select IoT Hub Device Connection String]\(デバイス接続文字列の選択\)** を選び、DevKit に構成します。
+1. `F1` をクリックし、 **[Azure IoT Device Workbench:デバイス設定の構成...] > [Config Device Connection String]\(デバイス接続文字列の構成\)** を入力して選択します。 **[Select IoT Hub Device Connection String]\(デバイス接続文字列の選択\)** を選び、DevKit に構成します。
    ![接続文字列を構成する](media/iot-hub-arduino-iot-devkit-az3166-translator/configure-connection-string.png)
 
 1. 成功すると、通知が表示されます。
@@ -125,7 +125,7 @@ ms.locfileid: "73953352"
 
 - B ボタンを押して話します。 音声を送信し、翻訳テキストを表示するには、B ボタンを放します。
 
-## <a name="how-it-works"></a>動作のしくみ
+## <a name="how-it-works"></a>しくみ
 
 ![mini-solution-voice-to-tweet-diagram](media/iot-hub-arduino-iot-devkit-az3166-translator/diagram.png)
 
@@ -138,7 +138,7 @@ IoT DevKit では音声を記録し、HTTP 要求をポストして Azure Functi
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Functions と Cognitive Services を使用して IoT DevKit を翻訳ツールとして使用する方法について学習しました。 この使い方で学習した内容は次のとおりです。
 

@@ -1,19 +1,18 @@
 ---
 title: 商業マーケットプレースで Azure アプリ オファーのレビュー フィードバックを処理する
 description: Microsoft パートナー センターの商業マーケットプレース ポータルを使用して、Azure Marketplace、AppSource、クラウド ソリューション プロバイダー (CSP) プログラムでリスト登録または販売を行うために Azure アプリ オファーのレビュー フィードバックを処理する方法。
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 5dd74a7be95ecf92289f2a144c9c509c71ce935b
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 3932f3fc71dc6427b6cdf93d3a7bc58534a9981c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933642"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279795"
 ---
 # <a name="handling-review-feedback"></a>レビュー フィードバックの処理
 

@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 4a054c3c042e18f1679acd75e5ba5ad74f66edff
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73572767"
 ---
 # <a name="authentication-and-user-permissions"></a>認証とユーザーのアクセス許可
@@ -46,7 +46,7 @@ Azure Analysis Services サーバーは、Windows 認証、Active Directory パ�
 
 *  Multi-Factor Authentication (MFA) をサポートします。 Azure MFA は、電話、テキスト メッセージ、スマート カードと暗証番号 (PIN)、モバイル アプリ通知など、各種確認オプションでデータとアプリケーションへのアクセスを保護するのに役立ちます。 Azure AD との対話型 MFA はポップアップ ダイアログ ボックスで検証できます。
 
-### <a name="visual-studio"></a>Visual Studio
+### <a name="visual-studio"></a>Visual Studio
 
 Visual Studio は、MFA サポートがある Active Directory のユニバーサル認証を使って Azure Analysis Services に接続します。 ユーザーは、最初のデプロイ時に Azure にサインインするよう求められます。 ユーザーは、デプロイしているサーバーでサーバー管理者のアクセス許可を持つアカウントを使って Azure にサインインする必要があります。 初めて Azure にサインインするときに、トークンが割り当てられます。 将来の再接続のためにトークンはメモリにキャッシュされます。
 
@@ -72,11 +72,11 @@ Excel ユーザーは、Windows アカウント、組織 ID (メール アドレ
 
 ## <a name="database-roles"></a>データベース ロール
 
- 表形式モデルに定義されたロールはデータベース ロールです。 つまり、ロールには、Azure AD ユーザーとセキュリティ グループから構成されるメンバーが含まれます。このセキュリティ グループは、メンバーが model データベースに対して実行できるアクションを定義する特定のアクセス許可を持ちます。 データベース ロールは、データベース内に個別のオブジェクトとして作成され、そのロールが作成されたデータベースにのみ適用されます。   
+ テーブル モデル向けに定義されているロールは、データベース ロールです。 つまり、ロールには、Azure AD ユーザーとセキュリティ グループから構成されるメンバーが含まれます。このセキュリティ グループは、メンバーが model データベースに対して実行できるアクションを定義する特定のアクセス許可を持ちます。 データベース ロールは、データベース内に個別のオブジェクトとして作成され、そのロールが作成されたデータベースにのみ適用されます。   
   
- 既定では、新しい表形式モデル プロジェクトを作成するときに、モデル プロジェクトはロールを持ちません。 ロールは、Visual Studio の [ロール マネージャー] ダイアログ ボックスを使用して定義できます。 モデル プロジェクトのデザイン時にロールが定義された場合、それらはモデル ワークスペース データベースにのみ適用されます。 モデルをデプロイすると、デプロイされたモデルに同じロールが適用されます。 モデルのデプロイ後、サーバーとデータベースの管理者は、SSMS を使ってロールとメンバーを管理できます。 詳しくは、「[データベース ロールとユーザーの管理](analysis-services-database-users.md)」をご覧ください。
+ 既定では、テーブル モデル プロジェクトの新規作成時点では、モデル プロジェクトにロールはありません。 ロールは、Visual Studio の [ロール マネージャー] ダイアログ ボックスを使用して定義できます。 モデル プロジェクトのデザイン時にロールが定義された場合、それらはモデル ワークスペース データベースにのみ適用されます。 モデルを配置すると、同じロールが配置済みモデルに適用されます。 モデルのデプロイ後、サーバーとデータベースの管理者は、SSMS を使ってロールとメンバーを管理できます。 詳しくは、「[データベース ロールとユーザーの管理](analysis-services-database-users.md)」をご覧ください。
   
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Active Directory のグループによるリソースへのアクセス管理](../active-directory/fundamentals/active-directory-manage-groups.md)   
 [データベース ロールとユーザーの管理](analysis-services-database-users.md)  

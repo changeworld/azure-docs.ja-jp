@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 7f1927a67127766c72be463c283225135b2a2aad
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77466911"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>クラウド ソリューション プロバイダー プログラム用の StorSimple Virtual Array をデプロイする
@@ -103,5 +103,5 @@ StorSimple Virtual Array は、お客様のクラウド ソリューション �
 
 ## <a name="next-steps"></a>次のステップ
 
-- CSP の StorSimple について他に疑問がある場合CSP の StorSimple について他に疑問がある場合は、「[クラウド ソリューション プロバイダー プログラムの StorSimple: よく寄せられる質問](storsimple-partner-csp-faq.md)」をご覧ください。
+- CSP の StorSimple について他に疑問がある場合は、[CSP の StorSimple: よく寄せられる質問](storsimple-partner-csp-faq.md)に関するページに進みます。
 - StorSimple をデプロイする準備ができている場合は、[CSP での StorSimple のデプロイ](storsimple-partner-csp-deploy.md)に関するページに進みます。

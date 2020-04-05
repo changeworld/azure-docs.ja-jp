@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: b-juche
 ms.openlocfilehash: 6f5d84dea2e835fd12a062b628181354295ed9f6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66299209"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234111"
 ---
 # <a name="register-for-azure-netapp-files"></a>Azure NetApp Files に登録する
 
@@ -28,7 +28,7 @@ ms.locfileid: "66299209"
 
 この記事では、Azure NetApp Files に登録してサービスの使用を開始する方法について説明します。
 
-## <a name="waitlist"></a>サービスにアクセスするための順番待ちリクエストを送信する
+## <a name="submit-a-waitlist-request-for-accessing-the-service"></a><a name="waitlist"></a>サービスにアクセスするための順番待ちリクエストを送信する
 
 1. [Azure NetApp Files の順番待ち送信ページ](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u)から、Azure NetApp Files サービスにアクセスするための順番待ちリクエストを送信します。 
 
@@ -36,7 +36,7 @@ ms.locfileid: "66299209"
 
 2. Azure NetApp Files チームからの正式な確認メールを待ってから他のタスクを続けてください。 
 
-## <a name="resource-provider"></a>NetApp リソース プロバイダーを登録する
+## <a name="register-the-netapp-resource-provider"></a><a name="resource-provider"></a>NetApp リソース プロバイダーを登録する
 
 サービスを使用するには、Azure NetApp Files 用に Azure リソース プロバイダーを登録する必要があります。
 
@@ -94,6 +94,6 @@ ms.locfileid: "66299209"
       ![登録済みの Microsoft.NetApp](../media/azure-netapp-files/azure-netapp-files-registered-resource-providers.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [NetApp アカウントを作成する](azure-netapp-files-create-netapp-account.md)

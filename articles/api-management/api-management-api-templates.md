@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: eee95a2b6acde3ad3b7d94cf5cdd0f74f9f09fd9
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176875"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231619"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API Management の API テンプレート
 
@@ -45,7 +45,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-## <a name="APIList"></a> API リスト  
+## <a name="api-list"></a><a name="APIList"></a> API リスト  
  **API リスト** テンプレートを使用すると、開発者ポータルで API リスト ページの本文をカスタマイズすることができます。  
   
  ![開発者ポータルの API リスト](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM 開発者ポータル テンプレートの API リスト")  
@@ -113,7 +113,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }  
 ```  
   
-## <a name="Product"></a> 操作  
+## <a name="operation"></a><a name="Product"></a> Operation  
  **操作**テンプレートを使用すると、開発者ポータルで操作ページの本文をカスタマイズすることができます。  
   
  ![開発者ポータルの操作ページ](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "APIM 開発者ポータル テンプレートの操作ページ")  
@@ -643,7 +643,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }  
 ```  
   
-## <a name="CodeSamples"></a> コード サンプル  
+## <a name="code-samples"></a><a name="CodeSamples"></a> コード サンプル  
  次のテンプレートを使用して、操作ページの個々のコード サンプルの本文をカスタマイズできます。  
   
  ![開発者ポータル テンプレートのコード サンプル](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "APIM 開発者ポータル テンプレートのコード サンプル")  
@@ -664,7 +664,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 -   [Ruby](#Ruby)  
   
-### <a name="Curl"></a> Curl  
+### <a name="curl"></a><a name="Curl"></a> Curl  
  **DocumentationSamplesCurl** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
@@ -717,7 +717,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 }  
 ```  
   
-### <a name="CSharp"></a> C#  
+### <a name="c"></a><a name="CSharp"></a> C#  
  **DocumentationSamplesCsharp** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
@@ -896,7 +896,7 @@ namespace CSHttpClientSample
 }  
 ```  
   
-### <a name="Stub"></a> Java  
+### <a name="java"></a><a name="Stub"></a> Java  
  **DocumentationSamplesJava** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
@@ -992,7 +992,7 @@ public class JavaSample
 }  
 ```  
   
-### <a name="JavaScript"></a> JavaScript  
+### <a name="javascript"></a><a name="JavaScript"></a> JavaScript  
  **DocumentationSamplesJs** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
@@ -1081,7 +1081,7 @@ public class JavaSample
 }  
 ```  
   
-### <a name="ObjectiveC"></a> Objective C  
+### <a name="objective-c"></a><a name="ObjectiveC"></a> Objective C  
  **DocumentationSamplesObjc** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
@@ -1193,7 +1193,7 @@ int main(int argc, const char * argv[])
 }  
 ```  
   
-### <a name="PHP"></a> PHP  
+### <a name="php"></a><a name="PHP"></a> PHP  
  **DocumentationSamplesPhp** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
@@ -1283,7 +1283,7 @@ catch (HttpException $ex)
 }  
 ```  
   
-### <a name="Python"></a> Python  
+### <a name="python"></a><a name="Python"></a> Python  
  **DocumentationSamplesPython** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
@@ -1401,7 +1401,7 @@ except Exception as e:
 }  
 ```  
   
-### <a name="Ruby"></a> Ruby  
+### <a name="ruby"></a><a name="Ruby"></a> Ruby  
  **DocumentationSamplesRuby** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
@@ -1472,5 +1472,5 @@ puts response.body
 }  
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](api-management-developer-portal-templates.md)に関するページを参照してください。

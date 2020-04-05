@@ -68,7 +68,7 @@
               href: manage-certificates-for-federated-single-sign-on.md
             - name: テナント制限
               href: tenant-restrictions.md
-            - name: SAML トークン暗号化 (プレビュー) の構成
+            - name: SAML トークン暗号化の構成
               href: howto-saml-token-encryption.md
             - name: エンドユーザーのポータル
               href: end-user-experiences.md
@@ -139,9 +139,7 @@
               href: grant-admin-consent.md
             - name: 管理者の同意ワークフローの構成 (プレビュー)
               href: configure-admin-consent-workflow.md
-            - name: ユーザーとグループをアプリに割り当てる方法
-              href: methods-for-assigning-users-and-groups.md
-            - name: アプリへのユーザーの割り当て
+            - name: ユーザーまたはグループをアプリに割り当てる
               href: assign-user-or-group-access-portal.md
             - name: マイ アプリでのコレクションの作成
               href: access-panel-collections.md
@@ -167,7 +165,7 @@
               href: migrate-adfs-apps-to-azure.md
             - name: AD FS アプリケーション アクティビティ レポートの使用 (プレビュー)
               href: migrate-adfs-application-activity.md
-        - name: トラブルシューティング
+        - name: '[トラブルシューティング]'
           items:
             - name: アプリの追加のトラブルシューティング
               items:

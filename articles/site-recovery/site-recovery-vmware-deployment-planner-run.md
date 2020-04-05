@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: mayg
 ms.openlocfilehash: 044e5c5df8e0af67e4717b864de1e31fc2520408
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73953295"
 ---
 # <a name="run-the-deployment-planner-for-vmware-disaster-recovery"></a>VMware ディザスター リカバリーのために Deployment Planner を実行する
@@ -119,12 +119,12 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Direc
 ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Directory “E:\vCenter1_ProfiledData” -Server vCenter1.contoso.com -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -NoOfDaysToProfile  15  -User vCenterUser1
 ```
 
-#### <a name="example-3-profile-vms-for-60-minutes-for-a-quick-test-of-the-tool"></a>例 3:ツールの簡単なテストを行うために VM を 60 分間プロファイリングする
+#### <a name="example-3-profile-vms-for-60-minutes-for-a-quick-test-of-the-tool"></a>例 3: ツールの簡単なテストを行うために VM を 60 分間プロファイリングする
 ```
 ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Directory “E:\vCenter1_ProfiledData” -Server vCenter1.contoso.com -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -NoOfMinutesToProfile 60  -User vCenterUser1
 ```
 
-#### <a name="example-4-profile-vms-for-2-hours-for-a-proof-of-concept"></a>例 4:概念実証のために VM を 2 時間プロファイリングする
+#### <a name="example-4-profile-vms-for-2-hours-for-a-proof-of-concept"></a>例 4: 概念実証のために VM を 2 時間プロファイリングする
 ```
 ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Directory “E:\vCenter1_ProfiledData” -Server vCenter1.contoso.com -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -NoOfHoursToProfile 2 -User vCenterUser1
 ```
@@ -185,12 +185,12 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Serve
 ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Server vCenter1.contoso.com -Directory “\\PS1-W2K12R2\vCenter1_ProfiledData” -VMListFile “\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt”
 ```
 
-#### <a name="example-3-generate-a-report-with-a-specific-bandwidth-and-goal-to-complete-ir-within-specified-time"></a>例 3:特定の帯域幅と初回レプリケーションの目標所要時間を指定してレポートを生成する
+#### <a name="example-3-generate-a-report-with-a-specific-bandwidth-and-goal-to-complete-ir-within-specified-time"></a>例 3: 特定の帯域幅と初回レプリケーションの目標所要時間を指定してレポートを生成する
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -Bandwidth 100 -GoalToCompleteIR 24
 ```
 
-#### <a name="example-4-generate-a-report-with-a-5-percent-growth-factor-instead-of-the-default-30-percent"></a>例 4:増加率を既定値の 30% から 5% に変更してレポートを生成する
+#### <a name="example-4-generate-a-report-with-a-5-percent-growth-factor-instead-of-the-default-30-percent"></a>例 4: 増加率を既定値の 30% から 5% に変更してレポートを生成する
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -GrowthFactor 5
 ```
@@ -290,5 +290,5 @@ ASRDeploymentPlanner.exe -Operation GetThroughput -Directory  E:\vCenter1_Profil
 >
 >  4. [レプリケーションに使用されるネットワーク帯域幅を増やす](./site-recovery-plan-capacity-vmware.md#control-network-bandwidth)ために、プロセス サーバーで Site Recovery の設定を変更します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [生成されたレポートの分析](site-recovery-vmware-deployment-planner-analyze-report.md)

@@ -10,10 +10,10 @@ ms.date: 03/05/2020
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: abb38dfc342c8ff692ed1a3a05376b5dcefe8a3d
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78399562"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用した Azure Application Gateway による Web トラフィックの転送

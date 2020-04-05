@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 90c890925378c30ce5688d2713990b4b2cdd20c5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75430691"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Azure API Management の OAuth 2.0 を使用して開発者アカウントを認証する方法
@@ -27,7 +27,7 @@ ms.locfileid: "75430691"
 > [!IMPORTANT]
 > OAuth 2.0 認証は、新しい開発者ポータルの対話型コンソールではまだ使用できません。
 
-## <a name="prerequisites"> </a>前提条件
+## <a name="prerequisites"></a><a name="prerequisites"> </a>前提条件
 
 このガイドでは、開発者アカウントに OAuth 2.0 認証を使用するように API Management サービス インスタンスを構成する方法を説明していますが、OAuth 2.0 プロバイダーを構成する方法は説明していません。 手順は似ていて、API Management サービス インスタンスでの OAuth 2.0 の構成に使用される情報は同じですが、各 OAuth 2.0 プロバイダーの構成は異なっています。 このトピックは、Azure Active Directory を OAuth 2.0 プロバイダーとして使用する例を示しています。
 
@@ -36,7 +36,7 @@ ms.locfileid: "75430691"
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="step1"> </a>API Management で OAuth 2.0 承認サーバーを構成する
+## <a name="configure-an-oauth-20-authorization-server-in-api-management"></a><a name="step1"> </a>API Management で OAuth 2.0 承認サーバーを構成する
 
 > [!NOTE]
 > API Management サービス インスタンスをまだ作成していない場合は、[API Management サービス インスタンスの作成][Create an API Management service instance]に関するページを参照してください。
@@ -82,7 +82,7 @@ ms.locfileid: "75430691"
 
     フォームを完了したら、 **[作成]** をクリックして API Management OAuth 2.0 認証サーバーの構成を保存します。 サーバーの構成が保存された後、次のセクションで説明されているように、この構成を使用するように API を構成できます。
 
-## <a name="step2"> </a>OAuth 2.0 ユーザー承認を使用するように API を構成する
+## <a name="configure-an-api-to-use-oauth-20-user-authorization"></a><a name="step2"> </a>OAuth 2.0 ユーザー承認を使用するように API を構成する
 
 1. 左側の **[API Management]** メニューの **[API]** をクリックします。
 
@@ -96,7 +96,7 @@ ms.locfileid: "75430691"
 
     ![OAuth 2.0 の設定](./media/api-management-howto-oauth2/oauth-07.png)
 
-## <a name="step3"> </a>従来の開発者ポータル - OAuth 2.0 ユーザー承認をテストする
+## <a name="legacy-developer-portal---test-the-oauth-20-user-authorization"></a><a name="step3"> </a>従来の開発者ポータル - OAuth 2.0 ユーザー承認をテストする
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 

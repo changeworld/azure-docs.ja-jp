@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: 6ee339cb709a5d825b39b4accf294761c99ee41a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846283"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236855"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure Cognitive Search におけるサービスの制限
 
@@ -46,7 +46,7 @@ ms.locfileid: "76846283"
 
 ## <a name="index-limits"></a>インデックスの制限
 
-| リソース | 無料 | Basic&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | L2 |
+| リソース | Free | Basic&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | L2 |
 | -------- | ---- | ------------------- | --- | --- | --- | --- | --- | --- |
 | 最大インデックス |3 |5 または 15 |50 |200 |200 |パーティションあたり 1,000、またはサービスあたり 3,000 |10 |10 |
 | インデックスあたりの単純型フィールドの最大数 |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
@@ -84,7 +84,7 @@ ms.locfileid: "76846283"
 
 ドキュメントの制限の対象となるサービスについては、次の上限が適用されます。
 
-|  無料 | Basic | S1 | S2 | S3 | S3&nbsp;HD |
+|  Free | Basic | S1 | S2 | S3 | S3&nbsp;HD |
 |-------|-------|----|----|----|-------|
 |  10,000 |100 万&nbsp; |パーティションあたり 1,500 万、またはサービスあたり 1 億 8,000 万 |パーティションあたり 6,000 万、またはサービスあたり 7 億 2,000 万 |パーティションあたり 1 億 2,000 万、またはサービスあたり 14 億 |インデックスあたり 100 万、またはパーティションあたり 2 億 |
 
@@ -136,7 +136,7 @@ ms.locfileid: "76846283"
 
 シノニム マップの最大許容数は、価格レベルによって異なります。 各規則には最大 20 の拡張を含めることができます。ここで、拡張は同義語です。 たとえば、"cat" の場合、"kitty"、"feline"、および "felis" (ネコ属) との関連は、3 つの拡張としてカウントされます。
 
-| リソース | 無料 | Basic | S1 | S2 | S3 | S3-HD |L1 | L2 |
+| リソース | Free | Basic | S1 | S2 | S3 | S3-HD |L1 | L2 |
 | -------- | -----|------ |----|----|----|-------|---|----|
 | シノニムマップの最大数 |3 |3|5 |10 |20 |20 | 10 | 10 |
 | マップごとの規則の最大数 |5000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |

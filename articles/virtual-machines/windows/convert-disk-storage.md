@@ -8,10 +8,10 @@ ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: e339f0c7ca0807eec3e160eeb3464044c2ef29ba
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720947"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>マネージド ディスクのストレージの種類を更新する

@@ -9,10 +9,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: ce7c92f121fb458d528d63d0af0aad025b377386
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77086677"
 ---
 # <a name="monitor-topics-and-event-subscriptions"></a>トピックとイベント サブスクリプションを監視する

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 12/05/2019
 ms.author: juliako
 ms.openlocfilehash: 872dad95fc5b536c51e251612f40439da020a059
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75779639"
 ---
 # <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>Media Services v3 REST API 呼び出し用に Postman を構成する
@@ -97,7 +97,7 @@ AMS v3 リソースの操作を開始する前に、サービス プリンシパ
 * アプリケーションが失敗し、"HTTP 504:ゲートウェイ タイムアウト" というエラーが表示される場合、Media Services アカウントに求められる場所以外の値に場所変数が明示的に設定されていることを確認します。 
 * "アカウントが見つかりません" というエラーが表示される場合、Media Services アカウントが入っている場所に本文の JSON メッセージの場所プロパティが設定されていることも確認します。 
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - [Media Services アカウントにファイルをアップロードする - REST](upload-files-rest-how-to.md)
 - [Media Services を使用してフィルターを作成する - REST](filters-dynamic-manifest-rest-howto.md)

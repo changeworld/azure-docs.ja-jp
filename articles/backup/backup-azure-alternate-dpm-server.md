@@ -4,10 +4,10 @@ description: Recovery Services コンテナーに保護しているデータを�
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.openlocfilehash: 2a89697899fc244848854978de4b25e79ef6f184
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74173495"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Azure Backup Server からデータを回復する
@@ -78,14 +78,14 @@ Azure Backup Server からデータを回復するには:
 
 ## <a name="troubleshooting-error-messages"></a>エラー メッセージのトラブルシューティング
 
-| No. | エラー メッセージ | トラブルシューティングの手順 |
+| いいえ。 | エラー メッセージ | トラブルシューティングの手順 |
 |:---:|:--- |:--- |
 | 1. |このサーバーは資格情報コンテナーが指定するコンテナーに登録されていません。 |**原因:** 選択したコンテナー資格情報ファイルが回復対象の Azure Backup Server に関連付けられている Recovery Services コンテナーに属さないとき、このエラーが表示されます。 <br> **解決策:** Azure Backup Server が登録されている Recovery Services コンテナーからコンテナー資格情報ファイルをダウンロードします。 |
 | 2. |回復可能なデータがないか、選択したサーバーが DPM サーバーではありません。 |**原因:** 他の Azure Backup Server が Recovery Services コンテナーに登録されていないか、サーバーがまだメタデータをアップロードしていないか、選択したサーバーが (Windows Server または Windows クライアントを使用する) Azure Backup Server ではありません。 <br> **解決策:** 他の Azure Backup Server が Recovery Services コンテナーに登録されている場合、最新の Azure Backup エージェントがインストールされていることを確認します。 <br>他の Azure Backup Server が Recovery Services コンテナーに登録されている場合、インストール後 1 日待ってから、回復プロセスを開始します。 クラウドに保護されたすべてのバックアップのメタデータを夜間ジョブがアップロードします。 このデータを回復に利用できます。 |
 | 3. |このコンテナーには他の DPM サーバーが登録されていません。 |**原因:** 他の Azure Backup Server が回復元のコンテナーに登録されていません。<br>**解決策:** 他の Azure Backup Server が Recovery Services コンテナーに登録されている場合、最新の Azure Backup エージェントがインストールされていることを確認します。<br>他の Azure Backup Server が Recovery Services コンテナーに登録されている場合、インストール後 1 日待ってから、回復プロセスを開始します。 保護されたすべてのバックアップのメタデータを夜間ジョブがクラウドにアップロードします。 このデータを回復に利用できます。 |
 | 4. |入力した暗号化パスフレーズが、サーバー: **\<サーバー名>** に関連付けられているパスフレーズと一致しません |**原因:** 回復対象の Azure Backup Server のデータからデータを暗号化する過程で使用された暗号化パスフレーズが指定した暗号化パスフレーズに一致しません。 エージェントはデータを復号できません。 そのため、回復に失敗します。<br>**解決策:** データを回復する Azure Backup Server に関連付けられている暗号化パスフレーズとまったく同じものを指定してください。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 その他のよく寄せられる質問をお読みください。
 

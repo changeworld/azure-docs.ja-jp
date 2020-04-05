@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.openlocfilehash: 5d48f6e02719bbf647cdbf800550d73ce83a018f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77201001"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Azure portal でのアカウント管理者のタスク

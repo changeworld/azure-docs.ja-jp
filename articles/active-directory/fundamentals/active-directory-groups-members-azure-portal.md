@@ -14,10 +14,10 @@ ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f1c83c57be63ae9e2a4d4113accaefe8a2c2b525
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68561965"
 ---
 # <a name="add-or-remove-group-members-using-azure-active-directory"></a>Azure Active Directory を使用してグループのメンバーを追加または削除する
@@ -25,7 +25,7 @@ Azure Active Directory を使用して、グループのメンバーの追加と
 
 ## <a name="to-add-group-members"></a>グループのメンバーを追加するには
 
-1. ディレクトリの全体管理者アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. ディレクトリのグローバル管理者アカウントを使用して [Azure portal](https://portal.azure.com) にサインインします。
 
 2. **[Azure Active Directory]** を選択し、 **[グループ]** を選択します。
 
@@ -53,7 +53,7 @@ Azure Active Directory を使用して、グループのメンバーの追加と
 
     ![メンバー情報ページの [削除] オプション](media/active-directory-groups-members-azure-portal/remove-members-from-group.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [グループとメンバーを表示する](active-directory-groups-view-azure-portal.md)
 

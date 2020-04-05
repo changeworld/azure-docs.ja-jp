@@ -17,10 +17,10 @@ ms.date: 10/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b73b8769b5f7360ba4ad778600b1000b8b3f7bc7
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72377234"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshworks"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Freshworks の統合
@@ -29,7 +29,7 @@ ms.locfileid: "72377234"
 
 * Freshworks にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Freshworks に自動的にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -101,7 +101,7 @@ Freshworks で Azure AD SSO を構成してテストするには、次の構成�
 
     a. **[署名オプション]** として **[SAML 応答への署名]** を選択します。
 
-    b. **[Save]** をクリックします。
+    b. **[保存]** をクリックします。
 
 1. **[Freshworks のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
@@ -157,7 +157,7 @@ Freshworks で Azure AD SSO を構成してテストするには、次の構成�
 
     d. Base64 でエンコードされた証明書をメモ帳で開き、その内容をコピーして **[セキュリティ証明書]** ボックスに貼り付けます。
 
-    e. **[Save]** をクリックします。
+    e. **[保存]** をクリックします。
 
 ### <a name="create-freshworks-test-user"></a>Freshworks のテスト ユーザーの作成
 

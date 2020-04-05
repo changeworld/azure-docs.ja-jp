@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 30b9b8393007033a7c2e6798cd57d9cf0128820d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75464705"
 ---
 # <a name="performance-metrics"></a>パフォーマンス メトリック

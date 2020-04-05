@@ -9,10 +9,10 @@ ms.date: 07/01/2019
 ms.author: cynthn
 ms.subservice: disks
 ms.openlocfilehash: 971461f33b3a80363ffb0835ddc74f46d1a34fb1
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78945200"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Azure VM のエフェメラル OS ディスク

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
 ms.openlocfilehash: becbf88aeda164f7d916cbc1f1ace89262cc1a3f
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77921625"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Azure VM のローカルの Windows パスワードをオフラインでリセットする
@@ -45,7 +45,7 @@ Azure ゲスト エージェントへのアクセス権がない場合に Azure 
 
 1. 影響を受けている VM の OS ディスクのスナップショットを取得し、スナップショットからディスクを作成して、トラブルシューティング用 VM にディスクをアタッチします。 詳細については、[Azure portal を使用した OS ディスクの復旧 VM へのアタッチによる Windows VM のトラブルシューティング](troubleshoot-recovery-disks-portal-windows.md)に関するページを参照してください。
 2. リモート デスクトップを使用してトラブルシューティング用 VM に接続します。
-3. ソース VM のドライブ上の `\Windows\System32\GroupPolicy` に `gpt.ini` を作成します (gpt.ini が存在する場合は、gpt.ini.bak に名前を変更します)。
+3. ソース VM のドライブ上の `gpt.ini` に `\Windows\System32\GroupPolicy` を作成します (gpt.ini が存在する場合は、gpt.ini.bak に名前を変更します)。
    
    > [!WARNING]
    > トラブルシューティング VM の OS ドライブである C:\Windows に誤って次のファイルを作成していないかご確認ください。 次のファイルは、データ ディスクとして接続されているソース VM の OS ドライブに作成してください。
@@ -61,7 +61,7 @@ Azure ゲスト エージェントへのアクセス権がない場合に Azure 
      
      ![gpt.ini を作成する](./media/reset-local-password-without-agent/create-gpt-ini.png)
 
-4. `\Windows\System32\GroupPolicy\Machines\Scripts\` に `scripts.ini` を作成します。 非表示のフォルダーが表示されていることを確認します。 必要に応じて、`Machine` フォルダーまたは `Scripts` フォルダーを作成します。
+4. `scripts.ini` に `\Windows\System32\GroupPolicy\Machines\Scripts\` を作成します。 非表示のフォルダーが表示されていることを確認します。 必要に応じて、`Machine` フォルダーまたは `Scripts` フォルダーを作成します。
    
    * 作成した `scripts.ini` ファイルに次の行を追加します。
      
@@ -73,7 +73,7 @@ Azure ゲスト エージェントへのアクセス権がない場合に Azure 
      
      ![scripts.ini を作成する](./media/reset-local-password-without-agent/create-scripts-ini.png)
 
-5. `\Windows\System32` に次の内容を含む `FixAzureVM.cmd` を作成します。`<username>` と `<newpassword>` は実際の値に置き換えます。
+5. `FixAzureVM.cmd` に次の内容を含む `\Windows\System32` を作成します。`<username>` と `<newpassword>` は実際の値に置き換えます。
    
     ```
     net user <username> <newpassword> /add
@@ -149,7 +149,7 @@ Azure ゲスト エージェントへのアクセス権がない場合に Azure 
      
       ![接続されたデータ ディスクを表示する](./media/reset-local-password-without-agent/troubleshooting-vm-file-explorer-classic.png)
 
-4. ソース VM のドライブ上の `\Windows\System32\GroupPolicy` に `gpt.ini` を作成します (`gpt.ini` が存在する場合は、`gpt.ini.bak` に名前を変更します)。
+4. ソース VM のドライブ上の `gpt.ini` に `\Windows\System32\GroupPolicy` を作成します (`gpt.ini` が存在する場合は、`gpt.ini.bak` に名前を変更します)。
    
    > [!WARNING]
    > トラブルシューティング VM の OS ドライブである `C:\Windows` に誤って次のファイルを作成していないかご確認ください。 次のファイルは、データ ディスクとして接続されているソース VM の OS ドライブに作成してください。
@@ -165,7 +165,7 @@ Azure ゲスト エージェントへのアクセス権がない場合に Azure 
      
      ![gpt.ini を作成する](./media/reset-local-password-without-agent/create-gpt-ini-classic.png)
 
-5. `\Windows\System32\GroupPolicy\Machines\Scripts\` に `scripts.ini` を作成します。 非表示のフォルダーが表示されていることを確認します。 必要に応じて、`Machine` フォルダーまたは `Scripts` フォルダーを作成します。
+5. `scripts.ini` に `\Windows\System32\GroupPolicy\Machines\Scripts\` を作成します。 非表示のフォルダーが表示されていることを確認します。 必要に応じて、`Machine` フォルダーまたは `Scripts` フォルダーを作成します。
    
    * 作成した `scripts.ini` ファイルに次の行を追加します。
 
@@ -177,7 +177,7 @@ Azure ゲスト エージェントへのアクセス権がない場合に Azure 
      
      ![scripts.ini を作成する](./media/reset-local-password-without-agent/create-scripts-ini-classic.png)
 
-6. `\Windows\System32` に次の内容を含む `FixAzureVM.cmd` を作成します。`<username>` と `<newpassword>` は実際の値に置き換えます。
+6. `FixAzureVM.cmd` に次の内容を含む `\Windows\System32` を作成します。`<username>` と `<newpassword>` は実際の値に置き換えます。
    
     ```
     net user <username> <newpassword> /add

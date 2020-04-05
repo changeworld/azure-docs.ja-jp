@@ -1,26 +1,20 @@
 ---
 title: インクルード ファイル
 description: 業界の分類のインクルード ファイル
-services: commercial marketplace
 documentationcenter: partner-center-commercial-marketplace
 author: qianw211
-manager: evansma
-editor: ''
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.devlang: na
 ms.topic: include
-ms.tgt_pltfrm: na
-ms.workload: identity
 ms.date: 09/20/2019
-ms.author: v-qiwe
 ms.custom: include file
-ms.openlocfilehash: 144540b3d50c217f74608cedb546b80ab7ba222b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 19fac46fae2ae938c4ed00967171067ec9f67435
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825539"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277257"
 ---
 必要に応じて、各業界で最大 2 つの業界と 2 つの業種を選択できます。 これらのカテゴリは、業界および業種が検索フィルターで使用され、ネットショップで適用される場合に、オファーを表示するために使用されます。  特定の業界や業種をターゲットとするオファーの場合は、オファーの説明で選択した業種または業種をサポートする方法を必ず説明します。  そうしない場合、オファーが業界固有ではない場合は、選択せずにこのセクションを空白のままにします。
 
@@ -31,7 +25,7 @@ ms.locfileid: "73825539"
 | :------------------- | :-------------------|
 | *自動車     | *自動車 |
 | 農業     | *その他 - 区分なし |
-| ディストリビューション    | *卸売 <br> *小包の発送 |
+| Distribution    | *卸売 <br> *小包の発送 |
 | 教育     | *高等教育 <br> *初等、中等教育/K-12 <br> *図書館と美術館 |
 | 金融サービス     | *銀行と証券 <br> *保険 |
 | Government    | *防御とインテリジェンス (以前の "国家安全保障と公安") <br> *公安と司法 <br> *民間政府 |

@@ -9,10 +9,10 @@ ms.date: 05/22/2019
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: ee80c04a6365c2cf337c4033a90df8d2993c299d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76845981"
 ---
 次の制限は、Azure Event Grid システムのトピックとカスタム トピックに適用されます。イベント ドメインには適用*されません*。

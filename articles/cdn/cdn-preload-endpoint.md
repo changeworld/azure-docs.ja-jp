@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/12/2018
 ms.author: magattus
 ms.openlocfilehash: d91507ad2cb271b23b588ef7da88e6e6712915b1
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593575"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Azure CDN エンドポイント上の資産を事前に読み込む
@@ -66,7 +66,7 @@ ms.locfileid: "67593575"
 > 
 > 
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 * [Azure CDN エンドポイントの消去](cdn-purge-endpoint.md)
 * [Azure CDN REST API リファレンス: エンドポイント上のコンテンツの事前読み込み](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
 * [Azure CDN REST API リファレンス: エンドポイントからのコンテンツの消去](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)

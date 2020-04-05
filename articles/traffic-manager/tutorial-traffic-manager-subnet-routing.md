@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: rohink
 ms.openlocfilehash: 49e0bce6eea8fac32f49bb905c225e898e709af0
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77136280"
 ---
 # <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>チュートリアル:Traffic Manager を使用してユーザーのサブネットに基づいて特定のエンドポイントにトラフィックを転送する
@@ -154,7 +154,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 
     | 設定                 | Value                                              |
     | ---                     | ---                                                |
-    | Name                   | この名前は trafficmanager.net ゾーン内で一意である必要があります。結果的に、Traffic Manager プロファイルへのアクセスに使用される、DNS 名.trafficmanager.net になるためです。                                   |
+    | 名前                   | この名前は trafficmanager.net ゾーン内で一意である必要があります。結果的に、Traffic Manager プロファイルへのアクセスに使用される、DNS 名.trafficmanager.net になるためです。                                   |
     | ルーティング方法          | **[サブネット]** ルーティング方式を選択します。                                       |
     | サブスクリプション            | サブスクリプションを選択します。                          |
     | Resource group          | **[既存]** を選択し、「*myResourceGroupTM1*」と入力します。 |
@@ -174,7 +174,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
     | 設定                 | Value                                              |
     | ---                     | ---                                                |
     | Type                    | Azure エンドポイント                                   |
-    | Name           | myInternalWebSiteEndpoint                                        |
+    | 名前           | myInternalWebSiteEndpoint                                        |
     | ターゲット リソースの種類           | パブリック IP アドレス                          |
     | ターゲット リソース          | **パブリック IP アドレスを選択**して、同じサブスクリプションでパブリック IP アドレスを持つリソースの一覧を表示します。 **[リソース]** で、*myIISVMEastUS-ip* という名前のパブリック IP アドレスを選択します。 これは、米国東部内の IIS サーバー VM のパブリック IP アドレスです。|
     |  サブネット ルーティングの設定    |   *myVMEastUS* テスト VM の IP アドレスを追加します。 この VM から送信されたすべてのユーザー クエリは、*myInternalWebSiteEndpoint* に転送されます。    |

@@ -16,10 +16,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1fe6b614aa05ab3e774aa2f946b78cabbc9f1a3b
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68516722"
 ---
 # <a name="what-are-storsimple-virtual-array-limits"></a>StorSimple Virtual Array の制限とは

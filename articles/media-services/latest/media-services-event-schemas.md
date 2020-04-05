@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 01/07/2020
+ms.date: 02/25/2020
 ms.author: juliako
-ms.openlocfilehash: b1c094689c7669f03d5355be7a77b1836c90974c
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: d4a206bbddedfe9f23a943df27c6ac4b5fe17e8a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750862"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227123"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Media Services 用の Azure Event Grid スキーマ
 
@@ -134,10 +134,10 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | previousState | string | イベントの前のジョブの状態。 |
-| 状態 | string | このイベントで通知されるジョブの新しい状態。 例: "Scheduled:The job is ready to start" または "Finished:The job is finished"。|
+| state | string | このイベントで通知されるジョブの新しい状態。 例: "Scheduled:The job is ready to start" または "Finished:The job is finished"。|
 
 ジョブの状態。値は次のいずれかです。*Queued*、*Scheduled*、*Processing*、*Finished*、*Error*、*Canceled*、*Canceling*
 
@@ -204,7 +204,7 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | outputs | Array | ジョブ出力を取得します。|
 
@@ -320,7 +320,7 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | streamId | string | ストリームまたは接続の識別子。 この ID は、エンコーダーまたはカスタマーが取り込み URL に追加します。 |  
 | ingestUrl | string | ライブ イベントから提供される取り込み URL。 |  
@@ -328,18 +328,7 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 | encoderPort | string | このストリームの送信元であるエンコーダーのポート。 |
 | resultCode | string | 接続が拒否された理由。 結果コードについては、以下の表をご覧ください。 |
 
-次に示したのは、結果コードの一覧です。
-
-| 結果コード | 説明 |
-| ----------- | ----------- |
-| MPE_RTMP_APPID_AUTH_FAILURE | 取り込み URL が正しくありません。 |
-| MPE_INGEST_ENCODER_CONNECTION_DENIED | 構成されている IP 許可リストにエンコーダー IP が存在しません。 |
-| MPE_INGEST_RTMP_SETDATAFRAME_NOT_RECEIVED | ストリームに関するメタデータがエンコーダーから送信されませんでした。 |
-| MPE_INGEST_CODEC_NOT_SUPPORTED | 指定されたコーデックはサポートされていません。 |
-| MPE_INGEST_DESCRIPTION_INFO_NOT_RECEIVED | ストリームのヘッダーを受信する前にそのフラグメントを受信しました。 |
-| MPE_INGEST_MEDIA_QUALITIES_EXCEEDED | 指定された品質の数が、許容される上限を超えています。 |
-| MPE_INGEST_BITRATE_AGGREGATED_EXCEEDED | 集約されたビットレートが、許容される上限を超えています。 |
-| MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID | RTMP エンコーダーからのビデオまたはオーディオ FLVTag のタイムスタンプが無効です。 |
+エラーの結果コードは、[ライブ イベントのエラー コード](live-event-error-codes.md)で確認できます。
 
 ### <a name="liveeventencoderconnected"></a>LiveEventEncoderConnected
 
@@ -367,7 +356,7 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | streamId | string | ストリームまたは接続の識別子。 この ID は、エンコーダーまたはカスタマーが取り込み URL に指定します。 |
 | ingestUrl | string | ライブ イベントから提供される取り込み URL。 |
@@ -401,7 +390,7 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | streamId | string | ストリームまたは接続の識別子。 この ID は、エンコーダーまたはカスタマーが取り込み URL に追加します。 |  
 | ingestUrl | string | ライブ イベントから提供される取り込み URL。 |  
@@ -409,14 +398,7 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 | encoderPort | string | このストリームの送信元であるエンコーダーのポート。 |
 | resultCode | string | エンコーダーの切断の理由。 正常な切断とエラーによる切断とがあります。 結果コードについては、以下の表をご覧ください。 |
 
-次に示したのは、エラー結果コードの一覧です。
-
-| 結果コード | 説明 |
-| ----------- | ----------- |
-| MPE_RTMP_SESSION_IDLE_TIMEOUT | RTMP セッションは、アイドル状態のまま許容制限時間を超えてタイムアウトしました。 |
-| MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID | RTMP エンコーダーからのビデオまたはオーディオ FLVTag のタイムスタンプが無効です。 |
-| MPE_CAPACITY_LIMIT_REACHED | エンコーダーからデータが送信される速度が速すぎます。 |
-| 不明なエラー コード | これらのエラー コードは、メモリ エラーから、ハッシュ マップにおけるエントリの重複まで多岐にわたります。 |
+エラーの結果コードは、[ライブ イベントのエラー コード](live-event-error-codes.md)で確認できます。
 
 正常な切断の結果コードは次のとおりです。
 
@@ -458,7 +440,7 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | trackType | string | 追跡のタイプ (オーディオ/ビデオ)。 |
 | trackName | string | トラックの名前。 |
@@ -498,7 +480,7 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | trackType | string | 追跡のタイプ (オーディオ/ビデオ)。 |
 | trackName | string | トラックの名前。エンコーダーによって指定されるか、または RTMP の場合は、*TrackType_Bitrate* 形式でサーバーによって生成されます。 |
@@ -537,7 +519,7 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | minLastTimestamp | string | 全トラック (オーディオまたはビデオ) における最後のタイムスタンプの最小値。 |
 | typeOfTrackWithMinLastTimestamp | string | 最後のタイムスタンプが最も小さいトラックの種類 (オーディオまたはビデオ)。 |
@@ -573,7 +555,7 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | firstTimestamp | string | 種類がビデオであるいずれかのトラック/品質レベルについて受信したタイムスタンプ。 |
 | firstDuration | string | 1 つ目のタイムスタンプを持つデータ チャンクの期間。 |
@@ -615,7 +597,7 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | trackType | string | 追跡のタイプ (オーディオ/ビデオ)。 |
 | trackName | string | トラックの名前。エンコーダーによって指定されるか、または RTMP の場合は、*TrackType_Bitrate* 形式でサーバーによって生成されます。 |
@@ -627,7 +609,7 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 | discontinuityCount | 整数 (integer) | 直近 20 秒に観察された途切れの数。 |
 | nonIncreasingCount | 整数 (integer) | 直近 20 秒に過去のタイムスタンプを受信したデータ チャンクの数。 |
 | unexpectedBitrate | [bool] | 直近 20 秒における予想ビットレートと実ビットレートの差が、許容されている上限を超えているかどうか。 incomingBitrate がビットレートの 2 倍以上または incomingBitrate がビットレートの 1/2 以下または incomingBitrate が 0 のとき、かつそのときに限り true。 |
-| 状態 | string | ライブ イベントの状態。 |
+| state | string | ライブ イベントの状態。 |
 | healthy | [bool] | カウントとフラグに基づき、取り込みが正常であるかどうかを示します。 overlapCount = 0 && discontinuityCount = 0 && nonIncreasingCount = 0 && unexpectedBitrate = false の場合、Healthy は true になります。 |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
@@ -659,7 +641,7 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | trackType | string | 追跡のタイプ (オーディオ/ビデオ)。 |
 | trackName | string | トラックの名前。エンコーダーによって指定されるか、または RTMP の場合は、*TrackType_Bitrate* 形式でサーバーによって生成されます。 |
@@ -673,7 +655,7 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | topic | string | EventGrid トピック。 このプロパティは、Media Services アカウントのリソース ID を保持します。 |
 | subject | string | Media Services アカウント下の Media Services チャンネルのリソース パス。 トピックとサブジェクトを連結することで、ジョブのリソース ID が得られます。 |
@@ -688,7 +670,8 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 [ジョブ状態変更イベントを登録する](job-state-events-cli-how-to.md)
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - [メディア サービス イベントを含む EventGrid .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Media Services イベントの定義](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
+- [ライブ イベントのエラー コード](live-event-error-codes.md)

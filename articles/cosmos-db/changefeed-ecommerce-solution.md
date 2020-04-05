@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
 ms.openlocfilehash: c0c1a28dc399d3f176f92e656621fec1bc92dbfc
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76513511"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Azure Cosmos DB 変更フィードを使用してリアルタイムのデータ分析を視覚化する

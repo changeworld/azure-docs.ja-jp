@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 03/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: b144a70ee88138966d9cc38a56e1cff1e63fca1b
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 66efa0f2922e70908616c7c447d782efee8f6b1b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74424151"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79137179"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>チュートリアル:PowerShell を使用した VPN ゲートウェイの作成と管理
 
@@ -28,9 +28,7 @@ Azure VPN ゲートウェイは、お客様のオンプレミスと Azure 間の
 
 ![VNet と VPN ゲートウェイ](./media/vpn-gateway-tutorial-create-gateway-powershell/vnet1-gateway.png)
 
-### <a name="azure-cloud-shell-and-azure-powershell"></a>Azure Cloud Shell および Azure PowerShell
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+### <a name="working-with-azure-cloud-shell-and-azure-powershell"></a>Azure Cloud Shell および Azure PowerShell の操作
 
 [!INCLUDE [working with cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
 
@@ -74,7 +72,7 @@ $GwIP1       = "VNet1GWIP"
 $GwIPConf1   = "gwipconf1"
 ```
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 リソース グループを最初に作成する必要があります。 次の例では、*TestRG1* という名前のリソース グループが "*米国東部*" リージョンに作成されます。
 
@@ -166,7 +164,7 @@ Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway
 
 詳細については、「[Reset a VPN gateway (VPN ゲートウェイのリセット)](vpn-gateway-resetgw-classic.md)」をご覧ください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [次のチュートリアル](vpn-gateway-tutorial-vpnconnection-powershell.md)に進む場合には、これらのリソースが前提条件になっているため、残しておく必要があります。
 
@@ -176,7 +174,7 @@ Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway
 Remove-AzResourceGroup -Name $RG1
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、次の方法など、VPN ゲートウェイの基本的な作成と管理について説明しました。
 

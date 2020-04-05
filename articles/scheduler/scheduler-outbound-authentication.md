@@ -9,10 +9,10 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/15/2016
 ms.openlocfilehash: bcd14e618323aec1c7ce47fcebb25099fa96be81
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898507"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Azure Scheduler の送信認証

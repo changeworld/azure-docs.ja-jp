@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: brendm
 ms.openlocfilehash: 8a7ba3c3b9c19b2084b6892b55ac417da38ab047
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76278888"
 ---
 # <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Azure Spring Cloud のクォータとサービス プラン

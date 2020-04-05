@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/11/2020
 ms.author: spelluru
 ms.openlocfilehash: d7d697e3ea4b1b683275d53f6e407396f474b37b
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77462022"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>Azure Event Hubs との間でイベントを送受信する - .NET Core (Azure.Messaging.EventHubs) 

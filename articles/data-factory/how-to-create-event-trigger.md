@@ -12,10 +12,10 @@ ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.openlocfilehash: e4301afafb48fb9a1b0c9e36dde9800e2b8390f1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75443934"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>イベントに応答してパイプラインを実行するトリガーを作成する

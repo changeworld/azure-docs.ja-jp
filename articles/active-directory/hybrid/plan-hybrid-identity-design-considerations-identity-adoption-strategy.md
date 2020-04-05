@@ -1,6 +1,6 @@
 ---
 title: ハイブリッド ID 設計 - 導入戦略 - Azure | Microsoft Docs
-description: 条件を利用してアクセスを制御する Azure Active Directory は、ユーザーの認証時、アプリケーションにアクセスを与える前に、選択された特定の条件を確認します。 条件が満たされていれば、ユーザーは承認され、アプリケーションにアクセスできます。
+description: 条件付きアクセス制御を使用して、Azure Active Directory では、ユーザーの認証時、アプリケーションにアクセスを与える前に、選択された特定の条件を確認します。 条件が満たされていれば、ユーザーは承認され、アプリケーションにアクセスできます。
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e662d2c6d7939756dee6eb25ca62fef171b7d6d0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67109331"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>ハイブリッド ID 導入戦略の定義
@@ -158,7 +158,7 @@ ms.locfileid: "67109331"
 * DNS ドメインは 1 つの Azure AD ディレクトリにしか登録できないため、オンプレミス AD のユーザーの UPN で個別の名前空間を使用する必要があります。
 * Azure AD の 1 つのインスタンスのユーザーは、そのインスタンスのユーザーのみを表示できます。  他のインスタンスのユーザーを表示することはできません。
 * 1 つの Azure AD ディレクトリだけが、オンプレミスの AD を持つ Exchange ハイブリッドを有効にできます。
-* 相互排他性は書き戻しにも適用されます。  そのため、単一のオンプレミス構成を前提としている一部の書き戻し機能は、このトポロジではサポートされません。  次のトピックがあります。
+* 相互排他性は書き戻しにも適用されます。  そのため、単一のオンプレミス構成を前提としている一部の書き戻し機能は、このトポロジではサポートされません。  これには次のものが含まれます
   * 既定の構成によるグループの書き戻し
   * デバイスの書き戻し
 
@@ -185,8 +185,8 @@ ms.locfileid: "67109331"
 | Microsoft アプリ |はい |はい |
 | アプリ ギャラリー内の SaaS アプリ |はい |はい |
 | Azure AD アプリケーション プロキシ経由で公開される IIS アプリケーション |はい |はい |
-| Azure AD アプリケーション プロキシ経由で公開されない IIS アプリケーション |× |はい |
-| VPN、RDG などのリモート アクセス |× |はい |
+| Azure AD アプリケーション プロキシ経由で公開されない IIS アプリケーション |いいえ |はい |
+| VPN、RDG などのリモート アクセス |いいえ |はい |
 
 戦略のソリューションが決定した場合でも、さらに上記の評価を使用して、ユーザーの配置を検討する必要があります。  これにより、ソリューションが変更される可能性があります。  次の表を使用すると、この決定に役立ちます。
 
@@ -210,9 +210,9 @@ Azure Active Directory テナントを持つグローバル管理者は、既定
 > 
 > 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [データ保護要件の決定](plan-hybrid-identity-design-considerations-dataprotection-requirements.md)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 [設計上の考慮事項の概要](plan-hybrid-identity-design-considerations-overview.md)
 

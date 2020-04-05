@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect:パススルー認証 - しくみ | Microsoft Docs
+title: 'Azure AD Connect: パススルー認証 - しくみ | Microsoft Docs'
 description: この記事では、Azure Active Directory のパススルー認証のしくみについて説明します
 services: active-directory
 keywords: Azure AD Connect パススルー認証, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン
@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 59cd52dbdf6c13900cde592aeb52d8bf9abf850f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60347782"
 ---
-# <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory パススルー認証:技術的な詳細情報
+# <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory パススルー認証: 技術的な詳細
 この記事は、Azure Active Directory (Azure AD) パススルー認証のしくみの概要です。 技術とセキュリティの詳細情報については、[セキュリティの詳細](how-to-connect-pta-security-deep-dive.md)に関する記事をご覧ください。
 
 ## <a name="how-does-azure-active-directory-pass-through-authentication-work"></a>Azure Active Directory パススルー認証のしくみ
@@ -50,14 +50,14 @@ ms.locfileid: "60347782"
 
 ![パススルー認証](./media/how-to-connect-pta-how-it-works/pta2.png)
 
-## <a name="next-steps"></a>次の手順
-- [現時点での制限事項](how-to-connect-pta-current-limitations.md):サポートされているシナリオと、サポートされていないシナリオを確認します。
-- [[クイック スタート]](how-to-connect-pta-quick-start.md):Azure AD パススルー認証を起動および実行します。
+## <a name="next-steps"></a>次のステップ
+- [現在の制限](how-to-connect-pta-current-limitations.md): サポートされているシナリオと、サポートされていないシナリオを確認します。
+- [クイック スタート](how-to-connect-pta-quick-start.md): Azure AD パススルー認証を起動および実行します。
 - [AD FS からパススルー認証への移行](https://aka.ms/adfstoPTADP) - AD FS (または他のフェデレーション テクノロジ) からパススルー認証に移行するための詳細なガイドです。
-- [スマート ロックアウト](../authentication/howto-password-smart-lockout.md):ユーザー アカウントを保護するようにテナントのスマート ロックアウト機能を構成します。
-- [よく寄せられる質問](how-to-connect-pta-faq.md):よく寄せられる質問の回答を探します。
-- [トラブルシューティング](tshoot-connect-pass-through-authentication.md): パススルー認証機能に関する一般的な問題を解決する方法について説明します。
-- [セキュリティの詳細](how-to-connect-pta-security-deep-dive.md):パススルー認証機能に関する詳細な技術情報を取得します。
-- [Azure AD シームレス SSO](how-to-connect-sso.md): この補完的な機能の詳細について説明します。
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Azure Active Directory フォーラムを使用して、新しい機能の要求を行います。
+- [スマート ロックアウト](../authentication/howto-password-smart-lockout.md): ユーザー アカウントを保護するようにテナントのスマート ロックアウト機能を構成します。
+- [よく寄せられる質問](how-to-connect-pta-faq.md): よく寄せられる質問とその回答です。
+- [トラブルシューティング](tshoot-connect-pass-through-authentication.md): パススルー認証機能に関する一般的な問題を解決する方法を確認します。
+- [セキュリティの詳細](how-to-connect-pta-security-deep-dive.md): パススルー認証機能に関する詳細な技術情報を取得します。
+- [Azure AD シームレス SSO](how-to-connect-sso.md): この補完的な機能の詳細を確認します。
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Azure Active Directory フォーラムで、新しい機能の要望を出します。
 

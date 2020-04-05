@@ -12,10 +12,10 @@ ms.author: joke
 ms.reviewer: sstein
 ms.date: 03/13/2019
 ms.openlocfilehash: 5a7ed254de7b7ea32f2fb357d860354693e46e92
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73827228"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs"></a>新しい Elastic Database ジョブへの移行
@@ -627,7 +627,7 @@ $jobs | Start-AzSqlElasticJob
 $jobs | Set-AzSqlElasticJob -Enable
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [PowerShell を使用したエラスティック ジョブの作成と管理](elastic-jobs-powershell.md)
 - [Transact-SQL を使用したエラスティック ジョブの作成と管理](elastic-jobs-tsql.md)

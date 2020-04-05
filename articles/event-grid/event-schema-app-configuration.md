@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 05/30/2019
 ms.author: jimmyca
 ms.openlocfilehash: fe0274f723692eea3cfd25cc0e9e146b35dce2ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66735898"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-app-configuration"></a>Azure App Configuration 用の Azure Event Grid イベント スキーマ
@@ -73,7 +73,7 @@ Azure App Configuration は次のイベントの種類を発行します。
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | topic | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | subject | string | 発行元が定義したイベントの対象のパス。 |
@@ -86,13 +86,13 @@ Azure App Configuration は次のイベントの種類を発行します。
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | key | string | 変更または削除されたキー/値のキー。 |
-| label | string | 変更または削除されたキー/値のラベル (存在する場合)。 |
+| ラベル●らべる○ | string | 変更または削除されたキー/値のラベル (存在する場合)。 |
 | etag | string | `KeyValueModified` の場合、新しいキー/値の etag。 `KeyValueDeleted` の場合、削除されたキー/値の etag。 |
  
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
 * Azure Event Grid サブスクリプションの作成の詳細については、[Event Grid サブスクリプション スキーマ](subscription-creation-schema.md)に関する記事を参照してください。

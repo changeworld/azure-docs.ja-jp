@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 8f076deaafd938dc93800cf351bf471cead5f009
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 965c768df9138d850c2ac9f88e3797dcc54fa3fc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471229"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79501859"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>チュートリアル:Data Box を使用して Azure のマネージド ディスクとしてデータをインポートする
 
@@ -23,10 +23,10 @@ ms.locfileid: "77471229"
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
+>
 > * 前提条件を確認する
 > * Data Box に接続する
 > * Data Box にデータをコピーする
-
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,6 +39,8 @@ ms.locfileid: "77471229"
 
     - [「Azure オブジェクトのサイズ制限」のマネージド ディスク サイズ](data-box-limits.md#azure-object-size-limits)のサポート状況。
     - [Azure マネージド ディスクの概要](/azure/virtual-machines/windows/managed-disks-overview)。 
+
+5. Data Box によって Azure Storage にデータが転送されたことを確認するまでソース データのコピーを保持していること。
 
 ## <a name="connect-to-data-box"></a>Data Box に接続する
 
@@ -93,7 +95,7 @@ Windows Server ホスト コンピューターを使用している場合は、�
 
     ```
     C:\>net use \\169.254.250.200\mydbmdrgl_MDisk /u:mdisk
-    Enter the password for ‘mdisk’ to connect to '169.254.250.200':
+    Enter the password for 'mdisk' to connect to '169.254.250.200':
     The command completed successfully.
     C: \>
     ```

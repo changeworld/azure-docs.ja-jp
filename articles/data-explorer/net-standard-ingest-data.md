@@ -8,11 +8,11 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 9b6eda60f0b0cb1b697560cccc2cffe719d58536
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562464"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227255"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Azure Data Explorer .NET Standard SDK (プレビュー) を使用してデータを取り込む
 
@@ -81,7 +81,7 @@ var blobPath = "https://kustosamplefiles.blob.core.windows.net/samplefiles/Storm
 ```
 
 ## <a name="create-a-table-on-your-test-cluster"></a>テスト クラスターにテーブルを作成する
-`StormEvents.csv` ファイル内のデータのスキーマと一致する、`StormEvents` という名前のテーブルを作成します。
+`StormEvents` ファイル内のデータのスキーマと一致する、`StormEvents.csv` という名前のテーブルを作成します。
 
 ```csharp
 var table = "StormEvents";

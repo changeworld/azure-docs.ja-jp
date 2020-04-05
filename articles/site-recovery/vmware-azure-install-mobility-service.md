@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
 ms.openlocfilehash: a2f4bdb96b8d1ecb23ddcec844726439ec46fff2
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74186447"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>モビリティ エージェントをプッシュ インストールできるようソース マシンを準備する
 
-[Azure Site Recovery](site-recovery-overview.md) を使用して VMware VM と物理サーバーのためのディザスター リカバリーを設定するとき、オンプレミスの VMware VM と物理サーバーごとに [Site Recovery モビリティ サービス](vmware-physical-mobility-service-overview.md)をインストールします。  このモビリティ サービスによって、コンピューター上のデータ書き込みがキャプチャされ、Site Recovery プロセス サーバーに転送されます。
+[Azure Site Recovery](site-recovery-overview.md) を使用して VMware VM と物理サーバーのためのディザスター リカバリーを設定するとき、オンプレミスの VMware VM と物理サーバーごとに [Site Recovery モビリティ サービス](vmware-physical-mobility-service-overview.md)をインストールします。  このモビリティ サービスによって、マシン上のデータ書き込みがキャプチャされ、Site Recovery プロセス サーバーに転送されます。
 
 ## <a name="install-on-windows-machine"></a>Windows マシンへのインストール
 
@@ -64,7 +64,7 @@ ms.locfileid: "74186447"
 
 レプリケートするマシンでウイルス対策ソフトウェアがアクティブに実行されている場合は、モビリティ サービスのインストール フォルダーをウイルス対策の操作から除外してください (*C:\ProgramData\ASR\agent*)。 これにより、レプリケーションが意図したとおりに動作することが保証されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 モビリティ サービスがインストールされたら、Azure portal で、 **[+ レプリケート]** を選択し、これらの VM の保護を開始します。 [VMware VM](vmware-azure-enable-replication.md) と[物理サーバー](physical-azure-disaster-recovery.md#enable-replication)のレプリケーションを有効にする方法の詳細を学習します。
 

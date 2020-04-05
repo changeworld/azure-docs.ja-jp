@@ -12,11 +12,11 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dd7b412e99526935738c2494d31a16fded7101a6
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368034"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215810"
 ---
 # <a name="what-is-azure-active-directory"></a>Azure Active Directory とは
 
@@ -57,7 +57,7 @@ Azure AD の実装を強化するために、Azure Active Directory Premium P1 �
 
 - **"従量課金制" の機能ライセンス。** Azure Active Directory Business-to-Customer (B2C) などの機能ライセンスを別途取得することもできます。 B2C は、顧客向けアプリ用の ID およびアクセス管理ソリューションを提供するのに役立つ可能性があります。 詳細については、「[Azure Active Directory B2C のドキュメント](../../active-directory-b2c/index.yml)」を参照してください。
 
-Azure サブスクリプションの Azure AD への関連付けの詳細については「[方法: Azure サブスクリプションを Azure Active Directory に関連付けるまたは追加する](active-directory-how-subscriptions-associated-directory.md)」を、ライセンスのユーザーへの割り当ての詳細については「[方法: Azure Active Directory ライセンスを割り当てる、または削除する](license-users-groups.md)」を参照してください。
+Azure サブスクリプションを Azure AD に関連付ける方法の詳細については、「[Azure サブスクリプションを Azure Active Directory に関連付けるまたは追加する方法](active-directory-how-subscriptions-associated-directory.md)」を参照してください。ユーザーにライセンスを割り当てる方法の詳細については、「[方法: Azure Active Directory ライセンスを割り当てる、または削除する](license-users-groups.md)」を参照してください。
 
 ## <a name="terminology"></a>用語
 

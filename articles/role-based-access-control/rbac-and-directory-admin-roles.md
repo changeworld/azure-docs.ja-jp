@@ -16,11 +16,11 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
 ms.openlocfilehash: e8d82011fe4fdd40bb07c77411ad0e948ddad049
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916525"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214830"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>従来のサブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD 管理者ロール
 
@@ -31,7 +31,7 @@ Azure を初めて使用する場合、Azure のさまざまなロールを理�
 
 ## <a name="how-the-roles-are-related"></a>各ロールの関係
 
-Azure のロールをよりよく理解するには、歴史の一部を知ることが役立ちます。 Azure が最初にリリースされたとき、リソースへのアクセスは次の 3 つの管理者ロールで管理されました:アカウント管理者、サービス管理者、共同管理者。 その後、Azure リソース用に、ロールベース アクセス制御 (RBAC) が追加されました。 Azure RBAC は、Azure リソースに対するきめ細かいアクセス管理を提供する、より新しい承認システムです。 RBAC には多数の組み込みロールがあり、異なるスコープで割り当てることができます。また、独自のカスタム ロールを作成することができます。 ユーザー、グループ、ドメインなどの、Azure AD のリソースを管理するためには、いくつかの Azure AD 管理者ロールがあります。
+Azure のロールをよりよく理解するには、歴史の一部を知ることが役立ちます。 Azure が最初にリリースされたとき、リソースへのアクセスは 3 つの管理者ロールで管理されました。それらは、アカウント管理者、サービス管理者、および共同管理者でした。 その後、Azure リソース用に、ロールベース アクセス制御 (RBAC) が追加されました。 Azure RBAC は、Azure リソースに対するきめ細かいアクセス管理を提供する、より新しい承認システムです。 RBAC には多数の組み込みロールがあり、異なるスコープで割り当てることができます。また、独自のカスタム ロールを作成することができます。 ユーザー、グループ、ドメインなどの、Azure AD のリソースを管理するためには、いくつかの Azure AD 管理者ロールがあります。
 
 次の図は、従来のサブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD 管理者ロールがどのように関連しているかを大まかに示しています。
 
@@ -42,7 +42,7 @@ Azure のロールをよりよく理解するには、歴史の一部を知る�
 
 アカウント管理者、サービス管理者、および共同管理者は、Azure の従来の 3 種類のサブスクリプション管理者ロールです。 従来のサブスクリプション管理者には、Azure サブスクリプションへのフル アクセス権があります。 Azure portal、Azure Resource Manager API、およびクラシック デプロイ モデル API を使用して、リソースを管理することができます。 Azure へのサインアップに使用されたアカウントは、自動的にアカウント管理者とサービス管理者の両方として設定されます。 その後、共同管理者を追加できます。 サービス管理者および共同管理者は、サブスクリプション スコープで所有者ロール (Azure RBAC ロール) が割り当てられているユーザーと同等のアクセス権を持ちます。 次の表では、これら 3 つの従来のサブスクリプション管理ロールの違いについて説明します。
 
-| 従来のサブスクリプション管理者 | 制限 | アクセス許可 | Notes |
+| 従来のサブスクリプション管理者 | 制限 | アクセス許可 | メモ |
 | --- | --- | --- | --- |
 | アカウント管理者 | 1 Azure アカウントに 1 人 | <ul><li>[Azure アカウント センター](https://account.azure.com/Subscriptions)にアクセスする</li><li>アカウントのすべてのサブスクリプションを管理する</li><li>新しいサブスクリプションを作成する</li><li>サブスクリプションを取り消す</li><li>サブスクリプションの課金を変更する</li><li>サービス管理者を変更する</li></ul> | 概念的には、サブスクリプションの課金の所有者です。<br>アカウント管理者には、Azure portal へのアクセス権が与えられません。 |
 | サービス管理者 | 1 Azure サブスクリプションに 1 人 | <ul><li>[Azure portal](https://portal.azure.com) でサービスを管理する</li><li>サブスクリプションを取り消す</li><li>共同管理者ロールにユーザーを割り当てる</li></ul> | 既定で、新しいサブスクリプションのアカウント管理者はサービス管理者でもあります。<br>サービス管理者は、サブスクリプション スコープで所有者ロールを割り当てられているユーザーと同等のアクセス権を持ちます。<br>サービス管理者には、Azure portal へのフル アクセス権が与えられます。 |
@@ -72,9 +72,9 @@ Azure サブスクリプションは、Azure リソースへのアクセスを�
 
 Azure RBAC は、コンピューティングやストレージなどの Azure リソースに対するきめ細かなアクセス管理を提供する、[Azure Resource Manager](../azure-resource-manager/management/overview.md) 上に構築された承認システムです。 Azure RBAC には、70 を超える組み込みロールが含まれています。 4 つの基本的な RBAC ロールがあります。 最初の 3 つは、すべてのリソースの種類に適用されます。
 
-| Azure RBAC ロール | アクセス許可 | Notes |
+| Azure RBAC ロール | アクセス許可 | メモ |
 | --- | --- | --- |
-| [所有者](built-in-roles.md#owner) | <ul><li>すべてのリソースへのフル アクセス</li><li>アクセスを他のユーザーに委任する</li></ul> | サービス管理者と共同管理者は、サブスクリプション スコープで所有者ロールを割り当てられます<br>すべてのリソースの種類に適用されます。 |
+| [[所有者]](built-in-roles.md#owner) | <ul><li>すべてのリソースへのフル アクセス</li><li>アクセスを他のユーザーに委任する</li></ul> | サービス管理者と共同管理者は、サブスクリプション スコープで所有者ロールを割り当てられます<br>すべてのリソースの種類に適用されます。 |
 | [Contributor](built-in-roles.md#contributor) | <ul><li>すべての種類の Azure リソースを作成および管理する</li><li>Azure Active Directory で新しいテナントを作成する</li><li>他のユーザーにアクセスを許可することはできない</li></ul> | すべてのリソースの種類に適用されます。 |
 | [Reader](built-in-roles.md#reader) | <ul><li>Azure リソースを表示する</li></ul> | すべてのリソースの種類に適用されます。 |
 | [User Access Administrator](built-in-roles.md#user-access-administrator) | <ul><li>Azure リソースに対するユーザー アクセスを管理する</li></ul> |  |
@@ -97,7 +97,7 @@ Azure portal では、RBAC を使用したロールの割り当ては **[アク�
 
 Azure AD 管理者ロールは、ディレクトリ内の Azure AD リソースの管理に使用されます。たとえば、ユーザーの作成や編集、他のユーザーへの管理ロールの割り当て、ユーザー パスワードのリセット、ユーザー ライセンスの管理、ドメインの管理などです。 次の表では、より重要な Azure AD 管理者ロールのいくつかについて説明します。
 
-| Azure AD 管理者ロール | アクセス許可 | Notes |
+| Azure AD 管理者ロール | アクセス許可 | メモ |
 | --- | --- | --- |
 | [全体管理者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) | <ul><li>Azure Active Directory のすべての管理機能や、Azure Active Directory に統合されたサービスへのアクセスを管理する</li><li>他のユーザーに管理者ロールを割り当てる</li><li>すべてのユーザーと他のすべての管理者のパスワードをリセットする</li></ul> | Azure Active Directory テナントにサインアップしたユーザーが全体管理者になります。 |
 | [ユーザー管理者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#user-administrator) | <ul><li>ユーザーとグループのすべての側面を作成および管理する</li><li>サポート チケットの管理</li><li>サービス正常性の監視</li><li>ユーザー、ヘルプデスク管理者、およびその他のユーザー管理者のパスワードを変更する</li></ul> |  |

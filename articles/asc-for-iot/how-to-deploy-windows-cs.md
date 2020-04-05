@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: acc99f260931de7fd8c7566a3ff6daf43f34c5ef
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68597219"
 ---
 # <a name="deploy-an-azure-security-center-for-iot-c-based-security-agent-for-windows"></a>Windows 用の Azure Security Center for IoT の C# ベースのセキュリティ エージェントをデプロイする
@@ -28,10 +28,10 @@ ms.locfileid: "68597219"
 
 このガイドでは、以下の方法について説明します。 
 > [!div class="checklist"]
-> * Install
+> * インストール
 > * デプロイの確認
 > * エージェントのアンインストール
-> * トラブルシューティング 
+> * [トラブルシューティング] 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -61,7 +61,7 @@ ms.locfileid: "68597219"
     .\InstallSecurityAgent.ps1 -Install -aui <authentication identity> -aum <authentication method> -f <file path> -hn <host name> -di <device id> -cl <certificate location kind>
     ```
     
-    例:
+    次に例を示します。
     
     ```
     .\InstallSecurityAgent.ps1 -Install -aui Device -aum SymmetricKey -f c:\Temp\Key.txt -hn MyIotHub.azure-devices.net -di Mydevice1 -cl store
@@ -138,7 +138,7 @@ ms.locfileid: "68597219"
    ログ ファイルの保存先: `%WinDir%/System32/IoTAgentLog.log`
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Azure Security Center for IoT サービスの[概要](overview.md)を読みます
 - Azure Security Center for IoT の[アーキテクチャ](architecture.md)の詳細を確認します
 - [サービス](quickstart-onboard-iot-hub.md)を有効にします

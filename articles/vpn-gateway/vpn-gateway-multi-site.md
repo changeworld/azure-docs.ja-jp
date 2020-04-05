@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/11/2020
 ms.author: yushwang
 ms.openlocfilehash: a95cd6ea85a16b0e0bf5f67f5dfc20d57f11463b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77198099"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>既存の VPN ゲートウェイ接続を使用してサイト間接続を VNet に追加する (クラシック)
@@ -74,7 +74,7 @@ ms.locfileid: "77198099"
 1. 次の手順を使用してサイト間仮想ネットワークを作成します: [サイト間 VPN 接続を持つ仮想ネットワークの作成](vpn-gateway-site-to-site-create.md)。  
 2. 次の手順により動的ルーティング ゲートウェイを構成します: [VPN ゲートウェイの構成](vpn-gateway-configure-vpn-gateway-mp.md)。 必ずゲートウェイ タイプに**動的ルーティング**を選択してください。
 
-## <a name="export"></a>2.ネットワーク構成ファイルをエクスポートする
+## <a name="2-export-the-network-configuration-file"></a><a name="export"></a>2.ネットワーク構成ファイルをエクスポートする
 
 昇格された権利で PowerShell コンソールを開きます。 サービス管理に切り替えるには、このコマンドを使用します。
 

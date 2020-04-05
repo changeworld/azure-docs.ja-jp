@@ -1,19 +1,18 @@
 ---
 title: Azure アプリケーション オファーを作成する | Azure Marketplace
 description: Azure Marketplace で新しい Azure アプリケーション オファーを公開する方法。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/14/2018
-ms.author: pabutler
-ms.openlocfilehash: 173e371c97ed2ab281bd7badae29f253e1e3e1f8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 823c9cbe8c850fbc4170a5734305f9cc5e45be83
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827640"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285284"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure アプリケーション オファーを作成する
 
@@ -25,7 +24,7 @@ ms.locfileid: "73827640"
 
 ![[New Offer]\(新しいオファー) のフォーム](./media/azure-new-managedapp-offer.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [New Offer]\(新しいオファー) ページには、新しいオファーを作成するのに使用する一連のタブとフォームのフィールドが用意されています。 以下の記事では、新しいオファーの資産グループとサポート サービスを定義する方法が説明されています。
 

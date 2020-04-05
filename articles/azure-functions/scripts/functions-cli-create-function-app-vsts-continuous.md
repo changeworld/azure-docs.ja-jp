@@ -5,15 +5,15 @@ ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc
 ms.openlocfilehash: d10c3987aef6e0a32081acd17425517f5109c4bb
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75922638"
 ---
 # <a name="create-a-function-in-azure-that-is-deployed-from-azure-devops"></a>Azure DevOps からデプロイされる関数を Azure で作成する
 
-このトピックでは、Azure Functions を使用して、[従量課金プラン](../functions-scale.md#consumption-plan)を使用する[サーバーレス](https://azure.microsoft.com/solutions/serverless/)関数アプリを作成する方法を説明します。 関数アプリは、ユーザーの関数用のコンテナーであり、Azure DevOps リポジトリから継続的にデプロイされます。 
+このトピックでは、Azure Functions を使用して、[従量課金プラン](https://azure.microsoft.com/solutions/serverless/)を使用する[サーバーレス](../functions-scale.md#consumption-plan)関数アプリを作成する方法を説明します。 関数アプリは、ユーザーの関数用のコンテナーであり、Azure DevOps リポジトリから継続的にデプロイされます。 
 
 このトピックを完了するには、以下が必要です。
 

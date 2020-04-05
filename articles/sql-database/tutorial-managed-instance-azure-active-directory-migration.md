@@ -11,10 +11,10 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/30/2019
 ms.openlocfilehash: 2c8d7252b4e4ca8caa465727c0d2328c4aafaefb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74227917"
 ---
 # <a name="tutorial-migrate-sql-server-on-premises-windows-users-and-groups-to-azure-sql-database-managed-instance-using-t-sql-ddl-syntax"></a>チュートリアル:T-SQL DDL 構文を使用してオンプレミスの SQL Server の Windows ユーザーとグループを Azure SQL Database Managed Instance に移行する
@@ -46,7 +46,7 @@ ms.locfileid: "74227917"
 - [マネージド インスタンスに対する Azure AD 管理者を作成します](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)。
 - ネットワーク内のマネージド インスタンスに接続できます。 その他の情報については、次の記事を参照してください。 
     - [Azure SQL Database Managed Instance にアプリケーションを接続する](sql-database-managed-instance-connect-app.md)
-    - [クイック スタート:オンプレミスから Azure SQL Database Managed Instance へのポイント対サイト接続を構成する](sql-database-managed-instance-configure-p2s.md)
+    - [クイック スタート: オンプレミスから Azure SQL Database Managed Instance へのポイント対サイト接続を構成する](sql-database-managed-instance-configure-p2s.md)
     - [Azure SQL Database マネージド インスタンスのパブリック エンドポイントの構成](sql-database-managed-instance-public-endpoint-configure.md)
 
 ## <a name="t-sql-ddl-syntax"></a>T-SQL DDL 構文
@@ -75,7 +75,7 @@ Azure AD ログインにユーザーを再マッピングします
 _groupName_</br>
 データベース内で識別されるグループの名前を指定します。
 
-## <a name="part-1-create-logins-for-sql-server-on-premises-users-and-groups"></a>パート 1:オンプレミスの SQL Server のユーザーとグループのログインを作成する
+## <a name="part-1-create-logins-for-sql-server-on-premises-users-and-groups"></a>パート 1: オンプレミスの SQL Server のユーザーとグループのログインを作成する
 
 > [!IMPORTANT]
 > 次の構文では、SQL サーバーでユーザーとグループのログインを作成します。 以下の構文を実行する前に、ユーザーとグループが Active Directory (AD) 内に存在することを確認する必要があります。 </br> </br>
@@ -114,7 +114,7 @@ create database migration
 go
 ```
 
-## <a name="part-2-create-windows-users-and-groups-then-add-roles-and-permissions"></a>パート 2:Windows ユーザーとグループを作成し、ロールとアクセス許可を追加する
+## <a name="part-2-create-windows-users-and-groups-then-add-roles-and-permissions"></a>パート 2: Windows ユーザーとグループを作成し、ロールとアクセス許可を追加する
 
 次の構文を使用して、テスト ユーザーを作成します。
 
@@ -200,7 +200,7 @@ select * from test;
 go
 ```
 
-## <a name="part-3-backup-and-restore-the-individual-user-database-to-managed-instance"></a>パート 3:個々のユーザー データベースをバックアップしてマネージド インスタンスに復元する
+## <a name="part-3-backup-and-restore-the-individual-user-database-to-managed-instance"></a>パート 3: 個々のユーザー データベースをバックアップしてマネージド インスタンスに復元する
 
 「[バックアップと復元によるデータベースのコピー](/sql/relational-databases/databases/copy-databases-with-backup-and-restore)」の記事を使用するか、次の構文を使用して、移行データベースのバックアップを作成します。
 
@@ -216,11 +216,11 @@ go
 ## <a name="part-4-migrate-users-to-managed-instance"></a>パート 4:マネージド インスタンスにユーザーを移行する
 
 > [!NOTE]
-> 作成後のマネージド インスタンス機能に対する Azure AD 管理者が変更されました。 詳細については、「[MI の新しい Azure AD 管理者機能](sql-database-aad-authentication-configure.md#new-azure-ad-admin-functionality-for-mi)」をご覧ください。
+> 作成後にマネージド インスタンス機能の Azure AD 管理者が変更されました。 詳しくは、「[マネージド インスタンス用の新しい Azure AD 管理機能](sql-database-aad-authentication-configure.md#new-azure-ad-admin-functionality-for-mi)」をご覧ください。
 
 ALTER USER コマンドを実行して、マネージド インスタンスの移行プロセスを完了します。
 
-1. マネージド インスタンス用の Azure AD 管理者アカウントを使用して、マネージド インスタンスにサインインします。 次に、以下の構文を使用して、マネージド インスタンスに Azure AD ログインを作成します。 詳細については、[チュートリアル: Azure AD サーバー プリンシパル (ログイン) を使用した Azure SQL Database におけるマネージド インスタンスのセキュリティ](sql-database-managed-instance-aad-security-tutorial.md)」を参照してください。
+1. マネージド インスタンス用の Azure AD 管理者アカウントを使用して、マネージド インスタンスにサインインします。 次に、以下の構文を使用して、マネージド インスタンスに Azure AD ログインを作成します。 詳細については、「[チュートリアル:Azure AD サーバー プリンシパル (ログイン) を使用した Azure SQL Database におけるマネージド インスタンスのセキュリティ](sql-database-managed-instance-aad-security-tutorial.md)」を参照してください。
 
     ```sql
     use master 
@@ -344,6 +344,6 @@ Windows グループ `migration` のメンバーを使用して、マネージ�
 The specified schema name "testGroupUser@aadsqlmi.net" either does not exist or you do not have permission to use it.` </br> </br>
 > 現在の回避策は、上記の <dbo.new> の場合に既存のスキーマを使用してテーブルを作成することです
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [チュートリアル:DMS を使用してオフラインで SQL Server を Azure SQL Database Managed Instance に移行する](../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json)

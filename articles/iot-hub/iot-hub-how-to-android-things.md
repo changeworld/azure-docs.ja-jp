@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: robinsh
 ms.openlocfilehash: a06583e9aab4b082517d47c1022f7bec5184b9bc
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78673395"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>Azure IoT SDK を使用した Android Things プラットフォーム向けの開発

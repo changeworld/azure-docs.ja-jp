@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: cc25fb9b21d535ef07bcfae673be48216427b370
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78164782"
 ---
 # <a name="hc-series"></a>HC シリーズ
@@ -24,9 +24,9 @@ Premium Storage: サポートされています
 
 Premium Storage Caching: サポートされています
 
-ライブ移行:サポートされていません
+ライブ マイグレーション: サポートされていません
 
-メモリ保持更新:サポートされていません
+メモリ保持更新: サポートされていません
 
 | サイズ | vCPU | プロセッサ | メモリ (GB) | メモリ帯域幅 GB/秒 | ベース CPU 周波数 (GHz) | 全コア周波数 (GHz、ピーク) | シングルコア周波数 (GHz、ピーク) | RDMA パフォーマンス (GB/秒) | MPI のサポート | 一時ストレージ (GB) | 最大データ ディスク数 | 最大イーサネット NIC |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |

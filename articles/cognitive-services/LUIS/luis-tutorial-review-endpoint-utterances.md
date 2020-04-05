@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: diberry
 ms.openlocfilehash: 06f51ca83449b39861e7565cc9accc29efbece3f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76843975"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>チュートリアル:エンドポイントの発話を確認して不確かな予測を修正する

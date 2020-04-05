@@ -8,12 +8,12 @@ ms.date: 08/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bb31a10623bd5e8ea9a406b37acf84995774045c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 5320c9d7f1ea5ae882c67ee631f5bbafbf97b039
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772302"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530871"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge ソリューションを運用環境にデプロイするための準備を行う
 
@@ -39,7 +39,7 @@ IoT Edge デバイスとして、Raspberry Pi から、ノート PC、サーバ�
 
 デバイス CA 証明書のロールの詳細については、[Azure IoT Edge での証明書の使用方法](iot-edge-certs.md)に関するページを参照してください。
 
-IoT Edge デバイスに証明書をインストールし、config.yaml ファイルからそれらを参照する方法の詳細については、[「IoT Edgeデバイスに運用証明書をインストールする」](how-to-install-production-certificates.md)を参照してください。
+IoT Edge デバイスに証明書をインストールし、config.yaml ファイルからそれらを参照する方法の詳細については、[「IoT Edgeデバイスに運用証明書をインストールする」](how-to-manage-device-certificates.md)を参照してください。
 
 ### <a name="have-a-device-management-plan"></a>デバイスの管理を計画する
 
@@ -224,7 +224,7 @@ IoT Edge のデプロイをテストする場合、通常はデバイスにア�
 
 この情報を `daemon.json` という名前のファイルに追加 (またはアペンド) して、デバイス プラットフォームの適切な場所に配置します。
 
-| プラットフォーム | Location |
+| プラットフォーム | 場所 |
 | -------- | -------- |
 | Linux | `/etc/docker/` |
 | Windows | `C:\ProgramData\iotedge-moby\config\` |

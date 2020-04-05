@@ -17,10 +17,10 @@ ms.date: 08/29/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a421afc736399472a513dfc145321ba33ef6fdca
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71129722"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-apptio"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Apptio の統合
@@ -29,7 +29,7 @@ ms.locfileid: "71129722"
 
 * Apptio にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントで Apptio に自動的にサインインするように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

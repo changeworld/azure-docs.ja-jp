@@ -9,11 +9,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.openlocfilehash: 55f40e8f22b39caa3527a378f33982276bed597d
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755152"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214950"
 ---
 # <a name="quickstart-build-a-net-web-app-using-azure-cosmos-dbs-api-for-mongodb"></a>クイック スタート:Azure Cosmos DB の MongoDB 用 API を使用して .NET Web アプリを構築する 
 
@@ -158,11 +158,11 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Cosmos アカウントを作成し、コレクションを作成して、コンソール アプリを実行する方法を学習しました。 これで、Cosmos データベースに追加のデータをインポートできます。 
 

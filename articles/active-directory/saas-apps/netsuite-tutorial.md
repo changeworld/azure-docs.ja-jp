@@ -16,10 +16,10 @@ ms.date: 01/22/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6a920e58f1ffd4c3e3e9769bf6346100a8677b90
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76760056"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>チュートリアル:Azure AD シングル サインオン (SSO) を NetSuite と統合する
@@ -111,7 +111,7 @@ Azure portal で Azure AD SSO を有効にするには、以下を実行しま�
 
 1. 上記に加えて、NetSuite アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | Name | ソース属性 |
+    | 名前 | ソース属性 |
     | ---------------| --------------- |
     | account  | `account id` |
 
@@ -139,7 +139,7 @@ Azure portal で Azure AD SSO を有効にするには、以下を実行しま�
    a. **[名前]** ボックスに「**B.Simon**」と入力します。  
    b. **[ユーザー名]** ボックスに「username@companydomain.extension」と入力します (たとえば、B.Simon@contoso.com)。  
    c. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。  
-   d. **作成** を選択します。
+   d. **［作成］** を選択します
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

@@ -7,10 +7,10 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/27/2019
 ms.openlocfilehash: 9a900a2f2e950fe9b9846ebcc047d7c344284948
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78250677"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>Azure Monitor for Azure Cosmos DB (プレビュー) の詳細

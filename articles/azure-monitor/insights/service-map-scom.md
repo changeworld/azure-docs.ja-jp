@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
 ms.openlocfilehash: 112413720f969474369555a74bc89846666e2ef9
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77663455"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager と Azure Monitor for VMs マップ機能を統合する

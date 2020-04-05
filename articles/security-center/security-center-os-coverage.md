@@ -14,15 +14,15 @@ ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
 ms.openlocfilehash: e13149ba802f0f8b9a565e0aabd86ae05167f18b
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78208821"
 ---
 # <a name="supported-platforms"></a>サポートされているプラットフォーム 
 
-## 仮想マシン/サーバー <a name="vm-server"></a>
+## <a name="virtual-machines--servers"></a>仮想マシン/サーバー <a name="vm-server"></a>
 
 Security Center は、さまざまな種類のハイブリッド環境で仮想マシン/サーバーをサポートします。
 
@@ -38,7 +38,7 @@ Azure サブスクリプションでアクティブ化された Azure 環境で�
 
 次のセクションでは、Azure Security Center が使用する [Log Analytics エージェント](../azure-monitor/platform/agents-overview.md#log-analytics-agent)を実行できる、サポート対象のサーバー オペレーティング システムの一覧を示します。
 
-### Windows Server オペレーティング システム <a name="os-windows"></a>
+### <a name="windows-server-operating-systems"></a>Windows Server オペレーティング システム <a name="os-windows"></a>
 
 |OS|Azure Security Center でサポートされます|Microsoft Defender ATP との統合のサポート|
 |:---|:-:|:-:|
@@ -49,11 +49,11 @@ Azure サブスクリプションでアクティブ化された Azure 環境で�
 
 上記の Windows オペレーティング システムでサポートされている機能の詳細については、「[仮想マシン/サーバーでサポートされる機能](security-center-services.md#vm-server-features)」をご覧ください。
 
-### Windows オペレーティング システム<a name="os-windows (non-server)"></a>
+### <a name="windows-operating-systems"></a>Windows オペレーティング システム<a name="os-windows (non-server)"></a>
 
 Azure Security Center は Azure サービスと統合し、Windows ベースの仮想マシンの監視と保護が行われます。
 
-### Linux オペレーティング システム <a name="os-linux"></a>
+### <a name="linux-operating-systems"></a>Linux オペレーティング システム <a name="os-linux"></a>
 
 64 ビット
 
@@ -77,11 +77,11 @@ Azure Security Center は Azure サービスと統合し、Windows ベースの�
 
 上記の Linux オペレーティングシステムでサポートされている機能の詳細については、「[仮想マシン/サーバーでサポートされる機能](security-center-services.md#vm-server-features)」をご覧ください。
 
-### マネージド仮想マシン サービス <a name="virtual-machine"></a>
+### <a name="managed-virtual-machine-services"></a>マネージド仮想マシン サービス <a name="virtual-machine"></a>
 
 仮想マシンは、Azure Kubernetes (AKS)、Azure Databricks など、いくつかの Azure マネージド サービスの一部として、顧客サブスクリプションでも作成されます。 これらの仮想マシンも Azure Security Center によって検出され、Log Analytics エージェントは、上記のサポートされている [Windows/Linux オペレーティング システム](#os-windows)に従ってインストールおよび構成できます。
 
-### Cloud Services <a name="cloud-services"></a>
+### <a name="cloud-services"></a>Cloud Services <a name="cloud-services"></a>
 
 クラウド サービスで実行する仮想マシン もサポートされます。 監視されるのは、運用スロットで実行するクラウド サービスの Web ロールと worker ロールだけです。 Cloud Services の詳細については、「[Azure Cloud Services の概要](../cloud-services/cloud-services-choose-me.md)」をご覧ください。
 

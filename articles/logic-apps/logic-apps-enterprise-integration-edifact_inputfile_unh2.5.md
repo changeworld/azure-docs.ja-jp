@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/27/2017
 ms.openlocfilehash: ad50cbb423f8c60f1caad159bc1a20cf96ed98aa
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74792542"
 ---
 # <a name="handle-edifact-documents-with-unh25-segments-in-azure-logic-apps"></a>Azure Logic Apps で UNH 2.5 セグメントを使用して EDIFACT メッセージを処理する
@@ -63,6 +63,6 @@ EDIFACT ドキュメント内に UNH2.5 セグメントが存在する場合、�
 
    ![送信契約に UNH2.5 を追加する](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image2.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [統合アカウント契約](../logic-apps/logic-apps-enterprise-integration-agreements.md)の詳細を学習します。

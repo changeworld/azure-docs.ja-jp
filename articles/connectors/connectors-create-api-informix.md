@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/07/2020
 tags: connectors
 ms.openlocfilehash: dccb715c974037b4e3080f3e51576feae34c03df
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76757970"
 ---
 # <a name="manage-ibm-informix-database-resources-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して IBM Informix データベース リソースを管理する
@@ -78,7 +78,7 @@ ms.locfileid: "76757970"
 
 1. この接続情報を入力し、 **[作成]** を選択します。
 
-   | プロパティ | JSON プロパティ | Required | 値の例 | 説明 |
+   | プロパティ | JSON プロパティ | 必須 | 値の例 | 説明 |
    |----------|---------------|----------|---------------|-------------|
    | [接続名] | `name` | はい | `informix-demo-connection` | Informix データベースへの接続に使用する名前 |
    | サーバー | `server` | はい | - クラウド: `informixdemo.cloudapp.net:9089` <br>- オンプレミス: `informixdemo:9089` | IPv4 または IPv6 形式の TCP/IP アドレスまたはエイリアスの後に、コロンと TCP/IP ポート番号が続きます |

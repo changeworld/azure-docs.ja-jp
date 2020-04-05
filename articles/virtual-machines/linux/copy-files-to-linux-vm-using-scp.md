@@ -9,10 +9,10 @@ ms.date: 07/12/2017
 ms.author: cynthn
 ms.subservice: disks
 ms.openlocfilehash: a0837790b70de42073338bf085ee0f3976b866f6
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969614"
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>SCP を使用して Linux VM とファイルをやり取りする

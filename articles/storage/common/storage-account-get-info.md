@@ -9,16 +9,16 @@ ms.date: 08/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 1cff950f2c420651ffa09ffe76a0d1389da84c10
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1495ed55c24a0f94b911d60d1db0f32940ea134a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457473"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79137060"
 ---
 # <a name="get-storage-account-type-and-sku-name-with-net"></a>.NET を使用してストレージ アカウントの種類と SKU 名を取得する
 
-この記事では、[.NET 用 Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage/client)を使用して、BLOB の Azure Storage アカウントの種類と SKU 名を取得する方法について説明します。
+この記事では、[.NET 用 Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage?view=azure-dotnet)を使用して、BLOB の Azure Storage アカウントの種類と SKU 名を取得する方法について説明します。
 
 アカウント情報は、バージョン 2018-03-28 以降のサービス バージョンで使用できます。
 

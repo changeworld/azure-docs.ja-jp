@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 90995b1c9d10c7b589706f5abf37f92d76e4362b
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 5f12b77f5baa1a3b06a093aac7267c65a038881e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75560353"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80061015"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Windows 上で Azure Files で使用するポイント対サイト (P2S) VPN を構成する
 ポイント対サイト (P2S) VPN 接続を使用すると、ポート 445 を開くことなく、Azure の外部から SMB 経由で Azure ファイル共有をマウントできます。 ポイント対サイト VPN 接続は、Azure と個々のクライアントの間の VPN 接続です。 Azure Files で P2S VPN 接続を使用するには、接続したいクライアントごとに P2S VPN 接続を構成する必要があります。 オンプレミス ネットワークから Azure ファイル共有に接続する必要のある多数のクライアントが存在する場合は、クライアントごとのポイント対サイト接続の代わりにサイト間 (S2S) VPN 接続を使用できます。 詳細については、「[Azure Files で使用するサイト間 VPN を構成する](storage-files-configure-s2s-vpn.md)」を参照してください。
@@ -24,18 +24,9 @@ ms.locfileid: "75560353"
 ## <a name="prerequisites"></a>前提条件
 - 最新バージョンの Azure PowerShell モジュール。 Azure PowerShell をインストールする方法の詳細については、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)に関するページを参照し、オペレーティング システムを選択してください。 Windows 上で Azure CLI を使用することは可能ですが、下の手順は Azure PowerShell 用に提供されています。
 
-- Azure Private DNS PowerShell モジュール。 現在、これは Azure PowerShell モジュールの一部として配布されていないため、次の方法でインストールできます。
-    ```PowerShell
-    if ($PSVersionTable.PSVersion -ge [System.Version]::new(6, 0)) {
-        Install-Module -Name Az.PrivateDns -AllowClobber -AllowPrerelease
-    } else {
-        Install-Module -Name Az.PrivateDns -RequiredVersion "0.1.3"
-    }
+- オンプレミスにマウントする Azure ファイル共有。 ストレージ アカウント内にデプロイされた Azure ファイル共有は、複数のファイル共有だけでなく、BLOB コンテナーやキューなどのその他のストレージ リソースをデプロイできるストレージの共有プールを表す管理構造です。 Azure ファイル共有とストレージ アカウントをデプロイする方法の詳細については、「[Azure ファイル共有を作成する](storage-how-to-create-file-share.md)」を参照してください。
 
-    Import-Module -Name Az.PrivateDns
-    ```  
-
-- オンプレミスにマウントする Azure ファイル共有。 ポイント対サイト VPN には [Standard](storage-how-to-create-file-share.md) または [Premium Azure ファイル共有](storage-how-to-create-premium-fileshare.md)のどちらかを使用できます。
+- オンプレミスにマウントする Azure ファイル共有を含むストレージ アカウント用のプライベート エンドポイント。 プライベート エンドポイントを作成する方法の詳細については、「[Azure Files ネットワーク エンドポイントの構成](storage-files-networking-endpoints.md?tabs=azure-powershell)」を参照してください。 
 
 ## <a name="deploy-a-virtual-network"></a>仮想ネットワークをデプロイする
 ポイント対サイト VPN 経由でオンプレミスから Azure ファイル共有やその他の Azure リソースにアクセスするには、仮想ネットワーク (VNet) を作成する必要があります。 自動的に作成される P2S VPN 接続は、オンプレミスの Windows コンピューターとこの Azure 仮想ネットワークの間のブリッジです。
@@ -85,91 +76,6 @@ $privateEndpointSubnet = $virtualNetwork.Subnets | `
     Where-Object { $_.Name -eq "PrivateEndpointSubnet" }
 $gatewaySubnet = $virtualNetwork.Subnets | ` 
     Where-Object { $_.Name -eq "GatewaySubnet" }
-```
-
-## <a name="restrict-the-storage-account-to-the-virtual-network"></a>ストレージ アカウントを仮想ネットワークに制限する
-既定では、ストレージ アカウントを作成すると、要求を認証する手段 (Active Directory ID やストレージ アカウント キーの使用など) を持っている限り、世界中のどこからでもそのアカウントにアクセスできます。 このストレージ アカウントへのアクセスを今作成した仮想ネットワークに制限するには、仮想ネットワーク内のアクセスを許可し、その他のすべてのアクセスを拒否するネットワーク ルール セットを作成する必要があります。
-
-ストレージ アカウントを仮想ネットワークに制限するには、サービス エンドポイントを使用する必要があります。 サービス エンドポイントは、パブリック DNS/パブリック IP に仮想ネットワーク内からしかアクセスできないようにするためのネットワーク構造です。 パブリック IP アドレスは同じままであることが保証されないため、最終的にはストレージ アカウントのサービス エンドポイントではなく、プライベート エンドポイントを使用する必要がありますが、サービス エンドポイントも公開されない限り、ストレージ アカウントを制限することはできません。
-
-`<storage-account-name>` は、アクセスするストレージ アカウントに必ず置き換えてください。
-
-```PowerShell
-$storageAccountName = "<storage-account-name>"
-
-$storageAccount = Get-AzStorageAccount `
-    -ResourceGroupName $resourceGroupName `
-    -Name $storageAccountName
-
-$networkRule = Add-AzStorageAccountNetworkRule `
-    -ResourceGroupName $resourceGroupName `
-    -Name $storageAccountName `
-    -VirtualNetworkResourceId $serviceEndpointSubnet.Id
-
-Update-AzStorageAccountNetworkRuleSet `
-    -ResourceGroupName $resourceGroupName `
-    -Name $storageAccountName `
-    -Bypass AzureServices `
-    -DefaultAction Deny `
-    -VirtualNetworkRule $networkRule | Out-Null
-``` 
-
-## <a name="create-a-private-endpoint-preview"></a>プライベート エンドポイントを作成する (プレビュー)
-ストレージ アカウントのプライベート エンドポイントを作成すると、そのストレージ アカウントに仮想ネットワークの IP アドレス空間内の IP アドレスが割り当てられます。 このプライベート IP アドレスを使用してオンプレミスから Azure ファイル共有をマウントすると、VPN のインストールにより自動的に定義されたルーティング規則によって、マウント要求が VPN 経由でストレージ アカウントにルーティングされます。 
-
-```PowerShell
-$internalVnet = Get-AzResource `
-    -ResourceId $virtualNetwork.Id `
-    -ApiVersion "2019-04-01"
-
-$internalVnet.Properties.subnets[1].properties.privateEndpointNetworkPolicies = "Disabled"
-$internalVnet | Set-AzResource -Force | Out-Null
-
-$privateEndpointConnection = New-AzPrivateLinkServiceConnection `
-    -Name "myConnection" `
-    -PrivateLinkServiceId $storageAccount.Id `
-    -GroupId "file"
-
-$privateEndpoint = New-AzPrivateEndpoint `
-    -ResourceGroupName $resourceGroupName `
-    -Name "$storageAccountName-privateEndpoint" `
-    -Location $region `
-    -Subnet $privateEndpointSubnet `
-    -PrivateLinkServiceConnection $privateEndpointConnection
-
-$zone = Get-AzPrivateDnsZone -ResourceGroupName $resourceGroupName
-if ($null -eq $zone) {
-    $zone = New-AzPrivateDnsZone `
-        -ResourceGroupName $resourceGroupName `
-        -Name "privatelink.file.core.windows.net"
-} else {
-    $zone = $zone[0]
-}
-
-$link = New-AzPrivateDnsVirtualNetworkLink `
-    -ResourceGroupName $resourceGroupName `
-    -ZoneName $zone.Name `
-    -Name ($virtualNetwork.Name + "-link") `
-    -VirtualNetworkId $virtualNetwork.Id
-
-$internalNic = Get-AzResource `
-    -ResourceId $privateEndpoint.NetworkInterfaces[0].Id `
-    -ApiVersion "2019-04-01"
-
-foreach($ipconfig in $internalNic.Properties.ipConfigurations) {
-    foreach($fqdn in $ipconfig.properties.privateLinkConnectionProperties.fqdns) {
-        $recordName = $fqdn.split('.', 2)[0]
-        $dnsZone = $fqdn.split('.', 2)[1]
-        New-AzPrivateDnsRecordSet `
-            -ResourceGroupName $resourceGroupName `
-            -Name $recordName `
-            -RecordType A `
-            -ZoneName $zone.Name `
-            -Ttl 600 `
-            -PrivateDnsRecords (New-AzPrivateDnsRecordConfig `
-                -IPv4Address $ipconfig.properties.privateIPAddress) | Out-Null
-    }
-}
 ```
 
 ## <a name="create-root-certificate-for-vpn-authentication"></a>VPN 認証用のルート証明書の作成
@@ -430,7 +336,7 @@ Invoke-Command `
     }
 ```
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 - [直接 Azure ファイル共有アクセスに関するネットワークの考慮事項](storage-files-networking-overview.md)
 - [Linux 上で Azure Files で使用するポイント対サイト (P2S) VPN を構成する](storage-files-configure-p2s-vpn-linux.md)
 - [Azure Files で使用するサイト間 (S2S) VPN を構成する](storage-files-configure-s2s-vpn.md)

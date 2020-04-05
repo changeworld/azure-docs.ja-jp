@@ -22,6 +22,8 @@
       href: Quickstarts/quickstart-sdk.md
 - name: チュートリアル
   items:
+    - name: Power 仮想エージェントとの統合
+      href: Tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
     - name: バッチ ファイルを使用したテスト
       href: Quickstarts/batch-testing.md
 - name: 概念
@@ -70,10 +72,12 @@
           href: How-To/business-continuity-plan.md
         - name: 協力
           href: How-To/collaborate-knowledge-base.md
+        - name: アクティブ ラーニングを有効にする
+          href: How-To/use-active-learning.md
     - name: ナレッジ ベースの管理
       items:
         - name: ナレッジ ベースを作成する
-          href: Quickstarts/create-publish-knowledge-base.md
+          href: How-To/manage-knowledge-bases.md
         - name: 言語の選択
           href: How-To/language-knowledge-base.md
         - name: おしゃべりの追加
@@ -85,7 +89,7 @@
           href: How-To/test-knowledge-base.md
     - name: QnA セットの管理
       items:
-        - name: ナレッジ ベースの編集
+        - name: QnA セットの編集
           href: How-To/edit-knowledge-base.md
         - name: フォローアップ プロンプトの追加
           href: How-To/multiturn-conversation.md

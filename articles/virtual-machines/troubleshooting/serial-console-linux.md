@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
 ms.openlocfilehash: b1f7708c9bd213e201ba4eb8837a191dca68ca9e
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77167010"
 ---
 # <a name="azure-serial-console-for-linux"></a>Linux 用 Azure シリアル コンソール

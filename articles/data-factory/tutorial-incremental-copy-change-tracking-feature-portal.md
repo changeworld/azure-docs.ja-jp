@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
 ms.openlocfilehash: a1f76987580bc4235a290c8aa18110f8257e74a7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75982679"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>変更追跡情報を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする
@@ -414,7 +414,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
     2. **[Import parameter]\(インポート パラメーター\)** を選択します。
     3. **[ストアド プロシージャのパラメーター]** セクションで、各パラメーターに次の値を指定します。
 
-        | Name | 種類 | 値 |
+        | 名前 | Type | Value |
         | ---- | ---- | ----- |
         | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} |
         | TableName | String | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} |

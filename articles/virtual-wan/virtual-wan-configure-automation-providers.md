@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: cherylmc
 ms.openlocfilehash: 7848dda09b39f446dd218b7ce1eb2a07664bcaa6
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77190412"
 ---
 # <a name="automation-guidelines-for-virtual-wan-partners"></a>Virtual WAN パートナー向けの自動化のガイドライン
@@ -20,7 +20,7 @@ ms.locfileid: "77190412"
 
 ブランチ デバイス (お客様のオンプレミス VPN デバイスまたは SDWAN CPE) は通常、プロビジョニングするコントローラー/デバイス ダッシュボードを使用します。 多くの場合、SD-WAN ソリューションの管理者は、管理コンソールを使用して、ネットワークに接続する前にデバイスを事前プロビジョニングすることができます。 この VPN 対応デバイスは、コントローラーからコントロール プレーンのロジックを取得します。 VPN デバイスまたは SD-WAN コントローラーは、Azure API を使用して、Azure Virtual WAN への接続を自動化できます。 この種類の接続では、オンプレミスのデバイスに外部接続用パブリック IP アドレスを割り当てる必要があります。
 
-## <a name ="before"></a>自動化を始める前に
+## <a name="before-you-begin-automating"></a><a name ="before"></a>自動化を始める前に
 
 * デバイスが IPsec IKEv1/IKEv2 をサポートしていることを確認します。 「[IPsec 接続の既定のポリシー](#default)」をご覧ください。
 * Azure Virtual WAN への接続の自動化に使用する [REST API](#additional) を参照してください。
@@ -31,14 +31,14 @@ ms.locfileid: "77190412"
   * Azure Virtual WAN へのブランチ デバイス情報のアップロード
   * Azure の構成のダウンロードと、ブランチ デバイスから Azure Virtual WAN への接続の設定
 
-### <a name ="additional"></a>追加情報
+### <a name="additional-information"></a><a name ="additional"></a>追加情報
 
 * 仮想ハブの作成を自動化する [REST API](https://docs.microsoft.com/rest/api/virtualwan/virtualhubs)
 * 仮想 WAN 用の Azure VPN ゲートウェイを自動化する [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpngateways)
 * VPNSite を Azure VPN Hub に接続する [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpnconnections)
 * [既定の IPsec ポリシー](#default)
 
-## <a name ="ae"></a>カスタマー エクスペリエンス
+## <a name="customer-experience"></a><a name ="ae"></a>カスタマー エクスペリエンス
 
 Azure Virtual WAN と共に予想される顧客エクスペリエンスを理解します。
 
@@ -50,9 +50,9 @@ Azure Virtual WAN と共に予想される顧客エクスペリエンスを理�
   6. ソリューションのこのステップの最後では、ブランチ デバイスと仮想ハブの間にシームレスなサイト対サイト接続が作成されます。 他のハブの間に追加の接続を設定することもできます。 各接続はアクティブ/アクティブ トンネルです。 ユーザーは、トンネルに対するリンクごとに異なる ISP を使用できます。
   7. CPE 管理インターフェイスで、トラブルシューティングと監視の機能を提供することを検討してください。 一般的なシナリオとしては、"CPE の問題が原因でお客様が Azure リソースにアクセスできない"、"CPE 側に IPsec パラメーターを表示する" などが挙げられます。
 
-## <a name ="understand"></a>自動化の詳細
+## <a name="automation-details"></a><a name ="understand"></a>自動化の詳細
 
-###  <a name="access"></a>アクセス制御
+###  <a name="access-control"></a><a name="access"></a>アクセス制御
 
 お客様は、デバイスの UI で仮想 WAN の適切なアクセス制御を設定できる必要があります。 Azure サービス プリンシパルを使用することをお勧めします。 サービス プリンシパルに基づくアクセスは、ブランチ情報をアップロードするために適した認証をデバイス コント ローラーに提供します。 詳しくは、「[サービス プリンシパルの作成](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)」をご覧ください。 この機能は Azure Virtual WAN のオファリングには含まれませんが、Azure でアクセスを設定するときの一般的な手順を以下に示しておきます。この後、関連する詳細がデバイス管理ダッシュボードに入力されます
 
@@ -61,11 +61,11 @@ Azure Virtual WAN と共に予想される顧客エクスペリエンスを理�
 * テナント ID を取得する
 * アプリケーションを "共同作成者" ロールに割り当てる
 
-###  <a name="branch"></a>ブランチ デバイスの情報をアップロードする
+###  <a name="upload-branch-device-information"></a><a name="branch"></a>ブランチ デバイスの情報をアップロードする
 
 ブランチ (オンプレミス サイト) の情報を Azure にアップロードするユーザー エクスペリエンスをデザインする必要があります。 VPNSite 用の [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpnsites) を使用して、Virtual WAN でサイト情報を作成できます。 すべてのブランチ SDWAN/VPN デバイスを提供したり、適切なデバイスのカスタマイズを選択したりすることができます。
 
-### <a name="device"></a>デバイス構成のダウンロードと接続
+### <a name="device-configuration-download-and-connectivity"></a><a name="device"></a>デバイス構成のダウンロードと接続
 
 このステップでは、Azure の構成をダウンロードし、ブランチ デバイスから Azure Virtual WAN への接続を設定します。 この手順で、プロバイダーを使用していないお客様が、手動で Azure の構成をダウンロードしてオンプレミス SDWAN/VPN デバイスに適用します。 プロバイダーは、この手順を自動化する必要があります。 詳細については、ダウンロード [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpnsitesconfiguration/download) を参照してください。 デバイス コントローラーでは、"GetVpnConfiguration" REST API を呼び出して、Azure の構成をダウンロードできます。
 
@@ -74,7 +74,7 @@ Azure Virtual WAN と共に予想される顧客エクスペリエンスを理�
   * Azure Vnet が仮想ハブに接続されている場合は、ConnectedSubnets として表示されます。
   * VPN 接続では、ルートベースの構成が使用され、IKEv1 と IKEv2 の両方のプロトコルがサポートされます。
 
-## <a name="devicefile"></a>デバイス構成ファイル
+## <a name="device-configuration-file"></a><a name="devicefile"></a>デバイス構成ファイル
 
 デバイス構成ファイルには、オンプレミスの VPN デバイスを構成するときに使用する構成が含まれています。 このファイルを表示すると、次の情報を確認できます。
 
@@ -204,7 +204,7 @@ Azure Virtual WAN と共に予想される顧客エクスペリエンスを理�
    }
   ```
 
-## <a name="default"></a>接続に関する詳細
+## <a name="connectivity-details"></a><a name="default"></a>接続に関する詳細
 
 ご使用のオンプレミス SDWAN/VPN デバイスまたは SD-WAN 構成は、Azure IPsec/IKE ポリシーで指定した次のアルゴリズムおよびパラメーターと一致している (または含んでいる) 必要があります。
 
@@ -215,11 +215,11 @@ Azure Virtual WAN と共に予想される顧客エクスペリエンスを理�
 * IPsec 整合性アルゴリズム
 * PFS グループ
 
-### <a name="default"></a> IPsec 接続の既定のポリシー
+### <a name="default-policies-for-ipsec-connectivity"></a><a name="default"></a> IPsec 接続の既定のポリシー
 
 [!INCLUDE [IPsec Default](../../includes/virtual-wan-ipsec-include.md)]
 
-### <a name="custom"></a>IPsec 接続のカスタム ポリシー
+### <a name="custom-policies-for-ipsec-connectivity"></a><a name="custom"></a>IPsec 接続のカスタム ポリシー
 
 [!INCLUDE [IPsec Custom](../../includes/virtual-wan-ipsec-custom-include.md)]
 

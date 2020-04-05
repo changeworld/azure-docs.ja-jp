@@ -7,16 +7,16 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: aeef22bf96221061a444f40e16e33343fafe511c
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74770307"
 ---
 # <a name="create-and-manage-firewall-rules-for-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Azure portal を使用して Azure Database for PostgreSQL - 単一サーバー用のファイアウォール規則を作成して管理する
 サーバーレベルのファイアウォール規則を使用して、指定した IP アドレスまたは IP アドレス範囲からの Azure Database for PostgreSQL サーバーへのアクセスを管理できます。
 
-仮想ネットワーク (VNet) 規則を使用して、サーバーへのアクセスをセキュリティで保護することもできます。 [Azure portal を使用した仮想ネットワーク サービス エンドポイントと規則の作成と管理](howto-manage-vnet-using-portal.md)の詳細を確認してください。
+仮想ネットワーク (VNet) 規則を使用して、サーバーへのアクセスをセキュリティで保護することもできます。 [Azure portal を使用して仮想ネットワーク サービス エンドポイントと規則の作成および管理](howto-manage-vnet-using-portal.md)する方法を確認してください。
 
 ## <a name="prerequisites"></a>前提条件
 このハウツー ガイドの手順を実行するには、以下が必要です。
@@ -58,7 +58,7 @@ Azure のアプリケーションが Azure Database for PostgreSQL サーバー�
 * 既存の規則を変更するには、規則内の任意のフィールドをクリックし、変更します。 **[保存]** をクリックして変更を保存します。
 * 既存の規則を削除するには、省略記号 [...] をクリックし、 **[削除]** をクリックします。 **[保存]** をクリックして変更を保存します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - 同様に、スクリプトを作成し、[Azure CLI を使用して Azure Database for PostgreSQL ファイアウォール規則を作成および管理](howto-manage-firewall-using-cli.md)できます。
-- [Azure portal を使用して、仮想ネットワーク サービス エンドポイントと規則を作成および管理](howto-manage-vnet-using-portal.md)して、サーバーへのアクセスのセキュリティ保護を強化します。
+- [Azure portal を使用して仮想ネットワーク サービス エンドポイントと規則を作成および管理](howto-manage-vnet-using-portal.md)し、サーバーへのアクセスのセキュリティ保護を強化します。
 - Azure Database for PostgreSQL サーバーに接続する方法については、「[Azure Database for PostgreSQL の接続ライブラリ](concepts-connection-libraries.md)」をご覧ください。

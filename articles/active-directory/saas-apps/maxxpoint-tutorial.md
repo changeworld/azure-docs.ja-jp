@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と MaxxPoint の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と MaxxPoint の統合 | Microsoft Docs'
 description: Azure Active Directory と MaxxPoint の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.openlocfilehash: a3f11de081444007eb5c70dbe62235ed43a5ea59
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73159416"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-maxxpoint"></a>チュートリアル:Azure Active Directory と MaxxPoint の統合
+# <a name="tutorial-azure-active-directory-integration-with-maxxpoint"></a>チュートリアル: Azure Active Directory と MaxxPoint の統合
 
 このチュートリアルでは、MaxxPoint と Azure Active Directory (Azure AD) を統合する方法について説明します。
 MaxxPoint と Azure AD の統合には、次の利点があります。
@@ -109,7 +109,7 @@ MaxxPoint で Azure AD シングル サインオンを構成するには、次�
 
     ![[MaxxPoint のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
-    **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://maxxpoint.westipc.com/default/sso/login/entity/<customer-id>-azure`
+    **[サインオン URL]** ボックスに、`https://maxxpoint.westipc.com/default/sso/login/entity/<customer-id>-azure` の形式で URL を入力します。
 
     >[!NOTE] 
     >これは、実際の値ではありません。 実際のサインオン URL で値を更新する必要があります。 この値については、MaxxPoint チームに電話 (888-728-0950) でお問い合わせください。

@@ -16,10 +16,10 @@ ms.date: 01/10/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: da2e903cf8afdd7c879222c0c7fded53cd2590ab
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76157303"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datacamp"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と DataCamp の統合
@@ -99,7 +99,7 @@ DataCamp で Azure AD SSO を構成してテストするには、次の構成要
 
 1. その他に、DataCamp アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | Name | ソース属性|
+    | 名前 | ソース属性|
     | ------------| --------- |
     | first_name | User.givenname |
     | last_name | User.surname |

@@ -7,10 +7,10 @@ ms.topic: sample
 ms.date: 12/12/2017
 ms.custom: mvc
 ms.openlocfilehash: 0b3acb1b421962cde7d90398f42bdfeefda578e3
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74971504"
 ---
 # <a name="cli-samples-for-azure-app-service"></a>Azure App Service の CLI サンプル

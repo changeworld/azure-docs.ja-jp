@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 237846ec3adda208126aeb22e7900cbf5118ee95
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 7680a28b165dc252159cf95311439508d3c867e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598665"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79529109"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>Premium Azure ファイル共有を作成する方法
 Premium ファイル共有は、ソリッド ステート ディスク (SSD) ストレージ メディアで提供され、データベースのホスティングやハイパフォーマンス コンピューティング (HPC) など、IO 集中型のワークロードに役立ちます。 Premium ファイル共有は、FileStorage アカウントと呼ばれる、特殊用途のストレージ アカウントの種類でホストされます。 Premium ファイル共有は、ハイ パフォーマンスおよびエンタープライズ規模のアプリケーション向けに設計され、一貫性のある待機時間の短縮、高 IOPS、高スループット共有を提供します。
@@ -27,7 +27,7 @@ Premium Azure ファイル共有などの Azure リソースにアクセスす�
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure portal](https://portal.azure.com/) にサインインします。
+[Azure portal](https://portal.azure.com/) にサインインする
 
 ### <a name="create-a-filestorage-storage-account"></a>FileStorage ストレージ アカウントを作成する
 
@@ -146,7 +146,7 @@ Azure Cloud Shell を開始するには、[Azure portal](https://portal.azure.co
 
 CLI のローカル インストールにログインする場合は、まず最新バージョンを使用していることを確認してから、ログイン コマンドを実行します。
 
-```cli
+```azurecli
 az login
 ```
 
@@ -177,7 +177,7 @@ az storage account create `
 
 ストレージ アカウント キーにより、ストレージ アカウント内のリソースへのアクセスが制御されます。この記事では、Premium ファイル共有を作成するためにキーを使います。 キーは、ストレージ アカウントの作成時に自動的に作成されます。 ストレージ アカウントのストレージ アカウント キーは、[az storage account keys list](/cli/azure/storage/account/keys) コマンドを使用して取得できます。
 
-```azurecli-interactive 
+```azurecli-interactive
 STORAGEKEY=$(az storage account keys list \
     --resource-group "myResourceGroup" \
     --account-name $STORAGEACCT \

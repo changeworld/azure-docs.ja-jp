@@ -4,11 +4,11 @@ description: Azure Migrate での物理サーバーの移行のサポートに�
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: e55cf6dddbc8dafd33b444e4a0dbe378d807aea1
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030930"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232723"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>物理サーバーの移行のサポート マトリックス
 

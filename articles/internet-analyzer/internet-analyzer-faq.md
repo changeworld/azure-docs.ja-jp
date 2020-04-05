@@ -8,10 +8,10 @@ ms.topic: guide
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: a4a5b058666fab3e9048a7d92726dccd1360ff37
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74184249"
 ---
 # <a name="azure-internet-analyzer-faq-preview"></a>Azure Internet Analyzer の FAQ (プレビュー)
@@ -22,7 +22,7 @@ ms.locfileid: "74184249"
 
 プレビューは一部のお客様がご利用いただけます。 プレビューへの参加にご興味があれば、次の操作を行ってください。
 
-1. [Azure Portal](https://ms.portal.azure.com) にサインインします。
+1. [Azure portal](https://ms.portal.azure.com) にサインインします。
 2. **[サブスクリプション]** ページに移動します。
 3. Internet Analyzer の使用を計画している Azure サブスクリプションをクリックします。
 4. サブスクリプションの **[リソース プロバイダー]** 設定に移動します。
@@ -44,17 +44,17 @@ ms.locfileid: "74184249"
 Internet Analyzer は、ユーザーに基づいてネットワーク パフォーマンスの分析情報を提供するように設計されています。 ユーザーにとって最適なパフォーマンスを決定できるようにするために、Internet Analyzer は、ユーザーの個別設定を使用して 2 つのインターネット エンドポイントのパフォーマンスを比較します。 Internet Analyzer は多くの質問に答えることができますが、特に一般的なものは次のとおりです。
 
 * クラウドに移行すると、パフォーマンスにどのような影響があるか。 
-    * *推奨されるテスト:カスタム (現在のオンプレミス インフラストラクチャ) vs.Azure (事前構成済みの任意のエンドポイント)*
+    * *推奨されるテスト: カスタム (現在のオンプレミス インフラストラクチャ) vs.Azure (事前構成済みの任意のエンドポイント)*
 * 自分のデータをエッジに置いた場合とデータ センターに置いた場合では、どのような価値の違いがあるか。 
-    *  *推奨されるテスト:Azure vs.Azure Front Door、Azure vs.Microsoft の Azure CDN*
+    *  *推奨されるテスト: Azure vs.Azure Front Door、Azure vs. Microsoft の Azure CDN*
 * Azure Front Door のパフォーマンス上の利点は何か。
-    *  *推奨されるテスト:カスタム/Azure/CDN vs.Azure Front Door*
+    *  *推奨されるテスト: カスタム/Azure/CDN vs. Azure Front Door*
 * Microsoft の Azure CDN のパフォーマンス上の利点は何か。 
-    *  *推奨されるテスト:カスタム/Azure/AFD vs.Microsoft の Azure CDN*
+    *  *推奨されるテスト: カスタム/Azure/AFD vs. Microsoft の Azure CDN*
 * Microsoft の Azure CDN はどのように積み重ねられているか。 
-    *  *推奨されるテスト:カスタム (他の CDN エンドポイント) vs.Microsoft の Azure CDN*
+    *  *推奨されるテスト: カスタム (他の CDN エンドポイント) vs. Microsoft の Azure CDN*
 * 各リージョンの自分のエンドユーザーのグループに最適なクラウドは何か。 
-    *  *推奨されるテスト:カスタム (他のクラウド サービス) vs.Azure (事前構成済みの任意のエンドポイント)*
+    *  *推奨されるテスト: カスタム (他のクラウドサービス) vs. Azure (事前構成済みの任意のエンドポイント)*
 
 ## <a name="which-tests-can-i-run-in-preview"></a>どのテストをプレビューで実行できますか?
 
@@ -69,7 +69,7 @@ Internet Analyzer で作成する各テストは、エンドポイント A と�
     * インド中部
     * 米国中部
     * 東アジア
-    * East US
+    * 米国東部
     * 西日本
     * 北ヨーロッパ
     * 南アフリカ北部
@@ -103,6 +103,6 @@ Internet Analyzer は、エンドユーザーのパフォーマンスを理解�
 
 Azure には[強力なセキュリティ プロセスがあり、広範囲のコンプライアンス標準を満たします](https://azure.microsoft.com/support/trust-center/)。 あなたとあなたが指名したチームだけがあなたのデータにアクセスできます。 Microsoft のスタッフには、特定の状況下でのみ、あなたに通知した上で限られたアクセスが与えられます。 これは、転送中および保存時に暗号化されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、[Internet Analyzer の概要](internet-analyzer-overview.md)に関する記事を参照してください。

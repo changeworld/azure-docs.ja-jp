@@ -17,10 +17,10 @@ ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: af71bc8e0ad793c37084ce3e5cc9f48ef8f55714
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74037690"
 ---
 # <a name="monitor-a-vm-with-azure-monitor"></a>Azure Monitor を使用して VM を監視する
@@ -54,7 +54,7 @@ az group delete --name myResourceGroup
 | [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | 仮想マシンに対して VM 拡張機能を実行します。 このサンプルでは、Azure Monitor エージェント拡張機能を使用して、Log Analytics エージェントをインストールし Log Analytics ワークスペースに VM を登録します。 |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

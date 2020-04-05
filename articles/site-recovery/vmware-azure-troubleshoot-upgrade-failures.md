@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/10/2019
 ms.author: raynew
 ms.openlocfilehash: b59f933fedd5f1d3ed3f7972b1a1fe653df31be2
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75893911"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Microsoft Azure Site Recovery プロバイダーのアップグレード エラーのトラブルシューティング

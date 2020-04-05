@@ -13,10 +13,10 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.openlocfilehash: b4b13f8b21cfdedde93145a8e437bc2301bee460
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74927104"
 ---
 # <a name="azure-data-factory-whitepapers"></a>Azure Data Factory のホワイトペーパー 

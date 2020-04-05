@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
 ms.openlocfilehash: 9d628583168883276e67d9e2f2fcafdce292769e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73807494"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Azure SQL Database のセキュリティを geo リストアやフェールオーバー用に構成し、管理する
@@ -94,7 +94,7 @@ geo レプリケーション セカンダリに対するユーザー アクセ�
 >
 > DISABLE を実行してもパスワードは変更されないため、必要な場合にいつでも有効にできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * データベースへのアクセスとログインの管理の詳細については、[SQL Database のセキュリティ:データベースのアクセスとログインのセキュリティの管理](sql-database-manage-logins.md)を参照してください。
 * 包含データベース ユーザーの詳細については、「 [包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。

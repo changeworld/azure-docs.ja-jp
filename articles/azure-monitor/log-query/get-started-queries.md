@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
 ms.openlocfilehash: f56abe2bf6ccea1f55f9b3fe94b75016d449b46b
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77670181"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure Monitor でログ クエリの使用を開始する
@@ -95,7 +95,7 @@ SecurityEvent
 ## <a name="where-filtering-on-a-condition"></a>where: 条件に基づいてフィルター処理する
 フィルターは、その名前のとおり、特定の条件に基づいてデータをフィルター処理します。 これは、クエリ結果を関連する情報に制限する最も一般的な方法です。
 
-クエリにフィルターを追加するには、**where** 演算子に続けて 1 つまたは複数の条件を使用します。 たとえば、次のクエリは、_Level_ が _8_ に等しい *SecurityEvent* レコードのみを返します。
+クエリにフィルターを追加するには、**where** 演算子に続けて 1 つまたは複数の条件を使用します。 たとえば、次のクエリは、*Level* が _8_ に等しい _SecurityEvent_ レコードのみを返します。
 
 ```Kusto
 SecurityEvent

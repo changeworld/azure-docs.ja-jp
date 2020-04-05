@@ -14,22 +14,22 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: 2df0bfe8041216e207193832c8f7ca48967c4e5b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: fda62ff0af29c7cf681d9438b02420d299535701
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842437"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80293945"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Azure 用の SAP LaMa コネクタ
 
-[1877727]: https://launchpad.support.sap.com/#/notes/1877727
-[2343511]: https://launchpad.support.sap.com/#/notes/2343511
-[2350235]: https://launchpad.support.sap.com/#/notes/2350235
-[2562184]: https://launchpad.support.sap.com/#/notes/2562184
-[2628497]: https://launchpad.support.sap.com/#/notes/2628497
-[2445033]: https://launchpad.support.sap.com/#/notes/2445033
-[2815988]: https://launchpad.support.sap.com/#/notes/2815988
+[1877727]:https://launchpad.support.sap.com/#/notes/1877727
+[2343511]:https://launchpad.support.sap.com/#/notes/2343511
+[2350235]:https://launchpad.support.sap.com/#/notes/2350235
+[2562184]:https://launchpad.support.sap.com/#/notes/2562184
+[2628497]:https://launchpad.support.sap.com/#/notes/2628497
+[2445033]:https://launchpad.support.sap.com/#/notes/2445033
+[2815988]:https://launchpad.support.sap.com/#/notes/2815988
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
 [dbms-guide]:dbms-guide.md
@@ -77,7 +77,7 @@ Azure コネクタは SAP LaMa 3.0 SP05 以降に付属しています。 SAP La
 
 Azure コネクタでは、Azure Resource Manager API を使用して Azure リソースが管理されます。 SAP LaMa では、サービス プリンシパルまたはマネージド ID を使用して、この API に対する認証を行うことができます。 SAP LaMa が Azure VM 上で実行されている場合は、「[マネージド ID を使用して Azure API にアクセスする](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d)」で説明されているように、マネージド ID を使用することをお勧めします。 サービス プリンシパルを使用する場合は、「[サービス プリンシパルを使用して Azure API にアクセスする](lama-installation.md#913c222a-3754-487f-9c89-983c82da641e)」の手順に従います。
 
-### <a name="913c222a-3754-487f-9c89-983c82da641e"></a>サービス プリンシパルを使用して Azure API にアクセスする
+### <a name="use-a-service-principal-to-get-access-to-the-azure-api"></a><a name="913c222a-3754-487f-9c89-983c82da641e"></a>サービス プリンシパルを使用して Azure API にアクセスする
 
 Azure コネクタでは、サービス プリンシパルを使用して Microsoft Azure に対する承認を行うことができます。 次の手順に従って、SAP Landscape Management (LaMa) 用のサービス プリンシパルを作成してください。
 
@@ -103,7 +103,7 @@ Azure コネクタでは、サービス プリンシパルを使用して Micros
 1. [保存] をクリックします。
 1. SAP LaMa で使用するすべてのリソース グループについて、手順 3 ～ 8 を繰り返します
 
-### <a name="af65832e-6469-4d69-9db5-0ed09eac126d"></a>マネージド ID を使用して Azure API にアクセスする
+### <a name="use-a-managed-identity-to-get-access-to-the-azure-api"></a><a name="af65832e-6469-4d69-9db5-0ed09eac126d"></a>マネージド ID を使用して Azure API にアクセスする
 
 マネージド ID を使用できるようにするには、SAP LaMa インスタンスを、システムまたはユーザーによって割り当てられた ID を持つ Azure VM 上で実行する必要があります。 マネージド ID の詳細については、「[Azure リソースのマネージド ID とは](../../../active-directory/managed-identities-azure-resources/overview.md)」および「[Azure portal を使用して Azure VM で Azure リソースのマネージド ID を構成する](../../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)」を参照してください。
 
@@ -129,7 +129,7 @@ SAP LaMa の Web サイトを開き、[Infrastructure]\(インフラストラク
 * Label (ラベル):コネクタ インスタンスの名前を選択します
 * User Name (ユーザー名):仮想マシンのサービス プリンシパル アプリケーション ID またはユーザーによって割り当てられた ID。 詳細については、「システム割り当て ID またはユーザー割り当て ID の使用」を参照してください。
 * Password (パスワード):サービス プリンシパルのキー/パスワード。 システムまたはユーザーによって割り当てられた ID を使用する場合は、このフィールドを空のままにすることができます。
-* URL:既定の https://management.azure.com/ を使用します
+* URL:既定の `https://management.azure.com/` を使用します
 * Monitoring Interval (Seconds) (監視間隔 (秒)):300 以上にする必要があります
 * Use Managed Identity (マネージド ID を使用する): SAP LaMa は、システムまたはユーザーによって割り当てられた ID を使用して、Azure API に対する認証を行うことができます。 このガイドの、「[マネージド ID を使用して Azure API にアクセスする](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d)」を参照してください。
 * Subscription ID (サブスクリプション ID):Azure サブスクリプション ID

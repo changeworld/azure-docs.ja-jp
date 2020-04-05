@@ -17,10 +17,10 @@ ms.date: 07/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1fd01c86086c7491d22f655fcba5da237286412f
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68347802"
 ---
 # <a name="tutorial-integrate-sap-analytics-cloud-with-azure-active-directory"></a>チュートリアル:SAP Analytics Cloud と Azure Active Directory の統合
@@ -29,7 +29,7 @@ ms.locfileid: "68347802"
 
 * SAP Analytics Cloud にアクセスできるユーザーを Azure AD で制御する。
 * ユーザーが自分の Azure AD アカウントを使用して SAP Analytics Cloud に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

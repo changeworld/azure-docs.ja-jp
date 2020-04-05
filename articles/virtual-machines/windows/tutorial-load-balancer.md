@@ -16,13 +16,13 @@ ms.date: 12/03/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 05a796d7bbe08f8e560c6545f3ed37c0f54b9cf9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74067861"
 ---
-# <a name="tutorial-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Azure 内で Windows 仮想マシンの負荷分散を行って高可用性アプリケーションを作成する
+# <a name="tutorial-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用して Azure 内で Windows 仮想マシンの負荷分散を行って高可用性アプリケーションを作成する
 負荷分散では、着信要求を複数の仮想マシンに分散させることで高可用性を提供します。 このチュートリアルでは、トラフィックを分散し高可用性を提供する、Azure Load Balancer のさまざまなコンポーネントについて説明します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
@@ -276,7 +276,7 @@ Set-AzNetworkInterface -NetworkInterface $nic
 アプリを実行している残りの 2 つの VM の間で、ロード バランサーがトラフィックを負荷分散していることを確認するには、Web ブラウザーを強制的に最新の情報に更新します。 これで VM に対して、OS 更新プログラムのインストールや VM の再起動などのメンテナンスを行うことができます。
 
 ### <a name="add-a-vm-to-the-load-balancer"></a>ロード バランサーに VM を追加する
-VM のメンテナンスを実施した後、またはキャパシティの拡張が必要な場合は、[Get-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/get-azloadbalancer) を使用して、仮想 NIC の *LoadBalancerBackendAddressPools* プロパティを *BackendAddressPool* に設定します。
+VM のメンテナンスを実施した後、またはキャパシティの拡張が必要な場合は、*Get-AzLoadBalancer* を使用して、仮想 NIC の *LoadBalancerBackendAddressPools* プロパティを [BackendAddressPool](https://docs.microsoft.com/powershell/module/az.network/get-azloadbalancer) に設定します。
 
 ロード バランサーを取得します。
 
@@ -288,9 +288,9 @@ $nic.IpConfigurations[0].LoadBalancerBackendAddressPools=$lb.BackendAddressPools
 Set-AzNetworkInterface -NetworkInterface $nic
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、ロード バランサーを作成し、それに VM をアタッチしました。 以下の方法について学習しました。
+このチュートリアルでは、ロード バランサーを作成し、それに VM をアタッチしました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * Azure Load Balancer を作成する

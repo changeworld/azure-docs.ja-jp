@@ -17,10 +17,10 @@ ms.date: 08/29/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 462f44206b4f92629079eb5ae24099eae17291f8
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71121392"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cbre-serviceinsight"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と CBRE ServiceInsight の統合
@@ -29,7 +29,7 @@ ms.locfileid: "71121392"
 
 * CBRE ServiceInsight にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントで自動的に CBRE ServiceInsight にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

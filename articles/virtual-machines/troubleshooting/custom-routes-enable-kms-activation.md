@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
 ms.openlocfilehash: 90034a56fcf5211059d37270e12391249f7a16b5
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77920163"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>強制トンネリングを使用したライセンス認証の問題

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/27/2020
 ms.author: spelluru
 ms.openlocfilehash: b8ffbb16763bfe6485ebf2ab770f4537ddbc8569
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76774490"
 ---
 # <a name="topic-filters-and-actions"></a>トピック フィルターとアクション
@@ -28,7 +28,7 @@ ms.locfileid: "76774490"
 
 Service Bus は、次の 3 つのフィルター条件をサポートします。
 
--   *ブール値フィルター* - **すべての着信メッセージがサブスクリプションに選択される (**true**) TrueFilter** 、あるいは受信メッセージのいずれもサブスクリプションに選択されない (**false**) **FalseFilter** のいずれか。
+-   *ブール値フィルター* - **すべての着信メッセージがサブスクリプションに選択される (** true **) TrueFilter** 、あるいは受信メッセージのいずれもサブスクリプションに選択されない (**false**) **FalseFilter** のいずれか。
 
 -   *SQL フィルター* - **SqlFilter** には、受信メッセージのユーザー定義のプロパティとシステム プロパティに対して、ブローカーで評価される、SQL に似た条件式が入っています。 すべてのシステム プロパティの条件式にはプレフィックスとして `sys.` を付ける必要があります。 [フィルター条件の SQL 言語のサブセット](service-bus-messaging-sql-filter.md)は、プロパティ (`EXISTS`) や null 値 (`IS NULL`) の存在のテスト、論理 NOT/AND/OR、関係演算子、単純な数値を使った算術演算、および `LIKE` による単純なテキスト パターン マッチングを実行します。
 
@@ -38,7 +38,7 @@ Service Bus は、次の 3 つのフィルター条件をサポートします�
 
 複雑なフィルター ルールでは、処理能力が必要になります。 特に、SQL フィルター ルールを使用すると、サブスクリプション、トピック、および名前空間レベルでメッセージのスループット全体が低下します。 可能な場合は、アプリケーションでは、SQL に似たフィルターではなく 処理効率が高く、スループットに与える影響が少ない、相関関係フィルターを選択してください。
 
-## <a name="actions"></a>Actions
+## <a name="actions"></a>アクション
 
 SQL フィルター条件を使用すると、プロパティとその値を追加、削除、または置き換えることによってメッセージに注釈を付けることができるアクションを定義できます。 アクションでは、SQL UPDATE ステートメントの構文を基にした [SQL に似た式を使用](service-bus-messaging-sql-filter.md)します。 アクションは、メッセージが照合された後にサブスクリプションへと選択される前に、メッセージに対して実行されます。 メッセージのプロパティへの変更は、サブスクリプションにコピーされたメッセージにのみ有効です。
 

@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
 ms.openlocfilehash: 783737729601bfef3bee8741a097d4319349f18e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671660"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229579"
 ---
 # <a name="back-up-your-app-in-azure"></a>Azure でのアプリのバックアップ
 [Azure App Service](overview.md) のバックアップと復元の機能により、アプリのバックアップを手動またはスケジュール設定により簡単に作成できます。 バックアップが無期限に保持されるように構成できます。 以前の状態のスナップショットにアプリを復元するには、既存のアプリを上書きするか、別のアプリに対して復元を行います。

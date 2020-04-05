@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
 ms.openlocfilehash: 126700e6290650221a9cb9711b22472301409fca
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74974174"
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>チュートリアル:AES-128 でビデオを暗号化し、キー配信サービスを使用する
@@ -38,7 +38,7 @@ Media Services では、AES 128 ビット暗号化キーを使用して暗号化
 > * この記事で説明する [EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES) サンプルをダウンロードする。
 > * .NET SDK で Media Services API の使用を開始する。
 > * 出力アセットを作成する。
-> * エンコード Transform を作成する。
+> * エンコード Transform を作成します。
 > * ジョブを送信する。
 > * ジョブが完了するのを待つ。
 > * コンテンツ キー ポリシーを作成する
@@ -143,17 +143,17 @@ ContentKeyIdentifierClaim は **ContentKeyPolicy** 内で使用されます。�
 
 ## <a name="build-a-dash-streaming-url"></a>DASH ストリーミング URL を作成する
 
-[ストリーミング ロケーター](https://docs.microsoft.com/rest/api/media/streaminglocators)が作成されたので、ストリーミング URL を取得できます。 URL を作成するには、[StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) のホスト名と**ストリーミング ロケーター**のパスを連結する必要があります。 このサンプルでは、"*既定の*" **ストリーミング エンドポイント**を使っています。 最初に Media Service アカウントを作成したとき、この "*既定の*" **ストリーミング エンドポイント**は停止状態になっているので、**Start** を呼び出す必要があります。
+[ストリーミング ロケーター](https://docs.microsoft.com/rest/api/media/streaminglocators)が作成されたので、ストリーミング URL を取得できます。 URL を作成するには、[StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) のホスト名と**ストリーミング ロケーター**のパスを連結する必要があります。 このサンプルでは、*既定の***ストリーミング エンドポイント**を使っています。 最初に Media Service アカウントを作成したとき、この*既定の***ストリーミング エンドポイント**は停止状態になっているので、**Start** を呼び出す必要があります。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetMPEGStreamingUrl)]
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>Media Services アカウント内のリソースをクリーンアップする
 
-一般に、再利用を計画しているオブジェクトを除くすべてのものをクリーンアップする必要があります (通常、Transform、ストリーミング ロケーターなどは再利用します)。 実験後にアカウントをクリーン アップする場合は、再利用する予定のないリソースを削除します。 たとえば、次のコードでジョブを削除します。
+一般に、再利用を計画しているオブジェクトを除くすべてのものをクリーンアップする必要があります (通常、Transform、ストリーミング ロケーターなどは再利用します)。 実験後にお使いのアカウントをクリーン アップする場合は、再利用する予定のないリソースを削除します。 たとえば、次のコードでジョブを削除します。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CleanUp)]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルで作成した Media Services アカウントとストレージ アカウントも含め、リソース グループ内のどのリソースも必要なくなった場合は、前に作成したリソース グループを削除します。
 
@@ -163,15 +163,15 @@ ContentKeyIdentifierClaim は **ContentKeyPolicy** 内で使用されます。�
 az group delete --name amsResourceGroup
 ```
 
-## <a name="ask-questions-give-feedback-get-updates"></a>質問する。フィードバックする。最新情報を入手する
+## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手
 
 「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 
 ## <a name="additional-notes"></a>その他のメモ
 
-* Widevine は Google Inc. が提供するサービスで、Google Inc. のサービス利用規約とプライバシーポリシーが適用されます。
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [DRM での保護](protect-with-drm.md)

@@ -15,10 +15,10 @@ ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
 ms.openlocfilehash: c9b449b65a8f8def9dc28a668cd9ee3671124cb0
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77484504"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Azure AD アプリケーションの同意エクスペリエンスについて

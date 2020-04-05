@@ -17,10 +17,10 @@ ms.subservice: app-provisioning
 ms.author: chmutali
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 559bca4f5020cebe06be7f24f7af5ec2e94bec0e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78183246"
 ---
 # <a name="azure-ad-connect-provisioning-agent-version-release-history"></a>Azure AD Connect プロビジョニング エージェント: バージョンのリリース履歴

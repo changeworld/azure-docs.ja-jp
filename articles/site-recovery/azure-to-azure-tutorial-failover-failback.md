@@ -10,10 +10,10 @@ ms.date: 08/05/2019
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 9bc0d25e19ad3412e62eb3386b0faf3ae5d2a444
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68782590"
 ---
 # <a name="fail-over-and-reprotect-azure-vms-between-regions"></a>リージョン間での Azure VM のフェールオーバーと再保護
@@ -38,13 +38,13 @@ ms.locfileid: "68782590"
 
 1. **[レプリケートされたアイテム]** で、フェールオーバーする VM を選択し、 **[フェールオーバー]** を選択します
 
-   ![フェールオーバー](./media/azure-to-azure-tutorial-failover-failback/failover.png)
+   ![[フェールオーバー]](./media/azure-to-azure-tutorial-failover-failback/failover.png)
 
 2. **[フェールオーバー]** で、フェールオーバー先の**復旧ポイント**を選択します。 次のいずれかのオプションを使うことができます。
 
    * **最新** (既定値): Site Recovery サービスのすべてのデータを処理し、最短の RPO (回復ポイントの目標) を提供します
    * **最後に処理があった時点**:仮想マシンを、Site Recovery サービスによって処理された最新の復旧ポイントに戻します
-   * **カスタム**:特定の復旧ポイントにフェールオーバーします。 このオプションは、テスト フェールオーバーを実行するときに役立ちます。
+   * **Custom**:特定の復旧ポイントにフェールオーバーします。 このオプションは、テスト フェールオーバーを実行するときに役立ちます。
 
 3. Site Recovery でフェールオーバーをトリガーする前にそのソース VM をシャットダウンする場合は、 **[フェールオーバーを開始する前にマシンをシャットダウンします]** を選択します。 シャットダウンはデータ損失を防止するのに役立ちます。 仮にシャットダウンが失敗したとしても、フェールオーバーは続行されます。 Site Recovery では、フェールオーバー後にソースがクリーンアップされません。
 
@@ -73,6 +73,6 @@ VM のフェールオーバー後、プライマリ リージョンにレプリ�
 3. **リソース グループ、ネットワーク、ストレージ、および可用性セット**の情報を確認します。 新規としてマークされているリソースが、再保護操作の一環として作成されます。
 4. **[OK]** をクリックすると、再保護ジョブがトリガーされます。 このジョブにより、最新のデータでターゲット サイトがシード処理されます。 その後、差分がプライマリ リージョンにレプリケートされます。 これで、VM は保護された状態になります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - 再保護の後、利用できるようになった時点でプライマリ リージョンにフェールバックする[方法を確認](azure-to-azure-tutorial-failback.md)します。
 - 再保護フローの[詳細](azure-to-azure-how-to-reprotect.md#what-happens-during-reprotection)について学習します。

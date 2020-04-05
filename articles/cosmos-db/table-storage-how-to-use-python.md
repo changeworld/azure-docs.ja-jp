@@ -10,10 +10,10 @@ author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
 ms.openlocfilehash: b3a6f4397ca1b8c56f06f6d967804c94096ee308
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76771002"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Python を使用して Azure Table Storage と Azure Cosmos DB Table API を使用する
@@ -233,7 +233,7 @@ table_service.delete_table('tasktable')
 * [Azure Cosmos DB の FAQ - Table API を使った開発](https://docs.microsoft.com/azure/cosmos-db/faq)
 * [Azure Cosmos DB SDK for Python API のリファレンス](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)
 * [Python デベロッパー センター](https://azure.microsoft.com/develop/python/)
-* [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md): Windows、macOS、および Linux で Azure Storage のデータを視覚的に操作するための無料のクロス プラットフォーム アプリケーション。
+* [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md): Windows、macOS、および Linux で Azure Storage のデータを視覚的に操作するための無料のクロス プラットフォーム アプリケーション
 * [Visual Studio での Python の使用 (Windows)](https://docs.microsoft.com/visualstudio/python/overview-of-python-tools-for-visual-studio)
 
 

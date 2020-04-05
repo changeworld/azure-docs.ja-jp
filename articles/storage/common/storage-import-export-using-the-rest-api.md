@@ -9,10 +9,10 @@ ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
 ms.openlocfilehash: 833b8c79fba57b7129092e084381c0671c396496
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74978868"
 ---
 # <a name="using-the-azure-importexport-service-rest-api"></a>Azure Import/Export サービス REST API の使用
@@ -49,6 +49,6 @@ Import/Export サービスに対する要求では、`api-version` パラメー�
 
 [Import/Export ジョブの診断とエラーからの回復](../storage-import-export-diagnostics-and-error-recovery.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ストレージの Import/Export REST](/rest/api/storageimportexport)

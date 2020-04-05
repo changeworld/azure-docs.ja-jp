@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.openlocfilehash: 454474333cac94dc25deae8196e9ba45bcb3a574
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75359768"
 ---
 # <a name="azure-stream-analytics-job-states"></a>Azure Stream Analytics のジョブの状態

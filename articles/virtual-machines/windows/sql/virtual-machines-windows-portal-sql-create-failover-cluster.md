@@ -16,11 +16,11 @@ ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
 ms.openlocfilehash: 20c231e4f3052797eac79a3c97a3d8148690b8c5
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965431"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226647"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure Virtual Machines で SQL Server フェールオーバー クラスター インスタンスを構成します。
 
@@ -110,7 +110,7 @@ SQL Server のライセンスに関する完全な情報については、[価�
 
    1. Azure portal で、 **[リソースの作成]** を選択して Azure Marketplace を開きます。 "**可用性セット**" を検索します。
    1. **[可用性セット]** を選択します。
-   1. **作成** を選択します。
+   1. **［作成］** を選択します
    1. **[可用性セットの作成]** で、次の値を指定します。
       - **Name**:可用性セットの名前。
       - **サブスクリプション**:Azure サブスクリプション。
@@ -174,7 +174,7 @@ SQL Server のライセンスに関する完全な情報については、[価�
 
    各仮想マシンで、Windows ファイアウォールの次のポートを開きます。
 
-   | 目的 | TCP ポート | メモ
+   | 目的 | TCP ポート | Notes
    | ------ | ------ | ------
    | SQL Server | 1433 | SQL Server の既定のインスタンスの通常のポートです。 ギャラリーからイメージを使用した場合、このポートが自動的に開きます。
    | 正常性プローブ | 59999 | 開いている任意の TCP ポートです。 後の手順で、このポートを使用するようにロード バランサーの[正常性プローブ](#probe)とクラスターを構成します。  
@@ -367,7 +367,7 @@ Azure 仮想マシンでは、クラスターは、一度に 1 つのクラス�
 
 1. **[追加]** を選択します。 Azure Marketplace で "**ロード バランサー**" を検索します。 **[ロード バランサー]** を選択します。
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 1. 次の項目を入力して、ロード バランサーを構成します。
 
@@ -499,7 +499,7 @@ Azure Virtual Machines では、次の理由から、MSDTC は Windows Server 20
 - クラスター化された MSDTC リソースは、共有ストレージを使用するように構成することはできません。 Windows Server 2016 では、MSDTC リソースを作成した場合、ストレージが使用可能であっても、使用可能な共有ストレージは 1 つも表示されません。 この問題は、Windows Server 2019 で修正済みです。
 - Basic Load Balance は、RPC ポートを処理しません。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 [リモート デスクトップ (Azure) を使用して記憶域スペース ダイレクトを設定する](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-storage-spaces-direct-deployment)
 

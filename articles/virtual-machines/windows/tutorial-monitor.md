@@ -16,10 +16,10 @@ ms.date: 09/27/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.openlocfilehash: 9e807927a10399b02c2c89359c2ffffaf87ba57b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74112492"
 ---
 # <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>チュートリアル:Azure で Windows 仮想マシンを監視する
@@ -132,11 +132,11 @@ VM 用 Azure Monitor には、仮想マシンがどの程度効果的に実行�
 
 5. 必要に応じて *[所有者、共同作成者、閲覧者に電子メールを送信]* のチェック ボックスをオンにして、電子メール通知を送信することもできます。 既定のアクションでは、ポータルに通知が表示されます。
 
-6. **[OK]** ボタンをクリックします。
+6. **[OK]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、VM のパフォーマンスを構成して確認しました。 以下の方法について学習しました。
+このチュートリアルでは、VM のパフォーマンスを構成して確認しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * リソース グループと VM を作成する

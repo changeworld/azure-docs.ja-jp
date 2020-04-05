@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と SilkRoad Life Suite の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と SilkRoad Life Suite の統合 | Microsoft Docs'
 description: Azure Active Directory と SilkRoad Life Suite の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 63165da69815c77afb8692e1e68c1710beb8df8c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67090834"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-silkroad-life-suite"></a>チュートリアル:Azure Active Directory と SilkRoad Life Suite の統合
+# <a name="tutorial-azure-active-directory-integration-with-silkroad-life-suite"></a>チュートリアル: Azure Active Directory と SilkRoad Life Suite の統合
 
 このチュートリアルでは、SilkRoad Life Suite と Azure Active Directory (Azure AD) を統合する方法について説明します。
 SilkRoad Life Suite と Azure AD の統合には、次の利点があります。
@@ -203,17 +203,17 @@ SilkRoad Life Suite で Azure AD シングル サインオンを構成するに�
 
     b. **[EntityId]\(エンティティ ID\)** ボックスに、Azure portal からコピーした **Azure AD ID** の値を貼り付けます。
 
-    c. **[IdP Description]\(IdP の説明\)** ボックスに、構成の説明を入力します (例:*Azure AD の SSO*)。
+    c. **[IdP Description]\(IdP の説明\)** ボックスに、構成の説明を入力します (例: *Azure AD の SSO*)。
 
     d. **[メタデータ ファイル]** ボックスに、Azure Portal からダウンロードした**メタデータ** ファイルをアップロードします。
   
-    e. **[IdP Name]\(IdP 名\)** ボックスに、構成の固有の名前を入力します (例:*Azure SP*)。
+    e. **[IdP Name]\(IdP 名\)** ボックスに、構成の固有の名前を入力します (例: *Azure SP*)。
   
     f. **[Logout Service URL]\(ログアウト サービス URL\)** テキスト ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
 
     g. **[Sign-on service URL]\(サインオン サービス URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
-    h. **[Save]** をクリックします。
+    h. **[保存]** をクリックします。
 
 1. その他のすべての認証のソースを無効にします。
 

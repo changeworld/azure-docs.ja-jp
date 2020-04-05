@@ -5,11 +5,11 @@ services: container-service
 ms.topic: article
 ms.date: 01/28/2020
 ms.openlocfilehash: 25c710cce2855d6af985d3f46082f47573bbc101
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595877"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229647"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Azure のロールベースのアクセス制御を使用して Azure Kubernetes Service (AKS) 内の Kubernetes 構成ファイルに対するアクセス権を定義する
 

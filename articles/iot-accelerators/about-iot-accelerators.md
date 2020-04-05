@@ -10,10 +10,10 @@ ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
 ms.openlocfilehash: 1a27d748e16f892a748cf18569c13ca3f9ead1dd
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "71309513"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Azure IoT ソリューション アクセラレータとは
@@ -78,7 +78,7 @@ IoT ソリューション アクセラレータは、一般的な IoT シナリ�
 
 元のソリューション アクセラレータは、モデル ビュー コントローラー (MVC) アーキテクチャを使用して .NET で作成されています。 マイクロソフトでは、ソリューション アクセラレータを、新しいマイクロサービス アーキテクチャに更新しています。 次の表に、ソリューション アクセラレータの現在の状態と、GitHub リポジトリへのリンクを示します。
 
-| ソリューション アクセラレータ   | アーキテクチャ  | Languages     |
+| ソリューション アクセラレータ   | Architecture  | Languages     |
 | ---------------------- | ------------- | ------------- |
 | リモート監視      | マイクロサービス | [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java) と [.NET](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet) |
 | 予測メンテナンス | MVC           | [.NET](https://github.com/Azure/azure-iot-predictive-maintenance)          |
@@ -95,11 +95,11 @@ IoT ソリューション アクセラレータは、一般的な IoT シナリ�
 
 * **Standard:** 運用環境のデプロイを開発するための拡張インフラストラクチャ デプロイ。 Azure Container Service により、マイクロサービスが複数の Azure 仮想マシンにデプロイされます。 個々のマイクロサービスをホストする Docker コンテナーは、Kubernetes によって調整されます。
 * **Basic:** デモまたはデプロイ テストのための低コスト バージョン。 すべてのマイクロサービスが 1 つの Azure 仮想マシンにデプロイされます。
-* **ローカル:** テストおよび開発用のローカル コンピューターのデプロイ。 このアプローチでは、マイクロサービスをローカル Docker コンテナーにデプロイし、クラウド内で IoT Hub、Azure Cosmos DB、および Azure Storage サービスに接続します。
+* **Local:** テストおよび開発用のローカル コンピューターのデプロイ。 このアプローチでは、マイクロサービスをローカル Docker コンテナーにデプロイし、クラウド内で IoT Hub、Azure Cosmos DB、および Azure Storage サービスに接続します。
 
 ソリューション アクセラレータを実行するコストは、[基礎となる Azure サービスの実行コスト](https://azure.microsoft.com/pricing)の総計です。 デプロイのオプションを選択するときに、使用する Azure サービスの詳細が表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 IoT ソリューション アクセラレータの 1 つを試してみるには、クイック スタートを参照してください。
 

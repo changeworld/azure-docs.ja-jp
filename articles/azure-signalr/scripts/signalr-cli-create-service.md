@@ -9,10 +9,10 @@ ms.date: 11/13/2018
 ms.author: zhshang
 ms.custom: mvc
 ms.openlocfilehash: 45958f020f2e5dbdb0a50f0190aff78568865f74
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158084"
 ---
 # <a name="create-a-signalr-service"></a>SignalR Service の作成 
@@ -74,7 +74,7 @@ echo "$primaryConnectionString"
 | [az signalr key list](/cli/azure/signalr/key#az-signalr-key-list) | キーを一覧表示します。これらのキーは、SignalR でリアルタイム コンテンツの更新をプッシュする際、アプリケーションによって使われます。 |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 

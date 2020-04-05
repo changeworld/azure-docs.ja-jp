@@ -5,14 +5,14 @@ author: tfitzmac
 ms.topic: tutorial
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: e756617a700d258078e84a3fa11c8aceb6f4dd88
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 13c45bc6e67d9d3d06a70b7cf3326cc112cd7829
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903266"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79473015"
 ---
-# <a name="create-and-publish-a-managed-application-definition"></a>マネージド アプリケーション定義を作成して発行する
+# <a name="tutorial-create-and-publish-a-managed-application-definition"></a>チュートリアル:マネージド アプリケーション定義を作成して発行する
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

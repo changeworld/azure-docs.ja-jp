@@ -1,19 +1,18 @@
 ---
 title: Azure Containers イメージ用の SKU | Azure Marketplace
 description: Azure コンテナーの SKU を構成します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: 5b69eea8ad7fd4c62925b50434b653118890e280
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: adbe3d4c498c8f4e4968ca903f78c34aedca9a4d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823142"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279999"
 ---
 # <a name="container-skus-tab"></a>コンテナーの SKU のタブ
 
@@ -72,6 +71,6 @@ SKU メタデータには、コンテナー一覧のネットショップの表�
 >テスト中にイメージを識別できるようにするため、必ず**テスト タグ**をイメージに追加してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [[Marketplace] タブ](./cpp-marketplace-tab.md)を使用して、プランのためのマーケットプレースの説明を作成します。 

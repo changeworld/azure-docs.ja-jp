@@ -9,10 +9,10 @@ ms.custom: mvc
 ms.service: iot-hub
 services: iot-hub
 ms.openlocfilehash: 78678474430792eb7fe419ef4f15828d461c1fec
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75647409"
 ---
 # <a name="what-is-azure-iot-hub"></a>Azure IoT Hub とは
@@ -119,7 +119,7 @@ IoT Hub と device SDK は、次のプロトコルを使ったデバイスの接
 
 エンド ツー エンドの IoT ソリューションを試すには、IoT Hub のクイック スタートをご覧ください。
 
-* [クイック スタート:デバイスから IoT ハブへの利用統計情報の送信](quickstart-send-telemetry-node.md)
+* [クイック スタート: デバイスから IoT ハブへの利用統計情報の送信](quickstart-send-telemetry-node.md)
 
 Azure IoT を使用して IoT ソリューションを構築してデプロイする方法の詳細については、以下のページを参照してください。
 

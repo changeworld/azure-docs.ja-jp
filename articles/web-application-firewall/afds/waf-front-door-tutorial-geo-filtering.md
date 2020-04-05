@@ -5,15 +5,15 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: dd9c3f972a2b598c0c03db2cb80986c08900c609
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: abcef61d478eccb4e979b60eb845ac8d398a49f9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511604"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79135872"
 ---
 # <a name="set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Front Door に使用する geo フィルタリング WAF ポリシーを設定する
 
@@ -110,7 +110,7 @@ Set-AzFrontDoor -InputObject $geoFrontDoorObjectExample[0]
 > [!NOTE] 
 > Front Door フロントエンド ホストに WAF ポリシーをリンクさせるために必要な WebApplicationFirewallPolicyLink プロパティの設定は 1 回だけです。 それ以降のポリシーの更新は、自動的にフロントエンド ホストに適用されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Web アプリケーション ファイアウォール](../overview.md)について学習します。
 - [フロント ドアの作成](../../frontdoor/quickstart-create-front-door.md)方法について学習します。

@@ -4,10 +4,10 @@ description: UK OFFICIAL および UK NHS のブループリント サンプル�
 ms.date: 12/04/2019
 ms.topic: sample
 ms.openlocfilehash: 5bef590013a9ef06b791e58dc6c82e74dffe1a17
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74851368"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK OFFICIAL および UK NHS のブループリント サンプルのコントロール マッピング
@@ -40,7 +40,7 @@ ms.locfileid: "74851368"
 - Automation アカウント変数は、暗号化する必要がある
 - Service Fabric クラスターでは、ClusterProtectionLevel プロパティを EncryptAndSign に設定する必要がある
 - SQL データベースで Transparent Data Encryption を有効にする必要がある
-- SQL DB Transparent Data Encryption をデプロイする
+- SQL DB Transparent Data Encryption のデプロイ
 - Data Lake Store アカウントの暗号化を要求する
 - 許可された場所 ("UK SOUTH" および "UK WEST" にハードコーディングされている)
 - リソース グループの許可された場所 ("UK SOUTH" および "UK WEST" にハードコーディングされている)
@@ -98,7 +98,7 @@ Azure では、Azure のリソースにアクセスするユーザーを効果�
 
 このブループリントでは、SQL サーバーと Service Fabric に対する Azure Active Directory 認証の使用を監査する Azure Policy 定義が割り当てられます。 Azure Active Directory 認証を使用すると、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます。
 
-- SQL サーバーに対して Azure Active Directory 管理者をプロビジョニングする必要がある
+- SQL Server に対して Azure Active Directory 管理者をプロビジョニングする必要がある
 - Service Fabric クラスターは、クライアント認証に Azure Active Directory だけを使用する必要がある
 
 このブループリントでは、優先的にレビューする必要があるアカウント (非推奨アカウントや外部アカウントなど) を監査する Azure Policy 定義も割り当てられます。 必要な場合は、サインインしようとしているアカウントをブロック (または削除) して、Azure リソースへのアクセス権を直ちに削除することもできます。 このブループリントでは、削除を検討する必要がある非推奨アカウントを監査する 2 つの Azure Policy 定義が割り当てられます。
@@ -156,7 +156,7 @@ Azure では、Azure のリソースにアクセスするユーザーを効果�
 
 ## <a name="12-secure-service-administration"></a>12 サービス管理のセキュリティ保護
 
-Azure では、Azure のリソースにアクセスできるユーザーの管理を支援するために、ロールベースのアクセス制御 (RBAC) が実装されています。 Azure リソースにできるユーザーとそのアクセス許可は、Azure portal を使用して確認できます。 このブループリントでは、所有者アクセス許可や書き込みアクセス許可を持つ外部アカウントと、所有者アクセス許可や書き込みアクセス許可を持ち、多要素認証が有効になっていないアカウントを監査する 5 つの [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、特権アクセス権の制限と制御を支援します。
+Azure では、Azure のリソースにアクセスするユーザーを効果的に管理できるように、ロールベースのアクセス制御 (RBAC) が実装されています。 Azure リソースにできるユーザーとそのアクセス許可は、Azure portal を使用して確認できます。 このブループリントでは、所有者アクセス許可や書き込みアクセス許可を持つ外部アカウントと、所有者アクセス許可や書き込みアクセス許可を持ち、多要素認証が有効になっていないアカウントを監査する 5 つの [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、特権アクセス権の制限と制御を支援します。
 
 クラウド サービスの管理に使用されるシステムには、そのサービスへの特権アクセスが認められます。 このシステムがセキュリティ侵害されると、セキュリティ制御をすり抜けて、大量のデータの漏洩や不正操作を含む重大な影響がおよびます。 サービス プロバイダーの管理者が運用サービスの管理に使用する方法は、サービスのセキュリティを低下させる可能性がある悪用のリスクを軽減するように設計する必要があります。 この原則が実施されていない場合、攻撃者はセキュリティ制御をすり抜け、大量のデータを窃取または操作する手段を得るおそれがあります。
 
@@ -167,7 +167,7 @@ Azure では、Azure のリソースにアクセスできるユーザーの管�
 
 このブループリントでは、SQL サーバーと Service Fabric に対する Azure Active Directory 認証の使用を監査する Azure Policy 定義が割り当てられます。 Azure Active Directory 認証を使用すると、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます。
 
-- SQL サーバーに対して Azure Active Directory 管理者をプロビジョニングする必要がある
+- SQL Server に対して Azure Active Directory 管理者をプロビジョニングする必要がある
 - Service Fabric クラスターは、クライアント認証に Azure Active Directory だけを使用する必要がある
 
 このブループリントでは、優先的にレビューする必要があるアカウント (非推奨アカウントや管理者特権のアクセス許可を持つ外部アカウントなど) を監査する Azure Policy 定義も割り当てられます。 必要な場合は、サインインしようとしているアカウントをブロック (または削除) して、Azure リソースへのアクセス権を直ちに削除することもできます。 このブループリントでは、削除を検討する必要がある非推奨アカウントを監査する 2 つの Azure Policy 定義が割り当てられます。
@@ -179,7 +179,7 @@ Azure では、Azure のリソースにアクセスできるユーザーの管�
 
 このブループリントでは、Linux VM のパスワード ファイルのアクセス許可を監査して、それらが正しく設定されていない場合にアラートを生成する Azure Policy 定義も割り当てられます。 この設計により、認証子が侵害されないように是正措置を講じることができます。
 
-- \[プレビュー\]:Linux VM /etc/passwd ファイルのアクセス許可が 0644 に設定されていることを監査する
+- \[プレビュー\]:Linux VM /etc/passwd ファイルのアクセス許可が 0644 に設定されていることの監査
 
 ## <a name="13-audit-information-for-users"></a>13 ユーザー監査情報
 
@@ -191,7 +191,7 @@ Azure では、Azure のリソースにアクセスできるユーザーの管�
 - \[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ
 - 仮想ネットワーク作成時の Network Watcher のデプロイ
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 UK OFFICIAL および UK NHS のブループリントのコントロール マッピングを確認しました。次に、以下の記事で概要およびこのサンプルをデプロイする方法を確認します。
 

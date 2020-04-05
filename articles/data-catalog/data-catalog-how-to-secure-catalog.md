@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: b0972be2b8a6e05d3d90cde7354b4890ea95cbe4
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68976762"
 ---
 # <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>データ カタログとデータ資産へのアクセスをセキュリティで保護する方法
@@ -62,6 +62,6 @@ Azure Data Catalog では、データ カタログにアクセスできるユー
 - セキュリティ グループに割り当てられるアクセス許可は付加的な要素です。 2 つのグループに 1 人のユーザーがいるとします。 一方のグループには注釈を付けるアクセス許可がある一方で、もう一方のグループにはありません。 その場合、ユーザーには注釈を付けるアクセス許可が付与されます。 
 - ユーザーに明示的に割り当てられたアクセス許可は、そのユーザーが属するグループに割り当てられているアクセス許可をオーバーライドします。 前の例で、ユーザーを明示的にカタログ ユーザーに追加し、注釈を付けるアクセス許可を割り当てていないとします。 そのユーザーは注釈を付けるアクセス許可が付与されているグループのメンバーであっても、データ資産に注釈を付けることができません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Data Catalog の概要](data-catalog-get-started.md)

@@ -190,7 +190,7 @@
           href: linkedin-integration.md
         - name: LinkedIn データの共有
           href: linkedin-user-consent.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       items:
         - name: Azure AD のサポートを受ける
           href: /azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto?context=azure/active-directory/users-groups-roles/context/ugr-context

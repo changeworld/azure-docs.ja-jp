@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: a7f07365da699a40f5b51917104a68a62affa3d9
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74703376"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Azure Data Factory での Hadoop ストリーミング アクティビティを使用したデータ変換
@@ -41,7 +41,7 @@ HDInsightStreamingActivity アクティビティを使用して、Azure Data Fac
 Data Factory [パイプライン](data-factory-create-pipelines.md)の HDInsight Streaming アクティビティは、[独自の](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)、または[オンデマンドの](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux ベースの HDInsight クラスターで Hadoop Streaming プログラムを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](data-factory-data-transformation-activities.md) に関する記事に基づいています。
 
 > [!NOTE] 
-> Azure Data Factory を初めて利用する場合は、この記事を読む前に、「[Azure Data Factory の概要](data-factory-introduction.md)」を参照してから、「[最初のデータ パイプラインの作成](data-factory-build-your-first-pipeline.md)」チュートリアルを実行してください。 
+> Azure Data Factory の使用経験がない場合は、この記事を読む前に、「[Azure Data Factory の概要](data-factory-introduction.md)」を参照し、[最初のデータ パイプラインの作成](data-factory-build-your-first-pipeline.md)チュートリアルを実行してください。 
 
 ## <a name="json-sample"></a>JSON のサンプル
 HDInsight クラスターには、サンプル プログラム (wc.exe および cat.exe) とデータ (davinci.txt) が自動的に設定されます。 既定では、HDInsight クラスターで使用されるコンテナーの名前は、クラスター自体の名前になります。 たとえば、クラスター名が myhdicluster の場合、関連付けられる BLOB コンテナーの名は myhdicluster になります。 
@@ -174,7 +174,7 @@ HDInsight クラスターには、サンプル プログラム (wc.exe および
 ```
 
 ### <a name="pipeline"></a>パイプライン
-この例のパイプラインには、**HDInsightStreaming** という種類のアクティビティが 1 つだけあります。 
+この例のパイプラインには、 **HDInsightStreaming**という種類のアクティビティが 1 つだけあります。 
 
 HDInsight クラスターには、サンプル プログラム (wc.exe および cat.exe) とデータ (davinci.txt) が自動的に設定されます。 既定では、HDInsight クラスターで使用されるコンテナーの名前は、クラスター自体の名前になります。 たとえば、クラスター名が myhdicluster の場合、関連付けられる BLOB コンテナーの名は myhdicluster になります。  
 
@@ -222,7 +222,7 @@ HDInsight クラスターには、サンプル プログラム (wc.exe および
     }
 }
 ```
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 * [Hive アクティビティ](data-factory-hive-activity.md)
 * [Pig アクティビティ](data-factory-pig-activity.md)
 * [MapReduce アクティビティ](data-factory-map-reduce.md)

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 8e12d58c0077084c181d111b0b017665b74b9157
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74231255"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Durable Functions のためのゼロダウンタイムのデプロイ
@@ -25,11 +25,11 @@ Durable Functions の[信頼性の高い実行モデル](durable-functions-check
 
 次の表では、Durable Functions のゼロダウンタイム デプロイを実現するための 3 つの主な戦略を比較します。 
 
-| 戦略 |  いつ使用するか | 長所 | 短所 |
+| 戦略 |  使用する場合 | 長所 | 短所 |
 | -------- | ------------ | ---- | ---- |
 | [バージョン管理](#versioning) |  [破壊的変更](durable-functions-versioning.md)が頻繁に発生しないアプリケーション。 | 実装が簡単。 |  メモリ内の関数アプリのサイズと関数の数が増える。<br/>コードの重複。 |
 | [スロットでの状態チェック](#status-check-with-slot) | 24 時間以上続く長時間のオーケストレーションまたは頻繁に重複するオーケストレーションが存在しないシステム。 | シンプルなコード ベース。<br/>追加の関数アプリ管理が不要。 | 追加のストレージ アカウントまたはタスク ハブの管理が必要である。<br/>オーケストレーションが実行されていない時間帯が必要である。 |
-| [アプリケーション ルーティング](#application-routing) | 24 時間以上続くオーケストレーションや、頻繁に重複するオーケストレーションの期間など、オーケストレーションが実行されていない期間がないシステム。 | 破壊的変更を伴うオーケストレーションが継続的に実行されている新しいバージョンのシステムを処理する。 | インテリジェントなアプリケーション ルーターが必要。<br/>サブスクリプションで許可されている関数アプリの最大数を超える可能性。 既定値は 100 です。 |
+| [アプリケーション ルーティング](#application-routing) | 24 時間以上続くオーケストレーションや、頻繁に重複するオーケストレーションの期間など、オーケストレーションが実行されていない期間がないシステム。 | 破壊的変更を伴うオーケストレーションが継続的に実行されている新しいバージョンのシステムを処理する。 | インテリジェントなアプリケーション ルーターが必要。<br/>サブスクリプションで許可されている関数アプリの最大数を超える可能性。 既定値は、100 です。 |
 
 ## <a name="versioning"></a>バージョン管理
 
@@ -164,13 +164,13 @@ Azure Pipelines では、デプロイ開始前に、関数アプリで実行中�
 
 ### <a name="tracking-store-settings"></a>追跡ストアの設定
 
-各関数アプリでは、個別のスケジュール キュー (可能な場合は異なるストレージ アカウントの) を使用する必要があります。 アプリケーションのすべてのバージョンですべてのオーケストレーション インスタンスのクエリを実行したい場合は、関数アプリ間でインスタンス テーブルと履歴テーブルを共有できます。 [host.json settings](durable-functions-bindings.md#host-json) ファイルで `trackingStoreConnectionStringName` と `trackingStoreNamePrefix` の設定を構成し、すべてのテーブルで同じ値が使用されるようにすることで、テーブルを共有できます。
+各関数アプリでは、個別のスケジュール キュー (可能な場合は異なるストレージ アカウントの) を使用する必要があります。 アプリケーションのすべてのバージョンですべてのオーケストレーション インスタンスのクエリを実行したい場合は、関数アプリ間でインスタンス テーブルと履歴テーブルを共有できます。 `trackingStoreConnectionStringName`host.json settings`trackingStoreNamePrefix` ファイルで [ と ](durable-functions-bindings.md#host-json) の設定を構成し、すべてのテーブルで同じ値が使用されるようにすることで、テーブルを共有できます。
 
 詳細については、「[Azure における Durable Functions でのインスタンスの管理](durable-functions-instance-management.md)」を参照してください。
 
 ![追跡ストアの設定](media/durable-functions-zero-downtime-deployment/tracking-store-settings.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Durable Functions のバージョン管理](durable-functions-versioning.md)

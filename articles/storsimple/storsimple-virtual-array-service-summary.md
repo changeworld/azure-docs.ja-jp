@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 9c05bddaeb3c34400db1ec75c624ef00a85d9444
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64720720"
 ---
 # <a name="use-the-service-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>StorSimple Virtual Array に接続されている StorSimple デバイス マネージャーのサービスの概要ブレードを使用する
@@ -45,6 +45,6 @@ StorSimple デバイス マネージャー内で実行されるさまざまな�
 
 ![アクティビティ ログ](./media/storsimple-virtual-array-service-summary/activity-log.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [ローカル Web UI を使用して、StorSimple Virtual Array を管理する方法](storsimple-ova-web-ui-admin.md)を確認します。
 

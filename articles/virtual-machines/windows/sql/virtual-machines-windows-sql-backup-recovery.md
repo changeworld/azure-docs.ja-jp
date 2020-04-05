@@ -15,11 +15,11 @@ ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
 ms.openlocfilehash: e4c126bbac73accb984f1040a7fea1740d919233
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100546"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226639"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Azure Virtual Machines おける SQL Server のバックアップと復元
 
@@ -39,7 +39,7 @@ ms.locfileid: "70100546"
 
 以下のセクションでは、各オプションについて詳しく説明します。 この記事の最後のセクションでは、機能マトリックスの形式でまとめています。
 
-## <a id="automated"></a> 自動バックアップ
+## <a name="automated-backup"></a><a id="automated"></a> 自動バックアップ
 
 自動バックアップは、Azure 内の Windows VM で実行されている SQL Server Standard エディションおよび Enterprise エディションの自動バックアップ サービスを提供します。 このサービスは、Azure portal で SQL Server Windows 仮想マシン イメージに自動的にインストールされる [SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)によって提供されます。
 
@@ -58,7 +58,7 @@ SQL VM の自動バックアップを構成する方法の詳細については�
 - **SQL Server 2016/2017**:[Azure Virtual Machines の自動バックアップ v2](virtual-machines-windows-sql-automated-backup-v2.md)
 - **SQL Server 2014**:[SQL Server 2014 Virtual Machines の自動バックアップ](virtual-machines-windows-sql-automated-backup.md)
 
-## <a id="azbackup"></a> SQL VM の Azure Backup
+## <a name="azure-backup-for-sql-vms"></a><a id="azbackup"></a> SQL VM の Azure Backup
 
 [Azure Backup](/azure/backup/) は、Azure VM 上で実行されている SQL Server 向けのエンタープライズ クラスのバックアップ機能を提供します。 すべてのバックアップは、Recovery Services コンテナーに格納され、管理されます。 このソリューションにはいくつかの利点があります (特に企業向け)。
 
@@ -79,7 +79,7 @@ SQL VM の自動バックアップを構成する方法の詳細については�
 
 SQL VM のこの Azure Backup ソリューションは現在一般提供の段階です。 詳細については、「[Azure への SQL Server データベースのバックアップ](../../../backup/backup-azure-sql-database.md)」をご覧ください。
 
-## <a id="manual"></a> 手動バックアップ
+## <a name="manual-backup"></a><a id="manual"></a> 手動バックアップ
 
 SQL VM のバックアップと復元の操作を手動で管理する場合は、使用している SQL Server のバージョンに応じていくつかのオプションがあります。 バックアップと復元の概要については、SQL Server のバージョンに応じて、次のいずれかの記事をご覧ください。
 
@@ -112,7 +112,7 @@ SQL Server 2012 SP1 CU2 以降では、Microsoft Azure Blob ストレージに�
 - **SQL Server 2014**:[SQL Server 2014 Backup to URL](https://msdn.microsoft.com/library/jj919148%28v=sql.120%29.aspx)
 - **SQL Server 2012**:[SQL Server 2012 Backup to URL](https://msdn.microsoft.com/library/jj919148%28v=sql.110%29.aspx)
 
-### <a name="managed-backup"></a>マネージド バックアップ
+### <a name="managed-backup"></a>管理対象のバックアップ
 
 SQL Server 2014 以降では、マネージド バックアップにより、Azure Storage へのバックアップの作成が自動化されます。 マネージド バックアップは、この記事の前のセクションで説明した Backup to URL 機能をバックグラウンドで利用します。 マネージド バックアップも、SQL Server VM の自動バックアップ サービスをサポートする基本機能です。
 
@@ -147,7 +147,7 @@ SQL Server 2016 以降では、マネージド バックアップに、スケジ
 | SSMS または Transact-SQL スクリプトを使用したバックアップ ジョブの監視 | ![はい](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![はい](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![はい](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | SSMS または Transact-SQL スクリプトを使用したデータベースの復元 | ![はい](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   | ![はい](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure VM に SQL Server をデプロイすることを計画している場合、プロビジョニングのガイダンスについては、「[Azure portal で Windows SQL Server 仮想マシンをプロビジョニングする方法](virtual-machines-windows-portal-sql-server-provision.md)」をご覧ください。
 

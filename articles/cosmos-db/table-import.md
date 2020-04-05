@@ -9,10 +9,10 @@ ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 5c828644cb03d83df38265719cd8afabc24cf739
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "66242583"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB Table API アカウントにデータを移行する
@@ -28,7 +28,7 @@ ms.locfileid: "66242583"
 
 ## <a name="prerequisites"></a>前提条件
 
-* **スループットを上げる:** データの移行にかかる時間は、個別のコンテナーまたは一連のコンテナーに対して設定したスループットの量に依存します。 大規模なデータ移行では、スループットが上がっていることを確認します。 移行が完了したら、コストを節約するためにスループットを下げます。 Azure Portal でスループットを上げることの詳細については、Azure Cosmos DB のパフォーマンス レベルと価格レベルに関するページを参照してください。
+* **スループットを上げる:** データの移行にかかる時間は、個別のコンテナーまたは一連のコンテナーに対して設定したスループットの量に依存します。 大規模なデータ移行を行うときは、必ずスループットを上げておいてください。 移行が完了したら、コストを節約するためにスループットを下げます。 Azure Portal でスループットを上げることの詳細については、Azure Cosmos DB のパフォーマンス レベルと価格レベルに関するページを参照してください。
 
 * **Azure Cosmos DB リソースを作成する:** データの移行を開始する前に、Azure portal からすべてのテーブルを事前に作成します。 データベース レベルのスループットがある Azure Cosmos DB アカウントに移行しようとしている場合は、Azure Cosmos DB テーブルの作成時に必ずパーティション キーを提供するようにしてください。
 
@@ -91,7 +91,7 @@ Azure Cosmos DB Table API (プレビュー) からインポートする場合に
     /t.MaxBatchSize: Optional, default is 2MB. Specify the batch size in bytes
 
 <a id="azure-table-storage"></a>
-### <a name="sample-command-source-is-azure-table-storage"></a>サンプル コマンド:ソースが Azure Table Storage
+### <a name="sample-command-source-is-azure-table-storage"></a>サンプル コマンド: ソースが Azure Table Storage
 
 Azure Table Storage から Table API にインポートするコマンドライン サンプルを以下に示します。
 
@@ -99,7 +99,7 @@ Azure Table Storage から Table API にインポートするコマンドライ�
 dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Table storage account name>;AccountKey=<Account Key>;EndpointSuffix=core.windows.net /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.com:443 /t.TableName:<Table name> /t.Overwrite
 ```
 <a id="table-api-preview"></a>
-### <a name="sample-command-source-is-azure-cosmos-db-table-api-preview"></a>サンプル コマンド:ソースが Azure Cosmos DB Table API (プレビュー)
+### <a name="sample-command-source-is-azure-cosmos-db-table-api-preview"></a>サンプル コマンド: ソースが Azure Cosmos DB Table API (プレビュー)
 
 Table API プレビュー から Table API GA にインポートするコマンドライン サンプルを以下に示します。
 
@@ -135,7 +135,7 @@ Table API (プレビュー) から一般公開の Table API に移行するに�
 
 3. データ移行ツールを使用して、プレビュー テーブルのクライアント データを GA テーブルに移行します。 この目的でデータ移行ツールを使用する手順については、「[データ移行ツール](#data-migration-tool)」を参照してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルで学習した内容は次のとおりです。
 

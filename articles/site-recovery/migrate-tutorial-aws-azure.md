@@ -9,16 +9,21 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4a1952f5ece4c021834fb98f8a09f1a2738e6469
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 929bc0695bda2e64f77f7e9286e06cee787822ba
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789388"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388969"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>アマゾン ウェブ サービス (AWS) VM を Azure に移行する
 
 このチュートリアルでは、Azure Site Recovery を使用してアマゾン ウェブ サービス (AWS) の仮想マシン (VM) を Azure VM に移行する方法について説明します。 AWS EC2 インスタンスを Azure に移行するとき、VM はオンプレミスの物理コンピューターのように扱われます。 このチュートリアルでは、以下の内容を学習します。
+
+
+> [!TIP]
+> AWS VM を Azure に移行するには、Azure Site Recovery サービスではなく、Azure Migrate サービスを使用しなければならなくなりました。 [詳細については、こちらを参照してください](../migrate/tutorial-migrate-physical-virtual-machines.md)。
+
 
 > [!div class="checklist"]
 > * 前提条件を確認する
@@ -32,11 +37,8 @@ ms.locfileid: "72789388"
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を作成してください。
 
 
-> [!NOTE]
-> これで、Azure Migrate サービスを使用して AWS インスタンスを Azure に移行できるようになりました。 [詳細情報](../migrate/tutorial-migrate-physical-virtual-machines.md)。
-
 ## <a name="prerequisites"></a>前提条件
-- 移行する VM で、サポートされている OS バージョンが実行されていることを確認します。 次のバージョンがサポートされています。 
+- 移行する VM で、サポートされている OS バージョンが実行されていることを確認します。 サポートされているバージョンは次のとおりです。 
   - Windows Server 2016 
   - Windows Server 2012 R2
   - Windows Server 2012 
@@ -122,7 +124,7 @@ Azure portal のコンテナー ページで、 **[作業の開始]** セクシ�
 
 完了したら、 **[OK]** を選択して次のセクションに進みます。
 
-### <a name="2-select-deployment-planning"></a>2\.デプロイ計画を選択する
+### <a name="2-select-deployment-planning"></a>2:デプロイ計画を選択する
 
 **[Have you completed deployment planning]\(デプロイ計画は完了していますか\)** でドロップダウンから **[I will do it later]\(後で実行する\)** を選択し、 **[OK]** を選択します。
 
@@ -186,7 +188,7 @@ Azure portal のコンテナー ページで、 **[作業の開始]** セクシ�
      |マシンの種類: | **[物理マシン]** を選択します。|
      | プロセス サーバー: | ドロップダウン一覧から構成サーバーを選択します。|
 
-   - 2\.ターゲットを構成する
+   - 2:ターゲットを構成する
 
      |  |  |
      |-----|-----|
@@ -231,7 +233,7 @@ VM のレプリケーションを有効にすると、変更が反映されて�
 2. フェールオーバーで使用する復旧ポイントを選択します。
     - **最後に処理があった時点**:Site Recovery によって処理された最新の復旧ポイントに VM をフェールオーバーします。 タイム スタンプが表示されます。 このオプションを使用すると、データの処理に時間がかからないため、目標復旧時間 (RTO) が低くなります。
     - **最新のアプリ整合性**:このオプションでは、すべての VM が最新のアプリ整合性の復旧ポイントにフェールオーバーされます。 タイム スタンプが表示されます。
-    - **カスタム**:任意の復旧ポイントを選択します。
+    - **Custom**:任意の復旧ポイントを選択します。
 
 3. **[テスト フェールオーバー]** で、フェールオーバー後に Azure VM が接続するターゲット Azure ネットワークを選択します。 「[Azure リソースの準備](#prepare-azure-resources)」で作成したネットワークを選択します。
 4. **[OK]** を選択すると、フェールオーバーが開始されます。 進行状況を追跡するには、VM を選択して、そのプロパティを表示します。 または、コンテナーのページで **[テスト フェールオーバー]** ジョブを選択します。 そのためには、 **[監視およびレポート]**  >  **[ジョブ]**  >   **[Site Recovery ジョブ]** を選択します。
@@ -259,7 +261,7 @@ EC2 インスタンスで実際のフェールオーバーを実行して Azure 
 > *進行中のフェールオーバーを取り消さないでください*。 フェールオーバーが開始される前に、VM のレプリケーションが停止されます。 進行中のフェールオーバーをキャンセルすると、フェールオーバーは停止しますが、VM が再びレプリケートされることはありません。  
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、AWS EC2 インスタンスを Azure VM に移行する方法について説明しました。 Azure VM の詳細については、Windows VM のチュートリアルを参照してください。
 

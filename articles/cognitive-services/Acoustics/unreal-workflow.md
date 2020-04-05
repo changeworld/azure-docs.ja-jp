@@ -12,10 +12,10 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: 817a11171c5b4b4ef205e5fbb04f9b6d6d85b248
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68854258"
 ---
 # <a name="project-acoustics-unrealwwise-design-tutorial"></a>Project Acoustics Unreal/Wwise のデザイン チュートリアル
@@ -139,7 +139,7 @@ Acoustics Space アクターはブループリントからアクセス可能で�
 * **距離:** クエリが成功した場合の、最も近いサーフェスまでの距離
 * **戻り値:** ブール値 - クエリが成功した場合は true、それ以外の場合は false
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [設計プロセス](design-process.md)の背後にある概念を確認する
 * 独自のシーンをベイクするための [Azure アカウントを作成する](create-azure-account.md)
 

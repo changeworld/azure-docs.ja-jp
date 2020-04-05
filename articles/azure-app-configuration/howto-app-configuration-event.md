@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 02/25/2020
 ms.author: lcozzens
 ms.openlocfilehash: da64f22981cc33772783093cfe75daa3eac5cef1
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78672156"
 ---
 # <a name="route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Azure CLI を使用して Azure App Configuration イベントを Web エンドポイントにルーティングする

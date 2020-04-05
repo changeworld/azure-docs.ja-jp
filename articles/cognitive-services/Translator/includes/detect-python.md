@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 6591fd6eb232bf5fb242c9e08830324f864dac2f
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71837554"
 ---
 [!INCLUDE [Prerequisites](prerequisites-python.md)]
@@ -50,7 +50,7 @@ endpoint = os.environ[endpoint_var_name]
 Translator Text のグローバル エンドポイントは、`endpoint` として設定されます。 `path` によって、`detect` ルートが設定され、API のバージョン 3 を使用することが識別されます。
 
 >[!NOTE]
-> エンドポイント、ルート、および要求パラメーターの詳細については、「[Translator Text API 3.0: Detect](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect)」をご覧ください。
+> エンドポイント、ルート、要求パラメーターの詳細については、「[Translator Text API 3.0: Detect](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect)」を参照してください。
 
 ```python
 path = '/detect?api-version=3.0'
@@ -142,11 +142,11 @@ python detect.py
 ]
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 サブスクリプション キーをプログラムにハードコーディングしている場合は、このクイック スタートを終了するときにサブスクリプション キーを必ず削除してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 API のリファレンスを見て、Translator Text API でできるすべてのことを理解してください。
 

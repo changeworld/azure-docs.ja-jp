@@ -9,19 +9,19 @@ ms.date: 10/09/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 98d765e2f6909f00f8dfe76d06aef017aad67adf
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71174967"
 ---
-## <a name="terminology"></a>用語集
+## <a name="terminology"></a>用語
 
 Azure Marketplace イメージには、次の属性があります。
 
-* **[発行者]** : イメージを作成した組織。 次に例を示します。Canonical、MicrosoftWindowsServer
-* **[プラン]** : 発行元によって作成された関連するイメージのグループ名です。 次に例を示します。UbuntuServer、WindowsServer
-* **SKU**:ディストリビューションのメジャー リリースなど、プランのインスタンス。 次に例を示します。18.04-LTS、2019-Datacenter
+* **[発行者]** : イメージを作成した組織。 例 :Canonical、MicrosoftWindowsServer
+* **[プラン]** : 発行元によって作成された関連するイメージのグループ名です。 例 :UbuntuServer、WindowsServer
+* **SKU**:ディストリビューションのメジャー リリースなど、プランのインスタンス。 例 :18.04-LTS、2019-Datacenter
 * **バージョン**:イメージの SKU のバージョン番号。 
 
 プログラムで VM をデプロイした場合に Marketplace イメージを識別するには、これらの値をパラメーターとして個別に指定します。 一部のツールはイメージ *URN* を受け入れます。これは、次のように、これらの値を組み合わせてコロン (:) で区切ったものです:*Publisher*:*Offer*:*Sku*:*Version*。 URN では、バージョン番号を "latest" で置き換えることもできます。この場合、イメージの最新バージョンが選択されます。 

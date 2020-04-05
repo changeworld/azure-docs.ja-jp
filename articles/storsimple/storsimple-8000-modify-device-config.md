@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 774f5a73a5fc30352698c0af0c279fbbe488c480
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60632238"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232151"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple デバイス構成を変更する
 
@@ -30,8 +30,8 @@ Azure ポータルでは、 **[設定]** ブレードの **[デバイスの設�
 * デバイスのフレンドリ名を変更する
 * デバイスの時刻設定を変更する
 * セカンダリ DNS を割り当てる
-* ネットワーク インターフェイスを変更する
-* IP をスワップまたは再割り当てする
+* ネットワーク インターフェイスの変更
+* IP のスワップまたは再割り当て
 
 ## <a name="modify-device-friendly-name"></a>デバイスのフレンドリ名を変更する
 
@@ -165,8 +165,8 @@ DATA 1 から DATA 5 までのネットワーク インターフェイスでは�
 1. 両方のインターフェイスの IP アドレスをクリアします。
 2. IP アドレスがクリアされた後に、それぞれのインターフェイスに新しい IP アドレスを割り当てます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [StorSimple デバイスの MPIO の構成方法](storsimple-8000-configure-mpio-windows-server.md)を参照します。
-* [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理方法](storsimple-8000-manager-service-administration.md)を参照します。
+* [StorSimple デバイスの MPIO の構成方法](storsimple-8000-configure-mpio-windows-server.md)。
+* [StorSimple デバイス マネージャー サービスを使用して StorSimple デバイスを管理する](storsimple-8000-manager-service-administration.md)方法について説明します。
 

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と ZIVVER の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と ZIVVER の統合 | Microsoft Docs'
 description: Azure Active Directory と ZIVVER の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 02b292c5db3d20f56d7b8291ea31d8da9863809b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74233255"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zivver"></a>チュートリアル:Azure Active Directory と ZIVVER の統合
+# <a name="tutorial-azure-active-directory-integration-with-zivver"></a>チュートリアル: Azure Active Directory と ZIVVER の統合
 
 このチュートリアルでは、ZIVVER と Azure Active Directory (Azure AD) を統合する方法について説明します。
 ZIVVER と Azure AD の統合には、次の利点があります。
@@ -113,7 +113,7 @@ ZIVVER で Azure AD シングル サインオンを構成するには、次の�
 
 6. その他に、ZIVVER アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | 名前 | 名前空間 | ソース属性|
+    | Name | 名前空間 | ソース属性|
     | ---------------| --------------- |
     | ZivverAccountKey | https:\//zivver.com/SAML/Attributes | user.objectid |
 
@@ -134,7 +134,7 @@ ZIVVER で Azure AD シングル サインオンを構成するには、次の�
 
     e. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
 
-    f. **[Save]** をクリックします。
+    f. **[保存]** をクリックします。
 
 7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして**フェデレーション メタデータ XML** をダウンロードします。次に、**コピー** アイコンをクリックして、要件に適した特定のオプションの**アプリのフェデレーション メタデータ URL** をコピーして、コンピューターに保存します。
 

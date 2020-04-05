@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: rohink
 ms.openlocfilehash: a4738b2e36786cd627f53af3e36bd8f1e3fbc375
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76939473"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>チュートリアル:Traffic Manager を使用して重み付けされたエンドポイントを使用してトラフィックのルーティングを制御する
@@ -139,7 +139,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 
     | 設定                 | Value                                              |
     | ---                     | ---                                                |
-    | Name                   | trafficmanager.net ゾーン内で一意の名前を入力します。 これが、Traffic Manager プロファイルにアクセスする際に使用する DNS 名、trafficmanager.net になります。                                   |
+    | 名前                   | trafficmanager.net ゾーン内で一意の名前を入力します。 これが、Traffic Manager プロファイルにアクセスする際に使用する DNS 名、trafficmanager.net になります。                                   |
     | ルーティング方法          | **[重み付け]** ルーティング方法を選択します。                                       |
     | サブスクリプション            | サブスクリプションを選択します。                          |
     | Resource group          | **[既存のものを使用]** 、 **[myResourceGroupTM1]** の順に選択します。 |
@@ -158,7 +158,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
     | 設定                 | Value                                              |
     | ---                     | ---                                                |
     | Type                    | Azure エンドポイントを入力します。                                   |
-    | Name           | 「**myEastUSEndpoint**」と入力します。                                        |
+    | 名前           | 「**myEastUSEndpoint**」と入力します。                                        |
     | ターゲット リソースの種類           | **[パブリック IP アドレス]** を選択します。                          |
     | ターゲット リソース          | パブリック IP アドレスを選択して、同じサブスクリプションでパブリック IP アドレスが割り当てられているリソースの一覧を表示します。 **[リソース]** で、**myIISVMEastUS-ip** という名前のパブリック IP アドレスを選択します。 これは、米国東部内の IIS サーバー VM のパブリック IP アドレスです。|
     |  Weight      | 「**100**」と入力します。        |

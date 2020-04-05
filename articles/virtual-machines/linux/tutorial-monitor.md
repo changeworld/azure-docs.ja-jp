@@ -16,10 +16,10 @@ ms.date: 09/30/2019
 ms.author: magoedte
 ms.custom: mvc
 ms.openlocfilehash: b06342d5034b820be4e6fd49436546a5aa7b7e02
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75749783"
 ---
 # <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>チュートリアル:Azure の Linux 仮想マシンを監視する

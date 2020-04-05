@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: cenkdin
 ms.openlocfilehash: c60b223f91a151bf63cabc5e95816f2545022503
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69016603"
 ---
 # <a name="creating-filters-with-media-services-net-sdk"></a>Media Services .NET SDK を使用したフィルターの作成 
@@ -135,6 +135,6 @@ Media Services のリリース 2.17 以降では、資産にフィルターを�
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 [動的マニフェストの概要](media-services-dynamic-manifest-overview.md)
 

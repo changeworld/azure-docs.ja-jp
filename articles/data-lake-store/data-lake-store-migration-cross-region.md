@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: stewu
 ms.openlocfilehash: 0bf0843314f38c0de28820c82e95b7921297bf40
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60518455"
 ---
 # <a name="migrate-azure-data-lake-storage-gen1-across-regions"></a>リージョン間での Azure Data Lake Storage Gen1 の移行
@@ -50,5 +50,5 @@ Azure Data Lake Storage Gen1 が新しいリージョンで利用できるよう
 
 * **分析サービスの場所**。 最良のパフォーマンスを得るには、Azure Data Lake Analytics や Azure HDInsight などの分析サービスをデータと同じリージョンに配置する必要があります。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure Data Lake Storage Gen1 の概要](data-lake-store-overview.md)

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 7557ed43d9ecb8fc7a584e7e8239bc7ccb972e99
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75647171"
 ---
 # <a name="azure-sql-database-servers-and-their-management"></a>Azure SQL Database サーバーとその管理
@@ -165,7 +165,7 @@ Transact-SQL を利用して Azure SQL のサーバー、データベース、�
 |[sp_delete_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Azure SQL Database または SQL Data Warehouse からデータベースレベルのファイアウォール設定を削除します。 |
 
 > [!TIP]
-> Microsoft Windows で SQL Server Management Studio を使用する方法に関するクイックスタートについては、[Azure SQL Database でSQL Server Management Studio を使ってデータに接続してクエリを行う方法](sql-database-connect-query-ssms.md)に関する記事をご覧ください。 macOS、Linux、Windows で Visual Studio Code を使用する方法に関するクイックスタートについては、[Azure SQL Database でVisual Studio Code を使ってデータに接続してクエリを行う方法](sql-database-connect-query-vscode.md)に関する記事をご覧ください。
+> Microsoft Windows で SQL Server Management Studio を使用する方法に関するクイックスタートについては、「[Azure SQL Database: SQL Server Management Studio を使って接続とデータの照会を行う](sql-database-connect-query-ssms.md)」を参照してください。 macOS、Linux、Windows で Visual Studio Code を使用する方法に関するクイックスタートについては、「[Azure SQL Database: Visual Studio Code を使って接続とデータの照会を行う](sql-database-connect-query-vscode.md)」を参照してください。
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-rest-api"></a>REST API を利用して Azure SQL のサーバー、データベース、ファイアウォールを管理する
 

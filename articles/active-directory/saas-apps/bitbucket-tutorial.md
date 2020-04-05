@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と SAML SSO for Bitbucket by resolution GmbH の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と SAML SSO for Bitbucket by resolution GmbH の統合 | Microsoft Docs'
 description: Azure Active Directory と SAML SSO for Bitbucket by resolution GmbH の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 57ae83aee563d4893f767331fff2289a4595cc60
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73157649"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bitbucket-by-resolution-gmbh"></a>チュートリアル:Azure Active Directory と SAML SSO for Bitbucket by resolution GmbH の統合
+# <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bitbucket-by-resolution-gmbh"></a>チュートリアル: Azure Active Directory と SAML SSO for Bitbucket by resolution GmbH の統合
 
 このチュートリアルでは、SAML SSO for Bitbucket by resolution GmbH と Azure Active Directory (Azure AD) を統合する方法について説明します。
 SAML SSO for Bitbucket by resolution GmbH と Azure AD の統合には、次の利点があります。

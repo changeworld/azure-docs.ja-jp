@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: f655b7793bfbb5bbeddfc2f1f8e7bc973dabeb4c
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74687371"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>App Service Environment v1 の概要
@@ -70,7 +70,7 @@ App Service Environment は、パブリック IP アドレスでインターネ�
 
 仮想ネットワークとオンプレミス ネットワークでの App Service 環境の機能の詳細については、[ネットワーク アーキテクチャ][NetworkArchitectureOverview]、[受信トラフィックの制御][ControllingInboundTraffic]、および[バックエンド リソースへの接続][SecurelyConnectingToBackends]に関する記事をご覧ください。 
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 App Service 環境の使用を開始するには、「[App Service Environment を作成する方法][HowToCreateAnAppServiceEnvironment]」を参照してください。
 

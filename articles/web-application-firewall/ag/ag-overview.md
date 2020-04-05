@@ -9,10 +9,10 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
 ms.openlocfilehash: 1a210ff7da57147762dcf13e1dda7fee26dbe5f0
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74384109"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure Application Gateway 上の Azure Web アプリケーション ファイアウォール
@@ -28,7 +28,7 @@ Application Gateway 上の WAF は、OWASP (Open Web Application Security Projec
 
 ![Application Gateway の WAF の図](../media/ag-overview/waf1.png)
 
-Application Gateway は、アプリケーション配信コントローラー (ADC) として機能します。 Application Gateway は、アプリケーション配信コントローラー (ADC) として機能します。 Secure Sockets Layer (SSL) ターミネーション、Cookie ベースのセッション アフィニティ、ラウンドロビンの負荷分散、コンテンツ ベースのルーティング、複数の Web サイトをホストする機能、セキュリティ強化機能を提供します。
+Application Gateway は、アプリケーション配信コントローラー (ADC) として機能します。 これにより、Secure Sockets Layer (SSL) 終端、Cookie ベースのセッション アフィニティ、ラウンドロビンの負荷分散、コンテンツ ベースのルーティング、複数の Web サイトをホストする機能、セキュリティ強化機能が提供されます。
 
 Application Gateway によるセキュリティの強化には、SSL ポリシーの管理、エンド ツー エンド SSL のサポートが含まれます。 アプリケーション セキュリティは、WAF を Application Gateway に統合することによって強化されています。 この組み合わせにより、Web アプリケーションが一般的な脆弱性から保護されます。 また、管理するための構成を、1 か所で簡単に設定できます。
 
@@ -123,10 +123,10 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 
 異常スコアリング モードでは、ファイアウォールが防止モードの場合、いずれかの規則に一致するトラフィックがすぐにブロックされることはありません。 規則には特定の重大度があります。 *[重大]* 、 *[エラー]* 、 *[警告]* 、または *[通知]* です。 その重大度は、異常スコアと呼ばれる要求の数値に影響します。 たとえば、１つの *[警告]* 規則の一致によって、スコアに 3 が与えられます。 １つの *[重大]* 規則の一致では 5 が与えられます。
 
-|重大度  |値  |
+|重大度  |Value  |
 |---------|---------|
-|重大     |5|
-|Error        |4|
+|Critical     |5|
+|エラー        |4|
 |警告      |3|
 |注意事項       |2|
 
@@ -160,7 +160,7 @@ Microsoft Azure Sentinel は、スケーラブルでクラウドネイティブ�
 
 ![Sentinel](../media/ag-overview/sentinel.png)
 
-#### <a name="logging"></a>ログの記録
+#### <a name="logging"></a>ログ記録
 
 Application Gateway の WAF は、検出した各脅威について詳細なレポートを提供します。 ログ記録は Azure 診断ログに統合されています。 アラートは json 形式で記録されます。 これらのログは、[Azure Monitor ログ](../../azure-monitor/insights/azure-networking-analytics.md)と統合できます。
 
@@ -206,7 +206,7 @@ Application Gateway の WAF は、検出した各脅威について詳細なレ�
 
 価格モデルは、WAF_v1 SKU と WAF_v2 SKU で異なります。 詳細については、[Application Gateway の価格](https://azure.microsoft.com/pricing/details/application-gateway/)に関するページを参照してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [WAF ポリシーを作成](create-waf-policy-ag.md)してみましょう
 - [WAF のマネージド ルール](application-gateway-crs-rulegroups-rules.md)について理解を深めます

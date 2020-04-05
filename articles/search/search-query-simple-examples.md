@@ -1,25 +1,23 @@
 ---
-title: 簡単なクエリを作成する - Azure Search
-description: Azure Search インデックスに対するフルテキスト検索、フィルター検索、地理検索、ファセット検索の簡単な構文を基にしてクエリを実行することにより、例を使用して学習します。
-author: HeidiSteen
+title: 簡単なクエリを作成する
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search インデックスに対するフルテキスト検索、フィルター検索、地理検索、ファセット検索の簡単な構文を基にしてクエリを実行することにより、例を使用して学習します。
 manager: nitinme
-tags: Simple query analyzer syntax
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 09/20/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 6f3f0e0b8b5098784359e7703c4a165654ff9894
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 525c20f5b6e24811ab092a63fa84fe6ebbd7b618
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72808200"
 ---
-# <a name="create-a-simple-query-in-azure-search"></a>Azure Search で簡単なクエリを作成する
+# <a name="create-a-simple-query-in-azure-cognitive-search"></a>Azure Cognitive Search で簡単なクエリを作成する
 
-Azure Search では、[単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)で既定のクエリ パーサーが呼び出されて、インデックスに対してフルテキスト検索クエリが実行されます。 このパーサーは高速で、フルテキスト検索、フィルター検索、ファセット検索、地理検索などの一般的なシナリオに対応します。 
+Azure Cognitive Search では、[単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)で既定のクエリ パーサーが呼び出されて、インデックスに対してフルテキスト検索クエリが実行されます。 このパーサーは高速で、フルテキスト検索、フィルター検索、ファセット検索、地理検索などの一般的なシナリオに対応します。 
 
 この記事では、例を使用して単純な構文を示します。
 
@@ -27,9 +25,9 @@ Azure Search では、[単純なクエリ構文](https://docs.microsoft.com/rest
 
 ## <a name="formulate-requests-in-postman"></a>Postman で要求を作成する
 
-次の例では、[City of New York OpenData](https://nycopendata.socrata.com/) イニシアティブが提供するデータセットに基づいて利用可能なジョブで構成される NYC ジョブ検索インデックスを活用します。 このデータが最新のものであるとか、完全であるとはお考えにならないでください。 インデックスは、Microsoft が提供するサンドボックス サービス上にあります。つまり、これらのクエリを試すのに Azure サブスクリプションまたは Azure Search は必要ありません。
+次の例では、[City of New York OpenData](https://nycopendata.socrata.com/) イニシアティブが提供するデータセットに基づいて利用可能なジョブで構成される NYC ジョブ検索インデックスを活用します。 このデータが最新のものであるとか、完全であるとはお考えにならないでください。 インデックスは、Microsoft が提供するサンドボックス サービス上にあります。つまり、これらのクエリを試すのに Azure サブスクリプションまたは Azure Cognitive Search は必要ありません。
 
-必要になるのは、GET で HTTP 要求を発行するための Postman または同等のツールです。 詳細については、「[クイック スタート: Postman を使用して Azure Search REST API を調べる](search-get-started-postman.md)」を参照してください。
+必要になるのは、GET で HTTP 要求を発行するための Postman または同等のツールです。 詳細については、「[クイック スタート: Postman を使用して Azure Cognitive Search REST API を調べる](search-get-started-postman.md)方法に関する記事を参照してください。
 
 ### <a name="set-the-request-header"></a>要求ヘッダーを設定する
 
@@ -43,13 +41,13 @@ Azure Search では、[単純なクエリ構文](https://docs.microsoft.com/rest
 
 ### <a name="set-the-request-url"></a>要求 URL を設定する
 
-要求は、Azure Search エンドポイントと検索文字列を含む URL と GET コマンドを組み合わせたものです。
+要求は、Azure Cognitive Search のエンドポイントと検索文字列を含む URL と GET コマンドを組み合わせたものです。
 
   ![Postman の要求ヘッダー](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
 
 URL は、次の要素から構成されます。
 
-+ **`https://azs-playground.search.windows.net/`** は、Azure Search 開発チームによって管理されているサンドボックス検索サービスです。 
++ **`https://azs-playground.search.windows.net/`** は、Azure Cognitive Search の開発チームによって管理されているサンドボックス検索サービスです。 
 + **`indexes/nycjobs/`** は、そのサービスのインデックス コレクション内の NYC ジョブ インデックスです。 要求にはサービス名とインデックスの両方が必要です。
 + **`docs`** は、検索可能なすべてのコンテンツを含むドキュメント コレクションです。 要求ヘッダーに指定されたクエリ api-key は、ドキュメント コレクションを対象とする読み取り操作に対してのみ機能します。
 + **`api-version=2019-05-06`** は、すべての要求に必須のパラメーターである api-version を設定します。
@@ -119,7 +117,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E00-AF51-9B654925A2D5?api-version=2019-05-06&$count=true&search=*
 ```
 
-## <a name="example-3-filter-queries"></a>例 3:フィルター クエリ
+## <a name="example-3-filter-queries"></a>例 3: フィルター クエリ
 
 [フィルター構文](https://docs.microsoft.com/azure/search/search-query-odata-filter) は、**search** と一緒に使用することも、単独で使用することもできる OData 式です。 search パラメーターがないスタンドアロン フィルターは、関心があるドキュメントをフィルター式で完全に修飾できる場合に役立ちます。 クエリ文字列がない場合、字句または言語の分析なし、スコア付けなし (すべて 1 にスコア付け)、および優先度付けなしになります。 検索文字列が空である点に注目してください。
 
@@ -151,11 +149,11 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
 この関数の詳細については、[「フィルターの例」の search.ismatch](https://docs.microsoft.com/azure/search/search-query-odata-full-text-search-functions#examples) を参照してください。
 
-## <a name="example-4-range-filters"></a>例 4:範囲フィルター
+## <a name="example-4-range-filters"></a>例 4: 範囲フィルター
 
 範囲フィルターは、任意のデータ型の **`$filter`** 式を通してサポートされます。 次の例では、数値フィールドと文字列フィールドを検索します。 
 
-範囲フィルターではデータ型が重要であり、数値フィールドにある数値データと文字列フィールドにある文字列データで最もうまく機能します。 Azure Search では数値文字列を比較できないため、文字列フィールドの数値データは範囲には適していません。 
+範囲フィルターではデータ型が重要であり、数値フィールドにある数値データと文字列フィールドにある文字列データで最もうまく機能します。 Azure Cognitive Search では数値文字列を比較できないため、文字列フィールドの数値データは範囲には適していません。 
 
 次の例は、読みやすくするために POST 形式になっています (数値範囲の後ろにテキスト範囲が続きます)。
 
@@ -287,16 +285,16 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=5
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 コードでクエリを指定してみてください。 次のリンクでは、既定の単純な構文を使用して .NET と REST API の両方の検索クエリを設定する方法について説明しています。
 
-* [.NET SDK を使用した Azure Search インデックスの照会](search-query-dotnet.md)
-* [REST API を使用した Azure Search インデックスの照会](search-create-index-rest-api.md)
+* [.NET SDK を使用したインデックスのクエリ実行](search-query-dotnet.md)
+* [REST API を使用したインデックスのクエリ実行](search-create-index-rest-api.md)
 
 追加の構文リファレンス、クエリ アーキテクチャ、およびサンプルについては、次のリンク先を参照してください。
 
 + [高度なクエリを作成するための Lucene 構文のクエリの例](search-query-lucene-examples.md)
-+ [Azure Search のフルテキスト検索のしくみ](search-lucene-query-architecture.md)
++ [Azure Cognitive Search でのフルテキスト検索のしくみ](search-lucene-query-architecture.md)
 + [単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
 + [完全な Lucene クエリ](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
 + [フィルター構文と並べ替え構文](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)

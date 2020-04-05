@@ -8,10 +8,10 @@ ms.date: 09/11/2019
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: d4105a9fba3c40c563198040afb811625727ead0
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77594382"
 ---
 # <a name="security-hardening-in-aks-virtual-machine-hosts"></a>AKS 仮想マシン ホストでのセキュリティ強化 

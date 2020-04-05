@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/24/2019
 ms.author: allensu
 ms.openlocfilehash: 5fd68f4559420ca688b3f4d6f6d66ee52db5191e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74225439"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-by-using-azure-powershell"></a>Azure PowerShell を使用して Standard Load Balancer の負荷分散規則とアウトバウンド規則を構成する
@@ -35,7 +35,7 @@ ms.locfileid: "74225439"
 ```azurepowershell-interactive
 Connect-AzAccount
 ```
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0) を使用してリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイに使用する論理コンテナーです。 リソースは、グループから管理されます。
 
@@ -152,7 +152,7 @@ New-AzLoadBalancer -Name lb -Sku Standard -ResourceGroupName myresourcegroupoutb
 
 この時点で、それぞれの NIC リソースの IP 構成を更新することにより、*bepoolinbound* および *bepooloutbound* バックエンド プールの両方に引き続き VM を追加できます。 [Add-AzNetworkInterfaceIpConfig](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) を使用してリソース構成を更新します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソース グループ、ロード バランサー、および関連リソースが不要になったら、[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.7.0) を使用してそれらを削除できます。
 
@@ -160,7 +160,7 @@ New-AzLoadBalancer -Name lb -Sku Standard -ResourceGroupName myresourcegroupoutb
   Remove-AzResourceGroup -Name myresourcegroupoutbound
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、標準のロード バランサーを作成し、受信と送信の両方のロード バランサー トラフィック規則を構成し、バックエンド プールの VM の正常性プローブを構成しました。 
 
 さらに学習するには、[Azure Load Balancer に関するチュートリアル](tutorial-load-balancer-standard-public-zone-redundant-portal.md)に進みます。

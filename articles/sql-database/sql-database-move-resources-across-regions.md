@@ -12,10 +12,10 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 06/25/2019
 ms.openlocfilehash: 851ef49a5c066f12a95baa54daf5e267cb4278c5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73821429"
 ---
 # <a name="how-to-move-azure-sql-resources-to-another-region"></a>Azure SQL リソースを別のリージョンに移動する方法
@@ -187,7 +187,7 @@ ms.locfileid: "73821429"
 1. [Remove-AzSqlInstance](/powershell/module/az.sql/remove-azsqlinstance) を使用して、ソース マネージド インスタンスを削除します。 
 1. リソース グループ内のその他のリソース (仮想クラスター、仮想ネットワーク、セキュリティ グループなど) をすべて削除します。 
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 
 移行した Azure SQL Database を[管理](sql-database-manage-after-migration.md)します。 
 

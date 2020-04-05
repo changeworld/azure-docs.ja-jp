@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
 ms.openlocfilehash: 500db9f6d299ea81b1f1b1be864df5d91ba1eae7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76021293"
 ---
-1. [Azure portal][Azure portal] にサインインする
+1. [Azure portal][Azure portal] にサインインします。
 1. **[リソースの作成]** を選択します。 次に、 **[統合]**  > 、 **[リレー]** の順に選択します。 一覧に **[リレー]** がない場合、右上隅にある **[すべて表示]** を選択してください。
 1. **[作成]** を選択し、 **[名前]** フィールドに名前空間の名前を入力します。 その名前が使用できるかどうかが Azure portal で確認されます。
 1. 名前空間を作成する Azure サブスクリプションを選択します。
@@ -20,7 +20,7 @@ ms.locfileid: "76021293"
 
     ![[名前空間の作成]][create-namespace]
 
-1. **作成** を選択します。 Azure portal によってサービス名前空間が作成され、有効になります。 数分後に、アカウントのリソースがプロビジョニングされます。
+1. **［作成］** を選択します Azure portal によってサービス名前空間が作成され、有効になります。 数分後に、アカウントのリソースがプロビジョニングされます。
 
 ### <a name="get-management-credentials"></a>管理資格情報を取得する
 

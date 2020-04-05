@@ -4,10 +4,10 @@ description: このチュートリアルでは、Azure portal で Resource Graph
 ms.date: 11/21/2019
 ms.topic: tutorial
 ms.openlocfilehash: 00cb3f95112804c81beb6bce6fc35891e6197e60
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74303940"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>チュートリアル:Azure portal で Azure Resource Graph クエリを作成して共有する
@@ -147,11 +147,11 @@ Resources
 - Resource Graph エクスプローラーの **[クエリを開く]** ページ
 - リソース グループ ページ
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルを終了するとき、作成したプライベート クエリと共有クエリがもう必要ない場合は削除してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、プライベート クエリと共有クエリを作成しました。 Resource Graph 言語の詳細については、クエリ言語の詳細のページに進んでください。
 

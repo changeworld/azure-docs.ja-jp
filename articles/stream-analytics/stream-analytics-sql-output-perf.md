@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.openlocfilehash: f68f973882af28d80b3a27bc4591c5ee932404a1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75443600"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure SQL Database への Azure Stream Analytics の出力

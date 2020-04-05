@@ -10,10 +10,10 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 02/26/2020
 ms.openlocfilehash: e7708b0043b7f5baf2c12e813306595cc358a01d
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78194056"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>チュートリアル:Python と AI を使用して Azure Blob から検索可能なコンテンツを生成する

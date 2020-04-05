@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 01/23/2020
+ms.date: 03/17/2020
 ms.author: juliako
-ms.openlocfilehash: 3984f33cd97ada9b3d5301e45fe3506966880848
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: ae049d7486007696d8038eb4e6593cf996df659e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719672"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80372600"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Media Services v3 のダイナミック パッケージ
 
@@ -27,7 +27,10 @@ Microsoft Azure Media Services は、多くのメディア ソース ファイ�
 
 Media Services では、[ストリーミング エンドポイント](streaming-endpoint-concept.md)は、ダイナミック (Just-In-Time) パッケージおよび配信元サービスを表します。これは、ライブのオンデマンド コンテンツをクライアント プレーヤー アプリに直接配信できます。 次のセクションで説明する一般的なストリーミング メディア プロトコルのいずれかを使用します。 ダイナミック パッケージは、すべてのストリーミング エンドポイント (Standard または Premium) に標準で付属する機能です。
 
-## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a><a id="delivery-protocols"/>ソース ファイルをデリバリー用に準備するには
+> [!NOTE]
+> [Azure portal](https://portal.azure.com/) を使用し、v3 の[ライブ イベント](live-events-outputs-concept.md)の管理、v3 の[資産](assets-concept.md)の表示、API へのアクセスに関する情報の取得を行うことができます。 他のすべての管理タスク (変換とジョブなど) については、[REST API](https://docs.microsoft.com/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
+
+## <a name="to-prepare-your-source-files-for-delivery"></a><a id="delivery-protocols"/>ソース ファイルをデリバリー用に準備するには
 
 ダイナミック パッケージを活用するには、中間 (ソース) ファイルを一連の複数ビットレート MP4 (ISO Base Media 14496-12) ファイルに[エンコード](encoding-concept.md)する必要があります。 エンコードされた MP4 を含む[資産](assets-concept.md)と、Media Services のダイナミック パッケージで必要とされるストリーミング構成ファイルが必要です。 この一連の MP4 ファイルから、ダイナミック パッケージを使用することで、以下に説明するストリーミング メディア プロトコルを介してビデオを配信することができます。
 
@@ -68,11 +71,14 @@ Media Services 動的暗号化を使用してコンテンツを保護する場�
 |スムーズ ストリーミング| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`||
 |Smooth Streaming 2.0 (レガシ マニフェスト)|既定では、Smooth Streaming のマニフェスト形式には、繰り返しタグ (r タグ) が含まれています。 ただし、一部のプレーヤーは、`r-tag` をサポートしていません。 これらのプレーヤーを使用するクライアントは、r タグを無効にする形式を使用できます。<br/><br/>`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=fmp4-v20)`|
 
+> [!NOTE]
+> スムーズ ストリーミングでは、オーディオとビデオの両方がストリームに存在している必要があります。
+
 ## <a name="on-demand-streaming-workflow"></a>オンデマンド ストリーミングのワークフロー
 
 次の手順は、Azure Media Services の標準エンコーダーとダイナミック パッケージを併用した一般的な Media Services でのストリーミング ワークフローを示しています。
 
-1. QuickTime/MOV や MXF ファイルなどの入力ファイルをアップロードします。 このファイルは、中間ファイルやソース ファイルとも呼ばれます。 サポートされている形式の一覧については、[Media Encoder Standard でサポートされている形式](media-encoder-standard-formats.md)に関するページを参照してください。
+1. QuickTime/MOV や MXF ファイルなどの入力ファイルをアップロードします。 このファイルは、中間ファイルやソース ファイルとも呼ばれます。 サポートされている形式の一覧については、[Standard Encoder でサポートされている形式](media-encoder-standard-formats.md)に関するページを参照してください。
 1. 中間ファイルを H.264/AAC MP4 アダプティブ ビットレート セットに[エンコード](#encode-to-adaptive-bitrate-mp4s)します。
 1. アダプティブ ビットレート MP4 セットが含まれる出力資産を発行します。 ストリーミング ロケーターを作成して発行します。
 1. さまざまな形式 (HLS、MPEG-DASH および Smooth Streaming) をターゲットとする URL を構築します。 これらのさまざまな形式の正しいマニフェストおよび要求の処理は、**ストリーミング エンドポイント**が行います。
@@ -89,11 +95,11 @@ Media Services 動的暗号化を使用してコンテンツを保護する場�
 * [組み込みのプリセットを使用してローカル ファイルをエンコードする](job-input-from-local-file-how-to.md)。
 * [自分の特定のシナリオまたはデバイス要件に対応するカスタム プリセットを構築する](customize-encoder-presets-how-to.md)。
 
-Media Encoder Standard の[形式とコーデック](media-encoder-standard-formats.md)の一覧を参照してください。
+「Standard Encoder の[形式およびコーデック](media-encoder-standard-formats.md)」のリストを参照してください。
 
 ## <a name="live-streaming-workflow"></a>ライブ ストリーミング ワークフロー
 
-ライブ イベントには、パススルーとライブ エンコードの 2 種類があります。 
+ライブ イベントは、"*パススルー*" (オンプレミスのライブ エンコーダーによって複数のビットレート ストリームが送信される) または "*ライブ エンコード*" (オンプレミスのライブ エンコーダーによってシングル ビットレート ストリームが送信される) のいずれかに設定できます。 
 
 ダイナミック パッケージを使用したライブ ストリーミングの一般的なワークフローは次のとおりです。
 
@@ -120,7 +126,7 @@ Media Services v3 のライブ ストリームの詳細については、[ライ
 > [!NOTE]
 > ダイナミック パッケージでは、最大 4K の解像度および最大 60 フレーム/秒のフレーム レートをテスト済みです。 [Premium エンコーダー](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow)では、従来の v2 API を使用した H.265 へのエンコードがサポートされます。
 
-## <a name="a-idaudio-codecsaudio-codecs-supported-by-dynamic-packaging"></a><a id="audio-codecs"/>ダイナミック パッケージによってサポートされているオーディオ コーデック
+## <a name="audio-codecs-supported-by-dynamic-packaging"></a><a id="audio-codecs"/>ダイナミック パッケージによってサポートされているオーディオ コーデック
 
 ダイナミック パッケージでは、以下のプロトコルでエンコードされたオーディオがサポートされています。
 
@@ -302,7 +308,4 @@ HLS v7 以降 `(format=m3u8-cmaf)` では、オーディオ説明トラックを
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!NOTE]
-> 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされている [SDK](media-services-apis-overview.md#sdks) のいずれかを使用してください。
-
-[ビデオのアップロード、エンコード、およびストリーミング](stream-files-tutorial-with-api.md)の方法について学習します。
+[ビデオのアップロード、エンコード、およびストリーミング](stream-files-tutorial-with-api.md)

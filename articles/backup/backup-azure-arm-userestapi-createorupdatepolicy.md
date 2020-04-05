@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
 ms.openlocfilehash: 0718ebc3612f53f1c2cc279096dd92de69bb5ef6
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76963854"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>REST API を使用して Azure Recovery Services バックアップ ポリシーを作成する
@@ -29,7 +29,7 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 たとえば、Azure VM のバックアップに対するポリシーを作成する場合、要求本文のコンポーネントは次のとおりです。
 
-|Name  |Required  |Type  |説明  |
+|名前  |必須  |Type  |説明  |
 |---------|---------|---------|---------|
 |properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource のプロパティ        |
 |tags     |         | Object        |  リソース タグ       |
@@ -137,7 +137,7 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|Name  |Type  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |200 OK     |    [ProtectionPolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  [OK]       |
 |202 Accepted     |         |     承認済み    |

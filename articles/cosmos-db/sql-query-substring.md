@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: d4462fc407093b23510bddfae4d9f55d68f8c0fa
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303700"
 ---
 # <a name="substring-azure-cosmos-db"></a>SUBSTRING (Azure Cosmos DB)
@@ -54,7 +54,7 @@ SELECT SUBSTRING("abc", 1, 1) AS substring
 
 ## <a name="remarks"></a>解説
 
-開始位置が `0` の場合、このシステム関数は、[範囲インデックス](index-policy.md#includeexclude-strategy)の恩恵を受けます。
+開始位置が [ の場合、このシステム関数は、](index-policy.md#includeexclude-strategy)範囲インデックス`0`の恩恵を受けます。
 
 ## <a name="next-steps"></a>次のステップ
 

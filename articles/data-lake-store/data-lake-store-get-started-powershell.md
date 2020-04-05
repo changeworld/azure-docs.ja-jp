@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 42ddab6991b418af3e41da9966cdab69ded87461
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73837888"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>Azure PowerShell を使用して Azure Data Lake Storage Gen1 の使用を開始する
@@ -151,7 +151,7 @@ Remove-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name `
     -Paths $myrootdir\mynewdirectory\vehicle1_09142014.csv, $myrootdir\mynewdirectoryvehicle1_09142014_Copy.csv
 ```
 
-## <a name="delete-your-account"></a>アカウントを削除する
+## <a name="delete-your-account"></a>アカウントの削除
 
 Data Lake Storage Gen1 アカウントを削除するには、次のコマンドを使用します。
 
@@ -161,7 +161,7 @@ Remove-AzDataLakeStoreAccount -Name $dataLakeStorageGen1Name
 
 確認を求めるメッセージが表示されたら、「 **Y** 」と入力して、アカウントを削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Data Lake Storage Gen1 で PowerShell を使用するためのパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-powershell.md)
 * [Data Lake Storage Gen1 を使用してビッグ データの要件に対応する](data-lake-store-data-scenarios.md)

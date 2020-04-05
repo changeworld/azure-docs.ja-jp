@@ -5,10 +5,10 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.openlocfilehash: 7dc60c28b56982f82c1ac90db55ac752977ea2d6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75457500"
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>データのシリアル化がアプリケーションのアップグレードに与える影響

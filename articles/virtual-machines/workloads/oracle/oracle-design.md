@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
 ms.openlocfilehash: c2c2d1a9affe13d485bfeef52c781ed259b53bc8
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70100129"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Azure での Oracle データベースの設計と実装
@@ -211,7 +211,7 @@ I/O 要件を明確に把握した後に、これらの要件に最適なドラ�
 
 データ ディスクの設定が保存された後に、OS レベルでドライブのマウントを解除し、変更後に再マウントするまでは、ホストのキャッシュ設定を変更できません。
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 
 Azure 環境のセットアップと構成が完了した後に、今度はネットワークをセキュリティ保護します。 以下に、推奨事項をいくつか示します。
 
@@ -232,7 +232,7 @@ Azure 環境のセットアップと構成が完了した後に、今度はネ�
 - [Oracle Golden Gate の構成](configure-oracle-golden-gate.md)
 - [Oracle のバックアップと回復](oracle-backup-recovery.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [チュートリアル:高可用性 VM の作成](../../linux/create-cli-complete.md)
 - [VM デプロイ Azure CLI サンプルを探索する](../../linux/cli-samples.md)

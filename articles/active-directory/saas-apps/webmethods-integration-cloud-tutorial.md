@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 30fc55cb608189e1be82c2b28393c5e242e262fd
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160866"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-webmethods-integration-suite"></a>チュートリアル:Azure Active Directory と webMethods Integration Suite の統合

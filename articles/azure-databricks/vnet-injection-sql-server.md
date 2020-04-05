@@ -9,10 +9,10 @@ ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.openlocfilehash: 460079248e6cbd939c36b84f94cac41dce4dda2b
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73747668"
 ---
 # <a name="tutorial-query-a-sql-server-linux-docker-container-in-a-virtual-network-from-an-azure-databricks-notebook"></a>チュートリアル:Azure Databricks ノートブックから仮想ネットワーク内の SQL Server Linux Docker コンテナーのクエリを実行する
@@ -62,12 +62,12 @@ ms.locfileid: "73747668"
 
 7. SSH 用にポート 22 を開く規則を追加します。 次の設定を使用します。
     
-    |Setting|推奨値|説明|
+    |設定|推奨値|説明|
     |-------|---------------|-----------|
     |source|IP アドレス|IP アドレスでは、特定のソース IP アドレスからの受信トラフィックが、このルールによって許可または拒否されることを指定します。|
     |ソース IP アドレス|<ご使用のパブリック IP\>|パブリック IP アドレスを入力します。 パブリック IP アドレスは、[bing.com](https://www.bing.com/) にアクセスして **"my IP"** を検索することで見つけることができます。|
     |Source port ranges|*|すべてのポートからのトラフィックを許可します。|
-    |Destination|IP アドレス|IP アドレスでは、特定のソース IP アドレスの送信トラフィックが、このルールによって許可または拒否されることを指定します。|
+    |宛先|IP アドレス|IP アドレスでは、特定のソース IP アドレスの送信トラフィックが、このルールによって許可または拒否されることを指定します。|
     |送信先 IP アドレス|<ご使用の VM のパブリック IP\>|仮想マシンのパブリック IP アドレスを入力します。 これは仮想マシンの **[概要]** ページで見つかります。|
     |宛先ポート範囲|22|SSH 用にポート 22 を開きます。|
     |Priority|290|ルールに優先順位を付けます。|
@@ -78,14 +78,14 @@ ms.locfileid: "73747668"
 
 8. 次の設定を使用して、SQL 用にポート 1433 を開く規則を追加します。
 
-    |Setting|推奨値|説明|
+    |設定|推奨値|説明|
     |-------|---------------|-----------|
     |source|Any|ソースでは、特定のソース IP アドレスからの受信トラフィックが、このルールによって許可または拒否されることを指定します。|
     |Source port ranges|*|すべてのポートからのトラフィックを許可します。|
-    |Destination|IP アドレス|IP アドレスでは、特定のソース IP アドレスの送信トラフィックが、このルールによって許可または拒否されることを指定します。|
+    |宛先|IP アドレス|IP アドレスでは、特定のソース IP アドレスの送信トラフィックが、このルールによって許可または拒否されることを指定します。|
     |送信先 IP アドレス|<ご使用の VM のパブリック IP\>|仮想マシンのパブリック IP アドレスを入力します。 これは仮想マシンの **[概要]** ページで見つかります。|
     |宛先ポート範囲|1433|SQL Server 用にポート 22 を開きます。|
-    |Priority|300|ルールに優先順位を付けます。|
+    |Priority|該当なし|ルールに優先順位を付けます。|
     |名前|sql-databricks-tutorial-vm|ルールに名前を付けます。|
 
     ![ポート 1433 の受信セキュリティ規則を追加する](./media/vnet-injection-sql-server/open-port2.png)
@@ -136,7 +136,7 @@ ms.locfileid: "73747668"
     sudo docker ps -a
     ```
 
-## <a name="create-a-sql-database"></a>SQL Database の作成
+## <a name="create-a-sql-database"></a>SQL データベースを作成する
 
 1. SQL Server Management Studio を開き、サーバー名と SQL 認証を使用してサーバーに接続します。 サインイン ユーザー名は **SA** で、パスワードは Docker コマンドで設定したパスワードです。 このコマンド例のパスワードは `Password1234` です。
 
@@ -192,7 +192,7 @@ ms.locfileid: "73747668"
     display(df)
     ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソース グループ、Azure Databricks ワークスペース、および関連するすべてのリソースは、不要になったら削除します。 ジョブを削除すると、不必要な課金を回避できます。 Azure Databricks ワークスペースを後で使用する予定がある場合は、クラスターを停止し、後で再起動することができます。 この Azure Databricks ワークスペースの使用を続けない場合は、以下の手順に従って、このチュートリアルで作成したすべてのリソースを削除してください。
 
@@ -200,7 +200,7 @@ ms.locfileid: "73747668"
 
 2. リソース グループのページで **[削除]** を選択し、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** を再度選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の記事に進んで、Azure Databricks を使ったデータの抽出、変換、および読み込みの方法について学びましょう。
 > [!div class="nextstepaction"]

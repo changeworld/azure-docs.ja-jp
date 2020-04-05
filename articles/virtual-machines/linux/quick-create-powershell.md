@@ -16,13 +16,13 @@ ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 1e336ad05d70341365b63d806b249740113724d3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74035204"
 ---
-# <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>クイック スタート:PowerShell を使用して Azure に Linux 仮想マシンを作成する
+# <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>クイック スタート: PowerShell を使用して Azure に Linux 仮想マシンを作成する
 
 Azure PowerShell モジュールは、PowerShell コマンド ラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、Azure PowerShell モジュールを使って、Linux 仮想マシン (VM) を Azure に展開する方法を示します。 このクイック スタートでは、Canonical の Ubuntu 16.04 LTS マーケットプレース イメージを使用します。 また、VM の動作を確認するために、VM に SSH 接続し、NGINX Web サーバーをインストールします。
 
@@ -48,7 +48,7 @@ PuTTy の使用を含む SSH キー ペアの作成方法の詳細について�
 
 Cloud Shell を使用して SSH キーの組を作成した場合、[Cloud Shell によって自動的に作成されるストレージ アカウント](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage)内のコンテナー イメージにキーの組が格納されます。 キーを取得するまでは、ストレージ アカウント (またはその中のファイル共有) を削除しないでください。削除すると、VM にアクセスできなくなります。 
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースの展開と管理に使用する論理コンテナーです。
 
@@ -212,7 +212,7 @@ sudo apt-get -y install nginx
 
 ![NGINX の既定のウェルカム ページ](./media/quick-create-cli/nginix-welcome-page.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要がなくなったら、[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) コマンドレットを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
 
@@ -220,7 +220,7 @@ sudo apt-get -y install nginx
 Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、単純な仮想マシンをデプロイし、ネットワーク セキュリティ グループと規則を作成し、基本的な Web サーバーをインストールしました。 Azure 仮想マシンの詳細については、Linux VM のチュートリアルを参照してください。
 

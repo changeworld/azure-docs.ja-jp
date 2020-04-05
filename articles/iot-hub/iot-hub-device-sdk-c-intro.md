@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: robinsh
 ms.openlocfilehash: dd12f974b9b02d919752dcb932c9ce1709d7315b
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70813796"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>C 用 Azure IoT device SDK

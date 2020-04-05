@@ -15,10 +15,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 2ba69e6447c686230412c33e74196c4bb594e0de
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77611815"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Web API を呼び出すデスクトップ アプリ:コード構成

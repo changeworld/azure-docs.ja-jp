@@ -16,10 +16,10 @@ ms.author: baselden
 ms.reviewer: zhchia
 ms.collection: active-directory
 ms.openlocfilehash: 93e1d879f69a95fe7472ce530e0e9f38f3480f39
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77522395"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>マルチテナント アプリケーションで自動ユーザー プロビジョニングを有効にする

@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: e81b15b974469d319384a67b08512130b7876a30
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76988789"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK でサポートされているブラウザー
@@ -61,14 +61,14 @@ Azure Maps Web SDK は、次のモバイル ブラウザーをサポートして
 
 - サービス モジュール ([ドキュメント](how-to-use-services-module.md) | [npm モジュール](https://www.npmjs.com/package/azure-maps-rest))
 
-## <a name="Target-Legacy-Browsers"></a>レガシ ブラウザーを対象にする
+## <a name="target-legacy-browsers"></a><a name="Target-Legacy-Browsers"></a>レガシ ブラウザーを対象にする
 
 WebGL をサポートしていない、または制限付きでのみサポートしている古いブラウザーを対象とする場合があります。 このような場合は、[リーフレット](https://leafletjs.com/)などのオープンソース マップ コントロールと一緒に Azure Maps サービスを使うことをお勧めします。 次に例を示します。
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Azure Maps + Leaflet" src="//codepen.io/azuremaps/embed/GeLgyx/?height=500&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure Maps + Leaflet</a>」Pen を表示します。
+<a href='https://codepen.io/azuremaps/pen/GeLgyx/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>Azure Maps + Leaflet</a>」Pen を表示します。
 </iframe>
 
 

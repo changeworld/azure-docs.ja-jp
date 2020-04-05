@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: genli
 ms.openlocfilehash: 660c7fa0051654fd9b0012740ce7ed3ee1e91531
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71059182"
 ---
 # <a name="troubleshoot-azure-virtual-machines-boot-errors"></a>Azure 仮想マシンのブート エラーのトラブルシューティング
@@ -33,7 +33,7 @@ ms.locfileid: "71059182"
 * [再起動ループの問題](troubleshoot-reboot-loop.md)
 * [VM の起動が Windows Update の段階で停止する](troubleshoot-stuck-updating-boot-error.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ブート診断](boot-diagnostics.md)
 - [VM シリアル コンソール](../windows/serial-console.md)

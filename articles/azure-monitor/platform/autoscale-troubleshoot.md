@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/4/2019
 ms.subservice: autoscale
 ms.openlocfilehash: 9780cf88070110c4efc13c477d65307aa3985fe5
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75751337"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Azure 自動スケーリングのトラブルシューティング

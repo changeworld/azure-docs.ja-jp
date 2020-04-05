@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 01/30/2020
 ms.custom: seodec18
 ms.openlocfilehash: c3b06289ba6ce98d4307a8255981ecdba069fdfa
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76905395"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Time Series Insights 環境にイベント ハブ イベント ソースを追加する
@@ -50,7 +50,7 @@ ms.locfileid: "76905395"
 
 1. **[コンシューマー グループ]** ページで、 **[名前]** に新しい一意の値を入力します。  Time Series Insights 環境で新しいイベント ソースを作成するとき、この同じ名前を使用します。
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 ## <a name="add-a-new-event-source"></a>新しいイベント ソースの追加
 
@@ -107,7 +107,7 @@ ms.locfileid: "76905395"
 
 1. イベント ハブに追加した専用 Time Series Insights コンシューマー グループ名を追加します。
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
    イベント ソースの作成後、Time Series Insights では自動的に環境へのデータのストリーミングを開始します。
 

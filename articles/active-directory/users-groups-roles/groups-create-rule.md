@@ -15,11 +15,11 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d2ed7f27e2145f666f38eec5ddc6c985a4d32138
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768769"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231747"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Azure Active Directory で動的グループを作成または更新する
 

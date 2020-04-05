@@ -13,10 +13,10 @@ ms.date: 02/22/2019
 tags: ''
 keywords: ''
 ms.openlocfilehash: 13c83c53cdad719d6a4bed4cc1852b85d62082e8
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68834584"
 ---
 # <a name="ibm-workloads-on-azure"></a>Azure 上での IBM ワークロード
@@ -35,7 +35,7 @@ Azure では、既存の IBM メインフレーム環境との統合をサポー
 
 IBM メインフレーム システムを Azure へ移行するために、充実したパートナー エコシステムを利用できます。 ほとんどの場合は、アプリケーションの書き換えや置き換えという段階的なデプロイに着手する前に、できる限り、実用的な再利用の手法に従います。 パートナーからの詳しいガイダンスとヘルプについては、[Azure メインフレーム移行センター](https://azure.microsoft.com/migration/mainframe/)のページで入手してください。
 
-**次のステップ**
+**次の手順**
 
 - [メインフレームの移行: 通説と事実](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [Azure 上に IBM zD&T 開発/テスト環境をインストールする](./install-ibm-z-environment.md)

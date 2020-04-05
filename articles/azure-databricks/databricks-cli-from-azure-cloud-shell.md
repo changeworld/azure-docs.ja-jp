@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: mamccrea
 ms.openlocfilehash: efb0d3222bfd98b15502163979425d47fa459e07
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73605714"
 ---
 # <a name="use-databricks-cli-from-azure-cloud-shell"></a>Azure Cloud Shell からの Databricks CLI の使用
@@ -76,7 +76,7 @@ Databricks CLI の使用を開始できます。 たとえば、次のコマン�
 コマンドの完全なリファレンスについては、「[Databricks CLI](/azure/databricks/dev-tools/databricks-cli)」をご覧ください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure CLI について詳しくは、[Azure CLI の概要](../cloud-shell/overview.md)に関するページをご覧ください。
 * Azure CLI のコマンド一覧を確認するには、[Azure CLI リファレンス](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest)のページをご覧ください。

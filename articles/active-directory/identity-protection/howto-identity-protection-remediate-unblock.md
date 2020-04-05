@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 350e7b37d36be70cea345db52cdfb639b2f1c1a8
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74382112"
 ---
 # <a name="remediate-risks-and-unblock-users"></a>リスクを修復してユーザーをブロック解除する
@@ -37,7 +37,7 @@ ms.locfileid: "74382112"
 
 ### <a name="self-remediation-with-risk-policy"></a>リスク ポリシーを使用した自己修復
 
-リスク ポリシーで Azure Multi-Factor Authentication (MFA) とパスワード リセットのセルフサービス (SSPR) を使用して自己修復を許可した場合、リスクが検出されたときに、ユーザーが自分自身をブロック解除できます。 これらの検出は、クローズされたとみなされます。 リスクが検出されたときに Azure MFA と SSPR を使用するには、ユーザーが登録済みである必要があります。
+リスク ポリシーで Azure Multi-Factor Authentication (MFA) とセルフサービス パスワード リセット (SSPR) を使用して自己修復を許可した場合、リスクが検出されたときに、ユーザーが自分自身をブロック解除できます。 これらの検出は、クローズされたとみなされます。 リスクが検出されたときに Azure MFA と SSPR を使用するには、ユーザーが登録済みである必要があります。
 
 一部の検出では、ユーザーの自己修復を必要とするレベルのリスクが発生しないことありますが、管理者はこれらの検出も評価する必要があります。 管理者は、[特定の場所からのアクセスのブロック](../conditional-access/howto-conditional-access-policy-location.md)やポリシーで許容されるリスクの低減などの追加の対策が必要であると判断できます。
 
@@ -78,7 +78,7 @@ ms.locfileid: "74382112"
 
 1. **パスワードをリセットする** - ユーザーのパスワードをリセットすることができます。
 1. **ユーザー リスクを無視する** - アクセスをブロックするために構成されたユーザー リスク レベルに到達した場合、ユーザー リスク ポリシーによってユーザーがブロックされます。 ユーザー リスクを無視するか、報告されたリスク検出を手動でクローズすることで、ユーザーのリスク レベルを下げることができます。
-1. **ポリシーからユーザーを除外する** - サインイン ポリシーの現在の構成が原因で特定のユーザーに問題が発生していると考えられる場合は、そのポリシーからユーザーを除外できます。 詳細については、記事「[方法: リスク ポリシーを構成して有効にする](howto-identity-protection-configure-risk-policies.md#exclusions)」の「除外」セクションを参照してください。
+1. **ポリシーからユーザーを除外する** - サインイン ポリシーの現在の構成が原因で特定のユーザーに問題が発生していると考えられる場合は、そのポリシーからユーザーを除外できます。 詳細については、記事「[方法: リスク ポリシーを構成して有効にする](howto-identity-protection-configure-risk-policies.md#exclusions)」を参照してください。
 1. **ポリシーを無効にする** - ポリシーの構成が原因ですべてのユーザーに問題が発生していると考えられる場合は、ポリシーを無効にすることができます。 詳細については、記事「[方法: リスク ポリシーを構成して有効にする](howto-identity-protection-configure-risk-policies.md)」を参照してください。
 
 ### <a name="unblocking-based-on-sign-in-risk"></a>サインイン リスクに基づくブロック解除
@@ -86,9 +86,9 @@ ms.locfileid: "74382112"
 サインイン リスクに基づいてアカウントをブロック解除する場合、管理者には、次のオプションがあります。
 
 1. **よく使用する場所やデバイスからサインインする** - 不審なサインインがブロックされる一般的な理由は、使用頻度の低い場所やデバイスからのサインイン試行にあります。 ユーザーは、よく使用する場所またはデバイスからのサインインを試みることで、これがブロックの理由であるかどうかをすぐに確認できます。
-1. **ポリシーからユーザーを除外する** - サインイン ポリシーの現在の構成が原因で特定のユーザーに問題が発生していると考えられる場合は、そのポリシーからユーザーを除外できます。 詳細については、記事「[方法: リスク ポリシーを構成して有効にする](howto-identity-protection-configure-risk-policies.md#exclusions)」の「除外」セクションを参照してください。
+1. **ポリシーからユーザーを除外する** - サインイン ポリシーの現在の構成が原因で特定のユーザーに問題が発生していると考えられる場合は、そのポリシーからユーザーを除外できます。 詳細については、記事「[方法: リスク ポリシーを構成して有効にする](howto-identity-protection-configure-risk-policies.md#exclusions)」を参照してください。
 1. **ポリシーを無効にする** - ポリシーの構成が原因ですべてのユーザーに問題が発生していると考えられる場合は、ポリシーを無効にすることができます。 詳細については、記事「[方法: リスク ポリシーを構成して有効にする](howto-identity-protection-configure-risk-policies.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure AD Identity Protection の概要を入手するには、[Azure AD Identity Protection の概要](overview-identity-protection.md)に関するページを参照してください。

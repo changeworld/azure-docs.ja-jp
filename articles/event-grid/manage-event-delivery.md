@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: spelluru
 ms.openlocfilehash: caed3c077b4df5da5fd8541b2f7e85ef119604b0
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72794032"
 ---
 # <a name="dead-letter-and-retry-policies"></a>配信不能と再試行に関する方針
@@ -129,7 +129,7 @@ New-AzEventGridSubscription `
 
 `EventTtl` と `MaxDeliveryAttempt` の両方を設定した場合、Event Grid は期限切れについて最初の設定を使用して、イベント配信を停止するタイミングを判別します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure 関数アプリを利用して配信不能イベントを処理するサンプル アプリケーションについては、「[Azure Event Grid Dead Letter Samples for .NET](https://azure.microsoft.com/resources/samples/event-grid-dotnet-handle-deadlettered-events/)」 (.NET 向け Azure Event Grid 配信不能サンプル) を参照してください。
 * イベント配信と再試行については、「[Event Grid によるメッセージ配信と再試行](delivery-and-retry.md)」をご覧ください。

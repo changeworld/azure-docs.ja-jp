@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: aschhab
 ms.openlocfilehash: f852ad70b2eb97e2b8b3e40d086e98b3836c3592
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77598291"
 ---
 # <a name="throttling-operations-on-azure-service-bus"></a>Azure Service Bus でのスロットル操作
@@ -51,7 +51,7 @@ Azure Service Bus Standard レベルは、従量課金制の価格モデルを�
 
 すべての操作が等しく作成されるわけではありません。 各操作のクレジット コストは次のようになります。 
 
-| Operation | クレジット コスト|
+| 操作 | クレジット コスト|
 |-----------|-----------|
 | データ操作 (Send、SendAsync、Receive、ReceiveAsync、Peek) |メッセージあたり 1 クレジット |
 | 管理操作 (キュー、トピック、サブスクリプション、フィルターに対する作成、読み取り、更新、削除) | 10 クレジット |
@@ -127,6 +127,6 @@ Azure Service Bus は永続化のために最適化されており、Service Bus
 Service Bus のメッセージングの詳細と使用例については、次の詳細トピックをご覧ください。
 
 * [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
-* [クイック スタート: Microsoft Azure portal と .NET を使用してメッセージを送受信する](service-bus-quickstart-portal.md)
-* [チュートリアル:Microsoft Azure portal とトピック/サブスクリプションを使用して在庫を更新する](service-bus-tutorial-topics-subscriptions-portal.md)
+* [クイック スタート: Azure Portal と .NET を使用してメッセージを送受信する](service-bus-quickstart-portal.md)
+* [チュートリアル: Azure Portal とトピック/サブスクリプションを使用して在庫を更新する](service-bus-tutorial-topics-subscriptions-portal.md)
 

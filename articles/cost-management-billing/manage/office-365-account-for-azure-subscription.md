@@ -1,5 +1,5 @@
 ---
-title: Office 365 アカウントを使用して Azure にサインアップする | Microsoft Docs
+title: Office 365 アカウントを使用して Azure にサインアップする
 description: Office 365 アカウントを使用して、Azure サブスクリプションを作成する方法を説明します
 author: JiangChen79
 ms.reviewer: adwise
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 265d9bcafa7caf9af0f8c4c7f33de044fa02349c
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: b42a5b83f5442755614a3cb2ae81cffda09b4b3b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199587"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238110"
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>Office 365 アカウントを使用して Azure のサブスクリプションにサインアップする
 Office 365 サブスクリプションがある場合は、Office 365 アカウントを使用して Azure サブスクリプションを作成できます。 Office 365 のユーザー名とパスワードを使用して [Azure ポータル](https://portal.azure.com/) にサインインします。 仮想マシンを設定するか、他の Azure サービスを使用する場合は、Azure サブスクリプションにサインアップする必要があります。 他のユーザーと Azure サブスクリプションを共有し、[ロールベースのアクセス制御を使用して、Azure サブスクリプションとリソースへのアクセスを管理できます](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
@@ -35,7 +35,7 @@ Office 365 のユーザー名とパスワードを使用して Azure にサイ�
 
 - Azure サブスクリプションに組織内の他のユーザーを追加する必要がある場合は、[Azure ポータルでのアクセス管理の開始](../../role-based-access-control/overview.md)に関する記事を参照してください。
 
-## <a id="more-about-subs">Azure サブスクリプションと Office 365 サブスクリプションの背景情報</a>
+## <a name=""></a><a id="more-about-subs">Azure サブスクリプションと Office 365 サブスクリプションの背景情報</a>
 Office 365 と Azure では、ユーザーとサブスクリプションの管理に Azure AD サービスが使用されています。 Azure のディレクトリは、ユーザーとサブスクリプションをグループ化するコンテナーのようなものです。 Azure サブスクリプションと Office 365 サブスクリプションで同じユーザー アカウントを使用するには、Azure サブスクリプションを Office 365 サブスクリプションと同じディレクトリに作成する必要があります。 以下の点に注意してください。
 
 * サブスクリプションはディレクトリに作成されます。

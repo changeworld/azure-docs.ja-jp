@@ -9,13 +9,13 @@ ms.date: 07/10/2019
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: b864e5374dcb0bab321109e7b12ee8946adf0c05
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67849498"
 ---
-`myAppServicePlan` App Service プランで [Web アプリ](../articles/app-service/containers/app-service-linux-intro.md)を作成します。 
+[ App Service プランで ](../articles/app-service/containers/app-service-linux-intro.md)Web アプリ`myAppServicePlan`を作成します。 
 
 Cloud Shell で、[`az webapp create`](/cli/azure/webapp?view=azure-cli-latest) コマンドを使用することができます。 次の例では、`<app-name>` をグローバルに一意のアプリ名に置き換えてください (有効な文字は `a-z`、`0-9`、`-`)。 ランタイムは `RUBY|2.3` に設定されています。 サポートされているすべてのランタイムを確認するには、[`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest) を実行します。 
 

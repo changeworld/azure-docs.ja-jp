@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
 ms.openlocfilehash: bc92e0cf579bc008fdb09c9cbb576d8cac0191cb
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73721438"
 ---
-# <a name="quickstart-route-custom-events-to-web-endpoint-with-powershell-and-event-grid"></a>クイック スタート: PowerShell と Event Grid を使ったカスタム イベントの Web エンドポイントへのルーティング
+# <a name="quickstart-route-custom-events-to-web-endpoint-with-powershell-and-event-grid"></a>クイック スタート:PowerShell と Event Grid を使ったカスタム イベントの Web エンドポイントへのルーティング
 
 Azure Event Grid は、クラウドのイベント処理サービスです。 この記事では、Azure PowerShell を使用してカスタム トピックを作成してそのトピックをサブスクライブし、イベントをトリガーして結果を表示します。 通常は、イベント データを処理し、アクションを実行するエンドポイントにイベントを送信します。 ただし、この記事では、単純化するために、メッセージを収集して表示する Web アプリにイベントを送信します。
 
@@ -30,7 +30,7 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 �
 
 この記事では、Azure PowerShell の最新バージョンを実行していることを前提にしています。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストールと構成](/powershell/azure/install-Az-ps)に関するページを参照してください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 Event Grid のトピックは Azure リソースであり、Azure リソース グループに配置する必要があります。 リソース グループは、Azure リソースをまとめてデプロイして管理するための論理上のコレクションです。
 
@@ -155,7 +155,7 @@ Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-ke
 }]
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 引き続きこのイベントまたはイベント ビューアー アプリを使用する場合は、この記事で作成したリソースをクリーンアップしないでください。 それ以外の場合は、次のコマンドを使用して、この記事で作成したリソースを削除します。
 
@@ -163,7 +163,7 @@ Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-ke
 Remove-AzResourceGroup -Name gridResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 トピックを作成し、イベントをサブスクライブする方法がわかったら、Event Grid でできることについて、さらに情報を収集しましょう。
 

@@ -9,10 +9,10 @@ ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
 ms.openlocfilehash: 3215f5952daef053c94432bc8fdef15e1775047a
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73171108"
 ---
 VM を単一リージョンに配置すると、インスタンス間の物理的な距離が短縮されます。 また、単一可用性ゾーンに配置した場合も、それらの物理的な位置は近くなります。 ただし、Azure の占有領域が拡大するにつれ、単一可用性ゾーンが複数の物理的なデータ センターにまたがる可能性があるため、ネットワーク待ち時間がアプリケーションに影響を与えることがあります。 

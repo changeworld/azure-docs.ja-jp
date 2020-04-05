@@ -3,7 +3,7 @@ title: Oracle Linux VHD の作成とアップロード
 description: Oracle Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: mimckitt
+author: gbowerman
 manager: gwallace
 editor: tysonn
 tags: azure-service-management,azure-resource-manager
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/10/2019
-ms.author: mimckitt
-ms.openlocfilehash: 240333e55f23f2536d3cf14d2bb817e5776c8139
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.author: guybo
+ms.openlocfilehash: 784d6c01125a9fd6ec291f32e989e4b22e7607af
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251593"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066573"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Azure 用の Oracle Linux 仮想マシンの準備
 
@@ -34,7 +34,7 @@ ms.locfileid: "78251593"
 * 2\.6.37 未満の Linux カーネル バージョンは、HYPER-V で大きい VM サイズの NUMA をサポートできません。 この問題は、主に、アップストリームの Red Hat 2.6.32 カーネルを使用した古いディストリビューションに影響し、Oracle Linux 6.6 以降では修正されています
 * OS ディスクにスワップ パーティションを構成しないでください。 Linux エージェントは、一時的なリソース ディスク上にスワップ ファイルを作成するよう構成できます。  このことに関する詳細については、次の手順を参照してください。
 * Azure の VHD の仮想サイズはすべて、1 MB にアラインメントさせる必要があります。 未フォーマット ディスクから VHD に変換するときに、変換する前の未フォーマット ディスクのサイズが 1 MB の倍数であることを確認する必要があります。 詳細については、[Linux のインストールに関する注記](create-upload-generic.md#general-linux-installation-notes)のセクションを参照してください。
-* `Addons` リポジトリが有効になっていることを確認します。 `/etc/yum.repos.d/public-yum-ol6.repo` ファイル (Oracle Linux 6) または `/etc/yum.repos.d/public-yum-ol7.repo` ファイル (Oracle Linux 7) を編集し、このファイルの **[ol6_addons]** または **[ol7_addons]** の下の行 `enabled=0` を `enabled=1` に変更します。
+* `Addons` リポジトリが有効になっていることを確認します。 `/etc/yum.repos.d/public-yum-ol6.repo` ファイル (Oracle Linux 6) または `/etc/yum.repos.d/public-yum-ol7.repo` ファイル (Oracle Linux 7) を編集し、このファイルの `enabled=0`[ol6_addons]`enabled=1` または **[ol7_addons]** の下の行 **を** に変更します。
 
 ## <a name="oracle-linux-64-and-later"></a>Oracle Linux 6.4 以降
 Azure 上で実行する仮想マシンのオペレーティング システムで固有の構成手順を完了する必要があります。
@@ -45,12 +45,12 @@ Azure 上で実行する仮想マシンのオペレーティング システム�
    
         # sudo rpm -e --nodeps NetworkManager
    
-    **注:** パッケージがまだインストールされていない場合、このコマンドは失敗してエラー メッセージが表示されます。 これは予期されることです。
-4. `/etc/sysconfig/` ディレクトリに **network** という名前のファイルを作成し、次のテキストを追加します。
+    **注意:** パッケージがまだインストールされていない場合、このコマンドは失敗してエラー メッセージが表示されます。 これは予期されることです。
+4. **ディレクトリに**network`/etc/sysconfig/` という名前のファイルを作成し、次のテキストを追加します。
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
-5. `/etc/sysconfig/network-scripts/` ディレクトリに **ifcfg-eth0** という名前のファイルを作成し、次のテキストを追加します。
+5. **ディレクトリに**ifcfg-eth0`/etc/sysconfig/network-scripts/` という名前のファイルを作成し、次のテキストを追加します。
    
         DEVICE=eth0
         ONBOOT=yes
@@ -119,11 +119,11 @@ Azure 用の Oracle Linux 7 仮想マシンを準備する手順は、Oracle Lin
 
 1. Hyper-V マネージャーで仮想マシンを選択します。
 2. **[接続]** をクリックすると、仮想マシンのコンソール ウィンドウが開きます。
-3. `/etc/sysconfig/` ディレクトリに **network** という名前のファイルを作成し、次のテキストを追加します。
+3. **ディレクトリに**network`/etc/sysconfig/` という名前のファイルを作成し、次のテキストを追加します。
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
-4. `/etc/sysconfig/network-scripts/` ディレクトリに **ifcfg-eth0** という名前のファイルを作成し、次のテキストを追加します。
+4. **ディレクトリに**ifcfg-eth0`/etc/sysconfig/network-scripts/` という名前のファイルを作成し、次のテキストを追加します。
    
         DEVICE=eth0
         ONBOOT=yes

@@ -13,10 +13,10 @@ ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 11/20/2019
 ms.openlocfilehash: d065439839ba5db479305ae81c61892cb5cf5e70
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74929450"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Azure Data Factory を使用して Dynamics 365 (Common Data Service) または Dynamics CRM をコピー元またはコピー先としてデータをコピーする
@@ -60,7 +60,7 @@ Dynamics のそれぞれのバージョン/製品でサポートされている�
 >[!TIP]
 >**Dynamics 365 Finance and Operations** からデータをコピーするには、[Dynamics AX コネクタ](connector-dynamics-ax.md)を使用できます。
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -372,31 +372,31 @@ Dynamics からデータをコピーするとき、次の Dynamics のデータ�
 
 | Dynamics データ型 | Data Factory の中間データ型 | ソースとしてサポート | シンクとしてサポート |
 |:--- |:--- |:--- |:--- |
-| AttributeTypeCode.BigInt | long | ✓ | ✓ |
+| AttributeTypeCode.BigInt | Long | ✓ | ✓ |
 | AttributeTypeCode.Boolean | Boolean | ✓ | ✓ |
 | AttributeType.Customer | Guid | ✓ | |
 | AttributeType.DateTime | Datetime | ✓ | ✓ |
 | AttributeType.Decimal | Decimal | ✓ | ✓ |
 | AttributeType.Double | Double | ✓ | ✓ |
-| AttributeType.EntityName | string | ✓ | ✓ |
+| AttributeType.EntityName | String | ✓ | ✓ |
 | AttributeType.Integer | Int32 | ✓ | ✓ |
 | AttributeType.Lookup | Guid | ✓ | ✓ (関連付けられている 1 つのターゲットを含む) |
 | AttributeType.ManagedProperty | Boolean | ✓ | |
-| AttributeType.Memo | string | ✓ | ✓ |
+| AttributeType.Memo | String | ✓ | ✓ |
 | AttributeType.Money | Decimal | ✓ | ✓ |
 | AttributeType.Owner | Guid | ✓ | |
 | AttributeType.Picklist | Int32 | ✓ | ✓ |
 | AttributeType.Uniqueidentifier | Guid | ✓ | ✓ |
-| AttributeType.String | string | ✓ | ✓ |
+| AttributeType.String | String | ✓ | ✓ |
 | AttributeType.State | Int32 | ✓ | ✓ |
 | AttributeType.Status | Int32 | ✓ | ✓ |
 
 > [!NOTE]
 > Dynamics データ型の AttributeType.CalendarRules、AttributeType.MultiSelectPicklist および AttributeType.PartyList はサポートされていません。
 
-## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
+## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
+プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

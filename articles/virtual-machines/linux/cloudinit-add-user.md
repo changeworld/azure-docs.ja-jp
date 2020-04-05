@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.openlocfilehash: f1782bfe0c14e3b44703f89ec7f78590c1bb74c5
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969234"
 ---
 # <a name="use-cloud-init-to-add-a-user-to-a-linux-vm-in-azure"></a>Azure で cloud-init を使用してユーザーを Linux VM に追加する

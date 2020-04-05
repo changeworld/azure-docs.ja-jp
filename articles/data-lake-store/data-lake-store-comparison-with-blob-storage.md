@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 7c958c3ed4d6ddaabd87f053005fcfc1eba8c842
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75438716"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Azure Data Lake Storage Gen1 と Azure Blob Storage の比較

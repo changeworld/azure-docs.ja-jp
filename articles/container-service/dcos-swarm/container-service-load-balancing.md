@@ -8,10 +8,10 @@ ms.date: 06/02/2017
 ms.author: rogardle
 ms.custom: mvc
 ms.openlocfilehash: a8f863f16888e6eca2dbc72c5dd612c38edbe46e
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78273375"
 ---
 # <a name="deprecated-load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>(非推奨) Azure Container Service DC/OS クラスター内のコンテナーで負荷分散する

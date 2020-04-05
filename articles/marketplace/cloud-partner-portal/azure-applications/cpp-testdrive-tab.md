@@ -1,19 +1,18 @@
 ---
 title: Azure アプリケーション オファーの体験版 | Azure Marketplace
 description: Azure Marketplace 上の Azure アプリケーション プランの体験版を構成する方法。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: pabutler
-ms.openlocfilehash: 3855c600fe35c37ac15783995551a769e00532be
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 2f35dd69c1f29350049ed8f62dd9cbb0e60a7718
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826132"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80289007"
 ---
 # <a name="azure-applications-test-drive-tab"></a>Azure アプリケーションの [体験版] タブ
 
@@ -58,7 +57,7 @@ ms.locfileid: "73826132"
 |  ---------------   |  ---------------  |
 | **説明\***  |  お客様の体験版でできることについて説明します。 この説明は、基本的な HTML タグを使用して書式設定できます。 たとえば、&lt;p&gt;、&lt;em&gt;、&lt;ul&gt;、&lt;li&gt;、&lt;ol&gt; のほか、見出しが使用できます。                |
 | **[User Manual]\(ユーザー マニュアル\)\***  |  お客様の顧客が体験版を利用する際に使用できるユーザー マニュアルをアップロードします。 このドキュメントは .pdf ファイルでなければなりません。    |
-| **Test Drive Demo Video (体験版のデモ ビデオ)** |  お客様の体験版のビデオ チュートリアル (省略可能)。 顧客は体験版を利用する前にこのビデオを視聴できます。 YouTube または Vimeo にあるビデオの URL を指定します。 **[+ ビデオの追加]** を選択した場合、次の情報を指定するように求められます。<ul><li>名前</li><li>URL</li><li>サムネイル (PNG 形式、533 x 324 ピクセル)</li></ul>  |
+| **Test Drive Demo Video (体験版のデモ ビデオ)** |  お客様の体験版のビデオ チュートリアル (省略可能)。 顧客は体験版を利用する前にこのビデオを視聴できます。 YouTube または Vimeo にあるビデオの URL を指定します。 **[+ ビデオの追加]** を選択した場合、次の情報を指定するように求められます。<ul><li>Name</li><li>URL</li><li>サムネイル (PNG 形式、533 x 324 ピクセル)</li></ul>  |
 | **[インスタンス]\***      | お客様が必要とするインスタンスの数、リージョン、お客様の顧客が体験版を取得できる速さを構成します。 詳細については、「[体験版の発行方法](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive#how-to-publish-a-test-drive)」を参照してください。           |
 | **[Test Drive Duration (hours)]\(体験版の期間 (時間)\)\*** | 時間数を整数で入力してください。 指定できる範囲は 1 から 999 です。 |
 | **[Test Drive ARM Template]\(体験版 ARM テンプレート\)\***     | お客様のアプリの Azure Resource Manager テンプレートが含まれた圧縮 (.zip) ファイルをアップロードします。 詳細については、「[Azure Resource Manager の体験版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)」を参照してください。 |
@@ -72,6 +71,6 @@ ms.locfileid: "73826132"
 すべての必須情報を指定した後、 **[保存]** を選択すれば、体験版の設定は完了です。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [[Marketplace] タブ](./cpp-marketplace-tab.md)

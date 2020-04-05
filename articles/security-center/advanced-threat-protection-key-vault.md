@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: 449096590df6145c9f80dcf2c97726931909a2ae
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77914808"
 ---
 # <a name="threat-protection-for-azure-key-vault-preview"></a>Azure Key Vault 用 Threat Protection (プレビュー)

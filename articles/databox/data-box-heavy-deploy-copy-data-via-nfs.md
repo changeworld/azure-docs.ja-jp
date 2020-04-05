@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 4361cee3d07408c3abb5031d2ab18c15c92c5e0a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595811"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222809"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-heavy-via-nfs"></a>チュートリアル:NFS 経由で Azure Data Box Heavy にデータをコピーする
 
@@ -67,7 +67,7 @@ Linux ホスト コンピューターを使用している場合は、次の手�
 
     ![NFS のクライアント アクセスを構成する 1](media/data-box-deploy-copy-data/nfs-client-access.png)
 
-2. NFS クライアントの IP アドレスを指定して、 **[追加]** をクリックします。 この手順を繰り返すことにより、複数の NFS クライアントに対するアクセスを構成できます。 Click **OK**.
+2. NFS クライアントの IP アドレスを指定して、 **[追加]** をクリックします。 この手順を繰り返すことにより、複数の NFS クライアントに対するアクセスを構成できます。 **[OK]** をクリックします。
 
     ![NFS のクライアント アクセスを構成する 2](media/data-box-deploy-copy-data/nfs-client-access2.png)
 
@@ -151,7 +151,7 @@ Linux ホスト コンピューターを使用している場合は、Robocopy �
    ![ダッシュボードで空き領域と使用済み領域を確認する](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Data Box Heavy に関する次のようなトピックについて説明しました。
 

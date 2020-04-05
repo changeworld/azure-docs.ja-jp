@@ -9,10 +9,10 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: 41a588ddc0c1be8014a84d8fe181013d8566f68d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75457646"
 ---
 # <a name="design-for-querying"></a>クエリに対応した設計
@@ -47,8 +47,8 @@ Table service ソリューションでは、読み取り、書き込み、また
 「[Azure Table Storage の概要](table-storage-overview.md)」の記事では、クエリの設計に直接影響を与える Azure Table service の主な機能の一部について説明します。 ここから、Table service のクエリを設計する際には、次のような一般的なガイドラインが考えられます。 以下の例で使用しているフィルター構文は、Table service REST API の構文です。詳細については、「[Query Entities (エンティティの照会)](https://docs.microsoft.com/rest/api/storageservices/Query-Entities)」をご覧ください。  
 
 * ***ポイント クエリ***は、最も効率的な検索です。大量の参照または短い待機時間が求められる参照に使用することをお勧めします。 このようなクエリでは、**PartitionKey** と **RowKey** 値の両方を指定することでインデックスを使用し、個別のエンティティを非常に効率よく検索することができます。 例: $filter (PartitionKey eq 'Sales') = および (RowKey eq '2')  
-* 2 番目に良い方法は、**PartitionKey** を使用する***範囲クエリ***と、**RowKey** 値の範囲にフィルターをかけ、1つ以上のエンティティを返すというものです。 **PartitionKey** 値は特定のパーティションを識別し、**RowKey** 値はそのパーティション内のエンティティのサブセットを識別します。 例: $filter=PartitionKey eq 'Sales' および RowKey ge 'S' および RowKey lt 'T'  
-* 3 番目に良い方法は、**PartitionKey** を使用し、他のキーを持たないプロパティにフィルターをかけ、1 つ以上のエンティティを返すことが可能な***パーティション スキャン***です。 **PartitionKey** 値は特定のパーティションを識別し、プロパティ値はそのパーティション内のエンティティのサブセットを選択します。 例: $filter = PartitionKey eq '販売'、および LastName eq 'Smith'  
+* 2 番目に良い方法は、***PartitionKey*** を使用する**範囲クエリ**と、**RowKey** 値の範囲にフィルターをかけ、1つ以上のエンティティを返すというものです。 **PartitionKey** 値は特定のパーティションを識別し、**RowKey** 値はそのパーティション内のエンティティのサブセットを識別します。 例: $filter=PartitionKey eq 'Sales' および RowKey ge 'S' および RowKey lt 'T'  
+* 3 番目に良い方法は、***PartitionKey*** を使用し、他のキーを持たないプロパティにフィルターをかけ、1 つ以上のエンティティを返すことが可能な**パーティション スキャン**です。 **PartitionKey** 値は特定のパーティションを識別し、プロパティ値はそのパーティション内のエンティティのサブセットを選択します。 例: $filter = PartitionKey eq '販売'、および LastName eq 'Smith'  
 * ***Table Scan*** に **PartitionKey** は含まれません。また、一致するエンティティのテーブルを構成するパーティションのすべてを検索するため、非常に非効率的です。 フィルターが **RowKey** を使用する / しないにかかわらず、テーブルのスキャンが実行されます。 例: $filter = LastName eq 'Jones'  
 * クエリは複数のエンティティを **PartitionKey** と **RowKey** の順序で並べ替えて返します。 クライアント内でエンティティを再度並べ替えるのを防ぐため、最も一般的な並べ替え順序を定義する **RowKey** を選択します。  
 

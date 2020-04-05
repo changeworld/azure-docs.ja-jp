@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3f087ffe824a198c578f076857cca7fdf0f0a60c
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77498690"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD のカスタム ロールを構成する

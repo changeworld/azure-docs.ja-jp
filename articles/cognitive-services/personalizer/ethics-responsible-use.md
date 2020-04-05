@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: diberry
 ms.openlocfilehash: 11b626c0033814f0886ac76fff0c5d4087a80554
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71720230"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Personalizer の責任ある実装のガイドライン
@@ -50,7 +50,7 @@ Personalizer を実装することは、ご自身のユーザーとビジネス�
 
 コンテンツとユーザー インターフェイスをパーソナル化することを学習するサービスを使用すると、便利です。 それはまた、パーソナル化によって現実の世界にマイナスの副作用が生じるような方法で誤って適用される可能性もあります。これには、ユーザーがコンテンツのパーソナル化に気付いていない場合を含みます。 
 
-マイナスの副作用や透明性の欠如が生じる可能性の高い Personalizer の使用例として、"リワード" が長期的で複雑な多くの要因に依存しているシナリオにおいて、即時リワードまで過度に単純化されたときに、個人にとって好ましくない結果になることがあります。 これらは "結果的" な選択、または損害を及ぼすリスクを含む選択と見なされる傾向にあります。 例: 
+マイナスの副作用や透明性の欠如が生じる可能性の高い Personalizer の使用例として、"リワード" が長期的で複雑な多くの要因に依存しているシナリオにおいて、即時リワードまで過度に単純化されたときに、個人にとって好ましくない結果になることがあります。 これらは "結果的" な選択、または損害を及ぼすリスクを含む選択と見なされる傾向にあります。 次に例を示します。 
 
 
 * **ファイナンス**: リスク要因が、個人が知らない、入手できない、または争うことができないデータに基づいた、ローン、金融、保険商品のオファーをパーソナル化します。 
@@ -201,6 +201,6 @@ Microsoft では、お客様がこれらの責任に基づいて行動するの�
 * [FATML の説明可能なアルゴリズムの原則](https://www.fatml.org/resources/principles-for-accountable-algorithms)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [特徴: アクションとコンテキスト](concepts-features.md).

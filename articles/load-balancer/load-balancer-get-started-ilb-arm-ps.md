@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: da564f8d49675ba0d51c5120768028e9d333e2fd
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76045476"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Azure PowerShell モジュールを使用した内部ロード バランサーの作成

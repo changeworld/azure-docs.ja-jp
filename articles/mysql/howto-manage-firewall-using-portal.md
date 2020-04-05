@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: b02bae528146a3f0c214b7fbb1d234c1a24b174f
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: edd6403ed3d7607eb96bc7c6a603c3fef8a4f99e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74774242"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063546"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>Azure Portal を使用した Azure Database for MySQL ファイアウォール規則の作成と管理
 サーバーレベルのファイアウォール規則を使用して、指定した IP アドレスまたは IP アドレス範囲からの Azure Database for MySQL サーバーへのアクセスを管理できます。 
@@ -55,7 +55,7 @@ Azure のアプリケーションが Azure Database for MySQL サーバーに接
 * 既存の規則を削除するには、省略記号 [...] をクリックして、**削除** をクリックします。 **[保存]** をクリックして変更を保存します。
 
 
-## <a name="next-steps"></a>次の手順
-- 同様に、[Azure CLI を使用して Azure Database for MySQL ファイアウォール規則を作成および管理する](howto-manage-firewall-using-cli.md)スクリプトを作成できます。
-- [Azure portal を使用して、仮想ネットワーク サービス エンドポイントと規則を作成および管理](howto-manage-vnet-using-portal.md)して、サーバーへのアクセスのセキュリティ保護を強化します。
-- Azure Database for MySQL サーバーに接続する方法のヘルプについては、「[Azure Database for MySQL の接続ライブラリ](./concepts-connection-libraries.md)」をご覧ください。
+## <a name="next-steps"></a>次のステップ
+     Similarly, you can script to [Create and manage Azure Database for MySQL firewall rules using Azure CLI](howto-manage-firewall-using-cli.md).
+     Further secure access to your server by [creating and managing Virtual Network service endpoints and rules using the Azure portal](howto-manage-vnet-using-portal.md).
+        For help in connecting to an Azure     atabase for MySQL server, see [Connection libraries for Azure Database for MySQL](./concepts-connection-libraries.md).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        

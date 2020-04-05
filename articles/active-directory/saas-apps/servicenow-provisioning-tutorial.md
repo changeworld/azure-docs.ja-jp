@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.openlocfilehash: 9e93d4b3f1880f2ac56a32a7b85aa6801fb7c14e
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78205106"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために ServiceNow を構成する

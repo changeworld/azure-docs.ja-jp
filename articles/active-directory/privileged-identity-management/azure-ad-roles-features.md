@@ -16,12 +16,12 @@ ms.date: 12/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f7bc881cee362103fc611cbf8a094e07ad50699
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: f5d63577cbdbdf18cb17618bdb5c9e3b5de0e44a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77499041"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225471"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management での Azure AD ロールの管理機能
 
@@ -62,7 +62,7 @@ Microsoft は、以前の API を使用しているすべての顧客に連絡�
 
 ## <a name="powershell-change"></a>PowerShell の変更
 
-Azure AD ロール向けの Privileged Identity Management PowerShell モジュールを使用している顧客の場合、更新により、PowerShell は使用できなくなります。 以前のコマンドレットの代わりに、Azure AD プレビュー PowerShell モジュール内の Privileged Identity Management コマンドレットを使用する必要があります。 [PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17)から Azure AD PowerShell モジュールをインストールします。 このコマンドレットは、Graph API を基にして構築されています。
+Azure AD ロール向けの Privileged Identity Management PowerShell モジュールを使用している顧客の場合、更新により、PowerShell は使用できなくなります。 以前のコマンドレットの代わりに、Azure AD プレビュー PowerShell モジュール内の Privileged Identity Management コマンドレットを使用する必要があります。 [PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17)から Azure AD PowerShell モジュールをインストールします。 これで、[この PowerShell モジュールの PIM 操作のドキュメントとサンプルを確認](powershell-for-azure-ad-roles.md)できます。
 
 ## <a name="next-steps"></a>次のステップ
 

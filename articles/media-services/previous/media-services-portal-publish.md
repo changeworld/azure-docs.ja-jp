@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 5f242018abfb15cea1b76cbcaad00942ec25d78d
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69015080"
 ---
 # <a name="publish-content-in-the-azure-portal"></a>Azure Portal でコンテンツを発行する  
@@ -44,7 +44,7 @@ HLS ストリーミング URL を作成するには、次のように、 *(forma
 
     {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)
 
-Smooth Streaming 資産を再生するためのストリーミング URL を作成するには、次の URL 形式を使用します。
+Smooth Streaming アセットを再生するためのストリーミング URL を作成するには、次の URL 形式を使用します。
 
     {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest
 
@@ -52,7 +52,7 @@ MPEG-DASH ストリーミング URL を作成するには、 *(format=mpd-time-c
 
     {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=mpd-time-csf)
 
-共有アクセス署名 URL の形式は、次のとおりです。
+Shared Access Signature URL の形式は、次のとおりです。
 
     {blob container name}/{asset name}/{file name}/{shared access signature}
 
@@ -70,7 +70,7 @@ MPEG-DASH ストリーミング URL を作成するには、 *(format=mpd-time-c
 
 ### <a name="to-use-the-portal-to-publish-an-asset"></a>ポータルを使用してアセットを発行するには
 1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。
-2. **[設定]**  >  **[資産]** を参照してください。 発行する資産を選択します。
+2. **[設定]**  >  **[アセット]** を参照してください。 発行する資産を選択します。
 3. **[発行]** を選択します。
 4. ロケーターの種類を選択します。
 5. **[追加]** を選択します。
@@ -95,6 +95,6 @@ Azure Portal のコンテンツ プレーヤーでビデオをテストできま
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

@@ -9,10 +9,10 @@ ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: bd08812f83413a997ce655d68d866b145b20dcef
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75912500"
 ---
 ## <a name="extended-iot-scenarios"></a>IoT の拡張シナリオ

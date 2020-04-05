@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: df0b17509dfb11fb18a591c70e9060973459a24c
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73744296"
 ---
 # <a name="content-moderator-rest-samples-in-c"></a>Content Moderator REST サンプル (C#)

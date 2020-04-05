@@ -18,13 +18,13 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: ef5eedaa903480ae670f9bc48d0af89744a99d22
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71213006"
 ---
-# <a name="how-to-send-scheduled-notifications"></a>方法:スケジュール設定された通知を送信する
+# <a name="how-to-send-scheduled-notifications"></a>方法: スケジュール設定された通知の送信
 
 未来のある時点で通知を送信することが必要なシナリオに対して、通知を送信するためのバックエンド コードの簡単なウェイクアップ方法がないような場合、 Standard レベルの通知ハブは、通知を最大 7 日先までスケジュールできる機能をサポートしています。
 
@@ -46,7 +46,7 @@ await hub.CancelNotificationAsync(scheduled.ScheduledNotificationId);
 
 スケジュール設定された、送信可能な通知の数に制限はありません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のチュートリアルを参照してください。
 

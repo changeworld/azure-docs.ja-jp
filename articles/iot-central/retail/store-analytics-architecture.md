@@ -10,10 +10,10 @@ ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: 6c2514bd078cc3feee4bd2802cf314079b824311
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77022122"
 ---
 # <a name="in-store-analytics-architecture"></a>ストア内の分析のアーキテクチャ

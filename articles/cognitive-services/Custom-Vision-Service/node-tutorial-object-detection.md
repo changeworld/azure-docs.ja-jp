@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: areddish
 ms.openlocfilehash: 94013b735f70358d0c49512e6d90cd1d03e78d5f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76705719"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>クイック スタート:Custom Vision Node.js SDK を使用して物体検出プロジェクトを作成する

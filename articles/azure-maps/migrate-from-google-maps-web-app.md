@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: bdbf2a975cbdc3d06745b9375c1e6f8e751ddfd6
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77914090"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>Google Maps から Web アプリを移行する

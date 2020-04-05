@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: spelluru
 ms.openlocfilehash: bdb1896f8a40c6de21ae76b536bfccec316341cd
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69992447"
 ---
 # <a name="authorizing-access-to-event-hubs-resources-using-shared-access-signatures"></a>Shared Access Signature を使用する Event Hubs リソースへのアクセスの承認
@@ -66,7 +66,7 @@ Shared Access Signature の使用に関する次の推奨事項に従うと、�
 ## <a name="conclusion"></a>まとめ
 Shared Access Signature は、クライアントに Event Hubs リソースへの制限付きアクセス許可を提供するのに有用です。 これらは、Azure Event Hubs を使用するあらゆるアプリケーションのセキュリティ モデルの重要な部分です。 この記事に示したベスト プラクティスに従うと、SAS を使用して、アプリケーションのセキュリティを損なうことなく、リソースへのアクセスの柔軟性を高めることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次の関連記事を参照してください。 
 
 - [Azure Active Directory を使用してアプリケーションから Azure Event Hubs への要求を認証する](authenticate-application.md)

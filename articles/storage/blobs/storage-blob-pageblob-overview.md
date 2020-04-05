@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.openlocfilehash: 060e1d01e5f078bad9852ae35d0af9142192a7b6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68985614"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure ページ BLOB の概要

@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 06/05/2019
 ms.author: lbosq
 ms.openlocfilehash: d9a4e336f582e866fd057f6c281f892ce07b34fc
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75941843"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API の一般的な問題のトラブルシューティング

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 52d219a94676e0f1ce4ceac31b0b50c9d36665ba
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 0261ff7ca8a60dc5fd986a64b9944f9cb9f101e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770579"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062499"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>Azure portal で低速クエリ ログを構成してアクセスする
 
@@ -23,7 +23,7 @@ Azure portal から [Azure Database for MySQL の低速クエリ ログ](concept
 ## <a name="configure-logging"></a>ログの構成
 MySQL の低速クエリ ログへのアクセスを構成します。 
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 2. Azure Database for MySQL サーバーを選択します。
 
@@ -43,7 +43,7 @@ MySQL の低速クエリ ログへのアクセスを構成します。
 ## <a name="view-list-and-download-logs"></a>リストの表示とログのダウンロード
 ログ記録が開始された後、使用可能な低速クエリ ログの一覧を表示したり、個々のログ ファイルをダウンロードしたりすることができます。
 
-1. Azure Portal を開きます。
+1. Azure portal を開きます。
 
 2. Azure Database for MySQL サーバーを選択します。
 
@@ -78,7 +78,7 @@ MySQL の低速クエリ ログへのアクセスを構成します。
 
 1. 構成したデータ シンクを調べて低速クエリ ログにアクセスします。 ログが表示されるまでに最大で 10 分かかる可能性があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [CLI での低速クエリ ログへのアクセス](howto-configure-server-logs-in-cli.md)に関する記事を参照して、プログラムで低速クエリ ログをダウンロードする方法について学習します。
 - Azure Database for MySQL の[低速クエリ ログ](concepts-server-logs.md)の詳細について学習します。
 - パラメーターの定義と MySQL のログ記録の詳細については、[ログ](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)に関する MySQL のドキュメントを参照してください。

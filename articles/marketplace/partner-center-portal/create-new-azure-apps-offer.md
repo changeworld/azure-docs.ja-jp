@@ -1,19 +1,18 @@
 ---
 title: 商業マーケットプレースで新しい Azure アプリ オファーを作成する
 description: Microsoft パートナー センターの商業マーケットプレース ポータルを使用して、Azure Marketplace、AppSource、クラウド ソリューション プロバイダー (CSP) プログラムでリスト登録または販売を行うために新しい Azure アプリ オファーを作成する方法。
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 69d7bc81f5adc4797be86f946fdb656b4b6cc682
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 0ff1bbd976273a7d0cbfb22effebdf45c84d2f41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760900"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277241"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure アプリケーション オファーを作成する
 
@@ -169,7 +168,7 @@ Azure アプリケーション オファーを作成する前に、まず、[パ
 > [!NOTE]
 > オファー登録情報のコンテンツ (説明、ドキュメント、スクリーンショット、使用条件など) は、オファーの説明が「このアプリケーションは、[英語以外の言語] でのみ利用可能です。」という文言で始まっていれば英語である必要はありません。 また、オファー登録情報のコンテンツで使用されている言語以外の言語でコンテンツを提供するための*役に立つリンクの URL* を提供することもできます。
 
-### <a name="name"></a>Name
+### <a name="name"></a>名前
 
 ここで入力する名前は、オファー登録情報のタイトルとして顧客に表示されます。 このフィールドには、オファーの作成時に **[オファーの別名]** に入力したテキストが事前に設定されていますが、この値は変更できます。 この名前は商標の場合もあります (商標または著作権マークを含めることもできます)。 名前は 50 文字以下にする必要があります。絵文字を含めることはできません。
 
@@ -309,7 +308,7 @@ Azure Government サービスでは、FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 
 
 **[プランのリスト]** タブには、プラン固有の一覧情報が表示されます。この情報は、同じオファーの異なるプラン間で異なる可能性があります。
 
-### <a name="name"></a>Name
+### <a name="name"></a>名前
 
 作成時にプランに割り当てた名前に基づいて事前設定されます。  この名前は、マーケットプレースに表示されるこの "ソフトウェア プラン" のタイトルとして表示されます。  最大で 100 文字まで使用できます。
 

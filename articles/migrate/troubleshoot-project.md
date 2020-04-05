@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/01/2020
 ms.openlocfilehash: 3b8c2f6ec33965317d2aaa23a36b6becff11a54a
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75722128"
 ---
 # <a name="troubleshoot-azure-migrate-projects"></a>Azure Migrate プロジェクトのトラブルシューティング

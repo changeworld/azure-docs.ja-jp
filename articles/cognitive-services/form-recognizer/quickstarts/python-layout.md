@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
 ms.openlocfilehash: 342ae7e42c85ad661c04ba4ebb6629673f4af4dc
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77482278"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>クイック スタート:Python で Form Recognizer の REST API を使用してテキストとレイアウト情報を抽出する

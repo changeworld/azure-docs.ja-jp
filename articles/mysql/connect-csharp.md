@@ -7,15 +7,15 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: csharp
 ms.topic: quickstart
-ms.date: 12/02/2019
-ms.openlocfilehash: 2f740d21c7fb59a05fa1df4a0b3b1385cf2f0831
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 715be66e1b7d1c9270600dd3f11ee16d9aa1885d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770783"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067986"
 ---
-# <a name="azure-database-for-mysql-use-net-c-to-connect-and-query-data"></a>Azure Database for MySQL: .NET (C#) を使った接続とデータの照会
+# <a name="azure-database-for-mysql-use-net-c-to-connect-and-query-data"></a>Azure Database for MySQL: .NET (C#) を使用した接続とデータの照会
 このクイックスタートでは、C# アプリケーションを使用して Azure Database for MySQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 このトピックでは、C# を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであるユーザーを想定しています。
 
 ## <a name="prerequisites"></a>前提条件
@@ -47,7 +47,7 @@ Azure Database for MySQL に接続するために必要な接続情報を取得�
  ![Azure Database for MySQL サーバー名](./media/connect-csharp/1_server-overview-name-login.png)
 
 ## <a name="connect-create-table-and-insert-data"></a>接続、テーブルの作成、データの挿入
-接続を確立し、SQL ステートメントの `CREATE TABLE` と `INSERT INTO` を使用してデータを読み込むには、次のコードを使用します。 このコードでは、[OpenAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) メソッドで `MySqlConnection` クラスを使用して、MySQL への接続を確立します。 その後、[CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand) メソッドを使用して、CommandText プロパティを設定し、[ExecuteNonQueryAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executenonqueryasync) メソッドを呼び出して、データベース コマンドを実行します。 
+接続を確立し、SQL ステートメントの `CREATE TABLE` と `INSERT INTO` を使用してデータを読み込むには、次のコードを使用します。 このコードでは、`MySqlConnection`OpenAsync()[ メソッドで ](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) クラスを使用して、MySQL への接続を確立します。 その後、[CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand) メソッドを使用して、CommandText プロパティを設定し、[ExecuteNonQueryAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executenonqueryasync) メソッドを呼び出して、データベース コマンドを実行します。 
 
 `Server`、`Database`、`UserID`、`Password` の各パラメーターの値は、サーバーとデータベースを作成するときに指定した値に置き換えてください。 
 
@@ -112,7 +112,7 @@ namespace AzureMySqlExample
 
 ## <a name="read-data"></a>データの読み取り
 
-接続を確立し、`SELECT` SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 このコードでは、[OpenAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) メソッドで `MySqlConnection` クラスを使用して、MySQL への接続を確立します。 その後、[CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand) メソッドと [ExecuteReaderAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executereaderasync) メソッドを使用して、データベース コマンドを実行します。 次に、[ReadAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbdatareader.readasync#System_Data_Common_DbDataReader_ReadAsync) を使用して、結果のレコードに進みます。 GetInt32 と GetString を使用して、レコード内の値を解析します。
+接続を確立し、`SELECT` SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 このコードでは、`MySqlConnection`OpenAsync()[ メソッドで ](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) クラスを使用して、MySQL への接続を確立します。 その後、[CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand) メソッドと [ExecuteReaderAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executereaderasync) メソッドを使用して、データベース コマンドを実行します。 次に、[ReadAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbdatareader.readasync#System_Data_Common_DbDataReader_ReadAsync) を使用して、結果のレコードに進みます。 GetInt32 と GetString を使用して、レコード内の値を解析します。
 
 `Server`、`Database`、`UserID`、`Password` の各パラメーターの値は、サーバーとデータベースを作成するときに指定した値に置き換えてください。 
 
@@ -169,7 +169,7 @@ namespace AzureMySqlExample
 ```
 
 ## <a name="update-data"></a>データの更新
-接続を確立し、`UPDATE` SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 このコードでは、[OpenAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) メソッドで `MySqlConnection` クラスを使用して、MySQL への接続を確立します。 その後、[CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand) メソッドを使用して、CommandText プロパティを設定し、[ExecuteNonQueryAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executenonqueryasync) メソッドを呼び出して、データベース コマンドを実行します。 
+接続を確立し、`UPDATE` SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 このコードでは、`MySqlConnection`OpenAsync()[ メソッドで ](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) クラスを使用して、MySQL への接続を確立します。 その後、[CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand) メソッドを使用して、CommandText プロパティを設定し、[ExecuteNonQueryAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executenonqueryasync) メソッドを呼び出して、データベース コマンドを実行します。 
 
 `Server`、`Database`、`UserID`、`Password` の各パラメーターの値は、サーバーとデータベースを作成するときに指定した値に置き換えてください。 
 
@@ -221,7 +221,7 @@ namespace AzureMySqlExample
 ## <a name="delete-data"></a>データの削除
 接続を確立し、`DELETE` SQL ステートメントを使用してデータを削除するには、次のコードを使用します。 
 
-このコードでは、[OpenAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) メソッドで `MySqlConnection` クラスを使用して、MySQL への接続を確立します。 その後、[CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand) メソッドを使用して、CommandText プロパティを設定し、[ExecuteNonQueryAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executenonqueryasync) メソッドを呼び出して、データベース コマンドを実行します。 
+このコードでは、`MySqlConnection`OpenAsync()[ メソッドで ](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) クラスを使用して、MySQL への接続を確立します。 その後、[CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand) メソッドを使用して、CommandText プロパティを設定し、[ExecuteNonQueryAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executenonqueryasync) メソッドを呼び出して、データベース コマンドを実行します。 
 
 `Server`、`Database`、`UserID`、`Password` の各パラメーターの値は、サーバーとデータベースを作成するときに指定した値に置き換えてください。 
 
@@ -269,6 +269,6 @@ namespace AzureMySqlExample
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [ダンプと復元を使用した Azure Database for MySQL への MySQL データベースの移行](concepts-migrate-dump-restore.md)

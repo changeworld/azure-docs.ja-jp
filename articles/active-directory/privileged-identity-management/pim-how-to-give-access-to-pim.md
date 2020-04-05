@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7424e92f8520d13137b6ac8787523095058a005f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74022109"
 ---
 # <a name="grant-access-to-other-administrators-to-manage-privileged-identity-management"></a>Privileged Identity Management を管理するために、他の管理者にアクセス権を付与する
@@ -32,7 +32,7 @@ ms.locfileid: "74022109"
 
 ## <a name="grant-access-to-manage-pim"></a>PIM を管理するアクセス権を付与する
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 1. Azure AD で **[Privileged Identity Management]** を開きます。
 
@@ -70,7 +70,7 @@ ms.locfileid: "74022109"
 
 特権ロール管理者ロールからユーザーを削除する際は、割り当てられているユーザーの人数が削除後も少なくとも 2 人は存在するように、必ず事前に確認してください。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 
@@ -86,6 +86,6 @@ ms.locfileid: "74022109"
 
 1. ロールからメンバーを削除するかどうかを確認するメッセージが表示されたら、 **[はい]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Privileged Identity Management の使用を開始する](pim-getting-started.md)

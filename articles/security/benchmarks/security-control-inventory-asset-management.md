@@ -9,10 +9,10 @@ ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.openlocfilehash: 2f24012a69a7673426644a8ded6162cd1021938e
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75930056"
 ---
 # <a name="security-control-inventory-and-asset-management"></a>セキュリティ コントロールインベントリと資産の管理

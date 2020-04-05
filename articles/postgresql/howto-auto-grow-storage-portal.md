@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/29/2019
 ms.openlocfilehash: 5e4f9d68d02edf456394d4ce10b7b6af5f8643d9
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74769236"
 ---
 # <a name="auto-grow-storage-using-the-azure-portal-in-azure-database-for-postgresql---single-server"></a>Azure portal を使用して Azure Database for PostgreSQL でストレージを自動拡張する - 単一サーバー
@@ -36,10 +36,10 @@ PostgreSQL サーバー ストレージの自動拡張を設定するには、�
 
 4. **[OK]** をクリックして変更を保存します。
 
-5. 通知により、自動拡張の有効化に成功したことが確認できます。
+5. 自動拡張が正常に有効化されたことを確認する通知が表示されます。
 
     ![Azure Database for PostgreSQL - 自動拡張の成功](./media/howto-auto-grow-storage-portal/5-auto-grow-successful.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [メトリックに関するアラートを作成する方法](howto-alert-on-metric.md)について学習します。

@@ -9,6 +9,8 @@
           href: review-customer-agreement-bill.md
         - name: Microsoft Partner Agreement の請求書を確認する
           href: review-partner-agreement-bill.md
+        - name: Enterprise Agreement の請求書の確認
+          href: review-enterprise-agreement-bill.md
     - name: 概念
       items:
         - name: 個々のサブスクリプションの使用状況に関する用語

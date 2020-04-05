@@ -5,16 +5,52 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 10/17/2019
+ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 09fe8396b6f0033a2c01d1ef056060a855b23d0a
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: ad821036047dcf46821b2b2722e3dd17f8e318c2
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76761441"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80386121"
 ---
+### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>ユーザーは、Azure Virtual WAN を使用するために、SD-WAN/VPN デバイスを利用したハブとスポークを用意する必要がありますか。
+
+Virtual WAN では、サイト/サイト間 VPN 接続、ユーザー/P2S 接続、ExpressRoute 接続、Virtual Network 接続、VPN ExpressRoute 相互接続、VNET 間の推移的な接続、一元化されたルーティング、Azure ファイアウォールとファイアウォール マネージャーのセキュリティ、監視、ExpressRoute 暗号化など、多数の機能が 1 つの画面に組み込まれています。 Virtual WAN の利用を開始するために、これらのすべてのユース ケースを用意する必要はありません。 1 つのユース ケースのみで利用を開始できます。 Virtual WAN アーキテクチャは、スケールとパフォーマンスが組み込まれたハブ アンド スポーク アーキテクチャで、ブランチ (VPN/SD-WAN デバイス)、ユーザー (Azure VPN クライアント、openVPN、または IKEv2 クライアント)、ExpressRoute 回線、仮想ネットワークが仮想ハブのスポークとして機能します。 Standard Virtual WAN ではすべてのハブがフル メッシュで接続されるため、ユーザーは Any-to-Any (任意のスポーク) 接続に Microsoft バックボーンを簡単に使用できます。 SD-WAN/VPN デバイスを利用したハブとスポークの場合、ユーザーは Azure Virtual WAN ポータル内で手動で設定するか、Virtual WAN パートナーのCPE (SD-WAN/VPN) を使用して Azure への接続を設定することができます。 Virtual WAN パートナーは、デバイス情報を Azure にエクスポートし、Azure 構成をダウンロードして、Azure Virtual WAN ハブへの接続を確立できる、接続の自動化を提供しています。 ポイント対サイト/ユーザー VPN 接続の場合、[Azure VPN クライアント](https://go.microsoft.com/fwlink/?linkid=2117554)、OpenVPN、または IKEv2 クライアントがサポートされています。 
+
+### <a name="what-client-does-the-azure-virtual-wan-user-vpn-point-to-site-support"></a>Azure Virtual WAN ユーザー VPN (ポイント対サイト) ではどのクライアントがサポートされていますか。
+
+Virtual WAN では [Azure VPN クライアント](https://go.microsoft.com/fwlink/?linkid=2117554)、OpenVPN クライアント、または任意の IKEv2 クライアントがサポートされています。 Azure VPN クライアントでは、Azure AD 認証がサポートされています。少なくとも Windows 10 クライアント OS バージョン 17763.0 以降が必要です。  OpenVPN クライアントでは、証明書ベースの認証をサポートできます。 ゲートウェイで証明書ベースの認証を選択すると、ご使用のデバイスにダウンロードできる .ovpn ファイルが表示されます。 IKEv2 では、証明書と RADIUS 認証の両方がサポートされています。 
+
+### <a name="for-user-vpn-point-to-site--why-is-the-p2s-client-pool-split-into-two-routes"></a>ユーザー VPN (ポイント対サイト) の場合、P2S クライアント プールが 2 つのルートに分割されるのはなぜですか。
+
+各ゲートウェイには 2 つのインスタンスがあり、接続されたクライアントに対して各ゲートウェイ インスタンスが個別にクライアント IP を割り当てることができ、仮想ネットワークからのトラフィックを適切なゲート ウェイ インスタンスに戻るようルーティングしてゲートウェイ インスタンス間のホップを避けるために分割が行われます。
+
+### <a name="how-do-i-add-dns-servers-for-p2s-clients"></a>P2S クライアント用の DNS サーバーを追加するにはどうすればよいですか。
+
+P2S クライアント用の DNS サーバーを追加するには、2つのオプションがあります。
+
+1. Microsoft にサポート チケットを申請し、ハブに DNS サーバーを追加してもらいます
+2. または、Windows 10 向けに Azure VPN クライアントを使用している場合は、ダウンロードしたプロファイル XML ファイルを変更して、 **\<dnsservers>\<dnsserver> \</dnsserver>\</dnsservers>** タグを追加してからインポートできます。
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <dnsservers>
+        <dnsserver>x.x.x.x</dnsserver>
+        <dnsserver>y.y.y.y</dnsserver>
+    </dnsservers>
+    
+</clientconfig>
+</azvpnprofile>
+```
+
+### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>ユーザー VPN (ポイント対サイト) の場合、サポートされているクライアントの数はいくつですか。
+
+各ユーザー VPN P2S ゲートウェイには 2 つのインスタンスがあり、各インスタンスではスケール ユニットの変更に応じて特定のユーザー数までサポートします。 スケール ユニット 1 から 3 では、500 接続がサポートされます。スケール ユニット 4 から 6 では、1,000 接続がサポートされます。スケール ユニット 7 から 10 では、5,000 接続がサポートされます。スケール ユニット 11 以上では最大 10,000 接続がサポートされます。 たとえば、ユーザーが 1 スケール ユニットを選択したとします。 各スケール ユニットはデプロイされた 1 つのアクティブ/アクティブ ゲートウェイを意味し、(この例では 2 つある) インスタンスのそれぞれで最大 500 接続がサポートされます。 このスケール ユニットでは、ゲートウェイあたり 500 接続 x 2 となるからといって、500 ではなく 1,000 を見込んで計画を立てるわけにはいきません。インスタンスがサービスを提供する必要がある場合に、推奨接続数を超えると、余剰分の 500 の接続が中断される可能性があるためです。
+
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Azure 仮想ネットワーク ゲートウェイ (VPN ゲートウェイ) と Azure Virtual WAN VPN ゲートウェイの違いは何ですか。
 
 Virtual WAN は、大規模なサイト間接続を提供し、スループット、スケーラビリティ、使いやすさを考慮して構築されています。 Virtual WAN の VPN ゲートウェイにサイトを接続するとき、そのゲートウェイは、"VPN" タイプのゲートウェイを使用する通常の仮想ネットワーク ゲートウェイとは異なります。 同様に、ExpressRoute 回線を Virtual WAN ハブに接続するとき、ExpressRoute ゲートウェイには、"ExpressRoute" タイプのゲートウェイを使用する通常の仮想ネットワーク ゲートウェイとは異なるリソースが使用されます。 Virtual WAN は、VPN と ExpressRoute のどちらについても、最大 20 Gbps の総スループットをサポートします。 また、CPE 支店デバイス パートナーのエコシステムとの接続に関して、Virtual WAN は自動化に対応しています。 CPE 支店デバイスには自動化機能が組み込まれており、Azure Virtual WAN に対して自動的にプロビジョニングされ、接続されます。 これらのデバイスは、拡大を続ける SD-WAN および VPN パートナーのエコシステムから利用できます。 [推奨されるパートナーの一覧](../articles/virtual-wan/virtual-wan-locations-partners.md)を参照してください。

@@ -12,10 +12,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 09/12/2019
 ms.openlocfilehash: 9f115d51657993562642391a235de79420aa434a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823378"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance の仮想ネットワークを作成する
@@ -41,7 +41,7 @@ Azure SQL Database Managed Instance は、Azure [仮想ネットワーク](../vi
 
 仮想ネットワークの作成と構成を行う最も簡単な方法は、Azure Resource Manager のデプロイ テンプレートを使用することです。
 
-1. Azure ポータルにサインインします。
+1. Azure portal にサインインします。
 
 2. **[Deploy to Azure]\(Azure にデプロイ\)** を選択します。
 
@@ -58,7 +58,7 @@ Azure SQL Database Managed Instance は、Azure [仮想ネットワーク](../vi
 
    仮想ネットワークとサブネットの名前を変更することや、ネットワーク リソースに関連付けられた IP 範囲を調整することができます。 **[購入]** ボタンを選択すると、このフォームにより環境が作成および構成されます。 2 つのサブネットを必要としない場合は、既定のサブネットを削除できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 概要については、[マネージド インスタンス](sql-database-managed-instance.md)に関するページを参照してください。
 - [Managed Instance の接続アーキテクチャ](sql-database-managed-instance-connectivity-architecture.md)について確認します。

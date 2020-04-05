@@ -1,22 +1,14 @@
 ---
 title: チュートリアル:リスト エンティティ - LUIS
-titleSuffix: Azure Cognitive Services
 description: 事前に定義された項目の一覧に一致するデータを取得します。 一覧の各項目には、同様に完全に一致するシノニムを含めることができます。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 056c64657f42d56879928f518598206d45493f60
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/12/2020
+ms.openlocfilehash: 1cfeccbd54e8ef8ec315d53fc7a766760c92a0d1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447782"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "79297409"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance-with-list-entity"></a>チュートリアル:リスト エンティティを使って発話から完全一致のテキスト データを取得する
 
@@ -42,7 +34,7 @@ ms.locfileid: "75447782"
 
 * データ値が既知のセットである。
 * セットがこのエンティティ型の最大 LUIS [境界](luis-boundaries.md)を超えていない。
-* 発話内のテキストがシノニムまたは正規名に完全に一致している。 LUIS では、完全なテキストの一致以外にリストは使用されません。 語幹抽出、複数形、その他のバリエーションは、リスト エンティティだけでは解決されません。 バリエーションを管理するには、オプションのテキスト構文で[パターン](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance)を使用することを検討します。
+* 発話内のテキストがシノニムまたは正規名に大文字と小文字が区別されず一致している。 LUIS では、この一致以外にリストは使用しません。 語幹抽出、複数形、その他のバリエーションは、リスト エンティティだけでは解決されません。 バリエーションを管理するには、オプションのテキスト構文で[パターン](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance)を使用することを検討します。
 
 > [!CAUTION]
 > リスト エンティティとフレーズ リストを記述子とする機械学習済みエンティティのどちらが必要であるかがわからない場合には、柔軟性の点で優れた後者を使用することをお勧めします。 この方法なら、LUIS が抽出対象とするデータの値を学習したり、拡張したりすることができます。

@@ -15,10 +15,10 @@ ms.date: 06/12/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: afd9599dd1e396dea6975c397688e4b97371fd6d
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593931"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Azure CDN エンドポイントの作成
@@ -101,10 +101,10 @@ Azure アカウントを使用して [Azure Portal](https://portal.azure.com) �
    
     エンドポイントの構成がポイント オブジェクト プレゼンス (POP) サーバーに反映される前に CDN のドメイン名を利用しようとすると、HTTP 404 応答状態が表示されることがあります。 エンドポイントを作成してから数時間が経過しても 404 応答状態が返される場合は、「[404 状態コードを返す Azure CDN エンドポイントのトラブルシューティング](cdn-troubleshoot-endpoint.md)」を参照してください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 不要になったときにエンドポイントを削除するには、そのエンドポイントを選択してから、 **[削除]** を選択します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 カスタム ドメインについて学習するには、CDN エンドポイントにカスタム ドメインを追加するためのチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]

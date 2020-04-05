@@ -14,11 +14,11 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b8f44e9a1e43da2b9ce6c817898c1722fba715c4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978974"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230455"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する
 
@@ -57,7 +57,7 @@ Azure サブスクリプションには、Azure Active Directory (Azure AD) と�
 
 - Azure クラウド サービス プロバイダー (CSP) サブスクリプション (MS-AZR-0145P、MS-AZR-0146P、MS-AZR-159P)、Microsoft 内部サブスクリプション (MS-AZR-0015P)、Microsoft Imagine サブスクリプション (MS-AZR-0144P) を使用していないことを確認します。
 
-## サブスクリプションをディレクトリに関連付ける<a name="to-associate-an-existing-subscription-to-your-azure-ad-directory"></a>
+## <a name="associate-a-subscription-to-a-directory"></a>サブスクリプションをディレクトリに関連付ける<a name="to-associate-an-existing-subscription-to-your-azure-ad-directory"></a>
 
 既存のサブスクリプションを Azure AD ディレクトリに関連付けるには、次の手順に従います。
 

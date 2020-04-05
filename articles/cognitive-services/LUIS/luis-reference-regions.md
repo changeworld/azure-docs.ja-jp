@@ -3,12 +3,12 @@ title: 公開リージョンとエンドポイント - LUIS
 description: Azure portal で指定するリージョンは、LUIS アプリを発行する場所と同じであり、この同じリージョンに対してエンドポイント URL が生成されます。
 ms.topic: reference
 ms.date: 11/19/2019
-ms.openlocfilehash: 097f3078b54b014dc646d144f3532e20236a9e4f
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: a7709d15a51637772d7a4775cd71c307dc21c52b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273406"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80292081"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>作成と公開のリージョンと関連付けられているキー
 
@@ -51,10 +51,10 @@ ms.locfileid: "78273406"
 
  グローバル リージョン | オーサリング API リージョンとオーサリング Web サイト| 公開およびクエリ実行リージョン<br>`API region name`   |  エンドポイント URL 形式   |
 |-----|------|------|------|
-| [ヨーロッパ](#publishing-to-europe)| `westeurope`<br>[eu.luis.ai][eu.luis.ai]| フランス中部<br>`francecentral`     | https://francecentral.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
-| [ヨーロッパ](#publishing-to-europe)| `westeurope`<br>[eu.luis.ai][eu.luis.ai]| 北ヨーロッパ<br>`northeurope`     | https://northeurope.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
-| [ヨーロッパ](#publishing-to-europe) | `westeurope`<br>[eu.luis.ai][eu.luis.ai]| 西ヨーロッパ<br>`westeurope`    |  https://westeurope.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
-| [ヨーロッパ](#publishing-to-europe) | `westeurope`<br>[eu.luis.ai][eu.luis.ai]| 英国南部<br>`uksouth`    |  https://uksouth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
+| [ヨーロッパ](#publishing-to-europe)| `westeurope`<br>[eu.luis.ai][eu.luis.ai]| フランス中部<br>`francecentral`     | `https://francecentral.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
+| [ヨーロッパ](#publishing-to-europe)| `westeurope`<br>[eu.luis.ai][eu.luis.ai]| 北ヨーロッパ<br>`northeurope`     | `https://northeurope.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
+| [ヨーロッパ](#publishing-to-europe) | `westeurope`<br>[eu.luis.ai][eu.luis.ai]| 西ヨーロッパ<br>`westeurope`    |  `https://westeurope.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
+| [ヨーロッパ](#publishing-to-europe) | `westeurope`<br>[eu.luis.ai][eu.luis.ai]| 英国南部<br>`uksouth`    |  `https://uksouth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
 
 ## <a name="publishing-to-australia"></a>オーストラリアへの公開
 
@@ -64,7 +64,7 @@ ms.locfileid: "78273406"
 
  グローバル リージョン | オーサリング API リージョンとオーサリング Web サイト| 公開およびクエリ実行リージョン<br>`API region name`   |  エンドポイント URL 形式   |
 |-----|------|------|------|
-| [オーストラリア](#publishing-to-australia) | `australiaeast`<br>[au.luis.ai][au.luis.ai]| オーストラリア東部<br>`australiaeast`     |  https://australiaeast.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
+| [オーストラリア](#publishing-to-australia) | `australiaeast`<br>[au.luis.ai][au.luis.ai]| オーストラリア東部<br>`australiaeast`     |  `https://australiaeast.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
 
 ## <a name="publishing-to-other-regions"></a>他のリージョンへの公開
 
@@ -74,23 +74,23 @@ ms.locfileid: "78273406"
 
  グローバル リージョン | オーサリング API リージョンとオーサリング Web サイト| 公開およびクエリ実行リージョン<br>`API region name`   |  エンドポイント URL 形式   |
 |-----|------|------|------|
-| アフリカ | `westus`<br>[www.luis.ai][www.luis.ai]| 南アフリカ北部<br>`southafricanorth` |  https://southafricanorth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
-| アジア | `westus`<br>[www.luis.ai][www.luis.ai]| インド中部<br>`centralindia` |  https://centralindia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
-| アジア | `westus`<br>[www.luis.ai][www.luis.ai]| 東アジア<br>`eastasia`     |  https://eastasia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
-| アジア | `westus`<br>[www.luis.ai][www.luis.ai]| 東日本<br>`japaneast`     |   https://japaneast.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
-| アジア | `westus`<br>[www.luis.ai][www.luis.ai]| 西日本<br>`japanwest`     |   https://japanwest.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
-| アジア | `westus`<br>[www.luis.ai][www.luis.ai]| 韓国中部<br>`koreacentral`     |   https://koreacentral.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
-| アジア | `westus`<br>[www.luis.ai][www.luis.ai]| 東南アジア<br>`southeastasia`     |   https://southeastasia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
-| 北米 |`westus`<br>[www.luis.ai][www.luis.ai] | カナダ中部<br>`canadacentral`     |   https://canadacentral.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
-| 北米 |`westus`<br>[www.luis.ai][www.luis.ai] | 米国中部<br>`centralus`     |   https://centralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
-| 北米 |`westus`<br>[www.luis.ai][www.luis.ai] | 米国東部<br>`eastus`      |  https://eastus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
-| 北米 | `westus`<br>[www.luis.ai][www.luis.ai] | 米国東部 2<br>`eastus2`     |  https://eastus2.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
-| 北米 | `westus`<br>[www.luis.ai][www.luis.ai] | 米国中北部<br>`northcentralus`  |  https://northcentralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
-| 北米 | `westus`<br>[www.luis.ai][www.luis.ai] | 米国中南部<br>`southcentralus`  |  https://southcentralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
-| 北米 |`westus`<br>[www.luis.ai][www.luis.ai] | 米国中西部<br>`westcentralus`    |  https://westcentralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
-| 北米 | `westus`<br>[www.luis.ai][www.luis.ai] | 米国西部<br>`westus`  |   https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY  |
-| 北米 |`westus`<br>[www.luis.ai][www.luis.ai] | 米国西部 2<br>`westus2`    |  https://westus2.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY  |
-| 南アメリカ | `westus`<br>[www.luis.ai][www.luis.ai] | ブラジル南部<br>`brazilsouth`    |  https://brazilsouth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
+| アフリカ | `westus`<br>[www.luis.ai][www.luis.ai]| 南アフリカ北部<br>`southafricanorth` |  `https://southafricanorth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
+| アジア | `westus`<br>[www.luis.ai][www.luis.ai]| インド中部<br>`centralindia` |  `https://centralindia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
+| アジア | `westus`<br>[www.luis.ai][www.luis.ai]| 東アジア<br>`eastasia`     |  `https://eastasia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
+| アジア | `westus`<br>[www.luis.ai][www.luis.ai]| 東日本<br>`japaneast`     |   `https://japaneast.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
+| アジア | `westus`<br>[www.luis.ai][www.luis.ai]| 西日本<br>`japanwest`     |   `https://japanwest.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
+| アジア | `westus`<br>[www.luis.ai][www.luis.ai]| 韓国中部<br>`koreacentral`     |   `https://koreacentral.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
+| アジア | `westus`<br>[www.luis.ai][www.luis.ai]| 東南アジア<br>`southeastasia`     |   `https://southeastasia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
+| 北米 |`westus`<br>[www.luis.ai][www.luis.ai] | カナダ中部<br>`canadacentral`     |   `https://canadacentral.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
+| 北米 |`westus`<br>[www.luis.ai][www.luis.ai] | 米国中部<br>`centralus`     |   `https://centralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
+| 北米 |`westus`<br>[www.luis.ai][www.luis.ai] | East US<br>`eastus`      |  `https://eastus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
+| 北米 | `westus`<br>[www.luis.ai][www.luis.ai] | 米国東部 2<br>`eastus2`     |  `https://eastus2.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
+| 北米 | `westus`<br>[www.luis.ai][www.luis.ai] | 米国中北部<br>`northcentralus`  |  `https://northcentralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
+| 北米 | `westus`<br>[www.luis.ai][www.luis.ai] | 米国中南部<br>`southcentralus`  |  `https://southcentralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
+| 北米 |`westus`<br>[www.luis.ai][www.luis.ai] | 米国中西部<br>`westcentralus`    |  `https://westcentralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
+| 北米 | `westus`<br>[www.luis.ai][www.luis.ai] | 米国西部<br>`westus`  |   `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`  |
+| 北米 |`westus`<br>[www.luis.ai][www.luis.ai] | 米国西部 2<br>`westus2`    |  `https://westus2.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`  |
+| 南アメリカ | `westus`<br>[www.luis.ai][www.luis.ai] | ブラジル南部<br>`brazilsouth`    |  `https://brazilsouth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
 
 ## <a name="endpoints"></a>エンドポイント
 

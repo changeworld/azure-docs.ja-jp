@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/05/2019
 ms.author: lbosq
-ms.openlocfilehash: 7ab259886409610fc89c35f4c96c9babb977b44d
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: e6456c79dbce1f8bb874ce4c88b932e592235a82
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77061829"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80244428"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>クイック スタート:Azure Cosmos DB Gremlin API アカウントを使用して Node.js アプリケーションをビルドする
 
@@ -169,7 +169,7 @@ GitHub から Gremlin API アプリの複製を作成し、接続文字列を設
 ```javascript
 var config = {}
 
-// Note that this must not have HTTPS or the port number
+// Note that this must include the protocol (HTTPS:// for .NET SDK URI or wss:// for Gremlin Endpoint) and the port number
 config.endpoint = "https://testgraphacct.gremlin.cosmosdb.azure.com:443/"; 
 config.primaryKey = "Pams6e7LEUS7LJ2Qk0fjZf3eGo65JdMWHmyn65i52w8ozPX2oxY3iP0yu05t9v1WymAHNcMwPIqNAEv3XDFsEg==";
 config.database = "graphdb"

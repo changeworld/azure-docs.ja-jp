@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 1bfb9362aa0e893a8bf1a758e5a0069e85ab227b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438755"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231503"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Azure Portal で Azure Data Lake Storage Gen1 の使用を開始する
 
@@ -58,7 +58,7 @@ Azure portal を使用して、Data Lake Storage Gen1 アカウントを作成�
 
 4. **Create** をクリックしてください。 アカウントをダッシュボードにピン留めすることを選択した場合、ダッシュボードに戻ると、ご自分の Data Lake Storage Gen1 アカウントのプロビジョニングの進行状況を確認できます。 Data Lake Storage Gen1 アカウントのプロビジョニングが完了すると、アカウントのブレードが表示されます。
 
-## <a name="assign-permissions-to-azure-key-vault"></a>Azure Key Vault にアクセス許可を割り当てる
+## <a name="assign-permissions-to-azure-key-vault"></a><a name="assign-permissions-to-azure-key-vault"></a>Azure Key Vault にアクセス許可を割り当てる
 
 Azure Key Vault のキーを使用して Data Lake Storage Gen1 アカウントの暗号化を構成した場合は、Data Lake Storage Gen1 アカウントと Azure Key Vault アカウントの間でアクセスを構成する必要があります。 そのためには、次の手順を実行します。
 
@@ -80,7 +80,7 @@ Azure Key Vault のキーを使用して Data Lake Storage Gen1 アカウント�
 >
 >
 
-## <a name="createfolder"></a>フォルダーの作成
+## <a name="create-folders"></a><a name="createfolder"></a>フォルダーの作成
 
 ご自分の Data Lake Storage Gen1 アカウントにフォルダーを作成し、データの管理と保存を行うことができます。
 
@@ -96,7 +96,7 @@ Azure Key Vault のキーを使用して Data Lake Storage Gen1 アカウント�
 
     ![Data Lake アカウントにフォルダーを作成する](./media/data-lake-store-get-started-portal/ADL.New.Directory.png "Data Lake アカウントにフォルダーを作成する")
 
-## <a name="uploaddata"></a>データのアップロード
+## <a name="upload-data"></a><a name="uploaddata"></a>データのアップロード
 
 データは、Data Lake Storage Gen1 アカウントの root レベルに直接アップロードすることも、アカウント内に作成したフォルダーにアップロードすることもできます。
 
@@ -107,7 +107,7 @@ Azure Key Vault のキーを使用して Data Lake Storage Gen1 アカウント�
 
 アップロードするいくつかのサンプル データを探している場合は、 **Azure Data Lake Git リポジトリ** から [Ambulance Data](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)フォルダーを取得できます。
 
-## <a name="properties"></a>保存データに対して実行できるアクション
+## <a name="actions-available-on-the-stored-data"></a><a name="properties"></a>保存データに対して実行できるアクション
 
 ファイルに対応する省略記号アイコンをクリックします。ポップアップ メニューで、データに対して実行するアクションをクリックします。
 

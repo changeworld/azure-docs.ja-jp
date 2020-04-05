@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mialdrid
 ms.openlocfilehash: 58e75e4efecf390c4c1449b7ec59684554fa7516
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894364"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236375"
 ---
 # <a name="about-expressroute-virtual-network-gateways"></a>ExpressRoute の仮想ネットワーク ゲートウェイについて
 
@@ -28,12 +28,12 @@ ms.locfileid: "74894364"
 
 各仮想ネットワークに配置できる仮想ネットワーク ゲートウェイは、ゲートウェイの種類ごとに 1 つに限られています。 たとえば、-GatewayType が Vpn の仮想ネットワーク ゲートウェイと -GatewayType が ExpressRoute の仮想ネットワーク ゲートウェイをそれぞれ 1 つ配置できます。
 
-## <a name="gwsku"></a>ゲートウェイの SKU
+## <a name="gateway-skus"></a><a name="gwsku"></a>ゲートウェイの SKU
 [!INCLUDE [expressroute-gwsku-include](../../includes/expressroute-gwsku-include.md)]
 
 ゲートウェイをより強力なゲートウェイ SKU にアップグレードする場合、ほとんどの場合 "Resize-AzVirtualNetworkGateway" PowerShell コマンドレットを使用できます。 これは、Standard および HighPerformance SKU へのアップグレードの場合でも機能します。 ただし、UltraPerformance SKU へのアップグレードでは、ゲートウェイを再作成する必要があります。 ゲートウェイの再作成によりダウンタイムが発生します。
 
-### <a name="aggthroughput"></a>ゲートウェイ SKU の推定パフォーマンス
+### <a name="estimated-performances-by-gateway-sku"></a><a name="aggthroughput"></a>ゲートウェイ SKU の推定パフォーマンス
 次の表は、ゲートウェイの種類と、予測されるパフォーマンスを示したものです。 この表は、リソース マネージャーとクラシック デプロイ モデルの両方に適用されます。
 
 [!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
@@ -43,7 +43,7 @@ ms.locfileid: "74894364"
 >
 >
 
-## <a name="gwsub"></a>ゲートウェイ サブネット
+## <a name="gateway-subnet"></a><a name="gwsub"></a>ゲートウェイ サブネット
 
 ExpressRoute ゲートウェイを作成する前に、ゲートウェイ サブネットを作成する必要があります。 ゲートウェイ サブネットには、仮想ネットワーク ゲートウェイの VM とサービスが使用する IP アドレスが含まれます。 仮想ネットワーク ゲートウェイを作成すると、ゲートウェイ VM はゲートウェイ サブネットにデプロイされ、必要な ExpressRoute ゲートウェイ設定で構成されます。 ゲートウェイ サブネットには、追加の VM などをデプロイしないでください。 ゲートウェイ サブネットを正常に動作させるには、"GatewaySubnet" という名前を付ける必要があります。 ゲートウェイ サブネットに "GatewaySubnet" という名前を付けることで、これが仮想ネットワーク ゲートウェイの VM とサービスをデプロイするサブネットであることを Azure が認識できます。
 
@@ -63,7 +63,7 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/2
 
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
-### <a name="zrgw"></a>ゾーン冗長ゲートウェイ SKU
+### <a name="zone-redundant-gateway-skus"></a><a name="zrgw"></a>ゾーン冗長ゲートウェイ SKU
 
 Azure Availability Zones に、ExpressRoute ゲートウェイをデプロイすることもできます。 これにより、ゲートウェイは異なる Availability Zones に物理的かつ論理的に分離され、オンプレミス ネットワークの Azure への接続がゾーン レベルの障害から保護されます。
 
@@ -77,13 +77,13 @@ Azure Availability Zones に、ExpressRoute ゲートウェイをデプロイす
 
 新しいゲートウェイ SKU では、ニーズに最も適したその他のデプロイ オプションもサポートされます。 新しいゲートウェイ SKU を使用して仮想ネットワーク ゲートウェイを作成する場合、特定のゾーン内にゲートウェイをデプロイするオプションもあります。 これは、ゾーン ゲートウェイと呼ばれます。 ゾーン ゲートウェイをデプロイすると、すべてのゲートウェイ インスタンスが同じ可用性ゾーンにデプロイされます。
 
-## <a name="fastpath"></a>FastPath
+## <a name="fastpath"></a><a name="fastpath"></a>FastPath
 
 ExpressRoute 仮想ネットワーク ゲートウェイの目的は、ネットワーク ルートを交換し、ネットワーク トラフィックをルーティングすることです。 FastPath の目的は、お使いのオンプレミス ネットワークと仮想ネットワークの間のデータ パスのパフォーマンスを向上させることです。 FastPath が有効になっていると、ゲートウェイはバイパスされ、ネットワーク トラフィックが仮想ネットワーク内の仮想マシンに直接送信されます。
 
 制限や要件を含む FastPath の詳細については、[FastPath の概要](about-fastpath.md)に関するページを参照してください。
 
-## <a name="resources"></a>REST API および PowerShell コマンドレット
+## <a name="rest-apis-and-powershell-cmdlets"></a><a name="resources"></a>REST API および PowerShell コマンドレット
 仮想ネットワーク ゲートウェイの構成に対して REST API および PowerShell コマンドレットを使用する場合のテクニカル リソースおよび特定構文の要件については、次のページを参照してください。
 
 | **クラシック** | **Resource Manager** |
@@ -91,7 +91,7 @@ ExpressRoute 仮想ネットワーク ゲートウェイの目的は、ネット
 | [PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0#azure) |[PowerShell](https://docs.microsoft.com/powershell/module/az.network#networking) |
 | [REST API](https://msdn.microsoft.com/library/jj154113.aspx) |[REST API](https://msdn.microsoft.com/library/mt163859.aspx) |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 使用可能な接続構成の詳細については、「[ExpressRoute の概要](expressroute-introduction.md)」を参照してください。
 

@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: aeccd604a4dae3b2ca83f5b599d9a6857acee34a
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: c3ca37fd47b6551a95f9a491053ec7863acd1eeb
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79037197"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389394"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>チュートリアル:デザイナー (プレビュー) で機械学習モデルをデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -57,6 +57,8 @@ ms.locfileid: "79037197"
     >
 
 1. **[送信]** を選択し、パート 1 で使用したものと同じコンピューティング先と実験を使用します。
+
+    最初の実行の場合は、パイプラインの実行が完了するまでに最大 20 分かかることがあります。 既定のコンピューティング設定の最小ノード サイズは 0 です。これは、アイドル状態になった後に、デザイナーによってリソースが割り当てられる必要があることを意味します。 コンピューティング リソースが既に割り当てられているため、パイプラインの反復実行にかかる時間は短くなります。 さらにデザイナーでは、各モジュール用にキャッシュされた結果を使用して、効率を向上させます。
 
 1. **[デプロイ]** を選択します。
 

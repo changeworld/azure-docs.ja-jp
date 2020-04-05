@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: seodec18
 ms.openlocfilehash: 50ac2a728750c6b01dfc57fa7e20df25c856395a
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77087380"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights プレビューのユース ケース

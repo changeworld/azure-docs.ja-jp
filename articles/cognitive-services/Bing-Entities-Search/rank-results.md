@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
 ms.openlocfilehash: 110cef117683b20170649a231226c8193496edf3
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68423907"
 ---
 # <a name="using-ranking-to-display-entity-search-results"></a>ランキングを使用したエンティティ検索結果の表示  
@@ -26,7 +26,7 @@ ms.locfileid: "68423907"
 
 |フィールド | 説明  |
 |---------|---------|
-|`answerType` と `resultIndex` | `answerType` は、回答 (Entity または Place) を識別し、`resultIndex` は、その回答内の結果を識別します (エンティティなど)。 インデックスは、0 から始まります。|
+|`answerType` および `resultIndex` | `answerType` は、回答 (Entity または Place) を識別し、`resultIndex` は、その回答内の結果を識別します (エンティティなど)。 インデックスは、0 から始まります。|
 |`value`    | `value` には、回答または回答内の結果の ID に一致する ID が含まれます。 回答または結果のいずれかに ID が含まれています。両方には含まれていません。 |
   
 `answerType` と `resultIndex` の使用は、2 段階のプロセスです。 最初に、`answerType` を使用して、表示する結果が含まれる回答を識別します。 次に、`resultIndex` を使用して、その回答の結果にインデックスを付け、表示する結果を取得します。 (`answerType` 値は、[SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) オブジェクト内のフィールドの名前です)。すべての回答の結果を一緒に表示する場合、ランキング応答の項目には、`resultIndex` フィールドは含まれません。
@@ -69,7 +69,7 @@ ID を使用するには、回答の ID またはその結果の ID とランキ
 
 このランキング応答に基づいて、Jimi Hendrix に関連する 2 つのエンティティの結果がサイドバーに表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [単一ページの Web アプリの作成](tutorial-bing-entities-search-single-page-app.md)

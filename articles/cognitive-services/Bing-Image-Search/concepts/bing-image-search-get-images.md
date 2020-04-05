@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 309bbca762149f8804742d9ef02d4c3e8dfcdc6b
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67542758"
 ---
 # <a name="get-images-from-the-web-with-the-bing-image-search-api"></a>Bing Image Search API で Web から画像を取得する
@@ -111,6 +111,6 @@ Bing からの応答メッセージには、クエリとの関連性が高いと
 
 Bing Image Search API を呼び出すと、結果のリストが Bing から返されます。 このリストは、クエリとの関連性が高い結果の総数のサブセットです。 表示できる画像の数の見積もりは、応答の `totalEstimatedMatches` フィールドに格納されます。 ページをめくるように残りの画像を表示する方法について詳しくは、[画像のページ移動](../paging-images.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 まだ Bing Image Search API を試していない方は、[クイック スタート](../quickstarts/csharp.md)をご覧ください。 さらに高度な内容をお求めの方は、[単一ページの Web アプリ](../tutorial-bing-image-search-single-page-app.md)の作成に関するチュートリアルをご覧ください。

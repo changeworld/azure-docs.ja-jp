@@ -14,10 +14,10 @@ ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3c101c0ef7932151e675c5c514ac558e6e0f94b2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73815715"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-directory"></a>アンマネージド Azure Active Directory の職場または学校アカウントを削除する
@@ -53,7 +53,7 @@ ms.locfileid: "73815715"
 
     ![データ要求 - 削除の確認](./media/users-close-account/confirm-close.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Active Directory のセルフサービス サインアップについて](directory-self-service-signup.md)
 - [アンマネージド テナントからユーザーを削除する](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)

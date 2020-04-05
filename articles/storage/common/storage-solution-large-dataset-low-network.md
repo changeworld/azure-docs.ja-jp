@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 4c4ac9489b9613b2eeaf26a3df9f4cbc664a1026
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60730692"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>ネットワーク帯域幅が低速またはない場合の大規模なデータセットのデータ転送
  
 この記事では、ご利用の環境が、ネットワーク帯域幅がない状態に制限されていて、大規模なデータセットを転送する予定の場合の、データ転送ソリューションの概要を示します。 また、この記事では、推奨されるデータ転送と、このシナリオのそれぞれの主要な機能のマトリックスについても説明します。
 
-利用可能なすべてのデータ転送オプションの概要を理解するには、[Azure データ転送ソリューションの選択](storage-choose-data-transfer-solution.md)に関するページに移動してください。
+利用可能なすべてのデータ転送オプションの概要を理解するには、[Azure データ転送ソリューションの選択](storage-choose-data-transfer-solution.md)に関するページに移動します。
 
 ## <a name="offline-transfer-or-network-transfer"></a>オフライン転送またはネットワーク転送
 
@@ -45,7 +45,7 @@ ms.locfileid: "60730692"
 
 次の表は、主な機能における相違点をまとめたものです。
 
-|                                     |    Data Box Disk      |    Data Box                                      |    Data Box Heavy              |    Import/Export                       |
+|                                     |    Data Box Disk      |    Data Box                                      |    Data Box Heavy              |    インポート/エクスポート                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
 |    データ サイズ                        |    最大 35 TB                 |    デバイスあたり最大 80 TB                       |    デバイスあたり最大 800 TB               |    変数                            |
 |    データ型                        |    Azure BLOB                  |    Azure BLOB<br>Azure Files                    |    Azure BLOB<br>Azure Files            |    Azure BLOB<br>Azure Files          |
@@ -55,14 +55,14 @@ ms.locfileid: "60730692"
 |    Azure からデータをエクスポートする           |    いいえ                           |    いいえ                                            |    いいえ                                    |    はい                                 |
 |    暗号化                       |    AES 128 ビット                  |    AES 256 ビット                                   |    AES 256 ビット                           |    AES 128 ビット                         |
 |    ハードウェア                         |     Microsoft による提供          |    Microsoft による提供                            |    Microsoft による提供                    |    お客様による提供                   |
-|    Linux                |    USB 3.1/SATA                 |    RJ 45、SFP+                                   |    RJ45、QSFP+                           |    SATA II/SATA III                    |
+|    ネットワーク インターフェイス                |    USB 3.1/SATA                 |    RJ 45、SFP+                                   |    RJ45、QSFP+                           |    SATA II/SATA III                    |
 |    パートナー統合              |    一部                         |    [高](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [高](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    一部                                |
 |    発送                         |    Microsoft による管理            |    Microsoft による管理                             |    Microsoft による管理                     |    お客様による管理                    |
 | データの移動時に使用する         |コマース境界内|コマース境界内|コマース境界内|地理的境界を越える (US から EU など)|
 |    価格                          |    [料金](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [料金](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [料金](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [料金](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 以下の方法を理解します
 

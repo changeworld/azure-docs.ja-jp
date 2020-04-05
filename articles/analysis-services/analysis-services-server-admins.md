@@ -8,17 +8,17 @@ ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: f7c57a5751f2ff34abb26b7653070ce4ee5010fe
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73572625"
 ---
 # <a name="manage-server-administrators"></a>サーバー管理者の管理
 
 サーバー管理者は、サーバーが存在するテナントについて、Azure Active Directory (Azure AD) 内で有効なユーザーまたはセキュリティ グループである必要があります。 Azure portal でご利用のサーバーの **[Analysis Services 管理者]** を使用するか、SSMS、PowerShell、または REST API のサーバー プロパティを使用して、サーバー管理者を管理できます。 
 
-**セキュリティ グループ**は、`MailEnabled` プロパティが `True` に設定された[メール対応](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups)である必要があります。 メール アドレスでグループを指定する場合は、`obj:groupid@tenantid` を使用します。
+**セキュリティ グループ**は、[ プロパティが ](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) に設定された`MailEnabled`メール対応`True`である必要があります。 メール アドレスでグループを指定する場合は、`obj:groupid@tenantid` を使用します。
 
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>Azure Portal を使用してサーバー管理者を追加するには
 
@@ -50,7 +50,7 @@ ms.locfileid: "73572625"
 
 
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 
 [認証とユーザーのアクセス許可](analysis-services-manage-users.md)  
 [データベース ロールとユーザーの管理](analysis-services-database-users.md)  

@@ -15,10 +15,10 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: d121d6c198cb0d92cd098a40096e2f2300f65537
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76758991"
 ---
 # <a name="scenario-a-web-app-that-calls-web-apis"></a>シナリオ:Web API を呼び出す Web アプリ

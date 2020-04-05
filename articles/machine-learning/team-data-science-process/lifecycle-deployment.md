@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1138c95274c769186a9a29aa4d35517e378baeae
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720488"
 ---
 # <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process ライフサイクルのデプロイ ステージ
@@ -39,7 +39,7 @@ TDSP ライフサイクルを視覚化すると、次のようになります。
 ## <a name="how-to-do-it"></a>方法
 このステージでは、以下に示す主な課題に取り組みます。
 
-**モデルの運用化**:モデルとパイプラインを、アプリケーションで利用できるように運用環境または運用環境に似た環境にデプロイします。
+**モデルの運用化**: モデルとパイプラインを、アプリケーションで利用できるように運用環境または運用環境に似た環境にデプロイします。
 
 ### <a name="operationalize-a-model"></a>モデルの運用化
 うまく機能する一連のモデルが得られたら、他のアプリケーションから利用できるように、それらのモデルを運用できるようにします。 予測は、ビジネス要件に応じてリアルタイムまたはバッチ処理で行われます。 モデルをデプロイするには、オープン API インターフェイスを使用してそれらを公開します。 インターフェイスを使用して、以下のさまざまなアプリケーションでモデルを簡単に使用できるようにすることができます。

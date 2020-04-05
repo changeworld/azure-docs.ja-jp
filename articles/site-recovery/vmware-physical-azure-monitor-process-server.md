@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 54c161c40c881d7626f79fc9bfe1ec1c160480ae
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082239"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228883"
 ---
 # <a name="monitor-the-process-server"></a>プロセス サーバーを監視する
 
@@ -59,11 +59,11 @@ ms.locfileid: "74082239"
 ![警告][yellow] | 過去 15 分間のキャッシュ フォルダーの空き領域が 30% 未満です。
 ![警告][yellow] | 保留または送信データを 5 分ごとに監視している Site Recovery によって、プロセス サーバー キャッシュ内のデータを 30 分以内に Azure にアップロードできないと推定された。
 ![警告][yellow] | プロセス サーバーのサービスが過去 15 分間実行されていません。
-![重大][red] | 過去 15 分間の CPU 使用率が 95% を超えています。
-![重大][red] | 過去 15 分間のメモリ使用率が 95% を超えています。
-![重大][red] | 過去 15 分間のキャッシュ フォルダーの空き領域が 25% 未満です。
-![重大][red] | 保留または送信データを 5 分ごとに監視している Site Recovery によって、プロセス サーバー キャッシュ内のデータを 45 分以内に Azure にアップロードできないと推定された。
-![重大][red] | プロセス サーバーからのハートビートが 15 分間ありません。
+![Critical][red] | 過去 15 分間の CPU 使用率が 95% を超えています。
+![Critical][red] | 過去 15 分間のメモリ使用率が 95% を超えています。
+![Critical][red] | 過去 15 分間のキャッシュ フォルダーの空き領域が 25% 未満です。
+![Critical][red] | 保留または送信データを 5 分ごとに監視している Site Recovery によって、プロセス サーバー キャッシュ内のデータを 45 分以内に Azure にアップロードできないと推定された。
+![Critical][red] | プロセス サーバーからのハートビートが 15 分間ありません。
 
 ![テーブル キー](./media/vmware-physical-azure-monitor-process-server/table-key.png)
 
@@ -93,7 +93,7 @@ ms.locfileid: "74082239"
 **[Site Recovery インフラストラクチャ]** の下のコンテナーで、プロセス サーバーを監視することもできます。 **[Site Recovery インフラストラクチャの管理]** で、 **[構成サーバー]** をクリックします。 プロセス サーバーに関連付けられている構成サーバーを選択して、プロセス サーバーの詳細をドリル ダウンします。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - プロセス サーバーの問題がある場合は、[トラブルシューティング ガイダンス](vmware-physical-azure-troubleshoot-process-server.md)に従います。
 - さらにサポートが必要な場合は、[Azure Site Recovery フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)に質問を投稿してください。 

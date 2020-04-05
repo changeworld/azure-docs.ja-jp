@@ -1,20 +1,20 @@
 ---
 title: マップに多角形浮き出しレイヤーを追加する | Microsoft Azure Maps
 description: Microsoft Azure Maps Web SDK に浮き出し多角形レイヤーを追加する方法。
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 10/08/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 38a7e6c5f4c139343e735ae82616c11a224ae7ca
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 7405098bd4924333aafcd1c285eb2f37bb1d4f75
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209683"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334538"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map"></a>マップに多角形浮き出しレイヤーを追加する
 
@@ -30,7 +30,7 @@ ms.locfileid: "77209683"
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="浮き出し多角形" src="https://codepen.io/azuremaps/embed/wvvBpvE?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/wvvBpvE'>Extruded polygon</a>」Pen を参照してください。</iframe>
+<a href='https://codepen.io/azuremaps/pen/wvvBpvE'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>Extruded polygon</a>」Pen を参照してください。</iframe>
 
 
 ## <a name="add-data-driven-polygons"></a>データ ドリブン ポリゴンを追加する
@@ -40,12 +40,12 @@ ms.locfileid: "77209683"
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="浮き出し階級区分図" src="https://codepen.io/azuremaps/embed/eYYYNox?height=265&theme-id=0&default-tab=result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/eYYYNox'>Extruded choropleth map</a>」Pen を参照してください。
+<a href='https://codepen.io/azuremaps/pen/eYYYNox'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>Extruded choropleth map</a>」Pen を参照してください。
 </iframe>
 
 ## <a name="add-a-circle-to-the-map"></a>マップに円を追加する
 
-Azure Maps は、[ここ](https://docs.microsoft.com/azure/azure-maps/extend-geojson#circle)に示されている円の定義を提供する、GeoJSON スキーマの拡張バージョンを使用してします。 `Circle` の `subType` プロパティと、**メートル**で半径を表わす数値付き `Radius` プロパティでフィーチャー `point` を作成することで、浮き出した円をマップ上でレンダリングできます。 次に例を示します。
+Azure Maps は、[ここ](https://docs.microsoft.com/azure/azure-maps/extend-geojson#circle)に示されている円の定義を提供する、GeoJSON スキーマの拡張バージョンを使用してします。 `point` の `subType` プロパティと、`Circle`メートル`Radius`で半径を表わす数値付き **プロパティでフィーチャー** を作成することで、浮き出した円をマップ上でレンダリングできます。 次に例を示します。
 
 ```Javascript
 {
@@ -66,7 +66,7 @@ Azure Maps Web SDK では、このような `Point` フィーチャーが内部�
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="ドローン領空ポリゴン" src="https://codepen.io/azuremaps/embed/zYYYrxo?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/zYYYrxo'>Drone airspace polygon</a>」Pen を参照してください。
+<a href='https://codepen.io/azuremaps/pen/zYYYrxo'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>Drone airspace polygon</a>」Pen を参照してください。
 </iframe>
 
 ## <a name="customize-a-polygon-extrusion-layer"></a>多角形浮き出しレイヤーをカスタマイズする
@@ -75,7 +75,7 @@ Azure Maps Web SDK では、このような `Point` フィーチャーが内部�
 
 <br/>
 
-<iframe height='700' scrolling='no' title='PoogBRJ' src='//codepen.io/azuremaps/embed/PoogBRJ/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/PoogBRJ/'>PoogBRJ</a>」Pen を表示します。
+<iframe height='700' scrolling='no' title='PoogBRJ' src='//codepen.io/azuremaps/embed/PoogBRJ/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io/azuremaps/pen/PoogBRJ/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>PoogBRJ</a>」Pen を表示します。
 </iframe>
 
 ## <a name="next-steps"></a>次のステップ

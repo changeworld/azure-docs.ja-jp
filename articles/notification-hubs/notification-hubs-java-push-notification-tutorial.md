@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: d48973cc7c5ed1fc7ae3f96128d488f3f1df3a05
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76263865"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>Java から Notification Hubs を使用する方法
@@ -372,7 +372,7 @@ Notification オブジェクトはヘッダー付きの本文にすぎません�
 
 Java コードを実行すると、ターゲット デバイスに表示される通知が生成されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a><a name="next-steps"></a>次のステップ
 
 このトピックでは、Notification Hubs 用の単純な Java REST クライアントを作成する方法を示しました。 ここでは、次の操作を実行できます。
 

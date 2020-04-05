@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: c3452fc68f7add40979513d3e3956f1c93e327f0
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: eddfcacd01a67fffa8e3e992e021ed1771d25944
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943950"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471338"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>HDInsight 用の Azure セキュリティ ベースライン
 
@@ -854,10 +854,10 @@ https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-li
 **ガイダンス**:Azure Resource Graph を使用して、Azure HDInsight クラスターを含めて、サブスクリプション内のすべてのリソース (コンピューティング、ストレージ、ネットワーク、ポート、プロトコルなど) のクエリまたは検出を行います。  テナント内の適切な (読み取り) アクセス許可を持っており、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙できることを確認します。
 
 
-従来の Azure リソースは Resource Graph で検出できますが、今後は Azure Resource Manager リソースを作成して使用することを強くお勧めします。
+従来の Azure リソースは Azure Resource Graph で検出できますが、今後は Azure Resource Manager リソースを作成して使用することを強くお勧めします。
 
 
-Azure Graph を使用してクエリを作成する方法:
+Azure Resource Graph を使用してクエリを作成する方法:
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
@@ -930,7 +930,7 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Graph を使用してクエリを作成する方法: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Azure Resource Graph を使用してクエリを作成する方法: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 
 **Azure Security Center の監視**: 現在は使用できません
@@ -950,7 +950,7 @@ Azure Graph を使用してクエリを作成する方法: https://docs.microsof
 **ガイダンス**:Azure Resource Graph を使用して、Azure HDInsight クラスターを含めて、サブスクリプション内のすべてのリソース (コンピューティング、ストレージ、ネットワーク、ポート、プロトコルなど) のクエリまたは検出を行います。  検出された承認されていない Azure リソースを削除します。 Azure HDInsight クラスター ノードの場合は、承認されていないソフトウェアの削除またはアラート通知を行うためのサードパーティ ソリューションを実装します。
 
 
-Azure Graph を使用してクエリを作成する方法:
+Azure Resource Graph を使用してクエリを作成する方法:
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
@@ -1424,5 +1424,5 @@ Microsoft が管理しているクラウド インフラストラクチャ、サ
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](https://docs.microsoft.com/azure/security/benchmarks/overview)に関するページを参照します
-- [Azure セキュリティ ベースライン](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)の詳細について学習します
+- [Azure セキュリティ ベンチマーク](https://docs.microsoft.com/azure/security/benchmarks/overview)に関するページを参照する
+- [Azure セキュリティ ベースライン](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)の詳細について学習する

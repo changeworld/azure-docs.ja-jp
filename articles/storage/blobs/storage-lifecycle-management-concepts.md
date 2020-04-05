@@ -9,10 +9,10 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.openlocfilehash: 238c12baf55b525a24107a727d09588ef06a6bef
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77598308"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Azure Blob Storage のライフサイクルを管理する
@@ -67,7 +67,7 @@ Azure portal を通じてポリシーを追加するには、2つの方法があ
 
 #### <a name="azure-portal-list-view"></a>Azure portal リスト ビュー
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 2. Azure portal で、自分のストレージ アカウントを検索して選択します。 
 
@@ -88,7 +88,7 @@ Azure portal を通じてポリシーを追加するには、2つの方法があ
 9. **[追加]** を選択して新しいポリシーを追加します。
 
 #### <a name="azure-portal-code-view"></a>Azure portal コード ビュー
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 2. Azure portal で、自分のストレージ アカウントを検索して選択します。
 
@@ -226,13 +226,13 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 
 ポリシーはルールのコレクションです。
 
-| パラメーター名 | パラメーターのタイプ | Notes |
+| パラメーター名 | パラメーターのタイプ | メモ |
 |----------------|----------------|-------|
 | `rules`        | ルール オブジェクトの配列 | ポリシーには少なくとも 1 つのルールが必要です。 ポリシーでは最大 100 のルールを定義できます。|
 
 ポリシー内の各ルールには、次のいくつかのパラメーターがあります。
 
-| パラメーター名 | パラメーターのタイプ | Notes | Required |
+| パラメーター名 | パラメーターのタイプ | メモ | 必須 |
 |----------------|----------------|-------|----------|
 | `name`         | String |ルール名には最大 256 の英数字を含めることができます。 ルール名は大文字と小文字が区別されます。  名前は、ポリシー内で一意にする必要があります。 | True |
 | `enabled`      | Boolean | ルールを一時的に無効にすることを許可する省略可能なブール値。 設定されていない場合、既定値は true です。 | False | 
@@ -289,7 +289,7 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 
 フィルターには次のものが含まれます。
 
-| フィルター名 | フィルターの種類 | Notes | 必須 |
+| フィルター名 | フィルターの種類 | メモ | 必須 |
 |-------------|-------------|-------|-------------|
 | blobTypes   | 定義済みの列挙型の値の配列。 | 現在のリリースでは `blockBlob` をサポートしています。 | はい |
 | prefixMatch | プレフィックスを照合する文字列の配列。 各ルールで最大 10 個のプレフィックスを定義できます。 プレフィックス文字列はコンテナー名で始まる必要があります。 たとえば、`https://myaccount.blob.core.windows.net/container1/foo/...` の下にあるすべての BLOB をルールに一致させたい場合、prefixMatch は `container1/foo` です。 | prefixMatch を定義していない場合、ルールはストレージ アカウント内のすべての BLOB に適用されます。  | いいえ |

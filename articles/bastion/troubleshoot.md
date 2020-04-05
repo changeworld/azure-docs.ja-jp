@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: cherylmc
 ms.openlocfilehash: de112ff441bb53a0b3bc7f4ffa4456f1c241682c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73510320"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Azure Bastion のトラブルシューティング
 
 この記事では、Azure Bastion のトラブルシューティング方法について説明します。
 
-## <a name="nsg"></a>AzureBastionSubnet 上で NSG を作成できない
+## <a name="unable-to-create-an-nsg-on-azurebastionsubnet"></a><a name="nsg"></a>AzureBastionSubnet 上で NSG を作成できない
 
 **質問:** Azure Bastion サブネット上で NSG を作成しようとすると、次のエラーを受け取ります。 *"Network security group <NSG name> does not have necessary rules for Azure Bastion Subnet AzureBastionSubnet" (ネットワーク セキュリティ グループには Azure Bastion Subnet AzureBastionSubnet に必要な規則がありません)* 。
 
@@ -31,7 +31,7 @@ ms.locfileid: "73510320"
 NSG 規則の例については、[クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion)を参照してください。
 詳細については、[Azure Bastion の NSG のガイダンス](bastion-nsg.md)に関する記事を参照してください。
 
-## <a name="sshkey"></a>Azure Bastion に SSH キーを使用できません
+## <a name="unable-to-use-my-ssh-key-with-azure-bastion"></a><a name="sshkey"></a>Azure Bastion に SSH キーを使用できません
 
 **質問:** SSH キー ファイルを参照しようとすると、次のエラーを受け取ります。 *"SSH 秘密キーは、"-----BEGIN RSA PRIVATE KEY-----" で始まり、"-----END RSA PRIVATE KEY-----" で終わる必要があります"* 。
 
@@ -67,24 +67,24 @@ The key's randomart image is:
 +----[SHA256]-----+
 ```
 
-## <a name="domain"></a>Windows ドメインに参加している仮想マシンにサインインできません
+## <a name="unable-to-sign-in-to-my-windows-domain-joined-virtual-machine"></a><a name="domain"></a>Windows ドメインに参加している仮想マシンにサインインできません
 
 **質問:** ドメインに参加している Windows 仮想マシンに接続できません。
 
 **A:** Azure Bastion は、ドメイン参加 VM へのサインインには、ユーザー名とパスワードに基づくドメイン サインインのみをサポートしています。 Azure portal でドメインの資格情報を指定する場合は、サインインに *domain\username* 形式ではなく UPN (username@domain) 形式を使用します。 これは、ドメイン参加またはハイブリッド参加 (ドメイン参加と Azure AD 参加の両方) 仮想マシンでサポートされています。 Azure AD 参加のみの仮想マシンではサポートされていません。
 
-## <a name="filetransfer"></a>ファイル転送に関する問題
+## <a name="file-transfer-issues"></a><a name="filetransfer"></a>ファイル転送に関する問題
 
 **質問:** Azure Bastion ではファイル転送はサポートされていますか?
 
 **A:** 現時点では、ファイル転送はサポートされていません。 サポートの追加に取り組んでいます。
 
-## <a name="blackscreen"></a>Azure portal の黒い画面
+## <a name="black-screen-in-the-azure-portal"></a><a name="blackscreen"></a>Azure portal の黒い画面
 
 **質問:** Azure Bastion を使用して接続しようとすると、Azure portal に黒い画面が表示されます。
 
 **A:** これは、ネットワーク接続の問題が Web ブラウザーと Azure Bastion 間 (クライアントのインターネット ファイアウォールによって WebSockets トラフィックがブロックされる場合など) または Azure Bastion とターゲット VM 間に存在する場合に発生します。 ほとんどの場合、AzureBastionSubnet、または仮想ネットワーク内の RDP/SSH トラフィックをブロックしているターゲット VM サブネットに適用された NSG が関わっています。 クライアントのインターネット ファイアウォールで WebSocket トラフィックを許可し、ターゲット VM サブネットで NSG を確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、[Bastion の FAQ](bastion-faq.md) に関する記事を参照してください。

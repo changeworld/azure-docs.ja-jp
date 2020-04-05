@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
 ms.openlocfilehash: 06ebcfdf3d6a3815908752153acb09437d745d15
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76986752"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric-preview"></a>Service Fabric での Azure のマネージド ID の使用 (プレビュー)

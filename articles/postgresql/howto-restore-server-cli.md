@@ -8,10 +8,10 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.openlocfilehash: f0ea24133d7b6acdc4b099ee21a8711a2d99095d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74775706"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for PostgreSQL - Single Server のサーバーをバックアップおよび復元する方法
@@ -68,10 +68,10 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 
 `az postgres server restore` コマンドには、次のパラメーターが必要です。
 
-| Setting | 推奨値 | 説明  |
+| 設定 | 推奨値 | 説明  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
-| 名前 | mydemoserver-restored | 復元コマンドで作成される新しいサーバーの名前。 |
+| name | mydemoserver-restored | 復元コマンドで作成される新しいサーバーの名前。 |
 | restore-point-in-time | 2018-03-13T13:59:00Z | 復元する特定の時点を選択します。 この日付と時刻は、ソース サーバーのバックアップ保有期間内でなければなりません。 ISO8601 の日時形式を使います。 たとえば、`2018-03-13T05:59:00-08:00` など自身のローカル タイム ゾーンを使用できます。 また、`2018-03-13T13:59:00Z` など UTC Zulu 形式も使用できます。 |
 | source-server | mydemoserver | 復元元のソース サーバーの名前または ID。 |
 
@@ -108,10 +108,10 @@ az postgres server georestore --resource-group newresourcegroup --name mydemoser
 
 `az postgres server georestore` コマンドには、次のパラメーターが必要です。
 
-| Setting | 推奨値 | 説明  |
+| 設定 | 推奨値 | 説明  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | 新しいサーバーが属するリソース グループの名前。|
-|名前 | mydemoserver-georestored | 新しいサーバーの名前。 |
+|name | mydemoserver-georestored | 新しいサーバーの名前。 |
 |source-server | mydemoserver | 地理冗長バックアップが使われる既存のサーバーの名前。 |
 |location | eastus | 新しいサーバーの場所。 |
 |sku-name| GP_Gen4_8 | このパラメーターは、新しいサーバーの価格レベル、コンピューティングの世代、および仮想コアの数を設定します。 GP_Gen4_8 は、8 つの仮想コアを備えた汎用 Gen 4 サーバーに対応します。|
@@ -122,7 +122,7 @@ geo リストアで新しいサーバーを作成すると、新しいサーバ�
 
 復元中に作成される新しいサーバーには、元のサーバーに存在するファイアウォール規則または VNet サービス エンドポイントはありません。 この新しいサーバー用に、これらの規則を個別に設定する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - サービスの[バックアップ](concepts-backup.md)の詳細について確認します
 - [レプリカ](concepts-read-replicas.md)について確認します
 - [ビジネス継続性](concepts-business-continuity.md)オプションについて確認します

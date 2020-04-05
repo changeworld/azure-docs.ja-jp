@@ -1,18 +1,18 @@
 ---
-title: クイック スタート:ナレッジ ベースを作成する - REST (Java) - QnA Maker
+title: 'クイック スタート: ナレッジ ベースを作成する - REST (Java) - QnA Maker'
 description: この Java REST ベースのクイック スタートでは、Cognitive Services API アカウントの Azure ダッシュボードに表示される QnA Maker ナレッジ ベースのサンプルをプログラムから作成する手順を紹介しています。
 ms.date: 12/16/2019
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: conceptual
 ms.openlocfilehash: 90ab36389ceac2e8aad12332db433732525c62f5
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78851601"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>クイック スタート:Java を使用して QnA Maker のナレッジ ベースを作成する
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>クイック スタート: Java を使用して QnA Maker でナレッジ ベースを作成する
 
 このクイック スタートでは、QnA Maker ナレッジ ベースのサンプルをプログラムから作成する手順を紹介しています。 QnA Maker は、[データ ソース](../Concepts/knowledge-base.md)の FAQ などの半構造化コンテンツから質問とその回答を自動的に抽出します。 ナレッジ ベースのモデルは、API 要求の本文で送信される JSON で定義されます。
 

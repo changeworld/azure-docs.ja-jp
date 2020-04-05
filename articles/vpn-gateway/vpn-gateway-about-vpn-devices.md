@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: yushwang
 ms.openlocfilehash: f4caa9160280b0f65f84bed36b5209d08d7f7c11
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894690"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235763"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>サイト間 VPN ゲートウェイ接続用の VPN デバイスと IPsec/IKE パラメーターについて
 
@@ -29,7 +29,7 @@ VPN ゲートウェイを使用する Site-to-Site (S2S) クロスプレミス V
   * 動的ルーティング = RouteBased
 * HighPerformance VPN ゲートウェイと RouteBased VPN ゲートウェイの仕様は、特に記載がない限り同じです。 たとえば、RouteBased VPN ゲートウェイと互換性がある検証済みの VPN デバイスは、HighPerformance VPN ゲートウェイとも互換性があります。
 
-## <a name="devicetable"></a>検証済みの VPN デバイスとデバイス構成ガイド
+## <a name="validated-vpn-devices-and-device-configuration-guides"></a><a name="devicetable"></a>検証済みの VPN デバイスとデバイス構成ガイド
 
 Microsoft では、デバイス ベンダーと協力して一連の標準的な VPN デバイスを検証しました。 以下の一覧に含まれているデバイス ファミリ内のすべてのデバイスは、VPN ゲートウェイで動作します。 構成する VPN Gateway ソリューションの VPN の種類 (PolicyBased または RouteBased) については、[VPN ゲートウェイの設定](vpn-gateway-about-vpn-gateway-settings.md#vpntype)に関するページを参照してください。
 
@@ -75,7 +75,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 >
 > (\*\*) ISR 7200 シリーズのルーターでは、PolicyBased の VPN のみがサポートされています。
 
-## <a name="configscripts"></a>Azure からの VPN デバイス構成スクリプトのダウンロード
+## <a name="download-vpn-device-configuration-scripts-from-azure"></a><a name="configscripts"></a>Azure からの VPN デバイス構成スクリプトのダウンロード
 
 特定のデバイスについて、Azure から直接構成スクリプトをダウンロードできます。 詳細およびダウンロードの方法については、[VPN デバイス構成スクリプトのダウンロード](vpn-gateway-download-vpndevicescript.md)に関するページをご覧ください。
 
@@ -83,11 +83,11 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 
 [!INCLUDE [scripts](../../includes/vpn-gateway-device-configuration-scripts.md)]
 
-## <a name="additionaldevices"></a>未検証の VPN デバイス
+## <a name="non-validated-vpn-devices"></a><a name="additionaldevices"></a>未検証の VPN デバイス
 
 検証済み VPN デバイスの表にお使いのデバイスが見つからない場合でも、そのデバイスをサイト間接続に利用できる可能性があります。 詳細なサポートと構成手順については、デバイスの製造元にお問い合わせください。
 
-## <a name="editing"></a>デバイス構成のサンプルの編集
+## <a name="editing-device-configuration-samples"></a><a name="editing"></a>デバイス構成のサンプルの編集
 
 提供されている VPN デバイス構成のサンプルをダウンロードしたら、一部の値を使用している環境の設定を反映した値に置換する必要があります。
 
@@ -110,7 +110,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | &lt;SP_AzureGatewayIpAddress&gt; |この情報は仮想ネットワークに固有であり、 **ゲートウェイの IP アドレス**として管理ポータルに存在しています。 |
 | &lt;SP_PresharedKey&gt; |この情報は仮想ネットワークに固有であり、[キーの管理] として管理ポータルに存在しています。 |
 
-## <a name="ipsec"></a>IPsec/IKE パラメーター
+## <a name="ipsecike-parameters"></a><a name="ipsec"></a>IPsec/IKE パラメーター
 
 > [!IMPORTANT]
 > 1. 下の表には、Azure VPN ゲートウェイが既定の構成で使用するアルゴリズムとパラメーターの組み合わせが示されています。 Azure Resource Manager デプロイメント モデルで作成されたルートベースの VPN ゲートウェイでは、個別の接続ごとにカスタム ポリシーを指定できます。 詳細な手順については、[IPsec/IKE ポリシーの構成](vpn-gateway-ipsecikepolicy-rm-powershell.md)に関するページを参照してください。
@@ -146,7 +146,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | Dead Peer Detection (DPD)     |サポートされていません  |サポートされています                                    |
 
 
-### <a name ="RouteBasedOffers"></a>RouteBased VPN IPsec セキュリティ アソシエーション (IKE クイック モード SA) プラン
+### <a name="routebased-vpn-ipsec-security-association-ike-quick-mode-sa-offers"></a><a name ="RouteBasedOffers"></a>RouteBased VPN IPsec セキュリティ アソシエーション (IKE クイック モード SA) プラン
 
 以下の表は、IPsec SA (IKE クイック モード) プランの一覧です。 プランは提示される、または受け入れられる優先度順に表示されています。
 
@@ -195,7 +195,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 * RouteBased および HighPerformance VPN ゲートウェイで IPsec ESP NULL 暗号化を指定することができます。 Null ベースの暗号化では、転送中のデータ保護は提供されません。そのため、最大のスループットおよび最小の待機時間が必要な場合にのみ使用する必要があります。 クライアントは、VNet 間の通信シナリオ、または暗号化がソリューションの他の場所に適用されている場合に、この暗号化の使用を選択することができます。
 * インターネット経由のクロスプレミス接続では、重要な通信のセキュリティを確保するため、上記の表にある暗号化およびハッシュ アルゴリズムによる既定の Azure VPN Gateway 設定を使用してください。
 
-## <a name="known"></a>デバイスの互換性に関する既知の問題
+## <a name="known-device-compatibility-issues"></a><a name="known"></a>デバイスの互換性に関する既知の問題
 
 > [!IMPORTANT]
 > この内容は、サード パーティの VPN デバイスと Azure VPN ゲートウェイの互換性に関する既知の問題です。 Azure チームは、ここに記載されている問題に対処するためにベンダーと積極的に連携しています。 問題が解決されると、このページが最新の情報で更新されるため、 定期的に確認してください。

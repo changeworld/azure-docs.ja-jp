@@ -11,10 +11,10 @@ ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
 ms.date: 06/26/2019
 ms.openlocfilehash: 496d67a73207fd17182c31c5adad25c1fbe60c4f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73820466"
 ---
 # <a name="delete-a-subnet-after-deleting-an-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance の削除後にサブネットを削除する
@@ -48,7 +48,7 @@ Azure portal の通知で、仮想クラスターの削除要求が正常に送�
 
 API を使用して仮想クラスターを削除するには、[仮想クラスターの削除メソッド](https://docs.microsoft.com/rest/api/sql/virtualclusters/delete)に関するページに記載されている URI パラメーターを使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 概要については、[マネージド インスタンス](sql-database-managed-instance.md)に関するページを参照してください。
 - [Managed Instance の接続アーキテクチャ](sql-database-managed-instance-connectivity-architecture.md)について確認します。

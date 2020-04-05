@@ -9,18 +9,18 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: c492db4c-3faa-4645-849f-5a1a663be55a
 ms.service: virtual-machines-sql
-ms.custom: seo-lt-2019
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: 4c89489964410104726b65e1b1fc3577945ce14a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.custom: seo-lt-2019
+ms.openlocfilehash: c80a4c07e0649612b4c024cac79833c4b730f55e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224767"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060164"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Azure 仮想マシンで SQL Server の Always On 可用性グループを作成するための前提条件
 
@@ -40,15 +40,15 @@ ms.locfileid: "74224767"
 ## <a name="create-an-azure-account"></a>Azure アカウントの作成
 Azure アカウントが必要です。 [無料の Azure アカウントを作成する](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic&redirectURL=https:%2F%2Fazure.microsoft.com%2Fget-started%2Fwelcome-to-azure%2F&correlationId=24f9d452-1909-40d7-b609-2245aa7351a6&l=en-US)か、[Visual Studio サブスクライバーの特典を有効にする](https://docs.microsoft.com/visualstudio/subscriptions/subscriber-benefits)ことができます。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+## <a name="create-a-resource-group"></a>リソース グループを作成する
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. ポータルで、 **[+]** をクリックして新しいオブジェクトを作成します。
 
    ![新しいオブジェクト](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-portalplus.png)
 
 3. **Marketplace** の検索ウィンドウに「**リソース グループ**」と入力します。
 
-   ![リソース グループ](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroupsymbol.png)
+   ![Resource group](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroupsymbol.png)
 4. **[リソース グループ]** をクリックします。
 5. **Create** をクリックしてください。
 6. **[リソース グループ名]** には、リソース グループの名前を入力します。 たとえば、「**sql-ha-rg**」と入力します。
@@ -56,7 +56,7 @@ Azure アカウントが必要です。 [無料の Azure アカウントを作�
 8. 場所を選択します。 場所とは、可用性グループを作成する Azure リージョンのことです。 この記事では、すべてのリソースを 1 つの Azure の場所に作成します。
 9. **[ダッシュボードにピン留めする]** がオンになっていることを確認します。 これは、Azure ポータルのダッシュボードにリソース グループのショートカットを作成するためのオプションです。この設定は省略してもかまいません。
 
-   ![リソース グループ](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroup.png)
+   ![Resource group](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroup.png)
 
 10. **[作成]** をクリックしてリソース グループを作成します。
 
@@ -71,7 +71,7 @@ Azure アカウントが必要です。 [無料の Azure アカウントを作�
 
 1. Azure Portal のリソース グループで、 **[+ 追加]** をクリックします。 
 
-   ![新しい項目](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/02-newiteminrg.png)
+   ![[新しい項目]](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/02-newiteminrg.png)
 2. 「 **仮想ネットワーク**」を検索します。
 
      ![仮想ネットワークの検索](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/04-findvirtualnetwork.png)
@@ -87,7 +87,7 @@ Azure アカウントが必要です。 [無料の Azure アカウントを作�
    | **サブネット名** |[Admin] |
    | **サブネットのアドレス範囲** |10.33.0.0/29 |
    | **サブスクリプション** |使用するサブスクリプションを指定します。 ご利用のサブスクリプションが 1 つだけの場合、 **[サブスクリプション]** は空になります。 |
-   | **[リソース グループ]** |**[既存のものを使用]** を選択し、リソース グループの名前を選択します。 |
+   | **リソース グループ** |**[既存のものを使用]** を選択し、リソース グループの名前を選択します。 |
    | **場所** |Azure の場所を指定します。 |
 
    実際のアドレス空間とサブネット アドレス範囲は、この表とは異なる場合があります。 サブスクリプションによっては、使用できるアドレス空間とそれに対応するサブネット アドレス範囲がポータルで提示されます。 アドレス空間が足りない場合は、異なるサブスクリプションを使用してください。
@@ -145,7 +145,7 @@ Azure アカウントが必要です。 [無料の Azure アカウントを作�
 | **フィールド** | ドメイン コントローラーの可用性セット | SQL Server の可用性セット |
 | --- | --- | --- |
 | **名前** |adavailabilityset |sqlavailabilityset |
-| **[リソース グループ]** |SQL-HA-RG |SQL-HA-RG |
+| **リソース グループ** |SQL-HA-RG |SQL-HA-RG |
 | **障害ドメイン** |3 |3 |
 | **更新ドメイン** |5 |3 |
 
@@ -180,16 +180,16 @@ Azure アカウントが必要です。 [無料の Azure アカウントを作�
 | **ユーザー名** |DomainAdmin |
 | **パスワード** |Contoso!0000 |
 | **サブスクリプション** |*該当するサブスクリプション* |
-| **[リソース グループ]** |SQL-HA-RG |
+| **リソース グループ** |SQL-HA-RG |
 | **場所** |*該当する場所* |
-| **サイズ** |DS1_V2 |
+| **[サイズ]** |DS1_V2 |
 | **Storage** | **マネージド ディスクを使用** - **Yes** |
 | **Virtual Network** |autoHAVNET |
 | **サブネット** |admin |
 | **パブリック IP アドレス** |*VM と同じ名前* |
 | **ネットワーク セキュリティ グループ** |*VM と同じ名前* |
 | **可用性セット** |adavailabilityset </br>**障害ドメイン**: 2 </br>**更新ドメイン**: 2|
-| **診断** |有効 |
+| **診断** |Enabled |
 | **診断ストレージ アカウント** |*自動的に作成* |
 
    >[!IMPORTANT]
@@ -229,7 +229,7 @@ Azure で仮想マシンが作成されます。
 12. **[すべてのサーバー タスクの詳細]** ダイアログ ボックスの **[操作]** 列で、 **[このサーバーをドメイン コントローラーに昇格する]** をクリックします。
 13. **Active Directory Domain Services の構成ウィザード**で、次の値を使用します。
 
-    | **ページ** | Setting |
+    | **ページ** | 設定 |
     | --- | --- |
     | **デプロイ構成** |**[新しいフォレストの追加]**<br/> **[ルート ドメイン名]** = corp.contoso.com |
     | **ドメイン コントローラー オプション** |**[DSRM パスワード]** = Contoso!0000<br/>**[パスワードの確認]** = Contoso!0000 |
@@ -261,7 +261,7 @@ DNS 用に、プライマリ ドメイン コントローラーを使用しま�
 
 3. **[カスタム]** をクリックして、プライマリ ドメイン コント ローラーのプライベート IP アドレスを入力します。
 
-4. **[Save]** をクリックします。
+4. **[保存]** をクリックします。
 
 ### <a name="configure-the-second-domain-controller"></a>2 番目のドメイン コントローラーの構成
 プライマリ ドメイン コントローラーの再起動後、2 つ目のドメイン コントローラーの構成を行うことができます。 これは高可用性を確保するための任意の手順です。 次の手順に従って 2 つ目のドメイン コントローラーを構成します。
@@ -307,14 +307,14 @@ DNS 用に、プライマリ ドメイン コントローラーを使用しま�
 
 Azure Portal の仮想ネットワークの下で、セカンダリ ドメイン コント ローラーの IP アドレスを含めるように DNS サーバーを変更します。 この設定により、DNS サービスの冗長性が可能になります。
 
-### <a name="DomainAccounts"></a> ドメイン アカウントの構成
+### <a name="configure-the-domain-accounts"></a><a name="DomainAccounts"></a> ドメイン アカウントの構成
 
 次に、Active Directory アカウントを構成します。 次の表は、各アカウントを示しています。
 
 | |インストール アカウント<br/> |sqlserver-0 <br/>SQL Server と SQL エージェント サービス アカウント |sqlserver-1<br/>SQL Server と SQL エージェント サービス アカウント
 | --- | --- | --- | ---
-|**名** |[インストール] |SQLSvc1 | SQLSvc2
-|**User SamAccountName** |Install |SQLSvc1 | SQLSvc2
+|**[First Name]** |インストール |SQLSvc1 | SQLSvc2
+|**User SamAccountName** |インストール |SQLSvc1 | SQLSvc2
 
 次の手順に従って、各アカウントを作成します。
 
@@ -342,7 +342,7 @@ Azure Portal の仮想ネットワークの下で、セカンダリ ドメイン
 6. **[Create Computer objects] \(コンピューター オブジェクトの作成)** チェック ボックスをオンにします。
 
      ![corp のユーザーのアクセス許可](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/33-addpermissions.png)
-7. **[OK]** をクリックし、もう一度 **[OK]** をクリックします。 **corp** のプロパティ ウィンドウを閉じます。
+7. **[OK]** をクリックしてから、もう一度 **[OK]** をクリックします。 **corp** のプロパティ ウィンドウを閉じます。
 
 Active Directory オブジェクトとユーザー オブジェクトの構成が終了したので、次に 2 つの SQL Server VM と 1 つの監視サーバー VM を作成します。 その後、3 つすべてをドメインに参加させます。
 
@@ -369,8 +369,8 @@ Active Directory オブジェクトとユーザー オブジェクトの構成�
 | 適切なギャラリー アイテムの選択 |**Windows Server 2016 Datacenter** |**SQL Server 2016 SP1 Enterprise on Windows Server 2016** |**SQL Server 2016 SP1 Enterprise on Windows Server 2016** |
 | [Virtual machine configuration (仮想マシンの構成)] の **[基本]** |**[名前]** = cluster-fsw<br/>**[ユーザー名]** = DomainAdmin<br/>**パスワード** = Contoso!0000<br/>**[サブスクリプション]** = 自分のサブスクリプション<br/>**[リソース グループ]** = SQL-HA-RG<br/>**[場所]** = 該当する Azure の場所 |**[名前]** = sqlserver-0<br/>**[ユーザー名]** = DomainAdmin<br/>**パスワード** = Contoso!0000<br/>**[サブスクリプション]** = 自分のサブスクリプション<br/>**[リソース グループ]** = SQL-HA-RG<br/>**[場所]** = 該当する Azure の場所 |**[名前]** = sqlserver-1<br/>**[ユーザー名]** = DomainAdmin<br/>**パスワード** = Contoso!0000<br/>**[サブスクリプション]** = 自分のサブスクリプション<br/>**[リソース グループ]** = SQL-HA-RG<br/>**[場所]** = 該当する Azure の場所 |
 | [Virtual machine configuration (仮想マシンの構成)] の **[サイズ]** |**[サイズ]** = DS1\_V2 (1 vCPU、3.5 GB) |**[サイズ]** = DS2\_V2 (2 vCPU、7 GB)</br>SSD ストレージをサポートするサイズが必要 (Premium ディスクのサポート )) |**[サイズ]** = DS2\_V2 (2 vCPU、7 GB) |
-| [Virtual machine configuration (仮想マシンの構成)] の **[設定]** |**ストレージ**:マネージド ディスクを使用します。<br/>**[仮想ネットワーク]** = autoHAVNET<br/>**[サブネット]** = sqlsubnet(10.1.1.0/24)<br/>**[パブリック IP アドレス]** 自動的に生成。<br/>**[ネットワーク セキュリティ グループ]** = なし<br/>**[監視診断]** = 有効<br/>**[診断ストレージ アカウント]** = 自動的に生成されたストレージ アカウントを使用<br/>**[可用性セット]** = sqlAvailabilitySet<br/> |**ストレージ**:マネージド ディスクを使用します。<br/>**[仮想ネットワーク]** = autoHAVNET<br/>**[サブネット]** = sqlsubnet(10.1.1.0/24)<br/>**[パブリック IP アドレス]** 自動的に生成。<br/>**[ネットワーク セキュリティ グループ]** = なし<br/>**[監視診断]** = 有効<br/>**[診断ストレージ アカウント]** = 自動的に生成されたストレージ アカウントを使用<br/>**[可用性セット]** = sqlAvailabilitySet<br/> |**ストレージ**:マネージド ディスクを使用します。<br/>**[仮想ネットワーク]** = autoHAVNET<br/>**[サブネット]** = sqlsubnet(10.1.1.0/24)<br/>**[パブリック IP アドレス]** 自動的に生成。<br/>**[ネットワーク セキュリティ グループ]** = なし<br/>**[監視診断]** = 有効<br/>**[診断ストレージ アカウント]** = 自動的に生成されたストレージ アカウントを使用<br/>**[可用性セット]** = sqlAvailabilitySet<br/> |
-| [Virtual machine configuration (仮想マシンの構成)] の **[SQL Server の設定]** |適用不可 |**[SQL 接続]** = プライベート (仮想ネットワーク内)<br/>**[ポート]** = 1433<br/>**[SQL 認証]** = 無効<br/>**[ストレージの構成]** = 全般<br/>**[自動修正]** = 日曜日 2:00<br/>**[自動バックアップ]** = 無効</br>**[Azure Key Vault の統合]** = 無効 |**[SQL 接続]** = プライベート (仮想ネットワーク内)<br/>**[ポート]** = 1433<br/>**[SQL 認証]** = 無効<br/>**[ストレージの構成]** = 全般<br/>**[自動修正]** = 日曜日 2:00<br/>**[自動バックアップ]** = 無効</br>**[Azure Key Vault の統合]** = 無効 |
+| [Virtual machine configuration (仮想マシンの構成)] の **[設定]** |**ストレージ**: マネージド ディスクを使用します。<br/>**[仮想ネットワーク]** = autoHAVNET<br/>**[サブネット]** = sqlsubnet(10.1.1.0/24)<br/>**[パブリック IP アドレス]** 自動的に生成。<br/>**[ネットワーク セキュリティ グループ]** = なし<br/>**[監視診断]** = 有効<br/>**[診断ストレージ アカウント]** = 自動的に生成されたストレージ アカウントを使用<br/>**[可用性セット]** = sqlAvailabilitySet<br/> |**ストレージ**: マネージド ディスクを使用します。<br/>**[仮想ネットワーク]** = autoHAVNET<br/>**[サブネット]** = sqlsubnet(10.1.1.0/24)<br/>**[パブリック IP アドレス]** 自動的に生成。<br/>**[ネットワーク セキュリティ グループ]** = なし<br/>**[監視診断]** = 有効<br/>**[診断ストレージ アカウント]** = 自動的に生成されたストレージ アカウントを使用<br/>**[可用性セット]** = sqlAvailabilitySet<br/> |**ストレージ**: マネージド ディスクを使用します。<br/>**[仮想ネットワーク]** = autoHAVNET<br/>**[サブネット]** = sqlsubnet(10.1.1.0/24)<br/>**[パブリック IP アドレス]** 自動的に生成。<br/>**[ネットワーク セキュリティ グループ]** = なし<br/>**[監視診断]** = 有効<br/>**[診断ストレージ アカウント]** = 自動的に生成されたストレージ アカウントを使用<br/>**[可用性セット]** = sqlAvailabilitySet<br/> |
+| [Virtual machine configuration (仮想マシンの構成)] の **[SQL Server の設定]** |適用なし |**[SQL 接続]** = プライベート (仮想ネットワーク内)<br/>**[ポート]** = 1433<br/>**[SQL 認証]** = 無効<br/>**[ストレージの構成]** = 全般<br/>**[自動修正]** = 日曜日 2:00<br/>**[自動バックアップ]** = 無効</br>**[Azure Key Vault の統合]** = 無効 |**[SQL 接続]** = プライベート (仮想ネットワーク内)<br/>**[ポート]** = 1433<br/>**[SQL 認証]** = 無効<br/>**[ストレージの構成]** = 全般<br/>**[自動修正]** = 日曜日 2:00<br/>**[自動バックアップ]** = 無効</br>**[Azure Key Vault の統合]** = 無効 |
 
 <br/>
 
@@ -381,7 +381,7 @@ Active Directory オブジェクトとユーザー オブジェクトの構成�
 
 3 つの VM が完全にプロビジョニングされたら、**corp.contoso.com** ドメインに参加させて、CORP\Install 管理者権限を付与する必要があります。
 
-### <a name="joinDomain"></a>ドメインへのサーバーの参加
+### <a name="join-the-servers-to-the-domain"></a><a name="joinDomain"></a>ドメインへのサーバーの参加
 
 これで、VM を **corp.contoso.com** に参加させることができるようになりました。 両方の SQL Server VM とファイル共有監視サーバーに対して、次の手順を実行します。
 
@@ -410,11 +410,11 @@ Active Directory オブジェクトとユーザー オブジェクトの構成�
 7. **[OK]** をクリックして **[管理者のプロパティ]** ダイアログ ボックスを閉じます。
 8. 以上の手順を **sqlserver-1** と **cluster-fsw** にも繰り返します。
 
-### <a name="setServiceAccount"></a>SQL Server サービス アカウントの設定
+### <a name="set-the-sql-server-service-accounts"></a><a name="setServiceAccount"></a>SQL Server サービス アカウントの設定
 
 各 SQL Server VM で、SQL Server サービス アカウントを設定します。 ドメイン アカウントの構成時に作成したアカウントを使用します。
 
-1. **SQL Server 構成マネージャー**を開きます。
+1. **[SQL Server 構成マネージャー]** を開きます。
 2. SQL Server サービスを右クリックし、 **[プロパティ]** をクリックします。
 3. アカウントとパスワードを設定します。
 4. もう一方の SQL Server VM についても同じ手順を繰り返します。  
@@ -527,6 +527,6 @@ SQL Server 可用性グループでは、各 SQL Server VM をドメイン ア�
    GO 
    ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure 仮想マシンで SQL Server Always On 可用性グループを作成する](virtual-machines-windows-portal-sql-availability-group-tutorial.md)

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 140ad45d9c4f6b6f49a4ea4aefb9298e58a2cf10
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75443566"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory Identity Protection についてよく寄せられる質問
@@ -60,7 +60,7 @@ IP の地理的位置情報のマッピングについては、業界全体の�
 
 ### <a name="how-can-i-close-specific-risk-detections-like-i-did-in-the-old-ui"></a>以前の UI で行っていたように、特定のリスクの検出を終了する方法はありますか?
 
-リンクされたサインインが侵害されているか、または安全であると確認することで、リスク検出に関するフィードバックを提供できます。 サインインに関するフィードバックは、そのサインインに対して行われたすべての検出に関連しています。 サインインにリンクされていない検出を終了する場合は、ユーザー レベルでそのフィードバックを提供することができます。 詳細については、記事「[方法: Azure AD Identity Protection でリスクに関するフィードバックを提供する](howto-identity-protection-risk-feedback.md)」を参照してください。
+リンクされたサインインが侵害されているか、または安全であると確認することで、リスク検出に関するフィードバックを提供できます。 サインインに関するフィードバックは、そのサインインに対して行われたすべての検出に関連しています。 サインインにリンクされていない検出を終了する場合は、ユーザー レベルでそのフィードバックを提供することができます。 詳細については、[方法: Azure AD Identity Protection でリスクに関するフィードバックを提供する](howto-identity-protection-risk-feedback.md)」を参照してください。
 
 ### <a name="how-far-can-i-go-back-in-time-to-understand-whats-going-on-with-my-user"></a>ユーザーに何が起きているかを把握するために、どのくらいまで時間を遡ることができますか?
 

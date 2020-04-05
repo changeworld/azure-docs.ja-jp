@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: 73cc1a58689db7902843f222aa4874a5e188be44
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063167"
 ---
 # <a name="tutorial-configure-visitly-for-automatic-user-provisioning"></a>チュートリアル:Visitly を構成し、自動ユーザー プロビジョニングに対応させる

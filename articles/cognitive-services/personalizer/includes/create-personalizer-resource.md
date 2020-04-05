@@ -11,10 +11,10 @@ ms.custom: include file
 ms.date: 01/15/2020
 ms.author: diberry
 ms.openlocfilehash: 11abd52681d7c9962af4e5bf0728f97b256223c1
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76122754"
 ---
 ## <a name="create-a-personalizer-azure-resource"></a>Personalizer Azure リソースを作成する

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 5cd675823b85e975dcb8dfe152c27b2d30463c1c
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76759739"
 ---
 # <a name="create-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボの作成
@@ -32,7 +32,7 @@ Azure DevTest Labs におけるラボとは、Virtual Machines (VM) などのリ
 ## <a name="steps-to-create-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボを作成する手順
 次の手順は、Azure Portal を使用して Azure DevTest Labs でラボを作成する方法を示しています。 
 
-1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインする
 1. 左側のメイン メニューの **[すべてのサービス]** (リスト最上部) を選択します。 **[DEVOPS]** セクションで **[DevTest Labs]** の隣の [*] (星) を選択します。 この操作により、次に簡単にアクセスできるように左側のナビゲーション メニューに **[DevTest Labs]** が追加されます。 
 
     ![[すべてのサービス] - [DevTest Labs] を選択する](./media/devtest-lab-create-lab/all-services-select.png)

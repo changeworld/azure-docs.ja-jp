@@ -16,10 +16,10 @@ ms.date: 06/21/2018
 ms.author: magattus
 ms.custom: ''
 ms.openlocfilehash: 8ab66117be4f05550b00defafc883108646be283
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74083058"
 ---
 # <a name="migrate-an-azure-cdn-profile-from-standard-verizon-to-premium-verizon"></a>Standard Verizon から Premium Verizon に Azure CDN プロファイルを移行する
@@ -37,18 +37,18 @@ Azure Content Delivery Network (CDN) プロファイルを作成してエンド�
 ## <a name="profile-comparison"></a>プロファイルの比較
 **Azure CDN Premium from Verizon** プロファイルは、主に次の点で **Azure CDN Standard from Verizon** プロファイルと異なります。
 - [圧縮](cdn-improve-performance.md)、[キャッシュ規則](cdn-caching-rules.md)、[geo フィルタリング](cdn-restrict-access-by-country.md)など、一部の Azure CDN 機能について、Azure CDN インターフェイスを使用できません。 **[管理]** ボタン経由で Verizon ポータルを使用する必要があります。
-- API:Standard Verizon と異なり、Premium Verizon ポータルからアクセスされるこれらの機能の制御には、API を使用することができません。 ただし、エンドポイントの作成/削除、キャッシュされた資産の消去/読み込み、カスタム ドメインの有効化/無効化など、その他の一般的な機能を制御するために API を使用することはできます。
-- 価格:Premium Verizon では、データ転送に関する料金体系が Standard Verizon と異なります。 詳細については、「[Content Delivery Network の価格](https://azure.microsoft.com/pricing/details/cdn/)」をご覧ください。
+- API: Standard Verizon と異なり、Premium Verizon ポータルからアクセスされるこれらの機能の制御には、API を使用することができません。 ただし、エンドポイントの作成/削除、キャッシュされた資産の消去/読み込み、カスタム ドメインの有効化/無効化など、その他の一般的な機能を制御するために API を使用することはできます。
+- 価格: Premium Verizon では、データ転送に関する料金体系が Standard Verizon と異なります。 詳細については、「[Content Delivery Network の価格](https://azure.microsoft.com/pricing/details/cdn/)」をご覧ください。
 
 **Azure CDN Premium from Verizon** プロファイルには、次の追加の機能があります。
-- [トークン認証](cdn-token-auth.md):ユーザーが安全なリソースを取り込むためにトークンを取得して使用できるようにします。
-- [ルール エンジン](cdn-rules-engine.md):HTTP 要求を処理する方法をカスタマイズできるようにします。
+- [トークン認証](cdn-token-auth.md): ユーザーが安全なリソースを取り込むためにトークンを取得して使用できるようにします。
+- [ルール エンジン](cdn-rules-engine.md): HTTP 要求を処理する方法をカスタマイズできるようにします。
 - 高度な分析ツール:
    - [詳細な HTTP 分析](cdn-advanced-http-reports.md)
    - [エッジ パフォーマンス分析](cdn-edge-performance.md)
    - [リアルタイム分析](cdn-real-time-alerts.md)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ルール エンジンの詳細については、「[Azure CDN ルール エンジンのリファレンス](cdn-rules-engine-reference.md)」をご覧ください。
 

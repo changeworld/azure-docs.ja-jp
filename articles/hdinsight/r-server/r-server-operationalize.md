@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.openlocfilehash: a05bcdef2b7456fbab852e9728c156e57f847f57
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71123558"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight 上の ML サービス クラスターの運用化
@@ -189,8 +189,8 @@ ML サービス クラスターは [Apache Hadoop YARN](https://hadoop.apache.or
          ]
        }
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [HDInsight 上の ML サービス クラスターの管理](r-server-hdinsight-manage.md)
 * [HDInsight 上の ML サービス クラスター向けのコンピューティング コンテキスト オプション](r-server-compute-contexts.md)
-* [HDInsight 上の ML サービス クラスター向けの Azure Storage オプション](r-server-storage.md)
+* [HDInsight 上の ML Services クラスター向けの Azure Storage オプション](r-server-storage.md)

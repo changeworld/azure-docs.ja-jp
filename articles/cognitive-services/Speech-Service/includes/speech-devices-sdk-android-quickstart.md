@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 02/20/2020
 ms.author: dapine
 ms.openlocfilehash: 2ee6b12923bfd0e06343e8f185226cb72280d806
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78383928"
 ---
 このクイックスタートでは、Speech Devices SDK for Android を使用して音声対応製品を構築するか、またはそれを[会話の文字起こし](../conversation-transcription-service.md)デバイスとして使用する方法について説明します。

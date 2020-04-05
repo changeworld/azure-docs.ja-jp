@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: e01a1cad98ded9d7ce8683b6adf38b5d53959774
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75966814"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>PowerShell を使用して Azure Application Gateway (クラシック) のカスタム プローブを作成する
@@ -24,7 +24,7 @@ ms.locfileid: "75966814"
 この記事では、PowerShell を使用して既存の Application Gateway にカスタム プローブを追加します。 カスタム プローブは、特定の正常性チェック ページがあるアプリケーションや、既定の Web アプリケーションに対して正常な応答を返さないアプリケーションに役立ちます。
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../azure-resource-manager/management/deployment-models.md)です。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルを使用してこれらの手順を実行する](application-gateway-create-probe-ps.md)方法について説明します。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/management/deployment-models.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルを使用してこれらの手順を実行する](application-gateway-create-probe-ps.md)方法について説明します。
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
@@ -161,7 +161,7 @@ Get-AzureApplicationGateway AppGwTest
    Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofile "<path to file>"
    ```
 
-1. テキスト エディターで XML ファイルを開きます。 `<frontendport>` の後に `<probe>` セクションを追加します。
+1. テキスト エディターで XML ファイルを開きます。 `<probe>` の後に `<frontendport>` セクションを追加します。
 
    ```xml
    <Probes>

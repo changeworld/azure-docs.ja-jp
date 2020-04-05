@@ -9,10 +9,10 @@ ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
 ms.openlocfilehash: 57469bef7014010164234638f3d059ac96b125cf
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78384009"
 ---
 ## <a name="what-is-the-time-required-for-migration"></a>移行にはどれくらいの時間が必要ですか?

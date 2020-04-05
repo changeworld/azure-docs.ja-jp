@@ -1,19 +1,18 @@
 ---
 title: Power BI アプリ オファーの連絡先情報 | Azure Marketplace
 description: Microsoft AppSource Marketplace 用に Power BI アプリ オファーの連絡先フィールドを構成します。
-services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: ec1ed23b253f705e1830c1c014492fe52b2133f0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 79cdd12359a0d781b51db2632bc9d534e0d88c6d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826534"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285233"
 ---
 # <a name="power-bi-app-contacts-tab"></a>Power BI アプリの [Contacts]\(連絡先\) タブ
 
@@ -38,6 +37,6 @@ ms.locfileid: "73826534"
 |   |   |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Power BI アプリ オファーが完成したら、そのオファーに関連するすべての[技術資産](./cpp-create-technical-assets.md)が作成済みであることを確認します。

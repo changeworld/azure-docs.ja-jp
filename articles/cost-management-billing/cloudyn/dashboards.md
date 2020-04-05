@@ -1,24 +1,26 @@
 ---
-title: Azure 内の Cloudyn ダッシュボードで主なメトリックを表示する | Microsoft Docs
+title: Azure 内の Cloudyn ダッシュボードで主なメトリックを表示する
 description: この記事では、Cloudyn のダッシュボードで主なメトリックを表示する方法について説明します。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: vitavor
 ms.custom: seodec18
-ms.openlocfilehash: 78af8f2541eb0b28d75be89612d158c889261adc
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: 892df9a6e0eb4d791f818eed0a78c96a829e25a0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770126"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79464225"
 ---
 # <a name="view-key-cost-metrics-with-dashboards"></a>ダッシュボードで主なコスト メトリックを表示する
 
 Cloudyn のダッシュボードには、レポートの高レベルのビューが表示されます。 ダッシュボードでは、主なコスト メトリックを 1 つのビューで表示できます。 そこにはまた、ビジネス上の重要な意思決定を行うのに役立つビジネス動向の注目点も表示されます。
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ダッシュボードはまた、次に示すような、組織内のさまざまな責任を負うユーザー向けのビューを作成するためにも使用されます。
 

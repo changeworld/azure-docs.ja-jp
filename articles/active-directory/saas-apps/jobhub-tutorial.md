@@ -17,10 +17,10 @@ ms.date: 05/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bc5f7bf299465b6af272c9b417a62f121b9a4d82
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67164929"
 ---
 # <a name="tutorial-integrate-jobhub-with-azure-active-directory"></a>チュートリアル:JOBHUB と Azure Active Directory との統合
@@ -29,7 +29,7 @@ ms.locfileid: "67164929"
 
 * JOBHUB にアクセスできるユーザーを Azure AD で制御する。
 * ユーザーが自分の Azure AD アカウントを使用して JOBHUB に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure portal) でアカウントを管理する。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -37,7 +37,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 開始するには、次が必要です。
 
-* Azure AD サブスクリプション。 サブスクリプションを持っていない場合は、[ここ](https://azure.microsoft.com/pricing/free-trial/)から1 か月間の無料試用版を入手できます。
+* Azure AD サブスクリプション。 サブスクリプションをお持ちでない場合は、[ここ](https://azure.microsoft.com/pricing/free-trial/)から 1 か月間の無料試用版を入手できます。
 * JOBHUB のシングル サインオン (SSO) が有効になったサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
@@ -53,7 +53,7 @@ Azure AD への JOBHUB の統合を構成するには、ギャラリーから管
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに "**JOBHUB**" と入力します。
-1. 結果のパネルから **[JOBHUB]** を選択し、アプリを追加します。 アプリがテナントに追加される間、数秒お待ちください。
+1. 結果のパネルから **[JOBHUB]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -66,11 +66,11 @@ JOBHUB で Azure AD SSO を構成してテストするには、次の構成要�
 3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
 5. **[JOBHUB のテスト ユーザーの作成](#create-jobhub-test-user)** - JOBHUB で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンク させます。
-6. **[SSO のテスト](#test-sso)** - 構成が機能するかどうか確認します。
+6. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-Azure portal で Azure AD SSO を有効にするには、次の手順に従います。
+これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
 1. [Azure portal](https://portal.azure.com/) の **JOBHUB** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。

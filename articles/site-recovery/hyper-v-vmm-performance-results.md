@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
 ms.openlocfilehash: 3edd182e335bc679d95d7be64f45b617a9f54c1a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73663168"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>セカンダリ サイトへの Hyper-V レプリケーションのテスト結果
@@ -150,8 +150,8 @@ Hyper-V レプリカが使用する復旧サーバーのメモリは少なく、
 | SQL Server |51 |1 |4 |167 |10 |
 | Exchange Server |71 |1 |4 |552 |10 |
 | ファイル サーバー |50 |1 |2 |552 |22 |
-| VDI |149 |0\.5 |1 |80 |6 |
-| Web サーバー |149 |0\.5 |1 |80 |6 |
+| VDI |149 |.5 |1 |80 |6 |
+| Web サーバー |149 |.5 |1 |80 |6 |
 | 合計 |470 | | |96.83 TB (テラバイト) |4108 |
 
 ### <a name="site-recovery-settings"></a>Site Recovery 設定
@@ -180,6 +180,6 @@ Hyper-V レプリカが使用する復旧サーバーのメモリは少なく、
 | VM 読み取りスループット |\Hyper-V Virtual Storage Device(\<VHD>)\Read Bytes/sec |
 | VM 書き込みスループット |\Hyper-V Virtual Storage Device(\<VHD>)\Write Bytes/sec |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [レプリケーションの設定](hyper-v-vmm-disaster-recovery.md)

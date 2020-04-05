@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 3af18eb09fd9906a0caaebda0b786795400467f3
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78165397"
 ---
 # <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL) へのアプリケーションの移行

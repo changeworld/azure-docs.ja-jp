@@ -16,10 +16,10 @@ ms.date: 01/15/2019
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: 26691ca6b9d078ef18ac852c67fa2ac88dff2722
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77023006"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>PowerShell コマンドレットで Batch リソースを管理する

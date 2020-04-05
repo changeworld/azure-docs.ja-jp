@@ -12,10 +12,10 @@ ms.date: 02/12/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.openlocfilehash: ecd5d8bae22d67f8d9f5b99d5c94eecf54a4a1f3
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77166009"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したオンプレミス API へのアクセスのセキュリティ保護

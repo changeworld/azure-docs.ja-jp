@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: vashan
 ms.openlocfilehash: 4a0be30f181921461ad0bacea6f18ce439d22353
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76279059"
 ---
 # <a name="orchestration-mode-preview"></a>オーケストレーション モード (プレビュー)
@@ -53,7 +53,7 @@ ms.locfileid: "76279059"
 | インスタンス制御            | 完全な VM 制御。 VM は、すべての Azure VM 管理機能 (Azure Policy、Azure Backup、Azure Site Recovery など) をサポートする完全修飾 URI を持ちます | VM は、スケール セットの依存リソースです。 インスタンスを管理する際は、スケール セットを通じてのみアクセスできます。 |
 | インスタンス モデル              | Microsoft.Compute/VirtualMachines モデル定義。 | Microsoft.Compute/VirtualMachineScaleSets/VirtualMachines モデル定義。 |
 | 容量                    | 空のスケール セットを作成できます。最大 200 台の VM をスケール セットに追加できます | インスタンス数が 0 から 1,000 個のスケール セットを定義できます |
-| [詳細ビュー]                        | サポートされています                                  | サポートされています |
+| 詳細ビュー                        | サポートされています                                  | サポートされています |
 | 1 つの配置グループ == false | サポートされていません                          | サポートされています |
 
 

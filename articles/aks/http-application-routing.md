@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 08/06/2019
 ms.author: laevenso
 ms.openlocfilehash: 5794e46f10abec1ceef4c79a881f7f353e729634
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77595690"
 ---
 # <a name="http-application-routing"></a>HTTP アプリケーション ルーティング
@@ -206,7 +206,7 @@ kubectl delete configmaps addon-http-application-routing-nginx-configuration --n
 
 クラスターに残っているすべての *addon-http-application-routing* リソースに対して、前の `kubectl delete` の手順を繰り返します。
 
-## <a name="troubleshoot"></a>[トラブルシューティング]
+## <a name="troubleshoot"></a>トラブルシューティング
 
 [kubectl logs][kubectl-logs] コマンドを使用して、外部 DNS アプリケーションのアプリケーション ログを表示します。 A および TXT DNS レコードが正常に作成されたことをログで確認してください。
 

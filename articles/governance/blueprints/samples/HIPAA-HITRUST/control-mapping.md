@@ -4,10 +4,10 @@ description: HIPAA HITRUST ブループリント サンプルのコントロー�
 ms.date: 11/26/2019
 ms.topic: sample
 ms.openlocfilehash: c6680055cfe41a2f893d46cba797783913d880ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75470747"
 ---
 # <a name="control-mapping-of-the-hipaa-hitrust-blueprint-sample"></a>HIPAA HITRUST ブループリント サンプルのコントロール マッピング

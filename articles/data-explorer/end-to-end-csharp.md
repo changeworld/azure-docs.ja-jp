@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: 0711484c4fff24c5dcd3c18effce596a92bc30c3
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76964517"
 ---
 # <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-c"></a>C# による Azure Data Explorer へのエンドツーエンドの BLOB の取り込み

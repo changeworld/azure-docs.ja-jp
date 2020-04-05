@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/25/2020
+ms.date: 02/26/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b974869d1462f449e8a241a5925ef345170b493a
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 08f770ced6cb1ec1102159788e1583d481436b08
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623870"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235911"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver のための高可用性のアーキテクチャとシナリオ
 
@@ -332,7 +332,7 @@ Linux で WSFC や Pacemaker などの機能 (現在 SUSE Linux Enterprise Serve
 
 この方法について詳しくは、「[Utilize Azure infrastructure VM restart to achieve higher availability of the SAP system][sap-higher-availability]」 (SAP システムでさらに高い可用性を実現するために Azure インフラストラクチャ VM の再起動を利用する) を参照してください。
 
-## <a name="baed0eb3-c662-4405-b114-24c10a62954e"></a> Azure IaaS での SAP アプリケーションの高可用性
+## <a name="high-availability-of-sap-applications-on-azure-iaas"></a><a name="baed0eb3-c662-4405-b114-24c10a62954e"></a> Azure IaaS での SAP アプリケーションの高可用性
 
 SAP システム全体の高可用性を実現するには、SAP システムの重要なすべてのコンポーネントを保護する必要があります。 次に例を示します。
   * SAP アプリケーション サーバーの冗長性。
@@ -420,6 +420,7 @@ Red Hat クラスター フレームワークを使用した SAP ASCS/SCS イン
 > Linux のマルチ SID 高可用性アーキテクチャについての詳細は、次をご覧ください。
 
 * [Azure VM での SAP NW の HA SLES for SAP アプリケーション のマルチ SID ガイド](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
+* [RHEL for SAP アプリケーション マルチ SID 上の Azure VM での SAP NW の HA ガイド](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
 
 ### <a name="high-availability-dbms-instance"></a>高可用性の DBMS インスタンス
 

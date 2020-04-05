@@ -15,11 +15,11 @@ ms.date: 11/18/2019
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: fee3dc764d2052185160a4ba6b3d70854c54eeac
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022785"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227407"
 ---
 > [!NOTE] 
 > この記事で説明するユーザー アカウントは、セキュリティ上の理由により、Remote Desktop Protocol (RDP) や Secure Shell (SSH) で使用されているユーザー アカウントとは異なります。 

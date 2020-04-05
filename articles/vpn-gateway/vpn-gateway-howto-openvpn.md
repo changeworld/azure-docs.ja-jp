@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: cherylmc
 ms.openlocfilehash: 7505420cc31fe751ecc0c114a89fea0734cbc6cf
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162409"
 ---
 # <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway"></a>Azure ポイント対サイト VPN Gateway 用に OpenVPN を構成する
@@ -20,14 +20,14 @@ ms.locfileid: "77162409"
 
 
 
-## <a name="vnet"></a>1.ポイント対サイト VPN を作成する
+## <a name="1-create-a-point-to-site-vpn"></a><a name="vnet"></a>1.ポイント対サイト VPN を作成する
 
 機能しているポイント対サイト環境がまだない場合は、指示に従って作成します。 ネイティブの Azure 証明機関を使用してポイント対サイト VPN ゲートウェイを作成および構成する方法については、[ポイント対サイト VPN の作成](vpn-gateway-howto-point-to-site-resource-manager-portal.md)に関するページを参照してください。 
 
 > [!IMPORTANT]
 > Basic SKU は OpenVPN ではサポートされていません。
 
-## <a name="enable"></a>2.ゲートウェイで OpenVPN を有効にする
+## <a name="2-enable-openvpn-on-the-gateway"></a><a name="enable"></a>2.ゲートウェイで OpenVPN を有効にする
 
 ゲートウェイで OpenVPN を有効にします。 ゲートウェイがポイント対サイト (IKEv2 または SSTP) 用に既に構成されていることを確認してから、次のコマンドを実行してください。
 

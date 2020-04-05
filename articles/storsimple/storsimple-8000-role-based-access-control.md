@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
 ms.openlocfilehash: a79753a897a62e194a759c23a9c0acc45c5f36c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66159095"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>StorSimple でロールベースのアクセス制御を使用する
@@ -194,6 +194,6 @@ AssignableScopes : {/subscriptions/<subscription_ID>/}
     ![StorSimple インフラストラクチャ管理者ロールのユーザーを表示する](./media/storsimple-8000-role-based-access-control/rbac-infra-admin-permissions1.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [内部ユーザーと外部ユーザーへのカスタム ロールの割り当て](../role-based-access-control/role-assignments-external-users.md)に関する記事で詳細を確認します。

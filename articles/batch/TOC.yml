@@ -69,6 +69,8 @@
   items:
     - name: Batch アカウントの管理
       items:
+        - name: アカウントの管理
+          href: batch-manage-account-basics.md
         - name: ポータルで Batch アカウントを管理する
           href: batch-account-create-portal.md
         - name: Batch Management .NET で Batch アカウントを管理する
@@ -83,8 +85,12 @@
           href: batch-aad-auth-management.md
         - name: Batch で Key Vault に安全にアクセスする
           href: credential-access-key-vault.md
+    - name: アプリケーション パッケージの使用
+      href: batch-application-packages.md
     - name: ファイルとアプリケーションをプール ノードにコピーする
       items:
+        - name: プール ノードへのアプリケーションとデータのコピー
+          href: batch-applications-to-pool-nodes.md
         - name: アプリケーション パッケージの使用
           href: batch-application-packages.md
         - name: リソース ファイルを作成する

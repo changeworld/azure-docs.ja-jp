@@ -4,10 +4,10 @@ description: アプリケーション シークレットを管理して、Servic
 ms.date: 4/2/2019
 ms.topic: conceptual
 ms.openlocfilehash: d7946092a0bebe374404870fcd711ad33cc98b11
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75461921"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>Azure Service Fabric Mesh アプリケーションのシークレットを管理する

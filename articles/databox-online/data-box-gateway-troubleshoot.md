@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: alkohli
 ms.openlocfilehash: 54f6473954c73de6ec29602c3d1563579b3e8cc6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60754449"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231443"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Azure Data Box Gateway に関する問題のトラブルシューティング 
 
@@ -106,6 +106,6 @@ ms.locfileid: "60754449"
     |    16002           |    RefreshWorkNeededException                              |    このファイルは完全にアップロードされていないため、更新できませんでした。                                                                                                                                                                          | 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [このリリースの既知の問題](data-box-gateway-release-notes.md)について学習します。

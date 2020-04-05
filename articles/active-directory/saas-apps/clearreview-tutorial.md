@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Clear Review の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Clear Review の統合 | Microsoft Docs'
 description: Azure Active Directory と Clear Review の間のシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0f2a0560163f9806053f49944cbec0db2b1a9de8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67105461"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>チュートリアル:Azure Active Directory と Clear Review の統合
+# <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>チュートリアル: Azure Active Directory と Clear Review の統合
 
 このチュートリアルでは、Clear Review と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Clear Review と Azure AD の統合には、次の利点があります。
@@ -133,7 +133,7 @@ Clear Review で Azure AD シングル サインオンを構成するには、�
 
     b. **[ソース属性]** の一覧から、その行の **user.mail** 属性値を選択します。
 
-    c. **[Save]** をクリックします。
+    c. **[保存]** をクリックします。
 
 8. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -173,7 +173,7 @@ Clear Review で Azure AD シングル サインオンを構成するには、�
 
     d. ダウンロードした証明書をメモ帳で開き、その内容を **[X.509 Certificate]\(X.509 証明書\)** ボックスに貼り付けます。   
 
-    e. **[Save]** をクリックします。
+    e. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 

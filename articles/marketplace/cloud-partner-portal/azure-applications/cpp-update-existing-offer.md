@@ -1,19 +1,18 @@
 ---
 title: 既存の Azure アプリケーション オファーを更新する | Azure Marketplace
 description: Azure Marketplace にある既存の Azure アプリケーション プランを更新する方法。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: pabutler
-ms.openlocfilehash: 6854e445ea63639866e9e39a6afc725237bbc8fe
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 152fd24fbc5d2762d381ffce2a937bc448858b0a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826110"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275953"
 ---
 # <a name="update-an-existing-azure-application-offer"></a>既存の Azure アプリケーション プランを更新する
 
@@ -31,7 +30,7 @@ ms.locfileid: "73826110"
 
 コンテナー プランや SKU には、Azure Marketplace でプランがライブになった後は変更できない属性があります。 次の設定は変更できません。
 
-- プランの [プラン ID] と [Publisher ID]\(発行者 ID\)
+- オファーのオファー ID と発行元 ID
 - 既存の SKU の [SKU ID]
 - バージョン タグ (例: `1.0.1`)
 - 既存の SKU に対する課金/ライセンス モデルの変更
@@ -84,7 +83,7 @@ Marketplace からオファーを削除することを決定する場合があ�
 
 ## <a name="compare-feature"></a>機能の比較
 
-発行されているプランに変更を加える場合、[比較] 機能を使用して、加えた変更を監査することができます。
+発行されているオファーを変更する場合、比較機能を使用して、行った変更を監査することができます。
 
 比較機能を使用する方法:
 
@@ -95,6 +94,6 @@ Marketplace からオファーを削除することを決定する場合があ�
 
 発行操作の履歴を表示するには、Cloud パートナー ポータルの左側のナビゲーション メニュー バーにある **[履歴]** タブを選択します。 Azure Marketplace プランの有効期間中に実行されたタイムスタンプ付きの操作を表示することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure アプリケーション プラン](./cpp-azure-app-offer.md)

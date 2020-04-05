@@ -12,10 +12,10 @@ ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
 ms.openlocfilehash: 0ed0bd3544fff89c8230267e3d6d8826c5ae3c7c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74114608"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>Azure Monitor ログによる SQL データ同期の監視 
@@ -85,7 +85,7 @@ Runbook の作成の詳細については、「[初めての PowerShell Runbook]
 
 4.  **[Runbook file] (Runbook ファイル)** で、指定された `DataSyncLogPowerShellRunbook` ファイルを使用します。 **[Runbook type] (Runbook の種類)** を `PowerShell` として設定します。 この Runbook に名前を付けます。
 
-5.  **作成** を選択します。 これで Runbook が作成されました。
+5.  **［作成］** を選択します これで Runbook が作成されました。
 
 6.  Azure Automation アカウントで、[共有リソース] の下にある **[変数]** タブを選択します。
 
@@ -123,7 +123,7 @@ Runbook のスケジュールを設定するには:
 
 5.  **[繰り返し]** を [繰り返し] に設定し、必要な間隔を設定します。 ここ (このスクリプト) と Azure Monitor ログで同じ間隔を使用します。
 
-6.  **作成** を選択します。
+6.  **［作成］** を選択します
 
 ### <a name="check-the-automation"></a>オートメーションをチェックする
 
@@ -135,7 +135,7 @@ Azure Monitor ログを使用するアラートを作成するには、次のこ
 
 1.  Azure portal で **[ログ検索]** を選択します。
 
-2.  選択した間隔に含まれる同期グループごとのエラーおよび警告を選択するためのクエリを作成します。 例:
+2.  選択した間隔に含まれる同期グループごとのエラーおよび警告を選択するためのクエリを作成します。 次に例を示します。
 
     `DataSyncLog_CL | where LogLevel_s != "Success" | summarize AggregatedValue = count() by bin(TimeGenerated,60m),SyncGroupName_s`
 
@@ -149,7 +149,7 @@ Azure Monitor ログを使用するアラートを作成するには、次のこ
 
 5.  **[アクション]** で、 **[電子メール通知]** を [はい] に設定します。 目的の電子メール受信者を入力します。
 
-6.  **[Save]** をクリックします。 これで、指定された受信者がエラー発生時に電子メール通知を受信するようになりました。
+6.  **[保存]** をクリックします。 これで、指定された受信者がエラー発生時に電子メール通知を受信するようになりました。
 
 ## <a name="create-an-azure-monitor-view-for-monitoring"></a>監視のための Azure Monitor ビューを作成する
 
@@ -197,7 +197,7 @@ Azure Monitor ビューを構成するには、次のことを実行します。
 
 -   [データ同期 Azure Monitor ビュー](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 SQL データ同期の詳細については、以下を参照してください。
 
 -   概要 - [Azure SQL データ同期を使用して複数のクラウドおよびオンプレミス データベース間でデータを同期する](sql-database-sync-data.md)

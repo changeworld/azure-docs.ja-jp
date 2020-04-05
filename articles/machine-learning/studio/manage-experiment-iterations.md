@@ -10,14 +10,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: e2e13942b4ada2c6e90a056a0239bc620951638b
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 5c8a278f09fdb3b605020e4c2fcf7aa2776906e7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168493"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79204309"
 ---
 # <a name="manage-experiment-iterations-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) で実験イテレーションを管理する
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 予測可能な分析モデルの開発では、十分にトレーニングされた有効なモデルが作成されるまで、実験におけるさまざまな関数とパラメーターを繰り返し調整します。 このプロセスでは、実験パラメーターと構成のさまざまなイテレーションを追跡することが重要になります。
 
 

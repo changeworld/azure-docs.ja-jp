@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
 ms.openlocfilehash: 15a2d58d2fc14c370c41d5454d62c74a5b66ad42
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77499975"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>最大で 10 年間 Azure SQL Database のバックアップを格納する

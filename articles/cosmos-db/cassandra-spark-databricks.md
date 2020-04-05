@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 37a06b19285c1196b5d87830ea176d4bd0d4eade
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60894013"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>Azure Databricks から Azure Cosmos DB Cassandra API のデータにアクセスする
@@ -51,7 +51,7 @@ ms.locfileid: "60894013"
 
 * **Azure Cosmos DB Cassandra API 固有のライブラリ:** - Cassandra Spark コネクタから Azure Cosmos DB Cassandra api への再試行ポリシーの構成では、カスタムの接続ファクトリが必要です。 ライブラリをクラスタに接続するために、`com.microsoft.azure.cosmosdb:azure-cosmos-cassandra-spark-helper:1.0.0`[ の Maven 座標](https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar)を追加します。
 
-## <a name="sample-notebooks"></a>ノートブックのサンプル
+## <a name="sample-notebooks"></a>サンプル ノートブック
 
 Azure Databricks の[ノートブックのサンプル](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/notebooks/scala)は、GitHub リポジトリからダウンロードできます。 ここには、Spark から Azure Cosmos DB Cassandra API への接続方法や、データに対してさまざまな CRUD 操作を実行する方法などのサンプルがあります。 また、Databricks のクラスタ ワークスペースに[すべてのノートブックをインポート](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/dbc)して、実行することもできます。 
 
@@ -64,6 +64,6 @@ Azure Databricks 上で自動化されたプロセスとして実行させる Sp
 * [Spark Scala プログラムを Azure Databricks 上の自動化されたジョブとして実行する方法](https://docs.azuredatabricks.net/user-guide/jobs.html)
 * [Cassandra API を使用する場合のサンプルコードの一覧](cassandra-spark-generic.md#next-steps)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Java アプリケーションを使用した[ Cassandra API アカウント、データベースおよびテーブルの作成](create-cassandra-api-account-java.md)の開始

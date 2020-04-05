@@ -7,10 +7,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: 97f354d0a313d58c671366dd0e5f485504823e13
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76288933"
 ---
 # <a name="move-mainframe-compute-to-azure"></a>メインフレーム コンピューティングを Azure に移行する
@@ -57,7 +57,7 @@ Azure Virtual Machines では、さまざまなサイズと種類のコンピュ
 
 現在、Azure Virtual Machines で提供されているサイズの範囲は 1 - 128 vCPU までです。 仮想マシン (VM) の種類は、特定のワークロードに最適化されています。 たとえば、次の一覧は、VM の種類 (この記事の時点) とその推奨される用途を示したものです。
 
-| Size     | 種類と説明                                                                 |
+| サイズ     | 種類と説明                                                                 |
 |----------|--------------------------------------------------------------------------------------|
 | D シリーズ | 64 個の vCPU と最大 3.5 GHz のクロック速度で、一般的な用途                           |
 | E シリーズ | 最大 64 個の vCPU によるメモリ最適化                                                 |

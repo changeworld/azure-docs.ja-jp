@@ -6,10 +6,10 @@ ms.date: 12/04/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: ad79721b88f886426d658ed6ee89c4969e1f1baa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75470287"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>チュートリアル:Resource Manager テンプレートで Azure Deployment Manager を使用する (パブリック プレビュー)
@@ -186,7 +186,7 @@ Azure portal からコンテナーを開き、**binaries** と **templates** の
 
 ユーザー割り当てマネージド ID を作成し、サブスクリプション用にアクセス制御を構成する必要があります。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. [ユーザー割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) を作成します。
 3. ポータルから、左側のメニューで **[サブスクリプション]** を選択したら、お使いのサブスクリプションを選択します。
 4. **[アクセス制御 (IAM)]** を選択したら、 **[ロール割り当ての追加]** を選択します。

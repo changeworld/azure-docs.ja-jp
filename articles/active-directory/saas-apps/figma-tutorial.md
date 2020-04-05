@@ -17,10 +17,10 @@ ms.date: 10/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dfa07b3df7071ed99a02b854ff41ad6a5137c8dc
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76292843"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-figma"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Figma の統合
@@ -100,7 +100,7 @@ Figma に対する Azure AD SSO を構成してテストするには、次の構
 
 1. その他に、Figma アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | Name | ソース属性|
+    | 名前 | ソース属性|
     | ---------------| --------- |
     | `externalId` | `user.mailnickname` |
     | `displayName` | `user.displayname` |

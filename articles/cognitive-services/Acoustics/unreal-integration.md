@@ -12,10 +12,10 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: e57212a3002390754aaebc5f2aa9ffb10af230a2
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72243059"
 ---
 # <a name="project-acoustics-unreal-and-wwise-integration"></a>Project Acoustics Unreal と Wwise の統合
@@ -80,7 +80,7 @@ Project Acoustics Unreal プラグインでは、[こちらのガイドライン
 
     ![Wwise にパッチを適用するスクリプトが強調表示されている Windows エクスプローラー ウィンドウ](media/patch-wwise-script.png)
 
-* DirectX SDK がインストールされていない場合:ご使用の Wwise のバージョンによっては、*AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs* で `DXSDK_DIR` が含まれる行をコメント アウトする必要がある場合があります。
+* DirectX SDK がインストールされていない場合: ご使用の Wwise のバージョンによっては、*AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs* で `DXSDK_DIR` が含まれる行をコメント アウトする必要がある場合があります。
 
     ![コメント アウトされた `DXSDK` が示されているコード エディター](media/directx-sdk-comment.png)
 
@@ -188,6 +188,6 @@ Project Acoustics には、オブジェクトベースの高解像度 HRTF レ�
        
 設定が完了しました。 シーンを移動し、音響の効果を調べます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Project Acoustics Unreal/Wwise のデザイン チュートリアル](unreal-workflow.md)を試します。
 * ゲーム シーンに対して[ベイクを行う方法](unreal-baking.md)について学習します。

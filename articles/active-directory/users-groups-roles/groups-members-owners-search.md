@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a815446b79b3e5ec0a75e5d179953956643b16c9
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78206114"
 ---
 # <a name="search-groups-and-members-preview-in-azure-active-directory"></a>Azure Active Directory でグループとメンバーを検索する (プレビュー)

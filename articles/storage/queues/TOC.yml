@@ -45,8 +45,11 @@
       items:
         - name: セキュリティに関する推奨事項
           href: security-recommendations.md
-        - name: Azure Storage の暗号化
+        - name: Azure Storage の保存時の暗号化
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+          items:
+            - name: Azure Key Vault でのカスタマー マネージド キー
+              href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: データ操作の承認
           href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
           items:

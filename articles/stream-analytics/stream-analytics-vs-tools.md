@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.openlocfilehash: ad35ed342dfd40b98d61919749479ec5612cdd4f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75369628"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>Visual Studio を使用して Azure Stream Analytics ジョブを表示する
@@ -81,6 +81,6 @@ Visual Studio の Stream Analytics ツールは現在、Azure Data Lake Storage 
 ## <a name="next-steps"></a>次のステップ
 
 * [Visual Studio を使用して Azure Stream Analytics ジョブを監視および管理する](stream-analytics-monitor-jobs-use-vs.md)
-* [クイック スタート:Visual Studio を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-vs.md)
+* [クイック スタート: Visual Studio を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-vs.md)
 * [チュートリアル:Azure Pipelines を使用して CI/CD で Azure Stream Analytics ジョブをデプロイする](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [Stream Analytics ツールで継続的に統合および開発する](stream-analytics-tools-for-visual-studio-cicd.md)

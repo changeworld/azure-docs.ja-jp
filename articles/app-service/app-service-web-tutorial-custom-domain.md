@@ -6,17 +6,17 @@ ms.assetid: dc446e0e-0958-48ea-8d99-441d2b947a7c
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 06/06/2019
-ms.custom: seodec18
-ms.openlocfilehash: 37bb1193056894ea824f4aa1723fb327f54bccae
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 2e62062fabfbb7c320bbeaf473979ccef96b0ba3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672072"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80047213"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>チュートリアル:既存のカスタム DNS 名を Azure App Service にマップする
 
-[Azure App Service](overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このチュートリアルでは、既存のカスタム DNS 名を Azure App Service にマップする方法について説明します。
+[Azure App Service](overview.md) は、非常にスケーラブルな、自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、既存のカスタム DNS 名を Azure App Service にマップする方法について説明します。
 
 ![Azure アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
@@ -190,7 +190,7 @@ A レコードをアプリにマップする場合、App Service では **2 つ*
 
 `contoso.com` ドメインの場合、次の表に従って A および TXT レコードを作成します (`@` は、通常、ルート ドメインを表します)。
 
-| レコード タイプ | Host | 値 |
+| レコード タイプ | Host | Value |
 | - | - | - |
 | A | `@` | 「[アプリの IP アドレスをコピーする](#info)」で取得した IP アドレス |
 | TXT | `@` | `<app_name>.azurewebsites.net` |
@@ -198,7 +198,7 @@ A レコードをアプリにマップする場合、App Service では **2 つ*
 > [!NOTE]
 > 推奨される [CNAME レコード](#map-a-cname-record)の代わりに A レコードを使用してサブドメイン (`www.contoso.com`など) を追加するには、A レコードと TXT レコードが次の表のようになっている必要があります。
 >
-> | レコード タイプ | Host | 値 |
+> | レコード タイプ | Host | Value |
 > | - | - | - |
 > | A | `www` | 「[アプリの IP アドレスをコピーする](#info)」で取得した IP アドレス |
 > | TXT | `www` | `<app_name>.azurewebsites.net` |
@@ -355,7 +355,7 @@ Set-AzWebApp `
 
 詳細については、「[カスタム ドメインを Web アプリに割り当てる](scripts/powershell-configure-custom-domain.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

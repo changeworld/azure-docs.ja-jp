@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 5da3a2e5d003a191bff66af6599cae4d34ab60c6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74038086"
 ---
 # <a name="azcopy"></a>azcopy
@@ -40,7 +40,7 @@ AzCopy は、Azure Storage との間でデータを移動するコマンドラ�
       
 **--output-type** コマンドの出力形式。 選択肢には、text、json などがあります。 既定値は "text" です。 (既定値は "text")
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [AzCopy を使ってみる](storage-use-azcopy-v10.md)
 - [azcopy bench](storage-ref-azcopy-bench.md)

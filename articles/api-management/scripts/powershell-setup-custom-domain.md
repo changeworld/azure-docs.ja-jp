@@ -13,10 +13,10 @@ ms.date: 12/14/2017
 ms.author: apimpm
 ms.custom: mvc
 ms.openlocfilehash: 08bd36ae1d8498d40d997ce03a9d8e4a3d5aef9e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70071897"
 ---
 # <a name="set-up-custom-domain"></a>カスタム ドメインのセットアップ
@@ -33,7 +33,7 @@ PowerShell をローカルにインストールして使う場合、このチュ
 
 [!code-powershell[main](../../../powershell_scripts/api-management/setup-custom-domain/setup_custom_domain.ps1 "Set up custom domain")]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要がなくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使用して、リソース グループとすべての関連リソースを削除できます。
 
@@ -43,7 +43,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 [!INCLUDE [api-management-custom-domain](../../../includes/api-management-custom-domain.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/overview)を参照してください。
 

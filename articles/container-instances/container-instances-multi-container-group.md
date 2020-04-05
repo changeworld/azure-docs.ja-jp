@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.custom: mvc
 ms.openlocfilehash: d2b4e20520cad28c5d62118f6c9d10fcc43ac89e
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74533634"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-resource-manager-template"></a>チュートリアル:Resource Manager テンプレートを使用してマルチコンテナー グループをデプロイする
@@ -17,7 +17,7 @@ ms.locfileid: "74533634"
 > * [YAML](container-instances-multi-container-yaml.md)
 > * [Resource Manager](container-instances-multi-container-group.md)
 
-Azure Container Instances では、[コンテナー グループ](container-instances-container-groups.md)を使用して、複数のコンテナーを 1 つのホストにデプロイできます。 コンテナー グループは、サービスが 2 番目の接続プロセスを必要とする場合に、ログ記録、監視などの構成用にアプリケーション サイドカーを作成するときに便利です。
+Azure Container Instances では、[コンテナー グループ](container-instances-container-groups.md)を使用して、複数のコンテナーを 1 つのホストにデプロイできます。 コンテナー グループは、サービスが 2 つ目のアタッチされたプロセスを必要とする場合に、ログ記録、監視などの構成用にアプリケーション サイドカーを作成するときに便利です。
 
 このチュートリアルでは、Azure CLI を使用して Azure Resource Manager テンプレートをデプロイすることで、単純な 2 コンテナー サイドカー構成を実行する手順を行います。 学習内容は次のとおりです。
 
@@ -145,7 +145,7 @@ code azuredeploy.json
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-[az group create][az-group-create] コマンドでリソース グループを作成します。
+[az group create][az-group-create] コマンドを使用して、リソース グループを作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -220,9 +220,9 @@ Connection: keep-alive
 
 このように、サイドカーは、グループのローカル ネットワーク経由で、メインの Web アプリケーションに定期的に HTTP 要求を実行して、アプリケーションが実行中であることを確認します。 このサイドカーの例は、`200 OK` 以外の HTTP 応答コードを受け取ったときに、アラートをトリガーするように拡張できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure Resource Manager テンプレートを使用して、Azure Container Instances に複数コンテナー グループをデプロイしました。 以下の方法について学習しました。
+このチュートリアルでは、Azure Resource Manager テンプレートを使用して、Azure Container Instances に複数コンテナー グループをデプロイしました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * 複数コンテナー グループ テンプレートをデプロイする

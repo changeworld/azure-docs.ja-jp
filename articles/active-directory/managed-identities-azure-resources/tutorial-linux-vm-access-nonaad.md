@@ -16,10 +16,10 @@ ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdccabf701d4603b8c78f7e23ec1890171603273
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74232184"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>チュートリアル:Linux VM のシステム割り当てマネージド ID を使用して Azure Key Vault にアクセスする 
@@ -105,7 +105,7 @@ Azure リソースのマネージド サービス ID を使用すると、Azure 
     
 Key Vault からシークレットを取得した後は、名前とパスワードを必要とするサービスへの認証にそのシークレットを使用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Linux VM のシステム割り当てマネージド ID を使用して Azure Key Vault にアクセスする方法について説明しました。  Azure Key Vault の詳細については、以下を参照してください。
 

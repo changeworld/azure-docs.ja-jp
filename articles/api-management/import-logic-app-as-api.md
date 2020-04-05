@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: apimpm
 ms.openlocfilehash: 4077187fe04e3be914a6f7fba84c03df1b79d06a
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74108395"
 ---
 # <a name="import-a-logic-app-as-an-api"></a>ロジック アプリを API としてインポート
@@ -33,14 +33,14 @@ ms.locfileid: "74108395"
 
 ## <a name="prerequisites"></a>前提条件
 
--   次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)
+-   [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイックスタートを完了します
 -   HTTP エンドポイントが公開されるサブスクリプションにロジック アプリがあることを確認します。 詳しくは、[HTTP エンドポイントでのワークフローのトリガー](../logic-apps/logic-apps-http-endpoint.md)に関する記事をご覧ください
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"> </a>バックエンド API のインポートと公開
+## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>バックエンド API のインポートと公開
 
-1. **[API Management]** で **[API]** を選択します。
+1. **[API Management]** で **[API]** を選びます。
 2. **[Add a new API]\(新しい API の追加\)** の一覧から **[ロジック アプリ]** を選択します。
 
     ![ロジック アプリ](./media/import-logic-app-as-api/logic-app-api.png)
@@ -50,7 +50,7 @@ ms.locfileid: "74108395"
 5. API URL サフィックスを追加します。 サフィックスは、この API Management インスタンスでこの特定の API を識別する名前です。 この API Management インスタンス内で一意である必要があります。
 6. API を成果物に関連付けることで API を公開します。 この場合、"_無制限_" の成果物が使用されます。 API を公開して開発者が利用できるようにするには、その API を成果物に追加します。 API の作成時に行うことも、後で設定することもできます。
 
-    製品には、1 つまたは複数の API が関連付けられています。 複数の API を組み込み、開発者ポータルを通じてそれらを開発者に提供できます。 開発者は、まず成果物をサブスクライブして API へのアクセス権を取得する必要があります。 サブスクライブすると、その製品の API に適したサブスクリプション キーを受け取ります。 API Management インスタンスを作成した場合は、既に管理者になっているため、既定ですべての製品をサブスクライブしています。
+    製品には、1 つまたは複数の API が関連付けられています。 複数の API を組み込み、開発者ポータルを通じてそれらを開発者に提供できます。 開発者は、まず製品をサブスクライブして API へのアクセス権を取得する必要があります。 サブスクライブすると、その製品の API に適したサブスクリプション キーを受け取ります。 API Management インスタンスを作成した場合は、既に管理者になっているため、既定ですべての製品をサブスクライブしています。
 
     すべての API Management インスタンスは、2 つのサンプル成果物を既定で備えています。
 
@@ -80,7 +80,7 @@ Azure Portal には、API の操作を表示およびテストするための便
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 >

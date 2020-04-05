@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: vturecek
 ms.openlocfilehash: a6e4fb48653572139463738c82de632ff7d55074
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75466257"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors の使用

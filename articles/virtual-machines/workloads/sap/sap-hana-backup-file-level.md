@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
 ms.openlocfilehash: 93b67936166eb73db5e9a15db42c2c6135794108
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78271381"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>ファイル レベルの SAP HANA Azure バックアップ

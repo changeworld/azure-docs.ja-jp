@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: e58cbe85f30ea09adde45d55bb7b80c710c45495
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74792432"
 ---
 # <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>Azure Logic Apps の統合アカウントに取引先を追加する
@@ -35,7 +35,7 @@ ms.locfileid: "74792432"
 
 ## <a name="create-partner"></a>パートナーの作成
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. Azure のメイン メニューで、 **[すべてのサービス]** を選びます。 検索ボックスに「統合」と入力し、 **[統合アカウント]** を選びます。
 
@@ -55,9 +55,9 @@ ms.locfileid: "74792432"
 
    | プロパティ | 必須 | 説明 |
    |----------|----------|-------------|
-   | **Name** | はい | パートナーの名前 |
+   | **名前** | はい | パートナーの名前 |
    | **修飾子** | はい | 組織に固有のビジネス ID を提供する認証機関。たとえば、**D-U-N-S (Dun & Bradstreet)** 。 <p>パートナーは、相互に定義されたビジネス ID を選ぶことができます。 これらのシナリオでは、EDIFACT に対して **[相互定義]** を選び、X12 に対して **[相互定義 (X12)]** を選びます。 <p>RosettaNet の場合は、標準の **[DUNS]** のみを選びます。 |
-   | **値** | はい | 自分のロジック アプリが受け取るドキュメントを識別する値。 <p>RosettaNet の場合、この値は DUNS 番号に対応する 9 桁の数字である必要があります。 |
+   | **Value** | はい | 自分のロジック アプリが受け取るドキュメントを識別する値。 <p>RosettaNet の場合、この値は DUNS 番号に対応する 9 桁の数字である必要があります。 |
    ||||
 
    > [!NOTE]
@@ -89,7 +89,7 @@ ms.locfileid: "74792432"
    | **パートナーの分類** | いいえ | パートナーの組織の種類 |
    | **サプライ チェーン コード** | いいえ | パートナーのサプライ チェーン コード。たとえば、"情報技術"、"電子部品" |
    | **Contact Name (連絡先の名前)** | いいえ | パートナーの連絡先の名前 |
-   | **電子メール** | いいえ | パートナーのメール アドレス |
+   | **Email** | いいえ | パートナーのメール アドレス |
    | **Fax** | いいえ | パートナーの fax 番号 |
    | **電話** | いいえ | パートナーの電話番号 |
    ||||
@@ -106,6 +106,6 @@ ms.locfileid: "74792432"
 
    ![パートナーを削除する](./media/logic-apps-enterprise-integration-partners/delete-partner.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [契約](../logic-apps/logic-apps-enterprise-integration-agreements.md)の詳細について学習します

@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 07/29/2019
 ms.author: memildin
 ms.openlocfilehash: 408b0f020be72b8e6b10dd6c97298afda1b91360
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603580"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225263"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Security recommendations in Azure Security Center 
 このトピックでは、Azure セキュリティ センターで推奨事項を確認し、理解し、Azure リソースの保護に役立てる方法について説明します。
@@ -40,7 +40,7 @@ Security Center は Azure リソースのセキュリティの状態を定期的
 - 推奨される操作を実行するために必要なリソース。
 - **セキュリティ スコアの影響**。これは、この推奨事項を実装した場合に、セキュリティ スコアが上昇する量です。
 
-## 推奨事項の監視<a name="monitor-recommendations"></a>
+## <a name="monitor-recommendations"></a>推奨事項の監視<a name="monitor-recommendations"></a>
 
 Security Center はリソースのセキュリティの状態を分析して、潜在的な脆弱性を特定します。 **[概要]** の **[推奨事項]** タイルには、Security Center で特定された推奨事項の総数が表示されます。
 

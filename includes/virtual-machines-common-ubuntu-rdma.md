@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: d41b86b902d9a58b144e251e6922fbd95d459031
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67671193"
 ---
 1. dapl、rdmacm、ibverbs、mlx4 をインストールします

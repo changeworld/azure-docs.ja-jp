@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1b9d07099f8de996181948921330ef6744b302a8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74848648"
 ---
 # <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Windows Server Active Directory に Azure AD パスワード保護を適用する
@@ -91,5 +91,5 @@ Active Directory フォレストと、フォレスト内にデプロイ済みの
 
 Azure AD パスワード保護のために必要な 2 つのエージェント インストーラーは、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=57071)から入手できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure AD のパスワード保護をデプロイする](howto-password-ban-bad-on-premises-deploy.md)

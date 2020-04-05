@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: cherylmc
 ms.openlocfilehash: 17d0e678008c76da32f20562aa795e83e49c80e4
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77064973"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>グローバル トランジット ネットワーク アーキテクチャと Virtual WAN
@@ -33,7 +33,7 @@ ms.locfileid: "77064973"
 
 図 1 で示すグローバル トランジット ネットワークの論理ビューでは、地理的に分散したユーザー、物理サイト、VNet が、クラウドでホストされたネットワーク ハブを介して相互接続されています。 このアーキテクチャでは、ネットワーク エンドポイント間の論理的な 1 ホップ トランジット接続が可能になります。
 
-## <a name="globalnetworktransit"></a>Virtual WAN でのグローバル トランジット ネットワーク
+## <a name="global-transit-network-with-virtual-wan"></a><a name="globalnetworktransit"></a>Virtual WAN でのグローバル トランジット ネットワーク
 
 Azure Virtual WAN は Microsoft が管理するクラウド ネットワーク サービスです。 このサービスを構成するすべてのネットワーク コンポーネントは、Microsoft によってホストされて管理されます。 Virtual WAN の詳細については、[Virtual WAN の概要](virtual-wan-about.md)に関するページを参照してください。
 
@@ -47,7 +47,7 @@ Azure Virtual WAN アーキテクチャでは、Virtual WAN のハブは Azure �
 
 Virtual WAN を確立するには、スポーク (ブランチ、VNet、ユーザー) の数が最も多いリージョンに Virtual WAN ハブを 1 つ作成した後、他のリージョン内にあるスポークをハブに接続します。 これは、エンタープライズ フットプリントの大部分が 1 つのリージョン内にあってリモート スポークの数が少ない場合に適したオプションです。  
   
-## <a name="hubtohub"></a>ハブ間接続
+## <a name="hub-to-hub-connectivity"></a><a name="hubtohub"></a>ハブ間接続
 
 エンタープライズ クラウドのフットプリントは複数のクラウド リージョンにまたがることができ、物理サイトやユーザーに最も近いリージョンからクラウドにアクセスするのに最適です (待ち時間対応)。 グローバル トランジット ネットワーク アーキテクチャの重要な原則の 1 つは、すべてのクラウドとオンプレミスのネットワーク エンドポイントの間のリージョン間接続を有効にすることです。 つまり、あるリージョンのクラウドに接続されているブランチからのトラフィックは、[Azure のグローバル ネットワーク](https://azure.microsoft.com/global-infrastructure/global-network/)によって有効になるハブ間接続を使用して、異なるリージョンにある別のブランチまたは VNet に到達できます。
 
@@ -59,7 +59,7 @@ Virtual WAN を確立するには、スポーク (ブランチ、VNet、ユー�
 
 さらに、すべて同じ Virtual WAN の一部である複数のハブを、異なるリージョン アクセス ポリシーおよびセキュリティ ポリシーに関連付けることができます。 詳細については、後の「[セキュリティとポリシーの制御](#security)」を参照してください。
 
-## <a name="anytoany"></a>Any-to-Any 接続
+## <a name="any-to-any-connectivity"></a><a name="anytoany"></a>Any-to-Any 接続
 
 グローバル トランジット ネットワーク アーキテクチャを使うと、Virtual WAN ハブ経由で Any-to-Any 接続を実現できます。 このアーキテクチャにより、構築と管理がより複雑な、スポーク間のフル メッシュ接続または部分メッシュ接続を使用する必要が、まったくなくなるか減ります。 さらに、メッシュ ネットワークよりハブ アンド スポークの方が、ルーティング制御の構成と保守が簡単です。
 
@@ -111,7 +111,7 @@ ExpressRoute Global Reach は、ExpressRoute に対するアドオン機能で�
 
 VNet 対 VNet トランジットを使うと、VNet を相互に接続し、複数の VNet に実装されている多層アプリケーションを相互接続できます。 必要に応じて、VNet ピアリングを使用して VNet を相互に接続でき、これは VWAN ハブ経由の転送が不要なシナリオに適している場合があります。
 
-## <a name="security"></a>セキュリティとポリシーの制御
+## <a name="security-and-policy-control"></a><a name="security"></a>セキュリティとポリシーの制御
 
 Azure Virtual WAN ハブにより、ハイブリッド ネットワーク上のすべてのネットワーク エンドポイントが相互接続され、すべてのトランジット ネットワーク トラフィックが認識される可能性があります。 VWAN ハブ内に Azure Firewall を展開し、クラウドベースのセキュリティ、アクセス、ポリシー制御を有効にすることにより、Virtual WAN ハブをセキュリティ保護付き仮想ハブに変換できます。 Virtual WAN ハブ内の Azure Firewall のオーケストレーションは、Azure Firewall Manager で実行できます。
 

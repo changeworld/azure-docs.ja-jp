@@ -4,20 +4,20 @@ ms.service: virtual-machines-linux
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 64290aad2d9f98006a715b480be8cb96965abbaf
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 046a4bc9abb936ca6f9fcecd0f660a723edb092b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181183"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80116899"
 ---
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[az group create](/cli/azure/group) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+[az group create](/cli/azure/group) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
@@ -27,7 +27,7 @@ az group create --name myResourceGroup --location eastus
 
 次の例では、*myVM* という名前の VM を作成し、既定のキーの場所にまだ SSH キーが存在しない場合は SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。 このコマンドは、管理者ユーザー名として *azureuser* も設定します。 後でこの名前を使って VM に接続します。 
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create \
     --resource-group myResourceGroup \
     --name myVM \
@@ -38,7 +38,7 @@ az vm create \
 
 VM が作成されると、Azure CLI によって次の例のような情報が表示されます。 `publicIpAddress` を書き留めておきます。 このアドレスは、後の手順で VM にアクセスするために使われます。
 
-```azurecli-interactive 
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -57,9 +57,10 @@ VM が作成されると、Azure CLI によって次の例のような情報が�
 
 Azure にデプロイされている Linux VM に対しては、既定で SSH 接続のみが許可されます。 この VM は Web サーバーとして使用することになるため、インターネットからのポート 80 を開放する必要があります。 [az vm open-port](/cli/azure/vm) コマンドを使用して、目的のポートを開きます。  
  
-```azurecli-interactive 
+```azurecli-interactive
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 ```
+
 ## <a name="ssh-into-your-vm"></a>VM への SSH 接続
 
 

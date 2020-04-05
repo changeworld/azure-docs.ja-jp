@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: b008c4ebc83200043d51fc8ef367f1983c549949
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74973443"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>デバイス プロビジョニング サービスで X.509 CA 証明書の所有証明を行う方法
@@ -69,7 +69,7 @@ Microsoft では、署名された検証証明書の作成に役立つツール�
 
    ![証明書のアップロードの確認](./media/how-to-verify-certificates/upload-cert-verification.png)  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - ポータルを使って登録グループを作成する方法について詳しくは、「[Azure Portal でデバイス登録を管理する方法](how-to-manage-enrollments.md)」をご覧ください。
 - サービス SDK を使って登録グループを作成する方法について詳しくは、「[Azure デバイス プロビジョニング サービス SDK でデバイスの登録を管理する方法](how-to-manage-enrollments-sdks.md)」をご覧ください。

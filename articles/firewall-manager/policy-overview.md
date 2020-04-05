@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 02/18/2020
 ms.author: victorh
 ms.openlocfilehash: 1308f4ba3335f2fd2633f6e39a679cd6477a4b5c
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77444952"
 ---
 # <a name="azure-firewall-manager-preview-policy-overview"></a>Azure Firewall Manager プレビューのポリシーの概要
@@ -53,7 +53,7 @@ Azure Firewall では、従来のルールとポリシーの両方がサポー�
 |保護     |仮想ハブと仮想ネットワーク|仮想ネットワークのみ|
 |ポータルでの操作     |Firewall Manager を使用した一元管理|スタンドアロンのファイアウォール エクスペリエンス|
 |複数のファイアウォールのサポート     |ファイアウォール ポリシーは、複数のファイアウォールにまたがって使用できる個別のリソース|ルールのエクスポートとインポートを手動で行うか、サードパーティの管理ソリューションを使用 |
-|価格     |ファイアウォールの関連付けに基づいて課金されます。 「[価格](#pricing)」を参照してください。|無料|
+|価格     |ファイアウォールの関連付けに基づいて課金されます。 「[価格](#pricing)」を参照してください。|Free|
 |サポートされるデプロイ メカニズム     |ポータル、REST API、テンプレート、Azure PowerShell、CLI|ポータル、REST API、テンプレート、PowerShell、CLI |
 |リリースの状態     |パブリック プレビュー|一般公開|
 

@@ -17,10 +17,10 @@ ms.reviewer: jroth
 experimental: true
 experimental_id: d51f3cc6-753b-4e
 ms.openlocfilehash: 1c2d5ae5d85624ea172eb9a95d4086dd71287c4f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75978197"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Azure での SQL Server 仮想マシンへの接続 (クラシック デプロイ)
@@ -34,7 +34,7 @@ ms.locfileid: "75978197"
 このトピックでは、Azure 仮想マシンで実行されている SQL Server インスタンスへ接続する方法について説明します。 ここでは、[一般的な接続のシナリオ](#connection-scenarios)をいくつか紹介してから、[Azure VM での SQL Server への接続を構成する手順の詳細](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm)について説明します。
 
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../../../azure-resource-manager/management/deployment-models.md)です。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 Resource Manager モデルを使用している場合は、[Resource Manager を使用した Azure での SQL Server 仮想マシンへの接続](../sql/virtual-machines-windows-sql-connect.md)に関する記事をご覧ください。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/management/deployment-models.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 Resource Manager モデルを使用している場合は、[Resource Manager を使用した Azure での SQL Server 仮想マシンへの接続](../sql/virtual-machines-windows-sql-connect.md)に関する記事をご覧ください。
 
 ## <a name="connection-scenarios"></a>接続のシナリオ
 クライアントから仮想マシンで実行されている SQL Server に接続する方法は、クライアントの場所と、マシンやネットワークの構成によって異なります。 これらのシナリオは、次のとおりです。

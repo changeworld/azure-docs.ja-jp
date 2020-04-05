@@ -1,20 +1,20 @@
 ---
 title: 輸送データを要求する | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps Mobility Service を使用して公共輸送機関のデータを要求する方法について説明します。
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 09/06/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 17fbc78b34237c6f5e1e688a88c68bb0a321884f
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: f60b66790342874620971c8f15a1e8ace9a3c7cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209870"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335469"
 ---
 # <a name="request-public-transit-data-using-the-azure-maps-mobility-service"></a>Azure Maps Mobility Service を使用して公共輸送機関のデータを要求します 
 
@@ -237,7 +237,7 @@ Azure Maps [Get Transit Routes API](https://aka.ms/AzureMapsMobilityTransitRoute
     https://atlas.microsoft.com/search/fuzzy/json?subscription-key={subscription-key}&api-version=1.0&query=space needle
     ```
     
-3. 応答を注意深く見ると、スペース ニードルの検索結果に複数の場所が含まれています。 各結果には、**位置**の位置座標が含まれています。 最初の結果の **position** の下の `lat` と `lon` をコピーします。
+3. 応答を注意深く見ると、スペース ニードルの検索結果に複数の場所が含まれています。 各結果には、**位置**の位置座標が含まれています。 最初の結果の `lat`position`lon` の下の **と** をコピーします。
     
    ```JSON
    {
@@ -343,7 +343,7 @@ Azure Maps [Get Transit Routes API](https://aka.ms/AzureMapsMobilityTransitRoute
 
     `modeType` と `transitType` のパラメーターを指定することによって、バスについての公共輸送機関のルートを要求します。 要求 URL には、前のセクションで取得した場所が含まれています。 `originType` には、**stopId** があります。 そして、`destionationType` には **position** があります。
 
-    [Get Transit Routes API](https://aka.ms/AzureMapsMobilityTransitRoute) への要求で使用できる [URI パラメーターの一覧](https://aka.ms/AzureMapsMobilityTransitRoute#uri-parameters)を参照してください。 
+    [Get Transit Routes API](https://aka.ms/AzureMapsMobilityTransitRoute#uri-parameters) への要求で使用できる [URI パラメーターの一覧](https://aka.ms/AzureMapsMobilityTransitRoute)を参照してください。 
   
     ```HTTP
     https://atlas.microsoft.com/mobility/transit/route/json?subscription-key={subscription-key}&api-version=1.0&metroId=522&originType=stopId&origin=522---2060603&destionationType=position&destination=47.62039,-122.34928&modeType=publicTransit&transitType=bus
@@ -498,7 +498,7 @@ Azure Maps [Get Transit Routes API](https://aka.ms/AzureMapsMobilityTransitRoute
 
 ## <a name="request-fastest-route-itinerary"></a>最も速いルートの移動プランを要求する
 
-Azure Maps の [Get Transit Itinerary](https://aka.ms/AzureMapsMobilityTransitItinerary) サービスでは、[Get Transit Routes API](https://aka.ms/AzureMapsMobilityTransitRoute) サービスによって返されるルートの **itinerary ID** を使用して、特定のルートについてのデータを要求することができます。 要求を行うには、次の手順を実行します。
+Azure Maps の [Get Transit Itinerary](https://aka.ms/AzureMapsMobilityTransitItinerary) サービスでは、**Get Transit Routes API** サービスによって返されるルートの [itinerary ID](https://aka.ms/AzureMapsMobilityTransitRoute) を使用して、特定のルートについてのデータを要求することができます。 要求を行うには、次の手順を実行します。
 
 1. Postman で、 **[新しい要求]**  |  **[GET request]\(GET 要求\)** をクリックして、「**Get Transit info**」 (輸送情報の取得) という名前を付けます。
 

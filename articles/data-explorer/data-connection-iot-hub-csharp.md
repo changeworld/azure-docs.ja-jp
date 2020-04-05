@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.openlocfilehash: 0cac03e50bf46910f8430b745803107b60905769
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74667382"
 ---
 # <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-c-preview"></a>C# を使用して Azure Data Explorer 用に IoT Hub データ接続を作成する (プレビュー)

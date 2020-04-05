@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: kumud
 ms.openlocfilehash: 5971b3251812ea4193e71173943ffc0d48207567
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75975363"
 ---
 # <a name="azure-resource-manager-template-samples-for-virtual-network"></a>仮想ネットワーク用の Azure Resource Manager テンプレート サンプル

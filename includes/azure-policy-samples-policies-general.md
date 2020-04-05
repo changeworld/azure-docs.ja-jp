@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/05/2020
+ms.date: 03/12/2020
 ms.author: dacoulte
-ms.openlocfilehash: a6f68a4ef0c8efeca8db0283cc0fe93898e9161c
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 830572388fe0ef5453cfb36a7f549b82bbcdfb1c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78669151"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79381931"
 ---
-|名前 |説明 |効果 |Version |GitHub |
+|Name |説明 |効果 |Version |GitHub |
 |---|---|---|---|---|
 |[許可される場所](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe56962a6-4747-49cd-b67b-bf8b01975c4c) |このポリシーでは、リソースをデプロイするときに組織が指定できる場所を制限できます。 geo コンプライアンス要件を強制するために使用されます。 リソース グループ Microsoft.AzureActiveDirectory/b2cDirectories や、「グローバル」リージョンを使用するリソースを除外します。 |deny |1.0.0 |[リンク](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/General/AllowedLocations_Deny.json)
 |[リソース グループが許可される場所](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe765b5de-1225-4ba3-bd56-1ac6695af988) |このポリシーでは、組織がリソース グループを作成できる場所を制限できます。 geo コンプライアンス要件を強制するために使用されます。 |deny |1.0.0 |[リンク](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/General/ResourceGroupAllowedLocations_Deny.json)

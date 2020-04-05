@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.openlocfilehash: 9bd01f24ac2cada02f51089d238519cd6c7e0248
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74039277"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>Windows VM をアマゾン ウェブ サービス (AWS) から Azure 仮想マシンに移行する
@@ -60,7 +60,7 @@ VHD のエクスポートが完了したら、「[How Do I Download an Object fr
 > VHD をダウンロードする場合、AWS からデータ転送料金が請求されます。 詳細については、「[Amazon S3 Pricing (Amazon S3 の料金)](https://aws.amazon.com/s3/pricing/)」を参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、VHD を Azure にアップロードして新しい VM を作成できるようになりました。 
 

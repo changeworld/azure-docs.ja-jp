@@ -15,10 +15,10 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5387daffcd3dd231aef5eade1c896db50947b386
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77484861"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD でのグループベース ライセンスの PowerShell と Graph の例

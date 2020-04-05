@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: victorh
 ms.openlocfilehash: 498863c98f308a9fd9b47f80328d572187475901
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77443110"
 ---
 # <a name="migrate-azure-firewall-configurations-to-azure-firewall-policy-preview-using-powershell"></a>PowerShell を使用して Azure Firewall の構成を Azure Firewall ポリシー (プレビュー) に移行する

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: 6d3e3d6cdf7a831bf09d9c4709c1a60d27683438
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75933378"
 ---
 # <a name="deploy-the-storsimple-snapshot-manager-mmc-snap-in"></a>StorSimple Snapshot Manager MMC スナップインのデプロイ
@@ -42,7 +42,7 @@ Microsoft 管理コンソール (MMC) 用に StorSimple Snapshot Manager スナ�
 次の手順では、StorSimple Snapshot Manager をインストールする前に完了する必要がある構成タスクの概要を説明します。 システム要件や詳細な手順の説明など、Microsoft Azure StorSimple の構成とセットアップに関する完全な情報については、「 [オンプレミスの StorSimple デバイスのデプロイ](storsimple-8000-deployment-walkthrough-u2.md)」をご覧ください。
 
 > [!IMPORTANT]
-> 開始する前に、[「オンプレミスの StorSimple デバイスのデプロイ](storsimple-8000-deployment-walkthrough-u2.md)」にある「[デプロイメント チェックリスト](storsimple-8000-deployment-walkthrough-u2.md#deployment-configuration-checklist)」と「[デプロイメントの前提条件](storsimple-8000-deployment-walkthrough-u2.md#deployment-prerequisites)」をご確認ください。
+> 開始する前に、[「オンプレミスの StorSimple デバイスのデプロイ](storsimple-8000-deployment-walkthrough-u2.md#deployment-configuration-checklist)」にある「[デプロイメント チェックリスト](storsimple-8000-deployment-walkthrough-u2.md#deployment-prerequisites)」と「[デプロイメントの前提条件](storsimple-8000-deployment-walkthrough-u2.md)」をご確認ください。
 > <br>
 > 
 > 
@@ -66,7 +66,7 @@ Microsoft 管理コンソール (MMC) 用に StorSimple Snapshot Manager スナ�
    * ミラー化された動的ボリューム (RAID 1)
    * クラスターの共有ボリューム
      
-     StorSimple デバイスまたは StorSimple 仮想デバイスにボリュームを作成する方法については、「[手順 6:ボリュームを作成する](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume)」(「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-8000-deployment-walkthrough-u2.md)」) を参照してください。
+     StorSimple デバイスまたは StorSimple 仮想デバイスにボリュームを作成する方法については、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume)」の「[手順 6: ボリュームを作成する](storsimple-8000-deployment-walkthrough-u2.md)」をご確認ください。
 
 ## <a name="install-a-new-storsimple-snapshot-manager"></a>StorSimple Snapshot Manager の新規インストール
 StorSimple Snapshot Manager をインストールする前に、StorSimple デバイスまたは StorSimple 仮想デバイスに作成したボリュームが、「 [構成の前提条件](#configure-prerequisites)」に説明されているようにマウント、初期化、およびフォーマットされていることを確認します。
@@ -78,11 +78,11 @@ StorSimple Snapshot Manager をインストールする前に、StorSimple デ�
 
 次の手順に従って、StorSimple Snapshot Manager のフレッシュ インストールを実行します。 アップグレードをインストールする場合は、「 [StorSimple Snapshot Manager のアップグレードまたは再インストール](#upgrade-or-reinstall-storsimple-snapshot-manager)」をご覧ください。
 
-* 手順 1:StorSimple Snapshot Manager のインストール 
-* 手順 2:StorSimple Snapshot Manager をデバイスに接続します 
-* 手順 3:デバイスへの接続を確認します 
+* 手順 1: StorSimple Snapshot Manager をインストールします 
+* 手順 2: StorSimple Snapshot Manager をデバイスに接続します 
+* 手順 3: デバイスへの接続を確認します 
 
-### <a name="step-1-install-storsimple-snapshot-manager"></a>手順 1:StorSimple Snapshot Manager のインストール
+### <a name="step-1-install-storsimple-snapshot-manager"></a>手順 1: StorSimple Snapshot Manager をインストールします
 StorSimple Snapshot Manager をインストールするには、以下の手順を実行します。
 
 #### <a name="to-install-storsimple-snapshot-manager"></a>StorSimple Snapshot Manager をインストールするには
@@ -101,7 +101,7 @@ StorSimple Snapshot Manager をインストールするには、以下の手順�
    
     ![デスクトップ アイコン](./media/storsimple-snapshot-manager-deployment/HCS_SSM_desktop_icon.png) 
 
-### <a name="step-2-connect-storsimple-snapshot-manager-to-a-device"></a>手順 2:StorSimple Snapshot Manager をデバイスに接続します
+### <a name="step-2-connect-storsimple-snapshot-manager-to-a-device"></a>手順 2: StorSimple Snapshot Manager をデバイスに接続します
 次の手順に従って、StorSimple Snapshot Manager を StorSimple デバイスに接続します。
 
 #### <a name="to-connect-storsimple-snapshot-manager-to-a-device"></a>StorSimple Snapshot Manager をデバイスに接続するには
@@ -123,7 +123,7 @@ StorSimple Snapshot Manager をインストールするには、以下の手順�
     何かの理由でデバイスを使用できない場合は、StorSimple Snapshot Manager によってエラー メッセージが返されます。 **[OK]** をクリックしてエラー メッセージを閉じ、 **[キャンセル]** をクリックして **[デバイスの構成]** ダイアログ ボックスを閉じます。
 5. ボリューム グループに関連するバックアップがある場合、デバイスに接続されると、StorSimple Snapshot Manager は、そのデバイス用に構成された各ボリューム グループをインポートします。 関連付けられているバックアップがないボリューム グループはインポートされません。 また、ボリューム グループに対して作成されたバックアップ ポリシーはインポートされません。 インポートされたグループを表示するには、 **[スコープ]** ウィンドウの最上部にある **[ボリューム グループ]** ノードを右クリックし、 **[インポートされたグループを切り替え]** をクリックします。
 
-### <a name="step-3-verify-the-connection-to-the-device"></a>手順 3:デバイスへの接続を確認します
+### <a name="step-3-verify-the-connection-to-the-device"></a>手順 3: デバイスへの接続を確認します
 次の手順に従って、StorSimple Snapshot Manager が StorSimple デバイスに接続されていることを確認します。
 
 #### <a name="to-verify-the-connection"></a>接続を確認するには
@@ -143,11 +143,11 @@ StorSimple Snapshot Manager を再インストールする前に、ホスト コ
 
 StorSimple Snapshot Manager をアップグレードまたは再インストールするには、以下の手順を実行します。
 
-* 手順 1:StorSimple Snapshot Manager をアンインストールします 
-* 手順 2:StorSimple Snapshot Manager データベースをバックアップします 
-* 手順 3:StorSimple Snapshot Manager を再インストールし、データベースを復元します 
+* 手順 1: StorSimple Snapshot Manager をアンインストールします 
+* 手順 2: StorSimple Snapshot Manager データベースをバックアップします 
+* 手順 3: StorSimple Snapshot Manager を再インストールし、データベースを復元します 
 
-### <a name="step-1-uninstall-storsimple-snapshot-manager"></a>手順 1:StorSimple Snapshot Manager をアンインストールします
+### <a name="step-1-uninstall-storsimple-snapshot-manager"></a>手順 1: StorSimple Snapshot Manager をアンインストールします
 StorSimple Snapshot Manager をアンインストールするには、以下の手順を実行します。
 
 #### <a name="to-uninstall-storsimple-snapshot-manager"></a>StorSimple Snapshot Manager をアンインストールするには
@@ -162,7 +162,7 @@ StorSimple Snapshot Manager をアンインストールするには、以下の�
    > 
 5. アンインストール プロセスが完了したら、 **[セットアップ完了]** メッセージが表示されます。 **[閉じる]** をクリックします。
 
-### <a name="step-2-back-up-the-storsimple-snapshot-manager-database"></a>手順 2:StorSimple Snapshot Manager データベースをバックアップします
+### <a name="step-2-back-up-the-storsimple-snapshot-manager-database"></a>手順 2: StorSimple Snapshot Manager データベースをバックアップします
 StorSimple Snapshot Manager データベースのコピーを作成して保存するには、以下の手順を実行します。
 
 #### <a name="to-back-up-the-database"></a>データベースをバックアップするには
@@ -188,7 +188,7 @@ StorSimple Snapshot Manager データベースのコピーを作成して保存�
    2. **[サービス]** ページで、 **[Microsoft StorSimple Management Service]** を選択します。
    3. 右側のウィンドウで、 **[Microsoft StorSimple Management Service]** の下にある **[サービスを再起動する]** をクリックします。 
 
-### <a name="step-3-reinstall-storsimple-snapshot-manager-and-restore-the-database"></a>手順 3:StorSimple Snapshot Manager を再インストールし、データベースを復元します
+### <a name="step-3-reinstall-storsimple-snapshot-manager-and-restore-the-database"></a>手順 3: StorSimple Snapshot Manager を再インストールし、データベースを復元します
 StorSimple Snapshot Manager を再インストールするには、「 [StorSimple Snapshot Manager の新規インストール](#install-a-new-storsimple-snapshot-manager)」の手順に従います。 次に、以下の手順に従って、StorSimple Snapshot Manager データベースを復元します。
 
 #### <a name="to-restore-the-database"></a>データベースを復元するには

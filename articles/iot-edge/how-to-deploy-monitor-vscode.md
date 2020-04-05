@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 08299a589dc6e8f768cba7ef976e109ef1fb69d7
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75773614"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>Visual Studio Code を使用して大規模 IoT Edge モジュールをデプロイする

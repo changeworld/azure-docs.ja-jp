@@ -9,10 +9,10 @@ ms.date: 12/11/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: c0ce4e882f270f5e0c789a608aaada5c6c9cba92
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67181034"
 ---
 接続に問題がある場合は、次の点を確認してください。

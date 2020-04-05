@@ -6,17 +6,17 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.openlocfilehash: 29b5e9c7673b4a730a41bf7cf2b1c4a2a86209ed
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77462107"
 ---
 # <a name="azure-functions-http-triggers-and-bindings-overview"></a>Azure Functions の HTTP トリガーとバインドの概要
 
 Azure Functions は、HTTP 要求から呼び出して、サーバーレス API を構築し、[webhook](https://en.wikipedia.org/wiki/Webhook) に応答することができます。
 
-| アクション | Type |
+| アクション | 種類 |
 |---------|---------|
 | HTTP 要求から関数を実行する | [トリガー](./functions-bindings-http-webhook-trigger.md) |
 | 関数から HTTP 応答を返す |[出力バインド](./functions-bindings-http-webhook-output.md) |
@@ -29,16 +29,16 @@ Azure Functions は、HTTP 要求から呼び出して、サーバーレス API 
 
 トリガーとバインドを使用するには、適切なパッケージを参照する必要があります。 NuGet パッケージは .NET クラス ライブラリに使用されますが、他のすべてのアプリケーションの種類には拡張バンドルが使用されます。
 
-| Language                                        | 追加手段                                   | 解説 
+| 言語                                        | 追加手段                                   | 解説 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | [NuGet パッケージ] バージョン 3.x をインストールする | |
 | C# スクリプト、Java、JavaScript、Python、PowerShell | [拡張機能バンドル]を登録する          | Visual Studio Code で使用するには [Azure Tools 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)をお勧めします。 |
-| C# スクリプト (Azure portal ではオンラインのみ)         | バインディングを追加する                            | 関数アプリを再発行せずにポータルで既存のバインディング拡張機能を更新するには、「[拡張機能を更新する]」を参照してください。 |
+| C# スクリプト (Azure portal ではオンラインのみ)         | バインディングを追加する                            | 関数アプリを再発行せずにポータルで既存のバインディング拡張機能を更新するには、[拡張機能の更新]に関する記事を参照してください。 |
 
 [core tools]: ./functions-run-local.md
 [拡張機能バンドル]: ./functions-bindings-register.md#extension-bundles
 [NuGet パッケージ]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http
-[拡張機能を更新する]: ./install-update-binding-extensions-manual.md
+[拡張機能の更新]: ./install-update-binding-extensions-manual.md
 [Azure Tools extension]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
 ### <a name="functions-1x"></a>Functions 1.x

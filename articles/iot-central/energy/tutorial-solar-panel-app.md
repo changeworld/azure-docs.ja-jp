@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: d5ea3d3420cb598693ccaede7ee10d2f8c4fd839
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77025777"
 ---
 # <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>チュートリアル:ソーラーパネル監視アプリ テンプレートの作成とチュートリアル 

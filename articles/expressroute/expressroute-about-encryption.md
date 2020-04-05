@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: cherylmc
 ms.openlocfilehash: 7dd9106539b6756d74629ac663241a5b5562cefb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75437055"
 ---
 # <a name="expressroute-encryption"></a>ExpressRoute の暗号化

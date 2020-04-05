@@ -17,10 +17,10 @@ ms.date: 06/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ac9647bf6a9e2e763bcfb6e3d840cdccd2b6c305
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67595004"
 ---
 # <a name="tutorial-integrate-clever-nelly-with-azure-active-directory"></a>チュートリアル:Clever Nelly と Azure Active Directory の統合
@@ -29,7 +29,7 @@ ms.locfileid: "67595004"
 
 * Clever Nelly にアクセスするユーザーを Azure AD で制御する。
 * ユーザーが自分の Azure AD アカウントを使用して Clever Nelly に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

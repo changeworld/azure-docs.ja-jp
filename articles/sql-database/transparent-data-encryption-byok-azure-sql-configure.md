@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 87a9db7d320a7d5b35234899c59884bcf2bf4b60
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 81927575b99604e71f7b0920bc3a448f7796f565
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721678"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067184"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell と CLI:Azure Key Vault のユーザー管理キーを使用して Transparent Data Encryption を有効にする
 
@@ -36,7 +36,7 @@ ms.locfileid: "76721678"
    - 無効化されていない
    - "*取得*"、"*キーのラップ*"、"*キーのラップ解除*" の各操作を実行できる
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Az モジュールのインストール手順については、[Azure PowerShell のインストール](/powershell/azure/install-az-ps)を参照してください。 具体的なコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。
 
@@ -119,7 +119,7 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
    -ServerName <LogicalServerName> -DatabaseName <DatabaseName>  
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 必要な Command-Line Interface バージョン 2.0 移行をインストールして Azure サブスクリプションに接続するには、「[Azure クロスプラットフォーム コマンド ライン インターフェイス 2.0 のインストールと構成](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 
@@ -127,7 +127,7 @@ Key Vault の詳細については、「[CLI 2.0 を使用した Key Vault の�
 
 ## <a name="assign-an-azure-ad-identity-to-your-server"></a>Azure AD ID をサーバーに割り当てる
 
-```powershell
+```azurecli
 # create server (with identity) and database
 az sql server create --name <servername> --resource-group <rgname>  --location <location> --admin-user <user> --admin-password <password> --assign-identity
 az sql db create --name <dbname> --server <servername> --resource-group <rgname>
@@ -138,7 +138,7 @@ az sql db create --name <dbname> --server <servername> --resource-group <rgname>
 
 ## <a name="grant-key-vault-permissions-to-your-server"></a>Key Vault アクセス許可をサーバーに付与する
 
-```powershell
+```azurecli
 # create key vault, key and grant permission
 az keyvault create --name <kvname> --resource-group <rgname> --location <location> --enable-soft-delete true
 az keyvault key create --name <keyname> --vault-name <kvname> --protection software
@@ -150,7 +150,7 @@ az keyvault set-policy --name <kvname>  --object-id <objectid> --resource-group 
 
 ## <a name="add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>Key Vault キーをサーバーに追加し、TDE 保護機能を設定する
 
-```powershell
+```azurecli
 # add server key and update encryption protector
 az sql server key create --server <servername> --resource-group <rgname> --kid <keyID>
 az sql server tde-key set --server <servername> --server-key-type AzureKeyVault  --resource-group <rgname> --kid <keyID>
@@ -161,7 +161,7 @@ az sql server tde-key set --server <servername> --server-key-type AzureKeyVault 
 
 ## <a name="turn-on-tde"></a>TDE を有効にする
 
-```powershell
+```azurecli
 # enable encryption
 az sql db tde set --database <dbname> --server <servername> --resource-group <rgname> --status Enabled
 ```
@@ -170,7 +170,7 @@ az sql db tde set --database <dbname> --server <servername> --resource-group <rg
 
 ## <a name="check-the-encryption-state-and-encryption-activity"></a>暗号化の状態と暗号化アクティビティを確認する
 
-```powershell
+```azurecli
 # get encryption scan progress
 az sql db tde list-activity --database <dbname> --server <servername> --resource-group <rgname>  
 
@@ -182,13 +182,13 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
 
 ## <a name="useful-powershell-cmdlets"></a>便利な PowerShell コマンドレット
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 - TDE を無効にするには、[Set-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) コマンドレットを使用します。
 
    ```powershell
    Set-AzSqlDatabaseTransparentDataEncryption -ServerName <LogicalServerName> -ResourceGroupName <SQLDatabaseResourceGroupName> `
-      -DatabaseName <DatabaseName> -State "Disabled”
+      -DatabaseName <DatabaseName> -State "Disabled"
    ```
 
 - サーバーに追加された Key Vault キーのリストを取得するには、[Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) コマンドレットを使用します。
@@ -205,7 +205,7 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
    Remove-AzSqlServerKeyVaultKey -KeyId <KeyVaultKeyId> -ServerName <LogicalServerName> -ResourceGroupName <SQLDatabaseResourceGroupName>
    ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 - データベースの一般的な設定については、「[az sql](/cli/azure/sql)」を参照してください。
 
@@ -221,13 +221,13 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
 
 - キー コンテナーが見つからない場合は、適切なサブスクリプションを使用していることを確認します。
 
-   # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+   # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
    ```powershell
    Get-AzSubscription -SubscriptionId <SubscriptionId>
    ```
 
-   # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
    ```powershell
    az account show - s <SubscriptionId>

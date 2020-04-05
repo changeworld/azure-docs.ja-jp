@@ -11,14 +11,16 @@ ms.topic: overview
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: eb338c39ed3b1a095c1ad31e3f695e8d3fec0ed3
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: af49e80766d7ac4bd2d9ed677a2571fb0a5a3189
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565963"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80131745"
 ---
 # <a name="what-is-computer-vision"></a>Computer Vision とは
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Azure の Computer Vision サービスを使用すると、開発者は、関心のあるビジュアル機能に応じて、画像を処理して情報を返す高度なアルゴリズムにアクセスできます。 たとえば、Computer Vision では、成人向けコンテンツが画像に含まれているかどうかを判断したり、画像内の人物の顔をすべて検出したりすることができます。
 
@@ -77,6 +79,6 @@ Cognitive Services 全般に言えることですが、Computer Vision サービ
 
 以下のクイック スタート ガイドに従って、実際に Computer Vision を使ってみましょう。
 
-- [クイック スタート: Computer Vision .NET SDK](quickstarts-sdk/csharp-sdk.md)
-- [クイック スタート: Computer Vision Python SDK](quickstarts-sdk/python-sdk.md)
-- [クイック スタート: Computer Vision Java SDK](quickstarts-sdk/java-sdk.md)
+- [クイック スタート: Computer Vision .NET クライアント ライブラリ](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+- [クイック スタート: Computer Vision Python クライアント ライブラリ](./quickstarts-sdk/client-library.md?pivots=programming-language-python)
+- [クイック スタート: Computer Vision Java クライアント ライブラリ](./quickstarts-sdk/client-library.md?pivots=programming-language-java)

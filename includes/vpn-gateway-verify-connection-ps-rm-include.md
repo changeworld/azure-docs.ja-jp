@@ -9,10 +9,10 @@ ms.date: 10/17/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 49f48c2d0bf865cf8c8fde831e7a597f8701d213
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67181003"
 ---
 "Get-AzVirtualNetworkGatewayConnection" コマンドレットを使用して、接続が成功したことを確認できます。"-Debug" は指定しても指定しなくてもかまいません。 

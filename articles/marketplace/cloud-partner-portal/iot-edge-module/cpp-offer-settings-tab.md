@@ -1,19 +1,18 @@
 ---
 title: Azure IoT Edge モジュール用のオファーの設定 | Azure Marketplace
 description: IoT Edge モジュール用のオファーの設定を構成します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: 1043f467a7363bc0e3eedba40fd2246015592276
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 0fb15a6d71278be9b380f793d39732e763d6447d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814083"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286576"
 ---
 # <a name="iot-edge-module-offer-settings-tab"></a>IoT Edge モジュールの [プランの設定] タブ
 
@@ -37,6 +36,6 @@ ms.locfileid: "73814083"
 **[保存]** を選択してオファーの設定を保存します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [[SKU]](./cpp-skus-tab.md) タブを使用して、オファーの SKU を構成します。

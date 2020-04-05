@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: cac8622c95ca2cb08ef412ac7117caac0c52ca56
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76773613"
 ---
 # <a name="how-to-check-job-progress"></a>方法: ジョブの進行状況をチェックする
@@ -68,6 +68,6 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 [Media Services Operations REST API の概要](media-services-rest-how-to-use.md)

@@ -7,11 +7,11 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
 ms.openlocfilehash: ce0a170a629f347e2687a2e9f63fb3438fe2bd2f
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592528"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235991"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Azure portal で App Service アプリを構成する
 

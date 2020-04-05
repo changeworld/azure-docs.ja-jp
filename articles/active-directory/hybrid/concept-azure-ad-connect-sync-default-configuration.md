@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c2886b842aab81732beec0fdd7957aab8e2b4f5e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76548868"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect 同期: 既定の構成について
@@ -220,7 +220,7 @@ NULL
 ### <a name="putting-it-all-together"></a>まとめ
 ここまでの同期規則に関する説明で、構成がさまざまな同期規則でどのように動作するかを十分理解できるようになりました。 ユーザー、メタバースに影響する属性に注目すると、規則は次の順序で適用されます。
 
-| Name | 解説 |
+| 名前 | 解説 |
 |:--- |:--- |
 | AD からの受信 - ユーザー結合 |コネクタ スペース オブジェクトをメタバースと結合するための規則。 |
 | AD からの受信 - ユーザー アカウント有効 |Azure AD と Office 365 にサインインするために必要な属性。 これらの属性は有効なアカウントから取得します。 |

@@ -9,10 +9,10 @@ ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 03/30/2017
 ms.openlocfilehash: 0f20bb5fb249ad6bac862afe2b0e8eee4b32e2a9
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75666552"
 ---
 # <a name="azure-serverless-overview-for-building-cloud-based-apps-and-solutions-with-azure-logic-apps-and-azure-functions"></a>Azure サーバーレス: Azure Logic Apps と Azure Functions を使用してクラウド ベースのアプリおよびソリューションを構築するための概要

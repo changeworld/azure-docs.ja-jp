@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
-ms.openlocfilehash: 574841b3a89385a3b8bf048d5ed36f40fac99a83
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 58d795a5aee79e4149864a79a923ce34950b31d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757394"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79458071"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Azure Cloud Shell の Bash のクイックスタート
 
@@ -52,7 +52,7 @@ az account set --subscription 'my-subscription-name'
 > [!TIP]
 > 設定したサブスクリプションは、`/home/<user>/.azure/azureProfile.json` を使って今後のセッション用に記憶されます。
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 "MyRG" という名前の新しいリソース グループを WestUS に作成します。
 ```azurecli-interactive
 az group create --location westus --name MyRG
@@ -85,7 +85,7 @@ SSH 接続を確立すると、Ubuntu のウェルカム プロンプトが表�
 
 ## <a name="cleaning-up"></a>クリーンアップしています 
 1. SSH セッションを終了します。
-   ```azurecli-interactive
+   ```
    exit
    ```
 
@@ -94,7 +94,7 @@ SSH 接続を確立すると、Ubuntu のウェルカム プロンプトが表�
    az group delete -n MyRG
    ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Cloud Shell の Bash でのファイルの永続化については、こちらを参照してください](persisting-shell-storage.md) <br>
 [Azure CLI について](https://docs.microsoft.com/cli/azure/) <br>
 [Azure Files ストレージについて](../storage/files/storage-files-introduction.md) <br>

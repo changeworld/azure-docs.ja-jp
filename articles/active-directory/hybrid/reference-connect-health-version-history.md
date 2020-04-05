@@ -17,10 +17,10 @@ ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ace8d170a5ba48c00775c3b376df8bb70a337d5d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76897038"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: バージョンのリリース履歴

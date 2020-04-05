@@ -7,10 +7,10 @@ ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc
 ms.openlocfilehash: 7e8ebe28fa7989997b5d3adfd14c582438a00b1b
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74684772"
 ---
 # <a name="create-a-web-app-and-deploy-code-to-a-staging-environment"></a>Web アプリを作成してステージング環境にコードをデプロイする
@@ -37,7 +37,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | App Service プランを作成します。 |
@@ -47,7 +47,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 | [Set-AzResource](/powershell/module/az.resources/set-azresource) | リソース グループのリソースを変更します。 |
 | [Switch-AzWebAppSlot](/powershell/module/az.websites/switch-azwebappslot) | Web アプリのデプロイ スロットを運用環境にスワップします。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

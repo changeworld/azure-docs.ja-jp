@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: dobett
 ms.openlocfilehash: c868aa0f1c2449ccf163523c9ded25a31d1d84c4
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73820107"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>コネクテッド ファクトリ IoT ソリューション アクセラレータとは
@@ -63,6 +63,6 @@ ms.locfileid: "73820107"
 - ソリューションをカスタマイズして、独自のビジネス要件を満たします。
 - 完全なソリューション ソース コードは GitHub にあります。 [コネクテッド ファクトリ事前構成済みソリューション](https://github.com/Azure/azure-iot-connected-factory)のリポジトリをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 コネクテッド ファクトリ ソリューション アクセラレータについて詳しくは、クイック スタート「[工業用 IoT デバイスを管理するクラウドベースのソリューションを試す](quickstart-connected-factory-deploy.md)」をご覧ください。

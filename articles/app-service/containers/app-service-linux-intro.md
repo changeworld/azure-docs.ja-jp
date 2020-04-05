@@ -7,13 +7,13 @@ ms.assetid: bc85eff6-bbdf-410a-93dc-0f1222796676
 ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 65352b8f8f85f5e7a2e25ae99d5ca3368ad78711
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 27f085543869b1a77db9c97ca2e7ae7d3d3b7b88
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79126520"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80046412"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Azure App Service on Linux の概要
 

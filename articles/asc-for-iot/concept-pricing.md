@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 09/27/2019
 ms.author: mlottner
 ms.openlocfilehash: dc9dcbfd00b5205fa5c66e334b30c76d549d8a42
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71348509"
 ---
 # <a name="pricing-and-associated-costs"></a>価格と関連コスト
@@ -56,7 +56,7 @@ Azure Security Center for IoT には、直接の価格には含まれない関�
 
 次の表では、関連コストの概要と各オプションの影響を示します。
 
-|     | 使用法 | Comment (コメント) |
+|     | 使用法 | 解説 |
 | --- | --- | --- |
 | **Log Analytics ストレージ** |  |
 | デバイスの推奨事項とアラート| サービスによって生成されるセキュリティ推奨事項とアラート | 非オプション |
@@ -76,7 +76,7 @@ Azure Security Center for IoT には、直接の価格には含まれない関�
 |
 
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [生セキュリティ データ](how-to-security-data-access.md)にアクセスする
 - [デバイスを調査する](how-to-investigate-device.md)

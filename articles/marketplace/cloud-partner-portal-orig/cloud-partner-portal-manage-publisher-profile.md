@@ -1,20 +1,18 @@
 ---
 title: Azure Marketplace と AppSource のパブリッシャー プロファイルの管理
 description: Azure Marketplace と AppSource のパブリッシャー プロファイルの管理
-services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
-manager: pbutlerm
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/15/2018
-ms.author: pabutler
-ms.openlocfilehash: c9e8e73d18ec0c2a7334fbb5521e89ead4334cc7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 9b89ff803e08d0ca929eea913be9a1c87664b124
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826362"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280237"
 ---
 # <a name="manage-azure-marketplace-and-appsource-publisher-profile"></a>'Azure Marketplace' と 'AppSource' の発行元プロファイルを管理する
 
@@ -40,7 +38,7 @@ ms.locfileid: "73826362"
 
 ![発行元プロファイルの詳細 - 発行元プロファイルの詳細](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofiledetails.png)
 
-**デベロッパー センター アカウントにリンクする**: Cloud パートナー ポータルで、発行元プロファイルと既存のデベロッパー センター アカウントをリンクさせることもできます。
+**デベロッパー センター アカウントにリンクする**: クラウド パートナー ポータルで、発行元プロファイルで、既存のデベロッパー センター アカウントをリンクすることもできます。
 最初に、デベロッパー センター アカウントの登録で使用したものと同じ電子メール アドレスを使用してポータルにサインインします。 その後、発行元プロファイル ページに、デベロッパー センター アカウントの状態、デベロッパー センター アカウント所有者の電子メール、およびデベロッパー センター アカウント名が表示されます。
 
 >[!NOTE]

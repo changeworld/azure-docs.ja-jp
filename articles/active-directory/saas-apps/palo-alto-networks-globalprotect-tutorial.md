@@ -17,10 +17,10 @@ ms.date: 08/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8faa1d0ecfec629487c9cddee6a01fb9f809393f
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70165985"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-palo-alto-networks---globalprotect"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Palo Alto Networks - GlobalProtect の統合
@@ -29,7 +29,7 @@ ms.locfileid: "70165985"
 
 * Palo Alto Networks - GlobalProtect にアクセスするユーザーを Azure AD で制御します。
 * ユーザーが自分の Azure AD アカウントを使用して Palo Alto Networks - GlobalProtect に自動的にサインインできるようにします。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

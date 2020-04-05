@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.openlocfilehash: 31cdc9663283b580acc10e7ac8d5a77f9036a7a8
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76772351"
 ---
 # <a name="quickstart-content-moderator-client-library-for-python"></a>クイック スタート:Python 用 Content Moderator クライアント ライブラリ

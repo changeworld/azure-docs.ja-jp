@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
 ms.openlocfilehash: 6062f8b3992732e0e0f9bbdae9549e69c393f4ff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67080480"
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>接続済みファクトリ ソリューションによる OPC UA サーバー データの表示方法をカスタマイズする

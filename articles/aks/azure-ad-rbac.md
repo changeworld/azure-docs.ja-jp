@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 04/16/2019
 ms.openlocfilehash: 456b6dcdd590b48e06c830db85b726d4bebb69e3
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77596523"
 ---
 # <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>Azure Kubernetes Service でロールベースのアクセス制御と Azure Active Directory ID を使用してクラスター リソースへのアクセスを制限する

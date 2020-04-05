@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
 ms.openlocfilehash: 9151870836b1a616a79e54275ed185a425c11f0c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72385614"
 ---
 # <a name="tutorial-send-notifications-to-specific-devices-running-universal-windows-platform-applications"></a>チュートリアル:ユニバーサル Windows プラットフォーム アプリケーションを実行している特定のデバイスに通知を送信する
@@ -246,7 +246,7 @@ ms.locfileid: "72385614"
 
 前のセクションで作成したアプリを実行します。 選択されたカテゴリの通知がトースト通知として表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、ニュース速報をカテゴリごとにブロードキャストする方法について説明しました。 バックエンド アプリケーションは、そのタグの通知を受信するように登録されているデバイスに、タグ付けされた通知をプッシュします。 使用されているデバイスに関係なく、特定のユーザーにプッシュ通知を送信する方法については、次のチュートリアルに進んでください。
 

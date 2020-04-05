@@ -11,10 +11,10 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: d064e940997d13e51be4fd38e9f678b778ce31f4
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74900044"
 ---
 # <a name="samples-on-azure-data-science-virtual-machines"></a>Azure Data Science Virtual Machine 上のサンプル

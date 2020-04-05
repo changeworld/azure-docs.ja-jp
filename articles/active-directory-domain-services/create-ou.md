@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
 ms.openlocfilehash: 7abbdf03e85f425f65a45e6640b82529c2b9c84f
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77614060"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインに組織単位 (OU) を作成する
@@ -66,7 +66,7 @@ Azure AD DS マネージド ドメインにカスタム OU を作成すると、
 1. 管理 VM にサインインします。 Azure portal を使用した接続方法については、「[Windows Server VM に接続する][connect-windows-server-vm]」を参照してください。
 1. スタート画面で **[管理ツール]** を選択します。 [管理 VM を作成する][tutorial-create-management-vm]ためのチュートリアルでインストールされた使用可能な管理ツールの一覧が表示されます。
 1. OU を作成して管理するには、管理ツールの一覧から **[Active Directory 管理センター]** を選択します。
-1. 左側のウィンドウで、Azure AD DS マネージド ドメイン (*例: aaddscontoso.com*) を選択します。 既存の OU とリソースの一覧が表示されます。
+1. 左側のペインで、Azure AD DS マネージド ドメイン (例: *aaddscontoso.com*) を選択します。 既存の OU とリソースの一覧が表示されます。
 
     ![Active Directory 管理センターで Azure AD DS マネージド ドメインを選択する](./media/active-directory-domain-services-admin-guide/create-ou-adac-overview.png)
 

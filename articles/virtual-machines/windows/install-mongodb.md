@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: 37c1b58d364e7eadb33803ce7eac1f2b956ec1b6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74038547"
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>Azure の Windows VM に MongoDB をインストールして構成する
@@ -71,7 +71,7 @@ MongoDB のインストールと構成を開始するには、リモート デ�
      ```
      
      > [!NOTE]
-     > `PATH` 変数に場所を追加していることを示すために、先頭にセミコロン (`;`) を追加してください。
+     > `;` 変数に場所を追加していることを示すために、先頭にセミコロン (`PATH`) を追加してください。
 
 2. データ ディスクに MongoDB データ ディレクトリとログ ディレクトリを作成します。 **[スタート]** メニューの **[コマンド プロンプト]** を選択します。 次の例では、ドライブ F: にディレクトリを作成しています。
    
@@ -85,7 +85,7 @@ MongoDB のインストールと構成を開始するには、リモート デ�
     mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log
     ```
    
-    MongoDB がジャーナル ファイルを割り当て、接続のリッスンを開始するまでには、数分かかる場合があります。 `mongod.exe` サーバーが開始され、ジャーナル ファイルを割り当てると、すべてのログ メッセージが *F:\MongoLogs\mongolog.log* ファイルにダイレクトされます。
+    MongoDB がジャーナル ファイルを割り当て、接続のリッスンを開始するまでには、数分かかる場合があります。 *サーバーが開始され、ジャーナル ファイルを割り当てると、すべてのログ メッセージが*F:\MongoLogs\mongolog.log`mongod.exe` ファイルにダイレクトされます。
    
    > [!NOTE]
    > MongoDB インスタンスが実行している間は、コマンド プロンプトのフォーカスがこのタスクに設定された状態になります。 MongoDB を実行し続けるためには、コマンド プロンプト ウィンドウを開いたままにしておく必要があります。 ただし、サービスとして MongoDB をインストールすれば、その必要はありません。詳しい手順については、以下で説明します。
@@ -158,9 +158,9 @@ New-NetFirewallRule `
 必要に応じて、既存の Azure 仮想ネットワーク サブネットの外部から MongoDB にアクセスすることを許可するネットワーク セキュリティ グループの規則を作成します。 ネットワーク セキュリティ グループの規則を作成するには、[Azure Portal](nsg-quickstart-portal.md) または [Azure PowerShell](nsg-quickstart-powershell.md) を使用します。 Windows ファイアウォール規則と同様に、TCP ポート 27017 から MongoDB VM の仮想ネットワーク インターフェイスへの接続を許可します。
 
 > [!NOTE]
-> TCP ポート 27017 は、MongoDB によって使用される既定のポートです。 このポートを変更するには、`mongod.exe` サービスを手動で開始するかサービスから開始するときに、`--port` パラメーターを使用します。 ポートを変更した場合には、前の手順の Windows ファイアウォールとネットワーク セキュリティ グループの規則を更新してください。
+> TCP ポート 27017 は、MongoDB によって使用される既定のポートです。 このポートを変更するには、`--port` サービスを手動で開始するかサービスから開始するときに、`mongod.exe` パラメーターを使用します。 ポートを変更した場合には、前の手順の Windows ファイアウォールとネットワーク セキュリティ グループの規則を更新してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Windows VM に MongoDB をインストールして構成する方法を学習しました。 これで、[MongoDB のドキュメント](https://docs.mongodb.com/manual/)の高度なトピックに従って、Windows VM の MongoDB にアクセスできます。
 

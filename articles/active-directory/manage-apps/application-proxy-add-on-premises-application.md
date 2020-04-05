@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29ab39c10686066599a23d12c4fd8e66caae732e
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 73aa01ea08c8bab1395516c31bb46dbfd88045db
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586072"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79481417"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する
 
@@ -90,7 +90,7 @@ Azure AD アプリケーション プロキシの環境を準備するには、�
 
    | ポート番号 | 用途 |
    | --- | --- |
-   | 80 | SSL 証明書を検証する際に証明書失効リスト (CRL) をダウンロードする |
+   | 80 | TLS または SSL 証明書の検証時に証明書失効リスト (CRL) をダウンロードする |
    | 443 | アプリケーション プロキシ サービスとのすべての送信通信 |
 
 ファイアウォールが送信元ユーザーに応じてトラフィックを処理している場合は、ネットワーク サービスとして実行されている Windows サービスからのトラフィック用にポート 80 と 443 も開きます。
@@ -102,7 +102,7 @@ Azure AD アプリケーション プロキシの環境を準備するには、�
 | URL | 用途 |
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | コネクタとアプリケーション プロキシ クラウド サービスの間の通信 |
-| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Azure では、これらの URL を使用して証明書が検証されます。 |
+| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | コネクタでは、証明書の検証にこれらの URL が使用されます。 |
 | login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*.microsoftonline.com<br>\*.microsoftonline-p.com<br>\*.msauth.net<br>\*.msauthimages.net<br>\*.msecnd.net<br>\*.msftauth.net<br>\*.msftauthimages.net<br>\*.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctdl.windowsupdate.com:80 | コネクタでは、登録プロセスの間にこれらの URL が使用されます。 |
 
 ファイアウォールまたはプロキシで DNS 許可リストを構成できる場合は、\*.msappproxy.net と \*.servicebus.windows.net への接続を許可できます。 そうでない場合は、[Azure IP ranges and Service Tags - Public Cloud (Azure IP 範囲とサービス タグ - パブリック クラウド)](https://www.microsoft.com/download/details.aspx?id=56519) へのアクセスを許可する必要があります。 これらの IP 範囲は毎週更新されます。

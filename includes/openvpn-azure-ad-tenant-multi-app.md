@@ -9,13 +9,13 @@ ms.date: 02/18/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: e950d194ab48cec1a70c7bd17617332cb858a55d
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77485682"
 ---
-## <a name="tenant"></a>1.Azure AD テナントを作成する
+## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1.Azure AD テナントを作成する
 
 [新しいテナントの作成](../articles/active-directory/fundamentals/active-directory-access-create-new-tenant.md)に関する記事の手順に従って、Azure AD テナントを作成します。
 
@@ -26,14 +26,14 @@ ms.locfileid: "77485682"
 
    ![新しい Azure AD テナント](./media/openvpn-azure-ad-tenant-multi-app/new-tenant.png)
 
-## <a name="users"></a>2.テナント ユーザーを作成する
+## <a name="2-create-tenant-users"></a><a name="users"></a>2.テナント ユーザーを作成する
 
 この手順では、2 つの Azure AD テナント ユーザーを作成します。全体管理者アカウントを 1 つと、マスター ユーザー アカウントを 1 つです。 マスター ユーザー アカウントは、マスター埋め込みアカウント (サービス アカウント) として使用されます。 Azure AD テナント ユーザー アカウントを作成する際には、作成するユーザーの種類に応じてディレクトリ ロールを調整します。 [この記事](../articles/active-directory/fundamentals/add-users-azure-active-directory.md)の手順を使用して、Azure AD テナントに対して少なくとも 2 人のユーザーを作成します。 作成するアカウントの種類 (下記) に応じて、**ディレクトリ ロール**を変更してください。
 
 * 全体管理者
 * User
 
-## <a name="register-client"></a>3.VPN クライアントを登録する
+## <a name="3-register-the-vpn-client"></a><a name="register-client"></a>3.VPN クライアントを登録する
 
 Azure AD テナントで VPN クライアントを登録します。
 
@@ -83,7 +83,7 @@ Azure AD テナントで VPN クライアントを登録します。
 
      ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/azure-vpn.png)
 
-## <a name="register-apps"></a>4.その他のアプリケーションを登録する
+## <a name="4-register-additional-applications"></a><a name="register-apps"></a>4.その他のアプリケーションを登録する
 
 この手順では、さまざまなユーザーやグループ用にその他のアプリケーションを登録します。
 
@@ -124,7 +124,7 @@ Azure AD テナントで VPN クライアントを登録します。
 
 10. この「[その他のアプリケーションを追加する](#register-apps)」セクションの手順を繰り返して、セキュリティ要件に必要な数だけアプリケーションを作成します。 各アプリケーションが VPN ゲートウェイに関連付けられ、さまざまなユーザーのグループを指定できます。 1 つのゲートウェイに関連付けられるアプリケーションは 1 つだけです。
 
-## <a name="assign-users"></a>5.アプリケーションへのユーザーの割り当て
+## <a name="5-assign-users-to-applications"></a><a name="assign-users"></a>5.アプリケーションへのユーザーの割り当て
 
 ユーザーをアプリケーションに割り当てます。
 

@@ -17,10 +17,10 @@ ms.date: 08/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c2af8f81636f7653049029b3c0d3a81cbfb8e6fd
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70143083"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iserver-portal"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と iServer Portal の統合
@@ -29,7 +29,7 @@ ms.locfileid: "70143083"
 
 * iServer Portal にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して iServer Portal に自動的にサインインできるようにすることができます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

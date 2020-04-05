@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/28/2019
 ms.author: raynew
 ms.openlocfilehash: 088cd5447b1f96dbf172b5918c29e4f3293289a6
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67534653"
 ---
 1. プロセス サーバーを実行しているマシンへのリモート デスクトップ接続を確立します。 

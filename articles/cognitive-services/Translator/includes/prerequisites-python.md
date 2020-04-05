@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 269bac2604288fa7420ccf06e028adde1a8e7c2b
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906625"
 ---
 ## <a name="prerequisites"></a>前提条件

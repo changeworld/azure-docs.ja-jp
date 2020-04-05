@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 27c06656d95c5165b33b6056a3cf3b554f0e5469
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74034112"
 ---
 # <a name="azcopy-jobs"></a>azcopy jobs
@@ -22,7 +22,7 @@ ms.locfileid: "74034112"
 ## <a name="related-conceptual-articles"></a>関連する概念に関する記事
 
 - [AzCopy を使ってみる](storage-use-azcopy-v10.md)
-- [AzCopy と BLOB ストレージでデータを転送する](storage-use-azcopy-blobs.md)
+- [AzCopy と Blob Storage でデータを転送する](storage-use-azcopy-blobs.md)
 - [AzCopy とファイル ストレージでデータを転送する](storage-use-azcopy-files.md)
 - [AzCopy の構成、最適化、トラブルシューティング](storage-use-azcopy-configure.md)
 
@@ -45,7 +45,7 @@ azcopy jobs show [jobID]
 |--cap-mbps uint32|転送速度の上限を設定します (メガビット/秒)。 瞬間的なスループットは、上限と若干異なる場合があります。 このオプションを 0 に設定した場合や省略した場合、スループットは制限されません。|
 |--output-type string|コマンドの出力形式。 選択肢には、text、json などがあります。 既定値は "text" です。|
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [azcopy](storage-ref-azcopy.md)
 - [azcopy jobs list](storage-ref-azcopy-jobs-list.md)

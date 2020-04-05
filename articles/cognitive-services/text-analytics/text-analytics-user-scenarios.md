@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: aahi
 ms.openlocfilehash: 6847059de2a8685a56719f07a041a40456f2aa06
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396116"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218533"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Text Analytics API のユーザー シナリオの例
 

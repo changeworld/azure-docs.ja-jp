@@ -16,10 +16,10 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cbc5c356ea5a542fdc12b11aff236c56b146b3d5
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68477236"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>アプリケーション プロキシで要求に対応するアプリケーションを利用する
@@ -38,11 +38,11 @@ ms.locfileid: "68477236"
 
 要求に対応するアプリの AD FS を構成する方法は 2 つあります。 1 つはカスタム ドメインを使用する方法で、 もう 1 つは WS-Federation を使用する方法です。 
 
-### <a name="option-1-custom-domains"></a>方法 1:カスタム ドメイン
+### <a name="option-1-custom-domains"></a>方法 1: カスタム ドメイン
 
 アプリケーションのすべての内部 URL が完全修飾ドメイン名 (FQDN) になっている場合は、アプリケーションの[カスタム ドメイン](application-proxy-configure-custom-domain.md)を構成することができます。 このカスタム ドメインを使用して、内部 URL と同じ外部 URL を作成できます。 外部 URL が内部 URL と一致すると、ユーザーがオンプレミスかリモートかに関わらず、STS リダイレクト機能が作動します。 
 
-### <a name="option-2-ws-federation"></a>方法 2:WS-Federation
+### <a name="option-2-ws-federation"></a>方法 2: WS-Federation
 
 1. [ADFS 管理] を開きます。
 2. **[証明書利用者信頼]** に移動し、アプリケーション プロキシで発行しているアプリを右クリックして、 **[プロパティ]** を選択します。  
@@ -54,7 +54,7 @@ ms.locfileid: "68477236"
 
    ![エンドポイントを追加し、信頼された URL 値を設定しているスクリーン ショット](./media/application-proxy-configure-for-claims-aware-applications/appproxyendpointtrustedurl.png)  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * 要求に対応するアプリケーション以外のアプリケーショで[シングル サインオンを有効](configure-single-sign-on-non-gallery-applications.md)にする
 * [ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにする](application-proxy-configure-native-client-application.md)
 

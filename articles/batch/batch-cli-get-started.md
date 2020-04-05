@@ -15,10 +15,10 @@ ms.date: 07/24/2018
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 30f71432ca008b87bddfb253f23ae3cef0ac390d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77020184"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Azure CLI で Batch リソースを管理する
@@ -167,7 +167,7 @@ Azure CLI の問題をトラブルシューティングするときに、以下�
 
 * `-h` を使用して、任意の CLI コマンドの **ヘルプ テキスト** を取得します。
 * `-v` と `-vv` を使用して、**詳細**なコマンド出力を表示します。 `-vv` フラグを指定すると、Azure CLI は実際の REST 要求および応答を表示します。 これらのスイッチは、完全なエラー出力を表示する場合に便利です。
-* `--json` オプションを使用すると、**コマンド出力を JSON として**表示できます。 たとえば、 `az batch pool show pool001 --json` を実行すると、pool001 のプロパティが JSON 形式で表示されます。 この出力をコピーして変更し、`--json-file` で使用できます (この記事の前半で説明した JSON ファイルの項目を参照してください)。
+* **オプションを使用すると、** コマンド出力を JSON として`--json`表示できます。 たとえば、 `az batch pool show pool001 --json` を実行すると、pool001 のプロパティが JSON 形式で表示されます。 この出力をコピーして変更し、`--json-file` で使用できます (この記事の前半で説明した JSON ファイルの項目を参照してください)。
 <!---Loc Comment: Please, check link [JSON files] since it's not redirecting to any location.--->
 
 ## <a name="next-steps"></a>次のステップ

@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 11/07/2018
 ms.openlocfilehash: 35e10c0f9babca7719ff496e7068ad1564670fee
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77209156"
 ---
 # <a name="upload-files-with-iot-hub"></a>IoT Hub を使用したファイルのアップロード
@@ -125,10 +125,10 @@ IoT Hub には、ファイルのアップロードをサポートする 2 つの
 
 | プロパティ | 説明 | 範囲と既定値 |
 | --- | --- | --- |
-| **enableFileUploadNotifications** |ファイルのアップロード通知をファイル通知エンドポイントに書き込むかどうかを制御します。 |ブール値。 既定値はTrue。 |
-| **fileNotifications.ttlAsIso8601** |ファイルのアップロード通知の既定の TTL。 |最大 48 時間の ISO_8601 書式による間隔 (最小 1 分)。 既定値は1 時間。 |
-| **fileNotifications.lockDuration** |ファイルのアップロード通知キューのロック期間。 |5 ～ 300 秒 (最小 5 秒)。 既定値は60 秒。 |
-| **fileNotifications.maxDeliveryCount** |ファイルのアップロード通知キューの最大配信数。 |1 ～ 100。 既定値は100。 |
+| **enableFileUploadNotifications** |ファイルのアップロード通知をファイル通知エンドポイントに書き込むかどうかを制御します。 |ブール値。 既定値: True。 |
+| **fileNotifications.ttlAsIso8601** |ファイルのアップロード通知の既定の TTL。 |最大 48 時間の ISO_8601 書式による間隔 (最小 1 分)。 既定値: 1 時間。 |
+| **fileNotifications.lockDuration** |ファイルのアップロード通知キューのロック期間。 |5 ～ 300 秒 (最小 5 秒)。 既定値: 60 秒。 |
+| **fileNotifications.maxDeliveryCount** |ファイルのアップロード通知キューの最大配信数。 |1 ～ 100。 既定値: 100。 |
 
 IoT ハブ上でこれらのプロパティを設定するには、Azure portal、Azure CLI、または PowerShell を使用します。 詳細については、[ファイル アップロードの構成](iot-hub-configure-file-upload.md)に関する記事を参照してください。
 

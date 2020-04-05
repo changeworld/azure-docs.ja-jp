@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: seodec18
 ms.openlocfilehash: a62c2460698408f6a2bfa51c6638bdeaf88bb31f
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77083526"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>タイム シリーズ ID の選択に関するベスト プラクティス

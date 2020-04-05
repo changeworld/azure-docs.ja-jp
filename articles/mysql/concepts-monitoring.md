@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: e9ae19e503b6b54e881af3c6477f77ffa1c930b0
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.date: 3/18/2020
+ms.openlocfilehash: 2de04bbb1523151ac566b78bf99eba34c437fccd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252607"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79537093"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Azure Database for MySQL での監視
 サーバーに関する監視データは、ワークロードをトラブルシューティングしたり最適化したりするのに役立ちます。 Azure Database for MySQL には、サーバーの動作への洞察を提供する各種のメトリックが用意されています。
@@ -54,10 +54,10 @@ ms.locfileid: "78252607"
 
 ## <a name="planned-maintenance-notification"></a>計画メンテナンスの通知
 
-**計画メンテナンスの通知**によって、Azure Database for MySQL に対して今後予定されているメンテナンスに関するアラートを受信できます。 これらの通知は [Service Health](../service-health/overview.md) の計画メンテナンスに統合されており、サブスクリプションに対してスケジュールされたすべてのメンテナンスを 1 か所に表示できます。 また、異なるリソースに対しては異なる連絡先が必要になる場合があるため、さまざまなリソース グループに対して適切なユーザーへの通知をスケーリングすることも可能です。 今後のメンテナンスに関する通知は、イベントの 72 時間前に送信されます。
+**計画メンテナンスの通知**によって、Azure Database for MySQL に対して今後予定されているメンテナンスに関するアラートを受信できます。 これらの通知は [Service Health の](../service-health/overview.md)計画メンテナンスに統合されており、サブスクリプションに対してスケジュールされたすべてのメンテナンスを 1 か所に表示できます。 また、異なるリソースに対しては異なる連絡先が必要になる場合があるため、さまざまなリソース グループに対して適切なユーザーへの通知をスケーリングすることも可能です。 今後のメンテナンスに関する通知は、イベントの 72 時間前に受信します。
 
 > [!Note]
-> Microsoft では、**計画メンテナンスの通知**の 72 時間での通知をすべてのイベントに対して提供するために、あらゆる試みを行います。 ただし、重大時やセキュリティ更新プログラムに関する場合には、イベントが迫ってからでも通知が送信されたり、あるいは通知が省略されたりすることがあります。
+> Microsoft では、**計画メンテナンスの通知**の 72 時間での通知をすべてのイベントに対して提供するために、あらゆる試みを行います。 ただし、重大時やセキュリティ更新プログラムに関する場合には、イベントが迫ってから通知が送信されたり、あるいは通知が省略されたりすることがあります。
 
 ### <a name="to-receive-planned-maintenance-notification"></a>計画メンテナンスの通知を受信するには
 

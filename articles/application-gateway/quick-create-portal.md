@@ -6,30 +6,39 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 11/14/2019
+ms.date: 03/09/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 5e66632fab0306da7766f079733cd1d8cb3edc8d
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 17adc800bd5a2ae53e27350c7e0d588eaeee4a8f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544091"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290170"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>クイック スタート:Azure Application Gateway による Web トラフィックのルーティング - Azure portal
 
-このクイック スタートでは、Azure portal を使用して、アプリケーション ゲートウェイを作成する方法を示します。  アプリケーション ゲートウェイを作成してから、それをテストして正しく動作していることを確認します。 Azure Application Gateway では、ポートにリスナーを割り当て、ルールを作成し、バックエンド プールにリソースを追加することによって、お客様のアプリケーション Web トラフィックを特定のリソースに転送します。 わかりやすくするために、この記事では、パブリック フロントエンド IP、このアプリケーション ゲートウェイで単一サイトをホストするための基本リスナー、バックエンド プールに使用される 2 つの仮想マシン、および基本要求ルーティング規則を使用する簡単な設定を使用します。
+このクイックスタートでは、Azure portal を使用してアプリケーション ゲートウェイを作成します。 さらに、それをテストし、正しく動作することを確認します。 
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+アプリケーション ゲートウェイは、アプリケーション Web トラフィックをバックエンド プール内の特定のリソースに転送します。 リスナーをポートに割り当て、ルールを作成し、リソースをバックエンド プールに追加します。 わかりやすくするために、この記事では、パブリック フロントエンド IP、アプリケーション ゲートウェイで単一サイトをホストするための基本リスナー、基本要求ルーティング規則、およびバックエンド プール内の 2 つの仮想マシンを使用する簡単な設定を使用します。
 
+また、[Azure PowerShell](quick-create-powershell.md) または [Azure CLI](quick-create-cli.md) を使用してこのクイックスタートを完了することもできます。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="sign-in-to-azure"></a>Azure へのサインイン
+
+
+## <a name="prerequisites"></a>前提条件
+
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
 Azure アカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 
 ## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
+
+**[アプリケーションゲートウェイの作成]** ページのタブを使用して、アプリケーション ゲートウェイを作成します。
 
 1. Azure portal メニュー上または **[ホーム]** ページから **[リソースの作成]** を選択します。 **[新規作成]** ウィンドウが表示されます。
 
@@ -110,7 +119,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 
 4. **[バックエンド ターゲット]** タブで、 **[バックエンド ターゲット]** の **[myBackendPool]** を選択します。
 
-5. **[HTTP 設定]** には **[新規作成]** を選択して新しい HTTP 設定を作成します。 HTTP 設定によって、ルーティング規則の動作が決まります。 開いた **[HTTP 設定の追加]** ウィンドウで、 **[HTTP 設定名]** として「*myHTTPSetting*」と入力します。 **[HTTP 設定の追加]** ウィンドウで他の設定の既定値をそのまま使用し、 **[追加]** を選択して **[ルーティング規則の追加]** ウィンドウに戻ります。 
+5. **[HTTP 設定]** には **[新規作成]** を選択して新しい HTTP 設定を作成します。 HTTP 設定によって、ルーティング規則の動作が決まります。 表示された **[HTTP 設定の追加]** ウィンドウで、 **[HTTP 設定名]** に「*myHTTPSetting*」と入力し、 **[バックエンド ポート]** に「*80*」と入力します。 **[HTTP 設定の追加]** ウィンドウで他の設定の既定値をそのまま使用し、 **[追加]** を選択して **[ルーティング規則の追加]** ウィンドウに戻ります。 
 
      ![新しいアプリケーション ゲートウェイの作成:HTTP 設定](./media/application-gateway-create-gateway-portal/application-gateway-create-httpsetting.png)
 
@@ -126,7 +135,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 
 ## <a name="add-backend-targets"></a>バックエンド ターゲットの追加
 
-この例では、ターゲットのバックエンドとして仮想マシンを使用します。 既存の仮想マシンを使用することも、新しい仮想マシンを作成することもできます。 Azure がアプリケーション ゲートウェイのバックエンド サーバーとして使用する 2 つの仮想マシンを作成します。
+この例では、ターゲットのバックエンドとして仮想マシンを使用します。 既存の仮想マシンを使用することも、新しい仮想マシンを作成することもできます。 アプリケーション ゲートウェイのバックエンド サーバーとして 2 つの仮想マシンを作成します。
 
 これを行うには、次を実行します。
 
@@ -137,13 +146,14 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 ### <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
 1. Azure portal メニュー上または **[ホーム]** ページから **[リソースの作成]** を選択します。 **[新規作成]** ウィンドウが表示されます。
-2. **[コンピューティング]** を選択し、 **[人気順]** の一覧で **[Windows Server 2016 Datacenter]** を選択します。 **[仮想マシンの作成]** ページが表示されます。<br>Application Gateway は、バックエンド プールで使用されているあらゆる種類の仮想マシンにトラフィックをルートできます。 この例では、Windows Server 2016 Datacenter を使用します。
+2. **[人気順]** の一覧で **[Windows Server 2016 Datacenter]** を選択します。 **[仮想マシンの作成]** ページが表示されます。<br>Application Gateway は、バックエンド プールで使用されているあらゆる種類の仮想マシンにトラフィックをルートできます。 この例では、Windows Server 2016 Datacenter を使用します。
 3. **[基本]** タブで、次の仮想マシンの設定に以下の値を入力します。
 
     - **[リソース グループ]** :リソース グループ名には、**myResourceGroupAG** を選択します。
     - **[仮想マシン名]** : 仮想マシンの名前として「*myVM*」と入力します。
-    - **[ユーザー名]** : 管理者のユーザー名として「*azureuser*」と入力します。
-    - **パスワード**:管理者パスワードとして「*Azure123456!* 」と入力します 。
+    - **[リージョン]** :アプリケーション ゲートウェイを作成したのと同じリージョンを選択します。
+    - **[ユーザー名]** : 管理者のユーザー名に「*azureuser*」と入力します。
+    - **パスワード**:パスワードを入力します。
 4. 他の既定値をそのまま使用し、 **[Next: ディスク]** を選択します。  
 5. **[ディスク]** タブの既定値をそのまま使用し、 **[Next: Networking]\(次へ : ネットワーク\)** を選択します。
 6. **[ネットワーク]** タブで、 **[仮想ネットワーク]** に **myVNet** が選択されていること、および **[サブネット]** が **myBackendSubnet** に設定されていることを確認します。 他の既定値をそのまま使用し、 **[Next: 管理]** を選択します。<br>Application Gateway は、それが存在している仮想ネットワークの外部にあるインスタンスと通信できますが、IP 接続があることを確認する必要があります。
@@ -155,11 +165,11 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 
 この例では、Azure がアプリケーション ゲートウェイを正常に作成したことを確認するためにのみ、仮想マシンに IIS をインストールします。
 
-1. [Azure PowerShell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell)を開きます。 そのためには、Azure portal の上部のナビゲーション バーで **[Cloud Shell]** を選択して、ドロップダウン リストで **[PowerShell]** を選択します。 
+1. Azure PowerShell を開きます。 Azure portal の上部のナビゲーション バーで **[Cloud Shell]** を選択して、ドロップダウン リストで **[PowerShell]** を選択します。 
 
     ![カスタム拡張機能のインストール](./media/application-gateway-create-gateway-portal/application-gateway-extension.png)
 
-2. 次のコマンドを実行して、IIS を仮想マシンにインストールします。 
+2. 次のコマンドを実行して、IIS を仮想マシンにインストールします。 必要に応じて、*Location* パラメーターを変更します。 
 
     ```azurepowershell-interactive
     Set-AzVMExtension `
@@ -183,11 +193,13 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 
 3. **[myBackendPool]** を選択します。
 
-4. **[ターゲット]** の下のドロップダウン リストで **[仮想マシン]** を選択します。
+4. **[バックエンド ターゲット]** 、 **[ターゲットの種類]** の下のドロップダウン リストで **[仮想マシン]** を選択します。
 
-5. **[仮想マシン]** と **[ネットワーク インターフェイス]** で、**myVM** 仮想マシンおよび **myVM2** 仮想マシンとそれらの関連するネットワーク インターフェイスをドロップダウン リストから選択します。
+5. **[ターゲット]** の下で、**myVM** と **myVM2** の仮想マシンを選択し、ドロップダウン リストからそれらに関連付けられているネットワーク インターフェイスを選択します。
 
-    ![バックエンド サーバーの追加](./media/application-gateway-create-gateway-portal/application-gateway-backend.png)
+
+   > [!div class="mx-imgBorder"]
+   > ![バックエンド サーバーの追加](./media/application-gateway-create-gateway-portal/application-gateway-backend.png)
 
 6. **[保存]** を選択します。
 
@@ -195,15 +207,19 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 
-IIS はアプリケーション ゲートウェイを作成するのに必要ではありませんが、このクイック スタートでは、Azure によってアプリケーション ゲートウェイが正常に作成されたかどうかを確認するためにインストールしました。 IIS を使用してアプリケーション ゲートウェイをテストします。
+IIS はアプリケーション ゲートウェイを作成するのに必要ではありませんが、このクイックスタートでは、Azure によってアプリケーション ゲートウェイが正常に作成されたかどうかを確認するためにインストールしました。 IIS を使用してアプリケーション ゲートウェイをテストします。
 
 1. アプリケーション ゲートウェイのパブリック IP アドレスをその **[概要]** ページで見つけます。![アプリケーション ゲートウェイのパブリック IP アドレスを記録する](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) または、 **[すべてのリソース]** を選択し、検索ボックスに「*myAGPublicIPAddress*」と入力してから、検索結果でそれを選択することができます。 Azure によって、 **[概要]** ページにパブリック IP アドレスが表示されます。
-2. そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。
-3. 応答を確認します。 有効な応答によって、アプリケーション ゲートウェイが正常に作成されたことが確認され、それによりバックエンドに正常に接続できます。![アプリケーション ゲートウェイのテスト](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
+2. パブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けて、その IP アドレスを参照します。
+3. 応答を確認します。 有効な応答によって、アプリケーション ゲートウェイが正常に作成されたことが確認され、それによりバックエンドに正常に接続できます。
+
+   ![アプリケーション ゲートウェイのテスト](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
+
+   ブラウザーを何度か更新すると、myVM と myVM2 の両方への接続が表示されます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-アプリケーション ゲートウェイと共に作成したリソースが不要になったら、リソース グループを削除します。 リソース グループを削除することで、アプリケーション ゲートウェイとそのすべての関連リソースも削除します。 
+アプリケーション ゲートウェイと共に作成したリソースが不要になったら、リソース グループを削除します。 リソース グループを削除する際は、アプリケーション ゲートウェイと関連するすべてのリソースも削除します。
 
 リソース グループを削除するには:
 

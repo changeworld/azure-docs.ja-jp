@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/11/2019
 ms.author: zhshang
 ms.openlocfilehash: c8d74342e624b837c7ee803a2bcdcc12a3fb814b
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75659289"
 ---
 # <a name="how-to-scale-an-azure-signalr-service-instance"></a>Azure SignalR Service のインスタンスをスケーリングする方法

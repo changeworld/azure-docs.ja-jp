@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: c9388da449e75dee00fd43af9a4e0407c46f597a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77916712"
 ---
 # <a name="two-class-decision-forest-module"></a>2 クラス デシジョン フォレスト モジュール
@@ -90,7 +90,7 @@ ms.locfileid: "77916712"
   
     -   **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、[モデルのトレーニング](./train-model.md) モジュールを使用します。  
     
-## <a name="results"></a>[結果]
+## <a name="results"></a>結果
 
 トレーニングの完了後:
 

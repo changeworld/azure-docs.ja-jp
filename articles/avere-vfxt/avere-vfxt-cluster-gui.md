@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/14/2019
 ms.author: rohogue
 ms.openlocfilehash: fe2fc062f690498f3d1f588887279aa33d2434b8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75416145"
 ---
 # <a name="access-the-vfxt-cluster"></a>vFXT クラスターへのアクセス

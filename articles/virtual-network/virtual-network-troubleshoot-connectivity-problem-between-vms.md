@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: ab3ae45081ecc481cb90af8961174e23c86e84b5
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71056810"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Azure VM 間の接続に関する問題のトラブルシューティング
@@ -101,7 +101,7 @@ VM のアプリまたはサービスがポートをリッスンしているか�
 
 クラシック デプロイ モデルを使用して Azure で作成したすべての VM は、プライベート ネットワーク チャネルを介して、同じクラウド サービスまたは仮想ネットワーク内の他の仮想マシンと自動的に通信できます。 ただし、他の仮想ネットワーク上にあるコンピューターと通信するには、受信ネットワーク トラフィックを仮想マシンに転送するエンドポイントが必要になります。 詳細については、[エンドポイントの設定方法](../virtual-machines/windows/classic/setup-endpoints.md)に関するページを参照してください。
 
-### <a name="step-8-try-to-connect-to-a-vm-network-share"></a>ステップ 8:VM ネットワーク共有への接続を試みる
+### <a name="step-8-try-to-connect-to-a-vm-network-share"></a>手順 8:VM ネットワーク共有への接続を試みる
 
 VM ネットワーク共有に接続できない場合の原因として、使用できない NIC が VM にあることが考えられます。 使用できない NIC を削除するには、[使用できない NIC の削除方法](../virtual-machines/troubleshooting/reset-network-interface.md#delete-the-unavailable-nics)に関するページを参照してください。
 

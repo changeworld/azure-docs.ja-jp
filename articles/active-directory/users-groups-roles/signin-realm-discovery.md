@@ -14,10 +14,10 @@ ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c8b6a65a964016f702fcf75aa4cbdab33a952e3b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74024247"
 ---
 # <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>Azure Active Directory サインイン ページのホーム領域検出
@@ -55,6 +55,6 @@ Microsoft では、新しい認証方法用の領域を確保し、使いやす�
   
 新しい動作に問題がある場合は、この記事の「**フィードバック**」セクションにご意見を入力してください。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [サインイン ブランドのカスタマイズ](../fundamentals/add-custom-domain.md)

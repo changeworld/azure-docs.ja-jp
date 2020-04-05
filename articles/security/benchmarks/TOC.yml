@@ -32,11 +32,23 @@
   items:
     - name: Azure セキュリティ ベースラインの概要
       href: security-baselines-overview.md
+    - name: Azure Cache for Redis のセキュリティ ベースライン
+      href: ../../azure-cache-for-redis/security-baseline.md
     - name: Batch のセキュリティ ベースライン
       href: ../../batch/security-baseline.md
-    - name: Key Vault のセキュリティ ベースライン
-      href: ../../key-vault/security-baseline.md
+    - name: Container Registry のセキュリティ ベースライン
+      href: ../../container-registry/security-baseline.md
+    - name: Cosmos DB のセキュリティ ベースライン
+      href: ../../cosmos-db/security-baseline.md
     - name: HDInsight のセキュリティ ベースライン
       href: ../../hdinsight/security-baseline.md
+    - name: Key Vault のセキュリティ ベースライン
+      href: ../../key-vault/security-baseline.md
+    - name: MariaDB のセキュリティ ベースライン
+      href: ../../mariadb/security-baseline.md
+    - name: MySQL のセキュリティ ベースライン
+      href: ../../mysql/security-baseline.md
+    - name: PostgreSQL のセキュリティ ベースライン
+      href: ../../postgresql/security-baseline.md
     - name: SQL Database のセキュリティ ベースライン
       href: ../../sql-database/security-baseline.md

@@ -11,23 +11,23 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: jhakulin
 ms.openlocfilehash: 421b9adf4ae5d2c641484e646bea096716d46cca
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74815418"
 ---
 # <a name="troubleshoot-the-speech-sdk"></a>Speech SDK のトラブルシューティング
 
 この記事では、Speech SDK を使用しているときに発生する可能性がある問題の解決に役立つ情報を提供します。
 
-## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>エラー:認証エラー (403) で WebSocket をアップグレードできませんでした
+## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>エラー: 認証エラー (403) で WebSocket をアップグレードできませんでした
 
 リージョンまたはサービスのエンドポイントが間違っている可能性があります。 URI を調べて、それが正しいことを確認してください。
 
 また、サブスクリプション キーまたは承認トークンに問題がある可能性もあります。 詳細については、次のセクションを参照してください。
 
-## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>エラー:HTTP 403 許可されていません、または HTTP 401 (権限がありません)
+## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>エラー: HTTP 403 許可されていません、または HTTP 401 (権限がありません)
 
 多くの場合、このエラーは、認証の問題が原因で発生します。 有効な `Ocp-Apim-Subscription-Key` または `Authorization` ヘッダーがない接続要求は、状態 403 または 401 で拒否されます。
 
@@ -107,11 +107,11 @@ ms.locfileid: "74815418"
 
 ---
 
-## <a name="error-http-400-bad-request"></a>エラー:HTTP 400 Bad Request
+## <a name="error-http-400-bad-request"></a>エラー: HTTP 400 無効な要求
 
 このエラーは、通常は、要求本文に無効なオーディオ データが含まれているときに発生します。 サポートされているのは WAV 形式のみです。 要求のヘッダーもチェックして、`Content-Type` と `Content-Length` に適切な値を指定していることを確認します。
 
-## <a name="error-http-408-request-timeout"></a>エラー:HTTP 408 要求タイムアウト
+## <a name="error-http-408-request-timeout"></a>エラー: HTTP 408 要求タイムアウト
 
 このエラーのもっとも可能性が高い原因は、オーディオ データがサービスに送信されていないことです。 このエラーは、ネットワークの問題によっても発生する可能性があります。
 
@@ -123,6 +123,6 @@ ms.locfileid: "74815418"
 
 * オーディオがサポートされていないコーデック形式を使用しており、これによりオーディオ データが無音として扱われています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [リリース ノートを確認します](releasenotes.md)

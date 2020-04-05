@@ -5,13 +5,13 @@ keywords: Azure App Service、Linux、OSS、Ruby、Rails
 ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
 ms.topic: quickstart
 ms.date: 07/11/2019
-ms.custom: seodec18
-ms.openlocfilehash: 2fcbc40bf78357700e59551b77b7e4d2da1bd82d
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 33723e6dd8fbcd91d2d5863816786c0f08cdf923
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524055"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80045829"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service-on-linux"></a>App Service on Linux で Ruby on Rails アプリを作成する
 

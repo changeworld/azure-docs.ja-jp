@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
 ms.openlocfilehash: bad52b364dc83994e7985fc80b1b9f9e7f50481e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823784"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>スケールアウトされたクラウド データベース全体のレポート (プレビュー)
@@ -33,9 +33,9 @@ ms.locfileid: "73823784"
 ## <a name="create-a-shard-map-manager-using-the-sample-app"></a>サンプル アプリケーションを使用してシャード マップ マネージャーを作成する
 ここでは、シャード マップ マネージャーといくつかのシャードを作成し、シャードにデータを挿入します。 シャードがすでにセットアップされ、シャード データが取り込まれている場合は、以下の手順を省略して、次のセクションに進むことができます。
 
-1. 「[サンプル アプリケーションのダウンロードと実行](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app-1)」セクションの手順に従って、「**Elastic Database ツールの概要**」のサンプル アプリケーションをビルドして実行します。 すべての手順を完了すると、次のコマンド プロンプトが表示されます。
+1. 「**サンプル アプリケーションのダウンロードと実行**」セクションの手順に従って、「[Elastic Database ツールの概要](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app-1)」のサンプル アプリケーションをビルドして実行します。 すべての手順を完了すると、次のコマンド プロンプトが表示されます。
 
-    ![コマンド プロンプト][1]
+    ![コマンド プロンプト (command prompt)][1]
 2. コマンド ウィンドウで、「1」を入力し、**Enter** キーを押します。 シャード マップ マネージャーが作成され、2 つのシャードがサーバーに追加されます。 「3」を入力し、**Enter** キーを押します。この操作を 4 回を繰り返します。 これにより、サンプルのデータ行がシャードに挿入されます。
 3. [Azure Portal](https://portal.azure.com) に、サーバー内の 3 つの新しいデータベースが表示されます。
 
@@ -68,7 +68,7 @@ ms.locfileid: "73823784"
         WITH IDENTITY = '<username>',
         SECRET = '<password>';
 
-    "username" と "password" は、記事「**Elastic Database ツールの概要**」の「[サンプル アプリケーションのダウンロードと実行](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app)」セクションの手順 3 で使用されているログイン情報と同じである必要があります。
+    "username" と "password" は、記事「[Elastic Database ツールの概要](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app)」の「**サンプル アプリケーションのダウンロードと実行**」セクションの手順 3 で使用されているログイン情報と同じである必要があります。
 
 ### <a name="external-data-sources"></a>外部データ ソース
 外部データ ソースを作成するには、ElasticDBQuery データベースで、次のコマンドを実行します。
@@ -114,7 +114,7 @@ ElasticDBQuery データベースでこのクエリを実行します。
 3. **[その他のデータ ソース]** をクリックし、 **[SQL Server]** をクリックします。
 
    ![他のソースから Excel へのインポート][5]
-4. **[データ接続ウィザード]** で、サーバー名とログイン時の資格情報を入力します。 その後、 **[次へ]** をクリックします。
+4. **[データ接続ウィザード]** で、サーバー名とログイン時の資格情報を入力します。 続けて、 **[次へ]** をクリックします。
 5. **[使用するデータが含まれているデータベースを選択]** ダイアログ ボックスで、 **[ElasticDBQuery]** データベースを選択します。
 6. リスト ビューで **[Customers]** テーブルを選択し、 **[次へ]** をクリックします。 **[完了]** をクリックします。
 7. **[データのインポート]** フォームの **[このデータをブックでどのように表示するかを選択してください。]** で、 **[テーブル]** を選択し、 **[OK]** をクリックします。
@@ -128,7 +128,7 @@ Elastic Database クエリ機能を使用する場合に追加の料金は発生
 
 料金情報については、「 [SQL Database の料金詳細](https://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * エラスティック クエリの概要については、「[Azure SQL Database エラスティック データベース クエリの概要 (プレビュー)](sql-database-elastic-query-overview.md)」をご覧ください。
 * 列方向のパーティション分割のチュートリアルについては、「[クロスデータベース クエリの概要 (列方向のパーティション分割) (プレビュー)](sql-database-elastic-query-getting-started-vertical.md)」をご覧ください。

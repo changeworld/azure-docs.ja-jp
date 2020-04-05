@@ -11,10 +11,10 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 554bb99121190198982f64deb6ee0674aa8831ed
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60381197"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect:ADSyncConfig PowerShell リファレンス
@@ -26,7 +26,7 @@ ms.locfileid: "60381197"
 ### <a name="synopsis"></a>概要
 各 AD コネクタに構成されているアカウント名とドメインを取得します
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ADSyncADConnectorAccount
@@ -47,7 +47,7 @@ Get-ADSyncADConnectorAccount
 ### <a name="synopsis"></a>概要
 アクセス許可の継承が無効になっている AD オブジェクトを取得します
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ADSyncObjectsWithInheritanceDisabled [-SearchBase] <String> [[-ObjectClass] <String>] [<CommonParameters>]
@@ -79,7 +79,7 @@ Find all types of objects with disabled inheritance in a OU
 
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase OU=AzureAD,DC=Contoso,DC=com -ObjectClass '*'
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-searchbase"></a>-SearchBase
 AD ドメインの DistinguishedName または FQDN が可能な LDAP クエリの SearchBase
@@ -118,9 +118,9 @@ Accept wildcard characters: False
 ## <a name="set-adsyncbasicreadpermissions"></a>Set-ADSyncBasicReadPermissions
 
 ### <a name="synopsis"></a>概要
-基本の読み取りアクセス許可用に、ご使用の Active Directory フォレストとドメインを初期化します。
+指定されたコネクターアカウントに対して、ご使用の Active Directory フォレストとドメインを読み取るためのアクセス権を付与します。
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="userdomain"></a>UserDomain
 ```
@@ -176,7 +176,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=AzureAD,
 Set-ADSyncBasicReadPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com' -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
 ディレクトリ内のオブジェクトを管理するために Azure AD Connect Sync によって使用される、または使用される可能性のある Active Directory アカウントの名前。
@@ -291,9 +291,9 @@ Accept wildcard characters: False
 ## <a name="set-adsyncexchangehybridpermissions"></a>Set-ADSyncExchangeHybridPermissions
 
 ### <a name="synopsis"></a>概要
-Exchange ハイブリッド機能用に、ご使用の Active Directory フォレストとドメインを初期化します。
+指定されたコネクターアカウントに対して、ご使用の Active Directory フォレストとドメインで利用される Exchange ハイブリッド機能のためのアクセス権を付与します。
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="userdomain"></a>UserDomain
 ```
@@ -343,7 +343,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=Azu
 Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com' -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
 ディレクトリ内のオブジェクトを管理するために Azure AD Connect Sync によって使用される、または使用される可能性のある Active Directory アカウントの名前。
@@ -458,9 +458,9 @@ Accept wildcard characters: False
 ## <a name="set-adsyncexchangemailpublicfolderpermissions"></a>Set-ADSyncExchangeMailPublicFolderPermissions
 
 ### <a name="synopsis"></a>概要
-Exchange メールのパブリック フォルダー機能用に、ご使用の Active Directory フォレストとドメインを初期化します。
+指定されたコネクターアカウントに対して、ご使用の Active Directory フォレストとドメインで利用される Exchange メールのパブリック フォルダー機能のためのアクセス権を付与します。
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="userdomain"></a>UserDomain
 ```
@@ -505,7 +505,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN 'CN=ADConnec
 Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com' -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
 ディレクトリ内のオブジェクトを管理するために Azure AD Connect Sync によって使用される、または使用される可能性のある Active Directory アカウントの名前。
@@ -620,9 +620,9 @@ Accept wildcard characters: False
 ## <a name="set-adsyncmsdsconsistencyguidpermissions"></a>Set-ADSyncMsDsConsistencyGuidPermissions
 
 ### <a name="synopsis"></a>概要
-mS-DS-ConsistencyGuid 機能用に、ご使用の Active Directory フォレストとドメインを初期化します。
+指定されたコネクターアカウントに対して、ご使用の Active Directory フォレストとドメインで利用される mS-DS-ConsistencyGuid 機能のためのアクセス権を付与します。
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="userdomain"></a>UserDomain
 ```
@@ -666,7 +666,7 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN 'CN=ADConnector,O
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com' -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
 ディレクトリ内のオブジェクトを管理するために Azure AD Connect Sync によって使用される、または使用される可能性のある Active Directory アカウントの名前。
@@ -781,9 +781,10 @@ Accept wildcard characters: False
 ## <a name="set-adsyncpasswordhashsyncpermissions"></a>Set-ADSyncPasswordHashSyncPermissions
 
 ### <a name="synopsis"></a>概要
-パスワード ハッシュの同期用に、ご使用の Active Directory フォレストとドメインを初期化します。
+指定されたコネクターアカウントに対して、ご使用の Active Directory フォレストとドメインで利用されるパスワード ハッシュの同期機能のためのアクセス権を付与します。
 
-### <a name="syntax"></a>構文
+
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="userdomain"></a>UserDomain
 ```
@@ -817,7 +818,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName 'ADConnector' -ADC
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
 ディレクトリ内のオブジェクトを管理するために Azure AD Connect Sync によって使用される Active Directory アカウントの名前。
@@ -902,9 +903,9 @@ Accept wildcard characters: False
 ## <a name="set-adsyncpasswordwritebackpermissions"></a>Set-ADSyncPasswordWritebackPermissions
 
 ### <a name="synopsis"></a>概要
-Azure AD からのパスワード ライトバック用に、ご使用の Active Directory フォレストとドメインを初期化します。
+指定されたコネクターアカウントに対して、ご使用の Active Directory フォレストとドメインで利用されるパスワード ライトバック機能のためのアクセス権を付与します。
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="userdomain"></a>UserDomain
 ```
@@ -952,7 +953,7 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=
 Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com' -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
 ディレクトリ内のオブジェクトを管理するために Azure AD Connect Sync によって使用される、または使用される可能性のある Active Directory アカウントの名前。
@@ -1071,7 +1072,7 @@ AD で保護されているいかなるセキュリティ グループにも含�
 典型的な例は、自動的に AAD Connect によって作成される AD Connect アカウント (MSOL) です。
 このアカウントは、すべてのドメインへのレプリケートのアクセス許可を持ちます。しかし、保護されていないので、簡単に侵害される可能性があります。
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <PSCredential>
@@ -1111,7 +1112,7 @@ SELF については、既定のアクセス許可を維持します。
 Set-ADSyncRestrictedPermissions -ADConnectorAccountDN "CN=TestAccount1,CN=Users,DC=Contoso,DC=com" -Credential $(Get-Credential)
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
 アクセス許可のセキュリティを強化する必要がある Active Directory アカウントの DistinguishedName。
@@ -1198,9 +1199,9 @@ Accept wildcard characters: False
 ## <a name="set-adsyncunifiedgroupwritebackpermissions"></a>Set-ADSyncUnifiedGroupWritebackPermissions
 
 ### <a name="synopsis"></a>概要
-Azure AD からのグループ ライトバック用に、ご使用の Active Directory フォレストとドメインを初期化します。
+指定されたコネクターアカウントに対して、ご使用の Active Directory フォレストとドメインで利用されるグループ ライトバック機能のためのアクセス権を付与します。
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="userdomain"></a>UserDomain
 ```
@@ -1245,7 +1246,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN 'CN=ADConnector
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com' -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
 ディレクトリ内のオブジェクトを管理するために Azure AD Connect Sync によって使用される、または使用される可能性のある Active Directory アカウントの名前。
@@ -1362,7 +1363,7 @@ Accept wildcard characters: False
 ### <a name="synopsis"></a>概要
 指定した AD オブジェクトのアクセス許可を示します。
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Show-ADSyncADObjectPermissions [-ADobjectDN] <String> [<CommonParameters>]
@@ -1379,7 +1380,7 @@ ADobjectDN は、DistinguishedName の形式で返される必要があります
 Show-ADSyncADObjectPermissions -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
 {{ADobjectDN の説明を入力}}

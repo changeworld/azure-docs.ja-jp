@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: juliako
 ms.openlocfilehash: e99d72a0bce51d5d61e5f248f5ba279afe13a405
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74970127"
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Azure Media Packager を使用して静的パッケージ タスクを実行する  
@@ -1481,7 +1481,7 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
 
 ## <a name="additional-notes"></a>その他のメモ
 
-* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. のサービス使用条件とプライバシー ポリシーが適用されます。
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

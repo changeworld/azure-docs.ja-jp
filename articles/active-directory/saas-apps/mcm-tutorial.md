@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と MCM の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と MCM の統合 | Microsoft Docs'
 description: Azure Active Directory と MCM の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 4ed3e5c543f96876d9b6078f1bd47839a0a0396a
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76293421"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mcm"></a>チュートリアル:Azure Active Directory と MCM の統合
+# <a name="tutorial-azure-active-directory-integration-with-mcm"></a>チュートリアル: Azure Active Directory と MCM の統合
 
 このチュートリアルでは、MCM と Azure Active Directory (Azure AD) を統合する方法について説明します。
 MCM と Azure AD の統合には、次の利点があります。

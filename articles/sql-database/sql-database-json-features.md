@@ -12,18 +12,18 @@ ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 01/15/2019
 ms.openlocfilehash: 958d937ad85fd62249c7ce3f0e0ab2f8cc1d1b80
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73819936"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Azure SQL Database の JSON 機能の概要
 Azure SQL Database では、JavaScript Object Notation [(JSON)](https://www.json.org/) 形式で表されたデータを解析およびクエリし、リレーショナル データを JSON テキストとしてエクスポートすることができます。 Azure SQL Database では次の JSON のシナリオを使用できます。
-- `FOR JSON` 句を使用した [JSON 形式でのリレーショナル データの書式設定](#formatting-relational-data-in-json-format)。
+- [ 句を使用した ](#formatting-relational-data-in-json-format)JSON 形式でのリレーショナル データの書式設定`FOR JSON`。
 - [JSON データの使用](#working-with-json-data)
 - JSON スカラー関数を使用した [JSON データのクエリの実行](#querying-json-data)。
-- `OPENJSON` 関数を使用した[表形式への JSON の変換](#transforming-json-into-tabular-format)。
+- [ 関数を使用した](#transforming-json-into-tabular-format)表形式への JSON の変換`OPENJSON`。
 
 ## <a name="formatting-relational-data-in-json-format"></a>JSON 形式でのリレーショナル データの書式設定
 データベース層からデータを取得し、JSON 形式で応答を提供する Web サービスがある場合、またはクライアント側の JavaScript フレームワークまたはライブラリが JSON 形式のデータを受け入れる場合、SQL クエリに直接 JSON としてデータベースの内容を書式設定することができます。 Azure SQL Database からの結果を JSON 形式にするように、アプリケーション コードを書き込んだり、表形式のクエリの結果に変換して、オブジェクトを JSON 形式にシリアル化するために JSON シリアル化ライブラリを含めたりする必要がなくなりました。 代わりに、FOR JSON 句を使用して、SQL クエリの結果を Azure SQL Database で JSON として書式設定し、アプリケーションで直接これを使用できます。
@@ -186,7 +186,7 @@ END
 ```
 JSON 配列として書式設定され、ストアド プロシージャにパラメーターとして指定される orders のコレクションは、解析され、Orders テーブルに挿入することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 アプリケーションに JSON を統合する方法については、次のリソースを確認してください。
 
 * [TechNet のブログ](https://blogs.technet.microsoft.com/dataplatforminsider/20../../json-in-sql-server-2016-part-1-of-4/)

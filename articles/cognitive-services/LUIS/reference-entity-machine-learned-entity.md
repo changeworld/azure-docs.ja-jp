@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 12/30/2019
 ms.author: diberry
 ms.openlocfilehash: aac4ba3ec63d425cac782f5db65bba923d24ed71
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75552000"
 ---
 # <a name="machine-learned-entity"></a>機械学習エンティティ
@@ -36,7 +36,7 @@ ms.locfileid: "75552000"
 
 
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 予測エンドポイントの応答](#tab/V3)
 
 機械学習エンティティには、制約や記述子を持つ多数のサブコンポーネントを含めることができるため、これは一例にすぎません。 エンティティによって返される内容のガイドと考えてください。
 
@@ -341,7 +341,7 @@ ms.locfileid: "75552000"
     }
 }
 ```
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
 このエンティティは、V2 予測ランタイムでは使用できません。
 * * *

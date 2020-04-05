@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/22/2020
 ms.openlocfilehash: 733901d38703e02ab7dbe811b0f80a1dfedf03d5
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76705787"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL Database 用語集

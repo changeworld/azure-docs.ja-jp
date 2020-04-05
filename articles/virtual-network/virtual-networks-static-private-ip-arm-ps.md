@@ -17,11 +17,11 @@ ms.date: 02/07/2019
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: 1745ca176fac18b4903686cb556670531ee40a1a
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196591"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225095"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>PowerShell を使用して静的プライベート IP アドレスを持つ仮想マシンを作成する
 
@@ -98,7 +98,7 @@ ms.locfileid: "74196591"
 > [!IMPORTANT]
 > インターネットから VM にアクセスするには、パブリック IP アドレスを VM に割り当てる必要があります。 動的プライベート IP アドレスの割り当てを静的な割り当てに変更することもできます。 詳細については、[IP アドレスの追加または変更](virtual-network-network-interface-addresses.md)に関するページを参照してください。 さらに、ネットワーク セキュリティ グループをネットワーク インターフェイス、ネットワーク インターフェイスを作成したサブネット、またはその両方に関連付けることによって、VM へのネットワーク トラフィックを制限することをお勧めします。 詳しくは、[ネットワーク セキュリティ グループの管理](manage-network-security-group.md)に関するページをご覧ください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要なくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。
 
@@ -106,7 +106,7 @@ ms.locfileid: "74196591"
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [プライベート IP アドレス](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)と Azure 仮想マシンへの[静的プライベート IP アドレス](virtual-network-network-interface-addresses.md#add-ip-addresses)の割り当ての詳細を確認します。
 - [Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) と [Windows](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の仮想マシンの作成の詳細を確認します。

@@ -1,7 +1,7 @@
 ---
 title: REST API のバージョンをアップグレードする
 titleSuffix: Azure Cognitive Search
-description: API バージョンの違いを確認し、既存のコードを最新の Azure Cognitive Search サービス REST API バージョンに移行するために必要なアクションについて学習します。
+description: API バージョンの違いを確認し、既存のコードを最新の Azure コグニティブ検索サービス REST API バージョンに移行するために必要なアクションについて学習します。
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -9,20 +9,20 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: edb45eebc2c4eacc2f30d13988943f097a7190fa
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74112160"
 ---
-# <a name="upgrade-to-the-latest-azure-cognitive-search-service-rest-api-version"></a>最新の Azure Cognitive Search サービス REST API バージョンへのアップグレード
+# <a name="upgrade-to-the-latest-azure-cognitive-search-service-rest-api-version"></a>最新の Azure コグニティブ検索サービス REST API バージョンへのアップグレード
 
 [Search REST API](https://docs.microsoft.com/rest/api/searchservice/) の以前のバージョンを使用している場合、この記事が、一般公開された最新の API バージョン 2019-05-06 を使用するように、アプリケーションをアップグレードするのに役立ちます。
 
 バージョン 2019-05-06 の REST API には、前のバージョンからの変更点がいくつか含まれています。 大半は下位互換性を保つための変更であるため、使用していたバージョンに応じて、コードの変更は最小限で済むはずです。 新機能を使用するために必要なコードの変更については、「[アップグレードの手順](#UpgradeSteps)」で概説しています。
 
 > [!NOTE]
-> Azure Cognitive Search のサービス インスタンスでは、以前のバージョンを含む REST API バージョンの範囲がサポートされます。 それらの API バージョンを引き続き使用することもできますが、最新のバージョンに移行して、新機能を利用できるようにすることをお勧めします。
+> Azure コグニティブ検索のサービス インスタンスでは、以前のバージョンを含む REST API バージョンの範囲がサポートされます。 それらの API バージョンを引き続き使用することもできますが、最新のバージョンに移行して、新機能を利用できるようにすることをお勧めします。
 
 <a name="WhatsNew"></a>
 
@@ -53,7 +53,7 @@ api-version=2019-05-06 では、次の機能を含む既存のコードは中断
 
 ### <a name="indexer-data-source-api-no-longer-returns-connection-strings"></a>インデクサーのデータ ソース API で接続文字列が返されなくなりました
 
-API バージョン 2019-05-06 および 2019-05-06 プレビュー以降、データ ソース API では、REST 操作の応答として、接続文字列が返されなくなりました。 以前の API バージョンで、データ ソースの作成に POST が使用されていた場合は、Azure Cognitive Search で **201** に続いて、プレーンテキストの接続文字列を含む OData 応答が返されました。
+API バージョン 2019-05-06 および 2019-05-06 プレビュー以降、データ ソース API では、REST 操作の応答として、接続文字列が返されなくなりました。 以前の API バージョンで、データ ソースの作成に POST が使用されていた場合は、Azure コグニティブ検索で **201** に続いて、プレーンテキストの接続文字列を含む OData 応答が返されました。
 
 ### <a name="named-entity-recognition-cognitive-skill-is-now-discontinued"></a>名前付きエンティティの認識コグニティブ スキルは廃止されました
 
@@ -66,7 +66,7 @@ API バージョン 2019-05-06 および 2019-05-06 プレビュー以降、デ�
 
 * API 応答で認識できないプロパティが返されるとコードが失敗する。 既定では、アプリケーションは、認識できないプロパティを無視する必要があります。
 
-* コードが API 要求を保持し、新しい API バージョンへの再送信を試行する。 たとえば、この状況は、アプリケーションが Search API から返される継続トークンを保持する場合に発生する可能性があります (詳細については、[Search API リファレンス](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)のページの `@search.nextPageParameters` を参照してください)。
+* コードが API 要求を保持し、新しい API バージョンへの再送信を試行する。 たとえば、この状況は、アプリケーションが Search API から返される継続トークンを保持する場合に発生する可能性があります (詳細については、`@search.nextPageParameters`Search API リファレンス[のページの ](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) を参照してください)。
 
 このような状況のいずれかが当てはまる場合は、それに応じてコードを変更する必要があります。 それ以外の場合は、バージョン 2019-05-06 の[新機能](#WhatsNew)の使用を開始するのでない限り、変更する必要はありません。
 
@@ -90,7 +90,7 @@ API バージョン 2019-05-06 および 2019-05-06 プレビュー以降、デ�
 
 + API バージョン 2019-05-06 では、ドキュメントあたりの複合コレクションの数に関して新しい制限があります。 プレビュー版の API を使用して、これらの制限を超えるドキュメントのインデックスを作成した場合、API バージョン 2019-05-06 を使用してそのデータのインデックスを再作成しようとしても失敗します。 これが当てはまる場合は、ドキュメントあたりの複合コレクション要素の数を減らしてから、データのインデックスを再作成する必要があります。
 
-詳細については、[Azure Cognitive Search サービスの制限](search-limits-quotas-capacity.md)に関する記事を参照してください。
+詳細については、[Azure コグニティブ検索サービスの制限](search-limits-quotas-capacity.md)に関する記事を参照してください。
 
 ### <a name="how-to-upgrade-an-old-complex-type-structure"></a>以前の複合型の構造をアップグレードする方法
 
@@ -142,7 +142,7 @@ API バージョン 2019-05-06 および 2019-05-06 プレビュー以降、デ�
 > [!NOTE]
 > 古い "フラット" 形式で作成されたインデックスを Azure portal から管理することはできません。 なるべく早く、インデックスを "フラット" 表現から "ツリー" 表現にアップグレードしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Search REST API リファレンス ドキュメントを確認します。 問題が発生した場合は、[StackOverflow](https://stackoverflow.com/) または[サポートへの問い合わせ](https://azure.microsoft.com/support/community/?product=search)でサポートを依頼してください。
 

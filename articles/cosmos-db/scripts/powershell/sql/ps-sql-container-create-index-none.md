@@ -1,20 +1,20 @@
 ---
-title: Azure Cosmos アカウントにインデックスのないコンテナーを作成する PowerShell スクリプト
-description: Azure PowerShell サンプル スクリプト - Azure Cosmos アカウントにインデックスがオフになっているコンテナーを作成する
+title: インデックス作成がオフになっているコンテナーを Azure Cosmos DB アカウントに作成する PowerShell スクリプト
+description: Azure PowerShell サンプル スクリプト - インデックス作成がオフになっているコンテナーを Azure Cosmos DB アカウントに作成します
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 05/06/2019
+ms.date: 03/17/2020
 ms.author: mjbrown
-ms.openlocfilehash: 13bec89b0c6f713a4b8c66f7bab6cda3d6513ef9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e4cf09ede1ea532d784b6d486cdb54d510d13652
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441365"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365642"
 ---
-# <a name="create-a-container-indexing-turned-off-in-an-azure-cosmos-account-using-powershell"></a>PowerShell を使用して Azure Cosmos アカウントにインデックスがオフになっているコンテナーを作成する
+# <a name="create-a-container-with-indexing-turned-off-in-an-azure-cosmos-db-account-using-powershell"></a>PowerShell を使用してインデックス作成がオフになっているコンテナーを Azure Cosmos DB アカウントに作成する
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,7 +22,7 @@ ms.locfileid: "75441365"
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-container-create-index-none.ps1 "Create a container indexing turned off in an Azure Cosmos account")]
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-container-create-index-none.ps1 "Create a container with indexing turned off in an Azure Cosmos DB account")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
@@ -36,10 +36,13 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
-|**Azure リソース**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | リソースを作成します。 |
+|**Azure Cosmos DB**| |
+| [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | 新しい Cosmos DB アカウントを作成します。 |
+| [Set-AzCosmosDBSqlDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqldatabase) | 新しい Cosmos DB SQL Database を作成するか、または既存の Cosmos DB SQL Database を更新します。 |
+| [New-AzCosmosDBSqlIndexingPolicy](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlindexingpolicy) | Set-AzCosmosDBSqlContainer のパラメーターとして使用される PSSqlIndexingPolicy 型の新しいオブジェクトを作成します。 |
+| [Set-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqlcontainer) | 新しい Cosmos DB SQL コンテナーを作成するか、または既存の Cosmos DB SQL コンテナーを更新します。 |
 |**Azure リソース グループ**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||

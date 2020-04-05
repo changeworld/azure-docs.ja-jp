@@ -8,13 +8,13 @@ ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: fef3daf6e9e535736002e309e3d27491364dc553
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "71260289"
 ---
-# <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>クイック スタート:Azure portal を使用した Azure ファイル共有の作成および管理 
+# <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>クイック スタート: Azure portal を使用した Azure ファイル共有の作成および管理 
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、Windows、Linux、macOS でマウントできます。 このガイドでは、[Azure Portal](https://portal.azure.com/) を使用して Azure ファイル共有を操作する方法の基本について説明します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
@@ -78,10 +78,10 @@ Azure ファイル共有のルートで *myDirectory* という名前の新し�
 #### <a name="download-a-file"></a>ファイルをダウンロードする
 ファイルを右クリックすると、アップロードしたファイルのコピーをダウンロードできます。 ダウンロード ボタンをクリックした後の正確なエクスペリエンスは、使用しているオペレーティング システムとブラウザーによって異なります。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 [!INCLUDE [storage-files-clean-up-portal](../../../includes/storage-files-clean-up-portal.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Files とは何ですか。](storage-files-introduction.md)

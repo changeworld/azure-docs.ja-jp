@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/03/2020
-ms.openlocfilehash: 8a4205002a98a5b9670839b0de7b53d81e0221a6
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: f4be3343f090c4d31ccb85eba8e99f22a3b1fcae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78271931"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79529477"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大規模な抽出、変換、および読み込み (ETL)
 
@@ -85,7 +85,7 @@ ADLS は、Azure Event Hub または Apache Storm を使用したイベントの
 
 Azure SQL DW は、今後の分析用にクリーニングされ、使用する準備ができた結果を格納するための最適の選択肢です。  Azure HDInsight を使用して、Azure SQL DW 用のサービスを実行できます。
 
-Azure SQL Data Warehouse (SQL DW) は、分析ワークロード用に最適化されたリレーショナル データベース ストアです。  Azure SQL DW は、パーティション分割されたテーブルに基づいてスケーリングを行います。  テーブルは、複数のノードにパーティション分割できます。  Azure SQL DW ノードは作成時に選択されます。  それらは後でスケーリングできますが、データ移動が必要になるのはアクティブ プロセスです。 詳細については、[SQL Data Warehouse でのコンピューティングの管理](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)に関する記事を参照してください。
+Azure SQL Data Warehouse (SQL DW) は、分析ワークロード用に最適化されたリレーショナル データベース ストアです。  Azure SQL DW は、パーティション分割されたテーブルに基づいてスケーリングを行います。  テーブルは、複数のノードにパーティション分割できます。  Azure SQL DW ノードは作成時に選択されます。  それらは後でスケーリングできますが、データ移動が必要になるのはアクティブ プロセスです。 詳細については、[SQL Data Warehouse でのコンピューティングの管理](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)に関する記事を参照してください。
 
 ### <a name="apache-hbase"></a>Apache HBase
 

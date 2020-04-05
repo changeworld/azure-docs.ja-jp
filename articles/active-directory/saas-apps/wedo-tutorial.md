@@ -16,10 +16,10 @@ ms.date: 01/22/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ce7ffb389a585511883c3b35de3773ae37342b8
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76991934"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wedo"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と WEDO の統合
@@ -97,7 +97,7 @@ WEDO で Azure AD SSO を構成してテストするには、次の構成要素�
 
 1. WEDO アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
-    | Name | ソース属性|
+    | 名前 | ソース属性|
     | ------------ | --------- |
     | email | user.email |
     | firstName | user.firstName |

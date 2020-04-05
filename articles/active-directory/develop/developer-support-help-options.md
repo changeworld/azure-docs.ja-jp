@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 89bf49fb44d8575b251a0b33698bc4ce8425cc2b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77160969"
 ---
 # <a name="support-and-help-options-for-developers"></a>開発者向けのサポート オプションとヘルプ オプション

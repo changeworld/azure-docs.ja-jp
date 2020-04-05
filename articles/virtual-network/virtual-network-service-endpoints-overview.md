@@ -14,11 +14,11 @@ ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
 ms.openlocfilehash: 72c2c90f7a71bd9bf251adb492168fa5d2baa60a
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378687"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225103"
 ---
 # <a name="virtual-network-service-endpoints"></a>仮想ネットワーク サービス エンドポイント
 
@@ -143,7 +143,7 @@ VNet サービス エンドポイント ポリシーを使用すると、Azure �
 
 FAQ については、[仮想ネットワーク サービス エンドポイントの FAQ](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#virtual-network-service-endpoints) に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [仮想ネットワーク サービス エンドポイントの構成](tutorial-restrict-network-access-to-resources.md)
 - [Azure Storage アカウントを仮想ネットワークに限定する](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

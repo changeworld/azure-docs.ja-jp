@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: a6896eaad86c5e361c50cd81257131ee75a8d6a8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1c400e41c4c10023d2595bde8c0d62e26184cf05
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467043"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79370323"
 ---
 # <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-apache-phoenix"></a>クイック スタート:Apache Phoenix を使用して Azure HDInsight で Apache HBase にクエリを実行する
 
@@ -23,7 +23,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Apache HBase クラスター。 HDInsight クラスターの作成については、[クラスターの作成](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)に関するセクションを参照してください。  **HBase** のクラスターの種類を選択するようにしてください。
+* Apache HBase クラスター。 HDInsight クラスターの作成については、[クラスターの作成](../hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するセクションを参照してください。  **HBase** のクラスターの種類を選択するようにしてください。
 
 * SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
@@ -114,13 +114,13 @@ SSH を使用して HBase クラスターに接続した後、Apache Phoenix を
     !quit
     ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このクイックスタートを完了したら、必要に応じてクラスターを削除できます。 HDInsight を使用すると、データは Azure Storage に格納されるため、クラスターは、使用されていない場合に安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。
 
 クラスターを削除するには、「[ブラウザー、PowerShell、または Azure CLI を使用して HDInsight クラスターを削除する](../hdinsight-delete-cluster.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Apache Phoenix を使用して Azure HDInsight で HBase クエリを実行する方法を学習しました。 Apache Phoenix の詳細を学習するには、次の記事にさらに詳しい説明が含まれています。
 

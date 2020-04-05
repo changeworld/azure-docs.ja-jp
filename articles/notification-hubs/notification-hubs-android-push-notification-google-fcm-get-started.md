@@ -1,5 +1,5 @@
 ---
-title: Azure Notification Hubs と Firebase Cloud Messaging を使用して Android にプッシュ通知を送信する | Microsoft Docs
+title: Azure Notification Hubs と Firebase を使用して Android にプッシュ通知を送信する | Microsoft Docs
 description: このチュートリアルでは、Azure Notification Hubs と Google Firebase Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する方法について学習します。
 services: notification-hubs
 documentationcenter: android
@@ -18,14 +18,14 @@ ms.date: 09/11/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: 1af109405118754daa08adf848f1da3f04534455
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e0682a33540cafd8ebab1bb248d462b30ee4dc2a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387506"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80127536"
 ---
-# <a name="tutorial-send-push-notifications-to-android-devices-using-google-firebase-cloud-messaging"></a>チュートリアル:Google Firebase Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する
+# <a name="tutorial-send-push-notifications-to-android-devices-using-firebase"></a>チュートリアル:Firebase を使用して Android デバイスにプッシュ通知を送信する
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -44,7 +44,7 @@ ms.locfileid: "72387506"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/free/)を参照してください。 
+このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/free/)」を参照してください。 
 
 次のものも必要です。 
 
@@ -86,7 +86,7 @@ ms.locfileid: "72387506"
 
 これで、Firebase Cloud Messaging と連携するようにハブが構成されました。 また、デバイスに通知を送信したり、通知を受信するアプリを登録したりするために必要な接続文字列も取得されました。
 
-## <a id="connecting-app"></a>通知ハブにアプリを接続する
+## <a name="connect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>通知ハブにアプリを接続する
 
 ### <a name="add-google-play-services-to-the-project"></a>プロジェクトへの Google Play Services の追加
 
@@ -407,7 +407,7 @@ ms.locfileid: "72387506"
     }
     ```
 
-9. `ToastNotify` メソッドでは "*Hello World*" `TextView` コントロールを使用し、アプリで状態と通知を継続的に報告します。 **res** > **layout** > **activity_main.xml** レイアウトで、そのコントロールに次の ID を追加します。
+9. `ToastNotify` メソッドでは "*Hello World*" `TextView` コントロールを使用し、アプリで状態と通知を継続的にレポートします。 **res** > **layout** > **activity_main.xml** レイアウトで、そのコントロールに次の ID を追加します。
 
     ```java
     android:id="@+id/text_hello"
@@ -560,7 +560,7 @@ ms.locfileid: "72387506"
 
 また、 **[設定]**  >  **[アカウント]** で、実行中のエミュレーターに Google アカウントを追加したことを確認してください。 そうでない場合、FCM で登録しようとすると、**AUTHENTICATION\_FAILED** 例外が発生する可能性があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Firebase Cloud Messaging を使用して、このサービスに登録されたすべての Android デバイスに通知をブロードキャストしました。 特定のデバイスにプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]

@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
 ms.openlocfilehash: 110a684cf6ad21c13411d3bc2ada84750744f00e
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77191405"
 ---
 # <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>Azure Logic Apps からのカスタム API の呼び出しのセキュリティの向上
@@ -197,7 +197,7 @@ Azure Active Directory 認証と共に、空の Web アプリやロジック ア
 }
 ```
 
-| プロパティ | Required | 説明 | 
+| プロパティ | 必須 | 説明 | 
 | -------- | -------- | ----------- | 
 | tenant | はい | Azure AD テナントの GUID | 
 | audience | はい | アクセスするターゲット リソースの GUID。Web アプリまたは API アプリのアプリケーション ID からのクライアント ID です | 
@@ -248,7 +248,7 @@ Azure Active Directory 認証と共に、空の Web アプリやロジック ア
 } 
 ```
 
-| プロパティ | Required | 説明 |
+| プロパティ | 必須 | 説明 |
 | -------- | -------- | ----------- |
 | `type` | はい | 認証の種類。 SSL クライアント証明書の場合、値として `ClientCertificate` を指定する必要があります。 |
 | `password` | いいえ | クライアント証明書 (PFX ファイル) にアクセスするためのパスワード |
@@ -271,11 +271,11 @@ Azure Active Directory 認証と共に、空の Web アプリやロジック ア
 }
 ```
 
-| プロパティ | Required | 説明 | 
+| プロパティ | 必須 | 説明 | 
 | -------- | -------- | ----------- | 
 | type | はい | 使用する認証の種類。 基本認証の場合、値 `Basic` を使用する必要があります。 | 
 | username | はい | 認証に使用するユーザー名 | 
-| パスワード | はい | 認証に使用するパスワード | 
+| password | はい | 認証に使用するパスワード | 
 |||| 
 
 <a name="azure-ad-code"></a>

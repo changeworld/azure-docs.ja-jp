@@ -12,10 +12,10 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: 11e1e3f45b5198ddedb6c31fcd354185adef445d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68854306"
 ---
 # <a name="project-acoustics-design-process-concepts"></a>Project Acoustics の設計概念
@@ -60,7 +60,7 @@ ms.locfileid: "68854306"
 
 Project Acoustics パッケージには、シミュレーター、パラメーターを抽出して音響資産を構築するエンコーダー、オーディオ DSP、およびフィルターの選択肢といった、上記の各コンポーネントが統合されています。 Project Acoustics によるサウンド設計には、ゲーム エディターとオーディオ エンジンの内部に表示されるダイナミック コントロールを使用した、シミュレーションから得られてオーディオ DSP に適用される閉塞とリバーブを調整するフィルターのパラメーターを選択することが必要となります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Project Acoustics の Unity でのクイックスタート](unity-quickstart.md)または [Project Acousticsの Unreal でのクイックスタート](unreal-quickstart.md)を使用して、設計パラダイムを試してみます
 * [Project Acoustics の Unity での設計コントロール](unity-workflow.md)または [Project Acoustics の Unreal での設計コントロール](unreal-workflow.md)について調べます。
 

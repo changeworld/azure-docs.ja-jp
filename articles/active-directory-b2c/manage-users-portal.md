@@ -11,10 +11,10 @@ ms.date: 11/09/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c8fad8b5bd2dccba36c0c6888712fa806f3cbfc8
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78187221"
 ---
 # <a name="use-the-azure-portal-to-create-and-delete-consumer-users-in-azure-ad-b2c"></a>Azure portal を使用して Azure AD B2C 内のコンシューマー ユーザーを作成および削除する

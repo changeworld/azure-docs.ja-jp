@@ -4,16 +4,16 @@ description: 開発者として、既定の Azure IoT Central アプリケーシ
 author: mavoge
 ms.author: mavoge
 ms.date: 10/17/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 35965f238ed5b7768dd174788453838c917adb32
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 49b41715d95a5f210e6e70faf09aa016d1478728
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023227"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80158769"
 ---
 # <a name="configure-the-application-dashboard"></a>アプリケーション ダッシュボードの構成
 

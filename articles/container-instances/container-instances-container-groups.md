@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
 ms.openlocfilehash: 73781418321c3932bf3e0190b646dcd3bb178195
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888058"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225851"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure Container Instances のコンテナー グループ
 
@@ -17,7 +17,7 @@ Azure Container Instances の最上位のリソースは、*コンテナー グ�
 
 ## <a name="what-is-a-container-group"></a>コンテナー グループとは
 
-コンテナー グループは、同じホスト コンピューター上にスケジュール設定されるコンテナーのコレクションです。 コンテナー グループ内のコンテナーでは、ライフサイクル、リソース、ローカル ネットワーク、ストレージ ボリュームを共有します。 これは、[Kubernetes][kubernetes-pod] における*ポッド*の概念に似ています。
+コンテナー グループは、同じホスト コンピューター上にスケジュール設定されるコンテナーのコレクションです。 コンテナー グループ内のコンテナーでは、ライフサイクル、リソース、ローカル ネットワーク、ストレージ ボリュームを共有します。 これは、*Kubernetes* における[ポッド][kubernetes-pod]の概念に似ています。
 
 次の図は、複数のコンテナーを含むコンテナー グループの例を示しています。
 
@@ -44,7 +44,7 @@ Azure Container Instances の最上位のリソースは、*コンテナー グ�
 
 ## <a name="resource-allocation"></a>リソース割り当て
 
-Azure Container Instances では、グループにインスタンスの[リソース要求][resource-requests]を追加することで、CPU、メモリ、必要に応じて [GPU][gpus] (プレビュー) などのリソースをマルチコンテナー グループに割り当てます。 たとえば、CPU リソースを例に挙げると、それぞれが 1 CPU を要求する 2 つのコンテナー インスタンスを持つ 1 つのコンテナー グループを作成すると、コンテナー グループに 2 CPU が割り当てられます。
+Azure Container Instances では、グループにインスタンスの[リソース要求][gpus]を追加することで、CPU、メモリ、必要に応じて [GPU][resource-requests] (プレビュー) などのリソースをマルチコンテナー グループに割り当てます。 たとえば、CPU リソースを例に挙げると、それぞれが 1 CPU を要求する 2 つのコンテナー インスタンスを持つ 1 つのコンテナー グループを作成すると、コンテナー グループに 2 CPU が割り当てられます。
 
 ### <a name="resource-usage-by-container-instances"></a>コンテナー インスタンス別のリソース使用量
 

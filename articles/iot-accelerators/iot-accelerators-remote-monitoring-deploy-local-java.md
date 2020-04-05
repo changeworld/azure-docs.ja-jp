@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
 ms.openlocfilehash: 779ee1e057d74b11c5e0ba58dc2fd32b803f1e0e
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73888809"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>リモート監視ソリューション アクセラレータのローカルでのデプロイ - IntelliJ
@@ -27,7 +27,7 @@ ms.locfileid: "73888809"
 
 リモート監視ソリューション アクセラレータによって使用される Azure サービスをデプロイするには、アクティブな Azure サブスクリプションが必要です。
 
-アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
 
 ### <a name="machine-setup"></a>コンピューターのセットアップ
 
@@ -234,6 +234,6 @@ Nginx の実行の詳細については、「[nginx for Windows](https://nginx.o
 
 また、GitHub からソース コードを複製したときに作成されたリモート監視リポジトリのローカル コピーも削除してかまいません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、リモート監視ソリューションのデプロイが完了しました。次の手順は[ソリューション ダッシュボードの機能を確認](quickstart-remote-monitoring-deploy.md)することです。

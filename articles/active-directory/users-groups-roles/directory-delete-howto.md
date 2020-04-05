@@ -15,10 +15,10 @@ ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 47a60ed44ddf057ef983f8f76f23fd784bc3efd5
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73961812"
 ---
 # <a name="delete-a-directory-in-azure-active-directory"></a>Azure Active Directory でディレクトリを削除する
@@ -141,6 +141,6 @@ Microsoft Power BI や Azure Rights Management サービスなどのセルフサ
 
     ![ユーザー名が間違って入力されたか、ユーザー名が見つかりません](./media/directory-delete-howto/delete-organization.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory/)

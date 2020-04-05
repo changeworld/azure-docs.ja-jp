@@ -4,10 +4,10 @@ description: アクティビティ ログを使用してユーザーの操作や
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: 9511090099894fad6708843f106570ed029f0c1a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75474417"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>リソースのアクションを監視するアクティビティ ログの表示

@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: twooley
 ms.openlocfilehash: f09d4dd46a50f1794e51342a939b8919c5c523ef
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931627"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228139"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>StorSimple Snapshot Manager を使用したボリュームの表示と管理
 ## <a name="overview"></a>概要
@@ -93,7 +93,7 @@ StorSimple ボリュームをマウントし、初期化してフォーマット
    
    | 結果の列 | 説明 |
    |:--- |:--- |
-   |  Name |**[名前]** 列には、検出された各ボリュームに割り当てられたドライブ文字が表示されます。 |
+   |  名前 |**[名前]** 列には、検出された各ボリュームに割り当てられたドライブ文字が表示されます。 |
    |  Device |**[デバイス]** 列には、ホスト コンピューターに接続されているデバイスの IP アドレスが表示されます。 |
    |  デバイスのボリューム名 |**[デバイスのボリューム名]** 列には、選択したボリュームが属するデバイス ボリュームの名前が表示されます。 これは、Azure Portal で定義されたそのボリュームのボリューム名です。 |
    |  アクセス パス |**[アクセス パス]** 列には、ボリュームへのアクセス パスが表示されます。 これは、ホスト コンピューターのボリュームにアクセスする際のドライブ文字またはマウント ポイントです。 |

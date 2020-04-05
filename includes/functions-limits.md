@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 05/09/2019
 ms.author: glenga
 ms.openlocfilehash: 4643bb7f95e4fd1249d3ab6699c1f835c77f18fe
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77198345"
 ---
 | リソース | [従量課金プラン](../articles/azure-functions/functions-scale.md#consumption-plan) | [Premium プラン](../articles/azure-functions/functions-scale.md#premium-plan) | [App Service プラン](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |

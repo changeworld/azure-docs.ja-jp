@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 05/09/2019
 ms.author: crdun
 ms.openlocfilehash: 63c54f8af91b6b4a76ba49d5e6fc7b3cda9f5b98
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66240307"
 ---
 1. **Android Studio** で **[Import project (Eclipse ADT, Gradle, etc.) (プロジェクトのインポート (Eclipse ADT、Gradle など))]** を使用して、プロジェクトを開きます。 JDK エラーを回避するために、このインポート オプションを必ず選択してください。

@@ -10,14 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 07621bd2d0593ea3896aba0deb65e0b856e5987b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6fd8573c78d80c950bdeb41ec01e2835def3979a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432239"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79204258"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>チュートリアル 1:信用リスクの予測 - Azure Machine Learning Studio (クラシック)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -66,7 +68,7 @@ Machine Learning Studio (クラシック) を使用するには、Microsoft Azur
 > **[設定]** ページで **[ユーザー]** をクリックします。次に、ウィンドウの下部にある **[INVITE MORE USERS]** をクリックします。
 > 
 
-## <a name="upload"></a>既存のデータのアップロード
+## <a name="upload-existing-data"></a><a name="upload"></a>既存のデータのアップロード
 
 信用リスクの予測モデルを作成するには、トレーニングとその後のモデルのテストに使用できるデータが必要です。 このチュートリアルでは、UC Irvine Machine Learning Repository の "UCI Statlog (German Credit Data) Data Set" (UCI Statlog (ドイツの信用貸付データ) データ セット) を使用します。 詳細についてはこちらを参照してください:  
 <a href="https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)</a>

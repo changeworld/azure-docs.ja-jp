@@ -7,10 +7,10 @@ ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: 4a695957c287e69ff6b40e5a01254a729eaae441
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273005"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Istio によりインテリジェントなルーティングとカナリア リリースを使用する

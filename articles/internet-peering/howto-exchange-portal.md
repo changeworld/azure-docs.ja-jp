@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 2c186decf68d167ab2c5ab7696c2dfb51d77a071
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75773750"
 ---
 # <a name="create-or-modify-an-exchange-peering-using-the-portal"></a>ポータルを使用して Exchange ピアリングを作成または変更する
 
 この記事では、ポータルを使用して Microsoft Exchange ピアリングを作成する方法について説明します。 また、この記事では、リソースの状態確認、更新、または削除およびプロビジョニング解除の方法も示します。
 
-好みに応じて、[PowerShell](howto-exchange-powershell.md) を使用してこのガイドを実行することもできます。
+必要に応じて、[PowerShell](howto-exchange-powershell.md) を使用してこのガイドを完了することもできます。
 
 ## <a name="before-you-begin"></a>開始する前に
 * 構成を開始する前に、[前提条件](prerequisites.md)に関するページと「[Exchange ピアリングのチュートリアル](walkthrough-exchange-all.md)」を確認してください。
@@ -30,7 +30,7 @@ ms.locfileid: "75773750"
 ### <a name="sign-in-to-portal-and-select-your-subscription"></a>ポータルにサインインしてサブスクリプションを選択する
 [!INCLUDE [Account](./includes/account-portal.md)]
 
-### <a name=create></a>Exchange ピアリングを作成する
+### <a name="create-an-exchange-peering"></a><a name=create></a>Exchange ピアリングを作成する
 
 **[ピアリング]** リソースを使用して、新しいピアリング要求を作成できます。
 
@@ -40,13 +40,13 @@ ms.locfileid: "75773750"
 #### <a name="configure-connections-and-submit"></a>接続を構成して送信する
 [!INCLUDE [exchange-peering-configuration](./includes/exchange-portal-configuration.md)]
 
-### <a name=get></a>Exchange ピアリングを確認する
+### <a name="verify-an-exchange-peering"></a><a name=get></a>Exchange ピアリングを確認する
 [!INCLUDE [peering-exchange-get-portal](./includes/exchange-portal-get.md)]
 
-## <a name="modify"></a>Exchange ピアリングを変更する
+## <a name="modify-an-exchange-peering"></a><a name="modify"></a>Exchange ピアリングを変更する
 [!INCLUDE [peering-exchange-modify-portal](./includes/exchange-portal-modify.md)]
 
-## <a name="delete"></a>Exchange ピアリングをプロビジョニング解除する
+## <a name="deprovision-an-exchange-peering"></a><a name="delete"></a>Exchange ピアリングをプロビジョニング解除する
 [!INCLUDE [peering-exchange-delete-portal](./includes/delete.md)]
 
 ## <a name="next-steps"></a>次のステップ
@@ -56,4 +56,4 @@ ms.locfileid: "75773750"
 
 ## <a name="additional-resources"></a>その他のリソース
 
-詳細については、「[インターネット ピアリングのよくあるご質問](faqs.md)」にアクセスしてください
+詳細については、「[インターネット ピアリングのよくあるご質問](faqs.md)」を参照してください。

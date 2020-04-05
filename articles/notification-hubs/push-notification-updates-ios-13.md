@@ -9,10 +9,10 @@ ms.service: notification-hubs
 ms.reviewer: jowargo
 ms.lastreviewed: 10/16/2019
 ms.openlocfilehash: 697e8ba9c9f27e8d5644e3a78950ff006290efe7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74228135"
 ---
 # <a name="azure-notification-hubs-updates-for-ios-13"></a>Azure Notification Hubs の更新内容 (iOS 13 関連)
@@ -64,7 +64,7 @@ request.Headers.Add("apns-push-type", "alert");
 
 別の軽微な (しかし、通知を送信するバックエンド アプリケーションに対する変更が必要な) 変更として、バックグラウンド通知で `apns-priority` ヘッダーを 5 に設定することが要件になりました。 多くのアプリケーションでは、`apns-priority` ヘッダーが 10 (即時配信を示す) に設定されているか、未設定であるために既定値 (同じく 10) が使用されています。
 
-バックグラウンド通知では、この値を 10 に設定することはできなくなりました。各要求に値を設定する必要があります。 この値が指定されていない場合、Apple によるバックグラウンド通知の配信は行われません。 例:
+バックグラウンド通知では、この値を 10 に設定することはできなくなりました。各要求に値を設定する必要があります。 この値が指定されていない場合、Apple によるバックグラウンド通知の配信は行われません。 次に例を示します。
 
 ```csharp
 var hub = NotificationHubClient.CreateFromConnectionString(...);

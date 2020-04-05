@@ -10,11 +10,11 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: c850d2b01e098a10aacf383f0ed4340cb9e64e10
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476878"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "62129786"
 ---
 # <a name="introduction-to-table-storage-in-azure"></a>Azure の Table Storage の概要
 
@@ -26,7 +26,7 @@ Table Storage を使用すると、Web アプリケーションのユーザー �
 
 [!INCLUDE [storage-table-concepts-include](../../../includes/storage-table-concepts-include.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Microsoft Azure ストレージ エクスプローラー](../../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 

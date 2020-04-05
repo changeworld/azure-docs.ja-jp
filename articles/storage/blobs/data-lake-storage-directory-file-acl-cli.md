@@ -10,10 +10,10 @@ ms.date: 11/24/2019
 ms.author: normesta
 ms.reviewer: prishet
 ms.openlocfilehash: ce2b4200496938e6cffb935207df8c7027eaf37a
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77486136"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Azure CLI を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する (プレビュー)
@@ -84,7 +84,7 @@ az storage container create --name my-file-system --account-name mystorageaccoun
 
 `az storage blob directory create` コマンドを使用して、ディレクトリ参照を作成します。 
 
-この例では、`mystorageaccount` という名前のアカウントにある `my-file-system` という名前のファイル システムに `my-directory` という名前のディレクトリを追加します。
+この例では、`my-directory` という名前のアカウントにある `my-file-system` という名前のファイル システムに `mystorageaccount` という名前のディレクトリを追加します。
 
 ```azurecli
 az storage blob directory create -c my-file-system -d my-directory --account-name mystorageaccount
@@ -122,7 +122,7 @@ az storage blob directory delete -c my-file-system -d my-directory --account-nam
 
 `az storage blob directory exist` コマンドを使用して、ファイル システムに特定のディレクトリが存在するかどうかを確認します。
 
-この例では、`my-file-system` ファイル システムに、`my-directory` という名前のディレクトリが存在するかどうかを確認します。 
+この例では、`my-directory` ファイル システムに、`my-file-system` という名前のディレクトリが存在するかどうかを確認します。 
 
 ```azurecli
 az storage blob directory exists -c my-file-system -d my-directory --account-name mystorageaccount 
@@ -132,7 +132,7 @@ az storage blob directory exists -c my-file-system -d my-directory --account-nam
 
 `az storage blob directory download` コマンドを使用して、ディレクトリからファイルをダウンロードします。
 
-この例では、`my-directory` という名前のディレクトリから `upload.txt` という名前のファイルをダウンロードします。 
+この例では、`upload.txt` という名前のディレクトリから `my-directory` という名前のファイルをダウンロードします。 
 
 ```azurecli
 az storage blob directory download -c my-file-system --account-name mystorageaccount -s "my-directory/upload.txt" -d "C:\mylocalfolder\download.txt"
@@ -148,7 +148,7 @@ az storage blob directory download -c my-file-system --account-name mystorageacc
 
 `az storage blob directory list` コマンドを使用して、ディレクトリの内容を一覧表示します。
 
-この例では、`mystorageaccount` という名前のストレージ アカウントの `my-file-system` ファイル システムにある `my-directory` という名前のディレクトリの内容を一覧表示します。 
+この例では、`my-directory` という名前のストレージ アカウントの `my-file-system` ファイル システムにある `mystorageaccount` という名前のディレクトリの内容を一覧表示します。 
 
 ```azurecli
 az storage blob directory list -c my-file-system -d my-directory --account-name mystorageaccount
@@ -203,11 +203,11 @@ az storage blob delete -c my-file-system -b my-file.txt --account-name mystorage
 ディレクトリとファイルのアクセス許可を取得、設定、更新できます。
 
 > [!NOTE]
-> Azure Active Directory (Azure AD) を使用してコマンドを承認している場合は、セキュリティ プリンシパルに [Storage BLOB データ所有者ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)が割り当てられていることを確認してください。 ACL アクセス許可の適用方法とその変更による影響の詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)」を参照してください。
+> Azure Active Directory (Azure AD) を使用してコマンドを承認している場合は、セキュリティ プリンシパルに [Storage BLOB データ所有者ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)が割り当てられていることを確認してください。 ACL アクセス許可の適用方法とその変更による影響の詳細については、「[Azure Data Lake Store Gen2 のアクセス制御](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)」を参照してください。
 
 ### <a name="get-directory-and-file-permissions"></a>ディレクトリとファイルのアクセス許可を取得する
 
-`az storage blob directory access show` コマンドを使用して、**ディレクトリ**の ACL を取得します。
+**コマンドを使用して、** ディレクトリ`az storage blob directory access show`の ACL を取得します。
 
 この例では、ディレクトリの ACL を取得して、その ACL をコンソールに出力します。
 
@@ -215,7 +215,7 @@ az storage blob delete -c my-file-system -b my-file.txt --account-name mystorage
 az storage blob directory access show -d my-directory -c my-file-system --account-name mystorageaccount
 ```
 
-`az storage blob access show` コマンドを使用して、**ファイル**のアクセス許可を取得します。 
+**コマンドを使用して、** ファイル`az storage blob access show`のアクセス許可を取得します。 
 
 この例では、ファイルの ACL を取得して、その ACL をコンソールに出力します。
 
@@ -305,7 +305,7 @@ az storage blob directory metadata update --metadata tag1=value1 tag2=value2 -c 
 az storage blob directory metadata show -c my-file-system -d my-directory --account-name mystorageaccount
 ```
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [サンプル](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview)
 * [Gen1 から Gen2 へのマッピング](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)

@@ -12,10 +12,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, carlrab
 ms.date: 12/04/2018
 ms.openlocfilehash: 03cd89084c2bae3339311f2f684a0d5e7bac1f68
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73825709"
 ---
 # <a name="determine-the-management-endpoint-ip-address"></a>管理エンドポイント IP アドレスを確認する

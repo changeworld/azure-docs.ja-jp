@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d05c2b03a0c498144f37c9b6205053120a596b09
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74924099"
 ---
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティからのストアド プロシージャの呼び出し
@@ -90,7 +90,7 @@ CREATE TYPE [dbo].[MarketingType] AS TABLE(
 )
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 完全な JSON の例については、次のコネクタに関する記事を参照してください。 
 
 - [Azure SQL Database](data-factory-azure-sql-connector.md)

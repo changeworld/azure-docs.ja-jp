@@ -9,10 +9,10 @@ ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: b6bc0b00579bdef0a358f756b8cf2b6034aca017
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68688174"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Azure CLI を使用して URL に基づいて Web トラフィックをルーティングする
@@ -39,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 リソース グループは、`az group create` を使用して作成します。
 
@@ -51,7 +51,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>ネットワーク リソースを作成する
 
-`az network vnet create` を使用して、*myVNet* という名前の仮想ネットワークと *myAGSubnet* という名前のサブネットを作成します。 次に、`az network vnet subnet create` を使用して、バックエンド サーバーに必要な *myBackendSubnet* という名前のサブネットを追加します。 `az network public-ip create` を使用して、*myAGPublicIPAddress* という名前のパブリック IP アドレスを作成します。
+*を使用して、* myVNet*という名前の仮想ネットワークと*myAGSubnet`az network vnet create` という名前のサブネットを作成します。 次に、*を使用して、バックエンド サーバーに必要な*myBackendSubnet`az network vnet subnet create` という名前のサブネットを追加します。 *を使用して、* myAGPublicIPAddress`az network public-ip create` という名前のパブリック IP アドレスを作成します。
 
 ```azurecli-interactive
 az network vnet create \
@@ -130,7 +130,7 @@ az network application-gateway frontend-port create \
 
 ### <a name="add-a-backend-listener"></a>バックエンド リスナーの追加
 
-`az network application-gateway http-listener create` を使用して、トラフィックのルーティングに必要な *backendListener* という名前のバックエンド リスナーを追加します。
+*を使用して、トラフィックのルーティングに必要な*backendListener`az network application-gateway http-listener create` という名前のバックエンド リスナーを追加します。
 
 
 ```azurecli-interactive
@@ -144,7 +144,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-a-url-path-map"></a>URL パス マップの追加
 
-URL パス マップにより、特定の URL が特定のバックエンド プールに確実にルーティングされます。 `az network application-gateway url-path-map create` および `az network application-gateway url-path-map rule create` を使用して、*imagePathRule* および *videoPathRule* という名前の URL パス マップを作成します。
+URL パス マップにより、特定の URL が特定のバックエンド プールに確実にルーティングされます。 *および* を使用して、*imagePathRule* および `az network application-gateway url-path-map create`videoPathRule`az network application-gateway url-path-map rule create` という名前の URL パス マップを作成します。
 
 ```azurecli-interactive
 az network application-gateway url-path-map create \
@@ -169,7 +169,7 @@ az network application-gateway url-path-map rule create \
 
 ### <a name="add-a-routing-rule"></a>ルーティングの規則を追加する
 
-ルーティング規則は、URL マップを、作成したリスナーに関連付けます。 `az network application-gateway rule create` を使用して、*rule2* という名前の規則を追加します。
+ルーティング規則は、URL マップを、作成したリスナーに関連付けます。 *を使用して、* rule2`az network application-gateway rule create` という名前の規則を追加します。
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -256,7 +256,7 @@ URL を http://&lt;IP アドレス&gt;:8080/video/test.html に変更し、&lt;I
 
 ![アプリケーション ゲートウェイでのビデオ URL のテスト](./media/tutorial-url-route-cli/application-gateway-nginx-video.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要がなくなったら、リソース グループ、アプリケーション ゲートウェイ、およびすべての関連リソースを削除します。
 
@@ -264,6 +264,6 @@ URL を http://&lt;IP アドレス&gt;:8080/video/test.html に変更し、&lt;I
 az group delete --name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [URL パスベースのリダイレクトのあるアプリケーション ゲートウェイを作成する](./tutorial-url-redirect-cli.md)

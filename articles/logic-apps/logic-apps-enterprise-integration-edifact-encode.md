@@ -9,10 +9,10 @@ ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 01/27/2017
 ms.openlocfilehash: 257cbd0b1a68ddd2b16235e6f8dec5d5b0eb10e2
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74790648"
 ---
 # <a name="encode-edifact-messages-for-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack を備えた Azure Logic Apps の EDIFACT メッセージをエンコードする
@@ -91,6 +91,6 @@ Encode EDIFACT コネクタは次のタスクを実行します。
 ## <a name="view-swagger-file"></a>Swagger ファイルを表示する
 EDIFACT コネクタの Swagger の詳細を表示するには、「[EDIFACT](/connectors/edifact/)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack について学習する") 
 

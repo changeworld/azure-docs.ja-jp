@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/05/2017
 ms.author: magattus
 ms.openlocfilehash: 238dea3c136daf13d3db7be41bed103a0cbf7636
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593680"
 ---
 # <a name="analyze-azure-cdn-usage-patterns"></a>Azure CDN の使用パターンを分析する

@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe2d85d605b9ee418a5709ddcdb448c56be1d918
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74022276"
 ---
 # <a name="complete-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールのアクセス レビューを完了する
@@ -49,7 +49,7 @@ ms.locfileid: "74022276"
 
 終了日に達するか手動で停止されたためにアクセス レビューが完了した後で、 **[適用]** ボタンをクリックすると、レビューの結果が適用されます。 レビューでユーザーのアクセスが拒否された場合は、この手順によりそのユーザーのロール割り当てが削除されます。  
 
-### <a name="export"></a>エクスポート
+### <a name="export"></a>[エクスポート]
 
 アクセス レビューの結果を手動で適用する場合は、レビューをエクスポートできます。 **[エクスポート]** ボタンをクリックすると、CSV ファイルのダウンロードが開始されます。 Excel など、CSV ファイルを開くことができるプログラムで結果を管理できます。
 
@@ -60,7 +60,7 @@ ms.locfileid: "74022276"
 > [!IMPORTANT]
 > この破壊的な変更を確認する必要はありません。そのレビューを削除する必要があるかどうかを確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Privileged Identity Management で Azure AD ロールのアクセス レビューを開始する](pim-how-to-start-security-review.md)
 - [Privileged Identity Management で Azure AD ロールのアクセス レビューを実行する](pim-how-to-perform-security-review.md)

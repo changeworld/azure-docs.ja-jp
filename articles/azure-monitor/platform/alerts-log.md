@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
 ms.openlocfilehash: 96b1bd86576f8cf34428eb60e2d3f476312311c1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358356"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226531"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Azure Monitor を使用してログ アラートを作成、表示、管理する
 

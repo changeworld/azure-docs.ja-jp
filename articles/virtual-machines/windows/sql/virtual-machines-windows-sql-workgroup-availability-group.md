@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
 ms.openlocfilehash: 72c04cf5e3e5fbdeac2d267dfc7b2703bd37a1c2
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77122587"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>ワークグループ可用性グループを構成する 
@@ -35,7 +35,7 @@ ms.locfileid: "77122587"
 
 参考のために、この記事では次のパラメーターを使用しますが、必要に応じて変更できます。 
 
-| **Name** | **パラメーター** |
+| **名前** | **パラメーター** |
 | :------ | :---------------------------------- |
 | **Node1**   | AGNode1 (10.0.0.4) |
 | **Node2**   | AGNode2 (10.0.0.5) |

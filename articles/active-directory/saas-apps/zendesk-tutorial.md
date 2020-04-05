@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Zendesk の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Zendesk の統合 | Microsoft Docs'
 description: Azure Active Directory と Zendesk の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 02/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4887457f457ff533a0eaf10be7db1627a950f5bd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74233269"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zendesk"></a>チュートリアル:Azure Active Directory と Zendesk の統合
+# <a name="tutorial-azure-active-directory-integration-with-zendesk"></a>チュートリアル: Azure Active Directory と Zendesk の統合
 
 このチュートリアルでは、Zendesk と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Zendesk と Azure AD の統合には、次の利点があります。
@@ -137,7 +137,7 @@ Zendesk で Azure AD シングル サインオンを構成するには、次の�
 
     f. **[OK]** をクリックします。
 
-    g. **[Save]** をクリックします。
+    g. **[保存]** をクリックします。
 
     > [!NOTE]
     > 既定では、Azure AD に含まれていない属性を追加するには拡張属性を使用します。 「[SAMLに設定できるユーザー属性](https://support.zendesk.com/hc/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise-)」をクリックすると、**Zendesk** が受け入れる SAML 属性の完全な一覧が表示されます。
@@ -176,7 +176,7 @@ Zendesk で Azure AD シングル サインオンを構成するには、次の�
 
 4. **[Security]\(セキュリティ\)** ページで、次の手順に従います。
 
-    ![セキュリティ](././media/zendesk-tutorial/ic773089.png "セキュリティ")
+    ![セキュリティ](././media/zendesk-tutorial/ic773089.png "Security")
 
     ![シングル サインオン](././media/zendesk-tutorial/ic773090.png "シングル サインオン")
 
@@ -190,7 +190,7 @@ Zendesk で Azure AD シングル サインオンを構成するには、次の�
 
     e. **[Certificate Fingerprint] \(証明書のフィンガープリント)** テキスト ボックスに、Azure Portal からコピーした証明書の **THUMBPRINT** 値を貼り付けます。
 
-    f. **[Save]** をクリックします。
+    f. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

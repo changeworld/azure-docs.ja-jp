@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 05/02/2019
 ms.author: danlep
 ms.openlocfilehash: 40cc1856a5e943ca5596e7d11712febadd30e3ec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67133431"
 ---
 ## <a name="prerequisites"></a>前提条件
@@ -19,7 +19,7 @@ ms.locfileid: "67133431"
 
 ### <a name="container-registry"></a>コンテナー レジストリ
 
-このチュートリアルを行うには、Azure サブスクリプションに Azure コンテナー レジストリが必要です。 レジストリが必要な場合は、[前のチュートリアル](../articles/container-registry/container-registry-tutorial-quick-task.md)または [Azure CLI を使用したコンテナー レジストリの作成に関するクイック スタート](../articles/container-registry/container-registry-get-started-azure-cli.md)を参照してください。
+このチュートリアルを行うには、Azure サブスクリプションに Azure コンテナー レジストリが必要です。 レジストリが必要な場合は、[前のチュートリアル](../articles/container-registry/container-registry-tutorial-quick-task.md)または「[クイック スタート: Azure CLI を使用したコンテナー レジストリの作成](../articles/container-registry/container-registry-get-started-azure-cli.md)」をご覧ください。
 
 ## <a name="create-a-github-personal-access-token"></a>GitHub 個人用アクセス トークンを作成する
 
@@ -27,7 +27,7 @@ Git リポジトリへのコミットでタスクをトリガーするには、�
 
 1. GitHub で PAT 作成ページ (https://github.com/settings/tokens/new ) に移動します
 1. トークンの短い**説明**を入力します (例: "ACR タスクのデモ")
-1. リポジトリにアクセスする ACR のスコープを選択します。 このチュートリアルのようにパブリック リポジトリにアクセスするには、 **[repo]** の下の **[repo:status]** と **[public_repo]** を有効にします。
+1. リポジトリにアクセスする ACR のスコープを選択します。 このチュートリアルのようにパブリック リポジトリにアクセスするには、 **[リポジトリ]** の下の **[repo:status]** と **[public_repo]** を有効にします。
 
    ![GitHub の個人用アクセス トークン生成ページのスクリーンショット][build-task-01-new-token]
 

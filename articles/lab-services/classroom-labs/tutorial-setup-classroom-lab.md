@@ -15,10 +15,10 @@ ms.custom: mvc
 ms.date: 02/10/2020
 ms.author: spelluru
 ms.openlocfilehash: 166ec4db2a2891d25a1e80526f8c1bd9770f9eef
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77592222"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>チュートリアル:クラスルーム ラボを設定する 
@@ -72,7 +72,7 @@ Azure Lab Services を使用する際の一般的なワークフローは次の�
     4. テンプレート VM を**停止**します。  
 
 ## <a name="publish-the-template-vm"></a>テンプレート VM を発行する
-この手順では、テンプレート VM を発行します。 テンプレート VM を発行すると、Azure Lab Services がそのテンプレートを使用してラボ内に VM を作成します。 すべての仮想マシンの構成は、テンプレートと同じになります。
+この手順では、テンプレート VM を発行します。 テンプレート VM を発行すると、Azure Lab Services によって、そのテンプレートを使用してラボ内に VM が作成されます。 すべての仮想マシンの構成は、テンプレートと同じになります。
 
 1. **[テンプレート]** ページで、ツール バーの **[発行]** を選択します。 
 
@@ -91,7 +91,7 @@ Azure Lab Services を使用する際の一般的なワークフローは次の�
     ![仮想マシンが停止済み状態](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)   
 
     > [!NOTE]
-    > 教師が学生の VM をオンにしても、学生のクォータは影響を受けません。 ユーザーのクォータによって指定されるのは、スケジュールされた授業時間外にユーザーが使用できるラボ時間数です。 クォータの詳細については、「[ユーザーのクォータを設定する](how-to-configure-student-usage.md?#set-quotas-for-users)」を参照してください。
+    > 教師が学生の VM をオンにしても、学生のクォータは影響を受けません。 ユーザーのクォータによって指定されるのは、スケジュールされたクラス時間外にユーザーが使用できるラボ時間数です。 クォータの詳細については、「[ユーザーのクォータを設定する](how-to-configure-student-usage.md?#set-quotas-for-users)」を参照してください。
 
 ## <a name="set-a-schedule-for-the-lab"></a>ラボのスケジュールを設定する
 ラボ内の VM が特定の時刻に自動的に起動または停止されるように、ラボ用にスケジュール化されたイベントを作成します。 前に指定したユーザー クォータ (既定値: 10 時間) は、このスケジュールされた時間以外に各ユーザーに割り当てられる追加時間です。 

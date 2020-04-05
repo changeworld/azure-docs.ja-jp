@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 6841e573446103466e2719797da9e4161b70b5a6
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68881690"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Bing Image Search API についてよく寄せられる質問 (FAQ)
@@ -35,9 +35,9 @@ Azure 上の Microsoft Cognitive Services の Bing Image Search API に関連す
 
 ただし、JavaScript から Bing Image Search API を呼び出すときに、ブラウザーの組み込みのセキュリティ機能 (CORS) によっては、これらのヘッダーの値にアクセスできないことがあります。
 
-ヘッダーにアクセスするために、CORS プロキシを介して Bing Image Search API 要求を行うことができます。 このようなプロキシからの応答には、応答ヘッダーをホワイトリストに登録し、JavaScript で使用可能にする `Access-Control-Expose-Headers` ヘッダーがあります。
+ヘッダーにアクセスするために、CORS プロキシを介して Bing Image Search API 要求を行うことができます。 このようなプロキシからの応答には、応答ヘッダーをホワイトリストに登録して JavaScript で使用できるようにする `Access-Control-Expose-Headers` ヘッダーが含まれています。
 
-CORS プロキシをインストールして[チュートリアル アプリ](tutorial-bing-image-search-single-page-app.md)がオプションのクライアント ヘッダーにアクセスできるようにするのは簡単です。 まず、[Node.js をインストールします](https://nodejs.org/en/download/) (まだインストールしていない場合)。 その後、コマンド プロンプトで次のコマンドを入力します。
+CORS プロキシをインストールして[チュートリアル アプリ](tutorial-bing-image-search-single-page-app.md)が省略可能なクライアント ヘッダーにアクセスできるようにするのは簡単です。 まず、[Node.js をインストールします](https://nodejs.org/en/download/) (まだインストールしていない場合)。 その後、コマンド プロンプトで次のコマンドを入力します。
 
     npm install -g cors-proxy-server
 
@@ -49,7 +49,7 @@ CORS プロキシをインストールして[チュートリアル アプリ](tu
 
     cors-proxy-server
 
-チュートリアル アプリを使用している間はコマンド ウィンドウを開いたままにしておいてください。ウィンドウを閉じるとプロキシが停止します。 検索結果の下の展開可能な HTTP ヘッダー セクションに、`X-MSEdge-ClientID` ヘッダー (など) が表示され、要求ごとに同じであることを確認できます。
+チュートリアル アプリを使用している間はコマンド ウィンドウを開いたままにしておいてください。ウィンドウを閉じるとプロキシが停止します。 検索結果の下の展開可能な HTTP ヘッダー セクションに、`X-MSEdge-ClientID` ヘッダー (など) が表示され、各要求で同じであることを確認できます。
 
 ## <a name="response-headers-in-production"></a>実稼働環境での応答ヘッダー
 
@@ -59,10 +59,10 @@ CORS プロキシをインストールして[チュートリアル アプリ](tu
 
 API キーはサーバー側スクリプトでのみ必要なので、このアプローチでは API キーもパブリックへの露出から保護されます。 スクリプトでは、別の方法 (HTTP 参照元など) を使用して、要求が承認されているかどうかを確認できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 不足している機能について質問がある場合は、 [ユーザーの声 Web サイト](https://cognitive.uservoice.com/forums/555907-bing-search)で、要求またはそれに対する投票をご検討ください。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
  [Stack Overflow: Cognitive Services](https://stackoverflow.com/questions/tagged/bing-api)

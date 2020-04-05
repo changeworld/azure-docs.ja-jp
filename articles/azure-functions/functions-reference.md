@@ -5,11 +5,11 @@ ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
 ms.openlocfilehash: 7dd7ef3c4833fb9ffa3781f06faba4f40cd40cfb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357986"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234899"
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions の開発者向けガイド
 Azure Functions の特定の関数は、使用する言語またはバインドに関係なく、いくつかの中核となる技術的な概念とコンポーネントを共有します。 特定の言語またはバインド固有の詳細を学習する前に、それらすべてに当てはまるこの概要をお読みください。
@@ -65,7 +65,7 @@ function.json ファイルには、関数のトリガー、バインド、その
 
 <!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --glenga -->
 
-## <a id="fileupdate"></a> Azure portal で関数を編集する方法
+## <a name="how-to-edit-functions-in-the-azure-portal"></a><a id="fileupdate"></a> Azure portal で関数を編集する方法
 Azure portal に組み込まれている関数エディターを使用すると、コードと *function.json* ファイルを直接インラインで更新できます。 これは、軽微な変更や概念実証の場合にのみお勧めします。ベスト プラクティスは、VS Code などのローカル開発ツールを使うことです。
 
 ## <a name="parallel-execution"></a>並列実行

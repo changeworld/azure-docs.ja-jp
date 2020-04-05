@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Solutions (AVS) - AVS プライベート クラウド アクセス許可モデル
-description: AVS プライベート クラウドのアクセス許可モデル、グループ、カテゴリについて説明します
+title: Azure VMware Solution by CloudSimple - プライベート クラウドのアクセス許可モデル
+description: CloudSimple プライベート クラウドのアクセス許可モデル、グループ、およびカテゴリについて説明します
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,42 +8,42 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9488c59ead23fb68633ccc56a0df905ebfeea079
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 28c4dc7831f97d66eb4d47f08e640344d5cca0d1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77014948"
 ---
-# <a name="avs-private-cloud-permission-model-of-vmware-vcenter"></a>VMware vCenter の AVS プライベート クラウド アクセス許可モデル
+# <a name="cloudsimple-private-cloud-permission-model-of-vmware-vcenter"></a>VMware vCenter の CloudSimple プライベート クラウド アクセス許可モデル
 
-AVS では、AVS プライベート クラウド環境への完全な管理アクセスを保持します。 AVS の顧客にはそれぞれ、各自の環境で仮想マシンをデプロイおよび管理できるための十分な管理特権が付与されます。 必要に応じて、管理機能を実行するための特権を一時的にエスカレートすることができます。
+CloudSimple は、プライベート クラウド環境への完全な管理アクセスを保持します。 CloudSimple の顧客はそれぞれ、各自の環境で仮想マシンをデプロイおよび管理できるだけの十分な管理特権を付与されます。  必要に応じて、管理機能を実行するための特権を一時的にエスカレートすることができます。
 
 ## <a name="cloud-owner"></a>クラウド所有者
 
-AVS プライベート クラウドを作成すると、**CloudOwner** ユーザーが vCenter シングル サインオン ドメインに作成され、AVS プライベート クラウド内のオブジェクトを管理するための **Cloud-Owner-Role** アクセス権を持ちます。 このユーザーは、追加の [vCenter ID ソース](set-vcenter-identity.md)やその他のユーザーを、AVS プライベート クラウドの vCenter に設定することもできます。
+プライベート クラウドを作成すると、**CloudOwner** ユーザーが vCenter シングル サインオン ドメインに作成され、プライベート クラウド内のオブジェクトを管理するための **Cloud-Owner-Role** アクセスが付与されます。 このユーザーは、追加の [vCenter ID ソース](set-vcenter-identity.md)やその他のユーザーを、プライベート クラウドの vCenter にセットアップすることもできます。
 
 > [!NOTE]
-> AVS プライベート クラウドを作成する場合、AVS プライベート クラウドの vCenter の既定のユーザーは cloudowner@AVS.local です。
+> プライベート クラウドを作成する場合、CloudSimple プライベート クラウドの vCenter の既定のユーザーは cloudowner@cloudsimple.local です。
 
 ## <a name="user-groups"></a>ユーザー グループ
 
-AVS プライベート クラウドのデプロイの間に、**Cloud-Owner-Group** というグループが作成されます。 このグループのユーザーは、AVS プライベート クラウド上の vSphere 環境のさまざまな部分を管理できます。 このグループには **Cloud-Owner-Role** 特権が自動的に付与され、**CloudOwner** ユーザーがこのグループのメンバーとして追加されます。 AVS は、管理を容易にするために、限られた特権を持つ追加のグループを作成します。 これらの事前作成済みグループに任意のユーザーを追加することができ、以下で定義する特権がグループ内のユーザーに自動的に割り当てられます。
+プライベート クラウドのデプロイの間に、**Cloud-Owner-Group** というグループが作成されます。 このグループのユーザーは、プライベート クラウド上の vSphere 環境のさまざまな部分を管理できます。 このグループには **Cloud-Owner-Role** 特権が自動的に付与され、**CloudOwner** ユーザーがこのグループのメンバーとして追加されます。  CloudSimple は、管理を容易にするために、限られた特権を持つ追加のグループを作成します。  これらの事前作成済みグループに任意のユーザーを追加することができ、以下で定義する特権がグループ内のユーザーに自動的に割り当てられます。
 
 ### <a name="pre-created-groups"></a>事前作成済みグループ
 
 | グループ名 | 目的 | Role |
 | -------- | ------- | ------ |
-| Cloud-Owner-Group | このグループのメンバーは、AVS プライベート クラウドの vCenter に対する管理特権を持ちます | [Cloud-Owner-Role](#cloud-owner-role) |
-| Cloud-Global-Cluster-Admin-Group | このグループのメンバーは、AVS プライベート クラウドの vCenter クラスター上で管理特権を持ちます | [Cloud-Cluster-Admin-Role](#cloud-cluster-admin-role) |
-| Cloud-Global-Storage-Admin-Group | このグループのメンバーは、AVS プライベート クラウドの vCenter 上のストレージを管理できます | [Cloud-Storage-Admin-Role](#cloud-storage-admin-role) |
-| Cloud-Global-Network-Admin-Group | このグループのメンバーは、AVS プライベート クラウドの vCenter 上のネットワークおよび分散ポート グループを管理できます | [Cloud-Network-Admin-Role](#cloud-network-admin-role) |
-| Cloud-Global-VM-Admin-Group | このグループのメンバーは、AVS プライベート クラウドの vCenter 上の仮想マシンを管理できます | [Cloud-VM-Admin-Role](#cloud-vm-admin-role) |
+| Cloud-Owner-Group | このグループのメンバーは、プライベート クラウドの vCenter に対する管理特権を持ちます | [Cloud-Owner-Role](#cloud-owner-role) |
+| Cloud-Global-Cluster-Admin-Group | このグループのメンバーは、プライベート クラウドの vCenter クラスター上で管理特権を持ちます | [Cloud-Cluster-Admin-Role](#cloud-cluster-admin-role) |
+| Cloud-Global-Storage-Admin-Group | このグループのメンバーはプライベート クラウドの vCenter 上のストレージを管理できます | [Cloud-Storage-Admin-Role](#cloud-storage-admin-role) |
+| Cloud-Global-Network-Admin-Group | このグループのメンバーは、プライベートクラウド vCenter 上のネットワークおよび分散ポートグループを管理できます | [Cloud-Network-Admin-Role](#cloud-network-admin-role) |
+| Cloud-Global-VM-Admin-Group | このグループのメンバーは、プライベート クラウドの vCenter 上の仮想マシンを管理できます | [Cloud-VM-Admin-Role](#cloud-vm-admin-role) |
 
-AVS プライベート クラウドを管理するためのアクセス許可を個々のユーザーに付与するには、ユーザー アカウントを作成して適切なグループに追加します。
+プライベート クラウドを管理するためのアクセス許可を個々のユーザーに付与するには、ユーザー アカウントを作成して適切なグループに追加します。
 
 > [!CAUTION]
-> 新しいユーザーは、*Cloud-Owner-Group*、*Cloud-Global-Cluster-Admin-Group*、*Cloud-Global-Storage-Admin-Group*、*Cloud-Global-Network-Admin-Group*、または *Cloud-Global-VM-Admin-Group* にのみ追加する必要があります。  *Administrators* グループに追加されたユーザーは自動的に削除されます。  "*管理者*" グループに追加する必要があるのはサービス アカウントだけです。また、サービス アカウントを使用して vSphere Web UI にサインインすることはできません。
+> 新しいユーザーは、*Cloud-Owner-Group*、*Cloud-Global-Cluster-Admin-Group*、*Cloud-Global-Storage-Admin-Group*、*Cloud-Global-Network-Admin-Group*、または *Cloud-Global-VM-Admin-Group* にのみ追加する必要があります。  *Administrators* グループに追加されたユーザーは自動的に削除されます。  *[管理者]* グループに追加する必要があるのはサービス アカウントだけです。また、サービス アカウントを使用して vSphere Web UI にサインインすることはできません。
 
 ## <a name="list-of-vcenter-privileges-for-default-roles"></a>既定のロールの vCenter 特権の一覧
 

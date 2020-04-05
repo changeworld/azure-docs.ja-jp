@@ -14,10 +14,10 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
 ms.openlocfilehash: a734589178438fd65d9a2d156fd91fc82807f578
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76697899"
 ---
 # <a name="brokered-authentication-in-android"></a>Android のブローカー認証
@@ -118,7 +118,7 @@ MSAL とブローカーの通信は次の 2 つの方法で行われます。
 
 MSAL では最初にブローカー バインド サービスが使用されます。このサービスを呼び出す場合、Android のアクセス許可は必要ないためです。 バインドされたサービスへのバインドが失敗した場合、MSAL では Android AccountManager API が使用されます。 MSAL でこれが行われるのは、アプリに既に `"READ_CONTACTS"` のアクセス許可が付与されている場合のみです。
 
-エラー コード `"BROKER_BIND_FAILURE"` の `MsalClientException` が返された場合は、次の 2 つのオプションがあります。
+エラー コード `MsalClientException` の `"BROKER_BIND_FAILURE"` が返された場合は、次の 2 つのオプションがあります。
 
 - Microsoft Authenticator アプリと Intune ポータル サイトの電力の最適化を無効にするようにユーザーに依頼します。
 - `"READ_CONTACTS"` のアクセス許可を付与するようユーザーに依頼します。

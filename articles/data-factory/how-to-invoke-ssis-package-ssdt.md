@@ -13,10 +13,10 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/31/2019
 ms.openlocfilehash: 5f21623af9b89bbb020063dfb72f7b60e65a6ebe
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74927720"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>SSDT から Azure 内で SSIS パッケージを実行する
@@ -104,5 +104,5 @@ Azure での SSIS パッケージの実行では、**EncryptSensitiveWithUserKey
 
 パッケージに、同じプロジェクト内の他のパッケージを参照するパッケージ実行タスクが含まれている場合は、追加のセットアップは必要ありません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 SSDT から Azure でのパッケージの実行に問題がなければ、ADF パイプラインに SSIS パッケージ実行アクティビティとしてそれらをデプロイし、実行できます。[ADF パイプラインの SSIS パッケージ実行アクティビティとしての SSIS パッケージの実行](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)に関する記事を参照してください。

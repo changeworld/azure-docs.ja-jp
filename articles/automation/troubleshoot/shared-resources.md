@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.openlocfilehash: 4cea558b11d7ee7bbe838cecbd061cd487b536d2
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769865"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235423"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>共有リソースのエラーをトラブルシューティングする
 
@@ -21,7 +21,7 @@ ms.locfileid: "75769865"
 
 ## <a name="modules"></a>モジュール
 
-### <a name="module-stuck-importing"></a>シナリオ:モジュールでインポートが停止する
+### <a name="scenario-a-module-is-stuck-importing"></a><a name="module-stuck-importing"></a>シナリオ:モジュールでインポートが停止する
 
 #### <a name="issue"></a>問題
 
@@ -31,7 +31,7 @@ Azure Automation でモジュールのインポートまたは更新を行うと
 
 PowerShell モジュールのインポートは、複雑な複数手順のプロセスです。 このプロセスでは、モジュールが正しくインポートされない可能性があります。 この問題が発生すると、インポートしているモジュールが一時的な状態で停止することがあります。 このプロセスの詳細については、[PowerShell モジュールのインポート](/powershell/scripting/developer/module/importing-a-powershell-module#the-importing-process)に関する記事を参照してください。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 この問題を解決するには、[Remove-AzureRmAutomationModule](/powershell/module/azurerm.automation/remove-azurermautomationmodule) コマンドレットを使用して、**インポート**状態で停止しているモジュールを削除する必要があります。 その後、モジュールのインポートを再試行できます。
 
@@ -39,7 +39,7 @@ PowerShell モジュールのインポートは、複雑な複数手順のプロ
 Remove-AzureRmAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
 ```
 
-### <a name="update-azure-modules-importing"></a>シナリオ:AzureRM モジュールは、これらの更新の試行後にインポートするスタックです。
+### <a name="scenario-azurerm-modules-are-stuck-importing-after-trying-to-update-them"></a><a name="update-azure-modules-importing"></a>シナリオ:AzureRM モジュールは、これらの更新の試行後にインポートするスタックです。
 
 #### <a name="issue"></a>問題
 
@@ -53,11 +53,11 @@ Azure modules are being updated
 
 0 から始まる数値名を持つリソース グループにある、Automation Account の AzureRM モジュールの更新については、既知の問題があります。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 Automation Account で Azure モジュールを更新するには、それが英数字名を持つリソース グループになければなりません。 0 から始まる数値名を持つリソース グループは、現時点で AzureRM モジュールを更新できません。
 
-### <a name="module-fails-to-import"></a>シナリオ:モジュールがインポートに失敗するか、インポート後、コマンドレットを実行できない
+### <a name="scenario-module-fails-to-import-or-cmdlets-cant-be-executed-after-importing"></a><a name="module-fails-to-import"></a>シナリオ:モジュールがインポートに失敗するか、インポート後、コマンドレットを実行できない
 
 #### <a name="issue"></a>問題
 
@@ -72,7 +72,7 @@ Automation Account で Azure モジュールを更新するには、それが英
 * モジュールのフォルダーにその依存関係がありません。
 * モジュールのアップロードに `New-AzureRmAutomationModule` コマンドレットを使用していますが、完全なストレージ パスを指定していないか、パブリックにアクセスできる URL でモジュールを読み込んでいません。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 次の解決策のいずれでもこの問題は解決されます。
 
@@ -80,7 +80,7 @@ Automation Account で Azure モジュールを更新するには、それが英
 * .psd1 ファイルを開き、モジュールに依存関係があるかどうかを確認します。 依存関係がある場合、それらのモジュールを Automation アカウントにアップロードします。
 * 参照される .dll がモジュール フォルダーにあることを確認します。
 
-### <a name="all-modules-suspended"></a>シナリオ:モジュールの更新中に Update-AzureModule.ps1 が中断する
+### <a name="scenario-update-azuremoduleps1-suspends-when-updating-modules"></a><a name="all-modules-suspended"></a>シナリオ:モジュールの更新中に Update-AzureModule.ps1 が中断する
 
 #### <a name="issue"></a>問題
 
@@ -90,7 +90,7 @@ Automation Account で Azure モジュールを更新するには、それが英
 
 `Update-AzureModule.ps1` スクリプトを使用している場合、同時に更新されるモジュール数を決定する既定値は 10 です。 更新プロセスは、同時に更新されるモジュールが多すぎると、エラーが発生しやすくなります。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 同じ Automation アカウントですべての AzureRM モジュールが必要になることは、あまりありません。 必要な AzureRM モジュールのみをインポートすることをお勧めします。
 
@@ -118,7 +118,7 @@ Automation Account で Azure モジュールを更新するには、それが英
 
 ## <a name="run-as-accounts"></a>実行アカウント
 
-### <a name="unable-create-update"></a>シナリオ:実行アカウントを作成または更新できない
+### <a name="scenario-youre-unable-to-create-or-update-a-run-as-account"></a><a name="unable-create-update"></a>シナリオ:実行アカウントを作成または更新できない
 
 #### <a name="issue"></a>問題
 
@@ -132,13 +132,13 @@ You do not have permissions to create…
 
 実行アカウントを作成または更新するために必要なアクセス許可がないか、リソースがリソース グループ レベルでロックされています。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 実行アカウントを作成または更新するには、実行アカウントで使用するさまざまなリソースに対する適切なアクセス許可が必要です。 実行アカウントの作成または更新に必要なアクセス許可については、[実行アカウントのアクセス許可](../manage-runas-account.md#permissions)に関する記事を参照してください。
 
 問題の原因がロックである場合、ロックを解除しても構わないか確認します。 次に、ロックされているリソースに移動し、ロックを右クリックして、 **[削除]** を選択して、ロックを解除します。
 
-### <a name="iphelper"></a>シナリオ:Runbook の実行時に「DLL 'iplpapi.dll' の 'GetPerAdapterInfo' というエントリ ポイントが見つかりません」というエラーが表示されます。
+### <a name="scenario-you-receive-the-error-unable-to-find-an-entry-point-named-getperadapterinfo-in-dll-iplpapidll-when-executing-a-runbook"></a><a name="iphelper"></a>シナリオ:Runbook の実行時に「DLL 'iplpapi.dll' の 'GetPerAdapterInfo' というエントリ ポイントが見つかりません」というエラーが表示されます。
 
 #### <a name="issue"></a>問題
 
@@ -152,7 +152,7 @@ Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
 
 このエラーは、正しく構成されていない [[アカウントとして実行]](../manage-runas-account.md) によって発生する可能性があります。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 [[アカウントとして実行]](../manage-runas-account.md) が正しく構成されていることを確認します。 正しく構成されていれば、Runbook に Azure を認証するための適切なコードがあることを確認します。 次のサンプルは、[アカウントとして実行] を使用して Runbook で Azure を認証するコードのスニペットを示しています。
 

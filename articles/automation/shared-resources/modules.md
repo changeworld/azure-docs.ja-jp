@@ -9,11 +9,11 @@ ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: e300bc0f29808215673407d21b65fe329e50ad45
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76930439"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235427"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Azure Automation でモジュールを管理する
 

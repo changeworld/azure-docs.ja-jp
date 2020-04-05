@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 9a77a9d9c8b2d71197089f66d81e07d56c780e11
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76263848"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>PHP から Notification Hubs を使用する方法
@@ -106,7 +106,7 @@ REST ラッパーすべての実装の詳細については、 [MSDN の記事](
 
 [SAS セキュリティ トークンを作成する](https://docs.microsoft.com/previous-versions/azure/reference/dn495627(v=azure.100)#create-sas-security-token)方法については、Azure ドキュメントを参照してください。
 
-現在の要求の URI と接続文字列から抽出された資格情報に基づいてトークンを作成するには、`NotificationHub` クラスに `generateSasToken` メソッドを追加します。
+現在の要求の URI と接続文字列から抽出された資格情報に基づいてトークンを作成するには、`generateSasToken` クラスに `NotificationHub` メソッドを追加します。
 
     ```php
     private function generateSasToken($uri) {
@@ -218,7 +218,7 @@ REST ラッパーすべての実装の詳細については、 [MSDN の記事](
 
 上記のメソッドは、HTTP POST 要求とともに、通知を送信するための正しい本文とヘッダーを、通知ハブの `/messages` エンドポイントに送信します。
 
-## <a name="complete-tutorial"></a>チュートリアルの完了
+## <a name="complete-the-tutorial"></a><a name="complete-tutorial"></a>チュートリアルの完了
 
 ここで、PHP バックエンドから通知を送信して、使用についてのチュートリアルを完了できます。
 

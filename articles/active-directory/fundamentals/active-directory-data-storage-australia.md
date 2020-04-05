@@ -13,10 +13,10 @@ ms.date: 12/13/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 850298719d5636e964b0c338d7a2a4cc9bb8aece
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77370291"
 ---
 # <a name="identity-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Azure Active Directory でのオーストラリアとニュージーランドのお客様の識別データの保存

@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.openlocfilehash: d0644fca56b852bb34a001a73511f4df33a5f441
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78944992"
 ---
 # <a name="preview-azure-image-builder-overview"></a>プレビュー:Azure Image Builder の概要

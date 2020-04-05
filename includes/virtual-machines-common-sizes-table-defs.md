@@ -9,10 +9,10 @@ ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
 ms.openlocfilehash: 63c53a9b95e27486d7d6944c28f8fb085b1bc6ca
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74279210"
 ---
 <!-- Not used for Ls-series -->

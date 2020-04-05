@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6affa2ecc8919dabeb6173622b525280ce96bcfe
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73847020"
 ---
 # <a name="use-a-resource-dashboard-to-perform-an-access-review-in-privileged-identity-management"></a>Privileged Identity Management でリソース ダッシュボードを使用してアクセス レビューを実行する
@@ -41,6 +41,6 @@ Privileged Identity Management (PIM) でアクセス レビューを実行する
 
 グラフの下には、過去 30 日間の新しいロール割り当てが行われたユーザーとグループの数と、合計の割り当て数の降順で並べ替えられたロールが一覧表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Privileged Identity Management で Azure リソース ロールのアクセス レビューを開始する](pim-resource-roles-start-access-review.md)

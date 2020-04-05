@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 12/14/2016
 ms.author: tagore
 ms.openlocfilehash: 094e08becf4f3a60c98d89bfae7e7c3a69b677f8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75386342"
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>Azure におけるロール インスタンスの通信の有効化

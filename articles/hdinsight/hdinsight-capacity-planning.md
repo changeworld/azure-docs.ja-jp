@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: db7b2787df68e5e9baadddc7e6e6159cfff26097
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 69627c961d9224a124fda09f40901f837d627281
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887242"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233675"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight クラスターの容量計画
 
@@ -56,7 +56,7 @@ Azure Storage Gen1 には[容量制限](../azure-resource-manager/management/azu
 * データを作成する必要があるときに、クラスターで利用できる BLOB コンテナーに既にアップロードしている場合。
 * セキュリティ上の理由からストレージのさまざまな部分を分離する場合、または管理を簡素化する場合。
 
-48 ノードのクラスターの場合、4 から 8 個のストレージ アカウントを使用することをお勧めします。 既に十分な数のストレージが存在する場合もありますが、各ストレージ アカウントはコンピューティング ノードに追加のネットワーク帯域幅を提供します。 複数のストレージ アカウントがある場合は、各ストレージ アカウントにプレフィックスなしのランダムな名前を使用します。 ランダムな名前付けの目的は、すべてのアカウント間でストレージのボトルネック (調整) や共通モード エラーが発生する可能性を低減することです。 パフォーマンスを向上させるために、ストレージ アカウントごとにコンテナーを 1 つだけ使用します。
+パフォーマンスを向上させるために、ストレージ アカウントごとにコンテナーを 1 つだけ使用します。
 
 ## <a name="choose-a-cluster-type"></a>クラスターの種類の選択
 

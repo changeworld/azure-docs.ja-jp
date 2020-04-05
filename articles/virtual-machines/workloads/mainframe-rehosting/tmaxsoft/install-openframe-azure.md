@@ -9,10 +9,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.openlocfilehash: 1ad6e52c421d9cfec4640d3a330b5507d6ed3e9b
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72436053"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>Azure 上に TmaxSoft OpenFrame をインストールする
@@ -51,7 +51,7 @@ OpenFrame のメイン コンポーネント:
 - PROTRIEVE。メインフレームの言語 CA-Easytrieve を実行するソリューションです。
 - OFMiner。メインフレームのアセットを分析し、それらを Azure に移行するソリューションです。
 
-## <a name="architecture"></a>アーキテクチャ
+## <a name="architecture"></a>Architecture
 
 次の図では、このチュートリアルでインストールされる OpenFrame 7.0 アーキテクチャのコンポーネントの概要を示します。
 
@@ -308,7 +308,7 @@ Tibero では、Azure 上の OpenFrame 環境でいくつかの主要な機能�
 **Tibero をインストールするには**
 
 1. Tibero バイナリ インストーラー ファイルが存在することを確認し、バージョン番号を確認します。
-2. Tibero ソフトウェアを、Tibero のユーザー アカウント (oframe) にコピーします。 例:
+2. Tibero ソフトウェアを、Tibero のユーザー アカウント (oframe) にコピーします。 次に例を示します。
 
     ```
     [oframe7@ofdemo ~]$ tar -xzvf tibero6-bin-6_rel_FS04-linux64-121793-opt-tested.tar.gz 
@@ -331,7 +331,7 @@ Tibero では、Azure 上の OpenFrame 環境でいくつかの主要な機能�
     source .bash_profile
     ```
 
-5. ヒント ファイル (Tibero の構成ファイル) を生成し、vi で開きます。 例:
+5. ヒント ファイル (Tibero の構成ファイル) を生成し、vi で開きます。 次に例を示します。
 
     ```
     [oframe7@ofdemo ~]$ sh $TB_HOME/config/gen_tip.sh
@@ -386,14 +386,14 @@ Tibero では、Azure 上の OpenFrame 環境でいくつかの主要な機能�
      ******************************************************************************
     ```
 
-8. Tibero をリサイクルするには、まず `tbdown` コマンドを使用してシャットダウンします。 例:
+8. Tibero をリサイクルするには、まず `tbdown` コマンドを使用してシャットダウンします。 次に例を示します。
 
     ```
     [oframe7@ofdemo ~]$$ tbdown 
     Tibero instance terminated (NORMAL mode).
     ```
 
-9. 次に、`tbboot` を使用して Tibero を起動します。 例:
+9. 次に、`tbboot` を使用して Tibero を起動します。 次に例を示します。
 
     ```
     [oframe7@ofdemo ~]$ tbboot
@@ -440,19 +440,19 @@ OpenFrame 内のアプリケーションは、オープン ソースの unixODBC
 
 ODBC をインストールするには:
 
-1. unixODBC-2.3.4.tar.gz インストール ファイルがあることを確認するか、または `wget unixODBC-2.3.4.tar.gz` コマンドを使用します。 例:
+1. unixODBC-2.3.4.tar.gz インストール ファイルがあることを確認するか、または `wget unixODBC-2.3.4.tar.gz` コマンドを使用します。 次に例を示します。
 
      ```
      [oframe7@ofdemo ~]$ wget ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-2.3.4.tar.gz
      ```
 
-2. バイナリを解凍します。 例:
+2. バイナリを解凍します。 次に例を示します。
 
      ```
      [oframe7@ofdemo ~]$ tar -zxvf unixODBC-2.3.4.tar.gz
      ```
 
-3. unixODBC-2.3.4 ディレクトリに移動し、チェック マシン情報を使用して、メイクファイルを生成します。 例:
+3. unixODBC-2.3.4 ディレクトリに移動し、チェック マシン情報を使用して、メイクファイルを生成します。 次に例を示します。
 
      ```
      [oframe7@ofdemo unixODBC-2.3.4]$ ./configure --prefix=/opt/tmaxapp/unixODBC/ --sysconfdir=/opt/tmaxapp/unixODBC/etc
@@ -462,7 +462,7 @@ ODBC をインストールするには:
 
 4. メイクファイル `[oframe7@ofdemo unixODBC-2.3.4]$ make` を実行します。
 
-5. コンパイルした後、実行可能ファイルをプログラム ディレクトリにコピーします。 例:
+5. コンパイルした後、実行可能ファイルをプログラム ディレクトリにコピーします。 次に例を示します。
 
      ```
      [oframe7@ofdemo unixODBC-2.3.4]$ make install
@@ -479,7 +479,7 @@ ODBC をインストールするには:
      export ODBCSYSINI=$HOME
      ```
 
-7. ODBC を適用します。 それに応じて、次のファイルを編集します。 例:
+7. ODBC を適用します。 それに応じて、次のファイルを編集します。 次に例を示します。
 
      ```
      [oframe7@ofdemo unixODBC-2.3.4]$ source ~/.bash_profile
@@ -559,7 +559,7 @@ Azure 上でシステムを管理するために OpenFrame で使用される個
      ```
 
 3. bash プロファイル `[oframe7@ofdemo ~]$ . .bash_profile` を実行します。
-4. Tibero プロセスが実行されていることを確認します。 例:
+4. Tibero プロセスが実行されていることを確認します。 次に例を示します。
 
      ```linux
      [oframe7@ofdemo ~]$ ps -ef|grep tbsvr
@@ -602,7 +602,7 @@ Azure 上でシステムを管理するために OpenFrame で使用される個
      OPENFRAME_LICENSE_PATH=/opt/tmaxapp/license/OPENFRAME TMAX_LICENSE_PATH=/opt/tmaxapp/license/TMAX
      ```
 
-7. base.properties ファイルを使用してインストーラーを実行します。 例:
+7. base.properties ファイルを使用してインストーラーを実行します。 次に例を示します。
 
     ```
     [oframe7@ofdemo ~]$ chmod a+x OpenFrame_Base7_0_Linux_x86_64.bin 
@@ -611,7 +611,7 @@ Azure 上でシステムを管理するために OpenFrame で使用される個
 
     完了すると、インストール完了メッセージが表示されます。
 
-8. `ls -ltr` コマンドを使用して、OpenFrame Base のディレクトリ構造を確認します。 例:
+8. `ls -ltr` コマンドを使用して、OpenFrame Base のディレクトリ構造を確認します。 次に例を示します。
 
      ```
      [oframe7@ofdemo OpenFrame]$ ls -ltr
@@ -849,7 +849,7 @@ TACF Manager は OpenFrame のサービス モジュールであり、RACF セ�
      TMBOOT: SVR(tmsvr) is starting: Wed Sep  7 17:48:53 2016
      ```
 
-7. `si` コマンドで `tmadmin` を使用して、プロセスの状態が準備完了であることを確認します。 例:
+7. `si` コマンドで `tmadmin` を使用して、プロセスの状態が準備完了であることを確認します。 次に例を示します。
 
      ```
      [oframe7\@ofdemo \~]\$ tmadmin
@@ -923,7 +923,7 @@ ProSort は、バッチ トランザクションでデータの並べ替えに�
      mv prosort /opt/tmaxapp/prosort
      ```
 
-4. license サブディレクトリを作成し、ライセンス ファイルをコピーします。 例:
+4. license サブディレクトリを作成し、ライセンス ファイルをコピーします。 次に例を示します。
 
      ```
      cd /opt/tmaxapp/prosort 
@@ -947,7 +947,7 @@ ProSort は、バッチ トランザクションでデータの並べ替えに�
 
 6. bash プロファイルを実行するには、コマンド プロンプトで次のように入力します: `. .bash_profile`。
 
-7. 構成ファイルを作成します。 例:
+7. 構成ファイルを作成します。 次に例を示します。
 
      ```
      oframe@oframe7: cd /opt/tmaxapp/prosort/config 
@@ -956,14 +956,14 @@ ProSort は、バッチ トランザクションでデータの並べ替えに�
       /home/oframe7/prosort/config/gbg.tip generated
      ```
 
-8. シンボリック リンクを作成します。 例:
+8. シンボリック リンクを作成します。 次に例を示します。
 
      ```
      oframe@oframe7: cd /opt/tmaxapp/OpenFrame/util/ 
      oframe@oframe7home/oframe7/OpenFrame/util :  ln -s DFSORT SORT
      ```
 
-9. `prosort -h` コマンドを実行して、ProSort のインストールを確認します。 例:
+9. `prosort -h` コマンドを実行して、ProSort のインストールを確認します。 次に例を示します。
 
      ```
      oframe@oframe7: prosort -h
@@ -1024,11 +1024,11 @@ OFCOBOL は、メインフレームの COBOL プログラムを解釈する Open
       source ~/.bash_profile
      ```
 
-7. OFCOBOL ライセンスをインストールされたフォルダーにコピーします。 例:
+7. OFCOBOL ライセンスをインストールされたフォルダーにコピーします。 次に例を示します。
      ```
      mv licofcob.dat $OFCOB_HOME/license
      ```
-8. OpenFrame の tjclrun.conf 構成ファイルに移動し、vi で開きます。 例:
+8. OpenFrame の tjclrun.conf 構成ファイルに移動し、vi で開きます。 次に例を示します。
      ```
      [oframe7@ofdemo ~]$ cd $OPENFRAME_HOME/config 
      [oframe7@ofdemo ~]$ vi tjclrun.conf
@@ -1043,7 +1043,7 @@ OFCOBOL は、メインフレームの COBOL プログラムを解釈する Open
      [SYSLIB] BIN_PATH=${OPENFRAME_HOME}/bin:${OPENFRAME_HOME}/util:${COBDIR}/bin:/usr/local/bin:/bin LIB_PATH=${OPENFRAME_HOME}/lib:${OPENFRAME_HOME}/core/lib:${TB_HOME}/client/lib:${COBDIR}/lib:/ usr/lib:/lib:/lib/i686:/usr/local/lib:${PROSORT_HOME}/lib:/opt/FSUNbsort/lib :${ODBC_HOME}/lib 
      :${OFCOB_HOME}/lib
      ```
-9. OpenFrame\_COBOL\_InstallLog.log ファイルを vi で開き、エラーがないことを確認します。 例:
+9. OpenFrame\_COBOL\_InstallLog.log ファイルを vi で開き、エラーがないことを確認します。 次に例を示します。
      ```
      [oframe7@ofdemo ~]$ vi $OFCOB_HOME/UninstallerData/log/OpenFrame_COBOL_InstallLog.log 
      …….. 
@@ -1055,7 +1055,7 @@ OFCOBOL は、メインフレームの COBOL プログラムを解釈する Open
      0 NonFatalErrors 
      0 FatalError
      ```
-10. `ofcob --version` コマンドを使用してバージョン番号を表示し、インストールを確認します。 例:
+10. `ofcob --version` コマンドを使用してバージョン番号を表示し、インストールを確認します。 次に例を示します。
 
      ```
      [oframe7@ofdemo ~]$ ofcob --version 
@@ -1073,7 +1073,7 @@ OFASM は、メインフレームのアセンブラー プログラムを解釈�
 
 1. Batch/Online が正常にインストールされたことを確認した後、OpenFrame\_ASM3\_0\_Linux\_x86\_64.bin インストーラー ファイルが存在することを確認します。
 
-2. インストーラーを実行します。 例:
+2. インストーラーを実行します。 次に例を示します。
 
      ```
      [oframe7@ofdemo ~]$ ./OpenFrame_ASM3_0_Linux_x86_64.bin
@@ -1081,7 +1081,7 @@ OFASM は、メインフレームのアセンブラー プログラムを解釈�
 
 3. ライセンス契約を読み、Enter キーを押して続行します。
 4. ライセンス契約に同意します。
-5. bash プロファイルが OFASM の変数で更新されたことを確認します。 例:
+5. bash プロファイルが OFASM の変数で更新されたことを確認します。 次に例を示します。
 
      ```
      [oframe7@ofdemo ~]$ source .bash_profile
@@ -1117,7 +1117,7 @@ OFASM は、メインフレームのアセンブラー プログラムを解釈�
      [SYSLIB] BIN_PATH=${OPENFRAME_HOME}/bin:${OPENFRAME_HOME}/util:${COBDIR}/bin:/usr/local/bin:/bi n:${OPENFRAME_HOME}/volume_default/SYS1.LOADLIB LIB_PATH=${OPENFRAME_HOME}/lib:${OPENFRAME_HOME}/core/lib:${TB_HOME}/client/lib:${CO BDIR}/lib:/usr/lib:/lib:/lib/i686:/usr/local/lib:${PROSORT_HOME}/lib:/opt/FSUNbsort/lib:${OFCOB_HOM E}/lib:${ODBC_HOME}/lib:${OFPLI_HOME}/lib:${OFASM_HOME}/lib
      ```
 
-7. OpenFrame\_ASM\_InstallLog.log ファイルを vi で開き、エラーがないことを確認します。 例:
+7. OpenFrame\_ASM\_InstallLog.log ファイルを vi で開き、エラーがないことを確認します。 次に例を示します。
 
      ```
      [oframe7@ofdemo ~]$ vi 
@@ -1167,7 +1167,7 @@ OSC は、IBM CICS に似た OpenFrame 環境であり、高速の OLTP トラ�
      完了すると、"インストール完了" メッセージが表示されます。
 
 4. bash プロファイルが OSC の変数で更新されたことを確認します。
-5. OpenFrame\_OSC7\_0\_Fix2\_InstallLog.log ファイルを確認します。 これは、次のようになります。
+5. OpenFrame\_OSC7\_0\_Fix2\_InstallLog.log ファイルを確認します。 次のように表示されます。
 
      ```
      Summary 
@@ -1180,7 +1180,7 @@ OSC は、IBM CICS に似た OpenFrame 環境であり、高速の OLTP トラ�
      0 FatalError
      ```
 
-6. vi を使用して、ofsys.seq 構成ファイルを開きます。 例:
+6. vi を使用して、ofsys.seq 構成ファイルを開きます。 次に例を示します。
 
      ```
      vi $OPENFRAME_HOME/config/ofsys.seq
@@ -1224,7 +1224,7 @@ OSC は、IBM CICS に似た OpenFrame 環境であり、高速の OLTP トラ�
      TPFMAGENT      tmsvr
     ```
 
-8. ライセンス ファイルをコピーします。 例:
+8. ライセンス ファイルをコピーします。 次に例を示します。
 
      ```
      [oframe7@ofdemo ~]$ cp /home/oframe7/oflicense/ofonline/licosc.dat 
@@ -1268,13 +1268,13 @@ JEUS をインストールする前に、Apache Ant パッケージをインス�
 
 **Apache Ant をインストールするには**
 
-1. `wget` コマンドを使用して Ant のバイナリをダウンロードします。 例:
+1. `wget` コマンドを使用して Ant のバイナリをダウンロードします。 次に例を示します。
 
      ```
      wget http://apache.mirror.cdnetworks.com/ant/binaries/apacheant-1.9.7-bin.tar.gz
      ```
 
-2. `tar` ユーティリティを使用してバイナリ ファイルを抽出し、適切な場所に移動します。 例:
+2. `tar` ユーティリティを使用してバイナリ ファイルを抽出し、適切な場所に移動します。 次に例を示します。
 
      ```
      tar -xvzf apache-ant-1.9.7-bin.tar.gz
@@ -1294,7 +1294,7 @@ JEUS をインストールする前に、Apache Ant パッケージをインス�
      export PATH=$HOME/ant/bin:$PATH
      ```
 
-5.  変更した環境変数を適用します。 例:
+5.  変更した環境変数を適用します。 次に例を示します。
 
      ```
      [oframe7\@ofdemo \~]\$ source \~/.bash\_profile
@@ -1302,14 +1302,14 @@ JEUS をインストールする前に、Apache Ant パッケージをインス�
 
 **JEUS をインストールするには**
 
-1. `tar` ユーティリティを使用して、インストーラーを展開します。 例:
+1. `tar` ユーティリティを使用して、インストーラーを展開します。 次に例を示します。
 
      ```
      [oframe7@ofdemo ~]$ tar -zxvf jeus704.tar.gz
      ```
 
 2. **jeus** フォルダーを作成し (`mkdir jeus7`)、バイナリを解凍します。
-3. **setup** ディレクトリに変更します (または、ご自分の環境の JEUS パラメーターを使用します)。 例:
+3. **setup** ディレクトリに変更します (または、ご自分の環境の JEUS パラメーターを使用します)。 次に例を示します。
 
      ```
      [oframe7@ofdemo ~]$ cd jeus7/setup/
@@ -1330,7 +1330,7 @@ JEUS をインストールする前に、Apache Ant パッケージをインス�
      Total time: 0 seconds
      ```
 
-5.  domain-config-template.properties ファイルのバックアップを作成します。 例:
+5.  domain-config-template.properties ファイルのバックアップを作成します。 次に例を示します。
 
      ```
      [oframe7@ofdemo ~]$ cp domain-config-template.properties domain-configtemplate.properties.bkp
@@ -1353,13 +1353,13 @@ JEUS をインストールする前に、Apache Ant パッケージをインス�
      export PATH
      ```
 
-10. bash プロファイルを実行します。 例:
+10. bash プロファイルを実行します。 次に例を示します。
 
      ```
      [oframe7@ofdemo setup]$ . .bash_profile
      ```
 
-11. *省略可能*。 JEUS コンポーネントを簡単にシャットダウンおよびブートできるように、別名を作成します。
+11. *オプション*。 JEUS コンポーネントを簡単にシャットダウンおよびブートできるように、別名を作成します。
 
      ```     
      # JEUS alias
@@ -1414,7 +1414,7 @@ OFGW は OpenFrame ゲートウェイであり、3270 端末エミュレータ�
 **OFGW をインストールするには**
 
 1. JEUS が正常にインストールされたことを確認した後、OFGW7\_0\_1\_Generic.bin インストーラー ファイルが存在することを確認します。
-2. インストーラーを実行します。 例:
+2. インストーラーを実行します。 次に例を示します。
 
      ```
      [oframe7@ofdemo ~]$ ./OFGW7_0_1_Generic.bin
@@ -1448,7 +1448,7 @@ OFManager では、Web 環境での OpenFrame の運用と管理の機能が提�
 **OFManager をインストールするには**
 
 1. OFManager7\_Generic.bin インストーラー ファイルがあることを確認します。
-2. インストーラーを実行します。 例:
+2. インストーラーを実行します。 次に例を示します。
 
      ```
      OFManager7_Generic.bin
@@ -1472,7 +1472,7 @@ OFManager では、Web 環境での OpenFrame の運用と管理の機能が提�
 
 これで、OpenFrame コンポーネントのインストールは完了です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 メインフレームの移行を検討している場合は、当社の拡大しているパートナー エコシステムを使用すると役に立ちます。 パートナー ソリューションの選択に関する詳細なガイダンスについては、「[Platform Modernization Alliance (プラットフォーム最新化アライアンス)](https://datamigration.microsoft.com/)」を参照してください。
 

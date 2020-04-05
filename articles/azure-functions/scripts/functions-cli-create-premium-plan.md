@@ -5,10 +5,10 @@ ms.service: azure-functions
 ms.topic: sample
 ms.date: 11/23/2019
 ms.openlocfilehash: dd31dbadce4f0a55853607504b4322277784f27f
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74534589"
 ---
 # <a name="create-a-function-app-in-a-premium-plan---azure-cli"></a>Premium プランの関数アプリを作成する - Azure CLI
@@ -40,7 +40,7 @@ CLI をローカルにインストールして使用する場合、この記事�
 | [az functionapp plan create](/cli/azure/functionapp/plan#az-functionapp-plan-create) | Premium プランを作成します。 |
 | [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | App Service プランで関数アプリを作成します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 

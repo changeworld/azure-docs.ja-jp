@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: overview
 ms.custom: mvc
-ms.date: 06/29/2018
-ms.openlocfilehash: 2327632fc2a71855874bb8fe45e97af430fa696a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 03/11/2020
+ms.openlocfilehash: 0ba41d63195c906b57046dc6c9fd57c9f08399ab
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791844"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290550"
 ---
 # <a name="overview---what-is-azure-logic-apps"></a>概要 - Azure Logic Apps とは
 
@@ -36,7 +36,7 @@ Azure Logic Apps を使用してエンタープライズ統合ソリューショ
 
 ロジック アプリを使ったワークフローはいずれも、トリガーによって起動します。そして、トリガーは特定のイベントが発生するか、新たに利用可能になったデータが特定の条件を満たした時点で起動します。 Logic Apps のコネクタによって提供される多くのトリガーには、ワークロードの実行頻度を設定できる基本的なスケジューリング機能が備わっています。 より複雑なスケジューリングや高度な繰り返しの場合は、ワークフローの最初のステップとして繰り返しトリガーを使用できます。 詳細については、[スケジュールベースのワークフロー](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)に関するページを参照してください。
 
-トリガーが起動するたびに、Logic Apps エンジンによって、ワークフロー内でアクションを実行するロジック アプリ インスタンスが作成されます。 これらのアクションにはデータ変換のほか、条件文、switch 文、ループ、分岐などのフロー制御が含まれることもあります。 たとえば、このロジック アプリは "レコードが更新されたとき" という条件が組み込まれている Dynamics 365 トリガーによって起動するものです。 トリガーがこの条件に一致するイベントを検出すると、トリガーが起動し、ワークフローのアクションを実行します。 ここで実行されるアクションとしては、XML の変換、データの更新、条件分岐、メール通知があります。
+トリガーが起動するたびに、Logic Apps エンジンによって、ワークフロー内でアクションを実行するロジック アプリ インスタンスが作成されます。 これらのアクションにはデータ変換のほか、条件文、switch 文、ループ、分岐などのワークフロー制御が含まれることもあります。 たとえば、このロジック アプリは "レコードが更新されたとき" という条件が組み込まれている Dynamics 365 トリガーによって起動するものです。 トリガーがこの条件に一致するイベントを検出すると、トリガーが起動し、ワークフローのアクションを実行します。 ここで実行されるアクションとしては、XML の変換、データの更新、条件分岐、メール通知があります。
 
 ![Logic Apps デザイナー - ロジック アプリの例](./media/logic-apps-overview/azure-logic-apps-designer.png)
 
@@ -100,6 +100,18 @@ Logic Apps、Functions、Event Grid はいずれも Microsoft Azure によって
 
 複数の環境とリージョンにわたって[ロジック アプリ デプロイを自動化](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)できるように、Azure Resource Manager テンプレートとしてロジック アプリを作成します。
 
+### <a name="access-resources-inside-azure-virtual-networks"></a>Azure 仮想ネットワーク内のリソースにアクセスする
+
+"[*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成するときに、ロジック アプリは [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)内にあるセキュリティで保護されたリソース (仮想マシン (VM) や他のシステムまたはサービスなど) にアクセスできます。 ISE は、専用のリソースを使用し、"グローバル" なマルチテナント Logic Apps サービスとは別に実行される分離された Logic Apps サービスのインスタンスです。
+
+自分専用の分離されたインスタンスでロジック アプリを実行することで、他の Azure テナントが自分のアプリのパフォーマンスに与える可能性がある影響 (["うるさい隣人" エフェクト](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors)とも呼ばれる) を減らすことができます。 ISE には、次の利点があります。
+
+* 自分専用の静的 IP アドレス。これらの IP アドレスは、マルチテナント サービスのロジック アプリによって共有される静的 IP アドレスとは区別されています。 また、送信先システムとの通信のために、単一の予測可能な静的パブリック アウトバウンド IP アドレスを自分で設定することもできます。 このようにすると、それらの送信先システムで ISE ごとに追加のファイアウォールを設定する必要はありません。
+
+* 実行継続時間、ストレージのリテンション期間、スループット、HTTP の要求と応答のタイムアウト、メッセージのサイズ、カスタム コネクタの要求の上限が引き上げられました。 詳細については、[Azure Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md)に関するページを参照してください。
+
+ISE を作成すると、Azure によってその ISE が Azure 仮想ネットワークに "*挿入*"(デプロイ) されます。 アクセスを必要とする統合アカウントやロジック アプリの場所としてその ISE を使用することができます。 ISE の作成について詳しくは、[Azure Logic Apps から Azure Virtual Network への接続](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)に関するページをご覧ください。
+
 ### <a name="built-in-extensibility"></a>組み込みの拡張機能
 
 カスタム コードを実行するために必要なコネクタが見つからない場合には、独自のコード スニペットを作成し、[Azure Functions](../azure-functions/functions-overview.md) を使ってオンデマンドで呼び出せば、ロジック アプリを拡張できます。 独自の [API](../logic-apps/logic-apps-create-api-app.md) や[カスタム コネクタ](../logic-apps/custom-connector-overview.md)を作成し、ロジック アプリから呼び出すこともできます。
@@ -113,6 +125,10 @@ Logic Apps の詳細については、以下のビデオで紹介しています
 * [Logic Apps を使った統合 - "ゼロ" から "ヒーロー" へ](https://channel9.msdn.com/Events/Build/2017/C9R17)
 * [Microsoft Azure Logic Apps を使用したエンタープライズ統合](https://channel9.msdn.com/Events/Ignite/Microsoft-Ignite-Orlando-2017/BRK2188)
 * [Logic Apps を使用して高度なビジネス プロセスを構築する](https://channel9.msdn.com/Events/Ignite/Microsoft-Ignite-Orlando-2017/BRK3179)
+
+## <a name="how-does-logic-apps-differ-from-functions-webjobs-and-power-automate"></a>Logic Apps と Functions、WebJobs、Power Automate の違い
+
+ここに挙げたサービスはいずれも、別個のシステムをつなげるための "接着剤" のような役割を果たします。 どのサービスにもそれぞれ長所とメリットが存在するため、十分な機能を備えたスケーラブルな統合システムを短期間で構築するためには、各サービスの機能を組み合わせるのが一番です。 詳細については、[Logic Apps、Functions、WebJobs、Power Automate の比較](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md)に関する記事を参照してください。
 
 <a name="logic-app-concepts"></a>
 
@@ -128,17 +144,13 @@ Logic Apps の詳細については、以下のビデオで紹介しています
 
 * **Enterprise Integration Pack**: Logic Apps には、高度な統合シナリオ向けに BizTalk Server の機能が含まれています。 Enterprise Integration Pack は、ロジック アプリが検証や変換などを簡単に実行するためのコネクタを提供するものです。
 
-## <a name="how-does-logic-apps-differ-from-functions-webjobs-and-flow"></a>Logic Apps と Functions、WebJobs、Flow の違い
-
-ここに挙げたサービスはいずれも、別個のシステムをつなげるための "接着剤" のような役割を果たします。 どのサービスにもそれぞれ長所とメリットが存在するため、十分な機能を備えたスケーラブルな統合システムを短期間で構築するためには、各サービスの機能を組み合わせるのが一番です。 詳細については、「[Flow、Logic Apps、Functions、WebJobs の比較](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md)」を参照してください。
-
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 Logic Apps は、Microsoft Azure でホストされている多くのサービスの 1 つです。 このため、利用開始には Azure サブスクリプションが必要です。 サブスクリプションをお持ちでない場合には、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
 Azure サブスクリプションをお持ちであれば、[初めてのロジック アプリの作成に関するクイック スタート](../logic-apps/quickstart-create-first-logic-app-workflow.md)をお試しください。このクイックスタートでは、RSS フィードを使って Web サイトの新しいコンテンツを監視し、新しいコンテンツが公開された時点でメールを送信する方法を紹介しています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [スケジュールに基づいたロジック アプリでトラフィックをチェックする](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
 * [Azure を使ったサーバーレス ソリューション](../logic-apps/logic-apps-serverless-overview.md)の詳細を確認する

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と ForeSee CX Suite の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と ForeSee CX Suite の統合 | Microsoft Docs'
 description: Azure Active Directory と ForeSee CX Suite の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: c78fa8ec470f04bcd88ab403249f77a65120c707
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67550405"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>チュートリアル:Azure Active Directory と ForeSee CX Suite の統合
+# <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>チュートリアル: Azure Active Directory と ForeSee CX Suite の統合
 
 このチュートリアルでは、ForeSee CX Suite と Azure Active Directory (Azure AD) を統合する方法について説明します。
 ForeSee CX Suite と Azure AD の統合には、次の利点があります。

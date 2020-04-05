@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
 ms.openlocfilehash: ef16e3b75ca8e051b1b7abb1a92843279884c697
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954346"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228939"
 ---
 # <a name="manage-process-servers"></a>プロセス サーバーの管理
 
@@ -138,4 +138,4 @@ ms.locfileid: "73954346"
 - C:\ProgramData\ASRSetupLogs
 - C:\ProgramData\LogUploadServiceLogs
 - C:\ProgramData\Microsoft Azure Site Recovery
-- プロセス サーバーのインストール ディレクトリ。 例: C:\Program Files (x86)\Microsoft Azure Site Recovery
+- プロセス サーバーのインストール ディレクトリ。 次に例を示します。C:\Program Files (x86)\Microsoft Azure Site Recovery

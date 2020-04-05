@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: dech
 ms.openlocfilehash: 7a487cb10965a379a0a418efaa061be88c5d10dd
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77082979"
 ---
 # <a name="configure-cross-origin-resource-sharing-cors"></a>クロスオリジン リソース共有 (CORS) の構成

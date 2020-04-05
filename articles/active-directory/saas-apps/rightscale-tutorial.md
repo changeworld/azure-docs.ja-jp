@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Rightscale の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Rightscale の統合 | Microsoft Docs'
 description: Azure Active Directory と Rightscale の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 53799b62da043b7680f010e1eaaf0d9243f07dd5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67093069"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-rightscale"></a>チュートリアル:Azure Active Directory と Rightscale の統合
+# <a name="tutorial-azure-active-directory-integration-with-rightscale"></a>チュートリアル: Azure Active Directory と Rightscale の統合
 
 このチュートリアルでは、Rightscale と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Rightscale と Azure AD の統合には、次の利点があります。
@@ -158,7 +158,7 @@ Rightscale で Azure AD のシングル サインオンを構成するには、�
 
     ![Configure single sign-on](./media/rightscale-tutorial/tutorial_rightscale_009.png)
 
-9. **[Save]** をクリックします。
+9. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

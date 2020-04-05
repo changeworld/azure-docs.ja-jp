@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2522b31788df294c37db4326985edd6c85774561
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: d5525c02edb30eff0ee8971a382f2acb8f2e57ee
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191845"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455725"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Azure Machine Learning の既知の問題とトラブルシューティング
 
@@ -124,7 +124,7 @@ FPGA クォータを要求して承認されるまでは、FPGA にモデルを�
 
 ## <a name="automated-machine-learning"></a>自動化された機械学習
 
-Tensor Flow の自動化された機械学習は現在、Tensor Flow バージョン 1.13 でサポートされていません。 このバージョンをインストールすると、パッケージの依存関係が動作を停止することになります。 Microsoft は、将来のリリースでこの問題を解決するよう取り組んでいます。 
+Tensor Flow の自動化された機械学習は現在、Tensor Flow バージョン 1.13 でサポートされていません。 このバージョンをインストールすると、パッケージの依存関係が動作を停止することになります。 Microsoft は、将来のリリースでこの問題を解決するよう取り組んでいます。
 
 ### <a name="experiment-charts"></a>実験グラフ
 
@@ -145,7 +145,7 @@ script_params = {
 } 
 ```
 
-先頭のスラッシュ "/" を含めない場合は、データセットをマウントする場所を示すために、コンピューティング先の作業ディレクトリをプレフィックスとして付ける必要があります (たとえば、`/mnt/batch/.../tmp/dataset`)。 
+先頭のスラッシュ "/" を含めない場合は、データセットをマウントする場所を示すために、コンピューティング先の作業ディレクトリをプレフィックスとして付ける必要があります (たとえば、`/mnt/batch/.../tmp/dataset`)。
 
 ### <a name="fail-to-read-parquet-file-from-http-or-adls-gen-2"></a>HTTP または ADLS Gen 2 から Parquet ファイルを読み取ることができない
 
@@ -205,14 +205,14 @@ displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.g
 
 自動化された機械学習を使用しているときにこのエラーが表示される場合は、以下を実行します。
 
-1. 次のコマンドを実行して、Azure Databricks クラスターに 2 つのパッケージをインストールします。 
+1. 次のコマンドを実行して、Azure Databricks クラスターに 2 つのパッケージをインストールします。
 
-   ```
+   ```bash
    scikit-learn==0.19.1
    pandas==0.22.0
    ```
 
-1. クラスターをデタッチし、次にクラスターをノートブックに再アタッチします。 
+1. クラスターをデタッチし、次にクラスターをノートブックに再アタッチします。
 
 これらの手順で問題が解決しない場合は、クラスターを再起動してみてください。
 
@@ -265,11 +265,11 @@ Azure Machine Learning の使用時に扱うことがあるリソース クォ�
 
 データ転送などの他のワークロードにファイル共有を使用している場合は、BLOB を使用して、ファイル共有を実行の送信のために自由に使用できるようにすることをお勧めします。 2 つの異なるワークスペース間でワークロードを分割することもできます。
 
-## <a name="webservices-in-azure-kubernetes-service-failures"></a>Azure Kubernetes Service の Web サービスのエラー 
+## <a name="webservices-in-azure-kubernetes-service-failures"></a>Azure Kubernetes Service の Web サービスのエラー
 
 Azure Kubernetes Service の多くの Web サービスのエラーは、`kubectl` を使用してクラスターに接続することでデバッグできます。 以下を実行して、Azure Kubernetes Service クラスターの `kubeconfig.json` を取得できます
 
-```bash
+```azurecli-interactive
 az aks get-credentials -g <rg> -n <aks cluster name>
 ```
 
@@ -313,7 +313,7 @@ kubectl get secret/azuremlfessl -o yaml
 
 ### <a name="only-datasets-created-on-blob-datastores-can-be-used"></a>使用できるのは BLOB データストアに作成されたデータセットのみ
 
-これは、現在のリリースの既知の制限です。 
+これは、現在のリリースの既知の制限です。
 
 ### <a name="after-creation-the-project-shows-initializing-for-a-long-time"></a>作成後、プロジェクトで "Initializing (初期化しています)" と長時間にわたり表示される
 

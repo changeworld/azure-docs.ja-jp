@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/16/2018
 ms.openlocfilehash: a9a1c1718fb95a6ace3700af043134072d582473
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77663047"
 ---
 # <a name="views-in-management-solutions-preview"></a>管理ソリューションのビュー (プレビュー)
@@ -29,7 +29,7 @@ ms.locfileid: "77663047"
 この記事では、[管理ソリューションの作成方法](solutions-creating.md)およびソリューション ファイルの構造を理解していることを前提としています。
 
 ## <a name="overview"></a>概要
-ビューを管理ソリューションに含めるには、[ソリューション ファイル](solutions-creating.md)でビューの**リソース**を作成します。  ただし、ビューの詳細な構成を表す JSON は通常複雑で、典型的なソリューション作成者が手動で作成できるものではありません。  [ビュー デザイナー](../../azure-monitor/platform/view-designer.md)を使用してビューの作成とエクスポートを行い、詳細な構成をソリューションに追加するのが最も一般的な方法です。
+ビューを管理ソリューションに含めるには、**ソリューション ファイル**でビューの[リソース](solutions-creating.md)を作成します。  ただし、ビューの詳細な構成を表す JSON は通常複雑で、典型的なソリューション作成者が手動で作成できるものではありません。  [ビュー デザイナー](../../azure-monitor/platform/view-designer.md)を使用してビューの作成とエクスポートを行い、詳細な構成をソリューションに追加するのが最も一般的な方法です。
 
 ビューをソリューションに追加する基本的な手順は次のとおりです。  各手順の詳細については、以降のセクションで詳しく説明します。
 
@@ -88,9 +88,9 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 
 | ワークスペースのバージョン | API バージョン | クエリ |
 |:---|:---|:---|
-| v1 (レガシ)   | 2015-11-01-preview | レガシ形式。<br> 例:Type=Event EventLevelName=error  |
-| v2 (アップグレード) | 2015-11-01-preview | レガシ形式。  インストール時にアップグレードされた形式に変換されます。<br> 例:Type=Event EventLevelName=error<br>変換後:Event &#124; where EventLevelName == "Error"  |
-| v2 (アップグレード) | 2017-03-03-preview | アップグレード形式。 <br>例:Event &#124; where EventLevelName == "Error"  |
+| v1 (レガシ)   | 2015-11-01-preview | レガシ形式。<br> 例: Type=Event EventLevelName = Error  |
+| v2 (アップグレード) | 2015-11-01-preview | レガシ形式。  インストール時にアップグレードされた形式に変換されます。<br> 例: Type=Event EventLevelName = Error<br>変換後: Event &#124; where EventLevelName == "Error"  |
+| v2 (アップグレード) | 2017-03-03-preview | アップグレード形式。 <br>例: Event &#124; where EventLevelName == "Error"  |
 
 
 ## <a name="add-the-view-details"></a>ビューの詳細を追加する

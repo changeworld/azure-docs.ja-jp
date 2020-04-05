@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 49ad9be7c70602132436b14234f01a4086d8e1fe
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70139137"
 ---
 # <a name="use-case---product-recommendations"></a>使用事例 - 製品に関する推奨事項

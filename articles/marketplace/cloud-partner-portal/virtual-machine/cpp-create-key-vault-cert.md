@@ -1,19 +1,18 @@
 ---
 title: Azure Key Vault 証明書の作成 | Azure Marketplace
 description: Azure にデプロイされた VHD からの VM を登録する方法について説明します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/29/2018
-ms.author: pabutler
-ms.openlocfilehash: 4adc6f716050e2d792e0a5c022972e4340d2846a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: dc106ecf40367172f28c0f339bbcce8bddb50a34
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823121"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278077"
 ---
 # <a name="create-certificates-for-azure-key-vault"></a>Azure Key Vault の証明書を作成する
 
@@ -213,6 +212,6 @@ ms.locfileid: "73823121"
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次に、[ユーザー VM イメージから VM をデプロイします](./cpp-deploy-vm-user-image.md)。

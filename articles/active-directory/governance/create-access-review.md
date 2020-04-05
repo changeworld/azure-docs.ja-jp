@@ -2,7 +2,7 @@
 title: グループとアプリケーションのアクセス レビューを作成する - Azure AD
 description: グループ メンバーまたはアプリケーション アクセスのアクセス レビューを Azure Active Directory アクセス レビューで作成する方法について説明します。
 services: active-directory
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 02/06/2020
-ms.author: ajburnle
+ms.date: 03/22/2020
+ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e769df186597a88247601f4fc70c48263edc88b
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: d3b8f2cf7db474f2a67ebaed818a0a440a195326
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77483909"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128844"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>グループとアプリケーションのアクセス レビューを Azure AD アクセス レビューで作成する
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 6b68b4c943ec96620427978c2309f27e1fb1f217
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74082557"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Hyper-V VM の Azure へのディザスター リカバリーのためにネットワーク マッピングを準備する
@@ -53,7 +53,7 @@ Azure にレプリケートすると、ネットワーク マッピングによ�
 
 このメカニズムを説明するために、次に例を示します。 ニューヨークとシカゴという 2 つの拠点がある組織を例にします。
 
-**Location** | **VMM サーバー** | **VM ネットワーク** | **マップ先**
+**場所** | **VMM サーバー** | **VM ネットワーク** | **マップ先**
 ---|---|---|---
 ニューヨーク | VMM-NewYork| VMNetwork1-NewYork | VMNetwork1-Chicago にマップされています
  |  | VMNetwork2-NewYork | マッピングなし
@@ -78,7 +78,7 @@ SilverCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwor
 
 ### <a name="logical-and-vm-network-settings"></a>論理設定と VM ネットワークの設定
 
-**Location** | **論理ネットワーク** | **関連付けられた VM ネットワーク**
+**場所** | **論理ネットワーク** | **関連付けられた VM ネットワーク**
 ---|---|---
 ニューヨーク | LogicalNetwork1-NewYork | VMNetwork1-NewYork
 シカゴ | LogicalNetwork1-Chicago | VMNetwork1-Chicago
@@ -88,12 +88,12 @@ SilverCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwor
 
 これらの設定に基づき、次の表は、ターゲット VM ネットワークを選択する場合に使用可能な選択肢を示します。
 
-**選択肢** | **保護されたクラウド** | **保護するクラウド** | **使用可能なターゲット ネットワーク**
+**Select** | **保護されたクラウド** | **保護するクラウド** | **使用可能なターゲット ネットワーク**
 ---|---|---|---
-VMNetwork1-Chicago | SilverCloud1 | SilverCloud2 | 使用可能
- | GoldCloud1 | GoldCloud2 | 使用可能
-VMNetwork2-Chicago | SilverCloud1 | SilverCloud2 | 使用できません。
- | GoldCloud1 | GoldCloud2 | 使用可能
+VMNetwork1-Chicago | SilverCloud1 | SilverCloud2 | 利用可能
+ | GoldCloud1 | GoldCloud2 | 利用可能
+VMNetwork2-Chicago | SilverCloud1 | SilverCloud2 | 使用不可
+ | GoldCloud1 | GoldCloud2 | 利用可能
 
 
 ターゲット ネットワークに複数のサブネットがあり、そのサブネットのいずれかが、ソースの仮想マシンが配置されているサブネットと同じ名前である場合、レプリカの仮想マシンは、フェールオーバー後にそのターゲット サブネットに接続されます。 ターゲットのサブネットで名前が一致するものがなければ、仮想マシンはネットワークの最初のサブネットに接続されます。
@@ -120,7 +120,7 @@ VMNetwork1-Chicago のネットワークのマッピングが変更される。 
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - セカンダリ VMM サイトへのフェールオーバー後の IP アドレス指定の詳細については、[こちら](hyper-v-vmm-networking.md)を参照してください。
 - Azure へのフェールオーバー後の IP アドレス指定について詳しくは、[こちら](concepts-on-premises-to-azure-networking.md)をご覧ください。

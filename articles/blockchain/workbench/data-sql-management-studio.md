@@ -6,10 +6,10 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 ms.openlocfilehash: f87d1880c90202fa26b0477e3b4dfbed5965bb82
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74326036"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>SQL Server Management Studio で Azure Blockchain Workbench データを使用します
@@ -44,7 +44,7 @@ Microsoft SQL Server Management Studio では、Azure Blockchain ワークベン
 9. **新しいクエリ エディター ウィンドウ**を選択します。
 10. **新しいクエリ**を選択して、新しいクエリを作成することができますです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Blockchain Workbench のデータベース ビュー](database-views.md)

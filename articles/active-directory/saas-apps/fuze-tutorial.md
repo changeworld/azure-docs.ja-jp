@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Fuze の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Fuze の統合 | Microsoft ドキュメント'
 description: Azure Active Directory と Fuze の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 546e0d53630b1dba8447fe1004e92545f9c8f324
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73155408"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-fuze"></a>チュートリアル:Azure Active Directory と Fuze の統合
+# <a name="tutorial-azure-active-directory-integration-with-fuze"></a>チュートリアル: Azure Active Directory と Fuze の統合
 
 このチュートリアルでは、Fuze と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Fuze と Azure AD の統合には、次の利点があります。

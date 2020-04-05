@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
 ms.openlocfilehash: abc3cc8c526e37e18f1e67b109a9a8e15ff8c989
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302714"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>HDInsight 上の Apache Hadoop で REST を使用して MapReduce ジョブを実行する

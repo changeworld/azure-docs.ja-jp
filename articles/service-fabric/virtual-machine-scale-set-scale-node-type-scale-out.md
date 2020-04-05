@@ -4,10 +4,10 @@ description: 仮想マシン スケール セットを追加することで、Se
 ms.topic: article
 ms.date: 02/13/2019
 ms.openlocfilehash: 1e7bae89561d43d717eb4d15e95183761b077443
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75463976"
 ---
 # <a name="scale-a-service-fabric-cluster-out-by-adding-a-virtual-machine-scale-set"></a>仮想マシン スケール セットを追加して Service Fabric クラスターをスケールアウトする

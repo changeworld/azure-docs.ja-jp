@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
 ms.openlocfilehash: 6614e70d130abe46067c657bda3ccdd7000caddc
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845279"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224863"
 ---
 # <a name="api-management-policy-expressions"></a>API Management ポリシー式
 この記事では、C# 7 のポリシー式の構文について説明します。 それぞれの式は、暗黙的に指定された[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数と、許可されている .NET Framework の型の[サブセット](api-management-policy-expressions.md#CLRTypes)にアクセスできます。
@@ -33,12 +33,12 @@ ms.locfileid: "76845279"
 - ポリシー ステートメントをダウンロードするには、[api-management-samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies) GitHub リポジトリをご覧ください。
 
 
-## <a name="Syntax"></a> 構文
+## <a name="syntax"></a><a name="Syntax"></a> 構文
 単一ステートメントの式は `@(expression)` の形式で囲みます。`expression` は正しい C# 式ステートメントです。
 
 複数ステートメントの式は `@{expression}` の形式で囲みます。 複数ステートメントの式内のすべてのコード パスは `return` ステートメントで終了している必要があります。
 
-## <a name="PolicyExpressionsExamples"></a> 使用例
+## <a name="examples"></a><a name="PolicyExpressionsExamples"></a> 使用例
 
 ```
 @(true)
@@ -65,16 +65,16 @@ ms.locfileid: "76845279"
 }
 ```
 
-## <a name="PolicyExpressionsUsage"></a>使用状況
+## <a name="usage"></a><a name="PolicyExpressionsUsage"></a>使用状況
 式は (ポリシー参照で特に指定されていない限り)、任意の API Management [ポリシー](api-management-policies.md)で属性値またはテキスト値として使用できます。
 
 > [!IMPORTANT]
 > ポリシー式を使用する場合、ポリシーを定義したときのポリシー式の検証は限られています。 式は、実行時にゲートウェイによって実行されます。ポリシー式によって生成されたすべての例外はランタイム エラーになります。
 
-## ポリシー式で使用できる <a name="CLRTypes"></a>.NET framework の型
+## <a name="net-framework-types-allowed-in-policy-expressions"></a>ポリシー式で使用できる <a name="CLRTypes"></a>.NET framework の型
 次の表は、ポリシー式で使用できる .NET Framework の型とメンバーの一覧です。
 
-|種類|サポートされているメンバー|
+|Type|サポートされているメンバー|
 |--------------|-----------------------|
 |Newtonsoft.Json.Formatting|All|
 |Newtonsoft.Json.JsonConvert|SerializeObject、DeserializeObject|
@@ -156,7 +156,7 @@ ms.locfileid: "76845279"
 |System.Security.Cryptography.SymmetricAlgorithm|All|
 |System.Security.Cryptography.X509Certificates.PublicKey|All|
 |System.Security.Cryptography.X509Certificates.RSACertificateExtensions|All|
-|System.Security.Cryptography.X509Certificates.X500DistinguishedName|Name|
+|System.Security.Cryptography.X509Certificates.X500DistinguishedName|名前|
 |System.Security.Cryptography.X509Certificates.X509Certificate|All|
 |System.Security.Cryptography.X509Certificates.X509Certificate2|All|
 |System.Security.Cryptography.X509Certificates.X509ContentType|All|
@@ -205,12 +205,12 @@ ms.locfileid: "76845279"
 |System.Xml.Linq.XText|All|
 |System.Xml.XmlNodeType|All|
 
-## <a name="ContextVariables"></a>コンテキスト変数
+## <a name="context-variable"></a><a name="ContextVariables"></a>コンテキスト変数
 `context` という名前の変数は、暗黙的にすべてのポリシー[式](api-management-policy-expressions.md#Syntax)で使用できます。 そのメンバーは `\request`に関連する情報を提供します。 すべての `context` メンバーは読み取り専用です。
 
 |コンテキスト変数|使用可能なメソッド、プロパティ、パラメーターの値|
 |----------------------|-------------------------------------------------------|
-|context|[Api](#ref-context-api):[IApi](#ref-iapi)<br /><br /> [デプロイ](#ref-context-deployment)<br /><br /> Elapsed:TimeSpan - Timestamp の値と現在時刻の間の時間間隔<br /><br /> [LastError](#ref-context-lasterror)<br /><br /> [操作](#ref-context-operation)<br /><br /> [Product](#ref-context-product)<br /><br /> [要求](#ref-context-request)<br /><br /> RequestId:Guid - 一意の要求識別子<br /><br /> [応答](#ref-context-response)<br /><br /> [サブスクリプション](#ref-context-subscription)<br /><br /> タイムスタンプ:DateTime - 要求を受信した時点<br /><br /> Tracing: bool - トレースがオンかオフかを示します <br /><br /> [User](#ref-context-user)<br /><br /> [変数](#ref-context-variables): IReadOnlyDictionary<string, object><br /><br /> void Trace(message: 文字列)|
+|context|[Api](#ref-context-api):[IApi](#ref-iapi)<br /><br /> [デプロイ](#ref-context-deployment)<br /><br /> Elapsed:TimeSpan - Timestamp の値と現在時刻の間の時間間隔<br /><br /> [LastError](#ref-context-lasterror)<br /><br /> [操作](#ref-context-operation)<br /><br /> [Product](#ref-context-product)<br /><br /> [Request](#ref-context-request)<br /><br /> RequestId:Guid - 一意の要求識別子<br /><br /> [Response](#ref-context-response)<br /><br /> [サブスクリプション](#ref-context-subscription)<br /><br /> タイムスタンプ:DateTime - 要求を受信した時点<br /><br /> Tracing: bool - トレースがオンかオフかを示します <br /><br /> [User](#ref-context-user)<br /><br /> [変数](#ref-context-variables): IReadOnlyDictionary<string, object><br /><br /> void Trace(message: 文字列)|
 |<a id="ref-context-api"></a>context.Api|Id: 文字列<br /><br /> IsCurrentRevision: ブール値<br /><br />  Name: 文字列<br /><br /> Path: 文字列<br /><br /> Revision: 文字列<br /><br /> ServiceUrl:[IUrl](#ref-iurl)<br /><br /> Version: 文字列 |
 |<a id="ref-context-deployment"></a>context.Deployment|Region: 文字列<br /><br /> ServiceName: 文字列<br /><br /> Certificates:IReadOnlyDictionary<string, X509Certificate2>|
 |<a id="ref-context-lasterror"></a>context.LastError|Source: 文字列<br /><br /> Reason: 文字列<br /><br /> Message: 文字列<br /><br /> Scope: 文字列<br /><br /> Section: 文字列<br /><br /> Path: 文字列<br /><br /> PolicyId: 文字列<br /><br /> context.LastError の詳細については、[エラー処理](api-management-error-handling-policies.md)に関する記事を参照してください。|

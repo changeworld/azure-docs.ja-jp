@@ -5,11 +5,11 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: bcf56aa89a42d65fdb7bf03696faad13c64cbc8a
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596234"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229675"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) における Kubernetes の中心概念
 

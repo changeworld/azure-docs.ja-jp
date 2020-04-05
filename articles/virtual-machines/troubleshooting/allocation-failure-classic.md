@@ -13,10 +13,10 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 20e64e5225987a8045e406a0e8fcae098c580c61
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77913380"
 ---
 # <a name="troubleshooting-steps-specific-to-allocation-failure-scenarios-in-the-classic-deployment-model"></a>クラシック デプロイ モデルでの特定の割り当てエラー シナリオのトラブルシューティング手順
@@ -118,7 +118,7 @@ New_General* または New_VMSizeNotSupported\*
 
 **クラスターの固定の原因**
 
-リージョン仮想ネットワークが導入される前は、仮想ネットワークをアフィニティ グループに関連付ける必要がありました。 その結果、アフィニティ グループに配置されたコンピューティング リソースは、上の「割り当てシナリオ: アフィニティ グループ (VM/サービス近接性)」のセクションで説明されたのと同じ制約を受けます。 つまり、コンピューティング リソースは 1 つのクラスターに結び付けられます。
+リージョン仮想ネットワークが導入される前は、仮想ネットワークをアフィニティ グループに関連付ける必要がありました。 その結果、アフィニティ グループに配置されたコンピューティング リソースは、上の「割り当てシナリオ: アフィニティ グループ (VM/サービス近接性)」セクションで説明したのと同じ制約を受けます。 つまり、コンピューティング リソースは 1 つのクラスターに結び付けられます。
 
 **回避策**
 

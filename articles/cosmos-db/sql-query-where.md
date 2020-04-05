@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: tisande
 ms.openlocfilehash: 483a0533eafc81ef8698d260a753062ae074f6d4
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898779"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>Azure Cosmos DB での WHERE 句
@@ -105,7 +105,7 @@ WHERE <filter_condition>
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-クエリでプロパティ参照を使用することもできます。 たとえば、`SELECT * FROM Families f WHERE f.isRegistered` は、値が `true` 値と等しい `isRegistered` プロパティを含む JSON 項目を返します。 `false`、`null`、`Undefined`、`<number>`、`<string>`、`<object>`、または `<array>` などの他の値は、項目を結果から除外します。
+クエリでプロパティ参照を使用することもできます。 たとえば、`SELECT * FROM Families f WHERE f.isRegistered` は、値が `isRegistered` 値と等しい `true` プロパティを含む JSON 項目を返します。 `false`、`null`、`Undefined`、`<number>`、`<string>`、`<object>`、または `<array>` などの他の値は、項目を結果から除外します。
 
 ## <a name="next-steps"></a>次のステップ
 

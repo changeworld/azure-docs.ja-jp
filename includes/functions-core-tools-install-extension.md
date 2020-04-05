@@ -9,17 +9,17 @@ ms.date: 05/25/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 94cac0932da5880e5e7b8a8fac3870b5bc464af9
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75564775"
 ---
 ## <a name="register-extensions"></a>拡張機能を登録する
 
 HTTP およびタイマートリガーを除き、ランタイム バージョン 2.x およびそれ以降の関数バインディングは、拡張パッケージとして実装されます。 Azure Functions ランタイム バージョン 2.x では、関数で使用するバインディングの型に対応した拡張機能を明示的に登録する必要があります。 この例外は HTTP バインドとタイマー トリガーで、これらは拡張機能を必要としません。
 
-バインド拡張機能を個別にインストールするか、host.json プロジェクト ファイルに拡張機能のバンドルの参照を追加することができます。 拡張機能のバンドルは、複数のバインディングの種類を使用するときに、パッケージの互換性の問題を発生する可能性をなくします。 これはバインド拡張機能を登録するための推奨される方法です。 また、拡張機能のバンドルにより、.NET Core 2.x SDK をインストールする必要もなくなります。 
+バインド拡張機能を個別にインストールするか、host.json プロジェクト ファイルに拡張機能のバンドルの参照を追加することができます。 拡張機能のバンドルを使用すると、複数のバインディングの種類を使用するときに、パッケージの互換性の問題が発生する可能性をなくします。 これはバインド拡張機能を登録する際に推奨される方法です。 また、拡張機能のバンドルにより、.NET Core 2.x SDK をインストールする必要もなくなります。 
 
 ### <a name="extension-bundles"></a>拡張機能のバンドル
 

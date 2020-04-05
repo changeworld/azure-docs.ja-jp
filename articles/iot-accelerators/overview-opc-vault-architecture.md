@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 1e08968034134e2b9ab3b8064387d18663d5c866
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "71200145"
 ---
 # <a name="opc-vault-architecture"></a>OPC Vault のアーキテクチャ
@@ -36,7 +36,7 @@ OPC Vault マイクロサービスは、Azure Key Vault の署名権限を持つ
 既存の OPC UA ソリューションとの互換性のために、サービスには OPC Vault マイクロサービスによって支援されるエッジ モジュールのサポートが含まれています。 これには、仕様のパート 12 に従って証明書と信頼リストを配布するために、**OPC UA Global Discovery Server および Certificate Management**  インターフェイスが実装されています。 
 
 
-## <a name="architecture"></a>アーキテクチャ
+## <a name="architecture"></a>Architecture
 
 アーキテクチャは OPC Vault マイクロサービスをベースとしており、ファクトリ ネットワーク用に OPC Vault IoT Edge モジュール、ワークフローを制御するための Web サンプル UX が付属しています。
 
@@ -81,7 +81,7 @@ OPC Vault マイクロサービスは、OPC UA アプリケーション用の会
 ## <a name="opc-vault-iot-edge-module"></a>OPC Vault IoT Edge モジュール
 ファクトリ ネットワークの Global Discovery Server をサポートするために、エッジに OPC Vault モジュールをデプロイできます。 それをローカルの .NET Core アプリケーションとして実行するか、または、Docker コンテナー内で開始します。 現在の OPC UA .NET Standard スタックでは、Auth2 認証がサポートされていないため、OPC Vault エッジ モジュールの機能は閲覧者ロールに制限されていることに注意してください。 OPC UA GDS の標準インターフェイスを使用して、ユーザーをエッジ モジュールからマイクロサービスに借用することはできません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、OPC Vault アーキテクチャについて学習しました。以下に進むことができます。
 

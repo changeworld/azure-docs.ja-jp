@@ -9,10 +9,10 @@ ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.openlocfilehash: 952103d517e03230cdfa4e7531e27bb2d5f53a07
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75934317"
 ---
 # <a name="security-control-penetration-tests-and-red-team-exercises"></a>セキュリティ コントロール: 侵入テストとレッド チーム演習
@@ -21,7 +21,7 @@ ms.locfileid: "75934317"
 
 ## <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、60 日以内に確実に修復されるようにします
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 11.1 | 20.1 ～ 20.8 | 共有 |
 

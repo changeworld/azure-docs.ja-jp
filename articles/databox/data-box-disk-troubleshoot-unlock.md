@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/14/2019
 ms.author: alkohli
 ms.openlocfilehash: 02cbf64261bbfbf50561e1b7466b46b27b688e0a
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67148115"
 ---
 # <a name="troubleshoot-disk-unlocking-issues-in-azure-data-box-disk"></a>Azure Data Box Disk でのディスクのロック解除に関する問題のトラブルシューティング
@@ -45,7 +45,7 @@ To figure out who accessed the **Device credentials** blade, you can query the A
 
 このセクションでは、データ コピーに Windows クライアントを使用している場合に、Data Box Disk のデプロイ中に直面するいくつかの重要な問題について詳しく説明します。
 
-### <a name="issue-could-not-unlock-drive-from-bitlocker"></a>問題: BitLocker のドライブのロックを解除できませんでした
+### <a name="issue-could-not-unlock-drive-from-bitlocker"></a>問題点:BitLocker のドライブのロックを解除できませんでした
  
 **原因** 
 
@@ -53,9 +53,9 @@ BitLocker ダイアログでパスワードを使用し、BitLocker のドライ
 
 **解決策**
 
-Data Box Disks のロックを解除するには、Data Box Disk ロック解除ツールを使用し、Azure portal でパスワードを指定する必要があります。 詳細については、「[チュートリアル: Azure Data Box Disk の開梱、接続、ロック解除](data-box-disk-deploy-set-up.md#connect-to-disks-and-get-the-passkey)」をご覧ください。
+Data Box Disks のロックを解除するには、Data Box Disk ロック解除ツールを使用し、Azure portal でパスワードを指定する必要があります。 詳細については、[チュートリアルの Azure Data Box Disk の開梱、接続、ロック解除](data-box-disk-deploy-set-up.md#connect-to-disks-and-get-the-passkey)」をご覧ください。
  
-### <a name="issue-could-not-unlock-or-verify-some-volumes-contact-microsoft-support"></a>問題: いくつかのボリュームのロックの解除または確認を行えませんでした。 Microsoft サポートにお問い合わせください。
+### <a name="issue-could-not-unlock-or-verify-some-volumes-contact-microsoft-support"></a>問題点:いくつかのボリュームのロックの解除または確認を行えませんでした。 Microsoft サポートにお問い合わせください。
  
 **原因**
 
@@ -71,6 +71,6 @@ Data Box Disks のロックを解除するには、Data Box Disk ロック解除
  
 この方法を試してもロックを解除できない場合は、Data Box Disk ロック解除ツールが入っているフォルダーからログをコピーし、[Microsoft サポートにお問い合わせください](data-box-disk-contact-microsoft-support.md)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [検証の問題をトラブルシューティングする](data-box-disk-troubleshoot.md)方法を学習します。

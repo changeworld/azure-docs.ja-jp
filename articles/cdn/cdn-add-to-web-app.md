@@ -16,15 +16,15 @@ ms.date: 05/14/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 1b67522834497a264d95fc9b80246b16841d6026
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67594219"
 ---
-# <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>チュートリアル:Azure App Service Web アプリへの Azure CDN の追加
+# <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>チュートリアル: Azure App Service Web アプリへの Azure CDN の追加
 
-このチュートリアルでは、[Azure App Service 内の Web アプリ](../app-service/overview.md)に [Azure Content Delivery Network (CDN)](cdn-overview.md) を追加する方法について説明します。 Web Apps は、Web アプリケーション、REST API、およびモバイル バックエンドをホストするためのサービスです。 
+このチュートリアルでは、[Azure App Service 内の Web アプリ](cdn-overview.md)に [Azure Content Delivery Network (CDN)](../app-service/overview.md) を追加する方法について説明します。 Web Apps は、Web アプリケーション、REST API、およびモバイル バックエンドをホストするためのサービスです。 
 
 以下に示したのは、これから扱うサンプルの静的 HTML サイトのホーム ページです。
 
@@ -72,7 +72,7 @@ ms.locfileid: "67594219"
 
 ![ポータルでプロファイルとエンドポイントを作成](media/cdn-add-to-web-app/portal-new-endpoint.png)
 
-| Setting | 推奨値 | 説明 |
+| 設定 | 推奨値 | 説明 |
 | ------- | --------------- | ----------- |
 | **[CDN プロファイル]** | myCDNProfile | CDN プロファイルは、同じ価格レベルの CDN エンドポイントをまとめたものです。 |
 | **[価格レベル]** | Standard Akamai | プロバイダーと使用可能な機能は、[価格レベル](cdn-features.md)によって規定されます。 このチュートリアルでは *Standard Akamai* を使用します。 |
@@ -256,7 +256,7 @@ http://<endpointname>.azureedge.net/index.html?q=1
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここで学習した内容は次のとおりです。
 
@@ -268,6 +268,6 @@ http://<endpointname>.azureedge.net/index.html?q=1
 次の各記事に、CDN のパフォーマンスを最適化する方法が紹介されています。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:カスタム ドメインを Azure CDN エンドポイントに追加する](cdn-map-content-to-custom-domain.md)
+> [チュートリアル: カスタム ドメインを Azure CDN エンドポイントに追加する](cdn-map-content-to-custom-domain.md)
 
 

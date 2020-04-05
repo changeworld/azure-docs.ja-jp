@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: c4798fa9140f277d5383d2830eefb9bcc8d7c984
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72598323"
 ---
 # <a name="azure-media-services-community"></a>Azure Media Services コミュニティ  
@@ -56,8 +56,8 @@ Twitter ハンドル [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) を�
 
 ## <a name="need-help"></a>お困りの際は、
 
-[[新しいサポート要求]](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) に移動することによってサポート チケットを開くことができます
+[[新しいサポート リクエスト]](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) に移動してサポート チケットを開くことができます
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [概要](media-services-overview.md)

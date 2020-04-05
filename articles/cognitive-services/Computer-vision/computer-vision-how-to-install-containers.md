@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 03/17/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 383abc674674fc024052b2c04d3c538838b83856
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: f8d19ded32f7f4a90b23106b6cec53418eef407e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120214"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79458037"
 ---
 # <a name="install-and-run-read-containers-preview"></a>Read コンテナーのインストールと実行 (プレビュー)
 
@@ -30,7 +30,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 コンテナーを使用する前に、次の前提条件を満たす必要があります。
 
-|Required|目的|
+|必須|目的|
 |--|--|
 |Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。| 
@@ -154,71 +154,26 @@ Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開しま
       "unit": "pixel",
       "lines": [
         {
-          "boundingBox": [
-            56,
-            39,
-            317,
-            50,
-            313,
-            134,
-            53,
-            123
-          ],
+          "boundingBox": [ 56, 39, 317, 50, 313, 134, 53, 123 ],
           "text": "Tabs VS",
           "words": [
             {
-              "boundingBox": [
-                90,
-                43,
-                243,
-                53,
-                243,
-                123,
-                94,
-                125
-              ],
+              "boundingBox": [ 90, 43, 243, 53, 243, 123, 94, 125 ],
               "text": "Tabs",
               "confidence": "Low"
             },
             {
-              "boundingBox": [
-                259,
-                55,
-                313,
-                62,
-                313,
-                122,
-                259,
-                123
-              ],
+              "boundingBox": [ 259, 55, 313, 62, 313, 122, 259, 123 ],
               "text": "VS"
             }
           ]
         },
         {
-          "boundingBox": [
-            221,
-            148,
-            417,
-            146,
-            417,
-            206,
-            227,
-            218
-          ],
+          "boundingBox": [ 221, 148, 417, 146, 417, 206, 227, 218 ],
           "text": "Spaces",
           "words": [
             {
-              "boundingBox": [
-                230,
-                148,
-                416,
-                141,
-                419,
-                211,
-                232,
-                218
-              ],
+              "boundingBox": [ 230, 148, 416, 141, 419, 211, 232, 218 ],
               "text": "Spaces"
             }
           ]

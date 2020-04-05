@@ -3,14 +3,14 @@ title: Azure Automation の Linux Hybrid Runbook Worker
 description: この記事では、Azure Automation Hybrid Runbook Worker をインストールして、ローカル データ センターやクラウド環境にある Linux ベースのコンピューターで Runbook を実行できるようにする方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 06/28/2018
+ms.date: 03/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 838c7450de1364588fb287c9d9804666a325cdf3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2579748d9c68512e51fe46ec70084c30d06953bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421935"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235559"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker を展開する
 
@@ -27,7 +27,7 @@ Hybrid Runbook Worker 機能は、次のディストリビューションをサ�
 * Oracle Linux 5、6、および 7 (x86/x64)
 * Red Hat Enterprise Linux Server 5、6、および 7 (x86/x64)
 * Debian GNU/Linux 6、7、および 8 (x86/x64)
-* Ubuntu 12.04 LTS、14.04 LTS、および 16.04 LTS (x86/x64)
+* Ubuntu 12.04 LTS、14.04 LTS、16.04 LTS、および 18.04 (x86/x64)
 * SUSE Linux Enterprise Server 11 および 12 (x86/x64)
 
 ## <a name="installing-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker のインストール
@@ -58,7 +58,7 @@ Linux Hybrid Runbook Worker の最小要件は次のようになります。
 
 1. 次のいずれかの方法を使って、Azure において **Automation Hybrid Worker** ソリューションを有効にします。
 
-   * [Azure Monitor ログ ソリューションのワークスペースへの追加](../log-analytics/log-analytics-add-solutions.md)に関するページの手順を使用して、**Automation Hybrid Worker** ソリューションをサブスクリプションに追加します。
+   * **Azure Monitor ログ ソリューションのワークスペースへの追加**に関するページの手順を使用して、[Automation Hybrid Worker](../log-analytics/log-analytics-add-solutions.md) ソリューションをサブスクリプションに追加します。
    * 次のコマンドレットを実行します。
 
         ```azurepowershell-interactive

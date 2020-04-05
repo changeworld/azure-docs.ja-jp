@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
 ms.openlocfilehash: 9d983015927d2635f69a327a9c5b168056542519
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77613855"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>SharePoint Server のユーザー プロファイルの同期をサポートするように Azure Active Directory Domain Services を構成します。
@@ -45,7 +45,7 @@ SharePoint Server には、ユーザー プロファイルを同期するサー�
 Azure AD DS マネージド ドメインでは、 **[AAD DC Service Accounts]\(AAD DC サービス アカウント\)** という名前のセキュリティ グループが *[ユーザー]* 組織単位 (OU) の一部として存在します。 このセキュリティ グループのメンバーには、次の特権が委任されます。
 
 - ルート DSE に対する**ディレクトリの変更のレプリケート**特権。
-- *[構成]* 名前付けコンテキスト (`cn=configuration` コンテナー) に対する**ディレクトリの変更のレプリケート**特権。
+- **[構成]** 名前付けコンテキスト ( *コンテナー) に対する*ディレクトリの変更のレプリケート`cn=configuration`特権。
 
 **[AAD DC Service Accounts]\(AAD DC サービス アカウント\)** セキュリティ グループは、組み込みグループの **Pre-Windows 2000 Compatible Access** のメンバーでもあります。
 

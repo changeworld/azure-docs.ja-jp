@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 12/23/2019
 ms.author: memildin
 ms.openlocfilehash: 1dc94c5ec08cc27fb1819ccc16fd766c62aad796
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77604682"
 ---
 # <a name="adaptive-application-controls"></a>アダプティブ アプリケーション制御

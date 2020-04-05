@@ -6,15 +6,15 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: ffb3d590aebe80994de1e7e834a2eba5777df9a1
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76262488"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions におけるタスク ハブ (Azure Functions)
 
-[Durable Functions](durable-functions-overview.md) の*タスク ハブ*は、オーケストレーションに使用される Azure Storage リソースの論理コンテナーです。 オーケストレーター関数とアクティビティ関数は、同じタスク ハブに属しているときに限り、情報をやり取りすることができます。
+*Durable Functions* の[タスク ハブ](durable-functions-overview.md)は、オーケストレーションに使用される Azure Storage リソースの論理コンテナーです。 オーケストレーター関数とアクティビティ関数は、同じタスク ハブに属しているときに限り、情報をやり取りすることができます。
 
 複数の関数アプリがストレージ アカウントを共有している場合、各関数アプリには個別のタスク ハブ名を構成する*必要があります*。 ストレージ アカウントには、複数のタスク ハブを含めることができます。 次の図は、共有ストレージ アカウントと専用ストレージ アカウントの各関数アプリにタスク ハブが 1 つあることを示しています。
 
@@ -119,7 +119,7 @@ public static async Task<HttpResponseMessage> Run(
 ```
 
 > [!NOTE]
-> 前記の C# の例は Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`IDurableOrchestrationContext` の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
+> 前記の C# の例は Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`DurableOrchestrationContext` の代わりに `IDurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -140,7 +140,7 @@ public static async Task<HttpResponseMessage> Run(
 
 | Durable の拡張機能のバージョン | 既定のタスク ハブ名 |
 | - | - |
-| 2.x | Azure にデプロイする場合、タスク ハブ名は _関数アプリ_ の名前から派生します。 Azure の外部で実行する場合、既定のタスク ハブ名は `TestHubName` です。 |
+| 2.x | Azure にデプロイする場合、タスク ハブ名は_関数アプリ_の名前から派生します。 Azure の外部で実行する場合、既定のタスク ハブ名は `TestHubName` です。 |
 | 1.x | すべての環境で、既定のタスク ハブ名は `DurableFunctionsHub` です。 |
 
 拡張機能のバージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。

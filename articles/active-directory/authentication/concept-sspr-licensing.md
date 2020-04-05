@@ -1,6 +1,6 @@
 ---
-title: セルフサービスによるパスワード リセットのライセンス - Azure Active Directory
-description: Azure AD のセルフ サービスによるパスワード リセットのライセンス要件
+title: セルフサービス パスワード リセットのライセンス - Azure Active Directory
+description: Azure AD のセルフサービス パスワード リセットのライセンス要件
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,37 +12,37 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 598f3bd8500a59cd41cc4126915e6cccbd4fb2f3
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74848563"
 ---
-# <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Azure AD のセルフ サービスによるパスワード リセットのライセンス要件
+# <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Azure AD のセルフサービス パスワード リセットのライセンス要件
 
-Azure Active Directory (Azure AD) には、いくつかのエディションがあります。それは、Free、Premium P1、および Premium P2 です。 セルフサービスのパスワード リセットには、その構成要素として、変更、リセット、ロック解除、書き戻しなど、Azure AD の各種エディションに用意されているいくつかの異なる機能が存在します。 この記事では、その相違点について説明します。 各 Azure AD エディションに備わっている機能の詳細は、[Azure Active Directory の価格のページ](https://azure.microsoft.com/pricing/details/active-directory/)でご覧いただけます。
+Azure Active Directory (Azure AD) には、いくつかのエディションがあります。それは、Free、Premium P1、および Premium P2 です。 セルフサービス パスワード リセットには、その構成要素として、変更、リセット、ロック解除、書き戻しなど、Azure AD の各種エディションに用意されているいくつかの異なる機能が存在します。 この記事では、その相違点について説明します。 各 Azure AD エディションに備わっている機能の詳細は、[Azure Active Directory の価格のページ](https://azure.microsoft.com/pricing/details/active-directory/)でご覧いただけます。
 
 ## <a name="compare-editions-and-features"></a>エディションと機能の比較
 
-組織は、そのユーザーに適切なライセンスを割り当てる必要があります。その遵守状況を維持するために、Azure AD のセルフサービスのパスワード リセットは、ユーザー単位でライセンスされます。
+組織は、そのユーザーに適切なライセンスを割り当てる必要があります。その遵守状況を維持するために、Azure AD のセルフサービス パスワード リセットは、ユーザー単位でライセンスされます。
 
 * クラウド ユーザーに対するセルフサービスのパスワード変更
    * 私は**クラウド限定ユーザー**で、自分のパスワードを知っています。
       * 自分のパスワードを新しいパスワードに**変更**したいと考えています。
    * この機能は、Azure AD の全エディションに備わっています。
 
-* クラウド ユーザーに対するセルフサービスのパスワード リセット
+* クラウド ユーザーのセルフサービス パスワード リセット
    * 私は**クラウド限定ユーザー**で、自分のパスワードを忘れてしまいました。
       * 自分が把握しているパスワードに**リセット**したいと考えています。
    * この機能は、Azure AD の Premium P1 または Premium P2、Microsoft 365 Business、Office 365 に備わっています。
 
-* セルフサービスによるパスワードのリセット/変更/ロック解除 (**オンプレミスの書き戻しが可能**)
+* セルフサービス パスワード リセット /変更/ロック解除 (**オンプレミスの書き戻しが可能**)
    * 私は**ハイブリッド ユーザー**です。オンプレミスの Active Directory ユーザー アカウントは、Azure AD Connect を使用して Azure AD アカウントと同期されています。 パスワードを変更したいと思っています/パスワードを忘れてしまいました/ロック アウトされてしまいました。
       * パスワードを変更するか、自分が把握しているパスワードにリセットするか、アカウントのロックを解除して、**なおかつ**、その変更をオンプレミスの Active Directory に同期させたいと考えています。
    * この機能は、Azure AD の Premium P1 または Premium P2、あるいは Microsoft 365 Business に備わっています。
 
 > [!WARNING]
-> スタンドアロンの Office 365 ライセンス プランでは、"*セルフサービスによるパスワードのリセット/変更/ロック解除 (オンプレミスの書き戻しが可能) をサポートしていません*"。この機能を動作させるには、Azure AD の Premium P1 または Premium P2、あるいは Microsoft 365 Business を含むプランが必要になります。
+> スタンドアロンの Office 365 ライセンス プランでは、"*セルフサービス パスワード リセット /変更/ロック解除 (オンプレミスの書き戻しが可能) をサポートしていません*"。この機能を動作させるには、Azure AD の Premium P1 または Premium P2、あるいは Microsoft 365 Business を含むプランが必要になります。
 >
 
 追加のライセンス情報 (コストを含む) については、以下のページをご覧ください。
@@ -59,11 +59,11 @@ Azure Active Directory (Azure AD) には、いくつかのエディションが�
 
 Microsoft サービスの中には、すべての場所では利用できないものもあります。 ライセンスをユーザーに割り当てる前に、管理者はユーザーの **[利用場所]** プロパティを指定しておく必要があります。 ライセンスの割り当ては、Azure Portal の **[ユーザー]**  >  **[プロファイル]**  >  **[設定]** セクションで行います。 *グループでのライセンス割り当てを使用する場合、利用場所が指定されていないユーザーは、ディレクトリの場所を継承します。*
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [SSPR のロールアウトを正常に完了する方法](howto-sspr-deployment.md)
 * [パスワードのリセットまたは変更](../user-help/active-directory-passwords-update-your-own-password.md)
-* [セルフサービスのパスワード リセットのための登録](../user-help/active-directory-passwords-reset-register.md)
+* [セルフサービス パスワード リセットのための登録](../user-help/active-directory-passwords-reset-register.md)
 * [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ](howto-sspr-authenticationdata.md)
 * [ユーザーが使用できる認証方法](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR のポリシー オプション](concept-sspr-policy.md)

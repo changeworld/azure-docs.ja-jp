@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
 ms.openlocfilehash: 67ba2fadd5376997b528af4fcd2c5a666bb134a3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75443997"
 ---
 # <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>Azure Data Factory でオンプレミスのデータ ストアの資格情報を暗号化する

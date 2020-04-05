@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.openlocfilehash: 786950011f10e25d6bcb72061212c1878e79d45a
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77373355"
 ---
 # <a name="secure-azure-data-explorer-clusters-in-azure"></a>Azure で Azure Data Explorer クラスターをセキュリティで保護する
@@ -37,7 +37,7 @@ ms.locfileid: "77373355"
 カスタマー マネージド キーを格納するには、Azure Key Vault を使用します。 独自のキーを作成してキー コンテナーに格納することも、Azure Key Vault API を使ってキーを生成することもできます。 Azure Data Explorer クラスターと Azure キー コンテナーは同じリージョンに存在している必要があります。ただし、サブスクリプションは異なっていてもかまいません。 Azure Key Vault の詳細については、「[Azure Key Vault とは](/azure/key-vault/key-vault-overview)」をご覧ください。 カスタマー マネージド キーの詳細については、[カスタマー マネージド キーと Azure Key Vault](/azure/storage/common/storage-service-encryption) に関するページを参照してください。 [C#](/azure/data-explorer/customer-managed-keys-csharp) または [Azure Resource Manager テンプレート](/azure/data-explorer/customer-managed-keys-resource-manager)を使用して、Azure Data Explorer クラスターでカスタマー マネージド キーを構成します
 
 > [!Note]
-> カスタマー マネージド キーは、Azure Active Directory (Azure AD) の 1 つの機能である Azure リソース用マネージド ID に依存します。 Azure portal でカスタマー マネージド キーを構成するには、「[Azure Data Explorer クラスターのマネージド ID の構成](/azure/data-explorer/managed-identities)」の説明に従って、**SystemAssigned** マネージド ID をクラスターに構成する必要があります。
+> カスタマー マネージド キーは、Azure Active Directory (Azure AD) の 1 つの機能である Azure リソース用マネージド ID に依存します。 Azure portal でカスタマー マネージド キーを構成するには、「**Azure Data Explorer クラスターのマネージド ID の構成**」の説明に従って、[SystemAssigned](/azure/data-explorer/managed-identities) マネージド ID をクラスターに構成する必要があります。
 
 #### <a name="store-customer-managed-keys-in-azure-key-vault"></a>Azure Key Vault にカスタマー マネージド キーを格納する
 

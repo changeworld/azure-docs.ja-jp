@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 1/31/2020
 ms.author: alzam
 ms.openlocfilehash: 3b7e765dbd024d46939e8989993f0c882b2a8f4b
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76965348"
 ---
 # <a name="download-a-global-or-hub-based-profile-for-user-vpn-clients"></a>ユーザー VPN クライアント用にグローバルまたはハブベースのプロファイルをダウンロードする

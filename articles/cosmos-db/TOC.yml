@@ -29,7 +29,7 @@
           href: create-sql-api-xamarin-dotnet.md
 - name: チュートリアル
   items:
-    - name: 1 - データの作成/管理
+    - name: 1 - データの作成と管理
       items:
         - name: コンソール アプリの構築
           items:
@@ -85,7 +85,7 @@
       href: resource-manager-samples.md
 - name: 概念
   items:
-    - name: NoSQL 対リレーショナル データベース
+    - name: NoSQL とリレーショナル データベース
       href: relational-nosql.md
     - name: グローバル配信
       items:
@@ -549,8 +549,8 @@
           href: role-based-access-control.md
         - href: cosmos-db-advanced-threat-protection.md
           name: 高度な脅威保護
-        - name: 組み込みのセキュリティ制御
-          href: cosmos-db-security-controls.md
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: エンタープライズ対応
       items:
         - name: オンラインのバックアップとオンデマンドの復元
@@ -582,7 +582,7 @@
               href: create-cassandra-python.md
         - name: チュートリアル
           items:
-            - name: 1 - データの作成/管理
+            - name: 1 - データの作成と管理
               href: create-cassandra-api-account-java.md
             - name: 2 - データの読み込み
               href: cassandra-api-load-data.md
@@ -600,7 +600,7 @@
             - name: Change Feed
               href: cassandra-change-feed.md
             - name: Spring Data の格納と管理
-              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: Cassandra と Spark
               items:
                 - name: はじめに
@@ -609,7 +609,7 @@
                   href: cassandra-spark-databricks.md
                 - name: HDInsight を使用して接続する
                   href: cassandra-spark-hdinsight.md
-                - name: キースペースとテーブルを作成する
+                - name: キースペースとテーブルの作成
                   href: cassandra-spark-ddl-ops.md
                 - name: データの挿入
                   href: cassandra-spark-create-ops.md
@@ -656,7 +656,7 @@
               href: create-mongodb-golang.md
         - name: チュートリアル
           items:
-            - name: 1 - データの作成/管理
+            - name: 1 - データの作成と管理
               items:
                 - name: Node.js コンソール アプリ
                   href: mongodb-samples.md
@@ -709,7 +709,7 @@
             - name: データのインデックス作成を管理する
               href: mongodb-indexing.md
             - name: Spring Data の格納と管理
-              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: MongoDB 拡張コマンド
               href: mongodb-custom-commands.md
               displayName: custom commands
@@ -776,7 +776,7 @@
             - name: グラフ データの視覚化
               href: graph-visualization.md
             - name: Spring Data の格納と管理
-              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: Resource Manager テンプレートを使用して管理する
               href: manage-gremlin-with-resource-manager.md
               displayName: ARM
@@ -802,7 +802,7 @@
               href: create-table-python.md
         - name: チュートリアル
           items:
-            - name: 1 - データの作成/管理
+            - name: 1 - データの作成と管理
               href: tutorial-develop-table-dotnet.md
             - name: 2 - データの移行
               displayName: import
@@ -989,9 +989,9 @@
           href: use-notebook-features-and-commands.md
     - name: サーバー側プログラミング
       items:
-        - name: ストアド プロシージャ、トリガー、UDF を書き込む
+        - name: ストアド プロシージャ、トリガー、UDF の記述
           href: how-to-write-stored-procedures-triggers-udfs.md
-        - name: JavaScript クエリ API を使用してストアド プロシージャとトリガーを書き込む
+        - name: JavaScript クエリ API を使用したストアド プロシージャとトリガーの記述
           href: how-to-write-javascript-query-api.md
         - name: ストアド プロシージャ、トリガー、UDF の使用
           href: how-to-use-stored-procedures-triggers-udfs.md
@@ -1073,9 +1073,9 @@
         - name: Azure Event Hubs と Azure Storage
           href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
         - name: Spring Boot Starter の使用
-          href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+          href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?context=/azure/cosmos-db/context/context'
         - name: Spring Data の開発者ガイド
-          href: 'https://docs.microsoft.com/azure/java/spring-framework/how-to-guides-spring-data-cosmosdb?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+          href: 'https://docs.microsoft.com/azure/java/spring-framework/how-to-guides-spring-data-cosmosdb?context=/azure/cosmos-db/context/context'
         - name: ODBC ドライバー
           href: odbc-driver.md
     - name: Cosmos DB にデータを移行する

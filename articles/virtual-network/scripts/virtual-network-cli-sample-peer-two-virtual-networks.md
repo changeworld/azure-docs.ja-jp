@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
 ms.openlocfilehash: 2dd5336d66872cc8c56fd372e89b67ce9c892f3a
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74083839"
 ---
 # <a name="peer-two-virtual-networks-script-sample"></a>2 つの仮想ネットワークのピアリングのスクリプト サンプル
@@ -51,7 +51,7 @@ az group delete --name myResourceGroup --yes
 | [az network vnet peering create](/cli/azure/network/vnet/peering) | 2 つの仮想ネットワーク間のピアリングを作成します。  |
 | [az group delete](/cli/azure/vm/extension) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 01/25/2019
 ms.author: juliako
 ms.openlocfilehash: 44cf234fd8419164f7dd7f8320952a5c6c0842e0
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74896115"
 ---
-# <a name="cli-example-publish-an-asset"></a>CLI の例:資産を公開する
+# <a name="cli-example-publish-an-asset"></a>CLI の例: 資産の公開
 
 この記事の Azure CLI スクリプトは、ストリーミング ロケーターを作成し、ストリーミング URL を取得する方法を示しています。 
 
@@ -35,6 +35,6 @@ ms.locfileid: "74896115"
 
 [!code-azurecli-interactive[main](../../../cli_scripts/media-services/publish-asset/Publish-Asset.sh "Publish an asset")]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Media Services の概要](media-services-overview.md)

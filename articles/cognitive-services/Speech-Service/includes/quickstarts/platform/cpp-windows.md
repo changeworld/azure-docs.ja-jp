@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 10/14/2019
 ms.author: erhopf
 ms.openlocfilehash: 856d3519ee614ac461cafd6a58417576164959ee
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75467544"
 ---
 このガイドでは、Windows デスクトップに C++ 用の [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します。

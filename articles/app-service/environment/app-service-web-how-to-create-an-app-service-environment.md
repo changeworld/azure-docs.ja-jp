@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 752334e3d594b1f95786aecaca134b74c4e264d5
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74688689"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>App Service Environment v1 の作成方法 
@@ -26,8 +26,8 @@ App Service Environment (ASE) は Azure App Service の Premium サービス オ
 ### <a name="before-you-create-your-ase"></a>ASE を作成する前に
 変更できない事柄があることを認識しておくことが重要です。 ASE に関する次の事柄は、ASE を作成した後で変更することはできません。
 
-* Location
-* Subscription
+* 場所
+* サブスクリプション
 * リソース グループ
 * 使用する VNet
 * 使用するサブネット 
@@ -66,7 +66,7 @@ App Service Environment の手動スケーリング、管理、監視につい�
 
 データベース、ストレージなど、カスタマイズできない追加の依存関係があります。 これらは Azure によって処理され、システムに付属しています。 システム ストレージは App Service 環境全体で 500 GB までサポートされます。データベースはシステムのスケールで必要とされるサイズに応じて Azure によって調整されます。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 App Service Environment v1 の使用を開始するには、「[App Service Environment v1 の概要][WhatisASE]」をご覧ください
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]

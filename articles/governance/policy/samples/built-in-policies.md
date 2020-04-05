@@ -4,11 +4,11 @@ description: Azure Policy の組み込みのポリシー定義を一覧表示し
 ms.date: 02/15/2020
 ms.topic: sample
 ms.openlocfilehash: 06c913bdccd8b35970a195f6ee658ce7b1d97a7b
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371209"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223889"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy の組み込みのポリシー定義
 

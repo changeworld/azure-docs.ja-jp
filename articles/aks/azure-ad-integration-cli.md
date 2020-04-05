@@ -4,12 +4,12 @@ description: Azure CLI を使用して Azure Active Directory 対応の Azure Ku
 services: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.openlocfilehash: fef22b1b2d81f76e95a15c0e3a746440b95df8ca
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: d17ae12beecf9d83ef6d688af799787c5ccf322b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596608"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227647"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Azure CLI を使用して Azure Active Directory と Azure Kubernetes Service を統合する
 
@@ -27,9 +27,11 @@ Azure Kubernetes Service (AKS) は、ユーザー認証に Azure Active Director
 
 Azure CLI バージョン 2.0.61 以降がインストールされて構成されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
 
+[https://shell.azure.com](https://shell.azure.com) にアクセスし、ブラウザーで Cloud Shell を開きます。
+
 一貫性を保ち、この記事のコマンドを実行するのに役立てるため、目的の AKS クラスター名に変数を作成します。 次の例では、*myakscluster* という名前を使用しています。
 
-```azurecli-interactive
+```console
 aksname="myakscluster"
 ```
 
@@ -209,8 +211,10 @@ kubectl get pods --all-namespaces
 Web ブラウザーを使用して、Azure AD の資格情報を使用して認証するためのサインイン プロンプトが表示されます。 正常に認証を行うと、次の出力例に示されているように、`kubectl` コマンドによって AKS クラスター内のポッドが表示されます。
 
 ```console
-$ kubectl get pods --all-namespaces
+kubectl get pods --all-namespaces
+```
 
+```output
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code BYMK7UXVD to authenticate.
 
 NAMESPACE     NAME                                    READY   STATUS    RESTARTS   AGE
@@ -229,7 +233,7 @@ kube-system   tunnelfront-6ff887cffb-xkfmq            1/1     Running   0       
 
 Web ブラウザーを使用して正常にサインインした後に、次の出力例のような承認エラー メッセージが表示される場合は、次の考えられる問題を確認してくださいます。
 
-```console
+```output
 error: You must be logged in to the server (Unauthorized)
 ```
 

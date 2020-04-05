@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: 45a27be400753b56c42310a340334feba8a420c5
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73906865"
 ---
 # <a name="working-with-security-policies"></a>セキュリティ ポリシーの操作
@@ -117,14 +117,14 @@ Security Center ではロールベースのアクセス制御 (RBAC) が使用�
 
    ![ポリシーの無効化](./media/tutorial-security-policy/disable-policy.png)
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
    > [!NOTE]
    > ポリシー無効化の変更が有効になるまでに、最大 12 時間かかる場合があります。
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、セキュリティ ポリシーについて説明しました。 関連情報については、次の記事をご覧ください。
 
 * PowerShell を使用してポリシーを設定する手順については、「[クイック スタート: Azure PowerShell モジュールを使用してポリシーの割り当てを作成し、準拠していないリソースを特定する](../governance/policy/assign-policy-powershell.md)」をご覧ください。

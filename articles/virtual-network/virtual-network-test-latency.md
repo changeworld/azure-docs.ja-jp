@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: steveesp
 ms.openlocfilehash: 00efc2754948d53d4f80a6261dbd4041b358185b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74896358"
 ---
 # <a name="test-vm-network-latency"></a>VM ネットワークの待ち時間のテスト
@@ -199,7 +199,7 @@ sockperf ping-pong -i 10.0.0.4 --tcp -m 350 -t 101 -p 12345  --full-rtt
 この SockPerf の例では、一般的な平均サイズのパケットの 350 バイトのメッセージ サイズが使用されています。 サイズは、お客様の VM で実行されるワークロードをより正確に表すために、より高いまたは低いサイズに調整できます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure 近接通信配置グループ](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)を使用して待機時間を改善する。
 * シナリオに合わせて [VM のネットワークを最適化](../virtual-network/virtual-network-optimize-network-bandwidth.md)する方法について学ぶ。
 * [仮想マシンに帯域幅が割り当てられる方法](../virtual-network/virtual-machine-network-throughput.md)に関するページを参照してください。

@@ -15,22 +15,22 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.openlocfilehash: c6a230f6abeab45c56aab2db40b8b1defcc06d90
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77598699"
 ---
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
-[2002167]: https://launchpad.support.sap.com/#/notes/2002167
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
-[2233094]: https://launchpad.support.sap.com/#/notes/2233094
-[1612105]: https://launchpad.support.sap.com/#/notes/1612105
-[2694118]: https://launchpad.support.sap.com/#/notes/2694118
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[2002167]:https://launchpad.support.sap.com/#/notes/2002167
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[2233094]:https://launchpad.support.sap.com/#/notes/2233094
+[1612105]:https://launchpad.support.sap.com/#/notes/1612105
+[2694118]:https://launchpad.support.sap.com/#/notes/2694118
 
 
 [db2-hadr-11.1]:https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html

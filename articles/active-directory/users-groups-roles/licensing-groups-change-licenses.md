@@ -17,10 +17,10 @@ ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bf2f04e1728f94c89bddcc31c287cc017a79020f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74025902"
 ---
 # <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>Azure Active Directory でのユーザーまたはグループのライセンス割り当ての変更
@@ -73,7 +73,7 @@ Azure AD は新しいライセンスを適用し、同時に古いライセン�
 
 サービスの継続性を提供するために、Azure AD はグループ内のすべてのユーザーに対し、新しいライセンスを適用し、同時に古いライセンスを削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 グループによるライセンス管理の他のシナリオについては、以下の記事を参照してください。
 

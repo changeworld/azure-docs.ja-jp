@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: c9cb1d7d1dcc6e7872b22d8c58fe44b9bce25f13
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200746"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>課金アカウントをカスタマイズしてコストを整理する
@@ -70,7 +70,7 @@ Azure にサインアップすると、課金プロファイルが課金アカ�
 
 請求書セクションを作成するには、**課金プロファイルの所有者**または**課金プロファイルの共同作成者**である必要があります。 詳細については、「[課金プロファイルの請求書セクションを管理する](understand-mca-roles.md#manage-invoice-sections-for-billing-profile)」をご覧ください。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 2. "**コスト管理 + 請求**" を検索します。
 
@@ -98,7 +98,7 @@ Azure にサインアップすると、課金プロファイルが課金アカ�
 >
 > 追加の課金プロファイルを作成すると、総コストに影響する可能性があります。 詳細については、「[新しい課金プロファイルを追加する場合の考慮事項](#things-to-consider-when-adding-new-billing-profiles)」をご覧ください。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 2. "**コスト管理 + 請求**" を検索します。
 
@@ -118,7 +118,7 @@ Azure にサインアップすると、課金プロファイルが課金アカ�
 
     |フィールド  |定義  |
     |---------|---------|
-    |名前     | Azure portal で課金プロファイルを識別しやすくするための表示名。  |
+    |Name     | Azure portal で課金プロファイルを識別しやすくするための表示名。  |
     |発注番号    | オプションの発注番号。 発注番号は、課金プロファイルに対して生成された請求書に表示されます。 |
     |請求先の住所   | 請求先の住所は、課金プロファイルに対して生成された請求書に表示されます。 |
     |請求書を電子メールで送信   | この課金プロファイルの請求書をメールで受信するには、[請求書を電子メールで送信] のボックスをオンにします。 オプトインしない場合は、Azure portal で請求書を表示してダウンロードすることができます。|
@@ -131,7 +131,7 @@ Azure にサインアップすると、課金プロファイルが課金アカ�
 
 ### <a name="link-a-new-subscription"></a>新しいサブスクリプションをリンクする
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 2. **サブスクリプション**を検索します。
 
@@ -161,7 +161,7 @@ Azure にサインアップすると、課金プロファイルが課金アカ�
 >
 > サブスクリプションと他の製品は、同じ課金プロファイルに属する請求書セクション間でのみ移動できます。 異なる課金プロファイルの請求書セクション間でのサブスクリプションと製品の移動はサポートされていません。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 2. "**コスト管理 + 請求**" を検索します。
 

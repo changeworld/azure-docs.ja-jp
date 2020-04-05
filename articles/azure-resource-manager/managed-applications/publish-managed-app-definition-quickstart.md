@@ -5,14 +5,14 @@ author: tfitzmac
 ms.topic: quickstart
 ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 11d4eb396d332327addcd85ed7badd36ef8f1d10
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 5168dab7501cdb2907b3eede5877dce39e9e5c97
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647943"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79473049"
 ---
-# <a name="publish-an-azure-managed-application-definition"></a>Azure マネージド アプリケーションの定義を発行する
+# <a name="quickstart-publish-an-azure-managed-application-definition"></a>クイック スタート:Azure マネージド アプリケーションの定義を発行する
 
 このクイック スタートでは、マネージド アプリケーションの操作の概要を説明します。 組織のユーザー向けの内部カタログにマネージド アプリケーション定義を追加します。 導入を簡素化するために、マネージド アプリケーション用のファイルが既に作成されています。 これらのファイルは GitHub で入手できます。 これらのファイルを作成する方法については、[サービス カタログ アプリケーションの作成](publish-service-catalog-app.md)に関するチュートリアルをご覧ください。
 
@@ -74,4 +74,4 @@ az managedapp definition create \
 マネージド アプリケーション定義を発行しました。 今度は、その定義のインスタンスをデプロイする方法を確認しましょう。
 
 > [!div class="nextstepaction"]
-> [クイック スタート:サービス カタログ アプリのデプロイ](deploy-service-catalog-quickstart.md)
+> [クイック スタート: サービス カタログ アプリのデプロイ](deploy-service-catalog-quickstart.md)

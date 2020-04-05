@@ -9,10 +9,10 @@ ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 729e757c69887bbdce324e2d8383c970995dc94a
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73903664"
 ---
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン 
@@ -60,7 +60,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="create-an-image-version"></a>イメージ バージョンを作成する
 
-マネージド イメージからイメージ バージョンを作成します。 この例のイメージ バージョンは *1.0.0* で、"*米国中西部*" と "*米国中南部*" の両方のデータセンターにレプリケートされます。 レプリケーションのターゲット リージョンを選択するときに、レプリケーションのターゲットとして、*ソース* リージョンも含める必要があることに注意してください。
+マネージド イメージからイメージ バージョンを作成します。 この例のイメージ バージョンは *1.0.0* で、"*米国中西部*" と "*米国中南部*" の両方のデータセンターにレプリケートされます。 レプリケーションのターゲット リージョンを選択するときに、レプリケーションのターゲットとして、"*ソース*" リージョンも含める必要があることに注意してください。
 
 イメージ バージョンで許可されている文字は、数字とピリオドです。 数字は、32 ビット整数の範囲内になっている必要があります。 形式:*MajorVersion*.*MinorVersion*.*Patch*。
 

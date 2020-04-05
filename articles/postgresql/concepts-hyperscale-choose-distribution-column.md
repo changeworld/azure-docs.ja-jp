@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 8ced9767d81affceef851820ee587f4f3dd24deb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74975671"
 ---
 # <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL でディストリビューション列を選択する - Hyperscale (Citus)
@@ -74,5 +74,5 @@ Hyperscale (Citus) で時系列情報をモデル化する際に最も一般的�
 
 このような種類のアプリケーションを構築する方法の例については、[時系列チュートリアル](https://aka.ms/hyperscale-tutorial-timeseries)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - 分散データ間の[コロケーション](concepts-hyperscale-colocation.md)がクエリの高速実行にどのように役立つかについて学習します。

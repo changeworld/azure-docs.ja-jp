@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: af9c157b4644156edc6dcdb1b53c141263576500
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68727147"
 ---
 # <a name="azure-infrastructure-monitoring"></a>Azure インフラストラクチャの監視   
@@ -49,10 +49,10 @@ Microsoft がその装置または施設に保管されている顧客データ�
 
 役割が定義され、責任が割り当てられたインシデント管理フレームワークが確立されています。 Azure securityインシデント管理チームは、エスカレーションを含むセキュリティ インシデントの管理を担当し、必要な場合に専門家チームが関与することを保証します。 Azure 運用マネージャーは、セキュリティおよびプライバシー インシデントの調査と解決を監督します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Microsoft が提供する Azure アーキテクチャの保護の詳細については、以下を参照してください。
 
-- [Azure ファシリティ、プレミス、および物理的なセキュリティ](physical-security.md)
+- [Azure の施設、建物、および物理上のセキュリティ](physical-security.md)
 - [Azure インフラストラクチャの可用性](infrastructure-availability.md)
 - [Azure 情報システムのコンポーネントと境界](infrastructure-components.md)
 - [Azure ネットワーク アーキテクチャ](infrastructure-network.md)

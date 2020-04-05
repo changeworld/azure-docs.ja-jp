@@ -11,10 +11,10 @@ ms.subservice: common
 services: storage
 tags: ''
 ms.openlocfilehash: d3a3763a8964810626bcdc47da230a9ee406f1f8
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74196472"
 ---
 # <a name="azure-file-share--failed-to-delete-files-from-azure-file-share"></a>Azure ファイル共有 - Azure ファイル共有からファイルを削除できない
@@ -88,7 +88,7 @@ $Context = New-AzStorageContext -StorageAccountName "StorageAccountName" -Storag
 # Close-AzStorageFileHandle -Context $Context -ShareName "FileShareName" -Path 'New folder/test.zip' -CloseAll
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Windows での Azure Files に関する問題のトラブルシューティング](storage-troubleshoot-windows-file-connection-problems.md)
 * [Linux での Azure Files に関する問題のトラブルシューティング](storage-troubleshoot-linux-file-connection-problems.md)

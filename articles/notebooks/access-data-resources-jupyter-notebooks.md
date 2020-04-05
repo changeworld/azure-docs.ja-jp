@@ -4,10 +4,10 @@ description: Jupyter Notebook からファイル、REST API、データベース
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.openlocfilehash: 47d2f869021851c1451a66a84b1a70ec4ff4998f
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75646349"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>ノートブックでクラウド データにアクセスする
@@ -73,7 +73,7 @@ Cosmos DB を使用するときは、[azure-cosmosdb-table](https://pypi.org/pro
 Azure で使用できるデータベースが他にもいくつか提供されています。 以下の記事では、Python からそれらのデータベースにアクセスするためのガイダンスが示されています。
 
 - [Azure Database for PostgreSQL:Python を使って接続とデータの照会を行う](https://docs.microsoft.com/azure/postgresql/connect-python)
-- [クイック スタート:Python で Azure Redis Cache を使用する](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
+- [クイック スタート: Python で Azure Redis Cache を使用する](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
 - [Azure Database for MySQL:Python を使って接続とデータの照会を行う](https://docs.microsoft.com/azure/mysql/connect-python)
 - [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)
   - [Azure Data Factory のコピー ウィザード](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)

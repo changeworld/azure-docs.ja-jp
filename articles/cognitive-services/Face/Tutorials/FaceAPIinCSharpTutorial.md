@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: a5cf3c59c94134e1d0751c1467cd324a95c366eb
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78898814"
 ---
 # <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>チュートリアル:画像内の顔データを表示する Windows Presentation Framework (WPF) アプリを作成する

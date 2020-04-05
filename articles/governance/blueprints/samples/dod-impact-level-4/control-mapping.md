@@ -1,14 +1,14 @@
 ---
 title: DoD 影響レベル 4 ブループリント サンプルのコントロール
 description: DoD 影響レベル 4 ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy にマップされています。
-ms.date: 02/09/2020
+ms.date: 03/06/2020
 ms.topic: sample
-ms.openlocfilehash: 15ab3bc8bf53d54161ecc3b1f0dc138c3ff923c1
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 001c838ed6a19269a6abbcebd59ee2e344b6a296
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77154710"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79415395"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>DoD 影響レベル 4 ブループリント サンプルのコントロール マッピング
 
@@ -83,6 +83,20 @@ Azure では、Azure のリソースにアクセスするユーザーを効果�
 - Function App でリモート デバッグを無効にする
 - Web アプリケーションのリモート デバッグを無効にする
 
+## <a name="ac-23-data-mining"></a>AC-23 データ マイニング
+
+このブループリントでは、データ セキュリティ通知が適切に有効になっていることの確認に役立つポリシー定義を提供します。 さらに、このブループリントでは、SQL サーバーで監査と Advanced Data Security が構成されるようにします。
+
+- Advanced Data Security を、SQL サーバー上で有効にする必要がある
+- Advanced Data Security を SQL マネージド インスタンス上で有効にする必要がある
+- SQL Server の Advanced Data Security 設定で、[Advanced Threat Protection の種類] を [すべて] に設定する必要がある
+- SQL マネージド インスタンスの Advanced Data Security 設定で、[Advanced Threat Protection の種類] を [すべて] に設定する必要がある
+- SQL Server の高度なデータ セキュリティ設定で監査を有効にする必要がある
+- SQL Server の Advanced Data Security 設定で、管理者とサブスクリプションの所有者に対するメール通知を有効にする必要がある
+- SQL マネージド インスタンスの Advanced Data Security 設定で管理者とサブスクリプションの所有者に対するメール通知を有効にする必要がある
+- SQL Server の高度なデータ セキュリティ設定に、セキュリティ アラートを受信するためのメール アドレスが含まれている必要がある
+- SQL マネージド インスタンスの高度なデータ セキュリティ設定に、セキュリティ アラートを受信するためのメール アドレスが含まれている必要がある
+
 ## <a name="au-3-2-content-of-audit-records--centralized-management-of-planned-audit-record-content"></a>AU-3 (2) 監査レコードの内容 | 計画的な監査レコードの内容の集中管理
 
 Azure Monitor で収集されたログ データは、Log Analytics ワークスペースに保存されるので、集中的に構成と管理が可能です。 このブループリントは、Azure 仮想マシンに対する Log Analytics エージェントのデプロイを監査および強制するための [Azure Policy](../../../policy/overview.md) 定義を割り当てることによって、イベントのログ記録の徹底を支援するものです。
@@ -123,8 +137,6 @@ Azure Monitor で収集されたログ データは、Log Analytics ワークス
 詳細な脆弱性スキャンと監視については、Azure Sentinel および Azure Security Center も活用することをお勧めします。
 
 - \[プレビュー\]:Virtual Machines で脆弱性評価を有効にする必要がある
-- \[プレビュー\]:Azure Monitor for VMs の有効化
-- \[プレビュー\]:VM スケール セット (VMSS) 用の Azure Monitor を有効にする
 - 脆弱性評価を SQL サーバー上で有効にする必要がある
 - 診断設定の監査
 - 脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある
@@ -133,6 +145,8 @@ Azure Monitor で収集されたログ データは、Log Analytics ワークス
 - SQL データベースの脆弱性を修復する必要がある
 - 脆弱性評価ソリューションによって脆弱性を修復する必要がある
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
+- \[プレビュー\]:Audit Log Analytics エージェントのデプロイ - 一覧にない VM イメージ (OS)
+- \[プレビュー\]:VMSS の Log Analytics エージェントのデプロイの監査 - VM イメージ (OS) が一覧にない
 
 ## <a name="au-12-audit-generation"></a>AU-12 監査の生成
 
@@ -236,6 +250,16 @@ Azure Site Recovery では、仮想マシンで実行中のワークロードが
 - \[プレビュー\]:パスワードの最小文字数が 14 文字に制限されていない Windows VM を監査する要件をデプロイする
 - \[プレビュー\]:元に戻せる暗号化を使用してパスワードを格納しない Windows VM を監査する要件をデプロイする
 
+## <a name="ir-6-2-incident-reporting--vulnerabilities-related-to-incidents"></a>IR-6 (2) インシデント レポート | インシデントに関連する脆弱性
+
+このブループリントは、仮想マシン、仮想マシン スケール セット、および SQL サーバーの脆弱性評価分析を含んだ記録を監査するポリシー定義を提供します。 これらの分析情報には、デプロイされたリソースのセキュリティ状態に関するリアルタイムな情報が含まれます。これらの情報は、修復アクションの優先度を決定するのに役立ちます。
+
+- 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
+- 脆弱性評価ソリューションによって脆弱性を修復する必要がある
+- 使用しているマシンでセキュリティ構成の脆弱性を修復する必要がある
+- コンテナーのセキュリティ構成の脆弱性を修復する必要がある
+- SQL データベースの脆弱性を修復する必要がある
+
 ## <a name="ra-5-vulnerability-scanning"></a>RA-5 脆弱性のスキャン
 
 このブループリントは、オペレーティング システムの脆弱性、SQL の脆弱性、仮想マシンの脆弱性を Azure Security Center で監視する [Azure Policy](../../../policy/overview.md) 定義を割り当てることによって、情報システムの脆弱性管理を支援するものです。 Azure Security Center では、デプロイされた Azure リソースのセキュリティ状態をリアルタイムに分析するためのレポート機能が提供されます。 このブループリントでは、他にも、SQL サーバー上で Advanced Data Security を監査および強制するポリシー定義が割り当てられます。 Advanced Data Security には、脆弱性の評価機能と高度な脅威に対する保護機能が含まれており、デプロイ済みのリソースに存在する脆弱性について理解を深めるうえで役立ちます。
@@ -312,6 +336,30 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 - SQL データベースの脆弱性を修復する必要がある
 - 脆弱性評価ソリューションによって脆弱性を修復する必要がある
 
+## <a name="si-02-06-flaw-remediation--removal-of-previous-versions-of-software--firmware"></a>SI-02 (06) 欠陥の修復 | 以前のバージョンのソフトウェアおよびファームウェアの削除
+
+このブループリントでは、最新バージョンの .NET Framework、HTTP、Java、PHP、Python、および TLS がアプリに使用されていることの確認に役立つポリシー定義を割り当てます。 また、このブループリントは、Kubernetes サービスが脆弱性のないバージョンにアップグレードされることを保証するポリシー定義も割り当てます。
+
+- API アプリの一部として使用された ".NET Framework" のバージョンが最新であることを確認する
+- 関数アプリの一部として使用された ".NET Framework" のバージョンが最新であることを確認する
+- Web アプリの一部として使用された ".NET Framework" のバージョンが最新であることを確認する
+- API アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する
+- 関数アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する
+- Web アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する
+- API アプリの一部として使用された "Java のバージョン" が最新であることを確認する
+- 関数アプリの一部として使用された "Java のバージョン" が最新であることを確認する
+- Web アプリの一部として使用された "Java のバージョン" が最新であることを確認する
+- API アプリの一部として使用された "PHP のバージョン" が最新であることを確認する
+- 関数アプリの一部として使用された "PHP のバージョン" が最新であることを確認する
+- Web アプリの一部として使用された "PHP のバージョン" が最新であることを確認する
+- API アプリの一部として使用された "Python のバージョン" が最新であることを確認する
+- 関数アプリの一部として使用された "Python のバージョン" が最新であることを確認する
+- Web アプリの一部として使用された "Python のバージョン" が最新であることを確認する
+- API アプリでは最新の TLS バージョンを使用する必要がある
+- 関数アプリでは最新の TLS バージョンを使用する必要がある
+- Web アプリでは最新の TLS バージョンを使用する必要がある
+- \[プレビュー\]:Kubernetes Service を脆弱性のない Kubernetes バージョンにアップグレードする必要がある
+
 ## <a name="si-3-malicious-code-protection"></a>SI-3 悪意のあるコードからの保護
 
 このブループリントは、Azure Security Center 内で仮想マシン上にエンドポイント保護が不足していないかどうかを監視し、Windows 仮想マシンに Microsoft のマルウェア対策ソリューションを適用する [Azure Policy](../../../policy/overview.md) 定義を割り当てることによって、悪意のあるコードからの保護を含めたエンドポイント保護の管理を支援するものです。
@@ -347,6 +395,18 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 - SQL サーバーでの脅威検出のデプロイ
 - 許可される場所
 - リソース グループが許可される場所
+
+## <a name="si-4-12-information-system-monitoring--automated-alerts"></a>SI-4 (12) 情報システムの監視 | 自動化されたアラート
+
+このブループリントでは、データ セキュリティ通知が適切に有効になっていることの確認に役立つポリシー定義を提供します。 さらに、このブループリントによって、Standard 価格レベルが Azure Security Center に対して有効になります。 Standard 価格レベルでは、ネットワークと仮想マシンの脅威検出が可能になり、Azure Security Center で脅威インテリジェンス、異常検出、動作分析が提供されます。
+
+- サブスクリプション所有者に対する重要度 - 高のアラートのメール通知を有効にする必要がある
+- 自分のサブスクリプションに対し、セキュリティ連絡先のメール アドレスを指定する必要がある 
+- SQL マネージド インスタンスの Advanced Data Security 設定で管理者とサブスクリプションの所有者に対するメール通知を有効にする必要がある 
+- SQL Server の Advanced Data Security 設定で、管理者とサブスクリプションの所有者に対するメール通知を有効にする必要がある 
+- 自分のサブスクリプションに対し、セキュリティ連絡先の電話番号を指定する必要がある
+- SQL Server の高度なデータ セキュリティ設定に、セキュリティ アラートを受信するためのメール アドレスが含まれている必要がある
+- Security Center の Standard 価格レベルを選択する必要がある
 
 ## <a name="si-4-18-information-system-monitoring--analyze-traffic--covert-exfiltration"></a>SI-4 (18) 情報システムの監視 | トラフィックまたは隠れたデータ流出の分析
 

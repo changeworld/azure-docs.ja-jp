@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 11/06/2018
 ms.author: dobett
 ms.openlocfilehash: c1f321f452b65016c11cb66d08ebab108509cc62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61448403"
 ---
 # <a name="deploy-a-custom-device-simulation-docker-image"></a>カスタムのデバイス シミュレーション Docker イメージをデプロイする
@@ -22,7 +22,7 @@ ms.locfileid: "61448403"
 
 この攻略ガイドの手順では、以下の方法を説明します。
 
-1. 開発環境の準備
+1. 開発環境を準備する
 1. 新しい Docker イメージの生成
 1. 新しい Docker イメージを使用するためのデバイス シミュレーションの構成
 1. 新しいイメージを使用したシミュレーションの実行
@@ -139,6 +139,6 @@ Docker Hub アカウントを使用して、新しい Docker イメージを Doc
 
 1. Web UI を使用して、シミュレーションを構成して実行します。 以前に [Protocol Buffers を使用した利用統計情報のシリアル化](iot-accelerators-device-simulation-protobuf.md)を完了している場合は、カスタム デバイス モデルを使用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 カスタムのデバイス シミュレーション イメージをデプロイする方法を習得したので、[デバイス シミュレーション ソリューション アクセラレータで既存の IoT Hub を使用する](iot-accelerators-device-simulation-choose-hub.md)方法について学ぶことができます。

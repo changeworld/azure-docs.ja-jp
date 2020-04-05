@@ -9,10 +9,10 @@ ms.date: 04/06/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: a7d0a899b4a2ef86153e82a4e3f04e7ec430a1bc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67181767"
 ---
 1. [Google Cloud Console](https://console.developers.google.com/cloud-resource-manager)に移動し、Google アカウントの資格情報でサインインします。 

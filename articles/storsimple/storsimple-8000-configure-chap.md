@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: efc116c278bfe72419800603a3b365f461fe0a28
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60362790"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232235"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>StorSimple デバイスの CHAP の構成
 
@@ -59,7 +59,7 @@ StorSimple デバイスの CHAP 設定は、次の方法で構成できます。
    3. パスワードを確認入力します。
 
        ![[CHAP イニシエーター]](./media/storsimple-8000-configure-chap/configure-chap6.png)
-3. **[Save]** をクリックします。 確認メッセージが表示されます。 **[OK]** をクリックして変更を保存します。
+3. **[保存]** をクリックします。 確認メッセージが表示されます。 **[OK]** をクリックして変更を保存します。
 
 #### <a name="to-configure-one-way-authentication-on-the-windows-host-server"></a>Windows ホスト サーバーで一方向認証を構成するには
 1. Windows ホスト サーバーで、iSCSI イニシエーターを開始します。
@@ -80,7 +80,7 @@ StorSimple デバイスの CHAP 設定は、次の方法で構成できます。
    1. **[CHAP ログオンを有効にする]** チェック ボックスをオンにします。
    2. **[名前]** フィールドに、Azure portal で CHAP イニシエーターに指定したユーザー名を入力します。
    3. **[ターゲット シークレット]** フィールドに、Azure portal で CHAP イニシエーターに指定したパスワードを入力します。
-   4. Click **OK**.
+   4. **[OK]** をクリックします。
       
        ![詳細設定 (全般)](./media/storsimple-configure-chap/IC740946.png)
 5. **[iSCSI イニシエーターのプロパティ]** ウィンドウの **[ターゲット]** タブに、デバイスの状態が **[接続中]** として表示されます。 StorSimple 1200 デバイスを使用する場合、各ボリュームは iSCSI ターゲットとしてマウントされます。 そのため、ボリュームごとに手順 3 と手順 4 を繰り返す必要があります。
@@ -113,7 +113,7 @@ Windows ホスト サーバーで CHAP を構成する方法の詳細につい�
    3. パスワードを確認入力します。
 
        ![[CHAP イニシエーター]](./media/storsimple-8000-configure-chap/configure-chap11.png)
-4. **[Save]** をクリックします。 確認メッセージが表示されます。 **[OK]** をクリックして変更を保存します。
+4. **[保存]** をクリックします。 確認メッセージが表示されます。 **[OK]** をクリックして変更を保存します。
 
 #### <a name="to-configure-bidirectional-authentication-on-the-windows-host-server"></a>Windows ホスト サーバーで双方向認証を構成するには
 
@@ -123,11 +123,11 @@ Windows ホスト サーバーで CHAP を構成する方法の詳細につい�
 4. **[iSCSI イニシエーターの相互 CHAP シークレット]** ダイアログ ボックスで、次の手順を実行します。
    
    1. Azure Portal で構成した **[リバース CHAP のパスワード]** を入力します。
-   2. Click **OK**.
+   2. **[OK]** をクリックします。
       
        ![[iSCSI イニシエーターの相互 CHAP シークレット]](./media/storsimple-configure-chap/IC740949.png)
 5. **[ターゲット]** タブをクリックします。
-6. **[接続]** をクリックします。 
+6. **[接続]** ボタンをクリックします。 
 7. **[ターゲットへの接続]** ダイアログ ボックスで、 **[詳細設定]** をクリックします。
 8. **[詳細プロパティ]** ダイアログ ボックスで、次の手順を実行します。
    
@@ -141,7 +141,7 @@ Windows ホスト サーバーで CHAP を構成する方法の詳細につい�
 
 Windows ホスト サーバーで CHAP を構成する方法の詳細については、「 [追加の考慮事項](#additional-considerations)」を参照してください。
 
-## <a name="additional-considerations"></a>追加の考慮事項
+## <a name="additional-considerations"></a>その他の注意点
 
 **クイック接続** 機能は、CHAP が有効になっている接続をサポートしません。 CHAP を有効にした場合、 **[ターゲット]** タブで利用できる **[接続]** ボタンを使用して、ターゲットに接続できることを確認します。
 
@@ -167,7 +167,7 @@ CHAP の構成が正しくない場合、 **"認証エラー"** というエラ�
    
     ![Favorite target details](./media/storsimple-configure-chap/IC740952.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [StorSimple のセキュリティの詳細](storsimple-8000-security.md)
 * [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理](storsimple-8000-manager-service-administration.md)の詳細

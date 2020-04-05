@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
 ms.openlocfilehash: 8fd5a063683d09cb94b45205426871d880119cc2
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77138028"
 ---
 # <a name="securing-paas-deployments"></a>PaaS デプロイをセキュリティで保護する

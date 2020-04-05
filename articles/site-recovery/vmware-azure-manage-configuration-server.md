@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 93b10d56ae34ebdfe78dd20705634dea58721274
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954352"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228947"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>VMware VM/物理サーバー ディザスター リカバリー用の構成サーバーを管理する
 
@@ -138,7 +138,7 @@ Open Virtualization Format (OVF) テンプレートは、ネットワーク ア�
 
 ## <a name="upgrade-the-configuration-server"></a>構成サーバーをアップグレードする
 
-構成サーバーを更新するには、更新プログラムのロールアップを実行します。 更新は N-4 までのバージョンに適用できます。 例:
+構成サーバーを更新するには、更新プログラムのロールアップを実行します。 更新は N-4 までのバージョンに適用できます。 次に例を示します。
 
 - 9\.7、9.8、9.9、または 9.10 を実行している場合は、9.11 に直接アップグレードできます。
 - 9\.6 以前を実行している場合に、9.11 にアップグレードするには、まずバージョン 9.7 にアップグレードしてから、 9\.11 にアップグレードする必要があります。
@@ -154,7 +154,7 @@ Azure Site Recovery コンポーネントのサポート ステートメント�
 
 1. コンテナーで、 **[管理]**  >  **[Site Recovery インフラストラクチャ]**  >  **[構成サーバー]** に移動します。
 2. 更新プログラムがある場合は、 **[エージェントのバージョン]** 列にリンクが表示されます。
-    ![Update](./media/vmware-azure-manage-configuration-server/update2.png)
+    ![アップデート](./media/vmware-azure-manage-configuration-server/update2.png)
 3. 更新プログラムのインストーラー ファイルを構成サーバーにダウンロードします。
 
     ![更新](./media/vmware-azure-manage-configuration-server/update1.png)
@@ -184,7 +184,7 @@ Azure Site Recovery コンポーネントのサポート ステートメント�
   ```
 
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 
 |パラメーター名| 種類 | 説明| 値|
 |-|-|-|-|
@@ -301,6 +301,6 @@ ProxyPassword="Password"
 
 必ず、構成サーバーを定期的にバックアップするようスケジュールを設定します。 障害が発生して構成サーバーが失われた場合は、まず構成サーバーをバックアップ コピーから復元する必要があります。また、復元された構成サーバーの IP アドレスがコンテナーに登録されている IP アドレスと同じであることを確認します。 復元された構成サーバーに別の IP アドレスが使用されている場合、フェールバックは機能しません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure への [VMware VM](vmware-azure-tutorial.md) のディザスター リカバリーの設定に関するチュートリアルをご覧ください。

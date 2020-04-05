@@ -6,13 +6,13 @@ ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 1ec8944ea0b4cf44c05efe92d350ae0db66d338b
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: e975708eddad9b9b4a07b49e1f753d604d77ff94
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78247806"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80047571"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Azure で静的 HTML Web アプリを作成する
 

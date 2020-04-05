@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 94a376c01229de20e6a1264da3f29532becefa8a
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: c683e9847864de4e3409fb6dbd533497a5ae3cea
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368661"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060992"
 ---
 # <a name="enable-and-create-large-file-shares"></a>大きなファイル共有の有効化と作成
 
@@ -33,7 +33,7 @@ ms.locfileid: "77368661"
 
 ### <a name="portal"></a>ポータル
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 1. Azure Portal で **[すべてのサービス]** を選択します。 
 1. リソースの一覧で、「**Storage Accounts**」と入力します。 入力すると、入力内容に基づいて一覧がフィルター処理されます。 **[ストレージ アカウント]** を選択します。
 1. 表示された **[ストレージ アカウント]** ウィンドウで、 **[追加]** を選択します。
@@ -47,7 +47,7 @@ ms.locfileid: "77368661"
 1. レプリケーションを **[ローカル冗長ストレージ]** または **[ゾーン冗長ストレージ]** に設定します。
 1. 以下のフィールドは既定値のままにします。
 
-   |フィールド  |Value  |
+   |フィールド  |値  |
    |---------|---------|
    |デプロイメント モデル     |リソース マネージャー         |
    |パフォーマンス     |Standard         |
@@ -78,7 +78,7 @@ az storage account create --name <yourStorageAccountName> -g <yourResourceGroup>
 
 大きなファイル共有が有効なストレージ アカウントを作成するには、次のコマンドを使用します。 `<yourStorageAccountName>`、`<yourResourceGroup>`、および `<yourDesiredRegion>` を実際の情報に置き換えます。
 
-```PowerShell
+```powershell
 ## This command creates a large file share–enabled account. It will not support GZRS, GRS, or RA-GRS.
 New-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAccountName> -Location <yourDesiredRegion> -SkuName Standard_LRS -EnableLargeFileShare;
 ```
@@ -112,7 +112,7 @@ az storage account update --name <yourStorageAccountName> -g <yourResourceGroup>
 
 既存のアカウントで大きなファイル共有を有効にするには、次のコマンドを使用します。 `<yourStorageAccountName>` と `<yourResourceGroup>` を実際の情報に置き換えます。
 
-```PowerShell
+```powershell
 Set-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAccountName> -EnableLargeFileShare
 ```
 
@@ -142,7 +142,7 @@ az storage share create --account-name <yourStorageAccountName> --account-key <y
 
 大きなファイル共有を作成するには、次のコマンドを使用します。 `<YourStorageAccountName>`、`<YourStorageAccountKey>`、および `<YourStorageAccountFileShareName>` を実際の情報に置き換えます。
 
-```PowerShell
+```powershell
 ##Config
 $storageAccountName = "<YourStorageAccountName>"
 $storageAccountKey = "<YourStorageAccountKey>"
@@ -175,7 +175,7 @@ az storage share update --account-name <yourStorageAccountName> --account-key <y
 
 クォータを最大サイズに設定するには、次のコマンドを使用します。 `<YourStorageAccountName>`、`<YourStorageAccountKey>`、および `<YourStorageAccountFileShareName>` を実際の情報に置き換えます。
 
-```PowerShell
+```powershell
 ##Config
 $storageAccountName = "<YourStorageAccountName>"
 $storageAccountKey = "<YourStorageAccountKey>"

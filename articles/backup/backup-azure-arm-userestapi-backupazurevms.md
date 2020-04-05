@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
 ms.openlocfilehash: 4789ef1e0e09df521f8cab539d972e9e669e0a58
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450159"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226143"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>REST API を通して Azure Backup を使用して Azure VM をバックアップする
 
@@ -41,7 +41,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|Name  |種類  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |204 No Content     |         |  OK で、返されたコンテンツはありません      |
 |202 Accepted     |         |     承認済み    |
@@ -102,13 +102,13 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 *GET* URI には、すべての必須パラメーターが含まれます。 追加の要求本文は必要ありません。
 
-#### <a name="responses-1"></a>応答
+#### <a name="responses"></a><a name="responses-1"></a>応答
 
-|Name  |種類  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |200 OK     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       [OK] |
 
-#### <a name="example-responses-1"></a>応答の例
+#### <a name="example-responses"></a><a name="example-responses-1"></a>応答の例
 
 *GET* 要求を送信すると、200 (OK) 応答が返されます。
 
@@ -180,7 +180,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 保護された項目を作成する場合、要求本文のコンポーネントは次のようになります。
 
-|Name  |種類  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |ProtectedItem リソースのプロパティ         |
 
@@ -208,7 +208,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|Name  |種類  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |200 OK     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  [OK]       |
 |202 Accepted     |         |     承認済み    |
@@ -294,7 +294,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 オンデマンド バックアップをトリガーする場合、要求本文のコンポーネントは次のようになります。
 
-|Name  |種類  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource プロパティ         |
 
@@ -319,11 +319,11 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|Name  |種類  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |202 Accepted     |         |     承認済み    |
 
-#### <a name="example-responses-3"></a>応答の例
+#### <a name="example-responses"></a><a name="example-responses-3"></a>応答の例
 
 オンデマンド バックアップの *POST* 要求を送信したときの最初の応答は、場所のヘッダーまたは Azure-async-header を含む 202 (Accepted) です。
 
@@ -433,13 +433,13 @@ DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroup
 DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2019-05-13
 ```
 
-#### <a name="responses-2"></a>応答
+#### <a name="responses"></a><a name="responses-2"></a>応答
 
 保護の *DELETE* は[非同期操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)です。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、次にその操作が完了したときは 204 (NoContent)。
 
-|Name  |種類  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |204 NoContent     |         |  NoContent       |
 |202 Accepted     |         |     承認済み    |

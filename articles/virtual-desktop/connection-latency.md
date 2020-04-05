@@ -9,10 +9,10 @@ ms.date: 10/30/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: a4210947d771768943775a3e62c2558fa2883bd5
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79128181"
 ---
 # <a name="determine-user-connection-latency-in-windows-virtual-desktop"></a>Windows Virtual Desktop でのユーザー接続の待機時間の決定

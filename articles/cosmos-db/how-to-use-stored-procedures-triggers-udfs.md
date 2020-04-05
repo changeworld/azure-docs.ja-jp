@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 02/24/2020
 ms.author: mjbrown
 ms.openlocfilehash: 00740bc2255962089789682e3227ce414fd0ce64
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77582502"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を登録および使用する方法
 
 Azure Cosmos DB の SQL API は、JavaScript で記述されたストアド プロシージャ、トリガー、およびユーザー定義関数 (UDF) の登録および呼び出しをサポートします。 SQL API [.NET](sql-api-sdk-dotnet.md)、[.NET Core](sql-api-sdk-dotnet-core.md)、[Java](sql-api-sdk-java.md)、[JavaScript](sql-api-sdk-node.md)、[Node.js](sql-api-sdk-node.md)、または [Python](sql-api-sdk-python.md) SDK を使用して、ストアド プロシージャを登録および起動できます。 ストアド プロシージャ、トリガー、およびユーザー定義関数を定義したら、それらを読み込み、データ エクスプローラーを使用して [Azure portal](https://portal.azure.com/) で表示できます。
 
-## <a id="stored-procedures"></a>ストアド プロシージャの実行方法
+## <a name="how-to-run-stored-procedures"></a><a id="stored-procedures"></a>ストアド プロシージャの実行方法
 
 ストアド プロシージャは JavaScript を使用して記述されます。 これらは Azure Cosmos コンテナー内部で作成、更新、読み取り、クエリの実行、および削除できます。 Azure Cosmos DB でストアド プロシージャを記述する方法の詳細については、[Azure Cosmos DB でストアド プロシージャを記述する方法](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures)に関する記事を参照してください。
 
@@ -195,7 +195,7 @@ new_item = [{
 client.ExecuteStoredProcedure(sproc_link, new_item, {'partitionKey': 'Personal'}
 ```
 
-## <a id="pre-triggers"></a>プリトリガーの実行方法
+## <a name="how-to-run-pre-triggers"></a><a id="pre-triggers"></a>プリトリガーの実行方法
 
 次の例では、Azure Cosmos DB SDK を使用してプリトリガーを登録および呼び出す方法を示します。 ソースについては、[プリトリガーの例](how-to-write-stored-procedures-triggers-udfs.md#pre-triggers)に関する記事を参照してください。このプリトリガーは `trgPreValidateToDoItemTimestamp.js` として保存されています。
 
@@ -353,7 +353,7 @@ client.CreateItem(container_link, item, {
                   'preTriggerInclude': 'trgPreValidateToDoItemTimestamp'})
 ```
 
-## <a id="post-triggers"></a>ポストトリガーの実行方法
+## <a name="how-to-run-post-triggers"></a><a id="post-triggers"></a>ポストトリガーの実行方法
 
 次の例では、Azure Cosmos DB SDK を使用してポストトリガーを登録する方法を示します。 ソースについては、[ポストトリガーの例](how-to-write-stored-procedures-triggers-udfs.md#post-triggers)に関する記事を参照してください。このポストトリガーは `trgPostUpdateMetadata.js` として保存されています。
 
@@ -500,7 +500,7 @@ client.CreateItem(container_link, item, {
                   'postTriggerInclude': 'trgPostUpdateMetadata'})
 ```
 
-## <a id="udfs"></a>ユーザー定義関数を操作する方法
+## <a name="how-to-work-with-user-defined-functions"></a><a id="udfs"></a>ユーザー定義関数を操作する方法
 
 次の例では、Azure Cosmos DB SDK を使用して、ユーザー定義関数を登録する方法を示します。 ソースについては、[ユーザー定義関数の例](how-to-write-stored-procedures-triggers-udfs.md#udfs)に関する記事を参照してください。このポストトリガーは `udfTax.js` として保存されています。
 

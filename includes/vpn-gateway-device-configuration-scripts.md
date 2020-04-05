@@ -9,10 +9,10 @@ ms.date: 02/07/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: e84a77629026bb8885a48b8ed928699825f07115
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77111223"
 ---
 | **ベンダー名** | **デバイス ファミリ** | **ファームウェア バージョン** |

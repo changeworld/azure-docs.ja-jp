@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
 ms.openlocfilehash: 28c900adadf7d942c9e331e7b77a369db64acf55
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75382703"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-c"></a>クイック スタート:Bing Video Search REST API と C# を使用して動画を検索する
@@ -226,6 +226,6 @@ ms.locfileid: "75382703"
 > [!div class="nextstepaction"]
 > [シングルページ Web アプリの作成](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>参照 
+## <a name="see-also"></a>関連項目 
 
  [Bing Video Search API とは](../overview.md)

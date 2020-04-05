@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.openlocfilehash: fe72031ef9ade7473dc4d5de7e090e92ef2a6843
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74769933"
 ---
 # <a name="machine-learning-capability-in-azure-data-explorer"></a>Azure Data Explorer の機械学習機能

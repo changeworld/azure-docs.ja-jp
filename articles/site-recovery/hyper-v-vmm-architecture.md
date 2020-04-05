@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 3e81e353d2912f56a932ce118a0424e45e758df7
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74133018"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>アーキテクチャ - セカンダリ サイトへの Hyper-V のレプリケーション
@@ -56,7 +56,7 @@ a
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 
 VMM クラウド間で Hyper-V レプリケーションを有効にするには、[このチュートリアル](hyper-v-vmm-disaster-recovery.md)に従ってください。

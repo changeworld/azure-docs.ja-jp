@@ -9,10 +9,10 @@ ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 5dccdb6c357635e78b076b1560bf6c0c62c03753
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77135154"
 ---
 ## <a name="supported-distributions-and-drivers"></a>サポートされているディストリビューションとドライバー

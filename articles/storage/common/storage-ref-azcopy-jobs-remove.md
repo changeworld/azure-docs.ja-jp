@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: ba403c8d823b7ead0414521ebd51dc6f6601ccd8
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74034155"
 ---
 # <a name="azcopy-jobs-remove"></a>azcopy jobs remove
@@ -49,6 +49,6 @@ azcopy jobs remove [jobID] [flags]
 
 **--output-type** string   コマンドの出力形式。 選択肢には、text、json などがあります。 既定値は "text" です。 (既定値は "text")
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [azcopy jobs](storage-ref-azcopy-jobs.md)

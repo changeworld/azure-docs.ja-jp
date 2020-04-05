@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: victorh
 ms.openlocfilehash: 4198c83a167ad8f2d52f4393c39625948e18e6e3
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74089507"
 ---
 # <a name="configure-app-service-with-application-gateway-using-powershell"></a>PowerShell を使用して Application Gateway で App Service を構成する
@@ -164,6 +164,6 @@ DnsSettings              : {
 
 Web アプリへのアクセスを制限できる 1 つの方法は、[Azure App Service 静的 IP 制限](../app-service/app-service-ip-restrictions.md)を使用することです。 たとえば、アプリケーション ゲートウェイからのトラフィックのみを受信するように Web アプリを制限できます。 アプリ サービスの IP 制限の機能を使用して、アクセス権を持つ唯一のアドレスとして、アプリケーション ゲートウェイの VIP を一覧表示します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-次のページにアクセスして、リダイレクトの構成方法について確認します。[PowerShell で Application Gateway にリダイレクトを構成する](redirect-overview.md)。
+リダイレクトを構成する方法について学習するために、「[PowerShell で Application Gateway にリダイレクトを構成する](redirect-overview.md)」を参照してください。

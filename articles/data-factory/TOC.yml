@@ -392,7 +392,7 @@
       items:
         - name: コピー アクティビティを使用したデータのコピー
           href: copy-activity-overview.md
-        - name: コピー アクティビティの監視
+        - name: コピー アクティビティを監視する
           href: copy-activity-monitoring.md
         - name: 削除アクティビティを使用したファイルの削除
           href: delete-activity.md
@@ -503,7 +503,7 @@
           href: data-flow-filter.md
         - name: フラット化
           href: data-flow-flatten.md
-        - name: Join
+        - name: 結合
           href: data-flow-join.md
         - name: 参照
           href: data-flow-lookup.md
@@ -511,7 +511,7 @@
           href: data-flow-new-branch.md
         - name: ピボット
           href: data-flow-pivot.md
-        - name: Select
+        - name: 選択
           href: data-flow-select.md
         - name: シンク
           href: data-flow-sink.md

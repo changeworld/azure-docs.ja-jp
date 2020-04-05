@@ -13,16 +13,16 @@ ms.tgt_pltfrm: multiple
 ms.devlang: multiple
 ms.topic: overview
 ms.custom: mvc
-ms.date: 02/20/2020
+ms.date: 03/23/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 04/30/2019
-ms.openlocfilehash: dad71d473ecb6107a5cf0d8f5953667f07bfce5c
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: f5b59d1669d89c73b93199d1f833da149003d399
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526775"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80159338"
 ---
 # <a name="what-is-azure-notification-hubs"></a>Azure Notification Hubs とは
 
@@ -42,7 +42,7 @@ Azure Notification Hubs は、任意のバックエンド (クラウドまたは
 プッシュ通知は、コンシューマー アプリにとってはアプリの関与や使用率を向上させるために、またエンタープライズ アプリにとっては最新のビジネス情報を通信するために不可欠です。 モバイル デバイスにとってはエネルギー効率が良く、通知の送信者にとっては柔軟であり、対応するアプリケーションがアクティブでない場合にも使用できるため、これはアプリからユーザーへの最適な通信方法です。
 
 > [!NOTE]
-> Azure Notification Hubs は、Voice Over Internet Protocol (VOIP) プッシュ通知をサポートしていません。
+> Azure Notification Hubs では、ボイスオーバー IP (VOIP) のプッシュ通知を公式にサポートしていません。ただし、[この記事では Azure Notification Hubs を介して APNS VOIP 通知を使用する方法](voip-apns.md)について説明します。
 
 いくつかの一般的なプラットフォームでのプッシュ通知の詳細については、次のトピックを参照してください。
 
@@ -108,7 +108,7 @@ Notification Hubs はすぐに利用できるプッシュ エンジンであり�
   - プラットフォーム通知システムのフィードバックは、PNS からのフィードバックをすべて伝達します。このフィードバックはデバッグに役立ちます。
 - **スケーラビリティ**
   - 再構築やデバイスのシャーディングをすることなく、何百万台ものデバイスにメッセージをすばやく送信します。
-- **セキュリティ**
+- **Security**
   - 共有アクセス シークレット (SAS) またはフェデレーション認証。
 
 ## <a name="next-steps"></a>次のステップ

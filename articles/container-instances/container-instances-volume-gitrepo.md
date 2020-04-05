@@ -4,10 +4,10 @@ description: gitRepo ボリュームをマウントし、Git リポジトリの�
 ms.topic: article
 ms.date: 06/15/2018
 ms.openlocfilehash: 405cacd7a1649f95640a8dabf476729e101d03f8
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78252085"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Azure Container Instances に gitRepo ボリュームをマウントする

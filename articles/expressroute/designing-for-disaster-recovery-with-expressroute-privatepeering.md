@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/25/2019
 ms.author: rambala
 ms.openlocfilehash: 726a014983c0da959d72b7976fef2ebb2c6e9b9e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74076703"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>ExpressRoute プライベート ピアリングを使用したディザスター リカバリーの設計
@@ -127,7 +127,7 @@ ExpressRoute 1 の両方の接続がダウンした場合、VNet では ExpressR
 [![10]][10]
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、ExpressRoute 回線のプライベート ピアリング接続のディザスター リカバリーを設計する方法について説明しました。 次の記事では、アプリケーションおよびフロントエンドのアクセスの観点から、ディザスター リカバリーに対処します。
 

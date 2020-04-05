@@ -16,10 +16,10 @@ ms.date: 02/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 13f6de35400280d68227af1dd7e3a981494d9e61
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77088286"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bic-cloud-design"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と BIC Cloud Design の統合
@@ -111,9 +111,9 @@ BIC Cloud Design に対する Azure AD SSO を構成してテストするには�
 
 1. その他に、BIC Cloud Design アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらを次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | Name | ソース属性|
+    | 名前 | ソース属性|
     | ------------ | --------- |
-    | Name | user.name |
+    | 名前 | user.name |
     | 電子メール アドレス | User.mail |
     | 名前 ID | user.userprincipalname |
     | email | User.mail |

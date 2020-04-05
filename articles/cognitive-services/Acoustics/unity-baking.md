@@ -12,10 +12,10 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: 310decf8053ea16ba46250ba3aabe81c9c254e5e
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72243122"
 ---
 # <a name="project-acoustics-unity-bake-tutorial"></a>Project Acoustics Unity ベイク チュートリアル
@@ -201,7 +201,7 @@ Azure Batch サービスを使用して、クラウド内のコンピューテ�
    ![ベイク タスクの状態](media/azure-batch-task-state.png)  
 
 
-### <a name="Estimating-bake-cost"></a> Azure のベイク コストを見積もる
+### <a name="estimate-azure-bake-cost"></a><a name="Estimating-bake-cost"></a> Azure のベイク コストを見積もる
 
 ベイクのコストを見積もるには、 **[Estimated Compute Cost]\(推定コンピューティング コスト\)** の値 (時間) から始めます。 その値に、選択した **VM ノード タイプ**の現地通貨での時間あたりコストを掛けます。 結果にはノードを稼働させるために必要なノード時間は含まれないことに注意してください。
 
@@ -209,7 +209,7 @@ Azure Batch サービスを使用して、クラウド内のコンピューテ�
 
 ノードの時間あたりコストについては、「[Batch の価格](https://azure.microsoft.com/pricing/details/virtual-machines/linux)」をご覧ください。 (カテゴリとして、 **[コンピューティングの最適化]** または **[ハイ パフォーマンス コンピューティング]** を選択します。)
 
-## <a name="Local-bake"></a> PC でシーンをベイクする
+## <a name="bake-your-scene-on-your-pc"></a><a name="Local-bake"></a> PC でシーンをベイクする
 独自の PC でシーンをベイクすることもできます。 この方法は、Azure Batch アカウントを作成する前に、小さいシーンで音響を実験するのに役立つ場合があります。 ただし、シーンのサイズによっては、ローカル音響シミュレーションに時間がかかる場合があることに注意してください。
 
 ### <a name="minimum-hardware-requirements"></a>最小ハードウェア要件
@@ -233,7 +233,7 @@ Azure Batch サービスを使用して、クラウド内のコンピューテ�
 2. シミュレーションを開始するには、Windows では *runlocalbake.bat* スクリプトを実行し、MacOS では *runlocalbake.sh* スクリプトを実行します。 このスクリプトでは、シミュレーションの処理に必要なツールセットで Project Acoustics Docker イメージがフェッチされて、シミュレーションが開始されます。
 3. シミュレーションが終了したら、結果の *.ace* ファイルを Unity プロジェクトにコピーします。 Unity にそれをバイナリ ファイルとして確実に認識させるには、".bytes" をファイル拡張子に追加します ("Scene1.ace.bytes" などとします)。 シミュレーションの詳細ログは、*AcousticsLog.txt* に格納されます。 問題が発生した場合は、このファイルを調べると問題の診断に役立ちます。
 
-## <a name="Data-Files"></a> ベイク プロセスで追加されたデータ ファイル
+## <a name="data-files-added-by-the-bake-process"></a><a name="Data-Files"></a> ベイク プロセスで追加されたデータ ファイル
 
 ベイク プロセスの間に、次の 4 つのデータ ファイルが作成されます。 1 つにはシミュレーション結果が含まれ、タイトルが付いています。 その他には Unity エディターに関するデータが格納されています。
 
@@ -256,6 +256,6 @@ Azure Batch サービスを使用して、クラウド内のコンピューテ�
 
 ![Unity の Acoustics Manager プレハブ](media/acoustics-manager.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Unity の設計コントロール](unity-workflow.md)を確認します。
 * [Project Acoustics の設計概念](design-process.md)を確認します。

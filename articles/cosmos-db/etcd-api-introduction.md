@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 6c7fcb1429438ee024cb226b63cfcdcab05ed9f8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: acd87fac5ec2edc40d27d98f073e13c0acae8d8a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205803"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79498601"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-etcd-api-preview"></a>Azure Cosmos DB の etcd API (プレビュー) の概要
 
@@ -50,9 +50,9 @@ Kubernetes クラスターが大きくなるにつれて、Azure Cosmos DB の e
 
 ### <a name="security--enterprise-readiness"></a>セキュリティとエンタープライズの準備
 
-etcd データが Azure Cosmos DB に格納されると、Kubernetes 開発者は、Azure Cosmos DB がサポートしている[保存時の組み込みの暗号化](database-encryption-at-rest.md)、[認定と準拠](compliance.md)、および[バックアップ機能と復元機能](online-backup-and-restore.md)を自動的に利用できるようになります。 
+etcd データが Azure Cosmos DB に格納されると、Kubernetes 開発者は、Azure Cosmos DB がサポートしている[保存時の組み込みの暗号化](database-encryption-at-rest.md)、[認定と準拠](compliance.md)、および[バックアップ機能と復元機能](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)を自動的に利用できるようになります。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Cosmos DB で Azure Kubernetes を使用する方法](bootstrap-kubernetes-cluster.md)
 * [Azure Cosmos DB の主な利点](introduction.md)

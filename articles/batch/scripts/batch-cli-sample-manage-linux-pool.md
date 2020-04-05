@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: labrenne
 ms.openlocfilehash: 7f896f7f6493cff8c25d4ccfd5a15f5edb11258f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77024485"
 ---
-# <a name="cli-example-create-and-manage-a-linux-pool-in-azure-batch"></a>CLI の例:Azure Batch での Linux プールの作成と管理
+# <a name="cli-example-create-and-manage-a-linux-pool-in-azure-batch"></a>CLI の例: Azure Batch での Linux プールの作成と管理
 
 このスクリプトでは、Azure Batch で Linux コンピューティング ノードのプールを作成して管理するために使用できる Azure CLI のコマンドの一部を示します。
 
@@ -45,7 +45,7 @@ az group delete --name myResourceGroup
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | Notes |
+| command | メモ |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az batch account create](/cli/azure/batch/account#az-batch-account-create) | Batch アカウントを作成します。 |

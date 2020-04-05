@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: autoscale
 ms.openlocfilehash: c82b170bb3801bdc701ed84230db57f5691523ea
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77120691"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Azure Monitor で自動スケール操作を使用して電子メールと webhook アラート通知を送信する
@@ -107,7 +107,7 @@ webhook はトークンベースの認証を利用して認証できます。ク
 | timestamp |はい |自動スケール操作がトリガーされたときのタイム スタンプ。 |
 | id |はい |自動スケール設定の Resource Manager ID |
 | name |はい |自動スケール設定の名前。 |
-| 詳細 |はい |自動スケール サービスが実行した操作とインスタンス数の変更の説明。 |
+| details |はい |自動スケール サービスが実行した操作とインスタンス数の変更の説明。 |
 | subscriptionId |はい |スケールされるターゲット リソースのサブスクリプション ID。 |
 | resourceGroupName |はい |スケールされるターゲット リソースのリソース グループ名。 |
 | resourceName |はい |スケールされるターゲット リソースの名前。 |

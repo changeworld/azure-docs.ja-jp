@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: a711303b95eb4acb9c226ce052466bf65d15a038
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 6db2c907abc495ca3c88e1e73e885043a8f19997
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612776"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79481536"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>チュートリアル:Azure Active Directory Domain Services のマネージド ドメイン用に Secure LDAP を構成する
 
@@ -66,9 +66,9 @@ Secure LDAP を使用するには、デジタル証明書を使用して通信�
 * **サブジェクト名** - 証明書のサブジェクト名は、マネージド ドメインである必要があります。 たとえば、ドメインが *aaddscontoso.com* という名前である場合、証明書のサブジェクト名は * *.aaddscontoso.com* である必要があります。
     * Secure LDAP が Azure AD Domain Services で正常に動作するように、証明書の DNS 名またはサブジェクト代替名がワイルドカード証明書であることが必要です。 ドメイン コントローラーにはランダムな名前が使用されます。サービスの可用性を確保するために、ドメイン コントローラーは追加したり削除したりすることができます。
 * **キー使用法** - 証明書は、"*デジタル署名*" および "*キーの暗号化*" に対して構成される必要があります。
-* **証明書の目的** - 証明書は、SSL サーバー認証に対して有効である必要があります。
+* **証明書の目的** - 証明書は、TLS サーバー認証に対して有効である必要があります。
 
-このチュートリアルでは、[New-SelfSignedCertificate][New-SelfSignedCertificate] コマンドレットを使用して Secure LDAP 用の自己署名証明書を作成してみましょう。 **管理者**として PowerShell ウィンドウを開き、次のコマンドを実行します。 *$dnsName* 変数は、実際のマネージド ドメインで使用されている DNS 名に置き換えてください (例: *aaddscontoso.com*)。
+OpenSSL、Keytool、MakeCert、[New-SelfSignedCertificate][New-SelfSignedCertificate] コマンドレットなど、自己署名証明書の作成に使用できるツールがいくつかあります。このチュートリアルでは、[New-SelfSignedCertificate][New-SelfSignedCertificate] コマンドレットを使用して Secure LDAP 用の自己署名証明書を作成してみましょう。 **管理者**として PowerShell ウィンドウを開き、次のコマンドを実行します。 *$dnsName* 変数は、実際のマネージド ドメインで使用されている DNS 名に置き換えてください (例: *aaddscontoso.com*)。
 
 ```powershell
 # Define your own DNS name used by your Azure AD DS managed domain
@@ -142,7 +142,7 @@ Secure LDAP を使用するために、ネットワーク トラフィックは�
 1. この証明書は、データの暗号化を解除する目的で使用されるため、慎重にアクセスを制御する必要があります。 パスワードを使用して証明書の使用を保護することができます。 正しいパスワードがなければ、サービスに証明書を適用することはできません。
 
     *.PFX* 証明書ファイルを保護するには、 **[セキュリティ]** ページで **[パスワード]** のオプションを選択します。 パスワードの入力と確認入力を行って、 **[次へ]** を選択します。 このパスワードは、次のセクションで Azure AD DS のマネージド ドメインに対して Secure LDAP を有効にする際に使用します。
-1. **[エクスポートするファイル]** ページで、ファイル名と証明書のエクスポート先を指定します (例: *C:\Users\accountname\azure-ad-ds.pfx*)。
+1. **[エクスポートするファイル]** ページで、ファイル名と証明書のエクスポート先を指定します (例: *C:\Users\accountname\azure-ad-ds.pfx*)。 *.PFX* ファイルのパスワードと場所をメモしておきます。この情報は次の手順で必要になります。
 1. 確認ページで **[完了]** を選択すると、証明書が *.PFX* 証明書ファイルにエクスポートされます。 証明書が正しくエクスポートされると確認ダイアログが表示されます。
 1. MMC は、次のセクションで使用するため、開いたままにしておきます。
 

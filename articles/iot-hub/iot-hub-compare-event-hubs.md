@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
 ms.openlocfilehash: 7a589ba80b61ea5ef9ea1c941e9a0218a1653c99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60735522"
 ---
-# <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>IoT デバイスの Azure への接続: IoT Hub と Event Hubs
+# <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>IoT デバイスを Azure に接続する: IoT Hub と Event Hubs
 
 Azure では、データとクラウドの機能をつなぐ助けとなるように、さまざまな種類の接続と通信のために特に開発されたサービスを提供しています。 Azure IoT Hub と Azure Event Hubs はどちらも、大量のデータを取り込み、ビジネス情報分析のためにそのデータを処理または保存できるクラウド サービスです。 2 つのサービスは、どちらも少ない待ち時間と高い信頼性でデータの取り込みをサポートするという点で類似していますが、異なる目的のために設計されています。 IoT Hub が、IoT デバイスを Azure クラウドに接続するという固有の要件に対応するために開発されたのに対して、Event Hubs は、ビッグ データのストリーミング用に設計されました。 マイクロソフトでは、Azure IoT Hub を使用して IoT デバイスを Azure に接続することをお勧めしています。
 
@@ -30,8 +30,8 @@ Azure IoT Hub は、IoT デバイスを接続してデータを収集し、ビ�
 | IoT の機能 | IoT Hub Standard レベル | IoT Hub Basic レベル | Event Hubs |
 | --- | --- | --- | --- |
 | デバイスからクラウドへのメッセージ | ![○][checkmark] | ![○][checkmark] | ![○][checkmark] |
-| Protocols:HTTPS、AMQP、AMQP over webSockets | ![○][checkmark] | ![○][checkmark] | ![○][checkmark] |
-| Protocols:MQTT、MQTT over webSockets | ![○][checkmark] | ![○][checkmark] |  |
+| プロトコル: HTTPS、AMQP、AMQP over webSockets | ![○][checkmark] | ![○][checkmark] | ![○][checkmark] |
+| プロトコル: MQTT、MQTT over webSockets | ![○][checkmark] | ![○][checkmark] |  |
 | デバイスごとの ID | ![○][checkmark] | ![○][checkmark] |  |
 | 複数デバイスからのファイルのアップロード | ![○][checkmark] | ![○][checkmark] |  |
 | Device Provisioning Service | ![○][checkmark] | ![○][checkmark] |  |
@@ -42,7 +42,7 @@ Azure IoT Hub は、IoT デバイスを接続してデータを収集し、ビ�
 
 唯一のユース ケースがデバイスからクラウドへのデータ インジェストである場合でも、IoT Hub は IoT デバイス接続用に設計されたサービスを提供するので、IoT Hub を使うことを強くお勧めします。 
 
-### <a name="next-steps"></a>次の手順
+### <a name="next-steps"></a>次のステップ
 
 IoT Hub の機能を詳しく調べるには、「[Azure IoT Hub 開発者ガイド](iot-hub-devguide.md)」をご覧ください。
 

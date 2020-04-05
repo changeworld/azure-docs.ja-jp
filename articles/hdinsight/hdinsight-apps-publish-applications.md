@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
 ms.openlocfilehash: e64bf253a73df3a2f8170109dc1dfb9a59613733
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64685320"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Azure Marketplace への HDInsight アプリケーションの発行
@@ -96,7 +96,7 @@ HDInsight アプリケーションを発行するには:
 8. アプリケーションのパッケージ化の際に、作成した .zip ファイルをアップロードします。  
 9. **[Request Certification]\(証明書の要求\)** を選択します。 Microsoft の認定チームがファイルを確認し、トポロジを認定します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * クラスターに [HDInsight アプリケーションをインストール](hdinsight-apps-install-applications.md)する方法を確認します。
 * [カスタム HDInsight アプリケーションをインストール](hdinsight-apps-install-custom-applications.md)し、未発行の HDInsight アプリケーションを HDInsight にデプロイする方法について確認します。
 * [Script Action を使って Linux ベースの HDInsight クラスターをカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)し、アプリケーションをさらに追加する方法について説明します。 

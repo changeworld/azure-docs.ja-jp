@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.openlocfilehash: c64483f18b2deb061704a4eb7171e575fdd561e8
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78164629"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure Logic Apps の一般的なシナリオ、例、チュートリアル、手順

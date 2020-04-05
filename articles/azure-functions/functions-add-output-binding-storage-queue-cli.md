@@ -4,12 +4,12 @@ description: コマンド ライン プロジェクトに出力バインディ�
 ms.date: 02/07/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: e3c37b368b723cc95302949baa8e85e2a8b621be
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 9181caf516d5c2003cfe99b125d2921732cbbb9d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78201003"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79473389"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-command-line-tools"></a>コマンド ライン ツールを使用して Azure Functions を Azure Storage に接続する
 
@@ -17,7 +17,7 @@ ms.locfileid: "78201003"
 
 ## <a name="configure-your-local-environment"></a>ローカル環境を構成する
 
-開始する前に、[Azure Functions プロジェクトをコマンド ラインから作成する方法に関するクイックスタート](functions-create-first-azure-function-azure-cli.md)記事を済ませておく必要があります。 その記事の最後でリソースをクリーンアップした場合は、もう一度手順に従って Azure で関数アプリと関連リソースを再作成してください。
+開始する前に、「[クイックスタート:コマンド ラインから Azure Functions プロジェクトを作成する](functions-create-first-azure-function-azure-cli.md)」という記事を終える必要があります。 その記事の最後でリソースをクリーンアップした場合は、もう一度手順に従って Azure で関数アプリと関連リソースを再作成してください。
 
 ## <a name="retrieve-the-azure-storage-connection-string"></a>Azure Storage の接続文字列を取得する
 
@@ -142,9 +142,9 @@ ms.locfileid: "78201003"
     $env:AZURE_STORAGE_CONNECTION_STRING = "<MY_CONNECTION_STRING>"
     ```
     
-    # <a name="cmd"></a>[Cmd](#tab/cmd)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/cmd)
     
-    ```cmd
+    ```azurecli
     set AZURE_STORAGE_CONNECTION_STRING="<MY_CONNECTION_STRING>"
     ```
     
@@ -152,7 +152,7 @@ ms.locfileid: "78201003"
     
 1. (省略可) [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) コマンドを使用して、ご利用のアカウント内のストレージ キューを表示します。 このコマンドからの出力には、`outqueue` という名前のキューが含まれています。これはこのキューに対する最初のメッセージを関数が書き込んだときに作成されたものです。
     
-    ```azure-cli
+    ```azurecli
     az storage queue list --output tsv
     ```
 
@@ -170,9 +170,9 @@ ms.locfileid: "78201003"
     [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(az storage message get --queue-name outqueue -o tsv --query '[].{Message:content}')))
     ```
     
-    # <a name="cmd"></a>[Cmd](#tab/cmd)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/cmd)
     
-    ```cmd
+    ```azurecli
     az storage message get --queue-name outqueue -o tsv --query [].{Message:content} > %TEMP%out.b64 && certutil -decode -f %TEMP%out.b64 %TEMP%out.txt > NUL && type %TEMP%out.txt && del %TEMP%out.b64 %TEMP%out.txt /q
     ```
 

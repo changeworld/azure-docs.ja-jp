@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.openlocfilehash: a4c9188c8f1315a3af452cd0c1fb5cf45ab82081
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77486119"
 ---
 # <a name="azure-storage-samples-using-v12-net-client-libraries"></a>v12 .NET クライアント ライブラリを使用した Azure Storage サンプル

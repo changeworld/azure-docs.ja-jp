@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 08/01/2017
 ms.author: gwallace
 ms.openlocfilehash: 4b49a9b391eeca2d2e249b171d99f231bda6fdff
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78329121"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>Azure サービス管理証明書のアップロード
@@ -35,7 +35,7 @@ Azure の証明書の詳細 (自己署名証明書の作成など) について�
 管理証明書 (公開キーのみを含んだ .cer ファイル) を作成したら、それをポータルにアップロードできます。 ポータルで証明書が使用可能な場合は、対になる証明書 (秘密キー) を持つすべての人が、Management API を経由して接続し、サブスクリプションに関連付けられているリソースにアクセスすることができます。
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
-2. Azure サービスの一覧の下部にある **[すべてのサービス]** をクリックし、 _[全般]_ サービス グループの **[サブスクリプション]** を選択します。
+2. Azure サービスの一覧の下部にある **[すべてのサービス]** をクリックし、 **[全般]** サービス グループの _[サブスクリプション]_ を選択します。
 
     ![サブスクリプション メニュー](./media/azure-api-management-certs/subscriptions_menu.png)
 

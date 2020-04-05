@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/07/2019
 ms.openlocfilehash: e918fe01426202746f0225d25304b9c1b26cb74b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74927318"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Amazon S3 から Azure Data Lake Storage Gen2 にデータを移行する
@@ -192,7 +192,7 @@ ms.locfileid: "74927318"
 
     ![結果を確認する](media/solution-template-migration-s3-azure/delta-migration-s3-azure6.png)
     
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [複数のコンテナーからのファイルのコピー](solution-template-copy-files-multiple-containers.md)
 - [ファイルの移動](solution-template-move-files.md)

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.openlocfilehash: 01619027ddc79530dc9541584efa9a3e518f5136
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74842060"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Azure で一般化された VM の管理対象イメージを作成する
@@ -57,7 +57,7 @@ Windows VM を一般化するには、次の手順に従います。
 6. Sysprep は完了時に VM をシャットダウンします。 VM は再起動しないでください。
 
 > [!TIP]
-> **オプション** [DISM](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-optimize-image-command-line-options) を使用してイメージを最適化し、VM の初回起動時間を短縮します。
+> **オプション**[DISM](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-optimize-image-command-line-options) を使用してイメージを最適化し、VM の初回起動時間を短縮します。
 >
 > イメージを最適化するには、Windows エクスプローラーで VHD をダブルクリックして VHD をマウントし、`/optimize-image` パラメーターを指定して DISM を実行します。
 >
@@ -203,7 +203,7 @@ OS ディスクのみのイメージを作成する場合は、OS ディスク�
    $snapshot = Get-AzSnapshot -ResourceGroupName $rgName -SnapshotName $snapshotName
    ```
    
-3. イメージの構成を作成します。
+3. イメージの設定を作成します。
 
     ```azurepowershell-interactive
     $imageConfig = New-AzImageConfig -Location $location
@@ -250,6 +250,6 @@ OS ディスクのみのイメージを作成する場合は、OS ディスク�
     ```
 
     
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [管理イメージから VM を作成する](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。    
 

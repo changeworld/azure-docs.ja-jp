@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: 232d85789c25e905873286eba6fda32c327a6e25
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76276932"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Azure Digital Twins 内でユーザー定義関数を作成する方法
@@ -207,7 +207,7 @@ function process(telemetry, executionContext) {
    目的のロール ID を保持します。 これは、下で JSON 本文属性 **roleId** (`YOUR_DESIRED_ROLE_IDENTIFIER`) として渡されます。
 
 1. **objectId** (`YOUR_USER_DEFINED_FUNCTION_ID`) は先ほど作成したユーザー定義関数 ID になります。
-1. `fullpath` を使用して空間に対してクエリを実行して、**path** (`YOUR_ACCESS_CONTROL_PATH`) の値を見つけます。
+1. **を使用して空間に対してクエリを実行して、** path`YOUR_ACCESS_CONTROL_PATH` (`fullpath`) の値を見つけます。
 1. 返された `spacePaths` 値をコピーします。 次のように使用します。 以下に対して認証済みの HTTP GET 要求を実行します。
 
     ```URL

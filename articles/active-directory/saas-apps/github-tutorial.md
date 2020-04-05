@@ -15,20 +15,19 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f4084532ac370880df69d825927240c297dd371
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: e812e1b03637a3ecd7a45f02664c4e3547f1aef1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129905"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79138979"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と GitHub の統合
 
 このチュートリアルでは、GitHub と Azure Active Directory (Azure AD) を統合する方法について説明します。 GitHub を Azure AD に統合すると、次のことができます。
 
-* GitHub にアクセスできるユーザーを Azure AD で制御できます。
-* ユーザーが自分の Azure AD アカウントを使用して GitHub に自動的にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
+* GitHub Enterprise Cloud Organization にアクセスできるユーザーを Azure AD で制御する。
+* GitHub Enterprise Cloud Organization へのアクセスを 1 つの中央サイト (Azure portal) で管理する。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -45,7 +44,7 @@ GitHub と Azure AD の統合を構成するには、次のものが必要です
 
 * GitHub では、**SP** によって開始される SSO がサポートされます
 
-* GitHub では、[**自動化された**ユーザー プロビジョニング](github-provisioning-tutorial.md)がサポートされます
+* GitHub では、[**自動化された**ユーザー プロビジョニング (組織の招待)](github-provisioning-tutorial.md) がサポートされます
 * GitHub を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 ## <a name="adding-github-from-the-gallery"></a>ギャラリーからの GitHub の追加

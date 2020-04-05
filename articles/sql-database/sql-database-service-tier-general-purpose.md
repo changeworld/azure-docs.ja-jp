@@ -12,11 +12,11 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/07/2019
 ms.openlocfilehash: 7c57755ae63f8af5a2a4faa4764bc6a9597e8c2d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819222"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228519"
 ---
 # <a name="general-purpose-service-tier---azure-sql-database"></a>General Purpose サービス レベル - Azure SQL Database
 
@@ -46,7 +46,7 @@ General Purpose サービス レベルのアーキテクチャ モデルには�
 
 General Purpose サービス レベルは、ほとんどの一般的なワークロード向けに設計されている Azure SQL Database の既定のサービス レベルです。 ほとんどのケースで、Azure SQL IaaS に匹敵する、ストレージの待ち時間が 5 から 10 ミリ秒で SLA が 99.99% のフル マネージド データベース エンジンが必要な場合は、General Purpose レベルをお勧めします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Managed Instance](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) の General Purpose/Standard レベル、[仮想コア モデル](sql-database-vcore-resource-limits-single-databases.md#general-purpose---provisioned-compute---gen4)または [DTU モデル](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)の単一データベース、[仮想コア モデル](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose---provisioned-compute---gen4)および [DTU モデル](sql-database-dtu-resource-limits-elastic-pools.md#standard-elastic-pool-limits)のエラスティック プールのリソース特性 (コア数、IO、メモリ) を確認します。
 - [Business Critical](sql-database-service-tier-business-critical.md) レベルと [Hyperscale](sql-database-service-tier-hyperscale.md) レベルについて学びます。

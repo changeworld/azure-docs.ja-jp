@@ -7,10 +7,10 @@ ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.openlocfilehash: d5f175d887cec1d5b5e567d3f716e6492f4516dd
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78246966"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>GitHub Actions を使用した App Service へのカスタム コンテナーのデプロイ
@@ -25,7 +25,7 @@ ms.locfileid: "78246966"
 
 Azure App Service のコンテナー ワークフロー ファイルには、次の 3 つのセクションがあります。
 
-|Section  |処理手順  |
+|Section  |タスク  |
 |---------|---------|
 |**認証** | 1.サービス プリンシパルを定義します。 <br /> 2.GitHub シークレットを作成します。 |
 |**ビルド** | 1.環境を設定します。 <br /> 2.コンテナー イメージをビルドします。 |

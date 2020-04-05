@@ -8,10 +8,10 @@ ms.date: 04/10/2017
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: a32c9fab3877a693d2df26571b9fae4aa7b4380c
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76271079"
 ---
 # <a name="deprecated-use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>(非推奨) Helm を使用して、Kubernetes クラスターにコンテナーをデプロイする

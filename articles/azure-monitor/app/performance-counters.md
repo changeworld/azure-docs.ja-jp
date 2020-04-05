@@ -4,10 +4,10 @@ description: Application Insights でシステムとカスタムの .NET パフ�
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.openlocfilehash: 94d2520c17867f6d70caffd002a76365a425986f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77669881"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights のシステム パフォーマンス カウンター
@@ -63,7 +63,7 @@ ASP.NET/ASP.NET Core Web アプリケーションについて収集するよう�
 
 形式は `\Category(instance)\Counter"` です。インスタンスが存在しないカテゴリの場合は、単に `\Category\Counter` です。
 
-`[a-zA-Z()/-_ \.]+` に一致しないカウンター名の場合、つまり英字、丸かっこ、スラッシュ、ハイフン、アンダースコア、スペース、ドット (.) 以外の文字が含まれる場合は、`ReportAs` が必要です。
+`ReportAs` に一致しないカウンター名の場合、つまり英字、丸かっこ、スラッシュ、ハイフン、アンダースコア、スペース、ドット (.) 以外の文字が含まれる場合は、`[a-zA-Z()/-_ \.]+` が必要です。
 
 インスタンスを指定した場合は、報告されるメトリックの "CounterInstanceName" ディメンションとして収集されます。
 
@@ -89,7 +89,7 @@ ASP.NET/ASP.NET Core Web アプリケーションについて収集するよう�
 
 ### <a name="collecting-performance-counters-in-code-for-aspnet-core-web-applications"></a>ASP.NET Core Web アプリケーションについてコードでパフォーマンス カウンターを収集する
 
-以下の `Startup.cs` クラスの `ConfigureServices` メソッドを変更します。
+以下の `ConfigureServices` クラスの `Startup.cs` メソッドを変更します。
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
@@ -149,7 +149,7 @@ ASP.NET Core でのパフォーマンス カウンターのサポートは制限
 ## <a name="alerts"></a>警告
 他のメトリックと同様に、パフォーマンス カウンターが指定した制限を超えた場合に警告する[アラートを設定](../../azure-monitor/app/alerts.md)できます。 [アラート] ウィンドウを開き、[アラートの追加] をクリックします。
 
-## <a name="next"></a>次のステップ
+## <a name="next-steps"></a><a name="next"></a>次のステップ
 
 * [依存関係の追跡](../../azure-monitor/app/asp-net-dependencies.md)
 * [例外の追跡](../../azure-monitor/app/asp-net-exceptions.md)

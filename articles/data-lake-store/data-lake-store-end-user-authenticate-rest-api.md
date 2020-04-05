@@ -1,5 +1,5 @@
 ---
-title: 'エンドユーザー認証: REST API から Azure Active Directory を使用して Azure Data Lake Storage Gen1 に対する認証を行う | Microsoft Docs'
+title: 'エンドユーザー認証: Azure Active Directory を使用した REST API と Azure Data Lake Storage Gen1 | Microsoft Docs'
 description: REST API と Azure Active Directory を使用した Azure Data Lake Storage Gen1 でエンドユーザー認証を行う方法について説明します
 services: data-lake-store
 documentationcenter: ''
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 0ef65c23ee1bf4f064695779b71c8616427da204
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60877824"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>REST API を使用した Azure Data Lake Storage Gen1 でのエンドユーザー認証
@@ -83,7 +83,7 @@ ms.locfileid: "60877824"
 
 対話型ユーザー認証の詳細については、 [承認コード付与フロー](https://msdn.microsoft.com/library/azure/dn645542.aspx)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、Azure Data Lake Storage Gen1 での認証に REST API を使用してサービス間認証を使用する方法を学習しました。 これで、REST API を使用して Azure Data Lake Storage Gen1 を使用する方法について説明した次の記事に進めるようになりました。
 
 * [REST API を使用した Data Lake Storage Gen1 に対するアカウント管理操作](data-lake-store-get-started-rest-api.md)

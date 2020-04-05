@@ -10,10 +10,10 @@ ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.openlocfilehash: 4273828c9c2bdb75fcbc1de45da55c5a03dd615f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66156435"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Azure PowerShell を使用する Azure Data Lake Analytics の管理
@@ -27,11 +27,11 @@ ms.locfileid: "66156435"
 
 Data Lake Analytics で PowerShell を使用するには、次の情報を収集します。 
 
-* **サブスクリプション ID**:Data Lake Analytics アカウントを含む Azure サブスクリプションの ID。
-* **[リソース グループ]** :Data Lake Analytics アカウントが含まれている Azure リソース グループの名前。
-* **Data Lake Analytics アカウント名**:Data Lake Analytics アカウントの名前。
-* **既定の Data Lake Store アカウント名**:各 Data Lake Analytics アカウントには、既定の Data Lake Store アカウントがあります。
-* **[場所]** :Data Lake Analytics アカウントの場所。"米国東部 2" やサポートされているその他の場所です。
+* **サブスクリプション ID**: Data Lake Analytics アカウントを含む Azure サブスクリプションの ID。
+* **リソース グループ**: Data Lake Analytics アカウントが含まれている Azure リソース グループの名前。
+* **Data Lake Analytics アカウント名**: Data Lake Analytics アカウントの名前。
+* **既定の Data Lake Store アカウント名**: 各 Data Lake Analytics アカウントには既定の Data Lake Store アカウントがあります。
+* **場所**: Data Lake Analytics アカウントの場所。"米国東部 2" やサポートされているその他の場所です。
 
 このチュートリアルの PowerShell スニペットでは、以下の変数を使って各情報を格納します。
 
@@ -94,7 +94,7 @@ Get-AdlAnalyticsAccount
 Get-AdlAnalyticsAccount -ResourceGroupName $rg
 ```
 
-### <a name="create-an-account"></a>アカウントの作成
+### <a name="create-an-account"></a>アカウントを作成する
 
 すべての Data Lake Analytics アカウントに、ログの保存を目的とした既定の Data Lake Store アカウントが必要です。 既存のアカウントを利用することも、アカウントを作成することもできます。 
 
@@ -122,7 +122,7 @@ Test-AdlAnalyticsAccount -Name $adla
 Azure Data Lake Analytics では現在、以下のデータ ソースがサポートされています。
 
 * [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
-* [Azure Storage](../storage/common/storage-introduction.md)
+* [Azure ストレージ](../storage/common/storage-introduction.md)
 
 すべての Data Lake Analytics アカウントには、既定の Data Lake Store アカウントがあります。 既定の Data Lake Store アカウントは、ジョブ メタデータとジョブ監査ログの格納に使用されます。 
 
@@ -553,9 +553,9 @@ foreach ($sub in $subs)
 
 ## <a name="create-a-data-lake-analytics-account-using-a-template"></a>テンプレートを使用して Data Lake Analytics アカウントを作成する
 
-次のサンプルを使用して Azure Resource Group テンプレートを使用することもできます:[テンプレートを使用して Data Lake Analytics アカウントを作成する](https://github.com/Azure-Samples/data-lake-analytics-create-account-with-arm-template)
+次のサンプル「[テンプレートを使用して Data Lake Analytics アカウントを作成する](https://github.com/Azure-Samples/data-lake-analytics-create-account-with-arm-template)」を使用して、Azure リソース グループ テンプレートを使用することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
 * [Azure portal](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [Azure CLI](data-lake-analytics-get-started-cli.md) で Data Lake Analytics の使用を開始する
 * [Azure portal](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [CLI](data-lake-analytics-manage-use-cli.md) で Azure Data Lake Analytics を管理する 

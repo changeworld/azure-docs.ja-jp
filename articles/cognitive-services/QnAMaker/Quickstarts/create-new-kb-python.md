@@ -1,18 +1,18 @@
 ---
-title: クイック スタート:ナレッジ ベースを作成する - REST (Python) - QnA Maker
+title: 'クイック スタート: ナレッジ ベースを作成する - REST (Python) - QnA Maker'
 description: この Python REST ベースのクイック スタートでは、Cognitive Services API アカウントの Azure ダッシュボードに表示される QnA Maker ナレッジ ベースのサンプルをプログラムから作成する手順を紹介しています。
 ms.date: 12/16/2019
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: conceptual
 ms.openlocfilehash: bb51a47efc7bcae5014d5ea004674fed7cb33fe0
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78851597"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>クイック スタート:Python を使用して QnA Maker のナレッジ ベースを作成する
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>クイック スタート: Python を使用して QnA Maker のナレッジ ベースを作成する
 
 このクイック スタートでは、QnA Maker ナレッジ ベースのサンプルをプログラムから作成して発行する手順を紹介しています。 QnA Maker は、[データ ソース](../Concepts/knowledge-base.md)の FAQ などの半構造化コンテンツから質問とその回答を自動的に抽出します。 ナレッジ ベースのモデルは、API 要求の本文で送信される JSON で定義されます。
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: 103e19d6e299956b5ee1ad45b577e25f9f2de1c4
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78164034"
 ---
 # <a name="lsv2-series"></a>Lsv2 シリーズ
@@ -33,7 +33,7 @@ Premium Storage キャッシュ:サポートされていません
 
 ライブ マイグレーション:サポートされていません
 
-メモリ保持更新:サポートされていません
+メモリ保持更新: サポートされていません
 
 | サイズ | vCPU | メモリ (GiB) | 一時ディスク<sup>1</sup> (GiB) | NVMe ディスク<sup>2</sup> | NVMe ディスク スループット<sup>3</sup> (読み取り IOPS/MBps) | キャッシュ不使用時の最大データ ディスク スループット (IOPs/MBps)<sup>4</sup> | 最大データ ディスク数 | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 |---|---|---|---|---|---|---|---|---|

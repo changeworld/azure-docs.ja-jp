@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
 ms.openlocfilehash: 76eb3a135f7a32a30cfa62546a644bc77cf39998
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75934585"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>HDInsight クラスター用の Azure Resource Manager ベースの開発ツールに移行する

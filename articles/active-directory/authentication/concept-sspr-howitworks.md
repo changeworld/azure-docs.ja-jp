@@ -1,6 +1,6 @@
 ---
-title: セルフサービスによるパスワード リセットの詳細 - Azure Active Directory
-description: セルフサービスによるパスワードのリセットの動作
+title: セルフサービス パスワード リセットの詳細 - Azure Active Directory
+description: セルフサービス パスワード リセット の動作
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,15 +12,15 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5b19c80378aa40a7f791a3eb61130b013217ddee
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74848580"
 ---
-# <a name="how-it-works-azure-ad-self-service-password-reset"></a>動作のしくみ: Azure AD のセルフ サービスによるパスワードのリセット
+# <a name="how-it-works-azure-ad-self-service-password-reset"></a>動作のしくみ: Azure AD のセルフサービス パスワード リセット
 
-セルフサービスによるパスワードのリセット (SSPR) はどのように動作するのでしょうか? そのオプションはインターフェイスでは何を意味するのでしょうか? 以降では、Azure Active Directory (Azure AD) SSPR の詳細について説明します。
+セルフサービス パスワード リセット (SSPR) はどのように動作するのでしょうか? そのオプションはインターフェイスでは何を意味するのでしょうか? 以降では、Azure Active Directory (Azure AD) SSPR の詳細について説明します。
 
 ## <a name="how-does-the-password-reset-portal-work"></a>パスワード リセット ポータルのしくみ
 
@@ -66,7 +66,7 @@ SSPR が有効になっている場合は、認証方法として以下のオプ
 ユーザーが自分のパスワードをリセットできるのは、管理者が有効にした認証方法の中にユーザーのデータがある場合のみです。
 
 > [!IMPORTANT]
-> 2019 年 3 月以降、無料/試用版の Azure AD テナントの MFA および SSPR ユーザーは、音声通話オプションを利用できなくなります。 この変更は、SMS メッセージには影響しません。 有料の Azure AD テナントのユーザーは、引き続き音声通話を利用できます。 この変更は、無料/試用版の Azure AD テナントのみに影響します。
+> 2019 年 3 月以降、無料/試用版の Azure AD テナントの MFA および SSPR ユーザーは、音声通話オプションを利用できなくなります。 この変更は、SMS メッセージには影響しません。 有料の Azure AD テナントのユーザーは、引き続き音声通話を利用できます。 この変更は、無料/試用版の Azure AD テナントにのみ影響します。
 
 > [!WARNING]
 > Azure 管理者ロールが割り当てられたアカウントは、「[管理者リセット ポリシーの相違点](concept-sspr-policy.md#administrator-reset-policy-differences)」で定義されている方法を使用する必要があります。
@@ -92,10 +92,10 @@ Microsoft Authenticator アプリなどのモバイル アプリを使用して�
 | :---: | :---: | :---: |
 | 使用可能なモバイル アプリの機能 | コード | コードまたは通知 |
 
-[https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) からセルフ サービスによるパスワードのリセットを登録すると、ユーザーはモバイル アプリを登録するオプションを選択できません。 ユーザーは、[https://aka.ms/mfasetup](https://aka.ms/mfasetup) またはセキュリティ情報登録プレビュー ([https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)) でモバイル アプリを登録できます。
+[https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) からセルフサービス パスワード リセットを登録すると、ユーザーはモバイル アプリを登録するオプションを選択できません。 ユーザーは、[https://aka.ms/mfasetup](https://aka.ms/mfasetup) またはセキュリティ情報登録プレビュー ([https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)) でモバイル アプリを登録できます。
 
 > [!WARNING]
-> [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) での新しいエクスペリエンスにユーザーがアクセスできるようにするには、まず[セルフ サービス パスワード リセットと Azure Multi-factor Authentication (パブリック プレビュー) の集中型登録](concept-registration-mfa-sspr-converged.md)を有効にする必要があります。
+> [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) での新しいエクスペリエンスにユーザーがアクセスできるようにするには、まず[セルフサービス パスワード リセットと Azure Multi-factor Authentication (パブリック プレビュー) の集中型登録](concept-registration-mfa-sspr-converged.md)を有効にする必要があります。
 
 > [!IMPORTANT]
 > 1 ゲート ポリシーを構成するときに、唯一の認証方法として認証アプリを選択することはできません。 同様に、2 ゲート ポリシーを構成する場合は、認証アプリと追加の方法を 1 つだけ選択することはできません。
@@ -127,7 +127,7 @@ Microsoft Authenticator アプリなどのモバイル アプリを使用して�
 ユーザーが Azure AD を使用してアプリケーションにサインインする場合、このオプションを有効にするには、ユーザーがパスワード リセットの登録を完了する必要があります。 このワークフローには、次のアプリケーションが含まれます。
 
 * Office 365
-* Azure ポータル
+* Azure portal
 * アクセス パネル
 * フェデレーション アプリケーション
 * Azure AD を使用するカスタム アプリケーション
@@ -203,15 +203,15 @@ Azure AD のセルフサービス パスワード リセットでは、Active Di
 > [!NOTE]
 > Azure AD テナントへのゲスト アクセスを許可されている Microsoft アカウント (Hotmail.com、Outlook.com、他の個人メール アドレスからなど) は、Azure AD SSPR を使うことができません。 このようなユーザーは、「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)」の情報を使って、パスワードをリセットする必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の記事では、Azure AD によるパスワードのリセットに関する追加情報が得られます。
 
 * [SSPR のロールアウトを正常に完了する方法](howto-sspr-deployment.md)
 * [パスワードのリセットまたは変更](../user-help/active-directory-passwords-update-your-own-password.md)
-* [セルフサービスのパスワード リセットのための登録](../user-help/active-directory-passwords-reset-register.md)
+* [セルフサービス パスワード リセットのための登録](../user-help/active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](concept-sspr-licensing.md)
-* [SSPR が使用するデータと、ユーザー用に設定するデータ。](howto-sspr-authenticationdata.md)
+* [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ](howto-sspr-authenticationdata.md)
 * [ユーザーが使用できる認証方法](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR のポリシー オプション](concept-sspr-policy.md)
 * [パスワード ライトバックの概要とその必要性](howto-sspr-writeback.md)

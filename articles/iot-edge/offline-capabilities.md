@@ -7,12 +7,12 @@ ms.date: 11/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a057eac8d2a0114cb58f738277e3e9a8fed90672
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 55512491121aee28404ab5f85b4223c67a2f0e1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548664"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80236055"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>IoT Edge デバイス、モジュール、子デバイスの拡張オフライン機能について理解する
 
@@ -70,7 +70,7 @@ IoT Edge デバイスによってその拡張オフライン機能を子 IoT デ
 
 [Azure コマンド ライン インターフェイス](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)と [IoT 拡張機能](https://github.com/azure/azure-iot-cli-extension) (v0.7.0 以降) を使用して、[device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) サブコマンドにより親子関係を管理できます。 次の例では、ハブ内の IoT Edge 以外のすべてデバイスを IoT Edge デバイスの子デバイスとして割り当てるクエリを使用しています。
 
-```shell
+```azurecli
 # Set IoT Edge parent device
 egde_device="edge-device1"
 

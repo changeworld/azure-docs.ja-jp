@@ -17,16 +17,16 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: ff5897766bb56b76a34940ecd786773fd844a336
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5fa94b93e081ab6334c39b848068f50682f5f1f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683112"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235064"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Azure CLI を使用してルート テーブルでネットワーク トラフィックをルーティングする
 
-Azure は、既定では、トラフィックを仮想ネットワーク内のすべてのサブネット間で自動的にルーティングします。 Azure の既定のルーティングは、独自のルートを作成してオーバーライドすることができます。 カスタム ルートを作成する機能は、たとえば、サブネット間でネットワーク仮想アプライアンス (NVA) を越えてトラフィックをルーティングしたい場合に便利です。 この記事では、次のことについて説明します。
+既定では、仮想ネットワーク内のすべてのサブネット間でトラフィックが自動的にルーティングされます。 Azure の既定のルーティングは、独自のルートを作成してオーバーライドすることができます。 カスタム ルートを作成する機能は、たとえば、サブネット間でネットワーク仮想アプライアンス (NVA) を越えてトラフィックをルーティングしたい場合に便利です。 この記事では、次のことについて説明します。
 
 * ルート テーブルの作成
 * ルートの作成
@@ -51,11 +51,11 @@ CLI をローカルにインストールして使用することを選択する�
 az group create \
   --name myResourceGroup \
   --location eastus
-``` 
+```
 
 [az network route-table create](/cli/azure/network/route-table#az-network-route-table-create) でルート テーブルを作成します。 次の例では、*myRouteTablePublic* という名前のルート テーブルを作成します。 
 
-```azurecli-interactive 
+```azurecli-interactive
 # Create a route table
 az network route-table create \
   --resource-group myResourceGroup \
@@ -74,7 +74,7 @@ az network route-table route create \
   --address-prefix 10.0.1.0/24 \
   --next-hop-type VirtualAppliance \
   --next-hop-ip-address 10.0.2.4
-``` 
+```
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>サブネットへのルート テーブルの関連付け
 
@@ -107,7 +107,7 @@ az network vnet subnet create \
   --address-prefix 10.0.2.0/24
 ```
 
-[az network vnet subnet update](/cli/azure/network/vnet/subnet) で、*myRouteTablePublic* ルート テーブルを*パブリック* サブネットに関連付けます。
+*az network vnet subnet update* で、*myRouteTablePublic* ルート テーブルを[パブリック](/cli/azure/network/vnet/subnet) サブネットに関連付けます。
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -121,9 +121,9 @@ az network vnet subnet update \
 
 NVA は、ルーティング、ファイアウォール、WAN 最適化などのネットワーク機能を実行する VM です。
 
-[az vm create](/cli/azure/vm) を使用して、*DMZ* サブネットに NVA を作成します。 VM を作成すると、既定では、Azure はパブリック IP アドレスを作成し、その VM に割り当てます。 この VM にはインターネットから接続する必要がないため、`--public-ip-address ""` パラメーターは Azure に、パブリック IP アドレスを作成して VM に割り当てることのないよう指示します。 既定のキーの場所にまだ SSH キーが存在しない場合は、コマンドを使って SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。
+*az vm create* を使用して、[DMZ](/cli/azure/vm) サブネットに NVA を作成します。 VM を作成すると、既定では、Azure はパブリック IP アドレスを作成し、その VM に割り当てます。 この VM にはインターネットから接続する必要がないため、`--public-ip-address ""` パラメーターは Azure に、パブリック IP アドレスを作成して VM に割り当てることのないよう指示します。 既定のキーの場所にまだ SSH キーが存在しない場合は、コマンドを使って SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。
 
-```azure-cli-interactive
+```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
   --name myVmNva \
@@ -155,13 +155,14 @@ az vm extension set \
   --publisher Microsoft.Azure.Extensions \
   --settings '{"commandToExecute":"sudo sysctl -w net.ipv4.ip_forward=1"}'
 ```
+
 このコマンドは、実行するのに最大 1 分かかることがあります。
 
 ## <a name="create-virtual-machines"></a>仮想マシンを作成する
 
 後の手順で、*パブリック* サブネットからのトラフィックが NVA 経由で*プライベート* サブネットにルーティングされていることを検証できるように、仮想ネットワークに 2 つの VM を作成します。 
 
-[az vm create](/cli/azure/vm) を使用して、*パブリック* サブネット内に VM を作成します。 `--no-wait` パラメーターを使用すると、Azure はバックグラウンドでコマンドを実行できるので、次のコマンドに進むことができます。 この記事を効率化するために、パスワードが使用されています。 通常、キーは運用環境デプロイで使用されます。 キーを使用する場合は、SSH エージェント転送も構成する必要があります。 詳細については、SSH クライアントのドキュメントを参照してください。 次のコマンドの `<replace-with-your-password>` を、使用するパスワードに置き換えます。
+*az vm create* を使用して、[パブリック](/cli/azure/vm) サブネット内に VM を作成します。 `--no-wait` パラメーターを使用すると、Azure はバックグラウンドでコマンドを実行できるので、次のコマンドに進むことができます。 この記事を効率化するために、パスワードが使用されています。 通常、キーは運用環境デプロイで使用されます。 キーを使用する場合は、SSH エージェント転送も構成する必要があります。 詳細については、SSH クライアントのドキュメントを参照してください。 次のコマンドの `<replace-with-your-password>` を、使用するパスワードに置き換えます。
 
 ```azurecli-interactive
 adminPassword="<replace-with-your-password>"
@@ -192,7 +193,7 @@ az vm create \
 
 VM の作成には数分かかります。 VM が作成されると、Azure CLI によって次の例のような情報が表示されます。 
 
-```azurecli 
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVmPrivate",
@@ -204,13 +205,14 @@ VM の作成には数分かかります。 VM が作成されると、Azure CLI 
   "resourceGroup": "myResourceGroup"
 }
 ```
+
 **publicIpAddress** を書き留めておきます。 このアドレスは、後の手順で、インターネットから VM にアクセスするときに使います。
 
 ## <a name="route-traffic-through-an-nva"></a>NVA を経由するトラフィックのルーティング
 
 次のコマンドを使用して、*myVmPrivate* VM との SSH セッションを作成します。 *\<publicIpAddress>* を VM のパブリック IP アドレスに置き換えます。 上の例では、IP アドレスは *13.90.242.231* です。
 
-```bash 
+```bash
 ssh azureuser@<publicIpAddress>
 ```
 
@@ -218,7 +220,7 @@ ssh azureuser@<publicIpAddress>
 
 次のコマンドを使用して、*myVmPrivate* VM に traceroute をインストールします。
 
-```bash 
+```bash
 sudo apt-get install traceroute
 ```
 
@@ -230,7 +232,7 @@ traceroute myVmPublic
 
 応答は次の例のようになります。
 
-```bash
+```output
 traceroute to myVmPublic (10.0.0.4), 30 hops max, 60 byte packets
 1  10.0.0.4 (10.0.0.4)  1.404 ms  1.403 ms  1.398 ms
 ```
@@ -239,13 +241,13 @@ traceroute to myVmPublic (10.0.0.4), 30 hops max, 60 byte packets
 
 次のコマンドを使用して、*myVmPrivate* VM から *myVmPublic* VM へ SSH 接続します。
 
-```bash 
+```bash
 ssh azureuser@myVmPublic
 ```
 
 次のコマンドを使用して、*myVmPublic* VM に traceroute をインストールします。
 
-```bash 
+```bash
 sudo apt-get install traceroute
 ```
 
@@ -257,24 +259,25 @@ traceroute myVmPrivate
 
 応答は次の例のようになります。
 
-```bash
+```output
 traceroute to myVmPrivate (10.0.1.4), 30 hops max, 60 byte packets
 1  10.0.2.4 (10.0.2.4)  0.781 ms  0.780 ms  0.775 ms
 2  10.0.1.4 (10.0.0.4)  1.404 ms  1.403 ms  1.398 ms
 ```
+
 最初のホップが 10.0.2.4 であることを確認できます。これは、NVA のプライベート IP アドレスです。 2 番目のホップは 10.0.1.4 です。これは、*myVmPrivate* VM のプライベート IP アドレスです。 *myRouteTablePublic* ルート テーブルに追加され、"*パブリック*" サブネットに関連付けられているルートにより、Azure はトラフィックを "*プライベート*" サブネットに直接ルーティングするのではなく、NVA 経由でルーティングするようになります。
 
 *myVmPublic* VM と *myVmPrivate* VM の両方に対する SSH セッションを閉じます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 不要になったら、[az group delete](/cli/azure/group) を使用して、リソース グループとそのグループに含まれているすべてのリソースを削除します。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、ルート テーブルを作成し、それをサブネットに関連付けました。 トラフィックをパブリック サブネットからプライベート サブネットにルーティングする単純な NVA を作成しました。 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking) からファイアウォールや WAN 最適化などのネットワーク機能を実行する、さまざまな事前構成された NVA を展開します。 ルーティングの詳細については、[ルーティングの概要](virtual-networks-udr-overview.md)と[ルート テーブルの管理](manage-route-table.md)に関する記事をご覧ください。
 

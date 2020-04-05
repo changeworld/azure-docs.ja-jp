@@ -1,20 +1,18 @@
 ---
 title: 発行ポータルでのアプリケーションのセットアップ
 description: クラウド発行ポータルでお客様のアプリケーションを設定する方法について説明します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
-manager: Ricardo.Villalobos
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 1bf89f94d91e0d809428cf8098db0fb37afdb47a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 2676dbf72309eeb51be1f08e7bae2c1502cc671e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814679"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280203"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>発行ポータルでのアプリケーションのセットアップ
 
@@ -79,7 +77,7 @@ Dynamics 365 for Customer Engagement オファーを作成するための、主�
 
 * File name of your package (パッケージのファイル名): 前の手順で、お客様の CRM AppSource パッケージである ZIP ファイルを作成するときに付けたファイル名です。 上記の例では、"Microsoft\_SamplePackage.zip" です。
 * Url of your package location (パッケージの場所の URL): これは、上記で指定したパッケージのファイル名が含まれている Azure ストレージ アカウントの URL です。 前のセクションの手順 9 で作成した URL です。
-* Is there more than one crm package in your package file (パッケージ ファイルには、複数の CRM パッケージがある): 異なるパッケージで CRM の複数のバージョンをサポートしている場合に**のみ**、[はい] を選択します。 ほとんどのパートナーの場合、これは [いいえ] になります。 [はい] を選択した場合は、ソリューションの各バージョンの AppSource パッケージを作成する必要があります。 _注:これは、**ZIP** ファイルが複数あるかどうかを聞いているのではありません。ソリューションの .zip ファイルが複数あっても、バージョンが 1 つだけの場合は、[いいえ] を選択してください。これらはパッケージ化ツールによって自動的にまとめられます。_
+* Is there more than one crm package in your package file (パッケージ ファイルには、複数の CRM パッケージがある): 異なるパッケージで CRM の複数のバージョンをサポートしている場合に**のみ**、[はい] を選択します。 ほとんどのパートナーの場合、これは [いいえ] になります。 [はい] を選択した場合は、ソリューションの各バージョンの AppSource パッケージを作成する必要があります。 _注意事項: これは、**ZIP** ファイルが複数あるかどうかを聞いているのではありません。ソリューションの .zip ファイルが複数あっても、バージョンが 1 つだけの場合は、[いいえ] を選択してください。これらはパッケージ化ツールによって自動的にまとめられます。_
 
 ### <a name="crm-package-availability"></a>CRM パッケージの利用可能性
 

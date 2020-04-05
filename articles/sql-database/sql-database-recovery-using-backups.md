@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: 3b0b5b02fa8f369bdfa03726bd5649b70b7bbd48
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b98331a9cdb359aeefac5db1546f3a15b54010ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228043"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232475"
 ---
 # <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>自動データベース バックアップを使用して Azure SQL データベースを復旧する
 
@@ -126,7 +126,7 @@ PowerShell を使用して、Azure SQL Database とマネージド インスタ�
 
 #### <a name="managed-instance-database"></a>マネージド インスタンスのデータベース
 
-削除されたインスタンス データベースの復元方法を示す PowerShell スクリプトのサンプルについては、[PowerShell を使用したマネージド インスタンス上の削除されたデータベースの復元](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../recreate-dropped-database-on-azure-sql-managed-instance)に関するページをご覧ください。 
+削除されたインスタンス データベースの復元方法を示す PowerShell スクリプトのサンプルについては、[PowerShell を使用したマネージド インスタンス上の削除されたデータベースの復元](sql-database-managed-instance-point-in-time-restore.md#restore-a-deleted-database)に関するページをご覧ください。
 
 > [!TIP]
 > 削除されたデータベースをプログラムで復元するには、「[自動バックアップを使用したプログラム実行の復旧](sql-database-recovery-using-backups.md)」を参照してください。
@@ -243,7 +243,7 @@ Azure CLI を使用してマネージド インスタンス データベース�
 
 自動バックアップは、ユーザー エラーやアプリケーション エラー、偶発的なデータベースの削除、および長期間にわたる障害からデータベースを保護します。 この組み込みの機能は、すべてのサービス レベルとコンピューティング サイズで使用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ビジネス継続性の概要](sql-database-business-continuity.md)
 - [SQL Database 自動バックアップ](sql-database-automated-backups.md)

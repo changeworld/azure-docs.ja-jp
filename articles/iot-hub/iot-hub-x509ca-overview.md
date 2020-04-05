@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
 ms.openlocfilehash: 3d02d3573902964a8549fa0eeb1f4f1471de1752
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257573"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237327"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>X.509 CA 証明書を使用したデバイス認証
 

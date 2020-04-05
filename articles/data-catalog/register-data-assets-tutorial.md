@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 08/01/2019
 ms.openlocfilehash: 4bd2b7093100ff24b21b67ea84613ac9b2ec8299
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68950247"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>チュートリアル:Azure Data Catalog でのデータ資産の登録
@@ -253,7 +253,7 @@ Azure Data Catalog では、注釈に対するクラウドソーシング手法�
 
 この演習では、Azure Data Catalog を使用して検出されたデータ資産に接続しました。 Azure Data Catalog ポータルでは、 **[開く]** メニューに統合されたクライアント アプリケーションを使用して、データ資産に直接接続できます。 また、資産メタデータに含まれる接続場所の情報を使用して、任意のアプリケーションに接続することもできます。 たとえば、SQL Server Management Studio を使用すると、Azure SQL データベースに接続し、このチュートリアルで登録されたデータ資産のデータにアクセスできます。
 
-1. **SQL Server Management Studio**を開きます。
+1. **SQL Server Management Studio** を開きます。
 
 2. **[サーバーへの接続]** ダイアログ ボックスで、Azure Data Catalog ポータルの **[プロパティ]** ウィンドウに表示されているサーバー名を入力します。
 
@@ -316,7 +316,7 @@ Azure Data Catalog では、個々の資産を削除することも、複数の�
 
 このチュートリアルでは、Azure Data Catalog の重要な機能 (エンタープライズ データ資産の登録、注釈付け、検出、管理など) について学習しました。 これでチュートリアルは完了したので、使用を開始できます。 自分やチームが依存するデータ ソースを登録し、カタログを使用する同僚を招待することによって、今すぐ始めることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [サポートされるデータ ソース](data-catalog-dsr.md)

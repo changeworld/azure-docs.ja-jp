@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: b04fe3b6451fd7250bc3b05970d49fdb8e7003bd
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3182961f928a9befc5a55fb6d58e22c74ba81089
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899297"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79473440"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリ内で機能フラグを使用する
 
@@ -37,6 +37,8 @@ ms.locfileid: "76899297"
 
 ## <a name="set-up-feature-management"></a>機能管理を設定する
 
+.NET Core 機能マネージャーを利用するには、`Microsoft.FeatureManagement` NuGet パッケージへの参照を追加します。
+    
 .NET Core 機能マネージャー `IFeatureManager` は、フレームワークのネイティブ構成システムから機能フラグを取得します。 その結果、.NET Core がサポートする任意の構成ソース (ローカルの *appsettings.json* ファイルや環境変数など) を使用して、アプリケーションの機能フラグを定義できます。 `IFeatureManager` は、.NET Core の依存関係の挿入に依存します。 機能管理サービスは、標準の規則を使用して登録できます。
 
 ```csharp

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 03ec0b41ad910ff0d1dcdc17148e01ec94ea9fb0
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78674514"
 ---
 # <a name="how-to-use-azure-cli-and-the-iot-extension-to-manage-the-iot-hub-device-provisioning-service"></a>Azure CLI と IoT 拡張機能を使用して IoT Hub Device Provisioning Service を管理する方法

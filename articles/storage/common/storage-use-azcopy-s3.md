@@ -9,10 +9,10 @@ ms.date: 01/13/2020
 ms.author: normesta
 ms.subservice: common
 ms.openlocfilehash: a3180593eaf8c01c772fd761d88b5f5b9f7657ee
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75941497"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>AzCopy を使用して Amazon S3 から Azure Storage にデータをコピーする

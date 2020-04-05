@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/27/2018
 ms.openlocfilehash: b8c09d4ac5d0856eb0d448a1cabd9adc567850c4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670612"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Azure Monitor で Linux エージェント上の CollectD からデータを収集する

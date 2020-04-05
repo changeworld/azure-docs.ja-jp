@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/29/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 8da4ce7801cc98f9ffb32eb7b506eaf1ccd877dd
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77562065"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Durable Functions での関数チェーン - Hello シーケンス サンプル

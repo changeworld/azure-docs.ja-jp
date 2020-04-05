@@ -4,10 +4,10 @@ description: クラウド内でのコンテナー イメージの安全で自動
 ms.topic: article
 ms.date: 01/22/2020
 ms.openlocfilehash: 4fda57c1d7c866f2e6f72b04d75e53f91e995baf
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79087284"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>ACR タスクでコンテナー イメージのビルドとメンテナンスを自動化する

@@ -10,10 +10,10 @@ ms.custom: include file
 ms.topic: include
 ms.date: 10/04/2019
 ms.openlocfilehash: b44d624db419919823ec85bcb599007fb75c92b9
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73929681"
 ---
 1. ご利用の Azure サブスクリプションの資格情報を使って、[Azure portal](https://portal.azure.com/) にサインインします。 
@@ -33,7 +33,7 @@ ms.locfileid: "73929681"
    フィールド|説明 
    ---|---
    ワークスペース名 |ワークスペースを識別する一意の名前を入力します。 この例では、**docs-ws** を使用します。 名前は、リソース グループ全体で一意である必要があります。 覚えやすく、他のユーザーが作成したワークスペースと区別しやすい名前を使用します。 
-   Subscription |使用する Azure サブスクリプションを選択します。
+   サブスクリプション |使用する Azure サブスクリプションを選択します。
    Resource group | サブスクリプションの既存のリソース グループを使用するか、任意の名前を入力して新しいリソース グループを作成します。 リソース グループは、Azure ソリューションの関連するリソースを保持します。 この例では、**docs-aml** を使用します。 
    Location | ユーザーとデータ リソースに最も近い場所を選択し、ワークスペースを作成します。
    ワークスペースのエディション | **[Enterprise]** を選択します。 このチュートリアルでは、Enterprise エディションを使用する必要があります。 Enterprise エディションはプレビュー段階であり、現時点では特別なコストは追加されません。 

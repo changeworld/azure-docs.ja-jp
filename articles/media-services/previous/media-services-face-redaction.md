@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 6a1b7a76ef1efda51f09ac733b3d434235ff40ef
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74900299"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Azure Media Analytics で顔を編集する 
@@ -34,7 +34,7 @@ ms.locfileid: "74900299"
 ### <a name="combined-mode"></a>結合モード
 手作業なしで、自動的に修正された mp4 が生成されます。
 
-| 段階 | ファイル名 | メモ |
+| 段階 | ファイル名 | Notes |
 | --- | --- | --- |
 | 入力資産 |foo.bar |WMV、MPV、MP4 形式のビデオ |
 | 入力 config |ジョブ構成プリセット |{'version':'1.0', 'options': {'mode':'combined'}} |
@@ -49,7 +49,7 @@ ms.locfileid: "74900299"
 ### <a name="analyze-mode"></a>分析モード
 2 パス ワークフローの **分析** パスでは、ビデオ入力を受け取り、顔の位置の JSON ファイルと、検出された顔それぞれの jpg イメージを生成します。
 
-| 段階 | ファイル名 | メモ |
+| 段階 | ファイル名 | Notes |
 | --- | --- | --- |
 | 入力資産 |foo.bar |WMV、MPV、MP4 形式のビデオ |
 | 入力 config |ジョブ構成プリセット |{'version':'1.0', 'options': {'mode':'analyze'}} |
@@ -114,7 +114,7 @@ ms.locfileid: "74900299"
 
 Analyze パスからの出力は、元のビデオを含みません。 ビデオは、編集モードのタスクの入力資産にアップロードし、プライマリ ファイルとして選択する必要があります。
 
-| 段階 | ファイル名 | メモ |
+| 段階 | ファイル名 | Notes |
 | --- | --- | --- |
 | 入力資産 |foo.bar |WMV、MPV、MP4 形式のビデオ 手順 1 と同じビデオです。 |
 | 入力資産 |foo_annotations.json |フェーズ 1 からの注釈メタデータ ファイルで、変更可能です。 |
@@ -157,9 +157,9 @@ foo_IDList.txt の例
 
 ![高](./media/media-services-face-redaction/blur3.png)
 
-#### <a name="box"></a>Box
+#### <a name="box"></a>ボックス
 
-![Box](./media/media-services-face-redaction/blur4.png)
+![ボックス](./media/media-services-face-redaction/blur4.png)
 
 #### <a name="black"></a>Black
 
@@ -363,7 +363,7 @@ namespace FaceRedaction
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

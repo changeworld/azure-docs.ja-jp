@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/26/2019
-ms.openlocfilehash: 884d10ce1bc5e6b710c849d0be1cb9165caac4c5
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 48a72b5ba3819712b9e1d2536ae2dd3a06eaf3f2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706085"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80238818"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>HDInsight 上の Apache Kafka を Azure IoT Hub と共に使用する
 
@@ -51,7 +51,7 @@ Connect API について詳しくは、[https://kafka.apache.org/documentation/#
     sbt assembly
     ```
 
-    このビルドは完了までに数分かかります。 このコマンドにより、プロジェクトの `toketi-kafka-connect-iothub-master\target\scala-2.11` ディレクトリに `kafka-connect-iothub-assembly_2.11-0.7.0.jar` というファイルが作成されます。
+    このビルドは完了までに数分かかります。 このコマンドにより、プロジェクトの `kafka-connect-iothub-assembly_2.11-0.7.0.jar` ディレクトリに `toketi-kafka-connect-iothub-master\target\scala-2.11` というファイルが作成されます。
 
 ## <a name="install-the-connector"></a>コネクタをインストールする
 
@@ -118,7 +118,7 @@ Connect API について詳しくは、[https://kafka.apache.org/documentation/#
 
 1. 次の編集を行います。
 
-    |現在の値 |新しい値 | Comment (コメント) |
+    |現在の値 |新しい値 | 解説 |
     |---|---|---|
     |`bootstrap.servers=localhost:9092`|`localhost:9092` 値を前の手順のブローカー ホストに置き換えます。|エッジ ノードのスタンドアロン構成を設定して、Kafka ブローカーを検索します。|
     |`key.converter=org.apache.kafka.connect.json.JsonConverter`|`key.converter=org.apache.kafka.connect.storage.StringConverter`|この変更により、Kafka に含まれているコンソール プロデューサーを使用してテストすることができます。 他のプロデューサーとコンシューマーには別のコンバーターが必要な場合があります。 他のコンバーター値の使用について、[https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) をご覧ください。|
@@ -164,7 +164,7 @@ Connect API について詳しくは、[https://kafka.apache.org/documentation/#
 
    * __[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) で__、次のコマンドを使用します。
 
-       ```azure-cli
+       ```azurecli
        az iot hub show --name myhubname --query "{EventHubCompatibleName:properties.eventHubEndpoints.events.path,EventHubCompatibleEndpoint:properties.eventHubEndpoints.events.endpoint,Partitions:properties.eventHubEndpoints.events.partitionCount}"
        ```
 
@@ -188,7 +188,7 @@ Connect API について詳しくは、[https://kafka.apache.org/documentation/#
 
         1. 主キーの値を取得するには、次のコマンドを使用します。
 
-            ```azure-cli
+            ```azurecli
             az iot hub policy show --hub-name myhubname --name service --query "primaryKey"
             ```
 
@@ -196,7 +196,7 @@ Connect API について詳しくは、[https://kafka.apache.org/documentation/#
 
         2. `service` ポリシーの接続文字列を取得するには、次のコマンドを使用します。
 
-            ```azure-cli
+            ```azurecli
             az iot hub show-connection-string --name myhubname --policy-name service --query "connectionString"
             ```
 
@@ -206,7 +206,7 @@ Connect API について詳しくは、[https://kafka.apache.org/documentation/#
 
 IoT ハブを使用するようにソースを構成するには、エッジ ノードへの SSH 接続から次のアクションを実行します。
 
-1. `/usr/hdp/current/kafka-broker/config/` ディレクトリに `connect-iot-source.properties` ファイルのコピーを作成します。 toketi-kafka-connect-iothub プロジェクトからファイルをダウンロードするには、次のコマンドを使用します。
+1. `connect-iot-source.properties` ディレクトリに `/usr/hdp/current/kafka-broker/config/` ファイルのコピーを作成します。 toketi-kafka-connect-iothub プロジェクトからファイルをダウンロードするには、次のコマンドを使用します。
 
     ```bash
     sudo wget -P /usr/hdp/current/kafka-broker/config/ https://raw.githubusercontent.com/Azure/toketi-kafka-connect-iothub/master/connect-iothub-source.properties
@@ -220,7 +220,7 @@ IoT ハブを使用するようにソースを構成するには、エッジ ノ
 
 1. エディターで、次のエントリを検索し、変更します。
 
-    |現在の値 |Edit|
+    |現在の値 |[編集]|
     |---|---|
     |`Kafka.Topic=PLACEHOLDER`|`PLACEHOLDER` を `iotin` で置き換え IoT ハブから受信したメッセージは `iotin` トピックに配置されます。|
     |`IotHub.EventHubCompatibleName=PLACEHOLDER`|`PLACEHOLDER` をイベント ハブ互換の名前に置き換えます。|
@@ -241,7 +241,7 @@ IoT ハブを使用するようにソースを構成するには、エッジ ノ
 
 IoT ハブを使用するようにシンク接続を構成するには、エッジ ノードへの SSH 接続から次のアクションを実行します。
 
-1. `/usr/hdp/current/kafka-broker/config/` ディレクトリに `connect-iothub-sink.properties` ファイルのコピーを作成します。 toketi-kafka-connect-iothub プロジェクトからファイルをダウンロードするには、次のコマンドを使用します。
+1. `connect-iothub-sink.properties` ディレクトリに `/usr/hdp/current/kafka-broker/config/` ファイルのコピーを作成します。 toketi-kafka-connect-iothub プロジェクトからファイルをダウンロードするには、次のコマンドを使用します。
 
     ```bash
     sudo wget -P /usr/hdp/current/kafka-broker/config/ https://raw.githubusercontent.com/Azure/toketi-kafka-connect-iothub/master/connect-iothub-sink.properties
@@ -255,7 +255,7 @@ IoT ハブを使用するようにシンク接続を構成するには、エッ�
 
 1. エディターで、次のエントリを検索し、変更します。
 
-    |現在の値 |Edit|
+    |現在の値 |[編集]|
     |---|---|
     |`topics=PLACEHOLDER`|`PLACEHOLDER` を `iotout` で置き換え `iotout` トピックに書き込まれたメッセージが IoT ハブに転送されます。|
     |`IotHub.ConnectionString=PLACEHOLDER`|`PLACEHOLDER` を `service` ポリシーの接続文字列に置き換えます。|
@@ -276,7 +276,7 @@ IoT ハブを使用するようにシンク接続を構成するには、エッ�
 
     コネクタが開始された後で、デバイスから IoT ハブにメッセージを送信します。 コネクタは、IoT ハブからのメッセージを読み取り、Kafka トピックに格納するときに、コンソールに情報を記録します。
 
-    ```text
+    ```output
     [2017-08-29 20:15:46,112] INFO Polling for data - Obtained 5 SourceRecords from IotHub (com.microsoft.azure.iot.kafka.connect.IotHubSourceTask:39)
     [2017-08-29 20:15:54,106] INFO Finished WorkerSourceTask{id=AzureIotHubConnector-0} commitOffsets successfully in 4 ms (org.apache.kafka.connect.runtime.WorkerSourceTask:356)
     ```
@@ -296,7 +296,7 @@ IoT ハブを使用するようにシンク接続を構成するには、エッ�
 
 コネクタが実行されると、次のテキストのような情報が表示されます。
 
-```text
+```output
 [2017-08-30 17:49:16,150] INFO Started tasks to send 1 messages to devices. (com.microsoft.azure.iot.kafka.connect.sink.
 IotHubSinkTask:47)
 [2017-08-30 17:49:16,150] INFO WorkerSinkTask{id=AzureIotHubSinkConnector-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSinkTask:262)
@@ -346,7 +346,7 @@ IotHubSinkTask:47)
 
     シミュレートされた Raspberry Pi デバイスを使用し、それが実行されている場合は、デバイスによって次のメッセージがログに記録されます。
 
-    ```text
+    ```output
     Receive message: Turn On
     ```
 
@@ -354,7 +354,7 @@ IotHubSinkTask:47)
 
 シンク コネクタの使用について詳しくは、[https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このドキュメントでは、Apache Kafka Connect API を使用して HDInsight 上の IoT Kafka Connector を開始する方法について説明しました。 次のリンクを使用することで、Kafka のその他の活用方法を知ることができます。
 

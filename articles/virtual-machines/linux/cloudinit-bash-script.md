@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.openlocfilehash: e2f19ceb6c7f19ba749b46a3553036587be6a71a
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969214"
 ---
 # <a name="use-cloud-init-to-run-a-bash-script-in-a-linux-vm-in-azure"></a>cloud-init を使用して Azure 上の Linux VM で Bash スクリプトを実行する

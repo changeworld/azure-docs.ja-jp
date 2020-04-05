@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 01/06/2020
 ms.author: danlep
 ms.openlocfilehash: 318576e9b5c5b32bbc993ea16494c938b74bd2f4
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77200063"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>コンテナー インスタンスを Azure 仮想ネットワークにデプロイする

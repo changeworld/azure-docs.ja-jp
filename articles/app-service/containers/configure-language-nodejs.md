@@ -4,12 +4,12 @@ description: アプリ用に事前構築済みの Node.js コンテナーを構�
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 6cf60472307a378d2fd4258a9777152344a11ded
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: fdc5129fc395f99cb4c244414ea952b2776dc4dc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670282"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227547"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>Azure App Service 向けの Linux Node.js アプリを構成する
 
@@ -44,6 +44,32 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 > [!NOTE]
 > プロジェクトの `package.json` で Node.js バージョンを設定する必要があります。 デプロイ エンジンは、サポートされているすべての Node.js バージョンを含む別のコンテナーで実行します。
 
+## <a name="customize-build-automation"></a>ビルドの自動化のカスタマイズ
+
+ビルドの自動化を有効にして Git または zip パッケージを使用してアプリをデプロイする場合、App Service のビルドの自動化によって、次の手順が実行されます。
+
+1. `PRE_BUILD_SCRIPT_PATH` によって指定された場合、カスタム スクリプトを実行します。
+1. フラグを指定せずに `npm install` を実行します。これには、npm `preinstall` スクリプトと `postinstall` スクリプトが含まれ、`devDependencies` のインストールも行われます。
+1. *package.json* 内でビルド スクリプトが指定されている場合、`npm run build` を実行します。
+1. *package.json* 内で build:azure スクリプトが指定されている場合、`npm run build:azure` を実行します。
+1. `POST_BUILD_SCRIPT_PATH` によって指定された場合、カスタム スクリプトを実行します。
+
+> [!NOTE]
+> [npm に関するドキュメント](https://docs.npmjs.com/misc/scripts)に説明されているように、`prebuild` および `postbuild` というスクリプトが指定された場合、それぞれ `build`の前と後に実行されます。 `preinstall` および `postinstall` はそれぞれ、`install` の前と後に実行されます。
+
+`PRE_BUILD_COMMAND` および `POST_BUILD_COMMAND` は、既定では空の環境変数です。 ビルド前のコマンドを実行するには、`PRE_BUILD_COMMAND` を定義します。 ビルド後のコマンドを実行するには、`POST_BUILD_COMMAND` を定義します。
+
+次の例では、一連のコマンドに対して 2 つの変数をコンマ区切りで指定しています。
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+ビルドの自動化をカスタマイズするためのその他の環境変数については、「[Oryx の構成](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)」を参照してください。
+
+Linux 上で App Service によって Node.js アプリが実行されビルドされる方法に関する詳細については、[Oryx ドキュメントの Node.js アプリが検出されビルドされる方法](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/nodejs.md)に関するページを参照してください。
+
 ## <a name="configure-nodejs-server"></a>Node.js サーバーを構成する
 
 Node.js コンテナーには、製造工程マネージャーである [PM2](https://pm2.keymetrics.io/) が付属しています。 PM2、NPM、またはカスタム コマンドで開始するようにアプリを構成できます。
@@ -62,7 +88,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ### <a name="run-npm-start"></a>npm start を実行する
 
-`npm start` を使用してをアプリを開始するには、`start` スクリプトが *package.json* ファイル内にあることを確認するだけです。 例:
+`npm start` を使用してをアプリを開始するには、`start` スクリプトが *package.json* ファイル内にあることを確認するだけです。 次に例を示します。
 
 ```json
 {
@@ -110,7 +136,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 [PM2 で実行](#run-with-pm2)するように構成した場合、*.config.js、*.yml、または *.yaml* を使用して実行したときを除き、[Visual Studio Code](https://code.visualstudio.com/) で Node.js アプリをリモートからデバッグできます。
 
-ほとんどの場合、アプリ用に追加の構成は必要ありません。 アプリが *process.json* ファイル (既定またはカスタム) で実行されている場合、JSON ルートに `script` プロパティが必要です。 例:
+ほとんどの場合、アプリ用に追加の構成は必要ありません。 アプリが *process.json* ファイル (既定またはカスタム) で実行されている場合、JSON ルートに `script` プロパティが必要です。 次に例を示します。
 
 ```json
 {
@@ -138,7 +164,7 @@ process.env.NODE_ENV
 
 既定では、Kudu は、Node.js アプリがデプロイされていることを認識すると、`npm install --production` を実行します。 アプリで、Grunt、Bower、Gulp など、一般的な自動化ツールのいずれかが必要な場合、それを実行する[カスタム デプロイ スクリプト](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)を提供する必要があります。
 
-リポジトリでこれらのツールを実行できるようにするには、*package.json* での依存関係にこれらを追加する必要があります。 例:
+リポジトリでこれらのツールを実行できるようにするには、*package.json* での依存関係にこれらを追加する必要があります。 次に例を示します。
 
 ```json
 "dependencies": {
@@ -217,7 +243,7 @@ fi
 
 App Service では、[SSL 終了](https://wikipedia.org/wiki/TLS_termination_proxy)がネットワーク ロード バランサーで発生するため、すべての HTTPS リクエストは暗号化されていない HTTP リクエストとしてアプリに到達します。 ユーザー要求が暗号化されているかどうかをアプリ ロジックが確認する必要がある場合は、`X-Forwarded-Proto` ヘッダーを調べます。
 
-一般的な Web フレームワークでは、標準のアプリ パターンで `X-Forwarded-*` 情報にアクセスできます。 [Express](https://expressjs.com/) で、[trust proxy](https://expressjs.com/guide/behind-proxies.html) を使用できます。 例:
+一般的な Web フレームワークでは、標準のアプリ パターンで `X-Forwarded-*` 情報にアクセスできます。 [Express](https://expressjs.com/) で、[trust proxy](https://expressjs.com/guide/behind-proxies.html) を使用できます。 次に例を示します。
 
 ```javascript
 app.set('trust proxy', 1)
@@ -240,13 +266,15 @@ if (req.secure) {
 動作中の Node.js アプリが App Service で異なる動作をしたり、エラーが発生した場合は、次のことを試してください。
 
 - [ログ ストリームにアクセス](#access-diagnostic-logs)します。
-- 実稼働モードでローカルにアプリをテストします。 App Service では、実稼働モードで Node.js アプリが実行されるので、プロジェクトがローカルで実稼働モードで予想どおりに動作することを確認する必要があります。 例:
+- 実稼働モードでローカルにアプリをテストします。 App Service では、実稼働モードで Node.js アプリが実行されるので、プロジェクトがローカルで実稼働モードで予想どおりに動作することを確認する必要があります。 次に例を示します。
     - *package.json* に応じて、実稼働モードに別々のパッケージ (`dependencies` と `devDependencies`) がインストールされる場合があります。
     - 特定の Web フレームワークでは、実稼働モードで静的ファイルを別にデプロイすることがあります。
     - 特定の Web フレームワークでは、実稼働モードで実行しているときにカスタム スタートアップ スクリプトを使用することがあります。
 - 開発モードの App Service でアプリを実行します。 たとえば、[MEAN.js](https://meanjs.org/) で、[`NODE_ENV` アプリ設定を指定する](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)ことによって、実行時に開発モードにアプリを設定できます。
 
-## <a name="next-steps"></a>次の手順
+[!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
+
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [チュートリアル:Node.js アプリと MongoDB](tutorial-nodejs-mongodb-app.md)

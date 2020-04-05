@@ -3,12 +3,12 @@ title: PowerShell を使用した割り当ての管理方法
 description: 公式の Azure Blueprints PowerShell モジュールである Az.Blueprint でブループリント割り当てを管理する方法について説明します。
 ms.date: 09/30/2019
 ms.topic: how-to
-ms.openlocfilehash: 765ed5e1849443d6ac73fe4507327e97e4fdc4c2
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b16cf887ba8bfc51616839db5f4af87944ec686d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973647"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80247403"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>PowerShell を使用した割り当ての管理方法
 
@@ -247,7 +247,7 @@ $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Subsc
     -AssignmentFile '.\assignment.json'
 ```
 
-ユーザー割り当てマネージド ID の JSON 割り当て定義ファイルの例については、REST API の[ユーザー割り当てマネージド ID による割り当ての例](/rest/api/blueprints/assignments/createorupdate#assignment-with-user-assigned-managed-identity)の要求本文を参照してください。
+ユーザー割り当てマネージド ID の JSON 割り当て定義ファイルの例については、REST API の[ユーザー割り当てマネージド ID による割り当ての例](/rest/api/blueprints/assignments/createorupdate#examples)の要求本文を参照してください。
 
 ## <a name="update-blueprint-assignments"></a>ブループリント割り当てを更新する
 
@@ -377,7 +377,7 @@ Remove-AzBlueprintAssignment -InputObject $bpAssignment -SubscriptionId '{subId}
 #endregion
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ブループリントのライフサイクル](../concepts/lifecycle.md)を参照する。
 - [静的および動的パラメーター](../concepts/parameters.md)の使用方法を理解する。

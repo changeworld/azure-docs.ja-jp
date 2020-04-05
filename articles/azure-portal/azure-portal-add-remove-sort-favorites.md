@@ -11,10 +11,10 @@ ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
 ms.openlocfilehash: d6b580accb02efb6a44c0c245af583d2e3850409
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76310817"
 ---
 # <a name="add-remove-and-rearrange-favorites"></a>お気に入りの追加、削除、並べ替え

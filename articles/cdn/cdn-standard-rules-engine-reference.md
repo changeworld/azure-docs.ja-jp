@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
 ms.openlocfilehash: aa401150ee7a0f02e809ad702b8247e18081c8a3
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74171561"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>Azure CDN の Standard ルール エンジン リファレンス
@@ -26,7 +26,7 @@ Azure Content Delivery Network (Azure CDN) の [Standard ルール エンジン]
 - 要求をリダイレクトします。
 - HTTP の要求ヘッダーや応答ヘッダーを変更します。
 
-## <a name="terminology"></a>用語集
+## <a name="terminology"></a>用語
 
 ルール エンジンでルールを定義するには、[一致条件](cdn-standard-rules-engine-match-conditions.md)と[アクション](cdn-standard-rules-engine-actions.md)を設定します。
 
@@ -54,7 +54,7 @@ Azure CDN エンドポイントの現在の 5 ルール制限には既定の*グ
 
 ワイルドカード値として解釈されるテキストでは、特殊文字に付加的な意味が割り当てられます。 次の表は、Standard ルール エンジンにおける特殊文字の解釈についてまとめたものです。
 
-Character | 説明
+文字 | 説明
 ----------|------------
 \ | バックスラッシュは、このテーブルで指定されているすべて文字からのエスケープに使用されます。 エスケープする特殊文字の直前にバックスラッシュを指定する必要があります。 たとえば、次の構文では、アスタリスクをエスケープします。`\*`
 % | パーセント記号は、URL エンコードを示すために使用されます (例: `%20`)。
@@ -62,7 +62,7 @@ Character | 説明
 空白 | 空白文字は、指定した値とパターンのいずれかで一致条件が満たされることを示します。
 一重引用符 | 一重引用符には特別な意味はありません。 ただし、一重引用符値がセットになった場合、リテラル値として扱われることを示します。 一重引用符は次のように使用できます。<ul><li>指定した値が比較対象値の一部と一致するときに一致条件が満たされるようにします。  たとえば、`'ma'` は、次の文字列のいずれかと一致します。 <ul><li>/business/**ma**rathon/asset.htm</li><li>**ma**p.gif</li><li>/business/template.**ma**p</li></ul><li>特殊文字をリテラル文字として指定できるようにします。 たとえば、一組の一重引用符で空白文字を囲むことで、リテラルの空白文字を指定できます (つまり、`' '` または `'<sample value>'`)。</li><li>空の値を指定できるようにします。 一重引用符のセット ( **''** ) を指定することで、空の値を指定します。</li></ul>**重要**:<br /><ul><li>指定した値にワイルドカードが含まれていない場合、自動的にリテラル値としてみなされます。 リテラル値には、単一引用符のセットを指定する必要はありません。</li><li>バックスラッシュがこの表にある別の文字のエスケープに使用されない場合、そのバックスラッシュは、一組の一重引用符で指定されても無視されます。</li><li>特殊文字をリテラル文字として指定するもう 1 つの方法は、バックスラッシュ (`\`) を使用してエスケープすることです。</li></ul>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Standard ルール エンジンの一致条件](cdn-standard-rules-engine-match-conditions.md)
 - [Standard ルール エンジンのアクション](cdn-standard-rules-engine-actions.md)

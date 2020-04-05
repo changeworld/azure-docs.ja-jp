@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 09/25/2018
 ms.author: yushwang
 ms.openlocfilehash: 42a07ac00fd8a26918164f6547bf57c2b021d14c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75863616"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>CLI を使用して Azure VPN ゲートウェイで BGP を構成する方法
@@ -39,7 +39,7 @@ BGP の利点の詳しい説明と、BGP を使用する場合の技術面の要
 
 これらのセクションを組み合わせると、ニーズに合わせて、より複雑なマルチホップの通過ネットワークを構築することができます。
 
-## <a name ="enablebgp"></a>VPN ゲートウェイに対して BGP を有効にする
+## <a name="enable-bgp-for-your-vpn-gateway"></a><a name ="enablebgp"></a>VPN ゲートウェイに対して BGP を有効にする
 
 このセクションで説明する手順を実行してから、他の 2 つの構成セクションの手順を実行する必要があります。 以下の構成手順では、次の図に示すように、Azure VPN ゲートウェイの BGP パラメーターを設定します。
 
@@ -51,7 +51,7 @@ BGP の利点の詳しい説明と、BGP を使用する場合の技術面の要
 
 ### <a name="step-1-create-and-configure-testvnet1"></a>手順 1:TestVNet1 の作成と構成
 
-#### <a name="Login"></a>1.サブスクリプションへの接続
+#### <a name="1-connect-to-your-subscription"></a><a name="Login"></a>1.サブスクリプションへの接続
 
 [!INCLUDE [CLI login](../../includes/vpn-gateway-cli-login-include.md)]
 
@@ -118,7 +118,7 @@ az network vnet-gateway list -g TestBGPRG1 
 
 ゲートウェイが作成されたら、このゲートウェイを使用して、BGP でクロスプレミス接続または VNet 間接続を確立することができます。
 
-## <a name ="crossprembgp"></a>BGP を使用してクロスプレミス接続を確立する
+## <a name="establish-a-cross-premises-connection-with-bgp"></a><a name ="crossprembgp"></a>BGP を使用してクロスプレミス接続を確立する
 
 クロスプレミス接続を確立するには、オンプレミスの VPN デバイスを表すローカル ネットワーク ゲートウェイを作成する必要があります。 その後、Azure VPN ゲートウェイをローカル ネットワーク ゲートウェイに接続します。 次の手順は、他の接続の作成方法と似ていますが、BGP 構成パラメーターを指定するのに必要なプロパティが追加されています。
 
@@ -210,7 +210,7 @@ eBGP Multihop        : Ensure the "multihop" option for eBGP is enabled on your 
 
 数分後に接続が確立されます。 IPsec 接続が確立されると、BGP ピアリング セッションが始まります。
 
-## <a name ="v2vbgp"></a>BGP を使用して VNet 間接続を確立する
+## <a name="establish-a-vnet-to-vnet-connection-with-bgp"></a><a name ="v2vbgp"></a>BGP を使用して VNet 間接続を確立する
 
 このセクションでは、次の図に示すように、BGP を使用して VNet 間接続を追加します。 
 

@@ -10,11 +10,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/02/2020
 ms.openlocfilehash: d1723b6c5d56554fbff576f6a07e37455845bda4
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77498626"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236863"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Azure Cognitive Search でインデクサーを使用して Cosmos DB データのインデックスを作成する方法 
 
@@ -362,7 +362,7 @@ SQL クエリを指定すると、ネストされたプロパティや配列の�
         }
     }
 
-## <a name="NextSteps"></a>次のステップ
+## <a name="next-steps"></a><a name="NextSteps"></a>次のステップ
 
 お疲れさまでした。 インデクサーを使用して、Azure Cosmos DB を Azure Cognitive Search と統合する方法についての説明は以上で終了です。
 

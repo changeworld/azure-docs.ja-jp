@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure DevOps Projects を使用して ASP.NET アプリと Azure SQL Database コードをデプロイする
+title: 'チュートリアル: Azure DevOps Projects を使用して ASP.NET アプリと Azure SQL Database コードをデプロイする'
 description: DevOps Projects を利用すると、Azure を使い始めるのが簡単になります。 DevOps Projects を使用すると、いくつかの簡単な手順で ASP.NET アプリと Azure SQL Database コードをデプロイできます。
 ms.author: mlearned
 ms.manager: gwallace
@@ -10,13 +10,13 @@ ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
 ms.openlocfilehash: 560b16a40d73d07df6c9f446c7196cd930e2274e
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71971496"
 ---
-# <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-projects"></a>チュートリアル:Azure DevOps Projects を使用して ASP.NET アプリと Azure SQL Database コードをデプロイする
+# <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-projects"></a>チュートリアル: Azure DevOps Projects を使用して ASP.NET アプリと Azure SQL Database コードをデプロイする
 
 Azure DevOps Projects によって提供される簡略化されたエクスペリエンスを使用すると、既存のコードと Git リポジトリを使用するか、サンプル アプリケーションを選択して、Azure への継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインを作成することができます。 
 
@@ -35,7 +35,7 @@ DevOps Projects には、以下の機能もあります。
 > * CD パイプライン を確認する
 > * 変更を Azure Repos にコミットし、Azure に自動的にデプロイする
 > * Azure SQL データベースに接続する 
-> * リソースのクリーンアップ
+> * リソースをクリーンアップする
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -45,7 +45,7 @@ DevOps Projects には、以下の機能もあります。
 
 DevOps Projects によって、Azure Pipelines に CI/CD パイプラインが作成されます。 新しい Azure DevOps 組織を作成するか、既存の組織を使用できます。 DevOps Projects では、選択した Azure サブスクリプションに Azure SQL データベースなどの Azure リソースも作成されます。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 1. 左側のウィンドウで、 **[リソースの作成]** を選びます。
 
@@ -187,7 +187,7 @@ Azure SQL データベースに接続するには、適切なアクセスを許�
    > [!NOTE]
    > SQL ログインのパスワードを変更する場合は、「CD パイプラインを確認する」セクションで説明したように、リリース パイプライン変数のパスワードを変更する必要があります。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 テストを行っている場合は、リソースをクリーンアップすることによって、課金を回避することができます。 このチュートリアルで作成した Azure SQL データベースと関連リソースが必要なくなったら、削除してかまいません。 そうするには、DevOps Projects ダッシュボードで**削除**機能を使用します。
 
@@ -198,7 +198,7 @@ Azure SQL データベースに接続するには、適切なアクセスを許�
 2. 右上の **[削除]** を選択します。 
 3. 確認のメッセージで **[はい]** を選択すると、リソースが "*完全に削除*" されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 必要に応じて、チームのニーズを満たすようにこれらのビルドおよびリリース パイプラインを変更できます。 この CI/CD パターンをご自身の他のパイプラインのテンプレートとして使用することもできます。 このチュートリアルでは、以下の内容を学習しました。
 
@@ -209,7 +209,7 @@ Azure SQL データベースに接続するには、適切なアクセスを許�
 > * CD パイプライン を確認する
 > * 変更を Azure Repos にコミットし、Azure に自動的にデプロイする
 > * Azure SQL データベースに接続する 
-> * リソースのクリーンアップ
+> * リソースをクリーンアップする
 
 CI/CD パイプラインの詳細については、以下を参照してください。
 

@@ -7,10 +7,10 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 3714ce2a8098608851991115aa82afdc00d08a47
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77459390"
 ---
 # <a name="add-authentication-to-your-apache-cordova-app"></a>Apache Cordova アプリへの認証の追加
@@ -19,12 +19,12 @@ ms.locfileid: "77459390"
 ## <a name="summary"></a>まとめ
 このチュートリアルでは、サポートされている ID プロバイダーを使用して、Apache Cordova で todolist クイック スタート プロジェクトに認証を追加します。 最初に、このチュートリアルの基になっている [Mobile Apps の使用] チュートリアルを完了しておく必要があります。
 
-## <a name="register"></a>アプリケーションを認証に登録し、App Service を構成する
+## <a name="register-your-app-for-authentication-and-configure-the-app-service"></a><a name="register"></a>アプリケーションを認証に登録し、App Service を構成する
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
 [同様の手順を説明するビデオを見る](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-8-Azure-authentication)
 
-## <a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
+## <a name="restrict-permissions-to-authenticated-users"></a><a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 これで、バックエンドへの匿名アクセスが無効になっていることを確認できます。 Visual Studio で次の操作を行います。
@@ -35,7 +35,7 @@ ms.locfileid: "77459390"
 
 次に、Mobile App バックエンドのリソースを要求する前にユーザーを認証するようにアプリを更新します。
 
-## <a name="add-authentication"></a>アプリケーションに認証を追加する
+## <a name="add-authentication-to-the-app"></a><a name="add-authentication"></a>アプリケーションに認証を追加する
 1. **Visual Studio** でプロジェクトを開き、編集する `www/index.html` ファイルを開きます。
 2. head セクションで `Content-Security-Policy` メタ タグを見つけます。  許可されているソースの一覧に OAuth ホストを追加します。
 
@@ -85,7 +85,7 @@ ms.locfileid: "77459390"
 4. 先ほど追加したコードで、 `SDK_Provider_Name` を実際のログイン プロバイダーの名前に置き換えます。 たとえば、Azure Active Directory の場合、 `client.login('aad')`を使用します。
 5. プロジェクトを実行します。  プロジェクトの初期化が終了すると、アプリケーションにより、選択した認証プロバイダーの OAuth ログイン ページが表示されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a><a name="next-steps"></a>次のステップ
 * Azure App Service を使用した [認証の詳細] を確認します。
 * このチュートリアルの続きとして、Apache Cordova アプリに [プッシュ通知] を追加します。
 

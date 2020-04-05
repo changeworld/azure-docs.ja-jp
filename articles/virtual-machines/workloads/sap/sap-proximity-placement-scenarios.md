@@ -16,10 +16,10 @@ ms.date: 01/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 01ce1599f86082aef3ff53d298cc53896074af66
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277589"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>SAP アプリケーションで最適なネットワーク待ち時間を実現するための Azure 近接通信配置グループ

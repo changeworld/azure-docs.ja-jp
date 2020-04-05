@@ -8,10 +8,10 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
 ms.openlocfilehash: c4635333614ee1c0fd0322c29a659380fb4315c9
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74048374"
 ---
 # <a name="customize-web-application-firewall-rules-using-the-azure-portal"></a>Azure portal を使用した Web アプリケーション ファイアウォール規則のカスタマイズ
@@ -63,7 +63,7 @@ CRS 3.x 固有:
 
 * インバウンド異常スコアがしきい値を超えました
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 無効にするルールを構成したら、WAF ログを表示する方法を学習できます。 詳細については、[Application Gateway の診断](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging)に関するトピックを参照してください。
 

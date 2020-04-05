@@ -3,7 +3,7 @@ title: 拡張イベント
 description: Azure SQL Database での拡張イベント (XEvents) について、またイベント セッションが Microsoft SQL Server におけるイベント セッションと若干異なる点について説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: monitor
+ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: cab5b5baf318eb9eadc398ce525e0de716d0df2d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: cb4eb4474ad074a3e69dc146c97b48d54343595b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822296"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79213957"
 ---
 # <a name="extended-events-in-sql-database"></a>SQL Database の拡張イベント
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "73822296"
 
 Azure SQL Database と Microsoft SQL Server の拡張イベントについては、次のトピックをご覧ください。
 
-- [クイック スタート:SQL Server の拡張イベント](https://msdn.microsoft.com/library/mt733217.aspx)
+- [クイック スタート: SQL Server の拡張イベント](https://msdn.microsoft.com/library/mt733217.aspx)
 - [拡張イベント](https://msdn.microsoft.com/library/bb630282.aspx)
 
 ## <a name="prerequisites"></a>前提条件
@@ -83,15 +83,15 @@ Azure SQL Database と Microsoft SQL Server の拡張イベントについては
 
 | カタログ ビューの名前<br/>カタログ ビュー | 説明 |
 |:--- |:--- |
-| **sys.database_event_session_actions** |イベント セッションの各イベントに対する操作ごとに行を返します。 |
+| **sys.database_event_session_actions** |イベント セッションの各イベントのアクションごとに 1 行のデータを返します。 |
 | **sys.database_event_session_events** |イベント セッションのイベントごとに行を返します。 |
 | **sys.database_event_session_fields** |イベントとターゲットに明示的に設定されたカスタマイズ可能な列ごとに行を返します。 |
-| **sys.database_event_session_targets** |イベント セッションに対してイベント ターゲットごとに行を返します。 |
+| **sys.database_event_session_targets** |イベント セッションのイベント ターゲットごとに 1 行のデータを返します。 |
 | **sys.database_event_sessions** |SQL Database のデータベース内のイベント セッションごとに行を返します。 |
 
 Microsoft SQL Server では、同様のカタログ ビュー名には *.database\_* ではなく、 *.server\_* が含まれています。 名前のパターンは、**sys.server_event_%** のようになっています。
 
-## <a name="new-dynamic-management-views-dmvshttpsmsdnmicrosoftcomlibraryms188754aspx"></a>新しい動的管理ビュー [(DMV)](https://msdn.microsoft.com/library/ms188754.aspx)
+## <a name="new-dynamic-management-views-dmvs"></a>新しい動的管理ビュー [(DMV)](https://msdn.microsoft.com/library/ms188754.aspx)
 
 Azure SQL Database には、拡張イベントをサポートする [動的管理ビュー (DMV)](https://msdn.microsoft.com/library/bb677293.aspx) があります。 DMV では *アクティブな* イベント セッションについて参照できます。
 
@@ -99,7 +99,7 @@ Azure SQL Database には、拡張イベントをサポートする [動的管�
 |:--- |:--- |
 | **sys.dm_xe_database_session_event_actions** |イベント セッション アクションに関する情報を返します。 |
 | **sys.dm_xe_database_session_events** |セッション イベントに関する情報を返します。 |
-| **sys.dm_xe_database_session_object_columns** |セッションにバインドされているオブジェクトの構成の値を示します。 |
+| **sys.dm_xe_database_session_object_columns** |セッションにバインドされたオブジェクトの構成値を示します。 |
 | **sys.dm_xe_database_session_targets** |セッション ターゲットに関する情報を返します。 |
 | **sys.dm_xe_database_sessions** |現在のデータベースを対象としたイベント セッションごとに行を返します。 |
 
@@ -169,8 +169,8 @@ SQL Database のクラウド環境に利点となるセキュリティ関連の�
 
 Azure Storage コンテナーのために生成した SAS トークンには、権限として **rwl** を指定する必要があります。 **rwl** 値により次のアクセスが許可されます。
 
-- 読み取り
-- 書き込み
+- Read
+- Write
 - List
 
 ## <a name="performance-considerations"></a>パフォーマンスに関する考慮事項
@@ -203,7 +203,7 @@ Azure Storage BLOB にデータを保持する際に、 **イベント ファイ
     - [https://azure.microsoft.com/updates/?service=sql-database](https://azure.microsoft.com/updates/?service=sql-database)
 
 
-拡張イベントの他のコード サンプル トピックは次のリンクから入手可能です。 ただし、対象が Azure SQL Database または Microsoft SQL Server のどちらかを確認するために、サンプルを定期的にチェックする必要があります。 それにより、サンプルを実行するのにわずかな変更が必要かどうか判断できます。
+拡張イベントの他のコード サンプル トピックは次のリンクから入手可能です。 ただし、対象が Azure SQL Database または Microsoft SQL Server のどちらかを確認するために、サンプルを定期的にチェックする必要があります。 これにより、変更がサンプル実行に十分であるかを判断できます。
 
 <!--
 ('lock_acquired' event.)

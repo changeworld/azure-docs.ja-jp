@@ -4,10 +4,10 @@ description: ポリシー違反やブループリント パラメーター関数
 ms.date: 01/15/2020
 ms.topic: troubleshooting
 ms.openlocfilehash: 7306e344a479008a87164a954c4444d375950b0b
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76157085"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Azure Blueprints でエラーを解決する
@@ -30,7 +30,7 @@ ms.locfileid: "76157085"
 
 ## <a name="general-errors"></a>一般エラー
 
-### <a name="policy-violation"></a>シナリオ:ポリシー違反
+### <a name="scenario-policy-violation"></a><a name="policy-violation"></a>シナリオ:ポリシー違反
 
 #### <a name="issue"></a>問題
 
@@ -43,11 +43,11 @@ ms.locfileid: "76157085"
 - 作成されるリソースはポリシーの制約を受けます (一般的には SKU または場所の制約)
 - デプロイはポリシーによって構成される設定フィールドです (タグで一般的)
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 ブルー プリントを変更して、エラーの詳細に含まれているポリシーと競合しないようにします。 変更できない場合、代替として、ブループリントがポリシーと競合しないようにポリシー割り当てのスコープを変更するという選択肢があります。
 
-### <a name="escape-function-parameter"></a>シナリオ:ブループリント パラメーターが関数である
+### <a name="scenario-blueprint-parameter-is-a-function"></a><a name="escape-function-parameter"></a>シナリオ:ブループリント パラメーターが関数である
 
 #### <a name="issue"></a>問題
 
@@ -57,13 +57,13 @@ ms.locfileid: "76157085"
 
 `[resourceGroup().tags.myTag]` などの関数を使用するブループリント パラメーターを成果物に渡すと、動的関数ではなく、成果物に対して関数が設定されます。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 関数をパラメーターとして渡すには、ブループリント パラメーターが `[[resourceGroup().tags.myTag]` のようになるように、文字列全体を `[` でエスケープします。 エスケープ文字により、Blueprints によってブループリントが処理されるときに値が文字列として扱われます。 その後、関数は Blueprints によって成果物に配置され、意図したとおりに動的になります。 詳細については、「[Azure Resource Manager テンプレートの構文と式](../../../azure-resource-manager/templates/template-expressions.md)」を参照してください。
 
 ## <a name="delete-errors"></a>削除エラー
 
-### <a name="assign-delete-timeout"></a>シナリオ:割り当て削除のタイムアウト
+### <a name="scenario-assignment-deletion-timeout"></a><a name="assign-delete-timeout"></a>シナリオ:割り当て削除のタイムアウト
 
 #### <a name="issue"></a>問題
 
@@ -73,7 +73,7 @@ ms.locfileid: "76157085"
 
 ブループリント割り当ては、削除されると、最終状態以外の状態のままになることがあります。 この状態は、ブループリント割り当てによって作成されたリソースが、まだ削除を保留しているか、Azure Blueprints に状態コードを返していない場合に発生します。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 最終状態以外の状態のブループリント割り当ては、"_6 時間_" のタイムアウト後に**失敗**として自動的にマークされます。 タイムアウトによってブループリント割り当ての状態が調整されたら、削除を再試行できます。
 

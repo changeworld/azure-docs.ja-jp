@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 4b8cbc27757cf6c321ea4b3c27720a129aa27c1b
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593475"
 ---
 # <a name="real-time-alerts-in-microsoft-azure-cdn"></a>Microsoft Azure CDN のリアルタイム アラート
@@ -30,7 +30,7 @@ ms.locfileid: "67593475"
 * 帯域幅
 * 状態コード
 * キャッシュの状態
-* Connections
+* 接続
 
 ## <a name="creating-a-real-time-alert"></a>リアルタイム アラートの作成
 1. [Azure Portal](https://portal.azure.com) で、CDN プロファイルに移動します。

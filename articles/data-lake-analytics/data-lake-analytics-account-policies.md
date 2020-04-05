@@ -10,10 +10,10 @@ ms.assetid: 0a6102d1-7554-4df2-b487-4dae9a7287b6
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.openlocfilehash: 4689714073047e383a53a04bd0069a8a27afdf9d
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72966126"
 ---
 # <a name="manage-azure-data-lake-analytics-using-account-policies"></a>アカウント ポリシーを使用して Azure Data Lake Analytics を管理する
@@ -32,7 +32,7 @@ Data Lake Analytics アカウントの AU の数を変更するには:
 1. Azure Portal で Data Lake Analytics アカウントに移動します。
 2. **[制限とポリシー]** をクリックします。
 3. **[最大 AU]** で、スライダーを移動して値を選択するか、テキスト ボックスに値を入力します。 
-4. **[Save]** をクリックします。
+4. **[保存]** をクリックします。
 
 > [!NOTE]
 > 既定値 (250) より多い AU が必要な場合は、ポータルで **[ヘルプとサポート]** をクリックし、サポート要求を送信します。 Data Lake Analytics アカウントで利用できる AU の数は、増やすことができます。
@@ -46,7 +46,7 @@ Data Lake Analytics アカウントの AU の数を変更するには:
 1. Azure Portal で Data Lake Analytics アカウントに移動します。
 2. **[制限とポリシー]** をクリックします。
 3. **[実行ジョブの最大数]** で、スライダーを移動して値を選択するか、テキスト ボックスに値を入力します。 
-4. **[Save]** をクリックします。
+4. **[保存]** をクリックします。
 
 > [!NOTE]
 > 既定値 (20) より多い数のジョブを実行する必要がある場合は、ポータルで **[ヘルプとサポート]** をクリックし、サポート要求を送信します。 Data Lake Analytics アカウントで同時に実行できるジョブの数は、増やすことができます。
@@ -60,7 +60,7 @@ Data Lake Analytics アカウントの AU の数を変更するには:
 1. Azure Portal で Data Lake Analytics アカウントに移動します。
 2. **[制限とポリシー]** をクリックします。
 3. **[ジョブ クエリを保持する日数]** で、スライダーを移動して値を選択するか、テキスト ボックスに値を入力します。  
-4. **[Save]** をクリックします。
+4. **[保存]** をクリックします。
 
 ## <a name="job-level-policies"></a>ジョブレベルのポリシー
 
@@ -68,8 +68,8 @@ Data Lake Analytics アカウントの AU の数を変更するには:
 
 Data Lake Analytics には、ジョブ レベルで設定できる次の 2 つのポリシーがあります。
 
-* **[ジョブあたりの AU 制限]** :ユーザーは、最大でこの AU 数になる範囲でのみ、ジョブを送信できます。 既定では、この制限はアカウントの最大 AU 制限と同じです。
-* **[優先度]** :ユーザーは、優先度がこの値以下のジョブだけを送信できます。 値が大きいほど優先度が低くなります。 この制限は既定では 1 に設定されています。これは、最も高い優先度です。
+* **ジョブあたりの AU 制限**: ユーザーは、最大でこの AU 数になる範囲でのみ、ジョブを送信できます。 既定では、この制限はアカウントの最大 AU 制限と同じです。
+* **優先度**: ユーザーは、優先度がこの値以下のジョブだけを送信できます。 値が大きいほど優先度が低くなります。 この制限は既定では 1 に設定されています。これは、最も高い優先度です。
 
 すべてのアカウントに、既定のポリシー セットがあります。 既定のポリシーは、アカウントのすべてのユーザーに適用されます。 特定のユーザーとグループに対して、追加のポリシーを作成することができます。 
 
@@ -82,10 +82,10 @@ Data Lake Analytics には、ジョブ レベルで設定できる次の 2 つ�
 1. Azure Portal で Data Lake Analytics アカウントに移動します。
 2. **[制限とポリシー]** をクリックします。
 3. **[ジョブの送信の制限]** で、 **[ポリシーの追加]** ボタンをクリックします。 次に、以下の設定を選択するか入力します。
-    1. **[計算ポリシー名]** :ポリシーの目的がわかるようなポリシー名を入力します。
-    2. **[ユーザーまたはグループの選択]** :このポリシーの適用対象となるユーザーまたはグループを選択します。
-    3. **[ジョブ AU の制限を設定します]** :選択したユーザーまたはグループに適用される AU の制限を設定します。
-    4. **[Set the Priority Limit]\(優先度の制限を設定します\)** :選択したユーザーまたはグループに適用される優先度の制限を設定します。
+    1. **[計算ポリシー名]** : ポリシーの目的がわかるようなポリシー名を入力します。
+    2. **[ユーザーまたはグループの選択]** : このポリシーの適用対象となるユーザーまたはグループを選択します。
+    3. **[ジョブ AU の制限を設定します]** : 選択したユーザーまたはグループに適用される AU の制限を設定します。
+    4. **[Set the Priority Limit]\(優先度の制限を設定します\)** : 選択したユーザーまたはグループに適用される優先度の制限を設定します。
 
 4. **[OK]** をクリックします。
 
@@ -103,7 +103,7 @@ Data Lake Analytics には、ジョブ レベルで設定できる次の 2 つ�
 * [アカウントレベルのポリシーに関するブログの投稿](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-account-level-policy/)
 * [ジョブレベルのポリシーに関するブログの投稿](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-job-level-policy/)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
 * [Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)

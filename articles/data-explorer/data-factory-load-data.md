@@ -9,10 +9,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.openlocfilehash: 860b1a579d9c8cee6c6e80ae4c4e7fdd7949d5c7
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71300594"
 ---
 # <a name="copy-data-to-azure-data-explorer-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Explorer にデータをコピーする 
@@ -44,7 +44,7 @@ Azure Data Explorer にデータを読み込むと、Data Factory には次の�
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
-1. [Azure Portal](https://ms.portal.azure.com) にサインインします。
+1. [Azure portal](https://ms.portal.azure.com) にサインインします。
 
 1. 左側のウィンドウで、 **[リソースの作成]**  >  **[分析]**  >  **[Data Factory]** の順に選択します。
 
@@ -54,15 +54,15 @@ Azure Data Explorer にデータを読み込むと、Data Factory には次の�
 
    ![[新しいデータ ファクトリ] ウィンドウ](media/data-factory-load-data/my-new-data-factory.png)  
 
-   | Setting  | 入力する値  |
+   | 設定  | 入力する値  |
    |---|---|
-   | **Name** | このボックスには、実際のデータ ファクトリのグローバルに一意の名前を入力します。 "*データ ファクトリ名 \"LoadADXDemo\" は利用できません*" というエラーが発生する場合は、データ ファクトリ用に別の名前を入力します。 Data Factory アーティファクトの名前付けに関する規則については、[Data Factory の名前付け規則](/azure/data-factory/naming-rules)に関する記事を参照してください。|
+   | **名前** | このボックスには、実際のデータ ファクトリのグローバルに一意の名前を入力します。 "*データ ファクトリ名 \"LoadADXDemo\" は利用できません*" というエラーが発生する場合は、データ ファクトリ用に別の名前を入力します。 Data Factory アーティファクトの名前付けに関する規則については、[Data Factory の名前付け規則](/azure/data-factory/naming-rules)に関する記事を参照してください。|
    | **サブスクリプション** | ドロップダウン リストで、データ ファクトリを作成する Azure サブスクリプションを選択します。 |
    | **リソース グループ** | **[新規作成]** を選択し、新しいリソース グループの名前を入力します。 既にリソース グループがある場合は、 **[既存のものを使用する]** を選択します。 |
-   | **バージョン** | ドロップダウン リストで、 **[V2]** を選択します。 |  
-   | **Location** | ドロップダウン リストで、データ ファクトリの場所を選択します。 サポートされている場所のみがこのリストに表示されます。 データ ファクトリによって使用されるデータ ストアは、他の場所やリージョンにあってもかまいません。 |
+   | **Version** | ドロップダウン リストで、 **[V2]** を選択します。 |  
+   | **場所** | ドロップダウン リストで、データ ファクトリの場所を選択します。 サポートされている場所のみがこのリストに表示されます。 データ ファクトリによって使用されるデータ ストアは、他の場所やリージョンにあってもかまいません。 |
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 1. 作成プロセスを監視するには、ツール バーの **[通知]** を選択します。 データ ファクトリの作成後、それを選択します。
    
@@ -198,13 +198,13 @@ Azure Data Explorer のリンクされたサービスを作成するには、以
 
 1. **[列マッピング]** ウィンドウで、次のマッピングが行われます。
 
-    a. 最初のマッピングは、[Azure Data Factory のスキーマ マッピング](/azure/data-factory/copy-activity-schema-and-type-mapping)に関する記事に従って実行されます。 以下の手順を実行します。
+    a. 最初のマッピングは、[Azure Data Factory のスキーマ マッピング](/azure/data-factory/copy-activity-schema-and-type-mapping)に関する記事に従って実行されます。 次の操作を行います。
 
     * Azure Data Factory のコピー先テーブルの **[列マッピング]** を設定します。 既定では、ソースから Azure Data Factory のコピー先テーブルへのマッピングが表示されます。
 
     * 列マッピングを定義する必要がない列の選択はキャンセルします。
 
-    b. 2 つ目のマッピングは、Azure Data Explorer にこの表形式データが取り込まれたときに行われます。 マッピングは [CSV のマッピング規則](/azure/kusto/management/mappings#csv-mapping)に従って実行されます。 ソース データが CSV 形式でない場合でも、Azure Data Factory ではそのデータが表形式に変換されます。 したがって、この段階では、CSV マッピングは唯一の関連のあるマッピングになります。 以下の手順を実行します。
+    b. 2 つ目のマッピングは、Azure Data Explorer にこの表形式データが取り込まれたときに行われます。 マッピングは [CSV のマッピング規則](/azure/kusto/management/mappings#csv-mapping)に従って実行されます。 ソース データが CSV 形式でない場合でも、Azure Data Factory ではそのデータが表形式に変換されます。 したがって、この段階では、CSV マッピングは唯一の関連のあるマッピングになります。 次の操作を行います。
 
     * (省略可能) **[Azure Data Explorer (Kusto) sink properties]\(Azure Data Explorer (Kusto) シンク プロパティ\)** で、列マッピングを使用できるように、関連する **[Ingestion mapping name]\(インジェスト マッピング名\)** を追加します。
 
@@ -238,7 +238,7 @@ Azure Data Explorer のリンクされたサービスを作成するには、以
 
     ![[Deployment complete]\(デプロイ完了\) ウィンドウ](media/data-factory-load-data/deployment.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Data Factory 内の [Azure Data Explorer コネクタ](/azure/data-factory/connector-azure-data-explorer)について学習する。
 * [Data Factory UI](/azure/data-factory/quickstart-create-data-factory-portal) でのリンクされたサービス、データセット、およびパイプラインの編集の詳細について学習する。

@@ -9,10 +9,10 @@ ms.date: 02/18/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 26e76731f663ac9038bc87182d52c4bd245f1b6e
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77471698"
 ---
 ## <a name="limitations"></a>制限事項
@@ -28,7 +28,7 @@ ms.locfileid: "77471698"
 共有ディスク機能が有効になっている管理ディスクをデプロイするには、新しいプロパティ `maxShares` を使用し、`>1`値を定義します。 これにより、複数の VM 間でディスクを共有できるようになります。
 
 > [!IMPORTANT]
-> `maxShares` の値は、ディスクがすべての VM からマウント解除されている場合にのみ設定または変更できます。 `maxShares`に使用できる値については、[ディスクのサイズ](#disk-sizes) を参照してください。
+> `maxShares` の値は、ディスクがすべての VM からマウント解除されている場合にのみ設定または変更できます。 [に使用できる値については、](#disk-sizes)ディスクのサイズ`maxShares` を参照してください。
 
 次のテンプレートを使用する前に、`[parameters('dataDiskName')]`、`[resourceGroup().location]`、`[parameters('dataDiskSizeGB')]`、および `[parameters('maxShares')]` を実際の値に置き換えてください。
 

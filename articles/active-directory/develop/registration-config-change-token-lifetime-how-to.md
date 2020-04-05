@@ -16,10 +16,10 @@ ms.date: 04/08/2019
 ms.author: ryanwi
 ms.custom: aaddev, seoapril2019
 ms.openlocfilehash: 431f18b9babb52b5000d3bf4cca75a0f5e29bb93
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76702812"
 ---
 # <a name="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application"></a>独自に開発したアプリケーションのトークン有効期間の既定値を変更する方法

@@ -7,10 +7,10 @@ ms.author: getroyer
 ms.topic: how-to
 ms.date: 06/13/2019
 ms.openlocfilehash: b4da63b7b2a6da4316215b85a09ca7420745251c
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898400"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Azure Data Science Virtual Machine を使用する

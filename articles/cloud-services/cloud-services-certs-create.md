@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
 ms.openlocfilehash: 783343dd8877bdf18e783494960c3052c293cc7c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356448"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226135"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services の証明書の概要
 証明書は、Azure でクラウド サービス ([サービス証明書](#what-are-service-certificates))、および管理 API の認証に使われます ([管理証明書](#what-are-management-certificates))。 このトピックでは、両方の種類の証明書の一般的な概要、これらを[作成](#create)する方法、および Azure にデプロイする方法について説明します。
@@ -58,7 +58,7 @@ Azure Portal または Azure クラシック デプロイ モデルを使って�
     > cloudapp.net ドメイン (または Azure に関連するドメイン) の SSL 証明書を取得することはできません。証明書の件名は、アプリケーションへの接続に使用されるカスタム ドメイン名と一致している必要があります。 たとえば、**contoso.cloudapp.net** ではなく、**contoso.net** を使います。
 
 * 最大で 2048 ビットの暗号化。
-* **サービス証明書のみ**:クライアント側の証明書は "*個人*" 証明書ストアに格納されている必要があります。
+* **サービス証明書のみ**: クライアント側の証明書は *個人* 証明書ストアに格納されている必要があります。
 
 Windows で証明書を作成する簡単な方法として、 `makecert.exe` ユーティリティを使用する方法と IIS を使用する方法の 2 つがあります。
 

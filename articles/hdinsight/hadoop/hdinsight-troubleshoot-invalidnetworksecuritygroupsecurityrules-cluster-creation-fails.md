@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/31/2019
 ms.openlocfilehash: a73e1e9f7a9c017dd29b627a24c25ae2e064c0a9
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75894143"
 ---
 # <a name="scenario-invalidnetworksecuritygroupsecurityrules---cluster-creation-fails-in-azure-hdinsight"></a>シナリオ:InvalidNetworkSecurityGroupSecurityRules - Azure HDInsight でクラスターの作成が失敗する
@@ -26,7 +26,7 @@ ms.locfileid: "75894143"
 
 クラスターに対して構成された受信[ネットワーク セキュリティ グループ](../../virtual-network/virtual-network-vnet-plan-design-arm.md)規則に問題がある可能性があります。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
 Azure portal に移動し、クラスターがデプロイされているサブネットに関連付けられている NSG を特定します。 **受信セキュリティ規則**セクションで、[ここ](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ip)に記述されている IP アドレスについてポート 443 への受信アクセスがルールによって許可されていることを確認します。
 

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
 ms.openlocfilehash: 6e9f9c89cf2e5e40d37a1532e688490aae294181
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73888860"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>IoT DevKit デバイスをリモート監視ソリューション アクセラレータに接続する
@@ -109,7 +109,7 @@ DevKit デバイスにアップロードしたサンプル アプリケーショ
 
     ![IoT DevKit の赤い LED](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-devkit-led.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 チュートリアルに進む場合は、リモート監視ソリューション アクセラレータをデプロイしたままにしておきます。
 
@@ -124,7 +124,7 @@ DevKit デバイスにアップロードしたサンプル アプリケーショ
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、DevKit デバイスをお使いのリモート監視ソリューション アクセラレータに接続する方法を説明しました。推奨する次の手順は、以下のとおりです。
 

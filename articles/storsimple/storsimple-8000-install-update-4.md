@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 08/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 5b48cbd1020cfd51fe989a9be33197f2735f21f4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60860510"
 ---
 # <a name="install-update-4-on-your-storsimple-device"></a>StorSimple デバイスへの Update 4 のインストール
@@ -74,7 +74,7 @@ Update 4 のインストールにお勧めの方法は、Azure Portal を使用�
 
 指定の順序と推奨されるフォルダーで、次の修正プログラムをダウンロードしてインストールする必要があります。
 
-| 順序 | KB | 説明 | 更新の種類 | インストール時間 |インストールするフォルダー|
+| Order | KB | 説明 | 更新の種類 | インストール時間 |インストールするフォルダー|
 | --- | --- | --- | --- | --- | --- |
 | 1. |KB4011839 |ソフトウェア更新 |通常 <br></br>中断なし |～ 25 分 |FirstOrderUpdate|
 | 2A. |KB4011841 <br> KB4011842 |LSI ドライバーおよびファームウェアの更新プログラム <br> USM ファームウェアの更新プログラム (バージョン 3.38) |通常 <br></br>中断なし |～ 3 時間 <br> (2A. + 2B. + 2C.)|SecondOrderUpdate|
@@ -83,7 +83,7 @@ Update 4 のインストールにお勧めの方法は、Azure Portal を使用�
 
 前の表で示したすべての更新プログラムのほか、ディスク ファームウェアの更新プログラムのインストールが必要になることもあります。 `Get-HcsFirmwareVersion` コマンドレットを実行すると、ディスク ファームウェアの更新プログラムが必要かどうかを確認できます。 `XMGJ`、`XGEG`、`KZ50`、`F6C2`、`VR08`、`N002`、`0106` の各ファームウェア バージョンを実行している場合は、これらの更新プログラムをインストールする必要はありません。
 
-| 順序 | KB | 説明 | 更新の種類 | インストール時間 | インストールするフォルダー|
+| Order | KB | 説明 | 更新の種類 | インストール時間 | インストールするフォルダー|
 | --- | --- | --- | --- | --- | --- |
 | 3. |KB3121899 |ディスク ファームウェア |メンテナンス <br></br>中断あり |～ 30 分 | ThirdOrderUpdate |
 
@@ -100,6 +100,6 @@ Update 4 のインストールにお勧めの方法は、Azure Portal を使用�
 
 [!INCLUDE [storsimple-install-troubleshooting](../../includes/storsimple-install-troubleshooting.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 詳しくは、[Update 4 リリース](storsimple-update4-release-notes.md)に関するページをご覧ください。
 

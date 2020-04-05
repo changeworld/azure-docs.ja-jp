@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: 482401b75cadf44e2cef03cced8dd216d0980524
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74969583"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して IoT Hub Device Provisioning Service を設定する
@@ -318,7 +318,7 @@ JSON テンプレートを使用し、リソース グループにプロビジ�
     ```
 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このコレクションの他のクイックスタートは、このクイックスタートに基づいています。 引き続きクイックスタートまたはチュートリアルの作業を行う場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 引き続き作業を行わない場合には、Azure CLI を使用して、IoT Hub やプロビジョニング サービスなどの[個々のリソースを削除][lnk-az-resource-command]することも、リソース グループとそのすべてのリソースを削除することもできます。
 
@@ -341,7 +341,7 @@ az group delete --name {your resource group name}
 
 また、Azure portal、PowerShell、または REST API のほか、Azure Resource Manager または IoT Hub Device Provisioning Service 向けに公開済みのサポートされているプラットフォーム SDK を使って、リソース グループと個々のリソースを削除することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、IoT ハブと Device Provisioning Service インスタンスをデプロイし、この 2 つのリソースをリンクしました。 ここで行った設定を使用して、シミュレートされたデバイスをプロビジョニングする方法については、シミュレートされたデバイスの作成に関するクイックスタートを参照してください。
 

@@ -4,11 +4,11 @@ description: プロンプトとコンテキストを使用して、一連の質�
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.openlocfilehash: abdde09fbb1f6b066772366c5cea933824cb5864
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210416"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79219033"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>フォローアップ プロンプトを使用して、複数のターンを含む会話を作成します。
 
@@ -108,7 +108,7 @@ KB を公開した後、 **[Create Bot]\(ボットの作成\)** ボタンを選�
 1. **Signout** の行の **[応答]** 列で、 **[Add follow-up prompt]\(フォローアップ プロンプトの追加\)** を選択します。
 1. **[Follow-up prompt]\(フォローアップ プロンプト\)** ポップアップ ウィンドウのフィールドに、次の値を入力します。
 
-    |フィールド|Value|
+    |フィールド|値|
     |--|--|
     |表示テキスト|「**Turn off the device**」(デバイスの電源を切る) と入力します。 これは、フォローアップ プロンプトに表示するカスタム テキストです。|
     |Context-only (コンテキストのみ)| このチェック ボックスをオンにします。 応答は、質問がコンテキストを指定する場合にのみ返されます。|
@@ -145,7 +145,7 @@ KB を公開した後、 **[Create Bot]\(ボットの作成\)** ボタンを選�
 1. この質問の **[応答]** 列で **[Add follow-up prompt]\(フォローアップ プロンプトの追加\)** を選択します。
 1. **[Follow-up prompt (PREVIEW)]\(フォローアップ プロンプト (プレビュー)\)** で、次の値を入力して新しいフォローアップ プロンプトを作成します。
 
-    |フィールド|Value|
+    |フィールド|値|
     |--|--|
     |表示テキスト|「*Create a Windows Account*.」(Windows アカウントを作成する。) フォローアップ プロンプトに表示するカスタム テキスト。|
     |Context-only (コンテキストのみ)|このチェック ボックスをオンにします。 この応答は、質問がコンテキストを指定する場合にのみ返されます。|
@@ -290,7 +290,7 @@ The `promptsToDelete` array provides the ...
 
 ##  <a name="a-json-response-to-return-a-non-initial-answer-and-follow-up-prompts"></a>最初以外の応答とフォローアップ プロンプトを返す JSON 応答
 
-QnA Maker _GenerateAnswer_ JSON 応答は、`answers`オブジェクトの最初の項目にある `context` プロパティのフォローアップ プロンプトを含みます。
+QnA Maker _GenerateAnswer_ JSON 応答は、`context`オブジェクトの最初の項目にある `answers` プロパティのフォローアップ プロンプトを含みます。
 
 ```JSON
 {

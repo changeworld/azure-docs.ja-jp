@@ -14,10 +14,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: dfe4f09d00a5629249a3041946190f56e83c3480
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68934882"
 ---
 # <a name="deploy-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上にデプロイする
@@ -85,7 +85,7 @@ Security Center Standard は以下のことに役立ちます。
   - 分析とインテリジェンスを使用して脅威を検出する。
   - 攻撃を受けたときに迅速に対応する。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次の記事では、セキュリティで保護されたアプリケーションを設計して開発するのに役立つセキュリティ制御とアクティビティが推奨されています。
 
 - [セキュリティで保護されたアプリケーションを設計する](secure-design.md)

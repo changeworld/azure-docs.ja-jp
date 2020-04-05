@@ -4,10 +4,10 @@ description: Azure Site Recovery サービスを使用してディザスター �
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.openlocfilehash: 6540317324a9f0d9bccc046ecf95824d4128bd09
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76705838"
 ---
 # <a name="create-and-customize-recovery-plans"></a>復旧計画を作成してカスタマイズする
@@ -53,7 +53,7 @@ ms.locfileid: "76705838"
 
 スクリプトまたは手動アクションを追加することで、復旧計画をカスタマイズできます。 以下の点に注意してください。
 
-- Azure にレプリケートする場合、Azure Automation の Runbook を復旧計画に組み込むことができます。 [詳細については、こちらを参照してください](site-recovery-runbook-automation.md)。
+- Azure にレプリケートする場合、Azure Automation の Runbook を復旧計画に組み込むことができます。 詳細については、[こちら](site-recovery-runbook-automation.md)をご覧ください。
 - System Center の VMM によって管理される Hyper-V の仮想マシンをレプリケートする場合、オンプレミスの VMM サーバーにスクリプトを作成し、それを復旧計画に含めることができます。
 - スクリプトを追加すると、グループに対して新しい一連のアクションが追加されます。 たとえば、グループ 1 の前処理ステップ セットが "*グループ 1: 前処理ステップ*" という名前で作成されます。 すべての前処理ステップが、このセット内に一覧表示されます。 プライマリ サイトにスクリプトを追加できるのは、VMM サーバーがデプロイされている場合のみです。
 - 手動アクションを追加した場合、復旧計画を実行すると、手動アクションを挿入した位置で停止します。 ダイアログ ボックスで、手動アクションが完了したことを指定するように求められます。

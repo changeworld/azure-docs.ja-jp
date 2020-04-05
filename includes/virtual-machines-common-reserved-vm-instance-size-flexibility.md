@@ -5,10 +5,10 @@ ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 02-18-2020
 ms.openlocfilehash: aebe8f05bd1a3607da6d1153c87490891fc6b299
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77471459"
 ---
 予約 VM インスタンスを購入する場合は、インスタンス サイズの柔軟性または容量の優先度を選択します。 予約 VM インスタンスの最適化設定の設定または変更の詳細については、「[予約 VM インスタンスの最適化設定を変更する](../articles/cost-management-billing/reservations/manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances)」を参照してください。

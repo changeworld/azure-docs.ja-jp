@@ -1,21 +1,21 @@
 ---
 title: クイック スタート:Anomaly Detector REST API および Java を使用して時系列データ内の異常を検出する
 titleSuffix: Azure Cognitive Services
-description: このクイックスタートでは、Anomaly Detector API を使用して、データ系列の異常をバッチとして、またはストリーミング データで検出する方法について説明します。
+description: Anomaly Detector API を使用して、お使いのデータ系列の異常を一括で、またはストリーミング データ上で検出する方法について説明します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 11/19/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 3bc406b22b7e8a684713385dfd15daed99bcf977
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4e7cc969ff2c36415b8fd1cebafa1873f9efd38c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448938"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80239052"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-java"></a>クイック スタート:Anomaly Detector REST API および Java を使用して時系列データ内の異常を検出する
 

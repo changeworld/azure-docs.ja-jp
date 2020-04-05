@@ -1,19 +1,18 @@
 ---
 title: Azure Marketplace SEO ガイド
 description: 検索エンジンの最適化 (SEO) を最大化するためのガイダンスを提供します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2019
-ms.author: pabutler
-ms.openlocfilehash: 7115798faadc3209413d22a384433417ec0ddff0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 761cdc2233bce3619d4c2c9ce1d7d7177d3bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819579"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280152"
 ---
 # <a name="azure-marketplace-seo-guidance"></a>Azure Marketplace SEO ガイド
 

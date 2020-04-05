@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 12/01/2019
 ms.author: b-juche
 ms.openlocfilehash: 9e8817f802ca1d73ca0f6bfa2b32b1b14b37d7da
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74773553"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234119"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Azure NetApp Files の NFS ボリュームを作成する
 
@@ -36,7 +36,7 @@ Azure NetApp Files では、NFS ボリューム (NFSv3 と NFSv4.1) および SM
 * 使用する NFS のバージョンを決定する  
   NFSv3 は、さまざまなユース ケースの処理に使用でき、通常、ほとんどのエンタープライズ アプリケーションにデプロイされます。 アプリケーションで必要なバージョン (NFSv3 または NFSv4.1) を検証し、適切なバージョンを使用してボリュームを作成する必要があります。 たとえば、[Apache ActiveMQ](https://activemq.apache.org/shared-file-system-master-slave) を使用する場合は、NFSv4.1 でのファイル ロックの方が、NFSv3 より推奨されます。 
 
-* セキュリティ  
+* Security  
   UNIX モード ビット (読み取り、書き込み、実行) のサポートは、NFSv3 と NFSv4.1 で利用できます。 NFS ボリュームをマウントするには、NFS クライアントでのルート レベルのアクセス権が必要です。
 
 * NFSv4.1 に対するローカル ユーザー/グループと LDAP のサポート  
@@ -110,7 +110,7 @@ Azure NetApp Files では、NFS ボリューム (NFSv3 と NFSv4.1) および SM
     ボリュームは、その容量プールから、サブスクリプション、リソース グループ、場所の各属性を継承します。 ボリュームのデプロイ状態を監視するには、[通知] タブを使用してください。
 
 
-## <a name="next-steps"></a>次の手順  
+## <a name="next-steps"></a>次のステップ  
 
 * [Azure NetApp Files 用に NFSv4.1 の既定のドメインを構成する](azure-netapp-files-configure-nfsv41-domain.md)
 * [Windows または Linux 仮想マシンのボリュームをマウント/マウント解除する](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)

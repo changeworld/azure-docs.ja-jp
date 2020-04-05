@@ -17,10 +17,10 @@ ms.date: 12/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 785242a2cf51571a6d13b2b4691d33e46369bf94
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75977905"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-kerberos-based-authentication"></a>チュートリアル:Azure Active Directory シングル サインオンと Citrix NetScaler の統合 (Kerberos ベースの認証)
@@ -136,7 +136,7 @@ Azure portal を使用して Azure AD SSO を有効にするには、これら�
 
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** に表示された値を書き留めるか、コピーします。
 
-   1. **作成** を選択します。
+   1. **［作成］** を選択します
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -195,7 +195,7 @@ Azure portal を使用して Azure AD SSO を有効にするには、これら�
 
 1. 下のスクリーンショットに示すように、次の値を設定します。
 
-    * **Name**
+    * **名前**
     * **プロトコル**
     * **IP アドレス**
     * **[ポート]**
@@ -248,7 +248,7 @@ Citrix ADC SAML プロファイルを構成するには、次のセクション�
     
     ![Citrix NetScaler の構成 - [Create Authentication Policy]\(認証ポリシーの作成\) ペイン](./media/citrix-netscaler-tutorial/policy01.png)
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 ### <a name="create-an-authentication-saml-server"></a>認証 SAML サーバーを作成する
 
@@ -264,7 +264,7 @@ Citrix ADC SAML プロファイルを構成するには、次のセクション�
     
 1. **[Issuer Name]\(発行者名\)** には、関連する URL を入力します。
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 ![Citrix NetScaler の構成 - [Create Authentication SAML Server]\(認証 SAML サーバーの作成\) ペイン](./media/citrix-netscaler-tutorial/server01.png)
 

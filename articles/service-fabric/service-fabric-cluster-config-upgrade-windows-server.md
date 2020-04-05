@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
 ms.openlocfilehash: 8e7e01dac29cb9ba91c83270dac4e46c73b2089e
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75610126"
 ---
 # <a name="upgrade-the-configuration-of-a-standalone-cluster"></a>スタンドアロン クラスターの構成をアップグレードする 

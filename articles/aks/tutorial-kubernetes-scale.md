@@ -6,13 +6,13 @@ ms.topic: tutorial
 ms.date: 01/14/2019
 ms.custom: mvc
 ms.openlocfilehash: 7db80e9bf0bd864762a88680132d77a3c5d21f19
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77621089"
 ---
-# <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング
+# <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング
 
 ここまでチュートリアルに従って進めてきた場合は、AKS で Kubernetes クラスターが動作していて、サンプル Azure Vote アプリをデプロイしてあります。 このチュートリアルでは、7 つあるうちの 5 番目のパートで、アプリのポッドをスケールアウトし、ポッドの自動スケーリングを試します。 また、Azure VM ノードの数をスケーリングして、クラスターがワークロードをホストする容量を変更する方法についても説明します。 学習内容は次のとおりです。
 

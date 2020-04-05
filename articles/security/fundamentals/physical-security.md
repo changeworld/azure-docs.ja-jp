@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
 ms.openlocfilehash: 634f89b3123902d981ad07dd1404315387104322
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68726725"
 ---
 # <a name="azure-facilities-premises-and-physical-security"></a>Azure の施設、建物、および物理上のセキュリティ
@@ -75,7 +75,7 @@ Azure インフラストラクチャは、ISO 27001、HIPAA、FedRAMP、SOC 1、
 
 Azure が準拠しているコンプライアンス標準の完全な一覧については、「[コンプライアンス認証](https://www.microsoft.com/trustcenter/compliance/complianceofferings)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Microsoft が Azure インフラストラクチャのセキュリティ保護を支援するために行っていることの詳細については、以下を参照してください。
 
 - [Azure インフラストラクチャの可用性](infrastructure-availability.md)

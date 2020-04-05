@@ -15,11 +15,11 @@ ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 002d374f5be606688121ef4a3952383567c43e85
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685171"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214750"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>クイック スタート:Azure ポータルで Windows 仮想マシンを作成する
 
@@ -90,13 +90,13 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ![IIS の既定のサイト](./media/quick-create-powershell/default-iis-website.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要がなくなったら、リソース グループ、仮想マシン、およびすべての関連リソースを削除できます。 
 
 仮想マシンのリソース グループを選択し、 **[削除]** をクリックします。 リソース グループの名前を確認してリソースの削除を終了します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、単純な仮想マシンをデプロイし、Web トラフィック用のネットワーク ポートを開き、基本的な Web サーバーをインストールしました。 Azure 仮想マシンの詳細については、Windows VM のチュートリアルを参照してください。
 

@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: dfa17720b34962611d240aa7c35ba8092bf99082
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158150"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>チュートリアル:Azure Functions を使用した Azure SignalR Service 認証
@@ -47,18 +47,18 @@ Azure Functions アプリをローカルでビルドしてテストします。 
 
 1. 新しい Azure リソースを作成するには、 **[リソースの作成]** ( **+** ) ボタンをクリックします。
 
-1. **SignalR Service** を探して選択します。 **[作成]** をクリックします。
+1. **SignalR Service** を探して選択します。 **Create** をクリックしてください。
 
     ![新しい SignalR Service](media/signalr-tutorial-authenticate-azure-functions/signalr-quickstart-new.png)
 
 1. 次の情報を入力します。
 
-    | Name | 値 |
+    | 名前 | Value |
     |---|---|
     | リソース名 | SignalR Service のインスタンス用の一意の名前 |
     | Resource group | 一意の名前を持つ新しいリソース グループを作成します |
-    | Location | 近くの場所を選択します |
-    | 価格レベル | 無料 |
+    | 場所 | 近くの場所を選択します |
+    | 価格レベル | Free |
 
 1. **Create** をクリックしてください。
 
@@ -145,10 +145,10 @@ Azure Functions ランタイムをローカルで実行してデバッグする�
 
 1. 入力を求められたら、次の情報を指定します。
 
-    | Name | 値 |
+    | 名前 | Value |
     |---|---|
     | 関数アプリ フォルダー | メイン プロジェクト フォルダーを選択します |
-    | テンプレート | HTTP トリガー |
+    | Template | HTTP トリガー |
     | 名前 | negotiate |
     | 承認レベル | Anonymous |
 
@@ -204,11 +204,11 @@ Azure Functions ランタイムをローカルで実行してデバッグする�
 
 1. 入力を求められたら、次の情報を指定します。
 
-    | Name | 値 |
+    | 名前 | Value |
     |---|---|
     | 関数アプリ フォルダー | メイン プロジェクト フォルダーを選択します |
-    | テンプレート | HTTP トリガー |
-    | Name | SendMessage |
+    | Template | HTTP トリガー |
+    | 名前 | SendMessage |
     | 承認レベル | Anonymous |
 
     新しい関数を含む **SendMessage** というフォルダーが作成されます。
@@ -315,12 +315,12 @@ Azure で実行される関数アプリには、Azure Storage アカウントが
 
 1. 次の情報を入力します。
 
-    | Name | 値 |
+    | 名前 | Value |
     |---|---|
-    | Subscription | SignalR Service インスタンスを含むサブスクリプションを選択します |
+    | サブスクリプション | SignalR Service インスタンスを含むサブスクリプションを選択します |
     | Resource group | 同じリソース グループを選択します |
     | リソース名 | ストレージ アカウントの一意の名前 |
-    | Location | 他のリソースと同じ場所を選択します |
+    | 場所 | 他のリソースと同じ場所を選択します |
     | パフォーマンス | Standard |
     | アカウントの種類 | StorageV2 (汎用 V2) |
     | レプリケーション | ローカル冗長ストレージ (LRS) |
@@ -338,7 +338,7 @@ Azure で実行される関数アプリには、Azure Storage アカウントが
 
 1. **[インデックス ドキュメント名]** に「*index.html*」と入力します。
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 1. **[プライマリ エンドポイント]** が表示されます。 この値をメモしておきます。 この値は、関数アプリを構成する際に必要になります。
 
@@ -371,13 +371,13 @@ Azure で実行される関数アプリには、Azure Storage アカウントが
 
 1. 入力を求められたら、次の情報を指定します。
 
-    | Name | 値 |
+    | 名前 | Value |
     |---|---|
     | デプロイするフォルダー | メイン プロジェクト フォルダーを選択します |
     | サブスクリプション | サブスクリプションを選択します。 |
     | 関数アプリ | **[Create New Function App]\(新しい関数アプリの作成\)** を選択します |
     | 関数アプリ名 | 一意の名前を入力します |
-    | リソース グループ | SignalR Service のインスタンスと同じリソース グループを選択します |
+    | Resource group | SignalR Service のインスタンスと同じリソース グループを選択します |
     | ストレージ アカウント | 以前に作成したストレージ アカウントを選択します |
 
     新しい関数アプリが Azure に作成され、デプロイが開始されます。 デプロイが完了するまで待ちます。
@@ -390,7 +390,7 @@ Azure で実行される関数アプリには、Azure Storage アカウントが
 
 1. 入力を求められたら、次の情報を指定します。
 
-    | Name | 値 |
+    | 名前 | Value |
     |---|---|
     | ローカル設定ファイル | local.settings.json |
     | サブスクリプション | サブスクリプションを選択します。 |
@@ -449,9 +449,9 @@ Web アプリケーションは、Azure Blob Storage の静的 Web サイト機�
 
 1. 次の値を入力します。
 
-    | 名前 | 値 |
+    | 名前 | Value |
     |---|---|
-    | Subscription | サブスクリプションを選択します。 |
+    | サブスクリプション | サブスクリプションを選択します。 |
     | ストレージ アカウント | 以前に作成したストレージ アカウントを選択します |
     | デプロイするフォルダー | **[参照]** を選択し、*content* フォルダーを選択します。 |
 
@@ -489,11 +489,11 @@ CORS 設定は **local.settings.json** にありますが、Azure の関数ア�
 
 ![デモ](media/signalr-tutorial-authenticate-azure-functions/signalr-serverless-chat.gif)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルで作成したリソースをクリーンアップするには、Azure portal を使用してリソース グループを削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure SignalR Service で Azure Functions を使用する方法について説明しました。 詳細については、Azure Functions に SignalR Service バインドを使用してリアルタイムのサーバーレス アプリケーションをビルドする方法を参照してください。
 

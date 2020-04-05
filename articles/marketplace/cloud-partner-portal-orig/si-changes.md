@@ -1,19 +1,18 @@
 ---
 title: Seller Insights リリース ノート
 description: Seller Insights の機能への変更に関する情報を提供します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 3/3/2019
-ms.author: pabutler
-ms.openlocfilehash: 4f7e461241793b27d838c04311509f43932df291
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 1b88a8353c1cb9f97f18d720171f0827d7d85254
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73808956"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285403"
 ---
 # <a name="seller-insights-release-notes"></a>Seller Insights リリース ノート 
 
@@ -55,5 +54,5 @@ ms.locfileid: "73808956"
 | 見積価格 (PC)           | 使用状況が計算された日付の外国為替換算に基づく指定された SKU に対する使用状況のユニットの見積価格 (発行元の通貨)。 この値は、四捨五入または切り捨て誤差のため、正確ではない可能性があります。   |
 | 見積拡張価格 (PC) | 使用状況が計算された日付の外国為替換算に基づく指定された SKU に対する使用状況のユニット数の見積拡張価格 (発行元の通貨)。 この値は、四捨五入または切り捨て誤差のため、正確ではない可能性があります。 |
 | 見積支払額 (PC)          | 使用状況が計算された日付の外国為替換算に基づく指定された SKU に対する使用状況のユニット数の見積支払額 (発行元の通貨)。 この値は、四捨五入または切り捨て誤差のため、正確ではない可能性があります。   |
-| 使用状況の参照                | 支払額レポートのエントリと関連付けられた、指定の SKU に対して顧客使用状況の 1 日または複数の日数の識別子。 |
+| 使用の参照                | 支払いレポートのエントリに関連付けられた、特定の SKU に対して顧客使用の 1 日または複数の日数の識別子。 |
 |  |  |

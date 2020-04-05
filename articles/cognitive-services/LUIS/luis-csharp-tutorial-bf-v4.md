@@ -4,10 +4,10 @@ description: C# を使用して、Language Understanding (LUIS) と統合され�
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.openlocfilehash: 2381f4cba39f81ab593f3149a2708f442156f30d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76988000"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>チュートリアル:C# で Language Understanding に対応した Web アプリ ボットを使用する
@@ -32,7 +32,7 @@ C# を使用して、Language Understanding (LUIS) と統合されたチャッ�
 
 1. [Azure portal](https://portal.azure.com) で、 **[新しいリソースの作成]** を選択します。
 
-1. 検索ボックスで、 **[Web アプリ ボット]** を検索して選択します。 **作成** を選択します。
+1. 検索ボックスで、 **[Web アプリ ボット]** を検索して選択します。 **［作成］** を選択します
 
 1. **[ボット サービス]** で、必要な情報を指定します。
 
@@ -41,7 +41,7 @@ C# を使用して、Language Understanding (LUIS) と統合されたチャッ�
     |ボット名|リソース名|`luis-csharp-bot-` + `<your-name>` (例: `luis-csharp-bot-johnsmith`)|
     |サブスクリプション|サブスクリプション ボットを作成するサブスクリプション。|プライマリ サブスクリプション。
     |Resource group|Azure リソースの論理グループ|このボットで使用するすべてのリソースを格納する新しいグループを作成し、グループに `luis-csharp-bot-resource-group` という名前を付けます。|
-    |Location|Azure リージョン - これは LUIS の作成または公開リージョンと同じである必要はありません。|`westus`|
+    |場所|Azure リージョン - これは LUIS の作成または公開リージョンと同じである必要はありません。|`westus`|
     |Pricing tier|サービス要求の制限と課金に使用されます。|`F0` は無料レベルです。
     |アプリの名前|この名前は、ボットがクラウドにデプロイされるときに、サブドメインとして使用されます (humanresourcesbot.azurewebsites.net など)。|`luis-csharp-bot-` + `<your-name>` (例: `luis-csharp-bot-johnsmith`)|
     |ボット テンプレート|Bot Framework の設定 - 次の表を参照|
@@ -58,7 +58,7 @@ C# を使用して、Language Understanding (LUIS) と統合されたチャッ�
     |SDK 言語|ボットのプログラミング言語|**C#**|
     |ボット|ボットの種類|**基本ボット**|
 
-1. **作成** を選択します。 これによって、ボット サービスが作成され、Azure にデプロイされます。 このプロセスの一環として、`luis-csharp-bot-XXXX` という LUIS アプリが作成されます。 この名前は、Azure Bot Service のアプリ名に基づきます。
+1. **［作成］** を選択します これによって、ボット サービスが作成され、Azure にデプロイされます。 このプロセスの一環として、`luis-csharp-bot-XXXX` という LUIS アプリが作成されます。 この名前は、Azure Bot Service のアプリ名に基づきます。
 
     > [!div class="mx-imgBorder"]
     > [![Web アプリ ボットの作成](./media/bfv4-csharp/create-web-app-service.png)](./media/bfv4-csharp/create-web-app-service.png#lightbox)

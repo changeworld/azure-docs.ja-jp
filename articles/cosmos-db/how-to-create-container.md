@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.openlocfilehash: 4eaa2974817bfcd8bef83e5139d75a2d4c2ec107
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873711"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Azure Cosmos コンテナーを作成する
@@ -19,9 +19,9 @@ ms.locfileid: "74873711"
 
 ## <a name="create-a-container-using-azure-portal"></a>Azure portal を使用してコンテナーを作成する
 
-### <a id="portal-sql"></a>SQL API
+### <a name="sql-api"></a><a id="portal-sql"></a>SQL API
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 1. [新しい Azure Cosmos アカウントを作成する](create-sql-api-dotnet.md#create-account)か、既存のアカウントを選択します。
 
@@ -35,9 +35,9 @@ ms.locfileid: "74873711"
 
     ![[新しいコンテナー] が強調して示されている [データ エクスプローラー] ウィンドウのスクリーンショット](./media/how-to-create-container/partitioned-collection-create-sql.png)
 
-### <a id="portal-mongodb"></a>MongoDB 用 Azure Cosmos DB API
+### <a name="azure-cosmos-db-api-for-mongodb"></a><a id="portal-mongodb"></a>MongoDB 用 Azure Cosmos DB API
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 1. [新しい Azure Cosmos アカウントを作成する](create-mongodb-dotnet.md#create-a-database-account)か、既存のアカウントを選択します。
 
@@ -51,13 +51,13 @@ ms.locfileid: "74873711"
 
     ![MongoDB 用 Azure Cosmos DB API の [コンテナーの追加] ダイアログ ボックスのスクリーンショット](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
 
-### <a id="portal-cassandra"></a>Cassandra API
+### <a name="cassandra-api"></a><a id="portal-cassandra"></a>Cassandra API
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 1. [新しい Azure Cosmos アカウントを作成する](create-cassandra-dotnet.md#create-a-database-account)か、既存のアカウントを選択します。
 
-1. **[データ エクスプローラー]** ウィンドウを開いて **[新しいテーブル]** を選択します。 続けて、以下の詳細を指定してください。
+1. **[データ エクスプローラー]** ウィンドウを開いて **[新しいテーブル]** を選択します。 次に、以下の詳細を指定します。
 
    * 新しいキースペースを作成するか、既存のキースペースを使用するかを指定します。
    * テーブルの名前を入力します。
@@ -70,13 +70,13 @@ ms.locfileid: "74873711"
 > [!NOTE]
 > Cassandra API では、主キーがパーティション キーとして使用されます。
 
-### <a id="portal-gremlin"></a>Gremlin API
+### <a name="gremlin-api"></a><a id="portal-gremlin"></a>Gremlin API
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 1. [新しい Azure Cosmos アカウントを作成する](create-graph-dotnet.md#create-a-database-account)か、既存のアカウントを選択します。
 
-1. **[データ エクスプローラー]** ウィンドウを開いて **[新しいグラフ]** を選択します。 続けて、以下の詳細を指定してください。
+1. **[データ エクスプローラー]** ウィンドウを開いて **[新しいグラフ]** を選択します。 次に、以下の詳細を指定します。
 
    * 新しいデータベースを作成するか、既存のデータベースを使用するかを指定します。
    * グラフ ID を入力します。
@@ -87,9 +87,9 @@ ms.locfileid: "74873711"
 
     ![Gremlin API の [グラフの追加] ダイアログ ボックスのスクリーンショット](./media/how-to-create-container/partitioned-collection-create-gremlin.png)
 
-### <a id="portal-table"></a>Table API
+### <a name="table-api"></a><a id="portal-table"></a>Table API
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 1. [新しい Azure Cosmos アカウントを作成する](create-table-dotnet.md#create-a-database-account)か、既存のアカウントを選択します。
 
@@ -104,7 +104,7 @@ ms.locfileid: "74873711"
 > [!Note]
 > Table API では、新しい行を追加するたびにパーティション キーが指定されます。
 
-## Azure CLI を使用してコンテナーを作成する<a id="cli-sql"></a><a id="cli-mongodb"></a><a id="cli-cassandra"></a><a id="cli-gremlin"></a><a id="cli-table"></a>
+## <a name="create-a-container-using-azure-cli"></a>Azure CLI を使用してコンテナーを作成する<a id="cli-sql"></a><a id="cli-mongodb"></a><a id="cli-cassandra"></a><a id="cli-gremlin"></a><a id="cli-table"></a>
 
 以下のリンクは、Azure CLI を使用して Azure Cosmos DB のコンテナー リソースを作成する方法を示すものです。
 
@@ -116,7 +116,7 @@ ms.locfileid: "74873711"
 * [Azure CLI を使用して Gremlin グラフを作成する](./scripts/cli/gremlin/create.md)
 * [Azure CLI を使用して Table API テーブルを作成する](./scripts/cli/table/create.md)
 
-## PowerShell を使用してコンテナーを作成する<a id="ps-sql"></a><a id="ps-mongodb"><a id="ps-cassandra"></a><a id="ps-gremlin"><a id="ps-table"></a>
+## <a name="create-a-container-using-powershella-idps-mongodba-idps-gremlin"></a>PowerShell を使用してコンテナーを作成する<a id="ps-sql"></a><a id="ps-mongodb"><a id="ps-cassandra"></a><a id="ps-gremlin"><a id="ps-table"></a>
 
 以下のリンクは、PowerShell を使用して Azure Cosmos DB のコンテナー リソースを作成する方法を示すものです。
 
@@ -130,7 +130,7 @@ ms.locfileid: "74873711"
 
 ## <a name="create-a-container-using-net-sdk"></a>.NET SDK を使用してコンテナーを作成する
 
-### <a id="dotnet-sql-graph"></a>SQL API と Gremlin API
+### <a name="sql-api-and-gremlin-api"></a><a id="dotnet-sql-graph"></a>SQL API と Gremlin API
 
 ```csharp
 // Create a container with a partition key and provision 1000 RU/s throughput.
@@ -144,7 +144,7 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 1000 });
 ```
 
-### <a id="dotnet-mongodb"></a>MongoDB 用 Azure Cosmos DB API
+### <a name="azure-cosmos-db-api-for-mongodb"></a><a id="dotnet-mongodb"></a>MongoDB 用 Azure Cosmos DB API
 
 ```csharp
 // Create a collection with a partition key by using Mongo Shell:
@@ -154,7 +154,7 @@ db.runCommand( { shardCollection: "myDatabase.myCollection", key: { myShardKey: 
 > [!Note]
 > MongoDB ワイヤ プロトコルでは、[要求ユニット](request-units.md)という概念は理解されません。 プロビジョニングされたスループットを持つ新しいコレクションを作成するには、Azure portal または SQL API 用の Cosmos DB SDK を使用します。
 
-### <a id="dotnet-cassandra"></a>Cassandra API
+### <a name="cassandra-api"></a><a id="dotnet-cassandra"></a>Cassandra API
 
 ```csharp
 // Create a Cassandra table with a partition/primary key and provision 1000 RU/s throughput.
@@ -164,7 +164,7 @@ session.Execute(CREATE TABLE myKeySpace.myTable(
     lastName text) WITH cosmosdb_provisioned_throughput=1000);
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Cosmos DB でのパーティション分割](partitioning-overview.md)
 * [Azure Cosmos DB の要求ユニット](request-units.md)

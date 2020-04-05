@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 09/16/2019
 ms.author: genli
 ms.openlocfilehash: 4e827c5f6eedc819bc3635cb09a28f65df51312c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75862579"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>トラブルシューティング:Azure サイト間 VPN が動作を停止して接続できない

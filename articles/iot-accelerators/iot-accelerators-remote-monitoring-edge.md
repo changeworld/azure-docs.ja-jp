@@ -10,13 +10,13 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: a812155474b244682613b38b9b9379fa6cdcdcd8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "66117540"
 ---
-# <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>チュートリアル:リモート監視ソリューション アクセラレータを使用してエッジで異常を検出する
+# <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>チュートリアル: リモート監視ソリューション アクセラレータを使用してエッジで異常を検出する
 
 このチュートリアルでは、IoT Edge デバイスによって検出された異常に対応するようリモート監視ソリューションを構成します。 IoT Edge デバイスを使用すると、テレメトリをエッジで処理することによって、ソリューションに送信されるテレメトリの量を減らし、デバイスのイベントへの対応を迅速化することができます。 エッジ処理の利点の詳細については、「[Azure IoT Edge とは](../iot-edge/about-iot-edge.md)」を参照してください。
 
@@ -78,13 +78,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. 次の設定を使用して、デバイスに **IsEdge** タグを追加するジョブを作成します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
-    | ジョブ     | タグ  |
+    | ジョブ     | Tags  |
     | ジョブ名 | AddEdgeTag |
-    | キー     | IsOilPump |
+    | Key     | IsOilPump |
     | 値   | Y     |
-    | type    | Text  |
+    | 種類    | Text  |
 
     [![タグの追加](./media/iot-accelerators-remote-monitoring-edge/addtag-inline.png)](./media/iot-accelerators-remote-monitoring-edge/addtag-expanded.png#lightbox)
 
@@ -94,17 +94,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[Create new device group]\(新しいデバイス グループの作成\)** をクリックします。 次の設定を使用して新しいデバイス グループを作成します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
     | Name    | OilPumps |
     | フィールド   | Tags.IsOilPump |
-    | operator | = Equals |
+    | 演算子 | = Equals |
     | 値    | Y |
-    | type     | Text |
+    | 種類     | Text |
 
     [![デバイス グループの作成](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-inline.png)](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-expanded.png#lightbox)
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 これで IoT Edge デバイスが **OilPumps** グループに追加されました。
 
@@ -162,8 +162,8 @@ Stream Analytics ジョブは、ポータルで定義した後に Edge モジュ
     | ------ | ----- |
     | ジョブ名 | EdgeDeviceJob |
     | サブスクリプション | お使いの Azure サブスクリプション |
-    | リソース グループ | IoTEdgeDevices |
-    | Location | 米国東部 |
+    | Resource group | IoTEdgeDevices |
+    | Location | East US |
     | ホスティング環境 | Edge |
     | [ストリーミング ユニット] | 1 |
 
@@ -209,11 +209,11 @@ Stream Analytics ジョブは、ポータルで定義した後に Edge モジュ
 
 1. **[デプロイの作成] の [モジュールの追加]** ページで、 **[+ 追加]** をクリックします。 **[IoT Edge モジュール]** を選択します。
 
-1. **[IoT Edge のカスタム モジュール]** パネルで、名前として「**temperatureSensor**」を、イメージの URI として「**asaedgedockerhubtest/asa-edge-test-module:sensor-ad-linux-amd64**」を入力します。 **[Save]** をクリックします。
+1. **[IoT Edge のカスタム モジュール]** パネルで、名前として「**temperatureSensor**」を、イメージの URI として「**asaedgedockerhubtest/asa-edge-test-module:sensor-ad-linux-amd64**」を入力します。 **[保存]** をクリックします。
 
 1. **[デプロイの作成] の [モジュールの追加]** ページで、 **[+ 追加]** をクリックしてモジュールをもう 1 つ追加します。 **[Azure Stream Analytics モジュール]** を選択します。
 
-1. **[Edge deployment]\(Edge のデプロイ\)** パネルで、対象のサブスクリプションと前のセクションで作成した **EdgeDeviceJob** を選択します。 **[Save]** をクリックします。
+1. **[Edge deployment]\(Edge のデプロイ\)** パネルで、対象のサブスクリプションと前のセクションで作成した **EdgeDeviceJob** を選択します。 **[保存]** をクリックします。
 
 1. **[デプロイの作成] の [モジュールの追加]** ページで、 **[次へ]** をクリックします。
 
@@ -279,7 +279,7 @@ Stream Analytics ジョブは、ポータルで定義した後に Edge モジュ
     | パッケージの種類 | Edge Manifest (Edge マニフェスト) |
     | Package | oil-pump-device.json |
     | デバイス グループ | OilPumps |
-    | 優先順位 | 10 |
+    | Priority | 10 |
 
     [![デプロイの作成](./media/iot-accelerators-remote-monitoring-edge/createdeployment-inline.png)](./media/iot-accelerators-remote-monitoring-edge/createdeployment-expanded.png#lightbox)
 
@@ -319,9 +319,9 @@ Stream Analytics ジョブは、ポータルで定義した後に Edge モジュ
     | デバイス グループ | OilPumps |
     | 計算 | すぐに |
     | フィールド | 温度 |
-    | operator | > |
+    | 演算子 | > |
     | 値 | 300 |
-    | 重大度レベル | 情報 |
+    | 重大度レベル | Info |
 
     [![ルールの作成](./media/iot-accelerators-remote-monitoring-edge/newrule-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newrule-expanded.png#lightbox)
 
@@ -329,7 +329,7 @@ Stream Analytics ジョブは、ポータルで定義した後に Edge モジュ
 
 1. **[ダッシュボード]** ページに移動します。 **oil-pump** 装置の温度が 300 を超えると、 **[アラート]** パネルにアラートが表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、リモート監視ソリューション アクセラレータに IoT Edge デバイスを追加して構成する方法を説明しました。 リモート監視ソリューションにおける IoT Edge パッケージの使用の詳細については、次の攻略ガイドを参照してください。
 

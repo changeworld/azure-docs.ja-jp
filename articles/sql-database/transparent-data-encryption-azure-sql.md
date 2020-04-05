@@ -1,32 +1,32 @@
 ---
 title: 透過的なデータ暗号化
-description: SQL Database と Data Warehouse の Transparent Data Encryption の概要。 このドキュメントでは、Transparent Data Encryption の利点と構成オプション (サービスによって管理された Transparent Data Encryption や Bring Your Own Key など) について説明します。
+description: Azure Synapse の SQL Database および SQL Analytics の透過的なデータ暗号化の概要。 このドキュメントでは、Transparent Data Encryption の利点と構成オプション (サービスによって管理された Transparent Data Encryption や Bring Your Own Key など) について説明します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse
 ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 11/01/2019
-ms.openlocfilehash: 381dfb4fca7476d5805bff92d58ecbbf49679346
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/06/2020
+ms.openlocfilehash: 5bbb537ef6545852423bf5315b7636671c598fdc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979963"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228443"
 ---
-# <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>SQL Database と Data Warehouse の Transparent Data Encryption
+# <a name="transparent-data-encryption-for-sql-database-and-azure-synapse"></a>SQL Database および Azure Synapse の透過的なデータ暗号化
 
-Transparent Data Encryption (TDE) を使用すると、保存データを暗号化することで、悪意のあるオフライン アクティビティの脅威から Azure SQL Database、Azure SQL Managed Instance、Azure Data Warehouse を保護できます。 データベース、関連付けられているバックアップ、保管されているトランザクション ログ ファイルの暗号化と暗号化解除をリアルタイムで実行することにより、アプリケーションに変更を加えずに暗号化を行うことができます。 既定では、新しくデプロイされるすべての Azure SQL データベースで TDE が有効になります。 TDE を使用して、SQL Database の論理 **master** データベースを暗号化することはできません。  **master** データベースには、ユーザー データベースで TDE 操作を実行するために必要なオブジェクトが含まれています。
+Transparent Data Encryption (TDE) は、保存データを暗号化することによって、Azure SQL Database、Azure SQL マネージド インスタンス、Azure Synapse を悪意のあるオフライン アクティビティの脅威から保護するために役立ちます。 データベース、関連付けられているバックアップ、保管されているトランザクション ログ ファイルの暗号化と暗号化解除をリアルタイムで実行することにより、アプリケーションに変更を加えずに暗号化を行うことができます。 既定では、新しくデプロイされるすべての Azure SQL データベースで TDE が有効になります。 TDE を使用して、SQL Database の論理 **master** データベースを暗号化することはできません。  **master** データベースには、ユーザー データベースで TDE 操作を実行するために必要なオブジェクトが含まれています。
 
-Azure SQL Database の古いデータベース、Azure SQL Managed Instance、Azure SQL Data Warehouse に対して TDE を手動で有効にする必要があります。
+Azure SQL Database の古いデータベース、Azure SQL Managed Instance、Azure Synapse に対して TDE を手動で有効にする必要があります。
 復元によって作成された Managed Instance データベースでは、ソース データベースから暗号化の状態が継承されます。
 
-Transparent Data Encryption は、データベース暗号化キーと呼ばれる対称キーを使用してデータベース全体のストレージを暗号化します。 このデータベース暗号化キーは、Transparent Data Encryption 保護機能によって保護されます。 保護機能は、サービスによって管理された証明書 (サービスによって管理された Transparent Data Encryption) または Azure Key Vault に格納されている非対称キー (Bring Your Own Key) です。 TDE プロテクターは、Azure SQL Database と Data Warehouse の場合はサーバー レベルで、Azure SQL Managed Instance の場合はインスタンス レベルで設定します。 *サーバー*という言葉は、別途明記されていない限り、このドキュメントではサーバーとインスタンスの両方を指します。
+Transparent Data Encryption は、データベース暗号化キーと呼ばれる対称キーを使用してデータベース全体のストレージを暗号化します。 このデータベース暗号化キーは、Transparent Data Encryption 保護機能によって保護されます。 保護機能は、サービスによって管理された証明書 (サービスによって管理された Transparent Data Encryption) または Azure Key Vault に格納されている非対称キー (Bring Your Own Key) です。 Transparent Data Encryption プロテクターは、Azure SQL Database と Azure Synapse の場合はサーバー レベルで、Azure SQL Managed Instance の場合はインスタンス レベルで設定します。 *サーバー*という言葉は、別途明記されていない限り、このドキュメントではサーバーとインスタンスの両方を指します。
 
 データベースの起動時に、暗号化されたデータベース暗号化キーが暗号化解除され、SQL Server データベース エンジン プロセスでデータベース ファイルの暗号化解除と再暗号化に使用されます。 Transparent Data Encryption では、データのリアルタイムの I/O 暗号化と暗号化解除がページ レベルで実行されます。 各ページは、メモリに読み込まれるときに暗号化解除され、ディスクに書き込まれる前に暗号化されます。 Transparent Data Encryption の概要については、[Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) に関する記事をご覧ください。
 
@@ -46,7 +46,7 @@ Azure での Transparent Data Encryption の既定の設定では、データベ
 [Azure Key Vault 内のユーザーが管理するキーと TDE を併用](transparent-data-encryption-byok-azure-sql.md)すると、TDE 保護機能と呼ばれる、ユーザーが管理する非対称キーを使用して、データベース暗号化キー (DEK) を暗号化できます。  これは、一般に、Transparent Data Encryption に対する Bring Your Own Key (BYOK) のサポートとも呼ばれます。 BYOK シナリオでは、TDE 保護機能は、ユーザーが所有および管理する [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault) (Azure のクラウドベースの外部キー管理システム) 内に格納されます。 TDE 保護機能は[キー コンテナーによって生成するか、オンプレミスの HSM デバイスからキー コンテナーに転送する](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys)ことができます。 TDE の DEK は、データベースのブート ページに格納され、TDE 保護機能によって暗号化および暗号化解除されます。これは Azure Key Vault に格納され、キー コンテナーに留まり続けます。  SQL Database には、DEK の暗号化解除と暗号化のために、ユーザーが所有するキー コンテナーへのアクセス許可が付与されている必要があります。 論理 SQL サーバーからキー コンテナーへのアクセス許可が取り消されると、データベースはアクセス不可となり、すべてのデータが暗号化されます。 Azure SQL Database の場合、TDE 保護機能は論理 SQL サーバー レベルで設定され、そのサーバーに関連付けられているすべてのデータベースによって継承されます。 [Azure SQL Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-howto-managed-instance) の場合、TDE 保護機能はインスタンス レベルで設定され、そのインスタンス上のすべての*暗号化された*データベースによって継承されます。 *サーバー*という言葉は、別途明記されていない限り、このドキュメントではサーバーとインスタンスの両方を指します。
 
 TDE と Azure Key Vault の統合により、ユーザーは Azure Key Vault 機能を使用して、キーの交換、キー コンテナーのアクセス許可、キーのバックアップ、すべての TDE 保護機能の監査/レポートの有効化などのキー管理タスクを制御できます。 Key Vault はキーの一元管理を提供し、厳しく監視されたハードウェア セキュリティ モジュール (HSM) を利用します。また、キー管理とデータ管理の職務の分離を可能にすることでセキュリティ ポリシーの遵守を支援します。
-Azure SQL Database、SQL Managed Instance、Data Warehouse における Transparent Data Encryption と Azure Key Vault の統合 (Bring Your Own Key のサポート) の詳細については、[Transparent Data Encryption と Azure Key Vault の統合に関する記事](transparent-data-encryption-byok-azure-sql.md)をご覧ください。
+Azure SQL Database、SQL Managed Instance、Azure Synapse における Transparent Data Encryption と Azure Key Vault の統合 (Bring Your Own Key のサポート) の詳細については、[Transparent Data Encryption と Azure Key Vault の統合に関する記事](transparent-data-encryption-byok-azure-sql.md)をご覧ください。
 
 Transparent Data Encryption と Azure Key Vault の統合 (Bring Your Own Key のサポート) の使用を開始する場合は、[PowerShell で Key Vault の独自のキーを使用して Transparent Data Encryption を有効にする](transparent-data-encryption-byok-azure-sql-configure.md)方法のガイドをご覧ください。
 
@@ -94,9 +94,9 @@ PowerShell を使用して Transparent Data Encryption を管理します。
 
 PowerShell を使用して Transparent Data Encryption を構成するには、Azure の所有者、共同作成者、または SQL セキュリティ管理者として接続する必要があります。
 
-### <a name="cmdlets-for-azure-sql-database-and-data-warehouse"></a>Azure SQL Database と Data Warehouse のコマンドレット
+### <a name="cmdlets-for-azure-sql-database-and-azure-synapse"></a>Azure SQL Database と Azure Synapse のコマンドレット
 
-Azure SQL Database と Data Warehouse には次のコマンドレットを使用します。
+Azure SQL Database と Azure Synapse には、次のコマンドレットを使用します。
 
 | コマンドレット | 説明 |
 | --- | --- |
@@ -131,7 +131,7 @@ Transact-SQL を使用して、Transparent Data Encryption 保護機能を Key V
 REST API を使用して Transparent Data Encryption を管理します。
 
 REST API を使用して Transparent Data Encryption を構成するには、Azure の所有者、共同作成者、または SQL セキュリティ管理者として接続する必要があります。
-Azure SQL Database と Data Warehouse には次の一連のコマンドを使用します。
+Azure SQL Database と Azure Synapse には次の一連のコマンドを使用します。
 
 | command | 説明 |
 | --- | --- |
@@ -150,6 +150,6 @@ Azure SQL Database と Data Warehouse には次の一連のコマンドを使用
 ## <a name="next-steps"></a>次のステップ
 
 - Transparent Data Encryption の概要については、[Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) に関する記事をご覧ください。
-- Azure SQL Database、Azure SQL Managed Instance、Data Warehouse の Bring Your Own Key をサポートする Transparent Data Encryption の詳細については、[Bring Your Own Key をサポートする Transparent Data Encryption](transparent-data-encryption-byok-azure-sql.md) に関する記事をご覧ください。
+- Azure SQL Database、Azure SQL Managed Instance、Azure Synapse の Bring Your Own Key をサポートする Transparent Data Encryption の詳細については、[Bring Your Own Key をサポートする Transparent Data Encryption](transparent-data-encryption-byok-azure-sql.md) に関する記事をご覧ください。
 - Bring Your Own Key をサポートする Transparent Data Encryption の使用を開始する場合は、[PowerShell で Key Vault の独自のキーを使用して Transparent Data Encryption を有効にする](transparent-data-encryption-byok-azure-sql-configure.md)方法のガイドをご覧ください。
 - Key Vault の詳細については、[Key Vault のドキュメント ページ](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)をご覧ください。

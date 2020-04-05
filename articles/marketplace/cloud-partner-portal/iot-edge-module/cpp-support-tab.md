@@ -1,23 +1,22 @@
 ---
 title: Azure IoT Edge モジュール用のサポート | Azure Marketplace
 description: IoT Edge モジュールのサポート オプションです。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: fe8ff895990471107cfaa229f7b4ced28b477afa
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 439de17ef9eb9c0c2c264884652236d47600b8ea
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813520"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286508"
 ---
 # <a name="iot-edge-module-support-tab"></a>IoT Edge モジュールの [サポート] タブ
 
-**[新しいプラン]** ページの **[サポート]** タブでは、オファーに対するテクニカル サポートとユーザー サポートのリソースを指定します。  サポート フォームには、次の入力領域が用意されています。**Engineering Contact (エンジニアリングの連絡先)** 、**Customer Support (カスタマー サポート)** 、および **Support Urls (サポート URL)** 。 フィールド名に付いているアスタリスク (*) は、そのフィールドが必須であることを示します。
+**[新しいプラン]** ページの **[サポート]** タブでは、オファーに対するテクニカル サポートとユーザー サポートのリソースを指定します。  [サポート] フォームには、 **[Engineering Contact]\(エンジニアリング連絡先\)** 、 **[カスタマー サポート]** 、 **[サポート URL]** の各入力領域があります。 フィールド名に付いているアスタリスク (*) は、そのフィールドが必須であることを示します。
 
 ![IoT Edge モジュールの [新しいプラン] フォームの [サポート] タブ](./media/iot-edge-module-support-tab.png)
 
@@ -40,6 +39,6 @@ ms.locfileid: "73813520"
 | **Azure Government Cloud**| 政府クラウド サポート サイトの URL です                                        |
 |   |   |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 サポート情報の指定が終われば、[オファーを発行](./cpp-publish-offer.md)できる状態になります。

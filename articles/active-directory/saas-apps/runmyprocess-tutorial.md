@@ -17,10 +17,10 @@ ms.date: 08/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 46c31a209e8521b24e7f604dbe630f689fca484e
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68880408"
 ---
 # <a name="tutorial-integrate-runmyprocess-with-azure-active-directory"></a>チュートリアル:RunMyProcess と Azure Active Directory の統合
@@ -29,7 +29,7 @@ ms.locfileid: "68880408"
 
 * RunMyProcess にアクセスする Azure AD ユーザーを制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して RunMyProcess に自動的にサインインできるようにすることができます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -171,7 +171,7 @@ Azure AD ユーザーが RunMyProcess にサインインできるようにする
 
     c. **[アカウント作成の電子メールを自分に送信]** を選択します。
 
-    d. **[Save]** をクリックします。
+    d. **[保存]** をクリックします。
 
     > [!NOTE]
     > 他の RunMyProcess ユーザー アカウントの作成ツールまたは RunMyProcess から提供されている API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。

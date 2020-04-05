@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.openlocfilehash: da29785547d1b6eb4b38d07f020ba885dc5137ea
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75767588"
 ---
 # <a name="run-apache-sqoop-jobs-in-hdinsight-with-curl"></a>Curl を使用して HDInsight で Apache Sqoop ジョブを実行します。
@@ -24,7 +24,7 @@ Curl は、未加工の HTTP 要求を使用して HDInsight とやり取りし�
 
 ## <a name="prerequisites"></a>前提条件
 
-* 「[HDInsight の Hadoop での Apache Sqoop の使用](./hdinsight-use-sqoop.md)」の「[テスト環境のセットアップ](./hdinsight-use-sqoop.md#create-cluster-and-sql-database)」が完了していること。
+* 「[HDInsight の Hadoop での Apache Sqoop の使用](./hdinsight-use-sqoop.md#create-cluster-and-sql-database)」の「[テスト環境のセットアップ](./hdinsight-use-sqoop.md)」が完了していること。
 
 * Azure SQL Database のクエリを実行するクライアント。 [SQL Server Management Studio](../../sql-database/sql-database-connect-query-ssms.md) または [Visual Studio Code](../../sql-database/sql-database-connect-query-vscode.md) の使用を検討してください。
 

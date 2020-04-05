@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/7/2019
 ms.author: rohogue
 ms.openlocfilehash: 6643662d498db8cbcffcb120a9ceabc46cfc04cb
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74174184"
 ---
 # <a name="work-around-blob-storage-account-firewall-settings"></a>BLOB ストレージ アカウントのファイアウォール設定を回避する

@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1643b20c6c157c43e93967cef364e703dbf4478e
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74828791"
 ---
 |**VPN<br>ゲートウェイ<br>世代** |**SKU**   | **S2S/VNet 間<br>トンネル** | **P2S<br> SSTP 接続** | **P2S<br> IKEv2/OpenVPN 接続** | **合計<br>スループット ベンチマーク** | **BGP** | **ゾーン冗長** |

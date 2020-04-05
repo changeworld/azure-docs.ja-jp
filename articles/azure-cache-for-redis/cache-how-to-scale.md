@@ -7,11 +7,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 04/11/2017
 ms.openlocfilehash: 68c668561123aee943f54e6fdcbad7c6450957f4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714457"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235323"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Azure Cache for Redis のスケーリング方法
 Azure Cache for Redis には、キャッシュ サイズや機能の選択に柔軟性を持たせるために、さまざまなキャッシュ オファリングが用意されています。 キャッシュを作成した後でご利用のアプリケーションの要件が変わった場合、キャッシュのサイズと価格レベルをスケーリングできます。 この記事では、Azure Portal と、Azure PowerShell や Azure CLI などのツールを使用して、キャッシュをスケーリングする方法を説明します。
@@ -29,7 +29,7 @@ Azure Cache for Redis の [監視](cache-how-to-monitor.md)機能を使用して
 キャッシュがアプリケーションの要件を満たさなくなったと判断した場合は、ご利用のアプリケーションにとって適切な価格レベルのキャッシュにスケーリングできます。 使用するキャッシュの価格レベルを決定する方法の詳細については、「[What Azure Cache for Redis offering and size should I use](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)」 (Azure Cache for Redis のサービス内容と適切なサイズの選択) をご覧ください。
 
 ## <a name="scale-a-cache"></a>キャッシュのスケーリング
-キャッシュをスケーリングするには、[Azure Portal](https://portal.azure.com) で[キャッシュを参照](cache-configure.md#configure-azure-cache-for-redis-settings)し、 **[リソース] メニュー**の **[スケール]** をクリックします。
+キャッシュをスケーリングするには、[Azure Portal](cache-configure.md#configure-azure-cache-for-redis-settings) で[キャッシュを参照](https://portal.azure.com)し、 **[リソース] メニュー**の **[スケール]** をクリックします。
 
 ![スケール](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
@@ -64,7 +64,7 @@ Azure Portal でキャッシュ インスタンスをスケーリングするほ
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-PowerShell を使用して Azure Cache for Redis インスタンスをスケーリングするには、`Size`、`Sku`、または `ShardCount` プロパティを変更するときに [Set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) コマンドレットを使用します。 次の例は、 `myCache` という名前のキャッシュを 2.5 GB のキャッシュにスケーリングする方法を示しています。 
+PowerShell を使用して Azure Cache for Redis インスタンスをスケーリングするには、[、](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache)、または `Size` プロパティを変更するときに `Sku`Set-AzRedisCache`ShardCount` コマンドレットを使用します。 次の例は、 `myCache` という名前のキャッシュを 2.5 GB のキャッシュにスケーリングする方法を示しています。 
 
     Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
 

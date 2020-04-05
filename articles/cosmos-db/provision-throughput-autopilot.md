@@ -7,11 +7,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 89af30788fe5129cddc6a3607b8c722549b610d1
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264052"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225679"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>オートパイロット モードで Azure Cosmos のコンテナーとデータベースを作成する (プレビュー)
 
@@ -82,7 +82,7 @@ Azure portal を使用して新しいデータベースまたはコンテナー�
 
 **[Provision database throughput]\(データベース スループットのプロビジョニング\)** オプションを選択すると、オートパイロット モードで共有スループット データベースを作成できます。
 
-## <a id="autopilot-limits"></a> オートパイロットのスループットとストレージ制限
+## <a name="throughput-and-storage-limits-for-autopilot"></a><a id="autopilot-limits"></a> オートパイロットのスループットとストレージ制限
 
 次の表は、オートパイロット モードでのさまざまなオプションの最大スループットとストレージ制限を示しています。
 

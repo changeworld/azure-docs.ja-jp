@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/04/2018
 ms.topic: conceptual
 ms.openlocfilehash: a24cb7f39ccb8ea07d4dde2869dc7c924b91983a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61447099"
 ---
 # <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>リモート監視ソリューション アクセラレータの Web UI にカスタム グリッドを追加する
@@ -277,7 +277,7 @@ npm start
     }
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、リモート監視ソリューション アクセラレータの Web UI のページの追加またはカスタマイズに使用できるリソースについて説明しました。
 

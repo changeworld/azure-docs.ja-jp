@@ -9,15 +9,15 @@ ms.topic: quickstart
 ms.date: 03/21/2019
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 9901b3f18973365dc9ceb8c85ff8587b6c2ea894
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74533606"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用してコンテナー インスタンスを Azure にデプロイする
 
-サーバーレスの Docker コンテナーを Azure で簡単にすばやく実行するには、Azure Container Instances を使用します。 Azure Kubernetes Service のように完全なコンテナー オーケストレーション プラットフォームが不要な場合は、コンテナー インスタンス オンデマンドにアプリケーションをデプロイします。
+サーバーレスの Docker コンテナーを Azure 内で簡単にすばやく実行するには、Azure Container Instances を使用します。 Azure Kubernetes Service のように完全なコンテナー オーケストレーション プラットフォームが不要な場合は、コンテナー インスタンス オンデマンドにアプリケーションをデプロイします。
 
 このクイック スタートでは、Azure PowerShell を使用して、分離された Windows コンテナーをデプロイし、そのアプリケーションを完全修飾ドメイン名 (FQDN) を介して使用できるようにします。 1 つのデプロイ コマンドを実行して数秒後には、コンテナーで実行中のアプリケーションを参照できます。
 
@@ -31,7 +31,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 PowerShell をローカル環境にインストールして使用する場合、このチュートリアルでは Azure PowerShell モジュールが必要です。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 Azure のコンテナー インスタンスは、すべての Azure リソースと同様に、リソース グループにデプロイする必要があります。 リソース グループを使用すると、関連する Azure リソースを整理して管理できます。
 
@@ -89,7 +89,7 @@ Events                   : {}
 
 ![ブラウザーに表示された、Azure Container Instances を使用してデプロイされた IIS][qs-powershell-01]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 コンテナーでの処理が完了したら、[Remove-AzContainerGroup][Remove-AzContainerGroup] コマンドレットを使用してそのコンテナーを削除します。
 
@@ -97,7 +97,7 @@ Events                   : {}
 Remove-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、パブリック Docker Hub レジストリ内のイメージから Azure コンテナー インスタンスを作成しました。 コンテナー イメージをビルドし、プライベート Azure コンテナー レジストリからデプロイする場合は、Azure Container Instances のチュートリアルに進んでください。
 

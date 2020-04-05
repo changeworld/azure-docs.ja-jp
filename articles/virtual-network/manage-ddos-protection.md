@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
 ms.openlocfilehash: 786b21e7571ed173d2da90f587a5b76d8c92a13d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450884"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235855"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Azure Portal を使用した Azure DDoS Protection Standard の管理
 
@@ -39,15 +39,15 @@ DDoS Protection プランでは、サブスクリプションの境界を越え�
 
 1. Azure Portal の左上隅にある **[リソースの作成]** を選択します。
 2. *DDoS* を検索します。 検索結果に **[DDoS protection plan]\(DDoS Protection プラン\)** が表示されたら、それを選択します。
-3. **作成** を選択します。
+3. **［作成］** を選択します
 4. 独自の値を入力または選択するか次の例の値を入力または選択し、 **[作成]** を選択します。
 
     |設定        |値                                              |
     |---------      |---------                                          |
-    |Name           | myDdosProtectionPlan                              |
+    |名前           | myDdosProtectionPlan                              |
     |サブスクリプション   | サブスクリプションを選択します。                         |
     |Resource group | **[新規作成]** を選択し、「*myResourceGroup*」と入力します |
-    |Location       | East US                                           |
+    |場所       | 米国東部                                           |
 
 ## <a name="enable-ddos-for-a-new-virtual-network"></a>新しい仮想ネットワークに対して DDoS を有効にする
 
@@ -57,10 +57,10 @@ DDoS Protection プランでは、サブスクリプションの境界を越え�
 
     | 設定         | 値                                                        |
     | ---------       | ---------                                                    |
-    | Name            | myVirtualNetwork                                             |
+    | 名前            | myVirtualNetwork                                             |
     | サブスクリプション    | サブスクリプションを選択します。                                    |
     | Resource group  | **[既存のものを使用]** 、 **[myResourceGroup]** の順に選択します |
-    | Location        | East US                                                      |
+    | 場所        | 米国東部                                                      |
     | DDos Protection | **[DDos Protection]** で **[Standard]** を選択し、 **[myDdosProtectionPlan]** を選択します。 選択したプランは仮想ネットワークと同じサブスクリプションまたは異なるサブスクリプションのどちらにあっても構いませんが、両方のサブスクリプションが同じ Azure Active Directory テナントに関連付けられている必要があります。|
 
 仮想ネットワークに対して DDoS Standard が有効になっている場合、仮想ネットワークを別のリソース グループまたはサブスクリプションに移動することはできません。 DDoS Standard が有効になっている仮想ネットワークを移動する必要がある場合は、まず DDoS Standard を無効にし、仮想ネットワークを移動してから、DDoS Standard を有効にします。 移動後に、仮想ネットワーク内のすべての保護されたパブリック IP アドレスの自動調整されたポリシーしきい値がリセットされます。
@@ -107,7 +107,7 @@ Azure Monitor のアラート構成を使用すると、利用可能な DDoS Pro
 
     |設定                  |値                                                                                               |
     |---------                |---------                                                                                           |
-    |Name                     | myDdosAlert                                                                                        |
+    |名前                     | myDdosAlert                                                                                        |
     |サブスクリプション             | アラートを受信するパブリック IP アドレスを含むサブスクリプションを選択します。        |
     |Resource group           | アラートを受信するパブリック IP アドレスを含むリソース グループを選択します。      |
     |リソース                 | アラートを受信するパブリック IP アドレスを含むパブリック IP アドレスを選択します。 DDoS は、仮想ネットワーク内のリソースに割り当てられているパブリック IP アドレスを監視します。 仮想ネットワーク内のパブリック IP アドレスを持つリソースがない場合は、最初にパブリック IP アドレスを使用してリソースを作成する必要があります。 Azure App Service Environment と Azure VPN Gateway を除き、[Azure サービスの仮想ネットワーク](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)に関するページに一覧表示されている Resource Manager (クラシックではない) を通じてデプロイされているすべてのリソースのパブリック IP アドレスを監視できます。 このチュートリアルを続行するために、[Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 仮想マシンをすばやく作成できます。                   |
@@ -230,7 +230,7 @@ DDoS 攻撃の検出と軽減に対して表示される 2 つの特定のアラ
 
 DDoS 保護プランに関する作業を行うには、使用するアカウントが[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または次の表の適切なアクションが割り当てられた[カスタム](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ロールに、割り当てられている必要があります。
 
-| アクション                                            | Name                                     |
+| アクション                                            | 名前                                     |
 | ---------                                         | -------------                            |
 | Microsoft.Network/ddosProtectionPlans/read        | DDoS 保護プランを読み取る              |
 | Microsoft.Network/ddosProtectionPlans/write       | DDoS 保護プランを作成または更新する  |

@@ -8,10 +8,10 @@ ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
 ms.openlocfilehash: dc334932bfd57bc81a58314ee68f02aeed520f41
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670952"
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Visual Studio の CodeLens における Application Insights テレメトリ
@@ -67,7 +67,7 @@ Application Insights テレメトリは、Web アプリケーションのパブ�
 * 過去 24 時間における要求、失敗した要求、または平均応答時間の傾向の視覚化を表示するには、 **[傾向]** を選択します。
 * CodeLens の詳細ビューの左上隅で Application Insights リソースの名前を選択して、CodeLens データのソースとなるリソースを変更します。
 
-## <a name="next"></a>次のステップ
+## <a name="next-steps"></a><a name="next"></a>次のステップ
 |  |  |
 | --- | --- |
 | **[Visual Studio での Application Insights の操作](../../azure-monitor/app/visual-studio.md)**<br/>テレメトリの検索、CodeLens でのデータの確認、Application Insights の構成。 いずれも Visual Studio で行うことができます。 |![プロジェクトを右クリックし、[Application Insights]、[検索] を選択する](./media/visual-studio-codelens/34.png) |

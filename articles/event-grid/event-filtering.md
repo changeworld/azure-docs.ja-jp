@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
 ms.openlocfilehash: f9fca0a9fefb5959747a4492139ae422a118db02
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70390175"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Event Grid サブスクリプションでのイベントのフィルター処理を理解します
@@ -97,7 +97,7 @@ ms.locfileid: "70390175"
 ]
 ```
 
-### <a name="operator"></a>Operator
+### <a name="operator"></a>演算子
 
 数値に対して使用できる演算子は次のとおりです。
 
@@ -108,7 +108,7 @@ ms.locfileid: "70390175"
 * NumberIn
 * NumberNotIn
 
-ブール値に対して使用できる演算子は BoolEquals です。
+ブール値に対して使用できる演算子は、BoolEquals です。
 
 文字列に対して使用できる演算子は次のとおりです。
 
@@ -147,7 +147,7 @@ Cloud Events スキーマのイベントの場合は、キーの次の値を使�
 
 * number
 * string
-* ブール値
+* boolean
 * array
 
 ### <a name="limitations"></a>制限事項
@@ -160,7 +160,7 @@ Cloud Events スキーマのイベントの場合は、キーの次の値を使�
 
 複数のフィルターで同じキーを使用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * PowerShell および Azure CLI を使用したイベント フィルター処理については、[Event Grid でのイベントのフィルター処理](how-to-filter-events.md)に関するページを参照してください。
 * Event Grid の使用をすぐに開始するには、[Azure Event Grid でのカスタム イベントの作成とルーティング](custom-event-quickstart.md)に関する記事を参照してください。

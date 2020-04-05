@@ -9,10 +9,10 @@ ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.openlocfilehash: 5482495f87e87e5d05d8adca6b053810a62dcb4e
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75934518"
 ---
 # <a name="security-control-data-protection"></a>セキュリティ コントロール:データ保護
@@ -21,7 +21,7 @@ ms.locfileid: "75934518"
 
 ## <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 機密情報のインベントリを維持する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 4.1 | 13.1 | Customer |
 
@@ -33,7 +33,7 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 ## <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2:機密情報を格納または処理するシステムを分離する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 4.2 | 13.2 | Customer |
 
@@ -69,7 +69,7 @@ https://docs.microsoft.com/azure/firewall/threat-intel
 
 ## <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3:機密情報の承認されていない転送を監視してブロックする
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 4.3 | 13.3 | Customer |
 
@@ -77,7 +77,7 @@ https://docs.microsoft.com/azure/firewall/threat-intel
 
 ## <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4:転送中のすべての機密情報を暗号化する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 4.4. | 14.4 | 共有 |
 
@@ -91,7 +91,7 @@ https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encry
 
 ## <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5:アクティブ検出ツールを使用して機密データを特定する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 4.5 | 14.5 | Customer |
 
@@ -111,7 +111,7 @@ https://docs.microsoft.com/azure/information-protection/deployment-roadmap
 
 ## <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 4.6 | 14.6 | Customer |
 
@@ -127,7 +127,7 @@ https://docs.microsoft.com/azure/role-based-access-control/role-assignments-port
 
 ## <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7:ホストベースのデータ損失防止を使用してアクセス制御を実施する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 4.7 | 14.7 | Customer |
 
@@ -135,7 +135,7 @@ https://docs.microsoft.com/azure/role-based-access-control/role-assignments-port
 
 ## <a name="48-encrypt-sensitive-information-at-rest"></a>4.8:機密情報を保存時に暗号化する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 4.8 | 14.8 | Customer |
 
@@ -151,7 +151,7 @@ https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal
 
 ## <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9:重要な Azure リソースへの変更に関するログとアラート
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 4.9 | 14.9 | Customer |
 

@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: ronhogue
   ms.author: rohogue
-  ms.date: 03/11/2020
-  ms.openlocfilehash: bf1ab34e0ac7477133933886bb07d16f4574c788
-  ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+  ms.date: 03/20/2020
+  ms.openlocfilehash: ab36532f1f3f29fdd4156c2c65f07d761fa76bb4
+  ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/13/2020
-  ms.locfileid: "79298854"
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "80276514"
 landingContent:
 - title: Azure FXT Edge Filer について
   linkLists:
@@ -40,12 +40,12 @@ landingContent:
       url: fxt-add-storage.md
     - text: 7 - クラスターのネットワーク設定を構成する
       url: fxt-configure-network.md
+    - text: 8 - クラスターにクライアントをマウントする
+      url: fxt-mount-clients.md
 - title: 管理する
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: クラスターにクライアントをマウントする
-      url: fxt-mount-clients.md
     - text: ハードウェアの状態を監視する
       url: fxt-monitor.md
     - text: ハードウェアの電源を安全にオフにする

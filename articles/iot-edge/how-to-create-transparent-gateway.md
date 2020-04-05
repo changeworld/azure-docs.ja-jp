@@ -8,12 +8,12 @@ ms.date: 11/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bf60bfb41e48220845e9aa26dc26f20e6ed60d16
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 6069e0782f69d0dfb73d9be2998cbb11d59d7d22
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510687"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79529171"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する
 
@@ -48,7 +48,7 @@ ms.locfileid: "76510687"
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure IoT Edge デバイスは、[運用証明書](how-to-install-production-certificates.md) で構成されていること。
+Azure IoT Edge デバイスは、[運用証明書](how-to-manage-device-certificates.md) で構成されていること。
 
 ## <a name="deploy-edgehub-to-the-gateway"></a>edgeHub をゲートウェイにデプロイする
 

@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
 ms.openlocfilehash: 1e5253d617c87d5869cebc817da6d265ebfdfa7e
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77539469"
 ---
-# <a name="troubleshoot-azure-private-link-connectivity-problems"></a>Azure Private Link 接続に関する問題のトラブルシューティングを行う
+# <a name="troubleshoot-azure-private-link-connectivity-problems"></a>Azure Private Link 接続に関する問題のトラブルシューティング
 
 この記事では、Azure Private Link のセットアップに使用される接続を検証して診断するためのステップ バイ ステップのガイダンスを提供します。
 
@@ -99,7 +99,7 @@ Private Link で使用できる接続シナリオを次に示します。
        - 負荷分散規則に従ってバックエンド プールへの接続が行われる場合、ロード バランサーは動作しています。
        - また、Azure Monitor を使用してロード バランサーのメトリックを確認し、データがロード バランサーを介して流れているかどうかを確認することもできます。
 
-1. [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) を使用して、データが流れているかどうかを確認します。
+1. [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) を使用して、データが流れているかどうか確認します。
 
     a. プライベート リンク サービス リソースで、 **[Metrics]\(メトリック\)** を選択します。
      - **[入力バイト数]** または **[出力バイト数]** を選択します。

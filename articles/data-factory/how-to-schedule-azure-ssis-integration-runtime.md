@@ -14,10 +14,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
 ms.openlocfilehash: 5263af2708ee30566e90cdf59ef69f52f76a9d32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75440316"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS Integration Runtime をスケジュールに従って開始および停止する方法
@@ -227,7 +227,7 @@ Azure Automation アカウントをまだ持っていない場合は、この手
     4. **[場所]** では、Azure Automation アカウントの場所を選択します。 
     5. **[Azure 実行アカウントの作成]** で **[はい]** を選択します。 Azure Active Directory にサービス プリンシパルが作成されて、Azure サブスクリプションでの**共同作成者**ロールが割り当てられます。
     6. Azure ダッシュボードに常に表示するには、 **[ダッシュボードにピン留め]** を選択します。 
-    7. **作成** を選択します。 
+    7. **［作成］** を選択します 
 
    ![[新規] -> [監視 + 管理] -> [Automation]](./media/how-to-schedule-azure-ssis-integration-runtime/add-automation-account-window.png)
    
@@ -265,7 +265,7 @@ Azure Automation アカウントをまだ持っていない場合は、この手
 
     1. **[名前]** に、「**StartStopAzureSsisRuntime**」と入力します。
     2. **[Runbook の種類]** で、 **[PowerShell]** を選びます。
-    3. **作成** を選択します。
+    3. **［作成］** を選択します
     
    ![[Runbook の追加] ボタン](./media/how-to-schedule-azure-ssis-integration-runtime/add-runbook-window.png)
    
@@ -364,7 +364,7 @@ Azure Automation アカウントをまだ持っていない場合は、この手
     4. **[開始]** に、現在時刻より数分後の時刻を入力します。 
     5. **[繰り返し]** では **[定期的]** を選択します。 
     6. **[繰り返し間隔]** に「**1**」と入力して、 **[日]** を選択します。 
-    7. **作成** を選択します。 
+    7. **［作成］** を選択します 
 
    ![Azure SSIS IR 開始のスケジュール](./media/how-to-schedule-azure-ssis-integration-runtime/new-schedule-start.png)
     

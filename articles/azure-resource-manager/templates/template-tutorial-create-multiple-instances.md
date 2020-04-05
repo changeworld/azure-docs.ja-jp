@@ -5,16 +5,16 @@ author: mumian
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 91a37178f8dc8ecc3c61ca16f193e2e52c309d46
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 9ed14ce1af6421accccface1b66119057d1c5a30
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209479"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239290"
 ---
-# <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>チュートリアル:Resource Manager テンプレートを使用した複数のリソース インスタンスの作成
+# <a name="tutorial-create-multiple-resource-instances-with-arm-templates"></a>チュートリアル:ARM テンプレートを使用した複数のリソース インスタンスの作成
 
-Azure Resource Manager テンプレートで反復処理して、Azure リソースの複数のインスタンスを作成する方法について説明します。 このチュートリアルでは、3 つのストレージ アカウント インスタンスが作成されるようテンプレートを変更します。
+Azure Resource Manager (ARM) テンプレートでの反復処理を通じて、Azure リソースのインスタンスを複数作成する方法について説明します。 このチュートリアルでは、3 つのストレージ アカウント インスタンスが作成されるようテンプレートを変更します。
 
 ![Azure Resource Manager による複数のインスタンスの作成の図](./media/template-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances-diagram.png)
 
@@ -31,11 +31,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-* Visual Studio Code と Resource Manager ツール拡張機能。 「[Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](use-vs-code-to-create-template.md)」を参照してください。
+* Visual Studio Code と Resource Manager ツール拡張機能。 [Visual Studio Code を使って ARM テンプレートを作成する方法](use-vs-code-to-create-template.md)に関するページを参照してください。
 
 ## <a name="open-a-quickstart-template"></a>クイック スタート テンプレートを開く
 
-[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)は、Resource Manager テンプレートのリポジトリです。 テンプレートを最初から作成しなくても、サンプル テンプレートを探してカスタマイズすることができます。 このクイック スタートで使用されるテンプレートは、[Create a standard storage account](https://azure.microsoft.com/resources/templates/101-storage-account-create/) と呼ばれます。 テンプレートにより、Azure ストレージ アカウント リソースが定義されます。
+[Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/)は、ARM テンプレートのリポジトリです。 テンプレートを最初から作成しなくても、サンプル テンプレートを探してカスタマイズすることができます。 このクイック スタートで使用されるテンプレートは、[Create a standard storage account](https://azure.microsoft.com/resources/templates/101-storage-account-create/) と呼ばれます。 テンプレートにより、Azure ストレージ アカウント リソースが定義されます。
 
 1. Visual Studio Code から、 **[ファイル]** > **[ファイルを開く]** を選択します。
 2. **[ファイル名]** に以下の URL を貼り付けます。
@@ -108,7 +108,7 @@ Visual Studio Code で、次の 4 つの変更を行います。
 }
 ```
 
-複数のインスタンスの作成の詳細については、「[Azure Resource Manager テンプレートでリソースまたはプロパティの複数のインスタンスをデプロイする](./copy-resources.md)」を参照してください。
+複数のインスタンスの作成の詳細については、[ARM テンプレートでリソースまたはプロパティの複数のインスタンスをデプロイする方法](./copy-resources.md)に関するページを参照してください。
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 

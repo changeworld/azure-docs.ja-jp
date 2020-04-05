@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.openlocfilehash: 20a5a9c5513c165cd5add2e97f019a741dfd0b03
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681467"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225539"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure Data Factory でのパイプラインの実行とトリガー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -376,9 +376,9 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 | **システム変数** | **WindowStart** および **WindowEnd** システム変数の使用がサポートされます。 ユーザーは、トリガー定義のトリガー システム変数として `triggerOutputs().windowStartTime` および `triggerOutputs().windowEndTime` にアクセスできます。 値はそれぞれ、ウィンドウの開始時刻と終了時刻として使用されます。 たとえば、1 時間ごとに実行されるタンブリング ウィンドウ トリガーの場合、午前 1 時から午前 2 時までのウィンドウの定義は `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` と `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z` です。 | サポートされていません。 |
 | **パイプラインとトリガーのリレーションシップ** | 一対一のリレーションシップをサポートします。 トリガーできるパイプラインは 1 つだけです。 | 多対多のリレーションシップをサポートします。 複数のトリガーが 1 つのパイプラインを開始することができます。 1 つのトリガーが複数のパイプラインを開始することもできます。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次のチュートリアルを参照してください。
 
-- [クイック スタート:.NET SDK を使用してデータ ファクトリを作成する](quickstart-create-data-factory-dot-net.md)
+- [クイック スタート: .NET SDK を使用してデータ ファクトリを作成する](quickstart-create-data-factory-dot-net.md)
 - [スケジュール トリガーの作成](how-to-create-schedule-trigger.md)
 - [タンブリング ウィンドウ トリガーの作成](how-to-create-tumbling-window-trigger.md)

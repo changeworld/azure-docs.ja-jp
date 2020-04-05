@@ -17,10 +17,10 @@ ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
 ms.openlocfilehash: 7d2ccdfa1fe553d0795a82856dd255f4a54138bf
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "70898024"
 ---
 # <a name="create-a-cicd-pipeline-for-net-with-azure-devops-projects"></a>Azure DevOps Projects を使用して .NET 用 CI/CD パイプラインを作成する
@@ -37,7 +37,7 @@ DevOps Projects によって、Azure DevOps に CI/CD パイプラインが作�
 
 1. 左側のウィンドウで **[リソースの作成]** アイコンを選択し、**DevOps Projects** を検索します。  
 
-3.  **作成** を選択します。
+3.  **［作成］** を選択します
 
     ![継続的デリバリーの開始](_img/azure-devops-project-aspnet-core/fullbrowser.png)
 
@@ -139,11 +139,11 @@ DevOps Projects により、Azure へのデプロイを管理するリリース 
 ログには、デプロイ プロセスに関する有用な情報が含まれます。 これらは、デプロイ中とデプロイ後の両方に表示できます。
 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 作成した Azure App Service とその他の関連リソースが必要なくなったら、削除してかまいません。 DevOps Projects ダッシュボードで**削除**機能を使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 チームのニーズを満たすためのビルドおよびリリース パイプラインの変更について詳しくは、このチュートリアルをご覧ください。
 

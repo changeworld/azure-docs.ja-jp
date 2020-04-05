@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: jingwang
 ms.openlocfilehash: 8ebb4f0d1a06a7bf29dc46cd696b6acfd2527095
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927392"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229999"
 ---
 # <a name="binary-format-in-azure-data-factory"></a>Azure Data Factory でのバイナリ形式
 
@@ -34,7 +34,7 @@ ms.locfileid: "74927392"
 | type             | データセットの type プロパティは **Binary** に設定する必要があります。 | はい      |
 | location         | ファイルの場所の設定。 ファイル ベースの各コネクタには、固有の場所の種類と `location` でサポートされるプロパティがあります。 **詳細については、コネクタの記事でデータセットのプロパティに関するセクションを参照してください**。 | はい      |
 | compression | ファイル圧縮を構成するためのプロパティのグループ。 アクティビティの実行中に圧縮/圧縮解除を行う場合は、このセクションを構成します。 | いいえ |
-| type | バイナリ ファイルの読み取り/書き込みに使用される圧縮コーデックです。 <br>使用できる値は、**bzip2**、**gzip**、**deflate**、**ZipDeflate** です。 ファイルを保存するときに使用します。<br>コピー アクティビティを使用して ZipDeflate ファイルを圧縮解除し、ファイルベースのシンク データ ストアに書き込む場合、ファイルは `<path specified in dataset>/<folder named as source zip file>/` フォルダーに抽出されます。 | いいえ       |
+| type | バイナリ ファイルの読み取り/書き込みに使用される圧縮コーデックです。 <br>使用できる値は、**bzip2**、**gzip**、**deflate**、**ZipDeflate** です。 ファイルを保存するときに使用します。<br>コピー アクティビティを使用して ZipDeflate ファイルを展開し、ファイル ベースのシンク データ ストアに書き込むと、`<path specified in dataset>/<folder named as source zip file>/` フォルダーにファイルが抽出されます。 | いいえ       |
 | level | 圧縮率です。 データセットがコピー アクティビティのシンクで使用される場合に適用されます。<br>使用できる値は、**Optimal** または **Fastest** です。<br>- **Fastest:** 圧縮操作は可能な限り短時間で完了しますが、圧縮後のファイルが最適に圧縮されていない場合があります。<br>- **Optimal**: 圧縮操作で最適に圧縮されますが、操作が完了するまでに時間がかかる場合があります。 詳細については、 [圧縮レベル](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) に関するトピックをご覧ください。 | いいえ       |
 
 Azure Blob Storage のバイナリ データセットの例を次に示します。
@@ -87,7 +87,7 @@ Azure Blob Storage のバイナリ データセットの例を次に示します
 | type          | コピー アクティビティのソースの type プロパティを **BinarySink** に設定する必要があります。 | はい      |
 | storeSettings | データ ストアにデータを書き込む方法を指定するプロパティのグループ。 ファイル ベースの各コネクタには、`storeSettings` に、固有のサポートされる書き込み設定があります。 **詳細については、コネクタの記事でコピー アクティビティのプロパティに関するセクションを参照してください**。 | いいえ       |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [コピー アクティビティの概要](copy-activity-overview.md)
 - [GetMetadata アクティビティ](control-flow-get-metadata-activity.md)

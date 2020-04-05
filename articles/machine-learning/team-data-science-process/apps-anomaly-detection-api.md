@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
 ms.openlocfilehash: a09094cf0d1bd3c2e299e968d7de8410dcd9c3cb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721882"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning 異常検出 API
@@ -121,7 +121,7 @@ API を使用するには、Azure Machine Learning Web サービスとしてホ�
 ### <a name="parameters"></a>パラメーター
 以下の表は、前述の入力パラメーターに関する詳しい情報の一覧です。
 
-| 入力パラメーター | 説明 | 既定の設定 | 種類 | 有効範囲 | 推奨範囲 |
+| 入力パラメーター | 説明 | 既定の設定 | Type | 有効範囲 | 推奨範囲 |
 | --- | --- | --- | --- | --- | --- |
 | detectors.historyWindow |異常スコアの計算に使用された履歴 (データ ポイントの数) |500 |整数 (integer) |10 ～ 2000 |時系列に依存 |
 | detectors.spikesdips | スパイクのみ、ディップのみ、または両方を検出するかどうか |両方 |enumerated |Both、Spikes、Dips |両方 |
@@ -131,7 +131,7 @@ API を使用するには、Azure Machine Learning Web サービスとしてホ�
 | zspikedetector.sensitivity |Z スパイク検出機能の感度 |3 |整数 (integer) |1 ～ 10 |3 ～ 5 (値が小さいほど感度が高い) |
 | postprocess.tailRows |出力結果に維持する最新のデータ ポイントの数 |0 |整数 (integer) |0 (すべてのデータ ポイントを維持する場合) または結果として維持するデータ ポイントの数を指定 |該当なし |
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 この API は、与えられた時系列データに対してすべての検出機能を実行し、時間ポイントごとの 2 進値のスパイク インジケーターと異常スコアを返します。 以下の表は、API からの出力の一覧です。
 
 | 出力 | 説明 |
@@ -157,7 +157,7 @@ ScoreWithSeasonality API は、季節的なパターンを含んだ時系列デ�
 
 以下の表は、前述の入力パラメーターに関する詳しい情報の一覧です。
 
-| 入力パラメーター | 説明 | 既定の設定 | 種類 | 有効範囲 | 推奨範囲 |
+| 入力パラメーター | 説明 | 既定の設定 | Type | 有効範囲 | 推奨範囲 |
 | --- | --- | --- | --- | --- | --- |
 | preprocess.aggregationInterval |入力時系列の集計間隔 (秒単位) |0 (集計は実行されません) |整数 (integer) |集計をスキップする場合は 0、それ以外の場合は 0 より大きい値 |5 分 ～ 1 日 (時系列に依存) |
 | preprocess.aggregationFunc |指定の AggregationInterval でデータを集計するための関数 |mean |enumerated |mean、sum、length |該当なし |
@@ -174,7 +174,7 @@ ScoreWithSeasonality API は、季節的なパターンを含んだ時系列デ�
 | seasonality.transform |異常検出を適用する前に季節的傾向要因を取り除くかどうか |deseason |enumerated |none、deseason、deseasontrend |該当なし |
 | postprocess.tailRows |出力結果に維持する最新のデータ ポイントの数 |0 |整数 (integer) |0 (すべてのデータ ポイントを維持する場合) または結果として維持するデータ ポイントの数を指定 |該当なし |
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 この API は、与えられた時系列データに対してすべての検出機能を実行し、時間ポイントごとの 2 進値のスパイク インジケーターと異常スコアを返します。 以下の表は、API からの出力の一覧です。
 
 | 出力 | 説明 |

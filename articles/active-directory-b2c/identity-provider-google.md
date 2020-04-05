@@ -12,10 +12,10 @@ ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 48955caddb64069f897078f5e47066d9f11d119b
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78188142"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Google アカウントでのサインアップおよびサインインを設定する
@@ -29,10 +29,10 @@ Azure Active Directory B2C (Azure AD B2C) で [ID プロバイダー](authorizat
 1. **[プロジェクト名]** を入力し、 **[作成]** を選択します。
 1. 画面左上にあるプロジェクト ドロップダウンを選択して新しいプロジェクトを使用していることを確認し、名前でご自分のプロジェクトを選択し、 **[開く]** を選択します。
 1. 左側にあるメニューで **[OAuth 同意画面]** を選択し、 **[外部]** を選択し、 **[作成]** を選択します。
-アプリケーションの **[名前]** を入力します。 **[承認済みドメイン]** セクションに「*b2clogin.com*」と入力し、 **[保存]** を選択します。
+アプリケーションの **[名前]** を入力します。 *[承認済みドメイン]* セクションに「**b2clogin.com**」と入力し、 **[保存]** を選択します。
 1. 左側のメニューで **[Credentials (資格情報)]** を選択して、 **[Create credentials (資格情報を作成)]**  >  **[Oauth client ID (Oauth クライアント ID)]** を選択します。
 1. **[アプリケーションの種類]** で **[Web アプリケーション]** を選択します。
-1. アプリケーションの**名前**を指定します。 **[承認済みの JavaScript 生成元]** に「`https://your-tenant-name.b2clogin.com`」と入力し、 **[承認済みのリダイレクト URI]** に「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 `your-tenant-name` をテナントの名前に置き換えます。 テナントが Azure AD B2C に大文字で定義されている場合でも、テナント名を入力するときに、すべての小文字を使用する必要があります。
+1. アプリケーションの**名前**を指定します。`https://your-tenant-name.b2clogin.com`[承認済みの JavaScript 生成元] **に「** 」と入力し、`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`[承認済みのリダイレクト URI] **に「** 」と入力します。 `your-tenant-name` をテナントの名前に置き換えます。 テナントが Azure AD B2C に大文字で定義されている場合でも、テナント名を入力するときに、すべての小文字を使用する必要があります。
 1. **Create** をクリックしてください。
 1. **[クライアント ID]** と **[クライアント シークレット]** の値をコピーします。 テナントで ID プロバイダーとして Google を構成するには、両方の値が必要です。 **[クライアント シークレット]** は、重要なセキュリティ資格情報です。
 

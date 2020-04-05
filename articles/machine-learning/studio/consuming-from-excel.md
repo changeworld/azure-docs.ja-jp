@@ -10,16 +10,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 3314852de2a5fc76ff152d05649fabb5eac2757e
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 333ed411ab818cff77a7cba6c7de4f42c36f5b6b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168884"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218226"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-classic-web-service-from-excel"></a>Excel からの Azure Machine Learning Studio (クラシック) Web サービスの使用
 
- Azure Machine Learning Studio (クラシック) では、Excel から直接 Web サービスを簡単に呼び出すことができ、コードを作成する必要がありません。
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
+Azure Machine Learning Studio (クラシック) では、Excel から直接 Web サービスを簡単に呼び出すことができ、コードを作成する必要がありません。
 
 Excel 2013 (またはそれ以降) または Excel Online を使用している場合は、Excel の [Excel アドイン](excel-add-in-for-web-services.md)を使用することをお勧めします。
 

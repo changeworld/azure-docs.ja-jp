@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
 ms.openlocfilehash: 7237bb7e0538ba1a9b6333ccb6589efe657a247d
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74423952"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware VM および物理サーバーのレプリケーション問題のトラブルシューティング
@@ -190,6 +190,6 @@ VSS プロバイダー サービスのスタートアップの種類が **[自�
         - Azure Site Recovery VSS プロバイダー
         - VDS サービス
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 さらにサポートが必要な場合は、[Azure Site Recovery フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)に質問を投稿してください。 弊社のアクティブなコミュニティを通じて、エンジニアがサポートいたします。

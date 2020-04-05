@@ -17,11 +17,11 @@ ms.date: 03/24/2017
 ms.author: kumud
 ms.reviewer: annahar
 ms.openlocfilehash: a8bd4e4779d94cfc22ac7726c9746fe755764033
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647324"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235807"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>PowerShell を使用して仮想マシンに複数の IP アドレスを割り当てる
 
@@ -33,7 +33,7 @@ ms.locfileid: "75647324"
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
-## <a name = "create"></a>複数の IP アドレスを持つ VM を作成する
+## <a name="create-a-vm-with-multiple-ip-addresses"></a><a name = "create"></a>複数の IP アドレスを持つ VM を作成する
 
 以下の手順は、シナリオの説明に従って複数の IP アドレスを持つ VM を作成する方法を示しています。 変数値は実際の実装に合わせて変更してください。
 
@@ -195,7 +195,7 @@ ms.locfileid: "75647324"
 
 10. この記事の「[VM オペレーティング システムに IP アドレスを追加する](#os-config)」に記載されたご使用のオペレーティング システム用の手順に従って、プライベート IP アドレスを VM オペレーティング システムに追加します。 オペレーティング システムにパブリック IP アドレスは追加しないでください。
 
-## <a name="add"></a>VM に IP アドレスを追加する
+## <a name="add-ip-addresses-to-a-vm"></a><a name="add"></a>VM に IP アドレスを追加する
 
 プライベート IP アドレスとパブリック IP アドレスを Azure ネットワーク インターフェイスに追加するには、次の手順を実行します。 次のセクションの例では、この記事の[シナリオ](#scenario)で説明している 3 つの IP 構成を使用した VM を既に所有していることを前提としていますが、必須ではありません。
 

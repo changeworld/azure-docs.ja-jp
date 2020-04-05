@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/07/2016
 tags: connectors
 ms.openlocfilehash: c7f97ff33742eb545cbfbd7521ba135584851e5e
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75666773"
 ---
 # <a name="create-and-manage-files-in-box-by-using-azure-logic-apps"></a>Box で Azure Logic Apps を使用してファイルを作成および管理する

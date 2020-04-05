@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/05/2020
 ms.openlocfilehash: 68bc30d08d95fe8e3d20a8ecb7af6c9710951921
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78399720"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight クラスターを自動的にスケール調整する

@@ -3,12 +3,12 @@ title: Azure Functions 2.x の host.json のリファレンス
 description: Azure Functions の v2 ランタイムの host.json ファイルのリファレンス ドキュメント。
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 949d4f2c5d8c1d8034ccc392915bc40f1f2fddda
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 3d98be2dcc351aa88b9e126c883865079e407c2e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356518"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473372"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 以降の host.json のリファレンス 
 
@@ -146,8 +146,6 @@ ms.locfileid: "78356518"
 | プロパティ | Default | 説明 |
 | --------- | --------- | --------- | 
 | samplingSettings | 該当なし | 「[applicationInsights.samplingSettings](#applicationinsightssamplingsettings)」を参照してください。 |
-| samplingExcludedTypes | null | サンプリングしない型をセミコロンで区切ったリスト。 認識される型は、Dependency、Event、Exception、PageView、Request、Trace です。 指定された型のすべてのインスタンスが転送されます。指定されていない型はサンプリングされます。 |
-| samplingIncludedTypes | null | サンプリングする型をセミコロンで区切ったリスト。空のリストはすべての型を意味します。 `samplingExcludedTypes` にリストされた型は、ここにリストされた型をオーバーライドします。 認識される型は、Dependency、Event、Exception、PageView、Request、Trace です。 指定された型のすべてのインスタンスが転送されます。指定されていない型はサンプリングされます。 |
 | enableLiveMetrics | true | ライブ メトリックの収集を有効にします。 |
 | enableDependencyTracking | true | 依存関係の追跡を有効にします。 |
 | enablePerformanceCountersCollection | true | Kudu パフォーマンス カウンターの収集を有効にします。 |
@@ -168,6 +166,8 @@ ms.locfileid: "78356518"
 | minSamplingPercentage | 0.1 | サンプリング率がさまざまであるため、このプロパティにより、許容される最小サンプリング率が決定されます。 |
 | maxSamplingPercentage | 0.1 | サンプリング率がさまざまであるため、このプロパティにより、許容される最大サンプリング率が決定されます。 |
 | movingAverageRatio | 1.0 | 移動平均の計算で最新値に割り当てられる重み。 1 以下の値を使用します。 小さい値にすると、急変に対する反応が低いアルゴリズムになります。 |
+| excludedTypes | null | サンプリングしない型をセミコロンで区切ったリスト。 認識される型は、Dependency、Event、Exception、PageView、Request、Trace です。 指定された型のすべてのインスタンスが転送されます。指定されていない型はサンプリングされます。 |
+| includedTypes | null | サンプリングする型をセミコロンで区切ったリスト。空のリストはすべての型を意味します。 `excludedTypes` にリストされた型は、ここにリストされた型をオーバーライドします。 認識される型は、Dependency、Event、Exception、PageView、Request、Trace です。 指定された型のすべてのインスタンスが転送されます。指定されていない型はサンプリングされます。 |
 
 ### <a name="applicationinsightshttpautocollectionoptions"></a>applicationInsights.httpAutoCollectionOptions
 

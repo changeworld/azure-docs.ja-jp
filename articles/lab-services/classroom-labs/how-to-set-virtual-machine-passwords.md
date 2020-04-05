@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
 ms.openlocfilehash: 0ff464936025a20cb6925adc7ef6eb44c2fe1f0e
-ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78933815"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>仮想マシン プールを設定および管理する 

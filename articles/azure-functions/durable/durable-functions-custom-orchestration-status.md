@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 31b7d51293878c9d0e8567b6b4bd58c48d75ec63
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76766269"
 ---
 # <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Durable Functions でのカスタムオーケストレーションの状態 (Azure Functions)
@@ -24,7 +24,7 @@ ms.locfileid: "76766269"
 
 クライアントは、状態の終了点をポーリングし、進行状況の現在の実行のステージを視覚化する UI を表示できます。 次の例では、進行状況の共有を示しています:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -51,7 +51,7 @@ public static string SayHello([ActivityTrigger] string name)
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 `E1_HelloSequence` オーケストレーター関数:
 
@@ -85,7 +85,7 @@ module.exports = async function(context, name) {
 
 `CustomStatus`フィールドが"London"に設定されている時のみ、クライアントは、オーケストレーションの出力を受け取ります:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("HttpStart")]
@@ -118,7 +118,7 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -156,7 +156,7 @@ module.exports = async function(context, req) {
 
 もう 1 つの興味深いシナリオは、固有の特性や相互作用に基づいてカスタマイズされた出力を返すことによってユーザーをセグメント化することです。 カスタムオーケストレーションの状態のヘルプで、クライアント側のコードはジェネラルのままになります。 すべての主な変更は、次の例に示すように、サーバー側で行われます:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CityRecommender")]
@@ -194,7 +194,7 @@ public static void Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -233,7 +233,7 @@ module.exports = df.orchestrator(function*(context) {
 
 オーケストレーターは、カスタムの状態を使用してクライアントに固有の指示を提供できます。 カスタム状態の手順は、オーケストレーション コードでの手順にマップされます:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ReserveTicket")]
@@ -261,7 +261,7 @@ public static async Task<bool> Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -294,7 +294,7 @@ module.exports = df.orchestrator(function*(context) {
 
 次のサンプルでは、カスタムの状態が先に設定します:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrationContext context)
@@ -309,7 +309,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrat
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");

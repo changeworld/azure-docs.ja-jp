@@ -13,10 +13,10 @@ ms.author: mimart
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b30469858a5dd83f7f5f707f74466302b3000510
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78968721"
 ---
 # <a name="resources-for-migrating-applications-to-azure-active-directory"></a>アプリケーションを Azure Active Directory に移行するためのリソース

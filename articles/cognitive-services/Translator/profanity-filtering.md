@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
 ms.openlocfilehash: e7e2097e0d3daf360f1fa0f30bf3fd2c62c07163
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73836220"
 ---
 # <a name="add-profanity-filtering-with-the-translator-text-api"></a>Translator Text API で不適切な表現のフィルターを追加する
@@ -26,12 +26,12 @@ ms.locfileid: "73836220"
 Translate() メソッドは "options" パラメーターを取り、ここには "ProfanityAction" の新しい要素が含まれます。 ProfanityAction に指定できる値は、"NoAction"、"Marked"、および "Deleted" です。
 
 ## <a name="accepted-values-of-profanityaction-and-examples"></a>ProfanityAction に指定できる値と例
-|ProfanityAction 値 | Action | 例:ソース - 日本語 | 例:ターゲット - 英語|
+|ProfanityAction 値 | アクション | 例: ソース - 日本語 | 例: ターゲット - 英語|
 | :---|:---|:---|:---|
-| NoAction | [既定]。 オプションを設定しない場合と同じです。 不適切な表現はソースからターゲットに渡されます。 | 彼は変態です。 | He is a jerk. |
+| NoAction | 既定値。 オプションを設定しない場合と同じです。 不適切な表現はソースからターゲットに渡されます。 | 彼は変態です。 | He is a jerk. |
 | Marked | 不適切な表現は XML タグ \<profanity> ... \</profanity> で囲まれます。 | 彼は変態です。 | He is a \<profanity>jerk\</profanity>. |
 | Deleted | 不適切な単語は、置換されずに出力から削除されます。 | 彼は。 | He is a. |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [Translator API 呼び出しで不適切な表現のフィルター処理を適用する](reference/v3-0-translate.md)

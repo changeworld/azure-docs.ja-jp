@@ -1,18 +1,18 @@
 ---
 title: Azure SignalR Service でリアルタイム モバイル アプリケーションを簡単に構築する
 description: Azure SignalR Service を使用してリアルタイム アプリケーションを構築できるサービスについて説明します。
-author: elamalani
+author: codemillmatt
 ms.assetid: 34a8a070-0123-4678-8588-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: 988d5f9a66baeae46661ae363029aed0f521c8e4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: 242a929e4a4ebe00dd0a2101b27ab8a8bef3fbeb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454399"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240822"
 ---
 # <a name="build-real-time-applications-with-azure-signalr-service"></a>Azure SignalR Service でリアルタイム アプリケーションを構築する
 

@@ -16,10 +16,10 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
 ms.openlocfilehash: 35307848c09391ae4468afc00adafd8171aaaa7b
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67876482"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>Azure デプロイで Java から SendGrid を使用して電子メールを送信する方法
@@ -209,10 +209,10 @@ ms.locfileid: "67876482"
 
 ![電子メール送信の結果][emailresult]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 アプリケーションをコンピューティング エミュレーターにデプロイし、ブラウザーで emailform.jsp を実行します。フォームに値を入力し、 **[Send this email (電子メールの送信)]** をクリックして、sendemail.jsp で結果を確認します。
 
-Azure 上で Java から SendGrid を使用する方法を示すために、このコードが用意されています。 運用環境で Azure に展開する前に、エラー処理やその他の機能をさらに追加することができます。 例: 
+Azure 上で Java から SendGrid を使用する方法を示すために、このコードが用意されています。 運用環境で Azure に展開する前に、エラー処理やその他の機能をさらに追加することができます。 次に例を示します。 
 
 * Web フォームを使用する代わりに、Azure ストレージ BLOB または SQL データベースを使用して、電子メール アドレスと電子メール メッセージを保存するようにします。 Java で Azure ストレージ BLOB を使用する方法の詳細については、 [Java から BLOB ストレージ サービスを使用する方法に関するページ](https://azure.microsoft.com/develop/java/how-to-guides/blob-storage/)を参照してください。 Java で SQL データベースを使用する方法の詳細については、 [Java での SQL データベースの使用に関するページ](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-java)を参照してください。
 * Java での SendGrid の使用については、「 [Java から SendGrid を使用して電子メールを送信する方法](store-sendgrid-java-how-to-send-email.md)」を参照してください。

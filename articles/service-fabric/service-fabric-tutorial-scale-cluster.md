@@ -5,13 +5,13 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: f1b813576a94541cdc2ab0a67fea71b6f49696c5
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78251792"
 ---
-# <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure で Service Fabric クラスターのスケーリングを行う
+# <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>チュートリアル: Azure で Service Fabric クラスターをスケーリングする
 
 このチュートリアルはシリーズ第 3 部で、既存のクラスターをスケールアウトおよびスケールインする方法を示します。 このチュートリアルを終了すると、クラスターをスケールする方法や残ったリソースをクリーンアップする方法について知ることができます。  Azure 内で実行されているクラスターのスケーリングの詳細については、[Service Fabric クラスターのスケーリング](service-fabric-cluster-scaling.md)に関するページを参照してください。
 

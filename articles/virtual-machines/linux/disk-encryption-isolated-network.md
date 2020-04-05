@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
 ms.openlocfilehash: aa0dc204a017e2d40eb3952a9ede0755127f8de2
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78970656"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>分離されたネットワークでの Azure Disk Encryption

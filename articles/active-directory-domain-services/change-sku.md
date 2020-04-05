@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: iainfou
 ms.openlocfilehash: b65310569e95173b88dd0aa0dfe1dbacd86cc8fc
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79126709"
 ---
 # <a name="change-the-sku-for-an-existing-azure-ad-domain-services-managed-domain"></a>既存の Azure AD Domain Services マネージド ドメインの SKU を変更する

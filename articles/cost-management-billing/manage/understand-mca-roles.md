@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 1003e26fa670a804328d5e34def7c9d78eced9c0
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199502"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238042"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Azure での Microsoft 顧客契約の管理ロールを理解する
 
@@ -176,7 +176,7 @@ Microsoft 顧客契約の請求先アカウントを管理するには、以下�
 
 ## <a name="manage-billing-roles-in-the-azure-portal"></a>Azure portal での組み込みロールを管理する
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 2. "**コスト管理 + 請求**" を検索します。
 

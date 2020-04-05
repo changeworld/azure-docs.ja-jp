@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 01/07/2020
 ms.author: diberry
 ms.openlocfilehash: 30132983f37323e798efd330f5cc8f15c0a9d2b6
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270731"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの datetimeV2 作成済みエンティティ
@@ -119,7 +119,7 @@ DatetimeV2 は、[Recognizers-text](https://github.com/Microsoft/Recognizers-Tex
 |type|**string** - [datetimeV2 のサブタイプ](#subtypes-of-datetimev2)の 1 つ
 |startIndex|**int** - エンティティが開始する発話内の位置のインデックス。|
 |endIndex|**int** - エンティティが終了する発話内の位置のインデックス。|
-|resolution|1、2、または 4 つの[解決の値](#values-of-resolution)を持つ `values` 配列。|
+|resolution|1、2、または 4 つの`values`解決の値[を持つ ](#values-of-resolution) 配列。|
 |end|時刻範囲または日付範囲の終わりの値。`value` と同じ形式です。 `type` が `daterange`、`timerange`、または `datetimerange` の場合にのみ使用されます。|
 
 * * *
@@ -170,7 +170,7 @@ DatetimeV2 は、[Recognizers-text](https://github.com/Microsoft/Recognizers-Tex
 * 今日の日付が 2017 年 5 月 1 日のときは、LUIS は値として "2016-05-02" と "2017-05-02" の両方を提供します。
 
 次の例では、エンティティ "5 月 2 日" の解決を示します。 この解決では、今日の日付が 2017 年 5 月 2 日から 2018 年 5 月 1 日の間の日付であるものと仮定します。
-`timex` フィールド内の `X` が付いたフィールドは、発話で明示的に指定されていない日付の部分です。
+`X` フィールド内の `timex` が付いたフィールドは、発話で明示的に指定されていない日付の部分です。
 
 ## <a name="date-resolution-example"></a>日付の解決の例
 

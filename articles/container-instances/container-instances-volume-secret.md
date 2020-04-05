@@ -4,10 +4,10 @@ description: シークレット ボリュームをマウントし、コンテナ
 ms.topic: article
 ms.date: 07/19/2018
 ms.openlocfilehash: 913e3d147519bc73c3c57b8da383f9d373f3666d
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78249945"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>Azure Container Instances にシークレット ボリュームをマウントする

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: bea00f429f31f2be62ee6a9c00f88873c595d94c
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76509820"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>IoT Edge 上の Azure Blob Storage を使用してエッジにデータを格納する

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: alkohli
 ms.openlocfilehash: f7b762d5502986c306de240519688aa639f58445
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60756845"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-edge"></a>Azure portal を使用して Azure Data Box Edge の帯域幅のスケジュールを管理する  
@@ -62,11 +62,11 @@ Azure portal を使用して Data Box Edge の帯域幅スケジュールを追�
 
 3. 必要な変更を加えたら、変更を保存します。
 
-    ![ユーザーを変更する](media/data-box-edge-manage-bandwidth-schedules/modify-schedule-2.png)
+    ![ユーザーの変更](media/data-box-edge-manage-bandwidth-schedules/modify-schedule-2.png)
 
 4. スケジュールを変更した後、スケジュールの一覧は、変更されたスケジュールを反映するように更新されます。
 
-    ![ユーザーを変更する](media/data-box-edge-manage-bandwidth-schedules/modify-schedule-3.png)
+    ![ユーザーの変更](media/data-box-edge-manage-bandwidth-schedules/modify-schedule-3.png)
 
 
 ## <a name="delete-a-schedule"></a>スケジュールの削除
@@ -82,6 +82,6 @@ Data Box Edge デバイスに関連付けられている帯域幅のスケジュ
 3. スケジュールを削除した後、スケジュールの一覧が更新されます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [共有を管理する](data-box-edge-manage-shares.md)方法を確認します。

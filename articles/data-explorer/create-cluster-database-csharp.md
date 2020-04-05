@@ -8,11 +8,11 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 0c32d438ac8551f061343edb747e9fc035b498e2
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560526"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225603"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>C# を使用して Azure Data Explorer クラスターとデータベースを作成する
 
@@ -71,7 +71,7 @@ Azure Data Explorer は、アプリケーション、Web サイト、IoT デバ�
    |---|---|---|
    | clusterName | *mykustocluster* | クラスターの任意の名前。|
    | skuName | *Standard_D13_v2* | クラスターに使用される SKU。 |
-   | tier | *Standard* | SKU レベル。 |
+   | レベル | *Standard* | SKU レベル。 |
    | capacity | *number* | クラスターのインスタンスの数。 |
    | resourceGroupName | *testrg* | クラスターが作成されるリソース グループの名前。 |
 
@@ -84,7 +84,7 @@ Azure Data Explorer は、アプリケーション、Web サイト、IoT デバ�
     kustoManagementClient.Clusters.Get(resourceGroupName, clusterName);
     ```
 
-結果に値が `Succeeded` の `ProvisioningState` が含まれている場合、クラスターは正常に作成されています。
+結果に値が `ProvisioningState` の `Succeeded` が含まれている場合、クラスターは正常に作成されています。
 
 ## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>Azure Data Explorer クラスターでデータベースを作成する
 

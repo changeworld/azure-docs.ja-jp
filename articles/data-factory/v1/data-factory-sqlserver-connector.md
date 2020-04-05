@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 5e4bbe1e6bd944787d47c5e3ed98de582c088a52
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928182"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231559"
 ---
 # <a name="move-data-to-and-from-sql-server-on-premises-or-on-iaas-azure-vm-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスまたは IaaS (Azure VM) の SQL Server との間でデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -50,10 +50,10 @@ Data Management Gateway の詳細およびゲートウェイの設定手順に�
 
 SQL Server と同じオンプレミス コンピューターまたはクラウド VM インスタンスにゲートウェイをインストールできますが、パフォーマンスのためには、別のコンピューターにインストールすることをお勧めします。 ゲートウェイと SQL Server を別のコンピューターにインストールすることで、リソースの競合が減少します。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 さまざまなツール/API を使用して、オンプレミスの SQL Server データベースとの間でデータを移動するコピー アクティビティでパイプラインを作成できます。
 
-パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
+パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
 また、次のツールを使用してパイプラインを作成することもできます。**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
@@ -168,7 +168,7 @@ SqlReaderQuery または sqlReaderStoredProcedureName を指定しない場合�
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。 |TimeSpan<br/><br/> 例:"00:30:00" (30 分)。 |いいえ |
-| writeBatchSize |バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。 |整数 (行数) |いいえ (既定値:10000) |
+| writeBatchSize |バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。 |整数 (行数) |いいえ (既定値: 10000) |
 | sqlWriterCleanupScript |特定のスライスのデータを消去するコピー アクティビティのクエリを指定します。 詳しくは、「[反復可能なコピー](#repeatable-copy)」のセクションをご覧ください。 |クエリ ステートメント。 |いいえ |
 | sliceIdentifierColumnName |自動生成スライス ID を入力するためのコピー アクティビティの列名を指定します。再実行時、特定のスライスのデータを消去するときに使用されます。 詳しくは、「[反復可能なコピー](#repeatable-copy)」のセクションをご覧ください。 |バイナリ (32) のデータ型の列の列名。 |いいえ |
 | sqlWriterStoredProcedureName |ソース データをターゲット テーブルに適用する方法、たとえば、独自のビジネス ロジックを使用してアップサートまたは変換を実行する方法を定義するストアド プロシージャの名前です。 <br/><br/>このストアド プロシージャは**バッチごとに呼び出される**ことに注意してください。 1 回だけ実行され、ソース データとは関係がない操作 (削除/切り詰めなど) を実行する場合は、`sqlWriterCleanupScript` プロパティを使用します。 |ストアド プロシージャの名前。 |いいえ |
@@ -403,7 +403,7 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 ```
 **Azure BLOB の入力データセット**
 
-データは新しい BLOB から 1 時間おきに取得されます (頻度: 時間、間隔: 1)。 BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスでは開始時間の年、月、日の部分を使用し、ファイル名では開始時間の時刻部分を使用します。 "external": "true" の設定により、このデータセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
+データは新しい BLOB から 1 時間おきに取得されます (頻度: 時間、間隔:1)。 BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスでは開始時間の年、月、日の部分を使用し、ファイル名では開始時間の時刻部分を使用します。 "external": "true" の設定により、このデータセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 
 ```json
 {
@@ -656,15 +656,15 @@ SQL Server との間でデータを移動するとき、SQL 型から .NET 型�
 | binary |Byte[] |
 | bit |Boolean |
 | char |String, Char[] |
-| date |Datetime |
-| Datetime |Datetime |
-| datetime2 |Datetime |
+| date |DateTime |
+| Datetime |DateTime |
+| datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
 | image |Byte[] |
-| int |Int32 |
+| INT |Int32 |
 | money |Decimal |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
@@ -672,7 +672,7 @@ SQL Server との間でデータを移動するとき、SQL 型から .NET 型�
 | nvarchar |String, Char[] |
 | real |Single |
 | rowversion |Byte[] |
-| smalldatetime |Datetime |
+| smalldatetime |DateTime |
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object * |
@@ -680,10 +680,10 @@ SQL Server との間でデータを移動するとき、SQL 型から .NET 型�
 | time |TimeSpan |
 | timestamp |Byte[] |
 | tinyint |Byte |
-| uniqueidentifier |Guid |
+| UNIQUEIDENTIFIER |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
-| xml |Xml |
+| xml |xml |
 
 ## <a name="mapping-source-to-sink-columns"></a>ソース列からシンク列へのマッピング
 ソース データセット列からシンク データセット列へのマッピングについては、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。

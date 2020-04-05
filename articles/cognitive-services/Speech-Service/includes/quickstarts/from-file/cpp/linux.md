@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: dapine
 ms.openlocfilehash: 8890cb515d39d47a5f5cfa4e4309d0191477acdd
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79082423"
 ---
 ## <a name="prerequisites"></a>前提条件
@@ -29,7 +29,7 @@ ms.locfileid: "79082423"
 
 1. この新しいファイルで、文字列 `YourSubscriptionKey` を、音声サービスのサブスクリプション キーで置き換えます。
 
-1. 文字列 `YourServiceRegion` を、サブスクリプションに関連付けられた[リージョン](https://aka.ms/speech/sdkregion)の**リージョン識別子** (たとえば、無料試用版サブスクリプションでは `westus`) に置き換えます。
+1. 文字列 `YourServiceRegion` を、サブスクリプションに関連付けられた**リージョン**の[リージョン識別子](https://aka.ms/speech/sdkregion) (たとえば、無料試用版サブスクリプションでは `westus`) に置き換えます。
 
 1. 文字列 `whatstheweatherlike.wav` を実際のファイル名に置き換えます。
 

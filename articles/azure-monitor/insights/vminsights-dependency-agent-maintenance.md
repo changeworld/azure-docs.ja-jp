@@ -1,17 +1,17 @@
 ---
-title: Azure Monitor for VMs Dependency Agent をアップグレードする方法 | Microsoft Docs
+title: Azure Monitor for VMs Dependency Agent をアップグレードする方法
 description: この記事では、コマンドライン、設定ウィザード、およびその他の方法を使用して Azure Monitor for VMs Dependency Agent をアップグレードする方法について説明します。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/30/2019
-ms.openlocfilehash: c98c48a4494ac37ef4868c44d4a7adacfd0d48da
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/12/2020
+ms.openlocfilehash: c55bee9880c4134f2e304a7fc5176225477fe5f3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77662435"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480761"
 ---
 # <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>Azure Monitor for VMs Dependency Agent をアップグレードする方法
 

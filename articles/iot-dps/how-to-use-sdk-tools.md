@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: b817b3cfe47ed08cae9e7e0b1c2c24363f2ccfed
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974804"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233331"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>SDK に付属するツールを使用してプロビジョニング用の開発を簡略化する方法
 IoT Hub Device Provisioning サービスは、セキュリティで保護されたスケーラブルな方法で、ゼロタッチの Just-In-Time [自動プロビジョニング](concepts-auto-provisioning.md)によってプロビジョニング プロセスを簡略化します。  X.509 証明書またはトラステッド プラットフォーム モジュール (TPM) の形式でのセキュリティの構成証明が必要です。  さらに Microsoft は[他のセキュリティ ハードウェア パートナー](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/)と提携することで、IoT デプロイのセキュリティ保護における信頼性を高めています。 ハードウェアのセキュリティ要件を理解することは、開発者にとってきわめて困難な場合があります。 開発者がプロビジョニング サービスと通信するクライアントを作成するために便利なレイヤーを使用できるように、一連の Azure IoT Provisioning サービス SDK が提供されています。 この SDK では、一般的なシナリオのサンプルのほか、開発でのセキュリティ構成証明を簡略化するための一連のツールも提供しています。
@@ -33,11 +33,11 @@ TPM シミュレーターを使用する手順は次のとおりです。
 [X.509 証明書](https://docs.microsoft.com/azure/iot-dps/concepts-security#x509-certificates)を構成証明メカニズムとして使用して、運用環境をスケーリングし、デバイスのプロビジョニングを簡略化できます。  X.509 証明書を取得するには[いくつかの方法](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate)があります。
 * 運用環境の場合、公的なルート証明機関から X.509 CA 証明書を購入することをお勧めします。
 * テスト環境の場合、次を使用して、X.509 ルート証明書または X.509 証明書チェーンを生成できます。
-    * OpenSSL:証明書を生成するスクリプトを使用できます。
-        * [Node.JS](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools)
+    * OpenSSL: 証明書を生成するスクリプトを使用できます。
+        * [Node.js](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools)
         * [PowerShell または Bash](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)
         
-    * Device Identity Composition Engine (DICE) エミュレーター:DICE は TLS プロトコルと X.509 クライアント証明書に基づいた暗号化デバイス ID と構成証明に使用できます。  [DICE とデバイス ID に関する詳細](https://www.microsoft.com/research/publication/device-identity-dice-riot-keys-certificates/)を参照してください。
+    * Device Identity Composition Engine (DICE) エミュレーター: DICE は TLS プロトコルと X.509 クライアント証明書に基づいた暗号化デバイス ID と構成証明に使用できます。  [DICE とデバイス ID に関する詳細](https://www.microsoft.com/research/publication/device-identity-dice-riot-keys-certificates/)を参照してください。
 
 ### <a name="using-x509-certificate-generator-with-dice-emulator"></a>DICE エミュレーターで X.509 証明書ジェネレーターを使用する
 SDK は、DICE エミュレーターによる X.509 証明書ジェネレーターを提供しており、[Java SDK](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-tools/provisioning-x509-cert-generator) にあります。  このジェネレーターはクロスプラットフォームで機能します。  生成された証明書は、他の言語での開発に使用できます。
@@ -65,5 +65,5 @@ SDK は、DICE エミュレーターによる X.509 証明書ジェネレータ�
 
 ルート証明書または中間証明書は、登録グループまたは個々の登録を[プログラムで](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments-sdks)、または[ポータル](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments)を使用して作成するために使用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Azure IoT Hub および Azure IoT Hub Device Provisioning Service 用に [Azure IoT SDK]( https://github.com/Azure/azure-iot-sdks) を使用する開発

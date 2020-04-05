@@ -177,6 +177,7 @@
               href: reserved-vm-instance-size-flexibility.md
         - name: スポット VM
           href: spot-vms.md
+          displayName: 'pre-empt, preempt'
         - name: 旧世代
           href: ../sizes-previous-gen.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Isolated のサイズ
@@ -315,6 +316,10 @@
               href: disk-encryption-sample-scripts.md
             - name: 分離されたネットワークでのディスク暗号化
               href: disk-encryption-isolated-network.md
+            - name: 暗号化の状態を確認する方法
+              href: how-to-verify-encryption-status.md
+            - name: crypt で LVM RAID を構成する方法
+              href: how-to-configure-lvm-raid-on-crypt.md
             - name: ディスク暗号化のトラブルシューティング
               href: disk-encryption-troubleshooting.md
             - name: ディスク暗号化の FAQ
@@ -498,8 +503,6 @@
           href: capture-image.md
         - name: Packer でイメージを作成する
           href: build-image-with-packer.md
-        - name: Azure での RHEL イメージ
-          href: rhel-images.md
         - name: 既存のディスクをダウンロードする
           href: download-vhd.md
     - name: 可用性とスケール
@@ -520,6 +523,8 @@
           href: create-cli-availability-zone.md
     - name: 自動化ツールの使用
       items:
+        - name: カスタム データ
+          href: ../custom-data.md
         - name: Ansible
           items:
             - name: インストールと構成

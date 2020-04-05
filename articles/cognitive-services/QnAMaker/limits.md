@@ -4,10 +4,10 @@ description: QnA Maker には、ナレッジ ベースとサービスの一部�
 ms.topic: reference
 ms.date: 02/14/2020
 ms.openlocfilehash: 6375a6c6efc0c7016d9947e04e9479385aa80af5
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273350"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker ナレッジ ベースの制限と境界
@@ -72,7 +72,7 @@ URL ページから QnA を抽出するためにクロールできるディー�
 |Item|使用できる文字|正規表現パターン マッチ|最大文字数|
 |--|--|--|--|
 |名前 (キー)|以下の文字を使用可能:<br>英数字<br>`_` (アンダースコア)<br> スペースを含めることはできません。|`^[a-zA-Z0-9_]+$`|100|
-|Value|以下を除くすべての文字を使用可能:<br>`:` (コロン)<br>`|` (縦棒)<br>使用できる値は 1 つだけです。|`^[^:|]+$`|500|
+|値|以下を除くすべての文字を使用可能:<br>`:` (コロン)<br>`|` (縦棒)<br>使用できる値は 1 つだけです。|`^[^:|]+$`|500|
 |||||
 
 ## <a name="knowledge-base-content-limits"></a>ナレッジ ベースのコンテンツの制限

@@ -13,15 +13,15 @@ ms.date: 07/26/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 7ddef1e78b4f8f62145e10b4cabc4537e28aba2f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74969906"
 ---
 # <a name="content-key-policies"></a>コンテンツ キー ポリシー
 
-Media Services では、Advanced Encryption Standard (AES-128) または主要な 3 つのデジタル著作権管理 (DRM) システム (Microsoft PlayReady、Google Widevine、および Apple FairPlay) によって動的に暗号化されたライブまたはオンデマンドのコンテンツを配信できます。 Media Services では、承認されたクライアントに AES キーと DRM (PlayReady、Widevine、FairPlay) ライセンスを配信するためのサービスも提供しています。 
+Media Services では、Advanced Encryption Standard (AES-128) または主要な 3 つのデジタル著作権管理 (DRM) システム コンテンツを配信できます。 Media Services では、承認されたクライアントに AES キーと DRM (PlayReady、Widevine、FairPlay) ライセンスを配信するためのサービスも提供しています。 
 
 ストリームで暗号化オプションを指定するには、[ストリーミング ポリシー](streaming-policy-concept.md)を作成し、それを[ストリーミング ロケーター](streaming-locators-concept.md)に関連付ける必要があります。 コンテンツ キー ([資産](assets-concept.md)へのアクセスをセキュリティで保護する) をエンド クライアントに届ける方法を構成するには、[コンテンツ キー ポリシー](https://docs.microsoft.com/rest/api/media/contentkeypolicies)を作成します。 構成が指定されたキーをクライアントに配信するために満たす必要がある要件 (制限) をコンテンツ キー ポリシーに設定する必要があります。 コンテンツ キー ポリシーは、クリアなストリーミングまたはダウンロードには必要ありません。 
 
@@ -58,7 +58,7 @@ Media Services では、Advanced Encryption Standard (AES-128) または主要�
 * `Datetime` 型であるコンテンツ キー ポリシーのプロパティは、常に UTC 形式です。
 * Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [AES-128 動的暗号化とキー配信サービスの使用](protect-with-aes128.md)
 * [DRM 動的暗号化とライセンス配信サービスの使用](protect-with-drm.md)

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/14/2018
 ms.openlocfilehash: 639901975bbb66b9f410bea297d9e48cd96d6d1b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73822428"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Azure SQL データ同期でスキーマ変更のレプリケートを自動化する
@@ -171,7 +171,7 @@ DDL トリガーが作成されたデータベースで行われたスキーマ�
 
 ストアド プロシージャの作成やインデックスの削除など、その他の種類のスキーマ変更では、同期スキーマの更新は必要ありません。
 
-## <a name="troubleshoot"></a>スキーマ変更のレプリケートの自動化に関するトラブルシューティング
+## <a name="troubleshoot-automated-schema-change-replication"></a><a name="troubleshoot"></a>スキーマ変更のレプリケートの自動化に関するトラブルシューティング
 
 この記事で説明したレプリケート ロジックは、Azure SQL Database でサポートされていないオンプレミス データベースでスキーマ変更を行った場合など、一定の状況下で動作を停止します。 停止した場合、スキーマ変更追跡テーブルの同期はエラーになります。 この問題は、次の手順を実行して、手動で修正する必要があります。
 
@@ -199,7 +199,7 @@ DDL トリガーが作成されたデータベースで行われたスキーマ�
 
 スキーマ変更追跡テーブル内のレコードをクリーンアップする場合は、TRUNCATE ではなく DELETE を使用します。 絶対に DBCC CHECKIDENT を使用してスキーマ変更追跡テーブル内の ID 列を再シードしてはいけません。 再シードが必要な場合は、新しいスキーマ変更追跡テーブルを作成して、DDL トリガーの中でテーブル名を更新できます。
 
-## <a name="other"></a>その他の考慮事項
+## <a name="other-considerations"></a><a name="other"></a>その他の考慮事項
 
 -   ハブおよびメンバー データベースを構成するデータベース ユーザーは、スキーマ変更コマンドを実行するための十分な権限を保持している必要があります。
 
@@ -217,7 +217,7 @@ DDL トリガーが作成されたデータベースで行われたスキーマ�
 
 -   TRUNCATE を使用して、スキーマ変更追跡テーブルのデータをクリーンアップしないでください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 SQL データ同期の詳細については、以下を参照してください。
 

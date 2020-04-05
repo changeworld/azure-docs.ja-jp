@@ -9,10 +9,10 @@ ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.openlocfilehash: 543573610c2ea3ab0bcd89e1b8f4ee5f5a34dbc0
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75934427"
 ---
 # <a name="security-control-identity-and-access-control"></a>セキュリティ コントロール: ID およびアクセス制御
@@ -21,7 +21,7 @@ ID およびアクセス管理の推奨事項では、ID ベースのアクセ�
 
 ## <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 3.1 | 4.1 | Customer |
 
@@ -37,7 +37,7 @@ https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemem
 
 ## <a name="32-change-default-passwords-where-applicable"></a>3.2: 既定のパスワードを変更する (該当する場合)
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 3.2 | 4.2 | Customer |
 
@@ -45,7 +45,7 @@ Azure AD には既定のパスワードという概念がありません。 パ�
 
 ## <a name="33-use-dedicated-administrative-accounts"></a>3.3: 専用管理者アカウントを使用する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 3.3 | 4.3 | Customer |
 
@@ -57,7 +57,7 @@ Azure AD には既定のパスワードという概念がありません。 パ�
 
 ## <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: シングル サインオン (SSO) と Azure Active Directory を統合する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 3.4 | 4.4. | Customer |
 
@@ -69,7 +69,7 @@ https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sig
 
 ## <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: すべての Azure Active Directory ベースのアクセスに多要素認証を使用する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 3.5 | 4.5、11.5、12.11、16.3 | Customer |
 
@@ -85,7 +85,7 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 ## <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: すべての管理タスクに専用マシン (特権アクセス ワークステーション) を使用する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 3.6 | 4.6、11.6、12.12 | Customer |
 
@@ -102,7 +102,7 @@ https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getst
 
 ## <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7: 管理者アカウントからの疑わしいアクティビティを記録してアラートを生成する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 3.7 | 4.8、4.9 | Customer |
 
@@ -118,7 +118,7 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 ## <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8:承認された場所からのみ Azure リソースを管理する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 3.8 | 11.7 | Customer |
 
@@ -130,7 +130,7 @@ https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-
 
 ## <a name="39-use-azure-active-directory"></a>3.9: Azure Active Directory を使用する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 3.9 | 16.1、16.2、16.4、16.5、16.6 | Customer |
 
@@ -142,7 +142,7 @@ https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-
 
 ## <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: ユーザー アクセスを定期的に確認して調整する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 3.10 | 16.9、16.10 | Customer |
 
@@ -158,7 +158,7 @@ https://docs.microsoft.com/azure/active-directory/governance/access-reviews-over
 
 ## <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11: 非アクティブ化されたアカウントへのアクセス試行を監視する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 3.11 | 16.12 | Customer |
 
@@ -172,7 +172,7 @@ https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integ
 
 ## <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: アカウント ログイン動作の偏差に関するアラートを生成する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 3.12 | 16.13 | Customer |
 
@@ -192,7 +192,7 @@ https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 ## <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13: サポート シナリオで関連する顧客データに Microsoft がアクセスできるようにする
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 3.13 | 16 | Customer |
 

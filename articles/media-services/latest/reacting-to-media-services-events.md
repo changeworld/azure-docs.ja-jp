@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: juliako
 ms.openlocfilehash: e24bacb0ea7ab406442022915872fc77e9cc1a5e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74887886"
 ---
 # <a name="handling-event-grid-events"></a>Event Grid イベントの処理
@@ -42,7 +42,7 @@ Media Services イベントを処理するアプリケーションは、いく�
 > [!NOTE]
 > イベントには、Event Grid の[サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/) が適用されます。 API を使用してイベント通知を取得する場合は、イベントの使用方法の例 ([.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet) 用または [Java SDK](https://github.com/Azure-Samples/media-services-v3-java) 用) を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [イベントの監視 - ポータル](monitor-events-portal-how-to.md)
 * [イベントの監視 - CLI](job-state-events-cli-how-to.md)

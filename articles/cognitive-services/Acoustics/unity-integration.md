@@ -12,10 +12,10 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: a8ddb0e4ca2ee4396a25a70c8b60b653aebb72d8
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72243011"
 ---
 # <a name="project-acoustics-unity-integration"></a>Project Acoustics Unity の統合
@@ -31,7 +31,7 @@ ms.locfileid: "72243011"
 
     ![Unity の [Import Package]\(パッケージのインポート\) メニュー](media/import-package.png)  
 
-1. **[ProjectAcoustics.unitypackage]** を選択します。
+1. **ProjectAcoustics.unitypackage** を選択します。
 
 1. **[Import]\(インポート\)** ボタンを選択し、Unity パッケージをプロジェクトに統合します。
 
@@ -49,7 +49,7 @@ ms.locfileid: "72243011"
 ## <a name="set-up-audio-dsp"></a>オーディオ DSP の設定
 Project Acoustics には、Unity オーディオ エンジンの立体化フレームワークに統合されたオーディオ ランタイム DSP が含まれています。 これには、HRTF ベースとパンの両方の立体化が含まれます。 Project Acoustics DSP を有効にするには、 **[Edit]\(編集\)** 、 **[Project Settings]\(プロジェクト設定\)** 、 **[Audio]\(オーディオ\)** の順に進み、Unity のオーディオ設定を開きます。 プロジェクトの **[Spatializer Plugin]\(立体化プラグイン\)** として **[Project Acoustics]** を選択します。 **[DSP Buffer Size]\(DSP のバッファー サイズ\)** は必ず *[Best Performance]\(最適なパフォーマンス\)* に設定します。
 
-![Unity Project の [設定] メニュー](media/project-settings.png)  
+![Unity の [Project Settings]\(プロジェクトの設定\) メニュー](media/project-settings.png)  
 
 ![Unity の [Spatializer settings]\(立体化設定\) パネルで Project Acoustics の立体化が選択されています](media/choose-spatializer.png)
 
@@ -67,7 +67,7 @@ Project Acoustics には、Unity オーディオ エンジンの立体化フレ�
 
 ![Unity の AcousticsAdjust スクリプト](media/acoustics-adjust.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Project Acoustics for Unity を使用してシーンをベイクする](unity-baking.md)
 * [Azure Batch アカウントを作成](create-azure-account.md)してクラウドでシーンをベイクする
 * [Project Acoustics Unity のデザイン プロセス](unity-workflow.md)を確認する。

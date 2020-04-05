@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
 ms.openlocfilehash: d4304abf0ca089fbbea86f12cd03dea836db612e
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77368356"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>Azure Event Hubs へのアクセスを承認する

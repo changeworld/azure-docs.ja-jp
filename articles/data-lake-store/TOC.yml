@@ -1,5 +1,5 @@
 - name: Data Lake Storage Gen1 のドキュメント
-  href: index.md
+  href: index.yml
 - name: Data Lake Storage Gen2 のドキュメントに切り替える
   href: 'https://docs.microsoft.com/azure/storage/data-lake-storage/introduction'
 - name: 概要
@@ -14,7 +14,7 @@
       href: data-lake-store-compatible-oss-other-applications.md
     - name: ベスト プラクティス
       href: data-lake-store-best-practices.md
-- name: 作業開始
+- name: はじめに
   items:
     - name: Azure Portal の使用
       href: data-lake-store-get-started-portal.md
@@ -144,7 +144,7 @@
           href: 'https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager'
         - name: その他の Azure 統合オプション
           href: data-lake-store-integrate-with-other-services.md
-    - name: 管理
+    - name: 管理する
       items:
         - name: 診断ログにアクセスする
           href: data-lake-store-diagnostic-logs.md

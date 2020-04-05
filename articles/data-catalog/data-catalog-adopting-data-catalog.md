@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 63d1213a2dded41df3f462722b354b03fe9f6e33
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72801883"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Azure Data Catalog 導入のためのアプローチとプロセス
@@ -129,7 +129,7 @@ Nancy と彼女のチームがどのように容易に価値の高いデータ�
 
 パイロット プロジェクトの環境が整えば、Data Catalog の導入計画を実行します。
 
-### <a name="execute"></a>Execute
+### <a name="execute"></a>実行
 
 この時点で、Data Catalog の特定のユース ケースがあり、最初のプロジェクトを特定しています。 さらに、主要な Adventure Works のデータ ソースを登録し、IT が構築したツールを使用して、既存の Excel ブックから情報を追加しています。 それでは、パイロット チームと協力して、Data Catalog の導入プロセスを開始します。
 
@@ -163,6 +163,6 @@ Nancy と彼女のチームがどのように容易に価値の高いデータ�
 
 この記事では、組織内の **Azure Data Catalog** の概要について説明しました。 Data Catalog のパイロット プロジェクトを起動し、組織全体に Data Catalog を展開できていれば幸いです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure データ カタログを作成する](data-catalog-get-started.md)

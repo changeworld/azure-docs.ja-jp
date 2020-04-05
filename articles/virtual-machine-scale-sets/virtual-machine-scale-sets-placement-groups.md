@@ -8,12 +8,12 @@ ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 11/9/2017
-ms.openlocfilehash: 618b677ee836327e8ed4ab7798ab35d92b364c98
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 6a872e749bae6bd29dbf73d4946e631af1660a39
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76272538"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79531041"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>大規模な仮想マシン スケール セットの使用
 現在、最大 1,000 個の VM を容量とした Azure [仮想マシン スケール セット](/azure/virtual-machine-scale-sets/)を作成できるようになりました。 このドキュメントの "_大規模な仮想マシン スケール セット_" は、100 個を超える VM にスケーリングできるスケール セットとして定義されています。 この機能はスケール セット プロパティで設定されています (_singlePlacementGroup=False_)。 
@@ -45,16 +45,19 @@ Azure portal でスケール セットを作成する場合は、最大で 1,000
 
 大規模な仮想マシン スケール セットは、[Azure CLI](https://github.com/Azure/azure-cli) の _az vmss create_ コマンドを使用して作成できます。 このコマンドを実行すると、_instance-count_ 引数に基づいて、サブネット サイズなど、インテリジェントな既定値が設定されます。
 
-```bash
+```azurecli
 az group create -l southcentralus -n biginfra
 az vmss create -g biginfra -n bigvmss --image ubuntults --instance-count 1000
 ```
+
 _vmss create_ コマンドでは、構成値を指定しない場合に既定で特定の構成値が使用されます。 オーバーライドできる使用可能なオプションを表示するには、次のように入力します。
-```bash
+
+```azurecli
 az vmss create --help
 ```
 
 Azure Resource Manager テンプレートを構成して大規模なスケール セットを作成している場合、このテンプレートによって Azure Managed Disks に基づいたスケール セットが作成されることを確認してください。 _Microsoft.Compute/virtualMachineScaleSets_ リソースの _properties_ セクションで、_singlePlacementGroup_ プロパティを _false_ に設定できます。 次の JSON フラグメントは、スケール セット テンプレートの先頭部分を示しています。これには、VM 容量が 1,000 であることと _"singlePlacementGroup" : false_ 設定が含まれています。
+
 ```json
 {
   "type": "Microsoft.Compute/virtualMachineScaleSets",
@@ -71,6 +74,7 @@ Azure Resource Manager テンプレートを構成して大規模なスケール
       "mode": "Automatic"
     }
 ```
+
 大規模なスケール セットのテンプレートの完全な例については、[https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json) を参照してください。
 
 ## <a name="converting-an-existing-scale-set-to-span-multiple-placement-groups"></a>複数の配置グループをまたぐように既存のスケール セットを変換する

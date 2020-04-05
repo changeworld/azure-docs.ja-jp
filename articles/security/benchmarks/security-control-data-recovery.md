@@ -9,10 +9,10 @@ ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.openlocfilehash: c585ebd903d4070f6247456e06efffbc6ec45270
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75934507"
 ---
 # <a name="security-control-data-recovery"></a>セキュリティ コントロールデータの復旧
@@ -21,7 +21,7 @@ ms.locfileid: "75934507"
 
 ## <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的に自動バックアップを行う
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 9.1 | 10.1 | Customer |
 
@@ -33,7 +33,7 @@ https://docs.microsoft.com/azure/backup/
 
 ## <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: システムの完全バックアップを実行し、カスタマー マネージド キーをバックアップする
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 9.2 | 10.2 | Customer |
 
@@ -49,7 +49,7 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvau
 
 ## <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3:カスタマー マネージド キーを含むすべてのバックアップを検証する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 9.3 | 10.3 | Customer |
 
@@ -65,7 +65,7 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 
 ## <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: バックアップとカスタマー マネージド キーの保護を確保する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 9.4 | 10.4 | Customer |
 

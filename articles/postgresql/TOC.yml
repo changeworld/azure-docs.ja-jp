@@ -102,6 +102,8 @@
               href: concepts-data-access-and-security-private-link.md
             - name: データの暗号化
               href: concepts-data-encryption-postgresql.md
+            - name: セキュリティ ベースライン
+              href: security-baseline.md
         - name: ビジネス継続性
           items:
             - name: ビジネス継続性の概要
@@ -273,6 +275,10 @@
               href: howto-restart-server-portal.md
             - name: Azure CLI
               href: howto-restart-server-cli.md
+        - name: パブリック ネットワーク アクセスの拒否
+          items:
+            - name: Azure portal
+              href: howto-deny-public-network-access.md
         - name: レプリケーション
           items:
             - name: Azure portal を使用した読み取りレプリカの管理

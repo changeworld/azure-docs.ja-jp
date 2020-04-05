@@ -6,11 +6,11 @@ ms.topic: troubleshooting
 ms.date: 8/24/2018
 ms.author: pkc
 ms.openlocfilehash: 7494f0072f27f2c9b00db7070f19dfc05627eacf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465624"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236583"
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric のサポート オプション
 
